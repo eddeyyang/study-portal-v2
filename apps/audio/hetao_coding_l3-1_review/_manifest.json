@@ -1,0 +1,12 @@
+{
+  "zhRate": "0%",
+  "enRate": "0%",
+  "items": [
+    { "lang": "en", "text": "answer" },
+    { "lang": "en", "text": "max" },
+    { "lang": "zh", "text": "答对了" },
+    { "lang": "zh", "text": "再想想" },
+    { "lang": "zh", "text": "新擂主诞生" },
+    { "lang": "zh", "text": "最大值出炉" }
+  ]
+}

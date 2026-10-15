@@ -1,0 +1,1630 @@
+{
+  "enRate": "-10%",
+  "zhRate": "-10%",
+  "items": [
+    {
+      "lang": "zh",
+      "text": "裁缝"
+    },
+    {
+      "lang": "zh",
+      "text": "顾客"
+    },
+    {
+      "lang": "zh",
+      "text": "棉袄"
+    },
+    {
+      "lang": "zh",
+      "text": "衬衫"
+    },
+    {
+      "lang": "zh",
+      "text": "橱窗"
+    },
+    {
+      "lang": "zh",
+      "text": "抱怨"
+    },
+    {
+      "lang": "zh",
+      "text": "莫名其妙"
+    },
+    {
+      "lang": "zh",
+      "text": "窟窿"
+    },
+    {
+      "lang": "zh",
+      "text": "枣核"
+    },
+    {
+      "lang": "zh",
+      "text": "咳嗽"
+    },
+    {
+      "lang": "zh",
+      "text": "唠叨"
+    },
+    {
+      "lang": "zh",
+      "text": "谚语"
+    },
+    {
+      "lang": "zh",
+      "text": "告诫"
+    },
+    {
+      "lang": "zh",
+      "text": "辩论"
+    },
+    {
+      "lang": "zh",
+      "text": "窃窃私语"
+    },
+    {
+      "lang": "zh",
+      "text": "伸缩"
+    },
+    {
+      "lang": "zh",
+      "text": "蕴藏"
+    },
+    {
+      "lang": "zh",
+      "text": "光辉"
+    },
+    {
+      "lang": "zh",
+      "text": "诱人"
+    },
+    {
+      "lang": "zh",
+      "text": "圆润"
+    },
+    {
+      "lang": "zh",
+      "text": "红彤彤"
+    },
+    {
+      "lang": "zh",
+      "text": "金灿灿"
+    },
+    {
+      "lang": "zh",
+      "text": "威武"
+    },
+    {
+      "lang": "zh",
+      "text": "机灵"
+    },
+    {
+      "lang": "zh",
+      "text": "cái féng"
+    },
+    {
+      "lang": "zh",
+      "text": "gù kè"
+    },
+    {
+      "lang": "zh",
+      "text": "mián ǎo"
+    },
+    {
+      "lang": "zh",
+      "text": "chèn shān"
+    },
+    {
+      "lang": "zh",
+      "text": "chú chuāng"
+    },
+    {
+      "lang": "zh",
+      "text": "bào yuàn"
+    },
+    {
+      "lang": "zh",
+      "text": "mò míng qí miào"
+    },
+    {
+      "lang": "zh",
+      "text": "kū long"
+    },
+    {
+      "lang": "zh",
+      "text": "zǎo hé"
+    },
+    {
+      "lang": "zh",
+      "text": "ké sou"
+    },
+    {
+      "lang": "zh",
+      "text": "láo dao"
+    },
+    {
+      "lang": "zh",
+      "text": "yàn yǔ"
+    },
+    {
+      "lang": "zh",
+      "text": "gào jiè"
+    },
+    {
+      "lang": "zh",
+      "text": "biàn lùn"
+    },
+    {
+      "lang": "zh",
+      "text": "qiè qiè sī yǔ"
+    },
+    {
+      "lang": "zh",
+      "text": "shēn suō"
+    },
+    {
+      "lang": "zh",
+      "text": "yùn cáng"
+    },
+    {
+      "lang": "zh",
+      "text": "guāng huī"
+    },
+    {
+      "lang": "zh",
+      "text": "yòu rén"
+    },
+    {
+      "lang": "zh",
+      "text": "yuán rùn"
+    },
+    {
+      "lang": "zh",
+      "text": "hóng tóng tóng"
+    },
+    {
+      "lang": "zh",
+      "text": "jīn càn càn"
+    },
+    {
+      "lang": "zh",
+      "text": "wēi wǔ"
+    },
+    {
+      "lang": "zh",
+      "text": "jī líng"
+    },
+    {
+      "lang": "zh",
+      "text": "你好弟弟,我是默写助手。"
+    },
+    {
+      "lang": "en",
+      "text": "Hello, I can speak English too."
+    },
+    {
+      "lang": "zh",
+      "text": "默完了！对照答案，写错的点一下变红。"
+    },
+    {
+      "lang": "zh",
+      "text": "好，只重默写错的。准备！"
+    },
+    {
+      "lang": "zh",
+      "text": "记下了，错词留着再练。"
+    },
+    {
+      "lang": "zh",
+      "text": "真棒，这一课默完了！"
+    },
+    {
+      "lang": "zh",
+      "text": "对"
+    },
+    {
+      "lang": "zh",
+      "text": "全对!这些词你真的懂了。"
+    },
+    {
+      "lang": "zh",
+      "text": "做完了,错的词已经记下来。"
+    },
+    {
+      "lang": "zh",
+      "text": "已经复制好了,可以粘贴发给爸爸或Claude。"
+    },
+    {
+      "lang": "zh",
+      "text": "赵州桥"
+    },
+    {
+      "lang": "zh",
+      "text": "zhào zhōu qiáo"
+    },
+    {
+      "lang": "zh",
+      "text": "石匠"
+    },
+    {
+      "lang": "zh",
+      "text": "shí jiàng"
+    },
+    {
+      "lang": "zh",
+      "text": "设计"
+    },
+    {
+      "lang": "zh",
+      "text": "shè jì"
+    },
+    {
+      "lang": "zh",
+      "text": "创举"
+    },
+    {
+      "lang": "zh",
+      "text": "chuàng jǔ"
+    },
+    {
+      "lang": "zh",
+      "text": "冲击"
+    },
+    {
+      "lang": "zh",
+      "text": "chōng jī"
+    },
+    {
+      "lang": "zh",
+      "text": "不但"
+    },
+    {
+      "lang": "zh",
+      "text": "bù dàn"
+    },
+    {
+      "lang": "zh",
+      "text": "而且"
+    },
+    {
+      "lang": "zh",
+      "text": "ér qiě"
+    },
+    {
+      "lang": "zh",
+      "text": "各自"
+    },
+    {
+      "lang": "zh",
+      "text": "gè zì"
+    },
+    {
+      "lang": "zh",
+      "text": "似乎"
+    },
+    {
+      "lang": "zh",
+      "text": "sì hū"
+    },
+    {
+      "lang": "zh",
+      "text": "体现"
+    },
+    {
+      "lang": "zh",
+      "text": "tǐ xiàn"
+    },
+    {
+      "lang": "zh",
+      "text": "人民"
+    },
+    {
+      "lang": "zh",
+      "text": "rén mín"
+    },
+    {
+      "lang": "zh",
+      "text": "智慧"
+    },
+    {
+      "lang": "zh",
+      "text": "zhì huì"
+    },
+    {
+      "lang": "zh",
+      "text": "才干"
+    },
+    {
+      "lang": "zh",
+      "text": "cái gàn"
+    },
+    {
+      "lang": "zh",
+      "text": "历史"
+    },
+    {
+      "lang": "zh",
+      "text": "lì shǐ"
+    },
+    {
+      "lang": "zh",
+      "text": "争奇斗艳"
+    },
+    {
+      "lang": "zh",
+      "text": "zhēng qí dòu yàn"
+    },
+    {
+      "lang": "zh",
+      "text": "芬芳"
+    },
+    {
+      "lang": "zh",
+      "text": "fēn fāng"
+    },
+    {
+      "lang": "zh",
+      "text": "迷人"
+    },
+    {
+      "lang": "zh",
+      "text": "mí rén"
+    },
+    {
+      "lang": "zh",
+      "text": "艳丽"
+    },
+    {
+      "lang": "zh",
+      "text": "yàn lì"
+    },
+    {
+      "lang": "zh",
+      "text": "醒来"
+    },
+    {
+      "lang": "zh",
+      "text": "xǐng lái"
+    },
+    {
+      "lang": "zh",
+      "text": "万寿菊"
+    },
+    {
+      "lang": "zh",
+      "text": "wàn shòu jú"
+    },
+    {
+      "lang": "zh",
+      "text": "欣然"
+    },
+    {
+      "lang": "zh",
+      "text": "xīn rán"
+    },
+    {
+      "lang": "zh",
+      "text": "苏醒"
+    },
+    {
+      "lang": "zh",
+      "text": "sū xǐng"
+    },
+    {
+      "lang": "zh",
+      "text": "关系"
+    },
+    {
+      "lang": "zh",
+      "text": "guān xì"
+    },
+    {
+      "lang": "zh",
+      "text": "适宜"
+    },
+    {
+      "lang": "zh",
+      "text": "shì yí"
+    },
+    {
+      "lang": "zh",
+      "text": "适应"
+    },
+    {
+      "lang": "zh",
+      "text": "shì yìng"
+    },
+    {
+      "lang": "zh",
+      "text": "淡雅"
+    },
+    {
+      "lang": "zh",
+      "text": "dàn yǎ"
+    },
+    {
+      "lang": "zh",
+      "text": "展示"
+    },
+    {
+      "lang": "zh",
+      "text": "zhǎn shì"
+    },
+    {
+      "lang": "zh",
+      "text": "修建"
+    },
+    {
+      "lang": "zh",
+      "text": "xiū jiàn"
+    },
+    {
+      "lang": "zh",
+      "text": "组成"
+    },
+    {
+      "lang": "zh",
+      "text": "zǔ chéng"
+    },
+    {
+      "lang": "zh",
+      "text": "实验"
+    },
+    {
+      "lang": "zh",
+      "text": "shí yàn"
+    },
+    {
+      "lang": "zh",
+      "text": "验证"
+    },
+    {
+      "lang": "zh",
+      "text": "yàn zhèng"
+    },
+    {
+      "lang": "zh",
+      "text": "蜂窝"
+    },
+    {
+      "lang": "zh",
+      "text": "fēng wō"
+    },
+    {
+      "lang": "zh",
+      "text": "大概"
+    },
+    {
+      "lang": "zh",
+      "text": "dà gài"
+    },
+    {
+      "lang": "zh",
+      "text": "阻力"
+    },
+    {
+      "lang": "zh",
+      "text": "zǔ lì"
+    },
+    {
+      "lang": "zh",
+      "text": "将近"
+    },
+    {
+      "lang": "zh",
+      "text": "jiāng jìn"
+    },
+    {
+      "lang": "zh",
+      "text": "大约"
+    },
+    {
+      "lang": "zh",
+      "text": "dà yuē"
+    },
+    {
+      "lang": "zh",
+      "text": "包括"
+    },
+    {
+      "lang": "zh",
+      "text": "bāo kuò"
+    },
+    {
+      "lang": "zh",
+      "text": "检查"
+    },
+    {
+      "lang": "zh",
+      "text": "jiǎn chá"
+    },
+    {
+      "lang": "zh",
+      "text": "迷失"
+    },
+    {
+      "lang": "zh",
+      "text": "mí shī"
+    },
+    {
+      "lang": "zh",
+      "text": "准确"
+    },
+    {
+      "lang": "zh",
+      "text": "zhǔn què"
+    },
+    {
+      "lang": "zh",
+      "text": "无误"
+    },
+    {
+      "lang": "zh",
+      "text": "wú wù"
+    },
+    {
+      "lang": "zh",
+      "text": "尽管"
+    },
+    {
+      "lang": "zh",
+      "text": "jǐn guǎn"
+    },
+    {
+      "lang": "zh",
+      "text": "逆风"
+    },
+    {
+      "lang": "zh",
+      "text": "nì fēng"
+    },
+    {
+      "lang": "zh",
+      "text": "沿途"
+    },
+    {
+      "lang": "zh",
+      "text": "yán tú"
+    },
+    {
+      "lang": "zh",
+      "text": "陌生"
+    },
+    {
+      "lang": "zh",
+      "text": "mò shēng"
+    },
+    {
+      "lang": "zh",
+      "text": "确实"
+    },
+    {
+      "lang": "zh",
+      "text": "què shí"
+    },
+    {
+      "lang": "zh",
+      "text": "能力"
+    },
+    {
+      "lang": "zh",
+      "text": "néng lì"
+    },
+    {
+      "lang": "zh",
+      "text": "星空"
+    },
+    {
+      "lang": "zh",
+      "text": "xīng kōng"
+    },
+    {
+      "lang": "zh",
+      "text": "流淌"
+    },
+    {
+      "lang": "zh",
+      "text": "liú tǎng"
+    },
+    {
+      "lang": "zh",
+      "text": "秘密"
+    },
+    {
+      "lang": "zh",
+      "text": "mì mì"
+    },
+    {
+      "lang": "zh",
+      "text": "楼梯"
+    },
+    {
+      "lang": "zh",
+      "text": "lóu tī"
+    },
+    {
+      "lang": "zh",
+      "text": "相遇"
+    },
+    {
+      "lang": "zh",
+      "text": "xiāng yù"
+    },
+    {
+      "lang": "zh",
+      "text": "思绪"
+    },
+    {
+      "lang": "zh",
+      "text": "sī xù"
+    },
+    {
+      "lang": "zh",
+      "text": "瞬间"
+    },
+    {
+      "lang": "zh",
+      "text": "shùn jiān"
+    },
+    {
+      "lang": "zh",
+      "text": "形状"
+    },
+    {
+      "lang": "zh",
+      "text": "xíng zhuàng"
+    },
+    {
+      "lang": "zh",
+      "text": "狐狸"
+    },
+    {
+      "lang": "zh",
+      "text": "hú lí"
+    },
+    {
+      "lang": "zh",
+      "text": "丁零"
+    },
+    {
+      "lang": "zh",
+      "text": "dīng líng"
+    },
+    {
+      "lang": "zh",
+      "text": "失望"
+    },
+    {
+      "lang": "zh",
+      "text": "shī wàng"
+    },
+    {
+      "lang": "zh",
+      "text": "巧克力"
+    },
+    {
+      "lang": "zh",
+      "text": "qiǎo kè lì"
+    },
+    {
+      "lang": "zh",
+      "text": "香肠"
+    },
+    {
+      "lang": "zh",
+      "text": "xiāng cháng"
+    },
+    {
+      "lang": "zh",
+      "text": "面包"
+    },
+    {
+      "lang": "zh",
+      "text": "miàn bāo"
+    },
+    {
+      "lang": "zh",
+      "text": "花生"
+    },
+    {
+      "lang": "zh",
+      "text": "huā shēng"
+    },
+    {
+      "lang": "zh",
+      "text": "牛奶"
+    },
+    {
+      "lang": "zh",
+      "text": "niú nǎi"
+    },
+    {
+      "lang": "zh",
+      "text": "继续"
+    },
+    {
+      "lang": "zh",
+      "text": "jì xù"
+    },
+    {
+      "lang": "zh",
+      "text": "想念"
+    },
+    {
+      "lang": "zh",
+      "text": "xiǎng niàn"
+    },
+    {
+      "lang": "zh",
+      "text": "饭菜"
+    },
+    {
+      "lang": "zh",
+      "text": "fàn cài"
+    },
+    {
+      "lang": "zh",
+      "text": "排骨"
+    },
+    {
+      "lang": "zh",
+      "text": "pái gǔ"
+    },
+    {
+      "lang": "zh",
+      "text": "麻烦"
+    },
+    {
+      "lang": "zh",
+      "text": "má fán"
+    },
+    {
+      "lang": "zh",
+      "text": "了解"
+    },
+    {
+      "lang": "zh",
+      "text": "liǎo jiě"
+    },
+    {
+      "lang": "zh",
+      "text": "水墨画"
+    },
+    {
+      "lang": "zh",
+      "text": "shuǐ mò huà"
+    },
+    {
+      "lang": "zh",
+      "text": "柳树"
+    },
+    {
+      "lang": "zh",
+      "text": "liǔ shù"
+    },
+    {
+      "lang": "zh",
+      "text": "梳妆"
+    },
+    {
+      "lang": "zh",
+      "text": "shū zhuāng"
+    },
+    {
+      "lang": "zh",
+      "text": "钓竿"
+    },
+    {
+      "lang": "zh",
+      "text": "diào gān"
+    },
+    {
+      "lang": "zh",
+      "text": "扇动"
+    },
+    {
+      "lang": "zh",
+      "text": "shān dòng"
+    },
+    {
+      "lang": "zh",
+      "text": "戏耍"
+    },
+    {
+      "lang": "zh",
+      "text": "xì shuǎ"
+    },
+    {
+      "lang": "zh",
+      "text": "拨动"
+    },
+    {
+      "lang": "zh",
+      "text": "bō dòng"
+    },
+    {
+      "lang": "zh",
+      "text": "浪花"
+    },
+    {
+      "lang": "zh",
+      "text": "làng huā"
+    },
+    {
+      "lang": "zh",
+      "text": "葫芦"
+    },
+    {
+      "lang": "zh",
+      "text": "hú lú"
+    },
+    {
+      "lang": "zh",
+      "text": "松树"
+    },
+    {
+      "lang": "zh",
+      "text": "sōng shù"
+    },
+    {
+      "lang": "zh",
+      "text": "洗澡"
+    },
+    {
+      "lang": "zh",
+      "text": "xǐ zǎo"
+    },
+    {
+      "lang": "zh",
+      "text": "清爽"
+    },
+    {
+      "lang": "zh",
+      "text": "qīng shuǎng"
+    },
+    {
+      "lang": "zh",
+      "text": "松针"
+    },
+    {
+      "lang": "zh",
+      "text": "sōng zhēn"
+    },
+    {
+      "lang": "zh",
+      "text": "蘑菇"
+    },
+    {
+      "lang": "zh",
+      "text": "mó gū"
+    },
+    {
+      "lang": "zh",
+      "text": "大师"
+    },
+    {
+      "lang": "zh",
+      "text": "dà shī"
+    },
+    {
+      "lang": "zh",
+      "text": "表弟"
+    },
+    {
+      "lang": "zh",
+      "text": "biǎo dì"
+    },
+    {
+      "lang": "zh",
+      "text": "胆小"
+    },
+    {
+      "lang": "zh",
+      "text": "dǎn xiǎo"
+    },
+    {
+      "lang": "zh",
+      "text": "姑父"
+    },
+    {
+      "lang": "zh",
+      "text": "gū fù"
+    },
+    {
+      "lang": "zh",
+      "text": "理发"
+    },
+    {
+      "lang": "zh",
+      "text": "lǐ fà"
+    },
+    {
+      "lang": "zh",
+      "text": "欢迎"
+    },
+    {
+      "lang": "zh",
+      "text": "huān yíng"
+    },
+    {
+      "lang": "zh",
+      "text": "仇人"
+    },
+    {
+      "lang": "zh",
+      "text": "chóu rén"
+    },
+    {
+      "lang": "zh",
+      "text": "摆布"
+    },
+    {
+      "lang": "zh",
+      "text": "bǎi bù"
+    },
+    {
+      "lang": "zh",
+      "text": "习惯"
+    },
+    {
+      "lang": "zh",
+      "text": "xí guàn"
+    },
+    {
+      "lang": "zh",
+      "text": "受刑"
+    },
+    {
+      "lang": "zh",
+      "text": "shòu xíng"
+    },
+    {
+      "lang": "zh",
+      "text": "双倍"
+    },
+    {
+      "lang": "zh",
+      "text": "shuāng bèi"
+    },
+    {
+      "lang": "zh",
+      "text": "过年"
+    },
+    {
+      "lang": "zh",
+      "text": "guò nián"
+    },
+    {
+      "lang": "zh",
+      "text": "央求"
+    },
+    {
+      "lang": "zh",
+      "text": "yāng qiú"
+    },
+    {
+      "lang": "zh",
+      "text": "虽然"
+    },
+    {
+      "lang": "zh",
+      "text": "suī rán"
+    },
+    {
+      "lang": "zh",
+      "text": "天分"
+    },
+    {
+      "lang": "zh",
+      "text": "tiān fèn"
+    },
+    {
+      "lang": "zh",
+      "text": "厘米"
+    },
+    {
+      "lang": "zh",
+      "text": "lí mǐ"
+    },
+    {
+      "lang": "zh",
+      "text": "肥皂泡"
+    },
+    {
+      "lang": "zh",
+      "text": "féi zào pào"
+    },
+    {
+      "lang": "zh",
+      "text": "种类"
+    },
+    {
+      "lang": "zh",
+      "text": "zhǒng lèi"
+    },
+    {
+      "lang": "zh",
+      "text": "其中"
+    },
+    {
+      "lang": "zh",
+      "text": "qí zhōng"
+    },
+    {
+      "lang": "zh",
+      "text": "网球"
+    },
+    {
+      "lang": "zh",
+      "text": "wǎng qiú"
+    },
+    {
+      "lang": "zh",
+      "text": "透明"
+    },
+    {
+      "lang": "zh",
+      "text": "tòu míng"
+    },
+    {
+      "lang": "zh",
+      "text": "分裂"
+    },
+    {
+      "lang": "zh",
+      "text": "fēn liè"
+    },
+    {
+      "lang": "zh",
+      "text": "形式"
+    },
+    {
+      "lang": "zh",
+      "text": "xíng shì"
+    },
+    {
+      "lang": "zh",
+      "text": "圆满"
+    },
+    {
+      "lang": "zh",
+      "text": "yuán mǎn"
+    },
+    {
+      "lang": "zh",
+      "text": "飞越"
+    },
+    {
+      "lang": "zh",
+      "text": "fēi yuè"
+    },
+    {
+      "lang": "zh",
+      "text": "熟睡"
+    },
+    {
+      "lang": "zh",
+      "text": "shú shuì"
+    },
+    {
+      "lang": "zh",
+      "text": "婴儿"
+    },
+    {
+      "lang": "zh",
+      "text": "yīng ér"
+    },
+    {
+      "lang": "zh",
+      "text": "目送"
+    },
+    {
+      "lang": "zh",
+      "text": "mù sòng"
+    },
+    {
+      "lang": "zh",
+      "text": "希望"
+    },
+    {
+      "lang": "zh",
+      "text": "xī wàng"
+    },
+    {
+      "lang": "zh",
+      "text": "奇妙"
+    },
+    {
+      "lang": "zh",
+      "text": "qí miào"
+    },
+    {
+      "lang": "zh",
+      "text": "呈现"
+    },
+    {
+      "lang": "zh",
+      "text": "chéng xiàn"
+    },
+    {
+      "lang": "zh",
+      "text": "降落"
+    },
+    {
+      "lang": "zh",
+      "text": "jiàng luò"
+    },
+    {
+      "lang": "zh",
+      "text": "映射"
+    },
+    {
+      "lang": "zh",
+      "text": "yìng shè"
+    },
+    {
+      "lang": "zh",
+      "text": "变幻"
+    },
+    {
+      "lang": "zh",
+      "text": "biàn huàn"
+    },
+    {
+      "lang": "zh",
+      "text": "奇迹"
+    },
+    {
+      "lang": "zh",
+      "text": "qí jì"
+    },
+    {
+      "lang": "zh",
+      "text": "叹息"
+    },
+    {
+      "lang": "zh",
+      "text": "tàn xī"
+    },
+    {
+      "lang": "zh",
+      "text": "光芒"
+    },
+    {
+      "lang": "zh",
+      "text": "guāng máng"
+    },
+    {
+      "lang": "zh",
+      "text": "飞翔"
+    },
+    {
+      "lang": "zh",
+      "text": "fēi xiáng"
+    },
+    {
+      "lang": "zh",
+      "text": "冰柱"
+    },
+    {
+      "lang": "zh",
+      "text": "bīng zhù"
+    },
+    {
+      "lang": "zh",
+      "text": "锋利"
+    },
+    {
+      "lang": "zh",
+      "text": "fēng lì"
+    },
+    {
+      "lang": "zh",
+      "text": "刀剑"
+    },
+    {
+      "lang": "zh",
+      "text": "dāo jiàn"
+    },
+    {
+      "lang": "zh",
+      "text": "珍珠"
+    },
+    {
+      "lang": "zh",
+      "text": "zhēn zhū"
+    },
+    {
+      "lang": "zh",
+      "text": "普通"
+    },
+    {
+      "lang": "zh",
+      "text": "pǔ tōng"
+    },
+    {
+      "lang": "zh",
+      "text": "模型"
+    },
+    {
+      "lang": "zh",
+      "text": "mó xíng"
+    },
+    {
+      "lang": "zh",
+      "text": "存在"
+    },
+    {
+      "lang": "zh",
+      "text": "cún zài"
+    },
+    {
+      "lang": "zh",
+      "text": "海底"
+    },
+    {
+      "lang": "zh",
+      "text": "hǎi dǐ"
+    },
+    {
+      "lang": "zh",
+      "text": "宁静"
+    },
+    {
+      "lang": "zh",
+      "text": "níng jìng"
+    },
+    {
+      "lang": "zh",
+      "text": "器官"
+    },
+    {
+      "lang": "zh",
+      "text": "qì guān"
+    },
+    {
+      "lang": "zh",
+      "text": "是否"
+    },
+    {
+      "lang": "zh",
+      "text": "shì fǒu"
+    },
+    {
+      "lang": "zh",
+      "text": "行进"
+    },
+    {
+      "lang": "zh",
+      "text": "xíng jìn"
+    },
+    {
+      "lang": "zh",
+      "text": "海参"
+    },
+    {
+      "lang": "zh",
+      "text": "hǎi shēn"
+    },
+    {
+      "lang": "zh",
+      "text": "肌肉"
+    },
+    {
+      "lang": "zh",
+      "text": "jī ròu"
+    },
+    {
+      "lang": "zh",
+      "text": "攻击"
+    },
+    {
+      "lang": "zh",
+      "text": "gōng jī"
+    },
+    {
+      "lang": "zh",
+      "text": "反推力"
+    },
+    {
+      "lang": "zh",
+      "text": "fǎn tuī lì"
+    },
+    {
+      "lang": "zh",
+      "text": "后退"
+    },
+    {
+      "lang": "zh",
+      "text": "hòu tuì"
+    },
+    {
+      "lang": "zh",
+      "text": "轮船"
+    },
+    {
+      "lang": "zh",
+      "text": "lún chuán"
+    },
+    {
+      "lang": "zh",
+      "text": "长途"
+    },
+    {
+      "lang": "zh",
+      "text": "cháng tú"
+    },
+    {
+      "lang": "zh",
+      "text": "细胞"
+    },
+    {
+      "lang": "zh",
+      "text": "xì bāo"
+    },
+    {
+      "lang": "zh",
+      "text": "陆地"
+    },
+    {
+      "lang": "zh",
+      "text": "lù dì"
+    },
+    {
+      "lang": "zh",
+      "text": "火烧云"
+    },
+    {
+      "lang": "zh",
+      "text": "huǒ shāo yún"
+    },
+    {
+      "lang": "zh",
+      "text": "晚饭"
+    },
+    {
+      "lang": "zh",
+      "text": "wǎn fàn"
+    },
+    {
+      "lang": "zh",
+      "text": "笑盈盈"
+    },
+    {
+      "lang": "zh",
+      "text": "xiào yíng yíng"
+    },
+    {
+      "lang": "zh",
+      "text": "胡子"
+    },
+    {
+      "lang": "zh",
+      "text": "hú zi"
+    },
+    {
+      "lang": "zh",
+      "text": "葡萄"
+    },
+    {
+      "lang": "zh",
+      "text": "pú táo"
+    },
+    {
+      "lang": "zh",
+      "text": "脖子"
+    },
+    {
+      "lang": "zh",
+      "text": "bó zi"
+    },
+    {
+      "lang": "zh",
+      "text": "凶猛"
+    },
+    {
+      "lang": "zh",
+      "text": "xiōng měng"
+    },
+    {
+      "lang": "zh",
+      "text": "镇静"
+    },
+    {
+      "lang": "zh",
+      "text": "zhèn jìng"
+    },
+    {
+      "lang": "zh",
+      "text": "性子"
+    },
+    {
+      "lang": "zh",
+      "text": "xìng zi"
+    },
+    {
+      "lang": "zh",
+      "text": "布料"
+    },
+    {
+      "lang": "zh",
+      "text": "bù liào"
+    },
+    {
+      "lang": "zh",
+      "text": "交货"
+    },
+    {
+      "lang": "zh",
+      "text": "jiāo huò"
+    },
+    {
+      "lang": "zh",
+      "text": "箱子"
+    },
+    {
+      "lang": "zh",
+      "text": "xiāng zi"
+    },
+    {
+      "lang": "zh",
+      "text": "笑话"
+    },
+    {
+      "lang": "zh",
+      "text": "xiào huà"
+    },
+    {
+      "lang": "zh",
+      "text": "大方"
+    },
+    {
+      "lang": "zh",
+      "text": "dà fāng"
+    },
+    {
+      "lang": "zh",
+      "text": "夸奖"
+    },
+    {
+      "lang": "zh",
+      "text": "kuā jiǎng"
+    },
+    {
+      "lang": "zh",
+      "text": "实在"
+    },
+    {
+      "lang": "zh",
+      "text": "shí zài"
+    },
+    {
+      "lang": "zh",
+      "text": "提防"
+    },
+    {
+      "lang": "zh",
+      "text": "dī fang"
+    },
+    {
+      "lang": "zh",
+      "text": "服务"
+    },
+    {
+      "lang": "zh",
+      "text": "fú wù"
+    },
+    {
+      "lang": "zh",
+      "text": "袖子"
+    },
+    {
+      "lang": "zh",
+      "text": "xiù zi"
+    },
+    {
+      "lang": "zh",
+      "text": "负责"
+    },
+    {
+      "lang": "zh",
+      "text": "fù zé"
+    },
+    {
+      "lang": "zh",
+      "text": "名声"
+    },
+    {
+      "lang": "zh",
+      "text": "míng shēng"
+    },
+    {
+      "lang": "zh",
+      "text": "泄气"
+    },
+    {
+      "lang": "zh",
+      "text": "xiè qì"
+    },
+    {
+      "lang": "zh",
+      "text": "手艺"
+    },
+    {
+      "lang": "zh",
+      "text": "shǒu yì"
+    },
+    {
+      "lang": "zh",
+      "text": "感动"
+    },
+    {
+      "lang": "zh",
+      "text": "gǎn dòng"
+    },
+    {
+      "lang": "zh",
+      "text": "里屋"
+    },
+    {
+      "lang": "zh",
+      "text": "lǐ wū"
+    },
+    {
+      "lang": "zh",
+      "text": "莫非"
+    },
+    {
+      "lang": "zh",
+      "text": "mò fēi"
+    },
+    {
+      "lang": "zh",
+      "text": "厉害"
+    },
+    {
+      "lang": "zh",
+      "text": "lì hài"
+    },
+    {
+      "lang": "zh",
+      "text": "走南闯北"
+    },
+    {
+      "lang": "zh",
+      "text": "zǒu nán chuǎng běi"
+    },
+    {
+      "lang": "zh",
+      "text": "发抖"
+    },
+    {
+      "lang": "zh",
+      "text": "fā dǒu"
+    },
+    {
+      "lang": "zh",
+      "text": "松手"
+    },
+    {
+      "lang": "zh",
+      "text": "sōng shǒu"
+    },
+    {
+      "lang": "zh",
+      "text": "跟前"
+    },
+    {
+      "lang": "zh",
+      "text": "gēn qián"
+    },
+    {
+      "lang": "zh",
+      "text": "甘心"
+    },
+    {
+      "lang": "zh",
+      "text": "gān xīn"
+    }
+  ]
+}

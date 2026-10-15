@@ -1,0 +1,205 @@
+{
+ "enRate": "-10%",
+ "zhRate": "-10%",
+ "voice": {
+  "en": "en-US-AriaNeural"
+ },
+ "items": [
+  {
+   "lang": "en",
+   "text": "I am a student."
+  },
+  {
+   "lang": "en",
+   "text": "I am not a teacher."
+  },
+  {
+   "lang": "en",
+   "text": "Are you a student?"
+  },
+  {
+   "lang": "en",
+   "text": "Who is she?"
+  },
+  {
+   "lang": "en",
+   "text": "She is kind."
+  },
+  {
+   "lang": "en",
+   "text": "She isn't kind."
+  },
+  {
+   "lang": "en",
+   "text": "Is she kind?"
+  },
+  {
+   "lang": "en",
+   "text": "He can swim."
+  },
+  {
+   "lang": "en",
+   "text": "He can't swim."
+  },
+  {
+   "lang": "en",
+   "text": "Can he swim?"
+  },
+  {
+   "lang": "en",
+   "text": "Tom likes apples."
+  },
+  {
+   "lang": "en",
+   "text": "Tom doesn't like apples."
+  },
+  {
+   "lang": "en",
+   "text": "Does Tom like apples?"
+  },
+  {
+   "lang": "en",
+   "text": "What do you like to eat?"
+  },
+  {
+   "lang": "en",
+   "text": "Close the window!"
+  },
+  {
+   "lang": "en",
+   "text": "Please close the window."
+  },
+  {
+   "lang": "en",
+   "text": "Close the window, please."
+  },
+  {
+   "lang": "en",
+   "text": "Don't close the window!"
+  },
+  {
+   "lang": "en",
+   "text": "Open the door!"
+  },
+  {
+   "lang": "en",
+   "text": "Please open the door."
+  },
+  {
+   "lang": "en",
+   "text": "Open the door, please."
+  },
+  {
+   "lang": "en",
+   "text": "Don't open the door!"
+  },
+  {
+   "lang": "en",
+   "text": "Listen to me!"
+  },
+  {
+   "lang": "en",
+   "text": "Please listen to me."
+  },
+  {
+   "lang": "en",
+   "text": "Listen to me, please."
+  },
+  {
+   "lang": "en",
+   "text": "Don't listen to me!"
+  },
+  {
+   "lang": "en",
+   "text": "Turn off the TV!"
+  },
+  {
+   "lang": "en",
+   "text": "Please turn off the TV."
+  },
+  {
+   "lang": "en",
+   "text": "Turn off the TV, please."
+  },
+  {
+   "lang": "en",
+   "text": "Don't turn off the TV!"
+  },
+  {
+   "lang": "en",
+   "text": "Put away your toys!"
+  },
+  {
+   "lang": "en",
+   "text": "Please put away your toys."
+  },
+  {
+   "lang": "en",
+   "text": "Put away your toys, please."
+  },
+  {
+   "lang": "en",
+   "text": "Don't put away your toys!"
+  },
+  {
+   "lang": "en",
+   "text": "Sit down!"
+  },
+  {
+   "lang": "en",
+   "text": "Please sit down."
+  },
+  {
+   "lang": "en",
+   "text": "Sit down, please."
+  },
+  {
+   "lang": "en",
+   "text": "Don't sit down!"
+  },
+  {
+   "lang": "en",
+   "text": "Be quiet!"
+  },
+  {
+   "lang": "en",
+   "text": "Please be quiet."
+  },
+  {
+   "lang": "en",
+   "text": "Help me, please."
+  },
+  {
+   "lang": "en",
+   "text": "What a cute dog!"
+  },
+  {
+   "lang": "en",
+   "text": "What an honest girl!"
+  },
+  {
+   "lang": "en",
+   "text": "What beautiful flowers!"
+  },
+  {
+   "lang": "en",
+   "text": "What nice weather!"
+  },
+  {
+   "lang": "en",
+   "text": "How happy!"
+  },
+  {
+   "lang": "en",
+   "text": "How sad!"
+  },
+  {
+   "lang": "en",
+   "text": "How beautiful!"
+  },
+  {
+   "lang": "en",
+   "text": "Hello Eddey! Let's play with sentences!"
+  }
+ ]
+}

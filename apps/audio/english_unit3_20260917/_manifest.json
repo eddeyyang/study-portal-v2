@@ -1,0 +1,1042 @@
+{
+  "schema": "english-audio-sprite-v1",
+  "engine": "kokoro-onnx 0.4.9 / Kokoro-82M INT8",
+  "upstreamRevision": "cefeef52a4ec1ab7b85a72d74800596cdd1ca319",
+  "voice": "af_heart",
+  "voiceStatus": "candidate",
+  "status": "incomplete",
+  "fileCount": 7,
+  "segmentCount": 98,
+  "listenedCount": 0,
+  "regeneratedCount": 0,
+  "devices": {
+    "phone": "not-tested",
+    "desktop": "not-tested"
+  },
+  "items": {
+    "9cbf4e16": {
+      "text": "root",
+      "lang": "en",
+      "file": "unit3-01.mp3",
+      "start": 0.0,
+      "duration": 0.8107,
+      "speed": 0.9,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "52cf1ae7": {
+      "text": "stem",
+      "lang": "en",
+      "file": "unit3-01.mp3",
+      "start": 1.1607,
+      "duration": 0.8747,
+      "speed": 0.9,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "8ff3d17f": {
+      "text": "water lily",
+      "lang": "en",
+      "file": "unit3-01.mp3",
+      "start": 2.3853,
+      "duration": 1.088,
+      "speed": 0.9,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "d6f5be27": {
+      "text": "pine cone",
+      "lang": "en",
+      "file": "unit3-01.mp3",
+      "start": 3.8233,
+      "duration": 1.0453,
+      "speed": 0.9,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "2d5b0ef7": {
+      "text": "morning glory",
+      "lang": "en",
+      "file": "unit3-01.mp3",
+      "start": 5.2187,
+      "duration": 1.1093,
+      "speed": 0.9,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "d9ef4098": {
+      "text": "take in",
+      "lang": "en",
+      "file": "unit3-01.mp3",
+      "start": 6.678,
+      "duration": 0.9387,
+      "speed": 0.9,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "1822c0a1": {
+      "text": "thin",
+      "lang": "en",
+      "file": "unit3-01.mp3",
+      "start": 7.9667,
+      "duration": 0.7893,
+      "speed": 0.9,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "a30c016d": {
+      "text": "react",
+      "lang": "en",
+      "file": "unit3-01.mp3",
+      "start": 9.106,
+      "duration": 0.896,
+      "speed": 0.9,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "62048461": {
+      "text": "protect",
+      "lang": "en",
+      "file": "unit3-01.mp3",
+      "start": 10.352,
+      "duration": 0.9387,
+      "speed": 0.9,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "e5592a92": {
+      "text": "come out",
+      "lang": "en",
+      "file": "unit3-01.mp3",
+      "start": 11.6407,
+      "duration": 0.8747,
+      "speed": 0.9,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "89827093": {
+      "text": "fall into",
+      "lang": "en",
+      "file": "unit3-01.mp3",
+      "start": 12.8653,
+      "duration": 1.0667,
+      "speed": 0.9,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "ab8e72b3": {
+      "text": "be covered with",
+      "lang": "en",
+      "file": "unit3-01.mp3",
+      "start": 14.282,
+      "duration": 1.088,
+      "speed": 0.9,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "0b0a8b17": {
+      "text": "close up",
+      "lang": "en",
+      "file": "unit3-01.mp3",
+      "start": 15.72,
+      "duration": 0.9387,
+      "speed": 0.9,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "5fb859a2": {
+      "text": "react to",
+      "lang": "en",
+      "file": "unit3-01.mp3",
+      "start": 17.0087,
+      "duration": 1.088,
+      "speed": 0.9,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "ad27bd93": {
+      "text": "weather reporter",
+      "lang": "en",
+      "file": "unit3-01.mp3",
+      "start": 18.4467,
+      "duration": 1.1947,
+      "speed": 0.9,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "b1e02931": {
+      "text": "find out",
+      "lang": "en",
+      "file": "unit3-01.mp3",
+      "start": 19.9913,
+      "duration": 1.1093,
+      "speed": 0.9,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "ab453ec1": {
+      "text": "soil",
+      "lang": "en",
+      "file": "unit3-02.mp3",
+      "start": 0.0,
+      "duration": 0.8533,
+      "speed": 0.9,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "4a51d796": {
+      "text": "leaf",
+      "lang": "en",
+      "file": "unit3-02.mp3",
+      "start": 1.2033,
+      "duration": 0.7467,
+      "speed": 0.9,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "df1a77fe": {
+      "text": "leaves",
+      "lang": "en",
+      "file": "unit3-02.mp3",
+      "start": 2.3,
+      "duration": 0.96,
+      "speed": 0.9,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "11d24b43": {
+      "text": "seed",
+      "lang": "en",
+      "file": "unit3-02.mp3",
+      "start": 3.61,
+      "duration": 0.8107,
+      "speed": 0.9,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "c2e7f949": {
+      "text": "flower",
+      "lang": "en",
+      "file": "unit3-02.mp3",
+      "start": 4.7707,
+      "duration": 0.9173,
+      "speed": 0.9,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "1b308fb8": {
+      "text": "fruit",
+      "lang": "en",
+      "file": "unit3-02.mp3",
+      "start": 6.038,
+      "duration": 0.8533,
+      "speed": 0.9,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "2d98e13d": {
+      "text": "Two friends want to grow a lotus for a science report. They plant a seed and look after it.",
+      "lang": "en",
+      "file": "unit3-02.mp3",
+      "start": 7.2413,
+      "duration": 5.2267,
+      "speed": 0.94,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "0bfb7d8a": {
+      "text": "Later, they find a surprising plant. Its leaves catch a small insect. They have mixed up the seeds!",
+      "lang": "en",
+      "file": "unit3-02.mp3",
+      "start": 12.818,
+      "duration": 5.9733,
+      "speed": 0.94,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "ba4f5eaf": {
+      "text": "It has big leaves.",
+      "lang": "en",
+      "file": "unit3-02.mp3",
+      "start": 19.1413,
+      "duration": 1.3013,
+      "speed": 0.92,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "033a7856": {
+      "text": "How lovely!",
+      "lang": "en",
+      "file": "unit3-02.mp3",
+      "start": 20.7927,
+      "duration": 1.0027,
+      "speed": 0.92,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "91d13838": {
+      "text": "A tomato plant has roots, a stem and leaves. It can also have flowers and fruit. Each part has a different job.",
+      "lang": "en",
+      "file": "unit3-02.mp3",
+      "start": 22.1453,
+      "duration": 7.2107,
+      "speed": 0.94,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "9d053e90": {
+      "text": "Under the soil, the roots hold the plant steady. They take in water and minerals.",
+      "lang": "en",
+      "file": "unit3-02.mp3",
+      "start": 29.706,
+      "duration": 4.6293,
+      "speed": 0.94,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "49bfd63b": {
+      "text": "Water travels up through the stem to the leaves. The leaves use sunlight to help make food for the plant.",
+      "lang": "en",
+      "file": "unit3-02.mp3",
+      "start": 34.6853,
+      "duration": 5.6747,
+      "speed": 0.94,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "14f5105e": {
+      "text": "Flowers can develop into fruit with seeds inside. When seeds reach suitable soil and conditions, new plants can grow.",
+      "lang": "en",
+      "file": "unit3-02.mp3",
+      "start": 40.71,
+      "duration": 7.3813,
+      "speed": 0.94,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "9e0d0e96": {
+      "text": "The stem carries water to the leaves.",
+      "lang": "en",
+      "file": "unit3-02.mp3",
+      "start": 48.4413,
+      "duration": 2.0907,
+      "speed": 0.92,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "a78e53a2": {
+      "text": "At the botanical gardens, the children notice an unusual tulip. Its flower reminds them of an ice cream cone.",
+      "lang": "en",
+      "file": "unit3-02.mp3",
+      "start": 50.882,
+      "duration": 7.2533,
+      "speed": 0.94,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "e9e2f02f": {
+      "text": "Nearby, a meat-eating plant has special leaves. They look like small mouths. The plant can catch insects.",
+      "lang": "en",
+      "file": "unit3-03.mp3",
+      "start": 0.0,
+      "duration": 6.4,
+      "speed": 0.94,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "eae84db5": {
+      "text": "Creepers spread across a wall. In the pond, broad water-lily leaves remind the children of green umbrellas.",
+      "lang": "en",
+      "file": "unit3-03.mp3",
+      "start": 6.75,
+      "duration": 6.8267,
+      "speed": 0.94,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "972f5c57": {
+      "text": "The water-lily flowers rise above the muddy water. The children are surprised by their clean, beautiful petals.",
+      "lang": "en",
+      "file": "unit3-03.mp3",
+      "start": 13.9267,
+      "duration": 7.104,
+      "speed": 0.94,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "586288a3": {
+      "text": "This leaf looks like a fan.",
+      "lang": "en",
+      "file": "unit3-03.mp3",
+      "start": 21.3807,
+      "duration": 1.664,
+      "speed": 0.92,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "2ce6793f": {
+      "text": "The tulips are beautiful.",
+      "lang": "en",
+      "file": "unit3-03.mp3",
+      "start": 23.3947,
+      "duration": 1.5573,
+      "speed": 0.92,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "1f6a4415": {
+      "text": "The reading asks whether plants can give us clues about the weather. It describes four-o’clock flowers, pine cones and morning glories.",
+      "lang": "en",
+      "file": "unit3-03.mp3",
+      "start": 25.302,
+      "duration": 7.8507,
+      "speed": 0.94,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "d58f4584": {
+      "text": "In the reading, four-o’clock flowers that close early are linked with a sunny day. Flowers still open after six are linked with clouds or rain.",
+      "lang": "en",
+      "file": "unit3-03.mp3",
+      "start": 33.5027,
+      "duration": 9.1733,
+      "speed": 0.94,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "4e57f03e": {
+      "text": "Pine-cone scales open in dry conditions and close when they become wet. This movement helps protect the seeds.",
+      "lang": "en",
+      "file": "unit3-03.mp3",
+      "start": 43.026,
+      "duration": 7.0187,
+      "speed": 0.94,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "6b311efd": {
+      "text": "We can use if to plan for tomorrow: if it rains, we will take an umbrella. We observe plants, but also check a weather forecast.",
+      "lang": "en",
+      "file": "unit3-03.mp3",
+      "start": 50.3947,
+      "duration": 8.0427,
+      "speed": 0.94,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "c17f2508": {
+      "text": "Can roots take in water? Yes, they can.",
+      "lang": "en",
+      "file": "unit3-03.mp3",
+      "start": 58.7873,
+      "duration": 2.496,
+      "speed": 0.92,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "0c73c3e8": {
+      "text": "The scales close when the pine cone is wet.",
+      "lang": "en",
+      "file": "unit3-03.mp3",
+      "start": 61.6333,
+      "duration": 2.432,
+      "speed": 0.92,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "b94caa64": {
+      "text": "If it rains tomorrow, we will take an umbrella.",
+      "lang": "en",
+      "file": "unit3-03.mp3",
+      "start": 64.4153,
+      "duration": 2.7307,
+      "speed": 0.92,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "11a3553d": {
+      "text": "Start a plant poster with the name. Then describe what you can see: the stem, leaves and flower.",
+      "lang": "en",
+      "file": "unit3-03.mp3",
+      "start": 67.496,
+      "duration": 5.9093,
+      "speed": 0.94,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "c859d501": {
+      "text": "For example, a sunflower has a tall stem and a large yellow flower. Its flower looks like the sun.",
+      "lang": "en",
+      "file": "unit3-03.mp3",
+      "start": 73.7553,
+      "duration": 6.336,
+      "speed": 0.94,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "02e2d9af": {
+      "text": "Add one interesting detail and a picture. Check the facts before you present your poster to a friend.",
+      "lang": "en",
+      "file": "unit3-03.mp3",
+      "start": 80.4413,
+      "duration": 6.2293,
+      "speed": 0.94,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "3d3f72f3": {
+      "text": "An observation notebook keeps what we see separate from what we guess. We can record a pine cone, the time and whether it is wet or dry.",
+      "lang": "en",
+      "file": "unit3-03.mp3",
+      "start": 87.0207,
+      "duration": 8.4907,
+      "speed": 0.94,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "736e2a27": {
+      "text": "We compare observations on different days. One observation is a clue, but it does not prove every weather prediction.",
+      "lang": "en",
+      "file": "unit3-04.mp3",
+      "start": 0.0,
+      "duration": 7.3173,
+      "speed": 0.94,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "13d75b3a": {
+      "text": "panda",
+      "lang": "en",
+      "file": "unit3-04.mp3",
+      "start": 7.6673,
+      "duration": 0.8747,
+      "speed": 0.9,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "a9279317": {
+      "text": "monkey",
+      "lang": "en",
+      "file": "unit3-04.mp3",
+      "start": 8.892,
+      "duration": 0.9387,
+      "speed": 0.9,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "e3e2e9c3": {
+      "text": "elephant",
+      "lang": "en",
+      "file": "unit3-04.mp3",
+      "start": 10.1807,
+      "duration": 0.9813,
+      "speed": 0.9,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "d23b13db": {
+      "text": "baby elephant",
+      "lang": "en",
+      "file": "unit3-04.mp3",
+      "start": 11.512,
+      "duration": 1.216,
+      "speed": 0.9,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "0bc5babc": {
+      "text": "polar bear",
+      "lang": "en",
+      "file": "unit3-04.mp3",
+      "start": 13.078,
+      "duration": 1.0667,
+      "speed": 0.9,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "0700f176": {
+      "text": "family",
+      "lang": "en",
+      "file": "unit3-04.mp3",
+      "start": 14.4947,
+      "duration": 0.9387,
+      "speed": 0.9,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "e4cdac9d": {
+      "text": "hometown",
+      "lang": "en",
+      "file": "unit3-04.mp3",
+      "start": 15.7833,
+      "duration": 0.9173,
+      "speed": 0.9,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "3e0b81cd": {
+      "text": "black",
+      "lang": "en",
+      "file": "unit3-04.mp3",
+      "start": 17.0507,
+      "duration": 0.8107,
+      "speed": 0.9,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "e220df6f": {
+      "text": "white",
+      "lang": "en",
+      "file": "unit3-04.mp3",
+      "start": 18.2113,
+      "duration": 0.8533,
+      "speed": 0.9,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "c5eb08d2": {
+      "text": "yellow",
+      "lang": "en",
+      "file": "unit3-04.mp3",
+      "start": 19.4147,
+      "duration": 0.896,
+      "speed": 0.9,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "67bb02bd": {
+      "text": "grey",
+      "lang": "en",
+      "file": "unit3-04.mp3",
+      "start": 20.6607,
+      "duration": 0.832,
+      "speed": 0.9,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "71545f38": {
+      "text": "trunk",
+      "lang": "en",
+      "file": "unit3-04.mp3",
+      "start": 21.8427,
+      "duration": 0.832,
+      "speed": 0.9,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "67e64745": {
+      "text": "India",
+      "lang": "en",
+      "file": "unit3-04.mp3",
+      "start": 23.0247,
+      "duration": 0.8533,
+      "speed": 0.9,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "bfad1614": {
+      "text": "Africa",
+      "lang": "en",
+      "file": "unit3-04.mp3",
+      "start": 24.228,
+      "duration": 1.0453,
+      "speed": 0.9,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "19ceee34": {
+      "text": "tail",
+      "lang": "en",
+      "file": "unit3-04.mp3",
+      "start": 25.6233,
+      "duration": 0.832,
+      "speed": 0.9,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "6ca6c114": {
+      "text": "kind",
+      "lang": "en",
+      "file": "unit3-05.mp3",
+      "start": 0.0,
+      "duration": 0.9173,
+      "speed": 0.9,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "dc730b6c": {
+      "text": "the North Pole",
+      "lang": "en",
+      "file": "unit3-05.mp3",
+      "start": 1.2673,
+      "duration": 1.0453,
+      "speed": 0.9,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "bb43be5f": {
+      "text": "warm",
+      "lang": "en",
+      "file": "unit3-05.mp3",
+      "start": 2.6627,
+      "duration": 0.8533,
+      "speed": 0.9,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "369ac361": {
+      "text": "bed",
+      "lang": "en",
+      "file": "unit3-05.mp3",
+      "start": 3.866,
+      "duration": 0.704,
+      "speed": 0.9,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "f547428d": {
+      "text": "black and white",
+      "lang": "en",
+      "file": "unit3-05.mp3",
+      "start": 4.92,
+      "duration": 1.152,
+      "speed": 0.9,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "1cf8e67d": {
+      "text": "be from",
+      "lang": "en",
+      "file": "unit3-05.mp3",
+      "start": 6.422,
+      "duration": 0.96,
+      "speed": 0.9,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "133210f7": {
+      "text": "live in",
+      "lang": "en",
+      "file": "unit3-05.mp3",
+      "start": 7.732,
+      "duration": 0.9387,
+      "speed": 0.9,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "15e6fe88": {
+      "text": "in the river",
+      "lang": "en",
+      "file": "unit3-05.mp3",
+      "start": 9.0207,
+      "duration": 1.0027,
+      "speed": 0.9,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "bf494fa0": {
+      "text": "be kind to",
+      "lang": "en",
+      "file": "unit3-05.mp3",
+      "start": 10.3733,
+      "duration": 1.0667,
+      "speed": 0.9,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "a149b5c8": {
+      "text": "keep warm",
+      "lang": "en",
+      "file": "unit3-05.mp3",
+      "start": 11.79,
+      "duration": 1.0667,
+      "speed": 0.9,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "a4667813": {
+      "text": "lots of",
+      "lang": "en",
+      "file": "unit3-05.mp3",
+      "start": 13.2067,
+      "duration": 0.9813,
+      "speed": 0.9,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "032a5510": {
+      "text": "A young panda is looking for its hometown. A monkey offers to help, but takes the panda towards India.",
+      "lang": "en",
+      "file": "unit3-05.mp3",
+      "start": 14.538,
+      "duration": 6.336,
+      "speed": 0.94,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "5430404b": {
+      "text": "An elephant points out the mistake. The panda’s hometown is in China. The friends need the right information before they keep going.",
+      "lang": "en",
+      "file": "unit3-05.mp3",
+      "start": 21.224,
+      "duration": 8.2773,
+      "speed": 0.94,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "afe65fa3": {
+      "text": "We are from China.",
+      "lang": "en",
+      "file": "unit3-05.mp3",
+      "start": 29.8513,
+      "duration": 1.2587,
+      "speed": 0.92,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "8cfaf792": {
+      "text": "The chant introduces pandas from Sichuan. They are black and white, and the chant compares their rolling bodies to a ball.",
+      "lang": "en",
+      "file": "unit3-05.mp3",
+      "start": 31.46,
+      "duration": 7.4027,
+      "speed": 0.94,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "bc2ed52e": {
+      "text": "Next come monkeys from Guizhou. In the chant, they are yellow and brown and jump among the trees.",
+      "lang": "en",
+      "file": "unit3-05.mp3",
+      "start": 39.2127,
+      "duration": 5.7173,
+      "speed": 0.94,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "10043428": {
+      "text": "The elephants in the chant come from Yunnan. Their bodies are light grey. They use their trunks to spray water over themselves.",
+      "lang": "en",
+      "file": "unit3-06.mp3",
+      "start": 0.0,
+      "duration": 7.4453,
+      "speed": 0.94,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "8f6a3726": {
+      "text": "These pandas live in Sichuan. They eat bamboo.",
+      "lang": "en",
+      "file": "unit3-06.mp3",
+      "start": 7.7953,
+      "duration": 2.9227,
+      "speed": 0.92,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "0f5311f7": {
+      "text": "Shenshen watches a programme with her mum. They see a family of elephants playing in a river in Yunnan.",
+      "lang": "en",
+      "file": "unit3-06.mp3",
+      "start": 11.068,
+      "duration": 5.76,
+      "speed": 0.94,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "b7932e4c": {
+      "text": "Mum explains that elephants also live in India and Africa. Places with trees and water are important to them.",
+      "lang": "en",
+      "file": "unit3-06.mp3",
+      "start": 17.178,
+      "duration": 7.104,
+      "speed": 0.94,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "38825f19": {
+      "text": "A baby elephant swims away. Its mother pulls it back by the tail. The programme also shows a farmer giving the elephants bananas.",
+      "lang": "en",
+      "file": "unit3-06.mp3",
+      "start": 24.632,
+      "duration": 8.32,
+      "speed": 0.94,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "115fd40b": {
+      "text": "The elephant is swimming.",
+      "lang": "en",
+      "file": "unit3-06.mp3",
+      "start": 33.302,
+      "duration": 1.536,
+      "speed": 0.92,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "8f3e54ee": {
+      "text": "How cute!",
+      "lang": "en",
+      "file": "unit3-06.mp3",
+      "start": 35.188,
+      "duration": 0.9813,
+      "speed": 0.92,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "7689863f": {
+      "text": "Polar bears live in the Arctic near the North Pole. Their thick fur helps them keep warm, and their coats look white against the ice and snow.",
+      "lang": "en",
+      "file": "unit3-06.mp3",
+      "start": 36.5193,
+      "duration": 8.3627,
+      "speed": 0.94,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "4cccc0e5": {
+      "text": "They are strong swimmers. The reading describes them catching seals and fish for food and resting on snow.",
+      "lang": "en",
+      "file": "unit3-06.mp3",
+      "start": 45.232,
+      "duration": 6.208,
+      "speed": 0.94,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "2742d3ae": {
+      "text": "As the climate warms, sea ice melts. Losing sea ice makes life harder for polar bears because they use it to reach their prey.",
+      "lang": "en",
+      "file": "unit3-06.mp3",
+      "start": 51.79,
+      "duration": 8.1067,
+      "speed": 0.94,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "defe6d33": {
+      "text": "We can learn about their homes and explain why sea ice matters. A clear explanation connects a change with its effect.",
+      "lang": "en",
+      "file": "unit3-06.mp3",
+      "start": 60.2467,
+      "duration": 7.2533,
+      "speed": 0.94,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "d6c33031": {
+      "text": "The ice is melting because the weather is getting warmer.",
+      "lang": "en",
+      "file": "unit3-06.mp3",
+      "start": 67.85,
+      "duration": 3.3707,
+      "speed": 0.92,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "7ed58b20": {
+      "text": "There is lots of ice.",
+      "lang": "en",
+      "file": "unit3-06.mp3",
+      "start": 71.5707,
+      "duration": 1.3653,
+      "speed": 0.92,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "7be070a5": {
+      "text": "Choose an animal and collect four kinds of information: its home, food, appearance and abilities. Add a picture that matches your words.",
+      "lang": "en",
+      "file": "unit3-06.mp3",
+      "start": 73.286,
+      "duration": 8.5973,
+      "speed": 0.94,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "721f5dde": {
+      "text": "For the monkeys in the example, the home is Guizhou. They eat fruit and leaves, have long tails and arms, and can climb trees and swing on branches.",
+      "lang": "en",
+      "file": "unit3-06.mp3",
+      "start": 82.2333,
+      "duration": 9.2587,
+      "speed": 0.94,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "575e1f19": {
+      "text": "Finish by describing one action in the picture. Say what the animal is doing now, then check that every sentence matches the picture.",
+      "lang": "en",
+      "file": "unit3-06.mp3",
+      "start": 91.842,
+      "duration": 8.1707,
+      "speed": 0.94,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "27a4bfc4": {
+      "text": "The extra reading visits different animal homes. A panda eats bamboo in a Chinese forest, while monkeys move through warm woodland.",
+      "lang": "en",
+      "file": "unit3-07.mp3",
+      "start": 0.0,
+      "duration": 8.384,
+      "speed": 0.94,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "f33f8b1d": {
+      "text": "It also describes a mother elephant caring for her calf and polar bears living in the Arctic. Protecting animals includes caring for the places they need.",
+      "lang": "en",
+      "file": "unit3-07.mp3",
+      "start": 8.734,
+      "duration": 10.0053,
+      "speed": 0.94,
+      "listened": false,
+      "contentReview": "pending"
+    }
+  },
+  "files": [
+    {
+      "file": "unit3-01.mp3",
+      "sha256": "bfd6a35c0ccd68ea6ecddd7ddb23f78619dd328b5f0475bff425844d88fc8075",
+      "bytes": 215325,
+      "segments": 16
+    },
+    {
+      "file": "unit3-02.mp3",
+      "sha256": "98e1a4589ae8946dd72bc6920be4abc543c631f0219fb7df7ecc5c2bab95cb3a",
+      "bytes": 585645,
+      "segments": 16
+    },
+    {
+      "file": "unit3-03.mp3",
+      "sha256": "ffabf28db7b4262bf7727818fbbc58d0afd95f24ebae40e0510ecabe032d3046",
+      "bytes": 959565,
+      "segments": 16
+    },
+    {
+      "file": "unit3-04.mp3",
+      "sha256": "3b8b3aa62ac7596f5f27eb6786bd54d8f18b64ae1899e9cf7314f272235f3bc7",
+      "bytes": 268845,
+      "segments": 16
+    },
+    {
+      "file": "unit3-05.mp3",
+      "sha256": "796087eae5c48bc58ed9c129e4f39ba9f5b0cafb8cfacb19d51d4631669d8eef",
+      "bytes": 453645,
+      "segments": 16
+    },
+    {
+      "file": "unit3-06.mp3",
+      "sha256": "a3bae8775c574217dbf8fbedb5028a4c2d7a0ac6d1c5728820c9d3cd68e954f7",
+      "bytes": 1004445,
+      "segments": 16
+    },
+    {
+      "file": "unit3-07.mp3",
+      "sha256": "9810fc2d8f8f8f0c82ce11d23d98daea96ddc510b8b4c1d4cc7a5571c6ceb922",
+      "bytes": 191805,
+      "segments": 2
+    }
+  ]
+}

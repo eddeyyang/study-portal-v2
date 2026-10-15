@@ -1,0 +1,558 @@
+{
+ "enRate": "-10%",
+ "zhRate": "-10%",
+ "items": [
+  {
+   "lang": "en",
+   "text": "rough"
+  },
+  {
+   "lang": "en",
+   "text": "smooth"
+  },
+  {
+   "lang": "en",
+   "text": "coffee"
+  },
+  {
+   "lang": "en",
+   "text": "giraffe"
+  },
+  {
+   "lang": "en",
+   "text": "panda"
+  },
+  {
+   "lang": "en",
+   "text": "teddy bear"
+  },
+  {
+   "lang": "en",
+   "text": "favourite"
+  },
+  {
+   "lang": "en",
+   "text": "trousers"
+  },
+  {
+   "lang": "en",
+   "text": "socks"
+  },
+  {
+   "lang": "en",
+   "text": "triangle"
+  },
+  {
+   "lang": "en",
+   "text": "round"
+  },
+  {
+   "lang": "en",
+   "text": "nest"
+  },
+  {
+   "lang": "en",
+   "text": "swan"
+  },
+  {
+   "lang": "en",
+   "text": "ugly"
+  },
+  {
+   "lang": "en",
+   "text": "skateboard"
+  },
+  {
+   "lang": "en",
+   "text": "strawberry"
+  },
+  {
+   "lang": "en",
+   "text": "swimming pool"
+  },
+  {
+   "lang": "en",
+   "text": "playground"
+  },
+  {
+   "lang": "en",
+   "text": "see"
+  },
+  {
+   "lang": "en",
+   "text": "hear"
+  },
+  {
+   "lang": "en",
+   "text": "look"
+  },
+  {
+   "lang": "en",
+   "text": "listen"
+  },
+  {
+   "lang": "en",
+   "text": "eye"
+  },
+  {
+   "lang": "en",
+   "text": "ear"
+  },
+  {
+   "lang": "en",
+   "text": "bird"
+  },
+  {
+   "lang": "en",
+   "text": "plane"
+  },
+  {
+   "lang": "en",
+   "text": "train"
+  },
+  {
+   "lang": "en",
+   "text": "loud"
+  },
+  {
+   "lang": "en",
+   "text": "touch"
+  },
+  {
+   "lang": "en",
+   "text": "feel"
+  },
+  {
+   "lang": "en",
+   "text": "hard"
+  },
+  {
+   "lang": "en",
+   "text": "soft"
+  },
+  {
+   "lang": "en",
+   "text": "warm"
+  },
+  {
+   "lang": "en",
+   "text": "cold"
+  },
+  {
+   "lang": "en",
+   "text": "taste"
+  },
+  {
+   "lang": "en",
+   "text": "smell"
+  },
+  {
+   "lang": "en",
+   "text": "sweet"
+  },
+  {
+   "lang": "en",
+   "text": "sour"
+  },
+  {
+   "lang": "en",
+   "text": "salty"
+  },
+  {
+   "lang": "en",
+   "text": "bitter"
+  },
+  {
+   "lang": "en",
+   "text": "lemon"
+  },
+  {
+   "lang": "en",
+   "text": "sugar"
+  },
+  {
+   "lang": "en",
+   "text": "animal"
+  },
+  {
+   "lang": "en",
+   "text": "tiger"
+  },
+  {
+   "lang": "en",
+   "text": "lion"
+  },
+  {
+   "lang": "en",
+   "text": "monkey"
+  },
+  {
+   "lang": "en",
+   "text": "elephant"
+  },
+  {
+   "lang": "en",
+   "text": "zebra"
+  },
+  {
+   "lang": "en",
+   "text": "tall"
+  },
+  {
+   "lang": "en",
+   "text": "fat"
+  },
+  {
+   "lang": "en",
+   "text": "toy"
+  },
+  {
+   "lang": "en",
+   "text": "doll"
+  },
+  {
+   "lang": "en",
+   "text": "ball"
+  },
+  {
+   "lang": "en",
+   "text": "kite"
+  },
+  {
+   "lang": "en",
+   "text": "car"
+  },
+  {
+   "lang": "en",
+   "text": "robot"
+  },
+  {
+   "lang": "en",
+   "text": "clothes"
+  },
+  {
+   "lang": "en",
+   "text": "shirt"
+  },
+  {
+   "lang": "en",
+   "text": "T-shirt"
+  },
+  {
+   "lang": "en",
+   "text": "dress"
+  },
+  {
+   "lang": "en",
+   "text": "skirt"
+  },
+  {
+   "lang": "en",
+   "text": "shoes"
+  },
+  {
+   "lang": "en",
+   "text": "cap"
+  },
+  {
+   "lang": "en",
+   "text": "coat"
+  },
+  {
+   "lang": "en",
+   "text": "shape"
+  },
+  {
+   "lang": "en",
+   "text": "circle"
+  },
+  {
+   "lang": "en",
+   "text": "square"
+  },
+  {
+   "lang": "en",
+   "text": "rectangle"
+  },
+  {
+   "lang": "en",
+   "text": "star"
+  },
+  {
+   "lang": "en",
+   "text": "colour"
+  },
+  {
+   "lang": "en",
+   "text": "red"
+  },
+  {
+   "lang": "en",
+   "text": "yellow"
+  },
+  {
+   "lang": "en",
+   "text": "blue"
+  },
+  {
+   "lang": "en",
+   "text": "green"
+  },
+  {
+   "lang": "en",
+   "text": "orange"
+  },
+  {
+   "lang": "en",
+   "text": "purple"
+  },
+  {
+   "lang": "en",
+   "text": "pink"
+  },
+  {
+   "lang": "en",
+   "text": "brown"
+  },
+  {
+   "lang": "en",
+   "text": "black"
+  },
+  {
+   "lang": "en",
+   "text": "white"
+  },
+  {
+   "lang": "en",
+   "text": "season"
+  },
+  {
+   "lang": "en",
+   "text": "spring"
+  },
+  {
+   "lang": "en",
+   "text": "summer"
+  },
+  {
+   "lang": "en",
+   "text": "autumn"
+  },
+  {
+   "lang": "en",
+   "text": "winter"
+  },
+  {
+   "lang": "en",
+   "text": "hot"
+  },
+  {
+   "lang": "en",
+   "text": "cool"
+  },
+  {
+   "lang": "en",
+   "text": "body"
+  },
+  {
+   "lang": "en",
+   "text": "head"
+  },
+  {
+   "lang": "en",
+   "text": "hair"
+  },
+  {
+   "lang": "en",
+   "text": "face"
+  },
+  {
+   "lang": "en",
+   "text": "mouth"
+  },
+  {
+   "lang": "en",
+   "text": "neck"
+  },
+  {
+   "lang": "en",
+   "text": "shoulder"
+  },
+  {
+   "lang": "en",
+   "text": "arm"
+  },
+  {
+   "lang": "en",
+   "text": "hand"
+  },
+  {
+   "lang": "en",
+   "text": "leg"
+  },
+  {
+   "lang": "en",
+   "text": "foot"
+  },
+  {
+   "lang": "en",
+   "text": "knee"
+  },
+  {
+   "lang": "en",
+   "text": "present"
+  },
+  {
+   "lang": "en",
+   "text": "party"
+  },
+  {
+   "lang": "en",
+   "text": "balloon"
+  },
+  {
+   "lang": "en",
+   "text": "card"
+  },
+  {
+   "lang": "en",
+   "text": "sing"
+  },
+  {
+   "lang": "en",
+   "text": "dance"
+  },
+  {
+   "lang": "en",
+   "text": "play"
+  },
+  {
+   "lang": "en",
+   "text": "happy"
+  },
+  {
+   "lang": "en",
+   "text": "story"
+  },
+  {
+   "lang": "en",
+   "text": "duck"
+  },
+  {
+   "lang": "en",
+   "text": "duckling"
+  },
+  {
+   "lang": "en",
+   "text": "egg"
+  },
+  {
+   "lang": "en",
+   "text": "beautiful"
+  },
+  {
+   "lang": "en",
+   "text": "There are lots of fun things to do."
+  },
+  {
+   "lang": "en",
+   "text": "I like swimming in the pool."
+  },
+  {
+   "lang": "en",
+   "text": "I take English classes every week."
+  },
+  {
+   "lang": "en",
+   "text": "These are red strawberries."
+  },
+  {
+   "lang": "en",
+   "text": "She can swim. She can't cook."
+  },
+  {
+   "lang": "en",
+   "text": "I like playing football."
+  },
+  {
+   "lang": "en",
+   "text": "I can see a bird."
+  },
+  {
+   "lang": "en",
+   "text": "I can hear a plane."
+  },
+  {
+   "lang": "en",
+   "text": "Touch it. How does it feel?"
+  },
+  {
+   "lang": "en",
+   "text": "It is soft and smooth."
+  },
+  {
+   "lang": "en",
+   "text": "What can you taste? It tastes sweet."
+  },
+  {
+   "lang": "en",
+   "text": "Do you like tigers? Yes, I do."
+  },
+  {
+   "lang": "en",
+   "text": "What is your favourite toy?"
+  },
+  {
+   "lang": "en",
+   "text": "This is her dress."
+  },
+  {
+   "lang": "en",
+   "text": "I like the red T-shirt."
+  },
+  {
+   "lang": "en",
+   "text": "Put on your coat."
+  },
+  {
+   "lang": "en",
+   "text": "What shape is it? It is a circle."
+  },
+  {
+   "lang": "en",
+   "text": "What colour is it? It is red."
+  },
+  {
+   "lang": "en",
+   "text": "What colour are they? They are blue."
+  },
+  {
+   "lang": "en",
+   "text": "Which season do you like? I like summer."
+  },
+  {
+   "lang": "en",
+   "text": "It is hot in summer."
+  },
+  {
+   "lang": "en",
+   "text": "Touch your head."
+  },
+  {
+   "lang": "en",
+   "text": "My feet are big."
+  },
+  {
+   "lang": "en",
+   "text": "Happy Children's Day!"
+  },
+  {
+   "lang": "en",
+   "text": "The ugly duckling becomes a swan."
+  },
+  {
+   "lang": "en",
+   "text": "It is beautiful."
+  }
+ ]
+}

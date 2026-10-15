@@ -1,0 +1,16 @@
+{
+  "zhRate": "0%",
+  "enRate": "0%",
+  "items": [
+    { "lang": "en", "text": "water" },
+    { "lang": "en", "text": "light" },
+    { "lang": "en", "text": "add" },
+    { "lang": "en", "text": "heat" },
+    { "lang": "en", "text": "apply" },
+    { "lang": "en", "text": "feed" },
+    { "lang": "en", "text": "add heat" },
+    { "lang": "en", "text": "apply feed" },
+    { "lang": "zh", "text": "答对了" },
+    { "lang": "zh", "text": "再想想" }
+  ]
+}

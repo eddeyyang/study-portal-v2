@@ -1,0 +1,490 @@
+{
+ "enRate": "-10%",
+ "zhRate": "-10%",
+ "items": [
+  {
+   "lang": "en",
+   "text": "a glass of"
+  },
+  {
+   "lang": "en",
+   "text": "cherry"
+  },
+  {
+   "lang": "en",
+   "text": "grape"
+  },
+  {
+   "lang": "en",
+   "text": "juice"
+  },
+  {
+   "lang": "en",
+   "text": "watermelon"
+  },
+  {
+   "lang": "en",
+   "text": "strawberry"
+  },
+  {
+   "lang": "en",
+   "text": "plum"
+  },
+  {
+   "lang": "en",
+   "text": "hard"
+  },
+  {
+   "lang": "en",
+   "text": "soft"
+  },
+  {
+   "lang": "en",
+   "text": "rough"
+  },
+  {
+   "lang": "en",
+   "text": "smooth"
+  },
+  {
+   "lang": "en",
+   "text": "sharp"
+  },
+  {
+   "lang": "en",
+   "text": "blunt"
+  },
+  {
+   "lang": "en",
+   "text": "thick"
+  },
+  {
+   "lang": "en",
+   "text": "thin"
+  },
+  {
+   "lang": "en",
+   "text": "knife"
+  },
+  {
+   "lang": "en",
+   "text": "pencil"
+  },
+  {
+   "lang": "en",
+   "text": "pencil case"
+  },
+  {
+   "lang": "en",
+   "text": "sun"
+  },
+  {
+   "lang": "en",
+   "text": "rise"
+  },
+  {
+   "lang": "en",
+   "text": "go down"
+  },
+  {
+   "lang": "en",
+   "text": "high"
+  },
+  {
+   "lang": "en",
+   "text": "at noon"
+  },
+  {
+   "lang": "en",
+   "text": "hill"
+  },
+  {
+   "lang": "en",
+   "text": "lawn"
+  },
+  {
+   "lang": "en",
+   "text": "path"
+  },
+  {
+   "lang": "en",
+   "text": "bench"
+  },
+  {
+   "lang": "en",
+   "text": "shadow"
+  },
+  {
+   "lang": "en",
+   "text": "sport"
+  },
+  {
+   "lang": "en",
+   "text": "club"
+  },
+  {
+   "lang": "en",
+   "text": "join"
+  },
+  {
+   "lang": "en",
+   "text": "poster"
+  },
+  {
+   "lang": "en",
+   "text": "play football"
+  },
+  {
+   "lang": "en",
+   "text": "play basketball"
+  },
+  {
+   "lang": "en",
+   "text": "play table tennis"
+  },
+  {
+   "lang": "en",
+   "text": "play volleyball"
+  },
+  {
+   "lang": "en",
+   "text": "play badminton"
+  },
+  {
+   "lang": "en",
+   "text": "cute"
+  },
+  {
+   "lang": "en",
+   "text": "fish"
+  },
+  {
+   "lang": "en",
+   "text": "bone"
+  },
+  {
+   "lang": "en",
+   "text": "cat food"
+  },
+  {
+   "lang": "en",
+   "text": "dog food"
+  },
+  {
+   "lang": "en",
+   "text": "parrot"
+  },
+  {
+   "lang": "en",
+   "text": "tortoise"
+  },
+  {
+   "lang": "en",
+   "text": "bedroom"
+  },
+  {
+   "lang": "en",
+   "text": "bathroom"
+  },
+  {
+   "lang": "en",
+   "text": "kitchen"
+  },
+  {
+   "lang": "en",
+   "text": "living room"
+  },
+  {
+   "lang": "en",
+   "text": "dinner"
+  },
+  {
+   "lang": "en",
+   "text": "homework"
+  },
+  {
+   "lang": "en",
+   "text": "model plane"
+  },
+  {
+   "lang": "en",
+   "text": "wash"
+  },
+  {
+   "lang": "en",
+   "text": "watch TV"
+  },
+  {
+   "lang": "en",
+   "text": "sound"
+  },
+  {
+   "lang": "en",
+   "text": "noisy"
+  },
+  {
+   "lang": "en",
+   "text": "quiet"
+  },
+  {
+   "lang": "en",
+   "text": "loud"
+  },
+  {
+   "lang": "en",
+   "text": "bell"
+  },
+  {
+   "lang": "en",
+   "text": "television (TV)"
+  },
+  {
+   "lang": "en",
+   "text": "seven o'clock"
+  },
+  {
+   "lang": "en",
+   "text": "half past seven"
+  },
+  {
+   "lang": "en",
+   "text": "a quarter past seven"
+  },
+  {
+   "lang": "en",
+   "text": "a quarter to eight"
+  },
+  {
+   "lang": "en",
+   "text": "get up"
+  },
+  {
+   "lang": "en",
+   "text": "brush my teeth"
+  },
+  {
+   "lang": "en",
+   "text": "wash my face"
+  },
+  {
+   "lang": "en",
+   "text": "have breakfast"
+  },
+  {
+   "lang": "en",
+   "text": "Monday"
+  },
+  {
+   "lang": "en",
+   "text": "Tuesday"
+  },
+  {
+   "lang": "en",
+   "text": "Wednesday"
+  },
+  {
+   "lang": "en",
+   "text": "Thursday"
+  },
+  {
+   "lang": "en",
+   "text": "Friday"
+  },
+  {
+   "lang": "en",
+   "text": "Saturday"
+  },
+  {
+   "lang": "en",
+   "text": "Sunday"
+  },
+  {
+   "lang": "en",
+   "text": "always"
+  },
+  {
+   "lang": "en",
+   "text": "usually"
+  },
+  {
+   "lang": "en",
+   "text": "often"
+  },
+  {
+   "lang": "en",
+   "text": "sometimes"
+  },
+  {
+   "lang": "en",
+   "text": "never"
+  },
+  {
+   "lang": "en",
+   "text": "at weekends"
+  },
+  {
+   "lang": "en",
+   "text": "Chinese chess"
+  },
+  {
+   "lang": "en",
+   "text": "music"
+  },
+  {
+   "lang": "en",
+   "text": "piano"
+  },
+  {
+   "lang": "en",
+   "text": "violin"
+  },
+  {
+   "lang": "en",
+   "text": "drum"
+  },
+  {
+   "lang": "en",
+   "text": "triangle"
+  },
+  {
+   "lang": "en",
+   "text": "festival"
+  },
+  {
+   "lang": "en",
+   "text": "the Spring Festival"
+  },
+  {
+   "lang": "en",
+   "text": "the Dragon Boat Festival"
+  },
+  {
+   "lang": "en",
+   "text": "the Mid-Autumn Festival"
+  },
+  {
+   "lang": "en",
+   "text": "the Double Ninth Festival"
+  },
+  {
+   "lang": "en",
+   "text": "rice dumpling"
+  },
+  {
+   "lang": "en",
+   "text": "duckling"
+  },
+  {
+   "lang": "en",
+   "text": "swan"
+  },
+  {
+   "lang": "en",
+   "text": "nest"
+  },
+  {
+   "lang": "en",
+   "text": "What can you taste?"
+  },
+  {
+   "lang": "en",
+   "text": "It tastes sweet."
+  },
+  {
+   "lang": "en",
+   "text": "How does it feel? It is soft."
+  },
+  {
+   "lang": "en",
+   "text": "Look at the shadow."
+  },
+  {
+   "lang": "en",
+   "text": "Do you like playing football?"
+  },
+  {
+   "lang": "en",
+   "text": "Would you like to join us?"
+  },
+  {
+   "lang": "en",
+   "text": "What does it eat? It eats fish."
+  },
+  {
+   "lang": "en",
+   "text": "What are you doing? I am doing my homework."
+  },
+  {
+   "lang": "en",
+   "text": "What time is it? It is half past seven."
+  },
+  {
+   "lang": "en",
+   "text": "I usually get up at seven o'clock."
+  },
+  {
+   "lang": "en",
+   "text": "We play Chinese chess at weekends."
+  },
+  {
+   "lang": "en",
+   "text": "Be quiet!"
+  },
+  {
+   "lang": "en",
+   "text": "What can you play? I can play the piano."
+  },
+  {
+   "lang": "en",
+   "text": "What festivals do you like?"
+  },
+  {
+   "lang": "en",
+   "text": "We eat rice dumplings at the Dragon Boat Festival."
+  },
+  {
+   "lang": "en",
+   "text": "The ugly duckling becomes a swan."
+  },
+  {
+   "lang": "en",
+   "text": "Hello, I can speak English too."
+  },
+  {
+   "lang": "zh",
+   "text": "你好哥哥,我们来默写英语单词。"
+  },
+  {
+   "lang": "zh",
+   "text": "默完了！对照答案，写错的点一下变红。"
+  },
+  {
+   "lang": "zh",
+   "text": "好，只重默写错的。准备！"
+  },
+  {
+   "lang": "zh",
+   "text": "记下了，错词留着再练。"
+  },
+  {
+   "lang": "zh",
+   "text": "真棒，这一课默完了！"
+  },
+  {
+   "lang": "zh",
+   "text": "对"
+  },
+  {
+   "lang": "zh",
+   "text": "全对!这些词你真的懂了。"
+  },
+  {
+   "lang": "zh",
+   "text": "做完了,错的词已经记下来。"
+  },
+  {
+   "lang": "zh",
+   "text": "已经复制好了,可以粘贴发给爸爸或Claude。"
+  }
+ ]
+}

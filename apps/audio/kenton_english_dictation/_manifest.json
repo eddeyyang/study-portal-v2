@@ -1,0 +1,618 @@
+{
+ "enRate": "-10%",
+ "zhRate": "-10%",
+ "items": [
+  {
+   "lang": "en",
+   "text": "knife"
+  },
+  {
+   "lang": "en",
+   "text": "Friday"
+  },
+  {
+   "lang": "en",
+   "text": "Wednesday"
+  },
+  {
+   "lang": "en",
+   "text": "Thursday"
+  },
+  {
+   "lang": "en",
+   "text": "bedroom"
+  },
+  {
+   "lang": "en",
+   "text": "sound"
+  },
+  {
+   "lang": "en",
+   "text": "nest"
+  },
+  {
+   "lang": "en",
+   "text": "swan"
+  },
+  {
+   "lang": "en",
+   "text": "drum"
+  },
+  {
+   "lang": "en",
+   "text": "triangle"
+  },
+  {
+   "lang": "en",
+   "text": "rectangle"
+  },
+  {
+   "lang": "en",
+   "text": "shoulder"
+  },
+  {
+   "lang": "en",
+   "text": "knee"
+  },
+  {
+   "lang": "en",
+   "text": "foot"
+  },
+  {
+   "lang": "en",
+   "text": "a glass of"
+  },
+  {
+   "lang": "en",
+   "text": "cherry"
+  },
+  {
+   "lang": "en",
+   "text": "grape"
+  },
+  {
+   "lang": "en",
+   "text": "juice"
+  },
+  {
+   "lang": "en",
+   "text": "watermelon"
+  },
+  {
+   "lang": "en",
+   "text": "strawberry"
+  },
+  {
+   "lang": "en",
+   "text": "plum"
+  },
+  {
+   "lang": "en",
+   "text": "hard"
+  },
+  {
+   "lang": "en",
+   "text": "soft"
+  },
+  {
+   "lang": "en",
+   "text": "rough"
+  },
+  {
+   "lang": "en",
+   "text": "smooth"
+  },
+  {
+   "lang": "en",
+   "text": "sharp"
+  },
+  {
+   "lang": "en",
+   "text": "blunt"
+  },
+  {
+   "lang": "en",
+   "text": "thick"
+  },
+  {
+   "lang": "en",
+   "text": "thin"
+  },
+  {
+   "lang": "en",
+   "text": "pencil"
+  },
+  {
+   "lang": "en",
+   "text": "pencil case"
+  },
+  {
+   "lang": "en",
+   "text": "sun"
+  },
+  {
+   "lang": "en",
+   "text": "rise"
+  },
+  {
+   "lang": "en",
+   "text": "go down"
+  },
+  {
+   "lang": "en",
+   "text": "high"
+  },
+  {
+   "lang": "en",
+   "text": "at noon"
+  },
+  {
+   "lang": "en",
+   "text": "hill"
+  },
+  {
+   "lang": "en",
+   "text": "lawn"
+  },
+  {
+   "lang": "en",
+   "text": "path"
+  },
+  {
+   "lang": "en",
+   "text": "bench"
+  },
+  {
+   "lang": "en",
+   "text": "shadow"
+  },
+  {
+   "lang": "en",
+   "text": "sport"
+  },
+  {
+   "lang": "en",
+   "text": "club"
+  },
+  {
+   "lang": "en",
+   "text": "join"
+  },
+  {
+   "lang": "en",
+   "text": "poster"
+  },
+  {
+   "lang": "en",
+   "text": "play football"
+  },
+  {
+   "lang": "en",
+   "text": "play basketball"
+  },
+  {
+   "lang": "en",
+   "text": "play table tennis"
+  },
+  {
+   "lang": "en",
+   "text": "play volleyball"
+  },
+  {
+   "lang": "en",
+   "text": "play badminton"
+  },
+  {
+   "lang": "en",
+   "text": "cute"
+  },
+  {
+   "lang": "en",
+   "text": "fish"
+  },
+  {
+   "lang": "en",
+   "text": "bone"
+  },
+  {
+   "lang": "en",
+   "text": "cat food"
+  },
+  {
+   "lang": "en",
+   "text": "dog food"
+  },
+  {
+   "lang": "en",
+   "text": "parrot"
+  },
+  {
+   "lang": "en",
+   "text": "tortoise"
+  },
+  {
+   "lang": "en",
+   "text": "bathroom"
+  },
+  {
+   "lang": "en",
+   "text": "kitchen"
+  },
+  {
+   "lang": "en",
+   "text": "living room"
+  },
+  {
+   "lang": "en",
+   "text": "dinner"
+  },
+  {
+   "lang": "en",
+   "text": "homework"
+  },
+  {
+   "lang": "en",
+   "text": "model plane"
+  },
+  {
+   "lang": "en",
+   "text": "wash"
+  },
+  {
+   "lang": "en",
+   "text": "watch TV"
+  },
+  {
+   "lang": "en",
+   "text": "noisy"
+  },
+  {
+   "lang": "en",
+   "text": "quiet"
+  },
+  {
+   "lang": "en",
+   "text": "loud"
+  },
+  {
+   "lang": "en",
+   "text": "bell"
+  },
+  {
+   "lang": "en",
+   "text": "television"
+  },
+  {
+   "lang": "en",
+   "text": "seven o'clock"
+  },
+  {
+   "lang": "en",
+   "text": "half past seven"
+  },
+  {
+   "lang": "en",
+   "text": "a quarter past seven"
+  },
+  {
+   "lang": "en",
+   "text": "a quarter to eight"
+  },
+  {
+   "lang": "en",
+   "text": "get up"
+  },
+  {
+   "lang": "en",
+   "text": "brush my teeth"
+  },
+  {
+   "lang": "en",
+   "text": "wash my face"
+  },
+  {
+   "lang": "en",
+   "text": "have breakfast"
+  },
+  {
+   "lang": "en",
+   "text": "Monday"
+  },
+  {
+   "lang": "en",
+   "text": "Tuesday"
+  },
+  {
+   "lang": "en",
+   "text": "Saturday"
+  },
+  {
+   "lang": "en",
+   "text": "Sunday"
+  },
+  {
+   "lang": "en",
+   "text": "always"
+  },
+  {
+   "lang": "en",
+   "text": "usually"
+  },
+  {
+   "lang": "en",
+   "text": "often"
+  },
+  {
+   "lang": "en",
+   "text": "sometimes"
+  },
+  {
+   "lang": "en",
+   "text": "never"
+  },
+  {
+   "lang": "en",
+   "text": "at weekends"
+  },
+  {
+   "lang": "en",
+   "text": "Chinese chess"
+  },
+  {
+   "lang": "en",
+   "text": "music"
+  },
+  {
+   "lang": "en",
+   "text": "piano"
+  },
+  {
+   "lang": "en",
+   "text": "violin"
+  },
+  {
+   "lang": "en",
+   "text": "festival"
+  },
+  {
+   "lang": "en",
+   "text": "the Spring Festival"
+  },
+  {
+   "lang": "en",
+   "text": "the Dragon Boat Festival"
+  },
+  {
+   "lang": "en",
+   "text": "the Mid-Autumn Festival"
+  },
+  {
+   "lang": "en",
+   "text": "the Double Ninth Festival"
+  },
+  {
+   "lang": "en",
+   "text": "rice dumpling"
+  },
+  {
+   "lang": "en",
+   "text": "duckling"
+  },
+  {
+   "lang": "en",
+   "text": "shape"
+  },
+  {
+   "lang": "en",
+   "text": "circle"
+  },
+  {
+   "lang": "en",
+   "text": "square"
+  },
+  {
+   "lang": "en",
+   "text": "star"
+  },
+  {
+   "lang": "en",
+   "text": "side"
+  },
+  {
+   "lang": "en",
+   "text": "sky"
+  },
+  {
+   "lang": "en",
+   "text": "sea"
+  },
+  {
+   "lang": "en",
+   "text": "mountain"
+  },
+  {
+   "lang": "en",
+   "text": "river"
+  },
+  {
+   "lang": "en",
+   "text": "rainbow"
+  },
+  {
+   "lang": "en",
+   "text": "violet"
+  },
+  {
+   "lang": "en",
+   "text": "season"
+  },
+  {
+   "lang": "en",
+   "text": "plant a tree"
+  },
+  {
+   "lang": "en",
+   "text": "have a picnic"
+  },
+  {
+   "lang": "en",
+   "text": "ice-skate"
+  },
+  {
+   "lang": "en",
+   "text": "ski"
+  },
+  {
+   "lang": "en",
+   "text": "fly a kite"
+  },
+  {
+   "lang": "en",
+   "text": "body"
+  },
+  {
+   "lang": "en",
+   "text": "head"
+  },
+  {
+   "lang": "en",
+   "text": "arm"
+  },
+  {
+   "lang": "en",
+   "text": "hand"
+  },
+  {
+   "lang": "en",
+   "text": "finger"
+  },
+  {
+   "lang": "en",
+   "text": "leg"
+  },
+  {
+   "lang": "en",
+   "text": "park"
+  },
+  {
+   "lang": "en",
+   "text": "cinema"
+  },
+  {
+   "lang": "en",
+   "text": "zoo"
+  },
+  {
+   "lang": "en",
+   "text": "photograph"
+  },
+  {
+   "lang": "en",
+   "text": "the first of June"
+  },
+  {
+   "lang": "en",
+   "text": "Does Alice play basketball?"
+  },
+  {
+   "lang": "en",
+   "text": "He usually watches TV."
+  },
+  {
+   "lang": "en",
+   "text": "Now he is reading a book."
+  },
+  {
+   "lang": "en",
+   "text": "What time is it now?"
+  },
+  {
+   "lang": "en",
+   "text": "What are these?"
+  },
+  {
+   "lang": "en",
+   "text": "I can play the piano."
+  },
+  {
+   "lang": "en",
+   "text": "Is it a grape or a plum?"
+  },
+  {
+   "lang": "en",
+   "text": "What's this? It's a knife."
+  },
+  {
+   "lang": "en",
+   "text": "It's hard and smooth."
+  },
+  {
+   "lang": "en",
+   "text": "The sun rises behind the hill."
+  },
+  {
+   "lang": "en",
+   "text": "Whose shadow is this? It's Danny's."
+  },
+  {
+   "lang": "en",
+   "text": "Does she like playing football?"
+  },
+  {
+   "lang": "en",
+   "text": "Yes, she does."
+  },
+  {
+   "lang": "en",
+   "text": "Would you like to join us?"
+  },
+  {
+   "lang": "en",
+   "text": "What does it eat? It eats fish."
+  },
+  {
+   "lang": "en",
+   "text": "What are you doing? I am doing my homework."
+  },
+  {
+   "lang": "en",
+   "text": "What time is it? It's half past seven."
+  },
+  {
+   "lang": "en",
+   "text": "It's time for breakfast."
+  },
+  {
+   "lang": "en",
+   "text": "I get up at seven o'clock."
+  },
+  {
+   "lang": "en",
+   "text": "Peter goes to school from Monday to Friday."
+  },
+  {
+   "lang": "en",
+   "text": "I usually watch TV on Sunday."
+  },
+  {
+   "lang": "en",
+   "text": "What can you play? I can play the piano."
+  },
+  {
+   "lang": "en",
+   "text": "What festivals do you like?"
+  },
+  {
+   "lang": "en",
+   "text": "I like the Spring Festival."
+  },
+  {
+   "lang": "en",
+   "text": "We eat rice dumplings at the Dragon Boat Festival."
+  },
+  {
+   "lang": "en",
+   "text": "The ugly duckling becomes a swan."
+  }
+ ]
+}

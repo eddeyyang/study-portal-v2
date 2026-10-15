@@ -1,0 +1,69 @@
+{
+ "app": "kenton_tense8_lab_20260807",
+ "voice": "agent-gw TTS (05Cdh2gw2NMzDvykn1nm)",
+ "hash": "fnv1a(en|text)",
+ "total": 12,
+ "status": "machine-verified; phone playback pending parent acceptance",
+ "items": [
+  {
+   "lang": "en",
+   "text": "He goes to school every day.",
+   "file": "479a3577.mp3"
+  },
+  {
+   "lang": "en",
+   "text": "I saw a film yesterday.",
+   "file": "bd552977.mp3"
+  },
+  {
+   "lang": "en",
+   "text": "We will have a picnic tomorrow.",
+   "file": "af38fde0.mp3"
+  },
+  {
+   "lang": "en",
+   "text": "Look! They are playing football.",
+   "file": "5eab033b.mp3"
+  },
+  {
+   "lang": "en",
+   "text": "I was reading at that time.",
+   "file": "c1d7539f.mp3"
+  },
+  {
+   "lang": "en",
+   "text": "I have already finished my homework.",
+   "file": "1a377485.mp3"
+  },
+  {
+   "lang": "en",
+   "text": "The train had left before we arrived.",
+   "file": "2fdd97df.mp3"
+  },
+  {
+   "lang": "en",
+   "text": "He said he would come back soon.",
+   "file": "ced68bc4.mp3"
+  },
+  {
+   "lang": "en",
+   "text": "I spend two hours on my homework.",
+   "file": "4925f715.mp3"
+  },
+  {
+   "lang": "en",
+   "text": "The book costs me twenty yuan.",
+   "file": "94d850c2.mp3"
+  },
+  {
+   "lang": "en",
+   "text": "I paid twenty yuan for the book.",
+   "file": "4943db96.mp3"
+  },
+  {
+   "lang": "en",
+   "text": "It takes me two hours to do my homework.",
+   "file": "e56f6056.mp3"
+  }
+ ]
+}

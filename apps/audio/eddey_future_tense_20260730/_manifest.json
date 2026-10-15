@@ -1,0 +1,442 @@
+{
+  "app": "eddey_future_tense_20260730",
+  "voice": {
+    "en": "en-US-AriaNeural"
+  },
+  "enRate": "-10%",
+  "hash": "FNV-1a('en|'+text) UTF-8 → 8位hex",
+  "total": 86,
+  "status": "待验收：86条已生成并机器校验（时长/完整性），逐条内容核对已完成；手机实播待家长验收",
+  "items": [
+    {
+      "lang": "en",
+      "text": "He buys apples every week.",
+      "file": "54073b32.mp3"
+    },
+    {
+      "lang": "en",
+      "text": "He goes to work by bus.",
+      "file": "446c41c8.mp3"
+    },
+    {
+      "lang": "en",
+      "text": "He has a cake.",
+      "file": "2326b040.mp3"
+    },
+    {
+      "lang": "en",
+      "text": "He has a new bike.",
+      "file": "31dc69c5.mp3"
+    },
+    {
+      "lang": "en",
+      "text": "He is going to play football tomorrow.",
+      "file": "2cf22c0e.mp3"
+    },
+    {
+      "lang": "en",
+      "text": "He is going to play football.",
+      "file": "628c6aad.mp3"
+    },
+    {
+      "lang": "en",
+      "text": "He is going to playing football.",
+      "file": "038ef1f5.mp3"
+    },
+    {
+      "lang": "en",
+      "text": "He is playing football.",
+      "file": "3daa0abc.mp3"
+    },
+    {
+      "lang": "en",
+      "text": "He plays football every day.",
+      "file": "6c25feec.mp3"
+    },
+    {
+      "lang": "en",
+      "text": "He studies English every morning.",
+      "file": "de931b2f.mp3"
+    },
+    {
+      "lang": "en",
+      "text": "He watches TV on Saturdays.",
+      "file": "b5bc3039.mp3"
+    },
+    {
+      "lang": "en",
+      "text": "He will",
+      "file": "ec856adf.mp3"
+    },
+    {
+      "lang": "en",
+      "text": "He will play football tomorrow.",
+      "file": "8f3dbe6f.mp3"
+    },
+    {
+      "lang": "en",
+      "text": "He'll play football tomorrow.",
+      "file": "56c75ace.mp3"
+    },
+    {
+      "lang": "en",
+      "text": "I am buying a cake.",
+      "file": "4e80c212.mp3"
+    },
+    {
+      "lang": "en",
+      "text": "I am going to buy a cake this weekend.",
+      "file": "8c7a1f98.mp3"
+    },
+    {
+      "lang": "en",
+      "text": "I am going to buy a cake.",
+      "file": "34bd227d.mp3"
+    },
+    {
+      "lang": "en",
+      "text": "I am going to do math homework first this evening.",
+      "file": "a3b15901.mp3"
+    },
+    {
+      "lang": "en",
+      "text": "I am going to swim next week.",
+      "file": "7e6de11f.mp3"
+    },
+    {
+      "lang": "en",
+      "text": "I am going to the shopping mall tomorrow.",
+      "file": "0e943f4a.mp3"
+    },
+    {
+      "lang": "en",
+      "text": "I buy apples every week.",
+      "file": "ee64fd37.mp3"
+    },
+    {
+      "lang": "en",
+      "text": "I go to work by bus.",
+      "file": "ea05168c.mp3"
+    },
+    {
+      "lang": "en",
+      "text": "I have a cake.",
+      "file": "0f6f877c.mp3"
+    },
+    {
+      "lang": "en",
+      "text": "I play football every day.",
+      "file": "6a8d4e83.mp3"
+    },
+    {
+      "lang": "en",
+      "text": "I study English every morning.",
+      "file": "53077393.mp3"
+    },
+    {
+      "lang": "en",
+      "text": "I watch TV on Saturdays.",
+      "file": "b7feaaa9.mp3"
+    },
+    {
+      "lang": "en",
+      "text": "I will",
+      "file": "0afb6a6f.mp3"
+    },
+    {
+      "lang": "en",
+      "text": "I will help you.",
+      "file": "7c769ef5.mp3"
+    },
+    {
+      "lang": "en",
+      "text": "I won't be late.",
+      "file": "893a1b95.mp3"
+    },
+    {
+      "lang": "en",
+      "text": "I'll help you.",
+      "file": "832b4d3c.mp3"
+    },
+    {
+      "lang": "en",
+      "text": "It buys apples every week.",
+      "file": "09d421a8.mp3"
+    },
+    {
+      "lang": "en",
+      "text": "It goes to work by bus.",
+      "file": "573a396a.mp3"
+    },
+    {
+      "lang": "en",
+      "text": "It has a cake.",
+      "file": "36899c3e.mp3"
+    },
+    {
+      "lang": "en",
+      "text": "It plays football every day.",
+      "file": "6403581a.mp3"
+    },
+    {
+      "lang": "en",
+      "text": "It studies English every morning.",
+      "file": "c957aa8d.mp3"
+    },
+    {
+      "lang": "en",
+      "text": "It watches TV on Saturdays.",
+      "file": "9322c493.mp3"
+    },
+    {
+      "lang": "en",
+      "text": "It will be sunny tomorrow.",
+      "file": "76d1b7ea.mp3"
+    },
+    {
+      "lang": "en",
+      "text": "It will rain tomorrow.",
+      "file": "dca3f592.mp3"
+    },
+    {
+      "lang": "en",
+      "text": "It will rain.",
+      "file": "da86adf9.mp3"
+    },
+    {
+      "lang": "en",
+      "text": "It will rains tomorrow.",
+      "file": "d730bb81.mp3"
+    },
+    {
+      "lang": "en",
+      "text": "My dad buys apples every week.",
+      "file": "ab6c0a06.mp3"
+    },
+    {
+      "lang": "en",
+      "text": "My dad goes to work by bus.",
+      "file": "8017666c.mp3"
+    },
+    {
+      "lang": "en",
+      "text": "My dad has a cake.",
+      "file": "5615ee54.mp3"
+    },
+    {
+      "lang": "en",
+      "text": "My dad plays football every day.",
+      "file": "73e0d160.mp3"
+    },
+    {
+      "lang": "en",
+      "text": "My dad studies English every morning.",
+      "file": "eb998743.mp3"
+    },
+    {
+      "lang": "en",
+      "text": "My dad watches TV on Saturdays.",
+      "file": "3df984fd.mp3"
+    },
+    {
+      "lang": "en",
+      "text": "She buys apples every week.",
+      "file": "6a98cb8b.mp3"
+    },
+    {
+      "lang": "en",
+      "text": "She goes to work by bus.",
+      "file": "d8f807c7.mp3"
+    },
+    {
+      "lang": "en",
+      "text": "She has a cake.",
+      "file": "228197d5.mp3"
+    },
+    {
+      "lang": "en",
+      "text": "She plays football every day.",
+      "file": "b6e4fe15.mp3"
+    },
+    {
+      "lang": "en",
+      "text": "She studies English every morning.",
+      "file": "5678a6a8.mp3"
+    },
+    {
+      "lang": "en",
+      "text": "She watches TV on Saturdays.",
+      "file": "5cd2267e.mp3"
+    },
+    {
+      "lang": "en",
+      "text": "She will",
+      "file": "b6abe688.mp3"
+    },
+    {
+      "lang": "en",
+      "text": "She'll buy a cake.",
+      "file": "766d80f8.mp3"
+    },
+    {
+      "lang": "en",
+      "text": "The sheep buys apples every week.",
+      "file": "bfa173b9.mp3"
+    },
+    {
+      "lang": "en",
+      "text": "The sheep goes to work by bus.",
+      "file": "8d87f7c1.mp3"
+    },
+    {
+      "lang": "en",
+      "text": "The sheep has a cake.",
+      "file": "9d12ce33.mp3"
+    },
+    {
+      "lang": "en",
+      "text": "The sheep plays football every day.",
+      "file": "483d26ab.mp3"
+    },
+    {
+      "lang": "en",
+      "text": "The sheep studies English every morning.",
+      "file": "7520361e.mp3"
+    },
+    {
+      "lang": "en",
+      "text": "The sheep watches TV on Saturdays.",
+      "file": "3796ca28.mp3"
+    },
+    {
+      "lang": "en",
+      "text": "They are going to swim next week.",
+      "file": "6ef887f6.mp3"
+    },
+    {
+      "lang": "en",
+      "text": "They are swimming.",
+      "file": "da32cd87.mp3"
+    },
+    {
+      "lang": "en",
+      "text": "They will",
+      "file": "5b862cd4.mp3"
+    },
+    {
+      "lang": "en",
+      "text": "They'll swim next week.",
+      "file": "8b352176.mp3"
+    },
+    {
+      "lang": "en",
+      "text": "We are going to visit grandma this weekend.",
+      "file": "4b0638bd.mp3"
+    },
+    {
+      "lang": "en",
+      "text": "We will",
+      "file": "dd7f7a6a.mp3"
+    },
+    {
+      "lang": "en",
+      "text": "We'll visit grandma this weekend.",
+      "file": "40350531.mp3"
+    },
+    {
+      "lang": "en",
+      "text": "Will you come tomorrow?",
+      "file": "2b465a8b.mp3"
+    },
+    {
+      "lang": "en",
+      "text": "buy a cake",
+      "file": "a15365eb.mp3"
+    },
+    {
+      "lang": "en",
+      "text": "fu",
+      "file": "6fc0cf9b.mp3"
+    },
+    {
+      "lang": "en",
+      "text": "future",
+      "file": "8885e7a1.mp3"
+    },
+    {
+      "lang": "en",
+      "text": "help",
+      "file": "9ef34045.mp3"
+    },
+    {
+      "lang": "en",
+      "text": "ll",
+      "file": "5ad8b372.mp3"
+    },
+    {
+      "lang": "en",
+      "text": "mo",
+      "file": "79db22d6.mp3"
+    },
+    {
+      "lang": "en",
+      "text": "next week",
+      "file": "6d1ce675.mp3"
+    },
+    {
+      "lang": "en",
+      "text": "plan",
+      "file": "42dbaf49.mp3"
+    },
+    {
+      "lang": "en",
+      "text": "rrow",
+      "file": "565eb734.mp3"
+    },
+    {
+      "lang": "en",
+      "text": "soon",
+      "file": "a940be6d.mp3"
+    },
+    {
+      "lang": "en",
+      "text": "te",
+      "file": "53edc325.mp3"
+    },
+    {
+      "lang": "en",
+      "text": "tomorrow",
+      "file": "75d52a59.mp3"
+    },
+    {
+      "lang": "en",
+      "text": "tonight",
+      "file": "8b510d7f.mp3"
+    },
+    {
+      "lang": "en",
+      "text": "ture",
+      "file": "74c74300.mp3"
+    },
+    {
+      "lang": "en",
+      "text": "wi",
+      "file": "5fea0472.mp3"
+    },
+    {
+      "lang": "en",
+      "text": "will",
+      "file": "752e2862.mp3"
+    },
+    {
+      "lang": "en",
+      "text": "will not",
+      "file": "7d862ff3.mp3"
+    },
+    {
+      "lang": "en",
+      "text": "wo",
+      "file": "59e9fb00.mp3"
+    }
+  ]
+}

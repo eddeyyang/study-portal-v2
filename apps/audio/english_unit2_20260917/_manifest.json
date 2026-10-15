@@ -1,0 +1,996 @@
+{
+  "schema": "english-audio-sprite-v1",
+  "engine": "kokoro-onnx 0.4.9 / Kokoro-82M INT8",
+  "upstreamRevision": "cefeef52a4ec1ab7b85a72d74800596cdd1ca319",
+  "voice": "af_heart",
+  "voiceStatus": "candidate",
+  "status": "incomplete",
+  "fileCount": 6,
+  "segmentCount": 94,
+  "listenedCount": 0,
+  "regeneratedCount": 16,
+  "devices": {
+    "phone": "not-tested",
+    "desktop": "not-tested"
+  },
+  "items": {
+    "7f0adafb": {
+      "text": "traditional",
+      "lang": "en",
+      "file": "unit2-01.mp3",
+      "start": 0.0,
+      "duration": 0.96,
+      "speed": 0.9,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "b3bcb7de": {
+      "text": "Chinese yo-yo",
+      "lang": "en",
+      "file": "unit2-01.mp3",
+      "start": 1.31,
+      "duration": 1.2373,
+      "speed": 0.9,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "a9f43a43": {
+      "text": "kite-flying",
+      "lang": "en",
+      "file": "unit2-01.mp3",
+      "start": 2.8973,
+      "duration": 1.1093,
+      "speed": 0.9,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "d575840a": {
+      "text": "dragon dance",
+      "lang": "en",
+      "file": "unit2-01.mp3",
+      "start": 4.3567,
+      "duration": 1.152,
+      "speed": 0.9,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "e487f459": {
+      "text": "tug of war",
+      "lang": "en",
+      "file": "unit2-01.mp3",
+      "start": 5.8587,
+      "duration": 1.088,
+      "speed": 0.9,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "9d295f49": {
+      "text": "stamp",
+      "lang": "en",
+      "file": "unit2-01.mp3",
+      "start": 7.2967,
+      "duration": 0.8107,
+      "speed": 0.9,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "61b841ce": {
+      "text": "prize",
+      "lang": "en",
+      "file": "unit2-01.mp3",
+      "start": 8.4573,
+      "duration": 0.9173,
+      "speed": 0.9,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "5519a947": {
+      "text": "style",
+      "lang": "en",
+      "file": "unit2-01.mp3",
+      "start": 9.7247,
+      "duration": 0.9173,
+      "speed": 0.9,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "1c677e30": {
+      "text": "action",
+      "lang": "en",
+      "file": "unit2-01.mp3",
+      "start": 10.992,
+      "duration": 0.9173,
+      "speed": 0.9,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "e202a55c": {
+      "text": "straight",
+      "lang": "en",
+      "file": "unit2-01.mp3",
+      "start": 12.2593,
+      "duration": 0.96,
+      "speed": 0.9,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "aa0714e8": {
+      "text": "keep up with",
+      "lang": "en",
+      "file": "unit2-01.mp3",
+      "start": 13.5693,
+      "duration": 1.0027,
+      "speed": 0.9,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "670df057": {
+      "text": "control",
+      "lang": "en",
+      "file": "unit2-01.mp3",
+      "start": 14.922,
+      "duration": 0.8747,
+      "speed": 0.9,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "d3eadd45": {
+      "text": "pace",
+      "lang": "en",
+      "file": "unit2-01.mp3",
+      "start": 16.1467,
+      "duration": 0.896,
+      "speed": 0.9,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "415ea33b": {
+      "text": "on the sports field",
+      "lang": "en",
+      "file": "unit2-01.mp3",
+      "start": 17.3927,
+      "duration": 1.344,
+      "speed": 0.9,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "1769fac3": {
+      "text": "have a go",
+      "lang": "en",
+      "file": "unit2-01.mp3",
+      "start": 19.0867,
+      "duration": 0.832,
+      "speed": 0.9,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "473fa8a9": {
+      "text": "the mother of",
+      "lang": "en",
+      "file": "unit2-01.mp3",
+      "start": 20.2687,
+      "duration": 0.9173,
+      "speed": 0.9,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "936d9eca": {
+      "text": "come from",
+      "lang": "en",
+      "file": "unit2-02.mp3",
+      "start": 0.0,
+      "duration": 0.9387,
+      "speed": 0.9,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "3d14eec2": {
+      "text": "kinds of",
+      "lang": "en",
+      "file": "unit2-02.mp3",
+      "start": 1.2887,
+      "duration": 0.9813,
+      "speed": 0.9,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "7c75e580": {
+      "text": "look like",
+      "lang": "en",
+      "file": "unit2-02.mp3",
+      "start": 2.62,
+      "duration": 0.9813,
+      "speed": 0.9,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "ab4df5a6": {
+      "text": "call out",
+      "lang": "en",
+      "file": "unit2-02.mp3",
+      "start": 3.9513,
+      "duration": 0.9813,
+      "speed": 0.9,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "62d2c36f": {
+      "text": "work as a team",
+      "lang": "en",
+      "file": "unit2-02.mp3",
+      "start": 5.2827,
+      "duration": 1.1733,
+      "speed": 0.9,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "8ce3f2da": {
+      "text": "listen to the music",
+      "lang": "en",
+      "file": "unit2-02.mp3",
+      "start": 6.806,
+      "duration": 1.3227,
+      "speed": 0.9,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "e7f75b8b": {
+      "text": "come to life",
+      "lang": "en",
+      "file": "unit2-02.mp3",
+      "start": 8.4787,
+      "duration": 1.024,
+      "speed": 0.9,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "3f7abce2": {
+      "text": "The school is planning a garden party. The date in the reading is 26 September.",
+      "lang": "en",
+      "file": "unit2-02.mp3",
+      "start": 9.8527,
+      "duration": 5.056,
+      "speed": 0.94,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "bc706370": {
+      "text": "What will happen on the sports field? There will be traditional games. Children can try Chinese yo-yo, kite-flying, dragon dance and tug of war.",
+      "lang": "en",
+      "file": "unit2-02.mp3",
+      "start": 15.2587,
+      "duration": 8.8107,
+      "speed": 0.94,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "2fe71c38": {
+      "text": "You can try a game and stamp your card. Then you can get a prize. Come and have a go!",
+      "lang": "en",
+      "file": "unit2-02.mp3",
+      "start": 24.4193,
+      "duration": 4.7787,
+      "speed": 0.94,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "2f3814cb": {
+      "text": "The invitation ends with a friendly idea: Let's have fun together.",
+      "lang": "en",
+      "file": "unit2-02.mp3",
+      "start": 29.548,
+      "duration": 4.0747,
+      "speed": 0.94,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "544c81af": {
+      "text": "The children watch Mr Zhong practise kung fu. He introduces changquan. In the lesson, changquan is described as the mother of many kung fu styles.",
+      "lang": "en",
+      "file": "unit2-02.mp3",
+      "start": 33.9727,
+      "duration": 9.6853,
+      "speed": 0.94,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "d95937c7": {
+      "text": "Mr Zhong talks about twelve kinds of actions. He shows one and asks the children what it looks like. They think of a tree.",
+      "lang": "en",
+      "file": "unit2-02.mp3",
+      "start": 44.008,
+      "duration": 7.4027,
+      "speed": 0.94,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "2178c927": {
+      "text": "Stand like a pine tree. The children stand straight and strong. A picture in your mind can help you remember the action.",
+      "lang": "en",
+      "file": "unit2-02.mp3",
+      "start": 51.7607,
+      "duration": 7.2747,
+      "speed": 0.94,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "3d9fe659": {
+      "text": "Sit like a bell. This is another way to use a familiar shape to describe an action. What does this look like? Think before you answer.",
+      "lang": "en",
+      "file": "unit2-02.mp3",
+      "start": 59.3853,
+      "duration": 7.7227,
+      "speed": 0.94,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "edb549cf": {
+      "text": "Mr Zhong moves as fast as the wind. He explains that he uses all his strength for each action. That is why he moves so fast.",
+      "lang": "en",
+      "file": "unit2-02.mp3",
+      "start": 67.458,
+      "duration": 8.576,
+      "speed": 0.94,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "c5cebe28": {
+      "text": "The Dragon Dance Club is getting ready for the garden party. Its members are practising together.",
+      "lang": "en",
+      "file": "unit2-03.mp3",
+      "start": 0.0,
+      "duration": 5.504,
+      "speed": 0.94,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "a1ffbc17": {
+      "text": "Minmin is at the head of the dragon. He runs too fast. At the tail, Xiaopu calls out, but the others can't keep up with Minmin.",
+      "lang": "en",
+      "file": "unit2-03.mp3",
+      "start": 5.854,
+      "duration": 8.0213,
+      "speed": 0.94,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "fb1cc1b6": {
+      "text": "Minmin can't hear the call because the music is loud. He runs faster, and the students at the tail lose control of their sticks.",
+      "lang": "en",
+      "file": "unit2-03.mp3",
+      "start": 14.2253,
+      "duration": 7.7227,
+      "speed": 0.94,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "10d416b1": {
+      "text": "Mr Zhong stops the practice. Everyone needs to work as a team. Minmin should follow the music, and the others should follow him.",
+      "lang": "en",
+      "file": "unit2-03.mp3",
+      "start": 22.298,
+      "duration": 7.872,
+      "speed": 0.94,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "a1cd12e0": {
+      "text": "They try again and keep the same pace. Now the dragon moves smoothly. Keeping together makes the difference.",
+      "lang": "en",
+      "file": "unit2-03.mp3",
+      "start": 30.52,
+      "duration": 6.5067,
+      "speed": 0.94,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "b9f6b0f4": {
+      "text": "Start your game introduction with its name. For example: Kite-flying is my favourite traditional game.",
+      "lang": "en",
+      "file": "unit2-03.mp3",
+      "start": 37.3767,
+      "duration": 6.0587,
+      "speed": 0.94,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "a61d0527": {
+      "text": "Next, explain what you need and how to play. A kite and a windy day are useful for kite-flying. You can run and watch the kite rise.",
+      "lang": "en",
+      "file": "unit2-03.mp3",
+      "start": 43.7853,
+      "duration": 8.5547,
+      "speed": 0.94,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "3dc1c4ee": {
+      "text": "Finish with a reason and an invitation. You might say that the game is exciting. Invite your friends to have a go.",
+      "lang": "en",
+      "file": "unit2-03.mp3",
+      "start": 52.69,
+      "duration": 7.0613,
+      "speed": 0.94,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "c307e66e": {
+      "text": "Xiaoming's bird kite is stuck in a tall tree. He cannot get it down.",
+      "lang": "en",
+      "file": "unit2-03.mp3",
+      "start": 60.1013,
+      "duration": 3.968,
+      "speed": 0.94,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "2163db0f": {
+      "text": "Grandpa uses his Chinese yo-yo to help. It spins fast and makes a whooshing sound.",
+      "lang": "en",
+      "file": "unit2-03.mp3",
+      "start": 64.4193,
+      "duration": 5.3973,
+      "speed": 0.94,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "9ccb174b": {
+      "text": "The kite is moving. It is falling down. Xiaoming gets his kite back.",
+      "lang": "en",
+      "file": "unit2-03.mp3",
+      "start": 70.1667,
+      "duration": 4.2667,
+      "speed": 0.94,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "1ce8329d": {
+      "text": "We can work as a team.",
+      "lang": "en",
+      "file": "unit2-03.mp3",
+      "start": 74.7833,
+      "duration": 1.4507,
+      "speed": 0.92,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "0223bca4": {
+      "text": "There will be traditional games on the sports field.",
+      "lang": "en",
+      "file": "unit2-03.mp3",
+      "start": 76.584,
+      "duration": 2.6027,
+      "speed": 0.92,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "ec7b031c": {
+      "text": "This is changquan.",
+      "lang": "en",
+      "file": "unit2-03.mp3",
+      "start": 79.5367,
+      "duration": 1.152,
+      "speed": 0.92,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "7dada2e7": {
+      "text": "What does this look like? It looks like a tree.",
+      "lang": "en",
+      "file": "unit2-03.mp3",
+      "start": 81.0387,
+      "duration": 2.4533,
+      "speed": 0.92,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "43de61ae": {
+      "text": "Stand like a pine tree.",
+      "lang": "en",
+      "file": "unit2-03.mp3",
+      "start": 83.842,
+      "duration": 1.5147,
+      "speed": 0.92,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "edd356e7": {
+      "text": "I like kite-flying because it is exciting.",
+      "lang": "en",
+      "file": "unit2-04.mp3",
+      "start": 0.0,
+      "duration": 2.6027,
+      "speed": 0.92,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "61c3ce42": {
+      "text": "We can't keep up with you.",
+      "lang": "en",
+      "file": "unit2-04.mp3",
+      "start": 2.9527,
+      "duration": 1.472,
+      "speed": 0.92,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "68ac637e": {
+      "text": "We need to work as a team.",
+      "lang": "en",
+      "file": "unit2-04.mp3",
+      "start": 4.7747,
+      "duration": 1.6,
+      "speed": 0.92,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "d7aeb08d": {
+      "text": "They are playing football.",
+      "lang": "en",
+      "file": "unit2-04.mp3",
+      "start": 6.7247,
+      "duration": 1.4293,
+      "speed": 0.92,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "38a54411": {
+      "text": "lovely",
+      "lang": "en",
+      "file": "unit2-04.mp3",
+      "start": 8.504,
+      "duration": 0.832,
+      "speed": 0.9,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "0478d0f3": {
+      "text": "great",
+      "lang": "en",
+      "file": "unit2-04.mp3",
+      "start": 9.686,
+      "duration": 0.8747,
+      "speed": 0.9,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "1153aefa": {
+      "text": "often",
+      "lang": "en",
+      "file": "unit2-04.mp3",
+      "start": 10.9107,
+      "duration": 0.9173,
+      "speed": 0.9,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "ff2b4f9f": {
+      "text": "always",
+      "lang": "en",
+      "file": "unit2-04.mp3",
+      "start": 12.178,
+      "duration": 1.0027,
+      "speed": 0.9,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "30867550": {
+      "text": "interesting",
+      "lang": "en",
+      "file": "unit2-04.mp3",
+      "start": 13.5307,
+      "duration": 1.024,
+      "speed": 0.9,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "775c90b8": {
+      "text": "helpful",
+      "lang": "en",
+      "file": "unit2-04.mp3",
+      "start": 14.9047,
+      "duration": 0.9387,
+      "speed": 0.9,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "9ecf4e82": {
+      "text": "English",
+      "lang": "en",
+      "file": "unit2-04.mp3",
+      "start": 16.1933,
+      "duration": 0.96,
+      "speed": 0.9,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "e759e7db": {
+      "text": "duck",
+      "lang": "en",
+      "file": "unit2-04.mp3",
+      "start": 17.5033,
+      "duration": 0.768,
+      "speed": 0.9,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "7b30a182": {
+      "text": "want to be",
+      "lang": "en",
+      "file": "unit2-04.mp3",
+      "start": 18.6213,
+      "duration": 0.9173,
+      "speed": 0.9,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "41533d83": {
+      "text": "share with",
+      "lang": "en",
+      "file": "unit2-04.mp3",
+      "start": 19.8887,
+      "duration": 0.96,
+      "speed": 0.9,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "6f025445": {
+      "text": "be good at",
+      "lang": "en",
+      "file": "unit2-04.mp3",
+      "start": 21.1987,
+      "duration": 0.9813,
+      "speed": 0.9,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "a2effbe7": {
+      "text": "help with",
+      "lang": "en",
+      "file": "unit2-04.mp3",
+      "start": 22.53,
+      "duration": 0.96,
+      "speed": 0.9,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "f220c79c": {
+      "text": "play with",
+      "lang": "en",
+      "file": "unit2-05.mp3",
+      "start": 0.0,
+      "duration": 0.9173,
+      "speed": 0.9,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "ae6073bc": {
+      "text": "take it easy",
+      "lang": "en",
+      "file": "unit2-05.mp3",
+      "start": 1.2673,
+      "duration": 1.1733,
+      "speed": 0.9,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "a2b01819": {
+      "text": "slow down",
+      "lang": "en",
+      "file": "unit2-05.mp3",
+      "start": 2.7907,
+      "duration": 1.1093,
+      "speed": 0.9,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "6ee75d44": {
+      "text": "cheer for",
+      "lang": "en",
+      "file": "unit2-05.mp3",
+      "start": 4.25,
+      "duration": 0.96,
+      "speed": 0.9,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "aad1eb43": {
+      "text": "Look around the classroom. Every classmate has something special to share. They are different, and each person matters.",
+      "lang": "en",
+      "file": "unit2-05.mp3",
+      "start": 5.56,
+      "duration": 6.9333,
+      "speed": 0.94,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "e5c4d9fa": {
+      "text": "Shenshen hopes to be a writer, while Xiaojiang wants to be a painter. They enjoy sharing their work with one another.",
+      "lang": "en",
+      "file": "unit2-05.mp3",
+      "start": 12.8433,
+      "duration": 7.0187,
+      "speed": 0.94,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "424780f7": {
+      "text": "Minmin plays football well. Xiaopu is good at basketball. Their classmates cheer for both of them.",
+      "lang": "en",
+      "file": "unit2-05.mp3",
+      "start": 20.212,
+      "duration": 5.9733,
+      "speed": 0.94,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "73043472": {
+      "text": "Yaoyao is polite and helpful. She uses polite words and often helps James learn Chinese. Her actions show what she is like.",
+      "lang": "en",
+      "file": "unit2-05.mp3",
+      "start": 26.5353,
+      "duration": 8.1493,
+      "speed": 0.94,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "45f78462": {
+      "text": "The class is playing a guessing game. Shenshen gives clues about a classmate without saying his name.",
+      "lang": "en",
+      "file": "unit2-05.mp3",
+      "start": 35.0347,
+      "duration": 5.824,
+      "speed": 0.94,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "9f30fdb7": {
+      "text": "The classmate smiles warmly and has lots of friends. He often tells stories that make people interested.",
+      "lang": "en",
+      "file": "unit2-05.mp3",
+      "start": 41.2087,
+      "duration": 6.208,
+      "speed": 0.94,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "3a82a940": {
+      "text": "Here is an action clue: he helps teachers clean the blackboard. This is one reason to call him helpful.",
+      "lang": "en",
+      "file": "unit2-05.mp3",
+      "start": 47.7667,
+      "duration": 5.9733,
+      "speed": 0.94,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "92475a4c": {
+      "text": "He also helps other students learn English. A useful clue tells us who he helps and what he helps them do.",
+      "lang": "en",
+      "file": "unit2-05.mp3",
+      "start": 54.09,
+      "duration": 6.3573,
+      "speed": 0.94,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "925d2b37": {
+      "text": "Someone guesses Wenwen, but the answer is James. James is surprised to discover that the clues are about him.",
+      "lang": "en",
+      "file": "unit2-05.mp3",
+      "start": 60.7973,
+      "duration": 6.848,
+      "speed": 0.94,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "49d30be7": {
+      "text": "James watches his classmates skip with a long rope. It seems difficult, and he does not feel confident.",
+      "lang": "en",
+      "file": "unit2-05.mp3",
+      "start": 67.9953,
+      "duration": 6.4,
+      "speed": 0.94,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "f782e539": {
+      "text": "Minmin gives him a helpful instruction: wait for the rope to come down, then jump over it. A clear step can make a hard task easier.",
+      "lang": "en",
+      "file": "unit2-05.mp3",
+      "start": 74.7453,
+      "duration": 8.4267,
+      "speed": 0.94,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "cc6e8041": {
+      "text": "When James sees the rope coming, he ducks away. He is still afraid of it.",
+      "lang": "en",
+      "file": "unit2-05.mp3",
+      "start": 83.522,
+      "duration": 4.2453,
+      "speed": 0.94,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "9a9daf23": {
+      "text": "Shenshen and Xiaojiang encourage James and turn the rope more slowly. They change the task to help him try again.",
+      "lang": "en",
+      "file": "unit2-06.mp3",
+      "start": 0.0,
+      "duration": 7.36,
+      "speed": 0.94,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "28fab342": {
+      "text": "This time, James jumps in and keeps skipping. Everyone cheers. He feels excited and thanks his classmates.",
+      "lang": "en",
+      "file": "unit2-06.mp3",
+      "start": 7.71,
+      "duration": 6.5707,
+      "speed": 0.94,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "84866a71": {
+      "text": "To write a classmate riddle, begin with a personal quality and give an action as evidence. For example, a helpful classmate may help you draw.",
+      "lang": "en",
+      "file": "unit2-06.mp3",
+      "start": 14.6307,
+      "duration": 8.704,
+      "speed": 0.94,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "4d9e18e9": {
+      "text": "Add a skill and a dream. She may be good at painting pictures and want to be a painter. Keep the name secret until others guess.",
+      "lang": "en",
+      "file": "unit2-06.mp3",
+      "start": 23.6847,
+      "duration": 7.5733,
+      "speed": 0.94,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "5bbd3621": {
+      "text": "In this extra story, Duck, Dog and Tortoise take part in a swimming match after class.",
+      "lang": "en",
+      "file": "unit2-06.mp3",
+      "start": 31.608,
+      "duration": 5.3547,
+      "speed": 0.94,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "49a9ca6e": {
+      "text": "Dog makes a fast start, then gets tired. Tortoise moves slowly and falls behind.",
+      "lang": "en",
+      "file": "unit2-06.mp3",
+      "start": 37.3127,
+      "duration": 5.3333,
+      "speed": 0.94,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "a80632a2": {
+      "text": "Duck swims well and encourages the other two swimmers. In the story, he has plenty of energy.",
+      "lang": "en",
+      "file": "unit2-06.mp3",
+      "start": 42.996,
+      "duration": 5.8027,
+      "speed": 0.94,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "5220b6a9": {
+      "text": "Duck wins, but the friends celebrate all three swimmers. Winning is one achievement; trying and supporting others matter too.",
+      "lang": "en",
+      "file": "unit2-06.mp3",
+      "start": 49.1487,
+      "duration": 7.5093,
+      "speed": 0.94,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "027ef893": {
+      "text": "Here are my lovely classmates.",
+      "lang": "en",
+      "file": "unit2-06.mp3",
+      "start": 57.008,
+      "duration": 1.7493,
+      "speed": 0.92,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "4a16b095": {
+      "text": "She wants to be a painter.",
+      "lang": "en",
+      "file": "unit2-06.mp3",
+      "start": 59.1073,
+      "duration": 1.5147,
+      "speed": 0.92,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "673e79c1": {
+      "text": "She is good at painting pictures.",
+      "lang": "en",
+      "file": "unit2-06.mp3",
+      "start": 60.972,
+      "duration": 1.8347,
+      "speed": 0.92,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "bed8c141": {
+      "text": "She often helps friends.",
+      "lang": "en",
+      "file": "unit2-06.mp3",
+      "start": 63.1567,
+      "duration": 1.536,
+      "speed": 0.92,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "70ef3073": {
+      "text": "He helps teachers clean the blackboard.",
+      "lang": "en",
+      "file": "unit2-06.mp3",
+      "start": 65.0427,
+      "duration": 2.0907,
+      "speed": 0.92,
+      "listened": false,
+      "contentReview": "pending"
+    },
+    "e5cd0ddf": {
+      "text": "I see him playing football.",
+      "lang": "en",
+      "file": "unit2-06.mp3",
+      "start": 67.4833,
+      "duration": 1.6213,
+      "speed": 0.92,
+      "listened": false,
+      "contentReview": "pending"
+    }
+  },
+  "files": [
+    {
+      "file": "unit2-01.mp3",
+      "sha256": "28132a5fea66b19670144661d2f439f8f43240256cede92312639e116ae6131e",
+      "bytes": 216285,
+      "segments": 16
+    },
+    {
+      "file": "unit2-03.mp3",
+      "sha256": "6829a50e1956cf2762fc30c0ab1e785a64b6d7c690b5484ed660c5802c38a106",
+      "bytes": 858045,
+      "segments": 16
+    },
+    {
+      "file": "unit2-04.mp3",
+      "sha256": "ba92dceb7552fb2e5a2b8b86e2c52ea1e72a3174bd987c60de5f09610a05f514",
+      "bytes": 239325,
+      "segments": 16
+    },
+    {
+      "file": "unit2-05.mp3",
+      "sha256": "69f0df1e2d869a94d0d356322fb300cc0770ec8ec74e568804121ac60f9bf259",
+      "bytes": 882045,
+      "segments": 16
+    },
+    {
+      "file": "unit2-06.mp3",
+      "sha256": "c154e5ea995104fbe9b616c69f101405b7fb12ca3585499fa2a82c50777258a6",
+      "bytes": 695325,
+      "segments": 14
+    },
+    {
+      "file": "unit2-02.mp3",
+      "sha256": "9b19426de71b6b06b8657f68d568ff0e340635be205bf594c035f776ce288544",
+      "bytes": 764685,
+      "segments": 16
+    }
+  ]
+}

@@ -1,0 +1,561 @@
+{
+ "enRate": "-10%",
+ "zhRate": "-10%",
+ "items": [
+  {
+   "lang": "en",
+   "text": "red",
+   "enRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "blue",
+   "enRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "yellow",
+   "enRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "green",
+   "enRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "orange",
+   "enRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "elephant",
+   "enRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "lion",
+   "enRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "monkey",
+   "enRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "tiger",
+   "enRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "panda",
+   "enRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "ball",
+   "enRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "sour",
+   "enRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "sweet",
+   "enRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "salty",
+   "enRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "bitter",
+   "enRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "cake",
+   "enRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "black",
+   "enRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "brown",
+   "enRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "purple",
+   "enRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "The banana is yellow.",
+   "enRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "cat",
+   "enRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "loud",
+   "enRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "I can see a big elephant in the zoo.",
+   "enRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "milk",
+   "enRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "The lemon is sour.",
+   "enRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "I like my new toy car.",
+   "enRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "toy car",
+   "enRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "It tastes nice.",
+   "enRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "tastes",
+   "enRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "sees",
+   "enRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "runs",
+   "enRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "The drum is loud.",
+   "enRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "fish",
+   "enRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "I can see a bird.",
+   "enRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "see",
+   "enRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "eat",
+   "enRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "drink",
+   "enRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "The grass is green.",
+   "enRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "tall",
+   "enRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "I have a new toy bear.",
+   "enRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "have",
+   "enRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "is",
+   "enRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "like",
+   "enRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "The apple is red.",
+   "enRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "are",
+   "enRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "am",
+   "enRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "I like bananas.",
+   "enRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "can",
+   "enRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "The cake is very sweet.",
+   "enRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "My ball is red and yellow.",
+   "enRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "Can you see the monkey?",
+   "enRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "Can",
+   "enRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "Is",
+   "enRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "Am",
+   "enRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "These oranges are sweet.",
+   "enRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "Do you like milk?",
+   "enRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "Do",
+   "enRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "Are",
+   "enRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "I have two toy cars.",
+   "enRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "It is a panda.",
+   "enRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "Yes, I can.",
+   "enRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "No",
+   "enRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "Yes",
+   "enRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "Not",
+   "enRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "The oranges are sweet.",
+   "enRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "This is my mum.",
+   "enRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "This",
+   "enRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "These",
+   "enRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "I am a girl.",
+   "enRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "I have a ball.",
+   "enRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "I has a ball.",
+   "enRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "I is a ball.",
+   "enRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "What colour is it?",
+   "enRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "It's blue.",
+   "enRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "Can you see the elephant?",
+   "enRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "It's sweet.",
+   "enRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "It's red.",
+   "enRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "Do you like cakes?",
+   "enRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "No, I don't.",
+   "enRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "It's a tiger.",
+   "enRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "By bus.",
+   "enRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "How does the lemon taste?",
+   "enRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "It's green.",
+   "enRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "It tastes sour.",
+   "enRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "I have a toy.",
+   "enRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "What is it?",
+   "enRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "It's a panda.",
+   "enRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "Yes, it is.",
+   "enRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "What can you see?",
+   "enRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "No, I can't.",
+   "enRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "I have a toy car.",
+   "enRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "Have I a toy car.",
+   "enRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "A toy car I have.",
+   "enRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "You can see the monkey?",
+   "enRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "See you the monkey can?",
+   "enRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "The apple are red.",
+   "enRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "The apple red is.",
+   "enRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "I have a toy bear.",
+   "enRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "I am a toy bear.",
+   "enRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "I has a toy bear.",
+   "enRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "Can you see it?",
+   "enRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "Can you see it.",
+   "enRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "Can you see it,",
+   "enRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "The ugly duckling becomes a swan.",
+   "enRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "Happy Children's Day!",
+   "enRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "Hello! Can you see a bird?",
+   "enRate": "-10%"
+  },
+  {
+   "lang": "zh",
+   "text": "你好 Eddey，我们来刷英语题。",
+   "zhRate": "-10%"
+  },
+  {
+   "lang": "zh",
+   "text": "对",
+   "zhRate": "-10%"
+  },
+  {
+   "lang": "zh",
+   "text": "再看一下",
+   "zhRate": "-10%"
+  },
+  {
+   "lang": "zh",
+   "text": "全对，真厉害！",
+   "zhRate": "-10%"
+  },
+  {
+   "lang": "zh",
+   "text": "做完了，错题已经记下来。",
+   "zhRate": "-10%"
+  }
+ ]
+}

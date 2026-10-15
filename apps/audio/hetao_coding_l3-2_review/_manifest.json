@@ -1,0 +1,13 @@
+{
+  "zhRate": "0%",
+  "enRate": "0%",
+  "items": [
+    { "lang": "en", "text": "forward" },
+    { "lang": "en", "text": "dig" },
+    { "lang": "en", "text": "put" },
+    { "lang": "en", "text": "climb up" },
+    { "lang": "en", "text": "climb down" },
+    { "lang": "zh", "text": "答对了" },
+    { "lang": "zh", "text": "再想想" }
+  ]
+}

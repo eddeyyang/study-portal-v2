@@ -1,0 +1,90 @@
+{
+ "app": "kenton_sentence_patterns_20260802",
+ "voice": "en-US-AriaNeural",
+ "enRate": "-10%",
+ "hash": "named (pattern hero sentences + linking verbs)",
+ "total": 16,
+ "status": "machine-verified; phone playback pending parent acceptance",
+ "items": [
+  {
+   "lang": "en-US",
+   "text": "be",
+   "file": "l-be.mp3"
+  },
+  {
+   "lang": "en-US",
+   "text": "become",
+   "file": "l-become.mp3"
+  },
+  {
+   "lang": "en-US",
+   "text": "feel",
+   "file": "l-feel.mp3"
+  },
+  {
+   "lang": "en-US",
+   "text": "get",
+   "file": "l-get.mp3"
+  },
+  {
+   "lang": "en-US",
+   "text": "grow",
+   "file": "l-grow.mp3"
+  },
+  {
+   "lang": "en-US",
+   "text": "keep",
+   "file": "l-keep.mp3"
+  },
+  {
+   "lang": "en-US",
+   "text": "look",
+   "file": "l-look.mp3"
+  },
+  {
+   "lang": "en-US",
+   "text": "seem",
+   "file": "l-seem.mp3"
+  },
+  {
+   "lang": "en-US",
+   "text": "smell",
+   "file": "l-smell.mp3"
+  },
+  {
+   "lang": "en-US",
+   "text": "sound",
+   "file": "l-sound.mp3"
+  },
+  {
+   "lang": "en-US",
+   "text": "stay",
+   "file": "l-stay.mp3"
+  },
+  {
+   "lang": "en-US",
+   "text": "taste",
+   "file": "l-taste.mp3"
+  },
+  {
+   "lang": "en-US",
+   "text": "turn",
+   "file": "l-turn.mp3"
+  },
+  {
+   "lang": "en-US",
+   "text": "The sun rises.",
+   "file": "p-sv.mp3"
+  },
+  {
+   "lang": "en-US",
+   "text": "The cake smells nice.",
+   "file": "p-svc.mp3"
+  },
+  {
+   "lang": "en-US",
+   "text": "I like English.",
+   "file": "p-svo.mp3"
+  }
+ ]
+}

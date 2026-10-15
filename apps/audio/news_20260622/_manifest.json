@@ -1,0 +1,398 @@
+{
+ "zhRate": "0%",
+ "enRate": "-5%",
+ "items": [
+  {
+   "lang": "en",
+   "text": "Good morning, little explorers, Kenton and Eddey! Today is Monday, June twenty-second. Shanghai is still in the plum-rain season, so the morning is grey and cloudy, and a warm shower may drift past later in the day. The air is wet and a little sticky, about twenty-nine degrees, so a light, cool shirt is just right. Pop a small umbrella into your bag before you leave, just in case. Ready? Let's go and explore the big world together!"
+  },
+  {
+   "lang": "zh",
+   "text": "小探险家 Kenton、Eddey，早上好！今天是 6 月 22 日，星期一。上海还在梅雨季节里，早晨天空灰灰的、多云，白天晚些时候可能飘过一阵暖暖的雨。空气湿湿的、有点黏，气温大约 29 度，穿一件薄薄的、凉快的上衣正合适。出门前，记得往书包里塞一把小伞，以防万一。准备好了吗？我们一起去探索这个大世界吧！"
+  },
+  {
+   "lang": "en",
+   "text": "Good news for everyone who loves the stars! This week the Earth gave us something special: the longest day of the whole year."
+  },
+  {
+   "lang": "zh",
+   "text": "爱看星星的小朋友，好消息！这个星期，地球送给我们一份特别的礼物：一年里白天最长的一天。"
+  },
+  {
+   "lang": "en",
+   "text": "It is called the summer solstice, and this year it happened on June twenty-first, the day before today."
+  },
+  {
+   "lang": "zh",
+   "text": "这一天叫“夏至”，今年的夏至就在 6 月 21 日，也就是今天的前一天。"
+  },
+  {
+   "lang": "en",
+   "text": "On that day, the Sun stayed up in the sky longer than on any other day, and the night was the shortest of the year."
+  },
+  {
+   "lang": "zh",
+   "text": "在那一天，太阳待在天空里的时间，比一年里任何一天都长，而黑夜，是一年中最短的。"
+  },
+  {
+   "lang": "en",
+   "text": "But why is one day longer than all the rest? The secret is hiding in the way our Earth leans."
+  },
+  {
+   "lang": "zh",
+   "text": "可是，为什么会有一天比别的日子都长呢？秘密，就藏在地球“歪着身子”的样子里。"
+  },
+  {
+   "lang": "en",
+   "text": "Our planet does not stand up straight. It is tilted a little, like a spinning top that leans to one side."
+  },
+  {
+   "lang": "zh",
+   "text": "我们的地球并不是笔直站着的。它稍微斜着一点，就像一个转着转着、偏向一边的陀螺。"
+  },
+  {
+   "lang": "en",
+   "text": "In June, the top half of the Earth, where we live, leans toward the Sun, so we get more sunlight and longer days."
+  },
+  {
+   "lang": "zh",
+   "text": "到了六月，地球的上半边——也就是我们住的这一半——朝着太阳倾斜，所以我们得到更多阳光，白天也更长。"
+  },
+  {
+   "lang": "en",
+   "text": "This same gentle lean is what gives us our seasons. When our half leans toward the Sun, it is summer, warm and bright."
+  },
+  {
+   "lang": "zh",
+   "text": "正是这同一个轻轻的倾斜，给了我们四季。当我们这半边朝着太阳倾斜时，就是夏天，又暖又亮。"
+  },
+  {
+   "lang": "en",
+   "text": "Six months later, our half leans away from the Sun, the days grow short, and cold winter comes."
+  },
+  {
+   "lang": "zh",
+   "text": "再过六个月，我们这半边变成背对太阳，白天变短，寒冷的冬天就来了。"
+  },
+  {
+   "lang": "en",
+   "text": "So summer and winter are not about being nearer to the Sun. They are all about which way the Earth is leaning."
+  },
+  {
+   "lang": "zh",
+   "text": "所以，夏天和冬天，并不是因为离太阳更近或更远，而完全取决于地球朝着哪个方向倾斜。"
+  },
+  {
+   "lang": "en",
+   "text": "Because the day was so long, the night of the solstice was also the shortest night of the whole year."
+  },
+  {
+   "lang": "zh",
+   "text": "因为白天那么长，夏至那一晚，也就成了一整年里最短的夜晚。"
+  },
+  {
+   "lang": "en",
+   "text": "From now on, day by day, the Sun will rise a tiny bit later, and each night will slowly grow longer again."
+  },
+  {
+   "lang": "zh",
+   "text": "从现在开始，日子一天天过去，太阳会一天比一天升得晚一点点，黑夜也会慢慢重新变长。"
+  },
+  {
+   "lang": "en",
+   "text": "People all around the world welcome this longest day with music, lights, and parties that last late into the evening."
+  },
+  {
+   "lang": "zh",
+   "text": "全世界的人，都会用音乐、灯光和热闹的派对，来迎接这白天最长的一天，一直玩到很晚很晚。"
+  },
+  {
+   "lang": "en",
+   "text": "Summer is also one of the very best times of the year to look up at the night sky."
+  },
+  {
+   "lang": "zh",
+   "text": "夏天，也是一年里最适合抬头看夜空的时候之一。"
+  },
+  {
+   "lang": "en",
+   "text": "On a clear, dark evening you can spot bright planets like Venus and Jupiter, shining steadily without even twinkling."
+  },
+  {
+   "lang": "zh",
+   "text": "在一个晴朗、漆黑的夜晚，你能找到像金星、木星这样明亮的行星，它们稳稳地亮着，却几乎不眨眼。"
+  },
+  {
+   "lang": "en",
+   "text": "You may also see a faint, cloudy band of stars stretching across the sky. That far-off band is part of our own galaxy, the Milky Way."
+  },
+  {
+   "lang": "zh",
+   "text": "你说不定还会看到一条淡淡的、云雾般的星星带，横跨整个天空。那条遥远的带子，正是我们自己所在的星系——银河的一部分。"
+  },
+  {
+   "lang": "en",
+   "text": "So tonight, if the rain clouds clear away, ask a grown-up to step outside with you and look up."
+  },
+  {
+   "lang": "zh",
+   "text": "所以今天晚上，如果雨云散开了，就请大人陪你一起走到外面，抬头看看吧。"
+  },
+  {
+   "lang": "en",
+   "text": "The same Sun that gave us the longest day will set, and one by one the stars will come out to say hello."
+  },
+  {
+   "lang": "zh",
+   "text": "那个给了我们最长白天的太阳会落下，星星会一颗接一颗探出头来，跟你打招呼。"
+  },
+  {
+   "lang": "en",
+   "text": "Our Earth is always spinning and leaning and travelling around the Sun, and that quiet dance gives us our days, our nights, and our seasons."
+  },
+  {
+   "lang": "zh",
+   "text": "我们的地球一直在自转、倾斜，绕着太阳旅行，正是这场安静的舞蹈，给了我们白天、黑夜和四季。"
+  },
+  {
+   "lang": "en",
+   "text": "solstice"
+  },
+  {
+   "lang": "zh",
+   "text": "至日(夏至/冬至)"
+  },
+  {
+   "lang": "en",
+   "text": "tilt"
+  },
+  {
+   "lang": "zh",
+   "text": "倾斜"
+  },
+  {
+   "lang": "en",
+   "text": "season"
+  },
+  {
+   "lang": "zh",
+   "text": "季节"
+  },
+  {
+   "lang": "en",
+   "text": "planet"
+  },
+  {
+   "lang": "zh",
+   "text": "行星"
+  },
+  {
+   "lang": "en",
+   "text": "galaxy"
+  },
+  {
+   "lang": "zh",
+   "text": "星系"
+  },
+  {
+   "lang": "en",
+   "text": "sunlight"
+  },
+  {
+   "lang": "zh",
+   "text": "阳光"
+  },
+  {
+   "lang": "en",
+   "text": "Our second story dives deep under the waves to meet one of the strangest and smartest animals in the whole ocean: the octopus."
+  },
+  {
+   "lang": "zh",
+   "text": "第二条新闻，要潜到海浪深处，去认识整个海洋里最奇特、也最聪明的动物之一：章鱼。"
+  },
+  {
+   "lang": "en",
+   "text": "An octopus has a soft, round body and no bones at all, so it can squeeze through a hole as small as a coin."
+  },
+  {
+   "lang": "zh",
+   "text": "章鱼有着软软的、圆圆的身体，全身一根骨头都没有，所以它能从一个像硬币那么小的洞里挤过去。"
+  },
+  {
+   "lang": "en",
+   "text": "And of course it has eight long arms, which is exactly what its name means: eight feet."
+  },
+  {
+   "lang": "zh",
+   "text": "当然啦，它还有八条长长的手臂——这正是它名字的意思：“八只脚”。"
+  },
+  {
+   "lang": "en",
+   "text": "Those eight arms are covered with rows of round suckers that can taste and grip at the very same time."
+  },
+  {
+   "lang": "zh",
+   "text": "这八条手臂上，长满了一排排圆圆的吸盘，既能尝味道，又能牢牢抓住东西。"
+  },
+  {
+   "lang": "en",
+   "text": "Here is something amazing: each arm can feel and even decide what to do almost on its own, as if the octopus had eight little helpers."
+  },
+  {
+   "lang": "zh",
+   "text": "有件事特别神奇：每一条手臂几乎都能自己感觉、自己决定要做什么，就好像章鱼有八个小帮手一样。"
+  },
+  {
+   "lang": "en",
+   "text": "With those clever arms it can open jars, build little shelters out of shells, and solve tricky puzzles in a tank."
+  },
+  {
+   "lang": "zh",
+   "text": "靠着这些聪明的手臂，它能拧开罐子、用贝壳搭起藏身的小窝，还能解开水箱里刁钻的谜题。"
+  },
+  {
+   "lang": "en",
+   "text": "An octopus is strange on the inside too. It does not have just one heart like you. It has three!"
+  },
+  {
+   "lang": "zh",
+   "text": "章鱼的身体里面，也一样奇怪。它不像你只有一颗心脏——它有三颗！"
+  },
+  {
+   "lang": "en",
+   "text": "Two of the hearts push blood to its gills to gather oxygen, and the third heart sends blood around the rest of its body."
+  },
+  {
+   "lang": "zh",
+   "text": "其中两颗心脏，把血液送到鳃里去收集氧气；第三颗心脏，则把血液送往身体的其它地方。"
+  },
+  {
+   "lang": "en",
+   "text": "Even stranger, its blood is not red like ours. It is blue, which helps it live in the cold, dark water of the deep sea."
+  },
+  {
+   "lang": "zh",
+   "text": "更奇怪的是，它的血不像我们的是红色的，而是蓝色的，这能帮它在又冷又黑的深海里生活。"
+  },
+  {
+   "lang": "en",
+   "text": "But the octopus's greatest trick of all is hiding. In less than a second, it can change the colour of its whole body."
+  },
+  {
+   "lang": "zh",
+   "text": "不过，章鱼最厉害的绝招是“藏”。不到一秒钟，它就能改变全身的颜色。"
+  },
+  {
+   "lang": "en",
+   "text": "It can turn sandy yellow to match the seabed, or bumpy and brown to look just like a rock or a piece of coral."
+  },
+  {
+   "lang": "zh",
+   "text": "它能变成沙子一样的黄色，融进海底；也能变得坑坑洼洼、棕棕的，看上去就像一块石头或一丛珊瑚。"
+  },
+  {
+   "lang": "en",
+   "text": "It does this with tiny bags of colour in its skin, vanishing right in front of your eyes to hide from sharks and other hunters."
+  },
+  {
+   "lang": "zh",
+   "text": "它靠皮肤里一个个小小的“颜色口袋”做到这一点，在你眼前一下子就消失，躲开鲨鱼和别的猎食者。"
+  },
+  {
+   "lang": "en",
+   "text": "If a hungry enemy still manages to find it, the octopus has one more clever escape plan ready."
+  },
+  {
+   "lang": "zh",
+   "text": "如果饿肚子的敌人还是找到了它，章鱼还准备着另一个聪明的逃跑计划。"
+  },
+  {
+   "lang": "en",
+   "text": "It shoots out a cloud of dark ink that hangs in the water like smoke, and while the enemy is confused, it jets away."
+  },
+  {
+   "lang": "zh",
+   "text": "它会喷出一团黑黑的墨汁，像烟雾一样悬在水里；趁敌人晕头转向的时候，它“嗖”地一下喷水逃走。"
+  },
+  {
+   "lang": "en",
+   "text": "Scientists say the octopus is one of the smartest animals without a backbone, with a memory good enough to remember the people who feed it."
+  },
+  {
+   "lang": "zh",
+   "text": "科学家说，章鱼是没有脊椎骨的动物里最聪明的之一，记性好到能记住经常喂它的人。"
+  },
+  {
+   "lang": "en",
+   "text": "Octopuses live in every ocean on Earth, from warm and shallow rock pools to the cold, crushing deep sea."
+  },
+  {
+   "lang": "zh",
+   "text": "章鱼生活在地球上的每一片海洋里，从温暖的浅水洼，到又冷又“压得人喘不过气”的深海。"
+  },
+  {
+   "lang": "en",
+   "text": "Some are as tiny as your thumb, while the giant Pacific octopus can stretch out wider than a car."
+  },
+  {
+   "lang": "zh",
+   "text": "有的章鱼小得像你的大拇指，而巨大的“北太平洋巨型章鱼”，张开来能比一辆汽车还宽。"
+  },
+  {
+   "lang": "en",
+   "text": "So the sea is full of clever, gentle creatures that we are only just beginning to understand. The more we explore, the more wonders we find."
+  },
+  {
+   "lang": "zh",
+   "text": "所以你看，大海里满是聪明又温柔、我们才刚刚开始了解的生灵。我们越去探索，就会发现越多的奇妙。"
+  },
+  {
+   "lang": "en",
+   "text": "octopus"
+  },
+  {
+   "lang": "zh",
+   "text": "章鱼"
+  },
+  {
+   "lang": "en",
+   "text": "sucker"
+  },
+  {
+   "lang": "zh",
+   "text": "吸盘"
+  },
+  {
+   "lang": "en",
+   "text": "heart"
+  },
+  {
+   "lang": "zh",
+   "text": "心脏"
+  },
+  {
+   "lang": "en",
+   "text": "camouflage"
+  },
+  {
+   "lang": "zh",
+   "text": "伪装, 隐蔽"
+  },
+  {
+   "lang": "en",
+   "text": "ink"
+  },
+  {
+   "lang": "zh",
+   "text": "墨汁"
+  },
+  {
+   "lang": "en",
+   "text": "ocean"
+  },
+  {
+   "lang": "zh",
+   "text": "海洋"
+  }
+ ]
+}

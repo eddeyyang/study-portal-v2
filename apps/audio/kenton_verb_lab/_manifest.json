@@ -1,0 +1,546 @@
+{
+ "zhRate": "-10%",
+ "enRate": "-10%",
+ "items": [
+  {
+   "lang": "en",
+   "text": "fall"
+  },
+  {
+   "lang": "en",
+   "text": "fall, fell, fallen"
+  },
+  {
+   "lang": "en",
+   "text": "feed"
+  },
+  {
+   "lang": "en",
+   "text": "feed, fed, fed"
+  },
+  {
+   "lang": "en",
+   "text": "feel"
+  },
+  {
+   "lang": "en",
+   "text": "feel, felt, felt"
+  },
+  {
+   "lang": "en",
+   "text": "fight"
+  },
+  {
+   "lang": "en",
+   "text": "fight, fought, fought"
+  },
+  {
+   "lang": "en",
+   "text": "find"
+  },
+  {
+   "lang": "en",
+   "text": "find, found, found"
+  },
+  {
+   "lang": "en",
+   "text": "flee"
+  },
+  {
+   "lang": "en",
+   "text": "flee, fled, fled"
+  },
+  {
+   "lang": "en",
+   "text": "fly"
+  },
+  {
+   "lang": "en",
+   "text": "fly, flew, flown"
+  },
+  {
+   "lang": "en",
+   "text": "forbid"
+  },
+  {
+   "lang": "en",
+   "text": "forbid, forbade, forbidden"
+  },
+  {
+   "lang": "en",
+   "text": "forecast"
+  },
+  {
+   "lang": "en",
+   "text": "forecast, forecast, forecast"
+  },
+  {
+   "lang": "en",
+   "text": "forget"
+  },
+  {
+   "lang": "en",
+   "text": "forget, forgot, forgotten"
+  },
+  {
+   "lang": "en",
+   "text": "forgive"
+  },
+  {
+   "lang": "en",
+   "text": "forgive, forgave, forgiven"
+  },
+  {
+   "lang": "en",
+   "text": "freeze"
+  },
+  {
+   "lang": "en",
+   "text": "freeze, froze, frozen"
+  },
+  {
+   "lang": "en",
+   "text": "get"
+  },
+  {
+   "lang": "en",
+   "text": "get, got, got"
+  },
+  {
+   "lang": "en",
+   "text": "give"
+  },
+  {
+   "lang": "en",
+   "text": "give, gave, given"
+  },
+  {
+   "lang": "en",
+   "text": "go"
+  },
+  {
+   "lang": "en",
+   "text": "go, went, gone"
+  },
+  {
+   "lang": "en",
+   "text": "grow"
+  },
+  {
+   "lang": "en",
+   "text": "grow, grew, grown"
+  },
+  {
+   "lang": "en",
+   "text": "hang"
+  },
+  {
+   "lang": "en",
+   "text": "hang, hung, hung"
+  },
+  {
+   "lang": "en",
+   "text": "have"
+  },
+  {
+   "lang": "en",
+   "text": "have, had, had"
+  },
+  {
+   "lang": "en",
+   "text": "hear"
+  },
+  {
+   "lang": "en",
+   "text": "hear, heard, heard"
+  },
+  {
+   "lang": "en",
+   "text": "hide"
+  },
+  {
+   "lang": "en",
+   "text": "hide, hid, hidden"
+  },
+  {
+   "lang": "en",
+   "text": "hit"
+  },
+  {
+   "lang": "en",
+   "text": "hit, hit, hit"
+  },
+  {
+   "lang": "en",
+   "text": "hold"
+  },
+  {
+   "lang": "en",
+   "text": "hold, held, held"
+  },
+  {
+   "lang": "en",
+   "text": "hurt"
+  },
+  {
+   "lang": "en",
+   "text": "hurt, hurt, hurt"
+  },
+  {
+   "lang": "en",
+   "text": "keep"
+  },
+  {
+   "lang": "en",
+   "text": "keep, kept, kept"
+  },
+  {
+   "lang": "en",
+   "text": "know"
+  },
+  {
+   "lang": "en",
+   "text": "know, knew, known"
+  },
+  {
+   "lang": "en",
+   "text": "lay"
+  },
+  {
+   "lang": "en",
+   "text": "lay, laid, laid"
+  },
+  {
+   "lang": "en",
+   "text": "lead"
+  },
+  {
+   "lang": "en",
+   "text": "lead, led, led"
+  },
+  {
+   "lang": "en",
+   "text": "leap"
+  },
+  {
+   "lang": "en",
+   "text": "leap, leapt, leapt"
+  },
+  {
+   "lang": "en",
+   "text": "learn"
+  },
+  {
+   "lang": "en",
+   "text": "learn, learnt, learnt"
+  },
+  {
+   "lang": "en",
+   "text": "leave"
+  },
+  {
+   "lang": "en",
+   "text": "leave, left, left"
+  },
+  {
+   "lang": "en",
+   "text": "lend"
+  },
+  {
+   "lang": "en",
+   "text": "lend, lent, lent"
+  },
+  {
+   "lang": "en",
+   "text": "let"
+  },
+  {
+   "lang": "en",
+   "text": "let, let, let"
+  },
+  {
+   "lang": "en",
+   "text": "lie"
+  },
+  {
+   "lang": "en",
+   "text": "lie, lay, lain"
+  },
+  {
+   "lang": "en",
+   "text": "light"
+  },
+  {
+   "lang": "en",
+   "text": "light, lit, lit"
+  },
+  {
+   "lang": "en",
+   "text": "lose"
+  },
+  {
+   "lang": "en",
+   "text": "lose, lost, lost"
+  },
+  {
+   "lang": "en",
+   "text": "make"
+  },
+  {
+   "lang": "en",
+   "text": "make, made, made"
+  },
+  {
+   "lang": "en",
+   "text": "may"
+  },
+  {
+   "lang": "en",
+   "text": "may, might"
+  },
+  {
+   "lang": "en",
+   "text": "mean"
+  },
+  {
+   "lang": "en",
+   "text": "mean, meant, meant"
+  },
+  {
+   "lang": "en",
+   "text": "meet"
+  },
+  {
+   "lang": "en",
+   "text": "meet, met, met"
+  },
+  {
+   "lang": "en",
+   "text": "mistake"
+  },
+  {
+   "lang": "en",
+   "text": "mistake, mistook, mistaken"
+  },
+  {
+   "lang": "en",
+   "text": "misunderstand"
+  },
+  {
+   "lang": "en",
+   "text": "misunderstand, misunderstood, misunderstood"
+  },
+  {
+   "lang": "en",
+   "text": "must"
+  },
+  {
+   "lang": "en",
+   "text": "must, must"
+  },
+  {
+   "lang": "en",
+   "text": "overcome"
+  },
+  {
+   "lang": "en",
+   "text": "overcome, overcame, overcome"
+  },
+  {
+   "lang": "en",
+   "text": "overtake"
+  },
+  {
+   "lang": "en",
+   "text": "overtake, overtook, overtaken"
+  },
+  {
+   "lang": "en",
+   "text": "pay"
+  },
+  {
+   "lang": "en",
+   "text": "pay, paid, paid"
+  },
+  {
+   "lang": "en",
+   "text": "put"
+  },
+  {
+   "lang": "en",
+   "text": "put, put, put"
+  },
+  {
+   "lang": "en",
+   "text": "read"
+  },
+  {
+   "lang": "en",
+   "text": "read, red, red"
+  },
+  {
+   "lang": "en",
+   "text": "rebuild"
+  },
+  {
+   "lang": "en",
+   "text": "rebuild, rebuilt, rebuilt"
+  },
+  {
+   "lang": "en",
+   "text": "repay"
+  },
+  {
+   "lang": "en",
+   "text": "repay, repaid, repaid"
+  },
+  {
+   "lang": "en",
+   "text": "rid"
+  },
+  {
+   "lang": "en",
+   "text": "rid, rid, rid"
+  },
+  {
+   "lang": "en",
+   "text": "ride"
+  },
+  {
+   "lang": "en",
+   "text": "ride, rode, ridden"
+  },
+  {
+   "lang": "en",
+   "text": "ring"
+  },
+  {
+   "lang": "en",
+   "text": "ring, rang, rung"
+  },
+  {
+   "lang": "en",
+   "text": "rise"
+  },
+  {
+   "lang": "en",
+   "text": "rise, rose, risen"
+  },
+  {
+   "lang": "en",
+   "text": "run"
+  },
+  {
+   "lang": "en",
+   "text": "run, ran, run"
+  },
+  {
+   "lang": "en",
+   "text": "say"
+  },
+  {
+   "lang": "en",
+   "text": "say, said, said"
+  },
+  {
+   "lang": "en",
+   "text": "see"
+  },
+  {
+   "lang": "en",
+   "text": "see, saw, seen"
+  },
+  {
+   "lang": "en",
+   "text": "seek"
+  },
+  {
+   "lang": "en",
+   "text": "seek, sought, sought"
+  },
+  {
+   "lang": "en",
+   "text": "sell"
+  },
+  {
+   "lang": "en",
+   "text": "sell, sold, sold"
+  },
+  {
+   "lang": "en",
+   "text": "send"
+  },
+  {
+   "lang": "en",
+   "text": "send, sent, sent"
+  },
+  {
+   "lang": "en",
+   "text": "set"
+  },
+  {
+   "lang": "en",
+   "text": "set, set, set"
+  },
+  {
+   "lang": "en",
+   "text": "I go to school every day."
+  },
+  {
+   "lang": "en",
+   "text": "I went to the park yesterday."
+  },
+  {
+   "lang": "en",
+   "text": "Dad has gone to work."
+  },
+  {
+   "lang": "en",
+   "text": "I give my brother a gift on his birthday."
+  },
+  {
+   "lang": "en",
+   "text": "I gave him a book yesterday."
+  },
+  {
+   "lang": "en",
+   "text": "I have given him three books this year."
+  },
+  {
+   "lang": "en",
+   "text": "I never forget my homework."
+  },
+  {
+   "lang": "en",
+   "text": "I forgot my water bottle this morning."
+  },
+  {
+   "lang": "en",
+   "text": "Oh no! I have forgotten his name."
+  },
+  {
+   "lang": "en",
+   "text": "Trees grow fast in spring."
+  },
+  {
+   "lang": "en",
+   "text": "This tree grew two meters last year."
+  },
+  {
+   "lang": "en",
+   "text": "Wow, it has grown so tall!"
+  },
+  {
+   "lang": "en",
+   "text": "Leaves fall in autumn."
+  },
+  {
+   "lang": "en",
+   "text": "A leaf fell on my head yesterday."
+  },
+  {
+   "lang": "en",
+   "text": "Look, all the leaves have fallen."
+  }
+ ]
+}

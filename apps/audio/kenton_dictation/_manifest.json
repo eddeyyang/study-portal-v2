@@ -1,0 +1,1182 @@
+{
+ "enRate": "-10%",
+ "zhRate": "-10%",
+ "items": [
+  {
+   "lang": "zh",
+   "text": "墨绿"
+  },
+  {
+   "lang": "zh",
+   "text": "集中"
+  },
+  {
+   "lang": "zh",
+   "text": "交叉"
+  },
+  {
+   "lang": "zh",
+   "text": "教练"
+  },
+  {
+   "lang": "zh",
+   "text": "指挥"
+  },
+  {
+   "lang": "zh",
+   "text": "整齐"
+  },
+  {
+   "lang": "zh",
+   "text": "节拍"
+  },
+  {
+   "lang": "zh",
+   "text": "毛茸茸"
+  },
+  {
+   "lang": "zh",
+   "text": "潇洒"
+  },
+  {
+   "lang": "zh",
+   "text": "朦胧"
+  },
+  {
+   "lang": "zh",
+   "text": "寂静"
+  },
+  {
+   "lang": "zh",
+   "text": "徜徉"
+  },
+  {
+   "lang": "zh",
+   "text": "呼唤"
+  },
+  {
+   "lang": "zh",
+   "text": "响动"
+  },
+  {
+   "lang": "zh",
+   "text": "尽职"
+  },
+  {
+   "lang": "zh",
+   "text": "屏息"
+  },
+  {
+   "lang": "zh",
+   "text": "凝视"
+  },
+  {
+   "lang": "zh",
+   "text": "稿纸"
+  },
+  {
+   "lang": "zh",
+   "text": "梅花"
+  },
+  {
+   "lang": "zh",
+   "text": "解闷"
+  },
+  {
+   "lang": "zh",
+   "text": "淘气"
+  },
+  {
+   "lang": "zh",
+   "text": "开辟"
+  },
+  {
+   "lang": "zh",
+   "text": "摔跤"
+  },
+  {
+   "lang": "zh",
+   "text": "讨厌"
+  },
+  {
+   "lang": "zh",
+   "text": "理由"
+  },
+  {
+   "lang": "zh",
+   "text": "心事"
+  },
+  {
+   "lang": "zh",
+   "text": "疙瘩"
+  },
+  {
+   "lang": "zh",
+   "text": "反抗"
+  },
+  {
+   "lang": "zh",
+   "text": "忠厚"
+  },
+  {
+   "lang": "zh",
+   "text": "可恶"
+  },
+  {
+   "lang": "zh",
+   "text": "毒手"
+  },
+  {
+   "lang": "zh",
+   "text": "成绩"
+  },
+  {
+   "lang": "zh",
+   "text": "心思"
+  },
+  {
+   "lang": "zh",
+   "text": "警戒"
+  },
+  {
+   "lang": "zh",
+   "text": "预备"
+  },
+  {
+   "lang": "zh",
+   "text": "汤圆"
+  },
+  {
+   "lang": "zh",
+   "text": "凄惨"
+  },
+  {
+   "lang": "zh",
+   "text": "慈爱"
+  },
+  {
+   "lang": "zh",
+   "text": "姿态"
+  },
+  {
+   "lang": "zh",
+   "text": "高傲"
+  },
+  {
+   "lang": "zh",
+   "text": "音调"
+  },
+  {
+   "lang": "zh",
+   "text": "呵斥"
+  },
+  {
+   "lang": "zh",
+   "text": "叫嚣"
+  },
+  {
+   "lang": "zh",
+   "text": "局促"
+  },
+  {
+   "lang": "zh",
+   "text": "京剧"
+  },
+  {
+   "lang": "zh",
+   "text": "奢侈"
+  },
+  {
+   "lang": "zh",
+   "text": "一丝不苟"
+  },
+  {
+   "lang": "zh",
+   "text": "譬如"
+  },
+  {
+   "lang": "zh",
+   "text": "倘若"
+  },
+  {
+   "lang": "zh",
+   "text": "从容不迫"
+  },
+  {
+   "lang": "zh",
+   "text": "侍候"
+  },
+  {
+   "lang": "zh",
+   "text": "饭馆"
+  },
+  {
+   "lang": "zh",
+   "text": "脾气"
+  },
+  {
+   "lang": "zh",
+   "text": "窥伺"
+  },
+  {
+   "lang": "zh",
+   "text": "空空如也"
+  },
+  {
+   "lang": "zh",
+   "text": "供养"
+  },
+  {
+   "lang": "zh",
+   "text": "清静"
+  },
+  {
+   "lang": "zh",
+   "text": "扩大"
+  },
+  {
+   "lang": "zh",
+   "text": "范围"
+  },
+  {
+   "lang": "zh",
+   "text": "努力"
+  },
+  {
+   "lang": "zh",
+   "text": "刹那"
+  },
+  {
+   "lang": "zh",
+   "text": "夺目"
+  },
+  {
+   "lang": "zh",
+   "text": "分辨"
+  },
+  {
+   "lang": "zh",
+   "text": "灿烂"
+  },
+  {
+   "lang": "zh",
+   "text": "杜鹃"
+  },
+  {
+   "lang": "zh",
+   "text": "气势"
+  },
+  {
+   "lang": "zh",
+   "text": "聚集"
+  },
+  {
+   "lang": "zh",
+   "text": "拥挤"
+  },
+  {
+   "lang": "zh",
+   "text": "心情"
+  },
+  {
+   "lang": "zh",
+   "text": "脚跟"
+  },
+  {
+   "lang": "zh",
+   "text": "移动"
+  },
+  {
+   "lang": "zh",
+   "text": "昏暗"
+  },
+  {
+   "lang": "zh",
+   "text": "挤压"
+  },
+  {
+   "lang": "zh",
+   "text": "稍微"
+  },
+  {
+   "lang": "zh",
+   "text": "额角"
+  },
+  {
+   "lang": "zh",
+   "text": "登陆"
+  },
+  {
+   "lang": "zh",
+   "text": "漆黑"
+  },
+  {
+   "lang": "zh",
+   "text": "宽广"
+  },
+  {
+   "lang": "zh",
+   "text": "蜿蜒"
+  },
+  {
+   "lang": "zh",
+   "text": "石钟乳"
+  },
+  {
+   "lang": "zh",
+   "text": "石笋"
+  },
+  {
+   "lang": "zh",
+   "text": "观赏"
+  },
+  {
+   "lang": "zh",
+   "text": "芦花"
+  },
+  {
+   "lang": "zh",
+   "text": "发愣"
+  },
+  {
+   "lang": "zh",
+   "text": "铅笔"
+  },
+  {
+   "lang": "zh",
+   "text": "脊背"
+  },
+  {
+   "lang": "zh",
+   "text": "劫难"
+  },
+  {
+   "lang": "zh",
+   "text": "鬼脸"
+  },
+  {
+   "lang": "zh",
+   "text": "戒指"
+  },
+  {
+   "lang": "zh",
+   "text": "试探"
+  },
+  {
+   "lang": "zh",
+   "text": "尸首"
+  },
+  {
+   "lang": "zh",
+   "text": "防备"
+  },
+  {
+   "lang": "zh",
+   "text": "慌忙"
+  },
+  {
+   "lang": "zh",
+   "text": "战役"
+  },
+  {
+   "lang": "zh",
+   "text": "战场"
+  },
+  {
+   "lang": "zh",
+   "text": "持续"
+  },
+  {
+   "lang": "zh",
+   "text": "占领"
+  },
+  {
+   "lang": "zh",
+   "text": "轰鸣"
+  },
+  {
+   "lang": "zh",
+   "text": "射击"
+  },
+  {
+   "lang": "zh",
+   "text": "突击"
+  },
+  {
+   "lang": "zh",
+   "text": "枪弹"
+  },
+  {
+   "lang": "zh",
+   "text": "摧毁"
+  },
+  {
+   "lang": "zh",
+   "text": "愤怒"
+  },
+  {
+   "lang": "zh",
+   "text": "注视"
+  },
+  {
+   "lang": "zh",
+   "text": "光荣"
+  },
+  {
+   "lang": "zh",
+   "text": "艰巨"
+  },
+  {
+   "lang": "zh",
+   "text": "炮弹"
+  },
+  {
+   "lang": "zh",
+   "text": "爆炸"
+  },
+  {
+   "lang": "zh",
+   "text": "烈火"
+  },
+  {
+   "lang": "zh",
+   "text": "顽强"
+  },
+  {
+   "lang": "zh",
+   "text": "不料"
+  },
+  {
+   "lang": "zh",
+   "text": "规定"
+  },
+  {
+   "lang": "zh",
+   "text": "惊天动地"
+  },
+  {
+   "lang": "zh",
+   "text": "消灭"
+  },
+  {
+   "lang": "zh",
+   "text": "弥漫"
+  },
+  {
+   "lang": "zh",
+   "text": "距离"
+  },
+  {
+   "lang": "zh",
+   "text": "山脉"
+  },
+  {
+   "lang": "zh",
+   "text": "行驶"
+  },
+  {
+   "lang": "zh",
+   "text": "起航"
+  },
+  {
+   "lang": "zh",
+   "text": "葬身"
+  },
+  {
+   "lang": "zh",
+   "text": "哭泣"
+  },
+  {
+   "lang": "zh",
+   "text": "混乱"
+  },
+  {
+   "lang": "zh",
+   "text": "绳索"
+  },
+  {
+   "lang": "zh",
+   "text": "维持"
+  },
+  {
+   "lang": "zh",
+   "text": "秩序"
+  },
+  {
+   "lang": "zh",
+   "text": "岗位"
+  },
+  {
+   "lang": "zh",
+   "text": "主宰"
+  },
+  {
+   "lang": "zh",
+   "text": "考虑"
+  },
+  {
+   "lang": "zh",
+   "text": "灾难"
+  },
+  {
+   "lang": "zh",
+   "text": "践行"
+  },
+  {
+   "lang": "zh",
+   "text": "介绍"
+  },
+  {
+   "lang": "zh",
+   "text": "声明"
+  },
+  {
+   "lang": "zh",
+   "text": "妖怪"
+  },
+  {
+   "lang": "zh",
+   "text": "规矩"
+  },
+  {
+   "lang": "zh",
+   "text": "胳膊"
+  },
+  {
+   "lang": "zh",
+   "text": "劈面"
+  },
+  {
+   "lang": "zh",
+   "text": "龙宫"
+  },
+  {
+   "lang": "zh",
+   "text": "向日葵"
+  },
+  {
+   "lang": "zh",
+   "text": "柔嫩"
+  },
+  {
+   "lang": "zh",
+   "text": "丰硕"
+  },
+  {
+   "lang": "zh",
+   "text": "允许"
+  },
+  {
+   "lang": "zh",
+   "text": "禁止"
+  },
+  {
+   "lang": "zh",
+   "text": "踪迹"
+  },
+  {
+   "lang": "zh",
+   "text": "覆盖"
+  },
+  {
+   "lang": "zh",
+   "text": "呼啸"
+  },
+  {
+   "lang": "zh",
+   "text": "始终"
+  },
+  {
+   "lang": "zh",
+   "text": "吼叫"
+  },
+  {
+   "lang": "zh",
+   "text": "自私"
+  },
+  {
+   "lang": "zh",
+   "text": "后悔"
+  },
+  {
+   "lang": "zh",
+   "text": "举动"
+  },
+  {
+   "lang": "zh",
+   "text": "脸颊"
+  },
+  {
+   "lang": "zh",
+   "text": "凶狠"
+  },
+  {
+   "lang": "zh",
+   "text": "拆除"
+  },
+  {
+   "lang": "zh",
+   "text": "撵走"
+  },
+  {
+   "lang": "zh",
+   "text": "窟窿"
+  },
+  {
+   "lang": "en",
+   "text": "watermelon"
+  },
+  {
+   "lang": "en",
+   "text": "grape"
+  },
+  {
+   "lang": "en",
+   "text": "plum"
+  },
+  {
+   "lang": "en",
+   "text": "cherry"
+  },
+  {
+   "lang": "en",
+   "text": "strawberry"
+  },
+  {
+   "lang": "en",
+   "text": "a glass of juice"
+  },
+  {
+   "lang": "en",
+   "text": "hard"
+  },
+  {
+   "lang": "en",
+   "text": "soft"
+  },
+  {
+   "lang": "en",
+   "text": "rough"
+  },
+  {
+   "lang": "en",
+   "text": "smooth"
+  },
+  {
+   "lang": "en",
+   "text": "sharp"
+  },
+  {
+   "lang": "en",
+   "text": "blunt"
+  },
+  {
+   "lang": "en",
+   "text": "thick"
+  },
+  {
+   "lang": "en",
+   "text": "thin"
+  },
+  {
+   "lang": "en",
+   "text": "knife"
+  },
+  {
+   "lang": "en",
+   "text": "pencil case"
+  },
+  {
+   "lang": "en",
+   "text": "hill"
+  },
+  {
+   "lang": "en",
+   "text": "lawn"
+  },
+  {
+   "lang": "en",
+   "text": "path"
+  },
+  {
+   "lang": "en",
+   "text": "bench"
+  },
+  {
+   "lang": "en",
+   "text": "shadow"
+  },
+  {
+   "lang": "en",
+   "text": "sun"
+  },
+  {
+   "lang": "en",
+   "text": "rise"
+  },
+  {
+   "lang": "en",
+   "text": "high"
+  },
+  {
+   "lang": "en",
+   "text": "at noon"
+  },
+  {
+   "lang": "en",
+   "text": "go down"
+  },
+  {
+   "lang": "en",
+   "text": "play football"
+  },
+  {
+   "lang": "en",
+   "text": "play table tennis"
+  },
+  {
+   "lang": "en",
+   "text": "play volleyball"
+  },
+  {
+   "lang": "en",
+   "text": "play badminton"
+  },
+  {
+   "lang": "en",
+   "text": "play basketball"
+  },
+  {
+   "lang": "en",
+   "text": "sport"
+  },
+  {
+   "lang": "en",
+   "text": "poster"
+  },
+  {
+   "lang": "en",
+   "text": "join"
+  },
+  {
+   "lang": "en",
+   "text": "club"
+  },
+  {
+   "lang": "en",
+   "text": "bone"
+  },
+  {
+   "lang": "en",
+   "text": "cat food"
+  },
+  {
+   "lang": "en",
+   "text": "dog food"
+  },
+  {
+   "lang": "en",
+   "text": "fish"
+  },
+  {
+   "lang": "en",
+   "text": "parrot"
+  },
+  {
+   "lang": "en",
+   "text": "tortoise"
+  },
+  {
+   "lang": "en",
+   "text": "cute"
+  },
+  {
+   "lang": "en",
+   "text": "bedroom"
+  },
+  {
+   "lang": "en",
+   "text": "living room"
+  },
+  {
+   "lang": "en",
+   "text": "bathroom"
+  },
+  {
+   "lang": "en",
+   "text": "kitchen"
+  },
+  {
+   "lang": "en",
+   "text": "homework"
+  },
+  {
+   "lang": "en",
+   "text": "model plane"
+  },
+  {
+   "lang": "en",
+   "text": "wash"
+  },
+  {
+   "lang": "en",
+   "text": "dinner"
+  },
+  {
+   "lang": "en",
+   "text": "quiet"
+  },
+  {
+   "lang": "en",
+   "text": "loud"
+  },
+  {
+   "lang": "en",
+   "text": "bell"
+  },
+  {
+   "lang": "en",
+   "text": "television"
+  },
+  {
+   "lang": "en",
+   "text": "sound"
+  },
+  {
+   "lang": "en",
+   "text": "noisy"
+  },
+  {
+   "lang": "en",
+   "text": "ring"
+  },
+  {
+   "lang": "en",
+   "text": "watch TV"
+  },
+  {
+   "lang": "en",
+   "text": "seven o'clock"
+  },
+  {
+   "lang": "en",
+   "text": "a quarter past seven"
+  },
+  {
+   "lang": "en",
+   "text": "half past seven"
+  },
+  {
+   "lang": "en",
+   "text": "a quarter to eight"
+  },
+  {
+   "lang": "en",
+   "text": "get up"
+  },
+  {
+   "lang": "en",
+   "text": "brush my teeth"
+  },
+  {
+   "lang": "en",
+   "text": "wash my face"
+  },
+  {
+   "lang": "en",
+   "text": "have breakfast"
+  },
+  {
+   "lang": "en",
+   "text": "always"
+  },
+  {
+   "lang": "en",
+   "text": "usually"
+  },
+  {
+   "lang": "en",
+   "text": "often"
+  },
+  {
+   "lang": "en",
+   "text": "sometimes"
+  },
+  {
+   "lang": "en",
+   "text": "never"
+  },
+  {
+   "lang": "en",
+   "text": "Monday"
+  },
+  {
+   "lang": "en",
+   "text": "Tuesday"
+  },
+  {
+   "lang": "en",
+   "text": "Wednesday"
+  },
+  {
+   "lang": "en",
+   "text": "Thursday"
+  },
+  {
+   "lang": "en",
+   "text": "Friday"
+  },
+  {
+   "lang": "en",
+   "text": "Saturday"
+  },
+  {
+   "lang": "en",
+   "text": "Sunday"
+  },
+  {
+   "lang": "en",
+   "text": "Chinese chess"
+  },
+  {
+   "lang": "en",
+   "text": "at weekends"
+  },
+  {
+   "lang": "en",
+   "text": "piano"
+  },
+  {
+   "lang": "en",
+   "text": "violin"
+  },
+  {
+   "lang": "en",
+   "text": "triangle"
+  },
+  {
+   "lang": "en",
+   "text": "drum"
+  },
+  {
+   "lang": "en",
+   "text": "music"
+  },
+  {
+   "lang": "en",
+   "text": "the Spring Festival"
+  },
+  {
+   "lang": "en",
+   "text": "the Dragon Boat Festival"
+  },
+  {
+   "lang": "en",
+   "text": "the Mid-Autumn Festival"
+  },
+  {
+   "lang": "en",
+   "text": "the Double Ninth Festival"
+  },
+  {
+   "lang": "en",
+   "text": "festival"
+  },
+  {
+   "lang": "en",
+   "text": "rice dumpling"
+  },
+  {
+   "lang": "en",
+   "text": "duckling"
+  },
+  {
+   "lang": "en",
+   "text": "swan"
+  },
+  {
+   "lang": "en",
+   "text": "nest"
+  },
+  {
+   "lang": "en",
+   "text": "Is it a grape or a plum?"
+  },
+  {
+   "lang": "en",
+   "text": "Do you like apples or bananas?"
+  },
+  {
+   "lang": "en",
+   "text": "Yes, you are right."
+  },
+  {
+   "lang": "en",
+   "text": "What's this? It's a knife."
+  },
+  {
+   "lang": "en",
+   "text": "It's hard and smooth."
+  },
+  {
+   "lang": "en",
+   "text": "Please look and guess."
+  },
+  {
+   "lang": "en",
+   "text": "The sun rises behind the hill."
+  },
+  {
+   "lang": "en",
+   "text": "Whose shadow is this? It's Danny's."
+  },
+  {
+   "lang": "en",
+   "text": "Does she like playing football?"
+  },
+  {
+   "lang": "en",
+   "text": "Yes, she does."
+  },
+  {
+   "lang": "en",
+   "text": "She often plays badminton with me."
+  },
+  {
+   "lang": "en",
+   "text": "Would you like to join us?"
+  },
+  {
+   "lang": "en",
+   "text": "Sure. I'd love to."
+  },
+  {
+   "lang": "en",
+   "text": "What does it eat? It eats fish."
+  },
+  {
+   "lang": "en",
+   "text": "There is a parrot in the room."
+  },
+  {
+   "lang": "en",
+   "text": "What are you doing? I am doing my homework."
+  },
+  {
+   "lang": "en",
+   "text": "Come and help me."
+  },
+  {
+   "lang": "en",
+   "text": "Be careful. Be quiet."
+  },
+  {
+   "lang": "en",
+   "text": "There are two bells."
+  },
+  {
+   "lang": "en",
+   "text": "What time is it? It's half past seven."
+  },
+  {
+   "lang": "en",
+   "text": "It's time for breakfast."
+  },
+  {
+   "lang": "en",
+   "text": "I get up at seven o'clock."
+  },
+  {
+   "lang": "en",
+   "text": "Peter goes to school from Monday to Friday."
+  },
+  {
+   "lang": "en",
+   "text": "We play Chinese chess at weekends."
+  },
+  {
+   "lang": "en",
+   "text": "I usually watch TV on Sunday."
+  },
+  {
+   "lang": "en",
+   "text": "What can you play? I can play the piano."
+  },
+  {
+   "lang": "en",
+   "text": "Whose violin is it?"
+  },
+  {
+   "lang": "en",
+   "text": "What festivals do you like?"
+  },
+  {
+   "lang": "en",
+   "text": "I like the Spring Festival."
+  },
+  {
+   "lang": "en",
+   "text": "What do you usually do at the Spring Festival?"
+  },
+  {
+   "lang": "en",
+   "text": "We eat rice dumplings at the Dragon Boat Festival."
+  },
+  {
+   "lang": "en",
+   "text": "That's right."
+  },
+  {
+   "lang": "en",
+   "text": "Mother Duck is making a nest."
+  },
+  {
+   "lang": "en",
+   "text": "She has five eggs."
+  },
+  {
+   "lang": "en",
+   "text": "Mother Duck sits on the nest."
+  },
+  {
+   "lang": "zh",
+   "text": "你好哥哥,我是默写助手。"
+  },
+  {
+   "lang": "zh",
+   "text": "默完了！对照答案，写错的点一下变红。"
+  },
+  {
+   "lang": "zh",
+   "text": "好，只重默写错的。准备！"
+  },
+  {
+   "lang": "zh",
+   "text": "记下了，错词留着再练。"
+  },
+  {
+   "lang": "zh",
+   "text": "真棒，这一课默完了！"
+  },
+  {
+   "lang": "zh",
+   "text": "对"
+  },
+  {
+   "lang": "zh",
+   "text": "全对!这些词你真的懂了。"
+  },
+  {
+   "lang": "zh",
+   "text": "做完了,错的词已经记下来。"
+  },
+  {
+   "lang": "zh",
+   "text": "已经复制好了,可以粘贴发给爸爸或Claude。"
+  },
+  {
+   "lang": "en",
+   "text": "Hello, I can speak English too."
+  }
+ ]
+}

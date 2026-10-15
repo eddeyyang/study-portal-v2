@@ -1,0 +1,100 @@
+{
+ "app": "eddey_3s_spelling_lab_20260731",
+ "voice": "en-US-AriaNeural",
+ "enRate": "-10%",
+ "hash": "named (weak words + dictation sentences)",
+ "total": 18,
+ "status": "machine-verified; phone playback pending parent acceptance",
+ "items": [
+  {
+   "lang": "en-US",
+   "text": "around",
+   "file": "p-around.mp3"
+  },
+  {
+   "lang": "en-US",
+   "text": "earth",
+   "file": "p-earth.mp3"
+  },
+  {
+   "lang": "en-US",
+   "text": "live",
+   "file": "p-live.mp3"
+  },
+  {
+   "lang": "en-US",
+   "text": "school",
+   "file": "p-school.mp3"
+  },
+  {
+   "lang": "en-US",
+   "text": "My mum cleans the room every day.",
+   "file": "s1-mum-cleans.mp3"
+  },
+  {
+   "lang": "en-US",
+   "text": "The moon goes around the earth.",
+   "file": "s2-moon-earth.mp3"
+  },
+  {
+   "lang": "en-US",
+   "text": "He always sleeps after nine o'clock.",
+   "file": "s3-always-sleeps.mp3"
+  },
+  {
+   "lang": "en-US",
+   "text": "A fish needs water to live.",
+   "file": "s4-fish-live.mp3"
+  },
+  {
+   "lang": "en-US",
+   "text": "He goes to school five days a week.",
+   "file": "s5-school.mp3"
+  },
+  {
+   "lang": "en-US",
+   "text": "catches",
+   "file": "w-catches.mp3"
+  },
+  {
+   "lang": "en-US",
+   "text": "cleans",
+   "file": "w-cleans.mp3"
+  },
+  {
+   "lang": "en-US",
+   "text": "fixes",
+   "file": "w-fixes.mp3"
+  },
+  {
+   "lang": "en-US",
+   "text": "flies",
+   "file": "w-flies.mp3"
+  },
+  {
+   "lang": "en-US",
+   "text": "guesses",
+   "file": "w-guesses.mp3"
+  },
+  {
+   "lang": "en-US",
+   "text": "has",
+   "file": "w-has.mp3"
+  },
+  {
+   "lang": "en-US",
+   "text": "opens",
+   "file": "w-opens.mp3"
+  },
+  {
+   "lang": "en-US",
+   "text": "pays",
+   "file": "w-pays.mp3"
+  },
+  {
+   "lang": "en-US",
+   "text": "studies",
+   "file": "w-studies.mp3"
+  }
+ ]
+}

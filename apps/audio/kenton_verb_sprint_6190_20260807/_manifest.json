@@ -1,0 +1,159 @@
+{
+ "app": "kenton_verb_sprint_6190_20260807",
+ "voice": "agent-gw TTS (05Cdh2gw2NMzDvykn1nm)",
+ "hash": "named (v{n}-{base}.mp3)",
+ "total": 30,
+ "status": "machine-verified; phone playback pending parent acceptance",
+ "items": [
+  {
+   "lang": "en",
+   "text": "lend. lent. lent.",
+   "file": "v61-lend.mp3"
+  },
+  {
+   "lang": "en",
+   "text": "let. let. let.",
+   "file": "v62-let.mp3"
+  },
+  {
+   "lang": "en",
+   "text": "lie. lay. lain.",
+   "file": "v63-lie.mp3"
+  },
+  {
+   "lang": "en",
+   "text": "light. lit. lit.",
+   "file": "v64-light.mp3"
+  },
+  {
+   "lang": "en",
+   "text": "lose. lost. lost.",
+   "file": "v65-lose.mp3"
+  },
+  {
+   "lang": "en",
+   "text": "make. made. made.",
+   "file": "v66-make.mp3"
+  },
+  {
+   "lang": "en",
+   "text": "may. might.",
+   "file": "v67-may.mp3"
+  },
+  {
+   "lang": "en",
+   "text": "mean. meant. meant.",
+   "file": "v68-mean.mp3"
+  },
+  {
+   "lang": "en",
+   "text": "meet. met. met.",
+   "file": "v69-meet.mp3"
+  },
+  {
+   "lang": "en",
+   "text": "mistake. mistook. mistaken.",
+   "file": "v70-mistake.mp3"
+  },
+  {
+   "lang": "en",
+   "text": "misunderstand. misunderstood. misunderstood.",
+   "file": "v71-misunderstand.mp3"
+  },
+  {
+   "lang": "en",
+   "text": "must. must.",
+   "file": "v72-must.mp3"
+  },
+  {
+   "lang": "en",
+   "text": "overcome. overcame. overcome.",
+   "file": "v73-overcome.mp3"
+  },
+  {
+   "lang": "en",
+   "text": "overtake. overtook. overtaken.",
+   "file": "v74-overtake.mp3"
+  },
+  {
+   "lang": "en",
+   "text": "pay. paid. paid.",
+   "file": "v75-pay.mp3"
+  },
+  {
+   "lang": "en",
+   "text": "put. put. put.",
+   "file": "v76-put.mp3"
+  },
+  {
+   "lang": "en",
+   "text": "read. read. read.",
+   "file": "v77-read.mp3"
+  },
+  {
+   "lang": "en",
+   "text": "rebuild. rebuilt. rebuilt.",
+   "file": "v78-rebuild.mp3"
+  },
+  {
+   "lang": "en",
+   "text": "repay. repaid. repaid.",
+   "file": "v79-repay.mp3"
+  },
+  {
+   "lang": "en",
+   "text": "rid. rid. rid.",
+   "file": "v80-rid.mp3"
+  },
+  {
+   "lang": "en",
+   "text": "ride. rode. ridden.",
+   "file": "v81-ride.mp3"
+  },
+  {
+   "lang": "en",
+   "text": "ring. rang. rung.",
+   "file": "v82-ring.mp3"
+  },
+  {
+   "lang": "en",
+   "text": "rise. rose. risen.",
+   "file": "v83-rise.mp3"
+  },
+  {
+   "lang": "en",
+   "text": "run. ran. run.",
+   "file": "v84-run.mp3"
+  },
+  {
+   "lang": "en",
+   "text": "say. said. said.",
+   "file": "v85-say.mp3"
+  },
+  {
+   "lang": "en",
+   "text": "see. saw. seen.",
+   "file": "v86-see.mp3"
+  },
+  {
+   "lang": "en",
+   "text": "seek. sought. sought.",
+   "file": "v87-seek.mp3"
+  },
+  {
+   "lang": "en",
+   "text": "sell. sold. sold.",
+   "file": "v88-sell.mp3"
+  },
+  {
+   "lang": "en",
+   "text": "send. sent. sent.",
+   "file": "v89-send.mp3"
+  },
+  {
+   "lang": "en",
+   "text": "set. set. set.",
+   "file": "v90-set.mp3"
+  }
+ ]
+}

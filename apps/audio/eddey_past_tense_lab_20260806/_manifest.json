@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 2,
+  "appId": "eddey-past-tense-lab-20260806",
+  "generatedAt": "2026-08-11",
+  "engine": "huggingface/speech-to-speech + Kokoro-82M ONNX INT8",
+  "engineRevision": "cefeef52a4ec1ab7b85a72d74800596cdd1ca319",
+  "voice": "bf_emma",
+  "language": "en-gb",
+  "format": "audio/mpeg",
+  "runtimeNetworkRequired": false,
+  "sourceNote": "2026-08-11 按家长已确认的 bf_emma 英式女声重新生成；模型仅用于制作，页面只加载静态 MP3。",
+  "verification": {
+    "status": "pending_parent_listen",
+    "fileCount": 12,
+    "listenedCount": 0,
+    "regeneratedCount": 12,
+    "mobilePlayback": false,
+    "desktopPlayback": false,
+    "ffprobeReadable": 12
+  },
+  "items": [
+    {"file":"01-textbook-question.mp3","text":"Which photos did Shenshen take in the water town?","speed":0.9,"durationSeconds":2.837,"sha256":"ba5a3d8d7b8c31aaa8f4c40483da3198d552204cd7c748ffd7ec99ce51a1cac3"},
+    {"file":"02-present-scene.mp3","text":"Every summer, Shenshen visits an old water town.","speed":0.9,"durationSeconds":2.901,"sha256":"b372009c041f5d67caf1ebea8a35b0bc215af66bdd73d8eb6a16dbdcc38c28f3"},
+    {"file":"03-past-scene.mp3","text":"Yesterday, Shenshen visited an old water town.","speed":0.9,"durationSeconds":2.859,"sha256":"00c1a52d8adeae76d7e3809c8448de3ab673719867405551b977f5a3fce0f3a3"},
+    {"file":"04-visit-pair.mp3","text":"visit. visited.","speed":0.82,"durationSeconds":1.643,"sha256":"ccd50faa90a1a2d7ba51e918b4081f925f0f392be9b705bf0823dc62d1ffabbf"},
+    {"file":"05-like-pair.mp3","text":"like. liked.","speed":0.82,"durationSeconds":1.344,"sha256":"411c12d7c61f0deac41259fab2cbb0207562c3799507abbaf08363c0f07081c1"},
+    {"file":"06-study-pair.mp3","text":"study. studied.","speed":0.82,"durationSeconds":1.536,"sha256":"af167d8827b2d2287e86ce3a11492261ce4c1f74fe2ef327e6bacc161d96c66f"},
+    {"file":"07-take-pair.mp3","text":"take. took.","speed":0.82,"durationSeconds":1.195,"sha256":"3e119475e8ef2ecaf14ad742cd0b380f6da31d5df660c1b41c5e302d71b0ae8f"},
+    {"file":"08-did-question.mp3","text":"Did Shenshen take photos of the old houses?","speed":0.88,"durationSeconds":2.816,"sha256":"bdc3748cb0ffb9b9a5876359201330afe397948b75662442f5ead81815a61d6d"},
+    {"file":"09-didnt-sentence.mp3","text":"Shenshen didn't take a photo of the museum.","speed":0.88,"durationSeconds":2.624,"sha256":"c2e773a33e3925c157ee67d2aa9755c76a2f04bafd22c89f7e4311405f82e7f4"},
+    {"file":"10-go-question.mp3","text":"Did she go by boat?","speed":0.86,"durationSeconds":1.643,"sha256":"933715407010246f820ea989317f85ad4d1747015cdcb634aa4549c5b4f67803"},
+    {"file":"11-postcard-example.mp3","text":"Last Sunday, I saw a beautiful bridge.","speed":0.9,"durationSeconds":2.432,"sha256":"cb2e72e61561adf113f78e6216d164ca7829d4c99606281bdead17dc1030226a"},
+    {"file":"12-postcard-close.mp3","text":"I didn't visit the cinema. Did you visit the water town too?","speed":0.9,"durationSeconds":3.52,"sha256":"9145341f3bfc7ed23b5a628b01abe927a56b6ddae8e12dc845c977b89c697f9b"}
+  ]
+}

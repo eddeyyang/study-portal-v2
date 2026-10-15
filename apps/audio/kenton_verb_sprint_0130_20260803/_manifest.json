@@ -1,0 +1,160 @@
+{
+ "app": "kenton_verb_sprint_0130_20260803",
+ "voice": "en-US-AriaNeural",
+ "enRate": "-10%",
+ "hash": "named (verb triples, reused from kenton_irregular_verbs_1_30_20260730, identical text)",
+ "total": 30,
+ "status": "machine-verified; phone playback pending parent acceptance",
+ "items": [
+  {
+   "lang": "en-US",
+   "text": "be. was or were. been.",
+   "file": "01-be.mp3"
+  },
+  {
+   "lang": "en-US",
+   "text": "bear. bore. born.",
+   "file": "02-bear.mp3"
+  },
+  {
+   "lang": "en-US",
+   "text": "beat. beat. beaten.",
+   "file": "03-beat.mp3"
+  },
+  {
+   "lang": "en-US",
+   "text": "become. became. become.",
+   "file": "04-become.mp3"
+  },
+  {
+   "lang": "en-US",
+   "text": "begin. began. begun.",
+   "file": "05-begin.mp3"
+  },
+  {
+   "lang": "en-US",
+   "text": "bend. bent. bent.",
+   "file": "06-bend.mp3"
+  },
+  {
+   "lang": "en-US",
+   "text": "bite. bit. bit.",
+   "file": "07-bite.mp3"
+  },
+  {
+   "lang": "en-US",
+   "text": "bleed. bled. bled.",
+   "file": "08-bleed.mp3"
+  },
+  {
+   "lang": "en-US",
+   "text": "blow. blew. blown.",
+   "file": "09-blow.mp3"
+  },
+  {
+   "lang": "en-US",
+   "text": "break. broke. broken.",
+   "file": "10-break.mp3"
+  },
+  {
+   "lang": "en-US",
+   "text": "bring. brought. brought.",
+   "file": "11-bring.mp3"
+  },
+  {
+   "lang": "en-US",
+   "text": "build. built. built.",
+   "file": "12-build.mp3"
+  },
+  {
+   "lang": "en-US",
+   "text": "burn. burnt or burned. burnt or burned.",
+   "file": "13-burn.mp3"
+  },
+  {
+   "lang": "en-US",
+   "text": "burst. burst. burst.",
+   "file": "14-burst.mp3"
+  },
+  {
+   "lang": "en-US",
+   "text": "buy. bought. bought.",
+   "file": "15-buy.mp3"
+  },
+  {
+   "lang": "en-US",
+   "text": "can. could.",
+   "file": "16-can.mp3"
+  },
+  {
+   "lang": "en-US",
+   "text": "cast. cast. cast.",
+   "file": "17-cast.mp3"
+  },
+  {
+   "lang": "en-US",
+   "text": "catch. caught. caught.",
+   "file": "18-catch.mp3"
+  },
+  {
+   "lang": "en-US",
+   "text": "choose. chose. chosen.",
+   "file": "19-choose.mp3"
+  },
+  {
+   "lang": "en-US",
+   "text": "come. came. come.",
+   "file": "20-come.mp3"
+  },
+  {
+   "lang": "en-US",
+   "text": "cost. cost. cost.",
+   "file": "21-cost.mp3"
+  },
+  {
+   "lang": "en-US",
+   "text": "cut. cut. cut.",
+   "file": "22-cut.mp3"
+  },
+  {
+   "lang": "en-US",
+   "text": "deal. dealt. dealt.",
+   "file": "23-deal.mp3"
+  },
+  {
+   "lang": "en-US",
+   "text": "dig. dug. dug.",
+   "file": "24-dig.mp3"
+  },
+  {
+   "lang": "en-US",
+   "text": "do. did. done.",
+   "file": "25-do.mp3"
+  },
+  {
+   "lang": "en-US",
+   "text": "draw. drew. drawn.",
+   "file": "26-draw.mp3"
+  },
+  {
+   "lang": "en-US",
+   "text": "dream. dreamed or dreamt. dreamed or dreamt.",
+   "file": "27-dream.mp3"
+  },
+  {
+   "lang": "en-US",
+   "text": "drink. drank. drunk.",
+   "file": "28-drink.mp3"
+  },
+  {
+   "lang": "en-US",
+   "text": "drive. drove. driven.",
+   "file": "29-drive.mp3"
+  },
+  {
+   "lang": "en-US",
+   "text": "eat. ate. eaten.",
+   "file": "30-eat.mp3"
+  }
+ ]
+}

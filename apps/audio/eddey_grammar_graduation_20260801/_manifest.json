@@ -1,0 +1,80 @@
+{
+ "app": "eddey_grammar_graduation_20260801",
+ "voice": "en-US-AriaNeural",
+ "enRate": "-10%",
+ "hash": "named (tense theme sentences + past-tense pairs)",
+ "total": 14,
+ "status": "machine-verified; phone playback pending parent acceptance",
+ "items": [
+  {
+   "lang": "en-US",
+   "text": "It will rain tomorrow.",
+   "file": "t-future.mp3"
+  },
+  {
+   "lang": "en-US",
+   "text": "Look! The sheep is eating.",
+   "file": "t-now.mp3"
+  },
+  {
+   "lang": "en-US",
+   "text": "I walked the dog yesterday morning.",
+   "file": "t-past.mp3"
+  },
+  {
+   "lang": "en-US",
+   "text": "The sheep eats grass every day.",
+   "file": "t-usual.mp3"
+  },
+  {
+   "lang": "en-US",
+   "text": "close. closed.",
+   "file": "v-close.mp3"
+  },
+  {
+   "lang": "en-US",
+   "text": "go. went.",
+   "file": "v-go.mp3"
+  },
+  {
+   "lang": "en-US",
+   "text": "live. lived.",
+   "file": "v-live.mp3"
+  },
+  {
+   "lang": "en-US",
+   "text": "pay. paid.",
+   "file": "v-pay.mp3"
+  },
+  {
+   "lang": "en-US",
+   "text": "play. played.",
+   "file": "v-play.mp3"
+  },
+  {
+   "lang": "en-US",
+   "text": "say. said.",
+   "file": "v-say.mp3"
+  },
+  {
+   "lang": "en-US",
+   "text": "see. saw.",
+   "file": "v-see.mp3"
+  },
+  {
+   "lang": "en-US",
+   "text": "study. studied.",
+   "file": "v-study.mp3"
+  },
+  {
+   "lang": "en-US",
+   "text": "try. tried.",
+   "file": "v-try.mp3"
+  },
+  {
+   "lang": "en-US",
+   "text": "walk. walked.",
+   "file": "v-walk.mp3"
+  }
+ ]
+}

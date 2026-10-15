@@ -1,0 +1,442 @@
+{
+ "items": [
+  {
+   "lang": "en",
+   "text": "hear",
+   "enRate": "-10%",
+   "zhRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "taste",
+   "enRate": "-10%",
+   "zhRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "favourite",
+   "enRate": "-10%",
+   "zhRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "sport",
+   "enRate": "-10%",
+   "zhRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "loud",
+   "enRate": "-10%",
+   "zhRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "Wednesday",
+   "enRate": "-10%",
+   "zhRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "Thursday",
+   "enRate": "-10%",
+   "zhRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "Tuesday",
+   "enRate": "-10%",
+   "zhRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "Saturday",
+   "enRate": "-10%",
+   "zhRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "the Dragon Boat Festival",
+   "enRate": "-10%",
+   "zhRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "half past seven",
+   "enRate": "-10%",
+   "zhRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "half to seven",
+   "enRate": "-10%",
+   "zhRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "seven half",
+   "enRate": "-10%",
+   "zhRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "past half seven",
+   "enRate": "-10%",
+   "zhRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "watches",
+   "enRate": "-10%",
+   "zhRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "has",
+   "enRate": "-10%",
+   "zhRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "running",
+   "enRate": "-10%",
+   "zhRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "swimming",
+   "enRate": "-10%",
+   "zhRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "big",
+   "enRate": "-10%",
+   "zhRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "small",
+   "enRate": "-10%",
+   "zhRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "tall",
+   "enRate": "-10%",
+   "zhRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "long",
+   "enRate": "-10%",
+   "zhRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "short",
+   "enRate": "-10%",
+   "zhRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "quiet",
+   "enRate": "-10%",
+   "zhRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "soft",
+   "enRate": "-10%",
+   "zhRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "hard",
+   "enRate": "-10%",
+   "zhRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "high",
+   "enRate": "-10%",
+   "zhRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "their",
+   "enRate": "-10%",
+   "zhRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "teeth",
+   "enRate": "-10%",
+   "zhRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "The flower smells nice.",
+   "enRate": "-10%",
+   "zhRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "smells",
+   "enRate": "-10%",
+   "zhRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "My favourite sport is football.",
+   "enRate": "-10%",
+   "zhRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "Let's listen to the music.",
+   "enRate": "-10%",
+   "zhRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "listen",
+   "enRate": "-10%",
+   "zhRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "The toy bear is very soft.",
+   "enRate": "-10%",
+   "zhRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "Can I taste the cake?",
+   "enRate": "-10%",
+   "zhRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "What can you hear?",
+   "enRate": "-10%",
+   "zhRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "I usually get up at seven.",
+   "enRate": "-10%",
+   "zhRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "usually",
+   "enRate": "-10%",
+   "zhRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "How does the lemon taste?",
+   "enRate": "-10%",
+   "zhRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "I can't hear a bird.",
+   "enRate": "-10%",
+   "zhRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "Does she like Music?",
+   "enRate": "-10%",
+   "zhRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "What's your favourite subject?",
+   "enRate": "-10%",
+   "zhRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "Can he play football? — Yes, he can.",
+   "enRate": "-10%",
+   "zhRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "The cake tastes sweet.",
+   "enRate": "-10%",
+   "zhRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "He is playing basketball.",
+   "enRate": "-10%",
+   "zhRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "I have one pen.",
+   "enRate": "-10%",
+   "zhRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "It is not a quiet room.",
+   "enRate": "-10%",
+   "zhRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "What's your favourite sport?",
+   "enRate": "-10%",
+   "zhRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "I like swimming.",
+   "enRate": "-10%",
+   "zhRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "Can you smell the flowers?",
+   "enRate": "-10%",
+   "zhRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "Yes, I can.",
+   "enRate": "-10%",
+   "zhRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "It tastes sour.",
+   "enRate": "-10%",
+   "zhRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "I can hear a dog.",
+   "enRate": "-10%",
+   "zhRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "My favourite subject is PE.",
+   "enRate": "-10%",
+   "zhRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "What time is it?",
+   "enRate": "-10%",
+   "zhRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "It’s half past seven.",
+   "enRate": "-10%",
+   "zhRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "What day is it today?",
+   "enRate": "-10%",
+   "zhRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "It’s Monday.",
+   "enRate": "-10%",
+   "zhRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "What can you play?",
+   "enRate": "-10%",
+   "zhRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "I can play the piano.",
+   "enRate": "-10%",
+   "zhRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "My favourite subject is Music.",
+   "enRate": "-10%",
+   "zhRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "Can you hear the birds?",
+   "enRate": "-10%",
+   "zhRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "My favourite sport is basketball.",
+   "enRate": "-10%",
+   "zhRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "Can you play the piano?",
+   "enRate": "-10%",
+   "zhRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "It feels soft.",
+   "enRate": "-10%",
+   "zhRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "What is your favourite festival?",
+   "enRate": "-10%",
+   "zhRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "We eat rice dumplings at the Dragon Boat Festival.",
+   "enRate": "-10%",
+   "zhRate": "-10%"
+  },
+  {
+   "lang": "en",
+   "text": "Hello! Are you ready?",
+   "enRate": "-10%",
+   "zhRate": "-10%"
+  },
+  {
+   "lang": "zh",
+   "text": "你好 Kenton，我们来冲刺英语期末。",
+   "enRate": "-10%",
+   "zhRate": "-10%"
+  },
+  {
+   "lang": "zh",
+   "text": "对了!",
+   "enRate": "-10%",
+   "zhRate": "-10%"
+  },
+  {
+   "lang": "zh",
+   "text": "全对，太厉害了！",
+   "enRate": "-10%",
+   "zhRate": "-10%"
+  },
+  {
+   "lang": "zh",
+   "text": "做完啦，错的题已经记进错题本。",
+   "enRate": "-10%",
+   "zhRate": "-10%"
+  }
+ ]
+}

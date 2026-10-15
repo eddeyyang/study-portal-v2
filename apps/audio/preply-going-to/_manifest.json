@@ -1,0 +1,610 @@
+{
+  "enRate": "-10%",
+  "zhRate": "-10%",
+  "items": [
+    {
+      "lang": "en",
+      "text": "I am going to drink Coca Cola tomorrow."
+    },
+    {
+      "lang": "en",
+      "text": "I am going to eat a hamburger for dinner tomorrow."
+    },
+    {
+      "lang": "en",
+      "text": "I am going to visit Spain next week."
+    },
+    {
+      "lang": "en",
+      "text": "I am going to live in Argentina next month."
+    },
+    {
+      "lang": "en",
+      "text": "You are going to drink Coca Cola tomorrow."
+    },
+    {
+      "lang": "en",
+      "text": "You are going to eat a hamburger for dinner tomorrow."
+    },
+    {
+      "lang": "en",
+      "text": "You are going to visit Spain next week."
+    },
+    {
+      "lang": "en",
+      "text": "You are going to live in Argentina next month."
+    },
+    {
+      "lang": "en",
+      "text": "He is going to drink Coca Cola tomorrow."
+    },
+    {
+      "lang": "en",
+      "text": "He is going to eat a hamburger for dinner tomorrow."
+    },
+    {
+      "lang": "en",
+      "text": "He is going to visit Spain next week."
+    },
+    {
+      "lang": "en",
+      "text": "He is going to live in Argentina next month."
+    },
+    {
+      "lang": "en",
+      "text": "She is going to drink Coca Cola tomorrow."
+    },
+    {
+      "lang": "en",
+      "text": "She is going to eat a hamburger for dinner tomorrow."
+    },
+    {
+      "lang": "en",
+      "text": "She is going to visit Spain next week."
+    },
+    {
+      "lang": "en",
+      "text": "She is going to live in Argentina next month."
+    },
+    {
+      "lang": "en",
+      "text": "We are going to drink Coca Cola tomorrow."
+    },
+    {
+      "lang": "en",
+      "text": "We are going to eat a hamburger for dinner tomorrow."
+    },
+    {
+      "lang": "en",
+      "text": "We are going to visit Spain next week."
+    },
+    {
+      "lang": "en",
+      "text": "We are going to live in Argentina next month."
+    },
+    {
+      "lang": "en",
+      "text": "They are going to drink Coca Cola tomorrow."
+    },
+    {
+      "lang": "en",
+      "text": "They are going to eat a hamburger for dinner tomorrow."
+    },
+    {
+      "lang": "en",
+      "text": "They are going to visit Spain next week."
+    },
+    {
+      "lang": "en",
+      "text": "They are going to live in Argentina next month."
+    },
+    {
+      "lang": "en",
+      "text": "Oliver and I are going to drink Coca Cola tomorrow."
+    },
+    {
+      "lang": "en",
+      "text": "Oliver and I are going to eat a hamburger for dinner tomorrow."
+    },
+    {
+      "lang": "en",
+      "text": "Oliver and I are going to visit Spain next week."
+    },
+    {
+      "lang": "en",
+      "text": "Oliver and I are going to live in Argentina next month."
+    },
+    {
+      "lang": "en",
+      "text": "He is going to eat a hamburger."
+    },
+    {
+      "lang": "en",
+      "text": "They are going to live in Argentina."
+    },
+    {
+      "lang": "en",
+      "text": "You are going to swim tomorrow."
+    },
+    {
+      "lang": "en",
+      "text": "She is going to read a book."
+    },
+    {
+      "lang": "en",
+      "text": "Oliver and I are eating chocolate."
+    },
+    {
+      "lang": "en",
+      "text": "Oliver and I are going to eat chocolate tomorrow."
+    },
+    {
+      "lang": "en",
+      "text": "He is eating a hamburger."
+    },
+    {
+      "lang": "en",
+      "text": "They are living in Argentina."
+    },
+    {
+      "lang": "en",
+      "text": "She is going to drink juice tomorrow."
+    },
+    {
+      "lang": "en",
+      "text": "We are going to play football next week."
+    },
+    {
+      "lang": "en",
+      "text": "I'm going to swim tomorrow."
+    },
+    {
+      "lang": "en",
+      "text": "You're going to love this beach."
+    },
+    {
+      "lang": "en",
+      "text": "He's going to visit Spain next week."
+    },
+    {
+      "lang": "en",
+      "text": "She's going to drink lemonade."
+    },
+    {
+      "lang": "en",
+      "text": "We're going to build a sand castle."
+    },
+    {
+      "lang": "en",
+      "text": "They're going to live in Argentina."
+    },
+    {
+      "lang": "en",
+      "text": "burgers"
+    },
+    {
+      "lang": "en",
+      "text": "eating"
+    },
+    {
+      "lang": "en",
+      "text": "medium"
+    },
+    {
+      "lang": "en",
+      "text": "sunglasses"
+    },
+    {
+      "lang": "en",
+      "text": "He bought an umbrella, a hat, sunglasses, and a pair of shoes."
+    },
+    {
+      "lang": "en",
+      "text": "We are going to swim tomorrow."
+    },
+    {
+      "lang": "en",
+      "text": "sand castle"
+    },
+    {
+      "lang": "en",
+      "text": "I can see a sand castle."
+    },
+    {
+      "lang": "en",
+      "text": "beach ball"
+    },
+    {
+      "lang": "en",
+      "text": "I can see a beach ball."
+    },
+    {
+      "lang": "en",
+      "text": "I can see sunglasses."
+    },
+    {
+      "lang": "en",
+      "text": "swimming shorts"
+    },
+    {
+      "lang": "en",
+      "text": "I can see swimming shorts."
+    },
+    {
+      "lang": "en",
+      "text": "bikini"
+    },
+    {
+      "lang": "en",
+      "text": "I can see a bikini."
+    },
+    {
+      "lang": "en",
+      "text": "flip flops"
+    },
+    {
+      "lang": "en",
+      "text": "I can see flip flops."
+    },
+    {
+      "lang": "en",
+      "text": "starfish"
+    },
+    {
+      "lang": "en",
+      "text": "I can see a starfish."
+    },
+    {
+      "lang": "en",
+      "text": "shell"
+    },
+    {
+      "lang": "en",
+      "text": "I can see a shell."
+    },
+    {
+      "lang": "en",
+      "text": "boat"
+    },
+    {
+      "lang": "en",
+      "text": "I can see a boat."
+    },
+    {
+      "lang": "en",
+      "text": "I can see two people."
+    },
+    {
+      "lang": "en",
+      "text": "It is sunny, not rainy."
+    },
+    {
+      "lang": "en",
+      "text": "I am happy. It is hot!"
+    },
+    {
+      "lang": "en",
+      "text": "We are going to have a break."
+    },
+    {
+      "lang": "en",
+      "text": "I am going to do my assignments."
+    },
+    {
+      "lang": "en",
+      "text": "I like a tiny cat."
+    },
+    {
+      "lang": "en",
+      "text": "flip flop"
+    },
+    {
+      "lang": "en",
+      "text": "rainy"
+    },
+    {
+      "lang": "en",
+      "text": "cool"
+    },
+    {
+      "lang": "en",
+      "text": "I can see a sand castle and two people. It is sunny."
+    },
+    {
+      "lang": "en",
+      "text": "He bought a pair of shoes."
+    },
+    {
+      "lang": "en",
+      "text": "She is going to eat a burger."
+    },
+    {
+      "lang": "en",
+      "text": "I am going to go on a camping trip tomorrow."
+    },
+    {
+      "lang": "en",
+      "text": "I am going to share a tent with Amy."
+    },
+    {
+      "lang": "en",
+      "text": "I am going to go camping on holiday next week."
+    },
+    {
+      "lang": "en",
+      "text": "My family is going to come with me."
+    },
+    {
+      "lang": "en",
+      "text": "I am going to camp with my mom."
+    },
+    {
+      "lang": "en",
+      "text": "I'm going to take a tent and a sleeping bag."
+    },
+    {
+      "lang": "en",
+      "text": "I'm going to take a tent, a sleeping bag, and a rain jacket."
+    },
+    {
+      "lang": "en",
+      "text": "I'm going to go skiing and take a cable car up the mountain."
+    },
+    {
+      "lang": "en",
+      "text": "My husband's name is Beth."
+    },
+    {
+      "lang": "en",
+      "text": "I'm not going to wear walking boots."
+    },
+    {
+      "lang": "en",
+      "text": "I'm going on a camping holiday next week."
+    },
+    {
+      "lang": "en",
+      "text": "I'm going to travel with my mom and dad, too."
+    },
+    {
+      "lang": "en",
+      "text": "tent"
+    },
+    {
+      "lang": "en",
+      "text": "camp"
+    },
+    {
+      "lang": "en",
+      "text": "campfire"
+    },
+    {
+      "lang": "en",
+      "text": "backpack"
+    },
+    {
+      "lang": "en",
+      "text": "walking boot"
+    },
+    {
+      "lang": "en",
+      "text": "walking boots"
+    },
+    {
+      "lang": "en",
+      "text": "sock"
+    },
+    {
+      "lang": "en",
+      "text": "socks"
+    },
+    {
+      "lang": "en",
+      "text": "rain jacket"
+    },
+    {
+      "lang": "en",
+      "text": "cap"
+    },
+    {
+      "lang": "en",
+      "text": "glove"
+    },
+    {
+      "lang": "en",
+      "text": "gloves"
+    },
+    {
+      "lang": "en",
+      "text": "sleeping bag"
+    },
+    {
+      "lang": "en",
+      "text": "rucksack"
+    },
+    {
+      "lang": "en",
+      "text": "rain coat"
+    },
+    {
+      "lang": "en",
+      "text": "raincoat"
+    },
+    {
+      "lang": "en",
+      "text": "skiing"
+    },
+    {
+      "lang": "en",
+      "text": "snowboarding"
+    },
+    {
+      "lang": "en",
+      "text": "cable car"
+    },
+    {
+      "lang": "en",
+      "text": "mountain"
+    },
+    {
+      "lang": "en",
+      "text": "snow"
+    },
+    {
+      "lang": "en",
+      "text": "scarf"
+    },
+    {
+      "lang": "en",
+      "text": "pole"
+    },
+    {
+      "lang": "en",
+      "text": "poles"
+    },
+    {
+      "lang": "en",
+      "text": "goggle"
+    },
+    {
+      "lang": "en",
+      "text": "goggles"
+    },
+    {
+      "lang": "en",
+      "text": "ski"
+    },
+    {
+      "lang": "en",
+      "text": "skis"
+    },
+    {
+      "lang": "en",
+      "text": "sushi"
+    },
+    {
+      "lang": "en",
+      "text": "camping"
+    },
+    {
+      "lang": "en",
+      "text": "excited"
+    },
+    {
+      "lang": "en",
+      "text": "trainer"
+    },
+    {
+      "lang": "en",
+      "text": "trainers"
+    },
+    {
+      "lang": "en",
+      "text": "library"
+    },
+    {
+      "lang": "en",
+      "text": "air conditioner"
+    },
+    {
+      "lang": "en",
+      "text": "go skiing"
+    },
+    {
+      "lang": "en",
+      "text": "go snowboarding"
+    },
+    {
+      "lang": "en",
+      "text": "take a cable car"
+    },
+    {
+      "lang": "en",
+      "text": "a snowy mountain"
+    },
+    {
+      "lang": "en",
+      "text": "white snow"
+    },
+    {
+      "lang": "en",
+      "text": "ski poles"
+    },
+    {
+      "lang": "en",
+      "text": "wear goggles"
+    },
+    {
+      "lang": "en",
+      "text": "use skis"
+    },
+    {
+      "lang": "en",
+      "text": "I'm going to go on a camping trip tomorrow."
+    },
+    {
+      "lang": "en",
+      "text": "I'm going to share a tent with Amy."
+    },
+    {
+      "lang": "en",
+      "text": "I'm going to go camping on holiday next week."
+    },
+    {
+      "lang": "en",
+      "text": "I'm going to camp with my mom."
+    },
+    {
+      "lang": "en",
+      "text": "I'm going to go skiing next week."
+    },
+    {
+      "lang": "en",
+      "text": "I'm going to take a tent."
+    },
+    {
+      "lang": "en",
+      "text": "I'm going to take a backpack."
+    },
+    {
+      "lang": "en",
+      "text": "I'm going to take a sleeping bag."
+    },
+    {
+      "lang": "en",
+      "text": "I'm going to take walking boots."
+    },
+    {
+      "lang": "en",
+      "text": "I'm going to take a rain jacket."
+    },
+    {
+      "lang": "en",
+      "text": "I'm going to take gloves."
+    },
+    {
+      "lang": "en",
+      "text": "I'm going to take trainers."
+    },
+    {
+      "lang": "en",
+      "text": "I'm going to take a cap."
+    },
+    {
+      "lang": "en",
+      "text": "I'm going to take socks."
+    },
+    {
+      "lang": "en",
+      "text": "I'm going to take a rucksack."
+    },
+    {
+      "lang": "en",
+      "text": "I'm going to take a raincoat."
+    },
+    {
+      "lang": "en",
+      "text": "I'm going to take a scarf."
+    }
+  ]
+}

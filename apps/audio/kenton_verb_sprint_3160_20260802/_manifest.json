@@ -1,0 +1,160 @@
+{
+ "app": "kenton_verb_sprint_3160_20260802",
+ "voice": "en-US-AriaNeural",
+ "enRate": "-10%",
+ "hash": "named (verb triples, reused from kenton_adverbial_clause_class_20260731, identical text)",
+ "total": 30,
+ "status": "machine-verified; phone playback pending parent acceptance",
+ "items": [
+  {
+   "lang": "en-US",
+   "text": "fall. fell. fallen.",
+   "file": "v31-fall.mp3"
+  },
+  {
+   "lang": "en-US",
+   "text": "feed. fed. fed.",
+   "file": "v32-feed.mp3"
+  },
+  {
+   "lang": "en-US",
+   "text": "feel. felt. felt.",
+   "file": "v33-feel.mp3"
+  },
+  {
+   "lang": "en-US",
+   "text": "fight. fought. fought.",
+   "file": "v34-fight.mp3"
+  },
+  {
+   "lang": "en-US",
+   "text": "find. found. found.",
+   "file": "v35-find.mp3"
+  },
+  {
+   "lang": "en-US",
+   "text": "flee. fled. fled.",
+   "file": "v36-flee.mp3"
+  },
+  {
+   "lang": "en-US",
+   "text": "fly. flew. flown.",
+   "file": "v37-fly.mp3"
+  },
+  {
+   "lang": "en-US",
+   "text": "forbid. forbade. forbidden.",
+   "file": "v38-forbid.mp3"
+  },
+  {
+   "lang": "en-US",
+   "text": "forecast. forecast. forecast.",
+   "file": "v39-forecast.mp3"
+  },
+  {
+   "lang": "en-US",
+   "text": "forget. forgot. forgotten.",
+   "file": "v40-forget.mp3"
+  },
+  {
+   "lang": "en-US",
+   "text": "forgive. forgave. forgiven.",
+   "file": "v41-forgive.mp3"
+  },
+  {
+   "lang": "en-US",
+   "text": "freeze. froze. frozen.",
+   "file": "v42-freeze.mp3"
+  },
+  {
+   "lang": "en-US",
+   "text": "get. got. got.",
+   "file": "v43-get.mp3"
+  },
+  {
+   "lang": "en-US",
+   "text": "give. gave. given.",
+   "file": "v44-give.mp3"
+  },
+  {
+   "lang": "en-US",
+   "text": "go. went. gone.",
+   "file": "v45-go.mp3"
+  },
+  {
+   "lang": "en-US",
+   "text": "grow. grew. grown.",
+   "file": "v46-grow.mp3"
+  },
+  {
+   "lang": "en-US",
+   "text": "hang. hung. hung.",
+   "file": "v47-hang.mp3"
+  },
+  {
+   "lang": "en-US",
+   "text": "have. had. had.",
+   "file": "v48-have.mp3"
+  },
+  {
+   "lang": "en-US",
+   "text": "hear. heard. heard.",
+   "file": "v49-hear.mp3"
+  },
+  {
+   "lang": "en-US",
+   "text": "hide. hid. hidden.",
+   "file": "v50-hide.mp3"
+  },
+  {
+   "lang": "en-US",
+   "text": "hit. hit. hit.",
+   "file": "v51-hit.mp3"
+  },
+  {
+   "lang": "en-US",
+   "text": "hold. held. held.",
+   "file": "v52-hold.mp3"
+  },
+  {
+   "lang": "en-US",
+   "text": "hurt. hurt. hurt.",
+   "file": "v53-hurt.mp3"
+  },
+  {
+   "lang": "en-US",
+   "text": "keep. kept. kept.",
+   "file": "v54-keep.mp3"
+  },
+  {
+   "lang": "en-US",
+   "text": "know. knew. known.",
+   "file": "v55-know.mp3"
+  },
+  {
+   "lang": "en-US",
+   "text": "lay. laid. laid.",
+   "file": "v56-lay.mp3"
+  },
+  {
+   "lang": "en-US",
+   "text": "lead. led. led.",
+   "file": "v57-lead.mp3"
+  },
+  {
+   "lang": "en-US",
+   "text": "leap. leapt. leapt.",
+   "file": "v58-leap.mp3"
+  },
+  {
+   "lang": "en-US",
+   "text": "learn. learnt. learnt.",
+   "file": "v59-learn.mp3"
+  },
+  {
+   "lang": "en-US",
+   "text": "leave. left. left.",
+   "file": "v60-leave.mp3"
+  }
+ ]
+}
