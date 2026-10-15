@@ -1,0 +1,214 @@
+/* 作业本主题：叠加在 portal.css 之上，只改视觉，不改结构与交互。
+   方格纸背景 · 便签日程 · 练习本封面 · 横格课程列表 */
+:root{
+  --paper:#f7f9f5;
+  --grid:#dbe8df;
+  --grid-strong:#c4d9cb;
+  --ink:#1e2f52;
+  --muted:#5b687b;
+  --line:#d3ddd6;
+  --white:#fffffd;
+  --red:#c4463c;
+  --note:#ffe8a3;
+  --note-edge:#e9cd77;
+  --kenton:#22768a;
+  --kenton-soft:#e3f1f2;
+  --kenton-deep:#165566;
+  --eddey:#c9692a;
+  --eddey-soft:#fcefe2;
+  --eddey-deep:#8d4415;
+  --serif:"Songti SC","STSong","Noto Serif SC","Noto Serif CJK SC","Source Han Serif SC","SimSun",serif;
+  color:var(--ink);
+}
+body{
+  background:
+    linear-gradient(var(--grid) 1px,transparent 1px) 0 0/22px 22px,
+    linear-gradient(90deg,var(--grid) 1px,transparent 1px) 0 0/22px 22px,
+    var(--paper);
+}
+h1,h2,.lesson-title,.book-bottom h3,.brand span{font-family:var(--serif);font-weight:700}
+a:focus-visible,button:focus-visible,input:focus-visible,summary:focus-visible,select:focus-visible{outline:3px solid var(--kenton);outline-offset:4px}
+
+/* 页头 */
+.site-header{border-bottom:2px solid var(--ink);margin-bottom:34px;padding-bottom:16px}
+.brand{font-size:21px;letter-spacing:.08em}
+.brand-mark{color:var(--ink)}
+.header-links{color:var(--ink);font-size:14px}
+.header-links a:hover,.parent-tools>summary:hover{color:var(--red)}
+
+/* 小节标题：像课本的章节标题，左边一根红笔竖线 */
+.section-heading{margin:46px 0 20px;align-items:flex-end}
+.section-heading h2,.child-page .section-heading h1{font-size:25px;letter-spacing:.04em;padding-left:14px;border-left:4px solid var(--red);line-height:1.2}
+.section-heading p{font-size:13px;color:var(--muted)}
+
+/* 首页大卡：贴在本子上的便签 */
+.schedule{
+  background:var(--note);
+  border:0;border-radius:4px 4px 18px 4px;
+  box-shadow:0 1px 0 var(--note-edge),0 14px 22px -14px #6a5a2a66;
+  transform:rotate(-.6deg);
+  padding:40px 40px 34px;
+  overflow:visible;
+  transition:transform .25s;
+}
+.schedule:before{
+  /* 胶带 */
+  inset:auto;left:50%;top:-13px;width:132px;height:28px;margin-left:-66px;
+  border:0;border-radius:2px;
+  background:repeating-linear-gradient(45deg,#ffffff8c 0 7px,#ffffff52 7px 14px),#cfe3d6b3;
+  transform:rotate(1.8deg);
+  box-shadow:0 1px 2px #0000001a;
+}
+.schedule:hover{transform:rotate(0)}
+.schedule .eyebrow{color:#7a5d12;font-size:13px;letter-spacing:.02em}
+.schedule h1{font-size:40px;letter-spacing:.06em;color:var(--ink)}
+.schedule p{color:#5c4d22;font-size:15px;line-height:1.8}
+.schedule-link{
+  background:var(--ink);color:#fffdf2;border:0;border-radius:999px;
+  padding:11px 20px;box-shadow:none;gap:14px;font-weight:600;
+}
+.schedule-link .arrow{color:var(--note)}
+.schedule:hover .schedule-link{background:var(--red)}
+
+/* 孩子卡片：练习本封面 */
+.child-grid{gap:26px}
+.child-card{
+  --kid:var(--kenton);--kid-soft:var(--kenton-soft);--kid-deep:var(--kenton-deep);
+  background:var(--white);
+  border:1.5px solid var(--ink);
+  border-radius:6px 16px 16px 6px;
+  box-shadow:4px 4px 0 var(--ink);
+  padding:22px 26px 14px 46px;
+}
+.child-card.eddey{--kid:var(--eddey);--kid-soft:var(--eddey-soft);--kid-deep:var(--eddey-deep);background:var(--white);border-color:var(--ink);box-shadow:4px 4px 0 var(--ink)}
+.child-card:before{
+  /* 书脊 */
+  content:"";position:absolute;left:0;top:0;bottom:0;width:22px;
+  background:var(--kid);
+  border-right:1.5px solid var(--ink);
+  background-image:repeating-linear-gradient(180deg,transparent 0 26px,#ffffff40 26px 28px);
+}
+.child-top{border-bottom:0;margin-bottom:14px;padding-bottom:0;align-items:flex-start}
+.child-initial{
+  width:auto;height:auto;padding:4px 10px;border-radius:4px;
+  background:var(--kid);border:0;color:#fff;font-family:var(--serif);font-size:15px;letter-spacing:.06em
+}
+.eddey .child-initial{background:var(--kid);color:#fff}
+.child-top h3{font-size:17px;font-weight:600}
+.child-top h3,.child-top p{display:block}
+.child-top>div{border-bottom:1.5px solid var(--ink);padding:0 6px 4px 2px;min-width:150px}
+.child-top p{font-size:12px}
+.child-top .update-label{
+  /* 老师的红色日期章 */
+  color:var(--red);border:1.5px solid var(--red);border-radius:999px;
+  padding:3px 10px;font-size:12px;transform:rotate(-4deg);background:#fff;font-variant-numeric:tabular-nums
+}
+.lesson-title{font-size:26px;letter-spacing:.03em;line-height:1.45}
+.lesson-summary{font-size:14px;line-height:1.75}
+.start-link,.eddey .start-link{
+  background:var(--kid);color:#fff;border:1.5px solid var(--ink);border-radius:10px;
+  box-shadow:0 3px 0 var(--ink);font-weight:600;letter-spacing:.06em
+}
+.start-link:hover,.eddey .start-link:hover{background:var(--kid-deep)}
+.start-link:active{transform:translateY(3px);box-shadow:0 0 0 var(--ink)}
+.child-foot{font-size:13px;color:var(--ink);border-top:1px dashed var(--grid-strong);margin-top:6px}
+.child-foot a:hover{color:var(--kid-deep)}
+
+/* 学科：课本封面 */
+.subject-grid{gap:22px}
+.subject-book,.subject-book.math,.subject-book.english{
+  border:1.5px solid var(--ink);border-radius:4px 14px 14px 4px;
+  box-shadow:4px 4px 0 var(--ink);
+  padding-left:34px;
+}
+.subject-book:before{
+  content:"";position:absolute;left:0;top:0;bottom:0;width:14px;
+  background:var(--panel-line);border-right:1.5px solid var(--ink)
+}
+.subject-book{--panel:#f2ecf8;--panel-line:#9b86b8}
+.subject-book.math{--panel:#e6f2ea;--panel-line:#5f9c7c}
+.subject-book.english{--panel:#e7eef8;--panel-line:#6b8fbf}
+.subject-book:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--ink)}
+.book-top span:first-child{background:#fff;border:1px solid var(--ink);border-radius:3px;color:var(--ink)}
+.book-bottom h3{font-size:30px;letter-spacing:.12em}
+.book-bottom p{color:var(--muted);font-size:13px}
+.book-bottom>.arrow{border-color:var(--ink);background:#fff}
+.more-subjects a{border:1.5px solid var(--ink);border-radius:10px;background:var(--white);color:var(--ink);font-size:14px}
+.more-subjects a:hover{background:var(--note)}
+
+.quiet-area{border-top:2px solid var(--ink)}
+.quiet-area>summary{font-family:var(--serif);font-size:16px}
+.quiet-links a:hover{color:var(--red)}
+.site-footer{font-size:12px;border-top:1px solid var(--grid-strong);padding-top:8px}
+
+/* 二级页：日程条、页头 */
+.small-schedule{background:var(--note);border:0;border-radius:4px;box-shadow:0 10px 16px -12px #6a5a2a66}
+.small-schedule:hover{background:#ffde80}
+.page-intro,.page-intro.chinese,.page-intro.math,.page-intro.english{
+  border:1.5px solid var(--ink);border-radius:4px 16px 16px 4px;
+  box-shadow:5px 5px 0 var(--ink);padding-left:44px;position:relative;overflow:hidden
+}
+.page-intro:before{content:"";position:absolute;left:0;top:0;bottom:0;width:18px;background:#9b86b8;border-right:1.5px solid var(--ink)}
+.page-intro.math:before{background:#5f9c7c}
+.page-intro.english:before{background:#6b8fbf}
+.page-intro h1{font-size:38px;letter-spacing:.1em}
+.breadcrumbs a:hover{color:var(--red)}
+.subject-nav a{border:1.5px solid var(--ink);border-radius:999px;background:var(--white)}
+.subject-nav a[aria-current="page"]{background:var(--ink);border-color:var(--ink);box-shadow:none}
+.segmented{background:var(--white);border:1.5px solid var(--ink);border-radius:999px}
+.segmented button{border-radius:999px}
+.segmented button[aria-pressed="true"]{background:var(--ink);color:#fff;border-color:var(--ink);box-shadow:none}
+.segmented button[data-value="kenton"][aria-pressed="true"]{background:var(--kenton);border-color:var(--kenton);color:#fff}
+.segmented button[data-value="eddey"][aria-pressed="true"]{background:var(--eddey);border-color:var(--eddey);color:#fff}
+.search-box{border:1.5px solid var(--ink);border-radius:999px;background:var(--white)}
+.filter-line{border-bottom:2px solid var(--ink)}
+.filter-line button[aria-pressed="true"]{background:var(--note);border-color:var(--note-edge);color:var(--ink)}
+.collection-link{border-bottom:1.5px solid var(--ink)}
+.results-heading h2{font-family:var(--serif);font-size:21px}
+
+/* 课程列表：横格纸 + 红色页边线 */
+.lesson-row{
+  position:relative;margin:0;border:0;border-radius:0;
+  border-bottom:1px solid #b9d0e3;
+  background:var(--white);padding:18px 16px 18px 70px;
+}
+.lesson-row:first-of-type{border-top:1px solid #b9d0e3}
+.lesson-row:before{content:"";position:absolute;left:56px;top:0;bottom:0;border-left:1.5px solid #e7a29b}
+.lesson-row:hover{background:#fdf8e6}
+.row-number{
+  position:absolute;left:8px;top:18px;width:36px;height:auto;border:0;background:transparent;
+  color:var(--red);font-family:var(--serif);font-size:17px;font-weight:700;text-align:right;display:block
+}
+.row-content h3{font-family:var(--serif);font-size:18px;font-weight:700;letter-spacing:.02em}
+.kid-badge{background:var(--kenton-soft);color:var(--kenton-deep);border-radius:3px}
+.kid-badge.eddey{background:var(--eddey-soft);color:var(--eddey-deep)}
+.kid-badge.both{background:#efe9f6;color:#5a4a72}
+.empty-state{border:1.5px dashed var(--ink);border-radius:6px;background:var(--white)}
+
+.data-notice{border-radius:4px}
+.travel-entry{border:1.5px solid var(--ink);border-radius:4px 16px 16px 4px;box-shadow:5px 5px 0 var(--ink);background:var(--white)}
+.travel-entry h2{font-family:var(--serif)}
+
+@media(max-width:760px){
+  .schedule{padding:32px 26px 28px}
+  .child-card{padding-left:40px}
+}
+@media(max-width:510px){
+  .site-header{margin-bottom:26px}
+  .schedule{transform:rotate(-.4deg);padding:30px 22px 24px}
+  .schedule h1{font-size:30px;letter-spacing:.03em}
+  .child-card{padding:20px 20px 12px 38px}
+  .child-card:before{width:18px}
+  .child-top>div{min-width:0}
+  .lesson-title{font-size:24px}
+  .subject-book,.subject-book.math,.subject-book.english{padding-left:28px}
+  .subject-book:before{width:12px}
+  .book-bottom h3{font-size:28px}
+  .page-intro,.page-intro.chinese,.page-intro.math,.page-intro.english{padding-left:34px}
+  .page-intro:before{width:14px}
+  .page-intro h1{font-size:30px}
+  .lesson-row{padding:16px 10px 16px 52px}
+  .lesson-row:before{left:42px}
+  .row-number{left:2px;width:32px;font-size:15px;top:16px}
+}
+@media(prefers-reduced-motion:reduce){.schedule,.schedule:hover{transform:none}}
