@@ -1,0 +1,499 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<script src="../assets/learning-sync.js"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#ff835e">
+<title>暑假生活 · 页码老师</title>
+<style>
+:root{--coral:#ff7652;--coral2:#ff9a75;--ink:#2f3542;--muted:#737987;--paper:#fffdf9;--cream:#fff5e9;--line:#eadfd6;--green:#37ad7c;--blue:#4c8ed9;--purple:#8b6bd9;--red:#dc5e5e;--shadow:0 12px 28px rgba(115,69,45,.13);--small:0 6px 14px rgba(115,69,45,.1)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:var(--ink);background:radial-gradient(circle at 10% 5%,#fff0db 0,transparent 25%),radial-gradient(circle at 90% 0,#ffe0d7 0,transparent 28%),#fffaf4;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;min-height:100vh}.hide{display:none!important}button,input{font:inherit}button{cursor:pointer}button:disabled{cursor:not-allowed;opacity:.46}.shell{width:min(860px,100%);margin:auto;padding:0 16px 40px}.top{height:64px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:20;background:rgba(255,250,244,.9);backdrop-filter:blur(14px);border-bottom:1px solid rgba(234,223,214,.7)}.top a,.icon-btn{min-width:44px;height:44px;border:0;border-radius:14px;display:grid;place-items:center;text-decoration:none;color:var(--ink);background:#fff;box-shadow:var(--small)}.brand{font-weight:900;letter-spacing:.02em}.brand small{display:block;color:var(--coral);font-size:11px;text-align:center}.hero{padding:28px 0 12px;text-align:center}.book{width:82px;height:72px;margin:auto;display:grid;place-items:center;font-size:42px;background:linear-gradient(145deg,#ffb48f,#ff6f50);border:5px solid #fff;border-radius:26px;box-shadow:0 13px 0 #d95f43,0 20px 30px rgba(177,78,49,.2);transform:rotate(-3deg)}h1{font-size:clamp(27px,7vw,40px);margin:27px 0 6px;line-height:1.15}.lead{margin:0 auto;color:var(--muted);line-height:1.7;max-width:590px}.search-card,.card{background:rgba(255,255,255,.94);border:1px solid rgba(234,223,214,.9);border-radius:24px;box-shadow:var(--shadow)}.search-card{padding:18px;margin-top:20px}.search-label{font-size:13px;color:var(--muted);font-weight:800;margin-bottom:8px}.search-row{display:grid;grid-template-columns:1fr auto;gap:10px}.page-input{width:100%;height:58px;border:2px solid #f1d6c8;background:#fffaf7;border-radius:17px;padding:0 18px;font-weight:900;font-size:22px;color:var(--ink);outline:0}.page-input:focus{border-color:var(--coral);box-shadow:0 0 0 4px rgba(255,118,82,.13)}.primary,.secondary,.stage-btn,.rate{min-height:50px;border:0;border-radius:16px;font-weight:900;padding:10px 17px}.primary{background:linear-gradient(145deg,var(--coral2),var(--coral));color:#fff;box-shadow:0 6px 0 #d95f43}.primary:active:not(:disabled){transform:translateY(3px);box-shadow:0 3px 0 #d95f43}.error{min-height:22px;color:var(--red);font-size:13px;font-weight:800;margin:8px 3px -3px}.quick{margin-top:18px}.section-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:0 2px 10px}.section-head h2{font-size:17px;margin:0}.section-head button{border:0;background:transparent;color:var(--coral);font-weight:800}.chips{display:flex;gap:9px;overflow:auto;padding:3px 2px 8px;scrollbar-width:none}.chip{flex:0 0 auto;border:1px solid #efd7c8;background:#fff;border-radius:14px;padding:10px 14px;font-weight:850;box-shadow:var(--small)}.chip.done{border-color:#bfe8d5;background:#effbf5;color:#278460}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:14px 0}.stat{background:#fff;border:1px solid var(--line);border-radius:18px;padding:14px 8px;text-align:center;box-shadow:var(--small)}.stat b{display:block;font-size:22px}.stat span{font-size:11px;color:var(--muted);font-weight:700}.soft-actions{display:grid;grid-template-columns:1fr 1fr;gap:10px}.secondary{background:#fff;border:1px solid var(--line);color:var(--ink);box-shadow:var(--small)}.page-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:8px;margin-top:10px}.page-dot{aspect-ratio:1;border:1px solid var(--line);background:#fff;border-radius:13px;font-weight:900;color:var(--ink)}.page-dot.seen{background:#fff0e7;border-color:#ffb59d;color:#c85035}.page-dot.done{background:#e9f8f0;border-color:#96d6b8;color:#278460}.footnote{text-align:center;color:var(--muted);font-size:12px;margin:24px 0 0;line-height:1.7}
+.tutor{padding-top:18px}.lesson-top{display:flex;align-items:flex-start;gap:12px;margin-bottom:14px}.back{width:47px;height:47px;border:0;border-radius:15px;background:#fff;box-shadow:var(--small);font-size:21px;flex:0 0 auto}.page-badge{display:inline-flex;align-items:center;gap:7px;color:#fff;background:linear-gradient(145deg,#ff9975,#ff704f);border-radius:12px;padding:5px 10px;font-size:12px;font-weight:900}.lesson-title h1{font-size:24px;margin:8px 0 5px}.tags{display:flex;flex-wrap:wrap;gap:6px}.tag{font-size:11px;font-weight:900;padding:5px 9px;border-radius:999px;background:#fff;border:1px solid var(--line);color:var(--muted)}.goal{padding:17px 18px;margin-bottom:12px;background:linear-gradient(135deg,#fff4e9,#fff);border-left:5px solid var(--coral)}.eyebrow{font-size:11px;letter-spacing:.08em;color:var(--coral);font-weight:950;text-transform:uppercase}.goal p{margin:7px 0 0;line-height:1.65;font-weight:750}.task-tabs{display:flex;gap:8px;overflow:auto;padding:3px 1px 10px;scrollbar-width:none}.task-tab{border:1px solid var(--line);background:#fff;border-radius:14px;padding:10px 13px;font-weight:850;white-space:nowrap}.task-tab.on{background:var(--ink);border-color:var(--ink);color:#fff}.task-card{padding:19px}.task-title{font-size:20px;font-weight:950;margin:4px 0 9px}.prompt{background:#f8f5f1;border-radius:17px;padding:14px 15px;line-height:1.7;font-weight:750;white-space:pre-wrap}.progress{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin:16px 0}.step{font-size:10px;font-weight:850;color:#9a8c84;text-align:center}.step:before{content:"";display:block;height:5px;border-radius:99px;background:#eadfd8;margin-bottom:5px}.step.on{color:var(--coral)}.step.on:before{background:var(--coral)}.tool{border-radius:19px;padding:15px;background:#fff8ef;border:1px solid #f0dac7;margin:13px 0}.tool-head{font-weight:950;margin-bottom:4px}.tool-sub{color:var(--muted);font-size:12px;line-height:1.55;margin-bottom:10px}.tool-list{display:grid;grid-template-columns:1fr 1fr;gap:8px}.tool-check{min-height:44px;border:1px solid #e8d5c8;background:#fff;border-radius:13px;font-weight:800;text-align:left;padding:8px 10px}.tool-check.on{border-color:#80cbaa;background:#eaf8f1;color:#247b58}.tool-check.on:before{content:"✓ ";font-weight:950}.stage-list{display:grid;gap:10px}.stage-btn{width:100%;display:flex;align-items:center;justify-content:space-between;text-align:left;background:#fff;border:1px solid var(--line);box-shadow:var(--small);color:var(--ink)}.stage-btn.open{border-color:#ffb79f;background:#fff5ef}.stage-btn .num{width:28px;height:28px;display:grid;place-items:center;border-radius:10px;background:#f7eee8;color:var(--coral);margin-right:9px;flex:0 0 auto}.stage-btn span:first-child{display:flex;align-items:center}.reveal{margin:-3px 3px 2px;padding:14px 15px;background:#fffaf6;border:1px dashed #e9bda9;border-radius:15px;line-height:1.7;white-space:pre-wrap}.attempt{display:flex;align-items:flex-start;gap:10px;background:#f3f8ff;border:1px solid #d2e1f4;border-radius:16px;padding:13px 14px;margin-top:13px;font-weight:850;line-height:1.45}.attempt input{width:23px;height:23px;accent-color:var(--coral);flex:0 0 auto}.answer-btn{width:100%;margin-top:11px}.lock-note{text-align:center;color:var(--muted);font-size:11px;margin:7px 0 0}.answer-box{margin-top:14px;border:2px solid #a6ddc3;background:#effaf5;border-radius:19px;padding:17px}.answer-box h3{margin:0 0 9px;color:#217b55}.answer-text{white-space:pre-wrap;line-height:1.72;font-weight:720}.check{margin-top:12px;padding-top:12px;border-top:1px dashed #afd9c5;color:#276d51;white-space:pre-wrap;line-height:1.65}.rating{margin-top:14px;background:#fff;border:1px solid var(--line);border-radius:18px;padding:14px}.rating p{font-weight:900;margin:0 0 10px}.rating-row{display:grid;grid-template-columns:1fr 1fr;gap:9px}.rate.good{background:#e9f8f0;color:#247e59;border:1px solid #9ed8bc}.rate.retry{background:#fff0ed;color:#bb503a;border:1px solid #f2b5a7}.nav-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:13px 0}.speak{border:0;border-radius:12px;background:#edf4ff;color:#336fad;font-weight:850;padding:8px 11px;float:right}.drawer{position:fixed;inset:0;z-index:50;background:rgba(36,29,25,.36);display:flex;align-items:flex-end;justify-content:center;padding-top:30px}.drawer-inner{width:min(760px,100%);max-height:90vh;overflow:auto;background:#fffaf4;border-radius:28px 28px 0 0;padding:20px 18px calc(24px + env(safe-area-inset-bottom));box-shadow:0 -20px 50px rgba(0,0,0,.18)}.drawer-head{display:flex;align-items:center;justify-content:space-between}.drawer-head h2{margin:0}.wrong-list{display:grid;gap:9px;margin:14px 0}.wrong-item{display:flex;align-items:center;justify-content:space-between;gap:10px;border:1px solid #f0c7bd;background:#fff3f0;border-radius:15px;padding:12px}.wrong-item button{border:0;background:var(--coral);color:#fff;border-radius:10px;padding:8px 10px;font-weight:850}.data-actions{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:15px}.file-label{display:grid;place-items:center}.toast{position:fixed;left:50%;bottom:24px;z-index:90;transform:translate(-50%,20px);background:#2f3542;color:#fff;border-radius:14px;padding:11px 16px;font-weight:800;opacity:0;pointer-events:none;transition:.25s}.toast.show{opacity:1;transform:translate(-50%,0)}
+@media(min-width:680px){.shell{padding-left:24px;padding-right:24px}.page-grid{grid-template-columns:repeat(12,1fr)}.task-card{padding:24px}.tool-list{grid-template-columns:repeat(4,1fr)}.lesson-title h1{font-size:29px}}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="shell">
+  <header class="top">
+    <a href="../index.html" aria-label="回到学习门户">⌂</a>
+    <div class="brand">暑假生活 · 页码老师<small>弟弟专用 · 第 5–76 页</small></div>
+    <button class="icon-btn" id="recordsBtn" aria-label="打开学习记录">☰</button>
+  </header>
+
+  <main id="homeView">
+    <section class="hero">
+      <div class="book" aria-hidden="true">📖</div>
+      <h1>输入页码，我陪你一步步做</h1>
+      <p class="lead">先想方法，再动笔；提示会一层层出现，答案永远放在最后。</p>
+    </section>
+    <section class="search-card">
+      <div class="search-label">页码编码（5–76）</div>
+      <form class="search-row" id="pageForm">
+        <input class="page-input" id="pageInput" inputmode="numeric" autocomplete="off" placeholder="例如：59 或 第59页" aria-label="输入暑假生活页码">
+        <button class="primary" type="submit">开始学习</button>
+      </form>
+      <div class="error" id="pageError" aria-live="polite"></div>
+    </section>
+    <section class="quick">
+      <div class="section-head"><h2>最近学习</h2><button id="showAllBtn">全部页码</button></div>
+      <div class="chips" id="recentChips"></div>
+    </section>
+    <section class="stats" aria-label="学习统计">
+      <div class="stat"><b id="seenStat">0</b><span>已打开页</span></div>
+      <div class="stat"><b id="doneStat">0</b><span>已掌握任务</span></div>
+      <div class="stat"><b id="wrongStat">0</b><span>待复习任务</span></div>
+    </section>
+    <div class="soft-actions">
+      <button class="secondary" id="continueBtn">▶ 继续上次</button>
+      <button class="secondary" id="reviewBtn">↻ 复习不稳题</button>
+    </div>
+    <section class="quick hide" id="allPages">
+      <div class="section-head"><h2>第 5–76 页</h2><button id="hideAllBtn">收起</button></div>
+      <div class="page-grid" id="pageGrid"></div>
+    </section>
+    <p class="footnote">学习记录只保存在这台设备的浏览器里。开放题给的是参考范例，不要求一字不差。</p>
+  </main>
+
+  <main id="tutorView" class="tutor hide">
+    <div class="lesson-top">
+      <button class="back" id="backHome" aria-label="返回页码输入">←</button>
+      <div class="lesson-title">
+        <div class="page-badge" id="pageBadge">📘 第 5 页</div>
+        <h1 id="lessonTitle"></h1>
+        <div class="tags" id="subjectTags"></div>
+      </div>
+    </div>
+    <section class="card goal"><div class="eyebrow">这页先学会什么</div><p id="goalText"></p></section>
+    <div class="task-tabs" id="taskTabs" aria-label="选择本页题目"></div>
+    <section class="card task-card">
+      <button class="speak hide" id="speakBtn">🔊 读一读</button>
+      <div class="eyebrow" id="taskCount"></div>
+      <div class="task-title" id="taskTitle"></div>
+      <div class="prompt" id="taskPrompt"></div>
+      <div class="progress" aria-hidden="true">
+        <div class="step on" id="prog0">看题</div><div class="step" id="prog1">找线索</div><div class="step" id="prog2">说思路</div><div class="step" id="prog3">核答案</div>
+      </div>
+      <div class="tool" id="subjectTool"></div>
+      <div class="stage-list">
+        <button class="stage-btn" id="hint1Btn"><span><i class="num">1</i>提示一：从哪里下手</span><b>＋</b></button>
+        <div class="reveal hide" id="hint1Box"></div>
+        <button class="stage-btn" id="hint2Btn" disabled><span><i class="num">2</i>提示二：关键的一步</span><b>＋</b></button>
+        <div class="reveal hide" id="hint2Box"></div>
+        <button class="stage-btn" id="reasonBtn" disabled><span><i class="num">3</i>完整思路：为什么这样做</span><b>＋</b></button>
+        <div class="reveal hide" id="reasonBox"></div>
+      </div>
+      <label class="attempt"><input type="checkbox" id="attemptCheck" disabled><span>我已经按上面的思路，在书上写过或说过一遍了。</span></label>
+      <button class="primary answer-btn" id="answerBtn" disabled>🔒 最后核对答案</button>
+      <div class="lock-note" id="lockNote">先打开两层提示和完整思路，再动笔。</div>
+      <div class="answer-box hide" id="answerBox">
+        <h3>✅ 参考答案 / 核对方法</h3>
+        <div class="answer-text" id="answerText"></div>
+        <div class="check" id="checkText"></div>
+      </div>
+      <div class="rating hide" id="ratingBox">
+        <p>合上答案，你能自己讲出方法吗？</p>
+        <div class="rating-row"><button class="rate good" id="gotItBtn">能，我会了</button><button class="rate retry" id="notYetBtn">还不稳，进复习本</button></div>
+      </div>
+    </section>
+    <div class="nav-row"><button class="secondary" id="prevBtn">← 上一题</button><button class="secondary" id="nextBtn">下一题 →</button></div>
+    <div class="nav-row"><button class="secondary" id="prevPageBtn">第 <span></span> 页</button><button class="secondary" id="nextPageBtn">第 <span></span> 页</button></div>
+  </main>
+</div>
+
+<div class="drawer hide" id="drawer" role="dialog" aria-modal="true" aria-labelledby="drawerTitle">
+  <div class="drawer-inner">
+    <div class="drawer-head"><h2 id="drawerTitle">学习记录</h2><button class="icon-btn" id="closeDrawer">×</button></div>
+    <div class="stats"><div class="stat"><b id="dSeen">0</b><span>打开页</span></div><div class="stat"><b id="dDone">0</b><span>掌握任务</span></div><div class="stat"><b id="dWrong">0</b><span>复习本</span></div></div>
+    <h3>还不稳的题</h3><div class="wrong-list" id="wrongList"></div>
+    <div class="data-actions"><button class="secondary" id="exportJson">导出 JSON</button><button class="secondary" id="exportMd">导出学习小结</button><label class="secondary file-label">导入记录<input class="hide" type="file" id="importFile" accept="application/json"></label><button class="secondary" id="copySummary">复制小结</button></div>
+  </div>
+</div>
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+const P={};
+const I=(name,prompt,h1,h2,reason,answer,check="")=>({name,prompt,hints:[h1,h2],reason,answer,check});
+const add=(n,subjects,title,goal,items)=>P[n]={n,subjects:subjects.split("·").map(x=>x.trim()),title,goal,items};
+
+add(5,"语文·综合实践","把愿望变成能做到的计划","会读懂名言，也会把一个大愿望拆成看得见、能检查的小行动",[
+I("名言诵读","读页面上四句名言，选一句最打动你的背下来，并说说它为什么适合暑假。","先圈出每句里最重要的词，例如“今天、知识、决心、理想”。不要急着背。","把名言盖住，只看关键词，试着一小句一小句接出来。","1. 先弄懂句意；2. 选与自己愿望最接近的一句；3. 按停顿读三遍；4. 盖住文字，用关键词复述；5. 最后说“它提醒我要……”。","这是开放题。参考表达：我选择珍惜今天、努力学习的名言，因为暑假每一天都很宝贵，我想每天完成一件计划中的事。","能不看书完整背出；能用自己的话讲出意思；没有只背不懂。"),
+I("我的愿望树","在愿望树上写暑假愿望和计划。至少写清“想做到什么、怎样做、何时检查”。","愿望不要只写“变优秀”，要改成能看到的结果，例如“读完3本书”。","给愿望装上三个小轮子：每天或每周做什么、谁来提醒、哪一天检查。","先写一个结果，再拆成三步：每天的小动作、每周的小检查、暑假结束的成果。这样愿望才不是口号。","参考范例：愿望——暑假读完3本课外书。计划——每天阅读30分钟；每周日把最喜欢的一段讲给家人听；8月25日前完成3张阅读卡。也可以按自己的真实愿望改写。","目标要具体；行动要做得到；有时间；能检查。")
+]);
+add(6,"数学","乘法、速度和单位连连看","先估范围，再精算；单位题先想真实物体有多大",[
+I("乘积找主人","计算 78×54、69×18、72×16、48×14，再把乘积连到对应小朋友。","先估：78×54大约是80×50=4000，答案应在4000附近。其他三题也先估百位或千位。","两位数乘两位数可拆成“乘整十 + 乘个位”，最后相加。","78×54=78×50+78×4=3900+312=4212。69×18=69×20−69×2=1380−138=1242。72×16=72×10+72×6=720+432=1152。48×14=48×10+48×4=480+192=672。","78×54=4212；69×18=1242；72×16=1152；48×14=672。按这四个结果连线。","乘积位数是否合理；个位是否相符；再用估算核对。"),
+I("谁跑得多快","把 60千米/时、1200千米/时、250米/分连给自行车、公共汽车、飞机。","先统一感受：250米/分=15千米/时。","从慢到快排：约15千米/时、60千米/时、1200千米/时，再看交通工具。","自行车通常十几千米每小时；公共汽车几十千米每小时；飞机可达到上千千米每小时。","自行车—250米/分；公共汽车—60千米/时；飞机—1200千米/时。","别把“米/分”和“千米/时”只看数字大小；250并不比60快。"),
+I("给物体选单位","给跳绳长度、教室面积、铅笔盒表面大小、苹果质量选择合适的数和单位。","先判断在量什么：长用米/厘米，面有“平方”，质量用克。","再用身体当尺：一步约半米，一本练习册的面约几百平方厘米，一个苹果约100多克。","跳绳是长度；教室地面是较大的面积；铅笔盒表面是较小面积；苹果是质量。","跳绳约2米；教室面积约22平方米；铅笔盒一个面的面积约420平方厘米；苹果约100克。","单位种类对不对；数量是否符合生活经验。")
+]);
+add(7,"综合实践","走近龙华英烈","会做文明、安全的参观计划，并能记录看到的事实与自己的感受",[
+I("爱国主义教育基地参访","阅读龙华烈士陵园资料，选择一处爱国主义教育基地，设计一次参访或线上参观记录。","先从“在哪里、纪念谁、能看到什么”三个问题读资料。","记录时分三栏：我看到的事实、我最敬佩的人或事、我准备怎样做。","参观前查开放信息并由家长陪同；参观中安静、有秩序、不攀爬；参观后用一件展品或一个故事说明感受。","开放题参考：我想参观龙华烈士陵园。我要了解一位英烈的事迹，认真观看纪念馆，记下最打动我的一个细节。参观后，我会珍惜今天的生活，认真学习、帮助同学。","写的是具体见闻，不只写“很感动”；线下活动须由家长确认时间和安全。")
+]);
+add(8,"语文","词语、句意和天气谚语","会根据上下文选词，会分清“肯定”和“否定”，会用谚语观察天气",[
+I("给句子填“然”字词","把突然、竟然、仍然、不然、果然放进合适的句子。","先读空格前后：意外发生用“突然”；出乎意料用“竟然”；情况没变用“仍然”。","“不然”常表示否则；“果然”表示结果和预料相同。每填一个都把整句读顺。","不要凭字面排顺序，要找语境信号：一瞬间、没想到、还是、否则、和预想一样。","依书上五句的语境依次核对：突然、竟然、仍然、不然、果然。","每个词都代回原句朗读，意思不别扭才算对。"),
+I("找意思相反的句子","判断哪一句与“谁也不能否认这件事是小明做的”意思相反。","先把双重否定变简单：“不能否认”就是“必须承认”。原句肯定是小明做的。","再逐项翻译成肯定或否定，只找“不是小明做的”那一句。","双重否定常加强肯定。反问“怎么会是小明做的呢”表示认为不是小明做的。","选第4句：“这件事怎么会是小明做的呢？”","先写出原句真正意思，再比选项，别被“不能、否认”两个否定绕住。"),
+I("雨前动物谚语","给五条气象谚语填动物名称。","看动作找动物：搬家常说蚂蚁；低飞常说蜻蜓；钻出水面或搬家会说泥鳅；吐气泡想到乌龟；叫声停止想到知了。","填完要连起来读，看是否是常见、押韵的民间谚语。","谚语来自长期观察，但不是精密天气预报。学习时记“动物变化—可能下雨”的联系。","按书中五条横线依次填：蚂蚁、蜻蜓、泥鳅、乌龟、知了。","把每个动物和它的动作连着说一遍；真实出行仍要看正规天气预报。")
+]);
+add(9,"数学","混合运算与分数","先定运算顺序，再看整体被平均分成几份",[
+I("12道口算","完成页面上的12道混合运算。","先圈括号，再标乘除，最后才加减；同级运算从左往右。","每题算完做一个快速估算，特别留意0÷5=0，而不是5。","按“括号→乘除→加减”逐题推进。连续除法 560÷8÷7 要从左往右；257−57+43也从左往右。","依次：59，420，40，10，3000，108，110，50，243，152，1723，670。","检查括号；同级是否从左往右；抄数是否正确。"),
+I("涂色部分占几分之几","观察两个图形，写出白色部分占整个图形的几分之几。","分母看一共被平均分成几份，分子看其中白色占几份。","图形外形不同不重要，只要能配对成面积相等的两部分。","利用对称或移动想象，把白色与有色部分一一对应；两部分面积相同，就是整体的一半。","两个图中的白色部分都占 1/2。","一定说的是面积，不是只数小块个数。"),
+I("黑白珠子分数","盒中有6颗黑珠、5颗白珠。黑珠占几分之几？再放3颗黑珠后，白珠占几分之几？","先求总数：分母永远是此时盒子里的总颗数。","加入黑珠后，白珠颗数不变，但总数变了，所以分母要重算。","原来总数6+5=11，黑珠6颗；加入3颗黑珠后总数11+3=14，白珠仍5颗。","原来黑珠占 6/11；加入3颗黑珠后，白珠占 5/14。","分子、分母是否对应同一个时刻。")
+]);
+add(10,"英语·综合实践","看图补对话与牙签画","用图和前后句锁定介词、形容词和名词，再安全完成创意作品",[
+I("Monkey 对话","根据猴子在树上的图片补全对话。","先找图中最明显的三件事：看什么、在哪里、什么身体特征。","固定搭配：look at；在树上 in the tree；尾巴长用 long；猴子爱吃 bananas。","每个空都先读完整句，判断需要动词、介词、名词还是形容词。","依次可填：Look at；in；tree；long；bananas。","句首大写；复数 bananas；at 和 in 不漏写。"),
+I("Pineapple 对话","根据菠萝图片和触感补全问答。","看到“这是什么”用 What is it?；问感觉用 How does it feel?","菠萝名词是 pineapple；摸起来粗糙用 rough。","先看问句缺哪种词，再用答句反推：It’s a pineapple. / It’s rough.","关键词依次：pineapple；How；feel；rough。完整句可写：What is it? It’s a pineapple. How does it feel? It’s rough.","What/How句首大写；does 后用 feel 原形。"),
+I("牙签拼贴画","用牙签和纸安全完成一幅拼贴画，并给作品取名。","先用铅笔画大轮廓，再决定哪些线用整根、哪些用短段。","先摆不粘，确认构图后再少量涂胶；剪断或处理尖头请让大人帮忙。","从大形到小细节：轮廓—主体—纹理—背景。完成后说说用了哪些基本图形。","开放题参考：作品名《小帆船》。用两根牙签做船身，三根做三角帆，短牙签做海浪和太阳光。","桌面整洁；尖头不朝人；作品粘牢；能讲出设计。")
+]);
+add(11,"语文","读懂《毛驴和牛大哥》","用人物说的话和做的事，判断误会怎样产生、又怎样解开",[
+I("字音、标点和近义词","完成多音字、人物对话标点和近义词题。","“背”表示身体部位读 bèi，表示用背驮东西常读 bēi；先看它在句中做什么。","人物直接说的话用引号；提示语后的冒号、问号和感叹号要根据语气选。","把词放回原句：缓缓地表示速度慢；友谊表示朋友之间的情谊。标点要先分清谁在说话。","“背上”的背读 bèi；“背着/背负”的背读 bēi。近义词可写：缓缓地—慢慢地，友谊—友情。对话标点按“提示语：‘说话内容。’”核对。","多音字要带进原句读；引号必须成对。"),
+I("题目与道理","给短文选择合适题目，并解释毛驴前后心情变化。","圈出反复出现的两个人物：毛驴和牛大哥；题目应概括主要人物和事件。","找误会的关键词“千斤”，再找牛大哥解释它真正含义的句子。","毛驴把“千斤”误解成自己承担得更多，觉得吃亏；知道“千斤”是礼貌或夸赞后，明白牛大哥没有占便宜，因此惭愧。","题目选 C《毛驴和牛大哥》。毛驴先因误解“千斤”而不满，后来听懂意思，知道自己错怪朋友，感到惭愧。道理：遇到不懂的话先问清楚，不要凭猜测伤害友谊。","回答必须有“原来怎样—为什么—后来怎样”三个部分。")
+]);
+add(12,"数学","路线计数、最短路线与植树","岔路题不漏不重，周长植树题知道首尾相接不用加1",[
+I("甲地到乙地有几条路","沿图从甲走到乙，不能重复走同一段，列出所有路线并找最短。","在每个岔路口停一下，给选择编号。先固定第一步，再把后面的分支画成树。","每找一条就在原图旁写路线字母，走过的路线打勾；比较最短时看实际线段总长，不看拐弯次数。","用“分类”避免漏：第一步走上路有哪些，走下路有哪些；每类再分。若题图线段看不清，沿着铅笔逐段描，不可穿过没有道路的地方。","这题以书上道路图为准：按“第一岔口上/下”建立路线树，把每条完整路线列出后计数；最短路线是逐段长度相加后最小的一条。请用页面图线核对，不凭路线看起来直就判断。","没有重复同一路段；每条都从甲到乙；路线清单和计数相同。"),
+I("给图案涂色","按页面规律给四个图案涂色。","先观察重复单位：颜色是按位置、方向还是数量循环。","用手指遮住后面的图，只看前两组，先说规律再涂。","每次只改变一个特征。完成后从后往前检查，看看同一规律是否一直成立。","这是操作题，按书上前面图案显示的颜色规律完成；颜色名称可以不同，但位置规律必须一致。","四幅图使用同一规则；没有漏涂或多涂。"),
+I("长方形四周植树","长60米、宽40米的长方形场地，每隔5米种一棵，四个角都种，一共几棵？","先求封闭图形周长，不要直接算面积。","封闭一圈的间隔数等于棵数，所以周长÷间距，不加1。","周长=(60+40)×2=200米；每5米一个间隔，共200÷5=40个间隔，也就是40棵。","(60+40)×2÷5=40（棵）。","首尾相接不加1；单位是棵。")
+]);
+add(13,"英语·科学","补问答、猜动物和认识昆虫","从答句倒推问句，用显著特征猜动物，科学结论要看条件",[
+I("完成英语问答","根据图片补全简短问答。","先判断问句是一般疑问句还是特殊疑问句；答句有 Yes/No 时常用 Do/Can/Is 开头。","颜色问句用 What colour；复数动物用 birds，喜欢用 like。","先写主干，再补细节。Do you…? 的肯定回答是 Yes, I do。","本题关键词依次可核对：Do you；I；colour；black；white；birds；like。请把它们放回原句，读成完整问答。","Do 与 I 搭配；black/white 拼写；birds 复数。"),
+I("动物谜语","根据“没有脚、身体长”和“鼻子长、身体大”等线索猜动物。","每读一个线索就排除一批动物，不要只看一个词。","无脚、长身体会想到 snake；大身体、长鼻子会想到 elephant。","把答案代回所有线索：每一条都符合才接受。","第一只动物：snake。第二只动物：elephant。","单词拼写正确；前面用 a/an 时留意 an elephant。"),
+I("昆虫小知识","判断或阅读页面下方的昆虫知识，并说明你依据的特征。","昆虫通常有头、胸、腹三部分和三对足；不是所有会飞的小动物都是昆虫。","题目若说“所有、一定”，要格外小心，找一个反例就能否定。","科学题先看定义，再看题中动物是否满足条件；不确定的事实可以查可靠科普资料。","按页面给出的知识点核对；核心判断依据是昆虫的身体结构与三对足，而不是“会不会飞”。","能说出依据，不只写对或错。")
+]);
+add(14,"语文","四季词语、公益广告和月季花","选词要让搭配自然，公益语要短、准、能行动",[
+I("给月季花短文选词","把描写季节、地点和容器的词语放入合适位置。","先给词语分类：天气季节、地形地点、城市环境、器物。","看名词搭配：盛夏常配赤日炎炎；深秋常配金风送爽；山区可说险峻陡峭。","每个空先问“它在描写什么”。词类对上后，再读整句看是否通顺。","依次参考：风和日丽的早春、赤日炎炎的盛夏、金风送爽的深秋、险峻陡峭的山区、繁华热闹的城市、人烟稀少的绝壁、精巧玲珑的花盆。","没有把天气词放到器物前；搭配读起来自然。"),
+I("读懂公益广告","选一条最喜欢的公益广告，说清它提醒谁、要做什么、为什么。","把广告拆成“对象 + 行动 + 好处或后果”。","好的说明不是重复广告，而是举一个生活中的场景。","先解释关键词，再给具体行动。例如节水不是只说“要节水”，而是关紧水龙头、重复利用清水。","开放题参考：我选择保护环境的广告。它提醒每个人不要乱扔垃圾，要把垃圾分类投放，因为干净的环境需要大家共同维护。","有对象、有行动、有理由；语言简洁。"),
+I("收集一条新广告语","观察生活，再写或收集一条公益广告语。","先确定主题：交通、节水、阅读、文明、环保任选一个。","控制在一句话，最好有节奏，但不能为了押韵让意思不清。","写完做“三秒测试”：别人三秒能读懂吗？知道该做什么吗？","参考：文明只差一步，请把垃圾送回家。也可以写：红灯停一停，安全伴我行。","不抄个人信息；行动指向明确；用词文明。")
+]);
+add(15,"数学","因数配对、速度时间和综合应用","乘积题用配对，路程题先统一单位，复杂题把总量分开",[
+I("给乘积找因数","从整十数中找两个数，使乘积分别为800、1200、3500、4200、2800、2400。","先去掉两个数末尾的0，想基本乘法，再把0补回去。","同一个积可能有不止一组，系统地从10、20、30……试，避免漏。","把目标数除以候选数，商也在候选表中就是一组。","800：10×80或20×40；1200：20×60或30×40；3500：50×70；4200：60×70；2800：40×70；2400：30×80或40×60。","交换因数不算新方法；每组乘回去核对。"),
+I("动物到终点要多久","根据路程和速度算马、熊、蜻蜓的时间。","圈单位。马的2千米要先化成2000米。","数量关系：时间=路程÷速度。","马：2000÷400；熊：2200÷550；蜻蜓：1400÷700。先估每分钟走几份。","马5分钟；熊4分钟；蜻蜓2分钟。","三个算式单位都得到“分钟”；商乘速度能回到路程。"),
+I("选择题两道","判断50×24末尾有几个0；再解决鸡兔腿数问题。","末尾0来自因数10；鸡兔题先算兔子的腿，再把剩下腿数按每只鸡2条分。","兔子255只，每只4条腿；总腿2226条。","50×24=1200，有2个0。兔腿255×4=1020，鸡腿2226−1020=1206，鸡数1206÷2=603。","第1题选 C；第2题选 B，鸡有603只。","鸡603只、兔255只的腿数是否合计2226。")
+]);
+add(16,"英语·科学","词形变化、选择题与植物防身术","会看句子决定单复数、代词和形容词，也会用实例解释植物保护自己",[
+I("按要求变词","完成 scarf、leaf、you/he、cool、noisy、smooth 等词形变化。","先看括号要求：复数、反义词还是宾格。不要看到词就马上加s。","scarf复数可写 scarfs/scarves；leaf→leaves；we 的宾格 us，he 的宾格 him。","形容词反义关系：cool/cold 对 warm/hot 要看题目；noisy→quiet；rough→smooth。逐项按题目要求变。","按页面顺序核对：scarfs 或 scarves；leaf；we；him；cold；quiet；rough；too。","每个答案的词性与空格一致；不漏不规则变化。"),
+I("六道选择","完成页面6道英语选择题。","先遮住选项，自己读句子想需要什么词，再打开选项比较。","一般疑问句看助动词；代词看指代谁；形容词看触觉或温度。","逐题找句子主干，排除语法不通的选项，再用意思复核。","依次选：B，B，A，B，B，C。","把选项放回整句读；主谓搭配和句意都要通。"),
+I("植物怎样保护自己","列举植物自我保护的方法。","从“刺、毒、气味、动作、外皮”五类想例子。","每个例子写成“植物—办法—作用”，不要只列名称。","仙人掌用刺减少伤害；含羞草受碰触会合拢叶片；有些植物有难闻气味或有毒汁液，能减少动物啃食。","开放题参考：仙人掌长刺保护自己；含羞草受到触碰会合拢叶片；有些植物用苦味、毒素或坚硬外壳防御。","事实不确定就查科普；不要随意触摸或品尝陌生植物。")
+]);
+add(17,"语文","读懂《我叫刘翔》","会结合语境选词，读准字音，并抓住“名字怎样得来”的叙事线索",[
+I("选词与字音","在研究/讲究、企图/试图、普通等词中选合适的，并读准劈头盖脑、夭折。","比较感情色彩：“企图”常带贬义；“试图”较中性。名字的选择很认真可用“讲究”。","把词放回原句，人物语气自然、意思合适才保留。","语境讲家人认真给孩子取名，并多次尝试，不是在做学术研究，也没有坏意图。","主要选词：讲究、试图、普通、征集。劈头盖脑的“劈”读 pī；夭折的“夭”读 yāo。","词语搭配自然；多音字按句义读。"),
+I("名字的故事","概括“刘翔”这个名字是怎样得来的，并说说名字寄托了什么。","按时间圈出每次改名或讨论的节点。","概括时只留“谁提出—为什么改—最后怎样”，不用把每句话抄一遍。","文章围绕取名经过展开，表现家人认真讨论、不断调整，希望名字好听、有意义，也寄托对孩子的祝福。","参考：家人为名字反复商量、征集意见，经过几次变化，最后确定“刘翔”。这个名字不只是称呼，也寄托了家人希望孩子勇敢向前、展翅飞翔的祝愿。","有经过、有结果、有含义；用自己的话，不整段照抄。")
+]);
+add(18,"语文·数学","名字采访、判断题和电影票","采访题问清来历；判断题说理由；付钱题列出组合并检查余数",[
+I("采访名字的来历","采访家人，记录自己的名字由来。","准备三个问题：谁取的？为什么选这些字？寄托什么希望？","记录事实后，再写一句自己的感受。不要公开家庭电话、住址等隐私。","先问、再记关键词、最后整理成完整段落。","开放题模板：我的名字是____，是____给我取的。因为____，所以选了“____”字。家人希望我____。听完后，我觉得____。","信息真实；句子完整；不写无关隐私。"),
+I("四个数学判断","判断面积、单位、正方形周长和等周长图形的说法。","判断题不能只凭感觉，每题找定义或举一个反例。","面积和长度不能直接相等；正方形面积已知可先找边长；相同周长的长方形面积可能不同。","教室地面大小用面积；1平方米与1米是不同量；正方形面积81平方分米，边长9分米，周长36分米；例如1×5和2×4周长都12，面积却5和8。","依次：√，×，√，×。","错题能写出错在哪里；单位名称完整。"),
+I("电影票怎样买","用60元、30元、50元、20元等票价解决“几倍、最多几张、110元组合”问题。","倍数用除法；“最多”要除完看余数；组合题从最贵票开始有序尝试。","110元组合要让几个票价相加等于或不超过110，并说明找零。","60÷30=2。50元票用20元一张的预算思路是50÷20=2余10。组合可逐一试60、50、30、20。","第1问2倍；第2问最多2张，余10元。110元可选60+30+20=110元，正好不找零；若题目允许其他组合，列式后核对总价。","“最多”答案后写余数；组合总价重新相加。")
+]);
+add(19,"英语·科学","英语选择、感觉词与安全小实验","用问句结构选答案，用感官词描述物品，实验以安全观察为先",[
+I("三道英语选择","完成页面上方3道选择题。","先读答句再选问句或词语；看主语是单数还是复数。","把每个选项代回整句，语法和意思都通过才选。","本页三题分别考常用问答、物主或代词、感官描述。先抓句型，再看图意。","依次选：B，A，B。","完整读三句；不要只记字母。"),
+I("给图片贴感觉词","把 sweet、hot、hard、soft、smooth、cold、fat 等词放到合适图片旁。","先分感官：sweet是味觉；hot/cold是温度；hard/soft/smooth是触觉；fat形容外形。","一个物品可以有多个合理形容词，但必须能从图片或常识解释。","糖果可sweet，冰淇淋cold，桌子hard，球或光滑表面smooth，熊猫fat。其余按书上图片特征连。","参考配对：糖果—sweet；热食—hot；桌子/硬物—hard；柔软物—soft；光滑球面—smooth；冰淇淋—cold；熊猫—fat。","每个词的感官类别正确；不品尝实验物品。"),
+I("屏息观察活动","在成人陪同下做页面的呼吸观察，并记录感受。","先坐稳、正常呼吸。绝不先快速深呼吸，也不和别人比谁憋得久。","只体验一次；一有头晕、胸闷或不舒服立刻恢复正常呼吸并停止。","实验目的是感受身体需要氧气，不是挑战极限。用“开始—感觉—停止原因”记录即可。","开放记录示例：我正常吸气后短暂停住呼吸，过一会儿感到想呼气，于是马上停止。说明人体需要不断获得氧气。","必须有成人在旁；不在水中做；不比赛；不舒服立即停。")
+]);
+add(20,"语文","古诗配对、言语成语和人物比喻","用作者、诗题和名句互相验证，会从成语里的关键词判断意思",[
+I("古诗名句配对","把《咏柳》《春晓》《春夜喜雨》与作者和名句连起来。","先认最熟的关键词：柳叶、春眠、好雨。","再用作者核对：贺知章写咏柳，孟浩然写春晓，杜甫写春夜喜雨。","题目—作者—名句必须三点全连对，不能只凭“都是春天”连接。","《咏柳》—贺知章—“不知细叶谁裁出……”；《春晓》—孟浩然—“春眠不觉晓……”；《春夜喜雨》—杜甫—“好雨知时节……”。","每组题目、作者、诗句内容一致。"),
+I("给“言语”成语找意思","辨认自言自语、千言万语、豪言壮语、甜言蜜语、胡言乱语。","圈前两个字：自、千、豪、甜、胡，它们已经告诉你说话方式。","用一个小场景验证：一个人小声说是自言自语；说很多是千言万语。","豪言壮语有气魄；甜言蜜语好听讨好；胡言乱语没有根据或混乱。","依页面释义配对：自言自语；千言万语；豪言壮语；甜言蜜语；胡言乱语。","能给每个成语说一个合适情境。"),
+I("三种人像什么","把粗心的人、吝啬的人、没有主见的人与俗语名称配对。","从特点想形象：粗心马虎；一毛不拔；风往哪边就倒。","俗语带有评价色彩，使用时不要随便给同学贴标签。","“马大哈”常指粗心；“铁公鸡”比喻吝啬；“墙头草”比喻没有主见、随风倒。","粗心的人—马大哈；吝啬的人—铁公鸡；没有主见的人—墙头草。","理解意思即可，真实交流要尊重别人。")
+]);
+
+add(21,"数学","混合运算走迷宫","每到一个路口先算当前算式，只沿等于结果的道路前进",[
+I("算出通往桃子的路线","从入口开始计算每个路口的混合运算，沿正确数字依次走到桃子。","第一格先算 13×16，再加560；不要从560开始乱算。","每算出一个结果，就只找带这个数字的下一条路；把走过的数按顺序记在旁边。","混合运算按顺序：13×16+560=768；189+300÷75=193；35×10+875÷25=385；416÷52+276÷46=14；326×7+326×3可提取326；2880÷90+17×18=338。","正确路线上的数字依次是：768 → 193 → 385 → 14 → 3260 → 338 → 桃子。","每一步都重新看运算符；326×7+326×3=326×(7+3)，不是先加7+326。")
+]);
+add(22,"英语","单词补缺、情景问答和夏日小作文","先从图义确定单词，再用问答成套表达，最后写5个有顺序的句子",[
+I("补全五个单词","根据图片补齐 pineapple、skateboard、car、elephant、morning。","先说出图片英文，再按音节慢慢拼，不要只看缺了几个字母。","长词分块：pine-apple，skate-board，ele-phant。","听音—分块—写字母—整词再读一遍。","依次：pineapple，skateboard，car，elephant，morning。","字母顺序、双写或词尾都完整。"),
+I("图片问答配对","给苹果、气球、飞机、橘子和花的图片补完整问答。","先判断在问味道、物品、声音、购物还是气味。","taste对应味道；hear对应听见；Can I help you? 后说要买什么；smell对应闻。","每幅图都用“问句线索—图中物品—答句结构”三点核对。","参考完整句：Taste the apple. Is it hot? No. / What is it? It’s a balloon. / What can you hear? An aeroplane. / Can I help you? Oranges, please. / Close your eyes. Smell it. Is it nice? Yes. It’s a flower.","句首大写；问号；an aeroplane；oranges用复数。"),
+I("夏天图画写5句","看夏日海滩图，写5个英语句子。","按“天气—地点—人物—动作—感受”排句子，就不会东一句西一句。","每句只写一个清楚意思；正在做的动作可用 is/are + doing。","先口头说五句，再写。人物单数用 is，复数用 are。","参考：It is sunny. We are at the beach. A boy is swimming. Two children are playing with a ball. They are happy. 可按书上实际画面替换人物和动作。","5句都有句号；主语和is/are搭配；画面上能找到依据。")
+]);
+add(23,"语文","同音字辨析、运动感受与排序","同音字看词义，排序找时间和动作链",[
+I("三组同音字填空","在向/像/项，望/忘/旺，代/戴/带/待中选字。","别凭读音，要给每个字组词：方向、好像、项目；希望、忘记、兴旺。","代表示代表，戴是穿戴，带是携带，待是接待。填完把词组圈出来。","每个空先确定意思，再选字形；一个句子里可能连续出现同音字。","依文段核对：向、像、像、项；忘、望、旺；代、代、戴、待、带、戴。","每个字能与旁边的字组成正确词语。"),
+I("说说运动时的心情","选择一幅运动图，写出动作、困难和心情。","先用动词说清做什么，再用“刚开始—后来—最后”说变化。","心情词要和事情对应，例如紧张、着急、坚持后的开心。","写三句即可：做什么；遇到什么；怎样克服、有什么感受。","开放题参考：我学习跳绳时，刚开始总被绳子绊住，有些着急。我放慢速度，一下一下练习。连续跳成功后，我特别开心，也明白了坚持很重要。","有具体动作，不只写“我很开心”。"),
+I("给捉蟋蟀片段排序","把书上散乱句子排成一段通顺的话。","先找开头的时间句“有一天晚上/吃完饭后”，再找突然听见声音。","动作链通常是：听见—轻手轻脚走近—判断位置—猛扑—仔细听或查看—处理结果。","用时间词和代词衔接。排好后整段读一遍，若“果然”前没有猜测，顺序就有问题。","参考顺序按内容为：一天晚上吃完饭 → 忽然听见叫声 → 轻手轻脚走近 → 果然发现目标 → 猛地一扑 → 仔细听或查看 → 把捉到的蟋蟀安置好。请把这条动作链对应到书上句子编号。","“忽然”后是新发现；“果然”前必须有猜测；人物和物品指代清楚。")
+]);
+add(24,"数学","分数涂色、商的位数和竖式填格","先看整体与平均份，再用被除数前几位和除数比较判断商位数",[
+I("按四分数涂色","把长方形的1/4涂红、2/4涂黑。","先把整个长方形平均分成4份，四份必须面积相等。","红色占1份，黑色占2份，还应剩1份不涂。","可以竖分、横分或等面积分，但不规则乱切不能保证四等份。","一种标准画法：将长方形平均分成4个相同小长方形；1格红、2格黑、1格留白。","总份数4；红1份；黑2份；1+2+1=4。"),
+I("树叶下藏哪个数字","判断三位数除以两位数时，树叶遮住的百位数字可以是哪些。","商一位数表示被除数小于除数的10倍；商两位数表示被除数大于等于除数的10倍。","例如 □45÷68 商一位数，要 □45<680，所以百位可1到6。依样比较每题。","逐题把“除数×10”写在旁边，再确定三位数落在哪一边。首位不能为0。","商一位数：□45÷68 可填1–6；□95÷84 可填1–7；□07÷72 可填1–7。商两位数：□79÷92 只能填9；□31÷56 可填6–9；□16÷47 可填5–9。","把边界数字代入：一位商必须小于十倍除数，两位商必须不小于。"),
+I("除数末位4、商十位2","给四个除法竖式填出不同的成立方法。","商十位是2，先看第一次相乘：除数末位4，4×2的个位一定是8，所以竖式中的□8成立。","可先选除数14、24、34、44，再选20到29的商，乘出被除数；最后要求余数0且版面位数合适。","这是一题多解题。用“除数×商=被除数”反向造题，比盲填每个格快。","四组可行例子：322÷14=23；528÷24=22；748÷34=22；968÷44=22。把每组按竖式写入空格，余数都是0。","乘法验算正确；商十位是2；除数个位是4；每步余数小于除数。")
+]);
+add(25,"英语·科学","水果购物与噪声","用表格信息组成购物对话，也能提出可执行的降噪办法",[
+I("水果店对话","根据表格完成菠萝、苹果、橘子的购物对话。","先横着读一行：水果—特点—数量—价格。","购物句型可用 How much…? / … yuan. 数量大于1时名词用复数。","每次只把一行表格变成一组问答，别把不同水果的数量和价格串行。","菠萝：big and sweet，3个，12 yuan；苹果和橘子：nice and sweet，2个 apples、5个 oranges，价格分别5 yuan、7 yuan。按书上空格组成完整句。","pineapples/apples/oranges用复数；价格和数量不交换。"),
+I("怎样减少噪声","根据生活场景写出减少噪声的方法。","先找噪声从哪里来，再想在声源、传播途中、耳朵附近哪一处能减弱。","方法必须具体，例如“调小音量”，不要只写“不要有噪声”。","家里轻关门、电视调低；公共场所不大声喧哗；施工遵守时段；需要时使用合适的隔音材料或护耳用品。","开放题参考：把电视音量调低；桌椅脚加软垫；不在楼道追逐喊叫；汽车不乱鸣笛；施工按规定时间进行。","不把耳塞当成所有场景的唯一办法；先减少声源。")
+]);
+add(26,"语文","读懂《一只小老鼠》","从影子造成的错觉读出人物心理，明白自我欺骗和骄傲的危险",[
+I("找句子与概括故事","按要求抄写含点词的句子，并用关键词复述故事。","抄句子先找到完整句号范围，不能只抄词前后半句。","复述用“看见影子—误以为自己很大—去挑战猫—结果”四格。","影子大小会随光源和距离变化，不能证明身体真的变大。小老鼠把错觉当事实，判断失误。","复述参考：小老鼠看到自己的巨大影子，以为自己变得很强大，便骄傲地去找猫挑战。真实的它没有变大，最后落入猫口。","抄写无漏字；复述有起因、经过、结果。"),
+I("小老鼠为什么悲惨","解释小老鼠的错误，并写出读后明白的道理。","找两处证据：它怎样看待影子；它后来做了什么。","把“客观事实”和“小老鼠的想法”分开。","客观上只是影子变大，小老鼠却误认为能力变强，又没有验证，就做了危险决定。","小老鼠因把影子当成真实本领而盲目自大，最后付出代价。道理：不能被表面现象欺骗，也不能高估自己；做决定前要看清事实。","道理要从故事行为推出，不写与故事无关的口号。")
+]);
+add(27,"数学","靠墙围栏与成绩统计","周长题先画出真正要围的边，统计题用总人数减去已知各类",[
+I("哪种围法更省栅栏","18米×9米的长方形菜地，一边靠墙，比较两种围法。","用手指描“需要栅栏”的三条边，靠墙那一边不算。","想省栅栏，就让较长的18米边靠墙。比较 18+18+9 和 18+9+9。","若9米边靠墙，要围18+18+9=45米；若18米边靠墙，要围18+9+9=36米。","小亚把18米长边靠墙的方案更省；需要36米，比45米少9米。","没有把靠墙边算进去；比较的是同一块18×9菜地。"),
+I("补全成绩统计图","全班39人，合格21人，图中优6人、不合格2人，求良并补图表。","先把四类列成加法：优+良+合格+不合格=总人数。","未知的良=总人数−其余三类。","39−6−21−2=10。画柱时横轴类别不换，纵轴每格代表的人数要看清。","优6人，良10人，合格21人，不合格2人。","四类相加6+10+21+2=39；柱高和表中数字一致。")
+]);
+add(28,"英语·综合实践","词汇分类与AI小诗","按共同属性补词，使用AI时先给清楚要求、再核查和改写",[
+I("给四类词补成员","给 fruit、family、shapes、things on the desk 等类别继续添词。","先说类别的共同点，再写属于它的词。","每类至少写3个；同一个词不要重复放到不同类。","水果可写 apples/oranges/pears；家庭成员可写 mother/brother/sister；形状可写 square/triangle/star；桌上物品可写 ruler/pencil/book。","参考：fruit—apples, oranges, pears；family—mother, brother, sister；shapes—square, triangle, star；desk—ruler, pencil, book。","复数形式尽量一致；拼写正确；确实属于该类。"),
+I("用AI写一首小诗","设计提示语，让AI根据一个安全主题写短诗，再自己检查、修改。","提示语要含主题、对象、长度和风格，例如“给三年级学生写4行关于夏雨的小诗”。","AI会出错或写得空泛：圈出你最喜欢的一句，再把至少一个词改成自己的观察。不要输入姓名、学校、住址。","好作品不是原样复制。先核事实，再改声音、颜色、动作，让诗里有你真正见过的细节。","安全提示语范例：请为三年级学生写一首4行小诗，主题是傍晚的蝉鸣，语言简单，每行不超过12个字。修改范例：把“声音很好听”改成“蝉声从梧桐叶缝里落下来”。","不含私人信息；事实合理；至少有一处自己的修改。")
+]);
+add(29,"语文·综合","成语连诗、青藏铁路与想象作文","从成语空格提取文字，会把资料按同一标准记录，会写有变化过程的想象故事",[
+I("填成语，连成古诗","从每列给出的字中选一个，使竖排成语完整，再把所填字横向连读。","先只管每个成语是否成立，不要提前猜诗句。","所有空填完后按从左到右读；若是七言诗，应每句7个字、节奏通顺。","用两次验证：成语正确一次，诗句出处和字数再验证一次。","所填字连成杜牧《山行》中的两句：远上寒山石径斜，白云生处有人家。","每个选字同时满足所在成语；两句各7字。"),
+I("青藏铁路世界之最","读页面资料，再补充查找一条可信资料。","先把四条都改写成“比较项目—纪录”，例如线路长度、海拔、冻土里程、速度。","查资料时记来源和年份；“世界之最”可能随新工程变化，不把旧资料当永远不变。","页面给出的四个方向是：最长高原铁路、最高海拔高原铁路、穿越冻土里程长、高原冻土铁路速度高。补充时也要说明比较范围。","可按书页记录四项。补充范例：青藏铁路经过海拔5072米的唐古拉山口；若查到不同数字，以权威铁路或政府资料并注明查询日期为准。","数字有单位；说明“在什么范围内比较”；不只抄网页标题。"),
+I("假如我会七十二变","写约150字想象短文。","先选一种变化，不要一开始就写十种：变成谁、去哪里、解决什么问题。","故事要有“发现问题—第一次尝试—遇到困难—再想办法—结果和感受”。","变化只是工具，真正好看的是用本领做了什么、为什么这样做。","参考提纲：我变成小鸟飞到城市上空—发现公园有垃圾—变成清洁机器人收集分类—遇到树缝太窄—再变成小蚂蚁清理—公园恢复干净—我明白本领要用来帮助大家。按提纲写成自己的约150字段落。","有开头、经过、结果；至少一个困难；不照抄范例。")
+]);
+add(30,"数学·思维","倒看数字、剪绳、切角与排鸭子","用条件列出所有可能，并用小模型验证“最多、至少”",[
+I("倒过来仍不变的四位数","找至少5个旋转180度后仍能读成自己的四位数。","可用的数字主要是0、1、8，以及会互换的6和9；首位不能是0。","从两头配：第一位与第四位旋转后要相配，第二位与第三位也要相配。","这是中心对称，不是普通从右往左读。6旋转成9，9旋转成6。","例：1881、1001、1111、8888、6969、6119、6009。任写5个即可。","把纸倒转检验；首位没有0；6和9成对。"),
+I("折绳一剪最多几段","一根绳子对折两次，再剪一刀，最多得到几段？","先用纸条模拟两次折叠，剪的位置不要落在折痕或末端。","展开后会出现若干切口；一根直绳有几个不同切口，就分成“切口数+1”段。","两次对折最多让一刀同时产生4个不同切口，展开后4个切口把绳分成5段。","最多5段。","说的是最多；切口重合会少于5段。"),
+I("正方形切掉一个角","一刀切掉正方形的一部分，剩下图形可能有几个角？画三种。","切线与正方形边或顶点相交的位置不同，剩余角数也不同。","分别试：只截去小角；经过相邻顶点附近；切去包含多个原角的大块。","用纸片实剪后数剩余图形的顶点，不数被剪掉那块。","可以得到剩3个角、4个角、5个角的图形，各画一种。","切线是一条直线；数的是剩下部分。"),
+I("一队鸭子至少几只","满足“前面、后面、中间”的描述，求至少几只。","先画圆点排成一行，用位置而不是加法硬凑。","让描述尽量由同一批鸭子同时满足，才能求“至少”。","排5只时，前后和中间位置可以重叠满足题目说法；少于5只无法让所需位置都出现。","至少5只鸭子。","把5个圆点编号1–5，逐句指给自己看；若有一句不满足就调整。")
+]);
+add(31,"英语·综合实践","看图提问、短文判断与手工","问题词要和答案类型匹配，判断题必须回原文找证据",[
+I("给四幅图写问句","根据狮子、花、季节、动物等图片写合适问句。","答案是物品用 What；颜色用 What colour；季节用 What season；复数动物用 What animals。","先说你希望别人回答什么，再选择问题词。","看见狮子可问 What can you see?；花的颜色问 What colour…?；季节问 What season is it?；复数动物问 What animals are these?","参考：What can you see? We can see lions. / What colour is the flower? / What season is it? / What animals are these?","问号；these配复数；can后动词原形。"),
+I("Bob短文判断","读Bob和小狗Harry的短文，判断5句话。","每题圈人名、年龄、班级、外形、狗的颜色、地点等关键词，再回原文定位。","原文没说的不能凭常识补；有一个细节不同整句就是错。","逐句把题目与原文并排比：Bob 9岁、三年级一班；狗Harry白棕相间；在公园放风筝。","五题依次：F，F，T，T，T。","每个F能指出错词并改正。"),
+I("参观或手工作品","按页面活动完成参观记录或小制作。","先列材料和步骤；使用剪刀、胶水时保持桌面整洁。","作品完成后写“我做了什么—最难哪里—怎样解决”。","活动题重在过程证据，可以拍作品但公开分享时不出现姓名、学校和家庭位置。","开放题参考记录：我先画轮廓，再剪贴主要部分，最后补颜色。最难的是对齐边缘，我先轻轻摆好再粘牢。","步骤完整；工具安全；能说出一个改进点。")
+]);
+add(32,"语文·综合实践","成语藏省名、近义词辨析与活页杂志","利用成语前后衔接找省名，会根据动作方式选近义词",[
+I("成语中藏着哪些省名","在相邻两个成语之间各填一字，使左右都成为成语；两字合起来是省级地名。","先补左边成语，再看填入的第二字能否和右边开头组成成语。","例如开门见山、山东山再起，中间的“山、东”组成山东。","每行要同时满足两个成语，最后再验证两字是我国省级行政区名称或简称任务要求中的名称。","依次：山东、济南、海南、海口、上海、天津、河南、青海。对应成语如刀山火海/南辕北辙，五湖四海/口是心非，跃然纸上/海阔天空。","左右成语都成立；两字顺序不反。"),
+I("使劲/使尽与穿跨路过","给5个句子选最准确的词。","使尽强调把力气全部用完；使劲强调用力。穿过是从空间内部通过，跨过是迈越障碍，路过是途中经过。","把动作演一遍：冲刺可使尽力气，搬重桌要使劲；三条马路是穿过，文具店是路过，小溪流是跨过。","近义词区别要看动作方式和宾语，不只看读起来顺不顺。","1 使尽；2 使劲；3 穿过；4 路过；5 跨过。","每个词与后面的“力气/搬/马路/文具店/小溪”搭配。"),
+I("制作我的活页杂志","按兴趣设计分类，收集和整理暑假资料。","先定2–3个栏目，每栏只收同一类材料。","每份材料写来源或日期；剪贴后留出自己的短评，而不是只堆图片。","推荐流程：定主题—分类—筛选—排版—写标题和短评—定期补充。","参考栏目：精品欣赏、学习偶像、成语积累、自然观察。每栏首页写栏目名，材料旁写一句“我为什么选它”。","来源清楚；版面不拥挤；至少有自己的文字。")
+]);
+add(33,"数学","漏水、递推算式与速度表格","连续计算一步一验算，数量关系题先写公式再代数",[
+I("水龙头漏水","水龙头每分钟漏68克，1小时漏多少克？","先把1小时换成60分钟。","每分钟相同，用乘法：每分钟质量×分钟数。","68×60=68×6×10=408×10=4080。","1小时漏4080克水。","单位是克；68×60数量级应是几千。"),
+I("数链递推","按箭头依次完成6个算式，每个结果作为下一步信息。","一次只算一格，并在旁边写中间结果。","先乘除后加减；若得到后一格指定数不合理，回查上一格。","依次计算页面中的算式：25×24+125；23×34−58；560÷5+398；320+16×27；1500−125×8；4320÷54−70。","依次：725，724，510，752，500，10。","每个乘除先算；4320÷54=80。"),
+I("路程速度时间表","补汽车、飞船和跑步的数据表。","先写三兄弟：路程=速度×时间；速度=路程÷时间；时间=路程÷速度。","看缺哪一项就选对应公式，单位保持题中单位。","汽车120×6；飞船600000÷8；跑步120÷20。","汽车路程720千米；飞船速度75000米/秒（按表中单位）；跑步速度6米/秒。","把结果代回乘法能得到原路程。")
+]);
+add(34,"英语·科学","词形变化、人物阅读与鸟喙","先判断空格需要什么词形，阅读用证据表，科学题比较结构和功能",[
+I("八个词形变化","按要求变化 dress、scarf、she、you、cool、foot、me、see。","先标任务：复数、所有格、宾格、反义或同音词。","dress复数加es；foot复数feet；I的宾格me、me对应主格I；see同音词sea。","不规则词单独记，其他词按规则变化。","依次参考：dresses；scarf；he；your；warm；feet；I；sea。具体以每个括号要求核对词性。","词形符合题目要求，不只拼写相近。"),
+I("Tom的姐姐","读短文，提取姐姐的职业、外貌、物品、喜好和宠物。","画五格证据表：job / looks / bag / likes / pet。","每找到一个答案就在原文划线；题目若问姐姐，不要抄到Tom的信息。","姐姐是英语老师，外貌和手提包、喜欢的水果、小白猫都能在原文找到。","按原文概括：She is a teacher. She teaches English. She is tall（其余外貌按原文）. Her black handbag is small. She likes bananas. She has a little white cat.","所有信息都能指回原文一句；she/her不混。"),
+I("鸟喙有什么用","观察不同鸟喙形状，推测适合怎样取食。","比较长短、粗细、弯直，不只说“长得不一样”。","结构与食物对应：尖长便于探取，粗硬便于啄开种子，钩形便于撕取。","用“因为喙……所以适合……”完整说明。","参考：细长喙适合伸入花朵或泥中取食；短粗喙适合啄碎种子；弯钩喙适合撕取食物；扁宽喙适合在水中滤食。","只作观察推断，不喂食或接近野生鸟类。")
+]);
+add(35,"语文·综合实践","动物比喻与企鹅蛋手工","比喻要抓动物最鲜明的特点，手工先设计结构再动手",[
+I("用动物特点打比方","给人物表现选择合适的动物比喻。","先把动物和常见特点配对：狐狸狡猾、绵羊温顺、狮子凶猛、熊猫可爱、麻雀叽叽喳喳。","再看句子描写的是外形、声音、脾气还是动作。","比喻必须有相似点。猴子可形容滑稽灵活；狮子可形容怒吼；狐狸可形容狡猾；绵羊可形容温顺。","按书中各句语境选择：猴子/猿猴—滑稽灵活；熊猫—可爱；狮子—凶猛怒吼；狐狸—狡猾；绵羊—温顺听话；麻雀—叽叽喳喳。","不能因为喜欢某动物就乱配；能说出相似点。"),
+I("制作企鹅蛋作品","按页面步骤完成企鹅蛋造型。","先画草图并列材料，想清楚蛋形主体如何站稳。","先做大块黑白身体，再做眼睛、嘴、翅膀等小部件；需要剪裁或热熔工具请找成人。","边做边比较左右位置，粘之前先摆。完成后给企鹅设计一个名字和一句介绍。","开放题参考：作品名《冰冰》。蛋形做身体，黑纸做背和翅膀，白纸做肚皮，橙纸做嘴和脚。介绍：冰冰住在寒冷的南极，走路摇摇摆摆。","结构牢固；左右协调；工具安全；能讲制作顺序。")
+]);
+add(36,"数学","动物园景点周长","凹凸图形不套错公式：沿边走一圈，把缺边用横平竖直关系补出",[
+I("四个景点各多长","求大象、熊猫、猴子、长颈鹿景点的周长，并找最短路线。","拿铅笔从一个角出发沿边走，走过一条标一条，回到起点才停。","缺的横边用总宽差，缺的竖边用总高差；凹进去的边也属于周长。","大象：缺横边90−70=20，左高40+55=95。熊猫底宽60+35+35=130。猴子可看成90×65外框加上下两个深22的凹口。长颈鹿阶梯的横向总往返、竖向总往返分别计算。","周长：大象370米；熊猫500米；猴子398米；长颈鹿770米。因此绕一圈最短的是大象景点，370米。","每个图都首尾闭合；横向向左总长=向右总长，向上总长=向下总长。")
+]);
+add(37,"英语·科学","十道选择与豆苗向光实验","用句型和语义双重排除选项，实验只改变光线方向",[
+I("十道英语选择","完成本页10道选择题。","先找主语，再判断动词；日期用 on；序数词前通常有 the；感觉问句看 How/What。","做完每题把选项放回整句读，遇到不确定先排除明显语法错的。","本页主要检查助动词、代词、介词、have/has、日期、祈使句、形状和疑问词。","依次选：A，A，B，B，C，B，A，C，C，A。","不是只写字母：能读出完整句并说出关键词。"),
+I("豆苗为什么弯向光","设计豆苗向光性观察。","两盆条件尽量相同，只让光来的方向不同；每天同一时间观察。","记录日期、茎朝向和高度，可画箭头。不要一天换一个位置。","植物的茎往往表现向光生长。公平实验要控制水、土、温度、种子等条件。","预期：从侧面受光的豆苗会逐渐朝光源方向弯曲；均匀受光的较直。实际结果按自己的观察记录。","不把预期写成伪造结果；照料后洗手；不食用实验植株。")
+]);
+add(38,"语文","看图写一件温暖的小事","从图中证据确定人物关系，用动作、语言和感受把事情写完整",[
+I("看图写约200字","观察夜晚小朋友给大人扇风的图，写一篇有起因、经过、结果的短文。","先列六要素：时间、地点、人物、发生什么、为什么、结果。","细节从图中找：夜晚、天气热、谁在休息、谁拿扇子。再补一两句合理对话和心理。","结构建议：开头交代炎热夜晚；中间写发现大人辛苦、轻轻扇风和对话；结尾写大人的反应与自己的感受。","参考提纲：夏夜闷热—妈妈忙完家务很疲倦—我拿扇子轻轻扇—手酸了仍坚持—妈妈醒来微笑感谢—我体会到照顾家人的快乐。请据此写成自己的约200字文章。","图中事实不写反；至少两个动作细节；标点正确；有真实感受。")
+]);
+add(39,"数学·上海文化","东方明珠与8424西瓜","两步乘法先读懂倍数关系，也会从计算结果认出生活中的数字名称",[
+I("东方明珠有多高","图中给出一个高度，东方明珠是它的6倍，求高度。","圈“6倍”，说明用乘法，不是加6。","把78×6拆成70×6和8×6。","70×6=420，8×6=48，合起来468。","78×6=468（米），东方明珠高约468米。","个位8×6=48要进位；单位米。"),
+I("这只西瓜叫什么","用东方明珠高度468乘18，得到一个四位数，猜上海有名的西瓜品种数字名。","18可拆成20−2，计算更快。","468×18=468×20−468×2。","9360−936=8424。这个结果正好是上海人熟悉的“8424”西瓜数字名。","468×18=8424，所以这只西瓜叫“8424西瓜”。","乘积估算约470×20=9400，8424在合理范围。")
+]);
+add(40,"英语·综合实践","看图回答、宠物店阅读与纸蝴蝶","回答问题要完整复用问句结构，阅读判断回原文，手工注意对称",[
+I("看图回答四问","根据熊猫生日、兔子画画和两幅人物图回答问题。","问年龄用数字；问can就用Yes/No + 主语 + can/can’t；问正在做什么用is doing。","不要只答一个词，尽量写完整句。","先从问句复制主语和助动词，再替换答案内容。","参考：He is ten. / She can paint（或 draw，按图中题目用词）. / Yes, she is. / Yes, they are.","he/she/they与is/are一致；句首大写、句末标点。"),
+I("宠物店短文判断","读宠物店短文，判断4句话。","每句圈动物、颜色、价格或人物等关键词，回原文找同义信息。","若题目偷换一个数字或否定词，整句判错。","先在原文旁标T/F依据，再写答案。","四题依次：T，F，F，T。","两道F都能指出原文中的正确说法。"),
+I("纸蝴蝶","制作一只左右对称的纸蝴蝶。","先对折纸，在折边一侧画半只蝴蝶，剪开后才会左右对称。","先剪大轮廓，再展开画花纹；尖角和小孔由成人协助。","利用对折保证形状对称，花纹可以同色对称，也可以有创意变化。","开放题参考：对折—画半边翅膀—沿线剪—展开—画左右呼应的圆点和波纹—加触角。","左右翅膀基本对称；剪刀朝外使用；桌面收拾干净。")
+]);
+
+add(41,"语文","标点小医生与《梦笔生花》","标点先分清谁在说话，阅读题用人物行动解释成语含义",[
+I("给句子和短文加标点","完成页面的单句标点和人物对话改错。","先找一句话说完的地方，再判断是陈述、疑问还是感叹。","人物直接说的话放在引号里；“某某说”在前面通常接冒号，在中间两边的话各自有标点。","按意思分句，而不是看到一口气长就全用逗号。修改后朗读，停顿和语气应自然。","按书上原句核对：陈述句句末用句号，问题用问号，强烈语气用感叹号；人物原话加成对引号，提示语后的冒号不漏。短文答案可能有合理差异，以语意完整为准。","引号成对；一句末尾只有一个句末标点；问句不写句号。"),
+I("读懂“梦笔生花”","回答梦中笔尖开花、李白写作出色原因和成语含义。","先把传说中的“梦”与真实成长原因分开。","真实原因要回原文找李白平时怎样观察、思考和练习。","传说用“笔尖生花”表现才华；真正的好文章来自长期观察、勤奋思考和不断练习。","梦中情景：笔尖开出鲜花。李白写作出色的真实原因是善于观察思考、勤学苦练。“梦笔生花”比喻写作才华出众、文章写得精彩。","回答原因不能只写“做了一个梦”；成语解释要用“比喻……”。")
+]);
+add(42,"数学","数的规律与口算","先找数字排列规律，再用拆分和运算顺序做口算",[
+I("111…平方的规律","观察1111²，再写更长的全1数的平方。","从少位数开始看：11²=121，111²=12321。数字先递增再递减。","有n个1且n不超过9时，平方从1递增到n，再递减到1。","先数清有几个1，再写山峰数字，左右对称检查。","1111²=1234321；11111²=123454321；111111²=12345654321；1111111²=1234567654321；11111111²=123456787654321。","最高数字等于1的个数；结果左右对称。"),
+I("16×24多种算法","用不同方法计算16×24。","把其中一个因数拆成整十和个位，或把一个减半、另一个加倍。","只要保持乘积不变，方法可以不同；每种都要写等号链。","方法一：(10+6)×24；方法二：16×(20+4)；方法三：8×48。","16×24=240+144=384；也可320+64=384；或8×48=384。","三种方法结果相同；拆分后每一部分都乘到了。"),
+I("12道直接写得数","完成页面下方口算。","先分成乘法、除法和加减三组，避免看串行。","除法用乘法验，整十整百乘法数清末尾0。","逐题计算后再按原顺序抄回。","按页面从左到右、从上到下依次：7200，4200，810，440；14，5，8，0；18，544，900，4100。","0除以非0数得0；末尾0数量正确。")
+]);
+add(43,"英语","图片数量与句子填词","先看数量决定单复数，再用句子位置判断名词、形容词和冠词",[
+I("看图写数量和动物衣物","观察鱼、衬衫、熊猫、长颈鹿图片，写数量短语。","先数，再看名词是否需要复数。数量大于1，一般名词加s或按不规则变化。","fish可作单复数同形；shirts、pandas、giraffes要注意词尾。","按“数字 + 名词”完整说一遍后再写。","two fish；three shirts；five pandas；four giraffes。","数字与图一致；复数词尾不漏。"),
+I("从词框补句子","给 pupil、eyes、bag、coat、flowers 等句子选词。","先判断空格需要人、身体部位、物品还是复数名词。","冠词an后接元音音素开头的单数；flowers是复数，动词和限定词也要匹配。","利用句子已有的I/Alice/His等线索锁定所属关系。","按句意可组成：I am a pupil. I have…；Alice’s eyes…；His bag…；an old coat…；flowers…。具体形容词按书上词框放入。","an old coat；所有格Alice’s有撇号；复数flowers。"),
+I("找街头英语小错误","观察招牌或标签，找拼写、大小写、单复数问题。","一次只查一类：先拼写，再大小写，再标点。","把错误词和正确词并排写，说明为什么改。","真实街头英语可能为品牌创意写法，不确定时查词典，不随意嘲笑。","开放题格式：原写法____；建议改为____；理由是____。","证据清楚；没有记录店员或路人的个人信息。")
+]);
+add(44,"语文","反义词、扩句与暑假小记","反义词看同一维度相反，扩句用细节把画面变清楚",[
+I("找反义词对子","判断上下、左右、远近、轻重、黑白的关系，再补充更多。","反义词必须属于同一方面，例如大小都说尺寸，冷热都说温度。","把词放进“从___到___”中读，关系相反且自然才算。","书上五组都是反义词。可从数量、长短、速度、温度、情绪继续想。","书上：上—下、左—右、远—近、轻—重、黑—白。自写可用：大—小、多—少、长—短、冷—热、快—慢。","不是近义词；两个词词性相同。"),
+I("给句子添砖加瓦","把“雨下得多大呀”“小朋友们快乐极了”扩写得更具体。","扩句不改主干，只回答“怎样大、从哪里看出快乐”。","加入声音、动作、比喻任选一两种，别一口气堆太多形容词。","从可观察细节写：雨点敲窗、路面溅水；孩子笑、跳、欢呼。","参考：豆大的雨点噼里啪啦敲打着窗户，天地间像挂起了一道雨帘。小朋友们快乐极了，有的拍手，有的跳起来，笑声传得很远。","主干意思没变；细节能看见或听见。"),
+I("写约100字暑假生活","选一件真实小事写清经过和收获。","只写一件事，比罗列“游泳、读书、旅游”更生动。","用“开始—遇到问题—怎样解决—结果”四句骨架。","把最关键的一刻写细：一个动作、一句话、一种感受。","参考提纲：第一次学游泳—不敢把脸放进水里—教练让我先吹泡泡—反复练习后能漂起来—我明白害怕时可以把困难拆小。写成自己的约100字短文。","约100字；有经过；有具体细节；有收获。")
+]);
+add(45,"数学·综合实践","竖式纠错与图形描摹","不只改答案，还要找到错在试商、乘法、对位还是进位",[
+I("三道除法竖式纠错","检查3530÷46、5280÷22、5100÷22。","先独立估商，再逐步看“商×除数、相减、落下一位”。","余数必须小于除数；商中间或末尾的0不能随便漏。","3530÷46试商7十后继续算个位；5280÷22结果末尾要有0；5100÷22逐位试商并看余数。","3530÷46=76……34；5280÷22=240；5100÷22=231……18。","用“除数×商+余数=被除数”验算。"),
+I("三道乘法竖式纠错","检查47×12、75×21、605×65。","先看个位部分，再看十位部分有没有向左错一位。","乘法错误常见三种：基本乘法算错、进位漏掉、十位部分没补位。","47×12中47×2应为94；75×21的×20部分是1500；605×65的两部分3025和36300要对齐。","47×12=564；75×21=1575；605×65=39325。","用估算核对：约50×12=600，75×20约1500，600×65约39000。"),
+I("描一描、变一变","沿书上图形描摹，再尝试平移、旋转或补全。","先找起点和方向，一笔沿边走，不穿过不存在的边。","变化前后比较边数、角、方向和位置，说明什么变了、什么没变。","描摹训练观察和手眼协调，不追求一次很快。","操作题：按原图边线描完整；再选一种变化并标注“平移/旋转/补全”。","线条闭合；不漏边；能说出变化方式。")
+]);
+add(46,"英语·美术","问答配对与米罗式创作","配对先找回答中的关键词，创作从点线形和有限颜色开始",[
+I("读对话并配问答","把5个问句与合适答句配对。","先看答句类型：年龄是数字，味道是形容词，喜欢是Yes/No，听见是声音，人物是身份。","用关键词把一问一答成对，再完整朗读。","How old→年龄；taste→味道；Do you like→喜好；hear→听见；Who is she→人物。","依次配：How old—C；taste—D；like the bear—E；hear—A；sister—B。","每组人称一致；问什么答什么。"),
+I("像米罗一样画","观察米罗作品中的点、线、星形和鲜明色块，完成自己的抽象画。","先挑3种基本形和3种颜色，不需要画得像真实物体。","先排大形，再用线连接，最后加小点和纹理；留一些空白。","抽象创作也要有选择。画完给作品取名，并指出一个你最满意的组合。","开放题参考：作品名《夜空里的跳舞机器人》。用黑色曲线连接红圆、蓝三角和黄色星形。","有主次；颜色不过度涂满；能讲出自己的想法。")
+]);
+add(47,"语文","读懂威尔玛·鲁道夫","会用关联词连接因果与转折，也会从一句话提炼人物精神",[
+I("关联词和形近字","给短文选因为/所以、虽然/但是等关联词，并圈邻/近、采/彩、和/合、他/它。","先判断两分句是因果还是转折。读完关系再选词。","形近字看组词：邻近、彩色、合在一起；人用他，物或动物常用它。","关联词必须成对看，不能只看前半句。把选字与旁边字组成词再核对。","按语意主要使用：因为…所以…；虽然…但是…（具体空位按原句）。形近字按词义选“邻/近、采/彩、和/合、他/它”中的正确字。","两分句逻辑通；每个形近字能组出正确词。"),
+I("“一只手也能拍响”","解释文中这句话，并概括鲁道夫的品质。","先找这句话前后的困难和她做出的行动。","它不是字面上的拍手，而是在说即使条件不利，也能靠努力创造可能。","鲁道夫面对疾病或身体困难没有放弃，持续训练，最终取得成绩。比喻句要联系人物经历解释。","参考：这句话说明只要有坚定信念并不断努力，看似不可能的事也可能做到。鲁道夫勇敢、坚持、不向困难低头。","解释有上下文证据；不只把原句换个说法。"),
+I("提出一个好问题","针对短文提出一个能从文中找证据的问题，并作答。","不要问“她叫什么”这种一眼就能抄的题，问行为原因或品质。","用“我认为……，因为文中写到……”回答。","问题越具体，证据越好找。","参考问题：鲁道夫为什么能从患病女孩成长为优秀运动员？参考答：因为她没有被困难吓倒，坚持治疗和训练，文中多处写到她不断练习。","问题与文章有关；答案含证据。")
+]);
+add(48,"数学","方格估面积、判断积的大小与八分之五","不规则图形用整格加半格估计，大小题先估算，分数题保证八等份",[
+I("估算树叶面积","在1平方厘米方格纸上估树叶面积。","先数完全覆盖的整格，再把零碎格两两合成约1格。","边缘不到半格可暂不计，超过半格约算1格；估算答案允许有小差异。","整格数 + 零碎格折合数 = 近似面积。沿边数一圈，避免重复。","按图估计约20平方厘米；如果按统一的半格规则得到相近数值，也算合理。","写“约”；单位平方厘米；说明整格和零碎格怎样合。"),
+I("小鱼还是大鱼","判断六个算式结果是否大于2000，把它们分到两条鱼。","先估，不必每题长算：除法看被除数与除数的倍数，乘法取整估。","6554÷65约100；35×27不足1000；305×18和99×60都约五六千。","精算或估算确认后分类。","小于2000：A 6554÷65、B 35×27、F 6045÷65。大于2000：C 305×18、D 99×60、E 4984÷2。","每个标签只放一次；临界值要精算。"),
+I("涂出5/8","在不同图形中涂出八分之五。","先确认整体被平均分成8份；不是8块就要继续等分。","任选5份涂色，位置可以不同，面积必须相等。","分母8表示总共8等份，分子5表示涂其中5份。","每个图形都先八等分，再涂5份；不同图可涂不同位置。","数一遍总份数8、涂色5；每份面积相等。")
+]);
+add(49,"英语·科学","辨音、看图问答与冰块实验","辨音看画线部分的音，不看字母长相；实验区分杯外水珠和杯内水",[
+I("五组画线部分辨音","判断 cake/can、see/sea、listen/his、nose/dog、play/train 的画线部分发音是否相同。","先逐词慢读，只听画线音，不管拼写相不相同。","长短元音不同就判F；不同字母也可能同音。","cake的a与can不同；see与sea同音；listen与his的i同为短音；nose与dog的o不同；play与train中的元音组合发音相同。","依次：F，T，T，F，T。","每组都能读出画线音；不是凭字母判断。"),
+I("图片问答","根据兔子、猴子、西瓜等图完成问答。","问颜色答颜色；Is it…用Yes/No；What are they?答复数；How does it feel?用触感词。","回答尽量完整，复用问句里的主语。","看图证据后写句子，触觉题选smooth/hard等合适词。","参考：The rabbit is white. / Yes, it is. / They are monkeys. / The watermelon is smooth and hard.（按书上问句调整主语）","rabbit单数；monkeys复数；句号。"),
+I("冰融化会溢出吗","观察浮在水中的冰融化，以及杯子外壁出现水珠。","先在水面做标记，别移动杯子；分别记录杯内水位和杯外水珠。","浮冰排开的水重与冰重相当，融化后水位通常基本不变；杯外水珠主要来自空气中的水蒸气遇冷凝结。","把两个现象分开解释：不明显溢出是浮冰与排水关系；外壁水珠不是杯里漏出。","预期：浮冰完全融化后水位基本不变，不会因为这块浮冰而明显溢出；杯外会有凝结的小水珠。实际按观察记录。","用托盘防滑；不饮用实验水；不要把外壁水珠说成冰融水穿过杯壁。")
+]);
+add(50,"语文","表示“看”的词、段落排序与偶像介绍","根据看的方向、时间和态度选词，排序找起因和对话链",[
+I("七种“看”怎样用","理解仰望、俯视、打量、欣赏、观察、眺望、注视。","给每个词加动作：抬头、低头、上下看、带着喜爱看、仔细研究、向远处看、集中目光。","再看句中对象和目的，选最精准的。","新同学常被打量；抬头看树上是仰望；看自己的画是欣赏；研究蚂蚁是观察。","书中四句依次：打量、仰望、欣赏、观察。其余词义：俯视—从高处向下看；眺望—向远处看；注视—集中目光看。","选词能解释方向或态度；代回句子通顺。"),
+I("书店片段排序","给妈妈带我去书店、书店人多、找书、对话等句子排序。","先找时间地点开头，再排动作，人物问答必须一问一答相邻。","顺序骨架：去书店—看见人多—挤到书架—妈妈问—我回答想买什么—妈妈评价。","用代词检查：如果一开始就出现“她问”，前面必须先出现妈妈。","按内容排成：星期天妈妈带我去书店 → 书店里人很多 → 我挤到书架前 → 妈妈问我想买什么 → 我说想买《十万个为什么》 → 妈妈说我真是个小科学迷。将这条顺序对应书中句号编号。","时间开头；动作因果合理；对话成对。"),
+I("介绍我的偶像","写约200字介绍一个敬佩的人。","不只写“他很厉害”，选一件具体事证明。","结构：是谁—做过什么—哪个细节打动我—我准备学习什么。","人物可以是科学家、运动员、家人或身边普通人。公开软件里不写真实私人联系方式。","参考提纲：我敬佩的人是谁；他/她面对过什么困难；用什么行动坚持；取得什么结果；我准备从每天一件小事学起。写成自己的约200字文章。","至少一件具体事；有自己的行动计划；不是荣誉清单。")
+]);
+add(51,"数学·亲子活动","投笔平均数与火柴棒面积","平均数先求总和再平均分，固定周长比较面积要有序列举",[
+I("投笔得分与平均数","按页面规则投10次，记录每次分数，算平均分并和家人友好比较。","先画10格记录，投一次记一次，不挑最好成绩。","总分=10次相加；平均分=总分÷10。","平均数表示把总分平均分成10份。比较时同时看平均分和进步，不因输赢争吵。","这是实测题。计算格式：第1至10次得分相加=总分；总分÷10=平均分。例：总分76分，平均分7.6分。实际填写自己的数据。","正好10次；总分相加无漏；活动周围没有易碎物。"),
+I("12根火柴围长方形","用12根等长火柴围不同长方形，比较面积。","一圈12根表示周长12个单位，所以长+宽=6。","有序列出整数边长：1和5、2和4、3和3，再算面积。","面积分别是1×5、2×4、3×3。固定周长下，长和宽越接近，面积往往越大。","可围1×5，面积5；2×4，面积8；3×3，面积9。面积最大的是3×3的正方形。","四边用棒数2×(长+宽)=12；面积单位是平方单位。"),
+I("还能拼什么图形","用同样火柴拼一个非长方形，记录边数和特点。","先拼闭合图形，再数每条边用了几根。","比较新图形与长方形：周长是否仍12，面积是否容易直接求。","这是探索题，可以拼阶梯形、L形或多个小正方形，但火柴不重叠且总数12。","开放题：画下自己的拼法，并写“用了12根、图形有___个角、与长方形相比___”。","总共12根；图形闭合；不把内部共用边重复计算。")
+]);
+add(52,"英语·综合实践","公园对话、人物表格和图书馆礼仪","对话要从图片物品接上喜好，表格用同一行拼成完整介绍",[
+I("公园看见什么","根据公园图片补对话。","先找问句关键词 see，再从图中选可见物；下一问若是Do you like…要保持同一物品。","用 I can see… 回答能看见什么，用 Yes, I do/No, I don’t 回答喜好。","按图中鱼或花等明显对象完成，两句要连贯。","参考：I can see fish. Do you like fish? Yes, I do. 若书上空格指向 flowers，则把名词统一替换为 flowers。","前后名词一致；fish复数可同形；do问do答。"),
+I("介绍Alice和Ben","根据表格写年龄、衣服、季节和活动。","横读Alice一行写完，再写Ben，不能竖着串行。","句型：… is … years old. … has a … . … likes … . … can … .","每句只取一个表格字段，写完在字段上打勾。","Alice is eight. She has a red blouse. She likes summer. She can swim. Ben is ten. He has a black T-shirt. He likes winter. He can skate.","Alice用she，Ben用he；年龄、颜色、季节不串。"),
+I("图书馆小调查","了解附近图书馆的开放和借阅规则。","由家长陪同查官方信息，记录名称、开放时间、借书需要什么。","开放时间可能临时变化，出发前再次确认。不要在公开记录中写家庭住址。","到馆后安静阅读、按时归还、爱护书籍。","开放题模板：图书馆名称____；查询日期____；开放时间____；借阅方式____；我想借的书____。","来源是官方公告；有查询日期；不公开私人信息。")
+]);
+add(53,"语文·综合","奥运知识卡","从资料中提取时间、标志和精神，用自己的话解释而不是只抄口号",[
+I("奥运重要时间","从材料找古代奥运、举办周期和首届现代奥运时间地点。","圈所有数字，再在旁边写它代表什么。","时间和地点成对记录，避免只抄“1896”却不知道发生什么。","古代奥运有两千多年历史；现代奥运通常四年一届；首届现代奥运1896年在雅典举行。","古代奥运约始于2700多年前；奥运会通常每4年举行一次；首届现代奥运会于1896年在希腊雅典举行。","数字、事件、地点一一对应。"),
+I("五环与奥林匹克格言","解释五环和格言表达的精神。","先看五个环相互连接，而不是只背五种颜色。","解释应落到团结、友谊、公平竞争和不断进步。","五环常象征五大洲团结相聚；现行奥林匹克格言中文常表述为“更快、更高、更强——更团结”。","参考：五环象征世界各地运动员在奥林匹克精神下团结。格言是“更快、更高、更强——更团结”，鼓励超越自己，也重视合作。","不是把某一种颜色硬对应某一大洲；能说出团结意义。"),
+I("做一张运动员精神卡","选一位运动员，写事迹和你能学习的一点。","只选一个具体训练或比赛故事，不堆奖牌。","用“困难—行动—结果—我能做什么”四格。","资料不确定要查可靠来源，公开内容不写私人住址等。","开放题模板：人物____；困难____；他/她怎样坚持____；结果____；我准备从____开始学习这种精神。","有事实来源；有自己的小行动。")
+]);
+add(54,"数学","长方形正方形表格、赛跑和搭配","周长面积分清公式，赛跑比较时间，搭配用树状图不漏",[
+I("补周长面积表","补两个长方形和两个正方形的数据。","先在表头标单位：周长是一维长度，面积带平方。","长方形P=2×(长+宽)，S=长×宽；正方形P=4×边长，S=边长²。","缺边时用面积÷已知边或周长÷4反求。","长20厘米宽16厘米：周长72厘米、面积320平方厘米。长8分米面积40平方分米：宽5分米、周长26分米。正方形边40米：周长160米、面积1600平方米。正方形周长28米：边7米、面积49平方米。","周长不写平方；面积必须平方单位。"),
+I("谁先跑到终点","小明750米、每分钟75米；小强576米、每分钟72米。比较用时。","不是直接比较速度，因为路程不同；都算时间。","时间=路程÷速度。","小明750÷75=10分钟；小强576÷72=8分钟。8分钟更短。","小强先到终点；小明10分钟，小强8分钟。","用时小的人先到；单位分钟。"),
+I("上衣和裤子搭配","3件上衣、2条裤子有多少种不同穿法？","固定第一件上衣，分别配2条裤子；再换下一件。","乘法原理：每件上衣都有2个选择，共3组。","可画3根树枝，每根再分2支，末端数就是搭配数。","3×2=6（种）。","每种是一件上衣+一条裤子；没有重复。")
+]);
+add(55,"英语·综合实践","标点大小写、情景表达和袜子游戏","对话看引号与问号，情景选最礼貌自然的表达",[
+I("给英语对话加标点和大写","整理Peter谈帽子、苹果和球的两组对话。","每个句子第一个字母大写；问句用问号；人物说的话按题目格式分行。","What’s this…? 与 Is that…? 都是问句，回答用句号。","写完逐句读，停顿处检查逗号和句末标点。","参考：What’s this in English, Peter? It’s a hat. / Is that an apple? No, it’s a ball.","What/Is大写；Peter前逗号；问号和撇号正确。"),
+I("四个情景选句","根据问候、请求、辨认物品或分享梨等情景选择合适句子。","先说现实中你想完成什么：询问、请求还是递给别人。","礼貌请求常有please；递给别人和自己想要的表达不同。","把自己放进场景演一遍，再选最自然的。","依次参考：A，B，B，C。第4题若是递给或询问“要梨吗”，用相应的“A pear?”语调表达；以书上图片动作核对。","语气符合角色；please位置自然。"),
+I("写一种动植物","用5句英语介绍一种动物或植物。","按“名称—外形—颜色—能力/习性—喜好”写。","每句短而正确；第三人称单数注意has/likes。","先说再写，生词不会可换成会写的简单词。","参考：This is a panda. It is black and white. It is fat. It can climb. It likes bamboo. 可换成自己的对象。","正好5句；it与is/has/likes搭配；句号。"),
+I("袜子投掷游戏","用干净卷袜做安全的目标投掷。","清出没有玻璃和人的方向，设近、中、远三个目标。","每人次数相同，记录命中数；不向人、宠物或灯具投。","游戏后可算命中率或比较自己的前后进步。","开放记录：目标距离____；投10次命中____次；我发现____。","环境安全；次数公平；游戏后收好袜子。")
+]);
+add(56,"语文·综合实践","七夕文化与城市别称","会从节日资料提取时间习俗，也能把城市与有根据的别称连起来",[
+I("认识七夕","阅读七夕资料，记录日期、传统习俗和食物。","做三栏：什么时候、做什么、吃什么。","传统文化有地区差异，用“有些地方/传统上”表达更准确。","七夕在农历七月初七，传统习俗有乞巧等，部分地区制作巧果、花瓜等。","参考：时间—农历七月初七；习俗—乞巧；食物或物件—巧果、花瓜、巧人/巧酥等，按页面资料填写。","不把农历日期写成固定公历日期；尊重地区差异。"),
+I("城市别称连连看","把蓉城、春城、山城、羊城/花城、日光城、汽车城、石头城、英雄城连给城市。","从特色记：成都与芙蓉，昆明四季如春，重庆山地，拉萨日照，长春汽车工业。","其余用历史文化验证，不凭字面猜。","一对一连线后，再任选一城说出别称由来。","蓉城—成都；春城—昆明；山城—重庆；羊城/花城—广州；日光城—拉萨；汽车城—长春；石头城—南京；英雄城—南昌。","城市与别称不串位；能解释至少一个。"),
+I("七夕小制作","按书页做与七夕有关的小手工或观察记录。","先列材料，剪裁和针线步骤由成人陪同。","作品加入一个传统元素，再写一张小标签说明它。","文化手工不只追求好看，要能说出图案或物件的含义。","开放题参考标签：作品《巧果小挂饰》；元素是星星和喜鹊；我了解到七夕有乞巧习俗。","工具安全；标签有名称和文化信息。")
+]);
+add(57,"数学","算钥匙开宝箱与面积拼图","乘法先估后算，拼图题用总面积和因数配对判断",[
+I("哪三把钥匙能开箱","计算六把钥匙上的乘法，找出等于宝箱308、532、1088的算式。","先看个位排除，再精算可能的三把。","两位数乘法拆整十和个位；结果写在钥匙旁再连。","14×22、28×19、34×32分别与三个箱号吻合。其余也算一下作为排除证据。","14×22=308；28×19=532；34×32=1088。把这三把钥匙连到对应宝箱。","个位相符；估算数量级合理；每个箱只连一把。"),
+I("12块拼图还能拼什么长方形","12块小图形拼成6厘米×10厘米长方形，求每块面积，并判断还能拼哪些整边长长方形。","先求总面积，再除以块数。","总面积60平方厘米，每块5平方厘米。总面积固定，找60的因数对。","长方形边长乘积要等于60；还要考虑这些拼块实际能否无缝摆放。","每块面积60÷12=5平方厘米。总面积60平方厘米，可尝试5×12、4×15等长方形；用12块实际摆一摆验证。","面积守恒；边长乘积60；没有重叠和空隙。")
+]);
+add(58,"英语·科学","十二道选择与动物尾巴","先抓句型关键词完成选择，再从尾巴形态推测功能",[
+I("十二道英语选择","完成页面12道选择题。","逐题圈主语、动词、时间介词、单复数或感官词。","先排语法错，再看图片和句意；选完读完整句。","不要连写一串字母就结束，每错一题要能说出是哪条规则。","依次选：B，C，B，A，C，A，C，C，C，A，A，A。","主谓一致；冠词；介词；问答对应逐题核对。"),
+I("尾巴有什么作用","观察不同动物尾巴，写出至少三种功能。","按“动物—尾巴特点—功能”整理。","猴子可抓握或平衡，鱼用尾巴推进和转向，松鼠蓬松尾巴可平衡或保暖。","同样叫尾巴，结构和生活环境不同，功能也不同。","参考：鱼尾帮助游动和转向；猴尾帮助平衡，有些还能抓握；松鼠尾帮助平衡和保暖；牛马甩尾可驱赶小虫。","不把所有动物尾巴说成同一种功能；例子与动物对应。")
+]);
+add(59,"语文","形近字、成语接龙与长颈鹿的脖子","形近字放进词语判断，接龙看首尾字，阅读概括同一器官的多种作用",[
+I("四组形近字组词","给介/招、蜿/婉、择/泽、牧/牡选择正确字组成词。","先给每个字找熟悉部件和意思，再看后面的字能组成什么词。","介绍是说明；招手是动作；蜿蜒形容弯曲；婉转形容声音；选择、光泽；放牧、牡丹。","一个空一个完整词，不凭读音乱选。","介绍、招手；蜿蜒、婉转；选择、光泽；放牧、牡丹。","每个词能说出意思；形旁与词义有联系。"),
+I("两组成语接龙","让前一个成语末字成为后一个成语首字。","先只看首尾字，把能接的卡片连成链。","连好后再逐个读，确认每一个都是成语。","第一条从开门见山开始；第二条从一帆风顺开始。","开门见山→山穷水尽→尽力而为→为人师表→表里如一。一帆风顺→顺手牵羊→羊落虎口→口是心非→非同小可。","连接处的字完全相同；没有跳过卡片。"),
+I("故事成语配人物","把八个成语故事与主人公或神话人物配对。","先分历史人物和神话人物，再用故事动作联想。","愚公移山、孟母三迁、嫦娥奔月等标题已含人物；其余回忆典故。","不要把“谁做的事”和“故事中出现的人”混淆，以成语的主要人物为准。","叶公好龙、愚公移山、孟母三迁、嫦娥奔月、毛遂自荐、女娲补天、伯乐相马、东施效颦，按人物名与卡片一一连线。","八个故事无重复、无遗漏。"),
+I("长颈鹿脖子的五种本领","从短文概括长脖子的作用。","每一段圈一个动作词，再把例子缩成短语。","同类内容合并，不整句照抄。","文中把长脖子比作瞭望塔、散热器、方向舵和推进器、武器，也帮助够到高处树叶。","作用可概括为：观察远处；帮助散热；奔跑时掌握方向并助力；打斗防卫；够食高处枝叶。","每点是不同作用；至少能回原文找到依据。")
+]);
+add(60,"数学","72元购物方案与图形周长","列表题固定一种数量有序试，图形周长只数最外边界",[
+I("72元怎样买三种文具","钢笔8元、圆珠笔2元、笔记本6元，每种至少买1件，总价72元，设计方案并选最合理。","设钢笔a支、圆珠笔b支、笔记本c本，列8a+2b+6c=72。先固定a从1开始试。","书页表格可用一组有规律的方案：让圆珠笔和笔记本数量相同，式子变8a+8b=72，所以a+b=9。","a从1到8时，b=c=9−a，得到8行，不漏不重。合理方案要说明用途，不只有数学正确。","8种示例：(1,8,8)、(2,7,7)、(3,6,6)、(4,5,5)、(5,4,4)、(6,3,3)、(7,2,2)、(8,1,1)，括号顺序为钢笔、圆珠笔、笔记本。参考选择(4,5,5)，三类较均衡。","每种至少1件；每行代入总价都等于72；“合理”写理由。"),
+I("四个图形周长排序","比较四个由小格组成图形的周长，从大到小排列。","不要数内部拼接线，只用手指沿最外边界走一圈。","可用“每个小格4条边−内部公共边×2”，也可逐段数外边。","面积相同不表示周长相同；越分散、凹口越多，周长往往越大。","按书中编号，周长关系：1号最大，2号最小，3号与4号相等。即 1 ＞ 3＝4 ＞ 2。","内部线没有算；相等的图重新描边验证。")
+]);
+
+add(61,"英语·综合实践","看图对话与七巧板","对话用图片线索补名词、助动词和形容词，七巧板必须七块全用",[
+I("苹果和北极熊对话","根据苹果味道和北极熊图片补完整对话。","先分两组：苹果组问 taste；熊组问 hear、like 和外形感受。","Taste the apple后用sweet/sour等味觉词；Can you hear…? 用can回答；Do you like…? 用do回答。","每个空先判断词性：名词、助动词还是形容词，再整段朗读。","参考：Taste the apple. Is it sour? No, it’s sweet. / Can you hear a bear? Yes, I can. Do you like bears? No, I don’t. They are too fat. 以书上图片和空格为准调整单复数。","bear/bears单复数；can问can答，do问do答；too放形容词前。"),
+I("七块拼图变形","用圆形七巧板的7块拼出页面图案或自创图形。","先清点7块，按大块确定主体，再用小块补边缘。","所有块都要使用，不重叠、不留在图形外；可以旋转和翻面。","先看轮廓的最长边放大块，再根据凹凸找对应小块。卡住时只移动一块，不要全部推倒。","操作题：用全部7块完成至少一个图案，并给它取名。参考可拼人物、动物、船或房子。","正好7块；无重叠；轮廓与目标相近；能复原一次。")
+]);
+add(62,"语文","关联词、成语与齐白石","先判断分句关系，再用人物每天坚持的行动理解“持之以恒”",[
+I("三个关联词填空","在可是、如果、由于等词中选合适的填入句子。","先用竖线把前后分句分开，判断是转折、假设还是原因。","可是表示前后转折；如果提出条件；由于说明原因。","把关联词放到句首或分句间，完整读一遍，逻辑自然才保留。","按书上三句语意依次填：可是、如果、由于。","可是前后有相反变化；如果后面有可能条件；由于后面是原因。"),
+I("三个成语怎么用","理解炉火纯青、微不足道、持之以恒。","先找每个词的关键词：纯青表示技艺成熟；微小表示不值得一提；恒表示长期坚持。","各造一个贴近生活的句子，不能只抄解释。","成语要与对象搭配：技艺可炉火纯青，小贡献可微不足道，长期行动可持之以恒。","炉火纯青—技艺达到很高水平；微不足道—非常渺小，不值得一提；持之以恒—长久坚持下去。","造句中的人物和行为符合词义。"),
+I("齐白石为什么画得好","根据短文回答齐白石成功的原因，并联系自己。","圈出频率词“每天”和行动词“作画”。","用“他做了什么—坚持多久—达到什么结果”回答。","他不是只靠天分，而是天天练习、长期积累，画技才达到炉火纯青。","参考：齐白石坚持每天作画，持之以恒地练习，最终画技炉火纯青。我可以每天练10分钟计算或写一小段观察，坚持一个暑假。","必须有具体行动和频率，不只写“我要努力”。")
+]);
+add(63,"数学","拼块周长、图形周长与连续取四分之一","周长沿外边数，连续取分数要每次对“剩下或当前整体”继续除",[
+I("两种四连块谁周长短","比较T形和1×4长条形四连块的周长。","每个小正方形4条边，拼接一处会藏掉两条边。","四块一共有16条小边；两种拼法都有3条公共边，所以都减6。","周长=4×4−2×公共边数=16−6=10厘米。","两种图形周长都为10厘米，并列最短，没有谁更短。","公共边只数块与块真正贴合的一整边。"),
+I("三个图形周长","按标注边长求三角形、不规则图形和六边形周长。","周长就是所有外边长度之和，一条不漏。","不规则图逐边念数；等边图可用边长×边数。","三角形三边相加；不规则图按1、1、3、1、2、1相加；六边形6条等长边。","三个周长依次：12厘米、9厘米、6厘米。","单位厘米；不规则图六条边都计入。"),
+I("连续三次取四分之一","一个图形面积64平方厘米，连续三次取当前图形的1/4，最后面积多少？","画三层盒子：64的1/4，再取结果的1/4，再取结果的1/4。","每次取1/4就是除以4，不是一次减去4。","64÷4=16，16÷4=4，4÷4=1。","最后面积是1平方厘米。","一共除3次；面积单位带“平方”。")
+]);
+add(64,"英语·数学","词形变化、辨音和数字分类","词形先识别要求，辨音只听画线音，分类可让同一个数进入两个不同标准的集合",[
+I("八个词形变化","按要求变化 he、spin、hear、driver、knife、see、policeman、body。","先判断要宾格、名词、同音词、复数还是动词。","knife、policeman、body复数是不规则或变y形式；hear同音词here，see相关按题目要求。","每个词完成后放回括号要求检查，不把“同音词”和“近义词”混淆。","依次：him，spinner，listen，drive，knives，look，policemen，bodies。","knives的f变ves；policemen中man变men；bodies的y变ies。"),
+I("六组画线音判断","判断六组词的画线部分发音是否相同。","先读词，再只截取画线音；拼写相同不一定发音同。","不确定时把词放进熟悉句子里慢读。","按每组两个词逐一对比，写T或F。","依次：T，F，F，F，T，T。","能读出每组差异，不只背答案。"),
+I("给数字分两次类","把1、19、13、7、15、2、12、8、18、6按奇偶和位数分类。","先看个位判奇偶，再看是否小于10判一位/两位。","这是两个不同标准，所以同一个数会在两次分类中各出现一次。","奇数个位1、3、5、7、9；偶数个位0、2、4、6、8。1–9是一位数。","奇数：1、19、13、7、15；偶数：2、12、8、18、6。一位数：1、7、2、8、6；两位数：19、13、12、18、15。","每次分类十个数都恰好出现一次；没有因奇数就误当一位数。")
+]);
+add(65,"语文","第一架望远镜","用情绪词读人物反应，会按“发现—试验—组合”概括发明过程",[
+I("选词、标点与字词","根据上下文选择半信半疑、兴奋不已、惊喜等词，并补标点。","先找人物知道消息后的表情和态度，再选情绪强度合适的词。","问句用问号；人物直接说的话加引号；转折前后停顿多用逗号。","把词代回原句朗读：既相信又怀疑用半信半疑；特别激动用兴奋不已；意外高兴用惊喜；看起来像真的可用逼真。","主要词语按语境核对：兴奋不已、半信半疑、惊喜、逼真。标点按人物对话的逗号、问号、引号补齐。","情绪变化与故事先后相符；引号成对。"),
+I("望远镜怎样做出来","按顺序概括主人公制作第一架望远镜的过程。","圈三个动作：磨镜片、观察尝试、把不同镜片装进管子。","分清凸透镜和凹透镜的位置作用，按原文写，不凭想象添步骤。","概括只留关键实验：得到镜片—反复组合和调整距离—装入管中—远处物体看起来变近。","参考：他磨制镜片并反复试验，把凸透镜和凹透镜按合适距离装在管子两端，制成能把远处物体看清的望远镜。","过程有先后；能指出是反复实验，不是一次成功。"),
+I("发明带来的启发","说说这个故事让你明白什么。","找人物面对不相信或失败时做了什么。","用一个自己的学习例子连接道理。","发现来自好奇，成果来自亲手试验、记录、调整和坚持。","参考：有疑问不能只猜，要动手试验并不断改进。我做科学小实验时，也要记录每次变化，不因第一次失败就放弃。","有故事证据；有自己的具体行动。")
+]);
+add(66,"数学","商的位数、同被除数除法与草地面积","判断商位数先比较，被除数相同看除数大小，面积题先把草地分块",[
+I("给商按位数分类","计算或判断2160÷36、3960÷36、1080÷36、7200÷36、324÷36的商位数。","先比较被除数前两位和36：前两位够除，商从百位开始；不够则从十位开始。","再精算核对，末尾0不能漏。","逐题用36的倍数：36×60、×110、×30、×200、×9。","2160÷36=60（两位）；3960÷36=110（三位）；1080÷36=30（两位）；7200÷36=200（三位）；324÷36=9（一位）。","位数与实际商一致；200中的两个0不漏。"),
+I("288除以不同除数","计算288÷16、÷24、÷32、÷36、÷72并观察规律。","被除数相同，除数越大，商通常越小。","用乘法口诀或拆分找到整除倍数。","16×18=288，24×12=288，32×9=288，36×8=288，72×4=288。","依次：18，12，9，8，4。","商×除数都回到288；排列趋势正确。"),
+I("草地和小路","长方形总宽38米，中间小路宽2米，草地另一边13米，求草地和路面积。","把整体沿宽分成草地和小路。先求草地合计宽38−2。","同高13米，面积=宽×高。小路也用2×13。","草地面积=(38−2)×13；小路面积=2×13。","草地468平方米；小路铺砖面积26平方米。","468+26=494，等于整体38×13=494。"),
+I("63×12怎样巧算","至少用两种方法算63×12。","12可拆10+2；63可拆60+3；也可先乘6再加倍。","每种拆法都要让另一因数乘到每一部分。","方法一63×10+63×2；方法二60×12+3×12。","63×12=630+126=756；也可720+36=756。","两种结果相同；没有漏乘。")
+]);
+add(67,"英语·综合实践","问答配对与七巧板挑战","从答句类型反推问句，拼图按轮廓先大后小",[
+I("四组问答配对","把四个英语问句和A–D答句连起来。","先看答句是人物、颜色、能力还是喜好，再找同类问句。","圈问句中的Who/What colour/Can/Do等关键词。","配好后四组完整朗读，人称和助动词要能接上。","按书中问句顺序配：C，D，A，B。","每个答句只用一次；问什么答什么。"),
+I("七巧板拼图","用七巧板完成书中的四个轮廓，并给图案命名。","先找最大三角形，它们通常决定主体或长边。","再放中三角形、正方形和平行四边形，最后用小三角补缝。","七块必须全用、不重叠。卡住时比较角度，不要靠挤压改变形状。","操作题：依轮廓可命名为锤子、人物、小船、房子等；名称可不同，只要与拼成图形合理。","每幅正好7块；平行四边形必要时翻面；轮廓闭合。")
+]);
+add(68,"语文","含“风”词语与《妈妈的爱》","根据季节和力度选风词，会从具体事物中读出抽象的爱",[
+I("六个“风”字词","补全“风拂面、风习习、风呼啸、风送爽、风骤雨、风凛冽”。","看搭配中的季节和力度：拂面柔和，习习清凉，呼啸有声，骤雨猛烈，凛冽寒冷。","把固定词语整体记，不随意换一个近义字。","春天常说春风拂面，秋天金风送爽，冬天寒风凛冽。","依次：春风拂面、凉风习习、北风呼啸、金风送爽、疾风骤雨、寒风凛冽。","每个搭配是常用词组；季节感合理。"),
+I("诗中妈妈的爱在哪里","从诗中找妈妈的爱被比作哪些具体事物。","每一节圈一个物品或感受，再看它帮助“我”做了什么。","不要只抄“妈妈爱我”，要列出诗里的意象。","作者把看不见的爱写成可感受的风、雨滴、伞和目光。","妈妈的爱像清凉的风、滴落的雨滴、遮雨的伞、责备或关切的目光。","每一点能在诗中找到对应句；理解“责备中也有爱”。"),
+I("仿写一小节","仿照诗歌，用一种生活细节写妈妈或家人的爱。","先选一个物品：一杯水、一盏灯、一件外套、一句话。","写“什么时候—它像什么—给我怎样的感觉”，保持三四行。","仿写重在自己的真实细节，不必押韵。","参考：妈妈的爱，是书桌旁的一盏灯。夜深了，它还静静亮着，陪我把最后一道题想明白。","有具体事物；有动作或场景；不是照抄原诗。")
+]);
+add(69,"数学","数位乘积、商和余数、影院与围栏","数位题看数字代表的实际数，余数题用被除数=除数×商+余数",[
+I("四道填空","完成744×69数位乘积、2690÷27商位数、余数反推和身体测量。","数字7在百位代表700，数字6在十位代表60；不能只算7×6。","余数必须小于除数，所以余数23时最小除数24；再用除数×商+余数求被除数。","700×60=42000。2690÷27=99……17，商两位、最高位十位。最小除数24，被除数24×17+23。","1. 42000；2. 商是2位数，最高位在十位；3. 除数最小24，被除数431；4. 身高和腰围请本人实际测量填写，写清厘米。","27×99+17=2690；24>23；测量时软尺不勒紧。"),
+I("电影院座位够不够","21排座位，每排26人，能否坐下500名同学？","先求总座位数，再和500比较。","21×26可拆20×26+1×26。","20×26=520，再加26得546。546比500多46。","座位够。21×26=546（个），546−500=46（个），还空46个座位。","回答“够/不够”并写比较；单位座位或个。"),
+I("花园需要多少米围栏","10米×8米花园，房子占一段5米边界，门留1米，求实际围栏。","先求花园外圈周长，再减掉不需要装围栏的房子边和门。","周长2×(10+8)=36；房子贴外边5米，门空1米。","实际围栏=36−5−1。图中房子内部其他边不属于花园外圈，不要加。","需要30米围栏。列式：(10+8)×2−5−1=30（米）。","沿最外圈描一遍；只减边界上实际被占的长度。")
+]);
+add(70,"英语·综合实践","十道选择、朋友介绍与沪语游戏","主语决定助动词和物主代词，介绍人物按固定五句框架",[
+I("十道英语选择","完成Winnie、classmate、Lily、taste、but、feel、日期、物主、冠词和复数主语题。","先圈主语：I、classmate、Lily、horse、apple、they。","第三人称单数否定用doesn’t；Lily对应Her；bitter用taste；对比big/small用but；old前用an。","逐题先判语法，再看句意。特别注意does后动词原形，first后接of。","依次：B，B，B，C，C，B，A，C，C，C。完整答案关键词：I can；doesn’t；Her；taste；but；does；of；your/my；an；They are。","把十句完整读一遍；不只抄字母。"),
+I("用5句介绍朋友","写5个句子介绍一位朋友，不使用公开可识别的私人信息。","按“名字代号—年龄—外貌—喜欢—会做什么”写。","若软件公开展示，可用My friend或昵称，不写学校、班级、住址。","句型：This is… / He or She is… / … has… / … likes… / … can…。","参考：This is my friend. He is nine. He is tall. He likes football. He can swim. 可按真实情况改写。","5句；he/she一致；第三人称likes/has有s。"),
+I("采访长辈的童年游戏","学唱沪语童谣或采访一种老游戏。","先问游戏名、人数、规则和长辈最难忘的事。","录音或拍照前先征得同意；不用公开上传。","整理成“准备—玩法—我试后的感受”。","开放题参考：游戏名“炒黄豆”；两人拉手，唱完童谣一起侧身翻转。采访后我发现，简单的游戏也很讲配合。","规则说得清；活动安全；尊重长辈隐私。")
+]);
+add(71,"语文·成长规划","读“座右铭”的传说，写新学期目标","知道资料里的传说与含义，并把目标写成具体行动",[
+I("座右铭为什么叫座右铭","读两种传说，概括共同点和不同点。","先找两段各自的主人公和“放在座位右边”的东西。","共同点是放在身边经常提醒自己；不同点是一种是抄写史书经验，一种与孔子的器皿传说有关。","概括传说不必判哪一个绝对真实，文章本身说有不同说法。","参考：一种传说说吴介把有益的史书内容抄下放在座位右边；另一种说孔子受到“欹器”启发，让人仿制放在座位右侧警醒自己。后来座右铭泛指放在身边勉励、警戒自己的格言。","两种传说都提到；有后来含义；不用整段照抄。"),
+I("写新学期目标和座右铭","写一个能检查的新学期目标，并选一句真正能提醒自己的格言或警句。","目标用数字、频率或成果表达，例如“每天阅读20分钟”，不要只写“认真学习”。","座右铭要和目标有关；再补一条遇到困难时的具体行动。","目标公式：我要在何时做到什么；我每天/每周怎样做；怎样检查。","参考：新学期目标——每天放学后先独立完成作业，并用10分钟检查；每周日整理一次错题。座右铭——今日事，今日毕。可换成自己认同的格言。","目标能执行、能检查；座右铭来源不确定时不乱署名。")
+]);
+add(72,"语文·数字素养","上海博物馆网站寻宝","会在网站变化时用关键词重新定位资料，并把文物信息整理成证据卡",[
+I("找到大克鼎的年代","按页面线索在上海博物馆数字文物库中搜索“大克鼎”。","网站栏目可能改版，不必死找旧菜单；直接用站内搜索或搜索引擎限定上海博物馆官网。","打开藏品页后先找“年代”，再看名称和说明是否确实是大克鼎。","数字检索要经过“关键词—筛选官方来源—核对藏品—记录字段”四步。","大克鼎铸造于西周孝王时期，约公元前10世纪末。书上横线可写“西周孝王时期（约公元前10世纪末）”。","名称是“大克鼎”；来源为上海博物馆官方藏品资料；不要只抄搜索摘要。"),
+I("收藏一件三维藏品","从三维藏品中选一件，在浏览器收藏并用藏品名命名。","先由家长确认浏览器操作。选择藏品后旋转观察正面、侧面、顶部。","收藏前记录藏品全名；若网页按钮变化，可用浏览器书签代替。","任务重点是能再次找到这件藏品，而不是一定使用某个旧版按钮。","开放题填写：我收藏的藏品是____。可选“大克鼎”等自己真正查看过的藏品。","书签名称清楚；再次点击能打开；不登录陌生账号。"),
+I("完成文物互动卡","任选一件文物，写名称与朝代、功能或故事、有趣细节。","每一栏只写能从可靠资料或画面观察得到的内容。","“有趣细节”要具体，如纹饰、铭文、器形、尺寸，不写“很漂亮”。","先事实后感受。资料没有说的故事不要自己当事实补上。","大克鼎范例：名称+朝代——大克鼎，西周。功能/故事——青铜礼器，铭文记录周王册命和贵族克的功绩等。有趣细节——器内有长篇铭文，腹部和足部纹饰庄重。也可换成自己选择的文物。","三栏完整；事实来源可靠；用自己的话简要整理。")
+]);
+add(73,"英语·科学","辨音、感官动词、情景问句和火柴结冰","画线音靠听，感官词靠后句线索，实验把观察和解释分开",[
+I("三组辨音","找每组画线部分发音不同的词。","beautiful/sea/feel先只听画线音；dry/yellow/fly听y；blow/brown/loud听ow/ou。","两个相同、一个不同，先把相同的一对找出来更容易。","beautiful中的画线音与sea、feel不同；yellow的y与dry、fly不同；blow的ow与brown、loud不同。","依次选：A，B，A。","每组选项完整读一遍；能指出不同音。"),
+I("五个感官词填空","从 touch、smell、taste、feel、see 中填5句。","看答句：sweet是味觉，soft and smooth是触觉，red fish是视觉，nice可问气味，hard用feel。","祈使句开头用动词原形；can后也用原形；does后仍用原形。","逐句用“线索形容词—感官”配对。","依次：taste，touch，see，smell，feel。","How does the desk feel? 中feel不加s；五词各用一次。"),
+I("两个情景选句","想知道是不是夏天；找不到自己的衬衫，各选一句。","第1个是Yes/No问题，不是问哪个季节；第2个是问位置。","Yes/No问句用Is it…?；问在哪里用Where’s…?","把中文目的转换成问句功能再选。","两题都选 C：Is it summer? / Where’s my shirt?","第1句有问号；my表示自己的衬衫。"),
+I("火柴为什么冻住","把火柴放在浮冰上并撒少量盐，观察是否粘住。","由成人陪同，在托盘上做；先写观察，再解释，不直接用手长时间碰盐冰。","盐会使冰表面局部融化；周围低温条件下，火柴附近的水可能再次结冰，把火柴固定。","实验结果受温度、盐量和时间影响。如果没有冻住，也如实记录并检查条件。","预期现象：等待片刻后，火柴可能与冰块粘在一起，提火柴时带起冰块。解释：局部融化的水在火柴周围重新冻结形成连接。","不品尝盐水；擦干台面；观察与解释分栏写。")
+]);
+add(74,"语文","曹操题字谜、智胜大力士与暑假收获","字谜把图形位置变成字的组成，写作从愿望回看证据和变化",[
+I("门上一个“活”是什么意思","读曹操在园门上写“活”的故事，猜他的意思。","把图上的“门”和门里的“活”合起来看成一个新字。","门字框里放“活”，组成“阔”；再联系曹操看完花园是否满意。","字谜答案必须既能合成字，又能解释人物下一步为什么离开。","“门”里有“活”组成“阔”，表示曹操认为花园太宽阔了，暗示需要改小。杨修看懂了这个意思。","字形和故事情节都能互相验证。"),
+I("壮汉扛的是什么","大力士说什么都能举起，壮汉为何能让他认输？","题目是语言和逻辑谜语，不要只猜最重的石头。","想一件壮汉能扛起、但大力士在同一时刻不可能自己扛起的“东西”。","如果壮汉把大力士本人扛起来，大力士无法同时把自己扛起，因此只能认输。","壮汉扛起的是大力士本人。","答案能解释“壮汉扛得起，而大力士扛不起”两个条件。"),
+I("写“____的暑假”约200字","回看第5页愿望树，写一个最真实的收获。","先给暑假选一个关键词：充实、快乐、勇敢、会坚持……","找两件证据：我做成了什么；我遇到什么困难又怎样改变。","文章结构：原来愿望—一个重点经历—结果—开学后的新打算。","参考提纲：《充实的暑假》——我想坚持阅读—有几天想偷懒—用打卡和固定时间继续—读完3本书并学会摘录—新学期继续每天读20分钟。写成自己的约200字短文。","题目补词与正文一致；有具体事件；有前后变化；约200字。")
+]);
+add(75,"数学·思维","四数字组乘法与计算器魔术","用分类法找全排列，计算器魔术要先准备上一条运算",[
+I("2、6、7、8组成两位数乘法","四个数字各用一次，组成两个两位数相乘，尽量写出不同算式。","先分成三种数字配对：26与78、27与68、28与67；每组再交换各数十位个位。","乘法交换位置不算新式，但同一组中两个两位数内部换位会得到新算式。","有序分类能找出12个不同因数组合。书上给10条线，可先填任意10条。","12种：26×78=2028，26×87=2262，62×78=4836，62×87=5394；27×68=1836，27×86=2322，72×68=4896，72×86=6192；28×67=1876，28×76=2128，82×67=5494，82×76=6232。填满书上10条得100分，另2条是加赛。","每式四个数字各用一次；没有把a×b与b×a重复计分；乘积估算合理。"),
+I("神龙摆尾","让计算器先显示12345678，按一次等号后变成87654321。","等号会完成之前尚未执行的运算，所以要提前输入一个减法。","目标倒序数与显示数相加正好99999999。","先键入99999999−12345678，此时屏幕显示第二个数；再按=。","准备：输入 99999999 − 12345678；按等号后得到 87654321。","先自己算差；演示前清屏，按键顺序不漏。"),
+I("神龙摇头","当前显示29292929，按一次等号变成92929292，怎样准备？","仍利用等号执行上一条未完成加法。先求另一个加数：92929292−29292929。","差是63636363，所以先输入这个数和加号，再输入当前显示数。","输入63636363+29292929时，屏幕停在29292929；按=完成相加。","准备：63636363 + 29292929；当屏幕显示29292929时按=，得到92929292。","63636363+29292929=92929292；不是直接把目标数输入。")
+]);
+add(76,"英语·游戏","看图问答与动物找词","用完整句回答has/is/doing问题，找词按行扫描并标记已找到单词",[
+I("四个看图问答","回答Eddie有什么、玩具是否旧、女孩在做什么、她是否开心。","从问句复制结构：What has…got? 用has got；Is…? 用Yes/No；What is…doing? 用is doing。","看图：男孩站在滑板上，玩具看起来是新的；女孩在荡秋千并且开心。","每题先圈主语，再写完整句，避免只答skateboard或Yes。","He has got a skateboard. / No, it isn’t. It’s new. / She is playing on the swing. / Yes, she is.","Eddie对应he；girl对应she；doing用playing；问号后的答句有句号。"),
+I("表格里找15个动物词","横向逐行找动物名称，找到一个就划线并写到旁边。","采用扫描法：每行从左到右读，短词可能紧接在长词后。","先完成题目要求的15个，再挑战额外词；不要跨行拼字。","可按行找到kangaroo；calf；horse、cat；foal、pup；zebra、rat；goat；rabbit；cow、doe；monkey；mouse、pig等。","确定的15个：kangaroo, calf, horse, cat, foal, pup, zebra, rat, goat, rabbit, cow, doe, monkey, mouse, pig。加赛还能看到 panda, dog, lamb, bat；第二行后半字母若你的印刷清楚，也可检查是否为 bull。","单词在同一横行连续出现；找到后逐字核对；题目只要求15个，额外词另标星。")
+]);
+
+</script>
+<script>
+const KEY="dd_summer_life_eddey_v1";
+const fresh=()=>({version:1,recent:[],lastPage:5,seen:{},done:{},wrong:{},ratings:{},updated:new Date().toISOString()});
+let mem=load(),currentPage=5,currentTask=0,stage={h1:false,h2:false,reason:false,attempt:false,answer:false};
+const $=id=>document.getElementById(id);
+function load(){try{return Object.assign(fresh(),JSON.parse(localStorage.getItem(KEY)||"{}"));}catch(e){return fresh()}}
+function save(){mem.updated=new Date().toISOString();localStorage.setItem(KEY,JSON.stringify(mem));renderStats()}
+function esc(s){return String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+function lines(s){return esc(s).replace(/\n/g,"<br>")}
+function taskKey(){return currentPage+"-"+currentTask}
+function subjectKind(){const s=P[currentPage].subjects.join("");return s.includes("数学")?"math":s.includes("英语")?"english":s.includes("语文")?"chinese":"activity"}
+const toolSets={math:["圈出数字和单位","写出已知条件","说清要求什么","先估算再列式"],chinese:["圈题干关键词","回原文找证据","先口头说完整句","检查字词和标点"],english:["圈主语和关键词","看图或上下文线索","先完整读一句","检查单复数和标点"],activity:["备齐材料","先读安全提醒","按顺序操作并记录","用自己的话说发现"]};
+const toolTitles={math:"🧮 数学四格放大镜",chinese:"🔎 语文证据探测器",english:"🗣️ 英语句子检查器",activity:"🧪 活动安全清单"};
+function parsePage(v){const m=String(v).match(/\d+/);return m?Number(m[0]):NaN}
+function openPage(n,task=0){if(!P[n]){showError("请输入 5–76 之间的页码。");return}currentPage=n;currentTask=Math.max(0,Math.min(task,P[n].items.length-1));mem.lastPage=n;mem.seen[n]=1;mem.recent=[n,...mem.recent.filter(x=>x!==n)].slice(0,8);save();resetStage();$("homeView").classList.add("hide");$("tutorView").classList.remove("hide");history.replaceState(null,"","?page="+n);renderLesson();scrollTo({top:0,behavior:"smooth"})}
+function goHome(){$("tutorView").classList.add("hide");$("homeView").classList.remove("hide");history.replaceState(null,"",location.pathname);renderHome();setTimeout(()=>$("pageInput").focus(),50)}
+function showError(msg){$("pageError").textContent=msg;setTimeout(()=>$("pageError").textContent="",3500)}
+function resetStage(){stage={h1:false,h2:false,reason:false,attempt:false,answer:false}}
+function renderLesson(){const p=P[currentPage],t=p.items[currentTask];$("pageBadge").textContent="📘 第 "+p.n+" 页";$("lessonTitle").textContent=p.title;$("subjectTags").innerHTML=p.subjects.map(s=>`<span class="tag">${esc(s)}</span>`).join("");$("goalText").textContent=p.goal;$("taskTabs").innerHTML=p.items.map((x,i)=>`<button class="task-tab ${i===currentTask?'on':''}" data-i="${i}">${i+1}. ${esc(x.name)}</button>`).join("");$("taskTabs").querySelectorAll("button").forEach(b=>b.onclick=()=>{currentTask=Number(b.dataset.i);resetStage();renderLesson()});$("taskCount").textContent="本页任务 "+(currentTask+1)+" / "+p.items.length;$("taskTitle").textContent=t.name;$("taskPrompt").textContent=t.prompt;$("hint1Box").textContent=t.hints[0];$("hint2Box").textContent=t.hints[1];$("reasonBox").textContent=t.reason;$("answerText").innerHTML=lines(t.answer);$("checkText").innerHTML=t.check?"🔍 自查："+lines(t.check):"🔍 自查：把答案盖住，再说一遍你用了什么方法。";renderTool();renderStage();$("speakBtn").classList.toggle("hide",!p.subjects.some(s=>/语文|英语/.test(s)));$("prevBtn").disabled=currentTask===0;$("nextBtn").disabled=currentTask===p.items.length-1;const prev=currentPage-1,next=currentPage+1;$("prevPageBtn").disabled=!P[prev];$("nextPageBtn").disabled=!P[next];$("prevPageBtn").querySelector("span").textContent=P[prev]?prev:"—";$("nextPageBtn").querySelector("span").textContent=P[next]?next:"—"}
+function renderTool(){const kind=subjectKind(),list=toolSets[kind];$("subjectTool").innerHTML=`<div class="tool-head">${toolTitles[kind]}</div><div class="tool-sub">先点完四格，再看提示。每点一格，都要对着书上真的做一下。</div><div class="tool-list">${list.map((x,i)=>`<button class="tool-check" data-i="${i}">${esc(x)}</button>`).join("")}</div>`;$("subjectTool").querySelectorAll("button").forEach(b=>b.onclick=()=>b.classList.toggle("on"))}
+function renderStage(){const pairs=[["hint1Box","hint1Btn",stage.h1],["hint2Box","hint2Btn",stage.h2],["reasonBox","reasonBtn",stage.reason]];pairs.forEach(([box,btn,on])=>{$(box).classList.toggle("hide",!on);$(btn).classList.toggle("open",on);$(btn).querySelector("b").textContent=on?"−":"＋"});$("hint2Btn").disabled=!stage.h1;$("reasonBtn").disabled=!stage.h2;$("attemptCheck").disabled=!stage.reason;$("attemptCheck").checked=stage.attempt;$("answerBtn").disabled=!(stage.reason&&stage.attempt);$("answerBtn").textContent=stage.answer?"答案已打开":"🔒 最后核对答案";$("answerBox").classList.toggle("hide",!stage.answer);$("ratingBox").classList.toggle("hide",!stage.answer);$("lockNote").textContent=!stage.reason?"先打开两层提示和完整思路，再动笔。":!stage.attempt?"按思路在书上试一遍，再勾选上面的方框。":"可以核对了：先看方法，再看最后结果。";[0,1,2,3].forEach(i=>$("prog"+i).classList.toggle("on",i===0||i===1&&stage.h1||i===2&&stage.reason||i===3&&stage.answer))}
+function toggleStage(k){stage[k]=!stage[k];renderStage()}
+function rate(ok){const k=taskKey();mem.ratings[k]=(mem.ratings[k]||0)+1;if(ok){mem.done[k]=1;if(mem.wrong[k]){mem.wrong[k].streak=(mem.wrong[k].streak||0)+1;if(mem.wrong[k].streak>=2)delete mem.wrong[k]}toast(mem.wrong[k]?"记下了：再连续会一次就移出复习本。":"太棒了，已经记为掌握！")}else{delete mem.done[k];const w=mem.wrong[k]||{page:currentPage,task:currentTask,wrong:0,streak:0};w.wrong++;w.streak=0;mem.wrong[k]=w;toast("已放进复习本，下次我们再慢慢做。")}save();renderHome()}
+function renderHome(){const recent=mem.recent.length?mem.recent:[59,60,62,64,66,67,69,75];$("recentChips").innerHTML=recent.map(n=>`<button class="chip ${pageDone(n)?'done':''}" data-page="${n}">第 ${n} 页</button>`).join("");$("recentChips").querySelectorAll("button").forEach(b=>b.onclick=()=>openPage(Number(b.dataset.page)));$("pageGrid").innerHTML=Object.keys(P).map(Number).map(n=>`<button class="page-dot ${pageDone(n)?'done':mem.seen[n]?'seen':''}" data-page="${n}">${n}</button>`).join("");$("pageGrid").querySelectorAll("button").forEach(b=>b.onclick=()=>openPage(Number(b.dataset.page)));renderStats()}
+function pageDone(n){return P[n].items.every((_,i)=>mem.done[n+"-"+i])}
+function counts(){return{seen:Object.keys(mem.seen).length,done:Object.keys(mem.done).length,wrong:Object.keys(mem.wrong).length}}
+function renderStats(){const c=counts();["seenStat","dSeen"].forEach(id=>$(id).textContent=c.seen);["doneStat","dDone"].forEach(id=>$(id).textContent=c.done);["wrongStat","dWrong"].forEach(id=>$(id).textContent=c.wrong)}
+function renderDrawer(){renderStats();const rows=Object.entries(mem.wrong);$("wrongList").innerHTML=rows.length?rows.map(([k,w])=>{const p=P[w.page],t=p&&p.items[w.task];return `<div class="wrong-item"><span><b>第${w.page}页 · ${esc(t?t.name:"任务")}</b><br><small>不稳 ${w.wrong} 次 · 连续会 ${w.streak||0}/2</small></span><button data-p="${w.page}" data-t="${w.task}">去复习</button></div>`}).join(""):"<p class='lead'>复习本现在是空的。</p>";$("wrongList").querySelectorAll("button").forEach(b=>b.onclick=()=>{$("drawer").classList.add("hide");openPage(Number(b.dataset.p),Number(b.dataset.t))})}
+function summary(){const c=counts(),rows=Object.values(mem.wrong).map(w=>`- 第${w.page}页：${P[w.page]?.items[w.task]?.name||"任务"}（不稳${w.wrong}次，连续会${w.streak||0}/2）`);return `# 暑假生活学习小结\n\n更新时间：${new Date(mem.updated).toLocaleString()}\n\n- 已打开：${c.seen} 页\n- 已掌握：${c.done} 个任务\n- 待复习：${c.wrong} 个任务\n\n## 复习本\n${rows.length?rows.join("\n"):"- 暂无"}\n`}
+function download(name,text,type){const a=document.createElement("a");a.href=URL.createObjectURL(new Blob([text],{type}));a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),500)}
+function toast(msg){$("toast").textContent=msg;$("toast").classList.add("show");setTimeout(()=>$("toast").classList.remove("show"),2100)}
+function speak(){const t=P[currentPage].items[currentTask];if(!("speechSynthesis" in window)){toast("这台设备暂不支持朗读。");return}speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(t.prompt);u.lang=P[currentPage].subjects.includes("英语")?"en-US":"zh-CN";u.rate=.82;speechSynthesis.speak(u)}
+$("pageForm").onsubmit=e=>{e.preventDefault();openPage(parsePage($("pageInput").value))};$("showAllBtn").onclick=()=>$("allPages").classList.remove("hide");$("hideAllBtn").onclick=()=>$("allPages").classList.add("hide");$("continueBtn").onclick=()=>openPage(mem.lastPage||5);$("reviewBtn").onclick=()=>{const w=Object.values(mem.wrong)[0];w?openPage(w.page,w.task):toast("复习本是空的，先选一页学习吧！")};$("backHome").onclick=goHome;$("hint1Btn").onclick=()=>toggleStage("h1");$("hint2Btn").onclick=()=>toggleStage("h2");$("reasonBtn").onclick=()=>toggleStage("reason");$("attemptCheck").onchange=e=>{stage.attempt=e.target.checked;renderStage()};$("answerBtn").onclick=()=>{stage.answer=true;renderStage();setTimeout(()=>$("answerBox").scrollIntoView({behavior:"smooth",block:"center"}),50)};$("gotItBtn").onclick=()=>rate(true);$("notYetBtn").onclick=()=>rate(false);$("prevBtn").onclick=()=>{currentTask--;resetStage();renderLesson();scrollTo({top:0,behavior:"smooth"})};$("nextBtn").onclick=()=>{currentTask++;resetStage();renderLesson();scrollTo({top:0,behavior:"smooth"})};$("prevPageBtn").onclick=()=>openPage(currentPage-1);$("nextPageBtn").onclick=()=>openPage(currentPage+1);$("speakBtn").onclick=speak;$("recordsBtn").onclick=()=>{renderDrawer();$("drawer").classList.remove("hide")};$("closeDrawer").onclick=()=>$("drawer").classList.add("hide");$("drawer").onclick=e=>{if(e.target===$("drawer"))$("drawer").classList.add("hide")};$("exportJson").onclick=()=>download("eddey_暑假生活学习记录.json",JSON.stringify(mem,null,2),"application/json");$("exportMd").onclick=()=>download("eddey_暑假生活学习小结.md",summary(),"text/markdown");$("copySummary").onclick=async()=>{try{await navigator.clipboard.writeText(summary());toast("学习小结已复制") }catch(e){download("eddey_暑假生活学习小结.md",summary(),"text/markdown")}};$("importFile").onchange=e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{try{const x=JSON.parse(r.result);if(!x||x.version!==1)throw Error();mem=Object.assign(fresh(),x);save();renderHome();renderDrawer();toast("学习记录已导入")}catch(err){toast("这个记录文件无法识别")}};r.readAsText(f)};
+renderHome();const first=new URLSearchParams(location.search).get("page");if(first)openPage(parsePage(first));
+</script>
+</body>
+</html>

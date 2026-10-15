@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<script src="../assets/learning-sync.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Kenton · 计算技法大通关（技巧篇速算 16 馆）</title>
+<style>
+:root{--c:#2f6fb3;--cd:#225182;--cbg:#e0f0ff;--gold:#f2b632;--golddk:#c98a00;--ink:#2e2a26;--paper:#fdf6ee;
+ --line:#eadfd2;--muted:#8a8178;--green:#2e9c54;--greenbg:#e9f7ee;--red:#d64545;--redbg:#fdecec;--orange:#e8862f;--orangebg:#fdf1e3;}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+body{margin:0;font-family:'LXGW WenKai Screen','PingFang SC','Microsoft YaHei',system-ui,sans-serif;color:var(--ink);min-height:100vh;padding-bottom:50px;
+ background:radial-gradient(circle at 15% 5%,#d9ebfd 0,transparent 45%),radial-gradient(circle at 85% 20%,#ffe9d2 0,transparent 40%),var(--paper);}
+.wrap{max-width:620px;margin:0 auto;padding:14px;}
+.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;}
+.badge{background:var(--c);color:#fff;font-weight:800;font-size:17px;padding:6px 13px;border-radius:13px 13px 13px 4px;box-shadow:0 4px 0 var(--cd);}
+.back{background:none;border:none;color:var(--muted);font-size:15px;font-family:inherit;font-weight:800;cursor:pointer;padding:6px 2px;}
+.mute{background:none;border:none;font-size:20px;cursor:pointer;}
+h1{font-size:21px;text-align:center;margin:8px 0 2px;color:var(--cd);}
+.sub{text-align:center;font-size:12.5px;color:var(--muted);margin-bottom:10px;line-height:1.7;}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;}
+@media(max-width:400px){.grid{grid-template-columns:repeat(2,1fr);}}
+.tile{position:relative;background:#fff;border:2px solid var(--line);border-radius:16px;padding:14px 8px 10px;text-align:center;cursor:pointer;box-shadow:0 5px 0 #efe3d4;transition:transform .12s;}
+.tile:active{transform:translateY(3px);box-shadow:0 2px 0 #efe3d4;}
+.tile.lock{opacity:.55;filter:grayscale(.6);}
+.tile .ic{font-size:32px;}
+.tile .nm{font-weight:800;font-size:14px;margin-top:6px;color:var(--cd);line-height:1.3;}
+.tile .ds{font-size:10.5px;color:var(--muted);margin-top:3px;line-height:1.45;}
+.tile .done{position:absolute;top:6px;right:8px;font-size:10.5px;font-weight:800;background:var(--greenbg);color:var(--green);border-radius:8px;padding:2px 6px;}
+.tile .today{position:absolute;top:-9px;left:10px;font-size:11px;font-weight:800;background:var(--gold);color:#5a3d00;border-radius:8px;padding:2px 8px;box-shadow:0 2px 0 var(--golddk);}
+.card{background:#fff;border:2px solid var(--line);border-radius:18px;padding:15px;margin:12px 0;box-shadow:0 6px 0 #f2e7d9;}
+.h2{font-size:17px;font-weight:800;color:var(--cd);margin:0 0 8px;}
+.h2 .tag{font-size:11px;background:var(--cbg);color:var(--cd);border-radius:8px;padding:2px 8px;vertical-align:2px;margin-left:6px;}
+.btn{font-family:inherit;font-weight:800;font-size:15px;border:none;border-radius:12px;padding:11px 16px;cursor:pointer;color:#fff;background:var(--c);box-shadow:0 4px 0 var(--cd);}
+.btn:active{transform:translateY(3px);box-shadow:0 1px 0 var(--cd);}
+.btn.gold{background:var(--gold);color:#5a3d00;box-shadow:0 4px 0 var(--golddk);}
+.btn.ghost{background:#fff;color:var(--cd);border:2px solid var(--line);box-shadow:0 4px 0 #efe3d4;}
+.btn.red{background:var(--red);box-shadow:0 4px 0 #a83232;}
+.btn.wide{display:block;width:100%;margin:8px 0;}
+.hide{display:none!important;}
+/* 放大镜 */
+.bigexpr{text-align:center;font-size:24px;font-weight:900;margin:12px 0;line-height:1.8;word-break:break-all;}
+.bigexpr .tk{display:inline-block;padding:1px 2px;border-radius:6px;transition:all .3s;}
+.bigexpr .tk.hn{background:var(--orangebg);color:var(--orange);animation:pulse 1s ease 2;}
+.bigexpr .tk.ho{background:var(--cbg);color:var(--c);animation:pulse 1s ease 2;}
+@keyframes pulse{0%{transform:scale(1)}50%{transform:scale(1.25)}100%{transform:scale(1)}}
+.mirbtns{display:flex;gap:8px;}
+.mirbtns .btn{flex:1;font-size:14px;}
+.feat{background:var(--orangebg);border-radius:12px;padding:9px 12px;font-size:14px;line-height:1.7;margin:8px 0;font-weight:700;animation:fadein .5s;}
+.feat.blue{background:var(--cbg);}
+.mchip{display:inline-block;background:#fff;border:2px solid var(--gold);color:#a8730a;border-radius:12px;padding:5px 12px;font-size:13.5px;font-weight:800;margin:3px;animation:fadein .5s;}
+@keyframes fadein{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+/* 分步动画 */
+.srow{display:flex;align-items:flex-start;gap:8px;margin:10px 0;animation:slidein .5s ease;}
+@keyframes slidein{from{opacity:0;transform:translateX(-18px)}to{opacity:1;transform:none}}
+.srow .math{font-size:19px;font-weight:800;line-height:1.6;word-break:break-all;flex:1;}
+.srow.cur .math{background:#fffbe8;border-radius:8px;padding:2px 6px;}
+.snote{align-self:center;flex-shrink:0;max-width:42%;background:var(--orange);color:#fff;font-size:12px;font-weight:800;border-radius:10px 10px 10px 2px;padding:5px 9px;line-height:1.5;animation:fadein .6s;}
+.snote:before{content:"⬅ ";}
+.swhy{font-size:12.5px;color:#8a6a3a;background:var(--orangebg);border-radius:8px;padding:6px 10px;margin:-4px 0 10px 6px;line-height:1.7;animation:fadein .7s;}
+.fin{text-align:center;font-size:16px;font-weight:900;color:var(--green);margin:10px 0;animation:pop .4s;}
+@keyframes pop{0%{transform:scale(.6)}70%{transform:scale(1.15)}100%{transform:scale(1)}}
+/* 妙招 */
+.fmla{background:linear-gradient(135deg,#fff8e0,#ffefc9);border:2px dashed var(--gold);border-radius:12px;padding:10px 13px;font-size:16.5px;font-weight:900;color:#7a5200;text-align:center;margin:8px 0;line-height:1.8;word-break:break-all;}
+.usebox{font-size:14px;line-height:1.8;color:#4a443e;}
+.usebox b{color:#a8730a;}
+/* 训练 */
+.qhead{display:flex;justify-content:space-between;align-items:center;font-size:13px;font-weight:800;color:var(--muted);margin-bottom:6px;}
+.hint{background:var(--cbg);border-radius:12px 12px 12px 2px;padding:8px 12px;font-size:13px;font-weight:700;color:var(--cd);margin:6px 0;line-height:1.6;}
+.hint:before{content:"💡 ";}
+.star{color:#c98a00;font-weight:900;}
+.qtext{font-size:20px;font-weight:900;text-align:center;margin:10px 0 12px;line-height:1.8;word-break:break-all;}
+.qtext.word{font-size:16px;text-align:left;font-weight:700;line-height:1.9;}
+.opt{display:block;width:100%;text-align:center;background:#fff;border:2px solid var(--line);border-radius:12px;padding:12px;font-size:18px;font-weight:800;font-family:inherit;cursor:pointer;margin:8px 0;}
+.opt.good{border-color:var(--green);background:var(--greenbg);color:var(--green);}
+.opt.bad{border-color:var(--red);background:var(--redbg);color:var(--red);animation:shake .35s;}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+.steps{background:#fff;border:2px dashed var(--line);border-radius:12px;padding:10px 14px;font-size:16.5px;line-height:2;margin:10px 0;font-weight:800;word-break:break-all;animation:fadein .4s;}
+.steps .lb{font-size:12px;color:var(--muted);font-weight:800;display:block;}
+.steps .last{background:var(--gold);border-radius:6px;padding:0 5px;}
+.stat{background:#fff;border:2px solid var(--line);border-radius:14px;padding:10px 13px;display:flex;gap:14px;justify-content:space-around;font-size:13px;font-weight:800;color:var(--cd);margin:8px 0;text-align:center;}
+.wbitem{display:flex;justify-content:space-between;gap:8px;font-size:13.5px;padding:7px 2px;border-bottom:1px dashed var(--line);align-items:center;}
+.wbitem .t{font-size:11px;color:var(--red);font-weight:800;white-space:nowrap;}
+textarea{width:100%;height:130px;font-size:12px;border:2px solid var(--line);border-radius:10px;padding:8px;font-family:monospace;}
+.note{font-size:12px;color:var(--muted);line-height:1.7;margin-top:6px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<!-- ============ 首页 ============ -->
+<div id="vHome">
+  <div class="top"><span class="badge">🦁 Kenton</span><button class="mute" id="muteBtn" onclick="toggleMute()">🔔</button></div>
+  <h1>⚡ 计算技法大通关 · 技巧篇速算</h1>
+  <div class="sub">技巧篇 16 讲速算口诀：「放大镜」找特点 → 「分步变身」讲为什么 → 背口诀 → 原书真题检验<br>📘 每天开一个新馆 · 错题自动进错题本</div>
+  <div id="wbEntry"></div>
+  <div id="reviewEntry"></div>
+  <div class="grid" id="homeGrid"></div>
+  <div class="card">
+    <div class="h2">📋 我的练习记录</div>
+    <div class="stat" id="statBar"></div>
+    <div id="wbPanel"></div>
+    <button class="btn ghost wide" onclick="exportCopy()">📋 复制记录（发给爸爸）</button>
+    <button class="btn ghost wide" onclick="exportFile()">💾 存成文件</button>
+    <button class="btn ghost wide" onclick="toggleExp()">👀 看一眼导出内容</button>
+    <div id="expBox" class="hide"><textarea id="expTa" readonly></textarea></div>
+    <button class="btn gold wide" onclick="parentUnlock()">🔓 家长提前解锁下一馆</button>
+  </div>
+</div>
+
+<!-- ============ 教学页 ============ -->
+<div id="vTeach" class="hide">
+  <div class="top"><button class="back" onclick="goHome()">← 回选馆</button><span class="badge" id="tBadge"></span></div>
+  <div class="card">
+    <div class="h2">🔍 题干放大镜<span class="tag" id="tTag"></span></div>
+    <div class="note">别急着算！先像书里一样，用放大镜看看这道题长什么样：</div>
+    <div class="bigexpr" id="mExpr"></div>
+    <div class="mirbtns">
+      <button class="btn" id="btnNum" onclick="revealNum()">🔍 数字有什么特点?</button>
+      <button class="btn" id="btnOp" onclick="revealOp()">🔍 算法有什么特点?</button>
+    </div>
+    <div id="mFeats"></div>
+    <div id="mMethods" class="hide" style="margin-top:8px"></div>
+    <button class="btn gold wide hide" id="btnToSteps" onclick="showSteps()">▶ 看它一步步变身!</button>
+  </div>
+  <div class="card hide" id="cardSteps">
+    <div class="h2">🎬 分步变身（每一步都有为什么）</div>
+    <div id="stepRows"></div>
+    <button class="btn wide" id="btnStep" onclick="nextStep()">▶ 下一步</button>
+  </div>
+  <div class="card hide" id="cardTips">
+    <div class="h2">🧙 帮帮妙招（背下来）</div>
+    <div class="usebox" id="tipUse"></div>
+    <div id="tipFms"></div>
+    <button class="btn gold wide" onclick="qStart(CUR.id)">✏️ 开始训练（原书真题）</button>
+  </div>
+</div>
+
+<!-- ============ 训练页 ============ -->
+<div id="vQuiz" class="hide">
+  <div class="top"><button class="back" onclick="quitQuiz()">← 退出</button><span class="badge" id="qTime">⏱ 0:00</span></div>
+  <div class="card">
+    <div class="qhead"><span id="qProg"></span><span id="qScore"></span></div>
+    <div id="qHint"></div>
+    <div id="qText" class="qtext"></div>
+    <div id="qOpts"></div>
+    <div id="qEx"></div>
+    <button class="btn wide hide" id="btnNext" onclick="qNext()">下一题 →</button>
+  </div>
+</div>
+
+<!-- ============ 结果页 ============ -->
+<div id="vResult" class="hide">
+  <div class="top"><button class="back" onclick="goHome()">← 回选馆</button><span class="badge">🏁 完成</span></div>
+  <div class="card" id="resCard"></div>
+</div>
+
+</div>
+<script>
+"use strict";
+function $(id){return document.getElementById(id);}
+var LSK='calc_skills_kenton_v1', WBK=LSK+'_wb', START='2026-07-14';
+function load(k,d){try{var s=localStorage.getItem(k);return s?JSON.parse(s):d;}catch(e){return d;}}
+function save(k,v){try{localStorage.setItem(k,JSON.stringify(v));}catch(e){}}
+var DB=load(LSK,{done:{},events:[]});
+var WB=load(WBK,{items:{}});
+var UNL_EXTRA=load(LSK+'_unl',0);
+var MUTE=localStorage.getItem(LSK+'_mute')==='1';
+
+/* ---- 声音 ---- */
+var AC=null;
+function ac(){if(!AC){try{AC=new (window.AudioContext||window.webkitAudioContext)();}catch(e){}}if(AC&&AC.state==='suspended')AC.resume();return AC;}
+function tone(f,dur,delay,type,vol){var a=ac();if(!a||MUTE)return;var o=a.createOscillator(),g=a.createGain();o.type=type||'sine';o.frequency.value=f;
+ g.gain.setValueAtTime(vol||0.18,a.currentTime+(delay||0));g.gain.exponentialRampToValueAtTime(0.001,a.currentTime+(delay||0)+dur);
+ o.connect(g);g.connect(a.destination);o.start(a.currentTime+(delay||0));o.stop(a.currentTime+(delay||0)+dur+0.05);}
+function ding(){tone(660,0.14,0);tone(880,0.2,0.12);}
+function buzz(){tone(170,0.28,0,'sawtooth',0.1);}
+function tick(){tone(520,0.06,0,'triangle',0.12);}
+function toggleMute(){MUTE=!MUTE;localStorage.setItem(LSK+'_mute',MUTE?'1':'0');$('muteBtn').textContent=MUTE?'🔕':'🔔';}
+
+/* ---- 错题本（错过必进本，连对2次才出本） ---- */
+function wbAddWrong(d){var it=WB.items[d.q]||{q:d.q,a:d.a,ex:d.ex,hint:d.hint||'',streak:0,mastered:false,wrong:0};
+ it.wrong++;it.streak=0;it.mastered=false;it.ex=d.ex;WB.items[d.q]=it;save(WBK,WB);}
+function wbAddRight(q){var it=WB.items[q];if(!it||it.mastered)return;it.streak++;if(it.streak>=2)it.mastered=true;save(WBK,WB);}
+function wbList(){var r=[];for(var k in WB.items){if(!WB.items[k].mastered)r.push(WB.items[k]);}return r;}
+function logEvent(ev){ev.ts=Date.now();DB.events.push(ev);save(LSK,DB);}
+function modStat(id){var d=DB.done[id];if(!d)return null;var st=d.wrong===0?'⭐⭐⭐':(d.wrong<=2?'⭐⭐':'⭐');return st+'✅'+d.ok+'❌'+d.wrong;}
+
+/* =================== 16 馆数据（照原书方法篇讲次） =================== */
+var MODS=[
+{id:'s01',ic:'🔄',nm:'第1讲 颠倒数的加法',ds:'58+85？首尾相加两边拉',
+ ex:{expr:'58+85',num:'两个加数首尾颠倒：个位与十位上的数字交换了位置！',op:'两位数相加求和。',
+  feats:['数字首尾颠倒','加数都是两位数','相加求和'],methods:['(首+尾)×11','化加为乘'],
+  steps:[{t:'58+85'},{t:'=(5+8)×11',n:'首尾和×11',w:'为什么？58+85=(50+8)+(80+5)=(5+8)个十+(8+5)个一=(5+8)×11！'},{t:'=13×11',n:'化加为乘',w:'首尾相加得 13，再乘 11。'},{t:'=143',n:'乘11口诀',w:'一个数乘 11：两边一拉，中间相加（1_3 → 1+3=4? 不对，13×11：1和3拉开，1+3=4 放中间=143）。'}]},
+ tips:{use:'适用：<b>首尾颠倒的两位数相加</b>。',fms:['和 =（首+尾）× 11','口诀：首尾相加两边拉，两边相加放中间']},
+ drills:[
+  {q:'56+65',a:121,ex:'56+65\n=(5+6)×11\n=11×11\n=121',hint:'标准形式直接套公式。'},
+  {q:'48+84',a:132,ex:'48+84\n=(4+8)×11\n=12×11\n=132',hint:'首尾和是 12。'},
+  {q:'35+53',a:88,ex:'35+53\n=(3+5)×11\n=8×11\n=88',hint:'首尾相加仅一位，不能两边拉，连着写两个。'},
+  {q:'27+72',a:99,ex:'27+72\n=(2+7)×11\n=9×11\n=99',hint:'9×11=99。'},
+  {q:'46+64',a:110,ex:'46+64\n=(4+6)×11\n=10×11\n=110',hint:'首尾相加是 10，0 占个位。'},
+  {q:'19+91',a:110,ex:'19+91\n=(1+9)×11\n=110',hint:'又是和为 10。'},
+  {q:'468+864',a:1332,star:1,ex:'三位颠倒数(各位和相等):\n首尾相加:4+8=12 两边一拉\n两边再加,中间双插\n=1332',hint:'★变式：三位数！口诀"首尾相加两边一拉，两边再加中间双插"。'},
+  {q:'234+432',a:666,star:1,ex:'2+4=6(一位数)\n连着写三个\n=666',hint:'★首尾和是一位数，连写三个。'},
+  {q:'507+705',a:1212,star:1,ex:'5+7=12(进位)\n中间有0:连着写两个\n=1212',hint:'★中间有 0：首尾和进位就连写两个。'},
+  {q:'806+608',a:1414,star:1,ex:'8+6=14\n连着写两个\n=1414',hint:'★同上一题。'}]},
+
+{id:'s02',ic:'↩️',nm:'第2讲 颠倒数的减法',ds:'72−27？首尾差乘 9',
+ ex:{expr:'72-27',num:'首尾颠倒：个位与十位交换位置！',op:'两位数相减求差。',
+  feats:['数字首尾颠倒','两位数','相减求差'],methods:['(首−尾)×9','化减为乘'],
+  steps:[{t:'72-27'},{t:'=(7-2)×9',n:'首尾差×9',w:'为什么？(7×10+2)-(2×10+7)=(7-2)×10+(2-7)=(7-2)×10-(7-2)=(7-2)×9！'},{t:'=5×9',n:'化减为乘',w:'首尾差是 5。'},{t:'=45',n:'完成',w:'不列竖式不退位！'}]},
+ tips:{use:'适用：<b>首尾颠倒的两位数相减</b>；三位数中间相同用 ×99，四位数中间两位相同用 ×999。',fms:['差 =（首−尾）× 9','三位：×99　四位：×999']},
+ drills:[
+  {q:'73-37',a:36,ex:'73-37\n=(7-3)×9\n=4×9\n=36',hint:'标准形式直接套公式。'},
+  {q:'91-19',a:72,ex:'91-19\n=(9-1)×9\n=8×9\n=72',hint:'首尾差 8。'},
+  {q:'936-639',a:297,ex:'936-639\n=(9-6)×99\n=3×99\n=297',hint:'三位数中间相同：×99！'},
+  {q:'723-327',a:396,ex:'723-327\n=(7-3)×99\n=4×99\n=396',hint:'4×99=396。'},
+  {q:'4362-2364',a:1998,ex:'4362-2364\n=(4-2)×999\n=2×999\n=1998',hint:'四位数中间两位相同：×999！'},
+  {q:'6251-1256',a:4995,ex:'6251-1256\n=(6-1)×999\n=5×999\n=4995',hint:'5×999=4995。'},
+  {q:'73-27',a:46,star:1,ex:'73和27互补(和=100):\n=(73-50)×2\n=23×2\n=46',hint:'★变式：两数相加是 100（互补数）？差=(被减数−50)×2！'},
+  {q:'613-387',a:226,star:1,ex:'和=1000 互补:\n=(613-500)×2\n=113×2\n=226',hint:'★三位互补：减 500 再乘 2。'},
+  {q:'8043-1957',a:6086,star:1,ex:'和=10000 互补:\n=(8043-5000)×2\n=3043×2\n=6086',hint:'★四位互补：减 5000 再乘 2。'}]},
+
+{id:'s03',ic:'💯',nm:'第3讲 100/1000…的减法',ds:'100−58？前面用9减末位用10减',
+ ex:{expr:'100-58',num:'被减数是 100（整百整千数）；减数比它少一位。',op:'相减求差。',
+  feats:['被减数是100、1000、10000……','减数的位数比被减数少一位','相减求差'],methods:['前面用9减','末位用10减'],
+  steps:[{t:'100-58'},{t:'十位：9-5=4',n:'前面用9减',w:'把 100 看成 9个十+10个一：十位上用 9 去减 5。'},{t:'个位：10-8=2',n:'末位用10减',w:'个位上用 10 去减 8——不用一路借位！'},{t:'=42',n:'完成',w:'口诀：前面用 9 减，末位用 10 减。'}]},
+ tips:{use:'适用：<b>被减数是 100、1000、10000……</b>的减法。',fms:['口诀：前面用 9 减，末位用 10 减','减数中间有几个0，差就对着几个9']},
+ drills:[
+  {q:'100-37',a:63,ex:'十位:9-3=6\n个位:10-7=3\n=63',hint:'直接套口诀。'},
+  {q:'100-65',a:35,ex:'9-6=3, 10-5=5\n=35',hint:'前 9 后 10。'},
+  {q:'1000-406',a:594,ex:'9-4=5, 9-0=9, 10-6=4\n=594',hint:'减数中间有 0，差对 9。'},
+  {q:'10000-8053',a:1947,ex:'9-8=1, 9-0=9, 9-5=4, 10-3=7\n=1947',hint:'一路 9 减，最后 10 减。'},
+  {q:'1000-976',a:24,ex:'9-9=0(不写), 9-7=2, 10-6=4\n=24',hint:'减数首位是 9，差首位 0 不写。'},
+  {q:'10000-9841',a:159,ex:'9-9=0(不写), 9-8=1, 9-4=5, 10-1=9\n=159',hint:'同上。'},
+  {q:'1000-78',a:922,star:1,ex:'减数少两位:差首位写9\n9, 9-7=2, 10-8=2\n=922',hint:'★变式：减数比被减数少两位？差的首位写 9！'},
+  {q:'10000-8006',a:1994,star:1,ex:'9-8=1, 中间两个0→两个9, 10-6=4\n=1994',hint:'★减数中间连续几个 0，差就对几个 9。'},
+  {q:'1000-292',a:708,star:1,ex:'9-2=7, 中间9→0, 10-2=8\n=708',hint:'★减数中间连续几个 9，差就对几个 0。'}]},
+
+{id:'s04',ic:'✋',nm:'第4讲 任意数乘5',ds:'32×5？添0取半',
+ ex:{expr:'32×5',num:'一个乘数是 5——5 是 10 的一半！',op:'两数相乘。',
+  feats:['一个乘数是5','多位数','相乘求积'],methods:['添0取半','偶数÷2×10'],
+  steps:[{t:'32×5'},{t:'=32÷2×10',n:'偶数÷2×10',w:'乘 5 = 乘 10 再除以 2！先取半更好算。'},{t:'=16×10',n:'折半添0',w:'32 的一半是 16。'},{t:'=160',n:'完成',w:'口诀：添 0 取半。'}]},
+ tips:{use:'适用：<b>任意数乘 5</b>（乘25、125、55 有升级版）。',fms:['偶数×5 = ÷2再×10　奇数×5 = ×10再÷2','A×25=A×100÷4　A×125=A×1000÷8　A×55=添0取半乘11']},
+ drills:[
+  {q:'84×5',a:420,ex:'84×5\n=84÷2×10\n=42×10\n=420',hint:'偶数先取半。'},
+  {q:'126×5',a:630,ex:'126×5\n=63×10\n=630',hint:'126 的一半是 63。'},
+  {q:'37×5',a:185,ex:'37×5\n=37×10÷2\n=370÷2\n=185',hint:'奇数：先添 0 再取半。'},
+  {q:'211×5',a:1055,ex:'211×5\n=2110÷2\n=1055',hint:'2110 的一半。'},
+  {q:'460×5',a:2300,ex:'460×5\n=460÷2×10\n=230×10\n=2300',hint:'整十数乘 5：折半后添 1 个 0。'},
+  {q:'780×5',a:3900,ex:'780×5\n=390×10\n=3900',hint:'780 的一半是 390。'},
+  {q:'84×25',a:2100,star:1,ex:'84×25\n=84×100÷4\n=8400÷4\n=2100',hint:'★变式：×25 = ×100÷4！'},
+  {q:'432×125',a:54000,star:1,ex:'432×125\n=432×1000÷8\n=432000÷8\n=54000',hint:'★×125 = ×1000÷8！'},
+  {q:'48×55',a:2640,star:1,ex:'48×55\n=48×10÷2×11\n=240×11\n=2640',hint:'★×55 = 添0取半乘11！240×11 用两头一拉。'}]},
+
+{id:'s05',ic:'🖐️',nm:'第5讲 一个数除以5',ds:'420÷5？去0再乘2',
+ ex:{expr:'420÷5',num:'个位上是 0 的数 ÷5。',op:'两数相除求商。',
+  feats:['个位上是0的数÷5','相除求商'],methods:['去0再乘2'],
+  steps:[{t:'420÷5'},{t:'=42×2',n:'去0再乘2',w:'÷5 = ÷10×2！去掉末尾的 0 就是÷10，再乘 2。'},{t:'=84',n:'完成',w:'口诀：去 0 再乘 2 直接出答案。'}]},
+ tips:{use:'适用：<b>末尾有 0 的数除以 5</b>（÷25、÷125 有升级版）。',fms:['÷5 = 去一个0 ×2','÷25 = 去两个0 ×4　÷125 = 去三个0 ×8']},
+ drills:[
+  {q:'210÷5',a:42,ex:'210÷5\n=21×2\n=42',hint:'去 0 乘 2。'},
+  {q:'320÷5',a:64,ex:'320÷5\n=32×2\n=64',hint:'同上。'},
+  {q:'215÷5',a:43,ex:'215÷5\n=215×2÷10\n=430÷10\n=43',hint:'个位是 5：先乘 2 再除以 10。'},
+  {q:'145÷5',a:29,ex:'145÷5\n=290÷10\n=29',hint:'145×2=290。'},
+  {q:'1000÷5',a:200,ex:'1000÷5\n=100×2\n=200',hint:'整百整千照样去 0 乘 2。'},
+  {q:'2200÷25',a:88,star:1,ex:'2200÷25\n=22×4\n=88',hint:'★变式：÷25 = 去两个 0 再乘 4！'},
+  {q:'47000÷125',a:376,star:1,ex:'47000÷125\n=47×8\n=376',hint:'★÷125 = 去三个 0 再乘 8！'},
+  {q:'325÷25',a:13,star:1,ex:'0不够:先乘后去0\n=325×4÷100\n=1300÷100\n=13',hint:'★末尾 0 不够？先乘 4 再去两个 0。'},
+  {q:'1500÷125',a:12,star:1,ex:'=1500×8÷1000\n=12000÷1000\n=12',hint:'★先乘 8 再去三个 0。'}]},
+
+{id:'s06',ic:'✖️',nm:'第6讲 交叉相乘法',ds:'任意两位数相乘的万能口诀',
+ ex:{expr:'14×42',num:'两个两位数——不用列竖式！',op:'两数相乘。',
+  feats:['两位数','相乘求积'],methods:['交叉相乘求积','满十进位','化乘为加'],
+  steps:[{t:'14×42'},{t:'个位：4×2=8',n:'尾数相乘',w:'先算个位：尾×尾=8，放积的个位。'},{t:'十位：1×2+4×4=18 → 写8进1',n:'对角相乘再相加',w:'交叉相乘：14的1×42的2，加上14的4×42的4，2+16=18，满十进位！'},{t:'百位：1×4+1=5',n:'首数相乘加进位',w:'头×头=4，加上进上来的 1 得 5。'},{t:'=588',n:'完成',w:'口诀：尾数相乘 → 对角相乘再相加 → 首数相乘。'}]},
+ tips:{use:'适用：<b>任意两位数 × 两位数</b>。',fms:['尾数相乘 → 对角相乘再相加（满十进位）→ 首数相乘']},
+ drills:[
+  {q:'23×12',a:276,ex:'尾:3×2=6\n对角:2×2+3×1=7\n首:2×1=2\n=276',hint:'三步口诀走一遍。'},
+  {q:'33×21',a:693,ex:'尾:3×1=3\n对角:3×1+3×2=9\n首:3×2=6\n=693',hint:'不进位，很顺。'},
+  {q:'32×24',a:768,ex:'尾:2×4=8\n对角:3×4+2×2=16→写6进1\n首:3×2+1=7\n=768',hint:'对角满十要进位！'},
+  {q:'21×17',a:357,ex:'尾:1×7=7\n对角:2×7+1×1=15→写5进1\n首:2×1+1=3\n=357',hint:'进位别忘加。'},
+  {q:'26×30',a:780,ex:'末尾有0:26×3=78\n添一个0\n=780',hint:'乘数末尾有 0：0 前的数相乘再添 0。'},
+  {q:'34×80',a:2720,ex:'34×8=272\n添0\n=2720',hint:'同上。'},
+  {q:'86×97',a:8342,star:1,ex:'接近100用补数法:\n补数14和3\n86-3=83 写前面\n14×3=42 写后面\n=8342',hint:'★变式：接近整百？先找补数，交叉相减写前面、补数相乘写后面。'},
+  {q:'46×46',a:2116,star:1,ex:'尾:6×6=36→写6进3\n对角:4×6+6×4=48+3=51→写1进5\n首:4×4+5=21\n=2116',hint:'★相同乘数照样交叉相乘。'},
+  {q:'90×20',a:1800,star:1,ex:'9×2=18\n共两个0,添两个0\n=1800',hint:'★都是整十数：乘完添两个 0。'}]},
+
+{id:'s07',ic:'🔟',nm:'第7讲 十几乘十几',ds:'16×17？一数加尾数',
+ ex:{expr:'16×17',num:'十位上的数字都是 1！',op:'两位数相乘。',
+  feats:['十位上的数字都是1','两位数','相乘求积'],methods:['尾数相乘','前数加后尾','化乘为加'],
+  steps:[{t:'16×17'},{t:'个位：6×7=42 → 写2进4',n:'尾数相乘(满十进位)',w:'尾×尾=42，2 放个位、4 进上去。'},{t:'前面：16+7+4=27',n:'前数+后尾+进位',w:'前面的乘数 16 加上后面乘数的尾数 7，再加进位 4！'},{t:'=272',n:'完成',w:'十几乘十几专属口诀，比竖式快多了。'}]},
+ tips:{use:'适用：<b>十几 × 十几</b>。',fms:['尾数相乘（满十进位）写个位','前面的乘数 + 后面乘数的尾数（+进位）写前面']},
+ drills:[
+  {q:'12×13',a:156,ex:'尾:2×3=6\n前:12+3=15\n=156',hint:'标准形式直接套。'},
+  {q:'12×14',a:168,ex:'尾:2×4=8\n前:12+4=16\n=168',hint:'同上。'},
+  {q:'15×17',a:255,ex:'尾:5×7=35→写5进3\n前:15+7+3=25\n=255',hint:'满十进位！'},
+  {q:'19×18',a:342,ex:'尾:9×8=72→写2进7\n前:19+8+7=34\n=342',hint:'进 7 别丢。'},
+  {q:'12×15',a:180,ex:'尾:2×5=10→写0进1\n前:12+5+1=18\n=180',hint:'尾数积是 10：0 要占位。'},
+  {q:'15×14',a:210,ex:'尾:5×4=20→写0进2\n前:15+4+2=21\n=210',hint:'同上。'},
+  {q:'120×130',a:15600,star:1,ex:'去0:12×13=156\n添两个0\n=15600',hint:'★变式：一百几十相乘 = 去 0 算再添两个 0。'},
+  {q:'160×170',a:27200,star:1,ex:'16×17=272\n添两个0\n=27200',hint:'★十位相乘进位照样算。'},
+  {q:'150×180',a:27000,star:1,ex:'15×18=270\n添两个0\n=27000',hint:'★结果末尾至少 3 个 0。'}]},
+
+{id:'s08',ic:'9️⃣',nm:'第8讲 九十几乘九十几',ds:'92×97？找补数',
+ ex:{expr:'92×97',num:'两个乘数都是九十几，离 100 很近！',op:'两数相乘。',
+  feats:['两个数都是九十几','相乘求积'],methods:['找补数','需要补位','分组法'],
+  steps:[{t:'92×97'},{t:'补数：92→8，97→3',n:'找补数',w:'补数=100减它。92 缺 8、97 缺 3。'},{t:'前两位：92-3=89（或97-8）',n:'一个数减另一个数的补数',w:'交叉减：随便哪个，结果一样！'},{t:'后两位：8×3=24',n:'补数相乘',w:'两个补数相乘放后面。'},{t:'=8924',n:'完成',w:'口诀：差写前，补数积写后（不足10补0）。'}]},
+ tips:{use:'适用：<b>九十几 × 九十几</b>。',fms:['一个数 − 另一个数的补数 → 写前面','补数 × 补数 → 写后面（不足10补0）']},
+ drills:[
+  {q:'97×95',a:9215,ex:'补数3和5\n97-5=92\n3×5=15\n=9215',hint:'先找补数。'},
+  {q:'94×93',a:8742,ex:'补数6和7\n94-7=87\n6×7=42\n=8742',hint:'交叉减。'},
+  {q:'99×99',a:9801,ex:'补数1和1\n99-1=98\n1×1=01(补0!)\n=9801',hint:'补数积不满十：十位补 0！'},
+  {q:'98×96',a:9408,ex:'补数2和4\n98-4=94\n2×4=08\n=9408',hint:'08 的 0 不能丢。'},
+  {q:'92×98',a:9016,ex:'补数8和2\n92-2=90\n8×2=16\n=9016',hint:'差是 90，0 不能丢！'},
+  {q:'94×96',a:9024,ex:'补数6和4\n94-4=90\n6×4=24\n=9024',hint:'同上。'},
+  {q:'92×48',a:4416,star:1,ex:'48是96的一半:\n92×96=8832\n8832÷2=4416',hint:'★变式：一个乘数是九十几的一半？先按九十几×九十几算，再÷2！'},
+  {q:'92×103',a:9476,star:1,ex:'=(92+3)×100-8×3\n=9500-24\n=9476',hint:'★九十几×一百零几：(九十几+剩余数)×100−补数×剩余数。'},
+  {q:'940×97',a:91180,star:1,ex:'去0:94×97\n补数6和3:94-3=91,6×3=18→9118\n添0\n=91180',hint:'★带 0 先去 0，算完添回。'}]},
+
+{id:'s09',ic:'🎋',nm:'第9讲 任意数乘11',ds:'34×11？两头一拉中间相加',
+ ex:{expr:'34×11',num:'一个乘数是 11！',op:'两数相乘。',
+  feats:['一个乘数是11','两位数','相乘求积'],methods:['两头一拉','中间相加','化乘为加'],
+  steps:[{t:'34×11'},{t:'3 __ 4',n:'两头一拉',w:'把 34 的 3 和 4 拉开，放到积的两边。'},{t:'中间：3+4=7',n:'首尾相加放中间',w:'中间的数就是首尾之和！为什么？34×11=34×10+34=340+34，十位正好是 3+4。'},{t:'=374',n:'完成',w:'口诀：两头一拉，中间相加。'}]},
+ tips:{use:'适用：<b>任意数 × 11</b>。三位数口诀：两边一拉，中间两两相加。',fms:['两头一拉，中间相加','中间相加满十→向前一位进1；是10→写0占位']},
+ drills:[
+  {q:'24×11',a:264,ex:'2_4\n中间:2+4=6\n=264',hint:'标准口诀。'},
+  {q:'63×11',a:693,ex:'6_3\n中间:6+3=9\n=693',hint:'同上。'},
+  {q:'38×11',a:418,ex:'3_8\n中间:3+8=11→写1进1\n首位:3+1=4\n=418',hint:'中间满十向前进一！'},
+  {q:'49×11',a:539,ex:'4_9\n中间:13→写3进1\n首位:4+1=5\n=539',hint:'进位别忘。'},
+  {q:'46×11',a:506,ex:'4_6\n中间:4+6=10→写0进1\n首位:4+1=5\n=506',hint:'中间是 10：写 0 占位进 1。'},
+  {q:'19×11',a:209,ex:'1_9\n中间:10→写0进1\n首位:1+1=2\n=209',hint:'同上。'},
+  {q:'123×11',a:1353,star:1,ex:'三位数:两边一拉 1__3\n中间两两相加:1+2=3, 2+3=5\n=1353',hint:'★变式：三位数×11——中间"两两相加"从右往左写。'},
+  {q:'468×11',a:5148,star:1,ex:'4__8\n6+8=14→写4进1\n4+6+1=11→写1进1\n4+1=5\n=5148',hint:'★有进位：从右往左逐个处理。'},
+  {q:'507×11',a:5577,star:1,ex:'几百零几×11:\n首尾各写两遍\n55_77\n=5577',hint:'★中间有 0 的三位数×11：首尾两个数字各写两遍！'}]},
+
+{id:'s10',ic:'🎯',nm:'第10讲 个位数相同相乘',ds:'12×32？分层算三块',
+ ex:{expr:'12×32',num:'两个乘数个位上的数字相同（都是2）！',op:'两位数相乘。',
+  feats:['两个乘数个位上的数字相同','两位数','相乘求积'],methods:['分组法','需要补位','化乘为加'],
+  steps:[{t:'12×32'},{t:'第一层：1×3=3 __ 2×2=4 → 304',n:'十位×十位 接 个位×个位',w:'十位积 3 放前、个位积 4 放后，中间补 0 → 304。'},{t:'第二层：(1+3)×2=8 → 写在十位 → 80',n:'(十位+十位)×个位',w:'两个十位相加，再乘公共的个位数字。'},{t:'304+80=384',n:'上下相加',w:'两层加起来就是答案！'}]},
+ tips:{use:'适用：<b>个位数字相同的两位数相乘</b>。',fms:['十位积放前，个位积放后（不满十补0）','中间加：(十位+十位)×个位']},
+ drills:[
+  {q:'23×53',a:1219,ex:'2×5=10接3×3=09→1009? 不:\n第一层:10_9→1009\n第二层:(2+5)×3=21→210\n1009+210=1219',hint:'一层一层来。'},
+  {q:'64×34',a:2176,ex:'第一层:6×3=18接4×4=16→1816\n第二层:(6+3)×4=36→360\n1816+360=2176',hint:'个位积 16 直接接上。'},
+  {q:'21×31',a:651,ex:'个位都是1:\n头×头=6 写前\n头+头=5 写中\n尾×尾=1 写后\n=651',hint:'个位是 1 的专用口诀！'},
+  {q:'71×91',a:6461,ex:'7×9=63\n7+9=16→写6进1→64\n1\n=6461',hint:'头+头满十进一。'},
+  {q:'49×69',a:3381,ex:'个位都是9:\n(4+1)×(6+1)=35→添0=3500\n减2:(4+6)=10? 按口诀:\n35接(10-?)…直接验算49×69=3381',hint:'个位是 9 有专用口诀，或用交叉相乘法验证。'},
+  {q:'210×51',a:10710,star:1,ex:'去0:21×51\n2×5=10接1×1=01→1001\n(2+5)×1=7→70\n1001+70=1071\n添0=10710',hint:'★变式：整十数先去 0。'},
+  {q:'390×590',a:230100,star:1,ex:'39×59:\n3×5=15接81→紧凑算得2301\n添两个0\n=230100',hint:'★两个整十数：添两个 0。'},
+  {q:'5700×170',a:969000,star:1,ex:'57×17=969\n添三个0\n=969000',hint:'★整百×整十：添三个 0。'}]},
+
+{id:'s11',ic:'🎪',nm:'第11讲 十位数相同相乘',ds:'61×63？十位同款秘诀',
+ ex:{expr:'61×63',num:'两个乘数十位上的数字相同（都是6）！',op:'两位数相乘。',
+  feats:['两个乘数十位上的数字相同','两位数','相乘求积'],methods:['分组法','需要补位','化乘为加'],
+  steps:[{t:'61×63'},{t:'第一层：6×6=36 接 1×3=03 → 3603',n:'十位积写前，个位积接上',w:'个位积 1×3=3 不满十，前面补 0！'},{t:'第二层：(1+3)×6=24 → 补0 → 240',n:'个位求和乘十位',w:'两个个位相加，乘公共的十位数字，右边补一个 0。'},{t:'3603+240=3843',n:'相加求和',w:'两层相加完成！'}]},
+ tips:{use:'适用：<b>十位数字相同的两位数相乘</b>。',fms:['十位相乘积写前面，个位相乘积接上','个位求和乘十位，补0再加前数']},
+ drills:[
+  {q:'49×46',a:2254,ex:'4×4=16接9×6=54→1654\n(9+6)×4=60→600\n1654+600=2254',hint:'两层相加。'},
+  {q:'38×34',a:1292,ex:'3×3=9接8×4=32→932\n(8+4)×3=36→360\n932+360=1292',hint:'同上。'},
+  {q:'72×74',a:5328,ex:'7×7=49接2×4=08→4908\n(2+4)×7=42→420\n4908+420=5328',hint:'个位积 8 不满十要补 0！'},
+  {q:'41×48',a:1968,ex:'4×4=16接1×8=08→1608\n(1+8)×4=36→360\n1608+360=1968',hint:'08 补 0。'},
+  {q:'65×68',a:4420,ex:'6×6=36接5×8=40→3640\n(5+8)×6=78→780\n3640+780=4420',hint:'个位积正好 40：0 占个位。'},
+  {q:'82×85',a:6970,ex:'8×8=64接2×5=10→6410\n(2+5)×8=56→560\n6410+560=6970',hint:'一步步来。'},
+  {q:'210×28',a:5880,star:1,ex:'去0:21×28\n2×2=4接1×8=08→408\n(1+8)×2=18→180\n408+180=588\n添0=5880',hint:'★整十数先去 0 再添回。'},
+  {q:'520×510',a:265200,star:1,ex:'52×51=2652\n添两个0\n=265200',hint:'★两个整十：添两个 0。'},
+  {q:'1700×160',a:272000,star:1,ex:'17×16=272\n添三个0\n=272000',hint:'★添三个 0。'}]},
+
+{id:'s12',ic:'🌌',nm:'第12讲 多位数乘9的重复数',ds:'7×999？去1添补插9',
+ ex:{expr:'7×999',num:'一个乘数是 9 的重复数（999）！',op:'一位数乘多位数。',
+  feats:['一个乘数是9的重复数','9的重复数位数多','相乘求积'],methods:['去1添补','需要补位'],
+  steps:[{t:'7×999'},{t:'首：7-1=6',n:'去1',w:'积的开头 = 多位数减 1。为什么？7×999=7×1000−7=7000−7。'},{t:'尾：10-7=3',n:'添补',w:'积的末尾 = 7 的补数。'},{t:'中间插 2 个 9',n:'插位数差个9',w:'999 比 7 多两位，中间插 2 个 9。'},{t:'=6993',n:'完成',w:'口诀：去 1 添补，中间插位数差个 9。'}]},
+ tips:{use:'适用：<b>多位数 × 999…（9的重复数）</b>。',fms:['去 1 添补，中间插位数差个 9','补数：三位数用1000减、四位数用10000减，不够前面添0']},
+ drills:[
+  {q:'12×999',a:11988,ex:'去1:12-1=11\n添补:1000-12=988\n位数差1?999三位-12两位=插足位\n=11988',hint:'去 1 添补。'},
+  {q:'46×99999',a:4599954,ex:'46-1=45\n补数:100000-46=99954\n=4599954',hint:'补数位数按 9 的个数补足。'},
+  {q:'154×9999',a:1539846,ex:'154-1=153\n补数:10000-154=9846\n=1539846',hint:'四个 9 用 10000 减。'},
+  {q:'98×999',a:97902,ex:'98-1=97\n补数:1000-98=902(补0!)\n=97902',hint:'补数不够位数，前面添 0！'},
+  {q:'998×9999',a:9979002,ex:'998-1=997\n补数:10000-998=9002\n=9979002',hint:'同上。'},
+  {q:'586×999',a:585414,star:1,ex:'位数相同照用:\n586-1=585\n1000-586=414\n=585414',hint:'★变式：位数相同也用"去 1 添补"。'},
+  {q:'16×111×9',a:15984,star:1,ex:'111×9=999!\n16×999\n=16-1=15,补数984\n=15984',hint:'★连乘先组合出 9 的重复数。'},
+  {q:'3333×4138×3',a:41375862,star:1,ex:'3333×3=9999!\n4138×9999\n=4138-1=4137,补数5862\n=41375862',hint:'★3333×3=9999。'}]},
+
+{id:'s13',ic:'♻️',nm:'第13讲 重复数乘9',ds:'66×9？尾数相乘两边拉',
+ ex:{expr:'66×9',num:'一个乘数是 9，另一个是重复数（66）！',op:'两数相乘。',
+  feats:['一个乘数是9','一个乘数是重复数','相乘求积'],methods:['尾数相乘两边拉','中间插9'],
+  steps:[{t:'66×9'},{t:'尾×尾：6×9=54',n:'尾数相乘',w:'6×9=54，把 5 和 4 拆开！'},{t:'5 __ 4，中间插(2-1)个9',n:'两边拉，中间插9',w:'54 放两端，中间插"重复数位数−1"个 9。'},{t:'=594',n:'完成',w:'口诀：尾数相乘两边拉，中间插 9 补足。'}]},
+ tips:{use:'适用：<b>重复数 × 9</b>。',fms:['尾数相乘，两边拉','中间插（重复数位数 − 1）个 9']},
+ drills:[
+  {q:'55×9',a:495,ex:'5×9=45\n4_5,插1个9\n=495',hint:'两位重复数插 1 个 9。'},
+  {q:'88×9',a:792,ex:'8×9=72\n7_2,插1个9\n=792',hint:'同上。'},
+  {q:'444×9',a:3996,ex:'4×9=36\n3_6,插2个9\n=3996',hint:'三位重复数插 2 个 9。'},
+  {q:'333×9',a:2997,ex:'3×9=27\n2_7,插2个9\n=2997',hint:'同上。'},
+  {q:'6666×9',a:59994,ex:'6×9=54\n5_4,插3个9\n=59994',hint:'四位插 3 个 9。'},
+  {q:'88888×9',a:799992,ex:'8×9=72\n7_2,插4个9\n=799992',hint:'五位插 4 个 9。'},
+  {q:'111×9×4',a:3996,star:1,ex:'先:111×9=999? 不,用口诀:\n111×9=999\n999×4=4000-4=3996',hint:'★连乘有 9：先算 111×9。'},
+  {q:'333×20×3',a:19980,star:1,ex:'333×3=999\n999×20\n=20000-20\n=19980',hint:'★没有 9？组合出 999！'},
+  {q:'27×333×10',a:89910,star:1,ex:'27=9×3\n333×3=999,999×9=8991\n×10=89910',hint:'★拆分出 9 再组合。'}]},
+
+{id:'s14',ic:'🤝',nm:'第14讲 头同尾合十',ds:'24×26？头×(头+1)',
+ ex:{expr:'24×26',num:'头（十位）相同，尾（个位）相加为 10！',op:'两数相乘。',
+  feats:['头同尾合十','两位数','相乘求积'],methods:['分组法','需要补位'],
+  steps:[{t:'24×26'},{t:'前：2×(2+1)=6',n:'头×(头+1)',w:'十位数字乘"它自己加 1"！2×3=6 放前面。'},{t:'后：4×6=24',n:'尾×尾',w:'两个个位相乘放后面。'},{t:'=624',n:'完成',w:'口诀：头×(头+1) 放前面；尾×尾 放后面。'}]},
+ tips:{use:'适用：<b>头同尾合十</b>的两位数相乘。',fms:['头 ×（头+1），放前面','尾 × 尾，放后面（不满十0占位）']},
+ drills:[
+  {q:'56×54',a:3024,ex:'5×6=30\n6×4=24\n=3024',hint:'头5尾6+4=10。'},
+  {q:'48×42',a:2016,ex:'4×5=20\n8×2=16\n=2016',hint:'口诀两步。'},
+  {q:'81×89',a:7209,ex:'8×9=72\n1×9=09(补0!)\n=7209',hint:'尾×尾不满十：积的十位用 0 占位！'},
+  {q:'79×71',a:5609,ex:'7×8=56\n9×1=09\n=5609',hint:'09 别写成 9。'},
+  {q:'45²',a:2025,ex:'45×45:头同尾合十!\n4×5=20\n5×5=25\n=2025',hint:'尾数是 5 的平方 = 两个相同数相乘。'},
+  {q:'65²',a:4225,ex:'6×7=42\n5×5=25\n=4225',hint:'同上。'},
+  {q:'4×42×12',a:2016,star:1,ex:'4×12=48\n48×42:头同尾合十\n4×5=20,8×2=16\n=2016',hint:'★变式：连乘先构造出头同尾合十！'},
+  {q:'36×21+36×13',a:1224,star:1,ex:'=36×(21+13)\n=36×34:头同尾合十\n3×4=12,6×4=24\n=1224',hint:'★先提公因数凑出 36×34。'},
+  {q:'43×(99-52)',a:2021,star:1,ex:'=43×47:头同尾合十\n4×5=20\n3×7=21\n=2021',hint:'★先算括号，再用口诀。'}]},
+
+{id:'s15',ic:'🫱',nm:'第15讲 尾同头合十',ds:'63×43？头×头+尾',
+ ex:{expr:'63×43',num:'尾（个位）相同，头（十位）相加为 10！',op:'两数相乘。',
+  feats:['尾同头合十','两位数','相乘求积'],methods:['分组法','需要补位'],
+  steps:[{t:'63×43'},{t:'前：6×4+3=27',n:'头×头+尾',w:'两个十位相乘，再加上公共的尾数！6×4+3=27。'},{t:'后：3×3=09',n:'尾×尾',w:'尾×尾=9 不满十，十位补 0。'},{t:'=2709',n:'完成',w:'口诀：头×头+尾 放前面；尾×尾 放后面。'}]},
+ tips:{use:'适用：<b>尾同头合十</b>的两位数相乘。',fms:['头 × 头 + 尾，放前面','尾 × 尾，放后面（不满十0占位）']},
+ drills:[
+  {q:'31×71',a:2201,ex:'3×7+1=22\n1×1=01\n=2201',hint:'尾×尾不满十补 0。'},
+  {q:'12×92',a:1104,ex:'1×9+2=11\n2×2=04\n=1104',hint:'04 占两位。'},
+  {q:'29×89',a:2581,ex:'2×8+9=25\n9×9=81\n=2581',hint:'尾×尾满十直接用。'},
+  {q:'14×94',a:1316,ex:'1×9+4=13\n4×4=16\n=1316',hint:'口诀两步。'},
+  {q:'45×65',a:2925,ex:'4×6+5=29\n5×5=25\n=2925',hint:'头尾都合十也适用！'},
+  {q:'25×85',a:2125,ex:'2×8+5=21\n5×5=25\n=2125',hint:'同上。'},
+  {q:'2×42×31',a:2604,star:1,ex:'2×31=62\n62×42:尾同头合十\n6×4+2=26,2×2=04\n=2604',hint:'★连乘先构造尾同头合十！'},
+  {q:'63×22+63×21',a:2709,star:1,ex:'=63×(22+21)\n=63×43\n6×4+3=27,3×3=09\n=2709',hint:'★提公因数凑出 63×43。'},
+  {q:'44×(100-36)',a:2816,star:1,ex:'=44×64:尾同头合十\n4×6+4=28\n4×4=16\n=2816',hint:'★先算括号。'}]},
+
+{id:'s16',ic:'🔗',nm:'第16讲 合十数乘重复数',ds:'37×55？(头+1)×重复头',
+ ex:{expr:'37×55',num:'37 是合十数（3+7=10），55 是重复数！',op:'两数相乘。',
+  feats:['合十数乘重复数','两位数','相乘求积'],methods:['分组法','需要补位'],
+  steps:[{t:'37×55'},{t:'前：(3+1)×5=20',n:'(合十数的头+1)×重复数的头',w:'合十数的头加 1，再乘重复数的头。'},{t:'后：7×5=35',n:'尾×尾',w:'两个尾相乘放后面。'},{t:'=2035',n:'完成',w:'口诀：(合十头+1)×重复头 放前面；尾×尾 放后面。'}]},
+ tips:{use:'适用：<b>合十数 × 重复数</b>。',fms:['（合十数的头+1）× 重复数的头，放前面','尾 × 尾，放后面（不满十补0）']},
+ drills:[
+  {q:'37×66',a:2442,ex:'(3+1)×6=24\n7×6=42\n=2442',hint:'尾×尾满十直接用。'},
+  {q:'82×88',a:7216,ex:'(8+1)×8=72\n2×8=16\n=7216',hint:'口诀两步。'},
+  {q:'73×22',a:1606,ex:'(7+1)×2=16\n3×2=06(补0!)\n=1606',hint:'尾积不满十：十位补 0。'},
+  {q:'82×44',a:3608,ex:'(8+1)×4=36\n2×4=08\n=3608',hint:'08 占两位。'},
+  {q:'42×33+31×33',a:2409,star:1,ex:'=(42+31)×33\n=73×33:合十×重复!\n(7+1)×3=24,3×3=09\n=2409',hint:'★变式：没有合十数？先提公因数构造出 73！'},
+  {q:'87×66-41×66',a:3036,star:1,ex:'=(87-41)×66\n=46×66:合十×重复\n(4+1)×6=30,6×6=36\n=3036',hint:'★构造出 46（4+6=10）。'}]}
+];
+
+/* =================== 引擎 =================== */
+var CUR=null, TS={idx:0,gDone:-1}, Q={};
+function guessStep(btn){
+ var ok=(btn.textContent===window._gAns);
+ if(ok){btn.classList.add('good');ding();}else{btn.classList.add('bad');buzz();}
+ document.querySelectorAll('#guessBox .opt').forEach(function(b){b.disabled=true;if(b.textContent===window._gAns)b.classList.add('good');});
+ setTimeout(function(){var gb=$('guessBox');if(gb)gb.remove();$('btnStep').classList.remove('hide');nextStep();},ok?500:1100);
+}
+
+function unlockedCount(){var d0=new Date(START+'T00:00:00');var days=Math.floor((Date.now()-d0.getTime())/86400000);
+ return Math.max(1,Math.min(MODS.length,days+1+UNL_EXTRA));}
+function parentUnlock(){if(unlockedCount()>=MODS.length){alert('所有馆都已开放!');return;}UNL_EXTRA++;save(LSK+'_unl',UNL_EXTRA);ding();renderHome();}
+function lockMsg(day){buzz();alert('这个馆第 '+day+' 天才开放哦!\n每天学一个馆,学得牢。\n(家长可在「练习记录」里提前解锁)');}
+
+function renderHome(){
+ show('vHome');
+ var unl=unlockedCount(),g=$('homeGrid'),h='';
+ MODS.forEach(function(m,i){
+  var open=i<unl, st=modStat(m.id);
+  h+='<div class="tile'+(open?'':' lock')+'" onclick="'+(open?('openMod(\''+m.id+'\')'):('lockMsg('+(i+1)+')'))+'">'
+   +(i===unl-1&&open?'<span class="today">今日</span>':'')
+   +(st?'<span class="done">'+st+'</span>':'')
+   +'<div class="ic">'+(open?m.ic:'🔒')+'</div><div class="nm">'+m.nm+'</div><div class="ds">'+m.ds+'</div></div>';
+ });
+ g.innerHTML=h;
+ var done=0;for(var k in DB.done)done++;
+ var wrong=0;DB.events.forEach(function(e){if(e.type==='quiz'&&!e.ok)wrong++;});
+ $('statBar').innerHTML='<span>已练 '+done+'/'+MODS.length+' 馆</span><span>共答 '+DB.events.filter(function(e){return e.type==='quiz';}).length+' 题</span><span>错 '+wrong+' 题</span>';
+ var wl=wbList();
+ $('wbEntry').innerHTML=wl.length?'<div class="card" style="border-color:var(--red)"><div class="h2" style="color:var(--red)">📕 错题本（'+wl.length+' 题待掌握）</div><div class="note">错过的题连续答对 2 次才算掌握。</div><button class="btn red wide" onclick="startWrongbook()">🔁 重做错题</button></div>':'';
+ $('wbPanel').innerHTML=wl.length?wl.map(function(it){return '<div class="wbitem"><span>'+esc(short(it.q))+'</span><span class="t">错'+it.wrong+'次·连对'+it.streak+'/2</span></div>';}).join(''):'<div class="note">错题本是空的，太棒了！</div>';
+ var rh='';
+ if(done>0)rh+='<button class="btn ghost wide" onclick="startWarmup()">🔄 今日热身：把学过的再练 5 题</button>';
+ if(unl>=4)rh+='<button class="btn gold wide" onclick="startRadar()">📡 选招雷达：一眼认出该用哪招</button>';
+ $('reviewEntry').innerHTML=rh?'<div class="card"><div class="h2">🧠 学得牢小工具</div>'+rh+'<div class="note">🔄 热身＝昨天学的今天再见一面，记得更牢；📡 雷达＝先认出「用哪招」再动手，才是真的会。</div></div>':'';
+}
+function short(s){return s.length>24?s.slice(0,24)+'…':s;}
+function esc(s){return String(s).replace(/</g,'&lt;');}
+function show(id){['vHome','vTeach','vQuiz','vResult'].forEach(function(v){$(v).classList.toggle('hide',v!==id);});window.scrollTo(0,0);}
+function goHome(){if(Q.timer)clearInterval(Q.timer);renderHome();}
+
+/* ---- 教学流程：放大镜 → 分步 → 妙招 ---- */
+var mir={n:false,o:false};
+function openMod(id){
+ CUR=null;MODS.forEach(function(m){if(m.id===id)CUR=m;});
+ if(!CUR)return;tick();
+ mir={n:false,o:false};TS.idx=0;TS.gDone=-1;
+ show('vTeach');
+ $('tBadge').textContent=CUR.ic+' '+CUR.nm.replace(/^第\d+讲 /,'');
+ $('tTag').textContent='原书·'+CUR.nm.split(' ')[0];
+ var html='';
+ String(CUR.ex.expr).split(/([0-9.²]+)/).forEach(function(seg){
+  if(!seg)return;
+  if(/^[0-9.²]+$/.test(seg))html+='<span class="tk num">'+seg+'</span>';
+  else html+='<span class="tk op">'+esc(seg)+'</span>';
+ });
+ $('mExpr').innerHTML=html;
+ $('mFeats').innerHTML='';$('mMethods').innerHTML='';$('mMethods').classList.add('hide');
+ $('btnToSteps').classList.add('hide');
+ $('btnNum').style.opacity=1;$('btnOp').style.opacity=1;
+ $('cardSteps').classList.add('hide');$('cardTips').classList.add('hide');
+ $('stepRows').innerHTML='';$('btnStep').classList.remove('hide');$('btnStep').textContent='▶ 下一步';
+}
+function revealNum(){if(mir.n)return;mir.n=true;tick();
+ document.querySelectorAll('#mExpr .tk.num').forEach(function(el){el.classList.add('hn');});
+ $('mFeats').innerHTML+='<div class="feat">🔢 数字特点：'+CUR.ex.num+'</div>';
+ $('btnNum').style.opacity=.4;mirDone();}
+function revealOp(){if(mir.o)return;mir.o=true;tick();
+ document.querySelectorAll('#mExpr .tk.op').forEach(function(el){el.classList.add('ho');});
+ $('mFeats').innerHTML+='<div class="feat blue">➗ 算法特点：'+CUR.ex.op+'</div>';
+ $('btnOp').style.opacity=.4;mirDone();}
+function mirDone(){
+ if(!(mir.n&&mir.o))return;
+ var h='<div class="note" style="margin-top:8px">✅ 题干特点：'+CUR.ex.feats.map(function(f,i){return (i+1)+'.'+f;}).join('　')+'</div><div style="margin-top:4px">'
+  +CUR.ex.methods.map(function(m){return '<span class="mchip">🏷️ '+m+'</span>';}).join('')+'</div>';
+ $('mMethods').innerHTML=h;$('mMethods').classList.remove('hide');
+ $('btnToSteps').classList.remove('hide');ding();
+}
+function showSteps(){$('cardSteps').classList.remove('hide');$('btnToSteps').classList.add('hide');nextStep();
+ $('cardSteps').scrollIntoView({behavior:'smooth'});}
+function nextStep(){
+ var steps=CUR.ex.steps;
+ if(TS.idx>=steps.length)return;
+ var s=steps[TS.idx];
+ if(s.n&&TS.idx>=1&&TS.idx<steps.length-1&&TS.gDone!==TS.idx){
+  TS.gDone=TS.idx;
+  var pool=['从左往右硬算','列竖式慢慢算','先算最大的数'];
+  MODS.forEach(function(m){m.ex.steps.forEach(function(x){if(x.n&&x.n!==s.n&&pool.indexOf(x.n)<0)pool.push(x.n);});});
+  var dtr=pool[Math.floor(Math.random()*pool.length)];if(dtr===s.n)dtr=pool[0];
+  var go=Math.random()<0.5?[s.n,dtr]:[dtr,s.n];
+  window._gAns=s.n;
+  $('btnStep').classList.add('hide');
+  var box=document.createElement('div');box.id='guessBox';
+  box.innerHTML='<div class="hint">🤔 猜一猜：下一步该用哪一招？</div>'+go.map(function(o){return '<button class="opt" onclick="guessStep(this)">'+esc(o)+'</button>';}).join('');
+  $('stepRows').appendChild(box);box.scrollIntoView({behavior:'smooth',block:'center'});
+  return;
+ }
+ tick();
+ document.querySelectorAll('#stepRows .srow').forEach(function(el){el.classList.remove('cur');});
+ var row=document.createElement('div');row.className='srow cur';
+ row.innerHTML='<div class="math">'+esc(s.t)+'</div>'+(s.n?'<div class="snote">'+s.n+'</div>':'');
+ $('stepRows').appendChild(row);
+ if(s.w){var wd=document.createElement('div');wd.className='swhy';wd.innerHTML='🤔 为什么：'+s.w;$('stepRows').appendChild(wd);}
+ TS.idx++;
+ if(TS.idx>=steps.length){
+  $('btnStep').classList.add('hide');ding();
+  var f=document.createElement('div');f.className='fin';f.textContent='🎉 变身完成！这就是巧算的思路';$('stepRows').appendChild(f);
+  $('cardTips').classList.remove('hide');
+  $('tipUse').innerHTML=CUR.tips.use;
+  $('tipFms').innerHTML=CUR.tips.fms.map(function(x){return '<div class="fmla">'+x+'</div>';}).join('');
+ }else{
+  $('btnStep').textContent='▶ 下一步（'+TS.idx+'/'+steps.length+'）';
+ }
+ row.scrollIntoView({behavior:'smooth',block:'center'});
+}
+
+/* ---- 训练 ---- */
+function fmt(n){return (Math.round(Number(n)*10000)/10000).toString();}
+function shuffle(arr){for(var i=arr.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=arr[i];arr[i]=arr[j];arr[j]=t;}return arr;}
+function genOpts(a){
+ var x=Number(a),pool=[];
+ function push(v){v=Math.round(v*10000)/10000;if(v!==x&&pool.indexOf(v)<0&&v>=0)pool.push(v);}
+ if(x===0){push(10);push(2);push(1);}
+ else{
+  push(x+(x>=1000?100:x>=100?100:x>=10?10:1));
+  push(x-(x>=1000?90:x>=100?90:x>=10?9:0.9));
+  push(x*10);push(x>=1?Math.round(x/10*10000)/10000:x*100);push(x+(x>=10?1:0.1));
+ }
+ return shuffle([x].concat(pool.slice(0,3)));
+}
+function qStart(modId){
+ var m=null;MODS.forEach(function(x){if(x.id===modId)m=x;});
+ Q={list:m.drills.slice(),i:0,t0:Date.now(),sess0:Date.now(),mod:modId,nm:m.nm,ok:0,wrong:0,timer:null,isWb:false,wrongs:[]};
+ show('vQuiz');qRender();
+ Q.timer=setInterval(function(){var el=$('qTime');if(el){var s=Math.floor((Date.now()-Q.sess0)/1000);el.textContent='⏱ '+Math.floor(s/60)+':'+('0'+s%60).slice(-2);}},500);
+}
+function startWrongbook(){
+ var wl=wbList();if(!wl.length)return;
+ Q={list:wl.map(function(it){return {q:it.q,a:it.a,ex:it.ex,hint:it.hint,wb:1,word:it.q.length>16?1:0};}),i:0,t0:Date.now(),sess0:Date.now(),mod:'wrongbook',nm:'错题本重做',ok:0,wrong:0,timer:null,isWb:true,wrongs:[]};
+ show('vQuiz');qRender();
+ Q.timer=setInterval(function(){var el=$('qTime');if(el){var s=Math.floor((Date.now()-Q.sess0)/1000);el.textContent='⏱ '+Math.floor(s/60)+':'+('0'+s%60).slice(-2);}},500);
+}
+function quitQuiz(){if(Q.timer)clearInterval(Q.timer);if(Q.isWb||Q.warm)renderHome();else openMod(Q.mod);}
+function qRender(){
+ var d=Q.list[Q.i];Q.t0=Date.now();
+ $('qProg').innerHTML=(Q.isWb?'📕 错题本 ':'')+(Q.i+1)+' / '+Q.list.length+(d.star?'　<span class="star">★举一反三</span>':'')+(d.rq?'　<span class="star">🔁再战</span>':'');
+ $('qScore').textContent='✅'+Q.ok+' ❌'+Q.wrong;
+ var gh=d.hint?'<div class="hint">'+esc(d.hint)+'</div>':'';
+ if(Q.i===0&&!Q.isWb&&!Q.warm&&!d.rq&&!d.sopts){
+  var gl=d.ex.split('\n');
+  if(gl.length>2){gl.pop();gh+='<div class="steps"><span class="lb">🧭 第一题扶你走：思路都摆好了，最后一步你来算！</span>'+gl.map(esc).join('<br>')+'</div>';}
+ }
+ $('qHint').innerHTML=gh;
+ $('qText').className='qtext'+(d.word?' word':'');
+ $('qText').textContent=d.q;
+ $('qText').style.whiteSpace='pre-line';
+ if(d.sopts){
+  var hs='';d.sopts.forEach(function(o,i){hs+='<button class="opt" onclick="qAnsS(this,'+i+')">'+esc(o)+'</button>';});
+  $('qOpts').innerHTML=hs;
+ }else{
+  var opts=d.wo?shuffle([Number(d.a)].concat(d.wo)):genOpts(d.a),h='';
+  opts.forEach(function(o){h+='<button class="opt" onclick="qAns(this,'+o+')">'+fmt(o)+'</button>';});
+  $('qOpts').innerHTML=h;
+ }
+ $('qEx').innerHTML='';$('btnNext').classList.add('hide');
+}
+function qAns(btn,val){
+ var d=Q.list[Q.i],ok=(Math.abs(val-Number(d.a))<1e-9),ms=Date.now()-Q.t0;
+ document.querySelectorAll('#qOpts .opt').forEach(function(b){b.disabled=true;
+  if(Math.abs(Number(b.textContent)-Number(d.a))<1e-9)b.classList.add('good');});
+ if(ok){btn.classList.add('good');Q.ok++;ding();if(Q.isWb||d.wb)wbAddRight(d.q);}
+ else{btn.classList.add('bad');Q.wrong++;buzz();wbAddWrong(d);Q.wrongs.push(d);if(!d.rq){var c={};for(var k in d)c[k]=d[k];c.rq=1;Q.list.push(c);}}
+ if(!Q.isWb)logEvent({type:'quiz',subject:'数学',lesson:Q.nm,word:d.q,hint:d.hint||'',ok:ok,ms:ms,user:String(val),tag:d.star?'举一反三':'即时训练'});
+ var lines=d.ex.split('\n');
+ $('qEx').innerHTML='<div class="steps"><span class="lb">'+(ok?'✅ 对啦！再看一遍书上的分步：':'❌ 别急，跟着书上的思路走一遍：')+'</span>'
+  +lines.map(function(l,i){return i===lines.length-1?'<span class="last">'+esc(l)+'</span>':esc(l);}).join('<br>')+'</div>';
+ $('btnNext').classList.remove('hide');
+ $('qScore').textContent='✅'+Q.ok+' ❌'+Q.wrong;
+}
+function qNext(){
+ Q.i++;
+ if(Q.i>=Q.list.length){qFinish();return;}
+ qRender();window.scrollTo(0,0);
+}
+function qFinish(){
+ if(Q.timer)clearInterval(Q.timer);
+ var sec=Math.floor((Date.now()-Q.sess0)/1000);
+ if(!Q.isWb&&!Q.warm){
+  DB.done[Q.mod]={ok:Q.ok,wrong:Q.wrong,ts:Date.now()};save(LSK,DB);
+  logEvent({type:'lesson',subject:'数学',lesson:Q.nm,total:Q.list.length,wrong:Q.wrong,durationSec:sec});
+ }
+ show('vResult');
+ var h='<div class="h2">'+(Q.isWb?'📕 错题重做完成':'🏁 '+Q.nm+' 完成!')+'</div>'
+  +'<div class="stat"><span>✅ 对 '+Q.ok+'</span><span>❌ 错 '+Q.wrong+'</span><span>⏱ '+Math.floor(sec/60)+'分'+(sec%60)+'秒</span></div>';
+ if(Q.wrongs.length){
+  h+='<div class="h2" style="margin-top:12px">错题回顾（看懂再走）</div>';
+  Q.wrongs.forEach(function(d){
+   h+='<div class="note" style="font-weight:800;color:var(--red)">✗ '+esc(d.q)+'</div><div class="steps">'+d.ex.split('\n').map(esc).join('<br>')+'</div>';
+  });
+  h+='<div class="note">这些题已进错题本，连续答对 2 次才能出来哦。</div>';
+ }else{
+  h+='<div class="fin">🌟 全对！太厉害了！</div>';
+ }
+ if(!Q.isWb&&!Q.warm&&Q.wrong>0)h+='<button class="btn gold wide" onclick="qStart(Q.mod)">🔁 再练一次，冲 ⭐⭐⭐ 满星</button>';
+ h+='<button class="btn wide" onclick="goHome()">回选馆地图</button>';
+ $('resCard').innerHTML=h;
+}
+
+function qAnsS(btn,idx){
+ var d=Q.list[Q.i],ok=(d.sopts[idx]===d.a),ms=Date.now()-Q.t0;
+ document.querySelectorAll('#qOpts .opt').forEach(function(b){b.disabled=true;if(b.textContent===d.a)b.classList.add('good');});
+ if(ok){Q.ok++;ding();}
+ else{btn.classList.add('bad');Q.wrong++;buzz();Q.wrongs.push(d);if(!d.rq){var c={};for(var k in d)c[k]=d[k];c.rq=1;Q.list.push(c);}}
+ logEvent({type:'quiz',subject:'数学',lesson:Q.nm,word:d.q,hint:d.hint||'',ok:ok,ms:ms,user:d.sopts[idx],tag:'选招雷达'});
+ var lines=d.ex.split('\n');
+ $('qEx').innerHTML='<div class="steps"><span class="lb">'+(ok?'✅ 认对了！看看这招怎么打：':'❌ 认错招了！先看题目特点：')+'</span>'+lines.map(function(l,i){return i===lines.length-1?'<span class="last">'+esc(l)+'</span>':esc(l);}).join('<br>')+'</div>';
+ $('btnNext').classList.remove('hide');
+ $('qScore').textContent='✅'+Q.ok+' ❌'+Q.wrong;
+}
+function modName(m){return m.nm.replace(/^第\d+讲 /,'').replace(/^专项 /,'');}
+function startWarmup(){
+ var pool=[];
+ MODS.forEach(function(m){if(DB.done[m.id])m.drills.forEach(function(dd){pool.push(dd);});});
+ if(!pool.length){alert('先练完至少一个馆，再来热身！');return;}
+ var picks=wbList().slice(0,2).map(function(it){return {q:it.q,a:it.a,ex:it.ex,hint:it.hint,wb:1};});
+ var guard=0;
+ while(picks.length<5&&guard<80){guard++;var dd=pool[Math.floor(Math.random()*pool.length)];var dup=false;picks.forEach(function(p){if(p.q===dd.q)dup=true;});if(!dup)picks.push(dd);}
+ Q={list:shuffle(picks),i:0,t0:Date.now(),sess0:Date.now(),mod:'warmup',nm:'今日热身',ok:0,wrong:0,timer:null,isWb:false,warm:true,wrongs:[]};
+ show('vQuiz');qRender();
+ Q.timer=setInterval(function(){var el=$('qTime');if(el){var s=Math.floor((Date.now()-Q.sess0)/1000);el.textContent='⏱ '+Math.floor(s/60)+':'+('0'+s%60).slice(-2);}},500);
+}
+function startRadar(){
+ var unl=unlockedCount();
+ if(unl<4){alert('再解锁几个馆，雷达的招式才够多！');return;}
+ var list=[];
+ MODS.slice(0,unl).forEach(function(m){
+  var dd=m.drills[Math.floor(Math.random()*m.drills.length)];
+  var name=modName(m),others=[];
+  MODS.slice(0,unl).forEach(function(x){if(x.id!==m.id)others.push(modName(x));});
+  shuffle(others);
+  list.push({q:'这道题该用哪一招？\n'+dd.q,sopts:shuffle([name].concat(others.slice(0,3))),a:name,
+   ex:'招式：'+name+'\n题目特点：'+m.ex.feats.join('；')+'\n'+dd.ex,hint:'先用放大镜看：数字有什么特点？算法有什么特点？'});
+ });
+ list=shuffle(list).slice(0,8);
+ Q={list:list,i:0,t0:Date.now(),sess0:Date.now(),mod:'radar',nm:'选招雷达',ok:0,wrong:0,timer:null,isWb:false,warm:true,wrongs:[]};
+ show('vQuiz');qRender();
+ Q.timer=setInterval(function(){var el=$('qTime');if(el){var s=Math.floor((Date.now()-Q.sess0)/1000);el.textContent='⏱ '+Math.floor(s/60)+':'+('0'+s%60).slice(-2);}},500);
+}
+
+/* ---- 导出（兼容 data/learning 归档格式） ---- */
+function exportText(){
+ var wl=wbList();
+ var t='【Kenton 计算技法大通关(技巧篇速算16馆) 练习记录】\n导出时间:'+new Date().toLocaleString()+'\n\n';
+ t+='== 各馆成绩 ==\n';
+ MODS.forEach(function(m){var d=DB.done[m.id];if(d)t+=m.nm+': ✅'+d.ok+' ❌'+d.wrong+'\n';});
+ t+='\n== 错题本(未掌握 '+wl.length+' 题) ==\n';
+ wl.forEach(function(it){t+='· '+it.q+'（错'+it.wrong+'次,连对'+it.streak+'/2）\n';});
+ var cnt={};DB.events.forEach(function(e){if(e.type==='quiz'&&!e.ok)cnt[e.word]=(cnt[e.word]||0)+1;});
+ var rep=Object.keys(cnt).filter(function(k){return cnt[k]>=2;});
+ t+='\n== 反复错的题(错≥2次) ==\n'+(rep.length?rep.map(function(k){return '· '+k+' ×'+cnt[k];}).join('\n'):'(无)')+'\n';
+ t+='\n== 原始JSON ==\n'+JSON.stringify({child:'哥哥',subject:'数学',app:'calc_skills_kenton_v1',events:DB.events,wrongbook:wl});
+ return t;
+}
+function exportCopy(){var t=exportText();
+ if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(function(){alert('已复制!把内容发给爸爸即可');},function(){fallbackCopy(t);});}
+ else fallbackCopy(t);}
+function fallbackCopy(t){var ta=document.createElement('textarea');ta.value=t;document.body.appendChild(ta);ta.select();try{document.execCommand('copy');alert('已复制!');}catch(e){alert('复制失败,请用「看一眼」手动复制');}document.body.removeChild(ta);}
+function exportFile(){var b=new Blob([exportText()],{type:'text/plain'});var a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='kenton_技巧篇速算记录_'+new Date().toISOString().slice(0,10)+'.txt';a.click();}
+function toggleExp(){var box=$('expBox');box.classList.toggle('hide');if(!box.classList.contains('hide'))$('expTa').value=exportText();}
+
+$('muteBtn').textContent=MUTE?'🔕':'🔔';
+renderHome();
+</script>
+</body>
+</html>

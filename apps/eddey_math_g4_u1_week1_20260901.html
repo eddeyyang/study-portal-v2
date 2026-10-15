@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f6fbfc">
+  <meta name="study-portal-design" content="2.0">
+  <meta name="lesson-audio" content="not-applicable">
+  <title>Eddey·运算关系反推机</title>
+  <style>
+    :root{--canvas:#f6fbfc;--surface:#fff;--ink:#173447;--muted:#607783;--line:#d6e6ea;--id:#35bfd0;--id-dark:#087687;--id-soft:#e2faff;--spark:#ffd166;--ok:#176b4b;--ok-soft:#e8f8ef;--bad:#a43e4d;--bad-soft:#fff0f3;--shadow:0 16px 36px rgba(42,91,110,.13);--r:23px;--tap:48px}
+    body[data-child="eddey"]{--id:#ff895b;--id-dark:#aa4523;--id-soft:#fff0e7}
+    *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+    html{min-width:320px;background:var(--canvas);scroll-behavior:smooth}
+    body{min-height:100dvh;margin:0;color:var(--ink);font-family:"PingFang SC","Microsoft YaHei","Segoe UI",system-ui,sans-serif;background:radial-gradient(circle at 8% 3%,color-mix(in srgb,var(--id) 17%,transparent),transparent 29%),radial-gradient(circle at 92% 77%,rgba(255,209,102,.16),transparent 26%),linear-gradient(#fbfeff,#f2f8f9);font-size:16px}
+    button,a,input{font:inherit;touch-action:manipulation}
+    button{cursor:pointer}
+    button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid #6755ad;outline-offset:3px}
+    .lesson-shell{width:min(100%,760px);margin:auto;padding:14px 14px calc(42px + env(safe-area-inset-bottom))}
+    .topbar{display:flex;align-items:center;gap:10px;min-height:var(--tap);margin-bottom:12px}
+    .back,.icon{width:var(--tap);height:var(--tap);display:grid;place-items:center;flex:0 0 var(--tap);border:1px solid var(--line);border-radius:14px;color:var(--ink);background:#fff;box-shadow:0 6px 16px rgba(42,91,110,.09)}
+    .back svg,.brand svg,.phase svg,.icon svg{width:23px;height:23px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+    .brand{width:42px;height:42px;display:grid;place-items:center;border-radius:14px;color:#fff;background:var(--id-dark);box-shadow:0 4px 0 color-mix(in srgb,var(--id-dark) 72%,#000)}
+    .brandcopy{min-width:0}.brandcopy strong,.brandcopy span{display:block}.brandcopy strong{font-size:16px}.brandcopy span{margin-top:2px;color:var(--muted);font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .identity{margin-left:auto;padding:7px 11px;border-radius:999px;color:var(--id-dark);background:var(--id-soft);font-size:12px;font-weight:800}
+    .hero,.panel,.chooser-card{border:1px solid var(--line);border-radius:var(--r);background:var(--surface);box-shadow:var(--shadow)}
+    .hero{padding:clamp(20px,5vw,34px);overflow:hidden;position:relative}
+    .hero:after{content:"";position:absolute;width:170px;height:170px;right:-95px;top:-105px;border:24px solid color-mix(in srgb,var(--id) 11%,transparent);border-radius:50%;pointer-events:none}
+    .eyebrow{display:inline-flex;align-items:center;gap:7px;min-height:30px;padding:5px 10px;border-radius:999px;color:#fff;background:var(--ink);font-size:12px;font-weight:800}.eyebrow:before{content:"";width:8px;height:8px;border-radius:50%;background:var(--spark)}
+    h1{margin:14px 0 9px;font-size:clamp(27px,7vw,43px);line-height:1.12;letter-spacing:-.04em;white-space:nowrap}h2{margin:0;font-size:clamp(21px,4vw,28px)}
+    .daily-spark{width:100%;min-height:var(--tap);display:flex;align-items:center;gap:10px;margin-top:12px;padding:10px 13px;border:1px dashed color-mix(in srgb,var(--id) 58%,#80949a);border-radius:14px;color:var(--muted);background:color-mix(in srgb,var(--id-soft) 55%,#fff);text-align:left;line-height:1.5}.daily-spark[aria-expanded="true"]{color:var(--id-dark);background:var(--id-soft)}.spark-dot{width:16px;height:16px;flex:0 0 16px;border:4px solid var(--spark);border-radius:50%;background:#fff;box-shadow:0 0 0 4px rgba(255,209,102,.18)}
+    .lead,.muted{color:var(--muted);line-height:1.7}.lead{margin:0;max-width:650px}.goal{margin-top:15px;padding:12px 14px;border:1px solid color-mix(in srgb,var(--id) 42%,#fff);border-radius:16px;background:linear-gradient(135deg,var(--id-soft),#fff);line-height:1.65}.goal strong{color:var(--id-dark)}
+    .source{margin-top:12px;color:var(--muted);font-size:12px;line-height:1.55}.source b{color:var(--ink)}
+    .button-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}.btn,.choice,.route button,.mode{min-height:var(--tap);border-radius:14px;font-weight:800}.btn{padding:11px 17px;border:1px solid var(--line);color:var(--ink);background:#edf4f5;box-shadow:0 4px 0 #d1e2e5}.btn.primary{border-color:var(--id-dark);color:#fff;background:var(--id-dark);box-shadow:0 5px 0 color-mix(in srgb,var(--id-dark) 72%,#000)}.btn.spark{border-color:#d7a92f;color:#5d4300;background:var(--spark);box-shadow:0 5px 0 #d5a72c}.btn:active,.choice:active,.mode:active{transform:translateY(2px);box-shadow:none}
+    .route{display:grid;grid-template-columns:repeat(5,1fr);gap:7px;margin:13px 0}.route button{min-width:0;padding:8px 4px;border:1px solid var(--line);color:var(--muted);background:rgba(255,255,255,.85);font-size:11px}.route button[aria-current="step"]{border-color:var(--id);color:var(--id-dark);background:var(--id-soft)}
+    .panel{display:none;padding:clamp(18px,4vw,28px)}.panel.active{display:block;animation:in .28s ease-out}.panel-head{display:flex;align-items:flex-start;gap:12px;margin-bottom:15px}.phase{width:46px;height:46px;display:grid;place-items:center;flex:0 0 46px;border-radius:15px;color:var(--id-dark);background:var(--id-soft)}.panel-head p{margin:4px 0 0;color:var(--muted);line-height:1.65}
+    .lab{padding:16px;border:1px solid var(--line);border-radius:20px;background:#f6fafb}.lab-title{display:flex;justify-content:space-between;gap:10px;margin-bottom:12px;color:var(--muted);font-size:13px}.lab-title b{color:var(--ink)}
+    .mode-row{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:13px}.mode{padding:9px 12px;border:2px solid var(--line);color:var(--ink);background:#fff}.mode[aria-pressed="true"]{border-color:var(--id);color:var(--id-dark);background:var(--id-soft)}
+    .relation-bars{display:grid;gap:8px}.parts{display:flex;height:68px;gap:4px}.block{display:grid;place-items:center;min-width:58px;padding:7px;border:2px solid color-mix(in srgb,var(--id) 55%,#fff);border-radius:15px;color:var(--id-dark);background:var(--id-soft);font-weight:800;transition:flex .3s ease}.block.b{color:#624600;background:#fff5cc;border-color:#e6bf52}.block.unknown,.whole.unknown{color:transparent;background:repeating-linear-gradient(135deg,#d9e8eb 0 10px,#eef5f6 10px 20px);text-shadow:none}.block.unknown:after,.whole.unknown:after{content:"?";color:var(--ink);font-size:25px}.whole{display:grid;place-items:center;min-height:55px;border:3px solid var(--ink);border-radius:15px;background:#fff;font-weight:800;font-size:20px}.brace{text-align:center;color:var(--muted);font-size:12px}.equation{margin-top:11px;padding:11px;border-radius:14px;background:#fff;text-align:center;font-size:clamp(20px,6vw,29px);font-weight:800;letter-spacing:.03em}.equation .op{color:var(--id-dark)}
+    .range-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}.range-card{padding:10px;border:1px solid var(--line);border-radius:14px;background:#fff}.range-card label{display:flex;justify-content:space-between;font-size:12px;color:var(--muted)}.range-card input{width:100%;accent-color:var(--id-dark)}
+    .decimal-stage{padding:14px;border-radius:18px;background:#fff;border:1px solid var(--line)}.skeleton{display:grid;grid-template-columns:1fr auto 1fr;gap:8px;align-items:center;text-align:center}.number-card{padding:12px 8px;border-radius:14px;background:var(--id-soft);color:var(--id-dark);font-size:24px;font-weight:800}.times{font-size:22px;font-weight:800}.machine-line{height:8px;margin:16px 0;border-radius:16px;background:linear-gradient(90deg,var(--id),var(--spark));position:relative}.machine-line:after{content:"";position:absolute;width:19px;height:19px;right:8px;top:-6px;border-radius:50%;background:#fff;border:4px solid var(--id-dark);transition:right .3s ease}.decimal-stage.active .machine-line:after{right:calc(100% - 30px)}
+    .digits{display:flex;justify-content:center;align-items:end;gap:4px;min-height:70px;margin:7px 0}.digit{width:42px;height:52px;display:grid;place-items:center;border:2px solid var(--line);border-radius:12px;background:#fff;font-size:25px;font-weight:800;position:relative}.dot-slot{width:16px;height:52px;display:grid;place-items:end center;padding-bottom:7px;color:#b6c8cc;font-size:26px;font-weight:800}.dot-slot.hot{color:var(--id-dark);animation:pulse .8s ease}.count{padding:10px 12px;border-radius:14px;color:#5d4b16;background:#fff7dc;line-height:1.65}.magnitude{margin-top:10px;padding:10px 12px;border-radius:14px;color:var(--ok);background:var(--ok-soft);line-height:1.6}
+    .prompt{padding:15px;border:1px solid var(--line);border-radius:17px;background:#f7fafb;color:var(--muted);line-height:1.7}.prompt b,.prompt code{color:var(--ink)}
+    .choices{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:13px}.choice{padding:13px 15px;border:2px solid var(--line);color:var(--ink);background:#fff;text-align:left}.choice.correct{border-color:#69b895;color:var(--ok);background:var(--ok-soft)}.choice.wrong{border-color:#d17b88;color:var(--bad);background:var(--bad-soft)}
+    .feedback{margin-top:14px;padding:14px 15px;border-radius:17px;line-height:1.7}.feedback.ok{border:1px solid #92d3b8;color:var(--ok);background:var(--ok-soft)}.feedback.bad{border:1px solid #e2a8b1;color:var(--bad);background:var(--bad-soft)}
+    .written-answer{grid-column:1/-1;display:grid;gap:10px;padding:14px;border:2px solid var(--line);border-radius:17px;background:#fff}.written-answer label{font-weight:800}.written-answer small{color:var(--muted);line-height:1.55}.written-answer input{width:100%;min-height:54px;padding:10px 13px;border:2px solid var(--line);border-radius:14px;color:var(--ink);background:#fff;font-size:24px;font-weight:800}.written-answer input:focus{border-color:var(--id);box-shadow:0 0 0 4px color-mix(in srgb,var(--id) 18%,transparent)}
+    .flip{width:100%;min-height:120px;padding:18px;border:2px solid var(--line);border-radius:17px;color:var(--ink);background:#fff;font-weight:800;text-align:center}.flip .answer{display:none;margin-top:12px;color:var(--id-dark);font-size:19px;line-height:1.6}.flip.open{border-color:var(--id);background:var(--id-soft)}.flip.open .answer{display:block}
+    .repair{padding:15px;border-left:5px solid var(--spark);border-radius:15px;color:#5d4b16;background:#fff7dc;line-height:1.7}.repair-model{margin-top:13px}.mini-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-top:13px}.mini{padding:11px;border:1px solid var(--line);border-radius:14px;background:#fff;text-align:center}.mini small,.mini strong{display:block}.mini small{color:var(--muted);font-size:11px}.mini strong{margin-top:5px;color:var(--id-dark)}
+    .mini.unknown{background:repeating-linear-gradient(135deg,#d9e8eb 0 10px,#eef5f6 10px 20px)}.mini.unknown strong{color:var(--ink)}.group-run{display:flex;flex-wrap:wrap;justify-content:center;gap:6px;margin-top:11px}.group-unit{min-width:38px;padding:7px;border:1px solid color-mix(in srgb,var(--id) 60%,#fff);border-radius:10px;color:var(--id-dark);background:var(--id-soft);font-weight:800}.group-hidden{padding:10px 14px;border:1px dashed var(--muted);border-radius:12px;color:var(--muted);background:#fff}
+    .recordbar{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:14px}.metric{padding:10px;border-radius:13px;background:#f3f8f9;text-align:center}.metric b,.metric small{display:block}.metric small{margin-top:3px;color:var(--muted);font-size:11px}
+    .done-card{padding:16px;border:1px solid #92d3b8;border-radius:18px;background:var(--ok-soft);line-height:1.7}.footer{margin:18px 4px 0;color:var(--muted);font-size:12px;line-height:1.6;text-align:center}
+    .chooser{min-height:100dvh;display:grid;place-items:center;padding:20px}.chooser-card{width:min(100%,720px);padding:clamp(22px,5vw,38px)}.chooser-card h2{margin-top:14px;font-size:clamp(27px,7vw,43px);white-space:normal}.child-grid{display:grid;grid-template-columns:1fr 1fr;gap:13px;margin-top:18px}.child-link{min-height:150px;padding:19px;border:2px solid var(--line);border-radius:20px;color:var(--ink);background:#fff;text-decoration:none}.child-link strong,.child-link span{display:block}.child-link strong{font-size:22px}.child-link span{margin-top:8px;color:var(--muted);line-height:1.6}.child-link.eddey{border-color:#ffb08f;background:#fff5ef}.child-link.kenton{border-color:#80d6e0;background:#effcff}
+    .hidden{display:none!important}@keyframes in{from{opacity:0;transform:translateY(9px)}to{opacity:1;transform:none}}@keyframes pulse{50%{transform:scale(1.35)}}
+    @media(max-width:520px){.lesson-shell{padding-left:12px;padding-right:12px}.hero{padding:19px 16px}h1{font-size:clamp(25px,7.2vw,31px)}.route{gap:4px}.route button{padding:8px 1px;font-size:10px}.choices,.range-grid,.child-grid{grid-template-columns:1fr}.identity{padding:6px 8px}.brandcopy span{max-width:150px}.digit{width:35px;height:48px;font-size:22px}.dot-slot{width:11px}.recordbar{grid-template-columns:1fr 1fr}.metric:last-child{grid-column:1/-1}}
+    @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+  </style>
+</head>
+<body data-child="eddey">
+  <div id="chooser" class="chooser hidden">
+    <section class="chooser-card">
+      <span class="eyebrow">第一周 · 每天 8–12 分钟</span>
+      <h2>数学关系引擎</h2>
+      <p class="lead">不是把整本书搬进屏幕，而是给每个孩子一台不同的“知识机器”：先操作、再说清、最后只做少量独立迁移。</p>
+      <div class="child-grid">
+        <a class="child-link eddey" href="?who=eddey"><strong>Eddey · 四年级</strong><span>把加减乘除的“互逆关系”变成一台可以拆开、遮住、反推的机器。</span></a>
+        <a class="child-link kenton" href="?who=kenton"><strong>Kenton · 五年级</strong><span>把小数乘法变成“整数骨架 + 小数点定位 + 大小检查”的流水线。</span></a>
+      </div>
+    </section>
+  </div>
+
+  <main class="lesson-shell hidden" id="appShell">
+    <header class="topbar">
+      <a class="back" href="math_gold_hub.html?who=eddey" aria-label="返回数学金牌训练馆"><svg viewBox="0 0 24 24"><path d="m15 18-6-6 6-6"/></svg></a>
+      <span class="brand" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 17 9 7l4 7 3-5 4 8M5 19h14"/></svg></span>
+      <span class="brandcopy"><strong id="brandTitle">数学关系引擎</strong><span>第一周速学实验版 · v2</span></span>
+      <span class="identity" id="identity">Kenton</span>
+    </header>
+
+    <section class="hero" data-phase="teach">
+      <span class="eyebrow" id="eyebrow">第一周 · 真实教材对齐</span>
+      <h1 id="heroTitle">数学关系引擎</h1>
+      <p class="lead" id="heroLead"></p>
+      <div class="goal"><strong>本周可观察结果：</strong><span id="outcome"></span></div>
+      <button class="daily-spark" type="button" data-micro-surprise="daily" aria-expanded="false"><span class="spark-dot" data-surprise="math-invariant" aria-hidden="true"></span><span id="dailyText">今天藏着一条数学暗号 · 点开看看</span></button>
+      <div class="source"><b>材料边界：</b><span id="sourceText"></span><br><b>声音状态：</b>不适用；本课靠视觉操作与口头解释掌握。</div>
+      <div class="button-row"><button class="btn primary" id="startBtn" type="button">开始第1天：看机器怎么动</button><button class="btn" id="exportBtn" type="button">导出本周记录</button></div>
+      <div class="recordbar"><div class="metric"><b id="metricDone">0/5</b><small>完成环节</small></div><div class="metric"><b id="metricRight">0</b><small>独立答对</small></div><div class="metric"><b id="metricRepair">0</b><small>完成修复</small></div></div>
+    </section>
+
+    <nav class="route" aria-label="第一周学习步骤">
+      <button type="button" data-go="teach" aria-current="step">第1天<br>看懂</button>
+      <button type="button" data-go="guided">第2天<br>操作</button>
+      <button type="button" data-go="recall">第3天<br>说出</button>
+      <button type="button" data-go="independent">第4天<br>独立</button>
+      <button type="button" data-go="transfer">第5天<br>迁移</button>
+    </nav>
+
+    <section class="panel active" data-panel="teach" data-phase="teach">
+      <div class="panel-head"><span class="phase"><svg viewBox="0 0 24 24"><path d="M4 5h16v14H4zM8 9h8M8 13h5"/></svg></span><div><h2 id="teachTitle"></h2><p id="teachLead"></p></div></div>
+      <div class="lab" id="teachLab"></div>
+      <div class="button-row"><button class="btn primary" type="button" data-next="guided">我看见规律了，明天自己控制</button></div>
+    </section>
+
+    <section class="panel" data-panel="guided" data-phase="guided">
+      <div class="panel-head"><span class="phase"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span><div><h2 id="guidedTitle"></h2><p id="guidedLead"></p></div></div>
+      <div class="lab" id="guidedLab"></div>
+      <div class="feedback ok" id="guidedFeedback"></div>
+      <div class="button-row"><button class="btn primary" type="button" data-next="recall">我能让机器按我的想法变化</button></div>
+    </section>
+
+    <section class="panel" data-panel="recall" data-phase="recall">
+      <div class="panel-head"><span class="phase"><svg viewBox="0 0 24 24"><path d="M4 5h16v14H4zM8 9h8M8 13h5"/></svg></span><div><h2>第3天：遮住模型，用自己的话说</h2><p>必须先口头说，再翻开。翻开后可以重新遮住，不会一次锁死。</p></div></div>
+      <button class="flip" id="recallCard" type="button" aria-expanded="false"><span id="recallQuestion"></span><span class="answer" id="recallAnswer"></span></button>
+      <div class="button-row"><button class="btn" id="hideAgain" type="button">重新遮住，再说一次</button><button class="btn primary" type="button" data-next="independent">遮住也能说清</button></div>
+    </section>
+
+    <section class="panel" data-panel="independent" data-phase="independent">
+      <div class="panel-head"><span class="phase"><svg viewBox="0 0 24 24"><path d="M6 4h12v16H6zM9 8h6M9 12h6M9 16h3"/></svg></span><div><h2>第4天：独立做一题，暴露真正卡点</h2><p>这次模型收起来。答错不会直接亮答案，而是只修复卡住的一步，再返回同一道题。</p></div></div>
+      <div class="prompt" id="indPrompt"></div>
+      <div class="choices" id="indChoices"></div>
+      <div id="indFeedback" aria-live="polite"></div>
+    </section>
+
+    <section class="panel" data-panel="repair" data-phase="repair">
+      <div class="panel-head"><span class="phase"><svg viewBox="0 0 24 24"><path d="m14 6 4 4M5 19l3.5-.7L18 8.8 15.2 6 5.7 15.5z"/></svg></span><div><h2>精准修复：只补刚才断掉的那一步</h2><p id="repairLead"></p></div></div>
+      <div class="repair" id="repairRule"></div>
+      <div class="lab repair-model" id="repairLab"></div>
+      <div class="button-row"><button class="btn spark" id="returnQuestion" data-return-to-question="pending" type="button">我看懂了，回到刚才那题</button></div>
+    </section>
+
+    <section class="panel" data-panel="transfer" data-phase="transfer">
+      <div class="panel-head"><span class="phase"><svg viewBox="0 0 24 24"><path d="M12 3v18M5 10l7-7 7 7"/></svg></span><div><h2>第5天：换一个表面，检查能不能迁移</h2><p>不是重复原题，而是把同一个底层关系放进新情境。</p></div></div>
+      <div class="prompt" id="transferPrompt"></div>
+      <div class="choices" id="transferChoices"></div>
+      <div id="transferFeedback" aria-live="polite"></div>
+    </section>
+
+    <section class="panel" data-panel="complete">
+      <div class="panel-head"><span class="phase"><svg viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></svg></span><div><h2>第一周闭环完成</h2><p>完成不等于“刷完”。下面证据同时成立，才算暂时掌握。</p></div></div>
+      <div class="done-card" id="doneText"></div>
+      <div class="button-row"><button class="btn" type="button" data-go="teach">重新操作模型</button><button class="btn primary" id="downloadBtn" type="button">保存学习记录</button></div>
+    </section>
+    <p class="footer">本实验版只使用匿名小名；原始扫描、姓名、学校和完整题页不进入公开软件。学习记录仅保存在当前浏览器，可由家长手动导出。</p>
+  </main>
+
+  <script>
+  (()=>{"use strict";
+    const qs=new URLSearchParams(location.search||location.hash.slice(1));const child="eddey";const testMode=qs.get("mode")==="test";
+    const DATA={
+      eddey:{name:"Eddey",title:"运算关系反推机",lead:"把加减、乘除从四条孤立规则，压缩成两张会变化的关系图。先找“整体—部分”或“总量—每份—份数”，再决定正推还是反推。",source:"《金牌数学·四年级上》第一单元第1课“运算关系”资料页1–9；只做第一周核心，不把页10–22运算律提前灌满。",outcome:"看到未知量的位置，能先说关系、再选运算；能用逆运算验算，不靠猜符号。",gap:"历史上在混合运算顺序、逆向关系和应用题中间量上容易断链。",teachTitle:"第1天：一张图为什么能生出四个算式",teachLead:"拖动两个部分，再遮住任意位置。数变了，关系不变；未知量的位置决定用正推还是反推。",guidedTitle:"第2天：你来决定藏谁、用什么找",guidedLead:"切换加减与乘除，反复遮住不同角色，观察“正推/反推”怎样自动变化。",recallQ:"不看图回答：为什么“总数 − 一部分 = 另一部分”？乘除关系里又怎样说？",recallA:"因为整体由两个部分合成，拿走已知部分就剩未知部分。乘除里，总量由“每份 × 份数”得到；总量除以一个已知角色，就能反推另一个角色。",ind:{id:"g4-u1-w1-q1",q:"图书角共有 96 本书，其中故事书 38 本，其余是科普书。科普书有多少本？",answer:"58",inputHint:"只输入最后的数字，不用打完整句子。",why:"96 是整体，38 是已知部分；找另一部分用 96−38=58。关键不是看到‘其余’就背减法，而是先认出整体与部分。",tag:"whole-part-role"},repairLead:"刚才不是计算问题，是没有先给数量分角色。",repair:"先把 96 放进“整体”，把 38 放进“已知部分”。空格是“另一部分”，所以关系图自动生成：整体 − 已知部分 = 未知部分。",transfer:{id:"g4-u1-w1-t1",q:"一批零件每盒装 24 个，共装了 7 盒。现在已知总数 168 个和每盒 24 个，要反推盒数。哪条关系最稳？",opts:["168×24","168÷24","24÷168","168−24"],a:1,why:"总量 = 每份 × 份数。反推份数时，用总量 ÷ 每份：168÷24=7。",tag:"inverse-multiplication"}},
+      kenton:{name:"Kenton",title:"小数点定位流水线",lead:"小数乘法不靠背“数几位”。先做整数骨架，再把位值缩小的次数合并，最后用大小关系拦截荒唐答案。",source:"《金牌数学·五年级上》第一单元资料页1–11：“小数乘整数”“小数乘小数”；后面的除法与近似数留到后续周。",outcome:"能解释小数点为什么放在那里，并用估算判断结果数量级；不再只会机械数位数。",gap:"历史上小数系统、巧算和过程控制需要从规则记忆升级为位值模型。",teachTitle:"第1天：先造整数骨架，再恢复位值",teachLead:"切换同一组数字的小数位置，观察整数骨架始终是 32×4=128，但结果会按缩小次数移动。",guidedTitle:"第2天：你来控制两次“缩小”",guidedLead:"点选四组因数。流水线会拆出整数骨架、统计小数位，并用“乘小于1的数，积变小”检查结果。",recallQ:"不看流水线回答：0.32×0.04 为什么是 0.0128，而不是 1.28 或 0.128？",recallA:"先算整数骨架 32×4=128。0.32 比 32 缩小100倍，0.04 比4缩小100倍，积一共缩小10000倍，所以是0.0128；而且两个因数都小于1，积必须比0.32和0.04都小。",ind:{id:"g5-u1-w1-q1",q:"0.46 × 0.3 的整数骨架是 46×3=138。正确的积是哪一个？",opts:["13.8","1.38","0.138","0.0138"],a:2,why:"0.46有2位小数，0.3有1位小数，一共3位；从138右边数3位得到0.138。又因为0.3<1，积必须小于0.46。",tag:"decimal-place-value"},repairLead:"刚才要修的不是乘法口诀，而是“位值缩小了几次”和“结果大小是否合理”。",repair:"把 0.46 看成 46÷100，把 0.3 看成 3÷10：积就是 138÷1000=0.138。最后再检查：乘0.3，结果应小于0.46。",transfer:{id:"g5-u1-w1-t1",q:"不列竖式先判断：2.4 × 0.08 的结果最可能落在哪个范围？",opts:["大于24","2.4到24之间","0.2到2.4之间","小于0.2"],a:3,why:"0.08略小于0.1，所以2.4×0.08略小于2.4×0.1=0.24；精确值0.192，确实小于0.2。",tag:"magnitude-estimation"}}
+    };
+    if(!DATA[child]){document.getElementById("chooser").classList.remove("hidden");return}
+    const C=DATA[child];document.body.dataset.child=child;document.getElementById("appShell").classList.remove("hidden");
+    const APP=child==="eddey"?"eddey-math-g4-u1-week1-v1":"kenton-math-g5-u1-week1-v1";
+    const LESSON_BLUEPRINT=Object.freeze({
+      appId:APP,
+      child,
+      source:C.source,
+      courseDate:"2026-09-01·第一周",
+      currentGap:C.gap,
+      observableOutcome:C.outcome,
+      knowledgeMechanism:child==="eddey"?"未知量的位置决定正推或逆运算":"整数骨架、位值缩放与数量级检查共同定位小数积",
+      primaryInteraction:child==="eddey"?"切换关系并遮住一个角色，观察算式实时反推":"切换因数小数位置，观察整数骨架和小数点同步变化",
+      audio:"not-applicable",
+      surprise:"math-invariant",
+      surpriseTrigger:"按北京时间每天稳定出现一条底层关系暗号",
+      phases:["teach","guided","recall","independent","repair","transfer"]
+    });
+    const DAILY_SURPRISES=Object.freeze(child==="eddey"?[
+      "先认整体和部分，再决定加还是减。",
+      "乘和除不是两套知识，它们是同一张关系图的正走与倒走。",
+      "未知量换位置，数字没变，运算方向会变。",
+      "验算就是沿关系图走回起点。",
+      "应用题先给数量分角色，符号自然会出现。"
+    ]:[
+      "小数点不是装饰，它记录每个数缩小了多少倍。",
+      "整数骨架负责算，位值系统负责放小数点。",
+      "乘小于1的数，积会比原数小，这是数量级护栏。",
+      "数位数只能定位，估算负责抓住荒唐答案。",
+      "先看0.1这个参照物，再判断积大概落在哪里。"
+    ]);
+    function beijingDateKey(){const parts=new Intl.DateTimeFormat("en-CA",{timeZone:"Asia/Shanghai",year:"numeric",month:"2-digit",day:"2-digit"}).formatToParts(new Date());const v=Object.fromEntries(parts.map(p=>[p.type,p.value]));return `${v.year}-${v.month}-${v.day}`}
+    function stableIndex(value,length){let hash=0x811c9dc5;new TextEncoder().encode(value).forEach(byte=>{hash^=byte;hash=Math.imul(hash,0x01000193)});return(hash>>>0)%length}
+    const dailySurpriseKey=`${LESSON_BLUEPRINT.appId}|${LESSON_BLUEPRINT.child}|${beijingDateKey()}`;
+    const dailySurprise=DAILY_SURPRISES[stableIndex(dailySurpriseKey,DAILY_SURPRISES.length)];
+    const KEY=`study:eddey:eddey-math-g4-u1-week1-v1:v1${testMode?":test":""}`;
+    let state=load();let phaseStart=Date.now();let pendingRepair=false;let repairKind="ind";let relation={mode:"add",a:37,b:25,hide:"whole"};let decimalIndex=3;
+    function empty(){return{version:2,child,panel:"teach",events:[],completed:{},repairs:0,updatedAt:null}}
+    function load(){try{const v=JSON.parse(localStorage.getItem(KEY)||"null");if(v&&v.version===2&&v.child===child)return v}catch(e){}return empty()}
+    function save(){state.updatedAt=new Date().toISOString();try{localStorage.setItem(KEY,JSON.stringify(state))}catch(e){}updateMetrics()}
+    const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+    $("#identity").textContent=C.name;$("#brandTitle").textContent=C.title;$("#heroTitle").textContent=C.title;$("#heroLead").textContent=C.lead;$("#sourceText").textContent=C.source;$("#outcome").textContent=C.outcome;$("#teachTitle").textContent=C.teachTitle;$("#teachLead").textContent=C.teachLead;$("#guidedTitle").textContent=C.guidedTitle;$("#guidedLead").textContent=C.guidedLead;$("#recallQuestion").textContent=C.recallQ;$("#recallAnswer").textContent=C.recallA;$("#repairLead").textContent=C.repairLead;$("#repairRule").innerHTML=`<b>只补这一条：</b>${C.repair}`;document.title=`${C.name}·${C.title}`;
+    const dailyButton=document.querySelector('[data-micro-surprise="daily"]');
+    dailyButton.onclick=()=>{const open=dailyButton.getAttribute("aria-expanded")!=="true";dailyButton.setAttribute("aria-expanded",String(open));$("#dailyText").textContent=open?`今日数学暗号：${dailySurprise}`:"今天藏着一条数学暗号 · 点开看看"};
+    function markPhase(p){if(["teach","guided","recall","independent","transfer"].includes(p))state.completed[p]=true;save()}
+    function show(p){$$('[data-panel]').forEach(x=>x.classList.toggle('active',x.dataset.panel===p));$$('[data-go]').forEach(x=>x.setAttribute('aria-current',x.dataset.go===p?'step':'false'));phaseStart=Date.now();state.panel=p;save();if(p!=="teach")$(`[data-panel="${p}"]`)?.scrollIntoView({behavior:"smooth",block:"start"});if(p==="complete")renderComplete()}
+    function updateMetrics(){const done=Object.keys(state.completed).filter(k=>state.completed[k]).length;$("#metricDone").textContent=`${Math.min(done,5)}/5`;$("#metricRight").textContent=state.events.filter(e=>e.ok).length;$("#metricRepair").textContent=state.repairs}
+    function log(item){state.events.push({ts:new Date().toISOString(),subject:"数学",lesson:"第一周",ms:Date.now()-phaseStart,...item});save()}
+    function relationHTML(interactive){
+      const whole=relation.mode==="add"?relation.a+relation.b:relation.a*relation.b;
+      const labels=relation.mode==="add"?["部分A","部分B","整体"]:["每份","份数","总量"];
+      const op=relation.mode==="add"?"+":"×";
+      const inverse=relation.mode==="add"?"−":"÷";
+      const eq=relation.hide==="whole"?`${relation.a} <span class="op">${op}</span> ${relation.b} = ?`:relation.hide==="a"?`${whole} <span class="op">${inverse}</span> ${relation.b} = ?`:`${whole} <span class="op">${inverse}</span> ${relation.a} = ?`;
+      let visual;
+      if(relation.mode==="add"){
+        visual=`<div class="relation-bars"><div class="parts"><div class="block ${relation.hide==="a"?"unknown":""}" style="flex:${relation.a}">${relation.a}<small>${labels[0]}</small></div><div class="block b ${relation.hide==="b"?"unknown":""}" style="flex:${relation.b}">${relation.b}<small>${labels[1]}</small></div></div><div class="brace">两个部分共同组成下面的整体</div><div class="whole ${relation.hide==="whole"?"unknown":""}">${whole} · ${labels[2]}</div></div>`;
+      }else{
+        const role=(key,value,label)=>`<div class="mini ${relation.hide===key?"unknown":""}"><small>${label}</small><strong>${relation.hide===key?"?":value}</strong></div>`;
+        const groups=relation.hide==="b"?`<span class="group-hidden">份数被遮住：不能靠数格子偷看</span>`:Array.from({length:relation.b},()=>`<span class="group-unit">${relation.hide==="a"?"?":relation.a}</span>`).join("");
+        visual=`<div class="mini-grid">${role("a",relation.a,labels[0])}${role("b",relation.b,labels[1])}${role("whole",whole,labels[2])}</div><div class="brace" style="margin-top:9px">每份 × 份数 = 总量；下面每一格代表一份</div><div class="group-run">${groups}</div>`;
+      }
+      const controls=interactive?`<div class="mode-row" style="margin-top:12px"><button class="mode" data-hide="whole" aria-pressed="${relation.hide==="whole"}">遮住${labels[2]}</button><button class="mode" data-hide="a" aria-pressed="${relation.hide==="a"}">遮住${labels[0]}</button><button class="mode" data-hide="b" aria-pressed="${relation.hide==="b"}">遮住${labels[1]}</button></div><div class="range-grid"><div class="range-card"><label>${labels[0]}<b>${relation.a}</b></label><input data-range="a" type="range" min="2" max="50" value="${relation.a}"></div><div class="range-card"><label>${labels[1]}<b>${relation.b}</b></label><input data-range="b" type="range" min="2" max="${relation.mode==="mul"?12:50}" value="${relation.b}"></div></div>`:"";
+      return `<div class="lab-title"><b>实时关系图</b><span>${relation.hide==="whole"?"正推：合成总量":"反推：用总量找缺口"}</span></div><div class="mode-row"><button class="mode" data-rel-mode="add" aria-pressed="${relation.mode==="add"}">加减关系</button><button class="mode" data-rel-mode="mul" aria-pressed="${relation.mode==="mul"}">乘除关系</button></div>${visual}<div class="equation">${eq}</div>${controls}`;
+    }
+    const decimalSets=[{a:"3.2",b:"4",places:1,result:"12.8",note:"只缩小10倍"},{a:"0.32",b:"4",places:2,result:"1.28",note:"只缩小100倍"},{a:"0.32",b:"0.4",places:3,result:"0.128",note:"合计缩小1000倍"},{a:"0.32",b:"0.04",places:4,result:"0.0128",note:"合计缩小10000倍"}];
+    function digitsHTML(value){const [l,r=""]=value.split(".");return [...l].map(d=>`<span class="digit">${d}</span>`).join("")+`<span class="dot-slot ${r?"hot":""}">.</span>`+[...r].map(d=>`<span class="digit">${d}</span>`).join("")}
+    function decimalHTML(interactive){const d=decimalSets[decimalIndex];return `<div class="lab-title"><b>小数乘法流水线</b><span>${d.note}</span></div>${interactive?`<div class="mode-row">${decimalSets.map((x,i)=>`<button class="mode" data-dec="${i}" aria-pressed="${i===decimalIndex}">${x.a}×${x.b}</button>`).join("")}</div>`:""}<div class="decimal-stage active"><div class="skeleton"><div class="number-card">${d.a}</div><span class="times">×</span><div class="number-card">${d.b}</div></div><div class="machine-line"></div><div class="count"><b>整数骨架固定：</b>32×4=128<br><b>恢复位值：</b>两个因数共有 ${d.places} 位小数，所以积缩小 ${10**d.places} 倍。</div><div class="digits" aria-label="结果 ${d.result}">${digitsHTML(d.result)}</div><div class="magnitude"><b>大小检查：</b>${Number(d.b)<1?`乘数 ${d.b}<1，所以积 ${d.result} 必须小于 ${d.a}。`:`乘数 ${d.b}>1，所以积 ${d.result} 大于 ${d.a}。`}</div></div>`}
+    function bindLab(root,interactive){if(child==="eddey"){$(root).innerHTML=relationHTML(interactive);$$(root+' [data-rel-mode]').forEach(b=>b.onclick=()=>{relation.mode=b.dataset.relMode;if(relation.mode==="mul"){relation.a=Math.min(relation.a,20);relation.b=Math.min(relation.b,9)}renderLabs()});$$(root+' [data-hide]').forEach(b=>b.onclick=()=>{relation.hide=b.dataset.hide;renderLabs()});$$(root+' [data-range]').forEach(i=>i.oninput=()=>{relation[i.dataset.range]=Number(i.value);renderLabs()})}else{$(root).innerHTML=decimalHTML(interactive);$$(root+' [data-dec]').forEach(b=>b.onclick=()=>{decimalIndex=Number(b.dataset.dec);renderLabs()})}}
+    function renderLabs(){bindLab("#teachLab",false);bindLab("#guidedLab",true);$("#guidedFeedback").innerHTML=child==="eddey"?`<b>观察句：</b>${relation.hide==="whole"?"未知的是总量，用正向合成。":"未知的是一个角色，用总量反推。"} 先认角色，运算符才不会猜。`:`<b>观察句：</b>整数骨架没有变，变化的是两个因数的位值。最后用积的大小做第二道保险。`;renderRepair()}
+    function renderRepair(){
+      const transfer=repairKind==="transfer";
+      $("#repairLead").textContent=transfer?"原计算没有变成难题，断点出在新情境下没有继续使用同一个底层检查。":C.repairLead;
+      const rule=transfer
+        ?(child==="eddey"?"总量168由“每盒24×盒数”组成。现在总量与每盒数已知，未知盒数，所以沿关系图反向走：总量÷每份。":"先建立0.1这个参照物。0.08比0.1更小，所以2.4×0.08一定比2.4×0.1=0.24更小；再精算确认数量级。")
+        :C.repair;
+      $("#repairRule").innerHTML=`<b>只补这一条：</b>${rule}`;
+      if(child==="eddey"){
+        $("#repairLab").innerHTML=transfer
+          ?`<div class="mini-grid"><div class="mini"><small>总量</small><strong>168</strong></div><div class="mini"><small>每份</small><strong>24</strong></div><div class="mini"><small>份数</small><strong>?</strong></div></div><div class="equation">168 ÷ 24 = 7</div>`
+          :`<div class="mini-grid"><div class="mini"><small>整体</small><strong>96</strong></div><div class="mini"><small>已知部分</small><strong>38</strong></div><div class="mini"><small>未知部分</small><strong>?</strong></div></div><div class="equation">96 − 38 = 58</div>`;
+      }else{
+        $("#repairLab").innerHTML=transfer
+          ?`<div class="count"><b>参照物：</b>2.4×0.1=0.24；而0.08&lt;0.1</div><div class="equation">2.4 × 0.08 = 0.192</div><div class="magnitude">因此结果比0.24更小，也就小于0.2。</div>`
+          :`<div class="count"><b>拆开位值：</b>0.46=46÷100；0.3=3÷10</div><div class="equation">138 ÷ 1000 = 0.138</div><div class="magnitude">0.3&lt;1，所以 0.46×0.3 必须小于0.46。</div>`;
+      }
+    }
+    function renderQuestion(kind){const q=C[kind];const prompt=kind==="ind"?"#indPrompt":"#transferPrompt";const choices=kind==="ind"?"#indChoices":"#transferChoices";const feedback=kind==="ind"?"#indFeedback":"#transferFeedback";$(prompt).innerHTML=`<b>${q.q}</b>`;$(feedback).className="";$(feedback).textContent="";if(kind==="ind"){$(choices).innerHTML=`<div class="written-answer"><label for="indInput">自己算，再输入答案</label><small>${q.inputHint}</small><input id="indInput" inputmode="decimal" autocomplete="off" aria-label="独立题数字答案"><button class="btn primary" id="submitWritten" type="button">提交我的答案</button></div>`;const submit=()=>answerWritten($("#indInput").value);$("#submitWritten").onclick=submit;$("#indInput").onkeydown=e=>{if(e.key==="Enter")submit()}}else{$(choices).innerHTML=q.opts.map((o,i)=>`<button class="choice" type="button" data-kind="${kind}" data-index="${i}">${String.fromCharCode(65+i)}. ${o}</button>`).join("");$$(choices+' .choice').forEach(b=>b.onclick=()=>answer(kind,Number(b.dataset.index),b))}}
+    function answerWritten(raw){const q=C.ind;const value=String(raw).trim().replace(/，/g,".");const ok=value!==""&&Number(value)===Number(q.answer);log({type:"independent",id:q.id,word:q.answer,hint:q.q,user:value,ok,tag:q.tag,explain:q.why,repaired:pendingRepair});const fb=$("#indFeedback");if(ok){fb.className="feedback ok";fb.innerHTML=`<b>这是自己算出来的，不是猜出来的。</b>${q.why}<div class="button-row"><button class="btn primary" type="button" data-inline-next>进入第5天迁移</button></div>`;fb.querySelector('[data-inline-next]').onclick=()=>{pendingRepair=false;markPhase("independent");show("transfer")}}else{fb.className="feedback bad";fb.textContent="先不公布答案。系统已经定位到断掉的知识步骤，马上做一次精准修复。";pendingRepair=true;repairKind="ind";renderRepair();setTimeout(()=>show("repair"),650)}}
+    function answer(kind,index,button){const q=C[kind];const ok=index===q.a;const fb=kind==="ind"?$("#indFeedback"):$("#transferFeedback");$$(kind==="ind"?"#indChoices .choice":"#transferChoices .choice").forEach(x=>x.classList.remove("correct","wrong"));button.classList.add(ok?"correct":"wrong");log({type:kind==="ind"?"independent":"transfer",id:q.id,word:q.opts[q.a],hint:q.q,user:q.opts[index],ok,tag:q.tag,explain:q.why,repaired:pendingRepair});if(ok){fb.className="feedback ok";fb.innerHTML=`<b>判断有依据。</b>${q.why}<div class="button-row"><button class="btn primary" type="button" data-inline-next>${kind==="ind"?"进入第5天迁移":"查看第一周掌握证据"}</button></div>`;fb.querySelector('[data-inline-next]').onclick=()=>{pendingRepair=false;markPhase(kind==="ind"?"independent":"transfer");show(kind==="ind"?"transfer":"complete")}}else{fb.className="feedback bad";fb.textContent="先不公布答案。系统已经定位到断掉的知识步骤，马上做一次精准修复。";pendingRepair=true;repairKind=kind;renderRepair();setTimeout(()=>show("repair"),650)}}
+    function renderComplete(){const indOk=state.events.some(e=>e.type==="independent"&&e.ok);const transOk=state.events.some(e=>e.type==="transfer"&&e.ok);const repaired=state.repairs>0;$("#doneText").innerHTML=`<b>掌握证据</b><br>① 能操作模型并说出变化原因；<br>② 原题独立判断：${indOk?"已通过":"未通过"}；<br>③ 新情境迁移：${transOk?"已通过":"未通过"}；<br>④ 错后精准修复：${repaired?"发生过并已回原题":"本周未触发"}。<br><br><b>家长只看一句：</b>${indOk&&transOk?"底层关系已形成初步通路，下周可进下一小节。":"不要加题量，先回模型把原因说清。"}`}
+    function exportData(download=true){const payload={child:child==="eddey"?"弟弟":"哥哥",alias:C.name,subject:"数学",app:APP,version:2,source:C.source,currentGap:C.gap,observableOutcome:C.outcome,events:state.events,completed:state.completed,repairs:state.repairs,exportedAt:new Date().toISOString()};const repeated={};state.events.filter(e=>!e.ok).forEach(e=>repeated[e.id]=(repeated[e.id]||0)+1);let md=`# ${C.name} 数学第一周学习记录\n\n- 材料：${C.source}\n- 可观察结果：${C.outcome}\n- 完成环节：${Object.keys(state.completed).join("、")||"暂无"}\n- 精准修复：${state.repairs} 次\n\n## 反复错的题\n${Object.entries(repeated).filter(([,n])=>n>=2).map(([id,n])=>`- ${id}：${n}次`).join("\n")||"- 暂无"}\n\n## 每关明细\n\n| 时间 | 环节 | 题目 | 作答 | 结果 | 错因 |\n|---|---|---|---|---|---|\n${state.events.map(e=>`| ${e.ts} | ${e.type} | ${e.hint} | ${e.user} | ${e.ok?"对":"错"} | ${e.tag} |`).join("\n")}\n\n## 原始 JSON\n\n\`\`\`json\n${JSON.stringify(payload,null,2)}\n\`\`\`\n`;if(download){const blob=new Blob([md],{type:"text/markdown"});const url=URL.createObjectURL(blob);const a=document.createElement("a");a.href=url;a.download=`${child}-math-week1-record.md`;a.click();URL.revokeObjectURL(url)}return{payload,md}}
+    $("#startBtn").onclick=()=>{markPhase("teach");show("teach")};$("#exportBtn").onclick=()=>exportData(true);$("#downloadBtn").onclick=()=>exportData(true);$$('[data-next]').forEach(b=>b.onclick=()=>{const current=b.closest('[data-panel]').dataset.panel;markPhase(current);show(b.dataset.next)});$$('[data-go]').forEach(b=>b.onclick=()=>show(b.dataset.go));$("#recallCard").onclick=()=>{const open=!$("#recallCard").classList.contains("open");$("#recallCard").classList.toggle("open",open);$("#recallCard").setAttribute("aria-expanded",String(open));if(open)markPhase("recall")};$("#hideAgain").onclick=()=>{$("#recallCard").classList.remove("open");$("#recallCard").setAttribute("aria-expanded","false")};$("#returnQuestion").onclick=()=>{state.repairs++;save();renderQuestion(repairKind);show(repairKind==="ind"?"independent":"transfer")};
+    renderLabs();renderQuestion("ind");renderQuestion("transfer");const allowedPanels=new Set(["teach","guided","recall","independent","repair","transfer","complete"]);show(allowedPanels.has(state.panel)?state.panel:"teach");window.__STUDY_PORTAL_TEST__={child,source:C.source,getState:()=>structuredClone(state),show,exportData:()=>exportData(false),reset:()=>{localStorage.removeItem(KEY);state=empty();save();location.reload()}};
+  })();
+  </script>
+</body>
+</html>

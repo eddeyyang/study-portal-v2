@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<script src="../assets/learning-sync.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Kenton 数学冲刺 · 四下</title>
+<style>
+:root{--red:#D63A2E;--redd:#A82A20;--gold:#F2B632;--golddk:#D89400;--ink:#3A2A1E;--paper:#FBF3E6;--line:#EBDCC4;
+--green:#3C9D54;--greenbg:#EAF7EC;--blue:#3170B5;--bluebg:#E8F0FA;--purple:#7B3FA0;--purplebg:#F3EAFA;--orange:#E8783C;}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+html,body{margin:0;padding:0;}
+body{font-family:'LXGW WenKai Screen','PingFang SC','Microsoft YaHei',sans-serif;
+background:radial-gradient(circle at 10% 6%,#FCE6B8 0,transparent 38%),radial-gradient(circle at 92% 96%,#F6D2C0 0,transparent 42%),var(--paper);
+color:var(--ink);min-height:100vh;padding-bottom:34px;}
+.wrap{max-width:740px;margin:0 auto;padding:14px;}
+.top{display:flex;align-items:center;gap:10px;padding:12px 4px 6px;}
+.top .badge{background:var(--red);color:#fff;font-weight:700;font-size:19px;padding:6px 13px;border-radius:13px 13px 13px 4px;box-shadow:0 4px 0 var(--redd);}
+.top h1{font-size:19px;margin:0;}
+.top .sub{font-size:12px;color:#a8946f;}
+.card{background:#fff;border:2px solid var(--line);border-radius:18px;padding:18px;margin:13px 0;box-shadow:0 6px 0 #efe1c8;}
+.card h2{margin:0 0 8px;font-size:19px;color:var(--redd);}
+.lead{font-size:14px;color:#7d6a4e;line-height:1.7;margin:0 0 10px;}
+.bigmenu{display:grid;grid-template-columns:1fr 1fr;gap:13px;}
+.bigtile{background:#fff;border:3px solid var(--line);border-radius:18px;padding:18px 12px;cursor:pointer;box-shadow:0 6px 0 #efe1c8;text-align:center;transition:transform .08s;position:relative;}
+.bigtile:active{transform:translateY(3px);}
+.bigtile .ic{font-size:40px;}
+.bigtile .nm{font-weight:700;font-size:18px;margin-top:6px;}
+.bigtile .ds{font-size:12px;color:#a08d6f;margin-top:4px;}
+.bigtile .pg{font-size:11px;color:#a08d6f;margin-top:6px;}
+.bigtile.done{border-color:var(--green);background:var(--greenbg);}
+.bigtile .star{position:absolute;top:8px;right:10px;font-size:15px;}
+.tcolor0{border-color:#bcd4ee;} .tcolor1{border-color:#cfe3c6;} .tcolor2{border-color:#ddc7ea;}
+.tcolor3{border-color:#f3d2a0;} .tcolor4{border-color:#f0c4bc;} .tcolor5{border-color:#c9c0ee;}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;background:var(--red);color:#fff;border:none;font-family:inherit;font-weight:700;font-size:16px;padding:12px 20px;border-radius:14px;box-shadow:0 4px 0 var(--redd);cursor:pointer;transition:transform .06s;}
+.btn:active{transform:translateY(3px);box-shadow:0 1px 0 var(--redd);}
+.btn.ghost{background:#fff;color:var(--redd);border:2px solid var(--red);box-shadow:0 4px 0 #f0d3cf;}
+.btn.green{background:var(--green);box-shadow:0 4px 0 #2c7a40;}
+.btn.blue{background:var(--blue);box-shadow:0 4px 0 #225182;}
+.btn.gray{background:#fff;color:#7d6a4e;border:2px solid var(--line);box-shadow:0 4px 0 #efe1c8;}
+.btn.big{font-size:19px;padding:15px 26px;}
+.btn.sm{font-size:14px;padding:9px 14px;}
+.row{display:flex;gap:9px;flex-wrap:wrap;align-items:center;margin-top:12px;justify-content:center;}
+.back{background:none;border:none;color:#a08d6f;font-size:15px;font-family:inherit;cursor:pointer;padding:8px 2px;font-weight:700;}
+.hidden{display:none!important;}
+/* 做题界面 */
+.qhead{display:flex;justify-content:space-between;align-items:center;font-size:13px;color:#a08d6f;font-weight:700;}
+.qhead .sc{color:var(--golddk);}
+.progbar{height:14px;background:#F0E6D2;border-radius:8px;margin:8px 0 4px;overflow:hidden;border:2px solid #E5D3Ae;}
+.progbar i{display:block;height:100%;background:linear-gradient(90deg,var(--gold),#F8D070);border-radius:6px;transition:width .3s;}
+.topic-chip{display:inline-block;background:var(--bluebg);color:var(--blue);font-size:12px;font-weight:700;padding:3px 10px;border-radius:20px;margin-bottom:4px;}
+.qtext{font-size:21px;font-weight:700;line-height:1.5;margin:14px 0 6px;color:var(--ink);}
+.qtext .big{font-size:27px;color:var(--redd);font-variant-numeric:tabular-nums;}
+.qsub{font-size:13px;color:#a08d6f;margin-bottom:8px;}
+/* 选择题 */
+.opts{display:grid;gap:10px;margin-top:6px;}
+.opts.two{grid-template-columns:1fr 1fr;}
+.opt{font-family:inherit;font-size:19px;font-weight:700;padding:15px 12px;border-radius:14px;border:2px solid var(--line);background:#fff;cursor:pointer;box-shadow:0 4px 0 #efe1c8;transition:transform .06s;color:var(--ink);text-align:center;word-break:break-word;}
+.opt:active{transform:translateY(2px);}
+.opt.right{background:var(--greenbg);border-color:var(--green);color:var(--green);box-shadow:0 4px 0 #bfe3c8;}
+.opt.wrong{background:#FBE6E2;border-color:var(--red);color:var(--redd);box-shadow:0 4px 0 #f0c4bc;}
+/* 填空(数字小键盘) */
+.numdisp{font-size:38px;font-weight:800;text-align:center;color:var(--redd);background:var(--bluebg);border:2px dashed var(--blue);border-radius:14px;padding:14px;margin:8px 0;min-height:66px;font-variant-numeric:tabular-nums;letter-spacing:1px;word-break:break-all;}
+.numdisp .ph{color:#9fb6d4;font-size:22px;font-weight:400;}
+.keypad{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-top:6px;}
+.key{font-family:inherit;font-size:24px;font-weight:800;padding:16px 0;border-radius:14px;border:2px solid var(--line);background:#fff;cursor:pointer;box-shadow:0 4px 0 #efe1c8;color:var(--ink);transition:transform .05s;}
+.key:active{transform:translateY(2px);}
+.key.dot{color:var(--blue);}
+.key.del{color:var(--orange);font-size:20px;}
+.key.go{background:var(--green);color:#fff;border-color:var(--green);box-shadow:0 4px 0 #2c7a40;font-size:19px;}
+.key.unit{font-size:18px;color:var(--purple);}
+.unitrow{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:8px;}
+.unitrow button{font-family:inherit;font-size:15px;font-weight:700;padding:9px 14px;border-radius:12px;border:2px solid var(--purple);background:var(--purplebg);color:var(--purple);cursor:pointer;}
+/* 反馈 */
+.fb{border-radius:14px;padding:12px 14px;margin-top:12px;font-size:15px;line-height:1.7;}
+.fb.ok{background:var(--greenbg);color:#2c7a40;border:2px solid var(--green);}
+.fb.no{background:#FBE6E2;color:var(--redd);border:2px solid var(--red);}
+.fb .ans{font-weight:800;font-size:18px;}
+.fb .why{margin-top:5px;color:#6b5a42;font-size:14px;}
+.lion{display:flex;gap:10px;align-items:flex-start;margin:10px 0;}
+.lion .face{font-size:32px;flex-shrink:0;}
+.lion .bubble{background:#fff;border:2px solid var(--line);border-radius:14px 14px 14px 2px;padding:10px 13px;font-size:15px;line-height:1.7;box-shadow:0 3px 0 #efe1c8;text-align:left;}
+.kou{background:linear-gradient(180deg,#FCEFCF,#FBE6B0);border:2px dashed var(--golddk);border-radius:13px;padding:11px 14px;margin:11px 0;color:#7a5800;font-weight:700;font-size:14.5px;line-height:1.8;text-align:center;}
+/* 小结 */
+.scorebig{font-size:54px;font-weight:800;text-align:center;margin:10px 0 2px;font-variant-numeric:tabular-nums;}
+.stars{font-size:30px;text-align:center;letter-spacing:4px;}
+.weakrow{display:flex;align-items:center;gap:8px;background:#fff;border:2px solid var(--line);border-radius:12px;padding:9px 12px;margin:7px 0;font-size:14px;}
+.weakrow .bar{flex:1;height:12px;background:#F0E6D2;border-radius:6px;overflow:hidden;}
+.weakrow .bar i{display:block;height:100%;border-radius:6px;}
+.wronglist{margin-top:6px;}
+.wrongitem{border-bottom:1px solid var(--line);padding:9px 2px;font-size:14px;line-height:1.6;}
+.wrongitem .q{font-weight:700;color:var(--ink);}
+.wrongitem .a{color:var(--green);font-weight:700;}
+.wrongitem .topic{font-size:11px;color:var(--blue);background:var(--bluebg);padding:1px 7px;border-radius:10px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top">
+    <div class="badge">Kenton</div>
+    <div style="flex:1"><h1>数学冲刺 · 四下</h1><div class="sub">小数 · 简便计算 · 混合运算 · 单位 · 应用题</div></div>
+    <div style="font-size:30px">🧮</div>
+  </div>
+
+  <div id="home">
+    <div class="card">
+      <div class="lion"><div class="face">🦁</div><div class="bubble">考前冲刺!选一关开始刷题，<b>每题做完马上告诉你对不对、为什么</b>。选择题点选项，填空题用下面的小键盘打数字——<b>不用打字</b>。一关做完看小结，哪个知识点弱就再练那一关!</div></div>
+      <div class="kou">建议：每天刷 2-3 关，错题会自动记进错题本 📒</div>
+    </div>
+    <div class="bigmenu" id="menu"></div>
+    <div class="card" style="margin-top:14px;cursor:pointer" onclick="showArchive()">
+      <div style="display:flex;align-items:center;gap:12px">
+        <div style="font-size:34px">📒</div>
+        <div style="flex:1"><div style="font-weight:700;font-size:18px;color:var(--redd)">错题本 · 学习档案</div>
+        <div style="font-size:13px;color:#7d6a4e" id="homestat">查看做过的题、反复错的知识点，可复制/下载给家长</div></div>
+        <div style="font-size:22px;color:#a08d6f">›</div>
+      </div>
+    </div>
+    <div class="card" style="text-align:center">
+      <button class="btn blue big" onclick="startMixExam()">🎯 综合冲刺卷（各知识点混合 20 题）</button>
+    </div>
+  </div>
+
+  <div id="quiz" class="hidden"></div>
+  <div id="summary" class="hidden"></div>
+  <div id="archive" class="hidden"></div>
+</div>
+<script>
+/* ===================== 题库 =====================
+   每题: {t:题面, type:'mc'|'fill', o:[选项](mc), a:正确(mc为索引/fill为字符串),
+          why:讲解, unit:填空时显示单位按钮组 }
+   所有答案均已逐题验算。 */
+const TOPICS=[
+ {key:'decimal', icon:'🔢', name:'小数意义与性质', color:0,
+  intro:'小数的读写、组成、小数点移动、求近似数、大小比较'},
+ {key:'addsub', icon:'➕', name:'小数加减法', color:1,
+  intro:'小数加法、减法、加减混合（注意小数点对齐）'},
+ {key:'law', icon:'⚡', name:'运算定律·简便计算', color:2,
+  intro:'加法/乘法交换律、结合律、乘法分配律，凑整简算'},
+ {key:'mixed', icon:'🧩', name:'四则混合运算', color:3,
+  intro:'带括号的整数四则混合运算，先乘除后加减'},
+ {key:'unit', icon:'📏', name:'单位换算', color:4,
+  intro:'长度、质量、面积、人民币、时间的单位换算'},
+ {key:'word', icon:'📝', name:'典型应用题', color:5,
+  intro:'归一、和差、行程、单价数量总价、植树等应用题'},
+];
+
+const BANK={
+/* ---------- 小数意义与性质 ---------- */
+decimal:[
+ {t:'0.6 表示 6 个（　）。',type:'mc',o:['十分之一','百分之一','一','十'],a:0,
+  why:'0.6 是 6 个 0.1，也就是 6 个十分之一。'},
+ {t:'三十点零五，写成小数是（　）。',type:'mc',o:['30.5','30.05','3.05','305'],a:1,
+  why:'整数部分三十=30，"零五"是十分位0、百分位5，所以是 30.05。'},
+ {t:'把 4.5 的小数点向右移动两位，得到（　）。',type:'mc',o:['0.045','45','450','4500'],a:2,
+  why:'小数点向右移两位=扩大到100倍，4.5×100=450。'},
+ {t:'0.30 化简后是（　）。',type:'mc',o:['0.3','0.03','3','0.30'],a:0,
+  why:'小数末尾的0去掉大小不变，0.30=0.3。'},
+ {t:'5.498 保留两位小数约是（　）。',type:'mc',o:['5.49','5.50','5.5','5.4'],a:1,
+  why:'看千分位8≥5，向百分位进1：5.49→5.50（保留两位要写成5.50）。'},
+ {t:'比较大小：3.08（　）3.1',type:'mc',o:['>','<','='],a:1,
+  why:'整数部分都是3，比十分位：0<1，所以3.08<3.1。'},
+ {t:'一个数由 2 个一、3 个十分之一、5 个百分之一组成，这个数是：',type:'fill',a:'2.35',
+  why:'2个一=2，3个0.1=0.3，5个0.01=0.05，合起来2.35。'},
+ {t:'把 0.7 扩大到它的 100 倍是：',type:'fill',a:'70',
+  why:'0.7×100=70（小数点向右移两位）。'},
+],
+/* ---------- 小数加减法 ---------- */
+addsub:[
+ {t:'3.6 + 2.5 = ?',type:'fill',a:'6.1',
+  why:'3.6+2.5，先6+5=11进位，3+2+1=6，得6.1。'},
+ {t:'7.4 − 2.8 = ?',type:'fill',a:'4.6',
+  why:'7.4−2.8，4不够减8向个位借1：14−8=6，6−2=4，得4.6。'},
+ {t:'5 − 1.3 = ?',type:'fill',a:'3.7',
+  why:'5看成5.0，5.0−1.3=3.7。'},
+ {t:'0.45 + 0.55 = ?',type:'fill',a:'1',
+  why:'0.45+0.55=1.00=1。'},
+ {t:'12.6 + 7.84 = ?',type:'fill',a:'20.44',
+  why:'小数点对齐：12.60+7.84=20.44。'},
+ {t:'10 − 3.65 = ?',type:'fill',a:'6.35',
+  why:'10.00−3.65=6.35。'},
+ {t:'8.3 − 1.5 − 2.8 = ?',type:'fill',a:'4',
+  why:'8.3−1.5=6.8，6.8−2.8=4。'},
+ {t:'下面哪个竖式做减法时小数点对齐正确？',type:'mc',
+  o:['个位对个位、小数点对齐','把右边末尾对齐','整数部分随便对'],a:0,
+  why:'小数加减法必须小数点对齐（相同数位对齐），不是末尾对齐。'},
+],
+/* ---------- 运算定律·简便计算 ---------- */
+law:[
+ {t:'25 × 4 = ?（先记住这个常用凑整）',type:'fill',a:'100',
+  why:'25×4=100，简便计算里最常用的凑整。'},
+ {t:'125 × 8 = ?',type:'fill',a:'1000',
+  why:'125×8=1000，另一个常用凑整。'},
+ {t:'用简便方法：25 × 17 × 4 = ?',type:'fill',a:'1700',
+  why:'交换+结合：25×4=100，100×17=1700。'},
+ {t:'用简便方法：99 + 47 = ?（把99看成100−1）',type:'fill',a:'146',
+  why:'99+47=100+47−1=147−1=146。'},
+ {t:'用乘法分配律：102 × 25 = ?',type:'fill',a:'2550',
+  why:'102×25=(100+2)×25=2500+50=2550。'},
+ {t:'用乘法分配律：35 × 99 + 35 = ?',type:'fill',a:'3500',
+  why:'35×99+35×1=35×(99+1)=35×100=3500。'},
+ {t:'45 + 38 + 55 = ? 先把哪两个数相加最简便？',type:'mc',
+  o:['45 和 55（凑成100）','38 和 55','45 和 38'],a:0,
+  why:'45+55=100，再+38=138，用加法交换律凑整。'},
+ {t:'88 × 125 = ?（提示：88=8×11）',type:'fill',a:'11000',
+  why:'88×125=8×11×125=(8×125)×11=1000×11=11000。'},
+],
+/* ---------- 四则混合运算 ---------- */
+mixed:[
+ {t:'120 − 30 × 2 = ?',type:'fill',a:'60',
+  why:'先算乘法：30×2=60，再 120−60=60。'},
+ {t:'(48 + 32) ÷ 8 = ?',type:'fill',a:'10',
+  why:'先算括号：48+32=80，再 80÷8=10。'},
+ {t:'200 − 56 ÷ 7 = ?',type:'fill',a:'192',
+  why:'先算除法：56÷7=8，再 200−8=192。'},
+ {t:'(15 + 25) × 6 = ?',type:'fill',a:'240',
+  why:'先括号：15+25=40，再 40×6=240。'},
+ {t:'360 ÷ (4 × 9) = ?',type:'fill',a:'10',
+  why:'先算括号里的乘法：4×9=36，再 360÷36=10。'},
+ {t:'25 × 8 − 100 = ?',type:'fill',a:'100',
+  why:'先乘法：25×8=200，再 200−100=100。'},
+ {t:'下面运算顺序对的是：3 + 4 × 5',type:'mc',
+  o:['先算 4×5，再加 3','先算 3+4，再乘 5','从左往右算'],a:0,
+  why:'没有括号时先乘除后加减，先4×5=20，再+3=23。'},
+ {t:'(100 − 40) ÷ (2 + 3) = ?',type:'fill',a:'12',
+  why:'两个括号先算：100−40=60，2+3=5，再 60÷5=12。'},
+],
+/* ---------- 单位换算 ---------- */
+unit:[
+ {t:'3 米 = （　）厘米',type:'fill',a:'300',unit:'len',
+  why:'1米=100厘米，3米=300厘米。'},
+ {t:'2500 克 = （　）千克',type:'fill',a:'2.5',unit:'mass',
+  why:'1千克=1000克，2500÷1000=2.5千克。'},
+ {t:'5 千米 = （　）米',type:'fill',a:'5000',unit:'len',
+  why:'1千米=1000米，5千米=5000米。'},
+ {t:'1 米 = （　）分米',type:'fill',a:'10',unit:'len',
+  why:'1米=10分米。'},
+ {t:'3 元 5 角 = （　）元（写成小数）',type:'fill',a:'3.5',unit:'money',
+  why:'1元=10角，5角=0.5元，3元5角=3.5元。'},
+ {t:'1 时 = （　）分',type:'fill',a:'60',unit:'time',
+  why:'1小时=60分钟。'},
+ {t:'8 角 = （　）元（写成小数）',type:'fill',a:'0.8',unit:'money',
+  why:'1元=10角，8角=8÷10=0.8元。'},
+ {t:'1 平方米 = （　）平方分米',type:'mc',o:['10','100','1000'],a:1,
+  why:'1平方米=100平方分米（边长10分米，10×10=100）。'},
+],
+/* ---------- 典型应用题 ---------- */
+word:[
+ {t:'买 3 支同样的钢笔花了 24 元，每支多少元？',type:'fill',a:'8',unit:'money',
+  why:'总价÷数量=单价：24÷3=8元。'},
+ {t:'一本书 36 页，已经看了 8 页，剩下多少页？',type:'fill',a:'28',
+  why:'36−8=28页。'},
+ {t:'小车每小时行 60 千米，4 小时行多少千米？',type:'fill',a:'240',
+  why:'速度×时间=路程：60×4=240千米。'},
+ {t:'妈妈买苹果用了 12.5 元，香蕉用了 7.5 元，一共多少元？',type:'fill',a:'20',unit:'money',
+  why:'12.5+7.5=20元。'},
+ {t:'一根绳子长 10 米，剪去 3.6 米，还剩多少米？',type:'fill',a:'6.4',unit:'len',
+  why:'10−3.6=6.4米。'},
+ {t:'4 个班共种树 96 棵，平均每班种多少棵？',type:'fill',a:'24',
+  why:'96÷4=24棵。'},
+ {t:'每盒装 8 块饼干，要装 56 块，需要多少个盒子？',type:'fill',a:'7',
+  why:'56÷8=7个盒子。'},
+ {t:'一件衣服原价 80 元，现价 65.5 元，便宜了多少元？',type:'fill',a:'14.5',unit:'money',
+  why:'80−65.5=14.5元。'},
+],
+};
+
+/* 单位按钮组（填空题快捷输入单位提示，可选） */
+const UNITS={
+ len:['米','厘米','分米','千米'],
+ mass:['千克','克'],
+ money:['元','角'],
+ time:['时','分'],
+};
+
+/* ===================== 状态 ===================== */
+const SUB='数学';
+const CHILD='哥哥';
+const KID='kenton';
+const AKEY='mx_archive_'+CHILD+'_math3b';
+
+const G={topicKey:null,topicName:'',items:[],idx:0,correct:0,answered:false,
+  startTime:0,results:[],input:'',isMix:false};
+
+function show(id){['home','quiz','summary','archive'].forEach(x=>document.getElementById(x).classList.add('hidden'));
+  document.getElementById(id).classList.remove('hidden');window.scrollTo(0,0);}
+function goHome(){renderMenu();refreshHomeStat();show('home');}
+
+/* ===================== 归档 + 云端 ===================== */
+function loadArchive(){try{return JSON.parse(localStorage.getItem(AKEY))||{child:CHILD,subject:SUB,events:[]};}catch(e){return{child:CHILD,subject:SUB,events:[]};}}
+function saveArchive(a){try{localStorage.setItem(AKEY,JSON.stringify(a));}catch(e){}}
+function logEvent(ev){const a=loadArchive();a.events.push(ev);saveArchive(a);cloudUpload(ev);}
+/* 云端上传：端点缺失/断网/出错都静默，绝不影响使用（fire-and-forget） */
+function cloudUpload(ev){
+  try{
+    var endpoint=null;
+    try{endpoint=localStorage.getItem('eb_endpoint');}catch(e){}
+    if(!endpoint)return;
+    var topic=ev.topic||'';
+    var items=(ev.items||[]).map(function(it){
+      return {kid:KID,subject:SUB,topic:topic,
+        item:(it.word!=null?it.word:''),
+        ok:!!it.ok,hint:(it.hint!=null?it.hint:'')};
+    });
+    if(!items.length)return;
+    fetch(endpoint,{method:'POST',headers:{'Content-Type':'text/plain'},body:JSON.stringify(items)})
+      .then(function(){}).catch(function(){});
+  }catch(e){}
+}
+function fmtDate(ts){const d=new Date(ts);const p=n=>(n<10?'0':'')+n;return d.getFullYear()+'-'+p(d.getMonth()+1)+'-'+p(d.getDate())+' '+p(d.getHours())+':'+p(d.getMinutes());}
+/* 聚合：按知识点统计累计对错 */
+function aggregateTopics(events){
+  const m={};
+  events.forEach(ev=>{(ev.items||[]).forEach(it=>{
+    const key=ev.topic||'其它';
+    if(!m[key])m[key]={topic:key,ok:0,wrong:0};
+    if(it.ok)m[key].ok++;else m[key].wrong++;
+  });});
+  return m;
+}
+function refreshHomeStat(){
+  const a=loadArchive();const el=document.getElementById('homestat');if(!el)return;
+  if(!a.events.length){el.textContent='还没有记录——做完一关就会自动归档进错题本';return;}
+  let wrong=0,total=0;a.events.forEach(ev=>{(ev.items||[]).forEach(it=>{total++;if(!it.ok)wrong++;});});
+  el.innerHTML='共做 <b>'+total+'</b> 题 ｜ 错 <b style="color:var(--red)">'+wrong+'</b> 题 ｜ 点这里看错题/导出';
+}
+
+/* ===================== 首页关卡 ===================== */
+function topicBest(key){
+  const a=loadArchive();let best=null;
+  a.events.forEach(ev=>{if(ev.topic===key&&ev.total){const pct=Math.round((ev.total-ev.wrong)/ev.total*100);if(best===null||pct>best)best=pct;}});
+  return best;
+}
+function starStr(pct){if(pct===null)return '';if(pct>=90)return '⭐⭐⭐';if(pct>=70)return '⭐⭐';if(pct>=1)return '⭐';return '';}
+function renderMenu(){
+  const m=document.getElementById('menu');
+  m.innerHTML=TOPICS.map(tp=>{
+    const best=topicBest(tp.name);
+    const star=starStr(best);
+    return '<div class="bigtile tcolor'+tp.color+(best!==null&&best>=90?' done':'')+'" onclick="startTopic(\''+tp.key+'\')">'+
+      (star?'<div class="star">'+star+'</div>':'')+
+      '<div class="ic">'+tp.icon+'</div>'+
+      '<div class="nm">'+tp.name+'</div>'+
+      '<div class="ds">'+BANK[tp.key].length+' 题</div>'+
+      (best!==null?'<div class="pg">最好 '+best+'% 正确</div>':'<div class="pg">还没做过</div>')+
+      '</div>';
+  }).join('');
+}
+
+/* ===================== 开始做题 ===================== */
+function startTopic(key){
+  const tp=TOPICS.find(t=>t.key===key);
+  G.topicKey=key;G.topicName=tp.name;G.isMix=false;
+  G.items=BANK[key].map(q=>Object.assign({_topic:tp.name},q));
+  G.idx=0;G.correct=0;G.results=[];G.startTime=Date.now();
+  renderQuiz();show('quiz');
+}
+function startMixExam(){
+  G.topicKey='mix';G.topicName='综合冲刺卷';G.isMix=true;
+  // 每个知识点抽几题，凑约20题，打乱
+  let pool=[];
+  TOPICS.forEach(tp=>{
+    const qs=shuffle(BANK[tp.key]).slice(0,4).map(q=>Object.assign({_topic:tp.name},q));
+    pool=pool.concat(qs);
+  });
+  pool=shuffle(pool).slice(0,20);
+  G.items=pool;
+  G.idx=0;G.correct=0;G.results=[];G.startTime=Date.now();
+  renderQuiz();show('quiz');
+}
+function shuffle(a){a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));const tmp=a[i];a[i]=a[j];a[j]=tmp;}return a;}
+
+function renderQuiz(){
+  const b=document.getElementById('quiz');
+  const it=G.items[G.idx];
+  G.answered=false;G.input='';
+  const pct=Math.round(G.idx/G.items.length*100);
+  let html='<button class="back" onclick="confirmQuit()">← 退出本关</button>'+
+   '<div class="card">'+
+    '<div class="qhead"><span>第 '+(G.idx+1)+' / '+G.items.length+' 题</span><span class="sc">⭐ 已对 '+G.correct+'</span></div>'+
+    '<div class="progbar"><i style="width:'+pct+'%"></i></div>'+
+    (G.isMix?'<div class="topic-chip">'+it._topic+'</div>':'')+
+    '<div class="qtext">'+it.t+'</div>';
+  if(it.type==='mc'){
+    const two=it.o.length===3||it.o.every(x=>(''+x).length<=4);
+    html+='<div class="opts'+(it.o.length<=3&&it.o.every(x=>(''+x).length<=3)?' two':'')+'" id="opts">'+
+      it.o.map((x,i)=>'<button class="opt" onclick="answerMC('+i+')">'+x+'</button>').join('')+'</div>';
+  }else{
+    html+='<div class="qsub">用下面的小键盘打答案，打完点 ✅</div>'+
+      '<div class="numdisp" id="disp"><span class="ph">在这里输入</span></div>'+
+      (it.unit&&UNITS[it.unit]?'<div class="unitrow">'+UNITS[it.unit].map(u=>'<button onclick="addUnit(\''+u+'\')">'+u+'</button>').join('')+'</div>':'')+
+      '<div class="keypad">'+
+       '<button class="key" onclick="kp(\'7\')">7</button><button class="key" onclick="kp(\'8\')">8</button><button class="key" onclick="kp(\'9\')">9</button>'+
+       '<button class="key" onclick="kp(\'4\')">4</button><button class="key" onclick="kp(\'5\')">5</button><button class="key" onclick="kp(\'6\')">6</button>'+
+       '<button class="key" onclick="kp(\'1\')">1</button><button class="key" onclick="kp(\'2\')">2</button><button class="key" onclick="kp(\'3\')">3</button>'+
+       '<button class="key dot" onclick="kp(\'.\')">·</button><button class="key" onclick="kp(\'0\')">0</button><button class="key del" onclick="kpDel()">⌫</button>'+
+      '</div>'+
+      '<div class="row"><button class="btn green big" style="width:100%" onclick="answerFill()">✅ 确定</button></div>';
+  }
+  html+='<div id="fb"></div></div>';
+  b.innerHTML=html;
+}
+
+/* 选择题作答 */
+function answerMC(i){
+  if(G.answered)return;G.answered=true;
+  const it=G.items[G.idx];
+  const ok=(i===it.a);
+  const btns=document.querySelectorAll('#opts .opt');
+  btns.forEach(b=>b.style.pointerEvents='none');
+  if(btns[i])btns[i].classList.add(ok?'right':'wrong');
+  if(!ok&&btns[it.a])btns[it.a].classList.add('right');
+  recordAndFeedback(ok,it,it.o[it.a]);
+}
+/* 填空小键盘 */
+function kp(c){
+  if(G.answered)return;
+  if(c==='.'&&G.input.indexOf('.')>=0)return; // 只允许一个小数点
+  if(G.input.length>=12)return;
+  G.input+=c;updateDisp();
+}
+function kpDel(){if(G.answered)return;G.input=G.input.slice(0,-1);updateDisp();}
+function addUnit(u){if(G.answered)return;G.input+=u;updateDisp();}
+function updateDisp(){
+  const d=document.getElementById('disp');if(!d)return;
+  d.innerHTML=G.input?G.input:'<span class="ph">在这里输入</span>';
+}
+function normNum(s){
+  // 去掉单位文字、空格，规范化数字字符串以便比较（去末尾0、统一小数）
+  s=(''+s).replace(/[^0-9.\-]/g,'').trim();
+  if(s===''||s==='.')return null;
+  let n=Number(s);
+  if(isNaN(n))return null;
+  return n;
+}
+function answerFill(){
+  if(G.answered)return;
+  const it=G.items[G.idx];
+  if(G.input.trim()===''){const d=document.getElementById('disp');if(d){d.style.animation='none';void d.offsetWidth;d.style.animation='';}return;}
+  G.answered=true;
+  const got=normNum(G.input);
+  const exp=normNum(it.a);
+  const ok=(got!==null&&exp!==null&&Math.abs(got-exp)<1e-9);
+  recordAndFeedback(ok,it,it.a);
+}
+function recordAndFeedback(ok,it,correctShown){
+  if(ok)G.correct++;
+  G.results.push({word:it.t,hint:(''+it.a),ok:ok,topic:it._topic,why:it.why,shown:correctShown});
+  const fb=document.getElementById('fb');
+  if(fb){
+    if(ok){
+      ding();
+      fb.innerHTML='<div class="fb ok">✅ 答对了！<div class="why">'+it.why+'</div></div>';
+    }else{
+      fb.innerHTML='<div class="fb no">❌ 正确答案：<span class="ans">'+correctShown+'</span><div class="why">'+it.why+'</div></div>';
+    }
+    fb.innerHTML+='<div class="row"><button class="btn '+(G.idx<G.items.length-1?'green':'blue')+' big" onclick="nextQ()">'+(G.idx<G.items.length-1?'下一题 →':'看小结 🎉')+'</button></div>';
+  }
+}
+function nextQ(){
+  if(G.idx<G.items.length-1){G.idx++;renderQuiz();window.scrollTo(0,0);}
+  else{finishTopic();}
+}
+function confirmQuit(){
+  if(G.results.length&&!confirm('确定退出本关吗？已做的题不会保存到错题本。'))return;
+  goHome();
+}
+
+/* ===================== 小结 ===================== */
+function finishTopic(){
+  const total=G.items.length,wrong=total-G.correct;
+  // 归档
+  logEvent({ts:Date.now(),topic:G.topicName,isMix:G.isMix,total:total,wrong:wrong,
+    durationSec:Math.round((Date.now()-G.startTime)/1000),
+    items:G.results.map(r=>({word:r.word,hint:r.hint,ok:r.ok,topic:r.topic}))});
+
+  const pct=Math.round(G.correct/total*100);
+  const stars=pct>=90?'⭐⭐⭐':pct>=70?'⭐⭐':pct>=50?'⭐':'☆';
+  const cheer=pct>=90?'太棒了，几乎全对！':pct>=70?'不错，再练练弱项就更稳！':pct>=50?'有进步，错的题要重点看！':'别灰心，把错题再做一遍就会了！';
+
+  // 各知识点弱项统计（综合卷才显示分知识点）
+  const byTopic={};
+  G.results.forEach(r=>{if(!byTopic[r.topic])byTopic[r.topic]={ok:0,wrong:0};if(r.ok)byTopic[r.topic].ok++;else byTopic[r.topic].wrong++;});
+
+  const wrongs=G.results.filter(r=>!r.ok);
+
+  let html='<button class="back" onclick="goHome()">← 返回首页</button>'+
+   '<div class="card" style="text-align:center">'+
+    '<h2>🎉 '+G.topicName+' · 完成</h2>'+
+    '<div class="scorebig" style="color:'+(wrong===0?'var(--green)':'var(--redd)')+'">'+G.correct+' / '+total+'</div>'+
+    '<div class="stars">'+stars+'</div>'+
+    '<div class="kou">'+cheer+'（正确率 '+pct+'%）</div>';
+
+  // 弱项条（综合卷或题目跨多个知识点时显示）
+  const topicKeys=Object.keys(byTopic);
+  if(topicKeys.length>1){
+    html+='<div style="text-align:left;margin-top:10px"><div style="font-weight:700;color:var(--redd);margin-bottom:6px">📊 各知识点掌握情况</div>';
+    topicKeys.forEach(tk=>{
+      const d=byTopic[tk];const tt=d.ok+d.wrong;const p=Math.round(d.ok/tt*100);
+      const col=p>=90?'var(--green)':p>=60?'var(--gold)':'var(--red)';
+      html+='<div class="weakrow"><span style="width:120px;flex-shrink:0">'+tk+'</span>'+
+        '<span class="bar"><i style="width:'+p+'%;background:'+col+'"></i></span>'+
+        '<span style="width:54px;text-align:right;font-weight:700;color:'+col+'">'+d.ok+'/'+tt+'</span></div>';
+    });
+    html+='</div>';
+  }
+  html+='</div>';
+
+  // 错题回看
+  if(wrongs.length){
+    html+='<div class="card"><h2 style="color:var(--red)">📒 这次的错题（已记进错题本）</h2><div class="wronglist">'+
+      wrongs.map(r=>'<div class="wrongitem">'+
+        (G.isMix?'<span class="topic">'+r.topic+'</span> ':'')+
+        '<div class="q">'+r.word+'</div>'+
+        '<div>正确答案：<span class="a">'+r.shown+'</span></div>'+
+        '<div style="color:#6b5a42;font-size:13px;margin-top:2px">'+r.why+'</div>'+
+      '</div>').join('')+'</div></div>';
+  }else{
+    html+='<div class="card"><div class="kou">这一关全对，没有错题！🏆</div></div>';
+  }
+
+  html+='<div class="card" style="text-align:center"><div class="row">'+
+    (G.isMix?'':'<button class="btn green big" onclick="startTopic(\''+G.topicKey+'\')">🔁 再做一遍这关</button>')+
+    '<button class="btn blue big" onclick="goHome()">🏠 返回选关</button>'+
+    '</div></div>';
+
+  document.getElementById('summary').innerHTML=html;
+  show('summary');
+}
+
+/* ===================== 错题本视图 ===================== */
+function showArchive(){
+  const a=loadArchive();const b=document.getElementById('archive');
+  const tagg=aggregateTopics(a.events);
+  const weak=Object.values(tagg).filter(t=>t.wrong>0).sort((x,y)=>y.wrong-x.wrong);
+  const evs=a.events.slice().reverse();
+  // 收集错题（去重显示最近）
+  const wrongQs=[];const seen={};
+  evs.forEach(ev=>{(ev.items||[]).forEach(it=>{if(!it.ok&&!seen[it.word]){seen[it.word]=1;wrongQs.push({q:it.word,a:it.hint,topic:ev.topic});}});});
+
+  let html='<button class="back" onclick="goHome()">← 返回</button>'+
+   '<div class="card"><h2>📒 '+CHILD+' 数学错题本</h2>'+
+    '<div class="lead">共做 '+a.events.length+' 关。下面数据可<b>一键复制</b>发家长，或<b>下载</b>保存。</div>'+
+    '<div class="row" style="justify-content:flex-start">'+
+      '<button class="btn sm blue" onclick="copyArchive()">📋 一键复制</button>'+
+      '<button class="btn sm green" onclick="downloadArchive()">📥 下载存档</button>'+
+      '<button class="btn sm gray" onclick="clearArchive()">🗑 清空</button></div></div>';
+
+  if(weak.length){
+    html+='<div class="card"><h2 style="color:var(--red)">🔴 薄弱知识点（按错题多少排）</h2>';
+    weak.forEach(t=>{const tt=t.ok+t.wrong;const p=Math.round(t.ok/tt*100);const col=p>=90?'var(--green)':p>=60?'var(--gold)':'var(--red)';
+      html+='<div class="weakrow"><span style="width:130px;flex-shrink:0">'+t.topic+'</span>'+
+        '<span class="bar"><i style="width:'+p+'%;background:'+col+'"></i></span>'+
+        '<span style="width:60px;text-align:right;font-weight:700;color:'+col+'">'+t.ok+'/'+tt+'</span></div>';
+    });
+    html+='</div>';
+  }
+
+  if(wrongQs.length){
+    html+='<div class="card"><h2>❌ 做错过的题</h2><div class="wronglist">'+
+      wrongQs.map(w=>'<div class="wrongitem"><span class="topic">'+w.topic+'</span> '+
+        '<div class="q">'+w.q+'</div><div>正确答案：<span class="a">'+w.a+'</span></div></div>').join('')+
+      '</div></div>';
+  }
+
+  html+='<div class="card"><h2>📅 练习记录</h2>'+
+    (evs.length?evs.map(ev=>'<div style="border-bottom:1px solid var(--line);padding:9px 0">'+
+      '<div style="font-weight:700">'+(ev.isMix?'🎯综合卷':'📘'+ev.topic)+
+        '<span style="float:right;color:#a08d6f;font-size:12px">'+fmtDate(ev.ts)+'</span></div>'+
+      '<div style="font-size:13px;color:#7d6a4e;margin-top:3px">'+(ev.total-ev.wrong)+'/'+ev.total+' 对 ｜ 用时 '+ev.durationSec+'秒'+
+        (ev.wrong?' ｜ 错 <span style="color:var(--red)">'+ev.wrong+'</span> 题':' ｜ 全对 ✓')+'</div></div>'
+      ).join(''):'<div class="lead">还没有记录</div>')+'</div>';
+
+  html+='<div class="card hidden" id="copybox"><h2>复制下面全部文字</h2>'+
+    '<textarea id="copytext" style="width:100%;height:220px;font-size:12px;font-family:monospace;border:2px solid var(--line);border-radius:10px;padding:10px"></textarea></div>';
+
+  b.innerHTML=html;show('archive');
+}
+function archiveText(){
+  const a=loadArchive();const tagg=aggregateTopics(a.events);
+  const weak=Object.values(tagg).sort((x,y)=>y.wrong-x.wrong);
+  let t='【'+CHILD+' · 数学(四下)冲刺学习档案】导出时间:'+fmtDate(Date.now())+'\n练习总关数:'+a.events.length+'\n\n';
+  t+='== 各知识点掌握(对/总) ==\n';
+  t+=weak.length?weak.map(w=>{const tt=w.ok+w.wrong;return w.topic+': '+w.ok+'/'+tt+' 对'+(w.wrong?' (错'+w.wrong+')':'');}).join('\n'):'(无)';
+  t+='\n\n== 做错过的题 ==\n';
+  const evs=a.events.slice().reverse();const seen={};let wl=[];
+  evs.forEach(ev=>{(ev.items||[]).forEach(it=>{if(!it.ok&&!seen[it.word]){seen[it.word]=1;wl.push('['+ev.topic+'] '+it.word+' → 正确:'+it.hint);}});});
+  t+=wl.length?wl.join('\n'):'(无)';
+  t+='\n\n== 每关明细 ==\n';
+  a.events.forEach(ev=>{t+='\n['+fmtDate(ev.ts)+'] '+(ev.isMix?'综合卷':ev.topic)+' ｜ '+(ev.total-ev.wrong)+'/'+ev.total+'对 ｜ '+ev.durationSec+'秒';});
+  t+='\n\n== 原始数据(JSON) ==\n'+JSON.stringify(a);
+  return t;
+}
+function copyArchive(){
+  const txt=archiveText();
+  const box=document.getElementById('copybox');const ta=document.getElementById('copytext');
+  if(box&&ta){box.classList.remove('hidden');ta.value=txt;ta.focus();ta.select();}
+  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(txt).then(function(){}).catch(function(){});}
+}
+function downloadArchive(){
+  const txt=archiveText();const blob=new Blob([txt],{type:'text/plain;charset=utf-8'});
+  const url=URL.createObjectURL(blob);const a=document.createElement('a');
+  a.href=url;a.download=CHILD+'数学错题档案.txt';
+  document.body.appendChild(a);a.click();document.body.removeChild(a);
+  setTimeout(function(){URL.revokeObjectURL(url);},1000);
+}
+function clearArchive(){if(confirm('确定清空 '+CHILD+' 的数学错题记录吗？不能撤销。')){localStorage.removeItem(AKEY);showArchive();}}
+
+/* 答对提示音 */
+function ding(){try{const ctx=new(window.AudioContext||window.webkitAudioContext)();const o=ctx.createOscillator();const g=ctx.createGain();o.connect(g);g.connect(ctx.destination);o.frequency.value=880;g.gain.setValueAtTime(0.15,ctx.currentTime);g.gain.exponentialRampToValueAtTime(0.001,ctx.currentTime+0.3);o.start();o.stop(ctx.currentTime+0.3);}catch(e){}}
+
+/* ===================== 启动 ===================== */
+window.addEventListener('load',function(){renderMenu();refreshHomeStat();});
+</script>
+</body>
+</html>

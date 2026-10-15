@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#ffffff">
+<title>赛考备考看板 · 家庭学习门户</title>
+<link rel="stylesheet" href="assets/styles.css">
+<script src="assets/learning-sync.js"></script>
+<style>
+  /* 家长备考看板：白底、清晰、可打印（覆盖糖果风，专注信息） */
+  body { background: #f4f6fa; color: #1f2733; }
+  .wrap { max-width: 880px; }
+  .ep-head { display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:14px; }
+  .ep-head h1 { font-size:22px; margin:0; flex:1; }
+  .btn { border:1px solid #d3d9e3; background:#fff; color:#1f2733; border-radius:10px;
+         padding:8px 14px; font-size:14px; cursor:pointer; text-decoration:none; }
+  .btn:active { transform:scale(.98); }
+  .card { background:#fff; border:1px solid #e6eaf0; border-radius:14px; box-shadow:none;
+          padding:18px; margin-bottom:16px; }
+  .card h2 { font-size:17px; margin:0 0 12px; display:flex; align-items:center; gap:8px; }
+  .muted { color:#6b7585; }
+  .small { font-size:13px; }
+  .countdown { display:flex; gap:16px; flex-wrap:wrap; align-items:baseline; }
+  .countdown .big { font-size:40px; font-weight:800; color:#2563eb; line-height:1; }
+  .pill { display:inline-block; font-size:12px; padding:3px 10px; border-radius:999px;
+          background:#eef2f9; color:#3b4658; font-weight:700; }
+  .pill.k { background:#e3fbff; color:#0a6b78; }
+  .pill.e { background:#fff0e6; color:#a8501f; }
+  .pill.warn { background:#fff3cd; color:#7a5b00; }
+  .pill.ok { background:#d7f5dd; color:#1c6b34; }
+  table { width:100%; border-collapse:collapse; font-size:14px; }
+  th,td { text-align:left; padding:8px 10px; border-bottom:1px solid #eef1f6; vertical-align:top; }
+  th { color:#6b7585; font-weight:700; font-size:12px; text-transform:uppercase; letter-spacing:.03em; }
+  .task-row { display:flex; align-items:center; gap:10px; padding:10px 12px; border:1px solid #eef1f6;
+              border-radius:10px; margin-bottom:8px; }
+  .task-row .m { font-weight:700; min-width:88px; }
+  .task-row .min { color:#2563eb; font-weight:700; font-size:13px; min-width:54px; }
+  .task-row .c { color:#4b5563; font-size:14px; }
+  .stages { display:grid; gap:8px; }
+  .stage { display:flex; gap:10px; align-items:flex-start; padding:10px 12px; border-radius:10px; border:1px solid #eef1f6; }
+  .stage.cur { border-color:#2563eb; background:#eff4ff; }
+  .stage.done { opacity:.55; }
+  .stage .dot { width:10px; height:10px; border-radius:50%; background:#cbd5e1; margin-top:6px; flex:none; }
+  .stage.cur .dot { background:#2563eb; }
+  .stage.done .dot { background:#22c55e; }
+  .two { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+  @media (max-width:680px){ .two { grid-template-columns:1fr; } }
+  .radar-wrap { text-align:center; }
+  .kv { display:flex; justify-content:space-between; font-size:13px; padding:3px 0; border-bottom:1px dashed #eef1f6; }
+  .tabs { display:flex; gap:6px; flex-wrap:wrap; margin-bottom:12px; }
+  .tab { border:1px solid #d3d9e3; background:#fff; border-radius:999px; padding:5px 12px; font-size:13px; cursor:pointer; }
+  .tab.on { background:#2563eb; color:#fff; border-color:#2563eb; }
+  .qa { border:1px solid #eef1f6; border-radius:10px; padding:10px 12px; margin-bottom:8px; }
+  .qa .q { font-weight:600; }
+  .qa .ans { color:#1c6b34; font-size:13px; margin-top:4px; }
+  .qa .ex { color:#6b7585; font-size:13px; margin-top:3px; }
+  details summary { cursor:pointer; font-weight:600; padding:6px 0; }
+  code { background:#f1f5f9; padding:1px 5px; border-radius:5px; font-size:13px; }
+  pre { background:#f6f8fb; border:1px solid #e6eaf0; border-radius:10px; padding:12px; overflow:auto; font-size:12.5px; }
+  ul { margin:6px 0; padding-left:20px; } li { margin:3px 0; }
+  @media print {
+    body { background:#fff; } .btn,.tabs,.topbar{ display:none !important; }
+    .card{ border:1px solid #ccc; break-inside:avoid; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="topbar">
+    <a class="back" href="index.html">‹</a>
+    <h1 style="font-size:20px;margin:0;flex:1">🎯 赛考备考看板</h1>
+  </div>
+
+  <div class="ep-head">
+    <h1 id="planTitle">编程赛考备考规划</h1>
+    <button class="btn" onclick="window.print()">🖨 打印 / 存 PDF</button>
+  </div>
+
+  <!-- 倒计时 + 今日计划 -->
+  <div class="card">
+    <h2>📅 今日计划 <span class="muted small" id="todayDate"></span></h2>
+    <div class="countdown" style="margin-bottom:14px">
+      <div><div class="big" id="cdNum">—</div><div class="muted small">天后 GESP 9 月认证（9/12）</div></div>
+      <div id="stageNow" class="pill"></div>
+    </div>
+    <div id="todayTasks"><div class="muted">加载中…</div></div>
+    <div class="muted small" id="todayNote" style="margin-top:8px"></div>
+  </div>
+
+  <!-- 阶段进度 -->
+  <div class="card">
+    <h2>🧭 五阶段进度</h2>
+    <div class="stages" id="stageList"></div>
+  </div>
+
+  <!-- 已学课程进度 -->
+  <div class="card">
+    <h2>🥚 核桃信奥课进度（C++）</h2>
+    <div id="courseBox"><div class="muted">加载中…</div></div>
+  </div>
+
+  <!-- 报考雷达 -->
+  <div class="card">
+    <h2>📊 9 月报考判断（雷达 / 评分）</h2>
+    <p class="muted small" style="margin-top:-6px">每个维度 0-100，由家长投喂训练记录后逐步更新。当前若标『起点估计』表示还没真实数据。</p>
+    <div class="two" id="radarBox"></div>
+  </div>
+
+  <!-- 训练统计 -->
+  <div class="card">
+    <h2>📈 训练统计</h2>
+    <div class="two" id="statBox"></div>
+  </div>
+
+  <!-- 错题库 -->
+  <div class="card">
+    <h2>❌ 错题库</h2>
+    <div id="errBox"></div>
+  </div>
+
+  <!-- 周复盘 -->
+  <div class="card">
+    <h2>🗓 周复盘</h2>
+    <div id="weekBox"></div>
+  </div>
+
+  <!-- 题库 / 考纲速查 -->
+  <div class="card">
+    <h2>📚 题库 / 考纲速查</h2>
+    <div class="tabs" id="qbTabs"></div>
+    <div id="qbBody"></div>
+  </div>
+
+  <!-- 数据投喂模板 -->
+  <div class="card">
+    <h2>📥 怎么投喂数据给 AI</h2>
+    <p class="small muted">每次训练后，把下面这段复制、填好，发回会话，AI 就能更新正确率 / 高频错因 / 报考建议 / 下周重点。</p>
+    <details>
+      <summary>训练记录模板（点开复制）</summary>
+<pre id="tmplTrain">日期：
+孩子：Kenton / Eddey
+训练内容：
+使用语言：图形化 / Python / C++
+训练时长：
+完成题数：
+正确题数：
+错题题号：
+孩子卡住的位置：
+是否独立读题：是 / 半 / 否
+是否独立打字：是 / 半 / 否
+是否能自己改错：是 / 半 / 否
+孩子情绪：好 / 一般 / 差
+家长观察：
+老师反馈：
+下一次希望重点解决：
+（打字）是否抗拒： 符号是否熟： 能否连续10分钟：</pre>
+    </details>
+    <p class="small muted" id="first3" style="margin-top:10px"></p>
+  </div>
+
+  <div class="footer-note">本页只放匿名化统计与规划 · 错题原文/成绩单只存本地 local-data/ · 不保存任何账号密码</div>
+</div>
+
+<script>
+const F = (p) => fetch(p + "?t=" + Date.now(), { cache: "no-store" }).then(r => r.json());
+const WD = ["周日","周一","周二","周三","周四","周五","周六"];
+const pad = n => String(n).padStart(2,"0");
+function parseD(s){ const [y,m,d]=s.split("-").map(Number); return new Date(y,m-1,d); }
+function fmt(dt){ return dt.getFullYear()+"-"+pad(dt.getMonth()+1)+"-"+pad(dt.getDate()); }
+function diffDays(a,b){ return Math.round((parseD(b)-parseD(a))/864e5); }
+function esc(s){ return String(s==null?"":s).replace(/[&<>]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[c])); }
+
+let PLAN, CAL, READY, QB;
+
+async function main(){
+  [PLAN, CAL, READY, QB] = await Promise.all([
+    F("data/exam-prep/plan.json"),
+    F("data/exam-prep/calendar.json").catch(()=>({overrides:{}})),
+    F("data/exam-prep/readiness.json"),
+    F("data/exam-prep/question-bank.json")
+  ]);
+  document.getElementById("planTitle").textContent = PLAN.title;
+  document.getElementById("first3").innerHTML = "✅ 先做这 3 件事：<br>" +
+    PLAN.first3Things.map((t,i)=>(i+1)+". "+esc(t)).join("<br>");
+  renderToday();
+  renderStages();
+  await renderCourse();
+  renderRadar();
+  await renderStats();
+  await renderWeek();
+  renderQB();
+}
+
+// 取某天的任务（覆盖优先；否则按阶段周计划；处理考前/考试日；核桃课按 kehuClassDay 落位）
+function tasksForDate(dateStr){
+  const ov = (CAL.overrides||{})[dateStr];
+  if(ov) return { tasks: ov.tasks||[], note: ov.note||"", title: ov.title||"" };
+  const dt = parseD(dateStr), wd = dt.getDay();
+  // 找阶段
+  let stage = PLAN.stages.find(s => dateStr>=s.start && dateStr<=s.end);
+  if(!stage) return { tasks: [], note: "" };
+  // 阶段5 特例：考试日 / 考前3天 / 每日默认
+  if(stage.examDay && stage.examDay.date===dateStr) return { tasks: stage.examDay.tasks, note:"", title:"🎓 考试日" };
+  if(stage.preExam && stage.preExam.days.includes(dateStr)) return { tasks: stage.preExam.tasks, note:"考前 3 天：只复习、不学新、保睡眠。", title:"考前 3 天" };
+  let base = stage.weekly[wd] || stage.weekly["default"] || [];
+  base = base.slice();
+  // 核桃课落位：模板里默认放周六(6)，按 kehuClassDay 搬到指定日
+  const classIdx = base.findIndex(t => t.m==="核桃编程课");
+  const classTask = classIdx>=0 ? base.splice(classIdx,1)[0] : null;
+  if(wd === (PLAN.kehuClassDay!=null?PLAN.kehuClassDay:6)){
+    base.unshift(classTask || { m:"核桃编程课", min:0, c:"信奥课一节" });
+  }
+  return { tasks: base, note:"", title:"" };
+}
+
+function renderToday(){
+  const today = fmt(new Date());
+  const start = PLAN.range.start, end = PLAN.range.end;
+  document.getElementById("todayDate").textContent =
+    "（今天 " + today + " " + WD[new Date().getDay()] + "）";
+  // 倒计时
+  const cd = diffDays(today, PLAN.examDate);
+  document.getElementById("cdNum").textContent = cd>=0 ? cd : "已过";
+  // 当前阶段
+  let showDate = today, prefix = "";
+  if(today < start){ showDate = start; prefix = "（开营从 "+start+" 起，先看第一天）"; }
+  else if(today > end){
+    document.getElementById("stageNow").textContent = "备考期已结束";
+    document.getElementById("todayTasks").innerHTML = '<div class="muted">9/12 考试窗口已过。复盘结果、规划 12 月下一级。</div>';
+    return;
+  }
+  const stage = PLAN.stages.find(s => showDate>=s.start && showDate<=s.end);
+  document.getElementById("stageNow").textContent = stage ? stage.name : "";
+  const {tasks, note, title} = tasksForDate(showDate);
+  const box = document.getElementById("todayTasks");
+  if(!tasks.length){ box.innerHTML = '<div class="muted">今天休息 / 自由探索。</div>'; }
+  else {
+    box.innerHTML = (title?('<div class="pill warn" style="margin-bottom:8px">'+esc(title)+'</div>'):"") +
+      tasks.map(t=>`<div class="task-row">
+        <span class="min">${t.min?("⏱"+t.min+"′"):"📍"}</span>
+        <span class="m">${esc(t.m)}</span>
+        <span class="c">${esc(t.c)}</span></div>`).join("");
+  }
+  document.getElementById("todayNote").textContent = (prefix? prefix+" ":"") + (note||"");
+}
+
+function renderStages(){
+  const today = fmt(new Date());
+  document.getElementById("stageList").innerHTML = PLAN.stages.map(s=>{
+    let cls = "stage";
+    if(today>s.end) cls += " done";
+    else if(today>=s.start && today<=s.end) cls += " cur";
+    return `<div class="${cls}"><span class="dot"></span><div>
+      <div style="font-weight:700">${esc(s.name)} <span class="muted small">${s.start} → ${s.end}</span></div>
+      <div class="muted small">${esc(s.theme)}</div>
+    </div></div>`;
+  }).join("");
+}
+
+async function renderCourse(){
+  let c; try { c = await F("data/exam-prep/course-progress.json"); } catch(e){ document.getElementById("courseBox").innerHTML='<div class="muted small">暂无课程进度数据。</div>'; return; }
+  const lessonHtml = c.lessons.map(l=>{
+    const tag = l.status==="done" ? (l.latest?'<span class="pill ok">最新已学</span>':'<span class="pill ok">已学</span>')
+              : '<span class="pill warn">即将学</span>';
+    return `<div class="task-row"><span class="m">${esc(l.id)}</span><span class="c">${esc(l.topic)}</span><span style="margin-left:auto">${tag}</span></div>`;
+  }).join("");
+  const okN = c.syntaxChecklist.filter(s=>s.ok).length;
+  const synHtml = c.syntaxChecklist.map(s=>`<div class="kv"><span>${s.ok?'✅':'⬜'} ${esc(s.item)}</span><span class="muted">${esc(s.note||'')}</span></div>`).join("");
+  document.getElementById("courseBox").innerHTML =
+    `<div class="small muted" style="margin-bottom:8px">${esc(c.platform)} · ${esc(c.lang)} · ${esc(c.cadence)} · 目标：${c.goals.map(esc).join("、")}</div>`+
+    lessonHtml +
+    `<details style="margin-top:8px"><summary>已掌握 C++ 语法清单（${okN}/${c.syntaxChecklist.length}）</summary>${synHtml}</details>`+
+    `<div class="small muted" style="margin-top:8px">⚠️ 出题对齐：${esc(c.alignWithBank)}</div>`;
+}
+
+// SVG 雷达图
+function radarSVG(dims, scores, color){
+  const N=dims.length, R=70, cx=100, cy=95;
+  const pt=(i,r)=>{ const a=-Math.PI/2 + i*2*Math.PI/N; return [cx+r*Math.cos(a), cy+r*Math.sin(a)]; };
+  let grid="";
+  [0.25,0.5,0.75,1].forEach(f=>{
+    const p=dims.map((_,i)=>pt(i,R*f).map(n=>n.toFixed(1)).join(",")).join(" ");
+    grid+=`<polygon points="${p}" fill="none" stroke="#e2e8f0" stroke-width="1"/>`;
+  });
+  let axes="", labels="";
+  dims.forEach((d,i)=>{
+    const [x,y]=pt(i,R); axes+=`<line x1="${cx}" y1="${cy}" x2="${x.toFixed(1)}" y2="${y.toFixed(1)}" stroke="#e2e8f0"/>`;
+    const [lx,ly]=pt(i,R+16);
+    labels+=`<text x="${lx.toFixed(1)}" y="${ly.toFixed(1)}" font-size="8" fill="#64748b" text-anchor="middle">${esc(d.label.split("(")[0])}</text>`;
+  });
+  const poly=dims.map((d,i)=>pt(i,R*(scores[d.key]||0)/100).map(n=>n.toFixed(1)).join(",")).join(" ");
+  return `<svg viewBox="0 0 200 200" width="200" height="200">${grid}${axes}
+    <polygon points="${poly}" fill="${color}33" stroke="${color}" stroke-width="2"/>${labels}</svg>`;
+}
+
+function renderRadar(){
+  const dims = READY.dimensions;
+  document.getElementById("radarBox").innerHTML = ["kenton","eddey"].map(k=>{
+    const c = READY.children[k]; if(!c) return "";
+    const color = k==="kenton" ? "#36c5d6" : "#ff8a5b";
+    const avg = Math.round(dims.reduce((s,d)=>s+(c.scores[d.key]||0),0)/dims.length);
+    return `<div class="radar-wrap">
+      <div><span class="pill ${k==='kenton'?'k':'e'}">${k==='kenton'?'🦁':'🐯'} ${esc(c.name)}</span></div>
+      ${radarSVG(dims, c.scores, color)}
+      <div class="small"><b>综合 ${avg}</b> · 目标：${esc(c.targetExam)} ${c.assessed?'':'<span class="pill warn">起点估计</span>'}</div>
+      <div class="small muted" style="text-align:left;margin-top:6px">${esc(c.suggestion)}</div>
+    </div>`;
+  }).join("");
+}
+
+async function renderStats(){
+  let log;
+  try { log = await F("data/exam-prep/training-log.json"); } catch(e){ log={records:[]}; }
+  let edb;
+  try { edb = await F("data/exam-prep/error-db.json"); } catch(e){ edb={errors:[]}; }
+  const recs = log.records||[], errs = edb.errors||[];
+  window.__ERRS = errs;
+  document.getElementById("statBox").innerHTML = ["kenton","eddey"].map(k=>{
+    const r = recs.filter(x=>x.child===k);
+    const e = errs.filter(x=>x.child===k);
+    const mins = r.reduce((s,x)=>s+(+x.minutes||0),0);
+    const done = r.reduce((s,x)=>s+(+x.done||0),0);
+    const cor = r.reduce((s,x)=>s+(+x.correct||0),0);
+    const acc = done? Math.round(cor/done*100):null;
+    const causes = {}; e.forEach(x=>{ if(x.cause) causes[x.cause]=(causes[x.cause]||0)+1; });
+    const top = Object.entries(causes).sort((a,b)=>b[1]-a[1])[0];
+    const name = READY.children[k]?READY.children[k].name:k;
+    if(!r.length && !e.length){
+      return `<div><div class="pill ${k==='kenton'?'k':'e'}">${k==='kenton'?'🦁':'🐯'} ${esc(name)}</div>
+        <div class="muted small" style="margin-top:8px">还没有训练数据。按本页底部模板投喂第一条就会自动出现。</div></div>`;
+    }
+    return `<div><div class="pill ${k==='kenton'?'k':'e'}">${k==='kenton'?'🦁':'🐯'} ${esc(name)}</div>
+      <div class="kv"><span>训练次数</span><b>${r.length}</b></div>
+      <div class="kv"><span>总训练时长</span><b>${mins} 分钟</b></div>
+      <div class="kv"><span>完成 / 正确</span><b>${done} / ${cor}</b></div>
+      <div class="kv"><span>正确率</span><b>${acc==null?'—':acc+'%'}</b></div>
+      <div class="kv"><span>错题数 / 二错</span><b>${e.length} / ${e.filter(x=>x.secondError).length}</b></div>
+      <div class="kv"><span>高频错因</span><b>${top?esc(top[0])+'×'+top[1]:'—'}</b></div></div>`;
+  }).join("");
+  renderErr(errs);
+}
+
+function renderErr(errs){
+  const box = document.getElementById("errBox");
+  if(!errs.length){ box.innerHTML='<div class="muted small">错题库为空。投喂带『错题』的训练记录后，会按『日期/孩子/题型/错因/是否二错/是否掌握』归档到这里。</div>'; return; }
+  box.innerHTML = `<table><thead><tr>
+    <th>日期</th><th>孩子</th><th>来源</th><th>题型</th><th>错因</th><th>二错</th><th>正确思路</th><th>复做</th><th>掌握</th></tr></thead><tbody>`+
+    errs.map(e=>`<tr><td>${esc(e.date)}</td><td>${esc(e.child)}</td><td>${esc(e.source)}</td>
+      <td>${esc(e.type)}</td><td>${esc(e.cause)}</td><td>${e.secondError?'是':''}</td>
+      <td>${esc(e.idea)}</td><td>${esc(e.redoDate)}</td>
+      <td>${e.mastered?'<span class="pill ok">已</span>':'<span class="pill warn">未</span>'}</td></tr>`).join("")+
+    `</tbody></table>`;
+}
+
+async function renderWeek(){
+  let w;
+  try { w = await F("data/exam-prep/weekly-review.json"); } catch(e){ w={reviews:[]}; }
+  const box = document.getElementById("weekBox");
+  const rv = w.reviews||[];
+  if(!rv.length){ box.innerHTML='<div class="muted small">还没有周复盘。每周日投喂一次本周数据，AI 生成复盘 + 下周计划 + 是否继续冲 9 月。</div>'; return; }
+  box.innerHTML = rv.slice().reverse().map(r=>`<div class="qa">
+    <div class="q">${esc(r.weekStart)} · ${esc(r.child)} <span class="pill ${r.sept&&r.sept.startsWith('yes')?'ok':(r.sept&&r.sept.startsWith('no')?'warn':'')}">${esc(r.sept||'')}</span></div>
+    <div class="small muted">训练 ${esc(r.sessions||0)} 次 / ${esc(r.minutes||0)} 分 · 正确率 ${esc(r.accuracy||'—')}% · 高频错因 ${esc(r.topCause||'—')}</div>
+    <div class="small">进步：${esc(r.bestProgress||'—')}｜问题：${esc(r.biggestIssue||'—')}</div>
+    <div class="small">下周：留[${esc(r.keep||'')}] 删[${esc(r.drop||'')}] 增[${esc(r.add||'')}]</div>
+  </div>`).join("");
+}
+
+function renderQB(){
+  const tabs = document.getElementById("qbTabs"), body = document.getElementById("qbBody");
+  const items = [{key:"facts",label:"📌 考纲速查"}].concat(
+    QB.levels.map((l,i)=>({key:"L"+i, label:(l.line.includes("图形")?"图形化":l.line)+" "+l.level+"级"})),
+    [{key:"typing",label:"⌨️ 打字专项"}]
+  );
+  function show(key){
+    [...tabs.children].forEach(b=>b.classList.toggle("on", b.dataset.k===key));
+    if(key==="facts"){
+      body.innerHTML = Object.entries(QB.facts).map(([k,v])=>`<details open><summary>${esc(k)}</summary>`+
+        Object.entries(v).map(([kk,vv])=>`<div class="kv"><span>${esc(kk)}</span><b style="text-align:right">${Array.isArray(vv)?vv.map(esc).join("、"):esc(vv)}</b></div>`).join("")+
+        `</details>`).join("") + `<p class="small muted">${esc(QB._disclaimer)}</p>`;
+    } else if(key==="typing"){
+      const t=QB.typingDrills;
+      body.innerHTML = `<p class="small muted">${esc(t._note)}</p>`+
+        Object.entries(t).filter(([k])=>!k.startsWith("_")).map(([k,v])=>
+          `<div class="kv"><span>${esc(k)}</span><b style="text-align:right">${Array.isArray(v)?v.map(x=>'<code>'+esc(x)+'</code>').join(" "):esc(v)}</b></div>`).join("");
+    } else {
+      const l = QB.levels[+key.slice(1)];
+      body.innerHTML = `<div class="small muted" style="margin-bottom:8px">${esc(l.line)} · ${esc(l.lang||"")}</div>
+        <b>知识点</b><ul>${l.knowledge.map(x=>"<li>"+esc(x)+"</li>").join("")}</ul>
+        <b>题型</b><div class="small">${l.questionTypes.map(esc).join("｜")}</div>
+        <b style="display:block;margin-top:8px">易错点</b><ul>${l.pitfalls.map(x=>"<li>"+esc(x)+"</li>").join("")}</ul>
+        <b style="display:block;margin-top:8px">例题</b>`+
+        l.examples.map(q=>`<div class="qa"><div class="q">${esc(q.q)}</div>`+
+          (q.options?`<div class="small muted">${q.options.map(esc).join(" / ")}</div>`:"")+
+          `<div class="ans">✅ ${esc(q.answer)}</div><div class="ex">💡 ${esc(q.explain)}</div></div>`).join("");
+    }
+  }
+  tabs.innerHTML = items.map((it,i)=>`<button class="tab${i===0?' on':''}" data-k="${it.key}">${esc(it.label)}</button>`).join("");
+  [...tabs.children].forEach(b=> b.onclick=()=>show(b.dataset.k));
+  show("facts");
+}
+
+main().catch(e=>{ document.getElementById("todayTasks").innerHTML='<div class="muted">数据读取失败：'+esc(e.message)+'</div>'; });
+</script>
+</body>
+</html>

@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<script src="../assets/learning-sync.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Kenton · 数学五上预习馆②小数的应用</title>
+<style>
+:root{--c:#2f6fb3;--cd:#225182;--cbg:#e0f0ff;--gold:#f2b632;--golddk:#c98a00;--ink:#2e2a26;--paper:#fdf6ee;
+ --line:#eadfd2;--muted:#8a8178;--green:#2e9c54;--greenbg:#e9f7ee;--red:#d64545;--redbg:#fdecec;--orange:#e8862f;--orangebg:#fdf1e3;--purple:#7a5fc9;--purplebg:#efeafc;}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+body{margin:0;font-family:'LXGW WenKai Screen','PingFang SC','Microsoft YaHei',system-ui,sans-serif;color:var(--ink);min-height:100vh;padding-bottom:50px;
+ background:radial-gradient(circle at 15% 5%,#d9ebfd 0,transparent 45%),radial-gradient(circle at 85% 20%,#ffe9d2 0,transparent 40%),var(--paper);}
+.wrap{max-width:620px;margin:0 auto;padding:14px;}
+.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;}
+.badge{background:var(--c);color:#fff;font-weight:800;font-size:17px;padding:6px 13px;border-radius:13px 13px 13px 4px;box-shadow:0 4px 0 var(--cd);}
+.back{background:none;border:none;color:var(--muted);font-size:15px;font-family:inherit;font-weight:800;cursor:pointer;padding:6px 2px;}
+.mute{background:none;border:none;font-size:20px;cursor:pointer;}
+h1{font-size:21px;text-align:center;margin:8px 0 2px;color:var(--cd);}
+.sub{text-align:center;font-size:12.5px;color:var(--muted);margin-bottom:10px;line-height:1.7;}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;}
+@media(max-width:400px){.grid{grid-template-columns:repeat(2,1fr);}}
+.tile{position:relative;background:#fff;border:2px solid var(--line);border-radius:16px;padding:14px 8px 10px;text-align:center;cursor:pointer;box-shadow:0 5px 0 #efe3d4;transition:transform .12s;min-height:46px;}
+.tile:active{transform:translateY(3px);box-shadow:0 2px 0 #efe3d4;}
+.tile.lock{opacity:.55;filter:grayscale(.6);}
+.tile .ic{font-size:32px;}
+.tile .nm{font-weight:800;font-size:14px;margin-top:6px;color:var(--cd);line-height:1.3;}
+.tile .ds{font-size:10.5px;color:var(--muted);margin-top:3px;line-height:1.45;}
+.tile .done{position:absolute;top:6px;right:8px;font-size:10.5px;font-weight:800;background:var(--greenbg);color:var(--green);border-radius:8px;padding:2px 6px;}
+.tile .done.pending{background:#eee8e1;color:#776d64;}
+.tile .today{position:absolute;top:-9px;left:10px;font-size:11px;font-weight:800;background:var(--gold);color:#5a3d00;border-radius:8px;padding:2px 8px;box-shadow:0 2px 0 var(--golddk);}
+.card{background:#fff;border:2px solid var(--line);border-radius:18px;padding:15px;margin:12px 0;box-shadow:0 6px 0 #f2e7d9;}
+.h2{font-size:17px;font-weight:800;color:var(--cd);margin:0 0 8px;}
+.h2 .tag{font-size:11px;background:var(--cbg);color:var(--cd);border-radius:8px;padding:2px 8px;vertical-align:2px;margin-left:6px;}
+.btn{font-family:inherit;font-weight:800;font-size:15px;border:none;border-radius:12px;padding:12px 16px;cursor:pointer;color:#fff;background:var(--c);box-shadow:0 4px 0 var(--cd);min-height:46px;}
+.btn:active{transform:translateY(3px);box-shadow:0 1px 0 var(--cd);}
+.btn.gold{background:var(--gold);color:#5a3d00;box-shadow:0 4px 0 var(--golddk);}
+.btn.ghost{background:#fff;color:var(--cd);border:2px solid var(--line);box-shadow:0 4px 0 #efe3d4;}
+.btn.red{background:var(--red);box-shadow:0 4px 0 #a83232;}
+.btn.wide{display:block;width:100%;margin:8px 0;}
+.hide{display:none!important;}
+/* 放大镜 */
+.bigexpr{text-align:center;font-size:26px;font-weight:900;margin:12px 0;line-height:1.8;word-break:break-all;}
+.bigexpr .tk{display:inline-block;padding:1px 2px;border-radius:6px;transition:all .3s;}
+.bigexpr .tk.hn{background:var(--orangebg);color:var(--orange);animation:pulse 1s ease 2;}
+.bigexpr .tk.ho{background:var(--cbg);color:var(--c);animation:pulse 1s ease 2;}
+@keyframes pulse{0%{transform:scale(1)}50%{transform:scale(1.25)}100%{transform:scale(1)}}
+.mirbtns{display:flex;gap:8px;}
+.mirbtns .btn{flex:1;font-size:14px;}
+.feat{background:var(--orangebg);border-radius:12px;padding:9px 12px;font-size:14px;line-height:1.7;margin:8px 0;font-weight:700;animation:fadein .5s;}
+.feat.blue{background:var(--cbg);}
+.mchip{display:inline-block;background:#fff;border:2px solid var(--gold);color:#a8730a;border-radius:12px;padding:5px 12px;font-size:13.5px;font-weight:800;margin:3px;animation:fadein .5s;}
+@keyframes fadein{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+/* 分步动画 */
+.srow{display:flex;align-items:flex-start;gap:8px;margin:10px 0;animation:slidein .5s ease;}
+@keyframes slidein{from{opacity:0;transform:translateX(-18px)}to{opacity:1;transform:none}}
+.srow .math{font-size:19px;font-weight:800;line-height:1.6;word-break:break-all;flex:1;}
+.srow.cur .math{background:#fffbe8;border-radius:8px;padding:2px 6px;}
+.snote{align-self:center;flex-shrink:0;max-width:42%;background:var(--orange);color:#fff;font-size:12px;font-weight:800;border-radius:10px 10px 10px 2px;padding:5px 9px;line-height:1.5;animation:fadein .6s;}
+.snote:before{content:"⬅ ";}
+.swhy{font-size:12.5px;color:#8a6a3a;background:var(--orangebg);border-radius:8px;padding:6px 10px;margin:-4px 0 10px 6px;line-height:1.7;animation:fadein .7s;}
+.fin{text-align:center;font-size:16px;font-weight:900;color:var(--green);margin:10px 0;animation:pop .4s;}
+@keyframes pop{0%{transform:scale(.6)}70%{transform:scale(1.15)}100%{transform:scale(1)}}
+/* 妙招 */
+.fmla{background:linear-gradient(135deg,#fff8e0,#ffefc9);border:2px dashed var(--gold);border-radius:12px;padding:10px 13px;font-size:16.5px;font-weight:900;color:#7a5200;text-align:center;margin:8px 0;line-height:1.8;word-break:break-all;}
+.usebox{font-size:14px;line-height:1.8;color:#4a443e;}
+.usebox b{color:#a8730a;}
+/* 遮挡回忆 */
+.rcsent{font-size:17px;font-weight:800;line-height:2;margin:12px 0;text-align:center;animation:fadein .5s;}
+.rcsent .blank{display:inline-block;min-width:64px;border-bottom:3px dashed var(--gold);color:var(--golddk);padding:0 6px;}
+.rcbtns{display:flex;gap:10px;justify-content:center;margin:8px 0 16px;flex-wrap:wrap;}
+.rcbtns .opt{width:auto;min-width:110px;margin:0;}
+/* 实验室通用 */
+.labtip{font-size:13px;color:var(--muted);line-height:1.7;margin:4px 0 10px;}
+.labbig{text-align:center;font-size:30px;font-weight:900;margin:14px 0;letter-spacing:2px;position:relative;}
+.labnote{text-align:center;font-size:15px;font-weight:800;color:var(--cd);margin:8px 0;min-height:24px;animation:fadein .4s;}
+input[type=range]{width:100%;height:34px;accent-color:var(--c);}
+/* 闸门 */
+.gatebox{text-align:center;font-size:30px;font-weight:900;letter-spacing:3px;margin:14px 0;}
+.gatebox .keep{color:var(--ink);}
+.gatebox .look{background:var(--orangebg);color:var(--orange);border-radius:8px;padding:2px 6px;animation:pulse 1.2s ease infinite;}
+.gatebox .drop{color:#c9beb2;text-decoration:line-through;}
+.gatebox .zero{background:var(--gold);border-radius:8px;padding:2px 6px;animation:pulse 1.2s ease infinite;}
+/* 分装瓶 */
+.jars{display:flex;gap:10px;justify-content:center;margin:12px 0;flex-wrap:wrap;}
+.jar{width:64px;text-align:center;}
+.jar .cup{height:82px;border:3px solid var(--line);border-top-width:2px;border-radius:6px 6px 14px 14px;background:#fff;position:relative;overflow:hidden;}
+.jar .fill{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(180deg,#ffd66b,#f2b632);transition:height .5s ease;}
+.jar .cap{font-size:12px;font-weight:800;color:var(--cd);margin-top:4px;}
+.jar.last .cup{border-color:var(--orange);animation:pulse 1s ease 2;}
+/* 兑换机 */
+.exbig{text-align:center;font-size:24px;font-weight:900;margin:10px 0;line-height:2;word-break:break-all;}
+.exbig .cur{color:var(--c);}
+.exres{font-family:'Courier New',monospace;font-size:22px;font-weight:800;text-align:center;background:#fbf7f0;border:2px dashed var(--line);border-radius:12px;padding:10px;margin:8px 0;animation:fadein .5s;}
+/* 电表 */
+.meters{display:flex;gap:12px;justify-content:center;margin:10px 0;flex-wrap:wrap;}
+.meter{background:#fff;border:2px solid var(--line);border-radius:14px;padding:10px 14px;min-width:150px;box-shadow:0 4px 0 #efe3d4;}
+.meter .mt{font-size:13px;font-weight:800;color:var(--muted);}
+.meter .rd{font-family:'Courier New',monospace;font-size:21px;font-weight:900;background:#2e2a26;color:#8fff9e;border-radius:8px;padding:4px 10px;text-align:center;margin:5px 0;letter-spacing:2px;}
+.meter .use{font-size:15px;font-weight:900;color:var(--green);text-align:center;min-height:22px;animation:fadein .5s;}
+.meter.peak .mt{color:var(--orange);}
+.meter.valley .mt{color:var(--c);}
+/* 线段图 */
+.segbar{display:flex;height:44px;border-radius:12px;overflow:hidden;border:2px solid var(--line);margin:12px 0;}
+.seg{display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;color:#fff;cursor:pointer;transition:filter .2s;border-right:2px solid #fff;}
+.seg:last-child{border-right:none;}
+.seg.s1{background:var(--gold);color:#5a3d00;}
+.seg.s2{background:var(--c);}
+.seg.s3{background:var(--orange);}
+.seg.on{filter:brightness(1.18);box-shadow:inset 0 0 0 3px #fff;}
+.segcost{text-align:center;font-size:16px;font-weight:900;color:var(--cd);min-height:26px;animation:fadein .4s;}
+/* 脑图 */
+.mmcenter{text-align:center;margin:6px auto 2px;background:var(--c);color:#fff;font-weight:900;font-size:18px;border-radius:16px;padding:10px 18px;width:fit-content;box-shadow:0 4px 0 var(--cd);}
+.mmline{width:3px;height:14px;background:var(--line);margin:0 auto;}
+.mmnode{background:#fff;border:2px solid var(--line);border-radius:14px;padding:10px 13px;margin:8px 0;cursor:pointer;box-shadow:0 4px 0 #efe3d4;transition:all .2s;}
+.mmnode:active{transform:translateY(2px);box-shadow:0 2px 0 #efe3d4;}
+.mmnode .mt{font-weight:800;font-size:15px;color:var(--cd);}
+.mmnode .mt .dot{display:inline-block;width:10px;height:10px;border-radius:50%;background:#ddd;margin-right:8px;}
+.mmnode.open .mt .dot{background:var(--green);}
+.mmrule{font-size:13.5px;line-height:1.8;color:#4a443e;background:var(--cbg);border-radius:10px;padding:8px 11px;margin-top:8px;animation:fadein .5s;}
+/* 训练 */
+.qhead{display:flex;justify-content:space-between;align-items:center;font-size:13px;font-weight:800;color:var(--muted);margin-bottom:6px;}
+.hint{background:var(--cbg);border-radius:12px 12px 12px 2px;padding:8px 12px;font-size:13px;font-weight:700;color:var(--cd);margin:6px 0;line-height:1.6;}
+.hint:before{content:"💡 ";}
+.star{color:#c98a00;font-weight:900;}
+.lvtag{font-size:11px;font-weight:800;border-radius:8px;padding:2px 8px;margin-left:6px;}
+.lvtag.lv1{background:var(--greenbg);color:var(--green);}
+.lvtag.lv2{background:var(--orangebg);color:var(--orange);}
+.lvtag.lv3{background:#fde3e3;color:var(--red);}
+.qtext{font-size:21px;font-weight:900;text-align:center;margin:10px 0 12px;line-height:1.8;word-break:break-all;}
+.qtext.word{font-size:16.5px;text-align:left;font-weight:700;line-height:1.9;}
+.opt{display:block;width:100%;text-align:center;background:#fff;border:2px solid var(--line);border-radius:12px;padding:13px;font-size:18px;font-weight:800;font-family:inherit;cursor:pointer;margin:8px 0;min-height:46px;}
+.opt.good{border-color:var(--green);background:var(--greenbg);color:var(--green);}
+.opt.bad{border-color:var(--red);background:var(--redbg);color:var(--red);animation:shake .35s;}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+.errtag{background:var(--redbg);border:2px solid var(--red);border-radius:12px;padding:10px 13px;font-size:14px;line-height:1.7;margin:10px 0;animation:fadein .4s;}
+.errtag .t{display:inline-block;background:var(--red);color:#fff;font-weight:800;font-size:12.5px;border-radius:8px;padding:2px 9px;margin-bottom:5px;}
+.steps{background:#fff;border:2px dashed var(--line);border-radius:12px;padding:10px 14px;font-size:16.5px;line-height:2;margin:10px 0;font-weight:800;word-break:break-all;animation:fadein .4s;}
+.steps .lb{font-size:12px;color:var(--muted);font-weight:800;display:block;}
+.steps .last{background:var(--gold);border-radius:6px;padding:0 5px;}
+.stat{background:#fff;border:2px solid var(--line);border-radius:14px;padding:10px 13px;display:flex;gap:14px;justify-content:space-around;font-size:13px;font-weight:800;color:var(--cd);margin:8px 0;text-align:center;}
+.wbitem{display:flex;justify-content:space-between;gap:8px;font-size:13.5px;padding:7px 2px;border-bottom:1px dashed var(--line);align-items:center;}
+.wbitem .t{font-size:11px;color:var(--red);font-weight:800;white-space:nowrap;}
+textarea{width:100%;height:130px;font-size:12px;border:2px solid var(--line);border-radius:10px;padding:8px;font-family:monospace;}
+.note{font-size:12px;color:var(--muted);line-height:1.7;margin-top:6px;}
+@media (prefers-reduced-motion: reduce){
+ *{animation:none!important;transition:none!important;}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<!-- ============ 首页 ============ -->
+<div id="vHome">
+  <div class="top"><span class="badge">🦁 Kenton</span><button class="mute" id="muteBtn" onclick="toggleMute()">🔔</button></div>
+  <h1>🏫 数学预习馆 · 五上②小数的应用</h1>
+  <div class="sub">照《金牌数学·五年级上》第2单元重建（书页p38-54）：放大镜 → 分步变身 → 实验室动画 → 遮挡回忆 → 真题检验<br>📘 自动判分 · 每题错因标签 · 错题本连对 2 次才毕业 · 每天开一个新馆</div>
+  <div id="wbEntry"></div>
+  <div id="reviewEntry"></div>
+  <div class="grid" id="homeGrid"></div>
+  <div class="card">
+    <div class="h2">📋 我的练习记录</div>
+    <div class="stat" id="statBar"></div>
+    <div id="wbPanel"></div>
+    <button class="btn ghost wide" onclick="exportCopy()">📋 复制记录（发给爸爸）</button>
+    <button class="btn ghost wide" onclick="exportFile()">💾 存成文件</button>
+    <button class="btn ghost wide" onclick="toggleExp()">👀 看一眼导出内容</button>
+    <div id="expBox" class="hide"><textarea id="expTa" aria-label="学习记录导出内容" readonly></textarea></div>
+    <button class="btn gold wide" onclick="parentUnlock()">🔓 家长提前解锁下一馆</button>
+  </div>
+</div>
+
+<!-- ============ 教学页 ============ -->
+<div id="vTeach" class="hide">
+  <div class="top"><button class="back" onclick="goHome()">← 回选馆</button><span class="badge" id="tBadge"></span></div>
+  <div class="card">
+    <div class="h2">🔍 题干放大镜<span class="tag" id="tTag"></span></div>
+    <div class="note">别急着算！先像书里一样，用放大镜看看这道题长什么样：</div>
+    <div class="bigexpr" id="mExpr"></div>
+    <div class="mirbtns">
+      <button class="btn" id="btnNum" onclick="revealNum()">🔍 数字有什么特点?</button>
+      <button class="btn" id="btnOp" onclick="revealOp()">🔍 算法有什么特点?</button>
+    </div>
+    <div id="mFeats"></div>
+    <div id="mMethods" class="hide" style="margin-top:8px"></div>
+    <button class="btn gold wide hide" id="btnToSteps" onclick="showSteps()">▶ 看它一步步变身!</button>
+  </div>
+  <div class="card hide" id="cardSteps">
+    <div class="h2">🎬 分步变身（每一步都有为什么）</div>
+    <div id="stepRows"></div>
+    <button class="btn wide" id="btnStep" onclick="nextStep()">▶ 下一步</button>
+  </div>
+  <div class="card hide" id="cardLab">
+    <div class="h2">🧪 实验室（动手玩一玩）</div>
+    <div id="labBox"></div>
+    <button class="btn gold wide hide" id="btnLabNext" onclick="labNext()">🧙 玩明白了，去看妙招 →</button>
+  </div>
+  <div class="card hide" id="cardTips">
+    <div class="h2">🧙 法则妙招卡（背下来）</div>
+    <div class="usebox" id="tipUse"></div>
+    <div id="tipFms"></div>
+    <button class="btn gold wide" id="btnTipsNext" onclick="tipsNext()">🙈 遮挡回忆挑战 →</button>
+  </div>
+  <div class="card hide" id="cardRecall">
+    <div class="h2">🙈 遮挡回忆（合上答案，自己想）</div>
+    <div class="note">刚才的法则被挡住了一块！不看妙招卡，选出正确的词。</div>
+    <div id="rcBox"></div>
+    <button class="btn gold wide hide" id="btnRcNext" onclick="rcNext()">✏️ 回忆成功！开始真题检验</button>
+  </div>
+</div>
+
+<!-- ============ 训练页 ============ -->
+<div id="vQuiz" class="hide">
+  <div class="top"><button class="back" onclick="quitQuiz()">← 退出</button><span class="badge" id="qTime">⏱ 0:00</span></div>
+  <div class="card">
+    <div class="qhead"><span id="qProg"></span><span id="qScore"></span></div>
+    <div id="qHint"></div>
+    <div id="qText" class="qtext"></div>
+    <div id="qOpts"></div>
+    <div id="qEx"></div>
+    <button class="btn wide hide" id="btnNext" onclick="qNext()">下一题 →</button>
+  </div>
+</div>
+
+<!-- ============ 结果页 ============ -->
+<div id="vResult" class="hide">
+  <div class="top"><button class="back" onclick="goHome()">← 回选馆</button><span class="badge">🏁 完成</span></div>
+  <div class="card" id="resCard"></div>
+</div>
+
+</div>
+<script>
+"use strict";
+function $(id){return document.getElementById(id);}
+var LSK='g5u2_app_kenton_v1', WBK=LSK+'_wb', START='2026-07-23';
+function load(k,d){try{var s=localStorage.getItem(k);return s?JSON.parse(s):d;}catch(e){return d;}}
+function save(k,v){try{localStorage.setItem(k,JSON.stringify(v));}catch(e){}}
+var DB=load(LSK,{done:{},events:[]});
+var WB=load(WBK,{items:{}});
+var UNL_EXTRA=load(LSK+'_unl',0);
+var MUTE=localStorage.getItem(LSK+'_mute')==='1';
+
+/* ---- 声音（Web Audio 音效；本软件为数学操作类，语音朗读不适用） ---- */
+var AC=null;
+function ac(){if(!AC){try{AC=new (window.AudioContext||window.webkitAudioContext)();}catch(e){}}if(AC&&AC.state==='suspended')AC.resume();return AC;}
+function tone(f,dur,delay,type,vol){var a=ac();if(!a||MUTE)return;var o=a.createOscillator(),g=a.createGain();o.type=type||'sine';o.frequency.value=f;
+ g.gain.setValueAtTime(vol||0.18,a.currentTime+(delay||0));g.gain.exponentialRampToValueAtTime(0.001,a.currentTime+(delay||0)+dur);
+ o.connect(g);g.connect(a.destination);o.start(a.currentTime+(delay||0));o.stop(a.currentTime+(delay||0)+dur+0.05);}
+function ding(){tone(660,0.14,0);tone(880,0.2,0.12);}
+function buzz(){tone(170,0.28,0,'sawtooth',0.1);}
+function tick(){tone(520,0.06,0,'triangle',0.12);}
+function toggleMute(){MUTE=!MUTE;localStorage.setItem(LSK+'_mute',MUTE?'1':'0');$('muteBtn').textContent=MUTE?'🔕':'🔔';}
+
+/* ---- 错题本（错1次必进本，连对2次才出本） ---- */
+function wbAddWrong(d){var it=WB.items[d.q];
+ if(!it){it={streak:0,mastered:false,wrong:0};for(var k in d){if(k!=='_wtag'&&k!=='_wwhy'&&k!=='rq'&&k!=='wb')it[k]=d[k];}WB.items[d.q]=it;}
+ it.wrong++;it.streak=0;it.mastered=false;it.ex=d.ex;save(WBK,WB);}
+function wbAddRight(q){var it=WB.items[q];if(!it||it.mastered)return;it.streak++;if(it.streak>=2)it.mastered=true;save(WBK,WB);}
+function wbList(){var r=[];for(var k in WB.items){if(!WB.items[k].mastered)r.push(WB.items[k]);}return r;}
+function logEvent(ev){ev.ts=Date.now();DB.events.push(ev);save(LSK,DB);}
+function modStat(id){var d=DB.done[id];if(!d)return null;var st=d.wrong===0?'⭐⭐⭐':(d.wrong<=2?'⭐⭐':'⭐');return st+'✅'+d.ok+'❌'+d.wrong;}
+
+
+/* =================== 6 馆数据（照《金牌数学·五上》第2单元《小数的应用》，书页p38-54） =================== */
+var MODS=[
+{id:'u1',ic:'🚪',nm:'第1课 积的近似数',ds:'四舍五入闸门 · 人民币到分',
+ ex:{expr:'1.35 × 7.98',num:'1.35千克 × 每千克7.98元——积有5位小数，可人民币最小只到"分"！',op:'求积的近似数——先算准确的积，再四舍五入，用≈连接。',
+  feats:['小数乘法的积位数很多','人民币以元为单位最多保留两位（分=百分位）'],
+  methods:['先算准确积','看下一位四舍五入','用≈连接'],
+  steps:[{t:'1.35 × 7.98'},
+   {t:'1.35 × 7.98 = 10.773',n:'先按小数乘法算',w:'先算出准确的积：135×798=107730，两个乘数共5位小数 → 10.773。'},
+   {t:'10.773 ≈ 10.77（元）',n:'四舍五入到分',w:'人民币最小单位是"分"（百分位）。看千分位：3<5，把3及后面的尾数舍去。'},
+   {t:'答：应付约 10.77 元。',n:'完成',w:'用≈连接！口诀：取到哪位看下位，再和5来作比较；不比5小前进1，比5小的全舍去。'}]},
+ lab:'gate',
+ tips:{use:'求积的近似数：① 先按小数乘法<b>算出准确的积</b>；② 看要保留那一位的<b>下一位</b>，四舍五入，用<b>≈</b>连接。人民币最小单位是"分"（百分位），算价钱时结果最多<b>保留两位小数</b>。',fms:['取到哪位看下位，再和5来作比较','≥5 进 1，<5 全舍去','价钱保留两位小数，用≈连接']},
+ recall:[
+  {s:'人民币价钱最多保留【两】位小数，"分"在百分位。',opts:['两','三'],a:'两',why:'1分=0.01元，"分"正好在百分位，所以保留两位。'},
+  {s:'1.35×7.98=10.773，千分位3比5小，把尾数【舍去】，≈10.77。',opts:['舍去','进1'],a:'舍去',why:'3<5全舍去；满5才向前进1。'}],
+ drills:[
+  {q:'1.35 × 7.98 ≈ ?（保留两位小数）',a:10.77,lv:1,opts:[10.77,10.78,10.8,10.773],
+   wr:{'10.78':{tag:'把3当成满5进1',why:'千分位是3，3<5要舍去，不能进1。'},'10.8':{tag:'保留位数错',why:'价钱要保留两位小数（精确到分），不是一位。'},'10.773':{tag:'忘了取近似数',why:'算出积后还要按要求保留两位，用≈连接。'}},
+   ex:'1.35×7.98=10.773\n保留两位看千分位：3<5 舍去\n≈ 10.77',hint:'先算准确积，再看千分位决定舍还是入。'},
+  {q:'青椒每千克 3.2 元，王阿姨买 1.56 千克，应付多少元？（保留两位小数）',a:4.99,lv:1,word:1,opts:[4.99,5.00,4.9,4.992],
+   wr:{'5':{tag:'连续进位误判',why:'千分位2<5直接舍去是4.99；看到992就想"进上去成5.00"是错觉。'},'4.9':{tag:'保留位数错',why:'要保留两位小数（到分），不是一位。'},'4.992':{tag:'忘了取近似数',why:'钱数最多到分，要保留两位。'}},
+   ex:'3.2×1.56=4.992\n千分位2<5 舍去\n≈ 4.99（元）',hint:'4.992离5.00很近，但规则只看千分位：2<5舍。'},
+  {q:'江苏碧螺春 1 千克 1224.52 元，杨伯伯买 0.8 千克，应付多少元？（保留两位小数）',a:979.62,lv:2,word:1,opts:[979.62,979.61,979.6,980],
+   wr:{'979.61':{tag:'该进没进',why:'千分位是6，6≥5要向百分位进1：979.62。'},'979.6':{tag:'保留位数错',why:'保留两位小数，不是一位。'},'980':{tag:'精确到个位了',why:'人民币要精确到分（两位小数），不是四舍五入到个位。'}},
+   ex:'1224.52×0.8=979.616\n千分位6≥5 进1\n≈ 979.62（元）',hint:'先算乘积979.616，千分位是6。'},
+  {q:'节能空调每小时耗电 0.9 千瓦时，电费每千瓦时 0.52 元，开一天（24小时）需要电费多少元？（保留两位小数）',a:11.23,lv:2,word:1,opts:[11.23,11.24,11.2,11.232],
+   wr:{'11.24':{tag:'把2当成满5进1',why:'千分位2<5要舍去，是11.23。'},'11.2':{tag:'保留位数错',why:'价钱保留两位小数。'},'11.232':{tag:'忘了取近似数',why:'结果超过两位小数要取近似数。'}},
+   ex:'0.9×0.52=0.468（元/时）\n0.468×24=11.232（元）\n千分位2<5 舍去\n≈ 11.23（元）',hint:'分两步乘，最后再四舍五入。'},
+  {q:'★ 水果超市卖出 36.85 千克苹果，售价每千克 4.7 元，进价每千克 3.6 元，赚了多少元？（保留两位小数）',a:40.54,lv:3,word:1,opts:[40.54,40.53,40.5,41],
+   wr:{'40.53':{tag:'以为5后面没数就不进',why:'千分位正好是5，满5进1：40.535≈40.54。'},'40.5':{tag:'保留位数错',why:'保留两位小数。'},'41':{tag:'精确到个位了',why:'要保留两位小数。'}},
+   ex:'方法一：4.7×36.85≈173.20，3.6×36.85=132.66，173.20−132.66=40.54\n方法二（更巧）：每千克赚 4.7−3.6=1.1（元）\n1.1×36.85=40.535\n千分位5≥5 进1\n≈ 40.54（元）',hint:'★先算每千克赚多少，再乘千克数更巧！'}]},
+
+{id:'u2',ic:'🍶',nm:'第1课 进一法与去尾法',ds:'分装模拟器 · 看生活实际',
+ ex:{expr:'1250 ÷ 400',num:'1250克糖粉分装进最多装400克的瓶子——商是3.125，瓶子个数可不能是小数！',op:'求商的近似数要看生活实际：装下它要"进一法"。',
+  feats:['除法有余数','答案个数必须是整数','"至少几个能装下"→进一法'],
+  methods:['先算商','按实际选进一/去尾','答案取整数'],
+  steps:[{t:'1250 ÷ 400'},
+   {t:'1250 ÷ 400 = 3.125（个）',n:'先算商',w:'3瓶装满1200克，还剩50克糖粉。'},
+   {t:'3.125 ≈ 4（个）',n:'进一法',w:'剩下的50克也要1个瓶子装！不管十分位是几，都向整数部分进1。'},
+   {t:'答：需要准备 4 个玻璃瓶。',n:'完成',w:'装东西、租车、运货→进一法；做东西、买东西、倒满→去尾法。'}]},
+ lab:'boatload',
+ tips:{use:'光看算式不够，要看<b>生活实际</b>！"最多能做/能买/能倒满"→<b>去尾法</b>（不够一个就舍掉）；"至少几个能装下/运完/坐下"→<b>进一法</b>（剩下的也要算一个）。答案必须是整数。',fms:['做衣服·买东西·倒满杯 → 去尾法','装瓶·租车·运货·坐满 → 进一法','15÷2≈7（小朋友个数不能是7.5）']},
+ recall:[
+  {s:'"最多能做几个"用【去尾法】，剩下的不够一个就舍掉。',opts:['去尾法','进一法'],a:'去尾法',why:'做蛋糕、买衣服、倒满杯：剩下不够一个，只能舍。'},
+  {s:'"至少几个能装下"用【进一法】，剩下的也要算一个。',opts:['进一法','去尾法'],a:'进一法',why:'装瓶、租船、运货：剩下的再少也要多准备一个。'}],
+ drills:[
+  {q:'做一个蛋糕需要面粉 0.08 千克，一袋面粉 1.25 千克，最多可以做多少个蛋糕？',a:15,lv:1,word:1,opts:[15,16,15.6,15.625],
+   wr:{'16':{tag:'该去尾却进了1',why:'15个用掉1.2千克，剩0.05千克不够再做一个——"最多能做"用去尾法。'},'15.6':{tag:'个数必须是整数',why:'蛋糕个数不能是小数。'},'15.625':{tag:'个数必须是整数',why:'要按实际取整数：去尾法取15。'}},
+   ex:'1.25÷0.08=15.625（个）\n"最多能做"→去尾法\n≈ 15（个）',hint:'想想：剩下的面粉还够做一个吗？'},
+  {q:'1250 克糖粉分装在最多可装 400 克的玻璃瓶里，至少需要准备几个瓶子？',a:4,lv:1,word:1,opts:[4,3,3.1,3.125],
+   wr:{'3':{tag:'该进一却去了尾',why:'装满3瓶还剩50克，剩下的也要1个瓶子——"装下"用进一法。'},'3.1':{tag:'个数必须是整数',why:'瓶子个数要取整数，按实际用进一法。'},'3.125':{tag:'个数必须是整数',why:'瓶子个数不能是小数。'}},
+   ex:'1250÷400=3.125（个）\n"至少几个能装下"→进一法\n≈ 4（个）',hint:'剩下的50克放哪里？'},
+  {q:'王阿姨用一根 25 米长的丝带包装礼盒，每包装一个礼盒要用 1.5 米，这根丝带最多可以包装多少个礼盒？',a:16,lv:2,word:1,opts:[16,17,16.7,16.6],
+   wr:{'17':{tag:'该去尾却进了1',why:'16个用24米，只剩1米不够再包一个（要1.5米）——去尾法。'},'16.7':{tag:'个数必须是整数',why:'礼盒个数要取整数：去尾16。'},'16.6':{tag:'个数必须是整数',why:'礼盒个数不能是小数。'}},
+   ex:'25÷1.5=16.66…（个）\n剩1米<1.5米，不够再包一个\n"最多"→去尾法 ≈ 16（个）',hint:'包完16个后还剩多少米？够再包吗？'},
+  {q:'五(2)班师生共 33 人去划船，每条船最多坐 4 人，至少需要租多少条船？',a:9,lv:2,word:1,opts:[9,8,8.3,8.25],
+   wr:{'8':{tag:'该进一却去了尾',why:'8条船只能坐32人，还剩1人也要1条船——租船用进一法（书上的经典易误题）。'},'8.3':{tag:'条数必须是整数',why:'船的条数要取整数：进一法取9。'},'8.25':{tag:'条数必须是整数',why:'船的条数不能是小数。'}},
+   ex:'33÷4=8.25（条）\n8条坐32人，还剩1人\n"至少几条"→进一法 ≈ 9（条）',hint:'剩下那1个人总不能站着吧？'},
+  {q:'★ 一桶纯净水连桶共重 15.5 千克，倒出一半水后连桶共重 8.75 千克。每个杯子最多装 0.4 千克水，这桶水最多可以倒满多少杯？',a:33,lv:3,word:1,opts:[33,34,16,33.75],
+   wr:{'34':{tag:'该去尾却进了1',why:'"最多倒满多少杯"——剩下的不够倒满一杯，去尾取33。'},'16':{tag:'忘了半桶要×2',why:'15.5−8.75=6.75只是半桶水，整桶水要×2=13.5千克。'},'33.75':{tag:'杯数必须是整数',why:'杯数取整数：去尾33。'}},
+   ex:'半桶水：15.5−8.75=6.75（千克）\n整桶水：6.75×2=13.5（千克）\n13.5÷0.4=33.75（杯）\n"最多倒满"→去尾法 ≈ 33（杯）',hint:'★先求整桶水重，注意"倒出一半"这个陷阱！'}]},
+
+{id:'u3',ic:'💱',nm:'第2课 人民币汇率',ds:'货币兑换机 · 先算后约',
+ ex:{expr:'3334.91 ÷ 6.3482',num:'1美元换6.3482元人民币——汇率有4位小数，千万别先约再算！',op:'人民币折美元=求有多少个6.3482，用除法；最后才取近似数。',
+  feats:['汇率是4位小数','先算出完整的积或商，最后再四舍五入','结果一般保留两位小数'],
+  methods:['看准乘除','先算后约','保留两位'],
+  steps:[{t:'3334.91 ÷ 6.3482'},
+   {t:'1 美元 = 6.3482 元人民币',n:'看汇率',w:'上海进出口总额3334.91亿元，求里面有多少个6.3482，用除法。'},
+   {t:'3334.91 ÷ 6.3482 = 525.3315…',n:'先算完整的商',w:'⚠️不能先把6.3482约成6.35再除——先用完整汇率算，最后再约！'},
+   {t:'525.3315… ≈ 525.33（亿美元）',n:'保留两位',w:'千分位1<5，舍去。'},
+   {t:'答：约折合 525.33 亿美元。',n:'完成',w:'口诀：四舍五入方法好，近似数来有法找，取到哪位看下位，再和5来作比较。'}]},
+ lab:'exchange',
+ tips:{use:'汇率换算先<b>看准乘除</b>：已知"1外币=N元人民币"，人民币折外币用<b>除法</b>（求有多少个N）；已知"1元人民币=N外币"，折外币用<b>乘法</b>。⚠️必须先用<b>完整汇率</b>算出积或商，<b>最后才取近似数</b>——先把汇率约成两位再乘，误差会滚大（书上易误点：17689.46≠17690.31）！',fms:['先算后约，顺序不能反','元→美元：÷6.3482','元→卢布：×13.1480','结果保留两位小数']},
+ recall:[
+  {s:'汇率题要【先算出完整的积或商】，最后再取近似数。',opts:['先算出完整的积或商','先把汇率约成两位'],a:'先算出完整的积或商',why:'先约汇率再乘会让误差越滚越大，书上的易误点！'},
+  {s:'5000元人民币换日元（100日元=7.89元）：5000÷7.89≈633.7136，再乘【100】换回日元。',opts:['100','1000'],a:'100',why:'633.7136是"多少个100日元"，×100才是日元数。中间结果要保留四位小数。'}],
+ drills:[
+  {q:'人民币 1 元可换 13.1480 俄罗斯卢布。741.3508 亿元人民币约折合多少亿卢布？（精确到百分位）',a:9747.28,lv:1,word:1,opts:[9747.28,9747.27,9747.3,9747.2803],
+   wr:{'9747.27':{tag:'把千分位0看成要退位',why:'千分位是0，0<5直接舍去，百分位8不变：9747.28。'},'9747.3':{tag:'保留位数错',why:'精确到百分位是两位小数。'},'9747.2803':{tag:'忘了取近似数',why:'要精确到百分位，用≈连接。'}},
+   ex:'741.3508×13.1480=9747.2803…\n千分位0<5 舍去\n≈ 9747.28（亿卢布）',hint:'1元换13.1480卢布，用乘法。'},
+  {q:'1 美元兑换人民币 6.3482 元，500 元人民币约可兑换多少美元？（保留两位小数）',a:78.76,lv:1,word:1,opts:[78.76,78.77,3174.10,78.7],
+   wr:{'3174.1':{tag:'乘除用反',why:'500×6.3482=3174.10是"500美元换多少人民币"；人民币换美元要求500里有几个6.3482，用除法。'},'78.77':{tag:'不该进的进了',why:'千分位2<5要舍去：78.76。'},'78.7':{tag:'保留位数错',why:'保留两位小数。'}},
+   ex:'500÷6.3482=78.762…\n千分位2<5 舍去\n≈ 78.76（美元）',hint:'求500里有几个6.3482，用除法。'},
+  {q:'100 日元兑换人民币 7.89 元，把 5000 元人民币兑换成日元，约可换多少日元？（保留两位小数）',a:63371.36,lv:2,word:1,opts:[63371.36,633.71,63371.35,63900],
+   wr:{'633.71':{tag:'漏乘100',why:'633.71是"多少个100日元"，还要×100换回日元：63371.36。'},'63371.35':{tag:'该进没进',why:'633.7135…×100=63371.35…，千分位6≥5进1→63371.36（中间结果保留四位小数再乘）。'},'63900':{tag:'乘除用反',why:'5000÷7.89求"有多少个7.89元"，不是乘。'}},
+   ex:'5000÷7.89≈633.7136（个100日元）\n633.7136×100=63371.36（日元）\n≈ 63371.36（日元）',hint:'第一步保留四位小数，因为乘100后要保留两位。'},
+  {q:'上海外高桥保税区 2 月进出口总额 729.9353 亿元，按 1 美元≈6.9228 元人民币的汇率，约折合多少亿美元？（保留两位小数）',a:105.44,lv:2,word:1,opts:[105.44,105.43,5053.19,105.4],
+   wr:{'105.43':{tag:'该进没进',why:'千分位9≥5进1：105.44。'},'5053.19':{tag:'乘除用反',why:'729.9353×6.9228≈5053.19是把方向搞反了；人民币折美元用除法。'},'105.4':{tag:'保留位数错',why:'保留两位小数。'}},
+   ex:'729.9353÷6.9228=105.439…\n千分位9≥5 进1\n≈ 105.44（亿美元）',hint:'求729.9353里有几个6.9228。'},
+  {q:'★ 判断对错：「为了算得精确，先把汇率 12.5706 ≈ 12.57，再参与乘法计算。」',sopts:['不对：先算出完整的积，最后才取近似数','对：先约成两位更精确','对：书上就是这样教的'],a:'不对：先算出完整的积，最后才取近似数',lv:3,word:1,
+   wr:{'对：先约成两位更精确':{tag:'先约后算（顺序错）',why:'先把汇率取近似数再乘，误差会越滚越大！正确做法：用完整汇率12.5706算出积，最后才四舍五入。'},'对：书上就是这样教的':{tag:'先约后算（顺序错）',why:'书上恰恰把这个当易误点：先约再算得17689.46，正确是17690.31，差了近1亿卢布！'}},
+   ex:'错解：12.5706≈12.57，1407.2764×12.57≈17689.46\n正解：1407.2764×12.5706≈17690.31\n差了近1亿卢布！\n求积或商的近似数：先算出积或商，再求近似数。',hint:'★书上的易误点：先约后算，还是算完再约？'}]},
+
+{id:'u4',ic:'💡',nm:'第3课 水电天然气的费用',ds:'峰谷电表 · 阶梯计价',
+ ex:{expr:'0.617 × 130 + 0.307 × 40',num:'130和40不是抄表读数，是"本月−上月"算出来的用量！峰时贵、谷时便宜。',op:'分段相加——总电费=峰时电费+谷时电费。',
+  feats:['本月用量=本月抄见数−上月抄见数','峰谷分时电价：峰时单价>谷时单价','水费=供水费+污水处理费（×0.90）'],
+  methods:['抄表相减求用量','峰谷分开算','再相加'],
+  steps:[{t:'0.617 × 130 + 0.307 × 40'},
+   {t:'8178 − 8048 = 130（千瓦时）',n:'抄表算用量',w:'本月用电量=本月抄见数−上月抄见数。谷时：2167−2127=40（千瓦时）。'},
+   {t:'0.617 × 130 = 80.21（元）',n:'峰时电费',w:'峰时用电多、单价高：单价×用量。'},
+   {t:'0.307 × 40 = 12.28（元）',n:'谷时电费',w:'谷时（晚上10时~早上6时）单价只要约一半！'},
+   {t:'80.21 + 12.28 = 92.49（元）',n:'完成',w:'总电费=峰时电费+谷时电费。水费同理：供水费+污水处理费。'}]},
+ lab:'meter',
+ tips:{use:'电费：本月用电量=<b>本月抄见数−上月抄见数</b>；应缴电费=用电量×单价。峰谷分时：总电费=<b>峰时费+谷时费</b>（谷时=晚上10时~次日早6时，更便宜）。水费=供水费+污水处理费，污水处理费=用水量×征收标准<b>×0.90</b>。阶梯气价：<b>每档气量×该档单价</b>再相加。',fms:['用量=本月−上月','总电费=峰+谷','水费=供水+污水(×0.90)','阶梯价一档一档分开算']},
+ recall:[
+  {s:'本月用电量=本月抄见数【−】上月抄见数。',opts:['−','+'],a:'−',why:'电表读数是累计的，相减才是这个月用的。'},
+  {s:'污水处理费=用水量×征收标准×【0.90】。',opts:['0.90','2.00'],a:'0.90',why:'书上的规定：污水处理费按征收标准的90%计征。'}],
+ drills:[
+  {q:'小海家峰时电表上月抄见数 8048、本月抄见数 8178，本月峰时用电量是多少千瓦时？',a:130,lv:1,word:1,opts:[130,226,8178,16226],
+   wr:{'226':{tag:'抄表减法做成加法',why:'本月用量=本月抄见数−上月抄见数：8178−8048=130。'},'8178':{tag:'把抄见数当用量',why:'8178是电表累计读数，要减去上月读数才是本月用量。'},'16226':{tag:'算成两月总和',why:'用量要相减，不是相加。'}},
+   ex:'8178−8048=130（千瓦时）\n用量=本月抄见数−上月抄见数',hint:'电表读数是"累计"，本月用的要减出来。'},
+  {q:'峰时用电 130 千瓦时（单价 0.617 元）、谷时用电 40 千瓦时（单价 0.307 元），应缴电费多少元？',a:92.49,lv:1,word:1,opts:[92.49,80.21,104.89,92.5],
+   wr:{'80.21':{tag:'漏算谷时电费',why:'总电费=峰时电费+谷时电费：80.21+12.28=92.49。'},'104.89':{tag:'全部按峰时价',why:'谷时40千瓦时要按谷时价0.307算，不是0.617×170。'},'92.5':{tag:'多约了一次',why:'92.49已经是两位小数，正好到分，不要再四舍五入。'}},
+   ex:'0.617×130=80.21（元）\n0.307×40=12.28（元）\n80.21+12.28=92.49（元）',hint:'峰、谷分开算，最后相加。'},
+  {q:'小海家本月用水 22 立方米，供水单价 2.25 元/立方米，污水处理费征收标准 2.00 元/立方米（按90%计征）。应缴水费多少元？',a:89.1,lv:2,word:1,opts:[89.1,49.5,93.5,44],
+   wr:{'49.5':{tag:'漏算污水处理费',why:'应缴水费=供水费+污水处理费：49.5+39.6=89.1。'},'93.5':{tag:'污水费忘乘0.90',why:'污水处理费=22×2.00×0.90=39.6，不是22×2=44。'},'44':{tag:'只算了污水费',why:'还要加上供水费22×2.25=49.5。'}},
+   ex:'供水费：22×2.25=49.5（元）\n污水处理费：22×2.00×0.90=39.6（元）\n49.5+39.6=89.1（元）',hint:'水费有两部分：供水+污水，污水费别忘×0.90。'},
+  {q:'天然气阶梯价：0~400 立方米（含）每立方米 2.4 元，400~600 立方米（含）每立方米 2.8 元。童童家去年用气 520 立方米，应交多少元？',a:1296,lv:2,word:1,opts:[1296,1248,1456,336],
+   wr:{'1248':{tag:'全部按第一档价',why:'520立方米要分段：400按2.4元，超出的120按2.8元，520×2.4=1248没分段。'},'1456':{tag:'全部按第二档价',why:'前400立方米按便宜的2.4元，只有超出部分120立方米按2.8元。'},'336':{tag:'只算了第二档',why:'还要加第一档：400×2.4=960。'}},
+   ex:'第一档：400×2.4=960（元）\n第二档：(520−400)×2.8=120×2.8=336（元）\n960+336=1296（元）',hint:'把520切成400+120两段，各乘各的价。'},
+  {q:'★ 天然气阶梯价：0~400 立方米 2.4 元、400~600 立方米 2.8 元、600 以上 3.6 元。童童家一年交了 1556 元，这一年用气量是多少立方米？',a:610,lv:3,word:1,opts:[610,648,613,556],
+   wr:{'648':{tag:'没分档直接除',why:'1556÷2.4≈648不对——每档单价不同，要一档一档减。'},'613':{tag:'只减了第一档',why:'1556−960=596，但第二档最多只能收(600−400)×2.8=560元，596>560说明进了第三档。'},'556':{tag:'档次减错',why:'先算满一、二档共1520元，超出的36元按第三档3.6元算。'}},
+   ex:'第一档满：400×2.4=960（元）\n第二档满：200×2.8=560（元），960+560=1520（元）\n1556>1520，进第三档：1556−1520=36（元）\n第三档用量：36÷3.6=10（立方米）\n600+10=610（立方米）',hint:'★反推：先算满一、二档要多少钱，看超没超。'}]},
+
+{id:'u5',ic:'🚕',nm:'第3课 分段计费',ds:'出租车线段图 · 快递首续重',
+ ex:{expr:'12 + 7 × 2.4 + 2 × 3.5',num:'12千米要切成三段：0~3千米包干、3~10千米中段、10千米以上远段——越远越贵！',op:'分段计费——各段分开算，最后相加。画线段图最清楚。',
+  feats:['起步价含前3千米','不同段单价不同','反推用量要先减基础段费用'],
+  methods:['画线段图分段','各段×各段单价','相加求总费'],
+  steps:[{t:'12 + 7 × 2.4 + 2 × 3.5'},
+   {t:'0~3 千米：起步价 12 元',n:'第一段包干',w:'起步价12元里已经含了前3千米，不用再乘单价。'},
+   {t:'3~10 千米：7 × 2.4 = 16.8（元）',n:'第二段',w:'10−3=7千米，每千米2.4元。'},
+   {t:'10~12 千米：2 × 3.5 = 7（元）',n:'第三段',w:'超过10千米的部分每千米3.5元：12−10=2千米。'},
+   {t:'12 + 16.8 + 7 = 35.8（元）',n:'完成',w:'答：小杰乘12千米应付35.8元。分段计费口诀：切开算，再相加！'}]},
+ lab:'segments',
+ tips:{use:'分段计费画<b>线段图</b>：起步段包干价＋中段×中段单价＋远段×远段单价，<b>各段分开算再相加</b>。反推用量：总钱−基础段费用=超出费，÷超出单价=超出量，+基础量。快递注意"首重包干、续重<b>不足1kg按1kg</b>"（向上取整）。',fms:['总费=起步+中段+远段','反推：先减基础费，再÷超出单价','续重不足1kg按1kg算']},
+ recall:[
+  {s:'出租车费=起步价+中段费+远段费，要【分段】算再加起来。',opts:['分段','一起'],a:'分段',why:'每段单价不同，混着乘就错了。'},
+  {s:'反推用气量：先减去基础段的费用，再÷超出段的【单价】。',opts:['单价','总价'],a:'单价',why:'超出费÷超出单价=超出量，最后别忘加回基础量。'}],
+ drills:[
+  {q:'出租车起步价 12 元（含 3 千米），超过 3 千米且不超过 10 千米的部分每千米 2.4 元，超过 10 千米的部分每千米 3.5 元。小杰乘 12 千米应付多少元？',a:35.8,lv:1,word:1,opts:[35.8,28.8,42,23.8],
+   wr:{'28.8':{tag:'全程按2.4元算',why:'要分三段：起步12元+中段7千米×2.4+远段2千米×3.5，12×2.4=28.8没分段。'},'42':{tag:'全程按3.5元算',why:'只有超过10千米的2千米才按3.5元，12×3.5=42全按最贵价。'},'23.8':{tag:'忘加起步价',why:'7×2.4+2×3.5=23.8只是超出部分，还要加起步价12元。'}},
+   ex:'起步段（0~3千米）：12元\n中段（3~10千米）：7×2.4=16.8（元）\n远段（10~12千米）：2×3.5=7（元）\n12+16.8+7=35.8（元）',hint:'把12千米切成3+7+2三段。'},
+  {q:'上海寄快递到徐州：首重 1 kg 12 元，续重每千克 2 元（不足 1 kg 按 1 kg 计算）。小雨寄 3.5 kg，应付多少元？',a:18,lv:1,word:1,opts:[18,17,16,19],
+   wr:{'17':{tag:'续重没向上取整',why:'3.5−1=2.5千克，不足1kg按1kg算→按3千克收费：12+3×2=18。'},'16':{tag:'续重少数了1千克',why:'2.5千克要按3千克算：12+3×2=18，不是12+2×2。'},'19':{tag:'首重也算进续重',why:'首重1千克是12元包干，续重只算超出的部分。'}},
+   ex:'续重：3.5−1=2.5（kg）→ 按 3 kg 算\n12+3×2=18（元）',hint:'2.5千克里有"零头"，零头也要按1千克收。'},
+  {q:'每户用天然气 60 立方米以内按每立方米 3.5 元收费，超出部分按每立方米 4.2 元收费。小杰家上月共交 252 元，用气量是多少立方米？',a:70,lv:2,word:1,opts:[70,72,66,64],
+   wr:{'72':{tag:'没分段直接除',why:'252÷3.5=72不对——超出部分单价是4.2元，要分段反推。'},'66':{tag:'超出量没加回60',why:'42÷4.2=10只是超出量，总用量=60+10=70。'},'64':{tag:'超出费算错',why:'先减60立方米的费用210元：252−210=42元才是超出费。'}},
+   ex:'60立方米费用：60×3.5=210（元）\n超出费：252−210=42（元）\n超出量：42÷4.2=10（立方米）\n总用量：60+10=70（立方米）',hint:'反推三步：减基础费→÷单价→加基础量。'},
+  {q:'一根 92 米长的绳子，先用 43.6 米做了 8 根长跳绳，剩下的做每根 1.2 米的短跳绳，最多还可以做多少根？',a:40,lv:2,word:1,opts:[40,41,40.3,39],
+   wr:{'41':{tag:'该去尾却进了1',why:'做40根用48米，剩0.4米不够再做一根（要1.2米）——"最多能做"用去尾法。'},'40.3':{tag:'根数必须是整数',why:'跳绳根数要取整数：去尾40。'},'39':{tag:'减法先算错',why:'先算剩下：92−43.6=48.4米，再÷1.2。'}},
+   ex:'剩下：92−43.6=48.4（米）\n48.4÷1.2=40.33…（根）\n"最多"→去尾法 ≈ 40（根）',hint:'先减后除，最后想想去尾还是进一。'},
+  {q:'★ 工地要运 52 吨黄沙，大货车每次运 4.8 吨，运了 5 次后坏了，剩下的改用面包车每次运 2.6 吨，还要运多少次才能运完？',a:11,lv:3,word:1,opts:[11,10,10.8,9],
+   wr:{'10':{tag:'该进一却去了尾',why:'10次只能运26吨，还剩2吨也要再运一次——"运完"用进一法。'},'10.8':{tag:'次数必须是整数',why:'次数取整数：进一法取11。'},'9':{tag:'先减错了',why:'大货车运走4.8×5=24吨，剩52−24=28吨。'}},
+   ex:'大货车运走：4.8×5=24（吨）\n剩下：52−24=28（吨）\n28÷2.6=10.76…（次）\n"运完"→进一法 ≈ 11（次）',hint:'★先算还剩多少吨，再想10次运得完吗？'}]},
+
+{id:'u6',ic:'🗺️',nm:'单元总览 · 知识导图',ds:'三把尺 · 常考题型 · 购物最值',
+ ex:{expr:'小数的应用 · 三把尺',num:'近似数三兄弟：≈四舍五入、进一法、去尾法——用哪把尺，看生活实际！',op:'整个单元=小数四则混合运算的生活实战：价钱、汇率、水电费、分段计费。',
+  feats:['积/商的近似数：四舍五入','装下/运完/坐满→进一法；做满/买够/倒满→去尾法','水电费、分段计费、购物最值'],
+  methods:['先算后约','按实际选尺','列方案比较'],
+  steps:[{t:'第 2 单元 小数的应用'},
+   {t:'积/商的近似数：四舍五入',n:'第一把尺',w:'先算准确值，再按要求四舍五入，用≈连接。人民币一般保留两位。'},
+   {t:'装下、运完、坐下：进一法',n:'第二把尺',w:'不管十分位是几，都向整数部分进1——剩下的也要算一个！'},
+   {t:'做满、买够、倒满：去尾法',n:'第三把尺',w:'不管十分位是几都舍去——不够一个就舍掉！'},
+   {t:'水电费 · 分段计费 · 汇率',n:'完成',w:'全是小数四则混合运算的实战：用量=本月−上月；分段切开算再相加；汇率先算后约。'}]},
+ lab:'mindmap',
+ tips:{use:'购物最值三招：① "最多买多少"→总钱÷单价<b>去尾取整</b>；② "最少花多少"→优先买<b>单价低</b>的组合；③ 多种方案→<b>列全方案一一算，比出最优</b>（87张资料按100张计费35元，反而比43.5元便宜！）。',fms:['盒装单价=整盒价÷支数','方案列全，一一比较','近似数看生活实际']},
+ recall:[
+  {s:'培优最值："最多买多少"用去尾法，"最省钱"要列出方案【一一比较】。',opts:['一一比较','凭感觉猜'],a:'一一比较',why:'最值问题不能猜：列全可行方案，算出来比。'},
+  {s:'87张打印：按100张计费35元 < 87张计费43.5元，多印13张反而【更便宜】。',opts:['更便宜','更贵'],a:'更便宜',why:'批量价每张0.35元，100×0.35=35<43.5。最值题要敢想"凑批量"。'}],
+ drills:[
+  {q:'签字笔单买 7.5 元/支，盒装 38.4 元/盒（每盒 6 支）。盒装平均每支比单买便宜多少元？',a:1.1,lv:1,word:1,opts:[1.1,6.4,0.9,1.4],
+   wr:{'6.4':{tag:'答错了问题',why:'6.4是盒装单价，题目问"便宜多少"：7.5−6.4=1.1。'},'0.9':{tag:'单价除错',why:'38.4÷6=6.4，不是6.6。'},'1.4':{tag:'减错对象',why:'用单买价7.5减盒装单价6.4：1.1。'}},
+   ex:'盒装单价：38.4÷6=6.4（元/支）\n便宜：7.5−6.4=1.1（元）',hint:'先求盒装每支多少钱，再比。'},
+  {q:'小明买 15 支签字笔（单买 7.5 元/支，盒装 38.4 元/盒每盒 6 支），怎样买最省钱？最少花多少元？',a:99.3,lv:1,word:1,opts:[99.3,112.5,115.2,96.3],
+   wr:{'112.5':{tag:'全部单买',why:'15×7.5=112.5最贵；盒装每支6.4元更便宜，优先买盒装。'},'115.2':{tag:'多买了一整盒',why:'3盒18支=115.2，多买3支用不上，不是最省。'},'96.3':{tag:'数量配错',why:'15÷6=2盒…3支：76.8+22.5=99.3。'}},
+   ex:'盒装6.4元/支<7.5元/支，优先盒装\n15÷6=2（盒）…3（支）\n38.4×2+7.5×3=76.8+22.5=99.3（元）',hint:'先比单价，再看15支怎么配。'},
+  {q:'打印店：单张打印每张 0.8 元；满 50 张每张 0.5 元；满 100 张每张 0.35 元。老师要打印 87 张资料，最省钱要花多少元？',a:35,lv:2,word:1,opts:[35,43.5,30.45,39.5],
+   wr:{'43.5':{tag:'没想到"凑批量"',why:'87张按0.5元=43.5元；但按100张计费只要100×0.35=35元，多印13张反而更便宜！'},'30.45':{tag:'不满100也按0.35算',why:'87张不够100张，不能直接按0.35单价乘87；但可以"按100张计费"花35元。'},'39.5':{tag:'方案没算全',why:'列全方案比较：87×0.5=43.5，100×0.35=35，选35。'}},
+   ex:'方案A：87×0.5=43.5（元）\n方案B：按100张计费 100×0.35=35（元）\n35<43.5，选B\n最少花 35（元）',hint:'满100张单价骤降——多印反而便宜？'},
+  {q:'小明家天然气表上月读数 510.5 立方米、本月读数 525.4 立方米，天然气价格 2.267 元/立方米，这个月应缴多少元？（保留两位小数）',a:33.78,lv:2,word:1,opts:[33.78,33.77,34.79,33.8],
+   wr:{'33.77':{tag:'该进没进',why:'33.7783千分位是8，8≥5进1：33.78。'},'34.79':{tag:'用量算错',why:'先算用量：525.4−510.5=14.9立方米，再×2.267。'},'33.8':{tag:'保留位数错',why:'保留两位小数。'}},
+   ex:'用量：525.4−510.5=14.9（立方米）\n14.9×2.267=33.7783（元）\n千分位8≥5 进1\n≈ 33.78（元）',hint:'先减出用量，再乘单价，最后四舍五入。'},
+  {q:'★ 一桶油连桶共重 12.5 千克，吃了一半后连桶共重 6.6 千克。把这桶油倒进最多装 0.45 千克的油壶里，需要准备多少个油壶？',a:27,lv:3,word:1,opts:[27,26,26.2,13],
+   wr:{'26':{tag:'该进一却去了尾',why:'"需要几个壶才能装下"用进一法：剩下的油也要一个壶。'},'26.2':{tag:'个数必须是整数',why:'油壶个数取整数：进一法27。'},'13':{tag:'忘了半桶×2',why:'12.5−6.6=5.9只是半桶油，整桶油要×2=11.8千克。'}},
+   ex:'半桶油：12.5−6.6=5.9（千克）\n整桶油：5.9×2=11.8（千克）\n11.8÷0.45=26.22…（个）\n"装下"→进一法 ≈ 27（个）',hint:'★和"倒满杯"相反：这题是"全装下"，用进一法！'}]}
+];
+
+/* =================== 实验室（每馆一个"纸笔做不到"的互动动画） =================== */
+var LAB_PASS=false;
+function labDone(){if(LAB_PASS)return;LAB_PASS=true;$('btnLabNext').classList.remove('hide');}
+var LAB={
+gate:function(box,pass){
+ box.innerHTML='<div class="labtip">1.35×7.98 = <b>10.773</b>，要保留两位小数（精确到分）。第一关：得<b>看哪一位</b>才能决定舍还是入？</div>'
+ +'<div class="rcbtns"><button class="opt" id="g1">十分位</button><button class="opt" id="g2">百分位</button><button class="opt" id="g3">千分位</button></div>'
+ +'<div id="gStage"></div>';
+ $('g1').onclick=function(){buzz();$('gStage').innerHTML='<div class="labnote">十分位是要保留的第一位，看得还不够！要比保留的位数<b>多看一位</b>。</div>';};
+ $('g2').onclick=function(){buzz();$('gStage').innerHTML='<div class="labnote">百分位就是要保留的那一位本身，还得看后一位（千分位）才能决定舍入！</div>';};
+ $('g3').onclick=function(){ding();this.disabled=true;$('g1').disabled=true;$('g2').disabled=true;stage2();};
+ function stage2(){
+  $('gStage').innerHTML='<div class="labnote">✅ 保留两位 → 看千分位：10.77<b>3</b></div>'
+  +'<div class="gatebox"><span class="keep">10.77</span><span class="look">3</span></div>'
+  +'<div class="labnote" id="gNote">闸门外的千分位是 3，3 和 5 比 → 该进还是该舍？</div>'
+  +'<button class="btn wide" id="gOpen">🚪 开闸检验！</button><div id="gDemo"></div>';
+  $('gOpen').onclick=function(){ding();this.disabled=true;
+   $('gStage').querySelector('.gatebox').innerHTML='<span class="keep" style="color:var(--green)">10.77</span> <span class="drop">3</span>';
+   $('gNote').innerHTML='🎉 3<5 全舍去：1.35×7.98 <b>≈</b> 10.77（用约等号！）';
+   $('gDemo').innerHTML='<div class="feat">口诀：取到哪位看下位，再和5来作比较。<b>不比5小前进1，比5小的全舍去</b>，连接再用约等号。人民币最小单位是"分"，价钱最多保留两位小数！</div>'
+   +'<button class="btn gold wide" id="gDone">✅ 闸门原理全懂了</button>';
+   $('gDone').onclick=function(){this.disabled=true;pass();};
+  };
+ }
+},
+boatload:function(box,pass){
+ var phase=0,filled=0;
+ function drawA(){
+  box.innerHTML='<div class="labtip"><b>第一关（进一法）</b>：1250克糖粉，每个瓶子最多装400克。点按钮装瓶，看能装满几瓶！</div>'
+  +'<div class="jars" id="jars">'
+  +[0,1,2,3].map(function(i){return '<div class="jar" id="jar'+i+'"><div class="cup"><div class="fill" style="height:0%"></div></div><div class="cap">—</div></div>';}).join('')
+  +'</div>'
+  +'<div class="labnote" id="blNote">🍬 还剩 1250 克</div>'
+  +'<button class="btn wide" id="blFill">🫗 装一瓶</button><div id="blQuiz"></div>';
+  var left=1250;
+  $('blFill').onclick=function(){
+   tick();
+   if(left>=400){left-=400;filled++;
+    var j=$('jar'+(filled-1));j.querySelector('.fill').style.height='100%';j.querySelector('.cap').textContent='400克';
+    $('blNote').textContent='🍬 装满 '+filled+' 瓶，还剩 '+left+' 克';
+    if(left<400){this.classList.add('hide');askA(left);}
+   }
+  };
+ }
+ function askA(left){
+  $('blQuiz').innerHTML='<div class="labnote" style="margin-top:10px">🤔 只剩 '+left+' 克，装不满一瓶了……怎么办？</div>'
+  +'<div class="rcbtns"><button class="opt" id="blA1">也要 1 个瓶子装起来</button><button class="opt" id="blA2">这点倒掉，不算了</button></div>';
+  $('jar3').classList.add('last');
+  $('blA1').onclick=function(){ding();
+   var j=$('jar3');j.querySelector('.fill').style.height=Math.round(left/400*100)+'%';j.querySelector('.cap').textContent=left+'克';
+   $('blQuiz').innerHTML='<div class="labnote">🎉 对！剩下的糖粉也要一个瓶子：1250÷400=3.125 ≈ <b>4（个）</b><br>这就是<b>进一法</b>——"装下它"，剩下的再少也要多准备一个！</div>'
+   +'<button class="btn gold wide" id="blNext">▶ 第二关：去尾法</button>';
+   $('blNext').onclick=function(){phase=1;drawB();};
+  };
+  $('blA2').onclick=function(){buzz();$('blQuiz').insertAdjacentHTML('beforeend','<div class="labnote" style="color:var(--red)">糖粉不能扔呀！剩下的也要装瓶带走，再想想～</div>');};
+ }
+ function drawB(){
+  box.innerHTML='<div class="labtip"><b>第二关（去尾法）</b>：做一个蛋糕要 0.08 千克面粉。一袋面粉 1.25 千克，做了 15 个蛋糕后还剩 0.05 千克。</div>'
+  +'<div class="exres">15 个蛋糕用掉 15×0.08 = 1.2（千克）<br>还剩 1.25 − 1.2 = <b>0.05（千克）</b></div>'
+  +'<div class="labnote">🤔 剩下的 0.05 千克，还能再做一个蛋糕吗？</div>'
+  +'<div class="rcbtns"><button class="opt" id="blB1">不能，不够一个就舍去</button><button class="opt" id="blB2">能，凑一凑再做1个</button></div>'
+  +'<div id="blFin"></div>';
+  $('blB1').onclick=function(){ding();this.disabled=true;$('blB2').disabled=true;
+   $('blFin').innerHTML='<div class="feat">🎉 对啦！0.05 < 0.08，不够再做一个，只能舍去：1.25÷0.08=15.625 ≈ <b>15（个）</b>。这就是<b>去尾法</b>——"最多能做"，不够一个就舍！<br>🧙 口诀：<b>装下运完→进一法；做满买够→去尾法。</b></div>';
+   pass();};
+  $('blB2').onclick=function(){buzz();$('blFin').innerHTML='<div class="labnote" style="color:var(--red)">0.05千克 < 0.08千克，面粉不够做不出完整的蛋糕！只能舍去哦。</div>';};
+ }
+ drawA();
+},
+exchange:function(box,pass){
+ var round=0;
+ var R=[
+  {q:'把 <b>500 元人民币</b>换成美元（1美元=6.3482元人民币）',ops:['500 ÷ 6.3482','500 × 6.3482'],good:0,
+   badWhy:'500×6.3482=3174.10 是"500美元换多少人民币"——方向反啦！人民币换美元，是求500里有几个6.3482。',
+   res:'500 ÷ 6.3482 = 78.7624…',ask:'保留两位小数？',opts:['78.76','78.77'],goodA:0,
+   aWhy:'千分位是2，2<5舍去 → 78.76。'},
+  {q:'把 <b>741.3508 亿元人民币</b>换成卢布（人民币1元=13.1480卢布）',ops:['741.3508 × 13.1480','741.3508 ÷ 13.1480'],good:0,
+   badWhy:'1元人民币=13.1480卢布，人民币数×13.1480才是卢布数；÷是把卢布当人民币了。',
+   res:'741.3508 × 13.1480 = 9747.2803…',ask:'精确到百分位？',opts:['9747.28','9747.27'],goodA:0,
+   aWhy:'千分位是0，0<5舍去，百分位8不变 → 9747.28。'}];
+ function draw(){
+  var r=R[round];
+  box.innerHTML='<div class="labtip"><b>第 '+(round+1)+' / 2 笔兑换</b>：'+r.q+'<br>🎯 第一步：选对算式！</div>'
+  +'<div class="rcbtns" id="exOps">'+r.ops.map(function(o,i){return '<button class="opt" data-i="'+i+'">'+o+'</button>';}).join('')+'</div>'
+  +'<div id="exStage"></div>';
+  box.querySelectorAll('#exOps .opt').forEach(function(b){
+   b.onclick=function(){
+    var i=Number(this.getAttribute('data-i'));
+    if(i===r.good){ding();this.classList.add('good');box.querySelectorAll('#exOps .opt').forEach(function(x){x.disabled=true;});stage2(r);}
+    else{buzz();this.classList.add('bad');$('exStage').innerHTML='<div class="labnote" style="color:var(--red)">'+r.badWhy+'</div>';}
+   };
+  });
+ }
+ function stage2(r){
+  $('exStage').innerHTML='<div class="exres">'+r.res+'</div>'
+  +'<div class="labnote">🎯 第二步：'+r.ask+'</div>'
+  +'<div class="rcbtns" id="exAns">'+r.opts.map(function(o,i){return '<button class="opt" data-i="'+i+'">'+o+'</button>';}).join('')+'</div>';
+  box.querySelectorAll('#exAns .opt').forEach(function(b){
+   b.onclick=function(){
+    var i=Number(this.getAttribute('data-i'));
+    if(i===r.goodA){ding();this.classList.add('good');box.querySelectorAll('#exAns .opt').forEach(function(x){x.disabled=true;});
+     round++;
+     if(round<R.length){$('exStage').insertAdjacentHTML('beforeend','<div class="labnote">✅ '+r.aWhy+'</div>');setTimeout(draw,1400);}
+     else{$('exStage').insertAdjacentHTML('beforeend','<div class="feat">🎉 两笔都换对了！⚠️最重要的规矩：<b>先用完整汇率算出积或商，最后才四舍五入</b>。先把汇率约成两位再乘，误差会滚大（书上易误点：17689.46≠17690.31）！</div>');pass();}
+    }
+    else{buzz();this.classList.add('bad');$('exStage').insertAdjacentHTML('beforeend','<div class="labnote" style="color:var(--red)">'+r.aWhy+'</div>');}
+   };
+  });
+ }
+ draw();
+},
+meter:function(box,pass){
+ box.innerHTML='<div class="labtip">小海家的<b>峰谷分时电表</b>长这样。第一步：点「抄表」，算出本月峰时、谷时各用了多少电！</div>'
+ +'<div class="meters">'
+ +'<div class="meter peak"><div class="mt">☀️ 峰时电表</div><div class="rd">8048 → 8178</div><div class="use" id="useP"></div></div>'
+ +'<div class="meter valley"><div class="mt">🌙 谷时电表</div><div class="rd">2127 → 2167</div><div class="use" id="useV"></div></div>'
+ +'</div>'
+ +'<button class="btn wide" id="mtRead">📟 抄表算用量</button><div id="mtStage"></div>';
+ $('mtRead').onclick=function(){this.disabled=true;tick();
+  $('useP').textContent='8178 − 8048 = 130';ding();
+  setTimeout(function(){$('useV').textContent='2167 − 2127 = 40';ding();stage2();},900);
+ };
+ function stage2(){
+  $('mtStage').innerHTML='<div class="labnote">✅ 峰时 130 千瓦时 · 谷时 40 千瓦时。第二步：算电费！</div>'
+  +'<button class="btn wide" id="mtCalc">🧮 峰谷分开算</button><div id="mtFin"></div>';
+  $('mtCalc').onclick=function(){this.disabled=true;tick();
+   $('mtFin').innerHTML='<div class="exres">峰时：0.617 × 130 = 80.21（元）<br>谷时：0.307 × 40 = 12.28（元）<br>合计：80.21 + 12.28 = <b>92.49（元）</b></div>'
+   +'<div class="labnote">🤔 最后一问：「谷时」是什么时间？</div>'
+   +'<div class="rcbtns"><button class="opt" id="mtQ1">晚上10时～早上6时</button><button class="opt" id="mtQ2">中午12时～下午2时</button></div>';
+   $('mtQ1').onclick=function(){ding();this.disabled=true;$('mtQ2').disabled=true;
+    $('mtFin').insertAdjacentHTML('beforeend','<div class="feat">🎉 全对！晚上10时到次日早上6时是谷时，电价便宜近一半——所以洗衣机、热水器可以预约到夜里用，省钱！💧水费也一样有两部分：供水费＋污水处理费（×0.90）。</div>');pass();};
+   $('mtQ2').onclick=function(){buzz();this.classList.add('bad');};
+  };
+ }
+},
+segments:function(box,pass){
+ var lit={};
+ box.innerHTML='<div class="labtip">小杰乘出租车 <b>12 千米</b>。收费标准：起步价12元（含3千米）；3~10千米每千米2.4元；10千米以上每千米3.5元。<br>👆 <b>点每一段</b>，看这段要多少钱！</div>'
+ +'<div class="segbar">'
+ +'<div class="seg s1" id="seg1" style="width:25%">0~3km</div>'
+ +'<div class="seg s2" id="seg2" style="width:58.3%">3~10km</div>'
+ +'<div class="seg s3" id="seg3" style="width:16.7%">10~12km</div>'
+ +'</div>'
+ +'<div class="segcost" id="segCost">12 千米被切成了 3 段</div>'
+ +'<div id="segSum"></div>';
+ var info={seg1:'🟡 起步段：12 元包干（已含前 3 千米）',seg2:'🔵 中段：(10−3) × 2.4 = 7×2.4 = 16.8（元）',seg3:'🟠 远段：(12−10) × 3.5 = 2×3.5 = 7（元）'};
+ ['seg1','seg2','seg3'].forEach(function(id){
+  $(id).onclick=function(){
+   if(lit[id])return;lit[id]=1;tick();this.classList.add('on');
+   $('segCost').textContent=info[id];
+   if(lit.seg1&&lit.seg2&&lit.seg3){ding();sum();}
+  };
+ });
+ function sum(){
+  $('segSum').innerHTML='<button class="btn gold wide" id="segBtn">🧮 三段合起来！</button>';
+  $('segBtn').onclick=function(){this.disabled=true;ding();
+   $('segSum').innerHTML='<div class="exres">12 + 16.8 + 7 = <b>35.8（元）</b></div>'
+   +'<div class="feat">🎉 分段计费口诀：<b>切开算，再相加</b>！反推用量时倒过来：先减基础段费用，÷超出段单价得超出量，最后加回基础量（比如天然气60m³内3.5元、超出4.2元，交252元→60+(252−210)÷4.2=70m³）。</div>';
+   pass();};
+ }
+},
+mindmap:function(box,pass){
+ var nodes=[
+  {t:'① 积的近似数',r:'先按小数乘法算出积，看保留数位的下一位四舍五入，用≈连接；人民币以元为单位一般保留两位（精确到分）。'},
+  {t:'② 进一法',r:'取商的近似数时，不管十分位是几都向整数部分进1——"至少几个能装下/运完/坐下"：装瓶、租车、运货。'},
+  {t:'③ 去尾法',r:'取商的近似数时，不管十分位是几都舍去——"最多能做/能买/能倒满"：做衣服、买东西、倒满杯。'},
+  {t:'④ 人民币汇率',r:'用四舍五入法解决汇率问题，结果一般保留两位小数。⚠️先用完整汇率算出积或商，最后才取近似数！'},
+  {t:'⑤ 水电天然气的费用',r:'本月用量=本月抄见数−上月抄见数；总电费=峰时费+谷时费；水费=供水费+污水处理费（×0.90）；阶梯气价一档一档分开算。'},
+  {t:'⑥ 分段计费',r:'画线段图：起步段包干+中段+远段，切开算再相加；反推：先减基础费，÷超出单价，加回基础量。快递续重不足1kg按1kg。'}];
+ var opened=0;
+ box.innerHTML='<div class="labtip">这就是第2单元的全部家当！<b>把 6 个知识节点全部点亮</b>，就能开启常考题型检验。</div>'
+ +'<div class="mmcenter">🗺️ 小数的应用</div><div class="mmline"></div>'
+ +nodes.map(function(n,i){return '<div class="mmnode" id="mn'+i+'"><div class="mt"><span class="dot"></span>'+n.t+'</div></div>';}).join('')
+ +'<div class="labnote" id="mmNote">已点亮 0 / 6</div>';
+ nodes.forEach(function(n,i){
+  $('mn'+i).onclick=function(){
+   if(this.classList.contains('open'))return;
+   this.classList.add('open');tick();
+   this.insertAdjacentHTML('beforeend','<div class="mmrule">'+n.r+'</div>');
+   opened++;$('mmNote').textContent='已点亮 '+opened+' / 6';
+   if(opened>=6){ding();$('mmNote').innerHTML='🎉 导图全部点亮！口诀：<b>先算后约看千分位；装下运完进一，做满买够去尾；费用分段切开算。</b>';pass();}
+  };
+ });
+}
+};
+
+/* =================== 引擎 =================== */
+var CUR=null, TS={idx:0,gDone:-1}, Q={}, RC={i:0};
+function guessStep(btn){
+ var ok=(btn.textContent===window._gAns);
+ if(ok){btn.classList.add('good');ding();}else{btn.classList.add('bad');buzz();}
+ document.querySelectorAll('#guessBox .opt').forEach(function(b){b.disabled=true;if(b.textContent===window._gAns)b.classList.add('good');});
+ setTimeout(function(){var gb=$('guessBox');if(gb)gb.remove();$('btnStep').classList.remove('hide');nextStep();},ok?500:1100);
+}
+
+function unlockedCount(){var d0=new Date(START+'T00:00:00');var days=Math.floor((Date.now()-d0.getTime())/86400000);
+ return Math.max(1,Math.min(MODS.length,days+1+UNL_EXTRA));}
+function parentUnlock(){if(unlockedCount()>=MODS.length){alert('所有馆都已开放!');return;}UNL_EXTRA++;save(LSK+'_unl',UNL_EXTRA);ding();renderHome();}
+function lockMsg(day){buzz();alert('这个馆第 '+day+' 天才开放哦!\n每天学一个馆,学得牢。\n(家长可在「练习记录」里提前解锁)');}
+
+function renderHome(){
+ show('vHome');
+ var unl=unlockedCount(),g=$('homeGrid'),h='';
+ MODS.forEach(function(m,i){
+  var open=i<unl, st=modStat(m.id);
+  h+='<div class="tile'+(open?'':' lock')+'" onclick="'+(open?('openMod(\''+m.id+'\')'):('lockMsg('+(i+1)+')'))+'">'
+   +(i===unl-1&&open?'<span class="today">今日</span>':'')
+   +(st?'<span class="done">已练 · '+st+'</span>':(open?'<span class="done pending">未练</span>':''))
+   +'<div class="ic">'+(open?m.ic:'🔒')+'</div><div class="nm">'+m.nm+'</div><div class="ds">'+m.ds+'</div></div>';
+ });
+ g.innerHTML=h;
+ var done=0;for(var k in DB.done)done++;
+ var wrong=0;DB.events.forEach(function(e){if(e.type==='quiz'&&!e.ok)wrong++;});
+ $('statBar').innerHTML='<span>已练 '+done+'/'+MODS.length+' 馆</span><span>共答 '+DB.events.filter(function(e){return e.type==='quiz';}).length+' 题</span><span>错 '+wrong+' 题</span>';
+ var wl=wbList();
+ $('wbEntry').innerHTML=wl.length?'<div class="card" style="border-color:var(--red)"><div class="h2" style="color:var(--red)">📕 错题本（'+wl.length+' 题待掌握）</div><div class="note">错过的题连续答对 2 次才算掌握。</div><button class="btn red wide" onclick="startWrongbook()">🔁 重做错题</button></div>':'';
+ $('wbPanel').innerHTML=wl.length?wl.map(function(it){return '<div class="wbitem"><span>'+esc(short(it.q))+'</span><span class="t">错'+it.wrong+'次·连对'+it.streak+'/2</span></div>';}).join(''):'<div class="note">错题本是空的，太棒了！</div>';
+ var rh='';
+ if(done>0)rh+='<button class="btn ghost wide" onclick="startWarmup()">🔄 今日热身：把学过的再练 5 题</button>';
+ $('reviewEntry').innerHTML=rh?'<div class="card"><div class="h2">🧠 学得牢小工具</div>'+rh+'<div class="note">🔄 热身＝学过的题再见一面，记得更牢。</div></div>':'';
+}
+function short(s){return s.length>24?s.slice(0,24)+'…':s;}
+function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+function show(id){['vHome','vTeach','vQuiz','vResult'].forEach(function(v){$(v).classList.toggle('hide',v!==id);});window.scrollTo(0,0);}
+function goHome(){if(Q.timer)clearInterval(Q.timer);renderHome();}
+
+/* ---- 教学流程：放大镜 → 分步 → 实验室 → 妙招 → 遮挡回忆 ---- */
+var mir={n:false,o:false};
+function openMod(id){
+ CUR=null;MODS.forEach(function(m){if(m.id===id)CUR=m;});
+ if(!CUR)return;tick();
+ mir={n:false,o:false};TS.idx=0;TS.gDone=-1;LAB_PASS=false;RC={i:0};
+ show('vTeach');
+ $('tBadge').textContent=CUR.ic+' '+CUR.nm.replace(/^第.+课 /,'');
+ $('tTag').textContent='金牌数学·'+CUR.nm.split(' ')[0];
+ var html='';
+ String(CUR.ex.expr).split(/([0-9.]+)/).forEach(function(seg){
+  if(!seg)return;
+  if(/^[0-9.]+$/.test(seg))html+='<span class="tk num">'+seg+'</span>';
+  else html+='<span class="tk op">'+esc(seg)+'</span>';
+ });
+ $('mExpr').innerHTML=html;
+ $('mFeats').innerHTML='';$('mMethods').innerHTML='';$('mMethods').classList.add('hide');
+ $('btnToSteps').classList.add('hide');
+ $('btnNum').style.opacity=1;$('btnOp').style.opacity=1;
+ ['cardSteps','cardLab','cardTips','cardRecall'].forEach(function(c){$(c).classList.add('hide');});
+ $('stepRows').innerHTML='';$('btnStep').classList.remove('hide');$('btnStep').textContent='▶ 下一步';
+ $('btnLabNext').classList.add('hide');
+}
+function revealNum(){if(mir.n)return;mir.n=true;tick();
+ document.querySelectorAll('#mExpr .tk.num').forEach(function(el){el.classList.add('hn');});
+ $('mFeats').innerHTML+='<div class="feat">🔢 数字特点：'+CUR.ex.num+'</div>';
+ $('btnNum').style.opacity=.4;mirDone();}
+function revealOp(){if(mir.o)return;mir.o=true;tick();
+ document.querySelectorAll('#mExpr .tk.op').forEach(function(el){el.classList.add('ho');});
+ $('mFeats').innerHTML+='<div class="feat blue">➗ 算法特点：'+CUR.ex.op+'</div>';
+ $('btnOp').style.opacity=.4;mirDone();}
+function mirDone(){
+ if(!(mir.n&&mir.o))return;
+ var h='<div class="note" style="margin-top:8px">✅ 题干特点：'+CUR.ex.feats.map(function(f,i){return (i+1)+'.'+f;}).join('　')+'</div><div style="margin-top:4px">'
+  +CUR.ex.methods.map(function(m){return '<span class="mchip">🏷️ '+m+'</span>';}).join('')+'</div>';
+ $('mMethods').innerHTML=h;$('mMethods').classList.remove('hide');
+ $('btnToSteps').classList.remove('hide');ding();
+}
+function showSteps(){$('cardSteps').classList.remove('hide');$('btnToSteps').classList.add('hide');nextStep();
+ $('cardSteps').scrollIntoView({behavior:'smooth'});}
+function nextStep(){
+ var steps=CUR.ex.steps;
+ if(TS.idx>=steps.length)return;
+ var s=steps[TS.idx];
+ if(s.n&&TS.idx>=1&&TS.idx<steps.length-1&&TS.gDone!==TS.idx){
+  TS.gDone=TS.idx;
+  var pool=['从左往右硬算','列竖式慢慢算','先算最大的数'];
+  MODS.forEach(function(m){m.ex.steps.forEach(function(x){if(x.n&&x.n!==s.n&&pool.indexOf(x.n)<0)pool.push(x.n);});});
+  var dtr=pool[Math.floor(Math.random()*pool.length)];if(dtr===s.n)dtr=pool[0];
+  var go=Math.random()<0.5?[s.n,dtr]:[dtr,s.n];
+  window._gAns=s.n;
+  $('btnStep').classList.add('hide');
+  var box=document.createElement('div');box.id='guessBox';
+  box.innerHTML='<div class="hint">🤔 猜一猜：下一步该用哪一招？</div>'+go.map(function(o){return '<button class="opt" onclick="guessStep(this)">'+esc(o)+'</button>';}).join('');
+  $('stepRows').appendChild(box);box.scrollIntoView({behavior:'smooth',block:'center'});
+  return;
+ }
+ tick();
+ document.querySelectorAll('#stepRows .srow').forEach(function(el){el.classList.remove('cur');});
+ var row=document.createElement('div');row.className='srow cur';
+ row.innerHTML='<div class="math">'+esc(s.t)+'</div>'+(s.n?'<div class="snote">'+s.n+'</div>':'');
+ $('stepRows').appendChild(row);
+ if(s.w){var wd=document.createElement('div');wd.className='swhy';wd.innerHTML='🤔 为什么：'+s.w;$('stepRows').appendChild(wd);}
+ TS.idx++;
+ if(TS.idx>=steps.length){
+  $('btnStep').classList.add('hide');ding();
+  var f=document.createElement('div');f.className='fin';f.textContent='🎉 变身完成！去实验室亲手玩一遍';$('stepRows').appendChild(f);
+  $('cardLab').classList.remove('hide');
+  LAB[CUR.lab]($('labBox'),labDone);
+ }else{
+  $('btnStep').textContent='▶ 下一步（'+TS.idx+'/'+steps.length+'）';
+ }
+ row.scrollIntoView({behavior:'smooth',block:'center'});
+}
+function labNext(){
+ $('cardTips').classList.remove('hide');
+ $('tipUse').innerHTML=CUR.tips.use;
+ $('tipFms').innerHTML=CUR.tips.fms.map(function(x){return '<div class="fmla">'+x+'</div>';}).join('');
+ $('btnTipsNext').textContent=(CUR.recall&&CUR.recall.length)?'🙈 遮挡回忆挑战 →':'✏️ 开始真题检验 →';
+ $('cardTips').scrollIntoView({behavior:'smooth'});
+}
+function tipsNext(){
+ if(CUR.recall&&CUR.recall.length){$('cardRecall').classList.remove('hide');rcRender(0);$('cardRecall').scrollIntoView({behavior:'smooth'});}
+ else qStart(CUR.id);
+}
+/* ---- 遮挡回忆 ---- */
+function rcRender(i){
+ RC.i=i;var r=CUR.recall[i];
+ var sent=r.s.replace(/【(.+?)】/,'<span class="blank" id="rcBlank">？？</span>');
+ var sh=r.opts.slice().sort(function(){return Math.random()-0.5;});
+ var h='<div class="rcsent">'+sent+'</div>';
+ h+='<div class="rcbtns">'+sh.map(function(o,j){return '<button class="opt" onclick="rcPick(this,'+j+',\''+o.replace(/'/g,"\\'")+'\')">'+esc(o)+'</button>';}).join('')+'</div>';
+ h+='<div class="labnote" id="rcNote">第 '+(i+1)+' / '+CUR.recall.length+' 题：不看妙招卡，自己回忆！</div>';
+ $('rcBox').innerHTML=h;
+ window._rcSh=sh;
+}
+function rcPick(btn,j,val){
+ var r=CUR.recall[RC.i];
+ if(val===r.a){
+  ding();btn.classList.add('good');
+  var blank=$('rcBlank');if(blank)blank.textContent=r.a;
+  $('rcNote').innerHTML='✅ 对啦！'+r.why;
+  document.querySelectorAll('#rcBox .opt').forEach(function(b){b.disabled=true;});
+  setTimeout(function(){
+   if(RC.i+1<CUR.recall.length)rcRender(RC.i+1);
+   else{$('btnRcNext').classList.remove('hide');$('rcBox').innerHTML='<div class="fin">🎉 全部回忆成功！法则已经装进小脑袋</div>';$('btnRcNext').scrollIntoView({behavior:'smooth'});}
+  },900);
+ }else{
+  buzz();btn.classList.add('bad');btn.disabled=true;
+  $('rcNote').innerHTML='💡 '+r.why;
+ }
+}
+function rcNext(){qStart(CUR.id);}
+
+/* ---- 训练（自动判分 + 错因标签） ---- */
+function fmt(n){return (Math.round(Number(n)*10000)/10000).toString();}
+function shuffle(arr){for(var i=arr.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=arr[i];arr[i]=arr[j];arr[j]=t;}return arr;}
+function lvTag(d){if(d.lv===3)return '<span class="lvtag lv3">★拔高</span>';if(d.lv===2)return '<span class="lvtag lv2">巩固</span>';return '<span class="lvtag lv1">基础</span>';}
+function qStart(modId){
+ var m=null;MODS.forEach(function(x){if(x.id===modId)m=x;});
+ Q={list:m.drills.slice(),i:0,t0:Date.now(),sess0:Date.now(),mod:modId,nm:m.nm,ok:0,wrong:0,timer:null,isWb:false,wrongs:[]};
+ show('vQuiz');qRender();
+ Q.timer=setInterval(function(){var el=$('qTime');if(el){var s=Math.floor((Date.now()-Q.sess0)/1000);el.textContent='⏱ '+Math.floor(s/60)+':'+('0'+s%60).slice(-2);}},500);
+}
+function startWrongbook(){
+ var wl=wbList();if(!wl.length)return;
+ Q={list:wl.map(function(it){var c={};for(var k in it)c[k]=it[k];c.wb=1;return c;}),i:0,t0:Date.now(),sess0:Date.now(),mod:'wrongbook',nm:'错题本重做',ok:0,wrong:0,timer:null,isWb:true,wrongs:[]};
+ show('vQuiz');qRender();
+ Q.timer=setInterval(function(){var el=$('qTime');if(el){var s=Math.floor((Date.now()-Q.sess0)/1000);el.textContent='⏱ '+Math.floor(s/60)+':'+('0'+s%60).slice(-2);}},500);
+}
+function startWarmup(){
+ var pool=[];
+ MODS.forEach(function(m){if(DB.done[m.id])m.drills.forEach(function(dd){pool.push(dd);});});
+ if(!pool.length){alert('先练完至少一个馆，再来热身！');return;}
+ var picks=wbList().slice(0,2).map(function(it){var c={};for(var k in it)c[k]=it[k];c.wb=1;return c;});
+ var guard=0;
+ while(picks.length<5&&guard<80){guard++;var dd=pool[Math.floor(Math.random()*pool.length)];var dup=false;picks.forEach(function(p){if(p.q===dd.q)dup=true;});if(!dup)picks.push(dd);}
+ Q={list:shuffle(picks),i:0,t0:Date.now(),sess0:Date.now(),mod:'warmup',nm:'今日热身',ok:0,wrong:0,timer:null,isWb:false,warm:true,wrongs:[]};
+ show('vQuiz');qRender();
+ Q.timer=setInterval(function(){var el=$('qTime');if(el){var s=Math.floor((Date.now()-Q.sess0)/1000);el.textContent='⏱ '+Math.floor(s/60)+':'+('0'+s%60).slice(-2);}},500);
+}
+function quitQuiz(){if(Q.timer)clearInterval(Q.timer);if(Q.isWb||Q.warm)renderHome();else openMod(Q.mod);}
+function qRender(){
+ var d=Q.list[Q.i];Q.t0=Date.now();
+ $('qProg').innerHTML=(Q.isWb?'📕 错题本 ':'')+(Q.i+1)+' / '+Q.list.length+lvTag(d)+(d.wb?'　<span class="star">📕</span>':'')+(d.rq?'　<span class="star">🔁再战</span>':'');
+ $('qScore').textContent='✅'+Q.ok+' ❌'+Q.wrong;
+ var gh=d.hint?'<div class="hint">'+esc(d.hint)+'</div>':'';
+ if(Q.i===0&&!Q.isWb&&!Q.warm&&!d.rq){
+  var gl=d.ex.split('\n');
+  if(gl.length>2){gl.pop();gh+='<div class="steps"><span class="lb">🧭 第一题扶你走：思路都摆好了，最后一步你来选！</span>'+gl.map(esc).join('<br>')+'</div>';}
+ }
+ $('qHint').innerHTML=gh;
+ $('qText').className='qtext'+(d.word?' word':'');
+ $('qText').textContent=d.q;
+ if(d.sopts){
+  Q.curSopts=d.sopts.slice();
+  $('qOpts').innerHTML=d.sopts.map(function(o,i){return '<button class="opt" onclick="qAnsS(this,'+i+')">'+esc(o)+'</button>';}).join('');
+ }else{
+  Q.curOpts=shuffle(d.opts.slice());
+  $('qOpts').innerHTML=Q.curOpts.map(function(o,i){return '<button class="opt" onclick="qAns(this,'+i+')">'+fmt(o)+'</button>';}).join('');
+ }
+ $('qEx').innerHTML='';$('btnNext').classList.add('hide');
+}
+function afterAns(d,ok,ms,user,btn){
+ if(ok){Q.ok++;ding();if(Q.isWb||d.wb)wbAddRight(d.q);}
+ else{
+  Q.wrong++;buzz();wbAddWrong(d);Q.wrongs.push(d);
+  if(!d.rq&&!Q.isWb){var c={};for(var k in d)c[k]=d[k];c.rq=1;Q.list.push(c);}
+ }
+ if(!Q.isWb)logEvent({type:'quiz',subject:'数学',lesson:Q.nm,word:d.q,hint:d.hint||'',ok:ok,ms:ms,user:String(user),tag:ok?(d.lv===3?'拔高✓':'答对'):(d._wtag||'答错')});
+ var lines=d.ex.split('\n');
+ var eh='';
+ if(!ok&&d._wtag)eh+='<div class="errtag"><span class="t">🏷️ 错因：'+esc(d._wtag)+'</span><br>'+esc(d._wwhy||'')+'</div>';
+ eh+='<div class="steps"><span class="lb">'+(ok?'✅ 对啦！再看一遍书上的分步：':'❌ 别急，跟着书上的思路走一遍：')+'</span>'
+  +lines.map(function(l,i){return i===lines.length-1?'<span class="last">'+esc(l)+'</span>':esc(l);}).join('<br>')+'</div>';
+ $('qEx').innerHTML=eh;
+ $('btnNext').classList.remove('hide');
+ $('qScore').textContent='✅'+Q.ok+' ❌'+Q.wrong;
+}
+function qAns(btn,idx){
+ var d=Q.list[Q.i],val=Q.curOpts[idx],ok=(Math.abs(val-Number(d.a))<1e-9),ms=Date.now()-Q.t0;
+ d._wtag=null;d._wwhy=null;
+ if(!ok&&d.wr&&d.wr[String(val)]){d._wtag=d.wr[String(val)].tag;d._wwhy=d.wr[String(val)].why;}
+ document.querySelectorAll('#qOpts .opt').forEach(function(b,i){b.disabled=true;
+  if(Math.abs(Q.curOpts[i]-Number(d.a))<1e-9)b.classList.add('good');});
+ if(!ok)btn.classList.add('bad');
+ afterAns(d,ok,ms,val,btn);
+}
+function qAnsS(btn,idx){
+ var d=Q.list[Q.i],text=d.sopts[idx],ok=(text===d.a),ms=Date.now()-Q.t0;
+ d._wtag=null;d._wwhy=null;
+ if(!ok&&d.wr&&d.wr[text]){d._wtag=d.wr[text].tag;d._wwhy=d.wr[text].why;}
+ document.querySelectorAll('#qOpts .opt').forEach(function(b){b.disabled=true;if(b.textContent===d.a)b.classList.add('good');});
+ if(!ok)btn.classList.add('bad');
+ afterAns(d,ok,ms,text,btn);
+}
+function qNext(){
+ Q.i++;
+ if(Q.i>=Q.list.length){qFinish();return;}
+ qRender();window.scrollTo(0,0);
+}
+function qFinish(){
+ if(Q.timer)clearInterval(Q.timer);
+ var sec=Math.floor((Date.now()-Q.sess0)/1000);
+ if(!Q.isWb&&!Q.warm){
+  DB.done[Q.mod]={ok:Q.ok,wrong:Q.wrong,ts:Date.now()};save(LSK,DB);
+  logEvent({type:'lesson',subject:'数学',lesson:Q.nm,total:Q.list.length,wrong:Q.wrong,durationSec:sec});
+ }
+ show('vResult');
+ var h='<div class="h2">'+(Q.isWb?'📕 错题重做完成':'🏁 '+Q.nm+' 完成!')+'</div>'
+  +'<div class="stat"><span>✅ 对 '+Q.ok+'</span><span>❌ 错 '+Q.wrong+'</span><span>⏱ '+Math.floor(sec/60)+'分'+(sec%60)+'秒</span></div>';
+ if(Q.wrongs.length){
+  h+='<div class="h2" style="margin-top:12px">错题回顾（看懂再走）</div>';
+  Q.wrongs.forEach(function(d){
+   h+='<div class="note" style="font-weight:800;color:var(--red)">✗ '+esc(d.q)+'</div>';
+   if(d._wtag)h+='<div class="errtag"><span class="t">🏷️ 错因：'+esc(d._wtag)+'</span><br>'+esc(d._wwhy||'')+'</div>';
+   h+='<div class="steps">'+d.ex.split('\n').map(esc).join('<br>')+'</div>';
+  });
+  h+='<div class="note">这些题已进错题本，连续答对 2 次才能出来哦。</div>';
+ }else{
+  h+='<div class="fin">🌟 全对！太厉害了！</div>';
+ }
+ if(!Q.isWb&&!Q.warm&&Q.wrong>0)h+='<button class="btn gold wide" onclick="qStart(Q.mod)">🔁 再练一次，冲 ⭐⭐⭐ 满星</button>';
+ h+='<button class="btn wide" onclick="goHome()">回选馆地图</button>';
+ $('resCard').innerHTML=h;
+}
+
+/* ---- 导出（兼容 data/learning 归档格式） ---- */
+function exportText(){
+ var wl=wbList();
+ var t='【Kenton 数学五上预习馆②小数的应用 练习记录】\n导出时间:'+new Date().toLocaleString()+'\n\n';
+ t+='== 各馆成绩 ==\n';
+ MODS.forEach(function(m){var d=DB.done[m.id];if(d)t+=m.nm+': ✅'+d.ok+' ❌'+d.wrong+'\n';});
+ t+='\n== 错题本(未掌握 '+wl.length+' 题) ==\n';
+ wl.forEach(function(it){t+='· '+it.q+'（错'+it.wrong+'次,连对'+it.streak+'/2）\n';});
+ var cnt={},tcnt={};
+ DB.events.forEach(function(e){if(e.type==='quiz'&&!e.ok){cnt[e.word]=(cnt[e.word]||0)+1;if(e.tag&&e.tag!=='答错')tcnt[e.tag]=(tcnt[e.tag]||0)+1;}});
+ var rep=Object.keys(cnt).filter(function(k){return cnt[k]>=2;});
+ t+='\n== 反复错的题(错≥2次) ==\n'+(rep.length?rep.map(function(k){return '· '+k+' ×'+cnt[k];}).join('\n'):'(无)')+'\n';
+ t+='\n== 错因标签统计 ==\n';
+ var tk=Object.keys(tcnt);
+ t+=tk.length?tk.map(function(k){return '· '+k+' ×'+tcnt[k];}).join('\n'):'(暂无)';
+ t+='\n\n== 原始JSON ==\n'+JSON.stringify({child:'kenton',subject:'数学',app:'g5u2_decimal_app',unit:'五上第2单元 小数的应用',events:DB.events,wrongbook:wl});
+ return t;
+}
+function exportCopy(){var t=exportText();
+ if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(function(){alert('已复制!把内容发给爸爸即可');},function(){fallbackCopy(t);});}
+ else fallbackCopy(t);}
+function fallbackCopy(t){var ta=document.createElement('textarea');ta.value=t;document.body.appendChild(ta);ta.select();try{document.execCommand('copy');alert('已复制!');}catch(e){alert('复制失败,请用「看一眼」手动复制');}document.body.removeChild(ta);}
+function exportFile(){var b=new Blob([exportText()],{type:'text/plain'});var a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='kenton_小数应用预习记录_'+new Date().toISOString().slice(0,10)+'.txt';a.click();}
+function toggleExp(){var box=$('expBox');box.classList.toggle('hide');if(!box.classList.contains('hide'))$('expTa').value=exportText();}
+
+$('muteBtn').textContent=MUTE?'🔕':'🔔';
+renderHome();
+</script>
+</body>
+</html>

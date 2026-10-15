@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#fff7f0">
+<title>卷子错题讲解 · 家庭学习门户</title>
+<link rel="stylesheet" href="assets/styles.css">
+<link rel="stylesheet" href="assets/paper-tools.css">
+<script src="assets/learning-sync.js"></script>
+<script src="assets/paper-archive.js"></script>
+<script src="assets/paper-lesson.js" defer></script>
+</head>
+<body>
+<main class="paper-shell">
+  <div class="paper-topbar">
+    <a class="paper-back" id="lessonBack" href="mistakes.html" aria-label="返回错题档案">←</a>
+    <h1 id="topTitle">卷子错题讲解</h1>
+  </div>
+
+  <section class="paper-hero">
+    <div class="paper-kicker">SEE IT · UNDERSTAND IT · RETURN TO THE SAME QUESTION</div>
+    <h2><span id="lessonEmoji">🧠</span> <span id="paperTitle">正在读取卷子…</span></h2>
+    <p id="paperIntro">一次只讲一道。答错后不会直接换题：先修复，再回到同一道原题，直到能够独立完成。</p>
+  </section>
+
+  <div class="paper-progress" aria-label="错题讲解流程">
+    <div class="active" data-lesson-progress="look"><b>1</b><span>看原题 · 找卡点</span></div>
+    <div data-lesson-progress="learn"><b>2</b><span>短讲解 · 说方法</span></div>
+    <div data-lesson-progress="return"><b>3</b><span>回原题 · 独立做</span></div>
+  </div>
+
+  <div class="paper-card" id="lessonLoading">
+    <div class="editor-empty">正在读取本机原卷和已确认错题…</div>
+  </div>
+
+  <section class="lesson-layout" id="lessonLayout" hidden>
+    <aside class="lesson-sidebar">
+      <h3>这张卷子的错题</h3>
+      <div class="lesson-question-list" id="lessonQuestionList"></div>
+      <div class="cloud-only-note" id="imagePrivacyNote" hidden>这台设备没有原卷图片，因此显示家长确认后的题目文字；原图仍只留在上传设备。</div>
+    </aside>
+    <div class="lesson-main">
+      <article class="lesson-stage" id="lessonStage" aria-live="polite"></article>
+      <div class="paper-status" id="lessonStatus" role="status" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <section class="paper-success" id="lessonComplete" hidden>
+    <div class="big">🌟</div>
+    <h2>这一轮已经完成</h2>
+    <p id="lessonCompleteText"></p>
+    <div class="confirm-actions" style="justify-content:center">
+      <a class="paper-btn primary" id="backToArchive" href="mistakes.html">返回错题档案</a>
+      <button class="paper-btn ghost" id="continueLesson" type="button">继续练其他错题</button>
+    </div>
+  </section>
+
+  <div class="footer-note">看懂不算掌握 · 订正、独立作答和隔天复测分别记录；同一轮答对不等于解决</div>
+</main>
+</body>
+</html>

@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<script src="../assets/learning-sync.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>核桃 L3-3 预习 · if嵌套探秘城堡</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+:root{
+  --orange-1:#FF6B35; --orange-2:#FF8C42; --orange-3:#FFB347;
+  --purple-1:#6B5BFF; --green-1:#2BB673; --green-2:#4ECDC4;
+  --yellow-1:#FFD93D; --pink-1:#FF6B9D; --blue-1:#3B82F6;
+  --bg:#FFF8F0; --ink:#2D2A4A; --ink-soft:#5A5775;
+  --card:#ffffff; --shadow:0 8px 28px rgba(45,42,74,.12);
+  --good:#2BB673; --bad:#E64A4A;
+}
+html,body{ font-family:"PingFang SC","Microsoft YaHei",sans-serif; color:var(--ink);
+  background:linear-gradient(135deg,#F0F4FF 0%,#E4ECFF 100%); min-height:100%; }
+body{ -webkit-tap-highlight-color:transparent; }
+.wrap{ max-width:680px; margin:0 auto; padding:0 14px 80px; }
+
+.topbar{ position:sticky; top:0; z-index:50; backdrop-filter:blur(10px);
+  background:rgba(255,255,255,.86); border-bottom:2px solid rgba(59,130,246,.15);
+  display:flex; align-items:center; gap:10px; padding:10px 14px; }
+.logo{ width:34px;height:34px;border-radius:9px; display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(135deg,var(--blue-1),var(--purple-1)); color:#fff;font-size:19px;
+  box-shadow:0 4px 12px rgba(59,130,246,.4); }
+.brand b{ font-size:15px; color:var(--blue-1); display:block; line-height:1.2;}
+.brand span{ font-size:11px; color:var(--ink-soft);}
+.home{ margin-left:auto; text-decoration:none; background:#fff; border:2px solid var(--blue-1);
+  color:var(--blue-1); padding:6px 12px; border-radius:11px; font-weight:800; font-size:13px;}
+
+.nav{ display:flex; gap:8px; overflow-x:auto; padding:12px 2px; position:sticky; top:56px; z-index:40;
+  background:linear-gradient(180deg,rgba(240,244,255,.96),rgba(240,244,255,.7)); }
+.nav::-webkit-scrollbar{ display:none; }
+.chip{ flex:0 0 auto; border:none; background:#fff; color:var(--ink-soft); font-weight:800;
+  padding:9px 14px; border-radius:999px; font-size:13px; cursor:pointer; box-shadow:var(--shadow);
+  font-family:inherit; transition:.15s; }
+.chip.active{ background:linear-gradient(135deg,var(--blue-1),var(--purple-1)); color:#fff; transform:translateY(-1px);}
+
+section{ display:none; animation:fade .35s ease; }
+section.show{ display:block; }
+@keyframes fade{ from{opacity:0; transform:translateY(8px)} to{opacity:1; transform:none} }
+
+.card{ background:var(--card); border-radius:20px; box-shadow:var(--shadow); padding:18px; margin:14px 0; }
+.h2{ font-size:21px; font-weight:900; display:flex; align-items:center; gap:9px; margin-bottom:4px; }
+.sub{ color:var(--ink-soft); font-size:14px; line-height:1.6; margin-bottom:6px;}
+.tip{ background:#EAF1FF; border-left:4px solid var(--blue-1); border-radius:10px; padding:10px 13px;
+  font-size:14px; line-height:1.7; margin:10px 0; }
+.tip b{ color:#1D4ED8; }
+.method{ background:#F3F0FF; border-left:4px solid var(--purple-1); border-radius:10px; padding:10px 13px;
+  font-size:14px; line-height:1.7; margin:10px 0; }
+.goal{ list-style:none; margin:8px 0;}
+.goal li{ padding:7px 0 7px 2px; border-bottom:1px dashed #dde6f8; font-size:15px; line-height:1.6;}
+.goal .imp{ background:#FDECEC; color:var(--bad); border-radius:6px; font-size:12px; font-weight:900; padding:1px 7px; margin-left:6px;}
+
+/* 单词卡 */
+.wordgrid{ display:grid; grid-template-columns:1fr; gap:12px; }
+.wcard{ border:2px solid #CDDcfc; border-radius:16px; padding:14px 16px; background:linear-gradient(135deg,#fff,#F4F8FF);}
+.wtop{ display:flex; align-items:center; gap:10px; flex-wrap:wrap;}
+.wen{ font-size:26px; font-weight:900; color:var(--blue-1); }
+.wph{ color:var(--ink-soft); font-size:14px; }
+.spk{ margin-left:auto; border:none; background:var(--blue-1); color:#fff; width:40px;height:40px;
+  border-radius:50%; font-size:18px; cursor:pointer; box-shadow:0 4px 10px rgba(59,130,246,.4);}
+.wmean{ margin-top:6px; font-size:15px; line-height:1.7;}
+.wmean .pos{ display:inline-block; background:#EEE9FF; color:var(--purple-1); font-size:12px; font-weight:800;
+  border-radius:6px; padding:1px 7px; margin-right:6px;}
+.wph2{ margin-top:6px; font-size:13px; color:var(--green-1); font-weight:700;}
+
+/* 代码块 */
+.code{ background:#1E1B33; color:#Efeaff; border-radius:14px; padding:14px 16px; font-size:15px;
+  font-family:"SF Mono",Consolas,Menlo,monospace; line-height:1.85; overflow-x:auto; }
+.code .ln{ display:block; border-radius:6px; padding:0 6px; transition:background .15s; }
+.code .ln.on{ background:rgba(255,217,61,.28); }
+.code .ln.off{ opacity:.35; }
+.k{color:#FF9D66;} .v{color:#7FE0FF;} .n{color:#FFD93D;} .s{color:#9DE89D;} .o{color:#FF8FB0;} .c{color:#8B86A8;}
+
+.btn{ border:none; border-radius:13px; padding:11px 16px; font-weight:800; font-size:15px; cursor:pointer;
+  font-family:inherit; background:linear-gradient(135deg,var(--blue-1),var(--purple-1)); color:#fff;
+  box-shadow:0 5px 14px rgba(59,130,246,.35); transition:.15s; }
+.btn:active{ transform:translateY(2px); }
+.btn.ghost{ background:#fff; color:var(--blue-1); border:2px solid var(--blue-1); box-shadow:none;}
+.btn.green{ background:linear-gradient(135deg,#2BB673,#4ECDC4); box-shadow:0 5px 14px rgba(43,182,115,.3);}
+.btn.orange{ background:linear-gradient(135deg,var(--orange-1),var(--orange-2)); box-shadow:0 5px 14px rgba(255,107,53,.35);}
+.btn.row{ display:block; width:100%; margin:7px 0; }
+.btnrow{ display:flex; gap:10px; flex-wrap:wrap; margin-top:12px; }
+.btn:disabled{ opacity:.4; cursor:default; }
+
+.screen{ background:#0E1230; color:#7FE0FF; border-radius:14px; padding:12px 16px; font-family:monospace;
+  font-size:17px; min-height:54px; line-height:1.7; border:2px solid #2a2f55; margin-top:10px; }
+.screen .lab{ color:#8B86A8; font-size:12px; display:block; margin-bottom:4px; font-family:inherit;}
+.outch{ display:inline-block; animation:pop .25s ease; }
+@keyframes pop{ from{transform:scale(0) rotate(-15deg); opacity:0} to{transform:none; opacity:1} }
+
+.step{ background:#EAF1FF; border-radius:10px; padding:10px 13px; font-size:14px; line-height:1.7; margin-top:10px; min-height:44px;}
+.slider{ width:100%; -webkit-appearance:none; height:10px; border-radius:999px;
+  background:linear-gradient(90deg,#7FD0FF,#3B82F6); outline:none; margin:8px 0; }
+.slider::-webkit-slider-thumb{ -webkit-appearance:none; width:30px;height:30px;border-radius:50%;
+  background:#fff; border:4px solid var(--blue-1); cursor:pointer; box-shadow:0 3px 8px rgba(0,0,0,.2);}
+.slider::-moz-range-thumb{ width:30px;height:30px;border-radius:50%; background:#fff; border:4px solid var(--blue-1); cursor:pointer;}
+.bigread{ text-align:center; font-size:17px; font-weight:900; margin:4px 0; }
+.bigread b{ color:var(--blue-1); font-size:24px; }
+
+/* sum 变身器 */
+.morph{ text-align:center; font-family:"SF Mono",Consolas,monospace; font-size:26px; font-weight:900;
+  background:#1E1B33; color:#Efeaff; border-radius:14px; padding:22px 10px; margin:10px 0; letter-spacing:1px;}
+.morph .mv{ display:inline-block; transition:all .8s cubic-bezier(.5,1.4,.5,1); }
+.morph .fade{ opacity:1; transition:opacity .8s; }
+.morph.go .sumR{ transform:translateX(-72px) scale(.0); opacity:0; }
+.morph.go .plusEq{ transform:translateX(-60px); color:#FFD93D; }
+.numpad{ display:flex; gap:8px; flex-wrap:wrap; justify-content:center; margin-top:10px; }
+.numk{ border:none; background:var(--purple-1); color:#fff; border-radius:12px; width:56px; padding:12px 0;
+  font-weight:900; font-size:18px; cursor:pointer; font-family:inherit; transition:.1s; }
+.numk:active{ transform:scale(.9); }
+.numk:disabled{ opacity:.35; }
+.twin{ display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:10px;}
+.twin .code{ font-size:12.5px; padding:10px; line-height:1.7;}
+.twin .tt{ text-align:center; font-size:12px; font-weight:900; color:var(--ink-soft); margin-bottom:4px;}
+.sumbox{ text-align:center; font-size:15px; font-weight:900; margin-top:6px;}
+.sumbox b{ font-size:22px; color:var(--blue-1);}
+
+/* 城堡双门 */
+.castle{ position:relative; height:210px; background:linear-gradient(180deg,#DCEBFF,#F6FAFF); border-radius:16px;
+  overflow:hidden; margin:10px 0; border:2px solid #CDDcfc;}
+.gate{ position:absolute; top:28px; width:86px; height:130px; border-radius:12px 12px 0 0;
+  background:#B9CCF2; border:3px solid #7E97D8; display:flex; flex-direction:column; align-items:center; }
+.gate .glab{ font-size:11px; font-weight:900; color:#33447e; background:#fff; border-radius:8px; padding:2px 6px; margin-top:6px; white-space:nowrap;}
+.gate .door{ width:52px; height:78px; margin-top:8px; background:#6B5BFF; border-radius:10px 10px 0 0;
+  transform-origin:left center; transition:transform .6s cubic-bezier(.4,1.3,.5,1); }
+.gate.open .door{ transform:perspective(300px) rotateY(-80deg); }
+.gate.shut .door{ background:#E64A4A; }
+#gate1{ left:12%; } #gate2{ left:52%; }
+.hero{ position:absolute; bottom:8px; left:2%; font-size:38px; transition:left 1s ease; z-index:5;}
+.gem{ position:absolute; right:5%; top:80px; font-size:38px; filter:grayscale(1); transition:filter .4s, transform .4s;}
+.gem.win{ filter:none; transform:scale(1.3) rotate(12deg);}
+
+/* 分岔树 */
+.tree{ width:100%; }
+.tnode{ fill:#fff; stroke:#CDDcfc; stroke-width:3; }
+.tnode.hot{ stroke:var(--blue-1); fill:#EAF1FF;}
+.tlab{ font-size:12px; font-weight:800; fill:#33447e; text-anchor:middle;}
+.tout{ font-size:13px; font-weight:900; text-anchor:middle;}
+.tpath{ stroke:#CDDcfc; stroke-width:3; fill:none;}
+.tpath.hot{ stroke:var(--orange-1); stroke-width:5;}
+.tball{ fill:var(--orange-1); }
+
+/* quiz */
+.q{ font-size:16px; font-weight:800; margin-bottom:10px; line-height:1.6;}
+.opt{ display:block; width:100%; text-align:left; border:2px solid #eee; background:#fff; border-radius:13px;
+  padding:12px 14px; margin:8px 0; font-size:15px; font-weight:700; cursor:pointer; font-family:inherit; transition:.15s;}
+.opt:hover{ border-color:var(--blue-1); }
+.opt.ok{ border-color:var(--good); background:#EBFBF2; color:var(--good);}
+.opt.no{ border-color:var(--bad); background:#FDECEC; color:var(--bad);}
+.explain{ display:none; margin-top:10px; background:#F3F0FF; border-left:4px solid var(--purple-1);
+  border-radius:10px; padding:11px 13px; font-size:14px; line-height:1.7;}
+.explain.show{ display:block; }
+.scorebar{ font-weight:900; color:var(--blue-1); font-size:16px; }
+
+.foot{ text-align:center; color:var(--ink-soft); font-size:12px; margin-top:18px; line-height:1.7;}
+.flag{ display:inline-block; background:#EBFBF2; color:var(--good); border-radius:999px; font-size:12px;
+  font-weight:800; padding:2px 10px; margin-left:8px;}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div class="logo">🏰</div>
+  <div class="brand"><b>核桃编程 · L3-3 预习</b><span>初识 if 嵌套 & 嵌套结构强化</span></div>
+  <a class="home" href="cpp_hub.html">🏠 学习馆</a>
+</div>
+
+<div class="wrap">
+  <div class="nav" id="nav"></div>
+
+  <!-- 0 总览 -->
+  <section id="s-intro" class="show">
+    <div class="card">
+      <div class="h2">🏰 明天要学什么？</div>
+      <div class="sub">主题：<b>初识 if 嵌套 & 嵌套结构强化</b>——大括号里再套大括号，像城堡里的<b>一道道门</b>。先在这儿把每道门推开玩一遍，明天上课就轻松啦。</div>
+      <ul class="goal">
+        <li>🔁 复习变量的循环自增（a=a+1）</li>
+        <li>⌨️ 循环输入的方法和运行过程 <span class="imp">重点难点</span></li>
+        <li>✨ sum=sum+a 可以写成 <b>sum+=a</b>，功能不变</li>
+        <li>🚪 多 if 嵌套、多 if-else 嵌套的执行顺序 <span class="imp">重点难点</span></li>
+        <li>🤝 复习 &&：if 嵌套 和 && 谁跟谁像？</li>
+        <li>🔮 for 循环中 cout-if 的运行结果</li>
+      </ul>
+      <button class="btn row" onclick="go('s-words')">先认 7 个单词 →</button>
+      <button class="btn row orange" onclick="go('s-castle')">直接闯双重门城堡 🚪</button>
+    </div>
+  </section>
+
+  <!-- 1 单词 -->
+  <section id="s-words">
+    <div class="card">
+      <div class="h2">📖 L3-3 单词卡 <span class="flag">点 🔊 跟读</span></div>
+      <div class="sub">明天课上的 7 个词，先混个脸熟：听一遍、读一遍。</div>
+      <div class="wordgrid" id="wordgrid"></div>
+    </div>
+  </section>
+
+  <!-- 2 sum+= 变身器 -->
+  <section id="s-sum">
+    <div class="card">
+      <div class="h2">✨ sum += a 变身器</div>
+      <div class="method"><b>方法点拨：</b>sum=sum+a 里，等号左右都有 sum——数学里没这种写法，编程里却常用：<b>把 sum 加上 a，再放回 sum</b>。因为太常用，C++ 给了个缩写：<b>sum += a</b>。两种写法<b>功能完全一样</b>。</div>
+      <div class="morph" id="morph">
+        <span class="mv">sum</span> <span class="mv">=</span> <span class="mv sumR">sum</span> <span class="mv plusEq">+</span> <span class="mv">a;</span>
+      </div>
+      <div class="btnrow" style="justify-content:center;">
+        <button class="btn" onclick="morphGo()">✨ 变身成缩写</button>
+        <button class="btn ghost" onclick="morphBack()">↺ 变回原样</button>
+      </div>
+      <div class="step" id="morphStep">点「变身」：右边的 sum 缩进等号里，+ 和 = 挤在一起 → <b>sum += a;</b></div>
+    </div>
+    <div class="card">
+      <div class="h2">⌨️ 循环输入 + 求和（两种写法一起跑）</div>
+      <div class="sub">重点难点预演！for 里放 cin，每轮输一个数、加进 sum。左右两段代码<b>只有那一行不一样</b>，点数字喂 3 个数，看它们算出的 sum 是不是一样。</div>
+      <div class="twin">
+        <div><div class="tt">写法 A：sum = sum + a</div>
+          <div class="code"><span class="ln"><span class="v">int</span> a, sum=<span class="n">0</span>;</span><span class="ln"><span class="k">for</span>(<span class="v">int</span> i=<span class="n">1</span>;i&lt;=<span class="n">3</span>;i++)</span><span class="ln">{</span><span class="ln" id="ta-cin">&nbsp;<span class="k">cin</span>&gt;&gt;a;</span><span class="ln" id="ta-add">&nbsp;sum = sum + a;</span><span class="ln">}</span></div>
+          <div class="sumbox">sum = <b id="sumA">0</b></div>
+        </div>
+        <div><div class="tt">写法 B：sum += a</div>
+          <div class="code"><span class="ln"><span class="v">int</span> a, sum=<span class="n">0</span>;</span><span class="ln"><span class="k">for</span>(<span class="v">int</span> i=<span class="n">1</span>;i&lt;=<span class="n">3</span>;i++)</span><span class="ln">{</span><span class="ln" id="tb-cin">&nbsp;<span class="k">cin</span>&gt;&gt;a;</span><span class="ln" id="tb-add">&nbsp;sum += a;</span><span class="ln">}</span></div>
+          <div class="sumbox">sum = <b id="sumB">0</b></div>
+        </div>
+      </div>
+      <div class="sub" style="text-align:center; margin-top:8px;">第 <b id="sumRound">1</b> / 3 轮，点一个数喂给两边的 cin：</div>
+      <div class="numpad" id="sumPad"></div>
+      <div class="step" id="sumStep">每点一个数，两边同时执行"输入 → 加进 sum"。看好了：结果永远一样！</div>
+      <div class="btnrow"><button class="btn ghost" onclick="sumReset()">↺ 重来</button></div>
+    </div>
+  </section>
+
+  <!-- 3 双重门城堡 -->
+  <section id="s-castle">
+    <div class="card">
+      <div class="h2">🚪 双重门城堡 · 多 if 嵌套</div>
+      <div class="method"><b>方法点拨：</b>if 里面再放一个 if，就是 <b>if 嵌套</b>。像闯城堡：<b>先过外面那道门（外层 if），才有资格走到里面那道门（内层 if）跟前</b>。外层不成立，里层连看都不会被看一眼。</div>
+      <div class="code">
+        <span class="ln" id="cs-if1"><span class="k">if</span>(a&gt;<span class="n">10</span>)　<span class="c">// 第一道门</span></span>
+        <span class="ln">{</span>
+        <span class="ln" id="cs-if2">&nbsp;&nbsp;<span class="k">if</span>(b&gt;<span class="n">10</span>)　<span class="c">// 第二道门</span></span>
+        <span class="ln">&nbsp;&nbsp;{</span>
+        <span class="ln" id="cs-win">&nbsp;&nbsp;&nbsp;&nbsp;<span class="k">cout</span>&lt;&lt;<span class="s">"win"</span>;　<span class="c">// 拿到宝石</span></span>
+        <span class="ln">&nbsp;&nbsp;}</span>
+        <span class="ln">}</span>
+      </div>
+      <div class="bigread">a = <b id="caRead">15</b>　b = <b id="cbRead">6</b></div>
+      <input class="slider" id="caSlider" type="range" min="0" max="20" value="15" step="1">
+      <input class="slider" id="cbSlider" type="range" min="0" max="20" value="6" step="1">
+      <div class="castle">
+        <div class="gate" id="gate1"><span class="glab">门1：a&gt;10</span><div class="door"></div></div>
+        <div class="gate" id="gate2"><span class="glab">门2：b&gt;10</span><div class="door"></div></div>
+        <span class="hero" id="hero">🤺</span>
+        <span class="gem" id="gem">💎</span>
+      </div>
+      <div class="btnrow"><button class="btn green" id="castleBtn" onclick="castleRun()">▶ 骑士出发！</button></div>
+      <div class="step" id="castleStep">拖两个滑块设 a 和 b，再让骑士出发。两道门<b>都开</b>才能拿到 💎。</div>
+    </div>
+  </section>
+
+  <!-- 4 嵌套 vs && -->
+  <section id="s-and">
+    <div class="card">
+      <div class="h2">🤝 if 嵌套 vs &&，是双胞胎！</div>
+      <div class="method"><b>方法点拨：</b>上学期学的 <b>&&（与，两边都成立才成立）</b>还记得吗？<b>if 嵌套两道门 = && 把两把锁装在一道门上</b>。下面两段代码，不管 a、b 是几，结果永远一样。</div>
+      <div class="twin">
+        <div><div class="tt">嵌套写法：两道门</div>
+          <div class="code" style="font-size:12px;"><span class="ln" id="d1"><span class="k">if</span>(a&gt;<span class="n">10</span>){</span><span class="ln" id="d2">&nbsp;<span class="k">if</span>(b&gt;<span class="n">10</span>){</span><span class="ln" id="d3">&nbsp;&nbsp;<span class="k">cout</span>&lt;&lt;<span class="s">"win"</span>;</span><span class="ln">&nbsp;}</span><span class="ln">}</span></div>
+          <div class="sumbox" id="resNest">→ ?</div>
+        </div>
+        <div><div class="tt">&& 写法：一门双锁</div>
+          <div class="code" style="font-size:12px;"><span class="ln" id="e1"><span class="k">if</span>(a&gt;<span class="n">10</span> <span class="o">&&</span> b&gt;<span class="n">10</span>){</span><span class="ln" id="e2">&nbsp;<span class="k">cout</span>&lt;&lt;<span class="s">"win"</span>;</span><span class="ln">}</span></div>
+          <div class="sumbox" id="resAnd">→ ?</div>
+        </div>
+      </div>
+      <div class="bigread">a = <b id="daRead">12</b>　b = <b id="dbRead">12</b></div>
+      <input class="slider" id="daSlider" type="range" min="0" max="20" value="12" step="1">
+      <input class="slider" id="dbSlider" type="range" min="0" max="20" value="12" step="1">
+      <div class="step" id="andStep">拖滑块试各种组合：两边都&gt;10 才 win。<b>结论：两段代码永远同生同死</b>——这就是明天课上的"if 嵌套 ↔ && 改写"。</div>
+      <div class="tip">🧮 <b>数学连接</b>：编程的 && 就是数学里的"且（∧）"。a&gt;10 且 b&gt;10，两个条件同时满足。</div>
+    </div>
+  </section>
+
+  <!-- 5 if-else 嵌套分岔树 -->
+  <section id="s-tree">
+    <div class="card">
+      <div class="h2">🌲 if-else 嵌套 · 分数分岔树</div>
+      <div class="method"><b>方法点拨：</b>else 里面再套一个 if-else，就能<b>连着分好几岔</b>。执行顺序：从上到下，<b>第一个条件成立就走那条岔，后面的全部不看</b>；不成立才继续往下一个条件。永远只走到一个出口。</div>
+      <div class="code">
+        <span class="ln" id="tr-1"><span class="k">if</span>(score&gt;=<span class="n">90</span>){ <span class="k">cout</span>&lt;&lt;<span class="s">"great"</span>; }</span>
+        <span class="ln" id="tr-2"><span class="k">else</span></span>
+        <span class="ln">{</span>
+        <span class="ln" id="tr-3">&nbsp;&nbsp;<span class="k">if</span>(score&gt;=<span class="n">60</span>){ <span class="k">cout</span>&lt;&lt;<span class="s">"pass"</span>; }</span>
+        <span class="ln" id="tr-4">&nbsp;&nbsp;<span class="k">else</span>{ <span class="k">cout</span>&lt;&lt;<span class="s">"fight"</span>; }</span>
+        <span class="ln">}</span>
+      </div>
+      <div class="bigread">分数 score = <b id="scRead">75</b></div>
+      <input class="slider" id="scSlider" type="range" min="0" max="100" value="75" step="5">
+      <svg class="tree" viewBox="0 0 340 190">
+        <path class="tpath" id="p-root" d="M170 26 L170 52"/>
+        <path class="tpath" id="p-great" d="M170 52 L64 92"/>
+        <path class="tpath" id="p-else" d="M170 52 L246 92"/>
+        <path class="tpath" id="p-pass" d="M246 112 L192 152"/>
+        <path class="tpath" id="p-fight" d="M246 112 L300 152"/>
+        <circle class="tball" id="tball" cx="170" cy="20" r="11"/>
+        <rect class="tnode" id="n-root" x="120" y="42" width="100" height="24" rx="8"/>
+        <text class="tlab" x="170" y="58">score ≥ 90 ?</text>
+        <rect class="tnode" id="n-great" x="24" y="88" width="84" height="26" rx="8"/>
+        <text class="tout" x="66" y="105" fill="#2BB673">great 🏆</text>
+        <rect class="tnode" id="n-else" x="200" y="88" width="94" height="26" rx="8"/>
+        <text class="tlab" x="247" y="105">score ≥ 60 ?</text>
+        <rect class="tnode" id="n-pass" x="152" y="148" width="80" height="26" rx="8"/>
+        <text class="tout" x="192" y="165" fill="#3B82F6">pass 👍</text>
+        <rect class="tnode" id="n-fight" x="262" y="148" width="76" height="26" rx="8"/>
+        <text class="tout" x="300" y="165" fill="#E64A4A">fight 💪</text>
+      </svg>
+      <div class="btnrow"><button class="btn green" onclick="treeRun()" id="treeBtn">▶ 让小球滚下去</button></div>
+      <div class="step" id="treeStep">拖滑块改分数，再让小球滚。看它在每个岔口怎么选路——<b>只走一条，绝不回头</b>。</div>
+    </div>
+  </section>
+
+  <!-- 6 for里的cout-if 预言机 -->
+  <section id="s-oracle">
+    <div class="card">
+      <div class="h2">🔮 for 里的 cout-if 预言机</div>
+      <div class="method"><b>方法点拨：</b>for 里同时放 cout 和 if 时，<b>每一轮都要把大括号里的内容从头到尾走一遍</b>：cout 每轮必执行，if 只在条件成立的那几轮才多输出。先自己猜猜输出，再一步步验证！</div>
+      <div class="code">
+        <span class="ln" id="or-for"><span class="k">for</span>(<span class="v">int</span> i=<span class="n">1</span>; i&lt;=<span class="n">5</span>; i++)</span>
+        <span class="ln">{</span>
+        <span class="ln" id="or-a">&nbsp;&nbsp;<span class="k">cout</span>&lt;&lt;<span class="s">"a"</span>;　<span class="c">// 每轮必印</span></span>
+        <span class="ln" id="or-if">&nbsp;&nbsp;<span class="k">if</span>(i&gt;<span class="n">3</span>){ <span class="k">cout</span>&lt;&lt;<span class="s">"b"</span>; }　<span class="c">// i&gt;3 才印</span></span>
+        <span class="ln">}</span>
+      </div>
+      <div class="sub" style="text-align:center;margin-top:8px;">先猜：输出是下面哪个？</div>
+      <div class="btnrow" style="justify-content:center;" id="guessRow">
+        <button class="btn ghost" onclick="oracleGuess(this,'aaaabab')">aaaabab</button>
+        <button class="btn ghost" onclick="oracleGuess(this,'aaaaabb')">aaaaabb</button>
+        <button class="btn ghost" onclick="oracleGuess(this,'ababababab')">ababababab</button>
+      </div>
+      <div class="screen"><span class="lab">终端输出（i 一轮轮走）：</span><span id="orOut"></span></div>
+      <div class="btnrow"><button class="btn green" id="orBtn" onclick="oracleRun()">▶ 一轮轮验证</button></div>
+      <div class="step" id="orStep">i=1,2,3 时只印 a；i=4,5 时 i&gt;3 成立，印完 a 还要印 b。所以是 a a a ab ab。</div>
+    </div>
+  </section>
+
+  <!-- 7 检验 -->
+  <section id="s-quiz">
+    <div class="card">
+      <div class="h2">🎯 预习检验 <span class="scorebar" id="score"></span></div>
+      <div class="sub">玩完城堡再来 4 道小题，明天上课就是全班最懂的。答错有讲解。</div>
+      <div id="quizBox"></div>
+      <button class="btn row green" id="restartBtn" style="display:none" onclick="buildQuiz()">🔁 再做一遍</button>
+    </div>
+    <div class="foot">核桃编程 · L3-3 预习 if嵌套探秘城堡 · 先玩明白，再去上课</div>
+  </section>
+</div>
+
+<script>
+/* ============ 导航 ============ */
+const SECTIONS = [
+  ['s-intro','🏁 总览'],['s-words','📖 单词'],['s-sum','✨ sum+=a'],
+  ['s-castle','🚪 双重门'],['s-and','🤝 嵌套vs&&'],['s-tree','🌲 分岔树'],
+  ['s-oracle','🔮 预言机'],['s-quiz','🎯 检验']
+];
+const nav = document.getElementById('nav');
+SECTIONS.forEach(([id,label])=>{
+  const b=document.createElement('button'); b.className='chip'; b.textContent=label; b.dataset.id=id;
+  b.onclick=()=>go(id); nav.appendChild(b);
+});
+function go(id){
+  document.querySelectorAll('section').forEach(s=>s.classList.toggle('show', s.id===id));
+  document.querySelectorAll('.chip').forEach(c=>c.classList.toggle('active', c.dataset.id===id));
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+go('s-intro');
+
+/* ============ 朗读：预合成神经音优先，浏览器 TTS 回退 ============ */
+const AUDIO_DIR="audio/hetao_coding_l3-3_preview/";
+let exAudio=null, audioTok=0;
+function audioHash(s){const b=new TextEncoder().encode(s);let x=0x811c9dc5>>>0;for(let i=0;i<b.length;i++){x^=b[i];x=Math.imul(x,0x01000193)>>>0;}return ('0000000'+x.toString(16)).slice(-8);}
+function getExAudio(){if(!exAudio){exAudio=new Audio();exAudio.setAttribute('playsinline','');exAudio.preload='auto';try{document.body.appendChild(exAudio);}catch(e){}}return exAudio;}
+const synth = window.speechSynthesis;
+let vEn=null,vZh=null;
+function loadV(){ if(!synth) return; const vs=synth.getVoices();
+  vEn = vs.find(v=>/en-US/i.test(v.lang)&&/female|aria|samantha|ava/i.test(v.name))||vs.find(v=>/^en/i.test(v.lang));
+  vZh = vs.find(v=>/zh-CN/i.test(v.lang))||vs.find(v=>/zh/i.test(v.lang)); }
+if(synth){ loadV(); if(synth.onvoiceschanged!==undefined) synth.onvoiceschanged=loadV; }
+function ttsSay(text,lang){ if(!synth) return; try{ synth.cancel(); const u=new SpeechSynthesisUtterance(text);
+  if(lang==='en'){ u.lang='en-US'; u.voice=vEn; u.rate=.8; } else { u.lang='zh-CN'; u.voice=vZh; u.rate=.95; }
+  synth.speak(u);}catch(e){} }
+function say(text,lang){
+  try{if(synth)synth.cancel();}catch(e){}
+  audioTok++; const myTok=audioTok;
+  const a=getExAudio(); let done=false;
+  const stale=()=>done||myTok!==audioTok;
+  const fb=()=>{ if(stale())return; done=true; ttsSay(text,lang); };
+  a.onended=()=>{ if(stale())return; done=true; };
+  a.onerror=fb;
+  try{a.pause();}catch(e){}
+  a.src=AUDIO_DIR+audioHash(lang+"|"+text)+".mp3";
+  try{a.currentTime=0;}catch(e){}
+  const p=a.play(); if(p&&typeof p.catch==='function')p.catch(fb);
+}
+
+/* ============ 单词卡 ============ */
+const WORDS=[
+  {en:'put',ph:'/pʊt/',pos:'v./n./adj.',mean:'放，使处于；投掷、推；不动的',ex:'put down 放下'},
+  {en:'water',ph:'/ˈwɔːtər/',pos:'n./v.',mean:'水；灌溉，给…浇水',ex:'drink water 喝水'},
+  {en:'light',ph:'/laɪt/',pos:'v./n./adj.',mean:'照亮；光；明亮的、浅色的',ex:'light up 照亮'},
+  {en:'add',ph:'/æd/',pos:'v./n.',mean:'加；添加物',ex:'add in 加入（sum += a 就是 add！）'},
+  {en:'heat',ph:'/hiːt/',pos:'n./v.',mean:'热、温度；加热',ex:'add heat 加热'},
+  {en:'apply',ph:'/əˈplaɪ/',pos:'v.',mean:'应用；申请，请求；使用',ex:'apply for 申请'},
+  {en:'feed',ph:'/fiːd/',pos:'n.',mean:'动物的饲料；植物的肥料',ex:'apply feed 施肥'}
+];
+const wg=document.getElementById('wordgrid');
+WORDS.forEach(w=>{
+  const d=document.createElement('div'); d.className='wcard';
+  d.innerHTML=`<div class="wtop"><span class="wen">${w.en}</span><span class="wph">${w.ph}</span>
+    <button class="spk">🔊</button></div>
+    <div class="wmean"><span class="pos">${w.pos}</span>${w.mean}</div>
+    <div class="wph2">💡 ${w.ex}</div>`;
+  d.querySelector('.spk').onclick=()=>say(w.en,'en');
+  wg.appendChild(d);
+});
+
+/* ============ sum 变身器 ============ */
+function morphGo(){
+  document.getElementById('morph').classList.add('go');
+  document.getElementById('morphStep').innerHTML='变身完成：<b>sum += a;</b>　「+=」读作"加等于"——把 a 加进 sum。写起来更短，功能<b>一模一样</b>。';
+}
+function morphBack(){
+  document.getElementById('morph').classList.remove('go');
+  document.getElementById('morphStep').innerHTML='点「变身」：右边的 sum 缩进等号里，+ 和 = 挤在一起 → <b>sum += a;</b>';
+}
+
+/* ============ 循环输入求和 ============ */
+let sumA=0, sumB=0, sumRound=1, sumBusy=false;
+const sumPad=document.getElementById('sumPad');
+[2,5,8,10,20].forEach(n=>{
+  const b=document.createElement('button'); b.className='numk'; b.textContent=n;
+  b.onclick=()=>sumFeed(n); sumPad.appendChild(b);
+});
+function flash(id){ const el=document.getElementById(id); el.classList.add('on'); setTimeout(()=>el.classList.remove('on'),650); }
+function sumFeed(n){
+  if(sumBusy||sumRound>3) return;
+  sumBusy=true;
+  flash('ta-cin'); flash('tb-cin');
+  document.getElementById('sumStep').innerHTML=`第 ${sumRound} 轮：两边的 cin 都读到了 <b>${n}</b>…`;
+  setTimeout(()=>{
+    flash('ta-add'); flash('tb-add');
+    const oldA=sumA; sumA+=n; sumB+=n;
+    document.getElementById('sumA').textContent=sumA;
+    document.getElementById('sumB').textContent=sumB;
+    document.getElementById('sumStep').innerHTML=
+      `第 ${sumRound} 轮：左边 sum=${oldA}+${n}=<b>${sumA}</b>，右边 sum+=${n} 也是 <b>${sumB}</b>。一样！`;
+    sumRound++;
+    document.getElementById('sumRound').textContent=Math.min(sumRound,3);
+    sumBusy=false;
+    if(sumRound>3){
+      document.getElementById('sumStep').innerHTML=`✅ 3 轮输完，两边 sum 都是 <b>${sumA}</b>。<b>sum=sum+a 和 sum+=a 功能不变</b>——明天老师说的就是这个！`;
+      sumPad.querySelectorAll('.numk').forEach(b=>b.disabled=true);
+    }
+  },700);
+}
+function sumReset(){
+  sumA=0; sumB=0; sumRound=1; sumBusy=false;
+  document.getElementById('sumA').textContent=0;
+  document.getElementById('sumB').textContent=0;
+  document.getElementById('sumRound').textContent=1;
+  document.getElementById('sumStep').innerHTML='每点一个数，两边同时执行"输入 → 加进 sum"。看好了：结果永远一样！';
+  sumPad.querySelectorAll('.numk').forEach(b=>b.disabled=false);
+}
+
+/* ============ 双重门城堡 ============ */
+const caS=document.getElementById('caSlider'), cbS=document.getElementById('cbSlider');
+function castleRead(){
+  document.getElementById('caRead').textContent=caS.value;
+  document.getElementById('cbRead').textContent=cbS.value;
+  ['gate1','gate2'].forEach(g=>document.getElementById(g).classList.remove('open','shut'));
+  document.getElementById('hero').style.left='2%';
+  document.getElementById('gem').classList.remove('win');
+}
+caS.addEventListener('input',castleRead); cbS.addEventListener('input',castleRead);
+let castleTimer=[];
+function castleRun(){
+  castleTimer.forEach(clearTimeout); castleTimer=[];
+  castleRead();
+  const a=+caS.value, b=+cbS.value;
+  const ok1=a>10, ok2=b>10;
+  const hero=document.getElementById('hero'), stepEl=document.getElementById('castleStep');
+  const btn=document.getElementById('castleBtn'); btn.disabled=true;
+  const hl=(id,on)=>document.getElementById(id).classList.toggle('on',on);
+  stepEl.innerHTML='🤺 骑士走向第一道门…';
+  castleTimer.push(setTimeout(()=>{
+    hl('cs-if1',true);
+    hero.style.left='14%';
+    const g1=document.getElementById('gate1');
+    if(ok1){ g1.classList.add('open');
+      stepEl.innerHTML=`第一道门 if(a&gt;10)：a=${a}，<b style="color:var(--good)">成立 ✅ 门开了</b>，可以走进外层大括号。`;
+    }else{ g1.classList.add('shut');
+      stepEl.innerHTML=`第一道门 if(a&gt;10)：a=${a}，<b style="color:var(--bad)">不成立 ❌ 门锁死</b>。<b>里面那道门连看都看不到</b>——这就是嵌套：外层不成立，内层直接跳过。`;
+      castleTimer.push(setTimeout(()=>{ hl('cs-if1',false); btn.disabled=false; },1600));
+      return;
+    }
+  },600));
+  castleTimer.push(setTimeout(()=>{
+    hl('cs-if1',false); hl('cs-if2',true);
+    hero.style.left='54%';
+    const g2=document.getElementById('gate2');
+    if(ok2){ g2.classList.add('open');
+      stepEl.innerHTML=`第二道门 if(b&gt;10)：b=${b}，<b style="color:var(--good)">成立 ✅ 也开了</b>！`;
+    }else{ g2.classList.add('shut');
+      stepEl.innerHTML=`第二道门 if(b&gt;10)：b=${b}，<b style="color:var(--bad)">不成立 ❌</b>。过了第一道门，却被第二道门拦住——拿不到宝石。`;
+      castleTimer.push(setTimeout(()=>{ hl('cs-if2',false); btn.disabled=false; },1600));
+      return;
+    }
+  },2200));
+  castleTimer.push(setTimeout(()=>{
+    hl('cs-if2',false); hl('cs-win',true);
+    hero.style.left='78%';
+    document.getElementById('gem').classList.add('win');
+    stepEl.innerHTML=`💎 两道门都过了 → 执行最里面的 cout，输出 <b>win</b>！只有 <b>a&gt;10 和 b&gt;10 同时成立</b>才走得到这里。`;
+    say('闯关成功','zh');
+    castleTimer.push(setTimeout(()=>{ hl('cs-win',false); btn.disabled=false; },1600));
+  },3800));
+}
+castleRead();
+
+/* ============ 嵌套 vs && ============ */
+const daS=document.getElementById('daSlider'), dbS=document.getElementById('dbSlider');
+function andRender(){
+  const a=+daS.value, b=+dbS.value;
+  document.getElementById('daRead').textContent=a;
+  document.getElementById('dbRead').textContent=b;
+  const win = a>10 && b>10;
+  const rN=document.getElementById('resNest'), rA=document.getElementById('resAnd');
+  rN.innerHTML = win? '→ 输出 <b style="color:var(--good)">win</b>' : '→ <b style="color:var(--bad)">没有输出</b>';
+  rA.innerHTML = win? '→ 输出 <b style="color:var(--good)">win</b>' : '→ <b style="color:var(--bad)">没有输出</b>';
+  const why = win? `a=${a}&gt;10 ✅ 且 b=${b}&gt;10 ✅ → 两边都 win`
+    : (a>10? `a=${a} ✅ 但 b=${b} ❌（第二道门/第二把锁拦住）` : `a=${a} ❌（第一道门/第一把锁就拦住了）`);
+  document.getElementById('andStep').innerHTML = why + `。<b>两段代码永远同生同死</b>——if 嵌套可以改写成 &&。`;
+}
+daS.addEventListener('input',andRender); dbS.addEventListener('input',andRender); andRender();
+
+/* ============ 分岔树 ============ */
+const scS=document.getElementById('scSlider');
+scS.addEventListener('input',()=>{ document.getElementById('scRead').textContent=scS.value; treeReset(); });
+let treeTimer=[];
+function treeReset(){
+  treeTimer.forEach(clearTimeout); treeTimer=[];
+  ['p-root','p-great','p-else','p-pass','p-fight'].forEach(id=>document.getElementById(id).classList.remove('hot'));
+  ['n-root','n-great','n-else','n-pass','n-fight'].forEach(id=>document.getElementById(id).classList.remove('hot'));
+  ['tr-1','tr-2','tr-3','tr-4'].forEach(id=>document.getElementById(id).classList.remove('on'));
+  const b=document.getElementById('tball'); b.setAttribute('cx',170); b.setAttribute('cy',20);
+}
+function ballTo(x,y){ const b=document.getElementById('tball');
+  b.style.transition='all .7s ease'; b.setAttribute('cx',x); b.setAttribute('cy',y); }
+function treeRun(){
+  treeReset();
+  const s=+scS.value, stepEl=document.getElementById('treeStep');
+  const btn=document.getElementById('treeBtn'); btn.disabled=true;
+  const hot=id=>document.getElementById(id).classList.add('hot');
+  const hl=id=>document.getElementById(id).classList.add('on');
+  hot('p-root');
+  treeTimer.push(setTimeout(()=>{
+    hot('n-root'); hl('tr-1'); ballTo(170,54);
+    stepEl.innerHTML=`第一个岔口：score=${s}，${s}≥90 ${s>=90?'<b style="color:var(--good)">成立</b>':'<b style="color:var(--bad)">不成立</b>'}`;
+  },200));
+  treeTimer.push(setTimeout(()=>{
+    if(s>=90){
+      hot('p-great'); hot('n-great'); ballTo(66,100);
+      stepEl.innerHTML=`✅ 成立 → 输出 <b>great</b> 🏆。<b>下面的 else 整个不看</b>——走了一条岔，其余全跳过。`;
+      say('great','en');
+      btn.disabled=false;
+    }else{
+      hot('p-else'); hot('n-else'); hl('tr-2'); hl('tr-3'); ballTo(247,100);
+      stepEl.innerHTML=`❌ 不成立 → 掉进 else，遇到<b>里面套的第二个 if</b>：${s}≥60 ${s>=60?'<b style="color:var(--good)">成立</b>':'<b style="color:var(--bad)">不成立</b>'}`;
+      treeTimer.push(setTimeout(()=>{
+        if(s>=60){ hot('p-pass'); hot('n-pass'); ballTo(192,160);
+          stepEl.innerHTML=`✅ ${s}≥60 成立 → 输出 <b>pass</b> 👍。整棵树只走了一条路：else → 内层 if。`;
+          say('pass','en');
+        }else{ hot('p-fight'); hot('n-fight'); hl('tr-4'); ballTo(300,160);
+          stepEl.innerHTML=`❌ ${s}≥60 也不成立 → 掉进内层 else → 输出 <b>fight</b> 💪。两个条件都不满足才到这里。`;
+          say('fight','en');
+        }
+        btn.disabled=false;
+      },1000));
+    }
+  },1300));
+}
+
+/* ============ 预言机 ============ */
+let orGuess=null, orTimer=null;
+function oracleGuess(btn,val){
+  orGuess=val;
+  document.querySelectorAll('#guessRow .btn').forEach(b=>{ b.classList.add('ghost'); b.style.borderColor=''; });
+  btn.style.borderColor='var(--purple-1)'; btn.style.color='var(--purple-1)';
+  document.getElementById('orStep').innerHTML=`你猜 <b>${val}</b>——点「一轮轮验证」看看猜没猜对！`;
+}
+function oracleRun(){
+  clearInterval(orTimer);
+  const outEl=document.getElementById('orOut'); outEl.innerHTML='';
+  const btn=document.getElementById('orBtn'); btn.disabled=true;
+  let i=1, phase=0, result='';
+  const hl=(id,on)=>document.getElementById(id).classList.toggle('on',on);
+  orTimer=setInterval(()=>{
+    hl('or-for',false); hl('or-a',false); hl('or-if',false);
+    if(i>5){
+      clearInterval(orTimer); btn.disabled=false;
+      const good = orGuess===null? '' : (orGuess==='aaaabab' ? '🎉 你猜对啦！' : `你猜的是 ${orGuess}，`);
+      document.getElementById('orStep').innerHTML=`${good}正确答案：<b>aaaabab</b>。i=1,2,3 只印 a；i=4,5 时 if(i&gt;3) 成立，a 后面还跟一个 b。`;
+      return;
+    }
+    if(phase===0){ hl('or-for',true);
+      document.getElementById('orStep').innerHTML=`第 ${i} 轮开始（i=${i}，i≤5 成立，进大括号）`;
+      phase=1;
+    }else if(phase===1){ hl('or-a',true);
+      const sp=document.createElement('span'); sp.className='outch'; sp.textContent='a';
+      outEl.appendChild(sp); result+='a';
+      document.getElementById('orStep').innerHTML=`第 ${i} 轮：cout&lt;&lt;"a" <b>每轮必执行</b> → 印 a`;
+      phase=2;
+    }else{ hl('or-if',true);
+      if(i>3){ const sp=document.createElement('span'); sp.className='outch'; sp.textContent='b';
+        sp.style.color='#FFD93D'; outEl.appendChild(sp); result+='b';
+        document.getElementById('orStep').innerHTML=`第 ${i} 轮：if(i&gt;3)：${i}&gt;3 <b style="color:var(--good)">成立</b> → 多印一个 b`;
+      }else{
+        document.getElementById('orStep').innerHTML=`第 ${i} 轮：if(i&gt;3)：${i}&gt;3 <b style="color:var(--bad)">不成立</b> → 这轮没有 b`;
+      }
+      i++; phase=0;
+    }
+  },820);
+}
+
+/* ============ 预习检验 ============ */
+const QUIZ=[
+  {q:'sum = sum + a; 还可以写成哪一句（功能不变）？',
+   opts:['sum += a;','sum =+ a;','a += sum;','sum ++ a;'],a:0,
+   ex:'<b>sum += a</b> 是"加等于"：把 a 加进 sum。注意顺序是 += 不是 =+；a+=sum 是把 sum 加进 a，方向反了。'},
+  {q:'if(a>10){ if(b>10){ cout<<"win"; } }　当 a=8、b=20 时输出什么？',
+   opts:['没有输出','win','只检查 b 就输出 win','报错'],a:0,
+   ex:'外层门 a&gt;10：8&gt;10 <b>不成立</b> → 整个外层大括号跳过，<b>内层 if 连看都不看</b>（b 是几都没用）。所以什么都不输出。'},
+  {q:'if(a>10){ if(b>10){...} } 和下面哪句永远结果一样？',
+   opts:['if(a>10 && b>10){...}','if(a>10 || b>10){...}','if(a>10){...} if(b>10){...}','if(b>10){ if(a>10){...} } 结果会不同'],a:0,
+   ex:'嵌套两道门 = <b>&& 一门双锁</b>：都要"两个条件同时成立"。|| 是"有一个成立就行"，不一样；两个并列 if 会各自执行各自的大括号，也不一样。'},
+  {q:'for(int i=1;i<=4;i++){ cout<<"x"; if(i==2){ cout<<"!"; } } 输出什么？',
+   opts:['xx!xx','x!xxx','xxxx!','xx!x'],a:0,
+   ex:'每轮必印 x；只有 i==2 那一轮多印 !。四轮依次是：x、x!、x、x → 连起来 <b>xx!xx</b>。'}
+];
+let qi=0, qok=0;
+function buildQuiz(){
+  qi=0; qok=0; document.getElementById('restartBtn').style.display='none';
+  document.getElementById('score').textContent='';
+  renderQ();
+}
+function renderQ(){
+  const box=document.getElementById('quizBox');
+  if(qi>=QUIZ.length){
+    box.innerHTML=`<div style="text-align:center;padding:18px 0;">
+      <div style="font-size:54px">${qok===QUIZ.length?'🏆':qok>=2?'👍':'💪'}</div>
+      <div style="font-size:20px;font-weight:900;margin-top:8px;">答对 ${qok} / ${QUIZ.length}</div>
+      <div class="sub" style="margin-top:6px;">${qok===QUIZ.length?'全对！明天上课你就是嵌套小专家。':'再去闯一遍城堡、滚一遍分岔树，就都明白了～'}</div></div>`;
+    document.getElementById('restartBtn').style.display='block';
+    return;
+  }
+  const item=QUIZ[qi];
+  box.innerHTML=`<div class="q">第 ${qi+1} 题　${item.q}</div>
+    <div id="opts"></div>
+    <div class="explain" id="ex">${item.ex}</div>
+    <button class="btn row" id="next" style="display:none" onclick="qi++;renderQ();">下一题 →</button>`;
+  const opts=document.getElementById('opts');
+  item.opts.forEach((o,i)=>{
+    const b=document.createElement('button'); b.className='opt'; b.textContent=o;
+    b.onclick=()=>{
+      if(document.getElementById('ex').classList.contains('show')) return;
+      const right=i===item.a;
+      if(right){ b.classList.add('ok'); qok++; say('答对了','zh'); }
+      else{ b.classList.add('no'); opts.children[item.a].classList.add('ok'); say('再想想','zh'); }
+      document.getElementById('ex').classList.add('show');
+      document.getElementById('next').style.display='block';
+      document.getElementById('score').textContent='✅ '+qok;
+    };
+    opts.appendChild(b);
+  });
+}
+buildQuiz();
+</script>
+</body>
+</html>

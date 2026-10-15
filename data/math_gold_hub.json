@@ -1,0 +1,191 @@
+{
+  "updated": "2026-09-01",
+  "kenton": {
+    "grade": "五年级上",
+    "book": "钟书金牌·上海尖子生学习笔记·数学五年级上（沪教版同步）",
+    "note": "第一单元已按教辅 p1–37 重做为完整教材课；7课全部开放，第2—3单元可继续练习。",
+    "units": [
+      {
+        "id": "g5u1-textbook-complete-20260901",
+        "name": "第1单元完整教材课 · 小数的乘法与除法",
+        "status": "ready",
+        "file": "kenton_math_g5_u1_textbook_complete_20260901.html",
+        "added": "2026-09-01",
+        "progress": {
+          "mode": "module-done",
+          "storageKey": "study:kenton:math-g5-u1-textbook-complete-20260901:v1",
+          "goal": 7,
+          "cloudSource": "apps/kenton_math_g5_u1_textbook_complete_20260901.html",
+          "legacy": [
+            {
+              "mode": "module-done",
+              "storageKey": "g5u1_declab_kenton_v1",
+              "goal": 7,
+              "cloudSource": "apps/kenton_math_gold_g5u1.html"
+            }
+          ]
+        },
+        "ds": "教辅 p1–37 七课逐段精讲 · 35+道独立题 · 数位实验与短输入 · 错后修复并回到原题"
+      },
+      {
+        "id": "g5u2",
+        "name": "第2单元 小数的应用",
+        "status": "ready",
+        "file": "kenton_math_gold_g5u2.html",
+        "added": "2026-07-23",
+        "progress": {
+          "mode": "module-done",
+          "storageKey": "g5u2_app_kenton_v1",
+          "goal": 6,
+          "cloudSource": "apps/kenton_math_gold_g5u2.html"
+        },
+        "ds": "四舍五入闸门 · 进一/去尾分装器 · 汇率兑换机 · 峰谷电表 · 分段计费线段图 · 错因标签+错题本"
+      },
+      {
+        "id": "g5u3",
+        "name": "第3单元 平均数",
+        "status": "ready",
+        "file": "kenton_math_gold_g5u3.html",
+        "added": "2026-07-23",
+        "progress": {
+          "mode": "module-done",
+          "storageKey": "g5u3_app_kenton_v1",
+          "goal": 6,
+          "cloudSource": "apps/kenton_math_gold_g5u3.html"
+        },
+        "ds": "水位拉平机 · 数轴夹夹乐 · 基准数积木 · 评委打分台 · 会动知识导图 · 错因标签+错题本"
+      },
+      {
+        "id": "g5u4",
+        "name": "第4单元 制订旅行方案（综合实践）",
+        "status": "locked"
+      },
+      {
+        "id": "g5u5",
+        "name": "第5单元 面积的计算",
+        "status": "locked"
+      },
+      {
+        "id": "g5u6",
+        "name": "第6单元 课间体育活动（综合实践）",
+        "status": "locked"
+      },
+      {
+        "id": "g5u7",
+        "name": "第7单元 因数与倍数",
+        "status": "locked"
+      },
+      {
+        "id": "g5u8",
+        "name": "第8单元 数学广场",
+        "status": "locked"
+      },
+      {
+        "id": "g5u9",
+        "name": "第9单元 整理与复习",
+        "status": "locked"
+      }
+    ]
+  },
+  "eddey": {
+    "grade": "四年级上",
+    "book": "钟书金牌·上海尖子生学习笔记·数学四年级上（沪教版同步）",
+    "note": "第一单元已按教辅 p1–31 重做为完整教材课；全部章节开放，第2—4单元可继续练习。",
+    "units": [
+      {
+        "id": "g4u1-textbook-complete-20260901",
+        "name": "第1单元完整教材课 · 运算关系与运算律",
+        "status": "ready",
+        "file": "eddey_math_g4_u1_textbook_complete_20260901.html",
+        "added": "2026-09-01",
+        "progress": {
+          "mode": "station-events",
+          "storageKey": "study:eddey:math-g4-u1-textbook-complete-20260901:v1:events",
+          "station": "s5",
+          "goal": 36,
+          "cloudSource": "apps/eddey_math_g4_u1_textbook_complete_20260901.html",
+          "legacy": [
+            {
+              "mode": "station-events",
+              "storageKey": "dd:eddey:math-gold-g4u1:events:v1",
+              "station": "s5",
+              "goal": 12,
+              "cloudSource": "apps/eddey_math_gold_g4u1.html"
+            }
+          ]
+        },
+        "ds": "教辅 p1–31 逐段精讲 · 规则导图与36道独立题 · 短输入 · 错后修复并回到原题"
+      },
+      {
+        "id": "g4u2",
+        "name": "第2单元 四面八方的学问",
+        "status": "ready",
+        "file": "eddey_math_gold_g4u2.html",
+        "added": "2026-07-23",
+        "progress": {
+          "mode": "station-events",
+          "storageKey": "dd:eddey:math-gold-g4u2:events:v1",
+          "station": "s5",
+          "goal": 12,
+          "cloudSource": "apps/eddey_math_gold_g4u2.html"
+        },
+        "ds": "方向罗盘 · 风向标实验室 · 路线小导游 · 遮挡回忆卡 · 12题独立检验+错题本"
+      },
+      {
+        "id": "g4u3",
+        "name": "第3单元 整数的四则运算与应用题",
+        "status": "ready",
+        "file": "eddey_math_gold_g4u3.html",
+        "added": "2026-07-23",
+        "progress": {
+          "mode": "station-events",
+          "storageKey": "dd:eddey:math-gold-g4u3:events:v1",
+          "station": "s5",
+          "goal": 12,
+          "cloudSource": "apps/eddey_math_gold_g4u3.html"
+        },
+        "ds": "运算顺序红绿灯 · 工作效率工厂 · 跟着做三关 · 遮挡回忆卡 · 12题独立检验+错题本"
+      },
+      {
+        "id": "g4u4",
+        "name": "第4单元 大数的认识与改写",
+        "status": "ready",
+        "file": "eddey_math_gold_g4u4.html",
+        "added": "2026-07-23",
+        "progress": {
+          "mode": "station-events",
+          "storageKey": "dd:eddey:math-gold-g4u4:events:v1",
+          "station": "s5",
+          "goal": 12,
+          "cloudSource": "apps/eddey_math_gold_g4u4.html"
+        },
+        "ds": "数位天梯 · 改写变身器 · 跟着做三关 · 遮挡回忆卡 · 12题独立检验+错题本"
+      },
+      {
+        "id": "g4u5",
+        "name": "第5单元 度量衡的故事（综合与实践）",
+        "status": "locked"
+      },
+      {
+        "id": "g4u6",
+        "name": "第6单元 分数的初步认识",
+        "status": "locked"
+      },
+      {
+        "id": "g4u7",
+        "name": "第7单元 线与角",
+        "status": "locked"
+      },
+      {
+        "id": "g4u8",
+        "name": "第8单元 数学广场",
+        "status": "locked"
+      },
+      {
+        "id": "g4u9",
+        "name": "第9单元 复习",
+        "status": "locked"
+      }
+    ]
+  }
+}

@@ -1,0 +1,313 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<script src="../assets/learning-sync.js"></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#ff765f">
+  <title>Eddey 的 There be 句型变形实验室</title>
+  <style>
+    :root{
+      --coral:#ff765f;--coral-deep:#e85443;--orange:#ffad4d;--cream:#fff8ed;
+      --ink:#263247;--muted:#6d7585;--green:#25a878;--red:#e94e55;--blue:#4b83e5;
+      --card:#fff;--line:#eadfd5;--shadow:0 14px 34px rgba(107,64,43,.12);
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:linear-gradient(180deg,#fff5e9 0,#fffdf9 45%,#fff6ee 100%);color:var(--ink);font-family:"PingFang SC","Microsoft YaHei",system-ui,sans-serif;min-height:100vh}
+    button,select,input{font:inherit}
+    button{touch-action:manipulation}
+    .shell{max-width:980px;margin:auto;padding:18px 16px 96px}
+    .hero{position:relative;overflow:hidden;background:linear-gradient(135deg,#ff795f,#ffae50);color:#fff;border-radius:28px;padding:22px 20px;box-shadow:0 18px 42px rgba(232,84,67,.25)}
+    .hero:after{content:"";position:absolute;width:210px;height:210px;border-radius:50%;right:-92px;top:-96px;background:rgba(255,255,255,.15)}
+    .hero-top{display:flex;align-items:center;gap:14px;position:relative;z-index:1}
+    .tiger{width:64px;height:64px;display:grid;place-items:center;background:#fff;border-radius:22px;font-size:38px;box-shadow:0 9px 20px rgba(111,56,26,.18);transform:rotate(-3deg)}
+    h1{font-size:clamp(23px,5vw,34px);line-height:1.2;margin:0 0 5px}.subtitle{margin:0;opacity:.94;font-weight:700}
+    .mission{position:relative;z-index:1;margin-top:16px;padding:13px 15px;border-radius:18px;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.25);line-height:1.65}
+    .hero-stats{display:flex;gap:9px;flex-wrap:wrap;margin-top:12px;position:relative;z-index:1}.hero-chip{padding:7px 10px;background:rgba(73,36,19,.17);border-radius:999px;font-size:13px;font-weight:700}
+    .nav{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:14px 0;position:sticky;top:8px;z-index:30;padding:7px;background:rgba(255,252,247,.91);backdrop-filter:blur(12px);border-radius:20px;box-shadow:0 9px 26px rgba(85,55,34,.1)}
+    .nav button{border:0;border-radius:14px;padding:11px 6px;background:transparent;color:var(--muted);font-weight:800;min-height:50px;cursor:pointer}
+    .nav button.active{background:#fff0e5;color:var(--coral-deep);box-shadow:inset 0 0 0 1px #ffd7c8}
+    .page{display:none;animation:fade .25s ease}.page.active{display:block}
+    @keyframes fade{from{opacity:.2;transform:translateY(5px)}to{opacity:1;transform:none}}
+    .card{background:var(--card);border:1px solid rgba(225,205,189,.72);box-shadow:var(--shadow);border-radius:24px;padding:18px;margin:14px 0}
+    .card h2,.card h3{margin:0 0 10px}.card h2{font-size:22px}.card h3{font-size:18px}
+    .eyebrow{display:inline-block;font-size:12px;font-weight:900;letter-spacing:.08em;color:var(--coral-deep);background:#fff0e8;border-radius:999px;padding:6px 9px;margin-bottom:9px}
+    .lead{color:var(--muted);line-height:1.7;margin:5px 0 13px}
+    .rule-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+    .rule{border-radius:18px;padding:14px;min-height:128px;background:#fff8f1;border:1px solid #ffe0cd}.rule:nth-child(2){background:#f0f7ff;border-color:#d8e8ff}.rule:nth-child(3){background:#f1fbf7;border-color:#d6f2e7}.rule b{display:block;font-size:18px;margin-bottom:7px}.rule small{display:block;color:var(--muted);line-height:1.55}
+    .formula{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;background:#28344a;color:#fff;padding:12px 14px;border-radius:14px;line-height:1.6;overflow:auto;margin:10px 0}.formula em{color:#ffd36f;font-style:normal;font-weight:900}
+    .coach{display:flex;gap:10px;align-items:flex-start;background:#fff6dc;border:1px solid #ffe3a1;border-radius:16px;padding:12px 13px;line-height:1.55;margin:12px 0}.coach .face{font-size:23px}.coach strong{color:#97571d}
+    .lab-controls{display:grid;grid-template-columns:1fr auto 1fr;gap:10px;align-items:end;margin:15px 0}.field label{display:block;font-size:13px;font-weight:800;color:var(--muted);margin:0 0 6px}.field select{width:100%;min-height:48px;border:2px solid #f0d8c7;border-radius:14px;background:#fff;padding:8px 10px;color:var(--ink);font-weight:800}.swap{height:48px;width:48px;border:0;border-radius:15px;color:#fff;background:var(--coral);font-size:21px;cursor:pointer;box-shadow:0 8px 16px rgba(232,84,67,.22)}
+    .track-wrap{background:linear-gradient(180deg,#dff4ff 0,#f8fdff 63%,#dbe9c0 64%,#dbe9c0 100%);border-radius:22px;padding:24px 10px 28px;overflow:hidden;border:1px solid #d5e9ef}
+    .train{display:flex;align-items:flex-end;justify-content:center;gap:6px;width:max-content;min-width:100%;transition:transform .35s ease}.track-wrap{overflow-x:auto}.train-car{position:relative;padding:14px 15px 23px;border-radius:14px 14px 8px 8px;color:#fff;font-weight:900;text-align:center;box-shadow:0 9px 14px rgba(52,75,80,.16);transition:.28s ease}.train-car:before,.train-car:after{content:"";position:absolute;bottom:-7px;width:16px;height:16px;border-radius:50%;background:#344254;border:4px solid #aeb9c3}.train-car:before{left:12px}.train-car:after{right:12px}.there{background:#52627a}.engine{background:var(--coral);font-size:22px;min-width:86px}.cargo{background:#4b83e5;min-width:132px}.cargo.rear{background:#25a878}.and{align-self:center;color:var(--ink);font-weight:900;padding-bottom:13px}.nearest{outline:4px solid #ffd45c;transform:translateY(-5px)}
+    .sentence-output{text-align:center;font-size:clamp(18px,4vw,25px);font-weight:900;margin:16px 0 5px}.reason{text-align:center;color:var(--muted);line-height:1.55}.reason b{color:var(--coral-deep)}
+    .action-row{display:flex;gap:9px;flex-wrap:wrap;margin-top:13px}.btn{border:0;border-radius:14px;padding:11px 14px;font-weight:900;cursor:pointer;min-height:46px}.btn.primary{background:var(--coral);color:#fff;box-shadow:0 8px 18px rgba(232,84,67,.22)}.btn.secondary{background:#fff0e6;color:var(--coral-deep)}.btn.blue{background:#eaf2ff;color:#346bc7}.btn.green{background:#e5f7ef;color:#168560}.btn.ghost{background:#f3f4f7;color:#4d5666}.btn:active{transform:translateY(1px)}
+    .neg-demo{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:10px}.sentence-tile{background:#f7f8fb;border:2px solid #e3e7ed;border-radius:17px;padding:15px;text-align:center;font-weight:900;line-height:1.6}.sentence-tile.changed{background:#fff2eb;border-color:#ffd3c3}.arrow{font-size:24px;color:var(--coral)}.changed-word{color:var(--coral-deep);text-decoration:underline;text-decoration-thickness:3px;text-underline-offset:4px}
+    .engine-tabs{display:flex;gap:8px;overflow-x:auto;padding-bottom:4px}.engine-tab{white-space:nowrap;border:2px solid #e7dfd8;background:#fff;border-radius:14px;padding:10px 13px;font-weight:900;color:var(--muted);cursor:pointer}.engine-tab.active{border-color:var(--coral);background:#fff1e9;color:var(--coral-deep)}
+    .transform-stage{margin-top:15px;border-radius:20px;background:#f7f5ff;border:1px solid #e6e0fb;padding:15px}.source-sentence{text-align:center;font-size:22px;font-weight:900;padding:13px;background:#fff;border-radius:14px;box-shadow:0 8px 16px rgba(65,55,100,.08)}
+    .transform-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:12px}.transform-card{border:0;text-align:left;border-radius:17px;padding:13px;background:#fff;min-height:128px;box-shadow:0 7px 16px rgba(65,55,100,.07);cursor:pointer}.transform-card strong{display:block;color:#6b54b6;margin-bottom:8px}.transform-card .result{font-size:16px;font-weight:900;line-height:1.55}.transform-card small{display:block;color:var(--muted);line-height:1.5;margin-top:7px}.transform-card.reveal{animation:pop .35s ease;outline:3px solid #d8cfff}@keyframes pop{50%{transform:scale(1.025)}}
+    .steps{counter-reset:step;display:grid;gap:9px;margin-top:12px}.step{display:flex;gap:11px;align-items:flex-start;padding:12px;border-radius:15px;background:#fff8f1}.step:before{counter-increment:step;content:counter(step);display:grid;place-items:center;flex:none;width:28px;height:28px;border-radius:10px;background:var(--orange);color:#fff;font-weight:900}.step b{color:var(--coral-deep)}
+    .boundary{border-left:5px solid var(--blue);padding:11px 13px;background:#f1f6ff;border-radius:4px 14px 14px 4px;line-height:1.65;margin-top:12px}
+    .quiz-head{display:flex;align-items:center;justify-content:space-between;gap:10px}.progress{height:10px;background:#eceef2;border-radius:999px;overflow:hidden;margin:12px 0}.progress>i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--coral),var(--orange));transition:width .35s ease}
+    .question-box{padding:18px;border-radius:21px;background:linear-gradient(145deg,#fff8f2,#fff);border:1px solid #ffe1d3}.q-meta{display:flex;justify-content:space-between;gap:10px;color:var(--muted);font-size:13px;font-weight:800}.question{font-size:clamp(20px,5vw,27px);font-weight:900;line-height:1.55;margin:14px 0}.options{display:grid;grid-template-columns:1fr 1fr;gap:10px}.option{border:2px solid #e7e2de;background:#fff;border-radius:16px;padding:13px;text-align:left;font-weight:850;line-height:1.4;cursor:pointer;min-height:54px}.option:hover{border-color:#ffb39f}.option.correct{border-color:var(--green);background:#e9faf3;color:#127654}.option.wrong{border-color:var(--red);background:#fff0f1;color:#b42c34}.option.dim{opacity:.58}.explain{display:none;margin-top:14px;padding:14px;border-radius:16px;line-height:1.65}.explain.show{display:block;animation:fade .25s}.explain.good{background:#e9faf3;border:1px solid #bcebd8}.explain.bad{background:#fff1e9;border:1px solid #ffd3c2}.explain b{display:block;margin-bottom:4px}.next-row{display:none;justify-content:flex-end;margin-top:12px}.next-row.show{display:flex}
+    .start-panel{text-align:center;padding:14px}.start-panel .big{font-size:50px}.mode-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:15px}.mode{border:2px solid #f0dfd2;border-radius:18px;background:#fff;padding:15px 8px;cursor:pointer}.mode b{display:block;margin:5px 0}.mode small{color:var(--muted);line-height:1.45}.mode:disabled{filter:grayscale(1);opacity:.55;cursor:not-allowed}
+    .result-panel{text-align:center}.score-ring{width:122px;height:122px;margin:14px auto;border-radius:50%;display:grid;place-items:center;background:conic-gradient(var(--coral) var(--score),#f0e6df 0);position:relative}.score-ring:after{content:"";position:absolute;inset:11px;background:#fff;border-radius:50%}.score-ring strong{position:relative;z-index:1;font-size:28px}.weak-list{display:flex;gap:7px;justify-content:center;flex-wrap:wrap;margin:10px 0}.weak-tag{background:#fff0e7;color:#b84b37;border-radius:999px;padding:7px 10px;font-size:13px;font-weight:900}
+    .plan{display:grid;gap:9px}.plan-row{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:10px;padding:12px;border-radius:16px;background:#f8f8fb}.minute{width:48px;height:48px;border-radius:15px;display:grid;place-items:center;background:#fff0e7;color:var(--coral-deep);font-weight:900}.plan-row b{display:block}.plan-row small{color:var(--muted)}
+    .check{width:26px;height:26px;accent-color:var(--green)}
+    .stats-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}.stat{padding:12px 6px;text-align:center;border-radius:16px;background:#f7f8fb}.stat b{display:block;font-size:22px;color:var(--coral-deep)}.stat small{color:var(--muted)}
+    .mistakes{display:grid;gap:10px}.mistake{border:1px solid #f0dace;border-radius:16px;padding:12px;background:#fffaf7}.mistake-top{display:flex;justify-content:space-between;gap:10px}.badge{white-space:nowrap;height:max-content;border-radius:999px;padding:5px 8px;background:#fff0e7;color:#b74a35;font-size:12px;font-weight:900}.badge.solved{background:#e5f7ef;color:#168560}.mistake p{margin:7px 0;line-height:1.5}.mistake small{color:var(--muted)}
+    .empty{padding:18px;text-align:center;color:var(--muted);background:#f8f8fb;border-radius:16px}
+    .toast{position:fixed;left:50%;bottom:88px;transform:translate(-50%,20px);background:#263247;color:#fff;border-radius:13px;padding:10px 15px;font-weight:800;opacity:0;pointer-events:none;transition:.25s;z-index:100;box-shadow:0 10px 25px rgba(0,0,0,.18)}.toast.show{opacity:1;transform:translate(-50%,0)}
+    .footer-note{text-align:center;color:#8b8f98;font-size:12px;margin:20px 0}.hidden{display:none!important}
+    @media(max-width:680px){
+      .shell{padding:10px 10px 92px}.hero{border-radius:23px;padding:18px 15px}.tiger{width:55px;height:55px;font-size:32px}.nav{bottom:8px;top:auto;position:fixed;left:8px;right:8px;margin:0;z-index:50}.nav button{font-size:12px;padding:8px 2px}.nav button span{display:block;font-size:19px;margin-bottom:2px}
+      .card{border-radius:20px;padding:15px;margin:10px 0}.rule-grid,.transform-grid,.mode-grid{grid-template-columns:1fr}.rule{min-height:0}.lab-controls{grid-template-columns:1fr auto 1fr;gap:6px}.field select{font-size:13px;padding:6px}.swap{width:42px;height:46px}.neg-demo{grid-template-columns:1fr}.arrow{transform:rotate(90deg);text-align:center}.options{grid-template-columns:1fr}.stats-grid{grid-template-columns:1fr 1fr}.transform-card{min-height:0}.mission{font-size:14px}.plan-row{grid-template-columns:auto 1fr auto}
+    }
+    @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <header class="hero">
+      <div class="hero-top">
+        <div class="tiger" aria-hidden="true">🐯</div>
+        <div><h1>Eddey 的句型变形实验室</h1><p class="subtitle">There be · 肯定否定 · 一般/特殊疑问句</p></div>
+      </div>
+      <div class="mission"><b>今天的通关目标：</b>会用“离 be 最近的名词”判断 is/are；会先找句子发动机，再把陈述句变成否定句、一般疑问句和特殊疑问句。</div>
+      <div class="hero-stats"><span class="hero-chip" id="sessionTime">本次 0 分钟</span><span class="hero-chip" id="heroAttempts">累计作答 0 题</span><span class="hero-chip" id="heroWrong">待攻克 0 题</span></div>
+    </header>
+
+    <nav class="nav" aria-label="主要功能">
+      <button class="active" data-page="there"><span>🚂</span>There be</button>
+      <button data-page="transform"><span>🔧</span>句型变形</button>
+      <button data-page="quiz"><span>⚡</span>边学边测</button>
+      <button data-page="record"><span>📒</span>计划记录</button>
+    </nav>
+
+    <main>
+      <section class="page active" id="page-there">
+        <article class="card">
+          <span class="eyebrow">先讲懂</span><h2>There be 到底在说什么？</h2>
+          <p class="lead"><b>There be = 某地有某物。</b>它不是“那里是”，而是在报告“有东西存在”。先看 be 后面第一个名词，再决定用 is 还是 are。</p>
+          <div class="rule-grid">
+            <div class="rule"><b>There is</b><small>后面最近的是一个人/物，或不可数名词。<br>There is a book.<br>There is some milk.</small></div>
+            <div class="rule"><b>There are</b><small>后面最近的是两个或更多人/物。<br>There are two books.</small></div>
+            <div class="rule"><b>否定句</b><small>is → isn't，are → aren't；some 通常变 any。<br>There aren't any books.</small></div>
+          </div>
+          <div class="coach"><span class="face">🐯</span><div><strong>Eddey 口诀：</strong>别数全车，先看车头！离 be 最近的是单数/不可数，用 is；最近的是复数，用 are。</div></div>
+        </article>
+
+        <article class="card">
+          <span class="eyebrow">教材依据 · 已逐页核对</span><h2>这套软件从哪里取知识？</h2>
+          <div class="steps">
+            <div class="step"><div><b>Lesson 13｜There be 句型</b><br>教材 part01 第33–34页、part02 第1–5页：There is + 单数/不可数；There are + 复数；混合名词的就近原则；否定句用 not，some 改 any。</div></div>
+            <div class="step"><div><b>Lesson 14｜句子类型</b><br>教材 part02 第6–11页：陈述句肯定/否定；一般疑问句与特殊疑问句；be、can/should、do/does 的句型转换。</div></div>
+            <div class="step"><div><b>例句说明</b><br>教材原例包括 <i>There is an apple and two peaches.</i>、<i>There are two peaches and an apple.</i>、<i>Can he swim?</i>、<i>What do you like to eat?</i>；软件中的猫、狗、书本等是按相同结构编写的互动练习。</div></div>
+          </div>
+        </article>
+
+        <article class="card">
+          <span class="eyebrow">动手观察</span><h2>就近原则磁力火车</h2>
+          <p class="lead">选择两节名词车厢，再点“交换”。观察发动机 is/are 怎样跟着第一节车厢变化。</p>
+          <div class="lab-controls">
+            <div class="field"><label for="frontCargo">第一节（最近）</label><select id="frontCargo"></select></div>
+            <button class="swap" id="swapCargo" aria-label="交换两节车厢">⇄</button>
+            <div class="field"><label for="rearCargo">第二节（较远）</label><select id="rearCargo"></select></div>
+          </div>
+          <div class="track-wrap" aria-live="polite">
+            <div class="train">
+              <div class="train-car there">There</div><div class="train-car engine" id="beEngine">is</div>
+              <div class="train-car cargo nearest" id="frontCar">a cat</div><div class="and">and</div><div class="train-car cargo rear" id="rearCar">two dogs</div>
+            </div>
+          </div>
+          <div class="sentence-output" id="thereOutput">There is a cat and two dogs in the room.</div>
+          <div class="reason" id="thereReason">最近的是 <b>a cat（单数）</b>，所以发动机用 <b>is</b>。</div>
+          <div class="action-row"><button class="btn primary" id="speakThere">🔊 朗读例句</button><button class="btn secondary" id="randomCargo">🎲 换一组</button></div>
+        </article>
+
+        <article class="card">
+          <span class="eyebrow">变化规则</span><h2>肯定句怎样变否定句？</h2>
+          <div class="neg-demo">
+            <div class="sentence-tile">There <b>are some</b> flowers in the garden.</div><div class="arrow">➜</div>
+            <div class="sentence-tile changed">There <span class="changed-word">aren't any</span> flowers in the garden.</div>
+          </div>
+          <div class="steps">
+            <div class="step"><div>在 be 后面加 <b>not</b>：is not / are not，也可缩写 isn't / aren't。</div></div>
+            <div class="step"><div>否定句里，<b>some 通常换成 any</b>。</div></div>
+            <div class="step"><div>一般疑问句把 be 搬到最前：<b>Are there</b> any flowers?</div></div>
+          </div>
+        </article>
+      </section>
+
+      <section class="page" id="page-transform">
+        <article class="card">
+          <span class="eyebrow">先找发动机</span><h2>一句话，先判断是哪一队</h2>
+          <p class="lead">变句型前先圈出发动机。三队的变法不同，认对队伍就不会乱加 do/does。</p>
+          <div class="formula"><em>① be 队</em>：am / is / are<br><em>② 情态队</em>：can / should<br><em>③ 普通动词队</em>：like / play / watches… → 请 do / does 来帮忙</div>
+          <div class="coach"><span class="face">🔍</span><div><strong>检查顺序：</strong>先找 be；没有再找 can/should；都没有，才看普通动词。一般现在时主语是 he/she/it 或一个人时，用 does。</div></div>
+        </article>
+
+        <article class="card">
+          <span class="eyebrow">句子变形机</span><h2>点选发动机，看词块怎么移动</h2>
+          <div class="engine-tabs" role="tablist">
+            <button class="engine-tab active" data-engine="be">be 动词队</button><button class="engine-tab" data-engine="can">can 队</button><button class="engine-tab" data-engine="verb">普通动词队</button>
+          </div>
+          <div class="transform-stage">
+            <div class="source-sentence" id="sourceSentence">She is happy.</div>
+            <div class="transform-grid">
+              <button class="transform-card" data-form="negative"><strong>① 变否定句</strong><div class="result" id="negativeResult">点我揭晓</div><small id="negativeRule">把 not 放在 be 后</small></button>
+              <button class="transform-card" data-form="yesno"><strong>② 变一般疑问句</strong><div class="result" id="yesnoResult">点我揭晓</div><small id="yesnoRule">把 be 搬到句首</small></button>
+              <button class="transform-card" data-form="wh"><strong>③ 变特殊疑问句</strong><div class="result" id="whResult">点我揭晓</div><small id="whRule">疑问词 + 一般疑问句顺序</small></button>
+            </div>
+          </div>
+          <div class="action-row"><button class="btn primary" id="revealAll">✨ 一步步全部演示</button><button class="btn blue" id="speakTransform">🔊 朗读当前句组</button></div>
+        </article>
+
+        <article class="card">
+          <span class="eyebrow">为什么这样变</span><h2>三队变形对照</h2>
+          <div class="steps">
+            <div class="step"><div><b>be 队：</b>否定就在 be 后加 not；提问就把 be 搬到主语前。She is → She isn't → Is she…?</div></div>
+            <div class="step"><div><b>can/should 队：</b>规则和 be 很像。He can → He can't → Can he…?</div></div>
+            <div class="step"><div><b>普通动词队：</b>请 do/does 帮忙；does 出现后，原动词必须恢复原形。likes → doesn't <b>like</b>；watches → Does… <b>watch</b>?</div></div>
+          </div>
+          <div class="boundary"><b>教材中的特殊疑问句：</b>先选 Who / What / When 等疑问词，再接相应的提问结构。例如 <i>Who is she?</i>、<i>What do you like to eat?</i>、<i>When do you usually get up?</i>。软件再加入同结构的 <i>Where are the books?</i> 帮助迁移。</div>
+        </article>
+      </section>
+
+      <section class="page" id="page-quiz">
+        <article class="card">
+          <div class="quiz-head"><div><span class="eyebrow">边学边测</span><h2>今日通关挑战</h2></div><button class="btn ghost hidden" id="quitQuiz">退出</button></div>
+          <div id="quizStart" class="start-panel">
+            <div class="big">⚡🐯</div><p class="lead">每题作答后都会讲“为什么”。答错会进入错题本，需要连续答对 2 次才算真正攻克。</p>
+            <div class="mode-grid">
+              <button class="mode" data-mode="basic"><span>🌱</span><b>基础热身</b><small>6 题 · 先稳住规则</small></button>
+              <button class="mode" data-mode="full"><span>🏆</span><b>完整通关</b><small>12 题 · 覆盖本课重点</small></button>
+              <button class="mode" data-mode="mistake" id="mistakeMode"><span>🔥</span><b>错题回炉</b><small id="mistakeModeText">暂无待攻克错题</small></button>
+            </div>
+          </div>
+          <div id="quizPlay" class="hidden">
+            <div class="q-meta"><span id="qIndex">第 1 / 6 题</span><span id="qSkill">就近原则</span></div><div class="progress"><i id="quizProgress"></i></div>
+            <div class="question-box"><div class="question" id="questionText"></div><div class="options" id="options"></div><div class="explain" id="explainBox"></div><div class="next-row" id="nextRow"><button class="btn primary" id="nextQuestion">下一题 ➜</button></div></div>
+          </div>
+          <div id="quizResult" class="result-panel hidden"></div>
+        </article>
+      </section>
+
+      <section class="page" id="page-record">
+        <article class="card">
+          <span class="eyebrow">已替你整理</span><h2>今天 25 分钟复习安排</h2>
+          <div class="plan">
+            <label class="plan-row"><span class="minute">4分</span><span><b>看规则</b><small>读 There be 三条规则和发动机三队</small></span><input class="check task-check" type="checkbox" data-task="rules" aria-label="完成看规则"></label>
+            <label class="plan-row"><span class="minute">6分</span><span><b>玩就近火车</b><small>交换 6 次车厢，每次先说 is/are 再看结果</small></span><input class="check task-check" type="checkbox" data-task="train" aria-label="完成就近火车练习"></label>
+            <label class="plan-row"><span class="minute">7分</span><span><b>练句型变形</b><small>be、can、普通动词各演示一遍并朗读</small></span><input class="check task-check" type="checkbox" data-task="transform" aria-label="完成句型变形练习"></label>
+            <label class="plan-row"><span class="minute">8分</span><span><b>完整通关</b><small>完成 12 题；错题立即再讲、次日再回炉</small></span><input class="check task-check" type="checkbox" data-task="quiz" aria-label="完成完整通关"></label>
+          </div>
+          <div class="coach"><span class="face">👨‍👩‍👦</span><div><strong>家长提问法：</strong>不要先告诉答案，只问两句：“离 be 最近的是谁？”“这句话是哪一队发动机？”</div></div>
+        </article>
+
+        <article class="card">
+          <span class="eyebrow">学习记忆</span><h2>Eddey 的本机学习记录</h2>
+          <div class="stats-grid"><div class="stat"><b id="statAttempts">0</b><small>累计作答</small></div><div class="stat"><b id="statAccuracy">0%</b><small>正确率</small></div><div class="stat"><b id="statOpen">0</b><small>待攻克</small></div><div class="stat"><b id="statSolved">0</b><small>已攻克</small></div><div class="stat"><b id="statMinutes">0</b><small>练习分钟</small></div></div>
+          <div class="action-row"><button class="btn primary" id="exportJson">导出 JSON</button><button class="btn secondary" id="exportMd">导出学习小结</button><button class="btn blue" id="copyMd">复制给 ChatGPT</button><button class="btn ghost" id="importBtn">导入记录</button><input class="hidden" id="importFile" type="file" accept="application/json,.json" aria-label="选择 Eddey 学习记录 JSON 文件"></div>
+        </article>
+
+        <article class="card"><span class="eyebrow">错题本</span><h2>两连对才算攻克</h2><div class="mistakes" id="mistakeList"></div></article>
+      </section>
+    </main>
+    <p class="footer-note">数据只保存在当前浏览器；朗读使用浏览器自带语音，断网也可学习（可用声音取决于设备）。</p>
+  </div>
+  <div class="toast" id="toast" role="status"></div>
+
+  <script>
+  (()=>{
+    'use strict';
+    const APP_VERSION='1.0.0';
+    const STORAGE_KEY='dd_eddey_therebe_sentence_lab_v1';
+    const sessionStart=Date.now();
+    const cargo=[
+      {text:'a cat',zh:'一只猫',type:'singular',label:'单数'},
+      {text:'two dogs',zh:'两只狗',type:'plural',label:'复数'},
+      {text:'an apple',zh:'一个苹果',type:'singular',label:'单数'},
+      {text:'three books',zh:'三本书',type:'plural',label:'复数'},
+      {text:'some milk',zh:'一些牛奶',type:'uncountable',label:'不可数'},
+      {text:'many flowers',zh:'许多花',type:'plural',label:'复数'}
+    ];
+    const engines={
+      be:{source:'She is happy.',negative:"She isn't happy.",yesno:'Is she happy?',wh:'Why is she happy?',negativeRule:'be 后加 not：is → isn’t',yesnoRule:'把 is 搬到主语 she 前',whRule:'Why + is + she + happy?'},
+      can:{source:'He can swim.',negative:"He can't swim.",yesno:'Can he swim?',wh:'What can he do?',negativeRule:'can 后加 not：can’t',yesnoRule:'把 can 搬到主语 he 前',whRule:'What + can + he + do?'},
+      verb:{source:'Tom likes apples.',negative:"Tom doesn't like apples.",yesno:'Does Tom like apples?',wh:'What does Tom like?',negativeRule:'Tom 是单数：doesn’t + 动词原形 like',yesnoRule:'Does 提前；likes 恢复原形 like',whRule:'What + does + Tom + like?'}
+    };
+    const questions=[
+      {id:'TB_SINGULAR',level:1,skill:'There be 单数',prompt:'There ___ a book on the desk.',options:['is','are','am','be'],answer:0,explain:'离 be 最近的是 a book（一本书，单数），所以用 There is。'},
+      {id:'TB_PLURAL',level:1,skill:'There be 复数',prompt:'There ___ two pens in the box.',options:['is','are','has','be'],answer:1,explain:'two pens 是复数，离 be 最近，所以用 There are。'},
+      {id:'TB_UNCOUNTABLE',level:1,skill:'不可数名词',prompt:'There ___ some milk in the glass.',options:['is','are','have','be'],answer:0,explain:'milk 是不可数名词，按单数看，用 There is。'},
+      {id:'TB_NEG_ANY',level:1,skill:'There be 否定',prompt:'There are some flowers. 变否定句，哪句正确？',options:["There aren't any flowers.","There don't have flowers.","There isn't some flowers.","There aren't some flower."],answer:0,explain:'are 后加 not 变 aren’t；否定句中 some 通常变 any，flowers 保持复数。'},
+      {id:'BE_NEGATIVE',level:1,skill:'be 动词否定',prompt:'She is kind. 变否定句，哪句正确？',options:["She doesn't kind.","She isn't kind.","She not is kind.","She aren't kind."],answer:1,explain:'这是 be 队。直接在 is 后加 not：She is not / isn’t kind。'},
+      {id:'CAN_QUESTION',level:1,skill:'can 一般疑问句',prompt:'He can swim. 变一般疑问句，哪句正确？',options:['Does he can swim?','Can he swim?','He can swim?','Can he swims?'],answer:1,explain:'这是 can 队。把 can 搬到主语 he 前，后面的 swim 仍用原形。'},
+      {id:'TB_NEAR_IS',level:2,skill:'就近原则',prompt:'There ___ a ruler and three books on the desk.',options:['is','are','am','have'],answer:0,explain:'别数全部！离 be 最近的是 a ruler（单数），所以用 is。'},
+      {id:'TB_NEAR_ARE',level:2,skill:'就近原则',prompt:'There ___ three books and a ruler on the desk.',options:['is','are','has','be'],answer:1,explain:'交换顺序后，离 be 最近的是 three books（复数），所以改用 are。'},
+      {id:'DOES_BASE_NEG',level:2,skill:'does + 动词原形',prompt:'Tom likes apples. 变否定句，哪句正确？',options:["Tom don't likes apples.","Tom doesn't likes apples.","Tom doesn't like apples.","Tom isn't like apples."],answer:2,explain:'普通动词队请 does 帮忙。doesn’t 已经带着单数标记，likes 必须恢复原形 like。'},
+      {id:'DOES_BASE_Q',level:2,skill:'一般疑问句',prompt:'Lily watches TV. 变一般疑问句，哪句正确？',options:['Does Lily watch TV?','Does Lily watches TV?','Is Lily watch TV?','Do Lily watches TV?'],answer:0,explain:'Lily 是第三人称单数，用 Does；Does 出现后 watches 恢复原形 watch。'},
+      {id:'WH_WHERE',level:3,skill:'特殊疑问句',prompt:'The books are on the desk. 对地点提问，哪句正确？',options:['What are the books?','Where the books are?','Where are the books?','Where do the books are?'],answer:2,explain:'问地点用 Where；原句是 be 队，一般疑问顺序是 are the books，所以：Where are the books?'},
+      {id:'WH_WHAT',level:3,skill:'特殊疑问句',prompt:'Tom likes apples. 对 apples 提问，哪句正确？',options:['What Tom likes?','What does Tom like?','What is Tom like?','What does Tom likes?'],answer:1,explain:'问“什么”用 What；普通动词队用 does，后面的 likes 恢复原形 like。'}
+    ];
+    const defaultState=()=>({schema:'dd-learning-memory',version:1,childId:'eddey',app:'therebe-sentence-lab',appVersion:APP_VERSION,createdAt:new Date().toISOString(),updatedAt:new Date().toISOString(),attempts:0,correct:0,wrongBook:{},sessions:[],tasks:{}});
+    let state=loadState();
+    let quiz={list:[],index:0,correct:0,answered:false,mode:'',results:[],startedAt:0};
+    let activeEngine='be';
+
+    function loadState(){try{const raw=localStorage.getItem(STORAGE_KEY);if(!raw)return defaultState();return normalizeState(JSON.parse(raw));}catch(e){return defaultState();}}
+    function normalizeState(s){const d=defaultState();return {...d,...s,wrongBook:(s&&s.wrongBook)||{},sessions:Array.isArray(s&&s.sessions)?s.sessions:[],tasks:(s&&s.tasks)||{}};}
+    function saveState(){state.updatedAt=new Date().toISOString();try{localStorage.setItem(STORAGE_KEY,JSON.stringify(state));}catch(e){toast('当前浏览器未允许长期保存，本次仍可继续学习');}renderStats();}
+    function $(id){return document.getElementById(id)}
+    function toast(msg){const t=$('toast');t.textContent=msg;t.classList.add('show');clearTimeout(toast.timer);toast.timer=setTimeout(()=>t.classList.remove('show'),1800)}
+    function escapeHtml(v){return String(v).replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));}
+    function download(name,text,type){const blob=new Blob([text],{type});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000)}
+    function speak(text){if(!('speechSynthesis'in window)){toast('当前浏览器不支持朗读');return}speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(text);u.lang='en-US';u.rate=.82;u.pitch=1.02;const voices=speechSynthesis.getVoices();u.voice=voices.find(v=>/Aria|Samantha|Google US English|English.*United States/i.test(v.name))||voices.find(v=>/^en-US/i.test(v.lang))||null;speechSynthesis.speak(u)}
+
+    document.querySelectorAll('.nav button').forEach(btn=>btn.addEventListener('click',()=>showPage(btn.dataset.page)));
+    function showPage(name){document.querySelectorAll('.nav button').forEach(b=>b.classList.toggle('active',b.dataset.page===name));document.querySelectorAll('.page').forEach(p=>p.classList.toggle('active',p.id===`page-${name}`));window.scrollTo({top:0,behavior:'smooth'});if(name==='record')renderMistakes();}
+
+    function initCargo(){cargo.forEach((c,i)=>{['frontCargo','rearCargo'].forEach(id=>{const o=document.createElement('option');o.value=i;o.textContent=`${c.text}（${c.label}）`;
+      $(id).appendChild(o);});});$('frontCargo').value='0';$('rearCargo').value='1';updateThere();}
+    function updateThere(){const f=cargo[+$('frontCargo').value],r=cargo[+$('rearCargo').value];const be=f.type==='plural'?'are':'is';$('beEngine').textContent=be;$('frontCar').textContent=f.text;$('rearCar').textContent=r.text;$('thereOutput').textContent=`There ${be} ${f.text} and ${r.text} in the room.`;$('thereReason').innerHTML=`最近的是 <b>${escapeHtml(f.text)}（${f.label}）</b>，所以发动机用 <b>${be}</b>。`;document.querySelector('.train').style.transform='translateY(-2px)';setTimeout(()=>document.querySelector('.train').style.transform='',220)}
+    $('frontCargo').addEventListener('change',updateThere);$('rearCargo').addEventListener('change',updateThere);
+    $('swapCargo').addEventListener('click',()=>{const a=$('frontCargo').value;$('frontCargo').value=$('rearCargo').value;$('rearCargo').value=a;updateThere();toast('车厢已交换：重新看最近的名词')});
+    $('randomCargo').addEventListener('click',()=>{let a=Math.floor(Math.random()*cargo.length),b;do{b=Math.floor(Math.random()*cargo.length)}while(a===b);$('frontCargo').value=a;$('rearCargo').value=b;updateThere()});
+    $('speakThere').addEventListener('click',()=>speak($('thereOutput').textContent));
+
+    document.querySelectorAll('.engine-tab').forEach(b=>b.addEventListener('click',()=>{activeEngine=b.dataset.engine;document.querySelectorAll('.engine-tab').forEach(x=>x.classList.toggle('active',x===b));resetTransformer();}));
+    function resetTransformer(){const e=engines[activeEngine];$('sourceSentence').textContent=e.source;['negative','yesno','wh'].forEach(k=>{$(`${k}Result`).textContent='点我揭晓';$(`${k}Rule`).textContent=e[`${k}Rule`];document.querySelector(`[data-form="${k}"]`).classList.remove('reveal')})}
+    function reveal(form){const card=document.querySelector(`[data-form="${form}"]`);$(`${form}Result`).textContent=engines[activeEngine][form];card.classList.remove('reveal');void card.offsetWidth;card.classList.add('reveal')}
+    document.querySelectorAll('.transform-card').forEach(c=>c.addEventListener('click',()=>reveal(c.dataset.form)));
+    $('revealAll').addEventListener('click',()=>{['negative','yesno','wh'].forEach((f,i)=>setTimeout(()=>reveal(f),i*420))});
+    $('speakTransform').addEventListener('click',()=>{const e=engines[activeEngine];speak([e.source,e.negative,e.yesno,e.wh].join(' '))});
+
+    document.querySelectorAll('.mode').forEach(b=>b.addEventListener('click',()=>startQuiz(b.dataset.mode)));
+    $('quitQuiz').addEventListener('click',()=>{if(quiz.list.length&&quiz.index>0)finishQuiz(true);else resetQuiz()});
+    $('nextQuestion').addEventListener('click',()=>{quiz.index++;if(quiz.index>=quiz.list.length)finishQuiz(false);else renderQuestion()});
+    function unresolved(){return Object.entries(state.wrongBook).filter(([,v])=>!v.solved).map(([id])=>questions.find(q=>q.id===id)).filter(Boolean)}
+    function startQuiz(mode){let list;if(mode==='basic')list=questions.filter(q=>q.level===1);else if(mode==='mistake')list=unresolved();else list=[...questions];if(!list.length){toast('暂时没有待攻克错题，先做完整通关吧');return}quiz={list,index:0,correct:0,answered:false,mode,results:[],startedAt:Date.now()};$('quizStart').classList.add('hidden');$('quizResult').classList.add('hidden');$('quizPlay').classList.remove('hidden');$('quitQuiz').classList.remove('hidden');renderQuestion()}
+    function renderQuestion(){quiz.answered=false;const q=quiz.list[quiz.index];$('qIndex').textContent=`第 ${quiz.index+1} / ${quiz.list.length} 题`;$('qSkill').textContent=q.skill;$('quizProgress').style.width=`${quiz.index/quiz.list.length*100}%`;$('questionText').textContent=q.prompt;$('options').innerHTML='';q.options.forEach((op,i)=>{const b=document.createElement('button');b.className='option';b.textContent=`${String.fromCharCode(65+i)}. ${op}`;b.addEventListener('click',()=>answerQuestion(i));$('options').appendChild(b)});$('explainBox').className='explain';$('explainBox').innerHTML='';$('nextRow').classList.remove('show');$('nextQuestion').textContent=quiz.index===quiz.list.length-1?'查看结果 ➜':'下一题 ➜'}
+    function answerQuestion(choice){if(quiz.answered)return;quiz.answered=true;const q=quiz.list[quiz.index],ok=choice===q.answer;state.attempts++;if(ok){state.correct++;quiz.correct++}updateWrongBook(q,ok,choice);quiz.results.push({id:q.id,correct:ok,choice,at:new Date().toISOString()});[...$('options').children].forEach((b,i)=>{if(i===q.answer)b.classList.add('correct');else if(i===choice)b.classList.add('wrong');else b.classList.add('dim');b.disabled=true});const ex=$('explainBox');ex.className=`explain show ${ok?'good':'bad'}`;ex.innerHTML=`<b>${ok?'✅ 答对了！':'🧭 先别急，找发动机再来。'}</b>${escapeHtml(q.explain)}<br><small>正确答案：${escapeHtml(q.options[q.answer])}</small>`;$('nextRow').classList.add('show');$('quizProgress').style.width=`${(quiz.index+1)/quiz.list.length*100}%`;saveState()}
+    function updateWrongBook(q,ok,choice){let w=state.wrongBook[q.id];if(!ok){if(!w)w={id:q.id,skill:q.skill,prompt:q.prompt,wrongCount:0,correctStreak:0,solved:false,firstWrongAt:new Date().toISOString()};w.wrongCount++;w.correctStreak=0;w.solved=false;w.lastWrongAnswer=q.options[choice];w.lastAttemptAt=new Date().toISOString();state.wrongBook[q.id]=w;}else if(w&&!w.solved){w.correctStreak=(w.correctStreak||0)+1;w.lastAttemptAt=new Date().toISOString();if(w.correctStreak>=2){w.solved=true;w.solvedAt=new Date().toISOString();toast('🎉 这道错题连续答对 2 次，已攻克！')}}}
+    function finishQuiz(aborted){const seconds=Math.round((Date.now()-quiz.startedAt)/1000);state.sessions.push({type:quiz.mode,startedAt:new Date(quiz.startedAt).toISOString(),endedAt:new Date().toISOString(),answered:quiz.results.length,correct:quiz.correct,aborted,durationSeconds:seconds,results:quiz.results});if(state.sessions.length>50)state.sessions=state.sessions.slice(-50);saveState();$('quizPlay').classList.add('hidden');$('quitQuiz').classList.add('hidden');const total=quiz.results.length,pct=total?Math.round(quiz.correct/total*100):0;const wrongSkills=[...new Set(quiz.results.filter(r=>!r.correct).map(r=>questions.find(q=>q.id===r.id)?.skill).filter(Boolean))];$('quizResult').classList.remove('hidden');$('quizResult').innerHTML=`<span class="eyebrow">${aborted?'本轮已保存':'通关结果'}</span><h2>${pct>=90?'太棒了，发动机判断很稳！':pct>=70?'不错，再回炉薄弱点！':'先回看模型，再练一次会更稳。'}</h2><div class="score-ring" style="--score:${pct*3.6}deg"><strong>${pct}%</strong></div><p>答对 ${quiz.correct} / ${total} 题 · 用时 ${Math.max(1,Math.round(seconds/60))} 分钟</p>${wrongSkills.length?`<div class="weak-list">${wrongSkills.map(x=>`<span class="weak-tag">再练：${escapeHtml(x)}</span>`).join('')}</div>`:'<p>本轮没有新增错题！</p>'}<div class="action-row" style="justify-content:center"><button class="btn primary" id="againBtn">再练一轮</button><button class="btn secondary" id="reviewBtn">去看错题本</button></div>`;$('againBtn').addEventListener('click',resetQuiz);$('reviewBtn').addEventListener('click',()=>showPage('record'))}
+    function resetQuiz(){$('quizResult').classList.add('hidden');$('quizPlay').classList.add('hidden');$('quizStart').classList.remove('hidden');$('quitQuiz').classList.add('hidden');renderStats()}
+
+    document.querySelectorAll('.task-check').forEach(c=>{c.checked=!!state.tasks[c.dataset.task];c.addEventListener('change',()=>{state.tasks[c.dataset.task]=c.checked;saveState();if(c.checked)toast('已完成一项，继续保持！')})});
+    function renderStats(){const accuracy=state.attempts?Math.round(state.correct/state.attempts*100):0;const values=Object.values(state.wrongBook);const open=values.filter(x=>!x.solved).length,solved=values.filter(x=>x.solved).length;const minutes=Math.round(state.sessions.reduce((sum,s)=>sum+(s.durationSeconds||0),0)/60);$('statAttempts').textContent=state.attempts;$('statAccuracy').textContent=`${accuracy}%`;$('statOpen').textContent=open;$('statSolved').textContent=solved;$('statMinutes').textContent=minutes;$('heroAttempts').textContent=`累计作答 ${state.attempts} 题`;$('heroWrong').textContent=`待攻克 ${open} 题`;$('mistakeMode').disabled=open===0;$('mistakeModeText').textContent=open?`${open} 题 · 连续答对 2 次过关`:'暂无待攻克错题'}
+    function renderMistakes(){const entries=Object.values(state.wrongBook).sort((a,b)=>(a.solved===b.solved?new Date(b.lastAttemptAt)-new Date(a.lastAttemptAt):a.solved-b.solved));if(!entries.length){$('mistakeList').innerHTML='<div class="empty">还没有错题。先去完成一次“完整通关”吧！</div>';return}$('mistakeList').innerHTML=entries.map(w=>{const q=questions.find(x=>x.id===w.id);return `<div class="mistake"><div class="mistake-top"><b>${escapeHtml(w.skill)}</b><span class="badge ${w.solved?'solved':''}">${w.solved?'已攻克':'连续答对 '+(w.correctStreak||0)+'/2'}</span></div><p>${escapeHtml(w.prompt)}</p><small>累计错 ${w.wrongCount} 次 · 规则：${escapeHtml(q?q.explain:'回看课堂规则')}</small></div>`}).join('')}
+    function learningMarkdown(){const values=Object.values(state.wrongBook),open=values.filter(x=>!x.solved),solved=values.filter(x=>x.solved),accuracy=state.attempts?Math.round(state.correct/state.attempts*100):0,minutes=Math.round(state.sessions.reduce((sum,s)=>sum+(s.durationSeconds||0),0)/60);return `# Eddey｜There be 与句型变形学习记录\n\n- 导出时间：${new Date().toLocaleString('zh-CN')}\n- 累计作答：${state.attempts} 题\n- 已记录测练：${minutes} 分钟\n- 正确率：${accuracy}%\n- 待攻克：${open.length} 题\n- 已攻克：${solved.length} 题\n\n## 教材依据\n\n- Lesson 13：教材 part01 第33–34页、part02 第1–5页。\n- Lesson 14：教材 part02 第6–11页。\n\n## 本课知识\n\n1. There be 表示“某地有某物”；is/are 看离 be 最近的名词。\n2. 否定句：isn't / aren't；some 通常改为 any。\n3. be/can 队：否定在后面加 not；提问时搬到主语前。\n4. 普通动词队：用 do/does；does 后动词恢复原形。\n5. 特殊疑问句先选疑问词，再接对应的提问结构。\n\n## 待攻克错题\n\n${open.length?open.map((w,i)=>`${i+1}. [${w.skill}] ${w.prompt}（错 ${w.wrongCount} 次，连对 ${w.correctStreak||0}/2）`).join('\n'):'无'}\n\n## 已攻克\n\n${solved.length?solved.map(w=>`- ${w.skill}：${w.prompt}`).join('\n'):'暂无'}\n\n## 下次建议\n\n先问“离 be 最近的是谁 / 句子是哪一队发动机”，再做待攻克题；错题需连续答对 2 次。\n`}
+    $('exportJson').addEventListener('click',()=>download(`Eddey_ThereBe学习记录_${new Date().toISOString().slice(0,10)}.json`,JSON.stringify(state,null,2),'application/json;charset=utf-8'));
+    $('exportMd').addEventListener('click',()=>download(`Eddey_ThereBe学习小结_${new Date().toISOString().slice(0,10)}.md`,learningMarkdown(),'text/markdown;charset=utf-8'));
+    $('copyMd').addEventListener('click',async()=>{const text=learningMarkdown();try{await navigator.clipboard.writeText(text);toast('学习小结已复制，可直接发给 ChatGPT')}catch(e){const ta=document.createElement('textarea');ta.value=text;document.body.appendChild(ta);ta.select();document.execCommand('copy');ta.remove();toast('学习小结已复制')}});
+    $('importBtn').addEventListener('click',()=>$('importFile').click());
+    $('importFile').addEventListener('change',async e=>{const f=e.target.files[0];if(!f)return;try{const s=JSON.parse(await f.text());if(s.childId&&s.childId!=='eddey')throw new Error('不是 Eddey 的记录');if(!s.wrongBook||typeof s.attempts!=='number')throw new Error('记录格式不正确');state=normalizeState(s);saveState();document.querySelectorAll('.task-check').forEach(c=>c.checked=!!state.tasks[c.dataset.task]);renderMistakes();toast('学习记录导入成功')}catch(err){toast(`导入失败：${err.message}`)}e.target.value=''});
+
+    initCargo();resetTransformer();renderStats();renderMistakes();
+    setInterval(()=>$('sessionTime').textContent=`本次 ${Math.floor((Date.now()-sessionStart)/60000)} 分钟`,15000);
+  })();
+  </script>
+</body>
+</html>

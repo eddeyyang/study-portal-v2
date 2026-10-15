@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<script src="../assets/learning-sync.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>哥哥第11天 · 缺口补齐+输出爆破</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700&display=swap');
+:root{
+  --red:#D63A2E;--redd:#A82A20;--gold:#F2B632;--golddk:#D89400;
+  --ink:#3A2A1E;--paper:#FBF3E6;--card:#fff;--line:#EBDCC4;
+  --green:#3C9D54;--greenbg:#EAF7EC;--blue:#3170B5;--bluebg:#E8F0FA;--purple:#7B3FA0;--purplebg:#F3EAF9;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+html,body{margin:0;padding:0;}
+body{font-family:'LXGW WenKai Screen','Baloo 2','PingFang SC','Microsoft YaHei',serif;
+  background:radial-gradient(circle at 10% 6%,#FCE6B8 0,transparent 38%),radial-gradient(circle at 92% 96%,#F6D2C0 0,transparent 42%),var(--paper);
+  color:var(--ink);min-height:100vh;padding:0 0 92px;}
+.wrap{max-width:740px;margin:0 auto;padding:14px;}
+.top{display:flex;align-items:center;gap:10px;padding:12px 4px 6px;}
+.top .badge{background:var(--red);color:#fff;font-weight:700;font-size:19px;padding:6px 13px;border-radius:13px 13px 13px 4px;box-shadow:0 4px 0 var(--redd);}
+.top h1{font-size:19px;margin:0;}
+.top .sub{font-size:12px;color:#a8946f;}
+.speak{background:#fff;border:2px solid var(--gold);color:var(--golddk);border-radius:50%;width:42px;height:42px;font-size:20px;cursor:pointer;box-shadow:0 3px 0 #f0dca0;flex-shrink:0;}
+.card{background:var(--card);border:2px solid var(--line);border-radius:18px;padding:18px;margin:13px 0;box-shadow:0 6px 0 #efe1c8;}
+.card h2{margin:0 0 8px;font-size:19px;color:var(--redd);}
+.card .lead{font-size:14px;color:#7d6a4e;line-height:1.7;margin:0 0 10px;}
+.menu{display:grid;grid-template-columns:1fr 1fr 1fr;gap:11px;}
+.tile{background:#fff;border:2px solid var(--line);border-radius:16px;padding:14px 10px;cursor:pointer;box-shadow:0 5px 0 #efe1c8;text-align:center;transition:transform .08s,box-shadow .08s;}
+.tile:active{transform:translateY(3px);box-shadow:0 2px 0 #efe1c8;}
+.tile .ic{font-size:30px;}
+.tile .nm{font-weight:700;font-size:16px;margin-top:6px;}
+.tile .ds{font-size:11px;color:#a08d6f;margin-top:3px;line-height:1.4;}
+.tile.math{border-color:#f3c7c2;} .tile.cn{border-color:#bcd4ee;} .tile.en{border-color:#ddc7ea;}
+.kou{background:linear-gradient(180deg,#FCEFCF,#FBE6B0);border:2px dashed var(--golddk);border-radius:13px;padding:11px 14px;margin:11px 0;color:#7a5800;font-weight:700;font-size:14px;line-height:1.85;}
+.kou b{color:var(--redd);}
+.btn{display:inline-flex;align-items:center;gap:6px;background:var(--red);color:#fff;border:none;font-family:inherit;font-weight:700;font-size:16px;padding:12px 20px;border-radius:14px;box-shadow:0 4px 0 var(--redd);cursor:pointer;transition:transform .06s;}
+.btn:active{transform:translateY(3px);box-shadow:0 1px 0 var(--redd);}
+.btn.ghost{background:#fff;color:var(--redd);border:2px solid var(--red);box-shadow:0 4px 0 #f0d3cf;}
+.btn.green{background:var(--green);box-shadow:0 4px 0 #2c7a40;}
+.btn.sm{font-size:14px;padding:9px 14px;}
+.row{display:flex;gap:9px;flex-wrap:wrap;align-items:center;margin-top:12px;}
+.back{background:none;border:none;color:#a08d6f;font-size:15px;font-family:inherit;cursor:pointer;padding:8px 2px;font-weight:700;}
+.lion{display:flex;gap:10px;align-items:flex-start;margin:10px 0;}
+.lion .face{font-size:32px;flex-shrink:0;animation:bob 2.6s ease-in-out infinite;}
+@keyframes bob{0%,100%{transform:translateY(0);}50%{transform:translateY(-5px);}}
+.lion .bubble{background:#fff;border:2px solid var(--line);border-radius:14px 14px 14px 2px;padding:10px 13px;font-size:15px;line-height:1.7;box-shadow:0 3px 0 #efe1c8;}
+.step{background:var(--bluebg);border-left:5px solid var(--blue);border-radius:8px;padding:10px 12px;margin:8px 0;font-size:15px;line-height:1.7;animation:pop .35s;}
+.step.ok{background:var(--greenbg);border-color:var(--green);}
+.step.bad{background:#FBE6E2;border-color:var(--red);}
+@keyframes pop{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:none;}}
+.hidden{display:none!important;}
+.opts{display:flex;flex-direction:column;gap:10px;margin-top:12px;}
+.opt{background:#fff;border:2px solid var(--line);border-radius:14px;padding:13px 15px;font-size:16px;cursor:pointer;text-align:left;font-family:inherit;box-shadow:0 4px 0 #efe1c8;transition:transform .06s;line-height:1.5;}
+.opt:active{transform:translateY(3px);box-shadow:0 1px 0 #efe1c8;}
+.opt.right{background:var(--greenbg);border-color:var(--green);color:#1f6b2c;font-weight:700;}
+.opt.wrong{background:#FBE6E2;border-color:var(--red);animation:shake .4s;}
+@keyframes shake{0%,100%{transform:translateX(0);}25%{transform:translateX(-6px);}75%{transform:translateX(6px);}}
+.dots{display:flex;gap:6px;justify-content:center;margin:14px 0 2px;}
+.dots i{width:9px;height:9px;border-radius:50%;background:#e6d8bf;display:block;}
+.dots i.on{background:var(--red);}
+.taskbar{position:fixed;left:0;right:0;bottom:0;background:#fff;border-top:2px solid var(--line);padding:10px 16px;display:flex;align-items:center;justify-content:space-between;gap:10px;z-index:50;}
+.taskbar .note{font-size:13px;color:#7d6a4e;flex:1;}
+.pulse{animation:pulse 1.4s infinite;}
+@keyframes pulse{0%,100%{box-shadow:0 4px 0 var(--redd);}50%{box-shadow:0 4px 0 var(--redd),0 0 0 6px rgba(214,58,46,.18);}}
+.celebrate{position:fixed;inset:0;pointer-events:none;z-index:60;}
+/* 几何动画 */
+.geo{width:100%;max-width:420px;margin:10px auto;display:block;background:#fff;border:2px solid var(--line);border-radius:14px;}
+/* 统计柱 */
+.bars{display:flex;align-items:flex-end;gap:10px;height:160px;margin:14px 6px;padding-bottom:22px;border-bottom:2px solid var(--line);}
+.bar{flex:1;background:var(--blue);border-radius:6px 6px 0 0;position:relative;cursor:pointer;transition:background .2s,transform .1s;min-height:6px;}
+.bar:active{transform:scaleY(1.02);}
+.bar.hi{background:var(--red);}
+.bar .v{position:absolute;top:-20px;left:0;right:0;text-align:center;font-size:12px;font-weight:700;color:var(--ink);}
+.bar .d{position:absolute;bottom:-22px;left:0;right:0;text-align:center;font-size:12px;color:#a08d6f;}
+/* 否定句拆解 */
+.sent{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin:14px 0;}
+.tok{background:#fff;border:2px solid var(--line);border-radius:10px;padding:8px 12px;font-size:17px;font-weight:700;}
+.tok.subj{background:#FFF3D6;border-color:var(--gold);color:#7a5800;}
+.tok.verb{background:var(--bluebg);border-color:var(--blue);color:#1c5a9c;}
+.tok.ins{background:var(--greenbg);border-color:var(--green);color:#1f6b2c;animation:pop .4s;}
+.tagline{text-align:center;font-size:14px;color:#7d6a4e;margin:6px 0;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top">
+    <div class="badge">哥哥</div>
+    <div style="flex:1"><h1>第11天 · 输出爆破日</h1><div class="sub">完整句拼装 · 介词 · 三单输出</div></div>
+    <button class="speak" onclick="testVoice()">🔊</button>
+  </div>
+  <div id="home">
+    <div class="card">
+      <div class="lion"><div class="face">🦁</div><div class="bubble">今天英语重点变了：<b>不考你"会不会选"，考你"能不能写出完整句"</b>！read books 的 s、半句话、On my week——这些昨天的真实错误今天全部打掉。</div></div>
+    </div>
+    <div class="menu" id="menu"></div>
+    <div class="kou" style="margin-top:14px">★ 今日三句：read books 要加 s；回答问题写完整句；on 加星期几，不说 On my week。</div>
+  </div>
+  <div id="stage" class="hidden"></div>
+</div>
+<div class="taskbar"><div class="note" id="tnote">👆 选一关开始</div><button class="btn sm pulse" id="tbtn" onclick="topAction()">开始</button></div>
+<canvas class="celebrate hidden" id="cv"></canvas>
+<script>
+/* TTS */
+let voices=[];function loadVoices(){voices=speechSynthesis.getVoices();}
+if('speechSynthesis'in window){loadVoices();speechSynthesis.onvoiceschanged=loadVoices;}
+let warmed=false;function warm(){if(!('speechSynthesis'in window))return;try{speechSynthesis.resume();}catch(e){}if(warmed)return;loadVoices();try{var wu=new SpeechSynthesisUtterance('ok');wu.volume=0.02;speechSynthesis.speak(wu);}catch(e){}warmed=true;}
+/* ===== 神经真人配音层(edge-tts 预合成),失败回退浏览器TTS ===== */
+/* 预合成目录:每条音频按 fnv(lang+"|"+text) 命名,与 gen_audio.py / eddey_english 一致。本App只发中文。 */
+const AUDIO_DIR="audio/kenton_day11_output/";
+let exAudio=null;   // 单个复用音频元素:首次手势(warm)解锁,之后每段复用(移动端更兼容)
+let audioTok=0;     // 打断/超时保护:自增令牌让过期回调失效
+/* 必须与 gen_audio.py 的 fnv() 一致:对 (lang+"|"+text) 的 UTF-8 字节做 FNV-1a */
+function audioHash(s){const b=new TextEncoder().encode(s);let x=0x811c9dc5>>>0;for(let i=0;i<b.length;i++){x^=b[i];x=Math.imul(x,0x01000193)>>>0;}return ('0000000'+x.toString(16)).slice(-8);}
+function getExAudio(){if(!exAudio){exAudio=new Audio();exAudio.setAttribute('playsinline','');exAudio.preload='auto';try{document.body.appendChild(exAudio);}catch(e){}}return exAudio;}
+function haltAudio(){audioTok++;if(exAudio){try{exAudio.pause();}catch(e){}}}
+/* 浏览器TTS:原有逻辑,作为回退(本App只有中文) */
+function ttsSpeak(t,rate){if(!('speechSynthesis'in window))return;try{speechSynthesis.cancel();speechSynthesis.resume();}catch(e){}const u=new SpeechSynthesisUtterance(t);const zh=voices.find(v=>/zh|cmn|Chinese/i.test(v.lang));if(zh)u.voice=zh;u.lang='zh-CN';u.rate=rate||0.85;u.pitch=1.04;speechSynthesis.speak(u);}
+/* 朗读一句:优先播预合成神经语音,失败回退TTS。保留原 speak(t,rate) 签名 */
+function speak(t,rate){
+  try{speechSynthesis.cancel();}catch(e){}
+  audioTok++;const myTok=audioTok;
+  const a=getExAudio();let done=false;
+  const stale=()=>done||myTok!==audioTok;
+  const fb=()=>{if(stale())return;done=true;ttsSpeak(t,rate);};
+  a.onended=()=>{if(stale())return;done=true;};
+  a.onerror=fb;
+  try{a.pause();}catch(e){}
+  a.src=AUDIO_DIR+audioHash('zh|'+t)+'.mp3';
+  try{a.currentTime=0;}catch(e){}
+  const p=a.play();
+  if(p&&typeof p.catch==='function')p.catch(fb);
+}
+function testVoice(){warm();speak('你好哥哥，第7天三科一起加油！');}
+document.body.addEventListener('touchstart',warm,{once:true});document.body.addEventListener('click',warm,{once:true});
+document.addEventListener('visibilitychange',()=>{if(document.hidden){haltAudio();try{speechSynthesis.cancel();}catch(e){}}});
+setInterval(()=>{if('speechSynthesis'in window&&speechSynthesis.speaking){try{speechSynthesis.pause();speechSynthesis.resume();}catch(e){}}},9000);
+/* 路由 */
+const MENU=[
+  {id:'mathd',ic:'🔢',nm:'数学综合',ds:'巧算·最值·先认题型',c:'math'},
+  {id:'cnd',ic:'📖',nm:'语文阅读',ds:'新故事!先点证据',c:'cn'},
+  {id:'bing',ic:'🔧',nm:'病句词语',ds:'先选病因再改',c:'cn'},
+  {id:'pin',ic:'🧩',nm:'拼完整句',ds:'词块拼装·治半句话',c:'en'},
+  {id:'jiec',ic:'🔗',nm:'介词搭配',ds:'on/in/at/with',c:'en'},
+  {id:'runse',ic:'✨',nm:'改错润色',ds:'真实卷面错误',c:'en'},
+];
+function buildMenu(){const m=document.getElementById('menu');m.innerHTML='';
+  MENU.forEach(x=>{const d=document.createElement('button');d.className='tile '+x.c;d.onclick=()=>openMod(x.id);
+    d.innerHTML=`<div class="ic">${x.ic}</div><div class="nm">${x.nm}</div><div class="ds">${x.ds}</div>`;m.appendChild(d);});}
+buildMenu();
+let curMod=null;
+function openMod(id){curMod=id;document.getElementById('home').classList.add('hidden');
+  const s=document.getElementById('stage');s.classList.remove('hidden');s.innerHTML='';MOD[id].render(s);
+  document.getElementById('tnote').textContent='跟着小狮子一步步来 👀';document.getElementById('tbtn').textContent='返回菜单';window.scrollTo(0,0);}
+function goHome(){curMod=null;document.getElementById('stage').classList.add('hidden');document.getElementById('home').classList.remove('hidden');
+  document.getElementById('tnote').textContent='👆 选一关开始';document.getElementById('tbtn').textContent='开始';haltAudio();try{speechSynthesis.cancel();}catch(e){}window.scrollTo(0,0);}
+function topAction(){if(curMod)goHome();}
+function lion(t){return `<div class="lion"><div class="face">🦁</div><div class="bubble">${t}</div></div>`;}
+function burst(){const cv=document.getElementById('cv');cv.classList.remove('hidden');const ctx=cv.getContext('2d');cv.width=innerWidth;cv.height=innerHeight;
+  const P=[],cols=['#D63A2E','#F2B632','#3C9D54','#3170B5','#FF7043'];
+  for(let i=0;i<90;i++)P.push({x:innerWidth/2,y:innerHeight/3,vx:(Math.random()-.5)*11,vy:Math.random()*-11-3,c:cols[i%5],s:6+Math.random()*6,r:Math.random()*6});
+  let t=0;(function an(){ctx.clearRect(0,0,cv.width,cv.height);P.forEach(p=>{p.vy+=.32;p.x+=p.vx;p.y+=p.vy;p.r+=.2;ctx.save();ctx.translate(p.x,p.y);ctx.rotate(p.r);ctx.fillStyle=p.c;ctx.fillRect(-p.s/2,-p.s/2,p.s,p.s);ctx.restore();});t++;if(t<90)requestAnimationFrame(an);else cv.classList.add('hidden');})();}
+function ding(){try{const a=new(window.AudioContext||window.webkitAudioContext)();const o=a.createOscillator();const g=a.createGain();o.connect(g);g.connect(a.destination);o.frequency.value=880;g.gain.setValueAtTime(.0001,a.currentTime);g.gain.exponentialRampToValueAtTime(.25,a.currentTime+.02);g.gain.exponentialRampToValueAtTime(.0001,a.currentTime+.3);o.start();o.stop(a.currentTime+.32);}catch(e){}}
+const MOD={};
+/* ===== 错题云端上传（fire-and-forget，端点缺失/失败完全不影响使用） ===== */
+const EB_KID='kenton';                                  // 本App=哥哥→kenton
+const EB_SUBMAP={math:'数学',cn:'语文',en:'英语'};        // 内部学科→中文学科名
+function ebSubject(sub){ return EB_SUBMAP[sub]||sub||''; }
+/* 尝试从当前模块抓本题文字(被默写/做错的题)，抓不到就空串 */
+function ebCurItem(sub){
+  try{
+    const id=curMod, Q=Qz[id];
+    if(Q&&typeof Q.q==='number'&&Q.bank&&Q.bank[Q.q]){
+      const it=Q.bank[Q.q];
+      return it.t||it.ask||it.word||(it.words?it.words.join(' '):'')||'';
+    }
+  }catch(e){}
+  return '';
+}
+function ebCurTopic(sub){
+  try{ const x=(MENU||[]).find(m=>m.id===curMod); return x?x.nm:''; }catch(e){ return ''; }
+}
+/* 上传一批 item（数组）到家长云端：text/plain 避免 CORS 预检，.then/.catch 全吞 */
+function ebUpload(items){
+  try{
+    const ep=localStorage.getItem('eb_endpoint');
+    if(!ep||!items||!items.length) return;               // 没端点直接跳过
+    fetch(ep,{method:'POST',headers:{'Content-Type':'text/plain'},body:JSON.stringify(items)})
+      .then(function(){}).catch(function(){});           // fire-and-forget
+  }catch(e){}
+}
+/* ===== 错因统计（全局） ===== */
+const DIAG={math:{},cn:{},en:{}};
+function tally(sub,cause){ DIAG[sub][cause]=(DIAG[sub][cause]||0)+1;
+  /* —— 本地记录完成后，追加一次云端上传（错题：ok=false）—— */
+  try{
+    ebUpload([{ kid:EB_KID, subject:ebSubject(sub), topic:ebCurTopic(sub),
+      item:ebCurItem(sub), ok:false, hint:(cause||'')+'' }]);
+  }catch(e){}
+}
+function diagReport(sub){
+  const m=DIAG[sub]; const ks=Object.keys(m);
+  if(!ks.length) return '没有错因记录——全对，太棒了！';
+  ks.sort((a,b)=>m[b]-m[a]);
+  return '错因统计：'+ks.map(k=>`${k}×${m[k]}`).join('，')+'。错最多的就是明天第11天要补的点。';
+}
+
+/* ===== 通用诊断引擎：两步（先认题型/句型 → 再答题）+ 错后归因 ===== */
+function makeDiag(modId,intro,bank,hostId,causes,subKey){
+  const M={bank:bank,q:0,phase:0,
+    render(s){
+      s.innerHTML=`<button class="back" onclick="goHome()">← 返回菜单</button>
+        <div class="card"><h2>${intro.title}</h2><div class="lead">${intro.lead}</div>${lion(intro.lion)}</div>
+        <div class="card"><h2>📋 诊断（共 ${bank.length} 题）</h2><div id="${hostId}"></div></div>`;
+      this.q=0;this.phase=0;this.renderQ();
+      setTimeout(()=>speak(intro.say),400);
+    },
+    renderQ(){
+      const host=document.getElementById(hostId);if(!host)return;
+      const it=this.bank[this.q];
+      if(this.phase===0 && it.types){
+        host.innerHTML=`<div style="font-size:16px;font-weight:700;margin-bottom:4px">${this.q+1}. ${it.t}</div>
+          <div class="step">第①步：这是<b>什么${it.typeWord||'题型'}</b>？（先认对，再做）</div>
+          <div class="opts">${it.types.map((x,i)=>`<button class="opt" onclick="Qz['${modId}'].pickType(${i},this)">${x}</button>`).join('')}</div>
+          <div id="${hostId}fb"></div>
+          <div class="dots">${this.bank.map((_,i)=>`<i class="${i<=this.q?'on':''}"></i>`).join('')}</div>`;
+      } else {
+        host.innerHTML=`<div style="font-size:16px;font-weight:700;margin-bottom:4px">${this.q+1}. ${it.t}</div>
+          ${it.types?`<div class="step ok">题型：${it.types[it.ta]} ✓</div>`:''}
+          <div class="step">第②步：选出正确答案。</div>
+          <div class="opts">${it.o.map((x,i)=>`<button class="opt" onclick="Qz['${modId}'].pickAns(${i},this)">${x}</button>`).join('')}</div>
+          <div id="${hostId}fb"></div>
+          <div class="dots">${this.bank.map((_,i)=>`<i class="${i<=this.q?'on':''}"></i>`).join('')}</div>`;
+      }
+    },
+    pickType(i,btn){
+      const it=this.bank[this.q];const fb=document.getElementById(hostId+'fb');if(!fb)return;
+      if(i===it.ta){btn.classList.add('right');ding();fb.innerHTML=`<div class="step ok">✅ 认对了！${it.te||''}</div>`;
+        speak('题型认对了。');setTimeout(()=>{this.phase=1;this.renderQ();},1100);}
+      else{btn.classList.add('wrong');tally(subKey,'审题/认错题型');
+        fb.innerHTML=`<div class="step bad">题型认错了（已记入错因：审题）。再看一遍题里的关键词，重选。</div>`;
+        speak('题型认错了，再看关键词。');setTimeout(()=>btn.classList.remove('wrong'),500);}
+    },
+    pickAns(i,btn){
+      const it=this.bank[this.q];const fb=document.getElementById(hostId+'fb');if(!fb)return;
+      if(i===it.a){btn.classList.add('right');ding();
+        fb.innerHTML=`<div class="step ok">✅ 对！${it.e}</div>`;speak('答对了。'+it.e.replace(/<[^>]+>/g,''));
+        this.next();}
+      else{btn.classList.add('wrong');
+        fb.innerHTML=`<div class="step bad"><b>正确：</b>${it.e}<br><b>你觉得自己错在哪？（点一个，记入错因表）</b>
+          <div class="opts" style="margin-top:8px">${causes.map(c=>`<button class="opt" style="padding:9px 12px;font-size:14px" onclick="Qz['${modId}'].cause('${c}')">${c}</button>`).join('')}</div></div>`;
+        speak('错了。'+it.e.replace(/<[^>]+>/g,'')+'。点一下你觉得错在哪。');
+        setTimeout(()=>btn.classList.remove('wrong'),500);}
+    },
+    cause(c){ tally(subKey,c); const fb=document.getElementById(hostId+'fb');if(!fb)return;
+      fb.innerHTML=`<div class="step">已记下错因：<b>${c}</b>。继续下一题。</div>`; ding(); this.next(); },
+    next(){
+      if(this.q<this.bank.length-1){ setTimeout(()=>{this.q++;this.phase=0;this.renderQ();},1300); }
+      else{ burst(); setTimeout(()=>{const host=document.getElementById(hostId);if(!host)return;
+        host.innerHTML=`<div class="step ok">🎉 ${intro.title} 完成！</div>
+          <div class="kou">📋 ${diagReport(subKey)}</div>
+          <div class="row"><button class="btn green" onclick="goHome()">回菜单</button></div>`;
+        speak('这一科诊断完成。'+diagReport(subKey));},400); }
+    }
+  };
+  return M;
+}
+const Qz={};
+/* ===== 数学综合（先认题型再答） ===== */
+Qz.mathd=makeDiag('mathd',
+  {title:'🔢 数学综合：先认题型',lead:'巧算、小数最值、几何、统计、应用混在一起——自己认题型。',
+   lion:'第①步先认"这是什么题"，认对了再做。考试没人提示你！',
+   say:'数学综合开始。先认题型，再作答。'},
+  [
+   {t:'25 × 36 × 4 = ?',typeWord:'巧算结构',types:['凑整：25×4=100','提公因数','不能巧算'],ta:0,
+    o:['3600','900','14400'],a:0,e:'25×4=100，100×36=3600。'},
+   {t:'72 × 46 + 54 × 72 = ?',typeWord:'巧算结构',types:['提公因数 72','凑整','不能巧算'],ta:0,
+    o:['7200','6800','3312'],a:0,e:'72×(46+54)=72×100=7200。'},
+   {t:'18.6 - 4.75 + 2.4 = ?（递等式）',typeWord:'注意点',types:['小数点对齐（18.6=18.60）','先算加法','凑整'],ta:0,
+    o:['16.25','16.85','15.45'],a:0,e:'18.60-4.75=13.85，13.85+2.4=16.25。'},
+   {t:'480 ÷ [（36-28）× 5] = ?',typeWord:'运算顺序',types:['先小括号→再中括号→最后除','从左到右','先除法'],ta:0,
+    o:['12','300','8'],a:0,e:'36-28=8；8×5=40；480÷40=12。'},
+   {t:'用 3、0、8 和小数点，组成最大的一位小数？',typeWord:'题型',types:['数位最值题','近似数','大数改写'],ta:0,
+    o:['83.0','8.30','80.3'],a:0,e:'整数部分放最大83，小数位放0→83.0。8.30是两位小数！'},
+   {t:'用 3、0、8 和小数点，组成最小的一位小数？',typeWord:'关键限制',types:['整数部分不能0开头','可以0开头','随便排'],ta:0,
+    o:['30.8','0.38','38.0'],a:0,e:'最小整数部分是30（0不能开头），小数位8→30.8。0.38是两位小数不行！'},
+   {t:'507600 改写成「万」并保留一位小数？',typeWord:'步骤',types:['先改写再保留（两步）','直接四舍五入','换算单位'],ta:0,
+    o:['50.8万','50.7万','51万'],a:0,e:'50.76万→百分位6进一→50.8万。'},
+   {t:'水池外圈周长560米、宽4米，里面花园周长？',typeWord:'第一步',types:['先求外圈边长(560÷4)','直接560-4-4','先×4'],ta:0,
+    o:['528 米','544 米','536 米'],a:0,e:'140-4-4=132；132×4=528米。'},
+   {t:'阅读：一28 二45 三40 四66 五58。从周几到周几增加最多？',typeWord:'问法',types:['变化量（逐对算相邻差）','最高','相差'],ta:0,
+    o:['周三到周四(+26)','周一到周二(+17)','周四到周五'],a:0,e:'40→66增加26最多。'},
+   {t:'4台3小时288个零件，6台5小时多少个？',typeWord:'题型',types:['效率归一（先求一份）','鸡兔同笼','关系词'],ta:0,
+    o:['720 个','576 个','480 个'],a:0,e:'288÷12=24每台时；30×24=720。'},
+   {t:'三轮车和小轿车共18辆66轮，三轮车几辆？',typeWord:'题型',types:['鸡兔同笼（假设全轮少的）','效率','和倍'],ta:0,
+    o:['6 辆','12 辆','9 辆'],a:0,e:'假设全三轮54，多12，每辆差1→小轿车12，三轮6。'},
+  ],'mathdH',['审题错误','方法选错','计算错误','知识点不会'],'math');
+
+/* ===== 语文阅读（新故事!先点证据） ===== */
+Qz.cnd={
+  q:0,
+  passage:[
+    '爷爷的书桌上放着一张旧照片。照片已经有些发黄，但爷爷一直把它夹在相册最前面，像宝贝一样珍藏着。',
+    '照片上，年轻的爷爷正扶着一位摔倒的老人。爷爷告诉我，那是他年轻时上班路上遇到的一件事。那天早晨，天空下着小雨，路面很滑。一位老人不小心摔倒了，旁边有些人只是看了看就匆匆走开。爷爷没有犹豫，立刻跑过去，把老人扶到路边，还陪老人等到家人赶来。',
+    '「那天我上班迟到了，还被领导批评了。」爷爷笑着说，「可是我一点也不后悔。人遇到困难时，最需要别人伸出手。」',
+    '我听了爷爷的话，心里很受触动。原来，一张旧照片里，不只藏着过去的故事，也藏着一个人最珍贵的品质。'
+  ],
+  bank:[
+    {t:'「珍藏」在文中是什么意思？',ev:0,
+     o:['非常重视，像宝贝一样小心保存','藏起来不让人看','随便夹在相册里'],a:0,
+     e:'回原文：夹在相册最前面、像宝贝一样→重视并小心保存。',cause:'答案空泛'},
+    {t:'⚠️ 注意！爷爷为什么一直保存这张照片？（昨天的故事是教孩子，今天不一样！）',ev:1,
+     o:['它记录了他年轻时帮助摔倒老人的事，提醒做人要乐于助人','它记录了他教孩子们读书的时光','照片很值钱'],a:0,
+     e:'今天的故事是「雨中扶老人」！选了"教孩子"=凭昨天记忆答题，没回原文！',cause:'没回原文找证据'},
+    {t:'从哪里看出爷爷乐于助人？"写两点"哪个答法对？',ev:1,
+     o:['①没有犹豫立刻跑过去扶老人到路边 ②陪老人等到家人赶来（两点+原文）','他很善良（一句话）','他帮了老人（没贴原文）'],a:0,
+     e:'两点分开写，各贴原文动作。',cause:'表达不完整'},
+    {t:'给第2自然段加小标题，哪个最好？',ev:1,
+     o:['雨中扶老人','一张发黄的照片','爷爷被批评'],a:0,
+     e:'第2段核心事件=雨中扶起摔倒的老人。',cause:'概括不准'},
+    {t:'爷爷是怎样的人？哪个答案最标准？',ev:2,
+     o:['善良、乐于助人。从"没有犹豫立刻跑过去扶老人""一点也不后悔"看出（品质+证据）','是个好人','很勇敢的人'],a:0,
+     e:'品质词+原文证据+完整句。',cause:'答案空泛'},
+  ],
+  evPicked:false,
+  render(s){
+    s.innerHTML=`<button class="back" onclick="goHome()">← 返回菜单</button>
+      <div class="card"><h2>📖 语文阅读：《一张旧照片》</h2>
+        <div class="lead">⚠️ 和昨天<b>同名但故事不同</b>！必须回原文，凭记忆答必错。每题先点证据段。</div>
+        ${lion('狡猾吧？我换了故事内容！这就是检查你有没有真的"回原文"。先读一遍，每题点出证据段再答。')}
+        <div id="cnpsg"></div>
+      </div>
+      <div class="card"><h2>📋 阅读题（共 ${this.bank.length} 题）</h2><div id="cndH"></div></div>`;
+    this.q=0;this.evPicked=false;this.drawPassage();this.renderQ();
+    setTimeout(()=>speak('注意，今天的一张旧照片和昨天故事不一样！先读原文，每题先点证据段。'),400);
+  },
+  drawPassage(hl){
+    const box=document.getElementById('cnpsg');if(!box)return;
+    box.innerHTML=this.passage.map((p,i)=>`<div onclick="Qz.cnd.tapPara(${i})" style="cursor:pointer;padding:8px 10px;margin:6px 0;border-radius:10px;border:2px solid ${hl===i?'#3C9D54':'#EBDCC4'};background:${hl===i?'#EAF7EC':'#fff'};font-size:14px;line-height:1.8">【${i+1}】${p}</div>`).join('');
+  },
+  tapPara(i){
+    const it=this.bank[this.q];const fb=document.getElementById('cndHfb');
+    if(this.evPicked)return;
+    if(i===it.ev){this.evPicked=true;this.drawPassage(i);ding();
+      if(fb)fb.innerHTML=`<div class="step ok">✅ 证据找对了（第${i+1}段）！现在选答案。</div>`;
+      this.renderQ();}
+    else{tally('cn','没有原文证据');this.drawPassage();
+      if(fb)fb.innerHTML=`<div class="step bad">证据不在这段（记入错因）。再找。</div>`;
+      speak('不在这段，再找找。');}
+  },
+  renderQ(){
+    const host=document.getElementById('cndH');if(!host)return;
+    const it=this.bank[this.q];
+    if(!this.evPicked){
+      host.innerHTML=`<div style="font-weight:700;margin-bottom:4px">${this.q+1}. ${it.t}</div>
+        <div class="step">第①步：👆 点上面短文里证据所在的段。</div>
+        <div id="cndHfb"></div>
+        <div class="dots">${this.bank.map((_,i)=>`<i class="${i<=this.q?'on':''}"></i>`).join('')}</div>`;
+    } else {
+      host.innerHTML=`<div style="font-weight:700;margin-bottom:4px">${this.q+1}. ${it.t}</div>
+        <div class="step ok">证据：第${it.ev+1}段 ✓　第②步：选最标准的答案。</div>
+        <div class="opts">${it.o.map((x,i)=>`<button class="opt" onclick="Qz.cnd.pick(${i},this)">${x}</button>`).join('')}</div>
+        <div id="cndHfb"></div>
+        <div class="dots">${this.bank.map((_,i)=>`<i class="${i<=this.q?'on':''}"></i>`).join('')}</div>`;
+    }
+  },
+  pick(i,btn){
+    const it=this.bank[this.q];const fb=document.getElementById('cndHfb');if(!fb)return;
+    if(i===it.a){btn.classList.add('right');ding();fb.innerHTML=`<div class="step ok">✅ 对！${it.e}</div>`;
+      speak('对。'+it.e);this.next();}
+    else{btn.classList.add('wrong');tally('cn',it.cause);
+      fb.innerHTML=`<div class="step bad"><b>正确：</b>${it.e}（记入错因：${it.cause}）</div>`;
+      speak('不对。'+it.e);setTimeout(()=>btn.classList.remove('wrong'),500);this.next(2400);}
+  },
+  next(delay){
+    setTimeout(()=>{
+      if(this.q<this.bank.length-1){this.q++;this.evPicked=false;this.drawPassage();this.renderQ();}
+      else{burst();const host=document.getElementById('cndH');if(!host)return;
+        host.innerHTML=`<div class="step ok">🎉 阅读完成！</div>
+          <div class="kou">📋 ${diagReport('cn')}</div>
+          <div class="kou">✍️ 纸上写作文片段「让我难忘的瞬间」80-120字，写完打勾自查：☐动作 ☐语言 ☐心理 ☐感受。</div>
+          <div class="row"><button class="btn green" onclick="goHome()">回菜单</button></div>`;
+        speak('阅读完成。'+diagReport('cn'));}
+    },delay||1400);
+  }
+};
+
+/* ===== 病句词语（先选病因再改） ===== */
+Qz.bing=makeDiag('bing',
+  {title:'🔧 病句：先找病因再改',lead:'四类病因：用词重复、成分残缺、搭配不当、前后矛盾。',
+   lion:'第①步先诊断"什么病"，第②步选正确改法。先找病因再下手！',
+   say:'病句练习。先找病因，再选改法。'},
+  [
+   {t:'"我差不多大约用了二十分钟完成作业。"',typeWord:'病因',types:['用词重复','成分残缺','搭配不当'],ta:0,
+    o:['我大约用了二十分钟完成作业。','我差不多大约用了二十分。'],a:0,e:'差不多+大约重复，删一个。'},
+   {t:'"通过这次复习，使我明白了审题的重要。"',typeWord:'病因',types:['成分残缺（缺主语）','用词重复','前后矛盾'],ta:0,
+    o:['通过这次复习，我明白了审题的重要。','通过这次复习，使我明白审题。'],a:0,e:'"通过…使…"同用没主语，删"使"（或删"通过"）。'},
+   {t:'"哥哥改正了学习态度。"',typeWord:'病因',types:['搭配不当','成分残缺','用词重复'],ta:0,
+    o:['哥哥端正了学习态度。','哥哥改正了态度学习。'],a:0,e:'态度→端正；改正→错误。'},
+   {t:'"不露声色"在「面对退稿仍不露声色地坚持创作」中指？',typeWord:'方法',types:['联系上下文理解','只看字面','背词典'],ta:0,
+    o:['没表现出沮丧抱怨，沉着地坚持','脸上没有颜色','不说话'],a:0,e:'结合"没有抱怨、没有灰心"理解=不把情绪表现出来。'},
+   {t:'"不起眼"在「纽扣小小的，躺在地上并不起眼」中指？',typeWord:'方法',types:['联系上下文理解','只看字面','猜'],ta:0,
+    o:['很小、不明显，不容易被发现','不好看','没有眼睛'],a:0,e:'联系"小小的"→不明显、不易被发现。'},
+  ],'bingH',['病因没找准','词语理解太空','审题错误'],'cn');
+
+/* ===== 拼完整句（核心新交互） ===== */
+Qz.pin={
+  q:0,
+  bank:[
+    {ask:'What does Tom usually do after school?',
+     words:['He','usually','reads','books','after school','.'],
+     trapNote:'注意 reads 和 books 都有 s！',
+     say:'He usually reads books after school.'},
+    {ask:'When does Tom play basketball?（不能只答时间！）',
+     words:['He','plays','basketball','on Wednesday afternoon','.'],
+     trapNote:'只写 On Wednesday afternoon 是半句话！要有主语 He 和动作 plays。',
+     say:'He plays basketball on Wednesday afternoon.'},
+    {ask:'Who does Tom visit on Saturday?',
+     words:['He','visits','his grandparents','on Saturday','.'],
+     trapNote:'He 后面 visits 要加 s！',
+     say:'He visits his grandparents on Saturday.'},
+    {ask:'What is Tom doing now?',
+     words:['He','is','doing','his homework','now','.'],
+     trapNote:'进行时 is doing，别用 does。',
+     say:'He is doing his homework now.'},
+  ],
+  cur:[],
+  render(s){
+    s.innerHTML=`<button class="back" onclick="goHome()">← 返回菜单</button>
+      <div class="card"><h2>🧩 拼完整句：治"半句话"</h2>
+        <div class="lead">你的卷面问题：回答只写半句（On Wednesday afternoon.）。今天把词块按顺序点成<b>完整句</b>。</div>
+        ${lion('规则：按顺序点下面的词块，拼出完整回答。完整句=<b>主语+动作+其它</b>。点错了？点答案区的词可以退回。')}
+        <div id="pinH"></div>
+      </div>`;
+    this.q=0;this.cur=[];this.renderQ();
+    setTimeout(()=>speak('拼完整句开始。按顺序点词块，拼出主语加动作的完整回答。'),400);
+  },
+  renderQ(){
+    const host=document.getElementById('pinH');if(!host)return;
+    const it=this.bank[this.q];
+    const remain=it.words.map((w,i)=>({w,i})).filter(x=>!this.cur.includes(x.i));
+    host.innerHTML=`<div style="font-weight:700;margin:8px 0">${this.q+1}. ${it.ask}</div>
+      <div class="tagline">你拼的句子（点词可退回）：</div>
+      <div class="sent" style="min-height:46px;background:#FBF3E3;border:2px dashed var(--line);border-radius:12px;padding:8px">
+        ${this.cur.length?this.cur.map(ci=>`<span class="tok ins" onclick="Qz.pin.unpick(${ci})" style="cursor:pointer">${it.words[ci]}</span>`).join(''):'<span style="color:#b8a888;align-self:center">（空）</span>'}
+      </div>
+      <div class="tagline">词块（按顺序点）：</div>
+      <div class="sent">${remain.map(x=>`<button class="tok" style="cursor:pointer;font-family:inherit" onclick="Qz.pin.pick(${x.i})">${x.w}</button>`).join('')}</div>
+      <div class="row"><button class="btn sm green" onclick="Qz.pin.checkAns()">✔ 检查</button>
+        <button class="btn sm ghost" onclick="Qz.pin.reset()">↺ 重来</button></div>
+      <div id="pinfb"></div>
+      <div class="dots">${this.bank.map((_,i)=>`<i class="${i<=this.q?'on':''}"></i>`).join('')}</div>`;
+  },
+  pick(i){ if(!this.cur.includes(i)){this.cur.push(i);this.renderQ();} },
+  unpick(i){ this.cur=this.cur.filter(x=>x!==i);this.renderQ(); },
+  reset(){ this.cur=[];this.renderQ(); },
+  checkAns(){
+    const it=this.bank[this.q];const fb=document.getElementById('pinfb');if(!fb)return;
+    const right=this.cur.length===it.words.length&&this.cur.every((c,k)=>c===k);
+    if(right){ding();burst();
+      fb.innerHTML=`<div class="step ok">✅ 完整句拼对了！<b>${it.words.join(' ').replace(' .','.')}</b><br>💡 ${it.trapNote}</div>`;
+      speak('拼对了。'+it.say);
+      setTimeout(()=>{ if(this.q<this.bank.length-1){this.q++;this.cur=[];this.renderQ();}
+        else{const host=document.getElementById('pinH');if(!host)return;
+          host.innerHTML=`<div class="step ok">🎉 四句全拼对！记住：回答=主语+动作+其它，永远不写半句话。</div>
+            <div class="kou">📋 ${diagReport('en')}</div>
+            <div class="row"><button class="btn green" onclick="goHome()">回菜单</button></div>`;
+          speak('全部拼对！回答永远是完整句。');}},2200);}
+    else{
+      if(this.cur.length<it.words.length){tally('en','回答只写半句');
+        fb.innerHTML=`<div class="step bad">句子不完整（记入错因：半句话）！完整句要有<b>主语+动作</b>。再拼。</div>`;
+        speak('句子不完整，要有主语和动作。');}
+      else{tally('en','语序错');
+        fb.innerHTML=`<div class="step bad">顺序不对。想想：先主语(He)，再动作，再其它。点词退回重拼。</div>`;
+        speak('顺序不对，先主语再动作。');}
+    }
+  }
+};
+
+/* ===== 介词搭配 ===== */
+Qz.jiec=makeDiag('jiec',
+  {title:'🔗 介词搭配 + books的s',lead:'on/in/at/with/after——昨天你写了 On my week，今天全理清。',
+   lion:'介词口诀：<b>on</b>+星期几；<b>in</b>+里面（图书馆里）；<b>after</b> school 固定；<b>with</b>+人。绝不说 On my week！',
+   say:'介词搭配。on加星期几，不说 On my week。'},
+  [
+   {t:'「读书」怎么说？',typeWord:'关键',types:['books 要加 s','book 不加 s'],ta:0,
+    o:['read books','read book'],a:0,e:'泛指读书不止一本→books。你卷面真实错误！'},
+   {t:'「放学后」？',typeWord:'搭配',types:['固定搭配 after school','用 on'],ta:0,
+    o:['after school','on school'],a:0,e:'after school 固定搭配。'},
+   {t:'「在周三下午」？',typeWord:'规则',types:['具体某天(下午)用 on','用 in'],ta:0,
+    o:['on Wednesday afternoon','in Wednesday afternoon'],a:0,e:'具体到星期几的下午→on。'},
+   {t:'「在学校图书馆」？',typeWord:'规则',types:['在里面用 in + the','用 on'],ta:0,
+    o:['in the school library','on the school library'],a:0,e:'图书馆"里面"→in，别忘 the。'},
+   {t:'「和我的同学们」？',typeWord:'规则',types:['和某人一起用 with','用 and'],ta:0,
+    o:['with my classmates','and my classmates'],a:0,e:'with+人。'},
+   {t:'开头想说"我的一周"，怎么写？',typeWord:'判断',types:['不说 On my week！','On my week 可以'],ta:0,
+    o:['I have a busy week. / From Monday to Friday...','On my week, I go to school.'],a:0,e:'on 只加具体星期几（on Monday）。"我的一周"用 I have a ... week 或 From Monday to Friday 开头。'},
+  ],'jiecH',['介词搭配错','books漏s','On my week错误'],'en');
+
+/* ===== 改错润色 ===== */
+Qz.runse=makeDiag('runse',
+  {title:'✨ 改错 + 润色：真实卷面错误',lead:'这些全是你卷子上真实出现过的错。改对它们！',
+   lion:'最后一关：把生硬句、错句变成<b>完整自然</b>的句子。这就是作文提分的秘密。',
+   say:'改错润色。这些都是你的真实错误，全部改对。'},
+  [
+   {t:'改错：He usually reads book after school.',typeWord:'错在哪',types:['book 漏了 s','reads 多了 s'],ta:0,
+    o:['He usually reads books after school.','He usually read book after school.'],a:0,e:'read books 固定：books 加 s。'},
+   {t:'改完整句：On Wednesday afternoon.',typeWord:'错在哪',types:['是半句话（缺主语动作）','介词错了'],ta:0,
+    o:['He plays basketball on Wednesday afternoon.','On the Wednesday afternoon.'],a:0,e:'补主语 He + 动作 plays basketball。'},
+   {t:'改错：He visit his grandparents on Saturday.',typeWord:'错在哪',types:['visit 漏三单 s','on 用错'],ta:0,
+    o:['He visits his grandparents on Saturday.','He visit grandparents Saturday.'],a:0,e:'He→visits。选择题会，写句子也不能掉！'},
+   {t:'改错：On my week, I always go to school.',typeWord:'错在哪',types:['不能说 On my week','always 位置错'],ta:0,
+    o:['From Monday to Friday, I always go to school.','In my week, I always go to school.'],a:0,e:'on只加星期几。开头用 From Monday to Friday。'},
+   {t:'改错：I go to school library on Wednesday.',typeWord:'错在哪',types:['缺 the','缺 s'],ta:0,
+    o:['I go to the school library on Wednesday.','I go to school librarys on Wednesday.'],a:0,e:'the school library 要加 the。'},
+   {t:'润色：I play basketball. 哪个更好？',typeWord:'润色方向',types:['加时间+伙伴','换动词'],ta:0,
+    o:['I usually play basketball with my classmates after school.','I play a basketball.'],a:0,e:'加 usually+with+after school，句子立刻丰满。'},
+   {t:'润色：I go to library.',typeWord:'润色方向',types:['加the+具体时间','换地点'],ta:0,
+    o:['I go to the school library on Wednesday afternoon.','I go to a library.'],a:0,e:'加 the + on Wednesday afternoon。'},
+   {t:'润色：I go to park.',typeWord:'润色方向',types:['加地名+伙伴+时间','不用改'],ta:0,
+    o:['I go to Rainbow Park with my family on Sunday.','I go to park now.'],a:0,e:'加 Rainbow Park + with my family + on Sunday。'},
+  ],'runseH',['books漏s','半句话','三单漏s','介词错','句子生硬'],'en');
+
+/* 注册 */
+MOD.mathd={render:(s)=>Qz.mathd.render(s)};
+MOD.cnd={render:(s)=>Qz.cnd.render(s)};
+MOD.bing={render:(s)=>Qz.bing.render(s)};
+MOD.pin={render:(s)=>Qz.pin.render(s)};
+MOD.jiec={render:(s)=>Qz.jiec.render(s)};
+MOD.runse={render:(s)=>Qz.runse.render(s)};
+</script>
+</body>
+</html>

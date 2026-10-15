@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>核桃 CTL 一级备考基地 · 8月15日冲刺</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+:root{--ink:#2D2A4A;--blue:#3B82F6;--blue-d:#2563EB;--yellow:#FFD93D;--pink:#FF9EC4;--green:#4ECDC4;--orange:#FF8C42;--orange-d:#FF6B35;--red:#FF5D5D;--purple:#6B5BFF;--muted:#5A5775}
+html{font-size:17px}
+body{font-family:"PingFang SC","Microsoft YaHei","Segoe UI",system-ui,sans-serif;color:var(--ink);
+background:linear-gradient(135deg,#FFF8F0 0%,#FFE8D6 55%,#FFF3C4 100%);min-height:100vh;padding-bottom:40px}
+.wrap{max-width:560px;margin:0 auto;padding:16px}
+.screen{display:none;animation:pop .35s ease}.screen.on{display:block}
+@keyframes pop{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.card{background:#fff;border-radius:22px;padding:18px;box-shadow:0 8px 28px rgba(45,42,74,.12);margin-bottom:14px}
+h1{font-size:25px;font-weight:900;line-height:1.25}h2{font-size:19px;font-weight:800;margin-bottom:8px}
+.sub{color:var(--muted);font-size:13px;margin-top:6px;line-height:1.6}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:52px;padding:12px 22px;border:none;border-radius:16px;background:var(--yellow);color:var(--ink);font-size:16px;font-weight:700;cursor:pointer;box-shadow:0 4px 0 rgba(45,42,74,.9);transition:transform .08s,box-shadow .08s;user-select:none;font-family:inherit}
+.btn:active{transform:scale(.98);box-shadow:0 1px 0 rgba(45,42,74,.9)}
+.btn.blue{background:var(--blue);color:#fff}.btn.green{background:var(--green)}.btn.pink{background:var(--pink)}.btn.purple{background:var(--purple);color:#fff}.btn.orange{background:var(--orange-d);color:#fff}.btn.ghost{background:#fff;box-shadow:0 0 0 2px var(--ink)}
+.btn.big{width:100%;font-size:18px;min-height:58px;border-radius:18px}
+.btn.small{min-height:40px;padding:7px 14px;font-size:13.5px}
+.btnrow{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+.menu{display:flex;flex-direction:column;gap:12px;margin-top:16px}
+.menu .btn{justify-content:flex-start;font-size:17px;min-height:62px;border-radius:18px}.menu .btn .ico{font-size:26px}
+.topbar{display:flex;align-items:center;gap:10px;margin-bottom:12px}.topbar .btn{min-height:44px;padding:8px 14px;font-size:14px}
+.prog{flex:1;height:14px;background:#fff;border-radius:99px;box-shadow:inset 0 0 0 2px var(--ink);overflow:hidden}
+.prog>i{display:block;height:100%;background:linear-gradient(90deg,var(--orange-d),var(--yellow));width:0%;transition:width .4s}
+.tip{background:#FFF9E5;border:2px dashed var(--yellow);border-radius:14px;padding:12px 14px;font-size:14.5px;margin:10px 0;line-height:1.75}
+.demo{background:#F0F6FF;border-radius:14px;padding:14px;margin:10px 0;line-height:1.8;box-shadow:inset 0 0 0 2px var(--blue)}
+.opt{display:block;width:100%;text-align:left;min-height:56px;margin:10px 0;padding:13px 16px;background:#fff;border:none;border-radius:16px;font-size:15.5px;cursor:pointer;box-shadow:0 0 0 2px var(--ink),0 4px 0 rgba(45,42,74,.9);transition:transform .08s;font-family:inherit;color:var(--ink);font-weight:600;line-height:1.6}
+.opt:active{transform:scale(.98)}
+.opt.right{background:#D8F8E8;box-shadow:0 0 0 2px #1e9e62,0 4px 0 rgba(45,42,74,.9)}
+.opt.wrong{background:#FFE0E0;box-shadow:0 0 0 2px var(--red),0 4px 0 rgba(45,42,74,.9);animation:shake .35s}
+.opt pre{margin:2px 0 0}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-8px)}75%{transform:translateX(8px)}}
+.explain{display:none;background:#EAF4FF;border-radius:14px;padding:14px 16px;margin-top:12px;font-size:15px;line-height:1.75;box-shadow:inset 0 0 0 2px var(--blue)}
+.explain.on{display:block;animation:pop .3s}
+.badge{display:inline-block;background:var(--orange-d);color:#fff;border-radius:999px;padding:4px 14px;font-size:12.5px;font-weight:700;margin-bottom:8px}
+.badge.gray{background:var(--muted)}.badge.yellow{background:var(--yellow);color:var(--ink)}.badge.blue{background:var(--blue)}.badge.red{background:var(--red)}.badge.green{background:#2BB673}
+.center{text-align:center}.big-emoji{font-size:52px;display:block;margin:4px 0 10px}
+.confetti{position:fixed;top:-10px;width:12px;height:12px;z-index:99;animation:fall linear forwards;pointer-events:none;border-radius:3px}
+@keyframes fall{to{transform:translateY(105vh) rotate(720deg);opacity:.7}}
+.footer-note{text-align:center;color:var(--muted);font-size:12px;margin-top:20px;line-height:1.7}
+.recall-answer{filter:blur(8px);cursor:pointer;user-select:none;border-radius:8px;display:inline-block;transition:filter .3s}
+.recall-answer.show{filter:none}
+.recall-item{background:#fff;border-radius:16px;box-shadow:0 4px 0 rgba(45,42,74,.9),0 0 0 2px var(--ink);padding:14px 16px;margin:10px 0;line-height:1.7}
+/* 代码 */
+pre.code{background:#23233B;color:#E8E8F5;border-radius:14px;padding:13px 15px;font-family:"SF Mono",Consolas,Menlo,monospace;font-size:14px;line-height:1.75;overflow-x:auto;margin:8px 0;white-space:pre}
+pre.code .cm{color:#8B8BA7}
+pre.code .hl{background:rgba(255,217,61,.18);display:block;margin:0 -15px;padding:0 15px;border-left:3px solid var(--yellow)}
+.optcode{font-family:"SF Mono",Consolas,Menlo,monospace;font-size:13.5px;white-space:pre;display:block;line-height:1.65}
+/* 打字机 */
+.typelines{background:#23233B;border-radius:14px;padding:13px 15px;font-family:"SF Mono",Consolas,Menlo,monospace;font-size:14.5px;line-height:2;overflow-x:auto;margin:8px 0;white-space:pre}
+.tl-done{color:#7AE582}
+.tl-now{color:#fff;background:rgba(255,140,66,.25);display:inline-block;min-width:100%;border-left:3px solid var(--orange);padding-left:6px;margin-left:-9px}
+.tl-todo{color:#6A6A88}
+.tl-now .ok{background:rgba(122,229,130,.35);border-radius:3px}
+.tl-now .bad{background:rgba(255,93,93,.55);border-radius:3px}
+.typein{width:100%;min-height:52px;border:2px solid var(--ink);border-radius:14px;padding:12px 14px;font-family:"SF Mono",Consolas,Menlo,monospace;font-size:15px;background:#fff;color:var(--ink);outline:none}
+.typein:focus{border-color:var(--orange-d);box-shadow:0 0 0 3px rgba(255,140,66,.25)}
+.typein.err{border-color:var(--red);animation:shake .3s}
+.typehud{display:flex;gap:10px;margin:8px 0}
+.typehud .h{flex:1;background:#fff;border-radius:12px;box-shadow:0 0 0 2px var(--ink);padding:8px 10px;text-align:center;font-size:12px;font-weight:800;color:var(--muted)}
+.typehud .h b{display:block;font-size:18px;color:var(--ink)}
+.flymsg{text-align:center;font-weight:800;margin:12px 0;font-size:15px;min-height:24px;line-height:1.6}
+/* 双人 */
+.kid-switch{position:absolute;top:14px;right:16px;border:none;border-radius:999px;background:#fff;box-shadow:0 0 0 2px var(--ink),0 4px 0 rgba(45,42,74,.9);padding:8px 15px;font-size:13.5px;font-weight:900;cursor:pointer;font-family:inherit;color:var(--ink)}
+.kid-switch:active{transform:scale(.97)}
+.kid-overlay{position:fixed;inset:0;background:rgba(45,42,74,.45);display:none;align-items:center;justify-content:center;z-index:50;padding:20px}
+.kid-overlay.show{display:flex}
+.kid-panel{background:#fff;border-radius:24px;padding:24px;max-width:340px;width:100%;text-align:center;box-shadow:0 16px 40px rgba(0,0,0,.3)}
+.kid-option{display:block;width:100%;min-height:64px;margin:12px 0;border:none;border-radius:18px;font-size:18px;font-weight:900;cursor:pointer;font-family:inherit;box-shadow:0 4px 0 rgba(45,42,74,.9)}
+.kid-option.kenton{background:#D8F0FF;color:#155a8a}
+.kid-option.eddey{background:#FFE3D0;color:#9a4a12}
+/* 规则卡 */
+.rulegrid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:10px 0}
+.rulecell{background:#fff;border-radius:16px;box-shadow:0 0 0 2px var(--ink);padding:12px;text-align:center}
+.rulecell b{display:block;font-size:21px;font-weight:900;color:var(--orange-d)}
+.rulecell span{font-size:12px;font-weight:800;color:var(--muted)}
+.scorebar{display:flex;height:30px;border-radius:99px;overflow:hidden;box-shadow:0 0 0 2px var(--ink);margin:10px 0;font-size:12.5px;font-weight:900;color:#fff}
+.scorebar div{display:flex;align-items:center;justify-content:center}
+/* 速记卡 */
+.memo h3{font-size:16px;margin:12px 0 6px;color:var(--orange-d)}
+.memo ul{padding-left:20px;line-height:1.9;font-size:14.5px}
+.verse{background:linear-gradient(135deg,#FFF3D6,#FFE0B8);border-radius:14px;padding:14px;font-weight:800;font-size:15.5px;line-height:2;text-align:center;margin:10px 0}
+.paperpick{display:flex;flex-direction:column;gap:12px}
+.paperpick .btn{justify-content:flex-start;font-size:16px}
+.paperbest{font-size:12px;opacity:.85;font-weight:800}
+@media print{.menu,.topbar,.btnrow,.btn,.footer-note,.kid-switch{display:none!important}.card{box-shadow:none;border:1px solid #ccc}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<button class="kid-switch" id="kidSwitch" type="button" aria-label="切换学习者">🦁 Kenton</button>
+
+<section id="home" class="screen on">
+  <div class="card center">
+    <span class="badge">🚀 核桃 CTL 一级 · 8 月 15 日开考</span>
+    <span class="big-emoji">🏁</span>
+    <h1>CTL 一级备考基地<br>打字 + 真题 + 规则全通关</h1>
+    <p class="sub">内容全部来自《CTL备考笔记&amp;赛考题库》：<br>三套真题卷（45 选择 + 30 判断）逐题带解析，10 道编程题全文打字通关，必背框架打字机，考试规则讲清楚。<br><b>该打代码的打代码，该背的必须能打出来！</b></p>
+    <div class="rulegrid" style="margin-top:12px">
+      <div class="rulecell"><b>90 分钟</b><span>考试时长</span></div>
+      <div class="rulecell"><b>60 分过</b><span>满分 100</span></div>
+    </div>
+  </div>
+  <div class="menu">
+    <button class="btn orange" onclick="go('rules')"><span class="ico">📋</span>第一关：考试规则局（先搞懂怎么考）</button>
+    <button class="btn purple" onclick="go('type')"><span class="ico">⌨️</span>第二关：必背框架打字机（要背的必须打出来）</button>
+    <button class="btn blue" onclick="go('mock')"><span class="ico">📝</span>第三关：三套真题模拟卷（45 选择 + 30 判断）</button>
+    <button class="btn green" onclick="go('coding')"><span class="ico">💻</span>第四关：编程题打字通关（10 道真题全打对）</button>
+    <button class="btn pink" onclick="go('recall')"><span class="ico">🙈</span>遮一遮：高频词 + 易错点回忆卡</button>
+    <button class="btn orange" onclick="go('memo')"><span class="ico">📇</span>速记卡：进考场前 3 分钟过一遍</button>
+    <button class="btn ghost" onclick="go('errbook')"><span class="ico">📒</span>错题本 <span id="errCount"></span></button>
+  </div>
+  <div class="card" style="margin-top:14px">
+    <span class="badge gray">🗂 学习记录（<span id="recKidName">Kenton</span> 专属）</span>
+    <div id="recInfo" style="font-size:14.5px;line-height:1.8">开始闯关后自动记录。</div>
+    <div class="btnrow">
+      <button class="btn ghost small" onclick="recExport('json')">⬇ 导出 JSON</button>
+      <button class="btn ghost small" onclick="recExport('md')">⬇ 导出 Markdown</button>
+      <button class="btn ghost small" onclick="recImport()">⬆ 导入记录</button>
+    </div>
+    <textarea id="recBox" style="display:none;width:100%;min-height:120px;border-radius:12px;border:2px solid #E8E2F4;padding:10px;font-size:12px;margin-top:8px"></textarea>
+    <p class="sub">哥哥弟弟进度、错题、成绩完全分开，点右上角头像换人。</p>
+  </div>
+  <p class="footer-note">音频不适用：编程备考以动手打字与做题为主。<br>软件入库不等于已经掌握——能上机打对才算数。</p>
+</section>
+
+<section id="rules" class="screen">
+  <div class="topbar"><button class="btn ghost" onclick="go('home')">🏠 首页</button></div>
+  <div class="card">
+    <span class="badge">第一关 · 考试规则局</span>
+    <h2>先把规则看清楚，再上考场</h2>
+    <div class="rulegrid">
+      <div class="rulecell"><b>90 分钟</b><span>考试时长</span></div>
+      <div class="rulecell"><b>100 分</b><span>满分</span></div>
+      <div class="rulecell"><b>60 分</b><span>通过线</span></div>
+      <div class="rulecell"><b>3 大题型</b><span>选择+判断+编程</span></div>
+    </div>
+    <p class="sub" style="text-align:center">题型分值分布（三套真题卷同款结构）</p>
+    <div class="scorebar">
+      <div style="width:30%;background:var(--blue)">单选 15×2=30</div>
+      <div style="width:20%;background:#2BB673">判断 10×2=20</div>
+      <div style="width:50%;background:var(--orange-d)">编程 2×25=50</div>
+    </div>
+    <div class="tip">💡 <b>编程题占一半分！</b>但别慌——主函数里面的内容占绝大部分分数，<b>按步骤写，会给步骤分</b>：定义变量→输入数据→计算/判断/循环→输出，一步一分。</div>
+    <div class="demo">🎯 <b>考场偷分技巧（官方备考笔记原话）：</b><br>① 头文件 <b>#include&lt;iostream&gt;</b> 和 <b>using namespace std;</b> 背不下来？<b>去选择题里面找</b>，照抄！<br>② 所有符号都是<b>英文格式</b>：括号 ()、引号 ""、分号 ; 一个都不能少，少了就报错。<br>③ <b>endl</b> 才换行；语句结尾必须写英文分号。<br>④ 严格按题目要求输出，题目要 yes 就不要写 Yes。</div>
+    <div class="btnrow" style="justify-content:center"><button class="btn orange big" onclick="startRuleQuiz()">🎓 规则小考官：5 题过关</button></div>
+    <div id="ruleQuizBox"></div>
+  </div>
+</section>
+
+<section id="type" class="screen">
+  <div class="topbar"><button class="btn ghost" onclick="go('home')">🏠 首页</button></div>
+  <div class="card">
+    <span class="badge blue">第二关 · 必背框架打字机</span>
+    <p class="sub">老师说：框架背不下来，编程题一半分就没了。在这里<b>逐行打出来</b>，打错立刻红给你看，全部打对才算过。选一个框架开练：</p>
+    <div class="paperpick" id="typeList"></div>
+  </div>
+  <div class="card" id="typeArena" style="display:none">
+    <span class="badge blue" id="typeTitle"></span>
+    <div class="typehud">
+      <div class="h">进度<b id="tProg">0/0</b></div>
+      <div class="h">打错<b id="tErr">0</b></div>
+      <div class="h">用时<b id="tTime">0s</b></div>
+    </div>
+    <div class="typelines" id="typeLines"></div>
+    <input class="typein" id="typeIn" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" placeholder="照着上面这一行打，回车确认">
+    <div class="flymsg" id="typeMsg"></div>
+    <div class="btnrow" style="justify-content:center"><button class="btn ghost small" onclick="renderTypeList()">🔙 换个框架</button></div>
+  </div>
+</section>
+
+<section id="mock" class="screen">
+  <div class="topbar"><button class="btn ghost" onclick="go('home')">🏠 首页</button></div>
+  <div class="card" id="mockHome">
+    <span class="badge">第三关 · 三套真题模拟卷</span>
+    <p class="sub">完全按真题来：<b>15 道单选（每题 2 分）+ 10 道判断（每题 2 分）</b>，共 50 分；答错立刻给解析并进错题本。另外 50 分编程题去第四关练。选一套开考：</p>
+    <div class="paperpick" id="paperList"></div>
+  </div>
+  <div class="card" id="mockArena" style="display:none">
+    <div class="topbar"><button class="btn ghost small" onclick="quitMock()">🔙 退出本卷</button><div class="prog"><i id="mockProg"></i></div><span id="mockNum" style="font-weight:800;font-size:14px"></span></div>
+    <div id="mockCard"></div>
+  </div>
+</section>
+
+<section id="coding" class="screen">
+  <div class="topbar"><button class="btn ghost" onclick="go('home')">🏠 首页</button></div>
+  <div class="card" id="codeHome">
+    <span class="badge green">第四关 · 编程题打字通关（10 道真题）</span>
+    <p class="sub">编程题 50 分全靠手写代码！每道题：<b>读题 → 想三步法 → 把完整代码逐行打出来</b>。可以先「看答案照着打」练熟，再「遮住答案默打」——默打成功才算真会。</p>
+    <div class="tip">🥇 解题三步法（简单计算题）：<b>① 定义变量 ② 输入数据 ③ 计算输出</b>；判断题选 <b>if-else</b>；重复输出选 <b>for</b>。</div>
+    <div class="paperpick" id="codeList"></div>
+  </div>
+  <div class="card" id="codeArena" style="display:none">
+    <span class="badge green" id="codeTitle"></span>
+    <div id="codeDesc"></div>
+    <div class="btnrow">
+      <button class="btn small yellow" id="codePeek" onclick="togglePeek()">👀 看答案</button>
+      <button class="btn small ghost" onclick="renderCodeList()">🔙 换一题</button>
+    </div>
+    <div class="typehud">
+      <div class="h">进度<b id="cProg">0/0</b></div>
+      <div class="h">打错<b id="cErr">0</b></div>
+      <div class="h">模式<b id="cMode">默打</b></div>
+    </div>
+    <div class="typelines" id="codeLines"></div>
+    <input class="typein" id="codeIn" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" placeholder="打出当前这一行代码，回车确认">
+    <div class="flymsg" id="codeMsg"></div>
+  </div>
+</section>
+
+<section id="recall" class="screen">
+  <div class="topbar"><button class="btn ghost" onclick="go('home')">🏠 首页</button></div>
+  <div class="card">
+    <span class="badge" style="background:var(--purple)">🙈 遮一遮</span>
+    <h2>先在心里回答，再点开核对</h2>
+    <div id="recallList"></div>
+  </div>
+</section>
+
+<section id="memo" class="screen">
+  <div class="topbar"><button class="btn ghost" onclick="go('home')">🏠 首页</button><button class="btn ghost" onclick="window.print()">🖨 打印</button></div>
+  <div class="card memo">
+    <span class="badge yellow">📇 进考场前 3 分钟速记卡</span>
+    <div class="verse">cin 向右 cout 向左，<br>endl 换行分号收尾；<br>两个等号才相等，<br>先定义来再使用。</div>
+    <h3>一、考试规则</h3>
+    <ul>
+      <li><b>90 分钟，满分 100，60 分通过。</b></li>
+      <li>单选 15×2=30 分；判断 10×2=20 分；编程 2×25=50 分。</li>
+      <li>编程题<b>按步骤写会给步骤分</b>；头文件记不住<b>去选择题里找</b>。</li>
+    </ul>
+    <h3>二、必背框架（默写级）</h3>
+    <pre class="code">#include&lt;iostream&gt;
+using namespace std;
+int main()
+{
+    return 0;
+}</pre>
+    <h3>三、高频词</h3>
+    <ul>
+      <li><b>int</b> 定义整数变量：int a;　<b>double</b> 定义小数变量：double a;</li>
+      <li><b>cin</b> 输入：cin&gt;&gt;a;　<b>cout</b> 输出：cout&lt;&lt;a;　<b>endl</b> 换行。</li>
+    </ul>
+    <h3>四、易错点 8 条</h3>
+    <ul>
+      <li>cout 配 <b>&lt;&lt;</b>，cin 配 <b>&gt;&gt;</b>，方向别反。</li>
+      <li>判断相等用 <b>==</b>；一个 = 是赋值。</li>
+      <li>变量<b>先定义再使用</b>；语句结尾<b>英文分号</b>。</li>
+      <li>变量名：字母/数字/下划线，<b>不能数字开头</b>，不能用 int、if、for 等关键字。</li>
+      <li>乘 <b>*</b> 除 <b>/</b> 与数学写法不同；输出计算式<b>不加引号</b>。</li>
+      <li>运算顺序：先括号，再乘除，后加减（3+4*4=19，不是 28）。</li>
+      <li>两个 if 判断两次，if-else 只判断一次；else 后面<b>没有小括号</b>。</li>
+      <li>for（初始化；循环条件；i++）：中间的数字决定循环几次。</li>
+    </ul>
+  </div>
+</section>
+
+<section id="errbook" class="screen">
+  <div class="topbar"><button class="btn ghost" onclick="go('home')">🏠 首页</button></div>
+  <div class="card">
+    <span class="badge red">📒 错题本（<span id="errKidName">Kenton</span> 专属）</span>
+    <p class="sub">答错的题会住在这里，连对 2 次才能毕业。</p>
+    <div id="errList"></div>
+  </div>
+</section>
+
+</div>
+
+<div class="kid-overlay" id="kidPicker">
+  <div class="kid-panel">
+    <h2>今天谁来备考？</h2>
+    <p class="sub">进度、错题、卷面成绩完全分开</p>
+    <button class="kid-option kenton" type="button" data-kid="kenton">🦁 Kenton · 哥哥</button>
+    <button class="kid-option eddey" type="button" data-kid="eddey">🐯 Eddey · 弟弟</button>
+  </div>
+</div>
+<script>
+"use strict";
+const $=s=>document.querySelector(s);
+function go(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('on'));document.getElementById(id).classList.add('on');window.scrollTo(0,0);S.pages[id]=(S.pages[id]||0)+1;save();renderRec();}
+
+/* ===== 双人独立状态 ===== */
+const KIDS={kenton:{name:'Kenton',icon:'🦁',label:'哥哥'},eddey:{name:'Eddey',icon:'🐯',label:'弟弟'}};
+const APP={app:'hetao-ctl-prep-20260815',version:1};
+function storeKey(kid){return 'dd:'+kid+':hetao-ctl-prep-20260815:v1'}
+function freshState(kid){return {app:APP.app,version:APP.version,child:kid,pages:{},events:[],err:[],mockBest:{},typeDone:{},codeDone:{}}}
+function safeState(value,kid){
+  if(!value||typeof value!=='object')return null;
+  if(value.app!==APP.app||value.version!==APP.version||value.child!==kid)return null;
+  const s=freshState(kid);
+  s.pages=value.pages&&typeof value.pages==='object'?value.pages:{};
+  s.events=Array.isArray(value.events)?value.events:[];
+  s.err=Array.isArray(value.err)?value.err.filter(e=>e&&typeof e.q==='string'&&Array.isArray(e.opts)):[];
+  s.mockBest=value.mockBest&&typeof value.mockBest==='object'?value.mockBest:{};
+  s.typeDone=value.typeDone&&typeof value.typeDone==='object'?value.typeDone:{};
+  s.codeDone=value.codeDone&&typeof value.codeDone==='object'?value.codeDone:{};
+  return s;
+}
+let child='kenton';
+function load(kid){try{return safeState(JSON.parse(localStorage.getItem(storeKey(kid))),kid)||freshState(kid)}catch(e){return freshState(kid)}}
+let S=load(child);
+function save(){try{localStorage.setItem(storeKey(child),JSON.stringify(S))}catch(e){}}
+function ev(kind,note){S.events.push({t:Date.now(),kind,note});if(S.events.length>200)S.events=S.events.slice(-200);save();renderRec();}
+function setKid(kid,{silent}={}){if(!KIDS[kid])return;child=kid;S=load(kid);
+  try{localStorage.setItem('dd:hetao-ctl-prep-20260815:lastkid',kid)}catch(e){}
+  const c=KIDS[kid];$('#kidSwitch').textContent=c.icon+' '+c.name;
+  $('#recKidName').textContent=c.name;$('#errKidName').textContent=c.name;
+  renderRec();renderErr();
+  if(typeof renderTypeList==='function')renderTypeList();
+  if(typeof renderPaperList==='function')renderPaperList();
+  if(typeof renderCodeList==='function')renderCodeList();
+  if(!silent)ev('kid','切换到 '+c.name);}
+function initKid(){const req=new URLSearchParams(location.search).get('who');
+  let kid=req==='eddey'||req==='kenton'?req:null;
+  if(!kid){try{const k=localStorage.getItem('dd:hetao-ctl-prep-20260815:lastkid');if(KIDS[k])kid=k}catch(e){}}
+  setKid(kid||'kenton',{silent:true});}
+$('#kidSwitch').addEventListener('click',()=>$('#kidPicker').classList.add('show'));
+document.querySelectorAll('.kid-option').forEach(b=>b.addEventListener('click',()=>{$('#kidPicker').classList.remove('show');setKid(b.dataset.kid);}));
+
+function renderRec(){const el=$('#recInfo');if(!el)return;
+  const n=Object.keys(S.pages||{}).length;
+  const bests=Object.entries(S.mockBest||{}).map(([k,v])=>k+' '+v+'分').join(' · ');
+  el.textContent=n?('已闯 '+n+' 个页面'+(bests?' · 真题最佳：'+bests:'')+(Object.keys(S.codeDone).length?' · 编程默打过关 '+Object.values(S.codeDone).filter(v=>v==='blind').length+'/10':'')):'还没有记录，快开始吧！';}
+function recExport(kind){const t=kind==='json'?JSON.stringify(S,null,2):(function(){
+  const L=['# 学习记录 · hetao-ctl-prep-20260815','孩子：'+child,'真题最佳：'+JSON.stringify(S.mockBest),'','## 事件'];
+  S.events.forEach(e=>{L.push('- '+new Date(e.t).toLocaleString()+' · '+e.kind+(e.note?(' · '+e.note):''))});return L.join('\n')})();
+  const ta=$('#recBox');ta.value=t;ta.style.display='block';}
+function recImport(){const ta=$('#recBox');try{const o=JSON.parse(ta.value);const c=safeState(o.state||o,child);
+  if(c){S=c;save();renderRec();renderErr();renderTypeList();renderPaperList();renderCodeList();alert('导入成功！');}else alert('格式不对（或不是当前孩子的记录），导入失败。');}catch(e){alert('格式不对，导入失败。');}}
+function confetti(){for(let i=0;i<26;i++){const s=document.createElement('span');s.className='confetti';
+  s.style.left=Math.random()*100+'vw';s.style.background=['#FFD93D','#3B82F6','#FF6B9D','#7AE582','#6B5BFF'][i%5];
+  s.style.animationDelay=(Math.random()*0.6)+'s';document.body.appendChild(s);setTimeout(()=>s.remove(),2600);}}
+function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}
+
+/* ===== 错题本（随孩子状态走） ===== */
+function errAdd(q){const f=S.err.find(x=>x.q===q.q);if(f)f.streak=0;else S.err.push({q:q.q,opts:q.opts,a:q.a,why:q.why,streak:0});save();renderErr();}
+function renderErr(){const ec=$('#errCount');if(ec)ec.textContent=S.err.length?('· '+S.err.length+' 题'):'';
+  const box=$('#errList');if(!box)return;
+  if(!S.err.length){box.innerHTML='<div class="explain on">📒 错题本空空如也，太棒了！去真题卷里挑战一下吧。</div>';return;}
+  box.innerHTML='';S.err.forEach((e,idx)=>{const d=document.createElement('div');d.className='card';
+    d.innerHTML='<b>'+esc(e.q)+'</b> <span class="badge yellow">连对 '+e.streak+'/2</span><div id="eOpts'+idx+'"></div><div class="explain" id="eExp'+idx+'"></div>';
+    box.appendChild(d);let lock=false;
+    e.opts.forEach((o,i)=>{const b=document.createElement('button');b.className='opt';
+      b.innerHTML=o.indexOf('\n')>-1?'<span class="optcode">'+esc(o)+'</span>':esc(o);
+      b.onclick=()=>{if(lock)return;lock=true;const oo=[...document.querySelectorAll('#eOpts'+idx+' .opt')];oo[e.a].classList.add('right');
+        $('#eExp'+idx).classList.add('on');
+        if(i===e.a){e.streak++;if(e.streak>=2){S.err.splice(idx,1);}$('#eExp'+idx).innerHTML='✅ 答对！'+(S.err[idx]&&S.err[idx].q===e.q?'再连对一次就毕业。':'🎓 已从错题本毕业！');}
+        else{b.classList.add('wrong');e.streak=0;$('#eExp'+idx).innerHTML='❌ '+esc(e.why||'');}
+        save();oo.forEach(x=>x.disabled=true);setTimeout(renderErr,1500);};
+      d.querySelector('#eOpts'+idx).appendChild(b);});});}
+
+/* ===== 第一关：规则小考官 ===== */
+const RULEQ=[
+ {q:'CTL 一级考试的时长是？',opts:['60 分钟','90 分钟','120 分钟'],a:1,why:'考试时长 90 分钟，满分 100，60 分通过。'},
+ {q:'考到多少分算通过？',opts:['100 分','80 分','60 分'],a:2,why:'60 分就通过！但我们要冲更高。'},
+ {q:'编程题一共占多少分？',opts:['20 分','30 分','50 分'],a:2,why:'编程 2 题 ×25 分 = 50 分，占半壁江山，必须练打字！'},
+ {q:'头文件背不下来怎么办？',opts:['空着不写','去选择题里面找，照抄','用中文写'],a:1,why:'官方技巧：去选择题里找 #include<iostream> 照抄。'},
+ {q:'编程题主函数部分怎么拿分？',opts:['只写最后一句','按步骤写，步骤有分','全写注释'],a:1,why:'定义变量→输入→计算/判断/循环→输出，一步一分。'}];
+let rq=0,rScore=0;
+function startRuleQuiz(){rq=0;rScore=0;renderRuleQ();}
+function renderRuleQ(){const box=$('#ruleQuizBox');
+  if(rq>=RULEQ.length){box.innerHTML='<div class="explain on">🎉 规则局得分 '+rScore+' / '+RULEQ.length+'。'+(rScore>=4?'规则全部搞懂，去练打字机！':'再把上面的规则卡看一遍。')+'</div>';
+    ev('rules','规则小考官 '+rScore+'/5');if(rScore===5)confetti();return;}
+  const q=RULEQ[rq];
+  box.innerHTML='<div class="tip"><b>第 '+(rq+1)+' / '+RULEQ.length+' 题：</b>'+esc(q.q)+'</div><div id="rOpts"></div><div class="explain" id="rExp"></div>';
+  let lock=false;
+  q.opts.forEach((o,i)=>{const b=document.createElement('button');b.className='opt';b.textContent=o;
+    b.onclick=()=>{if(lock)return;lock=true;const oo=[...document.querySelectorAll('#rOpts .opt')];oo[q.a].classList.add('right');
+      const exp=$('#rExp');exp.classList.add('on');
+      if(i===q.a){rScore++;exp.innerHTML='✅ '+esc(q.why);}else{b.classList.add('wrong');exp.innerHTML='❌ '+esc(q.why);errAdd(q);}
+      oo.forEach(x=>x.disabled=true);setTimeout(()=>{rq++;renderRuleQ();},1400);};
+    $('#rOpts').appendChild(b);});}
+
+/* ===== 通用打字引擎 ===== */
+function makeTyper(els,lines,onDone){
+  const session={active:true,idx:0,stop(){session.active=false;}};
+  let errs=0,t0=Date.now(),timer=null;
+  function draw(){
+    els.prog.textContent=session.idx+'/'+lines.length;
+    els.time.textContent=Math.floor((Date.now()-t0)/1000)+'s';
+    if(els.customDraw)els.customDraw();
+    else els.lines.innerHTML=lines.map((ln,i)=>{
+      if(i<session.idx)return '<span class="tl-done">'+esc(ln)+'</span>';
+      if(i===session.idx)return '<span class="tl-now" id="'+els.nowId+'">'+esc(ln)+'</span>';
+      return '<span class="tl-todo">'+esc(ln)+'</span>';}).join('\n');
+    els.in.value='';}
+  function paintNow(){
+    if(!session.active)return;
+    const cur=$('#'+els.nowId);if(!cur)return;
+    const target=lines[session.idx].trim(),val=els.in.value;
+    let html='';
+    for(let i=0;i<target.length;i++){
+      const ch=target[i];
+      if(i<val.length)html+='<span class="'+(val[i]===ch?'ok':'bad')+'">'+esc(ch)+'</span>';
+      else html+=esc(ch);}
+    if(val.length>target.length)html+='<span class="bad">'+esc(val.slice(target.length))+'</span>';
+    cur.innerHTML=html;}
+  els.in.addEventListener('input',paintNow);
+  els.in.addEventListener('keydown',e=>{
+    if(!session.active)return;
+    if(e.key!=='Enter')return;e.preventDefault();
+    if(els.in.value.trim()===lines[session.idx].trim()){
+      session.idx++;els.msg.textContent=session.idx>=lines.length?'':'✅ 第 '+session.idx+' 行过关！';
+      if(session.idx>=lines.length){session.active=false;clearInterval(timer);const sec=Math.floor((Date.now()-t0)/1000);
+        els.msg.textContent='🎉 全部打对！用时 '+sec+' 秒，打错 '+errs+' 次。';
+        if(els.customDraw)els.customDraw();
+        else els.lines.innerHTML=lines.map(ln=>'<span class="tl-done">'+esc(ln)+'</span>').join('\n');
+        els.prog.textContent=lines.length+'/'+lines.length;
+        confetti();onDone({errs,sec});}
+      else draw();}
+    else{errs++;els.err.textContent=errs;els.in.classList.add('err');
+      els.msg.textContent='❌ 有地方不一样——对着上面找，红的就是错处。';
+      setTimeout(()=>els.in.classList.remove('err'),350);paintNow();}});
+  timer=setInterval(()=>{if(session.active)els.time.textContent=Math.floor((Date.now()-t0)/1000)+'s'},1000);
+  draw();
+  return session;
+}
+
+/* ===== 第二关：必背框架打字机 ===== */
+const TYPESETS=[
+ {id:'frame',icon:'🧱',title:'程序基础框架（6 行·默写级）',desc:'#include 到头文件，main 大括号，return 0 收尾',
+  lines:['#include<iostream>','using namespace std;','int main()','{','    return 0;','}']},
+ {id:'words',icon:'🔤',title:'高频词五连打（int/double/cin/cout/endl）',desc:'选择题拿分+编程题起手全靠它们',
+  lines:['int a;','double a;','cin>>a;','cout<<a;','cout<<a<<endl;']},
+ {id:'calc',icon:'🧮',title:'第 1 类大题 · 简单计算框架',desc:'三步法：定义变量→输入数据→计算输出',
+  lines:['int a;','cin>>a;','cout<<a*5<<endl;']},
+ {id:'ifelse',icon:'🚦',title:'第 2 类大题 · if-else 框架（过山车）',desc:'if 在前 else 在后，else 后面没有小括号',
+  lines:['int a;','cin>>a;','if(a>9)','{','    cout<<"yes"<<endl;','}','else','{','    cout<<"no"<<endl;','}']},
+ {id:'for',icon:'🔁',title:'第 3 类大题 · for 循环框架（摩天轮）',desc:'for(初始化;循环条件;i++)，中间数字决定循环几次',
+  lines:['for(int i=1;i<=7;i++)','{','    cout<<"m"<<endl;','}']}];
+let typerSession=null;
+function renderTypeList(){if(typerSession)typerSession.active=false;typerSession=null;$('#typeArena').style.display='none';$('#typeList').style.display='';
+  const box=$('#typeList');box.innerHTML='';
+  TYPESETS.forEach(s=>{const done=S.typeDone[s.id];
+    const b=document.createElement('button');b.className='btn '+(done?'green':'blue');
+    b.innerHTML='<span class="ico">'+s.icon+'</span><span style="text-align:left">'+esc(s.title)+'<br><span class="paperbest">'+(done?('🏆 已通关 · 最好 '+done.sec+'s / 错 '+done.errs+' 次 · 点击再练'):esc(s.desc))+'</span></span>';
+    b.onclick=()=>startType(s);box.appendChild(b);});}
+function startType(s){$('#typeList').style.display='none';$('#typeArena').style.display='';
+  $('#typeTitle').textContent=s.icon+' '+s.title;
+  $('#tErr').textContent='0';$('#typeMsg').textContent='';
+  typerSession=makeTyper({lines:$('#typeLines'),in:$('#typeIn'),prog:$('#tProg'),err:$('#tErr'),time:$('#tTime'),msg:$('#typeMsg'),nowId:'tlNow'},
+    s.lines,r=>{const prev=S.typeDone[s.id];
+      if(!prev||r.sec<prev.sec)S.typeDone[s.id]={sec:r.sec,errs:r.errs};
+      save();ev('type',s.title+' 打对（'+r.sec+'s/错'+r.errs+'）');renderTypeList();$('#typeArena').style.display='';});}
+</script>
+<script>
+"use strict";
+/* ===== 第三关：三套真题卷 ===== */
+/* t:'mc' 单选 / 'tf' 判断；code 为题目代码块；选项含 \n 时用等宽多行渲染 */
+const PAPERS=[
+{id:'p1',name:'真题卷 1',qs:[
+ {t:'mc',q:'下列哪一项，可以实现将数据输入到变量 a 中？',opts:['cout << a;','cin >> a;','int a;','double a;'],a:1,why:'cin >> a; 从终端读取数据存入 a；cout 是输出，int/double 是定义变量。'},
+ {t:'mc',q:'执行下列代码后在终端区会输出什么？',code:'cout << "a";\ncout << "p";\ncout << "p";',opts:['a','ap','pp','app'],a:3,why:'cout 依次输出 a、p、p，没有 endl 不换行，所以是 app。'},
+ {t:'mc',q:'要判断变量 a 是否大于 20，在 if 语句条件处应该填写？',code:'if (_____)\n{\n    cout << "ok" << endl;\n}',opts:['a>20','a<20','a>=20','a==20'],a:0,why:'大于 20 就是 a>20；>= 是大于等于，== 是等于。'},
+ {t:'mc',q:'下列哪一项的代码语句能正确定义整型变量 a？',opts:['a int;','int a;','int a','a int'],a:1,why:'格式是 int 变量名; C 缺分号，A、D 顺序反了。'},
+ {t:'mc',q:'执行下列代码后，输入 9，终端区会输出什么？',code:'int num;\ncin >> num;\nif (num > 5)\n{\n    cout << "yes" << endl;\n}\nelse\n{\n    cout << "no" << endl;\n}',opts:['yes','no','yes\nno','无输出'],a:0,why:'9>5 成立，走 if 大括号输出 yes。'},
+ {t:'mc',q:'下列哪个选项可以输出 3 行 "good night"？',opts:['for(int i = 1; i <= 3; i++)\n{\n    cout << "good night" << endl;\n}','for int i = 1; i <= 3; i++\n{\n    cout << "good night" << endl;\n}','for(int i = 1; i <= 3; i++)\n{\n    cout << "good night" << endl\n}','for(int i = 1; i <=   ; i++)\n{\n    cout << "good night" << endl;\n}'],a:0,why:'B 的 for 后缺小括号；C 缺分号；D 循环条件没写数字。'},
+ {t:'mc',q:'在 C++，乘法运算 3×2 可以写作？',opts:['3·2','3/2','3x2','3*2'],a:3,why:'C++ 乘号是 *，除号是 /，和数学写法不同。'},
+ {t:'mc',q:'执行下面代码，依次输入 7 和 3，最终输出结果是？',code:'int a, b;\ncin >> a;\ncin >> b;\ncout << a-b << endl;',opts:['2','3','4','5'],a:2,why:'a-b = 7-3 = 4，计算式不加引号会直接算出结果。'},
+ {t:'mc',q:'运行下列代码后，会依次输出哪些内容？',code:'for(int i=1;i<=2;i++)\n{\n    cout << "f";\n    cout << "tl";\n}',opts:['ftl','ftlftl','fftltl','tlftlf'],a:1,why:'循环 2 次，每次输出 f 再输出 tl：ftlftl。'},
+ {t:'mc',q:'运行代码后，终端区会输出什么内容？',code:'for(int i=1;i<=2;i++)\n{\n    cout << "l" << endl;\n    cout << "a" << endl;\n}\ncout << "a" << endl;',opts:['l\na\na','l\na\nl\na\na','l\na\nl\na','l\nl\na\na\na'],a:1,why:'循环里各输出 2 次 l 和 a（交替），循环外再补一个 a。'},
+ {t:'mc',q:'下列哪一项能够表示小数类型？',opts:['int','double','cin','cout'],a:1,why:'double 定义小数型变量，也能存整数。'},
+ {t:'mc',q:'想要让程序运行后输出 fffftl，横线上的代码应该填？',code:'for(int i=1;______;i++)\n{\n    cout<<"f";\n}\ncout<<"tl";',opts:['i<=3','i<=4','i<4','i=4'],a:1,why:'ffff 是 4 个 f，循环 4 次：i<=4（i<4 只循环 3 次）。'},
+ {t:'mc',q:'运行程序，输入 1 后，程序会输出？',code:'int a;\ncin>>a;\nif(a>=2)\n{\n    cout<<"f";\n}\nif(a<=5)\n{\n    cout<<"tl";\n}',opts:['f','tl','tlf','ftl'],a:1,why:'1>=2 不成立跳过 f；1<=5 成立输出 tl。两个 if 各判断一次。'},
+ {t:'mc',q:'运行程序，输入 3 后，程序会输出？',code:'int a;\ncin>>a;\nif(a>=2)\n{\n    cout<<"f";\n}\nif(a<=5)\n{\n    cout<<"tl";\n}',opts:['f','tl','tlf','ftl'],a:3,why:'3>=2 输出 f，3<=5 输出 tl，两个都成立：ftl。'},
+ {t:'mc',q:'在横线处填写（ ），输入 5 之后，程序会输出 wahaha？',code:'int a;\ncin >> a;\nif(a>3)\n{\n    cout<<"w";\n    cout<<"a";\n}\nfor(int i=1;_____;i++)\n{\n    cout<<"h";\n    cout<<"a";\n}',opts:['i<=2','i<=3','i<2','i=2'],a:0,why:'if 输出 wa，还要 haha 两次，循环 2 次：i<=2。'},
+ {t:'tf',q:'#a 可以作为变量名。',a:1,why:'变量名只能含字母、数字、下划线，# 不行。'},
+ {t:'tf',q:'* 是 C++ 中的乘法运算。',a:0,why:'C++ 乘号是 *，数学的 × 不能写进代码。'},
+ {t:'tf',q:'= 在 C++ 中用于判断两个数或两个变量是否相等。',a:1,why:'判断相等用 ==；一个 = 是赋值。'},
+ {t:'tf',q:'cin 是 C++ 中的输出指令。',a:1,why:'cin 是输入，cout 才是输出。'},
+ {t:'tf',q:'C++ 代码 cout << 2*3; 输出的结果是 2*3。',a:1,why:'不加引号会直接计算，输出 6。'},
+ {t:'tf',q:'C++ 代码 int a; a=5; 是将 5 赋值给变量 a。',a:0,why:'先定义 int a; 再用 = 赋值 5，正确。'},
+ {t:'tf',q:'表达式 3 + 4 * 4 的计算结果是 28。',a:1,why:'先乘除后加减：4*4=16，3+16=19。'},
+ {t:'tf',q:'C++ 代码 int a, b; cin >> a >> b; 可以依次读取两个整数。',a:0,why:'cin 可以连续 >> 读入多个变量。'},
+ {t:'tf',q:'执行以下程序，输入的值为 5，字母 a 会出现在终端区。',code:'int a;\ncin>>a;\nif(a>5)\n{\n    cout<<"a"<<endl;\n}\nif(a>3)\n{\n    cout<<"b"<<endl;\n}\nif(a<7)\n{\n    cout<<"c"<<endl;\n}',a:1,why:'5>5 不成立，不会输出 a（会输出 b 和 c）。'},
+ {t:'tf',q:'下列程序会输出 3 行 put。',code:'for(int i=1;i<=3;i++)\n{\n    cout<<"put"<<endl;\n}',a:0,why:'i 从 1 到 3 循环 3 次，每次一行 put。'}]},
+{id:'p2',name:'真题卷 2',qs:[
+ {t:'mc',q:'下列哪一项可以实现将数据输出到终端？',opts:['cin >> a;','cout << a;','int a;','double a;'],a:1,why:'cout 是输出，cin 是输入。'},
+ {t:'mc',q:'执行下列代码后，在终端区会输出什么？',code:'cout << "h";\ncout << "e";\ncout << "l";\ncout << "l";\ncout << "o";',opts:['h','hello','hell','o'],a:1,why:'没有 endl 不换行，h-e-l-l-o 连起来是 hello。'},
+ {t:'mc',q:'若有变量定义 int a = 5, b = 3;，则表达式 a * b 的结果是？',opts:['5','3','15','10'],a:2,why:'a*b = 5×3 = 15。'},
+ {t:'mc',q:'要判断变量 score 是否等于 100，在 if 语句条件处应该填写？',code:'if(_______)\n{\n    cout<<"nice"<<endl;\n}',opts:['score>100','score<100','score>=100','score==100'],a:3,why:'判断相等用 ==：score==100。'},
+ {t:'mc',q:'执行下列代码后，输入 18，终端区会输出什么？',code:'int age;\ncin >> age;\nif (age >= 18)\n{\n    cout << "成年" << endl;\n}\nelse\n{\n    cout << "未成年" << endl;\n}',opts:['成年','未成年','成年未成年','无输出'],a:0,why:'18>=18 成立（>= 包含等于），输出成年。'},
+ {t:'mc',q:'执行下面代码，依次输入 12 和 4，最终输出结果是？',code:'int a, b;\ncin >> a;\ncin >> b;\ncout << a * b << endl;',opts:['3','4','12','48'],a:3,why:'a*b = 12×4 = 48。'},
+ {t:'mc',q:'在 C++ 中，求乘法运算 10×3 可以写作？',opts:['10+3','10-3','10*3','10/3'],a:2,why:'乘号是 *：10*3。'},
+ {t:'mc',q:'下列代码执行后，x 的值是？',code:'int x = 10;\nif (x > 5)\n{\n    x = x + 5;\n}\nelse\n{\n    x = x - 5;\n}',opts:['5','10','15','20'],a:2,why:'10>5 成立，x=10+5=15。'},
+ {t:'mc',q:'下列关于 cin 的使用，正确的是？',opts:['cin >> a, b;','cin < a;','cin >> a >> b;','cin > a;'],a:2,why:'cin 配合 >>，可以连续读多个变量。'},
+ {t:'mc',q:'以下 for 循环的执行次数是？',code:'for (int i = 1; i <= 5; i++)\n{\n    cout << i;\n}',opts:['4 次','5 次','6 次','无限次'],a:1,why:'i 从 1 到 5，循环 5 次。'},
+ {t:'mc',q:'运行下列代码后，会依次输出哪些内容？',code:'for(int i=1;i<=3;i++)\n{\n    cout<<"f";\n    cout<<"j";\n}',opts:['fjfjfj','fffjjj','jfjfjf','jjjfff'],a:0,why:'循环 3 次，每次 fj：fjfjfj。'},
+ {t:'mc',q:'运行代码后，终端区会输出什么内容？',code:'for(int i=1;i<=2;i++)\n{\n    cout<<"A";\n    cout<<"B";\n}\ncout<<"C";',opts:['ABC','ABABC','ABAB','AABBC'],a:1,why:'循环输出 ABAB，循环外再输出 C：ABABC。'},
+ {t:'mc',q:'想要让程序运行后输出 123123123，横线上的代码应该填？',code:'for(int i=1;______;i++)\n{\n    cout<<"123";\n}',opts:['i<=3','i<=4','i<3','i=3'],a:0,why:'123 重复 3 次，循环 3 次：i<=3。'},
+ {t:'mc',q:'在横线处填写（ ），输入 4 之后，程序会输出 @@@@？',code:'int n;\ncin >> n;\nif(n>2)\n{\n    for(int i=1;_____;i++)\n    {\n        cout<<"@";\n    }\n}',opts:['i<=4','i<=3','i<4','i=4'],a:0,why:'@@@@ 是 4 个，循环 4 次：i<=4。'},
+ {t:'mc',q:'运行程序，输入 15 后，程序会输出？',code:'int t;\ncin>>t;\nif(t>30)\n{\n    cout<<"hot";\n}\nif(t<=20)\n{\n    cout<<"cold";\n}',opts:['hot','cold','hotcold','无输出'],a:1,why:'15>30 不成立；15<=20 成立，输出 cold。'},
+ {t:'tf',q:'+ 是 C++ 中的加法运算。',a:0,why:'+ 就是加法。'},
+ {t:'tf',q:'int 类型变量可以存储小数。',a:1,why:'int 只能存整数，小数要用 double。'},
+ {t:'tf',q:'cout 是 C++ 中的输入指令。',a:1,why:'cout 是输出，cin 是输入。'},
+ {t:'tf',q:'C++ 代码 cout << 5+3; 输出的结果是 8。',a:0,why:'不加引号直接计算，5+3=8，正确。'},
+ {t:'tf',q:'表达式 2 + 3 * 4 的计算结果是 24。',a:1,why:'先乘后加：3*4=12，2+12=14。'},
+ {t:'tf',q:'C++ 代码 int a; 是定义了一个整数型变量 a。',a:0,why:'int a; 就是定义整型变量 a。'},
+ {t:'tf',q:'1234int 可以作为变量名。',a:1,why:'变量名不能用数字开头。'},
+ {t:'tf',q:'C++ 代码 int price; price=12; 是将 12 赋值给变量 price。',a:0,why:'先定义再赋值，正确。'},
+ {t:'tf',q:'下列程序会输出 3 行 "OK"。',code:'for(int i=1;i<=3;i++)\n{\n    cout<<"OK"<<endl;\n}',a:0,why:'循环 3 次，每次一行 OK。'},
+ {t:'tf',q:'执行以下程序，输入的值为 25，字母 A 会出现在终端区。',code:'int score;\ncin>>score;\nif(score>=90)\n{\n    cout<<"A"<<endl;\n}\nif(score>=80)\n{\n    cout<<"B"<<endl;\n}\nif(score>=70)\n{\n    cout<<"C"<<endl;\n}',a:1,why:'25 三个条件都不成立，什么都不输出。'}]},
+{id:'p3',name:'真题卷 3',qs:[
+ {t:'mc',q:'下列哪一项，可以在终端区输出 welcome？',opts:['cout << "welcome";','cout "welcome";','cout << welcome;','cout << "welcome"'],a:0,why:'字符串要加双引号，cout 配 <<，语句结尾加分号。'},
+ {t:'mc',q:'C++ 中，哪个指令可以实现换行功能？',opts:['int','cin','cout','endl'],a:3,why:'endl 表示换行。'},
+ {t:'mc',q:'cin 语句的作用是？',opts:['开始','换行','结束','输入'],a:3,why:'cin 是输入命令。'},
+ {t:'mc',q:'在 C++ 中，减法运算的符号是？',opts:['+','-','*','/'],a:1,why:'减法是 -。'},
+ {t:'mc',q:'执行下列代码后，在终端区会输出什么？',code:'cout << "b" << endl;\ncout << "i" << endl;\ncout << "r" << endl;\ncout << "d" << endl;',opts:['b\ni\nr\nd','bi\nrd','b\ni\nr\nbir\nd','bird'],a:0,why:'每句都有 endl，b/i/r/d 各占一行。'},
+ {t:'mc',q:'哪一项可以表示"如果变量 a 的值大于 3，那么输出 no"？',opts:['if a>3\n{\n    cout<<"no"<<endl;\n}','if(a>3)\n{\n    cout<<"no"<<endl;\n}','if(a<3)\n{\n    cout<<"no"<<endl;\n}','if(a==3)\n{\n    cout<<"no"<<endl;\n}'],a:1,why:'条件要用小括号括起来，且是大于 a>3。'},
+ {t:'mc',q:'运行程序，输入 3 后，终端输出的内容是什么？',code:'int a;\ncin>>a;\ncout<<"good"<<endl;\nif(a<5)\n{\n    cout<<"morning"<<endl;\n}',opts:['good','morning','good\nmorning','goodmorning'],a:2,why:'先输出 good 换行；3<5 成立再输出 morning。'},
+ {t:'mc',q:'想要判断变量 a 和变量 b 的乘积是否大于 50，横线处可以填写？',code:'if(_______)\n{\n    cout<<"f"<<endl;\n}',opts:['a+b>50','a-b>50','a*b>50','a/b>50'],a:2,why:'乘积用 *：a*b>50。'},
+ {t:'mc',q:'执行下列代码，依次输入 9 和 3，最终输出的结果为？',code:'int a;\ncin>>a;\nint b;\ncin>>b;\ncout<<a-b<<endl;',opts:['3','6','9','12'],a:1,why:'a-b = 9-3 = 6。'},
+ {t:'mc',q:'在 C++ 中，定义/声明整数变量 age 的正确写法是？',opts:['int age;','int age','age int','age int;'],a:0,why:'int 变量名; 别忘分号。'},
+ {t:'mc',q:'下列代码运行完毕后，会依次输出哪些内容？',code:'for(int i=1;i<=3;i++)\n{\n    cout<<"h";\n    cout<<"i";\n}\ncout<<"!";',opts:['hihihi','hihihi!','hi!','hi'],a:1,why:'循环输出 hihihi，循环外补一个 !。'},
+ {t:'mc',q:'下列哪个选项能正确输出 3 行 "play game"？',opts:['for int i=1;i<=3;i++\n{\n    cout<<"play game"<<endl;\n}','for(int i=1;i<=3;i++)\n{\n    cout<<"play game"<<endl;\n}','for(int i=1;i<=3;i++)\n{\n    cout<<"play game"<<endl\n}','for(int i=1;i<= ;i++)\n{\n    cout<<"play game"<<endl;\n}'],a:1,why:'A 缺小括号，C 缺分号，D 条件没写数字。'},
+ {t:'mc',q:'运行这段代码后，终端区会输出什么内容？',code:'cout<<"b";\nfor(int i=1;i<=2;i++)\n{\n    cout<<"a";\n    cout<<"n";\n}\ncout<<"a";',opts:['bana','anan','anana','banana'],a:3,why:'b + anan + a = banana。'},
+ {t:'mc',q:'运行程序，输入 10 后，程序会依次输出？',code:'int a;\ncin>>a;\nif(a>=5)\n{\n    cout<<"f";\n}\nif(a>=9)\n{\n    cout<<"tl";\n}',opts:['f','tl','tlf','ftl'],a:3,why:'10>=5 输出 f，10>=9 输出 tl：ftl。'},
+ {t:'mc',q:'在横线处填写（ ），输入 3 之后，程序会输出 cool？',code:'int a;\ncin>>a;\nif(a>1)\n{\n    cout<<"c";\n}\nfor(int i=1;_____;i++)\n{\n    cout<<"o";\n}\ncout<<"l";',opts:['i<=2','i<=3','i<2','i=2'],a:0,why:'c + oo + l，o 要 2 次：i<=2。'},
+ {t:'tf',q:'执行程序 for(int i=1;i<=3;i++){cout<<i<<" ";} 后，输出结果为 1 2 3。',a:0,why:'i 从 1 到 3，依次输出 1 2 3（带空格）。'},
+ {t:'tf',q:'double 类型的变量只能存储小数，不能存储整数。',a:1,why:'double 既能存小数也能存整数。'},
+ {t:'tf',q:'for 是 C++ 中的循环关键字。',a:0,why:'for 是循环关键字，也是变量名禁用的关键字。'},
+ {t:'tf',q:'如果 a 是整型变量，且条件（a>9 && a<100）成立，可以说明 a 是一个两位数。',a:0,why:'大于 9 且小于 100 的整数正是两位数（10~99）。'},
+ {t:'tf',q:'表达式 9-2*2 的计算结果是 5。',a:0,why:'先乘后减：2*2=4，9-4=5，正确。'},
+ {t:'tf',q:'C++ 代码 int a, b; cin >> a >> b; 可以依次读取两个整数。',a:0,why:'cin 连续 >> 可以依次读入 a 和 b。'},
+ {t:'tf',q:'执行程序（输入 7）：if(a>=5) 输出 f，if(a<=9) 输出 j，输出结果为 fj。',a:0,why:'7>=5 输出 f，7<=9 输出 j：fj，正确。'},
+ {t:'tf',q:'int66 不能作为变量名。',a:1,why:'int66 字母开头、只含字母数字，可以作为变量名，这句话是错的。'},
+ {t:'tf',q:'没有 else 语句时，if 语句可以单独使用。',a:0,why:'if 可以单独用，else 不是必须的。'},
+ {t:'tf',q:'如果想要判断两个变量的值是否相等，可以使用关系运算符 ==。',a:0,why:'判断相等就用 ==。'}]}];
+
+let mq=0,mScore=0,mPaper=null;
+function renderPaperList(){$('#mockHome').style.display='';$('#mockArena').style.display='none';
+  const box=$('#paperList');box.innerHTML='';
+  PAPERS.forEach(p=>{const best=S.mockBest[p.id];
+    const b=document.createElement('button');b.className='btn blue';
+    b.innerHTML='<span class="ico">📝</span><span style="text-align:left">'+esc(p.name)+'（15 单选 + 10 判断）<br><span class="paperbest">'+(best!=null?('🏆 最好成绩 '+best+' / 50 分 · 点击再考'):'还没考过 · 点击开考')+'</span></span>';
+    b.onclick=()=>startMock(p);box.appendChild(b);});}
+function startMock(p){mPaper=p;mq=0;mScore=0;$('#mockHome').style.display='none';$('#mockArena').style.display='';renderMockQ();}
+function quitMock(){mPaper=null;renderPaperList();ev('mock','中途退出');}
+function renderMockQ(){
+  if(mq>=mPaper.qs.length){const score=mScore*2;
+    const prev=S.mockBest[mPaper.id];
+    if(prev==null||score>prev)S.mockBest[mPaper.id]=score;
+    save();ev('mock',mPaper.name+' 得分 '+score+'/50');
+    if(score>=40)confetti();
+    $('#mockProg').style.width='100%';$('#mockNum').textContent='完成';
+    $('#mockCard').innerHTML='<h2>🎉 '+esc(mPaper.name)+' 交卷！得分 '+score+' / 50</h2>'+
+      '<div class="explain on">'+(score>=40?'太棒了！选择判断这部分稳了，剩下 50 分编程题去第四关拿下！':'错题都进错题本了，连对 2 次让它们毕业，然后再考一次。')+'</div>'+
+      '<div class="btnrow" style="justify-content:center"><button class="btn green" onclick="go(\'errbook\')">📒 去错题本</button><button class="btn purple" onclick="go(\'coding\')">💻 去练编程题</button><button class="btn ghost" onclick="renderPaperList()">🔙 换一套</button></div>';
+    return;}
+  const q=mPaper.qs[mq];const total=mPaper.qs.length;
+  $('#mockNum').textContent=(mq+1)+' / '+total;$('#mockProg').style.width=(mq/total*100)+'%';
+  const kind=q.t==='mc'?'单选（2 分）':'判断（2 分）';
+  let html='<span class="badge blue">'+kind+'</span><h2 style="font-size:17px">'+esc(q.q)+'</h2>';
+  if(q.code)html+='<pre class="code">'+esc(q.code)+'</pre>';
+  html+='<div id="mOpts"></div><div class="explain" id="mExp"></div>';
+  $('#mockCard').innerHTML=html;
+  const opts=q.t==='tf'?['✓ 正确','✗ 错误']:q.opts;
+  let lock=false;
+  opts.forEach((o,i)=>{const b=document.createElement('button');b.className='opt';
+    b.innerHTML=o.indexOf('\n')>-1?'<span class="optcode">'+esc(o)+'</span>':esc(o);
+    b.onclick=()=>{if(lock)return;lock=true;
+      const oo=[...document.querySelectorAll('#mOpts .opt')];oo[q.a].classList.add('right');
+      const exp=$('#mExp');exp.classList.add('on');
+      if(i===q.a){mScore++;exp.innerHTML='✅ 答对！+2 分。'+esc(q.why);}
+      else{b.classList.add('wrong');exp.innerHTML='❌ '+esc(q.why);
+        errAdd({q:(q.t==='tf'?'【判断】':'【单选】')+q.q,opts:opts,a:q.a,why:q.why});
+        ev('mock','错：'+q.q);}
+      oo.forEach(x=>x.disabled=true);setTimeout(()=>{mq++;renderMockQ();},1500);};
+    $('#mOpts').appendChild(b);});}
+</script>
+<script>
+"use strict";
+/* ===== 第四关：编程题打字通关 ===== */
+const PROBS=[
+ {id:'c1',from:'真题卷 1 · 编程 1',title:'输出加油语 cheer up',
+  desc:'小张参加歌唱比赛，观众们会喊 "cheer up" 为他加油助威。请编写程序输出这句加油语。<br>【输出样例】cheer up',
+  hint:'💡 最简单题型：主函数里一句 cout 输出，字符串要加双引号。',
+  lines:['#include<iostream>','using namespace std;','int main()','{','    cout<<"cheer up"<<endl;','    return 0;','}']},
+ {id:'c2',from:'真题卷 1 · 编程 2',title:'购买 100 张课桌',
+  desc:'每张课桌 a 元，学校打算购买 100 张。输入一张课桌的价格 a，计算购买 100 张课桌的总花费。<br>【输入样例】20　【输出样例】2000',
+  hint:'💡 三步法：① int a; 定义 ② cin>>a; 输入 ③ cout<<a*100 计算输出。',
+  lines:['#include<iostream>','using namespace std;','int main()','{','    int a;','    cin>>a;','    cout<<a*100<<endl;','    return 0;','}']},
+ {id:'c3',from:'真题卷 1 · 编程 3',title:'碰碰车年龄判断',
+  desc:'碰碰车需要大于 12 岁才能玩。输入年龄 a，能玩输出 peng，否则输出 cannot。<br>【样例】输入 11 → cannot；输入 15 → peng',
+  hint:'💡 两种结果选 if-else：大于 12 岁用 a>12。严格按题目输出 peng / cannot。',
+  lines:['#include<iostream>','using namespace std;','int main()','{','    int a;','    cin>>a;','    if(a>12)','    {','        cout<<"peng"<<endl;','    }','    else','    {','        cout<<"cannot"<<endl;','    }','    return 0;','}']},
+ {id:'c4',from:'真题卷 1 · 编程 4',title:'喂 6 只小狗（for 循环）',
+  desc:'小乐家养了 6 只小狗，每喂食一只小狗输出一行 "dog"。要求使用循环结构实现。<br>【输出样例】6 行 dog',
+  hint:'💡 重复 6 次用 for：i<=6 决定循环 6 次，每次 cout<<"dog"<<endl;',
+  lines:['#include<iostream>','using namespace std;','int main()','{','    for(int i=1;i<=6;i++)','    {','        cout<<"dog"<<endl;','    }','    return 0;','}']},
+ {id:'c5',from:'真题卷 2 · 编程 1',title:'一周跑步总公里数',
+  desc:'小明计划每周跑步 5 天。输入每天跑步的公里数 a（整数），计算并输出一周跑步的总公里数。<br>【输入样例】3　【输出样例】15',
+  hint:'💡 三步法：a*5 就是一周总公里数。',
+  lines:['#include<iostream>','using namespace std;','int main()','{','    int a;','    cin>>a;','    cout<<a*5<<endl;','    return 0;','}']},
+ {id:'c6',from:'真题卷 2 · 编程 2',title:'漂流年龄判断（大于等于）',
+  desc:'漂流项目大于等于 14 岁才能玩。输入年龄 a，能玩输出 yes，否则输出 no。<br>【样例】输入 12 → no；输入 15 → yes',
+  hint:'💡 注意是"大于等于"：a>=14，等号不能丢！',
+  lines:['#include<iostream>','using namespace std;','int main()','{','    int a;','    cin>>a;','    if(a>=14)','    {','        cout<<"yes"<<endl;','    }','    else','    {','        cout<<"no"<<endl;','    }','    return 0;','}']},
+ {id:'c7',from:'真题卷 3 · 编程 1',title:'输出口号 victory',
+  desc:'运动会开幕式上全体学生齐喊 "victory"。请编写程序输出这句口号。<br>【输出样例】victory',
+  hint:'💡 一句 cout 搞定，字符串加双引号。',
+  lines:['#include<iostream>','using namespace std;','int main()','{','    cout<<"victory"<<endl;','    return 0;','}']},
+ {id:'c8',from:'真题卷 3 · 编程 2',title:'采购 60 支铅笔',
+  desc:'班级要采购 60 支铅笔。输入一支铅笔的价格 p，计算购买 60 支铅笔的总花费。<br>【样例】输入 1 → 60；输入 2 → 120',
+  hint:'💡 三步法，变量名是 p：p*60。',
+  lines:['#include<iostream>','using namespace std;','int main()','{','    int p;','    cin>>p;','    cout<<p*60<<endl;','    return 0;','}']},
+ {id:'c9',from:'真题卷 3 · 编程 3',title:'游泳还是爬山',
+  desc:'输入温度 t，如果温度大于 30 度输出 swim，否则输出 climb。<br>【样例】输入 20 → climb；输入 33 → swim',
+  hint:'💡 if-else：大于 30 用 t>30；变量名是 t。',
+  lines:['#include<iostream>','using namespace std;','int main()','{','    int t;','    cin>>t;','    if(t>30)','    {','        cout<<"swim"<<endl;','    }','    else','    {','        cout<<"climb"<<endl;','    }','    return 0;','}']},
+ {id:'c10',from:'真题卷 3 · 编程 4',title:'喂 8 只鸭子（for 循环）',
+  desc:'农场里有 8 只鸭子，每喂食一只鸭子输出一行 "duck"。要求使用循环结构实现。<br>【输出样例】8 行 duck',
+  hint:'💡 重复 8 次：i<=8。',
+  lines:['#include<iostream>','using namespace std;','int main()','{','    for(int i=1;i<=8;i++)','    {','        cout<<"duck"<<endl;','    }','    return 0;','}']}];
+let codeSession=null,curProb=null,peek=false;
+function renderCodeList(){if(codeSession)codeSession.active=false;codeSession=null;
+  $('#codeHome').style.display='';$('#codeArena').style.display='none';
+  const box=$('#codeList');box.innerHTML='';
+  PROBS.forEach(p=>{const done=S.codeDone[p.id];
+    const b=document.createElement('button');b.className='btn '+(done==='blind'?'green':'blue');
+    const tag=done==='blind'?'🏆 已默打过关 · 点击再练':(done==='peek'?'👀 照打完成 · 挑战默打':'点击开始');
+    b.innerHTML='<span class="ico">💻</span><span style="text-align:left">'+esc(p.title)+'<br><span class="paperbest">'+esc(p.from)+' · '+tag+'</span></span>';
+    b.onclick=()=>startCode(p);box.appendChild(b);});}
+function togglePeek(){peek=!peek;
+  $('#codePeek').textContent=peek?'🙈 遮住答案':'👀 看答案';
+  $('#cMode').textContent=peek?'照打':'默打';
+  drawCodeLines();}
+function drawCodeLines(){
+  const lines=curProb.lines,idx=codeSession?codeSession.idx:0;
+  $('#codeLines').innerHTML=lines.map((ln,i)=>{
+    const shown=peek?esc(ln):(i<idx?esc(ln):'　　　　<span style="font-size:11px">（第 '+(i+1)+' 行 · 共 '+ln.trim().length+' 个字符）</span>');
+    if(i<idx)return '<span class="tl-done">'+esc(ln)+'</span>';
+    if(i===idx)return '<span class="tl-now" id="clNow">'+shown+'</span>';
+    return '<span class="tl-todo">'+shown+'</span>';}).join('\n');}
+function startCode(p){curProb=p;peek=false;
+  $('#codeHome').style.display='none';$('#codeArena').style.display='';
+  $('#codeTitle').textContent='💻 '+p.title+'（'+p.from+'）';
+  $('#codeDesc').innerHTML='<div class="demo">'+p.desc+'</div><div class="tip">'+p.hint+'</div>';
+  $('#codePeek').textContent='👀 看答案';$('#cMode').textContent='默打';
+  $('#cErr').textContent='0';$('#codeMsg').textContent='';
+  if(codeSession)codeSession.active=false;
+  codeSession=makeTyper({lines:$('#codeLines'),in:$('#codeIn'),prog:$('#cProg'),err:$('#cErr'),time:{textContent:''},msg:$('#codeMsg'),nowId:'clNow',skipTime:true,customDraw:drawCodeLines},
+    p.lines,r=>{const blind=!peek;
+      if(blind){S.codeDone[p.id]='blind';ev('coding',p.title+' 默打过关（错'+r.errs+'）');}
+      else if(!S.codeDone[p.id]){S.codeDone[p.id]='peek';ev('coding',p.title+' 照打完成');}
+      save();$('#codeMsg').textContent+=blind?' 🏆 默打成功，这题真会了！':'（看答案模式不计默打，遮住答案再来一次！）';});
+  drawCodeLines();}
+
+/* ===== 遮一遮 ===== */
+const RECALL=[
+ ['考试时长 / 满分 / 通过线？','90 分钟；满分 100；60 分通过。'],
+ ['题型分值分布？','单选 15×2=30 分；判断 10×2=20 分；编程 2×25=50 分。'],
+ ['头文件背不下来怎么办？','去选择题里面找，照抄 #include<iostream> 和 using namespace std;。'],
+ ['cin 和 cout 的箭头方向？','cin>>a（输入向右），cout<<a（输出向左）。'],
+ ['换行靠什么？','endl，写了 endl 才会换行输出。'],
+ ['判断相等写什么？','==（两个等号）；一个 = 是赋值。'],
+ ['变量使用顺序？','先定义（int a;）再使用（cin>>a;），语句结尾英文分号。'],
+ ['变量命名规则？','只含字母/数字/下划线；字母或下划线开头，不能数字开头；不能用 int、if、else、for 等关键字。'],
+ ['C++ 的乘和除怎么写？','乘 * 除 /，和数学的 × ÷ 不同。'],
+ ['输出计算式要注意什么？','不要加引号！cout<<a-3 算结果；加引号就原样输出字符。'],
+ ['运算优先级？','先括号，再乘除（从左到右），最后加减。3+4*4=19。'],
+ ['两个 if 和 if-else 的区别？','两个 if 判断两次；if-else 只判断一次，else 后面没有小括号。'],
+ ['int 和 double 的区别？','int 存整数；double 存小数，也能存整数。'],
+ ['for 括号里三段是什么？','for(初始化; 循环条件; i++)：中间表达式的数字决定循环几次。'],
+ ['编程题三步法（简单计算）？','① 定义变量 ② 输入数据 ③ 计算输出。'],
+ ['编程题怎么拿步骤分？','主函数内容占绝大部分分数，按步骤写，一步一分。']];
+(function(){const box=$('#recallList');RECALL.forEach((r,i)=>{const d=document.createElement('div');d.className='card recall-item';
+  d.innerHTML='<b>Q'+(i+1)+' · '+esc(r[0])+'</b><div class="recall-answer" onclick="this.classList.toggle(\'show\')">'+esc(r[1])+'</div>';box.appendChild(d);});})();
+
+/* ===== 初始化 ===== */
+initKid();
+renderRec();renderErr();renderTypeList();renderPaperList();renderCodeList();
+if(location.hash&&document.getElementById(location.hash.slice(1)))go(location.hash.slice(1));
+</script>
+</body>
+</html>

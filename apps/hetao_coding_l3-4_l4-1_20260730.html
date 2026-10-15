@@ -1,0 +1,1113 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#ff7a3d">
+<title>核桃 L3-4 复习 & L4-1 预习 · for 循环累加实验室</title>
+<script>
+if (location.protocol !== 'file:') {
+  document.write('<script src="../assets/learning-sync.js"><\/script>');
+}
+</script>
+<style>
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+:root{
+  --bg:#fff7f0;--ink:#3a2e3f;--muted:#746b7a;--card:#fff;--line:#e9e1e8;
+  --orange:#ff7438;--orange-dark:#b33c10;--orange-soft:#fff0e7;
+  --purple:#6f58dc;--purple-soft:#f0edff;--yellow:#ffd166;
+  --green:#2fa873;--green-soft:#e8f9f0;--red:#d64f5d;--red-soft:#fff0f1;
+  --code:#23243a;--code-line:#343650;--shadow:0 8px 22px rgba(120,90,140,.14);
+  --accent:#36c5d6;--accent-dark:#087c91;--accent-soft:#e3fbff;--radius:22px;
+}
+body[data-child="eddey"]{--accent:#ff8a5b;--accent-dark:#b84518;--accent-soft:#fff0e6}
+html{scroll-behavior:smooth}
+body{
+  margin:0;min-height:100vh;color:var(--ink);
+  font-family:"PingFang SC","Microsoft YaHei","Segoe UI",system-ui,sans-serif;
+  background:
+    radial-gradient(circle at 12% 8%,#ffe9f3 0,transparent 40%),
+    radial-gradient(circle at 88% 4%,#e6f9ff 0,transparent 38%),var(--bg);
+}
+button,input,select{font:inherit}
+button{touch-action:manipulation}
+button:focus-visible,a:focus-visible,summary:focus-visible{outline:3px solid var(--purple);outline-offset:3px}
+code,.mono{font-family:Consolas,"SFMono-Regular",monospace}
+.wrap{max-width:720px;margin:0 auto;padding:18px 16px 92px}
+.topbar{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.back{
+  width:44px;height:44px;display:grid;place-items:center;text-decoration:none;color:var(--ink);
+  background:#fff;border-radius:14px;box-shadow:var(--shadow);font-size:22px;flex:none
+}
+.topbar h1{margin:0;font-size:18px;line-height:1.35;flex:1}
+.kid-switch{
+  min-height:44px;border:1px solid var(--accent);border-radius:999px;padding:7px 11px;
+  background:var(--accent-soft);color:var(--accent-dark);font-weight:900;cursor:pointer
+}
+.hero{
+  position:relative;overflow:hidden;border-radius:28px;padding:22px 20px;box-shadow:var(--shadow);
+  background:linear-gradient(145deg,#fff0e7,#fff 58%,#f0edff);border:2px solid #ffc8ad
+}
+.hero:before{
+  content:"";position:absolute;right:-44px;bottom:-66px;width:160px;height:160px;border-radius:50%;
+  background:repeating-linear-gradient(0deg,rgba(111,88,220,.12) 0 16px,transparent 16px 22px)
+}
+.eyebrow{font-size:12px;font-weight:900;color:var(--orange-dark);letter-spacing:.06em}
+.hero h2{font-size:27px;line-height:1.22;margin:8px 0 7px;max-width:560px;position:relative}
+.hero p{margin:0;color:var(--muted);line-height:1.72;font-size:14px;max-width:590px;position:relative}
+.route{display:flex;gap:6px;align-items:center;flex-wrap:wrap;margin-top:14px;position:relative}
+.route span{background:#fff;border:1px solid #eadff0;border-radius:999px;padding:5px 9px;font-size:12px;font-weight:850}
+.route b{color:var(--purple)}
+.date-pill{display:inline-flex;margin-top:12px;padding:5px 10px;border-radius:999px;background:#fff7d8;color:#6b4e00;font-size:11px;font-weight:900}
+.status{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:12px 0 0}
+.stat{background:#fff;border-radius:16px;padding:10px;text-align:center;box-shadow:0 5px 16px rgba(120,90,140,.09)}
+.stat b{display:block;font-size:18px;color:var(--accent-dark)}
+.stat span{font-size:11px;color:var(--muted)}
+.tabs{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:7px;margin:16px 0;position:sticky;top:8px;z-index:8;
+  padding:6px;background:rgba(255,247,240,.94);backdrop-filter:blur(10px);border-radius:18px
+}
+.tab{min-height:50px;border:0;border-radius:14px;background:#fff;color:var(--ink);font-weight:900;box-shadow:0 4px 13px rgba(120,90,140,.1);cursor:pointer}
+.tab.active{background:var(--accent);color:#173f46}
+body[data-child="eddey"] .tab.active{color:#5b210d}
+.view{display:none}.view.active{display:block;animation:rise .24s ease}
+@keyframes rise{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.card{background:#fff;border-radius:var(--radius);box-shadow:var(--shadow);padding:18px;margin-bottom:14px}
+.card h3{font-size:20px;line-height:1.35;margin:0 0 5px}
+.sub{font-size:13.5px;color:var(--muted);line-height:1.75}
+.pill{display:inline-flex;align-items:center;gap:5px;background:var(--accent-soft);color:var(--accent-dark);border-radius:999px;padding:4px 10px;font-size:11px;font-weight:900}
+.pill.orange{background:var(--orange-soft);color:var(--orange-dark)}
+.pill.purple{background:var(--purple-soft);color:#4936a6}
+.pill.green{background:var(--green-soft);color:#1f704f}
+.lesson-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+.lesson{
+  min-height:128px;text-align:left;border:2px solid #eadff0;background:#fffafd;border-radius:18px;
+  padding:15px;cursor:pointer;color:var(--ink)
+}
+.lesson:active{transform:scale(.985)}
+.lesson.orange{border-color:#ffd3be;background:#fff8f3}.lesson.purple{border-color:#dcd5ff;background:#faf8ff}
+.lesson.green{border-color:#ccefdc;background:#f5fff9}.lesson.accent{border-color:var(--accent);background:var(--accent-soft)}
+.lesson .ico{font-size:30px}.lesson b{display:block;font-size:16px;margin:7px 0 4px}.lesson span{font-size:12px;color:var(--muted);line-height:1.55;display:block}
+.callout{border-left:5px solid var(--orange);background:var(--orange-soft);border-radius:14px;padding:12px 13px;font-size:13.5px;line-height:1.72;margin-top:12px}
+.callout strong{color:var(--orange-dark)}
+.btn{
+  min-height:46px;border:0;border-radius:14px;padding:11px 16px;background:var(--accent);color:#173f46;
+  font-weight:900;cursor:pointer;box-shadow:0 4px 0 color-mix(in srgb,var(--accent) 70%,#28505a);margin:6px 6px 0 0
+}
+body[data-child="eddey"] .btn{color:#5b210d}
+.btn:active{transform:translateY(3px);box-shadow:0 1px 0 color-mix(in srgb,var(--accent) 70%,#28505a)}
+.btn.secondary{background:#fff;color:var(--accent-dark);border:2px solid var(--accent);box-shadow:none}
+.btn.orange{background:var(--orange);color:#fff;box-shadow:0 4px 0 #bb4517}
+.btn.purple{background:var(--purple);color:#fff;box-shadow:0 4px 0 #4b36aa}
+.btn.danger{background:var(--red-soft);color:#a5313c;border:2px solid #efacb2;box-shadow:none}
+.btn.small{min-height:42px;padding:8px 12px;font-size:13px}
+.frame-tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:13px 0}
+.frame-tab{min-height:58px;border:2px solid #e8e1e9;border-radius:15px;background:#fff;color:var(--ink);font-weight:900;cursor:pointer}
+.frame-tab.active{border-color:var(--orange);background:var(--orange-soft);color:var(--orange-dark)}
+.frame-layout{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(210px,.65fr);gap:12px}
+.code-panel{background:var(--code);border-radius:17px;padding:12px;overflow:auto;color:#f4f1ff}
+.code-line{
+  min-width:max-content;border-radius:8px;padding:4px 7px;font:14px/1.6 Consolas,"SFMono-Regular",monospace;
+  border-left:4px solid transparent;white-space:pre
+}
+.code-line.active{background:#fff0a8;color:#28221f;border-left-color:var(--orange)}
+.code-line.done:not(.active){color:#a9f0b9}
+.inspector{border:2px solid #e8e1e9;border-radius:17px;padding:13px;background:#fbfafd}
+.inspector h4{margin:0 0 8px;font-size:15px}.inspector .big{font-size:26px;font-weight:950;color:var(--purple);min-height:38px}
+.inspector p{margin:5px 0;color:var(--muted);font-size:13px;line-height:1.6}
+.input-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:10px 0}
+.counter{display:flex;align-items:center;justify-content:center;gap:7px}
+.counter button,.choice{
+  min-width:42px;min-height:42px;border:1px solid #e8cfc3;border-radius:12px;background:var(--orange-soft);color:var(--orange-dark);font-weight:900;cursor:pointer
+}
+.counter output{min-width:30px;text-align:center;font-size:19px;font-weight:900}
+.memory-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-top:12px}
+.memory{
+  min-height:130px;border:2px solid #e8e1e9;border-radius:17px;background:#fff;padding:13px;
+  text-align:left;color:var(--ink);cursor:pointer
+}
+.memory b{display:block;margin:4px 0 8px}.memory span{display:block;color:var(--muted);font-size:12px;line-height:1.55}
+.memory .answer{display:none;color:#4936a6;font-weight:850}.memory.open .prompt{display:none}.memory.open .answer{display:block}
+.lab-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:12px 0}
+.control{border:1px solid var(--line);border-radius:14px;padding:9px;text-align:center;background:#fff}
+.control label{display:block;font-size:11px;color:var(--muted);font-weight:850;margin-bottom:6px}
+.choice.active{background:var(--purple);color:#fff;border-color:var(--purple)}
+.code{background:var(--code);color:#f3f2ff;border-radius:16px;padding:14px;overflow:auto;font:14px/1.75 Consolas,"SFMono-Regular",monospace;white-space:pre}
+.phase-row{display:grid;grid-template-columns:repeat(4,1fr);gap:7px;margin:12px 0}
+.phase{border:2px solid #e7e2eb;border-radius:14px;padding:9px 5px;text-align:center;font-size:11px;font-weight:850;color:var(--muted);transition:.18s}
+.phase span{display:block;font-size:21px;margin-bottom:3px}
+.phase.active{border-color:var(--purple);background:var(--purple-soft);color:#4936a6;transform:translateY(-2px)}
+.track{display:flex;gap:8px;overflow:auto;padding:10px 2px 6px;min-height:76px}
+.track-node{
+  flex:0 0 58px;height:58px;border-radius:17px;background:#f4f0f5;border:2px solid #ded6e1;
+  display:grid;place-items:center;font-weight:950;font-size:18px;color:var(--muted)
+}
+.track-node.current{background:var(--yellow);border-color:#d3a900;color:#5b4500;transform:translateY(-4px)}
+.track-node.output{background:var(--green-soft);border-color:var(--green);color:#1f704f}
+.terminal{background:#151a2b;color:#8af0aa;border-radius:15px;padding:12px 14px;min-height:72px;font:750 16px/1.6 Consolas,monospace}
+.terminal small{display:block;color:#949bb8;font:750 10px/1.2 system-ui;margin-bottom:7px;letter-spacing:.12em}
+.explain{min-height:58px;background:var(--purple-soft);border-left:4px solid var(--purple);border-radius:12px;padding:11px 12px;font-size:13.5px;line-height:1.68;margin-top:10px}
+.preset-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:12px 0}
+.preset{min-height:72px;border:2px solid #e8e1e9;border-radius:14px;background:#fff;padding:10px;text-align:left;color:var(--ink);cursor:pointer}
+.preset b{display:block;font-size:13px}.preset span{display:block;font-size:11px;color:var(--muted);line-height:1.45;margin-top:3px}
+.preset.active{border-color:var(--orange);background:var(--orange-soft)}
+.boxes{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin:12px 0}
+.varbox{border:2px solid #e2dce6;border-radius:16px;padding:11px;text-align:center;background:#fff}
+.varbox span{display:block;font-size:11px;color:var(--muted);font-weight:850}.varbox b{display:block;font:950 25px/1.25 Consolas,monospace;color:var(--purple);margin-top:3px}
+.sum-stage{display:grid;grid-template-columns:minmax(160px,.75fr) minmax(0,1.25fr);gap:12px;align-items:stretch}
+.tower{border:2px dashed #dfd4e5;border-radius:18px;min-height:190px;padding:12px;display:flex;flex-direction:column-reverse;gap:6px;align-items:stretch;justify-content:flex-start;background:#fffafd}
+.brick{min-height:31px;border-radius:9px;background:linear-gradient(135deg,#ff9a66,#ff7438);color:#fff;display:grid;place-items:center;font-weight:950;box-shadow:0 4px 0 #c64a1b;animation:brickIn .22s ease}
+@keyframes brickIn{from{opacity:.2;transform:translateY(-12px)}to{opacity:1;transform:none}}
+.sum-copy{border-radius:18px;background:#f8f6ff;padding:14px}
+.sum-copy .equation{font:950 25px/1.4 Consolas,monospace;color:#4936a6;min-height:44px}
+.transfer-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+.transfer{border:2px solid #e5e0e8;border-radius:17px;padding:13px;background:#fff;min-height:172px}
+.transfer h4{margin:0 0 6px;font-size:16px}.transfer .result{font-size:24px;font-weight:950;color:var(--orange-dark);margin:9px 0}
+.number-row{display:flex;gap:6px;flex-wrap:wrap;margin-top:9px}
+.number-chip{min-width:39px;min-height:39px;border-radius:12px;background:#f4f0f5;border:2px solid #dfd8e2;display:grid;place-items:center;font-weight:900}
+.number-chip.odd{background:#fff0e7;border-color:#ffb38e}.number-chip.even{background:#e8f9f0;border-color:#78d1aa}
+.vocab-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:12px}
+.vocab{
+  min-height:142px;border:2px solid #e8e1e9;border-radius:18px;background:#fff;padding:14px;text-align:left;cursor:pointer;color:var(--ink)
+}
+.vocab .word{font-size:25px;font-weight:950;color:var(--purple)}.vocab .ipa{font:14px/1.4 Consolas,monospace;color:var(--muted)}
+.vocab .meaning{display:none;margin-top:9px;font-size:13px;line-height:1.65}.vocab.open .meaning{display:block}.vocab .hint{font-size:11px;color:var(--muted);margin-top:8px}
+.recall-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin:12px 0}
+.recall{min-height:118px;border:2px solid #e8e1e9;border-radius:17px;background:#fff;padding:13px;text-align:left;cursor:pointer;color:var(--ink)}
+.recall b{display:block;margin-bottom:7px}.recall .covered{filter:blur(7px);user-select:none;color:#4936a6;font-weight:900;line-height:1.6}
+.recall.open .covered{filter:none}
+.quiz-head{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.progress{height:10px;background:#eee9f0;border-radius:999px;overflow:hidden;margin:12px 0}
+.progress i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--accent),var(--green));transition:.25s}
+.question{font-size:18px;font-weight:900;line-height:1.55;margin:8px 0}
+.option{display:block;width:100%;min-height:50px;text-align:left;border:2px solid #e5e0e8;border-radius:14px;background:#faf9fc;padding:11px 13px;margin:8px 0;color:var(--ink);font-weight:800;cursor:pointer}
+.option.correct{background:var(--green-soft);border-color:var(--green)}.option.wrong{background:var(--red-soft);border-color:var(--red)}
+.option:disabled{cursor:default}
+.feedback{display:none;border-left:4px solid var(--purple);border-radius:12px;background:var(--purple-soft);padding:11px 12px;font-size:13.5px;line-height:1.75;margin-top:10px}
+.feedback.show{display:block}
+.record-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:12px 0}
+.record-box{border:1px solid var(--line);border-radius:14px;padding:10px;text-align:center}
+.record-box b{font-size:21px;color:var(--accent-dark);display:block}.record-box span{font-size:11px;color:var(--muted)}
+.wrong-item{border:1px solid #f0d2d7;border-radius:14px;padding:11px;margin-top:8px;background:#fffafb}
+.wrong-item b{font-size:13.5px;display:block}.wrong-item span{font-size:11px;color:var(--muted)}
+.utility{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.import-label{display:inline-flex;align-items:center;justify-content:center}.import-label input{display:none}
+.empty{text-align:center;padding:22px 10px;color:var(--muted)}
+.material-note{font-size:11.5px;color:var(--muted);line-height:1.7;border-top:1px dashed var(--line);padding-top:11px;margin-top:13px}
+.foot{text-align:center;color:var(--muted);font-size:11px;line-height:1.7;margin-top:20px}
+.toast{position:fixed;left:50%;bottom:22px;transform:translateX(-50%) translateY(120px);z-index:50;background:#252238;color:#fff;border-radius:999px;padding:11px 18px;font-size:13px;font-weight:850;transition:.25s;box-shadow:var(--shadow);max-width:calc(100vw - 32px);text-align:center}
+.toast.show{transform:translateX(-50%) translateY(0)}
+.picker,.repair{
+  position:fixed;inset:0;z-index:80;background:rgba(32,26,42,.68);display:none;place-items:center;padding:18px
+}
+.picker.show,.repair.show{display:grid}
+.dialog{width:min(440px,100%);max-height:calc(100vh - 36px);overflow:auto;background:#fff;border-radius:24px;padding:20px;box-shadow:0 24px 70px rgba(0,0,0,.28)}
+.dialog h2{font-size:22px;margin:0 0 6px}.dialog p{color:var(--muted);font-size:13.5px;line-height:1.7}
+.kid-option{width:100%;min-height:62px;border:2px solid #e7e1e8;border-radius:17px;background:#fff;margin:7px 0;text-align:left;padding:12px 15px;font-size:17px;font-weight:900;cursor:pointer}
+.kid-option.kenton{border-color:#8bdde7;background:#e3fbff}.kid-option.eddey{border-color:#ffc0a5;background:#fff0e6}
+.repair-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin:13px 0}
+.repair-step{border-radius:13px;background:var(--purple-soft);padding:9px 5px;text-align:center;font-size:11px;font-weight:850;color:#4936a6}
+@media(max-width:620px){
+  .wrap{padding-left:13px;padding-right:13px}.hero h2{font-size:24px}
+  .tabs{gap:5px}.tab{font-size:12px;padding:6px 2px}
+  .lesson-grid,.frame-layout,.sum-stage,.transfer-grid{grid-template-columns:1fr}
+  .lab-grid{grid-template-columns:1fr 1fr}.memory-grid,.recall-grid{grid-template-columns:1fr}
+  .preset-grid{grid-template-columns:1fr}.vocab-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:390px){
+  .topbar h1{font-size:16px}.kid-switch{font-size:12px;padding:6px 9px}
+  .vocab-grid{grid-template-columns:1fr}.status{gap:5px}.stat{padding:9px 5px}
+}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body data-child="kenton">
+<main class="wrap">
+  <div class="topbar">
+    <a class="back" href="cpp_hub.html" aria-label="返回 C++ 学习馆">←</a>
+    <h1>核桃编程 · 复习＋预习</h1>
+    <button class="kid-switch" id="kidSwitch" type="button" aria-label="切换学习者">🦁 Kenton</button>
+  </div>
+
+  <header class="hero">
+    <div class="eyebrow">L3-4 复习 × L4-1 课前预习</div>
+    <h2>让 for 一圈圈跑起来，让 sum 一层层长起来</h2>
+    <p>先把上节课的三类代码框架认稳，再看清 for 的完整运行过程、可变步长和循环累加。</p>
+    <div class="route" aria-label="学习路线">
+      <span><b>1</b> 复习框架</span><span>→</span><span><b>2</b> 跟着慢放</span><span>→</span>
+      <span><b>3</b> 遮挡回忆</span><span>→</span><span><b>4</b> 独立完成</span>
+    </div>
+    <div class="date-pill">课程日期 · 2026-07-30（北京时间）</div>
+    <div class="callout"><strong>学习状态：</strong>L4-1 是今天的课前预习，课堂完成与掌握待回传；软件练习结果不提前当作课堂掌握结论。</div>
+  </header>
+
+  <div class="status" aria-label="学习状态">
+    <div class="stat"><b id="heroExperiments">0</b><span>完成实验</span></div>
+    <div class="stat"><b id="heroAccuracy">0%</b><span>检验正确率</span></div>
+    <div class="stat"><b id="heroWrong">0</b><span>待回炉</span></div>
+  </div>
+
+  <nav class="tabs" aria-label="页面导航">
+    <button class="tab active" type="button" data-view="home">🏠 起点</button>
+    <button class="tab" type="button" data-view="review">🧩 复习</button>
+    <button class="tab" type="button" data-view="preview">🔁 预习</button>
+    <button class="tab" type="button" data-view="practice">🎯 独立</button>
+  </nav>
+
+  <section class="view active" id="view-home">
+    <article class="card">
+      <span class="pill orange">今天要做到</span>
+      <h3 id="goalTitle">Kenton 能独立说清 for 怎么跑，并读出累加结果</h3>
+      <p class="sub">不是先背答案。先看每一步怎样改变变量，再遮住提示，最后独立判断循环次数、输出和 sum 的结果。</p>
+      <div class="lesson-grid">
+        <button class="lesson orange" type="button" data-go="review">
+          <span class="ico">🧩</span><b>上节课 · 三类框架</b><span>if-else、for、简单计算逐行执行，弄清什么时候用哪一种。</span>
+        </button>
+        <button class="lesson purple" type="button" data-go="preview" data-anchor="loop-lab">
+          <span class="ico">🔁</span><b>for 四步轨道</b><span>初始化 → 判断 → 执行 → 步长。自己改参数看结果。</span>
+        </button>
+        <button class="lesson accent" type="button" data-go="preview" data-anchor="sum-lab">
+          <span class="ico">🧱</span><b>sum 累加积木塔</b><span>每一圈把新数加进旧 sum，看总和怎样一步步长大。</span>
+        </button>
+        <button class="lesson green" type="button" data-go="practice">
+          <span class="ico">🎯</span><b>遮挡回忆＋独立检验</b><span>答错会回到对应微课；看懂后，一键返回刚才原题改答。</span>
+        </button>
+      </div>
+      <div class="callout"><strong>一句话抓重点：</strong>for 管“重复几圈”，sum 管“把每圈的新结果记到总数里”。</div>
+    </article>
+
+    <article class="card">
+      <div class="quiz-head">
+        <div><span class="pill green">个人记录</span><h3 id="recordTitle">Kenton 的本机进度</h3></div>
+        <button class="btn secondary small" type="button" data-go="practice" data-anchor="records-card">查看记录</button>
+      </div>
+      <div class="record-grid">
+        <div class="record-box"><b id="homeAnswers">0</b><span>累计作答</span></div>
+        <div class="record-box"><b id="homeMastered">0</b><span>错题毕业</span></div>
+        <div class="record-box"><b id="homeTime">00:00</b><span>累计用时</span></div>
+      </div>
+    </article>
+
+    <article class="card">
+      <span class="pill purple">L4-1 单词卡</span>
+      <h3>先看单词，再点开意思</h3>
+      <p class="sub">音标、词义和短语来自本次核桃单词卡；点同一张卡可以反复打开、还原。</p>
+      <div class="vocab-grid" id="vocabGrid"></div>
+    </article>
+  </section>
+
+  <section class="view" id="view-review">
+    <article class="card">
+      <span class="pill orange">上节课复习</span>
+      <h3>三类必背代码框 · 逐行执行台</h3>
+      <p class="sub">先看题目在要求“判断、重复还是直接计算”，再选框架。点“逐行执行”，观察程序从哪一行走到哪一行。</p>
+      <div class="frame-tabs" id="frameTabs">
+        <button class="frame-tab active" type="button" data-frame="ifelse">🚦 if-else</button>
+        <button class="frame-tab" type="button" data-frame="for">🔁 for</button>
+        <button class="frame-tab" type="button" data-frame="calc">🧮 简单计算</button>
+      </div>
+      <div class="input-row" id="frameInputRow">
+        <b>输入 a：</b>
+        <div class="counter">
+          <button type="button" id="frameMinus" aria-label="输入减一">−</button>
+          <output id="frameInput">30</output>
+          <button type="button" id="framePlus" aria-label="输入加一">+</button>
+        </div>
+      </div>
+      <div class="frame-layout">
+        <div class="code-panel" id="frameCode" aria-label="代码逐行执行区"></div>
+        <aside class="inspector">
+          <h4>程序正在做什么？</h4>
+          <div class="big" id="frameValue">等待开始</div>
+          <p id="frameExplain">先读题意，再点“逐行执行”。</p>
+          <button class="btn orange small" type="button" id="frameStep">逐行执行</button>
+          <button class="btn secondary small" type="button" id="frameReset">重新开始</button>
+        </aside>
+      </div>
+      <div class="callout"><strong>找框架：</strong>看到“如果……否则……”用 if-else；看到“重复几次”用 for；只输入、算一次、输出一次，用简单计算。</div>
+    </article>
+
+    <article class="card">
+      <span class="pill purple">遮挡复述</span>
+      <h3>先自己说，再点开核对</h3>
+      <div class="memory-grid">
+        <button class="memory" type="button">
+          <span class="prompt"><b>if-else 什么时候用？</b>先自己说出关键词，再点开。</span>
+          <span class="answer"><b>看到判断，而且要二选一。</b>条件成立只走 if；不成立只走 else。</span>
+        </button>
+        <button class="memory" type="button">
+          <span class="prompt"><b>for 小括号写什么？</b>按顺序说三项。</span>
+          <span class="answer"><b>初始化；循环条件；步长。</b>先定起点，再判断能否继续，最后写每圈怎样变化。</span>
+        </button>
+        <button class="memory" type="button">
+          <span class="prompt"><b>简单计算怎么读？</b>先说变量三步。</span>
+          <span class="answer"><b>先定义，再输入，最后计算并输出。</b>计算式不加双引号。</span>
+        </button>
+      </div>
+    </article>
+  </section>
+
+  <section class="view" id="view-preview">
+    <article class="card" id="loop-lab">
+      <span class="pill purple">今天新课 ①</span>
+      <h3>for 四步循环轨道</h3>
+      <p class="sub">自己改起点、终点、比较符号和步长。程序最多显示 12 圈，方向错误时会安全停下并解释。</p>
+      <div class="lab-grid">
+        <div class="control">
+          <label>起点 i</label>
+          <div class="counter"><button type="button" data-loop-bump="start" data-delta="-1" aria-label="起点减一">−</button><output id="loopStart">1</output><button type="button" data-loop-bump="start" data-delta="1" aria-label="起点加一">+</button></div>
+        </div>
+        <div class="control">
+          <label>循环条件</label>
+          <div><button class="choice" type="button" data-loop-op="<">&lt;</button><button class="choice active" type="button" data-loop-op="<=">&lt;=</button></div>
+        </div>
+        <div class="control">
+          <label>终点数</label>
+          <div class="counter"><button type="button" data-loop-bump="end" data-delta="-1" aria-label="终点减一">−</button><output id="loopEnd">6</output><button type="button" data-loop-bump="end" data-delta="1" aria-label="终点加一">+</button></div>
+        </div>
+        <div class="control">
+          <label>每圈步长</label>
+          <div><button class="choice" type="button" data-loop-step="-1">−1</button><button class="choice active" type="button" data-loop-step="1">+1</button><button class="choice" type="button" data-loop-step="2">+2</button></div>
+        </div>
+      </div>
+      <div class="code" id="loopCode">for(int i=1;i&lt;=6;i++){
+  cout&lt;&lt;i&lt;&lt;endl;
+}</div>
+      <div class="phase-row" aria-label="循环四步">
+        <div class="phase" data-phase="init"><span>🎬</span>初始化</div>
+        <div class="phase" data-phase="check"><span>⚖️</span>判断</div>
+        <div class="phase" data-phase="body"><span>🖨️</span>执行</div>
+        <div class="phase" data-phase="step"><span>➕</span>步长</div>
+      </div>
+      <div class="track" id="loopTrack" aria-label="i 的运行轨迹"></div>
+      <div class="terminal"><small>OUTPUT / 输出</small><div id="loopOutput">等待运行…</div></div>
+      <div class="explain" id="loopExplain">先看小括号：i 从 1 开始，只要 i&lt;=6 就继续，每圈 +1。</div>
+      <button class="btn" type="button" id="loopStep">逐步走一步</button>
+      <button class="btn purple" type="button" id="loopAuto">自动慢放</button>
+      <button class="btn secondary" type="button" id="loopReset">重置</button>
+    </article>
+
+    <article class="card" id="sum-lab">
+      <span class="pill orange">今天新课 ② · 重点难点</span>
+      <h3>sum 累加积木塔</h3>
+      <p class="sub">每一圈都先保留“旧 sum”，再把本圈的新数加进去。看完要能说出：<code>sum = 旧sum + 新数</code>。</p>
+      <div class="preset-grid" id="sumPresets">
+        <button class="preset active" type="button" data-sum="sequence"><b>🔢 固定数字累加</b><span>1+2+3+4+5</span></button>
+        <button class="preset" type="button" data-sum="inputs"><b>📥 输入变量累加</b><span>输入 3、5、2</span></button>
+        <button class="preset" type="button" data-sum="salary"><b>💰 工资累加</b><span>每天 80，共 5 天</span></button>
+      </div>
+      <div class="code" id="sumCode">int sum=0;
+for(int i=1;i&lt;=5;i++){
+  sum+=i;
+}
+cout&lt;&lt;sum;</div>
+      <div class="boxes">
+        <div class="varbox"><span>第几圈 i</span><b id="sumI">0</b></div>
+        <div class="varbox"><span>本圈新数</span><b id="sumAdd">—</b></div>
+        <div class="varbox"><span>总和 sum</span><b id="sumValue">0</b></div>
+      </div>
+      <div class="sum-stage">
+        <div class="tower" id="sumTower" aria-label="累加积木塔"></div>
+        <div class="sum-copy">
+          <div class="equation" id="sumEquation">0 + ? = ?</div>
+          <p class="sub" id="sumExplain">sum 先从 0 开始。点“加进一块”，让第一圈运行。</p>
+          <button class="btn orange" type="button" id="sumStep">加进一块</button>
+          <button class="btn secondary" type="button" id="sumAuto">自动累加</button>
+          <button class="btn secondary" type="button" id="sumReset">重置</button>
+        </div>
+      </div>
+    </article>
+
+    <article class="card">
+      <span class="pill green">数学与生活迁移</span>
+      <h3>循环累加还能解决什么？</h3>
+      <div class="transfer-grid">
+        <section class="transfer">
+          <h4>🧺 奇数、偶数分拣</h4>
+          <p class="sub">循环检查 1 到 8。余数是 0 的进偶数篮，否则进奇数篮。</p>
+          <div class="number-row" id="parityRow"></div>
+          <button class="btn secondary small" type="button" id="parityRun">重新分拣</button>
+        </section>
+        <section class="transfer">
+          <h4>💰 工资计算</h4>
+          <p class="sub">应发工资 = 日工资 × 工作时间。循环写法就是每天把 pay 再加进 sum。</p>
+          <div class="result">80 × 5 = <span id="salaryResult">?</span></div>
+          <button class="btn secondary small" type="button" id="salaryRun">看 5 天怎样累加</button>
+        </section>
+      </div>
+    </article>
+  </section>
+
+  <section class="view" id="view-practice">
+    <article class="card">
+      <span class="pill purple">遮挡回忆</span>
+      <h3>不看讲解，先把三句话说出来</h3>
+      <div class="recall-grid">
+        <button class="recall" type="button"><b>for 的运行顺序</b><div class="covered">初始化 → 判断 → 执行 → 步长 → 回到判断</div></button>
+        <button class="recall" type="button"><b>循环累加公式</b><div class="covered">sum = 旧 sum + 本圈新数</div></button>
+        <button class="recall" type="button"><b>偶数怎样判断</b><div class="covered">一个数 % 2 == 0</div></button>
+      </div>
+    </article>
+
+    <article class="card" id="quiz-card">
+      <div class="quiz-head">
+        <div><span class="pill green">少量独立检验</span><h3 id="quizTitle">8 题独立检验</h3></div>
+        <span class="pill" id="quizScore">0 / 8</span>
+      </div>
+      <div class="progress"><i id="quizProgress"></i></div>
+      <div id="quizBox"></div>
+      <div id="quizActions">
+        <button class="btn" type="button" id="startQuiz">开始 8 题</button>
+        <button class="btn secondary" type="button" id="redoWrong">只重做错题</button>
+      </div>
+    </article>
+
+    <article class="card" id="records-card">
+      <span class="pill">学习记录</span>
+      <h3 id="recordsHeading">Kenton 的记录与错题本</h3>
+      <p class="sub">课程内容共用；本区只读取当前孩子的独立记录。答错一次立即进本，连续答对 2 次才从待回炉区毕业。</p>
+      <div class="record-grid">
+        <div class="record-box"><b id="recordAnswers">0</b><span>累计作答</span></div>
+        <div class="record-box"><b id="recordAccuracy">0%</b><span>正确率</span></div>
+        <div class="record-box"><b id="recordWrong">0</b><span>待回炉</span></div>
+      </div>
+      <div id="wrongList"></div>
+      <div class="utility">
+        <button class="btn small" type="button" id="recordRedo">只重做错题</button>
+        <button class="btn secondary small" type="button" id="copyAi">复制给 AI</button>
+        <button class="btn secondary small" type="button" id="exportJson">导出 JSON</button>
+        <button class="btn secondary small" type="button" id="exportMd">导出 Markdown</button>
+        <label class="btn secondary small import-label">导入 JSON<input type="file" id="importJson" accept="application/json,.json" aria-label="导入当前孩子的 JSON 学习记录"></label>
+      </div>
+      <div class="callout"><strong>音频适用性：</strong>本课核心是代码执行顺序与变量变化的视觉推演；单词已保留音标、词义和短语，本版不使用音频。</div>
+      <div class="material-note">材料依据：核桃编程 L4-1《for 运行过程进阶 & for 循环累加》学习目标、单词卡，以及上节课“三类 C++ 必背代码框”。练习与动态模型为软件助教依据材料改编。</div>
+    </article>
+  </section>
+
+  <p class="foot">核桃 L3-4 复习 & L4-1 预习 · 本机按孩子分别保存 · 正式站完成后请点右下角“完成并同步”</p>
+</main>
+
+<div class="picker" id="kidPicker" role="dialog" aria-modal="true" aria-labelledby="pickerTitle">
+  <div class="dialog">
+    <h2 id="pickerTitle">这次是谁在学习？</h2>
+    <p>两人学同一节课，但进度、错题、累计用时和导出文件完全分开。</p>
+    <button class="kid-option kenton" type="button" data-kid="kenton">🦁 Kenton · 青蓝记录</button>
+    <button class="kid-option eddey" type="button" data-kid="eddey">🐯 Eddey · 珊瑚橙记录</button>
+  </div>
+</div>
+
+<div class="repair" id="repairDialog" role="dialog" aria-modal="true" aria-labelledby="repairTitle">
+  <div class="dialog">
+    <span class="pill orange">定点重教</span>
+    <h2 id="repairTitle">先修好这一小步</h2>
+    <p id="repairText"></p>
+    <div class="repair-steps" id="repairSteps"></div>
+    <div class="explain" id="repairExplain"></div>
+    <button class="btn orange" type="button" id="repairReturn">我看懂了，返回刚才第 1 题</button>
+  </div>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+'use strict';
+const APP={
+  schema:'study-portal-learning-record',
+  schemaVersion:1,
+  app:'hetao-coding-l34-l41-20260730',
+  version:'2026-07-30-v1',
+  subject:'编程',
+  topic:'核桃 L3-4 复习 & L4-1 预习',
+  source:'核桃编程 L4-1 学习目标/单词卡 + 上节课必背代码框'
+};
+const CHILDREN={
+  kenton:{name:'Kenton',icon:'🦁',label:'哥哥'},
+  eddey:{name:'Eddey',icon:'🐯',label:'弟弟'}
+};
+const $=(q,root=document)=>root.querySelector(q);
+const $$=(q,root=document)=>Array.from(root.querySelectorAll(q));
+let child='';
+let state=null;
+let sessionStarted=Date.now();
+let toastTimer=0;
+
+function uid(){
+  return window.crypto&&crypto.randomUUID?crypto.randomUUID():'evt-'+Date.now()+'-'+Math.random().toString(16).slice(2);
+}
+function storeKey(kid){return 'dd:'+kid+':hetao-l34-l41-20260730:v1'}
+function freshState(kid){
+  return {
+    ...APP,child:kid,startedAt:new Date().toISOString(),elapsedMs:0,events:[],wrongbook:{},mastered:[],
+    progress:{reviewRuns:0,loopRuns:0,sumRuns:0,parityRuns:0,salaryRuns:0,recallOpened:0,vocabOpened:0}
+  };
+}
+function safeState(value,kid){
+  if(!value||value.schema!==APP.schema||value.schemaVersion!==APP.schemaVersion||
+    value.app!==APP.app||value.version!==APP.version||value.child!==kid) return null;
+  const clean=freshState(kid);
+  clean.startedAt=typeof value.startedAt==='string'?value.startedAt:clean.startedAt;
+  clean.elapsedMs=Math.max(0,Number(value.elapsedMs)||0);
+  clean.events=Array.isArray(value.events)?value.events.slice(-1200).filter(x=>x&&typeof x==='object'):[];
+  clean.wrongbook=value.wrongbook&&typeof value.wrongbook==='object'&&!Array.isArray(value.wrongbook)?value.wrongbook:{};
+  clean.mastered=Array.isArray(value.mastered)?value.mastered.filter(x=>typeof x==='string'):[];
+  Object.keys(clean.progress).forEach(key=>{clean.progress[key]=Math.max(0,Number(value.progress&&value.progress[key])||0)});
+  return clean;
+}
+function loadState(kid){
+  try{return safeState(JSON.parse(localStorage.getItem(storeKey(kid))),kid)||freshState(kid)}
+  catch(_){return freshState(kid)}
+}
+function elapsed(){return state?state.elapsedMs+(Date.now()-sessionStarted):0}
+function save(){
+  if(!child||!state)return;
+  state.elapsedMs=elapsed();sessionStarted=Date.now();
+  localStorage.setItem(storeKey(child),JSON.stringify(state));
+  renderStats();
+}
+function fmt(ms){
+  const total=Math.max(0,Math.floor(ms/1000)),m=Math.floor(total/60),s=total%60;
+  return String(m).padStart(2,'0')+':'+String(s).padStart(2,'0');
+}
+function toast(message){
+  const el=$('#toast');el.textContent=message;el.classList.add('show');
+  clearTimeout(toastTimer);toastTimer=setTimeout(()=>el.classList.remove('show'),2200);
+}
+function setChild(kid,replaceUrl=true){
+  if(!CHILDREN[kid])return;
+  if(child&&state)save();
+  child=kid;state=loadState(kid);sessionStarted=Date.now();
+  document.body.dataset.child=kid;
+  const c=CHILDREN[kid];
+  $('#kidSwitch').textContent=c.icon+' '+c.name;
+  $('#goalTitle').textContent=c.name+' 能独立说清 for 怎么跑，并读出累加结果';
+  $('#recordTitle').textContent=c.name+' 的本机进度';
+  $('#recordsHeading').textContent=c.name+' 的记录与错题本';
+  localStorage.setItem('dd:sync:session-child:v1',kid);
+  if(window.DDLearningSync)window.DDLearningSync.setChild(kid);
+  if(replaceUrl&&history.replaceState){
+    const url=new URL(location.href);url.searchParams.set('who',kid);history.replaceState(null,'',url);
+  }
+  $('#kidPicker').classList.remove('show');
+  renderStats();
+}
+function chooseInitialChild(){
+  const requested=new URLSearchParams(location.search).get('who');
+  if(CHILDREN[requested])setChild(requested,false);
+  else $('#kidPicker').classList.add('show');
+}
+$$('[data-kid]').forEach(button=>button.addEventListener('click',()=>setChild(button.dataset.kid)));
+$('#kidSwitch').addEventListener('click',()=>$('#kidPicker').classList.add('show'));
+
+function showView(name,anchor){
+  $$('.view').forEach(view=>view.classList.toggle('active',view.id==='view-'+name));
+  $$('.tab').forEach(tab=>tab.classList.toggle('active',tab.dataset.view===name));
+  requestAnimationFrame(()=>{
+    const target=anchor?document.getElementById(anchor):document.querySelector('.topbar');
+    if(target)target.scrollIntoView({behavior:'smooth',block:'start'});
+  });
+}
+$$('[data-view]').forEach(button=>button.addEventListener('click',()=>showView(button.dataset.view)));
+$$('[data-go]').forEach(button=>button.addEventListener('click',()=>showView(button.dataset.go,button.dataset.anchor)));
+
+const VOCAB=[
+  {word:'sum',ipa:'/sʌm/',meaning:'n. 和，总和；v. 总结、概括',phrase:'sum up · 概括地说'},
+  {word:'pay',ipa:'/peɪ/',meaning:'v. 支付、付费；n. 工资、薪水',phrase:'pay attention to · 注意、重视'},
+  {word:'apply',ipa:'/əˈplaɪ/',meaning:'v. 应用；申请、请求；使用',phrase:'apply for · 申请'},
+  {word:'add',ipa:'/æd/',meaning:'v. 加；n. 添加物',phrase:'add in · 加入'}
+];
+function renderVocab(){
+  const grid=$('#vocabGrid');grid.textContent='';
+  VOCAB.forEach(item=>{
+    const button=document.createElement('button');button.type='button';button.className='vocab';
+    const word=document.createElement('div');word.className='word';word.textContent=item.word;
+    const ipa=document.createElement('div');ipa.className='ipa';ipa.textContent=item.ipa;
+    const meaning=document.createElement('div');meaning.className='meaning';
+    const line=document.createElement('div');line.textContent=item.meaning;
+    const phrase=document.createElement('b');phrase.textContent=item.phrase;
+    meaning.append(line,phrase);
+    const hint=document.createElement('div');hint.className='hint';hint.textContent='点我翻开 / 再点翻回';
+    button.append(word,ipa,meaning,hint);
+    button.addEventListener('click',()=>{
+      const opening=!button.classList.contains('open');button.classList.toggle('open');
+      if(opening){state.progress.vocabOpened++;save()}
+    });
+    grid.appendChild(button);
+  });
+}
+$$('.memory').forEach(button=>button.addEventListener('click',()=>button.classList.toggle('open')));
+$$('.recall').forEach(button=>button.addEventListener('click',()=>{
+  const opening=!button.classList.contains('open');button.classList.toggle('open');
+  if(opening){state.progress.recallOpened++;save()}
+}));
+
+const FRAMES={
+  ifelse:{
+    title:'if-else 二选一',usesInput:true,
+    lines:['#include <iostream>','using namespace std;','int main()','{','  int a;','  cin>>a;','  if(a>30)','    cout<<"swim"<<endl;','  else','    cout<<"climb"<<endl;','  return 0;','}'],
+    build(a){
+      const branch=a>30;
+      return [
+        {line:2,value:'进入 main',text:'程序从 main 开始。'},
+        {line:4,value:'a 盒子',text:'先创建整数变量 a。'},
+        {line:5,value:'a = '+a,text:'把输入的 '+a+' 装进 a。'},
+        {line:6,value:(a>30?'成立':'不成立'),text:'判断 '+a+'>30，结果'+(branch?'成立，走 if。':'不成立，走 else。')},
+        {line:branch?7:9,value:branch?'swim':'climb',text:'只执行选中的一条分支，输出 '+(branch?'swim':'climb')+'。'},
+        {line:10,value:'结束',text:'return 0，程序结束。'}
+      ];
+    }
+  },
+  for:{
+    title:'for 重复执行',usesInput:false,
+    lines:['#include <iostream>','using namespace std;','int main()','{','  for(int i=1;i<=6;i++)','  {','    cout<<"dog"<<endl;','  }','  return 0;','}'],
+    build(){
+      const steps=[{line:2,value:'进入 main',text:'程序从 main 开始。'},{line:4,value:'i = 1',text:'初始化：i 从 1 开始，这一步只做一次。'}];
+      for(let i=1;i<=6;i++){
+        steps.push({line:4,value:i+' <= 6 ✓',text:'第 '+i+' 圈先判断，条件成立。'});
+        steps.push({line:6,value:'dog × '+i,text:'执行循环体，第 '+i+' 次输出 dog。'});
+        if(i<6)steps.push({line:4,value:'i → '+(i+1),text:'走步长 i++，回到条件继续判断。'});
+      }
+      steps.push({line:4,value:'7 <= 6 ✗',text:'i 变成 7，条件不成立，退出循环。'});
+      steps.push({line:8,value:'结束',text:'return 0，程序结束。'});
+      return steps;
+    }
+  },
+  calc:{
+    title:'简单计算',usesInput:true,
+    lines:['#include <iostream>','using namespace std;','int main()','{','  int a;','  cin>>a;','  cout<<a*5<<endl;','  return 0;','}'],
+    build(a){
+      return [
+        {line:2,value:'进入 main',text:'程序从 main 开始。'},
+        {line:4,value:'a 盒子',text:'创建整数变量 a。'},
+        {line:5,value:'a = '+a,text:'把输入的 '+a+' 装进 a。'},
+        {line:6,value:String(a*5),text:'先算 a×5，也就是 '+a+'×5='+a*5+'，再输出。计算式不加双引号。'},
+        {line:7,value:'结束',text:'return 0，程序结束。'}
+      ];
+    }
+  }
+};
+let frame={type:'ifelse',input:30,steps:[],cursor:0,visited:[]};
+function renderFrame(){
+  const data=FRAMES[frame.type],box=$('#frameCode');box.textContent='';
+  data.lines.forEach((text,index)=>{
+    const line=document.createElement('div');line.className='code-line';line.dataset.line=String(index);line.textContent=text||' ';
+    box.appendChild(line);
+  });
+  $('#frameInputRow').style.display=data.usesInput?'flex':'none';
+  $('#frameInput').textContent=frame.input;
+  $('#frameValue').textContent='等待开始';
+  $('#frameExplain').textContent='这是“'+data.title+'”框架。点逐行执行，看程序怎样走。';
+  frame.steps=data.build(frame.input);frame.cursor=0;frame.visited=[];
+}
+function resetFrame(){renderFrame()}
+function stepFrame(){
+  if(frame.cursor>=frame.steps.length){toast('这一段已经执行完了');return}
+  const item=frame.steps[frame.cursor];
+  frame.visited.push(item.line);
+  $$('.code-line',$('#frameCode')).forEach(line=>{
+    const n=Number(line.dataset.line);
+    line.classList.toggle('active',n===item.line);
+    line.classList.toggle('done',frame.visited.includes(n)&&n!==item.line);
+  });
+  $('#frameValue').textContent=item.value;$('#frameExplain').textContent=item.text;
+  frame.cursor++;
+  if(frame.cursor===frame.steps.length){state.progress.reviewRuns++;save()}
+}
+$$('[data-frame]').forEach(button=>button.addEventListener('click',()=>{
+  frame.type=button.dataset.frame;
+  $$('.frame-tab').forEach(item=>item.classList.toggle('active',item===button));
+  resetFrame();
+}));
+$('#frameMinus').addEventListener('click',()=>{frame.input=Math.max(0,frame.input-1);resetFrame()});
+$('#framePlus').addEventListener('click',()=>{frame.input=Math.min(99,frame.input+1);resetFrame()});
+$('#frameStep').addEventListener('click',stepFrame);
+$('#frameReset').addEventListener('click',resetFrame);
+
+const loop={start:1,end:6,op:'<=',step:1,trace:[],cursor:0,token:0,outputs:[]};
+function loopCond(i){return loop.op==='<='?i<=loop.end:i<loop.end}
+function loopMovesAway(){
+  if(!loopCond(loop.start))return false;
+  return loop.step<0&&loop.start<=loop.end;
+}
+function buildLoopTrace(){
+  const trace=[{phase:'init',i:loop.start,text:'初始化只做一次：把 i 设为 '+loop.start+'。'}];
+  let i=loop.start,guard=0;
+  if(!loopCond(i)){
+    trace.push({phase:'check',i,status:'zero',text:'第一次判断 '+i+loop.op+loop.end+' 就不成立，循环体 0 次执行。'});
+    return trace;
+  }
+  while(loopCond(i)&&guard<12){
+    trace.push({phase:'check',i,text:'判断 '+i+loop.op+loop.end+' 成立，可以进入这一圈。'});
+    trace.push({phase:'body',i,output:i,text:'执行循环体，输出 '+i+'。'});
+    const next=i+loop.step;
+    trace.push({phase:'step',i:next,text:'走步长：i 从 '+i+' 变成 '+next+'。'});
+    i=next;guard++;
+    if(loopMovesAway()&&guard>=4){
+      trace.push({phase:'check',i,status:'infinite',text:'i 一直向更小的方向走，却始终满足条件，这是无限循环。演示已安全停止。'});
+      return trace;
+    }
+  }
+  trace.push(loopCond(i)
+    ?{phase:'check',i,status:'guard',text:'循环还会继续；页面只演示前 12 圈。'}
+    :{phase:'check',i,status:'done',text:'再次判断 '+i+loop.op+loop.end+' 不成立，循环结束。'});
+  return trace;
+}
+function updateLoopCode(){
+  const stepText=loop.step===1?'i++':loop.step===-1?'i--':'i+=2';
+  $('#loopCode').textContent='for(int i='+loop.start+';i'+loop.op+loop.end+';'+stepText+'){\n  cout<<i<<endl;\n}';
+  $('#loopStart').textContent=loop.start;$('#loopEnd').textContent=loop.end;
+  $$('[data-loop-op]').forEach(button=>button.classList.toggle('active',button.dataset.loopOp===loop.op));
+  $$('[data-loop-step]').forEach(button=>button.classList.toggle('active',Number(button.dataset.loopStep)===loop.step));
+}
+function resetLoop(){
+  loop.token++;loop.trace=[];loop.cursor=0;loop.outputs=[];
+  $$('.phase').forEach(item=>item.classList.remove('active'));
+  $('#loopTrack').textContent='';$('#loopOutput').textContent='等待运行…';
+  $('#loopExplain').textContent='先看小括号：i 从 '+loop.start+' 开始，只要 i'+loop.op+loop.end+' 就继续，每圈 '+(loop.step>0?'+':'')+loop.step+'。';
+  updateLoopCode();
+}
+function setLoop(next){Object.assign(loop,next);resetLoop()}
+function renderLoopTrack(current){
+  const track=$('#loopTrack');track.textContent='';
+  const values=loop.outputs.length?loop.outputs:[loop.start];
+  values.forEach(value=>{
+    const node=document.createElement('div');node.className='track-node output'+(value===current?' current':'');node.textContent=value;track.appendChild(node);
+  });
+}
+function showLoopItem(item,first){
+  $$('.phase').forEach(p=>p.classList.toggle('active',p.dataset.phase===item.phase));
+  if(first){loop.outputs=[];$('#loopOutput').textContent=''}
+  if(item.output!==undefined){loop.outputs.push(item.output);$('#loopOutput').textContent=loop.outputs.join('  ')}
+  if(!loop.outputs.length)$('#loopOutput').textContent=item.status==='zero'?'（循环体一次也没执行）':'（还没有输出）';
+  $('#loopExplain').textContent=(item.status==='infinite'?'♾️ ':'')+item.text;
+  renderLoopTrack(item.i);
+}
+function prepareLoop(){
+  if(!loop.trace.length){loop.trace=buildLoopTrace();loop.cursor=0;state.progress.loopRuns++;save()}
+}
+function stepLoop(){
+  prepareLoop();if(loop.cursor>=loop.trace.length){toast('这一轮已经走完了');return}
+  showLoopItem(loop.trace[loop.cursor],loop.cursor===0);loop.cursor++;
+}
+async function autoLoop(){
+  loop.token++;const token=loop.token;loop.trace=buildLoopTrace();loop.cursor=0;state.progress.loopRuns++;save();
+  for(let i=0;i<loop.trace.length;i++){
+    if(token!==loop.token)return;
+    showLoopItem(loop.trace[i],i===0);loop.cursor=i+1;
+    await new Promise(resolve=>setTimeout(resolve,matchMedia('(prefers-reduced-motion: reduce)').matches?60:520));
+  }
+}
+$$('[data-loop-bump]').forEach(button=>button.addEventListener('click',()=>{
+  const key=button.dataset.loopBump,delta=Number(button.dataset.delta);
+  setLoop({[key]:Math.max(-5,Math.min(15,loop[key]+delta))});
+}));
+$$('[data-loop-op]').forEach(button=>button.addEventListener('click',()=>setLoop({op:button.dataset.loopOp})));
+$$('[data-loop-step]').forEach(button=>button.addEventListener('click',()=>setLoop({step:Number(button.dataset.loopStep)})));
+$('#loopStep').addEventListener('click',stepLoop);$('#loopAuto').addEventListener('click',autoLoop);$('#loopReset').addEventListener('click',resetLoop);
+
+const SUM_PRESETS={
+  sequence:{
+    addends:[1,2,3,4,5],
+    code:'int sum=0;\nfor(int i=1;i<=5;i++){\n  sum+=i;\n}\ncout<<sum;',
+    describe(i,value){return '第 '+i+' 圈：把当前的 i='+value+' 加进 sum。'}
+  },
+  inputs:{
+    addends:[3,5,2],
+    code:'int sum=0,a;\nfor(int i=1;i<=3;i++){\n  cin>>a;\n  sum+=a;\n}\ncout<<sum;',
+    describe(i,value){return '第 '+i+' 圈：输入 a='+value+'，再把 a 加进 sum。'}
+  },
+  salary:{
+    addends:[80,80,80,80,80],
+    code:'int pay=80,sum=0;\nfor(int i=1;i<=5;i++){\n  sum+=pay;\n}\ncout<<sum;',
+    describe(i){return '第 '+i+' 天：把当天工资 pay=80 加进 sum。'}
+  }
+};
+let sumLab={type:'sequence',cursor:0,sum:0,token:0};
+function resetSum(){
+  sumLab.token++;sumLab.cursor=0;sumLab.sum=0;
+  const preset=SUM_PRESETS[sumLab.type];
+  $('#sumCode').textContent=preset.code;$('#sumI').textContent='0';$('#sumAdd').textContent='—';$('#sumValue').textContent='0';
+  $('#sumEquation').textContent='0 + ? = ?';$('#sumExplain').textContent='sum 先从 0 开始。点“加进一块”，让第一圈运行。';
+  $('#sumTower').textContent='';
+}
+function stepSum(){
+  const preset=SUM_PRESETS[sumLab.type];
+  if(sumLab.cursor>=preset.addends.length){toast('累加完成，最后 sum = '+sumLab.sum);return}
+  const add=preset.addends[sumLab.cursor],before=sumLab.sum;
+  sumLab.sum+=add;sumLab.cursor++;
+  $('#sumI').textContent=String(sumLab.cursor);$('#sumAdd').textContent=String(add);$('#sumValue').textContent=String(sumLab.sum);
+  $('#sumEquation').textContent=before+' + '+add+' = '+sumLab.sum;
+  $('#sumExplain').textContent=preset.describe(sumLab.cursor,add)+' 旧 sum 没丢，结果写回 sum。';
+  const brick=document.createElement('div');brick.className='brick';brick.textContent='+'+add+' → sum '+sumLab.sum;$('#sumTower').appendChild(brick);
+  if(sumLab.cursor===preset.addends.length){state.progress.sumRuns++;save()}
+}
+async function autoSum(){
+  sumLab.token++;const token=sumLab.token;resetSum();sumLab.token=token;
+  const length=SUM_PRESETS[sumLab.type].addends.length;
+  for(let i=0;i<length;i++){
+    if(token!==sumLab.token)return;stepSum();
+    await new Promise(resolve=>setTimeout(resolve,matchMedia('(prefers-reduced-motion: reduce)').matches?60:650));
+  }
+}
+$$('[data-sum]').forEach(button=>button.addEventListener('click',()=>{
+  sumLab.type=button.dataset.sum;
+  $$('[data-sum]').forEach(item=>item.classList.toggle('active',item===button));resetSum();
+}));
+$('#sumStep').addEventListener('click',stepSum);$('#sumAuto').addEventListener('click',autoSum);$('#sumReset').addEventListener('click',resetSum);
+
+function runParity(trackProgress=true){
+  const row=$('#parityRow');row.textContent='';
+  for(let n=1;n<=8;n++){
+    const chip=document.createElement('div');chip.className='number-chip '+(n%2===0?'even':'odd');
+    chip.textContent=n+(n%2===0?' 偶':' 奇');row.appendChild(chip);
+  }
+  if(trackProgress&&state){state.progress.parityRuns++;save()}
+}
+async function runSalary(){
+  const output=$('#salaryResult');output.textContent='0';
+  for(let day=1;day<=5;day++){
+    output.textContent=String(day*80);
+    await new Promise(resolve=>setTimeout(resolve,matchMedia('(prefers-reduced-motion: reduce)').matches?60:420));
+  }
+  state.progress.salaryRuns++;save();
+}
+$('#parityRun').addEventListener('click',runParity);$('#salaryRun').addEventListener('click',runSalary);
+
+const QUESTIONS=[
+  {
+    id:'frame-choice',skill:'框架选择',q:'题目说“输入温度，如果大于 30 输出 swim，否则输出 climb”。应该先选哪种框架？',
+    opts:['if-else','for','只用 cout','循环累加'],ans:0,
+    ex:'“如果……否则……”是二选一判断，所以使用 if-else。程序只会走其中一条分支。',
+    repair:{text:'先抓题目里的“如果、否则”。这说明程序要在两条路中选一条。',steps:['读条件','判断真假','走 if 或 else','继续向下'],detail:'条件成立只走 if；条件不成立只走 else。不会两条都走。'}
+  },
+  {
+    id:'for-order',skill:'for 运行顺序',q:'for 循环开始后，正确的运行顺序是哪一个？',
+    opts:['初始化→判断→执行→步长→再判断','判断→初始化→步长→执行','初始化→执行→判断→结束','步长→判断→初始化→执行'],ans:0,
+    ex:'初始化只做一次；之后每圈都按“判断→执行→步长→回到判断”运行。',
+    repair:{text:'把 for 想成一条有回头箭头的跑道。起点只设置一次，之后反复跑中间三步。',steps:['初始化','判断','执行','步长 ↩'],detail:'步长完成后不是直接结束，而是回到“判断”。条件不成立才退出。'}
+  },
+  {
+    id:'for-step',skill:'可变步长',q:'这段循环输出什么？\nfor(int i=2;i<=8;i+=2) cout<<i;',
+    opts:['2 4 6 8','2 3 4 5 6 7 8','4 6 8 10','2 4 6'],ans:0,
+    ex:'i 从 2 开始，每圈加 2；<=8 包含 8，所以依次输出 2、4、6、8。',
+    repair:{text:'不要只看终点。先写起点 2，再按步长 +2 一格格走，走到 8 仍满足 <=。',steps:['2','4','6','8'],detail:'下一步会变成 10，10<=8 不成立，循环结束。'}
+  },
+  {
+    id:'sum-sequence',skill:'固定数字累加',q:'sum 从 0 开始，循环依次执行 sum+=1、sum+=2、sum+=3、sum+=4。最后 sum 是？',
+    opts:['10','4','7','24'],ans:0,
+    ex:'sum 会保留旧结果：0+1=1，1+2=3，3+3=6，6+4=10。',
+    repair:{text:'每一圈都把“旧 sum”拿回来，再加本圈的新数。',steps:['0+1=1','1+2=3','3+3=6','6+4=10'],detail:'sum 不是只记最后一个数，而是把前面所有结果累积起来。'}
+  },
+  {
+    id:'sum-inputs',skill:'输入变量累加',q:'循环三次输入 3、5、2，每圈执行 sum+=a。sum 初始为 0，最后输出？',
+    opts:['10','2','8','15'],ans:0,
+    ex:'输入值依次加进总和：0+3=3，3+5=8，8+2=10。',
+    repair:{text:'a 每圈装一个新输入，sum 负责保存到目前为止的总数。',steps:['a=3,sum=3','a=5,sum=8','a=2,sum=10','输出 10'],detail:'a 会被新输入覆盖，但 sum 会保留前面累积的结果。'}
+  },
+  {
+    id:'parity',skill:'奇偶判断',q:'下面哪个条件能判断 a 是偶数？',
+    opts:['a%2==0','a/2==0','a%2==1','a>2'],ans:0,
+    ex:'偶数除以 2 的余数是 0，所以用 a%2==0。% 取得的是余数。',
+    repair:{text:'把数字平均分给 2 个人：没有剩下，就是偶数。',steps:['拿 a','除以 2','看余数','余数 0 = 偶数'],detail:'% 是取余数。a%2==0 表示 a 除以 2 没有余数。'}
+  },
+  {
+    id:'salary',skill:'工资计算',q:'日工资 80 元，工作 5 天。循环每天执行 sum+=pay，sum 初始为 0。最后工资是多少？',
+    opts:['400','85','160','500'],ans:0,
+    ex:'每天加 80，共加 5 次：80×5=400。循环轨迹是 80、160、240、320、400。',
+    repair:{text:'把每天的 80 元看成一块积木，共放进 sum 五块。',steps:['第1天 80','第2天 160','第3天 240','第5天 400'],detail:'重复加同一个数，也可以用乘法验证：日工资×工作天数。'}
+  },
+  {
+    id:'boundary',skill:'循环边界',q:'for(int i=1;i<4;i++) cout<<i; 一共输出几次？',
+    opts:['3 次','4 次','2 次','0 次'],ans:0,
+    ex:'i 取 1、2、3 时 i<4 成立；i=4 时不成立，所以输出 3 次。',
+    repair:{text:'把每个 i 都代进条件，不要凭终点数字猜次数。',steps:['1<4 ✓','2<4 ✓','3<4 ✓','4<4 ✗'],detail:'“<4”不包含 4；如果写“<=4”才会多执行一次。'}
+  }
+];
+function questionById(id){return QUESTIONS.find(q=>q.id===id)}
+let quiz={list:[],index:0,right:0,answered:false,startedAt:0,questionStartedAt:0,wrongThisQuestion:false};
+function startQuiz(ids){
+  const list=ids&&ids.length?ids.map(questionById).filter(Boolean):QUESTIONS.slice();
+  if(!list.length){toast('错题本是空的，全部毕业啦');return}
+  quiz={list,index:0,right:0,answered:false,startedAt:Date.now(),questionStartedAt:Date.now(),wrongThisQuestion:false};
+  showView('practice','quiz-card');$('#quizActions').style.display='none';renderQuestion();
+}
+function renderQuestion(){
+  const box=$('#quizBox'),item=quiz.list[quiz.index];
+  if(!item){renderQuizResult();return}
+  quiz.answered=false;quiz.questionStartedAt=Date.now();box.textContent='';
+  $('#quizTitle').textContent=quiz.list.length===QUESTIONS.length?'8 题独立检验':'错题回炉';
+  $('#quizScore').textContent=(quiz.index+1)+' / '+quiz.list.length;
+  $('#quizProgress').style.width=(quiz.index/quiz.list.length*100)+'%';
+  const skill=document.createElement('span');skill.className='pill';skill.textContent=item.skill;
+  const question=document.createElement('div');question.className='question';question.textContent=item.q;
+  box.append(skill,question);
+  item.opts.forEach((option,index)=>{
+    const button=document.createElement('button');button.type='button';button.className='option';button.textContent=option;
+    button.addEventListener('click',()=>answerQuestion(index));box.appendChild(button);
+  });
+  const feedback=document.createElement('div');feedback.className='feedback';feedback.id='answerFeedback';box.appendChild(feedback);
+  const next=document.createElement('button');next.type='button';next.className='btn';next.id='nextQuestion';next.style.display='none';
+  next.textContent=quiz.index===quiz.list.length-1?'看结果':'下一题';
+  next.addEventListener('click',()=>{quiz.index++;quiz.wrongThisQuestion=false;renderQuestion()});box.appendChild(next);
+}
+function logAttempt(item,choice,ok){
+  const event={
+    id:uid(),ts:new Date().toISOString(),activity:'quiz',subject:APP.subject,topic:APP.topic,
+    question_id:item.id,question:item.q,user_answer:item.opts[choice],correct_answer:item.opts[item.ans],
+    ok,skill:item.skill,explanation:item.ex,ms:Date.now()-quiz.questionStartedAt,source:APP.source
+  };
+  state.events.push(event);
+  const wb=state.wrongbook[item.id]||{misses:0,streak:0,lastWrongAt:'',lastAnswer:''};
+  if(!ok){
+    wb.misses++;wb.streak=0;wb.lastWrongAt=event.ts;wb.lastAnswer=event.user_answer;state.wrongbook[item.id]=wb;
+  }else if(state.wrongbook[item.id]){
+    wb.streak=(Number(wb.streak)||0)+1;
+    if(wb.streak>=2){
+      delete state.wrongbook[item.id];
+      if(!state.mastered.includes(item.id))state.mastered.push(item.id);
+    }else state.wrongbook[item.id]=wb;
+  }
+  save();
+}
+function answerQuestion(choice){
+  if(quiz.answered)return;
+  const item=quiz.list[quiz.index],ok=choice===item.ans;quiz.answered=true;
+  logAttempt(item,choice,ok);
+  $$('.option',$('#quizBox')).forEach((button,index)=>{
+    button.disabled=true;
+    if(index===item.ans)button.classList.add('correct');
+    else if(index===choice)button.classList.add('wrong');
+  });
+  const feedback=$('#answerFeedback');feedback.classList.add('show');
+  if(ok){
+    quiz.right++;
+    feedback.textContent='✅ 答对了。'+item.ex+
+      (state.wrongbook[item.id]?' 这道错题还要再连续答对 1 次才能毕业。':state.mastered.includes(item.id)?' 已连续答对 2 次，从错题本毕业！':'');
+    $('#nextQuestion').style.display='inline-block';
+  }else{
+    quiz.wrongThisQuestion=true;
+    feedback.textContent='❌ 这题先不往下走。已放进错题本；现在只重教真正卡住的这一小步。';
+    setTimeout(()=>openRepair(item),220);
+  }
+}
+function openRepair(item){
+  $('#repairText').textContent=item.repair.text;
+  const steps=$('#repairSteps');steps.textContent='';
+  item.repair.steps.forEach(text=>{const cell=document.createElement('div');cell.className='repair-step';cell.textContent=text;steps.appendChild(cell)});
+  $('#repairExplain').textContent=item.repair.detail;
+  $('#repairReturn').textContent='我看懂了，返回刚才第 '+(quiz.index+1)+' 题';
+  $('#repairDialog').classList.add('show');
+}
+$('#repairReturn').addEventListener('click',()=>{
+  $('#repairDialog').classList.remove('show');
+  renderQuestion();
+  requestAnimationFrame(()=>$('#quiz-card').scrollIntoView({behavior:'smooth',block:'start'}));
+});
+function renderQuizResult(){
+  const box=$('#quizBox');box.textContent='';
+  $('#quizProgress').style.width='100%';$('#quizScore').textContent=quiz.right+' / '+quiz.list.length;
+  const heading=document.createElement('div');heading.className='question';heading.textContent='完成！本轮最终答对 '+quiz.right+' / '+quiz.list.length+' 题';
+  const summary=document.createElement('p');summary.className='sub';
+  summary.textContent='本轮用时 '+fmt(Date.now()-quiz.startedAt)+'。答错过的题已留在错题本；连续答对 2 次才毕业。';
+  const again=document.createElement('button');again.type='button';again.className='btn';again.textContent='再练一轮';again.addEventListener('click',()=>startQuiz());
+  const wrong=document.createElement('button');wrong.type='button';wrong.className='btn secondary';wrong.textContent='只重做错题';wrong.addEventListener('click',()=>startQuiz(Object.keys(state.wrongbook)));
+  box.append(heading,summary,again,wrong);$('#quizActions').style.display='block';renderStats();
+}
+$('#startQuiz').addEventListener('click',()=>startQuiz());
+$('#redoWrong').addEventListener('click',()=>startQuiz(Object.keys(state.wrongbook)));
+$('#recordRedo').addEventListener('click',()=>startQuiz(Object.keys(state.wrongbook)));
+
+function renderWrongList(){
+  const box=$('#wrongList');box.textContent='';
+  const ids=Object.keys(state.wrongbook);
+  if(!ids.length){
+    const empty=document.createElement('div');empty.className='empty';empty.textContent='🎉 待回炉错题为空。继续保持！';box.appendChild(empty);return;
+  }
+  ids.forEach(id=>{
+    const q=questionById(id);if(!q)return;
+    const data=state.wrongbook[id],item=document.createElement('div');item.className='wrong-item';
+    const title=document.createElement('b');title.textContent=q.skill+' · '+q.q;
+    const meta=document.createElement('span');meta.textContent='错过 '+data.misses+' 次 · 当前连续答对 '+data.streak+'/2';
+    item.append(title,meta);box.appendChild(item);
+  });
+}
+function renderStats(){
+  if(!state)return;
+  const answers=state.events.filter(event=>event.activity==='quiz');
+  const right=answers.filter(event=>event.ok===true).length;
+  const accuracy=answers.length?Math.round(right/answers.length*100):0;
+  const experiments=state.progress.reviewRuns+state.progress.loopRuns+state.progress.sumRuns+state.progress.parityRuns+state.progress.salaryRuns;
+  const wrong=Object.keys(state.wrongbook).length;
+  $('#heroExperiments').textContent=experiments;$('#heroAccuracy').textContent=accuracy+'%';$('#heroWrong').textContent=wrong;
+  $('#homeAnswers').textContent=answers.length;$('#homeMastered').textContent=state.mastered.length;$('#homeTime').textContent=fmt(elapsed());
+  $('#recordAnswers').textContent=answers.length;$('#recordAccuracy').textContent=accuracy+'%';$('#recordWrong').textContent=wrong;
+  renderWrongList();
+}
+function exportObject(){
+  save();
+  return {...APP,child,childName:CHILDREN[child].name,exportedAt:new Date().toISOString(),state};
+}
+function buildMarkdown(){
+  save();
+  const c=CHILDREN[child],answers=state.events.filter(event=>event.activity==='quiz'),wrong=Object.keys(state.wrongbook);
+  const lines=[
+    '# '+c.name+' 核桃 L3-4 复习 & L4-1 预习学习记录','',
+    '- 导出时间：'+new Date().toLocaleString('zh-CN'),
+    '- 课程日期：2026-07-30',
+    '- 累计用时：'+fmt(state.elapsedMs),
+    '- 累计作答：'+answers.length,
+    '- 待回炉：'+wrong.length,'',
+    '## 待回炉错题'
+  ];
+  if(!wrong.length)lines.push('无');
+  wrong.forEach(id=>{const q=questionById(id),w=state.wrongbook[id];if(q)lines.push('- '+q.skill+'：'+q.q+'（错 '+w.misses+' 次，连对 '+w.streak+'/2）')});
+  lines.push('','## 最近作答');
+  answers.slice(-30).forEach(event=>lines.push('- '+(event.ok?'✅':'❌')+' '+event.skill+'：'+event.question+'｜作答：'+event.user_answer+'｜答案：'+event.correct_answer));
+  lines.push('','## 原始 JSON','```json',JSON.stringify(exportObject(),null,2),'```');
+  return lines.join('\n');
+}
+function download(name,type,text){
+  const blob=new Blob([text],{type}),url=URL.createObjectURL(blob),anchor=document.createElement('a');
+  anchor.href=url;anchor.download=name;document.body.appendChild(anchor);anchor.click();anchor.remove();
+  setTimeout(()=>URL.revokeObjectURL(url),600);
+}
+async function copyText(text){
+  try{
+    if(navigator.clipboard&&window.isSecureContext){await navigator.clipboard.writeText(text)}
+    else{
+      const area=document.createElement('textarea');area.value=text;area.style.position='fixed';area.style.opacity='0';
+      document.body.appendChild(area);area.select();document.execCommand('copy');area.remove();
+    }
+    toast('已复制，可以直接发给 AI');
+  }catch(_){toast('复制失败，请改用“导出 Markdown”')}
+}
+$('#copyAi').addEventListener('click',()=>copyText(buildMarkdown()));
+$('#exportJson').addEventListener('click',()=>{
+  const name=CHILDREN[child].name+'_核桃L4-1_学习记录.json';
+  download(name,'application/json;charset=utf-8',JSON.stringify(exportObject(),null,2));
+});
+$('#exportMd').addEventListener('click',()=>{
+  const name=CHILDREN[child].name+'_核桃L4-1_学习记录.md';
+  download(name,'text/markdown;charset=utf-8',buildMarkdown());
+});
+$('#importJson').addEventListener('change',async event=>{
+  const file=event.target.files&&event.target.files[0];event.target.value='';if(!file)return;
+  try{
+    const data=JSON.parse(await file.text());
+    const candidate=safeState(data.state||data,child);
+    if(!candidate)throw new Error('文件必须属于当前孩子、本软件和 2026-07-30-v1 版本');
+    state=candidate;sessionStarted=Date.now();save();toast('学习记录导入成功');
+  }catch(error){toast('导入失败：'+error.message)}
+});
+
+window.addEventListener('pagehide',save);
+document.addEventListener('visibilitychange',()=>{if(document.hidden)save()});
+setInterval(()=>renderStats(),1000);setInterval(save,15000);
+renderVocab();renderFrame();resetLoop();resetSum();runParity(false);chooseInitialChild();
+window.__hetaoL41={
+  APP,QUESTIONS,getChild:()=>child,getState:()=>state?JSON.parse(JSON.stringify(state)):null,
+  setChild,startQuiz,setLoop,buildLoopTrace,selectSum(type){if(SUM_PRESETS[type]){sumLab.type=type;resetSum()}},
+  answerQuestion,showView
+};
+</script>
+</body>
+</html>

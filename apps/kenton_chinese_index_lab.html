@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<script src="../assets/learning-sync.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>哥哥语文 · 四下复习探索馆</title>
+<style>
+:root{--blue:#2f6fb3;--blued:#225182;--bluebg:#e8f0fa;--gold:#f2b632;--golddk:#c98a00;
+ --ink:#23303a;--paper:#eef5fc;--card:#fff;--line:#dbe7f3;--green:#2e9c54;--greenbg:#e9f7ee;
+ --red:#e1553f;--redbg:#fdecea;--muted:#7d8a96;--purple:#7b54c0;--purplebg:#f1ebfa;}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+html,body{margin:0;padding:0;}
+body{font-family:'LXGW WenKai Screen','PingFang SC','Microsoft YaHei',system-ui,sans-serif;
+ background:radial-gradient(circle at 10% 4%,#d3e6fb 0,transparent 40%),radial-gradient(circle at 92% 98%,#dde9fb 0,transparent 44%),var(--paper);
+ color:var(--ink);min-height:100vh;padding:0 0 50px;}
+.wrap{max-width:620px;margin:0 auto;padding:12px;}
+.top{display:flex;align-items:center;gap:10px;padding:8px 2px 6px;}
+.badge{background:var(--blue);color:#fff;font-weight:800;font-size:17px;padding:6px 13px;border-radius:13px 13px 13px 4px;box-shadow:0 4px 0 var(--blued);}
+.top h1{font-size:16px;margin:0;flex:1;}
+.top .home{text-decoration:none;font-size:20px;background:#fff;width:38px;height:38px;border-radius:11px;display:grid;place-items:center;color:var(--ink);box-shadow:0 3px 0 #cddcec;}
+.intro{font-size:13px;color:var(--muted);line-height:1.7;background:#fff;border:2px solid var(--line);border-radius:14px;padding:12px 14px;margin:8px 0;}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:6px;}
+.tile{background:#fff;border:2px solid var(--line);border-radius:18px;padding:16px 12px;cursor:pointer;box-shadow:0 6px 0 #e1ecf7;text-align:center;transition:transform .08s;border-top:6px solid var(--blue);}
+.tile:active{transform:translateY(3px);box-shadow:0 3px 0 #e1ecf7;}
+.tile .ic{font-size:38px;line-height:1;}
+.tile .nm{font-weight:800;font-size:16px;margin-top:8px;color:var(--blued);}
+.tile .ds{font-size:11.5px;color:var(--muted);margin-top:4px;line-height:1.5;}
+.card{background:var(--card);border:2px solid var(--line);border-radius:18px;padding:16px;margin:11px 0;box-shadow:0 6px 0 #e4eef8;}
+.h2{font-size:18px;font-weight:800;margin:0 0 4px;color:var(--blued);}
+.hint{font-size:13px;color:var(--muted);line-height:1.7;}
+.btn{font-family:inherit;font-weight:800;font-size:15px;border:none;border-radius:13px;padding:11px 16px;cursor:pointer;color:#fff;background:var(--blue);box-shadow:0 5px 0 var(--blued);transition:transform .06s;}
+.btn:active{transform:translateY(3px);box-shadow:0 2px 0 var(--blued);}
+.btn.gold{background:var(--gold);box-shadow:0 5px 0 var(--golddk);color:#5a3d00;}
+.btn.ghost{background:#fff;color:var(--blued);border:2px solid var(--blue);box-shadow:0 5px 0 #cddcec;}
+.btn.green{background:var(--green);box-shadow:0 5px 0 #1f7a3e;}
+.btn.sm{font-size:13.5px;padding:9px 13px;}
+.btn:disabled{opacity:.45;box-shadow:none;transform:none;}
+.row{display:flex;gap:9px;flex-wrap:wrap;align-items:center;}
+.center{justify-content:center;}
+.hide{display:none!important;}
+.back{background:none;border:none;color:var(--muted);font-size:15px;font-family:inherit;cursor:pointer;font-weight:800;padding:6px 2px;}
+.chip{font-family:inherit;font-size:16px;font-weight:800;padding:8px 14px;border-radius:11px;border:2px solid var(--line);background:#fff;color:var(--blued);cursor:pointer;box-shadow:0 3px 0 #e4eef8;}
+.chip.on{background:var(--blue);color:#fff;border-color:var(--blue);}
+.bigchar{font-size:74px;font-weight:800;color:var(--blued);text-align:center;line-height:1.1;margin:4px 0;}
+.bigchar .hl{color:var(--red);}
+.readbtns{display:flex;gap:9px;flex-wrap:wrap;justify-content:center;margin:8px 0;}
+.readbtn{font-family:inherit;font-size:17px;font-weight:800;padding:9px 15px;border-radius:12px;border:2px solid var(--gold);background:#fffaf0;color:var(--golddk);cursor:pointer;box-shadow:0 4px 0 #f0dca0;}
+.readbtn.on{background:var(--gold);color:#5a3d00;}
+.popcard{background:var(--bluebg);border-radius:13px;padding:14px;text-align:center;margin-top:8px;font-size:16px;line-height:1.8;animation:pop .45s;}
+@keyframes pop{0%{transform:scale(.6);opacity:0;}60%{transform:scale(1.08);}100%{transform:scale(1);opacity:1;}}
+.popcard .w{font-size:22px;font-weight:800;color:var(--blued);}
+.opts{display:grid;gap:10px;margin-top:8px;}
+.opt{font-family:inherit;font-size:16px;text-align:left;background:#fff;border:2px solid var(--line);border-radius:13px;padding:12px 15px;cursor:pointer;color:var(--ink);box-shadow:0 4px 0 #e4eef8;}
+.opt:active{transform:translateY(2px);box-shadow:0 2px 0 #e4eef8;}
+.opt.right{background:var(--greenbg);border-color:var(--green);color:var(--green);font-weight:800;}
+.opt.wrong{background:var(--redbg);border-color:var(--red);color:var(--red);font-weight:800;}
+.why{background:var(--greenbg);border-left:5px solid var(--green);border-radius:10px;padding:11px 14px;font-size:14px;line-height:1.7;margin:10px 0;}
+.why .lab{font-weight:800;color:var(--green);}
+.score{font-weight:800;color:var(--blued);}
+/* 形近字 */
+.xj{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:6px 0;}
+.xjc{width:84px;border:2px solid var(--line);border-radius:14px;padding:8px;text-align:center;cursor:pointer;background:#fff;box-shadow:0 4px 0 #e4eef8;}
+.xjc .z{font-size:40px;font-weight:800;color:var(--blued);}
+.xjc .bs{font-size:12px;color:var(--red);font-weight:800;min-height:16px;margin-top:2px;}
+.xjc .mn{font-size:12px;color:var(--muted);min-height:16px;}
+.xjc.on{border-color:var(--gold);background:#fffaf0;}
+/* 关联词搭桥 */
+.bridge{display:flex;align-items:stretch;gap:0;margin:10px 0;}
+.isl{flex:1;background:var(--bluebg);border-radius:12px;padding:12px;font-size:15px;font-weight:700;text-align:center;display:flex;align-items:center;justify-content:center;min-height:62px;}
+.span{width:0;overflow:hidden;transition:width .6s ease;display:flex;align-items:center;justify-content:center;}
+.span.open{width:64px;}
+.span .road{width:100%;height:8px;background:repeating-linear-gradient(90deg,var(--gold) 0 10px,#fff 10px 16px);border-radius:4px;}
+.fillword{display:inline-block;background:var(--gold);color:#5a3d00;font-weight:800;border-radius:6px;padding:0 6px;margin:0 2px;}
+/* 病句医院 */
+.bed{border:2px solid var(--red);background:var(--redbg);border-radius:13px;padding:14px;font-size:17px;font-weight:700;text-align:center;line-height:1.7;}
+.bed.cured{border-color:var(--green);background:var(--greenbg);}
+.del{color:var(--red);text-decoration:line-through;}
+.add{color:var(--green);font-weight:800;}
+/* 书架/翻卡 */
+.shelf{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;}
+.flip{perspective:900px;height:96px;cursor:pointer;}
+.flip .inner{position:relative;width:100%;height:100%;transition:transform .5s;transform-style:preserve-3d;}
+.flip.on .inner{transform:rotateY(180deg);}
+.face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:12px;padding:8px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;border:2px solid var(--line);box-shadow:0 4px 0 #e4eef8;}
+.face.f{background:var(--bluebg);} .face.b{background:#fff8ea;transform:rotateY(180deg);}
+.face .nm2{font-size:13px;font-weight:800;color:var(--blued);line-height:1.3;}
+.face .au{font-size:15px;font-weight:800;color:var(--golddk);}
+.face .co{font-size:12px;color:var(--muted);margin-top:3px;}
+.rolecard{border:2px solid var(--line);border-radius:13px;padding:12px;margin:8px 0;background:#fff;cursor:pointer;box-shadow:0 4px 0 #e4eef8;}
+.rolecard .rn{font-size:16px;font-weight:800;color:var(--blued);}
+.rolecard .rq{display:inline-block;background:var(--gold);color:#5a3d00;border-radius:6px;padding:1px 8px;font-size:13px;font-weight:800;margin-left:6px;}
+.rolecard .rd{font-size:13px;color:var(--muted);margin-top:6px;line-height:1.6;}
+/* 诗句/字义 */
+.poemline{font-size:17px;font-weight:700;line-height:2;text-align:center;}
+.zi{display:inline-block;color:var(--purple);border-bottom:2px dashed var(--purple);cursor:pointer;padding:0 1px;}
+.zipop{background:var(--purplebg);border-radius:10px;padding:10px 13px;font-size:14px;margin-top:8px;text-align:center;animation:pop .4s;}
+.scroll{background:linear-gradient(180deg,#fffaf0,#fff5e0);border:2px solid var(--gold);border-radius:12px;padding:13px;margin:8px 0;text-align:center;cursor:pointer;}
+.scroll .ml{font-size:16px;font-weight:800;color:#6a4a00;line-height:1.7;}
+.scroll .frm{font-size:12px;color:var(--muted);margin-top:5px;}
+.tipbar{font-size:12px;color:var(--muted);text-align:center;margin-top:14px;line-height:1.6;}
+.em{color:var(--red);}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top">
+    <a class="home" href="../index.html">‹</a>
+    <span class="badge">哥哥</span>
+    <h1>语文 · 四下复习探索馆</h1>
+  </div>
+  <div id="home"></div>
+  <div id="view" class="hide">
+    <button class="back" id="backBtn">← 回探索馆</button>
+    <div id="stage"></div>
+  </div>
+  <div class="tipbar">按四下期末复习索引做的「会动的复习」——动手、动脑、记关系，不是刷题。</div>
+</div>
+
+<script>
+"use strict";
+function $(id){return document.getElementById(id);}
+function el(tag,cls,html){var e=document.createElement(tag);if(cls)e.className=cls;if(html!=null)e.innerHTML=html;return e;}
+function shuffle(a){a=a.slice();for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t;}return a;}
+var actx=null;
+function beep(ok){try{if(!actx)actx=new (window.AudioContext||window.webkitAudioContext)();var o=actx.createOscillator(),g=actx.createGain();o.connect(g);g.connect(actx.destination);o.type="triangle";o.frequency.value=ok?880:200;var t=actx.currentTime;g.gain.setValueAtTime(0.0001,t);g.gain.exponentialRampToValueAtTime(0.2,t+0.02);g.gain.exponentialRampToValueAtTime(0.0001,t+(ok?0.25:0.3));o.start(t);o.stop(t+(ok?0.26:0.32));if(ok){var o2=actx.createOscillator(),g2=actx.createGain();o2.connect(g2);g2.connect(actx.destination);o2.type="triangle";o2.frequency.value=1320;g2.gain.setValueAtTime(0.0001,t+0.1);g2.gain.exponentialRampToValueAtTime(0.18,t+0.12);g2.gain.exponentialRampToValueAtTime(0.0001,t+0.32);o2.start(t+0.1);o2.stop(t+0.33);}}catch(e){}}
+
+/* ============ 模块注册 ============ */
+var MODS=[
+ {id:"duoyin",ic:"🎡",nm:"多音字转盘",ds:"一个字，几种读音？点一点，看它变"},
+ {id:"xingjin",ic:"🔍",nm:"形近字·火眼金睛",ds:"看清偏旁，连对词语"},
+ {id:"guanlian",ic:"🌉",nm:"关联词·句子搭桥",ds:"先判断关系，再搭桥连句"},
+ {id:"bingju",ic:"🏥",nm:"病句·句子医院",ds:"给句子看病、开药方"},
+ {id:"naotu",ic:"🕸️",nm:"名家名作·脑图书架",ds:"作者·作品·人物品质，记关系"},
+ {id:"shige",ic:"📜",nm:"古诗文·记忆馆",ds:"理解翻卡·字义点读·名言卷轴"}
+];
+function renderHome(){
+  var h='<div class="intro">这是按你的<b>四下期末复习索引</b>做的探索馆。选一个馆进去——每个馆都能<b>动手玩</b>、<b>讲清为什么</b>，帮你把知识<b>记成画面</b>。</div><div class="grid">';
+  MODS.forEach(function(m){h+='<div class="tile" data-id="'+m.id+'"><div class="ic">'+m.ic+'</div><div class="nm">'+m.nm+'</div><div class="ds">'+m.ds+'</div></div>';});
+  h+='</div>';
+  $("home").innerHTML=h;
+  $("home").querySelectorAll(".tile").forEach(function(t){t.onclick=function(){openMod(t.dataset.id);};});
+}
+function openMod(id){
+  $("home").classList.add("hide");$("view").classList.remove("hide");window.scrollTo(0,0);
+  RENDER[id]($("stage"));
+}
+$("backBtn").onclick=function(){$("view").classList.add("hide");$("home").classList.remove("hide");window.scrollTo(0,0);};
+
+var RENDER={};
+
+/* ============ 1. 多音字转盘 ============ */
+var DUOYIN=[
+ {z:"荷",r:[["hè","负荷","承受的重量"],["hé","荷花","水生植物"]]},
+ {z:"吭",r:[["kēng","一声不吭","出声"],["háng","引吭高歌","喉咙"]]},
+ {z:"冲",r:[["chòng","冲着","对着；劲头足"],["chōng","冲动","向前闯"]]},
+ {z:"禁",r:[["jīn","情不自禁","忍住"],["jìn","禁止","不许"]]},
+ {z:"塞",r:[["sāi","瓶塞","塞子"],["sè","堵塞","阻隔"],["sài","边塞","要塞"]]},
+ {z:"强",r:[["qiáng","强大","力量大"],["qiǎng","勉强","硬要"],["jiàng","倔强","不服软"]]},
+ {z:"单",r:[["dān","简单","单一"],["shàn","姓单","姓氏"],["chán","单于","匈奴首领"]]},
+ {z:"鲜",r:[["xiān","鲜艳","新鲜明丽"],["xiǎn","鲜为人知","少"]]}
+];
+RENDER.duoyin=function(stage){
+  var idx=0,quiz=false;
+  function paint(){
+    var d=DUOYIN[idx];
+    var h='<div class="card"><div class="h2">🎡 多音字转盘</div><div class="hint">点下面的字换一个，再点它的读音——看清每个读音配哪个词、什么意思。读音越多越要分清！</div>'+
+      '<div class="row center" style="margin-top:8px">'+DUOYIN.map(function(x,i){return '<button class="chip'+(i===idx?' on':'')+'" data-i="'+i+'">'+x.z+'</button>';}).join("")+'</div>'+
+      '<div class="bigchar">'+d.z+'<span style="font-size:18px;color:var(--muted)">（'+d.r.length+' 个读音）</span></div>'+
+      '<div class="readbtns" id="dyReads">'+d.r.map(function(r,i){return '<button class="readbtn" data-i="'+i+'">'+r[0]+'</button>';}).join("")+'</div>'+
+      '<div id="dyPop"></div>'+
+      '<div class="row center" style="margin-top:12px"><button class="btn gold sm" id="dyQuiz">🎯 考一考我</button></div></div>';
+    stage.innerHTML=h;
+    stage.querySelectorAll(".chip").forEach(function(c){c.onclick=function(){idx=+c.dataset.i;paint();};});
+    stage.querySelectorAll("#dyReads .readbtn").forEach(function(b){b.onclick=function(){
+      stage.querySelectorAll("#dyReads .readbtn").forEach(function(x){x.classList.remove("on");});b.classList.add("on");
+      var r=d.r[+b.dataset.i];
+      $("dyPop").innerHTML='<div class="popcard"><div class="w">'+d.z+'（'+r[0]+'）</div>词语：<b>'+r[1]+'</b><br>意思：'+r[2]+'</div>';
+    };});
+    $("dyQuiz").onclick=function(){runQuiz();};
+  }
+  function runQuiz(){
+    // 随机抽一个词，问读音
+    var pool=[];DUOYIN.forEach(function(d){d.r.forEach(function(r){pool.push({z:d.z,word:r[1],read:r[0],all:d.r.map(function(x){return x[0];})});});});
+    var q=pool[Math.floor(Math.random()*pool.length)];
+    var opts=shuffle(q.all).slice(0,Math.min(3,q.all.length));
+    if(opts.indexOf(q.read)<0)opts[0]=q.read,opts=shuffle(opts);
+    var h='<div class="card"><div class="h2">🎯 考一考</div><div class="hint">下面这个词，划线字读什么？</div>'+
+      '<div class="bigchar" style="font-size:40px">'+q.word+'</div><div class="opts">'+
+      shuffle(opts).map(function(o){return '<button class="opt">'+o+'</button>';}).join("")+'</div><div id="dyFb"></div>'+
+      '<div class="row center" style="margin-top:10px"><button class="btn sm" id="dyMore">再来一题</button> <button class="btn ghost sm" id="dyBack">← 回转盘</button></div></div>';
+    stage.innerHTML=h;
+    stage.querySelectorAll(".opt").forEach(function(b){b.onclick=function(){
+      var ok=b.textContent===q.read;
+      stage.querySelectorAll(".opt").forEach(function(x){x.onclick=null;if(x.textContent===q.read)x.classList.add("right");else if(x===b)x.classList.add("wrong");});
+      beep(ok);
+      $("dyFb").innerHTML='<div class="why"><span class="lab">'+(ok?"✅ 对！":"正确：")+q.word+'（'+q.read+'）</span></div>';
+    };});
+    $("dyMore").onclick=runQuiz;$("dyBack").onclick=paint;
+  }
+  paint();
+};
+
+/* ============ 2. 形近字·火眼金睛 ============ */
+var XINGJIN=[
+ {g:[["矩","矢字旁","规矩、矩形"],["拒","提手旁","拒绝"],["距","足字旁","距离"]],q:[["规__","矩"],["__绝","拒"],["__离","距"]]},
+ {g:[["覆","西字头","覆盖、反复"],["履","尸字头","鞋；履行"]],q:[["__盖","覆"],["__行诺言","履"]]},
+ {g:[["失","丢失","丢失、失去"],["矢","箭","众矢之的"]],q:[["丢__","失"],["众__之的","矢"]]},
+ {g:[["躁","足字旁","急躁、焦躁"],["燥","火字旁","干燥"]],q:[["焦__不安","躁"],["天气干__","燥"]]},
+ {g:[["搏","提手旁","搏斗、拼搏"],["膊","月（肉）旁","胳膊"]],q:[["拼__","搏"],["胳__","膊"]]}
+];
+RENDER.xingjin=function(stage){
+  var gi=0;
+  function paint(){
+    var d=XINGJIN[gi];
+    var h='<div class="card"><div class="h2">🔍 形近字 · 火眼金睛</div><div class="hint">先点每个字看清<b>偏旁</b>和意思，再到下面把词语和正确的字<b>连一连</b>。</div>'+
+      '<div class="row center" style="margin:8px 0">'+XINGJIN.map(function(x,i){return '<button class="chip'+(i===gi?' on':'')+'" data-i="'+i+'">'+x.g.map(function(z){return z[0];}).join("")+'</button>';}).join("")+'</div>'+
+      '<div class="xj">'+d.g.map(function(z,i){return '<div class="xjc" data-i="'+i+'"><div class="z">'+z[0]+'</div><div class="bs"></div><div class="mn"></div></div>';}).join("")+'</div>'+
+      '<div style="font-weight:800;color:var(--blued);margin:6px 0 2px">连一连：给词语选对的字</div><div id="xjGame"></div></div>';
+    stage.innerHTML=h;
+    stage.querySelectorAll(".chip").forEach(function(c){c.onclick=function(){gi=+c.dataset.i;paint();};});
+    stage.querySelectorAll(".xjc").forEach(function(c){c.onclick=function(){
+      var z=d.g[+c.dataset.i];c.classList.add("on");
+      c.querySelector(".bs").textContent=z[1];c.querySelector(".mn").textContent=z[2];
+    };});
+    game(d);
+  }
+  function game(d){
+    var qi=0,right=0;var order=shuffle(d.q.slice());
+    function round(){
+      var box=$("xjGame");
+      if(qi>=order.length){box.innerHTML='<div class="why"><span class="lab">🎉 连完！答对 '+right+'/'+order.length+'</span></div><button class="btn green sm" id="xjAgain">再连一次</button>';$("xjAgain").onclick=function(){game(d);};return;}
+      var q=order[qi];var letters=shuffle(d.g.map(function(z){return z[0];}));
+      box.innerHTML='<div style="font-size:18px;font-weight:800;margin:6px 0">'+q[0].replace("__",'<span class="em">（？）</span>')+'</div><div class="row">'+letters.map(function(L){return '<button class="chip">'+L+'</button>';}).join("")+'</div><div id="xjFb"></div>';
+      box.querySelectorAll(".chip").forEach(function(b){b.onclick=function(){
+        var ok=b.textContent===q[1];beep(ok);if(ok)right++;
+        box.querySelectorAll(".chip").forEach(function(x){x.onclick=null;});
+        $("xjFb").innerHTML='<div class="why" '+(ok?'':'style="border-color:var(--red);background:var(--redbg)"')+'><span class="lab" '+(ok?'':'style="color:var(--red)"')+'>'+(ok?"✅ 对！":"正确是「"+q[1]+"」")+'</span> '+q[0].replace("__",q[1])+'</div>';
+        setTimeout(function(){qi++;round();},ok?800:1500);
+      };});
+    }
+    round();
+  }
+  paint();
+};
+
+/* ============ 3. 关联词·句子搭桥 ============ */
+var REL=["选择关系","假设关系","条件关系","并列关系","递进关系","因果关系","转折关系"];
+var GL=[
+ {a:"多穿点衣服",b:"不会感冒",rel:"假设关系",pair:["如果","就"],why:"先<b>假设</b>“多穿点衣服”，再说结果“不会感冒”。"},
+ {a:"他会画画",b:"会弹钢琴",rel:"递进关系",pair:["不但","而且"],why:"后一项比前一项<b>更进一层</b>。"},
+ {a:"肯下功夫",b:"能学好",rel:"条件关系",pair:["只要","就"],why:"满足“肯下功夫”这个<b>条件</b>，就有结果。"},
+ {a:"天很冷",b:"他仍坚持晨跑",rel:"转折关系",pair:["虽然","但是"],why:"后半句意思<b>转了弯</b>。"},
+ {a:"明天是晴天",b:"是下雨",rel:"选择关系",pair:["不是","就是"],why:"两种情况里<b>选一种</b>。"},
+ {a:"他很努力",b:"进步很大",rel:"因果关系",pair:["因为","所以"],why:"<b>前因后果</b>。"},
+ {a:"他聪明",b:"勤奋",rel:"并列关系",pair:["既","又"],why:"两个特点<b>同时</b>具备。"}
+];
+RENDER.guanlian=function(stage){
+  var i=0;
+  function paint(){
+    var d=GL[i];
+    var h='<div class="card"><div class="h2">🌉 关联词 · 句子搭桥</div><div class="hint">两句话要用关联词“搭桥”连起来。<b>第一步：先判断它们是什么关系</b>，想清楚了再选词——这才是关键。</div>'+
+      '<div class="bridge"><div class="isl">'+d.a+'</div><div class="span" id="glSpan"><div class="road"></div></div><div class="isl">'+d.b+'</div></div>'+
+      '<div style="font-weight:800;color:var(--blued);margin:10px 0 4px">第一步：这是什么关系？</div><div class="opts" id="glRel"></div>'+
+      '<div id="glStep2"></div><div id="glWhy"></div>'+
+      '<div class="row center" style="margin-top:12px"><button class="btn gold sm" id="glNext">换一句 ⇄</button></div></div>';
+    stage.innerHTML=h;
+    // 关系选项：正确 + 3 干扰
+    var ro=shuffle([d.rel].concat(shuffle(REL.filter(function(r){return r!==d.rel;})).slice(0,3)));
+    $("glRel").innerHTML=ro.map(function(r){return '<button class="opt">'+r+'</button>';}).join("");
+    $("glRel").querySelectorAll(".opt").forEach(function(b){b.onclick=function(){
+      var ok=b.textContent===d.rel;beep(ok);
+      if(!ok){b.classList.add("wrong");setTimeout(function(){b.classList.remove("wrong");},700);return;}
+      $("glRel").querySelectorAll(".opt").forEach(function(x){x.onclick=null;x.classList.toggle("right",x.textContent===d.rel);x.classList.toggle("opt",false);if(x.textContent!==d.rel)x.style.opacity=".4";});
+      step2(d);
+    };});
+    $("glNext").onclick=function(){i=(i+1)%GL.length;paint();};
+  }
+  function step2(d){
+    // 选关联词对
+    var pairs=[d.pair];var others=[["因为","所以"],["虽然","但是"],["不但","而且"],["只要","就"],["如果","就"],["既","又"],["不是","就是"]];
+    others=shuffle(others.filter(function(p){return p[0]!==d.pair[0];})).slice(0,2);
+    var opts=shuffle(pairs.concat(others));
+    $("glStep2").innerHTML='<div style="font-weight:800;color:var(--blued);margin:10px 0 4px">第二步：选对应的关联词</div><div class="opts">'+
+      opts.map(function(p){return '<button class="opt">'+p[0]+"……"+p[1]+"……"+'</button>';}).join("")+'</div>';
+    $("glStep2").querySelectorAll(".opt").forEach(function(b){b.onclick=function(){
+      var ok=b.textContent.indexOf(d.pair[0])===0;beep(ok);
+      if(!ok){b.classList.add("wrong");setTimeout(function(){b.classList.remove("wrong");},700);return;}
+      $("glStep2").querySelectorAll(".opt").forEach(function(x){x.onclick=null;x.style.opacity=x===b?"1":".4";});b.classList.add("right");
+      // 搭桥动画 + 填好的整句
+      $("glSpan").classList.add("open");
+      $("glWhy").innerHTML='<div class="why"><span class="lab">🌉 '+d.rel+'：</span>'+d.why+'<div style="margin-top:8px;font-size:16px;color:var(--blued);font-weight:800"><span class="fillword">'+d.pair[0]+'</span>'+d.a+'，<span class="fillword">'+d.pair[1]+'</span>'+d.b+'。</div></div>';
+    };});
+  }
+  paint();
+};
+
+/* ============ 4. 病句·句子医院 ============ */
+var BING=[
+ {bad:"我们要养成爱读书的好风气。",type:"用词不当",fixhtml:"我们要养成爱读书的好<span class='add'>习惯</span>。",why:"“养成”要搭配“习惯”；“风气”用“形成”。"},
+ {bad:"通过这次活动，使我明白了坚持的意义。",type:"成分残缺",fixhtml:"<span class='del'>通过</span>这次活动，使我明白了坚持的意义。",why:"“通过…使…”连用丢了主语，删掉“通过”（或“使”）。"},
+ {bad:"他大约七点左右到的。",type:"语义重复",fixhtml:"他<span class='del'>大约</span>七点左右到的。",why:"“大约”和“左右”意思重复，删一个。"},
+ {bad:"同学们认真地完成并讨论了这道难题。",type:"顺序颠倒",fixhtml:"同学们认真地<span class='add'>讨论并完成</span>了这道难题。",why:"应先“讨论”后“完成”，顺序要对。"},
+ {bad:"我把作业全部都做完了。",type:"语义重复",fixhtml:"我把作业<span class='del'>全部</span>都做完了。",why:"“全部”和“都”意思重复，删一个。"}
+];
+var BTYPES=["成分残缺","语义重复","用词不当","顺序颠倒"];
+RENDER.bingju=function(stage){
+  var i=0,right=0,done=0;
+  function paint(){
+    var d=BING[i];
+    var h='<div class="card"><div class="h2">🏥 句子医院</div><div class="row" style="justify-content:space-between"><div class="hint">先给句子<b>诊断</b>：它得了哪种“病”？诊断对了就能治好它。</div><div class="score" id="bjScore">✅ '+right+'/'+done+'</div></div>'+
+      '<div style="font-size:13px;color:var(--muted);margin:8px 0 4px">🛏️ 第 '+(i+1)+' 位病人：</div>'+
+      '<div class="bed" id="bjBed">'+d.bad+'</div>'+
+      '<div style="font-weight:800;color:var(--blued);margin:10px 0 4px">诊断：病在哪里？</div>'+
+      '<div class="opts" id="bjDiag">'+shuffle(BTYPES).map(function(t){return '<button class="opt">'+t+'</button>';}).join("")+'</div>'+
+      '<div id="bjCure"></div></div>';
+    stage.innerHTML=h;
+    var answered=false;
+    stage.querySelectorAll("#bjDiag .opt").forEach(function(b){b.onclick=function(){
+      if(answered)return;var ok=b.textContent===d.type;beep(ok);
+      if(!ok){b.classList.add("wrong");setTimeout(function(){b.classList.remove("wrong");},700);return;}
+      answered=true;done++;right++;
+      stage.querySelectorAll("#bjDiag .opt").forEach(function(x){x.onclick=null;x.style.opacity=x===b?"1":".4";});b.classList.add("right");
+      $("bjBed").className="bed cured";$("bjBed").innerHTML=d.fixhtml;
+      $("bjCure").innerHTML='<div class="why"><span class="lab">💊 药方（'+d.type+'）：</span>'+d.why+'</div><div class="row center" style="margin-top:8px"><button class="btn green sm" id="bjNext">'+(i<BING.length-1?"下一位病人 →":"看完啦 🎉")+'</button></div>';
+      $("bjScore").textContent="✅ "+right+"/"+done;
+      $("bjNext").onclick=function(){if(i<BING.length-1){i++;paint();}else{stage.innerHTML='<div class="card" style="text-align:center"><div class="h2">🎉 全部治好啦！</div><div class="hint">你诊断对了 '+right+'/'+done+' 位病人。记住四种“病”：成分残缺、语义重复、用词不当、顺序颠倒。</div><button class="btn" id="bjRe" style="margin-top:10px">再来一轮</button></div>';$("bjRe").onclick=function(){i=0;right=0;done=0;paint();};}};
+    };});
+  }
+  paint();
+};
+
+/* ============ 5. 名家名作·脑图书架 + 人物品质 ============ */
+var BOOKS=[
+ ["《海上日出》","巴金","中国"],["《记金华的双龙洞》","叶圣陶","中国"],["《我家的男子汉》","王安忆","中国"],
+ ["《巨人的花园》","王尔德","英国"],["《海的女儿》","安徒生","丹麦"],["《小英雄雨来》","管桦","中国"],
+ ["《芦花鞋》","曹文轩","中国"],["《挑山工》","冯骥才","中国"],["《“诺曼底号”遇难记》","雨果","法国"],["《宝葫芦的秘密》","张天翼","中国"]
+];
+var ROLES=[
+ ["黄继光","英勇无畏、视死如归","上甘岭战役，为夺597.9高地，用胸膛堵住敌人枪口，壮烈牺牲。"],
+ ["哈尔威船长","临危不乱、忠于职守","“诺曼底号”遇难，镇定指挥大家有序撤离，自己随沉船牺牲。"],
+ ["王葆（宝葫芦）","淘气、爱幻想","主题：幸福要靠自己的努力，不能不劳而获。"],
+ ["巨人（巨人的花园）","由自私变善良、乐于分享","主题：与大家一起分享，才是真正的快乐。"]
+];
+var POEMQ=[["《芙蓉楼送辛渐》","送别诗","洁身自好"],["《塞下曲》","边塞诗","英勇无畏"],["《墨梅》","咏物诗","为人清白"]];
+RENDER.naotu=function(stage){
+  var h='<div class="card"><div class="h2">🕸️ 名家名作 · 脑图书架</div><div class="hint">点书脊<b>翻开</b>，看作者和国别（外国作者要记国家！）。用“书架”记，比一条条背更牢。</div>'+
+    '<div class="shelf" style="margin-top:8px">'+BOOKS.map(function(b,i){return '<div class="flip" data-i="'+i+'"><div class="inner"><div class="face f"><div class="nm2">'+b[0]+'</div></div><div class="face b"><div class="au">'+b[1]+'</div><div class="co">'+b[2]+'</div></div></div></div>';}).join("")+'</div>'+
+    '<div class="row center" style="margin-top:10px"><button class="btn green sm" id="ntGame">🎯 作品连作者</button></div></div>'+
+    '<div class="card"><div class="h2" style="font-size:16px">🦁 人物品质 / 课文主旨</div><div class="hint">点卡片看人物的品质和主题——考试常考“人物是怎样的人”。</div><div id="ntRoles" style="margin-top:6px"></div></div>'+
+    '<div class="card"><div class="h2" style="font-size:16px">📖 三首诗的“身份证”</div>'+POEMQ.map(function(p){return '<div class="rolecard"><span class="rn">'+p[0]+'</span><span class="rq">'+p[1]+'</span><div class="rd">表达：'+p[2]+'</div></div>';}).join("")+'</div>';
+  stage.innerHTML=h;
+  stage.querySelectorAll(".flip").forEach(function(f){f.onclick=function(){f.classList.toggle("on");};});
+  // 人物卡：点开展开
+  $("ntRoles").innerHTML=ROLES.map(function(r,i){return '<div class="rolecard" data-i="'+i+'"><span class="rn">'+r[0]+'</span><span class="rq">'+r[1]+'</span><div class="rd hide">'+r[2]+'</div></div>';}).join("");
+  $("ntRoles").querySelectorAll(".rolecard").forEach(function(c){c.onclick=function(){c.querySelector(".rd").classList.toggle("hide");};});
+  $("ntGame").onclick=function(){game();};
+  function game(){
+    var qi=0,right=0,order=shuffle(BOOKS.map(function(_,i){return i;}));
+    function round(){
+      if(qi>=order.length){stage.scrollIntoView();}
+      var bi=order[qi%order.length],b=BOOKS[bi];
+      var others=shuffle(BOOKS.filter(function(x){return x[1]!==b[1];})).slice(0,2).map(function(x){return x[1];});
+      var opts=shuffle([b[1]].concat(others));
+      var modal=$("ntGameBox")||el("div","card");modal.id="ntGameBox";
+      modal.innerHTML='<div class="row" style="justify-content:space-between"><div class="h2" style="font-size:15px">🎯 作品连作者</div><div class="score">✅ '+right+'/'+qi+'</div></div><div class="hint" style="margin:6px 0">第 '+(qi+1)+'/'+order.length+' 题：<b>'+b[0]+'</b> 的作者是？</div><div class="opts">'+opts.map(function(o){return '<button class="opt">'+o+'</button>';}).join("")+'</div><div id="ntFb"></div>'+(qi>=order.length-1?'':'')+'<button class="btn ghost sm" id="ntClose" style="margin-top:10px">关闭</button>';
+      if(!$("ntGameBox"))stage.appendChild(modal);
+      modal.scrollIntoView({behavior:"smooth"});
+      modal.querySelectorAll(".opt").forEach(function(btn){btn.onclick=function(){
+        var ok=btn.textContent===b[1];beep(ok);if(ok)right++;
+        modal.querySelectorAll(".opt").forEach(function(x){x.onclick=null;if(x.textContent===b[1])x.classList.add("right");else if(x===btn)x.classList.add("wrong");});
+        $("ntFb").innerHTML='<div class="why"><span class="lab">'+(ok?"✅ 对！":"正确：")+b[0]+' —— '+b[1]+'（'+b[2]+'）</span></div>';
+        setTimeout(function(){qi++;if(qi>=order.length){modal.innerHTML='<div class="h2" style="font-size:15px">🎉 连完！答对 '+right+'/'+order.length+'</div><button class="btn green sm" id="ntAgain" style="margin-top:8px">再来一次</button> <button class="btn ghost sm" id="ntClose2">关闭</button>';$("ntAgain").onclick=game;$("ntClose2").onclick=function(){modal.remove();};}else round();},ok?850:1600);
+      };});
+      $("ntClose").onclick=function(){modal.remove();};
+    }
+    round();
+  }
+};
+
+/* ============ 6. 古诗文·记忆馆 ============ */
+var SHI=[
+ {src:"《芙蓉楼送辛渐》",hint:"坚守高洁、不为世俗所染",line:"洛阳亲友如相问，一片<span class='em'>冰心</span>在<span class='em'>玉壶</span>。"},
+ {src:"《墨梅》",hint:"不慕虚名、只求高洁",line:"不要人夸好颜色，只留清气满<span class='em'>乾坤</span>。"},
+ {src:"《塞下曲》",hint:"将士顶风冒雪、英勇追敌",line:"欲将轻骑逐，大雪满弓刀。"},
+ {src:"《独坐敬亭山》",hint:"以山为伴，孤独又超脱",line:"相看两不厌，只有敬亭山。"},
+ {src:"《囊萤夜读》",hint:"车胤借萤火、夜以继日读书",line:"夏月则练囊盛数十<span class='em'>萤火</span>以照书，以夜继日焉。"}
+];
+var NANGYING=[["恭勤","肃敬勤勉"],["倦","疲倦"],["通","通晓"],["练","白绢"],["囊","口袋"],["盛","装"]];
+var MINGYAN=[
+ ["自强不息","天行健，君子以自强不息。","《周易》"],
+ ["战胜自己才算强","胜人者有力，自胜者强。","《老子》"],
+ ["不抱怨","不怨天，不尤人。","《论语》"],
+ ["忧患使人进步","生于忧患而死于安乐。","《孟子》"],
+ ["少年要趁早读书","少年不知勤学苦，老来方知读书迟。",""],
+ ["读书贵在每天坚持","一日读书一日功，一日不读十日空。",""],
+ ["起步晚也不怕","学习不怕根底浅，只要迈步终不迟。",""],
+ ["勤奋是路、苦读是舟","书山有路勤为径，学海无涯苦作舟。",""]
+];
+RENDER.shige=function(stage){
+  var h='<div class="card"><div class="h2">📜 古诗文 · 记忆馆</div><div class="hint">三件法宝：① 看提示<b>默诗句</b>（翻开核对，红字是易错字）；② 点<b>加点字</b>看古文意思；③ <b>名言卷轴</b>记名句和出处。</div></div>'+
+    '<div class="card"><div class="h2" style="font-size:16px">① 理解性默写翻卡</div><div class="hint">看“情境提示”先自己默，再点卡片翻开。</div><div id="shCards" style="margin-top:8px"></div></div>'+
+    '<div class="card"><div class="h2" style="font-size:16px">② 《囊萤夜读》字义点读</div><div class="hint">点紫色的字，看它的古文意思。</div>'+
+      '<div class="poemline" style="margin-top:8px">胤<span class="zi" data-i="0">恭勤</span>不<span class="zi" data-i="1">倦</span>，博学多<span class="zi" data-i="2">通</span>。家贫不常得油，夏月则<span class="zi" data-i="3">练</span><span class="zi" data-i="4">囊</span><span class="zi" data-i="5">盛</span>数十萤火以照书，以夜继日焉。</div>'+
+      '<div id="zipop"></div></div>'+
+    '<div class="card"><div class="h2" style="font-size:16px">③ 名言警句卷轴（8句）</div><div class="hint">点卷轴翻面：先看“意思”，想想是哪一句，再翻开。</div><div id="myScrolls" style="margin-top:6px"></div></div>';
+  stage.innerHTML=h;
+  // 翻卡
+  $("shCards").className="cards";
+  $("shCards").innerHTML=SHI.map(function(c){return '<div class="flip" style="height:120px"><div class="inner"><div class="face f"><div class="nm2">情境提示</div><div style="font-size:13px;font-weight:800;color:var(--blued);margin-top:5px;line-height:1.5">'+c.hint+'</div></div><div class="face b"><div style="font-size:14px;font-weight:800;line-height:1.6">'+c.line+'</div><div class="co" style="margin-top:5px">'+c.src+'</div></div></div></div>';}).join("");
+  $("shCards").querySelectorAll(".flip").forEach(function(f){f.onclick=function(){f.classList.toggle("on");};});
+  // 字义点读
+  stage.querySelectorAll(".zi").forEach(function(z){z.onclick=function(){
+    var n=NANGYING[+z.dataset.i];
+    $("zipop").innerHTML='<div class="zipop"><b style="color:var(--purple);font-size:16px">'+n[0]+'</b> ＝ '+n[1]+'</div>';
+  };});
+  // 名言卷轴（翻卡）
+  $("myScrolls").innerHTML=MINGYAN.map(function(m){return '<div class="flip" style="height:78px;margin-bottom:8px"><div class="inner"><div class="face f" style="background:linear-gradient(180deg,#eef5fc,#fff)"><div class="nm2">意思：'+m[0]+'</div></div><div class="face b" style="background:linear-gradient(180deg,#fffaf0,#fff5e0)"><div class="ml" style="font-size:14px;font-weight:800;color:#6a4a00;line-height:1.6">'+m[1]+'</div>'+(m[2]?'<div class="frm">——'+m[2]+'</div>':'')+'</div></div></div>';}).join("");
+  $("myScrolls").querySelectorAll(".flip").forEach(function(f){f.onclick=function(){f.classList.toggle("on");};});
+};
+
+renderHome();
+</script>
+</body>
+</html>

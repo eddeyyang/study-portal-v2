@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>数学金牌训练馆 · 新学期预习</title>
+<style>
+:root{--gold:#f2b632;--golddk:#c98a00;--ink:#2e2620;--paper:#fff7f2;--line:#f0ddd0;--muted:#9a8b82;
+ --kenton:#2f6fb3;--kentonbg:#e8f0fa;--eddey:#e8642f;--eddeybg:#fff0e6;}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+body{margin:0;font-family:'LXGW WenKai Screen','PingFang SC','Microsoft YaHei',system-ui,sans-serif;
+ background:radial-gradient(circle at 12% 4%,#fff3cf 0,transparent 40%),radial-gradient(circle at 90% 10%,#ffe1cc 0,transparent 36%),var(--paper);color:var(--ink);min-height:100vh;padding-bottom:46px;}
+.wrap{max-width:620px;margin:0 auto;padding:12px;}
+.top{display:flex;align-items:center;gap:10px;padding:8px 2px;}
+.home{text-decoration:none;font-size:20px;background:#fff;width:38px;height:38px;border-radius:11px;display:grid;place-items:center;color:var(--ink);box-shadow:0 3px 0 #f0d8c8;flex:none;}
+.top h1{font-size:16px;margin:0;flex:1;line-height:1.4;}
+.hero{background:linear-gradient(135deg,#fff6d9,#ffe9b8);border:2px solid var(--gold);border-radius:18px;padding:16px 15px;margin:10px 0;box-shadow:0 6px 0 #f0dcb0;}
+.hero .t{font-size:19px;font-weight:900;color:#8a5c00;}
+.hero .d{font-size:13px;color:#8a6a3a;line-height:1.7;margin-top:5px;}
+.picks{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:12px 0;}
+.pick{border-radius:18px;padding:16px 10px;text-align:center;cursor:pointer;border:3px solid transparent;background:#fff;box-shadow:0 6px 0 #f3e2d6;}
+.pick .av{font-size:40px;}.pick .nm{font-weight:900;font-size:17px;margin-top:6px;}.pick .gr{font-size:12px;color:var(--muted);font-weight:800;margin-top:2px;}
+.pick.k.on{border-color:var(--kenton);background:var(--kentonbg);}
+.pick.e.on{border-color:var(--eddey);background:var(--eddeybg);}
+.pick:active{transform:translateY(2px);}
+.unit{display:flex;gap:12px;align-items:center;background:#fff;border:2px solid var(--line);border-radius:16px;padding:13px 14px;margin:10px 0;box-shadow:0 5px 0 #f3e2d6;text-decoration:none;color:var(--ink);}
+.unit .ic{font-size:28px;flex:none;width:44px;height:44px;border-radius:12px;display:grid;place-items:center;background:var(--paper);}
+.unit .nm{font-weight:800;font-size:15px;line-height:1.4;}
+.unit .ds{font-size:12px;color:var(--muted);margin-top:2px;line-height:1.5;}
+.unit .st{margin-left:auto;flex:none;font-size:11.5px;font-weight:800;border-radius:9px;padding:3px 9px;}
+.progressline{display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-top:7px;}
+.learn{display:inline-block;font-size:11px;font-weight:900;border-radius:999px;padding:3px 8px;}
+.learn.unlearned{background:#eee8e3;color:#776a61;}
+.learn.learning{background:#fff0bd;color:#775300;}
+.learn.learned{background:#dff5e5;color:#176c36;}
+.score{font-size:11.5px;font-weight:800;color:#62564f;}
+.progressdetail{font-size:10.5px;color:var(--muted);margin-top:3px;}
+.unit.ready{border-left:6px solid var(--gold);}
+.unit.ready .st{background:var(--gold);color:#5a3d00;}
+.unit.lock{opacity:.62;}
+.unit.lock .st{background:#eee3da;color:#a08f82;}
+.unit.ready:active{transform:translateY(2px);box-shadow:0 3px 0 #f3e2d6;}
+.newtag{display:inline-block;background:#e1553f;color:#fff;font-size:10.5px;font-weight:800;border-radius:7px;padding:1px 6px;margin-left:5px;vertical-align:1px;}
+.note{font-size:12.5px;color:var(--muted);text-align:center;margin-top:16px;line-height:1.7;}
+.bookbar{font-size:12.5px;color:#8a6a3a;background:#fff;border:1.5px dashed var(--gold);border-radius:12px;padding:9px 12px;margin:8px 0;line-height:1.7;}
+.fadeup{animation:fadeup .35s ease both;}
+@keyframes fadeup{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:translateY(0);}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top"><a class="home" id="mathSubjectBack" href="../subject.html?subject=math" aria-label="返回数学学科">‹</a><h1>🏅 数学金牌训练馆 · 新学期预习</h1></div>
+  <div class="hero fadeup">
+    <div class="t">🏅 按书预习，一个单元一个金牌</div>
+    <div class="d">每个单元都是"会动的数学"：先看动画懂为什么 → 跟着做 → 遮挡回忆 → 独立检验（自动判分 + 错因标签 + 错题本）。做错的题连对 2 次才毕业。</div>
+  </div>
+  <div class="picks">
+    <div class="pick k" id="pickK"><div class="av">🦁</div><div class="nm">Kenton</div><div class="gr">五年级上</div></div>
+    <div class="pick e" id="pickE"><div class="av">🐯</div><div class="nm">Eddey</div><div class="gr">四年级上</div></div>
+  </div>
+  <div id="units"></div>
+  <div class="note">“已学”表示已经完成本软件的独立检验，不等于学校已经教过。<br>教材同步：《钟书金牌·上海尖子生学习笔记》数学（沪教版）</div>
+</div>
+<script>
+"use strict";
+function $(id){return document.getElementById(id);}
+function esc(s){return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');}
+function readJSON(key,fallback){try{var raw=localStorage.getItem(key);return raw?JSON.parse(raw):fallback;}catch(e){return fallback;}}
+function n(v){return Number(v)||0;}
+var who=new URLSearchParams(location.search).get('who');
+if(who!=='kenton'&&who!=='eddey')who=localStorage.getItem('dd:math-gold-hub:last-who')||'eddey';
+function setWho(w){who=w;try{localStorage.setItem('dd:math-gold-hub:last-who',w);}catch(e){}
+ $('mathSubjectBack').href='../subject.html?subject=math&who='+w;
+ $('pickK').classList.toggle('on',w==='kenton');$('pickE').classList.toggle('on',w==='eddey');renderUnits();loadCloudStats(w);}
+$('pickK').onclick=function(){setWho('kenton');};
+$('pickE').onclick=function(){setWho('eddey');};
+var DATA=null,CLOUD={kenton:null,eddey:null},CLOUD_LOADING={};
+fetch('../data/math_gold_hub.json',{cache:'no-store'}).then(function(r){return r.json();}).then(function(d){DATA=d;setWho(who);}).catch(function(){
+ $('units').innerHTML='<div class="bookbar">⚠️ 单元索引没读到，检查一下网络再刷新。</div>';});
+function rank(state){return state==='learned'?2:(state==='learning'?1:0);}
+function localProgressOne(p){
+ if(p.mode==='module-done'){
+  var db=readJSON(p.storageKey,{done:{},events:[]})||{},done=db.done||{},events=Array.isArray(db.events)?db.events:[];
+  var rows=events.filter(function(e){return e&&e.type==='quiz'&&typeof e.ok==='boolean';});
+  var completed=Object.keys(done).length,goal=n(p.goal);
+  return {
+   state:completed>=goal&&goal>0?'learned':(completed||rows.length?'learning':'unlearned'),
+   attempts:rows.length,
+   correct:rows.filter(function(e){return e.ok;}).length,
+   wrong:rows.filter(function(e){return !e.ok;}).length,
+   detail:completed?'已练 '+completed+'/'+goal+' 馆':'尚未开始'
+  };
+ }
+ var all=readJSON(p.storageKey,[]);
+ if(!Array.isArray(all))all=[];
+ all=all.filter(function(e){return e&&typeof e.ok==='boolean';});
+ var test=all.filter(function(e){return e.station===p.station;}),rows=test.length?test:all,goal=n(p.goal);
+ return {
+  state:test.length>=goal&&goal>0?'learned':(all.length?'learning':'unlearned'),
+  attempts:rows.length,
+  correct:rows.filter(function(e){return e.ok;}).length,
+  wrong:rows.filter(function(e){return !e.ok;}).length,
+  detail:test.length?('独立检验 '+Math.min(test.length,goal)+'/'+goal+' 题'):(all.length?'正在跟学':'尚未开始')
+ };
+}
+function localProgress(u){
+ var p=u.progress;
+ if(!p)return {state:'unlearned',attempts:0,correct:0,wrong:0,detail:'暂无学习记录'};
+ var configs=[p].concat(Array.isArray(p.legacy)?p.legacy:[]);
+ return configs.map(localProgressOne).reduce(function(best,row){
+  if(rank(row.state)>rank(best.state))return row;
+  if(rank(row.state)===rank(best.state)&&row.attempts>best.attempts)return row;
+  return best;
+ });
+}
+function cloudProgress(u){
+ var rows=CLOUD[who];
+ if(!rows||!u.progress)return null;
+ var configs=[u.progress].concat(Array.isArray(u.progress.legacy)?u.progress.legacy:[]),found=[];
+ configs.forEach(function(p){
+  var row=rows.find(function(item){return item.source===p.cloudSource;});
+  if(!row)return;
+  var attempts=n(row.attempts),completions=n(row.completions);
+  if(!attempts&&!completions)return;
+  found.push({state:completions&&attempts>=n(p.goal)?'learned':'learning',attempts:attempts,correct:n(row.correct),wrong:n(row.wrong),detail:completions?'已完成并同步':'已有云端作答',cloud:true});
+ });
+ if(!found.length)return null;
+ return found.reduce(function(best,row){return rank(row.state)>rank(best.state)||(rank(row.state)===rank(best.state)&&row.attempts>best.attempts)?row:best;});
+}
+function mergedProgress(u){
+ var local=localProgress(u),cloud=cloudProgress(u);
+ if(!cloud)return local;
+ var result=cloud.attempts>=local.attempts?cloud:local;
+ if(rank(cloud.state)>rank(result.state))result.state=cloud.state;
+ if(rank(local.state)>rank(result.state))result.state=local.state;
+ result.cloud=true;
+ if(result===local)result.detail+=' · Neon有备份';
+ return result;
+}
+function progressHTML(u){
+ var p=mergedProgress(u);
+ var labels={unlearned:'未学',learning:'学习中',learned:'已学'};
+ var score=p.attempts?('累计 ✅'+p.correct+'　❌'+p.wrong):'暂无作答记录';
+ return '<div class="progressline"><span class="learn '+p.state+'">'+labels[p.state]+'</span><span class="score">'+score+'</span></div>'
+  +'<div class="progressdetail">'+esc(p.detail)+(p.cloud&&p.detail.indexOf('Neon')<0?' · Neon已同步':'')+'</div>';
+}
+function loadCloudStats(kid){
+ if(CLOUD[kid]!==null||CLOUD_LOADING[kid])return;
+ CLOUD_LOADING[kid]=true;
+ fetch('../api/events?mode=unit-stats&kid='+encodeURIComponent(kid)+'&subject='+encodeURIComponent('数学'),{cache:'no-store'})
+  .then(function(r){if(!r.ok)throw new Error('cloud');return r.json();})
+  .then(function(data){CLOUD[kid]=Array.isArray(data.stats)?data.stats:[];if(who===kid)renderUnits();})
+  .catch(function(){CLOUD[kid]=[];})
+  .finally(function(){CLOUD_LOADING[kid]=false;});
+}
+function renderUnits(){
+ if(!DATA)return;
+ var kid=DATA[who];
+ if(!kid){$('units').innerHTML='';return;}
+ var h='';
+ if(kid.book)h+='<div class="bookbar">📖 '+(who==='kenton'?'🦁 Kenton':'🐯 Eddey')+' · '+kid.grade+' · 用书：'+kid.book+'</div>';
+ if(kid.note)h+='<div class="bookbar">📌 '+kid.note+'</div>';
+ if(!kid.units||!kid.units.length){
+  h+='<div class="bookbar" style="text-align:center">🚧 这一侧还在筹备中，教材入库后开馆。<br>先去看看另一侧吧！</div>';
+ }else{
+  kid.units.forEach(function(u){
+   if(u.status==='ready'){
+    var isNew=u.added===DATA.updated;
+    h+='<a class="unit ready fadeup" href="'+esc(u.file)+'"><span class="ic">🏅</span><span><span class="nm">'+esc(u.name)+(isNew?'<span class="newtag">🆕今日</span>':'')+'</span><div class="ds">'+esc(u.ds)+'</div>'+progressHTML(u)+'</span><span class="st">进入 ›</span></a>';
+   }else{
+    h+='<div class="unit lock"><span class="ic">🔒</span><span><span class="nm">'+esc(u.name)+'</span><div class="ds">待解锁 · 等爸爸更新</div></span><span class="st">未开馆</span></div>';
+   }
+  });
+ }
+ $('units').innerHTML=h;
+}
+</script>
+</body>
+</html>

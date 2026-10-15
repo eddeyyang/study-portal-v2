@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<script src="../assets/learning-sync.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>哥哥英语 · 不规则动词变形实验室</title>
+<style>
+:root{--blue:#2f6fb3;--blued:#225182;--bluebg:#e8f0fa;--gold:#f2b632;--golddk:#c98a00;
+ --ink:#23303a;--paper:#eef5fc;--card:#fff;--line:#dbe7f3;--green:#2e9c54;--greenbg:#e9f7ee;
+ --red:#e1553f;--redbg:#fdecea;--muted:#7d8a96;--purple:#7b54c0;--purplebg:#f1ebfa;--orange:#e8842c;--orangebg:#fdf1e3;}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+html,body{margin:0;padding:0;}
+body{font-family:'LXGW WenKai Screen','PingFang SC','Microsoft YaHei',system-ui,sans-serif;
+ background:radial-gradient(circle at 10% 4%,#d3e6fb 0,transparent 40%),radial-gradient(circle at 92% 98%,#dde9fb 0,transparent 44%),var(--paper);
+ color:var(--ink);min-height:100vh;padding:0 0 50px;}
+.wrap{max-width:620px;margin:0 auto;padding:12px;}
+.top{display:flex;align-items:center;gap:10px;padding:8px 2px 6px;}
+.badge{background:var(--blue);color:#fff;font-weight:800;font-size:17px;padding:6px 13px;border-radius:13px 13px 13px 4px;box-shadow:0 4px 0 var(--blued);}
+.top h1{font-size:16px;margin:0;flex:1;}
+.top .home{text-decoration:none;font-size:20px;background:#fff;width:38px;height:38px;border-radius:11px;display:grid;place-items:center;color:var(--ink);box-shadow:0 3px 0 #cddcec;}
+.mute{font-size:18px;background:#fff;border:none;width:38px;height:38px;border-radius:11px;cursor:pointer;box-shadow:0 3px 0 #cddcec;}
+.intro{font-size:13px;color:var(--muted);line-height:1.7;background:#fff;border:2px solid var(--line);border-radius:14px;padding:12px 14px;margin:8px 0;}
+.intro b{color:var(--blued);}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:6px;}
+.tile{background:#fff;border:2px solid var(--line);border-radius:18px;padding:16px 12px;cursor:pointer;box-shadow:0 6px 0 #e1ecf7;text-align:center;transition:transform .08s;border-top:6px solid var(--blue);position:relative;}
+.tile:active{transform:translateY(3px);box-shadow:0 3px 0 #e1ecf7;}
+.tile .ic{font-size:38px;line-height:1;}
+.tile .nm{font-weight:800;font-size:16px;margin-top:8px;color:var(--blued);}
+.tile .ds{font-size:11.5px;color:var(--muted);margin-top:4px;line-height:1.5;}
+.tile .done{position:absolute;top:6px;right:8px;font-size:11px;font-weight:800;color:var(--green);background:var(--greenbg);border-radius:8px;padding:2px 7px;}
+.card{background:var(--card);border:2px solid var(--line);border-radius:18px;padding:16px;margin:11px 0;box-shadow:0 6px 0 #e4eef8;}
+.h2{font-size:18px;font-weight:800;margin:0 0 4px;color:var(--blued);}
+.hint{font-size:13px;color:var(--muted);line-height:1.7;}
+.btn{font-family:inherit;font-weight:800;font-size:15px;border:none;border-radius:13px;padding:11px 16px;cursor:pointer;color:#fff;background:var(--blue);box-shadow:0 5px 0 var(--blued);transition:transform .06s;}
+.btn:active{transform:translateY(3px);box-shadow:0 2px 0 var(--blued);}
+.btn.gold{background:var(--gold);box-shadow:0 5px 0 var(--golddk);color:#5a3d00;}
+.btn.ghost{background:#fff;color:var(--blued);border:2px solid var(--blue);box-shadow:0 5px 0 #cddcec;}
+.btn.green{background:var(--green);box-shadow:0 5px 0 #1f7a3e;}
+.btn.red{background:var(--red);box-shadow:0 5px 0 #a83b2a;}
+.btn.sm{font-size:13.5px;padding:9px 13px;}
+.btn:disabled{opacity:.45;box-shadow:none;transform:none;}
+.row{display:flex;gap:9px;flex-wrap:wrap;align-items:center;}
+.center{justify-content:center;}
+.hide{display:none!important;}
+.back{background:none;border:none;color:var(--muted);font-size:15px;font-family:inherit;cursor:pointer;font-weight:800;padding:6px 2px;}
+.why{background:var(--greenbg);border-left:5px solid var(--green);border-radius:10px;padding:11px 14px;font-size:14px;line-height:1.7;margin:10px 0;}
+.why.bad{background:var(--redbg);border-left-color:var(--red);}
+.why .lab{font-weight:800;color:var(--green);}
+.why.bad .lab{color:var(--red);}
+.opts{display:grid;gap:10px;margin-top:8px;}
+.opt{font-family:inherit;font-size:16px;text-align:left;background:#fff;border:2px solid var(--line);border-radius:13px;padding:12px 15px;cursor:pointer;color:var(--ink);box-shadow:0 4px 0 #e4eef8;}
+.opt:active{transform:translateY(2px);box-shadow:0 2px 0 #e4eef8;}
+.opt.right{background:var(--greenbg);border-color:var(--green);color:var(--green);font-weight:800;}
+.opt.wrong{background:var(--redbg);border-color:var(--red);color:var(--red);font-weight:800;}
+.opt.off{pointer-events:none;}
+.formula{background:var(--bluebg);border-radius:13px;padding:12px 14px;font-size:15px;line-height:1.8;margin:8px 0;}
+.formula b{color:var(--blued);}
+.say{font-family:inherit;font-size:13.5px;font-weight:800;padding:7px 13px;border-radius:11px;border:2px solid var(--gold);background:#fffaf0;color:var(--golddk);cursor:pointer;box-shadow:0 3px 0 #f0dca0;}
+.pgr{font-size:12.5px;color:var(--muted);text-align:center;margin:2px 0 6px;}
+.stamp{display:inline-block;border:3px solid var(--green);color:var(--green);font-weight:800;border-radius:10px;padding:3px 10px;font-size:14px;transform:rotate(-6deg);margin:6px 0;}
+/* ---- 魔法阵脑图 ---- */
+.mapsvg{width:100%;height:auto;display:block;}
+.mapsvg .node{cursor:pointer;}
+.famchips{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0;}
+.chip{font-family:inherit;font-size:14.5px;font-weight:800;padding:8px 12px;border-radius:11px;border:2px solid var(--line);background:#fff;color:var(--blued);cursor:pointer;box-shadow:0 3px 0 #e4eef8;}
+.chip.on{background:var(--blue);color:#fff;border-color:var(--blue);}
+.chip small{font-weight:600;color:inherit;opacity:.7;}
+.rulebox{border-radius:13px;padding:12px 14px;font-size:14px;line-height:1.8;margin:8px 0;}
+.rulebox b{font-weight:800;}
+/* ---- 变形动画 ---- */
+.morphrow{display:flex;gap:6px;align-items:center;justify-content:center;flex-wrap:wrap;margin:14px 0 6px;}
+.mstage{font-size:26px;font-weight:800;background:#fff;border:2px solid var(--line);border-radius:13px;padding:8px 14px;opacity:0;transform:scale(.6);transition:all .45s cubic-bezier(.34,1.56,.64,1);letter-spacing:1px;}
+.mstage.go{opacity:1;transform:scale(1);}
+.mstage.st0{border-color:var(--blue);color:var(--blued);}
+.mstage.st1{border-color:var(--orange);color:var(--orange);}
+.mstage.st2{border-color:var(--purple);color:var(--purple);}
+.mstage .hl{color:var(--red);border-bottom:3px solid var(--red);font-style:normal;}
+.mstage .fl{display:block;font-size:10.5px;font-weight:800;color:var(--muted);letter-spacing:0;text-align:center;}
+.marw{font-size:20px;color:var(--muted);opacity:0;transition:opacity .4s;}
+.marw.go{opacity:1;}
+.ftable{width:100%;border-collapse:collapse;font-size:13.5px;margin:8px 0;}
+.ftable td{border:1px solid var(--line);padding:6px 8px;text-align:center;}
+.ftable td:first-child{background:var(--bluebg);font-weight:800;color:var(--blued);width:38%;}
+.tipbox{background:#fffaf0;border:2px dashed var(--gold);border-radius:12px;padding:10px 13px;font-size:13.5px;line-height:1.7;margin:8px 0;}
+.tipbox b{color:var(--golddk);}
+/* ---- 时光机 ---- */
+.tl{position:relative;height:200px;background:linear-gradient(180deg,#f7fbff,#eef5fd);border:2px solid var(--line);border-radius:14px;margin:10px 0;overflow:hidden;}
+.tl .axis{position:absolute;left:4%;right:4%;top:150px;height:5px;background:#c8d9ec;border-radius:3px;}
+.tl .axis:after{content:"";position:absolute;right:-2px;top:-6px;border-left:14px solid #c8d9ec;border-top:8px solid transparent;border-bottom:8px solid transparent;}
+.tl .mk{position:absolute;top:162px;font-size:12px;font-weight:800;color:var(--muted);transform:translateX(-50%);}
+.tl .nowline{position:absolute;top:20px;bottom:36px;width:0;border-left:2px dashed var(--red);left:62%;}
+.tl .nowtag{position:absolute;top:4px;left:62%;transform:translateX(-50%);font-size:11px;font-weight:800;color:var(--red);}
+.ech{position:absolute;font-size:12.5px;font-weight:800;background:#fff;border:2px solid var(--blue);color:var(--blued);border-radius:10px;padding:5px 8px;box-shadow:0 3px 0 #d7e5f4;opacity:0;transform:translateY(10px) scale(.85);transition:all .5s;white-space:nowrap;}
+.ech.gold{border-color:var(--gold);color:var(--golddk);}
+.ech.purple{border-color:var(--purple);color:var(--purple);}
+.ech.go{opacity:1;transform:translateY(0) scale(1);}
+.ech .tag{display:block;font-size:10.5px;color:var(--red);font-weight:800;}
+.ebar{position:absolute;height:14px;border-radius:7px;background:repeating-linear-gradient(90deg,var(--purple) 0 12px,#a98bd6 12px 24px);width:0;transition:width 1.6s linear;opacity:.9;}
+.tlcap{background:var(--purplebg);border-radius:11px;padding:10px 13px;font-size:14px;line-height:1.7;min-height:44px;margin:8px 0;}
+.tlcap b{color:var(--purple);}
+@keyframes pulse{0%,100%{transform:scale(1);}50%{transform:scale(1.12);}}
+.ech.pulse{animation:pulse 1s infinite;}
+/* ---- 翻卡 ---- */
+.fbox{perspective:900px;margin:12px auto;max-width:340px;height:230px;}
+.fcard{position:relative;width:100%;height:100%;transform-style:preserve-3d;transition:transform .55s;cursor:pointer;}
+.fcard.flip{transform:rotateY(180deg);}
+.fface{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:18px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;padding:14px;}
+.ffront{background:linear-gradient(160deg,#fff,#eaf2fc);border:3px solid var(--blue);}
+.fback{background:linear-gradient(160deg,#fff,#f3edfc);border:3px solid var(--purple);transform:rotateY(180deg);}
+.fword{font-size:38px;font-weight:800;color:var(--blued);letter-spacing:1px;}
+.fcn{font-size:16px;color:var(--muted);font-weight:700;}
+.fipa{font-size:14px;color:var(--muted);}
+.ftap{font-size:12px;color:var(--muted);margin-top:8px;}
+.bform{font-size:22px;font-weight:800;margin:2px 0;}
+.bform .hl{color:var(--red);border-bottom:3px solid var(--red);font-style:normal;}
+.bform .bl{font-size:11px;color:var(--muted);font-weight:800;margin-right:6px;}
+.btip{font-size:12px;color:var(--muted);line-height:1.5;text-align:center;margin-top:4px;}
+/* ---- 分拣机 ---- */
+.baskets{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:12px 0;}
+.basket{border:3px dashed var(--blue);background:var(--bluebg);border-radius:15px;padding:12px 8px;text-align:center;font-weight:800;color:var(--blued);cursor:pointer;font-size:14.5px;font-family:inherit;}
+.basket small{display:block;font-weight:600;color:var(--muted);font-size:11px;margin-top:3px;}
+.basket:active{transform:scale(.97);}
+.basket.hit{background:var(--greenbg);border-color:var(--green);color:var(--green);}
+.basket.miss{background:var(--redbg);border-color:var(--red);color:var(--red);}
+.sortword{font-size:26px;font-weight:800;text-align:center;margin:10px 0;color:var(--ink);letter-spacing:1px;}
+/* ---- 背诵演练 ---- */
+.bigword{font-size:42px;font-weight:800;text-align:center;color:var(--blued);letter-spacing:2px;margin:8px 0 0;}
+.bigcn{font-size:16px;text-align:center;color:var(--muted);font-weight:700;margin-bottom:6px;}
+.sayzone{background:var(--orangebg);border:2px dashed var(--orange);border-radius:13px;padding:12px;text-align:center;font-size:14.5px;line-height:1.7;margin:10px 0;color:#8a5200;font-weight:700;}
+.anschip{font-family:inherit;font-size:23px;font-weight:800;background:#fff;border:3px solid var(--green);color:var(--green);border-radius:13px;padding:9px 16px;cursor:pointer;letter-spacing:1px;}
+.anschip .bl{display:block;font-size:10.5px;color:var(--muted);letter-spacing:0;}
+.anschip.bad{border-color:var(--red);color:var(--red);background:var(--redbg);text-decoration:line-through;}
+.ansnote{font-size:12px;color:var(--muted);text-align:center;margin-top:6px;}
+.wbrow{background:var(--bluebg);border-radius:12px;padding:10px 13px;margin:7px 0;font-size:14px;display:flex;align-items:center;gap:9px;flex-wrap:wrap;}
+.wbrow b{font-size:17px;color:var(--blued);}
+.wbrow .cnt{font-size:12px;color:var(--red);font-weight:800;}
+.wbrow .stk{font-size:12px;color:var(--green);font-weight:800;}
+.rec{background:var(--bluebg);border-radius:12px;padding:11px 13px;margin:8px 0;font-size:13.5px;line-height:1.8;}
+.rec b{color:var(--blued);}
+.tipbar{font-size:12px;color:var(--muted);text-align:center;margin-top:14px;line-height:1.6;}
+.en{border-bottom:1px dashed rgba(122,110,130,.4);cursor:pointer;padding:0 1px;border-radius:3px;}
+.en:active{background:#ffe9a8;}
+#bub{position:fixed;background:#fff;border-radius:13px;padding:11px 15px;box-shadow:0 8px 24px rgba(0,0,0,.22);z-index:9999;max-width:280px;text-align:center;border:2px solid var(--gold);animation:pop .25s;}
+#bub .be{font-size:13.5px;font-weight:800;}
+#bub .bc{font-size:15px;font-weight:800;color:var(--blued);margin-top:3px;}
+@keyframes pop{0%{transform:scale(.7);opacity:0;}60%{transform:scale(1.06);}100%{transform:scale(1);opacity:1;}}
+textarea.exp{width:100%;height:120px;font-family:inherit;font-size:12px;border:2px solid var(--line);border-radius:10px;padding:8px;}
+.sen{font-size:16px;font-weight:700;line-height:1.7;text-align:center;margin:10px 0 2px;}
+.sencn{font-size:13px;color:var(--muted);text-align:center;margin-bottom:6px;}
+/* ---- 语法术语：点一下有解释 ---- */
+.term{border-bottom:2px dotted var(--blue);cursor:pointer;color:inherit;font-style:normal;}
+.term:active{background:#ffe9a8;border-radius:3px;}
+.gl{display:block;font-size:11px;color:var(--muted);font-weight:700;letter-spacing:0;margin-top:2px;}
+.gli{font-size:12px;color:var(--muted);font-weight:700;letter-spacing:0;}
+.termbar{font-size:11.5px;color:var(--muted);text-align:center;margin:4px 0 0;}
+/* ---- 三张脸入门 ---- */
+.idots{display:flex;gap:6px;justify-content:center;margin:8px 0 2px;}
+.idot{width:10px;height:10px;border-radius:50%;background:#c8d9ec;transition:all .3s;}
+.idot.on{background:var(--blue);transform:scale(1.3);}
+.ivis{background:linear-gradient(180deg,#f7fbff,#eef5fd);border:2px solid var(--line);border-radius:14px;padding:16px 12px;margin:10px 0;text-align:center;min-height:150px;}
+.ibig{font-size:30px;font-weight:800;letter-spacing:1px;margin:6px 0;}
+.ivrow{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:8px 0;}
+.ivword{background:#fff;border:2px solid var(--line);border-radius:13px;padding:10px 14px;font-weight:800;font-size:17px;animation:pop .5s;}
+.ivword small{display:block;font-size:12px;color:var(--muted);font-weight:700;}
+.ivline{font-size:16.5px;font-weight:700;line-height:1.9;margin:6px 0;animation:pop .5s;}
+.ivline .zh{color:var(--muted);font-size:13px;font-weight:600;display:block;}
+.hand{display:inline-block;animation:pulse 1.2s infinite;}
+.facecard{display:inline-block;background:#fff;border-radius:13px;padding:9px 15px;font-weight:800;font-size:22px;margin:4px;animation:pop .55s;}
+.facecard small{display:block;font-size:11px;font-weight:800;letter-spacing:0;}
+.kout{background:var(--bluebg);border-radius:12px;padding:10px 13px;font-size:14.5px;line-height:2;margin:6px 0;text-align:left;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top">
+    <a class="home" href="../apps.html?who=kenton">‹</a>
+    <span class="badge">哥哥</span>
+    <h1>英语 · 不规则动词变形实验室（31~90）</h1>
+    <button class="mute" id="muteBtn">🔔</button>
+  </div>
+  <div id="home"></div>
+  <div id="view" class="hide">
+    <button class="back" id="backBtn">← 回实验室大厅</button>
+    <div id="stage"></div>
+  </div>
+  <div class="tipbar">把「136个不规则动词表」的 31~90 号做成会动的实验室（顶部可切批次）——先看变形规律，再背就轻松。<br>英文看不懂？<b>长按</b>带虚线的英文可以看中文。</div>
+</div>
+
+<script>
+"use strict";
+/* ===================== 朗读：audio-first（预合成神经音优先，缺失回退浏览器TTS） ===================== */
+const AUDIO_DIR="audio/kenton_verb_lab/";
+let exAudio=null,audioTok=0;
+/* 必须与 tools 脚本 fnv() 一致：对 (lang+"|"+text) 的 UTF-8 字节做 FNV-1a，8位十六进制 */
+function audioHash(s){const b=new TextEncoder().encode(s);let x=0x811c9dc5>>>0;for(let i=0;i<b.length;i++){x^=b[i];x=Math.imul(x,0x01000193)>>>0;}return('0000000'+x.toString(16)).slice(-8);}
+function getExAudio(){if(!exAudio){exAudio=new Audio();exAudio.setAttribute('playsinline','');exAudio.preload='auto';try{document.body.appendChild(exAudio);}catch(e){}}return exAudio;}
+function mkUtter(t,lang){const u=new SpeechSynthesisUtterance(t);u.lang=(lang==='en')?'en-US':'zh-CN';u.rate=(lang==='en')?0.85:0.95;u.pitch=1.03;
+  try{const vs=speechSynthesis.getVoices();const v=vs.find(x=>x.lang&&x.lang.startsWith(lang==='en'?'en':'zh'));if(v)u.voice=v;}catch(e){}return u;}
+/* Chrome/Edge 坑：cancel() 后立刻 speak() 会被静默吞掉，必须隔一拍再说 */
+let ttsTok=0;
+try{speechSynthesis.getVoices();speechSynthesis.onvoiceschanged=()=>{try{speechSynthesis.getVoices();}catch(e){}};}catch(e){}
+function ttsSpeakOnce(t,lang){
+  if(!('speechSynthesis'in window))return;
+  try{speechSynthesis.cancel();}catch(e){}
+  ttsTok++;const my=ttsTok;
+  setTimeout(()=>{if(my!==ttsTok)return;
+    try{speechSynthesis.resume();speechSynthesis.speak(mkUtter(t,lang));}catch(e){}
+  },120);
+}
+function speakOnce(t,lang){
+  lang=lang||'en';
+  try{speechSynthesis.cancel();}catch(e){}
+  ttsTok++;audioTok++;const myTok=audioTok;
+  const a=getExAudio();let done=false;
+  const stale=()=>done||myTok!==audioTok;
+  const fb=()=>{if(stale())return;done=true;ttsSpeakOnce(t,lang);};
+  a.onended=()=>{if(stale())return;done=true;};
+  a.onerror=fb;
+  try{a.pause();}catch(e){}
+  a.src=AUDIO_DIR+audioHash(lang+"|"+t)+".mp3";
+  try{a.currentTime=0;}catch(e){}
+  const p=a.play();
+  if(p&&typeof p.catch==='function')p.catch(fb);
+}
+/* ===================== 音效 + 静音 ===================== */
+let actx=null,muted=localStorage.getItem('kvl_mute')==='1';
+function beep(ok){
+  if(muted)return;
+  try{
+    if(!actx)actx=new (window.AudioContext||window.webkitAudioContext)();
+    if(actx.state==='suspended')actx.resume();
+    const t=actx.currentTime;
+    (ok?[[523,0],[659,.09],[784,.18]]:[[196,0],[147,.14]]).forEach(f=>{
+      const o=actx.createOscillator(),g=actx.createGain();
+      o.type=ok?'triangle':'sawtooth';o.frequency.value=f[0];
+      g.gain.setValueAtTime(.0001,t+f[1]);g.gain.exponentialRampToValueAtTime(.18,t+f[1]+.02);g.gain.exponentialRampToValueAtTime(.0001,t+f[1]+.22);
+      o.connect(g);g.connect(actx.destination);o.start(t+f[1]);o.stop(t+f[1]+.26);});
+  }catch(e){}
+}
+function syncMute(){document.getElementById('muteBtn').textContent=muted?'🔕':'🔔';}
+document.getElementById('muteBtn').onclick=()=>{muted=!muted;localStorage.setItem('kvl_mute',muted?'1':'0');syncMute();};
+syncMute();
+
+/* ===================== 错词本（持久，默错过就进，连对2次才出关） ===================== */
+const WB_KEY='kvl_wrongbook_v1';
+function wbLoad(){try{return JSON.parse(localStorage.getItem(WB_KEY)||'{}');}catch(e){return{};}}
+function wbSave(w){localStorage.setItem(WB_KEY,JSON.stringify(w));}
+function wbAddWrong(word){const w=wbLoad();const e=w[word]||{wrong:0,streak:0,mastered:false};e.wrong++;e.streak=0;e.mastered=false;e.last=Date.now();w[word]=e;wbSave(w);}
+function wbAddRight(word){const w=wbLoad();const e=w[word];if(!e||e.mastered)return;e.streak++;e.last=Date.now();if(e.streak>=2)e.mastered=true;w[word]=e;wbSave(w);}
+function wbActive(){const w=wbLoad();return Object.keys(w).filter(k=>!w[k].mastered);}
+
+/* ===================== 记录（localStorage + 导出） ===================== */
+const EV_KEY='kvl_events_v1';
+function loadEv(){try{return JSON.parse(localStorage.getItem(EV_KEY)||'[]');}catch(e){return[];}}
+function logEvent(ev){
+  const a=loadEv();a.push(ev);localStorage.setItem(EV_KEY,JSON.stringify(a));
+  /* dict 事件的词都要进/出错词本；背诵演练已逐词实时写过（wbApplied），不再重复计 */
+  if(ev.type==='dict'&&!ev.wbApplied)(ev.items||[]).forEach(it=>{if(it.ok)wbAddRight(it.word);else wbAddWrong(it.word);});
+}
+function lastScore(lesson){const a=loadEv();for(let i=a.length-1;i>=0;i--)if(a[i].lesson===lesson)return a[i];return null;}
+
+/* ===================== 长按英文看中文 ===================== */
+const DICT={'school':'学校','every day':'每天','park':'公园','yesterday':'昨天','work':'工作/上班','home':'家',
+'gift':'礼物','birthday':'生日','book':'书','books':'书(复数)','homework':'作业','water bottle':'水壶','morning':'早晨',
+'name':'名字','trees':'树(复数)','tree':'树','spring':'春天','meters':'米(复数)','last year':'去年','tall':'高的',
+'leaves':'树叶(复数)','autumn':'秋天','head':'头','never':'从不','already':'已经','look':'看','brother':'弟弟/哥哥',
+'this year':'今年','fast':'快','wow':'哇','oh no':'哦不','he is not at home now':'他现在不在家'};
+function getTrans(t){
+  if(!t)return null;const c=t.trim().replace(/[.,!?;:'"]+$/,'').trim();
+  if(DICT[c])return DICT[c];const lo=c.toLowerCase();
+  for(const k in DICT)if(k.toLowerCase()===lo)return DICT[k];
+  const ws=c.split(/\s+/);
+  if(ws.length>1)return ws.map(w=>{const wc=w.replace(/[.,!?;:'"]+$/,'');if(DICT[wc])return DICT[wc];const wl=wc.toLowerCase();for(const k in DICT)if(k.toLowerCase()===wl)return DICT[k];return wc;}).join(' · ');
+  return null;
+}
+function hideBub(){const b=document.getElementById('bub');if(b)b.remove();}
+function showBub(text,x,y){
+  hideBub();const tr=getTrans(text);if(!tr)return;
+  const b=document.createElement('div');b.id='bub';
+  b.innerHTML='<div class="be">'+text+'</div><div class="bc">'+tr+'</div>';
+  document.body.appendChild(b);
+  const r=b.getBoundingClientRect();
+  let l=x-r.width/2,t=y-r.height-16;
+  if(l<8)l=8;if(l+r.width>window.innerWidth-8)l=window.innerWidth-r.width-8;if(t<8)t=y+24;
+  b.style.left=l+'px';b.style.top=t+'px';
+  setTimeout(()=>{document.addEventListener('click',hideBub,{once:true});document.addEventListener('touchstart',hideBub,{once:true});},120);
+}
+let lpT=null,lpEl=null;
+document.addEventListener('touchstart',e=>{const el=e.target.closest('.en');if(!el)return;lpEl=el;const tc=e.touches[0];
+  lpT=setTimeout(()=>{if(lpEl===el){showBub(el.textContent||'',tc.clientX,tc.clientY);if(navigator.vibrate)navigator.vibrate(30);}},480);},{passive:true});
+document.addEventListener('touchend',()=>{clearTimeout(lpT);lpEl=null;},{passive:true});
+document.addEventListener('touchmove',()=>{clearTimeout(lpT);lpEl=null;},{passive:true});
+document.addEventListener('mousedown',e=>{const el=e.target.closest('.en');if(!el)return;lpEl=el;
+  lpT=setTimeout(()=>{if(lpEl===el)showBub(el.textContent||'',e.clientX,e.clientY);},480);});
+document.addEventListener('mouseup',()=>{clearTimeout(lpT);lpEl=null;});
+document.addEventListener('dblclick',e=>{const el=e.target.closest('.en');if(!el)return;e.preventDefault();showBub(el.textContent||'',e.clientX,e.clientY);});
+document.addEventListener('click',e=>{const el=e.target.closest('[data-say]');if(!el)return;speakOnce(el.dataset.say,el.dataset.lang||'en');});
+/* ===================== 语法术语：点一下弹出小讲解 ===================== */
+const TERMS={
+ '动词':'表示"做什么动作"的词。比如 fall 落下、go 去、eat 吃。',
+ '原形':'动词平时的样子（词典里的样子）。说"现在、经常、每天做"的事就用它：I go to school every day. 我每天去上学。',
+ '过去式':'动词的第二张脸：事情发生在过去（昨天/去年/刚才）就用它。它可以自己单独用：I went to the park yesterday. 我昨天去了公园。',
+ '过去分词':'动词的第三张脸："已经做完"的样子。它是个小跟班，不能自己单独用，必须牵着 have/has 的手：Dad has gone to work. 爸爸已经去上班了。',
+ '三单':'"他/她/它"一个人（一个东西）做事时，动词后面要加 s：he goes、she falls。',
+ '现在分词':'"正在做"的样子（动词+ing），要跟 am/is/are 搭档：He is going. 他正在去。',
+ 'have/has':'和过去分词手拉手，表示"已经做完了"：I have finished. 我已经做完了。他/她/它用 has，其他人用 have。'
+};
+function term(t){return '<span class="term" data-term="'+t+'">'+t+'</span>';}
+function showTermBub(t,x,y){
+  hideBub();const tr=TERMS[t];if(!tr)return;
+  const b=document.createElement('div');b.id='bub';
+  b.innerHTML='<div class="be">📖 '+t+'</div><div class="bc" style="font-size:13px;font-weight:600;text-align:left;line-height:1.7;">'+tr+'</div>';
+  document.body.appendChild(b);
+  const r=b.getBoundingClientRect();
+  let l=x-r.width/2,tp=y-r.height-16;
+  if(l<8)l=8;if(l+r.width>window.innerWidth-8)l=window.innerWidth-r.width-8;if(tp<8)tp=y+24;
+  b.style.left=l+'px';b.style.top=tp+'px';
+  setTimeout(()=>{document.addEventListener('click',hideBub,{once:true});document.addEventListener('touchstart',hideBub,{once:true});},120);
+}
+document.addEventListener('click',e=>{const el=e.target.closest('.term');if(!el)return;e.stopPropagation();showTermBub(el.dataset.term,e.clientX||window.innerWidth/2,e.clientY||120);});
+/* 每个动词形态的中文小注释（跟在单词后面） */
+function cn0(v){return v.cn.split(/[，,]/)[0];}
+function gloss(v){const c=cn0(v);if(v.pp==='/')return{b:c,p:'过去'+c,q:'（没有）'};return{b:c,p:'昨天'+c+'了',q:'已经'+c};}
+function esc(t){return String(t).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+function enS(t){return '<span class="en">'+esc(t)+'</span>';}
+function sayBtn(t,label){return '<button class="say" data-say="'+esc(t)+'" data-lang="en">🔊 '+(label||'听')+'</button>';}
+
+/* ===================== 词表数据（136表 31~61号）===================== */
+/* [序号,原形,音标,过去式,过去分词,词义,家族,原形标记,过去式标记,分词标记,记忆提示,三单,现在分词,备注] 标记里[x]=变化的部分 */
+const RAW=[
+[31,'fall','/fɔːl/','fell','fallen','落下','abc','f[a]ll','f[e]ll','fall[en]','a变e成fell；过去分词回到fall再加-en','falls','falling',''],
+[32,'feed','/fiːd/','fed','fed','喂','vow','f[ee]d','f[e]d','f[e]d','两个e挤掉一个：feed→fed','feeds','feeding',''],
+[33,'feel','/fiːl/','felt','felt','觉得','t','f[ee]l','f[e]l[t]','f[e]l[t]','ee缩成e、尾巴加t：feel→felt','feels','feeling',''],
+[34,'fight','/faɪt/','fought','fought','打架，战斗','vow','f[igh]t','f[ough]t','f[ough]t','igh变ough：fight→fought','fights','fighting',''],
+[35,'find','/faɪnd/','found','found','发现，找到','vow','f[i]nd','f[ou]nd','f[ou]nd','i变ou：find→found','finds','finding',''],
+[36,'flee','/fliː/','fled','fled','逃，消失','vow','fl[ee]','fl[e]d','fl[e]d','ee缩成e再加d：flee→fled','flees','fleeing',''],
+[37,'fly','/flaɪ/','flew','flown','飞','abc','fl[y]','fl[ew]','fl[own]','y→ew→own，和know/grow是同款三兄弟','flies','flying',''],
+[38,'forbid','/fəˈbɪd/','forbade','forbidden','禁止','abc','forb[i]d','forb[a]de','forbid[den]','i变a(de)；分词双写d加en：forbidden','forbids','forbidding','过去式也写 forbad'],
+[39,'forecast','/ˈfɔːkɑːst/','forecast','forecast','预测，预报','aaa','forecast','forecast','forecast','天气预报从不变身：三个一模一样','forecasts','forecasting','也可写 forecasted'],
+[40,'forget','/fəˈɡet/','forgot','forgotten','忘记','abc','forg[e]t','forg[o]t','forg[o]t[ten]','e变o；分词双写t加en：forgotten','forgets','forgetting',''],
+[41,'forgive','/fəˈɡɪv/','forgave','forgiven','宽恕','abc','forg[i]ve','forg[a]ve','forg[i]v[en]','i变a成forgave；分词变回i加en（和give同款）','forgives','forgiving',''],
+[42,'freeze','/friːz/','froze','frozen','冻结','abc','fr[ee]ze','fr[o]ze','fr[o]z[en]','ee变o；分词frozen（《冰雪奇缘》英文名就是Frozen）','freezes','freezing',''],
+[43,'get','/ɡet/','got','got','得到','vow','g[e]t','g[o]t','g[o]t','e变o：get→got','gets','getting','美式分词也说 gotten'],
+[44,'give','/ɡɪv/','gave','given','给','abc','g[i]ve','g[a]ve','giv[en]','i变a成gave；分词given=give+n','gives','giving',''],
+[45,'go','/ɡəʊ/','went','gone','去','abc','go','[went]','g[one]','went是完全换的新词（要硬记）；gone=go+ne','goes','going',''],
+[46,'grow','/ɡrəʊ/','grew','grown','生长','abc','gr[ow]','gr[ew]','gr[own]','ow→ew→own，飞行三兄弟fly/know/grow同款','grows','growing',''],
+[47,'hang','/hæŋ/','hung','hung','挂','vow','h[a]ng','h[u]ng','h[u]ng','a变u：hang→hung（"绞死"义才用hanged）','hangs','hanging',''],
+[48,'have','/hæv/','had','had','有','vow','ha[ve]','ha[d]','ha[d]','ve换成d：have→had','has','having',''],
+[49,'hear','/hɪə(r)/','heard','heard','听到','vow','hear','hear[d]','hear[d]','直接加d，但读音变成 /hɜːd/','hears','hearing',''],
+[50,'hide','/haɪd/','hid','hidden','藏','abc','h[i]de','h[i]d','hid[den]','去掉e成hid；分词双写d加en：hidden','hides','hiding','分词也写 hid'],
+[51,'hit','/hɪt/','hit','hit','打中','aaa','hit','hit','hit','三个一模一样，最省事','hits','hitting',''],
+[52,'hold','/həʊld/','held','held','持，拿着','vow','h[o]ld','h[e]ld','h[e]ld','o变e：hold→held','holds','holding',''],
+[53,'hurt','/hɜːt/','hurt','hurt','损伤','aaa','hurt','hurt','hurt','三个一模一样（受伤了就不想动）','hurts','hurting',''],
+[54,'keep','/kiːp/','kept','kept','保持','t','k[ee]p','k[e]p[t]','k[e]p[t]','ee缩成e、加t：kept','keeps','keeping',''],
+[55,'know','/nəʊ/','knew','known','知道','abc','kn[ow]','kn[ew]','kn[own]','ow→ew→own，飞行三兄弟之一','knows','knowing',''],
+[56,'lay','/leɪ/','laid','laid','放，放置','vow','la[y]','la[id]','la[id]','y变i再加d：laid','lays','laying',''],
+[57,'lead','/liːd/','led','led','领导','vow','l[ea]d','l[e]d','l[e]d','ea缩成e：lead→led','leads','leading',''],
+[58,'leap','/liːp/','leapt','leapt','跳跃','t','leap','leap[t]','leap[t]','直接加t：leapt','leaps','leaping','也可写 leaped'],
+[59,'learn','/lɜːn/','learnt','learnt','学习','t','learn','learn[t]','learn[t]','直接加t：learnt','learns','learning','也可写 learned'],
+[60,'leave','/liːv/','left','left','离开','t','l[ea]ve','l[ef]t','l[ef]t','eave变eft：left（"剩下的"也是left）','leaves','leaving',''],
+[61,'lend','/lend/','lent','lent','借给','t','len[d]','len[t]','len[t]','结尾d变t：lend→lent','lends','lending',''],
+[62,'let','/let/','let','let','让','aaa','let','let','let','三个一模一样：让来让去不变身','lets','letting',''],
+[63,'lie','/laɪ/','lay','lain','躺','abc','l[ie]','l[ay]','l[ain]','ie→ay→ain。⚠️小心：过去式lay和56号lay(放置)长得一模一样，靠句子意思分辨','lies','lying',''],
+[64,'light','/laɪt/','lit','lit','点着','vow','l[igh]t','l[i]t','l[i]t','igh缩成i：light→lit','lights','lighting','也可写 lighted'],
+[65,'lose','/luːz/','lost','lost','失去','t','lo[se]','lo[st]','lo[st]','se变st：lose→lost（输了/丢了都是lost）','loses','losing',''],
+[66,'make','/meɪk/','made','made','做，制作','vow','ma[ke]','ma[de]','ma[de]','ke变de：make→made','makes','making',''],
+[67,'may','/meɪ/','might','/','可能，可以','mod','may','[might]','—','情态动词：may→might；没有过去分词，也不加s、不加ing','/','/',''],
+[68,'mean','/miːn/','meant','meant','想要，意欲','t','mean','mean[t]','mean[t]','直接加t：meant（注意读音变 /ment/）','means','meaning',''],
+[69,'meet','/miːt/','met','met','遇见','vow','m[ee]t','m[e]t','m[e]t','两个e挤掉一个：meet→met','meets','meeting',''],
+[70,'mistake','/mɪˈsteɪk/','mistook','mistaken','误认','abc','mist[a]ke','mist[oo]k','mistak[en]','a变oo成mistook；分词mistaken=mistake+n（take家族）','mistakes','mistaking',''],
+[71,'misunderstand','/ˌmɪsʌndəˈstænd/','misunderstood','misunderstood','误会，误解','vow','misunderst[a]nd','misunderst[oo]d','misunderst[oo]d','词再长只看尾巴：stand→stood（a变oo）','misunderstands','misunderstanding',''],
+[72,'must','/mʌst/','must','/','必须','mod','must','must','—','情态动词：过去式还是must；没有过去分词，也不加s、不加ing','/','/',''],
+[73,'overcome','/ˌəʊvəˈkʌm/','overcame','overcome','克服，战胜','aba','overc[o]me','overc[a]me','overc[o]me','o变a成overcame，分词又变回overcome——回旋镖（come家族）','overcomes','overcoming',''],
+[74,'overtake','/ˌəʊvəˈteɪk/','overtook','overtaken','赶上，超过','abc','overt[a]ke','overt[oo]k','overtak[en]','a变oo成overtook；分词+n：overtaken（take家族）','overtakes','overtaking',''],
+[75,'pay','/peɪ/','paid','paid','支付','vow','pa[y]','pa[id]','pa[id]','y变i加d：paid（和lay-laid同款）','pays','paying',''],
+[76,'put','/pʊt/','put','put','放，放下','aaa','put','put','put','三个一模一样','puts','putting',''],
+[77,'read','/riːd/','read','read','读，阅读','aaa','read','read','read','拼写三个一样，但读音变身！过去式/过去分词读 /red/（像red红色）','reads','reading','','read, red, red'],
+[78,'rebuild','/ˌriːˈbɪld/','rebuilt','rebuilt','重建','t','rebuil[d]','rebuil[t]','rebuil[t]','结尾d变t：rebuild→rebuilt（build的兄弟）','rebuilds','rebuilding',''],
+[79,'repay','/rɪˈpeɪ/','repaid','repaid','归还，报答','vow','repa[y]','repa[id]','repa[id]','y变i加d：repaid（pay的兄弟）','repays','repaying',''],
+[80,'rid','/rɪd/','rid','rid','去掉','aaa','rid','rid','rid','三个一模一样','rids','ridding',''],
+[81,'ride','/raɪd/','rode','ridden','骑','abc','r[i]de','r[o]de','r[i]d[den]','i变o成rode；分词变回i、双写d加en：ridden','rides','riding',''],
+[82,'ring','/rɪŋ/','rang','rung','响，打电话给','abc','r[i]ng','r[a]ng','r[u]ng','i→a→u 三连变：ring-rang-rung（像唱音阶）','rings','ringing',''],
+[83,'rise','/raɪz/','rose','risen','升，上升','abc','r[i]se','r[o]se','r[i]s[en]','i变o成rose（玫瑰rose）；分词变回i加en：risen','rises','rising',''],
+[84,'run','/rʌn/','ran','run','跑','aba','r[u]n','r[a]n','r[u]n','u变a成ran，分词又变回run——回旋镖！','runs','running',''],
+[85,'say','/seɪ/','said','said','说，说话','vow','sa[y]','sa[id]','sa[id]','y变i加d：said（注意读音 /sed/）','says','saying',''],
+[86,'see','/siː/','saw','seen','看见','abc','s[ee]','s[aw]','s[een]','ee变aw成saw（锯子saw）；分词seen','sees','seeing',''],
+[87,'seek','/siːk/','sought','sought','找，寻求','vow','s[eek]','s[ought]','s[ought]','eek变ought：sought（和fight-fought同款ought家族）','seeks','seeking',''],
+[88,'sell','/sel/','sold','sold','卖','vow','s[e]ll','s[old]','s[old]','e变o：sell→sold（old老的，卖旧货）','sells','selling',''],
+[89,'send','/send/','sent','sent','送','t','sen[d]','sen[t]','sen[t]','结尾d变t：send→sent（和lend-lent同款）','sends','sending',''],
+[90,'set','/set/','set','set','安放','aaa','set','set','set','三个一模一样','sets','setting','']
+];
+const VERBS=RAW.map(r=>({n:r[0],base:r[1],ipa:r[2],past:r[3],pp:r[4],cn:r[5],fam:r[6],hb:r[7],hp:r[8],hq:r[9],tip:r[10],third:r[11],ing:r[12],alt:r[13],say:r[14]||''}));
+const FAMS={
+ aaa:{nm:'偷懒三胞胎',emoji:'🪨',col:'#7b54c0',bg:'var(--purplebg)',abbr:'AAA',
+   rule:'三个形态<b>一模一样</b>：原形＝过去式＝过去分词，写一样的就行！',
+   mem:'hit、hurt、put、set……这队最懒，从来不变身（read 拼写不变、读音会变哦）。'},
+ t:{nm:'-t 尾巴队',emoji:'🔧',col:'#e8842c',bg:'var(--orangebg)',abbr:'A-B-B',
+   rule:'过去式＝过去分词，都以 <b>-t 收尾</b>；常把 ee/ea 缩短、或把结尾的 d 换成 t。',
+   mem:'feel→felt、keep→kept、send→sent——念起来"特特特"，尾巴都带 t。'},
+ vow:{nm:'元音变身队',emoji:'🎨',col:'#2e9c54',bg:'var(--greenbg)',abbr:'A-B-B',
+   rule:'只把<b>中间的音变一变</b>，过去式＝过去分词，两次写一样。',
+   mem:'find→found、make→made、sell→sold——中间换个音，一变管两个。'},
+ aba:{nm:'回旋镖队',emoji:'🪃',col:'#0e8f8f',bg:'#e5f6f6',abbr:'A-B-A',
+   rule:'过去式变一下，过去分词又<b>变回原形</b>——像回旋镖飞出去又飞回来！',
+   mem:'run→ran→run、overcome→overcame→overcome——第三张脸＝第一张脸。'},
+ mod:{nm:'情态特工队',emoji:'🎩',col:'#5b6770',bg:'#eef1f4',abbr:'特殊',
+   rule:'情态动词是"帮手词"：<b>没有过去分词</b>，也不加 s、不加 ing，只有原形和过去式两张脸。',
+   mem:'may→might（可能）、must→must（必须）——特工只有两张脸。'},
+ abc:{nm:'三段变身队',emoji:'🦋',col:'#e1553f',bg:'var(--redbg)',abbr:'A-B-C',
+   rule:'三个形态<b>各不相同</b>，过去分词常以 <b>-en / -ne</b> 收尾，是最需要用心背的一队。',
+   mem:'go→went→gone、ride→rode→ridden——像毛毛虫→蛹→蝴蝶，三段变身。'}
+};
+const FAMORDER=['aaa','t','vow','aba','mod','abc'];
+/* ==== 背诵批次（老师每周布置一段，往后直接加） ==== */
+const BATCHES=[
+ {id:'b1',label:'31~61',sub:'第1批·已默过',from:31,to:61},
+ {id:'b2',label:'61~90',sub:'第2批·下周一默写 🔥',from:61,to:90}
+];
+let curBatch=localStorage.getItem('kvl_batch')||'b2';
+if(!BATCHES.some(b=>b.id===curBatch))curBatch='b2';
+function batchDef(){return BATCHES.find(b=>b.id===curBatch);}
+function CUR(){const b=batchDef();return VERBS.filter(v=>v.n>=b.from&&v.n<=b.to);}
+function curFams(){const set=new Set(CUR().map(v=>v.fam));return FAMORDER.filter(k=>set.has(k));}
+function famOf(v){return FAMS[v.fam];}
+function isMod(v){return v.pp==='/';}
+function triple(v){if(v.say)return v.say;return isMod(v)?(v.base+', '+v.past):(v.base+', '+v.past+', '+v.pp);}
+function hl(s){return esc(s).replace(/\[([^\]]+)\]/g,'<i class="hl">$1</i>');}
+
+/* ===================== 时光机示范（为什么一个动词有三张脸） ===================== */
+const TDEMO=[
+{base:'go',s1:'I go to school every day.',c1:'我每天去上学。',s2:'I went to the park yesterday.',c2:'我昨天去了公园。',s3:'Dad has gone to work.',c3:'爸爸已经去上班了。',
+ q:{stem:'Dad ____ to work. He is not at home now.',opts:['go','went','has gone'],a:2,why:'"现在不在家"＝去了而且还没回来，说的是到现在的结果 → have/has + 过去分词：has gone。'}},
+{base:'give',s1:'I give my brother a gift on his birthday.',c1:'他生日时我都会送他礼物。',s2:'I gave him a book yesterday.',c2:'我昨天给了他一本书。',s3:'I have given him three books this year.',c3:'今年我已经给了他三本书。',
+ q:{stem:'I ____ him a book yesterday.',opts:['give','gave','given'],a:1,why:'yesterday＝过去的某一刻 → 用过去式 gave。given 不能单独用，必须跟 have/has 搭档。'}},
+{base:'forget',s1:'I never forget my homework.',c1:'我从不忘记作业。',s2:'I forgot my water bottle this morning.',c2:'今天早上我忘带水壶了。',s3:'Oh no! I have forgotten his name.',c3:'哦不！我已经把他的名字忘了。',
+ q:{stem:'I never ____ my homework.',opts:['forget','forgot','forgotten'],a:0,why:'never＝一直的习惯，说的是"平时经常"→ 一般现在时用原形 forget。'}},
+{base:'grow',s1:'Trees grow fast in spring.',c1:'春天树长得快。',s2:'This tree grew two meters last year.',c2:'这棵树去年长了两米。',s3:'Wow, it has grown so tall!',c3:'哇，它已经长这么高了！',
+ q:{stem:'This tree ____ two meters last year.',opts:['grows','grew','grown'],a:1,why:'last year＝过去的事 → 过去式 grew。'}},
+{base:'fall',s1:'Leaves fall in autumn.',c1:'秋天树叶会落下。',s2:'A leaf fell on my head yesterday.',c2:'昨天一片叶子落在我头上。',s3:'Look, all the leaves have fallen.',c3:'看，叶子已经全落光了。',
+ q:{stem:'Look! All the leaves have ____.',opts:['fall','fell','fallen'],a:2,why:'have/has 后面必须站过去分词 → fallen。fell 只能自己单独当过去式用。'}}
+];
+
+/* ===================== 🎈 三张脸入门（概念启蒙，分步动画） ===================== */
+const ISTEPS=[
+{t:'先认识：什么是动词？',
+ vis:'<div class="ivrow"><div class="ivword">🍂 fall<small>落下</small></div><div class="ivword">🚶 go<small>去</small></div><div class="ivword">🍎 eat<small>吃</small></div></div>',
+ cap:'表示"<b>做什么动作</b>"的词，叫'+term('动词')+'。落下、去、吃……都是动词。这次要背的31个词，全是动词！'},
+{t:'中文和英语不一样！',
+ vis:'<div class="ivline">🇨🇳 我昨天<b style="color:var(--green);">去</b>公园了。<span class="zh">中文的"去"字永远不变，靠加"昨天、了"表示时间</span></div>'+
+     '<div class="ivline">🇬🇧 I <b style="color:var(--orange);">went</b> to the park yesterday.<span class="zh">英语的 go 竟然变身成了 went！</span></div>',
+ cap:'英语动词会<b>变身</b>——把"什么时候做的"直接<b>穿在自己身上</b>。所以一个动词有<b>三张脸</b>，这就是我们要背"三个一组"的原因！',say:'I went to the park yesterday.'},
+{t:'第一张脸：原形',
+ vis:'<div class="facecard" style="border:3px solid var(--blue);color:var(--blued);">go<small>原形＝平时的样子</small></div>'+
+     '<div class="ivline" style="margin-top:8px;">I <b style="color:var(--blued);">go</b> to school every day.<span class="zh">我每天去上学。</span></div>',
+ cap:term('原形')+'就是动词<b>平时的样子</b>（词典里的样子）。什么时候用？——<b>现在、经常、每天</b>做的事。',say:'I go to school every day.'},
+{t:'第二张脸：过去式',
+ vis:'<div class="facecard" style="border:3px solid var(--line);color:var(--muted);">go<small>原形</small></div><span style="font-size:22px;">→</span>'+
+     '<div class="facecard" style="border:3px solid var(--orange);color:var(--orange);">went<small>过去式＝昨天的衣服</small></div>'+
+     '<div class="ivline" style="margin-top:8px;">I <b style="color:var(--orange);">went</b> to the park <u>yesterday</u>.<span class="zh">我昨天去了公园。</span></div>',
+ cap:'事情发生在<b>过去</b>（昨天/去年/刚才），动词就换上'+term('过去式')+'这件衣服。它很独立，<b>自己就能用</b>。看到 yesterday（昨天）就找它！',say:'I went to the park yesterday.'},
+{t:'第三张脸：过去分词（重点！）',
+ vis:'<div class="facecard" style="border:3px solid var(--green);color:var(--green);">has<small>牵手的大人</small></div>'+
+     '<span class="hand" style="font-size:26px;">🤝</span>'+
+     '<div class="facecard" style="border:3px solid var(--purple);color:var(--purple);">gone<small>过去分词＝小跟班</small></div>'+
+     '<div class="ivline" style="margin-top:8px;">Dad <b style="color:var(--green);">has</b> <b style="color:var(--purple);">gone</b> to work.<span class="zh">爸爸已经去上班了。（所以他现在不在家）</span></div>',
+ cap:term('过去分词')+'表示"<b>已经做完了</b>"。⚠️ 但它是个<b>小跟班，不能自己单独出门</b>——必须牵着 '+term('have/has')+' 的手一起用：<b>have/has + 过去分词 ＝ 已经…了</b>。',say:'Dad has gone to work.'},
+{t:'三张脸放一起看',
+ vis:'<div class="kout">'+
+   '🔵 '+term('原形')+' <b>go</b>（去）→ 现在、经常做：I <b>go</b> every day.<br>'+
+   '🟠 '+term('过去式')+' <b>went</b>（昨天去了）→ 过去做过：I <b>went</b> yesterday.<br>'+
+   '🟣 '+term('过去分词')+' <b>gone</b>（已经去）→ 已经做完：Dad <b>has gone</b>.</div>',
+ cap:'背动词表就是背这<b>三张脸</b>：<b>go – went – gone</b>。先想"什么时候做的"，再挑对应的脸！'},
+{t:'表格里另外两列是啥？',
+ vis:'<div class="kout">'+
+   '👤 '+term('三单')+'：<b>他/她/它</b>一个人做事，动词加 <b>s</b> → he <b>goes</b>（他去）<br>'+
+   '🏃 '+term('现在分词')+'：<b>正在做</b>，动词加 <b>ing</b>，跟 is 搭档 → He <b>is going</b>.（他正在去）</div>',
+ cap:'动词表里的"三单"和"现在分词"两列是<b>规则变化</b>（加s、加ing），不用专门背——重点背好三张脸就行！'}
+];
+const IQ=[
+ {stem:'"我昨天去了公园"——go 要用哪张脸？I ____ to the park yesterday.',opts:['go（原形）','went（过去式）','gone（过去分词）'],a:1,
+  why:'yesterday＝昨天，事情发生在过去 → 用第二张脸"过去式"went。'},
+ {stem:'"爸爸已经去上班了（现在不在家）"——填什么？Dad ____ to work.',opts:['go','went','has gone'],a:2,
+  why:'"已经…了"＝have/has+过去分词。gone 是小跟班，必须和 has 手拉手。'},
+ {stem:'过去分词（比如 gone）可以自己单独用吗？',opts:['可以，想怎么用就怎么用','不可以，要牵着 have/has 的手'],a:1,
+  why:'过去分词是小跟班，不能单独用！have/has+过去分词＝已经做完了。这就是它和过去式最大的区别。'}
+];
+let iIdx=0,iqIdx=0,iqItems=[],iqT0=0;
+function renderIntro(){iIdx=0;introStep();}
+function introStep(){
+  const s=ISTEPS[iIdx];
+  let h='<div class="card"><div class="h2">🎈 三张脸入门</div>'+
+   '<div class="idots">'+ISTEPS.map((x,i)=>'<div class="idot'+(i===iIdx?' on':'')+'"></div>').join('')+'</div>'+
+   '<div class="pgr">第 '+(iIdx+1)+' / '+ISTEPS.length+' 步 · '+s.t+'</div>'+
+   '<div class="ivis">'+s.vis+'</div>'+
+   '<div class="tlcap">👉 '+s.cap+'</div>'+
+   (s.say?'<div class="row center">'+sayBtn(s.say,'听这句')+'</div>':'')+
+   '<div class="termbar">带虚线的词（如'+term('过去分词')+'）都可以<b>点一下看解释</b></div>'+
+   '<div class="row center" style="margin-top:10px;">'+
+    (iIdx>0?'<button class="btn ghost" id="iPrev">← 上一步</button>':'')+
+    (iIdx<ISTEPS.length-1?'<button class="btn" id="iNext">下一步 →</button>':'<button class="btn gold" id="iQuiz">✏️ 学会了？试3小题</button>')+
+   '</div></div>';
+  $('stage').innerHTML=h;
+  if(s.say)speakOnce(s.say,'en');
+  const p=$('iPrev');if(p)p.onclick=()=>{iIdx--;introStep();};
+  const n=$('iNext');if(n)n.onclick=()=>{iIdx++;introStep();beep(true);};
+  const q=$('iQuiz');if(q)q.onclick=()=>{iqIdx=0;iqItems=[];iqT0=Date.now();introQ();};
+}
+function introQ(){
+  if(iqIdx>=IQ.length){
+    finishMod('三张脸入门',iqItems,iqT0);beep(true);
+    const wrong=iqItems.filter(x=>!x.ok).length;
+    $('stage').innerHTML='<div class="card" style="text-align:center;"><div style="font-size:52px;">🎈🎉</div>'+
+     '<div class="h2">入门完成！对 '+(IQ.length-wrong)+' / '+IQ.length+'</div>'+
+     '<div class="hint">记住：<b>原形＝现在经常做 · 过去式＝昨天做过了 · have/has+过去分词＝已经做完了</b></div>'+
+     '<div class="row center" style="margin-top:10px;"><button class="btn" onclick="renderIntro()">🔁 再看一遍</button>'+
+     '<button class="btn gold" onclick="openMod(\'map\')">🧠 去魔法阵认词</button></div></div>';
+    return;
+  }
+  const q=IQ[iqIdx],t0=Date.now();
+  $('stage').innerHTML='<div class="card"><div class="pgr">小检验 '+(iqIdx+1)+' / '+IQ.length+'</div>'+
+   '<div class="sen" style="font-size:16px;">'+q.stem+'</div><div class="opts" id="iqOpts">'+
+   q.opts.map((o,i)=>'<button class="opt" data-i="'+i+'">'+String.fromCharCode(65+i)+'. '+o+'</button>').join('')+'</div><div id="iqFb"></div></div>';
+  document.querySelectorAll('#iqOpts .opt').forEach(b=>b.onclick=()=>{
+    const i=+b.dataset.i,ok=i===q.a;
+    document.querySelectorAll('#iqOpts .opt').forEach(x=>x.classList.add('off'));
+    b.classList.add(ok?'right':'wrong');
+    if(!ok)document.querySelector('#iqOpts .opt[data-i="'+q.a+'"]').classList.add('right');
+    beep(ok);
+    iqItems.push({word:'入门第'+(iqIdx+1)+'题',hint:q.stem,ok:ok,ms:Date.now()-t0,user:q.opts[i],tag:q.why});
+    $('iqFb').innerHTML='<div class="why'+(ok?'':' bad')+'"><span class="lab">'+(ok?'✅ 对啦！':'❌ 看讲解：')+'</span> '+q.why+'</div>'+
+     '<div class="row center"><button class="btn" id="iqNx">'+(iqIdx<IQ.length-1?'下一题 →':'完成 ✅')+'</button></div>';
+    $('iqNx').onclick=()=>{iqIdx++;introQ();};
+  });
+}
+
+/* ===================== 导航 ===================== */
+const MODS=[
+ {id:'intro',ic:'🎈',nm:'三张脸入门 ⭐',ds:'过去分词是啥？动词为什么会变身？先看这个'},
+ {id:'map',ic:'🧠',nm:'变形家族魔法阵 ⭐',ds:'31个动词分成4大家族，点一点看变形动画'},
+ {id:'time',ic:'⏰',nm:'为什么有三张脸',ds:'时间轴动画：原形/过去式/过去分词啥时候用'},
+ {id:'flip',ic:'🃏',nm:'记忆翻卡',ds:'先自己说，再翻开看变形对不对'},
+ {id:'sort',ic:'🧺',nm:'家族分拣机',ds:'把动词分进对的家族，检验找规律'},
+ {id:'recite',ic:'🎤',nm:'周一背诵演练 ⭐',ds:'像真背诵：看词→大声说三态→对答案，错词自动进错词本'},
+ {id:'wrong',ic:'🔁',nm:'我的错词本',ds:'说错过的词都在这，连对2次才出关'},
+ {id:'rec',ic:'📖',nm:'学习记录',ds:'成绩 + 错词 + 一键导出给爸爸'}
+];
+const $=id=>document.getElementById(id);
+function renderHome(){
+  const wbn=wbActive().length,b=batchDef(),cur=CUR();
+  let h='<div class="famchips" style="justify-content:center;">'+BATCHES.map(x=>
+    '<button class="chip'+(x.id===curBatch?' on':'')+'" data-batch="'+x.id+'">'+x.label+'号<small> '+x.sub+'</small></button>').join('')+'</div>';
+  h+='<div class="intro">正在练：<b>「136个不规则动词表」'+b.label+'号</b>（'+cur[0].base+'→'+cur[cur.length-1].base+'，共'+cur.length+'个）。'+
+    '第一次来？<b>先去 🎈三张脸入门</b>，弄懂"过去式、过去分词是啥"；再去 <b>🧠魔法阵</b> 找变形规律，'+
+    '最后用 <b>🃏翻卡</b> 和 <b>🎤背诵演练</b> 练熟，周一默写就稳了！所有带虚线的词都能<b>点一下看解释</b>。'+
+    '<div style="margin-top:8px;"><button class="btn gold sm" id="tvBtn">🔊 先点我测试声音</button></div></div><div class="grid">';
+  MODS.forEach(m=>{
+    let done='';
+    if(m.id==='wrong'&&wbn)done='<span class="done" style="color:var(--red);background:var(--redbg);">'+wbn+'个待过关</span>';
+    else{const ls=lastScore(m.nm.replace(' ⭐',''));if(ls)done='<span class="done">✅对'+(ls.total-ls.wrong)+' ❌错'+ls.wrong+'</span>';}
+    h+='<div class="tile" data-mod="'+m.id+'"><div class="ic">'+m.ic+'</div><div class="nm">'+m.nm+'</div><div class="ds">'+m.ds+'</div>'+done+'</div>';
+  });
+  h+='</div>';
+  $('home').innerHTML=h;
+  $('tvBtn').onclick=()=>{beep(true);speakOnce(triple(CUR()[0]),'en');};
+  document.querySelectorAll('[data-batch]').forEach(c=>c.onclick=()=>{curBatch=c.dataset.batch;localStorage.setItem('kvl_batch',curBatch);famOn=0;famChip=-1;renderHome();beep(true);});
+  document.querySelectorAll('.tile').forEach(t=>t.onclick=()=>openMod(t.dataset.mod));
+}
+function openMod(id){
+  $('home').classList.add('hide');$('view').classList.remove('hide');
+  window.scrollTo({top:0,behavior:'smooth'});
+  ({intro:renderIntro,map:renderMap,time:renderTime,flip:renderFlip,sort:renderSort,recite:()=>renderRecite(null),wrong:renderWrong,rec:renderRec})[id]();
+}
+$('backBtn').onclick=()=>{$('view').classList.add('hide');$('home').classList.remove('hide');renderHome();window.scrollTo({top:0,behavior:'smooth'});};
+function finishMod(lesson,items,t0,type,wbApplied){
+  const wrong=items.filter(x=>!x.ok).length;
+  logEvent({ts:Date.now(),type:type||'quiz',subject:'英语·不规则动词31-61',lesson:lesson,total:items.length,wrong:wrong,
+    durationSec:Math.round((Date.now()-t0)/1000),items:items,wbApplied:!!wbApplied});
+}
+
+/* ===================== 🧠 变形家族魔法阵 ===================== */
+let famOn=0,famChip=-1,morphTimers=[];
+function clearMorph(){morphTimers.forEach(t=>clearTimeout(t));morphTimers=[];}
+function renderMap(){
+  clearMorph();
+  const fams=curFams(),cur=CUR(),b=batchDef();
+  if(famOn>=fams.length)famOn=0;
+  const POS={4:[[70,64],[290,64],[62,296],[298,296]],
+             5:[[70,60],[290,60],[46,214],[314,214],[180,312]],
+             6:[[70,56],[290,56],[40,186],[320,186],[70,312],[290,312]]};
+  const pos=POS[fams.length]||POS[4];
+  let svg='<svg class="mapsvg" viewBox="0 0 360 366">';
+  pos.forEach(p=>{svg+='<line x1="180" y1="180" x2="'+p[0]+'" y2="'+p[1]+'" stroke="#c8d9ec" stroke-width="3"/>';});
+  pos.forEach((p,i)=>{const k=fams[i],f=FAMS[k],cnt=cur.filter(v=>v.fam===k).length;
+    svg+='<g class="node" data-fam="'+i+'"><circle cx="'+p[0]+'" cy="'+p[1]+'" r="44" fill="'+(i===famOn?f.col:'#fff')+'" stroke="'+f.col+'" stroke-width="3"/>'+
+     '<text x="'+p[0]+'" y="'+(p[1]-13)+'" text-anchor="middle" font-size="16">'+f.emoji+'</text>'+
+     '<text x="'+p[0]+'" y="'+(p[1]+5)+'" text-anchor="middle" font-size="12.5" font-weight="800" fill="'+(i===famOn?'#fff':f.col)+'">'+f.nm+'</text>'+
+     '<text x="'+p[0]+'" y="'+(p[1]+21)+'" text-anchor="middle" font-size="10" fill="'+(i===famOn?'#fff':'#7d8a96')+'">'+f.abbr+' · '+cnt+'个</text></g>';});
+  svg+='<circle cx="180" cy="180" r="46" fill="#225182"/><text x="180" y="172" text-anchor="middle" font-size="13" font-weight="800" fill="#fff">不规则动词</text>'+
+   '<text x="180" y="190" text-anchor="middle" font-size="12" font-weight="800" fill="#ffe07a">'+b.label+' 号</text>'+
+   '<text x="180" y="206" text-anchor="middle" font-size="9.5" fill="#cfe1f5">'+fams.length+'大家族·找规律</text></svg>';
+  const k=fams[famOn],f=FAMS[k],vs=cur.filter(v=>v.fam===k);
+  let h='<div class="card"><div class="h2">🧠 变形家族魔法阵</div>'+
+   '<div class="hint">'+cur.length+'个动词不用一个个死背——按<b>变形规律</b>分成'+fams.length+'家族。点圆圈换家族，点单词看<b>变形动画</b>。</div>'+svg+
+   '<div class="rulebox" style="background:'+f.bg+';"><b style="color:'+f.col+';">'+f.emoji+' '+f.nm+'（'+f.abbr+'）</b>：'+f.rule+
+   '<div style="font-size:12.5px;color:var(--muted);margin-top:4px;">💡 '+f.mem+'</div></div>'+
+   '<div class="famchips">'+vs.map(v=>'<button class="chip'+(VERBS.indexOf(v)===famChip?' on':'')+'" data-chip="'+VERBS.indexOf(v)+'"><small>'+v.n+'</small> '+v.base+' <small>'+esc(cn0(v))+'</small></button>').join('')+'</div>'+
+   '<div id="vDetail"></div></div>';
+  $('stage').innerHTML=h;
+  document.querySelectorAll('.node').forEach(n=>n.onclick=()=>{famOn=+n.dataset.fam;famChip=-1;renderMap();beep(true);});
+  document.querySelectorAll('[data-chip]').forEach(c=>c.onclick=()=>{famChip=+c.dataset.chip;renderMap();showVerb(VERBS[famChip]);});
+  if(famChip>=0)showVerb(VERBS[famChip]);
+  if(!lastScore('变形家族魔法阵'))logEvent({ts:Date.now(),type:'quiz',subject:'英语·不规则动词31-61',lesson:'变形家族魔法阵',total:1,wrong:0,durationSec:0,items:[{word:'看过魔法阵',hint:'',ok:true,ms:0}]});
+}
+function showVerb(v){
+  clearMorph();
+  const f=famOf(v),g=gloss(v);
+  let h='<div style="border-top:2px dashed var(--line);margin-top:6px;padding-top:8px;">'+
+   '<div class="pgr">第 '+v.n+' 号 · '+f.emoji+' '+f.nm+' · '+v.ipa+' · '+esc(v.cn)+'</div>'+
+   '<div class="morphrow">'+
+    '<span class="mstage st0" id="m0">'+hl(v.hb)+'<span class="fl">'+term('原形')+'·'+esc(g.b)+'</span></span>'+
+    '<span class="marw" id="a0">→</span>'+
+    '<span class="mstage st1" id="m1">'+hl(v.hp)+'<span class="fl">'+term('过去式')+'·'+esc(g.p)+'</span></span>'+
+    '<span class="marw" id="a1">→</span>'+
+    '<span class="mstage st2" id="m2">'+hl(v.hq)+'<span class="fl">'+term('过去分词')+'·'+esc(g.q)+'</span></span></div>'+
+   '<div class="tipbox">💡 <b>怎么记：</b>'+esc(v.tip)+(v.alt?'（'+esc(v.alt)+'）':'')+'</div>'+
+   '<div class="row center">'+sayBtn(triple(v),'听变形三连')+'<button class="btn ghost sm" id="rePlay">🎬 再放一遍动画</button></div>'+
+   '<table class="ftable"><tr><td>'+term('三单')+'（他/她做）</td><td>'+(v.third==='/'?'—（情态动词不加s）':v.third+'（他/她'+esc(g.b)+'）')+'</td></tr>'+
+   '<tr><td>'+term('现在分词')+'（正在做）</td><td>'+(v.ing==='/'?'—（情态动词不加ing）':v.ing+'（正在'+esc(g.b)+'）')+'</td></tr></table>'+
+   '<div class="termbar">带虚线的词可以<b>点一下看解释</b></div></div>';
+  $('vDetail').innerHTML=h;
+  playMorph(v);
+  $('rePlay').onclick=()=>playMorph(v);
+}
+function playMorph(v){
+  clearMorph();
+  ['m0','m1','m2'].forEach(id=>{const e=$(id);if(e)e.classList.remove('go');});
+  ['a0','a1'].forEach(id=>{const e=$(id);if(e)e.classList.remove('go');});
+  morphTimers.push(setTimeout(()=>{const e=$('m0');if(e)e.classList.add('go');},150));
+  morphTimers.push(setTimeout(()=>{const e=$('a0');if(e)e.classList.add('go');},750));
+  morphTimers.push(setTimeout(()=>{const e=$('m1');if(e)e.classList.add('go');},1000));
+  morphTimers.push(setTimeout(()=>{const e=$('a1');if(e)e.classList.add('go');},1600));
+  morphTimers.push(setTimeout(()=>{const e=$('m2');if(e)e.classList.add('go');},1850));
+  morphTimers.push(setTimeout(()=>speakOnce(triple(v),'en'),300));
+}
+
+/* ===================== ⏰ 为什么有三张脸（时光机） ===================== */
+let tOn=0,tSeen={},tItems=[],tT0=0;
+function renderTime(){
+  tItems=[];tT0=Date.now();tSeen={};tOn=0;timeShow();
+}
+function timeShow(){
+  const d=TDEMO[tOn],v=VERBS.find(x=>x.base===d.base);
+  tSeen[d.base]=true;
+  let h='<div class="card"><div class="h2">⏰ 为什么一个动词有三张脸？</div>'+
+   '<div class="hint">因为英语把"<b>什么时候做</b>"藏进了动词的长相里！点下面的词换例子，看时间轴动画。</div>'+
+   '<div class="famchips">'+TDEMO.map((x,i)=>'<button class="chip'+(i===tOn?' on':'')+'" data-t="'+i+'">'+x.base+(tSeen[x.base]&&i!==tOn?' ✓':'')+'</button>').join('')+'</div>'+
+   '<div class="tl" id="tlBox">'+
+    '<div class="axis"></div><div class="nowline"></div><div class="nowtag">现在</div>'+
+    '<div class="mk" style="left:22%;">过去</div><div class="mk" style="left:62%;">现在</div><div class="mk" style="left:88%;">将来</div>'+
+    '<div class="ech" id="chNow" style="left:48%;top:22px;">🔁 '+v.base+' '+esc(cn0(v))+'<span class="tag">'+term('原形')+'：平时经常做</span></div>'+
+    '<div class="ech gold" id="chPast" style="left:8%;top:64px;">⚡ '+v.past+' 昨天'+esc(cn0(v))+'了<span class="tag">'+term('过去式')+'：昨天那一刻</span></div>'+
+    '<div class="ebar" id="barPerf" style="left:20%;top:118px;"></div>'+
+    '<div class="ech purple" id="chPerf" style="left:26%;top:126px;">🎗 have/has + '+v.pp+' 已经'+esc(cn0(v))+'<span class="tag">'+term('过去分词')+'：已经做完了</span></div>'+
+   '</div>'+
+   '<div class="tlcap" id="tlCap"></div>'+
+   '<div id="tlSen"></div>'+
+   '<div class="row center" style="margin-top:6px;"><button class="btn ghost sm" id="tlAgain">🎬 再放一遍</button><button class="btn gold sm" id="tlTry">✏️ 试一试这题</button></div>'+
+   '<div id="tlQ"></div></div>';
+  $('stage').innerHTML=h;
+  document.querySelectorAll('[data-t]').forEach(c=>c.onclick=()=>{tOn=+c.dataset.t;timeShow();});
+  $('tlAgain').onclick=()=>playTimeline(d,v);
+  $('tlTry').onclick=()=>showTimeQ(d);
+  playTimeline(d,v);
+}
+function playTimeline(d,v){
+  ['chNow','chPast','chPerf'].forEach(id=>{const e=$(id);if(e)e.classList.remove('go','pulse');});
+  const bar=$('barPerf');if(bar)bar.style.width='0';
+  $('tlQ').innerHTML='';
+  const cap=$('tlCap'),sen=$('tlSen');
+  const step=(ms,fn)=>setTimeout(fn,ms);
+  cap.innerHTML='👉 同一个动作"'+esc(v.cn)+'"，看它在时间轴上的三张脸……';
+  sen.innerHTML='';
+  step(500,()=>{const e=$('chNow');if(e){e.classList.add('go','pulse');}
+    cap.innerHTML='👉 '+term('原形')+' <b>'+v.base+'</b>（'+esc(cn0(v))+'）：动词<b>平时的样子</b>。说"平时、经常、每天"都做的事，就用它。';
+    sen.innerHTML='<div class="sen">'+enS(d.s1)+'</div><div class="sencn">'+esc(d.c1)+'</div><div class="row center">'+sayBtn(d.s1,'听')+'</div>';
+    speakOnce(d.s1,'en');});
+  step(3800,()=>{const e=$('chPast');if(e)e.classList.add('go');const n=$('chNow');if(n)n.classList.remove('pulse');
+    cap.innerHTML='👉 '+term('过去式')+' <b>'+v.past+'</b>（昨天'+esc(cn0(v))+'了）：事情发生在<b>过去某一刻</b>，"咔嚓"像照片定格在昨天。它<b>自己就能用</b>，看到 yesterday（昨天）就选它。';
+    sen.innerHTML='<div class="sen">'+enS(d.s2)+'</div><div class="sencn">'+esc(d.c2)+'</div><div class="row center">'+sayBtn(d.s2,'听')+'</div>';
+    speakOnce(d.s2,'en');});
+  step(7600,()=>{const e=$('chPerf');if(e)e.classList.add('go');const b=$('barPerf');if(b)b.style.width='40%';
+    cap.innerHTML='👉 '+term('过去分词')+' <b>'+v.pp+'</b>（已经'+esc(cn0(v))+'）：表示"<b>已经做完、到现在还有效果</b>"——像一条从过去拉到现在的线。⚠️ 它是小跟班，<b>不能独自出门</b>，必须牵着 '+term('have/has')+' 的手：has '+v.pp+'＝已经'+esc(cn0(v))+'了。';
+    sen.innerHTML='<div class="sen">'+enS(d.s3)+'</div><div class="sencn">'+esc(d.c3)+'</div><div class="row center">'+sayBtn(d.s3,'听')+'</div>';
+    speakOnce(d.s3,'en');});
+}
+function showTimeQ(d){
+  const q=d.q,t0=Date.now();
+  $('tlQ').innerHTML='<div style="border-top:2px dashed var(--line);margin-top:8px;padding-top:8px;">'+
+   '<div class="sen" style="font-size:16px;">'+enS(q.stem)+'</div><div class="opts" id="tqOpts">'+
+   q.opts.map((o,i)=>'<button class="opt" data-i="'+i+'">'+String.fromCharCode(65+i)+'. '+o+'</button>').join('')+'</div><div id="tqFb"></div></div>';
+  document.querySelectorAll('#tqOpts .opt').forEach(b=>b.onclick=()=>{
+    const i=+b.dataset.i,ok=i===q.a;
+    document.querySelectorAll('#tqOpts .opt').forEach(x=>x.classList.add('off'));
+    b.classList.add(ok?'right':'wrong');
+    if(!ok)document.querySelector('#tqOpts .opt[data-i="'+q.a+'"]').classList.add('right');
+    beep(ok);
+    tItems.push({word:d.base,hint:q.stem,ok:ok,ms:Date.now()-t0,user:q.opts[i],tag:'三张脸'});
+    $('tqFb').innerHTML='<div class="why'+(ok?'':' bad')+'"><span class="lab">'+(ok?'✅ 对啦！':'❌ 看讲解：')+'</span> '+q.why+'</div>';
+    if(tItems.length>=TDEMO.length||Object.keys(tSeen).length>=TDEMO.length&&tItems.length>=3){
+      finishMod('为什么有三张脸',tItems.slice(),tT0);tItems=[];tT0=Date.now();
+    }
+  });
+}
+
+/* ===================== 🃏 记忆翻卡 ===================== */
+let fQueue=[],fIdx=0,fItems=[],fT0=0,fFirst={};
+function shuffle(a){const b=a.slice();for(let i=b.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[b[i],b[j]]=[b[j],b[i]];}return b;}
+function renderFlip(){
+  fQueue=shuffle(CUR());fIdx=0;fItems=[];fT0=Date.now();fFirst={};
+  flipOne();
+}
+function flipOne(){
+  if(fIdx>=fQueue.length){
+    finishMod('记忆翻卡',fItems,fT0);beep(true);
+    const hard=fItems.filter(x=>!x.ok);
+    $('stage').innerHTML='<div class="card" style="text-align:center;"><div style="font-size:52px;">🃏✨</div>'+
+     '<div class="h2">翻卡完成！</div><div class="hint">共 '+fItems.length+' 个词 · 一次记住 '+(fItems.length-hard.length)+' 个'+(hard.length?' · 还不熟 '+hard.length+' 个':'')+'</div>'+
+     (hard.length?'<div style="text-align:left;margin-top:8px;"><b style="color:var(--red);">还不熟的（去背诵演练里过关吧）：</b>'+
+       hard.map(w=>'<div class="rec">🤔 <b>'+esc(w.word)+'</b> '+esc(w.hint)+'</div>').join('')+'</div>':'<div class="stamp">全部一次记住 🔥</div>')+
+     '<div class="row center" style="margin-top:10px;"><button class="btn" onclick="renderFlip()">🔁 再翻一轮</button><button class="btn green" onclick="renderRecite(null)">🎤 去背诵演练</button></div></div>';
+    return;
+  }
+  const v=fQueue[fIdx],f=famOf(v),g=gloss(v),t0=Date.now();
+  $('stage').innerHTML='<div class="card"><div class="pgr">第 '+(fIdx+1)+' / '+fQueue.length+' 张 · '+f.emoji+' '+f.nm+'</div>'+
+   '<div class="hint" style="text-align:center;">先<b>大声说出</b>它的过去式和过去分词，再点卡片翻开对答案！</div>'+
+   '<div class="fbox"><div class="fcard" id="fc">'+
+    '<div class="fface ffront"><div class="fword">'+v.base+'</div><div class="fipa">'+v.ipa+'</div><div class="fcn">'+esc(v.cn)+'</div><div class="ftap">👆 点我翻开</div></div>'+
+    '<div class="fface fback"><div class="bform"><span class="bl">'+term('原形')+'</span>'+hl(v.hb)+' <span class="gli">'+esc(g.b)+'</span></div>'+
+     '<div class="bform" style="color:var(--orange);"><span class="bl">'+term('过去式')+'</span>'+hl(v.hp)+' <span class="gli">'+esc(g.p)+'</span></div>'+
+     '<div class="bform" style="color:var(--purple);"><span class="bl">'+term('过去分词')+'</span>'+hl(v.hq)+' <span class="gli">'+esc(g.q)+'</span></div>'+
+     '<div class="btip">💡 '+esc(v.tip)+'</div></div>'+
+   '</div></div>'+
+   '<div class="row center">'+sayBtn(v.base,'听单词')+sayBtn(triple(v),'听变形三连')+'</div>'+
+   '<div class="row center hide" id="fBtns" style="margin-top:10px;">'+
+    '<button class="btn green" id="fYes">😊 我说对了</button><button class="btn red" id="fNo">🤔 没说对，待会再来</button></div></div>';
+  const fc=$('fc');let flipped=false;
+  fc.onclick=()=>{if(flipped)return;flipped=true;fc.classList.add('flip');$('fBtns').classList.remove('hide');speakOnce(triple(v),'en');};
+  speakOnce(v.base,'en');
+  $('fYes').onclick=()=>{beep(true);
+    if(fFirst[v.base]===undefined){fFirst[v.base]=true;fItems.push({word:v.base,hint:v.past+' / '+v.pp,ok:true,ms:Date.now()-t0,user:'一次记住',tag:f.nm});}
+    fIdx++;flipOne();};
+  $('fNo').onclick=()=>{beep(false);
+    if(fFirst[v.base]===undefined){fFirst[v.base]=false;fItems.push({word:v.base,hint:v.past+' / '+v.pp,ok:false,ms:Date.now()-t0,user:'还不熟',tag:f.nm});}
+    fQueue.push(v);fIdx++;flipOne();};
+}
+
+/* ===================== 🧺 家族分拣机 ===================== */
+let sList=[],sIdx=0,sItems=[],sT0=0;
+function renderSort(){
+  sList=shuffle(CUR()).slice(0,10);sIdx=0;sItems=[];sT0=Date.now();
+  sortOne();
+}
+function sortOne(){
+  if(sIdx>=sList.length){
+    finishMod('家族分拣机',sItems,sT0);beep(true);
+    const wrong=sItems.filter(x=>!x.ok);
+    const sec=Math.round((Date.now()-sT0)/1000);
+    $('stage').innerHTML='<div class="card" style="text-align:center;"><div style="font-size:52px;">🧺🏆</div>'+
+     '<div class="h2">分拣完成！对 '+(sItems.length-wrong.length)+' / '+sItems.length+'</div>'+
+     '<div class="hint">用时 '+sec+' 秒</div>'+
+     (wrong.length?'<div style="text-align:left;margin-top:8px;"><b style="color:var(--red);">分错的（记住它们的家族！）</b>'+
+       wrong.map(w=>'<div class="rec">❌ <b>'+esc(w.word)+'</b>：'+esc(w.tag)+'</div>').join('')+'</div>':'<div class="stamp">全部分对 🔥</div>')+
+     '<div class="row center" style="margin-top:10px;"><button class="btn" onclick="renderSort()">🔁 再来10个</button><button class="btn ghost" onclick="document.getElementById(\'backBtn\').click()">回大厅</button></div></div>';
+    return;
+  }
+  const v=sList[sIdx],t0=Date.now();
+  $('stage').innerHTML='<div class="card"><div class="pgr">第 '+(sIdx+1)+' / '+sList.length+' 个</div>'+
+   '<div class="h2">🧺 它属于哪个家族？</div>'+
+   '<div class="sortword">'+v.base+' → '+v.past+' → '+(isMod(v)?'—':v.pp)+'</div>'+
+   '<div class="pgr">'+v.ipa+' · '+esc(v.cn)+' &nbsp;'+sayBtn(triple(v),'听')+'</div>'+
+   '<div class="baskets">'+FAMORDER.map(k=>{const f=FAMS[k];
+     return '<button class="basket" data-b="'+k+'" style="border-color:'+f.col+';color:'+f.col+';background:'+f.bg+';">'+f.emoji+' '+f.nm+'<small>'+f.abbr+'</small></button>';}).join('')+
+   '</div><div id="sFb"></div></div>';
+  speakOnce(triple(v),'en');
+  document.querySelectorAll('.basket').forEach(bk=>bk.onclick=()=>{
+    const k=bk.dataset.b,ok=k===v.fam,f=famOf(v);
+    document.querySelectorAll('.basket').forEach(x=>x.style.pointerEvents='none');
+    bk.classList.add(ok?'hit':'miss');
+    if(!ok)document.querySelector('.basket[data-b="'+v.fam+'"]').classList.add('hit');
+    beep(ok);
+    sItems.push({word:v.base,hint:v.base+'→'+v.past+'→'+v.pp,ok:ok,ms:Date.now()-t0,user:FAMS[k].nm,tag:f.emoji+f.nm+'：'+v.tip});
+    $('sFb').innerHTML='<div class="why'+(ok?'':' bad')+'"><span class="lab">'+(ok?'✅ 分对了！':'❌ 它是'+f.emoji+f.nm+'：')+'</span> '+esc(v.tip)+'</div>'+
+     '<div class="row center"><button class="btn" id="sNx">'+(sIdx<sList.length-1?'下一个 →':'完成 ✅')+'</button></div>';
+    $('sNx').onclick=()=>{sIdx++;sortOne();};
+  });
+}
+
+/* ===================== 🎤 周一背诵演练 ===================== */
+let rList=[],rIdx=0,rItems=[],rT0=0,rLesson='周一背诵演练';
+function renderRecite(subset){
+  if(subset&&subset.length){rLesson='错词重背';startRecite(subset);return;}
+  rLesson='周一背诵演练';
+  const wbn=wbActive().length;
+  const bd=batchDef();
+  $('stage').innerHTML='<div class="card"><div class="h2">🎤 周一背诵演练（'+bd.label+'号）</div>'+
+   '<div class="hint">和真背诵一模一样：看到单词 → <b>大声说出</b>过去式和过去分词 → 翻开对答案。'+
+   '说错的词会自动进<b>错词本</b>，连对2次才算过关。想换背的范围？回大厅顶部切换批次。</div>'+
+   '<div class="row center" style="margin-top:12px;">'+
+    '<button class="btn" id="rOrd">📖 按表顺序背（'+bd.label.replace('~','→')+'）</button>'+
+    '<button class="btn gold" id="rShuf">🎲 打乱顺序背</button>'+
+    (wbn?'<button class="btn red" id="rWb">🔁 只背错词本（'+wbn+'个）</button>':'')+
+   '</div></div>';
+  $('rOrd').onclick=()=>startRecite(CUR().slice());
+  $('rShuf').onclick=()=>startRecite(shuffle(CUR()));
+  const wb=$('rWb');if(wb)wb.onclick=()=>{rLesson='错词重背';startRecite(VERBS.filter(v=>wbActive().includes(v.base)));};
+}
+function startRecite(list){
+  rList=list;rIdx=0;rItems=[];rT0=Date.now();
+  reciteOne();
+}
+function reciteOne(){
+  if(rIdx>=rList.length){reciteEnd();return;}
+  const v=rList[rIdx],f=famOf(v),t0=Date.now();
+  $('stage').innerHTML='<div class="card"><div class="pgr">第 '+(rIdx+1)+' / '+rList.length+' 个 · 第'+v.n+'号</div>'+
+   '<div class="bigword">'+v.base+'</div><div class="bigcn">'+v.ipa+' · '+esc(v.cn)+'</div>'+
+   '<div class="sayzone">🎤 大声说出它的：'+(isMod(v)
+     ?'<b>'+term('过去式')+'</b>（情态动词只有这一变，没有过去分词）！'
+     :'<b>'+term('过去式')+'</b>（昨天做了）和 <b>'+term('过去分词')+'</b>（已经做完，跟have）！')+
+   '<br><span style="font-size:12px;font-weight:600;">（说完再翻开，不许偷看哦。忘了它俩是啥？点虚线词看解释）</span></div>'+
+   '<div class="row center">'+sayBtn(v.base,'再听一遍')+'</div>'+
+   '<div class="row center" style="margin-top:10px;"><button class="btn gold" id="rShow">👀 翻开对答案</button></div>'+
+   '<div id="rAns"></div></div>';
+  speakOnce(v.base,'en');
+  $('rShow').onclick=()=>{
+    speakOnce(triple(v),'en');
+    $('rShow').classList.add('hide');
+    const bad={past:false,pp:false};
+    const g=gloss(v);
+    $('rAns').innerHTML='<div class="row center" style="margin-top:6px;">'+
+      '<button class="anschip" id="cPast"><span class="bl">过去式</span>'+hl(v.hp)+'<span class="gl">'+esc(g.p)+'</span></button>'+
+      (isMod(v)?'':'<button class="anschip" id="cPp"><span class="bl">过去分词</span>'+hl(v.hq)+'<span class="gl">'+esc(g.q)+'</span></button>')+'</div>'+
+     '<div class="ansnote">说错哪个就<b>点它标红</b>（诚实标红，错词本才能帮你）'+(isMod(v)?'<br>🎩 情态动词没有过去分词':'')+(v.alt?'<br>📎 '+esc(v.alt):'')+'</div>'+
+     '<div class="tipbox">💡 '+esc(v.tip)+'</div>'+
+     '<div class="row center" style="margin-top:8px;"><button class="btn green" id="rNext">'+(rIdx<rList.length-1?'下一个 →':'背完啦 🏁')+'</button></div>';
+    $('cPast').onclick=()=>{bad.past=!bad.past;$('cPast').classList.toggle('bad',bad.past);beep(!bad.past);};
+    const cpp=$('cPp');if(cpp)cpp.onclick=()=>{bad.pp=!bad.pp;cpp.classList.toggle('bad',bad.pp);beep(!bad.pp);};
+    $('rNext').onclick=()=>{
+      const ok=!bad.past&&!bad.pp;
+      const miss=[bad.past?'过去式'+v.past:null,bad.pp?'过去分词'+v.pp:null].filter(Boolean).join('、');
+      rItems.push({word:v.base,hint:isMod(v)?('过去式 '+v.past+'（无过去分词）'):('过去式 '+v.past+' / 过去分词 '+v.pp),ok:ok,ms:Date.now()-t0,user:ok?'全说对':'说错：'+miss,tag:f.emoji+f.nm});
+      /* 逐词实时写错词本：中途退出也不丢标红记录 */
+      if(ok)wbAddRight(v.base);else wbAddWrong(v.base);
+      beep(ok);rIdx++;reciteOne();
+    };
+  };
+}
+function reciteEnd(){
+  finishMod(rLesson,rItems,rT0,'dict',true);
+  const wrong=rItems.filter(x=>!x.ok);
+  const sec=Math.round((Date.now()-rT0)/1000);
+  const wrongVerbs=VERBS.filter(v=>wrong.some(w=>w.word===v.base));
+  beep(wrong.length===0);
+  $('stage').innerHTML='<div class="card" style="text-align:center;"><div style="font-size:52px;">'+(wrong.length?'🎤💪':'🎤🏆')+'</div>'+
+   '<div class="h2">'+(wrong.length?'背完一轮！还有 '+wrong.length+' 个要加油':'全对！周一稳了 🎉')+'</div>'+
+   '<div class="hint">共 '+rItems.length+' 个 · ✅对 '+(rItems.length-wrong.length)+' · ❌错 '+wrong.length+' · 用时 '+sec+' 秒</div>'+
+   (wrong.length?'<div style="text-align:left;margin-top:8px;"><b style="color:var(--red);">说错的词（已进错词本，连对2次才出关）：</b>'+
+     wrongVerbs.map(v=>'<div class="rec">❌ <b>'+v.base+'</b>（'+esc(cn0(v))+'）→ '+v.past+' → '+(isMod(v)?'—':v.pp)+'<br><span style="font-size:12px;color:var(--muted);">💡 '+esc(v.tip)+'</span></div>').join('')+
+     '</div>':'<div class="stamp">全部说对 🔥</div>')+
+   '<div class="row center" style="margin-top:10px;">'+
+    (wrong.length?'<button class="btn red" id="rRedo">🔁 只重背说错的</button>':'')+
+    '<button class="btn" onclick="renderRecite(null)">🎤 再背一轮</button>'+
+    '<button class="btn ghost" onclick="document.getElementById(\'backBtn\').click()">回大厅</button></div></div>';
+  const rd=$('rRedo');if(rd)rd.onclick=()=>{rLesson='错词重背';startRecite(wrongVerbs.slice());};
+}
+
+/* ===================== 🔁 错词本 ===================== */
+function renderWrong(){
+  const w=wbLoad();
+  const act=Object.keys(w).filter(k=>!w[k].mastered);
+  const done=Object.keys(w).filter(k=>w[k].mastered);
+  let h='<div class="card"><div class="h2">🔁 我的错词本</div>'+
+   '<div class="hint">背诵演练里说错的词自动住进来；<b>连续答对 2 次</b>才算掌握、自动搬出去。</div>';
+  if(!act.length&&!done.length){h+='<div class="hint" style="margin-top:8px;">错词本是空的——先去🎤背诵演练吧！</div></div>';$('stage').innerHTML=h;return;}
+  if(act.length){
+    h+='<div style="margin-top:8px;"><b style="color:var(--red);">还没过关（'+act.length+'个）：</b>'+
+     act.map(k=>{const v=VERBS.find(x=>x.base===k),e=w[k];if(!v)return'';
+       return '<div class="wbrow"><b>'+v.base+'</b>（'+esc(cn0(v))+'）→ '+v.past+' → '+(isMod(v)?'—':v.pp)+
+        '<span class="cnt">错'+e.wrong+'次</span><span class="stk">连对'+e.streak+'/2</span>'+sayBtn(triple(v),'听')+
+        '<span style="flex-basis:100%;font-size:12px;color:var(--muted);">💡 '+esc(v.tip)+'</span></div>';}).join('')+'</div>';
+    h+='<div class="row center" style="margin-top:10px;"><button class="btn red" id="wbGo">🎤 重背错词（'+act.length+'个）</button></div>';
+  }
+  if(done.length)h+='<div style="margin-top:10px;"><b style="color:var(--green);">已过关 🎉：</b><div class="hint">'+done.join(' · ')+'</div></div>';
+  h+='</div>';
+  $('stage').innerHTML=h;
+  const g=$('wbGo');if(g)g.onclick=()=>{rLesson='错词重背';startRecite(VERBS.filter(v=>act.includes(v.base)));};
+}
+
+/* ===================== 📖 学习记录 ===================== */
+function buildExport(){
+  const evs=loadEv();
+  const wrongMap={};
+  evs.forEach(e=>(e.items||[]).forEach(it=>{if(!it.ok){const k=it.word;wrongMap[k]=(wrongMap[k]||0)+1;}}));
+  let txt='【哥哥 · 不规则动词变形实验室(31~61) · 练习导出】\n日期：'+new Date().toLocaleString('zh-CN')+'\n\n== 错词本（说错过、还没连对2次的） ==\n';
+  const w=wbLoad(),act=Object.keys(w).filter(k=>!w[k].mastered);
+  txt+=act.length?act.map(k=>{const v=VERBS.find(x=>x.base===k);return '- '+k+(v?' → '+v.past+' → '+(isMod(v)?'—':v.pp):'')+'（错'+w[k].wrong+'次，连对'+w[k].streak+'/2）';}).join('\n'):'（空）';
+  const done=Object.keys(w).filter(k=>w[k].mastered);
+  if(done.length)txt+='\n已过关：'+done.join('、');
+  txt+='\n\n== 反复错的题（错≥2） ==\n';
+  const rep=Object.entries(wrongMap).filter(x=>x[1]>=2);
+  txt+=rep.length?rep.map(x=>'- '+x[0]+'（错'+x[1]+'次）').join('\n'):'（暂无）';
+  txt+='\n\n== 每次明细 ==\n';
+  evs.forEach(e=>{txt+='['+new Date(e.ts).toLocaleString('zh-CN')+'] '+e.lesson+'：共'+e.total+'题 错'+e.wrong+'题 用时'+(e.durationSec||0)+'s\n';
+    (e.items||[]).forEach(it=>{if(!it.ok)txt+='   ❌ '+(it.word||'')+'：'+(it.hint||'')+'（'+(it.user||'?')+'）\n';});});
+  txt+='\n== 原始JSON（投喂给爸爸的Claude归档用） ==\n'+JSON.stringify({child:'哥哥',subject:'英语·不规则动词31-61',events:evs,wrongbook:w});
+  return txt;
+}
+function renderRec(){
+  const evs=loadEv();
+  const mods={};evs.forEach(e=>{mods[e.lesson]=e;});
+  let h='<div class="card"><div class="h2">📖 我的学习记录</div>';
+  if(!evs.length){h+='<div class="hint">还没有记录，先去玩魔法阵吧！</div></div>';$('stage').innerHTML=h;return;}
+  h+='<div class="rec"><b>已练 '+evs.length+' 次</b> · 共 '+evs.reduce((s,e)=>s+e.total,0)+' 题 · 错 '+evs.reduce((s,e)=>s+e.wrong,0)+' 题</div>';
+  h+=Object.values(mods).map(e=>'<div class="rec"><b>'+e.lesson+'</b>（最近一次）：✅对'+(e.total-e.wrong)+' ❌错'+e.wrong+' · '+new Date(e.ts).toLocaleDateString('zh-CN')+'</div>').join('');
+  const w=wbLoad(),act=Object.keys(w).filter(k=>!w[k].mastered);
+  h+='<div class="rec"><b>错词本</b>：'+(act.length?('还没过关 <b style="color:var(--red);">'+act.length+'</b> 个：'+act.join('、')):'全部过关 🎉')+'</div>';
+  h+='<div class="row center" style="margin-top:10px;"><button class="btn" id="cpBtn">📋 复制导出</button>'+
+     '<button class="btn ghost" id="dlBtn">💾 存成文件</button>'+
+     '<button class="btn ghost sm" id="clrBtn" style="color:var(--red);border-color:var(--red);">🗑 清空</button></div>'+
+     '<textarea class="exp hide" id="expTxt"></textarea></div>';
+  $('stage').innerHTML=h;
+  $('cpBtn').onclick=()=>{const t=buildExport();const ta=$('expTxt');ta.classList.remove('hide');ta.value=t;ta.select();
+    if(navigator.clipboard)navigator.clipboard.writeText(t).then(()=>{$('cpBtn').textContent='✅ 已复制';}).catch(()=>{document.execCommand('copy');$('cpBtn').textContent='✅ 已复制';});
+    else{document.execCommand('copy');$('cpBtn').textContent='✅ 已复制';}};
+  $('dlBtn').onclick=()=>{const b=new Blob([buildExport()],{type:'text/plain;charset=utf-8'});const a=document.createElement('a');
+    a.href=URL.createObjectURL(b);a.download='哥哥_不规则动词31-61_练习记录_'+new Date().toISOString().slice(0,10)+'.txt';a.click();};
+  $('clrBtn').onclick=()=>{if(confirm('确定清空全部练习记录？（错词本会保留；导出之后再清哦）')){localStorage.removeItem(EV_KEY);renderRec();}};
+}
+
+renderHome();
+</script>
+</body>
+</html>

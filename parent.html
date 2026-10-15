@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<script src="assets/learning-sync.js"></script>
+<script src="assets/mistake-history.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#fff7f0">
+<title>家长页 · 家庭学习门户</title>
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="assets/styles.css">
+<link rel="stylesheet" href="assets/portal-support.css">
+</head>
+<body class="portal-support">
+<div class="wrap">
+
+  <div class="topbar">
+    <a class="back" href="index.html" aria-label="返回家庭学习室"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m14 6-6 6 6 6M8 12h12"/></svg></a>
+    <h1>家长页</h1>
+  </div>
+
+  <div class="card" style="border:2px solid #f2c36b;background:linear-gradient(135deg,#fffaf0,#fff)">
+    <h2 style="margin:0 0 6px;font-size:18px">📷 上传错题卷</h2>
+    <p style="color:var(--muted);font-size:13px;line-height:1.6;margin:0 0 12px">从孩子入口进入后，顶部姓名栏自动裁掉；错题按孩子、学科、日期和卷型归档，原图只留在上传设备。</p>
+    <div class="grid">
+      <a class="app-card" href="paper-intake.html?who=kenton" style="border-left-color:var(--kenton)">
+        <span class="ico">🦁</span><span><div class="t">上传哥哥卷子</div><div class="meta">自动归入 Kenton 档案</div></span>
+      </a>
+      <a class="app-card" href="paper-intake.html?who=eddey" style="border-left-color:var(--eddey)">
+        <span class="ico">🐯</span><span><div class="t">上传弟弟卷子</div><div class="meta">自动归入 Eddey 档案</div></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2 style="margin:0 0 6px;font-size:18px">📄 卷子下载 / 打印</h2>
+    <p style="color:var(--muted);font-size:14px;margin:0 0 12px">在电脑或手机点开即可下载打印</p>
+    <div id="papers" class="grid">
+      <div class="empty">正在加载卷子…</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2 style="margin:0 0 6px;font-size:18px">☁️ Neon 学习记录（家长控制）</h2>
+    <p style="color:var(--muted);font-size:13px;margin:0 0 12px">打开正式 Study Portal 的任何设备都可直接同步，无需扫码、验证码、令牌或设备授权。学习完成后才会上传，家长测试模式不会污染正式记录。</p>
+    <p style="color:var(--muted);font-size:13px;margin:0 0 12px">“家长测试隔离”开关在主页顶部的“家长测试”中。</p>
+    <div id="cloudStatus" class="footer-note" style="text-align:left;margin:0" aria-live="polite"></div>
+    <div id="cloudDaily"></div>
+    <div id="cloudProgress"></div>
+    <div id="cloudStats"></div>
+    <div id="cloudKnowledge"></div>
+    <div id="cloudErrors"></div>
+    <div id="cloudActions" style="display:flex;margin-top:10px;gap:8px;flex-wrap:wrap">
+      <button onclick="cloudLoad()" style="padding:7px 14px;border:1px solid rgba(0,0,0,.2);border-radius:100px;background:#fff;font-size:12px;cursor:pointer">刷新云端统计</button>
+      <button onclick="cloudTest()" style="padding:7px 14px;border:1px solid rgba(0,0,0,.2);border-radius:100px;background:#fff;font-size:12px;cursor:pointer">再次测试连接</button>
+    </div>
+  </div>
+
+  <details class="card" style="margin-top:22px">
+    <summary style="cursor:pointer;min-height:44px;font-weight:700">以前的备考资料</summary>
+    <p style="font-size:13px;color:var(--muted)">GESP / CTL 等备考内容保留归档，原有学习记录继续保存。</p>
+    <a class="app-card" href="exam-prep.html"><span><div class="t">查看备考归档</div><div class="meta">规划、资料与历史记录</div></span></a>
+  </details>
+  <div class="footer-note">正式网站直接同步 · Neon 只保存结构化学习记录</div>
+</div>
+
+<script>
+const CLOUD_DEFAULT_API = '/api';
+const CLOUD_KIDS = { kenton: '🦁 Kenton', eddey: '🐯 Eddey' };
+
+function cloudPreviewLocked(){
+  const sync=window.DDLearningSync;
+  return Boolean(sync && typeof sync.isAutomaticTest==='function' && sync.isAutomaticTest());
+}
+
+function cloudEsc(value){
+  return String(value == null ? '' : value).replace(/[&<>"']/g, function(ch){
+    return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch];
+  });
+}
+function cloudBeijingTime(value){
+  const parsed=new Date(value);
+  if(Number.isNaN(parsed.getTime())) return '';
+  return new Intl.DateTimeFormat('zh-CN',{
+    timeZone:'Asia/Shanghai',month:'2-digit',day:'2-digit',
+    hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:false
+  }).format(parsed);
+}
+async function cloudRequest(path, options){
+  if(cloudPreviewLocked()) throw new Error('预览测试环境已锁定正式云端数据');
+  const opts=Object.assign({cache:'no-store'}, options || {});
+  const r=await fetch(CLOUD_DEFAULT_API + path, opts);
+  const data=await r.json().catch(function(){ return {ok:false,error:'云端返回格式不正确'}; });
+  if(!r.ok || data.ok===false) throw new Error(data.error || ('HTTP ' + r.status));
+  return data;
+}
+async function cloudTest(){
+  if(cloudPreviewLocked()){ cloudInit(); return; }
+  const status=document.getElementById('cloudStatus');
+  status.textContent='正在检查 Vercel → Neon 连接…';
+  try{
+    const result=await cloudRequest('/health');
+    if(result.database!=='neondb') throw new Error('数据库状态异常');
+    status.textContent='连接成功 ✓ 所有设备均可直接同步到 Neon';
+    await cloudLoad(true);
+  }catch(e){
+    status.textContent='连接失败：' + e.message;
+  }
+}
+async function cloudLoad(keepStatus){
+  if(cloudPreviewLocked()){ cloudInit(); return; }
+  const status=document.getElementById('cloudStatus');
+  const dailyEl=document.getElementById('cloudDaily');
+  const progressEl=document.getElementById('cloudProgress');
+  const statsEl=document.getElementById('cloudStats');
+  const knowledgeEl=document.getElementById('cloudKnowledge');
+  const errEl=document.getElementById('cloudErrors');
+  dailyEl.innerHTML=''; progressEl.innerHTML=''; statsEl.innerHTML=''; knowledgeEl.innerHTML=''; errEl.innerHTML='';
+  if(!keepStatus) status.textContent='正在从 Neon 读取…';
+  try{
+    const today=new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Shanghai',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date());
+    const results=await Promise.all([
+      cloudRequest('/events?mode=daily&date='+encodeURIComponent(today)),
+      cloudRequest('/events?mode=stats'),
+      cloudRequest('/events?mode=errors'),
+      cloudRequest('/events?mode=progress&kid=kenton&app_id=kenton_calc_datongguan')
+        .catch(function(){ return {progress:[]}; }),
+      cloudRequest('/events?mode=knowledge-profile')
+        .catch(function(){ return {evidence:[]}; })
+    ]);
+    const daily=results[0],st=results[1],er=results[2],pr=results[3],kp=results[4];
+    const dailyRows=(daily.stats || []).filter(function(s){ return CLOUD_KIDS[s.kid]; });
+    const stats=(st.stats || []).filter(function(s){ return CLOUD_KIDS[s.kid]; });
+    const errs=(er.errors || []).filter(function(e){ return CLOUD_KIDS[e.kid]; });
+    if(!dailyRows.length && !stats.length && !errs.length){
+      if(!keepStatus) status.textContent='已连接 ✓ Neon 还没有孩子的学习记录';
+      return;
+    }
+    if(!keepStatus) status.textContent='已连接 ✓ 数据来自 Neon 私有数据库';
+    if(dailyRows.length){
+      let dailyHtml='<div class="card" style="margin:10px 0;padding:14px;border-left:6px solid var(--candy-yellow)">'
+        +'<div style="font-weight:800;font-size:16px">📅 今日回传 · '+cloudEsc(today)+'</div>';
+      Object.keys(CLOUD_KIDS).forEach(function(k){
+        const rows=dailyRows.filter(function(s){ return s.kid===k; });
+        if(!rows.length) return;
+        let attempts=0,correct=0,wrong=0,completions=0,progressConfirmations=0;
+        rows.forEach(function(row){
+          attempts+=Number(row.attempts)||0;correct+=Number(row.correct)||0;
+          wrong+=Number(row.wrong)||0;completions+=Number(row.completions)||0;
+          progressConfirmations+=Number(row.progress_confirmations)||0;
+        });
+        const latest=rows.map(function(row){ return row.last_at; })
+          .filter(Boolean).sort().slice(-1)[0];
+        dailyHtml+='<div style="font-size:13px;margin-top:6px"><b>'+cloudEsc(CLOUD_KIDS[k])+'</b> · '
+          +'✅ '+correct+'　❌ '+wrong+'　共 '+attempts+' 次作答'
+          +(completions?'　完成同步 '+completions+' 次':'')
+          +(progressConfirmations?'　进度确认 '+progressConfirmations+' 次':'')
+          +(latest?'　最近 '+cloudEsc(cloudBeijingTime(latest)):'')+'</div>';
+      });
+      dailyEl.innerHTML=dailyHtml+'</div>';
+    }else{
+      dailyEl.innerHTML='<div class="footer-note" style="text-align:left;margin:8px 0">📅 今日暂无正式回传记录</div>';
+    }
+    const progressRows=Array.isArray(pr.progress)?pr.progress:[];
+    const calcProgress=progressRows.find(function(row){
+      const payload=row&&row.payload&&typeof row.payload==='object'?row.payload:{};
+      return payload.progress_type==='learned_through' && Number(payload.through_lesson)>0;
+    });
+    if(calcProgress){
+      const payload=calcProgress.payload;
+      progressEl.innerHTML='<div class="card" style="margin:10px 0;padding:14px;border-left:6px solid var(--kenton)">'
+        +'<div style="font-weight:800;font-size:16px">🧭 Kenton · 计算技法大通关</div>'
+        +'<div style="font-size:13px;margin-top:6px">家长确认已学到第 '
+        +cloudEsc(payload.through_lesson)+' 讲；具体答对、答错成绩待恢复。'
+        +(calcProgress.confirmed_at?'　确认于 '+cloudEsc(cloudBeijingTime(calcProgress.confirmed_at)):'')
+        +'</div></div>';
+    }
+    let html='';
+    Object.keys(CLOUD_KIDS).forEach(function(k){
+      const rows=stats.filter(function(s){ return s.kid===k; });
+      if(!rows.length) return;
+      let attempts=0, correct=0;
+      rows.forEach(function(row){ attempts+=Number(row.attempts)||0; correct+=Number(row.correct)||0; });
+      const accuracy=attempts ? Math.round(correct/attempts*100) : 0;
+      const weak=rows.filter(function(row){ return Number(row.attempts)>=2; })
+        .map(function(row){
+          const total=Number(row.attempts)||0, right=Number(row.correct)||0;
+          return {topic:row.topic || row.subject || '其他', accuracy:total ? Math.round(right/total*100) : 0};
+        }).sort(function(a,b){ return a.accuracy-b.accuracy; }).slice(0,5);
+      html+='<div class="card" style="margin:10px 0;padding:14px">'
+        + '<div style="font-weight:800;font-size:16px">' + cloudEsc(CLOUD_KIDS[k]) + '</div>'
+        + '<div style="margin:6px 0">总正确率 <b style="font-size:20px">' + accuracy + '%</b> <span style="color:var(--muted)">(' + correct + '/' + attempts + ')</span></div>';
+      if(weak.length){
+        html+='<div style="color:var(--muted);font-size:13px;margin-top:4px">最需要加强：</div>'
+          + weak.map(function(row){
+              return '<div style="display:flex;justify-content:space-between;font-size:13px;margin-top:3px"><span>'
+                + cloudEsc(row.topic) + '</span><b style="color:' + (row.accuracy<60?'#e35':'inherit') + '">' + row.accuracy + '%</b></div>';
+            }).join('');
+      }
+      html+='</div>';
+    });
+    statsEl.innerHTML=html;
+    const knowledgeRows=Array.isArray(kp.evidence)?kp.evidence.filter(function(row){
+      return CLOUD_KIDS[row.kid];
+    }):[];
+    if(knowledgeRows.length){
+      const statusOrder={repeated_gap:0,observed:1,improving:2,resolved:3};
+      const statusText={repeated_gap:'反复卡点',observed:'刚发现',improving:'正在补',resolved:'延迟复测已有证据'};
+      const statusColor={repeated_gap:'#c13d4a',observed:'#a55b00',improving:'#176b45',resolved:'#476170'};
+      let knowledgeHtml='<div style="font-weight:800;margin:14px 0 6px">🧭 双路知识画像</div>'
+        +'<div style="color:var(--muted);font-size:13px;line-height:1.6;margin-bottom:9px">卷子确认和门户实际作答会归到同一个知识点；这里只整理证据；提示后订正、独立作答和延迟复测分别计数，未注明独立性的正确不当作独立掌握。</div>';
+      Object.keys(CLOUD_KIDS).forEach(function(k){
+        const rows=knowledgeRows.filter(function(row){ return row.kid===k; }).sort(function(a,b){
+          const order=(statusOrder[a.learning_status]??9)-(statusOrder[b.learning_status]??9);
+          if(order) return order;
+          return String(b.last_evidence_at||'').localeCompare(String(a.last_evidence_at||''));
+        }).slice(0,6);
+        if(!rows.length) return;
+        knowledgeHtml+='<div class="card" style="margin:10px 0;padding:14px;border-left:6px solid '
+          +(k==='kenton'?'var(--kenton)':'var(--eddey)')+'"><div style="font-weight:800;font-size:16px">'
+          +cloudEsc(CLOUD_KIDS[k])+' · 目前优先补足</div>';
+        rows.forEach(function(row){
+          const state=statusText[row.learning_status]||'持续观察';
+          const color=statusColor[row.learning_status]||'#476170';
+          knowledgeHtml+='<div style="padding:9px 0;border-bottom:1px solid rgba(0,0,0,.08)">'
+            +'<div style="display:flex;gap:8px;align-items:center;justify-content:space-between;flex-wrap:wrap">'
+            +'<b>'+cloudEsc((row.subject||'综合')+' · '+(row.knowledge_point||'未归类'))+'</b>'
+            +'<span style="color:'+color+';font-size:12px;font-weight:800">'+cloudEsc(state)+'</span></div>'
+            +'<div style="color:var(--muted);font-size:12px;margin-top:4px">卷子错证据 '+(Number(row.paper_wrong)||0)
+            +' · 门户错证据 '+(Number(row.portal_wrong)||0)+' · 明确独立 '+(Number(row.independent_correct)||0)
+            +' · 提示后正确 '+(Number(row.assisted_correct)||0)+' · 独立性未知 '+(Number(row.unknown_correct)||0)
+            +' · 订正 '+(Number(row.correction_count)||0)+' · 延迟复测 '+(Number(row.delayed_retest_correct)||0)
+            +(row.evidence_truncated?' · 仅最近证据，结论保留':'')
+            +(row.latest_root_cause?' · 家长确认卡点：'+cloudEsc(row.latest_root_cause):row.latest_error_type?' · 最近表现：'+cloudEsc(row.latest_error_type):'')+'</div></div>';
+        });
+        knowledgeHtml+='</div>';
+      });
+      knowledgeEl.innerHTML=knowledgeHtml;
+    }
+    if(errs.length && window.DDMistakeHistory){
+      let errorHtml='<div style="font-weight:800;margin:14px 0 6px">🗂️ 历史错题已归类</div>'
+        +'<div style="color:var(--muted);font-size:13px;line-height:1.6;margin-bottom:9px">这里不再堆逐条明细。系统会去除同步重复记录，再按孩子、学科和日期归入各自的“错题与待回炉”。</div>';
+      Object.keys(CLOUD_KIDS).forEach(function(k){
+        const summary=window.DDMistakeHistory.summarizeRows(errs,k);
+        if(!summary.total) return;
+        const archiveHref=k==='kenton'?'mistakes.html?who=kenton':'mistakes.html?who=eddey';
+        const subjectText=Object.keys(summary.bySubject).map(function(subject){
+          return subject+summary.bySubject[subject];
+        }).join(' · ');
+        errorHtml+='<a class="app-card" href="'+archiveHref+'" style="border-left-color:'
+          +(k==='kenton'?'var(--kenton)':'var(--eddey)')+';margin:8px 0;padding:14px">'
+          +'<span class="ico">'+(k==='kenton'?'🦁':'🐯')+'</span>'
+          +'<span><div class="t">'+cloudEsc(CLOUD_KIDS[k])+' · '+summary.total+' 个错题/知识点</div>'
+          +'<div class="meta">'+cloudEsc(subjectText)+' · 点开筛选、回炉和导出</div></span></a>';
+      });
+      errEl.innerHTML=errorHtml;
+    }
+  }catch(e){
+    status.textContent='读取 Neon 失败：' + e.message;
+  }
+}
+function cloudInit(){
+  const actions=document.getElementById('cloudActions');
+  const status=document.getElementById('cloudStatus');
+  document.getElementById('cloudDaily').innerHTML='';
+  document.getElementById('cloudProgress').innerHTML='';
+  document.getElementById('cloudStats').innerHTML='';
+  document.getElementById('cloudKnowledge').innerHTML='';
+  document.getElementById('cloudErrors').innerHTML='';
+  if(cloudPreviewLocked()){
+    actions.style.display='none';
+    status.textContent='🧪 预览测试环境：正式 Neon 记录的连接、读取和写入均已锁定。';
+    return;
+  }
+  actions.style.display='flex';
+  cloudTest();
+}
+cloudInit();
+
+// 卷子下载/打印：读 data/papers.json 列出可下载的卷子
+async function loadPapers(){
+  const el = document.getElementById('papers');
+  const SUBC = { '语文':'#ff8a5b', '数学':'#8ce99a', '英语':'#36c5d6' };
+  const KN = { kenton:'🦁 Kenton', eddey:'🐯 Eddey', both:'两人通用' };
+  try{
+    const r = await fetch('data/papers.json', { cache:'no-store' });
+    const ps = await r.json();
+    if(!ps.length){ el.innerHTML = '<div class="empty">还没有卷子 —— 让爸爸说"出张卷"，生成后会自动出现在这里</div>'; return; }
+    el.innerHTML = ps.slice().reverse().map(function(p){
+      const c = SUBC[p.subject] || '#b39ddb';
+      return '<a class="app-card" style="border-left-color:' + c + '" href="' + p.file + '" target="_blank" rel="noopener">'
+        + '<span class="ico">📄</span>'
+        + '<span><div class="t">' + (p.title||'卷子') + '</div><div class="meta">'
+        + (p.subject||'') + ' · ' + (KN[p.child]||p.child||'通用') + ' · ' + (p.added||'') + ' · 点开下载/打印</div></span></a>';
+    }).join('');
+  }catch(e){ el.innerHTML = '<div class="empty">卷子清单读取失败，请稍后再试</div>'; }
+}
+loadPapers();
+</script>
+</body>
+</html>

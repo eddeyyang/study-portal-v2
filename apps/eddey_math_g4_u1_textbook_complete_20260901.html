@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<script src="../assets/learning-sync.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="study-portal-design" content="2.0">
+<meta name="lesson-audio" content="not-applicable">
+<title>Eddey · 金牌数学四上第一单元完整精讲本</title>
+<style>
+:root{--c:#e8642f;--cd:#c24e20;--cbg:#fff0e6;--gold:#f2b632;--golddk:#c98a00;--ink:#2e2620;--paper:#fff7f2;
+ --card:#fff;--line:#f0ddd0;--green:#2e9c54;--greenbg:#e9f7ee;--red:#e1553f;--redbg:#fdecea;--muted:#9a8b82;--blue:#2f6fb3;--bluebg:#e8f0fa;--tap:48px;}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+body{margin:0;font-family:'LXGW WenKai Screen','PingFang SC','Microsoft YaHei',system-ui,sans-serif;
+ background:radial-gradient(circle at 10% 4%,#ffe1cc 0,transparent 42%),radial-gradient(circle at 92% 12%,#fff3cf 0,transparent 36%),var(--paper);color:var(--ink);min-height:100vh;padding-bottom:64px;}
+.wrap{max-width:620px;margin:0 auto;padding:12px;}
+.top{display:flex;align-items:center;gap:10px;padding:8px 2px;}
+.badge{background:var(--c);color:#fff;font-weight:800;font-size:16px;padding:6px 13px;border-radius:13px 13px 13px 4px;box-shadow:0 4px 0 var(--cd);}
+.top h1{font-size:15px;margin:0;flex:1;line-height:1.35;}
+.home{text-decoration:none;font-size:20px;background:#fff;width:38px;height:38px;border-radius:11px;display:grid;place-items:center;color:var(--ink);box-shadow:0 3px 0 #f0d8c8;flex:none;}
+.intro{font-size:13.5px;color:#6b5a4e;line-height:1.75;background:#fff;border:2px solid var(--line);border-radius:14px;padding:12px 14px;margin:8px 0;}
+.intro b{color:var(--cd);}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.tile{position:relative;background:#fff;border:2px solid var(--line);border-top:6px solid var(--c);border-radius:18px;padding:15px 11px;cursor:pointer;box-shadow:0 6px 0 #f3e2d6;text-align:center;}
+.tile:active{transform:translateY(3px);box-shadow:0 3px 0 #f3e2d6;}
+.tile .ic{font-size:34px;}.tile .nm{font-weight:800;font-size:15px;margin-top:7px;color:var(--cd);}.tile .ds{font-size:11px;color:var(--muted);margin-top:3px;line-height:1.4;}
+.tile.gold{border-top-color:var(--gold);}
+.tile .done{position:absolute;top:-9px;right:-6px;background:var(--green);color:#fff;font-size:10.5px;font-weight:800;border-radius:9px;padding:2px 8px;box-shadow:0 2px 0 rgba(0,0,0,.12);}
+.tile .done.bad{background:var(--red);}
+.tile .done.pending{background:#8d8178;color:#fff;}
+.card{background:var(--card);border:2px solid var(--line);border-radius:18px;padding:15px;margin:11px 0;box-shadow:0 6px 0 #f3e2d6;}
+.h2{font-size:17px;font-weight:800;color:var(--cd);margin:0 0 4px;}
+.base{background:var(--cbg);border-radius:12px;padding:11px 13px;font-size:14.5px;line-height:1.75;margin:8px 0;}
+.base b{color:var(--cd);}
+.why{background:var(--greenbg);border-left:5px solid var(--green);border-radius:10px;padding:10px 13px;font-size:14px;line-height:1.75;margin:8px 0;}
+.why b{color:var(--green);}
+.deep{background:#fff7ef;border:1px solid #f0dca8;border-radius:11px;padding:11px 13px;font-size:14px;line-height:1.75;margin:8px 0;}
+.deep .q{font-weight:800;color:#a8730a;}
+.btn{font-family:inherit;font-weight:800;font-size:15px;border:none;border-radius:12px;padding:12px 16px;cursor:pointer;color:#fff;background:var(--c);box-shadow:0 4px 0 var(--cd);min-height:var(--tap);}
+.btn.gold{background:var(--gold);box-shadow:0 4px 0 var(--golddk);color:#5a3d00;}
+.btn.ghost{background:#fff;color:var(--cd);border:2px solid var(--line);box-shadow:0 4px 0 #f3e2d6;}
+.btn.blue{background:var(--blue);box-shadow:0 4px 0 #1f4e7e;}
+.btn:active{transform:translateY(2px);}
+.btn.sm{font-size:13px;padding:8px 12px;min-height:var(--tap);}
+.btn[disabled]{opacity:.45;pointer-events:none;}
+.back{background:none;border:none;color:var(--muted);font-size:15px;font-family:inherit;font-weight:800;cursor:pointer;padding:6px 2px;}
+.hide{display:none!important;}
+.tag{display:inline-block;background:var(--gold);color:#5a3d00;font-size:11px;font-weight:800;border-radius:8px;padding:2px 8px;}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:8px;}
+.tipbar{font-size:12px;color:var(--muted);text-align:center;margin-top:14px;line-height:1.6;}
+/* 算式变身机 */
+.formula{display:flex;align-items:center;justify-content:center;gap:7px;flex-wrap:wrap;margin:10px 0;font-weight:800;}
+.tok{background:var(--cbg);border:2px solid #f0cdb6;color:var(--cd);border-radius:12px;padding:8px 13px;font-size:22px;min-width:44px;text-align:center;transition:transform .45s ease,opacity .45s ease,background .3s;}
+.tok.op{background:#fff;border-color:var(--line);color:#8a6a55;font-size:19px;padding:8px 9px;min-width:0;}
+.tok.ans{background:var(--gold);border-color:var(--golddk);color:#5a3d00;}
+.tok.hi{background:#ffe9b8;border-color:var(--gold);box-shadow:0 0 0 3px #ffe9b8;}
+.tok.friend{background:#d9f2e2;border-color:var(--green);color:var(--green);}
+.baby{opacity:0;transform:translateY(14px);transition:opacity .5s ease,transform .5s ease;}
+.baby.show{opacity:1;transform:translateY(0);}
+.names{display:flex;justify-content:center;gap:7px;flex-wrap:wrap;font-size:11px;color:var(--muted);font-weight:700;}
+.names span{min-width:44px;text-align:center;}
+.chips{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin:8px 0;}
+.chip{font-family:inherit;font-weight:800;font-size:14px;border:2px solid var(--line);background:#fff;border-radius:999px;padding:8px 14px;cursor:pointer;color:var(--cd);min-height:var(--tap);}
+.chip.on{background:var(--c);color:#fff;border-color:var(--cd);}
+/* 分步动画 */
+.steps{display:flex;gap:6px;justify-content:center;margin:6px 0 10px;}
+.sdot{width:30px;height:8px;border-radius:999px;background:#f0ddd0;}
+.sdot.on{background:var(--c);}
+.stepnote{background:var(--bluebg);border-left:5px solid var(--blue);border-radius:10px;padding:9px 12px;font-size:13.5px;line-height:1.7;margin:8px 0;min-height:44px;}
+.stepnote b{color:var(--blue);}
+/* 回忆卡 */
+.recall{background:linear-gradient(135deg,#fff,#fff6ea);border:2px solid var(--gold);border-radius:16px;padding:18px 14px;text-align:center;margin:10px 0;box-shadow:0 6px 0 #f3e2d6;}
+.recall .q{font-size:20px;font-weight:800;color:var(--cd);line-height:1.5;}
+.recall .a{font-size:20px;font-weight:800;color:var(--green);line-height:1.5;}
+.recall .mask{display:inline-block;background:#5a3d00;color:#5a3d00;border-radius:8px;padding:0 12px;user-select:none;}
+/* 检验站 */
+.timerbar{display:flex;align-items:center;justify-content:space-between;background:#fff;border:2px solid var(--line);border-radius:12px;padding:8px 13px;font-weight:800;font-size:14px;color:var(--cd);margin:8px 0;}
+.qprog{font-size:12.5px;color:var(--muted);font-weight:800;}
+.qbox{background:#fff;border:2px solid var(--line);border-radius:16px;padding:15px;margin:10px 0;}
+.qtext{font-size:16.5px;font-weight:800;line-height:1.7;margin:2px 0 10px;}
+.qtext .star{color:var(--golddk);}
+.opts{display:grid;gap:9px;}
+.opt{font-family:inherit;text-align:left;font-size:15px;font-weight:700;line-height:1.5;background:var(--paper);border:2px solid var(--line);border-radius:12px;padding:12px 13px;cursor:pointer;min-height:46px;color:var(--ink);}
+.opt:active{transform:scale(.98);}
+.opt.right{background:var(--greenbg);border-color:var(--green);color:var(--green);}
+.opt.wrong{background:var(--redbg);border-color:var(--red);color:var(--red);}
+.answerbox{background:linear-gradient(135deg,#fff3ea,#fff);border:2px solid #f1c7ad;border-radius:16px;padding:14px;margin:10px 0;}
+.answerbox label{display:block;font-size:13px;font-weight:800;color:var(--cd);margin-bottom:8px;line-height:1.6;}
+.answerrow{display:flex;gap:9px;align-items:stretch;}
+.answerrow input{min-width:0;flex:1;border:2px solid var(--line);border-radius:12px;padding:11px 13px;font:800 20px/1.2 inherit;color:var(--ink);background:#fff;outline:none;min-height:var(--tap);}
+.answerrow input:focus{border-color:var(--c);box-shadow:0 0 0 3px rgba(232,100,47,.12);}
+.coverage{display:grid;gap:8px;margin-top:10px;}
+.coverage-row{display:grid;grid-template-columns:72px 1fr auto;gap:9px;align-items:center;background:#fff8f2;border:1px solid #f3d7c6;border-radius:12px;padding:9px 10px;font-size:12.5px;line-height:1.55;}
+.coverage-row b{color:var(--cd);}.coverage-row span:last-child{font-size:11px;font-weight:800;color:var(--green);white-space:nowrap;}
+.contract{background:linear-gradient(135deg,#fff0e6,#fff9df);border:2px solid #f0c9ad;border-radius:16px;padding:12px 14px;font-size:13.5px;line-height:1.8;margin:10px 0;}
+.contract b{color:var(--cd);}
+.mapgrid{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin:10px 0;}
+.mapnode{background:#fff;border:2px solid var(--line);border-radius:13px;padding:10px;font-size:13px;line-height:1.6;}
+.mapnode b{display:block;color:var(--cd);font-size:14px;margin-bottom:3px;}
+.worked{display:grid;gap:8px;margin:9px 0;}
+.worked div{background:#fff;border:1px dashed #e8b98f;border-radius:11px;padding:9px 11px;font-size:14px;line-height:1.75;}
+.fb{border-radius:12px;padding:11px 13px;font-size:14px;line-height:1.75;margin-top:10px;}
+.fb.ok{background:var(--greenbg);border:2px solid var(--green);}
+.fb.no{background:var(--redbg);border:2px solid var(--red);}
+.fb .etag{display:inline-block;background:var(--red);color:#fff;font-size:11.5px;font-weight:800;border-radius:8px;padding:2px 9px;margin-bottom:5px;}
+.explain{background:#fff;border:1.5px dashed var(--golddk);border-radius:10px;padding:9px 12px;margin-top:8px;font-size:13.5px;line-height:1.75;}
+.explain b{color:#a8730a;}
+/* 记录面板 */
+.panel{background:#fff;border:2px solid var(--blue);border-radius:16px;padding:13px 14px;margin:12px 0;}
+.panel h3{margin:0 0 6px;font-size:15px;color:var(--blue);}
+.panel .stat{font-size:13.5px;line-height:1.8;color:#4a3c33;}
+.panel .stat b{color:var(--cd);}
+.result-big{font-size:44px;font-weight:800;text-align:center;color:var(--golddk);margin:6px 0;}
+.daily-spark{width:100%;margin:4px 0 10px;background:linear-gradient(135deg,#fff8d8,#fff);border:2px solid var(--gold);border-radius:14px;padding:10px 12px;color:#6a4700;font:800 13px/1.6 inherit;cursor:pointer;min-height:var(--tap);text-align:left;box-shadow:0 4px 0 #ead39a;}
+.daily-answer{display:block;color:var(--green);margin-top:3px;}
+.fadeup{animation:fadeup .4s ease both;}
+@keyframes fadeup{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
+@media (prefers-reduced-motion: reduce){*{animation-duration:.01ms!important;transition-duration:.01ms!important;}}
+</style>
+</head>
+<body data-child="eddey">
+<div class="wrap">
+  <div class="top"><a class="home" href="math_gold_hub.html?who=eddey">‹</a><span class="badge">Eddey</span><h1>四上第一单元 · 运算关系与运算律</h1></div>
+  <button class="daily-spark" id="dailySpark" data-surprise="relation-flash" data-micro-surprise="daily">今日脑力闪卡正在装载…</button>
+  <div id="home" data-phase="teach"></div>
+  <div id="view" class="hide"><button class="back" id="back">← 回单元地图</button><div id="stage"></div></div>
+  <div class="tipbar">逐页覆盖教辅第 1–31 页。每次学一课约 15–25 分钟；不是一天一道题，也不锁课程。<br>做错后先定点重教，再回到同一道原题；错题连续答对 2 次才毕业。</div>
+</div>
+<script>
+"use strict";
+function $(id){return document.getElementById(id);}
+function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+
+var LESSON_BLUEPRINT={
+ appId:'eddey-math-g4-u1-textbook-complete-20260901',child:'eddey',
+ source:'《金牌数学·四年级上册》第一单元 p1–31',courseDate:'2026-09-01',
+ currentGap:'复杂题里数量角色与中间量容易混在一起，运算律会被数字表面诱导',
+ observableOutcome:'能先标整体/部分或总量/每份/份数，写出关系式，独立输入答案并逆向验算',
+ knowledgeMechanism:'教材页序精讲→关系图操作→遮挡回忆→短输入→错因定点修复→同题再战→迁移题',
+ primaryInteraction:'短数字输入、关系节点与分步变形',audio:'not-applicable',
+ surprise:'每日一张关系式闪卡',surpriseTrigger:'按 Asia/Shanghai 自然日稳定更新',
+ phases:['teach','guided','recall','independent','repair','transfer']
+};
+var DAILY_SURPRISES=[
+ {q:'□＋259＝471，先说出 □ 的角色。',a:'它是加数；用 471－259，算完再加回去验算。'},
+ {q:'被减数、减数与差的和是240，先找重复出现的量。',a:'减数＋差＝被减数，所以240里有两个被减数。'},
+ {q:'看到 25×28，先找藏起来的凑整搭档。',a:'28＝4×7；25×4＝100，再乘7。'},
+ {q:'1263＋846－263，搬家时什么必须一起走？',a:'263 前面的减号必须跟着263一起走。'}
+];
+function dailySurpriseKey(){
+ var parts=new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Shanghai',year:'numeric',month:'2-digit',day:'2-digit'}).formatToParts(new Date());
+ var o={};parts.forEach(function(p){o[p.type]=p.value;});return o.year+'-'+o.month+'-'+o.day;
+}
+function renderDailySurprise(){
+ var key=dailySurpriseKey(),sum=0;for(var i=0;i<key.length;i++)sum+=key.charCodeAt(i);
+ var item=DAILY_SURPRISES[sum%DAILY_SURPRISES.length],open=false,btn=$('dailySpark');
+ btn.innerHTML='今日脑力闪卡｜'+item.q+'<span class="daily-answer">先在心里回答，再点我核对。</span>';
+ btn.onclick=function(){open=!open;btn.innerHTML='今日脑力闪卡｜'+item.q+'<span class="daily-answer">'+(open?item.a:'先在心里回答，再点我核对。')+'</span>';};
+}
+
+/* ============ 数据与错题本 ============ */
+var EV_KEY='study:eddey:math-g4-u1-textbook-complete-20260901:v1:events';
+var WB_KEY='study:eddey:math-g4-u1-textbook-complete-20260901:v1:wrongbook';
+function loadJSON(k,d){try{var v=JSON.parse(localStorage.getItem(k));return v==null?d:v;}catch(e){return d;}}
+function loadEvents(){var v=loadJSON(EV_KEY,[]);return Array.isArray(v)?v:[];}
+function saveEvents(a){try{localStorage.setItem(EV_KEY,JSON.stringify(a.slice(-400)));}catch(e){}}
+function loadWB(){var v=loadJSON(WB_KEY,{});return (v&&typeof v==='object'&&!Array.isArray(v))?v:{};}
+function saveWB(o){try{localStorage.setItem(WB_KEY,JSON.stringify(o));}catch(e){}}
+function logEvent(ev){var a=loadEvents();a.push(ev);saveEvents(a);
+ if(ev.qid){var wb=loadWB();
+  if(ev.ok===false){var r=wb[ev.qid]||{fails:0,streak:0};r.fails+=1;r.streak=0;wb[ev.qid]=r;}
+  else if(ev.ok===true&&wb[ev.qid]){wb[ev.qid].streak+=1;if(wb[ev.qid].streak>=2)delete wb[ev.qid];}
+  saveWB(wb);}
+}
+function wbCount(){return Object.keys(loadWB()).length;}
+function stationStat(sid){var a=loadEvents().filter(function(e){return e.station===sid&&typeof e.ok==='boolean';});
+ if(!a.length)return null;var ok=a.filter(function(e){return e.ok;}).length;return {ok:ok,bad:a.length-ok};}
+
+/* ============ 音效（Web Audio，无语音） ============ */
+var AC=null;
+function beep(good){try{
+ if(!AC)AC=new (window.AudioContext||window.webkitAudioContext)();
+ if(AC.state==='suspended')AC.resume();
+ var t=AC.currentTime;
+ function tone(f,st,d){var o=AC.createOscillator(),g=AC.createGain();o.type='sine';o.frequency.value=f;
+  g.gain.setValueAtTime(0.0001,t+st);g.gain.exponentialRampToValueAtTime(0.12,t+st+0.02);g.gain.exponentialRampToValueAtTime(0.0001,t+st+d);
+  o.connect(g);g.connect(AC.destination);o.start(t+st);o.stop(t+st+d+0.02);}
+ if(good){tone(660,0,0.12);tone(880,0.1,0.18);}else{tone(196,0,0.25);}
+}catch(e){}}
+
+/* ============ 首页 ============ */
+var STATIONS=[
+ {id:'s1',ic:'🧩',nm:'第1课 运算关系',ds:'教辅 p1–9 · 加减、乘除与未知量'},
+ {id:'s2',ic:'🎯',nm:'第2课 五大运算律',ds:'教辅 p10–18 · 交换、结合、分配'},
+ {id:'s3',ic:'🕵️',nm:'第3课 解题方法',ds:'教辅 p19–22 · 角色、带符号搬家、凑整'},
+ {id:'s6',ic:'🗺️',nm:'第4课 单元知识导图',ds:'教辅 p23 · 把全部规则连成一张图'},
+ {id:'s7',ic:'📚',nm:'第5课 常考题型',ds:'教辅 p24–28 · 错中求解与巧算'},
+ {id:'s8',ic:'🚀',nm:'第6课 培优精练',ds:'教辅 p29–31 · 乘除巧算进阶'},
+ {id:'s4',ic:'🃏',nm:'第7课 遮挡回忆',ds:'规则、关系式和凑整搭档全部回想'},
+ {id:'s5',ic:'✍️',nm:'章节独立练习',ds:'30 道短输入题 · 可按章节或整单元练'}
+];
+function renderHome(){
+ var h='<div class="intro">🏅 <b>四年级上 第1单元完整精讲</b><br>不是把 31 页压成一个口诀，而是照书走完：<b>解教材·抓重点 → 辨易误·不犯错 → 学方法·会解题 → 单元导图 → 常考题型 → 培优精练</b>。每学一段都要自己输入关键答案。</div>'+
+ '<div class="contract"><b>Eddey 的理解口令：</b>先给数量分角色——谁是整体、谁是部分、未知的是谁；再决定正推还是反推。应用题先圈问题，再圈条件，问一句“还缺哪个中间量？”一次只走一步，算完沿关系图走回去验算。</div>'+
+ '<div class="card"><div class="h2">🧭 教材覆盖表 <span class="tag">p1–31 全单元</span></div><div class="coverage">'+
+ '<div class="coverage-row"><b>p1–9</b><span>13个运算关系知识点、线段模型、3类易错与错中求解</span><span>已入课</span></div>'+
+ '<div class="coverage-row"><b>p10–18</b><span>五大运算律、凑整搭档、三类经典误用</span><span>已入课</span></div>'+
+ '<div class="coverage-row"><b>p19–22</b><span>带符号搬家、拆数、添×1、转相同乘数</span><span>已入课</span></div>'+
+ '<div class="coverage-row"><b>p23</b><span>四则运算关系 + 五大运算律规则导图</span><span>已重绘</span></div>'+
+ '<div class="coverage-row"><b>p24–28</b><span>错中求解、余数、常考巧算与应用</span><span>已入课</span></div>'+
+ '<div class="coverage-row"><b>p29–31</b><span>乘法/除法巧算与分配、提取的使用边界</span><span>已入课</span></div>'+
+ '</div></div><div class="grid">';
+ STATIONS.forEach(function(m){
+  var st=stationStat(m.id);
+  var badge=st?'<span class="done'+(st.bad?' bad':'')+'">已练 · ✅'+st.ok+' ❌'+st.bad+'</span>':'<span class="done pending">未练</span>';
+  h+='<div class="tile" data-id="'+m.id+'">'+badge+'<div class="ic">'+m.ic+'</div><div class="nm">'+m.nm+'</div><div class="ds">'+m.ds+'</div></div>';
+ });
+ var wc=wbCount();
+ h+='<div class="tile gold" data-id="wb">'+(wc?'<span class="done bad">'+wc+' 题待毕业</span>':'')+'<div class="ic">📒</div><div class="nm">错题本</div><div class="ds">错1次进本 · 连对2次毕业 · 点我只重做错题</div></div>';
+ h+='</div><div id="recordPanel"></div>';
+ $('home').innerHTML=h;
+ $('home').querySelectorAll('.tile').forEach(function(t){t.onclick=function(){
+  var id=t.dataset.id;
+  if(id==='wb'){openWrongbook();return;}
+  openStation(id);};
+ });
+ renderPanel();
+}
+function openStation(id){
+ $('home').classList.add('hide');$('view').classList.remove('hide');window.scrollTo(0,0);
+ ({s1:renderS1,s2:renderS2,s3:renderS3,s4:renderS4,s5:renderPracticeMenu,s6:renderS6,s7:renderS7,s8:renderS8})[id]();
+}
+$('back').onclick=function(){$('view').classList.add('hide');$('home').classList.remove('hide');renderHome();window.scrollTo(0,0);};
+function goHome(){$('back').onclick();}
+
+/* ============ 记录面板与导出 ============ */
+function renderPanel(){
+ var a=loadEvents().filter(function(e){return typeof e.ok==='boolean';});
+ var ok=a.filter(function(e){return e.ok;}).length,bad=a.length-ok;
+ var wb=loadWB(),wbList=Object.keys(wb);
+ var ms=a.reduce(function(s,e){return s+(e.ms||0);},0);
+ var h='<div class="panel"><h3>📊 我的练习记录</h3><div class="stat">已作答 <b>'+a.length+'</b> 题次 · ✅对 <b>'+ok+'</b> · ❌错 <b>'+bad+'</b> · 累计用时 <b>'+Math.round(ms/1000)+'秒</b><br>📒 错题本：<b>'+wbList.length+'</b> 题'+(wbList.length?('（'+wbList.map(function(k){var q=QUESTIONS.find(function(x){return x.id===k;});return q?q.short:k;}).join('、')+'）'):'（空空如也，太棒了）')+'</div>'+
+ '<div class="row"><button class="btn blue sm" id="btnCopy">📋 复制记录</button><button class="btn ghost sm" id="btnSave">💾 存成文件</button></div></div>';
+ var p=$('recordPanel');if(!p)return;p.innerHTML=h;
+ $('btnCopy').onclick=function(){copyText(exportText(),this);};
+ $('btnSave').onclick=function(){downloadText(exportText());};
+}
+function exportText(){
+ var a=loadEvents();var wb=loadWB();
+ var lines=[];
+ lines.push('弟弟(eddey) · 数学 · 四上金牌预习 第1单元《运算关系与运算律》');
+ lines.push('导出时间：'+new Date().toLocaleString('zh-CN'));
+ var att=a.filter(function(e){return typeof e.ok==='boolean';});
+ var ok=att.filter(function(e){return e.ok;}).length;
+ lines.push('总作答 '+att.length+' 题次 · 对 '+ok+' · 错 '+(att.length-ok));
+ lines.push('');
+ lines.push('== 错题本（连对2次才毕业）==');
+ var keys=Object.keys(wb);
+ if(!keys.length)lines.push('（空）');
+ keys.forEach(function(k){var q=QUESTIONS.find(function(x){return x.id===k;});
+  lines.push('· '+(q?q.short:k)+'｜错过 '+wb[k].fails+' 次 · 连对 '+wb[k].streak+'/2');});
+ lines.push('');
+ lines.push('== 反复错的题（错≥2次）==');
+ var cnt={};att.forEach(function(e){if(!e.ok&&e.qid)cnt[e.qid]=(cnt[e.qid]||0)+1;});
+ var rep=Object.keys(cnt).filter(function(k){return cnt[k]>=2;});
+ if(!rep.length)lines.push('（暂无）');
+ rep.forEach(function(k){var q=QUESTIONS.find(function(x){return x.id===k;});
+  lines.push('· '+(q?q.short:k)+' 错 '+cnt[k]+' 次｜错因 '+(q?q.tag:'')+'｜'+(q?q.hint:''));});
+ lines.push('');
+ lines.push('== 每题明细 ==');
+ att.forEach(function(e){lines.push('['+new Date(e.ts).toLocaleString('zh-CN')+'] '+(e.ok?'✅':'❌')+' '+e.item+'｜所选:'+e.user+'｜'+Math.round((e.ms||0)/1000)+'秒'+(e.ok?'':('｜错因:'+e.tag)));});
+ lines.push('');
+ lines.push('== 原始JSON ==');
+ lines.push(JSON.stringify({child:'eddey',subject:'数学',app:'math-gold-g4u1',unit:'四上第1单元 运算关系与运算律',events:a}));
+ return lines.join('\n');
+}
+function copyText(txt,btn){
+ function done(){if(btn){var o=btn.textContent;btn.textContent='✅ 已复制';setTimeout(function(){btn.textContent=o;},1500);}}
+ if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(txt).then(done,function(){fallback();});}
+ else fallback();
+ function fallback(){var ta=document.createElement('textarea');ta.value=txt;document.body.appendChild(ta);ta.select();try{document.execCommand('copy');}catch(e){}ta.remove();done();}
+}
+function downloadText(txt){
+ var blob=new Blob([txt],{type:'text/plain;charset=utf-8'});
+ var a=document.createElement('a');a.href=URL.createObjectURL(blob);
+ a.download='eddey_数学_四上第1单元_预习记录_'+new Date().toISOString().slice(0,10)+'.txt';
+ document.body.appendChild(a);a.click();setTimeout(function(){a.remove();URL.revokeObjectURL(a.href);},400);
+}
+</script>
+<script>
+"use strict";
+/* ============ 第①站 算式变身机（先教会·运算关系） ============ */
+var TRANS=[
+ {type:'+',a:7,b:5,names:['加数','加数','和'],
+  why:'把两个数<b>合起来</b>用加法。反过来：知道<b>和</b>与其中<b>一个加数</b>，求另一个加数，就要用<b>减法</b>——所以<b>减法是加法的逆运算</b>。'},
+ {type:'+',a:9,b:6,names:['加数','加数','和'],
+  why:'同一个加法算式，能变出<b>两个减法算式</b>：和 − 一个加数 = 另一个加数。这就是"一个加数 = 和 − 另一个加数"。'},
+ {type:'×',a:6,b:7,names:['乘数','乘数','积'],
+  why:'几个<b>相同加数</b>相加，用乘法更简便。反过来：知道<b>积</b>与其中<b>一个乘数</b>，求另一个乘数，用<b>除法</b>——<b>除法是乘法的逆运算</b>。'},
+ {type:'×',a:8,b:9,names:['乘数','乘数','积'],
+  why:'乘法也能变出两个除法算式：积 ÷ 一个乘数 = 另一个乘数。记住：<b>一个乘数 = 积 ÷ 另一个乘数</b>。'}
+];
+var tIdx=0;
+function tokHTML(v,cls){return '<span class="tok '+(cls||'')+'">'+v+'</span>';}
+function renderS1(){
+ var h='<div class="card fadeup"><div class="h2">✨ 算式变身机 <span class="tag">先教会 · 书P1-6</span></div>'+
+ '<div class="base">选一个算式，点 <b>✨变身</b>，看它变成两个"兄弟姐妹"算式。想一想：<b>为什么能这样变？</b></div>'+
+ '<div class="chips" id="tchips"></div>'+
+ '<div class="formula" id="f0"></div><div class="names" id="n0"></div>'+
+ '<div style="text-align:center;margin:10px 0"><button class="btn gold" id="btnTrans">✨ 变身！</button></div>'+
+ '<div id="babies"></div>'+
+ '<div class="why" id="twhy"></div>'+
+ '<div class="deep"><span class="q">🤔 深入思考：</span>'+
+ '<div style="margin-top:4px"><b>① 已知 120 + 50 = 170，不写竖式，直接写出两个减法算式。</b><br><button class="btn gold sm" style="margin-top:5px" onclick="this.nextElementSibling.classList.toggle(\'hide\')">看思路</button><div class="hide" style="margin-top:6px;color:#7a5800">用"一个加数 = 和 − 另一个加数"：<b>170 − 50 = 120</b> 和 <b>170 − 120 = 50</b>。加法一变二，不用重新算！</div></div>'+
+ '<div style="margin-top:11px"><b>② ★（书P7例）小月算加法时把一个加数 68 看成 86，结果得 172，正确的结果是多少？</b><br><button class="btn gold sm" style="margin-top:5px" onclick="this.nextElementSibling.classList.toggle(\'hide\')">看思路</button><div class="hide" style="margin-top:6px;color:#7a5800">先用错误算式求出<b>没看错的那个加数</b>：172 − 86 = <b>86</b>；再把它和正确的 68 相加：86 + 68 = <b>154</b>。方法叫<b>错中求解</b>：先从"没看错的那个数"入手！（检验站第11题会考它）</div></div>'+
+ '</div></div>';
+ $('stage').innerHTML=h;
+ var chips='';
+ TRANS.forEach(function(t,i){chips+='<button class="chip'+(i===tIdx?' on':'')+'" data-i="'+i+'">'+t.a+' '+t.type+' '+t.b+'</button>';});
+ $('tchips').innerHTML=chips;
+ $('tchips').querySelectorAll('.chip').forEach(function(c){c.onclick=function(){tIdx=+c.dataset.i;
+  $('tchips').querySelectorAll('.chip').forEach(function(x){x.classList.remove('on');});c.classList.add('on');drawTrans(false);};});
+ $('btnTrans').onclick=function(){drawTrans(true);};
+ drawTrans(false);
+}
+function drawTrans(animate){
+ var t=TRANS[tIdx];
+ var sum=t.type==='+'?t.a+t.b:t.a*t.b;
+ var inv=t.type==='+'?'−':'÷';
+ var f0=tokHTML(t.a)+tokHTML(t.type,'op')+tokHTML(t.b)+tokHTML('=','op')+tokHTML(sum,'ans');
+ $('f0').innerHTML=f0;
+ $('n0').innerHTML='<span>'+t.names[0]+'</span><span style="min-width:30px"></span><span>'+t.names[1]+'</span><span style="min-width:30px"></span><span>'+t.names[2]+'</span>';
+ var b1=tokHTML(sum,'ans')+tokHTML(inv,'op')+tokHTML(t.a)+tokHTML('=','op')+tokHTML(t.b);
+ var b2=tokHTML(sum,'ans')+tokHTML(inv,'op')+tokHTML(t.b)+tokHTML('=','op')+tokHTML(t.a);
+ var bn1='<span>'+(t.type==='+'?'和':'积')+'</span><span style="min-width:30px"></span><span>'+t.names[0]+'</span><span style="min-width:30px"></span><span>'+t.names[1]+'</span>';
+ var bn2='<span>'+(t.type==='+'?'和':'积')+'</span><span style="min-width:30px"></span><span>'+t.names[1]+'</span><span style="min-width:30px"></span><span>'+t.names[0]+'</span>';
+ $('babies').innerHTML='<div class="formula baby" id="bb1">'+b1+'</div><div class="names baby" id="bn1">'+bn1+'</div>'+
+  '<div class="formula baby" id="bb2">'+b2+'</div><div class="names baby" id="bn2">'+bn2+'</div>';
+ $('twhy').innerHTML='<b>为什么能变身：</b>'+t.why+(t.type==='+'?'<br>减法里的名字也要认识：<b>被减数 − 减数 = 差</b>（和当"被减数"，加数当"减数"，另一个加数就是"差"）。':'<br>除法里的名字：<b>被除数 ÷ 除数 = 商</b>（积当"被除数"，乘数当"除数"，另一个乘数就是"商"）。');
+ if(animate){beep(true);
+  setTimeout(function(){$('bb1').classList.add('show');$('bn1').classList.add('show');},150);
+  setTimeout(function(){$('bb2').classList.add('show');$('bn2').classList.add('show');},650);
+ }else{
+  ['bb1','bn1','bb2','bn2'].forEach(function(id){$(id).classList.add('show');});
+ }
+}
+
+/* ============ 第②站 凑整猎手（先教会·运算律） ============ */
+var LAWS=[
+ {n:'加法交换律',f:'a + b = b + a',memo:'交换位置，和不变',eg:'3 + 4 = 4 + 3'},
+ {n:'乘法交换律',f:'a × b = b × a',memo:'交换位置，积不变',eg:'6 × 7 = 7 × 6'},
+ {n:'加法结合律',f:'(a+b)+c = a+(b+c)',memo:'换位置靠交换律，加括号靠结合律',eg:'(20+40)+18 = 20+(40+18)'},
+ {n:'乘法结合律',f:'(a×b)×c = a×(b×c)',memo:'先乘哪两个都行，记得加括号',eg:'25×17×4 = 17×(25×4)'},
+ {n:'乘法分配律',f:'(a+b)×c = a×c + b×c',memo:'括号里每个数都要和外面的数相乘',eg:'(25+9)×4 = 25×4 + 9×4'}
+];
+var HUNT_STEPS={
+ add:{title:'连加凑整：235 + 178 + 165',steps:[
+  {toks:['235','+','178','+','165'],hi:[],note:'<b>第1步·找朋友：</b>个位 5 和 5 能凑整十！<b>235 和 165</b> 是好朋友（235+165=400）。'},
+  {toks:['178','+','235','+','165'],hi:[2,4],note:'<b>第2步·交换位置（加法交换律）：</b>把 235、165 搬到一起。交换的是"数的位置"，得数不变。'},
+  {toks:['178','+','( 235','+','165 )'],hi:[2,4],note:'<b>第3步·加括号（加法结合律）：</b>让好朋友先算：178 + (235 + 165)。改变的是"运算顺序"，得数不变。'},
+  {toks:['178','+','400'],hi:[2],note:'<b>第4步·算出来：</b>178 + 400 = <b>578</b>。不用竖式，一眼出答案！'}]},
+ mul:{title:'连乘凑整：25 × 17 × 4',steps:[
+  {toks:['25','×','17','×','4'],hi:[],note:'<b>第1步·找朋友：</b>记住乘法凑整三兄弟：<b>2×5=10、4×25=100、8×125=1000</b>。这里有 25 和 4！'},
+  {toks:['17','×','25','×','4'],hi:[2,4],note:'<b>第2步·交换位置（乘法交换律）：</b>把 25 和 4 搬到一起。'},
+  {toks:['17','×','( 25','×','4 )'],hi:[2,4],note:'<b>第3步·加括号（乘法结合律）：</b>17 × (25 × 4)。凑整的两个数在后面时，<b>一定要加括号</b>！（这是书上最容易扣分的书写规范）'},
+  {toks:['17','×','100'],hi:[2],note:'<b>第4步·算出来：</b>17 × 100 = <b>1700</b>。'}]},
+ dis:{title:'分配律变身：99 × 56',steps:[
+  {toks:['99','×','56'],hi:[0],note:'<b>第1步·找特征：</b>99 离 100 只差 1！把 99 <b>变身</b>成 (100 − 1)。'},
+  {toks:['( 100','−','1 )','×','56'],hi:[0,2],note:'<b>第2步·拆开：(100 − 1) × 56</b>。数没变，样子变了。'},
+  {toks:['100×56','−','1×56'],hi:[0,2],note:'<b>第3步·分发（乘法分配律）：</b>56 像传单一样发给括号里<b>每一个</b>数：100×56 − 1×56。'},
+  {toks:['5600','−','56'],hi:[],note:'<b>第4步·算出来：</b>5600 − 56 = <b>5544</b>。'}]}
+};
+function renderS2(){
+ var h='<div class="card fadeup"><div class="h2">🎯 凑整猎手 <span class="tag">先教会 · 书P10-22</span></div>'+
+ '<div class="base">简便计算的秘密只有一句：<b>先找能凑成整十、整百、整千的好朋友，再用运算律让它们先算。</b></div>'+
+ '<div class="base" style="background:#fff6d9"><b>🌟 凑整三兄弟（背下来！）</b>　2 × 5 = <b>10</b>　｜　4 × 25 = <b>100</b>　｜　8 × 125 = <b>1000</b></div>'+
+ '<div style="font-weight:800;color:var(--cd);margin:10px 0 4px">五大运算律（点卡片看口诀）：</div><div class="chips" id="lawchips"></div>'+
+ '<div id="lawbox"></div>'+
+ '<div style="font-weight:800;color:var(--cd);margin:12px 0 4px">看动画·三步把计算变巧：</div>'+
+ '<div class="chips"><button class="chip on" data-k="add">➕ 连加凑整</button><button class="chip" data-k="mul">✖️ 连乘凑整</button><button class="chip" data-k="dis">🪄 分配律变身</button></div>'+
+ '<div class="steps" id="sdots"></div><div class="formula" id="hformula"></div><div class="stepnote" id="hnote"></div>'+
+ '<div class="row" style="justify-content:center"><button class="btn ghost sm" id="hprev">‹ 上一步</button><button class="btn sm" id="hnext">下一步 ›</button></div>'+
+ '<div class="deep"><span class="q">🤔 深入思考：</span>'+
+ '<div style="margin-top:4px"><b>① 25 × 28 怎么巧算？（提示：28 里藏着 4）</b><br><button class="btn gold sm" style="margin-top:5px" onclick="this.nextElementSibling.classList.toggle(\'hide\')">看思路</button><div class="hide" style="margin-top:6px;color:#7a5800">看到 25 就想 4！把 28 拆成 4×7：25 × 28 = 25 × (4 × 7) = (25×4) × 7 = 100 × 7 = <b>700</b>。这叫<b>转化法</b>。</div></div>'+
+ '<div style="margin-top:11px"><b>② ★ 32 × 15 + 85 能用乘法结合律凑成 32 × (15+85) 吗？</b><br><button class="btn gold sm" style="margin-top:5px" onclick="this.nextElementSibling.classList.toggle(\'hide\')">看思路</button><div class="hide" style="margin-top:6px;color:#7a5800"><b>不能！</b>这个算式是"乘加混合"，不是三个数连乘，不符合结合律的条件。老老实实先乘后加：32×15+85 = 480+85 = <b>565</b>。口诀：<b>先看算式结构，再决定用不用运算律，不许被数字诱惑！</b>（检验站第7题会考它）</div></div>'+
+ '</div></div>';
+ $('stage').innerHTML=h;
+ var lc='';LAWS.forEach(function(l,i){lc+='<button class="chip" data-i="'+i+'">'+l.n+'</button>';});
+ $('lawchips').innerHTML=lc;
+ $('lawchips').querySelectorAll('.chip').forEach(function(c){c.onclick=function(){
+  var l=LAWS[+c.dataset.i];beep(true);
+  $('lawbox').innerHTML='<div class="why fadeup"><b>'+l.n+'：</b><span style="font-size:17px">'+l.f+'</span><br>📣 口诀：'+l.memo+'<br>🌰 例子：'+l.eg+'</div>';};});
+ $('lawbox').innerHTML='<div class="why">👆 点上面任意一张卡片，看字母公式和口诀。五条都要记住，检验站会考！</div>';
+ var curK='add',curS=0;
+ function drawHunt(){
+  var hset=HUNT_STEPS[curK];
+  var dots='';hset.steps.forEach(function(_,i){dots+='<span class="sdot'+(i<=curS?' on':'')+'"></span>';});
+  $('sdots').innerHTML=dots;
+  var st=hset.steps[curS];
+  var fh='';st.toks.forEach(function(t,i){var cls=/^[\d(]/.test(t)?(st.hi.indexOf(i)>=0?'friend':''):'op';
+   fh+=tokHTML(t,cls+(i===st.toks.length-1&&/^\d/.test(t)&&st.hi.indexOf(i)<0?'':''));});
+  $('hformula').innerHTML=fh;
+  $('hnote').innerHTML=st.note;
+  $('hprev').disabled=(curS===0);
+  $('hnext').textContent=(curS===hset.steps.length-1)?'🔄 再看一遍':'下一步 ›';
+ }
+ document.querySelectorAll('.chip[data-k]').forEach(function(c){c.onclick=function(){
+  document.querySelectorAll('.chip[data-k]').forEach(function(x){x.classList.remove('on');});c.classList.add('on');
+  curK=c.dataset.k;curS=0;drawHunt();};});
+ $('hprev').onclick=function(){if(curS>0){curS--;drawHunt();}};
+ $('hnext').onclick=function(){curS=(curS+1)%HUNT_STEPS[curK].steps.length;if(curS===0)beep(true);drawHunt();};
+ drawHunt();
+}
+</script>
+<script>
+"use strict";
+/* ============ 第③站 跟着做·未知数侦探 + 带符号搬家 ============ */
+var DETECT=[
+ {eq:'(　) + 68 = 152',role:'加数',roles:['加数','和','被减数'],
+  law:'一个加数 = 和 − 另一个加数',laws:['一个加数 = 和 − 另一个加数','被减数 = 差 + 减数','一个乘数 = 积 ÷ 另一个乘数'],
+  calc:'152 − 68 = 84',ans:'84',why:'( ) 在加法里是"加数"，用 <b>和 − 另一个加数</b>：152 − 68 = 84。验算：84 + 68 = 152 ✔'},
+ {eq:'(　) − 145 = 278',role:'被减数',roles:['减数','被减数','差'],
+  law:'被减数 = 差 + 减数',laws:['减数 = 被减数 − 差','被减数 = 差 + 减数','除数 = 被除数 ÷ 商'],
+  calc:'278 + 145 = 423',ans:'423',why:'( ) 在减法最前面，是"被减数"，用 <b>差 + 减数</b>：278 + 145 = 423。验算：423 − 145 = 278 ✔'},
+ {eq:'23 × (　) = 391',role:'乘数',roles:['乘数','积','被除数'],
+  law:'一个乘数 = 积 ÷ 另一个乘数',laws:['被除数 = 商 × 除数','一个加数 = 和 − 另一个加数','一个乘数 = 积 ÷ 另一个乘数'],
+  calc:'391 ÷ 23 = 17',ans:'17',why:'( ) 在乘法里是"乘数"，用 <b>积 ÷ 另一个乘数</b>：391 ÷ 23 = 17。验算：23 × 17 = 391 ✔'}
+];
+function renderS3(){
+ var h='<div class="card fadeup" data-phase="guided"><div class="h2">🕵️ 未知数侦探 <span class="tag">跟着做 · 书P3-6</span></div>'+ 
+ '<div class="base">求未知数只要<b>两步</b>：第①步 看它是算式里的<b>什么角色</b>（加数？被减数？乘数？）；第②步 选对应的<b>关系式</b>。两关都过，答案自己跑出来。</div>'+
+ '<div id="dstage"></div>'+
+ '<div class="deep" style="margin-top:14px"><span class="q">🚚 附加挑战·带符号搬家：</span>'+
+ '<div style="margin-top:4px"><b>1263 + 846 − 263，哪两个数先算最巧？</b><br>'+
+ '<div class="chips" style="justify-content:flex-start" id="mvchips"></div><div id="mvbox"></div></div></div></div>';
+ $('stage').innerHTML=h;
+ window._di=0;drawDetect();
+ var mc=['1263 和 846','1263 和 263','846 和 263'];var mh='';
+ mc.forEach(function(m,i){mh+='<button class="chip" data-i="'+i+'">'+m+'</button>';});
+ $('mvchips').innerHTML=mh;
+ $('mvchips').querySelectorAll('.chip').forEach(function(c){c.onclick=function(){
+  if(+c.dataset.i===1){beep(true);
+   $('mvbox').innerHTML='<div class="why fadeup"><b>答对！</b>1263 和 263 尾数相同，先算 1263 − 263 = 1000。<br>注意看 −263 <b>带着减号一起搬家</b>：1263 + 846 − 263 = <b>1263 − 263</b> + 846 = 1000 + 846 = <b>1846</b>。<br>📣 口诀：<b>搬家要带符号</b>——数前面的 + − 跟着数一起走。</div>';
+  }else{beep(false);
+   $('mvbox').innerHTML='<div class="fb no fadeup" style="margin-top:6px">再想想：哪两个数相减正好凑成整千？找<b>尾数相同</b>的那一对！</div>';
+  }};});
+}
+function drawDetect(){
+ var d=DETECT[window._di];
+ var h='<div class="base" style="background:#fff"><b>案件 '+(window._di+1)+' / '+DETECT.length+'：</b><span style="font-size:20px;font-weight:800;color:var(--cd)">'+d.eq+'</span>　求 (　)</div>'+ 
+ '<div id="dstep1"><div style="font-weight:800;margin:6px 0">第①步：(　) 是什么角色？</div><div class="chips" style="justify-content:flex-start" id="droles"></div></div>'+
+ '<div id="dstep2" class="hide"><div style="font-weight:800;margin:6px 0">第②步：用哪条关系式？</div><div class="chips" style="justify-content:flex-start" id="dlaws"></div></div>'+
+ '<div id="ddone"></div>';
+ $('dstage').innerHTML=h;
+ var rh='';d.roles.forEach(function(r){rh+='<button class="chip">'+r+'</button>';});
+ $('droles').innerHTML=rh;
+ $('droles').querySelectorAll('.chip').forEach(function(c){c.onclick=function(){
+  if(c.textContent===d.role){beep(true);c.classList.add('on');
+   $('droles').querySelectorAll('.chip').forEach(function(x){x.style.pointerEvents='none';});
+   $('dstep2').classList.remove('hide');
+   var lh='';d.laws.forEach(function(l){lh+='<button class="chip">'+l+'</button>';});
+   $('dlaws').innerHTML=lh;
+   $('dlaws').querySelectorAll('.chip').forEach(function(c2){c2.onclick=function(){
+    if(c2.textContent===d.law){beep(true);c2.classList.add('on');
+     $('dlaws').querySelectorAll('.chip').forEach(function(x){x.style.pointerEvents='none';});
+     var done='<div class="why fadeup">🎉 破案！'+d.calc+'，(　) = <b>'+d.ans+'</b><br>'+d.why+'</div>';
+     if(window._di<DETECT.length-1)done+='<div class="row"><button class="btn sm" id="dnext">下一个案件 ›</button></div>';
+     else done+='<div class="row"><button class="btn gold sm" id="dnext">去遮挡回忆卡 ›</button></div>';
+     $('ddone').innerHTML=done;
+     logEvent({ts:Date.now(),station:'s3',item:d.eq,user:d.role+'＋'+d.law,ok:true,ms:0,tag:'',hint:d.why});
+     $('dnext').onclick=function(){window._di++;if(window._di<DETECT.length){drawDetect();window.scrollTo(0,0);}else{openStation('s4');}};
+    }else{beep(false);c2.classList.add('on');c2.style.background='#fdecea';c2.style.borderColor='#e1553f';c2.style.color='#e1553f';
+     logEvent({ts:Date.now(),station:'s3',item:d.eq+'（选关系式）',user:c2.textContent,ok:false,ms:0,tag:'G1 关系式没记牢',hint:d.why});}
+   };});
+  }else{beep(false);
+   logEvent({ts:Date.now(),station:'s3',item:d.eq+'（选角色）',user:c.textContent,ok:false,ms:0,tag:'G1 角色判断错',hint:'先想 ( ) 在什么运算的什么位置。'});
+   c.style.background='#fdecea';c.style.borderColor='#e1553f';c.style.color='#e1553f';}
+ };});
+}
+
+/* ============ 教材 p23：单元知识导图 ============ */
+function renderS6(){
+ var nodes=[
+  ['加减是一家','加数＋加数＝和；一个加数＝和－另一个加数；被减数＝差＋减数；减数＝被减数－差。'],
+  ['乘除是一家','乘数×乘数＝积；一个乘数＝积÷另一个乘数；被除数＝商×除数；除数＝被除数÷商。'],
+  ['交换律','加法和乘法可以交换位置：a＋b＝b＋a，a×b＝b×a。数字搬家时，前面的符号要一起走。'],
+  ['结合律','三个数连加或连乘，可以先把好朋友加括号：凑整只是换先后，不改变每个数出现的次数。'],
+  ['分配律','一个数乘两数的和或差，必须分别乘：a×(b±c)＝a×b±a×c。括号里如果是乘法，不能乱分。'],
+  ['0 的规则','任何数乘0都得0；0除以任何非0数都得0；0不能作除数。']
+ ];
+ var h='<div class="card fadeup"><div class="h2">🗺️ 单元知识导图 <span class="tag">教辅 p23 重绘</span></div>'+
+ '<div class="base">Eddey 先不背一长串公式。先找<b>角色</b>：整体/部分，或总量/每份/份数；再点亮下面 6 个节点，把关系连起来。</div>'+
+ '<div class="mapgrid" id="ruleMap">'+nodes.map(function(n,i){return '<button class="mapnode" data-i="'+i+'"><b>'+n[0]+'</b><span>点开规则</span></button>';}).join('')+'</div><div id="mapExplain" class="why">已点亮 0 / 6。先从“加减是一家”开始。</div>'+
+ '<button class="btn gold wide" onclick="startQuiz(\'group\',\'relation\')">✍️ 做 p1–9 关系练习</button></div>';
+ $('stage').innerHTML=h;var opened={};
+ $('ruleMap').querySelectorAll('.mapnode').forEach(function(b){b.onclick=function(){var i=+b.dataset.i;opened[i]=true;beep(true);b.innerHTML='<b>'+nodes[i][0]+'</b><span>'+nodes[i][1]+'</span>';b.style.borderColor='var(--green)';var count=Object.keys(opened).length;$('mapExplain').innerHTML=(count===6?'🎉 六个节点都亮了。':'已点亮 '+count+' / 6。')+'<br><b>统一检查：</b>每次变形后，数字有没有少、符号有没有丢、角色有没有换错？';};});
+}
+
+/* ============ 教材 p24–28：常考题型 ============ */
+function renderS7(){
+ var cases=[
+  {t:'除数看错：先找不变的被除数',q:'把除数 28 看成 82，算得商 24 余 15。',s:['错误算式仍满足：被除数＝商×错误除数＋余数','24×82＋15＝1983','换回正确除数：1983÷28＝70……23']},
+  {t:'商和余数的和倍问题',q:'商7、余4，四个数的和是119。',s:['先去掉商和余数：119－7－4＝108','被除数＝7个除数＋4，所以再去掉余4：108－4＝104','104÷(7＋1)＝13（除数）；被除数＝95']},
+  {t:'没有共同乘数，就先造一个',q:'12×97＋36',s:['看见 36＝12×3','12×97＋12×3','12×(97＋3)＝12×100＝1200']}
+ ];
+ var h='<div class="card fadeup"><div class="h2">📚 单元常考题型 <span class="tag">教辅 p24–28</span></div><div class="base">做复杂题时先圈问题，再找<b>不变的量</b>。一次只追一个中间量，别在脑中同时跳三步。</div><div class="worked" id="caseList">'+cases.map(function(c,i){return '<div><b>'+c.t+'</b><br>'+c.q+'<br><button class="btn gold sm" data-case="'+i+'" style="margin-top:6px">一步一步看</button><p class="hide" id="case'+i+'"></p></div>';}).join('')+'</div><button class="btn wide" onclick="startQuiz(\'group\',\'common\')">✍️ 做 p24–28 常考练习</button></div>';
+ $('stage').innerHTML=h;$('caseList').querySelectorAll('[data-case]').forEach(function(b){b.onclick=function(){var i=+b.dataset.case;var p=$('case'+i);p.classList.remove('hide');p.innerHTML=cases[i].s.map(function(s,j){return '<b>第'+(j+1)+'步：</b>'+s;}).join('<br>');beep(true);};});
+}
+
+/* ============ 教材 p29–31：培优精练 ============ */
+function renderS8(){
+ var h='<div class="card fadeup"><div class="h2">🚀 培优精练 <span class="tag">教辅 p29–31</span></div>'+
+ '<div class="base">培优不是“数字更大”，而是要看出<b>结构</b>。Eddey 每次只做三件事：圈搭档 → 写变形 → 检查每个数都还在。</div>'+
+ '<div class="mapgrid"><div class="mapnode"><b>直接凑整</b>2×5＝10<br>4×25＝100<br>8×125＝1000</div><div class="mapnode"><b>拆数凑整</b>15×16×125<br>把16拆成2×8</div><div class="mapnode"><b>除号后括号</b>a÷(b×c)<br>＝a÷b÷c</div><div class="mapnode"><b>同除数提取</b>a÷c＋b÷c<br>＝(a＋b)÷c</div></div>'+
+ '<div class="worked"><div><b>书上例题：14×25＋125×18</b><br>14拆成10＋4，18拆成10＋8；让4找25、8找125：<br>(10＋4)×25＋125×(10＋8)＝250＋100＋1250＋1000＝<b>2600</b></div>'+
+ '<div><b>书上例题：9999×7＋1111×27</b><br>9999＝1111×9，所以原式＝1111×63＋1111×27＝1111×90＝<b>99990</b>。</div>'+
+ '<div><b>规则边界：</b>(198＋63＋54)÷9 可以把每一项都除以9；但 a÷(b＋c) 不能拆成 a÷b＋a÷c。</div></div>'+
+ '<button class="btn wide" onclick="startQuiz(\'group\',\'enrich\')">✍️ 做 p29–31 培优练习</button></div>';
+ $('stage').innerHTML=h;
+}
+
+function renderPracticeMenu(){
+ var groups=[['relation','p1–9 运算关系','关系式、未知量、错中求解'],['laws','p10–18 运算律','交换、结合、分配与易错'],['methods','p19–22 解题方法','搬家、拆数、添×1'],['common','p24–28 常考题型','余数错算、和倍、巧算'],['enrich','p29–31 培优','乘除法巧算'],['all','整单元 36 题','基础→巩固→常考→培优']];
+ var h='<div class="card fadeup"><div class="h2">✍️ 独立练习菜单 <span class="tag">短输入为主</span></div><div class="base">能算出数字的题不提供选项。每道错题会先讲断掉的那一步，并在后面重新出现同一道原题。</div><div class="grid">'+groups.map(function(g){return '<button class="tile" data-group="'+g[0]+'"><div class="nm">'+g[1]+'</div><div class="ds">'+g[2]+'</div></button>';}).join('')+'</div></div>';
+ $('stage').innerHTML=h;$('stage').querySelectorAll('[data-group]').forEach(function(b){b.onclick=function(){var g=b.dataset.group;startQuiz(g==='all'?'full':'group',g);};});
+}
+
+/* ============ 第④站 遮挡回忆卡 ============ */
+var CARDS=[
+ {q:'一个加数 = ？',a:'和 − 另一个加数'},
+ {q:'被减数 = ？',a:'差 + 减数'},
+ {q:'减数 = ？',a:'被减数 − 差'},
+ {q:'一个乘数 = ？',a:'积 ÷ 另一个乘数'},
+ {q:'被除数 = ？',a:'商 × 除数'},
+ {q:'除数 = ？',a:'被除数 ÷ 商'},
+ {q:'(a + b) × c = ？',a:'a × c + b × c'},
+ {q:'乘法凑整三兄弟',a:'2×5=10｜4×25=100｜8×125=1000'}
+];
+function renderS4(){
+ window._ci=0;
+ var h='<div class="card fadeup" data-phase="recall"><div class="h2">🃏 遮挡回忆卡 <span class="tag">遮挡回忆</span></div>'+ 
+ '<div class="base">先<b>心里说出答案</b>，再点卡片翻开核对。说对了点"✅记住了"，没说出点"🔁再看下"（会多考你几次）。</div>'+
+ '<div id="cstage"></div></div>';
+ $('stage').innerHTML=h;drawCard();
+}
+function drawCard(){
+ var c=CARDS[window._ci];
+ var h='<div class="recall"><div style="font-size:12px;color:var(--muted);font-weight:800">卡片 '+(window._ci+1)+' / '+CARDS.length+'</div>'+
+ '<div class="q" style="margin-top:6px">'+c.q.replace('？','<span class="mask">???</span>')+'</div>'+
+ '<div class="a hide" id="cans" style="margin-top:10px">'+c.a+'</div></div>'+
+ '<div class="row" style="justify-content:center"><button class="btn gold" id="cflip">👀 翻开核对</button></div><div class="row" style="justify-content:center" id="cjudge"></div>';
+ $('cstage').innerHTML=h;
+ $('cflip').onclick=function(){
+  $('cans').classList.remove('hide');this.classList.add('hide');
+  $('cjudge').innerHTML='<button class="btn sm" id="cok">✅ 记住了</button><button class="btn ghost sm" id="cno">🔁 再看下</button>';
+  $('cok').onclick=function(){beep(true);
+   logEvent({ts:Date.now(),station:'s4',item:'回忆卡：'+c.q,user:'自评记住',ok:true,ms:0,tag:'',hint:c.a});nextCard();};
+  $('cno').onclick=function(){beep(false);
+   logEvent({ts:Date.now(),station:'s4',item:'回忆卡：'+c.q,user:'自评没记住',ok:false,ms:0,tag:'G5 记忆不牢',hint:c.a});nextCard();};
+ };
+}
+function nextCard(){
+ window._ci++;
+ if(window._ci<CARDS.length){drawCard();}
+ else{
+  $('cstage').innerHTML='<div class="why fadeup" style="text-align:center">🎉 回忆卡全部过完！六条关系式 + 分配律 + 凑整三兄弟，都是检验站的武器。<br><div class="row" style="justify-content:center"><button class="btn" onclick="openStation(\'s5\')">📝 开始独立检验 ›</button></div></div>';
+ }
+}
+
+/* ============ 第⑤站 独立检验（自动判分 + 错因标签 + 定点回炉） ============ */
+var QUESTIONS=[
+ {id:'q1',lv:'基础',short:'求加数',back:'s1',tag:'G1 关系式没记牢',
+  q:'☐ + 259 = 471，☐ = ？',opts:['212','730','222','202'],ans:0,
+  hint:'一个加数 = 和 − 另一个加数：471 − 259 = 212。用加法验算：212 + 259 = 471 ✔'},
+ {id:'q2',lv:'基础',short:'求被减数',back:'s1',tag:'G1 关系式没记牢',
+  q:'(　) − 145 = 278，(　) = ？',opts:['133','423','413','323'],ans:1,
+  hint:'( ) 是被减数，被减数 = 差 + 减数：278 + 145 = 423。'},
+ {id:'q3',lv:'基础',short:'求乘数',back:'s1',tag:'G1 关系式没记牢',
+  q:'23 × (　) = 391，(　) = ？',opts:['18','16','17','19'],ans:2,
+  hint:'一个乘数 = 积 ÷ 另一个乘数：391 ÷ 23 = 17。'},
+ {id:'q4',lv:'基础',short:'求被除数',back:'s1',tag:'G1 关系式没记牢',
+  q:'(　) ÷ 13 = 21，(　) = ？',opts:['273','237','34','283'],ans:0,
+  hint:'被除数 = 商 × 除数：21 × 13 = 273。'},
+ {id:'q5',lv:'巩固',short:'连加凑整',back:'s2',tag:'G3 凑整对象找错',
+  q:'272 + 189 + 28，怎样算最巧？',opts:['先算 272 + 28，再加 189','从左往右硬算','先算 189 + 28，再加 272','变成 272 × 189 × 28'],ans:0,
+  hint:'272 和 28 个位是 2 和 8，能凑成 300（272+28=300），再加 189 = 489。先找好朋友再动笔。'},
+ {id:'q6',lv:'巩固',short:'连乘凑整',back:'s2',tag:'G3 凑整对象找错',
+  q:'125 × 37 × 8 = ？',opts:['3700','37000','30700','370000'],ans:1,
+  hint:'凑整三兄弟：8 × 125 = 1000。125 × 8 × 37 = 1000 × 37 = 37000。'},
+ {id:'q7',lv:'巩固',short:'结合律条件',back:'s2',tag:'G2 运算律用错',
+  q:'32 × 15 + 85 = 32 × (15 + 85)，这样算对吗？',opts:['对，这样更简便','不对，乘加混合不能用结合律'],ans:1,
+  hint:'书上经典易误点！结合律只适用于"三个数连乘"，这里是乘加混合。正确：32 × 15 + 85 = 480 + 85 = 565。先看结构，再用律。'},
+ {id:'q8',lv:'巩固',short:'结合律vs分配律',back:'s2',tag:'G2 运算律混淆',
+  q:'25 × (8 × 3) 的简便算法，哪个正确？',opts:['= (25×8) × (25×3)','= (25×8) × 3 = 600','= 25 × 8 + 3'],ans:1,
+  hint:'括号里是"乘"不是"加"，只能用交换律和结合律：(25×8)×3 = 200×3 = 600。拆成 25×8 和 25×3 是把结合律错当分配律。'},
+ {id:'q9',lv:'巩固',short:'添1法',back:'s2',tag:'G3 凑整对象找错',
+  q:'58 × 59 + 58 = ？（提示：把后面的 58 想成 58 × 1）',opts:['3422','3480','58×59×58','3542'],ans:1,
+  hint:'添"1"法：58 × 59 + 58 × 1 = 58 × (59 + 1) = 58 × 60 = 3480。'},
+ {id:'q10',lv:'巩固',short:'被减数翻倍题',back:'s1',tag:'G4 读题建模错',
+  q:'被减数、减数与差的和是 240，被减数是多少？',opts:['80','120','240','60'],ans:1,
+  hint:'因为 被减数 = 减数 + 差，所以"被减数 + 减数 + 差"就是 被减数 + 被减数 = 240，被减数 = 240 ÷ 2 = 120。'},
+ {id:'q11',lv:'拔高★',short:'错中求解·加',back:'s1',tag:'G4 读题建模错',
+  q:'小马虎做加法，把一个加数 68 看成 86，算出结果 172。正确的结果是多少？',opts:['190','154','172','104'],ans:1,
+  hint:'错中求解：另一个加数没看错！先求它：172 − 86 = 86，再算正确的：86 + 68 = 154。'},
+ {id:'q12',lv:'拔高★',short:'错中求解·除',back:'s1',tag:'G4 读题建模错',
+  q:'小亮做除法，把除数 12 看成 21，求出的商是 28。正确的商是多少？',opts:['49','56','42','16'],ans:0,
+  hint:'被除数没变！先求被除数：28 × 21 = 588，再算正确的商：588 ÷ 12 = 49。'},
+ {id:'q13',lv:'基础',short:'求减数',back:'s1',tag:'G1 角色判断错',q:'650 − □ = 275，□是多少？',answer:'375',hint:'□在减法里是减数。减数＝被减数−差：650−275＝375。验算：650−375＝275。'},
+ {id:'q14',lv:'基础',short:'求被除数',back:'s1',tag:'G1 关系式没记牢',q:'□ ÷ 17 = 23，□是多少？',answer:'391',hint:'□是被除数。被除数＝商×除数：23×17＝391。'},
+ {id:'q15',lv:'巩固',short:'除法差倍',back:'s1',tag:'G4 中间量没找到',q:'没有余数的除法中，商是7，被除数比除数多162。除数是多少？',answer:'27',hint:'被除数是7个除数，差就是6个除数。162÷(7−1)＝27。'},
+ {id:'q16',lv:'巩固',short:'无关条件',back:'s1',tag:'G4 读题建模错',q:'工厂一天生产400个零件，上午4小时每小时52个。下午生产多少个？',answer:'192',hint:'题目只问下午总数。上午4×52＝208个，下午400−208＝192个；不要被多余时间信息带跑。'},
+ {id:'q17',lv:'巩固',short:'连加凑整',back:'s3',tag:'G3 凑整对象找错',q:'675＋392＋125＝？',answer:'1192',hint:'675和125先凑800，再加392：800＋392＝1192。'},
+ {id:'q18',lv:'巩固',short:'带符号搬家',back:'s3',tag:'G2 符号搬家丢失',q:'1263＋846−263＝？',answer:'1846',hint:'−263要带着减号搬：1263−263＋846＝1000＋846＝1846。'},
+ {id:'q19',lv:'巩固',short:'双凑整',back:'s3',tag:'G3 拆数后漏因数',q:'25×125×32＝？',answer:'100000',hint:'32拆成8×4，让25×4＝100，125×8＝1000，积是100×1000＝100000。'},
+ {id:'q20',lv:'巩固',short:'制造搭档',back:'s3',tag:'G3 拆数后漏因数',q:'36×25×13＝？',answer:'11700',hint:'36＝9×4，让4×25＝100；9×13＝117，所以117×100＝11700。'},
+ {id:'q21',lv:'拔高★',short:'接近整百',back:'s3',tag:'G2 分配律使用错',q:'99×1001001＝？',answer:'99099099',hint:'把99看成100−1：1001001×100−1001001＝100100100−1001001＝99099099。'},
+ {id:'q22',lv:'拔高★',short:'转相同乘数',back:'s3',tag:'G3 相同乘数没造出',q:'150×26＋740×15＝？',answer:'15000',hint:'740×15＝74×150，原式＝150×(26＋74)＝150×100＝15000。'},
+ {id:'q23',lv:'拔高★',short:'分配律拆关系',back:'s3',tag:'G2 分配律结构没看出',q:'(○＋△)×☆＝95，○×☆＝20，那么△×☆＝？',answer:'75',hint:'展开后是○×☆＋△×☆＝95，所以△×☆＝95−20＝75。'},
+ {id:'q24',lv:'常考',short:'除数看错求被除数',back:'s7',tag:'G4 不变量没找到',q:'把除数28错写成82，算得商24余15。不变的被除数是多少？',answer:'1983',hint:'按错误算式找不变的被除数：24×82＋15＝1983。'},
+ {id:'q25',lv:'常考',short:'错算后求正确商',back:'s7',tag:'G4 只算到中间量',q:'除数52错写成25，算得商21余21。换回52后，正确的商是多少？',answer:'10',hint:'先求被除数21×25＋21＝546；再算546÷52＝10……26。题目只问商，所以输入10。'},
+ {id:'q26',lv:'常考',short:'被除数看错',back:'s7',tag:'G4 商差与被除数差没连接',q:'被除数218看成128，商比正确结果少2，余数相同。除数是多少？',answer:'45',hint:'被除数少了218−128＝90，商少2，说明90是2个除数：90÷2＝45。'},
+ {id:'q27',lv:'常考',short:'四部分和',back:'s7',tag:'G4 和倍关系没翻译',q:'商7余4，被除数、除数、商、余数的和是119。除数是多少？',answer:'13',hint:'119−7−4＝108；被除数＋除数＝108。被除数＝7×除数＋4，所以(108−4)÷8＝13。'},
+ {id:'q28',lv:'常考',short:'加法凑整',back:'s7',tag:'G3 凑整对象找错',q:'152＋283＋148＝？',answer:'583',hint:'152＋148＝300，再加283，得583。'},
+ {id:'q29',lv:'常考',short:'接近整百乘法',back:'s7',tag:'G2 分配律漏乘',q:'28×98＝？',answer:'2744',hint:'98＝100−2：28×100−28×2＝2800−56＝2744。'},
+ {id:'q30',lv:'常考',short:'125乘808',back:'s7',tag:'G3 拆数后漏项',q:'125×808＝？',answer:'101000',hint:'808＝800＋8：125×800＋125×8＝100000＋1000＝101000。'},
+ {id:'q31',lv:'培优★',short:'两组凑整',back:'s8',tag:'G3 搭档没配齐',q:'14×25＋125×18＝？',answer:'2600',hint:'14＝10＋4，18＝10＋8；让4×25＝100、8×125＝1000，合起来2600。'},
+ {id:'q32',lv:'培优★',short:'444乘25',back:'s8',tag:'G3 拆数后漏项',q:'444×25＝？',answer:'11100',hint:'444＝400＋40＋4，分别乘25：10000＋1000＋100＝11100。'},
+ {id:'q33',lv:'培优★',short:'16里藏搭档',back:'s8',tag:'G3 拆数后漏因数',q:'15×16×125＝？',answer:'30000',hint:'16＝2×8；15×2＝30，8×125＝1000，所以30×1000＝30000。'},
+ {id:'q34',lv:'培优★',short:'转相同乘数',back:'s8',tag:'G3 相同乘数没造出',q:'9999×7＋1111×27＝？',answer:'99990',hint:'9999＝1111×9，所以第一项是1111×63；再加1111×27＝1111×90＝99990。'},
+ {id:'q35',lv:'培优★',short:'和除以数',back:'s8',tag:'G2 除法分配边界错',q:'(198＋63＋54)÷9＝？',answer:'35',hint:'三项都能除以9：198÷9＋63÷9＋54÷9＝22＋7＋6＝35。'},
+ {id:'q36',lv:'培优★',short:'相同除数提取',back:'s8',tag:'G2 相同除数没看出',q:'108÷4＋132÷4＋60÷4＝？',answer:'75',hint:'除数相同，先合并被除数：(108＋132＋60)÷4＝300÷4＝75。'}
+];
+var quiz=null,qTimer=null;
+function groupOf(q){var n=Number(q.id.replace('q',''));if(n<=4||n>=10&&n<=16)return'relation';if(n>=5&&n<=9)return'laws';if(n>=17&&n<=23)return'methods';if(n>=24&&n<=30)return'common';return'enrich';}
+function answerValue(q){return q.answer!=null?String(q.answer):String(q.opts[q.ans]);}
+function useInput(q){return q.answer!=null||/^-?\d+(\.\d+)?$/.test(answerValue(q));}
+function startQuiz(mode,group){
+ var list;
+ if(mode==='wrong'){
+  var wb=loadWB();list=QUESTIONS.filter(function(q){return wb[q.id];});
+  if(!list.length){renderHome();return;}
+ }else if(mode==='group')list=QUESTIONS.filter(function(q){return groupOf(q)===group;});
+ else list=QUESTIONS.slice();
+ quiz={mode:mode,group:group||'all',list:list,i:0,right:0,wrong:0,t0:Date.now(),qStart:Date.now(),wrongs:[]};
+ $('home').classList.add('hide');$('view').classList.remove('hide');window.scrollTo(0,0);
+ drawQ();
+}
+function fmtSec(ms){var s=Math.round(ms/1000);return Math.floor(s/60)+'分'+(s%60)+'秒';}
+function drawQ(){
+ var q=quiz.list[quiz.i];
+ var order=[];if(!useInput(q)){order=q.opts.map(function(_,i){return i;});for(var i=order.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=order[i];order[i]=order[j];order[j]=t;}quiz.order=order;}quiz.qStart=Date.now();
+ var h='<div class="timerbar"><span class="qprog">'+(quiz.mode==='wrong'?'📒 错题重做':'📝 独立检验')+' · 第 '+(quiz.i+1)+' / '+quiz.list.length+' 题 · '+q.lv+'</span><span id="qclock">⏱ 0秒</span></div>'+ 
+ '<div class="qbox fadeup" data-phase="independent"><div class="qtext">'+(q.lv.indexOf('★')>=0?'<span class="star">★</span> ':'')+esc(q.q)+'</div><div class="opts" id="opts"></div><div id="fb" aria-live="polite"></div></div>';
+ $('stage').innerHTML=h;
+ var oh='';
+ if(useInput(q))oh='<div class="answerbox"><label for="shortAnswer">先在纸上或脑中算，再输入关键数字。没有选项，避免靠猜。</label><div class="answerrow"><input id="shortAnswer" inputmode="numeric" autocomplete="off" aria-label="输入答案"><button class="btn" id="submitAnswer">提交</button></div></div>';
+ else order.forEach(function(oi,idx){oh+='<button class="opt" data-oi="'+oi+'"><b style="color:var(--cd)">'+'ABCD'[idx]+'.</b> '+esc(q.opts[oi])+'</button>';});
+ $('opts').innerHTML=oh;
+ if(qTimer)clearInterval(qTimer);
+ qTimer=setInterval(function(){var c=$('qclock');if(c)c.textContent='⏱ '+fmtSec(Date.now()-quiz.t0);},500);
+ if(useInput(q)){$('submitAnswer').onclick=function(){answerInput(q);};$('shortAnswer').onkeydown=function(e){if(e.key==='Enter')answerInput(q);};setTimeout(function(){var a=$('shortAnswer');if(a)a.focus();},30);}
+ else $('opts').querySelectorAll('.opt').forEach(function(b){b.onclick=function(){answer(q,+b.dataset.oi,b);};});
+}
+function answerInput(q){var box=$('shortAnswer');if(!box||box.disabled)return;var raw=box.value.trim().replace(/[,，\s]/g,'');if(raw===''){box.focus();return;}var ok=raw===answerValue(q).replace(/[,，\s]/g,'');box.disabled=true;$('submitAnswer').disabled=true;box.style.borderColor=ok?'var(--green)':'var(--red)';finishAnswer(q,raw,ok,$('submitAnswer'));}
+function answer(q,oi,btn){
+ var ok=(oi===q.ans);
+ $('opts').querySelectorAll('.opt').forEach(function(b){b.style.pointerEvents='none';
+  if(+b.dataset.oi===q.ans)b.classList.add('right');});
+ finishAnswer(q,q.opts[oi],ok,btn);
+}
+function finishAnswer(q,user,ok,btn){
+ var ms=Date.now()-quiz.qStart;
+ beep(ok);
+ logEvent({ts:Date.now(),station:'s5',qid:q.id,item:q.q,user:String(user),ok:ok,ms:ms,tag:ok?'':q.tag,hint:q.hint});
+ if(ok){quiz.right++;btn.classList.add('right');
+  $('fb').innerHTML='<div class="fb ok fadeup">🎉 <b>答对了！</b>'+(quiz.mode==='wrong'?'<br>📒 错题连对进度已更新（连对2次毕业）。':'')+
+  '<div class="row" style="margin-top:8px"><button class="btn sm" id="qnext">'+(quiz.i<quiz.list.length-1?'下一题 ›':'看成绩 ›')+'</button></div></div>';
+ }else{quiz.wrong++;btn.classList.add('wrong');quiz.wrongs.push(q);
+  if(!q.retry&&quiz.mode!=='wrong'){var retry={};for(var k in q)retry[k]=q[k];retry.retry=true;quiz.list.splice(Math.min(quiz.i+2,quiz.list.length),0,retry);}
+  $('fb').innerHTML='<div class="fb no fadeup" data-phase="repair"><span class="etag">🏷️ 错因：'+q.tag+'</span>'+ 
+  '<div>正确答案：<b>'+esc(answerValue(q))+'</b>（本题已进错题本📒）</div>'+
+  '<div class="explain">💡 <b>只修断掉的一步：</b>'+q.hint+'<br><b>同一道原题会在后面重新出现，必须再独立做对。</b></div>'+
+  '<div class="row" style="margin-top:8px"><button class="btn gold sm" id="qback">📖 回炉重学这一站</button><button class="btn sm" id="qnext" data-return-to-question="same-original-after-repair">知道了，先修复再回原题 ›</button></div></div>';
+  $('qback').onclick=function(){openStation(q.back);};
+ }
+ $('qnext').onclick=function(){
+  quiz.i++;
+  if(quiz.i<quiz.list.length){drawQ();window.scrollTo(0,0);}
+  else drawResult();
+ };
+}
+function drawResult(){
+ if(qTimer){clearInterval(qTimer);qTimer=null;}
+ var total=Date.now()-quiz.t0;
+ var all=quiz.list.length,score=Math.round(quiz.right/all*100);
+ var wb=loadWB(),wc=Object.keys(wb).length;
+ var h='<div class="card fadeup" data-phase="transfer" style="text-align:center"><div class="h2">🏁 '+(quiz.mode==='wrong'?'错题重做':'独立检验')+'成绩单</div>'+ 
+ '<div class="result-big">'+score+'<span style="font-size:20px">分</span></div>'+
+ '<div style="font-size:15px;font-weight:800">✅ 对 '+quiz.right+' 题 ｜ ❌ 错 '+quiz.wrong+' 题 ｜ ⏱ 用时 '+fmtSec(total)+'</div>'+
+ '<div style="font-size:13px;color:var(--muted);margin-top:4px">平均每题 '+fmtSec(total/all)+' ｜ 📒 错题本现有 '+wc+' 题'+(wc?'，去首页点"错题本"专门消灭它们':'，全部毕业，太棒了！')+'</div></div>';
+ if(quiz.wrongs.length){
+  h+='<div class="card"><div class="h2">🔍 错题回顾（带讲解）</div>';
+  quiz.wrongs.forEach(function(q){
+   h+='<div class="fb no" style="margin-top:8px"><span class="etag">🏷️ '+q.tag+'</span><div style="font-weight:800">'+esc(q.q)+'</div><div>正确答案：<b>'+esc(answerValue(q))+'</b></div><div class="explain">💡 '+q.hint+'</div></div>';
+  });
+  h+='</div>';
+ }else{
+  h+='<div class="card" style="text-align:center"><div style="font-size:40px">🏆</div><div style="font-weight:800;color:var(--golddk)">全对！第1单元已经可以开学领跑啦</div></div>';
+ }
+ h+='<div class="row" style="justify-content:center;margin:12px 0"><button class="btn" id="rretry">🔁 再测一次</button>'+(wc?'<button class="btn gold" id="rwrong">📒 只重做错题</button>':'')+'<button class="btn ghost" id="rhome">回单元地图</button></div>';
+ $('stage').innerHTML=h;
+ window.scrollTo(0,0);
+ $('rretry').onclick=function(){startQuiz(quiz.mode,quiz.group);};
+ var rw=$('rwrong');if(rw)rw.onclick=function(){startQuiz('wrong');};
+ $('rhome').onclick=function(){goHome();};
+}
+
+/* ============ 错题本入口 ============ */
+function openWrongbook(){
+ var wb=loadWB(),keys=Object.keys(wb);
+ $('home').classList.add('hide');$('view').classList.remove('hide');window.scrollTo(0,0);
+ if(!keys.length){
+  $('stage').innerHTML='<div class="card fadeup" style="text-align:center"><div class="h2">📒 错题本</div><div style="font-size:38px;margin:8px 0">🎉</div><div style="font-weight:800;line-height:1.8">错题本是空的！<br>做错的题会自动进来，连对 2 次才能毕业出去。</div></div>';
+  return;
+ }
+ var h='<div class="card fadeup"><div class="h2">📒 错题本（'+keys.length+' 题待毕业）</div><div class="base">规则：<b>错 1 次进本，连续答对 2 次才毕业</b>。点下面按钮逐题消灭它们！</div>';
+ keys.forEach(function(k){var q=QUESTIONS.find(function(x){return x.id===k;});if(!q)return;
+  h+='<div class="fb no" style="margin-top:8px"><span class="etag">🏷️ '+q.tag+'</span><div style="font-weight:800">'+esc(q.q)+'</div><div style="font-size:12.5px;color:var(--muted)">错过 '+wb[k].fails+' 次 · 连对 '+wb[k].streak+'/2</div></div>';});
+ h+='<div class="row" style="justify-content:center;margin-top:12px"><button class="btn" id="wbstart">🔥 开始重做错题</button></div></div>';
+ $('stage').innerHTML=h;
+ $('wbstart').onclick=function(){startQuiz('wrong');};
+}
+
+renderDailySurprise();
+renderHome();
+</script>
+</body>
+</html>

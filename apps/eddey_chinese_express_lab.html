@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<script src="../assets/learning-sync.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>弟弟语文 · 表达实验室（复述+阅读按点答，会动·引导·又考）</title>
+<style>
+:root{--red:#ff8a5b;--redd:#e8643a;--gold:#F2B632;--golddk:#D89400;--ink:#3A2A1E;--paper:#FBF3E6;--line:#EBDCC4;
+--green:#3C9D54;--greenbg:#EAF7EC;--blue:#3170B5;--bluebg:#E8F0FA;--purple:#9a6cc0;--purpbg:#F2EAFA;}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+html,body{margin:0;padding:0;}
+body{font-family:'LXGW WenKai Screen','PingFang SC','Microsoft YaHei',serif;
+background:radial-gradient(circle at 10% 6%,#FCE6B8 0,transparent 38%),radial-gradient(circle at 92% 96%,#FFD9C2 0,transparent 42%),var(--paper);
+color:var(--ink);min-height:100vh;padding-bottom:34px;}
+.wrap{max-width:760px;margin:0 auto;padding:14px;}
+.top{display:flex;align-items:center;gap:10px;padding:12px 4px 6px;}
+.top .badge{background:var(--red);color:#fff;font-weight:700;font-size:19px;padding:6px 13px;border-radius:13px 13px 13px 4px;box-shadow:0 4px 0 var(--redd);}
+.top h1{font-size:18px;margin:0;}
+.top .sub{font-size:12px;color:#a8946f;}
+.speak{background:#fff;border:2px solid var(--gold);color:var(--golddk);border-radius:50%;width:42px;height:42px;font-size:20px;cursor:pointer;box-shadow:0 3px 0 #f0dca0;flex-shrink:0;}
+.card{background:#fff;border:2px solid var(--line);border-radius:18px;padding:18px;margin:13px 0;box-shadow:0 6px 0 #efe1c8;}
+.card h2{margin:0 0 8px;font-size:19px;color:var(--redd);}
+.lead{font-size:14.5px;color:#7d6a4e;line-height:1.8;margin:0 0 10px;}
+.bigmenu{display:grid;grid-template-columns:1fr;gap:13px;}
+.bigtile{background:#fff;border:3px solid var(--line);border-radius:18px;padding:18px;cursor:pointer;box-shadow:0 6px 0 #efe1c8;display:flex;gap:14px;align-items:center;transition:transform .08s;}
+.bigtile:active{transform:translateY(3px);}
+.bigtile .ic{font-size:42px;}
+.bigtile .nm{font-weight:700;font-size:19px;}
+.bigtile .ds{font-size:12.5px;color:#a08d6f;margin-top:3px;}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;background:var(--red);color:#fff;border:none;font-family:inherit;font-weight:700;font-size:16px;padding:12px 20px;border-radius:14px;box-shadow:0 4px 0 var(--redd);cursor:pointer;transition:transform .06s;}
+.btn:active{transform:translateY(3px);box-shadow:0 1px 0 var(--redd);}
+.btn.ghost{background:#fff;color:var(--redd);border:2px solid var(--red);box-shadow:0 4px 0 #f0d3cf;}
+.btn.green{background:var(--green);box-shadow:0 4px 0 #2c7a40;}
+.btn.blue{background:var(--blue);box-shadow:0 4px 0 #225182;}
+.btn.gray{background:#fff;color:#a08d6f;border:2px solid var(--line);box-shadow:0 4px 0 #efe1c8;}
+.btn.big{font-size:18px;padding:14px 24px;}
+.btn.sm{font-size:14px;padding:9px 14px;}
+.row{display:flex;gap:9px;flex-wrap:wrap;align-items:center;margin-top:12px;justify-content:center;}
+.back{background:none;border:none;color:#a08d6f;font-size:15px;font-family:inherit;cursor:pointer;padding:8px 2px;font-weight:700;}
+.hidden{display:none!important;}
+.kou{background:linear-gradient(180deg,#FCEFCF,#FBE6B0);border:2px dashed var(--golddk);border-radius:13px;padding:11px 14px;margin:11px 0;color:#7a5800;font-weight:700;font-size:14.5px;line-height:1.85;}
+.steps{display:flex;gap:6px;justify-content:center;margin:6px 0 12px;flex-wrap:wrap;}
+.steps .s{font-size:12px;color:#a08d6f;border:2px solid var(--line);border-radius:20px;padding:3px 11px;background:#fff;}
+.steps .s.on{background:var(--red);color:#fff;border-color:var(--red);}
+.steps .s.done{background:var(--greenbg);color:var(--green);border-color:var(--green);}
+.lion{display:flex;gap:10px;align-items:flex-start;margin:10px 0;}
+.lion .face{font-size:30px;flex-shrink:0;}
+.lion .bubble{background:#fff;border:2px solid var(--line);border-radius:14px 14px 14px 2px;padding:11px 13px;font-size:15px;line-height:1.8;box-shadow:0 3px 0 #efe1c8;text-align:left;flex:1;}
+/* 事件卡(复述排序) */
+.evlist{display:flex;flex-direction:column;gap:10px;margin:12px 0;}
+.evcard{display:flex;gap:11px;align-items:center;background:#fff;border:2px solid var(--line);border-radius:14px;padding:12px 13px;cursor:pointer;box-shadow:0 4px 0 #efe1c8;transition:all .15s;font-size:15.5px;line-height:1.6;}
+.evcard:active{transform:scale(.99);}
+.evcard .ord{flex-shrink:0;width:34px;height:34px;border-radius:50%;background:#F0E6D2;color:#a08d6f;font-weight:800;font-size:18px;display:flex;align-items:center;justify-content:center;border:2px solid #E5D3Ae;}
+.evcard.sel{border-color:var(--red);background:#FFF3EC;}
+.evcard.sel .ord{background:var(--red);color:#fff;border-color:var(--red);}
+.evcard.ok{border-color:var(--green);background:var(--greenbg);}
+.evcard.ok .ord{background:var(--green);color:#fff;border-color:var(--green);}
+.evcard.bad{border-color:var(--redd);background:#FBE6E2;animation:shake .4s;}
+@keyframes shake{0%,100%{transform:translateX(0);}25%{transform:translateX(-6px);}75%{transform:translateX(6px);}}
+.evcard .who{color:var(--blue);font-weight:700;}
+.evcard .res{color:var(--purple);font-weight:700;}
+/* 框架三格 */
+.frame3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin:10px 0;}
+.frame3 .fb{border:2px dashed var(--golddk);border-radius:12px;padding:9px;text-align:center;background:#FFFBF0;}
+.frame3 .fb b{display:block;font-size:13px;color:var(--golddk);margin-bottom:4px;}
+.frame3 .fb span{font-size:14px;color:var(--ink);}
+/* 阅读按点答 */
+.passage{background:#FBF7EE;border:2px solid var(--line);border-radius:12px;padding:13px 15px;font-size:15.5px;line-height:2;margin:10px 0;}
+.sent{cursor:pointer;border-radius:6px;padding:1px 3px;transition:background .15s;}
+.sent.found{background:#CDEFD6;box-shadow:0 0 0 2px var(--green) inset;}
+.sent.no{background:#FAD9D2;}
+.scorebar{height:22px;background:#F0E6D2;border-radius:11px;overflow:hidden;border:2px solid #E5D3Ae;margin:10px 0;}
+.scorebar i{display:block;height:100%;background:linear-gradient(90deg,var(--green),#7CC98F);width:0;transition:width .4s;border-radius:9px;}
+.model{background:var(--greenbg);border:2px solid var(--green);border-radius:12px;padding:12px 14px;font-size:15px;line-height:1.9;color:#27632f;margin:10px 0;}
+.tag{display:inline-block;background:var(--bluebg);color:var(--blue);border-radius:8px;padding:2px 9px;font-size:13px;font-weight:700;margin:2px 4px 2px 0;}
+.chip{display:inline-block;background:#fff;border:2px solid var(--line);border-radius:11px;padding:8px 13px;margin:5px;font-size:15px;cursor:pointer;box-shadow:0 3px 0 #efe1c8;}
+.chip.pick{background:var(--red);color:#fff;border-color:var(--red);}
+.big-emoji{font-size:46px;text-align:center;margin:6px 0;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top">
+    <div class="badge">弟弟</div>
+    <div style="flex:1"><h1>语文 · 表达实验室</h1><div class="sub">复述故事 + 阅读按点答 · 会动·先教你怎么想·再让你做</div></div>
+    <button class="speak" onclick="testVoice()">🔊</button>
+  </div>
+  <div id="home">
+    <div class="card">
+      <div class="lion"><div class="face">🐯</div><div class="bubble">这里不是做题，是<b>教你"怎么想"</b>：复述故事先学会<b>按顺序 + 谁做了什么 + 结果</b>；阅读简答先学会<b>找得分点 + 因为…所以…</b>。每个都是<b>先看动画示范，再自己动手</b>，最后会考你一次。</div></div>
+      <div class="kou">先点右上角 🔊 试一下声音！</div>
+    </div>
+    <div class="bigmenu">
+      <div class="bigtile" onclick="openMod('retell')"><div class="ic">📖</div><div><div class="nm">复述故事 · 三步拼装机</div><div class="ds">把打乱的故事按顺序排好，再用「谁+做了什么+结果」说清楚（你最该练的）</div></div></div>
+      <div class="bigtile" onclick="openMod('read')"><div class="ic">🔍</div><div><div class="nm">阅读简答 · 找得分点</div><div class="ds">学会在短文里圈出"答案句"，用「因为…所以…」答完整</div></div></div>
+    </div>
+  </div>
+  <div id="stage" class="hidden"></div>
+</div>
+<script>
+/* ===================== 朗读(浏览器TTS) ===================== */
+let voices=[];function loadVoices(){voices=speechSynthesis.getVoices();}
+if('speechSynthesis'in window){loadVoices();speechSynthesis.onvoiceschanged=loadVoices;}
+let warmed=false;function warm(){if(!('speechSynthesis'in window))return;try{speechSynthesis.resume();}catch(e){}if(warmed)return;loadVoices();try{var wu=new SpeechSynthesisUtterance('ok');wu.volume=0.02;speechSynthesis.speak(wu);}catch(e){}warmed=true;}
+document.body.addEventListener('touchstart',warm,{once:true});
+document.body.addEventListener('click',warm,{once:true});
+document.addEventListener('visibilitychange',()=>{if(document.hidden){try{speechSynthesis.cancel();}catch(e){}}});
+function pickZhVoice(){if(!voices||!voices.length)return null;const zh=voices.filter(v=>/zh|cmn|Chinese/i.test(v.lang||'')||/中文|普通话|国语/i.test(v.name||''));if(!zh.length)return null;return zh.find(v=>/Google/i.test(v.name||'')&&/zh[-_]CN|cmn/i.test(v.lang||''))||zh.find(v=>/Google|Microsoft|Ting-Ting|Mei-Jia/i.test(v.name||''))||zh.find(v=>/zh[-_]CN/i.test(v.lang||''))||zh[0];}
+function speak(t){if(!('speechSynthesis'in window))return;try{speechSynthesis.cancel();speechSynthesis.resume();}catch(e){}try{const u=new SpeechSynthesisUtterance(t);const v=pickZhVoice();if(v)u.voice=v;u.lang='zh-CN';u.rate=0.92;u.pitch=1.0;speechSynthesis.speak(u);}catch(e){}}
+function testVoice(){if(!('speechSynthesis'in window)){alert('这个浏览器不支持朗读，请用 Safari 或 Chrome 打开');return;}warm();speak('你好弟弟，我们来学怎么复述故事。');}
+function ding(){try{const c=new(window.AudioContext||window.webkitAudioContext)();const o=c.createOscillator();const g=c.createGain();o.connect(g);g.connect(c.destination);o.frequency.value=880;g.gain.setValueAtTime(0.15,c.currentTime);g.gain.exponentialRampToValueAtTime(0.001,c.currentTime+0.3);o.start();o.stop(c.currentTime+0.3);}catch(e){}}
+function buzz(){try{const c=new(window.AudioContext||window.webkitAudioContext)();const o=c.createOscillator();const g=c.createGain();o.connect(g);g.connect(c.destination);o.type='square';o.frequency.value=180;g.gain.setValueAtTime(0.12,c.currentTime);g.gain.exponentialRampToValueAtTime(0.001,c.currentTime+0.25);o.start();o.stop(c.currentTime+0.25);}catch(e){}}
+
+/* ===================== 数据：复述故事 ===================== */
+/* 每个故事:events 按正确顺序;每个 {who,do,res}; retell=完整复述示范 */
+const STORIES={
+ demo:{title:'亡羊补牢（看示范）',hint:'第八单元寓言·还记得"窟窿"吗？',
+  events:[
+   {who:'牧羊人',do:'发现羊圈破了个窟窿，少了一只羊',res:'但他没在意'},
+   {who:'街坊',do:'劝他赶快把羊圈修一修',res:'牧羊人不听'},
+   {who:'牧羊人',do:'说"羊都丢了，还修羊圈干什么"',res:'没有修'},
+   {who:'第二天他',do:'又少了一只羊',res:'这才着急'},
+   {who:'牧羊人',do:'赶紧堵上窟窿、修好羊圈',res:'羊圈结实了'},
+   {who:'从此',do:'他的羊',res:'再也没丢过'}
+  ],
+  moral:'出了问题，只要肯及时补救，就还不算晚。'},
+ q1:{title:'慢性子裁缝和急性子顾客',hint:'课文·顾客的要求一直在变',
+  events:[
+   {who:'急性子顾客',do:'要裁缝做一件棉袄',res:'裁缝说要明年冬天才能取'},
+   {who:'顾客',do:'改主意，要改做夹袄',res:'裁缝慢吞吞地答应'},
+   {who:'顾客',do:'又改成做短袖衬衫',res:'裁缝还是不慌不忙地答应'},
+   {who:'顾客',do:'最后要改做春装',res:'裁缝说："还没开始裁料呢。"'}
+  ],
+  moral:'顾客越急、要求越变，慢性子裁缝却一点没动手——又好笑又说明做事要想好再做。'},
+ q2:{title:'小蝌蚪找妈妈',hint:'按顺序说清"找到谁、像不像"',
+  events:[
+   {who:'小蝌蚪',do:'看见鲤鱼妈妈，问青蛙妈妈在哪',res:'鲤鱼说妈妈四条腿、宽嘴巴'},
+   {who:'小蝌蚪',do:'看见乌龟，以为是妈妈',res:'乌龟说不是，妈妈头顶有两只大眼睛'},
+   {who:'小蝌蚪',do:'游到荷叶旁，找到大青蛙',res:'青蛙就是它们的妈妈'},
+   {who:'小蝌蚪',do:'慢慢长出腿、尾巴变短',res:'最后变成了小青蛙'}
+  ],
+  moral:'按"先遇到谁、结果怎样"的顺序，一步步说清楚。'}
+};
+
+/* ===================== 数据：阅读按点答 ===================== */
+/* passage=句子数组; q=问题; ask提示; points=得分点句子下标(数组); model=示范答案; tip=方法 */
+const READS={
+ demo:{title:'蜜蜂为什么不会迷路（看示范）',
+  passage:['法布尔做了一个试验。','他在自家蜜蜂身上做了白色记号。','他把蜜蜂带到两里多外放飞。','一路上风很大，蜜蜂飞得很低。','可是没过多久，做了记号的蜜蜂全都飞回了家。','法布尔说，蜜蜂靠的不是超常的记忆力，而是一种我们无法解释的本能。'],
+  q:'蜜蜂能飞回家，靠的是什么？',ask:'读一读，点出"答案句"。',
+  points:[5],model:'蜜蜂能飞回家，靠的是一种我们无法解释的本能（不是超常的记忆力）。',
+  tip:'答案就藏在原文里！先找到直接回答问题的那一句，再照着说。'},
+ q1:{title:'要下雨了',
+  passage:['天气很闷，小白兔挎着篮子去采蘑菇。','燕子飞得很低，因为空气潮湿，虫子的翅膀沾了小水珠，飞不高。','小鱼游到水面上来，因为水里闷得很，它们要出来透透气。','蚂蚁正忙着把家搬到高处。','小白兔连忙加快脚步往家跑。'],
+  q:'燕子为什么飞得很低？',ask:'点出短文里"回答原因"的那句话。',
+  points:[1],model:'因为快下雨了，空气很潮湿，虫子的翅膀沾了小水珠飞不高，所以燕子飞得很低去捉虫。',
+  tip:'问"为什么"，就去找带"因为……"的句子；答时用"因为……，所以……"。'},
+ q2:{title:'李时珍尝百草',
+  passage:['李时珍是明朝有名的医生。','为了写《本草纲目》，他走遍了高山深谷。','他常常亲口尝那些没人认识的草药，好弄清它们的药性。','有一次中了毒，差点儿丢了性命，他也不停下来。','整整花了二十七年，他终于写成了这部药书。'],
+  q:'从短文看，李时珍是个怎样的人？请说出两点，并用原文说明。',ask:'这是"品质题"：要点出 2 个品质，每个都用原文事例。点出能说明他品质的句子（至少 2 句）。',
+  points:[2,3,4],model:'李时珍①不怕辛苦、做事认真——他走遍高山深谷，亲口尝没人认识的草药；②坚持不放弃——中毒差点丢命也不停下，整整花了二十七年才写成《本草纲目》。',
+  tip:'品质题=品质词 + 原文事例，至少答两点！每个品质后面都要跟一句"书上怎么写的"。'}
+};
+
+/* ===================== 状态/导航 ===================== */
+const ST={mod:null,view:null,key:null,seq:[],checked:false,found:new Set()};
+function show(id){['home','stage'].forEach(x=>document.getElementById(x).classList.add('hidden'));document.getElementById(id).classList.remove('hidden');window.scrollTo(0,0);}
+function goHome(){try{speechSynthesis.cancel();}catch(e){}show('home');}
+function openMod(m){ST.mod=m;if(m==='retell')retellIntro();else readIntro();}
+
+/* ===================== 模块1：复述三步机 ===================== */
+function retellIntro(){
+  const b=document.getElementById('stage');
+  b.innerHTML=`<button class="back" onclick="goHome()">← 返回</button>
+   <div class="card">
+     <div class="steps"><span class="s on">①方法</span><span class="s">②看示范</span><span class="s">③自己排</span></div>
+     <h2>📖 复述故事 · 怎么想</h2>
+     <div class="kou">复述三步：<br>1️⃣ <b>按顺序</b>——先发生的先说；<br>2️⃣ 每件事说清 <b>谁 + 做了什么 + 结果</b>；<br>3️⃣ 把每一步 <b>连起来</b> 说成一段话。</div>
+     <div class="frame3"><div class="fb"><b>谁</b><span>人物</span></div><div class="fb"><b>做了什么</b><span>事情</span></div><div class="fb"><b>结果</b><span>怎么样了</span></div></div>
+     <div class="lion"><div class="face">🐯</div><div class="bubble">很多时候你只说了"一点点"。记住：<b>一件事=谁+做了什么+结果</b>，少了"结果"就不完整哦。</div></div>
+     <div class="row"><button class="btn green big" onclick="retellDemo()">看一个示范 →</button></div>
+   </div>`;
+  show('stage');speak('复述故事记住三步：按顺序，说清谁做了什么和结果，再连起来说。');
+}
+function retellDemo(){
+  const s=STORIES.demo;
+  const b=document.getElementById('stage');
+  b.innerHTML=`<button class="back" onclick="retellIntro()">← 返回</button>
+   <div class="card">
+     <div class="steps"><span class="s done">①方法</span><span class="s on">②看示范</span><span class="s">③自己排</span></div>
+     <h2>👀 示范：《${s.title}》</h2>
+     <div class="lead">看——每件事都拆成 <span class="who">谁</span> + 做了什么 + <span class="res">结果</span>，按顺序排好：</div>
+     <div class="evlist">${s.events.map((e,i)=>`<div class="evcard ok"><div class="ord">${i+1}</div><div><span class="who">${e.who}</span> ${e.do}，<span class="res">${e.res}</span>。</div></div>`).join('')}</div>
+     <div class="kou">连起来复述（点 🔊 听一遍）：${s.events.map(e=>e.who+e.do+'，'+e.res).join('；')}。<br>寓意：${s.moral}</div>
+     <div class="row"><button class="btn blue" onclick="speakRetell('demo')">🔊 听完整复述</button><button class="btn green big" onclick="retellPlay('q1')">轮到我排 →</button></div>
+   </div>`;
+  show('stage');
+}
+function speakRetell(key){const s=STORIES[key];speak(s.events.map(e=>e.who+e.do+'，'+e.res).join('。')+'。'+(s.moral||''));}
+function retellPlay(key){
+  ST.key=key;ST.seq=[];ST.checked=false;
+  const s=STORIES[key];
+  ST.shuf=s.events.map((e,i)=>i);
+  for(let i=ST.shuf.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[ST.shuf[i],ST.shuf[j]]=[ST.shuf[j],ST.shuf[i]];}
+  renderRetell();
+  show('stage');speak('故事被打乱了。按发生的先后，依次点一下卡片排好顺序。');
+}
+function renderRetell(){
+  const s=STORIES[ST.key];const b=document.getElementById('stage');
+  const cards=ST.shuf.map(orig=>{
+    const e=s.events[orig];
+    const pos=ST.seq.indexOf(orig);
+    let cls='evcard';let ordtxt=pos>=0?(pos+1):'?';
+    if(ST.checked){cls+=(pos===orig?' ok':' bad');}
+    else if(pos>=0)cls+=' sel';
+    return `<div class="${cls}" onclick="pickEv(${orig})"><div class="ord">${ordtxt}</div><div><span class="who">${e.who}</span> ${e.do}，<span class="res">${e.res}</span>。</div></div>`;
+  }).join('');
+  b.innerHTML=`<button class="back" onclick="retellIntro()">← 返回</button>
+   <div class="card">
+     <div class="steps"><span class="s done">①方法</span><span class="s done">②看示范</span><span class="s on">③自己排</span></div>
+     <h2>🧩 给《${s.title}》排顺序</h2>
+     <div class="lead">${s.hint}。<b>按先后顺序，依次点卡片</b>（点错可"重排"）。</div>
+     <div class="evlist">${cards}</div>
+     <div id="rfb"></div>
+     <div class="row">
+       <button class="btn gray sm" onclick="retellPlay(ST.key)">🔄 重排</button>
+       <button class="btn green big" id="ckbtn" onclick="checkRetell()" ${ST.seq.length<s.events.length?'disabled style=\"opacity:.5\"':''}>✅ 检查顺序</button>
+     </div>
+   </div>`;
+}
+function pickEv(orig){
+  if(ST.checked)return;
+  const p=ST.seq.indexOf(orig);
+  if(p>=0)ST.seq.splice(p,1); else ST.seq.push(orig);
+  renderRetell();
+}
+function checkRetell(){
+  const s=STORIES[ST.key];
+  ST.checked=true;
+  const right=ST.seq.every((orig,pos)=>pos===orig);
+  renderRetell();
+  const fb=document.getElementById('rfb');
+  if(right){ding();
+    fb.innerHTML=`<div class="model">🎉 顺序全对！现在试着<b>连起来复述一遍</b>（可以点麦克风说）：<br>${s.events.map(e=>'<b>'+e.who+'</b>'+e.do+'，'+e.res).join('；')}。</div>
+      <div class="row"><button class="btn blue" onclick="speakRetell(ST.key)">🔊 听标准复述</button>${SR?'<button class="btn" onclick="micRetell()">🎤 我来复述</button>':''}<button class="btn green" onclick="goHome()">完成 👍</button></div>
+      <div id="mic" class="kou hidden"></div>`;
+    speak('顺序全对！太棒了。');
+  }else{buzz();
+    fb.innerHTML=`<div class="kou">还差一点点～ <b>绿色</b>的是排对的，<b>红色</b>的位置不对。想一想：哪件事最先发生？点"重排"再试一次。</div>
+      <div class="row"><button class="btn" onclick="retellPlay(ST.key)">🔄 重排再来</button><button class="btn blue" onclick="revealOrder()">看正确顺序</button></div>`;
+    speak('有几张排错了。想想哪件事先发生，再试一次。');
+  }
+}
+function revealOrder(){
+  const s=STORIES[ST.key];ST.seq=s.events.map((e,i)=>i);ST.shuf=s.events.map((e,i)=>i);ST.checked=true;renderRetell();
+  const fb=document.getElementById('rfb');
+  fb.innerHTML=`<div class="model">正确顺序：${s.events.map((e,i)=>(i+1)+'.'+e.who+e.do).join('　')}<br>记住——<b>先发生的先说</b>。</div><div class="row"><button class="btn green" onclick="retellPlay(ST.key)">再练一次</button><button class="btn gray" onclick="goHome()">完成</button></div>`;
+}
+
+/* ===================== 模块2：阅读按点答 ===================== */
+function readIntro(){
+  const b=document.getElementById('stage');
+  b.innerHTML=`<button class="back" onclick="goHome()">← 返回</button>
+   <div class="card">
+     <div class="steps"><span class="s on">①方法</span><span class="s">②看示范</span><span class="s">③自己找</span></div>
+     <h2>🔍 阅读简答 · 怎么想</h2>
+     <div class="kou">答简答题两招：<br>1️⃣ <b>答案在原文里</b>——先回短文找"答案句"，圈出来；<br>2️⃣ 问"为什么"用 <b>因为…所以…</b>；问"怎样的人"要 <b>品质词 + 原文事例，至少两点</b>。</div>
+     <div class="lion"><div class="face">🐯</div><div class="bubble">老师常在简答题扣你分，多半是<b>只答了一点</b>或<b>没回原文找句子</b>。这里教你"找得分点"。</div></div>
+     <div class="row"><button class="btn green big" onclick="readDemo()">看一个示范 →</button></div>
+   </div>`;
+  show('stage');speak('答简答题：答案在原文里，先找答案句；问为什么用因为所以。');
+}
+function readDemo(){
+  const r=READS.demo;const b=document.getElementById('stage');
+  b.innerHTML=`<button class="back" onclick="readIntro()">← 返回</button>
+   <div class="card">
+     <div class="steps"><span class="s done">①方法</span><span class="s on">②看示范</span><span class="s">③自己找</span></div>
+     <h2>👀 示范：${r.title}</h2>
+     <div class="lead">问题：<b>${r.q}</b></div>
+     <div class="passage">${r.passage.map((s,i)=>`<span class="sent ${r.points.includes(i)?'found':''}">${s}</span>`).join('')}</div>
+     <div class="kou">看见没？<b>绿色那句</b>就是"答案句"。${r.tip}</div>
+     <div class="model">✅ 这样答：${r.model}</div>
+     <div class="row"><button class="btn blue" onclick="speak('${r.model}')">🔊 读答案</button><button class="btn green big" onclick="readPlay('q1')">轮到我找 →</button></div>
+   </div>`;
+  show('stage');
+}
+function readPlay(key){
+  ST.key=key;ST.found=new Set();ST.done=false;
+  renderRead();show('stage');
+  const r=READS[key];speak('读短文，点出能回答问题的句子。'+r.ask);
+}
+function renderRead(){
+  const r=READS[ST.key];const b=document.getElementById('stage');
+  const need=r.points.length;
+  const got=[...ST.found].filter(i=>r.points.includes(i)).length;
+  const pct=Math.round(got/need*100);
+  b.innerHTML=`<button class="back" onclick="readIntro()">← 返回</button>
+   <div class="card">
+     <div class="steps"><span class="s done">①方法</span><span class="s done">②看示范</span><span class="s on">③自己找</span></div>
+     <h2>🔍 ${r.title}</h2>
+     <div class="lead">问题：<b>${r.q}</b></div>
+     <div class="lead">${r.ask}</div>
+     <div class="passage" id="psg">${r.passage.map((s,i)=>{let c='sent';if(ST.found.has(i))c+=r.points.includes(i)?' found':' no';return `<span class="${c}" onclick="tapSent(${i})">${s}</span>`;}).join('')}</div>
+     <div class="lead">得分点 ${got} / ${need}：</div>
+     <div class="scorebar"><i style="width:${pct}%"></i></div>
+     <div id="readfb"></div>
+   </div>`;
+  if(got>=need&&!ST.done){ST.done=true;readWin();}
+}
+function tapSent(i){
+  if(ST.done)return;
+  const r=READS[ST.key];
+  if(ST.found.has(i)){ST.found.delete(i);renderRead();return;}
+  ST.found.add(i);
+  if(r.points.includes(i)){ding();}
+  else{buzz();}
+  renderRead();
+  if(!ST.done){
+    const fb=document.getElementById('readfb');
+    if(r.points.includes(i))fb.innerHTML=`<div class="kou">✅ 找对一句！${r.points.length>1?'继续找，至少要'+r.points.length+'点。':''}</div>`;
+    else fb.innerHTML=`<div class="kou" style="background:#FAD9D2;border-color:var(--redd);color:var(--redd)">这句不是直接的答案哦，再读读问题，找最对的那句。</div>`;
+  }
+}
+function readWin(){
+  const r=READS[ST.key];ding();
+  const fb=document.getElementById('readfb');
+  fb.innerHTML=`<div class="model">🎉 得分点都找到了！把它们连成一句完整的话：<br><b>${r.model}</b></div>
+    <div class="kou">${r.tip}</div>
+    <div class="row"><button class="btn blue" onclick="speak('${r.model}')">🔊 读完整答案</button><button class="btn green" onclick="goHome()">完成 👍</button></div>`;
+  speak('得分点都找到了，真棒！');
+}
+
+/* ===================== 🎤 口述复述(可选) ===================== */
+const SR=window.SpeechRecognition||window.webkitSpeechRecognition||null;
+function micRetell(){
+  if(!SR)return;
+  const box=document.getElementById('mic');if(box){box.classList.remove('hidden');box.textContent='🎤 在听……请把故事复述一遍';}
+  try{const rec=new SR();rec.lang='zh-CN';rec.interimResults=false;rec.maxAlternatives=1;
+    rec.onresult=e=>{const t=e.results[0][0].transcript;if(box)box.innerHTML='你说的：'+t+'<br><b>对照标准复述，看看"谁/做了什么/结果"说全了没～</b>';};
+    rec.onerror=()=>{if(box)box.textContent='没听清，再点🎤试一次，或直接对着标准复述念一遍。';};
+    rec.start();
+  }catch(e){if(box)box.textContent='这个设备不支持语音，照着标准复述念一遍也很好。';}
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#fff8f2">
+  <meta name="study-portal-design" content="2.0">
+  <meta name="lesson-audio" content="required">
+  <meta name="lesson-audio-engine" content="browser-system-voice">
+  <meta name="lesson-audio-browser-override" content="user-explicit">
+  <meta name="lesson-audio-rejected-voice" content="bf_emma">
+  <title>第一周英语拼写工厂｜Eddey</title>
+  <style>
+    :root{--canvas:#fff8f2;--surface:#fff;--ink:#20313b;--muted:#687880;--line:#eadfd7;--identity:#ff8a5b;--identity-dark:#a94220;--identity-soft:#fff0e8;--blue:#277aa8;--blue-soft:#eaf7ff;--mint:#19745d;--mint-soft:#eaf8f2;--spark:#ffc857;--danger:#a63f50;--danger-soft:#fff0f3;--shadow:0 16px 36px rgba(102,62,42,.12);--soft-shadow:0 7px 18px rgba(102,62,42,.08);--radius-card:24px;--radius-control:14px;--tap:48px;--motion-fast:180ms;--motion-main:420ms}
+    *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+    html{min-width:320px;background:var(--canvas);scroll-behavior:smooth}
+    body{min-height:100dvh;margin:0;color:var(--ink);font-family:"PingFang SC","Microsoft YaHei","Segoe UI",system-ui,sans-serif;font-size:16px;background:radial-gradient(circle at 8% 0,rgba(255,138,91,.18),transparent 28%),radial-gradient(circle at 95% 52%,rgba(39,122,168,.10),transparent 24%),linear-gradient(180deg,#fffaf6,#fff7ef);overscroll-behavior-y:contain}
+    button,input,a{font:inherit}button,a{touch-action:manipulation}button{cursor:pointer}button:focus-visible,input:focus-visible,a:focus-visible{outline:3px solid #6755ad;outline-offset:3px}
+    button:disabled{cursor:not-allowed;opacity:.55}.lesson-shell{width:min(100%,760px);margin:0 auto;padding:14px 14px calc(84px + env(safe-area-inset-bottom))}
+    .topbar{display:flex;align-items:center;gap:10px;min-height:var(--tap);margin-bottom:12px}.icon-button{width:var(--tap);height:var(--tap);flex:0 0 var(--tap);display:grid;place-items:center;border:1px solid var(--line);border-radius:var(--radius-control);color:var(--ink);background:var(--surface);box-shadow:var(--soft-shadow);text-decoration:none}.icon-button svg{width:23px;height:23px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}.brand{min-width:0;display:flex;align-items:center;gap:10px}.brand-mark{width:42px;height:42px;flex:0 0 42px;display:grid;place-items:center;border-radius:14px;color:#fff;background:var(--identity-dark);box-shadow:0 4px 0 #783018}.brand-mark svg{width:23px;height:23px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}.brand strong,.brand span{display:block}.brand strong{font-size:16px;line-height:1.25}.brand span{margin-top:2px;color:var(--muted);font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.identity{margin-left:auto;padding:7px 11px;border-radius:999px;color:var(--identity-dark);background:var(--identity-soft);font-size:12px;font-weight:800;white-space:nowrap}
+    .hero,.panel{border:1px solid var(--line);border-radius:var(--radius-card);background:var(--surface);box-shadow:var(--shadow)}.hero{position:relative;overflow:hidden;padding:clamp(20px,5vw,34px)}.hero:after{content:"";position:absolute;width:170px;height:170px;right:-88px;top:-98px;border:24px solid rgba(255,138,91,.1);border-radius:50%;pointer-events:none}.eyebrow{display:inline-flex;align-items:center;gap:7px;min-height:30px;padding:5px 10px;border-radius:999px;color:#fff;background:var(--ink);font-size:12px;font-weight:800}.eyebrow:before{content:"";width:8px;height:8px;border-radius:50%;background:var(--spark)}h1{position:relative;margin:14px 0 10px;font-size:clamp(28px,7vw,44px);font-weight:800;line-height:1.12;letter-spacing:-.04em;white-space:nowrap}.hero-lead{position:relative;max-width:610px;margin:0;color:var(--muted);line-height:1.75}.goal{position:relative;margin-top:16px;padding:12px 14px;border:1px solid #ffcbb5;border-radius:16px;background:linear-gradient(135deg,var(--identity-soft),#fff);line-height:1.65}.hero-meta{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}.meta-chip{padding:6px 9px;border-radius:999px;color:#805039;background:#fff5ed;font-size:12px;font-weight:700}
+    .progress-card{margin:14px 0;padding:13px 15px;border:1px solid var(--line);border-radius:18px;background:rgba(255,255,255,.92);box-shadow:var(--soft-shadow)}.progress-top{display:flex;align-items:center;gap:10px}.progress-top strong{font-size:14px}.progress-top span{margin-left:auto;color:var(--muted);font-size:12px}.progress-track{height:8px;margin-top:10px;border-radius:999px;background:#f0e6df;overflow:hidden}.progress-fill{height:100%;width:0;border-radius:999px;background:linear-gradient(90deg,var(--identity),var(--spark));transition:width var(--motion-main) ease}.phase-dots{display:grid;grid-template-columns:repeat(6,1fr);gap:6px;margin-top:10px}.phase-dot{min-width:0;text-align:center;color:#9a8c84;font-size:11px;font-weight:700}.phase-dot.active{color:var(--identity-dark)}
+    .view{display:none}.view.active{display:block}.panel{padding:clamp(18px,4vw,26px)}.view-title{display:flex;align-items:flex-start;gap:12px;margin-bottom:16px}.step-num{width:34px;height:34px;flex:0 0 34px;display:grid;place-items:center;border-radius:12px;color:#fff;background:var(--identity-dark);font-weight:800}.view-title h2{margin:0;font-size:clamp(21px,5vw,28px);line-height:1.2}.view-title p{margin:5px 0 0;color:var(--muted);font-size:14px;line-height:1.55}
+    .video-wrap{overflow:hidden;border:1px solid #e5d8cd;border-radius:20px;background:#1f303a}.video-wrap video{display:block;width:100%;aspect-ratio:16/9;background:#1f303a}.video-note{padding:10px 13px;color:#dbe7ec;background:#1f303a;font-size:12px;line-height:1.5}.video-fallback{display:none;padding:34px 18px;color:#fff;text-align:center}.video-fallback strong{display:block;font-size:22px}.video-fallback span{display:block;margin-top:8px;color:#d7e5ec}
+    .rule-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:14px}.rule-card{min-width:0;padding:14px;border:1px solid var(--line);border-radius:18px;background:#fff}.rule-card b{display:block;margin-bottom:9px;font-size:14px}.rule-card p{margin:9px 0 0;color:var(--muted);font-size:12px;line-height:1.55}.blocks{display:flex;align-items:center;gap:5px;flex-wrap:wrap}.block{display:inline-grid;min-height:36px;place-items:center;padding:5px 9px;border:1px solid #fdad8b;border-radius:10px;color:#7b321a;background:var(--identity-soft);font-weight:800}.block.blue{border-color:#9bd0ec;color:#195a7c;background:var(--blue-soft)}.join{color:#8b7c73;font-weight:800}.tricky{color:var(--danger);text-decoration:underline;text-decoration-thickness:3px;text-decoration-color:#ffc0cb;text-underline-offset:3px}
+    .daily{display:flex;gap:10px;align-items:flex-start;margin:14px 0 0;padding:12px 14px;border:1px dashed #e5bb61;border-radius:16px;background:#fffaf0}.daily svg{width:24px;height:24px;flex:0 0 24px;fill:none;stroke:#9a6710;stroke-width:2}.daily strong{display:block;font-size:13px}.daily span{display:block;margin-top:3px;color:#756a58;font-size:12px;line-height:1.5}
+    .button-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}.button{min-height:var(--tap);display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:11px 18px;border:0;border-radius:var(--radius-control);color:#fff;background:var(--identity-dark);font-weight:800;box-shadow:0 4px 0 #753019;transition:transform var(--motion-fast) ease,box-shadow var(--motion-fast) ease}.button:active{transform:translateY(2px);box-shadow:none}.button.secondary{color:var(--ink);background:#fff;border:1px solid var(--line);box-shadow:0 3px 0 #ded2ca}.button.blue{background:var(--blue);box-shadow:0 4px 0 #16516f}.button.mint{background:var(--mint);box-shadow:0 4px 0 #0f4c3d}.button.danger{background:var(--danger);box-shadow:0 4px 0 #712a36}.button.wide{width:100%}.button svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+    .task-card{padding:18px;border:1px solid var(--line);border-radius:20px;background:linear-gradient(160deg,#fff,#fffaf6)}.task-kicker{color:var(--identity-dark);font-size:12px;font-weight:800}.cue{margin:8px 0 4px;font-size:clamp(25px,7vw,38px);font-weight:800;line-height:1.2}.subcue{color:var(--muted);font-size:13px;line-height:1.5}.assembly{min-height:64px;display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin:15px 0;padding:10px;border:2px dashed #e6d3c6;border-radius:15px;background:#fff}.assembly.empty:before{content:"按顺序点下面的词块";color:#9b8e86;font-size:13px}.choice-bank{display:flex;gap:8px;flex-wrap:wrap}.chunk-choice{min-height:var(--tap);padding:10px 14px;border:1px solid #9ccfea;border-radius:13px;color:#174f6e;background:var(--blue-soft);font-weight:800}.chunk-choice.used{opacity:.4}.counter{margin-left:auto;color:var(--muted);font-size:12px;font-weight:700}
+    .input-label{display:block;margin:15px 0 7px;font-size:13px;font-weight:800}.type-input{width:100%;min-height:54px;padding:11px 14px;border:2px solid #cfc0b6;border-radius:14px;color:var(--ink);background:#fff;font-size:22px;font-weight:700;letter-spacing:.02em}.type-input:focus{border-color:var(--identity)}.feedback{display:none;margin-top:12px;padding:11px 13px;border-radius:14px;font-size:14px;line-height:1.55}.feedback.show{display:block}.feedback.ok{color:#155a47;background:var(--mint-soft);border:1px solid #a9decd}.feedback.no{color:#842e3d;background:var(--danger-soft);border:1px solid #f1b5c0}.feedback.info{color:#194e6b;background:var(--blue-soft);border:1px solid #a8d3ea}
+    .audio-status{margin:0 0 14px;padding:10px 12px;border-radius:14px;color:#725b25;background:#fff7dc;border:1px solid #efd18a;font-size:12px;line-height:1.5}.listen-zone{display:grid;place-items:center;min-height:180px;margin-top:14px;border:1px solid #b8d9e9;border-radius:22px;background:radial-gradient(circle,#f9fdff,#eaf7ff)}.listen-button{width:110px;height:110px;border:0;border-radius:50%;color:#fff;background:var(--blue);box-shadow:0 8px 0 #18516f,0 16px 28px rgba(39,122,168,.22);font-weight:800}.listen-button svg{display:block;width:34px;height:34px;margin:0 auto 6px;fill:none;stroke:currentColor;stroke-width:2}.listen-button:active{transform:translateY(4px);box-shadow:0 4px 0 #18516f}.listen-caption{margin-top:12px;color:#4a7288;font-size:13px;text-align:center}
+    .route-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.route-card{min-height:154px;padding:15px;border:1px solid var(--line);border-radius:18px;background:#fff;text-align:left}.route-card strong{display:block;margin-top:8px;font-size:17px}.route-card span{display:block;margin-top:5px;color:var(--muted);font-size:12px;line-height:1.45}.route-card.done{border-color:#8fd1bc;background:var(--mint-soft)}.route-card.current{border:2px solid var(--identity);background:var(--identity-soft)}.route-mark{width:36px;height:36px;display:grid;place-items:center;border-radius:12px;color:#fff;background:var(--identity-dark);font-size:13px;font-weight:800}.dictation-shell[hidden],.route-picker[hidden]{display:none}.dictation-top{display:flex;align-items:center;gap:10px}.dictation-top b{font-size:14px}.dictation-top span{margin-left:auto;color:var(--muted);font-size:12px}.mini-progress{height:7px;margin-top:9px;border-radius:999px;background:#eee4dc;overflow:hidden}.mini-progress i{display:block;height:100%;background:var(--identity);transition:width var(--motion-main) ease}
+    .repair-model{margin:14px 0;padding:18px;border:1px solid #efb8c2;border-radius:20px;background:var(--danger-soft)}.repair-model .word{font-size:clamp(30px,9vw,48px);font-weight:800;letter-spacing:.03em}.letter-cells{display:flex;gap:4px;flex-wrap:wrap;margin-top:12px}.letter-cell{width:32px;height:38px;display:grid;place-items:center;border-bottom:3px solid #c76576;color:#7b2837;font-weight:800}.repair-step{display:inline-flex;min-height:30px;align-items:center;padding:5px 10px;border-radius:999px;color:#fff;background:var(--danger);font-size:12px;font-weight:800}
+    .transfer-card{padding:20px;border:1px solid #b6d7c9;border-radius:20px;background:linear-gradient(145deg,#fff,#edf9f4)}.sentence-frame{margin:14px 0;padding:14px;border-radius:16px;background:#fff;border:1px dashed #8cc8b3;color:#31584b;line-height:1.7}.sentence-result{display:none;margin-top:16px;padding:20px;border-radius:20px;color:#fff;background:linear-gradient(135deg,#1c7a61,#245b73)}.sentence-result.show{display:block}.sentence-result strong{display:block;font-size:22px}.sentence-result p{margin:8px 0 0;line-height:1.6}
+    .mastery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin:14px 0}.mastery-stat{padding:12px;border-radius:16px;background:#f7f3f0;text-align:center}.mastery-stat strong{display:block;font-size:23px}.mastery-stat span{display:block;margin-top:3px;color:var(--muted);font-size:11px}.wrong-list{display:grid;gap:8px;margin-top:12px}.wrong-row{display:flex;align-items:center;gap:10px;padding:10px 12px;border:1px solid var(--line);border-radius:14px}.wrong-row strong{font-size:14px}.wrong-row span{margin-left:auto;color:var(--muted);font-size:11px}.status-pill{padding:4px 8px;border-radius:999px;color:#8b3142;background:#ffe4e9;font-size:11px;font-weight:800}.status-pill.closed{color:#155b47;background:#daf3e9}
+    dialog{width:min(calc(100% - 28px),650px);max-height:84dvh;padding:0;border:0;border-radius:24px;box-shadow:0 24px 70px rgba(35,25,20,.28)}dialog::backdrop{background:rgba(31,39,43,.58)}.modal-head{position:sticky;top:0;display:flex;align-items:center;gap:10px;padding:16px 18px;border-bottom:1px solid var(--line);background:#fff;z-index:1}.modal-head h2{margin:0;font-size:20px}.modal-body{padding:18px;overflow:auto}.close-button{margin-left:auto;width:var(--tap);height:var(--tap);display:grid;place-items:center;border:1px solid var(--line);border-radius:14px;background:#fff}.close-button svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:2}
+    .records-button{position:fixed;z-index:20;left:max(14px,env(safe-area-inset-left));bottom:max(14px,env(safe-area-inset-bottom));min-height:var(--tap);padding:10px 15px;border:1px solid #dfd1c7;border-radius:999px;color:var(--ink);background:#fff;box-shadow:var(--soft-shadow);font-weight:800}.toast{position:fixed;z-index:100;left:50%;bottom:78px;transform:translate(-50%,18px);max-width:min(90vw,520px);padding:11px 16px;border-radius:999px;color:#fff;background:#243944;box-shadow:0 10px 30px rgba(0,0,0,.22);font-size:13px;font-weight:700;opacity:0;pointer-events:none;transition:opacity var(--motion-fast),transform var(--motion-fast)}.toast.show{opacity:1;transform:translate(-50%,0)}#dd-sync-complete{display:none!important}
+    @media(max-width:620px){.rule-grid,.route-grid{grid-template-columns:1fr}.hero{padding:20px}.panel{padding:17px}.phase-dots{gap:2px}.phase-dot{font-size:10px}.identity{display:none}.route-card{min-height:112px}.button-row .button{flex:1 1 140px}.mastery-grid{gap:6px}.mastery-stat{padding:10px 4px}.lesson-shell{padding-inline:10px}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}.progress-fill,.mini-progress i{transition:none}}
+  </style>
+</head>
+<body data-child="eddey">
+  <main class="lesson-shell">
+    <header class="topbar">
+      <a class="icon-button" href="summer_english_hub.html" aria-label="返回英语学习馆"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 18-6-6 6-6"/><path d="M9 12h10"/></svg></a>
+      <div class="brand"><span class="brand-mark"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6.5 12 3l8 3.5-8 3.5-8-3.5Z"/><path d="M6 9v5.5c2.5 2 9.5 2 12 0V9"/><path d="M20 7v6"/></svg></span><div><strong>第一周准备课</strong><span>星期 · 学科 · 数字</span></div></div>
+      <span class="identity">Eddey · 四年级</span>
+    </header>
+
+    <section class="hero">
+      <span class="eyebrow">四年级开学拼写预热</span>
+      <h1>英语拼写工厂</h1>
+      <p class="hero-lead">先看单词怎么组装，再亲手拼、盖住回忆、听三遍打字。独立听写错一次就进返修站，连续两次正确后，还要回到原题再默一次。</p>
+      <div class="goal"><strong>今天的通关证据：</strong>只听声音或看中文/数字，能准确打出 7 个星期、8 个学科和 18 个数字词；最后独立写出一条英语学习计划。</div>
+      <div class="hero-meta"><span class="meta-chip">材料：老师第一周准备课</span><span class="meta-chip">收到：2026-08-31</span><span class="meta-chip">进度自动保存在本机</span></div>
+    </section>
+
+    <section class="progress-card" aria-label="学习进度">
+      <div class="progress-top"><strong id="progressTitle">第 1 站 · 看懂拼法</strong><span id="progressText">0%</span></div>
+      <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+      <div class="phase-dots" aria-hidden="true"><span class="phase-dot active">看懂</span><span class="phase-dot">拼词</span><span class="phase-dot">回忆</span><span class="phase-dot">听写</span><span class="phase-dot">返修</span><span class="phase-dot">迁移</span></div>
+    </section>
+
+    <section class="view active" data-view="teach" data-phase="teach">
+      <div class="panel">
+        <div class="view-title"><span class="step-num">1</span><div><h2>先看：单词是积木</h2><p>这段短片不是奖励视频，它只做一件事：让共同部分和字母变化“动”起来。</p></div></div>
+        <div class="video-wrap">
+          <video id="memoryVideo" controls playsinline preload="metadata" aria-label="单词积木构词动画">
+            <source src="media/eddey_week1_spelling_20260831/word-blocks.mp4" type="video/mp4">
+            <track kind="captions" src="media/eddey_week1_spelling_20260831/word-blocks.vtt" srclang="en" label="English" default>
+          </video>
+          <div class="video-fallback" id="videoFallback"><strong>Mon + day = Monday</strong><span>视频暂时没有加载，下面三张规律卡仍可完整学习。</span></div>
+          <div class="video-note">建议先看 1 遍；需要时可以暂停、拖回去或重播。视频没有自动播放，不会抢走注意力。</div>
+        </div>
+        <div class="rule-grid">
+          <article class="rule-card"><b>星期：名字 + day</b><div class="blocks"><span class="block">Wednes</span><span class="join">+</span><span class="block blue">day</span></div><p>七个星期都有 <strong>day</strong>。先稳住前半，再接同一个尾巴。</p></article>
+          <article class="rule-card"><b>21—29：twenty + 个位</b><div class="blocks"><span class="block">twenty</span><span class="join">-</span><span class="block blue">one</span></div><p>中间的短横线是标准写法；漏了会提醒，但字母知识单独判断。</p></article>
+          <article class="rule-card"><b>整十：盯住会变的地方</b><div class="blocks"><span class="block"><span class="tricky">for</span>ty</span><span class="block"><span class="tricky">fif</span>ty</span><span class="block"><span class="tricky">eigh</span>ty</span></div><p>不是 fourty、fivety、eightty。看清变化，再遮住回忆。</p></article>
+        </div>
+        <div class="daily" data-micro-surprise="daily"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v3M12 18v3M3 12h3M18 12h3"/><circle cx="12" cy="12" r="4"/></svg><div><strong>今日小提醒</strong><span id="dailyText"></span></div></div>
+        <div class="button-row"><button class="button wide" type="button" id="startGuided">我看懂了，开始拼词</button></div>
+      </div>
+    </section>
+
+    <section class="view" data-view="guided" data-phase="guided">
+      <div class="panel">
+        <div class="view-title"><span class="step-num">2</span><div><h2>跟着拼：把积木排好</h2><p>按正确顺序点词块。这里可以试错，不进错词本。</p></div><span class="counter" id="guidedCounter"></span></div>
+        <div class="task-card">
+          <div class="task-kicker">拼装任务</div><div class="cue" id="guidedCue"></div><div class="subcue" id="guidedSubcue"></div>
+          <div class="assembly empty" id="assembly" aria-live="polite"></div><div class="choice-bank" id="choiceBank"></div>
+          <div class="feedback" id="guidedFeedback" aria-live="polite"></div>
+          <div class="button-row"><button class="button secondary" type="button" id="clearAssembly">重新排</button><button class="button" type="button" id="checkAssembly">检查拼法</button></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="view" data-view="recall" data-phase="recall">
+      <div class="panel">
+        <div class="view-title"><span class="step-num">3</span><div><h2>盖住回忆：第一次独立打字</h2><p>现在看不到答案。先在脑中分块，再把完整单词打出来。</p></div><span class="counter" id="recallCounter"></span></div>
+        <div class="task-card">
+          <div class="task-kicker">回忆卡</div><div class="cue" id="recallCue"></div><div class="subcue">大小写或短横线不影响“字母会不会”，但软件会告诉你标准写法。</div>
+          <label class="input-label" for="recallInput">完整英文</label><input class="type-input" id="recallInput" type="text" autocomplete="off" autocapitalize="none" spellcheck="false" inputmode="text">
+          <div class="feedback" id="recallFeedback" aria-live="polite"></div>
+          <div class="button-row"><button class="button secondary" type="button" id="recallHint">给我一条分块提示</button><button class="button" type="button" id="checkRecall">检查</button></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="view" data-view="independent" data-phase="independent">
+      <div class="panel">
+        <div class="view-title"><span class="step-num">4</span><div><h2>正式听写：听三遍再打字</h2><p>三个短回合可以分几天完成，进度不会丢。只有这里的独立答案进入掌握记录。</p></div></div>
+        <div class="audio-status"><strong>系统英语语音：</strong><span id="voiceStatus">默写时由浏览器清楚读三遍，不再使用失真的旧固定音频。</span><div class="button-row"><button class="button secondary" type="button" id="voiceTest">先试听 Science</button></div></div>
+        <div class="route-picker" id="routePicker">
+          <div class="route-grid" id="routeGrid"></div>
+          <div class="feedback info show" id="routeTip">建议顺序：先星期，再学科，最后数字。每个词必须在独立听写中答对；答错会立刻去返修，再回到同一道题。</div>
+        </div>
+        <div class="dictation-shell" id="dictationShell" hidden>
+          <div class="dictation-top"><b id="routeTitle"></b><span id="dictationCounter"></span></div><div class="mini-progress"><i id="dictationProgress"></i></div>
+          <div class="listen-zone"><div><button class="listen-button" type="button" id="listenButton"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4V5Z"/><path d="M15 9c1.5 1.5 1.5 4.5 0 6M18 6c4 3.5 4 8.5 0 12"/></svg>听三遍</button><div class="listen-caption" id="listenCaption">先听，再在脑中分块</div></div></div>
+          <label class="input-label" for="dictationInput">我听到的英文</label><input class="type-input" id="dictationInput" type="text" autocomplete="off" autocapitalize="none" spellcheck="false" inputmode="text">
+          <div class="feedback" id="dictationFeedback" aria-live="assertive"></div>
+          <div class="button-row"><button class="button secondary" type="button" id="backRoutes">先保存，换一组</button><button class="button" type="button" id="checkDictation">提交独立答案</button></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="view" data-view="repair" data-phase="repair">
+      <div class="panel">
+        <div class="view-title"><span class="step-num">5</span><div><h2>错词返修：看清、遮住、听写</h2><p>错一次就留下来。连续两次正确后，必须回刚才原题再默一次。</p></div></div>
+        <span class="repair-step" id="repairStep"></span>
+        <div class="repair-model" id="repairModel"></div>
+        <div id="repairPractice" hidden>
+          <div class="cue" id="repairCue"></div><div class="subcue" id="repairInstruction"></div>
+          <button class="button blue" type="button" id="repairListen" hidden>播放单词</button>
+          <label class="input-label" for="repairInput">重新打出完整英文</label><input class="type-input" id="repairInput" type="text" autocomplete="off" autocapitalize="none" spellcheck="false" inputmode="text">
+        </div>
+        <div class="feedback info show" id="repairFeedback" aria-live="assertive"></div>
+        <div class="button-row"><button class="button danger" type="button" id="repairAction">遮住答案，开始第 1 次</button><button class="button mint" type="button" id="returnOriginal" data-return-to-question="true" hidden>回到刚才原题</button></div>
+      </div>
+    </section>
+
+    <section class="view" data-view="transfer" data-phase="transfer">
+      <div class="panel">
+        <div class="view-title"><span class="step-num">6</span><div><h2>最后迁移：写进学习计划</h2><p>单词会默以后，再把它放回教材句子。只做一条完整句，检验能不能真正用出来。</p></div></div>
+        <div class="transfer-card">
+          <div class="task-kicker">中文任务</div><div class="cue" id="transferCue"></div><div class="sentence-frame" id="transferFrame"></div>
+          <label class="input-label" for="transferInput">完整英文句子</label><input class="type-input" id="transferInput" type="text" autocomplete="off" autocapitalize="sentences" spellcheck="false">
+          <div class="feedback" id="transferFeedback" aria-live="polite"></div>
+          <div class="button-row"><button class="button" type="button" id="checkTransfer">检查完整句</button></div>
+          <div class="sentence-result" id="sentenceResult" data-surprise="completion"><strong>三类单词已经走完完整闭环</strong><p id="resultCopy"></p><div class="button-row"><button class="button" type="button" id="finishLesson">完成并保存学习证据</button></div><div class="feedback" id="finishFeedback" aria-live="polite"></div></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <button class="records-button" type="button" id="openRecords">学习记录</button>
+  <dialog id="recordsDialog"><div class="modal-head"><h2>本机学习记录</h2><button class="close-button" type="button" id="closeRecords" aria-label="关闭"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button></div><div class="modal-body"><div class="mastery-grid" id="masteryGrid"></div><div id="wrongbookView"></div><div class="button-row"><button class="button secondary" type="button" id="exportProgress">导出进度</button><button class="button secondary" type="button" id="importProgress">导入进度</button><input id="importFile" type="file" accept="application/json" hidden></div><p class="subcue">正式记录只属于 Eddey。家长测试网址会自动使用隔离空间，不写入正式学习档案。</p></div></dialog>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="../assets/learning-sync.js"></script>
+  <script>
+  const APP_ID='eddey-week1-spelling-factory-20260831';
+  const VERSION='1.0.1';
+  const CHILD='eddey';
+  const COURSE_DATE='2026-08-31';
+  const LESSON_BLUEPRINT={appId:APP_ID,child:CHILD,source:'老师第一周准备课图片（2026-08-31收到）',courseDate:COURSE_DATE,currentGap:'能辨认大致词形，但需要把星期、学科和数字词转成精确独立回忆',observableOutcome:'听音或看中文与数字，独立打出33个核心词；错词两连对返修后回原题；完成一条计划句',knowledgeMechanism:'共同词尾、词根变形与词块组装',primaryInteraction:'看构词动画→点词块→遮挡打字→浏览器系统英语语音听写→返修回原题',audio:'required: browser system English voice selected deterministically; rejected bf_emma assets are not referenced',surprise:'完成后生成个人掌握证据句',surpriseTrigger:'三组独立听写完成且迁移句通过',phases:['teach','guided','recall','independent','repair','transfer']};
+  const DAILY_SURPRISES=['先找不变的部分，长单词就会变短。','慢一点把字母排对，比快一点猜对更厉害。','听完先在脑中分块，再让手指开始打字。','错词不是失败，它只是告诉我们下一次教哪里。','今天只要比昨天多稳住一个词，就是进步。'];
+  const GROUPS={days:{title:'星期 7 个',short:'星期',count:7,description:'共同尾巴 day'},subjects:{title:'学科 8 个',short:'学科',count:8,description:'按音节分块'},numbers:{title:'数字 18 个',short:'数字',count:18,description:'twenty 列车与整十变形'}};
+  const WORDS=[
+    {id:'d_monday',group:'days',cue:'星期一',answer:'Monday',audio:'d_monday.mp3',parts:['Mon','day'],hint:'Mon + day'},
+    {id:'d_tuesday',group:'days',cue:'星期二',answer:'Tuesday',audio:'d_tuesday.mp3',parts:['Tues','day'],hint:'Tues + day'},
+    {id:'d_wednesday',group:'days',cue:'星期三',answer:'Wednesday',audio:'d_wednesday.mp3',parts:['Wednes','day'],hint:'Wednes + day'},
+    {id:'d_thursday',group:'days',cue:'星期四',answer:'Thursday',audio:'d_thursday.mp3',parts:['Thurs','day'],hint:'Thurs + day'},
+    {id:'d_friday',group:'days',cue:'星期五',answer:'Friday',audio:'d_friday.mp3',parts:['Fri','day'],hint:'Fri + day'},
+    {id:'d_saturday',group:'days',cue:'星期六',answer:'Saturday',audio:'d_saturday.mp3',parts:['Satur','day'],hint:'Satur + day'},
+    {id:'d_sunday',group:'days',cue:'星期日',answer:'Sunday',audio:'d_sunday.mp3',parts:['Sun','day'],hint:'Sun + day'},
+    {id:'s_english',group:'subjects',cue:'英语',answer:'English',audio:'s_english.mp3',parts:['Eng','lish'],hint:'Eng + lish'},
+    {id:'s_pe',group:'subjects',cue:'体育',answer:'PE',audio:'s_pe.mp3',parts:['P','E'],hint:'两个大写字母：P E'},
+    {id:'s_maths',group:'subjects',cue:'数学',answer:'Maths',audio:'s_maths.mp3',parts:['Math','s'],hint:'Math + s'},
+    {id:'s_chinese',group:'subjects',cue:'语文',answer:'Chinese',audio:'s_chinese.mp3',parts:['Chi','nese'],hint:'Chi + nese'},
+    {id:'s_music',group:'subjects',cue:'音乐',answer:'Music',audio:'s_music.mp3',parts:['Mu','sic'],hint:'Mu + sic'},
+    {id:'s_art',group:'subjects',cue:'美术',answer:'Art',audio:'s_art.mp3',parts:['Art'],hint:'A-r-t'},
+    {id:'s_it',group:'subjects',cue:'信息技术',answer:'IT',audio:'s_it.mp3',parts:['I','T'],hint:'两个大写字母：I T'},
+    {id:'s_science',group:'subjects',cue:'科学',answer:'Science',audio:'s_science.mp3',parts:['Sci','ence'],hint:'Sci + ence'},
+    {id:'n_twenty',group:'numbers',cue:'20',answer:'twenty',audio:'n_twenty.mp3',parts:['twen','ty'],hint:'twen + ty'},
+    {id:'n_twenty_one',group:'numbers',cue:'21',answer:'twenty-one',audio:'n_twenty_one.mp3',parts:['twenty','-','one'],hint:'twenty + - + one'},
+    {id:'n_twenty_two',group:'numbers',cue:'22',answer:'twenty-two',audio:'n_twenty_two.mp3',parts:['twenty','-','two'],hint:'twenty + - + two'},
+    {id:'n_twenty_three',group:'numbers',cue:'23',answer:'twenty-three',audio:'n_twenty_three.mp3',parts:['twenty','-','three'],hint:'twenty + - + three'},
+    {id:'n_twenty_four',group:'numbers',cue:'24',answer:'twenty-four',audio:'n_twenty_four.mp3',parts:['twenty','-','four'],hint:'twenty + - + four'},
+    {id:'n_twenty_five',group:'numbers',cue:'25',answer:'twenty-five',audio:'n_twenty_five.mp3',parts:['twenty','-','five'],hint:'twenty + - + five'},
+    {id:'n_twenty_six',group:'numbers',cue:'26',answer:'twenty-six',audio:'n_twenty_six.mp3',parts:['twenty','-','six'],hint:'twenty + - + six'},
+    {id:'n_twenty_seven',group:'numbers',cue:'27',answer:'twenty-seven',audio:'n_twenty_seven.mp3',parts:['twenty','-','seven'],hint:'twenty + - + seven'},
+    {id:'n_twenty_eight',group:'numbers',cue:'28',answer:'twenty-eight',audio:'n_twenty_eight.mp3',parts:['twenty','-','eight'],hint:'twenty + - + eight'},
+    {id:'n_twenty_nine',group:'numbers',cue:'29',answer:'twenty-nine',audio:'n_twenty_nine.mp3',parts:['twenty','-','nine'],hint:'twenty + - + nine'},
+    {id:'n_thirty',group:'numbers',cue:'30',answer:'thirty',audio:'n_thirty.mp3',parts:['thir','ty'],hint:'three 变成 thir，再加 ty'},
+    {id:'n_forty',group:'numbers',cue:'40',answer:'forty',audio:'n_forty.mp3',parts:['for','ty'],hint:'four 去掉 u：for + ty'},
+    {id:'n_fifty',group:'numbers',cue:'50',answer:'fifty',audio:'n_fifty.mp3',parts:['fif','ty'],hint:'five 变 fif：fif + ty'},
+    {id:'n_sixty',group:'numbers',cue:'60',answer:'sixty',audio:'n_sixty.mp3',parts:['six','ty'],hint:'six + ty'},
+    {id:'n_seventy',group:'numbers',cue:'70',answer:'seventy',audio:'n_seventy.mp3',parts:['seven','ty'],hint:'seven + ty'},
+    {id:'n_eighty',group:'numbers',cue:'80',answer:'eighty',audio:'n_eighty.mp3',parts:['eigh','ty'],hint:'eight 少一个 t：eigh + ty'},
+    {id:'n_ninety',group:'numbers',cue:'90',answer:'ninety',audio:'n_ninety.mp3',parts:['nine','ty'],hint:'nine 去掉 e 再接 ty'},
+    {id:'n_one_hundred',group:'numbers',cue:'100',answer:'one hundred',audio:'n_one_hundred.mp3',parts:['one','hundred'],hint:'one + hundred'}
+  ];
+  const GUIDED=[
+    {cue:'星期一',answer:'Monday',parts:['Mon','day'],bank:['day','Tues','Mon','Fri']},
+    {cue:'星期三',answer:'Wednesday',parts:['Wednes','day'],bank:['Wednes','Thurs','day','Sun']},
+    {cue:'21',answer:'twenty-one',parts:['twenty','-','one'],bank:['one','twenty','-','ty']},
+    {cue:'40（注意不是 fourty）',answer:'forty',parts:['for','ty'],bank:['four','for','ty','teen']},
+    {cue:'英语',answer:'English',parts:['Eng','lish'],bank:['lish','Eng','Chi','nese']},
+    {cue:'语文',answer:'Chinese',parts:['Chi','nese'],bank:['nese','Eng','Chi','ence']}
+  ];
+  const RECALL_IDS=['d_wednesday','d_thursday','s_maths','s_chinese','n_forty','n_eighty'];
+  const TRANSFERS=[
+    {cue:'星期一，我在图书馆读英语书。',frame:'On ______, I read English books in the library.',answer:'On Monday, I read English books in the library.'},
+    {cue:'星期二，我和朋友们玩单词游戏。',frame:'On ______, I play word games with my friends.',answer:'On Tuesday, I play word games with my friends.'},
+    {cue:'星期三，我听英语歌曲。',frame:'On ______, I listen to English songs.',answer:'On Wednesday, I listen to English songs.'},
+    {cue:'星期四，我去学校英语俱乐部。',frame:'On ______, I go to the school English club.',answer:'On Thursday, I go to the school English club.'},
+    {cue:'星期五，我看英语动画片。',frame:'On ______, I watch English cartoons.',answer:'On Friday, I watch English cartoons.'},
+    {cue:'星期六和星期日，我在网上和外教说英语。',frame:'On ______ and ______, I speak English with my foreign teacher online.',answer:'On Saturday and Sunday, I speak English with my foreign teacher online.'}
+  ];
+  const BASE_STORAGE='study:eddey:week1-word-dictation:2026-08-31:v1';
+  const TEST_MODE=new URLSearchParams(location.search).has('test')||/^(localhost|127\.0\.0\.1)$/.test(location.hostname)||location.hostname.endsWith('.vercel.app')&&location.hostname!=='study-portal-eta.vercel.app';
+  const STORAGE_KEY=TEST_MODE?BASE_STORAGE+':test':BASE_STORAGE;
+  const $=id=>document.getElementById(id);
+  const wordById=id=>WORDS.find(item=>item.id===id);
+  const emptyState=()=>({schemaVersion:1,child:CHILD,appId:APP_ID,version:VERSION,stage:'teach',guidedIndex:0,recallIndex:0,completedRoutes:{},route:null,routeIndex:0,wrongbook:{},repair:null,transfer:{index:null,passed:false,draft:''},events:[],completed:false,startedAt:new Date().toISOString(),updatedAt:new Date().toISOString()});
+  function load(){try{const parsed=JSON.parse(localStorage.getItem(STORAGE_KEY));if(parsed&&parsed.schemaVersion===1&&parsed.child===CHILD&&parsed.appId===APP_ID)return Object.assign(emptyState(),parsed)}catch(error){}return emptyState()}
+  let state=load(),assembled=[],speechToken=0,systemVoices=[],toastTimer=0;
+  function save(){state.updatedAt=new Date().toISOString();localStorage.setItem(STORAGE_KEY,JSON.stringify(state))}
+  function normalizeKnowledge(value){return String(value||'').normalize('NFKC').toLowerCase().replace(/[^a-z]/g,'')}
+  function normalizeSentence(value){return String(value||'').normalize('NFKC').toLowerCase().replace(/[，]/g,',').replace(/[。]/g,'.').replace(/\s+/g,' ').replace(/\s+([,.!?])/g,'$1').trim().replace(/[.!?]+$/,'')}
+  function judgeWord(value,answer){const ok=normalizeKnowledge(value)===normalizeKnowledge(answer);return{ok,formatExact:ok&&String(value).trim()===answer}}
+  function mismatchGuide(value,answer){const got=normalizeKnowledge(value),want=normalizeKnowledge(answer);let i=0;while(i<got.length&&i<want.length&&got[i]===want[i])i++;if(i>=want.length&&got.length>want.length)return '前面都对，多出了字母。标准答案是 '+answer+'。';if(i>=got.length)return '前面都对，还少了第 '+(i+1)+' 个字母“'+(want[i]||'')+'”。标准答案是 '+answer+'。';return '第 '+(i+1)+' 个字母开始不一样：这里应该是“'+want[i]+'”。标准答案是 '+answer+'。'}
+  function dailySurpriseKey(appId,child){const parts=new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Shanghai',year:'numeric',month:'2-digit',day:'2-digit'}).formatToParts(new Date());const date=['year','month','day'].map(type=>parts.find(p=>p.type===type).value).join('-');let hash=0;for(const c of appId+'|'+child+'|'+date)hash=(hash*31+c.charCodeAt(0))>>>0;return hash}
+  function toast(message){clearTimeout(toastTimer);$('toast').textContent=message;$('toast').classList.add('show');toastTimer=setTimeout(()=>$('toast').classList.remove('show'),2200)}
+  function phaseIndex(stage){return Math.max(0,['teach','guided','recall','independent','repair','transfer'].indexOf(stage))}
+  function showStage(stage){state.stage=stage;save();document.querySelectorAll('.view').forEach(v=>v.classList.toggle('active',v.dataset.view===stage));document.querySelectorAll('.phase-dot').forEach((v,i)=>v.classList.toggle('active',i===phaseIndex(stage)));const titles=['第 1 站 · 看懂拼法','第 2 站 · 亲手拼词','第 3 站 · 盖住回忆','第 4 站 · 独立听写','第 5 站 · 错词返修','第 6 站 · 句子迁移'];$('progressTitle').textContent=titles[phaseIndex(stage)];renderProgress();window.scrollTo({top:0,behavior:'smooth'});if(stage==='guided')renderGuided();if(stage==='recall')renderRecall();if(stage==='independent')renderIndependent();if(stage==='repair')renderRepair();if(stage==='transfer')renderTransfer()}
+  function renderProgress(){const routes=Object.keys(state.completedRoutes).filter(k=>state.completedRoutes[k]).length;let value=[5,18,30,35+routes*15,65,90][phaseIndex(state.stage)];if(state.completed)value=100;$('progressFill').style.width=Math.min(100,value)+'%';$('progressText').textContent=Math.min(100,value)+'%'}
+  function setFeedback(el,type,text){el.className='feedback show '+type;el.textContent=text}
+  function renderGuided(){const task=GUIDED[state.guidedIndex];if(!task){showStage('recall');return}assembled=[];$('guidedCounter').textContent=(state.guidedIndex+1)+' / '+GUIDED.length;$('guidedCue').textContent=task.cue;$('guidedSubcue').textContent='目标是 '+task.parts.length+' 块；每块只能用一次。';$('guidedFeedback').className='feedback';renderAssembly();$('choiceBank').innerHTML='';task.bank.forEach((chunk,index)=>{const b=document.createElement('button');b.className='chunk-choice';b.type='button';b.textContent=chunk;b.dataset.index=index;b.onclick=()=>{if(b.classList.contains('used'))return;assembled.push({chunk,index});b.classList.add('used');renderAssembly()};$('choiceBank').appendChild(b)})}
+  function renderAssembly(){const box=$('assembly');box.classList.toggle('empty',!assembled.length);box.innerHTML=assembled.map(item=>'<span class="block">'+item.chunk.replace(/</g,'&lt;')+'</span>').join('<span class="join">+</span>')}
+  function clearAssembly(){assembled=[];document.querySelectorAll('.chunk-choice').forEach(b=>b.classList.remove('used'));renderAssembly()}
+  function checkAssembly(){const task=GUIDED[state.guidedIndex],built=assembled.map(x=>x.chunk).join('');if(built===task.parts.join('')){setFeedback($('guidedFeedback'),'ok','拼对了：'+task.answer+'。共同部分已经接稳。');state.guidedIndex++;save();setTimeout(()=>renderGuided(),650)}else{setFeedback($('guidedFeedback'),'no','这次积木顺序不对。先找不变的部分，再重新排。');clearAssembly()}}
+  function renderRecall(){const item=wordById(RECALL_IDS[state.recallIndex]);if(!item){showStage('independent');return}$('recallCounter').textContent=(state.recallIndex+1)+' / '+RECALL_IDS.length;$('recallCue').textContent=item.cue;$('recallInput').value='';$('recallFeedback').className='feedback';setTimeout(()=>$('recallInput').focus(),80)}
+  function checkRecall(){const item=wordById(RECALL_IDS[state.recallIndex]),value=$('recallInput').value;if(!value.trim()){toast('先打出一个完整单词');return}const result=judgeWord(value,item.answer);if(result.ok){setFeedback($('recallFeedback'),'ok',result.formatExact?'字母和标准格式都正确。':'字母全对。标准写法是 '+item.answer+'。');state.recallIndex++;save();setTimeout(()=>renderRecall(),650)}else setFeedback($('recallFeedback'),'no',mismatchGuide(value,item.answer)+' 看一眼提示，再关掉答案重打。')}
+  function routeWords(group){return WORDS.filter(item=>item.group===group)}
+  function renderIndependent(){const allDone=['days','subjects','numbers'].every(k=>state.completedRoutes[k]);if(allDone&&!state.route){showStage('transfer');return}if(state.route){$('routePicker').hidden=true;$('dictationShell').hidden=false;renderDictation();return}$('routePicker').hidden=false;$('dictationShell').hidden=true;$('routeGrid').innerHTML='';['days','subjects','numbers'].forEach((group,index)=>{const done=!!state.completedRoutes[group],card=document.createElement('button');card.type='button';card.className='route-card'+(done?' done':'');card.innerHTML='<span class="route-mark">'+(done?'完成':index+1)+'</span><strong>'+GROUPS[group].title+'</strong><span>'+GROUPS[group].description+' · '+(done?'已全部独立答对':'点这里开始')+'</span>';card.onclick=()=>{state.route=group;state.routeIndex=done?0:(state.routeIndex||0);save();renderIndependent();playCurrentWord()};$('routeGrid').appendChild(card)})}
+  function renderDictation(){const list=routeWords(state.route);if(state.routeIndex>=list.length){state.completedRoutes[state.route]=true;state.route=null;state.routeIndex=0;save();toast('这一组全部独立答对');renderIndependent();return}const item=list[state.routeIndex];$('routeTitle').textContent=GROUPS[state.route].title;$('dictationCounter').textContent=(state.routeIndex+1)+' / '+list.length;$('dictationProgress').style.width=(state.routeIndex/list.length*100)+'%';$('dictationInput').value='';$('dictationFeedback').className='feedback';$('listenCaption').textContent='只给声音，不显示中文或英文';setTimeout(()=>$('dictationInput').focus(),80)}
+  const VOICE_PREFERENCES=[/Google UK English Female/i,/Microsoft Sonia/i,/Microsoft Libby/i,/^Samantha$/i,/^Daniel$/i,/Google US English/i,/Microsoft Aria/i,/Microsoft Jenny/i];
+  function hasSystemSpeech(){return 'speechSynthesis' in window&&'SpeechSynthesisUtterance' in window}
+  function voiceScore(voice){const name=String(voice&&voice.name||''),lang=String(voice&&voice.lang||'');let score=/^en[-_]GB/i.test(lang)?70:/^en[-_]US/i.test(lang)?55:/^en/i.test(lang)?30:-1000;const preferred=VOICE_PREFERENCES.findIndex(pattern=>pattern.test(name));if(preferred>=0)score+=400-preferred*20;if(/Natural|Premium|Enhanced/i.test(name))score+=80;if(voice&&voice.localService)score+=25;return score}
+  function selectEnglishVoice(list=systemVoices){return (list||[]).filter(voice=>/^en(?:[-_]|$)/i.test(String(voice.lang||''))).map((voice,index)=>({voice,index,score:voiceScore(voice)})).sort((a,b)=>b.score-a.score||a.index-b.index)[0]?.voice||null}
+  function refreshSystemVoices(){if(!hasSystemSpeech())return[];systemVoices=window.speechSynthesis.getVoices()||[];const voice=selectEnglishVoice();const status=$('voiceStatus');if(status)status.textContent=voice?'将使用 '+voice.name+'（'+voice.lang+'）清楚读三遍。':'将使用浏览器默认英语语音清楚读三遍。';return systemVoices}
+  function spokenText(item){if(!item)return'';if(item.id==='s_pe')return'P, E';if(item.id==='s_it')return'I, T';return item.answer}
+  function speechPlan(item,times=3){return Array.from({length:Math.max(1,times)},()=>spokenText(item))}
+  function createEnglishUtterance(text,item,voice){const utterance=new SpeechSynthesisUtterance(text);if(voice)utterance.voice=voice;utterance.lang=voice&&voice.lang||'en-GB';utterance.rate=item&&/^(s_pe|s_it)$/.test(item.id)?.72:.78;utterance.pitch=1;utterance.volume=1;return utterance}
+  function speakUtterance(text,item,voice,token){return new Promise((resolve,reject)=>{if(token!==speechToken)return reject(new Error('cancelled'));const utterance=createEnglishUtterance(text,item,voice);let settled=false;const finish=(error)=>{if(settled)return;settled=true;clearTimeout(timeout);error?reject(error):resolve()};const timeout=setTimeout(()=>finish(new Error('speech-timeout')),12000);utterance.onend=()=>finish();utterance.onerror=()=>finish(new Error('speech-error'));window.speechSynthesis.speak(utterance)})}
+  async function playWord(item,times=3,button=$('listenButton')){if(!item)return;const isVoiceTest=button===$('voiceTest');if(!hasSystemSpeech()){if(isVoiceTest)$('voiceStatus').textContent='这个浏览器没有英语朗读，请改用 Chrome、Edge 或 Safari。';else setFeedback(state.stage==='repair'?$('repairFeedback'):$('dictationFeedback'),'no','这个浏览器没有英语朗读，请改用 Chrome、Edge 或 Safari。');return}const token=++speechToken;window.speechSynthesis.cancel();window.speechSynthesis.resume();refreshSystemVoices();const voice=selectEnglishVoice();button.disabled=true;let played=0;try{for(const text of speechPlan(item,times)){await speakUtterance(text,item,voice,token);played++;if(played<times)await new Promise(resolve=>setTimeout(resolve,420))}if(isVoiceTest)$('voiceStatus').textContent=(voice?voice.name+'（'+voice.lang+'）':'浏览器默认英语语音')+' 已完成 Science 试听。';else if(state.stage==='repair')$('repairFeedback').textContent='已经播放，可以独立打字。';else $('listenCaption').textContent='已经播放 '+played+' 遍，可以再点重播'}catch(error){if(error.message!=='cancelled'){if(isVoiceTest)$('voiceStatus').textContent='这次没有成功读音，请再点一次；仍失败请改用 Chrome、Edge 或 Safari。';else setFeedback(state.stage==='repair'?$('repairFeedback'):$('dictationFeedback'),'no','这次没有成功读音，请再点一次；仍失败请改用 Chrome、Edge 或 Safari。')}}finally{button.disabled=false}}
+  function playCurrentWord(){if(!state.route)return;const item=routeWords(state.route)[state.routeIndex];playWord(item,3)}
+  function recordEvent(phase,item,value,ok,note){state.events.push({ts:new Date().toISOString(),phase,item:item.id||item,value:String(value).slice(0,180),ok:!!ok,note:note||''});state.events=state.events.slice(-240)}
+  function openWrong(item){const row=state.wrongbook[item.id]||{answer:item.answer,cue:item.cue,wrongCount:0,streak:0,status:'open'};row.wrongCount++;row.streak=0;row.status='open';row.lastWrongAt=new Date().toISOString();state.wrongbook[item.id]=row;state.repair={itemId:item.id,step:'teach',returnRoute:state.route,returnIndex:state.routeIndex};save()}
+  function checkDictation(){if(!state.route)return;const item=routeWords(state.route)[state.routeIndex],value=$('dictationInput').value;if(!value.trim()){toast('听完后，把单词打出来');return}const result=judgeWord(value,item.answer);recordEvent('independent',item,value,result.ok,result.formatExact?'exact':'format-reminder');if(result.ok){setFeedback($('dictationFeedback'),'ok',result.formatExact?'独立默对了。':'字母完全正确；标准写法是 '+item.answer+'。');state.routeIndex++;save();setTimeout(()=>renderDictation(),650)}else{openWrong(item);setFeedback($('dictationFeedback'),'no','这次不算过关，马上去修这个词。');setTimeout(()=>showStage('repair'),500)}}
+  function renderRepair(){const repair=state.repair;if(!repair){showStage('independent');return}const item=wordById(repair.itemId),row=state.wrongbook[item.id];$('returnOriginal').hidden=true;$('repairInput').value='';$('repairPractice').hidden=repair.step==='teach';$('repairListen').hidden=repair.step!=='audio';if(repair.step==='teach'){$('repairStep').textContent='先看清差在哪里';$('repairModel').hidden=false;$('repairModel').innerHTML='<div class="word">'+item.answer+'</div><div class="blocks">'+item.parts.map(p=>'<span class="block">'+p+'</span>').join('<span class="join">+</span>')+'</div><div class="letter-cells">'+normalizeKnowledge(item.answer).split('').map(c=>'<span class="letter-cell">'+c+'</span>').join('')+'</div>';$('repairFeedback').textContent=item.hint+'。用眼睛沿着每个字母走一遍，再遮住。';$('repairAction').hidden=false;$('repairAction').textContent='遮住答案，开始第 1 次'}else if(repair.step==='memory'){$('repairStep').textContent='连续正确 '+row.streak+' / 2';$('repairModel').hidden=true;$('repairCue').textContent=item.cue;$('repairInstruction').textContent='第 1 次：只看提示回忆，不播放声音。';$('repairFeedback').textContent='答案已经盖住。先在脑中分块，再打字。';$('repairAction').hidden=false;$('repairAction').textContent='检查第 1 次';setTimeout(()=>$('repairInput').focus(),80)}else if(repair.step==='audio'){$('repairStep').textContent='连续正确 '+row.streak+' / 2';$('repairModel').hidden=true;$('repairCue').textContent='只听声音';$('repairInstruction').textContent='第 2 次：不看中文，听一遍后默写。';$('repairFeedback').textContent='点播放，再独立打字。';$('repairAction').hidden=false;$('repairAction').textContent='检查第 2 次';setTimeout(()=>$('repairInput').focus(),80)}else{$('repairStep').textContent='连续正确 2 / 2';$('repairModel').hidden=false;$('repairModel').innerHTML='<div class="word">'+item.answer+'</div><div class="blocks">'+item.parts.map(p=>'<span class="block">'+p+'</span>').join('<span class="join">+</span>')+'</div>';$('repairPractice').hidden=true;$('repairFeedback').textContent='两次不同线索都默对了。现在回到刚才那一道原题，答案仍然不会显示。';$('repairAction').hidden=true;$('returnOriginal').hidden=false}}
+  function checkRepair(){const repair=state.repair,item=wordById(repair.itemId),row=state.wrongbook[item.id];if(repair.step==='teach'){repair.step='memory';save();renderRepair();return}const value=$('repairInput').value;if(!value.trim()){toast('先把完整单词打出来');return}const result=judgeWord(value,item.answer);recordEvent('repair',item,value,result.ok,repair.step);if(!result.ok){row.streak=0;repair.step='teach';save();setFeedback($('repairFeedback'),'no',mismatchGuide(value,item.answer)+' 回到可见答案，再走一遍。');setTimeout(()=>renderRepair(),900);return}row.streak++;if(repair.step==='memory'){repair.step='audio';save();renderRepair();setTimeout(()=>$('repairListen').click(),120)}else{row.status=row.streak>=2?'resolved':'open';row.resolvedAt=new Date().toISOString();repair.step='ready';save();renderRepair()}}
+  function returnOriginal(){const repair=state.repair;state.route=repair.returnRoute;state.routeIndex=repair.returnIndex;state.repair=null;save();showStage('independent');setTimeout(()=>playCurrentWord(),220)}
+  function transferIndex(){if(Number.isInteger(state.transfer.index))return state.transfer.index;state.transfer.index=dailySurpriseKey(APP_ID,'transfer')%TRANSFERS.length;save();return state.transfer.index}
+  function renderTransfer(){const task=TRANSFERS[transferIndex()];$('transferCue').textContent=task.cue;$('transferFrame').textContent=task.frame;$('transferInput').value=state.transfer.draft||'';$('transferInput').disabled=state.transfer.passed;$('checkTransfer').disabled=state.transfer.passed;$('sentenceResult').classList.toggle('show',state.transfer.passed);$('transferFeedback').className='feedback';if(state.transfer.passed)$('resultCopy').textContent='你已经独立覆盖 '+WORDS.length+' 个核心词，并把其中的星期词放回完整句。错过的词也完成了两次返修和原题返回。'}
+  function checkTransfer(){const task=TRANSFERS[transferIndex()],value=$('transferInput').value;state.transfer.draft=value;if(!value.trim()){toast('先写出完整句子');return}const ok=normalizeSentence(value)===normalizeSentence(task.answer);recordEvent('transfer',{id:'plan_sentence'},value,ok,'weekly-plan');if(ok){state.transfer.passed=true;save();setFeedback($('transferFeedback'),'ok','完整句通过：单词已经能回到真实句子里。');renderTransfer();$('sentenceResult').scrollIntoView({behavior:'smooth',block:'center'})}else{setFeedback($('transferFeedback'),'no','还没完全对。按框架检查星期、动作词和单词顺序。标准句会在通过后再显示。');save()}}
+  async function finishLesson(){if(!state.transfer.passed)return;state.completed=true;state.stage='transfer';save();renderProgress();$('finishLesson').disabled=true;$('finishLesson').textContent='正在保存';let message='本机学习证据已经保存。';if(window.DDLearningSync&&!TEST_MODE){try{DDLearningSync.setChild(CHILD);DDLearningSync.complete({kid:CHILD,subject:'英语',topic:'第一周准备课：星期、学科、数字拼写',item:'完成英语拼写工厂',payload:{app_id:APP_ID,version:VERSION,course_date:COURSE_DATE,evidence:{core_words:WORDS.length,completed_routes:Object.keys(state.completedRoutes),wrongbook:Object.fromEntries(Object.entries(state.wrongbook).map(([id,row])=>[id,{wrongCount:row.wrongCount,streak:row.streak,status:row.status}])),transfer:normalizeSentence(state.transfer.draft)}}});const result=await DDLearningSync.flush();message=result&&result.ok?'本机与家庭学习档案都已保存。':'本机已保存；联网后会继续同步。'}catch(error){message='本机已保存；联网后会继续同步。'}}else if(TEST_MODE)message='测试模式：只保存在隔离空间，没有写入正式档案。';setFeedback($('finishFeedback'),'ok',message);$('finishLesson').textContent='学习证据已保存'}
+  function renderRecords(){const open=Object.values(state.wrongbook).filter(r=>r.status!=='resolved').length,resolved=Object.values(state.wrongbook).filter(r=>r.status==='resolved').length,correct=state.events.filter(e=>e.phase==='independent'&&e.ok).length;$('masteryGrid').innerHTML='<div class="mastery-stat"><strong>'+correct+'</strong><span>独立答对</span></div><div class="mastery-stat"><strong>'+open+'</strong><span>待返修</span></div><div class="mastery-stat"><strong>'+resolved+'</strong><span>已两连对</span></div>';const entries=Object.entries(state.wrongbook);$('wrongbookView').innerHTML=entries.length?'<h3>错词本</h3><div class="wrong-list">'+entries.map(([id,row])=>'<div class="wrong-row"><strong>'+row.answer+'</strong><span>错 '+row.wrongCount+' 次 · 连对 '+row.streak+'/2</span><b class="status-pill '+(row.status==='resolved'?'closed':'')+'">'+(row.status==='resolved'?'已修复':'待修复')+'</b></div>').join('')+'</div>':'<p class="subcue">还没有独立听写错词。教学阶段的试错不会污染错词本。</p>'}
+  function exportProgress(){const blob=new Blob([JSON.stringify(state,null,2)],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=APP_ID+'-progress.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),500)}
+  function importProgressFile(file){const reader=new FileReader();reader.onload=()=>{try{const parsed=JSON.parse(reader.result);if(parsed.schemaVersion!==1||parsed.child!==CHILD||parsed.appId!==APP_ID)throw new Error('wrong');localStorage.setItem(STORAGE_KEY,JSON.stringify(parsed));location.reload()}catch(error){toast('这个文件不是本软件的 Eddey 进度')}};reader.readAsText(file)}
+  $('startGuided').onclick=()=>showStage('guided');$('clearAssembly').onclick=clearAssembly;$('checkAssembly').onclick=checkAssembly;$('checkRecall').onclick=checkRecall;$('recallInput').addEventListener('keydown',e=>{if(e.key==='Enter')checkRecall()});$('recallHint').onclick=()=>{const item=wordById(RECALL_IDS[state.recallIndex]);setFeedback($('recallFeedback'),'info','分块提示：'+item.hint)};$('voiceTest').onclick=()=>playWord(wordById('s_science'),1,$('voiceTest'));$('listenButton').onclick=playCurrentWord;$('checkDictation').onclick=checkDictation;$('dictationInput').addEventListener('keydown',e=>{if(e.key==='Enter')checkDictation()});$('backRoutes').onclick=()=>{state.route=null;state.routeIndex=0;save();renderIndependent()};$('repairAction').onclick=checkRepair;$('repairListen').onclick=()=>playWord(wordById(state.repair.itemId),1,$('repairListen'));$('repairInput').addEventListener('keydown',e=>{if(e.key==='Enter')checkRepair()});$('returnOriginal').onclick=returnOriginal;$('checkTransfer').onclick=checkTransfer;$('transferInput').addEventListener('keydown',e=>{if(e.key==='Enter')checkTransfer()});$('finishLesson').onclick=finishLesson;$('openRecords').onclick=()=>{renderRecords();$('recordsDialog').showModal()};$('closeRecords').onclick=()=>$('recordsDialog').close();$('exportProgress').onclick=exportProgress;$('importProgress').onclick=()=>$('importFile').click();$('importFile').onchange=e=>{if(e.target.files[0])importProgressFile(e.target.files[0])};$('memoryVideo').addEventListener('error',()=>{$('memoryVideo').style.display='none';$('videoFallback').style.display='block'});
+  if(hasSystemSpeech()){refreshSystemVoices();if(window.speechSynthesis.addEventListener)window.speechSynthesis.addEventListener('voiceschanged',refreshSystemVoices);else window.speechSynthesis.onvoiceschanged=refreshSystemVoices;document.addEventListener('visibilitychange',()=>{if(document.hidden){speechToken++;window.speechSynthesis.cancel()}})}
+  $('dailyText').textContent=DAILY_SURPRISES[dailySurpriseKey(APP_ID,CHILD)%DAILY_SURPRISES.length];showStage(state.stage||'teach');
+  window.__SPELLING_APP_TEST__={APP_ID,CHILD,WORDS,GROUPS,GUIDED,RECALL_IDS,TRANSFERS,normalizeKnowledge,normalizeSentence,judgeWord,mismatchGuide,spokenText,speechPlan,voiceScore,selectEnglishVoice,BASE_STORAGE,STORAGE_KEY};
+  </script>
+</body>
+</html>

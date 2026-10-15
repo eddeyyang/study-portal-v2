@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<script src="../assets/learning-sync.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>金牌数学 · 四上预习馆 第2单元 四面八方的学问</title>
+<style>
+:root{--c:#e8642f;--cd:#c24e20;--cbg:#fff0e6;--gold:#f2b632;--golddk:#c98a00;--ink:#2e2620;--paper:#fff7f2;
+ --card:#fff;--line:#f0ddd0;--green:#2e9c54;--greenbg:#e9f7ee;--red:#e1553f;--redbg:#fdecea;--muted:#9a8b82;--blue:#2f6fb3;--bluebg:#e8f0fa;}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+body{margin:0;font-family:'LXGW WenKai Screen','PingFang SC','Microsoft YaHei',system-ui,sans-serif;
+ background:radial-gradient(circle at 10% 4%,#ffe1cc 0,transparent 42%),radial-gradient(circle at 92% 12%,#fff3cf 0,transparent 36%),var(--paper);color:var(--ink);min-height:100vh;padding-bottom:64px;}
+.wrap{max-width:620px;margin:0 auto;padding:12px;}
+.top{display:flex;align-items:center;gap:10px;padding:8px 2px;}
+.badge{background:var(--c);color:#fff;font-weight:800;font-size:16px;padding:6px 13px;border-radius:13px 13px 13px 4px;box-shadow:0 4px 0 var(--cd);}
+.top h1{font-size:15px;margin:0;flex:1;line-height:1.35;}
+.home{text-decoration:none;font-size:20px;background:#fff;width:38px;height:38px;border-radius:11px;display:grid;place-items:center;color:var(--ink);box-shadow:0 3px 0 #f0d8c8;flex:none;}
+.intro{font-size:13.5px;color:#6b5a4e;line-height:1.75;background:#fff;border:2px solid var(--line);border-radius:14px;padding:12px 14px;margin:8px 0;}
+.intro b{color:var(--cd);}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.tile{position:relative;background:#fff;border:2px solid var(--line);border-top:6px solid var(--c);border-radius:18px;padding:15px 11px;cursor:pointer;box-shadow:0 6px 0 #f3e2d6;text-align:center;}
+.tile:active{transform:translateY(3px);box-shadow:0 3px 0 #f3e2d6;}
+.tile .ic{font-size:34px;}.tile .nm{font-weight:800;font-size:15px;margin-top:7px;color:var(--cd);}.tile .ds{font-size:11px;color:var(--muted);margin-top:3px;line-height:1.4;}
+.tile.gold{border-top-color:var(--gold);}
+.tile .done{position:absolute;top:-9px;right:-6px;background:var(--green);color:#fff;font-size:10.5px;font-weight:800;border-radius:9px;padding:2px 8px;box-shadow:0 2px 0 rgba(0,0,0,.12);}
+.tile .done.bad{background:var(--red);}
+.tile .done.pending{background:#8d8178;color:#fff;}
+.card{background:var(--card);border:2px solid var(--line);border-radius:18px;padding:15px;margin:11px 0;box-shadow:0 6px 0 #f3e2d6;}
+.h2{font-size:17px;font-weight:800;color:var(--cd);margin:0 0 4px;}
+.base{background:var(--cbg);border-radius:12px;padding:11px 13px;font-size:14.5px;line-height:1.75;margin:8px 0;}
+.base b{color:var(--cd);}
+.why{background:var(--greenbg);border-left:5px solid var(--green);border-radius:10px;padding:10px 13px;font-size:14px;line-height:1.75;margin:8px 0;}
+.why b{color:var(--green);}
+.deep{background:#fff7ef;border:1px solid #f0dca8;border-radius:11px;padding:11px 13px;font-size:14px;line-height:1.75;margin:8px 0;}
+.deep .q{font-weight:800;color:#a8730a;}
+.btn{font-family:inherit;font-weight:800;font-size:15px;border:none;border-radius:12px;padding:12px 16px;cursor:pointer;color:#fff;background:var(--c);box-shadow:0 4px 0 var(--cd);min-height:46px;}
+.btn.gold{background:var(--gold);box-shadow:0 4px 0 var(--golddk);color:#5a3d00;}
+.btn.ghost{background:#fff;color:var(--cd);border:2px solid var(--line);box-shadow:0 4px 0 #f3e2d6;}
+.btn.blue{background:var(--blue);box-shadow:0 4px 0 #1f4e7e;}
+.btn:active{transform:translateY(2px);}
+.btn.sm{font-size:13px;padding:8px 12px;min-height:38px;}
+.btn[disabled]{opacity:.45;pointer-events:none;}
+.back{background:none;border:none;color:var(--muted);font-size:15px;font-family:inherit;font-weight:800;cursor:pointer;padding:6px 2px;}
+.hide{display:none!important;}
+.tag{display:inline-block;background:var(--gold);color:#5a3d00;font-size:11px;font-weight:800;border-radius:8px;padding:2px 8px;}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:8px;}
+.tipbar{font-size:12px;color:var(--muted);text-align:center;margin-top:14px;line-height:1.6;}
+.formula{display:flex;align-items:center;justify-content:center;gap:7px;flex-wrap:wrap;margin:10px 0;font-weight:900;}
+.tok{background:var(--cbg);border:2px solid #f0cdb6;color:var(--cd);border-radius:12px;padding:8px 13px;font-size:22px;min-width:44px;text-align:center;transition:transform .45s ease,opacity .45s ease,background .3s;}
+.tok.op{background:#fff;border-color:var(--line);color:#8a6a55;font-size:19px;padding:8px 9px;min-width:0;}
+.tok.ans{background:var(--gold);border-color:var(--golddk);color:#5a3d00;}
+.tok.hi{background:#ffe9b8;border-color:var(--gold);box-shadow:0 0 0 3px #ffe9b8;}
+.tok.friend{background:#d9f2e2;border-color:var(--green);color:var(--green);}
+.baby{opacity:0;transform:translateY(14px);transition:opacity .5s ease,transform .5s ease;}
+.baby.show{opacity:1;transform:translateY(0);}
+.names{display:flex;justify-content:center;gap:7px;flex-wrap:wrap;font-size:11px;color:var(--muted);font-weight:700;}
+.names span{min-width:44px;text-align:center;}
+.chips{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin:8px 0;}
+.chip{font-family:inherit;font-weight:800;font-size:14px;border:2px solid var(--line);background:#fff;border-radius:999px;padding:8px 14px;cursor:pointer;color:var(--cd);min-height:40px;}
+.chip.on{background:var(--c);color:#fff;border-color:var(--cd);}
+.steps{display:flex;gap:6px;justify-content:center;margin:6px 0 10px;}
+.sdot{width:30px;height:8px;border-radius:99px;background:#f0ddd0;}
+.sdot.on{background:var(--c);}
+.stepnote{background:var(--bluebg);border-left:5px solid var(--blue);border-radius:10px;padding:9px 12px;font-size:13.5px;line-height:1.7;margin:8px 0;min-height:44px;}
+.stepnote b{color:var(--blue);}
+.recall{background:linear-gradient(135deg,#fff,#fff6ea);border:2px solid var(--gold);border-radius:16px;padding:18px 14px;text-align:center;margin:10px 0;box-shadow:0 6px 0 #f3e2d6;}
+.recall .q{font-size:20px;font-weight:900;color:var(--cd);line-height:1.5;}
+.recall .a{font-size:20px;font-weight:900;color:var(--green);line-height:1.5;}
+.recall .mask{display:inline-block;background:#5a3d00;color:#5a3d00;border-radius:8px;padding:0 12px;user-select:none;}
+.timerbar{display:flex;align-items:center;justify-content:space-between;background:#fff;border:2px solid var(--line);border-radius:12px;padding:8px 13px;font-weight:800;font-size:14px;color:var(--cd);margin:8px 0;}
+.qprog{font-size:12.5px;color:var(--muted);font-weight:800;}
+.qbox{background:#fff;border:2px solid var(--line);border-radius:16px;padding:15px;margin:10px 0;}
+.qtext{font-size:16.5px;font-weight:800;line-height:1.7;margin:2px 0 10px;}
+.qtext .star{color:var(--golddk);}
+.opts{display:grid;gap:9px;}
+.opt{font-family:inherit;text-align:left;font-size:15px;font-weight:700;line-height:1.5;background:var(--paper);border:2px solid var(--line);border-radius:12px;padding:12px 13px;cursor:pointer;min-height:46px;color:var(--ink);}
+.opt:active{transform:scale(.98);}
+.opt.right{background:var(--greenbg);border-color:var(--green);color:var(--green);}
+.opt.wrong{background:var(--redbg);border-color:var(--red);color:var(--red);}
+.fb{border-radius:12px;padding:11px 13px;font-size:14px;line-height:1.75;margin-top:10px;}
+.fb.ok{background:var(--greenbg);border:2px solid var(--green);}
+.fb.no{background:var(--redbg);border:2px solid var(--red);}
+.fb .etag{display:inline-block;background:var(--red);color:#fff;font-size:11.5px;font-weight:800;border-radius:8px;padding:2px 9px;margin-bottom:5px;}
+.explain{background:#fff;border:1.5px dashed var(--golddk);border-radius:10px;padding:9px 12px;margin-top:8px;font-size:13.5px;line-height:1.75;}
+.explain b{color:#a8730a;}
+.panel{background:#fff;border:2px solid var(--blue);border-radius:16px;padding:13px 14px;margin:12px 0;}
+.panel h3{margin:0 0 6px;font-size:15px;color:var(--blue);}
+.panel .stat{font-size:13.5px;line-height:1.8;color:#4a3c33;}
+.panel .stat b{color:var(--cd);}
+.result-big{font-size:44px;font-weight:900;text-align:center;color:var(--golddk);margin:6px 0;}
+.fadeup{animation:fadeup .4s ease both;}
+@keyframes fadeup{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
+/* 方向罗盘 */
+.compass{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;max-width:330px;margin:10px auto;}
+.dcell{border-radius:14px;border:2px solid var(--line);background:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;font-weight:900;font-size:14px;color:var(--cd);cursor:pointer;min-height:74px;transition:transform .25s,background .25s,border-color .25s;}
+.dcell .arw{font-size:24px;line-height:1.1;}
+.dcell.center{background:var(--gold);border-color:var(--golddk);color:#5a3d00;cursor:default;font-size:13px;}
+.dcell.on{background:var(--c);color:#fff;border-color:var(--cd);transform:scale(1.08);}
+.dcell.opp{background:#d9f2e2;border-color:var(--green);color:var(--green);}
+.dcell.hipath{background:#ffe9b8;border-color:var(--gold);}
+.mapgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;max-width:330px;margin:10px auto;}
+.mcell{border-radius:14px;border:2px solid var(--line);background:#fff;display:grid;place-items:center;font-size:34px;min-height:74px;position:relative;transition:background .3s,border-color .3s;}
+.mcell .walker{position:absolute;bottom:2px;right:4px;font-size:20px;}
+.mcell.cur{background:#ffe9b8;border-color:var(--gold);}
+.vanebox{background:#fff;border:2px solid var(--line);border-radius:14px;padding:14px 10px;text-align:center;font-size:30px;letter-spacing:2px;margin:8px 0;min-height:60px;}
+
+@media (prefers-reduced-motion: reduce){*{animation-duration:.01ms!important;transition-duration:.01ms!important;}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top"><a class="home" href="math_gold_hub.html?who=eddey">‹</a><span class="badge">弟弟</span><h1>🏅 金牌数学 · 四上预习馆<br>第2单元《四面八方的学问》</h1></div>
+  <div id="home"></div>
+  <div id="view" class="hide"><button class="back" id="back">← 回单元地图</button><div id="stage"></div></div>
+  <div class="tipbar">跟书上第 32–44 页同步：先看动画懂"为什么"，再跟着做，最后独立检验。<br>做错的题会自动进错题本，连对 2 次才毕业。</div>
+</div>
+<script>
+"use strict";
+function $(id){return document.getElementById(id);}
+function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+
+/* ============ 数据与错题本 ============ */
+var EV_KEY='dd:eddey:math-gold-g4u2:events:v1';
+var WB_KEY='dd:eddey:math-gold-g4u2:wrongbook:v1';
+function loadJSON(k,d){try{var v=JSON.parse(localStorage.getItem(k));return v==null?d:v;}catch(e){return d;}}
+function loadEvents(){var v=loadJSON(EV_KEY,[]);return Array.isArray(v)?v:[];}
+function saveEvents(a){try{localStorage.setItem(EV_KEY,JSON.stringify(a.slice(-400)));}catch(e){}}
+function loadWB(){var v=loadJSON(WB_KEY,{});return (v&&typeof v==='object'&&!Array.isArray(v))?v:{};}
+function saveWB(o){try{localStorage.setItem(WB_KEY,JSON.stringify(o));}catch(e){}}
+function logEvent(ev){var a=loadEvents();a.push(ev);saveEvents(a);
+ if(ev.qid){var wb=loadWB();
+  if(ev.ok===false){var r=wb[ev.qid]||{fails:0,streak:0};r.fails+=1;r.streak=0;wb[ev.qid]=r;}
+  else if(ev.ok===true&&wb[ev.qid]){wb[ev.qid].streak+=1;if(wb[ev.qid].streak>=2)delete wb[ev.qid];}
+  saveWB(wb);}
+}
+function wbCount(){return Object.keys(loadWB()).length;}
+function stationStat(sid){var a=loadEvents().filter(function(e){return e.station===sid&&typeof e.ok==='boolean';});
+ if(!a.length)return null;var ok=a.filter(function(e){return e.ok;}).length;return {ok:ok,bad:a.length-ok};}
+
+/* ============ 音效（Web Audio，无语音） ============ */
+var AC=null;
+function beep(good){try{
+ if(!AC)AC=new (window.AudioContext||window.webkitAudioContext)();
+ if(AC.state==='suspended')AC.resume();
+ var t=AC.currentTime;
+ function tone(f,st,d){var o=AC.createOscillator(),g=AC.createGain();o.type='sine';o.frequency.value=f;
+  g.gain.setValueAtTime(0.0001,t+st);g.gain.exponentialRampToValueAtTime(0.12,t+st+0.02);g.gain.exponentialRampToValueAtTime(0.0001,t+st+d);
+  o.connect(g);g.connect(AC.destination);o.start(t+st);o.stop(t+st+d+0.02);}
+ if(good){tone(660,0,0.12);tone(880,0.1,0.18);}else{tone(196,0,0.25);}
+}catch(e){}}
+
+/* ============ 首页 ============ */
+var STATIONS=[
+ {id:'s1',ic:'🧭',nm:'方向罗盘',ds:'八个方向 · 顺时针 · 面对面4对'},
+ {id:'s2',ic:'🌬️',nm:'风向标实验室',ds:'箭头指风来的方向 · 风向命名'},
+ {id:'s3',ic:'🗺️',nm:'跟着做·路线小导游',ds:'分段认方向走到学校'},
+ {id:'s4',ic:'🃏',nm:'遮挡回忆卡',ds:'盖住答案考考自己'},
+ {id:'s5',ic:'📝',nm:'独立检验 12 题',ds:'基础→巩固→拔高★ 自动判分'}
+];
+function renderHome(){
+ var h='<div class="intro">🏅 <b>新学期金牌训练 · 四年级上 第2单元</b><br>今天学会三件事：<b>① 认识八个方向</b>（东南西北 + 四个夹缝方向）；<b>② 换观测点说方向</b>（谁看谁，方向变对面）；<b>③ 看懂风向标</b>（箭头指向风来的方向）。<br>路线：先看动画 <b>懂为什么</b> → 跟着做 → 遮挡回忆 → 独立检验。</div><div class="grid">';
+ STATIONS.forEach(function(m){
+  var st=stationStat(m.id);
+  var badge=st?'<span class="done'+(st.bad?' bad':'')+'">已练 · ✅'+st.ok+' ❌'+st.bad+'</span>':'<span class="done pending">未练</span>';
+  h+='<div class="tile" data-id="'+m.id+'">'+badge+'<div class="ic">'+m.ic+'</div><div class="nm">'+m.nm+'</div><div class="ds">'+m.ds+'</div></div>';
+ });
+ var wc=wbCount();
+ h+='<div class="tile gold" data-id="wb">'+(wc?'<span class="done bad">'+wc+' 题待毕业</span>':'')+'<div class="ic">📒</div><div class="nm">错题本</div><div class="ds">错1次进本 · 连对2次毕业 · 点我只重做错题</div></div>';
+ h+='</div><div id="recordPanel"></div>';
+ $('home').innerHTML=h;
+ $('home').querySelectorAll('.tile').forEach(function(t){t.onclick=function(){
+  var id=t.dataset.id;
+  if(id==='wb'){openWrongbook();return;}
+  openStation(id);};
+ });
+ renderPanel();
+}
+function openStation(id){
+ $('home').classList.add('hide');$('view').classList.remove('hide');window.scrollTo(0,0);
+ ({s1:renderS1,s2:renderS2,s3:renderS3,s4:renderS4,s5:function(){startQuiz('full');}})[id]();
+}
+$('back').onclick=function(){$('view').classList.add('hide');$('home').classList.remove('hide');renderHome();window.scrollTo(0,0);};
+function goHome(){$('back').onclick();}
+
+/* ============ 记录面板与导出 ============ */
+function renderPanel(){
+ var a=loadEvents().filter(function(e){return typeof e.ok==='boolean';});
+ var ok=a.filter(function(e){return e.ok;}).length,bad=a.length-ok;
+ var wb=loadWB(),wbList=Object.keys(wb);
+ var ms=a.reduce(function(s,e){return s+(e.ms||0);},0);
+ var h='<div class="panel"><h3>📊 我的练习记录</h3><div class="stat">已作答 <b>'+a.length+'</b> 题次 · ✅对 <b>'+ok+'</b> · ❌错 <b>'+bad+'</b> · 累计用时 <b>'+Math.round(ms/1000)+'秒</b><br>📒 错题本：<b>'+wbList.length+'</b> 题'+(wbList.length?('（'+wbList.map(function(k){var q=QUESTIONS.find(function(x){return x.id===k;});return q?q.short:k;}).join('、')+'）'):'（空空如也，太棒了）')+'</div>'+
+ '<div class="row"><button class="btn blue sm" id="btnCopy">📋 复制记录</button><button class="btn ghost sm" id="btnSave">💾 存成文件</button></div></div>';
+ var p=$('recordPanel');if(!p)return;p.innerHTML=h;
+ $('btnCopy').onclick=function(){copyText(exportText(),this);};
+ $('btnSave').onclick=function(){downloadText(exportText());};
+}
+function exportText(){
+ var a=loadEvents();var wb=loadWB();
+ var lines=[];
+ lines.push('弟弟(eddey) · 数学 · 四上金牌预习 第2单元《四面八方的学问》');
+ lines.push('导出时间：'+new Date().toLocaleString('zh-CN'));
+ var att=a.filter(function(e){return typeof e.ok==='boolean';});
+ var ok=att.filter(function(e){return e.ok;}).length;
+ lines.push('总作答 '+att.length+' 题次 · 对 '+ok+' · 错 '+(att.length-ok));
+ lines.push('');
+ lines.push('== 错题本（连对2次才毕业）==');
+ var keys=Object.keys(wb);
+ if(!keys.length)lines.push('（空）');
+ keys.forEach(function(k){var q=QUESTIONS.find(function(x){return x.id===k;});
+  lines.push('· '+(q?q.short:k)+'｜错过 '+wb[k].fails+' 次 · 连对 '+wb[k].streak+'/2');});
+ lines.push('');
+ lines.push('== 反复错的题（错≥2次）==');
+ var cnt={};att.forEach(function(e){if(!e.ok&&e.qid)cnt[e.qid]=(cnt[e.qid]||0)+1;});
+ var rep=Object.keys(cnt).filter(function(k){return cnt[k]>=2;});
+ if(!rep.length)lines.push('（暂无）');
+ rep.forEach(function(k){var q=QUESTIONS.find(function(x){return x.id===k;});
+  lines.push('· '+(q?q.short:k)+' 错 '+cnt[k]+' 次｜错因 '+(q?q.tag:'')+'｜'+(q?q.hint:''));});
+ lines.push('');
+ lines.push('== 每题明细 ==');
+ att.forEach(function(e){lines.push('['+new Date(e.ts).toLocaleString('zh-CN')+'] '+(e.ok?'✅':'❌')+' '+e.item+'｜所选:'+e.user+'｜'+Math.round((e.ms||0)/1000)+'秒'+(e.ok?'':('｜错因:'+e.tag)));});
+ lines.push('');
+ lines.push('== 原始JSON ==');
+ lines.push(JSON.stringify({child:'eddey',subject:'数学',app:'math-gold-g4u2',unit:'四上第2单元《四面八方的学问》',events:a}));
+ return lines.join('\n');
+}
+function copyText(txt,btn){
+ function done(){if(btn){var o=btn.textContent;btn.textContent='✅ 已复制';setTimeout(function(){btn.textContent=o;},1500);}}
+ if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(txt).then(done,function(){fallback();});}
+ else fallback();
+ function fallback(){var ta=document.createElement('textarea');ta.value=txt;document.body.appendChild(ta);ta.select();try{document.execCommand('copy');}catch(e){}ta.remove();done();}
+}
+function downloadText(txt){
+ var blob=new Blob([txt],{type:'text/plain;charset=utf-8'});
+ var a=document.createElement('a');a.href=URL.createObjectURL(blob);
+ a.download='eddey_数学_四上第2单元_预习记录_'+new Date().toISOString().slice(0,10)+'.txt';
+ document.body.appendChild(a);a.click();setTimeout(function(){a.remove();URL.revokeObjectURL(a.href);},400);
+}
+</script>
+<script>
+"use strict";
+/* ============ 第①站 方向罗盘（先教会·八个方向） ============ */
+var DIRS=[
+ {k:'N', nm:'北', arw:'⬆️', opp:'S'}, {k:'NE',nm:'东北',arw:'↗️',opp:'SW'}, {k:'E', nm:'东', arw:'➡️',opp:'W'},
+ {k:'SE',nm:'东南',arw:'↘️',opp:'NW'}, {k:'S', nm:'南', arw:'⬇️',opp:'N'}, {k:'SW',nm:'西南',arw:'↙️',opp:'NE'},
+ {k:'W', nm:'西', arw:'⬅️',opp:'E'}, {k:'NW',nm:'西北',arw:'↖️',opp:'SE'}
+];
+var CLOCKWISE=['N','NE','E','SE','S','SW','W','NW'];
+function dirBy(k){return DIRS.find(function(d){return d.k===k;});}
+function renderS1(){
+ var h='<div class="card fadeup"><div class="h2">🧭 方向罗盘 <span class="tag">先教会 · 书P32-36</span></div>'+
+ '<div class="base">除了东南西北，还有四个"夹缝方向"：<b>东北、东南、西北、西南</b>（如东北 = 东和北之间）。点罗盘上的方向，看它跟谁"面对面"。</div>'+
+ '<div class="compass" id="compass"></div>'+
+ '<div class="stepnote" id="dnote">👆 点一个方向试试；或点下面的按钮，看八个方向<b>顺时针</b>转一圈。</div>'+
+ '<div class="row" style="justify-content:center"><button class="btn gold sm" id="spin">🔄 顺时针转一圈</button></div>'+
+ '<div class="why" style="margin-top:10px"><b>🧍 站定向口诀：</b>面北背南，左西右东。换成面向南就是：面南背北，左东右西。<br><b>👥 相对方向 4 对（要背熟）：</b>北↔南 ｜ 东↔西 ｜ 东北↔西南 ｜ 东南↔西北。说"A 在 B 的东北"，反过来 B 一定在 A 的<b>西南</b>——观测点一换，方向变对面！<br><b>🧭 指南针：</b>红色指针永远指向<b>北</b>。</div>'+
+ '<div class="deep"><span class="q">🤔 深入思考：</span>'+
+ '<div style="margin-top:4px"><b>① 学校在小雨的东北方向，小雨在学校的什么方向？</b><br><button class="btn gold sm" style="margin-top:5px" onclick="this.nextElementSibling.classList.toggle(\'hide\')">看思路</button><div class="hide" style="margin-top:6px;color:#7a5800">东北的对面是<b>西南</b>。把"谁看谁"反过来，方向就换成对面。（检验站第5题会考它）</div></div>'+
+ '<div style="margin-top:11px"><b>② ★ 米米从起点向东北走 2 格，再向西走 2 格，她在起点的什么方向？</b><br><button class="btn gold sm" style="margin-top:5px" onclick="this.nextElementSibling.classList.toggle(\'hide\')">看思路</button><div class="hide" style="margin-top:6px;color:#7a5800">向东北 2 格 = 向东 2 格 + 向北 2 格；再向西 2 格，东西正好抵消，只剩向北 2 格 → 她在起点的<b>正北</b>方向。把斜方向拆成"东西 + 南北"两步想！（检验站第11题会考它）</div></div>'+
+ '</div></div>';
+ $('stage').innerHTML=h;
+ var layout=['NW','N','NE','W','C','E','SW','S','SE'];
+ var ch='';
+ layout.forEach(function(k){
+  if(k==='C'){ch+='<div class="dcell center">🧍<div style="font-size:11px">观测点</div></div>';return;}
+  var d=dirBy(k);ch+='<div class="dcell" data-k="'+k+'"><span class="arw">'+d.arw+'</span>'+d.nm+'</div>';
+ });
+ $('compass').innerHTML=ch;
+ var spinning=false;
+ function clearAll(){$('compass').querySelectorAll('.dcell').forEach(function(c){c.classList.remove('on','opp');});}
+ $('compass').querySelectorAll('.dcell[data-k]').forEach(function(c){c.onclick=function(){
+  if(spinning)return;clearAll();c.classList.add('on');
+  var d=dirBy(c.dataset.k),opp=dirBy(d.opp);
+  var oc=$('compass').querySelector('.dcell[data-k="'+d.opp+'"]');if(oc)oc.classList.add('opp');
+  beep(true);
+  $('dnote').innerHTML='<b>'+d.arw+' '+d.nm+'</b>　面对面的是 <b style="color:var(--green)">'+opp.nm+'</b>（'+opp.arw+'）。记住：'+d.nm+' ↔ '+opp.nm+'。';};});
+ $('spin').onclick=function(){
+  if(spinning)return;spinning=true;clearAll();
+  $('dnote').innerHTML='<b>顺时针顺序：</b>北 → 东北 → 东 → 东南 → 南 → 西南 → 西 → 西北';
+  CLOCKWISE.forEach(function(k,i){
+   setTimeout(function(){
+    clearAll();var c=$('compass').querySelector('.dcell[data-k="'+k+'"]');if(c)c.classList.add('on');beep(true);
+    if(i===CLOCKWISE.length-1)setTimeout(function(){clearAll();spinning=false;
+     $('dnote').innerHTML='转完啦！自己点一个方向，说说它的对面是谁。';},700);
+   },i*420);});
+ };
+}
+
+/* ============ 第②站 风向标实验室（先教会·观测风向） ============ */
+var VANE_STEPS=[
+ {pic:'◀ ━━━━━ 🪶',note:'<b>第1步·认识风向标：</b>它有两个头——尖尖的是<b>箭头</b>，大大的是<b>尾翼</b>（像羽毛）。中间有根柱子，它可以自由转动。'},
+ {pic:'💨💨 ⇦ 风从东边吹来',note:'<b>第2步·风吹来了：</b>假设风从<b>东边</b>吹来。尾翼又大又轻，最容易被风推着走。'},
+ {pic:'◀ ━━━━━ 🪶（尾翼被吹到西边）',note:'<b>第3步·尾翼被吹跑：</b>风从东往西吹，尾翼就被推到了<b>西边</b>，整根杆转过来，<b>箭头指向东</b>。'},
+ {pic:'◀ 箭头指东 = 东风',note:'<b>第4步·记住规则：</b>箭头永远指向风<b>吹来</b>的方向。风的名字按"从哪里来"起：从东来叫<b>东风</b>，从西北来叫<b>西北风</b>。'}
+];
+var VANE_QUIZ=[
+ {q:'风向标箭头指向"东南"，吹的是什么风？',opts:['东南风','西北风','南风'],ans:0,
+  why:'箭头指向风<b>来</b>的方向：指向东南，风就是从东南吹来的 → <b>东南风</b>。'},
+ {q:'刮西北风，国旗会往哪个方向飘？',opts:['西北','东南','北'],ans:1,
+  why:'旗子顺着风往<b>对面</b>飘：西北风从西北吹向东南，所以国旗往<b>东南</b>飘。"来向"和"飘向"永远相反！'},
+ {q:'炊烟直直地向北飘，这时刮的是什么风？',opts:['北风','南风','东风'],ans:1,
+  why:'烟向北飘，说明风往北吹，风是从<b>南边</b>吹来的 → <b>南风</b>。飘向的对面就是风向。'}
+];
+function renderS2(){
+ var h='<div class="card fadeup"><div class="h2">🌬️ 风向标实验室 <span class="tag">先教会 · 书P37-39</span></div>'+
+ '<div class="base">风从哪个方向吹来，就叫什么风。风向标就是专门"指认"风的仪器——记住一句话：<b>箭头指向风来的方向，尾翼被吹到风去的方向。</b></div>'+
+ '<div class="steps" id="vdots"></div><div class="vanebox" id="vpic"></div><div class="stepnote" id="vnote"></div>'+
+ '<div class="row" style="justify-content:center"><button class="btn ghost sm" id="vprev">‹ 上一步</button><button class="btn sm" id="vnext">下一步 ›</button></div>'+
+ '<div style="font-weight:800;color:var(--cd);margin:14px 0 4px">🔥 马上练三题（都是检验站考点）：</div><div id="vquiz"></div></div>';
+ $('stage').innerHTML=h;
+ var curS=0;
+ function draw(){
+  var dots='';VANE_STEPS.forEach(function(_,i){dots+='<span class="sdot'+(i<=curS?' on':'')+'"></span>';});
+  $('vdots').innerHTML=dots;
+  $('vpic').textContent=VANE_STEPS[curS].pic;
+  $('vnote').innerHTML=VANE_STEPS[curS].note;
+  $('vprev').disabled=(curS===0);
+  $('vnext').textContent=(curS===VANE_STEPS.length-1)?'🔄 再看一遍':'下一步 ›';
+ }
+ $('vprev').onclick=function(){if(curS>0){curS--;draw();}};
+ $('vnext').onclick=function(){curS=(curS+1)%VANE_STEPS.length;draw();};
+ draw();
+ var qh='';
+ VANE_QUIZ.forEach(function(qq,i){
+  qh+='<div class="qbox" style="margin:8px 0"><div class="qtext" style="font-size:15px">'+(i+1)+'. '+qq.q+'</div><div class="chips" style="justify-content:flex-start" id="vq'+i+'"></div><div id="vfb'+i+'"></div></div>';
+ });
+ $('vquiz').innerHTML=qh;
+ VANE_QUIZ.forEach(function(qq,i){
+  var oh='';qq.opts.forEach(function(o,j){oh+='<button class="chip" data-j="'+j+'">'+o+'</button>';});
+  $('vq'+i).innerHTML=oh;
+  $('vq'+i).querySelectorAll('.chip').forEach(function(c){c.onclick=function(){
+   var ok=(+c.dataset.j===qq.ans);beep(ok);
+   logEvent({ts:Date.now(),station:'s2',item:'风向判断：'+qq.q,user:c.textContent,ok:ok,ms:0,tag:ok?'':'D3 风向原理反了',hint:qq.why});
+   if(ok){c.classList.add('on');$('vfb'+i).innerHTML='<div class="fb ok fadeup" style="margin-top:6px">🎉 对了！'+qq.why+'</div>';
+    $('vq'+i).querySelectorAll('.chip').forEach(function(x){x.style.pointerEvents='none';});}
+   else{c.style.background='#fdecea';c.style.borderColor='#e1553f';c.style.color='#e1553f';
+    $('vfb'+i).innerHTML='<div class="fb no fadeup" style="margin-top:6px">再想想："来向"和"飘向"是<b>相反</b>的。</div>';}
+  };});
+ });
+}
+</script>
+<script>
+"use strict";
+/* ============ 第③站 跟着做·路线小导游 ============ */
+var MAP_CELLS=['🏠','🌳','🏪','⬜','⛲','⬜','🏥','🌳','🏫'];
+var MAP_NAMES={'0':'家','2':'超市','4':'公园','8':'学校'};
+var ROUTE=[
+ {from:0,to:2,dir:'东',dirK:'E',why:'🏠家 → 🏪超市：同一行向右走，是<b>东</b>。'},
+ {from:2,to:4,dir:'西南',dirK:'SW',why:'🏪超市 → ⛲公园：往下一格又往左一格，下是南、左是西，合起来是<b>西南</b>。'},
+ {from:4,to:8,dir:'东南',dirK:'SE',why:'⛲公园 → 🏫学校：往下一格又往右一格，下是南、右是东，合起来是<b>东南</b>。'}
+];
+function renderS3(){
+ var h='<div class="card fadeup"><div class="h2">🗺️ 路线小导游 <span class="tag">跟着做 · 书P32-36</span></div>'+
+ '<div class="base">从 🏠 带 🚶 走到 🏫！每一段路，先想"往上下还是左右、还是斜着"，再点方向。斜方向 = <b>上下 + 左右</b> 合起来命名。</div>'+
+ '<div class="mapgrid" id="map"></div>'+
+ '<div class="stepnote" id="rnote"></div>'+
+ '<div class="chips" id="rchips"></div><div id="rfb"></div>'+
+ '<div class="deep" style="margin-top:12px"><span class="q">🧭 想一想：</span><b>从学校原路走回家，三段路各朝什么方向？</b>'+
+ '<button class="btn gold sm" style="margin-left:6px" onclick="this.nextElementSibling.classList.toggle(\'hide\')">看答案</button>'+
+ '<div class="hide" style="margin-top:6px;color:#7a5800">每段都换成"对面"：学校→公园 <b>西北</b>，公园→超市 <b>东北</b>，超市→家 <b>西</b>。来回方向永远相反！</div></div></div>';
+ $('stage').innerHTML=h;
+ window._ri=0;
+ drawMap(0);
+ drawRouteQ();
+}
+function drawMap(cur){
+ var mh='';
+ MAP_CELLS.forEach(function(c,i){
+  mh+='<div class="mcell'+(i===cur?' cur':'')+'">'+c+(i===cur?'<span class="walker">🚶</span>':'')+'</div>';
+ });
+ $('map').innerHTML=mh;
+}
+function drawRouteQ(){
+ var r=ROUTE[window._ri];
+ drawMap(r.from);
+ $('rnote').innerHTML='<b>第 '+(window._ri+1)+' / '+ROUTE.length+' 段：</b>从 <b>'+MAP_NAMES[r.from]+'</b> 到 <b>'+MAP_NAMES[r.to]+'</b>，朝哪个方向走？';
+ $('rfb').innerHTML='';
+ var order=['N','NE','E','SE','S','SW','W','NW'];
+ var oh='';order.forEach(function(k){var d=dirBy(k);oh+='<button class="chip" data-k="'+k+'">'+d.arw+' '+d.nm+'</button>';});
+ $('rchips').innerHTML=oh;
+ $('rchips').querySelectorAll('.chip').forEach(function(c){c.onclick=function(){
+  var ok=(c.dataset.k===r.dirK);beep(ok);
+  logEvent({ts:Date.now(),station:'s3',item:'路线：'+MAP_NAMES[r.from]+'→'+MAP_NAMES[r.to],user:c.textContent,ok:ok,ms:0,tag:ok?'':'D4 路线推理错',hint:r.why});
+  if(ok){
+   drawMap(r.to);
+   var done='<div class="fb ok fadeup">🎉 对了！'+r.why+'</div>';
+   if(window._ri<ROUTE.length-1)done+='<div class="row"><button class="btn sm" id="rnext">下一段 ›</button></div>';
+   else done+='<div class="row"><button class="btn gold sm" id="rnext">去遮挡回忆卡 ›</button></div>';
+   $('rfb').innerHTML=done;
+   $('rchips').querySelectorAll('.chip').forEach(function(x){x.style.pointerEvents='none';});
+   $('rnext').onclick=function(){window._ri++;if(window._ri<ROUTE.length){drawRouteQ();}else{openStation('s4');}};
+  }else{
+   c.style.background='#fdecea';c.style.borderColor='#e1553f';c.style.color='#e1553f';
+   $('rfb').innerHTML='<div class="fb no fadeup">再看看地图：这段路是直着走（上下左右），还是斜着走（两个方向合起来）？</div>';
+  }
+ };});
+}
+
+/* ============ 第④站 遮挡回忆卡 ============ */
+var CARDS=[
+ {q:'八个方向（顺时针）：北 → ？',a:'东北 → 东 → 东南 → 南 → 西南 → 西 → 西北'},
+ {q:'北的对面是 ？',a:'南'},
+ {q:'东北的对面是 ？',a:'西南（东↔西、北↔南各换对面）'},
+ {q:'面北背南，左边是 ？',a:'西（面北背南，左西右东）'},
+ {q:'风向标的箭头指向风（来 / 去）的方向？',a:'来（尾翼被吹到去的方向）'},
+ {q:'刮"西北风"，国旗往哪个方向飘？',a:'东南（飘向 = 风向的对面）'},
+ {q:'说"A 在 B 的什么方向"前，先要站定什么？',a:'观测点（站在 B 看 A）'},
+ {q:'指南针红色指针指向 ？',a:'北'}
+];
+function renderS4(){
+ window._ci=0;
+ var h='<div class="card fadeup"><div class="h2">🃏 遮挡回忆卡 <span class="tag">遮挡回忆</span></div>'+
+ '<div class="base">先<b>心里说出答案</b>，再点卡片翻开核对。说对了点"✅记住了"，没说出点"🔁再看下"。</div>'+
+ '<div id="cstage"></div></div>';
+ $('stage').innerHTML=h;drawCard();
+}
+function drawCard(){
+ var c=CARDS[window._ci];
+ var h='<div class="recall"><div style="font-size:12px;color:var(--muted);font-weight:800">卡片 '+(window._ci+1)+' / '+CARDS.length+'</div>'+
+ '<div class="q" style="margin-top:6px">'+c.q.replace('？','<span class="mask">???</span>')+'</div>'+
+ '<div class="a hide" id="cans" style="margin-top:10px">'+c.a+'</div></div>'+
+ '<div class="row" style="justify-content:center"><button class="btn gold" id="cflip">👀 翻开核对</button></div><div class="row" style="justify-content:center" id="cjudge"></div>';
+ $('cstage').innerHTML=h;
+ $('cflip').onclick=function(){
+  $('cans').classList.remove('hide');this.classList.add('hide');
+  $('cjudge').innerHTML='<button class="btn sm" id="cok">✅ 记住了</button><button class="btn ghost sm" id="cno">🔁 再看下</button>';
+  $('cok').onclick=function(){beep(true);
+   logEvent({ts:Date.now(),station:'s4',item:'回忆卡：'+c.q,user:'自评记住',ok:true,ms:0,tag:'',hint:c.a});nextCard();};
+  $('cno').onclick=function(){beep(false);
+   logEvent({ts:Date.now(),station:'s4',item:'回忆卡：'+c.q,user:'自评没记住',ok:false,ms:0,tag:'D1 记忆不牢',hint:c.a});nextCard();};
+ };
+}
+function nextCard(){
+ window._ci++;
+ if(window._ci<CARDS.length){drawCard();}
+ else{
+  $('cstage').innerHTML='<div class="why fadeup" style="text-align:center">🎉 回忆卡全部过完！八个方向、相对关系、风向规则都是检验站的武器。<br><div class="row" style="justify-content:center"><button class="btn" onclick="openStation(\'s5\')">📝 开始独立检验 ›</button></div></div>';
+ }
+}
+
+/* ============ 第⑤站 独立检验（自动判分 + 错因标签 + 定点回炉） ============ */
+var QUESTIONS=[
+ {id:'q1',lv:'基础',short:'相对方向',back:'s1',tag:'D1 八方向没记牢',
+  q:'和"北"相对的方向是？',opts:['南','东','西','东北'],ans:0,
+  hint:'北 ↔ 南，是最基本的一对相对方向。'},
+ {id:'q2',lv:'基础',short:'东北的对面',back:'s1',tag:'D1 八方向没记牢',
+  q:'和"东北"相对的方向是？',opts:['东南','西北','西南','南'],ans:2,
+  hint:'东北 = 东+北，各换对面：东↔西、北↔南，所以东北 ↔ 西南。'},
+ {id:'q3',lv:'基础',short:'顺时针顺序',back:'s1',tag:'D1 八方向没记牢',
+  q:'按顺时针方向，"东"的下一个方向是？',opts:['东北','东南','南','西'],ans:1,
+  hint:'顺时针：北→东北→东→东南→南→西南→西→西北。东的后面是东南。'},
+ {id:'q4',lv:'基础',short:'面北背南',back:'s1',tag:'D1 八方向没记牢',
+  q:'面北背南站立时，你的左边是？',opts:['东','西','南','北'],ans:1,
+  hint:'口诀：面北背南，左西右东。可以自己站起来试一试。'},
+ {id:'q5',lv:'巩固',short:'观测点互换',back:'s1',tag:'D2 观测点找错',
+  q:'学校在小雨的东北方向，那么小雨在学校的什么方向？',opts:['东北','西南','东南','西北'],ans:1,
+  hint:'观测点互换，方向变对面：东北的对面是西南。'},
+ {id:'q6',lv:'巩固',short:'风向标读数',back:'s2',tag:'D3 风向原理反了',
+  q:'风向标的箭头指向东南，这时吹的是什么风？',opts:['西北风','东南风','南风','东风'],ans:1,
+  hint:'箭头永远指向风吹来的方向：箭头指东南，风从东南来 → 东南风。'},
+ {id:'q7',lv:'巩固',short:'国旗飘向',back:'s2',tag:'D3 风向原理反了',
+  q:'国旗向西北方向飘，这时刮的是什么风？',opts:['西北风','东南风','西南风','东北风'],ans:1,
+  hint:'旗子往"风去的方向"飘，风向是飘向的对面：西北的对面是东南 → 东南风。'},
+ {id:'q8',lv:'巩固',short:'方向传递',back:'s1',tag:'D4 路线推理错',
+  q:'B 在 A 的东北方向，C 在 B 的东北方向，C 在 A 的什么方向？',opts:['东北','东','北','西南'],ans:0,
+  hint:'往东北、再往东北，相当于朝同一个方向走得更远，所以 C 仍在 A 的东北方向。'},
+ {id:'q9',lv:'巩固',short:'观测点',back:'s1',tag:'D2 观测点找错',
+  q:'"图书馆在学校的北面"，这句话的观测点是？',opts:['图书馆','学校','自己','北面'],ans:1,
+  hint:'"A 在 B 的某方向"，是站在 B 看 A，所以观测点是学校。'},
+ {id:'q10',lv:'巩固',short:'指南针',back:'s1',tag:'D1 八方向没记牢',
+  q:'指南针的红色指针永远指向哪个方向？',opts:['南','北','东','西'],ans:1,
+  hint:'指南针的红色指针指向北，利用它可以辨认其他方向。'},
+ {id:'q11',lv:'拔高★',short:'斜走还原',back:'s1',tag:'D4 路线推理错',
+  q:'米米从起点向东北走 2 格，再向西走 2 格，这时她在起点的什么方向？',opts:['东北','北','西北','原地'],ans:1,
+  hint:'把斜方向拆开：向东北 2 格 = 东 2 格 + 北 2 格；再向西 2 格，东西抵消，只剩北 2 格 → 正北方向。'},
+ {id:'q12',lv:'拔高★',short:'风筝风向',back:'s2',tag:'D3 风向原理反了',
+  q:'风筝向西南方向越飘越远，这时吹的是什么风？',opts:['西南风','东北风','西北风','东南风'],ans:1,
+  hint:'风筝往风去的方向飘，风向 = 飘向的对面：西南的对面是东北 → 东北风。'}
+];
+var quiz=null,qTimer=null;
+function startQuiz(mode){
+ var list;
+ if(mode==='wrong'){
+  var wb=loadWB();list=QUESTIONS.filter(function(q){return wb[q.id];});
+  if(!list.length){renderHome();return;}
+ }else list=QUESTIONS;
+ quiz={mode:mode,list:list,i:0,right:0,wrong:0,t0:Date.now(),qStart:Date.now(),wrongs:[]};
+ $('home').classList.add('hide');$('view').classList.remove('hide');window.scrollTo(0,0);
+ drawQ();
+}
+function fmtSec(ms){var s=Math.round(ms/1000);return Math.floor(s/60)+'分'+(s%60)+'秒';}
+function drawQ(){
+ var q=quiz.list[quiz.i];
+ var order=q.opts.map(function(_,i){return i;});
+ for(var i=order.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=order[i];order[i]=order[j];order[j]=t;}
+ quiz.order=order;quiz.qStart=Date.now();
+ var h='<div class="timerbar"><span class="qprog">'+(quiz.mode==='wrong'?'📒 错题重做':'📝 独立检验')+' · 第 '+(quiz.i+1)+' / '+quiz.list.length+' 题 · '+q.lv+'</span><span id="qclock">⏱ 0秒</span></div>'+
+ '<div class="qbox fadeup"><div class="qtext">'+(q.lv.indexOf('★')>=0?'<span class="star">★</span> ':'')+esc(q.q)+'</div><div class="opts" id="opts"></div><div id="fb"></div></div>';
+ $('stage').innerHTML=h;
+ var oh='';order.forEach(function(oi,idx){oh+='<button class="opt" data-oi="'+oi+'"><b style="color:var(--cd)">'+'ABCD'[idx]+'.</b> '+esc(q.opts[oi])+'</button>';});
+ $('opts').innerHTML=oh;
+ if(qTimer)clearInterval(qTimer);
+ qTimer=setInterval(function(){var c=$('qclock');if(c)c.textContent='⏱ '+fmtSec(Date.now()-quiz.t0);},500);
+ $('opts').querySelectorAll('.opt').forEach(function(b){b.onclick=function(){answer(q,+b.dataset.oi,b);};});
+}
+function answer(q,oi,btn){
+ var ok=(oi===q.ans);var ms=Date.now()-quiz.qStart;
+ $('opts').querySelectorAll('.opt').forEach(function(b){b.style.pointerEvents='none';
+  if(+b.dataset.oi===q.ans)b.classList.add('right');});
+ beep(ok);
+ logEvent({ts:Date.now(),station:'s5',qid:q.id,item:q.q,user:q.opts[oi],ok:ok,ms:ms,tag:ok?'':q.tag,hint:q.hint});
+ if(ok){quiz.right++;btn.classList.add('right');
+  $('fb').innerHTML='<div class="fb ok fadeup">🎉 <b>答对了！</b>'+(quiz.mode==='wrong'?'<br>📒 错题连对进度已更新（连对2次毕业）。':'')+
+  '<div class="row" style="margin-top:8px"><button class="btn sm" id="qnext">'+(quiz.i<quiz.list.length-1?'下一题 ›':'看成绩 ›')+'</button></div></div>';
+ }else{quiz.wrong++;btn.classList.add('wrong');quiz.wrongs.push(q);
+  $('fb').innerHTML='<div class="fb no fadeup"><span class="etag">🏷️ 错因：'+q.tag+'</span>'+
+  '<div>正确答案：<b>'+esc(q.opts[q.ans])+'</b>（本题已进错题本📒）</div>'+
+  '<div class="explain">💡 <b>为什么：</b>'+q.hint+'</div>'+
+  '<div class="row" style="margin-top:8px"><button class="btn gold sm" id="qback">📖 回炉重学这一站</button><button class="btn sm" id="qnext">'+(quiz.i<quiz.list.length-1?'知道了，下一题 ›':'看成绩 ›')+'</button></div></div>';
+  $('qback').onclick=function(){openStation(q.back);};
+ }
+ $('qnext').onclick=function(){
+  quiz.i++;
+  if(quiz.i<quiz.list.length){drawQ();window.scrollTo(0,0);}
+  else drawResult();
+ };
+}
+function drawResult(){
+ if(qTimer){clearInterval(qTimer);qTimer=null;}
+ var total=Date.now()-quiz.t0;
+ var all=quiz.list.length,score=Math.round(quiz.right/all*100);
+ var wb=loadWB(),wc=Object.keys(wb).length;
+ var h='<div class="card fadeup" style="text-align:center"><div class="h2">🏁 '+(quiz.mode==='wrong'?'错题重做':'独立检验')+'成绩单</div>'+
+ '<div class="result-big">'+score+'<span style="font-size:20px">分</span></div>'+
+ '<div style="font-size:15px;font-weight:800">✅ 对 '+quiz.right+' 题 ｜ ❌ 错 '+quiz.wrong+' 题 ｜ ⏱ 用时 '+fmtSec(total)+'</div>'+
+ '<div style="font-size:13px;color:var(--muted);margin-top:4px">平均每题 '+fmtSec(total/all)+' ｜ 📒 错题本现有 '+wc+' 题'+(wc?'，去首页点"错题本"专门消灭它们':'，全部毕业，太棒了！')+'</div></div>';
+ if(quiz.wrongs.length){
+  h+='<div class="card"><div class="h2">🔍 错题回顾（带讲解）</div>';
+  quiz.wrongs.forEach(function(q){
+   h+='<div class="fb no" style="margin-top:8px"><span class="etag">🏷️ '+q.tag+'</span><div style="font-weight:800">'+esc(q.q)+'</div><div>正确答案：<b>'+esc(q.opts[q.ans])+'</b></div><div class="explain">💡 '+q.hint+'</div></div>';
+  });
+  h+='</div>';
+ }else{
+  h+='<div class="card" style="text-align:center"><div style="font-size:40px">🏆</div><div style="font-weight:900;color:var(--golddk)">全对！第2单元已经可以开学领跑啦</div></div>';
+ }
+ h+='<div class="row" style="justify-content:center;margin:12px 0"><button class="btn" id="rretry">🔁 再测一次</button>'+(wc?'<button class="btn gold" id="rwrong">📒 只重做错题</button>':'')+'<button class="btn ghost" id="rhome">回单元地图</button></div>';
+ $('stage').innerHTML=h;
+ window.scrollTo(0,0);
+ $('rretry').onclick=function(){startQuiz(quiz.mode);};
+ var rw=$('rwrong');if(rw)rw.onclick=function(){startQuiz('wrong');};
+ $('rhome').onclick=function(){goHome();};
+}
+
+/* ============ 错题本入口 ============ */
+function openWrongbook(){
+ var wb=loadWB(),keys=Object.keys(wb);
+ $('home').classList.add('hide');$('view').classList.remove('hide');window.scrollTo(0,0);
+ if(!keys.length){
+  $('stage').innerHTML='<div class="card fadeup" style="text-align:center"><div class="h2">📒 错题本</div><div style="font-size:38px;margin:8px 0">🎉</div><div style="font-weight:800;line-height:1.8">错题本是空的！<br>做错的题会自动进来，连对 2 次才能毕业出去。</div></div>';
+  return;
+ }
+ var h='<div class="card fadeup"><div class="h2">📒 错题本（'+keys.length+' 题待毕业）</div><div class="base">规则：<b>错 1 次进本，连续答对 2 次才毕业</b>。点下面按钮逐题消灭它们！</div>';
+ keys.forEach(function(k){var q=QUESTIONS.find(function(x){return x.id===k;});if(!q)return;
+  h+='<div class="fb no" style="margin-top:8px"><span class="etag">🏷️ '+q.tag+'</span><div style="font-weight:800">'+esc(q.q)+'</div><div style="font-size:12.5px;color:var(--muted)">错过 '+wb[k].fails+' 次 · 连对 '+wb[k].streak+'/2</div></div>';});
+ h+='<div class="row" style="justify-content:center;margin-top:12px"><button class="btn" id="wbstart">🔥 开始重做错题</button></div></div>';
+ $('stage').innerHTML=h;
+ $('wbstart').onclick=function(){startQuiz('wrong');};
+}
+
+renderHome();
+</script>
+</body>
+</html>

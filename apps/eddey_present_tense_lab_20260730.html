@@ -1,0 +1,1052 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#ff8a5b">
+  <title>现在正在做，平时经常做｜Eddey 时态双轨实验室</title>
+  <style>
+    :root{
+      --coral:#ff8a5b;
+      --coral-dark:#d95d32;
+      --coral-soft:#fff0e8;
+      --blue:#3778c2;
+      --blue-soft:#eaf3ff;
+      --mint:#23856d;
+      --mint-soft:#e8f7f1;
+      --sun:#f5bd48;
+      --ink:#24313a;
+      --muted:#64717a;
+      --paper:#fffdf9;
+      --cream:#fff7f0;
+      --line:#eadfd6;
+      --danger:#c74848;
+      --shadow:0 14px 34px rgba(80,55,38,.11);
+      --radius:24px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      color:var(--ink);
+      background:
+        radial-gradient(circle at 8% 2%,rgba(255,178,135,.22),transparent 26rem),
+        radial-gradient(circle at 94% 18%,rgba(55,120,194,.12),transparent 23rem),
+        var(--cream);
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
+      line-height:1.55;
+    }
+    button,input,select{font:inherit}
+    button{touch-action:manipulation}
+    a{color:inherit}
+    .wrap{width:min(920px,calc(100% - 24px));margin:0 auto;padding:18px 0 110px}
+    .hero{
+      position:relative;
+      overflow:hidden;
+      padding:24px;
+      color:#fff;
+      border-radius:30px;
+      background:linear-gradient(135deg,#ff8a5b 0%,#f2764a 58%,#df5a38 100%);
+      box-shadow:0 18px 46px rgba(217,93,50,.25);
+    }
+    .hero:before,.hero:after{
+      content:"";
+      position:absolute;
+      border:2px solid rgba(255,255,255,.22);
+      border-radius:999px;
+      transform:rotate(-8deg);
+    }
+    .hero:before{width:260px;height:72px;right:-58px;top:8px}
+    .hero:after{width:190px;height:54px;right:24px;bottom:-28px}
+    .crumbs{position:relative;z-index:1;display:flex;gap:8px;align-items:center;flex-wrap:wrap;font-size:13px;font-weight:800}
+    .crumbs a{text-decoration:none;border-bottom:1px solid rgba(255,255,255,.65)}
+    .eyebrow{
+      position:relative;z-index:1;display:inline-flex;align-items:center;gap:7px;
+      margin-top:18px;padding:7px 12px;border-radius:999px;
+      background:rgba(255,255,255,.18);font-size:13px;font-weight:900;
+    }
+    h1{position:relative;z-index:1;margin:12px 0 6px;font-size:clamp(30px,7vw,52px);line-height:1.08;letter-spacing:-.04em}
+    .hero p{position:relative;z-index:1;margin:0;max-width:650px;font-weight:700}
+    .hero-stats{position:relative;z-index:1;display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:18px}
+    .hero-stat{padding:10px;border:1px solid rgba(255,255,255,.24);border-radius:16px;background:rgba(255,255,255,.13);text-align:center}
+    .hero-stat b{display:block;font-size:19px}
+    .hero-stat span{font-size:12px}
+    .progress-shell{position:relative;z-index:1;height:10px;margin-top:13px;border-radius:999px;background:rgba(255,255,255,.23);overflow:hidden}
+    .progress-fill{height:100%;width:0;border-radius:inherit;background:#fff;transition:width .35s ease}
+    .tabbar{
+      position:sticky;z-index:30;top:8px;
+      display:grid;grid-template-columns:repeat(4,1fr);gap:6px;
+      margin:12px 0 16px;padding:6px;border:1px solid var(--line);
+      border-radius:20px;background:rgba(255,253,249,.94);backdrop-filter:blur(12px);
+      box-shadow:0 8px 24px rgba(66,48,37,.09);
+    }
+    .tab{
+      min-height:48px;padding:8px 4px;border:0;border-radius:15px;
+      color:var(--muted);background:transparent;font-size:13px;font-weight:900;cursor:pointer;
+    }
+    .tab[aria-selected="true"]{color:#fff;background:var(--coral);box-shadow:0 8px 18px rgba(255,138,91,.28)}
+    .screen{display:none}
+    .screen.active{display:block;animation:fade .24s ease}
+    @keyframes fade{from{opacity:.2;transform:translateY(5px)}to{opacity:1;transform:none}}
+    .card{
+      margin-bottom:14px;padding:20px;border:1px solid var(--line);
+      border-radius:var(--radius);background:rgba(255,253,249,.98);box-shadow:var(--shadow);
+    }
+    .card h2,.card h3{margin-top:0;line-height:1.25}
+    .card h2{margin-bottom:6px;font-size:24px}
+    .card h3{font-size:18px}
+    .muted{color:var(--muted)}
+    .micro{font-size:13px}
+    .callout{
+      display:flex;gap:11px;align-items:flex-start;margin:14px 0;padding:13px 14px;
+      border-radius:17px;background:var(--coral-soft);border:1px solid #ffd3c0;
+    }
+    .callout .icon{font-size:23px;line-height:1}
+    .mode-switch,.factory-switch{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:16px 0}
+    .mode-btn,.factory-btn{
+      min-height:54px;padding:10px;border:2px solid var(--line);border-radius:17px;
+      background:#fff;color:var(--ink);font-weight:900;cursor:pointer;
+    }
+    .mode-btn.active[data-mode="now"]{border-color:var(--coral);background:var(--coral-soft);color:var(--coral-dark)}
+    .mode-btn.active[data-mode="habit"]{border-color:var(--blue);background:var(--blue-soft);color:#245e9c}
+    .factory-btn.active{border-color:var(--coral);background:var(--coral);color:#fff}
+    .rail-stage{
+      position:relative;overflow:hidden;padding:18px;border-radius:22px;
+      border:2px dashed #f0c7b6;background:linear-gradient(180deg,#fffaf5,#fff);
+    }
+    .rail-stage.habit{border-color:#b9d4f3;background:linear-gradient(180deg,#f4f9ff,#fff)}
+    .signal{
+      display:inline-flex;align-items:center;gap:7px;padding:6px 10px;border-radius:999px;
+      background:var(--sun);color:#593e00;font-size:13px;font-weight:950;letter-spacing:.04em;
+    }
+    .sentence-track{display:flex;gap:7px;align-items:center;flex-wrap:wrap;margin:18px 0 10px;min-height:54px}
+    .word{
+      padding:8px 11px;border-radius:12px;background:#fff;border:1px solid var(--line);
+      box-shadow:0 4px 10px rgba(62,47,37,.08);font-size:18px;font-weight:900;
+    }
+    .word.engine{color:#fff;background:var(--coral);border-color:var(--coral)}
+    .habit .word.engine{background:var(--blue);border-color:var(--blue)}
+    .word.verb{outline:3px solid rgba(245,189,72,.42)}
+    .track-rule{font-size:15px;font-weight:850}
+    .signal-row{display:flex;gap:7px;flex-wrap:wrap;margin-top:10px}
+    .signal-chip{padding:6px 9px;border-radius:10px;background:#fff;border:1px solid var(--line);font-size:13px;font-weight:800}
+    .compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}
+    .compare-card{padding:14px;border-radius:18px;border:1px solid var(--line);background:#fff}
+    .compare-card.now{border-top:5px solid var(--coral)}
+    .compare-card.habit{border-top:5px solid var(--blue)}
+    .compare-card b{display:block;margin-bottom:6px}
+    .guided{margin-top:16px;padding:15px;border-radius:18px;background:#faf5ef}
+    .question-title{font-size:20px;font-weight:950;line-height:1.4}
+    .options{display:grid;gap:9px;margin:14px 0}
+    .option{
+      min-height:50px;padding:11px 14px;border:2px solid var(--line);border-radius:16px;
+      background:#fff;color:var(--ink);text-align:left;font-weight:850;cursor:pointer;
+    }
+    .option:hover,.option:focus-visible{border-color:var(--coral);outline:0}
+    .option.selected{border-color:var(--coral);background:var(--coral-soft)}
+    .option.correct{border-color:var(--mint);background:var(--mint-soft);color:#11634f}
+    .option.wrong{border-color:var(--danger);background:#fff0f0;color:#9a2f2f}
+    .feedback{display:none;margin-top:10px;padding:12px 14px;border-radius:15px;font-weight:800}
+    .feedback.show{display:block}
+    .feedback.ok{background:var(--mint-soft);color:#126650}
+    .feedback.no{background:#fff0f0;color:#963535}
+    .primary,.secondary,.ghost,.tiny{
+      border:0;border-radius:15px;font-weight:900;cursor:pointer;
+    }
+    .primary{min-height:50px;padding:12px 18px;color:#fff;background:var(--coral);box-shadow:0 8px 18px rgba(255,138,91,.25)}
+    .primary:disabled{opacity:.45;cursor:not-allowed;box-shadow:none}
+    .secondary{min-height:48px;padding:11px 16px;color:#fff;background:var(--blue)}
+    .ghost{min-height:46px;padding:10px 14px;color:var(--ink);background:#fff;border:1px solid var(--line)}
+    .tiny{min-height:38px;padding:8px 11px;color:var(--coral-dark);background:var(--coral-soft)}
+    .button-row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+    .factory-panel{display:none}
+    .factory-panel.active{display:block}
+    .verb-picker,.subject-picker{display:flex;gap:7px;flex-wrap:wrap;margin:12px 0}
+    .verb-pick,.subject-pick{
+      min-height:42px;padding:8px 12px;border:1px solid var(--line);border-radius:13px;background:#fff;font-weight:900;cursor:pointer;
+    }
+    .verb-pick.active,.subject-pick.active{color:#fff;background:var(--coral);border-color:var(--coral)}
+    .machine{
+      display:grid;grid-template-columns:1fr auto 1fr;gap:12px;align-items:center;
+      min-height:154px;padding:18px;border-radius:22px;background:linear-gradient(135deg,#2f3c45,#1f2a31);color:#fff;
+    }
+    .machine-box{padding:15px 10px;border-radius:16px;background:rgba(255,255,255,.11);text-align:center}
+    .machine-box small{display:block;color:#d7e0e5}
+    .machine-word{font-size:clamp(25px,7vw,38px);font-weight:950;word-break:break-word}
+    .machine-arrow{font-size:26px;color:var(--sun)}
+    .rule-strip{margin-top:10px;padding:11px;border-radius:15px;background:#fff4c9;color:#5d4500;font-weight:850}
+    .rule-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-top:14px}
+    .rule-card{padding:13px;border-radius:16px;background:#fff;border:1px solid var(--line)}
+    .rule-card b{display:block;color:var(--coral-dark)}
+    .cover-answer .machine-word.result{filter:blur(8px);user-select:none}
+    .mini-practice{margin-top:16px;padding:15px;border-radius:18px;border:2px dashed var(--line);background:#fff}
+    .challenge-head{display:flex;justify-content:space-between;gap:12px;align-items:center}
+    .counter{padding:7px 10px;border-radius:999px;background:var(--blue-soft);color:#245e9c;font-weight:900;white-space:nowrap}
+    .cue{margin:10px 0;padding:9px 12px;border-left:5px solid var(--sun);background:#fff8dc;border-radius:0 12px 12px 0;font-weight:800}
+    .challenge-box{min-height:370px}
+    .done-panel{text-align:center;padding:24px 8px}
+    .done-panel .trophy{font-size:64px}
+    .wrong-list{display:grid;gap:9px;margin:12px 0}
+    .wrong-row{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center;padding:13px;border:1px solid var(--line);border-radius:16px;background:#fff}
+    .wrong-row.done{background:var(--mint-soft);border-color:#b9e4d5}
+    .status-pill{display:inline-block;padding:4px 8px;border-radius:999px;font-size:12px;font-weight:900;background:#fff0f0;color:#9b3737}
+    .wrong-row.done .status-pill{background:#d7f3e8;color:#17644f}
+    .empty{padding:20px;text-align:center;border:2px dashed var(--line);border-radius:18px;color:var(--muted)}
+    .repair-box{display:none;margin-top:14px;padding:17px;border:2px solid var(--coral);border-radius:20px;background:var(--coral-soft)}
+    .repair-box.active{display:block}
+    .evidence{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin:13px 0}
+    .evidence-card{padding:12px;border-radius:15px;background:#fff;border:1px solid var(--line);text-align:center}
+    .evidence-card b{display:block;font-size:20px}
+    .audio-row{display:grid;gap:8px;margin:12px 0}
+    .audio-btn{
+      display:flex;justify-content:space-between;align-items:center;gap:10px;
+      min-height:50px;padding:10px 13px;border:1px solid #c8dced;border-radius:15px;
+      background:#f6fbff;color:#244c70;font-weight:850;text-align:left;cursor:pointer;
+    }
+    .audio-btn span:last-child{font-size:20px}
+    details{margin-top:12px}
+    summary{cursor:pointer;font-weight:900}
+    .footer-note{margin-top:16px;color:var(--muted);font-size:12px;text-align:center}
+    .toast{
+      position:fixed;z-index:100;left:50%;bottom:94px;transform:translateX(-50%) translateY(20px);
+      width:min(440px,calc(100% - 28px));padding:12px 16px;border-radius:15px;
+      color:#fff;background:#27343d;text-align:center;font-weight:850;opacity:0;pointer-events:none;transition:.2s;
+    }
+    .toast.show{opacity:1;transform:translateX(-50%)}
+    .reteach-overlay{
+      display:none;position:fixed;z-index:90;inset:0;padding:18px;overflow:auto;
+      background:rgba(25,34,40,.65);backdrop-filter:blur(7px);
+    }
+    .reteach-overlay.active{display:grid;place-items:center}
+    .reteach-card{width:min(560px,100%);padding:22px;border-radius:25px;background:var(--paper);box-shadow:0 24px 70px rgba(0,0,0,.27)}
+    .reteach-rule{padding:14px;border-radius:16px;background:#fff4c9;font-weight:900}
+    .screen-reader{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+    @media(max-width:620px){
+      .wrap{width:min(100% - 16px,920px);padding-top:8px}
+      .hero{padding:19px;border-radius:24px}
+      .hero-stats{grid-template-columns:1fr 1fr 1fr}
+      .hero-stat{padding:8px 4px}.hero-stat b{font-size:16px}
+      .tabbar{top:4px}.tab{font-size:12px}
+      .card{padding:16px;border-radius:21px}
+      .compare-grid,.rule-grid,.evidence{grid-template-columns:1fr}
+      .machine{grid-template-columns:1fr;gap:7px}.machine-arrow{transform:rotate(90deg);text-align:center}
+      .wrong-row{grid-template-columns:1fr}
+    }
+    @media(prefers-reduced-motion:reduce){
+      *,*:before,*:after{scroll-behavior:auto!important;animation:none!important;transition:none!important}
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header class="hero">
+      <div class="crumbs"><a href="../index.html">学习主页</a><span>›</span><a href="summer_english_hub.html?who=eddey">Eddey 暑假英语</a></div>
+      <div class="eyebrow">🍊 Eddey · 2026-07-30 · 约 15–20 分钟</div>
+      <h1>现在正在做<br>平时经常做</h1>
+      <p>现在进行时 × 一般现在时｜先看时间信号，再让动词穿对衣服。</p>
+      <div class="hero-stats">
+        <div class="hero-stat"><b id="heroLearn">0/2</b><span>学习站</span></div>
+        <div class="hero-stat"><b id="heroChallenge">0/10</b><span>独立挑战</span></div>
+        <div class="hero-stat"><b id="heroWrong">0</b><span>待回炉</span></div>
+      </div>
+      <div class="progress-shell" aria-label="学习总进度"><div class="progress-fill" id="progressFill"></div></div>
+    </header>
+
+    <nav class="tabbar" aria-label="学习导航">
+      <button class="tab" type="button" data-screen="learn" aria-selected="true">① 双轨</button>
+      <button class="tab" type="button" data-screen="factory" aria-selected="false">② 变形</button>
+      <button class="tab" type="button" data-screen="challenge" aria-selected="false">③ 挑战</button>
+      <button class="tab" type="button" data-screen="record" aria-selected="false">④ 记录</button>
+    </nav>
+
+    <main>
+      <section class="screen active" id="screen-learn">
+        <article class="card">
+          <h2>第一站：时态双轨切换台</h2>
+          <p class="muted">同一个动作，时间信号不同，句子的“发动机”也不同。先按两个按钮来回比较。</p>
+          <div class="mode-switch">
+            <button class="mode-btn active" type="button" data-mode="now">🔴 现在正在做</button>
+            <button class="mode-btn" type="button" data-mode="habit">🔵 平时经常做</button>
+          </div>
+          <div class="rail-stage" id="railStage">
+            <span class="signal" id="railSignal">NOW · 现在</span>
+            <div class="sentence-track" id="sentenceTrack" aria-live="polite"></div>
+            <div class="track-rule" id="trackRule"></div>
+            <div class="signal-row" id="signalRow"></div>
+          </div>
+          <div class="compare-grid">
+            <div class="compare-card now">
+              <b>🔴 正在发生</b>
+              <span>主语 + <strong>am / is / are</strong> + 动词-ing</span>
+            </div>
+            <div class="compare-card habit">
+              <b>🔵 经常 / 规律 / 事实</b>
+              <span>主语 + 动词；一个他/她/它时，动词用三单</span>
+            </div>
+          </div>
+          <div class="callout">
+            <span class="icon">🧭</span>
+            <div><strong>Eddey 的判断口令：</strong><br>① 找时间信号；② 看主语；③ 再给动词变形。不要一看到动作就急着加 <em>-ing</em> 或 <em>-s</em>。</div>
+          </div>
+        </article>
+
+        <article class="card">
+          <h2>跟着做：只判断走哪条轨</h2>
+          <p class="muted">这一轮有提示，不算独立检验。</p>
+          <div class="guided">
+            <div class="counter" id="guidedCounter">1 / 4</div>
+            <div class="question-title" id="guidedPrompt"></div>
+            <div class="cue" id="guidedCue"></div>
+            <div class="options" id="guidedOptions"></div>
+            <div class="feedback" id="guidedFeedback"></div>
+            <button class="primary" id="guidedNext" type="button" hidden>下一张信号卡</button>
+          </div>
+        </article>
+      </section>
+
+      <section class="screen" id="screen-factory">
+        <article class="card">
+          <h2>第二站：动词变形工厂</h2>
+          <p class="muted">先亲手切换、观察，再遮住答案回想。</p>
+          <div class="factory-switch">
+            <button class="factory-btn active" type="button" data-factory="ing">-ing 工厂</button>
+            <button class="factory-btn" type="button" data-factory="third">三单工厂</button>
+          </div>
+
+          <div class="factory-panel active" id="factory-ing">
+            <h3>动词换上 <em>-ing</em> 工作服</h3>
+            <div class="verb-picker" id="ingPicker"></div>
+            <div class="machine" id="ingMachine">
+              <div class="machine-box"><small>原形</small><div class="machine-word" id="ingBase"></div></div>
+              <div class="machine-arrow">➜</div>
+              <div class="machine-box"><small>现在分词</small><div class="machine-word result" id="ingResult"></div></div>
+            </div>
+            <div class="rule-strip" id="ingRule"></div>
+            <div class="button-row" style="margin-top:10px">
+              <button class="ghost" type="button" id="coverIng">🙈 遮住答案</button>
+            </div>
+            <div class="rule-grid">
+              <div class="rule-card"><b>直接 + ing</b>play → playing<br>eat → eating</div>
+              <div class="rule-card"><b>不发音 e：去 e + ing</b>write → writing<br>dance → dancing</div>
+              <div class="rule-card"><b>短元音重读：双写 + ing</b>run → running<br>sit → sitting</div>
+            </div>
+            <div class="mini-practice" id="ingMini"></div>
+          </div>
+
+          <div class="factory-panel" id="factory-third">
+            <h3>主语是“一个他/她/它”，动词穿三单衣</h3>
+            <div class="subject-picker" id="subjectPicker"></div>
+            <div class="verb-picker" id="thirdPicker"></div>
+            <div class="machine">
+              <div class="machine-box"><small>主语 + 原形</small><div class="machine-word" id="thirdBase"></div></div>
+              <div class="machine-arrow">➜</div>
+              <div class="machine-box"><small>句子里的动词</small><div class="machine-word result" id="thirdResult"></div></div>
+            </div>
+            <div class="rule-strip" id="thirdRule"></div>
+            <div class="rule-grid">
+              <div class="rule-card"><b>大多数 + s</b>open → opens<br>run → runs</div>
+              <div class="rule-card"><b>s / x / ch / sh / o + es</b>watch → watches<br>do → does</div>
+              <div class="rule-card"><b>辅音 + y：y 变 i + es</b>study → studies<br>但 play → plays</div>
+            </div>
+            <div class="mini-practice" id="thirdMini"></div>
+          </div>
+        </article>
+
+        <article class="card">
+          <h2>听一听：三单和原形的差别</h2>
+          <p class="muted">复用项目中已经验收过的 Aria 英语示范音。点一句，眼睛同时盯住加粗的动词。</p>
+          <div class="audio-row">
+            <button class="audio-btn" type="button" data-audio="Tom likes apples."><span>Tom <strong>likes</strong> apples.</span><span>🔊</span></button>
+            <button class="audio-btn" type="button" data-audio="Tom doesn't like apples."><span>Tom doesn't <strong>like</strong> apples.</span><span>🔊</span></button>
+            <button class="audio-btn" type="button" data-audio="Does Tom like apples?"><span>Does Tom <strong>like</strong> apples?</span><span>🔊</span></button>
+          </div>
+          <div class="callout">
+            <span class="icon">🔍</span>
+            <div>今天先记住：普通肯定句里 Tom 是三单，所以用 <strong>likes</strong>；一旦 <strong>does / doesn't</strong> 来帮忙，后面的动作就恢复原形 <strong>like</strong>。</div>
+          </div>
+        </article>
+      </section>
+
+      <section class="screen" id="screen-challenge">
+        <article class="card challenge-box">
+          <div class="challenge-head">
+            <div>
+              <h2>第三站：10 题独立挑战</h2>
+              <p class="muted" style="margin:0">不再给步骤提示。答错会回到对应微课，看懂后返回同一题。</p>
+            </div>
+            <div class="counter" id="challengeCounter">1 / 10</div>
+          </div>
+          <div id="challengeBody">
+            <div class="cue" id="challengeCue"></div>
+            <div class="question-title" id="challengePrompt"></div>
+            <div class="options" id="challengeOptions"></div>
+            <div class="feedback" id="challengeFeedback"></div>
+            <div class="button-row">
+              <button class="primary" id="checkChallenge" type="button" disabled>检查答案</button>
+              <button class="secondary" id="reteachButton" type="button" hidden>回看对应微课</button>
+              <button class="primary" id="nextChallenge" type="button" hidden>下一题</button>
+            </div>
+          </div>
+          <div class="done-panel" id="challengeDone" hidden>
+            <div class="trophy">🏁</div>
+            <h2>双轨挑战跑完啦！</h2>
+            <p id="doneSummary"></p>
+            <div class="button-row" style="justify-content:center">
+              <button class="primary" type="button" id="goRecord">去回炉错题</button>
+              <button class="ghost" type="button" id="restartChallenge">再跑一遍</button>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <section class="screen" id="screen-record">
+        <article class="card">
+          <h2>第四站：错题回炉</h2>
+          <p class="muted">只练真正答错过的题。每项要在两道不同变式上连续答对，才算“已攻克”。</p>
+          <div class="evidence">
+            <div class="evidence-card"><b id="recordAttempts">0</b><span>软件作答</span></div>
+            <div class="evidence-card"><b id="recordOpen">0</b><span>待回炉</span></div>
+            <div class="evidence-card"><b id="recordDone">0</b><span>已攻克</span></div>
+          </div>
+          <div class="wrong-list" id="wrongList"></div>
+          <div class="repair-box" id="repairBox">
+            <span class="status-pill" id="repairLabel"></span>
+            <h3 id="repairTitle"></h3>
+            <div class="cue" id="repairRule"></div>
+            <div class="question-title" id="repairPrompt"></div>
+            <div class="options" id="repairOptions"></div>
+            <div class="feedback" id="repairFeedback"></div>
+            <div class="button-row">
+              <button class="primary" id="checkRepair" type="button" disabled>检查变式</button>
+              <button class="ghost" id="closeRepair" type="button">先收起来</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="card">
+          <h2>完成与学习记录</h2>
+          <p class="muted">记录只属于 Eddey。软件刚上线不代表已经掌握；只有实际作答证据会计入进度。</p>
+          <div class="button-row">
+            <button class="primary" type="button" id="finishSync">完成并同步</button>
+            <button class="ghost" type="button" id="exportJson">导出 JSON</button>
+            <button class="ghost" type="button" id="exportMd">导出 Markdown</button>
+            <button class="ghost" type="button" id="importJson">导入记录</button>
+            <label class="screen-reader" for="importFile">选择 Eddey 时态双轨 JSON 学习记录</label>
+            <input class="screen-reader" id="importFile" type="file" accept="application/json">
+          </div>
+          <details>
+            <summary>家长证据边界</summary>
+            <p class="micro">本软件依据 2026-07-30 老师反馈，以及已入库课外英语教材第 68—74 页原始扫描：Lesson 20 现在进行时、现在分词变化；Lesson 21 一般现在时、时间信号、一般事实和第三人称单数变化。第 74 页随后出现的将来时内容不在本次范围内。</p>
+            <p class="micro">三条英语音频复用 2026-07-22 已验收的 en-US-AriaNeural 原音；不调用浏览器随机语音。当前学习结果以本设备真实作答和正式页面同步记录为准。</p>
+          </details>
+        </article>
+      </section>
+    </main>
+
+    <p class="footer-note">教材范围：第 68—74 页 · Lesson 20–21｜孩子：Eddey｜资料与 Kenton 完全隔离</p>
+  </div>
+
+  <div class="reteach-overlay" id="reteachOverlay" role="dialog" aria-modal="true" aria-labelledby="reteachTitle">
+    <div class="reteach-card">
+      <span class="status-pill">答错不是坏事，找到卡点就能修好</span>
+      <h2 id="reteachTitle"></h2>
+      <div class="reteach-rule" id="reteachRule"></div>
+      <p id="reteachExample"></p>
+      <button class="primary" type="button" id="returnSameQuestion">看懂了，返回刚才这道题</button>
+    </div>
+  </div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="../assets/learning-sync.js"></script>
+  <script>
+    const APP_ID = "eddey-present-tense-lab-20260730";
+    const VERSION = "1.0.0";
+    const CHILD = "Eddey";
+    const STORAGE_KEY = "dd:Eddey:present-tense-lab:2026-07-30:v1";
+
+    const AUDIO_MAP = {
+      "Tom likes apples.":"data:audio/mpeg;base64,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qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq//NkxOIZe/lktgjN6aqqqqqqqqpMQU1FMy4xMDCqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq//NkxHwAAANIAAAAAKqqqqqqqqpMQU1FMy4xMDCqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq//NkxHwAAANIAAAAAKqqqqqqqqpMQU1FMy4xMDCqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq//NkxHwAAANIAAAAAKqqqqqqqqpMQU1FMy4xMDCqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq//NkxHwAAANIAAAAAKqqqqqqqqpMQU1FMy4xMDCqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq//NkxHwAAANIAAAAAKqqqqqqqqpMQU1FMy4xMDCqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq//NkxHwAAANIAAAAAKqqqqqqqqpMQU1FMy4xMDCqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq//NkxHwAAANIAAAAAKqqqqqqqqpMQU1FMy4xMDCqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq//NkxHwAAANIAAAAAKqqqqqqqqpMQU1FMy4xMDCqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq//NkxHwAAANIAAAAAKqqqqqqqqpMQU1FMy4xMDCqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq//NkxHwAAANIAAAAAKqqqqqqqqpMQU1FMy4xMDCqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq//NkxHwAAANIAAAAAKqqqqqqqqpMQU1FMy4xMDCqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq//NkxHwAAANIAAAAAKqqqqqqqqpMQU1FMy4xMDCqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq//NkxHwAAANIAAAAAKqqqqqqqqpMQU1FMy4xMDCqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq//NkxHwAAANIAAAAAKqqqqqqqqpMQU1FMy4xMDCqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq//NkxHwAAANIAAAAAKqqqqqqqqpMQU1FMy4xMDCqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq//NkxHwAAANIAAAAAKqqqqqqqqpMQU1FMy4xMDCqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq//NkxHwAAANIAAAAAKqqqqqqqqpMQU1FMy4xMDCqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq//NkxHwAAANIAAAAAKqqqqqqqqpMQU1FMy4xMDCqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq//NkxHwAAANIAAAAAKqqqqqqqqpMQU1FMy4xMDCqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq//NkxHwAAANIAAAAAKqqqqqqqqpMQU1FMy4xMDCqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq//NkxHwAAANIAAAAAKqqqqqqqqpMQU1FMy4xMDCqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq//NkxHwAAANIAAAAAKqqqqqqqqpMQU1FMy4xMDCqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq//NkxHwAAANIAAAAAKqqqqqqqqpMQU1FMy4xMDCqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq//NkxHwAAANIAAAAAKqqqqqqqqpMQU1FMy4xMDCqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq//NkxHwAAANIAAAAAKqqqqqqqqpMQU1FMy4xMDCqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq//NkxHwAAANIAAAAAKqqqqqqqqpMQU1FMy4xMDCqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq//NkxHwAAANIAAAAAKqqqqqqqqpMQU1FMy4xMDCqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq//NkxHwAAANIAAAAAKqqqqqqqqpMQU1FMy4xMDCqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq//NkxHwAAANIAAAAAKqqqqqqqqpMQU1FMy4xMDCqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq//NkxHwAAANIAAAAAKqqqqqqqqpMQU1FMy4xMDCqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq//NkxHwAAANIAAAAAKqqqqqqqqpMQU1FMy4xMDCqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq//NkxHwAAANIAAAAAKqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq",
+      "Tom doesn't like apples.":"data:audio/mpeg;base64,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VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV//NkxHwAAANIAAAAAFVVVVVVVVVMQU1FMy4xMDBVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV//NkxHwAAANIAAAAAFVVVVVVVVVMQU1FMy4xMDBVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV//NkxHwAAANIAAAAAFVVVVVVVVVMQU1FMy4xMDBVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV//NkxHwAAANIAAAAAFVVVVVVVVVMQU1FMy4xMDBVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV//NkxHwAAANIAAAAAFVVVVVVVVVMQU1FMy4xMDBVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV//NkxHwAAANIAAAAAFVVVVVVVVVMQU1FMy4xMDBVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV//NkxHwAAANIAAAAAFVVVVVVVVVMQU1FMy4xMDBVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV//NkxHwAAANIAAAAAFVVVVVVVVVMQU1FMy4xMDBVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV//NkxHwAAANIAAAAAFVVVVVVVVVMQU1FMy4xMDBVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV//NkxHwAAANIAAAAAFVVVVVVVVVMQU1FMy4xMDBVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV//NkxHwAAANIAAAAAFVVVVVVVVVMQU1FMy4xMDBVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV//NkxHwAAANIAAAAAFVVVVVVVVVMQU1FMy4xMDBVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV//NkxHwAAANIAAAAAFVVVVVVVVVMQU1FMy4xMDBVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV//NkxHwAAANIAAAAAFVVVVVVVVVMQU1FMy4xMDBVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV//NkxHwAAANIAAAAAFVVVVVVVVVMQU1FMy4xMDBVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV//NkxHwAAANIAAAAAFVVVVVVVVVMQU1FMy4xMDBVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV//NkxHwAAANIAAAAAFVVVVVVVVVMQU1FMy4xMDBVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV//NkxHwAAANIAAAAAFVVVVVVVVVMQU1FMy4xMDBVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV//NkxHwAAANIAAAAAFVVVVVVVVVMQU1FMy4xMDBVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV//NkxHwAAANIAAAAAFVVVVVVVVVMQU1FMy4xMDBVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV//NkxHwAAANIAAAAAFVVVVVVVVVMQU1FMy4xMDBVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV//NkxHwAAANIAAAAAFVVVVVVVVVMQU1FMy4xMDBVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV//NkxHwAAANIAAAAAFVVVVVVVVVMQU1FMy4xMDBVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV//NkxHwAAANIAAAAAFVVVVVVVVVMQU1FMy4xMDBVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV//NkxHwAAANIAAAAAFVVVVVVVVVMQU1FMy4xMDBVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV//NkxHwAAANIAAAAAFVVVVVVVVVMQU1FMy4xMDBVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV//NkxHwAAANIAAAAAFVVVVVVVVVMQU1FMy4xMDBVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV//NkxHwAAANIAAAAAFVVVVVVVVVMQU1FMy4xMDBVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV//NkxHwAAANIAAAAAFVVVVVVVVVMQU1FMy4xMDBVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV//NkxHwAAANIAAAAAFVVVVVVVVVMQU1FMy4xMDBVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV//NkxHwAAANIAAAAAFVVVVVVVVVMQU1FMy4xMDBVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV//NkxHwAAANIAAAAAFVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV",
+      "Does Tom like apples?":"data:audio/mpeg;base64,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//NkxHwAAANIAAAAAFVVVVVVVVVMQU1FMy4xMDBVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV//NkxHwAAANIAAAAAFVVVVVVVVVMQU1FMy4xMDBVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV//NkxHwAAANIAAAAAFVVVVVVVVVMQU1FMy4xMDBVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV//NkxHwAAANIAAAAAFVVVVVVVVVMQU1FMy4xMDBVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV//NkxHwAAANIAAAAAFVVVVVVVVVMQU1FMy4xMDBVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV//NkxHwAAANIAAAAAFVVVVVVVVVMQU1FMy4xMDBVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV//NkxHwAAANIAAAAAFVVVVVVVVVMQU1FMy4xMDBVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV//NkxHwAAANIAAAAAFVVVVVVVVVMQU1FMy4xMDBVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV//NkxHwAAANIAAAAAFVVVVVVVVVMQU1FMy4xMDBVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV//NkxHwAAANIAAAAAFVVVVVVVVVMQU1FMy4xMDBVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV//NkxHwAAANIAAAAAFVVVVVVVVVMQU1FMy4xMDBVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV//NkxHwAAANIAAAAAFVVVVVVVVVMQU1FMy4xMDBVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV//NkxHwAAANIAAAAAFVVVVVVVVVMQU1FMy4xMDBVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV//NkxHwAAANIAAAAAFVVVVVVVVVMQU1FMy4xMDBVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV//NkxHwAAANIAAAAAFVVVVVVVVVMQU1FMy4xMDBVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV//NkxHwAAANIAAAAAFVVVVVVVVVMQU1FMy4xMDBVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV//NkxHwAAANIAAAAAFVVVVVVVVVMQU1FMy4xMDBVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV//NkxHwAAANIAAAAAFVVVVVVVVVMQU1FMy4xMDBVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV//NkxHwAAANIAAAAAFVVVVVVVVVMQU1FMy4xMDBVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV//NkxHwAAANIAAAAAFVVVVVVVVVMQU1FMy4xMDBVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV//NkxHwAAANIAAAAAFVVVVVVVVVMQU1FMy4xMDBVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV//NkxHwAAANIAAAAAFVVVVVVVVVMQU1FMy4xMDBVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV//NkxHwAAANIAAAAAFVVVVVVVVVMQU1FMy4xMDBVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV//NkxHwAAANIAAAAAFVVVVVVVVVMQU1FMy4xMDBVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV//NkxHwAAANIAAAAAFVVVVVVVVVMQU1FMy4xMDBVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV//NkxHwAAANIAAAAAFVVVVVVVVVMQU1FMy4xMDBVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV//NkxHwAAANIAAAAAFVVVVVVVVVMQU1FMy4xMDBVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV//NkxHwAAANIAAAAAFVVVVVVVVVMQU1FMy4xMDBVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV//NkxHwAAANIAAAAAFVVVVVVVVVMQU1FMy4xMDBVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV//NkxHwAAANIAAAAAFVVVVVVVVVMQU1FMy4xMDBVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV//NkxHwAAANIAAAAAFVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV"
+    };
+
+    const guidedQuestions = [
+      {prompt:"Look! The girl is painting.",cue:"信号词：Look!（看！）",answer:"now",explain:"Look! 提醒你动作正在眼前发生，所以走“现在正在做”轨。"},
+      {prompt:"I make cakes every Sunday.",cue:"信号词：every Sunday（每个星期天）",answer:"habit",explain:"每个星期天都会做，是规律习惯，所以走“一般现在时”轨。"},
+      {prompt:"The sun rises in the east.",cue:"线索：这是不会只发生一次的事实。",answer:"habit",explain:"永远正确的事实用一般现在时。"},
+      {prompt:"Listen! He is singing.",cue:"信号词：Listen!（听！）",answer:"now",explain:"Listen! 提醒你动作此刻正在发生。"}
+    ];
+
+    const ingExamples = [
+      {base:"play",result:"playing",rule:"普通情况：直接加 -ing。"},
+      {base:"eat",result:"eating",rule:"普通情况：直接加 -ing。"},
+      {base:"write",result:"writing",rule:"结尾 e 不发音：去掉 e，再加 -ing。"},
+      {base:"dance",result:"dancing",rule:"结尾 e 不发音：去掉 e，再加 -ing。"},
+      {base:"run",result:"running",rule:"短元音重读闭音节：双写最后一个辅音字母，再加 -ing。"},
+      {base:"sit",result:"sitting",rule:"短元音重读闭音节：双写最后一个辅音字母，再加 -ing。"}
+    ];
+
+    const thirdExamples = [
+      {base:"play",third:"plays",rule:"大多数动词直接加 -s；play 的 y 前是元音 a，所以不变 y。"},
+      {base:"read",third:"reads",rule:"大多数动词直接加 -s。"},
+      {base:"watch",third:"watches",rule:"以 ch 结尾，加 -es。"},
+      {base:"wash",third:"washes",rule:"以 sh 结尾，加 -es。"},
+      {base:"do",third:"does",rule:"以 o 结尾，加 -es；do 变 does。"},
+      {base:"study",third:"studies",rule:"辅音字母 + y：把 y 变 i，再加 -es。"}
+    ];
+
+    const questions = [
+      {
+        id:"q1",kind:"现在进行时",cue:"Look! = 现在正在发生",prompt:"Look! The girl ___ a picture.",
+        options:["paints","is painting","painting"],answer:"is painting",lesson:"now",
+        explain:"girl 是一个人，用 is；paint 直接加 -ing，所以是 is painting。",
+        repairs:[
+          {prompt:"Now, the boy ___ an apple.",options:["eats","is eating","eating"],answer:"is eating"},
+          {prompt:"Look! Amy ___ in the room.",options:["dances","is dancing","dance"],answer:"is dancing"}
+        ]
+      },
+      {
+        id:"q2",kind:"一般现在时",cue:"every Sunday = 经常、规律",prompt:"I ___ cakes every Sunday.",
+        options:["make","am making","makes"],answer:"make",lesson:"habit",
+        explain:"every Sunday 是规律；主语 I 后用动词原形 make。",
+        repairs:[
+          {prompt:"We ___ English every Monday.",options:["study","studies","are studying"],answer:"study"},
+          {prompt:"I often ___ in the morning.",options:["run","runs","am running"],answer:"run"}
+        ]
+      },
+      {
+        id:"q3",kind:"现在分词",cue:"write 末尾 e 不发音",prompt:"write 的现在分词是哪一个？",
+        options:["writeing","writing","writting"],answer:"writing",lesson:"drop-e",
+        explain:"write 去掉不发音的 e，再加 -ing：write → writing。",
+        repairs:[
+          {prompt:"ride 的现在分词是哪一个？",options:["riding","rideing","ridding"],answer:"riding"},
+          {prompt:"dance 的现在分词是哪一个？",options:["danceing","dancing","danccing"],answer:"dancing"}
+        ]
+      },
+      {
+        id:"q4",kind:"现在分词",cue:"run 是短元音重读闭音节",prompt:"run 的现在分词是哪一个？",
+        options:["runing","running","runs"],answer:"running",lesson:"double",
+        explain:"run 要双写最后的 n，再加 -ing：run → running。",
+        repairs:[
+          {prompt:"sit 的现在分词是哪一个？",options:["siting","sitting","sits"],answer:"sitting"},
+          {prompt:"cut 的现在分词是哪一个？",options:["cuting","cutting","cuts"],answer:"cutting"}
+        ]
+      },
+      {
+        id:"q5",kind:"第三人称单数",cue:"She = 一个“她”",prompt:"She ___ every morning.",
+        options:["run","runs","is running"],answer:"runs",lesson:"third-s",
+        explain:"every morning 是规律；She 是三单，run 加 -s 变 runs。",
+        repairs:[
+          {prompt:"He ___ the door quietly.",options:["open","opens","is opening"],answer:"opens"},
+          {prompt:"The fish ___ in water.",options:["swim","swims","is swimming"],answer:"swims"}
+        ]
+      },
+      {
+        id:"q6",kind:"一般现在时",cue:"The boys = 不止一个",prompt:"The boys ___ TV every evening.",
+        options:["watch","watches","are watching"],answer:"watch",lesson:"plural-base",
+        explain:"every evening 是规律；boys 不止一个，动作保持原形 watch。",
+        repairs:[
+          {prompt:"The sheep ___ grass.",options:["eats","eat","are eating"],answer:"eat"},
+          {prompt:"We often ___ football.",options:["plays","play","are playing"],answer:"play"}
+        ]
+      },
+      {
+        id:"q7",kind:"第三人称单数",cue:"辅音字母 + y",prompt:"study 的第三人称单数是哪一个？",
+        options:["studys","studies","studyes"],answer:"studies",lesson:"third-y",
+        explain:"study 的 y 前是辅音 d：y 变 i，再加 -es，得到 studies。",
+        repairs:[
+          {prompt:"fly 的第三人称单数是哪一个？",options:["flys","flies","flyes"],answer:"flies"},
+          {prompt:"play 的第三人称单数是哪一个？",options:["plaies","plays","playes"],answer:"plays"}
+        ]
+      },
+      {
+        id:"q8",kind:"第三人称单数",cue:"sh 结尾",prompt:"wash 的第三人称单数是哪一个？",
+        options:["washs","washes","washies"],answer:"washes",lesson:"third-es",
+        explain:"wash 以 sh 结尾，加 -es，得到 washes。",
+        repairs:[
+          {prompt:"watch 的第三人称单数是哪一个？",options:["watchs","watches","watchies"],answer:"watches"},
+          {prompt:"mix 的第三人称单数是哪一个？",options:["mixs","mixes","mixies"],answer:"mixes"}
+        ]
+      },
+      {
+        id:"q9",kind:"现在进行时",cue:"Listen! = 此刻正在发生",prompt:"Listen! He ___ a song.",
+        options:["sings","is singing","singing"],answer:"is singing",lesson:"now",
+        explain:"Listen! 表示现在；He 用 is，再接 singing：is singing。",
+        repairs:[
+          {prompt:"Now, she ___ a book.",options:["reads","is reading","reading"],answer:"is reading"},
+          {prompt:"Look! They ___ football.",options:["play","are playing","playing"],answer:"are playing"}
+        ]
+      },
+      {
+        id:"q10",kind:"一般事实",cue:"这是永远正确的事实",prompt:"The earth ___ around the sun.",
+        options:["go","goes","is going"],answer:"goes",lesson:"truth",
+        explain:"自然事实用一般现在时；earth 是一个事物，go 变 goes。",
+        repairs:[
+          {prompt:"The sun ___ in the east.",options:["rise","rises","is rising"],answer:"rises"},
+          {prompt:"A fish ___ water to live.",options:["need","needs","is needing"],answer:"needs"}
+        ]
+      }
+    ];
+
+    const lessonMap = {
+      now:{title:"先找“现在”信号",rule:"看到 now / look / listen，先搭好 am / is / are，再接动词-ing。",example:"Look! The girl is painting. = girl → is，paint → painting。"},
+      habit:{title:"先找“经常”信号",rule:"every… / often / always 表示规律，用一般现在时；I / you / we / they 后用原形。",example:"I make cakes every Sunday. 不是 I am making。"},
+      "drop-e":{title:"不发音 e 要先下车",rule:"动词末尾 e 不发音时：去 e + ing。",example:"write → writing；dance → dancing。"},
+      double:{title:"短元音重读要双写",rule:"像 run / sit / cut / put 这样的词：双写最后一个辅音字母 + ing。",example:"run → running；sit → sitting。"},
+      "third-s":{title:"一个他/她/它：动词 + s",rule:"一般现在时里，He / She / It / 人名 / 一个事物后，普通动词大多加 -s。",example:"She runs. / The fish swims."},
+      "plural-base":{title:"不止一个：动作保持原形",rule:"I / you / we / they 或复数主语后，动作动词用原形。",example:"The boys watch TV. / The sheep eat."},
+      "third-y":{title:"先看 y 前面的字母",rule:"辅音 + y：y 变 i + es；元音 + y：直接 + s。",example:"study → studies；fly → flies；play → plays。"},
+      "third-es":{title:"特殊尾巴要 + es",rule:"以 s / x / ch / sh / o 结尾，一般加 -es。",example:"watch → watches；wash → washes；do → does。"},
+      truth:{title:"永远正确的事实",rule:"自然规律和一般事实用一般现在时，再按主语决定是否三单。",example:"The earth goes around the sun."}
+    };
+
+    function freshState(){
+      return {
+        schema:1,appId:APP_ID,version:VERSION,child:CHILD,
+        mode:"now",guidedIndex:0,guidedDone:{},
+        factory:"ing",ingIndex:0,thirdIndex:0,subject:"She",
+        challengeIndex:0,challengeCorrect:{},wrongbook:{},attempts:[],completed:false
+      };
+    }
+
+    function loadState(){
+      try{
+        const parsed=JSON.parse(localStorage.getItem(STORAGE_KEY));
+        if(parsed && parsed.child===CHILD && parsed.appId===APP_ID) return Object.assign(freshState(),parsed);
+      }catch(_){}
+      return freshState();
+    }
+
+    let state=loadState();
+    let challengeChoice=null;
+    let challengeLocked=false;
+    let returnQuestionId=null;
+    let repairId=null;
+    let repairVariant=0;
+    let repairChoice=null;
+    let activeAudio=null;
+
+    const $=(selector)=>document.querySelector(selector);
+    const $$=(selector)=>[...document.querySelectorAll(selector)];
+
+    function save(){
+      localStorage.setItem(STORAGE_KEY,JSON.stringify(state));
+      updateProgress();
+    }
+
+    function toast(message){
+      const box=$("#toast");
+      box.textContent=message;box.classList.add("show");
+      clearTimeout(toast.timer);
+      toast.timer=setTimeout(()=>box.classList.remove("show"),2400);
+    }
+
+    function completedChallenge(){
+      return Object.keys(state.challengeCorrect).filter(id=>state.challengeCorrect[id]).length;
+    }
+
+    function openWrong(){
+      return Object.values(state.wrongbook).filter(row=>row.status!=="done").length;
+    }
+
+    function updateProgress(){
+      const learnDone=(Object.keys(state.guidedDone).length>=4?1:0)+(state.factoryVisited?1:0);
+      const challengeDone=completedChallenge();
+      const pct=Math.round(((learnDone*2)+(challengeDone*.6))/10*100);
+      $("#heroLearn").textContent=`${learnDone}/2`;
+      $("#heroChallenge").textContent=`${challengeDone}/10`;
+      $("#heroWrong").textContent=String(openWrong());
+      $("#progressFill").style.width=`${Math.min(100,pct)}%`;
+      renderRecordStats();
+    }
+
+    function showScreen(name){
+      $$(".screen").forEach(panel=>panel.classList.toggle("active",panel.id===`screen-${name}`));
+      $$(".tab").forEach(tab=>tab.setAttribute("aria-selected",String(tab.dataset.screen===name)));
+      if(name==="record") renderWrongbook();
+      if(name==="factory"){state.factoryVisited=true;save();}
+      window.scrollTo({top:Math.max(0,$(".tabbar").offsetTop-8),behavior:"smooth"});
+    }
+
+    function renderRail(){
+      const now=state.mode==="now";
+      const stage=$("#railStage");
+      stage.classList.toggle("habit",!now);
+      $("#railSignal").textContent=now?"NOW · 现在":"EVERY DAY · 每天";
+      $("#sentenceTrack").innerHTML=now
+        ?'<span class="word">Tom</span><span class="word engine">is</span><span class="word verb">playing</span><span class="word">football</span><span class="word">now.</span>'
+        :'<span class="word">Tom</span><span class="word engine verb">plays</span><span class="word">football</span><span class="word">every day.</span>';
+      $("#trackRule").innerHTML=now
+        ?"现在进行时：<strong>is + play → playing</strong>"
+        :"一般现在时：Tom 是一个人，<strong>play → plays</strong>";
+      $("#signalRow").innerHTML=(now?["now","Look!","Listen!"]:["every day","often","always","一般事实"])
+        .map(text=>`<span class="signal-chip">${text}</span>`).join("");
+      $$(".mode-btn").forEach(button=>button.classList.toggle("active",button.dataset.mode===state.mode));
+    }
+
+    function renderGuided(){
+      const item=guidedQuestions[state.guidedIndex];
+      const done=state.guidedDone[state.guidedIndex];
+      $("#guidedCounter").textContent=`${state.guidedIndex+1} / ${guidedQuestions.length}`;
+      $("#guidedPrompt").textContent=item.prompt;
+      $("#guidedCue").textContent=item.cue;
+      $("#guidedOptions").innerHTML=[
+        {value:"now",label:"🔴 现在正在做"},
+        {value:"habit",label:"🔵 平时经常做"}
+      ].map(option=>`<button class="option ${done===option.value?"correct":""}" type="button" data-guided="${option.value}">${option.label}</button>`).join("");
+      const feedback=$("#guidedFeedback");
+      feedback.className="feedback";
+      feedback.textContent="";
+      $("#guidedNext").hidden=!done;
+      if(done){
+        feedback.className="feedback show ok";
+        feedback.textContent=`答对了！${item.explain}`;
+      }
+      $$("[data-guided]").forEach(button=>button.onclick=()=>answerGuided(button.dataset.guided));
+    }
+
+    function answerGuided(choice){
+      const item=guidedQuestions[state.guidedIndex];
+      const feedback=$("#guidedFeedback");
+      if(choice===item.answer){
+        state.guidedDone[state.guidedIndex]=choice;
+        feedback.className="feedback show ok";
+        feedback.textContent=`答对了！${item.explain}`;
+        $$("[data-guided]").forEach(button=>button.classList.toggle("correct",button.dataset.guided===choice));
+        $("#guidedNext").hidden=false;
+        save();
+      }else{
+        feedback.className="feedback show no";
+        feedback.textContent=`先别急：${item.cue}。再选一次。`;
+        $$("[data-guided]").forEach(button=>button.classList.toggle("wrong",button.dataset.guided===choice));
+      }
+    }
+
+    function renderFactories(){
+      $$(".factory-panel").forEach(panel=>panel.classList.toggle("active",panel.id===`factory-${state.factory}`));
+      $$(".factory-btn").forEach(button=>button.classList.toggle("active",button.dataset.factory===state.factory));
+      $("#ingPicker").innerHTML=ingExamples.map((item,index)=>`<button class="verb-pick ${index===state.ingIndex?"active":""}" type="button" data-ing="${index}">${item.base}</button>`).join("");
+      const ing=ingExamples[state.ingIndex];
+      $("#ingBase").textContent=ing.base;
+      $("#ingResult").textContent=ing.result;
+      $("#ingRule").textContent=ing.rule;
+      $("#ingMachine").classList.remove("cover-answer");
+      $("#coverIng").textContent="🙈 遮住答案";
+      $$("[data-ing]").forEach(button=>button.onclick=()=>{
+        state.ingIndex=Number(button.dataset.ing);save();renderFactories();
+      });
+      $("#subjectPicker").innerHTML=["She","The boys"].map(subject=>`<button class="subject-pick ${subject===state.subject?"active":""}" type="button" data-subject="${subject}">${subject}</button>`).join("");
+      $("#thirdPicker").innerHTML=thirdExamples.map((item,index)=>`<button class="verb-pick ${index===state.thirdIndex?"active":""}" type="button" data-third="${index}">${item.base}</button>`).join("");
+      const third=thirdExamples[state.thirdIndex];
+      const singular=state.subject==="She";
+      $("#thirdBase").textContent=`${state.subject} + ${third.base}`;
+      $("#thirdResult").textContent=singular?third.third:third.base;
+      $("#thirdRule").textContent=singular?`She 是一个“她”：${third.rule}`:"The boys 不止一个：动作动词保持原形。";
+      $$("[data-subject]").forEach(button=>button.onclick=()=>{
+        state.subject=button.dataset.subject;save();renderFactories();
+      });
+      $$("[data-third]").forEach(button=>button.onclick=()=>{
+        state.thirdIndex=Number(button.dataset.third);save();renderFactories();
+      });
+      renderMiniPractices();
+    }
+
+    function renderMiniPractices(){
+      $("#ingMini").innerHTML='<strong>马上回想：</strong> put 的现在分词是？<div class="options"><button class="option" data-mini="ing" data-value="puting">puting</button><button class="option" data-mini="ing" data-value="putting">putting</button></div><div class="feedback" data-mini-feedback="ing"></div>';
+      $("#thirdMini").innerHTML='<strong>马上回想：</strong> He ___ TV every evening.<div class="options"><button class="option" data-mini="third" data-value="watch">watch</button><button class="option" data-mini="third" data-value="watches">watches</button></div><div class="feedback" data-mini-feedback="third"></div>';
+      $$("[data-mini]").forEach(button=>button.onclick=()=>{
+        const type=button.dataset.mini;
+        const correct=type==="ing"?"putting":"watches";
+        const box=$(`[data-mini-feedback="${type}"]`);
+        if(button.dataset.value===correct){
+          button.classList.add("correct");box.className="feedback show ok";
+          box.textContent=type==="ing"?"对！put 双写 t，再加 -ing。":"对！He 是三单，watch 以 ch 结尾，加 -es。";
+        }else{
+          button.classList.add("wrong");box.className="feedback show no";
+          box.textContent=type==="ing"?"再看双写规则：put → putting。":"先看主语 He，再看 watch 的 ch 尾巴。";
+        }
+      });
+    }
+
+    function renderChallenge(){
+      const index=state.challengeIndex;
+      if(index>=questions.length){
+        $("#challengeBody").hidden=true;$("#challengeDone").hidden=false;
+        const wrongTotal=Object.keys(state.wrongbook).length;
+        $("#doneSummary").textContent=wrongTotal
+          ?`10 题已经跑完；有 ${openWrong()} 个知识点还在错题炉里，去做两道不同变式吧。`
+          :"10 题全部通过，今天暂时没有新错题。";
+        return;
+      }
+      $("#challengeBody").hidden=false;$("#challengeDone").hidden=true;
+      const item=questions[index];
+      $("#challengeCounter").textContent=`${index+1} / ${questions.length}`;
+      $("#challengeCue").textContent=item.cue;
+      $("#challengePrompt").textContent=item.prompt;
+      $("#challengeOptions").innerHTML=item.options.map(value=>`<button class="option" type="button" data-challenge="${escapeHtml(value)}">${escapeHtml(value)}</button>`).join("");
+      $("#challengeFeedback").className="feedback";
+      $("#challengeFeedback").textContent="";
+      $("#checkChallenge").disabled=true;
+      $("#checkChallenge").hidden=false;
+      $("#reteachButton").hidden=true;
+      $("#nextChallenge").hidden=true;
+      challengeChoice=null;challengeLocked=false;
+      $$("[data-challenge]").forEach(button=>button.onclick=()=>{
+        if(challengeLocked)return;
+        challengeChoice=button.dataset.challenge;
+        $$("[data-challenge]").forEach(itemButton=>itemButton.classList.toggle("selected",itemButton===button));
+        $("#checkChallenge").disabled=false;
+      });
+    }
+
+    function escapeHtml(value){
+      return String(value).replace(/[&<>"']/g,char=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[char]));
+    }
+
+    function recordAttempt(item,choice,correct,context){
+      state.attempts.push({id:item.id,choice,correct,context,at:new Date().toISOString()});
+      if(state.attempts.length>180)state.attempts=state.attempts.slice(-180);
+      if(window.DDLearningSync && typeof window.DDLearningSync.recordAttempt==="function"){
+        window.DDLearningSync.recordAttempt({
+          kid:"eddey",subject:"英语",topic:"现在进行时与一般现在时",
+          item:item.id,answer:choice,correct,source:"apps/eddey_present_tense_lab_20260730.html",
+          payload:{app_id:APP_ID,version:VERSION,context}
+        });
+      }
+    }
+
+    function checkChallenge(){
+      if(challengeLocked || challengeChoice===null)return;
+      const item=questions[state.challengeIndex];
+      const correct=challengeChoice===item.answer;
+      recordAttempt(item,challengeChoice,correct,"independent");
+      challengeLocked=true;
+      $$("[data-challenge]").forEach(button=>{
+        if(button.dataset.challenge===challengeChoice)button.classList.add(correct?"correct":"wrong");
+        if(correct && button.dataset.challenge===item.answer)button.classList.add("correct");
+      });
+      const feedback=$("#challengeFeedback");
+      if(correct){
+        state.challengeCorrect[item.id]=true;
+        feedback.className="feedback show ok";
+        feedback.textContent=`答对了！${item.explain}`;
+        $("#nextChallenge").hidden=false;
+      }else{
+        const row=state.wrongbook[item.id]||{wrongCount:0,streak:0,lastVariant:null,status:"open"};
+        row.wrongCount+=1;row.streak=0;row.status="open";
+        state.wrongbook[item.id]=row;
+        feedback.className="feedback show no";
+        feedback.textContent="这道题先不公布正确选项。去看对应微课，然后返回同一题再想一次。";
+        $("#reteachButton").hidden=false;
+      }
+      $("#checkChallenge").hidden=true;
+      save();
+    }
+
+    function openReteach(){
+      const item=questions[state.challengeIndex];
+      const lesson=lessonMap[item.lesson];
+      returnQuestionId=item.id;
+      $("#reteachTitle").textContent=lesson.title;
+      $("#reteachRule").textContent=lesson.rule;
+      $("#reteachExample").textContent=lesson.example;
+      $("#returnSameQuestion").textContent=`看懂了，返回刚才第 ${state.challengeIndex+1} 题`;
+      $("#reteachOverlay").classList.add("active");
+      $("#returnSameQuestion").focus();
+    }
+
+    function returnSameQuestion(){
+      const item=questions[state.challengeIndex];
+      if(item.id!==returnQuestionId)return;
+      $("#reteachOverlay").classList.remove("active");
+      returnQuestionId=null;
+      renderChallenge();
+      $("#challengePrompt").scrollIntoView({behavior:"smooth",block:"center"});
+    }
+
+    function renderWrongbook(){
+      const entries=Object.entries(state.wrongbook);
+      const list=$("#wrongList");
+      if(!entries.length){
+        list.innerHTML='<div class="empty">🌱 还没有真实错题。先完成独立挑战；软件不会把“还没做”算成“做错”。</div>';
+      }else{
+        list.innerHTML=entries.map(([id,row])=>{
+          const item=questions.find(q=>q.id===id);
+          return `<div class="wrong-row ${row.status==="done"?"done":""}">
+            <div><strong>${escapeHtml(item.kind)}｜${escapeHtml(item.prompt)}</strong><br><span class="micro muted">累计错 ${row.wrongCount} 次 · 连续正确 ${row.streak}/2</span></div>
+            <div><span class="status-pill">${row.status==="done"?"已攻克":"待回炉"}</span> <button class="tiny" type="button" data-repair="${id}">${row.status==="done"?"再复习":"只练这题"}</button></div>
+          </div>`;
+        }).join("");
+        $$("[data-repair]").forEach(button=>button.onclick=()=>startRepair(button.dataset.repair));
+      }
+      renderRecordStats();
+    }
+
+    function renderRecordStats(){
+      if(!$("#recordAttempts"))return;
+      $("#recordAttempts").textContent=String(state.attempts.length);
+      $("#recordOpen").textContent=String(openWrong());
+      $("#recordDone").textContent=String(Object.values(state.wrongbook).filter(row=>row.status==="done").length);
+    }
+
+    function startRepair(id){
+      const item=questions.find(q=>q.id===id);
+      const row=state.wrongbook[id];
+      repairId=id;
+      repairVariant=row && Number.isInteger(row.lastVariant)?(row.lastVariant+1)%item.repairs.length:0;
+      repairChoice=null;
+      const variant=item.repairs[repairVariant];
+      const lesson=lessonMap[item.lesson];
+      $("#repairBox").classList.add("active");
+      $("#repairLabel").textContent=`变式 ${repairVariant+1} / ${item.repairs.length}`;
+      $("#repairTitle").textContent=`回炉：${item.kind}`;
+      $("#repairRule").textContent=lesson.rule;
+      $("#repairPrompt").textContent=variant.prompt;
+      $("#repairOptions").innerHTML=variant.options.map(value=>`<button class="option" type="button" data-repair-choice="${escapeHtml(value)}">${escapeHtml(value)}</button>`).join("");
+      $("#repairFeedback").className="feedback";
+      $("#repairFeedback").textContent="";
+      $("#checkRepair").disabled=true;
+      $("#checkRepair").hidden=false;
+      $$("[data-repair-choice]").forEach(button=>button.onclick=()=>{
+        repairChoice=button.dataset.repairChoice;
+        $$("[data-repair-choice]").forEach(itemButton=>itemButton.classList.toggle("selected",itemButton===button));
+        $("#checkRepair").disabled=false;
+      });
+      $("#repairBox").scrollIntoView({behavior:"smooth",block:"center"});
+    }
+
+    function checkRepair(){
+      if(!repairId || repairChoice===null)return;
+      const item=questions.find(q=>q.id===repairId);
+      const variant=item.repairs[repairVariant];
+      const row=state.wrongbook[repairId];
+      const correct=repairChoice===variant.answer;
+      recordAttempt(item,repairChoice,correct,`repair-${repairVariant}`);
+      const feedback=$("#repairFeedback");
+      $$("[data-repair-choice]").forEach(button=>{
+        if(button.dataset.repairChoice===repairChoice)button.classList.add(correct?"correct":"wrong");
+      });
+      if(correct){
+        if(row.lastVariant!==repairVariant)row.streak+=1;
+        row.lastVariant=repairVariant;
+        row.status=row.streak>=2?"done":"open";
+        feedback.className="feedback show ok";
+        feedback.textContent=row.status==="done"
+          ?"两道不同变式连续答对，这个错点已攻克！"
+          :"答对第 1 道不同变式，再做另一道就能毕业。";
+        $("#checkRepair").hidden=true;
+        setTimeout(()=>{renderWrongbook();if(row.status!=="done")startRepair(repairId);},850);
+      }else{
+        row.streak=0;row.status="open";
+        feedback.className="feedback show no";
+        feedback.textContent=`再看规则：${lessonMap[item.lesson].rule}`;
+      }
+      save();
+    }
+
+    function makeExport(){
+      return {schema:1,child:CHILD,appId:APP_ID,version:VERSION,exportedAt:new Date().toISOString(),state};
+    }
+
+    function download(name,text,type){
+      const blob=new Blob([text],{type});
+      const url=URL.createObjectURL(blob);
+      const a=document.createElement("a");a.href=url;a.download=name;a.click();
+      setTimeout(()=>URL.revokeObjectURL(url),800);
+    }
+
+    function markdownReport(){
+      const lines=[
+        "# Eddey 现在进行时 × 一般现在时学习记录","",
+        `- 导出时间：${new Date().toLocaleString("zh-CN")}`,
+        `- 软件：${APP_ID} v${VERSION}`,
+        `- 独立挑战：${completedChallenge()} / 10 通过`,
+        `- 软件作答：${state.attempts.length} 次`,
+        `- 待回炉：${openWrong()} 项`,"","## 错题状态",""
+      ];
+      const entries=Object.entries(state.wrongbook);
+      if(!entries.length)lines.push("- 暂无真实错题。未作答不记为错题。");
+      entries.forEach(([id,row],index)=>{
+        const item=questions.find(q=>q.id===id);
+        lines.push(`${index+1}. ${item.kind}｜${item.prompt}｜${row.status==="done"?"已攻克":"待回炉"}｜连续正确 ${row.streak}/2｜累计错 ${row.wrongCount} 次`);
+      });
+      lines.push("","## 证据边界","","本软件依据 2026-07-30 老师反馈与已入库教材原始扫描第 68—74 页。软件上线不等于孩子已经掌握；状态只来自真实作答。");
+      return lines.join("\n");
+    }
+
+    async function finishSync(){
+      state.completed=true;save();
+      if(window.DDLearningSync && typeof window.DDLearningSync.complete==="function"){
+        const saved=window.DDLearningSync.complete({
+          kid:"eddey",subject:"英语",topic:"现在进行时与一般现在时",
+          item:"完成时态双轨实验室学习",
+          source:"apps/eddey_present_tense_lab_20260730.html",
+          payload:{app_id:APP_ID,version:VERSION,challenge_correct:completedChallenge(),wrongbook_open:openWrong(),attempts:state.attempts.length}
+        });
+        if(saved && typeof window.DDLearningSync.flush==="function"){
+          try{await window.DDLearningSync.flush();}catch(_){}
+        }
+        toast("本次学习已保存；正式网页会同步到学习记录。");
+      }else toast("本次学习已保存在这台设备。");
+    }
+
+    function playAudio(text,button){
+      if(activeAudio){activeAudio.pause();activeAudio=null;}
+      const source=AUDIO_MAP[text];
+      if(!source || !source.startsWith("data:audio/")){
+        toast("这条示范音暂时不可用。");return;
+      }
+      const audio=new Audio(source);activeAudio=audio;
+      button.querySelector("span:last-child").textContent="⏸";
+      const reset=()=>{button.querySelector("span:last-child").textContent="🔊";if(activeAudio===audio)activeAudio=null;};
+      audio.onended=reset;audio.onerror=()=>{reset();toast("音频没有成功播放，请稍后再试。");};
+      audio.play().catch(()=>{reset();toast("请再点一次播放按钮。");});
+    }
+
+    $$(".tab").forEach(button=>button.onclick=()=>showScreen(button.dataset.screen));
+    $("#goRecord").onclick=()=>showScreen("record");
+    $$(".mode-btn").forEach(button=>button.onclick=()=>{state.mode=button.dataset.mode;save();renderRail();});
+    $("#guidedNext").onclick=()=>{
+      if(state.guidedIndex<guidedQuestions.length-1)state.guidedIndex+=1;
+      else{toast("四张信号卡完成！去动词变形工厂。");showScreen("factory");}
+      save();renderGuided();
+    };
+    $$(".factory-btn").forEach(button=>button.onclick=()=>{state.factory=button.dataset.factory;state.factoryVisited=true;save();renderFactories();});
+    $("#coverIng").onclick=()=>{
+      const covered=$("#ingMachine").classList.toggle("cover-answer");
+      $("#coverIng").textContent=covered?"👀 显示答案":"🙈 遮住答案";
+    };
+    $$(".audio-btn").forEach(button=>button.onclick=()=>playAudio(button.dataset.audio,button));
+    $("#checkChallenge").onclick=checkChallenge;
+    $("#reteachButton").onclick=openReteach;
+    $("#returnSameQuestion").onclick=returnSameQuestion;
+    $("#nextChallenge").onclick=()=>{state.challengeIndex+=1;save();renderChallenge();};
+    $("#restartChallenge").onclick=()=>{state.challengeIndex=0;state.challengeCorrect={};save();renderChallenge();};
+    $("#checkRepair").onclick=checkRepair;
+    $("#closeRepair").onclick=()=>$("#repairBox").classList.remove("active");
+    $("#finishSync").onclick=finishSync;
+    $("#exportJson").onclick=()=>download("Eddey-时态双轨-2026-07-30.json",JSON.stringify(makeExport(),null,2),"application/json");
+    $("#exportMd").onclick=()=>download("Eddey-时态双轨-2026-07-30.md",markdownReport(),"text/markdown");
+    $("#importJson").onclick=()=>$("#importFile").click();
+    $("#importFile").onchange=async event=>{
+      const file=event.target.files[0];if(!file)return;
+      try{
+        const payload=JSON.parse(await file.text());
+        if(payload.child!==CHILD || payload.appId!==APP_ID || !payload.state)throw new Error("wrong file");
+        state=Object.assign(freshState(),payload.state);save();
+        renderRail();renderGuided();renderFactories();renderChallenge();renderWrongbook();
+        toast("Eddey 的学习记录已导入。");
+      }catch(_){toast("这不是本软件的 Eddey 学习记录。");}
+      event.target.value="";
+    };
+
+    if(window.DDLearningSync && typeof window.DDLearningSync.setChild==="function")window.DDLearningSync.setChild("eddey");
+    renderRail();
+    renderGuided();
+    renderFactories();
+    renderChallenge();
+    renderWrongbook();
+    updateProgress();
+  </script>
+</body>
+</html>

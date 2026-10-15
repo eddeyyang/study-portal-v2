@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>初识C++小工厂 · 第1课</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+:root{
+  --ink:#2D2A32;--cream:#FFF6E9;--card:#FFFFFF;
+  --blue:#2E9BFF;--blue-d:#1B7BD8;--yellow:#FFC93C;--pink:#FF7BAC;--green:#3ECF8E;--orange:#FF9F43;--red:#FF5D5D;
+}
+html{font-size:17px}
+body{
+  font-family:"PingFang SC","Microsoft YaHei",sans-serif;color:var(--ink);
+  background:var(--cream);
+  background-image:
+    radial-gradient(circle at 15% 20%, rgba(255,201,60,.25) 0, transparent 28%),
+    radial-gradient(circle at 85% 15%, rgba(46,155,255,.20) 0, transparent 26%),
+    radial-gradient(circle at 80% 80%, rgba(255,123,172,.18) 0, transparent 26%),
+    radial-gradient(circle at 10% 85%, rgba(62,207,142,.18) 0, transparent 24%);
+  min-height:100vh;padding-bottom:60px;
+}
+.wrap{max-width:740px;margin:0 auto;padding:16px}
+.screen{display:none;animation:pop .35s ease}
+.screen.on{display:block}
+@keyframes pop{from{opacity:0;transform:translateY(14px) scale(.98)}to{opacity:1;transform:none}}
+.card{background:var(--card);border:2px solid var(--ink);border-radius:24px;padding:22px;box-shadow:0 6px 0 rgba(45,42,50,.15);margin-bottom:18px}
+h1{font-size:1.9rem;line-height:1.25}
+h2{font-size:1.35rem;margin-bottom:10px}
+.sub{color:#6d6875;font-size:.95rem;margin-top:6px}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  min-height:52px;padding:12px 22px;border:2px solid var(--ink);border-radius:16px;
+  background:var(--yellow);color:var(--ink);font-size:1.05rem;font-weight:700;cursor:pointer;
+  box-shadow:0 5px 0 var(--ink);transition:transform .08s,box-shadow .08s;user-select:none;font-family:inherit;
+}
+.btn:active{transform:translateY(4px);box-shadow:0 1px 0 var(--ink)}
+.btn.blue{background:var(--blue);color:#fff}
+.btn.green{background:var(--green);color:#fff}
+.btn.pink{background:var(--pink);color:#fff}
+.btn.ghost{background:#fff}
+.btn.big{width:100%;font-size:1.2rem;min-height:60px;border-radius:20px}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+.btnrow{display:flex;gap:12px;flex-wrap:wrap;margin-top:14px}
+.menu{display:flex;flex-direction:column;gap:14px;margin-top:18px}
+.menu .btn{justify-content:flex-start;font-size:1.15rem;min-height:64px}
+.menu .btn .ico{font-size:1.6rem}
+.topbar{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.topbar .btn{min-height:44px;padding:8px 14px;font-size:.95rem}
+.prog{flex:1;height:16px;background:#fff;border:2px solid var(--ink);border-radius:99px;overflow:hidden}
+.prog>i{display:block;height:100%;background:linear-gradient(90deg,var(--green),var(--blue));width:0%;transition:width .4s}
+.code{
+  font-family:"SF Mono",Consolas,Menlo,monospace;background:#2D2A32;color:#E8F4FF;
+  border-radius:16px;padding:16px 18px;font-size:.95rem;line-height:1.75;border:2px solid var(--ink);
+  overflow-x:auto;white-space:pre;margin:12px 0;
+}
+.code .kw{color:#FF7BAC}.code .fn{color:#FFC93C}.code .str{color:#3ECF8E}.code .cm{color:#8a8494;font-style:italic}
+.hl{animation:hlflash 1s ease}
+@keyframes hlflash{0%,60%{background:rgba(255,201,60,.55);border-radius:6px}100%{background:transparent}}
+.tip{background:#FFF3D6;border:2px dashed var(--orange);border-radius:16px;padding:12px 16px;font-size:.95rem;margin:12px 0}
+.demo{background:#F4FAFF;border:2px solid var(--blue);border-radius:16px;padding:16px;margin:12px 0}
+.opt{
+  display:block;width:100%;text-align:left;min-height:56px;margin:10px 0;padding:14px 16px;
+  background:#fff;border:2px solid var(--ink);border-radius:16px;font-size:1.02rem;cursor:pointer;
+  box-shadow:0 4px 0 var(--ink);transition:transform .08s,box-shadow .08s;font-family:inherit;color:var(--ink);
+}
+.opt:active{transform:translateY(3px);box-shadow:0 1px 0 var(--ink)}
+.opt.right{background:#D8F8E8;border-color:#1e9e62;animation:shake-no .0s}
+.opt.wrong{background:#FFE0E0;border-color:var(--red);animation:shake .35s}
+.opt code{font-family:Consolas,monospace;background:#F0EDF5;padding:1px 6px;border-radius:6px}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-8px)}75%{transform:translateX(8px)}}
+.explain{display:none;background:#EAF4FF;border:2px solid var(--blue);border-radius:16px;padding:14px 16px;margin-top:12px;font-size:.98rem;line-height:1.7}
+.explain.on{display:block;animation:pop .3s}
+.badge{display:inline-block;background:var(--blue);color:#fff;border:2px solid var(--ink);border-radius:99px;padding:3px 14px;font-size:.85rem;font-weight:700;margin-bottom:8px}
+.center{text-align:center}
+.big-emoji{font-size:3.4rem;display:block;margin:6px 0 10px}
+/* 打印机 */
+.printer{background:#fff;border:2px solid var(--ink);border-radius:20px;padding:18px;position:relative;overflow:hidden}
+.printer .slot{height:10px;background:var(--ink);border-radius:99px;margin-bottom:14px}
+.paper{background:#FFFDF5;border:2px solid #d8d2c4;border-radius:8px;min-height:120px;padding:14px;font-family:Consolas,monospace;font-size:1.15rem;transition:transform .5s ease,opacity .5s}
+.paper.printing{animation:paperout .8s ease}
+@keyframes paperout{from{transform:translateY(-70%);opacity:0}to{transform:none;opacity:1}}
+.cursor{display:inline-block;width:10px;height:1.2em;background:var(--ink);vertical-align:text-bottom;animation:blink .8s infinite}
+@keyframes blink{50%{opacity:0}}
+/* 变量盒子 */
+.boxes{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;margin:14px 0}
+.vbox{width:130px;text-align:center}
+.vbox .crate{
+  height:110px;border:2px solid var(--ink);border-radius:16px;background:linear-gradient(180deg,#FFE9C7,#FFD89A);
+  display:flex;align-items:center;justify-content:center;font-size:2rem;font-weight:800;font-family:Consolas,monospace;
+  box-shadow:inset 0 -10px 0 rgba(0,0,0,.08);transition:transform .3s;position:relative;
+}
+.vbox .tag{margin-top:8px;background:var(--ink);color:#fff;border-radius:8px;padding:3px 10px;font-family:Consolas,monospace;font-size:.95rem;display:inline-block}
+.vbox.filled .crate{animation:drop .5s ease;background:linear-gradient(180deg,#C9F2DD,#8FE3B8)}
+@keyframes drop{0%{transform:translateY(-26px) scale(1.1)}60%{transform:translateY(4px) scale(.96)}100%{transform:none}}
+.chips{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin:10px 0}
+.chip{min-width:56px;min-height:48px;padding:10px 14px;border:2px solid var(--ink);border-radius:12px;background:#fff;font-size:1.1rem;font-weight:700;cursor:pointer;box-shadow:0 4px 0 var(--ink);font-family:Consolas,monospace}
+.chip:active{transform:translateY(3px);box-shadow:0 1px 0 var(--ink)}
+.confetti{position:fixed;top:-10px;width:12px;height:12px;z-index:99;animation:fall linear forwards;pointer-events:none;border-radius:3px}
+@keyframes fall{to{transform:translateY(105vh) rotate(720deg);opacity:.7}}
+.footer-note{text-align:center;color:#9a93a5;font-size:.8rem;margin-top:26px}
+.kbd{font-family:Consolas,monospace;background:#F0EDF5;border:1.5px solid #c9c2d6;border-radius:6px;padding:1px 7px}
+@media (max-width:420px){html{font-size:16px}.card{padding:18px}}
+
+/* —— 门户设计基线 DESIGN.md 对齐 —— */
+body{background:#FFF7F0;background-image:radial-gradient(circle at 0% 0%,rgba(255,233,243,.9),transparent 36%),radial-gradient(circle at 100% 0%,rgba(230,249,255,.9),transparent 36%);color:#3A2E3F}
+.who-badge{display:inline-flex;align-items:center;gap:6px;color:#fff;border:2px solid var(--ink);border-radius:999px;padding:6px 16px;font-weight:800;box-shadow:0 4px 0 var(--ink);cursor:pointer;min-height:44px;font-size:1rem;font-family:inherit}
+body[data-child="kenton"] .who-badge{background:#36C5D6}
+body[data-child="eddey"] .who-badge{background:#FF8A5B}
+.who-badge:active{transform:translateY(3px);box-shadow:0 1px 0 var(--ink)}
+.map-back{display:inline-flex;align-items:center;min-height:44px;margin-bottom:12px;padding:8px 13px;border:2px solid var(--ink);border-radius:14px;background:#fff;color:var(--ink);font-weight:800;text-decoration:none;box-shadow:0 4px 0 var(--ink)}
+.map-back:active{transform:translateY(3px);box-shadow:0 1px 0 var(--ink)}.map-back:focus-visible{outline:3px solid #36C5D6;outline-offset:3px}
+.recall-item{background:#fff;border:2px solid var(--ink);border-radius:16px;padding:14px 16px;margin:10px 0;box-shadow:0 4px 0 var(--ink)}
+.recall-answer{filter:blur(8px);cursor:pointer;user-select:none;border-radius:8px;display:inline-block;transition:filter .3s}
+.recall-answer.open{filter:none}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01s!important;animation-iteration-count:1!important;transition-duration:.01s!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<a class="map-back" id="mapBack" href="xiaomawang_cpp_4_5.html?view=lessons&amp;course=intro#courseMap">← 返回知识地图</a>
+<div id="whoGate" style="position:fixed;inset:0;background:#FFF7F0;z-index:200;display:none;align-items:center;justify-content:center;padding:20px">
+  <div class="card" style="max-width:420px;width:100%;text-align:center;margin:0">
+    <span class="big-emoji">👋</span>
+    <h1>你是谁？</h1>
+    <p class="sub">Kenton 和 Eddey 一起学这门课，但进度、错题本和学习记录各自独立。</p>
+    <div class="menu">
+      <button class="btn" style="background:#36C5D6;color:#fff" onclick="chooseWho('kenton')">🦁 我是 Kenton</button>
+      <button class="btn" style="background:#FF8A5B;color:#fff" onclick="chooseWho('eddey')">🐯 我是 Eddey</button>
+    </div>
+  </div>
+</div>
+
+
+<!-- ============ 首页 ============ -->
+<section id="home" class="screen on">
+  <div class="card center">
+    <span class="badge">小码王 C++ · 第1课</span>
+    <span class="big-emoji">🏭</span>
+    <h1>初识 C++ 小工厂</h1>
+    <p class="sub">在这里，你将学会写出人生第一个 C++ 程序：<br>程序框架、输出 cout、变量盒子、输入 cin、算术运算符</p>
+    <div class="btnrow" style="justify-content:center"><button class="who-badge" id="whoBtn" onclick="showWhoGate()">👶 选择身份</button></div>
+  </div>
+  <div class="menu">
+    <button class="btn blue" onclick="go('learn')"><span class="ico">📖</span>学一学：跟着小码君逛工厂</button>
+    <button class="btn" style="background:#B39DDB;color:#fff" onclick="go('recall')"><span class="ico">🙈</span>遮一遮：核心结论回忆卡</button>
+    <button class="btn green" onclick="go('play')"><span class="ico">🎮</span>做一做：代码打印机 &amp; 变量盒子</button>
+    <button class="btn pink" onclick="startQuiz()"><span class="ico">📝</span>练一练：闯关挑战（10题）</button>
+    <button class="btn ghost" onclick="go('errbook')"><span class="ico">📒</span>错题本 <span id="errCount"></span></button>
+  </div>
+  <div class="card">
+    <span class="badge" style="background:#8A7E91">🗂 我的学习记录</span>
+    <div id="recSummary" style="font-size:.95rem;line-height:1.8">选择身份后开始记录。</div>
+    <div class="btnrow">
+      <button class="btn ghost" onclick="REC.exportJson()">⬇ 导出 JSON</button>
+      <button class="btn ghost" onclick="REC.exportMd()">⬇ 导出 Markdown</button>
+      <button class="btn ghost" onclick="document.getElementById('impFile').click()">⬆ 导入记录</button>
+      <input type="file" id="impFile" aria-label="导入初识 C++ 学习记录" accept="application/json,.json" style="display:none" onchange="REC.importFile(this.files[0]);this.value=''">
+    </div>
+  </div>
+  <p class="footer-note">学习路径：先学会 → 跟着做 → 闯关检验 → 错题回炉<br>音频不适用：本课以代码结构与执行轨迹的视觉推演为主，无需朗读。</p>
+</section>
+
+<!-- ============ 学一学 ============ -->
+<section id="learn" class="screen">
+  <div class="topbar">
+    <button class="btn ghost" onclick="go('home')">🏠 首页</button>
+    <div class="prog"><i id="learnProg"></i></div>
+  </div>
+  <div class="card" id="learnCard"></div>
+  <div class="btnrow">
+    <button class="btn ghost" id="learnPrev" onclick="learnStep(-1)">⬅ 上一页</button>
+    <button class="btn blue" id="learnNext" onclick="learnStep(1)">下一页 ➡</button>
+  </div>
+</section>
+
+<!-- ============ 做一做 ============ -->
+<section id="play" class="screen">
+  <div class="topbar">
+    <button class="btn ghost" onclick="go('home')">🏠 首页</button>
+    <div class="prog"><i id="playProg" style="width:50%"></i></div>
+  </div>
+  <div class="card" id="playA">
+    <span class="badge">实验 1 · 代码打印机</span>
+    <h2>点一点，拼出输出语句</h2>
+    <p class="sub">想输出 <b>hello world</b>，应该按什么顺序点积木？</p>
+    <div class="code" id="builtCode"><span class="cm">// 点击下方积木，把代码拼出来</span></div>
+    <div class="chips" id="chips"></div>
+    <div class="btnrow">
+      <button class="btn ghost" onclick="resetBuild()">🔄 重来</button>
+      <button class="btn green" onclick="runPrinter()">🖨 打印运行</button>
+    </div>
+    <div class="printer" style="margin-top:16px">
+      <div class="slot"></div>
+      <div class="paper" id="paper"><span style="color:#b9b2a6">输出框（还没有内容…）</span></div>
+    </div>
+    <div class="explain" id="printExplain"></div>
+  </div>
+
+  <div class="card" id="playB">
+    <span class="badge">实验 2 · 变量盒子</span>
+    <h2>把数字装进盒子 a</h2>
+    <p class="sub"><code>int a;</code> 是准备一个空盒子，<code>a = 2;</code> 是把 2 装进去。点一个数字试试！</p>
+    <div class="boxes">
+      <div class="vbox" id="vboxA"><div class="crate" id="crateA">?</div><span class="tag">int a</span></div>
+    </div>
+    <div class="chips">
+      <button class="chip" onclick="fillBox(2)">2</button>
+      <button class="chip" onclick="fillBox(7)">7</button>
+      <button class="chip" onclick="fillBox(100)">100</button>
+    </div>
+    <div class="code" id="boxCode">int a;   <span class="cm">// 定义变量 a（准备一个盒子）</span></div>
+    <div class="tip">💡 定义的同时也能装东西：<code>int a = 2;</code> 这叫<b>初始化</b>。等号 = 是"把右边的值放进左边"，不是数学里的等于哦！</div>
+  </div>
+
+  <div class="card" id="playC">
+    <span class="badge">实验 3 · 计算器小怪兽</span>
+    <h2>它会算 ＋ － × ÷ 和取余 ％</h2>
+    <p class="sub">点两个数和运算符，看小怪兽算出结果。注意：整数 ÷ 整数只会留下整数部分！</p>
+    <div class="chips" id="calcRow">
+      <button class="chip" id="cn1" onclick="pickNum(1)">5</button>
+      <button class="chip" id="cop" onclick="pickOp()">+</button>
+      <button class="chip" id="cn2" onclick="pickNum(2)">2</button>
+      <span style="align-self:center;font-size:1.4rem;font-weight:800">=</span>
+      <button class="chip" id="cans" style="background:var(--yellow)" onclick="calcGo()">?</button>
+    </div>
+    <div class="demo center" id="calcSay" style="font-size:1.05rem">点问号，让小怪兽算一算！</div>
+    <div class="tip">💡 <code>5 / 2</code> 得 <b>2</b>（整数除法，扔掉小数），<code>5 % 2</code> 得 <b>1</b>（余数是 1）。</div>
+  </div>
+</section>
+
+<!-- ============ 练一练 ============ -->
+<section id="recall" class="screen">
+  <div class="topbar"><button class="btn ghost" onclick="go('home')">🏠 首页</button></div>
+  <div class="card">
+    <span class="badge">🙈 遮一遮</span>
+    <h2>先在心里回答，再点开核对</h2>
+    <p class="sub">答不上来的，回到"学一学"再看一遍。</p>
+    <div id="recallList"></div>
+  </div>
+</section>
+
+<section id="quiz" class="screen">
+  <div class="topbar">
+    <button class="btn ghost" onclick="go('home')">🏠 首页</button>
+    <div class="prog"><i id="quizProg"></i></div>
+    <span id="quizNum" style="font-weight:800"></span>
+  </div>
+  <div class="card" id="quizCard"></div>
+</section>
+
+<!-- ============ 错题本 ============ -->
+<section id="errbook" class="screen">
+  <div class="topbar">
+    <button class="btn ghost" onclick="go('home')">🏠 首页</button>
+  </div>
+  <div class="card">
+    <span class="badge">📒 错题本</span>
+    <h2>错 1 次进本子，连续答对 2 次就毕业！</h2>
+    <div id="errList"></div>
+  </div>
+</section>
+
+</div>
+<script>
+/* ================= 通用 ================= */
+const $=id=>document.getElementById(id);
+function go(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('on'));$(id).classList.add('on');window.scrollTo(0,0);refreshErrCount();}
+function confetti(){const colors=['#FFC93C','#2E9BFF','#FF7BAC','#3ECF8E','#FF9F43'];for(let i=0;i<40;i++){const c=document.createElement('div');c.className='confetti';c.style.left=Math.random()*100+'vw';c.style.background=colors[i%5];c.style.animationDuration=(1.4+Math.random()*1.4)+'s';c.style.animationDelay=(Math.random()*.4)+'s';document.body.appendChild(c);setTimeout(()=>c.remove(),3200);}}
+/* 语音（浏览器 TTS） */
+let voiceOk=false;
+
+/* ================= 学一学 ================= */
+const LESSONS=[
+{t:'🏭 欢迎来到 C++ 小工厂',s:'C++ 是一种编程语言，它可以做出 VR 游戏、输入法、还有你玩的很多软件。今天我们先学会它的"基本框架"——就像盖房子先搭骨架。',d:`<div class="code"><span class="kw">#include</span> &lt;iostream&gt;   <span class="cm">// ① 头文件：工具箱</span>
+<span class="kw">using namespace</span> std;    <span class="cm">// ② 命名空间：防重名</span>
+<span class="kw">int</span> <span class="fn">main</span>() {            <span class="cm">// ③ 主函数：唯一入口</span>
+    <span class="kw">return</span> 0;
+}</div><div class="tip">💡 头文件像工具箱，想用 cout 就要搬来 <span class="kbd">&lt;iostream&gt;</span>；每个 C++ 程序<b>有且仅有一个</b> main() 函数，程序从这里开始跑。</div>`},
+{t:'📝 注释：写给小人类看的笔记',s:'程序运行时，会跳过注释。单行注释用 //，多行注释用 /* ... */ 包起来。',d:`<div class="code"><span class="cm">// 这是单行注释，计算机会无视它</span>
+<span class="cm">/* 这是多行注释
+   可以写好多行 */</span>
+cout &lt;&lt; <span class="str">"hi"</span>;  <span class="cm">// 也可以写在代码后面</span></div>`},
+{t:'🖨 输出：cout 打印机',s:'想说什么，就把话原模原样放进双引号里。endl 表示换一行。',d:`<div class="code">cout &lt;&lt; <span class="str">"hello world"</span> &lt;&lt; endl;
+cout &lt;&lt; <span class="str">"hello c++"</span> &lt;&lt; endl;</div><div class="demo"><b>输出框：</b><br>hello world<br>hello c++</div><div class="tip">⚠️ 注意三个坑：① 双引号里的大小写会<b>原样</b>输出（Hello ≠ hello）；② 每行结尾别忘分号 <span class="kbd">;</span>；③ 符号要用英文输入法。</div>`},
+{t:'📦 变量：装数据的盒子',s:'变量就像盒子，装数据之前必须先定义（准备好盒子），还要告诉电脑装什么类型。',d:`<div class="code"><span class="kw">int</span> a;     <span class="cm">// 定义整型变量 a</span>
+a = 2;      <span class="cm">// 把 2 装进 a（赋值）</span>
+<span class="kw">int</span> b = 5;  <span class="cm">// 定义的同时初始化</span></div><div class="tip">💡 等号 <span class="kbd">=</span> 是<b>赋值</b>：把右边的值放进左边的盒子，方向是从右往左！</div>`},
+{t:'🏷 给盒子起名有规则',s:'变量名只能由字母、数字、下划线组成，而且有三个"不允许"。',d:`<div class="tip">❌ 数字开头：<code>2price</code> 不合法<br>❌ 用关键字：<code>int</code> 不合法<br>❌ 大小写混用：<code>price</code> 和 <code>Price</code> 是两个不同的变量！<br>✅ 合法例子：<code>age</code>、<code>score1</code>、<code>my_name</code></div>`},
+{t:'⌨️ 输入：cin 小吸管',s:'cin 用 >> 把键盘输入的数"吸"进变量里；cout 用 << 把内容"推"到屏幕上。方向千万别搞反！',d:`<div class="code"><span class="kw">int</span> a;
+cin &gt;&gt; a;    <span class="cm">// 输入，箭头指向变量 a</span>
+cout &lt;&lt; a;   <span class="cm">// 输出，箭头指向屏幕</span></div><div class="tip">💡 记忆法：cin 的 <span class="kbd">&gt;&gt;</span> 像漏斗，把数据灌进变量；cout 的 <span class="kbd">&lt;&lt;</span> 像滑梯，把数据送出去。</div>`},
+{t:'🧮 算术运算符',s:'加 + 、减 - 、乘 * 、除 / 、取余 % 。取余就是"分一分还剩几个"。',d:`<div class="code">cout &lt;&lt; 7 + 3;   <span class="cm">// 10</span>
+cout &lt;&lt; 7 - 3;   <span class="cm">// 4</span>
+cout &lt;&lt; 7 * 3;   <span class="cm">// 21</span>
+cout &lt;&lt; 7 / 3;   <span class="cm">// 2 （整数除法！）</span>
+cout &lt;&lt; 7 % 3;   <span class="cm">// 1 （余数）</span></div><div class="tip">⚠️ 整数 ÷ 整数 = 整数，小数部分会被扔掉！7/3 不是 2.33，而是 2。</div>`},
+{t:'🎯 综合：a + b 小程序',s:'输入两个数，输出它们的和——你已经能看懂完整程序啦！',d:`<div class="code"><span class="kw">#include</span> &lt;iostream&gt;
+<span class="kw">using namespace</span> std;
+<span class="kw">int</span> <span class="fn">main</span>() {
+    <span class="kw">int</span> a, b;
+    cin &gt;&gt; a &gt;&gt; b;
+    cout &lt;&lt; a &lt;&lt; <span class="str">"+"</span> &lt;&lt; b &lt;&lt; <span class="str">"="</span> &lt;&lt; a + b;
+    <span class="kw">return</span> 0;
+}</div><div class="demo">输入 3 4 → 输出 <b>3+4=7</b></div><div class="tip">🎉 学完啦！去"做一做"亲手玩一玩，再去"练一练"闯关吧！</div>`}
+];
+let li=0;
+function renderLearn(){const L=LESSONS[li];$('learnCard').innerHTML=`<span class="badge">第 ${li+1} / ${LESSONS.length} 页</span><h2>${L.t}</h2><p style="line-height:1.8;font-size:1.05rem">${L.s}</p>${L.d}`;$('learnProg').style.width=((li+1)/LESSONS.length*100)+'%';$('learnPrev').disabled=li===0;$('learnNext').textContent=li===LESSONS.length-1?'✅ 去完成挑战':'下一页 ➡';}
+function learnStep(d){if(d>0&&li===LESSONS.length-1){go('play');return;}li=Math.max(0,Math.min(LESSONS.length-1,li+d));renderLearn();}
+renderLearn();
+
+/* ================= 做一做：打印机 ================= */
+const BLOCKS=['cout','<<','"hello world"',';'];
+const DECOYS=['>>','cin','"Hello World"'];
+let built=[];
+function renderChips(){const all=[...BLOCKS,...DECOYS].sort(()=>Math.random()-.5);$('chips').innerHTML='';all.forEach(b=>{const btn=document.createElement('button');btn.className='chip';btn.textContent=b;btn.onclick=()=>{built.push(b);renderBuilt();};$('chips').appendChild(btn);});}
+function renderBuilt(){$('builtCode').innerHTML=built.length?built.join(' '):'<span class="cm">// 点击下方积木，把代码拼出来</span>';}
+function resetBuild(){built=[];renderBuilt();$('paper').innerHTML='<span style="color:#b9b2a6">输出框（还没有内容…）</span>';$('printExplain').className='explain';}
+function runPrinter(){
+  const ok=JSON.stringify(built)===JSON.stringify(BLOCKS);
+  const p=$('paper');
+  if(ok){p.classList.remove('printing');void p.offsetWidth;p.classList.add('printing');p.innerHTML='hello world<span class="cursor"></span>';confetti();
+    $('printExplain').innerHTML='✅ <b>正确！</b>顺序是 cout → << → 双引号内容 → 分号。想说什么就原样放进双引号里。';built=[];renderBuilt();}
+  else{p.innerHTML='<span style="color:#FF5D5D">❌ 编译失败…检查一下顺序和内容</span>';
+    $('printExplain').innerHTML='🤔 <b>提示：</b>① 输出发言人是 cout 不是 cin；② 箭头是 &lt;&lt; 朝外推；③ 题目要小写 hello world，大写 H/W 就变了；④ 结尾要有分号。';}
+  $('printExplain').className='explain on';
+}
+renderChips();renderBuilt();
+
+/* 变量盒子 */
+let boxFilled=false;
+function fillBox(v){$('crateA').textContent=v;$('vboxA').classList.remove('filled');void $('vboxA').offsetWidth;$('vboxA').classList.add('filled');$('boxCode').innerHTML=`int a;<br>a = ${v};  <span class="cm">// 把 ${v} 装进盒子 a</span><br>cout &lt;&lt; a;  <span class="cm">// 输出：${v}</span>`;boxFilled=true;}
+
+/* 计算器小怪兽 */
+const cal={n:[5,2],op:'+'};
+const OPS=['+','-','*','/','%'];
+function pickNum(i){cal[i-1]=Math.floor(Math.random()*9)+1;$('cn'+i).textContent=cal[i-1];$('cans').textContent='?';$('calcSay').textContent='点问号，让小怪兽算一算！';}
+function pickOp(){cal.op=OPS[(OPS.indexOf(cal.op)+1)%OPS.length];$('cop').textContent=cal.op;$('cans').textContent='?';$('calcSay').textContent='点问号，让小怪兽算一算！';}
+function calcGo(){const[a,b]=cal.n;let r,note='';
+  switch(cal.op){case '+':r=a+b;break;case '-':r=a-b;break;case '*':r=a*b;break;
+    case '/':r=Math.floor(a/b);note=`<br><span style="color:var(--red)">整数除法：${a}÷${b} 其实是 ${(a/b).toFixed(2)}，但整数除法会扔掉小数部分，留下 ${r}</span>`;break;
+    case '%':r=a%b;note=`<br>${a} 里面能分出 ${Math.floor(a/b)} 个 ${b}，还剩 ${r}，所以余数是 ${r}`;break;}
+  $('cans').textContent=r;
+  $('calcSay').innerHTML=`${a} ${cal.op} ${b} = <b style="font-size:1.4rem;color:var(--blue-d)">${r}</b>${note}`;
+}
+
+/* ================= 练一练 ================= */
+const QUIZ=[
+{q:'C++ 程序的基本框架由哪三部分组成？',opts:['头文件、命名空间、主函数','打印机、屏幕、键盘','变量、常量、运算符'],a:0,ex:'头文件是工具箱，命名空间防止重名，main() 主函数是程序的唯一入口。'},
+{q:'任何 C++ 程序有几个 main() 函数？',opts:['可以有很多个','有且仅有一个','可以没有'],a:1,ex:'任何 C++ 程序有且仅有一个 main() 函数，它是程序开始执行的唯一入口。'},
+{q:'想输出 hello world（全小写、有空格），双引号里应该写什么？',opts:['Hello World','helloworld','hello world'],a:2,ex:'双引号里的内容会原模原样输出：H/W 大写会变成别的样子，没有空格也会原样没有空格。'},
+{q:'下面哪个是单行注释的正确写法？',opts:['// 这是注释','## 这是注释','** 这是注释 **'],a:0,ex:'单行注释用 // 开头；多行注释才用 /* ... */ 包起来。'},
+{q:'cout << 123 + 123; 会输出什么？',opts:['123 + 123','246','报错'],a:1,ex:'没有双引号时，计算机会先算出 123+123=246 再输出。只有放进双引号才会原样输出文字。'},
+{q:'下面哪个变量名是合法的？',opts:['2price','int','my_score'],a:2,ex:'变量名只能由字母、数字、下划线组成：不能以数字开头（2price❌），不能用关键字（int❌）。'},
+{q:'price 和 Price 在 C++ 中是——',opts:['同一个变量','两个不同的变量','都不合法'],a:1,ex:'C++ 严格区分大小写，price 和 Price 是两个不同的变量。'},
+{q:'要把键盘输入的数存入变量 a，正确写法是？',opts:['cin << a;','cin >> a;','cout >> a;'],a:1,ex:'cin 配 >>（数据灌进变量），cout 配 <<（数据送向屏幕），方向不能反。'},
+{q:'a = 2; 这行代码里的等号表示——',opts:['数学里的"等于"','把 2 赋值给 a','比较 a 和 2'],a:1,ex:'= 是赋值运算符：把右边的值放进左边的变量，方向从右往左。'},
+{q:'cout << 5 / 2; 和 cout << 5 % 2; 分别输出？',opts:['2.5 和 1','2 和 1','2 和 0'],a:1,ex:'整数除法 5/2 扔掉小数得 2；取余 5%2 是分完后剩下的 1。'}
+];
+/* 错题本：错1次入本，连对2次移出 */
+let ERR_KEY='cppL1_err';
+function loadErr(){try{return JSON.parse(localStorage.getItem(ERR_KEY)||'{}');}catch(e){return{};}}
+function saveErr(o){localStorage.setItem(ERR_KEY,JSON.stringify(o));refreshErrCount();}
+function refreshErrCount(){const n=Object.keys(loadErr()).length;$('errCount').textContent=n?`（${n}题）`:'';}
+let qi=0,qScore=0,qOrder=[],qMode='normal';
+function startQuiz(){qOrder=QUIZ.map((_,i)=>i);qi=0;qScore=0;qMode='normal';renderQ();go('quiz');}
+function renderQ(){
+  const idx=qOrder[qi],Q=QUIZ[idx];
+  $('quizProg').style.width=(qi/qOrder.length*100)+'%';
+  $('quizNum').textContent=(qi+1)+'/'+qOrder.length;
+  let h=`<span class="badge">${qMode==='err'?'📒 错题重练':'第 '+(qi+1)+' 题'}</span><h2 style="line-height:1.6">${Q.q}</h2>`;
+  Q.opts.forEach((o,i)=>{h+=`<button class="opt" onclick="answer(${i},this)"><b>${'ABC'[i]}.</b> ${fmtOpt(o)}</button>`;});
+  h+=`<div class="explain" id="qExp"></div><div class="btnrow" id="qNext" style="display:none"><button class="btn blue big" onclick="nextQ()">下一题 ➡</button></div>`;
+  $('quizCard').innerHTML=h;
+}
+function fmtOpt(s){return s.replace(/`([^`]+)`/g,'<code>$1</code>');}
+function answer(i,el){
+  const Q=QUIZ[qOrder[qi]];
+  const opts=$('quizCard').querySelectorAll('.opt');
+  opts.forEach(o=>o.style.pointerEvents='none');
+  const err=loadErr();const id=qOrder[qi];
+  if(i===Q.a){el.classList.add('right');qScore++;
+    if(err[id]!==undefined){err[id].streak++;if(err[id].streak>=2){delete err[id];}saveErr(err);}
+    $('qExp').innerHTML='✅ <b>答对啦！</b>'+Q.ex;
+  }else{el.classList.add('wrong');opts[Q.a].classList.add('right');
+    if(err[id]===undefined)err[id]={streak:0};else err[id].streak=0;saveErr(err);
+    $('qExp').innerHTML='❌ <b>正确答案是 '+('ABC'[Q.a])+'。</b>'+Q.ex+(qMode==='normal'?'<br>📒 这题已收入错题本，连对 2 次可以毕业！':'');
+  }
+  $('qExp').className='explain on';$('qNext').style.display='flex';
+}
+function nextQ(){qi++;if(qi>=qOrder.length){finishQuiz();}else renderQ();}
+function finishQuiz(){
+  $('quizProg').style.width='100%';
+  const total=qOrder.length,perfect=qScore===total;
+  if(perfect)confetti();
+  $('quizCard').innerHTML=`<div class="center"><span class="big-emoji">${perfect?'🏆':qScore>=total*0.7?'🎉':'💪'}</span>
+  <h1>${perfect?'满分通关！':'闯关结束'}</h1>
+  <p class="sub" style="font-size:1.2rem;margin:10px 0">答对 <b style="color:var(--blue-d);font-size:1.6rem">${qScore}</b> / ${total} 题</p>
+  <div class="btnrow" style="justify-content:center">
+  <button class="btn green" onclick="startQuiz()">🔁 再闯一次</button>
+  <button class="btn pink" onclick="go('errbook')">📒 去看错题本</button>
+  <button class="btn ghost" onclick="go('home')">🏠 回首页</button></div></div>`;
+  $('quizNum').textContent='';
+}
+/* 错题本页 */
+function renderErrBook(){
+  const err=loadErr();const ids=Object.keys(err);
+  if(!ids.length){$('errList').innerHTML='<div class="demo center">🎉 错题本是空的，太厉害了！</div>';return;}
+  let h='';
+  ids.forEach(id=>{const Q=QUIZ[id];h+=`<div class="demo" style="margin:10px 0"><b>${Q.q}</b><br><span style="color:#1e9e62">✅ 正确答案：${Q.opts[Q.a]}</span><br><span style="font-size:.9rem;color:#6d6875">${Q.ex}</span><br><span class="badge" style="background:var(--orange)">已连续答对 ${err[id].streak}/2 次</span></div>`;});
+  h+=`<button class="btn blue big" onclick="startErrQuiz()">📝 开始错题重练</button>`;
+  $('errList').innerHTML=h;
+}
+function startErrQuiz(){qOrder=Object.keys(loadErr()).map(Number);if(!qOrder.length)return;qi=0;qScore=0;qMode='err';renderQ();go('quiz');}
+/* 每页切换时刷新错题本 */
+new MutationObserver(()=>{if($('errbook').classList.contains('on'))renderErrBook();}).observe($('errbook'),{attributes:true,attributeFilter:['class']});
+refreshErrCount();
+
+/* ===== 身份隔离 + 学习记录（仓库 AGENTS.md §4/§8）===== */
+const APP_ID='xmw45_intro', APP_VER='2026-07-26', APP_NAME='初识C++ 小工厂';
+let WHO=null;
+const WHO_KEY='xmw45_selected_who';
+const WHO_META={kenton:{name:'Kenton',icon:'🦁'},eddey:{name:'Eddey',icon:'🐯'}};
+function chooseWho(w){
+  if(!WHO_META[w])return;
+  WHO=w;ERR_KEY=ERR_KEY.replace(/_(kenton|eddey)$/,'')+'_'+w;
+  localStorage.setItem(WHO_KEY,w);
+  document.body.dataset.child=w;
+  document.getElementById('whoGate').style.display='none';
+  const wb=document.getElementById('whoBtn');if(wb)wb.textContent=WHO_META[w].icon+' '+WHO_META[w].name+' ▾';
+  const back=document.getElementById('mapBack');if(back)back.href='xiaomawang_cpp_4_5.html?who='+w+'&view=lessons&course=intro#courseMap';
+  REC.init();refreshErrCount();
+}
+function showWhoGate(){document.getElementById('whoGate').style.display='flex';}
+function bootWho(){
+  const q=new URL(location.href).searchParams.get('who');
+  const w=WHO_META[q]?q:localStorage.getItem(WHO_KEY);
+  if(WHO_META[w])chooseWho(w);else showWhoGate();
+}
+function dl(name,text,type){const b=new Blob([text],{type});const u=URL.createObjectURL(b);const a=document.createElement('a');a.href=u;a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(u),800);}
+const REC={
+  key(){return APP_ID+'_record_'+WHO;},
+  state:null,sessionStart:0,
+  blank(){return {meta:{app:APP_ID,child:WHO,version:APP_VER,name:APP_NAME},totalMs:0,plays:0,best:-1,events:[]};},
+  load(){try{const r=JSON.parse(localStorage.getItem(this.key()));if(r&&r.meta&&r.meta.app===APP_ID&&r.meta.child===WHO)return Object.assign(this.blank(),r);}catch(e){}return this.blank();},
+  init(){this.state=this.load();this.sessionStart=Date.now();this.render();},
+  tick(){const n=Date.now();this.state.totalMs=Math.max(0,(this.state.totalMs||0)+(n-this.sessionStart));this.sessionStart=n;},
+  save(){if(!this.state)return;this.state.lastUpdated=new Date().toISOString();localStorage.setItem(this.key(),JSON.stringify(this.state));this.render();},
+  log(t){this.state.events.unshift({at:new Date().toISOString(),text:String(t).slice(0,200)});this.state.events=this.state.events.slice(0,50);},
+  quizDone(score,total){this.tick();this.state.plays++;if(score>this.state.best)this.state.best=score;this.log('闯关得分 '+score+'/'+total);this.save();},
+  render(){const el=document.getElementById('recSummary');if(!el||!this.state)return;const mins=Math.floor((this.state.totalMs||0)/60000);const ev=this.state.events[0];let evTxt='还没有学习事件';if(ev){const d=new Date(ev.at);evTxt='最近：'+ev.text+'（'+(d.getMonth()+1)+'/'+d.getDate()+' '+String(d.getHours()).padStart(2,'0')+':'+String(d.getMinutes()).padStart(2,'0')+'）';}
+    el.innerHTML='累计学习 <b>'+mins+'</b> 分钟 · 闯关 <b>'+this.state.plays+'</b> 次 · 最好成绩 <b>'+(this.state.best<0?'—':this.state.best+' 题')+'</b><br><span style="color:#8A7E91;font-size:.85rem">'+evTxt+'</span>';},
+  exportJson(){this.tick();this.save();const data=Object.assign({},this.state,{wrongbook:loadErr()});dl(APP_ID+'_'+WHO+'_record.json',JSON.stringify(data,null,2),'application/json;charset=utf-8');},
+  exportMd(){this.tick();this.save();const err=loadErr();const ids=Object.keys(err);
+    const lines=['# '+WHO_META[WHO].name+' · '+APP_NAME+' 学习记录','','导出时间：'+new Date().toLocaleString('zh-CN'),'','- 累计学习：'+Math.floor((this.state.totalMs||0)/60000)+' 分钟','- 闯关次数：'+this.state.plays+'，最好成绩：'+(this.state.best<0?'—':this.state.best+' 题'),'','## 错题本（连对 2 次毕业）',''];
+    if(!ids.length)lines.push('- 暂无错题');else ids.forEach(id=>{lines.push('- '+QUIZ[id].q+' → 正确：'+QUIZ[id].opts[QUIZ[id].a].replace(/<[^>]+>/g,'')+'（已连续答对 '+err[id].streak+'/2）');});
+    lines.push('','## 最近事件','');this.state.events.slice(0,10).forEach(e=>lines.push('- '+e.at.slice(0,16).replace('T',' ')+' '+e.text));
+    lines.push('','> 仅含当前孩子的独立记录，不含账号或联系方式。');
+    dl(APP_ID+'_'+WHO+'_record.md',lines.join('\n'),'text/markdown;charset=utf-8');},
+  importFile(file){if(!file)return;const rd=new FileReader();rd.onload=()=>{try{const p=JSON.parse(rd.result);
+      if(!p||!p.meta||p.meta.app!==APP_ID||p.meta.child!==WHO)throw new Error('identity');
+      if(!confirm('确认用这份 '+WHO_META[WHO].name+' 的记录覆盖当前记录吗？建议先导出备份。'))return;
+      const keep=this.blank();this.state=Object.assign(keep,p);delete this.state.wrongbook;
+      if(p.wrongbook&&typeof p.wrongbook==='object')saveErr(p.wrongbook);
+      this.sessionStart=Date.now();this.save();refreshErrCount();alert('记录已恢复');}catch(e){alert('导入失败：请选择 '+WHO_META[WHO].name+' 的本软件记录');}};
+    rd.readAsText(file);}
+};
+window.addEventListener('pagehide',()=>{if(REC.state){REC.tick();localStorage.setItem(REC.key(),JSON.stringify(REC.state));}});
+/* 闯关完成 → 记录 */
+const _finishQuizRaw=finishQuiz;
+finishQuiz=function(){_finishQuizRaw();if(WHO)REC.quizDone(qScore,qOrder.length);};
+/* ===== 遮一遮 ===== */
+const RECALL=[["C++ 程序框架的三部分是什么？","头文件（工具箱）、命名空间（防重名）、main 主函数（唯一入口，有且仅有一个）"],["cout 输出文字时必须注意什么？","内容放进英文双引号会原样输出（大小写、空格都算数），行末别忘分号"],["变量命名的三个\"不允许\"？","不能以数字开头、不能用 int 等关键字、严格区分大小写（price≠Price）"],["cin 和 cout 的箭头方向？","cin >> 变量（灌进去）；cout << 内容（送出去）"],["5/2 和 5%2 各得几？","5/2=2（整数除法扔小数），5%2=1（余数）"]];
+(function(){const box=document.getElementById('recallList');if(!box)return;RECALL.forEach((r,i)=>{const d=document.createElement('div');d.className='recall-item';d.innerHTML='<b>Q'+(i+1)+'.</b> '+r[0]+'<br><span class="recall-answer" onclick="this.classList.toggle(\'open\')">'+r[1]+'</span>';box.appendChild(d);});})();
+bootWho();
+
+</script>
+</body>
+</html>

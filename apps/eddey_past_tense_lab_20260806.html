@@ -1,0 +1,1219 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="study-portal-design" content="2.0">
+  <meta name="lesson-audio" content="pending">
+  <meta name="theme-color" content="#f36a22">
+  <title>水乡时光相机｜Eddey Unit 5</title>
+  <script src="../assets/learning-sync.js"></script>
+  <style>
+    :root{
+      --orange:#f36a22;
+      --orange-dark:#c84610;
+      --orange-soft:#fff0e3;
+      --ink:#173047;
+      --muted:#667486;
+      --paper:#fffdf8;
+      --cream:#f8f0e4;
+      --teal:#0c8279;
+      --teal-soft:#e4f5f1;
+      --gold:#f4bf45;
+      --red:#bf3d30;
+      --line:#eadac8;
+      --shadow:0 16px 40px rgba(66,44,25,.13);
+      --tap: 48px;
+      --safe-bottom:max(18px,env(safe-area-inset-bottom));
+    }
+    *{box-sizing:border-box}
+    html{background:#efe5d5;scroll-behavior:smooth}
+    body{
+      margin:0;
+      min-height:100vh;
+      color:var(--ink);
+      font-family:ui-rounded,"SF Pro Rounded","PingFang SC","Microsoft YaHei",system-ui,sans-serif;
+      background:
+        radial-gradient(circle at 10% 4%,rgba(243,106,34,.14),transparent 28%),
+        radial-gradient(circle at 92% 22%,rgba(12,130,121,.12),transparent 30%),
+        #efe5d5;
+    }
+    button,input{font:inherit}
+    button{color:inherit}
+    button:focus-visible,input:focus-visible,a:focus-visible{outline:3px solid rgba(12,130,121,.35);outline-offset:3px}
+    [hidden]{display:none!important}
+    .skip-link{position:fixed;left:12px;top:-80px;z-index:100;background:#fff;padding:12px 16px;border-radius:12px;color:var(--ink)}
+    .skip-link:focus{top:12px}
+    .lesson-shell{
+      width:min(100%,720px);
+      max-width:720px;
+      min-height:100vh;
+      margin:0 auto;
+      background:var(--paper);
+      box-shadow:0 0 60px rgba(55,36,19,.14);
+      position:relative;
+      overflow:hidden;
+    }
+    .topbar{
+      min-height:70px;
+      padding:11px 14px;
+      display:grid;
+      grid-template-columns:48px 1fr 48px;
+      align-items:center;
+      gap:9px;
+      background:rgba(255,253,248,.94);
+      border-bottom:1px solid rgba(234,218,200,.86);
+      position:sticky;
+      top:0;
+      z-index:30;
+      backdrop-filter:blur(14px);
+    }
+    .icon-button{
+      width:48px;
+      min-height:var(--tap);
+      border:1px solid var(--line);
+      border-radius:16px;
+      background:#fff;
+      display:grid;
+      place-items:center;
+      cursor:pointer;
+      transition:transform .18s ease,background .18s ease;
+    }
+    .icon-button:hover{background:var(--orange-soft)}
+    .icon-button:active{transform:scale(.96)}
+    .icon-button svg{width:23px;height:23px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+    .brand{text-align:center;min-width:0}
+    .brand strong{display:block;font-size:16px;font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .brand span{display:block;margin-top:2px;color:var(--muted);font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+    .progress-wrap{
+      padding:10px 18px 12px;
+      background:rgba(255,253,248,.96);
+      border-bottom:1px solid rgba(234,218,200,.72);
+    }
+    .progress-meta{display:flex;align-items:center;justify-content:space-between;gap:12px;font-size:12px;font-weight:700;color:var(--muted)}
+    .progress-track{height:7px;margin-top:8px;background:#f0e6d9;border-radius:999px;overflow:hidden}
+    .progress-fill{height:100%;width:0;background:linear-gradient(90deg,var(--orange),var(--gold));border-radius:999px;transition:width .35s ease}
+    main{display:block}
+    .screen{
+      min-height:calc(100vh - 113px);
+      padding:22px 18px calc(30px + var(--safe-bottom));
+      animation:screen-in .35s ease both;
+    }
+    .screen:not(.active){display:none}
+    @keyframes screen-in{from{opacity:0;transform:translateY(9px)}to{opacity:1;transform:none}}
+    .eyebrow{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      min-height:28px;
+      padding:4px 10px;
+      border-radius:999px;
+      background:var(--orange-soft);
+      color:var(--orange-dark);
+      font-size:12px;
+      font-weight:800;
+      letter-spacing:.05em;
+    }
+    .eyebrow .dot{width:7px;height:7px;border-radius:999px;background:var(--orange)}
+    h1,h2,h3,p{margin-top:0}
+    h1{margin-bottom:10px;font-size:clamp(32px,8vw,42px);line-height:1.08;letter-spacing:-.035em;font-weight:800}
+    h2{margin-bottom:8px;font-size:clamp(25px,6vw,34px);line-height:1.16;letter-spacing:-.025em;font-weight:800}
+    h3{font-size:18px;line-height:1.3;font-weight:800}
+    .lede{max-width:590px;margin-bottom:20px;color:var(--muted);font-size:16px;line-height:1.7;font-weight:600}
+    .button{
+      width:100%;
+      min-height:var(--tap);
+      border:0;
+      border-radius:16px;
+      padding:12px 18px;
+      background:linear-gradient(135deg,var(--orange),#e95518);
+      color:#fff;
+      box-shadow:0 9px 20px rgba(243,106,34,.24);
+      font-weight:800;
+      cursor:pointer;
+      transition:transform .18s ease,box-shadow .18s ease,opacity .18s ease;
+    }
+    .button:hover{transform:translateY(-1px);box-shadow:0 12px 24px rgba(243,106,34,.28)}
+    .button:active{transform:translateY(1px)}
+    .button:disabled{opacity:.45;cursor:not-allowed;transform:none;box-shadow:none}
+    .button.secondary{background:#fff;color:var(--ink);border:1px solid var(--line);box-shadow:none}
+    .button.teal{background:linear-gradient(135deg,var(--teal),#09665f);box-shadow:0 9px 20px rgba(12,130,121,.2)}
+    .button.compact{width:auto;min-width:128px}
+    .hero-card{
+      position:relative;
+      min-height:440px;
+      border-radius:26px;
+      overflow:hidden;
+      box-shadow:var(--shadow);
+      background:#49342c;
+      isolation:isolate;
+    }
+    .hero-card>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+    .hero-card:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(14,25,32,.02) 25%,rgba(14,25,32,.82) 100%);z-index:1}
+    .hero-content{position:absolute;inset:auto 0 0;z-index:2;padding:26px;color:#fff}
+    .hero-kicker{display:flex;align-items:center;gap:8px;margin-bottom:10px;font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase}
+    .camera-mark{width:26px;height:20px;border:2px solid currentColor;border-radius:7px;position:relative;display:inline-block}
+    .camera-mark:before{content:"";position:absolute;width:7px;height:7px;border:2px solid currentColor;border-radius:999px;left:7px;top:4px}
+    .camera-mark:after{content:"";position:absolute;width:8px;height:3px;background:currentColor;border-radius:2px;left:3px;top:-5px}
+    .hero-content h1{text-shadow:0 2px 20px rgba(0,0,0,.28)}
+    .hero-content p{margin-bottom:17px;color:rgba(255,255,255,.86);line-height:1.65;font-weight:600}
+    .hero-content .button{max-width:300px}
+    .daily-note{
+      margin-top:14px;
+      padding:13px 15px;
+      display:grid;
+      grid-template-columns:34px 1fr;
+      align-items:center;
+      gap:10px;
+      border:1px dashed rgba(12,130,121,.36);
+      border-radius:16px;
+      background:var(--teal-soft);
+      color:#245f5a;
+      font-size:13px;
+      line-height:1.5;
+      font-weight:700;
+    }
+    .daily-lens{width:31px;height:31px;border:6px solid var(--teal);border-radius:999px;box-shadow:inset 0 0 0 3px #fff}
+    .audio-notice{margin-top:12px;color:#8b5a25;font-size:12px;line-height:1.55;font-weight:700}
+    .stage-head{margin-bottom:18px}
+    .stage-count{color:var(--orange-dark);font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+    .time-studio{
+      border:1px solid var(--line);
+      border-radius:26px;
+      overflow:hidden;
+      background:#2b3440;
+      box-shadow:var(--shadow);
+    }
+    .scene-frame{
+      position:relative;
+      aspect-ratio:16/9;
+      min-height:250px;
+      overflow:hidden;
+      background:#b7d4cf;
+    }
+    .scene-frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity .75s ease,transform 1.1s ease}
+    .scene-day{opacity:1}
+    .scene-sunset{opacity:0}
+    .time-studio.is-yesterday .scene-day{opacity:0}
+    .time-studio.is-yesterday .scene-sunset{opacity:1}
+    .time-studio.is-yesterday .scene-frame img{transform:scale(1.025)}
+    .film-grain{position:absolute;inset:0;pointer-events:none;opacity:.14;background-image:radial-gradient(circle at 20% 30%,#fff 0 1px,transparent 1px),radial-gradient(circle at 70% 80%,#fff 0 1px,transparent 1px);background-size:17px 17px,23px 23px;mix-blend-mode:soft-light}
+    .viewfinder{position:absolute;inset:13px;border:1px solid rgba(255,255,255,.65);border-radius:16px;pointer-events:none}
+    .viewfinder:before,.viewfinder:after{content:"";position:absolute;background:rgba(255,255,255,.72)}
+    .viewfinder:before{width:34px;height:1px;left:50%;top:50%;transform:translateX(-50%)}
+    .viewfinder:after{width:1px;height:34px;left:50%;top:50%;transform:translateY(-50%)}
+    .scene-label{position:absolute;left:15px;top:15px;min-height:32px;padding:7px 11px;border-radius:999px;background:rgba(14,29,42,.72);color:#fff;font-size:12px;font-weight:800;backdrop-filter:blur(8px)}
+    .shutter-flash{position:absolute;inset:0;background:#fff;opacity:0;pointer-events:none}
+    .time-studio.shutter .shutter-flash{animation:flash .48s ease}
+    @keyframes flash{0%{opacity:0}20%{opacity:.84}100%{opacity:0}}
+    .studio-controls{padding:17px;background:#fffaf2}
+    .time-toggle{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:5px;border-radius:18px;background:#ece2d4}
+    .time-choice{min-height:var(--tap);border:0;border-radius:14px;background:transparent;font-size:13px;font-weight:800;cursor:pointer}
+    .time-choice.active{background:#fff;color:var(--orange-dark);box-shadow:0 4px 14px rgba(67,45,27,.13)}
+    .sentence-film{
+      margin-top:14px;
+      padding:18px 15px;
+      border-radius:18px;
+      background:var(--ink);
+      color:#fff;
+      text-align:center;
+      font-size:clamp(18px,4.6vw,24px);
+      line-height:1.5;
+      font-weight:700;
+    }
+    .time-token{color:#ffd174}
+    .verb-token{display:inline-block;min-width:73px;padding:2px 7px;border-radius:8px;background:var(--orange);transition:transform .35s ease}
+    .time-studio.is-yesterday .verb-token{animation:word-pop .55s ease}
+    @keyframes word-pop{45%{transform:translateY(-7px) rotate(-2deg)}100%{transform:none}}
+    .observation{margin:13px 0 0;color:#5e554a;font-size:13px;line-height:1.65;font-weight:600}
+    .audio-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:13px}
+    .audio-button{
+      min-height:var(--tap);
+      border:1px solid var(--line);
+      border-radius:999px;
+      padding:9px 13px;
+      background:#fff;
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      color:var(--ink);
+      font-size:13px;
+      font-weight:800;
+      cursor:pointer;
+    }
+    .audio-button svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round}
+    .audio-button.playing{border-color:var(--teal);background:var(--teal-soft);color:#08675f}
+    .next-zone{margin-top:18px}
+    .task-card{
+      padding:20px;
+      border:1px solid var(--line);
+      border-radius:24px;
+      background:#fff;
+      box-shadow:0 12px 32px rgba(72,48,26,.09);
+    }
+    .task-strip{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:18px}
+    .film-number{display:inline-flex;align-items:center;gap:7px;color:var(--muted);font-size:12px;font-weight:800}
+    .film-number:before{content:"";width:11px;height:11px;border-radius:3px;background:var(--orange)}
+    .tiny-progress{display:flex;gap:5px}
+    .tiny-progress i{width:18px;height:6px;border-radius:999px;background:#e8ded1}
+    .tiny-progress i.done{background:var(--orange)}
+    .prompt{margin-bottom:9px;font-size:20px;line-height:1.4;font-weight:800}
+    .context-line{margin-bottom:17px;padding:12px 14px;border-left:4px solid var(--gold);border-radius:0 12px 12px 0;background:#fff8e7;color:#715622;line-height:1.6;font-weight:700}
+    .word-machine{display:flex;align-items:center;justify-content:center;gap:10px;min-height:90px;margin:13px 0 18px;border-radius:18px;background:linear-gradient(135deg,#173047,#23465e);color:#fff}
+    .word-chip{padding:9px 12px;border-radius:12px;background:#fff;color:var(--ink);font-size:20px;font-weight:800}
+    .machine-arrow{color:#ffc65a;font-size:24px;font-weight:800}
+    .choice-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+    .choice{
+      min-height:var(--tap);
+      border:2px solid #eadfce;
+      border-radius:16px;
+      padding:12px;
+      background:#fffdf9;
+      font-weight:800;
+      cursor:pointer;
+      transition:border-color .16s ease,background .16s ease,transform .16s ease;
+    }
+    .choice:hover{border-color:#efb083;transform:translateY(-1px)}
+    .choice.selected{border-color:var(--orange);background:var(--orange-soft)}
+    .choice.correct{border-color:var(--teal);background:var(--teal-soft);color:#08675f}
+    .choice.wrong{border-color:var(--red);background:#fff0ee;color:#8f2c24}
+    .feedback{display:none;margin-top:13px;padding:12px 14px;border-radius:14px;font-size:14px;line-height:1.55;font-weight:700}
+    .feedback.show{display:block}
+    .feedback.ok{background:var(--teal-soft);color:#08675f}
+    .feedback.no{background:#fff0ee;color:#8f2c24}
+    .memory-grid{display:grid;gap:11px}
+    .memory-card{
+      min-height:104px;
+      width:100%;
+      border:1px solid var(--line);
+      border-radius:18px;
+      padding:16px;
+      background:#fff;
+      text-align:left;
+      cursor:pointer;
+      position:relative;
+      overflow:hidden;
+    }
+    .memory-card:before{content:"";position:absolute;left:0;top:0;bottom:0;width:7px;background:var(--orange)}
+    .memory-label{display:block;margin-bottom:7px;color:var(--orange-dark);font-size:12px;font-weight:800;letter-spacing:.06em}
+    .memory-question{display:block;font-size:17px;line-height:1.5;font-weight:800}
+    .memory-answer{display:none;margin-top:8px;color:#08675f;line-height:1.55;font-weight:700}
+    .memory-card.revealed{background:var(--teal-soft);border-color:#9ed8d1}
+    .memory-card.revealed .memory-answer{display:block}
+    .memory-card.revealed .memory-question{font-size:14px;color:var(--muted)}
+    .answer-input{
+      width:100%;
+      min-height:58px;
+      border:2px solid #dfd2c1;
+      border-radius:16px;
+      padding:14px 15px;
+      background:#fff;
+      color:var(--ink);
+      font-size:17px;
+      line-height:1.45;
+      font-weight:700;
+      transition:border-color .16s ease,box-shadow .16s ease;
+    }
+    .answer-input:focus{border-color:var(--teal);box-shadow:0 0 0 4px rgba(12,130,121,.1)}
+    .input-note{margin:8px 2px 0;color:var(--muted);font-size:12px;line-height:1.55;font-weight:600}
+    .question-actions{display:grid;grid-template-columns:1fr;gap:10px;margin-top:16px}
+    .darkroom{
+      padding:22px;
+      border-radius:24px;
+      color:#fff;
+      background:
+        radial-gradient(circle at 80% 0,rgba(243,106,34,.28),transparent 34%),
+        linear-gradient(150deg,#182435,#2b1831);
+      box-shadow:0 18px 38px rgba(23,28,43,.25);
+    }
+    .darkroom .stage-count{color:#ffbd7f}
+    .darkroom h2{color:#fff}
+    .darkroom p{color:#cbd0dc;line-height:1.65;font-weight:600}
+    .negative{
+      margin:19px 0;
+      min-height:128px;
+      padding:24px 16px;
+      border:1px solid rgba(255,255,255,.18);
+      border-radius:18px;
+      background:rgba(0,0,0,.27);
+      display:grid;
+      place-items:center;
+      text-align:center;
+    }
+    .negative-line{font-size:clamp(19px,5vw,25px);line-height:1.5;font-weight:800}
+    .negative-line .did{display:inline-block;padding:3px 8px;border-radius:8px;background:var(--gold);color:#3f2b09}
+    .negative-line .base{display:inline-block;padding:3px 8px;border-radius:8px;background:var(--teal);color:#fff}
+    .negative-line s{color:#ff9a8c;text-decoration-thickness:3px}
+    .repair-meter{display:flex;align-items:center;gap:9px;margin-bottom:14px;color:#d6d9e2;font-size:12px;font-weight:800}
+    .repair-meter i{width:34px;height:7px;border-radius:999px;background:rgba(255,255,255,.17)}
+    .repair-meter i.done{background:var(--gold)}
+    .darkroom .choice{border-color:rgba(255,255,255,.19);background:rgba(255,255,255,.08);color:#fff}
+    .darkroom .choice.selected{border-color:var(--gold);background:rgba(244,191,69,.18)}
+    .return-note{margin-top:12px;text-align:center;color:#cbd0dc;font-size:12px;font-weight:700}
+    .mission-grid{display:grid;gap:9px;margin-bottom:16px}
+    .mission{
+      min-height:var(--tap);
+      width:100%;
+      border:1px solid var(--line);
+      border-radius:16px;
+      padding:12px 14px;
+      background:#fff;
+      display:grid;
+      grid-template-columns:36px 1fr;
+      align-items:center;
+      gap:11px;
+      text-align:left;
+      cursor:pointer;
+    }
+    .mission.selected{border:2px solid var(--orange);background:var(--orange-soft)}
+    .mission-letter{width:34px;height:34px;border-radius:11px;background:var(--ink);color:#fff;display:grid;place-items:center;font-weight:800}
+    .mission strong{display:block;font-size:14px;font-weight:800}
+    .mission small{display:block;margin-top:2px;color:var(--muted);font-size:12px;font-weight:600}
+    .postcard{
+      margin-top:18px;
+      border-radius:24px;
+      overflow:hidden;
+      background:#fff;
+      border:1px solid var(--line);
+      box-shadow:var(--shadow);
+      transform:rotate(-.5deg);
+    }
+    .postcard-photo{height:230px;position:relative;overflow:hidden}
+    .postcard-photo img{width:100%;height:100%;object-fit:cover}
+    .postcard-stamp{position:absolute;right:15px;top:15px;width:82px;height:82px;border:4px double #fff;border-radius:999px;background:rgba(243,106,34,.9);color:#fff;display:grid;place-items:center;text-align:center;font-size:12px;line-height:1.15;font-weight:800;transform:rotate(8deg)}
+    .postcard-copy{padding:18px 20px 21px}
+    .postcard-copy small{display:block;margin-bottom:7px;color:var(--orange-dark);font-weight:800;letter-spacing:.08em}
+    .postcard-copy p{margin:0;font-family:"Bradley Hand","Comic Sans MS",cursive;font-size:21px;line-height:1.55;color:#253e51}
+    .completion{
+      margin-top:17px;padding:18px;border:1px solid #f1c98e;border-radius:20px;background:linear-gradient(135deg,#fff7dd,#fff0df);text-align:center
+    }
+    .completion-badge{width:78px;height:78px;margin:0 auto 11px;border:6px solid var(--orange);border-radius:999px;background:#fff;display:grid;place-items:center;color:var(--orange-dark);font-size:13px;line-height:1.15;font-weight:800;transform:rotate(-4deg)}
+    .completion h3{margin-bottom:5px}
+    .completion p{margin-bottom:14px;color:var(--muted);line-height:1.55;font-weight:600}
+    .modal{position:fixed;inset:0;z-index:70;padding:20px 14px;background:rgba(16,29,41,.68);display:none;align-items:flex-end;justify-content:center}
+    .modal.open{display:flex}
+    .modal-card{width:min(100%,680px);max-height:88vh;overflow:auto;border-radius:24px 24px 16px 16px;background:var(--paper);box-shadow:0 30px 80px rgba(0,0,0,.32);padding:20px}
+    .modal-head{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:16px}
+    .modal-head h2{margin:0;font-size:24px}
+    .summary-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:17px}
+    .summary-card{padding:13px 8px;border-radius:15px;background:var(--orange-soft);text-align:center}
+    .summary-card strong{display:block;font-size:21px;font-weight:800}
+    .summary-card span{display:block;margin-top:3px;color:var(--muted);font-size:11px;font-weight:700}
+    .wrong-row{padding:13px 0;border-top:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:12px}
+    .wrong-row strong{font-size:14px;font-weight:800}
+    .wrong-row span{display:block;margin-top:3px;color:var(--muted);font-size:12px;font-weight:600}
+    .status-pill{padding:5px 9px;border-radius:999px;background:#fff0ee;color:#8f2c24;font-size:11px;font-weight:800;white-space:nowrap}
+    .status-pill.closed{background:var(--teal-soft);color:#08675f}
+    .build-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:17px}
+    .file-label{display:flex;align-items:center;justify-content:center;text-align:center;cursor:pointer}
+    .file-label input{display:none}
+    .toast{position:fixed;left:50%;bottom:calc(18px + var(--safe-bottom));z-index:90;width:min(calc(100% - 28px),520px);transform:translate(-50%,20px);opacity:0;pointer-events:none;padding:13px 16px;border-radius:14px;background:var(--ink);color:#fff;text-align:center;font-size:13px;line-height:1.5;font-weight:700;transition:opacity .2s ease,transform .2s ease}
+    .toast.show{opacity:1;transform:translate(-50%,0)}
+    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+    @media(min-width:620px){
+      .screen{padding:28px 30px calc(38px + var(--safe-bottom))}
+      .hero-card{min-height:500px}
+      .memory-grid{grid-template-columns:1fr 1fr 1fr}
+      .memory-card{min-height:178px}
+      .question-actions{grid-template-columns:1fr 1fr}
+      .modal{align-items:center}
+      .modal-card{border-radius:24px}
+    }
+    @media(max-width:420px){
+      .screen{padding-left:14px;padding-right:14px}
+      .choice-grid{grid-template-columns:1fr}
+      .hero-card{min-height:480px}
+      .hero-content{padding:21px}
+      .summary-grid{grid-template-columns:1fr 1fr 1fr}
+      .build-grid{grid-template-columns:1fr}
+      .scene-frame{min-height:230px}
+    }
+    @media(prefers-reduced-motion:reduce){
+      *,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+    }
+  </style>
+</head>
+<body data-child="eddey">
+  <a class="skip-link" href="#main">跳到学习内容</a>
+  <div class="lesson-shell" id="app">
+    <header class="topbar">
+      <button class="icon-button" id="backButton" type="button" aria-label="返回上一步">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+      </button>
+      <div class="brand">
+        <strong>水乡时光相机</strong>
+        <span>Eddey · Unit 5</span>
+      </div>
+      <button class="icon-button" id="recordButton" type="button" aria-label="打开学习档案">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h14v16H5zM8 8h8M8 12h8M8 16h5"/></svg>
+      </button>
+    </header>
+    <div class="progress-wrap" aria-label="课程进度">
+      <div class="progress-meta"><span id="progressLabel">准备出发</span><span id="progressValue">0 / 6</span></div>
+      <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+    </div>
+    <main id="main">
+      <section class="screen active" data-view="home" aria-labelledby="homeTitle">
+        <div class="hero-card">
+          <img src="media/eddey_past_tense_lab_20260806/water-town-day.webp" alt="清晨的江南水乡，橙色外套的小摄影师站在拱桥边">
+          <div class="hero-content">
+            <div class="hero-kicker"><span class="camera-mark" aria-hidden="true"></span><span>Unit 5 · Visiting places</span></div>
+            <h1 id="homeTitle">把昨天拍出来</h1>
+            <p>同一座水乡，换一个时间，动词也会换一件衣服。完成 6 个镜头，冲洗你的英文明信片。</p>
+            <button class="button compact" id="startLesson" type="button">装入胶卷，开始</button>
+          </div>
+        </div>
+        <div class="daily-note" data-micro-surprise="daily">
+          <span class="daily-lens" aria-hidden="true"></span>
+          <span id="dailySurprise">正在装入今天的隐藏胶卷……</span>
+        </div>
+        <p class="audio-notice">声音说明：Emma 英式女声已接入，本版音频待验收；第一次播放请先调低音量。</p>
+      </section>
+
+      <section class="screen" data-view="teach" data-phase="teach" aria-labelledby="teachTitle">
+        <div class="stage-head">
+          <span class="eyebrow"><span class="dot"></span>镜头 1 · 看懂变化</span>
+          <h2 id="teachTitle">转动时间拨盘</h2>
+          <p class="lede">先看照片，再看黄色时间词和橙色动词。主动切到 Yesterday，捕捉一次真正的变化。</p>
+        </div>
+        <figure class="time-studio" id="timeStudio" data-surprise="time-lens">
+          <div class="scene-frame">
+            <img class="scene-day" src="media/eddey_past_tense_lab_20260806/water-town-day.webp" alt="白天的水乡与小摄影师">
+            <img class="scene-sunset" src="media/eddey_past_tense_lab_20260806/water-town-sunset.webp" alt="同一地点在昨日黄昏时的水乡与小摄影师">
+            <span class="film-grain" aria-hidden="true"></span>
+            <span class="viewfinder" aria-hidden="true"></span>
+            <span class="scene-label" id="sceneLabel">经常发生 · 现在时</span>
+            <span class="shutter-flash" aria-hidden="true"></span>
+          </div>
+          <figcaption class="studio-controls">
+            <div class="time-toggle" role="group" aria-label="切换照片时间">
+              <button class="time-choice active" id="summerTime" type="button" aria-pressed="true">Every summer</button>
+              <button class="time-choice" id="yesterdayTime" type="button" aria-pressed="false">Yesterday</button>
+            </div>
+            <div class="sentence-film" id="sceneSentence"><span class="time-token">Every summer</span>, Shenshen <span class="verb-token">visits</span> an old water town.</div>
+            <p class="observation" id="sceneObservation">Every summer 表示经常发生，所以用 visits。</p>
+            <div class="audio-row">
+              <button class="audio-button" type="button" data-audio="present">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 10v4h4l5 4V6l-5 4H5zM17 9a4 4 0 010 6"/></svg>
+                听现在镜头
+              </button>
+              <button class="audio-button" type="button" data-audio="past">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 10v4h4l5 4V6l-5 4H5zM17 9a4 4 0 010 6"/></svg>
+                听昨天镜头
+              </button>
+            </div>
+          </figcaption>
+        </figure>
+        <div class="next-zone">
+          <button class="button" id="teachContinue" type="button" disabled>先切到 Yesterday，再收下照片</button>
+        </div>
+      </section>
+
+      <section class="screen" data-view="guided" data-phase="guided" aria-labelledby="guidedTitle">
+        <div class="stage-head">
+          <span class="eyebrow"><span class="dot"></span>镜头 2 · 跟着显影</span>
+          <h2 id="guidedTitle">动词显影台</h2>
+          <p class="lede">一次只冲洗一张底片。观察词尾，再选出 Yesterday 需要的样子。</p>
+        </div>
+        <div class="task-card">
+          <div class="task-strip">
+            <span class="film-number" id="guidedCount">底片 1 / 4</span>
+            <span class="tiny-progress" id="guidedProgress" aria-hidden="true"></span>
+          </div>
+          <div id="guidedTask"></div>
+          <div class="feedback" id="guidedFeedback" aria-live="polite"></div>
+          <button class="button next-zone" id="guidedNext" type="button" hidden>下一张底片</button>
+        </div>
+      </section>
+
+      <section class="screen" data-view="recall" data-phase="recall" aria-labelledby="recallTitle">
+        <div class="stage-head">
+          <span class="eyebrow"><span class="dot"></span>镜头 3 · 关灯回想</span>
+          <h2 id="recallTitle">先想，再翻底片</h2>
+          <p class="lede">每张先在心里说答案，再点开核对。三张都翻过，才算把规则装进相机。</p>
+        </div>
+        <div class="memory-grid">
+          <button class="memory-card" type="button" data-memory="time" aria-expanded="false">
+            <span class="memory-label">底片 A · 时间</span>
+            <span class="memory-question">Yesterday 出现时，镜头对准哪种时态？</span>
+            <span class="memory-answer">一般过去时。事情已经发生了。</span>
+          </button>
+          <button class="memory-card" type="button" data-memory="form" aria-expanded="false">
+            <span class="memory-label">底片 B · 变形</span>
+            <span class="memory-question">visit、like、study 怎样变成过去式？</span>
+            <span class="memory-answer">visited、liked、studied。</span>
+          </button>
+          <button class="memory-card" type="button" data-memory="did" aria-expanded="false">
+            <span class="memory-label">底片 C · Did</span>
+            <span class="memory-question">Did / didn’t 后面的动词用什么形态？</span>
+            <span class="memory-answer">用原形：Did ... take，不是 took。</span>
+          </button>
+        </div>
+        <button class="button next-zone" id="recallContinue" type="button" disabled>翻完 3 张底片后继续</button>
+      </section>
+
+      <section class="screen" data-view="independent" data-phase="independent" aria-labelledby="independentTitle">
+        <div class="stage-head">
+          <span class="eyebrow"><span class="dot"></span>镜头 4 · 独立拍摄</span>
+          <h2 id="independentTitle">这次由你按快门</h2>
+          <p class="lede">选择题只负责热身；真正的关键句要自己输入。大小写、首尾空格和句末标点不会影响判断。</p>
+        </div>
+        <div class="task-card" id="independentCard">
+          <div id="independentTask"></div>
+          <div class="feedback" id="independentFeedback" aria-live="polite"></div>
+        </div>
+      </section>
+
+      <section class="screen" data-view="repair" data-phase="repair" aria-labelledby="repairTitle">
+        <div class="darkroom">
+          <div class="stage-count">镜头 5 · 句型暗房</div>
+          <h2 id="repairTitle">把规则重新显影</h2>
+          <p id="repairLead">这里不罚分。连续显影两张小底片，再回到刚才那一道原题。</p>
+          <div class="negative" id="repairVisual"></div>
+          <div class="repair-meter" id="repairMeter" aria-label="修复进度"></div>
+          <div id="repairTask"></div>
+          <div class="feedback" id="repairFeedback" aria-live="polite"></div>
+          <button class="button next-zone" id="returnToQuestion" type="button" data-return-to-question="true" hidden>回到刚才那道原题</button>
+          <div class="return-note">错误草稿会保留，你可以亲手把它改对。</div>
+        </div>
+      </section>
+
+      <section class="screen" data-view="transfer" data-phase="transfer" aria-labelledby="transferTitle">
+        <div class="stage-head">
+          <span class="eyebrow"><span class="dot"></span>镜头 6 · 新场景迁移</span>
+          <h2 id="transferTitle">冲洗你的明信片</h2>
+          <p class="lede">任选一个新画面，独立写出完整的过去时句子。写对以后，照片才会真正显影。</p>
+        </div>
+        <div id="transferWork">
+          <div class="mission-grid" id="missionGrid"></div>
+          <label for="transferInput" class="prompt">写出这张照片的英文句子</label>
+          <input class="answer-input" id="transferInput" type="text" autocomplete="off" spellcheck="false" placeholder="在这里输入完整句子">
+          <p class="input-note" id="transferHint">提示会出现在这里。</p>
+          <div class="audio-row">
+            <button class="audio-button" type="button" data-audio="postcard">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 10v4h4l5 4V6l-5 4H5zM17 9a4 4 0 010 6"/></svg>
+              听一张示例明信片
+            </button>
+          </div>
+          <button class="button next-zone" id="checkTransfer" type="button">冲洗这张照片</button>
+          <div class="feedback" id="transferFeedback" aria-live="polite"></div>
+        </div>
+        <div id="transferResult" hidden>
+          <article class="postcard" aria-label="Eddey 的水乡英文明信片">
+            <div class="postcard-photo">
+              <img src="media/eddey_past_tense_lab_20260806/water-town-sunset.webp" alt="昨日黄昏的水乡照片">
+              <span class="postcard-stamp">UNIT 5<br>PAST</span>
+            </div>
+            <div class="postcard-copy">
+              <small>EDDEY · WATER TOWN</small>
+              <p id="postcardSentence"></p>
+            </div>
+          </article>
+          <div class="completion" data-micro-surprise="completion">
+            <div class="completion-badge">时光<br>摄影师</div>
+            <h3>六个镜头全部完成</h3>
+            <p>你不只选出了过去式，还独立写了句子，并把 Did / didn’t 后的动词送回了原形。</p>
+            <div class="audio-row" style="justify-content:center">
+              <button class="audio-button" type="button" data-audio="postcardClose">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 10v4h4l5 4V6l-5 4H5zM17 9a4 4 0 010 6"/></svg>
+                听收尾示例
+              </button>
+            </div>
+            <button class="button next-zone" id="finishLesson" type="button">完成并同步学习记录</button>
+            <div class="feedback" id="finishFeedback" aria-live="polite"></div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div class="modal" id="recordModal" role="dialog" aria-modal="true" aria-labelledby="recordTitle" aria-hidden="true">
+    <div class="modal-card">
+      <div class="modal-head">
+        <h2 id="recordTitle">Eddey 学习档案</h2>
+        <button class="icon-button" id="recordClose" type="button" aria-label="关闭学习档案">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>
+        </button>
+      </div>
+      <div class="summary-grid" id="recordSummary"></div>
+      <div id="wrongList"></div>
+      <div class="build-grid">
+        <button class="button secondary" id="redoWrong" type="button">回炉未关闭缺口</button>
+        <button class="button secondary" id="exportJson" type="button">导出 JSON</button>
+        <button class="button secondary" id="exportMd" type="button">导出 Markdown</button>
+        <label class="button secondary file-label">导入 JSON<input id="importJson" type="file" accept="application/json"></label>
+      </div>
+    </div>
+  </div>
+  <div class="toast" id="toast" aria-live="polite"></div>
+  <div class="sr-only" id="audioStatus" aria-live="polite"></div>
+
+  <script>
+  var APP_ID='eddey-past-tense-lab-20260806',VERSION='3.0.0',CHILD='eddey';
+  const LESSON_BLUEPRINT={
+    appId:APP_ID,
+    child:CHILD,
+    source:'Wendy 2026-08-06 老师反馈；义务教育教科书（五·四学制）英语四年级上册 Unit 5 印刷页 39-46（PDF 页 45-52）；Lesson 23 语法补充材料。',
+    courseDate:'2026-08-06',
+    currentGap:'能识别部分时间线索，但时态区分、规则与不规则过去式、Did/didn’t 后恢复动词原形仍不稳定。',
+    observableOutcome:'能根据时间线索选择一般过去时，独立输入 Unit 5 水乡肯定句、Did 疑问句和 didn’t 否定句，并在新场景写出完整过去时句子。',
+    knowledgeMechanism:'同构水乡照片从经常的白昼切到昨天的黄昏，时间词、光线和动词同步变化；句型暗房把过去信息交给 Did/didn’t，动词恢复原形。',
+    primaryInteraction:'主动转动时间拨盘触发昼夜同构镜头和 visits→visited 变形；独立打字答错后完成两张修复底片并返回同一道原题。',
+    audio:'pending',
+    surprise:'同一水乡构图从白昼无缝变成昨日黄昏，句中动词同时显影。',
+    surpriseTrigger:'孩子主动把时间拨盘切到 Yesterday。',
+    phases:['teach','guided','recall','independent','repair','transfer']
+  };
+  const AUDIO_DIR='audio/eddey_past_tense_lab_20260806/';
+  const AUDIO_FILES={
+    textbook:'01-textbook-question.mp3',
+    present:'02-present-scene.mp3',
+    past:'03-past-scene.mp3',
+    visit:'04-visit-pair.mp3',
+    like:'05-like-pair.mp3',
+    study:'06-study-pair.mp3',
+    take:'07-take-pair.mp3',
+    didQuestion:'08-did-question.mp3',
+    didnt:'09-didnt-sentence.mp3',
+    goQuestion:'10-go-question.mp3',
+    postcard:'11-postcard-example.mp3',
+    postcardClose:'12-postcard-close.mp3'
+  };
+  const STORAGE_KEY='study:eddey:'+APP_ID+':v3';
+  const LEGACY_V2_KEY='study:eddey:'+APP_ID+':v2';
+  const PHASES=['teach','guided','recall','independent','repair','transfer'];
+  const PHASE_LABELS={home:'准备出发',teach:'看懂变化',guided:'跟着显影',recall:'关灯回想',independent:'独立拍摄',repair:'句型暗房',transfer:'冲洗作品'};
+  const DAILY_SURPRISES=[
+    '今日隐藏胶卷：先盯住光线，再找动词。你会比相机更早发现时间变化。',
+    '今日隐藏胶卷：每次听音频前先默读一遍，看看耳朵和眼睛是否拍到同一句。',
+    '今日隐藏胶卷：遇见 Did，立刻检查后面的动词有没有回到原形。',
+    '今日隐藏胶卷：句末标点不会影响判定，把注意力留给时间词和动词。'
+  ];
+  const GUIDED=[
+    {base:'visit',prompt:'visit 怎样走进 Yesterday 镜头？',context:'大多数动词直接加 -ed。',answer:'visited',options:['visit','visited'],audio:'visit'},
+    {base:'like',prompt:'like 怎样变成过去式？',context:'动词已经以 e 结尾，只加 -d。',answer:'liked',options:['likeed','liked'],audio:'like'},
+    {base:'study',prompt:'study 怎样变成过去式？',context:'辅音字母 + y：把 y 变 i，再加 -ed。',answer:'studied',options:['studyed','studied'],audio:'study'},
+    {base:'take',prompt:'take 的过去式是哪一个？',context:'不规则动词不能靠加 -ed，要单独记住。',answer:'took',options:['taked','took'],audio:'take'}
+  ];
+  const QUESTIONS=[
+    {id:'q1',type:'choice',skill:'time',tag:'时间线索',prompt:'照片标签写着 Yesterday。它属于哪一种镜头？',context:'Yesterday · Shenshen · water town',options:['经常发生的现在时','已经发生的过去时'],accepted:['已经发生的过去时'],why:'Yesterday 告诉我们事情已经发生。'},
+    {id:'q2',type:'choice',skill:'pastForm',tag:'动词变形',prompt:'Yesterday, Shenshen ___ an old water town.',context:'visit → ?',options:['visits','visited'],accepted:['visited'],audio:'past',why:'Yesterday 要用过去式；visit 直接加 -ed。'},
+    {id:'q3',type:'text',skill:'pastForm',tag:'完整肯定句',prompt:'请独立输入完整的“昨天”句子。',context:'Yesterday · Shenshen · visit · an old water town',placeholder:'Yesterday, Shenshen ...',accepted:['Yesterday, Shenshen visited an old water town.','Yesterday Shenshen visited an old water town.'],audio:'past',why:'时间词 Yesterday 和过去式 visited 必须在同一个完整句子里。'},
+    {id:'q4',type:'text',skill:'didBase',tag:'Did 疑问句',prompt:'听一遍，再输入完整问题。',context:'Did · Shenshen · take photos of the old houses',placeholder:'Did Shenshen ...?',accepted:['Did Shenshen take photos of the old houses?'],audio:'didQuestion',why:'过去信息已经放在 Did 里，所以后面用 take。'},
+    {id:'q5',type:'text',skill:'didBase',tag:'didn’t 否定句',prompt:'输入完整句子：深深没有给博物馆拍照。',context:'Shenshen · didn’t · take a photo of the museum',placeholder:"Shenshen didn't ...",accepted:["Shenshen didn't take a photo of the museum.","Shenshen did not take a photo of the museum."],audio:'didnt',why:'didn’t 后面同样使用动词原形 take。'},
+    {id:'q6',type:'choice',skill:'didBase',tag:'最后检查',prompt:'Did she ___ by boat?',context:'Which photos did Shenshen take in the water town?',options:['go','went'],accepted:['go'],audio:'goQuestion',why:'Did 已经表示过去，后面用原形 go。'}
+  ];
+  const REPAIRS={
+    time:{
+      title:'时间镜头',
+      lead:'先找时间线索，再决定镜头。Yesterday 指向已经发生；Every summer 指向经常发生。',
+      visual:'<div class="negative-line"><span class="did">Yesterday</span> → 已经发生 → 过去时</div>',
+      variants:[
+        {prompt:'Yesterday 对准哪一种时态？',options:['过去时','现在时'],answer:'过去时'},
+        {prompt:'Every summer 对准哪一种时态？',options:['经常发生的现在时','过去时'],answer:'经常发生的现在时'}
+      ]
+    },
+    pastForm:{
+      title:'过去式显影',
+      lead:'规则动词按词尾显影；不规则动词需要直接记住。',
+      visual:'<div class="negative-line"><span class="base">visit</span> + ed → <span class="did">visited</span></div>',
+      variants:[
+        {prompt:'visit 的过去式是？',options:['visited','visits'],answer:'visited'},
+        {prompt:'study 的过去式是？',options:['studied','studyed'],answer:'studied'}
+      ]
+    },
+    didBase:{
+      title:'Did 原形暗房',
+      lead:'Did / didn’t 已经拿走“过去”这份工作，后面的动词要恢复原形。',
+      visual:'<div class="negative-line"><span class="did">Did</span> Shenshen <s>took</s> <span class="base">take</span> photos?</div>',
+      variants:[
+        {prompt:'Did Shenshen ___ photos?',options:['take','took'],answer:'take'},
+        {prompt:"She didn't ___ by boat.",options:['go','went'],answer:'go'}
+      ]
+    }
+  };
+  const MISSIONS=[
+    {id:'bridge',title:'桥边照片',clue:'Last Sunday · I · see · a beautiful bridge',answer:'Last Sunday, I saw a beautiful bridge.',accepted:['Last Sunday, I saw a beautiful bridge.','Last Sunday I saw a beautiful bridge.']},
+    {id:'town',title:'水乡照片',clue:'Yesterday · I · visit · the water town',answer:'Yesterday, I visited the water town.',accepted:['Yesterday, I visited the water town.','Yesterday I visited the water town.']},
+    {id:'houses',title:'老房子照片',clue:'Last Sunday · I · take photos of the old houses',answer:'Last Sunday, I took photos of the old houses.',accepted:['Last Sunday, I took photos of the old houses.','Last Sunday I took photos of the old houses.']}
+  ];
+  const $=function(id){return document.getElementById(id)};
+  const qa=function(selector,root){return Array.from((root||document).querySelectorAll(selector))};
+  function fresh(){
+    return{
+      schemaVersion:3,child:CHILD,appId:APP_ID,version:VERSION,
+      startedAt:new Date().toISOString(),elapsedMs:0,lastActiveAt:Date.now(),
+      view:'home',timeMode:'summer',surpriseSeen:false,guidedIndex:0,guidedPassed:{},
+      recallViewed:[],questionIndex:0,drafts:{},events:[],wrongbook:{},repair:null,
+      transfer:{mission:'bridge',draft:'',passed:false},completed:false,legacyV2:null
+    };
+  }
+  function load(){
+    try{
+      var saved=JSON.parse(localStorage.getItem(STORAGE_KEY));
+      if(saved&&saved.schemaVersion===3&&saved.child===CHILD&&saved.appId===APP_ID){
+        return Object.assign(fresh(),saved,{version:VERSION,lastActiveAt:Date.now()});
+      }
+    }catch(error){}
+    var next=fresh();
+    try{
+      var legacy=JSON.parse(localStorage.getItem(LEGACY_V2_KEY));
+      if(legacy&&legacy.schemaVersion===2&&legacy.child===CHILD&&legacy.appId===APP_ID){
+        next.legacyV2={keptAt:new Date().toISOString(),originalKey:LEGACY_V2_KEY,attemptCount:Array.isArray(legacy.events)?legacy.events.length:0,completed:legacy.completed===true};
+      }
+    }catch(error){}
+    return next;
+  }
+  var state=load();
+  var activeAudio=null;
+  var activeAudioButton=null;
+  var toastTimer=null;
+  function tick(){
+    var now=Date.now();
+    var delta=Math.max(0,Math.min(120000,now-(state.lastActiveAt||now)));
+    state.elapsedMs=(state.elapsedMs||0)+delta;
+    state.lastActiveAt=now;
+  }
+  function save(){
+    tick();
+    try{localStorage.setItem(STORAGE_KEY,JSON.stringify(state));}catch(error){}
+    renderProgress();
+  }
+  function normalizeLearningAnswer(value){
+    return String(value||'')
+      .normalize('NFKC')
+      .replace(/[’‘]/g,"'")
+      .trim()
+      .replace(/\s+/g,' ')
+      .replace(/[.!?。！？]+$/g,'')
+      .toLowerCase();
+  }
+  function answerMatches(value,accepted){
+    var normalized=normalizeLearningAnswer(value);
+    return accepted.some(function(item){return normalizeLearningAnswer(item)===normalized});
+  }
+  function dailySurpriseKey(){
+    var parts=new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Shanghai',year:'numeric',month:'2-digit',day:'2-digit'}).formatToParts(new Date());
+    var values={};
+    parts.forEach(function(part){if(part.type!=='literal')values[part.type]=part.value});
+    return APP_ID+'|'+CHILD+'|'+values.year+'-'+values.month+'-'+values.day;
+  }
+  function stableIndex(value,length){
+    var hash=0;
+    for(var index=0;index<value.length;index+=1)hash=((hash<<5)-hash+value.charCodeAt(index))|0;
+    return Math.abs(hash)%length;
+  }
+  function renderDaily(){
+    $('dailySurprise').textContent=DAILY_SURPRISES[stableIndex(dailySurpriseKey(),DAILY_SURPRISES.length)];
+  }
+  function toast(message){
+    clearTimeout(toastTimer);
+    $('toast').textContent=message;
+    $('toast').classList.add('show');
+    toastTimer=setTimeout(function(){$('toast').classList.remove('show')},2600);
+  }
+  function setAudioStatus(button,message){
+    $('audioStatus').textContent=message;
+    if(button)button.setAttribute('aria-label',message);
+  }
+  function stopAudio(){
+    if(activeAudio){activeAudio.pause();activeAudio.currentTime=0}
+    if(activeAudioButton)activeAudioButton.classList.remove('playing');
+    activeAudio=null;activeAudioButton=null;
+  }
+  function playAudio(button){
+    var key=button.dataset.audio,file=AUDIO_FILES[key];
+    if(!file){setAudioStatus(button,'这句音频还没有配置');return}
+    if(activeAudioButton===button&&activeAudio&&!activeAudio.paused){stopAudio();setAudioStatus(button,'已停止');return}
+    stopAudio();
+    var audio=new Audio(AUDIO_DIR+file);
+    activeAudio=audio;activeAudioButton=button;button.classList.add('playing');
+    setAudioStatus(button,'Emma 播放中');
+    audio.onended=function(){button.classList.remove('playing');setAudioStatus(button,'播放完成，可再听一次');activeAudio=null;activeAudioButton=null};
+    audio.onerror=function(){button.classList.remove('playing');setAudioStatus(button,'音频加载失败，请刷新后重试');activeAudio=null;activeAudioButton=null};
+    audio.play().catch(function(){button.classList.remove('playing');setAudioStatus(button,'请再点一次播放');activeAudio=null;activeAudioButton=null});
+  }
+  function progressFor(view){
+    if(view==='home')return 0;
+    var index=PHASES.indexOf(view);
+    return index<0?0:index+1;
+  }
+  function renderProgress(){
+    var step=progressFor(state.view);
+    $('progressLabel').textContent=PHASE_LABELS[state.view]||'水乡时光相机';
+    $('progressValue').textContent=step+' / 6';
+    $('progressFill').style.width=(step/6*100)+'%';
+  }
+  function setView(view,options){
+    stopAudio();
+    state.view=view;
+    qa('.screen').forEach(function(screen){screen.classList.toggle('active',screen.dataset.view===view)});
+    if(view==='teach')renderTeach();
+    if(view==='guided')renderGuided();
+    if(view==='recall')renderRecall();
+    if(view==='independent')renderIndependent();
+    if(view==='repair')renderRepair();
+    if(view==='transfer')renderTransfer();
+    save();
+    window.scrollTo({top:0,behavior:options&&options.instant?'auto':'smooth'});
+    var active=document.querySelector('.screen.active h1,.screen.active h2');
+    if(active)active.setAttribute('tabindex','-1');
+    if(options&&options.focus&&active)active.focus({preventScroll:true});
+  }
+  function previousView(){
+    var map={teach:'home',guided:'teach',recall:'guided',independent:'recall',repair:'independent',transfer:'independent'};
+    if(state.view==='home'){window.location.href='../index.html';return}
+    if(state.view==='repair'&&state.repair&&state.repair.questionId){setView('independent',{focus:true});return}
+    setView(map[state.view]||'home',{focus:true});
+  }
+  function logEvent(phase,item,answer,expected,ok,skill,evidence){
+    state.events.push({
+      id:APP_ID+'-'+Date.now()+'-'+state.events.length,
+      occurredAt:new Date().toISOString(),courseDate:'2026-08-06',phase:phase,item:item,
+      answer:String(answer||''),expected:String(expected||''),ok:ok,skill:skill,evidence:evidence
+    });
+    if(state.events.length>180)state.events=state.events.slice(-180);
+  }
+  function selectTime(mode,triggered){
+    state.timeMode=mode;
+    var yesterday=mode==='yesterday';
+    $('timeStudio').classList.toggle('is-yesterday',yesterday);
+    $('summerTime').classList.toggle('active',!yesterday);
+    $('yesterdayTime').classList.toggle('active',yesterday);
+    $('summerTime').setAttribute('aria-pressed',String(!yesterday));
+    $('yesterdayTime').setAttribute('aria-pressed',String(yesterday));
+    $('sceneLabel').textContent=yesterday?'已经发生 · 一般过去时':'经常发生 · 一般现在时';
+    $('sceneSentence').innerHTML=yesterday?'<span class="time-token">Yesterday</span>, Shenshen <span class="verb-token">visited</span> an old water town.':'<span class="time-token">Every summer</span>, Shenshen <span class="verb-token">visits</span> an old water town.';
+    $('sceneObservation').textContent=yesterday?'Yesterday 表示事情已经发生，所以 visit 变成 visited。':'Every summer 表示经常发生，所以用 visits。';
+    if(yesterday&&triggered){
+      state.surpriseSeen=true;
+      $('timeStudio').classList.remove('shutter');
+      void $('timeStudio').offsetWidth;
+      $('timeStudio').classList.add('shutter');
+      $('teachContinue').disabled=false;
+      $('teachContinue').textContent='收下变化，去冲洗动词';
+    }
+    save();
+  }
+  function renderTeach(){
+    selectTime(state.timeMode,false);
+    $('teachContinue').disabled=!state.surpriseSeen;
+    $('teachContinue').textContent=state.surpriseSeen?'收下变化，去冲洗动词':'先切到 Yesterday，再收下照片';
+  }
+  function tinyProgress(current,total){
+    var html='';
+    for(var index=0;index<total;index+=1)html+='<i class="'+(index<=current?'done':'')+'"></i>';
+    return html;
+  }
+  function audioButton(key,label){
+    return '<button class="audio-button" type="button" data-audio="'+key+'"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 10v4h4l5 4V6l-5 4H5zM17 9a4 4 0 010 6"/></svg>'+label+'</button>';
+  }
+  function renderGuided(){
+    var index=Math.min(state.guidedIndex,GUIDED.length-1);
+    var task=GUIDED[index];
+    $('guidedCount').textContent='底片 '+(index+1)+' / '+GUIDED.length;
+    $('guidedProgress').innerHTML=tinyProgress(index,GUIDED.length);
+    $('guidedTask').innerHTML='<div class="prompt">'+task.prompt+'</div><div class="context-line">'+task.context+'</div><div class="word-machine"><span class="word-chip">'+task.base+'</span><span class="machine-arrow">→</span><span class="word-chip">?</span></div><div class="choice-grid">'+task.options.map(function(option){return '<button class="choice" type="button" data-guided-answer="'+option+'">'+option+'</button>'}).join('')+'</div><div class="audio-row">'+audioButton(task.audio,'听单词变化')+'</div>';
+    $('guidedFeedback').className='feedback';
+    $('guidedFeedback').textContent='';
+    $('guidedNext').hidden=true;
+    qa('[data-guided-answer]',$('guidedTask')).forEach(function(button){
+      button.addEventListener('click',function(){
+        qa('[data-guided-answer]',$('guidedTask')).forEach(function(item){item.classList.remove('selected','correct','wrong')});
+        var ok=button.dataset.guidedAnswer===task.answer;
+        button.classList.add(ok?'correct':'wrong');
+        $('guidedFeedback').className='feedback show '+(ok?'ok':'no');
+        $('guidedFeedback').textContent=ok?'显影成功：'+task.base+' → '+task.answer+'。':'再看提示：'+task.context;
+        if(ok){
+          state.guidedPassed[index]=true;
+          $('guidedNext').hidden=false;
+          $('guidedNext').textContent=index===GUIDED.length-1?'四张完成，去关灯回想':'下一张底片';
+          logEvent('guided',task.base,button.dataset.guidedAnswer,task.answer,true,'pastForm','引导练习中选对过去式');
+          save();
+        }
+      });
+    });
+    qa('.audio-button',$('guidedTask')).forEach(function(button){button.addEventListener('click',function(){playAudio(button)})});
+  }
+  function renderRecall(){
+    qa('[data-memory]').forEach(function(card){
+      var revealed=state.recallViewed.indexOf(card.dataset.memory)>=0;
+      card.classList.toggle('revealed',revealed);
+      card.setAttribute('aria-expanded',String(revealed));
+    });
+    $('recallContinue').disabled=state.recallViewed.length<3;
+    $('recallContinue').textContent=state.recallViewed.length<3?'还差 '+(3-state.recallViewed.length)+' 张底片':'规则已装好，独立拍摄';
+  }
+  function renderQuestionChoices(question,current){
+    return '<div class="choice-grid">'+question.options.map(function(option){return '<button class="choice '+(current===option?'selected':'')+'" type="button" data-question-choice="'+option+'">'+option+'</button>'}).join('')+'</div>';
+  }
+  function renderIndependent(){
+    if(state.questionIndex>=QUESTIONS.length){
+      $('independentTask').innerHTML='<div class="stage-count">独立拍摄完成</div><h3 style="font-size:24px;margin:8px 0">6 张照片全部清晰</h3><p class="lede" style="margin-bottom:18px">你已经亲手输入了肯定句、Did 疑问句和 didn’t 否定句。最后去一个新场景，冲洗自己的英文明信片。</p><button class="button" id="toTransfer" type="button">进入最后一个新场景</button>';
+      $('independentFeedback').className='feedback';
+      $('toTransfer').addEventListener('click',function(){setView('transfer',{focus:true})});
+      return;
+    }
+    var question=QUESTIONS[state.questionIndex];
+    var draft=state.drafts[question.id]||'';
+    var input=question.type==='text'?'<input class="answer-input" id="questionInput" type="text" autocomplete="off" spellcheck="false" placeholder="'+question.placeholder+'" value="'+escapeAttribute(draft)+'"><p class="input-note">支持忽略大小写、重复空格和普通句末标点。按 Enter 也可以提交。</p>':renderQuestionChoices(question,draft);
+    var listen=question.audio?'<div class="audio-row">'+audioButton(question.audio,'听题目')+'</div>':'';
+    $('independentTask').innerHTML='<div class="task-strip"><span class="film-number">'+question.tag+'</span><span class="tiny-progress">'+tinyProgress(state.questionIndex,QUESTIONS.length)+'</span></div><div class="prompt">'+question.prompt+'</div><div class="context-line">'+question.context+'</div>'+input+listen+'<div class="question-actions"><button class="button" id="submitQuestion" type="button">检查这张照片</button></div>';
+    $('independentFeedback').className='feedback';
+    qa('[data-question-choice]',$('independentTask')).forEach(function(button){
+      button.addEventListener('click',function(){
+        state.drafts[question.id]=button.dataset.questionChoice;
+        qa('[data-question-choice]',$('independentTask')).forEach(function(item){item.classList.toggle('selected',item===button)});
+        save();
+      });
+    });
+    var textInput=$('questionInput');
+    if(textInput){
+      textInput.addEventListener('input',function(){state.drafts[question.id]=textInput.value;save()});
+      textInput.addEventListener('keydown',function(event){if(event.key==='Enter')checkQuestion()});
+      setTimeout(function(){textInput.focus();if(state.repair&&state.repair.returned)textInput.select()},80);
+    }
+    qa('.audio-button',$('independentTask')).forEach(function(button){button.addEventListener('click',function(){playAudio(button)})});
+    $('submitQuestion').addEventListener('click',checkQuestion);
+  }
+  function escapeAttribute(value){
+    return String(value||'').replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  }
+  function checkQuestion(){
+    var question=QUESTIONS[state.questionIndex];
+    var value=question.type==='text'?($('questionInput')?$('questionInput').value:''):(state.drafts[question.id]||'');
+    if(!String(value).trim()){toast(question.type==='text'?'先输入完整句子':'先选择一个答案');return}
+    state.drafts[question.id]=value;
+    var ok=answerMatches(value,question.accepted);
+    logEvent('independent',question.id,value,question.accepted.join(' / '),ok,question.skill,ok?'独立作答正确':'进入定向修复并返回原题');
+    if(ok){
+      $('independentFeedback').className='feedback show ok';
+      $('independentFeedback').textContent='照片清晰。'+question.why;
+      state.questionIndex+=1;
+      state.repair=null;
+      save();
+      $('submitQuestion').disabled=true;
+      setTimeout(function(){renderIndependent()},700);
+    }else{
+      recordWrong(question.skill);
+      state.repair={questionId:question.id,skill:question.skill,step:0,returnView:'independent',returned:false};
+      save();
+      setView('repair',{focus:true});
+    }
+  }
+  function recordWrong(skill){
+    var row=state.wrongbook[skill]||{wrongCount:0,streak:0,status:'open',lastWrongAt:null,resolvedAt:null};
+    row.wrongCount+=1;row.streak=0;row.status='open';row.lastWrongAt=new Date().toISOString();row.resolvedAt=null;
+    state.wrongbook[skill]=row;
+  }
+  function renderRepair(){
+    if(!state.repair||!REPAIRS[state.repair.skill]){
+      var fallback=Object.keys(state.wrongbook).find(function(key){return state.wrongbook[key].status!=='resolved'})||'didBase';
+      state.repair={questionId:null,skill:fallback,step:0,returnView:'records',returned:false};
+    }
+    var repair=REPAIRS[state.repair.skill];
+    var complete=state.repair.step>=repair.variants.length;
+    $('repairTitle').textContent=repair.title;
+    $('repairLead').textContent=repair.lead;
+    $('repairVisual').innerHTML=repair.visual;
+    $('repairMeter').innerHTML='<span>连续显影</span>'+repair.variants.map(function(item,index){return '<i class="'+(index<state.repair.step?'done':'')+'"></i>'}).join('');
+    $('repairFeedback').className='feedback';
+    $('returnToQuestion').hidden=!complete;
+    if(complete){
+      $('repairTask').innerHTML='<div class="context-line" style="border-color:#f4bf45;background:rgba(244,191,69,.12);color:#fff">两张小底片都清晰了。现在带着规则，回去亲手修改刚才的答案。</div>';
+      $('returnToQuestion').textContent=state.repair.questionId?'回到刚才那道原题':'回到学习档案';
+      return;
+    }
+    var variant=repair.variants[state.repair.step];
+    $('repairTask').innerHTML='<div class="prompt" style="color:#fff">'+variant.prompt+'</div><div class="choice-grid">'+variant.options.map(function(option){return '<button class="choice" type="button" data-repair-answer="'+option+'">'+option+'</button>'}).join('')+'</div>';
+    qa('[data-repair-answer]',$('repairTask')).forEach(function(button){
+      button.addEventListener('click',function(){
+        qa('[data-repair-answer]',$('repairTask')).forEach(function(item){item.classList.remove('selected')});
+        button.classList.add('selected');
+        var ok=button.dataset.repairAnswer===variant.answer;
+        if(ok){
+          state.repair.step+=1;
+          var row=state.wrongbook[state.repair.skill]||{wrongCount:0,streak:0,status:'open'};
+          row.streak=state.repair.step;
+          if(row.streak>=2){row.status='resolved';row.resolvedAt=new Date().toISOString()}
+          state.wrongbook[state.repair.skill]=row;
+          logEvent('repair',state.repair.skill,button.dataset.repairAnswer,variant.answer,true,state.repair.skill,'修复底片 '+state.repair.step+' / 2');
+          save();
+          $('repairFeedback').className='feedback show ok';
+          $('repairFeedback').textContent=state.repair.step>=2?'连续两张正确，规则重新显影。':'第一张清晰，再来一张不同底片。';
+          setTimeout(renderRepair,650);
+        }else{
+          state.repair.step=0;
+          var wrongRow=state.wrongbook[state.repair.skill]||{wrongCount:0,streak:0,status:'open'};
+          wrongRow.streak=0;wrongRow.status='open';
+          state.wrongbook[state.repair.skill]=wrongRow;
+          logEvent('repair',state.repair.skill,button.dataset.repairAnswer,variant.answer,false,state.repair.skill,'修复中再次混淆');
+          save();
+          $('repairFeedback').className='feedback show no';
+          $('repairFeedback').textContent='先看上方显影示范，再选一次。连续正确从第一张重新计算。';
+        }
+      });
+    });
+  }
+  function missionById(id){return MISSIONS.find(function(item){return item.id===id})||MISSIONS[0]}
+  function renderTransfer(){
+    var mission=missionById(state.transfer.mission);
+    $('missionGrid').innerHTML=MISSIONS.map(function(item,index){return '<button class="mission '+(item.id===mission.id?'selected':'')+'" type="button" data-mission="'+item.id+'"><span class="mission-letter">'+String.fromCharCode(65+index)+'</span><span><strong>'+item.title+'</strong><small>'+item.clue+'</small></span></button>'}).join('');
+    qa('[data-mission]',$('missionGrid')).forEach(function(button){
+      button.addEventListener('click',function(){
+        if(state.transfer.passed)return;
+        state.transfer.mission=button.dataset.mission;
+        state.transfer.draft='';
+        save();renderTransfer();
+      });
+    });
+    $('transferHint').textContent='线索：'+mission.clue+'。请把动词变成过去式。';
+    $('transferInput').value=state.transfer.draft||'';
+    $('transferInput').disabled=state.transfer.passed;
+    $('transferWork').hidden=state.transfer.passed;
+    $('transferResult').hidden=!state.transfer.passed;
+    if(state.transfer.passed)$('postcardSentence').textContent=mission.answer;
+  }
+  function checkTransfer(){
+    var mission=missionById(state.transfer.mission);
+    var value=$('transferInput').value;
+    state.transfer.draft=value;
+    if(!value.trim()){toast('先写出完整英文句子');return}
+    var ok=answerMatches(value,mission.accepted);
+    logEvent('transfer',mission.id,value,mission.answer,ok,'transfer',ok?'在新场景独立产出过去时句子':'根据线索重试迁移句');
+    if(ok){
+      state.transfer.passed=true;
+      save();renderTransfer();
+      setTimeout(function(){$('transferResult').scrollIntoView({behavior:'smooth',block:'start'})},80);
+    }else{
+      $('transferFeedback').className='feedback show no';
+      $('transferFeedback').textContent='照片还没显影。检查时间词、主语 I 和过去式动词；再根据上面的线索改一次。';
+      save();
+    }
+  }
+  async function finishLesson(){
+    if(!state.transfer.passed)return;
+    state.completed=true;
+    logEvent('transfer','complete',state.transfer.draft,missionById(state.transfer.mission).answer,true,'transfer','完成 Unit 5 水乡时光相机');
+    save();
+    $('finishLesson').disabled=true;
+    $('finishLesson').textContent='正在保存记录';
+    var message='本机学习记录已经保存。';
+    if(window.DDLearningSync){
+      try{
+        DDLearningSync.setChild(CHILD);
+        DDLearningSync.complete({
+          kid:CHILD,
+          subject:'英语',
+          topic:'一般过去时 × Unit 5 Visiting places',
+          item:'完成水乡时光相机',
+          payload:{
+            app_id:APP_ID,version:VERSION,course_date:'2026-08-06',
+            evidence:{independent_questions:QUESTIONS.length,typed_transfer:normalizeLearningAnswer(state.transfer.draft),repair_gaps:Object.keys(state.wrongbook)}
+          }
+        });
+        var result=await DDLearningSync.flush();
+        message=result&&result.ok?'学习记录已经同步。':'本机已保存；正式网站联网后会继续同步。';
+      }catch(error){message='本机已保存；网络恢复后会继续同步。'}
+    }
+    $('finishFeedback').className='feedback show ok';
+    $('finishFeedback').textContent=message;
+    $('finishLesson').textContent='学习记录已保存';
+  }
+  function openRecords(){
+    var correct=state.events.filter(function(row){return row.ok===true}).length;
+    var wrong=state.events.filter(function(row){return row.ok===false}).length;
+    $('recordSummary').innerHTML='<div class="summary-card"><strong>'+state.events.length+'</strong><span>总作答</span></div><div class="summary-card"><strong>'+correct+'</strong><span>正确</span></div><div class="summary-card"><strong>'+Math.round((state.elapsedMs||0)/60000)+'</strong><span>分钟</span></div>';
+    var keys=Object.keys(state.wrongbook);
+    $('wrongList').innerHTML=keys.length?'<h3>规则修复记录</h3>'+keys.map(function(key){
+      var row=state.wrongbook[key],closed=row.status==='resolved';
+      return '<div class="wrong-row"><div><strong>'+REPAIRS[key].title+'</strong><span>答错 '+row.wrongCount+' 次 · 连续显影 '+row.streak+' / 2</span></div><span class="status-pill '+(closed?'closed':'')+'">'+(closed?'已关闭':'待回炉')+'</span></div>';
+    }).join(''):'<div class="context-line">还没有需要回炉的规则。独立拍摄会留下真实记录。</div>';
+    $('recordModal').classList.add('open');
+    $('recordModal').setAttribute('aria-hidden','false');
+    $('recordClose').focus();
+  }
+  function closeRecords(){
+    $('recordModal').classList.remove('open');
+    $('recordModal').setAttribute('aria-hidden','true');
+    $('recordButton').focus();
+  }
+  function redoWrong(){
+    var key=Object.keys(state.wrongbook).find(function(item){return state.wrongbook[item].status!=='resolved'});
+    if(!key){toast('目前没有待回炉的缺口');return}
+    closeRecords();
+    state.repair={questionId:null,skill:key,step:0,returnView:'records',returned:false};
+    setView('repair',{focus:true});
+  }
+  function packageRecord(){return{schemaVersion:3,child:CHILD,appId:APP_ID,version:VERSION,exportedAt:new Date().toISOString(),state:state}}
+  function download(name,textValue,type){
+    var blob=new Blob([textValue],{type:type});
+    var link=document.createElement('a');
+    link.href=URL.createObjectURL(blob);link.download=name;document.body.appendChild(link);link.click();
+    setTimeout(function(){URL.revokeObjectURL(link.href);link.remove()},200);
+  }
+  function exportMarkdown(){
+    var correct=state.events.filter(function(row){return row.ok===true}).length;
+    var wrong=state.events.filter(function(row){return row.ok===false}).length;
+    var lines=['# Eddey 水乡时光相机学习记录','','- 课程日期：2026-08-06','- 教材：英语四年级上册 Unit 5 Visiting places','- 版本：'+VERSION,'- 作答：'+state.events.length+'，正确 '+correct+'，答错 '+wrong,'','## 规则缺口'];
+    var keys=Object.keys(state.wrongbook);
+    lines.push(keys.length?keys.map(function(key){var row=state.wrongbook[key];return '- '+REPAIRS[key].title+'：'+(row.status==='resolved'?'已关闭':'待回炉')+'，错 '+row.wrongCount+' 次';}).join('\n'):'- 无');
+    download('Eddey_水乡时光相机_2026-08-06.md',lines.join('\n'),'text/markdown;charset=utf-8');
+  }
+  async function importRecord(event){
+    var file=event.target.files&&event.target.files[0];
+    if(!file)return;
+    try{
+      var data=JSON.parse(await file.text());
+      if(data.schemaVersion!==3||data.child!==CHILD||data.appId!==APP_ID||!data.state)throw new Error('这不是 Eddey 本软件的 v3 记录');
+      var imported=data.state;
+      if(!Array.isArray(imported.events)||!imported.wrongbook||!imported.drafts||!imported.transfer)throw new Error('作答数据不完整');
+      if(Object.keys(imported.wrongbook).some(function(key){return !REPAIRS[key]}))throw new Error('记录包含未知题型');
+      if(!MISSIONS.some(function(item){return item.id===imported.transfer.mission}))throw new Error('迁移任务无效');
+      state=Object.assign(fresh(),imported,{schemaVersion:3,child:CHILD,appId:APP_ID,version:VERSION,lastActiveAt:Date.now()});
+      save();openRecords();toast('记录导入成功');
+    }catch(error){toast('导入失败：'+error.message)}
+    event.target.value='';
+  }
+  qa('[data-audio]').forEach(function(button){button.addEventListener('click',function(){playAudio(button)})});
+  $('backButton').addEventListener('click',previousView);
+  $('recordButton').addEventListener('click',openRecords);
+  $('recordClose').addEventListener('click',closeRecords);
+  $('recordModal').addEventListener('click',function(event){if(event.target===$('recordModal'))closeRecords()});
+  document.addEventListener('keydown',function(event){if(event.key==='Escape'&&$('recordModal').classList.contains('open'))closeRecords()});
+  $('startLesson').addEventListener('click',function(){setView(state.completed?'transfer':'teach',{focus:true})});
+  $('summerTime').addEventListener('click',function(){selectTime('summer',true)});
+  $('yesterdayTime').addEventListener('click',function(){selectTime('yesterday',true)});
+  $('teachContinue').addEventListener('click',function(){setView('guided',{focus:true})});
+  $('guidedNext').addEventListener('click',function(){
+    if(state.guidedIndex<GUIDED.length-1){state.guidedIndex+=1;save();renderGuided()}else setView('recall',{focus:true});
+  });
+  qa('[data-memory]').forEach(function(card){
+    card.addEventListener('click',function(){
+      if(state.recallViewed.indexOf(card.dataset.memory)<0)state.recallViewed.push(card.dataset.memory);
+      save();renderRecall();
+    });
+  });
+  $('recallContinue').addEventListener('click',function(){setView('independent',{focus:true})});
+  $('returnToQuestion').addEventListener('click',function(){
+    if(state.repair&&state.repair.questionId){
+      state.repair.returned=true;
+      save();setView('independent',{focus:true});
+    }else{
+      state.repair=null;save();setView('home',{focus:true});setTimeout(openRecords,120);
+    }
+  });
+  $('transferInput').addEventListener('input',function(){state.transfer.draft=$('transferInput').value;save()});
+  $('transferInput').addEventListener('keydown',function(event){if(event.key==='Enter')checkTransfer()});
+  $('checkTransfer').addEventListener('click',checkTransfer);
+  $('finishLesson').addEventListener('click',finishLesson);
+  $('redoWrong').addEventListener('click',redoWrong);
+  $('exportJson').addEventListener('click',function(){download('Eddey_水乡时光相机_2026-08-06.json',JSON.stringify(packageRecord(),null,2),'application/json;charset=utf-8')});
+  $('exportMd').addEventListener('click',exportMarkdown);
+  $('importJson').addEventListener('change',importRecord);
+  renderDaily();
+  if(!PHASE_LABELS[state.view])state.view='home';
+  setView(state.view,{instant:true});
+  </script>
+</body>
+</html>

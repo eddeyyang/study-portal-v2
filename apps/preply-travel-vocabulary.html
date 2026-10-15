@@ -1,0 +1,1854 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<script src="../assets/learning-sync.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Transport & Travel · 课前复习</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
+
+  :root {
+    --pink:#FFB6C1; --pink-deep:#FF8DA8;
+    --blue:#A8D8EA; --blue-deep:#7BC4E0;
+    --yellow:#FFE7A0; --mint:#B5EAD7;
+    --purple:#C7B8EA; --coral:#FFAB91;
+    --bg:#FFF8F5; --text:#3D3142; --text-light:#7A6E82;
+    --green:#6BCB77; --red:#FF6B6B;
+    --shadow:0 4px 0 rgba(0,0,0,0.08), 0 8px 24px rgba(255,141,168,0.15);
+    --shadow-sm:0 2px 0 rgba(0,0,0,0.08), 0 4px 12px rgba(255,141,168,0.12);
+  }
+
+  body {
+    font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;
+    background:var(--bg); color:var(--text); min-height:100vh; overflow-x:hidden;
+    background-image:
+      radial-gradient(circle at 10% 20%, rgba(255,182,193,0.25) 0%, transparent 40%),
+      radial-gradient(circle at 90% 80%, rgba(168,216,234,0.25) 0%, transparent 40%);
+  }
+
+  .app { max-width:480px; margin:0 auto; padding:14px; min-height:100vh; }
+
+  /* 顶部 */
+  .topbar { display:flex; align-items:center; justify-content:space-between; padding:10px 4px; margin-bottom:12px; }
+  .topbar .pill { background:white; padding:6px 12px; border-radius:18px; font-size:13px; font-weight:700; box-shadow:var(--shadow-sm); display:flex; align-items:center; gap:5px; }
+  .topbar .back { cursor:pointer; }
+  .progress-wrap { background:white; border-radius:18px; height:10px; overflow:hidden; box-shadow:inset 0 2px 4px rgba(0,0,0,0.05); margin-bottom:16px; }
+  .progress-bar { height:100%; background:linear-gradient(90deg, var(--pink-deep), var(--coral)); width:0%; transition:width 0.4s; }
+
+  /* 卡片 */
+  .card { background:white; border-radius:22px; padding:22px 18px; box-shadow:var(--shadow); margin-bottom:14px; }
+  .stage-title { font-size:21px; font-weight:800; margin-bottom:4px; }
+  .stage-sub { font-size:12px; color:var(--text-light); margin-bottom:16px; }
+
+  /* 按钮 */
+  .btn { display:inline-flex; align-items:center; justify-content:center; gap:6px; border:none; border-radius:18px; padding:14px 20px; font-size:16px; font-weight:700; cursor:pointer; transition:all 0.15s; font-family:inherit; box-shadow:var(--shadow); user-select:none; }
+  .btn:active { transform:translateY(2px); box-shadow:var(--shadow-sm); }
+  .btn-primary { background:var(--pink-deep); color:white; width:100%; }
+  .btn-secondary { background:var(--blue); color:var(--text); }
+  .btn-yellow { background:var(--yellow); color:var(--text); }
+  .btn-mint { background:var(--mint); color:var(--text); }
+  .btn-purple { background:var(--purple); color:var(--text); }
+  .btn-small { padding:10px 14px; font-size:13px; }
+  .btn-row { display:flex; gap:8px; flex-wrap:wrap; }
+
+  /* 首页 */
+  .home-hero { text-align:center; padding:20px 16px; }
+  .home-emoji { font-size:64px; display:inline-block; animation:bounce 2s infinite; }
+  @keyframes bounce { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
+  .home-title { font-size:24px; font-weight:800; margin:8px 0 4px; background:linear-gradient(135deg, var(--pink-deep), var(--blue-deep)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+  .home-sub { color:var(--text-light); font-size:13px; margin-bottom:14px; }
+  .home-msg { background:var(--bg); border-radius:14px; padding:14px; text-align:left; font-size:13px; line-height:1.7; margin:14px 0; }
+  .home-msg strong { color:var(--pink-deep); }
+
+  /* 选孩子 */
+  .kid-picker { display:flex; gap:10px; margin:16px 0; }
+  .kid-card { flex:1; padding:14px 8px; border-radius:18px; text-align:center; background:var(--bg); border:3px solid transparent; cursor:pointer; transition:all 0.2s; }
+  .kid-card.active { border-color:var(--pink-deep); background:white; transform:scale(1.03); box-shadow:var(--shadow); }
+  .kid-card .avatar { font-size:40px; }
+  .kid-card .name { font-weight:800; font-size:15px; margin-top:2px; }
+  .kid-card .age { font-size:11px; color:var(--text-light); }
+
+  /* 模式按钮 */
+  .mode-btn { width:100%; padding:18px; border:none; border-radius:20px; font-family:inherit; font-weight:700; cursor:pointer; display:flex; align-items:center; gap:14px; box-shadow:var(--shadow); margin-bottom:10px; text-align:left; transition:transform 0.15s; }
+  .mode-btn:active { transform:translateY(2px); }
+  .mode-btn .icon { font-size:36px; flex-shrink:0; }
+  .mode-btn .text { flex:1; }
+  .mode-btn .text .t1 { font-size:16px; }
+  .mode-btn .text .t2 { font-size:11px; color:var(--text-light); font-weight:500; margin-top:2px; }
+  .mode-btn.daily { background:linear-gradient(135deg, #FFE7A0, #FFAB91); }
+  .mode-btn.sprint { background:linear-gradient(135deg, #B5EAD7, #A8D8EA); }
+  .mode-btn.wrong { background:white; }
+  .mode-btn.parent { background:white; }
+
+  /* 题目通用 */
+  .question { font-size:17px; font-weight:700; line-height:1.4; margin-bottom:6px; }
+  .question-cn { font-size:12px; color:var(--text-light); margin-bottom:14px; }
+
+  .options { display:grid; gap:10px; }
+  .option { background:var(--bg); border:3px solid transparent; border-radius:16px; padding:14px; font-size:15px; font-weight:600; cursor:pointer; transition:all 0.15s; text-align:left; display:flex; align-items:center; gap:10px; font-family:inherit; }
+  .option:active { transform:scale(0.98); }
+  .option .letter { width:26px; height:26px; border-radius:50%; background:white; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:13px; flex-shrink:0; }
+  .option.correct { background:var(--mint); border-color:var(--green); }
+  .option.wrong { background:#FFD6D6; border-color:var(--red); }
+  .option.disabled { pointer-events:none; }
+
+  /* 反馈 */
+  .feedback { margin-top:14px; padding:14px; border-radius:14px; font-size:13px; line-height:1.6; display:none; }
+  .feedback.show { display:block; animation:slideUp 0.3s; }
+  .feedback.right { background:#E8F8EC; border-left:4px solid var(--green); }
+  .feedback.wrong { background:#FFEEEE; border-left:4px solid var(--red); }
+  .feedback .title { font-weight:800; margin-bottom:6px; font-size:14px; }
+  @keyframes slideUp { from{opacity:0; transform:translateY(10px)} to{opacity:1; transform:translateY(0)} }
+
+  /* 朗读按钮 */
+  .speak-btns { display:flex; gap:8px; justify-content:center; margin:12px 0; flex-wrap:wrap; }
+  .icon-btn { background:var(--blue); border:none; padding:10px 14px; border-radius:14px; font-size:13px; font-weight:700; cursor:pointer; box-shadow:var(--shadow-sm); font-family:inherit; display:inline-flex; align-items:center; gap:5px; }
+  .icon-btn:active { transform:translateY(1px); }
+  .icon-btn.yellow { background:var(--yellow); }
+  .icon-btn.pink { background:var(--pink); }
+  .icon-btn.mint { background:var(--mint); }
+  .icon-btn.coral { background:var(--coral); color:white; }
+
+  /* Hannah 房子卡片 */
+  .house-info { background:linear-gradient(135deg, #FFF4D6, #FFE7A0); border-radius:16px; padding:14px; margin-bottom:14px; }
+  .house-info .title { font-weight:800; margin-bottom:8px; font-size:14px; }
+  .house-info .row { padding:4px 0; font-size:14px; }
+
+  /* 同义词配对 */
+  .match-wrap { display:flex; gap:14px; margin:14px 0; }
+  .match-col { flex:1; display:flex; flex-direction:column; gap:8px; }
+  .match-col .col-title { font-size:12px; font-weight:800; color:var(--text-light); text-align:center; margin-bottom:4px; }
+  .match-item { background:var(--bg); border:3px solid transparent; border-radius:14px; padding:12px 8px; text-align:center; font-weight:700; cursor:pointer; transition:all 0.15s; font-size:14px; }
+  .match-item:active { transform:scale(0.95); }
+  .match-item.selected { border-color:var(--blue-deep); background:white; }
+  .match-item.matched { background:var(--mint); border-color:var(--green); opacity:0.6; pointer-events:none; }
+  .match-item.wrong-flash { background:#FFD6D6; border-color:var(--red); animation: shake 0.4s; }
+  @keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+  }
+
+  /* 拖拽排序 */
+  .word-pool, .word-target {
+    min-height:60px; background:var(--bg); border-radius:14px; padding:10px;
+    display:flex; flex-wrap:wrap; gap:8px; margin-bottom:12px;
+    border:2px dashed #ddd;
+  }
+  .word-target { border-color:var(--blue); background:#F0F8FC; }
+  .word-chip { background:white; padding:10px 14px; border-radius:12px; font-weight:700; font-size:15px; cursor:pointer; box-shadow:var(--shadow-sm); user-select:none; transition:all 0.15s; }
+  .word-chip:active { transform:scale(0.95); }
+  .word-chip.placed { background:var(--mint); }
+  .pool-label { font-size:12px; color:var(--text-light); margin-bottom:4px; font-weight:600; }
+
+  /* 发音卡 */
+  .pron-card { text-align:center; padding:20px 12px; }
+  .pron-word { font-size:36px; font-weight:800; margin-bottom:6px; }
+  .pron-ipa { font-size:18px; color:var(--blue-deep); font-family:Georgia, serif; margin-bottom:4px; }
+  .pron-cn { font-size:16px; color:var(--text-light); margin-bottom:10px; }
+  .pron-tip { background:var(--yellow); border-radius:14px; padding:12px; font-size:13px; line-height:1.6; text-align:left; margin:12px 0; }
+  .pron-count { font-size:12px; color:var(--text-light); margin-top:8px; }
+
+  /* 对话模拟 */
+  .dialog-bubble { padding:14px 16px; border-radius:18px; margin-bottom:10px; font-size:15px; line-height:1.4; max-width:85%; }
+  .dialog-teacher { background:var(--blue); color:var(--text); border-bottom-left-radius:4px; align-self:flex-start; }
+  .dialog-student { background:var(--pink); color:var(--text); border-bottom-right-radius:4px; align-self:flex-end; margin-left:auto; }
+  .dialog-wrap { display:flex; flex-direction:column; }
+  .dialog-avatar { font-size:14px; margin-bottom:2px; color:var(--text-light); }
+
+  /* 结果 */
+  .result-hero { text-align:center; padding:18px; }
+  .result-emoji { font-size:72px; margin-bottom:8px; }
+  .result-score { font-size:42px; font-weight:800; color:var(--pink-deep); }
+  .result-stars { font-size:32px; margin:10px 0; letter-spacing:4px; }
+
+  /* 报告 */
+  .report-section { background:var(--bg); border-radius:14px; padding:12px 14px; margin-bottom:10px; }
+  .report-section h3 { font-size:13px; font-weight:800; margin-bottom:8px; display:flex; align-items:center; gap:6px; }
+  .report-section .item { font-size:13px; line-height:1.6; color:var(--text); padding:3px 0; }
+  .report-section .sub { color:var(--text-light); font-size:12px; }
+  .badge { display:inline-block; padding:2px 8px; border-radius:8px; font-size:11px; font-weight:700; margin-right:4px; }
+  .badge-red { background:#FFD6D6; color:#C53030; }
+  .badge-green { background:#D6F5DC; color:#2F855A; }
+  .badge-blue { background:#D6E8F5; color:#2C5282; }
+
+  .hidden { display:none !important; }
+
+  /* 庆祝 */
+  .confetti { position:fixed; top:-10px; width:10px; height:10px; z-index:9999; animation:fall 3s linear forwards; }
+  @keyframes fall { to{transform:translateY(100vh) rotate(720deg)} }
+
+  /* 提示卡 */
+  .hint-card { background:var(--yellow); border-radius:12px; padding:10px 12px; font-size:13px; line-height:1.5; margin-top:10px; display:none; }
+  .hint-card.show { display:block; }
+
+  /* 听单词按钮一闪一闪 */
+  .pulse-btn { animation: pulse 1.5s ease-in-out infinite; }
+  @keyframes pulse {
+    0%, 100% { transform: scale(1); box-shadow: var(--shadow-sm); }
+    50% { transform: scale(1.05); box-shadow: 0 4px 0 rgba(0,0,0,0.08), 0 8px 24px rgba(255,141,168,0.35); }
+  }
+
+  /* 可长按翻译的英文文本 */
+  .en {
+    border-bottom: 1px dashed rgba(122,110,130,0.35);
+    cursor: pointer;
+    -webkit-user-select: none;
+    user-select: none;
+    -webkit-touch-callout: none;
+    transition: background 0.15s;
+    padding: 0 2px;
+    border-radius: 3px;
+  }
+  .en:active { background: rgba(255,231,160,0.5); }
+
+  /* 翻译气泡 */
+  #transBubble {
+    position: fixed;
+    background: white;
+    border-radius: 14px;
+    padding: 12px 16px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+    z-index: 99999;
+    min-width: 160px;
+    max-width: 280px;
+    text-align: center;
+    border: 2px solid var(--pink-deep);
+    animation: bubbleIn 0.2s ease;
+  }
+  @keyframes bubbleIn {
+    from { opacity: 0; transform: scale(0.8); }
+    to { opacity: 1; transform: scale(1); }
+  }
+  #transBubble .bubble-en { font-size: 14px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
+  #transBubble .bubble-cn { font-size: 16px; font-weight: 800; color: var(--pink-deep); margin-bottom: 8px; }
+  #transBubble .bubble-speak { background: var(--blue); border: none; padding: 6px 14px; border-radius: 12px; font-weight: 700; font-size: 12px; cursor: pointer; font-family: inherit; }
+</style>
+</head>
+<body>
+<div class="app" id="app">
+
+  <!-- 顶部 -->
+  <div id="topbar" class="topbar hidden">
+    <div class="pill back" onclick="goHome()">← 首页</div>
+    <div class="pill" id="whoPill">👦 Kenton</div>
+    <div class="pill">⭐ <span id="totalStars">0</span></div>
+  </div>
+  <div id="progressWrap" class="progress-wrap hidden"><div class="progress-bar" id="progressBar"></div></div>
+
+  <!-- ===== 首页 ===== -->
+  <div id="stage0" class="card home-hero">
+    <div class="home-emoji">🚌✈️</div>
+    <div class="home-title">Transport & Travel<br>+ should 建议</div>
+    <div class="home-sub">外教课前小老师 · 交通出行 + should 建议 + 过去式</div>
+
+    <div class="home-msg">
+      今天我们要练:<br>
+      <strong>第一</strong> · 交通词 (transport, motorbike, supercar...)<br>
+      <strong>第二</strong> · should / shouldn't 给建议<br>
+      <strong>第三</strong> · ⏰ 过去式 (I went / I ate)<br>
+      <strong>第四</strong> · 改正外教指出的句子错误 🚌✈️
+    </div>
+
+    <div style="background:#FFF4E0; border-radius:14px; padding:12px; margin: 14px 0; font-size:12px; line-height:1.6;">
+      📢 <strong>先测一下声音:</strong> 手机端首次使用要先点一下按钮,浏览器才会允许播放英文朗读。
+      <button id="testVoiceBtn" class="btn btn-yellow btn-small" style="margin-top:10px; width:100%;" onclick="testVoice()">
+        🔊 点这里测试声音
+      </button>
+    </div>
+
+    <div style="background:#F0F8FF; border-radius:14px; padding:12px; margin: 14px 0; font-size:12px; line-height:1.6;">
+      💡 <strong>看不懂英文?</strong><br>
+      • <strong>长按</strong>任何英文词(手指按住不动 1 秒)→ 弹出中文翻译<br>
+      • 电脑上<strong>双击</strong>英文词也可以<br>
+      • 翻译气泡里还有 🔊 听
+    </div>
+
+    <div style="font-weight:800; margin: 12px 0 8px; font-size:14px;">先选一下你是谁:</div>
+    <div class="kid-picker">
+      <div class="kid-card" data-kid="kenton" onclick="pickKid('kenton')">
+        <div class="avatar">👦</div><div class="name">Kenton</div><div class="age">10 岁</div>
+      </div>
+      <div class="kid-card" data-kid="eddey" onclick="pickKid('eddey')">
+        <div class="avatar">🧒</div><div class="name">Eddey</div><div class="age">9 岁</div>
+      </div>
+    </div>
+
+    <div id="modeBtns" style="opacity:0.4; pointer-events:none;">
+      <button class="mode-btn daily" onclick="startMode('daily')">
+        <span class="icon">📚</span>
+        <span class="text"><div class="t1">每日复习模式</div><div class="t2">11 关全套 · 约 8-10 分钟</div></span>
+      </button>
+      <button class="mode-btn sprint" onclick="startMode('sprint')">
+        <span class="icon">⚡</span>
+        <span class="text"><div class="t1">课前 5 分钟冲刺</div><div class="t2">精选重点 · 约 5 分钟</div></span>
+      </button>
+      <button class="mode-btn wrong" onclick="startMode('wrong')">
+        <span class="icon">📒</span>
+        <span class="text"><div class="t1">错题回看</div><div class="t2">把上次错的再练一遍</div></span>
+      </button>
+      <button class="mode-btn parent" onclick="showStage('parent')">
+        <span class="icon">👨‍👩‍👧</span>
+        <span class="text"><div class="t1">家长页</div><div class="t2">查看孩子进度和建议</div></span>
+      </button>
+    </div>
+  </div>
+
+  <!-- ===== 通用关卡容器 ===== -->
+  <div id="stageBox" class="card hidden">
+    <div class="stage-title" id="stageTitle"></div>
+    <div class="stage-sub" id="stageSub"></div>
+    <div id="stageContent"></div>
+  </div>
+
+  <!-- ===== 家长页 ===== -->
+  <div id="parentBox" class="card hidden">
+    <div class="stage-title">👨‍👩‍👧 家长页</div>
+    <div class="stage-sub">基于孩子真实练习记录</div>
+    <div id="parentContent"></div>
+  </div>
+
+</div>
+
+<script>
+/* =========================================================
+   全局: 语音 + 翻译
+   ========================================================= */
+
+let voicesReady = false;
+let enVoice = null;
+let voiceUnlocked = false;
+
+function loadVoices() {
+  if (!('speechSynthesis' in window)) return;
+  const voices = window.speechSynthesis.getVoices();
+  if (voices.length === 0) return;
+  enVoice = voices.find(v => v.lang === 'en-US') ||
+            voices.find(v => v.lang && v.lang.startsWith('en-US')) ||
+            voices.find(v => v.lang && v.lang.startsWith('en')) ||
+            voices[0];
+  voicesReady = true;
+}
+
+if ('speechSynthesis' in window) {
+  loadVoices();
+  if (window.speechSynthesis.onvoiceschanged !== undefined) {
+    window.speechSynthesis.onvoiceschanged = loadVoices;
+  }
+  setInterval(() => {
+    if (window.speechSynthesis.paused) window.speechSynthesis.resume();
+  }, 10000);
+}
+
+function unlockVoice() {
+  if (voiceUnlocked) return;
+  if (!('speechSynthesis' in window)) return;
+  try {
+    const u = new SpeechSynthesisUtterance(' ');
+    u.volume = 0;
+    window.speechSynthesis.speak(u);
+    voiceUnlocked = true;
+  } catch(e) {}
+}
+
+function speak(text, slow=false) {
+  if (!('speechSynthesis' in window)) {
+    alert('⚠️ 你的浏览器不支持朗读功能。请用最新版 Chrome、Safari 或 Edge 打开这个网页。');
+    return;
+  }
+
+  // 缩写字母转换
+  let processedText = text
+    .replace(/\bPE\b/g, 'P E').replace(/\bTV\b/g, 'T V')
+    .replace(/\bUK\b/g, 'U K').replace(/\bUSA\b/g, 'U S A')
+    .replace(/\bUS\b/g, 'U S').replace(/\bCD\b/g, 'C D')
+    .replace(/\bDVD\b/g, 'D V D').replace(/\bPC\b/g, 'P C')
+    .replace(/\bAI\b/g, 'A I');
+
+  window.speechSynthesis.cancel();
+  if (!voicesReady) loadVoices();
+
+  setTimeout(() => {
+    const u = new SpeechSynthesisUtterance(processedText);
+    u.lang = 'en-US'; u.rate = slow ? 0.55 : 0.9; u.pitch = 1.05; u.volume = 1;
+    if (enVoice) u.voice = enVoice;
+    u.onerror = (e) => console.warn('speech error:', e);
+    window.speechSynthesis.speak(u);
+    voiceUnlocked = true;
+  }, 50);
+}
+
+function testVoice() {
+  unlockVoice();
+  setTimeout(() => {
+    speak('Hello! Let us talk about transport and travel.');
+    const btn = document.getElementById('testVoiceBtn');
+    if (btn) {
+      btn.textContent = '✅ 声音正常!';
+      btn.style.background = 'var(--mint)';
+    }
+  }, 100);
+}
+
+/* =========================================================
+   词典: 长按翻译
+   ========================================================= */
+
+const DICT = {
+  // 房间
+  'kitchen':'厨房', 'bedroom':'卧室', 'bedrooms':'卧室(复数)',
+  'bathroom':'浴室/卫生间', 'bathrooms':'浴室(复数)',
+  'living room':'客厅', 'dining room':'餐厅',
+  'restroom':'洗手间', 'garden':'花园', 'house':'房子',
+  'room':'房间', 'rooms':'房间(复数)',
+  // 家具
+  'sofa':'沙发', 'couch':'沙发', 'chair':'椅子', 'chairs':'椅子(复数)',
+  'table':'桌子', 'bed':'床', 'beds':'床(复数)',
+  'window':'窗户', 'windows':'窗户(复数)', 'door':'门',
+  'mirror':'镜子', 'tree':'树', 'cat':'猫',
+  'bag':'包', 'backpack':'书包', 'book':'书', 'books':'书(复数)',
+  'apple':'苹果', 'apples':'苹果(复数)', 'bird':'鸟',
+  // 核心词
+  'holiday':'假期', 'degree':'度数/学位', 'amazing':'棒极了',
+  'verify':'验证', 'comfortable':'舒服的',
+  // 句型
+  'There is':'有(单数)', 'There are':'有(复数)',
+  'There is a cat':'有一只猫', 'There are two':'有两个',
+  'in the kitchen':'在厨房里', 'on the sofa':'在沙发上', 'in the tree':'在树上',
+  'in the living room':'在客厅里', 'on the table':'在桌子上',
+  'in my bag':'在我的包里',
+  // 错误句相关
+  'watch':'看(视频/电视)', 'hear':'听见', 'listen':'听', 'see':'看见',
+  'a holiday':'一个假期', 'for children':'给孩子的', 'children':'孩子们',
+  'today':'今天', 'because':'因为',
+  // 问句
+  "What rooms":'什么房间', "How many":'多少',
+  "Do you have":'你有……吗', "Yes, I do":'是的,我有',
+  "No, I don't":'不,我没有', "I have":'我有',
+  // 课文常见
+  "Hannah's house":"Hannah 的房子", "her house":'她的房子',
+  'three':'三', 'four':'四', 'two':'二', 'one':'一', 'five':'五',
+  'a':'一个(辅音前)', 'an':'一个(元音前)', 'the':'这个/那个',
+  // 本课: 旅行词汇
+  'homework':'作业', 'tired':'累的', 'expensive':'贵的', 'cheap':'便宜的',
+  'boarding pass':'登机牌', 'destination':'目的地', 'pilot':'飞行员',
+  'exciting':'令人兴奋的', 'passenger':'乘客', 'passengers':'乘客(复数)',
+  'suitcase':'行李箱', 'suitcases':'行李箱(复数)', 'air hostess':'空姐',
+  'bus':'公交车', 'bus pass':'公交卡', 'bus driver':'公交司机', 'bus stop':'公交站',
+  'ticket':'车票', 'timetable':'时刻表', 'seat':'座位', 'seats':'座位(复数)',
+  'late':'晚的/迟到', 'comfortable':'舒服的', 'uncomfortable':'不舒服的',
+  'hotel':'旅馆', 'airport':'机场', 'plane':'飞机', 'flying':'飞行', 'travel':'旅行',
+  'school':'学校', 'London':'伦敦', 'Liverpool':'利物浦', 'Australia':'澳大利亚',
+  'should':'应该', "shouldn't":'不应该', "should not":'不应该',
+  'take':'坐/乘/拿', 'takes':'坐/乘(他/她)', 'get':'得到/办',
+  'walk':'走路', 'stroll':'散步', 'many':'许多', 'numerous':'许多',
+  'problems':'问题', 'issues':'问题', 'confusing':'令人困惑的',
+  'I take the bus':'我坐公交', 'I take the bus to school':'我坐公交去上学',
+  'takes the bus':'坐公交(他/她)', 'I have been to':'我去过',
+  'You should':'你应该', "You shouldn't":'你不应该',
+  'Do you think':'你觉得……吗', 'wants to be':'想成为/想在',
+  'How do you go to school':'你怎么上学', 'What do you think':'你觉得怎么样',
+  // 新课: 交通 + 过去式
+  'transport':'交通工具', 'motorbike':'摩托车', 'supercar':'超级跑车',
+  'train':'火车', 'airplane':'飞机', 'car':'汽车', 'sore':'酸痛的', 'delicious':'美味的',
+  'busman':'公交工作人员', 'number one':'第一名',
+  'went':'去了(go 的过去式)', 'ate':'吃了(eat 的过去式)', 'took':'坐了/拿了(take 的过去式)',
+  'made':'做了(make 的过去式)', 'walked':'走了(walk 的过去式)', 'waited':'等了(wait 的过去式)',
+  'go':'去', 'eat':'吃', 'make':'做', 'wait':'等', 'sushi':'寿司',
+  'shopping mall':'商场', 'yesterday':'昨天', 'helmet':'头盔', 'ride':'骑/乘坐',
+  'like':'喜欢', 'enjoy':'享受/喜欢', 'sleep':'睡觉', 'chocolate':'巧克力',
+  'by car':'坐汽车', 'by bus':'坐公交', 'by train':'坐火车',
+  'I love traveling by car':'我喜欢开车旅行', 'He is a bus driver':'他是个公交司机',
+  'I went to the shopping mall':'我去了商场', 'I ate sushi':'我吃了寿司',
+  'You should sleep for eight hours':'你应该睡 8 小时',
+};
+
+let longPressTimer = null;
+let longPressTarget = null;
+
+function getTranslation(text) {
+  if (!text) return null;
+  const clean = text.trim().replace(/[.,!?;:]+$/, '').trim();
+  if (DICT[clean]) return DICT[clean];
+  const lower = clean.toLowerCase();
+  for (const k in DICT) {
+    if (k.toLowerCase() === lower) return DICT[k];
+  }
+  const words = clean.split(/\s+/);
+  if (words.length > 1) {
+    const trans = words.map(w => {
+      const wClean = w.replace(/[.,!?;:]+$/, '');
+      if (DICT[wClean]) return DICT[wClean];
+      const wLower = wClean.toLowerCase();
+      for (const k in DICT) {
+        if (k.toLowerCase() === wLower) return DICT[k];
+      }
+      return wClean;
+    });
+    return trans.join(' · ');
+  }
+  return null;
+}
+
+function showTranslationBubble(text, x, y, noRead) {
+  hideTranslationBubble();
+  const trans = getTranslation(text);
+  if (!trans) return;
+  const bubble = document.createElement('div');
+  bubble.id = 'transBubble';
+  const speakBtn = noRead ? '' : `<button class="bubble-speak" onclick="event.stopPropagation(); speak('${text.replace(/'/g,"\\'")}', true);">🔊 听</button>`;
+  bubble.innerHTML = `
+    <div class="bubble-en">${text}</div>
+    <div class="bubble-cn">${trans}</div>
+    ${speakBtn}
+  `;
+  document.body.appendChild(bubble);
+  const rect = bubble.getBoundingClientRect();
+  let left = x - rect.width / 2;
+  let top = y - rect.height - 20;
+  if (left < 10) left = 10;
+  if (left + rect.width > window.innerWidth - 10) left = window.innerWidth - rect.width - 10;
+  if (top < 10) top = y + 30;
+  bubble.style.left = left + 'px';
+  bubble.style.top = top + 'px';
+  setTimeout(() => {
+    document.addEventListener('click', hideTranslationBubble, { once: true });
+    document.addEventListener('touchstart', hideTranslationBubble, { once: true });
+  }, 100);
+}
+
+function hideTranslationBubble() {
+  const b = document.getElementById('transBubble');
+  if (b) b.remove();
+}
+
+function setupLongPress() {
+  document.addEventListener('touchstart', (e) => {
+    const el = e.target.closest('.en');
+    if (!el) return;
+    longPressTarget = el;
+    const touch = e.touches[0];
+    const noRead = el.classList.contains('noread');
+    longPressTimer = setTimeout(() => {
+      if (longPressTarget === el) {
+        showTranslationBubble(el.textContent || el.dataset.en || '', touch.clientX, touch.clientY, noRead);
+        if (navigator.vibrate) navigator.vibrate(30);
+      }
+    }, 500);
+  }, { passive: true });
+  document.addEventListener('touchend', () => { clearTimeout(longPressTimer); longPressTarget = null; }, { passive: true });
+  document.addEventListener('touchmove', () => { clearTimeout(longPressTimer); longPressTarget = null; }, { passive: true });
+  document.addEventListener('mousedown', (e) => {
+    const el = e.target.closest('.en');
+    if (!el) return;
+    longPressTarget = el;
+    const noRead = el.classList.contains('noread');
+    longPressTimer = setTimeout(() => {
+      if (longPressTarget === el) showTranslationBubble(el.textContent || el.dataset.en || '', e.clientX, e.clientY, noRead);
+    }, 500);
+  });
+  document.addEventListener('mouseup', () => { clearTimeout(longPressTimer); longPressTarget = null; });
+  document.addEventListener('dblclick', (e) => {
+    const el = e.target.closest('.en');
+    if (!el) return;
+    e.preventDefault();
+    const noRead = el.classList.contains('noread');
+    showTranslationBubble(el.textContent || el.dataset.en || '', e.clientX, e.clientY, noRead);
+  });
+}
+
+
+
+
+/* =========================================================
+   一、题库(合并: Everyday Travel Vocabulary + Transport & 'should' advice)
+   ========================================================= */
+
+// 1. 听音选词(两课核心词 + 交通词)
+const Q_LISTEN = [
+  { en:'transport',     opts:['交通工具','作业','假期','学校'],     a:0 },
+  { en:'motorbike',     opts:['摩托车','自行车','汽车','火车'],     a:0 },
+  { en:'supercar',      opts:['超级跑车','公交车','飞机','轮船'],   a:0 },
+  { en:'timetable',     opts:['时刻表','登机牌','行李箱','车票'],   a:0 },
+  { en:'bus stop',      opts:['公交站','停车场','机场','车库'],     a:0 },
+  { en:'destination',   opts:['目的地','出发地','时刻表','座位'],   a:0 },
+  { en:'boarding pass', opts:['登机牌','公交卡','行李箱','机票'],   a:0 },
+  { en:'pilot',         opts:['飞行员','乘客','司机','空姐'],       a:0 },
+  { en:'comfortable',   opts:['舒服的','不舒服的','贵的','累的'],   a:0 },
+  { en:'sore',          opts:['酸痛的','开心的','饿的','困的'],     a:0 },
+  { en:'delicious',     opts:['美味的','难吃的','辣的','甜的'],     a:0 },
+  { en:'expensive',     opts:['贵的','便宜的','舒服的','快的'],     a:0 }
+];
+
+// 2. 交通工具分类: 陆上 vs 天上/水上
+const Q_CATEGORY = [
+  { word:'bus',       opts:['陆上交通(land)','天上/水上(air/water)'], a:0 },
+  { word:'airplane',  opts:['陆上交通(land)','天上/水上(air/water)'], a:1 },
+  { word:'motorbike', opts:['陆上交通(land)','天上/水上(air/water)'], a:0 },
+  { word:'train',     opts:['陆上交通(land)','天上/水上(air/water)'], a:0 },
+  { word:'supercar',  opts:['陆上交通(land)','天上/水上(air/water)'], a:0 },
+  { word:'plane',     opts:['陆上交通(land)','天上/水上(air/water)'], a:1 },
+  { word:'bus stop',  opts:['陆上交通(land)','天上/水上(air/water)'], a:0 }
+];
+
+// 3. Modal verbs: should / shouldn't (核心知识点)
+const Q_THERE = [
+  { q:'You ___ sleep for eight hours every night. (每晚睡 8 小时)', opts:['should','shouldn\'t'], a:0,
+    explain:'睡够觉是好建议 → should。should = 给好建议。' },
+  { q:'You ___ eat chocolate every day. (别每天吃巧克力)', opts:['should','shouldn\'t'], a:1,
+    explain:'每天吃巧克力不好 → shouldn\'t。shouldn\'t = 劝别做。' },
+  { q:'You ___ drink Coca Cola every day. (别每天喝可乐)', opts:['should','shouldn\'t'], a:1,
+    explain:'每天喝可乐不健康 → shouldn\'t drink。' },
+  { q:'You ___ take the bus. It is cheaper. (坐公交更便宜)', opts:['should','shouldn\'t'], a:0,
+    explain:'公交便宜,是好建议 → should take the bus。' },
+  { q:'You ___ walk to school. It is healthy. (走路上学健康)', opts:['should','shouldn\'t'], a:0,
+    explain:'走路健康 → should walk。' },
+  { q:'You ___ be late for the bus. (别赶不上公交)', opts:['should','shouldn\'t'], a:1,
+    explain:'误车不好 → shouldn\'t be late。' },
+  { q:'You ___ check the timetable first. (先看时刻表)', opts:['should','shouldn\'t'], a:0,
+    explain:'先看时刻表是好习惯 → should check。' },
+  { q:'You ___ ride a motorbike without a helmet. (别不戴头盔骑摩托)', opts:['should','shouldn\'t'], a:1,
+    explain:'不戴头盔危险 → shouldn\'t ride without a helmet。' }
+];
+
+// 4. 改错关(两课语法薄弱点合并)
+const Q_PLURAL = [
+  { wrong:'I use a bus car.', right:'I take the bus.',
+    blank:'I ___ the bus. (我坐公交)', opts:['use a bus car','take'], a:1,
+    explain:'"坐公交"地道说法是 take the bus,不说 use a bus car。' },
+  { wrong:'I love traveling car.', right:'I love traveling by car.',
+    blank:'I love traveling ___ car. (我喜欢开车旅行)', opts:['/','by'], a:1,
+    explain:'"坐某交通工具"前面加 by → by car / by bus / by train。' },
+  { wrong:'He is bus driver and bus man.', right:'He is a busman.',
+    blank:'He is ___ busman. (他是个公交司机)', opts:['/','a'], a:1,
+    explain:'"是一名……"前面要加 a → a busman。' },
+  { wrong:'John take bus to school.', right:'John takes the bus to school.',
+    blank:'John ___ the bus to school. (John 坐公交上学)', opts:['take','takes'], a:1,
+    explain:'John 是"他",动词加 s → takes。bus 前加 the。' },
+  { wrong:'Can you think bus driver is expensive.', right:'Do you think the bus driver is expensive?',
+    blank:'___ you think the bus driver is expensive? (你觉得贵吗?)', opts:['Can','Do'], a:1,
+    explain:'问"你觉得……吗"用 Do you think...?,加 the,结尾用 ?。' },
+  { wrong:'He wants to every in London.', right:'He wants to be in London.',
+    blank:'He wants to ___ in London. (他想待在伦敦)', opts:['every','be'], a:1,
+    explain:'"想在某地"用 want to be。every 是错词。' }
+];
+
+// 5. 过去式 Past simple tense (新核心知识点!) —— 复用 hannah 关卡位? 不,用专门关卡
+const HANNAH = { note:'过去式占位(未使用)' };
+const Q_HANNAH = [
+  { sent:'I take the bus to school every day.', a:true, cn:'我每天坐公交上学。', explain:'对!every day(每天)用一般现在时 take,正确。' },
+  { sent:'He is a bus driver.', a:true, cn:'他是个公交司机。', explain:'对!a bus driver,冠词 a 用对了。' },
+  { sent:'I love traveling car.', a:false, cn:'我喜欢开车旅行。', explain:'错!应该是 traveling by car,要加 by。' },
+  { sent:'You should not eat chocolate every day.', a:true, cn:'你不该每天吃巧克力。', explain:'对!should not 给反面建议,正确。' },
+  { sent:'I use a bus car to school.', a:false, cn:'我坐公交去上学。', explain:'错!应该是 I take the bus,不说 use a bus car。' }
+];
+
+// 5b. 过去式专用题库(新增关卡 pasttense)
+const Q_PASTTENSE = [
+  { q:'昨天的事: I ___ to the shopping mall. (我去了商场)', opts:['go','went','going'], a:1,
+    explain:'过去的事用过去式。go 的过去式是 went(不规则)。' },
+  { q:'昨天的事: I ___ sushi. (我吃了寿司)', opts:['eat','ate','eating'], a:1,
+    explain:'eat 的过去式是 ate(不规则)。' },
+  { q:'昨天的事: I ___ the bus yesterday. (我昨天坐了公交)', opts:['take','took','takes'], a:1,
+    explain:'take 的过去式是 took(不规则)。yesterday 表示过去。' },
+  { q:'规则动词: I ___ to school. (我走路去了学校)', opts:['walk','walked','walking'], a:1,
+    explain:'walk 是规则动词,过去式加 -ed → walked。' },
+  { q:'昨天的事: She ___ a delicious cake. (她做了个美味蛋糕)', opts:['make','made','makes'], a:1,
+    explain:'make 的过去式是 made(不规则)。' },
+  { q:'规则动词: We ___ at the bus stop. (我们在公交站等了)', opts:['wait','waited','waiting'], a:1,
+    explain:'wait 是规则动词,过去式加 -ed → waited。' }
+];
+
+// 6. 同义词配对(两课合并: 6 对)
+const Q_SYNONYMS = [
+  { left:'like',     right:'enjoy',    cn:'喜欢 / 享受' },
+  { left:'take',     right:'ride',     cn:'坐/乘 / 骑乘' },
+  { left:'go',       right:'travel',   cn:'去 / 旅行' },
+  { left:'many',     right:'numerous', cn:'许多 / 很多' },
+  { left:'problems', right:'issues',   cn:'问题(两种说法)' },
+  { left:'walk',     right:'stroll',   cn:'走 / 散步' }
+];
+
+// 7. 介词 by + 冠词 the/a 练习 —— 复用 watchhear 关卡
+const Q_WATCH_HEAR = [
+  { q:'I love traveling ___ car. (开车旅行)', opts:['by','with','in','on'], a:0,
+    explain:'"坐某交通工具"用 by → by car / by bus / by train / by plane。' },
+  { q:'I go to school ___ bus. (坐公交上学)', opts:['by','with','take','on'], a:0,
+    explain:'交通方式用 by → by bus。' },
+  { q:'He is ___ bus driver. (他是个公交司机)', opts:['a','the','/','an'], a:0,
+    explain:'"是一名……"用 a → a bus driver。' },
+  { q:'I take ___ bus to school. (坐那趟公交)', opts:['the','a','/','an'], a:0,
+    explain:'特指上学坐的那趟公交,用 the → the bus。' }
+];
+
+// 8. 地道说法/问句 —— 复用 article 关卡
+const Q_ARTICLE = [
+  { q:'怎么说"我坐公交"最地道?',
+    opts:['I use a bus car.','I take the bus.','I bus to school.','I go bus.'], a:1,
+    explain:'"坐公交"地道说法 → take the bus。' },
+  { q:'"我想当第一名" 怎么说?',
+    opts:['I want to be No.','I want to be number one.','I want No one.','I be number one.'], a:1,
+    explain:'No. 是缩写,口语要说完整 → number one。' },
+  { q:'怎么说"他是个公交司机"?',
+    opts:['He is bus driver.','He is a bus driver.','He bus driver.','He a busman driver.'], a:1,
+    explain:'"是一名……"前面加 a → a bus driver。' },
+  { q:'"你觉得公交贵吗" 怎么问?',
+    opts:['Can you think bus expensive.','Do you think the bus is expensive?','You think bus expensive?','Is bus expensive you think?'], a:1,
+    explain:'问句用 Do you think...?,加 the,结尾 ?。' }
+];
+
+// 9. 发音(两课低准确率词合并,取最差的)
+const Q_PRON = [
+  { en:'timetable', ipa:'/ˈtaɪmˌteɪbəl/', cn:'时刻表', acc:'31%',
+    tip:'分段: <strong>time-ta-ble</strong>。开头 time 像"taim",重音在最前 → TIME-ta-ble。' },
+  { en:'destination', ipa:'/ˌdɛstɪˈneɪʃən/', cn:'目的地', acc:'34%',
+    tip:'分段: <strong>des-ti-na-tion</strong>。重音在 na → des-ti-NA-tion。结尾 -tion 读 "申"。' },
+  { en:'comfortable', ipa:'/ˈkəmfərtəbəl/', cn:'舒服的', acc:'34%',
+    tip:'分段: <strong>com-fort-able</strong>。重音在最前 → COM-fort-able。中间 for 很轻。' },
+  { en:'expensive', ipa:'/ɪkˈspɛnsɪv/', cn:'贵的', acc:'33%',
+    tip:'分段: <strong>ex-pen-sive</strong>。重音在中间 → ex-PEN-sive。' },
+  { en:'motorbike', ipa:'/ˈmoʊtərˌbaɪk/', cn:'摩托车', acc:'49%',
+    tip:'分段: <strong>mo-tor-bike</strong>。重音在最前 → MO-tor-bike。bike 像"拜克"。' },
+  { en:'passengers', ipa:'/ˈpæsəndʒərz/', cn:'乘客(复数)', acc:'36%',
+    tip:'分段: <strong>pas-sen-gers</strong>。重音在最前 → PA-ssen-gers。结尾 -gers 有 /z/。' }
+];
+
+// 10. 拖拽排句子(两课句子合并)
+const Q_DRAG = [
+  { words:['I','take','the','bus','to','school'], answer:'I take the bus to school.',
+    cn:'我坐公交去上学。',
+    hints:['第一步: I take','第二步: the bus(加 the)','第三步: to school'] },
+  { words:['I','love','traveling','by','car'], answer:'I love traveling by car.',
+    cn:'我喜欢开车旅行。',
+    hints:['第一步: I love traveling','第二步: by car(加 by)'] },
+  { words:['You','should','sleep','for','eight','hours'], answer:'You should sleep for eight hours.',
+    cn:'你应该睡 8 个小时。',
+    hints:['第一步: You should(给建议)','第二步: sleep for eight hours'] },
+  { words:['I','went','to','the','shopping','mall'], answer:'I went to the shopping mall.',
+    cn:'我去了商场。(过去式)',
+    hints:['第一步: I went(go 的过去式)','第二步: to the shopping mall'] },
+  { words:['He','is','a','bus','driver'], answer:'He is a bus driver.',
+    cn:'他是个公交司机。',
+    hints:['第一步: He is a(加 a)','第二步: bus driver'] }
+];
+
+// 11. 外教对话(交通 + 建议 + 过去式)
+const Q_DIALOG = [
+  { teacher:'How do you go to school?',
+    opts:['I take the bus to school.','I go to school by car.','I use a bus car.'], a:-1,
+    note:'前两个都地道(take the bus / by car),第三个是错的。' },
+  { teacher:'What did you do yesterday?',
+    opts:['I went to the shopping mall.','I ate sushi.','Tell me your real story!'], a:-1,
+    note:'用过去式说昨天的事: went / ate。' },
+  { teacher:'Should you eat chocolate every day?',
+    opts:['No, I should not.','No, I shouldn\'t eat too much.','Tell me your opinion!'], a:-1,
+    note:'用 should not / shouldn\'t 给反面建议。' },
+  { teacher:'What is your favourite transport?',
+    opts:['I like the train.','I enjoy riding a motorbike.','Tell me what you like!'], a:-1,
+    note:'说自己喜欢的交通工具,like / enjoy 都行。' },
+  { teacher:'Is the supercar comfortable?',
+    opts:['Yes, it is very comfortable.','No, it is not comfortable.','I am not sure.'], a:-1,
+    note:'三个都对,按你的想法选。注意 comfortable 的发音。' },
+  { teacher:'What should you do before the bus comes?',
+    opts:['I should check the timetable.','I should wait at the bus stop.','Both are good!'], a:-1,
+    note:'用 should 给好建议,check the timetable / wait at the bus stop 都对。' }
+];
+
+
+
+/* =========================================================
+   二、状态层
+   ========================================================= */
+
+let currentKid = null;
+let currentMode = 'daily';
+let stars = 0;
+let history = { wrong:[], pronCount:{}, days:[], totalCorrect:0, totalTried:0 };
+
+let stageSeq = [];
+let seqIdx = 0;
+let subIdx = 0;
+let subScore = 0;
+let subTotal = 0;
+let subState = {};
+
+/* =========================================================
+   三、工具
+   ========================================================= */
+function $(id){ return document.getElementById(id); }
+
+function en(text) {
+  if (!text) return '';
+  const safe = String(text).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  return `<span class="en">${safe}</span>`;
+}
+
+// enT: 只翻译、不朗读(用于选择题答题前,防止读出答案)
+function enT(text) {
+  if (!text) return '';
+  const safe = String(text).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  return `<span class="en noread">${safe}</span>`;
+}
+
+function longPressHint() {
+  return '<div style="font-size:11px; color:var(--text-light); text-align:center; margin: 6px 0; padding: 4px 8px; background:#FFF4E0; border-radius:8px; display:inline-block;">💡 长按英文词可以看中文</div>';
+}
+
+function saveProgress() {
+  if (!currentKid) return;
+  localStorage.setItem('preplyTravel_' + currentKid, JSON.stringify({ stars, history, lastDate: new Date().toISOString() }));
+}
+
+function loadProgress(kid) {
+  try {
+    const raw = localStorage.getItem('preplyTravel_' + kid);
+    return raw ? JSON.parse(raw) : null;
+  } catch(e) { return null; }
+}
+
+function logWrong(tag, q, your, right) {
+  history.wrong.push({ tag, q, your, right, time: Date.now() });
+  history.totalTried++;
+  saveProgress();
+}
+function logRight() {
+  history.totalCorrect++;
+  history.totalTried++;
+  stars++;
+  $('totalStars').textContent = stars;
+  saveProgress();
+}
+
+function shuffle(arr) {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+function celebrate() {
+  const colors = ['#FFB6C1','#A8D8EA','#FFE7A0','#B5EAD7','#C7B8EA'];
+  for (let i = 0; i < 30; i++) {
+    const c = document.createElement('div');
+    c.className = 'confetti';
+    c.style.left = Math.random()*100 + '%';
+    c.style.background = colors[Math.floor(Math.random()*colors.length)];
+    c.style.animationDelay = (Math.random()*0.5) + 's';
+    c.style.borderRadius = Math.random() > 0.5 ? '50%' : '0';
+    document.body.appendChild(c);
+    setTimeout(() => c.remove(), 3500);
+  }
+}
+
+function updateProgress() {
+  const pct = Math.min(100, (seqIdx / stageSeq.length) * 100);
+  $('progressBar').style.width = pct + '%';
+}
+
+function setStageTitle(title, sub) {
+  $('stageTitle').textContent = title;
+  $('stageSub').textContent = sub;
+}
+
+/* =========================================================
+   首页 + 选孩子
+   ========================================================= */
+
+function pickKid(kid) {
+  currentKid = kid;
+  document.querySelectorAll('.kid-card').forEach(el => {
+    el.classList.toggle('active', el.dataset.kid === kid);
+  });
+  $('modeBtns').style.opacity = '1';
+  $('modeBtns').style.pointerEvents = 'auto';
+  const data = loadProgress(kid);
+  history = data ? data.history : { wrong:[], pronCount:{}, days:[], totalCorrect:0, totalTried:0 };
+  stars = data ? (data.stars || 0) : 0;
+  $('whoPill').innerHTML = (kid === 'kenton' ? '👦 Kenton' : '🧒 Eddey');
+  $('totalStars').textContent = stars;
+}
+
+function startMode(mode) {
+  if (!currentKid) { alert('先选 Kenton 或 Eddey!'); return; }
+  currentMode = mode;
+  seqIdx = 0;
+  const today = new Date().toDateString();
+  if (!history.days.includes(today)) history.days.push(today);
+
+  if (mode === 'daily') {
+    stageSeq = ['listen','category','there','plural','hannah','pasttense','synonyms','watchhear','article','pron','drag','dialog','done'];
+  } else if (mode === 'sprint') {
+    stageSeq = ['there_short','plural_short','pasttense_short','pron_short','dialog_short','done'];
+  } else if (mode === 'wrong') {
+    if (history.wrong.length === 0) {
+      alert('还没有错题!先做一遍每日复习吧 📚');
+      return;
+    }
+    stageSeq = ['wrongreview','done'];
+  }
+
+  $('stage0').classList.add('hidden');
+  $('topbar').classList.remove('hidden');
+  $('progressWrap').classList.remove('hidden');
+  $('stageBox').classList.remove('hidden');
+  $('parentBox').classList.add('hidden');
+  runStage();
+}
+
+function nextStage() {
+  seqIdx++;
+  updateProgress();
+  runStage();
+}
+
+function runStage() {
+  if (seqIdx >= stageSeq.length) { renderDone(); return; }
+  const stage = stageSeq[seqIdx];
+  subIdx = 0; subScore = 0; subState = {};
+  switch(stage) {
+    case 'listen':       renderListen(); break;
+    case 'category':     renderCategory(); break;
+    case 'there':        renderThere(); break;
+    case 'there_short':  renderThere(4); break;
+    case 'plural':       renderPlural(); break;
+    case 'plural_short': renderPlural(2); break;
+    case 'hannah':       renderHannah(); break;
+    case 'pasttense':    renderPastTense(); break;
+    case 'pasttense_short': renderPastTense(4); break;
+    case 'synonyms':     renderSynonyms(); break;
+    case 'watchhear':    renderWatchHear(); break;
+    case 'article':      renderArticle(); break;
+    case 'pron':         renderPron(); break;
+    case 'pron_short':   renderPron(2); break;
+    case 'drag':         renderDrag(); break;
+    case 'dialog':       renderDialog(); break;
+    case 'dialog_short': renderDialog(3); break;
+    case 'wrongreview':  renderWrongReview(); break;
+    case 'done':         renderDone(); break;
+  }
+  window.scrollTo({ top:0, behavior:'smooth' });
+}
+
+function goHome() {
+  $('topbar').classList.add('hidden');
+  $('progressWrap').classList.add('hidden');
+  $('stageBox').classList.add('hidden');
+  $('parentBox').classList.add('hidden');
+  $('stage0').classList.remove('hidden');
+}
+
+/* =========================================================
+   关卡 1: 听音选词
+   ========================================================= */
+
+function renderListen() {
+  setStageTitle('🔊 听音选词', '点小喇叭听单词,再选中文意思');
+  subTotal = Q_LISTEN.length;
+  subState.list = shuffle(Q_LISTEN);
+  renderListenOne();
+}
+
+function renderListenOne() {
+  if (subIdx >= subTotal) { nextStage(); return; }
+  const q = subState.list[subIdx];
+  $('stageContent').innerHTML = `
+    <div style="text-align:center; margin: 16px 0;">
+      <div style="font-size:13px; color:var(--text-light); margin-bottom:10px;">第 ${subIdx+1} / ${subTotal} 题</div>
+      <div style="font-size:13px; color:var(--text-light); margin-bottom:6px;">👇 先点这里听一遍</div>
+      <button class="icon-btn coral pulse-btn" style="font-size:20px; padding:20px 32px;" onclick="speak('${q.en}')">🔊 听单词</button>
+      <div style="margin-top:10px;"><button class="icon-btn yellow" onclick="speak('${q.en}', true)">🐢 慢速</button></div>
+    </div>
+    <div class="question" style="text-align:center; margin-top:16px;">这个单词是什么意思?</div>
+    <div class="options" style="margin-top:14px;">
+      ${q.opts.map((o,i) => `<button class="option" onclick="pickListen(${i})"><span class="letter">${String.fromCharCode(65+i)}</span><span>${o}</span></button>`).join('')}
+    </div>
+    <div class="feedback" id="fbListen"></div>
+  `;
+}
+
+function pickListen(i) {
+  const q = subState.list[subIdx];
+  const opts = document.querySelectorAll('#stageContent .option');
+  opts.forEach(o => o.classList.add('disabled'));
+  const right = i === q.a;
+  opts[i].classList.add(right ? 'correct' : 'wrong');
+  if (!right) opts[q.a].classList.add('correct');
+
+  const fb = $('fbListen');
+  fb.className = 'feedback show ' + (right ? 'right' : 'wrong');
+  fb.innerHTML = `
+    <div class="title">${right ? '🎉 Good job!' : '这个词是 ' + q.opts[q.a]}</div>
+    <div>${en(q.en)} = ${q.opts[q.a]}</div>
+    <button class="btn btn-mint btn-small" style="margin-top:8px;" onclick="speak('${q.en}', true)">🐢 再听</button>
+    <button class="btn btn-primary btn-small" style="margin-top:8px; width:100%;" onclick="subIdx++; renderListenOne();">下一题 →</button>
+  `;
+  if (right) { logRight(); subScore++; }
+  else logWrong('旅行词', q.en, q.opts[i], q.opts[q.a]);
+}
+
+/* =========================================================
+   关卡 2: 房间 vs 家具
+   ========================================================= */
+
+function renderCategory() {
+  setStageTitle('📦 交通工具分类', '陆上跑的,还是天上飞/水里走的?');
+  subTotal = Q_CATEGORY.length;
+  subState.list = shuffle(Q_CATEGORY);
+  renderCategoryOne();
+}
+
+function renderCategoryOne() {
+  if (subIdx >= subTotal) { nextStage(); return; }
+  const q = subState.list[subIdx];
+  $('stageContent').innerHTML = `
+    <div style="text-align:center; font-size:13px; color:var(--text-light); margin-bottom:10px;">第 ${subIdx+1} / ${subTotal} 题</div>
+    <div style="text-align:center;">${longPressHint()}</div>
+    <div style="text-align:center; margin: 20px 0;">
+      <div style="font-size:36px; font-weight:800;">${en(q.word)}</div>
+      <button class="icon-btn coral" style="margin-top:10px;" onclick="speak('${q.word}')">🔊 听</button>
+    </div>
+    <div class="question" style="text-align:center;">这是什么?</div>
+    <div class="options" style="margin-top:14px;">
+      ${q.opts.map((o,i) => `<button class="option" onclick="pickCategory(${i})"><span class="letter">${String.fromCharCode(65+i)}</span><span>${o}</span></button>`).join('')}
+    </div>
+    <div class="feedback" id="fbCat"></div>
+  `;
+}
+
+function pickCategory(i) {
+  const q = subState.list[subIdx];
+  const opts = document.querySelectorAll('#stageContent .option');
+  opts.forEach(o => o.classList.add('disabled'));
+  const right = i === q.a;
+  opts[i].classList.add(right ? 'correct' : 'wrong');
+  if (!right) opts[q.a].classList.add('correct');
+
+  const fb = $('fbCat');
+  fb.className = 'feedback show ' + (right ? 'right' : 'wrong');
+  fb.innerHTML = `
+    <div class="title">${right ? '🎉 对!' : '正确: ' + q.opts[q.a]}</div>
+    <div>${en(q.word)} 是 ${q.opts[q.a]}。</div>
+    <button class="btn btn-primary btn-small" style="margin-top:8px; width:100%;" onclick="subIdx++; renderCategoryOne();">下一题 →</button>
+  `;
+  if (right) { logRight(); subScore++; }
+  else logWrong('公交/飞机分类', q.word, q.opts[i], q.opts[q.a]);
+}
+
+/* =========================================================
+   关卡 3: There is / There are
+   ========================================================= */
+
+function renderThere(limit) {
+  setStageTitle('🔑 should / shouldn\'t', '核心知识点: 给建议用 should');
+  const lim = limit || Q_THERE.length;
+  subTotal = Math.min(lim, Q_THERE.length);
+  subState.list = shuffle(Q_THERE).slice(0, subTotal);
+  renderThereOne();
+}
+
+function renderThereOne() {
+  if (subIdx >= subTotal) { nextStage(); return; }
+  const q = subState.list[subIdx];
+  $('stageContent').innerHTML = `
+    <div style="text-align:center; font-size:13px; color:var(--text-light); margin-bottom:10px;">第 ${subIdx+1} / ${subTotal} 题</div>
+    <div style="text-align:center;">${longPressHint()}</div>
+    <div style="background:linear-gradient(135deg, #E0F4FF, #F0E0FF); border-radius:14px; padding:12px; margin-bottom:14px; font-size:13px; line-height:1.6;">
+      🔑 <strong>记住:</strong><br>
+      • <strong>should</strong> = 应该(给好建议) → You should walk to school.<br>
+      • <strong>shouldn't</strong> = 不应该(劝别做) → You shouldn't sit down.
+    </div>
+    <div class="question">${enT(q.q)}</div>
+    <div class="options" style="margin-top:14px;">
+      ${q.opts.map((o,i) => `<button class="option" onclick="pickThere(${i})"><span class="letter">${String.fromCharCode(65+i)}</span>${enT(o)}</button>`).join('')}
+    </div>
+    <div class="feedback" id="fbThere"></div>
+  `;
+}
+
+function pickThere(i) {
+  const q = subState.list[subIdx];
+  const opts = document.querySelectorAll('#stageContent .option');
+  opts.forEach(o => o.classList.add('disabled'));
+  const right = i === q.a;
+  opts[i].classList.add(right ? 'correct' : 'wrong');
+  if (!right) opts[q.a].classList.add('correct');
+
+  const fullSent = q.q.replace('___', q.opts[q.a]);
+  const fb = $('fbThere');
+  fb.className = 'feedback show ' + (right ? 'right' : 'wrong');
+  fb.innerHTML = `
+    <div class="title">${right ? '🎉 对!' : '正确: ' + q.opts[q.a]}</div>
+    <div>完整句: <strong>${en(fullSent)}</strong></div>
+    <div style="margin-top:6px;">💡 ${q.explain}</div>
+    <button class="btn btn-mint btn-small" style="margin-top:8px;" onclick="speak(\`${fullSent.replace(/'/g,"\\'")}\`, true)">🔊 慢速听</button>
+    <button class="btn btn-primary btn-small" style="margin-top:8px; width:100%;" onclick="subIdx++; renderThereOne();">下一题 →</button>
+  `;
+  if (right) { logRight(); subScore++; }
+  else logWrong('should/shouldn\'t', q.q, q.opts[i], q.opts[q.a]);
+}
+
+/* =========================================================
+   关卡 4: 复数 s 修复(最大薄弱点)
+   ========================================================= */
+
+function renderPlural(limit) {
+  setStageTitle('🩹 改错小医生', '外教指出的真实错误,一起改对');
+  const lim = limit || Q_PLURAL.length;
+  subTotal = Math.min(lim, Q_PLURAL.length);
+  subState.list = shuffle(Q_PLURAL).slice(0, subTotal);
+  subState.phase = 'show';
+  renderPluralOne();
+}
+
+function renderPluralOne() {
+  if (subIdx >= subTotal) { nextStage(); return; }
+  const q = subState.list[subIdx];
+
+  if (subState.phase === 'show') {
+    $('stageContent').innerHTML = `
+      <div style="text-align:center; font-size:13px; color:var(--text-light); margin-bottom:10px;">第 ${subIdx+1} / ${subTotal} 题</div>
+      <div style="text-align:center;">${longPressHint()}</div>
+      <div style="background:var(--bg); border-radius:14px; padding:14px; margin-bottom:14px;">
+        <div style="font-size:12px; color:var(--text-light); margin-bottom:6px;">❌ 原来的错误:</div>
+        <div style="background:#FFEEEE; padding:10px; border-radius:10px; text-decoration:line-through; color:#C53030;">${en(q.wrong)}</div>
+        <div style="font-size:12px; color:var(--text-light); margin: 10px 0 6px;">✅ 应该说:</div>
+        <div style="background:#E8F8EC; padding:10px; border-radius:10px; color:#2F855A; font-weight:700;">${en(q.right)}</div>
+        <div style="margin-top:10px; font-size:13px; line-height:1.6;">💡 ${q.explain}</div>
+        <div class="speak-btns" style="margin-top:12px;">
+          <button class="icon-btn mint" onclick="speak(\`${q.right.replace(/'/g,"\\'")}\`)">🔊 听对的</button>
+          <button class="icon-btn yellow" onclick="speak(\`${q.right.replace(/'/g,"\\'")}\`, true)">🐢 慢读</button>
+        </div>
+      </div>
+      <button class="btn btn-primary" onclick="subState.phase='practice'; renderPluralOne();">我懂了,练一道 →</button>
+    `;
+  } else {
+    $('stageContent').innerHTML = `
+      <div style="text-align:center; font-size:13px; color:var(--text-light); margin-bottom:10px;">第 ${subIdx+1} / ${subTotal} 题 · 练习</div>
+      <div style="text-align:center;">${longPressHint()}</div>
+      <div class="question">${enT(q.blank)}</div>
+      <div class="question-cn">该填哪个?</div>
+      <div class="options">
+        ${q.opts.map((o,i) => `<button class="option" onclick="pickPlural(${i})"><span class="letter">${String.fromCharCode(65+i)}</span>${enT(o)}</button>`).join('')}
+      </div>
+      <div class="feedback" id="fbPl"></div>
+    `;
+  }
+}
+
+function pickPlural(i) {
+  const q = subState.list[subIdx];
+  const opts = document.querySelectorAll('#stageContent .option');
+  opts.forEach(o => o.classList.add('disabled'));
+  const right = i === q.a;
+  opts[i].classList.add(right ? 'correct' : 'wrong');
+  if (!right) opts[q.a].classList.add('correct');
+
+  const fb = $('fbPl');
+  fb.className = 'feedback show ' + (right ? 'right' : 'wrong');
+  fb.innerHTML = `
+    <div class="title">${right ? '🎉 改对了!' : '正确: ' + q.opts[q.a]}</div>
+    <div>完整句: <strong>${en(q.right)}</strong></div>
+    <button class="btn btn-mint btn-small" style="margin-top:8px;" onclick="speak(\`${q.right.replace(/'/g,"\\'")}\`)">🔊 听</button>
+    <button class="btn btn-primary btn-small" style="margin-top:8px; width:100%;" onclick="subIdx++; subState.phase='show'; renderPluralOne();">下一个 →</button>
+  `;
+  if (right) { logRight(); subScore++; }
+  else logWrong('改错(语法)', q.blank, q.opts[i], q.opts[q.a]);
+}
+
+/* =========================================================
+   关卡 5: Hannah 的房子(听音判对错)
+   ========================================================= */
+
+function renderHannah() {
+  setStageTitle('🚌 判断对错', '听句子,判断说得对不对(像课堂上一样)');
+  subTotal = Q_HANNAH.length;
+  subState.list = shuffle(Q_HANNAH);
+  renderHannahOne();
+}
+
+function renderHannahOne() {
+  if (subIdx >= subTotal) { nextStage(); return; }
+  const q = subState.list[subIdx];
+  $('stageContent').innerHTML = `
+    <div style="text-align:center; font-size:13px; color:var(--text-light); margin-bottom:10px;">第 ${subIdx+1} / ${subTotal} 题</div>
+    <div class="house-info">
+      <div class="title">🚌 听一听,判断这句英语说得对不对:</div>
+      <div class="row">✅ 对的 → 点 True</div>
+      <div class="row">❌ 错的(有语法/用词错误)→ 点 False</div>
+      <div class="row" style="font-size:12px; color:var(--text-light);">提示: take the bus / by car / should not 都是对的说法</div>
+    </div>
+    <div style="text-align:center;">${longPressHint()}</div>
+    <div style="text-align:center; margin: 14px 0;">
+      <button class="icon-btn coral pulse-btn" style="padding:14px 22px;" onclick="speak(\`${q.sent.replace(/'/g,"\\'")}\`)">🔊 听句子</button>
+      <button class="icon-btn yellow" style="margin-top:8px;" onclick="speak(\`${q.sent.replace(/'/g,"\\'")}\`, true)">🐢 慢速</button>
+    </div>
+    <div style="background:var(--bg); border-radius:14px; padding:12px; text-align:center; margin-bottom:14px;">
+      <div style="font-weight:700; font-size:16px;">${en(q.sent)}</div>
+      <div style="font-size:12px; color:var(--text-light); margin-top:4px;">${q.cn}</div>
+    </div>
+    <div class="question" style="text-align:center;">这句话对吗?</div>
+    <div class="options">
+      <button class="option" onclick="pickHannah(true)" style="justify-content:center; font-size:18px;"><span class="letter">✓</span><span>True (对)</span></button>
+      <button class="option" onclick="pickHannah(false)" style="justify-content:center; font-size:18px;"><span class="letter">✗</span><span>False (错)</span></button>
+    </div>
+    <div class="feedback" id="fbHan"></div>
+  `;
+}
+
+function pickHannah(choice) {
+  const q = subState.list[subIdx];
+  const opts = document.querySelectorAll('#stageContent .option');
+  opts.forEach(o => o.classList.add('disabled'));
+  const right = choice === q.a;
+  const myIdx = choice ? 0 : 1;
+  const correctIdx = q.a ? 0 : 1;
+  opts[myIdx].classList.add(right ? 'correct' : 'wrong');
+  if (!right) opts[correctIdx].classList.add('correct');
+
+  const fb = $('fbHan');
+  fb.className = 'feedback show ' + (right ? 'right' : 'wrong');
+  fb.innerHTML = `
+    <div class="title">${right ? '🎉 答对!' : '正确答案: ' + (q.a ? 'True' : 'False')}</div>
+    <div>💡 ${q.explain}</div>
+    <button class="btn btn-primary btn-small" style="margin-top:8px; width:100%;" onclick="subIdx++; renderHannahOne();">下一题 →</button>
+  `;
+  if (right) { logRight(); subScore++; }
+  else logWrong('听音判对错', q.sent, choice ? 'True' : 'False', q.a ? 'True' : 'False');
+}
+
+/* =========================================================
+   关卡 5b: 过去式 Past Simple Tense (新核心知识点)
+   ========================================================= */
+
+function renderPastTense(limit) {
+  setStageTitle('⏰ 过去式 (went/ate)', '说昨天/过去的事,动词要变过去式');
+  const lim = limit || Q_PASTTENSE.length;
+  subTotal = Math.min(lim, Q_PASTTENSE.length);
+  subState.list = shuffle(Q_PASTTENSE).slice(0, subTotal);
+  renderPastTenseOne();
+}
+
+function renderPastTenseOne() {
+  if (subIdx >= subTotal) { nextStage(); return; }
+  const q = subState.list[subIdx];
+  $('stageContent').innerHTML = `
+    <div style="text-align:center; font-size:13px; color:var(--text-light); margin-bottom:10px;">第 ${subIdx+1} / ${subTotal} 题</div>
+    <div style="text-align:center;">${longPressHint()}</div>
+    <div style="background:linear-gradient(135deg, #FFE7D6, #FFF0E0); border-radius:14px; padding:12px; margin-bottom:14px; font-size:13px; line-height:1.6;">
+      ⏰ <strong>记住:</strong> 说<strong>过去</strong>的事(昨天、刚才),动词要变过去式!<br>
+      • 不规则: go→<strong>went</strong> / eat→<strong>ate</strong> / take→<strong>took</strong> / make→<strong>made</strong><br>
+      • 规则: 加 -ed → walk→<strong>walked</strong> / wait→<strong>waited</strong>
+    </div>
+    <div class="question">${enT(q.q)}</div>
+    <div class="options" style="margin-top:14px;">
+      ${q.opts.map((o,i) => `<button class="option" onclick="pickPastTense(${i})"><span class="letter">${String.fromCharCode(65+i)}</span>${enT(o)}</button>`).join('')}
+    </div>
+    <div class="feedback" id="fbPast"></div>
+  `;
+}
+
+function pickPastTense(i) {
+  const q = subState.list[subIdx];
+  const opts = document.querySelectorAll('#stageContent .option');
+  opts.forEach(o => o.classList.add('disabled'));
+  const right = i === q.a;
+  opts[i].classList.add(right ? 'correct' : 'wrong');
+  if (!right) opts[q.a].classList.add('correct');
+
+  const fb = $('fbPast');
+  fb.className = 'feedback show ' + (right ? 'right' : 'wrong');
+  fb.innerHTML = `
+    <div class="title">${right ? '🎉 对!' : '正确: ' + q.opts[q.a]}</div>
+    <div style="margin-top:6px;">💡 ${q.explain}</div>
+    <button class="btn btn-primary btn-small" style="margin-top:8px; width:100%;" onclick="subIdx++; renderPastTenseOne();">下一题 →</button>
+  `;
+  if (right) { logRight(); subScore++; }
+  else logWrong('过去式', q.q, q.opts[i], q.opts[q.a]);
+}
+
+/* =========================================================
+   关卡 6: 同义词配对
+   ========================================================= */
+
+function renderSynonyms() {
+  setStageTitle('🔗 同义词配对', '左右两边意思一样的词,点一对一对');
+  // 把右边打乱
+  const lefts = Q_SYNONYMS.map((p, i) => ({ ...p, side:'L', idx:i, key:p.left }));
+  const rights = shuffle(Q_SYNONYMS.map((p, i) => ({ ...p, side:'R', idx:i, key:p.right })));
+  subState.lefts = lefts;
+  subState.rights = rights;
+  subState.matched = [];
+  subState.selected = null;
+  subState.totalPairs = Q_SYNONYMS.length;
+  drawSynonyms();
+}
+
+function drawSynonyms() {
+  const leftHtml = subState.lefts.map(p => {
+    const matched = subState.matched.includes(p.idx);
+    const selected = subState.selected && subState.selected.side === 'L' && subState.selected.idx === p.idx;
+    return `<div class="match-item ${matched?'matched':''} ${selected?'selected':''}" onclick="pickSyn('L', ${p.idx})">${en(p.left)}</div>`;
+  }).join('');
+  const rightHtml = subState.rights.map(p => {
+    const matched = subState.matched.includes(p.idx);
+    const selected = subState.selected && subState.selected.side === 'R' && subState.selected.idx === p.idx;
+    return `<div class="match-item ${matched?'matched':''} ${selected?'selected':''}" onclick="pickSyn('R', ${p.idx})">${en(p.right)}</div>`;
+  }).join('');
+
+  $('stageContent').innerHTML = `
+    <div style="text-align:center; font-size:13px; color:var(--text-light); margin-bottom:10px;">
+      已配对 ${subState.matched.length} / ${subState.totalPairs}
+    </div>
+    <div style="text-align:center;">${longPressHint()}</div>
+    <div class="match-wrap">
+      <div class="match-col">
+        <div class="col-title">A 组</div>
+        ${leftHtml}
+      </div>
+      <div class="match-col">
+        <div class="col-title">B 组</div>
+        ${rightHtml}
+      </div>
+    </div>
+    <div style="text-align:center; font-size:12px; color:var(--text-light); margin-top:10px;">
+      💡 先点 A 组一个词,再点 B 组的同义词。配对成功会变绿色。
+    </div>
+    <div class="feedback" id="fbSyn"></div>
+    ${subState.matched.length === subState.totalPairs ? `<button class="btn btn-primary" style="margin-top:14px;" onclick="nextStage()">全部配对完成 →</button>` : ''}
+  `;
+}
+
+function pickSyn(side, idx) {
+  if (subState.matched.includes(idx)) return;
+
+  if (!subState.selected) {
+    subState.selected = { side, idx };
+    drawSynonyms();
+    return;
+  }
+
+  // 已经有选中的,这是第二次点
+  if (subState.selected.side === side) {
+    // 同一边,换选中的
+    subState.selected = { side, idx };
+    drawSynonyms();
+    return;
+  }
+
+  // 配对: 看 idx 是否相同
+  if (subState.selected.idx === idx) {
+    // 配对成功
+    subState.matched.push(idx);
+    subState.selected = null;
+    logRight();
+    const pair = Q_SYNONYMS[idx];
+    drawSynonyms();
+    const fb = $('fbSyn');
+    fb.className = 'feedback show right';
+    fb.innerHTML = `<div class="title">🎉 配对成功!</div><div>${en(pair.left)} = ${en(pair.right)} (${pair.cn})</div>`;
+    setTimeout(() => { if (fb) fb.classList.remove('show'); }, 2000);
+  } else {
+    // 配对失败,闪一下
+    logWrong('同义词', '配对', '配错', '应该匹配同含义');
+    const items = document.querySelectorAll('#stageContent .match-item');
+    items.forEach(el => {
+      const txt = el.textContent.trim();
+      if (txt === Q_SYNONYMS[subState.selected.idx][subState.selected.side==='L'?'left':'right'] ||
+          txt === Q_SYNONYMS[idx][side==='L'?'left':'right']) {
+        el.classList.add('wrong-flash');
+        setTimeout(() => el.classList.remove('wrong-flash'), 400);
+      }
+    });
+    setTimeout(() => {
+      subState.selected = null;
+      drawSynonyms();
+    }, 500);
+  }
+}
+
+/* =========================================================
+   关卡 7: listen/see vs watch/hear
+   ========================================================= */
+
+function renderWatchHear() {
+  setStageTitle('🅰️ by + 冠词', '坐车用 by,别漏掉 a/the');
+  subTotal = Q_WATCH_HEAR.length;
+  subState.list = shuffle(Q_WATCH_HEAR);
+  renderWatchHearOne();
+}
+
+function renderWatchHearOne() {
+  if (subIdx >= subTotal) { nextStage(); return; }
+  const q = subState.list[subIdx];
+  $('stageContent').innerHTML = `
+    <div style="text-align:center; font-size:13px; color:var(--text-light); margin-bottom:10px;">第 ${subIdx+1} / ${subTotal} 题</div>
+    <div style="background:linear-gradient(135deg, #FFF4D6, #FFE7A0); border-radius:14px; padding:12px; margin-bottom:14px; font-size:13px; line-height:1.6;">
+      💡 <strong>记住:</strong><br>
+      • 坐交通工具 → <strong>by</strong> car / <strong>by</strong> bus(用 by)<br>
+      • "是一名……" → <strong>a</strong> bus driver(加 a)<br>
+      • 特指那个 → take <strong>the</strong> bus(加 the)
+    </div>
+    <div style="text-align:center;">${longPressHint()}</div>
+    <div class="question">${enT(q.q)}</div>
+    <div class="options" style="margin-top:14px;">
+      ${q.opts.map((o,i) => `<button class="option" onclick="pickWatchHear(${i})"><span class="letter">${String.fromCharCode(65+i)}</span>${enT(o)}</button>`).join('')}
+    </div>
+    <div class="feedback" id="fbWH"></div>
+  `;
+}
+
+function pickWatchHear(i) {
+  const q = subState.list[subIdx];
+  const opts = document.querySelectorAll('#stageContent .option');
+  opts.forEach(o => o.classList.add('disabled'));
+  const right = i === q.a;
+  opts[i].classList.add(right ? 'correct' : 'wrong');
+  if (!right) opts[q.a].classList.add('correct');
+
+  const fb = $('fbWH');
+  fb.className = 'feedback show ' + (right ? 'right' : 'wrong');
+  fb.innerHTML = `
+    <div class="title">${right ? '🎉 对!' : '正确: ' + q.opts[q.a]}</div>
+    <div>💡 ${q.explain}</div>
+    <button class="btn btn-primary btn-small" style="margin-top:8px; width:100%;" onclick="subIdx++; renderWatchHearOne();">下一题 →</button>
+  `;
+  if (right) { logRight(); subScore++; }
+  else logWrong('冠词 the', q.q, q.opts[i], q.opts[q.a]);
+}
+
+/* =========================================================
+   关卡 8: a holiday for children (冠词)
+   ========================================================= */
+
+function renderArticle() {
+  setStageTitle('💬 地道说法', '怎么说更自然?(外教纠正的句子)');
+  subTotal = Q_ARTICLE.length;
+  subState.list = shuffle(Q_ARTICLE);
+  renderArticleOne();
+}
+
+function renderArticleOne() {
+  if (subIdx >= subTotal) { nextStage(); return; }
+  const q = subState.list[subIdx];
+  $('stageContent').innerHTML = `
+    <div style="text-align:center; font-size:13px; color:var(--text-light); margin-bottom:10px;">第 ${subIdx+1} / ${subTotal} 题</div>
+    <div style="background:linear-gradient(135deg, #FFE0F0, #E0F4FF); border-radius:14px; padding:12px; margin-bottom:14px; font-size:13px; line-height:1.6;">
+      💡 <strong>记住:</strong><br>
+      • 第三人称(John/He)动词加 s → John <strong>takes</strong><br>
+      • 问"你觉得……吗" → <strong>Do you think</strong> ...?<br>
+      • "想成为/想在" → want <strong>to be</strong>
+    </div>
+    <div style="text-align:center;">${longPressHint()}</div>
+    <div class="question">${enT(q.q)}</div>
+    <div class="options" style="margin-top:14px;">
+      ${q.opts.map((o,i) => `<button class="option" onclick="pickArticle(${i})"><span class="letter">${String.fromCharCode(65+i)}</span>${enT(o)}</button>`).join('')}
+    </div>
+    <div class="feedback" id="fbArt"></div>
+  `;
+}
+
+function pickArticle(i) {
+  const q = subState.list[subIdx];
+  const opts = document.querySelectorAll('#stageContent .option');
+  opts.forEach(o => o.classList.add('disabled'));
+  const right = i === q.a;
+  opts[i].classList.add(right ? 'correct' : 'wrong');
+  if (!right) opts[q.a].classList.add('correct');
+
+  const fb = $('fbArt');
+  fb.className = 'feedback show ' + (right ? 'right' : 'wrong');
+  fb.innerHTML = `
+    <div class="title">${right ? '🎉 对!' : '正确: ' + q.opts[q.a]}</div>
+    <div>💡 ${q.explain}</div>
+    <button class="btn btn-primary btn-small" style="margin-top:8px; width:100%;" onclick="subIdx++; renderArticleOne();">下一题 →</button>
+  `;
+  if (right) { logRight(); subScore++; }
+  else logWrong('句子/问句', q.q, q.opts[i], q.opts[q.a]);
+}
+
+/* =========================================================
+   关卡 9: 发音
+   ========================================================= */
+
+function renderPron(limit) {
+  setStageTitle('🎤 发音跟读', '低准确率单词,慢慢跟读练');
+  const lim = limit || Q_PRON.length;
+  subState.list = Q_PRON.slice(0, lim);
+  subTotal = subState.list.length;
+  renderPronOne();
+}
+
+function renderPronOne() {
+  if (subIdx >= subTotal) { nextStage(); return; }
+  const q = subState.list[subIdx];
+  const count = history.pronCount[q.en] || 0;
+  $('stageContent').innerHTML = `
+    <div style="text-align:center; font-size:13px; color:var(--text-light); margin-bottom:6px;">
+      第 ${subIdx+1} / ${subTotal} · 课堂准确率 ${q.acc}
+    </div>
+    <div class="pron-card">
+      <div class="pron-word">${en(q.en)}</div>
+      <div class="pron-ipa">${q.ipa}</div>
+      <div class="pron-cn">${q.cn}</div>
+      <div class="speak-btns">
+        <button class="icon-btn coral pulse-btn" onclick="speak('${q.en}', false)">🔊 听示范</button>
+        <button class="icon-btn yellow" onclick="speak('${q.en}', true)">🐢 慢速</button>
+      </div>
+      <div class="pron-tip">${q.tip}</div>
+      <button class="btn btn-mint" onclick="pronDone('${q.en}')" style="margin-top:8px;">🎙️ 我跟读了</button>
+      <div class="pron-count" id="pronCount">练习次数: ${count}</div>
+    </div>
+    <button class="btn btn-primary" style="margin-top:10px;" onclick="subIdx++; renderPronOne();">下一个 →</button>
+  `;
+}
+
+function pronDone(en_word) {
+  history.pronCount[en_word] = (history.pronCount[en_word] || 0) + 1;
+  saveProgress();
+  logRight();
+  $('pronCount').textContent = '练习次数: ' + history.pronCount[en_word] + ' ✓';
+}
+
+/* =========================================================
+   关卡 10: 拖拽排句子
+   ========================================================= */
+
+function renderDrag() {
+  setStageTitle('🧩 拖拽排句子', '把单词卡按顺序拼成一句话');
+  subState.list = shuffle(Q_DRAG);
+  subTotal = subState.list.length;
+  renderDragOne();
+}
+
+function renderDragOne() {
+  if (subIdx >= subTotal) { nextStage(); return; }
+  const q = subState.list[subIdx];
+  subState.pool = shuffle(q.words);
+  subState.target = [];
+  subState.hintShown = 0;
+  drawDragUI();
+}
+
+function drawDragUI() {
+  const q = subState.list[subIdx];
+  $('stageContent').innerHTML = `
+    <div style="text-align:center; font-size:13px; color:var(--text-light); margin-bottom:10px;">第 ${subIdx+1} / ${subTotal} 题</div>
+    <div style="text-align:center;">${longPressHint()}</div>
+    <div style="font-size:13px; color:var(--text-light); margin-bottom:4px;">中文意思:</div>
+    <div style="background:var(--yellow); border-radius:12px; padding:10px 14px; font-weight:700; margin-bottom:14px; font-size:14px;">
+      ${q.cn}
+    </div>
+    <div class="pool-label">✅ 你的句子(点单词卡可拿回去):</div>
+    <div class="word-target">
+      ${subState.target.map((w, i) => `<div class="word-chip placed en" onclick="dragBack(${i})">${w}</div>`).join('')}
+      ${subState.target.length === 0 ? '<div style="color:#bbb; font-size:13px;">从下面点单词卡 →</div>' : ''}
+    </div>
+    <div class="pool-label">📦 单词卡(点一下放上去):</div>
+    <div class="word-pool">
+      ${subState.pool.map((w, i) => `<div class="word-chip en" onclick="dragUp(${i})">${w}</div>`).join('')}
+      ${subState.pool.length === 0 ? '<div style="color:#bbb; font-size:13px;">单词都用完了!</div>' : ''}
+    </div>
+    <div class="btn-row" style="margin-top:14px;">
+      <button class="btn btn-yellow btn-small" onclick="showHint()" style="flex:1;">💡 看提示</button>
+      <button class="btn btn-mint btn-small" onclick="dragClear()" style="flex:1;">🔄 重来</button>
+    </div>
+    <div class="hint-card ${subState.hintShown > 0 ? 'show' : ''}">
+      ${q.hints.slice(0, subState.hintShown).map(h => '• ' + h).join('<br>')}
+    </div>
+    <button class="btn btn-primary" style="margin-top:14px;" onclick="checkDrag()">
+      ${subState.pool.length === 0 ? '我做完了 ✓' : `还差 ${subState.pool.length} 个词`}
+    </button>
+    <div class="feedback" id="fbDrag"></div>
+  `;
+}
+
+function dragUp(i) {
+  const w = subState.pool.splice(i, 1)[0];
+  subState.target.push(w);
+  drawDragUI();
+}
+function dragBack(i) {
+  const w = subState.target.splice(i, 1)[0];
+  subState.pool.push(w);
+  drawDragUI();
+}
+function dragClear() {
+  const q = subState.list[subIdx];
+  subState.pool = shuffle(q.words);
+  subState.target = [];
+  drawDragUI();
+}
+function showHint() {
+  const q = subState.list[subIdx];
+  if (subState.hintShown < q.hints.length) subState.hintShown++;
+  drawDragUI();
+}
+function checkDrag() {
+  const q = subState.list[subIdx];
+  if (subState.pool.length > 0) { alert('还有单词没用,再放上去吧!'); return; }
+  const made = subState.target.join(' ');
+  const norm = (s) => s.replace(/[.?!]/g, '').replace(/\s+/g,' ').trim().toLowerCase();
+  const right = norm(made) === norm(q.answer);
+
+  const fb = $('fbDrag');
+  fb.className = 'feedback show ' + (right ? 'right' : 'wrong');
+  fb.innerHTML = `
+    <div class="title">${right ? '🎉 完全正确!' : '差一点点!'}</div>
+    <div style="margin: 8px 0;">你的: <strong>${made}</strong></div>
+    <div>对的: <strong style="color:var(--green);">${q.answer}</strong></div>
+    <div style="margin-top:8px; font-size:12px; color:var(--text-light);">${q.cn}</div>
+    <button class="btn btn-mint btn-small" style="margin-top:10px;" onclick="speak(\`${q.answer.replace(/'/g,"\\'")}\`)">🔊 听</button>
+    <button class="btn btn-yellow btn-small" style="margin-top:10px;" onclick="speak(\`${q.answer.replace(/'/g,"\\'")}\`, true)">🐢 慢读</button>
+    <button class="btn btn-primary btn-small" style="margin-top:10px; width:100%;" onclick="subIdx++; renderDragOne();">下一题 →</button>
+  `;
+  if (right) { logRight(); subScore++; }
+  else logWrong('句子顺序', q.cn, made, q.answer);
+}
+
+/* =========================================================
+   关卡 11: 外教对话模拟
+   ========================================================= */
+
+function renderDialog(limit) {
+  setStageTitle('🗣️ 外教对话模拟', 'travel talk · 聊聊出行和旅行');
+  const lim = limit || Q_DIALOG.length;
+  subState.list = shuffle(Q_DIALOG).slice(0, lim);
+  subTotal = subState.list.length;
+  subState.history = [];
+  renderDialogOne();
+}
+
+function renderDialogOne() {
+  if (subIdx >= subTotal) { showDialogSummary(); return; }
+  const q = subState.list[subIdx];
+
+  const historyHTML = subState.history.map(h => `
+    <div class="dialog-wrap">
+      <div class="dialog-avatar">👨‍🏫 Teacher</div>
+      <div class="dialog-bubble dialog-teacher">${en(h.teacher)}</div>
+      <div class="dialog-avatar" style="text-align:right;">🧒 You</div>
+      <div class="dialog-bubble dialog-student">${en(h.answer)}</div>
+    </div>
+  `).join('');
+
+  $('stageContent').innerHTML = `
+    ${historyHTML}
+    <div class="dialog-wrap">
+      <div class="dialog-avatar">👨‍🏫 Teacher</div>
+      <div class="dialog-bubble dialog-teacher">${en(q.teacher)}</div>
+    </div>
+    <div class="speak-btns" style="justify-content:flex-start; margin: 8px 0;">
+      <button class="icon-btn coral btn-small" onclick="speak(\`${q.teacher.replace(/'/g,"\\'")}\`)">🔊 听老师</button>
+      <button class="icon-btn yellow btn-small" onclick="speak(\`${q.teacher.replace(/'/g,"\\'")}\`, true)">🐢 慢</button>
+    </div>
+    <div style="text-align:center;">${longPressHint()}</div>
+    <div style="font-size:13px; color:var(--text-light); margin: 10px 0 6px;">怎么回答?</div>
+    <div class="options">
+      ${q.opts.map((o,i) => `<button class="option" onclick="pickDialog(${i})"><span class="letter">${String.fromCharCode(65+i)}</span>${en(o)}</button>`).join('')}
+    </div>
+    ${q.note ? `<div style="margin-top:10px; font-size:12px; color:var(--text-light); padding:8px 10px; background:var(--yellow); border-radius:10px;">💡 ${q.note}</div>` : ''}
+    <div class="feedback" id="fbDlg"></div>
+  `;
+}
+
+function pickDialog(i) {
+  const q = subState.list[subIdx];
+  const opts = document.querySelectorAll('#stageContent .option');
+  opts.forEach(o => o.classList.add('disabled'));
+  const right = q.a === -1 || i === q.a;
+  opts[i].classList.add(right ? 'correct' : 'wrong');
+  if (!right && q.a >= 0) opts[q.a].classList.add('correct');
+
+  subState.history.push({ teacher: q.teacher, answer: q.opts[i] });
+
+  const fb = $('fbDlg');
+  fb.className = 'feedback show ' + (right ? 'right' : 'wrong');
+  fb.innerHTML = `
+    <div class="title">${right ? '🎉 答得好!' : '正确: ' + q.opts[q.a]}</div>
+    <button class="btn btn-mint btn-small" style="margin-top:8px;" onclick="speak(\`${q.opts[right?i:q.a].replace(/'/g,"\\'")}\`)">🔊 听自己说的</button>
+    <button class="btn btn-primary btn-small" style="margin-top:8px; width:100%;" onclick="subIdx++; renderDialogOne();">老师问下一句 →</button>
+  `;
+  if (right) { logRight(); subScore++; }
+  else logWrong('对话回答', q.teacher, q.opts[i], q.opts[q.a >= 0 ? q.a : 0]);
+}
+
+function showDialogSummary() {
+  const studentLines = subState.history.map(h => h.answer).join(' ');
+  $('stageContent').innerHTML = `
+    <div style="text-align:center; padding: 20px 10px;">
+      <div style="font-size:48px;">🎤</div>
+      <div style="font-size:18px; font-weight:800; margin: 8px 0;">你今天的口语小总结</div>
+      <div style="font-size:12px; color:var(--text-light); margin-bottom:14px;">这一段你都能说出来啦!</div>
+    </div>
+    <div style="background:linear-gradient(135deg, var(--mint), var(--blue)); border-radius:14px; padding:16px; line-height:1.7; font-weight:600;">
+      ${en(studentLines)}
+    </div>
+    <div class="speak-btns" style="margin-top:14px;">
+      <button class="icon-btn coral" onclick="speak(\`${studentLines.replace(/'/g,"\\'")}\`)">🔊 听全部</button>
+      <button class="icon-btn yellow" onclick="speak(\`${studentLines.replace(/'/g,"\\'")}\`, true)">🐢 慢速</button>
+    </div>
+    <button class="btn btn-primary" style="margin-top:14px;" onclick="nextStage()">继续 →</button>
+  `;
+}
+
+/* =========================================================
+   错题回看
+   ========================================================= */
+
+function renderWrongReview() {
+  setStageTitle('📒 错题回看', '把之前错过的再做一遍');
+  const wrongs = history.wrong.slice(-10);
+  subState.list = wrongs;
+  subTotal = wrongs.length;
+  renderWrongOne();
+}
+
+function renderWrongOne() {
+  if (subIdx >= subTotal) { nextStage(); return; }
+  const w = subState.list[subIdx];
+  $('stageContent').innerHTML = `
+    <div style="text-align:center; font-size:13px; color:var(--text-light); margin-bottom:10px;">
+      第 ${subIdx+1} / ${subTotal} · <span class="badge badge-red">${w.tag}</span>
+    </div>
+    <div style="text-align:center;">${longPressHint()}</div>
+    <div class="question">${en(w.q)}</div>
+    <div style="background:var(--bg); border-radius:12px; padding:12px; margin-top:14px;">
+      <div style="font-size:12px; color:var(--text-light); margin-bottom:4px;">上次你选了:</div>
+      <div style="text-decoration:line-through; color:#C53030;">${en(w.your)}</div>
+      <div style="font-size:12px; color:var(--text-light); margin: 10px 0 4px;">正确答案:</div>
+      <div style="font-weight:700; color:#2F855A;">${en(w.right)}</div>
+    </div>
+    <div class="speak-btns" style="margin-top:14px;">
+      <button class="icon-btn coral" onclick="speak(\`${w.right.replace(/'/g,"\\'")}\`)">🔊 听对的</button>
+      <button class="icon-btn yellow" onclick="speak(\`${w.right.replace(/'/g,"\\'")}\`, true)">🐢 慢读</button>
+    </div>
+    <button class="btn btn-primary" style="margin-top:14px;" onclick="subIdx++; renderWrongOne();">记住了 →</button>
+  `;
+}
+
+/* =========================================================
+   完成页
+   ========================================================= */
+
+function renderDone() {
+  celebrate();
+  $('stageBox').classList.add('hidden');
+  $('parentBox').classList.add('hidden');
+
+  const doneCard = document.createElement('div');
+  doneCard.className = 'card';
+  doneCard.id = 'doneCard';
+  const acc = history.totalTried > 0 ? Math.round(history.totalCorrect / history.totalTried * 100) : 0;
+  const tip = currentMode === 'sprint' ? '🚀 You are ready for class!' : '🎉 全部完成!太棒了!';
+
+  doneCard.innerHTML = `
+    <div class="result-hero">
+      <div class="result-emoji">🏆</div>
+      <div style="font-size:14px; color:var(--text-light);">${currentKid === 'kenton' ? 'Kenton' : 'Eddey'} 完成啦!</div>
+      <div class="result-score">${stars} ⭐</div>
+      <div style="font-size:14px; color:var(--text-light); margin-top:6px;">累计正确率 ${acc}%</div>
+      <div style="font-weight:700; margin-top:14px; line-height:1.5;">${tip}</div>
+    </div>
+    <button class="btn btn-primary" style="margin-top:14px;" onclick="document.getElementById('doneCard').remove(); showStage('parent');">📊 看家长页</button>
+    <button class="btn btn-secondary" style="margin-top:10px; width:100%;" onclick="document.getElementById('doneCard').remove(); goHome();">🏠 回首页</button>
+  `;
+  $('app').appendChild(doneCard);
+  $('topbar').classList.add('hidden');
+  $('progressWrap').classList.add('hidden');
+  window.scrollTo({ top:0, behavior:'smooth' });
+}
+
+/* =========================================================
+   家长页
+   ========================================================= */
+
+function showStage(name) {
+  if (name === 'parent') {
+    if (!currentKid) { alert('先选孩子!'); return; }
+    $('stage0').classList.add('hidden');
+    $('stageBox').classList.add('hidden');
+    $('topbar').classList.remove('hidden');
+    $('progressWrap').classList.add('hidden');
+    $('parentBox').classList.remove('hidden');
+    renderParent();
+  }
+}
+
+function renderParent() {
+  const whoName = currentKid === 'kenton' ? 'Kenton (10岁)' : 'Eddey (9岁)';
+  const acc = history.totalTried > 0 ? Math.round(history.totalCorrect / history.totalTried * 100) : 0;
+  const wrongByTag = {};
+  history.wrong.forEach(w => wrongByTag[w.tag] = (wrongByTag[w.tag] || 0) + 1);
+  const days = history.days.length;
+
+  let weakHtml = Object.keys(wrongByTag).length === 0
+    ? '<div class="item">✨ 还没有错题记录</div>'
+    : Object.entries(wrongByTag).sort((a,b) => b[1]-a[1]).map(([tag, n]) =>
+        `<div class="item"><span class="badge badge-red">${tag}</span> 答错 ${n} 题</div>`).join('');
+
+  let pronHtml = Object.keys(history.pronCount).length === 0
+    ? '<div class="item">还没练发音</div>'
+    : Object.entries(history.pronCount).map(([w, c]) =>
+        `<div class="item">${w}: ${c} 次 ${c >= 3 ? '✅' : ''}</div>`).join('');
+
+  let suggestion = '';
+  const topTag = Object.entries(wrongByTag).sort((a,b) => b[1]-a[1])[0];
+  if (!topTag) suggestion = '<div class="item">✅ 状态很好,继续保持每天 5-10 分钟复习!</div>';
+  else {
+    const [tag] = topTag;
+    if (tag === '改错(语法)') suggestion = '<div class="item">🎯 重点练改错: John takes the bus(动词加 s + the)、Do you think...?(问句)</div>';
+    else if (tag === 'should/shouldn\'t') suggestion = '<div class="item">🎯 should=应该(好建议),shouldn\'t=不应该(劝别做)</div>';
+    else if (tag === '过去式') suggestion = '<div class="item">🎯 过去式: go→went, eat→ate, take→took, 规则动词加 -ed</div>';
+    else if (tag === '句子/问句') suggestion = '<div class="item">🎯 问句用 Do you think...?,第三人称动词加 s</div>';
+    else if (tag === '冠词 the') suggestion = '<div class="item">🎯 别漏掉 the:takes the bus / the bus driver</div>';
+    else if (tag === '房间/家具词') suggestion = '<div class="item">🎯 先把听音选词做熟,记住每个房间的发音</div>';
+    else suggestion = `<div class="item">🎯 重点补: ${tag}</div>`;
+  }
+
+  $('parentContent').innerHTML = `
+    <div style="background:linear-gradient(135deg, var(--blue), var(--mint)); border-radius:14px; padding:14px; margin-bottom:14px; font-size:13px; line-height:1.6;">
+      <strong>给家长的话:</strong> 本软件合并了<strong>"日常旅行词汇"</strong>和<strong>"交通工具 + should 建议"</strong>两节课。三个核心: (1)<strong>should/shouldn't</strong> 给建议 (2)⏰<strong>过去式</strong>(I went/I ate,新学的重点) (3)<strong>句子改错</strong>(by car、a busman、take the bus)。发音薄弱: timetable 31%、destination 34%、comfortable 34%、expensive 33%。表现好: by car / a bus driver / should not / the bus 都用对了。建议每天 8-10 分钟,外教课前再做一次 5 分钟冲刺。
+    </div>
+    <div class="report-section">
+      <h3>👤 ${whoName}</h3>
+      <div class="item">累计星星: <strong>${stars} ⭐</strong></div>
+      <div class="item">累计正确率: <strong>${acc}%</strong></div>
+      <div class="item">练习天数: <strong>${days} 天</strong></div>
+    </div>
+    <div class="report-section">
+      <h3>🎯 错因分类(最需要补的点)</h3>
+      ${weakHtml}
+    </div>
+    <div class="report-section">
+      <h3>🎤 发音练习次数</h3>
+      ${pronHtml}
+    </div>
+    <div class="report-section">
+      <h3>💡 下次重点建议</h3>
+      ${suggestion}
+    </div>
+    <div class="report-section">
+      <h3>📋 最近 5 道错题</h3>
+      ${history.wrong.slice(-5).reverse().map(w => `
+        <div class="item" style="border-bottom:1px solid #eee; padding:8px 0;">
+          <div style="font-size:11px;"><span class="badge badge-red">${w.tag}</span></div>
+          <div style="margin-top:4px;">${w.q}</div>
+          <div class="sub">你: <span style="color:var(--red);">${w.your}</span> → 对: <span style="color:var(--green);">${w.right}</span></div>
+        </div>
+      `).join('') || '<div class="item">暂无</div>'}
+    </div>
+    <button class="btn btn-primary" style="margin-top:10px;" onclick="goHome()">回首页 🏠</button>
+    <button class="btn btn-secondary" style="margin-top:10px; width:100%;" onclick="if(confirm('确定清空 '+currentKid+' 的所有记录吗?')) { localStorage.removeItem('preplyTravel_'+currentKid); pickKid(currentKid); renderParent(); }">🗑️ 清空记录</button>
+  `;
+}
+
+/* 启动 */
+window.addEventListener('load', () => {
+  setupLongPress();
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="lesson-audio" content="pending: 30条Aria神经音已外置apps/audio/kenton_verb_sprint_3160_20260802/，机器校验通过；手机实播待家长验收">
+<title>动词三态 · 两天默写冲刺营（31—60）· Kenton</title>
+<style>
+:root{--bg:#fff7f0;--card:#ffffff;--ink:#33304b;--teal:#0ea5a5;--teal-d:#0b7c7c;--pink:#f472b6;--amber:#f59e0b;--red:#ef4444;--line:#f3e4d8;--soft:#fdf1e7}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--ink);padding-bottom:40px}
+header{position:sticky;top:0;z-index:9;background:var(--bg);padding:12px 16px 8px;display:flex;align-items:center;gap:10px;border-bottom:1px solid var(--line)}
+.logo{width:38px;height:38px;border-radius:12px;background:linear-gradient(135deg,var(--amber),#fbbf24);display:flex;align-items:center;justify-content:center;color:#fff;font-size:20px;box-shadow:0 3px 0 #b45309}
+.brand{font-weight:800;font-size:14px}
+header .sp{flex:1}
+.pill{border:1px solid var(--line);background:#fff;border-radius:999px;padding:7px 12px;font-size:12px;font-weight:700;color:var(--ink);cursor:pointer}
+main{padding:14px 16px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:18px;box-shadow:0 4px 0 rgba(243,228,216,.8);margin-bottom:14px}
+.tag{display:inline-block;background:#fef3d9;color:#a86a00;font-size:12px;font-weight:800;border-radius:8px;padding:4px 10px;margin-bottom:10px}
+h1{font-size:22px;line-height:1.3;margin-bottom:8px}
+h2{font-size:19px;margin-bottom:6px}
+.sub{font-size:13.5px;color:#7a7690;line-height:1.7}
+.big{font-size:32px;font-weight:900;text-align:center;letter-spacing:1px}
+.zh{text-align:center;color:#7a7690;font-size:14px;margin-top:2px}
+.btn{display:block;width:100%;border:none;border-radius:16px;padding:15px;font-size:16.5px;font-weight:800;cursor:pointer;margin-top:12px;font-family:inherit}
+.btn-teal{background:var(--teal);color:#fff;box-shadow:0 4px 0 var(--teal-d)}
+.btn-amber{background:var(--amber);color:#fff;box-shadow:0 4px 0 #b45309}
+.btn-soft{background:var(--soft);color:var(--ink);border:1px solid var(--line);box-shadow:0 4px 0 var(--line)}
+.btn-teal:active,.btn-amber:active{transform:translateY(3px);box-shadow:0 1px 0 rgba(0,0,0,.2)}
+.btn[disabled]{opacity:.45;pointer-events:none}
+.trio{display:flex;justify-content:center;gap:8px;margin-top:14px}
+.trio .tcell{flex:1;border-radius:14px;padding:12px 6px;text-align:center;font-weight:900;font-size:19px}
+.tcell small{display:block;font-size:10.5px;font-weight:700;color:#8a8496;margin-bottom:3px}
+.t1{background:#e0f5f5;color:var(--teal-d)}
+.t2{background:#fef3d9;color:#a86a00}
+.t3{background:#fde8f3;color:#c2377f}
+.tcell.reveal{outline:3px solid currentColor}
+input.spellin{width:100%;border:2px solid var(--line);border-radius:14px;padding:12px;font-size:17px;font-weight:800;letter-spacing:2px;text-align:center;margin-top:8px;font-family:inherit;outline:none}
+input.spellin:focus{border-color:var(--teal)}
+input.spellin.ok{border-color:var(--teal);background:#e0f5f5}
+input.spellin.no{border-color:var(--red);background:#fee2e2}
+.progress{height:10px;background:var(--line);border-radius:99px;overflow:hidden;margin:10px 0 4px}
+.progress i{display:block;height:100%;background:linear-gradient(90deg,var(--amber),#fbbf24);border-radius:99px;transition:width .4s}
+.steps{display:flex;gap:6px;margin-top:12px}
+.step{flex:1;background:var(--soft);border-radius:10px;text-align:center;font-size:11px;font-weight:700;padding:8px 3px;color:#8a8496;line-height:1.5}
+.step b{display:block;font-size:15px;color:var(--amber)}
+.fb{border-radius:14px;padding:12px 14px;font-size:14px;font-weight:700;line-height:1.7;margin-top:12px;display:none}
+.fb.ok{display:block;background:#e0f5f5;color:var(--teal-d)}
+.fb.no{display:block;background:#fee2e2;color:#b91c1c}
+.note{font-size:12px;color:#9a94b0;line-height:1.7;margin-top:12px;border-top:1px dashed var(--line);padding-top:10px}
+.voice-note{background:#fdf0f8;border:1px solid #f5c6e0;color:#a3437c;font-size:12px;border-radius:12px;padding:9px 12px;line-height:1.6;margin-top:10px}
+.recall-card{background:#fff;border:2px solid var(--line);border-radius:16px;padding:16px;margin-top:12px}
+.recall-card .q{font-size:16px;font-weight:800;line-height:1.6}
+.recall-card .a{font-size:14.5px;line-height:1.8;color:var(--teal-d);margin-top:10px;display:none;background:#e0f5f5;border-radius:12px;padding:10px 12px}
+.recall-card.open .a{display:block}
+.recall-card .tap{font-size:12px;color:var(--pink);font-weight:700;margin-top:6px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+.mini{background:var(--soft);border-radius:14px;padding:12px;text-align:center;font-weight:800;font-size:14px}
+.mini small{display:block;font-weight:600;color:#8a8496;font-size:11.5px;margin-top:4px}
+.hidden{display:none}
+.taprow{display:flex;gap:8px;margin-top:12px}
+.taprow .btn{margin-top:0}
+.plan{display:flex;gap:10px;margin-top:12px}
+.pcard{flex:1;border-radius:14px;padding:12px;line-height:1.7;font-size:12.5px;font-weight:700}
+.pcard b{display:block;font-size:15px;margin-bottom:2px}
+.pd1{background:#e0f5f5;color:var(--teal-d)}
+.pd2{background:#fde8f3;color:#c2377f}
+.opt{display:block;width:100%;text-align:left;background:#fff;border:2px solid var(--line);border-radius:14px;padding:13px 15px;font-size:16px;font-weight:700;margin-top:10px;cursor:pointer;font-family:inherit;color:var(--ink)}
+.opt .k{display:inline-block;min-width:26px;height:26px;line-height:26px;text-align:center;border-radius:8px;background:var(--soft);margin-right:8px;font-size:13px}
+.hp{display:inline-block;width:22px;height:22px;line-height:22px;border-radius:50%;background:var(--line);color:#fff;font-size:12px;text-align:center;margin-left:3px}
+.hp.on{background:var(--teal)}
+</style>
+</head>
+<body>
+<header>
+  <div class="logo">🔥</div>
+  <div class="brand">Kenton · 31—60 默写冲刺营</div>
+  <div class="sp"></div>
+  <button class="pill" id="soundToggle">声</button>
+  <button class="pill" onclick="go('records')">学习档案</button>
+</header>
+<main id="app"></main>
+<script>
+(function(){
+'use strict';
+const APP_ID='kenton-verb-sprint-3160-20260802';
+const VERSION='1.0.0';
+const STORAGE_KEY='study:kenton:'+APP_ID+':v1';
+const MATERIAL='2026-08-02 老师课堂默写31—60（未背出，两天冲刺）· 老师136词表原表逐行核对';
+const AUDIO_DIR='audio/kenton_verb_sprint_3160_20260802/';
+const VERBS=[
+ {n:31,base:'fall',past:'fell',pp:'fallen',zh:'落下',tip:'a变e成fell；过去分词回到fall再加-en',audio:'v31-fall.mp3'},
+ {n:32,base:'feed',past:'fed',pp:'fed',zh:'喂',tip:'两个e挤掉一个：feed→fed',audio:'v32-feed.mp3'},
+ {n:33,base:'feel',past:'felt',pp:'felt',zh:'觉得',tip:'ee缩成e、尾巴加t：feel→felt',audio:'v33-feel.mp3'},
+ {n:34,base:'fight',past:'fought',pp:'fought',zh:'打架，战斗',tip:'igh变ough：fight→fought',audio:'v34-fight.mp3'},
+ {n:35,base:'find',past:'found',pp:'found',zh:'发现，找到',tip:'i变ou：find→found',audio:'v35-find.mp3'},
+ {n:36,base:'flee',past:'fled',pp:'fled',zh:'逃，消失',tip:'ee缩成e再加d：flee→fled',audio:'v36-flee.mp3'},
+ {n:37,base:'fly',past:'flew',pp:'flown',zh:'飞',tip:'y→ew→own，和know/grow是同款三兄弟',audio:'v37-fly.mp3'},
+ {n:38,base:'forbid',past:'forbade',pp:'forbidden',zh:'禁止',tip:'i变a(de)；分词双写d加en：forbidden',audio:'v38-forbid.mp3'},
+ {n:39,base:'forecast',past:'forecast',pp:'forecast',zh:'预测，预报',tip:'天气预报从不变身：三个一模一样',audio:'v39-forecast.mp3'},
+ {n:40,base:'forget',past:'forgot',pp:'forgotten',zh:'忘记',tip:'e变o；分词双写t加en：forgotten',audio:'v40-forget.mp3'},
+ {n:41,base:'forgive',past:'forgave',pp:'forgiven',zh:'宽恕',tip:'i变a成forgave；分词变回i加en（和give同款）',audio:'v41-forgive.mp3'},
+ {n:42,base:'freeze',past:'froze',pp:'frozen',zh:'冻结',tip:'ee变o；分词frozen（《冰雪奇缘》英文名就是Frozen）',audio:'v42-freeze.mp3'},
+ {n:43,base:'get',past:'got',pp:'got',zh:'得到',tip:'e变o：get→got',audio:'v43-get.mp3'},
+ {n:44,base:'give',past:'gave',pp:'given',zh:'给',tip:'i变a成gave；分词given=give+n',audio:'v44-give.mp3'},
+ {n:45,base:'go',past:'went',pp:'gone',zh:'去',tip:'went是完全换的新词（要硬记）；gone=go+ne',audio:'v45-go.mp3'},
+ {n:46,base:'grow',past:'grew',pp:'grown',zh:'生长',tip:'ow→ew→own，飞行三兄弟fly/know/grow同款',audio:'v46-grow.mp3'},
+ {n:47,base:'hang',past:'hung',pp:'hung',zh:'挂',tip:'a变u：hang→hung（"绞死"义才用hanged）',audio:'v47-hang.mp3'},
+ {n:48,base:'have',past:'had',pp:'had',zh:'有',tip:'ve换成d：have→had',audio:'v48-have.mp3'},
+ {n:49,base:'hear',past:'heard',pp:'heard',zh:'听到',tip:'直接加d，但读音变成 /hɜːd/',audio:'v49-hear.mp3'},
+ {n:50,base:'hide',past:'hid',pp:'hidden',zh:'藏',tip:'去掉e成hid；分词双写d加en：hidden',audio:'v50-hide.mp3'},
+ {n:51,base:'hit',past:'hit',pp:'hit',zh:'打中',tip:'三个一模一样，最省事',audio:'v51-hit.mp3'},
+ {n:52,base:'hold',past:'held',pp:'held',zh:'持，拿着',tip:'o变e：hold→held',audio:'v52-hold.mp3'},
+ {n:53,base:'hurt',past:'hurt',pp:'hurt',zh:'损伤',tip:'三个一模一样（受伤了就不想动）',audio:'v53-hurt.mp3'},
+ {n:54,base:'keep',past:'kept',pp:'kept',zh:'保持',tip:'ee缩成e、加t：kept',audio:'v54-keep.mp3'},
+ {n:55,base:'know',past:'knew',pp:'known',zh:'知道',tip:'ow→ew→own，飞行三兄弟之一',audio:'v55-know.mp3'},
+ {n:56,base:'lay',past:'laid',pp:'laid',zh:'放，放置',tip:'y变i再加d：laid',audio:'v56-lay.mp3'},
+ {n:57,base:'lead',past:'led',pp:'led',zh:'领导',tip:'ea缩成e：lead→led',audio:'v57-lead.mp3'},
+ {n:58,base:'leap',past:'leapt',pp:'leapt',zh:'跳跃',tip:'直接加t：leapt',audio:'v58-leap.mp3'},
+ {n:59,base:'learn',past:'learnt',pp:'learnt',zh:'学习',tip:'直接加t：learnt',audio:'v59-learn.mp3'},
+ {n:60,base:'leave',past:'left',pp:'left',zh:'离开',tip:'eave变eft：left（"剩下的"也是left）',audio:'v60-leave.mp3'}
+];
+const GROUPS=[[31,35],[36,40],[41,45],[46,50],[51,55],[56,60]];
+const RECALL=[
+ {q:'三态全不一样的（ABC型）有哪些？',a:'fall-fell-fallen、fly-flew-flown、forbid-forbade-forbidden、forget-forgot-forgotten、forgive-forgave-forgiven、freeze-froze-frozen、give-gave-given、go-went-gone、grow-grew-grown、hide-hid-hidden、know-knew-known。注意 leave-left-left 是 ABB 型，不在这里面。'},
+ {q:'三态全一样的（AAA型）？',a:'forecast-forecast-forecast、hit-hit-hit、hurt-hurt-hurt。三个一模一样，最省心。'},
+ {q:'后两个一样的（ABB型）记几个代表？',a:'feed-fed-fed、feel-felt-felt、find-found-found、get-got-got、have-had-had、hear-heard-heard、keep-kept-kept、lead-led-led、leave-left-left…这批占了大多数。'},
+ {q:'最容易写错的几个坑？',a:'pay? 不在本批。本批注意：lay→laid（不是layed）；learn→learnt；leap→leapt；hang→hung（不是hanged，"挂"用hung）；fly→flew（不是flowed）。'},
+ {q:'默写时怎么自检？',a:'写完按"原形—过去式—过去分词"念一遍，声音不对就查：-en 结尾的分词（fallen/forgotten/forgiven/frozen/given/grown/hidden/known/flown）最容易漏写 -en。'},
+ {q:'两天怎么安排最稳？',a:'今天：磨耳朵全听一遍 → 分组闯关 1—3 组（31—45）；明天：闯关 4—6 组（46—60）→ 错词集中营清零 → 模拟默写 90 分以上过关。'}
+];
+/* ============ 基础 ============ */
+const app=document.getElementById('app');
+let soundOn=localStorage.getItem('study:kenton:ui-sound')!=='0';
+let S=load();
+function load(){try{const s=JSON.parse(localStorage.getItem(STORAGE_KEY));if(s&&s.v===VERSION)return s}catch(e){}
+ return {v:VERSION,done:{},attempts:[],wrong:{},streak:{},groupsDone:{},created:Date.now()};}
+function save(){localStorage.setItem(STORAGE_KEY,JSON.stringify(S));}
+function recordAttempt(kind,key,ok){
+ S.attempts.push({t:Date.now(),kind,key,ok});
+ if(kind==='spell'){const w=key;
+  if(ok){S.streak[w]=(S.streak[w]||0)+1;if(S.streak[w]>=2&&S.wrong[w])delete S.wrong[w];}
+  else{S.wrong[w]=1;S.streak[w]=0;}}
+ save();}
+function el(html){app.innerHTML=html;window.scrollTo(0,0);}
+function tone(k){if(!soundOn)return;try{const c=new (window.AudioContext||window.webkitAudioContext)();const o=c.createOscillator();const g=c.createGain();o.connect(g);g.connect(c.destination);o.frequency.value=k==='ok'?660:220;g.gain.value=.08;o.start();setTimeout(()=>{o.stop();c.close()},k==='ok'?120:220)}catch(e){}}
+function playFile(fn,rate){const a=new Audio(AUDIO_DIR+fn);a.playbackRate=rate||1;const p=a.play();if(p&&p.catch)p.catch(()=>{});}
+function shuffled(arr){const a=arr.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));const t=a[i];a[i]=a[j];a[j]=t;}return a;}
+function inGroup(v,g){return v.n>=GROUPS[g][0]&&v.n<=GROUPS[g][1];}
+/* ============ 页面 ============ */
+function go(m){({home,listen,drill,camp,exam,recall,records}[m]||home)();}
+function head(tag,title,sub,back){
+ return (back?'<button class="pill" onclick="go(\'home\')" style="margin-bottom:10px">←</button>':'')
+ +'<div class="card"><span class="tag">'+tag+'</span><h2>'+title+'</h2>'
+ +(sub?'<div class="sub">'+sub+'</div>':'')+'</div>';
+}
+function home(){
+ const wrongN=Object.keys(S.wrong).length;
+ const mastered=VERBS.filter(function(v){return (S.streak[v.base]||0)>=2}).length;
+ el('<div class="card"><span class="tag">紧急任务 · 老师：31—60 还没背，两天拿下</span>'
+ +'<h1>🔥 动词三态默写冲刺营</h1>'
+ +'<div class="sub">fall 到 leave 共 <b>30 个</b>，按老师 136 词表原表逐行核对。不硬背——先听熟，再分组过关，错词进集中营反复打，最后模拟默写验收。</div>'
+ +'<div class="plan">'
+ +'<div class="pcard pd1"><b>📅 今天 Day 1</b>① 磨耳朵全听一遍<br>② 分组闯关 1—3 组（31—45）<br>③ 睡前听一遍错词</div>'
+ +'<div class="pcard pd2"><b>📅 明天 Day 2</b>① 闯关 4—6 组（46—60）<br>② 错词集中营清零<br>③ 模拟默写 ≥90 分</div>'
+ +'</div>'
+ +'<button class="btn btn-amber" onclick="go(\'listen\')">🎧 开始冲刺：先磨耳朵 →</button>'
+ +'<div class="steps"><div class="step"><b>1</b>磨耳朵</div><div class="step"><b>2</b>分组闯关</div><div class="step"><b>3</b>错词营</div><div class="step"><b>4</b>模拟默写</div></div>'
+ +'<div class="grid2" style="margin-top:12px">'
+ +'<div class="mini">⭐ 已连对出营<small>'+mastered+' / 30 词（连对2次算出营）</small></div>'
+ +'<div class="mini">🏥 错词营<small>'+wrongN+' 个词在营中治疗</small></div>'
+ +'</div>'
+ +'<div class="voice-note">🔊 音频待验收（手机）：三态读音为统一预录音，首次播放前请先点任意按钮解锁声音。</div>'
+ +'</div>'
+ +'<div class="card"><div class="grid2">'
+ +'<div class="mini">📚 材料<small>'+MATERIAL+'</small></div>'
+ +'<div class="mini">🎯 目标<small>30 词三态默写全对</small></div>'
+ +'</div></div>');
+}
+let lIdx=0;
+function listen(){lIdx=0;listenCard();}
+function listenCard(){
+ const v=VERBS[lIdx];
+ const g=GROUPS.findIndex(function(gr){return v.n>=gr[0]&&v.n<=gr[1]});
+ el(head('第 1 站 · 磨耳朵','第 '+(lIdx+1)+' / 30 个 · 第 '+(g+1)+' 组 · 听三遍，跟着念',null,1)
+ +'<div class="card">'
+ +'<div class="tag">No.'+v.n+' · '+v.zh+'</div>'
+ +'<div class="trio">'
+ +'<div class="tcell t1"><small>原形</small>'+v.base+'</div>'
+ +'<div class="tcell t2"><small>过去式</small>'+v.past+'</div>'
+ +'<div class="tcell t3"><small>过去分词</small>'+v.pp+'</div>'
+ +'</div>'
+ +'<div class="sub" style="text-align:center;margin-top:8px">💡 '+v.tip+'</div>'
+ +'<div class="taprow">'
+ +'<button class="btn btn-soft" onclick="playFile(\''+v.audio+'\')">🔊 听三态</button>'
+ +'<button class="btn btn-soft" onclick="playFile(\''+v.audio+'\',0.75)">🐢 慢速</button>'
+ +'</div>'
+ +'<button class="btn btn-amber" onclick="listenNext()">'+(lIdx<VERBS.length-1?'下一个 →':'听完啦，去闯关 →')+'</button>'
+ +'</div>'
+ +'<div class="progress"><i style="width:'+((lIdx+1)/30*100)+'%"></i></div>');
+}
+window.listenNext=function(){if(lIdx<VERBS.length-1){lIdx++;listenCard();}else{finishStage('listen');go('drill');}};
+/* 分组闯关：看原形+中文，输入 past 和 pp */
+let dGroup=0,dQueue=[];
+function drill(){
+ const ghtml=GROUPS.map(function(gr,gi){
+  const done=S.groupsDone['g'+gi];
+  return '<button class="opt" onclick="drillGroup('+gi+')"><span class="k">'+(done?'✅':(gi+1))+'</span>第 '+(gi+1)+' 组 · No.'+gr[0]+'—'+gr[1]+(done?'（已过）':'')+'</button>';}).join('');
+ el(head('第 2 站 · 分组闯关','看原形和中文，默写过去式 + 过去分词；错词自动进集中营',null,1)
+ +'<div class="card">'+ghtml
+ +'<div class="note">今天目标：第 1—3 组；明天：第 4—6 组。全部过完去"错词集中营"清零。</div></div>');
+}
+window.drillGroup=function(gi){dGroup=gi;dQueue=VERBS.filter(function(v){return inGroup(v,gi)});drillCard();};
+function drillCard(){
+ if(dQueue.length===0){
+  S.groupsDone['g'+dGroup]=true;save();
+  el(head('第 2 站 · 分组闯关',null,null,1)
+  +'<div class="card" style="text-align:center"><div class="big">🎉</div>'
+  +'<div class="big" style="font-size:23px;margin-top:8px">第 '+(dGroup+1)+' 组过关！</div>'
+  +'<div class="sub" style="margin-top:8px">错词已进集中营，记得去清零（连对 2 次出营）。</div>'
+  +'<div class="taprow"><button class="btn btn-soft" onclick="go(\'drill\')">选下一组</button>'
+  +'<button class="btn btn-amber" onclick="go(\'camp\')">去错词营 →</button></div></div>');
+  return;
+ }
+ const v=dQueue[0];
+ el(head('第 2 站 · 分组闯关','第 '+(dGroup+1)+' 组 · 还剩 '+dQueue.length+' 个',null,1)
+ +'<div class="card">'
+ +'<div class="tag">No.'+v.n+' · '+v.zh+'</div>'
+ +'<div class="big">'+v.base+'</div>'
+ +'<div class="zh">'+v.zh+'</div>'
+ +'<input class="spellin" id="inPast" placeholder="过去式（如 fell）" autocomplete="off" autocapitalize="off">'
+ +'<input class="spellin" id="inPp" placeholder="过去分词（如 fallen）" autocomplete="off" autocapitalize="off">'
+ +'<div class="fb" id="dfb"></div>'
+ +'<div class="taprow">'
+ +'<button class="btn btn-soft" onclick="playFile(\''+v.audio+'\')">🔊 偷偷听</button>'
+ +'<button class="btn btn-amber" onclick="drillCheck()">默写好了 →</button>'
+ +'</div></div>');
+ setTimeout(function(){const i=document.getElementById('inPast');if(i)i.focus()},300);
+}
+window.drillCheck=function(){
+ const v=dQueue[0];
+ const p=(document.getElementById('inPast').value||'').trim().toLowerCase();
+ const q=(document.getElementById('inPp').value||'').trim().toLowerCase();
+ const okP=p===v.past,okQ=q===v.pp;
+ const fb=document.getElementById('dfb');
+ document.getElementById('inPast').classList.add(okP?'ok':'no');
+ document.getElementById('inPp').classList.add(okQ?'ok':'no');
+ if(okP&&okQ){
+  tone('ok');fb.className='fb ok';fb.textContent='✅ 全对！'+v.base+' — '+v.past+' — '+v.pp;
+  recordAttempt('spell',v.base,true);
+  dQueue.shift();setTimeout(drillCard,900);
+ }else{
+  tone('no');recordAttempt('spell',v.base,false);
+  fb.className='fb no';
+  fb.innerHTML='💡 正确答案：<b>'+v.base+' — '+v.past+' — '+v.pp+'</b><br>'+(okP?'':'过去式是 '+v.past+'；')+(okQ?'':'过去分词是 '+v.pp+'；')+'这个词进集中营了，点"再来一次"重写。';
+  const btn=document.querySelector('.btn-amber');btn.textContent='再来一次 →';
+  btn.onclick=function(){drillCard();};
+ }
+};
+/* 错词集中营 */
+let cQueue=[];
+function camp(){
+ const wrongs=VERBS.filter(function(v){return S.wrong[v.base]});
+ if(wrongs.length===0){
+  el(head('第 3 站 · 错词集中营','营地空空如也',null,1)
+  +'<div class="card" style="text-align:center"><div class="big">🏕️</div>'
+  +'<div class="big" style="font-size:23px;margin-top:8px">集中营是空的，太棒了！</div>'
+  +'<div class="sub" style="margin-top:8px">分组闯关里写错的词才会进来；每个词连对 2 次就能出营。</div>'
+  +'<button class="btn btn-amber" onclick="go(\'exam\')">去模拟默写 →</button></div>');
+  return;
+ }
+ el(head('第 3 站 · 错词集中营','每个词连对 2 次才能出营（两颗心点亮）',null,1)
+ +'<div class="card">'
+ +wrongs.map(function(v){
+  const st=S.streak[v.base]||0;
+  return '<button class="opt" onclick="campStart(\''+v.base+'\')"><span class="k">🏥</span>'+v.base+' <span style="color:#8a8496">'+v.zh+'</span>'
+  +'<span style="float:right"><span class="hp'+(st>=1?' on':'')+'">❤</span><span class="hp'+(st>=2?' on':'')+'">❤</span></span></button>';}).join('')
+ +'<div class="note">全部出营后，去"模拟默写"验收。</div></div>');
+}
+let campV=null;
+window.campStart=function(base){campV=VERBS.filter(function(v){return v.base===base})[0];campCard();};
+function campCard(){
+ const v=campV;const st=S.streak[v.base]||0;
+ el(head('第 3 站 · 错词集中营','No.'+v.n+' · 连对 '+(2-st)+' 次出营',null,1)
+ +'<div class="card">'
+ +'<div class="tag">'+v.zh+' · 💡 '+v.tip+'</div>'
+ +'<div class="big">'+v.base+'</div>'
+ +'<input class="spellin" id="inPast" placeholder="过去式" autocomplete="off" autocapitalize="off">'
+ +'<input class="spellin" id="inPp" placeholder="过去分词" autocomplete="off" autocapitalize="off">'
+ +'<div class="fb" id="cfb"></div>'
+ +'<div class="taprow">'
+ +'<button class="btn btn-soft" onclick="playFile(\''+v.audio+'\')">🔊 听</button>'
+ +'<button class="btn btn-amber" onclick="campCheck()">默写好了 →</button>'
+ +'</div>'
+ +'<button class="btn btn-soft" onclick="go(\'camp\')">← 回营地列表</button>'
+ +'</div>');
+ setTimeout(function(){const i=document.getElementById('inPast');if(i)i.focus()},300);
+}
+window.campCheck=function(){
+ const v=campV;
+ const p=(document.getElementById('inPast').value||'').trim().toLowerCase();
+ const q=(document.getElementById('inPp').value||'').trim().toLowerCase();
+ const ok=p===v.past&&q===v.pp;
+ const fb=document.getElementById('cfb');
+ recordAttempt('spell',v.base,ok);
+ if(ok){tone('ok');const st=S.streak[v.base]||0;
+  fb.className='fb ok';fb.textContent=st>=2?'🎉 出营成功！'+v.base+' 已经拿下！':'✅ 连对 '+st+'/2，再来一次就出营！';
+  setTimeout(function(){if(S.wrong[v.base]){campCard();}else{go('camp');}},900);
+ }else{tone('no');fb.className='fb no';fb.innerHTML='💡 是 <b>'+v.past+' — '+v.pp+'</b>。'+v.tip+'；重新默写。';
+  setTimeout(campCard,1400);}
+};
+/* 模拟默写 */
+let eQueue=[],eIdx=0,eScore=0;
+function exam(){eQueue=shuffled(VERBS).slice(0,10);eIdx=0;eScore=0;examCard();}
+function examCard(){
+ if(eIdx>=eQueue.length){
+  finishStage('exam');
+  const pct=eScore*10;
+  el(head('终点站 · 模拟默写',null,null,1)
+  +'<div class="card" style="text-align:center">'
+ +'<div class="big">'+(pct>=90?'🏆':pct>=70?'💪':'📖')+'</div>'
+ +'<div class="big" style="font-size:26px;margin-top:8px">'+pct+' 分（'+eScore+'/10 词）</div>'
+ +'<div class="sub" style="margin-top:8px">'+(pct>=90?'90 分过关！明天老师再默写也不怕。睡前把错词营再扫一眼，明早听一遍磨耳朵。':'还没到 90 分——错词已进集中营，清零后再来考一次！')+'</div>'
+ +'<div class="taprow"><button class="btn btn-soft" onclick="go(\'camp\')">去错词营</button>'
+ +'<button class="btn btn-amber" onclick="go(\'exam\')">再考一次</button></div>'
+ +'</div>');
+  return;
+ }
+ const v=eQueue[eIdx];
+ el(head('终点站 · 模拟默写','第 '+(eIdx+1)+' / 10 词 · 假装老师正在念',null,1)
+ +'<div class="card">'
+ +'<div class="sub" style="text-align:center">老师念：</div>'
+ +'<button class="btn btn-soft" onclick="playFile(\''+v.audio+'\')">🔊 播放考题（可听2遍）</button>'
+ +'<div class="zh" style="margin-top:6px">提示：'+v.zh+' · No.'+v.n+'</div>'
+ +'<input class="spellin" id="inBase" placeholder="原形" autocomplete="off" autocapitalize="off">'
+ +'<input class="spellin" id="inPast" placeholder="过去式" autocomplete="off" autocapitalize="off">'
+ +'<input class="spellin" id="inPp" placeholder="过去分词" autocomplete="off" autocapitalize="off">'
+ +'<div class="fb" id="efb"></div>'
+ +'<button class="btn btn-amber" onclick="examCheck()">交卷 →</button>'
+ +'</div>');
+}
+window.examCheck=function(){
+ const v=eQueue[eIdx];
+ const b=(document.getElementById('inBase').value||'').trim().toLowerCase();
+ const p=(document.getElementById('inPast').value||'').trim().toLowerCase();
+ const q=(document.getElementById('inPp').value||'').trim().toLowerCase();
+ const ok=b===v.base&&p===v.past&&q===v.pp;
+ const fb=document.getElementById('efb');
+ recordAttempt('exam',v.base,ok);
+ if(!ok){S.wrong[v.base]=1;S.streak[v.base]=0;save();}
+ if(ok){eScore++;tone('ok');}
+ else{tone('no');}
+ fb.className='fb '+(ok?'ok':'no');
+ fb.innerHTML=(ok?'✅ ':'💡 ')+v.base+' — '+v.past+' — '+v.pp+(ok?'':'（已送进集中营）');
+ const btn=document.querySelector('.btn-amber');btn.textContent='下一题 →';
+ btn.onclick=function(){eIdx++;examCard();};
+};
+function recall(){
+ el(head('口诀屋 · 分组规律','先自己说，再点开核对',null,1)
+ +'<div class="card">'+RECALL.map(function(c,i){
+  return '<div class="recall-card" id="rc'+i+'"><div class="q">'+(i+1)+'. '+c.q+'</div>'
+  +'<div class="tap" onclick="document.getElementById(\'rc'+i+'\').classList.toggle(\'open\')">先自己说，再点开 👆</div>'
+  +'<div class="a">'+c.a+'</div></div>';}).join('')
+ +'<button class="btn btn-amber" onclick="finishStage(\'recall\');go(\'exam\')">背熟了，去模拟默写 →</button></div>');
+}
+function finishStage(k){S.done[k]=true;save();}
+window.finishStage=finishStage;
+function records(){
+ const okN=S.attempts.filter(function(a){return a.ok}).length;
+ const wrongs=VERBS.filter(function(v){return S.wrong[v.base]}).map(function(v){return v.base}).join('、');
+ const rows=S.attempts.slice(-30).reverse().map(function(a){
+  return '<div style="font-size:12.5px;padding:7px 0;border-bottom:1px dashed var(--line)">'+(a.ok?'✅':'❌')+' ['+a.kind+'] '+a.key+'<span style="color:#9a94b0"> · '+new Date(a.t).toLocaleString('zh-CN',{hour12:false})+'</span></div>';}).join('');
+ el(head('学习档案','本次冲刺记录','',1)
+ +'<div class="card">'
+ +'<div class="sub">错词营在营：'+(wrongs||'（空）')+'</div>'
+ +'<div class="sub" style="margin-top:6px">总作答：'+S.attempts.length+' 次 · 正确 '+okN+' 次</div>'
+ +'<div style="margin-top:10px">'+(rows||'<div class="sub">还没有作答记录。</div>')+'</div>'
+ +'<div class="taprow"><button class="btn btn-soft" onclick="dlJson()">导出 JSON</button>'
+ +'<button class="btn btn-soft" onclick="dlMd()">导出 Markdown</button></div>'
+ +'</div>');
+}
+function dl(name,text,type){const b=new Blob([text],{type});const u=URL.createObjectURL(b);const a=document.createElement('a');a.href=u;a.download=name;a.click();URL.revokeObjectURL(u);}
+window.dlJson=function(){dl('kenton-verb-sprint-3160-record.json',JSON.stringify({app:APP_ID,material:MATERIAL,exported:new Date().toISOString(),state:S},null,1),'application/json');};
+window.dlMd=function(){
+ let md='# Kenton 31—60 默写冲刺记录\n\n- 材料：'+MATERIAL+'\n- 作答：'+S.attempts.length+' 次，正确 '+S.attempts.filter(function(a){return a.ok}).length+' 次\n\n| 时间 | 环节 | 内容 | 结果 |\n|---|---|---|---|\n';
+ S.attempts.forEach(function(a){md+='| '+new Date(a.t).toLocaleString('zh-CN',{hour12:false})+' | '+a.kind+' | '+a.key+' | '+(a.ok?'对':'错')+' |\n';});
+ dl('kenton-verb-sprint-3160-report.md',md,'text/markdown');
+};
+document.getElementById('soundToggle').addEventListener('click',function(){soundOn=!soundOn;localStorage.setItem('study:kenton:ui-sound',soundOn?'1':'0');this.textContent=soundOn?'声':'静';if(soundOn)tone('ok');});
+document.getElementById('soundToggle').textContent=soundOn?'声':'静';
+Object.assign(window,{go,playFile});
+home();
+})();
+</script>
+</body>
+</html>

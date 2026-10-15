@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<script src="../assets/learning-sync.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#edf6fb">
+<title>Kenton 英语 · 被动语态白板与课本实验室</title>
+<style>
+:root{
+  --ink:#102f42;--muted:#627986;--paper:#f4f9fc;--card:#ffffff;--line:#d5e4ec;
+  --blue:#2d74b8;--blue-dark:#1e568c;--blue-soft:#e4f1fc;
+  --mint:#24a378;--mint-dark:#187757;--mint-soft:#e4f7f0;
+  --amber:#f1b73f;--amber-dark:#a86c05;--amber-soft:#fff4d6;
+  --coral:#e86752;--coral-dark:#b33d2e;--coral-soft:#fff0ec;
+  --violet:#775db7;--violet-soft:#f1edfb;
+  --shadow:0 16px 38px rgba(25,70,94,.12);--soft-shadow:0 7px 18px rgba(25,70,94,.09);
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{background:var(--paper);scroll-behavior:smooth}
+body{margin:0;min-height:100vh;color:var(--ink);font-family:"PingFang SC","Microsoft YaHei",system-ui,-apple-system,sans-serif;background:
+  radial-gradient(circle at 8% 0%,rgba(68,153,217,.17),transparent 31%),
+  radial-gradient(circle at 96% 88%,rgba(36,163,120,.13),transparent 28%),
+  linear-gradient(180deg,#f7fbfd 0,#eef7fb 100%)}
+button,input{font:inherit}
+button{cursor:pointer}
+.app{width:min(100%,760px);margin:0 auto;padding:12px 13px calc(42px + env(safe-area-inset-bottom))}
+.topbar{display:flex;align-items:center;gap:10px;min-height:48px;margin-bottom:12px}
+.back,.sound{width:46px;height:46px;border:1px solid var(--line);border-radius:15px;background:rgba(255,255,255,.94);color:var(--ink);display:grid;place-items:center;text-decoration:none;box-shadow:var(--soft-shadow);font-weight:1000}
+.back{font-size:27px}.sound{margin-left:auto;font-size:18px}
+.brand{min-width:0}.brand strong{display:block;font-size:16px}.brand span{display:block;color:var(--muted);font-size:11.5px;margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.home-hero{position:relative;overflow:hidden;background:var(--card);border:1px solid rgba(45,116,184,.18);border-radius:30px;padding:24px 20px 22px;box-shadow:var(--shadow)}
+.home-hero:before{content:"";position:absolute;width:190px;height:190px;border:28px solid rgba(45,116,184,.055);border-radius:50%;right:-88px;top:-98px}
+.source-pill{position:relative;display:inline-flex;align-items:center;gap:7px;background:var(--ink);color:white;border-radius:999px;padding:6px 10px;font-size:11px;font-weight:900;letter-spacing:.03em}
+.home-hero h1{position:relative;margin:14px 0 7px;font-size:clamp(28px,8vw,43px);line-height:1.12;letter-spacing:-.045em}
+.home-hero h1 em{font-style:normal;color:var(--blue)}
+.lead{position:relative;margin:0;color:var(--muted);font-size:14px;line-height:1.75;max-width:590px}
+.lesson-target{position:relative;margin:17px 0 0;padding:13px 14px;border-radius:17px;background:linear-gradient(135deg,var(--blue-soft),#f8fcff);border:1px solid #bdd9ec;font-size:13px;line-height:1.6}
+.lesson-target b{color:var(--blue-dark)}
+.mini-line{position:relative;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:8px;margin-top:16px}
+.mini-sentence{min-width:0;border-radius:16px;padding:10px 8px;text-align:center;background:#f7fafc;border:1px solid var(--line)}
+.mini-sentence small{display:block;color:var(--muted);font-size:10px;font-weight:900;margin-bottom:6px}
+.mini-sentence b{display:block;font-size:clamp(12px,3.6vw,15px);line-height:1.45}
+.mini-arrow{color:var(--amber-dark);font-size:23px;font-weight:1000;animation:nudge 1.7s ease-in-out infinite}
+.home-actions{display:grid;gap:10px;margin-top:15px}
+.primary,.secondary,.quiet,.choice,.token-button{min-height:52px;border-radius:15px;border:0;font-weight:950;transition:transform .12s ease,box-shadow .12s ease}
+.primary{background:var(--blue);color:white;box-shadow:0 6px 0 var(--blue-dark);padding:0 18px;font-size:16px}
+.primary:active{transform:translateY(4px);box-shadow:0 2px 0 var(--blue-dark)}
+.secondary{background:white;color:var(--blue-dark);border:2px solid #bcd8eb;box-shadow:0 4px 0 #dbeaf3;padding:0 15px}
+.secondary:active,.quiet:active,.choice:active,.token-button:active{transform:translateY(2px)}
+.quiet{min-height:44px;background:transparent;color:var(--muted);border:1px solid var(--line);padding:0 13px}
+.home-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+.status-card{background:rgba(255,255,255,.86);border:1px solid var(--line);border-radius:20px;padding:14px;box-shadow:var(--soft-shadow)}
+.status-card strong{display:block;font-size:14px}.status-card span{display:block;color:var(--muted);font-size:11.5px;line-height:1.55;margin-top:4px}
+.status-card button{width:100%;margin-top:10px}
+.section-label{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:22px 4px 10px}
+.section-label h2{font-size:17px;margin:0}.section-label span{font-size:11px;color:var(--muted)}
+.source-box{background:rgba(255,255,255,.82);border:1px solid var(--line);border-radius:19px;padding:14px 15px;font-size:12px;line-height:1.75;color:var(--muted)}
+.source-box b{color:var(--ink)}
+.source-box .quiet{width:100%;margin-top:10px}
+
+/* Lesson shell */
+.lesson-shell{animation:rise .24s ease-out}
+.lesson-head{background:var(--card);border:1px solid var(--line);border-radius:23px;padding:15px 16px;box-shadow:var(--soft-shadow);margin-bottom:11px}
+.lesson-head-top{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.lesson-head strong{font-size:15px}.lesson-head span{color:var(--muted);font-size:11px}
+.progress-track{height:8px;background:#e5edf1;border-radius:999px;overflow:hidden;margin-top:10px}
+.progress-fill{height:100%;border-radius:inherit;background:linear-gradient(90deg,var(--blue),var(--mint));transition:width .35s ease}
+.stage{background:var(--card);border:1px solid var(--line);border-radius:27px;padding:21px 18px 19px;box-shadow:var(--shadow);overflow:hidden}
+.step-tag{display:inline-flex;align-items:center;gap:7px;color:var(--blue-dark);font-size:11px;font-weight:1000;letter-spacing:.04em;background:var(--blue-soft);border-radius:999px;padding:5px 9px}
+.stage h2{font-size:clamp(23px,6vw,32px);line-height:1.2;letter-spacing:-.035em;margin:13px 0 7px}
+.coach{margin:0;color:var(--muted);font-size:14px;line-height:1.75}
+.coach b{color:var(--ink)}
+.coach-note{display:flex;gap:10px;align-items:flex-start;margin:14px 0 0;padding:12px 13px;background:var(--amber-soft);border:1px solid #efd894;border-radius:15px;font-size:13px;line-height:1.65}
+.coach-note .face{font-size:23px;line-height:1}
+.coach-note b{color:var(--amber-dark)}
+.stage-actions{display:grid;gap:10px;margin-top:18px}
+.stage-actions.two{grid-template-columns:1fr 1fr}
+.sentence-lab{margin:18px 0 5px;padding:16px 12px 14px;background:linear-gradient(180deg,#f7fbfd,#edf6fa);border:1px solid #d5e4eb;border-radius:20px;overflow:hidden}
+.sentence-title{display:flex;align-items:center;justify-content:space-between;gap:8px;font-size:11px;color:var(--muted);font-weight:900;margin-bottom:11px}
+.time-chip{display:inline-flex;align-items:center;gap:5px;background:var(--amber-soft);color:var(--amber-dark);border:1px solid #ecd27c;padding:4px 8px;border-radius:999px}
+.sentence-track{position:relative;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px;align-items:center;min-height:78px}
+.word-block{position:relative;z-index:2;min-width:0;border-radius:15px;padding:12px 7px;text-align:center;font-size:clamp(14px,4vw,18px);font-weight:1000;box-shadow:0 5px 0 rgba(20,55,72,.12);transition:transform .72s cubic-bezier(.2,.85,.2,1),background .25s ease}
+.word-block small{display:block;font-size:9.5px;font-weight:900;opacity:.7;margin-top:4px}
+.doer{background:var(--blue-soft);color:var(--blue-dark);border:2px solid #a7cce8}
+.verb{background:var(--amber-soft);color:var(--amber-dark);border:2px solid #ead17b}
+.receiver{background:var(--mint-soft);color:var(--mint-dark);border:2px solid #91d4bb}
+.sentence-track:after{content:"";position:absolute;height:4px;left:17%;right:17%;top:36px;background:linear-gradient(90deg,var(--blue),var(--amber),var(--mint));border-radius:999px;opacity:.23}
+.action-pulse{position:absolute;left:48%;top:32px;width:9px;height:9px;background:var(--amber);border-radius:50%;z-index:4;animation:travel 1.6s ease-in-out infinite}
+.sentence-track.swapped .doer{transform:translateX(calc(200% + 18px))}
+.sentence-track.swapped .receiver{transform:translateX(calc(-200% - 18px))}
+.focus-ring{animation:ring 1.5s ease-in-out infinite}
+.question{margin-top:16px;font-size:15px;font-weight:950;line-height:1.5}
+.choice-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}
+.choice{min-height:54px;padding:10px 12px;background:#fff;color:var(--ink);border:2px solid var(--line);box-shadow:0 4px 0 #e1ebf0;font-size:15px}
+.choice:hover{border-color:#9fc6de}.choice.correct{background:var(--mint-soft);border-color:var(--mint);color:var(--mint-dark)}
+.choice.wrong{background:var(--coral-soft);border-color:var(--coral);color:var(--coral-dark)}
+.feedback{margin-top:12px;padding:12px 13px;border-radius:15px;font-size:13px;line-height:1.65;border-left:5px solid var(--mint);background:var(--mint-soft)}
+.feedback.bad{border-left-color:var(--coral);background:var(--coral-soft)}
+.feedback b{display:block;margin-bottom:2px}
+.repair-banner{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:11px;align-items:center;margin:14px 0 4px;padding:12px 13px;border:2px solid #8fd1b8;border-radius:17px;background:linear-gradient(135deg,#e9faf3,#f8fffc);box-shadow:0 5px 0 #d3ece2}
+.repair-copy strong{display:block;color:var(--mint-dark);font-size:13px;line-height:1.45}.repair-copy span{display:block;color:#55756a;font-size:11px;line-height:1.55;margin-top:2px}
+.repair-return-btn{min-height:46px;border:0;border-radius:13px;padding:9px 13px;background:var(--mint);color:#fff;font-weight:1000;box-shadow:0 4px 0 var(--mint-dark);white-space:nowrap}
+.repair-return-btn:active{transform:translateY(3px);box-shadow:0 1px 0 var(--mint-dark)}
+
+/* be station */
+.time-station{margin-top:17px;border-radius:20px;background:#132f41;color:white;padding:16px;overflow:hidden}
+.signal{display:grid;grid-template-columns:1fr auto 1fr;gap:8px;align-items:center}
+.signal-card{min-height:75px;border-radius:14px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);display:grid;place-items:center;text-align:center;padding:9px}
+.signal-card small{display:block;color:#b8d0dc;font-size:10px;margin-bottom:4px}.signal-card b{font-size:16px}
+.signal-arrow{color:var(--amber);font-size:22px;font-weight:1000}
+.agreement{margin-top:10px;padding:9px 10px;border-radius:12px;background:rgba(36,163,120,.18);color:#c9f4e4;font-size:12px;line-height:1.55}
+.machine{position:relative;margin-top:18px;padding:18px 12px;border-radius:21px;background:linear-gradient(145deg,#172f3d,#274c5d);color:white;text-align:center;overflow:hidden}
+.machine:before,.machine:after{content:"";position:absolute;top:50%;width:30%;height:8px;background:repeating-linear-gradient(90deg,#6b8794 0 12px,#8ba2ac 12px 22px);transform:translateY(-50%)}
+.machine:before{left:-8%}.machine:after{right:-8%}
+.machine-core{position:relative;z-index:2;width:138px;min-height:92px;margin:0 auto;border:3px solid var(--amber);border-radius:19px;background:#102936;display:grid;place-items:center;padding:10px;box-shadow:0 0 0 7px rgba(241,183,63,.09)}
+.machine-core b{font-size:22px;color:var(--amber)}.machine-core span{font-size:11px;color:#b8ccd5;margin-top:3px}
+.machine.running .machine-core{animation:machineShake .55s ease-in-out}
+.machine-output{margin-top:13px;min-height:28px;font-size:20px;font-weight:1000;color:#bff1de}
+.by-car{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:9px;margin-top:17px}
+.by-person,.by-result{border-radius:16px;padding:14px 10px;text-align:center;border:2px solid var(--line);font-size:19px;font-weight:1000}
+.by-person{background:var(--blue-soft);color:var(--blue-dark)}.by-result{background:var(--violet-soft);color:var(--violet)}
+.by-arrow{font-size:22px;color:var(--violet);font-weight:1000}
+.formula-line{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:7px;margin:17px 0 3px;padding:14px 11px;border-radius:18px;background:#f4f8fa;border:1px solid var(--line)}
+.formula-token{border-radius:10px;padding:8px 9px;font-size:14px;font-weight:1000;border:2px solid transparent}
+.formula-token.receiver-t{background:var(--mint-soft);color:var(--mint-dark);border-color:#9dd9c2}
+.formula-token.be-t{background:var(--blue-soft);color:var(--blue-dark);border-color:#acd0e9}
+.formula-token.v3-t{background:var(--amber-soft);color:var(--amber-dark);border-color:#ecd380}
+.formula-token.by-t{background:var(--violet-soft);color:var(--violet);border-color:#cec3ec}
+.formula-token.time-t{background:#eef2f4;color:#536a75;border-color:#d5e0e5}
+.plus{color:#8aa0aa;font-weight:1000}
+.assembly-slots{min-height:78px;margin-top:15px;padding:11px;border-radius:17px;background:#eef5f8;border:2px dashed #b8cbd4;display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:7px}
+.assembly-slots.empty:before{content:"按顺序点下面的词块";color:var(--muted);font-size:12px}
+.token-bank{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:12px}
+.token-button{min-height:45px;padding:8px 12px;background:white;color:var(--ink);border:2px solid var(--line);box-shadow:0 3px 0 #e0eaee}
+.token-button[disabled]{opacity:.28;cursor:default;transform:none}
+
+/* Whiteboard carousel */
+.board-card{margin-top:16px;border-radius:20px;background:#183341;color:white;padding:16px;box-shadow:inset 0 0 0 1px rgba(255,255,255,.08)}
+.chalk-label{color:#aed2df;font-size:10px;font-weight:900;letter-spacing:.08em}
+.board-sentence{font-family:"Trebuchet MS","PingFang SC",sans-serif;font-size:clamp(18px,5vw,24px);line-height:1.55;font-weight:800;margin-top:9px}
+.board-sentence mark{background:transparent;color:#ffd86b;border-bottom:3px solid #ffd86b}
+.board-meta{display:flex;flex-wrap:wrap;gap:7px;margin-top:12px}
+.board-meta span{font-size:10.5px;border-radius:8px;padding:5px 7px;background:rgba(255,255,255,.1);color:#d3e6ed}
+.board-result{margin-top:13px;border-radius:14px;padding:12px;background:rgba(36,163,120,.22);border:1px solid rgba(134,226,192,.34);font-size:16px;line-height:1.6;font-weight:900;color:#d9fff0}
+.dot-progress{display:flex;gap:6px;justify-content:center;margin-top:13px}.dot-progress i{width:9px;height:9px;border-radius:50%;background:#d8e2e7}.dot-progress i.done{background:var(--mint)}.dot-progress i.now{box-shadow:0 0 0 4px var(--blue-soft);background:var(--blue)}
+
+/* Textbook checkpoints */
+.book-ribbon{display:flex;align-items:center;gap:8px;margin-top:15px;padding:9px 11px;border-radius:13px;background:var(--violet-soft);color:var(--violet);font-size:11px;font-weight:950;line-height:1.45}
+.focus-scene{margin-top:15px;padding:15px;border:1px solid var(--line);border-radius:20px;background:linear-gradient(150deg,#f8fbfd,#eef6fa)}
+.focus-scene .scene-line{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);gap:8px;align-items:center}
+.focus-node{min-height:78px;padding:11px 8px;border-radius:15px;display:grid;place-items:center;text-align:center;border:2px solid var(--line);font-weight:1000;line-height:1.35}
+.focus-node.doer-node{background:var(--blue-soft);border-color:#add0e7;color:var(--blue-dark)}
+.focus-node.receiver-node{background:var(--mint-soft);border-color:#9bd8c1;color:var(--mint-dark)}
+.focus-action{color:var(--amber-dark);font-size:13px;font-weight:1000;text-align:center}.focus-action b{display:block;font-size:20px}
+.reason-list{display:grid;gap:8px;margin-top:12px}.reason-item{display:grid;grid-template-columns:30px 1fr;gap:9px;align-items:center;padding:9px 10px;border-radius:13px;background:white;border:1px solid var(--line);font-size:12px;line-height:1.5}.reason-item b{font-size:17px;text-align:center}
+.passive-gate{position:relative;margin-top:16px;padding:18px 13px 14px;border-radius:21px;background:#173646;color:white;overflow:hidden}
+.gate-title{font-size:10px;color:#b7d1dd;font-weight:1000;letter-spacing:.1em;text-align:center}
+.gate-track{display:grid;grid-template-columns:minmax(0,1fr) 72px;gap:10px;align-items:center;margin-top:13px}
+.gate-sentence{min-height:94px;padding:13px;border-radius:15px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);display:grid;align-content:center;font-family:Georgia,"Times New Roman",serif;font-size:17px;line-height:1.45;font-weight:700}
+.gate-sentence small{display:block;margin-top:5px;color:#b7d1dd;font:800 10px/1.45 "PingFang SC","Microsoft YaHei",sans-serif}
+.gate-frame{position:relative;height:108px;border:5px solid #87a9b8;border-bottom:0;border-radius:14px 14px 0 0;background:rgba(255,255,255,.05);overflow:hidden}
+.gate-door{position:absolute;inset:0 0 0;background:repeating-linear-gradient(180deg,#f0bf53 0 10px,#cf8e1f 10px 20px);display:grid;place-items:center;color:#523202;font-weight:1000;transition:transform .6s cubic-bezier(.25,.8,.25,1)}
+.gate-door.open{transform:translateY(-88%)}
+.gate-result{margin-top:11px;border-radius:13px;padding:10px;background:rgba(36,163,120,.2);border:1px solid rgba(161,232,206,.26);font-size:12px;line-height:1.55;color:#d7fff0}
+.tense-deck{margin-top:15px;padding:14px;border:1px solid var(--line);border-radius:20px;background:#f7fafc}
+.tense-group-label{display:flex;justify-content:space-between;gap:8px;align-items:flex-end;margin-bottom:9px}.tense-group-label b{font-size:13px}.tense-group-label span{font-size:10px;color:var(--muted)}
+.tense-tabs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.tense-tab{min-height:48px;padding:8px;border:2px solid var(--line);border-radius:13px;background:white;color:var(--ink);font-size:12px;font-weight:950;line-height:1.35}
+.tense-tab.seen{border-color:#8fcdb5;background:var(--mint-soft);color:var(--mint-dark)}.tense-tab.active{outline:3px solid #bcdcf0;border-color:var(--blue)}
+.tense-display{margin-top:11px;padding:14px;border-radius:16px;background:#173646;color:white;text-align:center}
+.tense-display small{display:block;color:#b7d1dd;font-size:10px;margin-bottom:5px}.tense-display strong{display:block;font-size:clamp(20px,6vw,27px);line-height:1.35}.tense-display span{display:block;color:#d4e9f0;font-size:11px;line-height:1.5;margin-top:6px}
+.recognition-box{margin-top:11px;border:1px solid #d9ceed;border-radius:15px;background:#faf8ff;overflow:hidden}.recognition-box summary{cursor:pointer;padding:12px 13px;color:var(--violet);font-size:12px;font-weight:1000;line-height:1.45;list-style:none}.recognition-box summary::-webkit-details-marker{display:none}.recognition-box summary:after{content:"＋";float:right}.recognition-box[open] summary:after{content:"－"}.recognition-inner{padding:0 12px 12px}
+.pattern-tabs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:15px}
+.pattern-tab{min-height:50px;padding:8px;border:2px solid var(--line);border-radius:13px;background:white;color:var(--ink);font-size:12px;font-weight:950;line-height:1.35}.pattern-tab.seen{background:var(--mint-soft);border-color:#98d4be;color:var(--mint-dark)}.pattern-tab.active{outline:3px solid #d7cfee;border-color:var(--violet)}
+.pattern-card{margin-top:11px;border-radius:19px;padding:15px;background:linear-gradient(150deg,#182f3d,#254d5e);color:white}.pattern-card small{display:block;color:#b9d1dc;font-size:10px;font-weight:900}.pattern-card .active-example,.pattern-card .passive-example{font-family:Georgia,"Times New Roman",serif;font-size:16px;line-height:1.55;font-weight:700;margin-top:7px}.pattern-arrow{color:#ffd86b;font-size:19px;text-align:center;margin:7px 0}.pattern-note{margin-top:10px;padding:10px 11px;border-radius:13px;background:rgba(255,255,255,.1);color:#d8edf3;font-size:12px;line-height:1.6}.pattern-extra{margin-top:8px;color:#c9f4e4;font-size:11px;line-height:1.55}
+.source-section{margin-top:13px;padding:14px;border:1px solid var(--line);border-radius:17px;background:#f8fbfc}.source-section h3{margin:0 0 8px;font-size:15px}.source-section p,.source-section li{font-size:12px;line-height:1.7;color:var(--muted)}.source-section ul{margin:7px 0 0;padding-left:20px}.table-scroll{overflow-x:auto;border:1px solid var(--line);border-radius:14px}.source-table{width:100%;min-width:520px;border-collapse:collapse;background:white;font-size:11px}.source-table th,.source-table td{padding:9px 10px;border-bottom:1px solid var(--line);text-align:left;white-space:nowrap}.source-table th{background:#eef5f8;color:var(--ink)}.source-table tr:last-child td{border-bottom:0}
+
+/* Recall and transfer */
+.recall-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:15px}
+.flip-card{position:relative;display:grid;place-items:stretch;min-height:132px;border:0;border-radius:18px;padding:0;background:var(--blue-soft);color:var(--blue-dark);box-shadow:0 5px 0 #cfdfeb;overflow:hidden;text-align:center;perspective:900px;transition:background .2s ease,box-shadow .2s ease}
+.flip-face{grid-area:1/1;width:100%;min-height:132px;padding:16px 14px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;text-align:center;line-height:1.45;backface-visibility:hidden;transition:transform .36s ease,opacity .2s ease}
+.flip-main{display:block;width:100%;max-width:240px;margin:0 auto;font-size:clamp(15px,4vw,19px);font-weight:1000;overflow-wrap:anywhere}
+.flip-hint{display:block;font-size:10.5px;line-height:1.4;color:var(--muted);font-weight:850}
+.flip-back-face{transform:rotateY(180deg);opacity:0;color:var(--mint-dark)}
+.flip-card.open{background:var(--mint-soft);box-shadow:0 5px 0 #c7e5da}
+.flip-card.open .flip-front-face{transform:rotateY(-180deg);opacity:0}
+.flip-card.open .flip-back-face{transform:rotateY(0);opacity:1}
+.transfer-prompt{margin-top:17px;border-radius:18px;padding:15px;background:#f2f7fa;border:1px solid var(--line)}
+.transfer-prompt small{display:block;color:var(--muted);font-size:10px;font-weight:900;margin-bottom:7px}.transfer-prompt strong{font-size:18px;line-height:1.55}
+.option-list{display:grid;gap:9px;margin-top:12px}.option-list .choice{text-align:left;line-height:1.45;height:auto;min-height:58px}
+.complete-badge{width:96px;height:96px;margin:5px auto 14px;border-radius:31px;background:linear-gradient(145deg,var(--mint),#5ccaa4);display:grid;place-items:center;color:white;font-size:44px;box-shadow:0 11px 0 #17805e;transform:rotate(-3deg)}
+.rule-stack{display:grid;gap:9px;margin-top:15px}.rule-row{display:grid;grid-template-columns:36px 1fr;gap:10px;align-items:center;padding:11px 12px;border:1px solid var(--line);border-radius:15px;background:#f8fbfc;font-size:13px;line-height:1.55}.rule-row b{font-size:17px;color:var(--blue)}
+
+/* Warm-up + records */
+.warm-banner{margin-top:15px;border-radius:20px;padding:15px;background:linear-gradient(135deg,var(--violet-soft),#faf8ff);border:1px solid #d8ceed}
+.warm-banner strong{display:block;color:var(--violet);font-size:17px}.warm-banner span{display:block;color:var(--muted);font-size:12px;line-height:1.6;margin-top:4px}
+.fact-track{display:grid;grid-template-columns:1fr auto 1fr;gap:8px;align-items:center;margin-top:15px}.fact-box{border-radius:16px;padding:13px 9px;text-align:center;background:#f5f8fa;border:1px solid var(--line);min-height:74px;display:grid;place-items:center;font-size:13px;line-height:1.5;font-weight:900}.fact-box.unreal{background:var(--violet-soft);border-color:#d2c6eb;color:var(--violet)}.fact-arrow{color:var(--violet);font-size:23px}
+.record-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:15px}.metric{border-radius:16px;padding:13px 8px;text-align:center;background:#f4f8fa;border:1px solid var(--line)}.metric b{display:block;font-size:21px;color:var(--blue)}.metric span{display:block;color:var(--muted);font-size:10px;margin-top:3px}
+.wrong-list{display:grid;gap:9px;margin-top:12px}.wrong-item{padding:12px;border:1px solid #f0c0b7;background:var(--coral-soft);border-radius:15px;font-size:12px;line-height:1.55}.wrong-item b{display:block;color:var(--coral-dark);font-size:13px}.resolved{border-color:#a7d9c6;background:var(--mint-soft)}.resolved b{color:var(--mint-dark)}
+.tool-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:13px}.tool-grid button{min-height:48px}
+.import-label{display:grid;place-items:center;min-height:48px;border-radius:15px;border:2px solid #bcd8eb;background:white;color:var(--blue-dark);font-weight:950;cursor:pointer}.import-label input{display:none}
+.toast{position:fixed;z-index:40;left:50%;bottom:calc(24px + env(safe-area-inset-bottom));transform:translateX(-50%) translateY(20px);width:min(calc(100% - 30px),460px);padding:12px 15px;border-radius:14px;background:#143344;color:white;box-shadow:0 14px 32px rgba(0,0,0,.22);font-size:13px;line-height:1.5;opacity:0;pointer-events:none;transition:.25s ease}.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+.hidden{display:none!important}
+button:focus-visible,a:focus-visible,.import-label:focus-within{outline:4px solid #ffd86b;outline-offset:3px}
+@keyframes rise{from{opacity:0;transform:translateY(9px)}to{opacity:1;transform:none}}
+@keyframes nudge{0%,100%{transform:translateX(0)}50%{transform:translateX(5px)}}
+@keyframes travel{0%{transform:translateX(-38px) scale(.75);opacity:.2}50%{opacity:1}100%{transform:translateX(54px) scale(1.1);opacity:.2}}
+@keyframes ring{0%,100%{box-shadow:0 5px 0 rgba(20,55,72,.12),0 0 0 0 rgba(36,163,120,.25)}50%{box-shadow:0 5px 0 rgba(20,55,72,.12),0 0 0 8px rgba(36,163,120,.09)}}
+@keyframes machineShake{0%,100%{transform:translateX(0)}20%{transform:translateX(-5px)}40%{transform:translateX(5px)}60%{transform:translateX(-3px)}80%{transform:translateX(3px)}}
+@media(max-width:430px){.app{padding-inline:10px}.home-hero{padding:21px 16px 18px}.stage{padding:19px 15px 17px}.word-block{padding-inline:4px}.stage-actions.two{grid-template-columns:1fr}.home-grid{grid-template-columns:1fr 1fr}.by-person,.by-result{font-size:16px}.record-grid{gap:6px}.metric{padding-inline:4px}.metric b{font-size:19px}.repair-banner{grid-template-columns:1fr}.repair-return-btn{width:100%;white-space:normal}.gate-track{grid-template-columns:minmax(0,1fr) 62px}.gate-sentence{font-size:15px}.tense-tabs,.pattern-tabs{grid-template-columns:1fr 1fr}}
+@media(max-width:350px){.mini-line{grid-template-columns:1fr}.mini-arrow{transform:rotate(90deg);animation:none;text-align:center}.choice-grid,.recall-grid,.tool-grid{grid-template-columns:1fr}.home-grid{grid-template-columns:1fr}.formula-token{font-size:12px}.brand span{display:none}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<main class="app" id="app">
+  <header class="topbar">
+    <a class="back" href="summer_english_hub.html?who=kenton" aria-label="返回哥哥暑假英语学习馆">‹</a>
+    <div class="brand"><strong>Kenton · 暑假英语</strong><span>2026-07-21 · 教材第 76—77 页校准版</span></div>
+    <button class="sound" id="soundBtn" type="button" aria-label="切换反馈音效">🔔</button>
+  </header>
+  <div id="root"></div>
+</main>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+"use strict";
+const APP_ID="kenton-passive-voice-lab";
+const VERSION="2.0.0";
+const STORE_KEY=`dd:Kenton:${APP_ID}:v2`;
+const OLD_STORE_KEY=`dd:Kenton:${APP_ID}:v1`;
+const TOTAL_LESSON_STEPS=14;
+const DEFAULT_STATE={
+  schemaVersion:1,child:"Kenton",subject:"英语",app:APP_ID,version:VERSION,
+  createdAt:"",updatedAt:"",totalMs:0,lessonStep:0,lessonComplete:false,warmComplete:false,
+  flags:{},assembly:[],boardIndex:0,boardSolved:[],tenseSelected:0,tenseSeen:[],patternSelected:0,patternSeen:[],recallOpen:[],recallSeen:[],transferIndex:0,transferSolved:[],warmIndex:0,warmSolved:[],
+  repairReturn:null,
+  attempts:[],wrongBook:{},muted:false,migratedFrom:""
+};
+const root=document.getElementById("root");
+const toast=document.getElementById("toast");
+const soundBtn=document.getElementById("soundBtn");
+let view="home";
+let sessionAnchor=Date.now();
+let toastTimer=0;
+let audioCtx=null;
+
+function cloneDefault(){return JSON.parse(JSON.stringify(DEFAULT_STATE));}
+function loadState(){
+  try{
+    const raw=JSON.parse(localStorage.getItem(STORE_KEY)||"null");
+    if(raw&&raw.child==="Kenton"&&raw.app===APP_ID&&raw.schemaVersion===1)return Object.assign(cloneDefault(),raw,{flags:Object.assign({},raw.flags||{}),wrongBook:Object.assign({},raw.wrongBook||{})});
+    const old=JSON.parse(localStorage.getItem(OLD_STORE_KEY)||"null");
+    if(old&&old.child==="Kenton"&&old.app===APP_ID&&old.schemaVersion===1){
+      const migrated=cloneDefault();
+      migrated.createdAt=old.createdAt||"";migrated.totalMs=old.totalMs||0;migrated.attempts=Array.isArray(old.attempts)?old.attempts:[];migrated.wrongBook=Object.assign({},old.wrongBook||{});migrated.muted=!!old.muted;migrated.migratedFrom="1.0.0";
+      return migrated;
+    }
+    return cloneDefault();
+  }catch(_){return cloneDefault();}
+}
+let state=loadState();
+if(!state.createdAt)state.createdAt=new Date().toISOString();
+function commitTime(){const now=Date.now();state.totalMs+=(now-sessionAnchor);sessionAnchor=now;state.updatedAt=new Date().toISOString();try{localStorage.setItem(STORE_KEY,JSON.stringify(state));}catch(_){} }
+function save(){commitTime();}
+setInterval(commitTime,15000);
+document.addEventListener("visibilitychange",()=>{if(document.hidden)commitTime();else sessionAnchor=Date.now();});
+window.addEventListener("beforeunload",commitTime);
+
+function esc(value){return String(value).replace(/[&<>"']/g,ch=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[ch]));}
+function showToast(message){toast.textContent=message;toast.classList.add("show");clearTimeout(toastTimer);toastTimer=setTimeout(()=>toast.classList.remove("show"),2300);}
+function beep(ok){
+  if(state.muted)return;
+  try{
+    if(!audioCtx)audioCtx=new (window.AudioContext||window.webkitAudioContext)();
+    if(audioCtx.state==="suspended")audioCtx.resume();
+    const start=audioCtx.currentTime;
+    const notes=ok?[[523,0],[659,.08],[784,.16]]:[[220,0],[165,.13]];
+    notes.forEach(([hz,delay])=>{const osc=audioCtx.createOscillator(),gain=audioCtx.createGain();osc.type=ok?"triangle":"sine";osc.frequency.value=hz;gain.gain.setValueAtTime(.0001,start+delay);gain.gain.exponentialRampToValueAtTime(.12,start+delay+.02);gain.gain.exponentialRampToValueAtTime(.0001,start+delay+.2);osc.connect(gain);gain.connect(audioCtx.destination);osc.start(start+delay);osc.stop(start+delay+.22);});
+  }catch(_){}
+}
+function syncSound(){soundBtn.textContent=state.muted?"🔕":"🔔";soundBtn.setAttribute("aria-label",state.muted?"打开反馈音效":"关闭反馈音效");}
+soundBtn.addEventListener("click",()=>{state.muted=!state.muted;save();syncSound();beep(true);});
+syncSound();
+
+function markWrong(id,detail){
+  const item=state.wrongBook[id]||{id,prompt:detail.prompt,expected:detail.expected,skill:detail.skill,explain:detail.explain,wrongCount:0,rightStreak:0,resolved:false,lastWrongAt:""};
+  item.wrongCount+=1;item.rightStreak=0;item.resolved=false;item.lastWrongAt=new Date().toISOString();item.lastSelected=detail.selected;state.wrongBook[id]=item;
+}
+function markRight(id){const item=state.wrongBook[id];if(!item)return;item.rightStreak=(item.rightStreak||0)+1;if(item.rightStreak>=2)item.resolved=true;}
+function recordAttempt({id,prompt,selected,expected,correct,explain,skill,source="explicit"}){
+  state.attempts.push({ts:new Date().toISOString(),questionId:id,prompt,selected,expected,correct,explain,skill,source});
+  if(state.attempts.length>500)state.attempts=state.attempts.slice(-500);
+  if(correct)markRight(id);else markWrong(id,{prompt,selected,expected,skill,explain});
+  save();
+}
+function formatMs(ms){const min=Math.floor(ms/60000),sec=Math.floor((ms%60000)/1000);return min?`${min}分${sec}秒`:`${sec}秒`;}
+function progressPct(){if(state.lessonComplete)return 100;return Math.round((Math.min(state.lessonStep,TOTAL_LESSON_STEPS-1)/(TOTAL_LESSON_STEPS-1))*100);}
+function setView(next){view=next;window.scrollTo({top:0,behavior:"smooth"});render();}
+function lessonHeader(){return `<div class="lesson-head"><div class="lesson-head-top"><strong>被动语态 · 白板 × 课本</strong><span>第 ${Math.min(state.lessonStep+1,TOTAL_LESSON_STEPS)} / ${TOTAL_LESSON_STEPS} 步</span></div><div class="progress-track" aria-label="课程进度"><div class="progress-fill" style="width:${progressPct()}%"></div></div></div>`;}
+function repairReturnMarkup(){
+  if(!state.repairReturn)return "";
+  const question=Number(state.repairReturn.transferIndex||0)+1;
+  return `<div class="repair-banner" role="status"><div class="repair-copy"><strong>现在正在重看刚才那道错题需要的知识</strong><span>看明白就回到陌生句 ${question}/${TRANSFER.length}；原题和进度都还在。</span></div><button class="repair-return-btn" type="button" data-action="return-to-question">↩ 我看懂了，回到刚才第 ${question} 题</button></div>`;
+}
+function stageShell(tag,title,coach,body,actions=""){return `${lessonHeader()}<section class="stage"><span class="step-tag">${tag}</span><h2>${title}</h2><p class="coach">${coach}</p>${repairReturnMarkup()}${body}${actions?`<div class="stage-actions">${actions}</div>`:""}${state.repairReturn?repairReturnMarkup():""}</section>`;}
+
+function renderHome(){
+  commitTime();
+  const activeWrongs=Object.values(state.wrongBook).filter(x=>!x.resolved).length;
+  const resume=state.lessonStep>0&&!state.lessonComplete;
+  const mainButton=state.lessonComplete?`<button class="primary" type="button" data-action="restart-lesson">从第 1 步再学一遍 →</button>`:`<button class="primary" type="button" data-view="lesson">${resume?"继续上次的第 "+(state.lessonStep+1)+" 步":"从第 1 步按课本学"} →</button>`;
+  root.innerHTML=`
+    <section class="home-hero">
+      <span class="source-pill">📘 课本 76—77 页 × 老师白板</span>
+      <h1>让一句话<br><em>换一个主角</em></h1>
+      <p class="lead">先弄懂“为什么要用、什么句子才能变”，再亲手完成“搬家、选 be、变 V₃、决定 by”。课本的 9 种结构会分成“今天会用”和“先认识”，不让你硬背整张表。</p>
+      <div class="lesson-target"><b>学完要能做到：</b>先判断能不能变，再把能变的句子正确改成被动语态；遇到双宾语、宾补和短语动词也知道哪里不能乱拆。</div>
+      <div class="mini-line" aria-label="主动句和被动句示例">
+        <div class="mini-sentence"><small>主动：谁做事</small><b>We plant trees.</b></div>
+        <div class="mini-arrow" aria-hidden="true">→</div>
+        <div class="mini-sentence"><small>被动：什么被做</small><b>Trees are planted.</b></div>
+      </div>
+      <div class="home-actions">
+        ${mainButton}
+      </div>
+    </section>
+    <div class="home-grid">
+      <div class="status-card"><strong>🧠 课前抽查</strong><span>60 秒复习虚拟语气的动词变化，不和主课混在一起。</span><button class="secondary" type="button" data-view="warmup">开始抽查</button></div>
+      <div class="status-card"><strong>📒 我的记录</strong><span>已学 ${progressPct()}% · 待回炉 ${activeWrongs} 项 · 用时 ${formatMs(state.totalMs)}</span><button class="secondary" type="button" data-view="records">查看记录</button></div>
+    </div>
+    <div class="section-label"><h2>本课材料边界</h2><span>教材 / 白板 / 改编分开</span></div>
+    <div class="source-box"><b>教材印刷正文：</b>上海交通大学出版社《初中英语语法专项练习（知识点梳理）》原书第 76—77 页：被动语态的用法、9 种构成、转换条件、双宾语、宾补和短语动词。<br><b>老师白板：</b><i>We plant trees every year.</i> 及 Sue / Jenny / Peter / Judy 四个变形练习。<br><b>依据教材改编：</b>“能不能变”闸门、时态轨道和四类特殊轨道。<br><b>软件助教补充：</b>动画、迁移题和虚拟语气课前抽查。练习卷仍不进入主课。<button class="quiet" type="button" data-view="sources">家长查看逐项教材核对</button></div>`;
+}
+
+function activeTrack(extra=""){
+  return `<div class="sentence-lab"><div class="sentence-title"><span>主动句 · 三块积木</span><span class="time-chip">⏰ every year</span></div><div class="sentence-track ${extra}" id="swapTrack"><span class="action-pulse" aria-hidden="true"></span><div class="word-block doer">We<small>做事的人</small></div><div class="word-block verb">plant<small>动作</small></div><div class="word-block receiver">trees<small>接到动作</small></div></div></div>`;
+}
+function renderLesson(){
+  switch(state.lessonStep){
+    case 0:return renderUseStep();
+    case 1:return renderGateStep();
+    case 2:return renderReceiverStep();
+    case 3:return renderSwapStep();
+    case 4:return renderBeStep();
+    case 5:return renderV3Step();
+    case 6:return renderByStep();
+    case 7:return renderAssemblyStep();
+    case 8:return renderBoardStep();
+    case 9:return renderTenseMapStep();
+    case 10:return renderPatternStep();
+    case 11:return renderRecallStep();
+    case 12:return renderTransferStep();
+    default:return renderCompleteStep();
+  }
+}
+function renderUseStep(){
+  const ok=state.flags.useReason==="receiver";
+  const body=`<div class="book-ribbon">📖 课本第 76 页 · 先判断为什么要用被动</div><div class="focus-scene"><div class="scene-line"><div class="focus-node doer-node">We<small style="display:block;font-size:10px;margin-top:5px">执行动作</small></div><div class="focus-action"><b>use</b>使用</div><div class="focus-node receiver-node">the recorder<small style="display:block;font-size:10px;margin-top:5px">承受动作</small></div></div></div><div class="question">如果现在最想说明“录音机在英语课上被使用”，句子应该把谁放在前面？</div><div class="choice-grid"><button class="choice" type="button" data-use-focus="doer">We</button><button class="choice ${ok?"correct":""}" type="button" data-use-focus="receiver">The recorder</button></div><div id="feedback">${ok?`<div class="feedback"><b>对：The recorder is used in English classes.</b>被动语态把“承受动作的东西”放到前面，让它成为句子的重点。</div><div class="reason-list"><div class="reason-item"><b>?</b><span>不知道是谁做的</span></div><div class="reason-item"><b>—</b><span>没有必要说是谁做的</span></div><div class="reason-item"><b>◎</b><span>更想强调承受动作的人或物</span></div></div>`:""}</div>`;
+  const actions=ok?`<button class="primary" type="button" data-next-step>下一步：先过“能不能变”闸门 →</button>`:"";
+  root.innerHTML=stageShell("第 1 步 · 为什么要变","先决定句子的重点","课本先讲“什么时候用”，不是一上来就套公式。主动语态重在执行者；被动语态重在动作的承受者。",body,actions);
+}
+function renderGateStep(){
+  const ok=!!state.flags.gatePassed;
+  const body=`<div class="book-ribbon">📖 课本第 77 页 · 只有“主语＋及物动词＋宾语”才能正常转换</div><div class="passive-gate"><div class="gate-title">PASSIVE VOICE CHECKPOINT</div><div class="gate-track"><div class="gate-sentence">${ok?"We use the recorder.":"哪一句有动作承受者？"}<small>${ok?"recorder 接到了 use 的动作":"先找宾语，再决定能不能过门"}</small></div><div class="gate-frame" aria-hidden="true"><div class="gate-door ${ok?"open":""}">${ok?"通过":"S + Vt. + O"}</div></div></div>${ok?`<div class="gate-result"><b>闸门打开：</b><i>use</i> 是及物动词，后面有宾语 <i>the recorder</i>，所以能改成被动。<br><b>The baby sleeps.</b> 里的 <i>sleeps</i> 后面没有宾语，不能机械改成被动。</div>`:""}</div><div class="question">下面哪一句能进入被动语态装配线？</div><div class="option-list"><button class="choice ${ok?"correct":""}" type="button" data-gate-choice="recorder">We use the recorder in English classes.</button><button class="choice" type="button" data-gate-choice="sleeps">The baby sleeps quietly.</button></div><div id="feedback"></div>`;
+  const actions=ok?`<button class="primary" type="button" data-next-step>闸门通过，回到老师白板 →</button>`:"";
+  root.innerHTML=stageShell("第 2 步 · 转换闸门","不是每个动词都能变被动","先找动作有没有落到一个宾语身上。没有宾语，就没有东西可以搬到句首。",body,actions);
+}
+function renderReceiverStep(){
+  const ok=!!state.flags.receiver;
+  const body=`${activeTrack(ok?"receiver-found":"")}<div class="question">先别改句子。<br>动作 <b>plant</b> 最后落到了谁身上？</div><div class="choice-grid"><button class="choice" type="button" data-receiver="We">We</button><button class="choice ${ok?"correct":""}" type="button" data-receiver="trees">trees</button></div><div id="feedback">${ok?`<div class="feedback"><b>找对了：trees 接到了“种”的动作。</b>这就是等会儿要搬到句首的新主角。先会找它，后面才不会乱搬。</div>`:""}</div>`;
+  const actions=ok?`<button class="primary" type="button" data-next-step>下一步：让 trees 搬家 →</button>`:"";
+  root.innerHTML=stageShell("第 3 步 · 找到动作落点","回到白板，找“被做”的东西","老师白板的第一句已经通过闸门。现在只问一句：<b>plant 的动作落在谁身上？</b>",body,actions);
+}
+function renderSwapStep(){
+  const done=!!state.flags.swapped;
+  const body=`${activeTrack(done?"swapped":"")}<div class="coach-note"><span class="face">🧲</span><div><b>老师示范：</b>被动句要把接到动作的 <b>trees</b> 搬到最前面。其他零件先不动。</div></div>${done?`<div class="feedback"><b>第一件事完成：trees 已经成了新主语。</b>现在句子还没装完，下一站要给它配一个会表示时间的 <i>be</i>。</div>`:""}`;
+  const actions=done?`<button class="primary" type="button" data-next-step>去给 be 选时态 →</button>`:`<button class="primary" type="button" data-action="move-object">我来让 trees 搬家</button>`;
+  root.innerHTML=stageShell("第 4 步 · 宾语搬家","让接到动作的东西站到前面","主动句是 <b>We + plant + trees</b>。变被动时，先只做一个动作：把 <b>trees</b> 搬到句首。",body,actions);
+}
+function renderBeStep(){
+  const ok=!!state.flags.bePresent;
+  const body=`<div class="time-station"><div class="signal"><div class="signal-card"><div><small>原句时间线索</small><b>every year</b></div></div><div class="signal-arrow">→</div><div class="signal-card"><div><small>判断时态</small><b>一般现在时</b></div></div></div><div class="agreement">新主语是 <b>Trees</b>（复数），所以一般现在时的 be 要从 <b>am / is / are</b> 里选 <b>are</b>。</div></div><div class="question">给 Trees 选择正确的 be：</div><div class="choice-grid"><button class="choice" type="button" data-be-choice="is">is</button><button class="choice ${ok?"correct":""}" type="button" data-be-choice="are">are</button><button class="choice" type="button" data-be-choice="was">was</button></div><div id="feedback">${ok?`<div class="feedback"><b>Trees are …</b>be 做两份工作：跟着原句保留时态，还要照顾新主语的单复数。</div>`:""}</div>`;
+  const actions=ok?`<button class="primary" type="button" data-next-step>下一步：动作词变 V₃ →</button>`:"";
+  root.innerHTML=stageShell("第 5 步 · be 时态站","be 不是永远不变","白板写着“<b>时态跟着主动语态变化</b>”。先找时间，再看新主语是单数还是复数。",body,actions);
+}
+function renderV3Step(){
+  const done=!!state.flags.v3;
+  const body=`<div class="machine ${done?"running":""}" id="v3Machine"><div class="machine-core"><div><b>${done?"planted":"plant"}</b><span>${done?"过去分词 V₃":"送进变形器"}</span></div></div><div class="machine-output">${done?"plant → planted":"等待启动"}</div></div><div class="coach-note"><span class="face">⚙️</span><div><b>今天先记住：</b>be 后面的动作词必须穿上“过去分词外套”，也就是 <b>V₃</b>。plant 是规则动词，所以变成 planted。</div></div>${done?`<div class="feedback"><b>第二个核心零件装好：are planted</b>千万别写成 <i>are plant</i>，be 后面必须接 V₃。</div>`:""}`;
+  const actions=done?`<button class="primary" type="button" data-next-step>看看原来的 We 去哪里 →</button>`:`<button class="primary" type="button" data-action="transform-plant">启动 V₃ 变形器</button>`;
+  root.innerHTML=stageShell("第 6 步 · 动词变形器","把动作词变成 V₃","句首已经有 <b>Trees</b>，be 已经选好 <b>are</b>。现在只处理动作词 plant。",body,actions);
+}
+function renderByStep(){
+  const ok=!!state.flags.byUs;
+  const body=`<div class="by-car"><div class="by-person">We<small style="display:block;font-size:10px;margin-top:4px">原来的做事者</small></div><div class="by-arrow">→</div><div class="by-result">by ___<small style="display:block;font-size:10px;margin-top:4px">放到句尾</small></div></div><div class="question">在 by 后面，应该选哪一个？</div><div class="choice-grid"><button class="choice" type="button" data-by-choice="we">by we</button><button class="choice ${ok?"correct":""}" type="button" data-by-choice="us">by us</button></div><div id="feedback">${ok?`<div class="feedback"><b>对：by us</b>by 后面要用宾格，所以 We 变成 us。还有一个边界：如果“谁做的”不重要，<i>by us</i> 整段可以不写。</div>`:""}</div>`;
+  const actions=ok?`<button class="primary" type="button" data-next-step>把整句装起来 →</button>`:"";
+  root.innerHTML=stageShell("第 7 步 · by 车厢","原来的主语可以跟在 by 后面","课本说：不强调执行者时可以省略；需要强调时，才把原来做事的人放进 <b>by</b> 车厢。",body,actions);
+}
+const ASSEMBLY_ORDER=["Trees","are","planted","by us","every year."];
+function renderAssemblyStep(){
+  const made=state.assembly||[];const complete=made.length===ASSEMBLY_ORDER.length;
+  const bank=["planted","Trees","every year.","by us","are"];
+  const body=`<div class="formula-line"><span class="formula-token receiver-t">新主语</span><span class="plus">+</span><span class="formula-token be-t">be</span><span class="plus">+</span><span class="formula-token v3-t">V₃</span><span class="plus">+</span><span class="formula-token by-t">(by 人)</span><span class="plus">+</span><span class="formula-token time-t">时间</span></div><div class="assembly-slots ${made.length?"":"empty"}">${made.map((t,i)=>`<span class="formula-token ${["receiver-t","be-t","v3-t","by-t","time-t"][i]}">${esc(t)}</span>`).join("")}</div><div class="token-bank">${bank.map(t=>`<button class="token-button" type="button" data-assembly="${esc(t)}" ${made.includes(t)?"disabled":""}>${esc(t)}</button>`).join("")}</div><div id="feedback">${complete?`<div class="feedback"><b>Trees are planted by us every year.</b>检查顺序：新主语 → be → V₃ → 可选的 by → 时间。</div>`:""}</div>`;
+  const actions=complete?`<button class="primary" type="button" data-next-step>用老师白板的四句话再看一次 →</button>`:`<button class="quiet" type="button" data-action="clear-assembly">清空重新拼</button>`;
+  root.innerHTML=stageShell("第 8 步 · 整句装配","现在由你来按顺序装好","老师已经示范完四个变化。请按顺序点词块；点错时只会提醒当前缺哪一种零件。",body,actions);
+}
+
+const BOARD_ITEMS=[
+  {active:"Sue washed clothes yesterday.",time:"yesterday",subject:"Clothes",tense:"一般过去时",choices:["are","was","were"],be:"were",v3:"washed",passive:"Clothes were washed by Sue yesterday.",why:"原句 washed / yesterday 是过去；新主语 Clothes 是复数，所以用 were。"},
+  {active:"Jenny has finished his drawings for two days.",time:"has finished",subject:"His drawings",tense:"现在完成时",choices:["has been","have been","had been"],be:"have been",v3:"finished",passive:"His drawings have been finished by Jenny for two days.",why:"原句 has finished 是现在完成时；新主语 His drawings 是复数，所以用 have been。"},
+  {active:"Peter can lift the desk.",time:"can",subject:"The desk",tense:"情态动词",choices:["can be","can been","is can"],be:"can be",v3:"lifted",passive:"The desk can be lifted by Peter.",why:"情态动词 can 保留，后面接 be，再接过去分词 lifted。"},
+  {active:"Judy will draw some pictures tomorrow.",time:"will / tomorrow",subject:"Some pictures",tense:"一般将来时",choices:["will be","will been","are will"],be:"will be",v3:"drawn",passive:"Some pictures will be drawn by Judy tomorrow.",why:"将来时 will 保留，接 be；draw 的过去分词是不规则变化 drawn。"}
+];
+function highlightTime(sentence,time){let out=esc(sentence);time.split(" / ").forEach(part=>{out=out.replace(esc(part),`<mark>${esc(part)}</mark>`);});return out;}
+function renderBoardStep(){
+  const idx=Math.min(state.boardIndex,BOARD_ITEMS.length-1),item=BOARD_ITEMS[idx],solved=!!state.boardSolved[idx];
+  const body=`<div class="board-card"><div class="chalk-label">老师白板原句 · ${idx+1}/4</div><div class="board-sentence">${highlightTime(item.active,item.time)}</div><div class="board-meta"><span>新主语：${esc(item.subject)}</span><span>时态：${esc(item.tense)}</span><span>V₃：${esc(item.v3)}</span></div>${solved?`<div class="board-result">${esc(item.passive)}</div>`:""}</div><div class="question">${solved?"看清这一句怎样保留原时态。":"只选 be 这一站该装什么："}</div>${solved?`<div class="feedback"><b>为什么？</b>${item.why}</div>`:`<div class="choice-grid">${item.choices.map(c=>`<button class="choice" type="button" data-board-choice="${esc(c)}">${esc(c)}</button>`).join("")}</div><div id="feedback"></div>`}<div class="dot-progress">${BOARD_ITEMS.map((_,i)=>`<i class="${state.boardSolved[i]?"done":i===idx?"now":""}"></i>`).join("")}</div>`;
+  const actions=solved?`<button class="primary" type="button" data-action="next-board">${idx===BOARD_ITEMS.length-1?"四句看完，去对照课本 9 种结构 →":"看下一句 →"}</button>`:"";
+  root.innerHTML=stageShell("第 9 步 · 老师白板四句","同一台机器，be 换四件外套","这里不是做卷子。我们只回放老师白板上的四个句子，看 <b>be 怎样跟着原句的时态和新主语变化</b>。",body,actions);
+}
+const TENSE_ROWS=[
+  {label:"一般现在时",be:"am / is / are",v3:"made",cue:"every day / usually"},
+  {label:"一般过去时",be:"was / were",v3:"made",cue:"yesterday / last…"},
+  {label:"现在进行时",be:"am / is / are being",v3:"made",cue:"now / look"},
+  {label:"过去进行时",be:"was / were being",v3:"made",cue:"at that time"},
+  {label:"现在完成时",be:"have / has been",v3:"made",cue:"since / already / yet"},
+  {label:"过去完成时",be:"had been",v3:"made",cue:"before another past time"},
+  {label:"一般将来时",be:"will be",v3:"made",cue:"tomorrow / next…"},
+  {label:"过去将来时",be:"would be",v3:"made",cue:"said…would…"},
+  {label:"情态动词",be:"can / may / must be",v3:"made",cue:"can / may / must"}
+];
+const CORE_TENSE_INDEXES=[0,1,4,6,8];
+const RECOGNITION_TENSE_INDEXES=[2,3,5,7];
+function tenseButtons(indexes){
+  return indexes.map(i=>{const row=TENSE_ROWS[i],seen=(state.tenseSeen||[]).includes(i),active=Number(state.tenseSelected)===i;return `<button class="tense-tab ${seen?"seen":""} ${active?"active":""}" type="button" data-tense="${i}">${esc(row.label)}</button>`;}).join("");
+}
+function renderTenseMapStep(){
+  const selected=Math.max(0,Math.min(TENSE_ROWS.length-1,Number(state.tenseSelected)||0)),row=TENSE_ROWS[selected],seen=state.tenseSeen||(state.tenseSeen=[]),coreDone=CORE_TENSE_INDEXES.every(i=>seen.includes(i));
+  const body=`<div class="book-ribbon">📖 课本第 76 页原表共有 9 行；今天按学习难度分组，不改变原表数据</div><div class="tense-deck"><div class="tense-group-label"><b>今天必须会用的 5 种</b><span>点过会变绿</span></div><div class="tense-tabs">${tenseButtons(CORE_TENSE_INDEXES)}</div><div class="tense-display" aria-live="polite"><small>${esc(row.label)} · be 的时态外套</small><strong>${esc(row.be)} + ${esc(row.v3)}</strong><span>常见线索：${esc(row.cue)}</span></div><details class="recognition-box" ${RECOGNITION_TENSE_INDEXES.includes(selected)?"open":""}><summary>课本里另外 4 种：这次先认识，不要求背</summary><div class="recognition-inner"><div class="tense-tabs">${tenseButtons(RECOGNITION_TENSE_INDEXES)}</div></div></details></div>${coreDone?`<div class="feedback"><b>今天的 5 种都看过了。</b>无论前面怎样变化，最后都守住同一个骨架：<b>be 的相应形式 + V₃</b>。</div>`:`<div class="coach-note"><span class="face">☝️</span><div>依次点开上面 5 种，只观察 <b>be</b> 怎样保留原句时态；右边的 <b>made</b> 一直是过去分词。</div></div>`}`;
+  const actions=coreDone?`<button class="primary" type="button" data-action="next-from-tense">下一步：课本说还有 4 类特殊转换 →</button>`:"";
+  root.innerHTML=stageShell("第 10 步 · 课本时态轨道","9 种不是 9 套新公式","课本把同一个核心骨架装进 9 种时态。老师白板直接练了其中几种；现在先把今天会用的 5 种连成一条线。",body,actions);
+}
+
+const PATTERNS=[
+  {tab:"一件东西",title:"普通宾语：搬一个",active:"We use the recorder in English classes.",passive:["The recorder is used in English classes (by us)."],note:"先确认 use 后面有宾语 the recorder，再把它搬到句首；不强调 us 时，by us 可以省略。",extra:[]},
+  {tab:"两个宾语",title:"双宾语：两条路",active:"Father Christmas gave the little girl a doll.",passive:["The little girl was given a doll by Father Christmas.","A doll was given to the little girl by Father Christmas."],note:"little girl 和 a doll 都是宾语，所以可以选其中一个搬到句首。",extra:["My father bought me a bike. → A bike was bought for me by my father.","His cousin has written him a letter. → A letter has been written to him by his cousin."]},
+  {tab:"后有补充",title:"宾语补足语：原地保留",active:"They will keep their room warm.",passive:["Their room will be kept warm (by them)."],note:"warm 是补充说明 room 的。room 搬到前面后，warm 仍留在 kept 后面，成为主语补足语。",extra:[]},
+  {tab:"动作是两词",title:"短语动词：不能拆",active:"The nurse looks after the sick child.",passive:["The sick child is looked after by the nurse."],note:"look after 合起来才是“照料”。变被动时仍要把它们留在一起，不能把 after 丢掉。",extra:[]}
+];
+function renderPatternStep(){
+  const selected=Math.max(0,Math.min(PATTERNS.length-1,Number(state.patternSelected)||0)),item=PATTERNS[selected],seen=state.patternSeen||(state.patternSeen=[]),allSeen=PATTERNS.every((_,i)=>seen.includes(i));
+  const tabs=PATTERNS.map((p,i)=>`<button class="pattern-tab ${seen.includes(i)?"seen":""} ${selected===i?"active":""}" type="button" data-pattern="${i}">${esc(p.tab)}</button>`).join("");
+  const body=`<div class="book-ribbon">📖 课本第 77 页 · 四类转换边界</div><div class="pattern-tabs">${tabs}</div><div class="pattern-card"><small>${esc(item.title)} · 教材例句</small><div class="active-example">${esc(item.active)}</div><div class="pattern-arrow">↓</div>${item.passive.map(s=>`<div class="passive-example">${esc(s)}</div>`).join("")}<div class="pattern-note">${esc(item.note)}</div>${item.extra.length?`<div class="pattern-extra">${item.extra.map(s=>esc(s)).join("<br>")}</div>`:""}</div>${allSeen?`<div class="feedback"><b>四条轨道都看过了。</b>真正的要点不是“全都照一个模板”，而是先认清句子里有几个宾语、有没有补足语、动作是不是一个不能拆的短语。</div>`:`<div class="coach-note"><span class="face">🧭</span><div>依次点开四种句子。每次只看“<b>什么搬了，什么留下</b>”。</div></div>`}`;
+  const actions=allSeen?`<button class="primary" type="button" data-action="next-from-patterns">去遮住提示，自己讲回来 →</button>`:"";
+  root.innerHTML=stageShell("第 11 步 · 课本特殊轨道","不能把所有句子硬塞进一个模板","课本第 77 页专门提醒：普通宾语、双宾语、宾语补足语和短语动词，搬法并不完全一样。",body,actions);
+}
+
+const RECALL=[
+  ["什么时候用被动？","不知道或不必说谁做，或想强调承受者"],
+  ["哪种句子能进转换闸门？","主语 + 及物动词 + 宾语"],
+  ["被动语态核心骨架？","新主语 + be + V₃ + (by…)"],
+  ["句子的时间由谁保留？","be 保留时态，也要配合新主语单复数"],
+  ["by 后面一定要写吗？","不一定；不强调执行者时可以省略"],
+  ["look after 变被动怎么办？","短语不能拆：is looked after"]
+];
+function renderRecallStep(){
+  const open=state.recallOpen||[],seen=state.recallSeen||[],allSeen=RECALL.every((_,i)=>seen.includes(i));
+  const body=`<div class="recall-grid">${RECALL.map((card,i)=>{const isOpen=open.includes(i);return `<button class="flip-card ${isOpen?"open":""}" type="button" data-recall="${i}" aria-pressed="${isOpen}" aria-label="${isOpen?"翻回提示面":"翻开答案面"}：${esc(card[0])}"><span class="flip-face flip-front-face"><span class="flip-main">${esc(card[0])}</span><span class="flip-hint">先在心里说，再点我翻开</span></span><span class="flip-face flip-back-face"><span class="flip-main">${esc(card[1])}</span><span class="flip-hint">再点一次，翻回提示</span></span></button>`;}).join("")}</div>${allSeen?`<div class="feedback"><b>六张卡都检查过了。</b>你可以把任何卡翻回去再说一遍，也可以继续做最后三次迁移。</div>`:""}`;
+  const actions=allSeen?`<button class="primary" type="button" data-next-step>最后三次独立判断与变身 →</button>`:"";
+  root.innerHTML=stageShell("第 12 步 · 遮住回忆","先说出来，再翻开检查","这次不只背时态，还要把“为什么用、能不能变、特殊情况怎么办”一起讲回来。所有卡片都能反复翻开和翻回。",body,actions);
+}
+const TRANSFER=[
+  {id:"transfer-no-object",active:"The baby sleeps quietly every afternoon.",options:["能变：The baby is slept quietly.","不能变：sleeps 后面没有宾语。","能变：Quietly is slept by the baby."],answer:"不能变：sleeps 后面没有宾语。",explain:"sleep 在这句话里后面没有宾语，没有“承受睡这个动作的东西”可以搬到句首，所以不能机械改成被动。",skill:"判断主动句能否转换为被动语态",repair:1},
+  {id:"transfer-room-present",active:"People clean the room every day.",options:["The room cleans every day.","The room is cleaned every day.","The room was cleaned every day."],answer:"The room is cleaned every day.",explain:"every day 是一般现在时；新主语 The room 是单数，所以用 is；clean 变成 cleaned。",skill:"一般现在时被动语态",repair:4},
+  {id:"transfer-phrasal-verb",active:"The children take care of the puppy.",options:["The puppy is taken care by the children.","The puppy is taken care of by the children.","The puppy takes care of the children."],answer:"The puppy is taken care of by the children.",explain:"take care of 是一个完整短语，变被动时 of 不能丢；take 的过去分词是 taken。",skill:"短语动词整体转换",repair:10}
+];
+function renderTransferStep(){
+  const idx=Math.min(state.transferIndex,TRANSFER.length-1),item=TRANSFER[idx],solved=!!state.transferSolved[idx];
+  const body=`<div class="transfer-prompt"><small>陌生句 ${idx+1}/${TRANSFER.length} · 独立完成</small><strong>${esc(item.active)}</strong></div>${solved?`<div class="feedback"><b>${esc(item.answer)}</b>${item.explain}</div>`:`<div class="option-list">${item.options.map(o=>`<button class="choice" type="button" data-transfer-choice="${esc(o)}">${esc(o)}</button>`).join("")}</div><div id="feedback"></div>`}`;
+  const actions=solved?`<button class="primary" type="button" data-action="next-transfer">${idx===TRANSFER.length-1?"完成今天的课 →":"下一句 →"}</button>`:"";
+  root.innerHTML=stageShell("第 13 步 · 少量迁移","先判断，再变身","三句分别检查：能不能变、普通句怎样变、短语动词怎样保留完整。答错会送回对应步骤重教，看懂后可一键回到原题。",body,actions);
+}
+function renderCompleteStep(){
+  state.lessonComplete=true;save();
+  const body=`<div class="complete-badge" aria-hidden="true">✓</div><div class="rule-stack"><div class="rule-row"><b>1</b><span>先问：为什么要强调<b>动作承受者</b>？</span></div><div class="rule-row"><b>2</b><span>再过闸门：主动句要有<b>及物动词 + 宾语</b>。</span></div><div class="rule-row"><b>3</b><span>宾语搬到句首；<b>be</b> 保留时态并配合新主语。</span></div><div class="rule-row"><b>4</b><span>动作词变 <b>V₃</b>；执行者不重要时可以省略 by。</span></div><div class="rule-row"><b>5</b><span>双宾语、宾补和短语动词先看结构，不能机械乱搬。</span></div></div><div class="coach-note"><span class="face">🦁</span><div><b>你现在应该能讲回来：</b>被动语态不是“看到动词就套 be done”，而是先判断能不能变，再决定怎样变。</div></div>`;
+  root.innerHTML=stageShell("第 14 步 · 完成","白板与课本已经连起来","你已经学完老师白板的操作方法，也补上了课本第 76—77 页的用法、9 种结构和转换边界。先休息，再完成老师的纸质任务。",body,`<button class="primary" type="button" data-view="home">回到首页</button><button class="secondary" type="button" data-view="records">查看学习记录与导出</button>`);
+}
+
+function renderSources(){
+  const rows=TENSE_ROWS.map((row,i)=>`<tr><td>${i+1}</td><td>${esc(row.label)}</td><td>${esc(row.be)}</td><td>${esc(row.v3)}</td></tr>`).join("");
+  root.innerHTML=`<section class="stage lesson-shell"><span class="step-tag">家长核对页 · 不进入孩子主线</span><h2>教材第 76—77 页逐项核对</h2><p class="coach">这里专门说明软件依据了什么、怎样改编，避免把老师白板、教材正文和助教设计混在一起。</p><div class="source-section"><h3>教材身份与页码</h3><p>上海交通大学出版社《初中英语语法专项练习（知识点梳理）》；原书第 76 页对应扫描 Part04 PDF 第 2 页，原书第 77 页对应 Part04 PDF 第 3 页。已连同第 75、78 页检查页序、裁切和清晰度。</p></div><div class="source-section"><h3>第 76 页：用法与构成</h3><ul><li>主动语态强调动作执行者；被动语态强调动作承受者。</li><li>不知道执行者、不必说执行者，或要强调承受者时使用被动；需要强调执行者时放在 by 词组中。</li><li>核心形式是 be + 动词过去分词。</li></ul><div class="table-scroll"><table class="source-table"><thead><tr><th>原序</th><th>时态</th><th>be 栏</th><th>过去分词栏</th></tr></thead><tbody>${rows}</tbody></table></div></div><div class="source-section"><h3>第 77 页：转换边界</h3><ul><li>主动句必须有“主语 + 及物动词 + 宾语”才可转换。</li><li>普通宾语搬到句首；不强调执行者时 by 短语可省略。</li><li>双宾语可选间接宾语或直接宾语作新主语；直接宾语路线常需 to / for。</li><li>原宾语补足语保留为主语补足语。</li><li>短语动词作为整体，变被动时不能拆散。</li></ul></div><div class="source-section"><h3>老师白板与软件改编</h3><p><b>老师白板原文：</b>主动“主语 + 谓语 + 宾语”；被动“主语 + be done + (by sb.)”；be 的时态跟随主动语态变化。白板四句原样保留。<br><b>依据教材改编：</b>闸门、时态轨道、四类特殊轨道和遮挡回忆。<br><b>软件助教补充：</b>三道陌生迁移题和课前虚拟语气抽查。</p></div><div class="stage-actions"><button class="primary" type="button" data-view="home">返回首页</button></div></section>`;
+}
+
+const WARMUPS=[
+  {id:"warm-wish-now",prompt:"I wish I ___ the answer now.",choices:["know","knew","had known"],answer:"knew",explain:"wish 与现在事实相反时，动词往过去退一步：know → knew。",skill:"wish与现在事实相反"},
+  {id:"warm-wish-past",prompt:"I wish I ___ it yesterday.",choices:["finished","had finished","would finish"],answer:"had finished",explain:"wish 与过去事实相反时，用 had + V₃：had finished。",skill:"wish与过去事实相反"},
+  {id:"warm-wish-future",prompt:"I wish he ___ tomorrow.",choices:["comes","had come","would come"],answer:"would come",explain:"wish 与将来事实相反时，用 should / would / could / might + 动词原形。",skill:"wish与将来事实相反"},
+  {id:"warm-suggest",prompt:"The teacher suggested that he ___ more.",choices:["reads","read","has read"],answer:"read",explain:"表示建议、要求、命令、坚持的动词后，常用 (should) + 动词原形；should 可以省略。",skill:"建议要求类动词后的虚拟语气"}
+];
+function renderWarmup(){
+  const idx=Math.min(state.warmIndex,WARMUPS.length-1),q=WARMUPS[idx],solved=!!state.warmSolved[idx];
+  const body=`<div class="warm-banner"><strong>虚拟语气 = 动词故意离开真实时间</strong><span>按《知识点梳理》原书第 102—103 页已归档结构复习：wish 的现在 / 过去 / 将来三条时间线，以及 suggest 等动词后的 (should) + 原形。这一块仍与被动语态主课分开。</span></div><div class="fact-track"><div class="fact-box">真实时间<br>now / yesterday / tomorrow</div><div class="fact-arrow">⇢</div><div class="fact-box unreal">不真实的愿望<br>动词往后退</div></div><div class="transfer-prompt"><small>抽查 ${idx+1}/4</small><strong>${esc(q.prompt)}</strong></div>${solved?`<div class="feedback"><b>${esc(q.answer)}</b>${q.explain}</div>`:`<div class="choice-grid">${q.choices.map(o=>`<button class="choice" type="button" data-warm-choice="${esc(o)}">${esc(o)}</button>`).join("")}</div><div id="feedback"></div>`}`;
+  const actions=solved?`<button class="primary" type="button" data-action="next-warm">${idx===WARMUPS.length-1?"抽查完成，回首页 →":"下一句 →"}</button>`:`<button class="quiet" type="button" data-view="home">先回首页</button>`;
+  root.innerHTML=`<section class="stage lesson-shell"><span class="step-tag">60 秒 · 课前复习</span><h2>虚拟语气动词抽查</h2><p class="coach">每次只判断一个时间方向。不会时马上看原因，不背一串孤零零的术语。</p>${body}<div class="stage-actions">${actions}</div></section>`;
+}
+
+function exportData(){commitTime();return {schemaVersion:1,child:"Kenton",subject:"英语",app:APP_ID,version:VERSION,materials:[{type:"教材印刷正文",title:"初中英语语法专项练习（知识点梳理）",pages:"原书第76—77页",scan:"Part04 PDF第2—3页"},{type:"老师白板",date:"2026-07-21",scope:"主动转被动结构与4个例句"},{type:"依据教材改编",scope:"转换闸门、9种时态轨道、4类转换边界"}],exportedAt:new Date().toISOString(),summary:{lessonComplete:state.lessonComplete,warmComplete:state.warmComplete,totalMs:state.totalMs,attemptCount:state.attempts.length,activeWrongCount:Object.values(state.wrongBook).filter(x=>!x.resolved).length},state};}
+function markdownReport(){
+  commitTime();const wrongs=Object.values(state.wrongBook);const active=wrongs.filter(x=>!x.resolved);
+  return `# Kenton 英语学习记录：被动语态（教材校准版）\n\n- 日期：2026-07-21\n- 软件版本：${VERSION}\n- 累计用时：${formatMs(state.totalMs)}\n- 被动语态主课：${state.lessonComplete?"已完成":"未完成"}\n- 虚拟语气抽查：${state.warmComplete?"已完成":"未完成"}\n- 操作/作答：${state.attempts.length} 次\n- 待回炉：${active.length} 项\n- 课本时态轨道：已查看 ${(state.tenseSeen||[]).length}/9\n- 课本特殊轨道：已查看 ${(state.patternSeen||[]).length}/4\n\n## 待回炉\n${active.length?active.map(x=>`- ${x.skill}：${x.prompt}（错 ${x.wrongCount} 次，连续答对 ${x.rightStreak||0}/2）\n  - 方法：${x.explain}`).join("\n"):"- 无"}\n\n## 已解决过的错点\n${wrongs.filter(x=>x.resolved).length?wrongs.filter(x=>x.resolved).map(x=>`- ${x.skill}：连续答对 ${x.rightStreak}/2`).join("\n"):"- 无"}\n\n## 材料依据\n- 教材印刷正文：上海交通大学出版社《初中英语语法专项练习（知识点梳理）》原书第76—77页（Part04 PDF第2—3页）。\n- 第76页：用法、be + 过去分词、9种时态结构。\n- 第77页：可转换条件、普通宾语、双宾语、宾语补足语、短语动词。\n- 老师白板：主动句三块、被动句“主语 + be done + (by sb.)”、be 跟随主动句时态变化及4个例句。\n- 依据教材改编：转换闸门、时态轨道、特殊轨道、遮挡回忆与3道迁移题。\n- 软件助教补充：交互动画与虚拟语气课前抽查。\n`;
+}
+function download(name,content,type){const blob=new Blob([content],{type});const url=URL.createObjectURL(blob);const a=document.createElement("a");a.href=url;a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);}
+function renderRecords(){
+  commitTime();const wrongs=Object.values(state.wrongBook);const active=wrongs.filter(x=>!x.resolved);const correct=state.attempts.filter(x=>x.correct).length;
+  root.innerHTML=`<section class="stage lesson-shell"><span class="step-tag">家长次级页 · 本机保存</span><h2>学习记录</h2><p class="coach">记录只存在这台设备的浏览器里，不会自动上传。导出后可以交给家长或 AI 继续归档。</p><div class="record-grid"><div class="metric"><b>${formatMs(state.totalMs)}</b><span>累计用时</span></div><div class="metric"><b>${state.attempts.length}</b><span>操作/作答</span></div><div class="metric"><b>${active.length}</b><span>待回炉</span></div></div><div class="section-label"><h2>错点状态</h2><span>连续答对 2 次才解决</span></div><div class="wrong-list">${wrongs.length?wrongs.map(x=>`<div class="wrong-item ${x.resolved?"resolved":""}"><b>${x.resolved?"✅ 已解决":"↺ 待回炉"} · ${esc(x.skill)}</b>${esc(x.prompt)}<br>错 ${x.wrongCount} 次 · 连对 ${x.rightStreak||0}/2<br>${esc(x.explain)}</div>`).join(""):`<div class="source-box">还没有需要回炉的错点。答错一次后会自动记录在这里。</div>`}</div><div class="section-label"><h2>导出与迁移</h2><span>孩子：Kenton</span></div><div class="tool-grid"><button class="secondary" type="button" data-export="json">下载 JSON</button><button class="secondary" type="button" data-export="md">下载 Markdown</button><button class="secondary" type="button" data-action="copy-md">复制给 AI</button><label class="import-label">导入 JSON<input id="importInput" type="file" accept="application/json,.json"></label></div><div class="stage-actions"><button class="primary" type="button" data-view="${state.lessonComplete?"home":"lesson"}">${state.lessonComplete?"回首页":"继续主课"}</button><button class="quiet" type="button" data-action="reset-progress">清空本软件记录</button></div><div class="source-box" style="margin-top:15px"><b>本次正确操作：</b>${correct} / ${state.attempts.length||0}<br><b>隐私：</b>公开页面只使用 Kenton，不含真实姓名、学校、班级、照片或账号信息。</div></section>`;
+  const input=document.getElementById("importInput");if(input)input.addEventListener("change",handleImport);
+}
+
+function render(){
+  if(view==="lesson"){renderLesson();return;}
+  if(view==="warmup"){renderWarmup();return;}
+  if(view==="records"){renderRecords();return;}
+  if(view==="sources"){renderSources();return;}
+  renderHome();
+}
+
+function feedback(html,bad=false){const box=document.getElementById("feedback");if(box)box.innerHTML=`<div class="feedback ${bad?"bad":""}">${html}</div>`;}
+function goStep(step){state.lessonStep=Math.max(0,Math.min(TOTAL_LESSON_STEPS-1,step));save();render();}
+document.addEventListener("click",event=>{
+  const viewBtn=event.target.closest("[data-view]");if(viewBtn){setView(viewBtn.dataset.view);return;}
+  const next=event.target.closest("[data-next-step]");if(next){state.lessonStep+=1;save();render();window.scrollTo({top:0,behavior:"smooth"});return;}
+  const useFocus=event.target.closest("[data-use-focus]");if(useFocus){const selected=useFocus.dataset.useFocus,ok=selected==="receiver";recordAttempt({id:"guided-why-passive",prompt:"强调录音机被使用时，谁放句首？",selected,expected:"receiver",correct:ok,explain:"被动语态把动作承受者放到句首；不知道、不必说明执行者，或要强调承受者时使用。",skill:"判断被动语态的使用目的"});beep(ok);if(ok){state.flags.useReason="receiver";save();render();}else feedback("<b>这次重点不是“我们做了什么”。</b>题目要突出录音机的情况，所以把承受 use 动作的 The recorder 放在前面。",true);return;}
+  const gate=event.target.closest("[data-gate-choice]");if(gate){const selected=gate.dataset.gateChoice,ok=selected==="recorder";recordAttempt({id:"guided-passive-gate",prompt:"哪一句有及物动词和宾语，可以转换为被动？",selected,expected:"recorder",correct:ok,explain:"use 后面有宾语 the recorder；sleep 在该句中没有宾语，不能机械转换为被动。",skill:"识别可转换的主谓宾结构"});beep(ok);if(ok){state.flags.gatePassed=true;save();render();}else feedback("<b>The baby sleeps quietly 没有宾语。</b>quietly 只说明“怎样睡”，不是承受动作的东西。请找有明确宾语的句子。",true);return;}
+  const receiver=event.target.closest("[data-receiver]");if(receiver){const selected=receiver.dataset.receiver,ok=selected==="trees";recordAttempt({id:"guided-find-receiver",prompt:"We plant trees：动作落在谁身上？",selected,expected:"trees",correct:ok,explain:"plant 的动作落在 trees 身上，所以 trees 是要搬到句首的新主语。",skill:"识别动作承受者"});beep(ok);if(ok){state.flags.receiver=true;save();render();}else feedback("<b>先顺着动作箭头看。</b>We 发出 plant 这个动作，trees 接到了这个动作。再点一次 trees。",true);return;}
+  const action=event.target.closest("[data-action]");if(action){handleAction(action.dataset.action);return;}
+  const be=event.target.closest("[data-be-choice]");if(be){const selected=be.dataset.beChoice,ok=selected==="are";recordAttempt({id:"guided-be-present",prompt:"Trees ___ planted every year.",selected,expected:"are",correct:ok,explain:"every year 是一般现在时，Trees 是复数，所以 be 用 are。",skill:"一般现在时be与新主语一致"});beep(ok);if(ok){state.flags.bePresent=true;save();render();}else feedback(`<b>${esc(selected)} 还没同时照顾好“时间 + 新主语”。</b>every year 是现在，Trees 是复数；回到 am / is / are 里再选。`,true);return;}
+  const by=event.target.closest("[data-by-choice]");if(by){const selected=by.dataset.byChoice,ok=selected==="us";recordAttempt({id:"guided-by-pronoun",prompt:"by 后面用 we 还是 us？",selected,expected:"us",correct:ok,explain:"by 是介词，后面的人称代词用宾格：we → us。",skill:"by后人称代词宾格"});beep(ok);if(ok){state.flags.byUs=true;save();render();}else feedback("<b>by 后面不能用主格 we。</b>它后面要换成宾格 us：by us。",true);return;}
+  const token=event.target.closest("[data-assembly]");if(token){handleAssembly(token.dataset.assembly);return;}
+  const board=event.target.closest("[data-board-choice]");if(board){handleBoardChoice(board.dataset.boardChoice);return;}
+  const tense=event.target.closest("[data-tense]");if(tense){const i=Number(tense.dataset.tense);if(Number.isInteger(i)&&TENSE_ROWS[i]){state.tenseSeen=state.tenseSeen||[];if(!state.tenseSeen.includes(i)){state.tenseSeen.push(i);recordAttempt({id:`textbook-tense-${i}`,prompt:`查看课本时态：${TENSE_ROWS[i].label}`,selected:TENSE_ROWS[i].be,expected:TENSE_ROWS[i].be,correct:true,explain:`${TENSE_ROWS[i].label}的被动结构是 ${TENSE_ROWS[i].be} + ${TENSE_ROWS[i].v3}。`,skill:"课本第76页被动语态九种构成",source:"guided"});}state.tenseSelected=i;save();render();}return;}
+  const pattern=event.target.closest("[data-pattern]");if(pattern){const i=Number(pattern.dataset.pattern);if(Number.isInteger(i)&&PATTERNS[i]){state.patternSeen=state.patternSeen||[];if(!state.patternSeen.includes(i)){state.patternSeen.push(i);recordAttempt({id:`textbook-pattern-${i}`,prompt:`查看课本转换边界：${PATTERNS[i].title}`,selected:PATTERNS[i].tab,expected:PATTERNS[i].tab,correct:true,explain:PATTERNS[i].note,skill:"课本第77页被动语态转换边界",source:"guided"});}state.patternSelected=i;save();render();}return;}
+  const recall=event.target.closest("[data-recall]");if(recall){
+    const i=Number(recall.dataset.recall),open=state.recallOpen||(state.recallOpen=[]),seen=state.recallSeen||(state.recallSeen=[]),position=open.indexOf(i);
+    if(!seen.includes(i))seen.push(i);
+    if(position>=0)open.splice(position,1);else open.push(i);
+    save();render();return;
+  }
+  const transfer=event.target.closest("[data-transfer-choice]");if(transfer){handleTransfer(transfer.dataset.transferChoice);return;}
+  const warm=event.target.closest("[data-warm-choice]");if(warm){handleWarm(warm.dataset.warmChoice);return;}
+  const ex=event.target.closest("[data-export]");if(ex){if(ex.dataset.export==="json")download("Kenton_被动语态学习记录_2026-07-21.json",JSON.stringify(exportData(),null,2),"application/json;charset=utf-8");else download("Kenton_被动语态学习记录_2026-07-21.md",markdownReport(),"text/markdown;charset=utf-8");showToast("学习记录已生成下载");return;}
+});
+function handleAction(action){
+  if(action==="restart-lesson"){
+    Object.assign(state,{lessonStep:0,lessonComplete:false,flags:{},assembly:[],boardIndex:0,boardSolved:[],tenseSelected:0,tenseSeen:[],patternSelected:0,patternSeen:[],recallOpen:[],recallSeen:[],transferIndex:0,transferSolved:[],repairReturn:null});
+    view="lesson";save();render();window.scrollTo({top:0,behavior:"smooth"});showToast("已从第 1 步重新开始，历史错点仍保留");return;
+  }
+  if(action==="return-to-question"){
+    const target=state.repairReturn;
+    if(!target)return;
+    state.lessonStep=Number(target.lessonStep);
+    state.transferIndex=Number(target.transferIndex);
+    state.repairReturn=null;
+    view="lesson";save();render();window.scrollTo({top:0,behavior:"smooth"});showToast(`已回到刚才第 ${state.transferIndex+1} 题`);return;
+  }
+  if(action==="move-object"){
+    const track=document.getElementById("swapTrack");if(track)track.classList.add("swapped");beep(true);setTimeout(()=>{state.flags.swapped=true;save();render();},760);return;
+  }
+  if(action==="transform-plant"){
+    const machine=document.getElementById("v3Machine");if(machine)machine.classList.add("running");beep(true);setTimeout(()=>{state.flags.v3=true;save();render();},620);return;
+  }
+  if(action==="clear-assembly"){state.assembly=[];save();render();return;}
+  if(action==="next-board"){
+    if(state.boardIndex<BOARD_ITEMS.length-1){state.boardIndex+=1;save();render();}else{state.lessonStep=9;save();render();}return;
+  }
+  if(action==="next-from-tense"){state.lessonStep=10;save();render();return;}
+  if(action==="next-from-patterns"){state.lessonStep=11;save();render();return;}
+  if(action==="next-transfer"){
+    if(state.transferIndex<TRANSFER.length-1){state.transferIndex+=1;save();render();}else{state.lessonStep=13;state.lessonComplete=true;save();render();}return;
+  }
+  if(action==="next-warm"){
+    if(state.warmIndex<WARMUPS.length-1){state.warmIndex+=1;save();render();}else{state.warmComplete=true;save();setView("home");showToast("虚拟语气 60 秒抽查完成");}return;
+  }
+  if(action==="copy-md"){navigator.clipboard?.writeText(markdownReport()).then(()=>showToast("学习记录已复制，可直接发给 AI")).catch(()=>showToast("当前浏览器不允许复制，请下载 Markdown"));return;}
+  if(action==="reset-progress"){
+    if(confirm("只清空这一个软件在本机的学习记录，确定吗？")){localStorage.removeItem(STORE_KEY);state=cloneDefault();state.createdAt=new Date().toISOString();sessionAnchor=Date.now();save();setView("home");showToast("本软件记录已清空");}return;
+  }
+}
+function handleAssembly(selected){
+  const i=state.assembly.length,expected=ASSEMBLY_ORDER[i],ok=selected===expected;
+  recordAttempt({id:`guided-assembly-${i}`,prompt:`被动句第 ${i+1} 个词块`,selected,expected,correct:ok,explain:["先放接到动作的新主语 Trees。","新主语后放 be：are。","be 后放过去分词 planted。","需要说明做事者时放 by us。","时间 every year 放回句尾。"][i],skill:"被动句装配顺序"});beep(ok);
+  if(ok){state.assembly.push(selected);save();render();}else{const hints=["第一格先放接到动作的东西。","现在需要 be。","be 后面要接 V₃。","接着才是可选的 by 车厢。","最后放回时间。"];feedback(`<b>这一格先别放 ${esc(selected)}。</b>${hints[i]}`,true);}
+}
+function handleBoardChoice(selected){
+  const idx=state.boardIndex,item=BOARD_ITEMS[idx],ok=selected===item.be;
+  recordAttempt({id:`board-be-${idx}`,prompt:`${item.subject} ___ ${item.v3}：选择 be`,selected,expected:item.be,correct:ok,explain:item.why,skill:`${item.tense}被动结构`});beep(ok);
+  if(ok){state.boardSolved[idx]=true;save();render();}else feedback(`<b>${esc(selected)} 没有同时保留原时态和新主语。</b>${item.why}`,true);
+}
+function handleTransfer(selected){
+  const idx=state.transferIndex,item=TRANSFER[idx],ok=selected===item.answer;
+  recordAttempt({id:item.id,prompt:item.active,selected,expected:item.answer,correct:ok,explain:item.explain,skill:item.skill});beep(ok);
+  if(ok){state.transferSolved[idx]=true;save();render();}else feedback(`<b>这一句还差一步。</b>${item.explain}<br><button class="quiet" style="margin-top:8px" type="button" data-repair="${item.repair}">回到对应步骤重看</button>`,true);
+}
+function handleWarm(selected){
+  const idx=state.warmIndex,q=WARMUPS[idx],ok=selected===q.answer;
+  recordAttempt({id:q.id,prompt:q.prompt,selected,expected:q.answer,correct:ok,explain:q.explain,skill:q.skill});beep(ok);
+  if(ok){state.warmSolved[idx]=true;save();render();}else feedback(`<b>这个动词时间退得还不对。</b>${q.explain}`,true);
+}
+document.addEventListener("click",event=>{const repair=event.target.closest("[data-repair]");if(!repair)return;state.repairReturn={lessonStep:12,transferIndex:state.transferIndex};state.lessonStep=Number(repair.dataset.repair);save();view="lesson";render();window.scrollTo({top:0,behavior:"smooth"});});
+function handleImport(event){
+  const file=event.target.files&&event.target.files[0];if(!file)return;
+  const reader=new FileReader();reader.onload=()=>{try{const data=JSON.parse(reader.result);const incoming=data.state||data;if(incoming.schemaVersion!==1)throw new Error("schema");if(incoming.child!=="Kenton")throw new Error("child");if(incoming.app!==APP_ID||incoming.version!==VERSION)throw new Error("app");state=Object.assign(cloneDefault(),incoming);sessionAnchor=Date.now();save();render();showToast("Kenton 的本软件记录已导入");}catch(error){const msg=error.message==="child"?"这不是 Kenton 的记录":error.message==="app"?"这不是本软件同版本的记录":"JSON 格式或版本不正确";showToast(`导入失败：${msg}`);}event.target.value="";};reader.readAsText(file,"utf-8");
+}
+render();
+</script>
+</body>
+</html>

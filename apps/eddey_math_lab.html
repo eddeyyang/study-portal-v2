@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<script src="../assets/learning-sync.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>弟弟数学 · 三下探索馆</title>
+<style>
+:root{--c:#e8642f;--cd:#c24e20;--cbg:#fff0e6;--gold:#f2b632;--golddk:#c98a00;--ink:#2e2620;--paper:#fff7f2;
+ --card:#fff;--line:#f0ddd0;--green:#2e9c54;--greenbg:#e9f7ee;--red:#e1553f;--muted:#9a8b82;--blue:#2f6fb3;}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+body{margin:0;font-family:'LXGW WenKai Screen','PingFang SC','Microsoft YaHei',system-ui,sans-serif;
+ background:radial-gradient(circle at 10% 4%,#ffe1cc 0,transparent 42%),var(--paper);color:var(--ink);min-height:100vh;padding-bottom:46px;}
+.wrap{max-width:620px;margin:0 auto;padding:12px;}
+.top{display:flex;align-items:center;gap:10px;padding:8px 2px;}
+.badge{background:var(--c);color:#fff;font-weight:800;font-size:17px;padding:6px 13px;border-radius:13px 13px 13px 4px;box-shadow:0 4px 0 var(--cd);}
+.top h1{font-size:16px;margin:0;flex:1;}.home{text-decoration:none;font-size:20px;background:#fff;width:38px;height:38px;border-radius:11px;display:grid;place-items:center;color:var(--ink);box-shadow:0 3px 0 #f0d8c8;}
+.intro{font-size:13px;color:var(--muted);line-height:1.7;background:#fff;border:2px solid var(--line);border-radius:14px;padding:12px 14px;margin:8px 0;}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.tile{background:#fff;border:2px solid var(--line);border-top:6px solid var(--c);border-radius:18px;padding:15px 11px;cursor:pointer;box-shadow:0 6px 0 #f3e2d6;text-align:center;}
+.tile:active{transform:translateY(3px);box-shadow:0 3px 0 #f3e2d6;}
+.tile .ic{font-size:34px;}.tile .nm{font-weight:800;font-size:15px;margin-top:7px;color:var(--cd);}.tile .ds{font-size:11px;color:var(--muted);margin-top:3px;line-height:1.4;}
+.card{background:var(--card);border:2px solid var(--line);border-radius:18px;padding:15px;margin:11px 0;box-shadow:0 6px 0 #f3e2d6;}
+.h2{font-size:17px;font-weight:800;color:var(--cd);margin:0 0 4px;}
+.base{background:var(--cbg);border-radius:12px;padding:11px 13px;font-size:14.5px;line-height:1.7;margin:6px 0;}.base b{color:var(--cd);}
+.why{background:var(--greenbg);border-left:5px solid var(--green);border-radius:10px;padding:10px 13px;font-size:14px;line-height:1.7;margin:8px 0;}.why b{color:var(--green);}
+.deep{background:#fff7ef;border:1px solid #f0dca8;border-radius:11px;padding:11px 13px;font-size:14px;line-height:1.7;margin:8px 0;}.deep .q{font-weight:800;color:#a8730a;}
+.sld{display:flex;align-items:center;gap:10px;margin:8px 0;font-size:14px;font-weight:700;color:var(--cd);}
+.sld input[type=range]{flex:1;accent-color:var(--c);height:26px;}
+.val{min-width:54px;text-align:center;background:var(--cbg);border-radius:8px;padding:3px 6px;font-weight:800;}
+svg{width:100%;height:auto;display:block;}
+.big{font-size:24px;font-weight:900;color:var(--cd);text-align:center;margin:6px 0;}
+.btn{font-family:inherit;font-weight:800;font-size:15px;border:none;border-radius:12px;padding:11px 15px;cursor:pointer;color:#fff;background:var(--c);box-shadow:0 4px 0 var(--cd);}
+.btn.gold{background:var(--gold);box-shadow:0 4px 0 var(--golddk);color:#5a3d00;}.btn:active{transform:translateY(2px);}.btn.sm{font-size:13px;padding:8px 12px;}
+.back{background:none;border:none;color:var(--muted);font-size:15px;font-family:inherit;font-weight:800;cursor:pointer;padding:6px 2px;}
+.hide{display:none!important;}
+.tag{display:inline-block;background:var(--gold);color:#5a3d00;font-size:11px;font-weight:800;border-radius:8px;padding:2px 8px;}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:8px;}
+.tipbar{font-size:12px;color:var(--muted);text-align:center;margin-top:14px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top"><a class="home" href="../index.html">‹</a><span class="badge">弟弟</span><h1>数学 · 三下探索馆</h1></div>
+  <div id="home"></div>
+  <div id="view" class="hide"><button class="back" id="back">← 回探索馆</button><div id="stage"></div></div>
+  <div class="tipbar">拖一拖、看图变化，把基础概念看懂记牢（都是必考的），再用「深入一题」学怎么想。</div>
+</div>
+<script>
+"use strict";
+function $(id){return document.getElementById(id);}
+var MODS=[
+ {id:"zc",ic:"▭",nm:"面积 vs 周长",ds:"边线和格子，别搞混"},
+ {id:"cf",ic:"✖️",nm:"两位数乘法",ds:"用面积看懂竖式"},
+ {id:"fs",ic:"🍕",nm:"分数初步",ds:"几分之几，画出来"},
+ {id:"xc",ic:"🚗",nm:"行程问题",ds:"速度×时间=路程"},
+ {id:"zs",ic:"🌳",nm:"植树问题",ds:"棵数和段数差1"},
+ {id:"yj",ic:"💰",nm:"元角分↔小数",ds:"3元2角=3.2元"},
+ {id:"ny",ic:"📅",nm:"年月日",ds:"大月小月·平年闰年"},
+ {id:"zhe",ic:"🧩",nm:"组合图形(剪拼)",ds:"剩余=大−剪掉"}
+];
+function renderHome(){
+  var h='<div class="intro">这是<b>会动的数学</b>：每个馆先用图讲清一个<b>必考的基础概念</b>，你拖一拖看它怎么变；看懂了再做<b>深入一题</b>，学会<b>怎么想</b>。</div><div class="grid">';
+  MODS.forEach(function(m){h+='<div class="tile" data-id="'+m.id+'"><div class="ic">'+m.ic+'</div><div class="nm">'+m.nm+'</div><div class="ds">'+m.ds+'</div></div>';});
+  h+='</div>';$('home').innerHTML=h;
+  $('home').querySelectorAll('.tile').forEach(function(t){t.onclick=function(){openMod(t.dataset.id);};});
+}
+function openMod(id){$('home').classList.add('hide');$('view').classList.remove('hide');window.scrollTo(0,0);R[id]();}
+$('back').onclick=function(){$('view').classList.add('hide');$('home').classList.remove('hide');window.scrollTo(0,0);};
+function deep(q,a,q2,a2){
+  var h='<div class="deep"><span class="q">🤔 深入思考：</span>';
+  h+='<div style="margin-top:4px"><b>① '+q+'</b><br><button class="btn gold sm" style="margin-top:5px" onclick="this.nextElementSibling.classList.toggle(\'hide\')">看思路</button><div class="hide" style="margin-top:6px;color:#7a5800">'+a+'</div></div>';
+  if(q2)h+='<div style="margin-top:11px"><b>② ★更深入：'+q2+'</b><br><button class="btn gold sm" style="margin-top:5px" onclick="this.nextElementSibling.classList.toggle(\'hide\')">看思路</button><div class="hide" style="margin-top:6px;color:#7a5800">'+a2+'</div></div>';
+  h+='</div>';return h;
+}
+var R={};
+
+/* 1. 面积 vs 周长 */
+R.zc=function(){
+  $('stage').innerHTML='<div class="card"><div class="h2">▭ 面积 vs 周长 <span class="tag">必考·别混</span></div>'+
+   '<div class="base"><b>基础概念：</b><b>周长</b>=一圈<b>边线</b>的长 =（长+宽）×2，单位"<b>厘米/米</b>"；<b>面积</b>=里面<b>格子</b>的多少 = 长×宽，单位"<b>平方厘米/平方米</b>"。</div>'+
+   '<div class="sld">长 <input type="range" id="zl" min="1" max="10" value="5" oninput="updZ()"><span class="val" id="zlv"></span></div>'+
+   '<div class="sld">宽 <input type="range" id="zw" min="1" max="8" value="3" oninput="updZ()"><span class="val" id="zwv"></span></div>'+
+   '<div id="zsvg"></div><div class="why" id="zwhy"></div>'+
+   deep("一个长方形长6米、宽4米，周长和面积各是多少？", "周长=（6+4)×2 = <b>20米</b>；面积=6×4 = <b>24平方米</b>。一个量边线（米），一个量里面（平方米），单位不一样！",
+        "两个长方形周长一样，面积一定一样吗？", "<b>不一定！</b>周长都是12米：5×1面积5、4×2面积8、3×3面积9——周长相同，面积可以差很多。规律：<b>越接近正方形，面积越大</b>。")+
+   '</div>';updZ();
+};
+function updZ(){
+  var l=+$('zl').value,w=+$('zw').value;$('zlv').textContent=l;$('zwv').textContent=w;
+  var u=22,x0=12,y0=10;var s='<svg viewBox="0 0 '+(x0*2+l*u)+' '+(y0*2+w*u+10)+'">';
+  for(var r=0;r<w;r++)for(var c=0;c<l;c++)s+='<rect x="'+(x0+c*u)+'" y="'+(y0+r*u)+'" width="'+u+'" height="'+u+'" fill="#ffe1cc" stroke="#f0c4a8"/>';
+  s+='<rect x="'+x0+'" y="'+y0+'" width="'+(l*u)+'" height="'+(w*u)+'" fill="none" stroke="#e8642f" stroke-width="5"/>';
+  s+='</svg>';$('zsvg').innerHTML=s;
+  $('zwhy').innerHTML='<b>看图：</b>粗橙线一圈是<b>周长</b>=（'+l+'+'+w+'）×2 = <b>'+(2*(l+w))+'</b>；里面小格子是<b>面积</b>=  '+l+'×'+w+' = <b>'+(l*w)+'</b> 格。拖一拖会发现：周长和面积<b>不一样、各算各的</b>。';
+}
+
+/* 2. 两位数乘法 面积模型 */
+R.cf=function(){
+  $('stage').innerHTML='<div class="card"><div class="h2">✖️ 两位数×两位数 <span class="tag">必考</span></div>'+
+   '<div class="base"><b>基础概念：</b>把每个数拆成<b>几十+几</b>，相乘 = 4 块面积相加（这就是竖式为什么分两层）。</div>'+
+   '<div class="sld">第一个数 <input type="range" id="ca" min="11" max="29" value="23" oninput="updC()"><span class="val" id="cav"></span></div>'+
+   '<div class="sld">第二个数 <input type="range" id="cb" min="11" max="19" value="12" oninput="updC()"><span class="val" id="cbv"></span></div>'+
+   '<div id="csvg"></div><div class="why" id="cwhy"></div>'+
+   deep("竖式算 23×12 时，那两层分别是什么？", "第一层 23×2=46（个位2乘）；第二层 23×10=230（十位1乘，要错位）；合起来 46+230 = <b>276</b>。正好是四块面积之和。",
+        "为什么第二层要往左错一位？", "因为十位上的“1”其实是 <b>10</b>，23×10=230，末尾的 0 让它对齐到十位，所以第二层要左移一位（那个 0 通常省略不写，但位置不能错）。")+
+   '</div>';updC();
+};
+function updC(){
+  var a=+$('ca').value,b=+$('cb').value;$('cav').textContent=a;$('cbv').textContent=b;
+  var at=Math.floor(a/10)*10,ao=a%10,bt=Math.floor(b/10)*10,bo=b%10;
+  var sx=7,sy=5,x0=42,y0=26;var W=at*sx,Wo=ao*sx,H=bt*sy,Ho=bo*sy;
+  var s='<svg viewBox="0 0 '+(x0+W+Wo+12)+' '+(y0+H+Ho+14)+'">';
+  s+='<text x="'+(x0+W/2)+'" y="18" text-anchor="middle" font-size="12" font-weight="800" fill="#2f6fb3">'+at+'</text>';
+  s+='<text x="'+(x0+W+Wo/2)+'" y="18" text-anchor="middle" font-size="12" font-weight="800" fill="#e8642f">'+ao+'</text>';
+  s+='<text x="'+(x0-8)+'" y="'+(y0+H/2+4)+'" text-anchor="end" font-size="12" font-weight="800" fill="#2f6fb3">'+bt+'</text>';
+  s+='<text x="'+(x0-8)+'" y="'+(y0+H+Ho/2+4)+'" text-anchor="end" font-size="12" font-weight="800" fill="#e8642f">'+bo+'</text>';
+  s+='<rect x="'+x0+'" y="'+y0+'" width="'+W+'" height="'+H+'" fill="#cfe2f6" stroke="#fff"/>';
+  s+='<rect x="'+(x0+W)+'" y="'+y0+'" width="'+Wo+'" height="'+H+'" fill="#ffe1cc" stroke="#fff"/>';
+  s+='<rect x="'+x0+'" y="'+(y0+H)+'" width="'+W+'" height="'+Ho+'" fill="#e9f7ee" stroke="#fff"/>';
+  s+='<rect x="'+(x0+W)+'" y="'+(y0+H)+'" width="'+Wo+'" height="'+Ho+'" fill="#fbe6e2" stroke="#fff"/>';
+  s+='<rect x="'+x0+'" y="'+y0+'" width="'+(W+Wo)+'" height="'+(H+Ho)+'" fill="none" stroke="#23303a" stroke-width="2"/>';
+  s+='</svg>';$('csvg').innerHTML=s;
+  $('cwhy').innerHTML='<b>四块面积相加：</b><span style="color:#2f6fb3;font-weight:800">'+at+'×'+bt+'='+(at*bt)+'</span> + <span style="color:#e8642f;font-weight:800">'+ao+'×'+bt+'='+(ao*bt)+'</span> + <span style="color:#2e9c54;font-weight:800">'+at+'×'+bo+'='+(at*bo)+'</span> + <span style="color:#e1553f;font-weight:800">'+ao+'×'+bo+'='+(ao*bo)+'</span> = <b>'+(a*b)+'</b>';
+}
+
+/* 3. 分数初步 */
+R.fs=function(){
+  $('stage').innerHTML='<div class="card"><div class="h2">🍕 分数初步 <span class="tag">必考</span></div>'+
+   '<div class="base"><b>基础概念：</b>把一个整体<b>平均分</b>成几份，<b>分母</b>就是几；取其中几份，<b>分子</b>就是几。<b>分的份数越多，每份反而越小</b>。</div>'+
+   '<div class="sld">分母(平均分几份) <input type="range" id="fm" min="2" max="8" value="4" oninput="updFs()"><span class="val" id="fmv"></span></div>'+
+   '<div class="sld">分子(取几份) <input type="range" id="fn" min="0" max="8" value="1" oninput="updFs()"><span class="val" id="fnv"></span></div>'+
+   '<div id="fsvg"></div><div class="big" id="fbig"></div><div class="why" id="fwhy"></div>'+
+   deep("1/3 和 1/2 哪个大？", "画出来比：同样大的饼，分成2份每份大、分成3份每份小，所以 <b>1/2 > 1/3</b>。分子都是1时，<b>分母越大，分数越小</b>。",
+        "3/5 和 2/5 哪个大？同分母怎么比？", "<b>同分母看分子</b>：分子大的分数就大，所以 3/5 > 2/5（分成5份，涂3份比涂2份多）。口诀：分母相同比分子，分子相同比分母(分母大反而小)。")+
+   '</div>';updFs();
+};
+function updFs(){
+  var m=+$('fm').value,n=Math.min(+$('fn').value,m);$('fn').max=m;$('fmv').textContent=m;$('fnv').textContent=n;
+  var W=280,x0=10,y0=12,h=46;var pw=W/m;var s='<svg viewBox="0 0 300 80">';
+  for(var i=0;i<m;i++)s+='<rect x="'+(x0+i*pw)+'" y="'+y0+'" width="'+pw+'" height="'+h+'" fill="'+(i<n?'#e8642f':'#fff0e6')+'" stroke="#e8642f"/>';
+  s+='</svg>';$('fsvg').innerHTML=s;
+  $('fbig').textContent=n+'/'+m;
+  $('fwhy').innerHTML='<b>看图：</b>整条平均分成 <b>'+m+'</b> 份（分母），涂了 <b>'+n+'</b> 份（分子）= <b>'+n+'/'+m+'</b>。拖大分母看看——每份是不是变小了？';
+}
+
+/* 4. 行程问题 */
+R.xc=function(){
+  $('stage').innerHTML='<div class="card"><div class="h2">🚗 行程问题 <span class="tag">必考</span></div>'+
+   '<div class="base"><b>基础概念：</b><b>路程 = 速度 × 时间</b>。速度=每小时走多远，时间=走了几小时。</div>'+
+   '<div class="sld">速度(千米/时) <input type="range" id="xv" min="10" max="100" step="10" value="60" oninput="updXc()"><span class="val" id="xvv"></span></div>'+
+   '<div class="sld">时间(小时) <input type="range" id="xt" min="1" max="6" value="2" oninput="updXc()"><span class="val" id="xtv"></span></div>'+
+   '<div id="xsvg"></div><div class="big" id="xbig"></div><div class="row"><button class="btn gold sm" onclick="driveCar()">🚗 出发！</button></div><div class="why" id="xwhy"></div>'+
+   deep("汽车每小时行60千米，从家到外婆家180千米，要几小时？", "时间 = 路程 ÷ 速度 = 180 ÷ 60 = <b>3小时</b>。三个量：知道两个就能求第三个（路程÷速度=时间，路程÷时间=速度）。",
+        "3小时一共行了270千米，每小时行多少千米？", "速度 = 路程 ÷ 时间 = 270 ÷ 3 = <b>90千米/时</b>。把三句话记牢：路程=速度×时间、速度=路程÷时间、时间=路程÷速度。")+
+   '</div>';updXc();
+};
+function updXc(){
+  var v=+$('xv').value,t=+$('xt').value;$('xvv').textContent=v;$('xtv').textContent=t;
+  var dist=v*t;var maxD=600;var frac=Math.min(1,dist/maxD);
+  var s='<svg viewBox="0 0 300 70">';
+  s+='<line x1="14" y1="50" x2="286" y2="50" stroke="#cdb8a8" stroke-width="4"/>';
+  s+='<text x="14" y="66" font-size="11" fill="#9a8b82">家</text><text x="286" y="66" text-anchor="end" font-size="11" fill="#9a8b82">远方</text>';
+  var cx=14+frac*(286-14-18);s+='<text x="'+cx+'" y="44" font-size="22">🚗</text>';
+  s+='</svg>';$('xsvg').innerHTML=s;
+  $('xbig').textContent='路程 = '+v+' × '+t+' = '+dist+' 千米';
+  $('xwhy').innerHTML='<b>看图：</b>速度越大、时间越长，🚗 跑得越远。路程 = 速度 × 时间 = '+v+'×'+t+' = <b>'+dist+'千米</b>。';
+}
+function driveCar(){var el=$('xsvg').querySelector('text[font-size="22"]');if(!el)return;var x=14;el.setAttribute('x',14);var v=+$('xv').value,t=+$('xt').value;var target=14+Math.min(1,v*t/600)*254;var id=setInterval(function(){x+=8;if(x>=target){x=target;clearInterval(id);}el.setAttribute('x',x);},30);}
+
+/* 5. 植树问题 */
+R.zs=function(){
+  $('stage').innerHTML='<div class="card"><div class="h2">🌳 植树问题（两端都栽）<span class="tag">必考</span></div>'+
+   '<div class="base"><b>基础概念：</b>两端都栽时，<b>段数 = 棵数 − 1</b>；<b>全长 = 段数 × 每段长</b>。（棵数比段数多1，因为多了起点那棵）</div>'+
+   '<div class="sld">栽几棵 <input type="range" id="zk" min="2" max="9" value="6" oninput="updZs()"><span class="val" id="zkv"></span></div>'+
+   '<div class="sld">每段(米) <input type="range" id="zg" min="2" max="10" value="5" oninput="updZs()"><span class="val" id="zgv"></span></div>'+
+   '<div id="zssvg"></div><div class="big" id="zsbig"></div><div class="why" id="zswhy"></div>'+
+   deep("路一边每隔5米栽1棵，从头到尾栽到第6棵，全长多少米？", "6棵 → 段数=6−1=<b>5段</b> → 全长=5×5=<b>25米</b>。先求段数（棵数−1），再乘每段长。",
+        "一条20米的路，两端都栽、每隔5米栽1棵，要栽几棵？", "先求段数 20÷5=4段，两端都栽 → 棵数=段数+1=<b>5棵</b>。反过来用：知道全长先求段数，再 +1。（如果只有一端栽：棵数=段数；两端都不栽：棵数=段数−1。）")+
+   '</div>';updZs();
+};
+function updZs(){
+  var k=+$('zk').value,g=+$('zg').value;$('zkv').textContent=k;$('zgv').textContent=g;
+  var seg=k-1,len=seg*g;var x0=18,W=270;var gap=W/(k-1);
+  var s='<svg viewBox="0 0 300 64">';
+  s+='<line x1="'+x0+'" y1="44" x2="'+(x0+W)+'" y2="44" stroke="#cdb8a8" stroke-width="4"/>';
+  for(var i=0;i<k;i++){var x=x0+i*gap;s+='<text x="'+x+'" y="40" text-anchor="middle" font-size="18">🌳</text>';}
+  for(var j=0;j<seg;j++){var mx=x0+(j+0.5)*gap;s+='<text x="'+mx+'" y="60" text-anchor="middle" font-size="10" fill="#e8642f">'+g+'米</text>';}
+  s+='</svg>';$('zssvg').innerHTML=s;
+  $('zsbig').textContent=k+'棵 → 段数 '+seg+' → 全长 '+seg+'×'+g+' = '+len+'米';
+  $('zswhy').innerHTML='<b>数一数：</b>'+k+'棵树之间有 <b>'+seg+'</b> 个间隔（棵数−1），每段'+g+'米，全长 = '+seg+'×'+g+' = <b>'+len+'米</b>。';
+}
+
+/* 6. 元角分↔小数 */
+R.yj=function(){
+  $('stage').innerHTML='<div class="card"><div class="h2">💰 元角分 ↔ 小数 <span class="tag">必考</span></div>'+
+   '<div class="base"><b>基础概念：</b>1元=10角，1角=10分。写成小数：<b>元</b>在小数点前，<b>角</b>在十分位，<b>分</b>在百分位。例：3元2角=<b>3.2元</b>，5角=<b>0.5元</b>。</div>'+
+   '<div class="sld">元 <input type="range" id="ye" min="0" max="9" value="3" oninput="updYj()"><span class="val" id="yev"></span></div>'+
+   '<div class="sld">角 <input type="range" id="yj" min="0" max="9" value="2" oninput="updYj()"><span class="val" id="yjv"></span></div>'+
+   '<div class="sld">分 <input type="range" id="yf" min="0" max="9" value="0" oninput="updYj()"><span class="val" id="yfv"></span></div>'+
+   '<div class="big" id="ybig"></div><div class="why" id="ywhy"></div>'+
+   deep("5角 写成用“元”作单位的小数是多少？8角5分呢？", "5角 = <b>0.5元</b>（没有元写0，角在十分位）；8角5分 = <b>0.85元</b>。记住：角→十分位，分→百分位。",
+        "3.07 元 是几元几角几分？", "对位看：个位3=3元，十分位0=<b>0角</b>，百分位7=<b>7分</b>，所以是 <b>3元零7分</b>。中间的 0 不能丢（不是3元7角）。")+
+   '</div>';updYj();
+};
+function updYj(){
+  var e=+$('ye').value,j=+$('yj').value,f=+$('yf').value;$('yev').textContent=e;$('yjv').textContent=j;$('yfv').textContent=f;
+  $('ybig').textContent=e+'元'+j+'角'+f+'分 = '+e+'.'+j+''+f+' 元';
+  $('ywhy').innerHTML='<b>对位：</b><b>'+e+'</b>(元/个位) . <b>'+j+'</b>(角/十分位) <b>'+f+'</b>(分/百分位) = <b>'+e+'.'+j+''+f+'元</b>。';
+}
+
+/* 7. 年月日 */
+R.ny=function(){
+  $('stage').innerHTML='<div class="card"><div class="h2">📅 年月日 <span class="tag">必考</span></div>'+
+   '<div class="base"><b>基础概念：</b>一年 <b>12个月</b>。<b>大月31天</b>：1、3、5、7、8、10、12月；<b>小月30天</b>：4、6、9、11月；<b>二月</b>特殊：平年28天、闰年29天。一年：平年 <b>365</b> 天、闰年 <b>366</b> 天。</div>'+
+   '<div class="sld">第几月 <input type="range" id="nm" min="1" max="12" value="2" oninput="updNy()"><span class="val" id="nmv"></span></div>'+
+   '<div class="row"><button class="btn gold sm" id="nyb" onclick="window._leap=!window._leap;updNy()">🔄 切换：平年 / 闰年</button></div>'+
+   '<div class="big" id="nybig"></div><div id="nysvg"></div><div class="why" id="nywhy"></div>'+
+   deep("2024 年是闰年吗？这一年 2 月有几天？","判断闰年：公历年份<b>能被4整除</b>就是闰年（整百年要能被400整除）。2024÷4=506 整除 → <b>闰年</b>，2月有 <b>29天</b>，全年366天。",
+        "平年一年 365 天，合多少个星期零几天？","365 ÷ 7 = 52 余 1，所以是 <b>52个星期零1天</b>。这也是为什么今年的某一天，明年同一天会往后挪 1 天（闰年挪 2 天）。")+
+   '</div>';window._leap=false;updNy();
+};
+function updNy(){
+  var m=+$('nm').value;$('nmv').textContent=m;
+  var big=[1,3,5,7,8,10,12],days,type,col;
+  if(m===2){days=window._leap?29:28;type='二月·'+(window._leap?'闰年':'平年');col='#fff0e6';}
+  else if(big.indexOf(m)>=0){days=31;type='大月';col='#e8f0fa';}
+  else{days=30;type='小月';col='#e9f7ee';}
+  $('nybig').textContent=m+'月 有 '+days+' 天（'+type+'）';
+  var cols=7,rows=Math.ceil(days/7),u=26,x0=10,y0=8;
+  var s='<svg viewBox="0 0 '+(x0*2+cols*u)+' '+(y0*2+rows*u)+'">';
+  for(var d=1;d<=days;d++){var r=Math.floor((d-1)/7),c=(d-1)%7;s+='<rect x="'+(x0+c*u)+'" y="'+(y0+r*u)+'" width="'+(u-2)+'" height="'+(u-2)+'" rx="3" fill="'+col+'" stroke="#ddd"/><text x="'+(x0+c*u+(u-2)/2)+'" y="'+(y0+r*u+(u-2)/2+3)+'" text-anchor="middle" font-size="10" fill="#555">'+d+'</text>';}
+  s+='</svg>';$('nysvg').innerHTML=s;
+  $('nywhy').innerHTML='<b>记忆法：</b>左手握拳，<b>凸起的骨节是大月(31天)</b>、<b>凹下去的是小月(30天)</b>，二月单独记。大月：1,3,5,7,8,10,12；小月：4,6,9,11。'+(m===2?'（现在二月按 '+(window._leap?'闰年29天':'平年28天')+'）':'');
+}
+
+/* 8. 组合图形(剪拼) */
+R.zhe=function(){
+  $('stage').innerHTML='<div class="card"><div class="h2">🧩 组合图形（剪拼）<span class="tag">必考</span></div>'+
+   '<div class="base"><b>基础概念：</b>从长方形上剪掉一块，求<b>剩余面积</b>：<b>补法</b>＝大长方形面积 − 剪掉的面积。（不管剪在角上还是中间，都是大减小。）</div>'+
+   '<div class="sld">长 a <input type="range" id="ea" min="4" max="10" value="8" oninput="updZhe()"><span class="val" id="eav"></span></div>'+
+   '<div class="sld">宽 b <input type="range" id="eb" min="4" max="8" value="6" oninput="updZhe()"><span class="val" id="ebv"></span></div>'+
+   '<div class="sld">剪去·宽 p <input type="range" id="ep" min="1" max="5" value="3" oninput="updZhe()"><span class="val" id="epv"></span></div>'+
+   '<div class="sld">剪去·高 q <input type="range" id="eq" min="1" max="5" value="2" oninput="updZhe()"><span class="val" id="eqv"></span></div>'+
+   '<div id="ehsvg"></div><div class="why" id="ehwhy"></div>'+
+   deep("一张长18cm、宽12cm的纸，剪去一个边长3cm的正方形，剩下面积多少？","<b>补法</b>：18×12 − 3×3 = 216 − 9 = <b>207平方厘米</b>。先算大长方形，再减去剪掉的小正方形。",
+        "如果把小正方形剪在纸的正中间（挖个洞），剩下面积会变吗？","<b>不变</b>，还是 大 − 小 = 18×12 − 3×3 = 207。不管剪在角上还是中间，剩余面积都一样。")+
+   '</div>';updZhe();
+};
+function updZhe(){
+  var a=+$('ea').value,b=+$('eb').value,p=Math.min(+$('ep').value,a-1),q=Math.min(+$('eq').value,b-1);
+  $('eav').textContent=a;$('ebv').textContent=b;$('epv').textContent=p;$('eqv').textContent=q;
+  var u=22,x0=14,y0=10,cw=p*u,ch=q*u;
+  var s='<svg viewBox="0 0 '+(x0*2+a*u)+' '+(y0*2+b*u)+'">';
+  s+='<rect x="'+x0+'" y="'+y0+'" width="'+(a*u)+'" height="'+(b*u)+'" fill="#ffe1cc" stroke="#e8642f"/>';
+  s+='<rect x="'+(x0+(a-p)*u)+'" y="'+y0+'" width="'+cw+'" height="'+ch+'" fill="#fff" stroke="#e1553f" stroke-dasharray="4 3"/>';
+  s+='<text x="'+(x0+a*u/2)+'" y="'+(y0+b*u/2+ch/2+4)+'" text-anchor="middle" font-size="11" font-weight="800" fill="#c24e20">大 '+a+'×'+b+'='+(a*b)+'</text>';
+  s+='<text x="'+(x0+(a-p)*u+cw/2)+'" y="'+(y0+ch/2+3)+'" text-anchor="middle" font-size="9" font-weight="800" fill="#e1553f">剪'+p+'×'+q+'</text>';
+  s+='</svg>';$('ehsvg').innerHTML=s;
+  $('ehwhy').innerHTML='<b>剩余面积 = 大 − 剪掉：</b>'+a+'×'+b+' − '+p+'×'+q+' = '+(a*b)+' − '+(p*q)+' = <b>'+(a*b-p*q)+'</b>。';
+}
+
+renderHome();
+</script>
+</body>
+</html>

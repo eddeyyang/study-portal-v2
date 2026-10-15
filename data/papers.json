@@ -1,0 +1,10 @@
+[
+  { "child": "kenton", "subject": "数学", "title": "数学冲刺卷 · 第1天（四下：小数·运算定律·混合）", "file": "papers/k_d1_math.html", "added": "2026-06-15" },
+  { "child": "kenton", "subject": "语文", "title": "语文冲刺卷 · 第2天（四下5-8单元）", "file": "papers/k_d2_chinese.html", "added": "2026-06-15" },
+  { "child": "kenton", "subject": "英语", "title": "英语冲刺卷 · 第3天（四下词汇句型）", "file": "papers/k_d3_english.html", "added": "2026-06-15" },
+  { "child": "kenton", "subject": "综合", "title": "三科综合冲刺卷 · 第4天（四下）", "file": "papers/k_d4_zonghe.html", "added": "2026-06-15" },
+  { "child": "eddey", "subject": "数学", "title": "数学冲刺卷 · 第1天（三下：除法·面积·分数·小数）", "file": "papers/e_d1_math.html", "added": "2026-06-15" },
+  { "child": "eddey", "subject": "语文", "title": "语文冲刺卷 · 第2天（三下字词·阅读）", "file": "papers/e_d2_chinese.html", "added": "2026-06-15" },
+  { "child": "eddey", "subject": "英语", "title": "英语冲刺卷 · 第3天（三下核心词句）", "file": "papers/e_d3_english.html", "added": "2026-06-15" },
+  { "child": "eddey", "subject": "综合", "title": "三科综合冲刺卷 · 第4天（三下）", "file": "papers/e_d4_zonghe.html", "added": "2026-06-15" }
+]

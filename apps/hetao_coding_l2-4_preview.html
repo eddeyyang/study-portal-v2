@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<script src="../assets/learning-sync.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>核桃 L2-4 预习 · 赋值语句 & 变量运算</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+:root{
+  --orange-1:#FF6B35; --orange-2:#FF8C42; --orange-3:#FFB347;
+  --purple-1:#6B5BFF; --green-1:#2BB673; --green-2:#4ECDC4; --blue-1:#3B82F6;
+  --yellow-1:#FFD93D; --pink-1:#FF6B9D;
+  --bg:#FFF8F0; --ink:#2D2A4A; --ink-soft:#5A5775;
+  --card:#fff; --shadow:0 8px 28px rgba(45,42,74,.12);
+  --good:#2BB673; --bad:#E64A4A;
+}
+html,body{ font-family:"PingFang SC","Microsoft YaHei",sans-serif; color:var(--ink);
+  background:linear-gradient(135deg,#FFF8F0 0%,#FFE8D6 100%); min-height:100%;}
+body{ -webkit-tap-highlight-color:transparent; }
+.wrap{ max-width:680px; margin:0 auto; padding:0 14px 80px; }
+.topbar{ position:sticky; top:0; z-index:50; backdrop-filter:blur(10px);
+  background:rgba(255,255,255,.86); border-bottom:2px solid rgba(255,107,53,.15);
+  display:flex; align-items:center; gap:10px; padding:10px 14px;}
+.logo{ width:34px;height:34px;border-radius:9px;display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(135deg,var(--orange-1),var(--orange-2));color:#fff;font-size:19px;
+  box-shadow:0 4px 12px rgba(255,107,53,.4);}
+.brand b{font-size:15px;color:var(--orange-1);display:block;line-height:1.2;}
+.brand span{font-size:11px;color:var(--ink-soft);}
+.home{margin-left:auto;text-decoration:none;background:#fff;border:2px solid var(--orange-1);
+  color:var(--orange-1);padding:6px 12px;border-radius:11px;font-weight:800;font-size:13px;}
+.nav{display:flex;gap:8px;overflow-x:auto;padding:12px 2px;position:sticky;top:56px;z-index:40;
+  background:linear-gradient(180deg,rgba(255,248,240,.96),rgba(255,248,240,.7));}
+.nav::-webkit-scrollbar{display:none;}
+.chip{flex:0 0 auto;border:none;background:#fff;color:var(--ink-soft);font-weight:800;
+  padding:9px 14px;border-radius:999px;font-size:13px;cursor:pointer;box-shadow:var(--shadow);
+  font-family:inherit;transition:.15s;}
+.chip.active{background:linear-gradient(135deg,var(--orange-1),var(--orange-2));color:#fff;transform:translateY(-1px);}
+section{display:none;animation:fade .35s ease;}
+section.show{display:block;}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.card{background:var(--card);border-radius:20px;box-shadow:var(--shadow);padding:18px;margin:14px 0;}
+.h2{font-size:21px;font-weight:900;display:flex;align-items:center;gap:9px;margin-bottom:4px;}
+.sub{color:var(--ink-soft);font-size:14px;line-height:1.6;margin-bottom:6px;}
+.tip{background:#FFF3E8;border-left:4px solid var(--orange-1);border-radius:10px;padding:10px 13px;
+  font-size:14px;line-height:1.7;margin:10px 0;}
+.tip b{color:#C84B1A;}
+.method{background:#EEF4FF;border-left:4px solid var(--blue-1);border-radius:10px;padding:10px 13px;
+  font-size:14px;line-height:1.7;margin:10px 0;}
+.method b{color:var(--blue-1);}
+.code{background:#1E1B33;color:#Efeaff;border-radius:14px;padding:14px 16px;font-size:15px;
+  font-family:"SF Mono",Consolas,Menlo,monospace;line-height:1.9;overflow-x:auto;}
+.k{color:#FF9D66;}.v{color:#7FE0FF;}.n{color:#FFD93D;}.s{color:#9DE89D;}.o{color:#FF8FB0;}.c{color:#8B86A8;}
+.hl{background:rgba(255,217,61,.25);border-radius:5px;padding:0 4px;transition:.2s;}
+.btn{border:none;border-radius:13px;padding:11px 16px;font-weight:800;font-size:15px;cursor:pointer;
+  font-family:inherit;background:linear-gradient(135deg,var(--orange-1),var(--orange-2));color:#fff;
+  box-shadow:0 5px 14px rgba(255,107,53,.35);transition:.15s;}
+.btn:active{transform:translateY(2px);}
+.btn.ghost{background:#fff;color:var(--orange-1);border:2px solid var(--orange-1);box-shadow:none;}
+.btn.green{background:linear-gradient(135deg,#2BB673,#4ECDC4);box-shadow:0 5px 14px rgba(43,182,115,.3);}
+.btn.blue{background:linear-gradient(135deg,#3B82F6,#6B5BFF);}
+.btn.row{display:block;width:100%;margin:7px 0;}
+.btnrow{display:flex;gap:9px;flex-wrap:wrap;margin-top:12px;}
+.wordgrid{display:grid;grid-template-columns:1fr;gap:12px;}
+.wcard{border:2px solid #FFE0C4;border-radius:16px;padding:14px 16px;background:linear-gradient(135deg,#fff,#FFF6EE);}
+.wtop{display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
+.wen{font-size:26px;font-weight:900;color:var(--orange-1);}
+.wph{color:var(--ink-soft);font-size:14px;}
+.spk{margin-left:auto;border:none;background:var(--orange-1);color:#fff;width:40px;height:40px;
+  border-radius:50%;font-size:18px;cursor:pointer;box-shadow:0 4px 10px rgba(255,107,53,.4);}
+.wmean{margin-top:6px;font-size:15px;line-height:1.7;}
+.wmean .pos{display:inline-block;background:#EEE9FF;color:var(--purple-1);font-size:12px;font-weight:800;
+  border-radius:6px;padding:1px 7px;margin-right:6px;}
+.wph2{margin-top:6px;font-size:13px;color:var(--green-1);font-weight:700;}
+.flag{display:inline-block;background:#EBFBF2;color:var(--good);border-radius:999px;font-size:12px;
+  font-weight:800;padding:2px 10px;margin-left:8px;}
+
+/* if-else 分岔 */
+.branch-svg{width:100%;max-width:360px;display:block;margin:6px auto;}
+.cond-read{text-align:center;font-size:18px;font-weight:900;color:var(--orange-1);margin:6px 0;}
+
+/* 大盒子（变量值）*/
+.varbox{ width:130px;height:130px;margin:8px auto;border-radius:22px;border:5px solid var(--orange-1);
+  background:linear-gradient(135deg,#fff,#FFF3E8); display:flex;flex-direction:column;align-items:center;
+  justify-content:center; box-shadow:var(--shadow);}
+.varbox .name{font-size:16px;color:var(--ink-soft);font-weight:800;}
+.varbox .val{font-size:54px;font-weight:900;color:var(--orange-1);line-height:1;}
+.varbox.flash{animation:flash .6s;}
+@keyframes flash{0%{transform:scale(1)}40%{transform:scale(1.18);border-color:var(--green-1)}100%{transform:scale(1)}}
+.step{background:#F3F0FF;border-left:4px solid var(--purple-1);border-radius:10px;padding:11px 13px;
+  font-size:15px;line-height:1.7;margin-top:10px;min-height:24px;}
+.step b{color:var(--purple-1);}
+
+/* 循环 */
+.loopout{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;min-height:52px;align-items:center;
+  background:#0E1230;border-radius:14px;padding:14px;}
+.fchip{font-family:monospace;font-weight:900;color:#9DE89D;font-size:22px;animation:pop .3s ease;}
+@keyframes pop{from{transform:scale(0);opacity:0}to{transform:none;opacity:1}}
+.counter{font-size:15px;color:var(--ink-soft);text-align:center;margin-top:8px;}
+.counter b{color:var(--orange-1);font-size:20px;}
+
+/* 命名规则 */
+.namegrid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:8px;}
+.ncard{border:2px solid #eee;border-radius:14px;padding:14px;text-align:center;cursor:pointer;
+  font-family:monospace;font-size:20px;font-weight:900;transition:.15s;background:#fff;}
+.ncard:hover{border-color:var(--orange-3);}
+.ncard.ok{border-color:var(--good);background:#EBFBF2;}
+.ncard.no{border-color:var(--bad);background:#FDECEC;}
+.ncard small{display:block;font-family:inherit;font-size:12px;font-weight:700;margin-top:6px;line-height:1.4;}
+.ncard.ok small{color:var(--good);} .ncard.no small{color:var(--bad);}
+
+/* 连线题 */
+.match{display:flex;justify-content:space-between;gap:20px;position:relative;}
+.col{display:flex;flex-direction:column;gap:14px;flex:1;}
+.mitem{border:2px solid #ddd;border-radius:12px;padding:14px;text-align:center;font-weight:900;
+  font-family:monospace;font-size:18px;cursor:pointer;background:#fff;transition:.15s;}
+.mitem.sel{border-color:var(--orange-1);background:#FFF3E8;transform:scale(1.04);}
+.mitem.done{border-color:var(--good);background:#EBFBF2;color:var(--good);cursor:default;}
+.mitem.wrong{animation:shake .4s;}
+@keyframes shake{0%,100%{transform:none}25%{transform:translateX(-7px)}75%{transform:translateX(7px)}}
+#matchLines{position:absolute;inset:0;pointer-events:none;}
+
+/* quiz */
+.q{font-size:16px;font-weight:800;margin-bottom:10px;line-height:1.6;}
+.opt{display:block;width:100%;text-align:left;border:2px solid #eee;background:#fff;border-radius:13px;
+  padding:12px 14px;margin:8px 0;font-size:15px;font-weight:700;cursor:pointer;font-family:inherit;transition:.15s;}
+.opt:hover{border-color:var(--orange-3);}
+.opt.ok{border-color:var(--good);background:#EBFBF2;color:var(--good);}
+.opt.no{border-color:var(--bad);background:#FDECEC;color:var(--bad);}
+.explain{display:none;margin-top:10px;background:#F3F0FF;border-left:4px solid var(--purple-1);
+  border-radius:10px;padding:11px 13px;font-size:14px;line-height:1.7;}
+.explain.show{display:block;}
+.scorebar{font-weight:900;color:var(--orange-1);font-size:16px;}
+.foot{text-align:center;color:var(--ink-soft);font-size:12px;margin-top:18px;line-height:1.7;}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div class="logo">🌰</div>
+  <div class="brand"><b>核桃编程 · L2-4 预习</b><span>赋值语句 & 简单变量运算</span></div>
+  <a class="home" href="cpp_hub.html">🏠 学习馆</a>
+</div>
+
+<div class="wrap">
+  <div class="nav" id="nav"></div>
+
+  <section id="s-intro" class="show">
+    <div class="card">
+      <div class="h2">🔢 下次课要学什么？</div>
+      <div class="sub">两个模块：<b>模块 15 · 赋值语句初识</b> 和 <b>模块 16 · 简单变量运算</b>。听起来抽象，其实就是"让一个盒子里的数字变来变去"。我们用会动的盒子、会跑的循环把它讲清楚。</div>
+      <div class="tip">🧩 三件核心：<b>① if-else 分岔</b>（只走一边）· <b>② 变量控制循环次数</b>（盒子里的数决定跑几遍）· <b>③ 赋值语句</b>（先算右边，再放进左边盒子）。还有 <b>变量命名规则</b>。</div>
+      <button class="btn row" onclick="go('s-words')">先认 4 个单词 →</button>
+      <button class="btn row blue" onclick="go('s-assign')">直接玩赋值魔法盒 📦</button>
+    </div>
+  </section>
+
+  <!-- 单词 -->
+  <section id="s-words">
+    <div class="card">
+      <div class="h2">📖 L2-4 单词卡 <span class="flag">点 🔊 跟读</span></div>
+      <div class="sub">这次的新词，点喇叭听 Aria 读，自己再读一遍。</div>
+      <div class="wordgrid" id="wordgrid"></div>
+    </div>
+  </section>
+
+  <!-- if-else -->
+  <section id="s-ifelse">
+    <div class="card">
+      <div class="h2">🌳 知识点 1 · if-else 分岔</div>
+      <div class="method"><b>方法点拨：</b>if-else 像一道<b>分岔路口</b>。先看条件成不成立：成立走 if 这边，不成立走 else 这边，<b>只能走一边，绝不会两边都走</b>。</div>
+      <div class="code">
+        <span class="k">if</span>(a <span class="o">&gt;</span> <span class="n">6</span>)<br>
+        { <span class="k">cout</span><span class="o">&lt;&lt;</span><span class="s">"g"</span>; } <span class="c">// 条件成立时</span><br>
+        <span class="k">else</span><br>
+        { <span class="k">cout</span><span class="o">&lt;&lt;</span><span class="s">"k"</span>; } <span class="c">// 不成立时</span>
+      </div>
+      <div class="cond-read">a = <span id="aVal2">5</span>，条件 a &gt; 6 <span id="condRes">不成立</span></div>
+      <input class="slider2" id="aSlider" type="range" min="0" max="12" value="5" step="1"
+        style="width:100%;-webkit-appearance:none;height:10px;border-radius:999px;background:linear-gradient(90deg,#FFD93D,#FF6B35);outline:none;">
+      <svg class="branch-svg" viewBox="0 0 320 170">
+        <circle id="ball" cx="160" cy="22" r="13" fill="#FF6B35"/>
+        <line x1="160" y1="35" x2="160" y2="60" stroke="#bbb" stroke-width="3"/>
+        <path d="M160 60 L80 95" stroke="#bbb" stroke-width="3" id="pathYes"/>
+        <path d="M160 60 L240 95" stroke="#bbb" stroke-width="3" id="pathNo"/>
+        <rect id="boxYes" x="30" y="98" width="100" height="46" rx="10" fill="#EBFBF2" stroke="#2BB673" stroke-width="3"/>
+        <text x="80" y="120" text-anchor="middle" font-size="13" fill="#2BB673" font-weight="700">if 成立</text>
+        <text x="80" y="138" text-anchor="middle" font-size="16" fill="#2BB673" font-weight="900">打印 g</text>
+        <rect id="boxNo" x="190" y="98" width="100" height="46" rx="10" fill="#FDECEC" stroke="#E64A4A" stroke-width="3"/>
+        <text x="240" y="120" text-anchor="middle" font-size="13" fill="#E64A4A" font-weight="700">else</text>
+        <text x="240" y="138" text-anchor="middle" font-size="16" fill="#E64A4A" font-weight="900">打印 k</text>
+      </svg>
+      <button class="btn row green" onclick="runBranch()">▶ 让小球走一遍</button>
+      <div class="step" id="branchStep">拖动滑块改变 a，再点「让小球走一遍」，看它走哪条路。</div>
+    </div>
+  </section>
+
+  <!-- 循环 -->
+  <section id="s-loop">
+    <div class="card">
+      <div class="h2">🔁 知识点 2 · 变量控制循环次数</div>
+      <div class="method"><b>方法点拨：</b>for 小括号中间那个数字，就是<b>循环次数</b>。如果次数不确定，可以用<b>变量</b>代替数字——次数就会跟着变量一起变。</div>
+      <div class="code">
+        <span class="k">for</span>(<span class="v">int</span> i<span class="o">=</span><span class="n">1</span>; i<span class="o">&lt;=</span><span class="hl" id="loopN">3</span>; i<span class="o">++</span>)<br>
+        { <span class="k">cout</span><span class="o">&lt;&lt;</span><span class="s">"f"</span>; } <span class="c">// 重复打印 f</span>
+      </div>
+      <div class="cond-read">循环次数 a = <span id="loopVal">3</span> 次</div>
+      <input id="loopSlider" type="range" min="1" max="8" value="3" step="1"
+        style="width:100%;-webkit-appearance:none;height:10px;border-radius:999px;background:linear-gradient(90deg,#FFD93D,#FF6B35);outline:none;">
+      <button class="btn row green" onclick="runLoop()">▶ 跑这个循环</button>
+      <div class="loopout" id="loopout"><span style="color:#666">点上面按钮，看打印几个 f</span></div>
+      <div class="counter" id="loopCounter"></div>
+      <div class="tip">把次数从写死的 <b>3</b> 换成变量 <b>a</b>，就能让同一段代码跑不同的遍数——这就是"变量控制循环"。</div>
+    </div>
+  </section>
+
+  <!-- 赋值 -->
+  <section id="s-assign">
+    <div class="card">
+      <div class="h2">📦 知识点 3 · 赋值语句魔法盒</div>
+      <div class="method"><b>方法点拨：</b>赋值语句就是改变左边盒子里的数。<b>等号右边是算式时，先算出结果，再放进左边的盒子</b>。所以要分两步看：①算右边 → ②放进左边。</div>
+      <div class="varbox" id="vbox"><span class="name">变量 a</span><span class="val" id="aBig">4</span></div>
+      <div class="btnrow" style="justify-content:center;">
+        <button class="btn blue" onclick="assign('=',5)">a = 5</button>
+        <button class="btn blue" onclick="assign('+',2)">a = a + 2</button>
+        <button class="btn blue" onclick="assign('+',8)">a = a + 8</button>
+        <button class="btn blue" onclick="assign('-',1)">a = a - 1</button>
+        <button class="btn ghost" onclick="resetA()">↺ 复位 a=4</button>
+      </div>
+      <div class="step" id="assignStep">点一个赋值语句，看盒子里的数怎么变。注意 <b>a=5</b>（直接放）和 <b>a=a+2</b>（先算再放）的不同。</div>
+    </div>
+  </section>
+
+  <!-- 命名 -->
+  <section id="s-name">
+    <div class="card">
+      <div class="h2">✏️ 知识点 4 · 变量命名规则</div>
+      <div class="method"><b>三条规则：</b><br>① <b>区分大小写</b>：a 和 A 是两个不同的变量。<br>② <b>只能用</b>字母、下划线 _、数字 0–9，<b>且不能数字开头</b>。<br>③ <b>不能是 C++ 关键字</b>（如 if、int 这些有特殊含义的词）。</div>
+      <div class="sub">下面哪些是<b>合法</b>的变量名？挨个点点看，会告诉你为什么。</div>
+      <div class="namegrid" id="namegrid"></div>
+    </div>
+  </section>
+
+  <!-- 连线 想一想 -->
+  <section id="s-match">
+    <div class="card">
+      <div class="h2">🔗 想一想 · 连线挑战</div>
+      <div class="sub">变量 a 的初始值是 <b>4</b>。把左边的赋值表达式，连到它执行后 a 的<b>结果</b>。点左边一个，再点右边一个。</div>
+      <div class="match">
+        <div class="col" id="colL"></div>
+        <div class="col" id="colR"></div>
+      </div>
+      <div class="step" id="matchStep" style="margin-top:14px;">先点左边的算式，再点右边对应的结果。</div>
+      <button class="btn row green" id="matchReset" style="display:none" onclick="buildMatch()">🔁 再连一次</button>
+    </div>
+  </section>
+
+  <!-- 检验 -->
+  <section id="s-quiz">
+    <div class="card">
+      <div class="h2">🎯 小检验 <span class="scorebar" id="score"></span></div>
+      <div class="sub">理解之后的小检验，4 道题。</div>
+      <div id="quizBox"></div>
+      <button class="btn row green" id="restartBtn" style="display:none" onclick="buildQuiz()">🔁 再做一遍</button>
+    </div>
+    <div class="foot">核桃编程 · L2-4 赋值语句 & 变量运算预习 · 会动的盒子，先懂再练</div>
+  </section>
+</div>
+
+<script>
+const SECTIONS=[
+  ['s-intro','🏁 总览'],['s-words','📖 单词'],['s-ifelse','🌳 if-else'],
+  ['s-loop','🔁 循环'],['s-assign','📦 赋值'],['s-name','✏️ 命名'],['s-match','🔗 连线'],['s-quiz','🎯 检验']
+];
+const nav=document.getElementById('nav');
+SECTIONS.forEach(([id,label])=>{const b=document.createElement('button');b.className='chip';b.textContent=label;b.dataset.id=id;b.onclick=()=>go(id);nav.appendChild(b);});
+function go(id){
+  document.querySelectorAll('section').forEach(s=>s.classList.toggle('show',s.id===id));
+  document.querySelectorAll('.chip').forEach(c=>c.classList.toggle('active',c.dataset.id===id));
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+go('s-intro');
+
+/* TTS */
+const synth=window.speechSynthesis; let vEn=null,vZh=null;
+function loadV(){const vs=synth.getVoices();
+  vEn=vs.find(v=>/en-US/i.test(v.lang)&&/female|aria|samantha|ava/i.test(v.name))||vs.find(v=>/^en/i.test(v.lang));
+  vZh=vs.find(v=>/zh-CN/i.test(v.lang))||vs.find(v=>/zh/i.test(v.lang));}
+loadV(); if(synth.onvoiceschanged!==undefined) synth.onvoiceschanged=loadV;
+function say(t,lang){try{synth.cancel();const u=new SpeechSynthesisUtterance(t);
+  if(lang==='en'){u.lang='en-US';u.voice=vEn;u.rate=.8;}else{u.lang='zh-CN';u.voice=vZh;u.rate=.95;}
+  synth.speak(u);}catch(e){}}
+
+/* 单词 */
+const WORDS=[
+  {en:'max',ph:'/mæks/',pos:'n.',mean:'最大值；最大的、最大限度的',ex:'maximum 最大值（max 是它的缩写）'},
+  {en:'integer',ph:'/ˈɪntɪdʒə/',pos:'n.',mean:'整数',ex:'int 就是代表整数类型的关键字'},
+  {en:'else',ph:'/els/',pos:'adv./adj.',mean:'其他的；别的',ex:'if-else 里 else 表示"否则"'},
+  {en:'kick',ph:'/kɪk/',pos:'v./n.',mean:'踢、踹；踢腿',ex:'kick out 踢出；起点（也是机器人动作）'}
+];
+const wg=document.getElementById('wordgrid');
+WORDS.forEach(w=>{const d=document.createElement('div');d.className='wcard';
+  d.innerHTML=`<div class="wtop"><span class="wen">${w.en}</span><span class="wph">${w.ph}</span><button class="spk">🔊</button></div>
+  <div class="wmean"><span class="pos">${w.pos}</span>${w.mean}</div><div class="wph2">💡 ${w.ex}</div>`;
+  d.querySelector('.spk').onclick=()=>say(w.en,'en'); wg.appendChild(d);});
+
+/* if-else */
+const aSlider=document.getElementById('aSlider');
+function renderCond(){const a=+aSlider.value; document.getElementById('aVal2').textContent=a;
+  document.getElementById('condRes').textContent=a>6?'成立 ✅':'不成立 ❌';}
+aSlider.addEventListener('input',renderCond); renderCond();
+function runBranch(){
+  const a=+aSlider.value; const yes=a>6;
+  const ball=document.getElementById('ball');
+  document.getElementById('boxYes').setAttribute('opacity',yes?1:.35);
+  document.getElementById('boxNo').setAttribute('opacity',yes?.35:1);
+  document.getElementById('pathYes').setAttribute('stroke',yes?'#2BB673':'#ddd');
+  document.getElementById('pathNo').setAttribute('stroke',yes?'#ddd':'#E64A4A');
+  ball.style.transition='none'; ball.setAttribute('cx',160); ball.setAttribute('cy',22);
+  ball.setAttribute('fill',yes?'#2BB673':'#E64A4A');
+  setTimeout(()=>{ball.style.transition='all .9s cubic-bezier(.5,0,.5,1)';
+    ball.setAttribute('cx',yes?80:240); ball.setAttribute('cy',120);},30);
+  document.getElementById('branchStep').innerHTML = yes
+    ? `a = ${a}，<b>a &gt; 6 成立</b> ✅ → 走 <b>if</b> 这边 → 打印 <b>g</b>。else 这边整个跳过。`
+    : `a = ${a}，<b>a &gt; 6 不成立</b> ❌ → 跳过 if → 走 <b>else</b> 这边 → 打印 <b>k</b>。`;
+  say(yes?'条件成立，打印 g':'条件不成立，打印 k','zh');
+}
+
+/* 循环 */
+const loopSlider=document.getElementById('loopSlider');
+function renderLoop(){const n=+loopSlider.value;document.getElementById('loopVal').textContent=n;document.getElementById('loopN').textContent=n;}
+loopSlider.addEventListener('input',renderLoop); renderLoop();
+function runLoop(){
+  const n=+loopSlider.value; const out=document.getElementById('loopout');
+  const ctr=document.getElementById('loopCounter');
+  out.innerHTML=''; ctr.innerHTML='';
+  let i=1;
+  const timer=setInterval(()=>{
+    if(i>n){clearInterval(timer); ctr.innerHTML=`循环结束：i 超过 ${n}，停下。一共打印了 <b>${n}</b> 个 f。`; return;}
+    const s=document.createElement('span'); s.className='fchip'; s.textContent='f'; out.appendChild(s);
+    ctr.innerHTML=`第 <b>${i}</b> 次：i=${i}，i&lt;=${n} 成立 → 打印 f → i++`;
+    i++;
+  },520);
+}
+
+/* 赋值 */
+let aValue=4;
+const aBig=document.getElementById('aBig'), vbox=document.getElementById('vbox');
+function resetA(){aValue=4;aBig.textContent=4;document.getElementById('assignStep').innerHTML='已复位，a = 4。再点点别的赋值语句。';}
+function assign(op,num){
+  const old=aValue; let res, expr, steps;
+  if(op==='='){ res=num; expr=`a = ${num}`;
+    steps=`<b>直接赋值</b>：右边就是数字 ${num}，没有算式，<b>直接</b>把 ${num} 放进盒子 a。a 从 ${old} 变成 <b>${res}</b>。`;
+  }else{
+    res = op==='+'? old+num : old-num;
+    expr=`a = a ${op} ${num}`;
+    steps=`<b>第①步 算右边</b>：a 现在是 ${old}，算 ${old} ${op} ${num} = <b>${res}</b>。<br><b>第②步 放进左边</b>：把 ${res} 赋值给 a。a 从 ${old} 变成 <b>${res}</b>。`;
+  }
+  aValue=res; aBig.textContent=res;
+  vbox.classList.remove('flash'); void vbox.offsetWidth; vbox.classList.add('flash');
+  document.getElementById('assignStep').innerHTML=`执行 <b>${expr}</b> ：<br>${steps}`;
+  say('a 现在是 '+res,'zh');
+}
+
+/* 命名 */
+const NAMES=[
+  {n:'a',ok:true,why:'合法：单个小写字母，没问题'},
+  {n:'MAX',ok:true,why:'合法：全大写也行（和小写 max 是不同变量）'},
+  {n:'my_var',ok:true,why:'合法：字母 + 下划线，允许'},
+  {n:'2abc',ok:false,why:'不合法：数字开头了，变量名不能以数字开头'},
+  {n:'if',ok:false,why:'不合法：if 是 C++ 关键字，不能当变量名'},
+  {n:'int',ok:false,why:'不合法：int 是关键字（整数类型），不能当变量名'}
+];
+const ng=document.getElementById('namegrid');
+NAMES.forEach(item=>{
+  const d=document.createElement('div'); d.className='ncard'; d.innerHTML=item.n;
+  d.onclick=()=>{ if(d.classList.contains('ok')||d.classList.contains('no'))return;
+    d.classList.add(item.ok?'ok':'no');
+    const tag=document.createElement('small'); tag.innerHTML=(item.ok?'✅ ':'❌ ')+item.why; d.appendChild(tag);
+    say(item.ok?'合法':'不合法','zh');
+  };
+  ng.appendChild(d);
+});
+
+/* 连线 */
+const LEFT=[{e:'a = 5;',r:5},{e:'a = a + 8;',r:12},{e:'a = 2;',r:2},{e:'a = a - 1;',r:3}];
+const RIGHTS=[2,3,5,12];
+const WHY={5:'a=5：直接把 5 放进 a，结果 5',12:'a=a+8：先算 4+8=12，再放进 a，结果 12',
+  2:'a=2：直接把 2 放进 a，结果 2',3:'a=a-1：先算 4-1=3，再放进 a，结果 3'};
+let selL=null, matched=0;
+function buildMatch(){
+  selL=null; matched=0;
+  document.getElementById('matchReset').style.display='none';
+  document.getElementById('matchStep').innerHTML='先点左边的算式，再点右边对应的结果。';
+  const colL=document.getElementById('colL'), colR=document.getElementById('colR');
+  colL.innerHTML=''; colR.innerHTML='';
+  LEFT.forEach((it,idx)=>{const d=document.createElement('div');d.className='mitem';d.textContent=it.e;d.dataset.r=it.r;
+    d.onclick=()=>{ if(d.classList.contains('done'))return;
+      document.querySelectorAll('#colL .mitem').forEach(x=>x.classList.remove('sel'));
+      d.classList.add('sel'); selL=d; }; colL.appendChild(d);});
+  RIGHTS.forEach(r=>{const d=document.createElement('div');d.className='mitem';d.textContent=r;d.dataset.r=r;
+    d.onclick=()=>{ if(!selL){document.getElementById('matchStep').innerHTML='⚠️ 先点左边的一个算式哦。';return;}
+      if(d.classList.contains('done'))return;
+      if(+selL.dataset.r===+d.dataset.r){
+        selL.classList.remove('sel'); selL.classList.add('done'); d.classList.add('done');
+        document.getElementById('matchStep').innerHTML='✅ 连对！'+WHY[r]; matched++; say('连对了','zh'); selL=null;
+        if(matched===4){document.getElementById('matchStep').innerHTML='🏆 全部连对！记住：右边是算式就「先算再放」，是数字就「直接放」。';
+          document.getElementById('matchReset').style.display='block';}
+      }else{
+        d.classList.add('wrong'); setTimeout(()=>d.classList.remove('wrong'),400);
+        document.getElementById('matchStep').innerHTML='❌ 不对，再想想：'+WHY[+selL.dataset.r]; say('再想想','zh');
+      }
+    }; colR.appendChild(d);});
+}
+buildMatch();
+
+/* 检验 */
+const QUIZ=[
+  {q:'a 现在是 4。执行 a = a + 8; 之后，a 是多少？',
+   opts:['12','8','48','4'],a:0,
+   ex:'右边是算式：<b>先算</b> 4+8=12，<b>再放进</b> a。所以 a 变成 12。'},
+  {q:'for(int i=1; i<=a; i++) 循环几次，由谁决定？',
+   opts:['由变量 a 的值决定','永远 3 次','由 i 的初始值 1 决定','不会循环'],a:0,
+   ex:'循环次数就是小括号中间 i&lt;=a 里的 a。a 是几就循环几次——这就是"变量控制循环次数"。'},
+  {q:'下面哪个是合法的变量名？',
+   opts:['my_age','2cats','int','if'],a:0,
+   ex:'my_age：字母+下划线，合法 ✅。2cats 数字开头不行；int、if 是关键字不能用。'},
+  {q:'if(a>=8){ ... } else { ... } 当 a=5 时，会执行哪个大括号？',
+   opts:['执行 else 的大括号','执行 if 的大括号','两个都执行','都不执行'],a:0,
+   ex:'a=5，a&gt;=8 不成立 ❌ → 跳过 if → 走 <b>else</b>。if-else 只会走一边。'}
+];
+let qi=0,qok=0;
+function buildQuiz(){qi=0;qok=0;document.getElementById('restartBtn').style.display='none';document.getElementById('score').textContent='';renderQ();}
+function renderQ(){
+  const box=document.getElementById('quizBox');
+  if(qi>=QUIZ.length){
+    box.innerHTML=`<div style="text-align:center;padding:18px 0;"><div style="font-size:54px">${qok===QUIZ.length?'🏆':qok>=2?'👍':'💪'}</div>
+      <div style="font-size:20px;font-weight:900;margin-top:8px;">答对 ${qok} / ${QUIZ.length}</div>
+      <div class="sub" style="margin-top:6px;">${qok===QUIZ.length?'全对！下次课你已经预习到位了。':'回上面再玩玩动画，把错的看清楚～'}</div></div>`;
+    document.getElementById('restartBtn').style.display='block'; return;
+  }
+  const item=QUIZ[qi];
+  box.innerHTML=`<div class="q">第 ${qi+1} 题　${item.q}</div><div id="opts"></div>
+    <div class="explain" id="ex">${item.ex}</div>
+    <button class="btn row" id="next" style="display:none" onclick="qi++;renderQ();">下一题 →</button>`;
+  const opts=document.getElementById('opts');
+  item.opts.forEach((o,i)=>{const b=document.createElement('button');b.className='opt';b.textContent=o;
+    b.onclick=()=>{ if(document.getElementById('ex').classList.contains('show'))return;
+      const right=i===item.a;
+      if(right){b.classList.add('ok');qok++;say('答对了','zh');}
+      else{b.classList.add('no');opts.children[item.a].classList.add('ok');say('再想想','zh');}
+      document.getElementById('ex').classList.add('show');
+      document.getElementById('next').style.display='block';
+      document.getElementById('score').textContent='✅ '+qok;
+    }; opts.appendChild(b);});
+}
+buildQuiz();
+</script>
+</body>
+</html>

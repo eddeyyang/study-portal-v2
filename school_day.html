@@ -1,0 +1,2518 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#fff7f0">
+<meta name="study-portal-design" content="2.0">
+<meta name="lesson-audio" content="not-applicable">
+<title>开学 · 课程与接送日程</title>
+<link rel="stylesheet" href="assets/styles.css">
+<style>
+  :root {
+    --schedule: #7a68c5;
+    --schedule-soft: #f2eeff;
+    --confirmed: #287a55;
+    --confirmed-soft: #eaf8f0;
+    --pending: #8b6414;
+    --pending-soft: #fff6dc;
+    --conflict: #a6403c;
+    --conflict-soft: #fff0ee;
+    --free: #2f7445;
+    --free-soft: #edf9ef;
+    --line: #eee4ef;
+  }
+
+  button, a, input { font: inherit; }
+  button { touch-action: manipulation; }
+  button:focus-visible, a:focus-visible, input:focus-visible {
+    outline: 3px solid #55449f;
+    outline-offset: 3px;
+  }
+
+  .topbar { margin-bottom: 12px; }
+  .topbar .back { font-size: 0; }
+  .topbar .back svg { width: 24px; height: 24px; fill: none; stroke: currentColor; stroke-width: 2.3; stroke-linecap: round; stroke-linejoin: round; }
+  .version-pill {
+    flex: 0 0 auto;
+    padding: 6px 10px;
+    border-radius: 999px;
+    color: #51418e;
+    background: var(--schedule-soft);
+    font-size: 12px;
+    font-weight: 800;
+  }
+
+  .schedule-hero {
+    position: relative;
+    overflow: hidden;
+    padding: 20px;
+    margin-bottom: 14px;
+    border: 1px solid #ded5f5;
+    border-radius: var(--radius);
+    background: linear-gradient(135deg, #f5f0ff 0%, #e9f9ff 52%, #fff4ec 100%);
+    box-shadow: var(--shadow);
+  }
+  .schedule-hero::after {
+    content: "";
+    position: absolute;
+    right: -54px;
+    top: -62px;
+    width: 150px;
+    height: 150px;
+    border: 24px solid rgba(122, 104, 197, .10);
+    border-radius: 50%;
+  }
+  .eyebrow {
+    position: relative;
+    z-index: 1;
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    min-height: 30px;
+    padding: 5px 10px;
+    border-radius: 999px;
+    color: #fff;
+    background: #51418e;
+    font-size: 12px;
+    font-weight: 800;
+  }
+  .eyebrow::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: #ffd166; }
+  .schedule-hero h2 { position: relative; z-index: 1; margin: 13px 0 7px; font-size: 25px; line-height: 1.22; }
+  .schedule-hero p { position: relative; z-index: 1; margin: 0; color: var(--muted); font-size: 14px; line-height: 1.65; }
+
+  .daynav {
+    display: grid;
+    grid-template-columns: 48px minmax(0, 1fr) 48px;
+    align-items: center;
+    gap: 8px;
+    margin: 12px 0 8px;
+  }
+  .day-button {
+    width: 48px;
+    height: 48px;
+    display: grid;
+    place-items: center;
+    border: 0;
+    border-radius: 14px;
+    color: var(--ink);
+    background: #fff;
+    box-shadow: var(--shadow);
+    cursor: pointer;
+  }
+  .day-button:active, .today-button:active, .check-button:active { transform: translateY(2px); }
+  .day-button svg { width: 23px; height: 23px; fill: none; stroke: currentColor; stroke-width: 2.3; stroke-linecap: round; stroke-linejoin: round; }
+  .date-copy { min-width: 0; text-align: center; }
+  .date-copy b { display: block; font-size: 19px; }
+  .date-copy span { display: block; margin-top: 2px; color: var(--muted); font-size: 12.5px; }
+  .today-wrap { text-align: center; margin-bottom: 12px; }
+  .today-button {
+    min-height: 44px;
+    padding: 8px 18px;
+    border: 0;
+    border-radius: 13px;
+    color: #fff;
+    background: linear-gradient(135deg, #6958b5, #8c7bd5);
+    box-shadow: 0 5px 14px rgba(87, 69, 157, .20);
+    font-weight: 800;
+    cursor: pointer;
+  }
+
+  .week-strip {
+    display: grid;
+    grid-template-columns: repeat(7, minmax(44px, 1fr));
+    gap: 4px;
+    margin: 0 0 10px;
+  }
+  .week-day {
+    min-width: 0;
+    min-height: 48px;
+    padding: 5px 2px;
+    border: 1px solid #e5dced;
+    border-radius: 12px;
+    color: var(--muted);
+    background: rgba(255, 255, 255, .78);
+    cursor: pointer;
+  }
+  .week-day span,
+  .week-day b { display: block; }
+  .week-day span { font-size: 10.5px; }
+  .week-day b { margin-top: 1px; color: var(--ink); font-size: 13px; }
+  .week-day[aria-current="date"] {
+    border-color: #6958b5;
+    color: #fff;
+    background: #6958b5;
+    box-shadow: 0 5px 14px rgba(87, 69, 157, .18);
+  }
+  .week-day[aria-current="date"] b { color: #fff; }
+
+  .phase, .alert {
+    border-radius: 15px;
+    padding: 11px 13px;
+    font-size: 13.5px;
+    line-height: 1.6;
+  }
+  .phase { margin-bottom: 10px; color: #51418e; background: var(--schedule-soft); }
+  .phase b { color: #392d72; }
+  .alert { margin-bottom: 10px; border-left: 5px solid var(--eddey); background: #fff3ed; }
+  .alert.pending { border-left-color: #d2a039; background: var(--pending-soft); }
+  .alert.conflict { border-left-color: var(--conflict); color: #7f2f2c; background: var(--conflict-soft); }
+
+  .section-card {
+    padding: 17px 16px 13px;
+    margin-bottom: 15px;
+    border-radius: var(--radius);
+    background: #fff;
+    box-shadow: var(--shadow);
+  }
+  .section-title {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    margin: 0 0 12px;
+    font-size: 17px;
+  }
+  .section-icon {
+    width: 38px;
+    height: 38px;
+    display: grid;
+    place-items: center;
+    border-radius: 13px;
+    background: var(--schedule-soft);
+    font-size: 21px;
+  }
+
+  .focus-line {
+    margin-bottom: 12px;
+    padding: 11px 12px;
+    border-radius: 14px;
+    background: linear-gradient(135deg, #fff8dd, #fff2e9);
+    font-size: 14px;
+    line-height: 1.55;
+  }
+  .focus-line b { color: #8f531e; }
+
+  .lane-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin: -2px 0 12px;
+  }
+  .lane-legend span {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 5px 8px;
+    border-radius: 999px;
+    color: #5d5270;
+    background: #f6f1fa;
+    font-size: 11px;
+    font-weight: 800;
+  }
+  .legend-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--schedule); }
+  .legend-dot.free { background: #75bd84; }
+  .legend-dot.pending { background: #d2a039; }
+  .legend-dot.conflict { background: var(--conflict); }
+
+  .child-lanes {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+  .lane-card {
+    min-width: 0;
+    overflow: hidden;
+    border: 2px solid;
+    border-radius: 17px;
+    background: #fff;
+  }
+  .lane-card.kenton { border-color: var(--kenton); }
+  .lane-card.eddey { border-color: var(--eddey); }
+  .lane-head {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    padding: 10px 11px;
+  }
+  .lane-card.kenton .lane-head { background: var(--kenton-soft); }
+  .lane-card.eddey .lane-head { background: var(--eddey-soft); }
+  .lane-head strong { min-width: 0; font-size: 14.5px; }
+  .free-count {
+    margin-left: auto;
+    padding: 3px 7px;
+    border-radius: 999px;
+    color: var(--free);
+    background: var(--free-soft);
+    font-size: 10.5px;
+    font-weight: 800;
+    white-space: nowrap;
+  }
+  .lane-list { list-style: none; margin: 0; padding: 4px 9px 7px; }
+  .lane-row {
+    display: grid;
+    grid-template-columns: 68px minmax(0, 1fr) auto;
+    gap: 7px;
+    align-items: center;
+    min-height: 54px;
+    padding: 7px 0;
+    border-bottom: 1px dashed var(--line);
+  }
+  .lane-row:last-child { border-bottom: 0; }
+  .lane-time {
+    align-self: start;
+    padding: 5px 4px;
+    border-radius: 9px;
+    color: #705600;
+    background: #fff3df;
+    font-size: 10.5px;
+    font-weight: 800;
+    line-height: 1.35;
+    text-align: center;
+  }
+  .lane-row.online .lane-time { color: #51418e; background: var(--schedule-soft); }
+  .lane-row.class .lane-time { color: #0a6f80; background: #e3fbff; }
+  .lane-row.free { margin: 4px 0; padding: 7px 6px; border-bottom: 0; border-radius: 11px; background: var(--free-soft); }
+  .lane-row.free .lane-time { color: var(--free); background: #dff3e4; }
+  .lane-row.walk .lane-time { color: #805719; background: #fff5da; }
+  .lane-row.conflict { margin: 4px 0; padding: 7px 6px; border-bottom: 0; border-radius: 11px; background: var(--conflict-soft); }
+  .lane-row.conflict .lane-time { color: var(--conflict); background: #ffe0dc; }
+  .lane-body { min-width: 0; font-size: 12.5px; line-height: 1.45; }
+  .lane-body strong { display: block; font-size: 13px; }
+  .lane-note { display: block; margin-top: 2px; color: var(--muted); font-size: 10.5px; line-height: 1.45; }
+  .lane-row.free .lane-body strong { color: var(--free); }
+  .lane-row.conflict .lane-body strong { color: var(--conflict); }
+  .lane-learning-title {
+    margin: 8px 0 2px;
+    padding: 8px 7px;
+    border-radius: 11px;
+    color: #51418e;
+    background: #f1edff;
+    font-size: 11.5px;
+    font-weight: 900;
+  }
+  .lane-row.learning { align-items: start; margin: 4px 0; padding: 8px 6px; border-bottom: 0; border-radius: 11px; background: #fffaf0; }
+  .lane-row.learning .lane-time { color: #805719; background: #fff0c9; }
+  .lane-row.learning .lane-body strong { color: #674416; }
+  .lane-question { display: block; margin-top: 5px; padding: 5px 6px; border-radius: 8px; color: #51418e; background: #f1edff; font-size: 10.5px; line-height: 1.45; }
+  .lane-status {
+    display: inline-block;
+    margin-top: 3px;
+    padding: 2px 6px;
+    border-radius: 999px;
+    color: var(--confirmed);
+    background: var(--confirmed-soft);
+    font-size: 9.5px;
+    font-weight: 800;
+  }
+  .lane-status.pending,
+  .lane-status.estimated { color: var(--pending); background: var(--pending-soft); }
+  .lane-status.conflict { color: var(--conflict); background: #ffe0dc; }
+  .lane-status.free { color: var(--free); background: #dff3e4; }
+  .lane-row .check-button { width: 38px; height: 38px; font-size: 14px; }
+
+  .pickup-list { list-style: none; padding: 0; margin: 0; }
+  .pickup-list li {
+    display: grid;
+    grid-template-columns: 88px minmax(0, 1fr);
+    gap: 10px;
+    align-items: start;
+    padding: 9px 0;
+    border-bottom: 1px dashed var(--line);
+  }
+  .pickup-list li:last-child { border-bottom: 0; }
+  .pickup-time { color: #654f00; font-size: 13px; font-weight: 800; }
+  .pickup-text { min-width: 0; font-size: 14.5px; line-height: 1.5; }
+  .pickup-note { display: block; margin-top: 2px; color: var(--muted); font-size: 12px; line-height: 1.5; }
+
+  .timeline { list-style: none; padding: 0; margin: 0; }
+  .timeline-row {
+    display: grid;
+    grid-template-columns: 90px minmax(0, 1fr) auto;
+    gap: 10px;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px dashed var(--line);
+  }
+  .timeline-row:last-child { border-bottom: 0; }
+  .timeline-time {
+    padding: 7px 5px;
+    border-radius: 11px;
+    color: #705600;
+    background: #fff3df;
+    font-size: 13px;
+    font-weight: 800;
+    text-align: center;
+  }
+  .timeline-row.ride .timeline-time { color: #9c461f; background: #fff0e8; }
+  .timeline-row.class .timeline-time { color: #0a6f80; background: #e3fbff; }
+  .timeline-row.home .timeline-time { color: #2f6f3d; background: #e9f8ec; }
+  .timeline-row.hold { opacity: .78; }
+  .timeline-row.hold .timeline-time { color: var(--pending); background: var(--pending-soft); }
+  .timeline-body { min-width: 0; font-size: 14px; line-height: 1.5; }
+  .timeline-body strong { font-size: 14.5px; }
+  .timeline-note { display: block; margin-top: 3px; color: var(--muted); font-size: 12px; line-height: 1.5; }
+  .status {
+    display: inline-block;
+    margin-left: 5px;
+    padding: 2px 7px;
+    border-radius: 999px;
+    color: var(--confirmed);
+    background: var(--confirmed-soft);
+    font-size: 11px;
+    font-weight: 800;
+    vertical-align: 1px;
+  }
+  .status.pending, .status.estimated { color: var(--pending); background: var(--pending-soft); }
+  .row-checks { display: flex; gap: 6px; }
+  .check-button {
+    width: 44px;
+    height: 44px;
+    display: grid;
+    place-items: center;
+    padding: 0;
+    border: 2px solid #e4dae8;
+    border-radius: 50%;
+    color: var(--muted);
+    background: #fff;
+    cursor: pointer;
+  }
+  .check-button[data-child="kenton"][aria-pressed="true"] { border-color: var(--kenton); color: #075e6c; background: var(--kenton-soft); }
+  .check-button[data-child="eddey"][aria-pressed="true"] { border-color: var(--eddey); color: #9a3f1d; background: var(--eddey-soft); }
+
+  .task-card { border: 2px solid transparent; }
+  .task-card.kenton { border-color: var(--kenton); background: linear-gradient(180deg, #fff, var(--kenton-soft)); }
+  .task-card.eddey { border-color: var(--eddey); background: linear-gradient(180deg, #fff, var(--eddey-soft)); }
+  .task-head { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
+  .task-head h2 { margin: 0; font-size: 17px; }
+  .task-progress { margin-left: auto; font-size: 12px; font-weight: 800; color: #6c5473; }
+  .task-list { list-style: none; padding: 0; margin: 0; }
+  .task-list li { display: flex; gap: 10px; align-items: flex-start; padding: 9px 0; border-bottom: 1px dashed rgba(98, 75, 105, .16); font-size: 14px; line-height: 1.5; }
+  .task-list li:last-child { border-bottom: 0; }
+  .task-list input { width: 24px; height: 24px; flex: 0 0 24px; margin: 0; }
+  .task-card.kenton input { accent-color: var(--kenton); }
+  .task-card.eddey input { accent-color: var(--eddey); }
+  .task-list .done { color: #a398a7; text-decoration: line-through; }
+  .task-empty { color: var(--muted); font-size: 13px; }
+  .task-open { display: inline-flex; min-height: 40px; align-items: center; margin-top: 7px; padding: 7px 11px; border-radius: 11px; color: #fff; background: #6958b5; font-size: 11.5px; font-weight: 900; text-decoration: none; }
+
+  .day-execution {
+    position: relative;
+    overflow: hidden;
+    border: 2px solid #6958b5;
+    background: linear-gradient(145deg, #fff 0%, #f7f2ff 58%, #eefcff 100%);
+  }
+  .execution-head { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 12px; }
+  .execution-copy { min-width: 0; flex: 1; }
+  .execution-kicker { margin: 0 0 3px; color: #6958b5; font-size: 11px; font-weight: 900; letter-spacing: .08em; }
+  .execution-head h2 { margin: 0; font-size: 20px; line-height: 1.3; }
+  .execution-head p { margin: 4px 0 0; color: var(--muted); font-size: 12px; line-height: 1.5; }
+  .execution-date { flex: 0 0 auto; padding: 6px 9px; border-radius: 999px; color: #51418e; background: #ede8ff; font-size: 11px; font-weight: 900; }
+  .execution-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+  .execution-child { min-width: 0; padding: 12px; border: 2px solid; border-radius: 17px; background: rgba(255, 255, 255, .92); }
+  .execution-child.kenton { border-color: var(--kenton); }
+  .execution-child.eddey { border-color: var(--eddey); }
+  .execution-child-head { display: flex; align-items: center; gap: 7px; margin-bottom: 8px; }
+  .execution-child-head strong { font-size: 14.5px; }
+  .execution-load { margin-left: auto; color: #64566c; font-size: 11px; font-weight: 900; }
+  .execution-fixed { margin: 0 0 8px; padding: 7px 8px; border-radius: 10px; color: #51485a; background: #f7f4fa; font-size: 11.5px; line-height: 1.5; }
+  .execution-steps { list-style: none; margin: 0; padding: 0; counter-reset: execution-step; }
+  .execution-step { position: relative; min-height: 34px; padding: 7px 0 7px 35px; border-top: 1px dashed rgba(98, 75, 105, .16); font-size: 12px; line-height: 1.5; }
+  .execution-step::before { counter-increment: execution-step; content: counter(execution-step); position: absolute; left: 0; top: 7px; width: 25px; height: 25px; display: grid; place-items: center; border-radius: 50%; color: #fff; background: #6958b5; font-size: 11px; font-weight: 900; }
+  .execution-step b { display: block; color: var(--ink); font-size: 12px; }
+  .execution-step span { display: block; color: var(--muted); }
+  .execution-stop { margin: 8px 0 0; padding: 7px 8px; border-radius: 10px; color: #7d403b; background: #fff0ee; font-size: 11px; line-height: 1.5; }
+  .execution-detail { width: 100%; min-height: 44px; margin-top: 9px; border: 0; border-radius: 12px; color: #fff; background: #6958b5; font-size: 12px; font-weight: 900; cursor: pointer; }
+
+  .director-intro {
+    border: 1px solid #ded5f5;
+    background: linear-gradient(135deg, #f7f2ff, #eefaff);
+  }
+  .director-intro h2 { margin: 0 0 7px; font-size: 18px; }
+  .director-intro p { margin: 0; color: var(--muted); font-size: 13.5px; line-height: 1.6; }
+  .tomorrow-brief {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid #d8d0ee;
+    background: linear-gradient(135deg, #fff 0%, #f7f2ff 48%, #eefcff 100%);
+  }
+  .tomorrow-brief::after {
+    content: "";
+    position: absolute;
+    right: -46px;
+    top: -58px;
+    width: 132px;
+    height: 132px;
+    border: 22px solid rgba(105, 88, 181, .08);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+  .tomorrow-head {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 12px;
+  }
+  .tomorrow-copy { min-width: 0; flex: 1; }
+  .tomorrow-kicker { margin: 0 0 3px; color: #6958b5; font-size: 11px; font-weight: 900; letter-spacing: .08em; }
+  .tomorrow-head h2 { margin: 0; font-size: 19px; line-height: 1.3; }
+  .tomorrow-head p { margin: 4px 0 0; color: var(--muted); font-size: 12px; line-height: 1.5; }
+  .tomorrow-open {
+    position: relative;
+    z-index: 1;
+    flex: 0 0 auto;
+    min-height: 44px;
+    padding: 9px 12px;
+    border: 0;
+    border-radius: 13px;
+    color: #fff;
+    background: #6958b5;
+    font-size: 12px;
+    font-weight: 900;
+    cursor: pointer;
+  }
+  .tomorrow-grid { position: relative; z-index: 1; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 9px; }
+  .tomorrow-child { min-width: 0; padding: 12px; border: 1px solid; border-radius: 16px; background: rgba(255, 255, 255, .88); }
+  .tomorrow-child.kenton { border-color: var(--kenton); }
+  .tomorrow-child.eddey { border-color: var(--eddey); }
+  .tomorrow-child-head { display: flex; align-items: center; gap: 7px; margin-bottom: 8px; }
+  .tomorrow-child-head strong { font-size: 14px; }
+  .load-dot { width: 10px; height: 10px; border-radius: 50%; box-shadow: 0 0 0 4px rgba(0, 0, 0, .04); }
+  .load-dot.green { background: #3d9b65; }
+  .load-dot.yellow { background: #d4a12c; }
+  .load-dot.red { background: #bf504b; }
+  .tomorrow-load { margin-left: auto; color: #64566c; font-size: 11px; font-weight: 900; }
+  .tomorrow-line { margin: 6px 0 0; color: #51485a; font-size: 11.5px; line-height: 1.5; }
+  .tomorrow-line b { color: var(--ink); }
+  .tomorrow-line.optional { color: #7a6c80; }
+  .tomorrow-stop { position: relative; z-index: 1; margin: 10px 0 0; padding: 8px 10px; border-radius: 11px; color: #7d403b; background: #fff0ee; font-size: 11.5px; line-height: 1.5; }
+  .director-rule {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 7px;
+    margin-top: 12px;
+  }
+  .director-rule span {
+    min-width: 0;
+    padding: 8px 6px;
+    border-radius: 12px;
+    color: #51418e;
+    background: rgba(255, 255, 255, .78);
+    font-size: 11.5px;
+    font-weight: 800;
+    line-height: 1.4;
+    text-align: center;
+  }
+  .tool-map {
+    border: 1px solid #d8e7dc;
+    background: linear-gradient(145deg, #f6fff8, #fffaf0);
+  }
+  .tool-map > summary { min-height: 44px; display: flex; align-items: center; font-size: 15px; font-weight: 900; cursor: pointer; }
+  .tool-map[open] > summary { margin-bottom: 7px; }
+  .tool-map h2 { margin: 0 0 7px; font-size: 18px; }
+  .tool-map > p { margin: 0; color: var(--muted); font-size: 13px; line-height: 1.6; }
+  .tool-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+    gap: 8px;
+    margin-top: 11px;
+  }
+  .tool-item { padding: 10px; border-radius: 13px; background: rgba(255, 255, 255, .84); }
+  .tool-item b { display: block; font-size: 13px; }
+  .tool-item span { display: block; margin-top: 3px; color: var(--muted); font-size: 11px; line-height: 1.5; }
+  .load-title { margin: 4px 0 7px; font-size: 13px; font-weight: 800; }
+  .load-choices {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 7px;
+    margin-bottom: 9px;
+  }
+  .load-button {
+    min-height: 58px;
+    padding: 8px 6px;
+    border: 2px solid transparent;
+    border-radius: 13px;
+    color: var(--ink);
+    background: #f7f4f8;
+    cursor: pointer;
+  }
+  .load-button b, .load-button span { display: block; }
+  .load-button b { font-size: 13px; }
+  .load-button span { margin-top: 2px; color: var(--muted); font-size: 10px; line-height: 1.35; }
+  .load-button[data-load="green"] { background: #edf9ef; }
+  .load-button[data-load="yellow"] { background: #fff6dc; }
+  .load-button[data-load="red"] { background: #fff0ee; }
+  .load-button[aria-pressed="true"] { border-color: currentColor; box-shadow: 0 4px 12px rgba(63, 46, 70, .12); }
+  .load-button[data-load="green"][aria-pressed="true"] { color: #247047; }
+  .load-button[data-load="yellow"][aria-pressed="true"] { color: #8b6414; }
+  .load-button[data-load="red"][aria-pressed="true"] { color: #a6403c; }
+  .load-advice {
+    margin: 0 0 8px;
+    padding: 9px 10px;
+    border-radius: 12px;
+    color: #51418e;
+    background: var(--schedule-soft);
+    font-size: 12px;
+    line-height: 1.5;
+  }
+  .school-extras { display: flex; align-items: center; flex-wrap: wrap; gap: 6px; margin: 0 0 9px; }
+  .school-extras > span { color: var(--muted); font-size: 11px; font-weight: 800; }
+  .school-chip, .dictation-toggle, .repair-button {
+    min-height: 34px;
+    padding: 6px 9px;
+    border: 1px solid #d9cfe0;
+    border-radius: 999px;
+    color: #63536c;
+    background: #fff;
+    font-size: 11px;
+    font-weight: 800;
+  }
+  .dictation-toggle, .repair-button { cursor: pointer; }
+  .dictation-toggle[aria-pressed="true"] { border-color: #9d6845; color: #8a4f28; background: #fff0df; }
+  .learning-task { align-items: stretch !important; }
+  .task-copy { min-width: 0; flex: 1; }
+  .task-meta { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 4px; }
+  .task-badge {
+    display: inline-flex;
+    align-items: center;
+    min-height: 22px;
+    padding: 2px 7px;
+    border-radius: 999px;
+    color: #665873;
+    background: #f3edf6;
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 800;
+  }
+  .task-badge.must { color: #7f2f2c; background: #ffe6e3; }
+  .task-badge.core { color: #805719; background: #fff2cb; }
+  .task-badge.recall { color: #0a6170; background: #dcf7fb; }
+  .task-copy strong { display: block; font-size: 14px; line-height: 1.5; }
+  .task-copy small { display: block; margin-top: 4px; color: var(--muted); font-size: 11.5px; line-height: 1.5; }
+  .task-goal, .task-question {
+    display: block;
+    margin-top: 6px;
+    padding: 7px 8px;
+    border-radius: 10px;
+    font-size: 11.5px;
+    line-height: 1.5;
+  }
+  .task-goal { color: #315e46; background: #ecf8ef; }
+  .task-question { color: #51418e; background: #f1edff; }
+  .prompt-box {
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px dashed rgba(98, 75, 105, .20);
+  }
+  .prompt-title { margin: 0 0 7px; font-size: 12px; font-weight: 800; }
+  .prompt-levels { display: grid; grid-template-columns: repeat(6, minmax(42px, 1fr)); gap: 5px; }
+  .prompt-level {
+    min-height: 44px;
+    padding: 4px 2px;
+    border: 1px solid #ded5e4;
+    border-radius: 11px;
+    color: #5f5264;
+    background: #fff;
+    font-size: 11px;
+    font-weight: 800;
+    cursor: pointer;
+  }
+  .prompt-level[aria-pressed="true"] { border-color: #6958b5; color: #fff; background: #6958b5; }
+  .prompt-help { margin-top: 8px; }
+  .prompt-help summary { color: #51418e; font-size: 12px; font-weight: 800; cursor: pointer; }
+  .prompt-help ol { margin: 7px 0 0; padding-left: 22px; color: var(--muted); font-size: 11.5px; line-height: 1.6; }
+  .repair-button { width: 100%; margin-top: 9px; border-radius: 11px; color: #7a3e22; background: #fff5e9; }
+  .repair-button[aria-pressed="true"] { border-color: #b96637; color: #fff; background: #b96637; }
+  .actual-progress { margin-top: 10px; }
+  .actual-progress summary { color: #6c5473; font-size: 12px; font-weight: 800; cursor: pointer; }
+  .progress-input {
+    width: 100%;
+    min-height: 46px;
+    margin-top: 8px;
+    padding: 9px 11px;
+    border: 1px solid #dcd2e2;
+    border-radius: 12px;
+    color: var(--ink);
+    background: #fff;
+    font-size: 13px;
+  }
+  .forecast-copy { margin: 7px 0 0; color: var(--muted); font-size: 11px; line-height: 1.5; }
+
+  .school-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+    margin: -2px 0 12px;
+  }
+  .school-meta span {
+    padding: 5px 9px;
+    border-radius: 999px;
+    color: #5d5270;
+    background: #f6f1fa;
+    font-size: 11.5px;
+    font-weight: 800;
+  }
+  .school-check {
+    margin-bottom: 12px;
+    padding: 10px 12px;
+    border-left: 5px solid var(--confirmed);
+    border-radius: 13px;
+    color: #245f45;
+    background: var(--confirmed-soft);
+    font-size: 13px;
+    line-height: 1.55;
+  }
+  .school-check.pending {
+    border-left-color: #d2a039;
+    color: #745312;
+    background: var(--pending-soft);
+  }
+  .school-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+  .school-child {
+    min-width: 0;
+    overflow: hidden;
+    border: 2px solid;
+    border-radius: 17px;
+    background: #fff;
+  }
+  .school-child.kenton { border-color: var(--kenton); }
+  .school-child.eddey { border-color: var(--eddey); }
+  .school-child-head {
+    padding: 10px 11px 9px;
+    font-size: 14px;
+    font-weight: 800;
+  }
+  .school-child.kenton .school-child-head { background: var(--kenton-soft); }
+  .school-child.eddey .school-child-head { background: var(--eddey-soft); }
+  .class-list { list-style: none; margin: 0; padding: 0 10px 5px; }
+  .class-row {
+    display: grid;
+    grid-template-columns: 66px minmax(0, 1fr);
+    gap: 7px;
+    align-items: center;
+    min-height: 43px;
+    padding: 6px 0;
+    border-bottom: 1px dashed var(--line);
+  }
+  .class-row:last-child { border-bottom: 0; }
+  .class-row.no-class { color: #9c929f; }
+  .class-period { font-size: 10.5px; line-height: 1.35; color: var(--muted); }
+  .class-period b { display: block; color: #5d5162; font-size: 11px; }
+  .class-subject { min-width: 0; font-size: 13px; font-weight: 800; line-height: 1.35; overflow-wrap: anywhere; }
+  .print-actions {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 9px;
+    margin-top: 12px;
+  }
+  .print-link {
+    min-height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    padding: 9px 10px;
+    border: 1px solid #dcd2e6;
+    border-radius: 13px;
+    color: var(--ink);
+    background: #faf8fc;
+    font-size: 12.5px;
+    font-weight: 800;
+    text-decoration: none;
+  }
+  .print-link svg {
+    width: 18px;
+    height: 18px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2.2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .parent-notes {
+    margin-bottom: 16px;
+    border-radius: 18px;
+    background: rgba(255, 255, 255, .76);
+    box-shadow: var(--shadow);
+  }
+  .parent-notes summary {
+    min-height: 52px;
+    display: flex;
+    align-items: center;
+    padding: 12px 16px;
+    font-size: 14px;
+    font-weight: 800;
+    cursor: pointer;
+  }
+  .parent-copy { padding: 0 17px 15px; color: var(--muted); font-size: 12.5px; line-height: 1.65; }
+  .parent-copy ul { margin: 6px 0 0; padding-left: 19px; }
+  .parent-copy li { margin: 5px 0; }
+  .save-note { margin: 5px 0 0; color: var(--muted); font-size: 12px; line-height: 1.55; text-align: center; }
+
+  @media (max-width: 380px) {
+    .wrap { padding-left: 12px; padding-right: 12px; }
+    .schedule-hero { padding: 18px 16px; }
+    .schedule-hero h2 { font-size: 23px; }
+    .timeline-row { grid-template-columns: 78px minmax(0, 1fr); }
+    .row-checks { grid-column: 2; justify-self: start; }
+    .pickup-list li { grid-template-columns: 78px minmax(0, 1fr); }
+
+    .school-grid { grid-template-columns: 1fr; }
+    .print-actions { grid-template-columns: 1fr; }
+    .prompt-levels { grid-template-columns: repeat(3, minmax(48px, 1fr)); }
+  }
+
+  @media (max-width: 500px) {
+    .child-lanes { grid-template-columns: 1fr; }
+    .lane-row { grid-template-columns: 80px minmax(0, 1fr) auto; }
+    .lane-time { font-size: 11px; }
+    .lane-body { font-size: 13px; }
+    .lane-body strong { font-size: 13.5px; }
+    .tomorrow-head { align-items: stretch; flex-direction: column; }
+    .tomorrow-open { width: 100%; }
+    .tomorrow-grid { grid-template-columns: 1fr; }
+    .execution-head { align-items: stretch; flex-direction: column; }
+    .execution-date { align-self: flex-start; }
+    .execution-grid { grid-template-columns: 1fr; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; }
+  }
+</style>
+<link rel="stylesheet" href="assets/portal-support.css">
+</head>
+<body class="portal-support">
+<main class="wrap">
+  <header class="topbar">
+    <a class="back" href="index.html" aria-label="返回家庭学习门户">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>
+    </a>
+    <h1>开学每日课表</h1>
+    <span class="version-pill">2026 秋季</span>
+  </header>
+
+  <section class="schedule-hero">
+    <span class="eyebrow">校内课表 + 接送 + 课外课 + 每日学习</span>
+    <h2>今天的安排，一眼看清</h2>
+    <p>先按真实课表看学校可能上到哪里，再只留做得完的学习动作。课外课替换家庭加练，不重复叠加。</p>
+  </section>
+
+  <nav class="daynav" aria-label="切换日期">
+    <button class="day-button" id="prevDay" type="button" aria-label="前一天">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>
+    </button>
+    <div class="date-copy"><b id="dateTitle"></b><span id="dateStatus"></span></div>
+    <button class="day-button" id="nextDay" type="button" aria-label="后一天">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
+    </button>
+  </nav>
+  <div class="week-strip" id="weekStrip" aria-label="本周日期"></div>
+  <div class="today-wrap"><button class="today-button" id="todayButton" type="button">回到今天</button></div>
+
+  <div class="phase" id="phase"></div>
+  <div id="alerts" aria-live="polite"></div>
+  <section class="section-card" id="travelEntry" aria-labelledby="travelEntryTitle" hidden>
+    <h2 class="section-title" id="travelEntryTitle">旅途中，语数英从这里接着学</h2>
+    <p><strong>语文 · 数学 · 英语 Unit 2–3</strong></p>
+    <p>9月19–28日按实际空档选一科。纸笔和网站合计，每科最多25–30分钟；只有几分钟就续做已学的内容，累了直接休息。</p>
+    <a class="print-link" id="travelEntryLink" href="apps/travel_learning_director_20260916.html">打开旅行学习 · 选日期与学科</a>
+  </section>
+  <section class="section-card day-execution" aria-labelledby="executionTitle">
+    <div class="execution-head">
+      <div class="execution-copy">
+        <p class="execution-kicker">选中哪天，就执行哪天</p>
+        <h2 id="executionTitle">放学后照着做</h2>
+        <p>这是当天真正要完成的清单，不是提醒。固定课会替换同科加练，任务做会就停。</p>
+      </div>
+      <span class="execution-date" id="executionDate"></span>
+    </div>
+    <div class="execution-grid" id="executionGrid"></div>
+  </section>
+  <section class="section-card" aria-labelledby="lanesTitle">
+    <h2 class="section-title" id="lanesTitle"><span class="section-icon" aria-hidden="true">🧭</span>兄弟分开看 · 今日安排</h2>
+    <div class="lane-legend" aria-label="日程状态说明">
+      <span><i class="legend-dot"></i>固定课程</span>
+      <span><i class="legend-dot free"></i>空档可安排</span>
+      <span><i class="legend-dot pending"></i>待确认</span>
+      <span><i class="legend-dot conflict"></i>时间冲突</span>
+    </div>
+    <div class="child-lanes" id="childLanes"></div>
+  </section>
+
+  <section class="section-card" aria-labelledby="pickupTitle">
+    <h2 class="section-title" id="pickupTitle"><span class="section-icon" aria-hidden="true">🚗</span>家长接送（当天）</h2>
+    <div class="focus-line" id="focusLine"></div>
+    <ul class="pickup-list" id="pickupList"></ul>
+  </section>
+
+  <section class="section-card" aria-labelledby="schoolTitle">
+    <h2 class="section-title" id="schoolTitle"><span class="section-icon" aria-hidden="true">📚</span>今天校内课程</h2>
+    <div class="school-meta"><span>2026 学年第一学期</span><span>时间按学校课表</span><span>不显示学校与教师信息</span></div>
+    <div class="school-check" id="schoolCheck"></div>
+    <div class="school-grid" id="schoolGrid"></div>
+    <div class="print-actions" aria-label="下载黑白课程表">
+      <a class="print-link" href="assets/printables/kenton-grade5-timetable-a4-landscape.png" download>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0 4-4m-4 4-4-4M5 19h14"/></svg>
+        下载 Kenton 黑白课表
+      </a>
+      <p class="muted">Eddey 9月8日含任课老师的新课表已单独交付家长，请使用新版打印文件。</p>
+    </div>
+  </section>
+
+  <section class="section-card director-intro" aria-labelledby="directorTitle">
+    <h2 id="directorTitle">今天学习只做最值钱的事</h2>
+    <p>先完成学校任务，再修一个关键点，再做一个到期回忆。做会就停；学校作业已到60分钟、长课日或很累时，不再加新内容。</p>
+    <div class="director-rule" aria-label="今日学习顺序">
+      <span>1　学校任务</span><span>2　一个关键点</span><span>3　一个到期回忆</span>
+    </div>
+  </section>
+
+  <details class="section-card tool-map">
+    <summary id="toolMapTitle">手上的资料怎样分工（点开查看）</summary>
+    <p>同一个知识点同一天只调用一种主资料。不是四套都做，而是按学习阶段选择最短路径。</p>
+    <div class="tool-grid">
+      <div class="tool-item"><b>金牌预习 · 课前</b><span>只看同名课/对应小节，做第1个诊断动作，留下1个真问题；5分钟到点即停。</span></div>
+      <div class="tool-item"><b>金牌学习手册 · 当天</b><span>先闭书回忆，再只做1个最能证明理解的核心问/题；不整页刷完。</span></div>
+      <div class="tool-item"><b>华东师大一课一练 · 周末</b><span>只做本周老师已教范围的6–8道代表题；只分析1–2道真错题。</span></div>
+      <div class="tool-item"><b>学而思精准学 · 定点修补</b><span>只有“还是不会”的点才调用：先诊断，只学1个薄弱点，再做2题验证。</span></div>
+      <div class="tool-item"><b>口算 / 默写 · 学校任务</b><span>口算每天按老师数量完成；默写只有老师布置才打开。它们会挤掉家庭加练，不另行叠加。</span></div>
+    </div>
+  </details>
+
+  <section class="section-card task-card kenton" id="kentonTaskCard" aria-labelledby="kentonTasksTitle">
+    <div class="task-head"><h2 id="kentonTasksTitle">Kenton · 当天学习</h2><span class="task-progress" id="kentonProgress"></span></div>
+    <p class="load-title">先选今天真实状态</p>
+    <div class="load-choices" id="kentonLoadChoices" aria-label="Kenton 今天的学习负荷">
+      <button class="load-button" type="button" data-load="green"><b>轻松</b><span>作业少、有精神</span></button>
+      <button class="load-button" type="button" data-load="yellow"><b>一般</b><span>作业较多或有短课</span></button>
+      <button class="load-button" type="button" data-load="red"><b>很累</b><span>作业满60分或有长课</span></button>
+    </div>
+    <p class="load-advice" id="kentonLoadAdvice"></p>
+    <div class="school-extras"><span>学校加项</span><span class="school-chip">口算 · 每天</span><button class="dictation-toggle" id="kentonDictation" type="button">默写 · 今天没有</button></div>
+    <ul class="task-list" id="kentonTasks"></ul>
+    <div class="prompt-box" id="kentonPromptBox">
+      <p class="prompt-title">这次最高用了几级提示？</p>
+      <div class="prompt-levels" id="kentonPromptLevels" aria-label="Kenton 提示等级"></div>
+      <details class="prompt-help"><summary>卡住时按什么顺序帮？</summary><ol><li>先让他重新说题意。</li><li>再圈已知、未知和关键条件。</li><li>仍不会才画图、时间轴或变量盒。</li><li>再不行只演示第一步。</li><li>完整讲解后必须回原题自己重做。</li></ol></details>
+      <button class="repair-button" id="kentonRepair" type="button">还是不会 · 排入下一次精准学</button>
+    </div>
+    <details class="actual-progress"><summary>家长校准：老师今天实际上到哪里</summary><input class="progress-input" id="kentonActualProgress" type="text" maxlength="100" placeholder="例如：数学小数乘整数已经讲完"><p class="forecast-copy" id="kentonForecast"></p></details>
+  </section>
+
+  <section class="section-card task-card eddey" id="eddeyTaskCard" aria-labelledby="eddeyTasksTitle">
+    <div class="task-head"><h2 id="eddeyTasksTitle">Eddey · 当天学习</h2><span class="task-progress" id="eddeyProgress"></span></div>
+    <p class="load-title">先选今天真实状态</p>
+    <div class="load-choices" id="eddeyLoadChoices" aria-label="Eddey 今天的学习负荷">
+      <button class="load-button" type="button" data-load="green"><b>轻松</b><span>作业少、有精神</span></button>
+      <button class="load-button" type="button" data-load="yellow"><b>一般</b><span>作业较多或有短课</span></button>
+      <button class="load-button" type="button" data-load="red"><b>很累</b><span>作业满60分或有长课</span></button>
+    </div>
+    <p class="load-advice" id="eddeyLoadAdvice"></p>
+    <div class="school-extras"><span>学校加项</span><span class="school-chip">口算 · 每天</span><button class="dictation-toggle" id="eddeyDictation" type="button">默写 · 今天没有</button></div>
+    <ul class="task-list" id="eddeyTasks"></ul>
+    <div class="prompt-box" id="eddeyPromptBox">
+      <p class="prompt-title">这次最高用了几级提示？</p>
+      <div class="prompt-levels" id="eddeyPromptLevels" aria-label="Eddey 提示等级"></div>
+      <details class="prompt-help"><summary>卡住时按什么顺序帮？</summary><ol><li>先让他重新说题意。</li><li>再圈已知、未知和关键条件。</li><li>仍不会才画图、时间轴或变量盒。</li><li>再不行只演示第一步。</li><li>完整讲解后必须回原题自己重做。</li></ol></details>
+      <button class="repair-button" id="eddeyRepair" type="button">还是不会 · 排入下一次精准学</button>
+    </div>
+    <details class="actual-progress"><summary>家长校准：老师今天实际上到哪里</summary><input class="progress-input" id="eddeyActualProgress" type="text" maxlength="100" placeholder="例如：语文《观潮》讲到第2页"><p class="forecast-copy" id="eddeyForecast"></p></details>
+  </section>
+
+  <section class="section-card tomorrow-brief" aria-labelledby="tomorrowTitle">
+    <div class="tomorrow-head">
+      <div class="tomorrow-copy">
+        <p class="tomorrow-kicker">次要预览 · 不替代当天日程</p>
+        <h2 id="tomorrowTitle">顺便看一眼明天</h2>
+        <p id="tomorrowSubtitle">同一套课表、课外课和学习进度计算，不另外编一份。</p>
+      </div>
+      <button class="tomorrow-open" id="tomorrowOpen" type="button">打开明天完整日程</button>
+    </div>
+    <div class="tomorrow-grid" id="tomorrowGrid"></div>
+    <p class="tomorrow-stop">统一停止线：有默写先扣8分钟；学校书面作业达到60分钟、明显疲劳或进入睡前流程，家庭加练直接取消。</p>
+  </section>
+
+  <details class="parent-notes">
+    <summary>家长说明 · 阶段切换与待确认项</summary>
+    <div class="parent-copy">
+      <ul>
+        <li>每日学习不是填满空档：先做学校必须任务，再从“关键点”和“到期回忆”中最多各留一个；提前证明会了就停止。</li>
+        <li>状态按当天真实作业量和精神选择。学校书面作业已到60分钟、刚上完长课或明显疲劳，选“很累”，家庭加练归零或只做3分钟口头收口。</li>
+        <li>预习只负责找到核心关系和一个真问题；复习必须先闭书提取，再核对第一处错误，最后回原题或做一个小变式。</li>
+        <li>上册按 D0当天复盘、D1隔天提取、D+2～4掌握门、周末《一课一练》、D+21旧错抽查滚动；同日到期太多时，过期低价值项直接删除。</li>
+        <li>页面预测由每天真实语数英课次和教材目录推算。老师实际内容优先：在孩子卡片中填当天真实进度，它会成为当天第一优先任务。</li>
+        <li>普通日哥哥16:30放学由爷爷接，弟弟16:40放学由爸爸接；接好后汇合。自9月17日起，正常上课的周四哥哥16:30–17:50参加学校社团，17:50爷爷接；弟弟16:40爸爸接，两边回家路线需另确认。弟弟课外写字已暂停，寒假恢复日期待确认，不自动恢复或补排任务；历史日期只保留当时计划，不作为实际上课证明。</li>
+        <li>周三 Kenton 17:00–18:30、Eddey 18:40–20:10 分别在艾美趣上课；Kenton 下课后自行回家，Eddey 从家里单独步行去上课。</li>
+        <li>外教按已核验预约的具体日期显示；新预约从独立日期数据读取，不用“每周固定”凭空补课。Bryony 对应 Kenton，Valeria 对应 Eddey；每节 25 分钟。</li>
+        <li>10月10日家长确认：Kenton、Eddey 每周三、周五均15:00接走。当天实际到家后再安排学习；旧接送时间仅保留在历史日期。</li>
+        <li>9月历史截图的 Bryony 课程：9月3日18:30、4日18:00、7日17:00、8日17:00、14日18:00、15日18:00、17日18:30、24日18:30；其中7日、8日17:00与现有接送路线可能冲突，页面已标红。</li>
+        <li>9月历史截图的 Valeria 课程：9月2日20:30、4日20:30、9日18:00、16日18:00、18日19:00、29日20:00。9月15日和23日的订阅续订提示不是课程；续订后没有出现具体日期前，不写入日程。</li>
+        <li>周六 14:00–16:00 的数学一对一余课，单节时长、教师和周末校区尚未书面确认，暂不作为正式排课。</li>
+        <li>周五篮球按 90 分钟暂估到 17:30，正式结束时间等机构课表确认。</li>
+        <li>第一周需要实测两校顺序接送和到家时间；页面中的交通分钟数是规划估计，不是实时导航。</li>
+        <li>晨间送学和具体接送人没有在当前权威课表中另列，本页不补猜。</li>
+      </ul>
+    </div>
+  </details>
+
+  <p class="save-note">打卡按“日期 + 孩子”分别保存在本设备，不上传学习档案。</p>
+  <div class="footer-note">Kenton & Eddey · 2026–2027 课程、接送与每日学习表 v4.2</div>
+</main>
+
+<script src="data/fall-2026-learning-anchors.js"></script>
+<script src="assets/schedule-evidence.js"></script>
+<script src="assets/schedule-bookings.js"></script>
+<script>
+(() => {
+  "use strict";
+
+  const BOOKING_CACHE_KEY = "study:schedule:bookings-v1";
+  let bookingSnapshot = null;
+  let bookingLoadFailed = false;
+  try {
+    const savedBookings = window.DDScheduleInitialBookings || JSON.parse(localStorage.getItem(BOOKING_CACHE_KEY) || "null");
+    if (savedBookings && window.DDScheduleBookings) bookingSnapshot = window.DDScheduleBookings.normalize(savedBookings);
+  } catch (_) { /* Invalid cache never becomes an empty confirmed day. */ }
+  let scheduleEvidence = window.DDScheduleInitialEvidence || {};
+  let evidenceReadStatus = Object.keys(scheduleEvidence).length ? "provided" : "not_loaded";
+  const SCHEDULE_ID = "fall-2026-v3";
+  const SCHEDULE_START = "2026-09-01";
+  const WEEK_NAMES = ["周日", "周一", "周二", "周三", "周四", "周五", "周六"];
+  const C = "confirmed";
+  const P = "pending";
+  const E = "estimated";
+  const LEARNING_PLAN_ID = "school-linked-learning-v1";
+  const LEARNING_ANCHORS = Object.freeze(Array.isArray(window.FALL_2026_LEARNING_ANCHORS) ? window.FALL_2026_LEARNING_ANCHORS : []);
+  const LOAD_NAMES = Object.freeze({ green: "轻松", yellow: "一般", red: "很累" });
+  const LOAD_COLORS = Object.freeze({ green: "绿", yellow: "黄", red: "红" });
+  const PROMPT_LEVELS = Object.freeze([
+    "0 自己完成", "1 重说题意", "2 圈条件", "3 画图表示", "4 只看第一步", "5 讲解后重做"
+  ]);
+  const DEFAULT_LOADS = Object.freeze({
+    kenton: { 1: "yellow", 2: "red", 3: "red", 4: "yellow", 5: "red", 6: "green", 0: "yellow" },
+    eddey: { 1: "red", 2: "green", 3: "red", 4: "green", 5: "red", 6: "green", 0: "yellow" }
+  });
+  const BASE_EXTRA_CAP = Object.freeze({
+    kenton: { 1: 20, 2: 0, 3: 8, 4: 20, 5: 0, 6: 35, 0: 20 },
+    eddey: { 1: 8, 2: 25, 3: 5, 4: 20, 5: 0, 6: 30, 0: 8 }
+  });
+  const KNOWN_SCHOOL_BREAKS = Object.freeze([
+    ["2026-09-25", "2026-09-27", "中秋假期"],
+    ["2026-10-01", "2026-10-07", "国庆假期"],
+    ["2027-01-23", "2027-02-21", "寒假"]
+  ]);
+  const EDDEY_CHINESE_FOCUS = Object.freeze({
+    "第一单元": "自然之美", "第二单元": "从不同角度提出问题", "第三单元": "连续细致观察",
+    "第四单元": "神话的起因、经过和结果", "第五单元": "把一件事按顺序写清楚",
+    "第六单元": "抓住特点有顺序地介绍", "第七单元": "人物行动、心情与成长",
+    "第八单元": "人物志向与家国情怀"
+  });
+
+
+  const SCHOOL_PERIODS = Object.freeze([
+    { label: "第1节", time: "8:20–8:55" },
+    { label: "第2节", time: "9:30–10:05" },
+    { label: "第3节", time: "10:20–10:55" },
+    { label: "第4节", time: "11:10–11:45" },
+    { label: "午会课", time: "12:20–12:35" },
+    { label: "第5节", time: "13:05–13:40" },
+    { label: "第6节", time: "14:10–14:45" },
+    { label: "第7节", time: "15:00–15:35" },
+    { label: "第8节", time: "15:50–16:25" }
+  ]);
+
+  const SCHOOL_TIMETABLE = Object.freeze({
+    kenton: {
+      name: "Kenton",
+      grade: "五年级",
+      days: {
+        1: ["校/班会", "语文", "艺术·音乐", "数学", "午会课", "语文", "信息", "体育与健康", "科学"],
+        2: ["语文", "科学", "数学", "体育与健康", "午会课", "艺术·美术", "英语", "写字", "道德与法治"],
+        3: ["数学", "英语", "语文", "跳踢", "午会课", "语文", "道德与法治", "兴拓", ""],
+        4: ["艺术·美术", "劳动", "艺术·音乐", "语文", "午会课", "体育与健康", "综合实践活动", "数学", "体活51"],
+        5: ["英语", "体育与健康", "语文", "数学", "午会课", "道德与法治", "体活52", "", ""]
+      }
+    },
+    eddey: {
+      name: "Eddey",
+      grade: "四年级",
+      days: {
+        1: ["队活动", "英语", "跳踢", "科学", "午会课", "语文", "数学", "道德与法治", "体活41"],
+        2: ["体育与健康", "语文", "信息", "数学", "午会课", "写字", "道德与法治", "艺术·音乐", "艺术·美术"],
+        3: ["数学", "语文", "语文", "科学", "午会课", "体育与健康", "人工智能", "兴拓", ""],
+        4: ["语文", "艺术·音乐", "英语", "语文", "午会课", "数学", "体育与健康", "艺术·美术", ""],
+        5: ["体育与健康", "数学", "英语", "语文", "午会课", "劳动", "综合实践活动", "体活42", ""]
+      }
+    }
+  });
+
+  // Teacher timetable supplied 2026-09-08. Earlier effective date was not supplied.
+  const EDDEY_TIMETABLE_20260908 = {"1": ["校本课程（队活动）", "外语", "校本课程（跳踢）", "科学", "午会课", "语文", "数学", "道德与法治", "课后服务（体育活动1）"], "2": ["体育与健康", "语文", "信息科技", "数学", "午会课", "美术", "语文（书法）", "音乐", "道德与法治"], "3": ["数学", "语文", "语文", "科学", "午会课", "体育与健康", "人工智能基础", "课后服务（兴拓）", "课后服务（兴拓）"], "4": ["语文", "音乐", "外语", "语文", "午会课", "数学", "体育与健康", "美术", "课后服务"], "5": ["体育与健康", "数学", "外语", "语文", "午会课", "劳动", "综合实践活动", "课后服务（体育活动2）", ""]};
+  function schoolSubjectsFor(child, value) {
+    return child === "eddey" && value >= "2026-09-08" && value <= "2027-01-22"
+      ? EDDEY_TIMETABLE_20260908[dayIndex(value)]
+      : SCHOOL_TIMETABLE[child].days[dayIndex(value)];
+  }
+  const PICKUP_CONFIRMED_FROM = "2026-10-10";
+  const PICKUP_CONFIRMED_NOTICE = "家长已确认：哥哥、弟弟每周三和周五均15:00接走。学习安排从实际到家后开始。";
+  function hasConfirmedPickup(value, dow = dayIndex(value)) {
+    return value >= PICKUP_CONFIRMED_FROM && value <= "2027-01-22" && [3, 5].includes(dow) && isSchoolDay(value);
+  }
+
+  const EDDEY_WED_NOTICE = "弟弟新课表：周三第7、8节均为兴拓，16:25课程结束。原约15:45–15:50接走与第8节冲突；是否获准提前离校待确认。哥哥原接送安排保留。";
+
+  const SCHOOL_CHECKS = Object.freeze({
+    1: { state: "ok", text: "已核对家长实际安排：哥哥16:30放学由爷爷接，弟弟16:40放学由爸爸接；接好后汇合一起回家。" },
+    2: { state: "ok", text: "已核对家长实际安排：哥哥16:30爷爷接，弟弟16:40爸爸接；两边同步。" },
+    3: { state: "pending", text: "待确认：Kenton 第 7 节“兴拓”到 15:35，旧接送表的 15:30 与上课冲突；先按 15:35 后安排。" },
+    4: { state: "ok", text: "已核对家长实际安排：哥哥16:30爷爷接，弟弟16:40爸爸接；接好后汇合一起回家。" },
+    5: { state: "ok", text: "已核对：Kenton 最后一节到 14:45，Eddey 最后一节到 15:35；现有接送不早于各自下课。" },
+    6: { state: "ok", text: "周末没有校内课程；下面只显示家庭与课外安排。" },
+    0: { state: "ok", text: "周末没有校内课程；下面只显示家庭与课外安排。" }
+  });
+
+  // Preply only guarantees the concrete dates shown in “近期课堂”. Subscription
+  // renewal reminders are deliberately not expanded into invented weekly lessons.
+  const WEEKLY_ONLINE = Object.freeze({});
+
+  const DATE_ONLINE = Object.freeze({
+    "2026-09-02": {
+      replace: ["eddey"],
+      lessons: [{ id: "preply-eddey-valeria-20260902", child: "eddey", order: 2030, time: "20:30–20:55", title: "线上外教 · Valeria", note: "Preply截图已确认；艾美趣下课后只有20分钟衔接", kind: "online", state: C, status: "截图已确认" }]
+    },
+    "2026-09-03": {
+      replace: ["kenton"],
+      lessons: [{ id: "preply-kenton-bryony-20260903", child: "kenton", order: 1830, time: "18:30–18:55", title: "线上外教 · Bryony", note: "Preply截图已确认", kind: "online", state: C, status: "截图已确认" }]
+    },
+    "2026-09-04": {
+      replace: ["kenton", "eddey"],
+      lessons: [
+        { id: "preply-kenton-bryony-20260904", child: "kenton", order: 1800, time: "18:00–18:25", title: "线上外教 · Bryony", note: "Preply截图已确认", kind: "online", state: C, status: "截图已确认" },
+        { id: "preply-eddey-valeria-20260904", child: "eddey", order: 2030, time: "20:30–20:55", title: "线上外教 · Valeria", note: "Preply截图已确认", kind: "online", state: C, status: "截图已确认" }
+      ]
+    },
+    "2026-09-07": {
+      replace: ["kenton"],
+      lessons: [{ id: "preply-kenton-bryony-20260907", child: "kenton", order: 1700, time: "17:00–17:25", title: "线上外教 · Bryony", note: "Preply截图已确认，但与两校接送路线可能重叠", kind: "online", state: C, status: "截图已确认 · 接送有冲突", conflict: true }]
+    },
+    "2026-09-08": {
+      replace: ["kenton"],
+      lessons: [{ id: "preply-kenton-bryony-20260908", child: "kenton", order: 1700, time: "17:00–17:25", title: "线上外教 · Bryony", note: "Preply截图已确认，但预计到家时间晚于开课时间", kind: "online", state: C, status: "截图已确认 · 接送有冲突", conflict: true }]
+    },
+    "2026-09-09": {
+      replace: ["eddey"],
+      lessons: [{ id: "preply-eddey-valeria-20260909", child: "eddey", order: 1800, time: "18:00–18:25", title: "线上外教 · Valeria", note: "Preply截图已确认；与18:10开始的艾美趣上机安排重叠，需调整", kind: "online", state: C, status: "截图已确认", conflict: true }]
+    },
+    "2026-09-14": {
+      replace: ["kenton"],
+      lessons: [{ id: "preply-kenton-bryony-20260914", child: "kenton", order: 1800, time: "18:00–18:25", title: "线上外教 · Bryony", note: "Preply截图已确认", kind: "online", state: C, status: "截图已确认" }]
+    },
+    "2026-09-15": {
+      replace: ["kenton"],
+      lessons: [{ id: "preply-kenton-bryony-20260915", child: "kenton", order: 1800, time: "18:00–18:25", title: "线上外教 · Bryony", note: "Preply截图已确认；当天同时有Bryony订阅续订提醒", kind: "online", state: C, status: "截图已确认" }]
+    },
+    "2026-09-16": {
+      replace: ["eddey"],
+      lessons: [{ id: "preply-eddey-valeria-20260916", child: "eddey", order: 1800, time: "18:00–18:25", title: "线上外教 · Valeria", note: "Preply截图已确认；下课后直接步行去艾美趣", kind: "online", state: C, status: "截图已确认" }]
+    },
+    "2026-09-17": {
+      replace: ["kenton"],
+      lessons: [{ id: "preply-kenton-bryony-20260917", child: "kenton", order: 1830, time: "18:30–18:55", title: "线上外教 · Bryony", note: "Preply截图已确认", kind: "online", state: C, status: "截图已确认" }]
+    },
+    "2026-09-18": {
+      replace: ["eddey"],
+      lessons: [{ id: "preply-eddey-valeria-20260918", child: "eddey", order: 1900, time: "19:00–19:25", title: "线上外教 · Valeria", note: "Preply截图已确认", kind: "online", state: C, status: "截图已确认" }]
+    },
+    "2026-09-24": {
+      replace: ["kenton"],
+      lessons: [{ id: "preply-kenton-bryony-20260924", child: "kenton", order: 1830, time: "18:30–18:55", title: "线上外教 · Bryony", note: "Preply截图已确认", kind: "online", state: C, status: "截图已确认" }]
+    },
+    "2026-09-29": {
+      replace: ["eddey"],
+      lessons: [{ id: "preply-eddey-valeria-20260929", child: "eddey", order: 2000, time: "20:00–20:25", title: "线上外教 · Valeria", note: "Preply截图已确认", kind: "online", state: C, status: "截图已确认" }]
+    }
+  });
+
+  const DATE_NOTICES = Object.freeze({
+    "2026-09-02": { type: "pending", text: "当日特殊衔接：Eddey 20:10 艾美趣下课，20:30 开始 Valeria 外教；回家和准备设备只有 20 分钟。" },
+    "2026-09-04": { type: "normal", text: "截图已确认两节外教：Kenton 18:00–18:25 Bryony；Eddey 20:30–20:55 Valeria。" },
+    "2026-09-07": { type: "conflict", text: "时间冲突：Kenton 17:00 外教紧接周一两校放学接送，现有路线可能赶不上，需确认改期或当天上课地点。" },
+    "2026-09-08": { type: "conflict", text: "时间冲突：Kenton 17:00 Bryony 外教早于现有预计到家时间；必须先确认在车上安全地点上课、调整接送或改期。" },
+    "2026-09-09": { type: "conflict", text: "新确认的上机安排与外教冲突：Eddey 需18:10到艾美趣完成3次上机，但18:00–18:25已有Valeria外教；两项不能同时完成，需家长联系一方调整。" },
+    "2026-09-15": { type: "normal", text: "Kenton 18:00–18:25 Bryony 已确认；页面同时显示订阅续订提醒，续订后新生成的课程需拿到具体日期再加入。" },
+    "2026-09-18": { type: "normal", text: "截图已确认：Eddey 19:00–19:25 上 Valeria 外教。" },
+    "2026-09-23": { type: "pending", text: "今天只有 Valeria 订阅续订提醒，不是一节课；续订后尚未出现的周三、周五课程不提前写入日程。" }
+  });
+
+  const DATE_REQUIRED_LEARNING_TASKS = Object.freeze({
+    "2026-09-03": {
+      kenton: [
+        { id: "kenton-daily-cn-math-0903", kind: "must", badge: "语数日清", minutes: 20, duration: "各10分钟", text: "语文：合书复述当天课文或笔记并检查重点字词；数学：完成10分钟计算，订正第一处真实错误。", note: "学校已完成同类内容可以抵扣，但语文和数学都要留下当日复习证据。" },
+        { id: "kenton-vocab-0903", kind: "must", badge: "单词工坊", minutes: 18, duration: "约18分钟", text: "校内Unit 1先背5词；Power Up 2 Unit 5的9词今天整批背完，并用键盘独立拼写。", note: "课外词不拆到多天；dophin按正确拼写dolphin练。", href: "apps/kenton_vocabulary_workshop_20260903.html" },
+        { id: "kenton-powerup-homework-0903", kind: "must", badge: "Power Up作业", minutes: 30, duration: "约30分钟", text: "完成比较级/最高级练习卷；抄写Unit 5词；朗读小故事并回传视频；最后看一次课堂笔记。", note: "18:30外教前先完成最紧急书面项；视频和复习可放在外教、晚饭后。" }
+      ],
+      eddey: [
+        { id: "eddey-daily-cn-math-0903", kind: "must", badge: "语数日清", minutes: 20, duration: "各10分钟", text: "语文：合书复述当天课文或笔记并检查重点字词；数学：完成10分钟计算，订正第一处真实错误。", note: "学校作业1小时内完成后直接进入日清；做对且能说理由就停。" },
+        { id: "eddey-vocab-0903", kind: "must", badge: "单词工坊", minutes: 16, duration: "约16分钟", text: "校内Unit 1先背5词；Phrased Reading L2的8个课外词组今天整批背完，并用键盘独立拼写。", note: "课外词组不拆到多天；some/any要连同句子用途一起记。", href: "apps/eddey_vocabulary_workshop_20260903.html" },
+        { id: "eddey-gordon-homework-0903", kind: "must", badge: "Gordon作业", minutes: 28, duration: "约28分钟", text: "完成《Gordon in the tree》练习卷；朗读并回传视频；复习课堂笔记；笔记练习请家长签字。", note: "上机3次不在家做，改到下周三课前由老师带做。" }
+      ]
+    },
+    "2026-09-04": {
+      kenton: [{ id: "kenton-vocab-0904", kind: "must", badge: "学校单词", minutes: 6, duration: "约6分钟", text: "完成Unit 1剩余2词：view / how about；先看应用句，再键盘默写。", note: "昨天课外9词已整批完成，今天只回炉真实错词。", href: "apps/kenton_vocabulary_workshop_20260903.html" }],
+      eddey: [{ id: "eddey-vocab-0904", kind: "must", badge: "学校单词", minutes: 10, duration: "约10分钟", text: "完成Unit 1接下来的5词：art room / keep ... tidy / project / begin / let。", note: "每词放进校园句子后再键盘默写。", href: "apps/eddey_vocabulary_workshop_20260903.html" }]
+    },
+    "2026-09-07": {
+      eddey: [{ id: "eddey-vocab-0907", kind: "must", badge: "学校单词", minutes: 8, duration: "约8分钟", text: "完成Unit 1最后3词：bamboo / tall / student，并做一次全单元错词回炉。", note: "只重做错词；连续独立正确2次才毕业。", href: "apps/eddey_vocabulary_workshop_20260903.html" }]
+    }
+  });
+
+  const DATE_PLAN_OVERRIDES = Object.freeze({
+    "2026-09-02": {
+      focus: "Kenton 17:00–18:30 在艾美趣上课，18:30 自行回家；Eddey 18:25 从家单独出发，18:40–20:10 在艾美趣上课，回家后 20:30–20:55 上 Valeria 外教，只有 20 分钟衔接。",
+      tasks: {
+        kenton: ["第 7 节 15:35 结束后再接（具体分钟待确认）", "17:00–18:30 艾美趣", "18:30 下课后自行回家"],
+        eddey: ["第 7 节 15:35 结束后再接", "18:25 从家单独步行去艾美趣", "18:40–20:10 艾美趣", "20:30–20:55 Valeria 外教"]
+      }
+    },
+    "2026-09-03": {
+      focus: "学校作业后语文、数学各做10分钟日清；两人完成各自学校单词和当天课外词整批键盘默写。Kenton 18:30–18:55上Bryony外教，老师课外作业在外教前后分段完成。",
+      tasks: {
+        kenton: ["学校作业后语数各10分钟", "Unit 1五词 + Power Up九词整批默写", "18:30–18:55 Bryony外教", "完成Power Up练习卷、抄词、朗读视频和笔记"],
+        eddey: ["学校作业后语数各10分钟", "Unit 1五词 + Phrased Reading八词整批默写", "完成Gordon练习卷、朗读视频、笔记复习和签字"]
+      }
+    },
+    "2026-09-04": {
+      focus: "两人篮球结束回家后，Kenton 18:00–18:25 上 Bryony 外教，Eddey 20:30–20:55 上 Valeria 外教；外教已算当天英语负荷，不再追加家庭英语练习。",
+      tasks: {
+        kenton: ["课前车上吃点心", "16:00–17:30 篮球（暂估）", "18:00–18:25 Bryony 外教"],
+        eddey: ["课前车上吃点心", "16:00–17:30 篮球（暂估）", "20:30–20:55 Valeria 外教"]
+      }
+    },
+    "2026-09-07": {
+      focus: "哥哥16:30爷爷接、弟弟16:40爸爸接后汇合回家。Kenton 17:00–17:25 Bryony 外教与接送汇合衔接过紧；Eddey 先吃点心或简餐，再上18:30–20:00写字课。",
+      tasks: {
+        kenton: ["16:30爷爷接", "处理17:00–17:25 Bryony外教与接送汇合冲突"],
+        eddey: ["16:40爸爸接", "与哥哥一侧汇合", "18:30–20:00写字课"]
+      }
+    },
+    "2026-09-08": {
+      focus: "哥哥16:30爷爷接、弟弟16:40爸爸接后仍需汇合回家，但Kenton 17:00–17:25已确认Bryony外教；先解决上课地点、接送或改期。",
+      tasks: {
+        kenton: ["在学校尽量完成当天作业", "处理17:00–17:25 Bryony外教与接送冲突"],
+        eddey: ["在学校尽量完成当天作业", "到家后的空档再安排晚饭与作业"]
+      }
+    },
+    "2026-09-09": {
+      focus: "Eddey需提前30分钟到艾美趣，由老师在18:10–18:40完成3次上机；但Valeria外教已确认18:00–18:25，时间重叠，必须先调整其中一项。",
+      tasks: {
+        eddey: ["17:55左右从家出发", "18:10–18:40老师带做3次上机", "18:40–20:10艾美趣英语", "18:00–18:25 Valeria外教当前冲突，待调整"]
+      }
+    },
+    "2026-09-15": {
+      focus: "Kenton 18:00–18:25 上 Bryony 外教；到家后先完成最紧急的学校任务并准备设备。订阅续订提醒不等于未来课程已排好。",
+      tasks: {
+        kenton: ["在学校尽量完成当天作业", "18:00–18:25 Bryony 外教"],
+        eddey: ["在学校尽量完成当天作业", "到家后的空档再安排晚饭与作业"]
+      }
+    },
+    "2026-09-18": {
+      focus: "两人篮球结束回家吃晚饭；Eddey 19:00–19:25 上 Valeria 外教，19:25 后休息或只完成学校必须任务。",
+      tasks: {
+        kenton: ["课前车上吃点心", "16:00–17:30 篮球（暂估）", "篮球后的空档再安排作业"],
+        eddey: ["课前车上吃点心", "16:00–17:30 篮球（暂估）", "19:00–19:25 Valeria 外教"]
+      }
+    }
+  });
+
+  const DATE_ROW_OVERRIDES = Object.freeze({
+    "2026-09-02": {
+      eddey: {
+        remove: ["wed-e-free-before", "wed-e-free-after", "wed-e-walk"],
+        add: [
+          { id: "wed-e-free-0902", order: 1750, time: "到家后–18:25", icon: "○", title: "空档 · 可安排", note: "需预留步行去艾美趣的时间", who: "eddey", kind: "free", state: C },
+          { id: "wed-e-walk-0902", order: 1825, time: "18:25–18:40", icon: "走", title: "从家单独步行去艾美趣", note: "18:40开课", who: "eddey", kind: "walk", state: C },
+          { id: "wed-e-return-0902", order: 2011, time: "20:10–20:30", icon: "↗", title: "步行回家 + 准备外教", note: "衔接仅20分钟", who: "eddey", kind: "walk", state: C },
+          { id: "wed-e-free-after-0902", order: 2056, time: "20:55 后", icon: "○", title: "空档 · 可安排", who: "eddey", kind: "free", state: C }
+        ]
+      }
+    },
+    "2026-09-03": {
+      kenton: {
+        remove: ["thu-k-free"],
+        add: [
+          { id: "thu-k-free-before-0903", order: 1736, time: "到家后–18:30", icon: "○", title: "空档 · 可安排", note: "18:28前准备好设备", who: "kenton", kind: "free", state: C },
+          { id: "thu-k-free-after-0903", order: 1856, time: "18:55 后", icon: "○", title: "空档 · 可安排", who: "kenton", kind: "free", state: C }
+        ]
+      }
+    },
+    "2026-09-04": {
+      kenton: {
+        remove: ["fri-k-free"],
+        add: [
+          { id: "fri-k-gap-0904", order: 1731, time: "17:30–18:00", icon: "○", title: "回家与设备准备", note: "只有30分钟衔接", who: "kenton", kind: "free", state: C },
+          { id: "fri-k-free-0904", order: 1826, time: "18:25 后", icon: "○", title: "空档 · 可安排", who: "kenton", kind: "free", state: C }
+        ]
+      },
+      eddey: {
+        remove: ["fri-e-free"],
+        add: [
+          { id: "fri-e-free-before-0904", order: 1830, time: "晚饭后–20:30", icon: "○", title: "空档 · 可安排", note: "先完成学校必须任务", who: "eddey", kind: "free", state: C },
+          { id: "fri-e-free-after-0904", order: 2056, time: "20:55 后", icon: "○", title: "空档 · 只休息", who: "eddey", kind: "free", state: C }
+        ]
+      }
+    },
+    "2026-09-07": {
+      kenton: {
+        remove: ["mon-k-free"],
+        add: [{ id: "mon-k-free-0907", order: 1726, time: "17:25 后", icon: "○", title: "空档 · 可安排", note: "先解决17:00外教与接送冲突", who: "kenton", kind: "free", state: C }]
+      }
+    },
+    "2026-09-08": {
+      kenton: {
+        remove: ["tue-k-free"],
+        add: [{ id: "tue-k-free-0908", order: 1726, time: "17:25 后", icon: "○", title: "空档 · 可安排", note: "先解决17:00外教与预计到家时间冲突", who: "kenton", kind: "free", state: C }]
+      }
+    },
+    "2026-09-09": {
+      eddey: {
+        remove: ["wed-e-free-before", "wed-e-walk"],
+        add: [
+          { id: "wed-e-free-before-0909", order: 1610, time: "到家后–17:55", icon: "○", title: "空档 · 可安排", note: "先完成最紧急学校任务", who: "eddey", kind: "free", state: C },
+          { id: "wed-e-walk-0909", order: 1755, time: "17:55–18:10", icon: "走", title: "步行去艾美趣", note: "18:10前到达", who: "eddey", kind: "walk", state: C },
+          { id: "wed-e-machine-0909", order: 1810, time: "18:10–18:40", icon: "机", title: "老师带做3次上机", note: "与18:00–18:25 Valeria外教时间重叠，待家长调整", who: "eddey", kind: "conflict", state: C, conflict: true }
+        ]
+      }
+    },
+    "2026-09-14": {
+      kenton: {
+        remove: ["mon-k-free"],
+        add: [
+          { id: "mon-k-free-before-0914", order: 1740, time: "回家后–18:00", icon: "○", title: "空档 · 可安排", note: "优先晚饭和设备准备", who: "kenton", kind: "free", state: C },
+          { id: "mon-k-free-after-0914", order: 1826, time: "18:25 后", icon: "○", title: "空档 · 可安排", who: "kenton", kind: "free", state: C }
+        ]
+      }
+    },
+    "2026-09-15": {
+      kenton: {
+        remove: ["tue-k-free"],
+        add: [
+          { id: "tue-k-free-before-0915", order: 1740, time: "到家后–18:00", icon: "○", title: "空档 · 可安排", note: "17:58前准备好设备", who: "kenton", kind: "free", state: C },
+          { id: "tue-k-free-after-0915", order: 1826, time: "18:25 后", icon: "○", title: "空档 · 可安排", who: "kenton", kind: "free", state: C }
+        ]
+      }
+    },
+    "2026-09-16": {
+      eddey: {
+        remove: ["wed-e-free-before"],
+        add: [{ id: "wed-e-free-before-0916", order: 1610, time: "到家后–18:00", icon: "○", title: "空档 · 可安排", note: "17:58前准备好外教设备", who: "eddey", kind: "free", state: C }]
+      }
+    },
+    "2026-09-17": {
+      kenton: {
+        remove: ["thu-k-free"],
+        add: [
+          { id: "thu-k-free-before-0917", order: 1736, time: "到家后–18:30", icon: "○", title: "空档 · 可安排", note: "18:28前准备好设备", who: "kenton", kind: "free", state: C },
+          { id: "thu-k-free-after-0917", order: 1856, time: "18:55 后", icon: "○", title: "空档 · 可安排", who: "kenton", kind: "free", state: C }
+        ]
+      }
+    },
+    "2026-09-18": {
+      eddey: {
+        remove: ["fri-e-free"],
+        add: [
+          { id: "fri-e-free-before-0918", order: 1801, time: "晚饭后–19:00", icon: "○", title: "空档 · 可安排", who: "eddey", kind: "free", state: C },
+          { id: "fri-e-free-after-0918", order: 1926, time: "19:25 后", icon: "○", title: "空档 · 只休息或做学校必须任务", who: "eddey", kind: "free", state: C }
+        ]
+      }
+    },
+    "2026-09-24": {
+      kenton: {
+        remove: ["thu-k-free"],
+        add: [
+          { id: "thu-k-free-before-0924", order: 1736, time: "到家后–18:30", icon: "○", title: "空档 · 可安排", note: "18:28前准备好设备", who: "kenton", kind: "free", state: C },
+          { id: "thu-k-free-after-0924", order: 1856, time: "18:55 后", icon: "○", title: "空档 · 可安排", who: "kenton", kind: "free", state: C }
+        ]
+      }
+    },
+    "2026-09-29": {
+      eddey: {
+        remove: ["tue-e-free"],
+        add: [
+          { id: "tue-e-free-before-0929", order: 1736, time: "到家后–20:00", icon: "○", title: "空档 · 可安排", note: "19:58前准备好设备", who: "eddey", kind: "free", state: C },
+          { id: "tue-e-free-after-0929", order: 2026, time: "20:25 后", icon: "○", title: "空档 · 只休息", who: "eddey", kind: "free", state: C }
+        ]
+      }
+    }
+  });
+
+  const WEEK_PLANS = Object.freeze({
+    1: {
+      label: "普通接送 + 写字课",
+      focus: "普通日哥哥16:30放学由爷爷接，弟弟16:40放学由爸爸接；两边同步，接好后汇合一起回家。Eddey 18:30写字课。",
+      pickup: [
+        ["16:30", "哥哥放学，爷爷接", "普通日固定做法"],
+        ["16:40", "弟弟放学，爸爸接", "与爷爷一侧同步"],
+        ["接好后", "两边汇合，一起回家", "再安排点心、学校任务和当天课程"],
+        ["回家路上", "Eddey 吃点心或简餐", "为18:30写字课准备"]
+      ],
+      alert: { type: "normal", text: "普通日接送已按家长确认更新：哥哥16:30爷爷接，弟弟16:40爸爸接，接好后汇合一起回家。" },
+      rows: [
+        { id: "mon-k-school", order: 1630, time: "16:30", icon: "校", title: "哥哥放学", who: "kenton", kind: "class", state: C },
+        { id: "mon-k-pick", order: 1631, time: "16:30", icon: "接", title: "爷爷接哥哥", note: "与爸爸一侧同步", who: "kenton", kind: "ride", state: C },
+        { id: "mon-k-meet", order: 1642, time: "接好后", icon: "合", title: "与弟弟一侧汇合，一起回家", who: "kenton", kind: "home", state: C },
+        { id: "mon-k-free", order: 1740, time: "回家后", icon: "○", title: "空档 · 可安排", note: "晚饭和作业按当天情况安排，不再固定旧版 16:50 作业 / 17:35 晚饭", who: "kenton", kind: "free", state: C },
+        { id: "mon-e-school", order: 1640, time: "16:40", icon: "校", title: "弟弟放学", who: "eddey", kind: "class", state: C },
+        { id: "mon-e-pick", order: 1641, time: "16:40", icon: "接", title: "爸爸接弟弟", note: "与爷爷一侧同步", who: "eddey", kind: "ride", state: C },
+        { id: "mon-e-snack", order: 1642, time: "接好后", icon: "合", title: "与哥哥一侧汇合，一起回家", note: "路上吃点心或简餐", who: "eddey", kind: "home", state: C },
+        { id: "mon-e-free", order: 1740, time: "到家后–18:20", icon: "○", title: "空档 · 可安排", note: "留出写字课准备时间", who: "eddey", kind: "free", state: C },
+        { id: "mon-e-writing", order: 1830, time: "18:30–20:00", icon: "课", title: "写字课", who: "eddey", kind: "class", state: C },
+        { id: "mon-e-free-after", order: 2001, time: "20:00 后", icon: "○", title: "空档 · 可安排", who: "eddey", kind: "free", state: C }
+      ],
+      tasks: {
+        kenton: ["16:30放学，爷爷接", "与弟弟一侧汇合后一起回家"],
+        eddey: ["16:40放学，爸爸接", "与哥哥一侧汇合后一起回家", "18:30–20:00写字课"]
+      }
+    },
+    2: {
+      label: "普通接送 + 到家后安排",
+      focus: "哥哥16:30由爷爷接，弟弟16:40由爸爸接；两边同步接好后汇合一起回家，再按顺序完成学校任务和当天确认课程。",
+      pickup: [
+        ["16:30", "哥哥放学，爷爷接", "普通日固定做法"],
+        ["16:40", "弟弟放学，爸爸接", "与爷爷一侧同步"],
+        ["接好后", "两边汇合，一起回家", "到家时间随当天路况"]
+      ],
+      alert: { type: "normal", text: "普通日接送：哥哥16:30爷爷接，弟弟16:40爸爸接；外教请按所选日期的预约状态核对安排。" },
+      rows: [
+        { id: "tue-k-school", order: 1630, time: "16:30", icon: "校", title: "哥哥放学", who: "kenton", kind: "class", state: C },
+        { id: "tue-k-pick", order: 1631, time: "16:30", icon: "接", title: "爷爷接哥哥", who: "kenton", kind: "ride", state: C },
+        { id: "tue-k-meet", order: 1642, time: "接好后", icon: "合", title: "与弟弟一侧汇合，一起回家", who: "kenton", kind: "home", state: C },
+        { id: "tue-k-free", order: 1736, time: "到家后", icon: "○", title: "空档 · 可安排", note: "若当天另有已确认课程，以具体课程时段为准", who: "kenton", kind: "free", state: C },
+        { id: "tue-e-school", order: 1640, time: "16:40", icon: "校", title: "弟弟放学", who: "eddey", kind: "class", state: C },
+        { id: "tue-e-pick", order: 1641, time: "16:40", icon: "接", title: "爸爸接弟弟", who: "eddey", kind: "ride", state: C },
+        { id: "tue-e-home", order: 1642, time: "接好后", icon: "合", title: "与哥哥一侧汇合，一起回家", who: "eddey", kind: "home", state: C },
+        { id: "tue-e-free", order: 1736, time: "到家后", icon: "○", title: "空档 · 可安排", who: "eddey", kind: "free", state: C }
+      ],
+      tasks: { kenton: ["在学校尽量完成当天作业", "到家后先看今日已确认日程"], eddey: ["在学校尽量完成当天作业", "到家后的空档再安排晚饭与作业"] }
+    },
+    3: {
+      label: "第7节后接 + 分开去艾美趣",
+      focus: "Kenton 17:00–18:30、Eddey 18:40–20:10 分别在艾美趣上课。两人接回家后各走各的：Kenton 上完课自行回家；Eddey 18:25单独步行去艾美趣。外教只看当天确认行。",
+      pickup: [
+        ["15:35 后", "接 Kenton（西校）", "第 7 节结束后 · 具体分钟待确认"],
+        ["约 15:45–15:50", "接 Eddey（东校）", "第二站 · 随第一站调整"],
+        ["接完后", "两人先回家", "不直接在机构等课"],
+        ["17:00 前", "Kenton 自行步行去艾美趣", "18:30 下课后直接回家"],
+        ["18:25", "Eddey 单独步行去艾美趣", "18:40 开始上课"]
+      ],
+      alert: { type: "pending", text: "接送冲突待确认：Kenton 周三第 7 节“兴拓”到 15:35，不能继续把 15:30 作为已确认接送时间。" },
+      rows: [
+        { id: "wed-k-school", order: 1535, time: "15:35", icon: "校", title: "第 7 节结束", who: "kenton", kind: "class", state: C },
+        { id: "wed-k-pick", order: 1536, time: "15:35 后", icon: "接", title: "接 Kenton", note: "具体分钟待确认", who: "kenton", kind: "ride", state: P },
+        { id: "wed-k-free-before", order: 1610, time: "到家后–17:00", icon: "○", title: "空档 · 可安排", note: "需预留步行去艾美趣的时间", who: "kenton", kind: "free", state: C },
+        { id: "wed-k-class", order: 1700, time: "17:00–18:30", icon: "课", title: "艾美趣英语", who: "kenton", kind: "class", state: C },
+        { id: "wed-k-home", order: 1831, time: "18:30 下课", icon: "走", title: "自行步行回家", note: "不留在机构吃饭或写作业", who: "kenton", kind: "walk", state: C },
+        { id: "wed-k-free-after", order: 1850, time: "到家后", icon: "○", title: "空档 · 可安排", note: "晚饭、作业或阅读都在家安排", who: "kenton", kind: "free", state: C },
+        { id: "wed-e-school", order: 1535, time: "15:35", icon: "校", title: "第 7 节结束", who: "eddey", kind: "class", state: C },
+        { id: "wed-e-pick", order: 1545, time: "约 15:45–15:50", icon: "接", title: "接 Eddey", note: "接完后先回家", who: "eddey", kind: "ride", state: E },
+        { id: "wed-e-free-before", order: 1610, time: "到家后–18:25", icon: "○", title: "空档 · 可安排", note: "18:25 前准备好步行去艾美趣", who: "eddey", kind: "free", state: C },
+        { id: "wed-e-walk", order: 1825, time: "18:25–18:40", icon: "走", title: "单独步行去艾美趣", note: "18:40 开课", who: "eddey", kind: "walk", state: C },
+        { id: "wed-e-class", order: 1840, time: "18:40–20:10", icon: "课", title: "艾美趣英语", who: "eddey", kind: "class", state: C },
+        { id: "wed-e-home", order: 2010, time: "20:10 下课", icon: "走", title: "回家", who: "eddey", kind: "walk", state: C },
+        { id: "wed-e-free-after", order: 2030, time: "回家后", icon: "○", title: "空档 · 可安排", who: "eddey", kind: "free", state: C }
+      ],
+      tasks: {
+        kenton: ["第 7 节 15:35 结束后再接（具体分钟待确认）", "17:00–18:30 艾美趣", "18:30 下课后自行回家"],
+        eddey: ["第 7 节 15:35 结束后再接", "18:25 单独步行去艾美趣", "18:40–20:10 艾美趣"]
+      }
+    },
+    4: {
+      label: "普通接送 + 到家后安排",
+      focus: "哥哥16:30由爷爷接，弟弟16:40由爸爸接；两边同步接好后汇合一起回家。先完成学校必须任务，再看当天确认课程。",
+      pickup: [
+        ["16:30", "哥哥放学，爷爷接", "普通日固定做法"],
+        ["16:40", "弟弟放学，爸爸接", "与爷爷一侧同步"],
+        ["接好后", "两边汇合，一起回家", "到家时间随当天路况"]
+      ],
+      alert: { type: "normal", text: "外教不按星期自动生成；请按所选日期的预约状态核对课程安排。核桃仍在周六。" },
+      rows: [
+        { id: "thu-k-school", order: 1630, time: "16:30", icon: "校", title: "哥哥放学", who: "kenton", kind: "class", state: C },
+        { id: "thu-k-pick", order: 1631, time: "16:30", icon: "接", title: "爷爷接哥哥", who: "kenton", kind: "ride", state: C },
+        { id: "thu-k-home", order: 1642, time: "接好后", icon: "合", title: "与弟弟一侧汇合，一起回家", who: "kenton", kind: "home", state: C },
+        { id: "thu-k-free", order: 1736, time: "到家后", icon: "○", title: "空档 · 可安排", note: "若当天另有已确认课程，以具体课程时段为准", who: "kenton", kind: "free", state: C },
+        { id: "thu-e-school", order: 1640, time: "16:40", icon: "校", title: "弟弟放学", who: "eddey", kind: "class", state: C },
+        { id: "thu-e-pick", order: 1641, time: "16:40", icon: "接", title: "爸爸接弟弟", note: "与爷爷一侧同步", who: "eddey", kind: "ride", state: C },
+        { id: "thu-e-home", order: 1642, time: "接好后", icon: "合", title: "与哥哥一侧汇合，一起回家", who: "eddey", kind: "home", state: C },
+        { id: "thu-e-free", order: 1736, time: "到家后", icon: "○", title: "空档 · 可安排", who: "eddey", kind: "free", state: C }
+      ],
+      tasks: { kenton: ["在学校尽量完成当天作业", "到家后先看今日已确认日程"], eddey: ["车上吃点心", "到家后的空档再安排当天事情"] }
+    },
+    5: {
+      label: "早接 + 篮球",
+      focus: "接完 Eddey 直接去篮球，课前车上吃点心。篮球后先晚饭和学校必须任务；外教只按当天已确认时间执行，不再叠加家庭英语练习。",
+      pickup: [
+        ["15:30", "接 Kenton（西校）", "第一站"],
+        ["约 15:45", "接 Eddey（东校）", "接完直接去篮球"],
+        ["约 18:00", "篮球后吃晚饭", "结束时间仍待机构确认"]
+      ],
+      alert: { type: "pending", text: "篮球暂按 90 分钟估算为 16:00–17:30；正式结束时间要等机构课表确认。" },
+      rows: [
+        { id: "fri-k-school", order: 1445, time: "14:45", icon: "校", title: "校内课程结束", who: "kenton", kind: "class", state: C },
+        { id: "fri-k-pick", order: 1530, time: "15:30", icon: "接", title: "接 Kenton", note: "第一站", who: "kenton", kind: "ride", state: C },
+        { id: "fri-k-snack", order: 1546, time: "课前", icon: "餐", title: "车上吃点心", who: "kenton", kind: "home", state: C },
+        { id: "fri-k-basketball", order: 1600, time: "16:00–17:30", icon: "课", title: "篮球", note: "按 90 分钟暂估", who: "kenton", kind: "class", state: E },
+        { id: "fri-k-free", order: 1731, time: "篮球后", icon: "○", title: "空档 · 可安排", note: "晚饭、作业按当天情况安排", who: "kenton", kind: "free", state: C },
+        { id: "fri-e-school", order: 1535, time: "15:35", icon: "校", title: "第 7 节结束", who: "eddey", kind: "class", state: C },
+        { id: "fri-e-pick", order: 1545, time: "约 15:45", icon: "接", title: "接 Eddey", note: "接完直接去篮球", who: "eddey", kind: "ride", state: E },
+        { id: "fri-e-snack", order: 1546, time: "课前", icon: "餐", title: "车上吃点心", who: "eddey", kind: "home", state: C },
+        { id: "fri-e-basketball", order: 1600, time: "16:00–17:30", icon: "课", title: "篮球", note: "按 90 分钟暂估", who: "eddey", kind: "class", state: E },
+        { id: "fri-e-dinner", order: 1800, time: "约 18:00", icon: "餐", title: "晚饭", who: "eddey", kind: "home", state: E },
+        { id: "fri-e-free", order: 1830, time: "晚饭后", icon: "○", title: "空档 · 可安排", note: "若当天另有已确认课程，以具体课程时段为准", who: "eddey", kind: "free", state: C }
+      ],
+      tasks: { kenton: ["课前车上吃点心", "16:00 篮球", "篮球后的空档再安排作业"], eddey: ["课前车上吃点心", "16:00 篮球", "篮球后的空档再安排作业"] }
+    },
+    6: {
+      label: "金桥周末课",
+      focus: "今天没有学校接送。正式固定课是晚上的核桃；数学一对一余课仍待确认，其余时间直接标成可安排空档。",
+      pickup: [["今天", "没有学校接送", "周末在金桥"]],
+      alert: { type: "pending", text: "数学一对一余课还没完全锁定；外教只按Preply截图中的具体日期排入，本周末不自动补外教。" },
+      rows: [
+        { id: "sat-free-am", order: 800, time: "上午–12:00", icon: "○", title: "空档 · 可安排", who: "both", kind: "free", state: C },
+        { id: "sat-lunch", order: 1200, time: "12:00", icon: "餐", title: "午饭", who: "both", kind: "home", state: C },
+        { id: "sat-free-mid", order: 1300, time: "午饭后–14:00", icon: "○", title: "空档 · 可安排", who: "both", kind: "free", state: C },
+        { id: "sat-math", order: 1400, time: "14:00–16:00", icon: "课", title: "数学一对一余课可轮流安排", note: "单节时长、教师、周末校区待确认", who: "both", kind: "hold", state: P },
+        { id: "sat-free-pm", order: 1601, time: "16:00–18:00", icon: "○", title: "空档 · 可安排", who: "both", kind: "free", state: C },
+        { id: "sat-dinner", order: 1800, time: "18:00–18:40", icon: "餐", title: "晚饭", who: "both", kind: "home", state: C },
+        { id: "sat-hetao", order: 1900, time: "19:00–20:30", icon: "课", title: "核桃", note: "从原周四时段移到周六", who: "both", kind: "class", state: C },
+        { id: "sat-free-night", order: 2031, time: "20:30 后", icon: "○", title: "空档 · 可安排", who: "both", kind: "free", state: C }
+      ],
+      tasks: { kenton: ["18:00–18:40 吃晚饭", "19:00–20:30 核桃"], eddey: ["18:00–18:40 吃晚饭", "19:00–20:30 核桃"] }
+    },
+    0: {
+      label: "小码王长课日",
+      focus: "今天没有学校接送。12:30 提前吃午饭，下午到晚上是小码王长课，中间必须安排简餐或休息。",
+      pickup: [["今天", "没有学校接送", "不再新增固定主课"]],
+      alert: { type: "normal", text: "17:30 左右必须安排简餐或课程间休息，不能连续上到晚上不吃东西。" },
+      rows: [
+        { id: "sun-free-am", order: 800, time: "上午–12:30", icon: "○", title: "空档 · 可安排", who: "both", kind: "free", state: C },
+        { id: "sun-lunch", order: 1230, time: "12:30", icon: "餐", title: "提前吃午饭", who: "both", kind: "home", state: C },
+        { id: "sun-xmw", order: 1330, time: "13:30–20:00", icon: "课", title: "小码王", who: "both", kind: "class", state: C },
+        { id: "sun-break", order: 1730, time: "约 17:30", icon: "餐", title: "简餐或课程间休息", note: "必须安排", who: "both", kind: "home", state: C },
+        { id: "sun-free-night", order: 2001, time: "20:00 后", icon: "○", title: "空档 · 可安排", who: "both", kind: "free", state: C }
+      ],
+      tasks: { kenton: ["12:30 提前吃午饭", "13:30–20:00 小码王", "17:30 左右简餐或休息"], eddey: ["12:30 提前吃午饭", "13:30–20:00 小码王", "17:30 左右简餐或休息"] }
+    }
+  });
+
+  const dateTitle = document.getElementById("dateTitle");
+  const dateStatus = document.getElementById("dateStatus");
+  const weekStrip = document.getElementById("weekStrip");
+  const phase = document.getElementById("phase");
+  const alerts = document.getElementById("alerts");
+  const focusLine = document.getElementById("focusLine");
+  const schoolGrid = document.getElementById("schoolGrid");
+  const schoolCheck = document.getElementById("schoolCheck");
+  const pickupList = document.getElementById("pickupList");
+  const childLanes = document.getElementById("childLanes");
+  const tomorrowSubtitle = document.getElementById("tomorrowSubtitle");
+  const tomorrowGrid = document.getElementById("tomorrowGrid");
+  const tomorrowOpen = document.getElementById("tomorrowOpen");
+  let currentDate = validDate(new URLSearchParams(location.search).get("d")) || beijingToday();
+
+  function beijingToday() {
+    const parts = new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Shanghai", year: "numeric", month: "2-digit", day: "2-digit" }).formatToParts(new Date());
+    const values = Object.fromEntries(parts.map((part) => [part.type, part.value]));
+    return `${values.year}-${values.month}-${values.day}`;
+  }
+
+  function validDate(value) { return /^\d{4}-\d{2}-\d{2}$/.test(value || "") ? value : null; }
+  function splitDate(value) { return value.split("-").map(Number); }
+  function dayIndex(value) { const [y, m, d] = splitDate(value); return new Date(Date.UTC(y, m - 1, d)).getUTCDay(); }
+  function addDays(value, amount) {
+    const [y, m, d] = splitDate(value);
+    const date = new Date(Date.UTC(y, m - 1, d + amount));
+    return `${date.getUTCFullYear()}-${String(date.getUTCMonth() + 1).padStart(2, "0")}-${String(date.getUTCDate()).padStart(2, "0")}`;
+  }
+  function dateLabel(value) { const [, m, d] = splitDate(value); return `${m}月${d}日 · ${WEEK_NAMES[dayIndex(value)]}`; }
+  function mondayOf(value) { const dow = dayIndex(value); return addDays(value, dow === 0 ? -6 : 1 - dow); }
+  function rowKey(value) { return `study:schedule:${SCHEDULE_ID}:${value}:rows`; }
+  function learningKey(value, child) { return `study:schedule:${LEARNING_PLAN_ID}:${value}:${child}`; }
+  function repairKey(child) { return `study:schedule:${LEARNING_PLAN_ID}:repair:${child}`; }
+  function load(key) { try { return JSON.parse(localStorage.getItem(key) || "{}") || {}; } catch { return {}; } }
+  function save(key, value) { try { localStorage.setItem(key, JSON.stringify(value)); } catch (error) { console.warn("日程打卡暂时无法保存。", error); } }
+
+  function schoolBreak(value) {
+    return KNOWN_SCHOOL_BREAKS.find(([start, end]) => value >= start && value <= end) || null;
+  }
+
+  function isTravelDay(value) { return value >= "2026-09-19" && value <= "2026-09-28"; }
+  function travelHref(child, value) {
+    const day = isTravelDay(value) ? Number(value.slice(-2)) - 18 : 1;
+    return `apps/travel_learning_director_20260916.html?child=${child}&day=${day}`;
+  }
+
+  function isSchoolDay(value) {
+    const dow = dayIndex(value);
+    if (dow === 0 || dow === 6 || schoolBreak(value)) return false;
+    return (value >= "2026-09-01" && value <= "2027-01-22") || (value >= "2027-02-22" && value <= "2027-06-30");
+  }
+
+  function hasKentonThursdayClub(value) {
+    return !isTravelDay(value) && value >= "2026-09-17" && dayIndex(value) === 4 && isSchoolDay(value);
+  }
+
+  function arrivalNeedsCheck(value) {
+    // Booking coverage does not confirm either child's Thursday route or study capacity.
+    // Preserve earlier planning; a later confirmed arrival arrangement must explicitly replace this guard.
+    return value >= "2026-10-15" && hasKentonThursdayClub(value);
+  }
+
+  function suggestedLoad(child, value) {
+    if (isTravelDay(value)) return "yellow";
+    if (value >= "2027-02-19" && value <= "2027-02-21") return "yellow";
+    if (schoolBreak(value)) return "red";
+    if (child === "kenton" && hasKentonThursdayClub(value)) return "yellow";
+    return DEFAULT_LOADS[child][dayIndex(value)] || "yellow";
+  }
+
+  function extraCap(child, value, loadName) {
+    if (value === "2026-09-16") return 0;
+    const base = child === "kenton" && hasKentonThursdayClub(value) ? Math.min(BASE_EXTRA_CAP[child][4] || 0, 10) : BASE_EXTRA_CAP[child][dayIndex(value)] || 0;
+    if (loadName === "red") return base === 0 ? 0 : 3;
+    if (loadName === "yellow") return Math.min(base, 10);
+    return base;
+  }
+
+  function bookingNotice(value) {
+    if (bookingLoadFailed && value >= "2026-10-10") return { type: "pending", text: bookingSnapshot?.dates?.[value]
+      ? "外教预约更新暂时失败；以下保留上次预约，需核对是否改期或取消。"
+      : "外教预约尚未同步，暂时无法读取；未显示不代表没有课。" };
+    return window.DDScheduleBookings?.notice(bookingSnapshot, value) || null;
+  }
+
+  function bookingNeedsCheck(value) {
+    const today = beijingToday();
+    return value >= "2026-10-10" && value >= today && (!window.DDScheduleBookings || bookingNotice(value)?.type === "pending");
+  }
+
+  function effectiveExtraCap(child, value, loadName, state) {
+    if (bookingNeedsCheck(value) || arrivalNeedsCheck(value)) return 0;
+    return Math.max(0, extraCap(child, value, loadName) - (state.hasDictation ? 8 : 0));
+  }
+
+  function make(tag, className, text) {
+    const el = document.createElement(tag);
+    if (className) el.className = className;
+    if (text !== undefined) el.textContent = text;
+    return el;
+  }
+
+  function statusLabel(row) {
+    if (row.kind === "free") return ["free", row.status || "可安排"];
+    if (row.conflict || row.kind === "conflict") return ["conflict", row.status || "时间冲突"];
+    if (row.state === P) return ["pending", row.status || "预留 / 待确认"];
+    if (row.state === E) return ["estimated", row.status || "预计"];
+    return ["", row.status || "已确认"];
+  }
+
+  function getOnlineLessons(value, dow) {
+    const base = [...(WEEKLY_ONLINE[dow] || [])];
+    const booked = window.DDScheduleBookings?.lessonsFor(bookingSnapshot, value);
+    const dated = booked ? { replace: ["kenton", "eddey"], lessons: booked } : DATE_ONLINE[value];
+    if (!dated) return base;
+    const kept = base.filter((lesson) => !dated.replace.includes(lesson.child));
+    return [...kept, ...dated.lessons].map((lesson) => {
+      if (isTravelDay(value)) return { ...lesson, conflict: true, status: "旅途中上课安排待确认", note: `${lesson.note}；旅行期间需确认上课地点、网络或是否改期，预约未自动取消。` };
+      if (lesson.child !== "kenton" || !hasKentonThursdayClub(value)) return lesson;
+      const start = lesson.time.match(/^(\d{2}):(\d{2})/);
+      if (!start) return lesson;
+      const minutes = Number(start[1]) * 60 + Number(start[2]);
+      const gap = minutes - (17 * 60 + 50);
+      if (gap >= 60) return lesson;
+      return { ...lesson, conflict: true, status: gap < 0 ? "与学校社团冲突·需改期" : "接送衔接待确认",
+        note: `${lesson.note}；${gap < 0 ? "17:50社团结束前无法上课，需要改期" : `距社团结束仅${gap}分钟，须确认回家与设备准备时间；建议后续约19:00或更晚`}` };
+    });
+  }
+
+  function confirmedOnlineLessons(child, value) {
+    return getOnlineLessons(value, dayIndex(value))
+      .filter((lesson) => lesson.child === child && lesson.kind === "online" && lesson.state === C);
+  }
+
+  function getPlanForDate(value, dow) {
+    if (isTravelDay(value)) return {
+      label: "旅行安排 · 按真实空档学习",
+      focus: "先照顾睡眠、出行和老师已确认的必做任务。有空再打开旅行学习入口，选一个孩子、一科和实际可用时间。",
+      alert: { type: "pending", text: "旅行请假及实际漏课清单仍待老师确认；常规课表仅供核对，不能当作已经上过或必须在旅途中补完。课外预约需单独确认或改期。" },
+      pickup: [["按行程", "旅行期间接送另行安排", "不套用平日放学接送时间"]],
+      tasks: { kenton: [], eddey: [] },
+      rows: [{ id: `travel:${value}`, order: 1, time: "有空再学", title: "旅行学习 · 先接上次", note: "一次只选一科；短空档不硬开新课，晚上不追补", who: "both", kind: "free", state: P }]
+    };
+    const dated = DATE_PLAN_OVERRIDES[value];
+    let base = { ...WEEK_PLANS[dow], ...(dated || {}), pickup: dated?.pickup || WEEK_PLANS[dow].pickup, tasks: { ...WEEK_PLANS[dow].tasks, ...(dated?.tasks || {}) } };
+    // Apply the latest correction from this execution date; do not infer earlier attendance or a winter restart.
+    if (dow === 1 && value >= "2026-10-12") {
+      base = { ...base, label: "普通接送 · 课外写字暂停",
+        focus: "哥哥16:30爷爷接，弟弟16:40爸爸接；接好后汇合一起回家。弟弟课外写字已暂停，恢复安排另行确认。",
+        alert: { type: "normal", text: "弟弟课外写字已暂停，寒假恢复日期待确认；不自动恢复，也不因停课增加学习任务。" },
+        pickup: base.pickup.filter(row => !row[2]?.includes("写字课准备")),
+        rows: base.rows.filter(row => !["mon-e-writing", "mon-e-free-after"].includes(row.id)).map(row =>
+          row.id === "mon-e-free" ? { ...row, time: "到家后", title: "学校必须任务后休息", note: "课外写字暂停；不把停课时段自动补成加练", kind: "home", status: "不加码" } : row),
+        tasks: { ...base.tasks, eddey: base.tasks.eddey.filter(task => !task.includes("写字课")) }
+      };
+    }
+    if ([1, 2, 4].includes(dow) && value >= "2026-09-08" && value <= "2027-01-22") base = { ...base, rows: base.rows.map((row) => /^(mon|tue|thu)-e-school$/.test(row.id) ? { ...row, order: 1625, time: "16:25", title: "正常校内课程结束", note: "16:40爸爸接，接送时间单独保留" } : row) };
+    if (dow === 3 && value >= "2026-09-08" && value <= "2027-01-22") {
+      base = { ...base, label: "新课表 · 弟弟接送待确认", alert: { type: "pending", text: EDDEY_WED_NOTICE + (dated?.alert ? " " + dated.alert.text : "") },
+        pickup: base.pickup.map((row) => row[1].includes("接 Eddey") ? ["16:25课程结束后", row[1], "具体接走分钟待确认；提前离校需学校允许"] : row),
+        rows: base.rows.map((row) => row.id === "wed-e-school" ? { ...row, order: 1625, time: "16:25", title: "第8节兴拓结束" }
+          : row.id === "wed-e-pick" ? { ...row, order: 1626, time: "16:25后·待确认", state: P, note: "原提前接走与第8节冲突，需确认学校允许" }
+          : row.id === "wed-e-free-before" ? { ...row, order: 1640, state: P, status: "到家后才可安排", note: "不把15:50–16:25校内课程算作空档" } : row),
+        tasks: { ...base.tasks, eddey: ["16:25第8节兴拓结束；接走时间待确认", ...base.tasks.eddey.slice(1)] }
+      };
+    }
+    if (dow === 5 && value >= "2026-09-08" && value <= "2027-01-22") {
+      base = { ...base, label: "周五15:00提前接弟弟",
+        focus: "弟弟正常课程15:35结束；家长安排15:00提前接走，将与老师沟通。哥哥15:30接送及篮球原安排保留。",
+        alert: { type: "pending", text: "周五15:00提前接弟弟是家长安排，老师同意状态待反馈；课表仍保留15:00–15:35体育活动。" },
+        pickup: [["15:00", "提前接 Eddey（东校）", "家长将与老师沟通；正常课程15:35结束"], ...base.pickup.filter((row) => !row[1].includes("Eddey")).map((row) => row[1].includes("Kenton") ? [row[0], row[1], "原接送时间保留"] : row)],
+        rows: base.rows.map((row) => row.id === "fri-k-pick" ? { ...row, note: "原接送时间保留" } : row.id === "fri-e-pick" ? { ...row, order: 1500, time: "15:00", title: "提前接 Eddey", state: P, status: "家长安排·待与老师沟通", note: "正常课程15:35结束，不删除第7节体育活动" } : row),
+        tasks: { ...base.tasks, eddey: ["15:00提前接走，家长将与老师沟通", ...base.tasks.eddey] }
+      };
+    }
+    if (hasConfirmedPickup(value, dow)) {
+      const prefix = dow === 3 ? "wed" : "fri";
+      base = { ...base, label: "两人15:00接走",
+        focus: "哥哥、弟弟15:00接走。" + (dow === 3 ? "接后先回家，按原时间参加英语课。" : "篮球按原时间参加，预留交通和吃点心时间。"),
+        alert: dated?.alert || { type: "normal", text: PICKUP_CONFIRMED_NOTICE },
+        pickup: [["15:00", "接 Kenton", "家长确认"], ["15:00", "接 Eddey", "家长确认"], ...base.pickup.filter(row => !/接 Kenton|接 Eddey/.test(row[1]))],
+        rows: base.rows.map(row => {
+          if (row.id === `${prefix}-k-pick` || row.id === `${prefix}-e-pick`) return { ...row, order: 1500, time: "15:00", title: row.who === "kenton" ? "接 Kenton" : "接 Eddey", note: "家长确认；到家时间按当天实际", state: C, status: "已确认" };
+          if ((row.id === `${prefix}-k-school` || row.id === `${prefix}-e-school`) && row.order > 1500) return { ...row, order: 1500, time: "15:00", title: "放学接走", note: "按家长最新实际安排", state: C, status: "已确认" };
+          if (row.id === "wed-e-free-before") return { ...row, order: 1501, time: "到家后–18:25", note: "从实际到家后安排；课前预留步行时间", state: C, status: "到家后可安排" };
+          return row;
+        }),
+        tasks: { ...base.tasks, kenton: base.tasks.kenton.map(t => /接|离校/.test(t) ? "15:00接走，实际到家后安排" : t), eddey: base.tasks.eddey.map(t => /接|离校/.test(t) ? "15:00接走，实际到家后安排" : t) }
+      };
+    }
+    if (hasKentonThursdayClub(value)) {
+      base = { ...base, label: "哥哥社团至17:50 · 分时接送",
+        focus: "哥哥16:30–17:50学校社团，17:50爷爷接；弟弟仍16:40爸爸接。接送路线另行确认，到家后先晚饭和学校必须任务。Miss B约课须避开社团并预留回家时间，建议19:00或更晚。",
+        alert: { type: "pending", text: "9月17日起，每个正常上课的周四哥哥17:50离校。原16:30接走及两边同步汇合安排不再适用；18:30外教仅有40分钟衔接，赶不上请提前改期。" },
+        pickup: [["16:40", "爸爸接弟弟", "时间保留；是否先回家另确认"], ["17:50", "社团结束，爷爷接哥哥", "从9月17日起每周四执行"], ["接好后", "两边回家路线待确认", "不默认让弟弟等到17:50；哥哥到家时刻未确认"]],
+        rows: base.rows.map((row) => {
+          if (row.id === "thu-k-school") return { ...row, title: "常规课程结束 · 留校社团", note: "16:30尚不离校" };
+          if (row.id === "thu-k-pick") return { ...row, order: 1750, time: "17:50", note: "学校社团结束后接走" };
+          if (row.id === "thu-k-home") return { ...row, order: 1751, time: "17:50接走后", title: "回家 · 路线待确认", note: "不再按16:40与弟弟一侧同步汇合", state: P };
+          if (row.id === "thu-k-free") return { ...row, order: 1752, note: "实际到家后先晚饭与学校任务；18:30外教前不预排加练" };
+          if (row.id === "thu-e-pick") return { ...row, note: "16:40时间保留；哥哥17:50才接走" };
+          if (row.id === "thu-e-home") return { ...row, title: "回家路线待确认", note: "不默认与哥哥同时汇合，也不默认等候70分钟", state: P };
+          return row;
+        }).concat([{ id: "thu-k-club", order: 1631, time: "16:30–17:50", icon: "课", title: "学校社团", who: "kenton", kind: "class", state: C, note: "家长9月9日确认；9月17日起每周四" }]),
+        tasks: { ...base.tasks, kenton: ["16:30–17:50学校社团", "17:50爷爷接，实际到家后再安排任务", "外教预约避开社团并留回家时间；18:30衔接待确认", "学校任务优先；加练最多10分钟，疲劳即停"] }
+      };
+    }
+    if (arrivalNeedsCheck(value)) {
+      base = { ...base, tasks: { ...base.tasks,
+        kenton: base.tasks.kenton.map(task => task.includes("加练最多") ? "学校任务优先；到家与可用时间未确认前不预排加练" : task)
+      } };
+    }
+    return base;
+  }
+
+  function getLaneRows(plan, child, value) {
+    let rows = plan.rows.filter((row) => row.who === child || row.who === "both").map((row) => ({ ...row }));
+    const override = isTravelDay(value) ? null : DATE_ROW_OVERRIDES[value]?.[child];
+    if (override) {
+      rows = rows.filter((row) => !override.remove.includes(row.id));
+      rows.push(...override.add.map((row) => ({ ...row })));
+    }
+    if (child === "kenton" && hasKentonThursdayClub(value)) {
+      rows = rows.filter((row) => !row.id.startsWith("thu-k-free-before-"));
+    }
+    const lessons = getOnlineLessons(value, dayIndex(value)).filter((lesson) => lesson.child === child);
+    if (bookingNeedsCheck(value)) {
+      rows = rows.map(row => row.kind === "free" ? { ...row, kind: "pending", state: P, title: "空档待核验", status: "先核对外教预约", note: "预约未更新前，不把这段时间当作可加练空档。" } : row);
+    } else if (arrivalNeedsCheck(value)) {
+      rows = rows.map(row => row.kind === "free" ? { ...row, kind: "pending", state: P, title: "到家后安排待核", status: "到家时间待核", note: "接送路线与实际到家时间未确认；保留学校任务和已预约课程，暂不安排家庭加练。" } : row);
+    } else if (bookingSnapshot?.dates?.[value] && lessons.length) {
+      rows = rows.map(row => {
+        if (row.kind !== "free") return row;
+        const range = row.time.match(/^(.+)–(\d{2}:\d{2})$/);
+        const rangeStart = range && /^\d{2}:\d{2}$/.test(range[1]) ? Number(range[1].replace(":", "")) : row.order;
+        const rangeEnd = range ? Number(range[2].replace(":", "")) : null;
+        const crossing = range && lessons.some(lesson => lesson.order <= rangeStart && Number(lesson.time.slice(-5).replace(":", "")) > rangeStart && lesson.order < rangeEnd);
+        if (crossing) return { ...row, kind: "pending", state: P, title: "空档与外教重叠", status: "需核对空档", note: "外教占用这段时间的一部分，核对后再安排。" };
+        const earliest = lessons.filter(lesson => range && lesson.order > rangeStart && lesson.order < rangeEnd).sort((a,b) => a.order - b.order)[0];
+        if (earliest) return { ...row, time: `${range[1]}–${earliest.time.slice(0,5)}`, note: `${row.note || ""}；外教开始前结束。` };
+        if (!range) return { ...row, kind: "pending", state: P, title: "课余空档 · 避开外教", status: "按实际空档", note: `${row.note || ""}；外教 ${lessons.map(lesson => lesson.time).join("、")} 不计为空档。` };
+        return row;
+      });
+    }
+    lessons.forEach((lesson) => rows.push({ ...lesson, who: child }));
+    return rows.sort((a, b) => (a.order || 9999) - (b.order || 9999));
+  }
+
+  function renderWeekStrip() {
+    const start = mondayOf(currentDate);
+    weekStrip.replaceChildren();
+    for (let index = 0; index < 7; index += 1) {
+      const value = addDays(start, index);
+      const [, month, day] = splitDate(value);
+      const button = make("button", "week-day");
+      button.type = "button";
+      button.setAttribute("aria-label", `查看 ${month}月${day}日 ${WEEK_NAMES[dayIndex(value)]}`);
+      if (value === currentDate) button.setAttribute("aria-current", "date");
+      button.append(make("span", "", WEEK_NAMES[dayIndex(value)].replace("周", "")), make("b", "", String(day)));
+      button.addEventListener("click", () => { currentDate = value; render(); });
+      weekStrip.append(button);
+    }
+  }
+
+
+  function renderSchool(dow, value) {
+    schoolGrid.replaceChildren();
+    document.getElementById("schoolTitle").textContent = isTravelDay(value) ? "校内常规课表 · 供核对漏课" : "今天校内课程";
+    const breakInfo = schoolBreak(value);
+    if (!isSchoolDay(value)) {
+      schoolCheck.className = "school-check";
+      schoolCheck.textContent = breakInfo ? `${breakInfo[2]}：今天没有常规校内课程，不追赶新课。` : "今天没有常规校内课程。";
+      schoolGrid.append(make("p", "task-empty", "今天不显示校内课表。"));
+      return;
+    }
+    const check = hasConfirmedPickup(value, dow) ? { state: "ok", text: PICKUP_CONFIRMED_NOTICE } : hasKentonThursdayClub(value) ? { state: "pending", text: "哥哥16:30常规课程结束后留校社团，17:50爷爷接；弟弟16:40爸爸接。两边回家路线待确认。" } : SCHOOL_CHECKS[dow];
+    schoolCheck.className = "school-check" + (check.state === "pending" ? " pending" : "");
+    schoolCheck.textContent = hasConfirmedPickup(value, dow) ? PICKUP_CONFIRMED_NOTICE : value >= "2026-09-08" && value <= "2027-01-22" && dow === 3 ? EDDEY_WED_NOTICE : value >= "2026-09-08" && value <= "2027-01-22" && dow === 5 ? "弟弟正常课程15:35结束；周五15:00提前接走为家长安排，待与老师沟通。" : check.text;
+    if (isTravelDay(value)) schoolCheck.textContent = "下面保留常规课表供核对；请假批准和老师实际进度待确认，不代表孩子当天在校或已学会。";
+
+    ["kenton", "eddey"].forEach((child) => {
+      const source = SCHOOL_TIMETABLE[child];
+      const subjects = schoolSubjectsFor(child, value);
+      if (!subjects) return;
+      const card = make("article", "school-child " + child);
+      card.setAttribute("aria-label", source.name + " " + source.grade + "当天课程");
+      card.append(make("div", "school-child-head", source.name + " · " + source.grade + (child === "eddey" && value >= "2026-09-08" && value <= "2027-01-22" ? " · 9月8日更新" : "")));
+      const list = make("ul", "class-list");
+      subjects.forEach((subject, index) => {
+        const period = SCHOOL_PERIODS[index];
+        if (hasConfirmedPickup(value, dow) && index >= 6) return;
+        const row = make("li", "class-row" + (subject ? "" : " no-class"));
+        const meta = make("span", "class-period");
+        meta.append(make("b", "", period.label), document.createTextNode(period.time));
+        row.append(meta, make("span", "class-subject", subject || "—"));
+        list.append(row);
+      });
+      card.append(list);
+      if (hasConfirmedPickup(value, dow)) card.append(make("p", "school-check", "15:00放学接走；之后的旧课表课程不计入当天在校安排。"));
+      else if (!isTravelDay(value) && child === "eddey" && value >= "2026-09-08" && value <= "2027-01-22") card.append(make("p", "school-check", "正常课程结束：" + (dow === 5 ? "15:35；周五另有15:00提前接走安排。" : "16:25；实际接送时间见接送栏。")));
+      schoolGrid.append(card);
+    });
+
+    if (!schoolGrid.children.length) {
+      schoolGrid.append(make("p", "task-empty", "今天没有校内课程。"));
+    }
+  }
+
+  function renderPickup(plan) {
+    pickupList.replaceChildren();
+    plan.pickup.forEach(([time, text, note]) => {
+      const li = make("li");
+      li.append(make("span", "pickup-time", time));
+      const copy = make("span", "pickup-text", text);
+      if (note) copy.append(make("span", "pickup-note", note));
+      li.append(copy);
+      pickupList.append(li);
+    });
+  }
+
+  function renderLanes(plan) {
+    const saved = load(rowKey(currentDate));
+    childLanes.replaceChildren();
+    ["kenton", "eddey"].forEach((child) => {
+      const rows = getLaneRows(plan, child, currentDate);
+      const card = make("article", `lane-card ${child}`);
+      card.setAttribute("aria-label", `${child === "kenton" ? "Kenton" : "Eddey"} 当天安排`);
+      const head = make("div", "lane-head");
+      head.append(
+        make("strong", "", `${child === "kenton" ? "🦁 Kenton" : "🐯 Eddey"}`),
+        make("span", "free-count", `空档 ${rows.filter((row) => row.kind === "free").length} 段`)
+      );
+      card.append(head);
+      const list = make("ul", "lane-list");
+
+      rows.forEach((row) => {
+        const rowClass = row.conflict ? "conflict" : row.kind;
+        const li = make("li", `lane-row ${rowClass}`);
+        li.append(make("span", "lane-time", row.time));
+        const body = make("span", "lane-body");
+        body.append(make("strong", "", `${row.icon || ""} ${row.title}`.trim()));
+        if (row.note) body.append(make("span", "lane-note", row.note));
+        const [statusClass, statusText] = statusLabel(row);
+        body.append(make("span", `lane-status ${statusClass}`.trim(), statusText));
+        li.append(body);
+
+        if (row.kind !== "free" && row.kind !== "pending" && row.kind !== "conflict" && !row.conflict) {
+          const button = make("button", "check-button", child === "kenton" ? "🦁" : "🐯");
+          button.type = "button";
+          button.dataset.child = child;
+          button.dataset.rowId = row.id;
+          button.setAttribute("aria-label", `${child === "kenton" ? "Kenton" : "Eddey"} 完成：${row.title}`);
+          button.setAttribute("aria-pressed", String(Boolean(saved[`${row.id}:${child}`])));
+          button.addEventListener("click", () => {
+            const state = load(rowKey(currentDate));
+            const key = `${row.id}:${child}`;
+            state[key] = !state[key];
+            save(rowKey(currentDate), state);
+            button.setAttribute("aria-pressed", String(state[key]));
+          });
+          li.append(button);
+        }
+        list.append(li);
+      });
+
+      const learningState = load(learningKey(currentDate, child));
+      const learningLoad = learningState.load || suggestedLoad(child, currentDate);
+      const learningTasks = buildLearningTasks(child, currentDate, learningLoad, learningState)
+        .filter((task) => task.badge !== "Preply外教");
+      list.append(make("li", "lane-learning-title", `回家后学习 · ${LOAD_COLORS[learningLoad]}灯（${LOAD_NAMES[learningLoad]}）`));
+      learningTasks.forEach((task, index) => {
+        const li = make("li", "lane-row learning");
+        li.append(make("span", "lane-time", task.duration || (task.minutes ? `${task.minutes}分钟` : "按要求")));
+        const body = make("span", "lane-body");
+        body.append(make("strong", "", `${index + 1}. ${task.badge}`), make("span", "lane-note", task.text));
+        if (task.question) body.append(make("span", "lane-question", task.question));
+        li.append(body);
+        list.append(li);
+      });
+      card.append(list);
+      childLanes.append(card);
+    });
+  }
+
+  function unitFocus(anchor) {
+    if (anchor.child === "eddey" && anchor.subject === "语文") return `${anchor.unit} · ${EDDEY_CHINESE_FOCUS[anchor.unit] || "读懂内容与表达"}`;
+    return anchor.unit || anchor.title;
+  }
+
+  function masteryForAnchor(anchor) {
+    if (anchor.subject === "数学") return `会解释“${anchor.title}”的数量或图形关系，独立做1道代表题，并用估算、逆运算或代入检查。`;
+    if (anchor.subject === "英语") return `能在“${anchor.title}”场景中说出3个核心词和1句完整表达；换人物、地点或时间仍能说。`;
+    if (/古诗|谈读书|王戎|精卫填海/.test(anchor.title)) return `能解释《${anchor.title}》的关键词句，说出画面或人物理由，并完成老师指定的背诵。`;
+    if (/略读/.test(anchor.title)) return `能按阅读提示独立概括《${anchor.title}》，并找到1处文本证据。`;
+    return `能用一句话说清《${anchor.title}》的主要内容，指出1处文本证据，并联系“${unitFocus(anchor)}”解释。`;
+  }
+
+  function parentQuestionForAnchor(anchor) {
+    if (anchor.subject === "数学") return `爸爸问：这道题里什么在变化、什么不变？你为什么用“${anchor.title}”的方法？`;
+    if (anchor.subject === "英语") return "爸爸问：不看书，把人物、地点或时间换掉，你还能完整说一遍吗？";
+    return "爸爸问：你刚才这句话在课文哪里有证据？换一个情境还能怎样解释？";
+  }
+
+  function taskFromAnchor(anchor, stage) {
+    const name = `${anchor.subject}《${anchor.title}》`;
+    const common = {
+      id: `${stage}:${anchor.subject}:${anchor.title}`, stage, subject: anchor.subject, title: anchor.title,
+      unit: unitFocus(anchor), goal: masteryForAnchor(anchor), question: parentQuestionForAnchor(anchor)
+    };
+    if (stage === "review") {
+      if (anchor.subject === "语文") return { ...common, kind: "core", badge: "金牌学习手册", minutes: 6, text: `先合上书，用30秒讲《${anchor.title}》主要写了什么；再打开《金牌学习手册·语文》同名课，只做1个“内容理解/证据”核心问。`, note: "不是整页做完；先回忆，再用答案核对第一处遗漏。" };
+      if (anchor.subject === "数学") return { ...common, kind: "core", badge: "金牌学习手册", minutes: 8, text: `不看例题，说清《${anchor.title}》里谁和谁的关系；再打开《金牌学习手册·数学》对应小节，只做1道最能证明理解的题。`, note: "做对且理由说清就结束，不连刷同型题。" };
+      return { ...common, kind: "core", badge: "金牌学习手册", minutes: 6, text: `合上英语书，说出《${anchor.title}》的3个关键词和1句完整句；再看《金牌学习手册·英语》对应单元，只做1个核心表达题。`, note: "换一个人物、地点或时间再说一次；只纠正最影响理解的一个错误。" };
+    }
+    if (stage === "preview") {
+      if (anchor.subject === "语文") return { ...common, kind: "core", badge: "金牌预习", minutes: 5, text: `打开《金牌预习·语文》${unitFocus(anchor)}《${anchor.title}》同名课：只看标题、插图和第1个引导问，猜作者想让你看见什么；留下1个真问题。`, note: "不提前看全文讲解，不把整页预习题做完。" };
+      if (anchor.subject === "数学") return { ...common, kind: "core", badge: "金牌预习", minutes: 5, text: `打开《金牌预习·数学》${unitFocus(anchor)}“${anchor.title}”：只看第1个例题并遮住答案，说已知、所求和第一步；圈1处不懂。`, note: "只带着疑问去上课，不提前刷练习。" };
+      return { ...common, kind: "core", badge: "金牌预习", minutes: 5, text: `打开《金牌预习·英语》${unitFocus(anchor)}：只找3个关键词，猜这个单元要在什么场景说什么；试说1句。`, note: "不会的词做记号，不做整页练习、不反复纠音。" };
+    }
+    if (stage === "d1") {
+      const text = anchor.subject === "语文"
+        ? `不翻书，用30秒重新讲《${anchor.title}》；漏掉的只核对一次。`
+        : anchor.subject === "数学"
+          ? `不看例题，说出《${anchor.title}》的关键关系和第一步；能说清就停。`
+          : `不看课本，说出《${anchor.title}》的一句核心表达；换一个词再说一次。`;
+      return { ...common, kind: "recall", badge: "隔天回忆", minutes: 2, text, note: "这是D1提取，不是重新学一遍。" };
+    }
+    if (stage === "gate") {
+      const text = anchor.subject === "语文"
+        ? `不翻书，用一句话说《${anchor.title}》的中心，再说一个证据。`
+        : anchor.subject === "数学"
+          ? `不翻书，说出《${anchor.title}》的关键关系，再口述一道题的第一步。`
+          : `不翻书，说《${anchor.title}》的一句核心表达，再换一个词重说。`;
+      return { ...common, kind: "recall", badge: "3天回忆", minutes: 2, text, note: "能马上说清就结束；卡住才翻书核对一次。" };
+    }
+    return { ...common, kind: "recall", badge: "旧错点抽查", minutes: 5, text: `只有上次在《${anchor.title}》出错时才做：重做1道母题，再做1个小变式。`, note: "以前没错或已经连续稳住，就直接跳过。" };
+  }
+
+  function learningCandidates(child, value) {
+    const priority = { evidence: 130, actual: 120, repair: 110, review: 100, d1: 85, preview: 80, gate: 70, d21: 40 };
+    const state = load(learningKey(value, child));
+    const candidates = [];
+    const currentEvidence = window.DDScheduleEvidence?.candidate(scheduleEvidence, child, value);
+    if (currentEvidence) candidates.push(currentEvidence);
+    if ((state.actualProgress || "").trim()) {
+      candidates.push({
+        id: `actual:${value}`,
+        stage: "actual",
+        kind: "core",
+        badge: "按老师真实进度",
+        minutes: 5,
+        title: state.actualProgress.trim(),
+        goal: "能说清老师今天这部分到底解决什么，并独立完成一个最小例子。",
+        question: "爸爸问：你从哪一步开始不确定？不看答案能先说出第一步吗？",
+        text: `按今天记录的“${state.actualProgress.trim()}”：合上资料，说清它解决什么；再独立说或做一个最小例子。`,
+        note: "真实进度覆盖预测；完成后再看答案。"
+      });
+    }
+    const repair = load(repairKey(child));
+    if (repair.topic && repair.dueDate <= value) {
+      candidates.push({
+        id: `repair:${repair.sourceDate}:${repair.topic}`,
+        stage: "repair",
+        kind: "core",
+        badge: "学而思精准学",
+        minutes: 8,
+        title: repair.topic,
+        goal: `只修“${repair.topic}”这一个已确认薄弱点，并用2道题证明修好。`,
+        question: "爸爸问：刚才错在概念、审题、步骤、计算、表达还是记忆？",
+        text: `打开学而思精准学，搜索“${repair.topic}”：先做最短诊断，只学1个薄弱点，再独立做2道对应题。`,
+        note: "只在绿色/黄色窗口调用；2题通过就关掉，不顺手学下一讲。"
+      });
+    }
+    LEARNING_ANCHORS.filter((anchor) => anchor.child === child).forEach((anchor) => {
+      if (anchor.review === value) candidates.push(taskFromAnchor(anchor, "review"));
+      if (addDays(anchor.review, 1) === value) candidates.push(taskFromAnchor(anchor, "d1"));
+      if (anchor.preview === value && anchor.schoolStart > value) candidates.push(taskFromAnchor(anchor, "preview"));
+      if (anchor.gate === value) candidates.push(taskFromAnchor(anchor, "gate"));
+      if (anchor.d21 === value) candidates.push(taskFromAnchor(anchor, "d21"));
+    });
+    const subjectWeight = { 数学: 3, 语文: 2, 英语: 1 };
+    return candidates.sort((a, b) => (priority[b.stage] - priority[a.stage]) || ((subjectWeight[b.subject] || 0) - (subjectWeight[a.subject] || 0)));
+  }
+
+  function practiceTask(child, value) {
+    const due = LEARNING_ANCHORS.filter((anchor) => anchor.child === child && anchor.practice === value);
+    const ranges = [...new Set(due.map((anchor) => `${anchor.subject}${anchor.unit ? ` ${anchor.unit}` : ""}《${anchor.title}》`))];
+    const scope = ranges.length ? `本周对应：${ranges.slice(0, 4).join("、")}${ranges.length > 4 ? "等" : ""}。` : "只选老师本周已经教过的内容。";
+    return {
+      id: `practice:${value}`,
+      kind: "core",
+      badge: "一课一练",
+      minutes: child === "kenton" ? 35 : 30,
+      text: "打开华东师大版《一课一练》，只做6–8道最能看出会不会的代表题；不会先画问号，做完只分析最有代表性的1–2道错题。",
+      note: `${scope} 找到第一个错误步骤，再做1道小变式；学校已做同型题就跳过。`,
+      goal: "能在混合题中认出本周核心关系；错题知道第一个出错步骤，而不是只抄正确答案。",
+      question: "爸爸问：这一题考的是哪一个关系？如果改一个条件，你的方法还成立吗？"
+    };
+  }
+
+  function fallbackTask(child, value) {
+    const dow = dayIndex(value);
+    if (dow === 6) return practiceTask(child, value);
+    if (dow === 0) return { id: `next-preview:${value}`, kind: "core", badge: "金牌预习", minutes: child === "kenton" ? 8 : 5, text: "打开下周最先要上的语文、数学或英语《金牌预习》同名课：只看标题、插图或第一个例题，说它可能要解决什么；留下1个问题。", note: "找不到明确新课就不做，上午时间还给自己。", goal: "能说出下周第一课要解决的问题，并带着一个真实疑问去上课。", question: "爸爸问：你觉得这课和以前学过的哪一点有关？" };
+    const weekdaySubject = {
+      kenton: { 1: "语文", 2: "数学", 3: "英语", 4: "数学", 5: "语文" },
+      eddey: { 1: "英语", 2: "数学", 3: "语文", 4: "数学", 5: "语文" }
+    }[child][dow];
+    const action = weekdaySubject === "数学"
+      ? "打开《金牌学习手册·数学》老师今天讲到的对应小节：先合书说清数量关系，再只做1道代表题；说得清、做得对就停。"
+      : weekdaySubject === "语文"
+        ? "打开《金牌学习手册·语文》老师今天讲到的同名课：先合书用1句话复述，再只做1个需要找文本证据的问题。"
+        : "打开《金牌学习手册·英语》老师今天讲到的对应单元：先合书说3个词和1句完整表达，再换一个人物或地点重说。";
+    const goal = weekdaySubject === "数学"
+      ? "不看答案说清关系，并独立完成1道代表题。"
+      : weekdaySubject === "语文"
+        ? "不翻书说清主要内容，并找到1处原文证据。"
+        : "不看书说出3个关键词和1句完整表达，并能替换一个信息。";
+    return {
+      id: `school-recall:${value}:${weekdaySubject}`,
+      kind: "recall",
+      badge: "金牌学习手册",
+      minutes: weekdaySubject === "数学" ? 8 : 6,
+      title: `当天${weekdaySubject}课堂新内容`,
+      text: action,
+      note: "下册逐课目录尚未提供，所以不编课名；页面已经把学科、资料、动作和停止点定死。家长填入老师真实进度后，会自动替换为具体课名。",
+      goal,
+      question: weekdaySubject === "数学" ? "爸爸问：什么在变，什么不变？第一步为什么这样做？" : weekdaySubject === "语文" ? "爸爸问：你说的这句话，课文哪里能证明？" : "爸爸问：把人物或地点换掉，你还能完整说吗？"
+    };
+  }
+
+  function onlineClassTask(lesson) {
+    const teacher = lesson.title.split("·").pop().trim();
+    const conflictNote = lesson.status === "旅途中上课安排待确认"
+      ? "原预约仍保留；旅途中需确认安静地点、网络与行程是否允许，必要时由家长改期。外教已计入当天英语负荷。"
+      : lesson.status === "接送衔接待确认"
+      ? "课程已确认；社团结束到上课仅40分钟，需确认实际到家与设备准备时间，来不及则改期。当天不预排课前加练。"
+      : lesson.conflict
+      ? "课程已确认，但时间与接送冲突；家长先解决上课地点、接送或改期，不能让孩子边赶路边上课。"
+      : "这25分钟已经算当天英语学习负荷；当天不再追加英语练习（这里只指可选加练），但校内单词和老师已布置作业仍按总任务完成。";
+    return {
+      id: `task:${lesson.id}`,
+      kind: "must",
+      badge: "Preply外教",
+      minutes: 0,
+      duration: "25分钟",
+      text: `${lesson.time} 上 ${teacher} 外教；课前2分钟不看资料，回忆上次学过的一句话；课后只说“今天改对的一句”和“还没懂的一点”。`,
+      note: conflictNote,
+      goal: "能说出今天新学或被纠正的一句完整表达，并留下1个真实问题。",
+      question: "爸爸问：今天老师帮你改对了哪一句？你下一次想自己先说哪一句？"
+    };
+  }
+
+  function buildLearningTasks(child, value, loadName, state) {
+    const tasks = [];
+    if (isTravelDay(value)) {
+      confirmedOnlineLessons(child, value).forEach((lesson) => tasks.push(onlineClassTask(lesson)));
+      tasks.push({ id: `travel-window:${value}`, kind: "recall", badge: "旅行学习", minutes: 0, duration: "按实际空档", text: "先核对老师已布置的必做任务，再选一科从上次接着学；今天没有空档就休息。", note: "学校作业、纸笔和网站共同计时；到点保存断点，未做的不会自动叠到明天。", href: travelHref(child, value) });
+      return tasks;
+    }
+    if (isSchoolDay(value)) {
+      const dictationCopy = state.hasDictation
+        ? "③按老师范围默写一次，只订正错字/错词后再默一次"
+        : "③老师今天没布置默写就不自加";
+      tasks.push({ id: "school-work", kind: "must", badge: "学校任务包", minutes: 0, duration: "按老师要求", text: `依次完成：①学校书面作业；②当天口算按老师数量；${dictationCopy}。不会的先画问号，不马上搜答案。`, note: "口算与默写已经算学习负荷；学校书面作业达到60分钟，或已经很累，后面的家庭加练全部取消。", goal: "学校要求独立完成；口算只订正真实错因，默写只修错字和不熟词。", question: "家长只问：哪一项是不会，哪一项只是粗心或太累？" });
+    }
+
+    const onlineLessons = confirmedOnlineLessons(child, value);
+    onlineLessons.forEach((lesson) => tasks.push(onlineClassTask(lesson)));
+    const datedRequired = DATE_REQUIRED_LEARNING_TASKS[value]?.[child] || [];
+    datedRequired.forEach((task) => tasks.push({ ...task }));
+
+    const breakInfo = schoolBreak(value);
+    if (breakInfo && !(value >= "2027-02-19" && value <= "2027-02-21")) {
+      tasks.push({ id: `rest:${value}`, kind: "recall", badge: "假期", minutes: 0, duration: "不计时", text: "今天不追赶进度：户外、睡眠、自由阅读优先。", note: "过期的非核心任务直接删除，不挪到明天。" });
+      return tasks;
+    }
+
+    const cap = effectiveExtraCap(child, value, loadName, state);
+    if (cap === 0) return tasks;
+    if (loadName === "red") {
+      if (onlineLessons.length) return tasks;
+      tasks.push({ id: `reflect:${value}`, kind: "recall", badge: "3分钟收口", minutes: 3, text: "只说两句话：我今天学会了什么？还有哪一点没懂？说完就结束。", note: "不学新课、不补欠账、不打开长视频。" });
+      return tasks;
+    }
+
+    if (value >= "2027-02-19" && value <= "2027-02-21") {
+      tasks.push({ id: `return:${value}`, kind: "core", badge: "返校准备", minutes: Math.min(cap, 10), text: "整理书包和作息；语文、数学、英语各口头回忆一个上学期最重要的点。", note: "总计到时即停，不做整套卷。" });
+      return tasks;
+    }
+
+    const dow = dayIndex(value);
+    const evidenceCandidate = window.DDScheduleEvidence?.candidate(scheduleEvidence, child, value);
+    const candidates = dow === 6 ? [evidenceCandidate || practiceTask(child, value)] : learningCandidates(child, value);
+    if (!candidates.length) candidates.push(fallbackTask(child, value));
+    const maxExtra = onlineLessons.length ? 1 : (loadName === "green" && dow !== 6 && cap >= 12 ? 2 : 1);
+    let used = 0;
+    for (const task of candidates) {
+      if (tasks.some((item) => item.id === task.id)) continue;
+      if (used + task.minutes > cap) continue;
+      tasks.push(task);
+      used += task.minutes;
+      if (tasks.filter((item) => item.kind !== "must").length >= maxExtra) break;
+    }
+    if (!tasks.some((item) => item.kind !== "must")) {
+      const fallback = fallbackTask(child, value);
+      if (fallback.minutes <= cap) tasks.push(fallback);
+    }
+    return tasks;
+  }
+
+  function forecastText(child, value) {
+    if (value > "2027-01-22") return "下册课名尚未锁定：以当天老师真实进度为准。";
+    const schoolSubjects = new Set((schoolSubjectsFor(child, value) || []).map((subject) => subject === "外语" ? "英语" : subject === "语文（书法）" ? "语文" : subject));
+    const hits = LEARNING_ANCHORS.filter((anchor) => anchor.child === child && schoolSubjects.has(anchor.subject) && value >= anchor.schoolStart && value <= anchor.schoolEnd);
+    const labels = [...new Set(hits.map((anchor) => `${anchor.subject}《${anchor.title}》`))];
+    return labels.length ? `课表推算：学校今天可能在 ${labels.slice(0, 3).join("、")}。` : "课表推算：今天更可能是当前内容延伸、练习或校本调整。";
+  }
+
+  function renderLearning(child) {
+    const key = learningKey(currentDate, child);
+    const state = load(key);
+    const recommended = suggestedLoad(child, currentDate);
+    const loadName = state.load || recommended;
+    const cap = effectiveExtraCap(child, currentDate, loadName, state);
+    const tasks = buildLearningTasks(child, currentDate, loadName, state);
+    const list = document.getElementById(`${child}Tasks`);
+    const progress = document.getElementById(`${child}Progress`);
+    const advice = document.getElementById(`${child}LoadAdvice`);
+    const choices = document.getElementById(`${child}LoadChoices`);
+    const promptBox = document.getElementById(`${child}PromptBox`);
+    const promptLevels = document.getElementById(`${child}PromptLevels`);
+    const dictation = document.getElementById(`${child}Dictation`);
+    const repairButton = document.getElementById(`${child}Repair`);
+    const actual = document.getElementById(`${child}ActualProgress`);
+    const forecast = document.getElementById(`${child}Forecast`);
+    const title = document.getElementById(`${child}TasksTitle`);
+    const today = beijingToday();
+    const dayCopy = currentDate === today ? "今天学习" : currentDate === addDays(today, 1) ? "明天预排" : currentDate > today ? "日期预排" : "当天回看";
+    title.textContent = `${child === "kenton" ? "Kenton" : "Eddey"} · ${dayCopy}`;
+
+    choices.querySelectorAll(".load-button").forEach((button) => {
+      const active = button.dataset.load === loadName;
+      button.setAttribute("aria-pressed", String(active));
+      button.onclick = () => {
+        const next = load(key);
+        next.load = button.dataset.load;
+        save(key, next);
+        renderLearning(child);
+        renderSelectedExecution();
+      };
+    });
+
+    const recommendedCopy = state.load ? "已按你选择的状态调整" : `课表建议为“${LOAD_NAMES[recommended]}”`;
+    const dictationCopy = state.hasDictation ? "；今天有默写，已从家庭加练中再扣8分钟" : "";
+    const onlineLessons = confirmedOnlineLessons(child, currentDate);
+    const visibleCap = loadName === "red" && onlineLessons.length ? 0 : cap;
+    const onlineCopy = onlineLessons.length
+      ? `；另有${onlineLessons.map((lesson) => `${lesson.time} ${lesson.title.split("·").pop().trim()}`).join("、")}外教，已算25分钟英语学习负荷，${visibleCap ? "家庭加练最多1项" : "当天不再安排家庭加练"}；不再追加可选英语练习，校内单词和老师已布置作业仍要完成`
+      : "";
+    advice.textContent = loadName === "red"
+      ? `${recommendedCopy}：${visibleCap ? "只留3分钟口头收口" : "家庭额外学习为0分钟"}，课外课和学校作业不再叠加${dictationCopy}${onlineCopy}。`
+      : loadName === "yellow"
+        ? `${recommendedCopy}：只做1个最重要动作，家庭额外学习最多${cap}分钟${dictationCopy}${onlineCopy}。`
+        : `${recommendedCopy}：${onlineLessons.length ? "只留1项核心动作" : "最多两项核心动作"}，家庭额外学习硬上限${cap}分钟${dictationCopy}${onlineCopy}；提前会了立即停。`;
+
+    if (isTravelDay(currentDate)) advice.textContent = "旅行日按真实空档选一科，先接上次未完成的位置；每科纸笔和网站共同计时，最多25–30分钟。没有时间就休息，不追补。";
+    else if (cap === 0) advice.textContent = `${recommendedCopy}：家庭额外学习为0分钟，先完成老师已布置任务，课外课和家庭加练不叠加${onlineCopy}。`;
+    if (bookingNeedsCheck(currentDate)) advice.textContent = "外教预约需要核对，先保留学校已布置任务和上次确认课程；暂不占用可能的上课时间加练，关键目标留待核实空档后继续。";
+    else if (arrivalNeedsCheck(currentDate)) advice.textContent = `周四到家时间与可用学习时间未确认，暂不安排家庭加练；保留学校已布置任务${onlineCopy}。`;
+    dictation.hidden = isTravelDay(currentDate) || !isSchoolDay(currentDate);
+    dictation.setAttribute("aria-pressed", String(Boolean(state.hasDictation)));
+    dictation.textContent = state.hasDictation ? "默写 · 今天有" : "默写 · 今天没有";
+    dictation.onclick = () => {
+      const next = load(key);
+      next.hasDictation = !next.hasDictation;
+      save(key, next);
+      renderLearning(child);
+      renderSelectedExecution();
+    };
+
+    const updateProgress = () => {
+      const current = load(key);
+      const checks = current.checks || {};
+      const done = tasks.filter((task) => checks[task.id]).length;
+      progress.textContent = `今日 ${done}/${tasks.length}`;
+    };
+
+    list.replaceChildren();
+    if (!tasks.length) list.append(make("li", "task-empty", "今天没有额外学习任务。"));
+    tasks.forEach((task) => {
+      const current = load(key);
+      const checked = Boolean((current.checks || {})[task.id]);
+      const li = make("li", "learning-task");
+      const input = document.createElement("input");
+      input.type = "checkbox";
+      input.checked = checked;
+      input.setAttribute("aria-label", `完成：${task.text}`);
+      const copy = make("span", `task-copy${checked ? " done" : ""}`);
+      const meta = make("span", "task-meta");
+      meta.append(make("em", `task-badge ${task.kind}`, task.badge), make("em", "task-badge", task.duration || `${task.minutes}分钟`));
+      copy.append(meta, make("strong", "", task.text), make("small", "", task.note));
+      if (task.goal) copy.append(make("span", "task-goal", `本课要过关：${task.goal}`));
+      if (task.question) copy.append(make("span", "task-question", task.question));
+      if (task.href) {
+        const open = make("a", "task-open", "打开这个软件");
+        open.href = task.href;
+        copy.append(open);
+      }
+      input.addEventListener("change", () => {
+        const next = load(key);
+        next.checks = next.checks || {};
+        next.checks[task.id] = input.checked;
+        save(key, next);
+        if (input.checked && task.id.startsWith("repair:")) save(repairKey(child), {});
+        copy.classList.toggle("done", input.checked);
+        updateProgress();
+      });
+      li.append(input, copy);
+      list.append(li);
+    });
+    updateProgress();
+
+    const hasLearningAction = tasks.some((task) => task.kind === "core" || (task.kind === "recall" && task.minutes > 0));
+    promptBox.hidden = !hasLearningAction;
+    promptLevels.replaceChildren();
+    PROMPT_LEVELS.forEach((label, level) => {
+      const button = make("button", "prompt-level", String(level));
+      button.type = "button";
+      button.setAttribute("aria-label", label);
+      button.setAttribute("aria-pressed", String(Number(state.promptLevel || 0) === level));
+      button.onclick = () => {
+        const next = load(key);
+        next.promptLevel = level;
+        save(key, next);
+        renderLearning(child);
+      };
+      promptLevels.append(button);
+    });
+
+    const queuedRepair = load(repairKey(child));
+    const repairSource = tasks.find((task) => task.kind === "core" || (task.kind === "recall" && task.minutes > 0));
+    const queuedToday = queuedRepair.sourceDate === currentDate;
+    repairButton.hidden = !repairSource;
+    repairButton.setAttribute("aria-pressed", String(queuedToday));
+    repairButton.textContent = queuedToday ? "已排入下一次精准学 · 点此取消" : "还是不会 · 排入下一次精准学";
+    repairButton.onclick = () => {
+      if (queuedToday) {
+        save(repairKey(child), {});
+      } else {
+        const topic = repairSource.title || repairSource.badge || "今天未掌握的知识点";
+        save(repairKey(child), { sourceDate: currentDate, dueDate: addDays(currentDate, 1), topic });
+      }
+      renderLearning(child);
+      renderSelectedExecution();
+    };
+
+    actual.value = state.actualProgress || "";
+    actual.onchange = () => {
+      const next = load(key);
+      next.actualProgress = actual.value.trim();
+      save(key, next);
+      renderLearning(child);
+      renderSelectedExecution();
+    };
+    forecast.textContent = (state.actualProgress || "").trim()
+      ? `已记录老师真实进度：${state.actualProgress.trim()}。这条真实记录覆盖课表推算。`
+      : forecastText(child, currentDate) + " 老师实际内容不一致时，以你填的记录为准。";
+    const profile = scheduleEvidence[child];
+    const evidenceGoal = window.DDScheduleEvidence?.currentGoal(scheduleEvidence, child, currentDate);
+    const sourceNote = profile
+      ? " 已接入本孩知识点证据，仍需核对当天状态与老师任务。"
+      : evidenceReadStatus === "partial_or_unavailable"
+        ? " 云端学情暂不可用；当前只按本机记录和课表预排。"
+        : evidenceReadStatus === "isolated" ? " 测试环境未读取正式学情。" : " 当前学情尚未接入，课表只作候选。";
+    forecast.textContent += sourceNote;
+    if (evidenceGoal && !tasks.some((task) => task.stage === "evidence")) {
+      forecast.textContent += ` 待闭合目标“${evidenceGoal.knowledge_point}”保留到下一实际窗口。`;
+    }
+  }
+
+  function compactTaskText(task) {
+    if (!task) return "今天没有额外学习动作。";
+    const minutes = task.duration || `${task.minutes}分钟`;
+    return `用《${task.badge}》· ${minutes}：${task.text}`;
+  }
+
+  function executionStepCopy(task) {
+    return {
+      title: `${task.badge} · ${task.duration || (task.minutes ? `${task.minutes}分钟` : "按老师要求")}`,
+      text: task.text
+    };
+  }
+
+  function renderSelectedExecution() {
+    document.getElementById("executionTitle").textContent = isTravelDay(currentDate) ? "旅行期间，按空档安排" : "放学后照着做";
+    const dateNode = document.getElementById("executionDate");
+    const gridNode = document.getElementById("executionGrid");
+    dateNode.textContent = dateLabel(currentDate);
+    gridNode.replaceChildren();
+    const plan = getPlanForDate(currentDate, dayIndex(currentDate));
+
+    ["kenton", "eddey"].forEach((child) => {
+      const state = load(learningKey(currentDate, child));
+      const loadName = state.load || suggestedLoad(child, currentDate);
+      const tasks = buildLearningTasks(child, currentDate, loadName, state);
+      const fixed = getLaneRows(plan, child, currentDate).filter((row) =>
+        (row.kind === "online" || row.kind === "class") && !/第\s*\d+\s*节结束/.test(row.title || "")
+      );
+      const card = make("article", `execution-child ${child}`);
+      const head = make("div", "execution-child-head");
+      head.append(
+        make("span", `load-dot ${loadName}`),
+        make("strong", "", child === "kenton" ? "哥哥 Kenton" : "弟弟 Eddey"),
+        make("span", "execution-load", `${LOAD_COLORS[loadName]}灯 · ${LOAD_NAMES[loadName]}`)
+      );
+      card.append(head);
+
+      const fixedText = fixed.length
+        ? fixed.map((row) => `${row.time} ${row.title.replace("线上外教 · ", "外教 ")}`).join("；")
+        : (!bookingSnapshot?.dates?.[currentDate] && currentDate >= "2026-10-10" ? "外教预约尚未同步" : "没有新增固定课外课");
+      const fixedLine = make("p", "execution-fixed");
+      fixedLine.append(make("b", "", "固定安排："), document.createTextNode(fixedText));
+      card.append(fixedLine);
+
+      const steps = make("ol", "execution-steps");
+      const visibleTasks = tasks.length ? tasks : [{ badge: "今天不加任务", duration: "不计时", text: "保留户外、自由活动和睡眠，不为打卡硬找题。" }];
+      visibleTasks.forEach((task) => {
+        const copy = executionStepCopy(task);
+        const li = make("li", "execution-step");
+        li.append(make("b", "", copy.title), make("span", "", copy.text));
+        steps.append(li);
+      });
+      card.append(steps);
+
+      const stop = make("p", "execution-stop");
+      stop.textContent = state.hasDictation
+        ? "停止线：今天有默写，先扣8分钟；学校书面作业满60分钟或明显疲劳，家庭加练全部取消。"
+        : "停止线：学校书面作业满60分钟、明显疲劳或进入睡前流程，家庭加练全部取消。";
+      if (isTravelDay(currentDate)) stop.textContent = "停止线：到出发时间、身体不舒服或明显疲劳就停，保存断点，不在晚上补欠账。";
+      card.append(stop);
+
+      const button = make("button", "execution-detail", "查看过关标准并打卡");
+      button.type = "button";
+      button.onclick = () => document.getElementById(`${child}TaskCard`).scrollIntoView({ behavior: "smooth", block: "start" });
+      card.append(button);
+      gridNode.append(card);
+    });
+  }
+
+  function renderTomorrowBrief() {
+    const value = addDays(beijingToday(), 1);
+    tomorrowSubtitle.textContent = `${dateLabel(value)} · 预排版；老师真实进度、默写和当天状态会自动覆盖。`;
+    tomorrowGrid.replaceChildren();
+
+    ["kenton", "eddey"].forEach((child) => {
+      const state = load(learningKey(value, child));
+      const loadName = state.load || suggestedLoad(child, value);
+      const tasks = buildLearningTasks(child, value, loadName, state);
+      const extras = tasks.filter((task) => task.kind !== "must" && task.minutes > 0);
+      const plan = getPlanForDate(value, dayIndex(value));
+      const fixed = getLaneRows(plan, child, value).filter((row) =>
+        (row.kind === "online" || row.kind === "class") && !/第\s*\d+\s*节结束/.test(row.title || "")
+      );
+      const card = make("article", `tomorrow-child ${child}`);
+      const head = make("div", "tomorrow-child-head");
+      head.append(
+        make("span", `load-dot ${loadName}`),
+        make("strong", "", child === "kenton" ? "哥哥 Kenton" : "弟弟 Eddey"),
+        make("span", "tomorrow-load", `${LOAD_COLORS[loadName]}灯 · ${LOAD_NAMES[loadName]}`)
+      );
+      card.append(head);
+
+      const classCopy = fixed.length
+        ? fixed.map((row) => `${row.time} ${row.title.replace("线上外教 · ", "外教 ")}`).join("；")
+        : (!bookingSnapshot?.dates?.[value] && value >= "2026-10-10" ? "外教预约尚未同步" : "没有新增固定课外课");
+      const classLine = make("p", "tomorrow-line");
+      classLine.append(make("b", "", "固定安排："), document.createTextNode(classCopy));
+      card.append(classLine);
+
+      const mainLine = make("p", "tomorrow-line");
+      mainLine.append(make("b", "", "最少做："), document.createTextNode(compactTaskText(extras[0])));
+      card.append(mainLine);
+      if (extras[1]) {
+        const optionalLine = make("p", "tomorrow-line optional");
+        optionalLine.append(make("b", "", "有余力："), document.createTextNode(compactTaskText(extras[1])));
+        card.append(optionalLine);
+      }
+      tomorrowGrid.append(card);
+    });
+
+    tomorrowOpen.onclick = () => {
+      currentDate = value;
+      render();
+    };
+  }
+
+  function render() {
+    const today = beijingToday();
+    const dow = dayIndex(currentDate);
+    const plan = getPlanForDate(currentDate, dow);
+    document.getElementById("travelEntry").hidden = currentDate < "2026-09-16" || currentDate > "2026-09-28";
+    document.getElementById("travelEntryLink").href = travelHref("kenton", currentDate);
+    const onlineLessons = getOnlineLessons(currentDate, dow);
+    const pendingOnlineCount = onlineLessons.filter((lesson) => lesson.kind === "conflict" || lesson.state === P).length;
+    const confirmedOnline = onlineLessons.filter((lesson) => lesson.kind === "online" && lesson.state === C);
+    const confirmedOnlineCount = confirmedOnline.length;
+    const onlineSummary = `${confirmedOnlineCount ? ` · 外教 ${confirmedOnlineCount} 节` : ""}${pendingOnlineCount ? ` · 外教 ${pendingOnlineCount} 项待处理` : ""}`;
+    dateTitle.textContent = dateLabel(currentDate);
+    dateStatus.textContent = `${currentDate === today ? "今天" : currentDate > today ? "还没到" : "已过去"} · ${plan.label}${onlineSummary}`;
+    const breakInfo = schoolBreak(currentDate);
+    phase.innerHTML = isTravelDay(currentDate)
+      ? "<b>旅行学习安排</b> · 按真实空档执行；常规校内课表保留供核对漏课，老师进度待确认。"
+      : currentDate < SCHEDULE_START
+      ? `<b>开学周表预览</b> · 本版从 9月1日 起执行；现在可提前检查接送和课程衔接。`
+      : breakInfo && !(currentDate >= "2027-02-19" && currentDate <= "2027-02-21")
+        ? `<b>${breakInfo[2]}</b> · 不追赶学校进度；机构课程是否照常，以当天通知为准。`
+        : currentDate <= "2027-01-22"
+          ? `<b>上册课表联动计划</b> · ${plan.label}；课名来自上册目录，实际老师进度可以在学习卡中覆盖。`
+          : currentDate <= "2027-02-21"
+            ? `<b>返校准备</b> · 只恢复作息和最小回忆，不提前刷整套卷。`
+            : currentDate <= "2027-06-30"
+              ? `<b>下册课表联动计划</b> · ${plan.label}；下册逐课目录尚未锁定，以当天老师真实进度为准。`
+              : `<b>学年计划范围外</b> · 当前每日学习计划覆盖至 2027年6月30日。`;
+
+    alerts.replaceChildren();
+    const exactOnlineNotice = confirmedOnline.length ? {
+      type: confirmedOnline.some((lesson) => lesson.conflict) ? "conflict" : "normal",
+      text: `已核实外教：${confirmedOnline.map((lesson) => `${lesson.child === "kenton" ? "Kenton" : "Eddey"} ${lesson.time} ${lesson.title.split("·").pop().trim()}`).join("；")}。`
+    } : null;
+    [plan.alert, DATE_NOTICES[currentDate], bookingNotice(currentDate), exactOnlineNotice].filter(Boolean).forEach((item) => {
+      alerts.append(make("div", `alert ${item.type === "normal" ? "" : item.type}`.trim(), item.text));
+    });
+    const onlineFocus = confirmedOnline.length
+      ? `<br><b>已核实外教：</b>${confirmedOnline.map((lesson) => `${lesson.child === "kenton" ? "Kenton" : "Eddey"} ${lesson.time} ${lesson.title.split("·").pop().trim()}`).join("；")}。`
+      : "";
+    focusLine.innerHTML = `<b>今天最重要：</b>${plan.focus}${onlineFocus}`;
+    renderWeekStrip();
+    renderTomorrowBrief();
+    renderLanes(plan);
+    renderPickup(plan);
+    renderSchool(dow, currentDate);
+    renderLearning("kenton");
+    renderLearning("eddey");
+    renderSelectedExecution();
+    history.replaceState(null, "", `${location.pathname}?d=${currentDate}`);
+  }
+
+  document.getElementById("prevDay").addEventListener("click", () => { currentDate = addDays(currentDate, -1); render(); });
+  document.getElementById("nextDay").addEventListener("click", () => { currentDate = addDays(currentDate, 1); render(); });
+  document.getElementById("todayButton").addEventListener("click", () => { currentDate = beijingToday(); render(); });
+  // The browser and CLI feed evidence into the same buildLearningTasks function.
+  // Existing checks/load/progress remain local; this performs no uploads.
+  window.DDSchoolDayBookingStatus = () => bookingNotice(currentDate);
+  window.DDSchoolDayEvidence = Object.freeze({
+    getProfile: (child) => scheduleEvidence[child] || null,
+    getReadStatus: () => evidenceReadStatus,
+    getGoal: (child, date) => window.DDScheduleEvidence?.currentGoal(scheduleEvidence, child, date) || null,
+    getState: (child, date) => load(learningKey(date, child))
+  });
+  if (typeof window.addEventListener === "function") {
+    window.addEventListener("storage", (event) => {
+      if (event.key === "dd:system:parent-test-mode:v1" && !window.DDScheduleEvidence?.canReadCloud(location, localStorage)) {
+        scheduleEvidence = {};
+        evidenceReadStatus = "isolated";
+        render();
+      }
+    });
+  }
+  render();
+  if (window.DDScheduleBookings && typeof window.fetch === "function") {
+    const controller = typeof AbortController === "function" ? new AbortController() : null;
+    const timer = controller ? setTimeout(() => controller.abort(), 5000) : null;
+    window.fetch("data/schedule-bookings.json", { cache: "no-store", signal: controller?.signal })
+      .then(response => { if (!response.ok) throw new Error("预约数据暂不可用"); return response.json(); })
+      .then(value => {
+        bookingSnapshot = window.DDScheduleBookings.normalize(value);
+        bookingLoadFailed = false;
+        try { localStorage.setItem(BOOKING_CACHE_KEY, JSON.stringify(bookingSnapshot)); } catch (_) { /* Display still works without cache. */ }
+        render();
+      })
+      .catch(() => { bookingLoadFailed = true; render(); })
+      .finally(() => { if (timer) clearTimeout(timer); });
+  }
+  if (window.DDScheduleEvidence && typeof window.fetch === "function") {
+    const controller = typeof AbortController === "function" ? new AbortController() : null;
+    const timer = controller ? setTimeout(() => controller.abort(), 5000) : null;
+    window.DDScheduleEvidence.readCloud({ location, storage: localStorage, fetch: window.fetch.bind(window), signal: controller?.signal })
+      .then((result) => {
+        // Check again at installation, not only while each request completes.
+        if (!window.DDScheduleEvidence.canReadCloud(location, localStorage)) {
+          scheduleEvidence = {};
+          evidenceReadStatus = "isolated";
+        } else {
+          scheduleEvidence = result.profiles;
+          evidenceReadStatus = result.status;
+        }
+        render();
+      }).finally(() => { if (timer) clearTimeout(timer); });
+  }
+})();
+</script>
+</body>
+</html>
+

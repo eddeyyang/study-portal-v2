@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<script src="../assets/learning-sync.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>弟弟英语期末冲刺复习</title>
+<style>
+:root{
+  --eddey:#ff8a5b;--eddeyd:#e8643a;--eddeybg:#fff0e6;
+  --gold:#F2B632;--golddk:#D89400;--ink:#3a2e2a;--paper:#fff8f3;
+  --card:#fff;--line:#f0ddd0;--green:#3C9D54;--greenbg:#EAF7EC;
+  --red:#e15546;--redbg:#fdecea;--muted:#9a8b82;--blue:#3170B5;--bluebg:#e8f0fa;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+html,body{margin:0;padding:0;}
+body{font-family:'LXGW WenKai Screen','PingFang SC','Microsoft YaHei',system-ui,sans-serif;
+  background:radial-gradient(circle at 12% 6%,#ffe1cc 0,transparent 42%),radial-gradient(circle at 90% 96%,#ffe9c8 0,transparent 42%),var(--paper);
+  color:var(--ink);min-height:100vh;padding:0 0 40px;}
+.wrap{max-width:560px;margin:0 auto;padding:14px;}
+.top{display:flex;align-items:center;gap:10px;padding:8px 2px 12px;}
+.top .badge{background:var(--eddey);color:#fff;font-weight:800;font-size:18px;padding:6px 13px;border-radius:13px 13px 13px 4px;box-shadow:0 4px 0 var(--eddeyd);}
+.top h1{font-size:16px;margin:0;flex:1;}
+.top a.home{text-decoration:none;font-size:20px;background:#fff;width:40px;height:40px;border-radius:12px;display:grid;place-items:center;color:var(--ink);box-shadow:0 3px 0 #f0d8c8;flex-shrink:0;}
+.card{background:var(--card);border:2px solid var(--line);border-radius:18px;padding:18px;margin:12px 0;box-shadow:0 6px 0 #f3e2d6;}
+.lvls{display:grid;gap:11px;}
+.lvl{display:flex;align-items:center;gap:13px;background:var(--card);border:2px solid var(--line);border-left:7px solid var(--eddey);border-radius:16px;padding:14px;cursor:pointer;box-shadow:0 5px 0 #f3e2d6;text-align:left;width:100%;font-family:inherit;color:inherit;}
+.lvl:active{transform:translateY(2px);box-shadow:0 3px 0 #f3e2d6;}
+.lvl .num{background:var(--eddeybg);color:var(--eddeyd);font-weight:900;width:34px;height:34px;border-radius:10px;display:grid;place-items:center;flex-shrink:0;font-size:16px;}
+.lvl .ico{font-size:24px;}
+.lvl .t{font-size:16px;font-weight:800;}
+.lvl .meta{font-size:12px;color:var(--muted);margin-top:1px;}
+.lvl .done{margin-left:auto;font-size:13px;color:var(--green);font-weight:800;flex-shrink:0;}
+.lvl.huilu{border-left-color:var(--red);background:linear-gradient(180deg,#fff6f4,#fff);}
+.lvl.parent{border-left-color:var(--blue);background:linear-gradient(180deg,#f4f8fd,#fff);}
+.qhead{display:flex;justify-content:space-between;align-items:center;font-size:13px;color:var(--muted);margin-bottom:6px;}
+#qTimer{font-variant-numeric:tabular-nums;}
+.bar{height:9px;background:#f5e6db;border-radius:6px;overflow:hidden;margin-bottom:14px;}
+.bar>i{display:block;height:100%;background:var(--eddey);width:0;transition:width .3s;}
+.qtag{display:inline-block;font-size:12px;background:var(--eddeybg);color:var(--eddeyd);padding:3px 10px;border-radius:20px;font-weight:700;margin-bottom:10px;}
+.speak{background:#fff;border:2px solid var(--gold);color:var(--golddk);border-radius:12px;padding:7px 14px;font-size:15px;font-weight:700;cursor:pointer;box-shadow:0 3px 0 #f0dca0;font-family:inherit;margin-bottom:0;}
+.speak:active{transform:translateY(2px);box-shadow:0 1px 0 #f0dca0;}
+.soundtoggle{margin-left:auto;background:none;border:none;font-size:20px;cursor:pointer;padding:0 4px;}
+.toolrow{display:flex;align-items:center;margin-bottom:12px;}
+.passage{background:var(--bluebg);border-radius:12px;padding:13px 15px;font-size:16px;line-height:1.8;margin-bottom:14px;}
+.qtext{font-size:21px;font-weight:800;line-height:1.6;margin:4px 0 16px;}
+.qtext .blank{color:var(--eddeyd);border-bottom:3px solid var(--gold);padding:0 16px;}
+.opts{display:grid;gap:11px;}
+.opt{font-family:inherit;font-size:18px;text-align:left;background:#fff;border:2px solid var(--line);border-radius:14px;padding:14px 16px;cursor:pointer;color:var(--ink);box-shadow:0 4px 0 #f3e2d6;}
+.opt:active{transform:translateY(2px);box-shadow:0 2px 0 #f3e2d6;}
+.opt.right{background:var(--greenbg);border-color:var(--green);color:var(--green);font-weight:800;}
+.opt.wrong{background:var(--redbg);border-color:var(--red);color:var(--red);font-weight:800;}
+.opt.dim{opacity:.5;}
+.trybox{width:100%;font-family:inherit;font-size:18px;border:2px dashed var(--line);border-radius:12px;padding:12px;margin-bottom:12px;min-height:54px;}
+.answer{background:var(--greenbg);border-radius:12px;padding:14px 16px;font-size:18px;line-height:1.7;margin:6px 0 12px;}
+.answer .lab{font-size:13px;color:var(--green);font-weight:800;display:block;margin-bottom:4px;}
+.explain{background:#fff7ef;border-radius:12px;padding:11px 14px;font-size:15px;color:#8a6d4f;line-height:1.6;margin-bottom:12px;}
+.checklist{font-size:15px;line-height:2;margin:6px 0 12px;}
+.checklist label{display:block;}
+.fb{margin-top:6px;padding:13px 15px;border-radius:14px;font-size:16px;line-height:1.6;display:none;}
+.fb.ok{background:var(--greenbg);color:var(--green);display:block;}
+.fb.no{background:var(--redbg);color:var(--red);display:block;}
+.btnrow{display:grid;gap:10px;grid-template-columns:1fr 1fr;}
+.bigbtn{width:100%;font-family:inherit;font-size:17px;font-weight:800;border-radius:14px;padding:15px;cursor:pointer;border:none;margin-top:10px;}
+.bigbtn.primary{color:#fff;background:var(--eddey);box-shadow:0 5px 0 var(--eddeyd);}
+.bigbtn.gold{color:#fff;background:var(--gold);box-shadow:0 5px 0 var(--golddk);}
+.bigbtn.green{color:#fff;background:var(--green);box-shadow:0 5px 0 #2e7d40;}
+.bigbtn.red{color:#fff;background:var(--red);box-shadow:0 5px 0 #b23b2f;}
+.bigbtn.ghost{background:#fff;color:var(--eddeyd);border:2px solid var(--eddey);box-shadow:0 5px 0 #f3e2d6;}
+.bigbtn:active{transform:translateY(2px);}
+.bigbtn.half{margin-top:0;}
+.score{font-size:52px;font-weight:900;text-align:center;color:var(--eddey);}
+.scoresub{text-align:center;color:var(--muted);margin-bottom:8px;font-size:14px;}
+.wrongitem{background:var(--redbg);border-radius:10px;padding:10px 12px;margin:8px 0;font-size:15px;}
+.wrongitem b{color:var(--red);}
+textarea.exp{width:100%;height:150px;font-size:12px;border:2px solid var(--line);border-radius:12px;padding:10px;font-family:monospace;}
+.hide{display:none;}
+.intro{font-size:16px;line-height:1.8;}
+.intro .rule{background:var(--eddeybg);border-radius:12px;padding:13px 15px;margin:10px 0;}
+.tip{font-size:13px;color:var(--muted);text-align:center;margin-top:14px;line-height:1.6;}
+.pstat{font-size:16px;line-height:2;}
+.pstat b{color:var(--eddeyd);}
+.bignum{font-size:34px;font-weight:900;color:var(--eddey);}
+.mic{width:100%;font-family:inherit;font-size:18px;font-weight:800;background:#fff;border:2px solid var(--eddey);color:var(--eddeyd);border-radius:14px;padding:15px;cursor:pointer;box-shadow:0 5px 0 #f3e2d6;margin-bottom:8px;}
+.mic:active{transform:translateY(2px);box-shadow:0 3px 0 #f3e2d6;}
+.mic.listening{background:var(--redbg);border-color:var(--red);color:var(--red);animation:micpulse 1s infinite;}
+@keyframes micpulse{0%,100%{opacity:1;}50%{opacity:.55;}}
+.micnote{font-size:13px;color:var(--muted);margin:2px 0 8px;min-height:18px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top">
+    <a class="home" href="../index.html">‹</a>
+    <span class="badge">期末冲刺</span>
+    <h1 id="topTitle">弟弟英语期末冲刺</h1>
+  </div>
+
+  <!-- 闯关地图 -->
+  <div id="map">
+    <div class="card" style="padding:14px 16px">
+      <div style="font-weight:800;font-size:16px">弟弟英语期末冲刺 🎯</div>
+      <div style="font-size:13px;color:var(--muted);margin-top:4px">把早上冲刺卷里你<b>最常错的点</b>逐题练熟：每题先选答案、自动判分，再看『为什么错 / 怎么改』。错的会自动进“错题回炉关”。</div>
+    </div>
+    <button class="lvl parent" id="parentEntry">
+      <span class="ico">👨‍👩‍👦</span><span><div class="t">家长检查页</div><div class="meta">看今日错点、要复习什么</div></span>
+    </button>
+    <div class="lvls" id="lvls"></div>
+
+    <div class="card">
+      <div style="font-weight:800;font-size:15px">📊 我的练习记录</div>
+      <div id="recStat" style="font-size:14px;color:var(--muted);margin:6px 0 12px;line-height:1.6"></div>
+      <button class="bigbtn primary" id="menuExport" style="margin-top:0">📋 复制全部记录发给爸爸</button>
+      <button class="bigbtn ghost" id="menuDownload">💾 存成文件</button>
+      <textarea id="menuExportBox" class="exp hide" readonly></textarea>
+    </div>
+    <div class="tip">记录都存在这台平板里不会丢，练完发给爸爸，他帮你抓住要补的地方 💪</div>
+  </div>
+
+  <!-- 规则页 -->
+  <div id="intro" class="hide">
+    <div class="card">
+      <span class="qtag" id="introTag">第1关</span>
+      <h2 id="introName" style="margin:6px 0 4px;font-size:20px"></h2>
+      <div class="intro" id="introBody"></div>
+      <button class="bigbtn primary" id="startLevel">开始这一关 ▶</button>
+      <button class="bigbtn ghost" id="introBack">← 回到地图</button>
+    </div>
+  </div>
+
+  <!-- 答题区 -->
+  <div id="quiz" class="hide">
+    <div class="card">
+      <div class="qhead"><span id="qProgress">第 1 题</span><span id="qTimer">⏱ 0s</span><span id="qScore">✅ 0 ❌ 0</span></div>
+      <div class="bar"><i id="qbar"></i></div>
+      <span class="qtag" id="qtag"></span>
+      <div class="toolrow">
+        <button class="speak" id="speakBtn">🔊 读题</button>
+        <button class="soundtoggle" id="soundBtn" title="开关声音">🔔</button>
+      </div>
+      <div id="passage" class="passage hide"></div>
+      <div class="qtext" id="qtext"></div>
+      <div id="answerArea"></div>
+      <div class="fb" id="fb"></div>
+      <button class="bigbtn primary" id="nextBtn" style="display:none">下一题 ›</button>
+    </div>
+  </div>
+
+  <!-- 掌握报告 -->
+  <div id="report" class="hide">
+    <div class="card">
+      <div class="score" id="rScore">0%</div>
+      <div class="scoresub" id="rSub"></div>
+      <div id="rWrong"></div>
+      <button class="bigbtn gold" id="retryWrong">只重练错题 🔁</button>
+      <button class="bigbtn primary" id="againBtn">再练一遍 ↺</button>
+      <button class="bigbtn ghost" id="backMap">← 回到闯关地图</button>
+    </div>
+  </div>
+
+  <!-- 家长页 -->
+  <div id="parent" class="hide">
+    <div class="card">
+      <h2 style="margin:0 0 10px;font-size:19px">👨‍👩‍👦 家长检查页</h2>
+      <div class="pstat" id="pStat"></div>
+    </div>
+    <div class="card">
+      <div style="font-weight:800;font-size:16px;margin-bottom:6px">📌 明日优先复习建议</div>
+      <div id="pAdvice" style="font-size:15px;line-height:1.8"></div>
+    </div>
+    <div class="card">
+      <div style="font-weight:800;font-size:15px">📋 索引必做清单（对照检查）</div>
+      <div style="font-size:14px;line-height:1.9;color:#6b5c52;margin-top:6px">
+        默写/必背：★易错词句、句子三态、一般现在时三单、can 句型、拼写(swimming pool/playground/English)<br>
+        重点：三单(第三人称+单数才加s, The boys不加)、can≠does、对划线提问、like+doing<br>
+        习作：Myself / My day（用一般现在时, I like…/I can…）
+      </div>
+    </div>
+    <button class="bigbtn ghost" id="parentBack">← 回到地图</button>
+  </div>
+</div>
+
+<script>
+"use strict";
+/* ===================== 题库（依据三下期末复习索引 + 弟弟弱点） ===================== */
+/* 题型 kind: "choice"=选择自动判分； "self"=看题→看答案→自评(默写/仿写/写作) */
+var LEVELS = [
+  {id:"present3",name:"一般现在时·三单关",ico:"⏰",tag:"三单",
+   intro:'<div class="rule"><b>第三人称 + 单数</b> 才给动词加 s；<b>I / you / 复数(The boys)</b> 用原形。问/否用 do / does。</div>',
+   qs:[
+    {kind:"choice",q:"The boys ____ football.",a:"play",opts:["play","plays"],explain:"The boys 是复数 → 动词原形 play（虽是第三人称但不是单数）。",tag:"三单"},
+    {kind:"choice",q:"She ____ to school every day.",a:"goes",opts:["goes","go"],explain:"she 三单，go→goes。",tag:"三单"},
+    {kind:"choice",q:"____ Alice like apples?",a:"Does",opts:["Does","Do"],explain:"主语 Alice 三单，用 Does。",tag:"三单"},
+    {kind:"choice",q:"I ____ English very much.",a:"like",opts:["like","likes"],explain:"主语 I 用原形 like。",tag:"三单"}
+   ]},
+  {id:"can",name:"情态动词 can 关（老师特别强调）",ico:"💪",tag:"can",
+   intro:'<div class="rule">can + <b>动词原形</b>；否定 <b>can\'t</b>；疑问把 <b>Can</b> 提到句首。<b>can 和 does 无关，都不用 do/does！</b></div>',
+   qs:[
+    {kind:"choice",q:"She can ____ very fast.",a:"swim",opts:["swim","swims"],explain:"can 后用动词原形，不加 s。",tag:"can"},
+    {kind:"choice",q:"「她不会做饭」怎么说？",a:"She can't cook.",opts:["She can't cook.","She doesn't can cook."],explain:"can 的否定是 can't，不借 does。",tag:"can"},
+    {kind:"choice",q:"「你会游泳吗？」怎么问？",a:"Can you swim?",opts:["Can you swim?","Do you can swim?"],explain:"can 的疑问把 Can 提到句首，不用 do。",tag:"can"}
+   ]},
+  {id:"three",name:"句子三态关（肯定/否定/疑问）",ico:"🔁",tag:"三态",
+   intro:'<div class="rule">有 be 动词(am/is/are)：否定<b>直接加 not</b>；实义动词：否定用 <b>don\'t/doesn\'t</b>。<b>Do you…? 用 do 回答。</b></div>',
+   qs:[
+    {kind:"choice",q:"改否定：I am fat. →",a:"I am not fat.",opts:["I am not fat.","I don't fat."],explain:"有 be 动词 am，否定直接加 not。",tag:"三态"},
+    {kind:"choice",q:"Do you like apples? — ____",a:"Yes, I do.",opts:["Yes, I do.","Yes, I am."],explain:"Do you…? 用 do 回答。",tag:"三态"},
+    {kind:"choice",q:"改否定：I like it. →",a:"I don't like it.",opts:["I don't like it.","I not like it."],explain:"实义动词否定用 don't + 原形。",tag:"三态"}
+   ]},
+  {id:"plural",name:"名词单复数关",ico:"🔢",tag:"单复数",
+   intro:'<div class="rule"><b>these/those/are/数字</b> → 复数。辅音字母 + y → <b>去 y 加 ies</b>（strawberry→strawberries）。</div>',
+   qs:[
+    {kind:"choice",q:"单数改复数：This is a red strawberry. →",a:"These are red strawberries.",opts:["These are red strawberries.","These are red strawberrys."],explain:"This→These、is→are、去 a、strawberry→strawberries。",tag:"单复数"},
+    {kind:"choice",q:"草莓的复数：strawberry →",a:"strawberries",opts:["strawberries","strawberrys"],explain:"辅音字母 + y → 去 y 加 ies。",tag:"单复数"},
+    {kind:"choice",q:"These ____ my books.",a:"are",opts:["are","is"],explain:"These 是复数，用 are。",tag:"单复数"}
+   ]},
+  {id:"poss",name:"物主代词 + 对划线提问关",ico:"❓",tag:"物主代词",
+   intro:'<div class="rule">名词前用 <b>my/your/his/her…</b>（不用主格 she/he）。对“东西”提问用 <b>What</b>。</div>',
+   qs:[
+    {kind:"choice",q:"This is Kitty. ____ dress is nice.",a:"Her",opts:["Her","She"],explain:"修饰名词 dress 用 her，不用主格 she。",tag:"物主代词"},
+    {kind:"choice",q:"拼写：What can we ____ in summer?（看见）",a:"see",opts:["see","cee"],explain:"是 see 不是 cee。",tag:"拼写"},
+    {kind:"choice",q:"对划线提问：We can see <u>flowers</u>. →",a:"What can we see?",opts:["What can we see?","How can we see?"],explain:"对“东西”提问用 What。",tag:"提问"}
+   ]},
+  {id:"doing",name:"like + doing & 高频拼写关",ico:"✍️",tag:"拼写",
+   intro:'<div class="rule">like / enjoy 后动词用 <b>doing</b>。常考拼写：swimming(双 m) / playground / skateboard。</div>',
+   qs:[
+    {kind:"choice",q:"我喜欢踢足球：I like ____ football.",a:"playing",opts:["playing","play"],explain:"like 后动词用 -ing。",tag:"like+doing"},
+    {kind:"choice",q:"滑板：",a:"skateboard",opts:["skateboard","skatboard"],explain:"skate + board，别漏字母。",tag:"拼写"},
+    {kind:"choice",q:"游泳池：",a:"swimming pool",opts:["swimming pool","swiming pool"],explain:"swimming 双写 m。",tag:"拼写"},
+    {kind:"choice",q:"操场：",a:"playground",opts:["playground","playgroud"],explain:"play + ground，别漏 n。",tag:"拼写"}
+   ]},
+  {id:"writing",name:"必考作文关（Myself / My day）",ico:"📝",tag:"作文",
+   intro:'<div class="rule">用一般现在时介绍自己，套句型：I like… / I can… / I go to school… 写完点“看参考”。</div>',
+   qs:[
+    {kind:"self",q:"作文《Myself / My day》：介绍你自己（喜欢什么、会做什么、一周做什么），不少于 5 句。先在纸上写，再看参考。",
+     a:"Myself\nMy name is Eddey. I am nine.\nI like sports. I can swim and play football.\nI go to school from Monday to Friday.\nI play in the playground with my friends.\nOn Sunday, I swim in the swimming pool.\nI can't cook, but I can ride a bike.\nI am a happy boy!",
+     explain:"句首大写；I 用原形、he/she 加 s；can 后用原形；like 后用 doing。",
+     checklist:["句首字母大写","I 用原形，he/she 加 s","can 后用原形","like 后用 doing","swimming pool / playground 拼对","句末有句号"],tag:"作文"}
+   ]},
+  {id:"huilu",name:"错题回炉关",ico:"🔥",tag:"",dynamic:true,
+   intro:'<div class="rule">这一关收集你<b>刚才做错的题</b>，再练一遍！</div>'}
+];
+
+/* 错因 → 回炉建议 */
+var TAG_ADVICE = {
+  "三单":"第三人称且单数才加 s；The boys 等复数用原形。",
+  "can":"can 后用原形，否定 can't、疑问 Can 提前，不用 does。",
+  "三态":"be 加 not；实义动词用 don't/doesn't；Do 问就用 do 答。",
+  "单复数":"these/are/数字→复数；辅音字母+y→去y加ies。",
+  "物主代词":"名词前用 my/your/his/her，不用主格。",
+  "提问":"先判断信息类型，再选 What/How/Who…。",
+  "like+doing":"like 后动词加 -ing。",
+  "拼写":"易错词多写几遍，注意双写字母/别漏字母。",
+  "作文":"套模板，检查时态、大小写、拼写、句号。"
+};
+
+/* ===================== 通用：存储 / 声音 / 计时 ===================== */
+var STORE_KEY="eddey_en_sprint_v1";
+function loadStore(){try{return JSON.parse(localStorage.getItem(STORE_KEY))||{events:[]};}catch(e){return {events:[]};}}
+function saveEvent(ev){var s=loadStore();s.events.push(ev);try{localStorage.setItem(STORE_KEY,JSON.stringify(s));}catch(e){}}
+
+var soundOn=true, actx=null;
+function initAudio(){try{if(!actx)actx=new (window.AudioContext||window.webkitAudioContext)();if(actx.state==="suspended")actx.resume();}catch(e){}}
+function tone(freq,dur,delay,type){
+  if(!soundOn||!actx)return;
+  try{var o=actx.createOscillator(),g=actx.createGain(),t=actx.currentTime+delay;
+    o.type=type||"triangle";o.frequency.value=freq;o.connect(g);g.connect(actx.destination);
+    g.gain.setValueAtTime(0.0001,t);g.gain.exponentialRampToValueAtTime(0.22,t+0.02);
+    g.gain.exponentialRampToValueAtTime(0.0001,t+dur);o.start(t);o.stop(t+dur);}catch(e){}
+}
+function playRight(){initAudio();tone(880,0.13,0,"triangle");tone(1320,0.18,0.1,"triangle");}
+function playWrong(){initAudio();tone(196,0.3,0,"sawtooth");}
+/* ===== 神经真人配音层(edge-tts 预合成),失败回退浏览器TTS ===== */
+/* 预合成目录:每条音频按 fnv(lang+"|"+text) 命名,与 gen_audio.py 一致 */
+var AUDIO_DIR="audio/eddey_en_sprint/";
+var exAudio=null;   // 单个复用音频元素:首次手势解锁,之后每段复用(移动端更兼容)
+var audioTok=0;     // 打断/超时保护:自增令牌让过期回调失效
+/* 必须与 gen_audio.py 的 fnv() 一致:对 (lang+"|"+text) 的 UTF-8 字节做 FNV-1a */
+function audioHash(s){var b=new TextEncoder().encode(s);var x=0x811c9dc5>>>0;for(var i=0;i<b.length;i++){x^=b[i];x=Math.imul(x,0x01000193)>>>0;}return ('0000000'+x.toString(16)).slice(-8);}
+function getExAudio(){if(!exAudio){exAudio=new Audio();exAudio.setAttribute('playsinline','');exAudio.preload='auto';try{document.body.appendChild(exAudio);}catch(e){}}return exAudio;}
+function haltAudio(){audioTok++;if(exAudio){try{exAudio.pause();}catch(e){}}}
+
+/* 浏览器TTS:原有逻辑,作为回退 */
+function ttsSpeak(text){try{if(!window.speechSynthesis)return;window.speechSynthesis.cancel();try{window.speechSynthesis.resume();}catch(e){}
+  var u=new SpeechSynthesisUtterance(text);u.lang="zh-CN";u.rate=0.8;window.speechSynthesis.speak(u);}catch(e){}}
+/* 朗读一次:优先播预合成神经语音,失败回退TTS(本App只读中文) */
+function speak(text){
+  if(!soundOn||!text)return;
+  try{if(window.speechSynthesis)window.speechSynthesis.cancel();}catch(e){}
+  audioTok++;var myTok=audioTok;
+  var a=getExAudio();var done=false;
+  function stale(){return done||myTok!==audioTok;}
+  function fb(){if(stale())return;done=true;ttsSpeak(text);}
+  a.onended=function(){if(stale())return;done=true;};
+  a.onerror=fb;
+  try{a.pause();}catch(e){}
+  a.src=AUDIO_DIR+audioHash("zh|"+text)+".mp3";
+  try{a.currentTime=0;}catch(e){}
+  var p=a.play();
+  if(p&&typeof p.catch==='function')p.catch(fb);
+}
+
+var timerInt=null;
+function startTimer(){stopTimer();timerInt=setInterval(function(){
+  if(!cur)return;var sec=Math.floor((Date.now()-cur.t0)/1000);
+  var el=document.getElementById("qTimer");if(el)el.textContent="⏱ "+sec+"s";},500);}
+function stopTimer(){if(timerInt){clearInterval(timerInt);timerInt=null;}}
+
+function pad(n){return n<10?"0"+n:""+n;}
+function fmt(ts){var d=new Date(ts);return d.getFullYear()+"-"+pad(d.getMonth()+1)+"-"+pad(d.getDate())+" "+pad(d.getHours())+":"+pad(d.getMinutes());}
+function stamp(){var d=new Date();return ""+d.getFullYear()+pad(d.getMonth()+1)+pad(d.getDate())+"_"+pad(d.getHours())+pad(d.getMinutes());}
+function shuffle(a){a=a.slice();for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t;}return a;}
+function show(id){haltAudio();try{if(window.speechSynthesis)window.speechSynthesis.cancel();}catch(e){}["map","intro","quiz","report","parent"].forEach(function(x){document.getElementById(x).classList.add("hide");});document.getElementById(id).classList.remove("hide");window.scrollTo(0,0);}
+
+/* ===================== 闯关地图 ===================== */
+function lessonDone(name){var s=loadStore();for(var i=s.events.length-1;i>=0;i--){if(s.events[i].lesson===name)return s.events[i];}return null;}
+function renderMap(){
+  var box=document.getElementById("lvls");box.innerHTML="";
+  LEVELS.forEach(function(L,i){
+    var b=document.createElement("button");b.className="lvl"+(L.id==="huilu"?" huilu":"");
+    var done=lessonDone(L.name);
+    var cnt=L.dynamic?buildHuilu().length:L.qs.length;
+    var meta=L.dynamic?(cnt?cnt+" 道错题待回炉":"暂无错题"):(cnt+" 题");
+    var doneTag=done?'<span class="done">✅'+(done.total-done.wrong)+' ❌'+done.wrong+'</span>':"";
+    b.innerHTML='<span class="num">'+(i+1)+'</span><span class="ico">'+L.ico+'</span><span><div class="t">'+L.name+'</div><div class="meta">'+meta+'</div></span>'+doneTag;
+    b.onclick=function(){openLevel(i);};
+    box.appendChild(b);
+  });
+  // 记录面板
+  var s=loadStore(),items=0,wrong=0;
+  s.events.forEach(function(e){items+=(e.items||[]).length;wrong+=(e.wrong||0);});
+  var rec=document.getElementById("recStat");
+  if(s.events.length){
+    rec.innerHTML='已闯 <b>'+s.events.length+'</b> 关 · 共练 <b>'+items+'</b> 题 · 错 <b style="color:var(--red)">'+wrong+'</b> 题<br>这些就是发给爸爸做进化的数据 👇';
+    document.getElementById("menuExport").style.display="block";document.getElementById("menuDownload").style.display="block";
+  }else{
+    rec.innerHTML='还没有记录。挑一关闯完，这里会自动记下你的对错 ✨';
+    document.getElementById("menuExport").style.display="none";document.getElementById("menuDownload").style.display="none";
+  }
+}
+
+/* 错题回炉：扫描历史错题 */
+function buildHuilu(){
+  var s=loadStore(),seen={},qs=[];
+  s.events.forEach(function(e){(e.items||[]).forEach(function(it){
+    if(!it.ok && it.hint && !seen[it.hint]){seen[it.hint]=1;
+      qs.push({kind:"self",q:it.hint,a:it.word,tag:it.tag||"错题"});}
+  });});
+  return qs;
+}
+
+/* ===================== 规则页 / 答题 ===================== */
+var cur=null, curLevelIdx=0;
+function openLevel(i){
+  curLevelIdx=i;var L=LEVELS[i];
+  document.getElementById("introTag").textContent="第 "+(i+1)+" 关";
+  document.getElementById("introName").textContent=L.ico+" "+L.name;
+  var body=L.intro||"";
+  if(L.dynamic){var n=buildHuilu().length;body+=(n?'<p>本次有 <b>'+n+'</b> 道错题要回炉。</p>':'<p>太棒了，你目前没有错题！先去其它关闯一闯吧。</p>');}
+  document.getElementById("introBody").innerHTML=body;
+  show("intro");
+}
+document.getElementById("introBack").onclick=function(){renderMap();show("map");};
+document.getElementById("startLevel").onclick=function(){
+  var L=LEVELS[curLevelIdx];
+  var qs=L.dynamic?buildHuilu():L.qs.slice();
+  if(!qs.length){renderMap();show("map");return;}
+  startLevel(L,qs);
+};
+
+function startLevel(L,qs){
+  cur={name:L.name,passage:L.passage||"",qs:qs,idx:0,right:0,wrong:0,items:[],t0:Date.now(),qt0:0};
+  initAudio();startTimer();show("quiz");renderQ();
+}
+
+function renderQ(){
+  var q=cur.qs[cur.idx];cur.qt0=Date.now();
+  document.getElementById("qProgress").textContent="第 "+(cur.idx+1)+" / "+cur.qs.length+" 题";
+  document.getElementById("qScore").textContent="✅ "+cur.right+" ❌ "+cur.wrong;
+  document.getElementById("qbar").style.width=(cur.idx/cur.qs.length*100)+"%";
+  document.getElementById("qtag").textContent=cur.name;
+  var pa=document.getElementById("passage");
+  if(cur.passage){pa.textContent=cur.passage;pa.classList.remove("hide");}else{pa.classList.add("hide");}
+  document.getElementById("qtext").innerHTML=q.q.replace(/_{2,}/g,'<span class="blank">？</span>').replace(/\n/g,"<br>");
+  var sb=document.getElementById("speakBtn");
+  sb.onclick=function(){initAudio();speak(q.q.replace(/_{2,}/g,"什么").replace(/\n/g,"，"));};
+  var fb=document.getElementById("fb");fb.className="fb";fb.textContent="";
+  document.getElementById("nextBtn").style.display="none";
+  var area=document.getElementById("answerArea");area.innerHTML="";
+  if(q.kind==="choice")renderChoice(q,area);
+  else if(q.kind==="speak")renderSpeak(q,area);
+  else if(q.kind==="write")renderWrite(q,area);
+  else renderSelf(q,area);
+}
+
+function renderChoice(q,area){
+  var o=document.createElement("div");o.className="opts";
+  shuffle(q.opts).forEach(function(opt){
+    var b=document.createElement("button");b.className="opt";b.textContent=opt;
+    b.onclick=function(){
+      var ms=Date.now()-cur.qt0,ok=(opt===q.a);
+      if(ok)playRight();else playWrong();
+      o.querySelectorAll(".opt").forEach(function(x){x.onclick=null;
+        if(x.textContent===q.a)x.classList.add("right");else if(x===b)x.classList.add("wrong");else x.classList.add("dim");});
+      var fb=document.getElementById("fb");
+      fb.className=ok?"fb ok":"fb no";
+      fb.innerHTML=(ok?"✅ 答对啦！":"❌ 正确答案：「"+q.a+"」")+(q.explain?'<br><span style="font-size:14px">'+q.explain+"</span>":"");
+      record(q,ok,opt,ms);
+      showNext();
+    };
+    o.appendChild(b);
+  });
+  area.appendChild(o);
+}
+
+function renderSelf(q,area){
+  var tryb=document.createElement("textarea");tryb.className="trybox";tryb.placeholder="可以先在这里或纸上写，再看答案对照～";
+  area.appendChild(tryb);
+  var look=document.createElement("button");look.className="bigbtn gold";look.textContent="💡 看答案 / 参考";
+  area.appendChild(look);
+  look.onclick=function(){
+    look.style.display="none";tryb.setAttribute("readonly","readonly");
+    var ans=document.createElement("div");ans.className="answer";
+    ans.innerHTML='<span class="lab">参考答案</span>'+q.a.replace(/\n/g,"<br>");
+    area.appendChild(ans);
+    if(q.explain){var ex=document.createElement("div");ex.className="explain";ex.textContent=q.explain;area.appendChild(ex);}
+    if(q.checklist){var cl=document.createElement("div");cl.className="checklist";
+      cl.innerHTML='<b>对照检查（每项打钩）：</b>'+q.checklist.map(function(c){return '<label>☐ '+c+'</label>';}).join("");
+      area.appendChild(cl);}
+    var rate=document.createElement("div");rate.className="btnrow";
+    var yes=document.createElement("button");yes.className="bigbtn green half";yes.textContent="✅ 我做对了";
+    var no=document.createElement("button");no.className="bigbtn red half";no.textContent="❌ 没做对，要回炉";
+    rate.appendChild(yes);rate.appendChild(no);area.appendChild(rate);
+    var ms=Date.now()-cur.qt0;
+    yes.onclick=function(){playRight();yes.disabled=no.disabled=true;no.style.opacity=.4;record(q,true,"自评对",ms);showNext();};
+    no.onclick=function(){playWrong();yes.disabled=no.disabled=true;yes.style.opacity=.4;record(q,false,"自评错",ms);showNext();};
+  };
+}
+
+function norm(s){return (s||"").replace(/[\s，。、！？!?,.；;："“”'’（）()·]/g,"").toLowerCase();}
+var SR_OK=!!(window.SpeechRecognition||window.webkitSpeechRecognition);
+var recog=null,recognizing=false;
+function revealSelf(q,area,heard){
+  var ans=document.createElement("div");ans.className="answer";
+  ans.innerHTML='<span class="lab">参考答案</span>'+q.a.replace(/\n/g,"<br>");area.appendChild(ans);
+  if(q.explain){var ex=document.createElement("div");ex.className="explain";ex.textContent="💡 "+q.explain;area.appendChild(ex);}
+  if(q.checklist){var cl=document.createElement("div");cl.className="checklist";cl.innerHTML='<b>对照检查（每项打钩）：</b>'+q.checklist.map(function(c){return '<label>☐ '+c+'</label>';}).join("");area.appendChild(cl);}
+  var rate=document.createElement("div");rate.className="btnrow";
+  var yes=document.createElement("button");yes.className="bigbtn green half";yes.textContent="✅ 我做对了";
+  var no=document.createElement("button");no.className="bigbtn red half";no.textContent="❌ 没做对，回炉";
+  rate.appendChild(yes);rate.appendChild(no);area.appendChild(rate);
+  var ms=Date.now()-cur.qt0;
+  yes.onclick=function(){playRight();yes.disabled=no.disabled=true;no.style.opacity=.4;record(q,true,heard||"自评对",ms);showNext();};
+  no.onclick=function(){playWrong();yes.disabled=no.disabled=true;yes.style.opacity=.4;record(q,false,heard||"自评错",ms);showNext();};
+}
+function renderWrite(q,area){
+  var tip=document.createElement("div");tip.className="lead";tip.innerHTML="✍️ 先在<b>纸上写</b>，写好点下面看答案对照字形。";area.appendChild(tip);
+  var look=document.createElement("button");look.className="bigbtn gold";look.textContent="✍️ 写好了，看答案";look.style.marginTop="0";area.appendChild(look);
+  look.onclick=function(){look.style.display="none";revealSelf(q,area,"纸上默写");};
+}
+function renderSpeak(q,area){
+  var accepts=[norm(q.a)].concat((q.accept||[]).map(norm));var done=false;
+  var mic=document.createElement("button");mic.className="mic";mic.type="button";
+  mic.innerHTML=SR_OK?"🎤 点我，说出答案":"🎤 此设备不支持语音，点这里看答案";
+  area.appendChild(mic);
+  var heardEl=document.createElement("div");heardEl.className="micnote";area.appendChild(heardEl);
+  var look=document.createElement("button");look.className="bigbtn ghost";look.textContent="看答案 / 不会说";look.style.marginTop="0";area.appendChild(look);
+  function fallback(){if(done)return;done=true;mic.style.display="none";look.style.display="none";revealSelf(q,area,heardEl.textContent||"");}
+  look.onclick=fallback;
+  if(!SR_OK){mic.onclick=fallback;return;}
+  mic.onclick=function(){
+    if(done)return;
+    if(recognizing&&recog){try{recog.stop();}catch(e){}return;}
+    haltAudio();try{window.speechSynthesis&&window.speechSynthesis.cancel();}catch(e){}
+    var SRC=window.SpeechRecognition||window.webkitSpeechRecognition;
+    recog=new SRC();recog.lang=(q.lang==="en")?"en-GB":"zh-CN";recog.interimResults=false;recog.maxAlternatives=5;
+    var hit=false,best="";
+    recog.onresult=function(ev){var r=ev.results[0];for(var i=0;i<r.length;i++){var t=norm(r[i].transcript);if(i===0)best=r[i].transcript;if(accepts.indexOf(t)>=0){hit=true;break;}}};
+    recog.onerror=function(){};
+    recog.onend=function(){recognizing=false;mic.classList.remove("listening");mic.innerHTML="🎤 再说一次";
+      if(hit){done=true;playRight();var fb=document.getElementById("fb");fb.className="fb ok";fb.innerHTML="✅ 说对啦！"+(q.explain?'<br><span style="font-size:14px">'+q.explain+"</span>":"");mic.style.display="none";look.style.display="none";record(q,true,"说对",Date.now()-cur.qt0);showNext();}
+      else{heardEl.textContent=best?("听到：「"+best+"」——不一致，可再说一次，或点'看答案'对照"):"没听清，再说一次或点'看答案'";}};
+    recognizing=true;mic.classList.add("listening");mic.innerHTML="🔴 在听…（说完自动停）";
+    try{recog.start();}catch(e){recognizing=false;mic.classList.remove("listening");mic.innerHTML="🎤 点我，说出答案";}
+  };
+}
+function record(q,ok,user,ms){
+  if(ok)cur.right++;else cur.wrong++;
+  cur.items.push({word:q.a,hint:q.q,ok:ok,ms:ms,user:user,tag:q.tag||""});
+  document.getElementById("qScore").textContent="✅ "+cur.right+" ❌ "+cur.wrong;
+}
+function showNext(){var nb=document.getElementById("nextBtn");nb.textContent=(cur.idx+1>=cur.qs.length)?"看闯关报告 🎉":"下一题 ›";nb.style.display="block";}
+document.getElementById("nextBtn").onclick=function(){cur.idx++;if(cur.idx>=cur.qs.length)finish();else renderQ();};
+
+/* ===================== 掌握报告 ===================== */
+function finish(){
+  stopTimer();
+  var dur=Math.round((Date.now()-cur.t0)/1000),total=cur.qs.length;
+  saveEvent({ts:Date.now(),type:"review",subject:"en_redo",lesson:cur.name,total:total,wrong:cur.wrong,durationSec:dur,items:cur.items});
+  /* === 云端上传(fire-and-forget,断网/无端点完全不影响使用) === */
+  try{
+    var EB_ENDPOINT=localStorage.getItem("eb_endpoint");
+    if(EB_ENDPOINT){
+      var EB_KID="eddey";
+      var EB_SUBJECT="英语";
+      var EB_TOPIC=cur.name||"";
+      var EB_PAYLOAD=(cur.items||[]).map(function(it){
+        return {kid:EB_KID,subject:EB_SUBJECT,topic:EB_TOPIC,item:(it.word||it.t||""),ok:!!it.ok,hint:it.hint||""};
+      });
+      if(EB_PAYLOAD.length){
+        fetch(EB_ENDPOINT,{method:"POST",headers:{"Content-Type":"text/plain"},body:JSON.stringify(EB_PAYLOAD)}).then(function(){},function(){}).catch(function(){});
+      }
+    }
+  }catch(e){}
+  var pct=total?Math.round(cur.right/total*100):0;
+  document.getElementById("rScore").textContent=pct+"%";
+  document.getElementById("rSub").textContent="「"+cur.name+"」答对 "+cur.right+" / "+total+" 题 · 用时 "+dur+" 秒 · 平均每题 "+(total?Math.round(dur/total*10)/10:0)+" 秒"+(pct>=90?" 🌟太棒了！":pct>=70?" 👍不错！":" 加油，多练几遍！");
+  var wl=document.getElementById("rWrong"),wrongs=cur.items.filter(function(it){return !it.ok;});
+  if(wrongs.length){
+    var h='<div style="font-weight:800;margin:10px 0 4px">要回炉的题：</div>';
+    wrongs.forEach(function(it){h+='<div class="wrongitem">'+it.hint.replace(/\n/g,"　").slice(0,40)+'…<br>正确/参考：<b>'+it.word.replace(/\n/g,"　").slice(0,40)+'</b></div>';});
+    wl.innerHTML=h;document.getElementById("retryWrong").style.display="block";
+  }else{wl.innerHTML='<div style="text-align:center;color:var(--green);font-weight:800;font-size:18px;margin:10px 0">全对！这一关通关啦 🎉</div>';document.getElementById("retryWrong").style.display="none";}
+  show("report");
+}
+document.getElementById("retryWrong").onclick=function(){
+  var wrongQs=[];cur.qs.forEach(function(q,i){if(cur.items[i]&&!cur.items[i].ok)wrongQs.push(q);});
+  if(wrongQs.length)startLevel({name:cur.name+"（错题重练）",passage:cur.passage},wrongQs);
+};
+document.getElementById("againBtn").onclick=function(){
+  var L=LEVELS[curLevelIdx];var qs=L.dynamic?buildHuilu():L.qs.slice();
+  if(qs.length)startLevel(L,qs);else{renderMap();show("map");}
+};
+document.getElementById("backMap").onclick=function(){stopTimer();renderMap();show("map");};
+
+/* ===================== 家长页 ===================== */
+document.getElementById("parentEntry").onclick=function(){renderParent();show("parent");};
+document.getElementById("parentBack").onclick=function(){renderMap();show("map");};
+function renderParent(){
+  var s=loadStore();
+  var today=new Date();var todayStr=today.getFullYear()+"-"+pad(today.getMonth()+1)+"-"+pad(today.getDate());
+  var todayEv=s.events.filter(function(e){return fmt(e.ts).indexOf(todayStr)===0;});
+  var totItems=0,totWrong=0,tagCnt={};
+  s.events.forEach(function(e){(e.items||[]).forEach(function(it){totItems++;if(!it.ok){totWrong++;if(it.tag)tagCnt[it.tag]=(tagCnt[it.tag]||0)+1;}});});
+  var tags=Object.keys(tagCnt).sort(function(a,b){return tagCnt[b]-tagCnt[a];});
+  var ps=document.getElementById("pStat");
+  ps.innerHTML=
+    '今日闯关：<b>'+todayEv.length+'</b> 关<br>'+
+    '累计练题：<span class="bignum">'+totItems+'</span> 题，其中错 <b style="color:var(--red)">'+totWrong+'</b> 题<br>'+
+    '高频错因：'+(tags.length?tags.slice(0,3).map(function(t){return t+"("+tagCnt[t]+")";}).join("、"):"暂无 🎉");
+  var adv=document.getElementById("pAdvice");
+  if(!tags.length){adv.innerHTML="还没有错题数据。让孩子先闯几关，这里会自动给出明日复习重点。";}
+  else{adv.innerHTML="<ol style='margin:0;padding-left:20px'>"+tags.slice(0,4).map(function(t){return "<li><b>"+t+"</b>："+(TAG_ADVICE[t]||"针对此项加练。")+"</li>";}).join("")+"</ol>";}
+}
+
+/* ===================== 导出（兼容默写软件格式） ===================== */
+function buildExport(s){
+  var lines=[];
+  lines.push("【弟弟英语期末冲刺档案】导出时间:"+fmt(Date.now()));
+  lines.push("练习总关数:"+s.events.length);lines.push("");
+  var wc={};s.events.forEach(function(e){(e.items||[]).forEach(function(it){if(!it.ok)wc[it.word]=(wc[it.word]||0)+1;});});
+  var rep=Object.keys(wc).filter(function(k){return wc[k]>=2;});
+  lines.push("== 反复错的题(错≥2次,优先复习)==");
+  lines.push(rep.length?rep.map(function(k){return k.slice(0,20)+"(错"+wc[k]+"次)";}).join("、"):"(无)");
+  lines.push("");lines.push("== 每关明细 ==");
+  s.events.forEach(function(e){
+    lines.push("["+fmt(e.ts)+"] "+e.lesson+" ｜ "+(e.total-e.wrong)+"/"+e.total+"对 ｜ "+e.durationSec+"秒");
+    var w=(e.items||[]).filter(function(it){return !it.ok;});
+    if(w.length)lines.push("  错题:"+w.map(function(it){return (it.tag?"["+it.tag+"]":"")+it.hint.replace(/\n/g," ").slice(0,24);}).join("；"));
+  });
+  lines.push("");lines.push("== 原始数据(JSON,可直接投喂给Claude)==");
+  lines.push(JSON.stringify({child:"弟弟",subject:"英语期末冲刺复习",events:s.events}));
+  return lines.join("\n");
+}
+function copyToClipboard(txt,boxId,btn){
+  var box=document.getElementById(boxId);box.value=txt;box.classList.remove("hide");box.select();
+  var done=false;try{done=document.execCommand("copy");}catch(e){}
+  if(navigator.clipboard){navigator.clipboard.writeText(txt).then(function(){},function(){});}
+  btn.textContent=done?"✅ 已复制！发给爸爸吧":"👆 长按上面文字框全选复制";
+}
+function downloadText(txt){try{var blob=new Blob([txt],{type:"text/plain;charset=utf-8"});var url=URL.createObjectURL(blob);
+  var a=document.createElement("a");a.href=url;a.download="弟弟英语期末冲刺记录_"+stamp()+".txt";document.body.appendChild(a);a.click();
+  setTimeout(function(){a.remove();URL.revokeObjectURL(url);},500);return true;}catch(e){return false;}}
+document.getElementById("menuExport").onclick=function(){copyToClipboard(buildExport(loadStore()),"menuExportBox",this);};
+document.getElementById("menuDownload").onclick=function(){this.textContent=downloadText(buildExport(loadStore()))?"✅ 已存成文件":"用上面的复制按钮试试";};
+document.getElementById("soundBtn").onclick=function(){soundOn=!soundOn;this.textContent=soundOn?"🔔":"🔕";if(soundOn)initAudio();else{haltAudio();try{window.speechSynthesis&&window.speechSynthesis.cancel();try{window.speechSynthesis.resume();}catch(e){}}catch(e){}}};
+
+renderMap();
+</script>
+</body>
+</html>

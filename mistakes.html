@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#fff7f0">
+<title>错题与待回炉</title>
+<link rel="stylesheet" href="assets/styles.css">
+<script src="assets/learning-sync.js"></script>
+<script src="assets/mistake-history.js"></script>
+<script src="assets/paper-archive.js"></script>
+<link rel="stylesheet" href="assets/paper-tools.css">
+<style>
+  .archive-hero{position:relative;overflow:hidden;padding:22px;margin-bottom:14px;border:3px solid var(--accent);border-radius:26px;background:var(--accent-soft);box-shadow:var(--shadow)}
+  .archive-hero:after{content:"";position:absolute;right:-28px;top:-42px;width:128px;height:128px;border-radius:50%;background:rgba(255,255,255,.46)}
+  .archive-kicker{font-size:12px;font-weight:800;letter-spacing:.08em;color:var(--accent-dark)}
+  .archive-hero h2{position:relative;z-index:1;margin:7px 0 5px;font-size:24px}
+  .archive-hero p{position:relative;z-index:1;margin:0;color:var(--muted);font-size:13px;line-height:1.65}
+  .flow{display:grid;grid-template-columns:repeat(4,1fr);gap:7px;margin:15px 0 18px}
+  .flow-step{position:relative;min-height:84px;padding:12px 6px 9px;text-align:center;border-radius:17px;background:#fff;box-shadow:0 6px 16px rgba(91,71,103,.09)}
+  .flow-step:not(:last-child):after{content:"›";position:absolute;right:-8px;top:28px;z-index:2;width:16px;height:24px;border-radius:10px;background:var(--accent);color:#fff;font-weight:900;line-height:22px}
+  .flow-icon{display:block;font-size:23px}.flow-title{display:block;margin-top:5px;font-size:12px;font-weight:800}.flow-meta{display:block;margin-top:2px;color:var(--muted);font-size:9px;line-height:1.35}
+  .section-title{display:flex;align-items:end;gap:9px;margin:22px 2px 10px}.section-title h2{margin:0;font-size:19px}.section-title span{margin-left:auto;color:var(--muted);font-size:11px}
+  .privacy-card{padding:15px 16px;border:1px solid #d9eadf;border-radius:18px;background:#f3fbf5;color:#356044;font-size:12px;line-height:1.65}
+  .privacy-card b{display:block;margin-bottom:2px;color:#236f3b;font-size:14px}
+  .import-box{margin-top:11px;padding:17px;border:2px dashed color-mix(in srgb,var(--accent) 55%,white);border-radius:20px;background:rgba(255,255,255,.72);text-align:center}
+  .import-box .big{font-size:30px}.import-box h3{margin:7px 0 4px;font-size:16px}.import-box p{margin:0 0 13px;color:var(--muted);font-size:12px;line-height:1.6}
+  .primary-btn,.small-btn{border:0;border-radius:14px;font:inherit;font-weight:800;cursor:pointer}.primary-btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;min-height:45px;padding:0 17px;background:var(--accent);color:#fff;box-shadow:0 7px 15px color-mix(in srgb,var(--accent) 24%,transparent)}
+  .primary-btn:active,.small-btn:active{transform:scale(.97)}
+  .primary-btn:focus-visible,.small-btn:focus-visible,.filter-field input:focus-visible,.filter-field select:focus-visible{outline:3px solid color-mix(in srgb,var(--accent) 55%,#000);outline-offset:2px}
+  .primary-btn:disabled,.small-btn:disabled{cursor:not-allowed;opacity:.58;transform:none}
+  .review-tools{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:14px;border-radius:19px;background:#fff;box-shadow:var(--shadow)}
+  .filter-field{display:grid;gap:5px;min-width:0}.filter-field.search{grid-column:1/-1}.filter-field label{font-size:12px;font-weight:800;color:var(--accent-dark)}
+  .filter-field input,.filter-field select{width:100%;min-height:44px;padding:0 12px;border:2px solid color-mix(in srgb,var(--accent) 28%,#ddd);border-radius:13px;background:#fff;color:var(--ink);font:inherit;font-size:16px}
+  .review-summary{margin-top:9px;color:#514758;font-size:13px;line-height:1.65}
+  .review-meta{display:flex;flex-wrap:wrap;gap:6px;margin-top:9px}
+  .status-pill,.meta-pill{display:inline-flex;align-items:center;min-height:26px;padding:2px 9px;border-radius:999px;font-size:11px;font-weight:800}
+  .status-pill{background:#fff0d4;color:#765100}.meta-pill{background:var(--accent-soft);color:var(--accent-dark)}
+  .origin-pill{display:inline-flex;align-items:center;min-height:26px;padding:2px 9px;border-radius:999px;background:#f2eef5;color:#66596d;font-size:11px;font-weight:800}
+  .history-line{margin-top:8px;color:var(--muted);font-size:11px;line-height:1.55}
+  .review-details{margin-top:11px;border-top:1px solid rgba(58,46,63,.10);padding-top:10px}
+  .review-details summary{min-height:44px;display:flex;align-items:center;cursor:pointer;color:var(--accent-dark);font-size:13px;font-weight:800}
+  .review-details ol{margin:4px 0 0;padding-left:22px;color:#514758;font-size:12px;line-height:1.7}
+  .export-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:11px}
+  .cloud-feedback{min-height:20px;margin-top:8px;color:var(--muted);font-size:11px;line-height:1.5}
+  .private-list,.public-list{display:grid;gap:11px;margin-top:11px}
+  .subject-group{display:grid;gap:10px}
+  .subject-group+.subject-group{margin-top:8px}
+  .subject-group-head{display:flex;align-items:center;gap:9px;min-height:44px;padding:4px 3px;color:var(--accent-dark)}
+  .subject-group-head h3{margin:0;font-size:16px}
+  .subject-group-head span:last-child{margin-left:auto;min-width:28px;padding:3px 9px;border-radius:999px;background:var(--accent-soft);text-align:center;font-size:11px;font-weight:800}
+  .archive-item{padding:15px;border-radius:19px;background:#fff;box-shadow:var(--shadow);border-left:6px solid var(--accent)}
+  .archive-item-top{display:grid;grid-template-columns:44px 1fr;gap:11px;align-items:start}.archive-item-ico{width:44px;height:44px;display:grid;place-items:center;border-radius:14px;background:var(--accent-soft);font-size:23px}.archive-item h3{margin:1px 0 4px;font-size:15px;line-height:1.4}.archive-item p{margin:0;color:var(--muted);font-size:11px;line-height:1.5}
+  .item-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}.small-btn{min-height:44px;padding:0 13px;background:var(--accent-soft);color:var(--accent-dark);font-size:12px}.small-btn.open{background:var(--accent);color:#fff}.small-btn.danger{margin-left:auto;background:#fff1ef;color:#a44534}
+  .empty-archive{padding:24px 15px;text-align:center;border-radius:19px;background:rgba(255,255,255,.68);color:var(--muted);font-size:12px;line-height:1.65}.empty-archive .emoji{display:block;margin-bottom:5px;font-size:31px}
+  .safe-note{margin-top:11px;padding:12px 14px;border-radius:16px;background:#fff8e6;color:#765b1b;font-size:11px;line-height:1.55}
+  .loading{opacity:.7;pointer-events:none}
+  .software-viewer{position:fixed;inset:0;z-index:1000;display:none;flex-direction:column;background:#fff}
+  .software-viewer.open{display:flex}
+  .viewer-bar{min-height:56px;padding:8px max(12px,env(safe-area-inset-left));display:flex;align-items:center;gap:10px;background:#fff;border-bottom:1px solid #eee;box-shadow:0 3px 12px rgba(55,42,61,.10)}
+  .viewer-back{min-height:40px;padding:0 13px;border:0;border-radius:12px;background:var(--accent-soft);color:var(--accent-dark);font:inherit;font-size:13px;font-weight:800;cursor:pointer}
+  .viewer-title{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:14px;font-weight:800}
+  .software-frame{display:block;flex:1;width:100%;border:0;background:#fff}
+  @media(max-width:420px){.flow{grid-template-columns:1fr 1fr}.flow-step:not(:last-child):after{display:none}.archive-hero{padding:19px}.archive-hero h2{font-size:21px}.small-btn.danger{margin-left:0}.review-tools{grid-template-columns:1fr}.filter-field.search{grid-column:auto}}
+  @media(prefers-reduced-motion:reduce){.primary-btn,.small-btn{transition:none}}
+</style>
+<link rel="stylesheet" href="assets/portal-support.css">
+</head>
+<body class="portal-support">
+<div class="wrap" id="page">
+  <div class="topbar">
+    <a class="back" href="index.html" aria-label="返回首页"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m14 6-6 6 6 6M8 12h12"/></svg></a>
+    <h1 id="topTitle">错题与待回炉</h1>
+  </div>
+
+  <section class="archive-hero">
+    <div class="archive-kicker" id="archiveKicker">PRIVATE LEARNING ARCHIVE</div>
+    <h2><span id="childEmoji">📚</span> <span id="childName"></span> 的回炉地图</h2>
+    <p>这里集中显示还没解决的知识点，也保留原卷档案。先找到卡点，再进入对应教学；连续独立答对 2 次后才标记解决，历史记录不删除。</p>
+  </section>
+
+  <div class="flow" aria-label="错题分析学习流程">
+    <div class="flow-step"><span class="flow-icon">🧾</span><span class="flow-title">整卷回看</span><span class="flow-meta">保留原卷位置</span></div>
+    <div class="flow-step"><span class="flow-icon">🔎</span><span class="flow-title">点错题</span><span class="flow-meta">单题打开解析</span></div>
+    <div class="flow-step"><span class="flow-icon">💡</span><span class="flow-title">分步讲懂</span><span class="flow-meta">规则＋记忆钩子</span></div>
+    <div class="flow-step"><span class="flow-icon">🔁</span><span class="flow-title">回炉掌握</span><span class="flow-meta">连续答对 2 次</span></div>
+  </div>
+
+  <div class="section-title"><h2>🧾 卷子错题</h2><span id="paperCount">0 份</span></div>
+  <a class="paper-library-entry" id="paperUploadLink" href="paper-intake.html">
+    <span class="paper-library-icon">📷</span>
+    <span><h3>上传一张新的错题卷</h3><p>拍照 → 框出错题 → 家长确认模糊字迹 → 自动生成讲解入口</p></span>
+    <span class="arrow">›</span>
+  </a>
+  <div class="private-list" id="paperList">
+    <div class="empty-archive"><span class="emoji">📂</span>正在读取本机和 Neon 卷子清单……</div>
+  </div>
+
+  <div class="section-title"><h2>🎯 历史错题与待回炉</h2><span id="publicCount">0 条</span></div>
+  <div class="review-tools" aria-label="筛选待回炉知识点">
+    <div class="filter-field">
+      <label for="subjectFilter">学科</label>
+      <select id="subjectFilter"><option value="">全部学科</option></select>
+    </div>
+    <div class="filter-field">
+      <label for="statusFilter">状态</label>
+      <select id="statusFilter">
+        <option value="open">只看未解决</option>
+        <option value="resolved">只看已解决</option>
+        <option value="all">全部状态</option>
+      </select>
+    </div>
+    <div class="filter-field search">
+      <label for="searchFilter">查找知识点</label>
+      <input id="searchFilter" type="search" placeholder="例如：max1、三单、平均数" autocomplete="off">
+    </div>
+  </div>
+  <div class="export-actions">
+    <button class="small-btn open" id="exportMarkdown" type="button">导出当前清单 · Markdown</button>
+    <button class="small-btn" id="exportJson" type="button">导出当前清单 · JSON</button>
+  </div>
+  <div class="cloud-feedback" id="cloudFeedback" role="status" aria-live="polite"></div>
+  <div class="public-list" id="publicList">
+    <div class="empty-archive"><span class="emoji">🌱</span>正在读取匿名化待回炉记录……</div>
+  </div>
+
+  <div class="section-title"><h2>🔒 本机私密档案</h2><span id="privateCount">0 份</span></div>
+  <div class="privacy-card">
+    <b>原卷不会上传到公开网站</b>
+    分数、批改痕迹和手写内容只保存在当前设备的浏览器里；Kenton 与 Eddey 分开存放，互不混用。
+  </div>
+  <div class="import-box" id="importBox">
+    <div class="big">📥</div>
+    <h3>把错题分析软件放进档案</h3>
+    <p>选择 Codex 制作的单文件 HTML。导入一次后，就能从这里继续打开学习。</p>
+    <button class="primary-btn" id="chooseFile" type="button">＋ 导入本机软件</button>
+    <input id="fileInput" type="file" accept=".html,text/html" aria-label="选择错题分析 HTML 软件" hidden>
+  </div>
+  <div class="private-list" id="privateList"></div>
+  <div class="safe-note">只导入自己制作或确认可信的 HTML 软件。浏览器清理“网站数据”会删除本机档案，重要软件请保留原始 HTML 备份。</div>
+
+  <div class="footer-note">错题不是失败，是下一次进步的地图</div>
+</div>
+
+<div class="software-viewer" id="softwareViewer" aria-hidden="true">
+  <div class="viewer-bar">
+    <button class="viewer-back" id="closeViewer" type="button">← 返回档案</button>
+    <div class="viewer-title" id="viewerTitle">错题分析软件</div>
+  </div>
+  <iframe class="software-frame" id="softwareFrame" title="错题分析软件" referrerpolicy="no-referrer"></iframe>
+</div>
+
+<script>
+(function(){
+  'use strict';
+  const who = new URLSearchParams(location.search).get('who') === 'kenton' ? 'kenton' : 'eddey';
+  const meta = who === 'kenton'
+    ? {name:'Kenton',emoji:'🦁',accent:'#36c5d6',soft:'#e3fbff',dark:'#127889'}
+    : {name:'Eddey',emoji:'🐯',accent:'#ff8a5b',soft:'#fff0e6',dark:'#a84a25'};
+  const $ = id => document.getElementById(id);
+  document.documentElement.style.setProperty('--accent',meta.accent);
+  document.documentElement.style.setProperty('--accent-soft',meta.soft);
+  document.documentElement.style.setProperty('--accent-dark',meta.dark);
+  document.title = meta.name + ' · 错题与待回炉';
+  $('childName').textContent = meta.name;
+  $('childEmoji').textContent = meta.emoji;
+  $('topTitle').textContent = meta.name + ' · 错题与待回炉';
+
+  const DB_NAME = 'study_portal_private_mistake_archives_v1';
+  const STORE = 'software';
+  let db;
+  let publicItems=[];
+  let localPapers=[];
+
+  function openDB(){
+    return new Promise((resolve,reject)=>{
+      const req=indexedDB.open(DB_NAME,1);
+      req.onupgradeneeded=()=>{
+        const store=req.result.createObjectStore(STORE,{keyPath:'id'});
+        store.createIndex('child','child',{unique:false});
+      };
+      req.onsuccess=()=>resolve(req.result);
+      req.onerror=()=>reject(req.error);
+    });
+  }
+  function storeRequest(mode,action){
+    return new Promise((resolve,reject)=>{
+      const tx=db.transaction(STORE,mode);
+      const req=action(tx.objectStore(STORE));
+      req.onsuccess=()=>resolve(req.result);
+      req.onerror=()=>reject(req.error);
+    });
+  }
+  async function getPrivateItems(){
+    return storeRequest('readonly',s=>s.index('child').getAll(who));
+  }
+  function readableSize(bytes){
+    return bytes < 1024*1024 ? Math.max(1,Math.round(bytes/1024))+' KB' : (bytes/1024/1024).toFixed(1)+' MB';
+  }
+  function readableDate(value){
+    try{return new Date(value).toLocaleDateString('zh-CN',{year:'numeric',month:'numeric',day:'numeric'})}catch(e){return ''}
+  }
+  function safeName(name){return String(name||'错题分析软件').replace(/[<>]/g,'').trim()||'错题分析软件'}
+  function fileTitle(html,fileName){
+    try{
+      const doc=new DOMParser().parseFromString(html,'text/html');
+      return safeName(doc.querySelector('h1')?.textContent || doc.title || fileName.replace(/\.html?$/i,''));
+    }catch(e){return safeName(fileName.replace(/\.html?$/i,''))}
+  }
+  function downloadItem(item){
+    const a=document.createElement('a');
+    a.href=URL.createObjectURL(new Blob([item.html],{type:'text/html;charset=utf-8'}));
+    a.download=item.fileName||'mistake_analysis.html';
+    document.body.appendChild(a);a.click();a.remove();
+    setTimeout(()=>URL.revokeObjectURL(a.href),1200);
+  }
+  function openItem(item){
+    $('viewerTitle').textContent=item.title;
+    $('softwareFrame').srcdoc=item.html;
+    $('softwareViewer').classList.add('open');
+    $('softwareViewer').setAttribute('aria-hidden','false');
+    document.body.style.overflow='hidden';
+  }
+  function closeViewer(){
+    $('softwareViewer').classList.remove('open');
+    $('softwareViewer').setAttribute('aria-hidden','true');
+    $('softwareFrame').srcdoc='';
+    document.body.style.overflow='';
+  }
+  async function deleteItem(item){
+    if(!confirm('从这台设备的 '+meta.name+' 档案中删除“'+item.title+'”吗？\n原始 HTML 备份不会受影响。'))return;
+    await storeRequest('readwrite',s=>s.delete(item.id));
+    await renderPrivate();
+  }
+  function itemCard(item){
+    const card=document.createElement('article');card.className='archive-item';
+    const top=document.createElement('div');top.className='archive-item-top';
+    const ico=document.createElement('div');ico.className='archive-item-ico';ico.textContent='🧾';
+    const text=document.createElement('div');
+    const h=document.createElement('h3');h.textContent=item.title;
+    const p=document.createElement('p');p.textContent='本机导入 · '+readableDate(item.importedAt)+' · '+readableSize(item.size||item.html.length);
+    text.append(h,p);top.append(ico,text);
+    const actions=document.createElement('div');actions.className='item-actions';
+    const open=document.createElement('button');open.className='small-btn open';open.textContent='打开学习';open.onclick=()=>openItem(item);
+    const backup=document.createElement('button');backup.className='small-btn';backup.textContent='导出备份';backup.onclick=()=>downloadItem(item);
+    const remove=document.createElement('button');remove.className='small-btn danger';remove.textContent='移出档案';remove.onclick=()=>deleteItem(item);
+    actions.append(open,backup,remove);card.append(top,actions);return card;
+  }
+  async function renderPrivate(){
+    const list=$('privateList');list.innerHTML='';
+    const items=(await getPrivateItems()).sort((a,b)=>String(b.importedAt).localeCompare(String(a.importedAt)));
+    $('privateCount').textContent=items.length+' 份';
+    if(!items.length){
+      list.innerHTML='<div class="empty-archive"><span class="emoji">📂</span>'+meta.name+' 的本机档案还是空的。点击上方按钮，导入第一份错题分析软件。</div>';
+      return;
+    }
+    items.forEach(item=>list.appendChild(itemCard(item)));
+  }
+  async function importFile(file){
+    if(!file || !/\.html?$/i.test(file.name)){alert('请选择一个 HTML 软件文件。');return}
+    $('importBox').classList.add('loading');
+    try{
+      const html=await file.text();
+      if(!/<html[\s>]/i.test(html) && !/<!doctype html/i.test(html))throw new Error('文件看起来不是完整的 HTML 软件');
+      const item={id:who+':'+Date.now()+':'+Math.random().toString(36).slice(2,8),child:who,title:fileTitle(html,file.name),fileName:file.name,size:file.size,importedAt:new Date().toISOString(),html};
+      await storeRequest('readwrite',s=>s.put(item));
+      await renderPrivate();
+      alert('已放入 '+meta.name+' 的本机错题档案。');
+    }catch(err){alert('导入失败：'+(err.message||err))}
+    finally{$('importBox').classList.remove('loading');$('fileInput').value=''}
+  }
+  function currentPublicItems(){
+    const subject=$('subjectFilter').value;
+    const status=$('statusFilter').value;
+    const query=$('searchFilter').value.trim().toLowerCase();
+    return publicItems.filter(item=>{
+      const resolved=item.status==='resolved'||item.needReview===false;
+      if(subject&&item.subject!==subject)return false;
+      if(status==='open'&&resolved)return false;
+      if(status==='resolved'&&!resolved)return false;
+      if(query&&!([
+        item.title,item.topic,item.summary,item.source,
+        ...(Array.isArray(item.topics)?item.topics:[]),
+        ...(Array.isArray(item.sourcePaths)?item.sourcePaths:[])
+      ].join(' ').toLowerCase().includes(query)))return false;
+      return true;
+    });
+  }
+  function publicExportItems(){
+    return currentPublicItems().map(item=>({
+      id:item.id,
+      child:who,
+      subject:item.subject||'综合',
+      topic:item.topic||item.title,
+      date:item.added||'',
+      source:item.source||'',
+      status:item.status||'not_mastered',
+      statusLabel:item.statusLabel||'待回炉',
+      needReview:item.needReview!==false,
+      summary:item.summary||'',
+      errorCount:Number(item.errorCount)||1,
+      firstSeen:item.firstSeen||item.added||'',
+      lastSeen:item.lastSeen||item.added||'',
+      originKind:item.originKind||'cnb-archive',
+      reviewSteps:Array.isArray(item.reviewSteps)?item.reviewSteps:[],
+      recordFile:item.recordFile||''
+    }));
+  }
+  function downloadText(text,name,type){
+    const a=document.createElement('a');
+    a.href=URL.createObjectURL(new Blob([text],{type:type+';charset=utf-8'}));
+    a.download=name;
+    document.body.appendChild(a);a.click();a.remove();
+    setTimeout(()=>URL.revokeObjectURL(a.href),1200);
+  }
+  function exportPublic(format){
+    const rows=publicExportItems();
+    if(!rows.length){$('cloudFeedback').textContent='当前筛选下没有可导出的记录。';return}
+    const date=new Date().toISOString().slice(0,10);
+    if(format==='json'){
+      downloadText(JSON.stringify({schemaVersion:1,child:who,exportedAt:new Date().toISOString(),records:rows},null,2),who+'-mistakes-'+date+'.json','application/json');
+      return;
+    }
+    const lines=['# '+meta.name+' 错题与待回炉清单','',`- 导出时间：${new Date().toLocaleString('zh-CN')}`,'- 规则：连续独立答对 2 次才标记解决；历史记录保留。',''];
+    rows.forEach((item,index)=>{
+      lines.push(
+        `## ${index+1}. ${item.topic}`,
+        '',
+        `- 学科：${item.subject}`,
+        `- 最近记录：${item.lastSeen||item.date}`,
+        `- 首次记录：${item.firstSeen||item.date}`,
+        `- 错误次数：${item.errorCount}`,
+        `- 来源：${item.source}`,
+        `- 状态：${item.statusLabel}`,
+        '',
+        item.summary,
+        ''
+      );
+      if(item.reviewSteps.length){lines.push('回炉步骤：','',...item.reviewSteps.map((step,i)=>`${i+1}. ${step}`),'')}
+    });
+    downloadText(lines.join('\n'),who+'-mistakes-'+date+'.md','text/markdown');
+  }
+  async function syncPublic(item,button){
+    const env=window.DDLearningSync&&window.DDLearningSync.environment?window.DDLearningSync.environment():null;
+    if(!env||env.mode!=='production'){
+      $('cloudFeedback').textContent='当前不是正式站，已阻止写入 Neon；请在正式入口同步。';
+      return;
+    }
+    if(!item.neon||item.neon.kid!==who){
+      $('cloudFeedback').textContent='这条记录缺少正确的孩子标识，未执行同步。';
+      return;
+    }
+    button.disabled=true;button.textContent='正在同步…';
+    $('cloudFeedback').textContent='正在把这条匿名化待回炉记录写入 Neon，并按稳定记录 ID 回读。';
+    try{
+      const response=await fetch('/api/events',{
+        method:'POST',
+        cache:'no-store',
+        headers:{'Content-Type':'application/json'},
+        body:JSON.stringify(item.neon)
+      });
+      const result=await response.json().catch(()=>({}));
+      if(!response.ok||result.ok===false)throw new Error(result.error||'写入失败');
+      const readback=await fetch('/api/events?mode=errors&kid='+encodeURIComponent(who),{cache:'no-store'});
+      const data=await readback.json().catch(()=>({}));
+      const found=readback.ok&&Array.isArray(data.errors)&&data.errors.some(row=>row.client_event_id===item.neon.client_event_id);
+      if(!found)throw new Error('写入后没有读回同一条记录');
+      button.textContent='Neon 已回读 ✓';
+      button.dataset.synced='true';
+      $('cloudFeedback').textContent='已确认：'+item.topic+' 已在 Neon 中按 '+meta.name+' 独立保存。';
+    }catch(error){
+      button.disabled=false;button.textContent='同步到 Neon';
+      $('cloudFeedback').textContent='同步未完成：'+(error.message||error)+'。可以稍后重试，不会产生重复记录。';
+    }
+  }
+  function makePublicCard(item){
+    const card=document.createElement('article');card.className='archive-item';
+    const top=document.createElement('div');top.className='archive-item-top';
+    const subjectIcons={语文:'📖',数学:'📐',英语:'🔤',编程:'⌨️'};
+    const ico=document.createElement('div');ico.className='archive-item-ico';ico.textContent=subjectIcons[item.subject]||'🧠';
+    const text=document.createElement('div');
+    const h=document.createElement('h3');h.textContent=item.title||item.topic||'待回炉知识点';
+    const p=document.createElement('p');p.textContent=[item.subject||'综合',item.added||'',item.source||''].filter(Boolean).join(' · ');
+    text.append(h,p);top.append(ico,text);card.appendChild(top);
+    const badges=document.createElement('div');badges.className='review-meta';
+    const status=document.createElement('span');status.className='status-pill';status.textContent=item.statusLabel||'待回炉';
+    const subject=document.createElement('span');subject.className='meta-pill';subject.textContent=item.subject||'综合';
+    const origin=document.createElement('span');origin.className='origin-pill';
+    origin.textContent=item.originKind==='paper-confirmed'?'卷子确认':item.originKind==='neon-history'?'Neon 历史':'CNB 档案';
+    badges.append(status,subject,origin);
+    if(Number(item.errorCount)>1){
+      const count=document.createElement('span');count.className='origin-pill';count.textContent='累计错 '+Number(item.errorCount)+' 次';badges.appendChild(count);
+    }
+    card.appendChild(badges);
+    const summary=document.createElement('div');summary.className='review-summary';summary.textContent=item.summary||'进入对应教学完成回炉。';card.appendChild(summary);
+    const history=document.createElement('div');history.className='history-line';
+    const first=item.firstSeen||item.added||'',last=item.lastSeen||item.added||'';
+    history.textContent=first&&last&&first!==last
+      ? '首次 '+first+' · 最近 '+last+' · '+(item.source||'历史学习记录')
+      : '记录于 '+(last||'日期待核对')+' · '+(item.source||'历史学习记录');
+    card.appendChild(history);
+    if(Array.isArray(item.reviewSteps)&&item.reviewSteps.length){
+      const details=document.createElement('details');details.className='review-details';
+      const detailsTitle=document.createElement('summary');detailsTitle.textContent='查看定点回炉步骤';
+      const steps=document.createElement('ol');
+      item.reviewSteps.forEach(step=>{const li=document.createElement('li');li.textContent=step;steps.appendChild(li)});
+      details.append(detailsTitle,steps);card.appendChild(details);
+    }
+    const actions=document.createElement('div');actions.className='item-actions';
+    if(item.file){
+      const learn=document.createElement('a');learn.className='small-btn open';learn.href=item.file;learn.textContent='开始回炉';learn.style.textDecoration='none';learn.style.display='inline-flex';learn.style.alignItems='center';
+      actions.appendChild(learn);
+    }
+    if(item.recordFile){
+      const record=document.createElement('a');record.className='small-btn';record.href=item.recordFile;record.textContent='查看档案';record.style.textDecoration='none';record.style.display='inline-flex';record.style.alignItems='center';
+      actions.appendChild(record);
+    }
+    if(item.neon){
+      const sync=document.createElement('button');sync.className='small-btn';sync.type='button';sync.textContent='同步到 Neon';sync.dataset.syncId=item.neon.client_event_id||'';
+      const env=window.DDLearningSync&&window.DDLearningSync.environment?window.DDLearningSync.environment():null;
+      if(!env||env.mode!=='production'){sync.disabled=true;sync.textContent='正式站可同步'}
+      sync.onclick=()=>syncPublic(item,sync);actions.appendChild(sync);
+    }
+    card.appendChild(actions);return card;
+  }
+  function renderPublicList(){
+    const items=currentPublicItems();
+    $('publicCount').textContent=items.length+' 条';
+    const list=$('publicList');list.innerHTML='';
+    if(!items.length){
+      list.innerHTML='<div class="empty-archive"><span class="emoji">🔎</span>当前筛选下没有记录。可以换学科、状态或清空关键词。</div>';
+      return;
+    }
+    const groups=window.DDMistakeHistory.groupBySubject(items);
+    groups.forEach(group=>{
+      const section=document.createElement('section');section.className='subject-group';
+      const head=document.createElement('div');head.className='subject-group-head';
+      const icons={语文:'📖',数学:'📐',英语:'🔤',编程:'⌨️'};
+      const icon=document.createElement('span');icon.textContent=icons[group.subject]||'🧠';
+      const title=document.createElement('h3');title.textContent=group.subject;
+      const count=document.createElement('span');count.textContent=group.records.length+' 条';
+      head.append(icon,title,count);section.appendChild(head);
+      group.records.forEach(item=>section.appendChild(makePublicCard(item)));
+      list.appendChild(section);
+    });
+  }
+  function markCloudStatus(rows){
+    const env=window.DDLearningSync&&window.DDLearningSync.environment?window.DDLearningSync.environment():null;
+    if(!env||env.mode!=='production'||!publicItems.some(item=>item.neon))return;
+    const ids=new Set((Array.isArray(rows)?rows:[]).map(row=>row.client_event_id).filter(Boolean));
+    document.querySelectorAll('[data-sync-id]').forEach(button=>{
+      if(ids.has(button.dataset.syncId)){button.disabled=true;button.textContent='Neon 已有记录 ✓';button.dataset.synced='true'}
+    });
+  }
+  async function renderPublic(){
+    try{
+      const res=await fetch('data/mistake-archives.json',{cache:'no-store'});
+      if(!res.ok)throw new Error('load failed');
+      const data=await res.json();
+      const staticItems=Array.isArray(data[who])?data[who]:[];
+      const env=window.DDLearningSync&&window.DDLearningSync.environment?window.DDLearningSync.environment():null;
+      let cloudRows=[];
+      if(env&&env.mode==='production'){
+        try{
+          const response=await fetch('/api/events?mode=errors&kid='+encodeURIComponent(who),{cache:'no-store'});
+          const cloud=await response.json();
+          if(!response.ok||!Array.isArray(cloud.errors))throw new Error('历史错题接口暂不可用');
+          cloudRows=cloud.errors;
+          publicItems=window.DDMistakeHistory.mergeHistory(staticItems,cloudRows,who);
+          const cloudItems=publicItems.filter(item=>item.originKind==='neon-history'||item.originKind==='paper-confirmed').length;
+          $('cloudFeedback').textContent='已自动归入 '+cloudRows.length+' 条系统错误记录，去重整理为 '+cloudItems+' 个历史错题/知识点；CNB 档案同时保留。';
+        }catch(error){
+          publicItems=window.DDMistakeHistory.mergeHistory(staticItems,[],who);
+          $('cloudFeedback').textContent='Neon 历史错题暂时没有读到；当前先显示 CNB 档案。刷新即可重试，不会丢失原记录。';
+        }
+      }else{
+        publicItems=window.DDMistakeHistory.mergeHistory(staticItems,[],who);
+        $('cloudFeedback').textContent='本地或预览环境只显示 CNB 档案；正式站会自动合并 Neon 历史错题，且不会执行自动写入。';
+      }
+      const subjects=[...new Set(publicItems.map(item=>item.subject).filter(Boolean))].sort();
+      subjects.forEach(name=>{const option=document.createElement('option');option.value=name;option.textContent=name;$('subjectFilter').appendChild(option)});
+      renderPublicList();
+      markCloudStatus(cloudRows);
+    }catch(e){
+      $('publicList').innerHTML='<div class="empty-archive"><span class="emoji">⚠️</span>待回炉清单暂时没有读到，请刷新后重试。</div>';
+      $('cloudFeedback').textContent='匿名化档案读取失败，没有执行任何云端写入。';
+    }
+  }
+  function paperCard(item){
+    const card=document.createElement('article');card.className='archive-item';
+    const top=document.createElement('div');top.className='archive-item-top';
+    const ico=document.createElement('div');ico.className='archive-item-ico';ico.textContent=item.status==='draft'?'📝':'🧾';
+    const copy=document.createElement('div');
+    const h=document.createElement('h3');h.textContent=item.title||'错题卷';
+    const p=document.createElement('p');p.textContent=[item.subject||'综合',item.paperType||item.paper_type||'错题整理',item.paperDate||'',(item.wrongCount||item.questions?.length||0)+' 道错题',item.localImage?'原卷在本机':'结构化云端记录'].filter(Boolean).join(' · ');
+    copy.append(h,p);top.append(ico,copy);card.appendChild(top);
+    const actions=document.createElement('div');actions.className='item-actions';
+    const href='paper-lesson.html?who='+encodeURIComponent(who)+'&paper='+encodeURIComponent(item.id);
+    if(item.status==='confirmed'){
+      const open=document.createElement('a');open.className='small-btn open';open.href=href;open.textContent='打开错题讲解';open.style.textDecoration='none';open.style.display='inline-flex';open.style.alignItems='center';actions.appendChild(open);
+    }
+    if(item.localImage){
+      const edit=document.createElement('a');edit.className='small-btn';edit.href='paper-intake.html?who='+encodeURIComponent(who)+'&paper='+encodeURIComponent(item.id);edit.textContent=item.status==='draft'?'继续整理':'家长检查';edit.style.textDecoration='none';edit.style.display='inline-flex';edit.style.alignItems='center';actions.appendChild(edit);
+    }
+    card.appendChild(actions);return card;
+  }
+  async function renderPapers(){
+    const list=$('paperList');
+    try{localPapers=await window.DDPaperArchive.listPapers(who)}catch(_){localPapers=[]}
+    const merged=new Map();
+    localPapers.forEach(item=>merged.set(item.id,{...item,localImage:Array.isArray(item.pages)&&item.pages.some(page=>page&&page.blob),wrongCount:Array.isArray(item.questions)?item.questions.length:0}));
+    const env=window.DDLearningSync&&window.DDLearningSync.environment?window.DDLearningSync.environment():null;
+    if(env&&env.mode==='production'){
+      try{
+        const response=await fetch('/api/events?mode=papers&kid='+encodeURIComponent(who),{cache:'no-store'});
+        const data=await response.json();
+        if(response.ok&&Array.isArray(data.papers))data.papers.forEach(row=>{
+          const id=String(row.paper_id||'');if(!id)return;
+          const local=merged.get(id)||{};
+          merged.set(id,{...row,...local,id,title:local.title||row.title||'错题卷',paperDate:local.paperDate||row.paper_date||'',paperType:local.paperType||row.paper_type||'错题整理',archivePath:local.archivePath||row.archive_path||'',subject:local.subject||row.subject||'综合',status:local.status||'confirmed',wrongCount:local.wrongCount||Number(row.wrong_count)||0,localImage:Boolean(local.localImage)});
+        });
+      }catch(_){}
+    }
+    const items=[...merged.values()].sort(window.DDPaperArchive.comparePapers);
+    $('paperCount').textContent=items.length+' 份';list.innerHTML='';
+    if(!items.length){list.innerHTML='<div class="empty-archive"><span class="emoji">📷</span>还没有上传过错题卷。点上方入口即可开始，原图只保存在上传设备。</div>';return}
+    items.forEach(item=>list.appendChild(paperCard(item)));
+  }
+  $('chooseFile').onclick=()=>$('fileInput').click();
+  $('fileInput').onchange=e=>importFile(e.target.files&&e.target.files[0]);
+  $('subjectFilter').onchange=renderPublicList;
+  $('statusFilter').onchange=renderPublicList;
+  $('searchFilter').oninput=renderPublicList;
+  $('exportMarkdown').onclick=()=>exportPublic('markdown');
+  $('exportJson').onclick=()=>exportPublic('json');
+  $('closeViewer').onclick=closeViewer;
+  $('paperUploadLink').href='paper-intake.html?who='+encodeURIComponent(who);
+  document.addEventListener('keydown',e=>{if(e.key==='Escape'&&$('softwareViewer').classList.contains('open'))closeViewer()});
+  openDB().then(database=>{db=database;return renderPrivate()}).catch(()=>{
+    $('privateList').innerHTML='<div class="empty-archive"><span class="emoji">⚠️</span>当前浏览器不支持本机档案存储。请换用最新版 Chrome、Edge 或 Safari。</div>';
+    $('chooseFile').disabled=true;
+  });
+  renderPublic();
+  renderPapers();
+})();
+</script>
+</body>
+</html>

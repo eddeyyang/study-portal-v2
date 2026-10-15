@@ -1,0 +1,920 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<script src="../assets/learning-sync.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Kenton · 数学五上预习馆①小数乘除</title>
+<style>
+:root{--c:#2f6fb3;--cd:#225182;--cbg:#e0f0ff;--gold:#f2b632;--golddk:#c98a00;--ink:#2e2a26;--paper:#fdf6ee;
+ --line:#eadfd2;--muted:#8a8178;--green:#2e9c54;--greenbg:#e9f7ee;--red:#d64545;--redbg:#fdecec;--orange:#e8862f;--orangebg:#fdf1e3;--purple:#7a5fc9;--purplebg:#efeafc;}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+body{margin:0;font-family:'LXGW WenKai Screen','PingFang SC','Microsoft YaHei',system-ui,sans-serif;color:var(--ink);min-height:100vh;padding-bottom:50px;
+ background:radial-gradient(circle at 15% 5%,#d9ebfd 0,transparent 45%),radial-gradient(circle at 85% 20%,#ffe9d2 0,transparent 40%),var(--paper);}
+.wrap{max-width:620px;margin:0 auto;padding:14px;}
+.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;}
+.badge{background:var(--c);color:#fff;font-weight:800;font-size:17px;padding:6px 13px;border-radius:13px 13px 13px 4px;box-shadow:0 4px 0 var(--cd);}
+.back{background:none;border:none;color:var(--muted);font-size:15px;font-family:inherit;font-weight:800;cursor:pointer;padding:6px 2px;}
+.mute{background:none;border:none;font-size:20px;cursor:pointer;}
+h1{font-size:21px;text-align:center;margin:8px 0 2px;color:var(--cd);}
+.sub{text-align:center;font-size:12.5px;color:var(--muted);margin-bottom:10px;line-height:1.7;}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;}
+@media(max-width:400px){.grid{grid-template-columns:repeat(2,1fr);}}
+.tile{position:relative;background:#fff;border:2px solid var(--line);border-radius:16px;padding:14px 8px 10px;text-align:center;cursor:pointer;box-shadow:0 5px 0 #efe3d4;transition:transform .12s;min-height:46px;}
+.tile:active{transform:translateY(3px);box-shadow:0 2px 0 #efe3d4;}
+.tile.lock{opacity:.55;filter:grayscale(.6);}
+.tile .ic{font-size:32px;}
+.tile .nm{font-weight:800;font-size:14px;margin-top:6px;color:var(--cd);line-height:1.3;}
+.tile .ds{font-size:10.5px;color:var(--muted);margin-top:3px;line-height:1.45;}
+.tile .done{position:absolute;top:6px;right:8px;font-size:10.5px;font-weight:800;background:var(--greenbg);color:var(--green);border-radius:8px;padding:2px 6px;}
+.tile .done.pending{background:#eee8e1;color:#776d64;}
+.tile .today{position:absolute;top:-9px;left:10px;font-size:11px;font-weight:800;background:var(--gold);color:#5a3d00;border-radius:8px;padding:2px 8px;box-shadow:0 2px 0 var(--golddk);}
+.card{background:#fff;border:2px solid var(--line);border-radius:18px;padding:15px;margin:12px 0;box-shadow:0 6px 0 #f2e7d9;}
+.h2{font-size:17px;font-weight:800;color:var(--cd);margin:0 0 8px;}
+.h2 .tag{font-size:11px;background:var(--cbg);color:var(--cd);border-radius:8px;padding:2px 8px;vertical-align:2px;margin-left:6px;}
+.btn{font-family:inherit;font-weight:800;font-size:15px;border:none;border-radius:12px;padding:12px 16px;cursor:pointer;color:#fff;background:var(--c);box-shadow:0 4px 0 var(--cd);min-height:46px;}
+.btn:active{transform:translateY(3px);box-shadow:0 1px 0 var(--cd);}
+.btn.gold{background:var(--gold);color:#5a3d00;box-shadow:0 4px 0 var(--golddk);}
+.btn.ghost{background:#fff;color:var(--cd);border:2px solid var(--line);box-shadow:0 4px 0 #efe3d4;}
+.btn.red{background:var(--red);box-shadow:0 4px 0 #a83232;}
+.btn.wide{display:block;width:100%;margin:8px 0;}
+.hide{display:none!important;}
+/* 放大镜 */
+.bigexpr{text-align:center;font-size:26px;font-weight:900;margin:12px 0;line-height:1.8;word-break:break-all;}
+.bigexpr .tk{display:inline-block;padding:1px 2px;border-radius:6px;transition:all .3s;}
+.bigexpr .tk.hn{background:var(--orangebg);color:var(--orange);animation:pulse 1s ease 2;}
+.bigexpr .tk.ho{background:var(--cbg);color:var(--c);animation:pulse 1s ease 2;}
+@keyframes pulse{0%{transform:scale(1)}50%{transform:scale(1.25)}100%{transform:scale(1)}}
+.mirbtns{display:flex;gap:8px;}
+.mirbtns .btn{flex:1;font-size:14px;}
+.feat{background:var(--orangebg);border-radius:12px;padding:9px 12px;font-size:14px;line-height:1.7;margin:8px 0;font-weight:700;animation:fadein .5s;}
+.feat.blue{background:var(--cbg);}
+.mchip{display:inline-block;background:#fff;border:2px solid var(--gold);color:#a8730a;border-radius:12px;padding:5px 12px;font-size:13.5px;font-weight:800;margin:3px;animation:fadein .5s;}
+@keyframes fadein{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+/* 分步动画 */
+.srow{display:flex;align-items:flex-start;gap:8px;margin:10px 0;animation:slidein .5s ease;}
+@keyframes slidein{from{opacity:0;transform:translateX(-18px)}to{opacity:1;transform:none}}
+.srow .math{font-size:19px;font-weight:800;line-height:1.6;word-break:break-all;flex:1;}
+.srow.cur .math{background:#fffbe8;border-radius:8px;padding:2px 6px;}
+.snote{align-self:center;flex-shrink:0;max-width:42%;background:var(--orange);color:#fff;font-size:12px;font-weight:800;border-radius:10px 10px 10px 2px;padding:5px 9px;line-height:1.5;animation:fadein .6s;}
+.snote:before{content:"⬅ ";}
+.swhy{font-size:12.5px;color:#8a6a3a;background:var(--orangebg);border-radius:8px;padding:6px 10px;margin:-4px 0 10px 6px;line-height:1.7;animation:fadein .7s;}
+.fin{text-align:center;font-size:16px;font-weight:900;color:var(--green);margin:10px 0;animation:pop .4s;}
+@keyframes pop{0%{transform:scale(.6)}70%{transform:scale(1.15)}100%{transform:scale(1)}}
+/* 妙招 */
+.fmla{background:linear-gradient(135deg,#fff8e0,#ffefc9);border:2px dashed var(--gold);border-radius:12px;padding:10px 13px;font-size:16.5px;font-weight:900;color:#7a5200;text-align:center;margin:8px 0;line-height:1.8;word-break:break-all;}
+.usebox{font-size:14px;line-height:1.8;color:#4a443e;}
+.usebox b{color:#a8730a;}
+/* 遮挡回忆 */
+.rcsent{font-size:17px;font-weight:800;line-height:2;margin:12px 0;text-align:center;animation:fadein .5s;}
+.rcsent .blank{display:inline-block;min-width:64px;border-bottom:3px dashed var(--gold);color:var(--golddk);padding:0 6px;}
+.rcbtns{display:flex;gap:10px;justify-content:center;margin:8px 0 16px;}
+.rcbtns .opt{width:auto;min-width:110px;margin:0;}
+/* 实验室通用 */
+.labtip{font-size:13px;color:var(--muted);line-height:1.7;margin:4px 0 10px;}
+.labbig{text-align:center;font-size:30px;font-weight:900;margin:14px 0;letter-spacing:2px;position:relative;}
+.labnote{text-align:center;font-size:15px;font-weight:800;color:var(--cd);margin:8px 0;min-height:24px;animation:fadein .4s;}
+input[type=range]{width:100%;height:34px;accent-color:var(--c);}
+/* L1 小数点滑梯 */
+.pointview{font-size:38px;font-weight:900;text-align:center;letter-spacing:4px;margin:10px 0;color:var(--ink);transition:color .3s;}
+.pointview .pt{color:var(--orange);animation:pulse 1s ease 1;}
+/* L2 跷跷板 */
+.barrow{margin:10px 0;}
+.barrow .bl{font-size:13px;font-weight:800;color:var(--muted);margin-bottom:3px;}
+.bartrack{background:#f4ede3;border-radius:10px;height:30px;position:relative;overflow:hidden;}
+.barfill{height:100%;border-radius:10px;background:var(--c);transition:width .35s ease;display:flex;align-items:center;justify-content:flex-end;padding-right:8px;color:#fff;font-weight:900;font-size:14px;min-width:34px;}
+.barfill.cmp{background:var(--gold);}
+/* L3 吸铁石 */
+.chips{display:flex;gap:10px;justify-content:center;margin:14px 0;flex-wrap:wrap;}
+.chip{background:#fff;border:2px solid var(--line);border-radius:14px;padding:12px 18px;font-size:20px;font-weight:900;cursor:pointer;box-shadow:0 4px 0 #efe3d4;transition:all .25s;min-height:46px;}
+.chip.sel{border-color:var(--c);background:var(--cbg);transform:scale(1.08);}
+.chip.merged{border-color:var(--green);background:var(--greenbg);color:var(--green);animation:pop .5s;}
+/* L4 竖式慢动作 */
+.ldiv{font-family:'Courier New',monospace;font-size:19px;font-weight:700;background:#fbf7f0;border:2px dashed var(--line);border-radius:12px;padding:12px 16px;white-space:pre;line-height:1.55;overflow-x:auto;animation:fadein .5s;}
+.ldiv .hl{background:var(--gold);border-radius:4px;padding:0 2px;animation:pulse 1s ease 2;}
+.ldiv .hb{background:var(--cbg);border-radius:4px;padding:0 2px;}
+/* L5 搬家 */
+.moveeq{text-align:center;font-size:26px;font-weight:900;margin:12px 0;animation:fadein .4s;min-height:40px;}
+.moveeq .mv{color:var(--orange);}
+/* L6 闸门 */
+.gatebox{text-align:center;font-size:30px;font-weight:900;letter-spacing:3px;margin:14px 0;}
+.gatebox .keep{color:var(--ink);}
+.gatebox .look{background:var(--orangebg);color:var(--orange);border-radius:8px;padding:2px 6px;animation:pulse 1.2s ease infinite;}
+.gatebox .drop{color:#c9beb2;text-decoration:line-through;}
+.gatebox .zero{background:var(--gold);border-radius:8px;padding:2px 6px;animation:pulse 1.2s ease infinite;}
+/* L7 脑图 */
+.mmcenter{text-align:center;margin:6px auto 2px;background:var(--c);color:#fff;font-weight:900;font-size:18px;border-radius:16px;padding:10px 18px;width:fit-content;box-shadow:0 4px 0 var(--cd);}
+.mmline{width:3px;height:14px;background:var(--line);margin:0 auto;}
+.mmnode{background:#fff;border:2px solid var(--line);border-radius:14px;padding:10px 13px;margin:8px 0;cursor:pointer;box-shadow:0 4px 0 #efe3d4;transition:all .2s;}
+.mmnode:active{transform:translateY(2px);box-shadow:0 2px 0 #efe3d4;}
+.mmnode .mt{font-weight:800;font-size:15px;color:var(--cd);}
+.mmnode .mt .dot{display:inline-block;width:10px;height:10px;border-radius:50%;background:#ddd;margin-right:8px;}
+.mmnode.open .mt .dot{background:var(--green);}
+.mmrule{font-size:13.5px;line-height:1.8;color:#4a443e;background:var(--cbg);border-radius:10px;padding:8px 11px;margin-top:8px;animation:fadein .5s;}
+/* 训练 */
+.qhead{display:flex;justify-content:space-between;align-items:center;font-size:13px;font-weight:800;color:var(--muted);margin-bottom:6px;}
+.hint{background:var(--cbg);border-radius:12px 12px 12px 2px;padding:8px 12px;font-size:13px;font-weight:700;color:var(--cd);margin:6px 0;line-height:1.6;}
+.hint:before{content:"💡 ";}
+.star{color:#c98a00;font-weight:900;}
+.lvtag{font-size:11px;font-weight:800;border-radius:8px;padding:2px 8px;margin-left:6px;}
+.lvtag.lv1{background:var(--greenbg);color:var(--green);}
+.lvtag.lv2{background:var(--orangebg);color:var(--orange);}
+.lvtag.lv3{background:#fde3e3;color:var(--red);}
+.qtext{font-size:21px;font-weight:900;text-align:center;margin:10px 0 12px;line-height:1.8;word-break:break-all;}
+.qtext.word{font-size:16.5px;text-align:left;font-weight:700;line-height:1.9;}
+.opt{display:block;width:100%;text-align:center;background:#fff;border:2px solid var(--line);border-radius:12px;padding:13px;font-size:18px;font-weight:800;font-family:inherit;cursor:pointer;margin:8px 0;min-height:46px;}
+.opt.good{border-color:var(--green);background:var(--greenbg);color:var(--green);}
+.opt.bad{border-color:var(--red);background:var(--redbg);color:var(--red);animation:shake .35s;}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+.errtag{background:var(--redbg);border:2px solid var(--red);border-radius:12px;padding:10px 13px;font-size:14px;line-height:1.7;margin:10px 0;animation:fadein .4s;}
+.errtag .t{display:inline-block;background:var(--red);color:#fff;font-weight:800;font-size:12.5px;border-radius:8px;padding:2px 9px;margin-bottom:5px;}
+.steps{background:#fff;border:2px dashed var(--line);border-radius:12px;padding:10px 14px;font-size:16.5px;line-height:2;margin:10px 0;font-weight:800;word-break:break-all;animation:fadein .4s;}
+.steps .lb{font-size:12px;color:var(--muted);font-weight:800;display:block;}
+.steps .last{background:var(--gold);border-radius:6px;padding:0 5px;}
+.stat{background:#fff;border:2px solid var(--line);border-radius:14px;padding:10px 13px;display:flex;gap:14px;justify-content:space-around;font-size:13px;font-weight:800;color:var(--cd);margin:8px 0;text-align:center;}
+.wbitem{display:flex;justify-content:space-between;gap:8px;font-size:13.5px;padding:7px 2px;border-bottom:1px dashed var(--line);align-items:center;}
+.wbitem .t{font-size:11px;color:var(--red);font-weight:800;white-space:nowrap;}
+textarea{width:100%;height:130px;font-size:12px;border:2px solid var(--line);border-radius:10px;padding:8px;font-family:monospace;}
+.note{font-size:12px;color:var(--muted);line-height:1.7;margin-top:6px;}
+@media (prefers-reduced-motion: reduce){
+ *{animation:none!important;transition:none!important;}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<!-- ============ 首页 ============ -->
+<div id="vHome">
+  <div class="top"><span class="badge">🦁 Kenton</span><button class="mute" id="muteBtn" onclick="toggleMute()">🔔</button></div>
+  <h1>🏫 数学预习馆 · 五上①小数乘除</h1>
+  <div class="sub">照《金牌数学·五年级上》第1单元重建：放大镜 → 分步变身 → 实验室动画 → 遮挡回忆 → 真题检验<br>📘 自动判分 · 每题错因标签 · 错题本连对 2 次才毕业 · 每天开一个新馆</div>
+  <div id="wbEntry"></div>
+  <div id="reviewEntry"></div>
+  <div class="grid" id="homeGrid"></div>
+  <div class="card">
+    <div class="h2">📋 我的练习记录</div>
+    <div class="stat" id="statBar"></div>
+    <div id="wbPanel"></div>
+    <button class="btn ghost wide" onclick="exportCopy()">📋 复制记录（发给爸爸）</button>
+    <button class="btn ghost wide" onclick="exportFile()">💾 存成文件</button>
+    <button class="btn ghost wide" onclick="toggleExp()">👀 看一眼导出内容</button>
+    <div id="expBox" class="hide"><textarea id="expTa" aria-label="学习记录导出内容" readonly></textarea></div>
+    <button class="btn gold wide" onclick="parentUnlock()">🔓 家长提前解锁下一馆</button>
+  </div>
+</div>
+
+<!-- ============ 教学页 ============ -->
+<div id="vTeach" class="hide">
+  <div class="top"><button class="back" onclick="goHome()">← 回选馆</button><span class="badge" id="tBadge"></span></div>
+  <div class="card">
+    <div class="h2">🔍 题干放大镜<span class="tag" id="tTag"></span></div>
+    <div class="note">别急着算！先像书里一样，用放大镜看看这道题长什么样：</div>
+    <div class="bigexpr" id="mExpr"></div>
+    <div class="mirbtns">
+      <button class="btn" id="btnNum" onclick="revealNum()">🔍 数字有什么特点?</button>
+      <button class="btn" id="btnOp" onclick="revealOp()">🔍 算法有什么特点?</button>
+    </div>
+    <div id="mFeats"></div>
+    <div id="mMethods" class="hide" style="margin-top:8px"></div>
+    <button class="btn gold wide hide" id="btnToSteps" onclick="showSteps()">▶ 看它一步步变身!</button>
+  </div>
+  <div class="card hide" id="cardSteps">
+    <div class="h2">🎬 分步变身（每一步都有为什么）</div>
+    <div id="stepRows"></div>
+    <button class="btn wide" id="btnStep" onclick="nextStep()">▶ 下一步</button>
+  </div>
+  <div class="card hide" id="cardLab">
+    <div class="h2">🧪 实验室（动手玩一玩）</div>
+    <div id="labBox"></div>
+    <button class="btn gold wide hide" id="btnLabNext" onclick="labNext()">🧙 玩明白了，去看妙招 →</button>
+  </div>
+  <div class="card hide" id="cardTips">
+    <div class="h2">🧙 法则妙招卡（背下来）</div>
+    <div class="usebox" id="tipUse"></div>
+    <div id="tipFms"></div>
+    <button class="btn gold wide" id="btnTipsNext" onclick="tipsNext()">🙈 遮挡回忆挑战 →</button>
+  </div>
+  <div class="card hide" id="cardRecall">
+    <div class="h2">🙈 遮挡回忆（合上答案，自己想）</div>
+    <div class="note">刚才的法则被挡住了一块！不看妙招卡，选出正确的词。</div>
+    <div id="rcBox"></div>
+    <button class="btn gold wide hide" id="btnRcNext" onclick="rcNext()">✏️ 回忆成功！开始真题检验</button>
+  </div>
+</div>
+
+<!-- ============ 训练页 ============ -->
+<div id="vQuiz" class="hide">
+  <div class="top"><button class="back" onclick="quitQuiz()">← 退出</button><span class="badge" id="qTime">⏱ 0:00</span></div>
+  <div class="card">
+    <div class="qhead"><span id="qProg"></span><span id="qScore"></span></div>
+    <div id="qHint"></div>
+    <div id="qText" class="qtext"></div>
+    <div id="qOpts"></div>
+    <div id="qEx"></div>
+    <button class="btn wide hide" id="btnNext" onclick="qNext()">下一题 →</button>
+  </div>
+</div>
+
+<!-- ============ 结果页 ============ -->
+<div id="vResult" class="hide">
+  <div class="top"><button class="back" onclick="goHome()">← 回选馆</button><span class="badge">🏁 完成</span></div>
+  <div class="card" id="resCard"></div>
+</div>
+
+</div>
+<script>
+"use strict";
+function $(id){return document.getElementById(id);}
+var LSK='g5u1_declab_kenton_v1', WBK=LSK+'_wb', START='2026-07-23';
+function load(k,d){try{var s=localStorage.getItem(k);return s?JSON.parse(s):d;}catch(e){return d;}}
+function save(k,v){try{localStorage.setItem(k,JSON.stringify(v));}catch(e){}}
+var DB=load(LSK,{done:{},events:[]});
+var WB=load(WBK,{items:{}});
+var UNL_EXTRA=load(LSK+'_unl',0);
+var MUTE=localStorage.getItem(LSK+'_mute')==='1';
+
+/* ---- 声音（Web Audio 音效；本软件为数学操作类，语音朗读不适用） ---- */
+var AC=null;
+function ac(){if(!AC){try{AC=new (window.AudioContext||window.webkitAudioContext)();}catch(e){}}if(AC&&AC.state==='suspended')AC.resume();return AC;}
+function tone(f,dur,delay,type,vol){var a=ac();if(!a||MUTE)return;var o=a.createOscillator(),g=a.createGain();o.type=type||'sine';o.frequency.value=f;
+ g.gain.setValueAtTime(vol||0.18,a.currentTime+(delay||0));g.gain.exponentialRampToValueAtTime(0.001,a.currentTime+(delay||0)+dur);
+ o.connect(g);g.connect(a.destination);o.start(a.currentTime+(delay||0));o.stop(a.currentTime+(delay||0)+dur+0.05);}
+function ding(){tone(660,0.14,0);tone(880,0.2,0.12);}
+function buzz(){tone(170,0.28,0,'sawtooth',0.1);}
+function tick(){tone(520,0.06,0,'triangle',0.12);}
+function toggleMute(){MUTE=!MUTE;localStorage.setItem(LSK+'_mute',MUTE?'1':'0');$('muteBtn').textContent=MUTE?'🔕':'🔔';}
+
+/* ---- 错题本（错1次必进本，连对2次才出本） ---- */
+function wbAddWrong(d){var it=WB.items[d.q];
+ if(!it){it={streak:0,mastered:false,wrong:0};for(var k in d){if(k!=='_wtag'&&k!=='_wwhy'&&k!=='rq'&&k!=='wb')it[k]=d[k];}WB.items[d.q]=it;}
+ it.wrong++;it.streak=0;it.mastered=false;it.ex=d.ex;save(WBK,WB);}
+function wbAddRight(q){var it=WB.items[q];if(!it||it.mastered)return;it.streak++;if(it.streak>=2)it.mastered=true;save(WBK,WB);}
+function wbList(){var r=[];for(var k in WB.items){if(!WB.items[k].mastered)r.push(WB.items[k]);}return r;}
+function logEvent(ev){ev.ts=Date.now();DB.events.push(ev);save(LSK,DB);}
+function modStat(id){var d=DB.done[id];if(!d)return null;var st=d.wrong===0?'⭐⭐⭐':(d.wrong<=2?'⭐⭐':'⭐');return st+'✅'+d.ok+'❌'+d.wrong;}
+
+/* =================== 7 馆数据（照《金牌数学·五上》第1单元，书页p1-37） =================== */
+var MODS=[
+{id:'u1',ic:'🛝',nm:'第1课 小数乘整数',ds:'元角变身 · 小数点滑回家',
+ ex:{expr:'6.9 × 3',num:'6.9元就是69角！换成角，小数立刻变整数。',op:'小数 × 整数——先当整数乘，最后把小数点请回家。',
+  feats:['小数乘整数','可以换算单位（元→角）变成整数'],
+  methods:['单位换算','先按整数乘','再点小数点'],
+  steps:[{t:'6.9 × 3'},
+   {t:'想：6.9元 = 69角',n:'单位换算',w:'小数不好算？把元换成角：6.9元=69角，小数乘法变成整数乘法！'},
+   {t:'69 × 3 = 207（角）',n:'先按整数乘',w:'按整数乘法算出积：69×3=207。'},
+   {t:'207角 = 20.7元',n:'再点小数点',w:'乘数里有1位小数，从积的右边起数出1位，点上小数点。'},
+   {t:'6.9 × 3 = 20.7（元）',n:'完成',w:'答：买3本笔记本一共20.7元。竖式秘诀：先按整数乘，再点小数点，顺序不能反！'}]},
+ lab:'point',
+ tips:{use:'小数乘整数两步走：① <b>先按整数乘法</b>算出积；② 看乘数里有<b>几位小数</b>，从积的右边起数出几位点上小数点。积的小数末尾有 0 要把 0 去掉——注意：<b>先点小数点，再去 0</b>，顺序不能反！',fms:['先整数乘 → 再点小数点','先点小数点 → 再去末尾的0','元↔角：1元=10角，换算帮理解']},
+ recall:[
+  {s:'小数乘整数，先按【整数】乘法算出积，再点小数点。',opts:['整数','小数'],a:'整数',why:'先当成整数乘才简单，最后再处理小数点。'},
+  {s:'积的小数末尾有0：先【点小数点】，再把0去掉。',opts:['点小数点','去掉0'],a:'点小数点',why:'顺序反了就错了！比如4.36×60=261.60→261.6，先去0再点点会得到26.16。'}],
+ drills:[
+  {q:'6.9 × 3 = ?',a:20.7,lv:1,opts:[20.7,207,2.07,0.207],
+   wr:{'207':{tag:'忘点小数点',why:'按整数算出207后，还要从积的右边数出乘数的小数位数（1位）点上小数点。'},'2.07':{tag:'小数位数数错',why:'乘数6.9只有1位小数，你却从右边数了2位。'},'0.207':{tag:'小数位数数错',why:'数了3位！乘数里一共只有1位小数。'}},
+   ex:'6.9×3\n先算 69×3=207\n乘数有1位小数，从积的右边数1位点上小数点\n= 20.7',hint:'先当 69×3 算，再数数乘数有几位小数。'},
+  {q:'20 × 4.2 = ?',a:84,lv:1,opts:[84,8.4,840,0.84],
+   wr:{'8.4':{tag:'小数位数数错',why:'乘数4.2只有1位小数，从840右边数1位是84，不是8.4。'},'840':{tag:'忘点小数点',why:'整数乘小数也要点小数点：20×42=840，再数1位点上→84。'},'0.84':{tag:'小数位数数错',why:'数了3位！两个乘数一共只有1位小数。'}},
+   ex:'20×4.2\n先算 20×42=840\n乘数有1位小数，点1位\n= 84',hint:'整数乘小数，方法一样：先整数乘，再点小数点。'},
+  {q:'4.36 × 60 = ?',a:261.6,lv:2,opts:[261.6,26.16,2616,2.616],
+   wr:{'26.16':{tag:'先去0后点点(顺序反)',why:'书上的经典错误！436×60=26160，要先点小数点(261.60)再去0(261.6)；先把末尾0去掉就变成26.16了。'},'2616':{tag:'忘点小数点',why:'乘数4.36有2位小数，积要点2位。'},'2.616':{tag:'小数位数数错',why:'数了4位！乘数一共2位小数。'}},
+   ex:'4.36×60\n先算 436×60=26160\n乘数有2位小数：261.60\n先点小数点，再去末尾0\n= 261.6',hint:'记住顺序：先点小数点，再去末尾的0。'},
+  {q:'声波1.2秒从海面到海底再返回海面，声速340米/秒。海底深多少米？',a:204,lv:2,word:1,opts:[204,408,102,4080],
+   wr:{'408':{tag:'漏掉"往返"要÷2',why:'340×1.2=408米是"去+回"两趟的路程，海底深度只有一趟，要÷2。'},'102':{tag:'多除了一个2',why:'只往返一次：408÷2=204，不要再除了。'},'4080':{tag:'小数点位置错',why:'340×1.2=408，不是4080；而且还要÷2求单程。'}},
+   ex:'340×1.2=408（米）← 往返路程\n408÷2=204（米）← 单程才是海深\n答：海底深204米。',hint:'声波走了"一去一回"，算出路程后要÷2。'},
+  {q:'★ 一根丝带，每次用去剩下的一半，用3次后还剩0.78米。这根丝带原来长多少米？',a:6.24,lv:3,word:1,opts:[6.24,3.12,1.56,2.34],
+   wr:{'3.12':{tag:'倒推次数不够',why:'用了3次，要倒推3次×2：0.78×2×2×2，你只乘了2次。'},'1.56':{tag:'倒推次数不够',why:'要倒推3次×2，你只乘了1次。'},'2.34':{tag:'把倒推当成正算',why:'"用去一半剩0.78"要往回倒：每次都×2，不是0.78×3。'}},
+   ex:'倒推还原：每次用去一半，说明用前是用后的2倍\n0.78×2=1.56（用第3次前）\n1.56×2=3.12（用第2次前）\n3.12×2=6.24（原来）\n= 6.24（米）',hint:'★拔高：倒着推！用3次就乘3个2。'}]},
+
+{id:'u2',ic:'🧬',nm:'第2课 小数乘小数',ds:'位数相加 · 乘数比1定大小',
+ ex:{expr:'4.1 × 3.2',num:'两个乘数各有1位小数，合起来2位——积要点2位！',op:'小数 × 小数——还是老办法：先当整数乘，位数是两个乘数的小数位数之和。',
+  feats:['小数乘小数','积的小数位数=两个乘数小数位数之和'],
+  methods:['转化成整数乘法','小数位数相加','不够用0补足'],
+  steps:[{t:'4.1 × 3.2'},
+   {t:'41 × 32 = 1312',n:'先按整数乘',w:'把两个乘数都看成整数：41×32=1312。'},
+   {t:'1位 + 1位 = 2位小数',n:'小数位数相加',w:'4.1有1位小数，3.2有1位小数，积一共有2位小数。'},
+   {t:'1312 → 13.12',n:'从右边数2位',w:'从积的右边起数出2位点上小数点。'},
+   {t:'4.1 × 3.2 = 13.12（平方米）',n:'完成',w:'卧室面积13.12平方米。如果位数不够（如0.25×0.35=0.0875），在前面用0补足！'}]},
+ lab:'seesaw',
+ tips:{use:'小数乘小数：① 转化成整数乘法；② <b>积的小数位数 = 两个乘数小数位数之和</b>，位数不够在前面用 0 补足。大小判断（乘数都大于0）：一个乘数 <b>>1 积就大，<1 积就小，=1 积不变</b>。',fms:['积的小数位数 = 位数1 + 位数2','乘数>1 → 积>另一个乘数','乘数<1 → 积<另一个乘数']},
+ recall:[
+  {s:'积的小数位数 = 两个乘数小数位数之【和】。',opts:['和','差'],a:'和',why:'4.1×3.2：1位+1位=2位小数→13.12。'},
+  {s:'一个乘数小于1，积比另一个乘数【小】。',opts:['小','大'],a:'小',why:'乘比1小的数会"越乘越小"：3.45×0.23<3.45。'}],
+ drills:[
+  {q:'4.1 × 3.2 = ?',a:13.12,lv:1,opts:[13.12,131.2,1.312,13.012],
+   wr:{'131.2':{tag:'只数了一个乘数的位数',why:'两个乘数各有1位小数，一共要数2位，不是1位。'},'1.312':{tag:'小数位数数错',why:'一共只有2位小数，你数了3位。'},'13.012':{tag:'整数乘法算错',why:'先算41×32=1312，再点2位小数。'}},
+   ex:'4.1×3.2\n41×32=1312\n1位+1位=2位小数\n= 13.12',hint:'小数位数是两个乘数的位数之和。'},
+  {q:'0.25 × 0.35 = ?',a:0.0875,lv:1,opts:[0.0875,0.875,8.75,0.00875],
+   wr:{'0.875':{tag:'位数不够忘补0',why:'25×35=875只有3位数，但要4位小数——前面要用0补足：0.0875。'},'8.75':{tag:'忘点小数点',why:'两个乘数共4位小数，不能写成8.75。'},'0.00875':{tag:'多补了一个0',why:'875补成4位小数只需补1个0：0.0875。'}},
+   ex:'0.25×0.35\n25×35=875\n共4位小数，875只有3位→前面补0\n= 0.0875',hint:'位数不够，前面用0补足。'},
+  {q:'0.24 × 0.03 = ?',a:0.0072,lv:2,opts:[0.0072,0.72,0.072,0.00072],
+   wr:{'0.72':{tag:'忘点小数点',why:'书上的经典错解！24×3=72后，要数4位小数→0.0072。'},'0.072':{tag:'少数了一位',why:'0.24和0.03共4位小数，你只数了3位。'},'0.00072':{tag:'多数了一位',why:'共4位小数，你数了5位。'}},
+   ex:'0.24×0.03\n24×3=72\n共4位小数，72只有2位→前面补2个0\n= 0.0072',hint:'2位+2位=4位，72前面要补两个0。'},
+  {q:'不计算，比大小：3.45 × 0.23 ○ 3.45',sopts:['<','>','='],a:'<',lv:2,
+   wr:{'>':{tag:'以为乘法一定越乘越大',why:'乘数0.23<1，乘比1小的数，积反而比3.45小。'},'=':{tag:'没看乘数与1的关系',why:'0.23≠1，积不会等于3.45；0.23<1，积变小。'}},
+   ex:'0.23 < 1\n一个乘数小于1，积就小于另一个乘数\n3.45×0.23 < 3.45\n（所以"3.45×0.23=3.7935"这种答案一眼就知道错）',hint:'先别算！看0.23比1大还是比1小。'},
+  {q:'★ 0.89 × a = b（a、b都大于0），比较 a 与 b 的大小。',sopts:['a > b','a < b','a = b','无法确定'],a:'a > b',lv:3,word:1,
+   wr:{'a < b':{tag:'大小关系用反',why:'0.89<1，积b比a小，所以a>b。方向别搞反！'},'a = b':{tag:'没看乘数与1的关系',why:'0.89≠1，积不会等于a。'},'无法确定':{tag:'方法没掌握',why:'不用算出具体数！只要看乘数0.89<1，就能判断积b<a。'}},
+   ex:'0.89 < 1 → 积 b 比 a 小\nb < a，也就是 a > b\n（书上的常考题，不用计算就能判断）',hint:'★拔高：0.89和1比，谁小？积会跟着变大还是变小？'}]},
+
+{id:'u3',ic:'🧲',nm:'第3课 运算律推广到小数',ds:'好朋友凑整 · 拆数分配',
+ ex:{expr:'2.5 × 6.3 × 0.4',num:'2.5和0.4是好朋友——2.5×0.4=1，正好凑整！',op:'连乘——交换位置、加个括号，让好朋友先抱在一起。',
+  feats:['连乘（或乘加混合）','有能凑整的"好朋友"组合'],
+  methods:['交换律+结合律','凑整','拆数+分配律'],
+  steps:[{t:'2.5 × 6.3 × 0.4'},
+   {t:'= 6.3 × (2.5 × 0.4)',n:'交换+结合',w:'把0.4搬到6.3前面、和2.5括在一起——整数乘法的交换律、结合律对小数同样适用！'},
+   {t:'= 6.3 × 1',n:'好朋友凑整',w:'2.5×0.4=1！记住好朋友：2和5、4和25、8和125（也能凑0.1、0.01）。'},
+   {t:'= 6.3',n:'完成',w:'×1不变，一秒出答案。比从左往右硬算快多了！'}]},
+ lab:'magnet',
+ tips:{use:'整数乘法的<b>交换律、结合律、分配律</b>对小数同样适用。看到 2.5/0.25、12.5/0.125 就找它们的 4/8 朋友凑整；看到 9.9、102 就<b>拆数</b>用分配律——拆数必须加括号，<b>每一项都要乘</b>！',fms:['好朋友：2×5 · 4×25 · 8×125','3.5×9.9 = 3.5×(10−0.1)','5.84×99+5.84 = 5.84×(99+1)']},
+ recall:[
+  {s:'2.5 的好朋友是【0.4】，它们相乘等于1。',opts:['0.4','6.3'],a:'0.4',why:'2.5×0.4=1，凑整好朋友要背下来。'},
+  {s:'算 3.5×9.9，把9.9拆成【10−0.1】再用分配律。',opts:['10−0.1','9+0.9'],a:'10−0.1',why:'9.9最接近10：3.5×10−3.5×0.1=35−0.35=34.65。'}],
+ drills:[
+  {q:'2.5 × 6.3 × 0.4 = ?',a:6.3,lv:1,opts:[6.3,63,0.63,6.03],
+   wr:{'63':{tag:'好朋友乘错',why:'2.5×0.4=1，不是10！6.3×1=6.3。'},'0.63':{tag:'好朋友乘错',why:'2.5×0.4=1不是0.1，6.3×1=6.3。'},'6.03':{tag:'计算粗心',why:'先算2.5×0.4=1，再6.3×1。'}},
+   ex:'2.5×6.3×0.4\n=6.3×(2.5×0.4)\n=6.3×1\n=6.3',hint:'让2.5和0.4先抱在一起。'},
+  {q:'27 × 0.125 × 8 = ?',a:27,lv:1,opts:[27,270,2.7,216],
+   wr:{'270':{tag:'好朋友乘错',why:'0.125×8=1，不是10。'},'2.7':{tag:'好朋友乘错',why:'0.125×8=1不是0.1。'},'216':{tag:'没凑整硬算出错',why:'27×0.125×8=27×(0.125×8)=27×1，不用硬乘。'}},
+   ex:'27×0.125×8\n=27×(0.125×8)\n=27×1\n=27',hint:'0.125和8是黄金搭档。'},
+  {q:'3.5 × 9.9 = ?',a:34.65,lv:2,opts:[34.65,35,34.5,31.35],
+   wr:{'35':{tag:'拆数后忘了减',why:'9.9=10−0.1，3.5×10=35之后还要减去3.5×0.1=0.35！'},'34.5':{tag:'减错数',why:'要减的是3.5×0.1=0.35，不是0.5。'},'31.35':{tag:'分配律用错',why:'3.5×(10−0.1)=35−0.35=34.65，检查你的减法。'}},
+   ex:'3.5×9.9\n=3.5×(10−0.1)\n=35−0.35\n=34.65',hint:'9.9拆成10−0.1，两项都要乘3.5。'},
+  {q:'5.84 × 99 + 5.84 = ?',a:584,lv:2,opts:[584,578.16,583.16,5840],
+   wr:{'578.16':{tag:'漏了隐形的×1',why:'孤零零的5.84其实是5.84×1！总共是5.84×99+5.84×1=5.84×100。'},'583.16':{tag:'个数算错',why:'99个5.84加1个5.84=100个5.84=584。'},'5840':{tag:'小数点位置错',why:'5.84×100=584，不是5840。'}},
+   ex:'5.84×99+5.84\n=5.84×99+5.84×1  ←隐形的×1\n=5.84×(99+1)\n=5.84×100\n=584',hint:'后面的5.84是5.84×1，凑成100个。'},
+  {q:'★ 0.374 × 180 + 37.4 × 8.2 = ?',a:374,lv:3,opts:[374,37.4,3740,67.32],
+   wr:{'37.4':{tag:'凑公因数后算错',why:'0.374×180=37.4×1.8，再提37.4：37.4×(1.8+8.2)=37.4×10=374。'},'3740':{tag:'小数点移动方向错',why:'0.374变37.4是×100，那180要÷100变成1.8，积才不变。'},'67.32':{tag:'只算了一半',why:'67.32只是0.374×180，还要加37.4×8.2=306.68，合起来374。'}},
+   ex:'利用"一个乘数扩大、另一个缩小相同倍数，积不变"：\n0.374×180 = 37.4×1.8\n原式=37.4×1.8+37.4×8.2\n=37.4×(1.8+8.2)\n=37.4×10\n=374',hint:'★拔高：移动小数点，把0.374和37.4凑成同一个数。'}]},
+
+{id:'u4',ic:'🪜',nm:'第4课 除数是整数的小数除法',ds:'小数点对齐 · 添0继续除',
+ ex:{expr:'5.8 ÷ 4',num:'5.8除以4，除到末尾还剩2——别停！5.8=5.80，添0继续除。',op:'小数 ÷ 整数——商的小数点要和被除数的小数点对齐。',
+  feats:['小数除以整数','除到末尾有余数要添0继续除'],
+  methods:['商的小数点对齐','添0继续除','个位不够商1写0'],
+  steps:[{t:'5.8 ÷ 4'},
+   {t:'5÷4 商1 余1',n:'按整数除法除',w:'先按整数除法的方法去除：5÷4=1……1。'},
+   {t:'商1. ←小数点跳上来',n:'小数点对齐',w:'商的小数点要和被除数5.8的小数点对齐——它"跳"到商里相同的位置！'},
+   {t:'落下8：18÷4 商4 余2',n:'继续除',w:'把十分位的8落下来：18÷4=4……2。'},
+   {t:'5.8=5.80，添0：20÷4 商5',n:'添0继续除',w:'除到末尾还有余数2？利用小数性质5.8=5.80，在余数后面添0继续除！'},
+   {t:'5.8 ÷ 4 = 1.45',n:'完成',w:'答：1.45。记住三个字：对齐、添0、继续除！'}]},
+ lab:'longdiv',
+ tips:{use:'① 按整数除法的方法去除；② <b>商的小数点要和被除数的小数点对齐</b>；③ 除到末尾仍有余数，在余数后面<b>添0继续除</b>（5.8=5.80）；④ 整数部分不够商1，<b>个位写0占位</b>再点小数点继续除。',fms:['商的小数点 ↔ 被除数的小数点：对齐！','有余数 → 添0继续除','2.56÷32=0.08（十分位不够商1写0）']},
+ recall:[
+  {s:'商的小数点要和【被除数】的小数点对齐。',opts:['被除数','除数'],a:'被除数',why:'对齐被除数！这是本课最容易丢的分。'},
+  {s:'除到末尾还有余数，在余数后面【添0】继续除。',opts:['添0','停下'],a:'添0',why:'依据小数的基本性质：5.8=5.80，添0后接着除。'}],
+ drills:[
+  {q:'15.6 ÷ 6 = ?',a:2.6,lv:1,opts:[2.6,26,0.26,2.06],
+   wr:{'26':{tag:'忘点商的小数点',why:'商的小数点要和被除数15.6的小数点对齐：2.6，不是26。'},'0.26':{tag:'小数点对错位置',why:'15÷6商2，个位是2不是0，结果是2.6。'},'2.06':{tag:'十分位算错',why:'落下6后16÷6=2余4？不对——15.6÷6：15÷6=2余3，36÷6=6，商2.6。'}},
+   ex:'15.6÷6\n15÷6=2……3\n落下6：36÷6=6\n商的小数点与被除数对齐\n= 2.6',hint:'商的小数点跟被除数的小数点对齐。'},
+  {q:'30 ÷ 12 = ?',a:2.5,lv:1,opts:[2.5,2.05,25,2.4],
+   wr:{'2.05':{tag:'小数点位置错',why:'30÷12：商2余6，添0后60÷12=5，是2.5。'},'25':{tag:'忘点小数点',why:'整数÷整数商可以是小数！30÷12=2.5。'},'2.4':{tag:'余数处理错',why:'余6添0变60，60÷12=5，所以是2.5不是2.4。'}},
+   ex:'30÷12\n30÷12=2……6\n个位右下角点小数点，添0：60÷12=5\n= 2.5',hint:'整数除以整数，商也可以是小数：添0继续除。'},
+  {q:'72 ÷ 15 = ?',a:4.8,lv:2,opts:[4.8,48,4.08,4.5],
+   wr:{'48':{tag:'忘点商的小数点',why:'这是书上最经典的错！72÷15商4余12，添0后120÷15=8，商是4.8，千万别写成48。'},'4.08':{tag:'小数位数错',why:'120÷15=8只有一位小数：4.8。'},'4.5':{tag:'余数除错',why:'余12添0=120，120÷15=8，不是5。'}},
+   ex:'72÷15\n72÷15=4……12\n添0：120÷15=8\n= 4.8',hint:'商4之后有余数12，添0继续除。'},
+  {q:'2.56 ÷ 32 = ?',a:0.08,lv:2,opts:[0.08,0.8,0.008,8],
+   wr:{'0.8':{tag:'十分位忘写0占位',why:'2.56÷32：个位不够商1写0，十分位25也不够商32——要写0占位！正确是0.08，不是0.8。'},'0.008':{tag:'多写了一个0',why:'25个0.1不够除、256个0.01够除，商0.08。'},'8':{tag:'完全没对齐',why:'2.56比32小，商一定比1小。'}},
+   ex:'2.56÷32\n个位2不够商1→写0，点小数点\n十分位25也不够商32→再写0占位\n256÷32=8\n= 0.08',hint:'哪一位不够商1，就在哪一位写0占位。'},
+  {q:'★ 甲、乙两数的和是203.5，乙的小数点向右移动一位正好等于甲。乙数是多少？',a:18.5,lv:3,word:1,opts:[18.5,185,20.35,2.035],
+   wr:{'185':{tag:'答错了对象',why:'185是甲！题目问的是乙。乙×10=甲，所以乙=203.5÷(10+1)=18.5。'},'20.35':{tag:'份数算错',why:'甲是乙的10倍，两数合起来是11份，要÷11，不是÷10。'},'2.035':{tag:'份数和小数点都错',why:'和倍问题：和÷(倍数+1)=小数。203.5÷11=18.5。'}},
+   ex:'小数点右移一位=×10，所以甲=乙×10\n甲+乙=11个乙=203.5\n乙=203.5÷11=18.5\n甲=18.5×10=185\n答：乙数是18.5。',hint:'★和倍问题：和÷(倍数+1)=小数。'}]},
+
+{id:'u5',ic:'🚚',nm:'第5课 除数是小数的除法',ds:'小数点搬家 · 商不变',
+ ex:{expr:'6.78 ÷ 1.2',num:'除数1.2是小数！把它的小数点向右移1位变成整数12。',op:'除数是小数——利用商不变的性质，被除数和除数的小数点一起搬家。',
+  feats:['除数是小数','被除数除数要同时乘相同的数（商不变）'],
+  methods:['商不变性质','小数点同时右移','位数不够补0'],
+  steps:[{t:'6.78 ÷ 1.2'},
+   {t:'1.2 → 12（小数点右移1位）',n:'除数变整数',w:'先把除数的小数点向右移动，使它变成整数：1.2×10=12。'},
+   {t:'6.78 → 67.8（也右移1位）',n:'被除数跟着搬',w:'除数乘10，被除数也要乘10——商不变的性质！两个小数点搬的位数必须一样。'},
+   {t:'67.8 ÷ 12 = 5.65',n:'按整数除数算',w:'变成"除数是整数"的除法，用上一课的方法：67.8÷12=5.65。'},
+   {t:'6.78 ÷ 1.2 = 5.65（米）',n:'完成',w:'答：6.78元能买5.65米丝带。关键：搬几位，看除数；被除数位数不够就用0补足！'}]},
+ lab:'move',
+ tips:{use:'① 先向右移动<b>除数</b>的小数点使它变成整数；② 除数移几位，<b>被除数也向右移几位</b>（位数不够末尾用0补足）；③ 再按除数是整数的除法计算。大小判断：除数 <b>>1 商比被除数小，<1 商比被除数大</b>。有余数时，余数的小数点与被除数<b>原来的</b>小数点对齐！',fms:['商不变：被除数、除数同乘一个数(≠0)','9.1÷0.26 = 910÷26 = 35','除数<1 → 商>被除数']},
+ recall:[
+  {s:'除数的小数点向右移几位，被除数也要向右移【相同】的位数。',opts:['相同','不同'],a:'相同',why:'商不变的性质：两个数要乘同一个数，所以搬的位数必须一样。'},
+  {s:'除数小于1时，商比被除数【大】。',opts:['大','小'],a:'大',why:'除以比1小的数会"越除越大"：4.8÷0.8=6>4.8。'}],
+ drills:[
+  {q:'6.78 ÷ 1.2 = ?',a:5.65,lv:1,opts:[5.65,0.565,56.5,5.06],
+   wr:{'0.565':{tag:'被除数没跟着移',why:'除数1.2右移1位变12，被除数6.78也要右移1位变67.8！你只除了6.78÷12。'},'56.5':{tag:'被除数多移了一位',why:'除数只移1位，被除数也只能移1位：67.8÷12=5.65。'},'5.06':{tag:'除法计算错',why:'67.8÷12：12×5=60余7.8，7.8÷12=0.65，商5.65。'}},
+   ex:'6.78÷1.2\n=67.8÷12（小数点同时右移1位）\n=5.65',hint:'除数移几位，被除数也移几位。'},
+  {q:'9.1 ÷ 0.26 = ?',a:35,lv:1,opts:[35,3.5,0.35,350],
+   wr:{'3.5':{tag:'没补0占位',why:'除数0.26要右移2位变26，被除数9.1也要右移2位——位数不够，末尾补0变910！910÷26=35。'},'0.35':{tag:'位数全错',why:'9.1÷0.26：被除数补0成910，910÷26=35。'},'350':{tag:'多补了一个0',why:'只补1个0：9.1→910，不是9100。'}},
+   ex:'9.1÷0.26\n=910÷26（右移2位，被除数末尾补0）\n=35',hint:'被除数位数不够时，末尾用0补足。'},
+  {q:'不计算，比大小：4.8 ÷ 0.8 ○ 4.8',sopts:['>','<','='],a:'>',lv:2,
+   wr:{'<':{tag:'以为除法一定越除越小',why:'除数0.8<1，除以比1小的数，商反而比被除数大：4.8÷0.8=6>4.8。'},'=':{tag:'没看除数与1的关系',why:'0.8≠1，商不会等于4.8；0.8<1，商变大。'}},
+   ex:'0.8 < 1\n除数小于1，商就大于被除数\n4.8÷0.8 > 4.8\n（验算：4.8÷0.8=6 ✔）',hint:'看除数0.8比1大还是比1小。'},
+  {q:'小敏算 6.35 ÷ 0.95 = 6.13，她算得对吗？',sopts:['不对，商应大于6.35','对，她算对了','不对，商应小于6.35'],a:'不对，商应大于6.35',lv:2,word:1,
+   wr:{'对，她算对了':{tag:'没用大小关系检验',why:'除数0.95<1，商一定比6.35大，6.13<6.35，一眼就知道错了。'},'不对，商应小于6.35':{tag:'大小关系记反',why:'除以比1小的数，商反而变大，不是变小。'}},
+   ex:'0.95 < 1 → 商 > 6.35\n6.13 < 6.35，肯定错了\n正确：6.35÷0.95≈6.68',hint:'不用重算！用"除数<1商变大"来检验。'},
+  {q:'80米布做裙子，每条用布1.1米。80÷1.1=72……□，余下的布是多少米？',sopts:['0.8米','8米','0.08米'],a:'0.8米',lv:2,word:1,
+   wr:{'8米':{tag:'余数小数点没对齐',why:'竖式里余数8在被除数原来的十分位上，表示0.8米，不是8米！'},'0.08米':{tag:'数位看错',why:'余数8对着十分位（0.1那一档），是0.8米。'}},
+   ex:'1.1×72=79.2（米）\n80−79.2=0.8（米）\n竖式中余数的小数点要与被除数原来的小数点对齐\n答：余下0.8米。',hint:'验算：1.1×72=79.2，80−79.2=?'},
+  {q:'★ 小海做除法时，把被除数3.6错看成6.3，算出的商多了1.125。正确的商是多少？',a:1.5,lv:3,word:1,opts:[1.5,2.625,1.125,2.4],
+   wr:{'2.625':{tag:'用错的被除数算商',why:'6.3÷2.4=2.625是用看错的被除数算的。正确要用3.6÷2.4=1.5。'},'1.125':{tag:'把"商多的"当答案',why:'1.125是商多出来的部分，不是商本身。'},'2.4':{tag:'算成了除数',why:'2.4是除数：(6.3−3.6)÷1.125=2.4；题目问的是正确的商：3.6÷2.4=1.5。'}},
+   ex:'错中求解：被除数多了6.3−3.6=2.7\n商多了1.125 → 除数=2.7÷1.125=2.4\n正确的商=3.6÷2.4=1.5\n答：正确的商是1.5。',hint:'★先求除数：多出的被除数÷多出的商。'}]},
+
+{id:'u6',ic:'🎯',nm:'第6课 商的近似数',ds:'多除一位 · 四舍五入闸门',
+ ex:{expr:'900 ÷ 11',num:'11个人合租900元/日的游艇，每人付多少？人民币最小单位是分——保留两位小数。',op:'除不尽——除到比保留位数多一位，再用四舍五入取近似数。',
+  feats:['除不尽，要取近似数','用"≈"连接，不能用"="'],
+  methods:['多除一位','四舍五入','末尾的0不能去'],
+  steps:[{t:'900 ÷ 11 = 81.8181…'},
+   {t:'保留两位小数 → 除到千分位',n:'多除一位',w:'要保留两位，就要除到第三位（千分位）：81.818。为什么要多除一位？因为要看那一位决定"舍"还是"入"！'},
+   {t:'千分位是8，8>5 → 进1',n:'四舍五入',w:'81.818的千分位是8，比5大，向百分位进1。'},
+   {t:'900 ÷ 11 ≈ 81.82（元）',n:'用≈连接',w:'近似数要用"≈"！每人付81.82元。'},
+   {t:'对比：62.8÷7≈9.0',n:'末尾0不能去',w:'精确到十分位得9.0——这个0表示"精确到十分位"，去掉就变成精确到个位了，9.0≠9！'}]},
+ lab:'gate',
+ tips:{use:'求商的近似数：① 一般先除到<b>比需要保留的小数位数多一位</b>；② 按"四舍五入"法取近似数；③ 结果用 <b>≈</b> 连接。④ <b>近似数末尾的0不能去掉</b>：9.0表示精确到十分位，9表示精确到个位，精确度不同！',fms:['保留几位 → 多除一位 → 四舍五入','人民币：保留两位（分=百分位）','9.0 ≠ 9（精确度不同）']},
+ recall:[
+  {s:'求商的近似数，要除到比保留位数【多一位】，再四舍五入。',opts:['多一位','正好到那一位'],a:'多一位',why:'要多看下一位才能决定"四舍"还是"五入"。'},
+  {s:'近似数9.0末尾的0【不能】去掉。',opts:['不能','能'],a:'不能',why:'9.0表示精确到十分位，去掉0就变成精确到个位了。'}],
+ drills:[
+  {q:'900 ÷ 11 ≈ ?（保留两位小数）',a:81.82,lv:1,opts:[81.82,81.81,81.8,81.818],
+   wr:{'81.81':{tag:'该入没入',why:'除到千分位是81.818，千分位8>5要向百分位进1：81.82。'},'81.8':{tag:'只除到百分位',why:'保留两位小数要除到千分位再四舍五入。'},'81.818':{tag:'没有取近似数',why:'题目要保留两位小数，多除的一位是用来判断舍入的，不能全写上。'}},
+   ex:'900÷11=81.8181…\n除到千分位：81.818\n千分位8>5，进1\n≈ 81.82',hint:'保留两位→除到第三位→四舍五入。'},
+  {q:'12.9 ÷ 18 ≈ ?（精确到百分位）',a:0.72,lv:1,opts:[0.72,0.71,0.7,0.716],
+   wr:{'0.71':{tag:'该入没入',why:'12.9÷18=0.7166…，千分位6>5要进1：0.72。'},'0.7':{tag:'只保留了一位',why:'精确到百分位是保留两位小数。'},'0.716':{tag:'没有四舍五入',why:'0.716是"除到千分位"的结果，还要四舍五入到百分位。'}},
+   ex:'12.9÷18=0.7166…\n除到千分位：0.716\n千分位6>5，进1\n≈ 0.72',hint:'整数部分不够商1，个位写0继续除。'},
+  {q:'62.8 ÷ 7 ≈ ?（精确到十分位）',sopts:['9.0','9','8.9'],a:'9.0',lv:2,
+   wr:{'9':{tag:'末尾的0误删',why:'9.0末尾的0表示"精确到十分位"，不能去掉！9表示精确到个位，精确度不一样。'},'8.9':{tag:'该入没入',why:'62.8÷7=8.971…，百分位7>5，十分位9进1满十再进：9.0。'}},
+   ex:'62.8÷7=8.971…\n除到百分位：8.97\n百分位7>5进1：8.9+0.1=9.0\n≈ 9.0（末尾的0不能去！）',hint:'进位后末尾的0要留住，它表示精确度。'},
+  {q:'29.1 ÷ 18 ≈ ?（保留两位小数）',a:1.62,lv:2,opts:[1.62,1.61,1.6,1.616],
+   wr:{'1.61':{tag:'没除到千分位就四舍五入',why:'书上的经典错！29.1÷18=1.6166…，要除到千分位(1.616)再入：1.62。只除到1.61就停会丢进位。'},'1.6':{tag:'只保留了一位',why:'保留两位小数是1.62。'},'1.616':{tag:'没有四舍五入',why:'多除的一位用来判断，最后要约到两位：1.62。'}},
+   ex:'29.1÷18=1.6166…\n除到千分位：1.616\n千分位6>5，进1\n≈ 1.62',hint:'要比保留的位数多除一位！'},
+  {q:'★ a÷0.6=b，b是三位小数，保留一位小数后是2.0。a最大是多少？',a:1.2294,lv:3,word:1,opts:[1.2294,1.17,1.2,1.2299],
+   wr:{'1.17':{tag:'最大最小搞反',why:'1.17是最小值（1.95×0.6）。求最大要用"四舍"：b最大=2.049，a最大=2.049×0.6=1.2294。'},'1.2':{tag:'没用近似数条件',why:'直接2.0×0.6=1.2没动脑筋。b四舍五入后是2.0，b最大是2.049不是2.0。'},'1.2299':{tag:'b的最大值找错',why:'保留一位是2.0的三位小数，最大是2.049（千分位最大为4），2.049×0.6=1.2294。'}},
+   ex:'保留一位是2.0 → "四舍"得最大：b最大=2.049\na最大=2.049×0.6=1.2294\n（口诀：求最大，保留位后写4；求最小，末位减1后写5）\n答：a最大是1.2294。',hint:'★先想：b最大是几？再乘0.6。'}]},
+
+{id:'u7',ic:'🗺️',nm:'单元总览 · 知识导图',ds:'会动的脑图 · 常考题型',
+ ex:{expr:'小数乘除 全家桶',num:'6课合起来就两大招：乘法数小数位数、除法搬小数点。',op:'单元总复习——先点亮知识导图，再挑战常考题型。',
+  feats:['小数乘法：先整数乘，再点小数点','小数除法：商不变，小数点一起搬'],
+  methods:['乘法数位数','除法搬小数点','近似数多除一位'],
+  steps:[{t:'第1单元 小数的乘法与除法'},
+   {t:'乘法：先按整数乘，再点小数点',n:'乘法数位数',w:'积的小数位数=乘数小数位数之和，末尾0后去。'},
+   {t:'除法：商不变，小数点一起搬',n:'除法搬小数点',w:'除数变整数，被除数跟着移同样位数；商的小数点与被除数对齐。'},
+   {t:'比大小：乘数/除数和1比',n:'和1比',w:'乘<1积变小；除<1商变大。不用算就能判断！'},
+   {t:'近似数：多除一位，四舍五入',n:'多除一位',w:'结果用≈；近似数末尾的0不能去。'},
+   {t:'导图点亮后 → 常考题型检验',n:'出发',w:'下面先点开学过的6个知识点，再做单元常考题！'}]},
+ lab:'mindmap',
+ tips:{use:'单元口诀：<b>乘法数位数，除法搬小数点；比大小和1比；近似数多除一位，末尾0不能去。</b>',fms:['积的小数位数=位数之和','商的小数点与被除数对齐','除数<1商变大 · 乘数<1积变小']},
+ recall:[],
+ drills:[
+  {q:'胡萝卜每千克8.7元，买3.9千克要付多少元？',a:33.93,lv:1,word:1,opts:[33.93,339.3,33.83,34.83],
+   wr:{'339.3':{tag:'小数点位置错',why:'8.7×3.9：87×39=3393，共2位小数→33.93。'},'33.83':{tag:'分步乘错',why:'8.7×0.9=7.83，8.7×3=26.1，合起来33.93。'},'34.83':{tag:'分步加错',why:'26.1+7.83=33.93，检查加法。'}},
+   ex:'8.7×3.9\n=8.7×3+8.7×0.9\n=26.1+7.83\n=33.93（元）',hint:'把3.9拆成3+0.9分别乘，再相加。'},
+  {q:'13.6元买8支水彩笔，竖式计算13.6÷8=1.7。竖式中落下的"56"表示什么？',sopts:['56角（5.6元）','56元','56分','56支'],a:'56角（5.6元）',lv:2,word:1,
+   wr:{'56元':{tag:'数位意义看错',why:'56在被除数十分位那一档，表示56个0.1元=5.6元=56角。'},'56分':{tag:'数位意义看错',why:'56对着的是十分位（角），不是百分位（分）。'},'56支':{tag:'题意看错',why:'竖式里的数都表示钱，不是支数。'}},
+   ex:'13.6÷8：商1后余5，落下6合成"56"\n这个56在十分位上=56个0.1元=5.6元=56角\n56角÷8=7角，所以商1.7元',hint:'想一想：56对着小数点后哪一位？'},
+  {q:'8个0.125 × 8个8 × 8个2 连乘，积是多少？',a:256,lv:2,word:1,opts:[256,2048,64,128],
+   wr:{'2048':{tag:'没配对凑整',why:'先让0.125和8配对：(0.125×8)=1，剩下8个2连乘=256。'},'64':{tag:'2的个数数错',why:'8个2连乘是2⁸=256，2⁶才是64。'},'128':{tag:'2的个数数错',why:'8个2连乘是256，2⁷=128。'}},
+   ex:'(0.125×8)×(0.125×8)×…×1 × (2×2×…×2)\n8组0.125×8都等于1\n8个2连乘=2⁸=256\n= 256',hint:'固定搭配：0.125×8=1，先配对！'},
+  {q:'手机套餐月租20元，另加通话费每分钟0.09元。妈妈本月话费57.98元，她本月通话多少分钟？',a:422,lv:2,word:1,opts:[422,644.2,421.8,4222],
+   wr:{'644.2':{tag:'忘了先减月租',why:'通话费是57.98−20=37.98元，再÷0.09=422分钟。直接用57.98÷0.09≈644.2就错了。'},'421.8':{tag:'除法计算错',why:'37.98÷0.09=3798÷9=422。'},'4222':{tag:'小数点位置错',why:'37.98÷0.09：同时×100→3798÷9=422。'}},
+   ex:'通话费：57.98−20=37.98（元）\n37.98÷0.09=3798÷9=422（分钟）\n答：本月通话422分钟。',hint:'先减月租，再除以每分钟费用。'},
+  {q:'★ 两数的差是19.8，甲的小数点向左移动一位正好等于乙。乙数是多少？',a:2.2,lv:3,word:1,opts:[2.2,22,1.98,2.02],
+   wr:{'22':{tag:'答错了对象',why:'22是甲！甲=乙×10，差9个乙=19.8，乙=2.2。'},'1.98':{tag:'份数算错',why:'甲是乙的10倍，差是10−1=9份：19.8÷9=2.2，不是÷10。'},'2.02':{tag:'除法计算错',why:'19.8÷9=2.2，验算：2.2×9=19.8 ✔。'}},
+   ex:'小数点左移一位=÷10，所以甲=乙×10\n甲−乙=9个乙=19.8\n乙=19.8÷9=2.2\n甲=22，验算：22−2.2=19.8 ✔\n答：乙数是2.2。',hint:'★差倍问题：差÷(倍数−1)=小数。'}]}
+];
+
+/* =================== 实验室（每馆一个"纸笔做不到"的互动动画） =================== */
+var LAB_PASS=false;
+function labDone(){if(LAB_PASS)return;LAB_PASS=true;$('btnLabNext').classList.remove('hide');}
+var LAB={
+point:function(box,pass){
+ var pos=0,txts=['207','2<span class="pt">0</span>7','2<span class="pt">.</span>07','0<span class="pt">.</span>207'];
+ var show=['207','20.7','2.07','0.207'];
+ box.innerHTML='<div class="labtip">竖式已经按整数算好了：<b>69 × 3 = 207</b>。乘数 6.9 有 1 位小数——拖动滑块，把小数点滑回家！</div>'
+ +'<div class="pointview" id="pv">2 0 7</div>'
+ +'<input type="range" id="pSlide" min="0" max="3" step="1" value="0">'
+ +'<div class="labnote" id="pNote">👆 还没有小数点，这是 207</div>'
+ +'<button class="btn wide" id="pOk">✅ 小数点就在这里！</button>'
+ +'<div id="pBonus"></div>';
+ var notes=['👆 还没有小数点，这是 207','从右边数 1 位 → 20.7','从右边数 2 位 → 2.07','从右边数 3 位 → 0.207'];
+ $('pSlide').oninput=function(){pos=Number(this.value);tick();
+  var t=show[pos];
+  if(t.indexOf('.')>=0){var parts=t.split('.');$('pv').innerHTML=parts[0].split('').join(' ')+' <span class="pt">.</span> '+parts[1].split('').join(' ');}
+  else $('pv').textContent=t.split('').join(' ');
+  $('pNote').textContent=notes[pos];};
+ $('pOk').onclick=function(){
+  if(pos===1){ding();$('pNote').innerHTML='🎉 对啦！乘数有 1 位小数，从积的右边数 1 位：6.9×3=<b>20.7</b>';
+   $('pBonus').innerHTML='<div class="feat">⚠️ 顺序警报：4.36×60 → 436×60=26160 → <b>261.60</b> → 261.6。<b>先点小数点，再去末尾的0！</b>先去0再点点就变成26.16（书上的经典错误）。</div>';
+   this.disabled=true;$('pSlide').disabled=true;pass();}
+  else{buzz();$('pNote').textContent='不对哦！乘数 6.9 只有 1 位小数，从积的右边数出 1 位试试。';}};
+},
+seesaw:function(box,pass){
+ box.innerHTML='<div class="labtip">拖动滑块改变乘数 m，观察 <b>3.45 × m</b> 的积和 3.45 谁大谁小。<br>🎯 任务：把滑块拖到「积比 3.45 小」的位置，再按确认！</div>'
+ +'<div class="barrow"><div class="bl">3.45（固定）</div><div class="bartrack"><div class="barfill cmp" style="width:50%">3.45</div></div></div>'
+ +'<div class="barrow"><div class="bl">3.45 × m（会跟着动）</div><div class="bartrack"><div class="barfill" id="ssBar" style="width:50%">3.45</div></div></div>'
+ +'<input type="range" id="ssSlide" min="2" max="20" step="1" value="10">'
+ +'<div class="labnote" id="ssNote">m = 1：积和 3.45 一样大</div>'
+ +'<button class="btn wide" id="ssOk">✅ 这个位置积更小！</button>';
+ var m=1;
+ $('ssSlide').oninput=function(){m=Number(this.value)/10;tick();
+  var p=3.45*m,w=Math.max(4,Math.round(p/6.9*100));
+  $('ssBar').style.width=w+'%';$('ssBar').textContent=(Math.round(p*1000)/1000);
+  $('ssNote').textContent=m>1?('m = '+m+'：乘数>1，积比 3.45 大！'):(m<1?('m = '+m+'：乘数<1，积比 3.45 小！'):'m = 1：积和 3.45 一样大');};
+ $('ssOk').onclick=function(){
+  if(m<1){ding();$('ssNote').innerHTML='🎉 发现啦：<b>乘数比1小，积就变小</b>！所以 3.45×0.23 一定比 3.45 小，根本不用算。';this.disabled=true;pass();}
+  else{buzz();$('ssNote').textContent='这个位置积没有变小哦！把滑块往左拖，让 m 比 1 小。';}};
+},
+magnet:function(box,pass){
+ var rounds=[{chips:['2.5','6.3','0.4'],good:['2.5','0.4'],res:'2.5×0.4=1，再算 6.3×1=6.3！好朋友凑整成功！'},
+             {chips:['27','0.125','8'],good:['0.125','8'],res:'0.125×8=1，再算 27×1=27！黄金搭档！'}];
+ var ri=0,sel=-1;
+ function draw(){
+  var r=rounds[ri];
+  box.innerHTML='<div class="labtip">连乘算式里藏着一对「好朋友」，它们相乘正好等于 1！<b>点两个数</b>，让好朋友吸在一起。（第 '+(ri+1)+'/2 组）</div>'
+  +'<div class="chips" id="mgChips">'+r.chips.map(function(c,i){return '<button class="chip" data-i="'+i+'">'+c+'</button>';}).join('')+'</div>'
+  +'<div class="labnote" id="mgNote">🧲 先点一个数，再点它的好朋友</div>';
+  sel=-1;
+  box.querySelectorAll('.chip').forEach(function(ch){
+   ch.onclick=function(){var i=Number(this.getAttribute('data-i'));var r2=rounds[ri];
+    if(sel<0){sel=i;this.classList.add('sel');tick();$('mgNote').textContent='已吸住 '+r2.chips[i]+'，再找它的好朋友！';}
+    else if(i===sel){this.classList.remove('sel');sel=-1;$('mgNote').textContent='🧲 先点一个数，再点它的好朋友';}
+    else{
+     var pair=[r2.chips[sel],r2.chips[i]];
+     if((pair[0]===r2.good[0]&&pair[1]===r2.good[1])||(pair[0]===r2.good[1]&&pair[1]===r2.good[0])){
+      ding();this.classList.add('merged');box.querySelectorAll('.chip')[sel].classList.add('merged');
+      $('mgNote').innerHTML='🎉 '+r2.res;
+      box.querySelectorAll('.chip').forEach(function(c){c.disabled=true;});
+      setTimeout(function(){ri++;if(ri<rounds.length)draw();else{box.insertAdjacentHTML('beforeend','<div class="feat">🧙 好朋友口诀：<b>2×5=10 · 4×25=100 · 8×125=1000</b>，小数版：2.5×0.4=1 · 0.25×4=1 · 0.125×8=1。看到它们就凑整！</div>');pass();}},1300);
+     }else{buzz();$('mgNote').textContent=pair[0]+' × '+pair[1]+' 不凑整，换一对试试！';box.querySelectorAll('.chip')[sel].classList.remove('sel');sel=-1;}
+    }};
+  });
+ }
+ draw();
+},
+longdiv:function(box,pass){
+ var F=[
+ {h:'     <span class="hl">1</span>\n   ─────\n4 ） 5.8\n     <span class="hb">4</span>\n     ──\n     <span class="hl">1</span>',n:'5÷4 商 1 余 1（按整数除法去除）'},
+ {h:'     1<span class="hl">.</span>\n   ─────\n4 ） 5.8\n     4\n     ──\n     1 <span class="hl">8</span>',n:'商的小数点"跳"上来和被除数对齐！落下8 → 18'},
+ {h:'     1.<span class="hl">4</span>\n   ─────\n4 ） 5.8\n     4\n     ──\n     1 8\n     <span class="hb">1 6</span>\n     ───\n       <span class="hl">2</span>',n:'18÷4 商 4 余 2'},
+ {h:'     1.4\n   ─────\n4 ） 5.8<span class="hl"> 0</span>\n     4\n     ──\n     1 8\n     1 6\n     ───\n       2 <span class="hl">0</span>',n:'除到末尾还有余数？5.8=5.80，添0继续除 → 20'},
+ {h:'     1.4 <span class="hl">5</span>\n   ─────\n4 ） 5.8 0\n     4\n     ──\n     1 8\n     1 6\n     ───\n       2 0\n       <span class="hb">2 0</span>\n       ───\n         <span class="hl">0</span>',n:'20÷4=5，余 0！🎉 5.8÷4=1.45'}];
+ var fi=-1;
+ box.innerHTML='<div class="labtip">竖式慢动作：跟着点「下一步」，看 <b>5.8 ÷ 4</b> 一步步算完。盯住那个会"跳"的小数点！</div>'
+ +'<div class="ldiv" id="ldBox">     \n   ─────\n4 ） 5.8</div>'
+ +'<div class="labnote" id="ldNote">准备开始：5.8 ÷ 4</div>'
+ +'<button class="btn wide" id="ldNext">▶ 下一步</button>';
+ $('ldNext').onclick=function(){fi++;tick();
+  if(fi>=F.length){this.classList.add('hide');$('ldNote').innerHTML='🎉 三个字记住它：<b>对齐 · 添0 · 继续除</b>';pass();return;}
+  $('ldBox').innerHTML=F[fi].h;$('ldNote').textContent=F[fi].n;
+  if(fi===F.length-1){ding();this.textContent='✅ 看完啦';}
+ };
+},
+move:function(box,pass){
+ box.innerHTML='<div class="labtip">除数 1.2 是小数！选一个按钮，把除数变成整数——注意：<b>商不能变</b>哦。</div>'
+ +'<div class="moveeq" id="mvEq">6.78 ÷ 1.2</div>'
+ +'<div class="rcbtns"><button class="opt" id="mv10">×10</button><button class="opt" id="mv100">×100</button><button class="opt" id="mv01">÷10</button></div>'
+ +'<div class="labnote" id="mvNote">🤔 该乘几？</div><div id="mvFin"></div>';
+ function lock(){$('mv10').disabled=true;$('mv100').disabled=true;$('mv01').disabled=true;}
+ $('mv10').onclick=function(){ding();lock();
+  $('mvEq').innerHTML='<span class="mv">67.8</span> ÷ <span class="mv">12</span>';
+  $('mvNote').innerHTML='✅ 商不变的性质：被除数和除数同时×10，商不变！';
+  $('mvFin').innerHTML='<div class="feat">67.8 ÷ 12 = 5.65，所以 6.78 ÷ 1.2 = <b>5.65</b>。<br>除数有几位小数，两个小数点就一起向右搬几位；被除数位数不够就补0（9.1÷0.26=910÷26）！</div>';pass();};
+ $('mv100').onclick=function(){buzz();$('mvNote').textContent='×100 变成 678÷120，也对但白费力气！除数只有 1 位小数，移 1 位就够了。再选～';};
+ $('mv01').onclick=function(){buzz();$('mvNote').textContent='方向反啦！1.2÷10=0.12 还是小数。要往右搬（×10）才能变整数！';};
+},
+gate:function(box,pass){
+ box.innerHTML='<div class="labtip">900÷11 = 81.8181… 要保留两位小数。第一关：得<b>除到哪一位</b>才能四舍五入？</div>'
+ +'<div class="rcbtns"><button class="opt" id="g1">十分位</button><button class="opt" id="g2">百分位</button><button class="opt" id="g3">千分位</button></div>'
+ +'<div id="gStage"></div>';
+ $('g1').onclick=function(){buzz();$('gStage').innerHTML='<div class="labnote">那是保留 0 位小数啦！要比保留的位数<b>多除一位</b>。</div>';};
+ $('g2').onclick=function(){buzz();$('gStage').innerHTML='<div class="labnote">百分位就是要保留的那一位，还得多除一位，才能看后一位决定舍还是入！</div>';};
+ $('g3').onclick=function(){ding();this.disabled=true;$('g1').disabled=true;$('g2').disabled=true;stage2();};
+ function stage2(){
+  $('gStage').innerHTML='<div class="labnote">✅ 保留两位 → 除到千分位：81.81<b>8</b>1…</div>'
+  +'<div class="gatebox"><span class="keep">81.81</span><span class="look">8</span><span class="drop">1…</span></div>'
+  +'<div class="labnote" id="gNote">闸门外的千分位是 8，8 ≥ 5 → 该进还是该舍？</div>'
+  +'<button class="btn wide" id="gOpen">🚪 开闸检验！</button><div id="gDemo"></div>';
+  $('gOpen').onclick=function(){ding();this.disabled=true;
+   $('gStage').querySelector('.gatebox').innerHTML='<span class="keep" style="color:var(--green)">81.82</span> <span class="drop">81…</span>';
+   $('gNote').innerHTML='🎉 8≥5 进 1：900÷11 <b>≈</b> 81.82（用约等号！）';
+   $('gDemo').innerHTML='<div class="feat">再演示一个：62.8÷7=8.971…，精确到十分位 → 百分位7≥5进1 → <b>9.0</b>。<span class="zero">这个 0</span> 不能扔！它表示"精确到十分位"，9.0≠9。</div>'
+   +'<button class="btn gold wide" id="gDone">✅ 闸门原理全懂了</button>';
+   $('gDone').onclick=function(){this.disabled=true;pass();};
+  };
+ }
+},
+mindmap:function(box,pass){
+ var nodes=[
+  {t:'① 小数乘整数',r:'先按整数乘法算出积，再从积的右边起数出几位点上小数点；末尾的0后去掉（先点点，再去0）。'},
+  {t:'② 小数乘小数',r:'转化成整数乘法；积的小数位数=两个乘数小数位数之和，不够用0补足。乘数>1积大、<1积小、=1不变。'},
+  {t:'③ 运算律推广',r:'运算顺序与整数相同；交换律、结合律、分配律对小数同样适用。好朋友：2×5、4×25、8×125。'},
+  {t:'④ 除数是整数',r:'商的小数点与被除数的小数点对齐；除到末尾有余数添0继续除；整数部分不够商1，个位写0。'},
+  {t:'⑤ 除数是小数',r:'除数小数点右移变整数，被除数同向移相同位数（不够补0）。除数>1商小、<1商大；余数对着原来的小数点。'},
+  {t:'⑥ 商的近似数',r:'除到比保留位数多一位，四舍五入，用≈连接；近似数末尾的0不能去掉。'}];
+ var opened=0;
+ box.innerHTML='<div class="labtip">这就是第1单元的全部家当！<b>把 6 个知识节点全部点亮</b>，就能开启常考题型检验。</div>'
+ +'<div class="mmcenter">🗺️ 小数的乘法与除法</div><div class="mmline"></div>'
+ +nodes.map(function(n,i){return '<div class="mmnode" id="mn'+i+'"><div class="mt"><span class="dot"></span>'+n.t+'</div></div>';}).join('')
+ +'<div class="labnote" id="mmNote">已点亮 0 / 6</div>';
+ nodes.forEach(function(n,i){
+  $('mn'+i).onclick=function(){
+   if(this.classList.contains('open'))return;
+   this.classList.add('open');tick();
+   this.insertAdjacentHTML('beforeend','<div class="mmrule">'+n.r+'</div>');
+   opened++;$('mmNote').textContent='已点亮 '+opened+' / 6';
+   if(opened>=6){ding();$('mmNote').innerHTML='🎉 导图全部点亮！口诀：<b>乘法数位数，除法搬小数点；比大小和1比；近似数多除一位。</b>';pass();}
+  };
+ });
+}
+};
+
+/* =================== 引擎 =================== */
+var CUR=null, TS={idx:0,gDone:-1}, Q={}, RC={i:0};
+function guessStep(btn){
+ var ok=(btn.textContent===window._gAns);
+ if(ok){btn.classList.add('good');ding();}else{btn.classList.add('bad');buzz();}
+ document.querySelectorAll('#guessBox .opt').forEach(function(b){b.disabled=true;if(b.textContent===window._gAns)b.classList.add('good');});
+ setTimeout(function(){var gb=$('guessBox');if(gb)gb.remove();$('btnStep').classList.remove('hide');nextStep();},ok?500:1100);
+}
+
+function unlockedCount(){var d0=new Date(START+'T00:00:00');var days=Math.floor((Date.now()-d0.getTime())/86400000);
+ return Math.max(1,Math.min(MODS.length,days+1+UNL_EXTRA));}
+function parentUnlock(){if(unlockedCount()>=MODS.length){alert('所有馆都已开放!');return;}UNL_EXTRA++;save(LSK+'_unl',UNL_EXTRA);ding();renderHome();}
+function lockMsg(day){buzz();alert('这个馆第 '+day+' 天才开放哦!\n每天学一个馆,学得牢。\n(家长可在「练习记录」里提前解锁)');}
+
+function renderHome(){
+ show('vHome');
+ var unl=unlockedCount(),g=$('homeGrid'),h='';
+ MODS.forEach(function(m,i){
+  var open=i<unl, st=modStat(m.id);
+  h+='<div class="tile'+(open?'':' lock')+'" onclick="'+(open?('openMod(\''+m.id+'\')'):('lockMsg('+(i+1)+')'))+'">'
+   +(i===unl-1&&open?'<span class="today">今日</span>':'')
+   +(st?'<span class="done">已练 · '+st+'</span>':(open?'<span class="done pending">未练</span>':''))
+   +'<div class="ic">'+(open?m.ic:'🔒')+'</div><div class="nm">'+m.nm+'</div><div class="ds">'+m.ds+'</div></div>';
+ });
+ g.innerHTML=h;
+ var done=0;for(var k in DB.done)done++;
+ var wrong=0;DB.events.forEach(function(e){if(e.type==='quiz'&&!e.ok)wrong++;});
+ $('statBar').innerHTML='<span>已练 '+done+'/'+MODS.length+' 馆</span><span>共答 '+DB.events.filter(function(e){return e.type==='quiz';}).length+' 题</span><span>错 '+wrong+' 题</span>';
+ var wl=wbList();
+ $('wbEntry').innerHTML=wl.length?'<div class="card" style="border-color:var(--red)"><div class="h2" style="color:var(--red)">📕 错题本（'+wl.length+' 题待掌握）</div><div class="note">错过的题连续答对 2 次才算掌握。</div><button class="btn red wide" onclick="startWrongbook()">🔁 重做错题</button></div>':'';
+ $('wbPanel').innerHTML=wl.length?wl.map(function(it){return '<div class="wbitem"><span>'+esc(short(it.q))+'</span><span class="t">错'+it.wrong+'次·连对'+it.streak+'/2</span></div>';}).join(''):'<div class="note">错题本是空的，太棒了！</div>';
+ var rh='';
+ if(done>0)rh+='<button class="btn ghost wide" onclick="startWarmup()">🔄 今日热身：把学过的再练 5 题</button>';
+ $('reviewEntry').innerHTML=rh?'<div class="card"><div class="h2">🧠 学得牢小工具</div>'+rh+'<div class="note">🔄 热身＝学过的题再见一面，记得更牢。</div></div>':'';
+}
+function short(s){return s.length>24?s.slice(0,24)+'…':s;}
+function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+function show(id){['vHome','vTeach','vQuiz','vResult'].forEach(function(v){$(v).classList.toggle('hide',v!==id);});window.scrollTo(0,0);}
+function goHome(){if(Q.timer)clearInterval(Q.timer);renderHome();}
+
+/* ---- 教学流程：放大镜 → 分步 → 实验室 → 妙招 → 遮挡回忆 ---- */
+var mir={n:false,o:false};
+function openMod(id){
+ CUR=null;MODS.forEach(function(m){if(m.id===id)CUR=m;});
+ if(!CUR)return;tick();
+ mir={n:false,o:false};TS.idx=0;TS.gDone=-1;LAB_PASS=false;RC={i:0};
+ show('vTeach');
+ $('tBadge').textContent=CUR.ic+' '+CUR.nm.replace(/^第.+课 /,'');
+ $('tTag').textContent='金牌数学·'+CUR.nm.split(' ')[0];
+ var html='';
+ String(CUR.ex.expr).split(/([0-9.]+)/).forEach(function(seg){
+  if(!seg)return;
+  if(/^[0-9.]+$/.test(seg))html+='<span class="tk num">'+seg+'</span>';
+  else html+='<span class="tk op">'+esc(seg)+'</span>';
+ });
+ $('mExpr').innerHTML=html;
+ $('mFeats').innerHTML='';$('mMethods').innerHTML='';$('mMethods').classList.add('hide');
+ $('btnToSteps').classList.add('hide');
+ $('btnNum').style.opacity=1;$('btnOp').style.opacity=1;
+ ['cardSteps','cardLab','cardTips','cardRecall'].forEach(function(c){$(c).classList.add('hide');});
+ $('stepRows').innerHTML='';$('btnStep').classList.remove('hide');$('btnStep').textContent='▶ 下一步';
+ $('btnLabNext').classList.add('hide');
+}
+function revealNum(){if(mir.n)return;mir.n=true;tick();
+ document.querySelectorAll('#mExpr .tk.num').forEach(function(el){el.classList.add('hn');});
+ $('mFeats').innerHTML+='<div class="feat">🔢 数字特点：'+CUR.ex.num+'</div>';
+ $('btnNum').style.opacity=.4;mirDone();}
+function revealOp(){if(mir.o)return;mir.o=true;tick();
+ document.querySelectorAll('#mExpr .tk.op').forEach(function(el){el.classList.add('ho');});
+ $('mFeats').innerHTML+='<div class="feat blue">➗ 算法特点：'+CUR.ex.op+'</div>';
+ $('btnOp').style.opacity=.4;mirDone();}
+function mirDone(){
+ if(!(mir.n&&mir.o))return;
+ var h='<div class="note" style="margin-top:8px">✅ 题干特点：'+CUR.ex.feats.map(function(f,i){return (i+1)+'.'+f;}).join('　')+'</div><div style="margin-top:4px">'
+  +CUR.ex.methods.map(function(m){return '<span class="mchip">🏷️ '+m+'</span>';}).join('')+'</div>';
+ $('mMethods').innerHTML=h;$('mMethods').classList.remove('hide');
+ $('btnToSteps').classList.remove('hide');ding();
+}
+function showSteps(){$('cardSteps').classList.remove('hide');$('btnToSteps').classList.add('hide');nextStep();
+ $('cardSteps').scrollIntoView({behavior:'smooth'});}
+function nextStep(){
+ var steps=CUR.ex.steps;
+ if(TS.idx>=steps.length)return;
+ var s=steps[TS.idx];
+ if(s.n&&TS.idx>=1&&TS.idx<steps.length-1&&TS.gDone!==TS.idx){
+  TS.gDone=TS.idx;
+  var pool=['从左往右硬算','列竖式慢慢算','先算最大的数'];
+  MODS.forEach(function(m){m.ex.steps.forEach(function(x){if(x.n&&x.n!==s.n&&pool.indexOf(x.n)<0)pool.push(x.n);});});
+  var dtr=pool[Math.floor(Math.random()*pool.length)];if(dtr===s.n)dtr=pool[0];
+  var go=Math.random()<0.5?[s.n,dtr]:[dtr,s.n];
+  window._gAns=s.n;
+  $('btnStep').classList.add('hide');
+  var box=document.createElement('div');box.id='guessBox';
+  box.innerHTML='<div class="hint">🤔 猜一猜：下一步该用哪一招？</div>'+go.map(function(o){return '<button class="opt" onclick="guessStep(this)">'+esc(o)+'</button>';}).join('');
+  $('stepRows').appendChild(box);box.scrollIntoView({behavior:'smooth',block:'center'});
+  return;
+ }
+ tick();
+ document.querySelectorAll('#stepRows .srow').forEach(function(el){el.classList.remove('cur');});
+ var row=document.createElement('div');row.className='srow cur';
+ row.innerHTML='<div class="math">'+esc(s.t)+'</div>'+(s.n?'<div class="snote">'+s.n+'</div>':'');
+ $('stepRows').appendChild(row);
+ if(s.w){var wd=document.createElement('div');wd.className='swhy';wd.innerHTML='🤔 为什么：'+s.w;$('stepRows').appendChild(wd);}
+ TS.idx++;
+ if(TS.idx>=steps.length){
+  $('btnStep').classList.add('hide');ding();
+  var f=document.createElement('div');f.className='fin';f.textContent='🎉 变身完成！去实验室亲手玩一遍';$('stepRows').appendChild(f);
+  $('cardLab').classList.remove('hide');
+  LAB[CUR.lab]($('labBox'),labDone);
+ }else{
+  $('btnStep').textContent='▶ 下一步（'+TS.idx+'/'+steps.length+'）';
+ }
+ row.scrollIntoView({behavior:'smooth',block:'center'});
+}
+function labNext(){
+ $('cardTips').classList.remove('hide');
+ $('tipUse').innerHTML=CUR.tips.use;
+ $('tipFms').innerHTML=CUR.tips.fms.map(function(x){return '<div class="fmla">'+x+'</div>';}).join('');
+ $('btnTipsNext').textContent=(CUR.recall&&CUR.recall.length)?'🙈 遮挡回忆挑战 →':'✏️ 开始真题检验 →';
+ $('cardTips').scrollIntoView({behavior:'smooth'});
+}
+function tipsNext(){
+ if(CUR.recall&&CUR.recall.length){$('cardRecall').classList.remove('hide');rcRender(0);$('cardRecall').scrollIntoView({behavior:'smooth'});}
+ else qStart(CUR.id);
+}
+/* ---- 遮挡回忆 ---- */
+function rcRender(i){
+ RC.i=i;var r=CUR.recall[i];
+ var sent=r.s.replace(/【(.+?)】/,'<span class="blank" id="rcBlank">？？</span>');
+ var sh=r.opts.slice().sort(function(){return Math.random()-0.5;});
+ var h='<div class="rcsent">'+sent+'</div>';
+ h+='<div class="rcbtns">'+sh.map(function(o,j){return '<button class="opt" onclick="rcPick(this,'+j+',\''+o.replace(/'/g,"\\'")+'\')">'+esc(o)+'</button>';}).join('')+'</div>';
+ h+='<div class="labnote" id="rcNote">第 '+(i+1)+' / '+CUR.recall.length+' 题：不看妙招卡，自己回忆！</div>';
+ $('rcBox').innerHTML=h;
+ window._rcSh=sh;
+}
+function rcPick(btn,j,val){
+ var r=CUR.recall[RC.i];
+ if(val===r.a){
+  ding();btn.classList.add('good');
+  var blank=$('rcBlank');if(blank)blank.textContent=r.a;
+  $('rcNote').innerHTML='✅ 对啦！'+r.why;
+  document.querySelectorAll('#rcBox .opt').forEach(function(b){b.disabled=true;});
+  setTimeout(function(){
+   if(RC.i+1<CUR.recall.length)rcRender(RC.i+1);
+   else{$('btnRcNext').classList.remove('hide');$('rcBox').innerHTML='<div class="fin">🎉 全部回忆成功！法则已经装进小脑袋</div>';$('btnRcNext').scrollIntoView({behavior:'smooth'});}
+  },900);
+ }else{
+  buzz();btn.classList.add('bad');btn.disabled=true;
+  $('rcNote').innerHTML='💡 '+r.why;
+ }
+}
+function rcNext(){qStart(CUR.id);}
+
+/* ---- 训练（自动判分 + 错因标签） ---- */
+function fmt(n){return (Math.round(Number(n)*10000)/10000).toString();}
+function shuffle(arr){for(var i=arr.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=arr[i];arr[i]=arr[j];arr[j]=t;}return arr;}
+function lvTag(d){if(d.lv===3)return '<span class="lvtag lv3">★拔高</span>';if(d.lv===2)return '<span class="lvtag lv2">巩固</span>';return '<span class="lvtag lv1">基础</span>';}
+function qStart(modId){
+ var m=null;MODS.forEach(function(x){if(x.id===modId)m=x;});
+ Q={list:m.drills.slice(),i:0,t0:Date.now(),sess0:Date.now(),mod:modId,nm:m.nm,ok:0,wrong:0,timer:null,isWb:false,wrongs:[]};
+ show('vQuiz');qRender();
+ Q.timer=setInterval(function(){var el=$('qTime');if(el){var s=Math.floor((Date.now()-Q.sess0)/1000);el.textContent='⏱ '+Math.floor(s/60)+':'+('0'+s%60).slice(-2);}},500);
+}
+function startWrongbook(){
+ var wl=wbList();if(!wl.length)return;
+ Q={list:wl.map(function(it){var c={};for(var k in it)c[k]=it[k];c.wb=1;return c;}),i:0,t0:Date.now(),sess0:Date.now(),mod:'wrongbook',nm:'错题本重做',ok:0,wrong:0,timer:null,isWb:true,wrongs:[]};
+ show('vQuiz');qRender();
+ Q.timer=setInterval(function(){var el=$('qTime');if(el){var s=Math.floor((Date.now()-Q.sess0)/1000);el.textContent='⏱ '+Math.floor(s/60)+':'+('0'+s%60).slice(-2);}},500);
+}
+function startWarmup(){
+ var pool=[];
+ MODS.forEach(function(m){if(DB.done[m.id])m.drills.forEach(function(dd){pool.push(dd);});});
+ if(!pool.length){alert('先练完至少一个馆，再来热身！');return;}
+ var picks=wbList().slice(0,2).map(function(it){var c={};for(var k in it)c[k]=it[k];c.wb=1;return c;});
+ var guard=0;
+ while(picks.length<5&&guard<80){guard++;var dd=pool[Math.floor(Math.random()*pool.length)];var dup=false;picks.forEach(function(p){if(p.q===dd.q)dup=true;});if(!dup)picks.push(dd);}
+ Q={list:shuffle(picks),i:0,t0:Date.now(),sess0:Date.now(),mod:'warmup',nm:'今日热身',ok:0,wrong:0,timer:null,isWb:false,warm:true,wrongs:[]};
+ show('vQuiz');qRender();
+ Q.timer=setInterval(function(){var el=$('qTime');if(el){var s=Math.floor((Date.now()-Q.sess0)/1000);el.textContent='⏱ '+Math.floor(s/60)+':'+('0'+s%60).slice(-2);}},500);
+}
+function quitQuiz(){if(Q.timer)clearInterval(Q.timer);if(Q.isWb||Q.warm)renderHome();else openMod(Q.mod);}
+function qRender(){
+ var d=Q.list[Q.i];Q.t0=Date.now();
+ $('qProg').innerHTML=(Q.isWb?'📕 错题本 ':'')+(Q.i+1)+' / '+Q.list.length+lvTag(d)+(d.wb?'　<span class="star">📕</span>':'')+(d.rq?'　<span class="star">🔁再战</span>':'');
+ $('qScore').textContent='✅'+Q.ok+' ❌'+Q.wrong;
+ var gh=d.hint?'<div class="hint">'+esc(d.hint)+'</div>':'';
+ if(Q.i===0&&!Q.isWb&&!Q.warm&&!d.rq){
+  var gl=d.ex.split('\n');
+  if(gl.length>2){gl.pop();gh+='<div class="steps"><span class="lb">🧭 第一题扶你走：思路都摆好了，最后一步你来选！</span>'+gl.map(esc).join('<br>')+'</div>';}
+ }
+ $('qHint').innerHTML=gh;
+ $('qText').className='qtext'+(d.word?' word':'');
+ $('qText').textContent=d.q;
+ if(d.sopts){
+  Q.curSopts=d.sopts.slice();
+  $('qOpts').innerHTML=d.sopts.map(function(o,i){return '<button class="opt" onclick="qAnsS(this,'+i+')">'+esc(o)+'</button>';}).join('');
+ }else{
+  Q.curOpts=shuffle(d.opts.slice());
+  $('qOpts').innerHTML=Q.curOpts.map(function(o,i){return '<button class="opt" onclick="qAns(this,'+i+')">'+fmt(o)+'</button>';}).join('');
+ }
+ $('qEx').innerHTML='';$('btnNext').classList.add('hide');
+}
+function afterAns(d,ok,ms,user,btn){
+ if(ok){Q.ok++;ding();if(Q.isWb||d.wb)wbAddRight(d.q);}
+ else{
+  Q.wrong++;buzz();wbAddWrong(d);Q.wrongs.push(d);
+  if(!d.rq&&!Q.isWb){var c={};for(var k in d)c[k]=d[k];c.rq=1;Q.list.push(c);}
+ }
+ if(!Q.isWb)logEvent({type:'quiz',subject:'数学',lesson:Q.nm,word:d.q,hint:d.hint||'',ok:ok,ms:ms,user:String(user),tag:ok?(d.lv===3?'拔高✓':'答对'):(d._wtag||'答错')});
+ var lines=d.ex.split('\n');
+ var eh='';
+ if(!ok&&d._wtag)eh+='<div class="errtag"><span class="t">🏷️ 错因：'+esc(d._wtag)+'</span><br>'+esc(d._wwhy||'')+'</div>';
+ eh+='<div class="steps"><span class="lb">'+(ok?'✅ 对啦！再看一遍书上的分步：':'❌ 别急，跟着书上的思路走一遍：')+'</span>'
+  +lines.map(function(l,i){return i===lines.length-1?'<span class="last">'+esc(l)+'</span>':esc(l);}).join('<br>')+'</div>';
+ $('qEx').innerHTML=eh;
+ $('btnNext').classList.remove('hide');
+ $('qScore').textContent='✅'+Q.ok+' ❌'+Q.wrong;
+}
+function qAns(btn,idx){
+ var d=Q.list[Q.i],val=Q.curOpts[idx],ok=(Math.abs(val-Number(d.a))<1e-9),ms=Date.now()-Q.t0;
+ d._wtag=null;d._wwhy=null;
+ if(!ok&&d.wr&&d.wr[String(val)]){d._wtag=d.wr[String(val)].tag;d._wwhy=d.wr[String(val)].why;}
+ document.querySelectorAll('#qOpts .opt').forEach(function(b,i){b.disabled=true;
+  if(Math.abs(Q.curOpts[i]-Number(d.a))<1e-9)b.classList.add('good');});
+ if(!ok)btn.classList.add('bad');
+ afterAns(d,ok,ms,val,btn);
+}
+function qAnsS(btn,idx){
+ var d=Q.list[Q.i],text=d.sopts[idx],ok=(text===d.a),ms=Date.now()-Q.t0;
+ d._wtag=null;d._wwhy=null;
+ if(!ok&&d.wr&&d.wr[text]){d._wtag=d.wr[text].tag;d._wwhy=d.wr[text].why;}
+ document.querySelectorAll('#qOpts .opt').forEach(function(b){b.disabled=true;if(b.textContent===d.a)b.classList.add('good');});
+ if(!ok)btn.classList.add('bad');
+ afterAns(d,ok,ms,text,btn);
+}
+function qNext(){
+ Q.i++;
+ if(Q.i>=Q.list.length){qFinish();return;}
+ qRender();window.scrollTo(0,0);
+}
+function qFinish(){
+ if(Q.timer)clearInterval(Q.timer);
+ var sec=Math.floor((Date.now()-Q.sess0)/1000);
+ if(!Q.isWb&&!Q.warm){
+  DB.done[Q.mod]={ok:Q.ok,wrong:Q.wrong,ts:Date.now()};save(LSK,DB);
+  logEvent({type:'lesson',subject:'数学',lesson:Q.nm,total:Q.list.length,wrong:Q.wrong,durationSec:sec});
+ }
+ show('vResult');
+ var h='<div class="h2">'+(Q.isWb?'📕 错题重做完成':'🏁 '+Q.nm+' 完成!')+'</div>'
+  +'<div class="stat"><span>✅ 对 '+Q.ok+'</span><span>❌ 错 '+Q.wrong+'</span><span>⏱ '+Math.floor(sec/60)+'分'+(sec%60)+'秒</span></div>';
+ if(Q.wrongs.length){
+  h+='<div class="h2" style="margin-top:12px">错题回顾（看懂再走）</div>';
+  Q.wrongs.forEach(function(d){
+   h+='<div class="note" style="font-weight:800;color:var(--red)">✗ '+esc(d.q)+'</div>';
+   if(d._wtag)h+='<div class="errtag"><span class="t">🏷️ 错因：'+esc(d._wtag)+'</span><br>'+esc(d._wwhy||'')+'</div>';
+   h+='<div class="steps">'+d.ex.split('\n').map(esc).join('<br>')+'</div>';
+  });
+  h+='<div class="note">这些题已进错题本，连续答对 2 次才能出来哦。</div>';
+ }else{
+  h+='<div class="fin">🌟 全对！太厉害了！</div>';
+ }
+ if(!Q.isWb&&!Q.warm&&Q.wrong>0)h+='<button class="btn gold wide" onclick="qStart(Q.mod)">🔁 再练一次，冲 ⭐⭐⭐ 满星</button>';
+ h+='<button class="btn wide" onclick="goHome()">回选馆地图</button>';
+ $('resCard').innerHTML=h;
+}
+
+/* ---- 导出（兼容 data/learning 归档格式） ---- */
+function exportText(){
+ var wl=wbList();
+ var t='【Kenton 数学五上预习馆①小数乘除 练习记录】\n导出时间:'+new Date().toLocaleString()+'\n\n';
+ t+='== 各馆成绩 ==\n';
+ MODS.forEach(function(m){var d=DB.done[m.id];if(d)t+=m.nm+': ✅'+d.ok+' ❌'+d.wrong+'\n';});
+ t+='\n== 错题本(未掌握 '+wl.length+' 题) ==\n';
+ wl.forEach(function(it){t+='· '+it.q+'（错'+it.wrong+'次,连对'+it.streak+'/2）\n';});
+ var cnt={},tcnt={};
+ DB.events.forEach(function(e){if(e.type==='quiz'&&!e.ok){cnt[e.word]=(cnt[e.word]||0)+1;if(e.tag&&e.tag!=='答错')tcnt[e.tag]=(tcnt[e.tag]||0)+1;}});
+ var rep=Object.keys(cnt).filter(function(k){return cnt[k]>=2;});
+ t+='\n== 反复错的题(错≥2次) ==\n'+(rep.length?rep.map(function(k){return '· '+k+' ×'+cnt[k];}).join('\n'):'(无)')+'\n';
+ t+='\n== 错因标签统计 ==\n';
+ var tk=Object.keys(tcnt);
+ t+=tk.length?tk.map(function(k){return '· '+k+' ×'+tcnt[k];}).join('\n'):'(暂无)';
+ t+='\n\n== 原始JSON ==\n'+JSON.stringify({child:'kenton',subject:'数学',app:'g5u1_decimal_lab',unit:'五上第1单元 小数的乘法与除法',events:DB.events,wrongbook:wl});
+ return t;
+}
+function exportCopy(){var t=exportText();
+ if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(function(){alert('已复制!把内容发给爸爸即可');},function(){fallbackCopy(t);});}
+ else fallbackCopy(t);}
+function fallbackCopy(t){var ta=document.createElement('textarea');ta.value=t;document.body.appendChild(ta);ta.select();try{document.execCommand('copy');alert('已复制!');}catch(e){alert('复制失败,请用「看一眼」手动复制');}document.body.removeChild(ta);}
+function exportFile(){var b=new Blob([exportText()],{type:'text/plain'});var a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='kenton_小数乘除预习记录_'+new Date().toISOString().slice(0,10)+'.txt';a.click();}
+function toggleExp(){var box=$('expBox');box.classList.toggle('hide');if(!box.classList.contains('hide'))$('expTa').value=exportText();}
+
+$('muteBtn').textContent=MUTE?'🔕':'🔔';
+renderHome();
+</script>
+</body>
+</html>

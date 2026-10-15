@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kenton 数学冲刺 · 第1天</title>
+<style>
+  @page { size: A4; margin: 12mm 14mm; }
+  * { box-sizing: border-box; }
+  body {
+    font-family: "Microsoft YaHei", "Noto Sans CJK SC", "WenQuanYi Zen Hei", sans-serif;
+    font-size: 12pt; line-height: 1.5; color: #000; margin: 0; padding: 0;
+  }
+  .wrap { max-width: 800px; margin: 0 auto; padding: 6px; }
+
+  /* 卷首固定区 */
+  .head { border: 2.5px solid #000; padding: 8px 12px; margin-bottom: 10px; }
+  .head h1 { font-size: 17pt; margin: 0 0 4px; text-align: center; letter-spacing: 1px; }
+  .head .sub { text-align: center; font-size: 10.5pt; color: #333; margin-bottom: 6px; }
+  .head .meta {
+    display: flex; flex-wrap: wrap; justify-content: space-between;
+    gap: 4px 18px; font-size: 11pt; border-top: 1.5px dashed #000; padding-top: 6px;
+  }
+  .head .meta span { white-space: nowrap; }
+  .line { display: inline-block; min-width: 90px; border-bottom: 1.2px solid #000; }
+
+  /* 大题区块 */
+  .section { border: 2.2px solid #000; margin-bottom: 9px; page-break-inside: avoid; }
+  .sec-head {
+    display: flex; justify-content: space-between; align-items: center;
+    border-bottom: 1.6px solid #000; padding: 4px 10px; font-weight: 700; font-size: 12.5pt;
+    background: repeating-linear-gradient(45deg,#fff,#fff 7px,#f0f0f0 7px,#f0f0f0 9px);
+  }
+  .sec-head .score { font-size: 9.5pt; font-weight: 700; color: #333; white-space: nowrap; }
+  .sec-body { padding: 7px 12px; }
+
+  .tag { color: #555; font-weight: 700; font-size: 9.5pt; }
+
+  /* 题目网格 */
+  ol { margin: 0; padding-left: 0; list-style: none; counter-reset: none; }
+  li { margin: 5px 0; }
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 4px 26px; }
+  .grid3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 6px 20px; }
+  .qnum { font-weight: 700; margin-right: 4px; }
+
+  .blank-s { display: inline-block; min-width: 46px; border-bottom: 1.4px solid #000; text-align: center; }
+  .blank-m { display: inline-block; min-width: 90px; border-bottom: 1.4px solid #000; }
+  .calc { display: inline-block; min-width: 70px; border-bottom: 1.4px solid #000; text-align: center; }
+  .op { font-weight: 700; }
+
+  /* 竖式/简算 计算空间 */
+  .work-box { border: 1px solid #999; min-height: 56px; margin-top: 3px; }
+  .write-line { height: 22px; border-bottom: 1px solid #aaa; }
+
+  /* 陷阱/提示框 */
+  .trap {
+    border: 1.6px dashed #000; padding: 4px 8px; margin: 6px 0; font-size: 10pt;
+    background: repeating-linear-gradient(45deg,#fff,#fff 6px,#eee 6px,#eee 8px);
+  }
+  .trap b { letter-spacing: .5px; }
+
+  /* 页脚 */
+  .foot {
+    display: flex; justify-content: space-between; font-size: 8.5pt; color: #555;
+    border-top: 1px solid #000; margin-top: 6px; padding-top: 3px;
+  }
+
+  /* 答案页 */
+  .answers { page-break-before: always; }
+  .answers .section { border-color: #000; }
+  .ans-grid { font-size: 11pt; line-height: 1.7; }
+  .ans-grid b { color: #000; }
+
+  @media print {
+    .wrap { max-width: none; padding: 0; }
+    body { font-size: 11.5pt; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- ===== 卷首 ===== -->
+  <div class="head">
+    <h1>Kenton 数学冲刺 · 第1天</h1>
+    <div class="sub">四年级下 · 期末冲刺　|　范围：小数的意义与性质 · 小数加减法 · 运算定律与简便计算 · 四则混合 · 单位换算 · 解决问题</div>
+    <div class="meta">
+      <span>姓名（Kenton）：<span class="line"></span></span>
+      <span>日期：<span class="line"></span></span>
+      <span>用时：<span class="line" style="min-width:60px"></span> 分</span>
+      <span>总分：100 分　得分：<span class="line" style="min-width:60px"></span></span>
+      <span>家长签字：<span class="line"></span></span>
+    </div>
+  </div>
+
+  <!-- ===== 一、填空 ===== -->
+  <div class="section">
+    <div class="sec-head"><span>一、填空</span><span class="score">⏱ 8 分　每空 1.5 分　满分 18 分　得分 ____</span></div>
+    <div class="sec-body">
+      <ol>
+        <li><span class="qnum">1.</span> 0.7 的计数单位是 <span class="blank-s"></span>，它有 <span class="blank-s"></span> 个这样的计数单位。</li>
+        <li><span class="qnum">2.</span> 3.06 读作：<span class="blank-m" style="min-width:160px"></span>。</li>
+        <li><span class="qnum">3.</span> 把 0.5 的小数点向右移动两位，得到的数是 <span class="blank-s" style="min-width:60px"></span>。</li>
+        <li><span class="qnum">4.</span> 5 吨 60 千克 = <span class="blank-s" style="min-width:60px"></span> 吨。</li>
+        <li><span class="qnum">5.</span> 0.40 化简后写作 <span class="blank-s" style="min-width:60px"></span>。</li>
+        <li><span class="qnum">6.</span> 比 1 小 0.01 的数是 <span class="blank-s" style="min-width:60px"></span>。</li>
+      </ol>
+    </div>
+  </div>
+
+  <!-- ===== 二、比较与判断 ===== -->
+  <div class="section">
+    <div class="sec-head"><span>二、比一比、判一判</span><span class="score">⏱ 5 分　每题 1.5 分　满分 15 分　得分 ____</span></div>
+    <div class="sec-body">
+      <p style="margin:2px 0 5px"><span class="tag">[A] 在 ○ 里填 &gt; &lt; 或 =</span></p>
+      <ol class="grid3">
+        <li><span class="qnum">7.</span> 0.8 <span class="op">○</span> 0.80</li>
+        <li><span class="qnum">8.</span> 1.5 <span class="op">○</span> 1.45</li>
+        <li><span class="qnum">9.</span> 0.09 <span class="op">○</span> 0.1</li>
+      </ol>
+      <p style="margin:8px 0 5px"><span class="tag">[B] 对的画 √，错的画 ✗</span></p>
+      <ol>
+        <li><span class="qnum">10.</span> 0.30 和 0.3 一样大。 （ <span class="blank-s" style="min-width:34px"></span> ）</li>
+        <li><span class="qnum">11.</span> 大于 0.3、小于 0.5 的小数只有 0.4 一个。 （ <span class="blank-s" style="min-width:34px"></span> ）</li>
+      </ol>
+      <div class="trap"><b>⚠ 易错提醒：</b>小数末尾添 0 或去 0，大小不变（如 0.8 = 0.80）；但小数中间或前面的 0 不能随便去掉！</div>
+    </div>
+  </div>
+
+  <!-- ===== 三、单位换算 ===== -->
+  <div class="section">
+    <div class="sec-head"><span>三、单位换算</span><span class="score">⏱ 6 分　每空 2 分　满分 12 分　得分 ____</span></div>
+    <div class="sec-body">
+      <ol class="grid2">
+        <li><span class="qnum">12.</span> 2.5 米 = <span class="blank-s"></span> 厘米</li>
+        <li><span class="qnum">13.</span> 3 千克 50 克 = <span class="blank-s"></span> 千克</li>
+        <li><span class="qnum">14.</span> 1.2 吨 = <span class="blank-s"></span> 千克</li>
+        <li><span class="qnum">15.</span> 0.8 元 = <span class="blank-s"></span> 角</li>
+        <li><span class="qnum">16.</span> 4 米 6 分米 = <span class="blank-s"></span> 米</li>
+        <li><span class="qnum">17.</span> 2 平方米 = <span class="blank-s"></span> 平方分米</li>
+      </ol>
+    </div>
+  </div>
+
+  <!-- ===== 四、小数加减（竖式）===== -->
+  <div class="section">
+    <div class="sec-head"><span>四、用竖式计算</span><span class="score">⏱ 7 分　每题 2 分　满分 8 分　得分 ____</span></div>
+    <div class="sec-body">
+      <p style="margin:2px 0 6px"><span class="tag">[列竖式，注意小数点对齐]</span></p>
+      <div class="grid2">
+        <div><span class="qnum">18.</span> 12.5 − 8.46 =<div class="work-box"></div></div>
+        <div><span class="qnum">19.</span> 7 − 2.35 =<div class="work-box"></div></div>
+        <div><span class="qnum">20.</span> 5.6 + 3.7 =<div class="work-box"></div></div>
+        <div><span class="qnum">21.</span> 3.28 + 6.72 =<div class="work-box"></div></div>
+      </div>
+      <div class="trap"><b>⚠ 易错提醒：</b>小数加减要把<b>小数点对齐</b>（不是末尾对齐！）。整数 7 可看作 7.00 再减。</div>
+    </div>
+  </div>
+
+  <div class="foot">
+    <span>Kenton 数学冲刺 · 第1天</span>
+    <span>第 1 页 / 共 2 页</span>
+    <span>姓名 ______　日期 ______</span>
+  </div>
+
+  <!-- ===== 五、简便计算 ===== -->
+  <div class="section" style="margin-top:10px">
+    <div class="sec-head"><span>五、能简便的要简便计算</span><span class="score">⏱ 9 分　每题 2 分　满分 12 分　得分 ____</span></div>
+    <div class="sec-body">
+      <p style="margin:2px 0 6px"><span class="tag">[用运算定律，写出过程]</span></p>
+      <div class="grid2">
+        <div><span class="qnum">22.</span> 3.6 + 2.85 + 6.4<div class="work-box"></div></div>
+        <div><span class="qnum">23.</span> 7.5 − 1.8 − 2.2<div class="work-box"></div></div>
+        <div><span class="qnum">24.</span> 25 × 17 × 4<div class="work-box"></div></div>
+        <div><span class="qnum">25.</span> 102 × 35<div class="work-box"></div></div>
+        <div><span class="qnum">26.</span> 45 × 99 + 45<div class="work-box"></div></div>
+        <div><span class="qnum">27.</span> 125 × 8 × 13<div class="work-box"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== 六、四则混合 ===== -->
+  <div class="section">
+    <div class="sec-head"><span>六、脱式计算（四则混合）</span><span class="score">⏱ 8 分　每题 2.5 分　满分 10 分　得分 ____</span></div>
+    <div class="sec-body">
+      <div class="grid2">
+        <div><span class="qnum">28.</span> 320 ÷ (8 × 5)<div class="work-box"></div></div>
+        <div><span class="qnum">29.</span> 56 + 44 × 3<div class="work-box"></div></div>
+        <div><span class="qnum">30.</span> (100 − 28) ÷ 9<div class="work-box"></div></div>
+        <div><span class="qnum">31.</span> 240 − 240 ÷ 6 × 2<div class="work-box"></div></div>
+      </div>
+      <div class="trap"><b>⚠ 运算顺序：</b>先括号 → 再乘除 → 后加减；同级运算从左往右算（如第 31 题 ÷ 和 × 要从左往右）。</div>
+    </div>
+  </div>
+
+  <!-- ===== 七、解决问题 ===== -->
+  <div class="section">
+    <div class="sec-head"><span>七、解决问题</span><span class="score">⏱ 12 分　每题 5/4/3/3 分　满分 15 分　得分 ____</span></div>
+    <div class="sec-body">
+      <ol>
+        <li><span class="qnum">32.</span> 一本书原价 25.8 元，现在便宜了 4.5 元。现价是多少元？
+          <div class="write-line"></div><div class="write-line"></div></li>
+        <li><span class="qnum">33.</span> 妈妈买苹果用了 12.6 元，买香蕉用了 8.4 元。她付给收银员 30 元，应找回多少元？
+          <div class="write-line"></div><div class="write-line"></div></li>
+        <li><span class="qnum">34.</span> 学校买了 4 个书架，每个 199 元。一共要付多少钱？（请用简便方法计算）
+          <div class="write-line"></div><div class="write-line"></div></li>
+        <li><span class="qnum">35.</span> 每箱牛奶有 8 盒，每箱 25 元。王老师买了 4 箱。① 一共有多少盒？ ② 一共花了多少元？
+          <div class="write-line"></div><div class="write-line"></div></li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="foot">
+    <span>Kenton 数学冲刺 · 第1天</span>
+    <span>第 2 页 / 共 2 页</span>
+    <span>姓名 ______　日期 ______</span>
+  </div>
+
+  <!-- ===== 参考答案（单独成页）===== -->
+  <div class="answers">
+    <div class="head" style="margin-top:0">
+      <h1 style="font-size:15pt">参考答案 · Kenton 数学冲刺 · 第1天</h1>
+      <div class="sub">家长可撕下/不打印此页　|　满分 100 分</div>
+    </div>
+
+    <div class="section">
+      <div class="sec-head"><span>一、填空</span><span class="score">18 分</span></div>
+      <div class="sec-body ans-grid">
+        1. 0.1；7　　2. 三点零六　　3. 50　　4. 5.06　　5. 0.4　　6. 0.99
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="sec-head"><span>二、比一比、判一判</span><span class="score">15 分</span></div>
+      <div class="sec-body ans-grid">
+        7. =　　8. &gt;　　9. &lt;<br>
+        10. √　　11. ✗（大于 0.3 小于 0.5 的小数有无数个，如 0.31、0.45、0.49…）
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="sec-head"><span>三、单位换算</span><span class="score">12 分</span></div>
+      <div class="sec-body ans-grid">
+        12. 250　　13. 3.05　　14. 1200　　15. 8　　16. 4.6　　17. 200
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="sec-head"><span>四、用竖式计算</span><span class="score">8 分</span></div>
+      <div class="sec-body ans-grid">
+        18. 12.5 − 8.46 = <b>4.04</b>　　19. 7 − 2.35 = <b>4.65</b><br>
+        20. 5.6 + 3.7 = <b>9.3</b>　　21. 3.28 + 6.72 = <b>10</b>（10.00）
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="sec-head"><span>五、简便计算</span><span class="score">12 分</span></div>
+      <div class="sec-body ans-grid">
+        22. = (3.6 + 6.4) + 2.85 = 10 + 2.85 = <b>12.85</b><br>
+        23. = 7.5 − (1.8 + 2.2) = 7.5 − 4 = <b>3.5</b><br>
+        24. = 25 × 4 × 17 = 100 × 17 = <b>1700</b><br>
+        25. = (100 + 2) × 35 = 3500 + 70 = <b>3570</b><br>
+        26. = 45 × (99 + 1) = 45 × 100 = <b>4500</b><br>
+        27. = 125 × 8 × 13 = 1000 × 13 = <b>13000</b>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="sec-head"><span>六、脱式计算</span><span class="score">10 分</span></div>
+      <div class="sec-body ans-grid">
+        28. = 320 ÷ 40 = <b>8</b>　　29. = 56 + 132 = <b>188</b><br>
+        30. = 72 ÷ 9 = <b>8</b>　　31. = 240 − 40 × 2 = 240 − 80 = <b>160</b>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="sec-head"><span>七、解决问题</span><span class="score">15 分</span></div>
+      <div class="sec-body ans-grid">
+        32. 25.8 − 4.5 = <b>21.3（元）</b><br>
+        33. 30 − (12.6 + 8.4) = 30 − 21 = <b>9（元）</b><br>
+        34. 199 × 4 = (200 − 1) × 4 = 800 − 4 = <b>796（元）</b><br>
+        35. ① 8 × 4 = <b>32（盒）</b>　② 25 × 4 = <b>100（元）</b>
+      </div>
+    </div>
+
+    <div class="foot">
+      <span>Kenton 数学冲刺 · 第1天 · 参考答案</span>
+      <span>答案页</span>
+      <span>共 35 题</span>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

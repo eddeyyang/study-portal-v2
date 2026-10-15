@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<script src="../assets/learning-sync.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>核桃 L3-3 复习 · 嵌套结构总复习实验室</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+:root{
+  --green-1:#2BB673; --green-2:#4ECDC4; --deep:#0E9F6E;
+  --purple-1:#6B5BFF; --blue-1:#3B82F6; --orange-1:#FF6B35;
+  --yellow-1:#FFD93D; --bg:#F0FBF5; --ink:#2D2A4A; --ink-soft:#5A5775;
+  --card:#ffffff; --shadow:0 8px 28px rgba(45,42,74,.12);
+  --good:#2BB673; --bad:#E64A4A;
+}
+html,body{ font-family:"PingFang SC","Microsoft YaHei",sans-serif; color:var(--ink);
+  background:linear-gradient(135deg,#EFFBF4 0%,#DFF5EC 100%); min-height:100%; }
+body{ -webkit-tap-highlight-color:transparent; }
+.wrap{ max-width:680px; margin:0 auto; padding:0 14px 80px; }
+
+.topbar{ position:sticky; top:0; z-index:50; backdrop-filter:blur(10px);
+  background:rgba(255,255,255,.88); border-bottom:2px solid rgba(43,182,115,.18);
+  display:flex; align-items:center; gap:10px; padding:10px 14px; }
+.logo{ width:34px;height:34px;border-radius:9px; display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(135deg,var(--green-1),var(--green-2)); color:#fff;font-size:19px;
+  box-shadow:0 4px 12px rgba(43,182,115,.4); }
+.brand b{ font-size:15px; color:var(--deep); display:block; line-height:1.2;}
+.brand span{ font-size:11px; color:var(--ink-soft);}
+.home{ margin-left:auto; text-decoration:none; background:#fff; border:2px solid var(--green-1);
+  color:var(--deep); padding:6px 12px; border-radius:11px; font-weight:800; font-size:13px;}
+
+.nav{ display:flex; gap:8px; overflow-x:auto; padding:12px 2px; position:sticky; top:56px; z-index:40;
+  background:linear-gradient(180deg,rgba(239,251,244,.96),rgba(239,251,244,.7)); }
+.nav::-webkit-scrollbar{ display:none; }
+.chip{ flex:0 0 auto; border:none; background:#fff; color:var(--ink-soft); font-weight:800;
+  padding:9px 14px; border-radius:999px; font-size:13px; cursor:pointer; box-shadow:var(--shadow);
+  font-family:inherit; transition:.15s; }
+.chip.active{ background:linear-gradient(135deg,var(--green-1),var(--green-2)); color:#fff; transform:translateY(-1px);}
+
+section{ display:none; animation:fade .35s ease; }
+section.show{ display:block; }
+@keyframes fade{ from{opacity:0; transform:translateY(8px)} to{opacity:1; transform:none} }
+
+.card{ background:var(--card); border-radius:20px; box-shadow:var(--shadow); padding:18px; margin:14px 0; }
+.h2{ font-size:21px; font-weight:900; display:flex; align-items:center; gap:9px; margin-bottom:4px; }
+.sub{ color:var(--ink-soft); font-size:14px; line-height:1.6; margin-bottom:6px;}
+.tip{ background:#EBFBF2; border-left:4px solid var(--green-1); border-radius:10px; padding:10px 13px;
+  font-size:14px; line-height:1.7; margin:10px 0; }
+.tip b{ color:var(--deep); }
+.method{ background:#F3F0FF; border-left:4px solid var(--purple-1); border-radius:10px; padding:10px 13px;
+  font-size:14px; line-height:1.7; margin:10px 0; }
+.goal{ list-style:none; margin:8px 0;}
+.goal li{ padding:7px 0 7px 2px; border-bottom:1px dashed #d4eee1; font-size:15px; line-height:1.6;}
+.medal{ text-align:center; background:linear-gradient(135deg,#FFF9E5,#FFF3C4); border:2px solid #F5D66B;
+  border-radius:16px; padding:14px; margin:10px 0; font-size:15px; line-height:1.8; font-weight:700;}
+.medal .big{ font-size:40px; display:block; }
+
+/* 单词卡 */
+.wordgrid{ display:grid; grid-template-columns:1fr; gap:12px; }
+.wcard{ border:2px solid #C8ECD9; border-radius:16px; padding:14px 16px; background:linear-gradient(135deg,#fff,#F2FCF7);}
+.wtop{ display:flex; align-items:center; gap:10px; flex-wrap:wrap;}
+.wen{ font-size:26px; font-weight:900; color:var(--deep); }
+.wph{ color:var(--ink-soft); font-size:14px; }
+.spk{ margin-left:auto; border:none; background:var(--green-1); color:#fff; width:40px;height:40px;
+  border-radius:50%; font-size:18px; cursor:pointer; box-shadow:0 4px 10px rgba(43,182,115,.4);}
+.wmean{ margin-top:6px; font-size:15px; line-height:1.7;}
+.wmean .pos{ display:inline-block; background:#EEE9FF; color:var(--purple-1); font-size:12px; font-weight:800;
+  border-radius:6px; padding:1px 7px; margin-right:6px;}
+.wph2{ margin-top:6px; font-size:13px; color:var(--green-1); font-weight:700;}
+
+/* 代码块 */
+.code{ background:#1E1B33; color:#Efeaff; border-radius:14px; padding:14px 16px; font-size:15px;
+  font-family:"SF Mono",Consolas,Menlo,monospace; line-height:1.85; overflow-x:auto; }
+.code .ln{ display:block; border-radius:6px; padding:0 6px; transition:background .15s; }
+.code .ln.on{ background:rgba(255,217,61,.28); }
+.k{color:#FF9D66;} .v{color:#7FE0FF;} .n{color:#FFD93D;} .s{color:#9DE89D;} .o{color:#FF8FB0;} .c{color:#8B86A8;}
+
+.btn{ border:none; border-radius:13px; padding:11px 16px; font-weight:800; font-size:15px; cursor:pointer;
+  font-family:inherit; background:linear-gradient(135deg,var(--green-1),var(--green-2)); color:#fff;
+  box-shadow:0 5px 14px rgba(43,182,115,.35); transition:.15s; }
+.btn:active{ transform:translateY(2px); }
+.btn.ghost{ background:#fff; color:var(--deep); border:2px solid var(--green-1); box-shadow:none;}
+.btn.blue{ background:linear-gradient(135deg,var(--blue-1),var(--purple-1)); box-shadow:0 5px 14px rgba(59,130,246,.35);}
+.btn.orange{ background:linear-gradient(135deg,var(--orange-1),#FF8C42); box-shadow:0 5px 14px rgba(255,107,53,.35);}
+.btn.row{ display:block; width:100%; margin:7px 0; }
+.btnrow{ display:flex; gap:10px; flex-wrap:wrap; margin-top:12px; }
+.btn:disabled{ opacity:.4; cursor:default; }
+
+.screen{ background:#0E1230; color:#7FE0FF; border-radius:14px; padding:12px 16px; font-family:monospace;
+  font-size:17px; min-height:54px; line-height:1.7; border:2px solid #2a2f55; margin-top:10px; }
+.screen .lab{ color:#8B86A8; font-size:12px; display:block; margin-bottom:4px; font-family:inherit;}
+.outch{ display:inline-block; animation:pop .25s ease; margin-right:2px;}
+@keyframes pop{ from{transform:scale(0) rotate(-15deg); opacity:0} to{transform:none; opacity:1} }
+
+.step{ background:#EBFBF2; border-radius:10px; padding:10px 13px; font-size:14px; line-height:1.7; margin-top:10px; min-height:44px;}
+.slider{ width:100%; -webkit-appearance:none; height:10px; border-radius:999px;
+  background:linear-gradient(90deg,#8FE8C0,#2BB673); outline:none; margin:8px 0; }
+.slider::-webkit-slider-thumb{ -webkit-appearance:none; width:30px;height:30px;border-radius:50%;
+  background:#fff; border:4px solid var(--green-1); cursor:pointer; box-shadow:0 3px 8px rgba(0,0,0,.2);}
+.slider::-moz-range-thumb{ width:30px;height:30px;border-radius:50%; background:#fff; border:4px solid var(--green-1); cursor:pointer;}
+.bigread{ text-align:center; font-size:17px; font-weight:900; margin:4px 0; }
+.bigread b{ color:var(--deep); font-size:24px; }
+
+/* 累加放大镜 */
+.varsrow{ display:flex; gap:12px; justify-content:center; margin:12px 0; }
+.varbox{ text-align:center; }
+.varbox .vlab{ font-size:12px; font-weight:900; color:var(--ink-soft); }
+.varbox .vval{ width:76px; height:56px; border-radius:14px; background:linear-gradient(135deg,#fff,#F2FCF7);
+  border:3px solid var(--green-1); display:flex; align-items:center; justify-content:center;
+  font-size:26px; font-weight:900; color:var(--deep); font-family:monospace; transition:.2s; }
+.varbox .vval.bump{ transform:scale(1.18); background:#FFF9E5; border-color:var(--yellow-1); }
+.numpad{ display:flex; gap:8px; flex-wrap:wrap; justify-content:center; margin-top:10px; }
+.numk{ border:none; background:var(--purple-1); color:#fff; border-radius:12px; width:56px; padding:12px 0;
+  font-weight:900; font-size:18px; cursor:pointer; font-family:inherit; transition:.1s; }
+.numk:active{ transform:scale(.9); }
+.numk:disabled{ opacity:.35; }
+
+/* if嵌套透视镜：嵌套盒子 */
+.xray{ background:linear-gradient(180deg,#F6FFF9,#EDFBF3); border:2px solid #C8ECD9; border-radius:16px;
+  padding:12px; margin:12px 0; }
+.zone{ border:3px dashed #A9C7E8; border-radius:14px; padding:10px; transition:.3s; }
+.zone .zlab{ font-size:12px; font-weight:900; color:#33447e; margin-bottom:6px; }
+.zone.enter{ border-color:var(--good); border-style:solid; background:rgba(43,182,115,.07); }
+.zone.block{ border-color:var(--bad); border-style:solid; background:rgba(230,74,74,.07); }
+.zone.inner{ margin:8px 0; border-color:#D8B3E8; }
+.pchip{ display:inline-block; background:#fff; border:2px solid #ccc; border-radius:999px;
+  padding:5px 14px; font-family:monospace; font-weight:900; font-size:16px; margin:4px 4px; transition:.25s; }
+.pchip.lit{ border-color:var(--good); color:var(--good); background:#EBFBF2; transform:scale(1.15); }
+.pchip.dead{ opacity:.35; text-decoration:line-through; }
+
+/* 选择结构轨道 */
+.tree{ width:100%; }
+.tnode{ fill:#fff; stroke:#C8ECD9; stroke-width:3; }
+.tnode.hot{ stroke:var(--green-1); fill:#EBFBF2;}
+.tlab{ font-size:12px; font-weight:800; fill:#1F6E4C; text-anchor:middle;}
+.tout{ font-size:13px; font-weight:900; text-anchor:middle;}
+.tpath{ stroke:#C8ECD9; stroke-width:3; fill:none;}
+.tpath.hot{ stroke:var(--orange-1); stroke-width:5;}
+.tball{ fill:var(--orange-1); }
+
+/* i值打印机 */
+.printer{ background:linear-gradient(180deg,#F3F9FF,#E8F3FF); border:2px solid #BFD9F5; border-radius:16px;
+  padding:12px; margin:10px 0; text-align:center; }
+.itape{ display:flex; gap:6px; flex-wrap:wrap; justify-content:center; min-height:44px; align-items:center; }
+.inum{ background:#fff; border:2px solid var(--blue-1); color:var(--blue-1); border-radius:10px;
+  min-width:40px; padding:7px 8px; font-family:monospace; font-weight:900; font-size:18px;
+  animation:pop .3s ease; }
+.inone{ color:var(--bad); font-weight:900; font-size:14px; }
+.task{ display:flex; align-items:center; gap:8px; background:#fff; border:2px solid #E4EAF5;
+  border-radius:13px; padding:10px 12px; margin:8px 0; font-size:14px; font-weight:700; }
+.task.done{ border-color:var(--good); background:#EBFBF2; }
+.task .tk{ margin-left:auto; }
+
+/* quiz */
+.q{ font-size:16px; font-weight:800; margin-bottom:10px; line-height:1.6;}
+.q .code{ font-size:13px; margin-top:8px; font-weight:400; }
+.opt{ display:block; width:100%; text-align:left; border:2px solid #eee; background:#fff; border-radius:13px;
+  padding:12px 14px; margin:8px 0; font-size:15px; font-weight:700; cursor:pointer; font-family:inherit; transition:.15s;}
+.opt:hover{ border-color:var(--green-1); }
+.opt.ok{ border-color:var(--good); background:#EBFBF2; color:var(--good);}
+.opt.no{ border-color:var(--bad); background:#FDECEC; color:var(--bad);}
+.explain{ display:none; margin-top:10px; background:#F3F0FF; border-left:4px solid var(--purple-1);
+  border-radius:10px; padding:11px 13px; font-size:14px; line-height:1.7;}
+.explain.show{ display:block; }
+.scorebar{ font-weight:900; color:var(--deep); font-size:16px; }
+
+.foot{ text-align:center; color:var(--ink-soft); font-size:12px; margin-top:18px; line-height:1.7;}
+.flag{ display:inline-block; background:#EBFBF2; color:var(--good); border-radius:999px; font-size:12px;
+  font-weight:800; padding:2px 10px; margin-left:8px;}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div class="logo">🔬</div>
+  <div class="brand"><b>核桃编程 · L3-3 复习</b><span>嵌套结构总复习实验室</span></div>
+  <a class="home" href="cpp_hub.html">🏠 学习馆</a>
+</div>
+
+<div class="wrap">
+  <div class="nav" id="nav"></div>
+
+  <!-- 0 总览 -->
+  <section id="s-intro" class="show">
+    <div class="card">
+      <div class="medal"><span class="big">🏆</span>L3-3 作业<b style="color:var(--orange-1)">满分</b>！老师说你对三大重点理解得很透彻。<br>这些知识后面会<b>经常用到</b>——来实验室把它们玩得滚瓜烂熟吧！</div>
+      <div class="h2">🔬 这节课学了什么？</div>
+      <div class="sub">L3-3《初识 if 嵌套 & 嵌套结构强化》知识总结四大块，每块都做成了<b>会动的机器</b>：</div>
+      <ul class="goal">
+        <li>➕ <b>循环输入 & 变量累加</b>——sum 怎么一轮轮长大（累加放大镜）</li>
+        <li>🚪 <b>if 嵌套 if</b>——p、w、c 各在哪层大括号里（透视镜）</li>
+        <li>🌲 <b>if-else 嵌套 if-else</b>——选择结构只走一条路（选路轨道）</li>
+        <li>🖨 <b>循环输出 i 的值</b>——调 for 印出任意连续整数（打印机挑战）</li>
+      </ul>
+      <div class="tip">📌 <b>每日任务</b>：① 经典例题<b>抄写+标注含义</b>（拍照交群内小程序，标注示范见 <b>✍ 抄写帮手</b>）② <a href="https://hetao1.wjx.cn/vm/PFWqwI4.aspx" target="_blank" rel="noopener" style="color:var(--deep);font-weight:900;">每日一练刷题 🚀</a>（刷完发群内打卡）③ CTL 刷题截图提交给老师</div>
+      <button class="btn row" onclick="go('s-sum')">➕ 从累加放大镜开始 →</button>
+      <button class="btn row blue" onclick="go('s-copy')">✍ 去抄写帮手（今日任务①）</button>
+      <button class="btn row orange" onclick="go('s-printer')">🖨 直接玩 i 值打印机</button>
+    </div>
+  </section>
+
+  <!-- 1 单词 -->
+  <section id="s-words">
+    <div class="card">
+      <div class="h2">📖 L3-3 单词复习 <span class="flag">点 🔊 跟读</span></div>
+      <div class="sub">笔记里的"今日单词"，读一遍还认识吗？最后两个是短语。</div>
+      <div class="wordgrid" id="wordgrid"></div>
+    </div>
+  </section>
+
+  <!-- 2 累加放大镜 -->
+  <section id="s-sum">
+    <div class="card">
+      <div class="h2">➕ 循环累加放大镜</div>
+      <div class="method"><b>方法回顾：</b>在 for 循环里放 cin，就能<b>多次输入不同的数</b>；每一轮都是"<b>输入 → 累加进 sum → 输出</b>"三步。sum 像个存钱罐，每轮把新数丢进去，越攒越多。</div>
+      <div class="code">
+        <span class="ln"><span class="v">int</span> sum=<span class="n">0</span>;</span>
+        <span class="ln"><span class="v">int</span> a;</span>
+        <span class="ln" id="sm-for"><span class="k">for</span>(<span class="v">int</span> i=<span class="n">1</span>;i&lt;=<span class="n">3</span>;i++)</span>
+        <span class="ln">{</span>
+        <span class="ln" id="sm-cin">&nbsp;&nbsp;<span class="k">cin</span>&gt;&gt;a;</span>
+        <span class="ln" id="sm-add">&nbsp;&nbsp;<span id="addText">sum=sum+a;</span></span>
+        <span class="ln" id="sm-out">&nbsp;&nbsp;<span class="k">cout</span>&lt;&lt;sum&lt;&lt;<span class="k">endl</span>;</span>
+        <span class="ln">}</span>
+      </div>
+      <div class="btnrow" style="justify-content:center;">
+        <button class="btn ghost" id="morphBtn" onclick="toggleAdd()">✨ 换成 sum+=a 写法</button>
+      </div>
+      <div class="varsrow">
+        <div class="varbox"><div class="vlab">这轮输入 a</div><div class="vval" id="vA">?</div></div>
+        <div class="varbox"><div class="vlab">存钱罐 sum</div><div class="vval" id="vSum">0</div></div>
+        <div class="varbox"><div class="vlab">第几轮 i</div><div class="vval" id="vI">1</div></div>
+      </div>
+      <div class="screen"><span class="lab">终端输出（cout 一轮印一行）：</span><span id="sumOut"></span></div>
+      <div class="sub" style="text-align:center; margin-top:8px;">点一个数喂给 cin（共 3 轮）：</div>
+      <div class="numpad" id="sumPad"></div>
+      <div class="btnrow" style="justify-content:center;">
+        <button class="btn blue" onclick="replayClass()">🎬 重播课堂原题（输入 1、2、4）</button>
+        <button class="btn ghost" onclick="sumReset()">↺ 重来</button>
+      </div>
+      <div class="step" id="sumStep">课堂原题：输入 1、2、4，sum 依次变 1→3→7，输出三行 1、3、7。你也可以自己配数试试！</div>
+    </div>
+  </section>
+
+  <!-- 3 if嵌套透视镜 -->
+  <section id="s-nest">
+    <div class="card">
+      <div class="h2">🚪 if 嵌套 if · 透视镜</div>
+      <div class="method"><b>方法回顾：</b>if 语句是一个<b>整体</b>——小括号条件成立才执行大括号。大括号里的 if <b>也是一个整体</b>，轮到它时同样看条件。关键是看清<b>每句话在哪层大括号里</b>：p 和 c 在外层，w 在内层。</div>
+      <div class="code">
+        <span class="ln" id="nx-if1"><span class="k">if</span>(a&gt;<span class="n">20</span>)</span>
+        <span class="ln">{</span>
+        <span class="ln" id="nx-p">&nbsp;&nbsp;<span class="k">cout</span>&lt;&lt;<span class="s">"p"</span>&lt;&lt;<span class="k">endl</span>;</span>
+        <span class="ln" id="nx-if2">&nbsp;&nbsp;<span class="k">if</span>(b&lt;<span class="n">20</span>)</span>
+        <span class="ln">&nbsp;&nbsp;{</span>
+        <span class="ln" id="nx-w">&nbsp;&nbsp;&nbsp;&nbsp;<span class="k">cout</span>&lt;&lt;<span class="s">"w"</span>&lt;&lt;<span class="k">endl</span>;</span>
+        <span class="ln">&nbsp;&nbsp;}</span>
+        <span class="ln" id="nx-c">&nbsp;&nbsp;<span class="k">cout</span>&lt;&lt;<span class="s">"c"</span>&lt;&lt;<span class="k">endl</span>;</span>
+        <span class="ln">}</span>
+      </div>
+      <div class="xray">
+        <div class="zone" id="zoneOuter">
+          <div class="zlab">外层 if(a&gt;20) 的大括号</div>
+          <span class="pchip" id="chipP">p</span>
+          <div class="zone inner" id="zoneInner">
+            <div class="zlab">内层 if(b&lt;20) 的大括号</div>
+            <span class="pchip" id="chipW">w</span>
+          </div>
+          <span class="pchip" id="chipC">c</span>
+          <div class="zlab" style="margin-top:4px;">👀 看清了吗：<b>c 在内层外面、外层里面</b>！</div>
+        </div>
+      </div>
+      <div class="bigread">a = <b id="naRead">25</b>　b = <b id="nbRead">15</b></div>
+      <input class="slider" id="naSlider" type="range" min="0" max="40" value="25" step="1">
+      <input class="slider" id="nbSlider" type="range" min="0" max="40" value="15" step="1">
+      <div class="screen"><span class="lab">终端输出：</span><span id="nestOut"></span></div>
+      <div class="btnrow">
+        <button class="btn" id="nestBtn" onclick="nestRun()">▶ 一步步执行</button>
+        <button class="btn ghost" onclick="nestPreset(25,15)">课堂原题 25·15</button>
+        <button class="btn ghost" onclick="nestPreset(25,25)">试试 25·25</button>
+        <button class="btn ghost" onclick="nestPreset(15,5)">试试 15·5</button>
+      </div>
+      <div class="step" id="nestStep">课堂原题：a=25、b=15 → 输出 <b>p、w、c</b> 三行。换一组数再跑，看哪个字母会消失！</div>
+    </div>
+  </section>
+
+  <!-- 4 选择结构轨道 -->
+  <section id="s-choose">
+    <div class="card">
+      <div class="h2">🌲 if-else 嵌套 · 选路轨道</div>
+      <div class="method"><b>方法回顾：</b>if 语句是<b>选择结构</b>——选择执行一部分之后就<b>结束</b>了，<b>不会每个部分都执行</b>。看复杂 if 时，盯住<b>每一个 if 在哪两个大括号之间做选择</b>：外层在「a&gt;20 的括号」和「else 的括号」二选一；进了外层，内层再在 af 和 w 里二选一。</div>
+      <div class="code">
+        <span class="ln" id="ch-1"><span class="k">if</span>(a&gt;<span class="n">20</span>)</span>
+        <span class="ln">{</span>
+        <span class="ln" id="ch-2">&nbsp;&nbsp;<span class="k">if</span>(b&gt;<span class="n">20</span>){ <span class="k">cout</span>&lt;&lt;<span class="s">"af"</span>&lt;&lt;<span class="k">endl</span>; }</span>
+        <span class="ln" id="ch-3">&nbsp;&nbsp;<span class="k">else</span>{ <span class="k">cout</span>&lt;&lt;<span class="s">"w"</span>&lt;&lt;<span class="k">endl</span>; }</span>
+        <span class="ln">}</span>
+        <span class="ln" id="ch-4"><span class="k">else</span>{ <span class="k">cout</span>&lt;&lt;<span class="s">"rh"</span>&lt;&lt;<span class="k">endl</span>; }</span>
+      </div>
+      <div class="bigread">a = <b id="chaRead">25</b>　b = <b id="chbRead">15</b></div>
+      <input class="slider" id="chaSlider" type="range" min="0" max="40" value="25" step="1">
+      <input class="slider" id="chbSlider" type="range" min="0" max="40" value="15" step="1">
+      <svg class="tree" viewBox="0 0 340 200">
+        <path class="tpath" id="cp-root" d="M170 26 L170 52"/>
+        <path class="tpath" id="cp-in" d="M170 52 L96 96"/>
+        <path class="tpath" id="cp-rh" d="M170 52 L268 96"/>
+        <path class="tpath" id="cp-af" d="M96 118 L48 158"/>
+        <path class="tpath" id="cp-w" d="M96 118 L152 158"/>
+        <circle class="tball" id="cball" cx="170" cy="20" r="11"/>
+        <rect class="tnode" id="cn-root" x="125" y="42" width="90" height="24" rx="8"/>
+        <text class="tlab" x="170" y="58">a &gt; 20 ?</text>
+        <rect class="tnode" id="cn-in" x="52" y="94" width="88" height="24" rx="8"/>
+        <text class="tlab" x="96" y="110">b &gt; 20 ?</text>
+        <rect class="tnode" id="cn-rh" x="228" y="94" width="80" height="26" rx="8"/>
+        <text class="tout" x="268" y="111" fill="#E64A4A">rh 🛑</text>
+        <rect class="tnode" id="cn-af" x="12" y="154" width="72" height="26" rx="8"/>
+        <text class="tout" x="48" y="171" fill="#2BB673">af 🌊</text>
+        <rect class="tnode" id="cn-w" x="118" y="154" width="68" height="26" rx="8"/>
+        <text class="tout" x="152" y="171" fill="#3B82F6">w 💧</text>
+      </svg>
+      <div class="btnrow">
+        <button class="btn" id="chBtn" onclick="chooseRun()">▶ 让小球选路</button>
+        <button class="btn ghost" onclick="chPreset(25,15)">课堂原题 25·15</button>
+        <button class="btn ghost" onclick="chPreset(30,30)">目标：af</button>
+        <button class="btn ghost" onclick="chPreset(10,30)">目标：rh</button>
+      </div>
+      <div class="step" id="chStep">课堂原题：a=25 进外层 → b=15 不满足 b&gt;20 → 走内层 else，输出 <b>w</b>。挑战：怎么调滑块能让小球滚到 af？滚到 rh？</div>
+    </div>
+  </section>
+
+  <!-- 5 i值打印机 -->
+  <section id="s-printer">
+    <div class="card">
+      <div class="h2">🖨 循环输出 i 的值 · 打印机</div>
+      <div class="method"><b>方法回顾：</b><code>for(int i=2;i&lt;=5;i++){ cout&lt;&lt;i; }</code> 里，i 从 2 开始每轮<b>自增 1</b>，i 是 2,3,4,5 时条件成立、各印一次。<b>改初始值和判断条件，就能印出任意一段连续整数</b>——拖两个滑块马上看到！</div>
+      <div class="code" style="text-align:center;">
+        <span class="ln"><span class="k">for</span>(<span class="v">int</span> i=<span class="n" id="pInit">2</span>; i&lt;=<span class="n" id="pEnd">5</span>; i++){ <span class="k">cout</span>&lt;&lt;i&lt;&lt;<span class="k">endl</span>; }</span>
+      </div>
+      <div class="bigread">初始值 = <b id="piRead">2</b>　条件 i ≤ <b id="peRead">5</b></div>
+      <input class="slider" id="piSlider" type="range" min="0" max="9" value="2" step="1">
+      <input class="slider" id="peSlider" type="range" min="0" max="12" value="5" step="1">
+      <div class="printer">
+        <div class="zlab" style="font-size:12px;font-weight:900;color:#33447e;margin-bottom:6px;">🖨 打印出来的 i：</div>
+        <div class="itape" id="itape"></div>
+        <div class="sub" id="icount" style="margin-top:6px;"></div>
+      </div>
+      <div class="tip" id="printTip">💡 拖动滑块，打印机<b>立刻</b>重印。试试把初始值拖到<b>比条件还大</b>，会发生什么？</div>
+      <div class="h2" style="font-size:17px; margin-top:14px;">🎯 打印挑战：调滑块完成订单</div>
+      <div id="taskBox"></div>
+    </div>
+  </section>
+
+  <!-- 6 抄写帮手 -->
+  <section id="s-copy">
+    <div class="card">
+      <div class="h2">✍ 经典例题抄写帮手</div>
+      <div class="sub">今日任务①：抄写经典例题并<b>标注代码含义</b>，拍照交群内小程序。下面每行代码都配好了"翻译成中国话"的标注示范——先点「🙈 隐藏标注」<b>自己说一遍</b>每行是干嘛的，再显示出来对答案，最后抄到本子上。</div>
+      <div class="btnrow" style="justify-content:center;">
+        <button class="btn ghost" id="annoBtn" onclick="toggleAnno()">🙈 隐藏标注，自己先说</button>
+      </div>
+      <div id="copyBox">
+        <div class="tip" style="margin-top:14px;"><b>例题 1 · 循环输入 & 变量累加</b>（输入 1、2、4 → 输出 1、3、7）</div>
+        <div class="code">
+          <span class="ln"><span class="v">int</span> sum=<span class="n">0</span>;<span class="anno c">　// 新建存钱罐 sum，先放 0</span></span>
+          <span class="ln"><span class="v">int</span> a;<span class="anno c">　// 新建变量 a，装每轮输入的数</span></span>
+          <span class="ln"><span class="k">for</span>(<span class="v">int</span> i=<span class="n">1</span>;i&lt;=<span class="n">3</span>;i++)<span class="anno c">　// 重复 3 次：i 从 1 数到 3，每轮加 1</span></span>
+          <span class="ln">{</span>
+          <span class="ln">&nbsp;&nbsp;<span class="k">cin</span>&gt;&gt;a;<span class="anno c">　// 键盘输一个数，装进 a</span></span>
+          <span class="ln">&nbsp;&nbsp;sum=sum+a;<span class="anno c">　// 把 a 加进 sum 再放回（可简写 sum+=a）</span></span>
+          <span class="ln">&nbsp;&nbsp;<span class="k">cout</span>&lt;&lt;sum&lt;&lt;<span class="k">endl</span>;<span class="anno c">　// 印出现在的 sum，换行</span></span>
+          <span class="ln">}</span>
+        </div>
+        <div class="tip" style="margin-top:14px;"><b>例题 2 · if 嵌套 if</b>（a=25、b=15 → 输出 p、w、c）</div>
+        <div class="code">
+          <span class="ln"><span class="v">int</span> a,b;<span class="anno c">　// 同一行新建两个变量</span></span>
+          <span class="ln"><span class="k">cin</span>&gt;&gt;a;<span class="anno c">　// 输入 25</span></span>
+          <span class="ln"><span class="k">cin</span>&gt;&gt;b;<span class="anno c">　// 输入 15</span></span>
+          <span class="ln"><span class="k">if</span>(a&gt;<span class="n">20</span>)<span class="anno c">　// 外层门：25&gt;20 成立，进大括号</span></span>
+          <span class="ln">{</span>
+          <span class="ln">&nbsp;&nbsp;<span class="k">cout</span>&lt;&lt;<span class="s">"p"</span>&lt;&lt;<span class="k">endl</span>;<span class="anno c">　// 在外层里，必印 → 输出 p</span></span>
+          <span class="ln">&nbsp;&nbsp;<span class="k">if</span>(b&lt;<span class="n">20</span>)<span class="anno c">　// 内层门也是一个整体：15&lt;20 成立</span></span>
+          <span class="ln">&nbsp;&nbsp;{</span>
+          <span class="ln">&nbsp;&nbsp;&nbsp;&nbsp;<span class="k">cout</span>&lt;&lt;<span class="s">"w"</span>&lt;&lt;<span class="k">endl</span>;<span class="anno c">　// 内层成立才印 → 输出 w</span></span>
+          <span class="ln">&nbsp;&nbsp;}</span>
+          <span class="ln">&nbsp;&nbsp;<span class="k">cout</span>&lt;&lt;<span class="s">"c"</span>&lt;&lt;<span class="k">endl</span>;<span class="anno c">　// 内层外面、外层里面 → 输出 c</span></span>
+          <span class="ln">}</span>
+        </div>
+        <div class="tip" style="margin-top:14px;"><b>例题 3 · 循环输出 i 的值</b>（输出 2、3、4、5）</div>
+        <div class="code">
+          <span class="ln"><span class="k">for</span>(<span class="v">int</span> i=<span class="n">2</span>;i&lt;=<span class="n">5</span>;i++)<span class="anno c">　// i 从 2 开始，i≤5 就继续，每轮自增 1</span></span>
+          <span class="ln">{</span>
+          <span class="ln">&nbsp;&nbsp;<span class="k">cout</span>&lt;&lt;i&lt;&lt;<span class="k">endl</span>;<span class="anno c">　// 印出这一轮 i 的值 → 2 3 4 5</span></span>
+          <span class="ln">}</span>
+        </div>
+      </div>
+      <div class="tip">📷 抄好、标注好之后拍照，提交到<b>群内小程序</b>。抄写时建议边写边小声念标注——手、眼、嘴一起记最牢。</div>
+      <a class="btn row orange" style="text-align:center;text-decoration:none;" href="https://hetao1.wjx.cn/vm/PFWqwI4.aspx" target="_blank" rel="noopener">🚀 顺手做完任务②：每日一练刷题 →</a>
+    </div>
+  </section>
+
+  <!-- 7 检验 -->
+  <section id="s-quiz">
+    <div class="card">
+      <div class="h2">🎯 满分保卫战 <span class="scorebar" id="score"></span></div>
+      <div class="sub">作业已经满分啦！玩完四台机器，再用 6 道题守住满分。答错有讲解。</div>
+      <div id="quizBox"></div>
+      <button class="btn row" id="restartBtn" style="display:none" onclick="buildQuiz()">🔁 再做一遍</button>
+    </div>
+    <div class="foot">核桃编程 · L3-3 复习 嵌套结构总复习实验室 · 这些知识后面会经常用到</div>
+  </section>
+</div>
+
+<script>
+/* ============ 导航 ============ */
+const SECTIONS = [
+  ['s-intro','🏁 总览'],['s-words','📖 单词'],['s-sum','➕ 累加'],
+  ['s-nest','🚪 if嵌套'],['s-choose','🌲 选路'],['s-printer','🖨 打印机'],
+  ['s-copy','✍ 抄写'],['s-quiz','🎯 检验']
+];
+const nav = document.getElementById('nav');
+SECTIONS.forEach(([id,label])=>{
+  const b=document.createElement('button'); b.className='chip'; b.textContent=label; b.dataset.id=id;
+  b.onclick=()=>go(id); nav.appendChild(b);
+});
+function go(id){
+  document.querySelectorAll('section').forEach(s=>s.classList.toggle('show', s.id===id));
+  document.querySelectorAll('.chip').forEach(c=>c.classList.toggle('active', c.dataset.id===id));
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+go('s-intro');
+
+/* ============ 朗读：预合成神经音优先，浏览器 TTS 回退 ============ */
+const AUDIO_DIR="audio/hetao_coding_l3-3_review/";
+let exAudio=null, audioTok=0;
+function audioHash(s){const b=new TextEncoder().encode(s);let x=0x811c9dc5>>>0;for(let i=0;i<b.length;i++){x^=b[i];x=Math.imul(x,0x01000193)>>>0;}return ('0000000'+x.toString(16)).slice(-8);}
+function getExAudio(){if(!exAudio){exAudio=new Audio();exAudio.setAttribute('playsinline','');exAudio.preload='auto';try{document.body.appendChild(exAudio);}catch(e){}}return exAudio;}
+const synth = window.speechSynthesis;
+let vEn=null,vZh=null;
+function loadV(){ if(!synth) return; const vs=synth.getVoices();
+  vEn = vs.find(v=>/en-US/i.test(v.lang)&&/female|aria|samantha|ava/i.test(v.name))||vs.find(v=>/^en/i.test(v.lang));
+  vZh = vs.find(v=>/zh-CN/i.test(v.lang))||vs.find(v=>/zh/i.test(v.lang)); }
+if(synth){ loadV(); if(synth.onvoiceschanged!==undefined) synth.onvoiceschanged=loadV; }
+function ttsSay(text,lang){ if(!synth) return; try{ synth.cancel(); const u=new SpeechSynthesisUtterance(text);
+  if(lang==='en'){ u.lang='en-US'; u.voice=vEn; u.rate=.8; } else { u.lang='zh-CN'; u.voice=vZh; u.rate=.95; }
+  synth.speak(u);}catch(e){} }
+function say(text,lang){
+  try{if(synth)synth.cancel();}catch(e){}
+  audioTok++; const myTok=audioTok;
+  const a=getExAudio(); let done=false;
+  const stale=()=>done||myTok!==audioTok;
+  const fb=()=>{ if(stale())return; done=true; ttsSay(text,lang); };
+  a.onended=()=>{ if(stale())return; done=true; };
+  a.onerror=fb;
+  try{a.pause();}catch(e){}
+  a.src=AUDIO_DIR+audioHash(lang+"|"+text)+".mp3";
+  try{a.currentTime=0;}catch(e){}
+  const p=a.play(); if(p&&typeof p.catch==='function')p.catch(fb);
+}
+
+/* ============ 单词卡 ============ */
+const WORDS=[
+  {en:'water',ph:'/ˈwɔːtər/',pos:'n./v.',mean:'水；灌溉，给…浇水',ex:'drink water 喝水'},
+  {en:'light',ph:'/laɪt/',pos:'v./n./adj.',mean:'照亮；光；明亮的',ex:'light up 照亮'},
+  {en:'add',ph:'/æd/',pos:'v./n.',mean:'加；添加物',ex:'sum += a 就是把 a "add" 进 sum！'},
+  {en:'heat',ph:'/hiːt/',pos:'n./v.',mean:'热、温暖；加热',ex:'—'},
+  {en:'apply',ph:'/əˈplaɪ/',pos:'v.',mean:'应用；申请，请求；使用',ex:'apply for 申请'},
+  {en:'feed',ph:'/fiːd/',pos:'n.',mean:'动物/植物用的饲料、肥料',ex:'—'},
+  {en:'add heat',ph:'',pos:'短语',mean:'加热',ex:'笔记短语 ⑦'},
+  {en:'apply feed',ph:'',pos:'短语',mean:'施肥',ex:'笔记短语 ⑧'}
+];
+const wg=document.getElementById('wordgrid');
+WORDS.forEach(w=>{
+  const d=document.createElement('div'); d.className='wcard';
+  d.innerHTML=`<div class="wtop"><span class="wen">${w.en}</span><span class="wph">${w.ph}</span>
+    <button class="spk">🔊</button></div>
+    <div class="wmean"><span class="pos">${w.pos}</span>${w.mean}</div>
+    <div class="wph2">💡 ${w.ex}</div>`;
+  d.querySelector('.spk').onclick=()=>say(w.en,'en');
+  wg.appendChild(d);
+});
+
+/* ============ 抄写帮手：标注显隐 ============ */
+let annoHidden=false;
+function toggleAnno(){
+  annoHidden=!annoHidden;
+  document.querySelectorAll('#copyBox .anno').forEach(a=>a.style.visibility=annoHidden?'hidden':'visible');
+  document.getElementById('annoBtn').textContent = annoHidden? '👀 显示标注，对答案' : '🙈 隐藏标注，自己先说';
+}
+
+/* ============ 累加放大镜 ============ */
+let smSum=0, smRound=1, smBusy=false, smTimers=[];
+let plusEq=false;
+const sumPad=document.getElementById('sumPad');
+[1,2,4,5,10].forEach(n=>{
+  const b=document.createElement('button'); b.className='numk'; b.textContent=n;
+  b.onclick=()=>sumFeed(n); sumPad.appendChild(b);
+});
+function toggleAdd(){
+  plusEq=!plusEq;
+  document.getElementById('addText').textContent = plusEq? 'sum+=a;' : 'sum=sum+a;';
+  document.getElementById('morphBtn').textContent = plusEq? '↺ 换回 sum=sum+a 写法' : '✨ 换成 sum+=a 写法';
+  document.getElementById('sumStep').innerHTML = plusEq?
+    '现在代码里写的是缩写 <b>sum+=a</b>——放心，功能和 sum=sum+a <b>一模一样</b>，喂数试试！'
+    :'换回了原写法 <b>sum=sum+a</b>：先算右边 sum+a，再放回左边的 sum。';
+}
+function flashLn(id){ const el=document.getElementById(id); el.classList.add('on'); smTimers.push(setTimeout(()=>el.classList.remove('on'),650)); }
+function bump(id,val){ const el=document.getElementById(id); el.textContent=val; el.classList.add('bump'); smTimers.push(setTimeout(()=>el.classList.remove('bump'),450)); }
+function sumFeed(n){
+  if(smBusy||smRound>3) return;
+  smBusy=true;
+  flashLn('sm-cin'); bump('vA',n);
+  const stepEl=document.getElementById('sumStep');
+  stepEl.innerHTML=`第 ${smRound} 轮：cin 读到了 <b>${n}</b>，装进 a…`;
+  smTimers.push(setTimeout(()=>{
+    flashLn('sm-add');
+    const old=smSum; smSum+=n; bump('vSum',smSum);
+    const expr = plusEq? `sum+=${n}` : `sum=${old}+${n}`;
+    stepEl.innerHTML=`第 ${smRound} 轮：${expr} → 存钱罐从 <b>${old}</b> 变成 <b>${smSum}</b>…`;
+  },700));
+  smTimers.push(setTimeout(()=>{
+    flashLn('sm-out');
+    const sp=document.createElement('span'); sp.className='outch'; sp.textContent=smSum;
+    document.getElementById('sumOut').appendChild(sp);
+    document.getElementById('sumOut').appendChild(document.createTextNode('  '));
+    smRound++;
+    if(smRound<=3){ bump('vI',smRound);
+      document.getElementById('sumStep').innerHTML+=` cout 印出 <b>${smSum}</b>。继续喂第 ${smRound} 个数！`;
+    }else{
+      document.getElementById('sumStep').innerHTML=`✅ 3 轮结束，sum 最后是 <b>${smSum}</b>。每一轮都是"输入→累加→输出"——这就是循环输入&变量累加！`;
+      sumPad.querySelectorAll('.numk').forEach(b=>b.disabled=true);
+      say('答对了','zh');
+    }
+    smBusy=false;
+  },1500));
+}
+function sumReset(){
+  smTimers.forEach(clearTimeout); smTimers=[];
+  smSum=0; smRound=1; smBusy=false;
+  document.getElementById('vA').textContent='?';
+  document.getElementById('vSum').textContent='0';
+  document.getElementById('vI').textContent='1';
+  document.getElementById('sumOut').innerHTML='';
+  sumPad.querySelectorAll('.numk').forEach(b=>b.disabled=false);
+  document.getElementById('sumStep').innerHTML='课堂原题：输入 1、2、4，sum 依次变 1→3→7，输出三行 1、3、7。你也可以自己配数试试！';
+}
+function replayClass(){
+  sumReset();
+  [1,2,4].forEach((n,idx)=>{
+    smTimers.push(setTimeout(()=>sumFeed(n), idx*2400+100));
+  });
+}
+
+/* ============ if嵌套透视镜 ============ */
+const naS=document.getElementById('naSlider'), nbS=document.getElementById('nbSlider');
+let nestTimers=[];
+function nestReadReset(){
+  document.getElementById('naRead').textContent=naS.value;
+  document.getElementById('nbRead').textContent=nbS.value;
+  nestTimers.forEach(clearTimeout); nestTimers=[];
+  ['zoneOuter','zoneInner'].forEach(id=>document.getElementById(id).classList.remove('enter','block'));
+  ['chipP','chipW','chipC'].forEach(id=>document.getElementById(id).classList.remove('lit','dead'));
+  ['nx-if1','nx-p','nx-if2','nx-w','nx-c'].forEach(id=>document.getElementById(id).classList.remove('on'));
+  document.getElementById('nestOut').innerHTML='';
+}
+naS.addEventListener('input',nestReadReset); nbS.addEventListener('input',nestReadReset);
+function nestPreset(a,b){ naS.value=a; nbS.value=b; nestReadReset(); nestRun(); }
+function nestOutCh(t){ const sp=document.createElement('span'); sp.className='outch'; sp.textContent=t;
+  document.getElementById('nestOut').appendChild(sp);
+  document.getElementById('nestOut').appendChild(document.createTextNode('  ')); }
+function nestRun(){
+  nestReadReset();
+  const a=+naS.value, b=+nbS.value;
+  const stepEl=document.getElementById('nestStep');
+  const btn=document.getElementById('nestBtn'); btn.disabled=true;
+  const hl=(id,on)=>document.getElementById(id).classList.toggle('on',on);
+  const T=(fn,ms)=>nestTimers.push(setTimeout(fn,ms));
+  T(()=>{ hl('nx-if1',true);
+    if(a>20){ document.getElementById('zoneOuter').classList.add('enter');
+      stepEl.innerHTML=`外层 if(a&gt;20)：a=${a}，<b style="color:var(--good)">成立 ✅</b> → 进外层大括号，里面的三句话按顺序轮着来。`;
+    }else{ document.getElementById('zoneOuter').classList.add('block');
+      ['chipP','chipW','chipC'].forEach(id=>document.getElementById(id).classList.add('dead'));
+      stepEl.innerHTML=`外层 if(a&gt;20)：a=${a}，<b style="color:var(--bad)">不成立 ❌</b> → 整个大括号跳过，p、w、c <b>一个都不印</b>（内层 if 连看都不看）。`;
+      T(()=>{ hl('nx-if1',false); btn.disabled=false; },1500);
+    }
+  },300);
+  if(a<=20) return;
+  T(()=>{ hl('nx-if1',false); hl('nx-p',true);
+    document.getElementById('chipP').classList.add('lit'); nestOutCh('p');
+    stepEl.innerHTML=`第 1 句 cout&lt;&lt;"p"：在外层大括号里，<b>必执行</b> → 印 p`;
+  },1700);
+  T(()=>{ hl('nx-p',false); hl('nx-if2',true);
+    if(b<20){ document.getElementById('zoneInner').classList.add('enter');
+      stepEl.innerHTML=`第 2 句是内层 if(b&lt;20)：b=${b}，<b style="color:var(--good)">成立 ✅</b> → 进内层大括号`;
+    }else{ document.getElementById('zoneInner').classList.add('block');
+      document.getElementById('chipW').classList.add('dead');
+      stepEl.innerHTML=`第 2 句是内层 if(b&lt;20)：b=${b}，<b style="color:var(--bad)">不成立 ❌</b> → 内层大括号跳过，<b>w 不印</b>，接着往下走`;
+    }
+  },3100);
+  T(()=>{ hl('nx-if2',false);
+    if(b<20){ hl('nx-w',true); document.getElementById('chipW').classList.add('lit'); nestOutCh('w');
+      document.getElementById('nestStep').innerHTML=`内层里的 cout&lt;&lt;"w" → 印 w`;
+    }
+  },4500);
+  T(()=>{ hl('nx-w',false); hl('nx-c',true);
+    document.getElementById('chipC').classList.add('lit'); nestOutCh('c');
+    const got = b<20? 'p、w、c' : 'p、c';
+    document.getElementById('nestStep').innerHTML=`最后 cout&lt;&lt;"c"：它在<b>内层外面、外层里面</b>——只要进了外层就必印 → 印 c。<br>✅ 最终输出：<b>${got}</b>${b<20?'（课堂原题答案！）':'（w 被内层条件拦下了）'}`;
+    say('答对了','zh');
+    T(()=>{ hl('nx-c',false); btn.disabled=false; },1200);
+  },5700);
+}
+nestReadReset();
+
+/* ============ 选择结构轨道 ============ */
+const chaS=document.getElementById('chaSlider'), chbS=document.getElementById('chbSlider');
+let chTimers=[];
+function chReset(){
+  document.getElementById('chaRead').textContent=chaS.value;
+  document.getElementById('chbRead').textContent=chbS.value;
+  chTimers.forEach(clearTimeout); chTimers=[];
+  ['cp-root','cp-in','cp-rh','cp-af','cp-w'].forEach(id=>document.getElementById(id).classList.remove('hot'));
+  ['cn-root','cn-in','cn-rh','cn-af','cn-w'].forEach(id=>document.getElementById(id).classList.remove('hot'));
+  ['ch-1','ch-2','ch-3','ch-4'].forEach(id=>document.getElementById(id).classList.remove('on'));
+  const b=document.getElementById('cball'); b.setAttribute('cx',170); b.setAttribute('cy',20);
+}
+chaS.addEventListener('input',chReset); chbS.addEventListener('input',chReset);
+function chPreset(a,b){ chaS.value=a; chbS.value=b; chReset(); chooseRun(); }
+function cBallTo(x,y){ const b=document.getElementById('cball');
+  b.style.transition='all .7s ease'; b.setAttribute('cx',x); b.setAttribute('cy',y); }
+function chooseRun(){
+  chReset();
+  const a=+chaS.value, b=+chbS.value;
+  const stepEl=document.getElementById('chStep');
+  const btn=document.getElementById('chBtn'); btn.disabled=true;
+  const hot=id=>document.getElementById(id).classList.add('hot');
+  const hl=id=>document.getElementById(id).classList.add('on');
+  const T=(fn,ms)=>chTimers.push(setTimeout(fn,ms));
+  hot('cp-root');
+  T(()=>{ hot('cn-root'); hl('ch-1'); cBallTo(170,54);
+    stepEl.innerHTML=`外层选择：a=${a}，a&gt;20 ${a>20?'<b style="color:var(--good)">成立</b> → 走左边（外层 if 的大括号）':'<b style="color:var(--bad)">不成立</b> → 走右边（外层 else）'}`;
+  },200);
+  T(()=>{
+    if(a>20){
+      hot('cp-in'); hot('cn-in'); hl('ch-2'); cBallTo(96,106);
+      stepEl.innerHTML=`进了外层大括号，遇到<b>内层选择</b>：b=${b}，b&gt;20 ${b>20?'<b style="color:var(--good)">成立</b>':'<b style="color:var(--bad)">不成立</b>'}`;
+      T(()=>{
+        if(b>20){ hot('cp-af'); hot('cn-af'); cBallTo(48,166);
+          stepEl.innerHTML=`✅ 内层选 af 这边 → 输出 <b>af</b>。注意：<b>w 和 rh 都没执行</b>——选择结构选完一条路就结束！`;
+        }else{ hot('cp-w'); hot('cn-w'); hl('ch-3'); cBallTo(152,166);
+          stepEl.innerHTML=`❌ b&gt;20 不成立 → 内层走 else → 输出 <b>w</b>（课堂原题答案！）。af 和 rh 都<b>不执行</b>——每个 if 只在自己的两个大括号里选一个。`;
+        }
+        say('答对了','zh');
+        btn.disabled=false;
+      },1100);
+    }else{
+      hot('cp-rh'); hot('cn-rh'); hl('ch-4'); cBallTo(268,107);
+      stepEl.innerHTML=`❌ a&gt;20 不成立 → 直接走外层 else → 输出 <b>rh</b>。<b>里面的 af/w 连看都不看</b>——外层选了右边，左边整块跳过。`;
+      say('答对了','zh');
+      btn.disabled=false;
+    }
+  },1300);
+}
+chReset();
+
+/* ============ i值打印机 ============ */
+const piS=document.getElementById('piSlider'), peS=document.getElementById('peSlider');
+const TASKS=[
+  {label:'📋 订单1：印出 2 3 4 5（课堂原题）', init:2, end:5, done:false},
+  {label:'📋 订单2：印出 7 8 9', init:7, end:9, done:false},
+  {label:'📋 订单3：印出 0～6（共 7 个数）', init:0, end:6, done:false},
+];
+const taskBox=document.getElementById('taskBox');
+function renderTasks(){
+  taskBox.innerHTML='';
+  TASKS.forEach((t,i)=>{
+    const d=document.createElement('div'); d.className='task'+(t.done?' done':'');
+    d.innerHTML=`<span>${t.done?'✅':''} ${t.label}</span>
+      <button class="btn ghost tk" style="padding:6px 12px;font-size:13px;" onclick="checkTask(${i})">交货</button>`;
+    taskBox.appendChild(d);
+  });
+}
+function checkTask(i){
+  const t=TASKS[i];
+  if(+piS.value===t.init && +peS.value===t.end){
+    if(!t.done){ t.done=true; say('答对了','zh'); }
+    renderTasks();
+    document.getElementById('printTip').innerHTML=`🎉 订单${i+1}交货成功！<b>for(int i=${t.init};i&lt;=${t.end};i++)</b> 正好印出这一段。${TASKS.every(x=>x.done)?'三张订单全部完成，你已经能印任意连续整数啦！':''}`;
+  }else{
+    say('再想想','zh');
+    document.getElementById('printTip').innerHTML=`🤔 现在印的是 <b>${seqText()}</b>，和订单不一样。提示：<b>初始值</b>决定从几开始，<b>条件 i≤几</b> 决定到几结束。`;
+  }
+}
+function seqText(){
+  const a=+piS.value, b=+peS.value;
+  if(a>b) return '（什么都没印）';
+  const arr=[]; for(let i=a;i<=b;i++) arr.push(i);
+  return arr.join(' ');
+}
+function renderPrinter(){
+  const a=+piS.value, b=+peS.value;
+  document.getElementById('piRead').textContent=a;
+  document.getElementById('peRead').textContent=b;
+  document.getElementById('pInit').textContent=a;
+  document.getElementById('pEnd').textContent=b;
+  const tape=document.getElementById('itape'); tape.innerHTML='';
+  if(a>b){
+    tape.innerHTML='<span class="inone">一次都没执行！i 一开始就是 '+a+'，'+a+'≤'+b+' 不成立，循环直接结束。</span>';
+    document.getElementById('icount').textContent='共印 0 个数';
+    return;
+  }
+  let cnt=0;
+  for(let i=a;i<=b;i++){
+    const sp=document.createElement('span'); sp.className='inum'; sp.textContent=i;
+    sp.style.animationDelay=(cnt*0.05)+'s';
+    tape.appendChild(sp); cnt++;
+  }
+  document.getElementById('icount').innerHTML=`i 从 <b>${a}</b> 印到 <b>${b}</b>，共 <b>${cnt}</b> 个数（每轮 i++ 自增 1）`;
+}
+piS.addEventListener('input',renderPrinter); peS.addEventListener('input',renderPrinter);
+renderPrinter(); renderTasks();
+
+/* ============ 检验 ============ */
+const QUIZ=[
+  {q:'int sum=0; for(int i=1;i<=3;i++){ cin>>a; sum=sum+a; cout<<sum<<endl; }　输入 3、5、2，输出哪三行？',
+   opts:['3　8　10','3　5　2','10　10　10','3　8　12'],a:0,
+   ex:'每轮"输入→累加→输出"：第1轮 sum=0+3=<b>3</b>；第2轮 sum=3+5=<b>8</b>；第3轮 sum=8+2=<b>10</b>。printer 出的是 sum 一路长大的样子，不是输入的原数。'},
+  {q:'a += 5; 和下面哪句功能完全一样？',
+   opts:['a = a + 5;','a = 5;','5 = a + 5;','a = a - 5;'],a:0,
+   ex:'<b>+= 是"加等于"</b>：把右边的数加进左边的变量。a+=5 就是 a=a+5 的缩写，功能不变——就像 sum+=a 是 sum=sum+a 的缩写。'},
+  {q:'if(a>20){ cout<<"p"; if(b<20){ cout<<"w"; } cout<<"c"; }　当 a=25、b=25 时输出什么？',
+   opts:['p c','p w c','p','什么都不输出'],a:0,
+   ex:'a=25&gt;20 进外层：p <b>必印</b>；内层 if(b&lt;20)：25&lt;20 <b>不成立</b>，w 跳过；c 在<b>内层外面、外层里面</b>，照样印。所以是 <b>p c</b>。课堂原题里 b=15 时才是 p w c。'},
+  {q:'if(a>20){ if(b>20){ cout<<"af"; } else{ cout<<"w"; } } else{ cout<<"rh"; }　当 a=10、b=30 时输出什么？',
+   opts:['rh','af','w','af 和 rh 都输出'],a:0,
+   ex:'外层 if(a&gt;20)：10&gt;20 <b>不成立</b> → 直接走外层 else，输出 <b>rh</b>。里面的 if-else <b>连看都不看</b>（b 是几都没用）——选择结构只走一条路就结束。'},
+  {q:'想让程序输出 10、11、12、13 这四个数，for 应该怎么写？',
+   opts:['for(int i=10;i<=13;i++)','for(int i=1;i<=4;i++)','for(int i=10;i<13;i++)','for(int i=13;i<=10;i++)'],a:0,
+   ex:'<b>初始值定起点，条件定终点</b>：从 10 开始 → i=10；印到 13 → i&lt;=13。选项C 的 i&lt;13 只印到 12；选项D 一开始 13≤10 就不成立，一次都不执行。'},
+  {q:'for(int i=1;i<=5;i++){ cout<<"x"; if(i>3){ cout<<i; } }　输出什么？',
+   opts:['xxxx4x5','xxxxx45','x1x2x3x4x5','xxxxx'],a:0,
+   ex:'cout&lt;&lt;"x" <b>每轮必印</b>；if(i&gt;3) 只在 i=4、5 那两轮成立，把 <b>i 的值</b>也印出来。五轮依次是：x、x、x、x4、x5 → 连起来 <b>xxxx4x5</b>。这题把"循环输出 i 的值"和"for 里的 cout-if"合在一起啦。'}
+];
+let qi=0, qok=0;
+function buildQuiz(){
+  qi=0; qok=0; document.getElementById('restartBtn').style.display='none';
+  document.getElementById('score').textContent='';
+  renderQ();
+}
+function renderQ(){
+  const box=document.getElementById('quizBox');
+  if(qi>=QUIZ.length){
+    box.innerHTML=`<div style="text-align:center;padding:18px 0;">
+      <div style="font-size:54px">${qok===QUIZ.length?'🏆':qok>=4?'👍':'💪'}</div>
+      <div style="font-size:20px;font-weight:900;margin-top:8px;">答对 ${qok} / ${QUIZ.length}</div>
+      <div class="sub" style="margin-top:6px;">${qok===QUIZ.length?'满分保住了！和作业一样棒——嵌套结构你是真的懂了。':'差一点点～回四台机器再玩一圈，答案都藏在动画里。'}</div></div>`;
+    document.getElementById('restartBtn').style.display='block';
+    return;
+  }
+  const item=QUIZ[qi];
+  box.innerHTML=`<div class="q">第 ${qi+1} 题　${item.q}</div>
+    <div id="opts"></div>
+    <div class="explain" id="ex">${item.ex}</div>
+    <button class="btn row" id="next" style="display:none" onclick="qi++;renderQ();">下一题 →</button>`;
+  const opts=document.getElementById('opts');
+  item.opts.forEach((o,i)=>{
+    const b=document.createElement('button'); b.className='opt'; b.textContent=o;
+    b.onclick=()=>{
+      if(document.getElementById('ex').classList.contains('show')) return;
+      const right=i===item.a;
+      if(right){ b.classList.add('ok'); qok++; say('答对了','zh'); }
+      else{ b.classList.add('no'); opts.children[item.a].classList.add('ok'); say('再想想','zh'); }
+      document.getElementById('ex').classList.add('show');
+      document.getElementById('next').style.display='block';
+      document.getElementById('score').textContent='✅ '+qok;
+    };
+    opts.appendChild(b);
+  });
+}
+buildQuiz();
+</script>
+</body>
+</html>

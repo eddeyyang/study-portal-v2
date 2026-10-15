@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<script src="../assets/learning-sync.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Kenton 英语期末冲刺 · 四下</title>
+<style>
+:root{--red:#3170B5;--redd:#225182;--gold:#F2B632;--golddk:#D89400;--ink:#3A2A1E;--paper:#FBF3E6;--line:#EBDCC4;
+--green:#3C9D54;--greenbg:#EAF7EC;--blue:#3170B5;--bluebg:#E8F0FA;--purple:#7B3FA0;--purplebg:#F3EAFA;--orange:#E8783C;}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+html,body{margin:0;padding:0;}
+body{font-family:'LXGW WenKai Screen','PingFang SC','Microsoft YaHei',sans-serif;
+background:radial-gradient(circle at 10% 6%,#FCE6B8 0,transparent 38%),radial-gradient(circle at 92% 96%,#CFE3F5 0,transparent 42%),var(--paper);
+color:var(--ink);min-height:100vh;padding-bottom:34px;}
+.wrap{max-width:740px;margin:0 auto;padding:14px;}
+.top{display:flex;align-items:center;gap:10px;padding:12px 4px 6px;}
+.top .badge{background:var(--red);color:#fff;font-weight:700;font-size:19px;padding:6px 13px;border-radius:13px 13px 13px 4px;box-shadow:0 4px 0 var(--redd);}
+.top h1{font-size:19px;margin:0;}
+.top .sub{font-size:12px;color:#a8946f;}
+.speak{background:#fff;border:2px solid var(--gold);color:var(--golddk);border-radius:50%;width:42px;height:42px;font-size:20px;cursor:pointer;box-shadow:0 3px 0 #f0dca0;flex-shrink:0;}
+.card{background:#fff;border:2px solid var(--line);border-radius:18px;padding:18px;margin:13px 0;box-shadow:0 6px 0 #efe1c8;}
+.card h2{margin:0 0 8px;font-size:19px;color:var(--redd);}
+.lead{font-size:14px;color:#7d6a4e;line-height:1.7;margin:0 0 10px;}
+.bigmenu{display:grid;grid-template-columns:1fr 1fr;gap:13px;}
+.bigtile{background:#fff;border:3px solid var(--line);border-radius:18px;padding:18px 12px;cursor:pointer;box-shadow:0 6px 0 #efe1c8;text-align:center;transition:transform .08s;position:relative;}
+.bigtile:active{transform:translateY(3px);}
+.bigtile .ic{font-size:40px;}
+.bigtile .nm{font-weight:700;font-size:18px;margin-top:6px;}
+.bigtile .ds{font-size:12px;color:#a08d6f;margin-top:4px;}
+.bigtile .pg{font-size:11px;color:#a08d6f;margin-top:6px;}
+.bigtile.done{border-color:var(--green);background:var(--greenbg);}
+.bigtile .star{position:absolute;top:8px;right:10px;font-size:15px;}
+.tcolor0{border-color:#bcd4ee;} .tcolor1{border-color:#cfe3c6;} .tcolor2{border-color:#ddc7ea;}
+.tcolor3{border-color:#f3d2a0;} .tcolor4{border-color:#f0c4bc;} .tcolor5{border-color:#c9c0ee;}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;background:var(--red);color:#fff;border:none;font-family:inherit;font-weight:700;font-size:16px;padding:12px 20px;border-radius:14px;box-shadow:0 4px 0 var(--redd);cursor:pointer;transition:transform .06s;}
+.btn:active{transform:translateY(3px);box-shadow:0 1px 0 var(--redd);}
+.btn.ghost{background:#fff;color:var(--redd);border:2px solid var(--red);box-shadow:0 4px 0 #d3def0;}
+.btn.green{background:var(--green);box-shadow:0 4px 0 #2c7a40;}
+.btn.blue{background:var(--blue);box-shadow:0 4px 0 #225182;}
+.btn.gray{background:#fff;color:#7d6a4e;border:2px solid var(--line);box-shadow:0 4px 0 #efe1c8;}
+.btn.big{font-size:19px;padding:15px 26px;}
+.btn.sm{font-size:14px;padding:9px 14px;}
+.row{display:flex;gap:9px;flex-wrap:wrap;align-items:center;margin-top:12px;justify-content:center;}
+.back{background:none;border:none;color:#a08d6f;font-size:15px;font-family:inherit;cursor:pointer;padding:8px 2px;font-weight:700;}
+.hidden{display:none!important;}
+/* 做题界面 */
+.qhead{display:flex;justify-content:space-between;align-items:center;font-size:13px;color:#a08d6f;font-weight:700;}
+.qhead .sc{color:var(--golddk);}
+.progbar{height:14px;background:#F0E6D2;border-radius:8px;margin:8px 0 4px;overflow:hidden;border:2px solid #E5D3Ae;}
+.progbar i{display:block;height:100%;background:linear-gradient(90deg,var(--gold),#F8D070);border-radius:6px;transition:width .3s;}
+.topic-chip{display:inline-block;background:var(--bluebg);color:var(--blue);font-size:12px;font-weight:700;padding:3px 10px;border-radius:20px;margin-bottom:4px;}
+.qtext{font-size:21px;font-weight:700;line-height:1.5;margin:14px 0 4px;color:var(--ink);}
+.qtext .en{color:var(--purple);}
+.qtext .blk{display:inline-block;min-width:54px;border-bottom:3px solid var(--gold);text-align:center;color:var(--golddk);}
+.qsub{font-size:13px;color:#a08d6f;margin-bottom:8px;}
+.spk-inline{background:#fff;border:2px solid var(--gold);color:var(--golddk);border-radius:50%;width:34px;height:34px;font-size:16px;cursor:pointer;vertical-align:middle;box-shadow:0 2px 0 #f0dca0;padding:0;}
+.zh-meaning{font-size:14px;color:#7d6a4e;margin:2px 0 6px;}
+/* 选择题 */
+.opts{display:grid;gap:10px;margin-top:6px;}
+.opts.two{grid-template-columns:1fr 1fr;}
+.opt{font-family:inherit;font-size:18px;font-weight:700;padding:14px 12px;border-radius:14px;border:2px solid var(--line);background:#fff;cursor:pointer;box-shadow:0 4px 0 #efe1c8;transition:transform .06s;color:var(--ink);text-align:center;word-break:break-word;line-height:1.4;}
+.opt:active{transform:translateY(2px);}
+.opt .spk-inline{margin-left:6px;width:30px;height:30px;font-size:14px;}
+.opt.right{background:var(--greenbg);border-color:var(--green);color:var(--green);box-shadow:0 4px 0 #bfe3c8;}
+.opt.wrong{background:#FBE6E2;border-color:var(--red);color:var(--redd);box-shadow:0 4px 0 #f0c4bc;}
+/* 拼词(字母/单词块拼答) */
+.builddisp{font-size:30px;font-weight:800;text-align:center;color:var(--redd);background:var(--bluebg);border:2px dashed var(--blue);border-radius:14px;padding:14px;margin:8px 0;min-height:62px;letter-spacing:2px;word-break:break-word;}
+.builddisp .ph{color:#9fb6d4;font-size:18px;font-weight:400;letter-spacing:normal;}
+.tiles{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:8px;}
+.tile{font-family:inherit;font-size:20px;font-weight:800;padding:11px 14px;min-width:44px;border-radius:12px;border:2px solid var(--line);background:#fff;cursor:pointer;box-shadow:0 4px 0 #efe1c8;color:var(--ink);transition:transform .05s;}
+.tile:active{transform:translateY(2px);}
+.tile.word{color:var(--purple);border-color:#ddc7ea;}
+.tile.used{opacity:.32;pointer-events:none;}
+.buildctrl{display:flex;gap:9px;justify-content:center;margin-top:10px;flex-wrap:wrap;}
+.buildctrl .del{background:#fff;color:var(--orange);border:2px solid #f3d2a0;box-shadow:0 4px 0 #f0e0c0;}
+/* 反馈 */
+.fb{border-radius:14px;padding:12px 14px;margin-top:12px;font-size:15px;line-height:1.7;}
+.fb.ok{background:var(--greenbg);color:#2c7a40;border:2px solid var(--green);}
+.fb.no{background:#FBE6E2;color:var(--redd);border:2px solid var(--red);}
+.fb .ans{font-weight:800;font-size:18px;}
+.fb .why{margin-top:5px;color:#6b5a42;font-size:14px;}
+.lion{display:flex;gap:10px;align-items:flex-start;margin:10px 0;}
+.lion .face{font-size:32px;flex-shrink:0;}
+.lion .bubble{background:#fff;border:2px solid var(--line);border-radius:14px 14px 14px 2px;padding:10px 13px;font-size:15px;line-height:1.7;box-shadow:0 3px 0 #efe1c8;text-align:left;}
+.kou{background:linear-gradient(180deg,#FCEFCF,#FBE6B0);border:2px dashed var(--golddk);border-radius:13px;padding:11px 14px;margin:11px 0;color:#7a5800;font-weight:700;font-size:14.5px;line-height:1.8;text-align:center;}
+/* 小结 */
+.scorebig{font-size:54px;font-weight:800;text-align:center;margin:10px 0 2px;font-variant-numeric:tabular-nums;}
+.stars{font-size:30px;text-align:center;letter-spacing:4px;}
+.weakrow{display:flex;align-items:center;gap:8px;background:#fff;border:2px solid var(--line);border-radius:12px;padding:9px 12px;margin:7px 0;font-size:14px;}
+.weakrow .bar{flex:1;height:12px;background:#F0E6D2;border-radius:6px;overflow:hidden;}
+.weakrow .bar i{display:block;height:100%;border-radius:6px;}
+.wronglist{margin-top:6px;}
+.wrongitem{border-bottom:1px solid var(--line);padding:9px 2px;font-size:14px;line-height:1.6;}
+.wrongitem .q{font-weight:700;color:var(--ink);}
+.wrongitem .a{color:var(--green);font-weight:700;}
+.wrongitem .topic{font-size:11px;color:var(--blue);background:var(--bluebg);padding:1px 7px;border-radius:10px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top">
+    <div class="badge">Kenton</div>
+    <div style="flex:1"><h1>英语期末冲刺 · 四下</h1><div class="sub">词汇 · 词形变化 · 选词填空 · 句型转换 · 情景问答 · 翻译</div></div>
+    <button class="speak" onclick="testVoice()">🔊</button>
+  </div>
+
+  <div id="home">
+    <div class="card">
+      <div class="lion"><div class="face">🦁</div><div class="bubble">期末冲刺啦!选一关刷题，<b>每题做完马上告诉你对不对、为什么</b>。选择题点选项，拼单词点字母块——<b>不用打字</b>。题里的英文都能点 🔊 听真人朗读。一关做完看小结，哪个知识点弱就再练那一关!</div></div>
+      <div class="kou">先点右上角 🔊 试一下声音!　每天刷 2-3 关，错题自动进错题本 📒</div>
+    </div>
+    <div class="bigmenu" id="menu"></div>
+    <div class="card" style="margin-top:14px;cursor:pointer" onclick="showArchive()">
+      <div style="display:flex;align-items:center;gap:12px">
+        <div style="font-size:34px">📒</div>
+        <div style="flex:1"><div style="font-weight:700;font-size:18px;color:var(--redd)">错题本 · 学习档案</div>
+        <div style="font-size:13px;color:#7d6a4e" id="homestat">查看做过的题、反复错的知识点，可复制/下载给家长</div></div>
+        <div style="font-size:22px;color:#a08d6f">›</div>
+      </div>
+    </div>
+    <div class="card" style="text-align:center">
+      <button class="btn blue big" onclick="startMixExam()">🎯 综合冲刺卷（各知识点混合 20 题）</button>
+    </div>
+  </div>
+
+  <div id="quiz" class="hidden"></div>
+  <div id="summary" class="hidden"></div>
+  <div id="archive" class="hidden"></div>
+</div>
+<script>
+/* ===================== 题库 =====================
+   题型:
+   'mc'   选择题: {t:题面, type:'mc', o:[选项], a:正确索引, why:讲解,
+                   sayQ:点读题面英文(可选), sayOpts:true 给每个英文选项加🔊}
+   'build'拼词题: {t:中文/提示, type:'build', a:'正确英文单词/词组', why:讲解,
+                   say:'要拼出的英文'(用于🔊提示发音)}
+   所有答案均贴沪教牛津 4B 期末范围,逐题核对。 */
+const TOPICS=[
+ {key:'vocab', icon:'🔤', name:'核心词汇·英汉互译', color:0,
+  intro:'四下高频单词:五感、运动、动物、时间、星期、节日等的中英互认'},
+ {key:'form', icon:'🔁', name:'词形变化', color:1,
+  intro:'第三人称单数(-s/-es)、现在分词(-ing)、名词复数、反义词、物主代词'},
+ {key:'cloze', icon:'✏️', name:'选词填空·用法', color:2,
+  intro:'taste/smell/listen/favourite 等词在句子里的正确用法'},
+ {key:'trans', icon:'🔄', name:'句型转换', color:3,
+  intro:'can 的否定/疑问、do/does 一般疑问句、对划线部分提问、单复数改写'},
+ {key:'situ', icon:'💬', name:'情景问答', color:4,
+  intro:'根据问句选最合适的答语:What/How/Can 等问句的对答'},
+ {key:'sent', icon:'📝', name:'句子翻译·连词成句', color:5,
+  intro:'整句中译英、连词成句,注意大小写和标点'},
+];
+
+const BANK={
+/* ---------- 核心词汇·英汉互译 ---------- */
+vocab:[
+ {t:'“听见” 用英语怎么说?',type:'build',a:'hear',say:'hear',
+  why:'hear 表示“听见”(自然听到);listen 是“主动地听”。'},
+ {t:'taste 是什么意思?',type:'mc',o:['尝;品尝','闻','摸','看'],a:0,sayQ:'taste',
+  why:'taste 作动词是“尝、品尝”,如 taste the cake 尝蛋糕。'},
+ {t:'“最喜欢的” 用英语怎么说?',type:'build',a:'favourite',say:'favourite',
+  why:'favourite “最喜欢的”,沪教版用英式拼写 favourite(美式 favorite)。'},
+ {t:'sport 是什么意思?',type:'mc',o:['体育运动','学科','节日','形状'],a:0,sayQ:'sport',
+  why:'sport 体育运动,如 My favourite sport is football.'},
+ {t:'“响亮的;大声的” 用英语怎么说?',type:'build',a:'loud',say:'loud',
+  why:'loud 响亮的、大声的;反义词 quiet 安静的。'},
+ {t:'下面哪个词是 “星期三”?',type:'mc',o:['Wednesday','Thursday','Tuesday','Saturday'],a:0,sayQ:'Wednesday',sayOpts:true,
+  why:'Wednesday 星期三,注意中间不发音的 d,拼写别漏。'},
+ {t:'the Dragon Boat Festival 是哪个节日?',type:'mc',o:['端午节','春节','中秋节','重阳节'],a:0,sayQ:'the Dragon Boat Festival',
+  why:'the Dragon Boat Festival 端午节,这天吃 rice dumplings(粽子)。'},
+ {t:'“七点半” 哪个说法对?',type:'mc',o:['half past seven','half to seven','seven half','past half seven'],a:0,sayQ:'half past seven',sayOpts:true,
+  why:'几点半用 half past + 整点:half past seven 七点半。'},
+],
+/* ---------- 词形变化 ---------- */
+form:[
+ {t:'watch 的第三人称单数是?',type:'mc',o:['watches','watchs','watching','watched'],a:0,
+  why:'以 -ch/-sh/-s/-x 结尾,第三人称单数加 -es:watch→watches。'},
+ {t:'have 的第三人称单数是?',type:'build',a:'has',say:'has',
+  why:'have 的第三人称单数是不规则的 has,如 He has a cat.'},
+ {t:'run 的现在分词(-ing)是?',type:'mc',o:['running','runing','runned','runnning'],a:0,
+  why:'重读闭音节双写末尾辅音字母再加 -ing:run→running。'},
+ {t:'swim 的现在分词(-ing)是?',type:'build',a:'swimming',say:'swimming',
+  why:'swim→swimming,双写 m 再加 -ing。'},
+ {t:'big 的反义词是?',type:'mc',o:['small','tall','long','short'],a:0,sayQ:'big',sayOpts:true,
+  why:'big 大的,反义词 small 小的。'},
+ {t:'quiet 的反义词是?',type:'mc',o:['loud','soft','hard','high'],a:0,sayQ:'quiet',sayOpts:true,
+  why:'quiet 安静的,反义词 loud 响亮的/吵闹的(noisy 也可)。'},
+ {t:'they 的形容词性物主代词(“他们的”)是?',type:'build',a:'their',say:'their',
+  why:'they(他们)→their(他们的),如 their books 他们的书。'},
+ {t:'tooth(牙齿)的复数是?',type:'mc',o:['teeth','tooths','toothes','teeths'],a:0,
+  why:'tooth 是不规则名词,复数是 teeth。'},
+],
+/* ---------- 选词填空·用法 ---------- */
+cloze:[
+ {t:'The flower ( ) nice. I like it.',type:'mc',o:['smells','tastes','hears','listens'],a:0,sayQ:'The flower smells nice.',
+  why:'花是“闻起来”香,用 smell;主语单数 The flower 要加 s → smells。'},
+ {t:'My ( ) sport is football.',type:'mc',o:['favourite','favour','like','best'],a:0,sayQ:'My favourite sport is football.',
+  why:'“我最喜欢的运动”用 favourite + 名词:My favourite sport。'},
+ {t:"Let's ( ) to the music together.",type:'mc',o:['listen','hear','look','see'],a:0,sayQ:"Let's listen to the music.",
+  why:'主动地“听音乐”用 listen to;hear 是无意中听见,不接 to。'},
+ {t:'The toy bear is very ( ). I love touching it.',type:'mc',o:['soft','hard','sharp','loud'],a:0,sayQ:'The toy bear is very soft.',
+  why:'玩具熊摸起来“软软的”用 soft;hard 是硬的。'},
+ {t:'Can I ( ) the cake? It looks yummy.',type:'mc',o:['taste','smell','listen','see'],a:0,sayQ:'Can I taste the cake?',
+  why:'想“尝一尝”蛋糕用 taste。'},
+ {t:'What can you ( )? — I can hear a bird.',type:'mc',o:['hear','see','taste','feel'],a:0,sayQ:'What can you hear?',
+  why:'答语是 hear a bird(听见鸟),所以问句也用 hear。'},
+ {t:'I ( ) get up at seven o’clock. (我通常七点起床)',type:'mc',o:['usually','never','colour','because'],a:0,sayQ:'I usually get up at seven.',
+  why:'usually 通常,放在实义动词前;符合句意“通常七点起床”。'},
+ {t:'How does the lemon ( )? — It tastes sour.',type:'mc',o:['taste','smell','sound','look'],a:0,sayQ:'How does the lemon taste?',
+  why:'答语 It tastes sour,问“尝起来怎样”用 taste。'},
+],
+/* ---------- 句型转换 ---------- */
+trans:[
+ {t:'I can hear a bird. → 改为否定句',type:'mc',
+  o:["I can't hear a bird.","I don't hear a bird.","I can hear not a bird.","I am not hear a bird."],a:0,
+  why:'can 的否定直接在后面加 not:can’t (cannot)。'},
+ {t:'She likes Music. → 改为一般疑问句',type:'mc',
+  o:['Does she like Music?','Do she likes Music?','Is she like Music?','Does she likes Music?'],a:0,
+  why:'第三人称单数变疑问用 Does 提到句首,后面动词还原:like。'},
+ {t:'My favourite subject is English. → 对划线部分(English)提问',type:'mc',
+  o:["What's your favourite subject?","What's my favourite subject?","How is your favourite subject?","Which subject is English?"],a:0,
+  why:'问“最喜欢的科目是什么”用 What’s,且 my 要换成 your。'},
+ {t:'He can play football. → 改为一般疑问句并作肯定回答',type:'mc',
+  o:['Can he play football? — Yes, he can.','Does he play football? — Yes, he does.','Can he plays football? — Yes, he can.','Can he play football? — Yes, he does.'],a:0,
+  why:'can 提句首,回答 Yes, he can.(用 can 不用 does)。'},
+ {t:'The cakes taste sweet. → 改为单数(The cake ...)',type:'mc',
+  o:['The cake tastes sweet.','The cake taste sweet.','The cake tastes sweets.','A cake taste sweet.'],a:0,
+  why:'主语变单数 The cake,动词要加 s:tastes。'},
+ {t:'They are playing basketball. → 改为单数(He ...)',type:'mc',
+  o:['He is playing basketball.','He are playing basketball.','He is play basketball.','He playing basketball.'],a:0,
+  why:'主语 He 用 is;现在进行时 be + 动词-ing 保持 playing。'},
+ {t:'I have two pens. → 改为单数(一支笔)',type:'mc',
+  o:['I have one pen.','I has one pen.','I have one pens.','I have a pens.'],a:0,
+  why:'一支笔 one pen(单数),I 仍用 have。'},
+ {t:'It is a quiet room. → 改为否定句',type:'mc',
+  o:['It is not a quiet room.','It not is a quiet room.','It isn’t quiet room.','It don’t a quiet room.'],a:0,
+  why:'be 动词 is 的否定在后面加 not:is not (isn’t)。'},
+],
+/* ---------- 情景问答 ---------- */
+situ:[
+ {t:"What's your favourite sport?",type:'mc',o:['I like swimming.','It’s salty.','Yes, I can.','It’s loud.'],a:0,sayQ:"What's your favourite sport?",
+  why:'问最喜欢的运动,答 I like swimming(我喜欢游泳)。'},
+ {t:'Can you smell the flowers?',type:'mc',o:['Yes, I can.','It’s a flower.','I like Art.','It tastes sweet.'],a:0,sayQ:'Can you smell the flowers?',
+  why:'Can 开头的一般疑问句,答 Yes, I can. / No, I can’t.'},
+ {t:'How does the lemon taste?',type:'mc',o:['It tastes sour.','It’s loud.','I can see it.','Yes, it is.'],a:0,sayQ:'How does the lemon taste?',
+  why:'问柠檬尝起来如何,答 It tastes sour(很酸)。'},
+ {t:'What can you hear?',type:'mc',o:['I can hear a dog.','It’s soft.','No, I can’t.','It’s Monday.'],a:0,sayQ:'What can you hear?',
+  why:'问你能听见什么,答 I can hear a dog。'},
+ {t:"What's your favourite subject?",type:'mc',o:['My favourite subject is PE.','By bus.','It smells nice.','Yes, I do.'],a:0,sayQ:"What's your favourite subject?",
+  why:'问最喜欢的科目,答 My favourite subject is PE。'},
+ {t:'What time is it?',type:'mc',o:['It’s half past seven.','It’s Sunday.','It’s red.','I’m fine.'],a:0,sayQ:'What time is it?',
+  why:'问几点,答 It’s half past seven(七点半)。'},
+ {t:'What day is it today?',type:'mc',o:['It’s Monday.','It’s nine o’clock.','It’s sunny.','It’s a dog.'],a:0,sayQ:'What day is it today?',
+  why:'问今天星期几,答 It’s Monday(用星期)。'},
+ {t:'What can you play?',type:'mc',o:['I can play the piano.','I can see a bird.','It’s soft.','No, thanks.'],a:0,sayQ:'What can you play?',
+  why:'问会演奏什么,答 I can play the piano(乐器前加 the)。'},
+],
+/* ---------- 句子翻译·连词成句 ---------- */
+sent:[
+ {t:'连词成句: favourite / is / my / Music / subject / .',type:'build',a:'My favourite subject is Music.',say:'My favourite subject is Music.',
+  why:'My favourite subject is Music. 句首大写、句末句号。'},
+ {t:'连词成句: can / you / the / hear / birds / ?',type:'build',a:'Can you hear the birds?',say:'Can you hear the birds?',
+  why:'一般疑问句 Can 提句首,句末问号:Can you hear the birds?'},
+ {t:'翻译: 这个蛋糕尝起来很甜。',type:'mc',o:['The cake tastes sweet.','The cake smells sweet.','The cake is taste sweet.','The cakes taste sweet.'],a:0,sayQ:'The cake tastes sweet.',
+  why:'“尝起来甜”用 taste sweet;主语单数 The cake → tastes。'},
+ {t:'翻译: 我最喜欢的运动是篮球。',type:'mc',o:['My favourite sport is basketball.','My favourite subject is basketball.','I favourite sport is basketball.','My favourite sport is football.'],a:0,sayQ:'My favourite sport is basketball.',
+  why:'My favourite sport is basketball. sport 运动、basketball 篮球。'},
+ {t:'翻译: 你会弹钢琴吗?',type:'mc',o:['Can you play the piano?','Do you play piano?','Can you playing the piano?','Are you play the piano?'],a:0,sayQ:'Can you play the piano?',
+  why:'“会不会”用 Can,弹乐器 play the piano(加 the)。'},
+ {t:'翻译: 它感觉很软。',type:'mc',o:['It feels soft.','It feel soft.','It is feel soft.','It feels softly.'],a:0,sayQ:'It feels soft.',
+  why:'“感觉很软”用 feel + 形容词;主语 It → feels。'},
+ {t:'连词成句: festival / is / what / your / favourite / ?',type:'mc',o:['What is your favourite festival?','What your favourite festival is?','Your favourite festival is what?','What is favourite your festival?'],a:0,sayQ:'What is your favourite festival?',
+  why:'特殊疑问句:What is your favourite festival?'},
+ {t:'翻译: 端午节我们吃粽子。',type:'mc',o:['We eat rice dumplings at the Dragon Boat Festival.','We eat rice dumplings at the Spring Festival.','We eat mooncakes at the Dragon Boat Festival.','We eat rice dumpling at Dragon Boat Festival.'],a:0,sayQ:'We eat rice dumplings at the Dragon Boat Festival.',
+  why:'端午节 the Dragon Boat Festival;粽子 rice dumplings(复数)。'},
+],
+};
+
+/* ===================== 状态 ===================== */
+const SUB='英语';
+const CHILD='哥哥';
+const KID='kenton';
+const AKEY='mx_archive_'+CHILD+'_eng4b';   /* 与单元默写共用同一错题档案键 */
+
+const G={topicKey:null,topicName:'',items:[],idx:0,correct:0,answered:false,
+  startTime:0,results:[],build:[],isMix:false};
+
+function show(id){['home','quiz','summary','archive'].forEach(x=>document.getElementById(x).classList.add('hidden'));
+  document.getElementById(id).classList.remove('hidden');window.scrollTo(0,0);}
+function goHome(){haltAudio();try{speechSynthesis.cancel();}catch(e){}renderMenu();refreshHomeStat();show('home');}
+
+/* ===================== 神经真人配音层(edge-tts 预合成),失败回退浏览器TTS ===================== */
+/* 预合成目录:每条音频按 fnv(lang+"|"+text) 命名,与 _manifest.json / gen_audio_manifest 一致 */
+const AUDIO_DIR="audio/kenton_english_sprint/";
+let voices=[];function loadVoices(){try{voices=speechSynthesis.getVoices();}catch(e){}}
+if('speechSynthesis'in window){loadVoices();speechSynthesis.onvoiceschanged=loadVoices;}
+let warmed=false;function warm(){if(!('speechSynthesis'in window))return;try{speechSynthesis.resume();}catch(e){}if(warmed)return;loadVoices();try{var wu=new SpeechSynthesisUtterance('ok');wu.volume=0.02;speechSynthesis.speak(wu);}catch(e){}warmed=true;}
+document.body.addEventListener('touchstart',warm,{once:true});
+document.body.addEventListener('click',warm,{once:true});
+document.addEventListener('visibilitychange',()=>{if(document.hidden){haltAudio();try{speechSynthesis.cancel();}catch(e){}}});
+function mkUtter(t,lang){
+  const u=new SpeechSynthesisUtterance(t);
+  if(lang==='en'){const v=voices.find(v=>/en[-_]GB/i.test(v.lang))||voices.find(v=>/en[-_]US/i.test(v.lang))||voices.find(v=>/^en/i.test(v.lang));if(v)u.voice=v;u.lang=(v&&v.lang)||'en-GB';u.rate=0.8;}
+  else{const v=voices.find(v=>/zh|cmn|Chinese/i.test(v.lang));if(v)u.voice=v;u.lang='zh-CN';u.rate=0.95;}
+  u.pitch=1.0;return u;
+}
+let exAudio=null;   // 单个复用音频元素:首次手势(warm)解锁,之后每段复用(移动端更兼容)
+let audioTok=0;     // 打断/超时保护:自增令牌让过期回调失效
+/* 必须与 _manifest.json / gen_audio 的 fnv() 一致:对 (lang+"|"+text) 的 UTF-8 字节做 FNV-1a,8位十六进制 */
+function audioHash(s){const b=new TextEncoder().encode(s);let x=0x811c9dc5>>>0;for(let i=0;i<b.length;i++){x^=b[i];x=Math.imul(x,0x01000193)>>>0;}return ('0000000'+x.toString(16)).slice(-8);}
+function getExAudio(){if(!exAudio){exAudio=new Audio();exAudio.setAttribute('playsinline','');exAudio.preload='auto';try{document.body.appendChild(exAudio);}catch(e){}}return exAudio;}
+function haltAudio(){audioTok++;if(exAudio){try{exAudio.pause();}catch(e){}}}
+/* 浏览器TTS:回退 */
+function ttsSpeakOnce(t,lang){try{speechSynthesis.cancel();speechSynthesis.resume();}catch(e){}try{speechSynthesis.speak(mkUtter(t,lang));}catch(e){}}
+/* 朗读一次:优先播预合成神经语音,失败回退TTS */
+function speakOnce(t,lang){
+  if(!t)return;
+  try{speechSynthesis.cancel();}catch(e){}
+  audioTok++;const myTok=audioTok;
+  const a=getExAudio();let done=false;
+  const stale=()=>done||myTok!==audioTok;
+  const fb=()=>{if(stale())return;done=true;ttsSpeakOnce(t,lang);};
+  a.onended=()=>{if(stale())return;done=true;};
+  a.onerror=fb;
+  try{a.pause();}catch(e){}
+  a.src=AUDIO_DIR+audioHash(lang+"|"+t)+".mp3";
+  try{a.currentTime=0;}catch(e){}
+  const p=a.play();
+  if(p&&typeof p.catch==='function')p.catch(fb);
+}
+function testVoice(){if(!('speechSynthesis'in window)){var k=document.querySelector('.kou');if(k)k.textContent='这个浏览器不支持朗读，请用 Safari 或 Chrome 打开';return;}warm();speakOnce('你好 Kenton，我们来冲刺英语期末。','zh');setTimeout(()=>speakOnce('Hello! Are you ready?','en'),2300);}
+
+/* ===================== 归档 + 云端 ===================== */
+function loadArchive(){try{return JSON.parse(localStorage.getItem(AKEY))||{child:CHILD,events:[]};}catch(e){return{child:CHILD,events:[]};}}
+function saveArchive(a){try{localStorage.setItem(AKEY,JSON.stringify(a));}catch(e){}}
+function logEvent(ev){const a=loadArchive();a.events.push(ev);saveArchive(a);cloudUpload(ev);}
+/* 云端上传:端点缺失/断网/出错都静默,绝不影响使用(fire-and-forget) */
+function cloudUpload(ev){
+  try{
+    var endpoint=null;
+    try{endpoint=localStorage.getItem('eb_endpoint');}catch(e){}
+    if(!endpoint)return;
+    var topic=ev.topic||'';
+    var items=(ev.items||[]).map(function(it){
+      return {kid:KID,subject:SUB,topic:topic,
+        item:(it.word!=null?it.word:''),
+        ok:!!it.ok,hint:(it.hint!=null?it.hint:'')};
+    });
+    if(!items.length)return;
+    fetch(endpoint,{method:'POST',headers:{'Content-Type':'text/plain'},body:JSON.stringify(items)})
+      .then(function(){}).catch(function(){});
+  }catch(e){}
+}
+function fmtDate(ts){const d=new Date(ts);const p=n=>(n<10?'0':'')+n;return d.getFullYear()+'-'+p(d.getMonth()+1)+'-'+p(d.getDate())+' '+p(d.getHours())+':'+p(d.getMinutes());}
+function aggregateTopics(events){
+  const m={};
+  events.forEach(ev=>{(ev.items||[]).forEach(it=>{
+    const key=ev.topic||'其它';
+    if(!m[key])m[key]={topic:key,ok:0,wrong:0};
+    if(it.ok)m[key].ok++;else m[key].wrong++;
+  });});
+  return m;
+}
+function refreshHomeStat(){
+  const a=loadArchive();const el=document.getElementById('homestat');if(!el)return;
+  if(!a.events.length){el.textContent='还没有记录——做完一关就会自动归档进错题本';return;}
+  let wrong=0,total=0;a.events.forEach(ev=>{(ev.items||[]).forEach(it=>{total++;if(!it.ok)wrong++;});});
+  el.innerHTML='共做 <b>'+total+'</b> 题 ｜ 错 <b style="color:var(--red)">'+wrong+'</b> 题 ｜ 点这里看错题/导出';
+}
+
+/* ===================== 首页关卡 ===================== */
+function topicBest(key){
+  const a=loadArchive();let best=null;
+  a.events.forEach(ev=>{if(ev.topic===key&&ev.total){const pct=Math.round((ev.total-ev.wrong)/ev.total*100);if(best===null||pct>best)best=pct;}});
+  return best;
+}
+function starStr(pct){if(pct===null)return '';if(pct>=90)return '⭐⭐⭐';if(pct>=70)return '⭐⭐';if(pct>=1)return '⭐';return '';}
+function renderMenu(){
+  const m=document.getElementById('menu');
+  m.innerHTML=TOPICS.map(tp=>{
+    const best=topicBest(tp.name);
+    const star=starStr(best);
+    return '<div class="bigtile tcolor'+tp.color+(best!==null&&best>=90?' done':'')+'" onclick="startTopic(\''+tp.key+'\')">'+
+      (star?'<div class="star">'+star+'</div>':'')+
+      '<div class="ic">'+tp.icon+'</div>'+
+      '<div class="nm">'+tp.name+'</div>'+
+      '<div class="ds">'+BANK[tp.key].length+' 题</div>'+
+      (best!==null?'<div class="pg">最好 '+best+'% 正确</div>':'<div class="pg">还没做过</div>')+
+      '</div>';
+  }).join('');
+}
+
+/* ===================== 开始做题 ===================== */
+function startTopic(key){
+  const tp=TOPICS.find(t=>t.key===key);
+  G.topicKey=key;G.topicName=tp.name;G.isMix=false;
+  G.items=BANK[key].map(q=>Object.assign({_topic:tp.name},q));
+  G.idx=0;G.correct=0;G.results=[];G.startTime=Date.now();
+  warm();renderQuiz();show('quiz');
+}
+function startMixExam(){
+  G.topicKey='mix';G.topicName='综合冲刺卷';G.isMix=true;
+  let pool=[];
+  TOPICS.forEach(tp=>{
+    const qs=shuffle(BANK[tp.key]).slice(0,4).map(q=>Object.assign({_topic:tp.name},q));
+    pool=pool.concat(qs);
+  });
+  pool=shuffle(pool).slice(0,20);
+  G.items=pool;
+  G.idx=0;G.correct=0;G.results=[];G.startTime=Date.now();
+  warm();renderQuiz();show('quiz');
+}
+function shuffle(a){a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));const tmp=a[i];a[i]=a[j];a[j]=tmp;}return a;}
+function escAttr(s){return (''+s).replace(/"/g,'&quot;');}
+
+/* 把英文单词/词组打散成可点的字母/单词块(含干扰),用于 build 题 */
+function makeTiles(answer){
+  // 词组(含空格): 拆成"单词块",每个单词一块,顺序打乱 + 少量干扰
+  if(/\s/.test(answer)){
+    const words=answer.split(/\s+/);
+    const distractPool=['the','a','is','do','my','your','at'];
+    let extra=[];
+    distractPool.forEach(d=>{if(words.indexOf(d)<0&&extra.length<2&&Math.random()<0.6)extra.push(d);});
+    return {kind:'word',tiles:shuffle(words.concat(extra)),need:words,join:' '};
+  }
+  // 单个单词: 拆成字母块,顺序打乱 + 1-2个干扰字母
+  const letters=answer.split('');
+  let pool=letters.slice();
+  const alpha='abcdefghijklmnopqrstuvwxyz';
+  const want=letters.length<=4?1:2;
+  let tries=0;
+  while(pool.length<letters.length+want&&tries<40){
+    const c=alpha[Math.floor(Math.random()*26)];
+    // 干扰字母尽量不和已有字母重复太多,避免歧义(同字母多了也无所谓,核对按整串)
+    pool.push(c);tries++;
+  }
+  return {kind:'letter',tiles:shuffle(pool),need:letters,join:''};
+}
+
+function renderQuiz(){
+  const b=document.getElementById('quiz');
+  const it=G.items[G.idx];
+  G.answered=false;G.build=[];
+  const pct=Math.round(G.idx/G.items.length*100);
+  let html='<button class="back" onclick="confirmQuit()">← 退出本关</button>'+
+   '<div class="card">'+
+    '<div class="qhead"><span>第 '+(G.idx+1)+' / '+G.items.length+' 题</span><span class="sc">⭐ 已对 '+G.correct+'</span></div>'+
+    '<div class="progbar"><i style="width:'+pct+'%"></i></div>'+
+    (G.isMix?'<div class="topic-chip">'+it._topic+'</div>':'');
+  // 题面(含可选点读)
+  let qspk = it.sayQ ? ' <button class="spk-inline" onclick="speakOnce(this.dataset.s,\'en\')" data-s="'+escAttr(it.sayQ)+'">🔊</button>' : '';
+  html+='<div class="qtext">'+it.t+qspk+'</div>';
+
+  if(it.type==='mc'){
+    html+='<div class="opts'+(it.o.every(x=>(''+x).length<=4)?' two':'')+'" id="opts">'+
+      it.o.map((x,i)=>{
+        const isEn=/[a-zA-Z]/.test(x);
+        const spk=(it.sayOpts&&isEn)?'<button class="spk-inline" onclick="event.stopPropagation();speakOnce(this.dataset.s,\'en\')" data-s="'+escAttr(x)+'">🔊</button>':'';
+        return '<button class="opt" onclick="answerMC('+i+')">'+x+spk+'</button>';
+      }).join('')+'</div>';
+  }else{ // build
+    const td=makeTiles(it.a);
+    G._tiles=td;
+    html+='<div class="qsub">点字母/单词块拼出英文，拼好点 ✅（点 🔊 可听正确读音）'+
+      ' <button class="spk-inline" onclick="speakOnce(this.dataset.s,\'en\')" data-s="'+escAttr(it.say||it.a)+'">🔊</button></div>'+
+      '<div class="builddisp" id="disp"><span class="ph">点下面的块来拼</span></div>'+
+      '<div class="tiles" id="tiles">'+
+        td.tiles.map((t,i)=>'<button class="tile '+(td.kind==='word'?'word':'')+'" data-i="'+i+'" onclick="tapTile('+i+')">'+t+'</button>').join('')+
+      '</div>'+
+      '<div class="buildctrl">'+
+        '<button class="btn sm del" onclick="buildDel()">⌫ 删一个</button>'+
+        '<button class="btn sm gray" onclick="buildClear()">清空</button>'+
+        '<button class="btn green big" onclick="answerBuild()">✅ 确定</button>'+
+      '</div>';
+  }
+  html+='<div id="fb"></div></div>';
+  b.innerHTML=html;
+  // 进入题目时自动读一遍题面英文(若有)
+  if(it.sayQ)setTimeout(()=>speakOnce(it.sayQ,'en'),350);
+}
+
+/* 选择题作答 */
+function answerMC(i){
+  if(G.answered)return;G.answered=true;
+  const it=G.items[G.idx];
+  const ok=(i===it.a);
+  const btns=document.querySelectorAll('#opts .opt');
+  btns.forEach(b=>b.style.pointerEvents='none');
+  if(btns[i])btns[i].classList.add(ok?'right':'wrong');
+  if(!ok&&btns[it.a])btns[it.a].classList.add('right');
+  recordAndFeedback(ok,it,it.o[it.a]);
+}
+
+/* 拼词题 */
+function tapTile(i){
+  if(G.answered)return;
+  const td=G._tiles;if(!td)return;
+  const btn=document.querySelector('#tiles .tile[data-i="'+i+'"]');
+  if(!btn||btn.classList.contains('used'))return;
+  btn.classList.add('used');
+  G.build.push({i:i,v:td.tiles[i]});
+  updateBuild();
+}
+function buildDel(){
+  if(G.answered)return;
+  const last=G.build.pop();
+  if(last){const btn=document.querySelector('#tiles .tile[data-i="'+last.i+'"]');if(btn)btn.classList.remove('used');}
+  updateBuild();
+}
+function buildClear(){
+  if(G.answered)return;
+  G.build.forEach(x=>{const btn=document.querySelector('#tiles .tile[data-i="'+x.i+'"]');if(btn)btn.classList.remove('used');});
+  G.build=[];updateBuild();
+}
+function buildStr(){
+  const td=G._tiles;const j=td?td.join:'';
+  return G.build.map(x=>x.v).join(j);
+}
+function updateBuild(){
+  const d=document.getElementById('disp');if(!d)return;
+  const s=buildStr();
+  d.innerHTML=s?s:'<span class="ph">点下面的块来拼</span>';
+}
+function normEn(s){
+  // 句子级核对:去首尾空格、压缩多空格、统一大小写、去掉句末标点差异由我们自己控制
+  return (''+s).replace(/\s+/g,' ').trim().toLowerCase();
+}
+function answerBuild(){
+  if(G.answered)return;
+  const it=G.items[G.idx];
+  const got=buildStr();
+  if(got.trim()===''){const d=document.getElementById('disp');if(d){d.style.transform='translateX(0)';}return;}
+  G.answered=true;
+  const ok=(normEn(got)===normEn(it.a));
+  recordAndFeedback(ok,it,it.a);
+}
+
+function recordAndFeedback(ok,it,correctShown){
+  if(ok)G.correct++;
+  G.results.push({word:it.t,hint:(''+it.a),ok:ok,topic:it._topic,why:it.why,shown:correctShown,say:(it.sayQ||it.say||(/^[A-Za-z]/.test(it.a)?it.a:''))});
+  const fb=document.getElementById('fb');
+  if(fb){
+    const sayAns=(/[a-zA-Z]/.test(correctShown))?' <button class="spk-inline" onclick="speakOnce(this.dataset.s,\'en\')" data-s="'+escAttr(correctShown)+'">🔊</button>':'';
+    if(ok){
+      ding();speakOnce('对了!','zh');
+      fb.innerHTML='<div class="fb ok">✅ 答对了！'+sayAns+'<div class="why">'+it.why+'</div></div>';
+    }else{
+      fb.innerHTML='<div class="fb no">❌ 正确答案：<span class="ans">'+correctShown+'</span>'+sayAns+'<div class="why">'+it.why+'</div></div>';
+    }
+    fb.innerHTML+='<div class="row"><button class="btn '+(G.idx<G.items.length-1?'green':'blue')+' big" onclick="nextQ()">'+(G.idx<G.items.length-1?'下一题 →':'看小结 🎉')+'</button></div>';
+  }
+}
+function nextQ(){
+  haltAudio();try{speechSynthesis.cancel();}catch(e){}
+  if(G.idx<G.items.length-1){G.idx++;renderQuiz();window.scrollTo(0,0);}
+  else{finishTopic();}
+}
+function confirmQuit(){
+  if(G.results.length&&!confirm('确定退出本关吗？已做的题不会保存到错题本。'))return;
+  goHome();
+}
+
+/* ===================== 小结 ===================== */
+function finishTopic(){
+  haltAudio();try{speechSynthesis.cancel();}catch(e){}
+  const total=G.items.length,wrong=total-G.correct;
+  logEvent({ts:Date.now(),topic:G.topicName,isMix:G.isMix,total:total,wrong:wrong,
+    durationSec:Math.round((Date.now()-G.startTime)/1000),
+    items:G.results.map(r=>({word:r.word,hint:r.hint,ok:r.ok,topic:r.topic}))});
+
+  const pct=Math.round(G.correct/total*100);
+  const stars=pct>=90?'⭐⭐⭐':pct>=70?'⭐⭐':pct>=50?'⭐':'☆';
+  const cheer=pct>=90?'太棒了，几乎全对！':pct>=70?'不错，再练练弱项就更稳！':pct>=50?'有进步，错的题要重点看！':'别灰心，把错题再做一遍就会了！';
+
+  const byTopic={};
+  G.results.forEach(r=>{if(!byTopic[r.topic])byTopic[r.topic]={ok:0,wrong:0};if(r.ok)byTopic[r.topic].ok++;else byTopic[r.topic].wrong++;});
+  const wrongs=G.results.filter(r=>!r.ok);
+
+  let html='<button class="back" onclick="goHome()">← 返回首页</button>'+
+   '<div class="card" style="text-align:center">'+
+    '<h2>🎉 '+G.topicName+' · 完成</h2>'+
+    '<div class="scorebig" style="color:'+(wrong===0?'var(--green)':'var(--redd)')+'">'+G.correct+' / '+total+'</div>'+
+    '<div class="stars">'+stars+'</div>'+
+    '<div class="kou">'+cheer+'（正确率 '+pct+'%）</div>';
+
+  const topicKeys=Object.keys(byTopic);
+  if(topicKeys.length>1){
+    html+='<div style="text-align:left;margin-top:10px"><div style="font-weight:700;color:var(--redd);margin-bottom:6px">📊 各知识点掌握情况</div>';
+    topicKeys.forEach(tk=>{
+      const d=byTopic[tk];const tt=d.ok+d.wrong;const p=Math.round(d.ok/tt*100);
+      const col=p>=90?'var(--green)':p>=60?'var(--gold)':'var(--red)';
+      html+='<div class="weakrow"><span style="width:130px;flex-shrink:0;font-size:13px">'+tk+'</span>'+
+        '<span class="bar"><i style="width:'+p+'%;background:'+col+'"></i></span>'+
+        '<span style="width:50px;text-align:right;font-weight:700;color:'+col+'">'+d.ok+'/'+tt+'</span></div>';
+    });
+    html+='</div>';
+  }
+  html+='</div>';
+
+  if(wrongs.length){
+    html+='<div class="card"><h2 style="color:var(--red)">📒 这次的错题（已记进错题本）</h2><div class="wronglist">'+
+      wrongs.map(r=>{
+        const spk=(/[a-zA-Z]/.test(r.shown))?' <button class="spk-inline" onclick="speakOnce(this.dataset.s,\'en\')" data-s="'+escAttr(r.shown)+'">🔊</button>':'';
+        return '<div class="wrongitem">'+
+        (G.isMix?'<span class="topic">'+r.topic+'</span> ':'')+
+        '<div class="q">'+r.word+'</div>'+
+        '<div>正确答案：<span class="a">'+r.shown+'</span>'+spk+'</div>'+
+        '<div style="color:#6b5a42;font-size:13px;margin-top:2px">'+r.why+'</div>'+
+      '</div>';}).join('')+'</div></div>';
+  }else{
+    html+='<div class="card"><div class="kou">这一关全对，没有错题！🏆</div></div>';
+  }
+
+  html+='<div class="card" style="text-align:center"><div class="row">'+
+    (G.isMix?'':'<button class="btn green big" onclick="startTopic(\''+G.topicKey+'\')">🔁 再做一遍这关</button>')+
+    '<button class="btn blue big" onclick="goHome()">🏠 返回选关</button>'+
+    '</div></div>';
+
+  document.getElementById('summary').innerHTML=html;
+  show('summary');
+  speakOnce(wrong===0?'全对，太厉害了！':'做完啦，错的题已经记进错题本。','zh');
+}
+
+/* ===================== 错题本视图 ===================== */
+function showArchive(){
+  haltAudio();try{speechSynthesis.cancel();}catch(e){}
+  const a=loadArchive();const b=document.getElementById('archive');
+  const tagg=aggregateTopics(a.events);
+  const weak=Object.values(tagg).filter(t=>t.wrong>0).sort((x,y)=>y.wrong-x.wrong);
+  const evs=a.events.slice().reverse();
+  const wrongQs=[];const seen={};
+  evs.forEach(ev=>{(ev.items||[]).forEach(it=>{if(!it.ok&&!seen[it.word]){seen[it.word]=1;wrongQs.push({q:it.word,a:it.hint,topic:ev.topic});}});});
+
+  let html='<button class="back" onclick="goHome()">← 返回</button>'+
+   '<div class="card"><h2>📒 Kenton 英语错题本</h2>'+
+    '<div class="lead">共练 '+a.events.length+' 次（含单元默写记录）。下面数据可<b>一键复制</b>发家长，或<b>下载</b>保存。</div>'+
+    '<div class="row" style="justify-content:flex-start">'+
+      '<button class="btn sm blue" onclick="copyArchive()">📋 一键复制</button>'+
+      '<button class="btn sm green" onclick="downloadArchive()">📥 下载存档</button>'+
+      '<button class="btn sm gray" onclick="clearArchive()">🗑 清空</button></div></div>';
+
+  if(weak.length){
+    html+='<div class="card"><h2 style="color:var(--red)">🔴 薄弱知识点（按错题多少排）</h2>';
+    weak.forEach(t=>{const tt=t.ok+t.wrong;const p=Math.round(t.ok/tt*100);const col=p>=90?'var(--green)':p>=60?'var(--gold)':'var(--red)';
+      html+='<div class="weakrow"><span style="width:140px;flex-shrink:0;font-size:13px">'+t.topic+'</span>'+
+        '<span class="bar"><i style="width:'+p+'%;background:'+col+'"></i></span>'+
+        '<span style="width:56px;text-align:right;font-weight:700;color:'+col+'">'+t.ok+'/'+tt+'</span></div>';
+    });
+    html+='</div>';
+  }
+
+  if(wrongQs.length){
+    html+='<div class="card"><h2>❌ 做错过的题</h2><div class="wronglist">'+
+      wrongQs.map(w=>{
+        const spk=(/[a-zA-Z]/.test(w.a))?' <button class="spk-inline" onclick="speakOnce(this.dataset.s,\'en\')" data-s="'+escAttr(w.a)+'">🔊</button>':'';
+        return '<div class="wrongitem"><span class="topic">'+(w.topic||'')+'</span> '+
+        '<div class="q">'+w.q+'</div><div>正确答案：<span class="a">'+w.a+'</span>'+spk+'</div></div>';}).join('')+
+      '</div></div>';
+  }
+
+  html+='<div class="card"><h2>📅 练习记录</h2>'+
+    (evs.length?evs.map(ev=>'<div style="border-bottom:1px solid var(--line);padding:9px 0">'+
+      '<div style="font-weight:700">'+(ev.isMix?'🎯综合卷':(ev.topic?'📘'+ev.topic:(ev.type==='dict'?'✍️默写·'+(ev.lesson||''):'🧠'+(ev.lesson||''))))+
+        '<span style="float:right;color:#a08d6f;font-size:12px">'+fmtDate(ev.ts)+'</span></div>'+
+      '<div style="font-size:13px;color:#7d6a4e;margin-top:3px">'+(ev.total-ev.wrong)+'/'+ev.total+' 对 ｜ 用时 '+(ev.durationSec||0)+'秒'+
+        (ev.wrong?' ｜ 错 <span style="color:var(--red)">'+ev.wrong+'</span> 题':' ｜ 全对 ✓')+'</div></div>'
+      ).join(''):'<div class="lead">还没有记录</div>')+'</div>';
+
+  html+='<div class="card hidden" id="copybox"><h2>复制下面全部文字</h2>'+
+    '<textarea id="copytext" style="width:100%;height:220px;font-size:12px;font-family:monospace;border:2px solid var(--line);border-radius:10px;padding:10px"></textarea></div>';
+
+  b.innerHTML=html;show('archive');
+}
+function archiveText(){
+  const a=loadArchive();const tagg=aggregateTopics(a.events);
+  const weak=Object.values(tagg).sort((x,y)=>y.wrong-x.wrong);
+  let t='【Kenton · 英语(四下)冲刺学习档案】导出时间:'+fmtDate(Date.now())+'\n练习总次数:'+a.events.length+'\n\n';
+  t+='== 各知识点掌握(对/总) ==\n';
+  t+=weak.length?weak.map(w=>{const tt=w.ok+w.wrong;return (w.topic||'其它')+': '+w.ok+'/'+tt+' 对'+(w.wrong?' (错'+w.wrong+')':'');}).join('\n'):'(无)';
+  t+='\n\n== 做错过的题 ==\n';
+  const evs=a.events.slice().reverse();const seen={};let wl=[];
+  evs.forEach(ev=>{(ev.items||[]).forEach(it=>{if(!it.ok&&!seen[it.word]){seen[it.word]=1;wl.push('['+(ev.topic||ev.lesson||'')+'] '+it.word+' → 正确:'+it.hint);}});});
+  t+=wl.length?wl.join('\n'):'(无)';
+  t+='\n\n== 每次明细 ==\n';
+  a.events.forEach(ev=>{t+='\n['+fmtDate(ev.ts)+'] '+(ev.isMix?'综合卷':(ev.topic||ev.lesson||''))+' ｜ '+(ev.total-ev.wrong)+'/'+ev.total+'对 ｜ '+(ev.durationSec||0)+'秒';});
+  t+='\n\n== 原始数据(JSON) ==\n'+JSON.stringify(a);
+  return t;
+}
+function copyArchive(){
+  const txt=archiveText();
+  const box=document.getElementById('copybox');const ta=document.getElementById('copytext');
+  if(box&&ta){box.classList.remove('hidden');ta.value=txt;ta.focus();ta.select();}
+  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(txt).then(function(){}).catch(function(){});}
+}
+function downloadArchive(){
+  const txt=archiveText();const blob=new Blob([txt],{type:'text/plain;charset=utf-8'});
+  const url=URL.createObjectURL(blob);const a=document.createElement('a');
+  a.href=url;a.download='Kenton英语错题档案.txt';
+  document.body.appendChild(a);a.click();document.body.removeChild(a);
+  setTimeout(function(){URL.revokeObjectURL(url);},1000);
+}
+function clearArchive(){if(confirm('确定清空 Kenton 的英语错题记录吗？不能撤销。')){localStorage.removeItem(AKEY);showArchive();}}
+
+/* 答对提示音 */
+function ding(){try{const ctx=new(window.AudioContext||window.webkitAudioContext)();const o=ctx.createOscillator();const g=ctx.createGain();o.connect(g);g.connect(ctx.destination);o.frequency.value=880;g.gain.setValueAtTime(0.15,ctx.currentTime);g.gain.exponentialRampToValueAtTime(0.001,ctx.currentTime+0.3);o.start();o.stop(ctx.currentTime+0.3);}catch(e){}}
+
+/* ===================== 启动 ===================== */
+window.addEventListener('load',function(){renderMenu();refreshHomeStat();});
+</script>
+</body>
+</html>

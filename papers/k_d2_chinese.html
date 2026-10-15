@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kenton 语文冲刺 · 第2天</title>
+<style>
+  @page { size: A4; margin: 12mm 14mm; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: "Noto Sans CJK SC","Microsoft YaHei","Source Han Sans SC","WenQuanYi Zen Hei",sans-serif;
+    font-size: 11.8pt;
+    line-height: 1.55;
+    color: #000;
+    background: #fff;
+  }
+  .wrap { max-width: 182mm; margin: 0 auto; padding: 4px 2px 10px; }
+
+  /* 卷首 */
+  .head { border: 3px solid #000; padding: 8px 12px; margin-bottom: 10px; }
+  .head h1 { font-size: 18pt; margin: 0 0 4px; text-align: center; letter-spacing: 1px; }
+  .head .sub { text-align: center; font-size: 10.5pt; color: #333; margin-bottom: 6px; }
+  .metabar {
+    display: flex; flex-wrap: wrap; gap: 4px 18px;
+    border-top: 1.5px dashed #000; padding-top: 6px; font-size: 10.5pt;
+  }
+  .metabar span { white-space: nowrap; }
+  .fill { display:inline-block; min-width:80px; border-bottom:1px solid #000; height:14px; }
+  .fill.lg { min-width:120px; }
+
+  /* 大题区块 */
+  .section { border: 2.5px solid #000; margin-bottom: 9px; page-break-inside: avoid; }
+  .sec-head {
+    display: flex; justify-content: space-between; align-items: center;
+    border-bottom: 2px solid #000; padding: 4px 10px; background: #f0f0f0;
+    -webkit-print-color-adjust: exact; print-color-adjust: exact;
+  }
+  .sec-head .t { font-weight: 800; font-size: 12.5pt; }
+  .sec-head .meta { font-size: 9.5pt; color: #222; text-align: right; line-height: 1.3; }
+  .sec-body { padding: 7px 11px 9px; }
+
+  .q { margin: 5px 0 7px; }
+  .qn { font-weight: 700; }
+  .tag { color:#444; font-weight:700; }
+
+  /* 填空线 */
+  .blank-s { display:inline-block; min-width:130px; border-bottom:1.5px solid #000; height:15px; vertical-align: bottom; }
+  .blank-m { display:inline-block; min-width:190px; border-bottom:1.5px solid #000; height:15px; vertical-align: bottom; }
+  .blank-l { display:inline-block; min-width:300px; border-bottom:1.5px solid #000; height:15px; vertical-align: bottom; }
+  .box { display:inline-block; min-width:34px; height:20px; border:1.5px solid #000; vertical-align:middle; }
+
+  /* 书写行 */
+  .write-line { height:20px; border-bottom:1px solid #999; margin-top:4px; }
+  .write-line.dbl { margin-bottom:2px; }
+
+  /* 陷阱 / 提示框 */
+  .trap {
+    border: 2px dashed #000; padding: 5px 9px; margin: 5px 0; font-size: 10.3pt;
+    background: repeating-linear-gradient(45deg,#fff,#fff 6px,#eee 6px,#eee 8px);
+    -webkit-print-color-adjust: exact; print-color-adjust: exact;
+  }
+  .trap .tt { font-weight:800; }
+
+  table.tg { border-collapse: collapse; width: 100%; margin: 4px 0; }
+  table.tg td, table.tg th { border: 1.2px solid #000; padding: 4px 6px; font-size: 10.8pt; }
+  table.tg th { background:#eee; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+
+  ol.opts { margin: 2px 0 2px 0; padding-left: 22px; }
+  ol.opts li { margin: 1px 0; }
+  .twocol { column-count: 2; column-gap: 22px; }
+  .twocol .q { break-inside: avoid; }
+
+  .small { font-size: 10pt; color:#333; }
+
+  /* 答案页 */
+  .ans-page { page-break-before: always; }
+  .ans-head { border:3px solid #000; padding:6px 12px; margin-bottom:8px; text-align:center; }
+  .ans-head h2 { margin:0; font-size:16pt; letter-spacing:2px; }
+  .ans-block { border:1.5px solid #000; padding:6px 10px; margin-bottom:8px; page-break-inside: avoid; }
+  .ans-block h3 { margin:0 0 4px; font-size:12pt; border-bottom:1.5px dashed #000; padding-bottom:3px; }
+  .ans-block p { margin: 3px 0; font-size: 10.8pt; }
+
+  /* 页脚 */
+  .footer {
+    display:flex; justify-content:space-between; align-items:center;
+    border-top:1.5px solid #000; margin-top:8px; padding-top:4px;
+    font-size:9pt; color:#444;
+  }
+  @media print {
+    .wrap { max-width: none; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- ===== 卷首固定区 ===== -->
+  <div class="head">
+    <h1>Kenton 语文冲刺 · 第2天</h1>
+    <div class="sub">四年级下（4B）· 第 5–8 单元常规范围 · 字音字形 / 词语运用 / 近反义词 / 关联词 / 古诗文默写 / 课内阅读 / 病句标点</div>
+    <div class="metabar">
+      <span>姓名（小名）：Kenton</span>
+      <span>日期：<span class="fill"></span></span>
+      <span>用时：<span class="fill"></span> 分钟</span>
+      <span>总时长：30 分钟</span>
+      <span>总分：100 分</span>
+      <span>得分：<span class="fill"></span></span>
+      <span>家长签字：<span class="fill lg"></span></span>
+    </div>
+  </div>
+
+  <!-- ===== 一、字音字形 ===== -->
+  <div class="section">
+    <div class="sec-head">
+      <span class="t">一、读拼音 / 辨字音字形</span>
+      <span class="meta">⏱ 5 分钟 ｜ 每空 1 分 · 本区共 12 分 ｜ 得分 ____</span>
+    </div>
+    <div class="sec-body">
+      <div class="q"><span class="qn">1.</span> 给加点字选择正确读音，把序号写在括号里。
+        <div class="twocol small">
+          <div class="q">(1) 倘<u>若</u>　ruò(A) / luò(B)　（ <span class="box"></span> ）</div>
+          <div class="q">(2) 应<u>和</u>　hé(A) / hè(B)　（ <span class="box"></span> ）</div>
+          <div class="q">(3) 屏<u>息</u>凝视　bǐng(A) / píng(B)　（ <span class="box"></span> ）</div>
+          <div class="q">(4) 一<u>模</u>一样　mó(A) / mú(B)　（ <span class="box"></span> ）</div>
+        </div>
+      </div>
+      <div class="q"><span class="qn">2.</span> 看拼音，在横线上写词语。
+        <div class="twocol small">
+          <div class="q">(1) wèi　lán（<span class="blank-s"></span>）的天空</div>
+          <div class="q">(2) yú　kuài（<span class="blank-s"></span>）地歌唱</div>
+          <div class="q">(3) jiàn　kāng（<span class="blank-s"></span>）成长</div>
+          <div class="q">(4) mào　shèng（<span class="blank-s"></span>）的树林</div>
+        </div>
+      </div>
+      <div class="trap">
+        <span class="tt">⚠ 易错提醒：</span>多音字要看词义定音——“和”表示跟着唱读 hè；“模”做样子讲读 mú（一模一样）。
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== 二、词语积累与运用 ===== -->
+  <div class="section">
+    <div class="sec-head">
+      <span class="t">二、词语积累与运用</span>
+      <span class="meta">⏱ 5 分钟 ｜ 每空 1 分 · 本区共 12 分 ｜ 得分 ____</span>
+    </div>
+    <div class="sec-body">
+      <div class="q"><span class="qn">3.</span> 把下面的词语补充完整。
+        <div class="twocol small">
+          <div class="q">(1) 鸦雀无（<span class="box"></span>）</div>
+          <div class="q">(2) 鹅毛大（<span class="box"></span>）</div>
+          <div class="q">(3) 提心吊（<span class="box"></span>）</div>
+          <div class="q">(4) 风（<span class="box"></span>）日丽</div>
+          <div class="q">(5) 神（<span class="box"></span>）气爽</div>
+          <div class="q">(6) 千（<span class="box"></span>）一发</div>
+        </div>
+      </div>
+      <div class="q"><span class="qn">4.</span> 选词填空（每词只用一次）。
+        <span class="tag">[词库]</span> 严肃　严格　严厉
+        <div class="small">
+          (1) 老师对我们的要求很（<span class="blank-s"></span>）。<br>
+          (2) 他批评人的语气十分（<span class="blank-s"></span>）。<br>
+          (3) 会场上气氛庄重而（<span class="blank-s"></span>）。
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== 三、近义词反义词 ===== -->
+  <div class="section">
+    <div class="sec-head">
+      <span class="t">三、近义词 · 反义词</span>
+      <span class="meta">⏱ 3 分钟 ｜ 每空 1 分 · 本区共 8 分 ｜ 得分 ____</span>
+    </div>
+    <div class="sec-body">
+      <div class="q"><span class="qn">5.</span> 写出近义词。
+        <div class="twocol small">
+          <div class="q">(1) 著名 —（<span class="blank-s"></span>）</div>
+          <div class="q">(2) 立刻 —（<span class="blank-s"></span>）</div>
+          <div class="q">(3) 漂亮 —（<span class="blank-s"></span>）</div>
+          <div class="q">(4) 平静 —（<span class="blank-s"></span>）</div>
+        </div>
+      </div>
+      <div class="q"><span class="qn">6.</span> 写出反义词。
+        <div class="twocol small">
+          <div class="q">(1) 笨拙 —（<span class="blank-s"></span>）</div>
+          <div class="q">(2) 模糊 —（<span class="blank-s"></span>）</div>
+          <div class="q">(3) 熟悉 —（<span class="blank-s"></span>）</div>
+          <div class="q">(4) 慷慨 —（<span class="blank-s"></span>）</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== 四、关联词 ===== -->
+  <div class="section">
+    <div class="sec-head">
+      <span class="t">四、选择合适的关联词填空</span>
+      <span class="meta">⏱ 3 分钟 ｜ 每空 1 分 · 本区共 6 分 ｜ 得分 ____</span>
+    </div>
+    <div class="sec-body">
+      <div class="trap">
+        <span class="tt">[词库]</span> 因为……所以……　　虽然……但是……　　只要……就……　　不但……而且……
+      </div>
+      <div class="q small">
+        <span class="qn">7.</span>（<span class="blank-s"></span>）下了一夜大雪，（<span class="blank-s"></span>）地面积了厚厚一层。<br>
+        <span class="qn">8.</span> 这条小路（<span class="blank-s"></span>）窄，（<span class="blank-s"></span>）很干净。<br>
+        <span class="qn">9.</span>（<span class="blank-s"></span>）多读多练，作文水平（<span class="blank-s"></span>）会提高。
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== 五、古诗文名句默写 ===== -->
+  <div class="section">
+    <div class="sec-head">
+      <span class="t">五、古诗文名句默写</span>
+      <span class="meta">⏱ 5 分钟 ｜ 每空 2 分 · 本区共 12 分 ｜ 得分 ____</span>
+    </div>
+    <div class="sec-body small">
+      <div class="q"><span class="qn">10.</span> 篱落疏疏一径深，<span class="blank-m"></span>。（杨万里《宿新市徐公店》）</div>
+      <div class="q"><span class="qn">11.</span> 儿童急走追黄蝶，<span class="blank-m"></span>。</div>
+      <div class="q"><span class="qn">12.</span> 梅子金黄杏子肥，<span class="blank-m"></span>。（范成大《四时田园杂兴》）</div>
+      <div class="q"><span class="qn">13.</span> 西塞山前白鹭飞，<span class="blank-m"></span>。（张志和《渔歌子》）</div>
+      <div class="q"><span class="qn">14.</span> 青箬笠，绿蓑衣，<span class="blank-m"></span>。</div>
+      <div class="trap"><span class="tt">⚠ 书写提醒：</span>“蜻蜓”“蓑衣”“鹭”笔画多，默写时一笔一画看清，不要漏点漏横。</div>
+    </div>
+  </div>
+
+  <!-- ===== 六、课内阅读 ===== -->
+  <div class="section">
+    <div class="sec-head">
+      <span class="t">六、课内阅读理解</span>
+      <span class="meta">⏱ 6 分钟 ｜ 共 16 分 ｜ 得分 ____</span>
+    </div>
+    <div class="sec-body small">
+      <p style="margin:2px 0 6px;border-left:3px solid #000;padding-left:8px;">
+        猫的性格实在有些古怪。说它老实吧，它的确有时候很乖。它会找个暖和的地方，成天睡大觉，无忧无虑，什么事也不过问。可是，它决定要出去玩玩，就会出走一天一夜，任凭谁怎么呼唤，它也不肯回来。说它贪玩吧，的确是呀，要不怎么会一天一夜不回家呢？可是，它听到老鼠的一点儿响动，又是多么尽职。它屏息凝视，一连就是几个钟头，非把老鼠等出来不可！
+      </p>
+      <div class="q"><span class="qn">15.</span>（2分）这段话选自老舍的《<span class="blank-m"></span>》。</div>
+      <div class="q"><span class="qn">16.</span>（4分）这段话围绕哪句话来写？用“——”画出中心句，并抄写在横线上。<div class="write-line"></div></div>
+      <div class="q"><span class="qn">17.</span>（4分）作者说猫“古怪”，从哪两个方面看出？
+        <div class="write-line dbl"></div><div class="write-line"></div>
+      </div>
+      <div class="q"><span class="qn">18.</span>（3分）“屏息凝视”是什么意思？它写出了猫的什么特点？
+        <div class="write-line dbl"></div><div class="write-line"></div>
+      </div>
+      <div class="q"><span class="qn">19.</span>（3分）从这段话中，你体会到作者对猫怎样的感情？
+        <div class="write-line"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== 七、修改病句 / 标点 ===== -->
+  <div class="section">
+    <div class="sec-head">
+      <span class="t">七、修改病句 · 标点符号</span>
+      <span class="meta">⏱ 3 分钟 ｜ 共 9 分 ｜ 得分 ____</span>
+    </div>
+    <div class="sec-body small">
+      <div class="q"><span class="qn">20.</span>（每句 2 分）修改病句，把改正后的句子写在横线上。
+        <div style="margin:4px 0 2px;">(1) 我们要养成爱护图书的好习惯和好品质。</div>
+        <div class="write-line"></div>
+        <div style="margin:4px 0 2px;">(2) 春天到了，公园里开满了五颜六色的红花。</div>
+        <div class="write-line"></div>
+        <div style="margin:4px 0 2px;">(3) 经过努力，他的学习成绩明显改进了。</div>
+        <div class="write-line"></div>
+      </div>
+      <div class="q"><span class="qn">21.</span>（3分）给下面的句子加上标点符号。
+        <div class="write-line" style="border:none;">
+          妈妈说<span class="box"></span>明天要下雨<span class="box"></span>你记得带伞<span class="box"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>Kenton 语文冲刺 · 第2天</span>
+    <span>第 1 页 / 共 2 页</span>
+    <span>姓名______　日期______</span>
+  </div>
+
+</div>
+
+<!-- ================= 参考答案页 ================= -->
+<div class="wrap ans-page">
+  <div class="ans-head">
+    <h2>参 考 答 案</h2>
+    <div class="small">Kenton 语文冲刺 · 第2天　｜　满分 100 分　（家长可单独撕下/不打印）</div>
+  </div>
+
+  <div class="ans-block">
+    <h3>一、字音字形（12 分）</h3>
+    <p>1. (1) A ruò　(2) B hè　(3) A bǐng　(4) B mú</p>
+    <p>2. (1) 蔚蓝　(2) 愉快　(3) 健康　(4) 茂盛</p>
+  </div>
+
+  <div class="ans-block">
+    <h3>二、词语积累与运用（12 分）</h3>
+    <p>3. (1) 声　(2) 雪　(3) 胆　(4) 和　(5) 清　(6) 钧</p>
+    <p>4. (1) 严格　(2) 严厉　(3) 严肃</p>
+  </div>
+
+  <div class="ans-block">
+    <h3>三、近义词 · 反义词（8 分）</h3>
+    <p>5. (1) 闻名/有名　(2) 马上/立即　(3) 美丽/好看　(4) 安静/宁静</p>
+    <p>6. (1) 灵巧　(2) 清楚　(3) 陌生　(4) 吝啬</p>
+  </div>
+
+  <div class="ans-block">
+    <h3>四、关联词（6 分）</h3>
+    <p>7. 因为……所以……</p>
+    <p>8. 虽然……但是……</p>
+    <p>9. 只要……就……</p>
+  </div>
+
+  <div class="ans-block">
+    <h3>五、古诗文名句默写（12 分）</h3>
+    <p>10. 树头新绿未成阴</p>
+    <p>11. 飞入菜花无处寻</p>
+    <p>12. 麦花雪白菜花稀</p>
+    <p>13. 桃花流水鳜鱼肥</p>
+    <p>14. 斜风细雨不须归</p>
+  </div>
+
+  <div class="ans-block">
+    <h3>六、课内阅读理解（16 分）</h3>
+    <p>15. 猫</p>
+    <p>16. 中心句：“猫的性格实在有些古怪。”（抄写该句即可）</p>
+    <p>17. 参考：一是“老实（乖、爱睡觉）”又“贪玩（出走一天一夜）”；二是“贪玩”却又“尽职（屏息凝视等老鼠）”。即从“老实与贪玩”“贪玩与尽职”两组矛盾的方面看出古怪。（答出两组对比即可）</p>
+    <p>18. “屏息凝视”指抑制住呼吸、聚精会神地看。写出了猫捉老鼠时的专注、有耐心、尽职。</p>
+    <p>19. 表达了作者对猫的喜爱（喜欢）之情。（意思对即可）</p>
+  </div>
+
+  <div class="ans-block">
+    <h3>七、修改病句 · 标点（9 分）</h3>
+    <p>20. (1) 我们要养成爱护图书的好习惯。（删去“和好品质”，搭配不当）</p>
+    <p>20. (2) 春天到了，公园里开满了五颜六色的花。（删去“红”，“五颜六色”与“红花”矛盾）</p>
+    <p>20. (3) 经过努力，他的学习成绩明显提高了。（“改进”改为“提高”，与“成绩”搭配）</p>
+    <p>21. 妈妈说<b>：“</b>明天要下雨<b>，</b>你记得带伞<b>。”</b>（三处依次：：“　，　。”）</p>
+  </div>
+
+  <div class="footer">
+    <span>Kenton 语文冲刺 · 第2天 · 参考答案</span>
+    <span>第 2 页 / 共 2 页</span>
+    <span>家长签字______</span>
+  </div>
+</div>
+
+</body>
+</html>

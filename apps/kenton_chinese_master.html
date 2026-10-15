@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<script src="../assets/learning-sync.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>哥哥语文 · 总复习（四下·错字+易错字+报默）</title>
+<style>
+:root{--red:#1aa7b8;--redd:#147d8a;--gold:#F2B632;--golddk:#D89400;--ink:#243038;--paper:#F4FBFC;--line:#D8ECEF;
+--green:#3C9D54;--greenbg:#EAF7EC;--blue:#3170B5;--bluebg:#E8F0FA;--purple:#9a6cc0;}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+html,body{margin:0;padding:0;}
+body{font-family:'LXGW WenKai Screen','PingFang SC','Microsoft YaHei',serif;
+background:radial-gradient(circle at 10% 6%,#CDEFF3 0,transparent 38%),radial-gradient(circle at 92% 96%,#C9ECF0 0,transparent 42%),var(--paper);
+color:var(--ink);min-height:100vh;padding-bottom:30px;}
+.wrap{max-width:740px;margin:0 auto;padding:14px;}
+.top{display:flex;align-items:center;gap:10px;padding:12px 4px 6px;}
+.top .badge{background:var(--red);color:#fff;font-weight:700;font-size:19px;padding:6px 13px;border-radius:13px 13px 13px 4px;box-shadow:0 4px 0 var(--redd);}
+.top h1{font-size:19px;margin:0;}
+.top .sub{font-size:12px;color:#7fa6ab;}
+.speak{background:#fff;border:2px solid var(--gold);color:var(--golddk);border-radius:50%;width:42px;height:42px;font-size:20px;cursor:pointer;box-shadow:0 3px 0 #f0dca0;flex-shrink:0;}
+.card{background:#fff;border:2px solid var(--line);border-radius:18px;padding:18px;margin:13px 0;box-shadow:0 6px 0 #e2eff1;}
+.card h2{margin:0 0 8px;font-size:19px;color:var(--redd);}
+.lead{font-size:14px;color:#5f7d82;line-height:1.7;margin:0 0 10px;}
+.bigmenu{display:grid;grid-template-columns:1fr 1fr;gap:13px;}
+.bigtile{background:#fff;border:3px solid var(--line);border-radius:18px;padding:22px 12px;cursor:pointer;box-shadow:0 6px 0 #e2eff1;text-align:center;transition:transform .08s;}
+.bigtile:active{transform:translateY(3px);}
+.bigtile .ic{font-size:44px;}
+.bigtile .nm{font-weight:700;font-size:20px;margin-top:8px;}
+.bigtile .ds{font-size:12px;color:#7fa6ab;margin-top:4px;}
+.bigtile.cn{border-color:#bfe6ec;} .bigtile.ex{border-color:#d6e8c6;}
+.list{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.lesson{background:#fff;border:2px solid var(--line);border-radius:14px;padding:13px 8px;cursor:pointer;box-shadow:0 4px 0 #e2eff1;text-align:center;transition:transform .07s;}
+.lesson:active{transform:translateY(3px);}
+.lesson .t{font-weight:700;font-size:15px;}
+.lesson .n{font-size:11px;color:#7fa6ab;margin-top:3px;}
+.lesson.done{border-color:var(--green);background:var(--greenbg);}
+.lesson.all{grid-column:1/-1;border-color:var(--red);background:linear-gradient(180deg,#ecfafc,#fff);}
+.lesson.all .t{font-size:17px;color:var(--redd);}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;background:var(--red);color:#fff;border:none;font-family:inherit;font-weight:700;font-size:16px;padding:12px 20px;border-radius:14px;box-shadow:0 4px 0 var(--redd);cursor:pointer;transition:transform .06s;}
+.btn:active{transform:translateY(3px);box-shadow:0 1px 0 var(--redd);}
+.btn.ghost{background:#fff;color:var(--redd);border:2px solid var(--red);box-shadow:0 4px 0 #cfe7ea;}
+.btn.green{background:var(--green);box-shadow:0 4px 0 #2c7a40;}
+.btn.blue{background:var(--blue);box-shadow:0 4px 0 #225182;}
+.btn.big{font-size:19px;padding:15px 26px;}
+.btn.sm{font-size:14px;padding:9px 14px;}
+.row{display:flex;gap:9px;flex-wrap:wrap;align-items:center;margin-top:12px;justify-content:center;}
+.back{background:none;border:none;color:#7fa6ab;font-size:15px;font-family:inherit;cursor:pointer;padding:8px 2px;font-weight:700;}
+.hidden{display:none!important;}
+.dictbox{text-align:center;padding:10px 0;}
+.dnum{font-size:15px;color:#7fa6ab;font-weight:700;}
+.dstatus{font-size:30px;font-weight:700;margin:18px 0 8px;min-height:44px;}
+.dstatus.spk{color:var(--blue);animation:pulse2 1s infinite;}
+.dstatus.wrt{color:var(--green);}
+@keyframes pulse2{0%,100%{opacity:1;}50%{opacity:.55;}}
+.dhint{font-size:15px;color:#5f7d82;min-height:24px;}
+.bigcount{font-size:64px;font-weight:800;color:var(--green);line-height:1;margin:8px 0 2px;font-variant-numeric:tabular-nums;}
+.bigcount.warn{color:var(--red);animation:flash .5s infinite;}
+@keyframes flash{0%,100%{transform:scale(1);opacity:1;}50%{transform:scale(1.12);opacity:.6;}}
+.bigcount small{font-size:20px;font-weight:700;color:#7fa6ab;}
+.timerbar{height:20px;background:#E3F1F3;border-radius:10px;margin:10px 8px 4px;overflow:hidden;border:2px solid #C9E6EA;}
+.timerbar i{display:block;height:100%;background:linear-gradient(90deg,var(--green),#7CC98F);border-radius:8px;transition:width .25s linear;}
+.timerbar i.warn{background:linear-gradient(90deg,var(--red),#16b0c4);}
+.dots2{display:flex;gap:5px;flex-wrap:wrap;justify-content:center;margin:10px 0;}
+.dots2 i{width:10px;height:10px;border-radius:50%;background:#d3e9ec;}
+.dots2 i.on{background:var(--red);}
+.dots2 i.cur{background:var(--gold);transform:scale(1.3);}
+.ansgrid{display:flex;flex-wrap:wrap;gap:9px;justify-content:center;margin:12px 0;}
+.answord{background:#fff;border:2px solid var(--line);border-radius:12px;padding:10px 14px;font-size:21px;font-weight:700;cursor:pointer;box-shadow:0 3px 0 #e2eff1;transition:all .12s;}
+.answord .py{display:block;font-size:11px;color:#7fa6ab;font-weight:400;}
+.answord.miss{background:#FBE6E2;border-color:#e8643a;color:#e8643a;}
+.kou{background:linear-gradient(180deg,#FCEFCF,#FBE6B0);border:2px dashed var(--golddk);border-radius:13px;padding:11px 14px;margin:11px 0;color:#7a5800;font-weight:700;font-size:14.5px;line-height:1.8;text-align:center;}
+.lion{display:flex;gap:10px;align-items:flex-start;margin:10px 0;}
+.lion .face{font-size:32px;flex-shrink:0;}
+.lion .bubble{background:#fff;border:2px solid var(--line);border-radius:14px 14px 14px 2px;padding:10px 13px;font-size:15px;line-height:1.7;box-shadow:0 3px 0 #e2eff1;text-align:left;}
+.expl{border:2px solid var(--line);border-radius:14px;padding:12px 14px;margin:9px 0;background:#fff;box-shadow:0 4px 0 #e2eff1;cursor:pointer;}
+.expl .w{font-size:21px;font-weight:800;color:var(--redd);}
+.expl .py2{font-size:13px;color:#7fa6ab;margin-left:7px;}
+.expl .d{font-size:14px;color:#3f5258;line-height:1.8;margin-top:7px;display:none;}
+.expl.open .d{display:block;}
+.expl .tip{font-size:12px;color:var(--blue);float:right;margin-top:4px;}
+.opts{display:grid;gap:10px;margin-top:8px;}
+.opt{font-family:inherit;font-size:17px;text-align:left;background:#fff;border:2px solid var(--line);border-radius:13px;padding:12px 15px;cursor:pointer;color:var(--ink);box-shadow:0 4px 0 #e2eff1;}
+.opt.right{background:var(--greenbg);border-color:var(--green);color:var(--green);font-weight:800;}
+.opt.wrong{background:#FBE6E2;border-color:#e8643a;color:#e8643a;font-weight:800;}
+.expbox{background:var(--bluebg);border-radius:10px;padding:9px 12px;margin-top:8px;color:#2a4a6e;font-size:14px;line-height:1.7;text-align:left;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top">
+    <div class="badge">哥哥</div>
+    <div style="flex:1"><h1>语文总复习 · 四下</h1><div class="sub">错字+易错字 报默 · 易错点小测 · 错词本反复练</div></div>
+    <button class="speak" onclick="testVoice()">🔊</button>
+  </div>
+  <div id="home">
+    <div class="card">
+      <div class="lion"><div class="face">🦁</div><div class="bubble">这是你<b>语文的总复习一个软件</b>：把以前默错的字、试卷易错字、古诗名句都收在<b>「报默」</b>里（读三遍，听着写）；<b>「易错小测」</b>查字音字形/近义/文学常识（每题讲<b>为什么</b>）。凡是错过一次的词都进<b>错词本</b>，<b>连续答对2次</b>才毕业。</div></div>
+      <div class="kou">先点右上角 🔊 试一下声音！</div>
+    </div>
+    <div class="bigmenu">
+      <div class="bigtile cn" onclick="showCnList()"><div class="ic">📝</div><div class="nm">报默写字</div><div class="ds">错字+易错字+古诗名句</div></div>
+      <div class="bigtile ex" onclick="showExpl()"><div class="ic">📖</div><div class="nm">错字讲解</div><div class="ds">每个错在哪 · 怎么记</div></div>
+    </div>
+    <div class="card" style="margin-top:14px;cursor:pointer" onclick="showArchive()">
+      <div style="display:flex;align-items:center;gap:12px">
+        <div style="font-size:34px">📊</div>
+        <div style="flex:1"><div style="font-weight:700;font-size:18px;color:var(--redd)">学习档案 · 错词本</div>
+        <div style="font-size:13px;color:#5f7d82" id="homestat">查看每次记录、错词本，导出给爸爸</div></div>
+        <div style="font-size:22px;color:#7fa6ab">›</div>
+      </div>
+    </div>
+  </div>
+  <div id="cnlist" class="hidden"></div>
+  <div id="expl" class="hidden"></div>
+  <div id="dict" class="hidden"></div>
+  <div id="ans" class="hidden"></div>
+  <div id="quiz" class="hidden"></div>
+  <div id="archive" class="hidden"></div>
+</div>
+<script>
+/* ===================== 数据：哥哥四下语文总复习（错字+易错字，来自后台学情） ===================== */
+/* [词/句, 拼音/提示] */
+const CN={
+ '★勤学成语(仍需巩固)':[["凿壁偷光","záo bì tōu guāng"],["悬梁刺股","xuán liáng cì gǔ"],["囊萤夜读","náng yíng yè dú"],["程门立雪","chéng mén lì xuě"]],
+ '复习错词(家长核对·重点)':[["柔嫩","róu nèn"],["奢侈","shē chǐ"],["贤惠","xián huì"],["悲戚","bēi qī"],["临危不惧","lín wēi bù jù"],["焦躁不安","jiāo zào bù ān"],["心急如焚","xīn jí rú fén"],["维持","wéi chí"]],
+ '试卷易错字词':[["乾坤","qián kūn"],["冰心","bīng xīn"],["玉壶","yù hú"],["练囊","liàn náng"],["萤火","yíng huǒ"],["不解之谜","bù jiě zhī mí"],["壮丽","zhuàng lì"],["心悦诚服","xīn yuè chéng fú"]],
+ '古诗名句默写':[["洛阳亲友如相问，一片冰心在玉壶。","《芙蓉楼送辛渐》"],["不要人夸好颜色，只留清气满乾坤。","《墨梅》"],["少壮不努力，老大徒伤悲。","《长歌行》"],["欲将轻骑逐，大雪满弓刀。","《塞下曲》"],["书山有路勤为径，学海无涯苦作舟。","韩愈名联"]],
+};
+/* 读音订正：多音字/易读错字，报默时用『同音替身』喂给朗读，写出来仍是原词 */
+const POLY={"乾坤":"前坤"};
+/* 错字讲解：错在哪 + 怎么记 */
+const EXPL=[
+ ["凿壁偷光","záo bì tōu guāng","勤学成语。<b>凿</b>＝凿穿（注意上半部，别写成『擊/鑿』乱笔）；<b>壁</b>是<b>土字底</b>(墙壁)，不是『璧(玉)』。匡衡凿穿墙壁，借邻居家的光读书。"],
+ ["悬梁刺股","xuán liáng cì gǔ","<b>悬</b>下面是<b>心</b>；<b>股</b>＝大腿（月字旁），不是『屁股』随便写。孙敬把头发拴在房梁、苏秦用锥子刺大腿，提神苦读。"],
+ ["囊萤夜读","náng yíng yè dú","<b>囊</b>＝口袋(笔画多，慢慢写)；<b>萤</b>是<b>草字头+虫</b>（萤火虫），不是『荧/莹』。车胤用袋子装萤火虫照明读书。"],
+ ["程门立雪","chéng mén lì xuě","在老师门口冒雪站立等候，形容<b>尊师好学</b>。和上面三个都是『勤学/求学』成语，别和『临危不惧』这类混。"],
+ ["柔嫩","róu nèn","<b>嫩</b>右边是<b>『敕』</b>（束+攵），不是『束』。柔嫩＝又软又娇嫩。"],
+ ["奢侈","shē chǐ","<b>奢</b>＝大+者；<b>侈</b>＝亻+多。意思是<b>过分浪费、不节俭</b>。两个都是易写错的生字。"],
+ ["贤惠","xián huì","<b>惠</b>下面是<b>心</b>（恩惠的惠），不是『穗』。形容女子善良能干。"],
+ ["悲戚","bēi qī","<b>戚</b>＝忧愁（戈里面是『尗』），不要写成『威/戊』。悲戚＝悲伤忧愁。"],
+ ["临危不惧","lín wēi bù jù","<b>惧</b>＝害怕（忄+具）。遇到危险<b>不害怕</b>。哈尔威船长就是临危不惧、忠于职守。"],
+ ["焦躁不安","jiāo zào bù ān","<b>躁</b>是<b>足字旁</b>（脚跺地，烦躁），不是『燥(火)』『澡(水)』。偏向<b>烦躁、坐不住</b>。"],
+ ["心急如焚","xīn jí rú fén","<b>焚</b>＝林+火（火烧树林）。心里急得<b>像火烧一样</b>，比『焦躁不安』更急。"],
+ ["维持","wéi chí","<b>维</b>是<b>绞丝旁+隹</b>。维持＝保持、保住（局面/秩序）。"],
+ ["乾坤","qián kūn","<b>乾</b>读 qián（不读 gān），＝天；<b>坤</b>＝地。乾坤＝天地。出自《墨梅》『只留清气满乾坤』。"],
+ ["不解之谜","bù jiě zhī mí","<b>谜</b>是<b>言字旁</b>（谜语），不是『迷(走之)』。解不开的谜团。"],
+ ["心悦诚服","xīn yuè chéng fú","<b>诚</b>是<b>言字旁</b>（真诚），不是『城/成』。心里<b>真诚地佩服</b>。"]
+];
+/* 易错点小测：字音/字形/近义/文学常识，每题带讲解(为什么) */
+const CN_QUIZ={
+ '字音易错':[
+  {q:'“脸颊”的「颊」读哪个音？',o:['jiá','xiá','jiā'],a:0,e:'颊 jiá＝脸的两侧。形声字，常被误读成 jiā。'},
+  {q:'“一刹那”的「刹」读哪个音？',o:['chà','shā','cā'],a:0,e:'刹那 chà nà＝极短的时间；只有“刹车 shā chē”才读 shā。'},
+  {q:'“名不见经传”的「传」读哪个音？',o:['zhuàn','chuán','zuàn'],a:0,e:'经传 zhuàn＝古代典籍；传递、传说才读 chuán。'},
+  {q:'“久负盛名”的「盛」读哪个音？',o:['shèng','chéng','shén'],a:0,e:'盛名 shèng＝大、兴旺；盛饭、盛汤才读 chéng。'},
+  {q:'“大雪满弓刀”前一句“单于夜遁逃”，「单于」的「单」读？',o:['chán','dān','shàn'],a:0,e:'单于 chán yú＝古代匈奴首领；姓单读 shàn；单独读 dān。'},
+  {q:'“相差不大”里“不差”表示“没差错/差不多”时，「差」读？',o:['chà','chā','chāi'],a:0,e:'差不多/差劲 chà；差别/差距 chā；出差/差遣 chāi。'},
+  {q:'“禁止”的「禁」读哪个音？',o:['jìn','jīn'],a:0,e:'禁止/禁令 jìn；情不自禁、弱不禁风才读 jīn。'},
+  {q:'“他冲着我笑”的「冲」读？',o:['chòng','chōng'],a:0,e:'对着、朝着＝chòng；冲锋、冲水读 chōng。'},
+  {q:'“倔强”的「倔」读？',o:['jué','juè'],a:0,e:'倔强 jué jiàng＝不服输、不肯改；倔脾气口语才读 juè。'},
+  {q:'“广为流传”的「传」读？',o:['chuán','zhuàn'],a:0,e:'流传、传递 chuán；经传、传记才读 zhuàn。'},
+  {q:'“负载/载重”的「载」读？',o:['zài','zǎi'],a:0,e:'装载、负载、载重 zài；记载、一年半载读 zǎi。'}
+ ],
+ '字形易错(选对的)':[
+  {q:'“天地”的意思，哪个写法对？(qián kūn)',o:['乾坤','钱坤','乾昆'],a:0,e:'乾坤＝天地，左“乾”右“坤”，不是“钱”。'},
+  {q:'解不开的谜团，哪个对？',o:['不解之谜','不解之迷','不解之秘'],a:0,e:'谜（言字旁）＝谜语；不是“迷(走之)”。'},
+  {q:'真心佩服，哪个对？',o:['心悦诚服','心悦城服','心悦成服'],a:0,e:'诚（言字旁）＝真诚；不是“城/成”。'},
+  {q:'又雄伟又美丽，哪个对？',o:['壮丽','状丽','壮历'],a:0,e:'壮（士字旁，强壮）＋丽；不是“状”。'},
+  {q:'读书刻苦，哪个成语写法对？',o:['囊萤夜读','囊荧夜读','囊莹夜读'],a:0,e:'萤＝草字头+虫（萤火虫）；荧是荧光、莹是晶莹，都不对。'}
+ ],
+ '近义辨析':[
+  {q:'心里急得像火烧一样，用哪个？',o:['心急如焚','焦躁不安','临危不惧'],a:0,e:'心急如焚（焚＝火烧）强调“急”；焦躁不安偏“烦躁坐不住”。'},
+  {q:'遇到危险一点也不害怕，用哪个？',o:['临危不惧','心悦诚服','悲戚'],a:0,e:'临危不惧＝面对危险不怕；哈尔威船长就是这样。'},
+  {q:'下面哪个是“勤学苦读”一类成语？',o:['程门立雪','焦躁不安','临危不惧'],a:0,e:'程门立雪/凿壁偷光/悬梁刺股/囊萤夜读都讲勤学求学。'}
+ ],
+ '文学常识':[
+  {q:'《海上日出》的作者是谁？',o:['巴金','叶圣陶','安徒生'],a:0,e:'巴金《海上日出》；《记金华的双龙洞》才是叶圣陶。'},
+  {q:'《卖火柴的小女孩》的作者、被称“世界童话之王”的是？',o:['安徒生(丹麦)','格林兄弟(德国)','王尔德(英国)'],a:0,e:'安徒生是丹麦童话作家，世界童话之王。'},
+  {q:'《巨人的花园》的作者是？',o:['王尔德','雨果','巴金'],a:0,e:'王尔德(英国)《巨人的花园》；雨果写《“诺曼底号”遇难记》。'},
+  {q:'《“诺曼底号”遇难记》里临危不乱、忠于职守的船长是？',o:['哈尔威船长','船长王尔德','辛巴达'],a:0,e:'哈尔威船长，雨果笔下临危不惧、与船共存亡。'}
+ ]
+};
+
+let voices=[];function loadVoices(){voices=speechSynthesis.getVoices();}
+if('speechSynthesis'in window){loadVoices();speechSynthesis.onvoiceschanged=loadVoices;}
+let warmed=false;function warm(){if(!('speechSynthesis'in window))return;try{speechSynthesis.resume();}catch(e){}if(warmed)return;loadVoices();try{var wu=new SpeechSynthesisUtterance('ok');wu.volume=0.02;speechSynthesis.speak(wu);}catch(e){}warmed=true;}
+document.body.addEventListener('touchstart',warm,{once:true});
+document.body.addEventListener('click',warm,{once:true});
+document.addEventListener('visibilitychange',()=>{if(document.hidden){haltAudio();try{speechSynthesis.cancel();}catch(e){}stopTimer();}});
+setInterval(()=>{if('speechSynthesis'in window&&speechSynthesis.speaking){try{speechSynthesis.pause();speechSynthesis.resume();}catch(e){}}},9000);
+function pickZhVoice(){
+  if(!voices||!voices.length)return null;
+  const zh=voices.filter(v=>/zh|cmn|Chinese/i.test(v.lang||'')||/中文|普通话|国语|Chinese/i.test(v.name||''));
+  if(!zh.length)return null;
+  return zh.find(v=>/Google/i.test(v.name||'')&&/zh[-_]CN|cmn/i.test(v.lang||''))
+       ||zh.find(v=>/Google|Microsoft|Ting-Ting|Mei-Jia/i.test(v.name||''))
+       ||zh.find(v=>/zh[-_]CN/i.test(v.lang||''))||zh[0];
+}
+function mkUtter(t,lang){
+  const u=new SpeechSynthesisUtterance(t);
+  const v=pickZhVoice();if(v)u.voice=v;u.lang='zh-CN';u.rate=0.85;
+  u.pitch=1.0;return u;
+}
+const USE_BROWSER_TTS=true;
+const AUDIO_DIR="audio/kenton_chinese_master/";
+let exAudio=null;let audioTok=0;
+function audioHash(s){const b=new TextEncoder().encode(s);let x=0x811c9dc5>>>0;for(let i=0;i<b.length;i++){x^=b[i];x=Math.imul(x,0x01000193)>>>0;}return ('0000000'+x.toString(16)).slice(-8);}
+function getExAudio(){if(!exAudio){exAudio=new Audio();exAudio.setAttribute('playsinline','');exAudio.preload='auto';try{document.body.appendChild(exAudio);}catch(e){}}return exAudio;}
+function haltAudio(){audioTok++;if(exAudio){try{exAudio.pause();}catch(e){}}}
+function ttsSpeakOnce(t,lang){try{speechSynthesis.cancel();speechSynthesis.resume();}catch(e){}try{speechSynthesis.speak(mkUtter(t,lang));}catch(e){}}
+function speakOnce(t,lang){
+  if(USE_BROWSER_TTS&&('speechSynthesis'in window)){ttsSpeakOnce(t,lang);return;}
+  try{speechSynthesis.cancel();}catch(e){}
+  audioTok++;const myTok=audioTok;
+  const a=getExAudio();let done=false;
+  const stale=()=>done||myTok!==audioTok;
+  const fb=()=>{if(stale())return;done=true;ttsSpeakOnce(t,lang);};
+  a.onended=()=>{if(stale())return;done=true;};
+  a.onerror=fb;
+  try{a.pause();}catch(e){}
+  a.src=AUDIO_DIR+audioHash(lang+"|"+t)+".mp3";
+  try{a.currentTime=0;}catch(e){}
+  const p=a.play();
+  if(p&&typeof p.catch==='function')p.catch(fb);
+}
+function testVoice(){if(!('speechSynthesis'in window)){var k=document.querySelector('.kou');if(k)k.textContent='这个浏览器不支持朗读，请用 Safari 或 Chrome 打开';return;}warm();speakOnce('你好哥哥，我是默写助手。','zh');}
+let speakSession=0;
+function ttsSpeakTimes(t,lang,times,sid,onDone){
+  try{speechSynthesis.cancel();}catch(e){}
+  let count=0,fired=false;
+  function fire(){if(fired||sid!==speakSession)return;fired=true;onDone&&onDone();}
+  function one(){
+    if(sid!==speakSession)return;
+    const u=mkUtter(t,lang);
+    u.onend=()=>{ if(sid!==speakSession)return; count++;
+      if(count<times){ setTimeout(one,900); } else { setTimeout(fire,400); } };
+    u.onerror=()=>{ count++; if(count<times){setTimeout(one,900);} else {setTimeout(fire,400);} };
+    try{speechSynthesis.resume();}catch(e){}speechSynthesis.speak(u);
+  }
+  one();
+  const est=(t.length*380+1600)*times+2500;
+  setTimeout(fire,Math.min(est,46000));
+}
+function speakTimes(t,lang,times,onDone){
+  const sid=++speakSession;
+  if(USE_BROWSER_TTS&&('speechSynthesis'in window)){ttsSpeakTimes(t,lang,times,sid,onDone);return;}
+  const myTok=++audioTok;
+  try{speechSynthesis.cancel();}catch(e){}
+  let count=0,fired=false;
+  const dead=()=>sid!==speakSession||myTok!==audioTok;
+  function fire(){if(fired||dead())return;fired=true;onDone&&onDone();}
+  const a=getExAudio();
+  const src=AUDIO_DIR+audioHash(lang+"|"+t)+".mp3";
+  let fellBack=false;
+  function toTTS(){ if(fellBack||dead())return; fellBack=true;
+    try{a.pause();}catch(e){} a.onended=null;a.onerror=null;
+    ttsSpeakTimes(t,lang,times-count,sid,onDone); }
+  function playOne(){
+    if(dead())return;
+    a.onended=()=>{ if(dead())return; count++;
+      if(count<times){ setTimeout(playOne,900); } else { setTimeout(fire,400); } };
+    a.onerror=toTTS;
+    try{a.pause();}catch(e){}
+    a.src=src;
+    try{a.currentTime=0;}catch(e){}
+    const p=a.play();
+    if(p&&typeof p.catch==='function')p.catch(toTTS);
+  }
+  playOne();
+  const est=(t.length*380+1600)*times+2500;
+  setTimeout(fire,Math.min(est,46000));
+}
+
+/* ===================== 状态与导航 ===================== */
+const S={mode:null,key:null,items:[],idx:0,miss:new Set(),lang:'zh',paused:false,
+  startTime:0,perItem:[],marks:[]};
+let timerH=null,timerLeft=0;
+function stopTimer(){if(timerH){clearInterval(timerH);timerH=null;}}
+function show(id){['home','cnlist','expl','dict','ans','quiz','archive'].forEach(x=>document.getElementById(x).classList.add('hidden'));
+  document.getElementById(id).classList.remove('hidden');window.scrollTo(0,0);}
+function goHome(){speakSession++;haltAudio();try{speechSynthesis.cancel();}catch(e){}stopTimer();refreshHomeStat();show('home');}
+
+/* ===================== 归档引擎 ===================== */
+const CHILD='哥哥';
+const AKEY='mx_archive_'+CHILD+'_cn_master';
+function loadArchive(){try{return JSON.parse(localStorage.getItem(AKEY))||{child:CHILD,events:[]};}catch(e){return{child:CHILD,events:[]};}}
+function saveArchive(a){try{localStorage.setItem(AKEY,JSON.stringify(a));}catch(e){}}
+function logEvent(ev){const a=loadArchive();a.events.push(ev);saveArchive(a);cloudUpload(ev);}
+function cloudUpload(ev){
+  try{
+    var endpoint=localStorage.getItem('eb_endpoint');
+    if(!endpoint)return;
+    var kid=(CHILD==='哥哥')?'kenton':(CHILD==='弟弟')?'eddey':CHILD;
+    var subj=(ev.subject==='cn')?'语文':(ev.subject==='en')?'英语':(ev.subject||'');
+    var topic=ev.lesson||'';
+    var rows=(ev.items||[]).map(function(it){
+      return {kid:kid,subject:subj,topic:topic,
+        item:(it.word!=null?it.word:(it.t!=null?it.t:'')),
+        ok:!!it.ok,hint:it.hint||''};
+    });
+    if(!rows.length)return;
+    fetch(endpoint,{method:'POST',headers:{'Content-Type':'text/plain'},body:JSON.stringify(rows)})
+      .then(function(){}).catch(function(){});
+  }catch(e){}
+}
+function fmtDate(ts){const d=new Date(ts);const p=n=>(n<10?'0':'')+n;return `${d.getFullYear()}-${p(d.getMonth()+1)}-${p(d.getDate())} ${p(d.getHours())}:${p(d.getMinutes())}`;}
+function aggregateWords(events){
+  const m={};
+  events.forEach(ev=>{(ev.items||[]).forEach(it=>{
+    const key=ev.subject+'|'+it.word;
+    if(!m[key])m[key]={word:it.word,hint:it.hint||'',subject:ev.subject,lesson:ev.lesson,ok:0,wrong:0,last:ev.ts};
+    if(it.ok)m[key].ok++;else m[key].wrong++;
+    m[key].last=Math.max(m[key].last,ev.ts);
+  });});
+  return Object.values(m);
+}
+function refreshHomeStat(){
+  const a=loadArchive();const el=document.getElementById('homestat');if(!el)return;
+  var act=wbActive().length;
+  if(!a.events.length){el.innerHTML=act?('错词本待练 <b style="color:var(--red)">'+act+'</b> 个 ｜ 做一次默写就会归档'):'还没有记录——做一次默写或小测就会自动归档';return;}
+  const words=aggregateWords(a.events);
+  const repeat=words.filter(w=>w.wrong>=2).length;
+  el.innerHTML=`共 <b>${a.events.length}</b> 次练习 ｜ 错词本待练 <b style="color:var(--red)">${act}</b> 个 ｜ 点这里查看/导出`;
+}
+
+/* ===================== 错字讲解 ===================== */
+function showExpl(){
+  const b=document.getElementById('expl');
+  b.innerHTML=`<button class="back" onclick="goHome()">← 返回</button>
+    <div class="card"><h2>📖 错字讲解 · 先懂为什么</h2>
+    <div class="lead">点每个词<b>展开</b>看：错在哪、怎么记。看完再去「报默写字」更稳。</div>
+    ${EXPL.map((e,i)=>`<div class="expl" data-i="${i}"><span class="tip">点开看 ▾</span><span class="w">${e[0]}</span><span class="py2">${e[1]}</span><div class="d">${e[2]} <button class="btn sm ghost" style="margin-top:8px" onclick="event.stopPropagation();speakOnce(sayOf('${esc(e[0])}'),'zh')">🔊 读一遍</button></div></div>`).join('')}
+    <div class="row"><button class="btn green big" onclick="showCnList()">去报默 →</button></div></div>`;
+  b.querySelectorAll('.expl').forEach(c=>c.onclick=()=>c.classList.toggle('open'));
+  show('expl');
+}
+
+/* ===================== 列表 ===================== */
+function showCnList(){
+  const b=document.getElementById('cnlist');
+  b.innerHTML=`<button class="back" onclick="goHome()">← 返回</button>
+    <div class="card"><h2>📝 报默写字 · 选一组</h2>
+    <div class="lead">边听边写，每个读三遍，时间到自动下一个；默完<b>对照答案，写错的点一下标红</b>再重默。</div>
+    <div class="list">${Object.keys(CN).map(k=>`<div class="lesson${k.indexOf('★')===0?' all':''}" onclick="startDict('cn','${esc(k)}')"><div class="t">${k}</div><div class="n">${CN[k].length} 个</div></div>`).join('')}</div></div>
+    <div class="card"><h2>🧠 易错点小测（带讲解）</h2>
+    <div class="lead">默写检查"会不会写"，这里检查"懂不懂"——字音/字形/近义/文学常识，<b>每题讲为什么</b>。</div>
+    <div class="list">${Object.keys(CN_QUIZ).map(k=>`<div class="lesson" style="border-color:#bfe6ec" onclick="startQuiz('cnq','${esc(k)}')"><div class="t">${k}</div><div class="n">${CN_QUIZ[k].length} 题</div></div>`).join('')}</div></div>`;
+  show('cnlist');
+}
+function esc(s){return (''+s).replace(/\\/g,"\\\\").replace(/'/g,"\\'");}
+function sayOf(w){return POLY[w]||w;}
+
+/* ===================== 默写流程 ===================== */
+function startDict(mode,key){
+  warm();
+  S.mode=mode;S.key=key;S.idx=0;S.miss=new Set();S.startTime=Date.now();S.perItem=[];
+  S.items=CN[key].map(d=>Array.isArray(d)?{t:d[0],hint:d[1]||'',say:sayOf(d[0])}:{t:d,hint:'',say:sayOf(d)});S.lang='zh';
+  S.itemStart=Date.now();
+  renderDict();show('dict');
+  setTimeout(()=>runWord(),400);
+}
+function clamp(v,lo,hi){return Math.max(lo,Math.min(hi,v));}
+function round05(v){return Math.round(v*2)/2;}
+function wordSec(it){const n=[...it.t].length;return round05(clamp(5.5+n*2,9.5,n>5?30:16));}
+function renderDict(){
+  const b=document.getElementById('dict');const it=S.items[S.idx];
+  b.innerHTML=`<button class="back" onclick="confirmQuit()">← 退出</button>
+    <div class="card dictbox">
+      <div class="dnum">${S.key} ｜ 第 ${S.idx+1} / ${S.items.length} 个</div>
+      <div class="dstatus wrt" id="dstat">🔊✍️ 一边听一边写</div>
+      <div class="dhint" id="dhint">(听到就开始写，别看屏幕)</div>
+      <div class="bigcount" id="bigcount">--</div>
+      <div class="timerbar"><i id="tbar" style="width:100%"></i></div>
+      <div class="dots2">${S.items.map((_,i)=>`<i class="${i<S.idx?'on':(i===S.idx?'cur':'')}"></i>`).join('')}</div>
+      <div class="row">
+        <button class="btn sm ghost" onclick="replayWord()">🔁 再听一遍</button>
+        <button class="btn sm blue" id="pbtn" onclick="togglePause()">⏸ 暂停</button>
+        <button class="btn sm green" onclick="nextWord()">✅ 写好了，下一个</button>
+      </div>
+    </div>`;
+}
+function runWord(){
+  stopTimer();S.paused=false;S.itemStart=Date.now();
+  const it=S.items[S.idx];
+  const st=document.getElementById('dstat');if(!st)return;
+  st.className='dstatus wrt';st.textContent='🔊✍️ 一边听一边写';
+  const tb=document.getElementById('tbar');if(tb)tb.style.width='100%';
+  speakTimes(it.say,S.lang,3,null);
+  startWriting();
+}
+function startWriting(){
+  const it=S.items[S.idx];
+  const total=wordSec(it);timerLeft=total;
+  stopTimer();
+  timerH=setInterval(()=>{
+    if(S.paused)return;
+    timerLeft-=0.25;
+    const tb=document.getElementById('tbar');
+    const bc=document.getElementById('bigcount');
+    const pct=Math.max(0,timerLeft/total*100);
+    if(tb)tb.style.width=pct+'%';
+    const secLeft=Math.ceil(Math.max(0,timerLeft));
+    if(bc){bc.innerHTML=secLeft+'<small> 秒</small>';
+      if(timerLeft<=3.2){bc.classList.add('warn');if(tb)tb.classList.add('warn');}
+      else{bc.classList.remove('warn');if(tb)tb.classList.remove('warn');}}
+    if(timerLeft<=0){stopTimer();nextWord();}
+  },250);
+}
+function replayWord(){const it=S.items[S.idx];speakTimes(it.say,S.lang,1,null);}
+function togglePause(){
+  S.paused=!S.paused;
+  const pb=document.getElementById('pbtn');
+  if(pb)pb.textContent=S.paused?'▶ 继续':'⏸ 暂停';
+  if(S.paused){haltAudio();try{speechSynthesis.cancel();}catch(e){}}
+}
+function nextWord(){
+  speakSession++;haltAudio();try{speechSynthesis.cancel();}catch(e){}stopTimer();
+  const it=S.items[S.idx];
+  S.perItem.push({word:it.t,hint:it.hint||'',ms:Date.now()-(S.itemStart||Date.now())});
+  if(S.idx<S.items.length-1){S.idx++;S.itemStart=Date.now();renderDict();setTimeout(()=>runWord(),300);}
+  else{showAnswers();}
+}
+function confirmQuit(){speakSession++;haltAudio();try{speechSynthesis.cancel();}catch(e){}stopTimer();showCnList();}
+
+/* ===================== 答案对照 ===================== */
+function showAnswers(){
+  const b=document.getElementById('ans');
+  b.innerHTML=`<button class="back" onclick="confirmQuit()">← 返回选组</button>
+    <div class="card">
+      <h2>📋 ${S.key} · 对答案</h2>
+      <div class="lead">对照你写的：<b>写错/没写出来的，点一下变红</b>（其余算写对）。标红过的词会进错词本反复练。</div>
+      <div class="ansgrid">${S.items.map((it,i)=>`<div class="answord" id="aw${i}" onclick="toggleMiss(${i})">${it.t}${it.hint?`<span class="py">${it.hint}</span>`:''}</div>`).join('')}</div>
+      <div class="kou" id="ansprog">把写错的点红，再点完成。</div>
+      <div class="row">
+        <button class="btn big" id="redoBtn" onclick="redoMiss()" style="display:none">🔁 只重默写错的</button>
+        <button class="btn green big" onclick="finishLesson()">✅ 完成</button>
+      </div>
+    </div>`;
+  show('ans');
+  speakOnce('默完了！对照答案，写错的点一下变红。','zh');
+}
+function toggleMiss(i){
+  const el=document.getElementById('aw'+i);if(!el)return;
+  if(S.miss.has(i)){S.miss.delete(i);el.classList.remove('miss');}
+  else{S.miss.add(i);el.classList.add('miss');}
+  const rb=document.getElementById('redoBtn');if(rb)rb.style.display=S.miss.size?'inline-flex':'none';
+  const p=document.getElementById('ansprog');if(p)p.innerHTML=S.miss.size?('标红 '+S.miss.size+' 个错词，点完成会记进错词本'):'把写错的点红，再点完成。';
+}
+function redoMiss(){
+  if(!S.miss.size)return;
+  S.items=[...S.miss].sort((a,b)=>a-b).map(i=>S.items[i]);
+  S.idx=0;S.miss=new Set();
+  renderDict();show('dict');
+  speakOnce('好，只重默写错的。准备！','zh');
+  setTimeout(()=>runWord(),1500);
+}
+function finishLesson(){
+  const missWords=new Set([...S.miss].map(i=>S.items[i].t));
+  const items=S.items.map((it,i)=>{const pi=S.perItem.find(p=>p.word===it.t);return {word:it.t,hint:it.hint||'',ok:!missWords.has(it.t),ms:pi?pi.ms:0};});
+  logEvent({ts:Date.now(),type:'dict',subject:'cn',lesson:S.key,total:S.items.length,wrong:S.miss.size,durationSec:Math.round((Date.now()-S.startTime)/1000),items:items});
+  speakOnce(S.miss.size?('记下了，错词留着再练。'):'真棒，全写对啦！','zh');
+  setTimeout(()=>confirmQuit(),1200);
+}
+
+/* ===================== 易错点小测引擎（带讲解） ===================== */
+const Q={mode:null,key:null,bank:[],idx:0,startTime:0,results:[]};
+function shuffle(a){a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
+function buildCnQuiz(key){
+  return CN_QUIZ[key].map(item=>{const correct=item.o[item.a];const opts=shuffle(item.o);
+    return {prompt:item.q,ask:'选一个正确的：',o:opts,a:opts.indexOf(correct),word:correct,hint:'',e:item.e||'',say:'',lang:'zh'};});
+}
+function startQuiz(mode,key){
+  Q.mode=mode;Q.key=key;Q.idx=0;Q.startTime=Date.now();Q.results=[];
+  Q.bank=buildCnQuiz(key);
+  renderQuiz();show('quiz');
+}
+function renderQuiz(){
+  const b=document.getElementById('quiz');const it=Q.bank[Q.idx];
+  b.innerHTML='<button class="back" onclick="quitQuiz()">← 退出小测</button>'+
+    '<div class="card"><h2>🧠 '+Q.key+'</h2>'+
+    '<div class="dnum" style="text-align:center">第 '+(Q.idx+1)+' / '+Q.bank.length+' 题</div>'+
+    '<div style="text-align:center;font-size:20px;font-weight:800;margin:16px 0 6px;color:var(--blue)">'+it.prompt+'</div>'+
+    '<div class="lead" style="text-align:center">'+it.ask+'</div>'+
+    '<div class="opts">'+it.o.map((x,i)=>'<button class="opt" onclick="answerQuiz('+i+',this)">'+x+'</button>').join('')+'</div>'+
+    '<div id="qfb"></div>'+
+    '<div class="dots2">'+Q.bank.map((_,i)=>'<i class="'+(i<Q.idx?'on':(i===Q.idx?'cur':''))+'"></i>').join('')+'</div></div>';
+}
+function answerQuiz(i,btn){
+  const it=Q.bank[Q.idx];const fb=document.getElementById('qfb');if(!fb)return;
+  const ok=i===it.a;
+  Q.results.push({word:it.word,hint:it.hint,ok:ok,ms:0});
+  document.querySelectorAll('#quiz .opt').forEach(b=>b.style.pointerEvents='none');
+  const expHtml=it.e?('<div class="expbox">💡 '+it.e+'</div>'):'';
+  if(ok){btn.classList.add('right');ding();
+    fb.innerHTML='<div style="background:var(--greenbg);border-radius:10px;padding:8px 12px;margin-top:8px;color:var(--green);font-weight:700;text-align:center">✅ 对!</div>'+expHtml;
+    speakOnce('对','zh');}
+  else{btn.classList.add('wrong');
+    fb.innerHTML='<div style="background:#FBE6E2;border-radius:10px;padding:8px 12px;margin-top:8px;color:#e8643a;font-weight:700;text-align:center">正确答案:'+it.o[it.a]+'</div>'+expHtml;
+    const opts=document.querySelectorAll('#quiz .opt');if(opts[it.a])opts[it.a].classList.add('right');
+    speakOnce('再记一下，正确答案是'+it.o[it.a],'zh');}
+  setTimeout(()=>{if(Q.idx<Q.bank.length-1){Q.idx++;renderQuiz();}else{finishQuiz();}},ok?1100:2600);
+}
+function finishQuiz(){
+  const wrong=Q.results.filter(r=>!r.ok).length;
+  logEvent({ts:Date.now(),type:'quiz',subject:'cn',lesson:Q.key,
+    total:Q.bank.length,wrong:wrong,durationSec:Math.round((Date.now()-Q.startTime)/1000),items:Q.results});
+  const b=document.getElementById('quiz');const score=Q.bank.length-wrong;
+  b.innerHTML='<button class="back" onclick="quitQuiz()">← 返回</button>'+
+    '<div class="card" style="text-align:center"><h2>🧠 小测完成</h2>'+
+    '<div style="font-size:48px;font-weight:800;color:'+(wrong===0?'var(--green)':'var(--red)')+';margin:14px 0">'+score+' / '+Q.bank.length+'</div>'+
+    '<div class="kou">'+(wrong===0?'全对!说明这些你是真懂了 👍':'错了 '+wrong+' 个——再看看「错字讲解」，已存档。')+'</div>'+
+    '<div class="row"><button class="btn green big" onclick="quitQuiz()">完成</button></div></div>';
+  show('quiz');
+  speakOnce(wrong===0?'全对!这些你真的懂了。':'做完了，错的已经记下来。','zh');
+}
+function quitQuiz(){speakSession++;haltAudio();try{speechSynthesis.cancel();}catch(e){}showCnList();}
+function ding(){try{const ctx=new(window.AudioContext||window.webkitAudioContext)();const o=ctx.createOscillator();const g=ctx.createGain();o.connect(g);g.connect(ctx.destination);o.frequency.value=880;g.gain.setValueAtTime(0.15,ctx.currentTime);g.gain.exponentialRampToValueAtTime(0.001,ctx.currentTime+0.3);o.start();o.stop(ctx.currentTime+0.3);}catch(e){}}
+
+/* ===================== 归档视图 ===================== */
+function showArchive(){
+  const a=loadArchive();const b=document.getElementById('archive');
+  const evs=a.events.slice().reverse();
+  b.innerHTML='<button class="back" onclick="goHome()">← 返回</button>'+
+    '<div class="card"><h2>📊 '+CHILD+' 的语文档案</h2>'+
+    '<div class="lead">共 '+a.events.length+' 次练习。数据可<b>一键复制</b>发给爸爸，或<b>下载</b>保存。</div>'+
+    '<div class="row" style="justify-content:flex-start">'+
+      '<button class="btn sm blue" onclick="copyArchive()">📋 一键复制</button>'+
+      '<button class="btn sm green" onclick="downloadArchive()">📥 下载存档</button>'+
+      '<button class="btn sm ghost" onclick="clearArchive()">🗑 清空</button></div></div>'+
+    (function(){var aw=wbAll();if(!aw.length)return '';var act=aw.filter(function(w){return !w.mastered;});return '<div class="card"><h2 style="color:var(--red)">📕 错词本（错过就记，共'+aw.length+'个）</h2><div class="lead">只要默错过一次就在这里；<b>连续答对2次</b>才算掌握、自动移走。</div><div class="ansgrid">'+aw.map(function(w){return '<div class="answord'+(w.mastered?'':' miss')+'">'+w.word+'<span class="py">'+(w.mastered?'已掌握✓':'错'+w.wrong+'次·连对'+w.streak+'/2')+'</span></div>';}).join('')+'</div>'+(act.length?'<div class="row" style="justify-content:flex-start"><button class="btn green sm" onclick="startWrongbook()">🔁 重默错词（'+act.length+'）</button></div>':'<div class="kou">错词都掌握啦，太棒了！</div>')+'</div>';})()+
+    '<div class="card"><h2>📅 练习记录</h2>'+
+      (evs.length?evs.map(ev=>{
+        const wrongItems=(ev.items||[]).filter(it=>!it.ok).map(it=>it.word);
+        return '<div style="border-bottom:1px solid var(--line);padding:9px 0">'+
+          '<div style="font-weight:700">'+(ev.type==='dict'?'✍️默写':'🧠小测')+' · '+ev.lesson+
+            '<span style="float:right;color:#7fa6ab;font-size:12px">'+fmtDate(ev.ts)+'</span></div>'+
+          '<div style="font-size:13px;color:#5f7d82;margin-top:3px">'+(ev.total-ev.wrong)+'/'+ev.total+' 对 ｜ 用时 '+ev.durationSec+'秒'+
+            (wrongItems.length?' ｜ 错:<span style="color:var(--red)">'+wrongItems.join('、')+'</span>':' ｜ 全对 ✓')+'</div></div>';
+      }).join(''):'<div class="lead">还没有记录</div>')+'</div>'+
+    '<div class="card hidden" id="copybox"><h2>复制下面全部文字</h2>'+
+      '<textarea id="copytext" style="width:100%;height:220px;font-size:12px;font-family:monospace;border:2px solid var(--line);border-radius:10px;padding:10px"></textarea></div>';
+  show('archive');
+}
+function archiveText(){
+  const a=loadArchive();
+  let t='【'+CHILD+'语文总复习档案】导出时间:'+fmtDate(Date.now())+'\n练习总次数:'+a.events.length+'\n\n';
+  var _wb=wbAll();
+  t+='== 错词本(只要错过一次就记;连续答对2次移出) ==\n';
+  t+=_wb.length?_wb.map(function(w){return w.word+(w.lesson?' ['+w.lesson+']':'')+' 错'+w.wrong+'次 连对'+w.streak+'/2'+(w.mastered?' 已掌握':'');}).join('\n'):'(无)';
+  t+='\n\n== 每次练习明细 ==\n';
+  a.events.forEach(ev=>{
+    const wrongItems=(ev.items||[]).filter(it=>!it.ok).map(it=>it.word+(it.hint?'('+it.hint+')':''));
+    t+='\n['+fmtDate(ev.ts)+'] '+(ev.type==='dict'?'默写':'小测')+' 语文·'+ev.lesson+' ｜ '+(ev.total-ev.wrong)+'/'+ev.total+'对 ｜ '+ev.durationSec+'秒';
+    if(wrongItems.length)t+='\n  错:'+wrongItems.join('、');
+  });
+  t+='\n\n== 原始数据(JSON,可直接投喂给Claude)==\n'+JSON.stringify(a);
+  return t;
+}
+function copyArchive(){
+  const txt=archiveText();
+  const box=document.getElementById('copybox');const ta=document.getElementById('copytext');
+  if(box&&ta){box.classList.remove('hidden');ta.value=txt;ta.focus();ta.select();}
+  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(txt).then(()=>{speakOnce('已经复制好了，可以粘贴发给爸爸。','zh');}).catch(()=>{});}
+}
+function downloadArchive(){
+  const txt=archiveText();const blob=new Blob([txt],{type:'text/plain;charset=utf-8'});
+  const url=URL.createObjectURL(blob);const a=document.createElement('a');
+  a.href=url;a.download=CHILD+'语文总复习档案.txt';
+  document.body.appendChild(a);a.click();document.body.removeChild(a);
+  setTimeout(()=>URL.revokeObjectURL(url),1000);
+}
+function clearArchive(){if(confirm('确定清空'+CHILD+'的所有学习记录吗?不能撤销。')){localStorage.removeItem(AKEY);showArchive();}}
+window.addEventListener('load',()=>{setTimeout(refreshHomeStat,100);});
+
+/* ===== 错词本(默错过一次即记,连续答对2次才移出) ===== */
+var WBKEY='mx_wrongbook_kenton_chinese_master';
+function loadWB(){try{return JSON.parse(localStorage.getItem(WBKEY))||{words:{}};}catch(e){return {words:{}};}}
+function saveWB(w){try{localStorage.setItem(WBKEY,JSON.stringify(w));}catch(e){}}
+function wbAddWrong(word,hint,lesson,lang){if(!word)return;var wb=loadWB();var w=wb.words[word]||{word:word,hint:hint||'',lesson:lesson||'',lang:lang||'zh',wrong:0,streak:0,mastered:false};w.wrong++;w.streak=0;w.mastered=false;if(lesson)w.lesson=lesson;if(hint)w.hint=hint;if(lang)w.lang=lang;wb.words[word]=w;saveWB(wb);}
+function wbAddRight(word){var wb=loadWB();var w=wb.words[word];if(w&&!w.mastered){w.streak++;if(w.streak>=2)w.mastered=true;wb.words[word]=w;saveWB(wb);}}
+function wbAll(){var wb=loadWB();return Object.keys(wb.words).map(function(k){return wb.words[k];});}
+function wbActive(){return wbAll().filter(function(w){return !w.mastered;});}
+function startWrongbook(){var list=wbActive();if(!list.length){alert('错词本是空的，太棒了！');return;}warm();S.mode='cn';S.key='错词本重做';S.idx=0;S.miss=new Set();S.startTime=Date.now();S.perItem=[];S.lang='zh';S.items=list.map(function(w){return {t:w.word,hint:w.hint||'',say:sayOf(w.word)};});S.itemStart=Date.now();renderDict();show('dict');setTimeout(function(){runWord();},400);}
+(function(){if(typeof logEvent==='function'){var _o=logEvent;logEvent=function(ev){_o(ev);try{if(ev&&ev.type==='dict'&&ev.items){ev.items.forEach(function(it){if(it.ok)wbAddRight(it.word);else wbAddWrong(it.word,it.hint,ev.lesson,'zh');});}}catch(e){}};}})();
+/* 6.20 种子:哥哥唯一仍未掌握的『凿壁偷光』进错词本(连对2次才毕业) */
+(function(){try{var SEEDKEY='kenton_cn_master_seed_20260620';if(localStorage.getItem(SEEDKEY))return;var wb=loadWB();if(!wb.words['凿壁偷光']){wbAddWrong('凿壁偷光','záo bì tōu guāng','★勤学成语','zh');}localStorage.setItem(SEEDKEY,'1');}catch(e){}})();
+</script>
+</body>
+</html>

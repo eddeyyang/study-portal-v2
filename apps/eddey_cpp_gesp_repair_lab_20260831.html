@@ -1,0 +1,1081 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="study-portal-design" content="2.0">
+<meta name="study-portal-child-answer" content="child-first-v1">
+<meta name="lesson-audio" content="not-applicable">
+<title>代码侦察台 · Eddey C++ 错题修复</title>
+<style>
+:root{
+  --coral:#ee704f;--coral-dark:#a83b28;--coral-soft:#fff1eb;
+  --ink:#21343c;--muted:#61727a;--paper:#fffdf9;--line:#e7ded5;
+  --blue:#287ea8;--blue-soft:#eaf7fc;--green:#238665;--green-soft:#e8f7f1;
+  --amber:#a96c0b;--amber-soft:#fff7dd;--violet:#7756a3;--violet-soft:#f4effb;
+  --red:#b84040;--red-soft:#fff0f0;--tap:48px;--radius-card:22px
+}
+*{box-sizing:border-box}
+html{background:#f5efe8}
+body{
+  margin:0;min-height:100vh;color:var(--ink);
+  font:400 16px/1.58 system-ui,-apple-system,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
+  background:radial-gradient(circle at 14% 0,#ffe0d4 0,transparent 28%),
+    radial-gradient(circle at 90% 18%,#dff5fa 0,transparent 24%),#f7f1ea
+}
+button,input{font:inherit}
+button,a{touch-action:manipulation}
+button:focus-visible,a:focus-visible{outline:4px solid #ffd058;outline-offset:3px}
+.lesson-shell{
+  width:min(100%,760px);margin:auto;min-height:100vh;background:rgba(255,253,249,.96);
+  box-shadow:0 0 44px rgba(55,38,25,.10)
+}
+.topbar{
+  position:sticky;top:0;z-index:20;display:grid;grid-template-columns:48px 1fr 48px;
+  align-items:center;gap:8px;padding:10px 14px;background:rgba(255,253,249,.96);
+  border-bottom:1px solid var(--line);backdrop-filter:blur(12px)
+}
+.icon-btn,.back-btn{
+  display:grid;place-items:center;width:48px;min-height:var(--tap);border:1px solid var(--line);
+  border-radius:16px;background:white;color:var(--ink);text-decoration:none;cursor:pointer
+}
+.icon-btn svg,.back-btn svg,.next-btn svg,.tiny-btn svg{
+  width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:2;
+  stroke-linecap:round;stroke-linejoin:round
+}
+.headcopy{text-align:center;min-width:0}
+h1{
+  font-size:clamp(25px,7vw,40px);line-height:1.08;margin:0;font-weight:800;
+  letter-spacing:-.03em;white-space:nowrap
+}
+.headcopy p{
+  margin:3px 0 0;color:var(--muted);font-size:12px;font-weight:700;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis
+}
+.progress-wrap{padding:10px 16px 0}
+.progress-meta{
+  display:flex;justify-content:space-between;align-items:center;gap:8px;
+  color:var(--muted);font-size:13px;font-weight:700;margin-bottom:6px
+}
+.progress{height:9px;background:#eadfd5;border-radius:999px;overflow:hidden}
+.progress>i{
+  display:block;width:0;height:100%;background:linear-gradient(90deg,var(--coral),#f5aa45);
+  border-radius:999px;transition:width .35s ease
+}
+.phase-strip{display:flex;gap:6px;overflow:auto;padding:10px 16px 4px;scrollbar-width:none}
+.phase-strip::-webkit-scrollbar{display:none}
+.phase{
+  flex:0 0 auto;display:flex;align-items:center;gap:6px;min-height:34px;padding:5px 10px;
+  border-radius:999px;background:#efe8e1;color:#7b7068;font-size:12px;font-weight:800
+}
+.phase b{
+  display:grid;place-items:center;width:19px;height:19px;border-radius:50%;
+  background:white;font-size:11px
+}
+.phase.active{background:var(--coral);color:white}
+.phase.done{background:var(--green-soft);color:var(--green)}
+main{padding:14px 16px 112px}
+.screen{animation:rise .28s ease}
+@keyframes rise{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.eyebrow{
+  margin:0 0 6px;color:var(--coral-dark);font-size:13px;font-weight:800;letter-spacing:.08em
+}
+h2{font-size:clamp(23px,6vw,32px);line-height:1.22;margin:0 0 9px;font-weight:800}
+h3{font-size:19px;line-height:1.3;margin:0 0 8px;font-weight:800}
+p{margin:7px 0}
+.lead{font-size:17px;color:#435860}
+.root{
+  margin:12px 0;padding:13px 15px;border-left:6px solid var(--red);
+  border-radius:0 16px 16px 0;background:var(--red-soft)
+}
+.root strong{color:var(--red)}
+.card{
+  border:1px solid var(--line);border-radius:var(--radius-card);padding:16px;background:white;
+  box-shadow:0 8px 24px rgba(55,38,25,.07)
+}
+.card+.card{margin-top:12px}
+.color-row{display:grid;grid-template-columns:repeat(4,1fr);gap:7px;margin:13px 0}
+.gate{
+  min-height:64px;padding:8px 5px;border:2px solid transparent;border-radius:16px;
+  background:#f3eee8;text-align:center;color:#6b625d;font-size:12px;font-weight:800;
+  transition:.25s ease
+}
+.gate span{display:block;font-size:19px;line-height:1.2;margin-bottom:3px}
+.gate.active{
+  transform:translateY(-3px);border-color:var(--coral);background:var(--coral-soft);
+  color:var(--coral-dark);box-shadow:0 8px 16px rgba(238,112,79,.16)
+}
+.gate.pass{border-color:var(--green);background:var(--green-soft);color:var(--green)}
+.gate.stop{border-color:var(--red);background:var(--red-soft);color:var(--red)}
+.code{
+  margin:10px 0;padding:13px 14px;border-radius:16px;background:#172b34;color:#f8f2e7;
+  font:600 15px/1.65 ui-monospace,SFMono-Regular,Consolas,monospace;
+  overflow:auto;white-space:pre-wrap
+}
+.code .hot{color:#ffd36b}
+.scene-note{
+  min-height:52px;padding:11px 13px;border-radius:14px;background:var(--blue-soft);
+  color:#1d607e;font-weight:700
+}
+.question{margin-top:10px}
+.question-title{font-size:18px;font-weight:800;margin:0 0 10px}
+.options{display:grid;gap:9px}
+.option{
+  position:relative;width:100%;min-height:var(--tap);padding:12px 14px 12px 52px;
+  border:2px solid var(--line);border-radius:16px;background:white;color:var(--ink);
+  text-align:left;cursor:pointer;font-weight:700;transition:.18s ease
+}
+.option:hover{border-color:#d7a28f;background:#fffaf7}
+.option .letter{
+  position:absolute;left:12px;top:50%;transform:translateY(-50%);display:grid;
+  place-items:center;width:28px;height:28px;border-radius:10px;background:#f0e8e1;
+  color:#6f625b;font-weight:800
+}
+.option.correct{border-color:var(--green);background:var(--green-soft)}
+.option.wrong{border-color:var(--red);background:var(--red-soft)}
+.option[disabled]{cursor:default}
+.feedback{display:none;margin-top:12px;padding:12px 14px;border-radius:16px;font-weight:700}
+.feedback.show{display:block}
+.feedback.ok{background:var(--green-soft);color:#17664d}
+.feedback.no{background:var(--red-soft);color:#8f3030}
+.why{
+  margin-top:10px;padding:11px 13px;border-radius:14px;background:var(--amber-soft);
+  color:#74500e;font-size:14px
+}
+.why strong{color:#7e4800}
+.actions{
+  display:flex;gap:9px;align-items:center;justify-content:flex-end;
+  margin-top:15px;flex-wrap:wrap
+}
+.next-btn,.tiny-btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:var(--tap);
+  border:0;border-radius:16px;padding:11px 17px;background:var(--coral);
+  color:white;font-weight:800;cursor:pointer
+}
+.next-btn.secondary,.tiny-btn.secondary{background:white;color:var(--ink);border:2px solid var(--line)}
+.tiny-btn{padding:8px 12px;font-size:14px}
+.rule-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin:13px 0}
+.rule{padding:12px;border-radius:16px;font-weight:800}
+.rule.blue{background:var(--blue-soft);color:#1c6685}
+.rule.green{background:var(--green-soft);color:#1c6a51}
+.rule.amber{background:var(--amber-soft);color:#76500b}
+.rule.violet{background:var(--violet-soft);color:#60428a}
+.rule small{display:block;margin-top:3px;font-weight:600}
+.original{
+  margin:10px 0;border:1px solid var(--line);border-radius:16px;
+  background:#faf7f2;overflow:hidden
+}
+.original summary{
+  min-height:var(--tap);display:flex;align-items:center;padding:10px 13px;
+  cursor:pointer;font-weight:800
+}
+.original>div{padding:0 13px 13px;color:#4c5d63}
+.tag,.streak{
+  display:inline-flex;align-items:center;margin:2px 3px 2px 0;padding:5px 9px;
+  border-radius:999px;font-size:12px;font-weight:800
+}
+.tag{background:#f0e7df;color:#6d5e54}
+.streak{background:var(--green-soft);color:var(--green)}
+.repair-head{
+  padding:14px;border-radius:18px;background:linear-gradient(135deg,var(--red-soft),#fff8ef);
+  border:2px solid #efb0a5;margin-bottom:12px
+}
+.repair-step{display:flex;gap:6px;margin:12px 0}
+.repair-step i{height:8px;flex:1;border-radius:999px;background:#eadfd5}
+.repair-step i.on{background:var(--coral)}
+.finish-orbit{
+  display:grid;place-items:center;width:160px;height:160px;margin:12px auto 18px;border-radius:50%;
+  background:radial-gradient(circle,#fff 34%,#ffe1d7 35% 52%,#e5f7f4 53% 70%,transparent 71%);
+  animation:orbit 8s linear infinite
+}
+.finish-orbit b{font-size:35px;color:var(--coral-dark);animation:orbit 8s linear infinite reverse}
+@keyframes orbit{to{transform:rotate(360deg)}}
+.summary-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:12px 0}
+.summary-box{padding:11px 5px;border-radius:16px;background:#f7f1eb;text-align:center}
+.summary-box b{display:block;font-size:24px}
+.summary-box small{color:var(--muted);font-weight:700}
+.daily{
+  padding:10px 13px;border-radius:16px;background:linear-gradient(135deg,#fff6d7,#ffe7d9);
+  font-size:14px;color:#704b16;font-weight:700
+}
+.drawer{position:fixed;inset:0;z-index:50;display:none;background:rgba(24,37,43,.55);padding:18px}
+.drawer.open{display:grid;place-items:center}
+.drawer-box{
+  width:min(100%,560px);max-height:88vh;overflow:auto;background:var(--paper);
+  border-radius:24px;padding:18px;box-shadow:0 24px 70px rgba(0,0,0,.25)
+}
+.drawer-head{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.drawer h2{font-size:24px;margin:0}
+.drawer-list{display:grid;gap:8px;margin:12px 0}
+.drawer-list button,.drawer-list label{
+  display:flex;align-items:center;justify-content:center;min-height:var(--tap);
+  border:2px solid var(--line);border-radius:16px;background:white;font-weight:800;cursor:pointer
+}
+.drawer input{display:none}
+.footnote{color:var(--muted);font-size:12px}
+@media(max-width:480px){
+  .topbar{padding-inline:10px}
+  .progress-wrap,.phase-strip,main{padding-left:12px;padding-right:12px}
+  .color-row{grid-template-columns:1fr 1fr}
+  .gate{min-height:55px}
+  .rule-grid{grid-template-columns:1fr}
+  .option{padding-left:48px}
+  .summary-grid{gap:6px}
+  .summary-box b{font-size:20px}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{
+    animation-duration:.01ms!important;animation-iteration-count:1!important;
+    scroll-behavior:auto!important;transition:none!important
+  }
+}
+</style>
+</head>
+<body data-child="eddey">
+<div class="lesson-shell">
+  <header class="topbar">
+    <a class="back-btn" href="cpp_hub.html" aria-label="返回 C++ 学习馆">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>
+    </a>
+    <div class="headcopy">
+      <h1>代码侦察台</h1>
+      <p>Eddey · 昨日 10 道原错题修复</p>
+    </div>
+    <button class="icon-btn" id="openTools" type="button" aria-label="打开记录工具">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1-2.8 2.8-.1-.1a1.7 1.7 0 0 0-1.9-.3 1.7 1.7 0 0 0-1 1.6v.2h-4V21a1.7 1.7 0 0 0-1-1.6 1.7 1.7 0 0 0-1.9.3l-.1.1L4.2 17l.1-.1a1.7 1.7 0 0 0 .3-1.9A1.7 1.7 0 0 0 3 14H2.8v-4H3a1.7 1.7 0 0 0 1.6-1 1.7 1.7 0 0 0-.3-1.9L4.2 7 7 4.2l.1.1A1.7 1.7 0 0 0 9 4.6 1.7 1.7 0 0 0 10 3V2.8h4V3a1.7 1.7 0 0 0 1 1.6 1.7 1.7 0 0 0 1.9-.3l.1-.1L19.8 7l-.1.1a1.7 1.7 0 0 0-.3 1.9 1.7 1.7 0 0 0 1.6 1h.2v4H21a1.7 1.7 0 0 0-1.6 1Z"/></svg>
+    </button>
+  </header>
+  <div class="progress-wrap">
+    <div class="progress-meta"><span id="progressName">准备出发</span><span id="progressText">0%</span></div>
+    <div class="progress" aria-label="课程进度"><i id="progressBar"></i></div>
+  </div>
+  <nav class="phase-strip" aria-label="六段学习路线">
+    <span class="phase" data-phase="teach"><b>1</b>看懂</span>
+    <span class="phase" data-phase="guided"><b>2</b>跟做</span>
+    <span class="phase" data-phase="recall"><b>3</b>回想</span>
+    <span class="phase" data-phase="independent"><b>4</b>原题</span>
+    <span class="phase" data-phase="repair"><b>5</b>回炉</span>
+    <span class="phase" data-phase="transfer"><b>6</b>迁移</span>
+  </nav>
+  <main id="app" aria-live="polite"></main>
+</div>
+<div class="drawer" id="toolsDrawer" role="dialog" aria-modal="true" aria-labelledby="toolsTitle">
+  <div class="drawer-box">
+    <div class="drawer-head">
+      <h2 id="toolsTitle">学习记录</h2>
+      <button class="icon-btn" id="closeTools" type="button" aria-label="关闭">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>
+      </button>
+    </div>
+    <p id="recordSummary">还没有开始作答。</p>
+    <div class="drawer-list">
+      <button type="button" id="exportJson">导出 JSON 记录</button>
+      <button type="button" id="exportMd">导出 Markdown 小结</button>
+      <label for="importFile">导入本课记录</label>
+      <input id="importFile" type="file" accept="application/json,.json">
+      <button type="button" id="resetLesson">重新开始本课</button>
+    </div>
+    <p class="footnote">只保存 Eddey 的匿名学习过程；不会保存账号、手机号、学校或真实姓名。</p>
+  </div>
+</div>
+<script>
+"use strict";
+const LESSON_BLUEPRINT={
+  appId:"eddey-cpp-gesp-repair-20260831",
+  child:"eddey",
+  source:"GESP C++ 一级整卷 · 2026-08-30 原错题与家长讲解记录",
+  courseDate:"2026-08-31",
+  currentGap:"会认部分语法，但没有稳定执行类型检查、循环入口、变量变化和精确输出四步",
+  observableOutcome:"独立答对10道原题，错题回原题连对2次，再完成5道迁移题",
+  knowledgeMechanism:"执行指针 + 变量盒 + 条件门 + 真实输出屏",
+  primaryInteraction:"单屏单任务的逐步运行、选择证据、错后定点重教",
+  childAnswerContract:"child-first-v1",
+  childFirstLayerLimit:100,
+  audio:"not-applicable",
+  surprise:"四关X光侦察",
+  surpriseTrigger:"完成第一次四关运行",
+  phases:["teach","guided","recall","independent","repair","transfer"]
+};
+const APP_ID=LESSON_BLUEPRINT.appId;
+const STORE_KEY="study:eddey:cpp-gesp-repair-20260831:v1";
+const TEST_MODE=new URLSearchParams(location.search).has("test");
+const DAILY_SURPRISES=[
+  "今天的侦察口诀：先问类型，再让代码跑。",
+  "找反例最快：换一个最小输入试一试。",
+  "看到循环先别算，先问第一次能不能进去。",
+  "输出也算答案：7、7.0、7.00 不是同一种格式。"
+];
+function shanghaiDate(){
+  return new Intl.DateTimeFormat("en-CA",{
+    timeZone:"Asia/Shanghai",year:"numeric",month:"2-digit",day:"2-digit"
+  }).format(new Date());
+}
+function dailySurpriseKey(){
+  const text=APP_ID+"|eddey|"+shanghaiDate();
+  let h=0;
+  for(let i=0;i<text.length;i+=1)h=(h*31+text.charCodeAt(i))>>>0;
+  return h%DAILY_SURPRISES.length;
+}
+const ICON_NEXT='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
+const ICON_PLAY='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 5 11 7-11 7Z"/></svg>';
+const ICON_BACK='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>';
+
+const TEACH=[
+  {
+    title:"第一关：类型对不对",
+    root:"弟弟容易先算数字，却忘了先看数字的种类。",
+    code:"cout << (2.5 % 2);",
+    frames:[
+      ["类型关亮起：先看 % 左右两边。",0,"active"],
+      ["2.5 是 double，不是整数。",0,"stop"],
+      ["编译时就被拦住，不会等到运行时报错。",3,"stop"]
+    ],
+    rule:"% 两边必须是整数；负整数也可以。",
+    ask:"你怎么教机器人？",
+    choices:["看到 % 先检查两边是不是整数","看到 % 就把小数四舍五入","% 只能给正整数用"],
+    answer:0
+  },
+  {
+    title:"第二关：循环进不进",
+    root:"弟弟常常直接猜输出，没有先检查循环第一次能不能执行。",
+    code:"for (i = 2; i < N; i++)",
+    frames:[
+      ["把 i 放进盒子：i = 2。",1,"active"],
+      ["N=2 时，检查 2<2，结果是假。",1,"stop"],
+      ["循环一次也不进，所以什么都不输出。",3,"stop"]
+    ],
+    rule:"先代入初值检查条件；一开始是假，就是零次执行。",
+    ask:"你怎么教机器人？",
+    choices:["先看 break 在哪里","先把 i=2 代进循环条件","循环至少都会跑一次"],
+    answer:1
+  },
+  {
+    title:"第三关：变量怎么变",
+    root:"弟弟知道一些符号，但容易把 /=、%=、+= 和初始值混在一起。",
+    code:"num /= 2;   sum += x;   total = 1;",
+    frames:[
+      ["num /= 2：旧 num 除以2，再放回 num。",2,"active"],
+      ["sum += x：旧 sum 加上x，再放回 sum。",2,"pass"],
+      ["连续乘积要从1开始，不能从垃圾值开始。",2,"stop"]
+    ],
+    rule:"复合赋值都读成：旧值做运算，再放回自己。",
+    ask:"sum += 5 用人话怎么说？",
+    choices:["sum 直接变成5","旧sum加5，再放回sum","拿出sum除以5"],
+    answer:1
+  },
+  {
+    title:"第四关：输出要精确",
+    root:"算对一个样例，不等于整题通过；输出格式也是答案的一部分。",
+    code:'printf("%.2f", sum);',
+    frames:[
+      ["printf 是按模板打印。",3,"active"],
+      ["%f 是小数；.2 是小数点后两位。",3,"pass"],
+      ["sum=7 时，屏幕必须出现7.00。",3,"pass"]
+    ],
+    rule:'printf("%.2f",sum) = 把sum保留两位小数打印。',
+    ask:"如果 sum=7，会打印什么？",
+    choices:["07","7","7.00"],
+    answer:2
+  }
+];
+
+const GUIDED=[
+  {id:"g1",skill:"类型",prompt:"下面哪一个 % 表达式可以通过编译？",choices:["2.5 % 2","-5 % 2","3.0 % 2"],answer:1,why:"-5和2都是整数。%不怕负数，只怕浮点数。"},
+  {id:"g2",skill:"循环入口",prompt:"N=2时，for(i=2; i<N; i++) 会执行几次？",choices:["0次","1次","2次"],answer:0,why:"第一次检查就是2<2，结果是假。"},
+  {id:"g3",skill:"变量更新",prompt:"num=11，想让它变成5，应该写什么？",choices:["num %= 2","num /= 2","num =+ 2"],answer:1,why:"整数11/2得5；/=会把结果放回num。"},
+  {id:"g4",skill:"方案建模",prompt:"直飞999；高铁105后，飞机699或高铁588。最便宜是多少？",choices:["999","804","693"],answer:2,why:"三条完整路线是999、105+699=804、105+588=693。"}
+];
+const RECALL=[
+  {id:"r1",skill:"一句话",prompt:"看到 %，第一眼先检查什么？",choices:["两边是不是整数","有没有cout","数字是不是正数"],answer:0,why:"这是类型关。类型不合法，代码跑不起来。"},
+  {id:"r2",skill:"一句话",prompt:"看到 for / while，第一步先做什么？",choices:["猜最后答案","把初值代进条件","先找最大值"],answer:1,why:"先判断第一次进不进，再谈循环里面发生什么。"},
+  {id:"r3",skill:"一句话",prompt:"从四位数5834取十位，哪一步是“拿出”？",choices:["/ 10","% 10","* 10"],answer:1,why:"先/10去掉个位得到583，再%10拿出最右边的3。"},
+  {id:"r4",skill:"一句话",prompt:"关系判断 true 参加加法时变成几？",choices:["0","1","2"],answer:1,why:"true变成1，false变成0。"}
+];
+
+const ORIGINALS=[
+  {
+    id:"o1",skill:"优先级与取余",type:"单选",answer:2,
+    prompt:"下列 C++ 表达式与 -2 * 2 % 4 的值不同的是（ ）。",
+    choices:["-(2 * 2) % 4","(-2 * 2) % 4","-2 * (2 % 4)","(2 * 2) % -4"],
+    original:"昨日选择A，正确答案C。原式按*和%同级、从左到右计算。",
+    why:"原式=(-4)%4=0；C先算2%4=2，再乘-2，得到-4。",
+    question:"证据：哪一对括号改变了先算的部分？",repair:"precedence"
+  },
+  {
+    id:"o2",skill:"反推运算符",type:"单选",answer:0,
+    prompt:"程序输出1到11，之后每到11就跳回5。三个空应填什么？",
+    code:"if (num ____ 10)\n  num ____ 2;\nelse\n  num ____ 1;",
+    choices:[">   /=   +=",">=   %=   +=",">   %=   +=",">   /=   =+"],
+    original:"昨日选择C。你已经找对>和+=，只把/=认成了%=。",
+    why:"打印11后，11>10，所以11/=2，整数结果是5；%=2只会得到1。",
+    question:"反例：如果用%=2，11会变成几？",repair:"assign"
+  },
+  {
+    id:"o3",skill:"循环与 break",type:"单选",answer:1,
+    prompt:"下面程序的说法，哪一个正确？",
+    code:'for(i=2;i<N;i++)\n  if(N%i==0){cout<<"1#";break;}\n  else cout<<"0#";',
+    choices:["输入2，输出1#","输入15，输出0#1#","输入1，输出0#","输入3，输出1#"],
+    original:"昨日选择C。N=1时2<1为假，循环不执行。",
+    why:"N=15：i=2不能整除，输出0#；i=3能整除，输出1#并break。",
+    question:"先别判断质数：i=2时，循环条件成立吗？",repair:"loop"
+  },
+  {
+    id:"o4",skill:"while 执行次数",type:"单选",answer:0,
+    prompt:"下面代码中，哪一个说法是错误的？",
+    code:"i=0; tot=0;\nwhile(0<=i && i<10){\n  tot+=1; i+=1;\n}\ncout<<tot;",
+    choices:["把条件改成1<=i&&i<10，仍输出45","把初始化合并成i=tot=0，结果相同","交换循环内两句，结果相同","交换两句初始化顺序，结果相同"],
+    original:"昨日选择D，正确答案A。",
+    why:"原程序只是数循环次数：i从0到9，共10次，tot=10。改成1<=i后第一次就进不去，输出0。",
+    question:"证据：tot每次只加1，怎么可能直接变成45？",repair:"trace"
+  },
+  {
+    id:"o5",skill:"取十位",type:"单选",answer:1,
+    prompt:"四位数 n 的十位 c，横线处应填什么？",
+    code:"int a=n/1000;\nint b=(n/100)%10;\n____\nint d=n%10;",
+    choices:["int c=(n/10)/10;","int c=(n/10)%10;","int c=(n%10)/10;","int c=(n%10)%10;"],
+    original:"昨日选择A。A等于n/100，会留下百位以上，不是十位。",
+    why:"先/10去掉个位；再%10拿出新数最右边的一位，也就是原数十位。",
+    question:"用5834试：/10后是多少？再%10是多少？",repair:"digit"
+  },
+  {
+    id:"o6",skill:"% 的类型",type:"判断",answer:1,
+    prompt:"cout << (2.5 % 2) 能生成可执行代码，只在运行时报错，因为 % 只能用于正整数。",
+    choices:["正确","错误"],
+    original:"昨日判断为正确。",
+    why:"2.5是double，编译阶段就报类型错误；而且%可以用于负整数。",
+    question:"第一性问题：它有机会真正运行吗？",repair:"type"
+  },
+  {
+    id:"o7",skill:"变量初始化",type:"判断",answer:1,
+    prompt:"下面代码执行后一定输出24。",
+    code:"int total;\nfor(int n=1;n<=4;n++) total*=n;\ncout<<total;",
+    choices:["正确","错误"],
+    original:"昨日判断为正确。",
+    why:"total没有初始值，是不确定的垃圾值。求乘积要从total=1开始。",
+    question:"第一轮其实算的是“什么数×1”？",repair:"init"
+  },
+  {
+    id:"o8",skill:"bool 参加运算",type:"判断",answer:1,
+    prompt:"若整数a=4，则(a%2==0)+(a/2)的值为4。",
+    choices:["正确","错误"],
+    original:"昨日判断为正确。",
+    why:"4%2==0是true，参加加法变成1；4/2=2；总和是3。",
+    question:"关系判断不是4，它只会变成0或1。",repair:"bool"
+  },
+  {
+    id:"o9",skill:"三方案最小值",type:"编程原题",answer:0,
+    prompt:"旅行有三种方案：A直飞B；A高铁到C再坐飞机；A高铁到C再坐高铁。读入四段票价，输出最便宜方案的价格。哪组关键代码正确？",
+    choices:[
+      "x=b+c; y=b+d; if(a>x)a=x; if(a>y)a=y; cout<<a;",
+      "if(a>b) cout<<b; else if(a>c) cout<<c;",
+      'cin>>a>>b>>c>>d>>min1; if(b==min1) cout<<"B";',
+      'x=b+c; y=b+d; cout<<"C";'
+    ],
+    original:"昨日代码把四段票价当成四个方案，还读了题目没有的第5个数，并输出B/C/D字母。",
+    why:"x、y把两段路费合成完整方案；a=x表示让当前最便宜价换成x，不是在说两个变量本来相等。",
+    question:"输入是四段价格；真正要比较的是几条完整路线？",repair:"model"
+  },
+  {
+    id:"o10",skill:"累计与格式",type:"编程原题",answer:0,
+    prompt:"读入12个月劳务报酬。每月不超过800不缴税，超出部分按20%缴税，输出全年税款总和并保留两位小数。哪组关键代码完全正确？",
+    choices:[
+      'double sum=0,x; if(x>800) sum+=(x-800)*0.2; printf("%.2f",sum);',
+      'double sum=0,x; if(x>800) sum+=(x-800)*0.2; cout<<sum;',
+      'double sum=0,x; if(x>800) sum+=x*0.2; printf("%.2f",sum);',
+      'double sum,x; if(x>800) sum+=(x-800)*0.2; printf("%.2f",sum);'
+    ],
+    original:"昨日算出的样例数字碰巧相同，但cout<<sum不保证两位小数，所以部分测试点判错。",
+    why:'sum=0是空存钱罐；+=每月往里加；只算x-800；printf("%.2f",sum)严格打印两位。',
+    question:"反例：如果税款是7，cout与printf分别显示什么？",repair:"format"
+  }
+];
+
+const REPAIRS={
+  precedence:[
+    {prompt:"* 和 % 同级时怎么走？",choices:["从左到右","从右到左"],answer:0},
+    {prompt:"-2*(2%4) 的结果是？",choices:["0","-4"],answer:1}
+  ],
+  assign:[
+    {prompt:"11 %= 2 后是多少？",choices:["1","5"],answer:0},
+    {prompt:"11 /= 2 后是多少？",choices:["1","5"],answer:1}
+  ],
+  loop:[
+    {prompt:"N=1，2<N成立吗？",choices:["成立","不成立"],answer:1},
+    {prompt:"N=15，i=2时输出什么？",choices:["0#","1#"],answer:0}
+  ],
+  trace:[
+    {prompt:"i从0到9，循环几次？",choices:["9次","10次"],answer:1},
+    {prompt:"tot每次+1，最后是多少？",choices:["10","45"],answer:0}
+  ],
+  digit:[
+    {prompt:"5834/10得到什么？",choices:["583","4"],answer:0},
+    {prompt:"583%10拿出什么？",choices:["58","3"],answer:1}
+  ],
+  type:[
+    {prompt:"2.5是哪种类型？",choices:["整数","浮点数"],answer:1},
+    {prompt:"类型不合适，在哪时报错？",choices:["编译时","运行后"],answer:0}
+  ],
+  init:[
+    {prompt:"求和一般从几开始？",choices:["0","1"],answer:0},
+    {prompt:"求乘积一般从几开始？",choices:["0","1"],answer:1}
+  ],
+  bool:[
+    {prompt:"true参加加法变成？",choices:["0","1"],answer:1},
+    {prompt:"1+4/2等于？",choices:["3","4"],answer:0}
+  ],
+  model:[
+    {prompt:"105+699表示什么？",choices:["一段票价","一条完整路线"],answer:1},
+    {prompt:"a=x是什么意思？",choices:["把x的值放进a","判断a和x相等"],answer:0}
+  ],
+  format:[
+    {prompt:"sum+=5是什么意思？",choices:["旧sum加5再放回sum","sum直接变5"],answer:0},
+    {prompt:"%.2f中的.2表示？",choices:["总共2位","小数点后2位"],answer:1}
+  ]
+};
+const TRANSFER=[
+  {id:"t1",skill:"类型迁移",prompt:"下面哪一行会在编译阶段报错？",choices:["-7 % 3","7.0 % 3","7 / 3"],answer:1,why:"7.0是浮点数，不能参加%。"},
+  {id:"t2",skill:"循环迁移",prompt:"for(i=3;i<3;i++) cout<<i; 输出什么？",choices:["3","0","什么都不输出"],answer:2,why:"第一次检查3<3就是假。"},
+  {id:"t3",skill:"数位迁移",prompt:"从四位数7462取十位，结果是？",choices:["6","4","2"],answer:0,why:"7462/10=746，746%10=6。"},
+  {id:"t4",skill:"bool迁移",prompt:"(6%2==0)+(6/2) 的值是？",choices:["3","4","6"],answer:1,why:"true变1，6/2=3，总和4。"},
+  {id:"t5",skill:"累计迁移",prompt:"两个月报酬分别1200和900，应缴税总和是？",choices:["100.00","260.00","420.00"],answer:0,why:"(1200-800)*0.2=80；(900-800)*0.2=20；共100.00。"}
+];
+</script>
+<script>
+function freshState(){
+  return {
+    v:1,phase:"intro",teach:0,guided:0,recall:0,original:0,transfer:0,
+    attempts:[],wrong:{},streak:{},repair:null,repairStep:0,
+    returnMode:"independent",startedAt:new Date().toISOString(),finishedAt:""
+  };
+}
+function loadState(){
+  if(TEST_MODE)return freshState();
+  try{
+    const value=JSON.parse(localStorage.getItem(STORE_KEY)||"null");
+    return value&&value.v===1?Object.assign(freshState(),value):freshState();
+  }catch(_){
+    return freshState();
+  }
+}
+let state=loadState();
+let sceneStep=0;
+
+function saveState(){
+  if(!TEST_MODE)localStorage.setItem(STORE_KEY,JSON.stringify(state));
+}
+function safeText(value){
+  return String(value).replace(/[&<>"']/g,function(mark){
+    return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[mark];
+  });
+}
+function codeHtml(value){
+  return safeText(value||"").replace(
+    /(printf|cout|for|while|if|else|break|double|int)/g,
+    '<span class="hot">$1</span>'
+  );
+}
+function gates(active,status){
+  const names=[["TYPE","类型"],["LOOP","入口"],["VAR","变量"],["OUT","输出"]];
+  return names.map(function(name,index){
+    return '<div class="gate '+(index===active?status:"")+'"><span>'+name[0]+'</span>'+name[1]+'</div>';
+  }).join("");
+}
+function optionHtml(choices){
+  return choices.map(function(choice,index){
+    return '<button class="option" type="button" data-choice="'+index+'">'+
+      '<span class="letter">'+String.fromCharCode(65+index)+'</span>'+safeText(choice)+'</button>';
+  }).join("");
+}
+function progressValue(){
+  const map={
+    intro:0,teach:8+state.teach*6,guided:33+state.guided*4,recall:49+state.recall*3,
+    independent:61+state.original*2.3,repair:76,redo:84,
+    transfer:88+state.transfer*2.2,finish:100
+  };
+  return Math.min(100,Math.round(map[state.phase]||0));
+}
+function navPhase(){
+  if(state.phase==="intro")return "teach";
+  if(state.phase==="redo")return "repair";
+  if(state.phase==="finish")return "transfer";
+  return state.phase;
+}
+function updateChrome(){
+  const percent=progressValue();
+  document.getElementById("progressBar").style.width=percent+"%";
+  document.getElementById("progressText").textContent=percent+"%";
+  const names={
+    intro:"先找真正卡点",teach:"看懂四关",guided:"老师陪跑",recall:"遮住回想",
+    independent:"重做昨日原题",repair:"只修这一处",redo:"错题连对两次",
+    transfer:"换题也会",finish:"本课完成"
+  };
+  document.getElementById("progressName").textContent=names[state.phase]||"学习中";
+  const order=["teach","guided","recall","independent","repair","transfer"];
+  const index=order.indexOf(navPhase());
+  document.querySelectorAll(".phase").forEach(function(node,i){
+    node.classList.toggle("active",i===index);
+    node.classList.toggle("done",i<index);
+  });
+}
+function render(){
+  updateChrome();
+  const app=document.getElementById("app");
+  if(state.phase==="intro")app.innerHTML=introHtml();
+  else if(state.phase==="teach")renderTeach(app);
+  else if(state.phase==="guided")renderQuiz(app,GUIDED[state.guided],"guided");
+  else if(state.phase==="recall")renderQuiz(app,RECALL[state.recall],"recall");
+  else if(state.phase==="independent")renderQuiz(app,ORIGINALS[state.original],"independent");
+  else if(state.phase==="repair")renderRepair(app);
+  else if(state.phase==="redo")renderRedo(app);
+  else if(state.phase==="transfer")renderQuiz(app,TRANSFER[state.transfer],"transfer");
+  else renderFinish(app);
+  updateRecordSummary();
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+function introHtml(){
+  return '<section class="screen">'+
+    '<p class="eyebrow">昨日错题 · 根因先说</p>'+
+    '<h2>不是不会语法，是没有让代码完整跑一遍</h2>'+
+    '<div class="root"><strong>真正的大问题：</strong>看到代码后容易直接猜答案，少了“类型、入口、变量、输出”四次检查。</div>'+
+    '<div class="card"><h3>每道题只走这四关</h3>'+
+    '<div class="color-row">'+gates(-1,"")+'</div>'+
+    '<div class="rule-grid">'+
+      '<div class="rule blue">1 输入是什么<small>先认数字和题目要什么</small></div>'+
+      '<div class="rule green">2 能不能运行<small>类型合法？循环进吗？</small></div>'+
+      '<div class="rule amber">3 盒子怎么变<small>逐行更新，不凭感觉</small></div>'+
+      '<div class="rule violet">4 屏幕写什么<small>数值和格式都要一样</small></div>'+
+    '</div>'+
+    '<div class="daily" data-micro-surprise="daily">'+safeText(DAILY_SURPRISES[dailySurpriseKey()])+'</div>'+
+    '<div class="actions"><button class="next-btn" type="button" id="startLesson">开始侦察 '+ICON_NEXT+'</button></div>'+
+    '</div></section>';
+}
+function renderTeach(app){
+  const item=TEACH[state.teach];
+  const frame=item.frames[Math.min(sceneStep,item.frames.length-1)];
+  app.innerHTML='<section class="screen">'+
+    '<p class="eyebrow">看懂 '+(state.teach+1)+' / '+TEACH.length+'</p>'+
+    '<h2>'+safeText(item.title)+'</h2>'+
+    '<div class="root"><strong>这一处误区：</strong>'+safeText(item.root)+'</div>'+
+    '<div class="card"><div class="color-row">'+gates(frame[1],frame[2])+'</div>'+
+      '<div class="code">'+codeHtml(item.code)+'</div>'+
+      '<div class="scene-note">'+safeText(frame[0])+'</div>'+
+      '<div class="actions"><button class="tiny-btn secondary" type="button" id="runScene" data-surprise="xray">'+
+        ICON_PLAY+(sceneStep<item.frames.length-1?"运行下一步":"重新播放")+'</button></div>'+
+    '</div>'+
+    '<div class="card question"><h3>'+safeText(item.ask)+'</h3>'+
+      '<div class="options" id="teachOptions">'+optionHtml(item.choices)+'</div>'+
+      '<div class="feedback" id="teachFeedback"></div>'+
+    '</div></section>';
+}
+function originalDetails(item){
+  if(!item.original&&!item.code)return "";
+  return '<details class="original"><summary>展开昨日原题信息</summary><div>'+
+    (item.code?'<div class="code">'+codeHtml(item.code)+'</div>':"")+
+    (item.original?'<p>'+safeText(item.original)+'</p>':"")+
+    '</div></details>';
+}
+function renderQuiz(app,item,mode){
+  if(!item){
+    advanceAfter(mode);
+    return;
+  }
+  const labels={guided:"跟着做",recall:"遮住回想",independent:"昨日原题",transfer:"迁移挑战"};
+  const position=mode==="guided"?state.guided:
+    mode==="recall"?state.recall:
+    mode==="independent"?state.original:state.transfer;
+  const total=mode==="guided"?GUIDED.length:
+    mode==="recall"?RECALL.length:
+    mode==="independent"?ORIGINALS.length:TRANSFER.length;
+  const streak=state.streak[item.id]||0;
+  app.innerHTML='<section class="screen">'+
+    '<p class="eyebrow">'+labels[mode]+' '+(position+1)+' / '+total+'</p>'+
+    '<h2>'+safeText(item.skill)+'</h2>'+
+    (mode==="independent"?'<span class="tag">'+safeText(item.type)+'</span>'+
+      (streak?'<span class="streak">连续答对 '+streak+' / 2</span>':""):"")+
+    '<div class="card question">'+
+      '<p class="question-title">'+safeText(item.prompt)+'</p>'+
+      originalDetails(item)+
+      '<div class="options" id="quizOptions">'+optionHtml(item.choices)+'</div>'+
+      '<div class="feedback" id="quizFeedback"></div>'+
+      (item.question?'<div class="why"><strong>深想一问：</strong>'+safeText(item.question)+'</div>':"")+
+    '</div></section>';
+}
+function renderRepair(app){
+  const item=ORIGINALS.find(function(question){return question.id===state.repair;});
+  if(!item){
+    state.phase=state.returnMode;
+    saveState();
+    render();
+    return;
+  }
+  const mini=REPAIRS[item.repair][state.repairStep];
+  app.innerHTML='<section class="screen">'+
+    '<div class="repair-head" data-child-explanation="primary"><p class="eyebrow">定点修复 · 不重讲整章</p>'+
+      '<h2>'+safeText(item.skill)+'</h2>'+
+      '<p data-child-part="gap"><strong>你卡在：</strong>'+safeText(item.skill)+'的第一步没有检查。</p>'+
+      '<p data-child-part="reason"><strong>真正原因：</strong>'+safeText(item.why)+'</p>'+
+      '<p data-child-part="check"><strong>现在你来：</strong>'+safeText(mini.prompt)+'</p>'+
+    '</div>'+
+    '<div class="repair-step"><i class="on"></i><i class="'+(state.repairStep>0?"on":"")+'"></i></div>'+
+    '<div class="card question"><p class="question-title">'+safeText(mini.prompt)+'</p>'+
+      '<div class="options" id="repairOptions">'+optionHtml(mini.choices)+'</div>'+
+      '<div class="feedback" id="repairFeedback"></div>'+
+    '</div></section>';
+}
+function pendingWrongIds(){
+  return Object.keys(state.wrong).filter(function(id){return (state.streak[id]||0)<2;});
+}
+function renderRedo(app){
+  const ids=pendingWrongIds();
+  if(!ids.length){
+    state.phase="transfer";
+    state.transfer=0;
+    saveState();
+    render();
+    return;
+  }
+  const item=ORIGINALS.find(function(question){return question.id===ids[0];});
+  app.innerHTML='<section class="screen">'+
+    '<p class="eyebrow">错题回炉 · '+ids.length+' 道待毕业</p>'+
+    '<h2>同一道原题，再独立一次</h2>'+
+    '<div class="root"><strong>毕业规则：</strong>不是“看懂答案”就算会；原题要连续答对2次。</div>'+
+    '<div class="card question"><span class="streak">连续答对 '+(state.streak[item.id]||0)+' / 2</span>'+
+      '<p class="question-title">'+safeText(item.prompt)+'</p>'+
+      originalDetails(item)+
+      '<div class="options" id="redoOptions">'+optionHtml(item.choices)+'</div>'+
+      '<div class="feedback" id="redoFeedback"></div>'+
+      '<div class="why"><strong>审题四问：</strong>类型对吗？第一次进吗？哪个盒子变？屏幕严格写什么？</div>'+
+    '</div></section>';
+}
+function renderFinish(app){
+  const originalAttempts=state.attempts.filter(function(item){return item.mode==="independent";});
+  const firstRight=ORIGINALS.filter(function(question){
+    const first=originalAttempts.find(function(item){return item.id===question.id;});
+    return first&&first.result==="right";
+  }).length;
+  const repaired=Object.keys(state.wrong).length;
+  app.innerHTML='<section class="screen">'+
+    '<p class="eyebrow">完成 · 会讲才算会</p>'+
+    '<h2>Eddey 已跑完整条代码链</h2>'+
+    '<div class="finish-orbit"><b>AC</b></div>'+
+    '<div class="card"><div class="summary-grid">'+
+      '<div class="summary-box"><b>'+firstRight+'</b><small>原题首答对</small></div>'+
+      '<div class="summary-box"><b>'+repaired+'</b><small>定点修复</small></div>'+
+      '<div class="summary-box"><b>5</b><small>迁移通过</small></div>'+
+    '</div>'+
+    '<div class="root"><strong>费曼收尾：</strong>请用一句话告诉爸爸：“我看到代码，不先猜；我先查类型和入口，再看变量，最后核对输出。”</div>'+
+    '<div class="actions">'+
+      '<button class="next-btn secondary" type="button" id="redoAll">'+ICON_BACK+' 再练全部原题</button>'+
+      '<button class="next-btn" type="button" id="finishSync">完成并同步 '+ICON_NEXT+'</button>'+
+    '</div></div></section>';
+}
+function markOptions(container,chosen,answer,reveal){
+  container.querySelectorAll(".option").forEach(function(button,index){
+    button.disabled=true;
+    if(reveal&&index===answer)button.classList.add("correct");
+    if(index===chosen&&index!==answer)button.classList.add("wrong");
+    if(index===chosen&&index===answer)button.classList.add("correct");
+  });
+}
+function showFeedback(id,success,text){
+  const box=document.getElementById(id);
+  if(!box)return;
+  box.className="feedback show "+(success?"ok":"no");
+  box.textContent=text;
+}
+function record(item,mode,choice,success){
+  state.attempts.push({
+    id:item.id,mode:mode,choice:choice,result:success?"right":"wrong",
+    at:new Date().toISOString(),skill:item.skill
+  });
+  saveState();
+  if(TEST_MODE||!window.DDLearningSync)return;
+  window.DDLearningSync.recordAttempt({
+    kid:"eddey",subject:"编程",activity:mode,
+    topic:"GESP一级错题修复 · "+item.skill,
+    item:item.id+" "+item.prompt,ok:success,
+    hint:success?"独立作答正确":item.why||"进入定点修复",
+    source:"apps/eddey_cpp_gesp_repair_lab_20260831.html",
+    payload:{app_id:APP_ID,choice:choice,phase:mode}
+  });
+}
+function addNextButton(afterId,callback,label){
+  const box=document.getElementById(afterId);
+  const wrap=document.createElement("div");
+  wrap.className="actions";
+  wrap.innerHTML='<button class="next-btn" type="button" id="dynamicNext">'+
+    safeText(label||"继续")+" "+ICON_NEXT+"</button>";
+  box.after(wrap);
+  document.getElementById("dynamicNext").onclick=callback;
+}
+function handleTeachChoice(index,button){
+  const item=TEACH[state.teach];
+  const box=document.getElementById("teachOptions");
+  if(index!==item.answer){
+    button.classList.add("wrong");
+    showFeedback("teachFeedback",false,"再想一次：只说代码真的会做的事。");
+    return;
+  }
+  markOptions(box,index,item.answer,true);
+  showFeedback("teachFeedback",true,"讲清楚了。你不是在背答案，是在教机器人。");
+  addNextButton("teachFeedback",function(){
+    state.teach+=1;
+    sceneStep=0;
+    if(state.teach>=TEACH.length){
+      state.phase="guided";
+      state.guided=0;
+    }
+    saveState();
+    render();
+  },"进入下一步");
+}
+function handleQuizChoice(item,mode,index){
+  const success=index===item.answer;
+  const container=document.getElementById("quizOptions");
+  record(item,mode,index,success);
+  if(mode==="independent"){
+    markOptions(container,index,item.answer,success);
+    if(success){
+      state.streak[item.id]=(state.streak[item.id]||0)+1;
+      saveState();
+      showFeedback("quizFeedback",true,"答对。证据："+item.why);
+      addNextButton("quizFeedback",function(){
+        state.original+=1;
+        advanceAfter("independent");
+      },"下一道原题");
+    }else{
+      state.wrong[item.id]=true;
+      state.streak[item.id]=0;
+      state.repair=item.id;
+      state.repairStep=0;
+      state.returnMode="independent";
+      saveState();
+      showFeedback("quizFeedback",false,"先不看正确选项。只修："+item.skill+"。");
+      addNextButton("quizFeedback",function(){
+        state.phase="repair";
+        saveState();
+        render();
+      },"进入两步修复");
+    }
+    return;
+  }
+  markOptions(container,index,item.answer,true);
+  showFeedback(
+    "quizFeedback",success,
+    success?"说对了。"+item.why:"这次不对。"+item.why
+  );
+  if(success){
+    addNextButton("quizFeedback",function(){advanceIndex(mode);},mode==="transfer"?"下一道迁移":"继续");
+  }else{
+    addNextButton("quizFeedback",render,"遮住答案再做一次");
+  }
+}
+function advanceIndex(mode){
+  if(mode==="guided")state.guided+=1;
+  else if(mode==="recall")state.recall+=1;
+  else if(mode==="transfer")state.transfer+=1;
+  advanceAfter(mode);
+}
+function advanceAfter(mode){
+  if(mode==="guided"&&state.guided>=GUIDED.length){
+    state.phase="recall";state.recall=0;
+  }else if(mode==="recall"&&state.recall>=RECALL.length){
+    state.phase="independent";state.original=0;
+  }else if(mode==="independent"&&state.original>=ORIGINALS.length){
+    state.phase=pendingWrongIds().length?"redo":"transfer";state.transfer=0;
+  }else if(mode==="transfer"&&state.transfer>=TRANSFER.length){
+    state.phase="finish";state.finishedAt=new Date().toISOString();
+  }
+  saveState();
+  render();
+}
+function handleRepairChoice(index,button){
+  const item=ORIGINALS.find(function(question){return question.id===state.repair;});
+  const mini=REPAIRS[item.repair][state.repairStep];
+  const box=document.getElementById("repairOptions");
+  if(index!==mini.answer){
+    button.classList.add("wrong");
+    showFeedback("repairFeedback",false,"别猜。把数字或条件真正代进去。");
+    return;
+  }
+  markOptions(box,index,mini.answer,true);
+  showFeedback("repairFeedback",true,"这一步清楚了。");
+  if(state.repairStep<1){
+    addNextButton("repairFeedback",function(){
+      state.repairStep=1;saveState();render();
+    },"修第二步");
+  }else{
+    const wrap=document.createElement("div");
+    wrap.className="actions";
+    wrap.innerHTML='<button class="next-btn" type="button" id="returnOriginal" data-return-to-question="independent">'+
+      "回到同一道原题 "+ICON_NEXT+"</button>";
+    box.parentElement.appendChild(wrap);
+    document.getElementById("returnOriginal").onclick=function(){
+      state.phase=state.returnMode;
+      state.repairStep=0;
+      saveState();
+      render();
+    };
+  }
+}
+function handleRedoChoice(item,index){
+  const success=index===item.answer;
+  const container=document.getElementById("redoOptions");
+  record(item,"repair_return",index,success);
+  markOptions(container,index,item.answer,success);
+  if(success){
+    state.streak[item.id]=(state.streak[item.id]||0)+1;
+    saveState();
+    const graduated=state.streak[item.id]>=2;
+    showFeedback(
+      "redoFeedback",true,
+      graduated?"连续两次正确，这道错题毕业。":"已对1次，再对1次才毕业。"
+    );
+    addNextButton("redoFeedback",render,graduated?"练下一道":"再做同题");
+  }else{
+    state.streak[item.id]=0;
+    state.repair=item.id;
+    state.repairStep=0;
+    state.returnMode="redo";
+    saveState();
+    showFeedback("redoFeedback",false,"不显示正确选项。回去只修证据链断掉的这一处。");
+    addNextButton("redoFeedback",function(){
+      state.phase="repair";saveState();render();
+    },"回两步修复");
+  }
+}
+function finishSync(){
+  if(TEST_MODE){
+    alert("测试模式：流程已完成，不写入正式记录。");
+    return;
+  }
+  if(window.DDLearningSync){
+    window.DDLearningSync.complete({
+      kid:"eddey",subject:"编程",topic:"GESP一级昨日错题修复",
+      item:"完成10道原题、错题两连对和5道迁移题",
+      source:"apps/eddey_cpp_gesp_repair_lab_20260831.html",
+      payload:{
+        app_id:APP_ID,attempts:state.attempts.length,
+        repaired:Object.keys(state.wrong).length,finished_at:state.finishedAt
+      }
+    });
+    window.DDLearningSync.flush().then(function(){
+      alert("学习记录已保存并同步。");
+    });
+  }else{
+    alert("学习记录已保存在本机。");
+  }
+}
+function download(name,text,type){
+  const blob=new Blob([text],{type:type||"text/plain;charset=utf-8"});
+  const url=URL.createObjectURL(blob);
+  const link=document.createElement("a");
+  link.href=url;link.download=name;document.body.appendChild(link);link.click();link.remove();
+  setTimeout(function(){URL.revokeObjectURL(url);},1000);
+}
+function exportJson(){
+  const data={
+    version:1,appId:APP_ID,kid:"eddey",
+    savedAt:new Date().toISOString(),state:state
+  };
+  download("eddey-cpp-gesp-repair.json",JSON.stringify(data,null,2),"application/json");
+}
+function exportMarkdown(){
+  const wrong=Object.keys(state.wrong);
+  const right=state.attempts.filter(function(item){return item.result==="right";}).length;
+  const topics=wrong.length?wrong.map(function(id){
+    return "- "+ORIGINALS.find(function(question){return question.id===id;}).skill;
+  }).join("\n"):"- 暂无";
+  const text="# Eddey C++ 错题修复记录\n\n"+
+    "- 日期：2026-08-31\n- 原题：10道\n- 作答次数："+state.attempts.length+
+    "\n- 正确作答："+right+"\n- 进入修复："+wrong.length+
+    "道\n- 当前阶段："+state.phase+"\n\n## 需要继续留意\n"+topics+"\n";
+  download("eddey-cpp-gesp-repair.md",text,"text/markdown;charset=utf-8");
+}
+function importJson(file){
+  const reader=new FileReader();
+  reader.onload=function(){
+    try{
+      const data=JSON.parse(String(reader.result));
+      if(data.version!==1||data.appId!==APP_ID||data.kid!=="eddey"||!data.state){
+        throw new Error("不是本课的 Eddey 记录");
+      }
+      state=Object.assign(freshState(),data.state);
+      saveState();
+      closeTools();
+      render();
+      alert("记录导入成功。");
+    }catch(error){
+      alert("无法导入："+error.message);
+    }
+  };
+  reader.readAsText(file);
+}
+function updateRecordSummary(){
+  const node=document.getElementById("recordSummary");
+  if(!node)return;
+  node.textContent="已作答 "+state.attempts.length+" 次；当前有 "+
+    pendingWrongIds().length+" 道错题尚未连续答对2次。";
+}
+function openTools(){
+  document.getElementById("toolsDrawer").classList.add("open");
+  updateRecordSummary();
+}
+function closeTools(){
+  document.getElementById("toolsDrawer").classList.remove("open");
+}
+
+document.addEventListener("click",function(event){
+  const choice=event.target.closest("[data-choice]");
+  if(choice){
+    const index=Number(choice.dataset.choice);
+    if(choice.closest("#teachOptions")){
+      handleTeachChoice(index,choice);
+    }else if(choice.closest("#quizOptions")){
+      const item=state.phase==="guided"?GUIDED[state.guided]:
+        state.phase==="recall"?RECALL[state.recall]:
+        state.phase==="independent"?ORIGINALS[state.original]:TRANSFER[state.transfer];
+      handleQuizChoice(item,state.phase,index);
+    }else if(choice.closest("#repairOptions")){
+      handleRepairChoice(index,choice);
+    }else if(choice.closest("#redoOptions")){
+      const item=ORIGINALS.find(function(question){return question.id===pendingWrongIds()[0];});
+      handleRedoChoice(item,index);
+    }
+    return;
+  }
+  if(event.target.closest("#startLesson")){
+    state.phase="teach";state.teach=0;sceneStep=0;saveState();render();
+  }else if(event.target.closest("#runScene")){
+    sceneStep=(sceneStep+1)%TEACH[state.teach].frames.length;render();
+  }else if(event.target.closest("#finishSync")){
+    finishSync();
+  }else if(event.target.closest("#redoAll")){
+    state.phase="independent";state.original=0;state.wrong={};state.streak={};
+    saveState();render();
+  }
+});
+document.getElementById("openTools").onclick=openTools;
+document.getElementById("closeTools").onclick=closeTools;
+document.getElementById("toolsDrawer").addEventListener("click",function(event){
+  if(event.target.id==="toolsDrawer")closeTools();
+});
+document.getElementById("exportJson").onclick=exportJson;
+document.getElementById("exportMd").onclick=exportMarkdown;
+document.getElementById("importFile").onchange=function(event){
+  if(event.target.files[0])importJson(event.target.files[0]);
+  event.target.value="";
+};
+document.getElementById("resetLesson").onclick=function(){
+  if(confirm("确定重新开始本课吗？")){
+    state=freshState();saveState();closeTools();render();
+  }
+};
+document.addEventListener("keydown",function(event){
+  if(event.key==="Escape")closeTools();
+});
+render();
+</script>
+<script src="../assets/learning-sync.js"></script>
+</body>
+</html>

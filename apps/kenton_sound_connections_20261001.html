@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="study-portal-design" content="2.0">
+<meta name="study-portal-child-answer" content="child-first-v1">
+<meta name="study-portal-open-answer" content="required">
+<meta name="lesson-audio" content="pending">
+<title>声音连线 · Kenton</title>
+<style>
+:root{--paper:#f8f7f2;--ink:#303a50;--muted:#656e80;--teal:#196b75;--cyan:#36c5d6;--line:#dce0dc;--surface:#fff;--a:#e2f2ed;--o:#efebf8;--u:#f7ecd6;--tap:48px;--radius:22px;--radius-control:14px}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:400 17px/1.65 "PingFang SC","Microsoft YaHei","Segoe UI",system-ui,sans-serif}
+button,input,textarea,select{font:inherit}button,a,summary,input,textarea,select{-webkit-tap-highlight-color:transparent}
+button,.button,select{min-height:var(--tap)}button,.button{border:1px solid var(--line);border-radius:var(--radius-control);background:white;color:var(--ink);padding:10px 17px;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;gap:8px;font-weight:600}
+button:hover,.button:hover{border-color:var(--teal)}button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px solid var(--cyan);outline-offset:3px}
+button:disabled{opacity:.45;cursor:default}.primary{background:var(--teal);color:white;border-color:var(--teal)}.quiet{border-color:transparent;background:transparent;color:var(--teal)}.small{font-size:14px}
+.lesson-shell{max-width:760px;margin:auto;padding:18px 22px 110px}.topbar{display:flex;align-items:center;gap:10px}.brand{flex:1}.brand b{font-size:16px;display:block}.brand span{font-size:12px;color:var(--muted)}.icon{width:48px;padding:10px}.icon svg,button svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.8}
+.audio-warning{font-size:12px;margin:14px 0;color:#765321;border-left:3px solid #d5b77e;padding:3px 10px}
+.statusbar{display:flex;justify-content:space-between;align-items:center;font-size:13px;color:var(--muted);gap:10px}.statusbar button{padding:4px 8px;font-size:13px}
+.progress{height:3px;background:var(--line);margin:8px 0 20px}.progress span{display:block;height:100%;background:var(--cyan);transition:width .45s}
+h1{font-size:32px;line-height:1.3;margin:8px 0 14px;font-weight:800}h2{font-size:23px;line-height:1.4;margin:10px 0}h3{font-size:18px;margin:8px 0}p{margin:9px 0}.eyebrow{font-size:12px;color:var(--teal);letter-spacing:.08em}.lead{font-size:20px;margin-bottom:22px}.muted{color:var(--muted)}.caption{font-size:13px;color:var(--muted)}
+.stage{border-radius:var(--radius);padding:24px;background:var(--a);margin:18px 0;position:relative}.stage.paper{background:white;border:1px solid var(--line)}.flex{display:flex;gap:10px;flex-wrap:wrap;align-items:center}.between{justify-content:space-between}.center{text-align:center}.word{font-size:29px;font-weight:700;letter-spacing:.01em;white-space:nowrap}.word u,.grid-word u{text-decoration-thickness:2px;text-underline-offset:6px;text-decoration-color:var(--teal)}
+.word-button{background:transparent;border:0;padding:7px 14px}.word-button .caption{display:block}.buckets{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.bucket{padding:15px 10px;border-radius:16px;min-height:124px;border:1px solid transparent}.bucket:nth-child(1){background:var(--a)}.bucket:nth-child(2){background:var(--o)}.bucket:nth-child(3){background:var(--u)}.bucket strong{display:block;font-size:27px;font-weight:700}.bucket .caption{display:block}.bucket .word{font-size:19px}.bucket button{margin-top:4px}.bucket.chosen{border:2px solid var(--teal)}
+.chips{display:flex;flex-wrap:wrap;gap:9px;margin-top:14px}.chip{padding:8px 13px;border-radius:12px;background:white;box-shadow:0 2px 4px #303a5008;transition:transform .5s}.chip u{text-decoration-thickness:2px;text-underline-offset:4px}.insight{padding:14px 0;border-top:1px solid var(--line);margin-top:20px}.insight b{color:var(--teal)}
+.mouth-area{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:center}.mouth-svg{width:100%;max-height:180px}.mouth-slider{width:100%;accent-color:var(--teal);height:48px}.sound-tabs{display:flex;gap:8px}.sound-tabs button{flex:1}.sound-tabs button[aria-pressed=true]{background:var(--teal);color:white}
+.feedback{padding:12px 14px;border-radius:14px;background:#e9f0f7;margin:14px 0;font-size:16px}.feedback.error{background:#faece0;color:#754928}.feedback.good{background:#e4f0e8;color:#28523d}
+textarea,input[type=text]{width:100%;border:1px solid #c8d4d2;border-radius:12px;padding:12px;background:white;color:var(--ink);font-size:17px}textarea{resize:vertical;min-height:95px}label{display:block;margin:12px 0;font-size:15px}label input{margin-top:5px}
+.notebook{background:#fffdf6;border:1px solid #e1dccc;border-left:5px solid var(--teal);border-radius:14px;padding:20px 24px;margin-top:14px}.note-row{padding:12px 0;border-bottom:1px solid #e9e4d8}.note-row:last-child{border:0}.note-row strong{display:inline-block;min-width:58px;font-size:23px}.note-examples{margin-top:7px;font-size:17px;line-height:1.9}.note-nav{display:flex;gap:8px;margin-top:16px}.note-nav button[aria-pressed=true]{background:var(--teal);color:white}
+.board{position:relative;margin:16px 0}.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:4px}.grid button{min-width:0;min-height:76px;padding:5px 2px;border-radius:12px;position:relative;background:#fff;z-index:1}.grid .selected{background:#d9f1f1;border:2px solid var(--teal)}.grid .solved{box-shadow:inset 0 -5px #8bb9a9}.grid-word{font-size:21px;white-space:nowrap}.grid small{position:absolute;left:5px;top:0;font-size:10px;color:var(--teal)}
+.lines{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:2}.lines line{stroke:var(--teal);stroke-width:.9;stroke-linecap:round;opacity:.4;stroke-dasharray:160;animation:draw .65s ease-out}
+@keyframes draw{from{stroke-dashoffset:160}to{stroke-dashoffset:0}}.line-count{font-size:14px;color:var(--teal)}.bow-label{font-size:14px}.bow-label select{width:100%;border:1px solid var(--line);border-radius:12px;padding:8px;background:white;margin-top:5px}
+.footer{position:fixed;bottom:0;left:0;right:0;border-top:1px solid var(--line);background:#f8f7f2f5;z-index:10;padding:12px 20px max(12px,env(safe-area-inset-bottom))}.footer-inner{max-width:716px;margin:auto;display:flex;justify-content:space-between;gap:10px}.footer .primary{min-width:170px}
+.overlay{position:fixed;inset:0;z-index:30;background:#303a5066;display:flex;align-items:center;justify-content:center;padding:20px}.dialog{max-width:690px;width:100%;max-height:90vh;overflow:auto;background:var(--paper);border-radius:22px;padding:24px}.dialog summary{min-height:48px;cursor:pointer;padding:10px 0}.hidden,[hidden]{display:none!important}
+.note-cover{min-height:235px;display:grid;place-content:center;text-align:center;border:1px dashed #cfcbbd;border-radius:14px;background:#f3f0e5;padding:18px}.repair-icon{font-size:48px;color:var(--teal)}.narrow{max-width:500px;margin:auto}.small-table{width:100%;border-collapse:collapse;font-size:14px}.small-table td,.small-table th{padding:8px;border-bottom:1px solid var(--line);text-align:left}
+@media(max-width:600px){body{font-size:16px}.lesson-shell{padding:12px 16px 100px}h1{font-size:27px}.lead{font-size:18px;margin-bottom:16px}.stage{padding:18px;margin:14px 0}.mouth-area{gap:10px}.mouth-svg{max-height:132px}.buckets{gap:6px}.bucket{padding:12px 6px;min-height:116px}.bucket strong{font-size:24px}.bucket .word{font-size:17px}.bucket .caption{font-size:12px}.word{font-size:26px}.grid-word{font-size:16px}.grid button{min-height:66px}.grid{gap:3px}.grid button:first-child .grid-word{font-size:13px}.notebook{padding:15px 16px}.audio-warning{margin:9px 0;font-size:11px}.progress{margin-bottom:16px}.footer{padding:10px 16px max(10px,env(safe-area-inset-bottom))}.footer .primary{min-width:155px}.dialog{padding:18px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+@media print{.topbar,.statusbar,.progress,.footer,.audio-warning,.note-nav,button,.caption,.overlay{display:none!important}.lesson-shell{max-width:none;padding:0}.notebook{break-inside:avoid}}
+</style>
+<script>window.DDLearningSyncConfig={manualOnly:true};</script>
+<script src="../assets/learning-sync.js"></script>
+</head>
+<body data-child="kenton">
+<div class="lesson-shell">
+<header class="topbar"><a class="button icon" id="backHome" href="../subject.html?subject=english&amp;who=kenton" aria-label="回哥哥英语"><svg viewBox="0 0 24 24"><path d="m14 6-6 6 6 6"/></svg></a><div class="brand"><b>声音连线</b><span>Kenton · 英语 Sound</span></div><button class="quiet small" id="parentButton">家长</button></header>
+<div class="audio-warning">音频待验收 · 固定英语示范已生成，逐条试听尚未完成。</div>
+<div class="statusbar"><span id="stageLabel">先认识三种声音</span><button class="quiet" id="pauseButton">先停这里</button></div>
+<div class="progress" aria-label="学习进度"><span id="progressBar"></span></div>
+<main id="main" tabindex="-1"></main>
+<p id="audioStatus" class="caption" role="status" aria-live="polite"></p>
+</div>
+<footer class="footer"><div class="footer-inner"><button class="quiet" id="prev">上一步</button><button class="primary" id="next">先听三个词 →</button></div></footer>
+<div class="overlay" id="overlay" hidden></div>
+<template id="phase-teach"><section data-phase="teach"></section></template>
+<template id="phase-guided"><section data-phase="guided"></section></template>
+<template id="phase-recall"><section data-phase="recall"></section></template>
+<template id="phase-independent"><section data-phase="independent"></section></template>
+<template id="phase-repair"><section data-phase="repair"></section></template>
+<template id="phase-transfer"><section data-phase="transfer"></section></template>
+<script>
+(function(){
+'use strict';
+const LESSON_BLUEPRINT={
+ appId:'kenton-sound-connections-20261001',child:'kenton',source:'2026-10-01上传的Sound / Read and draw，4×4原题；五上金牌训练相关植物词汇；词典核对',
+ courseDate:'unknown; material received 2026-10-01',currentGap:'家长报告不知怎样整理划线部分发音；未取得独立作答',
+ observableOutcome:'按声音整理ow/ou/ui，讲出同形异音和异形同音；完成原题同音且共线的判断',
+ essentialQuestion:'字母看起来相同，声音就一定相同吗？',coreInsight:'字母是写法，音标是声音；同组看划线部分的声音，连线还要看位置',
+ realMeaning:'遇到新词时先听和查词义，再把相同声音整理在一起',compressionPath:'三个锚词→口形对比→声音分组→笔记取回→原题直线→变式',
+ visibleMechanism:'切换按拼写与按声音，词块重新归组；滑动口形进程；在原方格选择四词后检验声音与几何',
+ transferProof:'独立写ow和ou的同音例词；在Slow down中区分两种ow；解释新词为何不能只凭拼写定音',
+ knowledgeMechanism:'拼写到音素是多对多关系；aʊ/əʊ滑动，uː保持相对稳定',primaryInteraction:'切换分组、操控口形示意、给词分类、原题选词连线',
+ childAnswerContract:"child-first-v1",childFirstLayerLimit:100,escapePolicy:"repair-once-then-reveal-and-continue",maxBlockingAttempts:2,
+ masteryBoundary:'听音、参考后改对、抄笔记和开放自查不等于独立掌握；保留首答与提示',audio:'pending',surprise:'sound-regroup',surpriseTrigger:'按声音重排ow/ou词块',
+ phases:['teach','guided','recall','independent','repair','transfer'],
+ visualIntent:'延续已认可课件的纸色、青蓝身份、集中舞台与固定下一步；以声音轨迹和原题方格为主体',
+ mediaDecision:{mode:['native-interactive','audio'],audio:'Kokoro fixed files; listening unavailable; visibly pending under existing user exception',video:'not-needed: manipulate and hear short sounds directly'},
+ sourceCoverage:'16词与划线逐项回看上传原图；现有教参part02–04用于词义与单元联系；未定位配套Sound原页或官方答案，bow不设唯一词义',
+ dataBoundary:'kenton + app + v1 + formal/test；自由文字仅本机；明确完成后才同步匿名摘要',
+ deliveryScope:'当前用户明确要求家庭学习门户正式发布'
+};
+const APP=LESSON_BLUEPRINT.appId,VERSION=1,AUDIO_DIR='audio/kenton-sound-connections-20261001/';
+const query=new URLSearchParams(location.search);
+const TEST=location.hostname!=='study-portal-eta.vercel.app'||query.get('test')==='1'||query.get('mode')==='test'||!!window.DDLearningSync?.isTest();
+const KEY='study:kenton:'+APP+':v1:'+(TEST?'test':'formal');
+const $=id=>document.getElementById(id),esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const groups=[{id:'a',ipa:'/aʊ/',anchor:'cow',name:'先张开，再收圆',tip:'从较大的开口，连贯滑向收圆。一个声音，不拆成两拍。',color:'var(--a)'},{id:'o',ipa:'/əʊ/',anchor:'snow',name:'从放松，滑向圆',tip:'起点比 /aʊ/ 小而放松，再滑向收圆。美式常写 /oʊ/。',color:'var(--o)'},{id:'u',ipa:'/uː/',anchor:'soup',name:'收圆，保持住',tip:'嘴唇收圆，声音稍长，口形相对稳定。不是 /aʊ/ 那样滑过去。',color:'var(--u)'}];
+const words=[
+ ['sunflower','sunfl','ow','er','a','向日葵'],['you','y','ou','','u','你；你们'],['slow','sl','ow','','o','慢的；慢慢地'],['group','gr','ou','p','u','组'],
+ ['brown','br','ow','n','a','棕色'],['down','d','ow','n','a','向下'],['cow','c','ow','','a','奶牛'],['outdoor','','ou','tdoor','a','户外的'],
+ ['bow','b','ow','','?','鞠躬／蝴蝶结'],['window','wind','ow','','o','窗户'],['cloud','cl','ou','d','a','云'],['fruit','fr','ui','t','u','水果'],
+ ['house','h','ou','se','a','房子'],['snow','sn','ow','','o','雪'],['soup','s','ou','p','u','汤'],['ground','gr','ou','nd','a','地面']
+].map((a,i)=>({id:a[0],before:a[1],mark:a[2],after:a[3],g:a[4],meaning:a[5],i}));
+const word=id=>words.find(w=>w.id===id),wordHTML=w=>esc(w.before)+'<u>'+esc(w.mark)+'</u>'+esc(w.after);
+const DAILY_SURPRISES=['sunflower = sun + flower。长单词也能找到熟悉的小部分。','outdoor = out + door。这里只比较 out 里的 ou。','看见新的 ow，先听或查词，不用硬猜。'];
+const dailySurpriseKey=APP+'|kenton|'+new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Shanghai'}).format(new Date());
+const dailySpark=DAILY_SURPRISES[Array.from(dailySurpriseKey).reduce((s,c)=>s+c.charCodeAt(0),0)%DAILY_SURPRISES.length];
+function fresh(){return {schema:'sound-connections',version:VERSION,app:APP,child:'kenton',mode:TEST?'test':'formal',step:0,started:new Date().toISOString(),elapsed:0,round:0,paused:false,groupBy:'letters',sound:'a',mouth:0,practice:0,note:0,notesHidden:false,bow:'unknown',selected:[],lines:[],attempts:[],drafts:{},hints:{},mistakes:{},noted:false,completed:false,syncId:null};}
+let state=fresh(),notice='',noticeKind='',repairReturn=null,repairText='',referenceSeen=false,pausedByBudget=false;
+try{let s=JSON.parse(localStorage.getItem(KEY));if(valid(s))state=s;}catch(_){}
+function valid(s){return !!s&&s.schema==='sound-connections'&&s.child==='kenton'&&s.app===APP&&s.version===VERSION&&s.mode===(TEST?'test':'formal')&&Number.isInteger(s.step)&&s.step>=0&&s.step<=9&&Array.isArray(s.attempts)&&s.attempts.length<=3000&&Array.isArray(s.lines)&&s.lines.every(l=>Array.isArray(l)&&l.length===4&&l.every(i=>Number.isInteger(i)&&i>=0&&i<16))&&Array.isArray(s.selected)&&s.selected.length<=4&&s.selected.every(i=>Number.isInteger(i)&&i>=0&&i<16)&&Number.isInteger(s.practice)&&s.practice>=0&&s.practice<=6&&['unknown','bend','ribbon'].includes(s.bow)&&s.drafts&&typeof s.drafts==='object'&&s.hints&&s.mistakes&&Number.isFinite(s.elapsed)&&s.elapsed>=0&&Number.isFinite(s.round)&&s.round>=0&&Number.isInteger(s.note)&&s.note>=0&&s.note<=2&&groups.some(g=>g.id===s.sound);}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(state));}catch(_){$('audioStatus').textContent='本机空间不足，暂不能保存；请在家长页导出记录。';}}
+function record(id,answer,expected,ok,hint){const aided=!!hint||!!state.hints[id];state.attempts.push({id,answer,expected,ok,hint:aided,independent:ok===true&&!aided&&id.indexOf('guided-')!==0,time:new Date().toISOString()});state.attempts=state.attempts.slice(-2500);if(ok===false){state.mistakes[id]={...(state.mistakes[id]||{}),lastAnswer:answer,expected,streak:0,reviewNeeded:true};}else if(ok===true&&state.mistakes[id]){let m=state.mistakes[id];m.streak=aided?0:(m.streak||0)+1;m.reviewNeeded=m.streak<2;}save();}
+function aided(id){state.hints[id]=true;save();}
+let currentAudio=null,audioRun=0;
+function stopAudio(){audioRun++;if(currentAudio){currentAudio.pause();currentAudio.currentTime=0;currentAudio=null;}}
+async function play(id,slow=false){stopAudio();const my=audioRun;const ids=['sunflower','you','slow','group','brown','down','cow','outdoor','window','cloud','fruit','house','snow','soup','ground','bow-bend','bow-ribbon','slow-down','blue','flower','ow-pair'];if(!ids.includes(id))return;currentAudio=new Audio(AUDIO_DIR+id+'.mp3');currentAudio.playbackRate=slow?.8:1;currentAudio.preservesPitch=true;const player=currentAudio;player.onended=()=>{if(my===audioRun)$('audioStatus').textContent='播放结束。可以再听或自己读一遍。';};player.onerror=()=>{if(my===audioRun)$('audioStatus').textContent='这条声音没有加载成功。请稍后重试；先保留这题，不记成你答错。';};try{await player.play();if(my===audioRun)$('audioStatus').textContent='正在播放英语示范（待试听验收）';}catch(_){if(my===audioRun)$('audioStatus').textContent='声音暂未播放，请再点一次听读。';}}
+const speaker='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h4l5-4v14l-5-4H4zM17 8a6 6 0 0 1 0 8M20 5a10 10 0 0 1 0 14"/></svg>';
+function listen(id,label,slow=false){return '<button class="small" data-audio="'+esc(id)+'" '+(slow?'data-slow="1"':'')+'>'+speaker+esc(label)+'</button>';}
+function phases(p,html){return $('phase-'+p).innerHTML.replace('</section>',html+'</section>');}
+function explanation(gap,reason,check){return '<article data-child-explanation="primary" class="insight"><p data-child-part="gap">'+gap+'</p><p data-child-part="reason">'+reason+'</p><p data-child-part="check">'+check+'</p></article>';}
+function heading(n,title,sub){return '<div class="eyebrow">'+n+'</div><h1>'+title+'</h1><p class="lead">'+sub+'</p>';}
+function feedback(){return notice?'<div role="status" class="feedback '+noticeKind+'">'+esc(notice)+'</div>':'';}
+function buckets(selectable=false){return '<div class="buckets">'+groups.map(g=>selectable?'<button class="bucket" data-group="'+g.id+'"><span><strong>'+g.ipa+'</strong><span class="word">'+g.anchor+'</span><span class="caption">'+g.name+'</span></span></button>':'<div class="bucket center"><strong>'+g.ipa+'</strong><span class="word">'+g.anchor+'</span><span class="caption">'+g.name+'</span>'+listen(g.anchor,'听')+'</div>').join('')+'</div>';}
+const practice=['brown','window','outdoor','you','fruit','sunflower'];
+function first(){
+ const bySound=state.groupBy==='sound',sample=['cow','snow','cloud'];
+ const lanes=bySound?[['/aʊ/',['cow','cloud']],['/əʊ/',['snow']]]:[['ow',['cow','snow']],['ou',['cloud']]];
+ return phases('teach',heading('01 · 找到整理的线索','字母相同，声音呢？','先点三个词听一听，再换一种分法。')+
+ '<div class="flex">'+sample.map(id=>listen(id,id)).join('')+'</div><div class="stage" data-surprise="sound-regroup"><div class="flex between"><b>'+(bySound?'现在按声音分':'现在按字母分')+'</b><button id="regroup">'+(bySound?'换回：按字母分':'换成：按声音分')+'</button></div>'+lanes.map(l=>'<div class="flex" style="margin-top:14px"><b style="min-width:54px">'+l[0]+'</b><div class="chips">'+l[1].map(id=>'<span class="chip word">'+wordHTML(word(id))+'</span>').join('')+'</div></div>').join('')+'</div>'+
+ explanation('字母是写法，音标表示声音。',bySound?'cow 和 cloud 的划线部分同音。':'cow 和 snow 都有 ow，读音却不同。','只比划线部分，不比整个单词。')+
+ '<p class="caption">先用 cow、snow、soup 记住三种声音。/ / 里面是音标，现在不必硬背符号。</p>'+
+ '<p class="caption" data-micro-surprise="daily">'+esc(dailySpark)+'</p>');
+}
+function mouths(){
+ const g=groups.find(g=>g.id===state.sound);
+ return phases('teach',heading('02 · 用嘴巴体会','三个声音，三种感觉','先听锚词，再拖动滑杆，看口形怎样变。')+
+ '<div class="sound-tabs">'+groups.map(x=>'<button data-sound="'+x.id+'" aria-pressed="'+(g.id===x.id)+'">'+x.ipa+'</button>').join('')+'</div>'+
+ '<div class="stage" style="background:'+g.color+'"><div class="mouth-area"><svg class="mouth-svg" viewBox="0 0 220 170" role="img" aria-label="口形变化示意，非精确解剖图"><ellipse cx="110" cy="84" rx="85" ry="75" fill="#fffdf7"/><path d="M65 52h18M137 52h18" stroke="#56687a" stroke-width="4" stroke-linecap="round"/><ellipse id="mouthShape" cx="110" cy="110" rx="39" ry="28" fill="#61535c" stroke="#ad7b7b" stroke-width="7"/></svg><div><div class="word">'+g.anchor+'</div><h2>'+g.ipa+'</h2>'+listen(g.anchor,'听原速')+' '+listen(g.anchor,'慢一点',true)+'</div></div><label for="mouthRange">拖一拖：<b id="mouthLabel"></b><input class="mouth-slider" type="range" min="0" max="100" value="'+state.mouth+'" id="mouthRange"></label><p>'+g.tip+'</p><p class="caption">这是帮助观察开口大小的示意。听声音、照镜子跟读，不用汉字谐音代替发音。</p></div>');
+}
+function guided(){
+ if(state.practice>=practice.length)return phases('guided',heading('03 · 跟着分组','三组都试过了','接着弄懂两个容易混的词。')+buckets()+feedback());
+ const w=word(practice[state.practice]);
+ return phases('guided',heading('03 · 跟着分组 '+(state.practice+1)+' / '+practice.length,'把这个词放到哪组？','先自己读，拿不准就听一次。')+
+ '<div class="stage paper center"><div class="word">'+wordHTML(w)+'</div><p class="caption">'+w.meaning+'</p>'+listen(w.id,'听这个词')+'</div>'+buckets(true)+feedback()+
+ '<button class="quiet small" id="repairGuided">再看这个声音怎么发</button>');
+}
+function tricky(){
+ return phases('teach',heading('04 · 不靠拼写硬猜','bow 要看意思','同一个拼写，也可能是两个不同的词义。')+
+ '<div class="stage paper"><div class="flex between"><div><h2>bow /baʊ/</h2><p>鞠躬：身体弯下来。</p></div>'+listen('bow-bend','听：bow down')+'</div><hr style="border:0;border-top:1px solid var(--line)"><div class="flex between"><div><h2>bow /bəʊ/</h2><p>蝴蝶结；弓。</p></div>'+listen('bow-ribbon','听：a bow tie')+'</div></div>'+
+ explanation('原题只写 bow，没有给词义。','不能把其中一种读音说成永远正确。','先完成确定的线，再核对课本里的意思。')+
+ '<details data-child-detail="secondary"><summary>you 为什么和 soup 放一组？</summary><p>you 整个词是 /juː/，开头的 /j/ 不在划线部分。题目划的是 ou，对应 /uː/。fruit 划的是 ui，也是 /uː/。</p>'+listen('you','听 you')+' '+listen('fruit','听 fruit')+'</details>'+
+ '<details data-child-detail="secondary"><summary>为什么书上把这些词放在一起？</summary><p>cow 和 snow 提醒你：同样写 ow，不一定同音。</p><p>cow 和 cloud 提醒你：写法不同，也能同音。</p><p>最后要连直线，是让你把四个词逐个核对，不能只凭一个熟词猜整条。</p></details>');
+}
+const notes=[
+ '<h2>① 先记三个“声音抽屉”</h2><div class="note-row"><strong>/aʊ/</strong> cow：先张开，再收圆。<div class="note-examples">ow：brown, down, cow, sunflower<br>ou：outdoor, cloud, house, ground</div></div><div class="note-row"><strong>/əʊ/</strong> snow：从放松，滑向圆。<div class="note-examples">ow：slow, window, snow</div></div><div class="note-row"><strong>/uː/</strong> soup：收圆、相对稳定。<div class="note-examples">ou：you, group, soup　　ui：fruit</div></div>',
+ '<h2>② 两条联系，一个提醒</h2><div class="note-row"><b>同样的字母，声音可能不同。</b><p>cow /aʊ/ ≠ snow /əʊ/<br>house /aʊ/ ≠ soup /uː/</p></div><div class="note-row"><b>不同的字母，也能发同一个音。</b><p>cow 的 ow = cloud 的 ou：/aʊ/<br>soup 的 ou = fruit 的 ui：/uː/</p></div><div class="note-row"><b>bow 先看词义。</b><p>鞠躬 /baʊ/；蝴蝶结、弓 /bəʊ/。<br>这些是本题词例，不是所有 ow、ou 的读音。</p></div>',
+ '<h2>③ 做这类题的四步</h2><div class="note-row">1. 圈划线部分，只比较这里。</div><div class="note-row">2. 读词、听词，放进声音组。</div><div class="note-row">3. 看横、竖、斜，四个必须同一直线。</div><div class="note-row">4. 逐个再读一次；一词多音时核对词义。</div><p><b>自问：</b>我是在按“长得一样”，还是按“听起来一样”分？</p>'
+];
+function notebook(){
+ return phases('recall',heading('05 · 带走一页方法','现在，记到笔记本','分三小段记。每段记好后，遮住说一遍。')+
+ '<div class="note-nav">'+['声音分组','容易混淆','解题步骤'].map((n,i)=>'<button class="small" data-note="'+i+'" aria-pressed="'+(state.note===i)+'">'+n+'</button>').join('')+'</div>'+
+ (state.notesHidden?'<div class="note-cover"><h2>屏幕先遮住</h2><p>不看屏幕，复述刚才这一小段。</p><p class="caption">说不出哪一处，就只回看那一处。</p></div>':'<div class="notebook">'+notes[state.note]+'</div>')+
+ '<div class="flex" style="margin-top:15px"><button id="coverNotes">'+(state.notesHidden?'打开对照':'遮住，我来回忆')+'</button><button class="quiet small" id="notesDone">'+(state.noted?'已记下，可随时回看':'我已记到本子上')+'</button></div>');
+}
+function recall(){
+ return phases('recall',heading('06 · 不看笔记取出来','自己写两个例词','找一对划线部分都读 /aʊ/ 的词。')+
+ '<div class="stage paper"><label>一个含 ow 的词<input type="text" id="recallOw" data-draft="recallOw" value="'+esc(state.drafts.recallOw||'')+'" autocomplete="off" spellcheck="false" placeholder="自己想一个"></label><label>一个含 ou 的词<input type="text" id="recallOu" data-draft="recallOu" value="'+esc(state.drafts.recallOu||'')+'" autocomplete="off" spellcheck="false" placeholder="换一种写法，声音相同"></label><button class="primary" id="checkRecall">核对这两个词</button></div>'+
+ '<label>说或写：为什么不能把所有 ow 放在同一组？<textarea data-draft="explain" placeholder="可以先说给自己听，再点参考对照">'+esc(state.drafts.explain||'')+'</textarea></label>'+feedback()+
+ escape('例如：cow 和 cloud 的划线部分都读 /aʊ/。但 cow 和 snow 都有 ow，读音却不同。所以按声音分，不能只看字母。','recall')+
+ '<p class="caption">写了别的正确例词也可以。机器不确定时，保留你的答案供家长复看。</p>');
+}
+function escape(text,id){return '<aside data-learning-escape="answer-and-continue"><details id="reference-'+id+'"><summary data-hint="'+id+'">看参考，自己对照</summary><p data-reference-answer>'+text+'</p><button data-continue-after-reveal data-continue="'+id+'">记为待复习并继续</button></details></aside>';}
+function isStraight(ids){if(ids.length!==4||new Set(ids).size!==4)return false;const a=ids.map(i=>[i%4,Math.floor(i/4)]),dx=a[1][0]-a[0][0],dy=a[1][1]-a[0][1];return a.every(p=>(p[0]-a[0][0])*dy===(p[1]-a[0][1])*dx);}
+function soundOf(i){return i===8?(state.bow==='bend'?'a':state.bow==='ribbon'?'o':'?'):words[i].g;}
+function checkLine(ids){if(ids.length!==4)return {ok:false,kind:'count',text:'先选满四个词。再点一下已选的词，可以取消。'};if(!isStraight(ids))return {ok:false,kind:'position',text:'先看位置：这四个词没有落在同一条直线上。声音相同，也不能拐弯连。'};const gs=ids.map(soundOf);if(gs.includes('?'))return {ok:null,kind:'bow',text:'这条线含 bow。先核对它在课本里是“鞠躬”还是“蝴蝶结／弓”。没有语境，就暂时保留这条线。'};if(new Set(gs).size!==1){const pairs=ids.map(i=>words[i].id+' '+groups.find(g=>g.id===soundOf(i)).ipa);return {ok:false,kind:'sound',text:'位置是一条直线，但声音不全一样：'+pairs.join('；')+'。'};}return {ok:true,kind:'correct',text:'这四个划线部分都读 '+groups.find(g=>g.id===gs[0]).ipa+'，也在一条直线上。'};}
+function grid(){
+ const solved=new Set(state.lines.flat());
+ return phases('independent',heading('07 · 回到原题','读一读，连成直线','点选四个词，再检查。横、竖、斜都要看。')+
+ '<p class="line-count">已找到 '+state.lines.filter(l=>!l.includes(8)).length+' 条确定的线'+(state.lines.some(l=>l.includes(8))?'；另有 1 条依 bow 词义成立的线':'')+'</p>'+
+ '<div class="board"><div class="grid">'+words.map((w,i)=>'<button data-cell="'+i+'" aria-label="'+w.id+'" aria-pressed="'+state.selected.includes(i)+'" class="'+(state.selected.includes(i)?'selected ':'')+(solved.has(i)?'solved':'')+'">'+(state.selected.includes(i)?'<small>'+ (state.selected.indexOf(i)+1)+'</small>':'')+'<span class="grid-word">'+wordHTML(w)+'</span></button>').join('')+'</div><svg viewBox="0 0 100 100" preserveAspectRatio="none" class="lines" aria-hidden="true">'+state.lines.map(l=>{let s=l.slice().sort((a,b)=>a-b),a=s[0],b=s[3];return '<line x1="'+((a%4)*25+12.5)+'" y1="'+(Math.floor(a/4)*25+12.5)+'" x2="'+((b%4)*25+12.5)+'" y2="'+(Math.floor(b/4)*25+12.5)+'"/>';}).join('')+'</svg></div>'+
+ '<div class="flex"><button class="primary" id="checkLine">检查这条线（'+state.selected.length+'/4）</button><button id="clearLine">清空选择</button></div>'+feedback()+
+ '<div class="flex"><button class="quiet small" id="listenSelected">听已选的词</button><button class="quiet small" id="gridHelp">需要一点提示</button></div>'+
+ '<label class="bow-label">bow 的词义（不知道也可以先做其他线）<select id="bowMeaning"><option value="unknown" '+(state.bow==='unknown'?'selected':'')+'>原题没写，暂不确定</option><option value="bend" '+(state.bow==='bend'?'selected':'')+'>如果是“鞠躬” /baʊ/</option><option value="ribbon" '+(state.bow==='ribbon'?'selected':'')+'>如果是“蝴蝶结／弓” /bəʊ/</option></select></label>'+
+ escape('确定：第二横行 brown—down—cow—outdoor；左上至右下 sunflower—down—cloud—ground，划线部分都是 /aʊ/。若 bow 表示鞠躬，第一竖列 sunflower—brown—bow—house 也成立。若表示蝴蝶结／弓，该竖列不成立。原图未给 bow 的词义，所以不把第三条列为无条件必答。','grid'));
+}
+function transfer(){
+ return phases('transfer',heading('08 · 换个地方，也会用','Slow down!','这句话是“慢一点！”两个 ow 读音一样吗？')+
+ '<div class="stage center"><div class="word">sl<u>ow</u>　d<u>ow</u>n</div>'+listen('slow-down','先听整句')+'</div>'+
+ '<label>用自己的话解释，或先说出来<textarea data-draft="transfer" placeholder="分别是什么声音？你怎样知道的？">'+esc(state.drafts.transfer||'')+'</textarea></label>'+
+ escape('slow 读 /sləʊ/，down 读 /daʊn/，划线 ow 不同音。可以先读熟悉的锚词 snow 和 cow 来比较，再听整句核对。','transfer')+
+ '<details data-child-detail="secondary"><summary data-hint="far">再想一步：新词 blue 能和 soup 同组吗？</summary>'+listen('blue','听 blue')+'<p>先听再判断。blue 的 ue 和 soup 的 ou 都对应 /uː/。换了字母，也能是同一个声音。遇到新 ow、ou，不从本题推出“永远这样读”。</p></details>'+
+ '<button class="quiet" id="selfExplain">我已讲过，留给家长复看</button>'+feedback());
+}
+function finish(){
+ const independent=state.attempts.filter(a=>a.independent).length,review=Object.values(state.mistakes).filter(m=>m.reviewNeeded).length;
+ return phases('transfer',heading('09 · 把方法带回书上','现在回到纸上做题','先盖住屏幕，在书上自己连一次。')+
+ '<div class="stage paper"><h2>做题时，只记这句话</h2><p class="lead">先比划线的声音，再看四词是否共线。</p><p>遇到 bow，核对词义；拿不准的留个问号。</p></div>'+
+ '<div class="flex"><button id="openNotes">回看我的笔记</button><button id="redo">只练待复习的地方</button></div>'+
+ '<p class="caption">网页练习已留下 '+independent+' 次未使用提示的正确操作；'+review+' 项待复习。朗读、纸上连线和讲解仍需实际观察。</p>'+
+ '<button class="primary" id="complete">'+(TEST?'保存这次测试':'完成并同步学习摘要')+'</button>'+feedback());
+}
+const titles=['看声音','体会口形','分一分','看词义','记笔记','遮住回忆','原题连线','换题试试','收尾'];
+function render(focus=true){
+ stopAudio();$('audioStatus').textContent='';$('stageLabel').textContent=titles[Math.min(state.step,8)]+' · '+(Math.min(state.step,8)+1)+' / 9';$('progressBar').style.width=((Math.min(state.step,8)+1)/9*100)+'%';
+ const f=[first,mouths,guided,tricky,notebook,recall,grid,transfer,finish];$('main').innerHTML=(f[Math.min(state.step,8)])();$('prev').disabled=state.step===0;$('next').textContent=['体会嘴巴怎样动 →','试着分一分 →',state.practice<6?'下一个词 →':'看看两个特别的词 →','整理到笔记本 →',state.note<2?'下一段笔记 →':'遮住笔记，自己试 →','回到原题 →','换一句试试 →','回到书上完成 →','回哥哥英语 →'][Math.min(state.step,8)];updateMouth();bind();save();if(focus){$('main').focus({preventScroll:true});window.scrollTo(0,0);}
+}
+function updateMouth(){const el=$('mouthShape');if(!el)return;let t=Number(state.mouth)/100;el.setAttribute('rx',state.sound==='u'?23:state.sound==='a'?40-17*t:31-8*t);el.setAttribute('ry',state.sound==='u'?16:state.sound==='a'?31-15*t:19-3*t);$('mouthLabel').textContent=state.sound==='u'?'保持收圆，声音延长':t<.25?(state.sound==='a'?'先张开':'从放松开始'):t>.75?'滑向收圆':'正在连贯地滑动';}
+function showRepair(text,returnTo){repairReturn=returnTo;repairText=text;stopAudio();$('main').innerHTML=phases('repair',heading('只修这一处','先看清，再回来','你的原答案已经保留。')+'<div class="stage paper"><p>'+esc(text)+'</p>'+buckets()+'</div><button class="primary" data-return-to-question="original" id="returnQuestion">回到刚才那道题</button>');document.querySelectorAll('#main [data-audio]').forEach(b=>b.onclick=()=>play(b.dataset.audio,!!b.dataset.slow));$('returnQuestion').onclick=()=>{state.step=repairReturn;notice='回来了。刚才的答案还在，可以重新试。';noticeKind='';render();};save();window.scrollTo(0,0);}
+function norm(s){return String(s).trim().toLowerCase().replace(/[.,!?。！？，；;]+$/g,'').trim();}
+function moveNext(){if(state.step===2&&state.practice<6){record('guided-'+practice[state.practice],null,word(practice[state.practice]).g,null,true);state.practice++;notice='';noticeKind='';render();return;}if(state.step===4&&state.note<2){state.note++;state.notesHidden=false;render();return;}if(state.step>=8){location.href=$('backHome').href;return;}state.step++;notice='';noticeKind='';render();}
+function bind(){
+ document.querySelectorAll('[data-audio]').forEach(b=>b.onclick=()=>{if(state.step===2)aided('guided-'+practice[state.practice]);if(state.step===7)aided('transfer');play(b.dataset.audio,!!b.dataset.slow);});
+ document.querySelectorAll('[data-draft]').forEach(e=>e.oninput=()=>{state.drafts[e.dataset.draft]=e.value.slice(0,4000);save();});
+ document.querySelectorAll('[data-hint]').forEach(e=>e.onclick=()=>aided(e.dataset.hint));
+ document.querySelectorAll('[data-continue]').forEach(e=>e.onclick=()=>{aided(e.dataset.continue);record(e.dataset.continue,state.drafts[e.dataset.continue]||state.selected,'已展示参考',null,true);moveNext();});
+ if($('regroup'))$('regroup').onclick=()=>{state.groupBy=state.groupBy==='letters'?'sound':'letters';render(false);};
+ document.querySelectorAll('[data-sound]').forEach(e=>e.onclick=()=>{state.sound=e.dataset.sound;state.mouth=0;render(false);});
+ if($('mouthRange'))$('mouthRange').oninput=e=>{state.mouth=Number(e.target.value);updateMouth();save();};
+ document.querySelectorAll('[data-group]').forEach(e=>e.onclick=()=>{let w=word(practice[state.practice]),ok=w.g===e.dataset.group;record('guided-'+w.id,e.dataset.group,w.g,ok,true);notice=ok?w.id+' 的 '+w.mark+' 读 '+groups.find(g=>g.id===w.g).ipa+'。和 '+groups.find(g=>g.id===w.g).anchor+' 的划线部分同音。':'先只听划线部分。'+w.id+' 这里读 '+groups.find(g=>g.id===w.g).ipa+'，再试一次。';noticeKind=ok?'good':'error';render(false);});
+ if($('repairGuided'))$('repairGuided').onclick=()=>{let w=word(practice[state.practice]);aided('guided-'+w.id);showRepair(w.id+' 的 '+w.mark+' 读 '+groups.find(g=>g.id===w.g).ipa+'。先听对应锚词，再回到这个词。',2);};
+ document.querySelectorAll('[data-note]').forEach(e=>e.onclick=()=>{state.note=Number(e.dataset.note);state.notesHidden=false;render(false);});
+ if($('coverNotes'))$('coverNotes').onclick=()=>{state.notesHidden=!state.notesHidden;render(false);};
+ if($('notesDone'))$('notesDone').onclick=()=>{state.noted=true;render(false);};
+ if($('checkRecall'))$('checkRecall').onclick=()=>{let a=norm(state.drafts.recallOw),b=norm(state.drafts.recallOu);const knownOw=['cow','brown','down','sunflower','flower','now','how','town','clown'],knownOu=['outdoor','cloud','house','ground','out','loud','round','mouth','sound'];let ok=knownOw.includes(a)&&knownOu.includes(b);record('recall',[state.drafts.recallOw||'',state.drafts.recallOu||''],'ow和ou各一个/aʊ/例词',ok?true:null,!!state.hints.recall);notice=ok?'这两个例词能联系起来：字母不同，声音相同。':'这组词暂时没有自动确认。保留原答案，对照参考；也可以请家长复看。';noticeKind=ok?'good':'';render(false);};
+ document.querySelectorAll('[data-cell]').forEach(e=>e.onclick=()=>{let i=Number(e.dataset.cell),j=state.selected.indexOf(i);if(j>=0)state.selected.splice(j,1);else if(state.selected.length<4)state.selected.push(i);else{notice='已经选了四个。先检查，或点一个词取消。';noticeKind='';}render(false);});
+ if($('clearLine'))$('clearLine').onclick=()=>{state.selected=[];notice='';render(false);};
+ if($('bowMeaning'))$('bowMeaning').onchange=e=>{state.bow=e.target.value;state.lines=state.lines.filter(l=>!l.includes(8));notice='只改变 bow 的假设，其他确定的线保留。';noticeKind='';render(false);};
+ if($('checkLine'))$('checkLine').onclick=()=>{const result=checkLine(state.selected);notice=result.text;noticeKind=result.ok===true?'good':result.ok===false?'error':'';if(result.kind!=='count'){record('line-'+state.selected.slice().sort((a,b)=>a-b).join('-'),state.selected.map(i=>words[i].id),result.text,result.ok,!!state.hints.grid);if(result.ok){const sorted=state.selected.slice().sort((a,b)=>a-b);if(!state.lines.some(l=>l.join()===sorted.join()))state.lines.push(sorted);state.selected=[];}}render(false);};
+ if($('listenSelected'))$('listenSelected').onclick=async()=>{aided('grid');const ids=state.selected.slice();if(!ids.length){notice='先选一个词，再点“听已选的词”。';render(false);return;}for(const i of ids){let id=words[i].id;if(id==='bow'){notice='bow 先看词义。两种示范在前面的“看词义”页。';render(false);break;}await play(id);const p=currentAudio,run=audioRun;if(!p||p.error)break;await new Promise(resolve=>{p.addEventListener('ended',resolve,{once:true});p.addEventListener('error',resolve,{once:true});p.addEventListener('pause',resolve,{once:true});});if(state.step!==6||run!==audioRun)break;}};
+ if($('gridHelp'))$('gridHelp').onclick=()=>{aided('grid');showRepair('第一步只比声音，第二步才看位置。可以先检查第二横行：每个划线部分读哪一个声音？直线不能拐弯。',6);};
+ if($('selfExplain'))$('selfExplain').onclick=()=>{record('transfer',state.drafts.transfer||'口述，自报','slow /əʊ/；down /aʊ/；不能只看ow',null,!!state.hints.transfer);notice='你的讲解已留在本机，继续回到书上做题。';noticeKind='good';render(false);};
+ if($('openNotes'))$('openNotes').onclick=()=>{state.step=4;state.note=0;state.notesHidden=false;render();};
+ if($('redo'))$('redo').onclick=()=>{const m=Object.keys(state.mistakes).filter(k=>state.mistakes[k].reviewNeeded);if(!m.length){notice='目前没有已记录的错误；可以回原题独立再做一次。';state.step=6;state.selected=[];state.lines=[];}else if(m[0].startsWith('guided-')){state.step=2;state.practice=Math.max(0,practice.indexOf(m[0].slice(7)));}else state.step=6;render();};
+ if($('complete'))$('complete').onclick=complete;
+}
+async function complete(){state.completed=true;state.paused=true;save();if(TEST){notice='测试记录只保存在本机，没有上传为孩子学情。';noticeKind='good';render(false);return;}if(!window.DDLearningSync){notice='已保存在本机，同步暂不可用。';render(false);return;}if(state.syncId){notice='本轮已交给同步队列；不重复提交。';render(false);return;}state.syncId=APP+'-'+Date.now();save();const summary={app:APP,version:VERSION,elapsedSeconds:state.elapsed,noteCopiedSelfReport:state.noted,attemptCount:state.attempts.length,independentCorrect:state.attempts.filter(a=>a.independent).length,reviewCount:Object.values(state.mistakes).filter(m=>m.reviewNeeded).length,bowInterpretation:state.bow,oralPerformance:'not-assessed',audio:'pending'};window.DDLearningSync.complete({kid:'kenton',subject:'英语',client_event_id:state.syncId,topic:'ow/ou/ui声音整理',item:'完成声音连线学习流程',payload:summary});const result=await window.DDLearningSync.flush();notice=result?.ok&&!result?.pending?'学习摘要已同步。纸上独立作答仍等你完成。':'已保存在本机，摘要留在待同步队列。';noticeKind='';render(false);}
+function parent(){
+ stopAudio();const recent=state.attempts.slice(-8);
+ $('overlay').hidden=false;$('overlay').innerHTML='<section class="dialog" role="dialog" aria-modal="true" aria-label="家长与学习记录" data-parent-analysis><div class="flex between"><h2>家长与学习记录</h2><button id="closeDialog">回到学习</button></div><p>本课约 20–25 分钟，可随时停。没有录音或自动发音评分；口述与抄写只按自报记录。当前为 '+(TEST?'测试':'正式')+'空间。</p><details><summary>为什么这样教、怎样看进展</summary><p>先从三个锚词建立声音分类，再比较同形异音、异形同音，最后叠加“同一直线”的题目要求。先给示范，再撤掉提示，避免一开始就靠猜。</p><p>原图16词与划线已逐项核对。教参五上《金牌训练》part02–04的植物相关词义已读取；未定位配套Sound原页或教师答案，不能确认bow在本题的唯一词义。制作日期2026-10-01不冒充上课日期。</p><p>本轮只安排这道指定题，不新增假期整批学习。不要把点完、跟读或抄完笔记记为掌握。下一次实际学习时，遮住资料完成一条线并解释即可检查。</p></details><details><summary>音频与资料依据</summary><p>固定英语 bf_alice 候选音频；逐条实听 0 条，音色与声学内容未验收。未使用随机浏览器语音。页面明确标注待验收，沿用此前允许醒目标注待验收状态发布的授权。</p><p><a href="https://dictionary.cambridge.org/us/pronunciation/english/bow" target="_blank" rel="noopener">Cambridge：bow 两种读音</a> · <a href="https://dictionary.cambridge.org/pronunciation/english/fruit" target="_blank" rel="noopener">fruit</a> · <a href="https://dictionary.cambridge.org/us/pronunciation/english/sunflower" target="_blank" rel="noopener">sunflower</a></p><p>词典核对日期2026-10-01。图片只作私有原始材料，网站重新排出必要的单词方格，不公开照片。</p></details><details open><summary>记录与备份</summary><p>累计 '+Math.floor(state.elapsed/60)+' 分钟；'+state.attempts.length+' 次操作。开放文字只在本机，点击完成只同步匿名摘要。</p><div class="flex"><button id="exportJson">导出 JSON</button><button id="exportMd">导出文字记录</button><label class="button">导入同一课程记录<input type="file" id="import" accept=".json" hidden></label></div><p id="importStatus" role="status"></p><table class="small-table"><tr><th>最近操作</th><th>结果</th></tr>'+recent.map(a=>'<tr><td>'+esc(a.id)+'</td><td>'+esc(a.ok===null?'待复看':a.ok?(a.independent?'独立正确':'练习／提示后正确'):'待复习')+'</td></tr>').join('')+'</table></details></section>';
+ $('closeDialog').onclick=()=>{$('overlay').hidden=true;render(false);};
+ $('exportJson').onclick=()=>download(JSON.stringify(state,null,2),'json','application/json');
+ $('exportMd').onclick=()=>download('# Kenton 声音连线\n\n日期：'+state.started+'\n\n抄写笔记：'+(state.noted?'自报完成':'未确认')+'\n\n音频：待试听验收\n\n'+state.attempts.map(a=>'- '+a.id+' | '+JSON.stringify(a.answer)+' | '+(a.ok===null?'待复看':a.ok?'正确':'待复习')+' | '+(a.independent?'无提示':'练习/提示/自查')).join('\n'),'md','text/markdown');
+ $('import').onchange=async e=>{try{const f=e.target.files[0];if(!f||f.size>2000000)throw Error('请选择小于2MB的本课程JSON。');const s=JSON.parse(await f.text());if(!valid(s))throw Error('孩子、课程、版本或记录格式不一致。原记录未改变。');const merged=new Map(state.attempts.concat(s.attempts).map(a=>[a.time+'|'+a.id+'|'+JSON.stringify(a.answer),a]));if([...merged.values()].some(a=>!a||typeof a.id!=='string'||typeof a.time!=='string'))throw Error('作答条目格式有误。');localStorage.setItem(KEY+':before-import',JSON.stringify(state));state={...state,...s,attempts:[...merged.values()].slice(-2500),elapsed:Math.max(state.elapsed,s.elapsed),syncId:state.syncId||s.syncId};notice='';noticeKind='';save();$('importStatus').textContent='已合并读回。导入前副本已保留；返回学习后从导入位置继续。';}catch(err){$('importStatus').textContent=err.message;}};
+}
+function download(text,ext,type){const blob=new Blob([text],{type:type+';charset=utf-8'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='Kenton_sound_connections_20261001.'+ext;a.click();setTimeout(()=>URL.revokeObjectURL(url),1500);}
+function pause(budget=false){state.paused=true;pausedByBudget=budget;save();stopAudio();$('overlay').hidden=false;$('overlay').innerHTML='<section class="dialog narrow" role="dialog" aria-modal="true" aria-label="暂停学习"><h2>'+(budget?'这一轮已学30分钟':'先停在这里')+'</h2><p>原答案、笔记位置和连线都已保存。</p><p>暂停时不计学习时间。</p><button class="primary" id="resume">'+(budget?'家长：另开一轮，接着学':'继续这一段')+'</button></section>';$('resume').onclick=()=>{if(pausedByBudget)state.round=0;state.paused=false;$('overlay').hidden=true;save();render();};}
+setInterval(()=>{if(document.hidden||state.paused||!$('overlay').hidden)return;state.elapsed++;state.round++;if(state.elapsed%5===0)save();$('pauseButton').textContent=Math.floor(state.elapsed/60)+':'+String(state.elapsed%60).padStart(2,'0')+' · 先停这里';if(state.round>=1800)pause(true);},1000);
+document.addEventListener('visibilitychange',()=>{if(document.hidden){stopAudio();save();}});
+window.addEventListener('pagehide',()=>{stopAudio();save();});
+$('pauseButton').onclick=()=>pause(false);$('parentButton').onclick=parent;$('prev').onclick=()=>{if(state.step>0){state.step--;notice='';render();}};$('next').onclick=moveNext;
+if(TEST)$('backHome').href+='&test=1';
+window.SoundLessonTest={isStraight,checkLine,valid,normalize:norm,words,blueprint:LESSON_BLUEPRINT};
+render(false);if(state.paused)pause(state.round>=1800);
+})();
+</script>
+</body>
+</html>

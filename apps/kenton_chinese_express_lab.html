@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<script src="../assets/learning-sync.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>哥哥语文 · 表达实验室（仿写连续动作+阅读按点答，会动·引导·又考）</title>
+<style>
+:root{--red:#1aa7b8;--redd:#147d8a;--gold:#F2B632;--golddk:#D89400;--ink:#243038;--paper:#F4FBFC;--line:#D8ECEF;
+--green:#3C9D54;--greenbg:#EAF7EC;--blue:#3170B5;--bluebg:#E8F0FA;--purple:#9a6cc0;}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+html,body{margin:0;padding:0;}
+body{font-family:'LXGW WenKai Screen','PingFang SC','Microsoft YaHei',serif;
+background:radial-gradient(circle at 10% 6%,#CDEFF3 0,transparent 38%),radial-gradient(circle at 92% 96%,#C9ECF0 0,transparent 42%),var(--paper);
+color:var(--ink);min-height:100vh;padding-bottom:34px;}
+.wrap{max-width:760px;margin:0 auto;padding:14px;}
+.top{display:flex;align-items:center;gap:10px;padding:12px 4px 6px;}
+.top .badge{background:var(--red);color:#fff;font-weight:700;font-size:19px;padding:6px 13px;border-radius:13px 13px 13px 4px;box-shadow:0 4px 0 var(--redd);}
+.top h1{font-size:18px;margin:0;}
+.top .sub{font-size:12px;color:#7fa6ab;}
+.speak{background:#fff;border:2px solid var(--gold);color:var(--golddk);border-radius:50%;width:42px;height:42px;font-size:20px;cursor:pointer;box-shadow:0 3px 0 #f0dca0;flex-shrink:0;}
+.card{background:#fff;border:2px solid var(--line);border-radius:18px;padding:18px;margin:13px 0;box-shadow:0 6px 0 #e2eff1;}
+.card h2{margin:0 0 8px;font-size:19px;color:var(--redd);}
+.lead{font-size:14.5px;color:#5f7d82;line-height:1.8;margin:0 0 10px;}
+.bigmenu{display:grid;grid-template-columns:1fr;gap:13px;}
+.bigtile{background:#fff;border:3px solid var(--line);border-radius:18px;padding:18px;cursor:pointer;box-shadow:0 6px 0 #e2eff1;display:flex;gap:14px;align-items:center;transition:transform .08s;}
+.bigtile:active{transform:translateY(3px);}
+.bigtile .ic{font-size:42px;}
+.bigtile .nm{font-weight:700;font-size:19px;}
+.bigtile .ds{font-size:12.5px;color:#7fa6ab;margin-top:3px;}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;background:var(--red);color:#fff;border:none;font-family:inherit;font-weight:700;font-size:16px;padding:12px 20px;border-radius:14px;box-shadow:0 4px 0 var(--redd);cursor:pointer;transition:transform .06s;}
+.btn:active{transform:translateY(3px);box-shadow:0 1px 0 var(--redd);}
+.btn.ghost{background:#fff;color:var(--redd);border:2px solid var(--red);box-shadow:0 4px 0 #cfe7ea;}
+.btn.green{background:var(--green);box-shadow:0 4px 0 #2c7a40;}
+.btn.blue{background:var(--blue);box-shadow:0 4px 0 #225182;}
+.btn.gray{background:#fff;color:#7fa6ab;border:2px solid var(--line);box-shadow:0 4px 0 #e2eff1;}
+.btn.big{font-size:18px;padding:14px 24px;}
+.btn.sm{font-size:14px;padding:9px 14px;}
+.row{display:flex;gap:9px;flex-wrap:wrap;align-items:center;margin-top:12px;justify-content:center;}
+.back{background:none;border:none;color:#7fa6ab;font-size:15px;font-family:inherit;cursor:pointer;padding:8px 2px;font-weight:700;}
+.hidden{display:none!important;}
+.kou{background:linear-gradient(180deg,#FCEFCF,#FBE6B0);border:2px dashed var(--golddk);border-radius:13px;padding:11px 14px;margin:11px 0;color:#7a5800;font-weight:700;font-size:14.5px;line-height:1.85;}
+.steps{display:flex;gap:6px;justify-content:center;margin:6px 0 12px;flex-wrap:wrap;}
+.steps .s{font-size:12px;color:#7fa6ab;border:2px solid var(--line);border-radius:20px;padding:3px 11px;background:#fff;}
+.steps .s.on{background:var(--red);color:#fff;border-color:var(--red);}
+.steps .s.done{background:var(--greenbg);color:var(--green);border-color:var(--green);}
+.lion{display:flex;gap:10px;align-items:flex-start;margin:10px 0;}
+.lion .face{font-size:30px;flex-shrink:0;}
+.lion .bubble{background:#fff;border:2px solid var(--line);border-radius:14px 14px 14px 2px;padding:11px 13px;font-size:15px;line-height:1.8;box-shadow:0 3px 0 #e2eff1;text-align:left;flex:1;}
+/* 动作分镜 */
+.timeline{display:flex;gap:8px;align-items:center;flex-wrap:wrap;justify-content:center;background:#EAF7F9;border:2px dashed var(--redd);border-radius:14px;padding:14px 10px;margin:12px 0;min-height:64px;}
+.tlslot{min-width:74px;border-radius:11px;padding:9px 11px;background:#fff;border:2px solid var(--line);font-weight:700;font-size:15px;text-align:center;color:var(--redd);position:relative;}
+.tlslot .x{position:absolute;top:-8px;right:-6px;background:var(--redd);color:#fff;border-radius:50%;width:20px;height:20px;font-size:13px;line-height:18px;}
+.tlempty{color:#9fc6cc;border-style:dashed;}
+.arrow{color:var(--redd);font-size:20px;font-weight:800;}
+.pool{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:8px 0;}
+.vchip{background:#fff;border:2px solid var(--line);border-radius:11px;padding:9px 14px;font-size:16px;cursor:pointer;box-shadow:0 3px 0 #e2eff1;font-weight:700;}
+.vchip:active{transform:translateY(2px);}
+.vchip.used{opacity:.35;pointer-events:none;}
+.vchip.bad{border-color:#e8643a;color:#e8643a;}
+.sentprev{background:#fff;border:2px solid var(--green);border-radius:12px;padding:12px 14px;font-size:16px;line-height:1.9;margin:10px 0;color:#27632f;min-height:30px;}
+/* 阅读按点答 */
+.passage{background:#F4FBFC;border:2px solid var(--line);border-radius:12px;padding:13px 15px;font-size:15.5px;line-height:2;margin:10px 0;}
+.sent{cursor:pointer;border-radius:6px;padding:1px 3px;transition:background .15s;}
+.sent.found{background:#CDEFD6;box-shadow:0 0 0 2px var(--green) inset;}
+.sent.no{background:#FAD9D2;}
+.scorebar{height:22px;background:#E3F1F3;border-radius:11px;overflow:hidden;border:2px solid #C9E6EA;margin:10px 0;}
+.scorebar i{display:block;height:100%;background:linear-gradient(90deg,var(--green),#7CC98F);width:0;transition:width .4s;border-radius:9px;}
+.model{background:var(--greenbg);border:2px solid var(--green);border-radius:12px;padding:12px 14px;font-size:15px;line-height:1.9;color:#27632f;margin:10px 0;}
+.hl{background:#FFF1B8;border-radius:5px;padding:0 3px;font-weight:800;color:#8a6d00;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top">
+    <div class="badge">哥哥</div>
+    <div style="flex:1"><h1>语文 · 表达实验室</h1><div class="sub">仿写连续动作 + 阅读按点答 · 会动·先教思路·再考</div></div>
+    <button class="speak" onclick="testVoice()">🔊</button>
+  </div>
+  <div id="home">
+    <div class="card">
+      <div class="lion"><div class="face">🦁</div><div class="bubble">这里专攻你简答/仿写<b>"会写但拿不全分"</b>的毛病：仿写连续动作学会<b>把一个动作拆成一连串动词</b>；阅读简答学会<b>找够得分点、按点答</b>（品质题要 2 点）。先看动画示范，再自己动手，最后考你。</div></div>
+      <div class="kou">先点右上角 🔊 试一下声音！</div>
+    </div>
+    <div class="bigmenu">
+      <div class="bigtile" onclick="openMod('action')"><div class="ic">🎬</div><div><div class="nm">仿写连续动作 · 分镜机</div><div class="ds">把一个动作拆成 3~4 个连贯动词，排成"分镜"，自动连成句子</div></div></div>
+      <div class="bigtile" onclick="openMod('read')"><div class="ic">🔍</div><div><div class="nm">阅读简答 · 得分点雷达</div><div class="ds">人物品质题=品质词+原文事例，至少 2 点，学会按点答</div></div></div>
+    </div>
+  </div>
+  <div id="stage" class="hidden"></div>
+</div>
+<script>
+/* ===================== 朗读 ===================== */
+let voices=[];function loadVoices(){voices=speechSynthesis.getVoices();}
+if('speechSynthesis'in window){loadVoices();speechSynthesis.onvoiceschanged=loadVoices;}
+let warmed=false;function warm(){if(!('speechSynthesis'in window))return;try{speechSynthesis.resume();}catch(e){}if(warmed)return;loadVoices();try{var wu=new SpeechSynthesisUtterance('ok');wu.volume=0.02;speechSynthesis.speak(wu);}catch(e){}warmed=true;}
+document.body.addEventListener('touchstart',warm,{once:true});
+document.body.addEventListener('click',warm,{once:true});
+document.addEventListener('visibilitychange',()=>{if(document.hidden){try{speechSynthesis.cancel();}catch(e){}}});
+function pickZhVoice(){if(!voices||!voices.length)return null;const zh=voices.filter(v=>/zh|cmn|Chinese/i.test(v.lang||'')||/中文|普通话|国语/i.test(v.name||''));if(!zh.length)return null;return zh.find(v=>/Google/i.test(v.name||'')&&/zh[-_]CN|cmn/i.test(v.lang||''))||zh.find(v=>/Google|Microsoft|Ting-Ting|Mei-Jia/i.test(v.name||''))||zh.find(v=>/zh[-_]CN/i.test(v.lang||''))||zh[0];}
+function speak(t){if(!('speechSynthesis'in window))return;try{speechSynthesis.cancel();speechSynthesis.resume();}catch(e){}try{const u=new SpeechSynthesisUtterance(t);const v=pickZhVoice();if(v)u.voice=v;u.lang='zh-CN';u.rate=0.92;u.pitch=1.0;speechSynthesis.speak(u);}catch(e){}}
+function testVoice(){if(!('speechSynthesis'in window)){alert('这个浏览器不支持朗读，请用 Safari 或 Chrome 打开');return;}warm();speak('你好哥哥，我们来学怎么仿写连续动作。');}
+function ding(){try{const c=new(window.AudioContext||window.webkitAudioContext)();const o=c.createOscillator();const g=c.createGain();o.connect(g);g.connect(c.destination);o.frequency.value=880;g.gain.setValueAtTime(0.15,c.currentTime);g.gain.exponentialRampToValueAtTime(0.001,c.currentTime+0.3);o.start();o.stop(c.currentTime+0.3);}catch(e){}}
+function buzz(){try{const c=new(window.AudioContext||window.webkitAudioContext)();const o=c.createOscillator();const g=c.createGain();o.connect(g);g.connect(c.destination);o.type='square';o.frequency.value=180;g.gain.setValueAtTime(0.12,c.currentTime);g.gain.exponentialRampToValueAtTime(0.001,c.currentTime+0.25);o.start();o.stop(c.currentTime+0.25);}catch(e){}}
+
+/* ===================== 数据：仿写连续动作 ===================== */
+/* verbs=正确动作链(按顺序); distract=干扰动词; tmpl=连成句子的模板(用{0}{1}...) */
+const ACTS={
+ demo:{title:'投篮（看示范）',who:'他',
+   verbs:['运球','抬头','瞄准','一投'],
+   sentence:'他<hl>运球</hl>来到三分线，<hl>抬头</hl>看了看篮筐，<hl>瞄准</hl>，奋力<hl>一投</hl>，球应声入网。'},
+ q1:{title:'踢足球',who:'小明',
+   verbs:['带球','晃过','起脚','射门'],distract:['睡觉','吃饭','发呆'],
+   joiners:['','','，','，奋力'],
+   model:'小明<hl>带球</hl>冲到禁区，巧妙地<hl>晃过</hl>后卫，<hl>起脚</hl>，奋力<hl>射门</hl>，球进了！'},
+ q2:{title:'泡一杯茶',who:'爷爷',
+   verbs:['烧水','取茶','冲泡','轻啜'],distract:['打球','看书','跑步'],
+   joiners:['','，再','，然后','，最后'],
+   model:'爷爷先<hl>烧水</hl>，再<hl>取茶</hl>放进杯里，<hl>然后冲泡</hl>，最后<hl>轻啜</hl>一口，满脸满足。'},
+ q3:{title:'煎一个鸡蛋',who:'妈妈',
+   verbs:['热锅','打蛋','翻面','装盘'],distract:['扫地','唱歌','睡觉'],
+   joiners:['','，接着','，再','，最后'],
+   model:'妈妈先<hl>热锅</hl>倒油，接着<hl>打蛋</hl>下锅，<hl>再翻面</hl>煎到金黄，最后<hl>装盘</hl>端上桌。'}
+};
+
+/* ===================== 数据：阅读按点答(品质题为主) ===================== */
+const READS={
+ demo:{title:'哈尔威船长（看示范）',
+  passage:['"诺曼底号"被撞出一个大窟窿，海水疯狂涌入。','船上一片混乱，人们你推我挤，乱作一团。','哈尔威船长站在指挥台上，大声下达命令，让大家先救妇女和孩子。','他一动不动地指挥着，直到所有人脱险。','轮船渐渐沉下去，他却随船一起沉入大海，没有一丝慌乱。'],
+  q:'哈尔威船长是个怎样的人？请用原文说明（两点）。',ask:'品质题：要 2 个品质，各配原文事例。',
+  points:[2,3,4],
+  model:'哈尔威船长①临危不乱、沉着指挥——船被撞破、众人慌乱时，他站在指挥台大声下令、一动不动地指挥到所有人脱险；②忠于职守、舍己救人——他让大家先救妇女和孩子，最后随船沉入大海也毫不慌乱。',
+  tip:'品质题=品质词+原文事例，至少两点！每个品质后面都要跟"书上怎么写"。'},
+ q1:{title:'李时珍尝百草',
+  passage:['李时珍是明朝有名的医生。','为了写《本草纲目》，他走遍了高山深谷，寻访药农。','他常常亲口尝那些没人认识的草药，弄清它们的药性。','有一次中了毒，差点儿丢了性命，他也没有停下来。','整整花了二十七年，他终于写成了这部药学巨著。'],
+  q:'从短文看，李时珍是个怎样的人？请说出两点并用原文说明。',ask:'圈出能说明他品质的句子（至少 2 句）。',
+  points:[2,3,4],
+  model:'李时珍①做事认真、不怕辛苦——走遍高山深谷，亲口尝没人认识的草药；②坚持不懈、不怕牺牲——中毒差点丧命也不停下，整整花二十七年写成《本草纲目》。',
+  tip:'品质词要准（认真/坚持/不怕牺牲），事例要回原文找。'},
+ q2:{title:'蔺相如完璧归赵',
+  passage:['赵王得到一块宝玉，秦王说愿用十五座城来换。','蔺相如自愿带着宝玉出使秦国。','他识破秦王没有诚意，便假说玉上有点小毛病，把玉要回手里。','他理直气壮地说，如果秦王逼他，他就和宝玉一起撞碎在柱子上。','最后他设法把宝玉送回了赵国，自己也平安返回。'],
+  q:'蔺相如是个怎样的人？请用原文说出两点。',ask:'品质题，至少 2 点，每点配事例。',
+  points:[2,3,4],
+  model:'蔺相如①机智、有胆识——识破秦王没诚意，假说玉有毛病把玉要回；②勇敢、不畏强权——理直气壮地说要和宝玉一起撞碎在柱子上，最后还把玉安全送回赵国。',
+  tip:'机智看他"怎么做的妙招"，勇敢看他"敢对秦王怎么说/怎么做"。'}
+};
+
+/* ===================== 状态/导航 ===================== */
+const ST={mod:null,key:null,chain:[],found:new Set(),done:false};
+function show(id){['home','stage'].forEach(x=>document.getElementById(x).classList.add('hidden'));document.getElementById(id).classList.remove('hidden');window.scrollTo(0,0);}
+function goHome(){try{speechSynthesis.cancel();}catch(e){}show('home');}
+function openMod(m){ST.mod=m;if(m==='action')actIntro();else readIntro();}
+
+/* ===================== 模块1：仿写连续动作 ===================== */
+function actIntro(){
+  const b=document.getElementById('stage');
+  b.innerHTML=`<button class="back" onclick="goHome()">← 返回</button>
+   <div class="card">
+     <div class="steps"><span class="s on">①方法</span><span class="s">②看示范</span><span class="s">③自己写</span></div>
+     <h2>🎬 仿写连续动作 · 怎么想</h2>
+     <div class="kou">把一个大动作<b>拆成一连串小动词</b>，按先后排好，就能写得<b>具体、连贯</b>。<br>例：投篮 = 运球 → 抬头 → 瞄准 → 一投。</div>
+     <div class="lion"><div class="face">🦁</div><div class="bubble">秘诀：<b>动词要按顺序、一个接一个</b>。再加上"先、再、接着、然后、最后"这些连接词，画面就活了。</div></div>
+     <div class="row"><button class="btn green big" onclick="actDemo()">看一个示范 →</button></div>
+   </div>`;
+  show('stage');speak('仿写连续动作，就是把一个大动作拆成一连串小动词，按顺序排好。');
+}
+function actDemo(){
+  const a=ACTS.demo;const b=document.getElementById('stage');
+  b.innerHTML=`<button class="back" onclick="actIntro()">← 返回</button>
+   <div class="card">
+     <div class="steps"><span class="s done">①方法</span><span class="s on">②看示范</span><span class="s">③自己写</span></div>
+     <h2>👀 示范：${a.title}</h2>
+     <div class="timeline">${a.verbs.map((v,i)=>`<span class="tlslot">${v}</span>${i<a.verbs.length-1?'<span class="arrow">→</span>':''}`).join('')}</div>
+     <div class="lead">把这串动词连成具体的句子：</div>
+     <div class="sentprev">${a.sentence}</div>
+     <div class="kou">看——<b>${a.verbs.join('、')}</b> 四个动词按顺序排好，句子立刻就有画面了。</div>
+     <div class="row"><button class="btn blue" onclick="speak('${a.sentence.replace(/<[^>]+>/g,'')}')">🔊 读一遍</button><button class="btn green big" onclick="actPlay('q1')">轮到我写 →</button></div>
+   </div>`;
+  show('stage');
+}
+function actPlay(key){
+  ST.key=key;ST.chain=[];
+  const a=ACTS[key];
+  ST.pool=[...a.verbs,...(a.distract||[])];
+  for(let i=ST.pool.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[ST.pool[i],ST.pool[j]]=[ST.pool[j],ST.pool[i]];}
+  renderAct();show('stage');
+  speak('给"'+a.title+'"挑出 4 个动作，按先后顺序点进分镜里。');
+}
+function renderAct(){
+  const a=ACTS[ST.key];const b=document.getElementById('stage');const n=a.verbs.length;
+  const slots=[];
+  for(let i=0;i<n;i++){
+    if(ST.chain[i]!=null)slots.push(`<span class="tlslot" onclick="popChain(${i})">${ST.chain[i]}<span class="x">×</span></span>`);
+    else slots.push(`<span class="tlslot tlempty">第${i+1}步</span>`);
+    if(i<n-1)slots.push('<span class="arrow">→</span>');
+  }
+  const pool=ST.pool.map(v=>{const used=ST.chain.includes(v);return `<span class="vchip ${used?'used':''}" onclick="pushChain('${v}')">${v}</span>`;}).join('');
+  b.innerHTML=`<button class="back" onclick="actIntro()">← 返回</button>
+   <div class="card">
+     <div class="steps"><span class="s done">①方法</span><span class="s done">②看示范</span><span class="s on">③自己写</span></div>
+     <h2>🎬 ${a.who}·${a.title}</h2>
+     <div class="lead">从下面挑动词，<b>按先后顺序</b>点进分镜（点分镜里的可取下）。多了几个干扰词，别选错！</div>
+     <div class="timeline">${slots.join('')}</div>
+     <div class="pool">${pool}</div>
+     <div id="afb"></div>
+     <div class="row"><button class="btn gray sm" onclick="actPlay(ST.key)">🔄 重来</button><button class="btn green big" id="ckb" onclick="checkAct()" ${ST.chain.filter(x=>x!=null).length<n?'disabled style=\"opacity:.5\"':''}>✅ 连成句子</button></div>
+   </div>`;
+}
+function pushChain(v){const a=ACTS[ST.key];if(ST.chain.includes(v))return;if(ST.chain.filter(x=>x!=null).length>=a.verbs.length)return;ST.chain.push(v);renderAct();}
+function popChain(i){ST.chain.splice(i,1);renderAct();}
+function checkAct(){
+  const a=ACTS[ST.key];
+  const right=ST.chain.length===a.verbs.length&&ST.chain.every((v,i)=>v===a.verbs[i]);
+  const fb=document.getElementById('afb');
+  if(right){ding();
+    fb.innerHTML=`<div class="sentprev">${a.model}</div><div class="model">🎉 太棒了！动词顺序全对，句子立刻有画面。</div>
+     <div class="row"><button class="btn blue" onclick="speak('${a.model.replace(/<[^>]+>/g,'')}')">🔊 读我的句子</button><button class="btn green" onclick="goHome()">完成 👍</button></div>`;
+    speak('动词顺序全对，句子很有画面。');
+  }else{
+    buzz();
+    // 找出选了干扰词或顺序错
+    const wrongSel=ST.chain.filter(v=>!a.verbs.includes(v));
+    let msg=wrongSel.length?('「'+wrongSel.join('、')+'」不是这个动作该有的动词，去掉它。'):'动词都对，但<b>顺序</b>还要调一调——想想哪个动作先做。';
+    fb.innerHTML=`<div class="kou" style="background:#FBE6E2;border-color:var(--redd);color:var(--redd)">再想想：${msg}</div>
+     <div class="row"><button class="btn" onclick="actPlay(ST.key)">🔄 重来</button><button class="btn blue" onclick="revealAct()">看参考</button></div>`;
+    speak('还差一点，'+msg.replace(/<[^>]+>/g,''));
+  }
+}
+function revealAct(){
+  const a=ACTS[ST.key];
+  const fb=document.getElementById('afb');
+  fb.innerHTML=`<div class="timeline">${a.verbs.map((v,i)=>`<span class="tlslot">${v}</span>${i<a.verbs.length-1?'<span class="arrow">→</span>':''}`).join('')}</div><div class="model">参考句子：${a.model}</div><div class="row"><button class="btn green" onclick="actPlay(ST.key)">再练一次</button><button class="btn gray" onclick="goHome()">完成</button></div>`;
+}
+
+/* ===================== 模块2：阅读按点答(得分点雷达) ===================== */
+function readIntro(){
+  const b=document.getElementById('stage');
+  b.innerHTML=`<button class="back" onclick="goHome()">← 返回</button>
+   <div class="card">
+     <div class="steps"><span class="s on">①方法</span><span class="s">②看示范</span><span class="s">③自己找</span></div>
+     <h2>🔍 阅读简答 · 怎么想</h2>
+     <div class="kou">人物品质题三步：<br>1️⃣ 通读，圈出写人物<b>言行</b>的句子；<br>2️⃣ 从言行<b>提炼品质词</b>（沉着/忠于职守/机智/坚持…）；<br>3️⃣ <b>按点答：品质词 + 原文事例，至少两点</b>。</div>
+     <div class="lion"><div class="face">🦁</div><div class="bubble">你常被扣分是因为<b>只答一点</b>或<b>光写品质词、不举原文例子</b>。这里练"找够得分点"。</div></div>
+     <div class="row"><button class="btn green big" onclick="readDemo()">看一个示范 →</button></div>
+   </div>`;
+  show('stage');speak('人物品质题：圈出言行，提炼品质词，按点答，品质词加原文事例，至少两点。');
+}
+function readDemo(){
+  const r=READS.demo;const b=document.getElementById('stage');
+  b.innerHTML=`<button class="back" onclick="readIntro()">← 返回</button>
+   <div class="card">
+     <div class="steps"><span class="s done">①方法</span><span class="s on">②看示范</span><span class="s">③自己找</span></div>
+     <h2>👀 示范：${r.title}</h2>
+     <div class="lead">问题：<b>${r.q}</b></div>
+     <div class="passage">${r.passage.map((s,i)=>`<span class="sent ${r.points.includes(i)?'found':''}">${s}</span>`).join('')}</div>
+     <div class="kou">绿色就是<b>"得分句"</b>（人物的言行）。${r.tip}</div>
+     <div class="model">✅ 这样按点答：${r.model}</div>
+     <div class="row"><button class="btn blue" onclick="speak('${r.model.replace(/[①②]/g,'')}')">🔊 读答案</button><button class="btn green big" onclick="readPlay('q1')">轮到我找 →</button></div>
+   </div>`;
+  show('stage');
+}
+function readPlay(key){ST.key=key;ST.found=new Set();ST.done=false;renderRead();show('stage');const r=READS[key];speak('读短文，点出能说明人物品质的句子，至少两点。');}
+function renderRead(){
+  const r=READS[ST.key];const b=document.getElementById('stage');
+  const need=r.points.length;const got=[...ST.found].filter(i=>r.points.includes(i)).length;
+  const pct=Math.round(got/need*100);
+  b.innerHTML=`<button class="back" onclick="readIntro()">← 返回</button>
+   <div class="card">
+     <div class="steps"><span class="s done">①方法</span><span class="s done">②看示范</span><span class="s on">③自己找</span></div>
+     <h2>🔍 ${r.title}</h2>
+     <div class="lead">问题：<b>${r.q}</b></div>
+     <div class="lead">${r.ask}</div>
+     <div class="passage">${r.passage.map((s,i)=>{let c='sent';if(ST.found.has(i))c+=r.points.includes(i)?' found':' no';return `<span class="${c}" onclick="tapSent(${i})">${s}</span>`;}).join('')}</div>
+     <div class="lead">得分点 ${got} / ${need}：</div>
+     <div class="scorebar"><i style="width:${pct}%"></i></div>
+     <div id="readfb"></div>
+   </div>`;
+  if(got>=need&&!ST.done){ST.done=true;readWin();}
+}
+function tapSent(i){
+  if(ST.done)return;const r=READS[ST.key];
+  if(ST.found.has(i)){ST.found.delete(i);renderRead();return;}
+  ST.found.add(i);if(r.points.includes(i))ding();else buzz();
+  renderRead();
+  if(!ST.done){const fb=document.getElementById('readfb');
+    if(r.points.includes(i))fb.innerHTML=`<div class="kou">✅ 找到一个得分句！至少要 ${r.points.length} 点，继续。</div>`;
+    else fb.innerHTML=`<div class="kou" style="background:#FAD9D2;border-color:#e8643a;color:#e8643a">这句没写人物的言行，不是得分句，再找找。</div>`;}
+}
+function readWin(){
+  const r=READS[ST.key];ding();const fb=document.getElementById('readfb');
+  fb.innerHTML=`<div class="model">🎉 得分句都找到了！现在<b>按点答</b>（品质词+事例）：<br>${r.model}</div>
+   <div class="kou">${r.tip}</div>
+   <div class="row"><button class="btn blue" onclick="speak('${r.model.replace(/[①②]/g,'')}')">🔊 读完整答案</button><button class="btn green" onclick="goHome()">完成 👍</button></div>`;
+  speak('得分句都找到了，按品质词加事例答出来就满分。');
+}
+</script>
+</body>
+</html>

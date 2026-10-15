@@ -1,0 +1,530 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#fff7f0">
+  <meta name="study-portal-design" content="2.0">
+  <meta name="lesson-audio" content="pending: 38条Aria神经音已外置apps/audio/kenton_adverbial_clause_class_20260731/，机器校验通过；手机实播待家长验收">
+  <title>状语从句 · 连词分拣工作室</title>
+  <script src="../assets/learning-sync.js"></script>
+  <style>
+    :root{
+      --ink:#3a2e3f;--muted:#756978;--cyan:#36c5d6;--cyan-deep:#177c8d;--cyan-soft:#e3fbff;
+      --pink:#ff9ec4;--pink-soft:#fff0f6;--gold:#ffd166;--gold-soft:#fff7d7;
+      --green:#8ce99a;--green-soft:#effcf1;--purple:#b39ddb;--paper:#fffdf9;
+      --wash:#fff7f0;--line:#eadde5;--ok:#267a48;--ok-soft:#effcf1;--bad:#b1465a;--bad-soft:#fff0f3;
+      --shadow:0 8px 22px rgba(120,90,140,.14);--press:0 5px 0 #238f9d;--tap:48px
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;min-height:100vh;color:var(--ink);font-family:ui-rounded,"PingFang SC","Microsoft YaHei",system-ui,sans-serif;background:
+      radial-gradient(circle at 12% 4%,rgba(255,209,102,.3),transparent 18rem),
+      radial-gradient(circle at 94% 15%,rgba(255,158,196,.18),transparent 18rem),var(--wash);overscroll-behavior-y:contain}
+    button,input{font:inherit}button{touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+    .btn,.round-btn,.hub,.back,.home-card,.word-chip,.pronoun,.choice,.primary-launch,.tool-btn{min-height:var(--tap)}
+    button:focus-visible,a:focus-visible{outline:3px solid var(--purple);outline-offset:3px}
+    button:disabled{opacity:.48;cursor:not-allowed;box-shadow:none}
+    .wrap{width:min(680px,100%);margin:auto;padding:16px 14px 100px}
+    .topbar{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:14px}
+    .brand{display:flex;align-items:center;gap:10px;font-size:14px;font-weight:800}
+    .brand-mark{display:grid;place-items:center;width:42px;height:42px;border-radius:15px;background:var(--cyan);color:#fff;box-shadow:0 4px 0 #218e9c}
+    .brand-mark svg,.icon svg{width:24px;height:24px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+    .top-actions{display:flex;gap:7px;align-items:center}
+    .round-btn,.hub,.back{min-width:46px;min-height:46px;border:1px solid var(--line);background:var(--paper);color:var(--ink);border-radius:15px;display:inline-grid;place-items:center;text-decoration:none;font-weight:800;padding:9px 12px;box-shadow:0 3px 0 #e1d2db}
+    .round-btn{padding:0;cursor:pointer}
+    .lesson-intro{position:relative;overflow:hidden;border:2px solid #f0dfe7;border-radius:26px;background:rgba(255,253,249,.94);padding:22px 18px 18px;box-shadow:var(--shadow)}
+    .lesson-intro:before,.lesson-intro:after{content:"";position:absolute;border-radius:50%;pointer-events:none}
+    .lesson-intro:before{width:130px;height:130px;right:-50px;top:-55px;background:rgba(54,197,214,.14)}
+    .lesson-intro:after{width:86px;height:86px;left:-42px;bottom:90px;background:rgba(255,158,196,.13)}
+    .lesson-kicker,.pill{position:relative;z-index:1;display:inline-flex;align-items:center;gap:6px;border-radius:999px;background:var(--cyan-soft);color:var(--cyan-deep);padding:7px 11px;font-size:12px;font-weight:800}
+    .lesson-intro h1{position:relative;z-index:1;margin:12px 0 8px;font-size:clamp(23px,7vw,39px);line-height:1.12;letter-spacing:-.035em;white-space:nowrap}
+    .lesson-intro h1 span{color:var(--cyan-deep)}
+    .lesson-intro>p{position:relative;z-index:1;margin:0;color:var(--muted);font-size:15px;line-height:1.7}
+    .paper-stage{position:relative;z-index:1;margin:18px 0 16px;padding:14px 11px 16px;border:2px dashed #d7c8d1;border-radius:23px;background:#fff9ee;min-height:236px}
+    .paper-note{position:relative;width:92%;padding:14px 15px;border:1px solid #e7d7df;border-radius:14px;background:#fff;box-shadow:0 5px 0 #eadce4;font-size:17px;font-weight:800;line-height:1.45}
+    .paper-note mark,.paper-result mark{background:var(--gold);color:var(--ink);border-radius:7px;padding:1px 4px}
+    .note-a{transform:rotate(-1.2deg)}.note-b{margin:10px 0 0 auto;transform:rotate(1deg)}
+    .merge-hinge{position:absolute;right:8px;top:72px;transform:rotate(7deg);display:grid;place-items:center;width:62px;height:44px;border-radius:14px;background:var(--pink);color:#67384f;border:3px solid #fff;box-shadow:0 5px 0 #dc7da4;font-size:18px;font-weight:800;z-index:2}
+    .paper-result{margin-top:17px;padding:14px 12px;border-radius:15px;background:var(--cyan-soft);border:2px solid var(--cyan);text-align:center;font-weight:800;line-height:1.55}
+    .paper-result u{text-decoration-color:var(--pink);text-decoration-thickness:3px;text-underline-offset:3px}
+    .primary-launch{position:relative;z-index:1;width:100%;min-height:56px;border:0;border-radius:17px;background:var(--cyan);color:#103e46;font-weight:800;font-size:18px;box-shadow:var(--press);cursor:pointer}
+    .primary-launch:active,.btn:active,.round-btn:active,.tool-btn:active,.home-card:active{transform:translateY(3px);box-shadow:none}
+    .micro-route{position:relative;z-index:1;display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-top:15px;color:var(--muted);font-size:12px;font-weight:800}
+    .micro-route span{display:inline-flex;align-items:center;gap:5px}.micro-route b{display:grid;place-items:center;width:22px;height:22px;border-radius:50%;background:#fff;border:2px solid var(--cyan);color:var(--cyan-deep)}
+    .voice-note{display:flex;gap:10px;align-items:flex-start;margin:13px 0;border:1px solid #efd59c;border-radius:16px;background:var(--gold-soft);padding:12px 14px;color:#715a23;font-size:13px;line-height:1.55}
+    .voice-note i{flex:0 0 auto;display:grid;place-items:center;width:30px;height:30px;border-radius:11px;background:var(--gold);color:#66501e;font-style:normal;font-size:12px;font-weight:800;box-shadow:0 3px 0 #d8a941}
+    .daily-note{display:block;width:100%;margin-top:4px;color:var(--muted);font-size:12px;text-align:center}
+    .quick-tools{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin:14px 0}
+    .tool-btn{min-height:74px;border:1px solid var(--line);border-radius:18px;background:var(--paper);color:var(--ink);padding:10px 6px;font-weight:800;cursor:pointer;box-shadow:0 4px 0 #eadce4}
+    .tool-btn .tool-icon{display:grid;place-items:center;width:31px;height:31px;margin:0 auto 5px;border-radius:11px;background:var(--pink-soft);color:#9d4a70}.tool-btn .tool-icon svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}.tool-btn small{display:block;color:var(--muted);font-size:11px}
+    details.source{margin-top:14px;border:1px solid var(--line);border-radius:15px;background:rgba(255,255,255,.66);color:var(--muted);font-size:12px;line-height:1.65;padding:10px 13px}
+    details.source summary{cursor:pointer;font-weight:800;color:var(--ink)}
+    .progress,.panel{margin:14px 0;background:var(--paper);border:1px solid var(--line);border-radius:24px;padding:clamp(17px,4vw,26px);box-shadow:var(--shadow)}
+    .metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.metric{text-align:center;border-radius:14px;background:#fff8f4;padding:10px}.metric strong{display:block;color:var(--cyan-deep);font-size:22px}.metric span{font-size:11px;color:var(--muted)}
+    .bar{height:9px;border-radius:999px;background:#efe4ea;overflow:hidden;margin-top:12px}.bar i{display:block;height:100%;border-radius:inherit;background:linear-gradient(90deg,var(--cyan),var(--pink));transition:width .25s ease}
+    .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.home-card{position:relative;text-align:left;border:1px solid var(--line);border-radius:20px;background:var(--paper);padding:17px;color:var(--ink);cursor:pointer;box-shadow:0 4px 0 #eadce4}.home-card.primary{background:var(--cyan-soft);border-color:#a7e5ec}.home-card.done:after{content:"完成";position:absolute;top:12px;right:12px;border-radius:999px;padding:4px 8px;background:var(--green-soft);color:var(--ok);font-size:11px;font-weight:800}.home-card .kicker{font-size:11px;color:var(--cyan-deep);font-weight:800}.home-card h3{font-size:18px;margin:9px 0 6px}.home-card p{line-height:1.55;margin:0;color:var(--muted);font-size:13px}
+    .icon{display:grid;place-items:center;width:42px;height:42px;border-radius:14px;background:var(--pink-soft);color:#a84e76;margin-top:10px}
+    .page-head{display:flex;align-items:center;gap:12px;margin:8px 0 14px}.page-head .back{width:46px;padding:0;cursor:pointer}.page-head h1{font-size:clamp(25px,6vw,34px);margin:0;line-height:1.15}.page-head p{margin:4px 0 0;color:var(--muted);font-size:13px}
+    .panel h2{font-size:clamp(22px,5vw,30px);margin:11px 0 8px}.panel p{line-height:1.68;color:var(--muted)}
+    .stepper{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin:4px 0 16px}.step{border-radius:12px;background:#f6edf2;color:var(--muted);padding:9px 5px;text-align:center;font-size:11px;font-weight:800}.step.on{background:var(--pink);color:#65374c}.step.done{background:var(--green-soft);color:var(--ok)}
+    .sentence-lab{border-radius:22px;background:#fff9ee;border:2px dashed #d8c9d1;padding:15px}.tray-title{font-size:11px;font-weight:800;color:var(--muted);margin:13px 0 7px}
+    .word-tray{display:flex;gap:7px;align-items:center;flex-wrap:wrap;min-height:68px;border:1px solid #e4d5dd;border-radius:16px;background:#fff;padding:11px;box-shadow:0 4px 0 #eadce4}
+    .word-chip{min-width:44px;min-height:44px;border:1px solid transparent;background:transparent;color:var(--ink);border-radius:10px;padding:8px 9px;font-weight:800;cursor:pointer}.word-chip:hover{background:#fff7d7}.word-chip.chosen{background:var(--gold);border-color:#e0ac38;color:#4f3d15;box-shadow:0 3px 0 #d3a236}
+    .hint-box{border-radius:16px;background:var(--gold-soft);border:1px solid #ead17b;padding:12px 14px;margin:14px 0;line-height:1.65;font-size:14px}
+    .pronoun-dock{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:14px 0}.pronoun{min-height:70px;border:2px solid #e2d4dc;border-radius:16px;background:#fff;color:var(--ink);font-weight:800;font-size:20px;cursor:pointer;box-shadow:0 3px 0 #e6d9e1}.pronoun small{display:block;color:var(--muted);font-size:11px;margin-top:3px}.pronoun.on{border-color:var(--cyan);background:var(--cyan-soft);color:var(--cyan-deep)}
+    .merge-rail{display:grid;grid-template-columns:auto 1fr auto;gap:9px;align-items:center;margin:16px 0}.rail-part{border:2px solid #e1d3dc;border-radius:14px;padding:13px;background:#fff;font-weight:800;line-height:1.55}.rail-part.relation{background:var(--pink-soft);border-color:var(--pink);color:#7c3f5d}.rail-arrow{font-weight:800;color:var(--cyan-deep);font-size:22px}
+    .final-sentence{border:2px solid var(--cyan);border-radius:18px;background:var(--cyan-soft);padding:18px;text-align:center;font-size:clamp(17px,4vw,22px);font-weight:800;line-height:1.65;animation:join .32s ease-out}.final-sentence .noun{background:var(--gold);border-radius:6px;padding:1px 4px}.final-sentence .clause{color:var(--cyan-deep);border-bottom:3px solid var(--pink)}
+    @keyframes join{from{opacity:.2;transform:translateY(8px) scale(.98)}to{opacity:1;transform:none}}
+    .btn-row{display:flex;gap:9px;justify-content:flex-end;flex-wrap:wrap;margin-top:17px}.btn{min-height:48px;border:0;border-radius:14px;padding:12px 16px;font-weight:800;cursor:pointer;box-shadow:0 4px 0 #ded0d9;background:#f3eaf0;color:var(--ink)}.btn.primary{background:var(--cyan);color:#16434a;box-shadow:0 4px 0 #238f9d}.btn.gold{background:var(--gold);color:#4f3d15;box-shadow:0 4px 0 #d7aa40}.btn.danger{background:var(--bad-soft);color:var(--bad);border:1px solid #efbdc6;box-shadow:none}.btn.wide{flex:1}
+    .lens-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.selector{border:1px solid var(--line);border-radius:18px;padding:14px;background:#fff8f4}.selector h3{margin:0 0 10px}.seg{display:grid;gap:8px}.seg button{min-height:48px;border:2px solid #e2d4dc;border-radius:13px;background:#fff;color:var(--ink);font-weight:800;cursor:pointer}.seg button.on{background:var(--cyan);border-color:var(--cyan);color:#16434a}.lens-result{margin-top:15px;border-radius:19px;background:var(--cyan-soft);border:2px solid var(--cyan);color:var(--ink);padding:18px}.lens-result strong{font-size:30px;color:var(--cyan-deep)}.lens-result p{margin-bottom:0}
+    .recall-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:11px}.recall{min-height:180px;border:2px solid #e2d4dc;border-radius:20px;background:#fff;padding:17px;text-align:left;cursor:pointer;color:var(--ink);box-shadow:0 4px 0 #e6d9e1}.recall .front{font-size:18px;font-weight:800}.recall .back{display:none;margin-top:12px;line-height:1.65;color:var(--muted)}.recall.open{border-color:var(--pink);background:var(--pink-soft)}.recall.open .back{display:block}.recall .tap{display:block;margin-top:15px;color:var(--cyan-deep);font-size:11px;font-weight:800}
+    .choices{display:grid;gap:10px;margin-top:16px}.choice{text-align:left;min-height:52px;border:2px solid #e2d4dc;border-radius:15px;background:#fff;padding:13px 15px;color:var(--ink);font-weight:800;cursor:pointer}.choice.right{border-color:#65c878;background:var(--ok-soft)}.choice.wrong{border-color:#d26b7c;background:var(--bad-soft)}.choice:disabled{cursor:default}
+    .feedback{border-radius:17px;padding:15px 17px;margin-top:15px;line-height:1.65}.feedback.ok{background:var(--ok-soft);border:1px solid #8bd29b}.feedback.no{background:var(--bad-soft);border:1px solid #e7aeb9}.feedback h3{margin:0 0 5px}.repair-rule{border-left:5px solid var(--gold);background:var(--gold-soft);border-radius:14px;padding:15px;line-height:1.7;margin:14px 0}
+    .wrong-list{display:grid;gap:10px}.wrong-item{border:1px solid var(--line);border-radius:15px;padding:14px;display:flex;justify-content:space-between;gap:12px}.wrong-item strong{display:block}.status{white-space:nowrap;border-radius:999px;padding:5px 9px;font-size:12px;font-weight:800}.status.open{background:var(--bad-soft);color:var(--bad)}.status.solved{background:var(--ok-soft);color:var(--ok)}
+    .empty{text-align:center;padding:24px}.empty strong{display:block;font-size:28px;color:var(--cyan-deep)}.privacy{text-align:center;font-size:12px;color:var(--muted)}
+    .toast{position:fixed;left:50%;bottom:70px;transform:translate(-50%,24px);opacity:0;pointer-events:none;background:var(--ink);color:#fff;border-radius:999px;padding:11px 17px;font-size:13px;font-weight:800;z-index:80;transition:.2s;max-width:90%;text-align:center}.toast.show{opacity:1;transform:translate(-50%,0)}
+    @media(max-width:560px){
+      .grid,.lens-grid,.recall-grid{grid-template-columns:1fr}.pronoun-dock{grid-template-columns:repeat(2,1fr)}.merge-rail{grid-template-columns:1fr}.rail-arrow{transform:rotate(90deg);text-align:center}.stepper{grid-template-columns:repeat(2,1fr)}.wrong-item{flex-direction:column}
+    }
+    @media(max-width:390px){.wrap{padding-left:11px;padding-right:11px}.hub{font-size:12px;padding:8px}.brand{font-size:13px}.brand>span:last-child{white-space:nowrap}.quick-tools{gap:7px}.tool-btn{font-size:12px}.paper-note{font-size:15px}}
+    @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
+
+    .bin-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:14px}
+    .bin{min-height:120px;border:2px dashed #d8c9d1;border-radius:18px;background:#fff;padding:12px;cursor:pointer;text-align:left;color:var(--ink)}
+    .bin.on{border-color:var(--cyan);background:var(--cyan-soft)}
+    .bin h3{margin:0 0 6px;font-size:15px}.bin small{color:var(--muted);font-size:11px;display:block;line-height:1.5}
+    .bin .got{display:flex;flex-wrap:wrap;gap:5px;margin-top:8px}
+    .bin .got i{font-style:normal;background:var(--green-soft);color:var(--ok);border-radius:8px;padding:3px 7px;font-size:12px;font-weight:800}
+    .conn-tray{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+    .conn{border:2px solid #e2d4dc;border-radius:12px;background:#fff;color:var(--ink);padding:10px 13px;font-weight:800;font-size:16px;cursor:pointer;box-shadow:0 3px 0 #e6d9e1}
+    .conn.on{border-color:var(--cyan);background:var(--cyan-soft);color:var(--cyan-deep)}
+    .conn.done{opacity:.32;pointer-events:none}
+    .tcard{border:2px solid var(--cyan);border-radius:20px;background:var(--cyan-soft);padding:18px;margin-top:12px}
+    .tcard .cw{font-size:30px;font-weight:800;color:var(--cyan-deep)}
+    .tcard .cm{color:var(--muted);font-size:13px;margin:2px 0 10px}
+    .tcard .ex{background:#fff;border-radius:14px;padding:13px;font-weight:800;font-size:17px;line-height:1.55}
+    .tcard .ex small{display:block;color:var(--muted);font-weight:600;margin-top:5px;font-size:12px}
+    .tcard .rule{margin-top:11px;font-size:13px;line-height:1.65;color:var(--ink)}
+    .verb-card{border:2px solid #e2d4dc;border-radius:20px;background:#fff;padding:18px;text-align:center;margin-top:12px;cursor:pointer;box-shadow:0 4px 0 #e6d9e1}
+    .verb-card .n{display:inline-block;border-radius:999px;background:var(--pink-soft);color:#9d4a70;font-size:12px;font-weight:800;padding:4px 10px}
+    .verb-card .base{font-size:34px;font-weight:800;margin:8px 0 2px}
+    .verb-card .ipa{color:var(--muted);font-size:13px}
+    .verb-card .zh{color:var(--muted);font-size:14px;margin-top:2px}
+    .verb-card .forms{display:none;margin-top:12px;gap:8px;justify-content:center}
+    .verb-card.open .forms{display:flex}
+    .verb-card .forms div{flex:1;border-radius:14px;background:var(--gold-soft);padding:10px 6px}
+    .verb-card .forms b{display:block;font-size:19px}
+    .verb-card .forms span{font-size:11px;color:var(--muted)}
+    .verb-card .tip{display:none;margin-top:11px;font-size:12px;color:var(--muted);line-height:1.6}
+    .verb-card.open .tip{display:block}
+    @media(max-width:560px){.bin-grid{grid-template-columns:1fr}}
+  </style>
+</head>
+<body data-child="kenton">
+  <main class="wrap">
+    <div class="topbar">
+      <div class="brand">
+        <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 6h6v5H4zM14 13h6v5h-6zM10 8.5h4M12 8.5V15M12 15h2"/></svg></span>
+        <span>Kenton · 状语从句分拣站</span>
+      </div>
+      <div class="top-actions">
+        <button class="round-btn" id="soundToggle" type="button" aria-label="关闭点击音">声</button>
+        <a class="hub" href="summer_english_hub.html?who=kenton">回学习馆</a>
+      </div>
+    </div>
+    <div id="app"></div>
+  </main>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+    <script>
+  (() => {
+    'use strict';
+    const APP_ID='kenton-adverbial-clause-20260731';
+    const VERSION='1.0.0';
+    const STORAGE_KEY='study:kenton:kenton-adverbial-clause-20260731:v1';
+    const MATERIAL='2026-07-31 老师课堂新授（状语从句）·《知识点梳理》第15章 p.104—111';
+    const AUDIO_DIR='audio/kenton_adverbial_clause_class_20260731';
+    const LESSON_BLUEPRINT=Object.freeze({
+      appId:APP_ID,
+      child:'kenton',
+      source:MATERIAL,
+      courseDate:'2026-07-31',
+      currentGap:'状语从句连词一多就混：时间七连词的细微差别、so/such…that、主将从现不稳定',
+      observableOutcome:'能把14个连词分进时间/地点/目的/结果四类，讲清时间连词差别，独立答对10题检验并背完不规则动词31—60',
+      knowledgeMechanism:'先按"从句回答什么问题"分类（何时/何地/为什么/结果如何），再记每类连词；时间状从主句将来时从句用一般现在',
+      primaryInteraction:'连词分拣台、时间连词显微镜、动词三态遮挡翻卡、错后定点重教返回原题',
+      audio:'pending',
+      surprise:'连词小球落进正确箱子时整箱亮起',
+      surpriseTrigger:'分拣台全部放对',
+      phases:['teach','guided','recall','independent','repair','transfer']
+    });
+    const DAILY_SURPRISES=Object.freeze([
+      '先不看答案，猜猜 since 的句子里主句是什么时态。',
+      '分完拣后，把 so…that 和 such…that 各读一遍例句。',
+      '今天找3个"三个形态一模一样"的动词。'
+    ]);
+    function dailySurpriseKey(){
+      const date=new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Shanghai',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date());
+      return`${APP_ID}|kenton|${date}`;
+    }
+    function dailySurprise(){
+      let hash=0;
+      for(const char of dailySurpriseKey())hash=(hash*31+char.charCodeAt(0))>>>0;
+      return DAILY_SURPRISES[hash%DAILY_SURPRISES.length];
+    }
+    /* 连词分拣台：14 个连词进 4 个箱子 */
+    const BINS=[
+      {id:'time',name:'⏰ 时间',sub:'从句回答"什么时候？"',conns:['when','while','as','by the time','till','until','since']},
+      {id:'place',name:'📍 地点',sub:'从句回答"在哪里？"',conns:['where']},
+      {id:'purpose',name:'🎯 目的',sub:'从句回答"为了什么？"',conns:['so that','in order that']},
+      {id:'result',name:'💥 结果',sub:'从句回答"结果怎么样？"',conns:['so…that','such…that','too…to','enough…to']}
+    ];
+    const CONN_HINT={
+      'when':'最百搭的时间连词：那一刻、那段时间都能用。',
+      'while':'强调"同一时段"，后面常跟延续动作。',
+      'as':"两个动作一起走：'一边…一边 / 随着'。它不在目的或结果里。",
+      'by the time':'到…时为止，主句常用完成时。',
+      'till':"一直…直到（口语里和 until 一家）。",
+      'until':'直到…才 / 直到…为止，常和 not 搭档。',
+      'since':'自从…以来，主句常用完成时。不是"因为"哦。',
+      'where':'地点只有它一个：在…的地方。',
+      'so that':'为了…（从句里常有 can/could/will）。',
+      'in order that':'为了…（比 so that 更正式）。',
+      'so…that':'如此…以至于：so + 形容词/副词 + that。',
+      'such…that':'如此…以至于：such + (a/an) + 名词 + that。',
+      'too…to':'太…而不能：too + 形容词 + to + 原形。',
+      'enough…to':'足够…可以：形容词 + enough + to + 原形。'
+    };
+    /* 时间连词显微镜：7 连词 + 主将从现 */
+    const TIME_CARDS=[
+      {w:'when',m:'当…的时候',ex:'When I got home, my brother was doing his homework.',cn:'当我到家时，我弟弟正在做作业。',rule:'最百搭：那一刻、那段时间都能用。短动作、长动作都接得住。',audio:'01-when.mp3'},
+      {w:'while',m:'当…期间',ex:'While I was doing my homework, my brother was playing outside.',cn:'我做作业期间，弟弟在外面玩。',rule:'强调"同一时段"，后面常跟延续动作（进行时最舒服）。',audio:'02-while.mp3'},
+      {w:'as',m:'一边…一边 / 随着',ex:'As we walked home, the sun went down.',cn:'我们一路走回家，太阳一边落山。',rule:'两个动作肩并肩一起走，还能表"随着"的变化。',audio:'03-as.mp3'},
+      {w:'by the time',m:'到…时为止',ex:'By the time I got to the station, the train had left.',cn:'等我到车站时，火车已经开走了。',rule:'主句常用完成时：到那一刻，事情已经发生了。',audio:'04-by-the-time.mp3'},
+      {w:'till',m:'直到…为止',ex:'I waited till the rain stopped.',cn:'我一直等到雨停。',rule:'动作一直持续到那一刻；口语里 till ≈ until。',audio:'05-till.mp3'},
+      {w:'until',m:'直到…才',ex:"He didn't go to bed until his mom came back.",cn:'他直到妈妈回来才睡觉。',rule:'黄金搭档 not…until：直到…才。',audio:'06-until.mp3'},
+      {w:'since',m:'自从…以来',ex:'We have known each other since 2019.',cn:'我们从2019年起就认识了。',rule:'从句是过去的起点，主句常用现在完成时。',audio:'07-since.mp3'},
+      {w:'主将从现 ⭐',m:'时间状从不许用 will',ex:"As soon as I finish the job, I'll give you a call.",cn:'我一完成工作就给你打电话。（教材 p.105 原句）',rule:'主句用将来时，时间状语从句只能用一般现在：说 finish，不说 will finish。',audio:'08-as-soon-as.mp3'}
+    ];
+    /* 不规则动词 31—60（老师原表逐行核对：fall → leave） */
+    const VERBS=[
+      {n:31,base:'fall',ipa:'/fɔːl/',past:'fell',pp:'fallen',zh:'落下',tip:'a变e成fell；分词回fall加-en',audio:'v31-fall.mp3'},
+      {n:32,base:'feed',ipa:'/fiːd/',past:'fed',pp:'fed',zh:'喂',tip:'两个e挤掉一个：feed→fed',audio:'v32-feed.mp3'},
+      {n:33,base:'feel',ipa:'/fiːl/',past:'felt',pp:'felt',zh:'觉得',tip:'ee缩成e、尾巴加t：feel→felt',audio:'v33-feel.mp3'},
+      {n:34,base:'fight',ipa:'/faɪt/',past:'fought',pp:'fought',zh:'打架，战斗',tip:'igh变ough：fight→fought',audio:'v34-fight.mp3'},
+      {n:35,base:'find',ipa:'/faɪnd/',past:'found',pp:'found',zh:'发现，找到',tip:'i变ou：find→found',audio:'v35-find.mp3'},
+      {n:36,base:'flee',ipa:'/fliː/',past:'fled',pp:'fled',zh:'逃，消失',tip:'ee缩成e再加d：flee→fled',audio:'v36-flee.mp3'},
+      {n:37,base:'fly',ipa:'/flaɪ/',past:'flew',pp:'flown',zh:'飞',tip:'y→ew→own，和know/grow三兄弟',audio:'v37-fly.mp3'},
+      {n:38,base:'forbid',ipa:'/fəˈbɪd/',past:'forbade',pp:'forbidden',zh:'禁止',tip:'i变a(de)；分词双写d加en',audio:'v38-forbid.mp3'},
+      {n:39,base:'forecast',ipa:'/ˈfɔːkɑːst/',past:'forecast',pp:'forecast',zh:'预测，预报',tip:'三个一模一样',audio:'v39-forecast.mp3'},
+      {n:40,base:'forget',ipa:'/fəˈɡet/',past:'forgot',pp:'forgotten',zh:'忘记',tip:'e变o；分词双写t加en',audio:'v40-forget.mp3'},
+      {n:41,base:'forgive',ipa:'/fəˈɡɪv/',past:'forgave',pp:'forgiven',zh:'宽恕',tip:'i变a成forgave；分词变回i加en',audio:'v41-forgive.mp3'},
+      {n:42,base:'freeze',ipa:'/friːz/',past:'froze',pp:'frozen',zh:'冻结',tip:'ee变o；分词frozen（冰雪奇缘）',audio:'v42-freeze.mp3'},
+      {n:43,base:'get',ipa:'/ɡet/',past:'got',pp:'got',zh:'得到',tip:'e变o：get→got',audio:'v43-get.mp3'},
+      {n:44,base:'give',ipa:'/ɡɪv/',past:'gave',pp:'given',zh:'给',tip:'i变a成gave；分词given=give+n',audio:'v44-give.mp3'},
+      {n:45,base:'go',ipa:'/ɡəʊ/',past:'went',pp:'gone',zh:'去',tip:'went完全换新词（硬记）；gone=go+ne',audio:'v45-go.mp3'},
+      {n:46,base:'grow',ipa:'/ɡrəʊ/',past:'grew',pp:'grown',zh:'生长',tip:'ow→ew→own',audio:'v46-grow.mp3'},
+      {n:47,base:'hang',ipa:'/hæŋ/',past:'hung',pp:'hung',zh:'挂',tip:'a变u：hang→hung',audio:'v47-hang.mp3'},
+      {n:48,base:'have',ipa:'/hæv/',past:'had',pp:'had',zh:'有',tip:'ve换成d：have→had',audio:'v48-have.mp3'},
+      {n:49,base:'hear',ipa:'/hɪə(r)/',past:'heard',pp:'heard',zh:'听到',tip:'直接加d，读音变 /hɜːd/',audio:'v49-hear.mp3'},
+      {n:50,base:'hide',ipa:'/haɪd/',past:'hid',pp:'hidden',zh:'藏',tip:'去e成hid；分词双写d加en',audio:'v50-hide.mp3'},
+      {n:51,base:'hit',ipa:'/hɪt/',past:'hit',pp:'hit',zh:'打中',tip:'三个一模一样',audio:'v51-hit.mp3'},
+      {n:52,base:'hold',ipa:'/həʊld/',past:'held',pp:'held',zh:'持，拿着',tip:'o变e：hold→held',audio:'v52-hold.mp3'},
+      {n:53,base:'hurt',ipa:'/hɜːt/',past:'hurt',pp:'hurt',zh:'损伤',tip:'三个一模一样',audio:'v53-hurt.mp3'},
+      {n:54,base:'keep',ipa:'/kiːp/',past:'kept',pp:'kept',zh:'保持',tip:'ee缩成e、加t：kept',audio:'v54-keep.mp3'},
+      {n:55,base:'know',ipa:'/nəʊ/',past:'knew',pp:'known',zh:'知道',tip:'ow→ew→own',audio:'v55-know.mp3'},
+      {n:56,base:'lay',ipa:'/leɪ/',past:'laid',pp:'laid',zh:'放，放置',tip:'y变i再加d：laid',audio:'v56-lay.mp3'},
+      {n:57,base:'lead',ipa:'/liːd/',past:'led',pp:'led',zh:'领导',tip:'ea缩成e：lead→led',audio:'v57-lead.mp3'},
+      {n:58,base:'leap',ipa:'/liːp/',past:'leapt',pp:'leapt',zh:'跳跃',tip:'直接加t：leapt',audio:'v58-leap.mp3'},
+      {n:59,base:'learn',ipa:'/lɜːn/',past:'learnt',pp:'learnt',zh:'学习',tip:'直接加t：learnt',audio:'v59-learn.mp3'},
+      {n:60,base:'leave',ipa:'/liːv/',past:'left',pp:'left',zh:'离开',tip:'eave变eft：left',audio:'v60-leave.mp3'}
+    ];
+    const recallCards=[
+      ['四类状语从句，各用哪些连词？','时间：when / while / as / by the time / till / until / since；地点：where；目的：so that / in order that；结果：so…that / such…that（还有 too…to / enough…to 两种转换）。'],
+      ['时间状从的主句是将来时，从句用什么时态？','一般现在！主将从现：As soon as I finish the job, I\u2019ll give you a call. 从句绝不用 will。'],
+      ['while 和 when 最大的区别？','while 强调"同一时段"，后面常跟延续动作（进行时）；when 那一刻、那段时间都行，最百搭。'],
+      ['such…that 和 so…that 怎么分？','such + (a/an) + 名词：such a cold night；so + 形容词/副词：so cold。互换：such a cold night = so cold a night。'],
+      ['too…to 怎么换成结果从句？','He is too young to go. = He is so young that he can\u2019t go. = He isn\u2019t old enough to go. 三句一个意思。'],
+      ['since 句子里主句常用什么时态？','现在完成时：We have known each other since 2019. since 从句本身用一般过去。']
+    ];
+    const questions=[
+      makeQ('q1','时间·when','I was doing my homework ___ my mom came back.',['when','while','since'],0,'"回来"是短短的一刻，用 when 最自然；while 后面常接延续动作。','短动作发生的那一刻 → when；while 管"同一时段"。',transfer('The phone rang ___ we were having dinner.',['when','until','since'],0)),
+      makeQ('q2','时间·while','___ we were walking in the park, it started to rain.',['While','By the time','Till'],0,'were walking 是延续动作：散步"期间"开始下雨 → While。','看到"期间 + 延续动作"，先试 while。',transfer('___ I was reading, my brother was playing games.',['While','Since','Until'],0)),
+      makeQ('q3','主将从现','As soon as I finish the job, I ___ you a call.',['\u2019ll give','give','gave'],0,'主句用将来时 \u2019ll give；从句 finish 已是一般现在，绝不用 will。','时间状从里不许出现 will：主将从现。',transfer('When he ___ home, he will call you.',['arrives','will arrive','arrived'],0)),
+      makeQ('q4','时间·until','He didn\u2019t go to bed ___ his mom came back.',['until','since','as'],0,'not…until 黄金搭档：直到…才。','看到 not / didn\u2019t，先想 until：直到…才。',transfer('The shop doesn\u2019t close ___ 10 p.m.',['until','since','when'],0)),
+      makeQ('q5','时间·by the time','___ I got to the station, the train had left.',['By the time','Till','As'],0,'主句 had left 是过去完成时："等我到时，火车已经走了" → By the time。','主句出现 had done，优先想 by the time。',transfer('___ we arrived, the film had started.',['By the time','Since','While'],0)),
+      makeQ('q6','时间·since','We have known each other ___ 2019.',['since','when','till'],0,'主句 have known 是完成时，2019 是起点 → since（自从）。','完成时 + 过去的起点 → since。',transfer('She has studied English ___ she was six.',['since','until','while'],0)),
+      makeQ('q7','地点·where','Please put the book ___ it was.',['where','when','which'],0,'"放回它原来的地方"：从句回答"在哪里" → where。','从句回答"在哪里" → where，地点状从只有它。',transfer('Stay ___ you are and don\u2019t move.',['where','when','which'],0)),
+      makeQ('q8','目的·so that','He got up early ___ he could catch the first bus.',['so that','such that','too to'],0,'早起"是为了"赶车；so that 表目的，从句里常有 can/could/will。','从句回答"为了什么" → so that / in order that。',transfer('She spoke slowly ___ everyone could understand her.',['in order that','such that','too to'],0)),
+      makeQ('q9','结果·such…that','It was ___ a cold night ___ we all stayed at home.',['such … that','so … that','too … to'],0,'a cold night 是名词短语 → such a cold night that…（换成 so 要说 so cold a night）。','such 抱名词，so 抱形容词/副词。',transfer('The box is ___ heavy ___ I can\u2019t lift it.',['so … that','such … that','enough … to'],0)),
+      makeQ('q10','结果·too/enough 转换','He is too young to go to school. 意思相同的一句是：',['He is so young that he can\u2019t go to school.','He is such young that he can\u2019t go to school.','He is old enough to go to school.'],0,'too young to go = so young that he can\u2019t go = not old enough to go，三句一个意思。','too…to（太…不能）↔ so…that + can\u2019t ↔ not + 反义形容词 + enough…to。',transfer('The water is too cold to drink. 意思相同的一句是：',['The water is so cold that we can\u2019t drink it.','The water is such cold that we can\u2019t drink it.','The water is warm enough to drink.'],0))
+    ];
+    function makeQ(id,skill,prompt,options,answer,explain,repair,variation){return{id,skill,prompt,options,answer,explain,repair,variation}}
+    function transfer(prompt,options,answer){return{prompt,options,answer}}
+    const defaultState=()=>({schema:2,child:'Kenton',appId:APP_ID,version:VERSION,createdAt:new Date().toISOString(),lastOpened:new Date().toISOString(),totalMs:0,modules:{},attempts:[],wrongbook:{},recall:{},sessions:0});
+    let state=load(),route='home',pickedConn=null,sortedMap={},timePos=0,timeRead=new Set(),verbPos=0,verbSeen=new Set(),
+      quizPos=0,quizMode='original',answerState=null,repairQuestion=null,started=Date.now(),currentAudio=null,audioBroken=false,toastTimer,
+      soundOn=localStorage.getItem('study:kenton:ui-sound')!=='0',audioContext=null;
+
+    function load(){
+      try{
+        const old=JSON.parse(localStorage.getItem(STORAGE_KEY)||'null');
+        if(old&&old.child==='Kenton'){
+          return{...defaultState(),...old,schema:2,version:VERSION,modules:old.modules||{},attempts:old.attempts||[],wrongbook:old.wrongbook||{},recall:old.recall||{}};
+        }
+      }catch(_){}
+      return defaultState();
+    }
+    function save(){state.lastOpened=new Date().toISOString();localStorage.setItem(STORAGE_KEY,JSON.stringify(state))}
+    function tick(){const now=Date.now();state.totalMs+=now-started;started=now;save()}
+    setInterval(tick,30000);addEventListener('beforeunload',tick);
+    function esc(value){return String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+    function tone(kind='tap'){
+      if(!soundOn)return;
+      try{
+        if(!audioContext)audioContext=new (window.AudioContext||window.webkitAudioContext)();
+        if(audioContext.state==='suspended')audioContext.resume();
+        const now=audioContext.currentTime;
+        const notes=kind==='ok'?[[523,.00],[659,.08]]:kind==='bad'?[[196,.00],[165,.12]]:[[340,.00]];
+        notes.forEach(([hz,delay])=>{
+          const osc=audioContext.createOscillator(),gain=audioContext.createGain();
+          osc.type=kind==='bad'?'triangle':'sine';osc.frequency.value=hz;
+          gain.gain.setValueAtTime(.0001,now+delay);gain.gain.exponentialRampToValueAtTime(kind==='tap'?.035:.075,now+delay+.015);gain.gain.exponentialRampToValueAtTime(.0001,now+delay+.13);
+          osc.connect(gain);gain.connect(audioContext.destination);osc.start(now+delay);osc.stop(now+delay+.15);
+        });
+      }catch(_){}
+    }
+    function toast(message){const el=document.getElementById('toast');el.textContent=message;el.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>el.classList.remove('show'),2200)}
+    function recordAttempt(data){
+      const row={...data,child:'Kenton',appId:APP_ID,version:VERSION,at:new Date().toISOString(),materialSource:MATERIAL};
+      state.attempts.push(row);if(state.attempts.length>600)state.attempts=state.attempts.slice(-600);save();
+      window.DDLearningSync?.recordAttempt?.(row);
+    }
+    function markModule(id,meta={}){state.modules[id]={status:'complete',at:new Date().toISOString(),meta};save()}
+    window.DDMemory={recordAttempt,markModule};
+    function stopAudio(){
+      if(currentAudio){
+        currentAudio.pause();
+        currentAudio.currentTime=0;
+        currentAudio=null
+      }
+    }
+    function go(next){stopAudio();route=next;answerState=null;render();scrollTo({top:0,behavior:'smooth'})}
+    function pageHead(title,sub){return`<div class="page-head"><button class="back" type="button" onclick="go('home')" aria-label="返回首页">←</button><div><h1>${esc(title)}</h1><p>${esc(sub)}</p></div></div>`}
+    function playSentence(file,label='英语整句'){
+      stopAudio();
+      const audio=new Audio(`${AUDIO_DIR}/${file}`);
+      audio.preload='auto';
+      audio.playsInline=true;
+      currentAudio=audio;
+      audio.onended=()=>{if(currentAudio===audio)currentAudio=null};
+      audio.onerror=()=>{audioBroken=true;if(currentAudio===audio)currentAudio=null;toast('这条英语 MP3 没有成功播放，请再点一次')};
+      audio.play().then(()=>toast(`正在播放：${label}`)).catch(()=>{
+        audioBroken=true;
+        if(currentAudio===audio)currentAudio=null;
+        toast('英语 MP3 没有成功播放，请检查媒体音量')
+      })
+    }
+    function progress(){
+      const done=['sort','time','verbs','recall','quiz'].filter(x=>state.modules[x]?.status==='complete').length;
+      const open=Object.values(state.wrongbook).filter(x=>x.errors>0&&!x.solved).length;
+      return{done,open,attempts:state.attempts.length};
+    }
+    function render(){
+      const app=document.getElementById('app');
+      if(route==='home')app.innerHTML=home();
+      else if(route==='sort')app.innerHTML=sortPage();
+      else if(route==='time')app.innerHTML=timePage();
+      else if(route==='verbs')app.innerHTML=verbsPage();
+      else if(route==='recall')app.innerHTML=recallPage();
+      else if(route==='quiz')app.innerHTML=quizPage();
+      else if(route==='repair')app.innerHTML=repairPage();
+      else if(route==='records')app.innerHTML=recordsPage();
+      else app.innerHTML=home();
+      syncSoundButton();
+    }
+    function home(){
+      const p=progress();
+      return`<section class="lesson-intro" data-phase="teach">
+        <span class="lesson-kicker">今日任务 · 状语从句四大类</span>
+        <h1>连词各回<span>各的箱子</span></h1>
+        <p>状语从句就是给主句加一句"补充说明"：什么时候、在哪里、为了什么、结果怎样。先分连词，再看时间连词的脾气。</p>
+        <div class="paper-stage" data-surprise="connector-bins" aria-label="连词分类示例">
+          <div class="paper-note note-a">⏰ 时间：<mark>when / while / as</mark> / by the time / till / until / <mark>since</mark></div>
+          <div class="merge-hinge">从句</div>
+          <div class="paper-note note-b">🎯 目的：<mark>so that</mark> · 💥 结果：<mark>so…that</mark></div>
+          <div class="paper-result">I was doing my homework <u>when my mom came back</u>.</div>
+        </div>
+        <button class="primary-launch" type="button" onclick="startSort()">开始连词分拣 →</button>
+        <div class="micro-route" data-micro-surprise="daily"><span><b>1</b>分拣连词</span><span><b>2</b>看时间连词</span><span><b>3</b>背动词</span><span><b>4</b>独立检验</span><span class="daily-note">今日小彩蛋：${esc(dailySurprise())}</span></div>
+      </section>
+      <div class="voice-note"><i>声</i><span><b>音频待验收（手机）· 预合成英文声音外置播放。</b>例句和动词三态用统一预合成 MP3，不依赖设备自带声线；首次播放前请先点一次页面。</span></div>
+      <section class="quick-tools" aria-label="其他学习工具">
+        <button class="tool-btn" onclick="go('time')"><span class="tool-icon">${iconFor('time')}</span>时间连词<small>when / while / since…</small></button>
+        <button class="tool-btn" onclick="go('verbs')"><span class="tool-icon">${iconFor('verbs')}</span>动词31—60<small>周一默写备战</small></button>
+        <button class="tool-btn" onclick="startQuiz()"><span class="tool-icon">${iconFor('quiz')}</span>独立闯关<small>${p.open} 个待回炉</small></button>
+      </section>
+      <section class="progress"><div class="metrics"><div class="metric"><strong>${p.done}/5</strong><span>完成环节</span></div><div class="metric"><strong>${p.open}</strong><span>待回炉</span></div><div class="metric"><strong>${p.attempts}</strong><span>独立作答</span></div></div><div class="bar"><i style="width:${p.done*20}%"></i></div><div class="btn-row"><button class="btn" onclick="go('recall')">翻卡复习</button><button class="btn" onclick="go('records')">查看学习记录</button></div></section>
+      <details class="source"><summary>给家长看的材料说明</summary><div><b>材料依据：</b>${MATERIAL}。本课新授：时间（when/while/as/by the time/till/until/since）、地点（where）、目的（so that/in order that）、结果（so/such…that、enough/too…to）四类状语从句；让步状从老师说明虚拟语气时再讲，本软件不出题。回家任务：练习卷勾画部分 + 背诵不规则动词31—60（下周一默写，软件内为 fall→leave 共30词，按老师原表逐行核对）。例句音频为软件助教补充，不冒充课堂录音。</div></details>`;
+    }
+    function iconFor(id){
+      const icons={
+        sort:'<svg viewBox="0 0 24 24"><path d="M4 6h6v5H4zM14 13h6v5h-6zM10 8.5h4M12 8.5V15M12 15h2"/></svg>',
+        time:'<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 7v5l3 3"/></svg>',
+        verbs:'<svg viewBox="0 0 24 24"><path d="M5 4h12a2 2 0 0 1 2 2v14H7a2 2 0 0 1-2-2z"/><path d="M7 20a2 2 0 0 1 0-4h12M9 8h6"/></svg>',
+        recall:'<svg viewBox="0 0 24 24"><path d="M5 4h12a2 2 0 0 1 2 2v14H7a2 2 0 0 1-2-2z"/><path d="M7 20a2 2 0 0 1 0-4h12M9 8h6"/></svg>',
+        quiz:'<svg viewBox="0 0 24 24"><path d="M8 4h8l3 3v13H5V7z"/><path d="M9 11h6M9 15h4M8 4v3h8V4"/></svg>'
+      };return icons[id];
+    }
+    /* ========== 1. 连词分拣台（guided） ========== */
+    function startSort(){pickedConn=null;sortedMap={};route='sort';render();scrollTo(0,0)}
+    function sortDone(){return Object.keys(sortedMap).length}
+    function sortPage(){
+      const total=BINS.reduce((s,b)=>s+b.conns.length,0);
+      if(sortDone()>=total){
+        markModule('sort',{total});
+        return`${pageHead('分拣完成','14 个连词都回了各自的箱子')}<section class="panel" data-phase="guided"><div class="empty"><strong>分对了！</strong><p>口诀：先问从句"回答什么问题"——何时→时间、何地→地点、为何→目的、结果如何→结果。</p><div class="btn-row"><button class="btn primary wide" onclick="go('time')">下一步：时间连词显微镜 →</button></div></div></section>`;
+      }
+      return`${pageHead('连词分拣台',`点一个连词，再点它该去的箱子 · ${sortDone()}/${total}`)}
+      <section class="panel" data-phase="guided"><span class="pill">先想：从句回答什么问题？</span>
+      <div class="conn-tray">${BINS.flatMap(b=>b.conns).map(c=>`<button class="conn ${pickedConn===c?'on':''} ${sortedMap[c]?'done':''}" onclick="pickConn('${c}')">${c}</button>`).join('')}</div>
+      <div class="bin-grid">${BINS.map(b=>`<button class="bin" onclick="dropConn('${b.id}')"><h3>${b.name}</h3><small>${b.sub}</small><div class="got">${b.conns.filter(c=>sortedMap[c]).map(c=>`<i>${c}</i>`).join('')}</div></button>`).join('')}</div>
+      <div class="hint-box" id="sortHint"><b>玩法：</b>先点上面的连词小球，再点下面的箱子。不确定就想想：这个从句在回答"什么时候 / 在哪里 / 为了什么 / 结果怎样"？</div>
+      </section>`;
+    }
+    function pickConn(c){if(sortedMap[c])return;pickedConn=c;tone('tap');render()}
+    function dropConn(binId){
+      if(!pickedConn){toast('先点一个连词小球');return}
+      const bin=BINS.find(b=>b.id===binId);
+      if(bin.conns.includes(pickedConn)){
+        sortedMap[pickedConn]=binId;tone('ok');
+        toast(sortDone()>=BINS.reduce((s,b)=>s+b.conns.length,0)?'全部放对！':'放对了！');
+        recordAttempt({questionId:`sort-${pickedConn}`,prompt:'连词分类',selected:binId,expected:binId,correct:true,skill:'连词分类',activity:'guided',stage:'sort',ms:0});
+      }else{
+        tone('bad');
+        recordAttempt({questionId:`sort-${pickedConn}`,prompt:'连词分类',selected:binId,expected:BINS.find(b=>b.conns.includes(pickedConn)).id,correct:false,reason:CONN_HINT[pickedConn]||'',skill:'连词分类',activity:'guided',stage:'sort',ms:0});
+        toast(CONN_HINT[pickedConn]||'再想想这个从句回答什么问题');
+      }
+      render();
+    }
+    /* ========== 2. 时间连词显微镜（guided） ========== */
+    function timePage(){
+      if(timePos>=TIME_CARDS.length){
+        markModule('time',{cards:TIME_CARDS.length});
+        return`${pageHead('显微镜看完啦','7 个时间连词 + 主将从现')}<section class="panel" data-phase="guided"><div class="empty"><strong>时间的脾气摸清了</strong><p>while 管时段、as 管并肩、by the time 配完成、not…until 直到才、since 自从配完成；主句将来时，从句绝不用 will。</p><div class="btn-row"><button class="btn primary wide" onclick="go('verbs')">下一步：动词 31—60 带背 →</button></div></div></section>`;
+      }
+      const c=TIME_CARDS[timePos];
+      return`${pageHead('时间连词显微镜',`第 ${timePos+1} / ${TIME_CARDS.length} 张 · 点 🔊 听例句`)}
+      <section class="panel" data-phase="guided"><div class="stepper">${['看连词','听例句','说规则','下一张'].map((x,i)=>`<div class="step ${i===0?'on':''}">${i+1}. ${x}</div>`).join('')}</div>
+      <div class="tcard"><div class="cw">${esc(c.w)}</div><div class="cm">${esc(c.m)}</div>
+        <div class="ex">${esc(c.ex)}<small>${esc(c.cn)}</small></div>
+        <div class="rule">💡 ${esc(c.rule)}</div></div>
+      <div class="btn-row"><button class="btn" onclick="playSentence('${c.audio}','例句：${esc(c.w)}')">🔊 听例句</button><button class="btn primary" onclick="nextTime()">${timePos===TIME_CARDS.length-1?'看完啦 ✓':'下一张 →'}</button></div>
+      </section>`;
+    }
+    function nextTime(){timeRead.add(timePos);timePos++;render();scrollTo({top:0,behavior:'smooth'})}
+    /* ========== 3. 不规则动词 31—60 带背（guided + 遮挡回忆） ========== */
+    function verbsPage(){
+      const seenCount=verbSeen.size;
+      const allSeen=seenCount>=VERBS.length;
+      if(verbPos>=VERBS.length){
+        markModule('verbs',{total:VERBS.length});
+        return`${pageHead('31—60 翻完一轮','周一默写：错词会留在记录里')}<section class="panel" data-phase="recall"><div class="empty"><strong>${allSeen?'30 个全部遮开过':'还有没翻的'}</strong><p>建议：遮住三态能默写出来的才算过；写错的回学校纸笔再写两遍。可以再来一轮。</p><div class="btn-row"><button class="btn" onclick="verbPos=0;render()">再来一轮</button><button class="btn primary" onclick="go('recall')">去翻规则卡 →</button></div></div></section>`;
+      }
+      const v=VERBS[verbPos],open=verbSeen.has(v.n);
+      return`${pageHead('动词三态带背 · 31—60',`第 ${verbPos+1} / ${VERBS.length} 个 · 已遮开 ${seenCount}/30 · 先遮着背，再点开核对`)}
+      <section class="panel" data-phase="recall"><span class="pill">下周一默写范围（老师原表）</span>
+      <div class="verb-card ${open?'open':''}" onclick="flipVerb()">
+        <span class="n">No.${v.n}</span>
+        <div class="base">${esc(v.base)}</div><div class="ipa">${esc(v.ipa)}</div><div class="zh">${esc(v.zh)}</div>
+        <div class="forms"><div><b>${esc(v.past)}</b><span>过去式</span></div><div><b>${esc(v.pp)}</b><span>过去分词</span></div></div>
+        <div class="tip">💡 ${esc(v.tip)}${open?'':'　（点卡片遮住/打开）'}</div>
+      </div>
+      <div class="btn-row"><button class="btn" onclick="playSentence('${v.audio}','${esc(v.base)} 三态')">🔊 听三态</button>${verbPos>0?`<button class="btn" onclick="verbPos--;render()">← 上一个</button>`:''}<button class="btn primary" onclick="nextVerb()">${verbPos===VERBS.length-1?'翻完 ✓':'下一个 →'}</button></div>
+      </section>`;
+    }
+    function flipVerb(){const v=VERBS[verbPos];verbSeen.has(v.n)?verbSeen.delete(v.n):verbSeen.add(v.n);tone('tap');render()}
+    function nextVerb(){verbSeen.add(VERBS[verbPos].n);verbPos++;render();scrollTo({top:0,behavior:'smooth'})}
+    function recallPage(){
+      const opened=Object.values(state.recall).filter(Boolean).length;
+      return`${pageHead('遮挡回忆','先说答案，再点开核对；可以反复翻回')}<section class="panel" data-phase="recall"><span class="pill">${opened}/6 已核对</span><h2>六张规则翻卡</h2><div class="recall-grid">${recallCards.map((card,i)=>`<button class="recall ${state.recall[i]?'open':''}" onclick="flipRecall(${i})"><span class="front">${i+1}. ${esc(card[0])}</span><span class="back">${esc(card[1])}</span><span class="tap">${state.recall[i]?'再点一次翻回':'先自己说，再点开'}</span></button>`).join('')}</div><div class="btn-row"><button class="btn" onclick="resetRecall()">全部翻回</button><button class="btn primary" onclick="finishRecall()">我能遮住说出六条 →</button></div></section>`;
+    }
+    function flipRecall(i){state.recall[i]=!state.recall[i];save();tone('tap');render()}
+    function resetRecall(){state.recall={};save();render()}
+    function finishRecall(){markModule('recall',{cards:6});tone('ok');startQuiz()}
+    function startQuiz(){quizPos=0;quizMode='original';answerState=null;route='quiz';render();scrollTo(0,0)}
+    function currentQuestion(){return questions[quizPos]}
+    function currentPart(){const q=currentQuestion();return quizMode==='transfer'?q.variation:q}
+    function quizPage(){
+      if(quizPos>=questions.length){
+        markModule('quiz',{questions:questions.length});
+        return`${pageHead('独立检验完成','错后重教与原题返回都已保留')}<section class="panel"><div class="empty"><strong>完成</strong><p>十题已经做完。待回炉项目会保留在记录里，连续答对两次才算解决。</p><div class="btn-row"><button class="btn" onclick="go('records')">查看记录</button><button class="btn primary" onclick="startQuiz()">再做一轮</button></div></div></section>`;
+      }
+      const q=currentQuestion(),part=currentPart();
+      return`${pageHead('独立合并检验',`第 ${quizPos+1} / ${questions.length} 题${quizMode==='transfer'?' · 小变式':''}`)}<section class="panel" ${quizMode==='transfer'?'data-phase="transfer"':'data-phase="independent"'}><span class="pill">${esc(q.skill)}</span><h2>${esc(part.prompt)}</h2><div class="choices">${part.options.map((option,i)=>`<button class="choice ${choiceClass(i)}" ${answerState?.locked?'disabled':''} onclick="answerQuiz(${i})">${String.fromCharCode(65+i)}. ${esc(option)}</button>`).join('')}</div>${quizFeedback()}</section>`;
+    }
+    function choiceClass(i){if(!answerState?.locked)return'';const p=currentPart();if(i===p.answer)return'right';if(i===answerState.selected)return'wrong';return''}
+    function answerQuiz(index){
+      if(answerState?.locked)return;
+      const q=currentQuestion(),part=currentPart(),correct=index===part.answer,wasWrong=Boolean(state.wrongbook[q.id]?.errors);
+      recordAttempt({questionId:`${q.id}-${quizMode}`,prompt:part.prompt,selected:part.options[index],expected:part.options[part.answer],correct,reason:correct?'':q.repair,skill:q.skill,activity:'independent',stage:quizMode,ms:0});
+      if(correct){
+        updateWrong(q,true);
+        answerState={locked:true,selected:index,correct:true};
+        tone('ok');
+        if(quizMode==='original'&&wasWrong){answerState.needTransfer=true}
+      }else{
+        updateWrong(q,false);answerState={locked:true,selected:index,correct:false};tone('bad');
+      }
+      save();render();
+    }
+    function updateWrong(q,correct){
+      const item=state.wrongbook[q.id]||(state.wrongbook[q.id]={id:q.id,skill:q.skill,errors:0,streak:0,solved:false,lastWrong:null});
+      if(correct){if(item.errors>0)item.streak++;if(item.errors>0&&item.streak>=2)item.solved=true}
+      else{item.errors++;item.streak=0;item.solved=false;item.lastWrong=new Date().toISOString()}
+    }
+    function quizFeedback(){
+      if(!answerState)return'';
+      const q=currentQuestion();
+      if(!answerState.correct)return`<div class="feedback no"><h3>先停一下，不跳题</h3><div>${esc(q.explain)}</div><div class="btn-row"><button class="btn danger wide" onclick="openRepair()">进入定点重教 →</button></div></div>`;
+      const need=answerState.needTransfer;
+      return`<div class="feedback ok"><h3>${need?'原题改对了，再做一个小变式':'判断正确'}</h3><div>${esc(q.explain)}</div><div class="btn-row"><button class="btn primary wide" onclick="${need?'startTransfer()':'nextQuiz()'}">${need?'做小变式 →':quizPos===questions.length-1?'查看结果':'下一题 →'}</button></div></div>`;
+    }
+    function openRepair(){repairQuestion=currentQuestion();route='repair';render();scrollTo(0,0)}
+    function repairPage(){
+      const q=repairQuestion;
+      return`${pageHead('定点重教',`保持第 ${quizPos+1} 题现场，不丢进度`)}<section class="panel" data-phase="repair"><span class="pill">${esc(q.skill)}</span><h2>这一步为什么会错？</h2><div class="repair-rule"><b>判断口令：</b>${esc(q.repair)}<br><b>放回原句：</b>${esc(q.explain)}</div><p>请把口令说一遍，再回到刚才那一道题改答。</p><div class="btn-row"><button class="btn primary wide" data-return-to-question="independent" onclick="returnToQuestion()">我看懂了，返回刚才第 ${quizPos+1} 题 →</button></div></section>`;
+    }
+    function returnToQuestion(){route='quiz';quizMode='original';answerState=null;render();scrollTo(0,0)}
+    function startTransfer(){quizMode='transfer';answerState=null;render();scrollTo(0,0)}
+    function nextQuiz(){quizPos++;quizMode='original';answerState=null;render();scrollTo(0,0)}
+    function recordsPage(){
+      const wrong=Object.values(state.wrongbook).filter(x=>x.errors>0);
+      return`${pageHead('学习记录','只属于 Kenton 与本软件')}<section class="panel"><div class="metrics"><div class="metric"><strong>${state.attempts.length}</strong><span>独立作答</span></div><div class="metric"><strong>${wrong.filter(x=>!x.solved).length}</strong><span>待回炉</span></div><div class="metric"><strong>${wrong.filter(x=>x.solved).length}</strong><span>已解决</span></div></div></section>
+      <section class="panel"><h2>错题回炉</h2>${wrong.length?`<div class="wrong-list">${wrong.map(item=>`<div class="wrong-item"><div><strong>${esc(item.skill)}</strong><small>错 ${item.errors} 次 · 连对 ${item.streak}/2</small></div><span class="status ${item.solved?'solved':'open'}">${item.solved?'已解决':'待回炉'}</span></div>`).join('')}</div>`:'<div class="empty"><strong>暂无错题</strong><p>完成独立检验后，这里会按知识点记录。</p></div>'}
+      <div class="btn-row"><button class="btn" onclick="downloadJson()">导出 JSON</button><button class="btn" onclick="downloadMarkdown()">导出学习汇报</button><button class="btn" onclick="document.getElementById('importFile').click()">导入记录</button><input id="importFile" type="file" accept="application/json" hidden onchange="importJson(event)"><button class="btn primary" onclick="startQuiz()">只做检验</button></div><p class="privacy">本机记录键包含 Kenton、软件名和版本；不会与 Eddey 或家长测试记录混用。</p></section>`;
+    }
+    function report(){
+      const wrong=Object.values(state.wrongbook).filter(x=>x.errors>0&&!x.solved);
+      return`# Kenton 状语从句学习汇报\n\n- 软件版本：${VERSION}\n- 最近学习：${state.lastOpened}\n- 累计学习：${Math.round(state.totalMs/60000)} 分钟\n- 独立作答：${state.attempts.length}\n- 待回炉：${wrong.length}\n\n## 待回炉\n${wrong.length?wrong.map(x=>`- ${x.skill}：错 ${x.errors} 次，连对 ${x.streak}/2`).join('\n'):'- 无'}\n\n材料：${MATERIAL}\n`;
+    }
+    function download(name,type,text){const link=document.createElement('a');link.href=URL.createObjectURL(new Blob([text],{type}));link.download=name;link.click();setTimeout(()=>URL.revokeObjectURL(link.href),1000)}
+    function downloadJson(){download('kenton-adverbial-clause-record.json','application/json',JSON.stringify(state,null,2))}
+    function downloadMarkdown(){download('kenton-adverbial-clause-report.md','text/markdown',report())}
+    function importJson(event){
+      const file=event.target.files?.[0];if(!file)return;
+      const reader=new FileReader();
+      reader.onload=()=>{try{const data=JSON.parse(reader.result);if(data?.child!=='Kenton'||data?.appId!==APP_ID||!Array.isArray(data.attempts)||typeof data.wrongbook!=='object')throw new Error();state={...defaultState(),...data,schema:2,version:VERSION};save();toast('记录导入成功');go('records')}catch(_){toast('导入失败：不是本软件的 Kenton 记录')}};
+      reader.readAsText(file);event.target.value='';
+    }
+    function syncSoundButton(){
+      const button=document.getElementById('soundToggle');if(!button)return;
+      button.textContent=soundOn?'声':'静';button.setAttribute('aria-label',soundOn?'关闭点击反馈音':'打开点击反馈音');
+    }
+    document.getElementById('soundToggle').addEventListener('click',()=>{soundOn=!soundOn;localStorage.setItem('study:kenton:ui-sound',soundOn?'1':'0');if(soundOn)tone('ok');syncSoundButton()});
+    Object.assign(window,{go,startSort,pickConn,dropConn,nextTime,flipVerb,nextVerb,playSentence,flipRecall,resetRecall,finishRecall,startQuiz,answerQuiz,openRepair,returnToQuestion,startTransfer,nextQuiz,downloadJson,downloadMarkdown,importJson});
+    render();
+  })();
+  </script>
+</body>
+</html>

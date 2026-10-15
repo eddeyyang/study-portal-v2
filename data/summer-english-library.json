@@ -1,0 +1,804 @@
+{
+  "schemaVersion": 1,
+  "updated": "2026-09-17",
+  "items": [
+    {
+      "id": "eddey-english-unit3-memory-20260917",
+      "child": "eddey",
+      "kind": "dictation",
+      "date": "2026-09-17",
+      "title": "Unit 3 · 读写背",
+      "summary": "核心词、短语与重点句型：先读、遮住写、对照改、再背。音频待验收。",
+      "file": "apps/eddey_english_unit3_memory_20260917.html",
+      "source": "家长所供《金牌训练·学习笔记同步教材》四年级上英语 P46–68",
+      "tags": [
+        "2026秋季校内英语",
+        "Unit 3",
+        "背默"
+      ],
+      "featured": true
+    },
+    {
+      "id": "eddey-english-unit3-20260917",
+      "child": "eddey",
+      "kind": "learning",
+      "date": "2026-09-17",
+      "title": "Unit 3 · Animals and their homes",
+      "summary": "植物或动物主题图文精读、句型变化与完整参考答案；从旅行入口直接打开。音频待验收。",
+      "file": "apps/eddey_english_unit3_20260917.html",
+      "source": "家长所供《金牌训练·学习笔记同步教材》四年级上英语 P46–68",
+      "tags": [
+        "2026秋季校内英语",
+        "Unit 3",
+        "重点句型"
+      ],
+      "featured": true
+    },
+    {
+      "id": "kenton-english-unit3-memory-20260917",
+      "child": "kenton",
+      "kind": "dictation",
+      "date": "2026-09-17",
+      "title": "Unit 3 · 读写背",
+      "summary": "核心词、短语与重点句型：先读、遮住写、对照改、再背。音频待验收。",
+      "file": "apps/kenton_english_unit3_memory_20260917.html",
+      "source": "家长所供《金牌训练·学习笔记同步教材》五年级上英语 P50–71",
+      "tags": [
+        "2026秋季校内英语",
+        "Unit 3",
+        "背默"
+      ],
+      "featured": true
+    },
+    {
+      "id": "kenton-english-unit3-20260917",
+      "child": "kenton",
+      "kind": "learning",
+      "date": "2026-09-17",
+      "title": "Unit 3 · Amazing plants",
+      "summary": "植物或动物主题图文精读、句型变化与完整参考答案；从旅行入口直接打开。音频待验收。",
+      "file": "apps/kenton_english_unit3_20260917.html",
+      "source": "家长所供《金牌训练·学习笔记同步教材》五年级上英语 P50–71",
+      "tags": [
+        "2026秋季校内英语",
+        "Unit 3",
+        "重点句型"
+      ],
+      "featured": true
+    },
+    {
+      "id": "kenton-english-unit2-20260917",
+      "child": "kenton",
+      "kind": "learning",
+      "date": "2026-09-17",
+      "title": "Unit 2 · 图文阅读与句型",
+      "summary": "秋季校内 Unit 2；分别准备内容，保留完整答案与本人首答。音频待验收。",
+      "file": "apps/kenton_english_unit2_20260917.html",
+      "source": "家长所供金牌训练·学习笔记同步教材；Unit 2",
+      "tags": [
+        "2026秋季校内英语",
+        "Unit 2",
+        "重点句型"
+      ],
+      "featured": true
+    },
+    {
+      "id": "kenton-english-memory-20260917",
+      "child": "kenton",
+      "kind": "dictation",
+      "date": "2026-09-17",
+      "title": "Unit 2 · 读写背",
+      "summary": "秋季校内 Unit 2；分别准备内容，保留完整答案与本人首答。音频待验收。",
+      "file": "apps/kenton_english_memory_20260917.html",
+      "source": "家长所供金牌训练·学习笔记同步教材；Unit 2",
+      "tags": [
+        "2026秋季校内英语",
+        "Unit 2",
+        "背默"
+      ],
+      "featured": true
+    },
+    {
+      "id": "eddey-english-unit2-20260917",
+      "child": "eddey",
+      "kind": "learning",
+      "date": "2026-09-17",
+      "title": "Unit 2 · 图文阅读与句型",
+      "summary": "秋季校内 Unit 2；分别准备内容，保留完整答案与本人首答。音频待验收。",
+      "file": "apps/eddey_english_unit2_20260917.html",
+      "source": "家长所供金牌训练·学习笔记同步教材；Unit 2",
+      "tags": [
+        "2026秋季校内英语",
+        "Unit 2",
+        "重点句型"
+      ],
+      "featured": true
+    },
+    {
+      "id": "eddey-english-memory-20260917",
+      "child": "eddey",
+      "kind": "dictation",
+      "date": "2026-09-17",
+      "title": "Unit 2 · 读写背",
+      "summary": "秋季校内 Unit 2；分别准备内容，保留完整答案与本人首答。音频待验收。",
+      "file": "apps/eddey_english_memory_20260917.html",
+      "source": "家长所供金牌训练·学习笔记同步教材；Unit 2",
+      "tags": [
+        "2026秋季校内英语",
+        "Unit 2",
+        "背默"
+      ],
+      "featured": true
+    },
+    {
+      "id": "kenton-english-answer-builder-20260915",
+      "child": "kenton",
+      "kind": "learning",
+      "date": "2026-09-15",
+      "title": "读懂，也能写出来",
+      "summary": "先看问什么，再找证据、换主语，写出完整答句；用新情境练习独立表达。",
+      "file": "apps/kenton_english_answer_builder_20260915.html",
+      "source": "秋季英语阅读问答方法 · 原创练习",
+      "tags": [
+        "秋季校内英语",
+        "阅读问答",
+        "完整答句",
+        "独立表达"
+      ],
+      "featured": true
+    },
+    {
+      "id": "eddey-school-rhyme-20260907",
+      "child": "eddey",
+      "kind": "learning",
+      "date": "2026-09-07",
+      "title": "校园背诵地图 · I like my school",
+      "summary": "第9页10句儿歌：校园路线、两句成组、三级遮词、整篇口述自评、五张关键笔记、六道短答和迁移。",
+      "file": "apps/eddey_english_school_rhyme_20260907.html",
+      "source": "2026-09-07家长上传课本第9页；秋季学校英语背诵任务",
+      "tags": [
+        "秋季校内英语",
+        "儿歌背诵",
+        "核心句型",
+        "独立输出"
+      ],
+      "featured": true
+    },
+    {
+      "id": "eddey-20260831-week1-spelling-factory",
+      "child": "eddey",
+      "kind": "dictation",
+      "date": "2026-08-31",
+      "title": "第一周英语拼写工厂 · 星期/学科/数字默写",
+      "summary": "对齐老师第一周准备课图片：用会动词块先看清 Mon+day、twenty-one 和 forty/fifty/eighty 的构词变化，再亲手拼块、遮挡回忆、听固定 Emma 发音三遍后键盘独立默写。完整覆盖7个星期、8个学科、18个数字词；独立错词立即进入返修，连续两次正确后返回同一道原题，最后迁移到教材英语学习计划句。",
+      "file": "apps/eddey_week1_spelling_factory_20260831.html",
+      "source": "老师第一周准备课图片 · 2026-08-31收到（星期、课程表、20—100数字词、English study plan）",
+      "tags": [
+        "四年级准备课",
+        "星期",
+        "学科",
+        "数字词",
+        "键盘默写",
+        "固定英语发音",
+        "错词返修",
+        "构词动画"
+      ],
+      "featured": true
+    },
+    {
+      "id": "eddey-20260806-past-tense-water-town",
+      "child": "eddey",
+      "kind": "learning",
+      "date": "2026-08-06",
+      "title": "水乡时光相机 · 一般过去时定点修复",
+      "summary": "对齐 Wendy 8月6日反馈与四上新教材 Unit 5 水乡情境：同一幅水乡从白昼切到昨日黄昏，让 visits→visited 随时间可见变化；以独立打字检验肯定句、Did 疑问句和 didn't 否定句，答错后在句型暗房连续完成两张变式底片，再返回同一道原题亲手改正。",
+      "file": "apps/eddey_past_tense_lab_20260806.html",
+      "source": "Wendy 2026-08-06老师反馈 · 四上新教材 Unit 5 pp.39—46 · 补习班教材 L23",
+      "tags": [
+        "一般过去时",
+        "Unit 5",
+        "Visiting places",
+        "时态区分",
+        "句型转换",
+        "错题回炉"
+      ],
+      "featured": true
+    },
+    {
+      "id": "eddey-20260730-future-tense",
+      "child": "eddey",
+      "kind": "learning",
+      "date": "2026-07-30",
+      "title": "一般将来时四大法宝 · will / be going to × 三单复习",
+      "summary": "对齐老师反馈「复习三单 + 新授一般将来时」：三单变形机巩固 +s/+es/-ies/has，法宝分拣台分清 will（预测·承诺）与 be going to（计划·打算），缩写压缩机练 I'll/won't，时间信号分拣现在 vs 将来，听写训练营 6 句备战下节课例句听写；含10题独立判断、答错回原模块定点重教、两连对错题回炉。",
+      "file": "apps/eddey_future_tense_20260730.html",
+      "source": "课外英语班 · 2026-07-30老师反馈 · 教材 Lesson 21–22",
+      "tags": [
+        "一般将来时",
+        "will",
+        "be going to",
+        "第三人称单数",
+        "听写训练营",
+        "时间信号"
+      ],
+      "featured": true
+    },
+    {
+      "id": "kenton-20260803-verb-sprint-0130",
+      "child": "kenton",
+      "kind": "learning",
+      "date": "2026-08-03",
+      "title": "动词三态 · 1—30默写冲刺营",
+      "summary": "1—30仍未默出，最高优先级。30词按老师136词表原表逐行核对（be→was/were→been、can→could只默两态、burn/dream双写法均判对）。磨耳朵复用已验收三态音频30条，6组分组默写闯关，错词集中营连对2次出营，10词模拟默写90分过关，分组规律口诀屋。",
+      "file": "apps/kenton_verb_sprint_0130_20260803.html",
+      "source": "老师136词表原表1—30（7-30入库逐行核对）· 家长指定最高优先级",
+      "tags": [
+        "不规则动词",
+        "默写冲刺",
+        "最高优先级",
+        "错词集中营",
+        "1-30"
+      ],
+      "featured": true
+    },
+    {
+      "id": "kenton-20260802-sentence-patterns",
+      "child": "kenton",
+      "kind": "learning",
+      "date": "2026-08-02",
+      "title": "句型三剑客 · 主谓/主系表/主谓宾",
+      "summary": "三种基本句型教学配招牌句音频；13个系动词按教材第9章原表分四大家族分拣（正是明天默写范围，可整组磨耳朵）；8句句型骨架分拣；4句翻译小火车呼应句型卷子翻译作业；遮挡回忆6卡与10题闯关。",
+      "file": "apps/kenton_sentence_patterns_20260802.html",
+      "source": "课外英语班 · 2026-08-02老师课堂反馈 · 《知识点梳理》第9章+第13章 p.91—99",
+      "tags": [
+        "基本句型",
+        "主系表",
+        "系动词",
+        "主谓宾",
+        "翻译"
+      ],
+      "featured": true
+    },
+    {
+      "id": "kenton-20260802-verb-sprint-3160",
+      "child": "kenton",
+      "kind": "learning",
+      "date": "2026-08-02",
+      "title": "动词三态 · 31—60默写冲刺营",
+      "summary": "老师点名31—60没背，两天冲刺：Day1磨耳朵+1—3组、Day2 4—6组+终考。30词按老师136词表原表逐行核对，三态音频磨耳朵、看原形默写过去式+过去分词、错词进集中营连对2次出营、10词模拟默写90分过关。",
+      "file": "apps/kenton_verb_sprint_3160_20260802.html",
+      "source": "课外英语班 · 2026-08-02课堂默写反馈 · 老师136词表原表",
+      "tags": [
+        "不规则动词",
+        "默写冲刺",
+        "两天计划",
+        "错词集中营",
+        "31-60"
+      ],
+      "featured": true
+    },
+    {
+      "id": "eddey-20260801-grammar-graduation",
+      "child": "eddey",
+      "kind": "learning",
+      "date": "2026-08-01",
+      "title": "语法毕业典礼 · 时态侦探学院",
+      "summary": "语法班结业课总复习：四大时态时光罗盘配招牌句音频，16个时态线索词分拣（老师点名的持续复盘专项），过去式变形工厂10词（+ed/+d/y→ied/不规则），8案句中抓信号断时态，结业闯关10题抽样全册L1—L23。猫头鹰博士主持，集四枚徽章毕业；定位为每周复盘入口。",
+      "file": "apps/eddey_grammar_graduation_20260801.html",
+      "source": "课外英语班 · 2026-08-01结业课老师反馈 · 教材L1—L23全册",
+      "tags": [
+        "总复习",
+        "时态线索词",
+        "一般过去时",
+        "过去式",
+        "语法结业",
+        "每周复盘"
+      ],
+      "featured": true
+    },
+    {
+      "id": "eddey-20260731-3s-spelling-lab",
+      "child": "eddey",
+      "kind": "learning",
+      "date": "2026-07-31",
+      "title": "三单拼写 + 将来时修复站",
+      "summary": "按老师7-31原卷与后续反馈定点修复：匿名还原原错位置并可点击讲解；按教材连续书页72—78先复习三单词尾、around/earth/live/school，再用双轨场景分清 will do 与 be going to do；含引导练习、5句听写、16题独立检测、错后定点重教与 Eddey Neon 错题同步。",
+      "file": "apps/eddey_3s_spelling_lab_20260731.html",
+      "source": "课外英语班 · 2026-07-31老师听写与后续反馈 + 练习卷照片核对 · 教材原扫描连续书页72—78（Lesson 21—22）",
+      "tags": [
+        "第三人称单数",
+        "拼写特训",
+        "听写训练营",
+        "一般将来时",
+        "will do",
+        "be going to do",
+        "Neon错题",
+        "around",
+        "earth",
+        "live",
+        "school"
+      ],
+      "featured": true
+    },
+    {
+      "id": "kenton-20260731-adverbial-clause-class",
+      "child": "kenton",
+      "kind": "learning",
+      "date": "2026-07-31",
+      "title": "状语从句 · 连词分拣工作室",
+      "summary": "按时间/地点/目的/结果四类分拣14个连词，显微镜精学 when/while/as/by the time/till/until/since 与主将从现，such/so 与 too/enough 转换，配不规则动词31—60（老师原表逐行核对）三态翻卡带背，10题独立检验含变式迁移；让步状从按老师安排留待虚拟语气课，不出题。",
+      "file": "apps/kenton_adverbial_clause_class_20260731.html",
+      "source": "课外英语班 · 2026-07-31老师课堂反馈 · 《知识点梳理》第15章 p.104—111",
+      "tags": [
+        "状语从句",
+        "时间状语从句",
+        "主将从现",
+        "so that",
+        "such that",
+        "不规则动词31-60"
+      ],
+      "featured": true
+    },
+    {
+      "id": "eddey-20260730-present-tense-lab",
+      "child": "eddey",
+      "kind": "learning",
+      "date": "2026-07-30",
+      "title": "现在正在做，平时经常做 · 时态双轨实验室",
+      "summary": "用双轨切换台先判断 now/look/listen 与 every day/often/一般事实，再进入 -ing 和三单两座变形工厂；含10题独立挑战、答错回原微课、返回同一题重答和两道不同变式连续答对回炉。",
+      "file": "apps/eddey_present_tense_lab_20260730.html",
+      "source": "课外英语班 · 2026-07-30老师反馈 · 教材第68—74页（Lesson 20–21）",
+      "tags": [
+        "现在进行时",
+        "一般现在时",
+        "现在分词",
+        "第三人称单数",
+        "时间信号",
+        "错题回炉"
+      ],
+      "featured": true
+    },
+    {
+      "id": "kenton-20260730-relative-clause-class",
+      "child": "kenton",
+      "kind": "learning",
+      "date": "2026-07-30",
+      "title": "定语从句 · 句子合并工作室 2.0",
+      "summary": "把“圈重复词—选关系代词—贴回先行词—听完整英语”做成可操作合并机；再用关系代词透镜、可逆遮挡翻卡和6题独立检验完成学习，答错后定点重教并一键返回刚才原题。",
+      "file": "apps/kenton_relative_clause_class_20260730.html",
+      "source": "课外英语班 · 2026-07-30老师反馈 · 《知识点梳理》p.112—114",
+      "tags": [
+        "宾语从句复习",
+        "定语从句",
+        "关系代词",
+        "两句合并",
+        "错后重教",
+        "自然英语整句",
+        "点击反馈"
+      ],
+      "featured": true
+    },
+    {
+      "id": "kenton-20260730-irregular-verbs-1-30-dictation",
+      "child": "kenton",
+      "kind": "dictation",
+      "date": "2026-07-30",
+      "title": "不规则动词 1—30 · 三态变身轨道 2.0",
+      "summary": "逐行保留老师原表七栏；播放30条预合成英语三态时，原形—过去式—过去分词轨道同步亮起，再按变化家族、每5个遮挡回忆和报读纸笔默写推进，错哪一栏就原词重做并保留两连对记录。",
+      "file": "apps/kenton_irregular_verbs_1_30_20260730.html",
+      "source": "课外英语班 · 《136个常用英语不规则动词变化表》1—30",
+      "tags": [
+        "1—30",
+        "原表核对",
+        "背诵翻卡",
+        "纸笔默写",
+        "错词回炉",
+        "预合成英语语音"
+      ],
+      "featured": true
+    },
+    {
+      "id": "eddey-20260729-question-engine-lab",
+      "child": "eddey",
+      "kind": "learning",
+      "date": "2026-07-29",
+      "title": "疑问句发动机实验室 · be / can / do / does",
+      "summary": "用动态词块先判断 be、can 或动作动词，再组合 who/what/which/whose/when/where/why/how；内含老师布置的10题句型改写、6个已确认批改错点、错后定点重教和两道不同变式连续答对回炉。",
+      "file": "apps/eddey_english_question_engine_lab_20260729.html",
+      "source": "课外英语班 · 2026-07-29老师反馈与句型改写作业 · 教材 Lesson 14–16",
+      "tags": [
+        "特殊疑问句",
+        "be 动词",
+        "do / does",
+        "动词原形",
+        "句型转换",
+        "错题回炉"
+      ],
+      "featured": true
+    },
+    {
+      "id": "kenton-20260728-object-clause-class",
+      "child": "kenton",
+      "kind": "learning",
+      "date": "2026-07-28",
+      "title": "宾语从句 · 句子调度站",
+      "summary": "用连词门、语序重排和时态轨道学会 that / if-whether / wh-，重点修复疑问语序没有调回陈述语序；含错后定点重教、错题原因模板及不规则动词1—30编号进度板。",
+      "file": "apps/kenton_object_clause_class_20260728.html",
+      "source": "课外英语班 · 2026-07-28老师反馈 · 《知识点梳理》p.100—102",
+      "tags": [
+        "宾语从句",
+        "连词",
+        "陈述语序",
+        "时态呼应",
+        "错题整理"
+      ],
+      "featured": true
+    },
+    {
+      "id": "eddey-20260724-grammar-detective",
+      "child": "eddey",
+      "kind": "learning",
+      "date": "2026-07-24",
+      "title": "句子侦探局 · 命令、感叹与 Who/What",
+      "summary": "用动态证据板复习祈使句命令/请求/禁止，重点扫描名词区分 What 与 How，再按划线答案是人、事物或动作选择 who、what、what…do；含8题有提示练习、16题独立闯关和老师批改错点两连对回炉。",
+      "file": "apps/eddey_grammar_detective_20260724.html?v=20260724a",
+      "source": "课外英语班 · 教材 Lesson 15–16 · 老师听写批改",
+      "tags": [
+        "祈使句",
+        "What / How",
+        "Who / What",
+        "听写错题",
+        "预合成英语语音",
+        "错题回炉"
+      ],
+      "featured": true
+    },
+    {
+      "id": "eddey-20260722-sentence-moods-lab",
+      "child": "eddey",
+      "kind": "learning",
+      "date": "2026-07-22",
+      "title": "句子变身乐园 · 祈使句与 What/How 感叹句",
+      "summary": "先玩句子变身机复习陈述句/疑问句，再用魔法帽把 You 藏起来学会祈使句（命令/请求/禁止），最后用名词探测器判断 What 还是 How；遮挡回忆卡+16题检验+错题回炉，49 条预合成真人语音。",
+      "file": "apps/eddey_sentence_moods_lab_20260722.html?v=20260722c",
+      "source": "课外英语班 · 教材 Lesson 14–15",
+      "tags": [
+        "句子类型",
+        "祈使句",
+        "What / How",
+        "遮挡回忆",
+        "预合成语音",
+        "错题回炉"
+      ],
+      "featured": true
+    },
+    {
+      "id": "kenton-20260721-passive-voice-class",
+      "child": "kenton",
+      "kind": "learning",
+      "date": "2026-07-21",
+      "title": "被动语态 · 句子装配线",
+      "summary": "沿老师白板亲手完成“找动作落点、宾语搬家、be 跟时态、动词变 V₃、by 车厢”，再回放四种时态并遮挡复述。",
+      "file": "apps/kenton_passive_voice_class_20260721.html",
+      "source": "课外英语班 · 7月21日老师白板",
+      "tags": [
+        "被动语态",
+        "句子变形",
+        "时态",
+        "过去分词"
+      ],
+      "featured": true
+    },
+    {
+      "id": "eddey-20260720-therebe-sentence-transform",
+      "child": "eddey",
+      "kind": "learning",
+      "date": "2026-07-20",
+      "title": "There be 与句型变形实验室",
+      "summary": "用就近原则磁力火车观察 is/are，再用句子变形机掌握肯定、否定、一般疑问和特殊疑问句。",
+      "file": "apps/eddey_therebe_sentence_lab.html",
+      "source": "课外英语班 · 教材 Lesson 13–14",
+      "tags": [
+        "There be",
+        "就近原则",
+        "句型转换",
+        "错题回炉"
+      ],
+      "featured": true
+    },
+    {
+      "id": "kenton-20260720-subjunctive-verbs-91-136-learning",
+      "child": "kenton",
+      "kind": "learning",
+      "date": "2026-07-20",
+      "title": "虚拟语气＋不规则动词 91—136 · 老师带学",
+      "summary": "按《知识点梳理》p.103先看懂 wish 时间线和 should 结构，再分组带背 46 个不规则变化。",
+      "file": "apps/kenton_subjunctive_verbs_91_136.html",
+      "source": "课外英语班 · 《知识点梳理》p.103与老师动词表",
+      "tags": [
+        "虚拟语气",
+        "不规则动词",
+        "老师带学"
+      ],
+      "featured": true
+    },
+    {
+      "id": "kenton-20260720-irregular-verbs-91-136-dictation",
+      "child": "kenton",
+      "kind": "dictation",
+      "date": "2026-07-20",
+      "title": "不规则动词 91—136 · 纸笔默写与错词回炉",
+      "summary": "完整复习三单、现在分词、过去式、过去分词和词义，按栏目纸笔默写并记录错词。",
+      "file": "apps/kenton_subjunctive_verbs_91_136.html",
+      "source": "课外英语班 · 老师动词表",
+      "tags": [
+        "91—136",
+        "纸笔默写",
+        "错词回炉"
+      ],
+      "featured": true
+    },
+    {
+      "id": "kenton-20260720-irregular-verbs-61-90-dictation",
+      "child": "kenton",
+      "kind": "dictation",
+      "date": "2026-07-20",
+      "title": "不规则动词 61–90 · 默写任务",
+      "summary": "先按家族规律记忆，再进入背诵演练和错词回炉。",
+      "file": "apps/kenton_verb_lab.html",
+      "source": "课外英语班",
+      "tags": [
+        "本周任务",
+        "不规则动词",
+        "错词本"
+      ],
+      "featured": true
+    },
+    {
+      "id": "kenton-20260718-preply-going-to-camping-skiing",
+      "child": "kenton",
+      "kind": "learning",
+      "date": "2026-07-18",
+      "title": "Going to · 露营与滑雪复习实验室",
+      "summary": "用计划小火车看懂 be + going to + 动词原形，再完成露营打包、滑雪路线、27词和课堂句子修理。",
+      "file": "apps/preply-going-to-beach.html",
+      "source": "Preply 外教课 · Denys · 7月18日课堂回顾",
+      "tags": [
+        "将来计划",
+        "露营与滑雪",
+        "课堂反馈",
+        "口语"
+      ],
+      "featured": true
+    },
+    {
+      "id": "eddey-20260718-preply-going-to-camping-skiing",
+      "child": "eddey",
+      "kind": "learning",
+      "date": "2026-07-18",
+      "title": "Going to · 露营与滑雪复习实验室",
+      "summary": "用计划小火车看懂 be + going to + 动词原形，再完成露营打包、滑雪路线、27词和课堂句子修理。",
+      "file": "apps/preply-going-to-beach.html",
+      "source": "Preply 外教课 · Denys · 7月18日课堂回顾",
+      "tags": [
+        "将来计划",
+        "露营与滑雪",
+        "课堂反馈",
+        "口语"
+      ],
+      "featured": true
+    },
+    {
+      "id": "kenton-20260715-preply-going-to",
+      "child": "kenton",
+      "kind": "learning",
+      "date": "2026-07-15",
+      "title": "Going to · 海滩计划实验室",
+      "summary": "用将来时光机、缩写压缩机和句子小医院练会 going to。",
+      "file": "apps/preply-going-to-beach.html",
+      "source": "Preply 外教课",
+      "tags": [
+        "将来时",
+        "口语",
+        "发音"
+      ]
+    },
+    {
+      "id": "eddey-20260715-preply-going-to",
+      "child": "eddey",
+      "kind": "learning",
+      "date": "2026-07-15",
+      "title": "Going to · 海滩计划实验室",
+      "summary": "用将来时光机、缩写压缩机和句子小医院练会 going to。",
+      "file": "apps/preply-going-to-beach.html",
+      "source": "Preply 外教课",
+      "tags": [
+        "将来时",
+        "口语",
+        "发音"
+      ]
+    },
+    {
+      "id": "kenton-20260713-clauses-numerals",
+      "child": "kenton",
+      "kind": "learning",
+      "date": "2026-07-13",
+      "title": "从句与数词学习馆",
+      "summary": "从句积木工厂认清主语、表语、定语从句，再用数词变身机练序数词。",
+      "file": "apps/kenton_english_monday_lab.html",
+      "source": "课外英语班",
+      "tags": [
+        "从句",
+        "数词",
+        "复习卡"
+      ],
+      "featured": true
+    },
+    {
+      "id": "kenton-20260711-irregular-verbs-lab",
+      "child": "kenton",
+      "kind": "learning",
+      "date": "2026-07-11",
+      "title": "不规则动词变形实验室",
+      "summary": "用家族魔法阵、三张脸动画和记忆翻卡理解 31–90 的变形规律。",
+      "file": "apps/kenton_verb_lab.html",
+      "source": "课外英语班",
+      "tags": [
+        "不规则动词",
+        "变形规律",
+        "记忆翻卡"
+      ]
+    },
+    {
+      "id": "kenton-20260710-adverbial-clause",
+      "child": "kenton",
+      "kind": "learning",
+      "date": "2026-07-10",
+      "title": "状语从句时光机",
+      "summary": "拖动时间轴看时态变化，用红绿灯理解主将从现。",
+      "file": "apps/kenton_english_clause_lab.html",
+      "source": "课外英语班",
+      "tags": [
+        "状语从句",
+        "主将从现",
+        "时间轴"
+      ]
+    },
+    {
+      "id": "kenton-20260707-summer-comparisons",
+      "child": "kenton",
+      "kind": "learning",
+      "date": "2026-07-07",
+      "title": "Summer Comparisons · 比较级实验室",
+      "summary": "比较级变形、a/an、主谓一致和夏天主题口语练习。",
+      "file": "apps/preply-summer-comparisons.html",
+      "source": "Preply 外教课",
+      "tags": [
+        "比较级",
+        "冠词",
+        "口语"
+      ]
+    },
+    {
+      "id": "eddey-20260707-summer-comparisons",
+      "child": "eddey",
+      "kind": "learning",
+      "date": "2026-07-07",
+      "title": "Summer Comparisons · 比较级实验室",
+      "summary": "比较级变形、a/an、主谓一致和夏天主题口语练习。",
+      "file": "apps/preply-summer-comparisons.html",
+      "source": "Preply 外教课",
+      "tags": [
+        "比较级",
+        "冠词",
+        "口语"
+      ]
+    },
+    {
+      "id": "eddey-20260622-travel-destinations",
+      "child": "eddey",
+      "kind": "learning",
+      "date": "2026-06-22",
+      "title": "Choosing Travel Destinations",
+      "summary": "选目的地、用 should 给建议，并修好现在进行时和主谓一致。",
+      "file": "apps/preply-choosing-travel-destinations.html",
+      "source": "Preply 外教课",
+      "tags": [
+        "should",
+        "现在进行时",
+        "旅行"
+      ]
+    },
+    {
+      "id": "kenton-20260616-fullbook-dictation",
+      "child": "kenton",
+      "kind": "dictation",
+      "date": "2026-06-16",
+      "title": "英语单词默写 · 全册整合",
+      "summary": "易错词、M1–M4 单词句子和中英互译，全自动报默并收进错词本。",
+      "file": "apps/kenton_english_dictation.html",
+      "source": "校内牛津英语",
+      "tags": [
+        "全自动报默",
+        "全册",
+        "错词本"
+      ]
+    },
+    {
+      "id": "eddey-20260616-fullbook-dictation",
+      "child": "eddey",
+      "kind": "dictation",
+      "date": "2026-06-16",
+      "title": "英语单词默写 · 全册整合",
+      "summary": "易错词、M1–M4 单词句子和中英互译，全自动报默并收进错词本。",
+      "file": "apps/eddey_english_dictation.html",
+      "source": "校内牛津英语",
+      "tags": [
+        "全自动报默",
+        "全册",
+        "错词本"
+      ],
+      "featured": true
+    },
+    {
+      "id": "eddey-20260616-grammar-repair",
+      "child": "eddey",
+      "kind": "learning",
+      "date": "2026-06-16",
+      "title": "英语错点专项 · 语法修理站",
+      "summary": "针对单复数、一般现在时、oo 短音和介词易错点定点重教。",
+      "file": "apps/eddey_english_redo_grammar.html",
+      "source": "老师讲评",
+      "tags": [
+        "单复数",
+        "一般现在时",
+        "错题回炉"
+      ]
+    },
+    {
+      "id": "kenton-20260614-textbook-dictation",
+      "child": "kenton",
+      "kind": "dictation",
+      "date": "2026-06-14",
+      "title": "英语单元默写 · 四下",
+      "summary": "按教材 12 个单元全自动报默，完成后统一核对并重默错词。",
+      "file": "apps/kenton_english_textbook.html",
+      "source": "校内牛津英语",
+      "tags": [
+        "教材",
+        "单元默写",
+        "错词重默"
+      ]
+    },
+    {
+      "id": "eddey-20260614-unit-dictation",
+      "child": "eddey",
+      "kind": "dictation",
+      "date": "2026-06-14",
+      "title": "英语单元默写与错词重做",
+      "summary": "把三下单元词句和历史错词分开报默，连续答对两次才算掌握。",
+      "file": "apps/eddey_english.html",
+      "source": "校内牛津英语",
+      "tags": [
+        "单元默写",
+        "错词重做",
+        "句子"
+      ]
+    },
+    {
+      "id": "eddey-20260727-wh-question-lab",
+      "child": "eddey",
+      "kind": "learning",
+      "date": "2026-07-27",
+      "title": "疑问词四兄弟侦探社（when/where/why/how）",
+      "summary": "对应老师今日反馈：复习 when/where，新学 why/how（原因/感受/特征/交通方式）。答案反推四扇门、造句三步变身机、how 三岔口，配 11 条预合成示范朗读，10 题考核+错题本。",
+      "file": "apps/eddey_wh_question_lab_20260727.html",
+      "source": "补习班自编教材 L18/L19",
+      "tags": [
+        "特殊疑问词",
+        "语法",
+        "老师课堂反馈配套"
+      ]
+    }
+  ]
+}

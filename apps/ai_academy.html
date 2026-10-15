@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<script src="../assets/learning-sync.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>AI 学院 · 引擎室</title>
+<style>
+:root{
+ --accent:#36c5d6;--accent2:#7c5cff;--accentd:#1f97a6;
+ --bg:#070b16;--bg2:#0c1426;--panel:#0f1830;--panel2:#13203c;
+ --line:#22325c;--ink:#e7eefb;--muted:#8595b8;--dim:#5a6a90;
+ --gold:#ffcf5c;--green:#33d98b;--red:#ff6b6b;--violet:#9b7cff;
+ --glow:rgba(54,197,214,.5);
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+html,body{margin:0;padding:0;height:100%;overflow-x:hidden;}
+body{font-family:'LXGW WenKai Screen','PingFang SC','Microsoft YaHei',system-ui,sans-serif;
+ background:var(--bg);color:var(--ink);min-height:100vh;}
+#bg{position:fixed;inset:0;z-index:0;display:block;}
+#app{position:relative;z-index:1;max-width:760px;margin:0 auto;padding:0 14px 60px;min-height:100vh;}
+.hud{position:sticky;top:0;z-index:5;display:flex;align-items:center;gap:10px;padding:12px 4px;
+ background:linear-gradient(180deg,var(--bg) 60%,transparent);backdrop-filter:blur(2px);}
+.hud .bk{background:var(--panel);border:1px solid var(--line);color:var(--ink);width:40px;height:40px;border-radius:12px;font-size:20px;cursor:pointer;display:grid;place-items:center;}
+.hud .ttl{flex:1;font-size:15px;font-weight:800;letter-spacing:.5px;}
+.hud .ttl small{display:block;font-size:11px;color:var(--muted);font-weight:600;letter-spacing:2px;text-transform:uppercase;}
+.hud .reactor{display:flex;align-items:center;gap:7px;font-size:12px;color:var(--muted);font-weight:800;}
+.ring{width:34px;height:34px;}
+.spk{background:var(--panel);border:1px solid var(--line);color:var(--gold);width:38px;height:38px;border-radius:11px;font-size:16px;cursor:pointer;}
+.hide{display:none!important;}
+/* 学院首页 */
+.brand{text-align:center;padding:22px 0 6px;}
+.brand .lg{font-size:13px;letter-spacing:8px;color:var(--accent);font-weight:800;text-transform:uppercase;}
+.brand h1{font-size:34px;margin:6px 0 2px;font-weight:900;letter-spacing:3px;
+ background:linear-gradient(90deg,var(--accent),var(--violet));-webkit-background-clip:text;background-clip:text;color:transparent;
+ text-shadow:0 0 30px var(--glow);}
+.brand p{color:var(--muted);font-size:13.5px;margin:6px auto;max-width:440px;line-height:1.7;}
+.wings{display:grid;gap:16px;margin-top:18px;}
+.wing{position:relative;border:1px solid var(--line);border-radius:20px;padding:20px;overflow:hidden;cursor:pointer;
+ background:linear-gradient(135deg,var(--panel),var(--bg2));transition:transform .12s,box-shadow .2s;}
+.wing:active{transform:scale(.99);}
+.wing.live{box-shadow:0 0 0 1px var(--accent),0 14px 40px -18px var(--glow);}
+.wing .wic{font-size:40px;}
+.wing h2{margin:8px 0 4px;font-size:21px;font-weight:900;}
+.wing p{color:var(--muted);font-size:13px;line-height:1.6;margin:0;}
+.wing .tag{position:absolute;top:16px;right:16px;font-size:11px;font-weight:800;padding:4px 11px;border-radius:20px;letter-spacing:1px;}
+.tag.on{background:var(--accent);color:#06121a;box-shadow:0 0 14px var(--glow);}
+.tag.soon{background:var(--panel2);color:var(--muted);border:1px solid var(--line);}
+.wing.soon{opacity:.62;}
+.wing .glowline{position:absolute;left:0;right:0;bottom:0;height:3px;background:linear-gradient(90deg,transparent,var(--accent),var(--violet),transparent);opacity:.7;}
+/* 引擎室 地图 */
+.maptop{text-align:center;margin:8px 0 4px;}
+.maptop h2{font-size:22px;font-weight:900;margin:4px 0;}
+.maptop p{color:var(--muted);font-size:13px;margin:2px 0 0;line-height:1.6;}
+.track{position:relative;margin:22px 6px 6px;}
+.stn{position:relative;display:flex;align-items:center;gap:14px;padding:14px 8px;cursor:pointer;}
+.stn .dot{position:relative;width:54px;height:54px;flex:0 0 54px;border-radius:50%;display:grid;place-items:center;font-size:24px;
+ background:var(--panel);border:2px solid var(--line);z-index:2;transition:.2s;}
+.stn.done .dot{border-color:var(--green);box-shadow:0 0 18px -2px var(--green);color:#fff;}
+.stn .dot .num{position:absolute;top:-6px;left:-6px;width:22px;height:22px;border-radius:50%;background:var(--accent2);color:#fff;font-size:11px;font-weight:800;display:grid;place-items:center;}
+.stn .meta .nm{font-size:16px;font-weight:800;}
+.stn .meta .ds{font-size:12px;color:var(--muted);line-height:1.5;margin-top:2px;}
+.stn .go{margin-left:auto;color:var(--accent);font-size:20px;}
+.track .line{position:absolute;left:32px;top:0;bottom:0;width:2px;background:var(--line);z-index:1;}
+.track .linefill{position:absolute;left:32px;top:0;width:2px;background:linear-gradient(180deg,var(--green),var(--accent));z-index:1;transition:height .6s;box-shadow:0 0 10px var(--green);}
+/* 站内通用 */
+.station h2{font-size:21px;font-weight:900;margin:6px 0 2px;display:flex;align-items:center;gap:9px;}
+.idea{background:linear-gradient(135deg,var(--panel),var(--bg2));border:1px solid var(--line);border-left:4px solid var(--accent);
+ border-radius:14px;padding:13px 15px;font-size:14.5px;line-height:1.75;color:#cdd9f0;margin:10px 0;}
+.idea b{color:var(--accent);}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:14px;margin:11px 0;position:relative;}
+.cv{width:100%;display:block;border-radius:12px;background:radial-gradient(circle at 50% 40%,#0d1830,#070d1c);touch-action:none;}
+.ctrls{display:flex;gap:9px;flex-wrap:wrap;align-items:center;margin-top:11px;}
+.btn{font-family:inherit;font-weight:800;font-size:14px;border:none;border-radius:12px;padding:11px 16px;cursor:pointer;color:#06121a;
+ background:linear-gradient(135deg,var(--accent),var(--accentd));box-shadow:0 0 18px -4px var(--glow);transition:transform .06s;}
+.btn:active{transform:translateY(2px);}
+.btn.v{background:linear-gradient(135deg,var(--violet),#6a47e0);color:#fff;box-shadow:0 0 18px -4px rgba(124,92,255,.6);}
+.btn.ghost{background:transparent;border:1px solid var(--line);color:var(--ink);box-shadow:none;}
+.btn.sm{font-size:13px;padding:9px 13px;}
+.btn:disabled{opacity:.4;}
+.chip{font-family:inherit;font-size:14px;font-weight:800;padding:8px 13px;border-radius:11px;border:1px solid var(--line);background:var(--panel2);color:var(--ink);cursor:pointer;}
+.chip.on{background:var(--accent);color:#06121a;border-color:var(--accent);box-shadow:0 0 14px -3px var(--glow);}
+.toggle{display:flex;align-items:center;justify-content:space-between;gap:10px;background:var(--panel2);border:1px solid var(--line);border-radius:12px;padding:11px 14px;margin:7px 0;cursor:pointer;font-size:14px;font-weight:700;}
+.sw{width:46px;height:26px;border-radius:14px;background:#26334f;position:relative;transition:.2s;flex:0 0 46px;}
+.sw::after{content:"";position:absolute;top:3px;left:3px;width:20px;height:20px;border-radius:50%;background:#fff;transition:.2s;}
+.toggle.on .sw{background:var(--green);}
+.toggle.on .sw::after{left:23px;}
+.reveal{background:rgba(51,217,139,.08);border:1px solid rgba(51,217,139,.4);border-radius:12px;padding:12px 14px;font-size:13.5px;line-height:1.7;color:#bff0d6;margin-top:11px;animation:fade .4s;}
+.reveal .l{font-weight:800;color:var(--green);}
+@keyframes fade{from{opacity:0;transform:translateY(6px);}to{opacity:1;}}
+.slider{width:100%;accent-color:var(--accent);height:28px;}
+.dial{display:flex;justify-content:space-between;font-size:11.5px;color:var(--muted);font-weight:800;}
+.tabs{display:flex;gap:8px;margin:4px 0 6px;}
+.bars{margin-top:8px;}
+.brow{display:flex;align-items:center;gap:8px;margin:6px 0;}
+.brow .wd{min-width:62px;font-weight:800;font-size:14px;text-align:center;background:var(--panel2);border:1px solid var(--line);border-radius:9px;padding:6px;}
+.brow .bw{flex:1;height:18px;background:#16213d;border-radius:9px;overflow:hidden;}
+.brow .bf{height:100%;width:0;background:linear-gradient(90deg,var(--accent),var(--violet));transition:width .4s;border-radius:9px;}
+.brow .pc{min-width:40px;text-align:right;font-size:12px;font-weight:800;color:var(--muted);}
+.nextbar{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:14px;}
+.tok{display:inline-block;padding:7px 11px;margin:4px;border-radius:10px;background:var(--panel2);border:1px solid var(--line);font-size:15px;font-weight:800;transition:.3s;}
+.tok .id{display:block;font-size:11px;color:var(--accent);font-weight:700;margin-top:2px;}
+.hintline{font-size:12px;color:var(--dim);text-align:center;margin-top:8px;line-height:1.6;}
+.pill{display:inline-block;font-size:11px;font-weight:800;color:var(--accent);border:1px solid var(--line);border-radius:20px;padding:2px 10px;margin-left:6px;}
+.foot{text-align:center;color:var(--dim);font-size:11px;margin-top:20px;line-height:1.7;}
+</style>
+</head>
+<body>
+<canvas id="bg"></canvas>
+<div id="app">
+  <div class="hud">
+    <button class="bk" id="bk">‹</button>
+    <div class="ttl" id="ttl"><small>AI ACADEMY</small>AI 学院</div>
+    <div class="reactor" id="reactorBox"></div>
+    <button class="spk" id="spk">🔊</button>
+  </div>
+  <div id="screen"></div>
+  <div class="foot">AI 学院 · 引擎室 — 把 AI 的"脑子"拆开给你看。零依赖纯静态 · 手绘高维可视化。<br>配套课程见《AI课程_设计大纲》。和真 AI 玩请爸妈陪同，只用小名、不说真实信息。</div>
+</div>
+<script>
+"use strict";
+function $(s,r){return (r||document).querySelector(s);}
+function ce(t,c,h){var e=document.createElement(t);if(c)e.className=c;if(h!=null)e.innerHTML=h;return e;}
+function clamp(v,a,b){return v<a?a:v>b?b:v;}
+function lerp(a,b,t){return a+(b-a)*t;}
+
+/* ---------- 主题 ---------- */
+function getP(k){var m=new RegExp('[?&]'+k+'=([^&]+)').exec(location.search);return m?decodeURIComponent(m[1]):null;}
+var THEME={kenton:{nm:"哥哥",emoji:"🦁",a:"#36c5d6",ad:"#1f97a6",glow:"rgba(54,197,214,.5)"},
+           eddey:{nm:"弟弟",emoji:"🐯",a:"#ff8a5b",ad:"#d8542f",glow:"rgba(255,138,91,.5)"}};
+var who=getP("who")||"kenton";var TH=THEME[who]||THEME.kenton;
+(function(){var r=document.documentElement.style;r.setProperty('--accent',TH.a);r.setProperty('--accentd',TH.ad);r.setProperty('--glow',TH.glow);})();
+var LSKEY="aiacad_"+who;
+function loadProg(){try{return JSON.parse(localStorage.getItem(LSKEY))||{};}catch(e){return {};}}
+function saveProg(p){try{localStorage.setItem(LSKEY,JSON.stringify(p));}catch(e){}}
+var PROG=loadProg();
+/* 探索记录（localStorage；导出后人工投喂回 Claude，符合静态只读架构） */
+var EVKEY="aiacad_ev_"+who;
+function loadEv(){try{return JSON.parse(localStorage.getItem(EVKEY))||[];}catch(e){return[];}}
+function saveEv(a){try{localStorage.setItem(EVKEY,JSON.stringify(a.slice(-500)));}catch(e){}}
+var EVENTS=loadEv();
+function logEv(st,k,d){EVENTS.push({t:Date.now(),st:st,k:k,d:d});saveEv(EVENTS);}
+var curSt=null;
+function flushDwell(){if(curSt){var ms=Date.now()-curSt.start;if(ms>800)logEv(curSt.id,"dwell",Math.round(ms/1000));curSt=null;}}
+
+/* ---------- 朗读（音频优先，TTS 回退；音色锁定见 CLAUDE.md） ---------- */
+var AUDIO_DIR="audio/ai_academy/",exA=null,aTok=0;
+function aHash(s){var b=new TextEncoder().encode(s),x=0x811c9dc5>>>0;for(var i=0;i<b.length;i++){x^=b[i];x=Math.imul(x,0x01000193)>>>0;}return ('0000000'+x.toString(16)).slice(-8);}
+function ttsSpeak(t){try{speechSynthesis.cancel();speechSynthesis.resume();var u=new SpeechSynthesisUtterance(t);u.lang='zh-CN';speechSynthesis.speak(u);}catch(e){}}
+function speak(t){try{speechSynthesis.cancel();}catch(e){}aTok++;var my=aTok;if(!exA){exA=new Audio();exA.setAttribute('playsinline','');try{document.body.appendChild(exA);}catch(e){}}var a=exA,done=false;var stale=function(){return done||my!==aTok;};var fb=function(){if(stale())return;done=true;ttsSpeak(t);};a.onended=function(){if(stale())return;done=true;};a.onerror=fb;try{a.pause();}catch(e){}a.src=AUDIO_DIR+aHash("zh|"+t)+".mp3";try{a.currentTime=0;}catch(e){}var p=a.play();if(p&&p.catch)p.catch(fb);}
+var NARR={
+ welcome:"欢迎来到 AI 学院。我们要把 AI 的脑子拆开，一层层看清楚它到底怎么思考。",
+ s1:"AI 看不懂字，它先把句子拆成一小块一小块，再把每一块变成一个数字。",
+ s2:"每个词都是一个点，住在一个超级大的空间里。意思越接近的词，住得越近。",
+ s3:"数字会穿过一层又一层的神经元，被一步步加工，最后得出一个判断。",
+ s4:"AI 读句子的时候，会特别去看跟当前这个词最相关的那几个词，这叫注意力。",
+ s5:"AI 靠不停地纠正错误来学习，就像小球顺着山坡滚到最低点。用的时候还能调创意旋钮。"
+};
+var lastNarr="welcome";
+$("#spk").onclick=function(){speak(NARR[lastNarr]||NARR.welcome);};
+
+/* ---------- 背景：粒子神经网络 ---------- */
+(function(){
+ var c=$("#bg"),x=c.getContext("2d"),W,H,DPR,pts=[];
+ function rs(){DPR=Math.min(2,window.devicePixelRatio||1);W=c.width=innerWidth*DPR;H=c.height=innerHeight*DPR;c.style.width=innerWidth+"px";c.style.height=innerHeight+"px";
+  pts=[];var n=Math.min(60,Math.floor(innerWidth/14));for(var i=0;i<n;i++)pts.push({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.18*DPR,vy:(Math.random()-.5)*.18*DPR});}
+ rs();addEventListener("resize",rs);
+ function tick(){x.clearRect(0,0,W,H);var ac=getComputedStyle(document.documentElement).getPropertyValue('--accent').trim()||"#36c5d6";
+  for(var i=0;i<pts.length;i++){var p=pts[i];p.x+=p.vx;p.y+=p.vy;if(p.x<0||p.x>W)p.vx*=-1;if(p.y<0||p.y>H)p.vy*=-1;}
+  for(i=0;i<pts.length;i++)for(var j=i+1;j<pts.length;j++){var a=pts[i],b=pts[j],dx=a.x-b.x,dy=a.y-b.y,d=Math.hypot(dx,dy);if(d<120*DPR){x.globalAlpha=(1-d/(120*DPR))*.16;x.strokeStyle=ac;x.lineWidth=DPR;x.beginPath();x.moveTo(a.x,a.y);x.lineTo(b.x,b.y);x.stroke();}}
+  x.globalAlpha=.5;x.fillStyle=ac;for(i=0;i<pts.length;i++){x.beginPath();x.arc(pts[i].x,pts[i].y,1.4*DPR,0,7);x.fill();}x.globalAlpha=1;
+  requestAnimationFrame(tick);}
+ tick();
+})();
+
+/* ---------- hi-dpi canvas helper ---------- */
+function setupCanvas(cv,h){var DPR=Math.min(2,window.devicePixelRatio||1);var w=cv.clientWidth||cv.parentNode.clientWidth-28;cv.width=w*DPR;cv.height=h*DPR;cv.style.height=h+"px";var ctx=cv.getContext("2d");ctx.setTransform(DPR,0,0,DPR,0,0);cv._W=w;cv._H=h;cv._DPR=DPR;return ctx;}
+
+/* ===================================================================
+   路由 / 外壳
+=================================================================== */
+var rafHandle=null;
+function stopRAF(){if(rafHandle){cancelAnimationFrame(rafHandle);clearTimeout(rafHandle);rafHandle=null;}}
+function setHUD(title,sub,showReactor){$("#ttl").innerHTML='<small>'+(sub||"AI ACADEMY")+'</small>'+title;
+ var rb=$("#reactorBox");if(showReactor){var done=STATIONS.filter(function(s){return PROG[s.id];}).length;var pct=Math.round(done/STATIONS.length*100);
+  rb.innerHTML='<svg class="ring" viewBox="0 0 36 36"><circle cx="18" cy="18" r="15" fill="none" stroke="#22325c" stroke-width="3"/><circle cx="18" cy="18" r="15" fill="none" stroke="var(--green)" stroke-width="3" stroke-linecap="round" stroke-dasharray="'+(pct/100*94)+' 94" transform="rotate(-90 18 18)"/></svg><span>'+done+'/'+STATIONS.length+'</span>';}
+ else rb.innerHTML="";}
+var stack=[];
+function go(state,push){stopRAF();if(push!==false)stack.push(state);window.scrollTo(0,0);RENDER[state]();}
+$("#bk").onclick=function(){stopRAF();if(stack.length>1){stack.pop();var prev=stack[stack.length-1];RENDER[prev]();window.scrollTo(0,0);}else{location.href="../index.html";}};
+
+var RENDER={};
+
+/* ---------- 学院首页 ---------- */
+RENDER.academy=function(){flushDwell();lastNarr="welcome";setHUD("AI 学院 · "+TH.emoji+TH.nm,"AI ACADEMY",false);
+ var s=$("#screen");
+ s.innerHTML=
+ '<div class="brand"><div class="lg">A · I · A C A D E M Y</div><h1>AI 学院</h1>'+
+ '<p>欢迎，'+TH.emoji+' 院士 '+TH.nm+'。这里不教你"用 AI 做题"，而是把 AI 的<b style="color:var(--accent)">脑子拆开</b>，让你亲眼看清它怎么思考。选一座大厅进入。</p></div>'+
+ '<div class="wings">'+
+  '<div class="wing live" data-w="engine"><span class="tag on">已开放</span><div class="wic">🔬</div><h2>引擎室</h2><p>AI 的"脑内手术室"。5 个原理站：拆词 → 词向量星空 → 神经网络 → 注意力 → 训练场。会动、能拆、可飞行的高维可视化。</p><div class="glowline"></div></div>'+
+  '<div class="wing soon" data-w="soon"><span class="tag soon">建设中</span><div class="wic">⚔️</div><h2>实战厅</h2><p>AI 指挥中心：提示工程进阶、把多步骤串成工作流/智能体、给 AI 输出打分迭代。下一期开放。</p></div>'+
+ '</div>';
+ $(".wing.live",s).onclick=function(){go("engine");};
+ $(".wing.soon",s).onclick=function(){this.animate?this.animate([{transform:'translateX(0)'},{transform:'translateX(-6px)'},{transform:'translateX(6px)'},{transform:'translateX(0)'}],{duration:260}):0;speak("实战厅还在建设中，下一期开放。先去引擎室看 AI 的脑子吧。");};
+};
+
+/* ---------- 引擎室 地图 ---------- */
+RENDER.engine=function(){flushDwell();lastNarr="welcome";setHUD("引擎室","ENGINE ROOM · 原理厅",true);
+ var done=STATIONS.filter(function(st){return PROG[st.id];}).length;
+ var s=$("#screen");
+ var h='<div class="maptop"><h2>🔬 引擎室</h2><p>顺着电路一站一站走，把 AI 怎么思考<b>从头点亮</b>。已点亮 '+done+' / '+STATIONS.length+' 站。</p></div>'+
+ '<div class="track"><div class="line"></div><div class="linefill" id="lf"></div>';
+ STATIONS.forEach(function(st,i){var dn=!!PROG[st.id];
+  h+='<div class="stn'+(dn?' done':'')+'" data-i="'+i+'"><div class="dot"><span class="num">'+(i+1)+'</span>'+st.icon+'</div>'+
+     '<div class="meta"><div class="nm">'+st.name+(dn?' <span class="pill">✓ 已点亮</span>':'')+'</div><div class="ds">'+st.tag+'</div></div><div class="go">›</div></div>';});
+ h+='</div>';
+ h+='<div class="panel" style="margin-top:18px"><div style="font-size:13px;font-weight:800;color:var(--muted);margin-bottom:4px">📡 我的探索记录</div>'+
+  '<div style="font-size:12.5px;color:var(--dim);line-height:1.6">玩过的痕迹记在这台设备上。导出后<b>贴回给爸爸/Claude</b>，我就能看到点亮了哪些站、点了哪些词、玩了多久，并据此迭代。（隐私：只含小名，不含真实信息。）</div>'+
+  '<div class="ctrls"><button class="btn sm" id="exCopy">📋 复制探索记录</button><button class="btn v sm" id="exFile">💾 存成文件</button><button class="btn ghost sm" id="exClr">清空</button></div></div>';
+ s.innerHTML=h;
+ setTimeout(function(){var lf=$("#lf");if(lf)lf.style.height=(done/STATIONS.length*100)+"%";},60);
+ $(".track",s).querySelectorAll(".stn").forEach(function(n){n.onclick=function(){openStation(+n.dataset.i);};});
+ $("#exCopy").onclick=function(){copyText(buildExport(),this);};
+ $("#exFile").onclick=function(){downloadText(buildExport(),"AI学院_引擎室_"+who+".txt");};
+ $("#exClr").onclick=function(){if(confirm("清空这台设备上的探索记录？")){EVENTS=[];saveEv(EVENTS);PROG={};saveProg(PROG);go("engine",false);}};
+};
+function buildExport(){
+ var done=STATIONS.filter(function(s){return PROG[s.id];}).length;
+ var by={};EVENTS.forEach(function(e){(by[e.st]=by[e.st]||[]).push(e);});
+ function cnt(st,k){return (by[st]||[]).filter(function(e){return e.k===k;}).length;}
+ function vals(st,k){return (by[st]||[]).filter(function(e){return e.k===k;}).map(function(e){return e.d;});}
+ var L=["【AI 学院 · 引擎室 探索记录】","孩子："+TH.nm+"　日期："+new Date().toLocaleDateString("zh-CN"),"点亮 "+done+" / "+STATIONS.length+" 站"];
+ L.push("· 拆词机：看“变成数字” "+cnt("s1","num")+" 次");
+ var w=vals("s2","word");L.push("· 词向量星空：点了 "+(w.length?w.join("、"):"—"));
+ L.push("· 神经网络：通电 "+cnt("s3","fire")+" 次");
+ var f=vals("s4","focus");L.push("· 注意力：点了 "+(f.length?f.join("、"):"—"));
+ L.push("· 训练场："+(cnt("s5","learned")?"学到谷底✓　":"")+"采样 "+cnt("s5","sample")+" 次");
+ if(EVENTS.length){var span=(EVENTS[EVENTS.length-1].t-EVENTS[0].t)/60000;L.push("累计互动时长 约 "+Math.max(1,Math.round(span))+" 分钟");}
+ var raw={child:who,subject:"AI",app:"ai_academy",exportedAt:new Date().toISOString(),progress:done+"/"+STATIONS.length,events:EVENTS};
+ return L.join("\n")+"\n\n---原始JSON（投喂给爸爸/Claude）---\n"+JSON.stringify(raw);
+}
+function copyText(txt,btn){if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(txt).then(function(){var o=btn.textContent;btn.textContent="✅ 已复制";speak("探索记录复制好了，贴给爸爸就行。");setTimeout(function(){btn.textContent=o;},1600);}).catch(function(){btn.textContent="长按选择复制";});}else btn.textContent="长按选择复制";}
+function downloadText(txt,name){try{var b=new Blob([txt],{type:"text/plain;charset=utf-8"});var u=URL.createObjectURL(b);var a=document.createElement("a");a.href=u;a.download=name;document.body.appendChild(a);a.click();setTimeout(function(){URL.revokeObjectURL(u);a.remove();},120);}catch(e){}}
+function openStation(i){var st=STATIONS[i];stopRAF();stack.push("__st"+i);RENDER["__st"+i]=function(){renderStation(i);};window.scrollTo(0,0);renderStation(i);}
+function markDone(i){var st=STATIONS[i];if(!PROG[st.id]){PROG[st.id]=1;saveProg(PROG);}}
+function renderStation(i){var st=STATIONS[i];flushDwell();curSt={id:st.id,start:Date.now()};logEv(st.id,"open");lastNarr=st.id;setHUD(st.name,"站 "+(i+1)+" / "+STATIONS.length,true);
+ var s=$("#screen");
+ s.innerHTML='<div class="station"><h2>'+st.icon+' '+st.name+' <button class="spk" style="width:34px;height:34px;font-size:15px" onclick="speak(NARR.'+st.id+')">🔊</button></h2>'+
+  '<div class="idea">'+st.idea+'</div><div id="lab"></div>'+
+  '<div class="nextbar"><button class="btn ghost sm" id="mapbtn">↶ 回引擎室</button><button class="btn sm" id="nextbtn">'+(i<STATIONS.length-1?'下一站 '+STATIONS[i+1].icon+' ›':'完成引擎室 🎉')+'</button></div></div>';
+ st.render($("#lab"),i);
+ $("#mapbtn").onclick=function(){stopRAF();stack.pop();go("engine",false);};
+ $("#nextbtn").onclick=function(){markDone(i);RENDER.engine&&0;stopRAF();stack.pop();if(i<STATIONS.length-1){openStation(i+1);}else{go("engine",false);}};
+}
+
+/* ===================================================================
+   站 1 · 拆词机（Tokenizer）
+=================================================================== */
+function stToken(host){
+ var SENTS=["小猫喜欢吃鱼","今天天气真好","机器人会跳舞","我爱学习AI"];
+ var si=0;
+ host.innerHTML='<div class="panel"><div style="font-size:13px;color:var(--muted);font-weight:800;margin-bottom:8px">① 选一句话，按"拆开"看 AI 怎么处理它：</div>'+
+  '<div class="ctrls" id="ssel"></div>'+
+  '<div id="stage" style="min-height:120px;margin-top:12px;text-align:center"></div>'+
+  '<div class="ctrls" style="justify-content:center"><button class="btn" id="split">✂️ 拆 开</button><button class="btn v" id="num">🔢 变成数字</button><button class="btn ghost sm" id="reset">重来</button></div>'+
+  '<div id="srev"></div></div>';
+ function tabs(){$("#ssel").innerHTML=SENTS.map(function(t,k){return '<button class="chip'+(k===si?' on':'')+'" data-k="'+k+'">'+t+'</button>';}).join("");
+  $("#ssel").querySelectorAll(".chip").forEach(function(c){c.onclick=function(){si=+c.dataset.k;draw(0);};});}
+ function toks(t){var arr=[];for(var i=0;i<t.length;){if(/[A-Za-z]/.test(t[i])){var j=i;while(j<t.length&&/[A-Za-z]/.test(t[j]))j++;arr.push(t.slice(i,j));i=j;}else{arr.push(t[i]);i++;}}return arr;}
+ function tid(s){var x=2166136261>>>0;for(var i=0;i<s.length;i++){x^=s.charCodeAt(i);x=Math.imul(x,16777619)>>>0;}return x%9000+1000;}
+ function draw(stage){var t=SENTS[si];var a=toks(t);
+  var h="";a.forEach(function(tk,k){h+='<span class="tok" id="tk'+k+'" style="'+(stage>=1?'':'opacity:.25;')+'">'+tk+(stage>=2?'<span class="id">#'+tid(tk)+'</span>':'')+'</span>';});
+  $("#stage").innerHTML='<div style="font-size:22px;font-weight:800;letter-spacing:1px">'+h+'</div>';
+  $("#srev").innerHTML=stage>=2?'<div class="reveal"><span class="l">原来如此！</span> AI 眼里<b>没有汉字</b>，只有数字。它先把句子切成一块块小词（叫 <b>token</b>），再给每块配一个编号。后面所有的"思考"，其实都是在<b>算数字</b>。<br><span style="color:var(--muted)">（真实的 AI 词表有几万个 token，这里的编号是简化版示意。）</span></div>':'';
+ }
+ $("#split").onclick=function(){draw(1);};
+ $("#num").onclick=function(){draw(2);logEv("s1","num",SENTS[si]);speak("看，每个词都变成了一个数字编号。");};
+ $("#reset").onclick=function(){draw(0);};
+ tabs();draw(0);
+}
+
+/* ===================================================================
+   站 2 · 词向量星空（Embeddings, 手绘 3D）
+=================================================================== */
+function stEmbed(host){
+ var CL=[
+  {nm:"动物",col:"#36c5d6",c:[-2.2,1.3,0.2],w:["猫","狗","兔子","老虎","大象","鱼"]},
+  {nm:"食物",col:"#ffcf5c",c:[2.3,1.2,0.5],w:["苹果","面包","西瓜","糖果","牛奶","蛋糕"]},
+  {nm:"颜色",col:"#9b7cff",c:[0.2,-2.3,1.1],w:["红色","蓝色","绿色","黄色","黑色"]},
+  {nm:"交通",col:"#33d98b",c:[-2.1,-1.4,-1.6],w:["汽车","火车","飞机","自行车","轮船"]},
+  {nm:"情绪",col:"#ff6b6b",c:[2.1,-1.3,-1.3],w:["开心","难过","生气","害怕","惊讶"]}
+ ];
+ var PTS=[];CL.forEach(function(cl,ci){cl.w.forEach(function(word,wi){var s=(ci*7+wi*13);function jit(n){return ((Math.sin(s*n)*43758.5)%1)*1.0-0.5;}
+  PTS.push({w:word,col:cl.col,ci:ci,x:cl.c[0]+jit(12.9),y:cl.c[1]+jit(78.2),z:cl.c[2]+jit(37.7)});});});
+ host.innerHTML='<div class="panel"><canvas class="cv" id="emb" height="340"></canvas>'+
+  '<div class="hintline">🖐 用手指拖动可以<b>旋转</b>整片星空 · 点一个词看它的"邻居"</div>'+
+  '<div class="ctrls" style="justify-content:center"><button class="btn ghost sm" id="auto">⏯ 自转</button><button class="btn ghost sm" id="links">🔗 同类连线</button></div>'+
+  '<div id="erev"></div></div>';
+ var cv=$("#emb"),ctx=setupCanvas(cv,340);var W=cv._W,H=cv._H;
+ var rotY=0.6,rotX=-0.35,auto=true,showLinks=false,sel=-1,fov=3.4;
+ function rot(p){var cy=Math.cos(rotY),sy=Math.sin(rotY),cx=Math.cos(rotX),sx=Math.sin(rotX);
+  var x=p.x*cy - p.z*sy, z=p.x*sy + p.z*cy, y=p.y*cx - z*sx, z2=p.y*sx + z*cx;return {x:x,y:y,z:z2};}
+ function proj(p){var r=rot(p);var s=fov/(fov+r.z);return {sx:W/2+r.x*s*64,sy:H/2+r.y*s*64,s:s,z:r.z};}
+ function nearest(idx){var p=PTS[idx];var arr=PTS.map(function(q,i){return {i:i,d:Math.hypot(q.x-p.x,q.y-p.y,q.z-p.z)};}).filter(function(o){return o.i!==idx;});arr.sort(function(a,b){return a.d-b.d;});return arr.slice(0,3);}
+ function frame(){ctx.clearRect(0,0,W,H);
+  if(auto)rotY+=0.004;
+  var pr=PTS.map(function(p,i){var q=proj(p);q.i=i;return q;}).sort(function(a,b){return a.z-b.z;});
+  if(showLinks){ctx.lineWidth=1;for(var ci=0;ci<CL.length;ci++){var idx=[];PTS.forEach(function(p,i){if(p.ci===ci)idx.push(i);});for(var a=0;a<idx.length;a++)for(var b=a+1;b<idx.length;b++){var p1=proj(PTS[idx[a]]),p2=proj(PTS[idx[b]]);ctx.strokeStyle=CL[ci].col;ctx.globalAlpha=.12;ctx.beginPath();ctx.moveTo(p1.sx,p1.sy);ctx.lineTo(p2.sx,p2.sy);ctx.stroke();}}ctx.globalAlpha=1;}
+  if(sel>=0){var nb=nearest(sel);var ps=proj(PTS[sel]);nb.forEach(function(o){var pp=proj(PTS[o.i]);ctx.strokeStyle=TH.a;ctx.globalAlpha=.8;ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(ps.sx,ps.sy);ctx.lineTo(pp.sx,pp.sy);ctx.stroke();});ctx.globalAlpha=1;}
+  pr.forEach(function(q){var p=PTS[q.i];var rad=clamp(5*q.s,2,8);var on=(q.i===sel);ctx.globalAlpha=clamp(.45+q.s*.4,.3,1);
+   ctx.fillStyle=p.col;ctx.shadowColor=p.col;ctx.shadowBlur=on?16:7;ctx.beginPath();ctx.arc(q.sx,q.sy,on?rad+2:rad,0,7);ctx.fill();ctx.shadowBlur=0;
+   ctx.globalAlpha=clamp(q.s,.4,1);ctx.fillStyle=on?"#fff":"#cdd9f0";ctx.font=(on?"800 ":"")+clamp(12*q.s,9,15)+"px sans-serif";ctx.textAlign="center";ctx.fillText(p.w,q.sx,q.sy-rad-5);});
+  ctx.globalAlpha=1;
+  rafHandle=requestAnimationFrame(frame);}
+ frame();
+ var drag=false,lx,ly;
+ function pos(e){var r=cv.getBoundingClientRect();var t=e.touches?e.touches[0]:e;return {x:t.clientX-r.left,y:t.clientY-r.top};}
+ function down(e){drag=true;auto=false;var p=pos(e);lx=p.x;ly=p.y;}
+ function move(e){if(!drag)return;e.preventDefault();var p=pos(e);rotY+=(p.x-lx)*0.01;rotX+=(p.y-ly)*0.01;rotX=clamp(rotX,-1.3,1.3);lx=p.x;ly=p.y;}
+ function up(e){if(drag){drag=false;var p=pos(e.changedTouches?{touches:[],clientX:e.changedTouches[0].clientX,clientY:e.changedTouches[0].clientY}:e);
+   /* tap = select nearest screen point */
+   var mind=99,mi=-1;PTS.forEach(function(pt,i){var q=proj(pt);var d=Math.hypot(q.sx-p.x,q.sy-p.y);if(d<24&&d<mind){mind=d;mi=i;}});
+   if(mi>=0){sel=mi;logEv("s2","word",PTS[mi].w);var nb=nearest(mi);$("#erev").innerHTML='<div class="reveal"><span class="l">'+PTS[mi].w+' 的邻居</span> 离它最近的是 <b>'+nb.map(function(o){return PTS[o.i].w;}).join("、")+'</b>。<br>意思相近的词，在这个空间里<b>住得近</b>——AI 就是这样"理解"词义的：把每个词放进一个有几百维的空间里，用<b>距离</b>表示<b>含义</b>。我们把几百维压成 3 维给你看。</div>';speak(PTS[mi].w+"，离它最近的词是"+nb.map(function(o){return PTS[o.i].w;}).join("、"));}}
+ }
+ cv.addEventListener("mousedown",down);addEventListener("mousemove",move);addEventListener("mouseup",up);
+ cv.addEventListener("touchstart",down,{passive:false});cv.addEventListener("touchmove",move,{passive:false});cv.addEventListener("touchend",up);
+ $("#auto").onclick=function(){auto=!auto;};
+ $("#links").onclick=function(){showLinks=!showLinks;this.classList.toggle("on");};
+}
+
+/* ===================================================================
+   站 3 · 神经网络（前向传播, 手绘）
+=================================================================== */
+function stNet(host){
+ var FEAT=[{q:"会汪汪叫",v:false},{q:"有长胡须",v:false},{q:"喜欢追球",v:false}];
+ var L=[3,5,4,2];
+ // 固定权重（手工设计，使行为合理）
+ function rnd(s){return (Math.sin(s*99.7)*43758.5)%1;}
+ var Wts=[];for(var l=0;l<L.length-1;l++){var m=[];for(var j=0;j<L[l+1];j++){var row=[];for(var i=0;i<L[l];i++)row.push(rnd(l*31+j*7+i*3)*1.6);m.push(row);}Wts.push(m);}
+ host.innerHTML='<div class="panel"><div style="font-size:13px;color:var(--muted);font-weight:800">① 给 AI 三条线索（点一点开/关），再"通电"：</div>'+
+  '<div id="feat" style="margin-top:8px"></div>'+
+  '<canvas class="cv" id="net" height="260" style="margin-top:8px"></canvas>'+
+  '<div class="ctrls" style="justify-content:center"><button class="btn" id="fire">⚡ 通 电</button></div>'+
+  '<div id="verdict" style="text-align:center;font-size:20px;font-weight:900;margin-top:8px;min-height:26px"></div>'+
+  '<div id="nrev"></div></div>';
+ function feats(){$("#feat").innerHTML=FEAT.map(function(f,k){return '<div class="toggle'+(f.v?' on':'')+'" data-k="'+k+'"><span>'+f.q+'？</span><span class="sw"></span></div>';}).join("");
+  $("#feat").querySelectorAll(".toggle").forEach(function(t){t.onclick=function(){FEAT[+t.dataset.k].v=!FEAT[+t.dataset.k].v;feats();draw(null);};});}
+ var cv=$("#net"),ctx=setupCanvas(cv,260);var W=cv._W,H=cv._H;
+ function nodePos(){var pos=[];for(var l=0;l<L.length;l++){var col=[];var x=40+l*((W-80)/(L.length-1));for(var n=0;n<L[l];n++){var y=H/2+(n-(L[l]-1)/2)*(Math.min(46,(H-40)/L[l]));col.push({x:x,y:y});}pos.push(col);}return pos;}
+ function forward(){var a=[FEAT.map(function(f){return f.v?1:0;})];for(var l=0;l<Wts.length;l++){var na=[];for(var j=0;j<L[l+1];j++){var s=0;for(var i=0;i<L[l];i++)s+=a[l][i]*Wts[l][j][i];na.push(1/(1+Math.exp(-s+0.6)));}a.push(na);}return a;}
+ function draw(pulseT){var pos=nodePos();var act=forward();ctx.clearRect(0,0,W,H);
+  for(var l=0;l<Wts.length;l++)for(var j=0;j<L[l+1];j++)for(var i=0;i<L[l];i++){var w=Wts[l][j][i];var p1=pos[l][i],p2=pos[l+1][j];
+   ctx.lineWidth=clamp(Math.abs(w)*1.6,.4,3);ctx.strokeStyle=w>0?"rgba(54,197,214,":"rgba(255,107,107,";var al=clamp(.06+act[l][i]*.5,.06,.6);ctx.strokeStyle+=al+")";ctx.beginPath();ctx.moveTo(p1.x,p1.y);ctx.lineTo(p2.x,p2.y);ctx.stroke();}
+  // 脉冲点
+  if(pulseT!=null){for(var l2=0;l2<Wts.length;l2++){var seg=clamp(pulseT-l2,0,1);if(seg<=0||seg>=1)continue;for(var j2=0;j2<L[l2+1];j2++)for(var i2=0;i2<L[l2];i2++){if(act[l2][i2]<0.05)continue;var a1=pos[l2][i2],a2=pos[l2+1][j2];var px=lerp(a1.x,a2.x,seg),py=lerp(a1.y,a2.y,seg);ctx.fillStyle=TH.a;ctx.shadowColor=TH.a;ctx.shadowBlur=8;ctx.beginPath();ctx.arc(px,py,2.4,0,7);ctx.fill();ctx.shadowBlur=0;}}}
+  var labels=[["🐕","🐱"]];
+  for(var l3=0;l3<L.length;l3++)for(var n=0;n<L[l3];n++){var p=pos[l3][n];var a=act[l3][n];var lit=(pulseT==null)?a:(pulseT>=l3?a:0);
+   ctx.beginPath();ctx.arc(p.x,p.y,l3===L.length-1?14:9,0,7);ctx.fillStyle=l3===0?"#16213d":("rgba(54,197,214,"+clamp(lit,0,1)*0.9+")");
+   if(l3===0)ctx.fillStyle=act[0][n]?TH.a:"#16213d";
+   ctx.shadowColor=TH.a;ctx.shadowBlur=lit>0.4?12:0;ctx.fill();ctx.shadowBlur=0;ctx.lineWidth=1.5;ctx.strokeStyle="#2a3a63";ctx.stroke();
+   if(l3===L.length-1){ctx.font="16px sans-serif";ctx.textAlign="center";ctx.textBaseline="middle";ctx.fillStyle="#fff";ctx.fillText(n===0?"🐱":"🐶",p.x,p.y);}
+  }
+  // 输入标签
+  ctx.fillStyle="#8595b8";ctx.font="10px sans-serif";ctx.textAlign="right";ctx.textBaseline="middle";
+  ["叫","须","球"].forEach(function(t,k){ctx.fillText(t,pos[0][k].x-13,pos[0][k].y);});
+  ctx.fillStyle="#cdd9f0";ctx.font="800 11px sans-serif";ctx.textAlign="left";ctx.fillText("猫?",pos[L.length-1][0].x+18,pos[L.length-1][0].y);ctx.fillText("狗?",pos[L.length-1][1].x+18,pos[L.length-1][1].y);
+  return act;}
+ function fire(){var t=0;function step(){t+=0.05;draw(t);if(t<L.length+0.2){rafHandle=requestAnimationFrame(step);}else{var act=draw(null);var cat=act[L.length-1][0],dog=act[L.length-1][1];var v=cat>dog?"🐱 这更像一只猫！":"🐶 这更像一只狗！";if(Math.abs(cat-dog)<0.04)v="🤔 AI 也拿不准…再加条线索？";
+   $("#verdict").textContent=v;$("#verdict").style.color=cat>dog?"var(--accent)":"var(--green)";logEv("s3","fire",cat>dog?"cat":"dog");
+   $("#nrev").innerHTML='<div class="reveal"><span class="l">原来如此！</span> 你的线索（数字）从左边进去，<b>一层层</b>被神经元加工，每条连线有不同<b>粗细（权重）</b>——影响有大有小。最后右边两个灯谁更亮，就是 AI 的判断。<br>真正的大模型有<b>几十亿</b>个这样的连线，原理一模一样。</div>';speak(v);}}
+  step();}
+ feats();draw(null);
+ $("#fire").onclick=function(){stopRAF();fire();};
+}
+
+/* ===================================================================
+   站 4 · 注意力（Attention beams）
+=================================================================== */
+function stAttn(host){
+ var DATA=[
+  {toks:["小猫","追","老鼠","，","因为","它","饿","了"],focus:5,
+   att:{5:[3,0,0,0,0,0,0,0].map(function(_,i){return [0.85,0.05,0.04,0,0.02,0,0.02,0][i];}),
+        0:[0,0.5,0.2,0,0,0,0,0],2:[0.5,0.3,0,0,0,0,0,0]},
+   note:"AI 读到“它”时，要弄清“它”指谁。注意力强烈地射向 <b>小猫</b>——所以 AI 知道是小猫饿了。"},
+  {toks:["我","把","苹果","给","了","弟弟","他","很","开心"],focus:6,
+   att:{6:[0.05,0,0.05,0,0,0.8,0,0,0.06],2:[0.4,0,0,0,0,0,0,0,0]},
+   note:"“他”指谁？注意力射向 <b>弟弟</b>——AI 据此明白是弟弟开心。"},
+  {toks:["天","太","热","了","，","我","想","吃","冰淇淋"],focus:7,
+   att:{7:[0.25,0,0.35,0,0,0,0.1,0,0.25],8:[0.2,0,0.3,0,0,0,0,0.2,0]},
+   note:"读到“吃”，注意力同时看向 <b>热</b> 和 <b>冰淇淋</b>——AI 把“因为热、所以吃冰淇淋”联系了起来。"}
+ ];
+ var di=0,focus=DATA[0].focus;
+ host.innerHTML='<div class="panel"><div class="ctrls" id="dsel"></div>'+
+  '<canvas class="cv" id="att" height="220" style="margin-top:8px"></canvas>'+
+  '<div class="hintline">点句子里<b>任意一个词</b>，看 AI 读到它时，注意力的光束射向哪里（越亮＝越关注）。</div>'+
+  '<div id="arev"></div></div>';
+ var cv=$("#att"),ctx=setupCanvas(cv,220);var W=cv._W,H=cv._H,layout=[];
+ function tabs(){$("#dsel").innerHTML=DATA.map(function(d,k){return '<button class="chip'+(k===di?' on':'')+'" data-k="'+k+'">例'+(k+1)+'</button>';}).join("");
+  $("#dsel").querySelectorAll(".chip").forEach(function(c){c.onclick=function(){di=+c.dataset.k;focus=DATA[di].focus;draw();showNote();};});}
+ function attOf(d,f){if(d.att[f])return d.att[f];var a=d.toks.map(function(){return 0;});a[f]=0.6;if(f>0)a[f-1]=0.25;return a;}
+ function draw(){var d=DATA[di];ctx.clearRect(0,0,W,H);layout=[];
+  var y=H-46,n=d.toks.length,pad=18,gap=(W-pad*2)/n;
+  d.toks.forEach(function(t,k){var x=pad+gap*k+gap/2;layout.push({x:x,w:t});});
+  var att=attOf(d,focus);var fx=layout[focus].x;
+  // beams
+  att.forEach(function(wgt,k){if(wgt<=0.01||k===focus)return;var x=layout[k].x;ctx.beginPath();ctx.moveTo(fx,y-14);var cx=(fx+x)/2,cy=y-14-clamp(wgt*120,30,120);ctx.quadraticCurveTo(cx,cy,x,y-14);
+   ctx.lineWidth=clamp(wgt*8,1,8);ctx.strokeStyle="rgba(155,124,255,"+clamp(wgt+.15,.2,1)+")";ctx.shadowColor="#9b7cff";ctx.shadowBlur=clamp(wgt*16,2,16);ctx.stroke();ctx.shadowBlur=0;});
+  // tokens
+  layout.forEach(function(p,k){var foc=(k===focus);var w=attOf(d,focus)[k];ctx.font="800 15px sans-serif";var tw=ctx.measureText(p.w).width;
+   ctx.fillStyle=foc?TH.a:(w>0.05?"rgba(155,124,255,"+clamp(.25+w,0,1)+")":"#16213d");
+   ctx.strokeStyle=foc?TH.a:"#2a3a63";roundRect(ctx,p.x-tw/2-8,y-13,tw+16,30,8);ctx.fill();ctx.lineWidth=foc?2:1;ctx.stroke();
+   ctx.fillStyle=foc?"#06121a":"#e7eefb";ctx.textAlign="center";ctx.textBaseline="middle";ctx.fillText(p.w,p.x,y+2);});
+ }
+ function roundRect(c,x,y,w,h,r){c.beginPath();c.moveTo(x+r,y);c.arcTo(x+w,y,x+w,y+h,r);c.arcTo(x+w,y+h,x,y+h,r);c.arcTo(x,y+h,x,y,r);c.arcTo(x,y,x+w,y,r);c.closePath();}
+ function showNote(){var d=DATA[di];$("#arev").innerHTML='<div class="reveal"><span class="l">注意力</span> '+d.note+'<br><span style="color:var(--muted)">这就是大模型里最关键的本领：读每个词时，自动决定该<b>重点看</b>哪些词。</span></div>';}
+ cv.addEventListener("click",function(e){var r=cv.getBoundingClientRect();var x=e.clientX-r.left;var mind=999,mi=-1;layout.forEach(function(p,k){var d=Math.abs(p.x-x);if(d<mind){mind=d;mi=k;}});if(mi>=0){focus=mi;logEv("s4","focus",DATA[di].toks[mi]);draw();showNote();speak("读到 "+DATA[di].toks[mi]+" 的时候，注意力看向相关的词。");}});
+ tabs();draw();showNote();
+}
+
+/* ===================================================================
+   站 5 · 训练场（梯度下降 + 温度）
+=================================================================== */
+function stTrain(host){
+ host.innerHTML='<div class="panel"><div class="tabs"><button class="chip on" data-t="learn">📉 AI 怎么学</button><button class="chip" data-t="temp">🎛 创意旋钮</button></div><div id="tbody"></div></div>';
+ var tabs=host.querySelectorAll(".tabs .chip");
+ tabs.forEach(function(c){c.onclick=function(){tabs.forEach(function(x){x.classList.toggle("on",x===c);});stopRAF();T[c.dataset.t]();};});
+ var T={};
+ /* --- 梯度下降 --- */
+ T.learn=function(){
+  $("#tbody").innerHTML='<div style="font-size:13px;color:var(--muted);font-weight:800">AI 的"学习"＝不停纠错，让<b style="color:var(--accent)">错误</b>越来越小。小球＝现在的 AI，山谷最低点＝学会了。</div>'+
+   '<canvas class="cv" id="loss" height="230" style="margin-top:8px"></canvas>'+
+   '<div class="ctrls" style="justify-content:center"><button class="btn" id="step1">▶ 学一步</button><button class="btn v" id="auto1">⏩ 自动学</button><button class="btn ghost sm" id="rst1">重来</button></div>'+
+   '<div style="text-align:center;font-weight:800;margin-top:6px" id="errline"></div><div id="trev"></div>';
+  var cv=$("#loss"),ctx=setupCanvas(cv,230);var W=cv._W,H=cv._H;
+  var target=0.62,x=0.08,running=false,steps=0;
+  function f(t){return 0.9*Math.pow((t-target)*2.2,2)+0.06+0.04*Math.sin(t*9);}
+  function df(t){return 0.9*2*2.2*2.2*(t-target)+0.04*9*Math.cos(t*9);}
+  function px(t){return 20+t*(W-40);}function py(v){return H-24-clamp(v,0,1)*(H-50);}
+  function draw(){ctx.clearRect(0,0,W,H);ctx.strokeStyle="#2a3a63";ctx.lineWidth=2;ctx.beginPath();for(var t=0;t<=1.0001;t+=0.02){var X=px(t),Y=py(f(t));if(t===0)ctx.moveTo(X,Y);else ctx.lineTo(X,Y);}ctx.stroke();
+   var X=px(x),Y=py(f(x));ctx.fillStyle=TH.a;ctx.shadowColor=TH.a;ctx.shadowBlur=16;ctx.beginPath();ctx.arc(X,Y-9,9,0,7);ctx.fill();ctx.shadowBlur=0;
+   ctx.fillStyle="#33d98b";ctx.beginPath();ctx.arc(px(target),py(f(target)),4,0,7);ctx.fill();ctx.fillStyle="#8595b8";ctx.font="10px sans-serif";ctx.textAlign="center";ctx.fillText("最低点 = 学会了",px(target),py(f(target))+16);
+   $("#errline").innerHTML='当前错误：<span style="color:var(--accent)">'+(f(x)*100).toFixed(1)+'</span>　已学 '+steps+' 步';
+  }
+  function step(){if(!document.getElementById("errline"))return false;var g=df(x);x=clamp(x-0.045*g,0,1);steps++;draw();
+   if(Math.abs(x-target)<0.012){logEv("s5","learned",steps);$("#trev").innerHTML='<div class="reveal"><span class="l">学会了！🎉</span> 小球滚到了谷底——错误最小。AI 训练就是这样：算出"往哪走错误更小"（这叫<b>梯度</b>），就往那挪一点点，<b>重复几百万次</b>。每挪一步，AI 就聪明一点点。</div>';speak("小球滚到了谷底，错误最小，AI 就学会了。");return false;}return true;}
+  $("#step1").onclick=function(){step();};
+  $("#auto1").onclick=function(){if(running)return;running=true;(function loop(){if(step()){rafHandle=setTimeout(loop,110);}else running=false;})();};
+  $("#rst1").onclick=function(){x=0.08;steps=0;running=false;$("#trev").innerHTML="";draw();};
+  draw();
+ };
+ /* --- 温度 --- */
+ T.temp=function(){
+  var WS=[["跑",9],["跳",6],["飞",4],["游泳",2],["唱歌",1]];var temp=30,picks=[];
+  $("#tbody").innerHTML='<div style="font-size:13px;color:var(--muted);font-weight:800">同一个开头“小猫想要…”，AI 给每个词一个可能性。<b style="color:var(--accent)">创意旋钮（温度）</b>决定它有多敢挑冷门词。</div>'+
+   '<div style="margin-top:10px;font-weight:800">🎛 创意旋钮（温度）</div><input type="range" min="0" max="100" value="30" class="slider" id="tp"><div class="dial"><span>← 稳重(总挑最可能)</span><span>大胆(爱冒险)→</span></div>'+
+   '<div style="text-align:center;font-weight:800;margin:6px 0">小猫想要<span id="picked" style="color:var(--accent)">…</span></div>'+
+   '<div class="bars" id="tbars"></div>'+
+   '<div class="ctrls" style="justify-content:center"><button class="btn" id="sample">🎲 让 AI 选一个</button></div>'+
+   '<div id="hist" class="hintline"></div><div id="temprev"></div>';
+  function pr(){var Tt=0.25+temp/100*2.0;var p=WS.map(function(w){return Math.pow(w[1],1/Tt);});var s=p.reduce(function(a,b){return a+b;},0);return p.map(function(v){return v/s;});}
+  function bars(){var p=pr();$("#tbars").innerHTML=WS.map(function(w,k){return '<div class="brow"><div class="wd">'+w[0]+'</div><div class="bw"><div class="bf" style="width:0" data-w="'+Math.round(p[k]*100)+'"></div></div><div class="pc">'+Math.round(p[k]*100)+'%</div></div>';}).join("");setTimeout(function(){$("#tbars").querySelectorAll(".bf").forEach(function(b){b.style.width=b.dataset.w+"%";});},20);}
+  $("#tp").oninput=function(){temp=+this.value;bars();};
+  $("#sample").onclick=function(){var p=pr(),r=Math.random(),acc=0,idx=0;for(var i=0;i<p.length;i++){acc+=p[i];if(r<=acc){idx=i;break;}}$("#picked").textContent=WS[idx][0];logEv("s5","sample",WS[idx][0]);picks.push(WS[idx][0]);if(picks.length>8)picks.shift();
+   $("#hist").innerHTML="最近选了："+picks.join(" · ");
+   $("#temprev").innerHTML='<div class="reveal"><span class="l">发现了吗？</span> 旋钮越往<b>左（低温）</b>，AI 几乎总选最可能的“跑”——稳但单调；越往<b>右（高温）</b>，它会蹦出“飞、唱歌”——有创意但可能跑偏。这就是为什么 AI 同一个问题<b>每次回答不一样</b>。</div>';speak("小猫想要"+WS[idx][0]);};
+  bars();
+ };
+ T.learn();
+}
+
+/* ---------- 站点注册 ---------- */
+var STATIONS=[
+ {id:"s1",icon:"✂️",name:"拆词机",tag:"句子怎么变成数字",idea:"AI 看不懂汉字。它先把句子<b>拆成一小块一小块</b>（token），再给每块配一个<b>数字编号</b>。之后所有思考，都是在算数字。",render:stToken},
+ {id:"s2",icon:"✨",name:"词向量星空",tag:"意思相近的词住得近",idea:"AI 把每个词放进一个<b>超大空间</b>里，变成一个点。意思越接近的词，<b>住得越近</b>——用距离表示含义。拖动旋转、点词看邻居。",render:stEmbed},
+ {id:"s3",icon:"🕸️",name:"神经网络",tag:"数字穿过一层层神经元",idea:"数字从左边进去，<b>一层层</b>被“神经元”加工，每条连线粗细不同（<b>权重</b>）。最后得出一个判断——比如这是猫还是狗。",render:stNet},
+ {id:"s4",icon:"🎯",name:"注意力",tag:"AI 重点看哪些词",idea:"读句子时，AI 会自动决定<b>重点看</b>哪几个词。比如读到“它”，就去看“它”指的是谁。这是大模型最关键的本领。",render:stAttn},
+ {id:"s5",icon:"📉",name:"训练场",tag:"AI 怎么学 + 创意旋钮",idea:"AI 靠<b>不停纠错</b>来学习：像小球顺山坡滚到最低点，让错误最小。用的时候还能拧<b>创意旋钮</b>，决定它多大胆。",render:stTrain}
+];
+
+/* ---------- 启动 ---------- */
+go("academy");
+</script>
+</body>
+</html>

@@ -1,0 +1,2174 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="study-portal-design" content="2.0">
+  <meta name="study-portal-child-answer" content="child-first-v1">
+  <meta name="lesson-audio" content="not-applicable">
+  <title>《观潮》江潮镜头台｜Eddey 四上语文预习</title>
+  <style>
+    :root {
+      --night: #082f37;
+      --deep: #123f47;
+      --river: #23777a;
+      --river-light: #74b9b5;
+      --foam: #f9fff9;
+      --paper: #fffaf1;
+      --paper-soft: #f5ecdd;
+      --ink: #17363b;
+      --muted: #627478;
+      --coral: #ff7a59;
+      --coral-dark: #b9472f;
+      --coral-soft: #ffe4d8;
+      --sun: #ffc96d;
+      --good: #28785b;
+      --good-soft: #e0f4e8;
+      --bad: #a83f39;
+      --bad-soft: #ffe8e3;
+      --line: rgba(23, 54, 59, .15);
+      --shadow: 0 22px 60px rgba(0, 27, 34, .24);
+      --tap: 48px;
+    }
+
+    * { box-sizing: border-box; }
+    html { color-scheme: light; }
+    body {
+      margin: 0;
+      min-width: 320px;
+      min-height: 100svh;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 14% 8%, rgba(255, 201, 109, .18), transparent 24rem),
+        radial-gradient(circle at 86% 4%, rgba(116, 185, 181, .24), transparent 28rem),
+        linear-gradient(155deg, #0a3b45 0%, #082f37 52%, #061f27 100%);
+      font-family: "PingFang SC", "Microsoft YaHei", "Segoe UI", system-ui, sans-serif;
+      font-size: 16px;
+      line-height: 1.55;
+    }
+
+    button, input, textarea, select { font: inherit; }
+    button, a, input, textarea, select, summary { -webkit-tap-highlight-color: transparent; }
+    button, .button, select { min-height: var(--tap); }
+    button, .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      border: 1px solid rgba(18, 63, 71, .22);
+      border-radius: 15px;
+      padding: 10px 16px;
+      color: var(--ink);
+      background: #fff;
+      font-weight: 800;
+      text-decoration: none;
+      cursor: pointer;
+      transition: transform .16s ease, background .16s ease, box-shadow .16s ease;
+    }
+    button:hover, .button:hover { background: #f4fbf9; }
+    button:active, .button:active { transform: scale(.98); }
+    button.primary {
+      border-color: var(--coral);
+      color: #fff;
+      background: linear-gradient(135deg, var(--coral), #f26346);
+      box-shadow: 0 10px 24px rgba(185, 71, 47, .24);
+    }
+    button.primary:hover { background: linear-gradient(135deg, #ff8b6f, var(--coral)); }
+    button.dark {
+      border-color: rgba(255, 255, 255, .14);
+      color: #fff;
+      background: var(--deep);
+    }
+    button.ghost { background: transparent; }
+    button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visible,
+    select:focus-visible, summary:focus-visible {
+      outline: 3px solid var(--sun);
+      outline-offset: 3px;
+    }
+    button[disabled] {
+      cursor: not-allowed;
+      opacity: .42;
+      box-shadow: none;
+    }
+
+    .app-shell {
+      width: min(100%, 760px);
+      margin: 0 auto;
+      padding: max(12px, env(safe-area-inset-top)) 14px max(20px, env(safe-area-inset-bottom));
+    }
+
+    .topbar {
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: center;
+      gap: 10px;
+      min-height: 60px;
+      color: #fff;
+    }
+    .icon-button {
+      width: 48px;
+      height: 48px;
+      padding: 0;
+      border-color: rgba(255, 255, 255, .18);
+      color: #fff;
+      background: rgba(255, 255, 255, .08);
+    }
+    .icon-button svg { width: 22px; height: 22px; }
+    .course-mark { min-width: 0; }
+    .course-mark strong, .course-mark span { display: block; }
+    .course-mark strong { font-size: 15px; }
+    .course-mark span {
+      overflow: hidden;
+      color: rgba(255, 255, 255, .66);
+      font-size: 12px;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .top-progress {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .progress-dots { display: flex; gap: 4px; }
+    .progress-dots i {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, .22);
+      transition: width .25s ease, background .25s ease;
+    }
+    .progress-dots i.on { width: 20px; background: var(--coral); }
+    .progress-text { color: rgba(255, 255, 255, .72); font-size: 12px; font-weight: 700; }
+
+    .screen {
+      min-height: calc(100svh - 92px);
+      padding: clamp(18px, 3.2vw, 34px);
+      border: 1px solid rgba(255, 255, 255, .44);
+      border-radius: 26px;
+      background:
+        linear-gradient(rgba(255, 250, 241, .97), rgba(255, 250, 241, .97)),
+        repeating-linear-gradient(0deg, transparent 0 23px, rgba(23, 54, 59, .035) 24px);
+      box-shadow: var(--shadow);
+    }
+    .screen[hidden] { display: none !important; }
+    .screen-grid {
+      display: grid;
+      gap: 22px;
+      align-items: center;
+      min-height: calc(100svh - 160px);
+    }
+    .screen-stack {
+      display: grid;
+      align-content: center;
+      gap: 16px;
+      min-height: calc(100svh - 160px);
+    }
+    .eyebrow {
+      margin: 0;
+      color: var(--coral-dark);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .12em;
+    }
+    h1, h2, h3, p { overflow-wrap: anywhere; }
+    h1 {
+      margin: 8px 0 10px;
+      max-width: 16ch;
+      font-size: clamp(31px, 7.4vw, 44px);
+      line-height: 1.08;
+      letter-spacing: -.05em;
+    }
+    h2 {
+      margin: 5px 0 8px;
+      font-size: clamp(25px, 5vw, 35px);
+      line-height: 1.16;
+      letter-spacing: -.035em;
+    }
+    h3 { margin: 0 0 8px; font-size: 18px; line-height: 1.3; }
+    p { margin: 0; }
+    .lead {
+      max-width: 39rem;
+      color: #36565b;
+      font-size: clamp(16px, 2.3vw, 19px);
+    }
+    .question-thesis {
+      margin-top: 20px;
+      padding: 15px 16px;
+      border-left: 5px solid var(--coral);
+      border-radius: 0 16px 16px 0;
+      background: #fff;
+      box-shadow: 0 9px 24px rgba(18, 63, 71, .08);
+    }
+    .question-thesis b { display: block; color: var(--coral-dark); font-size: 12px; }
+    .question-thesis span { display: block; margin-top: 3px; font-size: 18px; font-weight: 800; }
+    .meaning-line {
+      margin-top: 12px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .daily-note {
+      margin-top: 11px;
+      padding: 9px 11px;
+      border: 1px dashed rgba(18, 63, 71, .25);
+      border-radius: 13px;
+      color: var(--deep);
+      background: rgba(255, 201, 109, .16);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
+    .actions > button, .actions > .button { flex: 1 1 180px; }
+    .hint {
+      min-height: 24px;
+      margin-top: 9px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .feedback {
+      min-height: 24px;
+      padding: 0;
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 700;
+    }
+    .feedback.good, .feedback.bad {
+      margin-top: 10px;
+      padding: 11px 13px;
+      border-radius: 13px;
+    }
+    .feedback.good { color: var(--good); background: var(--good-soft); }
+    .feedback.bad { color: var(--bad); background: var(--bad-soft); }
+    .answer-escape {
+      margin-top: 12px;
+      padding: 14px;
+      border: 1px solid rgba(191, 92, 69, .24);
+      border-radius: 16px;
+      background: linear-gradient(145deg, rgba(255, 246, 225, .98), rgba(255, 255, 255, .92));
+      box-shadow: 0 10px 24px rgba(18, 63, 71, .08);
+    }
+    .answer-escape .escape-kicker {
+      margin: 0 0 6px;
+      color: var(--coral-dark);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .05em;
+    }
+    .answer-escape .escape-copy { margin: 0; color: var(--muted); font-size: 14px; }
+    .answer-escape .reference-answer {
+      margin-top: 10px;
+      padding: 11px 12px;
+      border-left: 4px solid var(--sun);
+      border-radius: 0 12px 12px 0;
+      color: var(--deep);
+      background: rgba(255, 255, 255, .8);
+      font-weight: 800;
+      line-height: 1.7;
+    }
+    .answer-escape .actions { margin-top: 12px; }
+
+    .diagnosis {
+      display: grid;
+      gap: 8px;
+      margin-top: 16px;
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: rgba(255, 255, 255, .72);
+    }
+    label { font-weight: 800; }
+    input[type="text"], textarea, select {
+      width: 100%;
+      border: 1px solid rgba(18, 63, 71, .28);
+      border-radius: 13px;
+      padding: 12px 13px;
+      color: var(--ink);
+      background: #fff;
+    }
+    textarea { min-height: 96px; resize: vertical; }
+    .small-inputs {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 9px;
+    }
+
+    .welcome-art {
+      position: relative;
+      min-height: 310px;
+      overflow: hidden;
+      border-radius: 24px;
+      background: linear-gradient(180deg, #c9e9e5 0%, #f5dcae 66%, #bb7650 67%, #80503b 100%);
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .6);
+    }
+    .welcome-art svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+    .art-caption {
+      position: absolute;
+      left: 16px;
+      right: 16px;
+      bottom: 15px;
+      padding: 10px 12px;
+      border-radius: 13px;
+      color: #fff;
+      background: rgba(8, 47, 55, .8);
+      font-size: 13px;
+      font-weight: 700;
+      backdrop-filter: blur(8px);
+    }
+
+    .lab-layout {
+      display: grid;
+      gap: 16px;
+      align-items: start;
+    }
+    .lab-copy { display: grid; gap: 11px; }
+    .core-line {
+      padding: 13px 14px;
+      border-radius: 15px;
+      color: #fff;
+      background: var(--deep);
+      font-weight: 800;
+    }
+    .core-line span { color: var(--sun); }
+    .river-scene {
+      position: relative;
+      overflow: hidden;
+      min-height: 295px;
+      border-radius: 23px;
+      background: #acd9d7;
+      box-shadow: inset 0 0 0 1px rgba(18, 63, 71, .12), 0 15px 34px rgba(18, 63, 71, .15);
+    }
+    .river-scene svg { display: block; width: 100%; height: 295px; }
+    .scene-layer {
+      opacity: 0;
+      transform-origin: center bottom;
+      transition: opacity .55s ease, transform .55s ease;
+    }
+    .is-stage-0 .calm { opacity: 1; }
+    .is-stage-1 .calm, .is-stage-1 .far-sound { opacity: 1; }
+    .is-stage-2 .white-line { opacity: 1; transform: scaleX(1); }
+    .is-stage-3 .water-wall { opacity: 1; transform: translateY(0) scaleY(1); }
+    .is-stage-4 .horse-waves { opacity: 1; transform: translateX(0); }
+    .is-stage-5 .after-wave { opacity: 1; transform: translateX(0); }
+    .white-line { transform: scaleX(.18); }
+    .water-wall { transform: translateY(28px) scaleY(.4); }
+    .horse-waves { transform: translateX(-50px); }
+    .after-wave { transform: translateX(55px); }
+    .scene-label {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      max-width: calc(100% - 24px);
+      padding: 7px 10px;
+      border-radius: 999px;
+      color: #fff;
+      background: rgba(8, 47, 55, .82);
+      font-size: 13px;
+      font-weight: 800;
+    }
+    .rail-wrap {
+      margin-top: 12px;
+      padding: 12px 13px;
+      border-radius: 16px;
+      background: #fff;
+    }
+    .rail-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      font-size: 13px;
+      font-weight: 800;
+    }
+    input[type="range"] {
+      width: 100%;
+      min-height: 36px;
+      margin: 6px 0 0;
+      accent-color: var(--coral);
+    }
+    .film-strip {
+      display: grid;
+      grid-template-columns: repeat(6, minmax(44px, 1fr));
+      gap: 5px;
+    }
+    .film-strip button {
+      min-width: 0;
+      min-height: 44px;
+      padding: 7px 4px;
+      border-radius: 11px;
+      color: var(--muted);
+      font-size: 11px;
+    }
+    .film-strip button.active { border-color: var(--coral); color: var(--coral-dark); background: var(--coral-soft); }
+    .film-strip button.seen::after { content: " ·"; color: var(--good); }
+    .mechanism-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+    }
+    .mechanism {
+      min-height: 92px;
+      padding: 10px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: rgba(255, 255, 255, .72);
+    }
+    .mechanism b { display: block; color: var(--coral-dark); font-size: 12px; }
+    .mechanism span { display: block; margin-top: 4px; font-size: 14px; font-weight: 800; }
+    .sound-meter {
+      display: flex;
+      align-items: end;
+      gap: 3px;
+      height: 24px;
+      margin-top: 7px;
+    }
+    .sound-meter i { width: 6px; border-radius: 6px; background: #d8e4df; transition: background .3s ease; }
+    .sound-meter i:nth-child(1) { height: 7px; }
+    .sound-meter i:nth-child(2) { height: 11px; }
+    .sound-meter i:nth-child(3) { height: 15px; }
+    .sound-meter i:nth-child(4) { height: 20px; }
+    .sound-meter i:nth-child(5) { height: 24px; }
+    .sound-meter i.on { background: var(--coral); }
+
+    .teachback-form, .task-card, .tool-panel, .repair-panel, .transfer-panel {
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      background: rgba(255, 255, 255, .82);
+      box-shadow: 0 12px 30px rgba(18, 63, 71, .08);
+    }
+    .teachback-sentence {
+      display: grid;
+      gap: 10px;
+      font-weight: 800;
+    }
+    .teachback-sentence input { margin-top: 5px; }
+    .cause-map {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr auto 1fr;
+      gap: 8px;
+      align-items: center;
+      margin-top: 12px;
+    }
+    .cause-node {
+      min-height: 76px;
+      padding: 10px;
+      border-radius: 15px;
+      background: var(--paper-soft);
+      text-align: center;
+      font-weight: 800;
+    }
+    .cause-node strong { display: block; color: var(--coral-dark); font-size: 12px; }
+    .cause-arrow { color: var(--coral); font-size: 22px; font-weight: 800; }
+
+    .tool-tabs {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 7px;
+      margin-bottom: 12px;
+    }
+    .tool-tabs button {
+      min-width: 0;
+      padding: 8px 5px;
+      font-size: 13px;
+    }
+    .tool-tabs button.active { border-color: var(--coral); color: #fff; background: var(--coral); }
+    .mind-map {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 9px;
+    }
+    .map-node {
+      padding: 12px;
+      border-radius: 15px;
+      background: var(--paper-soft);
+    }
+    .map-node strong { display: block; margin-bottom: 3px; color: var(--coral-dark); }
+    .map-node.during { color: #fff; background: var(--deep); }
+    .map-node.during strong { color: var(--sun); }
+    .word-cloud { display: flex; flex-wrap: wrap; gap: 7px; }
+    .word-cloud span {
+      padding: 7px 9px;
+      border-radius: 10px;
+      background: var(--paper-soft);
+      font-weight: 800;
+    }
+    .method-chain {
+      display: grid;
+      gap: 8px;
+      counter-reset: method;
+    }
+    .method-step {
+      display: grid;
+      grid-template-columns: 34px 1fr;
+      gap: 9px;
+      align-items: center;
+      padding: 9px;
+      border-radius: 13px;
+      background: var(--paper-soft);
+    }
+    .method-step::before {
+      counter-increment: method;
+      content: counter(method);
+      display: grid;
+      place-items: center;
+      width: 34px;
+      height: 34px;
+      border-radius: 999px;
+      color: #fff;
+      background: var(--coral);
+      font-weight: 800;
+    }
+    .memory-cover {
+      padding: 14px;
+      border-radius: 15px;
+      color: #fff;
+      background: var(--deep);
+    }
+    .memory-cover button { margin-top: 10px; }
+    .memory-answer { margin-top: 9px; color: var(--sun); font-weight: 800; }
+
+    .question-counter {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 8px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 800;
+    }
+    .mini-track {
+      flex: 1;
+      height: 7px;
+      overflow: hidden;
+      border-radius: 999px;
+      background: #dce7e3;
+    }
+    .mini-track i { display: block; height: 100%; background: var(--coral); transition: width .25s ease; }
+    .choice-bank {
+      display: grid;
+      gap: 8px;
+      margin-top: 12px;
+    }
+    .choice-bank button {
+      justify-content: flex-start;
+      min-height: 52px;
+      text-align: left;
+    }
+    .answer-tray {
+      display: grid;
+      gap: 6px;
+      min-height: 54px;
+      margin-top: 10px;
+      padding: 9px;
+      border: 1px dashed rgba(18, 63, 71, .35);
+      border-radius: 14px;
+      background: rgba(255, 255, 255, .58);
+    }
+    .answer-chip {
+      padding: 8px 10px;
+      border-radius: 10px;
+      color: #fff;
+      background: var(--deep);
+      font-weight: 800;
+    }
+    .select-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+
+    .repair-rule {
+      margin: 12px 0;
+      padding: 13px 14px;
+      border-left: 5px solid var(--sun);
+      border-radius: 0 14px 14px 0;
+      background: var(--paper-soft);
+    }
+    .repair-rule p { margin: 0; }
+    .repair-rule p + p { margin-top: 8px; }
+    .streak-dots { display: inline-flex; gap: 5px; vertical-align: middle; }
+    .streak-dots i {
+      width: 13px;
+      height: 13px;
+      border: 2px solid var(--coral);
+      border-radius: 999px;
+    }
+    .streak-dots i.on { background: var(--coral); }
+
+    .storm-scene {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+      margin: 12px 0;
+    }
+    .storm-card {
+      min-height: 118px;
+      padding: 11px;
+      border: 1px solid var(--line);
+      border-radius: 15px;
+      background: linear-gradient(180deg, #dce8e7, #f3e9d9);
+      font-size: 13px;
+      font-weight: 800;
+    }
+    .storm-card b { display: block; margin-bottom: 6px; color: var(--coral-dark); }
+    .checklist {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 7px;
+      margin: 11px 0;
+    }
+    .check-item {
+      padding: 9px 10px;
+      border-radius: 12px;
+      background: var(--paper-soft);
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 800;
+    }
+    .check-item.ok { color: var(--good); background: var(--good-soft); }
+
+    .completion-seal {
+      display: grid;
+      place-items: center;
+      width: 120px;
+      height: 120px;
+      margin: 0 auto 12px;
+      border: 8px double var(--coral);
+      border-radius: 999px;
+      color: var(--coral-dark);
+      background: var(--coral-soft);
+      text-align: center;
+      transform: rotate(-4deg);
+      font-size: 17px;
+      font-weight: 800;
+    }
+    .summary-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      margin: 14px 0;
+    }
+    .summary-grid div {
+      padding: 12px;
+      border-radius: 14px;
+      background: var(--paper-soft);
+      text-align: center;
+    }
+    .summary-grid strong { display: block; color: var(--coral-dark); font-size: 21px; }
+
+    dialog {
+      width: min(calc(100% - 24px), 760px);
+      max-height: calc(100svh - 28px);
+      overflow: auto;
+      border: 0;
+      border-radius: 24px;
+      padding: 0;
+      color: var(--ink);
+      background: var(--paper);
+      box-shadow: 0 28px 90px rgba(0, 22, 29, .48);
+    }
+    dialog::backdrop { background: rgba(2, 27, 34, .72); backdrop-filter: blur(5px); }
+    .dialog-head {
+      position: sticky;
+      top: 0;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 14px 16px;
+      background: var(--paper);
+      border-bottom: 1px solid var(--line);
+    }
+    .dialog-body { padding: 16px; }
+    .coverage-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+    .coverage-table th, .coverage-table td { padding: 8px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
+    .coverage-table th { color: var(--coral-dark); }
+    .record-list { margin: 8px 0; padding-left: 22px; }
+    .parent-actions { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; margin: 12px 0; }
+    .file-button { position: relative; overflow: hidden; }
+    .file-button input { position: absolute; inset: 0; opacity: 0; cursor: pointer; }
+    .hidden { display: none !important; }
+
+    @media (min-width: 760px) {
+      .screen-grid { grid-template-columns: minmax(0, 1.02fr) minmax(340px, .98fr); }
+      .lab-layout { grid-template-columns: minmax(0, 1.2fr) minmax(270px, .8fr); }
+      .screen-stack { width: min(100%, 760px); margin: 0 auto; }
+    }
+    @media (max-width: 759px) {
+      .screen { min-height: calc(100svh - 84px); padding: 18px 15px; border-radius: 24px; }
+      .screen-grid, .screen-stack { min-height: auto; }
+      .welcome-art { min-height: 230px; order: -1; }
+      .river-scene, .river-scene svg { min-height: 238px; height: 238px; }
+      .mechanism-grid { grid-template-columns: 1fr; }
+      .mechanism { display: grid; grid-template-columns: 55px 1fr auto; align-items: center; min-height: 64px; }
+      .mechanism span { margin: 0; }
+      .sound-meter { margin: 0; }
+      .cause-map { grid-template-columns: 1fr; }
+      .cause-arrow { transform: rotate(90deg); text-align: center; }
+      .mind-map, .storm-scene { grid-template-columns: 1fr 1fr; }
+      .select-grid { grid-template-columns: 1fr; }
+      .tool-tabs { overflow-x: auto; grid-template-columns: repeat(4, minmax(84px, 1fr)); }
+      .summary-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 390px) {
+      .app-shell { padding-inline: 8px; }
+      .topbar { min-height: 56px; }
+      .course-mark span { max-width: 180px; }
+      .progress-dots { display: none; }
+      h1 { font-size: 30px; }
+      h2 { font-size: 25px; }
+      .film-strip { grid-template-columns: repeat(3, 1fr); }
+      .small-inputs, .checklist, .parent-actions { grid-template-columns: 1fr; }
+      .mind-map, .storm-scene { grid-template-columns: 1fr; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        scroll-behavior: auto !important;
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+      }
+    }
+  </style>
+</head>
+<body data-child="eddey">
+  <div class="app-shell" id="app">
+    <header class="topbar">
+      <a class="icon-button button" href="../apps.html?who=eddey" aria-label="返回 Eddey 软件库">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15.5 5 8.5 12l7 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <div class="course-mark">
+        <strong>Eddey · 四上语文</strong>
+        <span>《观潮》江潮镜头台</span>
+      </div>
+      <div class="top-progress" aria-label="课程进度">
+        <div class="progress-dots" id="progressDots" aria-hidden="true"></div>
+        <span class="progress-text" id="progressText">0 / 7</span>
+        <button class="icon-button" type="button" id="openParent" aria-label="打开家长查看">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="3.4" fill="none" stroke="currentColor" stroke-width="2"/><path d="M5.5 19c.8-3.4 3-5.2 6.5-5.2s5.7 1.8 6.5 5.2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        </button>
+      </div>
+    </header>
+
+    <main>
+      <section class="screen" data-screen="welcome">
+        <div class="screen-grid">
+          <div>
+            <p class="eyebrow">第一单元 · 自然之美</p>
+            <h1>作者怎样让你看见大潮？</h1>
+            <p class="lead">不是背“天下奇观”四个字。你要抓住作者手里的镜头：它越推越近，浪越变越大，声音越变越响。</p>
+            <div class="question-thesis">
+              <b>今天真正学会</b>
+              <span>顺序不是目录，而是制造现场感的工具。</span>
+            </div>
+            <p class="meaning-line">以后写雷雨、运动会、日落，也能把没到现场的人带进画面。</p>
+            <aside class="daily-note" data-micro-surprise="daily"><strong>今天的镜头提示：</strong><span id="dailySurprise"></span></aside>
+
+            <div class="diagnosis">
+              <label for="diagnosisInput">如果已经会，用一句话写出作者的“镜头秘密”</label>
+              <input id="diagnosisInput" type="text" autocomplete="off" placeholder="例如：镜头由……到……，浪……，声音……">
+              <div class="feedback" id="diagnosisFeedback" aria-live="polite"></div>
+            </div>
+            <div class="actions">
+              <button class="primary" type="button" data-go="lab">亲手推进大潮</button>
+              <button type="button" id="checkDiagnosis">45 秒快测</button>
+            </div>
+          </div>
+
+          <div class="welcome-art" aria-label="钱塘江远处潮线逐渐变成高浪的示意画">
+            <svg viewBox="0 0 520 360" role="img" aria-hidden="true">
+              <defs>
+                <linearGradient id="welcomeRiver" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8fcac8"/><stop offset="1" stop-color="#2b7779"/></linearGradient>
+              </defs>
+              <circle cx="405" cy="66" r="38" fill="#ffc96d"/>
+              <path d="M0 145 70 88l62 54 74-68 88 71 70-40 93 48 63-38v92H0Z" fill="#537f78" opacity=".7"/>
+              <path d="M0 178c87-18 160-17 235 0 111 25 190 7 285-9v191H0Z" fill="url(#welcomeRiver)"/>
+              <path d="M65 230c80-9 146-7 203 4" fill="none" stroke="#f9fff9" stroke-width="5" stroke-linecap="round"/>
+              <path d="M242 244c63-22 104-22 169 2" fill="none" stroke="#f9fff9" stroke-width="14" stroke-linecap="round"/>
+              <path d="M334 275q35-61 70 0t70 0" fill="none" stroke="#f9fff9" stroke-width="20" stroke-linecap="round"/>
+              <path d="M26 322h468" stroke="#ffb77e" stroke-width="8" opacity=".68"/>
+              <circle cx="88" cy="300" r="10" fill="#082f37"/><path d="M88 310v33m0-22-16 13m16-13 16 13" stroke="#082f37" stroke-width="8" stroke-linecap="round"/>
+            </svg>
+            <div class="art-caption">从一条细白线，到铺满江面的浪墙：作者把“壮观”拍给你看。</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="screen" data-screen="lab" data-phase="teach" hidden>
+        <div class="screen-stack" style="width:min(100%,760px)">
+          <div class="lab-copy">
+            <p class="eyebrow">核心潮镜 · 先看因果</p>
+            <h2>拖动一条轨道，看四件事同时升级</h2>
+            <p class="lead">当前位置、浪的形态、声音强弱、作者写法会一起改变。这就是课文真正的总开关。</p>
+          </div>
+          <div class="lab-layout">
+            <div>
+              <div class="river-scene is-stage-0" id="riverScene" role="img" aria-label="潮来前，江面平静，薄雾笼罩">
+                <svg viewBox="0 0 760 320" aria-hidden="true">
+                  <defs>
+                    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#bfe3df"/><stop offset="1" stop-color="#f5d8a3"/></linearGradient>
+                    <linearGradient id="water" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#62a8a6"/><stop offset="1" stop-color="#23686d"/></linearGradient>
+                  </defs>
+                  <rect width="760" height="320" fill="url(#sky)"/>
+                  <circle cx="630" cy="66" r="34" fill="#ffc96d" opacity=".92"/>
+                  <path d="M0 132 92 70l74 62 80-82 94 85 99-63 96 66 116-68 109 74v48H0Z" fill="#5b837b" opacity=".68"/>
+                  <path d="M0 154c124-15 238-9 360 4 151 17 260 9 400-8v170H0Z" fill="url(#water)"/>
+                  <g class="scene-layer calm">
+                    <path d="M60 218c90-11 185-9 274 0M398 205c84-10 178-8 277 3" fill="none" stroke="#bfe6df" stroke-width="4" stroke-linecap="round" opacity=".72"/>
+                    <ellipse cx="390" cy="154" rx="250" ry="42" fill="#fff" opacity=".18"/>
+                  </g>
+                  <g class="scene-layer far-sound">
+                    <path d="M114 165c28-25 58-25 86 0M92 149c43-42 87-42 130 0" fill="none" stroke="#ff7a59" stroke-width="5" stroke-linecap="round"/>
+                    <text x="84" y="118" fill="#123f47" font-size="18" font-weight="800">隆隆……</text>
+                  </g>
+                  <g class="scene-layer white-line">
+                    <path d="M84 224c142-8 312-6 522 4" fill="none" stroke="#f9fff9" stroke-width="7" stroke-linecap="round"/>
+                  </g>
+                  <g class="scene-layer water-wall">
+                    <path d="M66 288c72-18 118-76 183-62s81 61 147 38 88-83 148-54 91 64 153 51v59H66Z" fill="#dff5ed" opacity=".96"/>
+                    <path d="M68 288c70-16 118-70 181-57s84 60 147 36 87-77 146-49 88 60 153 49" fill="none" stroke="#fff" stroke-width="10" stroke-linecap="round"/>
+                  </g>
+                  <g class="scene-layer horse-waves">
+                    <path d="M28 306q46-97 92 0t92 0 92 0 92 0 92 0 92 0 92 0 92 0" fill="none" stroke="#f9fff9" stroke-width="25" stroke-linecap="round"/>
+                    <path d="M40 302q40-76 80 0t80 0 80 0 80 0 80 0 80 0 80 0 80 0 80 0" fill="none" stroke="#91cac4" stroke-width="8" stroke-linecap="round"/>
+                  </g>
+                  <g class="scene-layer after-wave">
+                    <path d="M0 255c83-37 139 55 225 12s139 39 222 4 143 35 313-17v66H0Z" fill="#acd7d1"/>
+                    <path d="M22 273c90-30 138 42 213 8s138 31 211 4 132 26 270-10" fill="none" stroke="#f9fff9" stroke-width="8" stroke-linecap="round"/>
+                  </g>
+                  <g>
+                    <circle cx="710" cy="255" r="9" fill="#082f37"/>
+                    <path d="M710 264v31m0-20-15 13m15-13 15 13" fill="none" stroke="#082f37" stroke-width="7" stroke-linecap="round"/>
+                  </g>
+                </svg>
+                <div class="scene-label" id="sceneLabel">0 · 潮来前</div>
+              </div>
+              <div class="rail-wrap">
+                <div class="rail-head"><span>潮汐镜头轨道</span><strong id="railValue">0 / 5</strong></div>
+                <input id="tideRail" type="range" min="0" max="5" step="1" value="0" aria-label="推进潮汐镜头">
+                <div class="film-strip" id="filmStrip"></div>
+              </div>
+            </div>
+
+            <div class="lab-copy">
+              <div class="mechanism-grid">
+                <div class="mechanism"><b>位置</b><span id="distanceText">潮来前</span></div>
+                <div class="mechanism"><b>眼睛</b><span id="sightText">江面平静，薄雾笼罩</span></div>
+                <div class="mechanism">
+                  <b>耳朵</b><span id="soundText">还没有潮声</span>
+                  <div class="sound-meter" id="soundMeter" aria-label="声音强度 0"><i></i><i></i><i></i><i></i><i></i></div>
+                </div>
+              </div>
+              <div class="core-line" id="craftText">先写平静，是给后面的雄伟<span>蓄势</span>。</div>
+              <div class="feedback hidden" id="tideSurprise" data-surprise="tide-lens"><strong>潮汐透镜解锁：</strong>真正的“壮观”不是一个形容词，而是位置、形态和声音一起升级。</div>
+              <div class="feedback" id="labFeedback" aria-live="polite">可以拖动轨道，也可以直接点六个镜头。</div>
+              <div class="actions">
+                <button type="button" data-go="welcome">返回总问题</button>
+                <button class="primary" type="button" id="goTeachback">我看懂了，讲回来</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="screen" data-screen="teachback" data-phase="recall" hidden>
+        <div class="screen-stack">
+          <div>
+            <p class="eyebrow">立即讲回来 · 不看选项</p>
+            <h2>把“壮观”拆成一条因果链</h2>
+            <p class="lead">刚才看懂不算结束。现在用自己的话把镜头秘密讲完整。</p>
+          </div>
+          <div class="cause-map" aria-label="观潮核心因果图">
+            <div class="cause-node"><strong>镜头</strong>由远到近</div>
+            <div class="cause-arrow" aria-hidden="true">→</div>
+            <div class="cause-node"><strong>景象</strong>由小到大</div>
+            <div class="cause-arrow" aria-hidden="true">→</div>
+            <div class="cause-node"><strong>感受</strong>越来越震撼</div>
+          </div>
+          <div class="teachback-form">
+            <div class="teachback-sentence">
+              <div class="small-inputs">
+                <label>镜头从<input id="tbFrom" type="text" autocomplete="off" placeholder="哪里"></label>
+                <label>推到<input id="tbTo" type="text" autocomplete="off" placeholder="哪里"></label>
+              </div>
+              <div class="small-inputs">
+                <label>浪越来越<input id="tbWave" type="text" autocomplete="off" placeholder="怎样"></label>
+                <label>声音越来越<input id="tbSound" type="text" autocomplete="off" placeholder="怎样"></label>
+              </div>
+              <label>所以读者会觉得<input id="tbEffect" type="text" autocomplete="off" placeholder="说出感受或作用"></label>
+            </div>
+            <div class="feedback" id="teachbackFeedback" aria-live="polite"></div>
+            <section class="answer-escape hidden" id="teachbackEscape" data-learning-escape="answer-and-continue" aria-live="polite">
+              <p class="escape-kicker">电脑判断不是唯一通行证</p>
+              <p class="escape-copy">对照这条完整因果链。你可以再改，也可以带着“待复习”标记继续。</p>
+              <div class="reference-answer" data-reference-answer>镜头从远处推到眼前，浪越来越高大，声音越来越响，所以读者像在现场一样感到大潮雄伟壮观。</div>
+              <div class="actions">
+                <button type="button" id="retryTeachback">我再补一次</button>
+                <button class="primary" type="button" id="continueTeachback" data-continue-after-reveal>看懂了，先继续</button>
+              </div>
+            </section>
+            <div class="actions">
+              <button type="button" data-go="lab">回潮镜再看</button>
+              <button class="primary" type="button" id="checkTeachback">检查我的解释</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="screen" data-screen="toolkit" data-phase="guided" hidden>
+        <div class="screen-stack">
+          <div>
+            <p class="eyebrow">扫描件 1–14 页 · 教材证据不丢</p>
+            <h2>一张可操作的《观潮》思维导图</h2>
+            <p class="lead">主线已经打通。接下来把字词、结构、写法和背诵挂回同一张图，不再零散死记。</p>
+          </div>
+          <div class="tool-panel">
+            <div class="tool-tabs" role="tablist" aria-label="教材工具">
+              <button class="active" type="button" data-tool="structure" role="tab">结构总线</button>
+              <button type="button" data-tool="words" role="tab">字词工具</button>
+              <button type="button" data-tool="craft" role="tab">写法拆解</button>
+              <button type="button" data-tool="memory" role="tab">背诵暗线</button>
+            </div>
+            <div id="toolContent"></div>
+          </div>
+          <div class="actions">
+            <button type="button" data-go="teachback">返回核心解释</button>
+            <button class="primary" type="button" data-go="independent">开始独立检验</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="screen" data-screen="independent" data-phase="independent" hidden>
+        <div class="screen-stack">
+          <div>
+            <p class="eyebrow">独立检验 · 一次只做一题</p>
+            <h2 id="questionTitle">把潮来时的镜头放回原位</h2>
+            <p class="lead" id="questionLead">不看导图。先用作者的镜头顺序重建现场。</p>
+          </div>
+          <div class="task-card">
+            <div class="question-counter">
+              <span id="questionCount">1 / 5</span>
+              <div class="mini-track" aria-hidden="true"><i id="questionBar" style="width:20%"></i></div>
+            </div>
+            <div id="questionBody"></div>
+            <div class="feedback" id="questionFeedback" aria-live="polite"></div>
+            <section class="answer-escape hidden" id="questionEscape" data-learning-escape="answer-and-continue" aria-live="polite">
+              <p class="escape-kicker">不会把你锁在这里</p>
+              <p class="escape-copy">电脑可能没听懂你的说法。先对照答案；继续后这题会记为“待复习”，不会冒充已经掌握。</p>
+              <div class="reference-answer" data-reference-answer id="questionReference"></div>
+              <div class="actions">
+                <button type="button" id="retryQuestion">我再改一次</button>
+                <button class="primary" type="button" id="continueQuestion" data-continue-after-reveal>我明白了，记下并继续</button>
+              </div>
+            </section>
+            <div class="actions">
+              <button type="button" data-go="toolkit">打开教材图谱</button>
+              <button class="primary" type="button" id="checkQuestion">检查这一题</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="screen" data-screen="repair" data-phase="repair" hidden>
+        <div class="screen-stack">
+          <div>
+            <p class="eyebrow">精准修复 · 只补第一个断点</p>
+            <h2 id="repairTitle">先找回镜头顺序</h2>
+            <p class="lead">不用重学整课。把刚才断掉的一环接回去，再回同一道原题。</p>
+          </div>
+          <div class="repair-panel">
+            <div class="repair-rule" data-child-explanation="primary">
+              <p id="repairGap" data-child-part="gap">你卡在：镜头关系的第一步。</p>
+              <p id="repairRule" data-child-part="reason">真正原因：先看变化，再说作用。</p>
+              <p id="repairCheck" data-child-part="check">现在你来：完成一个修复小题。</p>
+            </div>
+            <label for="repairSelect" id="repairPrompt">完成一个修复小题</label>
+            <select id="repairSelect"></select>
+            <p style="margin-top:10px">连续正确
+              <span class="streak-dots" id="repairStreak" aria-label="连续正确次数"><i></i><i></i></span>
+            </p>
+            <div class="feedback" id="repairFeedback" aria-live="polite"></div>
+            <section class="answer-escape hidden" id="repairEscape" data-learning-escape="answer-and-continue" aria-live="polite">
+              <p class="escape-kicker">这一关也不会锁死</p>
+              <p class="escape-copy">正确选项已经标出来。看懂后可以回原题，也可以先记为“待复习”并继续。</p>
+              <div class="reference-answer" data-reference-answer id="repairReference"></div>
+              <div class="actions">
+                <button type="button" id="retryRepair">我再选一次</button>
+                <button class="primary" type="button" id="continueRepair" data-continue-after-reveal>记下这题，继续</button>
+              </div>
+            </section>
+            <div class="actions">
+              <button type="button" id="reviewToolkit">回教材图谱找证据</button>
+              <button class="primary" type="button" id="checkRepair">检查修复题</button>
+              <button type="button" id="returnOriginal" data-return-to-question="true" hidden>回到刚才的原题</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="screen" data-screen="near" data-phase="transfer" hidden>
+        <div class="screen-stack">
+          <div>
+            <p class="eyebrow">近迁移 · 换一个自然场景</p>
+            <h2>没有“钱塘江”，镜头方法还管用吗？</h2>
+            <p class="lead">给“雷雨将至”排镜头，再说明为什么这样排。证明你学会的是方法，不是课文答案。</p>
+          </div>
+          <div class="transfer-panel">
+            <div class="storm-scene" aria-label="雷雨场景的四个镜头">
+              <div class="storm-card"><b>远处</b>天边压来一层乌云</div>
+              <div class="storm-card"><b>渐近</b>闷雷从天边滚过来</div>
+              <div class="storm-card"><b>眼前</b>雨点砸在窗上噼啪作响</div>
+              <div class="storm-card"><b>近处</b>地面溅起密密的水花</div>
+            </div>
+            <p><strong>按“由远及近”点出四个镜头：</strong></p>
+            <div class="choice-bank" id="nearBank"></div>
+            <div class="answer-tray" id="nearTray" aria-label="已选雷雨镜头"></div>
+            <label for="nearReason" style="display:block;margin-top:11px">为什么这样排？</label>
+            <input id="nearReason" type="text" autocomplete="off" placeholder="因为镜头从……到……，画面和声音……">
+            <div class="feedback" id="nearFeedback" aria-live="polite"></div>
+            <section class="answer-escape hidden" id="nearEscape" data-learning-escape="answer-and-continue" aria-live="polite">
+              <p class="escape-kicker">参考路径</p>
+              <p class="escape-copy">先看清方法再继续；这一步会留下“待复习”，不会算成独立掌握。</p>
+              <div class="reference-answer" data-reference-answer>天边乌云 → 远处闷雷 → 眼前雨点 → 地面水花。因为镜头由远到近，画面越来越清楚，声音也越来越近。</div>
+              <div class="actions">
+                <button type="button" id="retryNear">我再排一次</button>
+                <button class="primary" type="button" id="continueNear" data-continue-after-reveal>记住方法，继续</button>
+              </div>
+            </section>
+            <div class="actions">
+              <button type="button" id="resetNear">重新排列</button>
+              <button class="primary" type="button" id="checkNear">检查迁移</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="screen" data-screen="far" hidden>
+        <div class="screen-stack">
+          <div>
+            <p class="eyebrow">远迁移 · 把别人带进你的现场</p>
+            <h2>写一段真正“能看见、能听见”的观察</h2>
+            <p class="lead">可以写日落、运动会、暴雨、地铁进站或你见过的任何过程。60–180 字，镜头至少移动一次。</p>
+          </div>
+          <div class="transfer-panel">
+            <label for="farText">我的现场记录</label>
+            <textarea id="farText" maxlength="240" placeholder="起初，远处……；过了一会儿……；来到眼前……。我看见……，还听见……，让我觉得……"></textarea>
+            <div class="checklist">
+              <div class="check-item" id="farLength">60–180 字</div>
+              <div class="check-item" id="farPosition">镜头有移动</div>
+              <div class="check-item" id="farSight">有具体画面</div>
+              <div class="check-item" id="farSound">有声音变化</div>
+            </div>
+            <div class="feedback" id="farFeedback" aria-live="polite"></div>
+            <section class="answer-escape hidden" id="farEscape" data-learning-escape="answer-and-continue" aria-live="polite">
+              <p class="escape-kicker">写作也不设死门</p>
+              <p class="escape-copy">参考下面的写法，找出“位置、画面、声音”三条线。你可以继续修改，也可以先完成并留待复习。</p>
+              <div class="reference-answer" data-reference-answer>起初，远处的天空压来一层乌云。过了一会儿，隆隆雷声滚到窗前，豆大的雨点噼啪砸在玻璃上。地面很快溅起密密的水花，我仿佛被整场暴雨包围了。</div>
+              <div class="actions">
+                <button type="button" id="retryFar">我照着再改</button>
+                <button class="primary" type="button" id="continueFar" data-continue-after-reveal>记为待复习，完成</button>
+              </div>
+            </section>
+            <div class="actions">
+              <button type="button" data-go="near">返回雷雨迁移</button>
+              <button class="primary" type="button" id="checkFar">完成这次预习</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="screen" data-screen="complete" hidden>
+        <div class="screen-stack" style="text-align:center">
+          <div class="completion-seal">观潮方法<br>已带走</div>
+          <p class="eyebrow">预习闭环完成</p>
+          <h2 style="margin-inline:auto">你学会的不是一篇课文，而是一种“制造现场”的方法</h2>
+          <p class="lead" style="margin-inline:auto">时间搭骨架，镜头由远及近，画面和声音一起升级。下次读写景文章，先找这条变化线。</p>
+          <div class="summary-grid">
+            <div><strong id="completeMastery">5</strong>教材核心</div>
+            <div><strong>2</strong>迁移证明</div>
+            <div><strong id="completeRepairs">0</strong>精准修复</div>
+          </div>
+          <div class="actions">
+            <button type="button" data-go="lab">重放核心潮镜</button>
+            <button type="button" data-go="toolkit">查看教材图谱</button>
+            <a class="button primary" href="../apps.html?who=eddey">回到软件库</a>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <dialog id="parentDialog" data-parent-analysis>
+    <div class="dialog-head">
+      <div><strong>家长查看</strong><div style="color:var(--muted);font-size:12px">教材覆盖、错题与本机数据</div></div>
+      <button class="icon-button dark" type="button" id="closeParent" aria-label="关闭家长查看">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+    <div class="dialog-body">
+      <p><strong>数据模式：</strong><span id="modeText">正式学习记录</span></p>
+      <p><strong>完成进度：</strong><span id="parentProgress">0 / 7</span></p>
+      <h3 style="margin-top:14px">待修复记录</h3>
+      <ul class="record-list" id="wrongList"><li>暂无错题</li></ul>
+      <div class="parent-actions">
+        <button type="button" id="exportJson">导出 JSON</button>
+        <button type="button" id="exportMarkdown">导出 Markdown</button>
+        <label class="button file-button">导入同版本 JSON<input type="file" id="importJson" accept="application/json"></label>
+        <button type="button" id="clearData">清空本课记录</button>
+      </div>
+      <div class="feedback" id="dataFeedback" aria-live="polite"></div>
+      <h3 style="margin-top:18px">扫描件 1–14 页覆盖</h3>
+      <table class="coverage-table">
+        <thead><tr><th>页码</th><th>教材证据</th><th>软件落点</th></tr></thead>
+        <tbody>
+          <tr><td>1–2</td><td>“自然之美”单元主题、导图重点</td><td>总问题、可操作思维导图</td></tr>
+          <tr><td>3</td><td>学习目标、钱塘潮背景</td><td>首屏目的、天下奇观背景</td></tr>
+          <tr><td>4–6</td><td>会认会写、字形字义</td><td>字词工具：据、堤、屹、顿、逐、渐、堵、浩、崩、霎、余</td></tr>
+          <tr><td>7–9</td><td>多音字、近反义词、词义方法</td><td>语境辨音、近反义词、比喻解释法</td></tr>
+          <tr><td>9–11</td><td>正文、三段结构、由远及近、修辞</td><td>六站潮镜、独立题、错后回原题</td></tr>
+          <tr><td>12</td><td>课文结构、主题、写景方法</td><td>结构总线、写法三步、近迁移</td></tr>
+          <tr><td>13</td><td>背诵关键词链、《浪淘沙（其七）》</td><td>可遮挡背诵暗线、诗文对照</td></tr>
+          <tr><td>14</td><td>声音/气势词、句子拓展</td><td>词库与远迁移现场记录</td></tr>
+        </tbody>
+      </table>
+      <p style="margin-top:12px;color:var(--muted);font-size:13px">音频状态：不适用。本课核心证据是阅读、镜头推演、解释与写景迁移；没有用未经审核的浏览器语音冒充朗读成品。</p>
+    </div>
+  </dialog>
+
+  <script>
+    const LESSON_BLUEPRINT = {
+      appId: "eddey-chinese-guanchao-preview-20260901",
+      child: "eddey",
+      subject: "语文",
+      source: "扫描件_260901_220823.pdf，第1—14页，四年级语文上第一单元《观潮》",
+      courseDate: "2026-09-01",
+      currentGap: "能说课文大意，但容易把顺序、观察位置、画面声音和表达作用拆散，主观回答只说一点",
+      independentOutcome: "独立解释作者怎样制造现场感，重建潮来镜头，赏析比喻与对比，并把方法迁移到雷雨和自己的观察",
+      observableOutcome: "独立解释作者怎样制造现场感，重建潮来镜头，赏析比喻与对比，并把方法迁移到雷雨和自己的观察",
+      teachingSentence: "先让 Eddey 亲手推进潮镜，看见位置—形态—声音同步升级；立刻讲回因果，再把教材细节挂回同一张图，最后完成近远两次迁移",
+      essentialQuestion: "作者怎样让没到钱塘江的人也像站在江边一样看见、听见大潮？",
+      coreInsight: "时间顺序搭骨架，镜头由远及近，浪越来越大、声音越来越响，所以“壮观”不是结论，而是读者亲眼经历的变化",
+      realMeaning: "读写任何过程性景物时，都能用位置、画面和声音把别人带进现场",
+      compressionPath: "总问题 → 六站潮镜 → 立即讲回来 → 教材图谱 → 独立检验 → 雷雨近迁移 → 自选场景远迁移",
+      visibleMechanism: "拖动潮汐轨道时，观察位置、浪的形态、声音强度和表达作用在同一视口同步变化",
+      transferProof: "先给陌生雷雨场景排序并解释，再独立写一个非钱塘江场景",
+      knowledgeMechanism: "时间总线 + 由远及近镜头 + 画面/声音同步升级 + 修辞把变化写具体",
+      primaryInteraction: "江潮镜头台",
+      responseModes: "拖动看因果；短输入讲回来；点选整理；独立短答；错后修复；迁移写作",
+      answerPolicy: "语文主观题按核心证据词与完整关系分层反馈；机器检查只作最低门槛，家长可复看真实表达",
+      escapePolicy: "repair-once-then-reveal-and-continue",
+      maxBlockingAttempts: 2,
+      masteryBoundary: "看参考答案并继续只记为待复习，不计为掌握",
+      childAnswerContract: "child-first-v1",
+      childFirstLayerLimit: 100,
+      audio: "not-applicable",
+      surprise: "看完六个潮汐站点后解锁潮汐透镜总结",
+      surpriseTrigger: "六站全部被访问",
+      dataBoundary: "Eddey + 本应用 + v2；正式与 test=1 命名空间隔离",
+      phases: ["teach", "guided", "recall", "independent", "repair", "near-transfer", "far-transfer"]
+    };
+
+    const APP_VERSION = "2.0.0";
+    const TEACHBACK_REFERENCE = "镜头从远处推到眼前，浪越来越高大，声音越来越响，所以读者像在现场一样感到大潮雄伟壮观。";
+    const NEAR_REFERENCE = "天边乌云 → 远处闷雷 → 眼前雨点 → 地面水花。因为镜头由远到近，画面越来越清楚，声音也越来越近。";
+    const FAR_REFERENCE = "起初，远处的天空压来一层乌云。过了一会儿，隆隆雷声滚到窗前，豆大的雨点噼啪砸在玻璃上。地面很快溅起密密的水花，我仿佛被整场暴雨包围了。";
+    const DAILY_SURPRISES = [
+      "先听声音从哪里来，再看浪怎样变大。",
+      "背诵不是抄句子，是在脑中重放镜头。",
+      "完整赏析要说清：像什么、写出什么、让人怎样感觉。",
+      "今天学会的镜头法，下一场雷雨也能用。"
+    ];
+    const CORE_STAGES = [
+      { short: "潮前", title: "0 · 潮来前", distance: "潮来前", sight: "江面平静，薄雾笼罩", sound: "还没有潮声", level: 0, craft: "先写平静，是给后面的雄伟<span>蓄势</span>。", aria: "潮来前，江面平静，薄雾笼罩" },
+      { short: "远声", title: "1 · 远处传声", distance: "远处", sight: "江面还看不出浪", sound: "隆隆响声，像闷雷", level: 1, craft: "先闻其声却未见其形，<span>悬念</span>出现。", aria: "远处传来隆隆响声，江面还很平静" },
+      { short: "白线", title: "2 · 水天白线", distance: "水天相接处", sight: "出现一条细白线", sound: "响声越来越大", level: 2, craft: "远景先抓住<span>颜色和形状</span>。", aria: "水天相接处出现一条白线" },
+      { short: "水墙", title: "3 · 高高水墙", distance: "再近些", sight: "白浪翻滚，像水墙", sound: "巨响逼近", level: 4, craft: "把白浪比作水墙，写出<span>又高又宽</span>。", aria: "白浪翻滚，形成高高的水墙" },
+      { short: "战马", title: "4 · 万马奔腾", distance: "越来越近", sight: "白色战马齐头并进", sound: "如同山崩地裂", level: 5, craft: "比喻加夸张，把<span>雄伟气势</span>推到顶点。", aria: "浪头像千万匹白色战马，声音如山崩地裂" },
+      { short: "潮后", title: "5 · 潮头西去", distance: "潮去后", sight: "余波漫天卷地，江水上涨", sound: "仍然风号浪吼", level: 3, craft: "潮已离开，仍写余波，说明<span>余势很强</span>。", aria: "潮头西去，余波仍然漫天卷地" }
+    ];
+
+    const ORDER = [
+      "远处传来隆隆响声",
+      "水天相接处出现白线",
+      "白浪形成高高水墙",
+      "浪头像白色战马齐头并进"
+    ];
+
+    const NEAR_ORDER = ["天边乌云", "远处闷雷", "眼前雨点", "地面水花"];
+
+    const TOOL_PANELS = {
+      structure: `
+        <div class="mind-map" aria-label="观潮核心思维导图">
+          <div class="map-node"><strong>潮来前</strong>江面平静、薄雾笼罩；人群等着、盼着。</div>
+          <div class="map-node during"><strong>潮来时</strong>远声 → 白线 → 水墙 → 白色战马；由远及近。</div>
+          <div class="map-node"><strong>潮去后</strong>余波仍猛，过了很久才恢复平静。</div>
+        </div>
+        <p style="margin-top:10px"><strong>总线：</strong>潮来前 → 潮来时 → 潮去后。<strong>潮来时内部：</strong>由远及近。</p>`,
+      words: `
+        <h3>字词不是孤岛，要挂回画面</h3>
+        <div class="word-cloud"><span>据</span><span>堤</span><span>屹</span><span>顿</span><span>逐</span><span>渐</span><span>堵</span><span>浩</span><span>崩</span><span>霎</span><span>余</span></div>
+        <p style="margin-top:10px"><strong>语境辨音：</strong>薄雾 bó、薄纱 báo、薄荷 bò；闷雷 mēn、烦闷 mèn；轰隆 lōng、隆重 lóng；成为 wéi、为了 wèi。</p>
+        <p style="margin-top:8px"><strong>近反义：</strong>屹立—矗立，霎时—刹那；风平浪静—波涛汹涌，若隐若现—清清楚楚。</p>`,
+      craft: `
+        <div class="method-chain">
+          <div class="method-step"><div><strong>先找“像”</strong><br>把什么比作什么？白浪 → 水墙；浪头 → 白色战马。</div></div>
+          <div class="method-step"><div><strong>再看特点</strong><br>水墙写高与宽，战马写整齐、快速、有力量。</div></div>
+          <div class="method-step"><div><strong>最后说作用</strong><br>让看不见大潮的人也看见形态、听见声势、感到震撼。</div></div>
+        </div>
+        <p style="margin-top:10px"><strong>对比三步法：</strong>潮前平静 → 潮来雄伟 → 前静衬后动，先蓄势再爆发。</p>`,
+      memory: `
+        <div class="memory-cover">
+          <strong>背诵不是抄文字，是在脑中重放镜头。</strong>
+          <p style="margin-top:7px">先自己说：远声之后看见什么？白线之后变成什么？</p>
+          <button type="button" id="revealMemory">翻开背诵暗线</button>
+          <div class="memory-answer hidden" id="memoryAnswer">隆隆响声 → 潮来了 → 踮脚 → 风平浪静 → 一条白线；很快地 → 水墙 → 白色战马 → 山崩地裂。</div>
+        </div>
+        <p style="margin-top:10px"><strong>诗文对照：</strong>刘禹锡《浪淘沙（其七）》写“八月涛声吼地来，头高数丈触山回”；课文同样抓住声音、形态和声势。</p>`
+    };
+
+    const QUESTIONS = [
+      { id: "sequence", title: "把潮来时的镜头放回原位", lead: "不看导图。按由远及近点击四个镜头。", type: "order", reference: "隆隆响声 → 白线 → 水墙 → 白色战马。" },
+      { id: "metaphor", title: "“白浪形成高高的水墙”好在哪里？", lead: "独立写清：把什么比作什么，写出了什么特点。", type: "text", placeholder: "这句话把……比作……，写出了……", reference: "把白浪比作水墙，写出浪又高又宽、气势壮观。" },
+      { id: "contrast", title: "潮来前的平静能删吗？", lead: "比较前后画面，再说作者为什么要先写“静”。", type: "text", placeholder: "不能删。潮来前……，潮来时……，这样……", reference: "不能删。潮前江面平静，潮来时大潮凶猛；前后形成对比，为大潮蓄势，更突出它的雄伟。" },
+      { id: "polyphone", title: "把多音字放回语境", lead: "不要背单个字，先看它和谁组成词。", type: "polyphone", reference: "薄雾 bó；闷雷 mēn；轰隆 lōng。" },
+      { id: "recall", title: "用关键词重放潮来镜头", lead: "按顺序写出四个关键词，用箭头或空格隔开。", type: "text", placeholder: "隆隆响声 → …… → …… → ……", reference: "隆隆响声 → 白线 → 水墙 → 白色战马。" }
+    ];
+
+    const REPAIRS = {
+      sequence: { title: "先远后近，看形态变大", gap: "把远处和近处的镜头放反了。", rule: "先听声音，再看白线、水墙、战马。浪是靠近后才变大的。", prompt: "“一条白线”的下一站是什么？", options: [["", "请选择"], ["ok", "白浪形成高高水墙"], ["no", "江面笼罩薄雾"]] },
+      metaphor: { title: "比喻三格法", gap: "只说了生动，没有说画面怎样变清楚。", rule: "把白浪比作水墙，浪的高、宽和气势就能看见。", prompt: "哪一句把三格都说全？", options: [["", "请选择"], ["no", "这句话用了比喻，很生动。"], ["ok", "把白浪比作水墙，写出浪又高又宽、气势壮观。"]] },
+      contrast: { title: "对比三步法", gap: "看见了潮前的静，还没接到潮来的猛。", rule: "先写平静，再写雄伟，两幅画面一比，大潮更有力量。", prompt: "潮前平静的主要作用是什么？", options: [["", "请选择"], ["ok", "与潮来时的雄伟形成对比并蓄势"], ["no", "说明钱塘江一直没有浪"]] },
+      polyphone: { title: "把字放回词里辨音", gap: "只看单个字，没有先看它组成的词。", rule: "先看词的意思，再定读音：薄雾 bó，闷雷 mēn，轰隆 lōng。", prompt: "“蒙蒙薄雾”的“薄”读什么？", options: [["", "请选择"], ["ok", "bó"], ["no", "báo"], ["no2", "bò"]] },
+      recall: { title: "背诵暗线就是镜头链", gap: "漏掉了浪由小变大的中间镜头。", rule: "按隆隆声、白线、水墙、战马重放，画面就不会跳站。", prompt: "“水墙”的前一个关键词是什么？", options: [["", "请选择"], ["ok", "白线"], ["no", "薄雾"], ["no2", "余波"]] }
+    };
+
+    function normalize(text) {
+      return String(text || "").normalize("NFKC").trim().replace(/[，。！？、；：,.!?;:\s→—-]+/g, "");
+    }
+    function hasAny(text, words) {
+      const value = normalize(text);
+      return words.some(function (word) { return value.includes(normalize(word)); });
+    }
+    function diagnose(text) {
+      return hasAny(text, ["由远及近", "远到近", "从远处到眼前"])
+        && hasAny(text, ["越来越大", "越来越高", "变大", "变高", "水墙", "战马"])
+        && hasAny(text, ["越来越响", "声音变大", "响声变大", "山崩地裂"]);
+    }
+    function evaluateTeachback(values) {
+      const fromOk = hasAny(values.from, ["远", "远处", "水天相接"]);
+      const toOk = hasAny(values.to, ["近", "眼前", "面前"]);
+      const waveOk = hasAny(values.wave, ["大", "高", "宽", "壮观", "雄伟"]);
+      const soundOk = hasAny(values.sound, ["响", "大", "震耳", "山崩"]);
+      const effectOk = hasAny(values.effect, ["壮观", "雄伟", "震撼", "身临其境", "亲眼", "现场"]);
+      const missing = [];
+      if (!(fromOk && toOk)) missing.push("镜头由远到近");
+      if (!waveOk) missing.push("浪的形态越来越大");
+      if (!soundOk) missing.push("声音越来越响");
+      if (!effectOk) missing.push("读者感到壮观或身临其境");
+      return { ok: missing.length === 0, missing: missing };
+    }
+    function evaluateTextQuestion(id, text) {
+      if (id === "metaphor") {
+        const ok = hasAny(text, ["白浪", "浪头", "浪"]) && hasAny(text, ["水墙"])
+          && hasAny(text, ["高", "宽", "壮观", "雄伟", "气势"]);
+        return { ok: ok, message: ok ? "本体、喻体和特点都说清了。" : "还缺一格：白浪 → 水墙 → 又高又宽/气势壮观。" };
+      }
+      if (id === "contrast") {
+        const ok = hasAny(text, ["平静", "风平浪静", "薄雾"])
+          && hasAny(text, ["雄伟", "壮观", "汹涌", "凶猛", "猛烈", "奔腾", "气势", "声势", "有力", "山崩", "战马"])
+          && hasAny(text, ["对比", "衬托", "突出", "蓄势", "反衬", "铺垫"]);
+        return { ok: ok, message: ok ? "前后画面和对比作用都完整。" : "请补齐：潮前怎样、潮来怎样、这样突出什么。" };
+      }
+      if (id === "recall") {
+        const value = normalize(text);
+        const terms = ["隆隆", "白线", "水墙", "战马"];
+        const positions = terms.map(function (term) { return value.indexOf(term); });
+        const ok = positions.every(function (position) { return position >= 0; })
+          && positions.every(function (position, index) { return index === 0 || position > positions[index - 1]; });
+        return { ok: ok, message: ok ? "关键词链正确，脑中镜头能顺序播放。" : "先听见隆隆，再看见白线、水墙、白色战马。" };
+      }
+      return { ok: false, message: "这题暂时无法检查。" };
+    }
+    function evaluateTransfer(text) {
+      const length = String(text || "").trim().length;
+      const position = hasAny(text, ["远处", "近处", "眼前", "天边", "来到", "靠近", "走近", "起初", "接着", "后来", "过了一会", "渐渐"]);
+      const sight = hasAny(text, ["看见", "看到", "乌云", "雨点", "水花", "阳光", "人群", "灯光", "列车", "跑道", "天空", "云", "树", "浪"]);
+      const sound = hasAny(text, ["听见", "听到", "响", "声", "轰", "隆隆", "噼啪", "呐喊", "呼啸", "安静"]);
+      return { ok: length >= 60 && length <= 180 && position && sight && sound, length: length >= 60 && length <= 180, position: position, sight: sight, sound: sound };
+    }
+    function nextAfterDiagnostic(text) { return diagnose(text) ? "near" : "lab"; }
+    function shouldOfferEscape(attempts, returnedFromRepair) {
+      return Boolean(returnedFromRepair) || Number(attempts || 0) >= LESSON_BLUEPRINT.maxBlockingAttempts;
+    }
+    function referenceOutcome(key, reference, source, stamp) {
+      const at = stamp || new Date().toISOString();
+      return {
+        key: key,
+        mastered: false,
+        reviewNeeded: { at: at, reason: "看过参考答案，尚未证明独立掌握" },
+        revealedAnswer: { at: at, source: source, reference: reference }
+      };
+    }
+
+    globalThis.GuanchaoCore = {
+      normalize,
+      diagnose,
+      evaluateTeachback,
+      evaluateTextQuestion,
+      evaluateTransfer,
+      nextAfterDiagnostic,
+      shouldOfferEscape,
+      referenceOutcome,
+      escapePolicy: LESSON_BLUEPRINT.escapePolicy,
+      maxBlockingAttempts: LESSON_BLUEPRINT.maxBlockingAttempts,
+      references: Object.fromEntries(QUESTIONS.map(function (question) { return [question.id, question.reference]; })),
+      order: ORDER.slice(),
+      nearOrder: NEAR_ORDER.slice()
+    };
+
+    if (typeof document !== "undefined") {
+      const testMode = new URLSearchParams(location.search).get("test") === "1";
+      const STORAGE_KEY = (testMode ? "study:test:eddey:" : "study:eddey:") + LESSON_BLUEPRINT.appId + ":v2";
+      const LEGACY_KEY = (testMode ? "study:test:eddey:" : "study:eddey:") + LESSON_BLUEPRINT.appId + ":v1";
+      const PROGRESS_KEYS = ["core", "teachback", "toolkit", "independent", "near", "far", "completed"];
+      const SCREEN_ORDER = ["welcome", "lab", "teachback", "toolkit", "independent", "repair", "near", "far", "complete"];
+
+      function freshState() {
+        return {
+          schema: "study-portal-learning-record",
+          version: APP_VERSION,
+          appId: LESSON_BLUEPRINT.appId,
+          child: LESSON_BLUEPRINT.child,
+          testMode: testMode,
+          currentScreen: "welcome",
+          progress: {},
+          visitedStages: [0],
+          toolTabs: ["structure"],
+          questionIndex: 0,
+          mastered: {},
+          wrongbook: {},
+          blockingAttempts: {},
+          returnedFromRepair: {},
+          revealedAnswers: {},
+          reviewNeeded: {},
+          answers: {},
+          orderAnswer: [],
+          nearAnswer: [],
+          nearReason: "",
+          farText: "",
+          activeRepair: null,
+          startedAt: new Date().toISOString(),
+          activeMs: 0,
+          lastActiveAt: Date.now(),
+          completedAt: null,
+          events: [],
+          updatedAt: new Date().toISOString()
+        };
+      }
+
+      function migrateLegacy(legacy) {
+        const next = freshState();
+        if (!legacy || legacy.child !== "eddey" || legacy.appId !== LESSON_BLUEPRINT.appId) return next;
+        next.legacyImported = true;
+        next.visitedStages = Array.isArray(legacy.visitedStages) ? legacy.visitedStages : [0];
+        next.farText = legacy.broadcast || "";
+        next.answers = legacy.answers || {};
+        next.wrongbook = legacy.wrongbook || {};
+        next.mastered = legacy.mastered || {};
+        if (next.visitedStages.length >= 5) next.progress.core = true;
+        if (legacy.completed) {
+          next.progress.toolkit = true;
+          next.progress.independent = true;
+        }
+        return next;
+      }
+
+      function loadState() {
+        try {
+          const current = JSON.parse(localStorage.getItem(STORAGE_KEY));
+          if (current && current.schema === "study-portal-learning-record"
+            && current.version === APP_VERSION && current.appId === LESSON_BLUEPRINT.appId
+            && current.child === "eddey" && current.testMode === testMode) {
+            const base = freshState();
+            return Object.assign(base, current, {
+              blockingAttempts: Object.assign({}, base.blockingAttempts, current.blockingAttempts || {}),
+              returnedFromRepair: Object.assign({}, base.returnedFromRepair, current.returnedFromRepair || {}),
+              revealedAnswers: Object.assign({}, base.revealedAnswers, current.revealedAnswers || {}),
+              reviewNeeded: Object.assign({}, base.reviewNeeded, current.reviewNeeded || {})
+            });
+          }
+          const legacy = JSON.parse(localStorage.getItem(LEGACY_KEY));
+          if (legacy) return migrateLegacy(legacy);
+        } catch (error) {}
+        return freshState();
+      }
+
+      let state = loadState();
+      if (state.currentScreen === "repair") state.currentScreen = "independent";
+      let currentStage = 0;
+      let orderAnswer = state.orderAnswer.slice();
+      let nearAnswer = state.nearAnswer.slice();
+
+      function accumulateTime() {
+        const now = Date.now();
+        if (document.visibilityState !== "hidden") {
+          state.activeMs += Math.max(0, Math.min(60000, now - (state.lastActiveAt || now)));
+        }
+        state.lastActiveAt = now;
+      }
+
+      function saveState() {
+        accumulateTime();
+        state.updatedAt = new Date().toISOString();
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+        renderProgress();
+        renderParent();
+      }
+
+      function logEvent(type, detail) {
+        state.events.push({ id: LESSON_BLUEPRINT.appId + "-" + Date.now() + "-" + state.events.length, ts: new Date().toISOString(), type: type, detail: detail || null });
+        if (state.events.length > 120) state.events = state.events.slice(-120);
+      }
+
+      function hideEscape(id) {
+        const panel = document.getElementById(id);
+        if (panel) panel.classList.add("hidden");
+      }
+
+      function noteBlockedAttempt(key) {
+        state.blockingAttempts[key] = Number(state.blockingAttempts[key] || 0) + 1;
+        return state.blockingAttempts[key];
+      }
+
+      function markReferenceSeen(key, reference, source) {
+        const outcome = referenceOutcome(key, reference, source);
+        state.revealedAnswers[key] = outcome.revealedAnswer;
+        state.reviewNeeded[key] = outcome.reviewNeeded;
+        state.mastered[key] = outcome.mastered;
+        if (state.wrongbook[key]) {
+          state.wrongbook[key].mastered = false;
+          state.wrongbook[key].streak = 0;
+          state.wrongbook[key].referenceRevealed = true;
+        }
+        logEvent("reference-answer-revealed", { key: key, source: source });
+      }
+
+      function offerQuestionEscape(question, source) {
+        document.getElementById("questionReference").textContent = "参考答案：" + question.reference;
+        document.getElementById("questionEscape").classList.remove("hidden");
+        markReferenceSeen(question.id, question.reference, source);
+        saveState();
+      }
+
+      function offerRepairEscape(id) {
+        const question = QUESTIONS.find(function (entry) { return entry.id === id; });
+        document.getElementById("repairReference").textContent = "原题参考答案：" + question.reference;
+        document.getElementById("repairEscape").classList.remove("hidden");
+        markReferenceSeen(id, question.reference, "repair");
+        saveState();
+      }
+
+      function advanceQuestion(delay) {
+        const move = function () {
+          state.activeRepair = null;
+          if (state.questionIndex < QUESTIONS.length - 1) {
+            state.questionIndex += 1;
+            saveState();
+            renderQuestion();
+            window.scrollTo({ top: 0, behavior: "smooth" });
+          } else {
+            state.progress.independent = true;
+            saveState();
+            showScreen("near");
+          }
+        };
+        if (delay) setTimeout(move, delay); else move();
+      }
+
+      function showScreen(name, options) {
+        const target = SCREEN_ORDER.includes(name) ? name : "welcome";
+        document.querySelectorAll("[data-screen]").forEach(function (section) {
+          section.hidden = section.dataset.screen !== target;
+        });
+        state.currentScreen = target;
+        if (!(options && options.noSave)) saveState();
+        window.scrollTo({ top: 0, behavior: "smooth" });
+        const heading = document.querySelector('[data-screen="' + target + '"] h1, [data-screen="' + target + '"] h2');
+        if (heading) {
+          heading.setAttribute("tabindex", "-1");
+          setTimeout(function () { heading.focus({ preventScroll: true }); }, 100);
+        }
+        if (target === "independent") renderQuestion();
+        if (target === "near") renderNear();
+        if (target === "teachback" && state.revealedAnswers.teachback) document.getElementById("teachbackEscape").classList.remove("hidden");
+        if (target === "far" && state.revealedAnswers.far) document.getElementById("farEscape").classList.remove("hidden");
+        if (target === "complete") renderComplete();
+      }
+
+      function renderProgress() {
+        const done = PROGRESS_KEYS.filter(function (key) { return state.progress[key]; }).length;
+        document.getElementById("progressText").textContent = done + " / " + PROGRESS_KEYS.length;
+        document.getElementById("parentProgress").textContent = done + " / " + PROGRESS_KEYS.length;
+        const dots = document.getElementById("progressDots");
+        dots.innerHTML = "";
+        PROGRESS_KEYS.forEach(function (key, index) {
+          const dot = document.createElement("i");
+          dot.className = index < done ? "on" : "";
+          dots.appendChild(dot);
+        });
+      }
+
+      function updateTide(value) {
+        currentStage = Number(value);
+        const info = CORE_STAGES[currentStage];
+        const scene = document.getElementById("riverScene");
+        scene.className = "river-scene is-stage-" + currentStage;
+        scene.setAttribute("aria-label", info.aria);
+        document.getElementById("sceneLabel").textContent = info.title;
+        document.getElementById("railValue").textContent = currentStage + " / 5";
+        document.getElementById("tideRail").value = String(currentStage);
+        document.getElementById("distanceText").textContent = info.distance;
+        document.getElementById("sightText").textContent = info.sight;
+        document.getElementById("soundText").textContent = info.sound;
+        document.getElementById("craftText").innerHTML = info.craft;
+        document.getElementById("soundMeter").setAttribute("aria-label", "声音强度 " + info.level);
+        document.querySelectorAll("#soundMeter i").forEach(function (bar, index) { bar.classList.toggle("on", index < info.level); });
+        if (!state.visitedStages.includes(currentStage)) state.visitedStages.push(currentStage);
+        if (state.visitedStages.length >= 6) {
+          state.progress.core = true;
+          document.getElementById("tideSurprise").classList.remove("hidden");
+          document.getElementById("labFeedback").className = "feedback good";
+          document.getElementById("labFeedback").textContent = "六个镜头已连成一条变化线：由远及近、由小到大、由轻到响。";
+        }
+        document.querySelectorAll("#filmStrip button").forEach(function (button, index) {
+          button.classList.toggle("active", index === currentStage);
+          button.classList.toggle("seen", state.visitedStages.includes(index));
+        });
+        saveState();
+      }
+
+      function dailySurpriseKey() {
+        const date = new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Shanghai", year: "numeric", month: "2-digit", day: "2-digit" }).format(new Date());
+        const source = LESSON_BLUEPRINT.appId + "|" + LESSON_BLUEPRINT.child + "|" + date;
+        let hash = 0;
+        for (let index = 0; index < source.length; index += 1) hash = (hash * 31 + source.charCodeAt(index)) >>> 0;
+        return hash % DAILY_SURPRISES.length;
+      }
+
+      function renderFilmStrip() {
+        const strip = document.getElementById("filmStrip");
+        strip.innerHTML = "";
+        CORE_STAGES.forEach(function (stage, index) {
+          const button = document.createElement("button");
+          button.type = "button";
+          button.textContent = stage.short;
+          button.setAttribute("aria-label", "查看" + stage.title);
+          button.addEventListener("click", function () { updateTide(index); });
+          strip.appendChild(button);
+        });
+      }
+
+      function checkDiagnosis() {
+        const text = document.getElementById("diagnosisInput").value;
+        const feedback = document.getElementById("diagnosisFeedback");
+        if (diagnose(text)) {
+          state.progress.core = true;
+          state.progress.teachback = true;
+          state.answers.diagnosis = text;
+          logEvent("diagnosis-pass", { answer: text });
+          feedback.className = "feedback good";
+          feedback.textContent = "核心关系已经会讲。直接去新场景迁移，节省已会内容的时间。";
+          saveState();
+          setTimeout(function () { showScreen("near"); }, 650);
+        } else {
+          logEvent("diagnosis-needs-core", { answer: text });
+          feedback.className = "feedback bad";
+          feedback.textContent = "还缺“由远及近、浪变大、声音变响”中的一环。去潮镜里亲手看一次。";
+          saveState();
+          setTimeout(function () { showScreen("lab"); }, 750);
+        }
+      }
+
+      function checkTeachback() {
+        const values = {
+          from: document.getElementById("tbFrom").value,
+          to: document.getElementById("tbTo").value,
+          wave: document.getElementById("tbWave").value,
+          sound: document.getElementById("tbSound").value,
+          effect: document.getElementById("tbEffect").value
+        };
+        const result = evaluateTeachback(values);
+        const feedback = document.getElementById("teachbackFeedback");
+        state.answers.teachback = values;
+        if (result.ok) {
+          state.blockingAttempts.teachback = 0;
+          if (!state.revealedAnswers.teachback) delete state.reviewNeeded.teachback;
+          hideEscape("teachbackEscape");
+          state.progress.core = true;
+          state.progress.teachback = true;
+          logEvent("teachback-pass", values);
+          feedback.className = "feedback good";
+          feedback.textContent = "你已经把“位置 → 形态/声音 → 感受”的因果讲回来了。";
+          saveState();
+          setTimeout(function () { showScreen("toolkit"); }, 650);
+        } else {
+          const attempts = noteBlockedAttempt("teachback");
+          logEvent("teachback-retry", { answer: values, missing: result.missing });
+          feedback.className = "feedback bad";
+          feedback.textContent = "第一个缺口：" + result.missing[0] + "。只补这一格，再检查。";
+          if (attempts >= LESSON_BLUEPRINT.maxBlockingAttempts) {
+            document.getElementById("teachbackEscape").classList.remove("hidden");
+            markReferenceSeen("teachback", TEACHBACK_REFERENCE, "teachback");
+          }
+          saveState();
+        }
+      }
+
+      function renderTool(tab) {
+        const chosen = TOOL_PANELS[tab] ? tab : "structure";
+        document.getElementById("toolContent").innerHTML = TOOL_PANELS[chosen];
+        document.querySelectorAll("[data-tool]").forEach(function (button) { button.classList.toggle("active", button.dataset.tool === chosen); });
+        if (!state.toolTabs.includes(chosen)) state.toolTabs.push(chosen);
+        if (state.toolTabs.length >= 4) state.progress.toolkit = true;
+        const reveal = document.getElementById("revealMemory");
+        if (reveal) reveal.addEventListener("click", function () {
+          const answer = document.getElementById("memoryAnswer");
+          answer.classList.toggle("hidden");
+          reveal.textContent = answer.classList.contains("hidden") ? "翻开背诵暗线" : "重新遮住";
+        });
+        saveState();
+      }
+
+      function shuffled(items) {
+        return items.map(function (item, index) { return { item: item, key: (index * 7 + 3) % 11 }; })
+          .sort(function (a, b) { return a.key - b.key; }).map(function (entry) { return entry.item; });
+      }
+
+      function renderQuestion() {
+        const question = QUESTIONS[state.questionIndex] || QUESTIONS[0];
+        if (state.revealedAnswers[question.id]) {
+          document.getElementById("questionReference").textContent = "参考答案：" + question.reference;
+          document.getElementById("questionEscape").classList.remove("hidden");
+        } else {
+          hideEscape("questionEscape");
+        }
+        document.getElementById("questionTitle").textContent = question.title;
+        document.getElementById("questionLead").textContent = question.lead;
+        document.getElementById("questionCount").textContent = (state.questionIndex + 1) + " / " + QUESTIONS.length;
+        document.getElementById("questionBar").style.width = ((state.questionIndex + 1) / QUESTIONS.length * 100) + "%";
+        document.getElementById("questionFeedback").textContent = "";
+        document.getElementById("questionFeedback").className = "feedback";
+        const body = document.getElementById("questionBody");
+        body.innerHTML = "";
+
+        if (question.type === "order") {
+          orderAnswer = state.answers.sequence && Array.isArray(state.answers.sequence) ? state.answers.sequence.slice() : [];
+          const bank = document.createElement("div");
+          bank.className = "choice-bank";
+          shuffled(ORDER).forEach(function (label) {
+            const button = document.createElement("button");
+            button.type = "button";
+            button.textContent = label;
+            button.disabled = orderAnswer.includes(label);
+            button.addEventListener("click", function () {
+              orderAnswer.push(label);
+              state.answers.sequence = orderAnswer.slice();
+              saveState();
+              renderQuestion();
+            });
+            bank.appendChild(button);
+          });
+          const tray = document.createElement("div");
+          tray.className = "answer-tray";
+          tray.setAttribute("aria-label", "已选镜头");
+          if (!orderAnswer.length) tray.textContent = "按顺序点击上面的镜头";
+          orderAnswer.forEach(function (label, index) {
+            const chip = document.createElement("div");
+            chip.className = "answer-chip";
+            chip.textContent = (index + 1) + ". " + label;
+            tray.appendChild(chip);
+          });
+          const reset = document.createElement("button");
+          reset.type = "button";
+          reset.textContent = "重新排列";
+          reset.style.marginTop = "8px";
+          reset.addEventListener("click", function () { orderAnswer = []; state.answers.sequence = []; saveState(); renderQuestion(); });
+          body.append(bank, tray, reset);
+        } else if (question.type === "polyphone") {
+          body.innerHTML = `
+            <div class="select-grid">
+              <label>薄雾的“薄”<select id="polyBo"><option value="">选择</option><option value="bao">báo</option><option value="bo">bó</option><option value="bo4">bò</option></select></label>
+              <label>闷雷的“闷”<select id="polyMen"><option value="">选择</option><option value="men1">mēn</option><option value="men4">mèn</option></select></label>
+              <label>轰隆的“隆”<select id="polyLong"><option value="">选择</option><option value="long1">lōng</option><option value="long2">lóng</option></select></label>
+            </div>`;
+          const saved = state.answers.polyphone || [];
+          ["polyBo", "polyMen", "polyLong"].forEach(function (id, index) { document.getElementById(id).value = saved[index] || ""; });
+        } else {
+          const textarea = document.createElement("textarea");
+          textarea.id = "textAnswer";
+          textarea.placeholder = question.placeholder;
+          textarea.value = state.answers[question.id] || "";
+          textarea.addEventListener("input", function () { state.answers[question.id] = textarea.value; saveState(); });
+          body.appendChild(textarea);
+        }
+      }
+
+      function recordWrong(id, source, evidence) {
+        const item = state.wrongbook[id] || { attempts: 0, streak: 0, mastered: false };
+        item.attempts += 1;
+        item.streak = 0;
+        item.mastered = false;
+        item.lastWrongAt = new Date().toISOString();
+        state.wrongbook[id] = item;
+        state.mastered[id] = false;
+        logEvent("answer-wrong", {
+          question: id,
+          source: source || "independent",
+          answer: state.answers[id] || null,
+          evidence: evidence || null
+        });
+        return item;
+      }
+
+      function recordCorrect(id, afterRepair) {
+        const item = state.wrongbook[id];
+        if (item && !item.mastered) {
+          item.streak = Math.min(2, (item.streak || 0) + 1);
+          if (item.streak >= 2) {
+            item.mastered = true;
+            item.masteredAt = new Date().toISOString();
+            state.mastered[id] = true;
+          }
+        } else {
+          state.mastered[id] = true;
+        }
+        logEvent("answer-correct", { question: id, afterRepair: Boolean(afterRepair), streak: item ? item.streak : 1 });
+      }
+
+      function startRepair(id) {
+        state.activeRepair = id;
+        hideEscape("repairEscape");
+        const repair = REPAIRS[id];
+        document.getElementById("repairTitle").textContent = repair.title;
+        document.getElementById("repairGap").textContent = "你卡在：" + repair.gap;
+        document.getElementById("repairRule").textContent = "真正原因：" + repair.rule;
+        document.getElementById("repairCheck").textContent = "现在你来：" + repair.prompt;
+        document.getElementById("repairPrompt").textContent = repair.prompt;
+        const select = document.getElementById("repairSelect");
+        select.innerHTML = "";
+        repair.options.forEach(function (pair) {
+          const option = document.createElement("option");
+          option.value = pair[0];
+          option.textContent = pair[1];
+          select.appendChild(option);
+        });
+        document.getElementById("repairFeedback").textContent = "";
+        document.getElementById("returnOriginal").hidden = true;
+        renderRepairStreak();
+        saveState();
+        showScreen("repair");
+      }
+
+      function renderRepairStreak() {
+        const item = state.wrongbook[state.activeRepair];
+        const streak = item ? item.streak || 0 : 0;
+        document.querySelectorAll("#repairStreak i").forEach(function (dot, index) { dot.classList.toggle("on", index < streak); });
+      }
+
+      function checkQuestion() {
+        const question = QUESTIONS[state.questionIndex];
+        let result = { ok: false, message: "" };
+        if (question.id === "sequence") {
+          const ok = orderAnswer.join("|") === ORDER.join("|");
+          result = { ok: ok, message: ok ? "镜头正确：声音先到，形态由细白线变成万马奔腾。" : "第一个错误转折在顺序：最远处先听见声音，最近处才看见战马。" };
+        } else if (question.id === "polyphone") {
+          const values = [document.getElementById("polyBo").value, document.getElementById("polyMen").value, document.getElementById("polyLong").value];
+          state.answers.polyphone = values;
+          const ok = values.join(",") === "bo,men1,long1";
+          result = { ok: ok, message: ok ? "三个读音都按语境判断正确。" : "有一个语境没有辨清，进入定点修复。" };
+        } else {
+          const text = document.getElementById("textAnswer").value;
+          state.answers[question.id] = text;
+          result = evaluateTextQuestion(question.id, text);
+        }
+
+        const feedback = document.getElementById("questionFeedback");
+        if (result.ok) {
+          recordCorrect(question.id, Boolean(state.wrongbook[question.id]));
+          const item = state.wrongbook[question.id];
+          const assisted = Boolean(state.revealedAnswers[question.id]);
+          state.returnedFromRepair[question.id] = false;
+          feedback.className = "feedback good";
+          if (assisted) {
+            state.mastered[question.id] = false;
+            if (item) { item.mastered = false; item.streak = 0; }
+            feedback.textContent = result.message + " 这次看过参考答案，已记为待复习；可以继续，不会冒充独立掌握。";
+          } else if (item && !item.mastered) {
+            feedback.textContent = result.message + " 这是修复后的第 " + item.streak + " 次正确，还要回原题再答对一次。";
+          } else {
+            feedback.textContent = result.message;
+          }
+          saveState();
+          advanceQuestion(750);
+        } else {
+          feedback.className = "feedback bad";
+          feedback.textContent = result.message;
+          const item = recordWrong(question.id, "independent", result.message);
+          const escapeNow = shouldOfferEscape(item.attempts, state.returnedFromRepair[question.id]);
+          saveState();
+          if (escapeNow) {
+            feedback.textContent = result.message + " 你没有答错路，也可能只是电脑没听懂；下面给出参考答案和继续出口。";
+            offerQuestionEscape(question, state.returnedFromRepair[question.id] ? "returned-from-repair" : "repeated-check");
+          } else {
+            setTimeout(function () { startRepair(question.id); }, 700);
+          }
+        }
+      }
+
+      function checkRepair() {
+        const id = state.activeRepair;
+        if (!id) return;
+        const ok = document.getElementById("repairSelect").value === "ok";
+        const feedback = document.getElementById("repairFeedback");
+        if (ok) {
+          recordCorrect(id, true);
+          state.returnedFromRepair[id] = true;
+          hideEscape("repairEscape");
+          feedback.className = "feedback good";
+          feedback.textContent = "修复题答对。现在回到刚才同一道原题，独立再答一次。";
+          document.getElementById("returnOriginal").hidden = false;
+        } else {
+          const item = recordWrong(id, "repair", { selected: document.getElementById("repairSelect").value });
+          feedback.className = "feedback bad";
+          feedback.textContent = "还没接上。重新读规则，只找三个关键词之间的关系。";
+          if (shouldOfferEscape(item.attempts, false)) {
+            feedback.textContent += " 正确答案已经展开，你不会被锁在这里。";
+            offerRepairEscape(id);
+          }
+        }
+        renderRepairStreak();
+        saveState();
+      }
+
+      function renderNear() {
+        if (state.revealedAnswers.near) document.getElementById("nearEscape").classList.remove("hidden");
+        else hideEscape("nearEscape");
+        const bank = document.getElementById("nearBank");
+        const tray = document.getElementById("nearTray");
+        bank.innerHTML = "";
+        tray.innerHTML = "";
+        shuffled(NEAR_ORDER).forEach(function (label) {
+          const button = document.createElement("button");
+          button.type = "button";
+          button.textContent = label;
+          button.disabled = nearAnswer.includes(label);
+          button.addEventListener("click", function () {
+            nearAnswer.push(label);
+            state.nearAnswer = nearAnswer.slice();
+            saveState();
+            renderNear();
+          });
+          bank.appendChild(button);
+        });
+        if (!nearAnswer.length) tray.textContent = "按由远及近点击四个镜头";
+        nearAnswer.forEach(function (label, index) {
+          const chip = document.createElement("div");
+          chip.className = "answer-chip";
+          chip.textContent = (index + 1) + ". " + label;
+          tray.appendChild(chip);
+        });
+        document.getElementById("nearReason").value = state.nearReason || "";
+      }
+
+      function checkNear() {
+        const reason = document.getElementById("nearReason").value;
+        state.nearReason = reason;
+        const orderOk = nearAnswer.join("|") === NEAR_ORDER.join("|");
+        const reasonOk = hasAny(reason, ["远", "远处", "天边"]) && hasAny(reason, ["近", "眼前", "地面"])
+          && hasAny(reason, ["画面", "声音", "声", "变化", "越来越"]);
+        const feedback = document.getElementById("nearFeedback");
+        if (orderOk && reasonOk) {
+          state.blockingAttempts.near = 0;
+          hideEscape("nearEscape");
+          state.progress.near = true;
+          logEvent("near-transfer-pass", { order: nearAnswer, reason: reason });
+          feedback.className = "feedback good";
+          feedback.textContent = "近迁移成立：换成雷雨，你仍能用“由远及近 + 画面声音”组织现场。";
+          saveState();
+          setTimeout(function () { showScreen("far"); }, 750);
+        } else {
+          const attempts = noteBlockedAttempt("near");
+          logEvent("near-transfer-retry", { order: nearAnswer, reason: reason, orderOk: orderOk, reasonOk: reasonOk });
+          feedback.className = "feedback bad";
+          feedback.textContent = !orderOk ? "顺序还没形成由远及近，请重新排列。" : "顺序对了，还要说明画面或声音怎样随镜头变化。";
+          if (attempts >= LESSON_BLUEPRINT.maxBlockingAttempts) {
+            document.getElementById("nearEscape").classList.remove("hidden");
+            markReferenceSeen("near", NEAR_REFERENCE, "near-transfer");
+          }
+          saveState();
+        }
+      }
+
+      function updateFarChecks() {
+        const text = document.getElementById("farText").value;
+        state.farText = text;
+        const result = evaluateTransfer(text);
+        [["farLength", result.length], ["farPosition", result.position], ["farSight", result.sight], ["farSound", result.sound]].forEach(function (pair) {
+          document.getElementById(pair[0]).classList.toggle("ok", pair[1]);
+        });
+        return result;
+      }
+
+      function checkFar() {
+        const result = updateFarChecks();
+        const feedback = document.getElementById("farFeedback");
+        if (result.ok) {
+          state.blockingAttempts.far = 0;
+          hideEscape("farEscape");
+          state.progress.far = true;
+          state.progress.completed = true;
+          state.completedAt = new Date().toISOString();
+          logEvent("far-transfer-pass", { length: state.farText.length });
+          feedback.className = "feedback good";
+          feedback.textContent = "远迁移成立：镜头在移动，眼睛和耳朵都在工作。";
+          saveState();
+          setTimeout(function () { showScreen("complete"); }, 750);
+        } else {
+          const attempts = noteBlockedAttempt("far");
+          const missing = [];
+          if (!result.length) missing.push("字数 60–180");
+          if (!result.position) missing.push("镜头移动");
+          if (!result.sight) missing.push("具体画面");
+          if (!result.sound) missing.push("声音变化");
+          logEvent("far-transfer-retry", { answer: state.farText, missing: missing });
+          feedback.className = "feedback bad";
+          feedback.textContent = "先补第一个缺口：" + missing[0] + "。";
+          if (attempts >= LESSON_BLUEPRINT.maxBlockingAttempts) {
+            document.getElementById("farEscape").classList.remove("hidden");
+            markReferenceSeen("far", FAR_REFERENCE, "far-transfer");
+          }
+          saveState();
+        }
+      }
+
+      function renderComplete() {
+        const mastered = QUESTIONS.filter(function (question) { return state.mastered[question.id]; }).length;
+        document.getElementById("completeMastery").textContent = mastered ? String(mastered) : (state.answers.diagnosis ? "快测" : "0");
+        document.getElementById("completeRepairs").textContent = String(Object.keys(state.wrongbook).length);
+      }
+
+      function renderParent() {
+        const list = document.getElementById("wrongList");
+        const entries = Object.entries(state.wrongbook);
+        const reviewKeys = Object.keys(state.reviewNeeded || {});
+        list.innerHTML = "";
+        if (!entries.length && !reviewKeys.length) list.innerHTML = "<li>暂无错题或待复习项目</li>";
+        entries.forEach(function (entry) {
+          const li = document.createElement("li");
+          const item = entry[1];
+          const status = state.reviewNeeded[entry[0]] ? "已看参考答案，待复习" : (item.mastered ? "已修复" : "待回原题");
+          li.textContent = entry[0] + "：错 " + item.attempts + " 次，连续正确 " + item.streak + "/2，" + status;
+          list.appendChild(li);
+        });
+        reviewKeys.filter(function (key) { return !state.wrongbook[key]; }).forEach(function (key) {
+          const li = document.createElement("li");
+          li.textContent = key + "：已看参考答案，待复习";
+          list.appendChild(li);
+        });
+      }
+
+      function downloadFile(name, content, type) {
+        const blob = new Blob([content], { type: type });
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement("a");
+        link.href = url;
+        link.download = name;
+        document.body.appendChild(link);
+        link.click();
+        link.remove();
+        URL.revokeObjectURL(url);
+      }
+
+      function exportMarkdown() {
+        const lines = [
+          "# Eddey《观潮》认知直达学习记录", "",
+          "- 版本：" + APP_VERSION,
+          "- 模式：" + (testMode ? "测试" : "正式"),
+          "- 累计有效用时：" + Math.round(state.activeMs / 1000) + " 秒",
+          "- 完成：" + (state.progress.completed ? "是" : "否"), "",
+          "## 核心解释", "",
+          JSON.stringify(state.answers.teachback || state.answers.diagnosis || "尚未提交"), "",
+          "## 掌握与修复", ""
+        ];
+        QUESTIONS.forEach(function (question) { lines.push("- " + question.id + "：" + (state.mastered[question.id] ? "已掌握" : "未掌握")); });
+        const reviewKeys = Object.keys(state.reviewNeeded || {});
+        lines.push("", "## 待复习", "", reviewKeys.length ? reviewKeys.map(function (key) { return "- " + key + "：看过参考答案，未计入独立掌握"; }).join("\n") : "暂无");
+        lines.push("", "## 近迁移", "", state.nearReason || "尚未提交", "", "## 远迁移", "", state.farText || "尚未提交");
+        downloadFile("Eddey-观潮认知直达记录-20260901.md", lines.join("\n"), "text/markdown;charset=utf-8");
+      }
+
+      function importRecord(file) {
+        const reader = new FileReader();
+        reader.onload = function () {
+          const feedback = document.getElementById("dataFeedback");
+          try {
+            const incoming = JSON.parse(String(reader.result));
+            const valid = incoming.schema === "study-portal-learning-record"
+              && incoming.version === APP_VERSION
+              && incoming.appId === LESSON_BLUEPRINT.appId
+              && incoming.child === "eddey"
+              && incoming.testMode === testMode;
+            if (!valid) throw new Error("身份、应用、版本或测试模式不匹配");
+            const base = freshState();
+            state = Object.assign(base, incoming, {
+              blockingAttempts: Object.assign({}, base.blockingAttempts, incoming.blockingAttempts || {}),
+              returnedFromRepair: Object.assign({}, base.returnedFromRepair, incoming.returnedFromRepair || {}),
+              revealedAnswers: Object.assign({}, base.revealedAnswers, incoming.revealedAnswers || {}),
+              reviewNeeded: Object.assign({}, base.reviewNeeded, incoming.reviewNeeded || {})
+            });
+            orderAnswer = Array.isArray(state.answers.sequence) ? state.answers.sequence.slice() : [];
+            nearAnswer = Array.isArray(state.nearAnswer) ? state.nearAnswer.slice() : [];
+            saveState();
+            restoreInputs();
+            showScreen(state.currentScreen || "welcome");
+            feedback.className = "feedback good";
+            feedback.textContent = "同版本记录已导入。";
+          } catch (error) {
+            feedback.className = "feedback bad";
+            feedback.textContent = "无法导入：" + error.message;
+          }
+        };
+        reader.readAsText(file);
+      }
+
+      function restoreInputs() {
+        if (state.answers.diagnosis) document.getElementById("diagnosisInput").value = state.answers.diagnosis;
+        const teachback = state.answers.teachback || {};
+        document.getElementById("tbFrom").value = teachback.from || "";
+        document.getElementById("tbTo").value = teachback.to || "";
+        document.getElementById("tbWave").value = teachback.wave || "";
+        document.getElementById("tbSound").value = teachback.sound || "";
+        document.getElementById("tbEffect").value = teachback.effect || "";
+        document.getElementById("farText").value = state.farText || "";
+        updateFarChecks();
+      }
+
+      document.querySelectorAll("[data-go]").forEach(function (button) {
+        button.addEventListener("click", function () {
+          if (button.dataset.go === "independent") {
+            state.progress.toolkit = true;
+            state.questionIndex = 0;
+          }
+          showScreen(button.dataset.go);
+        });
+      });
+      document.getElementById("checkDiagnosis").addEventListener("click", checkDiagnosis);
+      document.getElementById("tideRail").addEventListener("input", function (event) { updateTide(event.target.value); });
+      document.getElementById("goTeachback").addEventListener("click", function () {
+        if (state.visitedStages.length < 4) {
+          document.getElementById("labFeedback").className = "feedback bad";
+          document.getElementById("labFeedback").textContent = "你现在也可以继续；如果还说不清，先至少比较“远声、白线、水墙、战马”四站。";
+        }
+        showScreen("teachback");
+      });
+      document.getElementById("checkTeachback").addEventListener("click", checkTeachback);
+      document.getElementById("retryTeachback").addEventListener("click", function () {
+        hideEscape("teachbackEscape");
+        document.getElementById("tbFrom").focus();
+      });
+      document.getElementById("continueTeachback").addEventListener("click", function () {
+        state.progress.core = true;
+        state.progress.teachback = true;
+        logEvent("continued-after-reference", { key: "teachback" });
+        saveState();
+        showScreen("toolkit");
+      });
+      document.querySelectorAll("[data-tool]").forEach(function (button) { button.addEventListener("click", function () { renderTool(button.dataset.tool); }); });
+      document.getElementById("checkQuestion").addEventListener("click", checkQuestion);
+      document.getElementById("retryQuestion").addEventListener("click", function () {
+        hideEscape("questionEscape");
+        const input = document.getElementById("textAnswer") || document.querySelector("#questionBody button:not([disabled]), #questionBody select");
+        if (input) input.focus();
+      });
+      document.getElementById("continueQuestion").addEventListener("click", function () {
+        const question = QUESTIONS[state.questionIndex];
+        state.returnedFromRepair[question.id] = false;
+        logEvent("continued-after-reference", { key: question.id, source: "independent" });
+        saveState();
+        advanceQuestion();
+      });
+      document.getElementById("checkRepair").addEventListener("click", checkRepair);
+      document.getElementById("retryRepair").addEventListener("click", function () {
+        hideEscape("repairEscape");
+        document.getElementById("repairSelect").value = "";
+        document.getElementById("repairSelect").focus();
+      });
+      document.getElementById("continueRepair").addEventListener("click", function () {
+        const id = state.activeRepair;
+        if (!id) return;
+        state.returnedFromRepair[id] = false;
+        logEvent("continued-after-reference", { key: id, source: "repair" });
+        saveState();
+        advanceQuestion();
+      });
+      document.getElementById("reviewToolkit").addEventListener("click", function () { showScreen("toolkit"); });
+      document.getElementById("returnOriginal").addEventListener("click", function () { showScreen("independent"); });
+      document.getElementById("resetNear").addEventListener("click", function () { nearAnswer = []; state.nearAnswer = []; saveState(); renderNear(); });
+      document.getElementById("nearReason").addEventListener("input", function (event) { state.nearReason = event.target.value; saveState(); });
+      document.getElementById("checkNear").addEventListener("click", checkNear);
+      document.getElementById("retryNear").addEventListener("click", function () {
+        hideEscape("nearEscape");
+        document.getElementById("nearReason").focus();
+      });
+      document.getElementById("continueNear").addEventListener("click", function () {
+        state.progress.near = true;
+        logEvent("continued-after-reference", { key: "near" });
+        saveState();
+        showScreen("far");
+      });
+      document.getElementById("farText").addEventListener("input", function () { updateFarChecks(); saveState(); });
+      document.getElementById("checkFar").addEventListener("click", checkFar);
+      document.getElementById("retryFar").addEventListener("click", function () {
+        hideEscape("farEscape");
+        document.getElementById("farText").focus();
+      });
+      document.getElementById("continueFar").addEventListener("click", function () {
+        state.progress.far = true;
+        state.progress.completed = true;
+        state.completedAt = new Date().toISOString();
+        logEvent("continued-after-reference", { key: "far" });
+        saveState();
+        showScreen("complete");
+      });
+
+      const parentDialog = document.getElementById("parentDialog");
+      document.getElementById("openParent").addEventListener("click", function () { renderParent(); parentDialog.showModal(); });
+      document.getElementById("closeParent").addEventListener("click", function () { parentDialog.close(); });
+      parentDialog.addEventListener("click", function (event) { if (event.target === parentDialog) parentDialog.close(); });
+      document.getElementById("modeText").textContent = testMode ? "隔离测试记录（不进入正式命名空间）" : "正式学习记录";
+      document.getElementById("dailySurprise").textContent = DAILY_SURPRISES[dailySurpriseKey()];
+      document.getElementById("exportJson").addEventListener("click", function () { saveState(); downloadFile("Eddey-观潮认知直达记录-20260901.json", JSON.stringify(state, null, 2), "application/json;charset=utf-8"); });
+      document.getElementById("exportMarkdown").addEventListener("click", exportMarkdown);
+      document.getElementById("importJson").addEventListener("change", function (event) { if (event.target.files && event.target.files[0]) importRecord(event.target.files[0]); event.target.value = ""; });
+      document.getElementById("clearData").addEventListener("click", function () {
+        if (!confirm("只清空 Eddey 这一课、这一模式的本机记录，确定吗？")) return;
+        localStorage.removeItem(STORAGE_KEY);
+        state = freshState();
+        location.reload();
+      });
+      document.addEventListener("visibilitychange", saveState);
+      window.addEventListener("beforeunload", saveState);
+
+      renderFilmStrip();
+      renderTool("structure");
+      restoreInputs();
+      renderProgress();
+      renderParent();
+      updateTide(state.visitedStages[state.visitedStages.length - 1] || 0);
+      showScreen(state.currentScreen || "welcome", { noSave: true });
+    }
+  </script>
+</body>
+</html>

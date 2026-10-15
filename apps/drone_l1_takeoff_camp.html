@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>无人机 L1 起飞特训营 · 装备检查 + 起降训练</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+:root{--ink:#22304A;--blue:#2E9BFF;--blue-d:#1B7BD8;--yellow:#FFD166;--pink:#FF9EC4;--green:#8CE99A;--orange:#FF9F43;--red:#FF5D5D;--purple:#B39DDB;--muted:#6B7A94}
+html{font-size:17px}
+body{font-family:"PingFang SC","Microsoft YaHei","Segoe UI",system-ui,sans-serif;color:var(--ink);
+background:linear-gradient(180deg,#BFE6FF 0%,#E8F7FF 45%,#FFF7E8 100%);min-height:100vh;padding-bottom:40px}
+.wrap{max-width:560px;margin:0 auto;padding:16px}
+.screen{display:none;animation:pop .35s ease}.screen.on{display:block}
+@keyframes pop{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.card{background:#fff;border-radius:22px;padding:18px;box-shadow:0 8px 22px rgba(70,110,160,.16);margin-bottom:14px}
+h1{font-size:26px;font-weight:800;line-height:1.2}h2{font-size:20px;font-weight:700;margin-bottom:8px}
+.sub{color:var(--muted);font-size:13px;margin-top:6px;line-height:1.5}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:52px;padding:12px 22px;border:none;border-radius:16px;background:var(--yellow);color:var(--ink);font-size:16px;font-weight:700;cursor:pointer;box-shadow:0 4px 0 rgba(34,48,74,.9);transition:transform .08s,box-shadow .08s;user-select:none;font-family:inherit}
+.btn:active{transform:scale(.98);box-shadow:0 1px 0 rgba(34,48,74,.9)}
+.btn.blue{background:var(--blue);color:#fff}.btn.green{background:var(--green)}.btn.pink{background:var(--pink)}.btn.purple{background:var(--purple);color:#fff}.btn.orange{background:var(--orange);color:#fff}.btn.ghost{background:#fff;box-shadow:0 0 0 2px var(--ink)}
+.btn.big{width:100%;font-size:18px;min-height:58px;border-radius:18px}
+.btnrow{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+.menu{display:flex;flex-direction:column;gap:12px;margin-top:16px}
+.menu .btn{justify-content:flex-start;font-size:17px;min-height:62px;border-radius:18px}.menu .btn .ico{font-size:26px}
+.topbar{display:flex;align-items:center;gap:10px;margin-bottom:12px}.topbar .btn{min-height:44px;padding:8px 14px;font-size:14px}
+.prog{flex:1;height:14px;background:#fff;border-radius:99px;box-shadow:inset 0 0 0 2px var(--ink);overflow:hidden}
+.prog>i{display:block;height:100%;background:linear-gradient(90deg,var(--blue),var(--yellow));width:0%;transition:width .4s}
+.tip{background:#FFF8E1;border:2px dashed var(--yellow);border-radius:14px;padding:12px 14px;font-size:14.5px;margin:10px 0;line-height:1.7}
+.demo{background:#F0F8FF;border-radius:14px;padding:14px;margin:10px 0;line-height:1.8;box-shadow:inset 0 0 0 2px var(--blue)}
+.opt{display:block;width:100%;text-align:left;min-height:56px;margin:10px 0;padding:14px 16px;background:#fff;border:none;border-radius:16px;font-size:16px;cursor:pointer;box-shadow:0 0 0 2px var(--ink),0 4px 0 rgba(34,48,74,.9);transition:transform .08s;font-family:inherit;color:var(--ink);font-weight:600}
+.opt:active{transform:scale(.98)}
+.opt.right{background:#D8F8E8;box-shadow:0 0 0 2px #1e9e62,0 4px 0 rgba(34,48,74,.9)}
+.opt.wrong{background:#FFE0E0;box-shadow:0 0 0 2px var(--red),0 4px 0 rgba(34,48,74,.9);animation:shake .35s}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-8px)}75%{transform:translateX(8px)}}
+.explain{display:none;background:#EAF4FF;border-radius:14px;padding:14px 16px;margin-top:12px;font-size:15px;line-height:1.75;box-shadow:inset 0 0 0 2px var(--blue)}
+.explain.on{display:block;animation:pop .3s}
+.badge{display:inline-block;background:var(--blue);color:#fff;border-radius:999px;padding:4px 14px;font-size:12.5px;font-weight:700;margin-bottom:8px}
+.badge.gray{background:var(--muted)}.badge.yellow{background:var(--yellow);color:var(--ink)}.badge.orange{background:var(--orange)}.badge.red{background:var(--red)}
+.center{text-align:center}.big-emoji{font-size:52px;display:block;margin:4px 0 10px}
+.confetti{position:fixed;top:-10px;width:12px;height:12px;z-index:99;animation:fall linear forwards;pointer-events:none;border-radius:3px}
+@keyframes fall{to{transform:translateY(105vh) rotate(720deg);opacity:.7}}
+.footer-note{text-align:center;color:var(--muted);font-size:12px;margin-top:20px;line-height:1.7}
+.recall-answer{filter:blur(8px);cursor:pointer;user-select:none;border-radius:8px;display:inline-block;transition:filter .3s}
+.recall-answer.open{filter:none}
+.recall-item{background:#fff;border-radius:16px;box-shadow:0 4px 0 rgba(34,48,74,.9),0 0 0 2px var(--ink);padding:14px 16px;margin:10px 0;line-height:1.7}
+/* 模式对比表 */
+.modetbl{width:100%;border-collapse:separate;border-spacing:0 8px;font-size:13.5px}
+.modetbl th{font-size:12px;color:var(--muted);text-align:left;padding:0 8px}
+.modetbl td{background:#F0F8FF;padding:10px 8px;line-height:1.5}
+.modetbl tr td:first-child{border-radius:12px 0 0 12px;font-weight:800}
+.modetbl tr td:last-child{border-radius:0 12px 12px 0}
+.modetbl tr.hl td{background:#FFF3D6;box-shadow:inset 0 0 0 2px var(--yellow)}
+/* 虚拟摇杆 */
+.skybox{position:relative;height:230px;border-radius:18px;background:linear-gradient(180deg,#7CC6FF,#D8F1FF 70%,#BEE8C0 70%,#9CDC9C);box-shadow:inset 0 0 0 2px var(--ink);overflow:hidden;margin:12px 0}
+.skybox .cloud{position:absolute;font-size:22px;opacity:.85;animation:drift 9s linear infinite}
+@keyframes drift{from{left:-30px}to{left:105%}}
+#skyDrone{position:absolute;left:50%;bottom:8px;font-size:44px;transform:translateX(-50%);filter:drop-shadow(0 6px 4px rgba(0,0,0,.25));will-change:transform,left,bottom}
+.hmeter{position:absolute;right:8px;top:8px;bottom:8px;width:34px;background:rgba(255,255,255,.75);border-radius:12px;box-shadow:inset 0 0 0 2px var(--ink);display:flex;flex-direction:column-reverse;align-items:center;padding:4px}
+.hmeter .fill{width:100%;border-radius:8px;background:linear-gradient(180deg,var(--blue),var(--green));transition:height .1s}
+.hmeter .hnum{position:absolute;top:-24px;left:50%;transform:translateX(-50%);font-size:12px;font-weight:900;background:#fff;border-radius:8px;padding:1px 7px;box-shadow:0 0 0 2px var(--ink);white-space:nowrap}
+.hmark{position:absolute;left:-38px;font-size:10.5px;font-weight:800;color:var(--blue-d)}
+.sticks{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.stickbox{text-align:center}
+.stickbox .slabel{font-size:13px;font-weight:800;margin-bottom:6px}
+.stickbox .slabel small{display:block;color:var(--muted);font-weight:600;font-size:11px;margin-top:2px}
+.pad{position:relative;width:132px;height:132px;margin:0 auto;border-radius:50%;background:radial-gradient(circle at 50% 40%,#fff,#DCE9F5);box-shadow:inset 0 0 0 3px var(--ink),0 4px 0 rgba(34,48,74,.9);touch-action:none;user-select:none}
+.pad .dir{position:absolute;font-size:10px;font-weight:800;color:var(--muted)}
+.pad .knob{position:absolute;left:50%;top:50%;width:52px;height:52px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#fff,var(--orange));box-shadow:0 4px 10px rgba(0,0,0,.3),inset 0 0 0 3px rgba(34,48,74,.85);transform:translate(-50%,-50%);pointer-events:none}
+.tasks{margin-top:12px}
+.task{display:flex;align-items:center;gap:8px;background:#fff;border-radius:12px;box-shadow:0 0 0 2px var(--ink);padding:9px 12px;margin:8px 0;font-size:14px;font-weight:700}
+.task .tick{width:26px;height:26px;border-radius:50%;background:#EDF2F7;display:flex;align-items:center;justify-content:center;font-size:14px;flex:none}
+.task.done .tick{background:var(--green)}
+.task.done{text-decoration:line-through;color:var(--muted)}
+/* 悬停挑战 */
+.hovStage{position:relative;height:250px;border-radius:18px;background:linear-gradient(180deg,#8FD0FF,#E6F6FF);box-shadow:inset 0 0 0 2px var(--ink);overflow:hidden;margin:12px 0}
+.hovRing{position:absolute;left:50%;top:50%;width:120px;height:120px;border-radius:50%;border:4px dashed rgba(34,48,74,.55);transform:translate(-50%,-50%);transition:border-color .2s,box-shadow .2s}
+.hovRing.hot{border-color:var(--red);box-shadow:0 0 18px rgba(255,93,93,.7)}
+.hovRing::after{content:"30cm 悬停圈";position:absolute;left:50%;top:104%;transform:translateX(-50%);font-size:11px;font-weight:800;color:var(--ink);white-space:nowrap}
+#hovDrone{position:absolute;left:50%;top:50%;font-size:42px;transform:translate(-50%,-50%);will-change:transform}
+.hud{display:flex;justify-content:space-between;align-items:center;background:#fff;border-radius:14px;box-shadow:0 0 0 2px var(--ink);padding:10px 14px;font-weight:800;font-size:15px}
+.hud b{color:var(--blue-d);font-size:20px}
+.dpad{display:grid;grid-template-columns:repeat(3,64px);grid-template-rows:repeat(3,56px);gap:8px;justify-content:center;margin-top:12px}
+.dpad .dbtn{border:none;border-radius:16px;background:#fff;font-size:22px;box-shadow:0 0 0 2px var(--ink),0 4px 0 rgba(34,48,74,.9);cursor:pointer;font-family:inherit}
+.dpad .dbtn:active{transform:scale(.94);background:var(--yellow)}
+.dpad .lbl{font-size:10px;display:block;font-weight:800;color:var(--muted)}
+/* 安全场景 */
+.scene{background:#fff;border-radius:18px;box-shadow:0 0 0 2px var(--ink);padding:16px;margin:10px 0;text-align:center}
+.scene .semoji{font-size:46px}
+.scene .stxt{font-size:16px;font-weight:700;line-height:1.7;margin:8px 0}
+/* 排序 */
+.seqitem{background:#fff;border-radius:14px;box-shadow:0 0 0 2px var(--ink);padding:12px 14px;margin:8px 0;font-size:15px;font-weight:700;display:flex;align-items:center;gap:10px}
+.seqitem .n{width:30px;height:30px;border-radius:50%;background:#EDF2F7;display:flex;align-items:center;justify-content:center;font-weight:900;flex:none}
+.seqitem.set .n{background:var(--green)}
+/* 速记卡 */
+.memo h3{font-size:16px;margin:12px 0 6px;color:var(--blue-d)}
+.memo ul{padding-left:20px;line-height:1.9;font-size:14.5px}
+.verse{background:linear-gradient(135deg,#FFF3D6,#FFE8B8);border-radius:14px;padding:14px;font-weight:800;font-size:15.5px;line-height:2;text-align:center;margin:10px 0}
+@media print{.menu,.topbar,.btnrow,.btn,.footer-note,.dpad{display:none!important}.card{box-shadow:none;border:1px solid #ccc}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01s!important;animation-iteration-count:1!important;transition-duration:.01s!important}}
+
+/* 充电实验 */
+.chgbox{background:#F7FBFF;border-radius:16px;box-shadow:inset 0 0 0 2px var(--ink);padding:14px;margin:10px 0;text-align:center}
+.chgbar{position:relative;height:26px;border-radius:99px;background:#EDF2F7;box-shadow:inset 0 0 0 2px var(--ink);overflow:hidden;margin:10px 0}
+.chgbar>i{display:block;height:100%;width:0%;background:linear-gradient(90deg,var(--green),var(--yellow),var(--red))}
+.chgzone{position:absolute;top:0;bottom:0;left:40%;width:20%;background:rgba(140,233,154,.45);border-left:2px dashed #1e9e62;border-right:2px dashed #1e9e62}
+.chglamp{display:inline-block;min-width:120px;border-radius:99px;padding:6px 16px;font-weight:900;background:#EDF2F7;box-shadow:0 0 0 2px var(--ink)}
+.chglamp.green{background:var(--green)}.chglamp.red{background:var(--red);color:#fff;animation:blink .5s infinite}
+@keyframes blink{50%{opacity:.55}}
+/* 检查清单 */
+.chk{display:flex;align-items:center;gap:12px;background:#fff;border-radius:14px;box-shadow:0 0 0 2px var(--ink);padding:12px 14px;margin:8px 0;font-weight:700;font-size:15px}
+.chk .box{width:34px;height:34px;border-radius:10px;background:#EDF2F7;display:flex;align-items:center;justify-content:center;font-size:18px;flex:none}
+.chk.done .box{background:var(--green)}
+.chk.done{opacity:.75}
+/* 起降训练 */
+.throtwrap{display:grid;grid-template-columns:1fr 1fr;gap:12px;align-items:start}
+.flymsg{background:#fff;border-radius:12px;box-shadow:0 0 0 2px var(--ink);padding:9px 12px;font-size:13.5px;font-weight:800;margin-top:10px;min-height:44px;line-height:1.5}
+.countchip{display:inline-block;background:var(--red);color:#fff;border-radius:99px;padding:4px 14px;font-weight:900;font-size:15px}
+.stagechip{display:inline-block;background:var(--blue);color:#fff;border-radius:99px;padding:4px 14px;font-weight:900;font-size:13px;margin-left:6px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<section id="home" class="screen on">
+  <div class="card center">
+    <span class="badge orange">🚁 无人机集训 · L1 考级必须掌握</span>
+    <span class="big-emoji">🛫</span>
+    <h1>无人机 L1<br>起飞特训营</h1>
+    <p class="sub">第 5 课《起飞准备：场地侦查与装备检查》+ 第 6 课《首秀时刻：起降悬停的基础训练》<br>从充电、对频、检查清单，到 1 分钟「起飞→平飞→降落」全流程模拟。</p>
+  </div>
+  <div class="menu">
+    <button class="btn orange" onclick="go('battery')"><span class="ico">🔋</span>关卡一：锂电池安全 + 充电实验</button>
+    <button class="btn blue" onclick="go('bind')"><span class="ico">📡</span>关卡二：对频五步 + 指示灯</button>
+    <button class="btn green" onclick="go('checklist')"><span class="ico">📋</span>关卡三：起飞前检查清单</button>
+    <button class="btn pink" onclick="go('fly')"><span class="ico">🛫</span>关卡四：起降大考（1分钟科目一）</button>
+    <button class="btn purple" onclick="go('recall')"><span class="ico">🙈</span>遮一遮：考点回忆卡</button>
+    <button class="btn yellow" onclick="startQuiz()"><span class="ico">📝</span>考级模拟：12 题通关考</button>
+    <button class="btn blue" onclick="go('memo')"><span class="ico">📇</span>速记卡：考前 3 分钟过一遍</button>
+    <button class="btn ghost" onclick="go('errbook')"><span class="ico">📒</span>错题本 <span id="errCount"></span></button>
+  </div>
+  <div class="card" style="margin-top:14px">
+    <span class="badge gray">🗂 学习记录（两人共用一份）</span>
+    <div id="recInfo" style="font-size:14.5px;line-height:1.8">开始闯关后自动记录。</div>
+    <div class="btnrow">
+      <button class="btn ghost" onclick="recExport('json')">⬇ 导出 JSON</button>
+      <button class="btn ghost" onclick="recExport('md')">⬇ 导出 Markdown</button>
+      <button class="btn ghost" onclick="recImport()">⬆ 导入记录（粘贴 JSON 后点此）</button>
+    </div>
+    <textarea id="recBox" style="display:none;width:100%;min-height:120px;border-radius:12px;border:2px solid #E8E2F4;padding:10px;font-size:12px;margin-top:8px"></textarea>
+  </div>
+  <p class="footer-note">哥哥弟弟学的内容一样，本营共用进度不分人。<br>音频不适用：本课以流程操练与手感训练为主，无需朗读。</p>
+</section>
+
+
+<section id="battery" class="screen">
+  <div class="topbar"><button class="btn ghost" onclick="go('home')">🏠 首页</button></div>
+  <div class="card">
+    <span class="badge orange">关卡一 · 锂电池安全使用</span>
+    <div class="demo">🔌 <b>充电规范：</b>必须用<b>原厂 1A 充电器</b>，<b>禁用快充</b>；充电时长控制在 <b>40–60 分钟</b>，指示灯变绿<b>立即断电</b>，严禁过充、通宵充电。无人机指示灯<b>快速闪烁 = 低电量</b>，需及时降落补电。<br><br>📦 <b>使用与存放：</b>使用前检查电池有无<b>鼓包、破损</b>，异常立即停用；远离高温、撞击、尖锐物品；存放时避开金属物件，防止短路。<br><br>🔥 <b>安全警示：</b>锂电池热失控易引发火灾，违规操作会威胁人身与财产安全！</div>
+  </div>
+  <div class="card">
+    <span class="badge orange">关卡一 · 充电实验：灯变绿，就断电！</span>
+    <p class="sub">点开始充电。电量走到 40–60 分钟（绿色窗口）时指示灯变绿——立刻点「断电」！太早没充满，拖过 60 分钟就是过充，危险！</p>
+    <div class="chgbox">
+      <span class="chglamp" id="chgLamp">🔋 未充电</span>
+      <div class="chgbar"><div class="chgzone"></div><i id="chgFill"></i></div>
+      <div style="font-size:12px;color:var(--muted)">充电时长：<b id="chgMin">0</b> 分钟（合格窗口 40–60）</div>
+      <div class="btnrow" style="justify-content:center">
+        <button class="btn green" id="chgStart" onclick="chgStart()">🔌 开始充电</button>
+        <button class="btn pink" id="chgStop" onclick="chgStop()" disabled>⚡ 断电</button>
+      </div>
+      <div class="flymsg" id="chgMsg">充电中严禁过充、通宵充电！</div>
+    </div>
+  </div>
+</section>
+
+<section id="bind" class="screen">
+  <div class="topbar"><button class="btn ghost" onclick="go('home')">🏠 首页</button></div>
+  <div class="card">
+    <span class="badge">关卡二 · 为什么要对频？</span>
+    <div class="demo">对频让遥控器和无人机建立<b>专属无线连接</b>：避免信号串扰、防止设备被他人操控，保障飞行信号稳定。设备工作于 <b>2.4GHz</b> 频段，通过「呼叫—回应—定约—完成」完成无线电配对。</div>
+    <div class="demo">💡 <b>指示灯状态：</b>对频前双方指示灯<b>快闪</b>；对频成功后遥控器<b>常亮</b>、无人机<b>慢闪/常亮</b>。<br>🛠 <b>故障排查：</b>确保设备电量充足；严格遵循<b>先开遥控、后开飞机</b>的开机顺序。</div>
+  </div>
+  <div class="card">
+    <span class="badge">关卡二 · 标准五步对频，按顺序点亮</span>
+    <h2>从上往下，按正确顺序点</h2>
+    <div id="seqBox"></div>
+    <div class="explain" id="seqExp"></div>
+  </div>
+</section>
+
+<section id="checklist" class="screen">
+  <div class="topbar"><button class="btn ghost" onclick="go('home')">🏠 首页</button></div>
+  <div class="card">
+    <span class="badge green">关卡三 · 检查口诀</span>
+    <div class="verse">一桨二置三电池，<br>四查网箱五查人。</div>
+    <div class="demo">完整操作顺序：<b>设备逐项检查 → 先遥控后飞机开机 → 设备对频 → 环境与人身安全确认</b>，一步都不能跳！</div>
+  </div>
+  <div class="card">
+    <span class="badge green">关卡三 · 全套检查流程模拟</span>
+    <h2>跟着口诀，一项项查完才能起飞</h2>
+    <div id="chkList"></div>
+    <div class="flymsg" id="chkMsg">👆 从第 1 项开始，逐项检查。</div>
+    <div id="powerBox" style="display:none">
+      <div class="btnrow" style="justify-content:center">
+        <button class="btn blue" id="btnRemote" onclick="powerOn('remote')">📡 开遥控器</button>
+        <button class="btn orange" id="btnDrone" onclick="powerOn('drone')">🚁 开无人机</button>
+      </div>
+      <div class="btnrow" style="justify-content:center">
+        <button class="btn purple" id="btnBind" onclick="doBind()" disabled>🔗 对频</button>
+        <button class="btn green" id="btnFly" onclick="takeOff()" disabled>🛫 确认环境，起飞！</button>
+      </div>
+    </div>
+    <div class="skybox" id="chkSky" style="display:none;height:180px">
+      <span id="chkDrone" style="position:absolute;left:50%;bottom:8px;font-size:44px;transform:translateX(-50%);transition:bottom 1.6s ease">🚁</span>
+    </div>
+  </div>
+</section>
+
+<section id="fly" class="screen">
+  <div class="topbar"><button class="btn ghost" onclick="go('home')">🏠 首页</button></div>
+  <div class="card">
+    <span class="badge pink">关卡四 · 先背要领</span>
+    <div class="demo">🛫 <b>起飞：</b>缓慢、均匀地推动左杆油门（<b>匀速推</b>，不能猛推），垂直上升至约 <b>1 米</b>高度后稳住油门，不侧翻、不漂移。<br>❌ 猛推油门 → 冲天失控；油门不足 → 地面弹跳。<br><br>🛬 <b>降落：</b>缓慢、均匀地<b>收回</b>油门（匀速收油），平稳下降；<b>触地轻</b>：接地瞬间几乎无冲击力、不弹跳。<br>❌ 快速收油 → 自由落体砸地；接地时油门没收净 → 弹跳。</div>
+    <div class="demo">⚙️ <b>油门与高度的关系：</b>油门控制四个电机的<b>总转速</b>。转速越高→升力越大→上升；转速降低→升力减小→下降；<b>升力恰好等于重力时 → 悬停</b>。<br>⏱ <b>考试科目一：</b>起飞→平飞→降落三个基础动作，<b>1 分钟内</b>完成全套流程，每人独立完成。航空领域强调「程序化操作」——练成肌肉记忆，紧张时也能本能完成，至少练 2 轮！</div>
+  </div>
+  <div class="card">
+    <span class="badge pink">关卡四 · 起降大考：1 分钟科目一</span>
+    <p class="sub">左摇杆是油门（向上推=加油门）。<b>阶段一</b>：匀速推到 1 米稳住；<b>阶段二</b>：右摇杆向右平飞一段；<b>阶段三</b>：匀速收油轻落地，落地前油门要收净！猛推、砸地、超时都要重考。</p>
+    <div class="hud"><span>⏱ 剩余 <b id="flyTime">60</b> 秒</span><span class="stagechip" id="flyStage">待开始</span></div>
+    <div class="skybox" id="flySky" style="margin-top:10px">
+      <span class="cloud" style="top:16px">☁️</span>
+      <span id="flyDrone" style="position:absolute;left:20%;bottom:8px;font-size:44px;transform:translateX(-50%);filter:drop-shadow(0 6px 4px rgba(0,0,0,.25));will-change:transform,left,bottom">🚁</span>
+      <div class="hmeter"><span class="hnum" id="flyHnum">0.0米</span><div class="fill" id="flyHfill" style="height:2%"></div><span class="hmark" style="bottom:32%">1米</span></div>
+      <div id="flyTarget" style="position:absolute;right:14%;bottom:4px;font-size:26px;opacity:.8">🎯</div>
+    </div>
+    <div class="throtwrap">
+      <div class="stickbox"><div class="slabel">左摇杆 · 油门<small>向上推=升 · 松开弹回</small></div><div class="pad" id="padT"><span class="dir" style="top:4px;left:50%;transform:translateX(-50%)">加油</span><span class="dir" style="bottom:4px;left:50%;transform:translateX(-50%)">收油</span><div class="knob" id="knobT"></div></div></div>
+      <div class="stickbox"><div class="slabel">右摇杆 · 平飞<small>阶段二用 · 向右推</small></div><div class="pad" id="padM"><span class="dir" style="right:6px;top:50%;transform:translateY(-50%)">右飞</span><div class="knob" id="knobM"></div></div></div>
+    </div>
+    <div class="flymsg" id="flyMsg">点「开始考试」→ 慢慢把油门推上去！</div>
+    <div class="btnrow" style="justify-content:center"><button class="btn green big" id="flyBtn" onclick="flyStart()">🛫 开始考试</button></div>
+  </div>
+</section>
+
+<section id="recall" class="screen">
+  <div class="topbar"><button class="btn ghost" onclick="go('home')">🏠 首页</button></div>
+  <div class="card">
+    <span class="badge" style="background:var(--purple)">🙈 遮一遮</span>
+    <h2>先在心里回答，再点开核对</h2>
+    <div id="recallList"></div>
+  </div>
+</section>
+
+<section id="quiz" class="screen">
+  <div class="topbar"><button class="btn ghost" onclick="go('home')">🏠 首页</button><div class="prog"><i id="quizProg"></i></div><span id="quizNum" style="font-weight:800"></span></div>
+  <div class="card" id="quizCard"></div>
+</section>
+
+<section id="errbook" class="screen">
+  <div class="topbar"><button class="btn ghost" onclick="go('home')">🏠 首页</button></div>
+  <div class="card"><span class="badge">📒 错题本</span><h2>错 1 次进本子，连续答对 2 次就毕业！</h2><div id="errList"></div></div>
+</section>
+
+<section id="memo" class="screen">
+  <div class="topbar"><button class="btn ghost" onclick="go('home')">🏠 首页</button><button class="btn ghost" onclick="window.print()">🖨 打印</button></div>
+  <div class="card memo">
+    <span class="badge yellow">📇 考前 3 分钟速记卡</span>
+    <div class="verse">一桨二置三电池，四查网箱五查人；<br>先遥控后飞机，对频成功再起飞；<br>起飞匀速推，降落匀速收；<br>升力等重力，悬停不用愁。</div>
+    <h3>一、锂电池安全</h3>
+    <ul>
+      <li><b>原厂 1A 充电器、禁用快充</b>；充 <b>40–60 分钟</b>，灯变绿<b>立即断电</b>，严禁过充、通宵充。</li>
+      <li>指示灯<b>快速闪烁 = 低电量</b>，及时降落补电。</li>
+      <li>用前查<b>鼓包、破损</b>；远离高温、撞击、尖锐物；存放避开金属防短路。热失控易引发火灾！</li>
+    </ul>
+    <h3>二、对频五步</h3>
+    <ul>
+      <li>作用：建立专属无线连接，防串扰、防被他人操控；<b>2.4GHz</b> 频段，呼叫—回应—定约—完成。</li>
+      <li>五步：<b>摇杆归位 → 开启遥控器 → 无人机通电 → 推动油门杆配对 → 提示音 + 指示灯常亮 = 成功</b>。</li>
+      <li>灯语：对频前双方快闪；成功后遥控器常亮、无人机慢闪/常亮。故障先查电量，牢记<b>先开遥控、后开飞机</b>。</li>
+    </ul>
+    <h3>三、起飞前检查流程</h3>
+    <ul>
+      <li>口诀：<b>一桨二置三电池，四查网箱五查人</b>。</li>
+      <li>顺序：设备逐项检查 → 先遥控后飞机开机 → 设备对频 → 环境与人身安全确认。</li>
+    </ul>
+    <h3>四、起降要领（科目一）</h3>
+    <ul>
+      <li>起飞：<b>匀速推油</b>，1 米稳住，不侧翻不漂移；猛推→冲天，不足→弹跳。</li>
+      <li>降落：<b>匀速收油</b>，触地轻、不弹跳；快收→砸地，没收净→弹跳。</li>
+      <li>科目一：<b>起飞→平飞→降落</b>，<b>1 分钟内</b>完成，独立完成；练成肌肉记忆至少 2 轮。</li>
+      <li>油门 = 四电机总转速：转速高→升力大→上升；<b>升力=重力→悬停</b>。</li>
+    </ul>
+    <h3>五、实操考核（对尾模式）</h3>
+    <ul>
+      <li>对尾模式操控：左手上下控高度，右手反向打杆控位置；同一高度同一位置悬停 <b>10 秒以上</b>，每人挑战 2 次。</li>
+    </ul>
+  </div>
+</section>
+
+</div>
+
+<script>
+"use strict";
+const $=s=>document.querySelector(s);
+function go(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('on'));document.getElementById(id).classList.add('on');window.scrollTo(0,0);REC.page(id);}
+function pop(el){el.classList.remove('pop');void el.offsetWidth;el.classList.add('pop');}
+
+/* ===== 学习记录 ===== */
+const APP_ID='drone_l1_takeoff_camp',ERR_KEY=APP_ID+'_err';
+const REC=(()=>{const KEY=APP_ID+'_record';
+  let d=null;try{d=JSON.parse(localStorage.getItem(KEY))}catch(e){}
+  if(!d||typeof d!=='object')d={child:'both',pages:{},quiz:{best:0,try:0},events:[]};
+  function save(){try{localStorage.setItem(KEY,JSON.stringify(d))}catch(e){}}
+  return{
+    page(id){d.pages[id]=(d.pages[id]||0)+1;save();renderRec();},
+    quiz(score,total){d.quiz.try++;d.quiz.best=Math.max(d.quiz.best,score);d.events.push({t:Date.now(),kind:'quiz',score,total});save();renderRec();},
+    event(kind,note){d.events.push({t:Date.now(),kind,note});save();renderRec();},
+    exportJSON(){return JSON.stringify(d,null,2)},
+    exportMD(){const L=['# 学习记录 · '+APP_ID,'孩子：'+('both'),'题目最佳：'+d.quiz.best+' / 12（共 '+d.quiz.try+' 次）','','## 事件'];
+      d.events.forEach(e=>{L.push('- '+new Date(e.t).toLocaleString()+' · '+e.kind+(e.note?(' · '+e.note):'')+(e.score!=null?(' · '+e.score+'/12'):''))});
+      return L.join('\n')},
+    importJSON(txt){const o=JSON.parse(txt);if(o&&o.events&&o.pages){d=o;save();renderRec();return true}return false}
+  };
+})();
+function renderRec(){const r=$('#recInfo');if(r)r.textContent='题目最佳 '+REC && '';}
+function renderRec(){const el=$('#recInfo');if(el){let d;try{d=JSON.parse(localStorage.getItem(APP_ID+'_record'))}catch(e){}el.textContent=d?('已完成 '+Object.keys(d.pages||{}).length+' 个关卡 · 测验最佳 '+(d.quiz?d.quiz.best:0)+' / 12'):'还没有记录，快开始吧！';}}
+
+/* ===== 错题本 ===== */
+const ERR=(()=>{let d=null;try{d=JSON.parse(localStorage.getItem(ERR_KEY))}catch(e){}
+  if(!Array.isArray(d))d=[];
+  function save(){try{localStorage.setItem(ERR_KEY,JSON.stringify(d))}catch(e){}}
+  return{
+    add(q){const f=d.find(x=>x.q===q.q);if(f)f.streak=0;else d.push({q:q.q,opts:q.opts,a:q.a,why:q.why,streak:0});save();},
+    hit(qi){const f=d[qi];if(!f)return;f.streak++;if(f.streak>=2)d.splice(qi,1);save();},
+    miss(qi){if(d[qi])d[qi].streak=0;save();},
+    list(){return d}
+  };
+})();
+
+/* ===== 关卡一：充电实验 ===== */
+let chgT=null,chgV=0;
+function chgStart(){chgV=0;$('#chgFill').style.width='0%';$('#chgMin').textContent='0';
+  $('#chgLamp').textContent='⚡ 充电中…';$('#chgLamp').className='chglamp';
+  $('#chgMsg').textContent='充电中……盯住指示灯！';$('#chgMsg').className='flymsg';
+  $('#chgStart').disabled=true;$('#chgStop').disabled=false;
+  chgT=setInterval(()=>{chgV+=1;$('#chgFill').style.width=Math.min(100,chgV/70*100)+'%';$('#chgMin').textContent=chgV;
+    if(chgV>=40){$('#chgLamp').textContent='🟢 绿灯！立即断电';$('#chgLamp').className='chglamp green';}
+    if(chgV>60){$('#chgLamp').textContent='🔴 过充警报！';$('#chgLamp').className='chglamp red';chgEnd(false,'⚠️ 超过 60 分钟还在充——过充！锂电池热失控易引发火灾，必须灯变绿立即断电。');}
+  },120);}
+function chgStop(){if(chgV<40){chgEnd(false,'🔌 才 '+chgV+' 分钟就断电——没充满！合格窗口是 40–60 分钟，灯变绿再断电。');}
+  else chgEnd(true,'✅ '+chgV+' 分钟断电，灯变绿立刻断电，完美！严禁过充、通宵充电。');}
+function chgEnd(ok,msg){clearInterval(chgT);chgT=null;$('#chgStart').disabled=false;$('#chgStop').disabled=true;
+  $('#chgMsg').textContent=msg;$('#chgMsg').className='flymsg '+(ok?'ok':'bad');
+  REC.event('battery',ok?'充电实验成功':'充电实验失误');if(ok)pop($('#chgMsg'));}
+
+/* ===== 关卡二：对频五步排序 ===== */
+const SEQ=[['🕹 摇杆归位','所有摇杆回到中立位'],['📡 开启遥控器','记住：先遥控'],['🔋 无人机通电','后开飞机'],['⬆ 推动油门杆配对','呼叫—回应—定约'],['🎵 提示音+灯常亮','对频成功！']];
+let seqStep=0;
+function renderSeq(){const box=$('#seqBox');box.innerHTML='';seqStep=0;
+  const order=SEQ.map((_,i)=>i).sort(()=>Math.random()-0.5);
+  order.forEach(i=>{const b=document.createElement('button');b.className='opt';b.innerHTML='<b>'+SEQ[i][0]+'</b> · '+SEQ[i][1];
+    b.onclick=()=>seqTap(b,i);box.appendChild(b);});
+  $('#seqExp').textContent='按对频五步的正确顺序点，点对会留在上面变绿。';}
+function seqTap(el,i){if(el.disabled)return;
+  if(i===seqStep){el.classList.add('right');el.disabled=true;seqStep++;
+    if(seqStep===SEQ.length){$('#seqExp').innerHTML='✅ 对频成功！顺序：<b>摇杆归位 → 开遥控器 → 无人机通电 → 推油门杆 → 提示音+灯常亮</b>。记住开机铁律：先遥控、后飞机！';REC.event('bind','对频排序完成');pop($('#seqExp'));}}
+  else{el.classList.add('wrong');$('#seqExp').textContent='顺序不对，想想：先准备好摇杆，先开谁、后开谁？';REC.event('bind','对频排序失误');}}
+renderSeq();
+
+/* ===== 关卡三：检查清单流程机 ===== */
+const CHK=['🌀 一桨：检查螺旋桨有无裂痕、松动','🧭 二置：无人机平放在开阔平整位置','🔋 三电池：查鼓包破损、电量充足','🥅 四查网箱：防护网箱安装到位','🧍 五查人：周围人员退到安全距离'];
+let chkIdx=0,powerR=false,powerD=false;
+function renderChk(){const box=$('#chkList');box.innerHTML='';chkIdx=0;
+  CHK.forEach((t,i)=>{const b=document.createElement('button');b.className='opt chk';b.textContent=(i+1)+'. '+t;
+    b.onclick=()=>{if(i!==chkIdx){b.classList.add('wrong');$('#chkMsg').textContent='要按口诀顺序，先做第 '+(chkIdx+1)+' 项！';return;}
+      b.classList.add('right');b.disabled=true;chkIdx++;
+      if(chkIdx===CHK.length){$('#chkMsg').textContent='✅ 五项检查完成！接下来开机：先遥控，后飞机！';$('#powerBox').style.display='block';pop($('#chkMsg'));}
+      else $('#chkMsg').textContent='很好！继续第 '+(chkIdx+1)+' 项。';};
+    box.appendChild(b);});}
+function powerOn(w){if(chkIdx<CHK.length)return;
+  if(w==='remote'){if(powerR)return;powerR=true;$('#btnRemote').disabled=true;$('#btnRemote').textContent='📡 遥控器 ✔';}
+  else{if(powerD)return;
+    if(!powerR){$('#chkMsg').textContent='❌ 顺序错了！必须先开遥控器、后开无人机，重新来。';REC.event('checklist','开机顺序错误');return;}
+    powerD=true;$('#btnDrone').disabled=true;$('#btnDrone').textContent='🚁 无人机 ✔';$('#btnBind').disabled=false;$('#chkMsg').textContent='开机完成，进行对频！';}
+  if(powerR&&!powerD)$('#chkMsg').textContent='遥控器已开，现在开无人机。';}
+function doBind(){$('#btnBind').disabled=true;$('#btnBind').textContent='🔗 对频成功 ✔';
+  $('#btnFly').disabled=false;$('#chkMsg').textContent='🎵 提示音响起、指示灯常亮——对频成功！确认环境安全，起飞！';}
+function takeOff(){$('#chkSky').style.display='block';$('#btnFly').disabled=true;
+  setTimeout(()=>{$('#chkDrone').style.bottom='120px';},50);
+  $('#chkMsg').textContent='🛫 起飞成功！完整流程：检查 → 先遥控后飞机 → 对频 → 环境确认。';
+  $('#chkMsg').className='flymsg ok';REC.event('checklist','起飞流程完成');}
+renderChk();
+
+/* ===== 关卡四：起降大考 ===== */
+const stT={x:0,y:0,on:false},stM={x:0,y:0,on:false};
+function bindPad(padId,knobId,st){const pad=$(padId),knob=$(knobId);let pid=null;
+ function setFromEvent(e){const r=pad.getBoundingClientRect(),cx=r.left+r.width/2,cy=r.top+r.height/2;
+  let dx=(e.clientX-cx)/(r.width/2),dy=(e.clientY-cy)/(r.height/2);
+  const len=Math.hypot(dx,dy);if(len>1){dx/=len;dy/=len;}st.x=dx;st.y=dy;
+  knob.style.transform=`translate(calc(-50% + ${dx*38}px), calc(-50% + ${dy*38}px))`;}
+ pad.addEventListener('pointerdown',e=>{pid=e.pointerId;pad.setPointerCapture(pid);st.on=true;setFromEvent(e);e.preventDefault();});
+ pad.addEventListener('pointermove',e=>{if(st.on&&e.pointerId===pid)setFromEvent(e);});
+ function release(e){if(e.pointerId!==pid)return;st.on=false;st.x=0;st.y=0;knob.style.transform='translate(-50%,-50%)';}
+ pad.addEventListener('pointerup',release);pad.addEventListener('pointercancel',release);}
+bindPad('#padT','#knobT',stT);bindPad('#padM','#knobM',stM);
+
+const fly={run:false,phase:0,h:0,x:20,v:0,thr:0,time:60,last:0,stable:0};
+function flyMsg(t,ok){$('#flyMsg').textContent=t;$('#flyMsg').className='flymsg'+(ok===true?' ok':ok===false?' bad':'');}
+function flyStart(){fly.run=true;fly.phase=1;fly.h=0;fly.x=20;fly.v=0;fly.thr=0;fly.time=60;fly.stable=0;fly.last=performance.now();
+  $('#flyBtn').disabled=true;$('#flyStage').textContent='阶段一 · 起飞到 1 米';$('#flyDrone').style.bottom='8px';
+  flyMsg('慢慢向上推左杆，匀速加油门！猛推会冲天！');REC.event('fly','科目一开考');}
+function flyFail(why){fly.run=false;$('#flyBtn').disabled=false;$('#flyStage').textContent='考试失败 · 重来';
+  flyMsg('❌ '+why+' 点「开始考试」重来。',false);REC.event('fly','失误：'+why);}
+function flyPass(){fly.run=false;$('#flyBtn').disabled=false;$('#flyStage').textContent='✅ 科目一通过';
+  flyMsg('🎉 起飞→平飞→降落，60 秒内完成，触地轻、不弹跳！程序化操作形成肌肉记忆，再练一轮更稳！',true);
+  REC.event('fly','科目一通过');confetti();}
+function flyTick(now){if(!fly.run)return;const dt=Math.min(0.05,(now-fly.last)/1000);fly.last=now;
+  fly.time-=dt;if(fly.time<=0){flyFail('超过 60 秒，科目一要求 1 分钟内完成！');return;}
+  $('#flyTime').textContent=Math.ceil(fly.time);
+  const input=-stT.y; // 上推为正
+  const dThr=input*1.4*dt;
+  if(input>0&&fly.phase===1&&input>0.95&&fly.thr<0.25&&fly.h<0.1){flyFail('猛推油门，无人机冲天失控！要缓慢、均匀地推。');return;}
+  fly.thr=Math.max(0,Math.min(1.3,fly.thr+dThr));
+  const acc=(fly.thr-0.52)*2.2; // 升力-重力模型
+  fly.v+=acc*dt;fly.v*=0.92;fly.h+=fly.v*dt*1.2;
+  if(fly.h<0){ // 触地
+    if(fly.phase===3){
+      if(fly.v<-0.5){flyFail('下降太快，砸地了！要匀速收油、触地轻。');return;}
+      if(fly.thr>0.05){flyFail('触地时油门没收净，弹跳了！落地前把油门收到底。');return;}
+      fly.h=0;fly.v=0;flyPass();return;
+    } else {fly.h=0;if(fly.v<0)fly.v=0;}
+  }
+  if(fly.phase===1){if(fly.h>=0.9&&fly.h<=1.3){fly.stable+=dt;if(fly.stable>=1){fly.phase=2;$('#flyStage').textContent='阶段二 · 向右平飞到 🎯';flyMsg('稳！现在用右摇杆向右平飞到目标点。');}}
+    else fly.stable=0;
+    if(fly.h>2.2){flyFail('油门过大，冲天失控！匀速推，1 米稳住。');return;}}
+  else if(fly.phase===2){fly.x+=stM.x*dt*30;
+    if(fly.x>=62){fly.phase=3;$('#flyStage').textContent='阶段三 · 匀速收油降落';flyMsg('到目标！慢慢把油门收到底，轻轻落地。');}
+    if(fly.h<0.6){flyFail('平飞时掉高度了，保持油门稳住 1 米左右。');return;}}
+  else if(fly.phase===3){if(fly.h>1.6){flyMsg('又升上去了？匀速收油下降！');}}
+  fly.x=Math.max(8,Math.min(80,fly.x));
+  const d=$('#flyDrone');d.style.left=fly.x+'%';d.style.bottom=(8+fly.h*60)+'px';
+  d.style.transform='translateX(-50%) rotate('+(stM.x*8)+'deg)';
+  $('#flyHnum').textContent=fly.h.toFixed(1)+'米';
+  $('#flyHfill').style.height=Math.min(100,fly.h/2.2*100)+'%';
+  requestAnimationFrame(flyTick);}
+function rafFly(now){if(fly.run)flyTick(now);requestAnimationFrame(rafFly);}
+requestAnimationFrame(rafFly);
+
+/* ===== 遮一遮回忆 ===== */
+const RECALL=[
+ ['锂电池充电，必须用什么样的充电器？','原厂 1A 充电器，禁用快充。'],
+ ['充电多长时间？灯变绿怎么办？','40–60 分钟；指示灯变绿立即断电，严禁过充、通宵充电。'],
+ ['无人机指示灯快速闪烁说明什么？','低电量，需要及时降落补电。'],
+ ['电池使用前和存放要注意什么？','查鼓包、破损，异常停用；远离高温、撞击、尖锐物；存放避开金属防短路。'],
+ ['对频有什么作用？','建立遥控器与无人机的专属无线连接，防信号串扰、防被他人操控，保障信号稳定。'],
+ ['对频五步是什么？','摇杆归位 → 开启遥控器 → 无人机通电 → 推动油门杆 → 提示音+指示灯常亮。'],
+ ['开机顺序铁律？','先开遥控器，后开无人机。'],
+ ['起飞前检查口诀？','一桨二置三电池，四查网箱五查人。'],
+ ['起飞和降落的油门要领？','起飞匀速推，1 米稳住；降落匀速收，触地轻不弹跳、收净油门。'],
+ ['科目一考什么？','起飞→平飞→降落，1 分钟内完成，每人独立完成。']];
+(function(){const box=$('#recallList');RECALL.forEach((r,i)=>{const d=document.createElement('div');d.className='card recall';
+  d.innerHTML='<b>Q'+(i+1)+' · '+r[0]+'</b><div class="recall-answer" onclick="this.classList.toggle(\'show\')">'+r[1]+'</div>';box.appendChild(d);});})();
+
+/* ===== 测验 12 题 ===== */
+const QUIZ=[
+ {q:'给无人机锂电池充电，应该用——',opts:['任意快充头，越快越好','原厂 1A 充电器，禁用快充','手机充电器都可以'],a:1,why:'必须用原厂 1A 充电器，禁用快充。'},
+ {q:'充电时长和断电时机，正确的是——',opts:['充一整夜最保险','40–60 分钟，灯变绿立即断电','随便充多久都行'],a:1,why:'40–60 分钟，灯变绿立即断电，严禁过充、通宵充。'},
+ {q:'飞行中无人机指示灯快速闪烁，表示——',opts:['低电量，要及时降落','信号满格','对频成功'],a:0,why:'快速闪烁 = 低电量警告。'},
+ {q:'发现电池鼓包了，应该——',opts:['继续用，没关系','立即停用并妥善处理','用针扎破放气'],a:1,why:'鼓包、破损立即停用；热失控易引发火灾。'},
+ {q:'对频的主要作用是——',opts:['让飞机飞得更快','建立专属无线连接，防串扰','给电池充电'],a:1,why:'专属连接防串扰、防被他人操控。'},
+ {q:'对频五步的正确顺序是——',opts:['无人机通电→开遥控器→摇杆归位→推油门→等提示音','摇杆归位→开遥控器→无人机通电→推油门→提示音灯常亮','开遥控器→推油门→无人机通电→摇杆归位→提示音'],a:1,why:'归位→遥控→通电→推杆→提示音+灯常亮。'},
+ {q:'开机顺序的铁律是——',opts:['先开无人机','先开遥控器，后开无人机','同时开'],a:1,why:'先遥控、后飞机。'},
+ {q:'起飞前检查口诀是——',opts:['一桨二置三电池，四查网箱五查人','一查人二查天','先飞再说'],a:0,why:'一桨二置三电池，四查网箱五查人。'},
+ {q:'起飞时油门的正确操作是——',opts:['猛推到底，快速升空','缓慢均匀推，约 1 米稳住','轻轻点一下就松手'],a:1,why:'匀速推，不猛推；1 米稳住不侧翻不漂移。'},
+ {q:'降落时触地弹跳，最可能的原因是——',opts:['油门收得太净','接地时油门没有收净','风速为零'],a:1,why:'没收净油门→弹跳；快速收油→砸地。'},
+ {q:'无人机能悬停，是因为——',opts:['升力恰好等于重力','升力大于重力','电机停转'],a:0,why:'升力=重力→悬停；升力大→上升，小→下降。'},
+ {q:'科目一考核的内容是——',opts:['绕桩飞行','起飞→平飞→降落，1 分钟内完成','悬停 10 秒'],a:1,why:'三个基础动作 1 分钟内、独立完成。'}];
+let qi=0,qScore=0,qLock=false;
+function renderQuiz(){if(qi>=QUIZ.length){const c=$('#quizCard');
+    c.innerHTML='<h2>🎉 测验完成！得分 '+qScore+' / '+QUIZ.length+'</h2><div class="explain">'+(qScore>=10?'太棒了，起飞特训可以出师！':'把错题本里的题再练两遍，连对 2 次就能毕业。')+'</div><div class="btnrow" style="justify-content:center"><button class="btn green" onclick="go(\'errbook\')">📒 去错题本</button><button class="btn ghost" onclick="restartQuiz()">🔄 再测一次</button></div>';
+    REC.quiz(qScore,QUIZ.length);$('#quizProg').style.width='100%';$('#quizNum').textContent='完成';return;}
+  const q=QUIZ[qi];qLock=false;$('#quizNum').textContent=(qi+1)+' / '+QUIZ.length;$('#quizProg').style.width=(qi/QUIZ.length*100)+'%';
+  const c=$('#quizCard');c.innerHTML='<h2>'+q.q+'</h2><div id="qOpts"></div><div class="explain" id="qExp"></div>';
+  q.opts.forEach((o,i)=>{const b=document.createElement('button');b.className='opt';b.textContent=o;b.onclick=()=>pick(b,i,q);$('#qOpts').appendChild(b);});}
+function pick(el,i,q){if(qLock)return;qLock=true;
+  const opts=[...document.querySelectorAll('#qOpts .opt')];opts[q.a].classList.add('right');
+  if(i===q.a){qScore++;$('#qExp').innerHTML='✅ 答对！'+q.why;}
+  else{el.classList.add('wrong');$('#qExp').innerHTML='❌ '+q.why;ERR.add(q);REC.event('quiz','错：'+q.q);}
+  opts.forEach(o=>o.disabled=true);
+  setTimeout(()=>{qi++;renderQuiz();},1400);}
+function restartQuiz(){qi=0;qScore=0;renderQuiz();}
+function startQuiz(){restartQuiz();go('quiz');}
+renderQuiz();
+
+/* ===== 错题本渲染 ===== */
+function renderErr(){const ec=$('#errCount');if(ec)ec.textContent=ERR.list().length?('· '+ERR.list().length+' 题'):'';
+  const list=ERR.list(),box=$('#errList');
+  if(!list.length){box.innerHTML='<div class="explain">📒 错题本空空如也，太棒了！去测验里挑战一下吧。</div>';return;}
+  box.innerHTML='';list.forEach((e,idx)=>{const d=document.createElement('div');d.className='card';
+    d.innerHTML='<b>'+e.q+'</b> <span class="badge orange">连对 '+e.streak+'/2</span><div id="eOpts'+idx+'"></div><div class="explain" id="eExp'+idx+'"></div>';
+    box.appendChild(d);let lock=false;
+    e.opts.forEach((o,i)=>{const b=document.createElement('button');b.className='opt';b.textContent=o;
+      b.onclick=()=>{if(lock)return;lock=true;const oo=[...document.querySelectorAll('#eOpts'+idx+' .opt')];oo[e.a].classList.add('right');
+        if(i===e.a){ERR.hit(idx);$('#eExp'+idx).innerHTML='✅ 答对！再连对一次就毕业。'+(ERR.list()[idx]?'':'🎓 已从错题本毕业！');}
+        else{b.classList.add('wrong');ERR.miss(idx);$('#eExp'+idx).innerHTML='❌ '+e.why;}
+        oo.forEach(x=>x.disabled=true);setTimeout(renderErr,1500);};
+      d.querySelector('#eOpts'+idx).appendChild(b);});});}
+
+/* ===== 记录导出导入 ===== */
+function recExport(kind){const t=kind==='json'?REC.exportJSON():REC.exportMD();
+  const ta=$('#recBox');ta.value=t;ta.style.display='block';}
+function recImport(){const ta=$('#recBox');try{if(REC.importJSON(ta.value)){alert('导入成功！');renderRec();}else alert('格式不对，导入失败。');}catch(e){alert('格式不对，导入失败。');}}
+renderRec();renderErr();
+if(location.hash&&document.getElementById(location.hash.slice(1)))go(location.hash.slice(1));
+function confetti(){for(let i=0;i<26;i++){const s=document.createElement('span');s.className='confetti';
+  s.style.left=Math.random()*100+'vw';s.style.background=['#FFD166','#2E9BFF','#FF6B9D','#7AE582','#B28DFF'][i%5];
+  s.style.animationDelay=(Math.random()*0.6)+'s';document.body.appendChild(s);setTimeout(()=>s.remove(),2600);}}
+</script>
+</body>
+</html>

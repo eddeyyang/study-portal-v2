@@ -1,0 +1,1411 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<script src="../assets/learning-sync.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Practicing 'going to' · 外教课复习</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
+  :root {
+    --pink:#FFB6C1; --pink-deep:#FF8DA8;
+    --blue:#A8D8EA; --blue-deep:#5AB6DB;
+    --yellow:#FFE07A; --yellow-soft:#FFF0B8; --mint:#B5EAD7;
+    --purple:#C7B8EA; --coral:#FF9E7A;
+    --bg:#FFFBF2; --text:#3D3142; --text-light:#7A6E82;
+    --green:#5FBE77; --red:#FF6B6B;
+    --shadow:0 4px 0 rgba(0,0,0,0.07), 0 8px 24px rgba(90,182,219,0.15);
+    --shadow-sm:0 2px 0 rgba(0,0,0,0.07), 0 4px 12px rgba(90,182,219,0.12);
+  }
+  body {
+    font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;
+    background:var(--bg); color:var(--text); min-height:100vh; overflow-x:hidden;
+    background-image:
+      radial-gradient(circle at 12% 12%, rgba(255,224,122,0.30) 0%, transparent 40%),
+      radial-gradient(circle at 88% 88%, rgba(168,216,234,0.28) 0%, transparent 42%);
+  }
+  .app { max-width:480px; margin:0 auto; padding:14px; min-height:100vh; }
+
+  .topbar { display:flex; align-items:center; justify-content:space-between; padding:10px 4px; margin-bottom:10px; }
+  .pill { background:white; padding:6px 12px; border-radius:18px; font-size:13px; font-weight:700; box-shadow:var(--shadow-sm); display:flex; align-items:center; gap:5px; cursor:pointer; }
+
+  .card { background:white; border-radius:22px; padding:20px 16px; box-shadow:var(--shadow); margin-bottom:14px; }
+  .stage-title { font-size:20px; font-weight:800; margin-bottom:4px; }
+  .stage-sub { font-size:12px; color:var(--text-light); margin-bottom:14px; line-height:1.5; }
+
+  .btn { display:inline-flex; align-items:center; justify-content:center; gap:6px; border:none; border-radius:16px; padding:13px 18px; font-size:15px; font-weight:700; cursor:pointer; transition:all .15s; font-family:inherit; box-shadow:var(--shadow); user-select:none; }
+  .btn:active { transform:translateY(2px); box-shadow:var(--shadow-sm); }
+  .btn-primary { background:var(--coral); color:white; width:100%; }
+  .btn-blue { background:var(--blue); color:var(--text); }
+  .btn-yellow { background:var(--yellow); color:var(--text); }
+  .btn-mint { background:var(--mint); color:var(--text); }
+  .btn-purple { background:var(--purple); color:var(--text); }
+  .btn-small { padding:9px 13px; font-size:13px; }
+  .btn-row { display:flex; gap:8px; flex-wrap:wrap; }
+
+  .home-hero { text-align:center; padding:18px 14px; }
+  .home-emoji { font-size:58px; display:inline-block; animation:bounce 2.2s infinite; }
+  @keyframes bounce { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
+  .home-title { font-size:24px; font-weight:800; margin:8px 0 2px; background:linear-gradient(135deg,var(--coral),var(--blue-deep)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+  .home-sub { color:var(--text-light); font-size:12px; margin-bottom:12px; }
+  .home-msg { background:var(--bg); border-radius:14px; padding:13px; text-align:left; font-size:13px; line-height:1.7; margin:12px 0; }
+  .home-msg strong { color:var(--coral); }
+
+  .kid-picker { display:flex; gap:10px; margin:14px 0; }
+  .kid-card { flex:1; padding:12px 8px; border-radius:16px; text-align:center; background:var(--bg); border:3px solid transparent; cursor:pointer; transition:all .2s; }
+  .kid-card.active { border-color:var(--coral); background:white; transform:scale(1.03); box-shadow:var(--shadow); }
+  .kid-card .avatar { font-size:36px; }
+  .kid-card .name { font-weight:800; font-size:15px; margin-top:2px; }
+  .kid-card .age { font-size:11px; color:var(--text-light); }
+
+  .map-btn { width:100%; padding:15px; border:none; border-radius:18px; font-family:inherit; font-weight:700; cursor:pointer; display:flex; align-items:center; gap:13px; box-shadow:var(--shadow); margin-bottom:10px; text-align:left; transition:transform .15s; background:white; }
+  .map-btn:active { transform:translateY(2px); }
+  .map-btn .icon { font-size:30px; flex-shrink:0; }
+  .map-btn .text { flex:1; }
+  .map-btn .t1 { font-size:15px; }
+  .map-btn .t2 { font-size:11px; color:var(--text-light); font-weight:500; margin-top:2px; line-height:1.4; }
+  .map-btn .done-badge { font-size:11px; font-weight:800; color:var(--green); white-space:nowrap; }
+  .map-btn.star { background:linear-gradient(135deg,#FFE07A,#FF9E7A); }
+
+  .hidden { display:none !important; }
+  .speak-btns { display:flex; gap:8px; justify-content:center; margin:10px 0; flex-wrap:wrap; }
+  .icon-btn { background:var(--blue); border:none; padding:10px 14px; border-radius:14px; font-size:13px; font-weight:700; cursor:pointer; box-shadow:var(--shadow-sm); font-family:inherit; display:inline-flex; align-items:center; gap:5px; }
+  .icon-btn:active { transform:translateY(1px); }
+  .icon-btn.yellow { background:var(--yellow); }
+  .icon-btn.coral { background:var(--coral); color:white; }
+  .icon-btn.mint { background:var(--mint); }
+  .icon-btn.purple { background:var(--purple); }
+
+  .pulse { animation:pulse 1.5s ease-in-out infinite; }
+  @keyframes pulse { 0%,100%{transform:scale(1)} 50%{transform:scale(1.06)} }
+
+  .feedback { margin-top:14px; padding:13px; border-radius:14px; font-size:13px; line-height:1.6; display:none; }
+  .feedback.show { display:block; animation:slideUp .3s; }
+  .feedback.right { background:#E8F8EC; border-left:4px solid var(--green); }
+  .feedback.wrong { background:#FFF3E0; border-left:4px solid var(--coral); }
+  .feedback .title { font-weight:800; margin-bottom:5px; font-size:14px; }
+  @keyframes slideUp { from{opacity:0; transform:translateY(10px)} to{opacity:1; transform:translateY(0)} }
+
+  .options { display:grid; gap:9px; margin-top:12px; }
+  .option { background:var(--bg); border:3px solid transparent; border-radius:14px; padding:13px; font-size:15px; font-weight:600; cursor:pointer; transition:all .15s; text-align:left; display:flex; align-items:center; gap:10px; font-family:inherit; }
+  .option:active { transform:scale(.98); }
+  .option .letter { width:24px; height:24px; border-radius:50%; background:white; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:13px; flex-shrink:0; }
+  .option.correct { background:var(--mint); border-color:var(--green); }
+  .option.wrong { background:#FFD6D6; border-color:var(--red); }
+  .option.disabled { pointer-events:none; }
+
+  /* 发音诊所 */
+  .pron-word { font-size:38px; font-weight:800; text-align:center; letter-spacing:1px; }
+  .pron-ipa { font-size:19px; color:var(--blue-deep); font-family:Georgia,serif; text-align:center; margin:4px 0; }
+  .pron-cn { font-size:15px; color:var(--text-light); text-align:center; margin-bottom:8px; }
+  .syll { display:flex; justify-content:center; gap:6px; margin:10px 0; flex-wrap:wrap; }
+  .syll span { background:var(--bg); padding:8px 12px; border-radius:12px; font-weight:800; font-size:16px; cursor:pointer; }
+  .syll span.hot { background:var(--yellow); color:var(--coral); transform:scale(1.1); }
+  .pron-tip { background:var(--yellow-soft); border-radius:14px; padding:12px; font-size:13px; line-height:1.6; margin:12px 0; }
+  .acc-row { display:flex; align-items:center; gap:8px; justify-content:center; margin:10px 0; font-size:13px; flex-wrap:wrap; }
+  .acc-chip { padding:4px 10px; border-radius:10px; font-weight:800; font-size:13px; }
+  .acc-low { background:#FFE0D0; color:#C05a2a; }
+  .acc-hi { background:#D6F5DC; color:#2F855A; }
+
+  /* going to 造句机 */
+  .chip-row { display:flex; gap:7px; flex-wrap:wrap; justify-content:center; margin:8px 0; }
+  .chip { background:var(--bg); border:3px solid transparent; border-radius:13px; padding:9px 13px; font-weight:800; font-size:14px; cursor:pointer; transition:all .15s; font-family:inherit; }
+  .chip:active { transform:scale(.95); }
+  .chip.on { border-color:var(--blue-deep); background:white; box-shadow:var(--shadow-sm); }
+  .chip-label { font-size:11px; font-weight:800; color:var(--text-light); text-align:center; margin-top:10px; }
+
+  /* 句子块 */
+  .build { display:flex; flex-wrap:wrap; gap:7px; justify-content:center; align-items:center; margin:14px 0; min-height:52px; }
+  .chunk { padding:10px 14px; border-radius:13px; font-weight:800; font-size:16px; opacity:0; transform:translateY(8px); animation:pop .4s forwards; position:relative; }
+  @keyframes pop { to{opacity:1; transform:translateY(0)} }
+  .chunk.a { background:var(--blue); }
+  .chunk.be { background:var(--yellow); color:var(--coral); }
+  .chunk.gt { background:var(--mint); }
+  .chunk.b { background:var(--coral); color:white; }
+  .chunk.t { background:var(--purple); color:white; }
+  .chunk-note { font-size:11px; font-weight:600; color:var(--text-light); display:block; text-align:center; margin-top:3px; }
+  .chunk.flash { animation:flash .8s; }
+  @keyframes flash { 0%,100%{transform:scale(1)} 30%{transform:scale(1.18)} }
+  .rule-chip { display:inline-block; padding:5px 12px; border-radius:12px; font-size:13px; font-weight:800; margin-top:8px; background:var(--yellow-soft); }
+
+  /* 时光机 */
+  .tm-lever { text-align:center; margin:12px 0; }
+  .tm-steps { margin:10px 0; }
+  .tm-step { background:var(--bg); border-radius:12px; padding:9px 12px; font-size:13px; line-height:1.5; margin-bottom:7px; opacity:0; transform:translateX(-10px); transition:all .4s; }
+  .tm-step.show { opacity:1; transform:translateX(0); }
+  .tm-step b { color:var(--coral); }
+  .drop-ing { display:inline-block; animation:dropIng .8s forwards; }
+  @keyframes dropIng { to{ transform:translateY(26px) rotate(30deg); opacity:0; } }
+
+  /* 缩写压缩机 */
+  .sq-card { background:var(--bg); border-radius:16px; padding:14px; margin-bottom:10px; text-align:center; }
+  .sq-full { font-size:24px; font-weight:800; display:inline-block; transition:all .3s; }
+  .sq-full.squeezed { animation:squeeze .5s; color:var(--coral); }
+  @keyframes squeeze { 0%{letter-spacing:3px} 50%{transform:scaleX(.65)} 100%{transform:scaleX(1)} }
+  .sq-ex { font-size:13px; color:var(--text-light); margin-top:8px; }
+
+  /* 海滩寻宝 */
+  .beach-scene { position:relative; height:330px; border-radius:18px; overflow:hidden; box-shadow:var(--shadow-sm);
+    background:linear-gradient(180deg,#BDE9FF 0%,#BDE9FF 42%,#63CBF2 42%,#3FBBEE 60%,#FBE7AF 60%,#F5D689 100%); }
+  .beach-item { position:absolute; font-size:30px; cursor:pointer; transition:transform .2s; user-select:none; filter:drop-shadow(0 2px 2px rgba(0,0,0,.15)); }
+  .beach-item:active { transform:scale(1.25); }
+  .beach-item.found::after { content:'✅'; position:absolute; top:-10px; right:-12px; font-size:14px; }
+  .beach-deco { position:absolute; font-size:26px; pointer-events:none; user-select:none; }
+  .beach-people { position:absolute; font-size:34px; cursor:pointer; user-select:none; }
+  .found-chips { display:flex; gap:6px; flex-wrap:wrap; margin-top:10px; }
+  .found-chip { background:var(--mint); border-radius:10px; padding:4px 9px; font-size:12px; font-weight:700; animation:pop .3s forwards; }
+
+  /* 句子小医院 */
+  .sent-box { font-size:18px; font-weight:700; text-align:center; margin:14px 0; line-height:1.7; }
+  .bad-word { background:var(--yellow); padding:2px 8px; border-radius:8px; cursor:pointer; transition:all .3s; display:inline-block; text-decoration:line-through; text-decoration-color:var(--coral); }
+  .bad-word.fixed { background:var(--mint); text-decoration:none; transform:scale(1.08); }
+  .sparkle { position:fixed; font-size:22px; pointer-events:none; z-index:9999; animation:spark 1s forwards; }
+  @keyframes spark { to{ transform:translateY(-40px) scale(1.6); opacity:0; } }
+
+  /* 词汇翻卡 */
+  .vocab-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+  .flip { perspective:800px; height:96px; cursor:pointer; }
+  .flip-in { position:relative; width:100%; height:100%; transition:transform .5s; transform-style:preserve-3d; }
+  .flip.on .flip-in { transform:rotateY(180deg); }
+  .flip-face { position:absolute; width:100%; height:100%; backface-visibility:hidden; border-radius:14px; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:6px; box-shadow:var(--shadow-sm); }
+  .flip-front { background:var(--bg); }
+  .flip-front .w { font-size:16px; font-weight:800; text-align:center; }
+  .flip-back { background:var(--mint); transform:rotateY(180deg); text-align:center; font-size:13px; line-height:1.4; }
+  .cefr { font-size:10px; font-weight:800; padding:1px 6px; border-radius:7px; background:var(--blue); margin-top:3px; }
+
+  /* en 翻译 */
+  .en { border-bottom:1px dashed rgba(122,110,130,.35); cursor:pointer; user-select:none; -webkit-touch-callout:none; padding:0 2px; border-radius:3px; }
+  .en:active { background:rgba(255,224,122,.5); }
+  #transBubble { position:fixed; background:white; border-radius:14px; padding:12px 16px; box-shadow:0 8px 24px rgba(0,0,0,.2); z-index:99999; min-width:150px; max-width:280px; text-align:center; border:2px solid var(--coral); animation:slideUp .2s; }
+  #transBubble .bubble-en { font-size:14px; font-weight:700; margin-bottom:4px; }
+  #transBubble .bubble-cn { font-size:16px; font-weight:800; color:var(--coral); margin-bottom:8px; }
+  #transBubble .bubble-speak { background:var(--blue); border:none; padding:6px 14px; border-radius:12px; font-weight:700; font-size:12px; cursor:pointer; font-family:inherit; }
+
+  .report-sec { background:var(--bg); border-radius:14px; padding:12px 14px; margin-bottom:10px; }
+  .report-sec h3 { font-size:13px; font-weight:800; margin-bottom:8px; }
+  .report-sec .item { font-size:13px; line-height:1.6; padding:2px 0; }
+  .badge { display:inline-block; padding:2px 8px; border-radius:8px; font-size:11px; font-weight:700; margin-right:4px; }
+  .badge-red { background:#FFD6D6; color:#C53030; }
+  .badge-green { background:#D6F5DC; color:#2F855A; }
+
+  .confetti { position:fixed; top:-10px; width:9px; height:9px; z-index:9999; animation:fall 3s linear forwards; }
+  @keyframes fall { to{ transform:translateY(100vh) rotate(720deg); } }
+
+  /* 7月18日 · 露营与滑雪课次 */
+  .unit-heading { display:flex; align-items:center; gap:9px; margin:18px 2px 9px; color:var(--text); }
+  .unit-heading::after { content:""; height:2px; flex:1; background:linear-gradient(90deg,var(--blue),transparent); }
+  .unit-heading .date { font-size:11px; font-weight:900; letter-spacing:.06em; padding:4px 8px; border-radius:999px; background:var(--text); color:white; }
+  .unit-heading strong { font-size:14px; }
+  .source-note { padding:10px 12px; border:1px solid #DCE8EE; border-radius:13px; background:#F8FCFD; color:var(--text-light); font-size:12px; line-height:1.65; }
+  .plan-rail { position:relative; display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:5px; padding:20px 5px 9px; margin:12px 0; }
+  .plan-rail::before { content:""; position:absolute; left:5%; right:5%; bottom:3px; height:5px; border-radius:5px; background:repeating-linear-gradient(90deg,#7A6E82 0 16px,transparent 16px 24px); opacity:.35; }
+  .rail-car { min-height:76px; border:2px solid #DCE8EE; border-radius:15px 15px 11px 11px; padding:8px 4px; background:white; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; box-shadow:0 4px 0 #DCE8EE; }
+  .rail-car b { font-size:clamp(12px,3.4vw,15px); line-height:1.25; overflow-wrap:anywhere; }
+  .rail-car small { color:var(--text-light); font-size:9px; margin-top:4px; }
+  .rail-car.be { background:#E9F7FC; border-color:var(--blue); }
+  .rail-car.going { background:#FFF4D0; border-color:var(--yellow); }
+  .rail-car.verb { background:#E7F8EF; border-color:var(--mint); }
+  .choice-strip { display:flex; gap:7px; overflow-x:auto; padding:4px 1px 9px; scrollbar-width:none; }
+  .choice-strip::-webkit-scrollbar { display:none; }
+  .choice-chip { flex:0 0 auto; min-height:44px; border:2px solid #E1E8EC; border-radius:14px; background:white; padding:8px 12px; font-weight:800; color:var(--text); }
+  .choice-chip.active { border-color:var(--coral); background:#FFF0E9; }
+  .gear-layout { display:grid; grid-template-columns:1fr; gap:12px; }
+  .gear-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:8px; }
+  .gear { min-height:82px; border:2px solid #E0E9EC; border-radius:16px; background:#fff; padding:8px 4px; display:grid; place-items:center; text-align:center; font-weight:800; font-size:11px; color:var(--text); }
+  .gear span { display:block; font-size:28px; line-height:1.1; }
+  .gear.packed { background:#E7F8EF; border-color:var(--green); color:#246B3C; }
+  .pack-zone { position:relative; min-height:150px; border:3px dashed var(--coral); border-radius:22px; background:linear-gradient(145deg,#FFF6E7,#FFE9DF); display:grid; place-items:center; text-align:center; padding:18px; overflow:hidden; }
+  .pack-zone::after { content:"🎒"; position:absolute; right:-6px; bottom:-18px; font-size:92px; opacity:.12; }
+  .pack-zone strong { position:relative; z-index:1; font-size:17px; }
+  .ski-scene { position:relative; min-height:300px; border-radius:20px; overflow:hidden; background:linear-gradient(#BEE7FA 0 42%,#F9FCFF 42% 100%); border:2px solid #DCE8EE; }
+  .ski-scene::before { content:""; position:absolute; left:-12%; right:-12%; bottom:-30%; height:68%; background:#EAF5FA; clip-path:polygon(0 76%,24% 22%,43% 68%,65% 10%,100% 72%,100% 100%,0 100%); }
+  .ski-pin { position:absolute; z-index:2; min-width:48px; min-height:48px; border:2px solid white; border-radius:15px; background:rgba(255,255,255,.92); box-shadow:var(--shadow-sm); display:grid; place-items:center; font-size:25px; }
+  .ski-pin.found { border-color:var(--green); background:#E7F8EF; }
+  .lesson-card { border:2px solid #E0E9EC; border-radius:18px; padding:13px; margin-bottom:10px; background:white; }
+  .lesson-card.good { border-left:7px solid var(--green); }
+  .lesson-card.repair { border-left:7px solid var(--yellow); }
+  .lesson-label { font-size:10px; font-weight:900; letter-spacing:.06em; color:var(--text-light); text-transform:uppercase; }
+  .lesson-sentence { margin:7px 0; font-size:15px; font-weight:800; line-height:1.55; }
+  .lesson-reason { display:none; padding:9px 10px; border-radius:12px; background:var(--bg); color:var(--text-light); font-size:12px; line-height:1.6; }
+  .lesson-card.open .lesson-reason { display:block; }
+  .vocab-filter { display:flex; gap:6px; flex-wrap:wrap; margin-bottom:10px; }
+  .vocab-filter button { border:0; border-radius:999px; background:#EDF3F5; padding:8px 11px; font-size:12px; font-weight:800; color:var(--text); }
+  .vocab-filter button.active { background:var(--text); color:white; }
+  .vocab718-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px; }
+  .vocab718-card { min-height:82px; border:2px solid #E0E9EC; border-radius:16px; background:white; padding:10px; text-align:left; }
+  .vocab718-card.seen { border-color:var(--blue-deep); background:#EEF9FD; }
+  .vocab718-card b { display:block; font-size:14px; overflow-wrap:anywhere; }
+  .vocab718-card small { display:block; margin-top:4px; color:var(--text-light); }
+  .dialogue { display:flex; flex-direction:column; gap:8px; margin:12px 0; }
+  .bubble { max-width:88%; border-radius:18px 18px 18px 5px; padding:11px 13px; background:#EDF8FC; font-weight:700; line-height:1.5; }
+  .bubble.me { margin-left:auto; border-radius:18px 18px 5px 18px; background:#FFF0E9; }
+  .wrong-summary { padding:10px 12px; border-radius:13px; background:#FFF4E0; font-size:12px; line-height:1.65; }
+  .sr-only { position:absolute!important; width:1px!important; height:1px!important; padding:0!important; margin:-1px!important; overflow:hidden!important; clip:rect(0,0,0,0)!important; white-space:nowrap!important; border:0!important; }
+  @media (min-width:44rem){ .app{max-width:47.5rem}.gear-layout{grid-template-columns:1.45fr .8fr}.vocab718-grid{grid-template-columns:repeat(3,minmax(0,1fr))} }
+  @media (max-width:22.5rem){ .plan-rail{grid-template-columns:repeat(5,4rem);overflow-x:auto}.gear-grid{grid-template-columns:repeat(2,1fr)} }
+  @media (prefers-reduced-motion:reduce){ *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important} }
+</style>
+</head>
+<body>
+<div class="app" id="app">
+
+  <div id="topbar" class="topbar hidden">
+    <div class="pill" onclick="goHome()">← 首页</div>
+    <div class="pill" id="whoPill">👦 Kenton</div>
+    <div class="pill">⭐ <span id="starCount">0</span></div>
+  </div>
+
+  <!-- 首页 -->
+  <div id="home" class="card home-hero">
+    <div class="home-emoji">🏕️🚡🏖️</div>
+    <div class="home-title">Practicing<br>'going to'</div>
+    <div class="home-sub">Denys 外教课复习合集 · 7月9日海滩 + 7月18日露营与滑雪</div>
+
+    <div class="home-msg">
+      <strong>今天先复习 7月18日新课：</strong><br>
+      <strong>① 计划小火车</strong> · 看清 be + going to + 动词原形<br>
+      <strong>② 露营打包台</strong> · 把 tent / backpack / sleeping bag 装进行李<br>
+      <strong>③ 滑雪路线图</strong> · 在雪山情境中说完整计划<br>
+      <strong>④ 课堂反馈实验室</strong> · 5句做得好 + 4句需要修理<br>
+      <strong>⑤ 27词图卡 · ⑥ 独立对话任务</strong><br>
+      下面还保留 <strong>7月9日海滩课</strong> 的全部复习模块。
+    </div>
+
+    <div class="source-note">📎 材料依据：2026-07-18 Denys 课堂回顾，共 17 页。页面只收录匿名化知识点与课堂句子，不上传原始扫描件或设备截图。</div>
+
+    <div style="background:var(--yellow-soft); border-radius:14px; padding:11px; margin:12px 0; font-size:12px; line-height:1.6;">
+      🌈 <strong>不用怕说错！</strong>外教说，这个阶段<b>敢开口、能表达</b>最重要，说错很正常，多听多说慢慢就顺了。这里都是好玩的，错了有讲解 😊
+    </div>
+    <div style="background:#FFF4E0; border-radius:14px; padding:11px; margin:12px 0; font-size:12px; line-height:1.6;">
+      📢 <strong>先测声音：</strong>手机首次要先点一下，浏览器才允许朗读。
+      <button id="testVoiceBtn" class="btn btn-yellow btn-small" style="margin-top:8px; width:100%;" onclick="testVoice()">🔊 点这里测试声音</button>
+    </div>
+
+    <div style="font-weight:800; margin:10px 0 6px; font-size:14px;">先选一下你是谁：</div>
+    <div class="kid-picker">
+      <div class="kid-card" data-kid="kenton" onclick="pickKid('kenton')">
+        <div class="avatar">👦</div><div class="name">Kenton</div><div class="age">哥哥</div>
+      </div>
+      <div class="kid-card" data-kid="eddey" onclick="pickKid('eddey')">
+        <div class="avatar">🧒</div><div class="name">Eddey</div><div class="age">弟弟</div>
+      </div>
+    </div>
+
+    <div id="mapBox" style="opacity:.4; pointer-events:none; text-align:left;"></div>
+  </div>
+
+  <div id="stageBox" class="card hidden">
+    <div class="stage-title" id="stageTitle"></div>
+    <div class="stage-sub" id="stageSub"></div>
+    <div id="stageContent"></div>
+  </div>
+</div>
+
+<script>
+/* ========== 语音：预合成真人音 mp3 优先，浏览器 TTS 兜底 ========== */
+// 预合成音频目录（爸爸电脑用 edge-tts 小晓/Aria 生成；文件名 = FNV-1a 哈希）
+// _manifest.json 已更新；当前仓库尚无锁定音色 Aria 的 mp3，因此直接走浏览器兜底，避免逐句 404。
+// 待爸爸电脑按 manifest 生成 Aria 文件后，将这里恢复为 "audio/preply-going-to/" 即可无缝启用。
+const AUDIO_DIR = "";
+let bcAudio = null;      // 复用单个 Audio 元素（移动端更兼容）
+let audioToken = 0;      // 打断/过期保护
+let voicesReady=false, enVoice=null, voiceUnlocked=false;
+
+// 必须与生成脚本 fnv() 一致：对 (lang+"|"+text) 的 UTF-8 字节做 FNV-1a，输出 8 位十六进制
+function audioHash(s){ const b=new TextEncoder().encode(s); let x=0x811c9dc5>>>0; for(let i=0;i<b.length;i++){ x^=b[i]; x=Math.imul(x,0x01000193)>>>0; } return ('0000000'+x.toString(16)).slice(-8); }
+
+function loadVoices(){
+  if(!('speechSynthesis' in window))return;
+  const vs=window.speechSynthesis.getVoices();
+  if(!vs.length)return;
+  enVoice = vs.find(v=>/en-US/i.test(v.lang)&&/natural|aria|jenny|guy/i.test(v.name)) || vs.find(v=>v.lang==='en-US') || vs.find(v=>v.lang&&v.lang.startsWith('en-US')) || vs.find(v=>v.lang&&v.lang.startsWith('en')) || vs[0];
+  voicesReady=true;
+}
+if('speechSynthesis' in window){
+  loadVoices();
+  if(window.speechSynthesis.onvoiceschanged!==undefined) window.speechSynthesis.onvoiceschanged=loadVoices;
+  setInterval(()=>{ if(window.speechSynthesis.paused) window.speechSynthesis.resume(); },10000);
+}
+function unlockVoice(){
+  if(voiceUnlocked||!('speechSynthesis' in window))return;
+  try{ const u=new SpeechSynthesisUtterance(' '); u.volume=0; window.speechSynthesis.speak(u); voiceUnlocked=true; }catch(e){}
+}
+// 浏览器 TTS（仅当预合成 mp3 缺失/失败时兜底）
+function ttsSpeak(text, slow){
+  if(!('speechSynthesis' in window)){ alert('⚠️ 浏览器不支持朗读。请用最新版 Chrome / Safari / Edge。'); return; }
+  window.speechSynthesis.cancel();
+  if(!voicesReady) loadVoices();
+  setTimeout(()=>{
+    const u=new SpeechSynthesisUtterance(text);
+    u.lang='en-US'; u.rate=slow?0.55:0.92; u.pitch=1.05; u.volume=1;
+    if(enVoice) u.voice=enVoice;
+    window.speechSynthesis.speak(u); voiceUnlocked=true;
+  },50);
+}
+// 主朗读：先放真人神经音 mp3，放不出再退回浏览器 TTS；慢速用降速播放
+function speak(text, slow=false){
+  audioToken++;
+  const myToken=audioToken;
+  const stale=()=>myToken!==audioToken;
+  try{ if(window.speechSynthesis) window.speechSynthesis.cancel(); }catch(e){}
+  if(AUDIO_DIR && typeof Audio!=='undefined'){
+    if(!bcAudio){
+      bcAudio=new Audio();
+      bcAudio.setAttribute('playsinline','');
+      bcAudio.preload='auto';
+      try{ document.body.appendChild(bcAudio); }catch(e){}
+    }
+    const a=bcAudio;
+    try{ a.pause(); }catch(e){}
+    const fb=()=>{ if(stale())return; ttsSpeak(text, slow); };
+    a.onended=null;
+    a.onerror=fb;
+    a.src=AUDIO_DIR+audioHash('en|'+text)+'.mp3';
+    try{ a.currentTime=0; }catch(e){}
+    try{ a.playbackRate=slow?0.7:1; }catch(e){}
+    const p=a.play();
+    if(p&&typeof p.catch==='function') p.catch(fb);
+    voiceUnlocked=true;
+    return;
+  }
+  ttsSpeak(text, slow);
+}
+function speakTimes(text, n, slow){
+  let i=0;
+  (function go(){ if(i>=n)return; speak(text, slow); i++; setTimeout(go, slow?2600:1800); })();
+}
+function testVoice(){
+  unlockVoice();
+  setTimeout(()=>{ speak('I am going to drink Coca Cola tomorrow.'); const b=document.getElementById('testVoiceBtn'); if(b){b.textContent='✅ 声音正常！'; b.style.background='var(--mint)';} },100);
+}
+
+/* ========== 词典：长按翻译 ========== */
+const DICT={
+  'going to':'打算/将要','be going to':'打算做…','I am going to':'我打算…',"I'm going to":'我打算…',
+  'tomorrow':'明天','next week':'下周','next month':'下个月','future':'将来','plan':'计划','plans':'计划',
+  'am':'是(I 用)','is':'是(他/她/它用)','are':'是(你/我们/他们用)','be':'be 动词',
+  'drink':'喝','eat':'吃','visit':'参观/去','live':'住','swim':'游泳','play':'玩','read':'读','build':'搭建','buy':'买','bought':'买了(过去式)',
+  'eating':'正在吃','drinking':'正在喝','living':'正在住','playing':'正在玩','doing':'正在做',
+  'Coca Cola':'可口可乐','hamburger':'汉堡','burger':'汉堡','burgers':'汉堡(复数)','chocolate':'巧克力','juice':'果汁','lemonade':'柠檬水',
+  'Spain':'西班牙','Argentina':'阿根廷','London':'伦敦','dinner':'晚餐','for dinner':'当晚餐',
+  'Oliver':'Oliver(人名)','Oliver and I':'Oliver 和我(=我们)',
+  'sand castle':'沙堡','sandcastle':'沙堡','beach ball':'沙滩球','sunglasses':'太阳镜','swimming shorts':'泳裤',
+  'bikini':'比基尼','flip flop':'人字拖','flip flops':'人字拖(复数)','flip-flops':'人字拖','starfish':'海星','shell':'贝壳','boat':'小船',
+  'medium':'中等的','rainy':'下雨的','cool':'凉爽的','sunny':'晴朗的','hot':'热的','happy':'开心的','beach':'海滩','sea':'大海','umbrella':'雨伞','hat':'帽子',
+  'shoe':'鞋(一只)','shoes':'鞋(复数)','a pair of shoes':'一双鞋','a pair of':'一双/一副',
+  'people':'人(复数)','two people':'两个人','three people':'三个人','person':'人(一个)','many colors':'很多颜色','colors':'颜色(复数)',
+  'I can see':'我能看到','can':'能','see':'看到','cat':'猫','car':'小汽车','small':'小的','tiny':'很小的',
+  'holiday':'假期','break':'休息/假期','homework':'作业','assignments':'作业(升级词)','football':'足球','book':'书',
+  'It is sunny, not rainy.':'天气晴朗，不下雨。','I can see two people.':'我能看到两个人。','I am happy. It is hot!':'我很开心。天气很热！',
+  'I am going to drink Coca Cola tomorrow.':'我明天打算喝可口可乐。',
+  'They are going to live in Argentina next month.':'他们下个月要去阿根廷住。',
+  'He is going to visit Spain next week.':'他下周要去西班牙。',
+  'Oliver and I are going to eat chocolate tomorrow.':'Oliver 和我明天打算吃巧克力。',
+  'He is going to eat a hamburger for dinner tomorrow.':'他明天晚餐要吃一个汉堡。',
+  'He bought an umbrella, a hat, sunglasses, and a pair of shoes.':'他买了一把伞、一顶帽子、太阳镜和一双鞋。',
+  'tent':'帐篷','camp':'露营/营地','campfire':'篝火','backpack':'双肩背包','walking boot':'徒步靴','walking boots':'徒步靴（复数）',
+  'sock':'袜子','socks':'袜子（复数）','rain jacket':'防雨夹克','raincoat':'雨衣','rain coat':'雨衣','cap':'鸭舌帽','glove':'手套','gloves':'手套（复数）',
+  'sleeping bag':'睡袋','rucksack':'帆布背包','skiing':'滑雪','snowboarding':'单板滑雪','cable car':'缆车','mountain':'山','snow':'雪',
+  'scarf':'围巾','pole':'滑雪杖','poles':'滑雪杖（复数）','goggle':'护目镜','goggles':'护目镜（复数）','ski':'滑雪板','skis':'滑雪板（复数）',
+  'sushi':'寿司','camping':'露营','excited':'兴奋的','trainer':'运动鞋','trainers':'运动鞋（复数）','library':'图书馆','air conditioner':'空调',
+  'I am going to go on a camping trip tomorrow.':'我明天要去露营。','I am going to share a tent with Amy.':'我要和 Amy 共用一顶帐篷。',
+  'My family is going to come with me.':'我的家人要和我一起来。','I am going to camp with my mom.':'我要和妈妈一起露营。',
+  'not':'不','no':'没有','and':'和','a':'一个(辅音前)','an':'一个(元音前)','the':'这个/那个',
+};
+let lpTimer=null, lpTarget=null;
+function getTrans(t){
+  if(!t)return null;
+  const c=t.trim().replace(/[.,!?;:'"]+$/,'').trim();
+  if(DICT[c])return DICT[c];
+  if(DICT[t.trim()])return DICT[t.trim()];
+  const lo=c.toLowerCase();
+  for(const k in DICT) if(k.toLowerCase()===lo) return DICT[k];
+  const ws=c.split(/\s+/);
+  if(ws.length>1){
+    return ws.map(w=>{ const wc=w.replace(/[.,!?;:'"]+$/,''); if(DICT[wc])return DICT[wc]; const wl=wc.toLowerCase(); for(const k in DICT) if(k.toLowerCase()===wl)return DICT[k]; return wc; }).join(' · ');
+  }
+  return null;
+}
+function showBubble(text,x,y,noRead){
+  hideBubble();
+  const tr=getTrans(text); if(!tr)return;
+  const b=document.createElement('div'); b.id='transBubble';
+  const sb=noRead?'':`<button class="bubble-speak" onclick="event.stopPropagation(); speak('${text.replace(/'/g,"\\'")}',true);">🔊 听</button>`;
+  b.innerHTML=`<div class="bubble-en">${text}</div><div class="bubble-cn">${tr}</div>${sb}`;
+  document.body.appendChild(b);
+  const r=b.getBoundingClientRect();
+  let l=x-r.width/2, t=y-r.height-18;
+  if(l<10)l=10; if(l+r.width>window.innerWidth-10)l=window.innerWidth-r.width-10; if(t<10)t=y+28;
+  b.style.left=l+'px'; b.style.top=t+'px';
+  setTimeout(()=>{ document.addEventListener('click',hideBubble,{once:true}); document.addEventListener('touchstart',hideBubble,{once:true}); },100);
+}
+function hideBubble(){ const b=document.getElementById('transBubble'); if(b)b.remove(); }
+function setupLongPress(){
+  document.addEventListener('touchstart',e=>{ const el=e.target.closest('.en'); if(!el)return; lpTarget=el; const tc=e.touches[0]; const nr=el.classList.contains('noread'); lpTimer=setTimeout(()=>{ if(lpTarget===el){ showBubble(el.textContent||'',tc.clientX,tc.clientY,nr); if(navigator.vibrate)navigator.vibrate(30);} },500); },{passive:true});
+  document.addEventListener('touchend',()=>{clearTimeout(lpTimer);lpTarget=null;},{passive:true});
+  document.addEventListener('touchmove',()=>{clearTimeout(lpTimer);lpTarget=null;},{passive:true});
+  document.addEventListener('mousedown',e=>{ const el=e.target.closest('.en'); if(!el)return; lpTarget=el; const nr=el.classList.contains('noread'); lpTimer=setTimeout(()=>{ if(lpTarget===el) showBubble(el.textContent||'',e.clientX,e.clientY,nr); },500); });
+  document.addEventListener('mouseup',()=>{clearTimeout(lpTimer);lpTarget=null;});
+  document.addEventListener('dblclick',e=>{ const el=e.target.closest('.en'); if(!el)return; e.preventDefault(); showBubble(el.textContent||'',e.clientX,e.clientY,el.classList.contains('noread')); });
+}
+function $(id){return document.getElementById(id);}
+function en(t){ const s=String(t).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); return `<span class="en">${s}</span>`; }
+function enT(t){ const s=String(t).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); return `<span class="en noread">${s}</span>`; }
+
+/* ========== 数据 ========== */
+// going to 造句机：人称 × 动作（be 动词自动配对）
+const M_SUBJ=[
+  { s:'I', be:'am', note:'I 配 am' },
+  { s:'You', be:'are', note:'You 配 are' },
+  { s:'He', be:'is', note:'He 配 is' },
+  { s:'She', be:'is', note:'She 配 is' },
+  { s:'We', be:'are', note:'We 配 are' },
+  { s:'They', be:'are', note:'They 配 are' },
+  { s:'Oliver and I', be:'are', note:'Oliver and I = 我们(两个人) → are' },
+];
+const M_VERB=[
+  { emoji:'🥤', v:'drink Coca Cola', t:'tomorrow' },
+  { emoji:'🍔', v:'eat a hamburger', t:'for dinner tomorrow' },
+  { emoji:'✈️', v:'visit Spain', t:'next week' },
+  { emoji:'🏠', v:'live in Argentina', t:'next month' },
+];
+// 造句机 · 你来变（be 动词选择）
+const M_TRY=[
+  { q:['I ',' going to drink Coca Cola tomorrow.'], opts:['am','is','are'], a:0, why:'I 永远配 am → I am going to…' },
+  { q:['He ',' going to eat a hamburger.'], opts:['am','is','are'], a:1, why:'He / She 配 is → He is going to…' },
+  { q:['Oliver and I ',' going to visit Spain next week.'], opts:['is','am','are'], a:2, why:'Oliver and I = 我们两个人（复数）→ are。课上就练过这个！' },
+  { q:['They ',' going to live in Argentina.'], opts:['are','is','am'], a:0, why:'They（他们）是复数 → are。' },
+  { q:['You ',' going to swim tomorrow.'], opts:['are','is','am'], a:0, why:'You 永远配 are → You are going to…' },
+  { q:['She ',' going to read a book.'], opts:['is','are','am'], a:0, why:'She 配 is → She is going to…' },
+];
+// 将来时光机：现在正在做 → 将来打算做
+const TM=[
+  { subj:'Oliver and I', be:'are', ving:'eating', base:'eat', rest:'chocolate', time:'tomorrow',
+    now:'Oliver and I are eating chocolate.', future:'Oliver and I are going to eat chocolate tomorrow.',
+    real:true, why:'这是课上说的真实句子！"are eating" 是<b>现在正在吃</b>；要说<b>明天的计划</b>，得用 be + going to + 动词原形。' },
+  { subj:'He', be:'is', ving:'eating', base:'eat', rest:'a hamburger', time:'for dinner tomorrow',
+    now:'He is eating a hamburger.', future:'He is going to eat a hamburger for dinner tomorrow.',
+    real:true, why:'这句你课上说对了，外教还夸了！is going to eat 完美表达"明天要吃"。' },
+  { subj:'They', be:'are', ving:'living', base:'live', rest:'in Argentina', time:'next month',
+    now:'They are living in Argentina.', future:'They are going to live in Argentina next month.',
+    real:false, why:'外教教的例句：说下个月的计划 → are going to live。' },
+];
+const TM_TRY=[
+  { q:'现在说：She is drinking juice. 要说"她明天打算喝果汁"，怎么说？',
+    opts:['She is going to drink juice tomorrow.','She is drinking juice tomorrow.','She going to drink juice tomorrow.'], a:0,
+    explain:'将来计划 = be + going to + 动词原形：is going to drink。第2个是"正在喝"，第3个丢了 is。' },
+  { q:'现在说：We are playing football. 要说"我们下周打算踢足球"，怎么说？',
+    opts:['We are going to play football next week.','We are go to playing football next week.','We are playing going to football.'], a:0,
+    explain:'保留 are，加 going to，动词变回原形 play → are going to play。' },
+];
+// 缩写压缩机
+const SQ=[
+  { full:'I am', short:"I'm", ex:"I'm going to swim tomorrow." },
+  { full:'You are', short:"You're", ex:"You're going to love this beach." },
+  { full:'He is', short:"He's", ex:"He's going to visit Spain next week." },
+  { full:'She is', short:"She's", ex:"She's going to drink lemonade." },
+  { full:'We are', short:"We're", ex:"We're going to build a sand castle." },
+  { full:'They are', short:"They're", ex:"They're going to live in Argentina." },
+];
+// 发音诊所（课堂 AI 估的准确率，最弱的 4 个）
+const PRON=[
+  { w:'burgers', ipa:'/ˈbɜr·gərz/', cn:'汉堡(复数)', acc:39, syll:['BUR','gers'], stress:'BUR',
+    tip:'重音在前 <b>BUR</b>（"波儿"要卷舌）。结尾 -gers 读 /gərz/，有个 /z/ 的嗡嗡音。别读成"堡格斯"。' },
+  { w:'eating', ipa:'/ˈi·tɪŋ/', cn:'正在吃', acc:57, syll:['EAT','ing'], stress:'EAT',
+    tip:'<b>EAT</b> 读长音 /iː/（"衣——"拉长）。结尾 -ing 是鼻音 /ɪŋ/，鼻子里哼出来，别读成"衣挺"。' },
+  { w:'medium', ipa:'/ˈmi·di·əm/', cn:'中等的', acc:59, syll:['ME','di','um'], stress:'ME',
+    tip:'三段 <b>ME</b>-di-um，重音在最前 /ˈmiː/。最后的 um 轻轻带过 /əm/，别读成"米地阿姆"。' },
+  { w:'sunglasses', ipa:'/ˈsʌn·glæ·sɪz/', cn:'太阳镜', acc:66, syll:['SUN','glas','ses'], stress:'SUN',
+    tip:'重音在 <b>SUN</b>。glass 里的 a 读 /æ/（嘴巴张大）。结尾 -es 读 /ɪz/，有小尾巴音。' },
+];
+// 句子小医院（外教纠正的真实句子 + 同类练习）
+const HOSPITAL=[
+  { parts:['Oliver and I are ',['eating','going to eat'],' chocolate tomorrow.'], tag:'将来计划·课上真实句',
+    good:'Oliver and I are going to eat chocolate tomorrow.',
+    why:'说"明天打算做"要用 be + going to + 动词原形。are eating 是"正在吃"，配上 tomorrow 就矛盾了 → are going to eat。' },
+  { parts:['He bought an umbrella, a hat, sunglasses, and ',['a shoe','a pair of shoes'],'.'], tag:'成双成对·课上真实句',
+    good:'He bought an umbrella, a hat, sunglasses, and a pair of shoes.',
+    why:'鞋子是两只一双的！一双鞋 = a pair of shoes（shorts 短裤、glasses 眼镜也论 pair）。a shoe 只是"一只鞋"。' },
+  { parts:['He bought an umbrella ',['and a hat,',', a hat,'],' sunglasses, and a pair of shoes.'], tag:'列举·课上真实句',
+    good:'He bought an umbrella, a hat, sunglasses, and a pair of shoes.',
+    why:'列举很多样东西：中间全用逗号"，"隔开，只在<b>最后一个</b>前面放 and。A, B, C, and D。' },
+  { parts:['He ',['going to','is going to'],' visit Spain next week.'], tag:'别丢 be 动词',
+    good:'He is going to visit Spain next week.',
+    why:'going to 前面必须有 be 动词（am/is/are）！He 配 is → He is going to visit。课上外教专门纠过这句。' },
+  { parts:['We ',['is','are'],' going to swim tomorrow.'], tag:'be 要配对·练习句',
+    good:'We are going to swim tomorrow.',
+    why:'We（我们）是复数 → 配 are，不是 is。口诀：I→am，He/She→is，You/We/They→are。' },
+];
+// 海滩寻宝：9 样东西（位置为场景百分比）
+const BEACH=[
+  { w:'sand castle', cn:'沙堡', emoji:'🏰', x:14, y:74 },
+  { w:'beach ball', cn:'沙滩球', emoji:'🏐', x:58, y:80 },
+  { w:'sunglasses', cn:'太阳镜', emoji:'🕶️', x:36, y:88 },
+  { w:'swimming shorts', cn:'泳裤', emoji:'🩳', x:78, y:70 },
+  { w:'bikini', cn:'比基尼', emoji:'👙', x:88, y:84 },
+  { w:'flip flops', cn:'人字拖', emoji:'🩴', x:6, y:90 },
+  { w:'starfish', cn:'海星', emoji:'⭐', x:46, y:69 },
+  { w:'shell', cn:'贝壳', emoji:'🐚', x:24, y:83 },
+  { w:'boat', cn:'小船', emoji:'⛵', x:70, y:48 },
+];
+const BEACH_SAY=[
+  { label:'🔢 数人数', s:'I can see two people.', cn:'我能看到两个人。', tip:'people 本身就是复数（一个人是 person），课上你说对了 two people，外教夸了！' },
+  { label:'☀️ 说天气', s:'It is sunny, not rainy.', cn:'天气晴朗，不下雨。', tip:'描述图片先说天气：sunny 晴 / rainy 雨。' },
+  { label:'😎 说感受', s:'I am happy. It is hot!', cn:'我很开心。天气好热！', tip:'再加一句感受：happy 开心 / hot 热 / cool 凉爽。' },
+];
+// 同义词升级器（课堂给的 3 对）
+const SYN=[
+  { sent:['We are going to have a ','holiday','.'], word:'holiday', up:'break', full:'We are going to have a break.', cn:'holiday → break（假期 / 休息）' },
+  { sent:['I am going to do my ','homework','.'], word:'homework', up:'assignments', full:'I am going to do my assignments.', cn:'homework → assignments（作业，更高级）' },
+  { sent:['I like a ','small',' cat.'], word:'small', up:'tiny', full:'I like a tiny cat.', cn:'small → tiny（小 → 很小很小）· 这句你课上说对了！' },
+];
+// 单词卡（课堂 12 个核心词）
+const VOCAB=[
+  { w:'sand castle', cefr:'A2', cn:'沙堡' },
+  { w:'beach ball', cefr:'A2', cn:'沙滩球' },
+  { w:'sunglasses', cefr:'A2', cn:'太阳镜' },
+  { w:'swimming shorts', cefr:'A2', cn:'泳裤' },
+  { w:'bikini', cefr:'A2', cn:'比基尼' },
+  { w:'flip flop', cefr:'A2', cn:'人字拖' },
+  { w:'starfish', cefr:'A2', cn:'海星' },
+  { w:'shell', cefr:'A2', cn:'贝壳' },
+  { w:'boat', cefr:'A1', cn:'小船' },
+  { w:'medium', cefr:'A2', cn:'中等的' },
+  { w:'rainy', cefr:'A2', cn:'下雨的' },
+  { w:'cool', cefr:'B1', cn:'凉爽的' },
+];
+// 小测验
+const QUIZ=[
+  { q:'"Oliver 和我明天打算吃巧克力" → Oliver and I ___ chocolate tomorrow.', opts:['are going to eat','are eating','going to eat'], a:0,
+    explain:'将来计划 = be + going to + 动词原形。are eating 是"正在吃"；第3个丢了 are。课上外教纠过这句！', say:'Oliver and I are going to eat chocolate tomorrow.' },
+  { q:'He ___ going to visit Spain next week.', opts:['is','am','are'], a:0,
+    explain:'He 配 is → He is going to visit Spain next week.', say:'He is going to visit Spain next week.' },
+  { q:'I am going to 的缩写是？', opts:["I'm going to","Im going to","I is going to"], a:0,
+    explain:"I am 挤一挤变 I'm（撇号 ’ 代替被挤掉的 a）→ I'm going to。", say:"I'm going to swim tomorrow." },
+  { q:'"他买了一双鞋" → He bought ___.', opts:['a pair of shoes','a shoe','a shoes'], a:0,
+    explain:'鞋子两只一双 → a pair of shoes。a shoe 只是"一只鞋"，a shoes 是错的（a 后面不能直接接复数）。', say:'He bought a pair of shoes.' },
+  { q:'They ___ going to live in Argentina next month.', opts:['are','is','be'], a:0,
+    explain:'They 是复数 → are。They are going to live in Argentina.', say:'They are going to live in Argentina next month.' },
+  { q:'going to 后面的动词用什么形式？She is going to ___ a burger.', opts:['eat','eats','eating'], a:0,
+    explain:'going to 后面永远接<b>动词原形</b> → going to eat。不加 s、不加 ing。', say:'She is going to eat a burger.' },
+  { q:'图上有两个人，怎么说？I can see ___.', opts:['two people','two peoples','two persons'], a:0,
+    explain:'people 本身就是复数，不加 s → two people。你课上说对了这个，继续保持！', say:'I can see two people.' },
+  { q:'"天气晴朗，不下雨" → It is sunny, ___ rainy.', opts:['not','no','don’t'], a:0,
+    explain:'sunny, not rainy —— 用 not 表示"不是…"。课上描述海滩图片就是这么说的。', say:'It is sunny, not rainy.' },
+];
+
+// 2026-07-18 课堂回顾：扫描材料逐页核对后的匿名化数据（27词、5条表扬、4条改进）
+const PLANS718=[
+  {subject:'I',be:'am',verb:'go on a camping trip',time:'tomorrow',sentence:'I am going to go on a camping trip tomorrow.'},
+  {subject:'I',be:'am',verb:'share a tent with Amy',time:'',sentence:'I am going to share a tent with Amy.'},
+  {subject:'I',be:'am',verb:'go camping on holiday',time:'next week',sentence:'I am going to go camping on holiday next week.'},
+  {subject:'My family',be:'is',verb:'come with me',time:'',sentence:'My family is going to come with me.'},
+  {subject:'I',be:'am',verb:'camp with my mom',time:'',sentence:'I am going to camp with my mom.'},
+];
+const CAMP_GEAR718=[
+  {w:'tent',take:'a tent',show:'tent',e:'⛺'},{w:'backpack',take:'a backpack',show:'backpack',e:'🎒'},{w:'sleeping bag',take:'a sleeping bag',show:'sleeping bag',e:'🛏️'},
+  {w:'walking boots',take:'walking boots',show:'walking boots',e:'🥾'},{w:'rain jacket',take:'a rain jacket',show:'rain jacket',e:'🧥'},{w:'gloves',take:'gloves',show:'gloves',e:'🧤'},
+  {w:'trainers',take:'trainers',show:'trainers',e:'👟'},{w:'cap',take:'a cap',show:'cap',e:'🧢'},{w:'socks',take:'socks',show:'socks',e:'🧦'},
+  {w:'rucksack',take:'a rucksack',show:'rucksack',e:'🎒'},{w:'raincoat',take:'a raincoat',show:'raincoat',e:'🌧️'},{w:'scarf',take:'a scarf',show:'scarf',e:'🧣'},
+];
+const SKI718=[
+  {w:'skiing',say:'go skiing',e:'⛷️',x:8,y:62},{w:'snowboarding',say:'go snowboarding',e:'🏂',x:66,y:61},
+  {w:'cable car',say:'take a cable car',e:'🚡',x:43,y:15},{w:'mountain',say:'a snowy mountain',e:'🏔️',x:72,y:23},
+  {w:'snow',say:'white snow',e:'❄️',x:15,y:21},{w:'poles',say:'ski poles',e:'🎿',x:42,y:69},
+  {w:'goggles',say:'wear goggles',e:'🥽',x:12,y:78},{w:'skis',say:'use skis',e:'🎿',x:73,y:78},
+];
+const FEEDBACK718=[
+  {id:'good-trip',kind:'good',tag:'Verb form',before:"I'm going to go on a camping trip tomorrow.",after:"I'm going to go on a camping trip tomorrow.",reason:"结构完整：I + am + going to + 动词原形 go。两个 go 连在一起看着特别，但 going to go 是正确自然的说法。"},
+  {id:'good-share',kind:'good',tag:'Preposition',before:"I'm going to share a tent with Amy.",after:"I'm going to share a tent with Amy.",reason:"share something with someone：和某人分享/共用某物，所以是 share a tent with Amy。"},
+  {id:'good-holiday',kind:'good',tag:'Verb tense',before:"I'm going to go camping on holiday next week.",after:"I'm going to go camping on holiday next week.",reason:"next week 表示将来，be going to 很合适；go camping 是固定搭配。"},
+  {id:'good-family',kind:'good',tag:'Subject-verb agreement',before:'My family is going to come with me.',after:'My family is going to come with me.',reason:'family 在这里看作一个整体，配 is；come 用动词原形。'},
+  {id:'good-mom',kind:'good',tag:'Preposition',before:"I'm going to camp with my mom.",after:"I'm going to camp with my mom.",reason:'with 表示“和……一起”，句子短、完整、自然。'},
+  {id:'fix-possessive',kind:'repair',tag:'Possessive determiner',before:'My husband name is Beth.',after:"My husband's name is Beth.",reason:"名字属于 husband，要加所有格 's：husband's name。"},
+  {id:'fix-boots',kind:'repair',tag:'Capitalization',before:"I'm not going to wear Walking boots.",after:"I'm not going to wear walking boots.",reason:"这里只需把 Walking 改成小写。材料给出的 I won't wear walking boots 也自然，但那是风格改写；原句的 going to 结构本身没有语法错误。"},
+  {id:'fix-camping',kind:'repair',tag:'Word order & word form',before:"I'm going to on a campaign holiday next week.",after:"I'm going on a camping holiday next week.",reason:'going on 表示“去度假”；campaign 是“活动/战役”，这里要用 camping。'},
+  {id:'fix-travel',kind:'repair',tag:'Word choice & too',before:"I'm going to transfer with my mom, dad, and to.",after:"I'm going to travel with my mom and dad, too.",reason:'旅行用 travel，不用 transfer；句末“也”写 too，前面通常加逗号。'},
+];
+const VOCAB718=[
+  {w:'library',cn:'图书馆',g:'other',e:'📚'},{w:'air conditioner',cn:'空调',g:'other',e:'❄️'},
+  {w:'tent',cn:'帐篷',g:'camp',e:'⛺'},{w:'camp',cn:'露营/营地',g:'camp',e:'🏕️'},{w:'campfire',cn:'篝火',g:'camp',e:'🔥'},
+  {w:'backpack',cn:'双肩背包',g:'camp',e:'🎒'},{w:'walking boot',cn:'徒步靴',g:'camp',e:'🥾'},{w:'sock',cn:'袜子',g:'camp',e:'🧦'},
+  {w:'rain jacket',cn:'防雨夹克',g:'camp',e:'🧥'},{w:'cap',cn:'鸭舌帽',g:'camp',e:'🧢'},{w:'glove',cn:'手套',g:'camp',e:'🧤'},
+  {w:'sleeping bag',cn:'睡袋',g:'camp',e:'🛏️'},{w:'rucksack',cn:'帆布背包',g:'camp',e:'🎒'},{w:'rain coat',cn:'雨衣',g:'camp',e:'🌧️'},
+  {w:'skiing',cn:'滑雪',g:'ski',e:'⛷️'},{w:'snowboarding',cn:'单板滑雪',g:'ski',e:'🏂'},{w:'cable car',cn:'缆车',g:'ski',e:'🚡'},
+  {w:'mountain',cn:'山',g:'ski',e:'🏔️'},{w:'snow',cn:'雪',g:'ski',e:'❄️'},{w:'scarf',cn:'围巾',g:'ski',e:'🧣'},
+  {w:'pole',cn:'滑雪杖',g:'ski',e:'🎿'},{w:'goggle',cn:'护目镜',g:'ski',e:'🥽'},{w:'ski',cn:'滑雪板',g:'ski',e:'🎿'},
+  {w:'sushi',cn:'寿司',g:'other',e:'🍣'},{w:'camping',cn:'露营',g:'other',e:'🏕️'},{w:'excited',cn:'兴奋的',g:'other',e:'🤩'},{w:'trainer',cn:'运动鞋',g:'other',e:'👟'},
+];
+const MISSION718=[
+  {id:'718-structure',q:'My family ___ going to come with me.',opts:['is','am','are'],a:0,skill:'be动词配主语',explain:'family 在这里看作一个整体，所以用 is：My family is going to come with me.',say:'My family is going to come with me.'},
+  {id:'718-base-verb',q:"I'm going to ___ skiing next week.",opts:['go','going','goes'],a:0,skill:'going to + 动词原形',explain:'going to 后接动词原形 go；go skiing 是固定搭配。',say:"I'm going to go skiing next week."},
+  {id:'718-with',q:"I'm going to share a tent ___ Amy.",opts:['with','to','at'],a:0,skill:'介词 with',explain:'share something with someone：和某人共用某物。',say:"I'm going to share a tent with Amy."},
+  {id:'718-camping',q:'选出正确句子。',opts:["I'm going on a camping holiday next week.","I'm going to on a campaign holiday next week.","I'm going a camp holiday next week."],a:0,skill:'going on + camping',explain:'going on a holiday 是正确语序；露营是 camping，不是 campaign。',say:"I'm going on a camping holiday next week."},
+  {id:'718-travel',q:'“我要和爸爸妈妈一起旅行，我也去。”哪句最自然？',opts:["I'm going to travel with my mom and dad, too.","I'm going to transfer with my mom, dad, and to.","I going travel and too my parents."],a:0,skill:'travel 与 too',explain:'旅行用 travel；too 表示“也”，常放句末并用逗号隔开。',say:"I'm going to travel with my mom and dad, too."},
+  {id:'718-possessive',q:'名字属于 husband，怎样写？',opts:["My husband's name is Beth.",'My husband name is Beth.',"My husbands name are Beth."],a:0,skill:"所有格 's",explain:"所属关系用 husband's name；'s 表示“丈夫的”。",say:"My husband's name is Beth."},
+  {id:'718-boots',q:'哪句语法正确、又保留 going to？',opts:["I'm not going to wear walking boots.","I'm not going to wear Walking boots.","I'm not going wear walking boots."],a:0,skill:'大小写与完整结构',explain:'walking 在句中小写；am + not + going to + wear 结构完整。',say:"I'm not going to wear walking boots."},
+  {id:'718-dialogue',q:'朋友问 What are you going to take? 选完整回答。',opts:["I'm going to take a tent and a sleeping bag.",'A tent.','I taking tent.'],a:0,skill:'完整口语回答',explain:'完整回答要带主语、be、going to 和动词原形。',say:"I'm going to take a tent and a sleeping bag."},
+];
+
+/* ========== 状态 ========== */
+const APP_ID='preply-going-to';
+const APP_VERSION='2.0.0';
+let kid=null, stars=0, moduleStartedAt=Date.now(), activeModule=null, selectedUnit=null;
+let prog={ done:{}, stars:0, log:[], attempts:[], wrongbook:{}, vocabSeen718:[], feedbackSeen718:[], timeByModule:{}, totalMs:0 };
+const MODULES=[
+  { id:'recap718',unit:'718',icon:'🧭',t1:'先看懂这节课',t2:'课堂路线 + going to 核心结构（先教再练）' },
+  { id:'plan718',unit:'718',icon:'🚂',t1:'计划小火车 ⭐',t2:'拖动思想看 subject + be + going to + 动词原形 + 时间',star:true },
+  { id:'camp718',unit:'718',icon:'🎒',t1:'露营打包台',t2:'点选装备装进行李，并用完整句说计划' },
+  { id:'ski718',unit:'718',icon:'🚡',t1:'滑雪路线图',t2:'在雪山情境中找 8 个词，说一条滑雪计划' },
+  { id:'feedback718',unit:'718',icon:'🩺',t1:'课堂反馈实验室 ⭐',t2:'5句做得好 + 4句需要修理；分清语法与风格改写',star:true },
+  { id:'vocab718',unit:'718',icon:'🗂️',t1:'27词图卡',t2:'按露营 / 滑雪 / 其他分组，点卡听读' },
+  { id:'mission718',unit:'718',icon:'💬',t1:'独立对话任务',t2:'遮住提示后独立回答；错后定点回教' },
+  { id:'wrong718',unit:'718',icon:'🔁',t1:'只重做错题',t2:'错一次进本，连续答对2次才解决' },
+  { id:'recap',unit:'709',icon:'📋',t1:'这节课学了啥',t2:'3 个环节 + going to 核心语法（带例句朗读）' },
+  { id:'machine',unit:'709',icon:'🚀',t1:'going to 造句机 ⭐',t2:'点人称，be 动词自己变身 am/is/are，句子搭出来',star:true },
+  { id:'timemachine',unit:'709',icon:'🕰️',t1:'将来时光机 ⭐',t2:'are eating ➜ are going to eat（课上真实句变身）',star:true },
+  { id:'contract',unit:'709',icon:'✂️',t1:'缩写压缩机',t2:"I am ➜ I'm，挤一挤就变缩写" },
+  { id:'pron',unit:'709',icon:'🔊',t1:'发音诊所 ⭐',t2:'读顺 burgers / eating / medium / sunglasses（可录音自测）',star:true },
+  { id:'hospital',unit:'709',icon:'🔧',t1:'句子小医院 ⭐',t2:'课上纠过的句子（点一下治好，带讲解）',star:true },
+  { id:'beach',unit:'709',icon:'🏖️',t1:'海滩寻宝',t2:'在海滩图里找 9 样东西，再数人数、说天气' },
+  { id:'syn',unit:'709',icon:'🔁',t1:'同义词升级器',t2:'holiday→break, homework→assignments, small→tiny' },
+  { id:'vocab',unit:'709',icon:'📒',t1:'单词卡',t2:'12 个海滩词（翻卡 + 朗读 + 等级）' },
+  { id:'quiz',unit:'709',icon:'🏆',t1:'小测验',t2:'懂了再玩一遍，每题有讲解' },
+];
+
+function emptyProgress(){ return {done:{},stars:0,log:[],attempts:[],wrongbook:{},vocabSeen718:[],feedbackSeen718:[],timeByModule:{},totalMs:0}; }
+function normalizeProgress(p){ const n=Object.assign(emptyProgress(),p||{}); n.done=n.done||{}; n.log=Array.isArray(n.log)?n.log:[]; n.attempts=Array.isArray(n.attempts)?n.attempts:[]; n.wrongbook=n.wrongbook||{}; n.vocabSeen718=Array.isArray(n.vocabSeen718)?n.vocabSeen718:[]; n.feedbackSeen718=Array.isArray(n.feedbackSeen718)?n.feedbackSeen718:[]; n.timeByModule=n.timeByModule||{}; n.totalMs=Number(n.totalMs)||0; return n; }
+function storageKey(k){ return `dd:${k}:${APP_ID}:v2`; }
+function saveProg(){ if(kid) localStorage.setItem(storageKey(kid), JSON.stringify({schemaVersion:2,child:kid,app:APP_ID,version:APP_VERSION,stars,prog})); }
+function loadProg(k){
+  try{
+    const current=localStorage.getItem(storageKey(k));
+    if(current)return JSON.parse(current);
+    const legacy=localStorage.getItem('preplyGT_'+k);
+    if(legacy){ const d=JSON.parse(legacy); return {stars:d.stars||0,prog:normalizeProgress(d.prog)}; }
+    return null;
+  }catch(e){return null;}
+}
+function pickKid(k){
+  if(kid&&kid!==k)flushModuleTime();
+  kid=k;
+  selectedUnit=null;
+  document.querySelectorAll('.kid-card').forEach(el=>el.classList.toggle('active', el.dataset.kid===k));
+  const d=loadProg(k);
+  stars = d?d.stars||0:0;
+  prog = normalizeProgress(d&&d.prog);
+  $('mapBox').style.opacity='1'; $('mapBox').style.pointerEvents='auto';
+  $('whoPill').innerHTML = k==='kenton'?'👦 Kenton':'🧒 Eddey';
+  $('starCount').textContent=stars;
+  renderMap();
+}
+function renderMap(){
+  const moduleButtons=unit=>MODULES.filter(m=>m.unit===unit).map(m=>{
+    const dn=prog.done[m.id];
+    const badge = dn ? `<span class="done-badge">✅${dn.ok}/${dn.total}</span>` : '';
+    return `<button class="map-btn ${m.star?'star':''}" onclick="openModule('${m.id}')">
+      <span class="icon">${m.icon}</span>
+      <span class="text"><div class="t1">${m.t1}</div><div class="t2">${m.t2}</div></span>
+      ${badge}
+    </button>`;
+  }).join('');
+  if(!selectedUnit){
+    const left=Object.values(prog.wrongbook).filter(w=>!w.resolved).length;
+    $('mapBox').innerHTML=`
+      <div class="unit-heading"><span class="date">选择</span><strong>先进入一节课</strong></div>
+      <button class="map-btn star" onclick="openUnit('718')"><span class="icon">🏕️</span><span class="text"><div class="t1">7月18日 · 露营与滑雪</div><div class="t2">新课复习：计划小火车、情境词汇、课堂反馈、独立对话</div></span></button>
+      <button class="map-btn" onclick="openUnit('709')"><span class="icon">🏖️</span><span class="text"><div class="t1">7月9日 · 海滩计划</div><div class="t2">旧课回看：时光机、缩写、发音、海滩寻宝</div></span></button>
+      <button class="map-btn" onclick="openModule('wrong718')"><span class="icon">🔁</span><span class="text"><div class="t1">只重做错题</div><div class="t2">${left?`还有 ${left} 道待连续答对两次`:'目前没有未解决错题'}</div></span></button>
+      <button class="map-btn" onclick="openModule('report')"><span class="icon">👨‍👩‍👧</span><span class="text"><div class="t1">学习记录 / 家长页</div><div class="t2">用时、尝试、错题本、JSON / Markdown 导入导出</div></span></button>`;
+    return;
+  }
+  const meta=selectedUnit==='718'?['07·18','露营与滑雪 · 新课复习']:['07·09','海滩计划 · 旧课回看'];
+  $('mapBox').innerHTML=`<div class="unit-heading"><span class="date">${meta[0]}</span><strong>${meta[1]}</strong></div>${moduleButtons(selectedUnit)}
+    <button class="map-btn" onclick="selectedUnit=null;renderMap()"><span class="icon">←</span><span class="text"><div class="t1">返回两节课</div><div class="t2">切换课次或查看总记录</div></span></button>
+    <button class="map-btn" onclick="openModule('report')">
+      <span class="icon">👨‍👩‍👧</span>
+      <span class="text"><div class="t1">学习记录 / 家长页</div><div class="t2">用时、尝试、错题本、JSON / Markdown 导入导出</div></span>
+    </button>`;
+}
+function openUnit(unit){ selectedUnit=unit==='709'?'709':'718';renderMap();$('mapBox').scrollIntoView({block:'start',behavior:'smooth'}); }
+function addStar(n){ stars+=n; $('starCount').textContent=stars; saveProg(); }
+function flushModuleTime(){
+  if(!kid||!activeModule)return;
+  const ms=Math.max(0,Date.now()-moduleStartedAt);
+  prog.timeByModule[activeModule]=(prog.timeByModule[activeModule]||0)+ms;
+  prog.totalMs+=ms;
+  moduleStartedAt=Date.now(); activeModule=null; saveProg();
+}
+function markDone(id,ok,total){ prog.done[id]={ok,total}; prog.log.push({id,ok,total,ts:Date.now()}); if(activeModule===id)flushModuleTime(); else saveProg(); }
+function openModule(id){
+  if(!kid){ alert('先选 Kenton 或 Eddey！'); return; }
+  flushModuleTime(); activeModule=id;
+  moduleStartedAt=Date.now();
+  $('home').classList.add('hidden');
+  $('topbar').classList.remove('hidden');
+  $('stageBox').classList.remove('hidden');
+  window.scrollTo({top:0,behavior:'smooth'});
+  ({recap718:renderRecap718,plan718:renderPlan718,camp718:renderCamp718,ski718:renderSki718,feedback718:renderFeedback718,vocab718:renderVocab718,mission718:()=>renderMission718(false),wrong718:renderWrong718,recap:renderRecap,machine:renderMachine,timemachine:renderTM,contract:renderContract,pron:renderPron,hospital:renderHospital,beach:renderBeach,syn:renderSyn,vocab:renderVocab,quiz:renderQuiz,report:renderReport}[id])();
+}
+function goHome(){
+  flushModuleTime();
+  $('topbar').classList.add('hidden'); $('stageBox').classList.add('hidden');
+  $('home').classList.remove('hidden'); renderMap();
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function setTitle(t,s){ $('stageTitle').textContent=t; $('stageSub').textContent=s; }
+function backBtn(){ return `<button class="btn btn-blue" style="width:100%; margin-top:14px;" onclick="goHome()">🏠 回模块地图</button>`; }
+function shuffle(a){ a=[...a]; for(let i=a.length-1;i>0;i--){const j=(Math.random()*(i+1))|0;[a[i],a[j]]=[a[j],a[i]];} return a; }
+function confetti(){ const cs=['#FFE07A','#A8D8EA','#FF9E7A','#B5EAD7','#C7B8EA']; for(let i=0;i<28;i++){ const c=document.createElement('div'); c.className='confetti'; c.style.left=Math.random()*100+'%'; c.style.background=cs[(Math.random()*cs.length)|0]; c.style.animationDelay=(Math.random()*.5)+'s'; c.style.borderRadius=Math.random()>.5?'50%':'0'; document.body.appendChild(c); setTimeout(()=>c.remove(),3300);} }
+
+/* ========== 1. 这节课学了啥 ========== */
+function renderRecap(){
+  setTitle('📋 这节课学了啥','点 🔊 听例句。看不懂的英文长按看中文。');
+  const topics=[
+    ['🏖️ 描述海滩图片','I can see a sand castle and two people. It is sunny.','说图上有什么、数人数、说天气和感受（happy / hot / cool）。'],
+    ['🚀 going to 说将来计划','I am going to drink Coca Cola tomorrow.','换人称造句：you, he, we, they, Oliver and I，还把"正在做"改成"打算做"。'],
+    ['🗣️ 发音和纠错','He is going to visit Spain next week.','外教带着纠动词和语序，练缩写 I’m going to，全班跟读。'],
+  ];
+  const grammar=[
+    ['Future with going to','说将来的计划：be(am/is/are) + going to + 动词原形','They are going to live in Argentina next month.'],
+    ['成双成对 a pair of','鞋子、短裤、眼镜都是两只一双 → a pair of shoes','He bought a pair of shoes.'],
+  ];
+  $('stageContent').innerHTML = `
+    <div style="font-weight:800; margin:6px 0 8px;">课上的 3 个环节</div>
+    ${topics.map(t=>`<div class="report-sec"><h3>${t[0]}</h3>
+      <div class="item">${en(t[1])} <button class="icon-btn mint btn-small" style="padding:4px 8px;" onclick="speak('${t[1].replace(/'/g,"\\'")}')">🔊</button></div>
+      <div class="item" style="color:var(--text-light); font-size:12px;">${t[2]}</div></div>`).join('')}
+    <div style="font-weight:800; margin:14px 0 8px;">2 条核心语法</div>
+    ${grammar.map(g=>`<div class="report-sec"><h3>📌 ${g[0]}</h3>
+      <div class="item" style="font-size:12px; color:var(--text-light);">${g[1]}</div>
+      <div class="item">${en(g[2])} <button class="icon-btn mint btn-small" style="padding:4px 8px;" onclick="speak('${g[2].replace(/'/g,"\\'")}')">🔊</button></div></div>`).join('')}
+    <div style="background:var(--yellow-soft); border-radius:12px; padding:11px; font-size:12px; line-height:1.6; margin-top:12px;">
+      💪 先去 <b>going to 造句机</b> 玩懂 am/is/are 怎么配，再去 <b>将来时光机</b> 看句子怎么变身！
+    </div>
+    ${backBtn()}`;
+  markDone('recap',1,1); renderMap();
+}
+
+/* ========== 2. going to 造句机 ========== */
+let mSubj=0, mVerb=0, mSeen=null, mtIdx=0, mtOk=0;
+function renderMachine(){ mSubj=0; mVerb=0; mSeen=new Set(); machinePlay(false); }
+function machineSentence(){
+  const s=M_SUBJ[mSubj], v=M_VERB[mVerb];
+  return `${s.s} ${s.be} going to ${v.v} ${v.t}.`;
+}
+function machinePlay(spk){
+  const s=M_SUBJ[mSubj], v=M_VERB[mVerb];
+  mSeen.add(mSubj+'|'+mVerb);
+  setTitle('🚀 going to 造句机','点下面的人称和动作，看 be 动词自己变身！至少玩出 5 种组合。');
+  $('stageContent').innerHTML=`
+    <div class="chip-label">👤 谁？（点一点换人）</div>
+    <div class="chip-row">${M_SUBJ.map((x,i)=>`<button class="chip ${i===mSubj?'on':''}" onclick="mSubj=${i};machinePlay(true)">${x.s}</button>`).join('')}</div>
+    <div class="chip-label">🎬 打算做什么？</div>
+    <div class="chip-row">${M_VERB.map((x,i)=>`<button class="chip ${i===mVerb?'on':''}" onclick="mVerb=${i};machinePlay(true)">${x.emoji} ${x.v}</button>`).join('')}</div>
+    <div class="build">
+      <div class="chunk a" style="animation-delay:0s">${s.s}<span class="chunk-note">谁</span></div>
+      <div class="chunk be flash" style="animation-delay:.1s">${s.be}<span class="chunk-note">be 变身!</span></div>
+      <div class="chunk gt" style="animation-delay:.2s">going to<span class="chunk-note">打算</span></div>
+      <div class="chunk b" style="animation-delay:.3s">${v.v}<span class="chunk-note">动词原形</span></div>
+      <div class="chunk t" style="animation-delay:.4s">${v.t}<span class="chunk-note">时间</span></div>
+    </div>
+    <div style="text-align:center;"><span class="rule-chip">💡 ${s.note}</span></div>
+    <div style="text-align:center; margin-top:6px;"><span class="rule-chip" style="background:var(--bg); font-weight:600; font-size:12px;">口诀：I→am · He/She→is · You/We/They→are</span></div>
+    <div class="speak-btns"><button class="icon-btn coral" onclick="speak('${machineSentence().replace(/'/g,"\\'")}')">🔊 再听一遍</button></div>
+    <div style="text-align:center; font-size:12px; color:var(--text-light); margin-top:6px;">已玩出 <b>${mSeen.size}</b> / 5 种组合</div>
+    ${mSeen.size>=5?`<button class="btn btn-primary" style="margin-top:12px;" onclick="mtIdx=0;mtOk=0;machineTryOne()">🎯 会了！去闯关 →</button>`:''}
+    ${backBtn()}`;
+  if(spk) speak(machineSentence());
+}
+function machineTryOne(){
+  if(mtIdx>=M_TRY.length){ machineDone(); return; }
+  const t=M_TRY[mtIdx];
+  setTitle('🚀 going to 造句机 · 你来配','轮到你！选出正确的 be 动词。');
+  $('stageContent').innerHTML=`
+    <div style="text-align:center; font-size:13px; color:var(--text-light);">第 ${mtIdx+1} / ${M_TRY.length} 题 · 对 ${mtOk}</div>
+    <div class="sent-box">${enT(t.q[0])}<span style="color:var(--coral);">___</span>${enT(t.q[1])}</div>
+    <div class="options" id="mtOpts">
+      ${t.opts.map((o,i)=>`<button class="option" onclick="machineTryPick(${i})"><span class="letter">${String.fromCharCode(65+i)}</span><span>${o}</span></button>`).join('')}
+    </div>
+    <div id="mtFb" class="feedback"></div>`;
+}
+function machineTryPick(i){
+  const t=M_TRY[mtIdx];
+  const els=document.querySelectorAll('#mtOpts .option');
+  els.forEach(e=>e.classList.add('disabled'));
+  const ok=i===t.a;
+  els[i].classList.add(ok?'correct':'wrong');
+  if(!ok) els[t.a].classList.add('correct');
+  if(ok){ mtOk++; addStar(1); }
+  const full=t.q[0]+t.opts[t.a]+t.q[1];
+  const fb=$('mtFb'); fb.className='feedback show '+(ok?'right':'wrong');
+  fb.innerHTML=`<div class="title">${ok?'🎉 对啦！':'看这里 👇'}</div>
+    <div style="font-size:13px;">💡 ${t.why}</div>
+    <button class="icon-btn mint btn-small" style="margin-top:8px;" onclick="speak('${full.replace(/'/g,"\\'")}')">🔊 听整句</button>
+    <button class="btn btn-primary btn-small" style="width:100%; margin-top:8px;" onclick="mtIdx++; machineTryOne();">${mtIdx<M_TRY.length-1?'下一题 →':'完成 ✅'}</button>`;
+}
+function machineDone(){
+  setTitle('🚀 going to 造句机','全部玩完啦！');
+  markDone('machine',mtOk,M_TRY.length); renderMap();
+  $('stageContent').innerHTML=`<div style="text-align:center; padding:16px;">
+    <div style="font-size:54px;">🚀✨</div>
+    <div style="font-weight:800; font-size:18px; margin:8px 0;">be 动词配对：对了 ${mtOk} / ${M_TRY.length}</div>
+    <div style="font-size:13px; color:var(--text-light); line-height:1.8;">口诀记牢：<br><b>I → am</b>（I am going to…）<br><b>He / She → is</b><br><b>You / We / They → are</b><br><b>Oliver and I = 我们 → are</b></div>
+  </div>${backBtn()}`;
+  confetti();
+}
+
+/* ========== 3. 将来时光机 ========== */
+let tmIdx=0, tmqIdx=0, tmqOk=0;
+function renderTM(){ tmIdx=0; tmOne(); }
+function tmOne(){
+  if(tmIdx>=TM.length){ tmqIdx=0; tmqOk=0; tmTryOne(); return; }
+  const t=TM[tmIdx];
+  setTitle('🕰️ 将来时光机','现在"正在做" ➜ 推到明天，变成"打算做"。看句子一步步变身！');
+  $('stageContent').innerHTML=`
+    <div style="text-align:center; font-size:13px; color:var(--text-light);">第 ${tmIdx+1} / ${TM.length} 句 ${t.real?'· <span class="badge badge-green">课上真实句</span>':''}</div>
+    <div style="text-align:center; font-size:12px; color:var(--text-light); margin-top:8px;">现在 🕐</div>
+    <div class="build" id="tmBox">
+      <div class="chunk a" style="animation-delay:0s">${t.subj}</div>
+      <div class="chunk be" style="animation-delay:.1s" id="tmBe">${t.be}</div>
+      <div class="chunk b" style="animation-delay:.2s" id="tmV">${t.ving}</div>
+      <div class="chunk gt" style="animation-delay:.3s" id="tmRest">${t.rest}</div>
+    </div>
+    <div class="tm-lever">
+      <button class="btn btn-yellow pulse" id="tmGo" onclick="tmPush()">🕰️ 推到明天！→</button>
+    </div>
+    <div class="tm-steps" id="tmSteps"></div>
+    <div id="tmNext" style="display:none;">
+      <div class="pron-tip">💡 ${t.why}</div>
+      <div style="text-align:center;"><button class="icon-btn mint" onclick="speak('${t.future.replace(/'/g,"\\'")}')">🔊 听将来版</button>
+      <button class="icon-btn" onclick="speak('${t.now.replace(/'/g,"\\'")}')">🔊 对比现在版</button></div>
+      <button class="btn btn-primary" style="width:100%; margin-top:12px;" onclick="tmIdx++; tmOne();">${tmIdx<TM.length-1?'下一句 →':'去闯关 →'}</button>
+    </div>`;
+}
+function tmPush(){
+  const t=TM[tmIdx];
+  $('tmGo').style.display='none';
+  const steps=[
+    `① <b>${t.be}</b> 是锚，留在原地不动`,
+    `② be 后面插进 <b>going to</b>（"打算"开关打开！）`,
+    `③ ${t.ving} 脱掉 -ing，变回原形 <b>${t.base}</b>`,
+    `④ 句尾挂上时间牌 <b>${t.time}</b>`,
+  ];
+  const box=$('tmSteps');
+  box.innerHTML=steps.map((s,i)=>`<div class="tm-step" id="tms${i}">${s}</div>`).join('');
+  // ① be 高亮
+  setTimeout(()=>{ $('tms0').classList.add('show'); $('tmBe').classList.add('flash'); },200);
+  // ② 插入 going to
+  setTimeout(()=>{
+    $('tms1').classList.add('show');
+    const g=document.createElement('div'); g.className='chunk gt'; g.innerHTML='going to<span class="chunk-note">打算</span>';
+    $('tmBox').insertBefore(g, $('tmV'));
+  },1300);
+  // ③ -ing 掉落变原形
+  setTimeout(()=>{
+    $('tms2').classList.add('show');
+    const v=$('tmV');
+    v.innerHTML=`${TM[tmIdx].base}<span class="drop-ing" style="color:var(--red);">ing</span>`;
+    setTimeout(()=>{ v.innerHTML=`${TM[tmIdx].base}<span class="chunk-note">动词原形</span>`; v.classList.add('flash'); },800);
+  },2400);
+  // ④ 时间牌 + 朗读
+  setTimeout(()=>{
+    $('tms3').classList.add('show');
+    const tt=document.createElement('div'); tt.className='chunk t'; tt.innerHTML=`${TM[tmIdx].time}<span class="chunk-note">时间</span>`;
+    $('tmBox').appendChild(tt);
+    speak(TM[tmIdx].future);
+    $('tmNext').style.display='block';
+  },3600);
+}
+function tmTryOne(){
+  if(tmqIdx>=TM_TRY.length){ tmDone(); return; }
+  const q=TM_TRY[tmqIdx];
+  setTitle('🕰️ 将来时光机 · 你来变','轮到你！把"正在做"变成"打算做"。');
+  $('stageContent').innerHTML=`
+    <div style="text-align:center; font-size:13px; color:var(--text-light);">第 ${tmqIdx+1} / ${TM_TRY.length} 题 · 对 ${tmqOk}</div>
+    <div style="font-size:15px; font-weight:700; margin:14px 0; line-height:1.6;">${q.q}</div>
+    <div class="options" id="tmqOpts">
+      ${q.opts.map((o,i)=>`<button class="option" onclick="tmTryPick(${i})"><span class="letter">${String.fromCharCode(65+i)}</span><span>${enT(o)}</span></button>`).join('')}
+    </div>
+    <div id="tmqFb" class="feedback"></div>`;
+}
+function tmTryPick(i){
+  const q=TM_TRY[tmqIdx];
+  const els=document.querySelectorAll('#tmqOpts .option');
+  els.forEach(e=>e.classList.add('disabled'));
+  const ok=i===q.a;
+  els[i].classList.add(ok?'correct':'wrong');
+  if(!ok) els[q.a].classList.add('correct');
+  if(ok){ tmqOk++; addStar(1); }
+  const fb=$('tmqFb'); fb.className='feedback show '+(ok?'right':'wrong');
+  fb.innerHTML=`<div class="title">${ok?'🎉 对啦！':'看这里 👇'}</div>
+    <div style="font-size:13px;">💡 ${q.explain}</div>
+    <button class="icon-btn mint btn-small" style="margin-top:8px;" onclick="speak('${q.opts[q.a].replace(/'/g,"\\'")}')">🔊 听</button>
+    <button class="btn btn-primary btn-small" style="width:100%; margin-top:8px;" onclick="tmqIdx++; tmTryOne();">${tmqIdx<TM_TRY.length-1?'下一题 →':'完成 ✅'}</button>`;
+}
+function tmDone(){
+  setTitle('🕰️ 将来时光机','变身成功！');
+  markDone('timemachine',tmqOk,TM_TRY.length); renderMap();
+  $('stageContent').innerHTML=`<div style="text-align:center; padding:16px;">
+    <div style="font-size:54px;">🕰️✨</div>
+    <div style="font-weight:800; font-size:18px; margin:8px 0;">将来变身三步曲学会啦！</div>
+    <div style="font-size:13px; color:var(--text-light); line-height:1.8;">① be(am/is/are) 留下<br>② 插进 <b>going to</b><br>③ 动词变回<b>原形</b>（eating→eat）<br>最后挂上时间牌 tomorrow / next week / next month</div>
+  </div>${backBtn()}`;
+  confetti();
+}
+
+/* ========== 4. 缩写压缩机 ========== */
+let sqDone=null;
+function renderContract(){
+  sqDone=new Set();
+  setTitle('✂️ 缩写压缩机','外教课上练的：把 be 动词挤一挤，变成缩写。点"压缩"！');
+  $('stageContent').innerHTML = SQ.map((s,i)=>`
+    <div class="sq-card">
+      <span class="sq-full" id="sqf${i}">${s.full}</span>
+      <button class="icon-btn yellow btn-small" id="sqb${i}" style="margin-left:10px;" onclick="squeeze(${i})">✂️ 压缩</button>
+      <div class="sq-ex hidden" id="sqe${i}">${en(s.ex)} <button class="icon-btn mint btn-small" style="padding:3px 7px;" onclick="speak('${s.ex.replace(/'/g,"\\'")}')">🔊</button></div>
+    </div>`).join('') + `
+    <div style="background:var(--yellow-soft); border-radius:12px; padding:11px; font-size:12px; line-height:1.6; margin-top:10px;">
+      💡 撇号 ' 就是"被挤掉的字母"留下的小脚印：I <b>a</b>m → I'm（a 被挤掉了）。说话时缩写更自然！
+    </div>
+    <div style="text-align:center; font-size:12px; color:var(--text-light); margin-top:8px;">已压缩 <span id="sqCount">0</span> / ${SQ.length}</div>
+    ${backBtn()}`;
+}
+function squeeze(i){
+  if(sqDone.has(i))return;
+  sqDone.add(i);
+  const s=SQ[i];
+  const el=$('sqf'+i);
+  el.textContent=s.short; el.classList.add('squeezed');
+  $('sqb'+i).style.display='none';
+  $('sqe'+i).classList.remove('hidden');
+  $('sqCount').textContent=sqDone.size;
+  speak(s.ex);
+  addStar(1);
+  if(sqDone.size===SQ.length){ markDone('contract',SQ.length,SQ.length); renderMap(); confetti(); }
+}
+
+/* ========== 5. 发音诊所 ========== */
+let pIdx=0;
+function renderPron(){ pIdx=0; pronOne(); }
+function pronOne(){
+  if(pIdx>=PRON.length){ pronDone(); return; }
+  const p=PRON[pIdx];
+  setTitle('🔊 发音诊所','课上这几个词读得不太准，我们一个一个读顺。');
+  $('stageContent').innerHTML=`
+    <div style="text-align:center; font-size:13px; color:var(--text-light);">第 ${pIdx+1} / ${PRON.length} 个</div>
+    <div class="pron-word">${p.w}</div>
+    <div class="pron-ipa">${p.ipa}</div>
+    <div class="pron-cn">${p.cn}</div>
+    <div class="acc-row">课上准确率 <span class="acc-chip acc-low">${p.acc}%</span> → 我们读到 <span class="acc-chip acc-hi" id="newAcc">？</span></div>
+    <div class="syll">${p.syll.map(s=>`<span class="${s===p.stress?'hot':''}" onclick="speak('${s}',true)">${s.toLowerCase()}</span>`).join('')}</div>
+    <div class="speak-btns">
+      <button class="icon-btn coral pulse" style="font-size:16px; padding:14px 20px;" onclick="speak('${p.w}')">🔊 听整词</button>
+      <button class="icon-btn yellow" onclick="speak('${p.w}',true)">🐢 慢速</button>
+      <button class="icon-btn mint" onclick="speakTimes('${p.w}',3,true)">🔁 连读3遍</button>
+    </div>
+    <div class="pron-tip">💡 ${p.tip}</div>
+    <div id="recArea" style="text-align:center;"></div>
+    <div class="btn-row" style="margin-top:14px;">
+      <button class="btn btn-blue" style="flex:1;" onclick="${pIdx>0?'pIdx--,pronOne()':'goHome()'}">${pIdx>0?'← 上一个':'🏠 地图'}</button>
+      <button class="btn btn-primary" style="flex:1;" onclick="pIdx++; pronOne();">${pIdx<PRON.length-1?'下一个 →':'完成 ✅'}</button>
+    </div>`;
+  renderRec(p);
+}
+function renderRec(p){
+  const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+  if(!SR){ $('recArea').innerHTML=`<div style="font-size:12px; color:var(--text-light); margin-top:10px;">（这台设备不支持录音自测，多听几遍跟读就行 🎧）</div>`; return; }
+  $('recArea').innerHTML=`<button class="btn btn-purple" style="width:100%; margin-top:12px;" id="micBtn" onclick="recPron('${p.w}')">🎤 点我说一遍，看读得准不准</button>
+    <div id="recRes" style="font-size:13px; margin-top:8px; line-height:1.5;"></div>`;
+}
+function recPron(word){
+  const SR=window.SpeechRecognition||window.webkitSpeechRecognition;
+  const rec=new SR(); rec.lang='en-US'; rec.maxAlternatives=5; rec.interimResults=false;
+  const mb=$('micBtn'); mb.textContent='🎙️ 在听…大声读出来'; mb.style.background='var(--coral)';
+  rec.onresult=e=>{
+    let best=0, said='';
+    for(let i=0;i<e.results[0].length;i++){
+      const h=e.results[0][i].transcript.trim().toLowerCase();
+      const sc=similar(h, word.toLowerCase());
+      if(sc>best){ best=sc; said=h; }
+    }
+    const pct=Math.round(best*100);
+    const ok=pct>=60;
+    $('newAcc').textContent=pct+'%';
+    $('newAcc').className='acc-chip '+(ok?'acc-hi':'acc-low');
+    $('recRes').innerHTML = ok
+      ? `<div style="color:#2F855A; font-weight:800;">🎉 读得不错！(听到："${said}") 比课上的 ${PRON[pIdx].acc}% 进步啦！</div>`
+      : `<div style="color:#C05a2a; font-weight:800;">再来一次～(听到："${said}") 先点 🔁连读3遍 跟着读，重音别忘了。</div>`;
+    mb.textContent='🎤 再说一遍'; mb.style.background='var(--purple)';
+    if(ok) addStar(1);
+  };
+  rec.onerror=()=>{ mb.textContent='🎤 再试一次'; mb.style.background='var(--purple)'; $('recRes').innerHTML='<div style="color:var(--text-light);">没听清，靠近话筒再试一次～</div>'; };
+  rec.onend=()=>{ if(mb.textContent==='🎙️ 在听…大声读出来'){ mb.textContent='🎤 点我说一遍'; mb.style.background='var(--purple)'; } };
+  try{ rec.start(); }catch(e){}
+}
+function similar(a,b){
+  a=a.replace(/[^a-z]/g,''); b=b.replace(/[^a-z]/g,'');
+  if(!a)return 0; if(a===b)return 1;
+  const m=a.length,n=b.length, d=Array.from({length:m+1},()=>new Array(n+1).fill(0));
+  for(let i=0;i<=m;i++)d[i][0]=i; for(let j=0;j<=n;j++)d[0][j]=j;
+  for(let i=1;i<=m;i++)for(let j=1;j<=n;j++){ d[i][j]=Math.min(d[i-1][j]+1,d[i][j-1]+1,d[i-1][j-1]+(a[i-1]===b[j-1]?0:1)); }
+  return 1 - d[m][n]/Math.max(m,n);
+}
+function pronDone(){
+  setTitle('🔊 发音诊所','全部读完啦！');
+  markDone('pron',PRON.length,PRON.length); renderMap();
+  $('stageContent').innerHTML=`<div style="text-align:center; padding:16px;">
+    <div style="font-size:54px;">🎤✨</div>
+    <div style="font-weight:800; font-size:18px; margin:8px 0;">4 个词都练顺啦！</div>
+    <div style="font-size:13px; color:var(--text-light); line-height:1.6;">下次课读到 burgers / eating / medium / sunglasses，记得<b>重音</b>和<b>结尾音</b>。</div>
+  </div>${backBtn()}`;
+  confetti();
+}
+
+/* ========== 6. 句子小医院 ========== */
+let hIdx=0;
+function renderHospital(){ hIdx=0; hospitalOne(); }
+function hospitalOne(){
+  if(hIdx>=HOSPITAL.length){ hospitalDone(); return; }
+  const it=HOSPITAL[hIdx];
+  setTitle('🔧 句子小医院','课上这几句可以更棒 —— 点黄色的地方，帮它"治好"。');
+  let html='';
+  it.parts.forEach((p,i)=>{
+    if(Array.isArray(p)) html+=`<span class="bad-word" id="badw" onclick="hospitalFix(event)">${p[0]}</span>`;
+    else html+=p;
+  });
+  $('stageContent').innerHTML=`
+    <div style="text-align:center; font-size:13px; color:var(--text-light);">第 ${hIdx+1} / ${HOSPITAL.length} 句 · <span class="badge badge-green">${it.tag}</span></div>
+    <div class="sent-box" id="sentBox">${html}</div>
+    <div style="text-align:center; font-size:12px; color:var(--text-light);">👆 点一下黄色的词，看更棒的说法</div>
+    <div id="hospFb" class="feedback"></div>`;
+}
+function hospitalFix(ev){
+  const it=HOSPITAL[hIdx];
+  const el=$('badw');
+  if(el.classList.contains('fixed')) return;
+  const fixText=it.parts.find(p=>Array.isArray(p))[1];
+  el.textContent=fixText; el.classList.add('fixed');
+  const sp=document.createElement('div'); sp.className='sparkle'; sp.textContent='✨';
+  sp.style.left=(ev.clientX-8)+'px'; sp.style.top=(ev.clientY-20)+'px'; document.body.appendChild(sp); setTimeout(()=>sp.remove(),1000);
+  const fb=$('hospFb'); fb.className='feedback show right';
+  fb.innerHTML=`<div class="title">✅ 治好啦！更棒的说法：</div>
+    <div style="font-size:15px; font-weight:800; color:#2F855A; margin:4px 0;">${it.good}</div>
+    <div style="font-size:13px;">💡 ${it.why}</div>
+    <button class="icon-btn mint btn-small" style="margin-top:8px;" onclick="speak('${it.good.replace(/'/g,"\\'")}')">🔊 听</button>
+    <button class="btn btn-primary btn-small" style="width:100%; margin-top:8px;" onclick="hIdx++; hospitalOne();">${hIdx<HOSPITAL.length-1?'下一句 →':'完成 ✅'}</button>`;
+  addStar(1);
+}
+function hospitalDone(){
+  setTitle('🔧 句子小医院','全部治好啦！');
+  markDone('hospital',HOSPITAL.length,HOSPITAL.length); renderMap();
+  $('stageContent').innerHTML=`<div style="text-align:center; padding:16px;">
+    <div style="font-size:54px;">🔧💚</div>
+    <div style="font-weight:800; font-size:18px; margin:8px 0;">${HOSPITAL.length} 句都变棒啦！</div>
+    <div style="font-size:13px; color:var(--text-light); line-height:1.7;">这些大多是你课上说的句子——已经很敢说了 👍<br>记住：<b>going to 前面要有 be</b>、<b>动词用原形</b>、<b>鞋子论 a pair of</b>、<b>列举中间用逗号</b>。</div>
+  </div>${backBtn()}`;
+  confetti();
+}
+
+/* ========== 7. 海滩寻宝 ========== */
+let bFound=null;
+function renderBeach(){
+  bFound=new Set();
+  setTitle('🏖️ 海滩寻宝','课上描述的海滩图！点图里的东西，找到全部 9 样。找到后还要数人数、说天气。');
+  $('stageContent').innerHTML=`
+    <div class="beach-scene" id="beachScene">
+      <span class="beach-deco" style="left:6%; top:6%; font-size:38px;">☀️</span>
+      <span class="beach-deco" style="left:40%; top:10%;">☁️</span>
+      <span class="beach-deco" style="left:74%; top:5%;">🕊️</span>
+      <span class="beach-people" style="left:26%; top:52%;" onclick="beachPeople(event)">🧍‍♂️🧍</span>
+      ${BEACH.map((b,i)=>`<span class="beach-item" id="bi${i}" style="left:${b.x}%; top:${b.y}%;" onclick="beachFind(${i},event)">${b.emoji}</span>`).join('')}
+    </div>
+    <div style="text-align:center; font-size:13px; font-weight:700; margin-top:10px;">已找到 <span id="bCount" style="color:var(--coral);">0</span> / ${BEACH.length} 样 <span style="color:var(--text-light); font-weight:500;">（沙滩上的两个人也可以点哦）</span></div>
+    <div class="found-chips" id="bChips"></div>
+    <div id="bFb" class="feedback"></div>
+    <div id="bSay"></div>`;
+}
+function beachFind(i,ev){
+  const b=BEACH[i];
+  const el=$('bi'+i);
+  speak(b.w);
+  const fb=$('bFb'); fb.className='feedback show right';
+  fb.innerHTML=`<div class="title">${b.emoji} ${b.w} <span style="color:var(--text-light); font-weight:600;">${b.cn}</span></div>
+    <div style="font-size:13px;">整句说：${en('I can see '+(b.w==='sunglasses'||b.w==='swimming shorts'||b.w==='flip flops'?b.w:'a '+b.w)+'.')}
+    <button class="icon-btn mint btn-small" style="padding:3px 7px;" onclick="speak('I can see ${(b.w==='sunglasses'||b.w==='swimming shorts'||b.w==='flip flops'?b.w:'a '+b.w).replace(/'/g,"\\'")}.')">🔊</button></div>`;
+  if(bFound.has(i)) return;
+  bFound.add(i);
+  el.classList.add('found');
+  const sp=document.createElement('div'); sp.className='sparkle'; sp.textContent='✨';
+  sp.style.left=(ev.clientX-8)+'px'; sp.style.top=(ev.clientY-20)+'px'; document.body.appendChild(sp); setTimeout(()=>sp.remove(),1000);
+  $('bCount').textContent=bFound.size;
+  $('bChips').innerHTML=[...bFound].map(j=>`<span class="found-chip">${BEACH[j].emoji} ${BEACH[j].w}</span>`).join('');
+  addStar(1);
+  if(bFound.size===BEACH.length){
+    markDone('beach',BEACH.length,BEACH.length); renderMap(); confetti();
+    $('bSay').innerHTML=`
+      <div style="font-weight:800; margin:14px 0 6px;">🎉 全找到了！像课上那样，把图说出来：</div>
+      ${BEACH_SAY.map(s=>`<div class="report-sec">
+        <h3>${s.label}</h3>
+        <div class="item">${en(s.s)} <button class="icon-btn mint btn-small" style="padding:4px 8px;" onclick="speak('${s.s.replace(/'/g,"\\'")}')">🔊</button></div>
+        <div class="item" style="color:var(--text-light); font-size:12px;">${s.cn} · ${s.tip}</div>
+      </div>`).join('')}
+      ${backBtn()}`;
+  }
+}
+function beachPeople(ev){
+  speak('I can see two people.');
+  const fb=$('bFb'); fb.className='feedback show right';
+  fb.innerHTML=`<div class="title">🧍‍♂️🧍 two people <span style="color:var(--text-light); font-weight:600;">两个人</span></div>
+    <div style="font-size:13px;">💡 people 本身就是复数（一个人是 person），<b>不加 s</b>。课上你说对了 I can see two people，外教夸了！</div>`;
+  const sp=document.createElement('div'); sp.className='sparkle'; sp.textContent='✨';
+  sp.style.left=(ev.clientX-8)+'px'; sp.style.top=(ev.clientY-20)+'px'; document.body.appendChild(sp); setTimeout(()=>sp.remove(),1000);
+}
+
+/* ========== 8. 同义词升级器 ========== */
+function renderSyn(){
+  setTitle('🔁 同义词升级器','点黄色的词，看它"变身"成同义词。');
+  $('stageContent').innerHTML = SYN.map((s,i)=>`
+    <div class="report-sec">
+      <div class="sent-box" style="margin:6px 0;" id="syn${i}">
+        ${s.sent[0]}<span class="bad-word" style="text-decoration:none;" id="sw${i}" onclick="upgrade(${i},event)">${s.word}</span>${s.sent[2]}
+      </div>
+      <div style="text-align:center; font-size:12px; color:var(--text-light);">${s.cn}</div>
+      <div style="text-align:center; margin-top:8px;">
+        <button class="icon-btn mint btn-small" onclick="speak('${s.full.replace(/'/g,"\\'")}')">🔊 听高级版</button>
+      </div>
+    </div>`).join('') + `
+    <div style="background:var(--yellow-soft); border-radius:12px; padding:11px; font-size:12px; line-height:1.6; margin-top:10px;">
+      💡 会用 break / assignments / tiny 这些词，表达就更丰富啦！
+    </div>${backBtn()}`;
+}
+function upgrade(i,ev){
+  const s=SYN[i], el=$('sw'+i);
+  if(el.classList.contains('fixed')) return;
+  el.textContent=s.up; el.classList.add('fixed');
+  const sp=document.createElement('div'); sp.className='sparkle'; sp.textContent='✨';
+  sp.style.left=(ev.clientX-8)+'px'; sp.style.top=(ev.clientY-20)+'px'; document.body.appendChild(sp); setTimeout(()=>sp.remove(),1000);
+  speak(s.full);
+  addStar(1);
+  markDone('syn',SYN.length,SYN.length); renderMap();
+}
+
+/* ========== 9. 单词卡 ========== */
+function renderVocab(){
+  setTitle('📒 单词卡','点卡片翻面看中文，点 🔊 听发音。右上角是 CEFR 难度等级。');
+  $('stageContent').innerHTML=`<div class="vocab-grid">
+    ${VOCAB.map((v,i)=>`<div class="flip" id="fc${i}" onclick="flip(${i})">
+      <div class="flip-in">
+        <div class="flip-face flip-front"><div class="w">${v.w}</div><div class="cefr">${v.cefr}</div></div>
+        <div class="flip-face flip-back"><div style="font-weight:800; font-size:15px;">${v.cn}</div></div>
+      </div></div>`).join('')}
+  </div>
+  <div class="speak-btns" style="margin-top:14px;"><button class="icon-btn coral" onclick="readAllVocab()">🔊 全部读一遍</button></div>
+  ${backBtn()}`;
+  markDone('vocab',VOCAB.length,VOCAB.length); renderMap();
+}
+function flip(i){ $('fc'+i).classList.toggle('on'); speak(VOCAB[i].w); }
+function readAllVocab(){ let i=0; (function go(){ if(i>=VOCAB.length)return; speak(VOCAB[i].w); i++; setTimeout(go,1500); })(); }
+
+/* ========== 10. 小测验 ========== */
+let qIdx=0, qOk=0, qList=[];
+function renderQuiz(){ qIdx=0; qOk=0; qList=shuffle(QUIZ); quizOne(); }
+function quizOne(){
+  if(qIdx>=qList.length){ quizDone(); return; }
+  const q=qList[qIdx];
+  setTitle('🏆 小测验','懂了再玩一遍。答错有讲解，别担心。');
+  $('stageContent').innerHTML=`
+    <div style="text-align:center; font-size:13px; color:var(--text-light);">第 ${qIdx+1} / ${qList.length} 题 · 对 ${qOk}</div>
+    <div style="font-size:16px; font-weight:700; margin:14px 0; line-height:1.5;">${q.q}</div>
+    <div class="options" id="qOpts">
+      ${q.opts.map((o,i)=>`<button class="option" onclick="pickQuiz(${i})"><span class="letter">${String.fromCharCode(65+i)}</span><span>${enT(o)}</span></button>`).join('')}
+    </div>
+    <div id="quizFb" class="feedback"></div>`;
+}
+function pickQuiz(i){
+  const q=qList[qIdx];
+  const els=document.querySelectorAll('#qOpts .option');
+  els.forEach(e=>e.classList.add('disabled'));
+  const ok=i===q.a;
+  els[i].classList.add(ok?'correct':'wrong');
+  if(!ok) els[q.a].classList.add('correct');
+  if(ok){ qOk++; addStar(1); }
+  const fb=$('quizFb'); fb.className='feedback show '+(ok?'right':'wrong');
+  fb.innerHTML=`<div class="title">${ok?'🎉 答对了！':'正确答案：'+q.opts[q.a]}</div>
+    <div style="font-size:12px;">💡 ${q.explain}</div>
+    ${q.say?`<button class="icon-btn mint btn-small" style="margin-top:8px;" onclick="speak('${q.say.replace(/'/g,"\\'")}')">🔊 听整句</button>`:''}
+    <button class="btn btn-primary btn-small" style="width:100%; margin-top:8px;" onclick="qIdx++; quizOne();">${qIdx<qList.length-1?'下一题 →':'看成绩 🏆'}</button>`;
+}
+function quizDone(){
+  setTitle('🏆 小测验','完成！');
+  markDone('quiz',qOk,qList.length); renderMap();
+  const star = qOk===qList.length?'⭐⭐⭐':qOk>=qList.length*0.6?'⭐⭐':'⭐';
+  $('stageContent').innerHTML=`<div style="text-align:center; padding:16px;">
+    <div style="font-size:54px;">🏆</div>
+    <div style="font-size:30px; font-weight:800; color:var(--coral); margin:6px 0;">${qOk} / ${qList.length}</div>
+    <div style="font-size:26px;">${star}</div>
+    <div style="font-size:13px; color:var(--text-light); line-height:1.6; margin-top:8px;">${qOk===qList.length?'全对！可以去给外教露一手了 🎉':'再回去玩玩 going to 造句机和时光机，很快就全懂啦。'}</div>
+  </div>${backBtn()}`;
+  if(qOk>=qList.length*0.8) confetti();
+}
+
+/* ========== 7月18日 · 露营与滑雪 ========== */
+function renderRecap718(){
+  setTitle('🧭 7月18日学了什么','先看清课堂路线，再去动手。材料原文、课堂自动反馈和助教说明分开呈现。');
+  $('stageContent').innerHTML=`
+    <div class="source-note"><b>材料原文摘要</b> · 练习 going to 说将来计划；复习露营词并做对话；初识滑雪词并看图说话。核心结构：<b>be + going to + 动词原形</b>。</div>
+    <div class="plan-rail" aria-label="going to 句型结构">
+      <div class="rail-car"><b>I</b><small>谁</small></div><div class="rail-car be"><b>am</b><small>be</small></div><div class="rail-car going"><b>going to</b><small>将要</small></div><div class="rail-car verb"><b>go</b><small>动词原形</small></div><div class="rail-car"><b>tomorrow</b><small>时间</small></div>
+    </div>
+    <div class="report-sec"><h3>① Reading & correcting</h3><div class="item">跟读 going to 句子，找回漏掉的 be / going to，并把动词还原。</div></div>
+    <div class="report-sec"><h3>② Camping dialogue</h3><div class="item">复习 tent、backpack、sleeping bag、walking boots、rain jacket、gloves，再用完整句回答。</div></div>
+    <div class="report-sec"><h3>③ Skiing vocabulary</h3><div class="item">认识 skiing、snowboarding、cable car、mountain、goggles、skis，并说一条滑雪假期计划。</div></div>
+    <div style="background:var(--yellow-soft);border-radius:13px;padding:11px;font-size:12px;line-height:1.7;"><b>判断口令：</b>先找“谁” → 配 am/is/are → 放 going to → 动词回原形 → 最后挂时间牌。</div>
+    <button class="btn btn-primary" style="width:100%;margin-top:12px" onclick="markDone('recap718',1,1);openModule('plan718')">看懂了，去开小火车 →</button>${backBtn()}`;
+}
+
+let planIdx718=0,planSeen718=new Set();
+function renderPlan718(){ planIdx718=0;planSeen718=new Set();planOne718(); }
+function planOne718(){
+  const p=PLANS718[planIdx718]; planSeen718.add(planIdx718);
+  setTitle('🚂 计划小火车','点不同计划，看 be 怎样跟着主语变化；going to 后永远接动词原形。');
+  $('stageContent').innerHTML=`
+    <div class="choice-strip" aria-label="选择课堂计划">${PLANS718.map((x,i)=>`<button class="choice-chip ${i===planIdx718?'active':''}" onclick="choosePlan718(${i})">${i+1}. ${x.verb}</button>`).join('')}</div>
+    <div class="plan-rail">
+      <div class="rail-car"><b>${p.subject}</b><small>主语</small></div><div class="rail-car be"><b>${p.be}</b><small>${p.subject} 配 ${p.be}</small></div><div class="rail-car going"><b>going to</b><small>将来计划</small></div><div class="rail-car verb"><b>${p.verb}</b><small>动词原形</small></div><div class="rail-car"><b>${p.time||'—'}</b><small>时间牌</small></div>
+    </div>
+    <div class="sent-box">${enT(p.sentence)}</div>
+    <div class="speak-btns"><button class="icon-btn coral" onclick="speak('${p.sentence.replace(/'/g,"\\'")}')">🔊 听整句</button><button class="icon-btn yellow" onclick="speak('${p.sentence.replace(/'/g,"\\'")}',true)">🐢 慢速</button></div>
+    <div class="source-note" style="margin-top:10px"><b>为什么正确：</b>${p.subject==='My family'?'family 在这里看作一个整体，所以配 is。':'I 永远配 am。'} going to 后面的 ${p.verb.split(' ')[0]} 是动词原形。</div>
+    ${planSeen718.size>=3?`<button class="btn btn-primary" style="width:100%;margin-top:12px" onclick="finishPlan718()">我看懂了 3 种变化 ✅</button>`:'<div style="text-align:center;color:var(--text-light);font-size:12px;margin-top:10px">再点 ${3-planSeen718.size} 条不同计划，观察变化</div>'}${backBtn()}`;
+}
+function choosePlan718(i){ planIdx718=i;planOne718(); }
+function finishPlan718(){ markDone('plan718',planSeen718.size,PLANS718.length);addStar(2);openModule('camp718'); }
+
+let packed718=new Set();
+function renderCamp718(){ packed718=new Set();setTitle('🎒 露营打包台','点一下装备，把它装进行李。每装一件，就听词并说 I’m going to take…');campView718(); }
+function campView718(){
+  $('stageContent').innerHTML=`<div class="gear-layout"><div class="gear-grid">${CAMP_GEAR718.map((g,i)=>`<button class="gear ${packed718.has(i)?'packed':''}" onclick="packGear718(${i})"><span>${g.e}</span>${g.show}</button>`).join('')}</div>
+    <div class="pack-zone"><div><strong>${packed718.size===CAMP_GEAR718.length?'行李装好啦！':'把装备装进背包'}</strong><div style="font-size:12px;color:var(--text-light);margin-top:6px">${packed718.size} / ${CAMP_GEAR718.length}</div></div></div></div>
+    <div id="campSpeak718" class="feedback ${packed718.size?'show right':''}">${packed718.size?`<div class="title">跟我说</div><div>${enT("I'm going to take "+CAMP_GEAR718[[...packed718].at(-1)].take+'.')}</div>`:''}</div>
+    ${packed718.size===CAMP_GEAR718.length?`<div class="dialogue"><div class="bubble">What are you going to take?</div><div class="bubble me">I'm going to take a tent, a sleeping bag, and a rain jacket.</div></div><button class="btn btn-primary" style="width:100%" onclick="finishCamp718()">完成打包，去雪山 →</button>`:''}${backBtn()}`;
+}
+function packGear718(i){
+  if(!packed718.has(i)){packed718.add(i);addStar(1);speak(CAMP_GEAR718[i].w);}else speak(CAMP_GEAR718[i].w);
+  campView718();
+}
+function finishCamp718(){ markDone('camp718',packed718.size,CAMP_GEAR718.length);openModule('ski718'); }
+
+let skiFound718=new Set();
+function renderSki718(){ skiFound718=new Set();setTitle('🚡 滑雪路线图','点开雪山上的 8 个标记：先听词，再听它在短语里怎么用。');skiView718(); }
+function skiView718(){
+  $('stageContent').innerHTML=`<div class="ski-scene" aria-label="滑雪词汇互动图">${SKI718.map((s,i)=>`<button class="ski-pin ${skiFound718.has(i)?'found':''}" style="left:${s.x}%;top:${s.y}%" aria-label="${s.w}" onclick="findSki718(${i})">${s.e}</button>`).join('')}</div>
+    <div style="text-align:center;font-size:13px;font-weight:800;margin:10px 0">已找到 ${skiFound718.size} / ${SKI718.length}</div>
+    <div class="found-chips">${[...skiFound718].map(i=>`<span class="found-chip">${SKI718[i].w}</span>`).join('')}</div>
+    <div id="skiFb718"></div>
+    ${skiFound718.size===SKI718.length?`<div class="dialogue"><div class="bubble">What are you going to do on your skiing holiday?</div><div class="bubble me">I'm going to go skiing and take a cable car up the mountain.</div></div><button class="btn btn-primary" style="width:100%" onclick="markDone('ski718',8,8);openModule('feedback718')">路线完成，看看课堂反馈 →</button>`:''}${backBtn()}`;
+}
+function findSki718(i){ skiFound718.add(i);addStar(1);skiView718();const s=SKI718[i];const fb=$('skiFb718');fb.className='feedback show right';fb.innerHTML=`<div class="title">${s.e} ${s.w}</div><div>${s.say}</div><button class="icon-btn mint btn-small" style="margin-top:7px" onclick="speak('${s.say.replace(/'/g,"\\'")}')">🔊 听短语</button>`;speak(s.w); }
+
+function renderFeedback718(){
+  setTitle('🩺 课堂反馈实验室','先找出句子为什么好，再修理需要改进的地方。点每张卡展开。');
+  const seen=new Set(prog.feedbackSeen718);
+  $('stageContent').innerHTML=`<div class="source-note"><b>证据边界：</b>绿色卡是课堂自动反馈列出的“表现良好”；黄色卡是材料给出的改进项。助教核对发现 walking boots 那句只需改大小写，已在卡内说明。</div>
+    <div class="unit-heading"><span class="date">5句</span><strong>做得好的地方</strong></div>
+    ${FEEDBACK718.filter(f=>f.kind==='good').map(f=>feedbackCard718(f,seen)).join('')}
+    <div class="unit-heading"><span class="date">4句</span><strong>需要改进的地方</strong></div>
+    ${FEEDBACK718.filter(f=>f.kind==='repair').map(f=>feedbackCard718(f,seen)).join('')}
+    <div style="text-align:center;font-size:12px;color:var(--text-light)">已查看 ${seen.size} / ${FEEDBACK718.length}</div>
+    ${seen.size===FEEDBACK718.length?`<button class="btn btn-primary" style="width:100%;margin-top:10px" onclick="markDone('feedback718',9,9);openModule('vocab718')">反馈看完，去复习 27 词 →</button>`:''}${backBtn()}`;
+}
+function feedbackCard718(f,seen){ const open=seen.has(f.id);return `<div class="lesson-card ${f.kind} ${open?'open':''}" id="fb718-${f.id}"><div class="lesson-label">${f.kind==='good'?'✅ 做得好':'🔧 需要修理'} · ${f.tag}</div><div class="lesson-sentence">${enT(f.before)}</div>${f.kind==='repair'?`<div style="font-size:12px;color:var(--text-light)">建议改为：<b>${enT(f.after)}</b></div>`:''}<button class="icon-btn ${f.kind==='good'?'mint':'yellow'} btn-small" style="margin-top:7px" onclick="openFeedback718('${f.id}')">${open?'再看原因':'为什么？'}</button><button class="icon-btn btn-small" style="margin-top:7px" onclick="speak('${f.after.replace(/'/g,"\\'")}')">🔊</button><div class="lesson-reason">${f.reason}</div></div>`; }
+function openFeedback718(id){ if(!prog.feedbackSeen718.includes(id)){prog.feedbackSeen718.push(id);addStar(1);saveProg();}renderFeedback718();const el=$('fb718-'+id);if(el)el.scrollIntoView({block:'center'}); }
+
+let vocabGroup718='all';
+function renderVocab718(group='all'){ vocabGroup718=group;setTitle('🗂️ 27词图卡','按课堂词表原顺序收录 27 个词。点卡听读；词形变体在情境模块里单独说明。');
+  const seen=new Set(prog.vocabSeen718),list=VOCAB718.map((v,i)=>({...v,i})).filter(v=>group==='all'||v.g===group);
+  $('stageContent').innerHTML=`<div class="vocab-filter">${[['all','全部 27'],['camp','露营 12'],['ski','滑雪 9'],['other','其他 6']].map(x=>`<button class="${group===x[0]?'active':''}" onclick="renderVocab718('${x[0]}')">${x[1]}</button>`).join('')}</div>
+    <div class="vocab718-grid">${list.map(v=>`<button class="vocab718-card ${seen.has(v.i)?'seen':''}" onclick="seeVocab718(${v.i})"><b>${v.e} ${v.w}</b><small>${v.cn}</small></button>`).join('')}</div>
+    <div style="text-align:center;font-size:12px;color:var(--text-light);margin-top:10px">已听读 ${seen.size} / ${VOCAB718.length}</div>
+    ${seen.size===VOCAB718.length?`<button class="btn btn-primary" style="width:100%;margin-top:10px" onclick="markDone('vocab718',27,27);openModule('mission718')">27词听完，独立完成对话 →</button>`:''}${backBtn()}`;
+}
+function seeVocab718(i){ if(!prog.vocabSeen718.includes(i)){prog.vocabSeen718.push(i);addStar(1);saveProg();}speak(VOCAB718[i].w);renderVocab718(vocabGroup718); }
+
+let missionList718=[],missionIdx718=0,missionOk718=0,missionWrongMode718=false,missionQStart718=0;
+function renderMission718(wrongOnly){
+  missionWrongMode718=wrongOnly;missionIdx718=0;missionOk718=0;
+  const unresolved=new Set(Object.entries(prog.wrongbook).filter(([,w])=>!w.resolved).map(([id])=>id));
+  missionList718=wrongOnly?MISSION718.filter(q=>unresolved.has(q.id)):MISSION718.slice();
+  if(!missionList718.length){setTitle('🔁 只重做错题','现在没有未解决错题。错一次会自动进本，连续答对两次才移出。');$('stageContent').innerHTML=`<div style="text-align:center;padding:22px"><div style="font-size:58px">🌟</div><h3>错题本是空的</h3><p style="font-size:13px;color:var(--text-light);line-height:1.7">先完成“独立对话任务”，答错的题会自动来到这里。</p></div>${backBtn()}`;return;}
+  missionOne718();
+}
+function missionOne718(){
+  if(missionIdx718>=missionList718.length){missionDone718();return;}
+  const q=missionList718[missionIdx718];missionQStart718=Date.now();
+  setTitle(missionWrongMode718?'🔁 错题回炉':'💬 独立对话任务',missionWrongMode718?'这次没有提示。连续答对两次，才算真正解决。':'现在遮住讲解，独立判断。答错后会带你回到对应模块。');
+  $('stageContent').innerHTML=`<div style="text-align:center;font-size:12px;color:var(--text-light)">第 ${missionIdx718+1} / ${missionList718.length} · ${q.skill}</div><div style="font-size:16px;font-weight:800;line-height:1.6;margin:14px 0">${q.q}</div><div class="options" id="m718opts">${q.opts.map((o,i)=>`<button class="option" onclick="pickMission718(${i})"><span class="letter">${String.fromCharCode(65+i)}</span><span>${enT(o)}</span></button>`).join('')}</div><div id="m718fb" class="feedback"></div>`;
+}
+function pickMission718(i){
+  const q=missionList718[missionIdx718],ok=i===q.a,els=document.querySelectorAll('#m718opts .option');els.forEach(e=>e.classList.add('disabled'));els[i].classList.add(ok?'correct':'wrong');if(!ok)els[q.a].classList.add('correct');if(ok){missionOk718++;addStar(1);}recordAttempt718(q,i,ok);
+  const fb=$('m718fb');fb.className='feedback show '+(ok?'right':'wrong');fb.innerHTML=`<div class="title">${ok?'✅ 判断正确':'正确答案：'+q.opts[q.a]}</div><div style="font-size:12px;line-height:1.65">💡 ${q.explain}</div><button class="icon-btn mint btn-small" style="margin-top:8px" onclick="speak('${q.say.replace(/'/g,"\\'")}')">🔊 听整句</button>${!ok?`<button class="icon-btn yellow btn-small" style="margin-top:8px" onclick="reteach718('${q.id}')">🧭 回去重教</button>`:''}<button class="btn btn-primary btn-small" style="width:100%;margin-top:9px" onclick="missionIdx718++;missionOne718()">${missionIdx718<missionList718.length-1?'下一题 →':'看结果'}</button>`;
+}
+function recordAttempt718(q,i,ok){
+  const now=Date.now(),selected=q.opts[i],expected=q.opts[q.a];
+  prog.attempts.push({child:kid,app:APP_ID,version:APP_VERSION,questionId:q.id,prompt:q.q,selected,expected,correct:ok,explain:q.explain,skill:q.skill,ms:Math.max(0,now-missionQStart718),source:'2026-07-18 Denys lesson review',ts:now});
+  let w=prog.wrongbook[q.id];
+  if(!ok){w=w||{wrongCount:0,rightStreak:0,resolved:false};w.wrongCount++;w.rightStreak=0;w.resolved=false;w.lastWrongAt=now;w.lastSelected=selected;w.expected=expected;w.explain=q.explain;w.skill=q.skill;prog.wrongbook[q.id]=w;}
+  else if(w&&!w.resolved){w.rightStreak=(w.rightStreak||0)+1;if(w.rightStreak>=2){w.resolved=true;w.resolvedAt=now;}}
+  saveProg();
+}
+function reteach718(id){ const q=MISSION718.find(x=>x.id===id);if(!q)return;openModule(/structure|base-verb/.test(id)?'plan718':/with|dialogue/.test(id)?'camp718':'feedback718'); }
+function missionDone718(){
+  markDone(missionWrongMode718?'wrong718':'mission718',missionOk718,missionList718.length);renderMap();const left=Object.values(prog.wrongbook).filter(w=>!w.resolved).length;
+  $('stageContent').innerHTML=`<div style="text-align:center;padding:18px"><div style="font-size:58px">${missionOk718===missionList718.length?'🏆':'🧭'}</div><div style="font-size:28px;font-weight:900;color:var(--coral)">${missionOk718} / ${missionList718.length}</div><p style="font-size:13px;line-height:1.7;color:var(--text-light)">${missionOk718===missionList718.length?'已经能独立判断了！':'答错并不可怕，错题已经进入回炉。'}<br>当前未解决错题：${left} 道。</p></div><button class="btn btn-yellow" style="width:100%" onclick="renderWrong718()">🔁 只重做错题</button>${backBtn()}`;if(missionOk718===missionList718.length)confetti();
+}
+function renderWrong718(){ renderMission718(true); }
+
+/* ========== 学习记录 / 家长页 ========== */
+function renderReport(){
+  flushModuleTime();activeModule='report';moduleStartedAt=Date.now();
+  setTitle('👨‍👩‍👧 学习记录','只读取这台设备、当前孩子的数据；不会自动上传。');
+  const done=prog.done;
+  const rows=MODULES.map(m=>{ const d=done[m.id]; return `<div class="item">${m.icon} ${m.t1} — ${d?`<span class="badge badge-green">✅ ${d.ok}/${d.total}</span>`:'<span class="badge badge-red">未练</span>'}</div>`; }).join('');
+  const unresolved=Object.entries(prog.wrongbook).filter(([,w])=>!w.resolved),resolved=Object.values(prog.wrongbook).filter(w=>w.resolved).length;
+  $('stageContent').innerHTML=`
+    <div class="report-sec"><h3>⏱ 累计 ${formatDuration(prog.totalMs)} · ⭐ ${stars} · 独立作答 ${prog.attempts.length} 次</h3><div class="item">未解决错题 ${unresolved.length} 道 · 已连续答对两次解决 ${resolved} 道 · 27词已听读 ${prog.vocabSeen718.length} 个</div></div>
+    <div class="wrong-summary"><b>当前回炉：</b>${unresolved.length?unresolved.map(([id,w])=>`${w.skill}（错${w.wrongCount}次，连对${w.rightStreak||0}/2）`).join('；'):'暂无未解决错题'}</div>
+    <div class="report-sec" style="margin-top:10px"><h3>模块进度</h3>${rows}</div>
+    <div class="report-sec"><h3>📌 两次外教课重点（给爸爸看）</h3>
+      <div class="item">• 7月18日：露营与滑雪；going to 结构；27词；5条正向反馈与4条改进。</div>
+      <div class="item">• 材料核对：walking boots 那句保留 going to 也正确，重点是句中小写，不把风格改写当语法错误。</div>
+      <div class="item">• 语法：be + going to + 动词原形（说将来计划）、be 动词配人称、缩写 I'm going to</div>
+      <div class="item">• 7月9日旧课仍保留：海滩描述、缩写、发音诊所和句子小医院。</div>
+    </div>
+    <div class="btn-row">
+      <button class="btn btn-mint" style="flex:1" onclick="copyMarkdown()">📋 复制给 AI</button>
+      <button class="btn btn-yellow" style="flex:1" onclick="downloadMarkdown()">📝 Markdown</button>
+      <button class="btn btn-blue" style="flex:1" onclick="downloadJSON()">💾 JSON</button>
+      <button class="btn btn-purple" style="flex:1" onclick="$('importFile').click()">📥 导入 JSON</button>
+    </div>
+    <input class="sr-only" id="importFile" type="file" accept="application/json,.json" onchange="importProgress(event)">
+    <div id="copyMsg" style="text-align:center; font-size:12px; color:var(--green); margin-top:8px;"></div>
+    ${backBtn()}`;
+}
+function formatDuration(ms){const m=Math.floor((Number(ms)||0)/60000),s=Math.floor(((Number(ms)||0)%60000)/1000);return m?`${m}分${s}秒`:`${s}秒`;}
+function buildExport(){return {schemaVersion:2,child:kid,childLabel:kid==='kenton'?'Kenton':'Eddey',subject:'外教 Preply',app:APP_ID,version:APP_VERSION,lesson:"Practicing 'going to' · 2026-07-09 & 2026-07-18",source:'2026-07-18 Denys 课堂回顾（匿名化知识点）',exportedAt:new Date().toISOString(),stars,progress:prog};}
+function buildMarkdown(){const d=buildExport(),wrong=Object.entries(prog.wrongbook).filter(([,w])=>!w.resolved);return `# ${d.childLabel} · 外教 going to 复习记录\n\n- 软件版本：${APP_VERSION}\n- 累计用时：${formatDuration(prog.totalMs)}\n- 独立作答：${prog.attempts.length} 次\n- 27词听读：${prog.vocabSeen718.length}/27\n- 未解决错题：${wrong.length}\n\n## 当前错题\n\n${wrong.length?wrong.map(([id,w])=>`- ${w.skill}：错 ${w.wrongCount} 次，连续答对 ${w.rightStreak||0}/2；${w.explain}`).join('\n'):'- 暂无'}\n\n## 模块进度\n\n${MODULES.map(m=>`- ${m.t1}：${prog.done[m.id]?`${prog.done[m.id].ok}/${prog.done[m.id].total}`:'未完成'}`).join('\n')}\n`;}
+function copyMarkdown(){const txt=buildMarkdown();if(navigator.clipboard)navigator.clipboard.writeText(txt).then(()=>{$('copyMsg').textContent='✅ 已复制，可直接发给 AI';},()=>fallbackCopy(txt));else fallbackCopy(txt);}
+function fallbackCopy(txt){ const t=document.createElement('textarea'); t.value=txt; document.body.appendChild(t); t.select(); try{document.execCommand('copy'); $('copyMsg').textContent='✅ 已复制';}catch(e){$('copyMsg').textContent='请长按手动复制';} t.remove(); }
+function saveBlob(text,type,name){const blob=new Blob([text],{type}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);$('copyMsg').textContent='✅ 文件已下载';}
+function downloadJSON(){saveBlob(JSON.stringify(buildExport(),null,2),'application/json',`preply-going-to-${kid}-v2.json`);}
+function downloadMarkdown(){saveBlob(buildMarkdown(),'text/markdown;charset=utf-8',`preply-going-to-${kid}-record.md`);}
+function importProgress(event){const file=event.target.files&&event.target.files[0];if(!file)return;const reader=new FileReader();reader.onload=()=>{try{const d=JSON.parse(reader.result);if(d.schemaVersion!==2||d.app!==APP_ID)throw new Error('这不是本软件导出的 v2 JSON');if(d.child!==kid)throw new Error(`这是 ${d.child} 的记录，不能导入 ${kid}`);if(!d.progress||typeof d.progress!=='object')throw new Error('缺少 progress 数据');prog=normalizeProgress(d.progress);stars=Number(d.stars)||0;$('starCount').textContent=stars;saveProg();renderReport();$('copyMsg').textContent='✅ 导入成功';}catch(err){$('copyMsg').textContent='⚠️ 导入失败：'+err.message;}finally{event.target.value='';}};reader.readAsText(file,'utf-8');}
+
+/* ========== 启动 ========== */
+setupLongPress();
+renderMap();
+document.addEventListener('visibilitychange',()=>{if(document.hidden)flushModuleTime();});
+window.addEventListener('beforeunload',flushModuleTime);
+</script>
+</body>
+</html>

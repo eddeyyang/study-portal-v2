@@ -1,0 +1,1593 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<script src="../assets/learning-sync.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#36c5d6">
+<meta name="description" content="Kenton 与 Eddey 共用的小码王 C++ 动态知识地图、互动微课、ACGO 作业救援与独立学习记录">
+<title>小码王 C++ · 知识地图与作业救援站</title>
+<style>
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+:root{
+  --bg:#fff7f0;--ink:#3a2e3f;--muted:#746b7a;--card:#fff;--line:#e8e2eb;
+  --accent:#36c5d6;--accent-dark:#087c91;--accent-soft:#e3fbff;
+  --orange:#ff7a45;--yellow:#ffd166;--green:#38b87c;--red:#e75e6c;
+  --purple:#7c65d8;--code:#24243e;--shadow:0 8px 22px rgba(120,90,140,.14);
+}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth}
+body{
+  margin:0;min-height:100vh;color:var(--ink);
+  font-family:"PingFang SC","Microsoft YaHei","Segoe UI",system-ui,sans-serif;
+  background:
+    radial-gradient(circle at 12% 8%,#ffe9f3 0,transparent 40%),
+    radial-gradient(circle at 88% 4%,#e6f9ff 0,transparent 38%),var(--bg);
+}
+body[data-child="eddey"]{--accent:#ff8a5b;--accent-dark:#a84925;--accent-soft:#fff0e6}
+button,input{font:inherit}
+button,a{touch-action:manipulation}
+button{cursor:pointer}
+.wrap{max-width:760px;margin:0 auto;padding:18px 16px 88px}
+.topbar{display:flex;align-items:center;gap:9px;margin-bottom:12px}
+.back{
+  width:44px;height:44px;display:grid;place-items:center;flex:none;text-decoration:none;
+  color:var(--ink);background:#fff;border-radius:14px;box-shadow:var(--shadow);font-size:22px;
+}
+.topbar h1{margin:0;font-size:19px;line-height:1.25;min-width:0;flex:1}
+.kid-switch,.parent-open{
+  min-height:42px;border:1px solid color-mix(in srgb,var(--accent) 55%,#fff);
+  border-radius:999px;padding:7px 11px;font-weight:900;font-size:12px;
+}
+.kid-switch{background:var(--accent-soft);color:var(--accent-dark)}
+.parent-open{background:#fff;color:var(--muted);border-color:var(--line)}
+.hero{
+  position:relative;overflow:hidden;background:linear-gradient(145deg,var(--accent-soft),#fff 60%,#fff3cf);
+  border:2px solid color-mix(in srgb,var(--accent) 45%,#fff);border-radius:28px;
+  padding:23px 21px;box-shadow:var(--shadow);
+}
+.hero:after{
+  content:"</>";position:absolute;right:-12px;bottom:-18px;color:color-mix(in srgb,var(--accent) 16%,transparent);
+  font:950 90px/1 Consolas,monospace;transform:rotate(-7deg);
+}
+.eyebrow{color:var(--accent-dark);font-weight:950;font-size:12px;letter-spacing:.08em}
+.hero h2{position:relative;z-index:1;font-size:29px;line-height:1.2;margin:8px 0 7px;max-width:570px}
+.hero p{position:relative;z-index:1;margin:0;color:var(--muted);line-height:1.7;font-size:15px;max-width:590px}
+.hero-actions{position:relative;z-index:1;display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.btn{
+  min-height:46px;border:0;border-radius:14px;padding:11px 16px;background:var(--accent);
+  color:#163f45;font-weight:950;box-shadow:0 4px 0 color-mix(in srgb,var(--accent-dark) 78%,#0000);
+}
+.btn:active{transform:translateY(3px);box-shadow:0 1px 0 var(--accent-dark)}
+.btn.secondary{background:#fff;color:var(--accent-dark);border:2px solid var(--accent);box-shadow:none}
+.btn.orange{background:var(--orange);color:#fff;box-shadow:0 4px 0 #bd4b22}
+.btn.purple{background:var(--purple);color:#fff;box-shadow:0 4px 0 #5944ae}
+.btn.danger{background:#fff0f1;color:#a7313c;border:2px solid #f2a8af;box-shadow:none}
+.btn.small{min-height:42px;padding:8px 12px;font-size:13px}
+.status{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:12px 0 16px}
+.stat{background:#fff;border-radius:16px;padding:10px;text-align:center;box-shadow:0 5px 16px rgba(120,90,140,.09)}
+.stat b{display:block;font-size:20px;color:var(--accent-dark)}
+.stat span{font-size:11px;color:var(--muted)}
+.tabs{
+  position:sticky;top:8px;z-index:12;display:grid;grid-template-columns:repeat(4,1fr);gap:7px;
+  margin:0 0 16px;padding:6px;background:rgba(255,247,240,.94);backdrop-filter:blur(10px);border-radius:18px;
+}
+body[data-dd-test-offset] .tabs{top:46px}
+.tab{min-height:50px;border:0;border-radius:14px;background:#fff;color:var(--ink);font-weight:900;box-shadow:0 4px 13px rgba(120,90,140,.1)}
+.tab.active{background:var(--accent);color:#173f46}
+.view{display:none}.view.active{display:block;animation:rise .22s ease}
+@keyframes rise{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.card{background:#fff;border-radius:22px;box-shadow:var(--shadow);padding:18px;margin-bottom:14px}
+.card h2,.card h3{margin:0 0 6px;line-height:1.35}
+.card h2{font-size:23px}.card h3{font-size:19px}
+.sub{font-size:14px;color:var(--muted);line-height:1.72;margin:0}
+.pill{display:inline-flex;align-items:center;gap:5px;background:var(--accent-soft);color:var(--accent-dark);border-radius:999px;padding:5px 10px;font-size:11px;font-weight:950}
+.pill.green{background:#e8f9ef;color:#21744f}.pill.yellow{background:#fff5cf;color:#765900}.pill.orange{background:#fff0e8;color:#9c4828}
+.today{border:2px solid color-mix(in srgb,var(--accent) 42%,#fff)}
+.today-head{display:flex;align-items:flex-start;justify-content:space-between;gap:10px}
+.today-code{font:950 16px/1 Consolas,monospace;color:var(--accent-dark)}
+.today h3{font-size:23px;margin-top:5px}
+.route{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:14px 0}
+.route-step{position:relative;text-align:center;border:2px solid #eee8f0;border-radius:15px;padding:11px 7px;background:#fcfbfd}
+.route-step b{display:block;font-size:20px;margin-bottom:3px}.route-step span{font-size:12px;font-weight:900}
+.route-step.done{border-color:var(--green);background:#eefaf3}.route-step.now{border-color:var(--accent);background:var(--accent-soft)}
+.quick-grid,.lesson-grid,.task-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:12px}
+.quick,.lesson-card,.task-card{
+  text-align:left;border:2px solid color-mix(in srgb,var(--accent) 23%,#e5e0e8);
+  background:#fff;border-radius:18px;padding:14px;color:var(--ink);min-height:112px;
+}
+.quick:active,.lesson-card:active{transform:scale(.985)}
+.quick .ico,.lesson-card .ico{font-size:29px}
+.quick b,.lesson-card b{display:block;margin:6px 0 3px;font-size:16px}
+.quick span,.lesson-card span{display:block;color:var(--muted);font-size:12px;line-height:1.5}
+.quick.done,.lesson-card.done{border-color:#a7e3c2;background:#f2fff7}
+.quick.pass,.lesson-card.pass{border-color:#f5cc73;background:#fffaf0}
+.bridge-simple{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px}
+.bridge-simple div{border-radius:15px;padding:12px;text-align:center;background:#f7f4ff}
+.bridge-simple b{display:block;margin:5px 0;font-size:14px}.bridge-simple span{font-size:11px;color:var(--muted);line-height:1.5}
+.section-head{display:flex;align-items:flex-end;justify-content:space-between;gap:10px;margin:4px 2px 12px}
+.section-head h2{font-size:23px;margin:0}.section-head p{margin:0;color:var(--muted);font-size:12px}
+.course-map-card{
+  position:relative;overflow:hidden;border:2px solid color-mix(in srgb,var(--accent) 38%,#fff);
+  background:linear-gradient(155deg,#fff 0 66%,var(--accent-soft));
+}
+.course-map-card:after{
+  content:"";position:absolute;right:-46px;top:-46px;width:130px;height:130px;border-radius:50%;
+  background:color-mix(in srgb,var(--accent) 11%,transparent);pointer-events:none;
+}
+.course-map-head{position:relative;z-index:1;display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
+.course-map-head h2{font-size:24px;margin:6px 0}.course-map-head .sub{max-width:470px}
+.map-summary{
+  flex:none;min-width:122px;border:1px solid color-mix(in srgb,var(--accent) 35%,#fff);
+  border-radius:15px;background:#fff;padding:9px 11px;text-align:center;
+}
+.map-summary b{display:block;font-size:18px;color:var(--accent-dark)}.map-summary span{font-size:12px;color:var(--muted);line-height:1.45}
+.map-legend{display:flex;flex-wrap:wrap;gap:7px;margin-top:13px}
+.map-legend span{border-radius:999px;background:#f6f3f7;padding:6px 9px;font-size:12px;font-weight:900;color:var(--muted)}
+.map-resume{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:12px;border-radius:15px;background:#fff5cf;border:2px solid #efd17b;padding:10px 12px}
+.map-resume span{font-size:13px;line-height:1.45;color:#665118}.map-resume .btn{flex:none;min-height:48px}
+.course-route{position:relative;display:grid;gap:11px;list-style:none;margin:17px 0 0;padding:0}
+.course-route:before{
+  content:"";position:absolute;left:26px;top:23px;bottom:23px;width:4px;border-radius:999px;
+  background:linear-gradient(var(--accent),#8f78e7,var(--green));transform-origin:top;
+}
+.course-route.animate:before{animation:mapDraw .72s ease both}
+.course-stop{position:relative;z-index:1}
+.course-route.animate .course-stop{animation:mapRise .2s ease both;animation-delay:calc(var(--i) * 65ms)}
+.course-node{
+  width:100%;min-height:86px;display:grid;grid-template-columns:54px minmax(0,1fr) auto;gap:10px;align-items:center;
+  text-align:left;border:2px solid #e6e0e9;border-radius:18px;background:#fff;padding:11px 12px;color:var(--ink);
+  box-shadow:0 4px 13px rgba(120,90,140,.08);
+}
+.course-node:active{transform:scale(.99)}
+.course-node:focus-visible,.map-task-link:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+.course-node[aria-expanded="true"]{border-color:var(--accent);background:var(--accent-soft)}
+.course-node[aria-current="step"]{box-shadow:0 0 0 4px color-mix(in srgb,var(--yellow) 55%,transparent),0 5px 14px rgba(120,90,140,.12)}
+.course-route.animate .course-node[aria-current="step"]{animation:mapPulse .7s ease 2}
+.course-step{
+  width:48px;height:48px;display:grid;place-items:center;border-radius:16px;background:var(--accent-soft);
+  border:2px solid var(--accent);font:950 18px/1 Consolas,monospace;color:var(--accent-dark);
+}
+.course-copy{min-width:0}.course-copy small,.course-copy b,.course-copy span{display:block}
+.course-copy small{font-size:12px;color:var(--accent-dark);font-weight:950;letter-spacing:.04em}
+.course-copy b{font-size:17px;margin:3px 0}.course-copy span{font-size:14px;color:var(--muted);line-height:1.45}
+.node-status{min-width:96px;border-radius:999px;background:#f2eff4;padding:7px 9px;text-align:center;font-size:12px;font-weight:950;color:var(--muted)}
+.course-node.learning .node-status{background:var(--accent-soft);color:var(--accent-dark)}
+.course-node.review{border-color:#efd17b}.course-node.review .node-status{background:#fff5cf;color:#765900}
+.course-node.perfect{border-color:#9ddbb9}.course-node.perfect .node-status{background:#e8f9ef;color:#21744f}
+.course-detail{
+  margin-top:12px;border:2px solid color-mix(in srgb,var(--accent) 35%,#fff);border-radius:18px;
+  background:#fff;padding:15px;animation:rise .2s ease;
+}
+.course-detail-head{display:flex;align-items:flex-start;justify-content:space-between;gap:10px}
+.course-detail:focus{outline:3px solid var(--accent);outline-offset:3px}
+.course-detail h3{font-size:20px}.course-evidence{flex:none;max-width:210px;border-radius:13px;background:#f7f4f8;padding:10px 11px;font-size:13px;line-height:1.55;color:var(--muted)}
+.topic-cloud{display:flex;flex-wrap:wrap;gap:7px;margin-top:12px}
+.topic-cloud span{border-radius:999px;background:var(--accent-soft);padding:7px 10px;color:var(--accent-dark);font:850 12.5px/1.35 Consolas,"Microsoft YaHei",sans-serif}
+.map-task-title{font-size:13px;font-weight:950;color:var(--muted);margin-top:14px}
+.map-task-links{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-top:7px}
+.map-task-link{
+  min-height:54px;border:1px solid #e5dfe8;border-radius:13px;background:#fff;padding:9px 10px;text-align:left;color:var(--ink);
+}
+.map-task-link b,.map-task-link span{display:block}.map-task-link b{font:950 14px/1.35 Consolas,"Microsoft YaHei",sans-serif}.map-task-link span{font-size:12.5px;color:var(--muted);margin-top:4px;line-height:1.45}
+.course-detail .btn.small{min-height:48px}
+.course-goal{
+  display:grid;grid-template-columns:46px 1fr auto;gap:10px;align-items:center;margin-top:13px;
+  border-radius:17px;background:linear-gradient(135deg,#fff5cf,#fff);border:2px solid #f0cf72;padding:12px;
+}
+.course-goal .goal-icon{font-size:31px}.course-goal b,.course-goal span{display:block}.course-goal b{font-size:15px}.course-goal span{font-size:13px;color:var(--muted);margin-top:3px;line-height:1.45}.course-goal .btn.small{min-height:48px}
+@keyframes mapDraw{from{transform:scaleY(0)}to{transform:scaleY(1)}}
+@keyframes mapRise{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:none}}
+@keyframes mapPulse{50%{transform:translateX(3px)}}
+.lesson-card{min-height:150px;position:relative}
+.lesson-card .done-mark{position:absolute;right:11px;top:11px;font-size:11px;font-weight:950;color:#21744f;background:#e8f9ef;border-radius:999px;padding:4px 8px}
+.lesson-card .task-link{margin-top:8px;color:var(--accent-dark);font-size:11px;font-weight:950}
+.extra-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}
+.extra-lab{border:2px solid #e5dcff;background:#fbf9ff}
+.extra-lab h3{font-size:18px}.extra-lab code{font:850 14px/1.5 Consolas,monospace}
+.extra-result{min-height:54px;border-radius:13px;background:#fff;padding:10px 11px;margin-top:10px;font-size:13px;line-height:1.6}
+.extra-result b,.extra-result span,.extra-result code{display:block}.extra-result.ok{background:#edfaf3;border:1px solid #a6dfc0}.extra-result.bad{background:#fff1f2;border:1px solid #f1b3ba}
+.extra-result code{margin-top:5px;color:var(--accent-dark)}.mini-progress{margin-top:9px;color:var(--muted);font-size:12px;font-weight:900}
+.extra-lab .choice-row button{min-height:42px;border:2px solid #e4dfe8;border-radius:12px;background:#fff;color:var(--ink);padding:8px 11px;font-weight:900}
+.extra-lab .choice-row button.active{border-color:var(--accent);background:var(--accent-soft);color:var(--accent-dark)}
+.machine{display:grid;grid-template-columns:1fr auto 1fr;gap:7px;align-items:center;margin-top:11px}
+.machine>div:not(.arrow){border:2px solid #e5dfea;border-radius:14px;background:#fff;padding:10px;text-align:center}
+.machine span,.machine strong{display:block}.machine span{font-size:11px;color:var(--muted)}.machine strong{margin-top:4px;font-size:16px}.machine .arrow{font-size:22px;color:var(--accent-dark)}
+.elevator{display:grid;gap:5px;margin-top:11px}.elevator div{display:flex;gap:8px;align-items:center;border-radius:11px;background:#fff;padding:8px 10px;font-size:12px}
+.elevator div.hit{background:var(--accent-soft);color:var(--accent-dark);font-weight:900}.elevator b{width:18px;text-align:center}
+.workspace{border:2px solid color-mix(in srgb,var(--accent) 45%,#fff);padding:0;overflow:hidden}
+.workspace-head{padding:17px 18px;background:linear-gradient(135deg,var(--accent-soft),#fff)}
+.workspace-top{display:flex;align-items:center;gap:8px}
+.workspace-top button{border:0;background:#fff;border-radius:12px;min-height:42px;padding:8px 11px;color:var(--accent-dark);font-weight:900}
+.workspace-head h2{font-size:24px;margin:10px 0 5px}.workspace-head p{margin:0;color:var(--muted);font-size:13px;line-height:1.65}
+.stepper{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;padding:12px 14px;border-top:1px solid #eee7ef;border-bottom:1px solid #eee7ef}
+.step-btn{min-height:52px;border:0;border-radius:13px;background:#f7f5f8;color:var(--muted);font-size:11px;font-weight:950}
+.step-btn b{display:block;font-size:17px;color:inherit}.step-btn.active{background:var(--accent);color:#173f46}.step-btn.done{background:#e8f9ef;color:#21744f}
+.stage{padding:18px}
+.stage h3{font-size:21px}.stage-lead{font-size:14px;color:var(--muted);line-height:1.75;margin:0 0 13px}
+.visual{background:#faf9fc;border:2px solid #ebe6ed;border-radius:18px;padding:15px;margin:12px 0}
+.visual-title{font-size:12px;color:var(--muted);font-weight:900;margin-bottom:9px}
+.number-equation{text-align:center;font:950 24px/1.45 Consolas,monospace;color:var(--accent-dark);word-break:break-word}
+.bundle-row{display:flex;justify-content:center;align-items:center;gap:10px;flex-wrap:wrap}
+.bundle{min-width:112px;border-radius:16px;padding:13px;text-align:center;background:#fff;border:2px solid #ddd7e2}
+.bundle strong{display:block;font-size:26px}.bundle span{font-size:11px;color:var(--muted)}
+.bundle.remain{border-color:var(--yellow);background:#fff9d9}
+.preset-row,.choice-row,.stage-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.preset,.choice{
+  min-height:44px;border:2px solid #e4dfe8;border-radius:13px;background:#fff;color:var(--ink);padding:9px 13px;font-weight:900;
+}
+.preset.active,.choice.active{border-color:var(--accent);background:var(--accent-soft);color:var(--accent-dark)}
+.locks{display:grid;grid-template-columns:1fr auto 1fr;gap:8px;align-items:center}
+.lock{border:2px solid #e0dbe4;border-radius:16px;background:#fff;padding:13px;text-align:center}
+.lock b{font:950 17px/1.4 Consolas,monospace}.lock span{display:block;font-size:12px;color:var(--muted);margin-top:5px}
+.lock.open{border-color:var(--green);background:#edfaf3}.lock.closed{border-color:#f0a8af;background:#fff1f2}
+.logic-sign{font:950 23px/1 Consolas,monospace;color:var(--purple)}
+.arena{display:flex;gap:9px;justify-content:center;align-items:flex-end;min-height:145px}
+.fighter{width:30%;max-width:130px;text-align:center}
+.fighter .crown{height:26px;font-size:21px}.fighter .face{font-size:34px}
+.fighter .value{border:2px solid #ddd7e2;border-radius:14px;background:#fff;padding:9px;font-size:22px;font-weight:950}
+.fighter.king .value{background:var(--yellow);border-color:#d7a600;box-shadow:0 0 0 4px rgba(255,209,102,.28)}
+.terminal{background:var(--code);color:#8df0ae;border-radius:16px;padding:13px;min-height:76px;font:750 15px/1.7 Consolas,monospace;overflow:auto}
+.terminal small{display:block;color:#aaa7c2;font:800 10px/1.3 system-ui;margin-bottom:5px;letter-spacing:.1em}
+.format-paths{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.format-path{border:2px solid #e4dfe8;border-radius:16px;background:#fff;padding:13px}
+.format-path.bad{border-color:#f1b3ba;background:#fff5f6}.format-path.good{border-color:#a6dfc0;background:#f2fff7}
+.format-path b{display:block;margin-bottom:5px}.format-path code{display:block;font-size:15px;line-height:1.6}
+.gates{display:grid;gap:7px}
+.gate{display:flex;justify-content:space-between;align-items:center;border:2px solid #e1dce5;border-radius:14px;padding:10px 12px;background:#fff;font-weight:900}
+.gate.pass{border-color:var(--green);background:#edfaf3}.gate.fail{opacity:.62}.gate.stop{border-color:var(--yellow);background:#fff9d9}
+.score-cards{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+.score-card{width:92px;min-height:92px;border:3px solid #e1dce5;border-radius:16px;background:#fff;font-size:24px;font-weight:950}
+.score-card.selected{border-color:var(--orange);background:#fff0e8;transform:translateY(-5px)}
+.score-card.remove{opacity:.55;text-decoration:line-through}.score-card.keep{border-color:var(--green);background:#edfaf3}
+.flip-card{
+  width:100%;min-height:190px;border:0;border-radius:20px;background:linear-gradient(145deg,var(--accent-soft),#fff);
+  padding:22px;text-align:center;color:var(--ink);box-shadow:inset 0 0 0 2px color-mix(in srgb,var(--accent) 38%,#fff);
+}
+.flip-card b{display:block;font-size:23px;line-height:1.45}.flip-card span{display:block;margin-top:11px;color:var(--muted);font-size:13px}
+.flip-card.revealed{background:linear-gradient(145deg,#ecfbf3,#fff);box-shadow:inset 0 0 0 2px #a6dfc0}
+.check-q{font-size:19px;font-weight:950;line-height:1.55;margin:10px 0}
+.options{display:grid;gap:8px}
+.option{min-height:50px;text-align:left;border:2px solid #e5e0e8;border-radius:14px;background:#fff;padding:11px 13px;color:var(--ink);font-weight:800}
+.option.correct{border-color:var(--green);background:#e9f9f0}.option.wrong{border-color:var(--red);background:#fff0f1}
+.option:disabled{cursor:default}
+.feedback{display:none;border-left:4px solid var(--purple);border-radius:12px;background:#f6f3ff;padding:11px 12px;font-size:13.5px;line-height:1.75;margin-top:10px}
+.feedback.show{display:block}.feedback.ok{border-color:var(--green);background:#edfaf3}.feedback.no{border-color:var(--red);background:#fff1f2}
+.workspace-nav{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:0 18px 18px}
+.return-bar{margin:0 18px 18px;background:#fff6e8;border:1px solid #f3c58d;border-radius:15px;padding:12px;display:flex;align-items:center;justify-content:space-between;gap:10px}
+.return-bar p{font-size:13px;color:#845027;margin:0}
+.task-card{min-height:0;box-shadow:var(--shadow);border-color:#eee8f0;padding:17px}
+.task-top{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
+.task-id{font:950 18px/1 Consolas,monospace;color:var(--accent-dark)}
+.task-card h3{font-size:20px;margin:5px 0}
+.task-status{border-radius:999px;padding:6px 9px;font-size:11px;font-weight:950;white-space:nowrap;background:#f0edf2;color:var(--muted)}
+.task-status.help{background:#fff1e3;color:#a04e19}.task-status.understand{background:var(--accent-soft);color:var(--accent-dark)}.task-status.pass{background:#e8f9ef;color:#21744f}
+.task-card .known,.task-card .new{border-radius:13px;padding:10px 11px;font-size:13px;line-height:1.6;margin-top:8px}
+.task-card .known{background:#f4f1f6}.task-card .new{background:var(--accent-soft)}
+.task-card .known b,.task-card .new b{display:block;font-size:11px;color:var(--muted)}
+.task-actions{display:flex;flex-wrap:wrap;gap:7px;margin-top:12px}.task-actions .btn{font-size:12px;padding:9px 11px}
+.status-actions{display:flex;gap:7px;margin-top:9px}.status-actions button{flex:1;min-height:44px;border:1px solid #e3dee6;border-radius:12px;background:#fff;color:var(--muted);font-weight:900}
+.status-actions button.active{border-color:var(--accent);background:var(--accent-soft);color:var(--accent-dark)}
+.record-boxes{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px}
+.record-box{border:1px solid var(--line);border-radius:14px;padding:10px;text-align:center}.record-box b{display:block;font-size:21px;color:var(--accent-dark)}.record-box span{font-size:11px;color:var(--muted)}
+.progress-list,.wrong-list,.event-list{display:grid;gap:8px;margin-top:12px}
+.progress-row{display:grid;grid-template-columns:110px 1fr 58px;gap:8px;align-items:center;font-size:12px;font-weight:900}
+.bar{height:10px;border-radius:999px;background:#eee9f0;overflow:hidden}.bar i{display:block;height:100%;background:linear-gradient(90deg,var(--accent),var(--green));border-radius:999px}
+.wrong-item,.event-item{border-radius:13px;padding:10px 11px;background:#f8f5f9;font-size:12px;line-height:1.6}.wrong-item b{color:#a7313c}.wrong-item span,.event-item span{color:var(--muted)}
+.quiz-area{margin-top:13px}.quiz-meta{font-size:12px;color:var(--accent-dark);font-weight:950}.quiz-q{font-size:19px;font-weight:950;line-height:1.55;margin:9px 0}
+.utility{display:flex;flex-wrap:wrap;gap:7px;margin-top:11px}.file-label{display:inline-flex;align-items:center;justify-content:center}.file-label input{display:none}
+.parent-view .adult-note{border-left:5px solid var(--purple);background:#f7f4ff;border-radius:14px;padding:12px 13px;font-size:13px;line-height:1.75}
+.bridge-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:12px}
+.bridge{border:1px solid var(--line);border-radius:17px;padding:13px;background:#fff}
+.bridge h3{font-size:16px}.bridge p{font-size:12px;color:var(--muted);line-height:1.65;margin:6px 0}.bridge strong{color:var(--accent-dark)}
+.materials summary{cursor:pointer;min-height:48px;font-weight:950;padding:4px 0;display:flex;align-items:center}
+.pdf-list{display:grid;gap:8px;margin-top:10px}.pdf-list a{display:flex;justify-content:space-between;gap:10px;text-decoration:none;color:var(--ink);border:1px solid var(--line);border-radius:13px;padding:11px 12px;font-size:13px}.pdf-list a b{color:var(--accent-dark)}
+.empty{text-align:center;color:var(--muted);padding:18px 8px;font-size:13px}
+.foot{text-align:center;color:var(--muted);font-size:11px;line-height:1.7;margin-top:22px}
+.toast{position:fixed;left:50%;bottom:22px;z-index:50;transform:translateX(-50%) translateY(120px);background:#252238;color:#fff;border-radius:999px;padding:11px 18px;font-size:13px;font-weight:850;transition:.25s;box-shadow:var(--shadow);max-width:calc(100vw - 32px);text-align:center}
+.toast.show{transform:translateX(-50%) translateY(0)}
+.chooser{
+  position:fixed;inset:0;z-index:100;background:rgba(255,247,240,.96);backdrop-filter:blur(12px);
+  display:grid;place-items:center;padding:20px;
+}
+.chooser-card{width:min(560px,100%);background:#fff;border-radius:28px;box-shadow:var(--shadow);padding:24px}
+.chooser-card h2{text-align:center;font-size:27px;margin:0 0 7px}.chooser-card>p{text-align:center;color:var(--muted);font-size:14px;line-height:1.7;margin:0}
+.child-picks{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:18px}
+.child-pick{min-height:150px;border:3px solid;border-radius:22px;padding:18px;text-align:left;color:var(--ink)}
+.child-pick.k{border-color:#36c5d6;background:#e3fbff}.child-pick.e{border-color:#ff8a5b;background:#fff0e6}
+.child-pick span{display:block;font-size:40px}.child-pick b{display:block;font-size:22px;margin:7px 0}.child-pick small{color:var(--muted);font-size:12px;line-height:1.5}
+.chooser-note{text-align:center!important;font-size:12px!important;margin-top:14px!important}
+@media(max-width:620px){
+  .wrap{padding-left:13px;padding-right:13px}.topbar{flex-wrap:wrap}.topbar h1{font-size:17px}
+  .parent-open{margin-left:53px}.hero h2{font-size:25px}.tabs{gap:5px}.tab{font-size:12px;padding:6px 2px}
+  .quick-grid,.lesson-grid,.task-grid,.bridge-grid{grid-template-columns:1fr}
+  .extra-grid{grid-template-columns:1fr}
+  .route{grid-template-columns:1fr}.route-step{display:flex;align-items:center;gap:9px;text-align:left}.route-step b{margin:0}
+  .bridge-simple{grid-template-columns:1fr}.bridge-simple div{display:grid;grid-template-columns:38px 1fr;text-align:left;align-items:center}
+  .format-paths{grid-template-columns:1fr}.locks{grid-template-columns:1fr}.logic-sign{text-align:center}
+  .stepper{gap:4px;padding:10px}.step-btn{font-size:10px}.score-card{width:76px}
+  .progress-row{grid-template-columns:95px 1fr 50px}.child-picks{grid-template-columns:1fr}
+  .course-map-head{display:block}.map-summary{display:inline-block;margin-top:10px}.course-detail-head{display:block}.course-evidence{max-width:none;margin-top:9px}
+  .map-resume{align-items:stretch;flex-direction:column}.map-resume .btn{width:100%}
+}
+@media(max-width:390px){
+  .hero-actions .btn,.task-actions .btn{width:100%}.status-actions{flex-direction:column}
+  .workspace-nav{flex-wrap:wrap}.workspace-nav .btn{flex:1}.return-bar{align-items:stretch;flex-direction:column}
+  .course-node{grid-template-columns:48px minmax(0,1fr)}.course-step{width:44px;height:44px}.node-status{grid-column:2;justify-self:start;min-width:0}
+  .map-task-links{grid-template-columns:1fr}.course-goal{grid-template-columns:38px 1fr}.course-goal .btn{grid-column:1/-1}
+}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<section class="chooser" id="childChooser" hidden aria-label="选择学习者">
+  <div class="chooser-card">
+    <h2>今天是谁来学？</h2>
+    <p>两个人学习同一套内容，但作业、错题和用时各记各的。</p>
+    <div class="child-picks">
+      <button class="child-pick k" data-pick-child="kenton"><span>🦁</span><b>Kenton</b><small>青蓝记录 · 保留原来的小码王进度</small></button>
+      <button class="child-pick e" data-pick-child="eddey"><span>🐯</span><b>Eddey</b><small>珊瑚橙记录 · 从自己的进度开始</small></button>
+    </div>
+    <p class="chooser-note">🔒 知识共用，学习记录不会混在一起。</p>
+  </div>
+</section>
+
+<main class="wrap" id="appMain">
+  <div class="topbar">
+    <a class="back" href="cpp_hub.html" aria-label="返回 C++ 学习馆">←</a>
+    <h1>小码王 C++ · 知识地图</h1>
+    <button class="kid-switch" id="childSwitch" aria-label="切换学习者">🦁 Kenton ▾</button>
+    <button class="parent-open" id="parentOpen">家长查看</button>
+  </div>
+
+  <header class="hero" id="childHero">
+    <div class="eyebrow">小码王 4.5 × 动态知识地图 × ACGO</div>
+    <h2><span id="heroName">Kenton</span>，先学会一招，再去做一题</h2>
+    <p>先在知识地图找到这招从哪里来，再点进会动小课。看懂以后，回到 ACGO 自己写。</p>
+    <div class="hero-actions">
+      <button class="btn" id="continueBtn">继续今天这一关 →</button>
+      <button class="btn secondary" id="helpBtn">打开知识地图</button>
+    </div>
+  </header>
+
+  <div class="status" aria-label="我的学习状态">
+    <div class="stat"><b id="lessonCount">0/6</b><span>关键小课学会</span></div>
+    <div class="stat"><b id="passCount">0/6</b><span>ACGO 已通过</span></div>
+    <div class="stat"><b id="wrongCount">0</b><span>待回炉</span></div>
+  </div>
+
+  <nav class="tabs" aria-label="孩子学习导航">
+    <button class="tab active" data-view="home">🏠 今天</button>
+    <button class="tab" data-view="lessons">🗺️ 地图</button>
+    <button class="tab" data-view="tasks">🎯 作业</button>
+    <button class="tab" data-view="progress">🌱 进步</button>
+  </nav>
+
+  <section class="view active" id="view-home">
+    <article class="card today">
+      <div class="today-head">
+        <div>
+          <span class="pill yellow">今天先完成 1 题</span>
+          <div class="today-code" id="todayCode">A327</div>
+          <h3 id="todayTitle">求个位</h3>
+        </div>
+        <span class="pill" id="todayTime">约 8 分钟</span>
+      </div>
+      <p class="sub" id="todayPrompt">先玩“十个一捆装箱机”，再去 ACGO 独立写。</p>
+      <div class="route" id="todayRoute">
+        <div class="route-step now"><b>①</b><span>玩会动小课</span></div>
+        <div class="route-step"><b>②</b><span>说出步骤</span></div>
+        <div class="route-step"><b>③</b><span>ACGO 通过</span></div>
+      </div>
+      <button class="btn" id="todayAction">开始这题的小课 →</button>
+    </article>
+
+    <article class="card">
+      <span class="pill">6 道作业救援</span>
+      <h2>哪道不会，就点哪道</h2>
+      <p class="sub">每道题都有自己的会动讲解，不再把不同题塞进同一个实验。</p>
+      <div class="quick-grid" id="quickGrid"></div>
+    </article>
+
+    <article class="card">
+      <span class="pill green">这次到底升级什么</span>
+      <h3>不是多背术语，而是自己完成三步</h3>
+      <div class="bridge-simple">
+        <div><span>🌰</span><section><b>核桃打过基础</b><span>看懂变量、判断、循环怎样跑</span></section></div>
+        <div><span>🧭</span><section><b>小码王练迁移</b><span>从纯文字题里找出要用的招</span></section></div>
+        <div><span>✅</span><section><b>ACGO 做证明</b><span>自己写、自己调、按格式通过</span></section></div>
+      </div>
+    </article>
+  </section>
+
+  <section class="view" id="view-lessons">
+    <div id="lessonMap">
+      <article class="card course-map-card" id="courseMap">
+        <div class="course-map-head">
+          <div>
+            <span class="pill">动态知识脑图</span>
+            <h2 id="courseMapTitle" tabindex="-1">五站连起来，知道每一招从哪来</h2>
+            <p class="sub">点一站看看学什么，再进入对应的会动小课。小课闯关看你是否懂了；ACGO 通过说明你能自己写。</p>
+          </div>
+          <div class="map-summary" id="courseMapSummary"><b>0 / 5</b><span>课程闯关记录</span></div>
+        </div>
+        <div class="map-legend" aria-label="知识地图状态说明">
+          <span>○ 未开始</span><span>◐ 学习中</span><span>↺ 待回炉</span><span>✓ 10/10 全对过</span>
+        </div>
+        <div class="map-resume" id="mapResume" hidden></div>
+        <ol class="course-route" id="courseRoute" aria-label="小码王 C++ 五课知识路线"></ol>
+        <div class="course-goal">
+          <span class="goal-icon" aria-hidden="true">🎯</span>
+          <section><b>终点：ACGO 独立解题</b><span id="courseGoalText">读懂题面 → 选对招数 → 严格输出 → 自己调试</span></section>
+          <button class="btn orange small" data-view="tasks">看 6 道作业 →</button>
+        </div>
+      </article>
+      <div class="section-head">
+        <div><span class="pill">本周作业支线</span><h2>六道题，六个专属救援小课</h2></div>
+        <p>哪题不会学哪题</p>
+      </div>
+      <div class="lesson-grid" id="lessonGrid"></div>
+      <div class="section-head" style="margin-top:20px">
+        <div><span class="pill orange">课堂加餐</span><h2>讲义里另外两招，也做成小机器</h2></div>
+        <p>不用读 PDF</p>
+      </div>
+      <div class="extra-grid">
+        <article class="card extra-lab">
+          <h3>🧰 变量类型收纳盒</h3>
+          <p class="sub">点一个值，再猜它该住进哪个盒子；程序才不会把小数、字符或大整数装错。</p>
+          <div id="typeExtra"></div>
+        </article>
+        <article class="card extra-lab">
+          <h3>🛗 case 电梯与 break 出口</h3>
+          <p class="sub">选择楼层，再开关 break，看看程序会停下还是继续“穿透”后面的楼层。</p>
+          <div id="switchExtra"></div>
+        </article>
+      </div>
+    </div>
+
+    <article class="card workspace" id="lessonWorkspace" hidden>
+      <div class="workspace-head">
+        <div class="workspace-top">
+          <button id="closeLesson">← 换一题</button>
+          <span class="pill" id="lessonTaskPill">A327</span>
+        </div>
+        <h2 id="lessonTitle">十个一捆装箱机</h2>
+        <p id="lessonGoal">看见“完整的十”和“剩下的个”，理解为什么 %10 能拿到个位。</p>
+      </div>
+      <div class="stepper" id="lessonStepper" aria-label="小课四步"></div>
+      <div class="stage" id="lessonStage"></div>
+      <div class="workspace-nav">
+        <button class="btn secondary small" id="lessonPrev">← 上一步</button>
+        <button class="btn small" id="lessonNext">下一步 →</button>
+      </div>
+      <div class="return-bar" id="lessonReturn" hidden>
+        <p id="lessonReturnText">我看懂了，返回刚才那道题。</p>
+        <button class="btn orange small" id="lessonReturnBtn">返回原题 →</button>
+      </div>
+    </article>
+  </section>
+
+  <section class="view" id="view-tasks">
+    <div class="section-head">
+      <div><span class="pill">本周作业</span><h2>学会以后，再去 ACGO</h2></div>
+      <p>6 道真实题</p>
+    </div>
+    <article class="card">
+      <p class="sub">橙色按钮会打开小码王 ACGO。登录由 ACGO 自己管理；本软件不保存账号、手机号或密码。</p>
+    </article>
+    <div class="task-grid" id="taskGrid"></div>
+  </section>
+
+  <section class="view" id="view-progress">
+    <article class="card">
+      <span class="pill green">我的进步</span>
+      <h2><span id="progressName">Kenton</span> 的六关地图</h2>
+      <div class="record-boxes">
+        <div class="record-box"><b id="recordLessons">0</b><span>学会小课</span></div>
+        <div class="record-box"><b id="recordAttempts">0</b><span>累计作答</span></div>
+        <div class="record-box"><b id="recordTime">00:00</b><span>累计用时</span></div>
+      </div>
+      <div class="progress-list" id="progressList"></div>
+    </article>
+
+    <article class="card" id="quizCard">
+      <span class="pill">独立检验</span>
+      <h3>8 题小测：我是真的懂了吗？</h3>
+      <p class="sub">答错会进入错题本，并出现“回对应小课重学”。重学后会准确回到刚才这道题。</p>
+      <div class="utility">
+        <button class="btn small" id="startQuiz">开始 8 题</button>
+        <button class="btn secondary small" id="redoWrong">只做错题</button>
+      </div>
+      <div class="quiz-area" id="quizArea" hidden>
+        <div class="quiz-meta" id="quizMeta"></div>
+        <div class="quiz-q" id="quizQuestion"></div>
+        <div class="options" id="quizOptions"></div>
+        <div class="feedback" id="quizFeedback"></div>
+        <div class="utility">
+          <button class="btn secondary small" id="quizReteach" hidden>回对应小课重学</button>
+          <button class="btn small" id="quizRetry" hidden>重做刚才这题</button>
+          <button class="btn small" id="quizNext" hidden>下一题 →</button>
+        </div>
+      </div>
+    </article>
+
+    <article class="card">
+      <span class="pill orange">错题回炉</span>
+      <h3>答错过，不等于永远不会</h3>
+      <p class="sub">错一次就保留；之后连续答对两次，才从错题本毕业。</p>
+      <div class="wrong-list" id="wrongList"></div>
+      <button class="btn secondary small" id="recordRedo">只重做错题</button>
+    </article>
+  </section>
+
+  <section class="view parent-view" id="view-parent">
+    <article class="card">
+      <button class="btn secondary small" id="parentBack">← 返回孩子学习页</button>
+      <h2 style="margin-top:12px">家长与资料</h2>
+      <div class="adult-note">本区保留课程证据、核桃到小码王的能力对照和记录工具。孩子主线不再显示“5 份、45 页、讲义覆盖边界”等成人信息。</div>
+    </article>
+
+    <article class="card">
+      <span class="pill">能力衔接</span>
+      <h3>核桃已有基础 → 小码王本批升级</h3>
+      <div class="bridge-grid" id="bridgeGrid"></div>
+    </article>
+
+    <details class="card materials" data-parent-materials>
+      <summary>📚 查看 5 份原讲义（仅供家长查证）</summary>
+      <p class="sub">材料覆盖不等于孩子已掌握；真实进度以两人的独立学习记录为准。</p>
+      <div class="pdf-list">
+        <a target="_blank" rel="noopener" href="../materials/programming/xiaomawang/kenton/cpp-4.5/lessons/00-cpp-intro.pdf"><span><b>入门</b> · 初识 C++</span><span>打开 ↗</span></a>
+        <a target="_blank" rel="noopener" href="../materials/programming/xiaomawang/kenton/cpp-4.5/lessons/10-basic-operations.pdf"><span><b>第 10 课</b> · 基本运算</span><span>打开 ↗</span></a>
+        <a target="_blank" rel="noopener" href="../materials/programming/xiaomawang/kenton/cpp-4.5/lessons/11-branching-1.pdf"><span><b>第 11 课</b> · 分支结构一</span><span>打开 ↗</span></a>
+        <a target="_blank" rel="noopener" href="../materials/programming/xiaomawang/kenton/cpp-4.5/lessons/12-branching-2.pdf"><span><b>第 12 课</b> · 分支结构二</span><span>打开 ↗</span></a>
+        <a target="_blank" rel="noopener" href="../materials/programming/xiaomawang/kenton/cpp-4.5/lessons/13-branching-3.pdf"><span><b>第 13 课</b> · 分支结构三</span><span>打开 ↗</span></a>
+      </div>
+    </details>
+
+    <article class="card">
+      <span class="pill green">当前查看</span>
+      <h3><span id="parentName">Kenton</span> 的详细记录</h3>
+      <p class="sub">两人共用知识内容，但本机存储键、错题、用时和导出文件完全分开。</p>
+      <div class="event-list" id="eventList"></div>
+      <div class="utility">
+        <button class="btn small" id="exportJson">导出 JSON</button>
+        <button class="btn secondary small" id="exportMd">导出 Markdown</button>
+        <label class="btn secondary small file-label">导入本人的 JSON<input id="importJson" type="file" accept="application/json,.json" aria-label="导入当前孩子的小码王学习记录"></label>
+      </div>
+    </article>
+  </section>
+
+  <div class="foot">小码王 C++ 4.5 作业救援站 · Kenton / Eddey 共用知识、独立记录<br>音频不适用：本课用可操作模型展示数字、变量、条件和执行顺序。</div>
+</main>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+const CHILDREN={
+  kenton:{
+    id:'kenton',name:'Kenton',icon:'🦁',app:'kenton_xiaomawang_cpp_4_5',
+    storage:"studyportal:kenton:xiaomawang_cpp_4_5:v1",jsonName:'kenton-xiaomawang-cpp45-progress.json',
+    mdName:'kenton-xiaomawang-cpp45-progress.md'
+  },
+  eddey:{
+    id:'eddey',name:'Eddey',icon:'🐯',app:'eddey_xiaomawang_cpp_4_5',
+    storage:"studyportal:eddey:xiaomawang_cpp_4_5:v1",jsonName:'eddey-xiaomawang-cpp45-progress.json',
+    mdName:'eddey-xiaomawang-cpp45-progress.md'
+  }
+};
+const SELECTED_KEY='studyportal:xiaomawang_cpp_4_5:last_child';
+const STATUS={
+  todo:{label:'还没试',score:0},
+  help:{label:'老师带我走过',score:1},
+  understand:{label:'我能说出步骤',score:2},
+  pass:{label:'ACGO 已通过',score:3}
+};
+const TASKS=[
+  {
+    id:'A327',title:'求个位',icon:'📦',lessonTitle:'十个一捆装箱机',minutes:6,url:'https://www.acgo.cn/problemset/info/327',
+    known:'已经会输入数字和做四则运算。',newSkill:'把数字每 10 个装一捆，剩下的就是个位。',
+    goal:'看见“完整的十”和“剩下的个”，理解为什么 % 10 能拿到个位。',
+    rulePrompt:'只留下一个整数的个位，代码里的核心小招是什么？',
+    ruleAnswer:'a % 10。% 在这里表示“取余”，不是百分号。',
+    check:{id:'q327',q:'742 的个位，用哪个表达式得到？',options:['742 / 10','742 % 10','10 % 742','742 - 10'],answer:1,explain:'742 每 10 个装一捆，能装 74 捆，还剩 2；% 10 取的就是这个余数。'}
+  },
+  {
+    id:'A379',title:'判断整除',icon:'🚪',lessonTitle:'双重检查门',minutes:7,url:'https://www.acgo.cn/problemset/info/379',
+    known:'已经会 if/else 和 &&。',newSkill:'把“同时整除”拆成两道余数门，两门都开才通过。',
+    goal:'让数字依次通过“除以 3 余 0”和“除以 5 余 0”两道门。',
+    rulePrompt:'“同时被 3 和 5 整除”要写成怎样的判断？',
+    ruleAnswer:'n % 3 == 0 && n % 5 == 0。两个条件都要成立，所以用 &&。',
+    check:{id:'q379',q:'下面哪个数能同时通过“被 3 整除”和“被 5 整除”两道门？',options:['10','12','30','31'],answer:2,explain:'30÷3 和 30÷5 的余数都为 0；“同时”表示两道门必须都通过。'}
+  },
+  {
+    id:'A380',title:'最大数输出',icon:'🥊',lessonTitle:'三人擂台赛',minutes:6,url:'https://www.acgo.cn/problemset/info/380',
+    known:'核桃 L3-1 已经学过擂台法。',newSkill:'把三个数全部比完，只输出最后的擂主，不能输出中间调试过程。',
+    goal:'让第一个数先当擂主，后两个依次挑战，最后只留下一个答案。',
+    rulePrompt:'用擂台法找三个数最大值，最稳的开始动作是什么？',
+    ruleAnswer:'先让第一个输入值当擂主：max = a；再让 b、c 依次挑战。',
+    check:{id:'q380',q:'输入 7、2、9，三人全部比完以后，最后的擂主是谁？',options:['2','7','9','18'],answer:2,explain:'7 先当擂主；2 没有更大；9 比 7 大，最后 9 成为擂主。'}
+  },
+  {
+    id:'A431',title:'输出平均分',icon:'🔭',lessonTitle:'小数保卫站',minutes:8,url:'https://www.acgo.cn/problemset/info/431',
+    known:'已经会求平均数。',newSkill:'在除法发生前保住小数，再用 %.2f 只输出两位。',
+    goal:'对比整数除法和小数除法，亲眼看到小数怎样被保留下来。',
+    rulePrompt:'怎样避免 2876÷30 先做成整数除法，并保留两位？',
+    ruleAnswer:'让除法前至少一边是小数，例如 2876.0 / 30；再用 printf("%.2f", 结果)。',
+    check:{id:'q431',q:'哪条路线能得到小数结果，而不是先丢掉小数部分？',options:['2876 / 30','2876 % 30','2876.0 / 30','30 / 2876'],answer:2,explain:'2876.0 是浮点数，所以除法从一开始就是小数除法。'}
+  },
+  {
+    id:'A445',title:'充值满赠',icon:'🎟️',lessonTitle:'最高档闸门',minutes:7,url:'https://www.acgo.cn/problemset/info/445',
+    known:'已经会 if/else。',newSkill:'门槛重叠又只取最高档时，必须从 300→200→100 往下问。',
+    goal:'让金额从最高门槛往下走，命中第一道后马上停止。',
+    rulePrompt:'“只赠一次、取最高档”时，三个门槛应该按什么顺序判断？',
+    ruleAnswer:'300 → 200 → 100，并且“满”要用 >=。命中第一档后，不再检查后面的低档。',
+    check:{id:'q445',q:'充值 300 元，从高到低判断时应该命中哪一档？',options:['未满 100','满 100','满 200','满 300'],answer:3,explain:'“满 300”包含正好 300；从最高档先判断，命中后就结束。'}
+  },
+  {
+    id:'A457',title:'演讲比赛',icon:'🎤',lessonTitle:'评委卡片淘汰台',minutes:10,url:'https://www.acgo.cn/problemset/info/457',
+    known:'已经会找最大值和求平均数。',newSkill:'只去掉一张最高和一张最低，再对剩下两张做小数平均。',
+    goal:'亲手选走一张最高分和一张最低分，数清剩几张，再计算。',
+    rulePrompt:'四个分数去掉一高一低以后，平均数应该除以几？',
+    ruleAnswer:'除以 2.0。因为只剩两张；用 2.0 可以让计算保持为小数。',
+    check:{id:'q457',q:'四个分数总和是 sum，最高 max，最低 min，正确平均式是哪一个？',options:['sum / 4.0','(sum-max-min) / 2.0','(max+min) / 2.0','sum-max-min / 2.0'],answer:1,explain:'先减掉一张最高和一张最低，剩下两张，所以用剩余总分除以 2.0。'}
+  }
+];
+const EXTRA_QUIZ=[
+  {id:'qbreak',task:'A445',q:'switch 中少写 break，最可能发生什么？',options:['一定编译失败','自动回上一分支','继续执行后面的 case','变量自动清零'],answer:2,explain:'break 像出口。少了它，匹配后可能继续跑后面的 case，这叫“穿透”。',skill:'switch / break'},
+  {id:'qlogic',task:'A379',q:'“温度高于 30 或者按下按钮就报警”应该用哪个逻辑符？',options:['&&','||','!','%'],answer:1,explain:'只要两个条件有一个成立就报警，所以用 ||。',skill:'逻辑或'}
+];
+const QUIZ=[
+  ...TASKS.map(t=>({...t.check,task:t.id,skill:t.newSkill})),
+  ...EXTRA_QUIZ
+];
+const BRIDGES=[
+  {title:'输入、变量与计算',base:'cin/cout、多变量、四则运算、先算右边再赋值。',upgrade:'数据类型、取余、整数/浮点除法、printf 格式输出。',tasks:'A327、A431'},
+  {title:'条件判断',base:'if/else、关系运算、&&/||、if 嵌套。',upgrade:'流程图、边界、多分支从高到低、switch/break。',tasks:'A379、A445'},
+  {title:'多变量决策',base:'擂台法找最大值、读嵌套执行顺序。',upgrade:'从文字题独立建模、最低值、严格输出和 OJ 调试。',tasks:'A380、A457'},
+  {title:'证据边界',base:'核桃已有 for、硬件和可视化项目优势。',upgrade:'本批第 10～13 课未覆盖循环，不能据此笼统说小码王全面更难。',tasks:'后续材料再补'}
+];
+const COURSE_MAP=[
+  {
+    id:'intro',marker:'起',step:'起点',app:'xmw45_intro',recordPrefix:'xmw45_intro_record_',wrongPrefix:'cppL1_err_',
+    file:'xiaomawang_cpp_4_5_intro.html',icon:'🏭',label:'初识 C++',title:'程序小工厂',
+    line:'先搭骨架，再让程序听得见、说得出、算得动。',
+    outcome:'能看懂一段完整小程序：从输入进入变量，到计算后输出结果。',
+    topics:['程序骨架','注释','cout 输出','变量与赋值','cin 输入','+ - * / %（加、减、乘、除、取余）'],
+    tasks:[]
+  },
+  {
+    id:'l10',marker:'10',step:'第 10 课',app:'xmw45_l10',recordPrefix:'xmw45_l10_record_',wrongPrefix:'cppL10_err_',
+    file:'xiaomawang_cpp_4_5_l10.html',icon:'🧰',label:'基本运算',title:'数字工具箱',
+    line:'选对数据盒子，算平均数时不把小数弄丢。',
+    outcome:'能分清整数除法、取余和小数除法，并按题目格式输出。',
+    topics:['int / long long','float / double','scanf / printf','整除与取余','小数除法不丢精度','按格式显示小数位'],
+    tasks:['A327','A431','A457']
+  },
+  {
+    id:'l11',marker:'11',step:'第 11 课',app:'xmw45_l11',recordPrefix:'xmw45_l11_record_',wrongPrefix:'cppL11_err_',
+    file:'xiaomawang_cpp_4_5_l11.html',icon:'🚪',label:'分支结构一',title:'如果大门',
+    line:'先判断真或假，再让程序只走应该走的那条路。',
+    outcome:'能把题目条件画成路线，再写成 if 或 if-else。',
+    topics:['关系运算','bool 真假','流程图','if 单分支','三杯换位','if-else 双分支','三目运算'],
+    tasks:['A379','A380','A457']
+  },
+  {
+    id:'l12',marker:'12',step:'第 12 课',app:'xmw45_l12',recordPrefix:'xmw45_l12_record_',wrongPrefix:'cppL12_err_',
+    file:'xiaomawang_cpp_4_5_l12.html',icon:'🚂',label:'分支结构二',title:'分支列车',
+    line:'else-if 从上往下选路；switch 里用 break 停住穿透。',
+    outcome:'能选择 else-if 或 switch，并解释 break 只在 switch 中怎样让程序停住。',
+    topics:['多分支阶梯','else 配对','char 字符','switch / case','break 刹车','default 兜底'],
+    tasks:['A445']
+  },
+  {
+    id:'l13',marker:'13',step:'第 13 课',app:'xmw45_l13',recordPrefix:'xmw45_l13_record_',wrongPrefix:'cppL13_err_',
+    file:'xiaomawang_cpp_4_5_l13.html',icon:'⚡',label:'分支结构三',title:'逻辑闸门',
+    line:'把两三个条件组合起来，仍然能看清程序怎么判断。',
+    outcome:'能用 &&、||、! 和嵌套分支写出多条件判断。',
+    topics:['分支嵌套','&& 两个都要','|| 一个就够','! 真假反转','运算顺序','闰年综合'],
+    tasks:['A379']
+  }
+];
+const STEP_NAMES=[['👀','先看'],['🖐️','跟着试'],['🙈','遮住想'],['🎯','我来做']];
+
+let childId=null;
+let state=null;
+let sessionStart=Date.now();
+let activeTaskId=null;
+let lessonStep=0;
+let flipRevealed=false;
+let lessonCheckAnswered=false;
+let modelState={};
+let quizQueue=[];
+let quizIndex=0;
+let extraModel={typeValue:'37',typeFeedback:'',switchValue:2,hasBreak:true};
+let selectedCourseId;
+let mapAnimated=false;
+
+function profile(){return CHILDREN[childId]}
+function metaFor(id){
+  const p=CHILDREN[id];
+  return {child:id,app:p.app,version:'2026-07-27-v2',schemaVersion:2,sharedCourse:'xiaomawang_cpp_4_5'};
+}
+function defaultState(id){
+  return {
+    schemaVersion:2,uiRevision:'child-quest-v2',meta:metaFor(id),
+    taskStatus:Object.fromEntries(TASKS.map(t=>[t.id,'todo'])),
+    viewedHints:{},labRuns:0,quizAnswered:0,wrongbook:{},events:[],lastUpdated:null,
+    lessonProgress:Object.fromEntries(TASKS.map(t=>[t.id,{step:0,runs:0,completed:false,checkTries:0}])),
+    extraProgress:{types:{correct:[]},switch:{testedBreak:false,testedFallthrough:false}},
+    attempts:[],totalMs:0,quizSession:{active:false,queue:[],index:0,answered:false,lastAnswer:null},
+    returnContext:null
+  };
+}
+function normalizeState(raw,id){
+  const base=defaultState(id),p=CHILDREN[id];
+  if(!raw||typeof raw!=='object')return base;
+  const acceptedApp=id==='kenton'?(raw.meta?.app===p.app):(raw.meta?.app===p.app);
+  if(raw.meta?.child!==id||!acceptedApp)return base;
+  const clean={...base,...raw};
+  clean.schemaVersion=2;clean.uiRevision='child-quest-v2';clean.meta=metaFor(id);
+  clean.taskStatus={...base.taskStatus};
+  for(const task of TASKS){
+    const value=raw.taskStatus?.[task.id];
+    clean.taskStatus[task.id]=STATUS[value]?value:'todo';
+  }
+  clean.viewedHints=raw.viewedHints&&typeof raw.viewedHints==='object'?raw.viewedHints:{};
+  clean.wrongbook=raw.wrongbook&&typeof raw.wrongbook==='object'&&!Array.isArray(raw.wrongbook)?raw.wrongbook:{};
+  clean.events=Array.isArray(raw.events)?raw.events.slice(0,100):[];
+  clean.attempts=Array.isArray(raw.attempts)?raw.attempts.slice(0,300):[];
+  clean.totalMs=Number.isFinite(Number(raw.totalMs))?Math.max(0,Number(raw.totalMs)):0;
+  clean.lessonProgress={...base.lessonProgress};
+  for(const task of TASKS){
+    const old=raw.lessonProgress?.[task.id];
+    if(old&&typeof old==='object'){
+      clean.lessonProgress[task.id]={
+        step:Math.max(0,Math.min(3,Number(old.step)||0)),
+        runs:Math.max(0,Number(old.runs)||0),
+        completed:Boolean(old.completed),
+        checkTries:Math.max(0,Number(old.checkTries)||0)
+      };
+    }
+  }
+  const extras=raw.extraProgress&&typeof raw.extraProgress==='object'?raw.extraProgress:{};
+  clean.extraProgress={
+    types:{correct:Array.isArray(extras.types?.correct)?extras.types.correct.filter(v=>['37','3.14',"'A'",'3000000000'].includes(v)):[]},
+    switch:{testedBreak:Boolean(extras.switch?.testedBreak),testedFallthrough:Boolean(extras.switch?.testedFallthrough)}
+  };
+  const qs=raw.quizSession&&typeof raw.quizSession==='object'?raw.quizSession:{};
+  clean.quizSession={
+    active:Boolean(qs.active),
+    queue:Array.isArray(qs.queue)?qs.queue.filter(id=>QUIZ.some(q=>q.id===id)):[],
+    index:Math.max(0,Number(qs.index)||0),
+    answered:Boolean(qs.answered),
+    lastAnswer:Number.isInteger(qs.lastAnswer)?qs.lastAnswer:null
+  };
+  clean.returnContext=raw.returnContext&&typeof raw.returnContext==='object'?raw.returnContext:null;
+  return clean;
+}
+function loadState(id){
+  try{
+    const raw=localStorage.getItem(CHILDREN[id].storage);
+    return normalizeState(raw?JSON.parse(raw):null,id);
+  }catch(e){return defaultState(id)}
+}
+function checkpointTime(){
+  if(!state)return;
+  state.totalMs=Math.max(0,Number(state.totalMs)||0)+(Date.now()-sessionStart);
+  sessionStart=Date.now();
+}
+function saveState(){
+  if(!state||!childId)return;
+  checkpointTime();
+  state.lastUpdated=new Date().toISOString();
+  localStorage.setItem(profile().storage,JSON.stringify(state));
+  renderStats();
+}
+function switchChild(next,{closeChooser=true,initialRoute=false}={}){
+  if(!CHILDREN[next])return;
+  const wasMapOpen=!initialRoute&&document.getElementById('view-lessons').classList.contains('active')&&!document.getElementById('lessonMap').hidden;
+  const previousCourse=selectedCourseId;
+  if(state)saveState();
+  childId=next;state=loadState(next);sessionStart=Date.now();
+  localStorage.setItem(SELECTED_KEY,next);
+  document.body.dataset.child=next;
+  const p=profile();
+  document.getElementById('childSwitch').textContent=`${p.icon} ${p.name} ▾`;
+  document.getElementById('heroName').textContent=p.name;
+  document.getElementById('progressName').textContent=p.name;
+  document.getElementById('parentName').textContent=p.name;
+  document.getElementById('childChooser').hidden=closeChooser;
+  activeTaskId=null;lessonStep=0;quizQueue=state.quizSession.queue||[];quizIndex=state.quizSession.index||0;
+  extraModel={typeValue:'37',typeFeedback:'',switchValue:2,hasBreak:true};
+  selectedCourseId=wasMapOpen?previousCourse:undefined;mapAnimated=false;
+  const ctx=state.returnContext;
+  const canResumeQuizLesson=Boolean(
+    ctx?.type==='quiz'&&state.quizSession.active&&taskById(ctx.taskId)&&quizById(ctx.questionId)&&
+    state.quizSession.queue?.[ctx.quizIndex]===ctx.questionId
+  );
+  if(ctx&&!canResumeQuizLesson)state.returnContext=null;
+  renderAll();saveState();
+  document.getElementById('lessonMap').hidden=canResumeQuizLesson;
+  document.getElementById('lessonWorkspace').hidden=!canResumeQuizLesson;
+  if(canResumeQuizLesson){
+    activeTaskId=ctx.taskId;
+    lessonStep=state.lessonProgress[activeTaskId]?.completed?0:(state.lessonProgress[activeTaskId]?.step||0);
+    renderLesson();showView('lessons');
+  }else if(wasMapOpen)openKnowledgeMap();
+  else showView('home');
+  const url=new URL(location.href);url.searchParams.set('who',next);
+  if(canResumeQuizLesson){
+    url.searchParams.set('view','lesson');url.searchParams.set('task',ctx.taskId);
+    url.searchParams.delete('course');url.hash='';
+  }else if(wasMapOpen){
+    url.searchParams.set('view','lessons');
+    if(selectedCourseId)url.searchParams.set('course',selectedCourseId);else url.searchParams.delete('course');
+    url.searchParams.delete('task');
+  }else if(!initialRoute&&!canResumeQuizLesson){
+    url.searchParams.delete('view');url.searchParams.delete('course');url.searchParams.delete('task');url.hash='';
+  }
+  history.replaceState(null,'',url);
+}
+function showChooser(){document.getElementById('childChooser').hidden=false}
+function chooseChild(next){
+  const params=new URL(location.href).searchParams;
+  const hasRoute=Boolean(params.get('view')||params.get('course')||params.get('task'));
+  switchChild(next,{initialRoute:hasRoute});
+  if(hasRoute)applyInitialRoute();
+  requestAnimationFrame(()=>{
+    const onMap=document.getElementById('view-lessons').classList.contains('active')&&!document.getElementById('lessonMap').hidden;
+    (onMap?document.getElementById('courseMapTitle'):document.getElementById('childSwitch'))?.focus({preventScroll:true});
+  });
+}
+function logEvent(text){
+  state.events.unshift({at:new Date().toISOString(),text:String(text).slice(0,220)});
+  state.events=state.events.slice(0,100);
+}
+function escapeHtml(value){
+  return String(value??'').replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
+}
+function readLocalObject(key){
+  try{
+    const parsed=JSON.parse(localStorage.getItem(key));
+    return parsed&&typeof parsed==='object'&&!Array.isArray(parsed)?parsed:null;
+  }catch(e){return null}
+}
+function courseEvidenceFrom(course,record,wrong,child){
+  const validRecord=record?.meta?.app===course.app&&record?.meta?.child===child?record:null;
+  const validWrong=wrong&&typeof wrong==='object'&&!Array.isArray(wrong)?wrong:null;
+  const wrongCount=validWrong?Object.keys(validWrong).length:0;
+  const plays=validRecord?Math.max(0,Number(validRecord.plays)||0):0;
+  const rawBest=validRecord?Number(validRecord.best):-1;
+  const best=Number.isFinite(rawBest)?Math.max(-1,Math.min(10,rawBest)):-1;
+  const totalMs=validRecord?Math.max(0,Number(validRecord.totalMs)||0):0;
+  if(wrongCount>0)return {key:'review',label:`↺ ${wrongCount} 题待回炉`,wrongCount,plays,best,totalMs};
+  if(best===10)return {key:'perfect',label:'✓ 10/10 全对过',wrongCount,plays,best,totalMs};
+  if(plays>0||totalMs>0)return {key:'learning',label:'◐ 学习中',wrongCount,plays,best,totalMs};
+  return {key:'todo',label:'○ 未开始',wrongCount,plays,best,totalMs};
+}
+function readCourseEvidence(course){
+  return courseEvidenceFrom(
+    course,
+    readLocalObject(`${course.recordPrefix}${childId}`),
+    readLocalObject(`${course.wrongPrefix}${childId}`),
+    childId
+  );
+}
+function courseEvidenceText(evidence){
+  if(evidence.key==='review')return `本课错题本还有 ${evidence.wrongCount} 题。先回炉，再重新闯关。`;
+  if(evidence.key==='perfect')return `这课曾经 10/10 全对，当前错题本为空；以后忘了也可以回来复习。`;
+  if(evidence.key==='learning'){
+    const best=evidence.best>=0?`，最好 ${evidence.best}/10`:'';
+    return `已经留下学习记录${evidence.plays?`，闯关 ${evidence.plays} 次${best}`:''}。`;
+  }
+  return '还没有这课的学习记录。点开会动小课开始。';
+}
+function mapTaskLabel(id){
+  const key=state?.taskStatus?.[id]||'todo';
+  if(key==='pass')return '✅ ACGO 已通过（自己记录）';
+  if(key==='understand')return '🌱 能说出步骤';
+  if(key==='help')return '🧭 正在学关键';
+  return '○ 还没开始';
+}
+function renderKnowledgeMap(){
+  const route=document.getElementById('courseRoute');
+  const resume=document.getElementById('mapResume');
+  if(!route||!resume||!state||!childId)return;
+  const evidenceById=Object.fromEntries(COURSE_MAP.map(course=>[course.id,readCourseEvidence(course)]));
+  const recommended=COURSE_MAP.find(course=>evidenceById[course.id].key!=='perfect')||null;
+  if(selectedCourseId===undefined)selectedCourseId=recommended?.id||COURSE_MAP[COURSE_MAP.length-1].id;
+  if(selectedCourseId!==null&&!COURSE_MAP.some(course=>course.id===selectedCourseId)){
+    selectedCourseId=recommended?.id||COURSE_MAP[0].id;
+  }
+  const resumeTask=taskById(activeTaskId);
+  resume.hidden=!resumeTask;
+  resume.innerHTML=resumeTask?`<span>刚才学到 <b>${resumeTask.id} · ${escapeHtml(resumeTask.lessonTitle)}</b>，进度还在。</span><button class="btn small" data-resume-lesson="${resumeTask.id}">回到刚才的小课 →</button>`:'';
+  route.innerHTML=COURSE_MAP.map((course,index)=>{
+    const evidence=evidenceById[course.id],selected=selectedCourseId===course.id,isNext=recommended?.id===course.id;
+    const taskLinks=course.tasks.length?course.tasks.map(id=>{
+      const task=taskById(id);
+      return `<button class="map-task-link" data-open-lesson="${id}">
+        <b>${id} · ${escapeHtml(task?.title||'对应作业')}</b><span>${escapeHtml(mapTaskLabel(id))} · 点我学这题关键</span>
+      </button>`;
+    }).join(''):'<p class="empty">这是所有作业的共同地基，先把程序怎样输入、计算和输出看懂。</p>';
+    const detail=selected?`<div class="course-detail" id="courseDetail" role="region" tabindex="-1" aria-labelledby="course-node-${course.id}">
+      <div class="course-detail-head">
+        <div><span class="pill">${escapeHtml(course.step)}</span><h3><span aria-hidden="true">${course.icon}</span> ${escapeHtml(course.title)}：${escapeHtml(course.label)}</h3><p class="sub">${escapeHtml(course.outcome)}</p></div>
+        <div class="course-evidence"><b>${escapeHtml(evidence.label)}</b><br>${escapeHtml(courseEvidenceText(evidence))}</div>
+      </div>
+      <div class="topic-cloud">${course.topics.map(topic=>`<span>${escapeHtml(topic)}</span>`).join('')}</div>
+      <div class="map-task-title">${course.tasks.length?'这些作业会用到本课的一部分知识':'这关是后面所有题目的共同地基'}</div>
+      <div class="map-task-links">${taskLinks}</div>
+      <div class="utility">
+        <a class="btn small" href="${course.file}?who=${encodeURIComponent(childId)}">进入本课会动软件 →</a>
+        <button class="btn secondary small" data-course-close>收起知识点</button>
+      </div>
+    </div>`:'';
+    return `<li class="course-stop" style="--i:${index}">
+      <button class="course-node ${evidence.key}" id="course-node-${course.id}" data-course-id="${course.id}"
+        aria-expanded="${selected}" ${selected?'aria-controls="courseDetail"':''} ${isNext?'aria-current="step"':''}>
+        <span class="course-step">${escapeHtml(course.marker)}</span>
+        <span class="course-copy"><small>${escapeHtml(course.step)} · ${escapeHtml(course.label)}</small><b><span aria-hidden="true">${course.icon}</span> ${escapeHtml(course.title)}</b><span>${escapeHtml(course.line)}</span></span>
+        <span class="node-status">${isNext&&evidence.key!=='perfect'?'▶ 建议 · ':''}${escapeHtml(evidence.label)}</span>
+      </button>
+      ${detail}
+    </li>`;
+  }).join('');
+  const mapVisible=document.getElementById('view-lessons').classList.contains('active')&&!document.getElementById('lessonMap').hidden;
+  if(mapVisible&&!mapAnimated){route.classList.add('animate');mapAnimated=true}else route.classList.remove('animate');
+
+  const perfectCount=Object.values(evidenceById).filter(item=>item.key==='perfect').length;
+  const reviewCount=Object.values(evidenceById).filter(item=>item.key==='review').length;
+  document.getElementById('courseMapSummary').innerHTML=`<b>${perfectCount} / 5</b><span>课曾 10/10 全对${reviewCount?` · ${reviewCount} 课待回炉`:''}</span>`;
+  document.getElementById('courseGoalText').textContent=`读懂题面 → 选对招数 → 严格输出 → 自己调试 · 当前 ${passCount()}/6 题自己记录通过`;
+}
+function toast(message){
+  const el=document.getElementById('toast');el.textContent=message;el.classList.add('show');
+  clearTimeout(toast.timer);toast.timer=setTimeout(()=>el.classList.remove('show'),1900);
+}
+function taskById(id){return TASKS.find(t=>t.id===id)}
+function quizById(id){return QUIZ.find(q=>q.id===id)}
+function lessonDoneCount(){return TASKS.filter(t=>state.lessonProgress[t.id]?.completed).length}
+function passCount(){return TASKS.filter(t=>state.taskStatus[t.id]==='pass').length}
+function recommendedTask(){return TASKS.find(t=>state.taskStatus[t.id]!=='pass')||TASKS[0]}
+function formatMs(ms){
+  const total=Math.max(0,Math.floor(ms/1000)),m=Math.floor(total/60),s=total%60;
+  return `${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+}
+function scrollBehavior(){return window.matchMedia?.('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'}
+function showView(name,anchor){
+  document.querySelectorAll('.view').forEach(v=>v.classList.toggle('active',v.id==='view-'+name));
+  document.querySelectorAll('.tab').forEach(t=>t.classList.toggle('active',t.dataset.view===name));
+  if(name==='parent')document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  if(name==='lessons')renderKnowledgeMap();
+  if(name==='progress')renderProgress();
+  if(name==='parent')renderParent();
+  requestAnimationFrame(()=>{
+    const target=anchor?document.getElementById(anchor):document.querySelector('.tabs');
+    target?.scrollIntoView({behavior:scrollBehavior(),block:'start'});
+  });
+}
+function updateMapRoute(){
+  const url=new URL(location.href);
+  url.searchParams.set('who',childId);
+  url.searchParams.set('view','lessons');
+  if(selectedCourseId)url.searchParams.set('course',selectedCourseId);else url.searchParams.delete('course');
+  url.searchParams.delete('task');
+  history.replaceState(null,'',url);
+}
+function updateViewRoute(name){
+  const url=new URL(location.href);
+  url.searchParams.set('who',childId);
+  url.searchParams.set('view',name);
+  url.searchParams.delete('course');url.searchParams.delete('task');url.hash='';
+  history.replaceState(null,'',url);
+}
+function updateLessonRoute(id){
+  const url=new URL(location.href);
+  url.searchParams.set('who',childId);
+  url.searchParams.set('view','lesson');
+  url.searchParams.set('task',id);
+  url.searchParams.delete('course');url.hash='';
+  history.replaceState(null,'',url);
+}
+function navigateView(name,anchor){
+  showView(name,anchor);updateViewRoute(name);
+}
+function openKnowledgeMap({focusTitle=false}={}){
+  document.getElementById('lessonMap').hidden=false;
+  document.getElementById('lessonWorkspace').hidden=true;
+  renderKnowledgeMap();showView('lessons','courseMap');updateMapRoute();
+  if(focusTitle)requestAnimationFrame(()=>document.getElementById('courseMapTitle')?.focus({preventScroll:true}));
+}
+function renderStats(){
+  if(!state)return;
+  document.getElementById('lessonCount').textContent=`${lessonDoneCount()}/6`;
+  document.getElementById('passCount').textContent=`${passCount()}/6`;
+  document.getElementById('wrongCount').textContent=Object.keys(state.wrongbook).length;
+  document.getElementById('recordLessons').textContent=lessonDoneCount();
+  document.getElementById('recordAttempts').textContent=state.attempts.length;
+  document.getElementById('recordTime').textContent=formatMs(state.totalMs+(Date.now()-sessionStart));
+}
+function statusClass(key){return key==='todo'?'':key}
+function renderHome(){
+  const today=recommendedTask(),status=state.taskStatus[today.id],done=state.lessonProgress[today.id]?.completed;
+  document.getElementById('todayCode').textContent=today.id;
+  document.getElementById('todayTitle').textContent=today.title;
+  document.getElementById('todayTime').textContent=`约 ${today.minutes} 分钟`;
+  document.getElementById('todayPrompt').textContent=done?'关键小课已经学过，现在去 ACGO 自己写并通过。':`先玩“${today.lessonTitle}”，再去 ACGO 独立写。`;
+  const route=document.getElementById('todayRoute').children;
+  route[0].className='route-step '+(done?'done':'now');
+  route[1].className='route-step '+(done&&status!=='pass'?'now':done?'done':'');
+  route[2].className='route-step '+(status==='pass'?'done':'');
+  document.getElementById('todayAction').textContent=done?'去看这道作业 →':'开始这题的小课 →';
+  document.getElementById('quickGrid').innerHTML=TASKS.map(t=>{
+    const complete=state.lessonProgress[t.id]?.completed,pass=state.taskStatus[t.id]==='pass';
+    return `<button class="quick ${pass?'pass':complete?'done':''}" data-open-lesson="${t.id}">
+      <span class="ico">${t.icon}</span><b>${t.id} ${t.title}</b>
+      <span>${pass?'✅ ACGO 已通过':complete?'🌱 已学关键，可以再练':'点开会动讲解'}</span>
+    </button>`;
+  }).join('');
+}
+function renderLessonMap(){
+  document.getElementById('lessonGrid').innerHTML=TASKS.map(t=>{
+    const p=state.lessonProgress[t.id]||{},pass=state.taskStatus[t.id]==='pass';
+    return `<button class="lesson-card ${pass?'pass':p.completed?'done':''}" data-open-lesson="${t.id}">
+      ${p.completed?`<span class="done-mark">${pass?'ACGO 已过':'小课学会'}</span>`:''}
+      <span class="ico">${t.icon}</span><b>${t.lessonTitle}</b>
+      <span>${t.goal}</span><span class="task-link">救援 ${t.id} ${t.title} →</span>
+    </button>`;
+  }).join('');
+  renderExtras();
+}
+function renderExtras(){
+  const typeInfo={
+    '37':{type:'int',format:'%d',why:'37 是没有小数点的普通整数，放进 int 盒子。'},
+    '3.14':{type:'double',format:'%.2f',why:'3.14 有小数点，要放进能保存小数的 double 盒子。'},
+    "'A'":{type:'char',format:'%c',why:"'A' 只有一个字符，而且用单引号包住，放进 char 盒子。"},
+    '3000000000':{type:'long long',format:'%lld',why:'这个整数太大，普通 int 可能装不下，要换更大的 long long 盒子。'}
+  };
+  const picked=typeInfo[extraModel.typeValue];
+  const typeDone=new Set(state.extraProgress.types.correct);
+  const typeFinished=typeDone.size===Object.keys(typeInfo).length;
+  document.getElementById('typeExtra').innerHTML=`
+    <div class="choice-row" aria-label="选择要装进盒子的值">
+      ${Object.keys(typeInfo).map(value=>`<button class="${extraModel.typeValue===value?'active':''}" data-type-value="${value}">${value}</button>`).join('')}
+    </div>
+    <div class="machine">
+      <div><span>现在要收好</span><strong>${escapeHtml(extraModel.typeValue)}</strong></div>
+      <div class="arrow">→</div>
+      <div><span>该选哪个盒子？</span><strong>点下面试试</strong></div>
+    </div>
+    <div class="choice-row" aria-label="选择数据类型">
+      ${['int','double','char','long long'].map(type=>`<button data-type-choice="${type}">${typeDone.has(extraModel.typeValue)&&type===picked.type?'✓ ':''}${type}</button>`).join('')}
+    </div>
+    <div class="extra-result ${extraModel.typeFeedback?.ok?'ok':extraModel.typeFeedback?'bad':''}">
+      ${extraModel.typeFeedback?`<b>${extraModel.typeFeedback.ok?'装对了！':'再看一眼这个值'}</b><span>${escapeHtml(extraModel.typeFeedback.text)}</span>${extraModel.typeFeedback.ok?`<code>printf("${picked.format}", value);</code>`:''}`:'<span>先选一个盒子。装对后，会出现它的输出暗号。</span>'}
+    </div>
+    <div class="mini-progress">${typeFinished?'🏆 四种值都装对了':`已装对 ${typeDone.size}/4 种`}</div>`;
+
+  const floors=extraModel.hasBreak
+    ? [`${extraModel.switchValue} 楼：找到匹配的 case`,'break：从这里出去']
+    : [`${extraModel.switchValue} 楼：找到匹配的 case`,...Array.from({length:3-extraModel.switchValue},(_,i)=>`${extraModel.switchValue+i+1} 楼：继续往下跑`),'default：还会继续经过这里'];
+  const switchProgress=state.extraProgress.switch;
+  document.getElementById('switchExtra').innerHTML=`
+    <div class="choice-row" aria-label="选择 case 楼层">
+      ${[1,2,3].map(value=>`<button class="${extraModel.switchValue===value?'active':''}" data-switch-value="${value}">n = ${value}</button>`).join('')}
+    </div>
+    <div class="choice-row" aria-label="选择是否使用 break">
+      <button class="${extraModel.hasBreak?'active':''}" data-switch-break="yes">🚪 写 break</button>
+      <button class="${!extraModel.hasBreak?'active':''}" data-switch-break="no">🛝 不写 break</button>
+    </div>
+    <div class="elevator">
+      ${floors.map((text,index)=>`<div class="${index===0?'hit':''}"><b>${index===0?'▶':'↓'}</b><span>${text}</span></div>`).join('')}
+    </div>
+    <div class="extra-result ${extraModel.hasBreak?'ok':'bad'}">
+      <b>${extraModel.hasBreak?'程序在正确楼层停住了':'程序发生了“穿透”'}</b>
+      <span>${extraModel.hasBreak?'break 像出口：完成这个 case 就离开 switch。':'没有 break，程序不会重新判断，会顺着后面的 case 一直往下跑。'}</span>
+    </div>
+    <div class="mini-progress">${switchProgress.testedBreak&&switchProgress.testedFallthrough?'🏆 两种情况都亲手试过了':`小任务：${switchProgress.testedBreak?'✅':'⬜'} 有 break　${switchProgress.testedFallthrough?'✅':'⬜'} 无 break`}</div>`;
+}
+function renderTasks(){
+  document.getElementById('taskGrid').innerHTML=TASKS.map(t=>{
+    const key=state.taskStatus[t.id]||'todo',done=state.lessonProgress[t.id]?.completed;
+    return `<article class="task-card" id="task-${t.id}">
+      <div class="task-top"><div><div class="task-id">${t.id}</div><h3>${t.icon} ${t.title}</h3></div><span class="task-status ${statusClass(key)}">${STATUS[key].label}</span></div>
+      <div class="known"><b>你已经会</b>${t.known}</div>
+      <div class="new"><b>这题新升级</b>${t.newSkill}</div>
+      <div class="task-actions">
+        <button class="btn small" data-open-lesson="${t.id}">${done?'再玩一次小课':'先学这题关键'}</button>
+        <a class="btn orange small" href="${t.url}" target="_blank" rel="noopener" data-acgo="${t.id}">去 ACGO 自己写 ↗</a>
+        <button class="btn secondary small" data-copy-task="${t.id}">复制题号</button>
+      </div>
+      <div class="status-actions">
+        <button data-task-status="${t.id}:help" class="${key==='help'?'active':''}">我还需要帮助</button>
+        <button data-task-status="${t.id}:pass" class="${key==='pass'?'active':''}">ACGO 已通过</button>
+      </div>
+    </article>`;
+  }).join('');
+}
+function openLesson(id,context=null){
+  const task=taskById(id);if(!task)return;
+  activeTaskId=id;lessonStep=state.lessonProgress[id]?.completed?0:(state.lessonProgress[id]?.step||0);
+  flipRevealed=false;lessonCheckAnswered=false;modelState={};
+  if(context)state.returnContext=context;
+  if(state.taskStatus[id]==='todo')state.taskStatus[id]='help';
+  logEvent(`${id} 打开“${task.lessonTitle}”`);
+  saveState();showView('lessons');
+  document.getElementById('lessonMap').hidden=true;document.getElementById('lessonWorkspace').hidden=false;
+  renderLesson();updateLessonRoute(id);
+}
+function closeLesson(){
+  activeTaskId=null;state.returnContext=null;saveState();
+  openKnowledgeMap({focusTitle:true});
+}
+function renderLesson(){
+  const task=taskById(activeTaskId);if(!task)return;
+  document.getElementById('lessonTaskPill').textContent=`${task.id} · ${task.title}`;
+  document.getElementById('lessonTitle').textContent=`${task.icon} ${task.lessonTitle}`;
+  document.getElementById('lessonGoal').textContent=task.goal;
+  const progress=state.lessonProgress[task.id]||{};
+  const maxUnlocked=progress.completed?3:(progress.step||0);
+  document.getElementById('lessonStepper').innerHTML=STEP_NAMES.map((s,i)=>`<button class="step-btn ${i===lessonStep?'active':i<maxUnlocked||progress.completed?'done':''}" data-lesson-step="${i}" ${i>maxUnlocked?'disabled':''}><b>${s[0]}</b>${s[1]}</button>`).join('');
+  document.getElementById('lessonStage').innerHTML=renderLessonStage(task,lessonStep);
+  document.getElementById('lessonPrev').disabled=lessonStep===0;
+  const canAdvance=lessonStep<maxUnlocked;
+  document.getElementById('lessonNext').textContent=lessonStep===3?(progress.completed?'这关已学会 ✓':'先完成独立挑战'):canAdvance?'下一步 →':'完成本步后继续';
+  document.getElementById('lessonNext').disabled=lessonStep===3||!canAdvance;
+  const ret=document.getElementById('lessonReturn');
+  ret.hidden=!state.returnContext;
+  if(state.returnContext){
+    document.getElementById('lessonReturnText').textContent=state.returnContext.type==='quiz'?`我看懂了，返回刚才的 ${state.returnContext.questionId} 检验题。`:`我看懂了，返回 ${task.id} 作业。`;
+  }
+}
+function renderLessonStage(task,step){
+  if(step===0)return renderWatch(task);
+  if(step===1)return renderModel(task);
+  if(step===2)return `
+    <span class="pill">遮住回忆</span><h3>先在脑袋里说一遍，再翻开</h3>
+    <p class="stage-lead">不用背完整程序，只要能说出这道题最关键的一步。</p>
+    <button class="flip-card ${flipRevealed?'revealed':''}" data-flip-card>
+      <b>${flipRevealed?escapeHtml(task.ruleAnswer):escapeHtml(task.rulePrompt)}</b>
+      <span>${flipRevealed?'再点一次可以盖回去':'点我翻开答案 · 翻开后还能盖回去'}</span>
+    </button>
+    <div class="stage-actions"><button class="btn" data-mark-recall>我能自己说出来了 →</button></div>`;
+  return renderLessonCheck(task);
+}
+function renderWatch(task){
+  const visuals={
+    A327:`<div class="bundle-row"><div class="bundle"><strong>12 捆</strong><span>完整的十</span></div><div class="bundle remain"><strong>6 个</strong><span>剩下的个</span></div></div><div class="number-equation">126 = 12 × 10 + 6</div>`,
+    A379:`<div class="locks"><div class="lock open"><b>30 % 3 = 0</b><span>第一道门打开</span></div><div class="logic-sign">&&</div><div class="lock open"><b>30 % 5 = 0</b><span>第二道门打开</span></div></div><div class="number-equation">两门都开 → YES</div>`,
+    A380:`<div class="arena"><div class="fighter"><div class="crown"> </div><div class="face">🙂</div><div class="value">153</div></div><div class="fighter king"><div class="crown">👑</div><div class="face">😎</div><div class="value">410</div></div><div class="fighter"><div class="crown"> </div><div class="face">🙂</div><div class="value">109</div></div></div><div class="number-equation">全部比完，只输出 410</div>`,
+    A431:`<div class="format-paths"><div class="format-path bad"><b>整数剪刀 ✂️</b><code>2876 / 30 → 95</code><span>小数先丢了</span></div><div class="format-path good"><b>小数保卫 🛡️</b><code>2876.0 / 30 → 95.866…<br>%.2f → 95.87</code></div></div>`,
+    A445:`<div class="gates"><div class="gate fail"><span>先问：x ≥ 300？</span><b>250 → 否</b></div><div class="gate stop"><span>再问：x ≥ 200？</span><b>250 → 是，停止</b></div><div class="gate"><span>x ≥ 100？</span><b>不再检查</b></div></div>`,
+    A457:`<div class="score-cards"><button class="score-card remove">60</button><button class="score-card keep">80</button><button class="score-card keep">90</button><button class="score-card remove">100</button></div><div class="number-equation">(80 + 90) ÷ 2.0 = 85.00</div>`
+  };
+  const leads={
+    A327:'126 不是直接“砍掉前两位”。程序把它每 10 个装一捆，完整捆数是商，散在外面的 6 才是余数。',
+    A379:'“同时”就像两把锁。只开一把不算通过；两把都开，终点才会亮。',
+    A380:'第一个数先坐上擂主席。后面的数必须一个一个比，全部上场以后才开输出门。',
+    A431:'整数除法会先把小数剪掉。等剪完再改成 double 已经来不及，小数要在除法发生前出现。',
+    A445:'100、200、300 三档会重叠，又只能拿最高档，所以一定从最高门槛往下问。',
+    A457:'四张卡只拿走一张最高和一张最低。剩下两张，所以平均时除以 2，不是 4。'
+  };
+  return `<span class="pill">先看变化</span><h3>先别写代码，看机器怎么做</h3><p class="stage-lead">${leads[task.id]}</p><div class="visual"><div class="visual-title">软件助教演示 · 不是原题答案</div>${visuals[task.id]}</div><div class="stage-actions"><button class="btn" data-watch-done>我看懂变化了 →</button></div>`;
+}
+function initModel(taskId){
+  if(modelState.taskId===taskId)return;
+  modelState={taskId};
+  if(taskId==='A327')Object.assign(modelState,{number:126,ran:false});
+  if(taskId==='A379')Object.assign(modelState,{number:30,ran:false});
+  if(taskId==='A380')Object.assign(modelState,{values:[153,410,109],step:0,champion:null,ran:false});
+  if(taskId==='A431')Object.assign(modelState,{mode:'integer',ran:false});
+  if(taskId==='A445')Object.assign(modelState,{amount:250,order:'high',ran:false});
+  if(taskId==='A457')Object.assign(modelState,{scores:[60,80,90,100],selected:[],result:null,ran:false});
+}
+function renderModel(task){
+  initModel(task.id);
+  const renderers={
+    A327:renderModModel,
+    A379:renderLocksModel,
+    A380:renderArenaModel,
+    A431:renderFloatModel,
+    A445:renderGateModel,
+    A457:renderJudgeModel
+  };
+  const body=renderers[task.id]();
+  return `<span class="pill">跟着试</span><h3>先猜，再点机器运行</h3><p class="stage-lead">至少换一个数字或走一步。不是只看答案，要亲手看变量怎样变。</p>${body}<div class="stage-actions"><button class="btn" data-model-done ${modelState.ran?'':'disabled'}>我亲手试过了 →</button></div>`;
+}
+function renderModModel(){
+  const n=modelState.number,groups=Math.floor(n/10),remain=n%10;
+  return `<div class="visual"><div class="preset-row">${[7,126,470,806].map(v=>`<button class="preset ${n===v?'active':''}" data-mod-number="${v}">${v}</button>`).join('')}</div><div class="bundle-row"><div class="bundle"><strong>${groups} 捆</strong><span>${n} / 10 的整数部分</span></div><div class="bundle remain"><strong>${remain} 个</strong><span>${n} % 10 的余数</span></div></div><div class="number-equation">${n} = ${groups} × 10 + ${remain}</div></div>`;
+}
+function renderLocksModel(){
+  const n=modelState.number,a=n%3===0,b=n%5===0;
+  return `<div class="visual"><div class="preset-row">${[30,10,12,75,31].map(v=>`<button class="preset ${n===v?'active':''}" data-lock-number="${v}">${v}</button>`).join('')}</div><div class="locks"><div class="lock ${a?'open':'closed'}"><b>${n} % 3 = ${n%3}</b><span>${a?'余 0，开门':'有余数，关门'}</span></div><div class="logic-sign">&&</div><div class="lock ${b?'open':'closed'}"><b>${n} % 5 = ${n%5}</b><span>${b?'余 0，开门':'有余数，关门'}</span></div></div><div class="number-equation">${a&&b?'两门都开 → YES':'至少一门没开 → NO'}</div></div>`;
+}
+function renderArenaModel(){
+  const values=modelState.values,faces=['🙂','😎','🧑'];
+  return `<div class="visual"><div class="preset-row"><button class="preset" data-arena-reset="153,410,109">153 / 410 / 109</button><button class="preset" data-arena-reset="7,2,9">7 / 2 / 9</button><button class="preset" data-arena-reset="-3,-8,-1">-3 / -8 / -1</button></div><div class="arena">${values.map((v,i)=>`<div class="fighter ${modelState.champion===i?'king':''}"><div class="crown">${modelState.champion===i?'👑':' '}</div><div class="face">${faces[i]}</div><div class="value">${v}</div></div>`).join('')}</div><div class="terminal"><small>擂台记录</small>${arenaMessage()}</div><button class="btn purple small" data-arena-next>${modelState.step>=3?'重新开始':'下一位上场 →'}</button></div>`;
+}
+function arenaMessage(){
+  const v=modelState.values;
+  if(modelState.step===0)return '先让第一个数坐上擂主席。';
+  if(modelState.step===1)return `max = ${v[0]}；第一个数成为擂主。`;
+  if(modelState.step===2)return `${v[1]} ${v[1]>v[0]?'>':'≤'} ${v[0]}；${v[1]>v[0]?'换擂主':'擂主不变'}。`;
+  const winner=Math.max(...v);return `${v[2]} 和当前擂主比较；全部结束，只输出 ${winner}。`;
+}
+function renderFloatModel(){
+  const good=modelState.mode==='float';
+  return `<div class="visual"><div class="choice-row"><button class="choice ${!good?'active':''}" data-float-mode="integer">整数路线</button><button class="choice ${good?'active':''}" data-float-mode="float">小数路线</button></div><div class="format-path ${good?'good':'bad'}"><b>${good?'🛡️ 小数从除法前就被保护':'✂️ 整数除法先剪掉小数'}</b><code>${good?'2876.0 / 30 = 95.866666…':'2876 / 30 = 95'}<br>${good?'printf("%.2f", avg) → 95.87':'再改成 double → 95.00（救不回来了）'}</code></div></div>`;
+}
+function giftFor(x,order){
+  if(order==='low'){
+    if(x>=100)return {tier:100,gift:20};
+    if(x>=200)return {tier:200,gift:50};
+    if(x>=300)return {tier:300,gift:100};
+    return {tier:0,gift:0};
+  }
+  if(x>=300)return {tier:300,gift:100};
+  if(x>=200)return {tier:200,gift:50};
+  if(x>=100)return {tier:100,gift:20};
+  return {tier:0,gift:0};
+}
+function renderGateModel(){
+  const x=modelState.amount,order=modelState.order,result=giftFor(x,order),sequence=order==='high'?[300,200,100]:[100,200,300];
+  let stopped=false;
+  const gates=sequence.map(n=>{
+    if(stopped)return `<div class="gate"><span>x ≥ ${n}？</span><b>不再检查</b></div>`;
+    const pass=x>=n;if(pass)stopped=true;
+    return `<div class="gate ${pass?'stop':'fail'}"><span>x ≥ ${n}？</span><b>${pass?'是，停止':'否'}</b></div>`;
+  }).join('');
+  return `<div class="visual"><div class="preset-row">${[99,100,199,200,250,300,400].map(v=>`<button class="preset ${x===v?'active':''}" data-gift-amount="${v}">${v}</button>`).join('')}</div><div class="choice-row"><button class="choice ${order==='high'?'active':''}" data-gift-order="high">正确：300→200→100</button><button class="choice ${order==='low'?'active':''}" data-gift-order="low">试试错误顺序</button></div><div class="gates">${gates}</div><div class="number-equation">充值 ${x} → 赠 ${result.gift}${order==='low'&&x>=200?' ⚠️ 提前停在低档':''}</div></div>`;
+}
+function judgeIndices(scores){
+  const max=Math.max(...scores),min=Math.min(...scores);
+  return {max,min,maxIndices:scores.map((v,i)=>v===max?i:-1).filter(i=>i>=0),minIndices:scores.map((v,i)=>v===min?i:-1).filter(i=>i>=0)};
+}
+function renderJudgeModel(){
+  const s=modelState.scores,selected=modelState.selected,result=modelState.result;
+  return `<div class="visual"><div class="preset-row"><button class="preset" data-score-set="60,80,90,100">四个不同</button><button class="preset" data-score-set="80,80,90,100">两个最低相同</button><button class="preset" data-score-set="75,75,75,75">四个相同</button></div><p class="stage-lead">点两张要淘汰的卡：只选一张最高和一张最低。</p><div class="score-cards">${s.map((v,i)=>`<button class="score-card ${selected.includes(i)?'selected':''} ${result?.remove?.includes(i)?'remove':result?.keep?.includes(i)?'keep':''}" data-score-card="${i}">${v}</button>`).join('')}</div><button class="btn purple small" data-score-check ${selected.length===2?'':'disabled'}>检查并计算</button>${result?`<div class="terminal"><small>计分结果</small>${escapeHtml(result.text)}</div>`:''}</div>`;
+}
+function updateModel(){
+  document.getElementById('lessonStage').innerHTML=renderLessonStage(taskById(activeTaskId),1);
+}
+function markLessonStep(nextStep){
+  const p=state.lessonProgress[activeTaskId];
+  p.step=Math.max(p.step,Math.min(3,nextStep));lessonStep=Math.min(3,nextStep);
+  saveState();renderLesson();
+}
+function recordAttempt(q,selectedIndex,correct,source){
+  const attempt={
+    questionId:q.id,prompt:q.q,selected:q.options[selectedIndex]??'',expected:q.options[q.answer],
+    correct,explain:q.explain,skill:q.skill||taskById(q.task)?.newSkill||'',task:q.task,
+    at:new Date().toISOString(),ms:0,source
+  };
+  state.attempts.unshift(attempt);state.attempts=state.attempts.slice(0,300);
+  const existing=state.wrongbook[q.id];
+  let repair='';
+  if(correct&&existing){
+    existing.streak=(Number(existing.streak)||0)+1;
+    if(existing.streak>=2){delete state.wrongbook[q.id];repair=' 连续答对两次，已经从错题本毕业！';}
+    else repair=' 错题修复 1/2，再独立答对一次就毕业。';
+  }else if(!correct){
+    state.wrongbook[q.id]={
+      task:q.task,question:q.q,selected:q.options[selectedIndex]??'',expected:q.options[q.answer],
+      explain:q.explain,skill:q.skill||'',streak:0,mistakes:(Number(existing?.mistakes)||0)+1,lastWrongAt:new Date().toISOString()
+    };
+  }
+  state.quizAnswered=(Number(state.quizAnswered)||0)+1;
+  logEvent(`${q.task} ${source==='lesson'?'小课挑战':'理解检验'}${correct?'答对':'答错'}：${q.id}`);
+  return repair;
+}
+function renderLessonCheck(task){
+  const q={...task.check,task:task.id,skill:task.newSkill};
+  const p=state.lessonProgress[task.id];
+  if(p.completed)return `<span class="pill green">这一关已学会</span><h3>现在去 ACGO 自己写</h3><p class="stage-lead">小课只负责教思路。真正的“会做”，要用 ACGO 的独立提交来证明。</p><div class="visual"><div class="number-equation">关键已学 ✓ → 独立写 → ACGO 通过</div></div><div class="stage-actions"><a class="btn orange" href="${task.url}" target="_blank" rel="noopener" data-acgo="${task.id}">打开 ${task.id} ↗</a></div>`;
+  return `<span class="pill">独立挑战</span><h3>不看上一步，自己判断</h3><div class="check-q">${escapeHtml(q.q)}</div><div class="options">${q.options.map((o,i)=>`<button class="option" data-lesson-answer="${i}">${String.fromCharCode(65+i)}. ${escapeHtml(o)}</button>`).join('')}</div><div class="feedback" id="lessonFeedback"></div>`;
+}
+function answerLesson(index){
+  if(lessonCheckAnswered)return;
+  const task=taskById(activeTaskId),q={...task.check,task:task.id,skill:task.newSkill},correct=index===q.answer;
+  lessonCheckAnswered=true;state.lessonProgress[task.id].checkTries+=1;
+  const repair=recordAttempt(q,index,correct,'lesson');
+  document.querySelectorAll('[data-lesson-answer]').forEach((b,i)=>{
+    b.disabled=true;if(i===q.answer)b.classList.add('correct');else if(i===index)b.classList.add('wrong');
+  });
+  const fb=document.getElementById('lessonFeedback');fb.className='feedback show '+(correct?'ok':'no');
+  if(correct){
+    state.lessonProgress[task.id].completed=true;state.lessonProgress[task.id].step=3;
+    if(state.taskStatus[task.id]!=='pass')state.taskStatus[task.id]='understand';
+    fb.innerHTML=`✅ <b>答对了。</b>${escapeHtml(q.explain+repair)}<div class="stage-actions"><a class="btn orange small" href="${task.url}" target="_blank" rel="noopener" data-acgo="${task.id}">去 ACGO 独立写 ↗</a></div>`;
+  }else{
+    fb.innerHTML=`🔁 <b>还没稳。</b>${escapeHtml(q.explain)}<div class="stage-actions"><button class="btn secondary small" data-reteach-step="1">回“跟着试”再看一次</button><button class="btn small" data-retry-lesson>马上再答</button></div>`;
+  }
+  saveState();renderStats();renderHome();renderLessonMap();renderTasks();
+  document.getElementById('lessonNext').disabled=true;
+  if(correct)document.getElementById('lessonNext').textContent='这一关已学会 ✓';
+}
+function renderProgress(){
+  renderStats();
+  document.getElementById('progressList').innerHTML=TASKS.map(t=>{
+    const key=state.taskStatus[t.id],pct=STATUS[key].score/3*100;
+    return `<div class="progress-row"><span>${t.id} ${t.title}</span><div class="bar"><i style="width:${pct}%"></i></div><b>${STATUS[key].label}</b></div>`;
+  }).join('');
+  const wrong=Object.entries(state.wrongbook);
+  document.getElementById('wrongList').innerHTML=wrong.length?wrong.map(([id,w])=>`<div class="wrong-item"><b>${escapeHtml(w.task||id)}</b> · ${escapeHtml(w.question||'待回炉知识点')}<br><span>连续答对 ${Number(w.streak)||0}/2 · 已错 ${Number(w.mistakes)||1} 次</span></div>`).join(''):'<div class="empty">🎉 暂无待修复错题。</div>';
+  document.getElementById('redoWrong').disabled=!wrong.length;
+  document.getElementById('recordRedo').disabled=!wrong.length;
+  if(state.quizSession.active){quizQueue=state.quizSession.queue;quizIndex=state.quizSession.index;renderQuiz()}
+}
+function startQuiz(mode='all'){
+  const ids=mode==='wrong'?Object.keys(state.wrongbook):QUIZ.map(q=>q.id);
+  quizQueue=ids.filter(id=>quizById(id));
+  if(!quizQueue.length){toast(mode==='wrong'?'错题本已经清空':'暂无检验题');return}
+  quizIndex=0;state.quizSession={active:true,queue:[...quizQueue],index:0,answered:false,lastAnswer:null};
+  saveState();navigateView('progress','quizCard');renderQuiz();
+}
+function renderQuiz(){
+  const q=quizById(quizQueue[quizIndex]);
+  if(!q){finishQuiz();return}
+  const qs=state.quizSession,area=document.getElementById('quizArea');area.hidden=false;
+  document.getElementById('quizMeta').textContent=`${q.task} · 第 ${quizIndex+1}/${quizQueue.length} 题`;
+  document.getElementById('quizQuestion').textContent=q.q;
+  document.getElementById('quizOptions').innerHTML=q.options.map((o,i)=>`<button class="option" data-quiz-answer="${i}">${String.fromCharCode(65+i)}. ${escapeHtml(o)}</button>`).join('');
+  const fb=document.getElementById('quizFeedback');fb.className='feedback';fb.textContent='';
+  document.getElementById('quizReteach').hidden=true;document.getElementById('quizRetry').hidden=true;document.getElementById('quizNext').hidden=true;
+  if(qs.answered&&Number.isInteger(qs.lastAnswer)){
+    const idx=qs.lastAnswer,correct=idx===q.answer;
+    document.querySelectorAll('[data-quiz-answer]').forEach((b,i)=>{b.disabled=true;if(i===q.answer)b.classList.add('correct');else if(i===idx)b.classList.add('wrong')});
+    fb.className='feedback show '+(correct?'ok':'no');fb.textContent=(correct?'✅ 正确。':'🔁 还没稳。')+q.explain;
+    document.getElementById('quizReteach').hidden=correct;
+    document.getElementById('quizRetry').hidden=correct;
+    document.getElementById('quizNext').hidden=false;
+  }
+}
+function answerQuiz(index){
+  if(state.quizSession.answered)return;
+  const q=quizById(quizQueue[quizIndex]),correct=index===q.answer;
+  state.quizSession.answered=true;state.quizSession.lastAnswer=index;
+  const repair=recordAttempt(q,index,correct,'quiz');saveState();renderQuiz();
+  const fb=document.getElementById('quizFeedback');fb.textContent=(correct?'✅ 正确。':'🔁 还没稳。')+q.explain+repair;
+}
+function retryQuizQuestion(){
+  state.quizSession.answered=false;state.quizSession.lastAnswer=null;saveState();renderQuiz();
+}
+function openReteachForQuiz(){
+  const q=quizById(quizQueue[quizIndex]);if(!q)return;
+  state.returnContext={type:'quiz',questionId:q.id,quizIndex,taskId:q.task};
+  saveState();openLesson(q.task,state.returnContext);
+}
+function returnToQuizQuestion(){
+  const ctx=state.returnContext;if(!ctx)return;
+  if(ctx.type==='quiz'){
+    quizIndex=ctx.quizIndex;state.quizSession.index=quizIndex;state.quizSession.answered=false;state.quizSession.lastAnswer=null;
+    state.returnContext=null;saveState();navigateView('progress','quizCard');renderQuiz();toast('已回到刚才那道检验题');
+  }else{
+    const taskId=ctx.taskId||activeTaskId;state.returnContext=null;saveState();navigateView('tasks',`task-${taskId}`);
+  }
+}
+function nextQuiz(){
+  quizIndex+=1;
+  if(quizIndex>=quizQueue.length){finishQuiz();return}
+  state.quizSession.index=quizIndex;state.quizSession.answered=false;state.quizSession.lastAnswer=null;saveState();renderQuiz();
+}
+function finishQuiz(){
+  state.quizSession={active:false,queue:[],index:0,answered:false,lastAnswer:null};saveState();
+  const area=document.getElementById('quizArea');area.hidden=false;
+  document.getElementById('quizMeta').textContent='本轮完成';
+  document.getElementById('quizQuestion').textContent='现在回 ACGO，用真实提交证明自己会做。';
+  document.getElementById('quizOptions').innerHTML='';
+  const fb=document.getElementById('quizFeedback');fb.className='feedback show ok';fb.textContent='错题已经保留。下次只做错题，连续答对两次就能毕业。';
+  document.getElementById('quizReteach').hidden=true;document.getElementById('quizRetry').hidden=true;document.getElementById('quizNext').hidden=true;
+  renderProgress();
+}
+function setTaskStatus(id,key){
+  if(!STATUS[key])return;
+  state.taskStatus[id]=key;logEvent(`${id} 标记为“${STATUS[key].label}”`);saveState();
+  renderHome();renderLessonMap();renderTasks();renderProgress();toast(`${id}：${STATUS[key].label}`);
+}
+function renderParent(){
+  document.getElementById('bridgeGrid').innerHTML=BRIDGES.map(b=>`<article class="bridge"><h3>${escapeHtml(b.title)}</h3><p><strong>已有：</strong>${escapeHtml(b.base)}</p><p><strong>升级：</strong>${escapeHtml(b.upgrade)}</p><p><strong>证明：</strong>${escapeHtml(b.tasks)}</p></article>`).join('');
+  document.getElementById('eventList').innerHTML=state.events.length?state.events.slice(0,16).map(e=>`<div class="event-item"><span>${escapeHtml(formatDate(e.at))}</span> · ${escapeHtml(e.text)}</div>`).join(''):'<div class="empty">完成一次小课、作业或检验后，这里会留下记录。</div>';
+}
+function formatDate(iso){
+  const d=new Date(iso);if(Number.isNaN(d.getTime()))return '';
+  return `${d.getMonth()+1}/${d.getDate()} ${String(d.getHours()).padStart(2,'0')}:${String(d.getMinutes()).padStart(2,'0')}`;
+}
+function download(name,text,type){
+  const blob=new Blob([text],{type}),url=URL.createObjectURL(blob),a=document.createElement('a');
+  a.href=url;a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);
+}
+function exportJson(){
+  saveState();download(profile().jsonName,JSON.stringify(state,null,2),'application/json;charset=utf-8');toast(`${profile().name} 的 JSON 已导出`);
+}
+function exportMarkdown(){
+  saveState();
+  const lines=[
+    `# ${profile().name} 小码王 C++ 4.5 学习记录`,'',`导出时间：${new Date().toLocaleString('zh-CN')}`,'',
+    '## 本周作业','',...TASKS.map(t=>`- ${t.id} ${t.title}：${STATUS[state.taskStatus[t.id]].label}；小课${state.lessonProgress[t.id]?.completed?'已学会':'未完成'}`),
+    '','## 错题修复','',...(Object.keys(state.wrongbook).length?Object.values(state.wrongbook).map(w=>`- ${w.task}：连续答对 ${Number(w.streak)||0}/2；累计答错 ${Number(w.mistakes)||1} 次`):['- 暂无待修复错题']),
+    '','## 说明','','两名孩子共用课程内容，但本文件只包含当前孩子的独立记录；不含账号、手机号或密码。'
+  ];
+  download(profile().mdName,lines.join('\n'),'text/markdown;charset=utf-8');toast(`${profile().name} 的家长摘要已导出`);
+}
+async function importJsonFile(file){
+  if(!file)return;
+  try{
+    const parsed=JSON.parse(await file.text()),p=profile();
+    if(parsed?.meta?.child!==childId||parsed?.meta?.app!==p.app)throw new Error('identity');
+    if(!confirm(`确认用这份 ${p.name} 记录覆盖当前记录吗？建议先导出备份。`))return;
+    state=normalizeState(parsed,childId);sessionStart=Date.now();saveState();renderAll();toast(`${p.name} 的记录已恢复`);
+  }catch(e){toast(`导入失败：请选择 ${profile().name} 的本软件记录`)}
+}
+function copyTask(id){
+  const done=()=>toast(`已复制 ${id}`);
+  if(navigator.clipboard&&window.isSecureContext)navigator.clipboard.writeText(id).then(done).catch(()=>fallbackCopy(id));
+  else fallbackCopy(id);
+}
+function fallbackCopy(text){
+  const area=document.createElement('textarea');area.value=text;area.style.position='fixed';area.style.opacity='0';
+  document.body.appendChild(area);area.select();document.execCommand('copy');area.remove();toast(`已复制 ${text}`);
+}
+function renderAll(){renderStats();renderHome();renderLessonMap();renderKnowledgeMap();renderTasks();renderProgress();renderParent()}
+
+document.addEventListener('click',event=>{
+  const pick=event.target.closest('[data-pick-child]');if(pick){chooseChild(pick.dataset.pickChild);return}
+  const courseNode=event.target.closest('[data-course-id]');if(courseNode){
+    const next=courseNode.dataset.courseId;
+    selectedCourseId=selectedCourseId===next?null:next;
+    renderKnowledgeMap();updateMapRoute();
+    requestAnimationFrame(()=>{
+      const target=selectedCourseId?document.getElementById('courseDetail'):document.getElementById(`course-node-${next}`);
+      target?.focus({preventScroll:true});
+      target?.scrollIntoView({behavior:scrollBehavior(),block:'nearest'});
+    });
+    return;
+  }
+  if(event.target.closest('[data-course-close]')){
+    const previous=selectedCourseId;selectedCourseId=null;renderKnowledgeMap();updateMapRoute();
+    requestAnimationFrame(()=>document.getElementById(`course-node-${previous}`)?.focus());
+    return;
+  }
+  const tab=event.target.closest('[data-view]');if(tab){tab.dataset.view==='lessons'?openKnowledgeMap({focusTitle:true}):navigateView(tab.dataset.view);return}
+  const resume=event.target.closest('[data-resume-lesson]');if(resume){
+    const id=resume.dataset.resumeLesson;
+    openLesson(id,state.returnContext?.taskId===id?state.returnContext:{type:'task',taskId:id});
+    return;
+  }
+  const open=event.target.closest('[data-open-lesson]');if(open){
+    const id=open.dataset.openLesson;
+    openLesson(id,state.returnContext?.taskId===id?state.returnContext:{type:'task',taskId:id});
+    return;
+  }
+  const step=event.target.closest('[data-lesson-step]');if(step){lessonStep=Number(step.dataset.lessonStep);flipRevealed=false;lessonCheckAnswered=false;renderLesson();return}
+  if(event.target.closest('[data-watch-done]')){markLessonStep(1);return}
+  if(event.target.closest('[data-model-done]')){state.lessonProgress[activeTaskId].runs+=1;state.labRuns+=1;markLessonStep(2);return}
+  if(event.target.closest('[data-flip-card]')){flipRevealed=!flipRevealed;renderLesson();return}
+  if(event.target.closest('[data-mark-recall]')){markLessonStep(3);return}
+  const lessonAnswer=event.target.closest('[data-lesson-answer]');if(lessonAnswer){answerLesson(Number(lessonAnswer.dataset.lessonAnswer));return}
+  const reteach=event.target.closest('[data-reteach-step]');if(reteach){lessonStep=Number(reteach.dataset.reteachStep);lessonCheckAnswered=false;renderLesson();return}
+  if(event.target.closest('[data-retry-lesson]')){lessonCheckAnswered=false;renderLesson();return}
+  const mod=event.target.closest('[data-mod-number]');if(mod){modelState.number=Number(mod.dataset.modNumber);modelState.ran=true;updateModel();return}
+  const lock=event.target.closest('[data-lock-number]');if(lock){modelState.number=Number(lock.dataset.lockNumber);modelState.ran=true;updateModel();return}
+  const arenaReset=event.target.closest('[data-arena-reset]');if(arenaReset){modelState.values=arenaReset.dataset.arenaReset.split(',').map(Number);modelState.step=0;modelState.champion=null;modelState.ran=true;updateModel();return}
+  if(event.target.closest('[data-arena-next]')){
+    if(modelState.step>=3){modelState.step=0;modelState.champion=null}else{
+      modelState.step+=1;
+      if(modelState.step===1)modelState.champion=0;
+      if(modelState.step===2&&modelState.values[1]>modelState.values[modelState.champion])modelState.champion=1;
+      if(modelState.step===3&&modelState.values[2]>modelState.values[modelState.champion])modelState.champion=2;
+      modelState.ran=true;
+    }
+    updateModel();return;
+  }
+  const floatMode=event.target.closest('[data-float-mode]');if(floatMode){modelState.mode=floatMode.dataset.floatMode;modelState.ran=true;updateModel();return}
+  const giftAmount=event.target.closest('[data-gift-amount]');if(giftAmount){modelState.amount=Number(giftAmount.dataset.giftAmount);modelState.ran=true;updateModel();return}
+  const giftOrder=event.target.closest('[data-gift-order]');if(giftOrder){modelState.order=giftOrder.dataset.giftOrder;modelState.ran=true;updateModel();return}
+  const scoreSet=event.target.closest('[data-score-set]');if(scoreSet){modelState.scores=scoreSet.dataset.scoreSet.split(',').map(Number);modelState.selected=[];modelState.result=null;modelState.ran=true;updateModel();return}
+  const scoreCard=event.target.closest('[data-score-card]');if(scoreCard){
+    const i=Number(scoreCard.dataset.scoreCard);
+    modelState.selected=modelState.selected.includes(i)?modelState.selected.filter(x=>x!==i):modelState.selected.length<2?[...modelState.selected,i]:modelState.selected;
+    modelState.result=null;modelState.ran=true;updateModel();return;
+  }
+  if(event.target.closest('[data-score-check]')){
+    const info=judgeIndices(modelState.scores),sel=modelState.selected;
+    const valid=sel.length===2&&sel.some(i=>info.maxIndices.includes(i))&&sel.some(i=>info.minIndices.includes(i));
+    if(valid){
+      const keep=modelState.scores.map((_,i)=>i).filter(i=>!sel.includes(i)),avg=keep.reduce((sum,i)=>sum+modelState.scores[i],0)/2;
+      modelState.result={remove:[...sel],keep,text:`选对了：只去掉一张最高和一张最低。剩下 ${keep.map(i=>modelState.scores[i]).join('、')}，平均分 ${avg.toFixed(2)}。`};
+    }else modelState.result={remove:[],keep:[],text:'还不对：必须恰好选一张最高和一张最低；相同分数也只去掉一张。'};
+    modelState.ran=true;updateModel();return;
+  }
+  const typeValue=event.target.closest('[data-type-value]');if(typeValue){
+    extraModel.typeValue=typeValue.dataset.typeValue;extraModel.typeFeedback='';
+    renderExtras();return;
+  }
+  const typeChoice=event.target.closest('[data-type-choice]');if(typeChoice){
+    const answers={'37':'int','3.14':'double',"'A'":'char','3000000000':'long long'};
+    const notes={
+      '37':'37 是没有小数点的普通整数，放进 int 盒子。',
+      '3.14':'3.14 有小数点，要放进能保存小数的 double 盒子。',
+      "'A'":"'A' 只有一个字符，而且用单引号包住，放进 char 盒子。",
+      '3000000000':'这个整数太大，普通 int 可能装不下，要换更大的 long long 盒子。'
+    };
+    const correct=typeChoice.dataset.typeChoice===answers[extraModel.typeValue];
+    extraModel.typeFeedback={
+      ok:correct,
+      text:correct?notes[extraModel.typeValue]:`“${extraModel.typeValue}”不住在 ${typeChoice.dataset.typeChoice} 盒子。看看它有没有小数点、单引号，或者是不是特别大。`
+    };
+    if(correct&&!state.extraProgress.types.correct.includes(extraModel.typeValue)){
+      state.extraProgress.types.correct.push(extraModel.typeValue);
+      logEvent(`课堂加餐：把 ${extraModel.typeValue} 装进 ${answers[extraModel.typeValue]} 盒子`);
+      saveState();
+    }
+    renderExtras();return;
+  }
+  const switchValue=event.target.closest('[data-switch-value]');if(switchValue){
+    extraModel.switchValue=Number(switchValue.dataset.switchValue);renderExtras();return;
+  }
+  const switchBreak=event.target.closest('[data-switch-break]');if(switchBreak){
+    extraModel.hasBreak=switchBreak.dataset.switchBreak==='yes';
+    const progress=state.extraProgress.switch;
+    const key=extraModel.hasBreak?'testedBreak':'testedFallthrough';
+    if(!progress[key]){
+      progress[key]=true;
+      logEvent(`课堂加餐：观察了 switch ${extraModel.hasBreak?'有 break 停住':'无 break 穿透'}的过程`);
+      saveState();
+    }
+    renderExtras();return;
+  }
+  const taskStatus=event.target.closest('[data-task-status]');if(taskStatus){const [id,key]=taskStatus.dataset.taskStatus.split(':');setTaskStatus(id,key);return}
+  const copy=event.target.closest('[data-copy-task]');if(copy){copyTask(copy.dataset.copyTask);return}
+  const acgo=event.target.closest('[data-acgo]');if(acgo){logEvent(`${acgo.dataset.acgo} 打开 ACGO 题目页`);saveState();return}
+  const quizAnswer=event.target.closest('[data-quiz-answer]');if(quizAnswer){answerQuiz(Number(quizAnswer.dataset.quizAnswer));return}
+});
+
+document.getElementById('childSwitch').addEventListener('click',showChooser);
+document.getElementById('parentOpen').addEventListener('click',()=>navigateView('parent'));
+document.getElementById('parentBack').addEventListener('click',()=>navigateView('home'));
+document.getElementById('continueBtn').addEventListener('click',()=>{const t=recommendedTask();state.lessonProgress[t.id]?.completed?navigateView('tasks',`task-${t.id}`):openLesson(t.id,{type:'task',taskId:t.id})});
+document.getElementById('helpBtn').addEventListener('click',()=>openKnowledgeMap({focusTitle:true}));
+document.getElementById('todayAction').addEventListener('click',()=>{const t=recommendedTask();state.lessonProgress[t.id]?.completed?navigateView('tasks',`task-${t.id}`):openLesson(t.id,{type:'task',taskId:t.id})});
+document.getElementById('closeLesson').addEventListener('click',closeLesson);
+document.getElementById('lessonPrev').addEventListener('click',()=>{if(lessonStep>0){lessonStep-=1;flipRevealed=false;lessonCheckAnswered=false;renderLesson()}});
+document.getElementById('lessonNext').addEventListener('click',()=>{if(lessonStep<3)markLessonStep(lessonStep+1)});
+document.getElementById('lessonReturnBtn').addEventListener('click',returnToQuizQuestion);
+document.getElementById('startQuiz').addEventListener('click',()=>startQuiz('all'));
+document.getElementById('redoWrong').addEventListener('click',()=>startQuiz('wrong'));
+document.getElementById('recordRedo').addEventListener('click',()=>startQuiz('wrong'));
+document.getElementById('quizReteach').addEventListener('click',openReteachForQuiz);
+document.getElementById('quizRetry').addEventListener('click',retryQuizQuestion);
+document.getElementById('quizNext').addEventListener('click',nextQuiz);
+document.getElementById('exportJson').addEventListener('click',exportJson);
+document.getElementById('exportMd').addEventListener('click',exportMarkdown);
+document.getElementById('importJson').addEventListener('change',e=>importJsonFile(e.target.files[0]));
+window.addEventListener('beforeunload',()=>{if(state)saveState()});
+window.addEventListener('pageshow',()=>{if(state)renderKnowledgeMap()});
+document.addEventListener('visibilitychange',()=>{if(!document.hidden&&state)renderKnowledgeMap()});
+setInterval(()=>{if(state)renderStats()},15000);
+
+function applyInitialRoute(){
+  const params=new URL(location.href).searchParams;
+  const course=params.get('course');
+  const task=params.get('task');
+  const view=params.get('view');
+  if(COURSE_MAP.some(item=>item.id===course))selectedCourseId=course;
+  if(view==='lessons'||course){
+    openKnowledgeMap();
+    return;
+  }
+  if(taskById(task)){
+    if(view==='lesson')openLesson(task,state.returnContext?.taskId===task?state.returnContext:{type:'task',taskId:task});
+    else navigateView('tasks',`task-${task}`);
+    return;
+  }
+  if(['home','tasks','progress','parent'].includes(view))navigateView(view);
+}
+const queryChild=new URL(location.href).searchParams.get('who');
+const savedChild=localStorage.getItem(SELECTED_KEY);
+const initial=CHILDREN[queryChild]?queryChild:CHILDREN[savedChild]?savedChild:null;
+if(initial){switchChild(initial,{initialRoute:true});applyInitialRoute()}else showChooser();
+</script>
+</body>
+</html>

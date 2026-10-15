@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<script src="../assets/learning-sync.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>错词重默 · 两娃（只默之前默错的）</title>
+<style>
+:root{--ink:#23303a;--paper:#eef4fb;--card:#fff;--line:#dbe7f3;--green:#2e9c54;--greenbg:#e9f7ee;
+ --red:#e1553f;--redbg:#fdecea;--gold:#f2b632;--golddk:#c98a00;--muted:#7d8a96;
+ --c:#2f6fb3;--cd:#225182;--cbg:#e8f0fa;}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+body{margin:0;font-family:'LXGW WenKai Screen','PingFang SC','Microsoft YaHei',system-ui,sans-serif;
+ background:radial-gradient(circle at 12% 6%,#d6e6f8 0,transparent 42%),var(--paper);color:var(--ink);min-height:100vh;padding-bottom:40px;}
+.wrap{max-width:600px;margin:0 auto;padding:14px;}
+.top{display:flex;align-items:center;gap:10px;padding:8px 2px;}
+.badge{background:var(--c);color:#fff;font-weight:800;font-size:17px;padding:6px 13px;border-radius:13px 13px 13px 4px;box-shadow:0 4px 0 var(--cd);}
+.top h1{font-size:16px;margin:0;flex:1;}
+.home{text-decoration:none;font-size:20px;background:#fff;width:38px;height:38px;border-radius:11px;display:grid;place-items:center;color:var(--ink);box-shadow:0 3px 0 #cddcec;}
+.card{background:var(--card);border:2px solid var(--line);border-radius:18px;padding:16px;margin:11px 0;box-shadow:0 6px 0 #e4eef8;}
+.lead{font-size:13px;color:var(--muted);line-height:1.7;}
+.pick{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.kid{border:3px solid var(--line);border-radius:18px;padding:22px 10px;text-align:center;cursor:pointer;background:#fff;box-shadow:0 6px 0 #e1ecf7;}
+.kid .em{font-size:46px;}.kid .nm{font-weight:800;font-size:20px;margin-top:8px;}.kid .ds{font-size:12px;color:var(--muted);margin-top:4px;}
+.btn{font-family:inherit;font-weight:800;font-size:16px;border:none;border-radius:14px;padding:13px 18px;cursor:pointer;color:#fff;background:var(--c);box-shadow:0 5px 0 var(--cd);}
+.btn:active{transform:translateY(3px);box-shadow:0 2px 0 var(--cd);}
+.btn.gold{background:var(--gold);box-shadow:0 5px 0 var(--golddk);color:#5a3d00;}
+.btn.green{background:var(--green);box-shadow:0 5px 0 #1f7a3e;}
+.btn.ghost{background:#fff;color:var(--cd);border:2px solid var(--c);box-shadow:0 5px 0 #cddcec;}
+.btn.sm{font-size:14px;padding:9px 13px;}
+.btn:disabled{opacity:.45;box-shadow:none;}
+.row{display:flex;gap:9px;flex-wrap:wrap;align-items:center;justify-content:center;margin-top:10px;}
+.back{background:none;border:none;color:var(--muted);font-size:15px;font-family:inherit;font-weight:800;cursor:pointer;padding:6px 2px;}
+.hide{display:none!important;}
+.deck{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.dk{border:2px solid var(--line);border-radius:14px;padding:14px 10px;text-align:center;cursor:pointer;background:#fff;box-shadow:0 4px 0 #e4eef8;}
+.dk .t{font-weight:800;font-size:16px;color:var(--cd);}.dk .n{font-size:12px;color:var(--muted);margin-top:3px;}
+.dnum{font-size:14px;color:var(--muted);font-weight:800;text-align:center;}
+.dstatus{font-size:26px;font-weight:800;text-align:center;color:var(--green);margin:14px 0 6px;}
+.bigcount{font-size:60px;font-weight:900;text-align:center;color:var(--green);line-height:1;font-variant-numeric:tabular-nums;}
+.bigcount.warn{color:var(--red);}
+.bar{height:18px;background:#e7eef6;border-radius:9px;overflow:hidden;border:2px solid #d6e3f0;margin:8px 4px;}
+.bar>i{display:block;height:100%;background:linear-gradient(90deg,var(--green),#7CC98F);width:100%;}
+.bar>i.warn{background:linear-gradient(90deg,var(--red),#ff7a59);}
+.ansgrid{display:flex;flex-wrap:wrap;gap:9px;justify-content:center;margin:12px 0;}
+.aw{background:#fff;border:2px solid var(--line);border-radius:12px;padding:10px 14px;font-size:19px;font-weight:800;cursor:pointer;box-shadow:0 3px 0 #e4eef8;}
+.aw .py{display:block;font-size:11px;color:var(--muted);font-weight:400;}
+.aw.miss{background:var(--redbg);border-color:var(--red);color:var(--red);}
+.kou{background:linear-gradient(180deg,#FCEFCF,#FBE6B0);border:2px dashed var(--golddk);border-radius:13px;padding:11px;color:#7a5800;font-weight:700;font-size:14px;text-align:center;margin:10px 0;}
+.exp{width:100%;height:180px;font-size:12px;font-family:monospace;border:2px solid var(--line);border-radius:10px;padding:10px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top"><a class="home" href="../index.html">‹</a><span class="badge" id="badge">两娃</span><h1 id="title">错词重默 · 只默之前默错的</h1></div>
+
+  <div id="home">
+    <div class="card"><div class="lead">这里把你们<b>之前默错的词/句</b>都收来了——今天<b>重新默一遍</b>，把它们彻底拿下！选一个人开始：</div></div>
+    <div class="pick">
+      <div class="kid" style="border-top:6px solid #2f6fb3" onclick="pickKid('kenton')"><div class="em">🦁</div><div class="nm">哥哥</div><div class="ds">语文错词 + 错句</div></div>
+      <div class="kid" style="border-top:6px solid #e8642f" onclick="pickKid('eddey')"><div class="em">🐯</div><div class="nm">弟弟</div><div class="ds">语文错词</div></div>
+    </div>
+  </div>
+
+  <div id="decks" class="hide"><button class="back" onclick="goHome()">← 换人</button><div id="deckBox"></div></div>
+  <div id="dict" class="hide"></div>
+  <div id="ans" class="hide"></div>
+  <div id="arch" class="hide"></div>
+</div>
+
+<script>
+"use strict";
+/* ===== 数据：两娃的默写错词（来自记录在案） ===== */
+var DATA={
+ kenton:{name:'哥哥',emoji:'🦁',col:'#2f6fb3',cd:'#225182',cbg:'#e8f0fa',audio:'audio/kenton_dictation/',wbkey:'mx_wrongbook_redo_kenton',
+  decks:{
+   '语文错词(默错过的)':{lang:'zh',times:3,items:[['柔嫩',''],['奢侈',''],['贤惠',''],['悲戚',''],['临危不惧',''],['焦躁不安',''],['心急如焚',''],['维持',''],['悬梁刺股',''],['凿壁偷光','']]},
+   '错句·古诗名言':{lang:'zh',times:2,items:[['欲将轻骑逐，大雪满弓刀。','塞下曲'],['不怨天，不尤人。','《论语》']]}
+  }},
+ eddey:{name:'弟弟',emoji:'🐯',col:'#e8642f',cd:'#c24e20',cbg:'#fff0e6',audio:'audio/eddey_chinese_dictation/',wbkey:'mx_wrongbook_redo_eddey_cn',
+  decks:{
+   '语文错词(默错过的)':{lang:'zh',times:3,items:[['适应','shì yìng（≠适宜）'],['淡雅','dàn yǎ'],['展示','zhǎn shì'],['沿途','yán tú'],['陌生','mò shēng'],['想念','xiǎng niàn'],['受刑','shòu xíng'],['提防','dī fang（多音）'],['窟窿','kū long'],['摧毁','cuī huǐ'],['唠叨','láo dao']]}
+  }}
+};
+
+/* ===== 朗读：神经音优先(命名同哈希)，缺失回退浏览器TTS ===== */
+var voices=[];function lv(){voices=speechSynthesis.getVoices();}
+if('speechSynthesis'in window){lv();speechSynthesis.onvoiceschanged=lv;}
+var warmed=false;function warm(){if(!('speechSynthesis'in window))return;try{speechSynthesis.resume();}catch(e){}if(warmed)return;lv();try{var u=new SpeechSynthesisUtterance('ok');u.volume=0.02;speechSynthesis.speak(u);}catch(e){}warmed=true;}
+document.body.addEventListener('touchstart',warm,{once:true});document.body.addEventListener('click',warm,{once:true});
+function mkU(t,lang){var u=new SpeechSynthesisUtterance(t);if(lang==='en'){var v=voices.find(function(v){return /en[-_]GB/i.test(v.lang);})||voices.find(function(v){return /en[-_]US/i.test(v.lang);})||voices.find(function(v){return /^en/i.test(v.lang);});if(v)u.voice=v;u.lang=(v&&v.lang)||'en-GB';u.rate=0.8;}else{var v2=voices.find(function(v){return /zh|cmn|Chinese/i.test(v.lang);});if(v2)u.voice=v2;u.lang='zh-CN';u.rate=0.95;}return u;}
+function audioHash(s){var b=new TextEncoder().encode(s);var x=0x811c9dc5>>>0;for(var i=0;i<b.length;i++){x^=b[i];x=Math.imul(x,0x01000193)>>>0;}return('0000000'+x.toString(16)).slice(-8);}
+var exA=null,tok=0;function getA(){if(!exA){exA=new Audio();exA.setAttribute('playsinline','');try{document.body.appendChild(exA);}catch(e){}}return exA;}
+function halt(){tok++;if(exA){try{exA.pause();}catch(e){}}}
+var sess=0;
+function ttsTimes(t,lang,times,sid,done){try{speechSynthesis.cancel();}catch(e){}var c=0,f=false;function fire(){if(f||sid!==sess)return;f=true;done&&done();}function one(){if(sid!==sess)return;var u=mkU(t,lang);u.onend=function(){if(sid!==sess)return;c++;if(c<times)setTimeout(one,800);else setTimeout(fire,400);};u.onerror=function(){c++;if(c<times)setTimeout(one,800);else setTimeout(fire,400);};try{speechSynthesis.resume();}catch(e){}speechSynthesis.speak(u);}one();var est=(t.length*(lang==='en'?90:380)+1600)*times+2500;setTimeout(fire,Math.min(est,40000));}
+function speakTimes(t,lang,times,done){var sid=++sess;var my=++tok;try{speechSynthesis.cancel();}catch(e){}var c=0,f=false;function dead(){return sid!==sess||my!==tok;}function fire(){if(f||dead())return;f=true;done&&done();}var a=getA();var src=K.audio+audioHash(lang+'|'+t)+'.mp3';var fb=false;function toT(){if(fb||dead())return;fb=true;try{a.pause();}catch(e){}a.onended=null;a.onerror=null;ttsTimes(t,lang,times-c,sid,done);}function play(){if(dead())return;a.onended=function(){if(dead())return;c++;if(c<times)setTimeout(play,800);else setTimeout(fire,400);};a.onerror=toT;try{a.pause();}catch(e){}a.src=src;try{a.currentTime=0;}catch(e){}var p=a.play();if(p&&p.catch)p.catch(toT);}play();var est=(t.length*(lang==='en'?90:380)+1600)*times+2500;setTimeout(fire,Math.min(est,40000));}
+function speakOnce(t,lang){var my=++tok;try{speechSynthesis.cancel();}catch(e){}var a=getA();var dn=false;a.onended=function(){dn=true;};a.onerror=function(){if(dn||my!==tok)return;dn=true;try{speechSynthesis.speak(mkU(t,lang));}catch(e){}};a.src=K.audio+audioHash(lang+'|'+t)+'.mp3';try{a.currentTime=0;}catch(e){}var p=a.play();if(p&&p.catch)p.catch(function(){if(dn)return;dn=true;try{speechSynthesis.speak(mkU(t,lang));}catch(e){}});}
+
+/* ===== 错词本(持久,连对2次移出) ===== */
+function loadWB(){try{return JSON.parse(localStorage.getItem(K.wbkey))||{words:{}};}catch(e){return{words:{}};}}
+function saveWB(w){try{localStorage.setItem(K.wbkey,JSON.stringify(w));}catch(e){}}
+function wbWrong(word,hint){var wb=loadWB();var w=wb.words[word]||{word:word,hint:hint||'',wrong:0,streak:0,mastered:false};w.wrong++;w.streak=0;w.mastered=false;if(hint)w.hint=hint;wb.words[word]=w;saveWB(wb);}
+function wbRight(word){var wb=loadWB();var w=wb.words[word];if(w&&!w.mastered){w.streak++;if(w.streak>=2)w.mastered=true;wb.words[word]=w;saveWB(wb);}}
+function wbAll(){var wb=loadWB();return Object.keys(wb.words).map(function(k){return wb.words[k];});}
+function seedWB(){var wb=loadWB();var ch=false;Object.keys(K.decks).forEach(function(dn){K.decks[dn].items.forEach(function(it){if(!wb.words[it[0]]){wb.words[it[0]]={word:it[0],hint:it[1]||'',wrong:1,streak:0,mastered:false};ch=true;}});});if(ch)saveWB(wb);}
+
+/* ===== 流程 ===== */
+var K=null,S={};
+function $(id){return document.getElementById(id);}
+function show(id){['home','decks','dict','ans','arch'].forEach(function(x){$(x).classList.toggle('hide',x!==id);});window.scrollTo(0,0);}
+function setTheme(){document.documentElement.style.setProperty('--c',K.col);document.documentElement.style.setProperty('--cd',K.cd);document.documentElement.style.setProperty('--cbg',K.cbg);$('badge').textContent=K.name;$('title').textContent=K.emoji+' '+K.name+' · 错词重默';}
+function goHome(){sess++;halt();try{speechSynthesis.cancel();}catch(e){}stopT();show('home');}
+function pickKid(k){K=DATA[k];setTheme();seedWB();renderDecks();show('decks');}
+function renderDecks(){
+  var act=wbAll().filter(function(w){return !w.mastered;}).length;
+  var h='<div class="card"><div class="lead">'+K.emoji+' '+K.name+'：选一组重默。写错的点红→进错词本，<b>连续默对2次</b>才算拿下、自动消失。当前还有 <b style="color:var(--red)">'+act+'</b> 个待掌握。</div></div>';
+  h+='<div class="deck">';
+  Object.keys(K.decks).forEach(function(dn){h+='<div class="dk" onclick="startDeck(\''+dn.replace(/'/g,"\\'")+'\')"><div class="t">'+dn+'</div><div class="n">'+K.decks[dn].items.length+' 个</div></div>';});
+  h+='</div>';
+  h+='<div class="card" style="cursor:pointer" onclick="showArch()"><div style="font-weight:800;color:var(--cd)">📊 错词本 / 记录（导出给爸爸）</div></div>';
+  $('deckBox').innerHTML=h;
+}
+function startDeck(dn){var d=K.decks[dn];S={dn:dn,lang:d.lang,times:d.times,items:d.items.map(function(it){return{t:it[0],hint:it[1]||''};}),idx:0,miss:{},t0:Date.now()};renderDict();show('dict');setTimeout(runWord,400);}
+var timer=null,left=0,total=0,paused=false;
+function stopT(){if(timer){clearInterval(timer);timer=null;}}
+function wsec(w){var n=[].concat(Array.from(w)).length;var en=/[a-zA-Z]/.test(w);if(/[，。！？,]/.test(w)||n>10)return Math.min(70,Math.max(16,Math.round(8+n*2.2)));if(en){var L=(w.match(/[a-zA-Z]/g)||[]).length,sp=(w.match(/ /g)||[]).length;return Math.min(18,Math.max(9,Math.round(5+L*0.55+sp*2)));}return Math.min(18,Math.max(9,Math.round(5.5+n*2)));}
+function renderDict(){var it=S.items[S.idx];$('dict').innerHTML='<button class="back" onclick="quitDeck()">← 退出</button><div class="card"><div class="dnum">'+S.dn+' ｜ 第 '+(S.idx+1)+' / '+S.items.length+' 个</div><div class="dstatus">🔊✍️ 一边听一边写</div><div class="bigcount" id="bc">--</div><div class="bar"><i id="bi"></i></div><div class="row"><button class="btn ghost sm" onclick="replay()">🔁 再听一遍</button><button class="btn gold sm" id="pb" onclick="togglePause()">⏸ 暂停</button><button class="btn green sm" onclick="nextWord()">✅ 写好了,下一个</button></div></div>';}
+function runWord(){stopT();paused=false;var it=S.items[S.idx];speakTimes(it.t,S.lang,S.times,null);total=wsec(it.t);left=total;tick();timer=setInterval(tick,250);}
+function tick(){if(paused)return;left-=0.25;var pct=Math.max(0,left/total*100);var bi=$('bi'),bc=$('bc');if(bi)bi.style.width=pct+'%';var s=Math.ceil(Math.max(0,left));if(bc){bc.innerHTML=s+'<span style="font-size:18px">秒</span>';if(left<=3.2){bc.classList.add('warn');if(bi)bi.classList.add('warn');}else{bc.classList.remove('warn');if(bi)bi.classList.remove('warn');}}if(left<=0){stopT();nextWord();}}
+function replay(){speakTimes(S.items[S.idx].t,S.lang,1,null);}
+function togglePause(){paused=!paused;var pb=$('pb');if(pb)pb.textContent=paused?'▶ 继续':'⏸ 暂停';if(paused){halt();try{speechSynthesis.cancel();}catch(e){}}}
+function nextWord(){sess++;halt();try{speechSynthesis.cancel();}catch(e){}stopT();if(S.idx<S.items.length-1){S.idx++;renderDict();setTimeout(runWord,300);}else showAns();}
+function quitDeck(){sess++;halt();try{speechSynthesis.cancel();}catch(e){}stopT();renderDecks();show('decks');}
+function showAns(){var h='<button class="back" onclick="quitDeck()">← 返回</button><div class="card"><h2 style="color:var(--cd);margin:0 0 6px">📋 '+S.dn+' · 对答案</h2><div class="lead">对照你写的：<b>写错/没写出来的点一下变红</b>（其余算写对）。</div><div class="ansgrid">';
+  S.items.forEach(function(it,i){h+='<div class="aw" id="aw'+i+'" onclick="toggleMiss('+i+')">'+it.t+(it.hint?'<span class="py">'+it.hint+'</span>':'')+'</div>';});
+  h+='</div><div class="kou" id="prog">把写错的点红，再点完成。</div><div class="row"><button class="btn green" onclick="finish()">✅ 完成</button></div></div>';
+  $('ans').innerHTML=h;show('ans');speakOnce('默完了！对照答案，写错的点一下变红。','zh');}
+function toggleMiss(i){var el=$('aw'+i);if(S.miss[i]){delete S.miss[i];el.classList.remove('miss');}else{S.miss[i]=1;el.classList.add('miss');}var n=Object.keys(S.miss).length;$('prog').textContent=n?('标红 '+n+' 个，点完成会记进错词本'):'把写错的点红，再点完成。';}
+function finish(){S.items.forEach(function(it,i){if(S.miss[i])wbWrong(it.t,it.hint);else wbRight(it.t);});logArch();var n=Object.keys(S.miss).length;speakOnce(n?'记下了，错词留着再练。':'真棒，全部默对啦！','zh');setTimeout(function(){renderDecks();show('decks');},1100);}
+function logArch(){try{var key='mx_archive_redo_'+K.name;var a=JSON.parse(localStorage.getItem(key))||{events:[]};a.events.push({ts:Date.now(),deck:S.dn,total:S.items.length,wrong:Object.keys(S.miss).length,sec:Math.round((Date.now()-S.t0)/1000),wrongWords:S.items.filter(function(it,i){return S.miss[i];}).map(function(it){return it.t;})});localStorage.setItem(key,JSON.stringify(a));}catch(e){}}
+function showArch(){var aw=wbAll();var act=aw.filter(function(w){return !w.mastered;});var ev=[];try{ev=(JSON.parse(localStorage.getItem('mx_archive_redo_'+K.name))||{events:[]}).events.slice().reverse();}catch(e){}
+  var h='<button class="back" onclick="renderDecks();show(\'decks\')">← 返回</button><div class="card"><h2 style="color:var(--cd);margin:0 0 6px">📕 '+K.name+'错词本（'+act.length+'待掌握 / 共'+aw.length+'）</h2><div class="lead">连续默对2次才消失。</div><div class="ansgrid">'+aw.map(function(w){return '<div class="aw'+(w.mastered?'':' miss')+'">'+w.word+'<span class="py">'+(w.mastered?'已掌握✓':'连对'+w.streak+'/2')+'</span></div>';}).join('')+'</div><div class="row"><button class="btn gold sm" onclick="copyArch()">📋 复制记录发给爸爸</button></div><textarea id="eb" class="exp hide"></textarea></div>';
+  h+='<div class="card"><div style="font-weight:800;color:var(--cd)">📅 重默记录</div>'+(ev.length?ev.map(function(e){return '<div style="font-size:13px;color:#555;border-bottom:1px solid var(--line);padding:7px 0">'+e.deck+' ｜ '+(e.total-e.wrong)+'/'+e.total+'对 ｜ '+e.sec+'秒'+(e.wrongWords.length?' ｜ 错:<span style="color:var(--red)">'+e.wrongWords.join('、')+'</span>':' ｜ 全对✓')+'</div>';}).join(''):'<div class="lead">还没有记录</div>')+'</div>';
+  $('arch').innerHTML=h;show('arch');}
+function copyArch(){var aw=wbAll();var t='【'+K.name+'错词重默】'+new Date().toLocaleString()+'\n错词本(连对2次移出):\n'+aw.map(function(w){return w.word+' 连对'+w.streak+'/2'+(w.mastered?' 已掌握':'');}).join('\n')+'\n\n原始JSON:\n'+JSON.stringify({child:K.name,wrongbook:aw});var ta=$('eb');ta.classList.remove('hide');ta.value=t;ta.select();try{document.execCommand('copy');}catch(e){}if(navigator.clipboard)navigator.clipboard.writeText(t).catch(function(){});}
+</script>
+</body>
+</html>

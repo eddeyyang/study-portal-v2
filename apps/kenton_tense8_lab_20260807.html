@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="lesson-audio" content="pending: 12条神经音已外置apps/audio/kenton_tense8_lab_20260807/，机器校验通过；手机实播待家长验收">
+<title>八大时态实验室 · 先划时间词 · Kenton</title>
+<style>
+:root{--bg:#fff7f0;--card:#ffffff;--ink:#33304b;--teal:#0ea5a5;--teal-d:#0b7c7c;--pink:#f472b6;--amber:#f59e0b;--violet:#8b5cf6;--line:#f3e4d8;--soft:#fdf1e7}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--ink);padding-bottom:40px}
+header{position:sticky;top:0;z-index:9;background:var(--bg);padding:12px 16px 8px;display:flex;align-items:center;gap:10px;border-bottom:1px solid var(--line)}
+.logo{width:38px;height:38px;border-radius:12px;background:linear-gradient(135deg,#f472b6,#fb923c);display:flex;align-items:center;justify-content:center;color:#fff;font-size:20px;box-shadow:0 3px 0 #c2377f}
+.brand{font-weight:800;font-size:14.5px}
+header .sp{flex:1}
+.pill{border:1px solid var(--line);background:#fff;border-radius:999px;padding:7px 12px;font-size:12px;font-weight:700;color:var(--ink);cursor:pointer}
+main{padding:14px 16px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:18px;box-shadow:0 4px 0 rgba(243,228,216,.8);margin-bottom:14px}
+.tag{display:inline-block;background:#fde8f3;color:#c2377f;font-size:12px;font-weight:800;border-radius:8px;padding:4px 10px;margin-bottom:10px}
+.tag.blue{background:#e0edfd;color:#1d4ed8}.tag.green{background:#e0f5f5;color:var(--teal-d)}.tag.amber{background:#fef3d9;color:#a86a00}
+h1{font-size:23px;line-height:1.3;margin-bottom:8px}
+h2{font-size:19px;margin-bottom:6px}
+.sub{font-size:13.5px;color:#7a7690;line-height:1.7}
+.big{font-size:34px;font-weight:900;text-align:center;letter-spacing:1px}
+.zh{text-align:center;color:#7a7690;font-size:14px;margin-top:2px}
+.btn{display:block;width:100%;border:none;border-radius:16px;padding:15px;font-size:16.5px;font-weight:800;cursor:pointer;margin-top:12px;font-family:inherit}
+.btn-teal{background:var(--teal);color:#fff;box-shadow:0 4px 0 var(--teal-d)}
+.btn-teal:active{transform:translateY(3px);box-shadow:0 1px 0 var(--teal-d)}
+.btn-soft{background:var(--soft);color:var(--ink);border:1px solid var(--line);box-shadow:0 4px 0 var(--line)}
+.btn-pink{background:var(--pink);color:#fff;box-shadow:0 4px 0 #c2377f}
+.btn-violet{background:var(--violet);color:#fff;box-shadow:0 4px 0 #6d40c4}
+.btn[disabled]{opacity:.45;pointer-events:none}
+.opt{display:block;width:100%;text-align:left;background:#fff;border:2px solid var(--line);border-radius:14px;padding:13px 15px;font-size:16px;font-weight:700;margin-top:10px;cursor:pointer;font-family:inherit}
+.opt.ok{border-color:var(--teal);background:#e0f5f5}
+.opt.no{border-color:#ef4444;background:#fee2e2}
+.opt .k{display:inline-block;width:26px;height:26px;line-height:26px;text-align:center;border-radius:8px;background:var(--soft);margin-right:8px;font-size:13px}
+.tense-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+.tcard{border-radius:16px;padding:13px 12px;font-size:12.5px;font-weight:700;line-height:1.7}
+.tcard b{font-size:16px;display:block;margin-bottom:3px}
+.t-now{background:#e0f5f5;color:var(--teal-d)}
+.t-usual{background:#fef3d9;color:#a86a00}
+.t-future{background:#e0edfd;color:#1d4ed8}
+.t-past{background:#fde8f3;color:#c2377f}
+.sig-word{background:#fff;border:2px solid var(--line);border-radius:14px;padding:12px;text-align:center;font-size:20px;font-weight:900;margin-top:10px;box-shadow:0 3px 0 var(--line)}
+.bin-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+.bin{border:2px dashed var(--line);border-radius:14px;padding:14px 8px;text-align:center;font-size:14px;font-weight:800;cursor:pointer;background:#fff;line-height:1.5}
+.bin small{display:block;font-weight:600;color:#8a8496;font-size:11px;margin-top:2px}
+.bin.b-past{border-color:var(--pink);color:#c2377f}
+.bin.b-not{border-color:#94a3b8;color:#475569}
+.sentence{font-size:18.5px;font-weight:800;line-height:1.9;background:#f6fbff;border:1.5px solid #dbeafe;border-radius:14px;padding:14px;margin-top:10px}
+.sentence .gap{color:var(--pink);border-bottom:2.5px solid var(--pink);padding:0 3px}
+.progress{height:10px;background:var(--line);border-radius:99px;overflow:hidden;margin:10px 0 4px}
+.progress i{display:block;height:100%;background:linear-gradient(90deg,var(--pink),#fb923c);border-radius:99px;transition:width .4s}
+.steps{display:flex;gap:6px;margin-top:12px}
+.step{flex:1;background:var(--soft);border-radius:10px;text-align:center;font-size:11px;font-weight:700;padding:8px 3px;color:#8a8496;line-height:1.5}
+.step b{display:block;font-size:15px;color:#c2377f}
+.fb{border-radius:14px;padding:12px 14px;font-size:14px;font-weight:700;line-height:1.7;margin-top:12px;display:none}
+.fb.ok{display:block;background:#e0f5f5;color:var(--teal-d)}
+.fb.no{display:block;background:#fee2e2;color:#b91c1c}
+.note{font-size:12px;color:#9a94b0;line-height:1.7;margin-top:12px;border-top:1px dashed var(--line);padding-top:10px}
+.voice-note{background:#fdf0f8;border:1px solid #f5c6e0;color:#a3437c;font-size:12px;border-radius:12px;padding:9px 12px;line-height:1.6;margin-top:10px}
+.recall-card{background:#fff;border:2px solid var(--line);border-radius:16px;padding:16px;margin-top:12px}
+.recall-card .q{font-size:16px;font-weight:800;line-height:1.6}
+.recall-card .a{font-size:14.5px;line-height:1.8;color:var(--teal-d);margin-top:10px;display:none;background:#e0f5f5;border-radius:12px;padding:10px 12px}
+.recall-card.open .a{display:block}
+.recall-card .tap{font-size:12px;color:var(--pink);font-weight:700;margin-top:6px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+.mini{background:var(--soft);border-radius:14px;padding:12px;text-align:center;font-weight:800;font-size:14px}
+.mini small{display:block;font-weight:600;color:#8a8496;font-size:11.5px;margin-top:4px}
+.hidden{display:none}
+.taprow{display:flex;gap:8px;margin-top:12px}
+.taprow .btn{margin-top:0}
+.badge-row{display:flex;gap:8px;justify-content:center;margin-top:14px;flex-wrap:wrap}
+.badge{width:64px;text-align:center;font-size:11px;font-weight:800;color:#8a8496}
+.badge .ico{width:56px;height:56px;border-radius:50%;background:var(--soft);border:2px solid var(--line);display:flex;align-items:center;justify-content:center;font-size:26px;margin:0 auto 4px;filter:grayscale(1);opacity:.5}
+.badge.on .ico{filter:none;opacity:1;border-color:var(--amber);background:#fef3d9}
+.owl{background:linear-gradient(135deg,#fde8f3,#fdf0f8);border-radius:16px;padding:14px 16px;font-size:13.5px;line-height:1.8;margin-top:12px}
+.owl b{color:#c2377f}
+.rule-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+.rule-card{border-radius:16px;padding:12px 10px;text-align:center;font-size:12.5px;font-weight:700;line-height:1.7}
+.r1{background:#e0f5f5;color:var(--teal-d)}.r2{background:#fde8f3;color:#c2377f}.r3{background:#fef3d9;color:#a86a00}.r4{background:#ede9fe;color:#5b21b6}
+.rule-card b{font-size:16px;display:block;margin-bottom:2px}
+.timeline{display:flex;align-items:center;margin:16px 0 6px;position:relative;height:76px}
+.timeline::before{content:"";position:absolute;left:6%;right:6%;top:38px;height:6px;border-radius:99px;background:linear-gradient(90deg,var(--pink),var(--amber),#3b82f6)}
+.tl-node{position:relative;flex:1;text-align:center;z-index:1}
+.tl-node .dot{width:22px;height:22px;border-radius:50%;margin:26px auto 0;background:#fff;border:5px solid var(--amber)}
+.tl-node.past .dot{border-color:var(--pink)}
+.tl-node.future .dot{border-color:#3b82f6}
+.tl-node .lab{font-size:12px;font-weight:800;margin-top:5px;color:#7a7690}
+.tl-node b{display:block;font-size:14px}
+.typelines{background:#2d2a4a;border-radius:14px;padding:14px;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:17px;line-height:2;color:#e6e3f0;margin-top:10px}
+.typelines .cur .ok{background:#1e9e62;border-radius:4px}
+.typelines .cur .bad{background:#dc2626;border-radius:4px}
+.typelines .cur .todo{border-bottom:2px solid #ffd166}
+.typein{width:100%;margin-top:10px;border:3px solid var(--ink);border-radius:14px;padding:12px 14px;font-size:18px;font-weight:800;font-family:inherit}
+.typein.err{border-color:#ef4444;animation:shake .3s}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-8px)}75%{transform:translateX(8px)}}
+.machine{border-radius:18px;padding:14px;margin-top:12px;color:#fff;font-weight:800;line-height:1.8}
+.m1{background:linear-gradient(135deg,#f472b6,#e0509b)}
+.m2{background:linear-gradient(135deg,#8b5cf6,#6d40c4)}
+.machine .formula{background:rgba(255,255,255,.18);border-radius:12px;padding:10px 12px;font-size:17px;text-align:center;margin-top:8px}
+.gold{background:#fff8e1;border:2px dashed var(--amber);border-radius:14px;padding:12px 14px;font-size:14px;font-weight:800;line-height:1.8;margin-top:12px;color:#8a5a00}
+@media print{header,.btn,.taprow,.badge-row,.steps,.voice-note{display:none!important}.card{box-shadow:none}}
+.tok{display:inline-block;padding:2px 5px;border-radius:8px;cursor:pointer;border-bottom:2.5px solid transparent;font-weight:800}
+.tok.sel{background:#fde8f3;border-bottom-color:var(--pink);color:#c2377f}
+.tok.right{background:#e0f5f5;border-bottom-color:var(--teal);color:var(--teal-d)}
+.tok.miss{background:#fee2e2;border-bottom-color:#ef4444;color:#b91c1c}
+.t-prf{background:#e7f6ec;color:#157a3e}.t-pastp{background:#ede9fe;color:#5b21b6}.t-futp{background:#f3f4f6;color:#475569}.t-pastc{background:#ffedd5;color:#c2410c}
+.wcard{border-radius:16px;padding:13px;margin-top:12px;color:#fff;font-weight:800;line-height:1.8}
+.w1{background:linear-gradient(135deg,#0ea5a5,#0b7c7c)}.w2{background:linear-gradient(135deg,#f472b6,#e0509b)}.w3{background:linear-gradient(135deg,#f59e0b,#d97706)}.w4{background:linear-gradient(135deg,#8b5cf6,#6d40c4)}
+.wcard .formula{background:rgba(255,255,255,.18);border-radius:12px;padding:9px 12px;font-size:15.5px;text-align:center;margin-top:8px}
+</style>
+</head>
+<body>
+<header>
+  <div class="logo">🕰️</div>
+  <div class="brand">Kenton · 八大时态实验室</div>
+  <div class="sp"></div>
+  <button class="pill" id="soundToggle">声</button>
+  <button class="pill" onclick="go('records')">学习档案</button>
+</header>
+<main id="app"></main>
+<script>
+'use strict';
+const APP_ID='kenton-tense8-lab-20260807';
+const VERSION='1.0.0';
+const STORAGE_KEY='study:kenton:'+APP_ID+':v1';
+const MATERIAL='2026-08-07 周课：八大时态（老师：做题一定要划出时间词，在家好好背时间词）+ 四个花费用法（用法已会，细节要抠）· 教材第9章动词时态表';
+const AUDIO_DIR='audio/kenton_tense8_lab_20260807/';
+/* 八大时态（老师课堂口径；构成与信号词取自教材第9章时态表） */
+const TENSES=[
+ {k:'usual',name:'① 一般现在时',form:'V原 / 三单(+s、+es、y→ies)',sig:'always · usually · often · every day · on Sundays',ex:'He goes to school every day.',hl:'goes',cn:'他每天去上学。（经常、真理、时刻表）'},
+ {k:'past',name:'② 一般过去时',form:'V-ed / 不规则',sig:'yesterday · last… · …ago · just now',ex:'I saw a film yesterday.',hl:'saw',cn:'我昨天看了场电影。'},
+ {k:'future',name:'③ 一般将来时',form:'will + 原形 / be going to',sig:'tomorrow · next… · soon · in+时段',ex:'We will have a picnic tomorrow.',hl:'will have',cn:'我们明天要去野餐。'},
+ {k:'now',name:'④ 现在进行时',form:'be + doing',sig:'now · Look! · Listen! · at the moment',ex:'Look! They are playing football.',hl:'are playing',cn:'看！他们正在踢足球。'},
+ {k:'pastc',name:'⑤ 过去进行时',form:'was/were + doing',sig:'at that time · this time yesterday · when+过去',ex:'I was reading at that time.',hl:'was reading',cn:'那时我正在看书。'},
+ {k:'prf',name:'⑥ 现在完成时',form:'have/has + 过去分词',sig:'already · just · yet · ever · never · since · for',ex:'I have already finished my homework.',hl:'have finished',cn:'我已经写完作业了。'},
+ {k:'pastp',name:'⑦ 过去完成时',form:'had + 过去分词',sig:'by the time · before+过去',ex:'The train had left before we arrived.',hl:'had left',cn:'我们到之前火车已经开了。（过去的过去）'},
+ {k:'futp',name:'⑧ 过去将来时',form:'would + 原形',sig:'said/asked 后的宾语从句',ex:'He said he would come back soon.',hl:'would come',cn:'他说他很快会回来。'}
+];
+/* 时间词金库：0=过去家族 1=现在家族 2=将来家族 3=完成家族 */
+const BANK=[
+ {w:'yesterday',f:0},{w:'last week',f:0},{w:'three days ago',f:0},{w:'just now',f:0},{w:'at that time',f:0},
+ {w:'always',f:1},{w:'every day',f:1},{w:'now',f:1},{w:'Look!',f:1},{w:'at the moment',f:1},
+ {w:'tomorrow',f:2},{w:'next year',f:2},{w:'soon',f:2},
+ {w:'already',f:3},{w:'yet',f:3},{w:'since last year',f:3}
+];
+const FAMS=[{n:'⏪ 过去家族',s:'一般过去/过去进行',c:'#c2377f'},{n:'📍 现在家族',s:'一般现在/现在进行',c:'#a86a00'},{n:'🚀 将来家族',s:'一般将来',c:'#1d4ed8'},{n:'✅ 完成家族',s:'现在完成/过去完成',c:'#157a3e'}];
+/* 划词判态：先点时间词，再选动词。tset=时间词token下标，空数组=没有时间词 */
+const MARK=[
+ {tk:['He','___','TV','every','evening.'],tset:[3,4],opts:['watches','watch','is watching','watched'],a:0,why:'every evening 是"每天"→习惯，一般现在时；he 是三单，watch→watches（ch结尾+es）。'},
+ {tk:['Look!','The','boys','___','football.'],tset:[0],opts:['are playing','play','played','will play'],a:0,why:'Look! 一出现就是"正在看"→现在进行时 be+doing；boys 复数用 are。'},
+ {tk:['I','___','my','grandparents','last','Sunday.'],tset:[4,5],opts:['visited','visit','am visiting','will visit'],a:0,why:'last Sunday 是过去信号→一般过去时，visit→visited。'},
+ {tk:['We','___','a','picnic','tomorrow.'],tset:[4],opts:['will have','have','had','have had'],a:0,why:'tomorrow 是将来信号→will+原形。'},
+ {tk:['She','___','her','homework','already.'],tset:[4],opts:['has finished','finishes','finished','will finish'],a:0,why:'already 是现在完成时信号→have/has+过去分词；she 用 has。'},
+ {tk:['They','___','English','at','this','time','yesterday.'],tset:[3,4,5,6],opts:['were learning','learn','are learning','have learned'],a:0,why:'at this time yesterday=昨天这个时候（正在做）→过去进行时 was/were+doing；they 用 were。'},
+ {tk:['The','train','___','when','we','got','to','the','station.'],tset:[3],opts:['had left','left','has left','will leave'],a:0,why:'when we got…给出"过去的参照点"，火车在那时"之前"已开→过去的过去，had+过去分词。'},
+ {tk:['He','said','he','___','back','soon.'],tset:[1],opts:['would come','will come','comes','came'],a:0,why:'said 是过去——站在过去说"很快会"，宾语从句用过去将来时 would+原形。'},
+ {tk:['Listen!','Someone','___','at','the','door.'],tset:[0],opts:['is knocking','knocks','knocked','has knocked'],a:0,why:'Listen! 和 Look! 一样是进行时信号→be+doing；someone 当单数用 is。'},
+ {tk:['Light','___','faster','than','sound.'],tset:[],opts:['travels','traveled','is traveling','will travel'],a:0,why:'这句没有时间词！想想是不是"真理/事实"——光比声音快是真理，真理永真，用一般现在时。'}
+];
+/* 四个花费（老师课堂口径：用法已会，抠小细节） */
+const SPENDCARDS=[
+ {cls:'w1',icon:'💸 spend',formula:'人 + spend + 时间/钱 + on sth / (in) doing',tip:'主语是<b>人</b>｜过去式 spent｜I spend two hours on my homework.',say:'I spend two hours on my homework.'},
+ {cls:'w2',icon:'🏷️ cost',formula:'物 + cost + (人) + 钱',tip:'主语是<b>物</b>，不能是人｜三态同形 cost｜The book costs (me) twenty yuan.',say:'The book costs me twenty yuan.'},
+ {cls:'w3',icon:'💰 pay',formula:'人 + pay + 钱 + for sth',tip:'主语是<b>人</b>｜<b>for 不能丢</b>｜过去式 paid（不是 payed）｜I paid twenty yuan for the book.',say:'I paid twenty yuan for the book.'},
+ {cls:'w4',icon:'⏳ take',formula:'It takes/took + 人 + 时间 + to do',tip:'<b>It 开头</b>（形式主语）｜后面接 <b>to do</b>｜It takes me two hours to do my homework.',say:'It takes me two hours to do my homework.'}
+];
+const SPDRILL=[
+ {task:'选动词',s:'这本书花了我 20 元。The book ___ me 20 yuan.',opts:['costs','spends','pays'],a:0,why:'主语 the book 是"物"→cost；spend/pay 的主语必须是人。'},
+ {task:'选动词',s:'我每天花一小时读书。I ___ an hour (in) reading every day.',opts:['spend','cost','take'],a:0,why:'人+spend+时间+(in) doing；cost 主语是物，take 要用 It 开头。'},
+ {task:'选搭配',s:'他付了 100 元买这双鞋。He ___ 100 yuan ___ the shoes.',opts:['paid; for','paid; /','payed; for'],a:0,why:'pay 的过去式是 paid（y变i+d，不是 payed）；pay for 的 for 不能丢。'},
+ {task:'选句型',s:'做作业花了我两小时。___ me two hours to do my homework.',opts:['It took','I took','It cost'],a:0,why:'"花（时间）做某事"= It takes/took + 人 + 时间 + to do，必须 It 开头。'},
+ {task:'选搭配',s:'spend 后面能接哪个？',opts:['on books / (in) reading','to read','for books'],a:0,why:'spend…on sth 或 (in) doing sth；接 to do 的是 take；接 for 的是 pay。'},
+ {task:'考细节',s:'cost 的过去式是？',opts:['cost','costed','costs'],a:0,why:'cost 三态同形：cost—cost—cost，别加 -ed。'},
+ {task:'考细节',s:'"为某物付款"pay 后面哪个介词不能丢？',opts:['for','on','to'],a:0,why:'pay (钱) for sth；on 是 spend 的搭档，别串门。'},
+ {task:'选动词',s:'哪个词的主语必须是"物/事"，不能是人？',opts:['cost','spend','pay'],a:0,why:'人花钱用 spend/pay；cost 的主语是物——The bag costs 50 yuan. ✔，I cost 50 yuan. ✘'}
+];
+const QUIZ=[
+ {cat:'时间词→时态',q:'看到 yesterday / last week / …ago，该用什么时态？',opts:['一般过去时','一般现在时','现在完成时'],a:0,why:'yesterday、last…、…ago、just now 都是一般过去时信号，动词用过去式。'},
+ {cat:'时间词→时态',q:'看到 Look! / Listen! / now，该用什么时态？',opts:['现在进行时 be+doing','一般现在时','一般将来时'],a:0,why:'Look!、Listen!、now、at the moment → 此刻正在发生 → be+doing。'},
+ {cat:'时间词→时态',q:'already、just、yet、since、for 是哪个时态的信号？',opts:['现在完成时 have/has+pp','一般过去时','过去进行时'],a:0,why:'already/just/yet/ever/never/since/for → have/has+过去分词。'},
+ {cat:'时间词→时态',q:'at this time yesterday（昨天这个时候）该用？',opts:['过去进行时 was/were+doing','一般过去时','现在进行时'],a:0,why:'"过去某一时刻正在做"→过去进行时。'},
+ {cat:'时间词→时态',q:'every day、always、on Sundays 该用？',opts:['一般现在时','现在进行时','一般将来时'],a:0,why:'经常、习惯、真理 → 一般现在时；注意三单 +s/+es。'},
+ {cat:'时间词→时态',q:'tomorrow、next week、soon 该用？',opts:['一般将来时 will+原形','一般现在时','过去将来时'],a:0,why:'将来信号 → will/shall+原形（计划用 be going to）。'},
+ {cat:'金律',q:'He didn\'t ___ to school yesterday.',opts:['go','went','goes'],a:0,why:'did/didn\'t 一出现，动词打回原形！didn\'t go ✔，didn\'t went ✘。'},
+ {cat:'构成',q:'过去完成时的构成是？',opts:['had + 过去分词','have/has + 过去分词','was/were + doing'],a:0,why:'"过去的过去"→ had+pp，信号 by the time / before+过去。'},
+ {cat:'构成',q:'He said he ___ back soon.（过去将来时）',opts:['would come','will come','comes'],a:0,why:'said 是过去，站在过去看将来 → would+原形，常用于宾语从句。'},
+ {cat:'花费',q:'The new bag ___ my mother 200 yuan.（包花了妈妈200元）',opts:['cost','spend','pay'],a:0,why:'主语是"物"（bag）→ cost；人称主语才用 spend/pay。'},
+ {cat:'花费',q:'I ___ 50 yuan ___ the English book.（我付了50元买这本书）',opts:['paid; for','paid; on','spend; for'],a:0,why:'pay 钱 for sth——paid 拼写、for 介词，两个细节都别丢。'},
+ {cat:'花费',q:'___ takes me an hour to finish my homework.',opts:['It','I','That'],a:0,why:'It takes + 人 + 时间 + to do sth，It 是形式主语，必须 It 开头。'}
+];
+const RECALL=[
+ {q:'八大时态一口气说出来（构成）？',a:'①一般现在 V原/三单 ②一般过去 V-ed ③一般将来 will+原形 ④现在进行 be+doing ⑤过去进行 was/were+doing ⑥现在完成 have/has+pp ⑦过去完成 had+pp ⑧过去将来 would+原形。'},
+ {q:'每个时态背一个代表时间词？',a:'一般现在 every day｜一般过去 yesterday｜一般将来 tomorrow｜现在进行 now/Look!｜过去进行 at that time｜现在完成 already/since/for｜过去完成 by the time｜过去将来 said 后的宾从。'},
+ {q:'拿到题第一步做什么？（老师的要求）',a:'先划出时间词！时间词→定时态→再变动词。没有时间词就想：是不是"真理/习惯"（一般现在）。'},
+ {q:'did 金律？',a:'did/didn\'t 一出现，动词打回原形：didn\'t go ✔ / didn\'t went ✘；Did he go ✔ / Did he went ✘。'},
+ {q:'四个花费的主语规律？',a:'人花钱：spend（on/(in) doing）、pay（for，过去式 paid）；物花钱：cost（三态同形）；花时间做事：It takes + 人 + 时间 + to do（It 开头）。'},
+ {q:'四个花费最容易丢的小细节？',a:'pay for 的 for；take 必须 It 开头 + to do；cost 不加 -ed；paid 不是 payed；spend 不接 to do。'}
+];
+const AUDIO_ITEMS=(function(){
+ const arr=[];
+ TENSES.forEach(function(t){arr.push(t.ex);});
+ SPENDCARDS.forEach(function(c){arr.push(c.say);});
+ return arr;
+})();
+
+</script>
+<script>
+(function(){
+'use strict';
+const app=document.getElementById('app');
+let soundOn=localStorage.getItem('study:kenton:ui-sound')!=='0';
+let S=load();
+function load(){try{const s=JSON.parse(localStorage.getItem(STORAGE_KEY));if(s&&s.v===VERSION)return s}catch(e){}
+ return {v:VERSION,done:{},attempts:[],wrong:{},created:Date.now()};}
+function save(){localStorage.setItem(STORAGE_KEY,JSON.stringify(S));}
+function recordAttempt(kind,key,ok){S.attempts.push({t:Date.now(),kind,key,ok});if(!ok){S.wrong[key]=(S.wrong[key]||0)+1}else if(S.wrong[key]){S.wrong[key]=0}save();}
+function el(html){app.innerHTML=html;window.scrollTo(0,0);}
+function tone(k){if(!soundOn)return;try{const c=new (window.AudioContext||window.webkitAudioContext)();const o=c.createOscillator();const g=c.createGain();o.connect(g);g.connect(c.destination);o.frequency.value=k==='ok'?660:220;g.gain.value=.08;o.start();setTimeout(()=>{o.stop();c.close()},k==='ok'?120:220)}catch(e){}}
+function audioHash(s){const b=new TextEncoder().encode(s);let x=0x811c9dc5>>>0;for(let i=0;i<b.length;i++){x^=b[i];x=Math.imul(x,0x01000193)>>>0;}return ('0000000'+x.toString(16)).slice(-8);}
+let exAudio=null;
+function getAudio(){if(!exAudio){exAudio=new Audio();exAudio.setAttribute('playsinline','');exAudio.preload='auto';}return exAudio;}
+function speak(text){if(!soundOn||!text)return;
+ try{if(window.speechSynthesis)window.speechSynthesis.cancel();}catch(e){}
+ const a=getAudio();let done=false;
+ const fb=function(){if(done)return;done=true;
+  try{if(!window.speechSynthesis)return;const u=new SpeechSynthesisUtterance(text);u.lang='en-US';u.rate=0.85;window.speechSynthesis.speak(u);}catch(e){}};
+ a.onerror=fb;a.onended=function(){done=true;};
+ a.src=AUDIO_DIR+audioHash('en|'+text)+'.mp3';
+ try{a.currentTime=0;}catch(e){}
+ const p=a.play();if(p&&typeof p.catch==='function')p.catch(fb);}
+function shuffled(arr){const a=arr.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));const t=a[i];a[i]=a[j];a[j]=t;}return a;}
+/* ============ 页面 ============ */
+
+function go(m){({home,map,bank,mark,spend,recall,quiz,records}[m]||home)();}
+function head(tag,title,sub,back){
+ return (back?'<button class="pill" onclick="go(\'home\')" style="margin-bottom:10px">←</button>':'')
+ +'<div class="card"><span class="tag">'+tag+'</span><h2>'+title+'</h2>'
+ +(sub?'<div class="sub">'+sub+'</div>':'')+'</div>';
+}
+function badges(){
+ const b=[['map','🗺️','时态地图'],['bank','🏦','时间词'],['mark','🖍️','划词'],['spend','💸','花费'],['quiz','🏆','通关考']];
+ return '<div class="badge-row">'+b.map(function(x){
+  return '<div class="badge'+(S.done[x[0]]?' on':'')+'"><div class="ico">'+x[1]+'</div>'+x[2]+'</div>';}).join('')+'</div>';
+}
+function home(){
+ const d=Object.keys(S.done).filter(function(k){return S.done[k]}).length;
+ el('<div class="card"><span class="tag">本周语法课 · 八大时态 + 四个花费</span>'
+ +'<h1>🕰️ 八大时态实验室</h1>'
+ +'<div class="sub">老师叮嘱：<b>做题一定要划出时间词</b>，这样准确率才会高🖍️ 在家要<b>好好背时间词</b>！四个花费用法复习得不错，就是翻译错在<b>小细节</b>上——咱们把细节一个个焊死💪</div>'
+ +'<div class="owl">🦉 <b>猫头鹰博士：</b>"拿到题第一步不是选答案，是<b>先划时间词</b>！时间词定时态，时态定动词。划不出来？那多半是真理或习惯，用一般现在时！"</div>'
+ +'<div class="timeline">'
+ +'<div class="tl-node past"><b>⏪ 过去</b><div class="dot"></div><div class="lab">yesterday<br>saw / was doing</div></div>'
+ +'<div class="tl-node"><b>📍 现在</b><div class="dot"></div><div class="lab">every day · now<br>goes / is doing</div></div>'
+ +'<div class="tl-node future"><b>🚀 将来</b><div class="dot"></div><div class="lab">tomorrow<br>will do</div></div>'
+ +'</div>'
+ +'<button class="btn btn-pink" onclick="go(\'map\')">🗺️ 进站，先看时态地图 →</button>'
+ +'<div class="steps"><div class="step"><b>1</b>时态地图</div><div class="step"><b>2</b>时间词</div><div class="step"><b>3</b>划词</div><div class="step"><b>4</b>花费</div><div class="step"><b>5</b>回忆</div><div class="step"><b>6</b>通关考</div></div>'
+ +badges()
+ +'<div class="voice-note">🔊 点 🔊 按钮听外教录音（预合成神经音），第一次播放前请先点任意按钮解锁声音。</div>'
+ +'</div>'
+ +'<div class="card"><div class="sub">实验进度 '+d+'/5</div><div class="progress"><i style="width:'+(d/5*100)+'%"></i></div>'
+ +'<div class="grid2">'
+ +'<div class="mini">📚 材料<small>'+MATERIAL+'</small></div>'
+ +'<div class="mini">🎯 目标<small>先划词再答题 + 花费零细节失误</small></div>'
+ +'</div></div>');
+}
+/* ---- 1 时态地图 ---- */
+function map(){
+ el(head('第 1 站 · 时态地图','八大时态全家福','构成和信号词都来自教材第 9 章时态表。点 🔊 听例句，盯住<b>变色的动词</b>。',1)
+ +'<div class="card"><div class="tense-row">'
+ +TENSES.map(function(t,i){
+  const parts=t.ex.split(t.hl);
+  return '<div class="tcard t-'+t.k+'" style="text-align:left">'
+  +'<b>'+t.name+'</b>构成：'+t.form+'<br>信号：'+t.sig
+  +'<div class="sentence" style="background:rgba(255,255,255,.78);font-size:15px;padding:10px;margin-top:8px">'+parts[0]+'<span class="gap">'+t.hl+'</span>'+(parts[1]||'')
+  +'<div style="font-size:12px;font-weight:600;color:#7a7690">'+t.cn+'</div></div>'
+  +'<button class="btn btn-soft" style="margin-top:8px;padding:8px;font-size:13px" onclick="speak(TENSES['+i+'].ex)">🔊 听例句</button>'
+  +'</div>';}).join('')
+ +'</div>'
+ +'<div class="gold">🖍️ 老师口诀：<b>先划时间词 → 定时态 → 再变动词</b>。没有时间的句子，想"真理/习惯"→一般现在时。</div>'
+ +'<button class="btn btn-pink" onclick="finishStage(\'map\');go(\'bank\')">地图记下了，去背时间词 →</button>'
+ +'</div>');
+}
+/* ---- 2 时间词金库 ---- */
+let bq=[],bOk=0;
+function bank(){
+ el(head('第 2 站 · 时间词金库 🏦','老师要求：在家背熟','先看着卡片背一遍（按家族分组），再进分拣检测——看到词，秒答它属于哪个家族。',1)
+ +'<div class="card">'
+ +FAMS.map(function(f,fi){
+  const ws=BANK.filter(function(w){return w.f===fi}).map(function(w){return w.w}).join(' · ');
+  return '<div class="recall-card" style="border-color:'+f.c+'"><div class="q" style="color:'+f.c+'">'+f.n+'<span style="font-size:12px;color:#8a8496">（'+f.s+'）</span></div>'
+  +'<div class="a" style="display:block;background:#fff;color:var(--ink);padding:8px 0 0">'+ws+'</div></div>';}).join('')
+ +'<button class="btn btn-pink" onclick="bankStart()">背好了，开始分拣检测（16 个词）→</button></div>');
+}
+function bankStart(){bq=shuffled(BANK);bOk=0;bankCard();}
+window.bankStart=bankStart;
+function bankCard(){
+ if(bq.length===0){
+  finishStage('bank');
+  el(head('第 2 站 · 时间词金库',null,null,1)
+  +'<div class="card" style="text-align:center"><div class="big">🏦</div>'
+  +'<div class="big" style="font-size:24px;margin-top:8px">16 个时间词分拣完成！</div>'
+  +'<div class="sub" style="margin-top:8px">正确 '+bOk+' / 16。'+(bOk>=14?'时间词背得滚瓜烂熟，可以上岗判态了！':'错词回金库再背一轮，老师说明天还要用。')+'</div>'
+  +'<button class="btn btn-pink" onclick="go(\'mark\')">去划词判态所 →</button></div>');
+  return;
+ }
+ const cur=bq[0];const doneN=BANK.length-bq.length;
+ el(head('第 2 站 · 分拣检测','第 '+(doneN+1)+' / 16 个 · 它属于哪个家族？',null,1)
+ +'<div class="card">'
+ +'<div class="sig-word">'+cur.w+'</div>'
+ +'<div class="bin-grid">'
+ +FAMS.map(function(f,fi){return '<button class="bin" style="border-color:'+f.c+';color:'+f.c+'" onclick="bankPick('+fi+')">'+f.n+'<small>'+f.s+'</small></button>';}).join('')
+ +'</div>'
+ +'<div class="fb" id="bfb"></div>'
+ +'<button class="btn btn-teal hidden" id="bnext" onclick="bankNext()">下一个 →</button>'
+ +'</div>'
+ +'<div class="progress"><i style="width:'+(doneN/16*100)+'%"></i></div>');
+}
+window.bankPick=function(k){
+ const cur=bq[0];const ok=k===cur.f;
+ const fb=document.getElementById('bfb');
+ if(ok){bOk++;tone('ok');fb.className='fb ok';fb.textContent='✅ 对！「'+cur.w+'」→ '+FAMS[cur.f].n+'。';}
+ else{tone('no');fb.className='fb no';fb.textContent='💡 「'+cur.w+'」是'+FAMS[cur.f].n+'——'+(cur.f===0?'事情已经发生，动词用过去式/过去进行。':cur.f===1?'经常发生或此刻正在发生。':cur.f===2?'还没发生，要用 will+原形。':'从过去连到现在的"已经"，用完成时。');}
+ recordAttempt('bank',cur.w,ok);
+ document.querySelectorAll('.bin').forEach(function(b){b.style.pointerEvents='none';});
+ document.getElementById('bnext').classList.remove('hidden');
+};
+window.bankNext=function(){bq.shift();bankCard();};
+/* ---- 3 划词判态所（本周重点） ---- */
+let mIdx=0,mOk=0,mSel=[],mPhase=0,mMissed=0;
+function mark(){mIdx=0;mOk=0;markCard();}
+function markCard(){
+ if(mIdx>=MARK.length){
+  finishStage('mark');
+  el(head('第 3 站 · 划词判态所',null,null,1)
+  +'<div class="card" style="text-align:center"><div class="big">🖍️⚖️</div>'
+  +'<div class="big" style="font-size:24px;margin-top:8px">判对 '+mOk+' / '+MARK.length+' 案</div>'
+  +'<div class="sub" style="margin-top:8px">'+(mOk>=8?'先划词再答题——老师要的做题习惯已经上手！':'回时态地图再看看信号词，划词是第一步，不能跳。')+'</div>'
+  +'<button class="btn btn-pink" onclick="go(\'spend\')">去花费四兄弟 →</button></div>');
+  return;
+ }
+ const c=MARK[mIdx];mSel=[];mPhase=0;mMissed=0;
+ el(head('第 3 站 · 划词判态所 🖍️ 本周重点','案件 '+(mIdx+1)+' / '+MARK.length+' · <b>第一步：点出时间词</b>（没有就点"没有时间词"）',null,1)
+ +'<div class="card">'
+ +'<div class="sentence" id="markSent">'+c.tk.map(function(w,wi){return '<span class="tok" data-i="'+wi+'" onclick="tokTap('+wi+')">'+w+'</span>';}).join(' ')+'</div>'
+ +'<div class="taprow"><button class="btn btn-soft" id="noTimeBtn" onclick="noTimeTap()">🚫 没有时间词</button>'
+ +'<button class="btn btn-teal" onclick="markConfirm()">划好了，确认 →</button></div>'
+ +'<div class="fb" id="mfb"></div>'
+ +'<div id="verbZone"></div>'
+ +'</div>'
+ +'<div class="progress"><i style="width:'+(mIdx/MARK.length*100)+'%"></i></div>');
+}
+window.tokTap=function(wi){
+ if(mPhase!==0)return;
+ const i=mSel.indexOf(wi);
+ if(i>-1)mSel.splice(i,1);else mSel.push(wi);
+ const elTok=document.querySelector('.tok[data-i="'+wi+'"]');
+ elTok.classList.toggle('sel',i===-1);
+ document.getElementById('noTimeBtn').classList.remove('ok');
+};
+window.noTimeTap=function(){
+ if(mPhase!==0)return;
+ mSel=[];
+ document.querySelectorAll('.tok').forEach(function(t){t.classList.remove('sel');});
+ document.getElementById('noTimeBtn').classList.add('ok');
+};
+window.markConfirm=function(){
+ if(mPhase!==0)return;
+ const c=MARK[mIdx];
+ const want=c.tset.slice().sort().join(',');
+ const got=mSel.slice().sort().join(',');
+ const fb=document.getElementById('mfb');
+ if(want===got){
+  mPhase=1;tone('ok');
+  c.tset.forEach(function(wi){const t=document.querySelector('.tok[data-i="'+wi+'"]');t.classList.remove('sel');t.classList.add('right');});
+  fb.className='fb ok';
+  fb.textContent=c.tset.length?'✅ 时间词划对了！时态已被锁定，第二步：选动词。':'✅ 对！这句没有时间词——想"真理/习惯"，用一般现在时。第二步：选动词。';
+  const order=shuffled(c.opts.map(function(o,i){return i;}));
+  document.getElementById('verbZone').innerHTML='<div class="sub" style="margin-top:10px">第二步：该填什么？</div>'
+  +order.map(function(oi,pi){return '<button class="opt" id="mopt'+oi+'" onclick="markPick('+oi+')"><span class="k">'+'🅰🅱🅲🅳'[pi]+'</span>'+c.opts[oi]+'</button>';}).join('')
+  +'<div class="fb" id="mfb2"></div>'
+  +'<button class="btn btn-teal hidden" id="mnext" onclick="markNext()">'+(mIdx<MARK.length-1?'下一案 →':'看结案报告 →')+'</button>';
+ }else{
+  tone('no');
+  mMissed++;
+  if(mMissed===1)recordAttempt('mark-time',c.tk.join(' '),false);
+  fb.className='fb no';
+  fb.textContent=c.tset.length?'💡 再找找——'+(mMissed>=2?'提示：时间词一共 '+c.tset.length+' 个词，通常在句尾或句首。':'哪些词在告诉你"什么时候"？'):'💡 这句藏着一个决定时态的词（不一定是时间词），再读一遍找找；实在没有就点"没有时间词"。';
+ }
+};
+window.markPick=function(i){
+ if(mPhase!==1)return;
+ mPhase=2;
+ const c=MARK[mIdx];const ok=i===c.a;
+ document.querySelectorAll('#verbZone .opt').forEach(function(o){o.style.pointerEvents='none';});
+ document.getElementById('mopt'+c.a).classList.add('ok');
+ const fb=document.getElementById('mfb2');
+ if(ok){mOk++;tone('ok');fb.className='fb ok';fb.textContent='✅ 断案正确！'+c.why;}
+ else{document.getElementById('mopt'+i).classList.add('no');tone('no');fb.className='fb no';fb.textContent='💡 正确是「'+c.opts[c.a]+'」。'+c.why;}
+ recordAttempt('mark-verb',c.tk.join(' '),ok);
+ document.getElementById('mnext').classList.remove('hidden');
+};
+window.markNext=function(){mIdx++;markCard();};
+/* ---- 4 花费四兄弟 ---- */
+let sIdx=0,sOk=0;
+function spend(){sIdx=0;sOk=0;spendTeach();}
+function spendTeach(){
+ el(head('第 4 站 · 花费四兄弟 💸','spend · cost · pay · take','老师说：用法你已经会了，就是<b>小细节</b>要抠。先过一遍四张卡，每张卡 🔊 听例句。',1)
+ +'<div class="card">'
+ +SPENDCARDS.map(function(c,i){
+  return '<div class="wcard '+c.cls+'">'+c.icon+'<div class="formula">'+c.formula+'</div><div style="font-size:13px;margin-top:6px;font-weight:600">'+c.tip+'</div>'
+  +'<button class="btn btn-soft" style="margin-top:8px;padding:8px;font-size:13px" onclick="speak(SPENDCARDS['+i+'].say)">🔊 听例句</button></div>';}).join('')
+ +'<div class="gold">🥇 一句话分清：<b>人</b>花钱 spend / pay（pay 要带 for）；<b>物</b>花钱 cost；<b>花时间做事</b> It takes…to do（It 开头）。</div>'
+ +'<button class="btn btn-pink" onclick="spendCard()">细节操练 8 题，零失误通关 →</button>'
+ +'</div>');
+}
+window.spendCard=spendCard;
+function spendCard(){
+ if(sIdx>=SPDRILL.length){
+  finishStage('spend');
+  el(head('第 4 站 · 花费四兄弟',null,null,1)
+  +'<div class="card" style="text-align:center"><div class="big">💸🏅</div>'
+  +'<div class="big" style="font-size:24px;margin-top:8px">8 题细节操练 · 对 '+sOk+' 题</div>'
+  +'<div class="sub" style="margin-top:8px">'+(sOk>=7?'for、It、cost 三态、paid 拼写——细节全部焊死，翻译不再丢冤枉分！':'错哪题回哪张卡，小细节就是分数。')+'</div>'
+  +'<button class="btn btn-pink" onclick="go(\'recall\')">去遮挡回忆 →</button></div>');
+  return;
+ }
+ const t=SPDRILL[sIdx];
+ const order=shuffled(t.opts.map(function(o,i){return i;}));
+ el(head('第 4 站 · 细节操练','第 '+(sIdx+1)+' / '+SPDRILL.length+' 题 · 任务：'+t.task,null,1)
+ +'<div class="card">'
+ +'<div class="sentence">'+t.s+'</div>'
+ +order.map(function(oi,pi){return '<button class="opt" id="sopt'+oi+'" onclick="spendPick('+oi+')"><span class="k">'+'ABC'[pi]+'</span>'+t.opts[oi]+'</button>';}).join('')
+ +'<div class="fb" id="sfb"></div>'
+ +'<button class="btn btn-teal hidden" id="snext" onclick="spendNext()">'+(sIdx<SPDRILL.length-1?'下一题 →':'收工报告 →')+'</button>'
+ +'</div>'
+ +'<div class="progress"><i style="width:'+(sIdx/SPDRILL.length*100)+'%"></i></div>');
+}
+window.spendPick=function(i){
+ const t=SPDRILL[sIdx];const ok=i===t.a;
+ document.querySelectorAll('.opt').forEach(function(o){o.style.pointerEvents='none';});
+ document.getElementById('sopt'+t.a).classList.add('ok');
+ const fb=document.getElementById('sfb');
+ if(ok){sOk++;tone('ok');fb.className='fb ok';fb.textContent='✅ '+t.why;}
+ else{document.getElementById('sopt'+i).classList.add('no');tone('no');fb.className='fb no';fb.textContent='💡 '+t.why;}
+ recordAttempt('spend',t.s,ok);
+ document.getElementById('snext').classList.remove('hidden');
+};
+window.spendNext=function(){sIdx++;spendCard();};
+/* ---- 5 遮挡回忆 ---- */
+function recall(){
+ el(head('第 5 站 · 遮挡回忆','先在心里说答案，再点开核对',null,1)
+ +'<div class="card">'+RECALL.map(function(c,i){
+  return '<div class="recall-card" id="rc'+i+'"><div class="q">'+(i+1)+'. '+c.q+'</div>'
+  +'<div class="tap" onclick="document.getElementById(\'rc'+i+'\').classList.toggle(\'open\')">先自己说，再点开 👆</div>'
+  +'<div class="a">'+c.a+'</div></div>';}).join('')
+ +'<button class="btn btn-pink" onclick="go(\'quiz\')">回忆完成，参加通关考 →</button></div>');
+}
+/* ---- 6 通关考 ---- */
+let qIdx=0,qScore=0,qLock=false;
+function quiz(){qIdx=0;qScore=0;quizCard();}
+function quizCard(){
+ const q=QUIZ[qIdx];qLock=false;
+ el(head('🏆 通关考 · 八时态 + 四花费','第 '+(qIdx+1)+' / '+QUIZ.length+' 题 · 心里先划时间词，再作答',null,1)
+ +'<div class="card"><span class="tag amber">'+q.cat+'</span>'
+ +'<div style="font-size:19px;font-weight:800;line-height:1.8;margin-top:4px">'+q.q+'</div>'
+ +q.opts.map(function(o,i){return '<button class="opt" id="opt'+i+'" onclick="answer('+i+')"><span class="k">'+'ABC'[i]+'</span>'+o+'</button>';}).join('')
+ +'<div class="fb" id="qfb"></div>'
+ +'<button class="btn btn-pink hidden" id="qnext" onclick="quizNext()">'+(qIdx<QUIZ.length-1?'下一题 →':'🏆 看成绩 →')+'</button>'
+ +'</div>'
+ +'<div class="progress"><i style="width:'+(qIdx/QUIZ.length*100)+'%"></i></div>');
+}
+window.answer=function(i){
+ if(qLock)return;qLock=true;
+ const q=QUIZ[qIdx];const ok=i===q.a;
+ document.getElementById('opt'+q.a).classList.add('ok');
+ const fb=document.getElementById('qfb');
+ if(ok){qScore++;tone('ok');fb.className='fb ok';fb.textContent='✅ '+q.why;}
+ else{document.getElementById('opt'+i).classList.add('no');tone('no');fb.className='fb no';fb.textContent='💡 '+q.why;}
+ recordAttempt('quiz',q.q,ok);
+ document.getElementById('qnext').classList.remove('hidden');
+};
+window.quizNext=function(){
+ if(qIdx<QUIZ.length-1){qIdx++;quizCard();return;}
+ finishStage('quiz');
+ const pct=Math.round(qScore/QUIZ.length*100);
+ el(head('🏆 通关成绩单',null,null,1)
+ +'<div class="card" style="text-align:center">'
+ +'<div class="big">'+(pct>=80?'🏆🕰️':pct>=60?'💪🕰️':'📖🕰️')+'</div>'
+ +'<div class="big" style="font-size:25px;margin-top:8px">通关考 '+qScore+' / '+QUIZ.length+'</div>'
+ +'<div class="owl" style="text-align:left;margin-top:12px">🦉 <b>猫头鹰博士：</b>'+(pct>=80?
+  '"先划时间词再答题——这个习惯会救你无数次！花费细节也抠干净了，跟老师报喜吧！"'
+  :'"错哪站补哪站：时态混回时态地图，时间词不熟回金库，花费细节回四兄弟。80 分拿金奖杯，再来一次！"')+'</div>'
+ +badges()
+ +'<div class="taprow"><button class="btn btn-soft" onclick="go(\'home\')">回首页</button>'
+ +'<button class="btn btn-pink" onclick="go(\'quiz\')">再考一次</button></div>'
+ +'</div>');
+};
+function finishStage(k){S.done[k]=true;save();}
+window.finishStage=finishStage;
+/* ---- 学习档案 ---- */
+function records(){
+ const okN=S.attempts.filter(function(a){return a.ok}).length;
+ const rows=S.attempts.slice(-30).reverse().map(function(a){
+  return '<div style="font-size:12.5px;padding:7px 0;border-bottom:1px dashed var(--line)">'+(a.ok?'✅':'❌')+' ['+a.kind+'] '+a.key+'<span style="color:#9a94b0"> · '+new Date(a.t).toLocaleString('zh-CN',{hour12:false})+'</span></div>';}).join('');
+ el(head('学习档案','本次练习记录','',1)
+ +'<div class="card">'
+ +'<div class="sub">完成环节：'+(Object.keys(S.done).filter(function(k){return S.done[k]}).join('、')||'（暂无）')+'</div>'
+ +'<div class="sub" style="margin-top:6px">总作答：'+S.attempts.length+' 次 · 正确 '+okN+' 次</div>'
+ +'<div style="margin-top:10px">'+(rows||'<div class="sub">还没有作答记录。</div>')+'</div>'
+ +'<div class="taprow"><button class="btn btn-soft" onclick="dlJson()">导出 JSON</button>'
+ +'<button class="btn btn-soft" onclick="dlMd()">导出 Markdown</button></div>'
+ +'</div>');
+}
+function dl(name,text,type){const b=new Blob([text],{type});const u=URL.createObjectURL(b);const a=document.createElement('a');a.href=u;a.download=name;a.click();URL.revokeObjectURL(u);}
+window.dlJson=function(){dl('kenton-tense8-lab-record.json',JSON.stringify({app:APP_ID,material:MATERIAL,exported:new Date().toISOString(),state:S},null,1),'application/json');};
+window.dlMd=function(){
+ let md='# Kenton 八大时态实验室记录\n\n- 材料：'+MATERIAL+'\n- 作答：'+S.attempts.length+' 次，正确 '+S.attempts.filter(function(a){return a.ok}).length+' 次\n\n| 时间 | 环节 | 内容 | 结果 |\n|---|---|---|---|\n';
+ S.attempts.forEach(function(a){md+='| '+new Date(a.t).toLocaleString('zh-CN',{hour12:false})+' | '+a.kind+' | '+a.key+' | '+(a.ok?'对':'错')+' |\n';});
+ dl('kenton-tense8-lab-report.md',md,'text/markdown');
+};
+document.getElementById('soundToggle').addEventListener('click',function(){soundOn=!soundOn;localStorage.setItem('study:kenton:ui-sound',soundOn?'1':'0');this.textContent=soundOn?'声':'静';if(soundOn)tone('ok');});
+document.getElementById('soundToggle').textContent=soundOn?'声':'静';
+Object.assign(window,{go,speak,TENSES});
+home();
+})();
+</script>
+</body>
+</html>

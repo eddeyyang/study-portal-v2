@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<script src="../assets/learning-sync.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>核桃 L2-3 复习 · 智能密码门实验室</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+:root{
+  --orange-1:#FF6B35; --orange-2:#FF8C42; --orange-3:#FFB347;
+  --purple-1:#6B5BFF; --green-1:#2BB673; --green-2:#4ECDC4;
+  --yellow-1:#FFD93D; --pink-1:#FF6B9D;
+  --bg:#FFF8F0; --ink:#2D2A4A; --ink-soft:#5A5775;
+  --card:#ffffff; --shadow:0 8px 28px rgba(45,42,74,.12);
+  --good:#2BB673; --bad:#E64A4A;
+}
+html,body{ font-family:"PingFang SC","Microsoft YaHei",sans-serif; color:var(--ink);
+  background:linear-gradient(135deg,#FFF8F0 0%,#FFE8D6 100%); min-height:100%; }
+body{ -webkit-tap-highlight-color:transparent; }
+.wrap{ max-width:680px; margin:0 auto; padding:0 14px 80px; }
+
+.topbar{ position:sticky; top:0; z-index:50; backdrop-filter:blur(10px);
+  background:rgba(255,255,255,.86); border-bottom:2px solid rgba(255,107,53,.15);
+  display:flex; align-items:center; gap:10px; padding:10px 14px; }
+.logo{ width:34px;height:34px;border-radius:9px; display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(135deg,var(--orange-1),var(--orange-2)); color:#fff;font-size:19px;
+  box-shadow:0 4px 12px rgba(255,107,53,.4); }
+.brand b{ font-size:15px; color:var(--orange-1); display:block; line-height:1.2;}
+.brand span{ font-size:11px; color:var(--ink-soft);}
+.home{ margin-left:auto; text-decoration:none; background:#fff; border:2px solid var(--orange-1);
+  color:var(--orange-1); padding:6px 12px; border-radius:11px; font-weight:800; font-size:13px;}
+
+.nav{ display:flex; gap:8px; overflow-x:auto; padding:12px 2px; position:sticky; top:56px; z-index:40;
+  background:linear-gradient(180deg,rgba(255,248,240,.96),rgba(255,248,240,.7)); }
+.nav::-webkit-scrollbar{ display:none; }
+.chip{ flex:0 0 auto; border:none; background:#fff; color:var(--ink-soft); font-weight:800;
+  padding:9px 14px; border-radius:999px; font-size:13px; cursor:pointer; box-shadow:var(--shadow);
+  font-family:inherit; transition:.15s; }
+.chip.active{ background:linear-gradient(135deg,var(--orange-1),var(--orange-2)); color:#fff; transform:translateY(-1px);}
+
+section{ display:none; animation:fade .35s ease; }
+section.show{ display:block; }
+@keyframes fade{ from{opacity:0; transform:translateY(8px)} to{opacity:1; transform:none} }
+
+.card{ background:var(--card); border-radius:20px; box-shadow:var(--shadow); padding:18px; margin:14px 0; }
+.h2{ font-size:21px; font-weight:900; display:flex; align-items:center; gap:9px; margin-bottom:4px; }
+.sub{ color:var(--ink-soft); font-size:14px; line-height:1.6; margin-bottom:6px;}
+.tip{ background:#FFF3E8; border-left:4px solid var(--orange-1); border-radius:10px; padding:10px 13px;
+  font-size:14px; line-height:1.7; margin:10px 0; }
+.tip b{ color:#C84B1A; }
+
+/* 单词卡 */
+.wordgrid{ display:grid; grid-template-columns:1fr; gap:12px; }
+.wcard{ border:2px solid #FFE0C4; border-radius:16px; padding:14px 16px; background:linear-gradient(135deg,#fff,#FFF6EE);}
+.wtop{ display:flex; align-items:center; gap:10px; flex-wrap:wrap;}
+.wen{ font-size:26px; font-weight:900; color:var(--orange-1); }
+.wph{ color:var(--ink-soft); font-size:14px; }
+.spk{ margin-left:auto; border:none; background:var(--orange-1); color:#fff; width:40px;height:40px;
+  border-radius:50%; font-size:18px; cursor:pointer; box-shadow:0 4px 10px rgba(255,107,53,.4);}
+.wmean{ margin-top:6px; font-size:15px; line-height:1.7;}
+.wmean .pos{ display:inline-block; background:#EEE9FF; color:var(--purple-1); font-size:12px; font-weight:800;
+  border-radius:6px; padding:1px 7px; margin-right:6px;}
+.wph2{ margin-top:6px; font-size:13px; color:var(--green-1); font-weight:700;}
+
+/* 通用代码块 */
+.code{ background:#1E1B33; color:#Efeaff; border-radius:14px; padding:14px 16px; font-size:15px;
+  font-family:"SF Mono",Consolas,Menlo,monospace; line-height:1.85; overflow-x:auto; }
+.k{color:#FF9D66;} .v{color:#7FE0FF;} .n{color:#FFD93D;} .s{color:#9DE89D;} .o{color:#FF8FB0;} .c{color:#8B86A8;}
+.hl{ background:rgba(255,217,61,.22); border-radius:5px; padding:0 4px; }
+
+.btn{ border:none; border-radius:13px; padding:11px 16px; font-weight:800; font-size:15px; cursor:pointer;
+  font-family:inherit; background:linear-gradient(135deg,var(--orange-1),var(--orange-2)); color:#fff;
+  box-shadow:0 5px 14px rgba(255,107,53,.35); transition:.15s; }
+.btn:active{ transform:translateY(2px); }
+.btn.ghost{ background:#fff; color:var(--orange-1); border:2px solid var(--orange-1); box-shadow:none;}
+.btn.green{ background:linear-gradient(135deg,#2BB673,#4ECDC4); box-shadow:0 5px 14px rgba(43,182,115,.3);}
+.btn.row{ display:block; width:100%; margin:7px 0; }
+.btnrow{ display:flex; gap:10px; flex-wrap:wrap; margin-top:12px; }
+
+/* 舵机 */
+.servo-stage{ display:flex; flex-direction:column; align-items:center; gap:14px; }
+.door-scene{ width:100%; max-width:340px; }
+.angle-read{ font-size:34px; font-weight:900; color:var(--orange-1); }
+.slider{ width:100%; -webkit-appearance:none; height:10px; border-radius:999px;
+  background:linear-gradient(90deg,#FFD93D,#FF6B35); outline:none; }
+.slider::-webkit-slider-thumb{ -webkit-appearance:none; width:30px;height:30px;border-radius:50%;
+  background:#fff; border:4px solid var(--orange-1); cursor:pointer; box-shadow:0 3px 8px rgba(0,0,0,.2);}
+.slider::-moz-range-thumb{ width:30px;height:30px;border-radius:50%; background:#fff; border:4px solid var(--orange-1); cursor:pointer;}
+
+/* 遥控 */
+.remote{ width:200px; margin:0 auto; background:#2D2A4A; border-radius:24px; padding:18px 16px; box-shadow:var(--shadow); }
+.rscreen{ background:#9be8b0; color:#0a3; border-radius:8px; text-align:center; font-weight:900;
+  padding:8px; margin-bottom:14px; font-family:monospace; min-height:34px; }
+.pad{ display:grid; grid-template-columns:repeat(3,1fr); gap:9px; }
+.rk{ border:none; background:#4a4670; color:#fff; border-radius:12px; padding:12px 0; font-weight:900;
+  font-size:16px; cursor:pointer; font-family:inherit; transition:.1s;}
+.rk:active{ transform:scale(.9); }
+.rk.warm{ background:var(--orange-1); }
+.rk.dir{ background:var(--purple-1); }
+.screen{ background:#0E1230; color:#7FE0FF; border-radius:14px; padding:14px 16px; font-family:monospace;
+  font-size:16px; min-height:54px; line-height:1.6; border:2px solid #2a2f55; }
+.screen .lab{ color:#8B86A8; font-size:12px; display:block; margin-bottom:4px;}
+
+/* 密码串 */
+.pwbuild{ display:flex; gap:6px; flex-wrap:wrap; min-height:54px; align-items:center; justify-content:center;
+  background:#FFF3E8; border-radius:14px; padding:12px; }
+.ch{ width:40px;height:48px; border-radius:10px; background:#fff; border:2px solid var(--orange-1);
+  display:flex;align-items:center;justify-content:center; font-size:24px; font-weight:900; color:var(--orange-1);
+  animation:pop .3s ease; }
+@keyframes pop{ from{transform:scale(0) rotate(-15deg); opacity:0} to{transform:none; opacity:1} }
+.plus{ color:var(--ink-soft); font-weight:900; font-size:20px; }
+
+/* quiz */
+.q{ font-size:16px; font-weight:800; margin-bottom:10px; line-height:1.6;}
+.opt{ display:block; width:100%; text-align:left; border:2px solid #eee; background:#fff; border-radius:13px;
+  padding:12px 14px; margin:8px 0; font-size:15px; font-weight:700; cursor:pointer; font-family:inherit; transition:.15s;}
+.opt:hover{ border-color:var(--orange-3); }
+.opt.ok{ border-color:var(--good); background:#EBFBF2; color:var(--good);}
+.opt.no{ border-color:var(--bad); background:#FDECEC; color:var(--bad);}
+.explain{ display:none; margin-top:10px; background:#F3F0FF; border-left:4px solid var(--purple-1);
+  border-radius:10px; padding:11px 13px; font-size:14px; line-height:1.7;}
+.explain.show{ display:block; }
+.scorebar{ font-weight:900; color:var(--orange-1); font-size:16px; }
+
+.foot{ text-align:center; color:var(--ink-soft); font-size:12px; margin-top:18px; line-height:1.7;}
+.flag{ display:inline-block; background:#EBFBF2; color:var(--good); border-radius:999px; font-size:12px;
+  font-weight:800; padding:2px 10px; margin-left:8px;}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div class="logo">🌰</div>
+  <div class="brand"><b>核桃编程 · L2-3 复习</b><span>智能密码门实验室</span></div>
+  <a class="home" href="cpp_hub.html">🏠 学习馆</a>
+</div>
+
+<div class="wrap">
+  <div class="nav" id="nav"></div>
+
+  <!-- 0 概览 -->
+  <section id="s-intro" class="show">
+    <div class="card">
+      <div class="h2">🔐 智能密码门，我们做了什么？</div>
+      <div class="sub">上节课我们用「智慧核心」做了一个真能用的<b>密码门</b>。这个实验室把每一步都做成<b>会动的</b>，点一点、拖一拖，把"为什么"看清楚——不是再做一遍题。</div>
+      <div class="tip">🧩 四个核心零件：<b>① 舵机 rotateTo</b> 开关门 · <b>② 红外遥控 getIRKey</b> 读按键 · <b>③ 字符串拼接</b> 记密码 · <b>④ if 判断</b> 验证密码。下面一个个玩。</div>
+      <button class="btn row" onclick="go('s-words')">先认 6 个单词 →</button>
+      <button class="btn row ghost" onclick="go('s-servo')">直接去玩舵机 🔧</button>
+    </div>
+  </section>
+
+  <!-- 1 单词 -->
+  <section id="s-words">
+    <div class="card">
+      <div class="h2">📖 今日单词 <span class="flag">点 🔊 跟读</span></div>
+      <div class="sub">密码门项目里出现的 6 个英文词，先听一遍、读一遍。</div>
+      <div class="wordgrid" id="wordgrid"></div>
+    </div>
+  </section>
+
+  <!-- 2 舵机 -->
+  <section id="s-servo">
+    <div class="card">
+      <div class="h2">🔧 舵机实验室 · rotateTo()</div>
+      <div class="sub">舵机就是门上的"小马达"。<b>rotateTo(角度)</b> 里填一个数字，代表转到第几度。范围 <b>0°～180°</b>。拖一拖，看门怎么转。</div>
+      <div class="servo-stage">
+        <div class="door-scene">
+          <svg viewBox="0 0 300 200" width="100%">
+            <!-- 门框 -->
+            <rect x="40" y="30" width="120" height="150" rx="6" fill="#Ead9c4" stroke="#b89a6b" stroke-width="3"/>
+            <rect x="46" y="36" width="108" height="138" rx="4" fill="#fff8ee"/>
+            <!-- 门扇，绕左侧铰链旋转 -->
+            <g id="doorFlap" style="transform-origin:46px 105px; transition:transform .5s cubic-bezier(.4,1.3,.5,1);">
+              <rect x="46" y="36" width="108" height="138" rx="4" fill="#FFB347" stroke="#C84B1A" stroke-width="3"/>
+              <circle cx="140" cy="108" r="6" fill="#C84B1A"/>
+            </g>
+            <!-- 舵机表盘 -->
+            <g transform="translate(225,105)">
+              <path d="M -55 0 A 55 55 0 0 1 55 0" fill="none" stroke="#ddd" stroke-width="10" stroke-linecap="round"/>
+              <text x="-58" y="20" font-size="11" fill="#999">0°</text>
+              <text x="-12" y="-48" font-size="11" fill="#999">90°</text>
+              <text x="46" y="20" font-size="11" fill="#999">180°</text>
+              <line id="needle" x1="0" y1="0" x2="0" y2="-48" stroke="#FF6B35" stroke-width="6" stroke-linecap="round"
+                style="transform-origin:0 0; transition:transform .5s cubic-bezier(.4,1.3,.5,1);"/>
+              <circle cx="0" cy="0" r="9" fill="#2D2A4A"/>
+            </g>
+          </svg>
+        </div>
+        <div class="angle-read"><span id="angVal">90</span>°</div>
+        <input class="slider" id="angSlider" type="range" min="0" max="180" value="90" step="5">
+        <div class="code"><span class="k">rotateTo</span>(<span class="n" id="codeAng">90</span>); <span class="c" id="codeNote">// 关门</span></div>
+        <div class="btnrow">
+          <button class="btn green" onclick="setAngle(180)">开门 rotateTo(180)</button>
+          <button class="btn ghost" onclick="setAngle(90)">关门 rotateTo(90)</button>
+        </div>
+      </div>
+      <div class="tip">💡 记住：括号里只能填 <b>0 到 180</b> 的数字。项目里我们让门：<b>开 rotateTo(180)</b>，<b>关 rotateTo(90)</b>。</div>
+    </div>
+  </section>
+
+  <!-- 3 遥控 -->
+  <section id="s-ir">
+    <div class="card">
+      <div class="h2">📡 红外遥控 · getIRKey()</div>
+      <div class="sub"><b>getIRKey()</b> 的作用：读出你<b>刚按了遥控的哪个键</b>，把这个键的名字交给程序。按一按下面的遥控，看屏幕。</div>
+      <div style="display:flex; gap:18px; flex-wrap:wrap; align-items:center; justify-content:center;">
+        <div class="remote">
+          <div class="rscreen" id="rscreen">📡</div>
+          <div class="pad">
+            <button class="rk dir" onclick="press('上')">▲</button>
+            <button class="rk dir" onclick="press('OK')">OK</button>
+            <button class="rk dir" onclick="press('下')">▼</button>
+            <button class="rk dir" onclick="press('左')">◀</button>
+            <button class="rk warm" onclick="press('A')">A</button>
+            <button class="rk dir" onclick="press('右')">▶</button>
+            <button class="rk" onclick="press('1')">1</button>
+            <button class="rk" onclick="press('2')">2</button>
+            <button class="rk" onclick="press('3')">3</button>
+          </div>
+        </div>
+        <div style="flex:1; min-width:220px;">
+          <div class="code"><span class="v">string</span> key;<br><span class="v">key</span> <span class="o">=</span> <span class="k">getIRKey</span>();</div>
+          <div class="screen" style="margin-top:10px;">
+            <span class="lab">智慧核心读到的 key：</span>
+            <span id="keyOut">（按一下遥控）</span>
+          </div>
+        </div>
+      </div>
+      <div class="tip">💡 <b>key = getIRKey();</b> 就是把"刚按的键名"装进字符串变量 <b>key</b> 里，后面就能判断它是不是密码了。</div>
+    </div>
+  </section>
+
+  <!-- 4 记密码 -->
+  <section id="s-pw">
+    <div class="card">
+      <div class="h2">🔑 记录密码 · 字符串拼接 + isdigit</div>
+      <div class="sub">密码是好几个数字。我们要把按下的数字<b>一个个接起来</b>变成一串。靠 <b>+</b> 拼接，靠 <b>isdigit()</b> 检查"按的是不是数字"。</div>
+
+      <div class="tip"><b>isdigit("12")</b> → 成立 ✅（全是数字）　<b>isdigit("ab")</b> → 不成立 ❌（不是数字）</div>
+
+      <div class="code" style="margin-bottom:10px;">
+        <span class="k">if</span>( <span class="k">isdigit</span>(key) )  <span class="c">// 按的是数字吗？</span><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;result <span class="o">=</span> result <span class="o">+</span> key;  <span class="c">// 接到密码后面</span>
+      </div>
+
+      <div style="text-align:center; color:var(--ink-soft); font-size:13px; margin:4px 0;">result（已记下的密码）：</div>
+      <div class="pwbuild" id="pwbuild"><span style="color:#bbb">（空）</span></div>
+
+      <div class="btnrow" style="justify-content:center;">
+        <button class="btn" onclick="pwPress('1')">按 1</button>
+        <button class="btn" onclick="pwPress('2')">按 2</button>
+        <button class="btn" onclick="pwPress('3')">按 3</button>
+        <button class="btn ghost" onclick="pwPress('A')">按 A（字母）</button>
+        <button class="btn green" onclick="pwClear()">清空</button>
+      </div>
+      <div class="explain show" id="pwMsg" style="text-align:center;">按数字会被接进 result；按字母 A，isdigit 不成立，<b>不会</b>被记进去。</div>
+    </div>
+  </section>
+
+  <!-- 5 验证 -->
+  <section id="s-verify">
+    <div class="card">
+      <div class="h2">🔐 验证密码 · if(result == password)</div>
+      <div class="sub">用 <b>==</b> 判断"输入的密码"和"正确密码"是否一样。一样就开门，不一样就报错。先设个密码，再用遥控输入试试。</div>
+
+      <div class="code">
+        <span class="v">string</span> password <span class="o">=</span> <span class="s" id="setpw">"123"</span>;  <span class="c">// 正确密码</span><br>
+        <span class="k" id="ln-if">if</span>(result <span class="o">==</span> password)<br>
+        {<br>
+        &nbsp;&nbsp;<span class="k" id="ln-open">rotateTo</span>(180); <span class="c">// 开门</span><br>
+        &nbsp;&nbsp;<span class="k">sleep</span>(5); &nbsp;<span class="c">// 等 5 秒</span><br>
+        &nbsp;&nbsp;<span class="k">rotateTo</span>(90); &nbsp;<span class="c">// 关门</span><br>
+        }<br>
+        <span class="k" id="ln-else">else</span><br>
+        {<br>
+        &nbsp;&nbsp;<span class="k">printPos</span>(<span class="s">"密码错误"</span>);<br>
+        }
+      </div>
+
+      <div style="margin-top:12px;">
+        <div style="font-size:13px;color:var(--ink-soft);">正确密码（点数字设置）：<b id="pwShow">123</b></div>
+        <div class="btnrow">
+          <button class="btn ghost" onclick="vSet()">重设正确密码</button>
+        </div>
+        <div style="font-size:13px;color:var(--ink-soft); margin-top:6px;">我输入：<b id="vIn">（空）</b></div>
+        <div class="btnrow">
+          <button class="btn" onclick="vPress('1')">1</button>
+          <button class="btn" onclick="vPress('2')">2</button>
+          <button class="btn" onclick="vPress('3')">3</button>
+          <button class="btn" onclick="vPress('9')">9</button>
+          <button class="btn green" onclick="vCheck()">🔓 验证开门</button>
+          <button class="btn ghost" onclick="vClear()">清空</button>
+        </div>
+      </div>
+
+      <div class="door-scene" style="margin:14px auto 0;">
+        <svg viewBox="0 0 200 160" width="160">
+          <rect x="55" y="20" width="90" height="120" rx="6" fill="#Ead9c4" stroke="#b89a6b" stroke-width="3"/>
+          <g id="vDoor" style="transform-origin:60px 80px; transition:transform .6s cubic-bezier(.4,1.3,.5,1);">
+            <rect x="60" y="24" width="80" height="112" rx="4" fill="#FFB347" stroke="#C84B1A" stroke-width="3"/>
+            <circle cx="128" cy="82" r="5" fill="#C84B1A"/>
+          </g>
+        </svg>
+      </div>
+      <div class="explain show" id="vMsg" style="text-align:center;">设好密码，输入后点「验证开门」。输入和正确密码<b>完全一样</b>才会开门哦。</div>
+    </div>
+  </section>
+
+  <!-- 6 检验 -->
+  <section id="s-quiz">
+    <div class="card">
+      <div class="h2">🎯 小检验 <span class="scorebar" id="score"></span></div>
+      <div class="sub">玩明白了就来 4 道小题检验一下（理解之后的检验，不是刷题）。</div>
+      <div id="quizBox"></div>
+      <button class="btn row green" id="restartBtn" style="display:none" onclick="buildQuiz()">🔁 再做一遍</button>
+    </div>
+    <div class="foot">核桃编程 · L2-3 智能密码门复习 · 拖一拖、按一按，看清"为什么"</div>
+  </section>
+</div>
+
+<script>
+/* ============ 导航 ============ */
+const SECTIONS = [
+  ['s-intro','🏁 总览'],['s-words','📖 单词'],['s-servo','🔧 舵机'],
+  ['s-ir','📡 遥控'],['s-pw','🔑 记密码'],['s-verify','🔐 验证'],['s-quiz','🎯 检验']
+];
+const nav = document.getElementById('nav');
+SECTIONS.forEach(([id,label])=>{
+  const b=document.createElement('button'); b.className='chip'; b.textContent=label; b.dataset.id=id;
+  b.onclick=()=>go(id); nav.appendChild(b);
+});
+function go(id){
+  document.querySelectorAll('section').forEach(s=>s.classList.toggle('show', s.id===id));
+  document.querySelectorAll('.chip').forEach(c=>c.classList.toggle('active', c.dataset.id===id));
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+go('s-intro');
+
+/* ============ 语音（浏览器 TTS，跟读用）============ */
+const synth = window.speechSynthesis;
+let vEn=null,vZh=null;
+function loadV(){ const vs=synth.getVoices();
+  vEn = vs.find(v=>/en-US/i.test(v.lang)&&/female|aria|samantha|ava/i.test(v.name))||vs.find(v=>/^en/i.test(v.lang));
+  vZh = vs.find(v=>/zh-CN/i.test(v.lang))||vs.find(v=>/zh/i.test(v.lang)); }
+loadV(); if(synth.onvoiceschanged!==undefined) synth.onvoiceschanged=loadV;
+function say(text,lang){ try{ synth.cancel(); const u=new SpeechSynthesisUtterance(text);
+  if(lang==='en'){ u.lang='en-US'; u.voice=vEn; u.rate=.8; } else { u.lang='zh-CN'; u.voice=vZh; u.rate=.95; }
+  synth.speak(u);}catch(e){} }
+
+/* ============ 单词卡 ============ */
+const WORDS=[
+  {en:'rotate',ph:'/rəʊˈteɪt/',pos:'v.',mean:'旋转、转动',ex:'舵机 rotateTo 就是让它"转到"某个角度'},
+  {en:'infrared',ph:'/ˌɪnfrəˈred/',pos:'adj.',mean:'红外线的',ex:'红外遥控 infrared remote'},
+  {en:'key',ph:'/kiː/',pos:'n.',mean:'按键；钥匙；关键',ex:'getIRKey() 读遥控的按键'},
+  {en:'digit',ph:'/ˈdɪdʒɪt/',pos:'n.',mean:'数字（0–9 的一个）',ex:'isdigit() 判断是不是数字'},
+  {en:'result',ph:'/rɪˈzʌlt/',pos:'n.',mean:'结果',ex:'用 result 这个变量存记下的密码'},
+  {en:'password',ph:'/ˈpɑːswɜːd/',pos:'n.',mean:'密码',ex:'if(result == password) 验证密码'}
+];
+const wg=document.getElementById('wordgrid');
+WORDS.forEach(w=>{
+  const d=document.createElement('div'); d.className='wcard';
+  d.innerHTML=`<div class="wtop"><span class="wen">${w.en}</span><span class="wph">${w.ph}</span>
+    <button class="spk">🔊</button></div>
+    <div class="wmean"><span class="pos">${w.pos}</span>${w.mean}</div>
+    <div class="wph2">🔧 ${w.ex}</div>`;
+  d.querySelector('.spk').onclick=()=>say(w.en,'en');
+  wg.appendChild(d);
+});
+
+/* ============ 舵机 ============ */
+const slider=document.getElementById('angSlider');
+function setAngle(a){ slider.value=a; renderAngle(a); }
+function renderAngle(a){
+  a=+a;
+  document.getElementById('angVal').textContent=a;
+  document.getElementById('codeAng').textContent=a;
+  // 门扇：90°=关，180°=全开。用 perspective+rotateY 表现门往外开的角度（0~75°视觉）
+  const open=Math.max(0,Math.min(a-90,90))/90; // 0=关 1=全开
+  document.getElementById('doorFlap').style.transform=`perspective(400px) rotateY(${-open*75}deg)`;
+  // 表盘指针：0°→-90deg，90°→0deg（竖直向上），180°→+90deg
+  document.getElementById('needle').style.transform=`rotate(${a-90}deg)`;
+  const note=document.getElementById('codeNote');
+  if(a>=170) note.textContent='// 门全开';
+  else if(a<=10) note.textContent='// 转到最小';
+  else if(a===90) note.textContent='// 关门';
+  else note.textContent='// 转到 '+a+'°';
+}
+slider.addEventListener('input',e=>renderAngle(e.target.value));
+renderAngle(90);
+
+/* ============ 遥控 ============ */
+function press(name){
+  document.getElementById('rscreen').textContent=name;
+  document.getElementById('keyOut').textContent='"'+name+'"';
+  say('按了 '+ (name==='上'?'上键':name==='下'?'下键':name==='左'?'左键':name==='右'?'右键':name+' 键'),'zh');
+}
+/* ============ 记密码 ============ */
+let pw='';
+const pb=document.getElementById('pwbuild');
+function renderPw(){
+  if(!pw){ pb.innerHTML='<span style="color:#bbb">（空）</span>'; return; }
+  let h=''; for(let i=0;i<pw.length;i++){ if(i>0) h+='<span class="plus">+</span>'; h+=`<span class="ch">${pw[i]}</span>`; }
+  pb.innerHTML=h;
+}
+function pwPress(k){
+  const isDigit=/^[0-9]$/.test(k);
+  const msg=document.getElementById('pwMsg');
+  if(isDigit){ pw+=k; renderPw();
+    msg.innerHTML=`按下 <b>${k}</b>：isdigit("${k}") 成立 ✅，执行 result = result + "${k}"，密码变成 <b>"${pw}"</b>`;
+  }else{
+    msg.innerHTML=`按下 <b>${k}</b>：isdigit("${k}") <b>不成立</b> ❌，if 里的拼接<b>不执行</b>，密码还是 "${pw||''}"。`;
+    pb.style.animation='shake .3s'; setTimeout(()=>pb.style.animation='',300);
+  }
+}
+function pwClear(){ pw=''; renderPw(); document.getElementById('pwMsg').innerHTML='已清空，重新按数字试试。'; }
+
+/* ============ 验证 ============ */
+let realPw='123', vin='';
+function vSet(){
+  const p=prompt('设一个 1~4 位的正确密码（只用数字）：','123');
+  if(p && /^[0-9]{1,4}$/.test(p)){ realPw=p; document.getElementById('pwShow').textContent=p;
+    document.getElementById('setpw').textContent='"'+p+'"'; vClear(); }
+  else if(p!==null) alert('只能用 1~4 位数字哦');
+}
+function vPress(k){ if(vin.length>=6) return; vin+=k; document.getElementById('vIn').textContent='"'+vin+'"'; }
+function vClear(){ vin=''; document.getElementById('vIn').textContent='（空）';
+  document.getElementById('vDoor').style.transform=''; }
+function hl(id,on){ document.getElementById(id).classList.toggle('hl',on); }
+function vCheck(){
+  const ok = vin===realPw;
+  const msg=document.getElementById('vMsg');
+  hl('ln-if',true);
+  if(ok){
+    hl('ln-else',false); hl('ln-open',true);
+    document.getElementById('vDoor').style.transform='perspective(360px) rotateY(-72deg)';
+    msg.innerHTML=`输入 "<b>${vin}</b>" <b>==</b> "<b>${realPw}</b>" 成立 ✅ → 进入 if → <b>rotateTo(180) 开门</b>！5 秒后自动关门。`;
+    say('密码正确，开门','zh');
+    setTimeout(()=>{ document.getElementById('vDoor').style.transform=''; },2600);
+  }else{
+    hl('ln-open',false); hl('ln-else',true);
+    document.getElementById('vDoor').style.transform='';
+    document.getElementById('vDoor').animate?.([{},{transform:'translateX(-6px)'},{transform:'translateX(6px)'},{}],{duration:300});
+    msg.innerHTML=`输入 "<b>${vin||'空'}</b>" <b>≠</b> "<b>${realPw}</b>" → 不成立 ❌ → 跳到 <b>else</b> → 屏幕显示<b>「密码错误」</b>，门不开。`;
+    say('密码错误','zh');
+  }
+  setTimeout(()=>{hl('ln-if',false);hl('ln-open',false);hl('ln-else',false);},2600);
+}
+
+/* ============ 小检验 ============ */
+const QUIZ=[
+  {q:'要让舵机把门开到最大，应该写哪一句？',
+   opts:['rotateTo(180);','rotateTo(360);','rotateTo("开门");','openDoor();'],a:0,
+   ex:'rotateTo() 括号里填 0~180 的<b>数字</b>。180 是最大角度＝开门。360 超出范围；不能填中文；openDoor 不是这个项目的命令。'},
+  {q:'key = getIRKey(); 这句话在做什么？',
+   opts:['把刚按的遥控键名存进 key','让遥控关机','把门转到 key 度','打印 key 这个字'],a:0,
+   ex:'getIRKey() 读出"刚按了哪个键"，= 号把这个键名<b>赋值</b>给字符串变量 key，后面才能拿来判断。'},
+  {q:'result = result + key; 配合 if(isdigit(key)) 的目的是？',
+   opts:['只把数字键一个个接到密码后面','把所有按键都记下来','算出 result 加 key 的和','清空密码'],a:0,
+   ex:'isdigit(key) 先检查按的是不是数字；是数字才用 + 把它<b>拼接</b>到 result 后面。字母不会被记进去。'},
+  {q:'if(result == password) 不成立时，会发生什么？',
+   opts:['执行 else：屏幕提示密码错误','门照样打开','程序停止','重新输入自动开门'],a:0,
+   ex:'== 不成立就走 <b>else</b> 这一边，printPos 显示「密码错误」，门不会开。if-else 只会走一边。'}
+];
+let qi=0, qok=0;
+function buildQuiz(){
+  qi=0; qok=0; document.getElementById('restartBtn').style.display='none';
+  document.getElementById('score').textContent='';
+  renderQ();
+}
+function renderQ(){
+  const box=document.getElementById('quizBox');
+  if(qi>=QUIZ.length){
+    box.innerHTML=`<div style="text-align:center;padding:18px 0;">
+      <div style="font-size:54px">${qok===QUIZ.length?'🏆':qok>=2?'👍':'💪'}</div>
+      <div style="font-size:20px;font-weight:900;margin-top:8px;">答对 ${qok} / ${QUIZ.length}</div>
+      <div class="sub" style="margin-top:6px;">${qok===QUIZ.length?'全对！密码门的原理你全懂了。':'再回上面玩一玩，把错的地方看清楚～'}</div></div>`;
+    document.getElementById('restartBtn').style.display='block';
+    return;
+  }
+  const item=QUIZ[qi];
+  box.innerHTML=`<div class="q">第 ${qi+1} 题　${item.q}</div>
+    <div id="opts"></div>
+    <div class="explain" id="ex">${item.ex}</div>
+    <button class="btn row" id="next" style="display:none" onclick="qi++;renderQ();">下一题 →</button>`;
+  const opts=document.getElementById('opts');
+  item.opts.forEach((o,i)=>{
+    const b=document.createElement('button'); b.className='opt'; b.textContent=o;
+    b.onclick=()=>{
+      if(document.getElementById('ex').classList.contains('show')) return;
+      const right=i===item.a;
+      if(right){ b.classList.add('ok'); qok++; say('答对了','zh'); }
+      else{ b.classList.add('no'); opts.children[item.a].classList.add('ok'); say('再想想','zh'); }
+      document.getElementById('ex').classList.add('show');
+      document.getElementById('next').style.display='block';
+      document.getElementById('score').textContent='✅ '+qok;
+    };
+    opts.appendChild(b);
+  });
+}
+buildQuiz();
+</script>
+</body>
+</html>

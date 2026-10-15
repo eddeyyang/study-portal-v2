@@ -1,0 +1,993 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<script src="../assets/learning-sync.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Summer Comparisons · 外教课预习</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
+  :root {
+    --pink:#FFB6C1; --pink-deep:#FF8DA8;
+    --blue:#A8D8EA; --blue-deep:#5AB6DB;
+    --yellow:#FFE07A; --yellow-soft:#FFF0B8; --mint:#B5EAD7;
+    --purple:#C7B8EA; --coral:#FF9E7A;
+    --bg:#FFFBF2; --text:#3D3142; --text-light:#7A6E82;
+    --green:#5FBE77; --red:#FF6B6B;
+    --shadow:0 4px 0 rgba(0,0,0,0.07), 0 8px 24px rgba(90,182,219,0.15);
+    --shadow-sm:0 2px 0 rgba(0,0,0,0.07), 0 4px 12px rgba(90,182,219,0.12);
+  }
+  body {
+    font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;
+    background:var(--bg); color:var(--text); min-height:100vh; overflow-x:hidden;
+    background-image:
+      radial-gradient(circle at 12% 12%, rgba(255,224,122,0.30) 0%, transparent 40%),
+      radial-gradient(circle at 88% 88%, rgba(168,216,234,0.28) 0%, transparent 42%);
+  }
+  .app { max-width:480px; margin:0 auto; padding:14px; min-height:100vh; }
+
+  .topbar { display:flex; align-items:center; justify-content:space-between; padding:10px 4px; margin-bottom:10px; }
+  .pill { background:white; padding:6px 12px; border-radius:18px; font-size:13px; font-weight:700; box-shadow:var(--shadow-sm); display:flex; align-items:center; gap:5px; cursor:pointer; }
+
+  .card { background:white; border-radius:22px; padding:20px 16px; box-shadow:var(--shadow); margin-bottom:14px; }
+  .stage-title { font-size:20px; font-weight:800; margin-bottom:4px; }
+  .stage-sub { font-size:12px; color:var(--text-light); margin-bottom:14px; line-height:1.5; }
+
+  .btn { display:inline-flex; align-items:center; justify-content:center; gap:6px; border:none; border-radius:16px; padding:13px 18px; font-size:15px; font-weight:700; cursor:pointer; transition:all .15s; font-family:inherit; box-shadow:var(--shadow); user-select:none; }
+  .btn:active { transform:translateY(2px); box-shadow:var(--shadow-sm); }
+  .btn-primary { background:var(--coral); color:white; width:100%; }
+  .btn-blue { background:var(--blue); color:var(--text); }
+  .btn-yellow { background:var(--yellow); color:var(--text); }
+  .btn-mint { background:var(--mint); color:var(--text); }
+  .btn-purple { background:var(--purple); color:var(--text); }
+  .btn-small { padding:9px 13px; font-size:13px; }
+  .btn-row { display:flex; gap:8px; flex-wrap:wrap; }
+
+  .home-hero { text-align:center; padding:18px 14px; }
+  .home-emoji { font-size:58px; display:inline-block; animation:bounce 2.2s infinite; }
+  @keyframes bounce { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
+  .home-title { font-size:24px; font-weight:800; margin:8px 0 2px; background:linear-gradient(135deg,var(--coral),var(--blue-deep)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+  .home-sub { color:var(--text-light); font-size:12px; margin-bottom:12px; }
+  .home-msg { background:var(--bg); border-radius:14px; padding:13px; text-align:left; font-size:13px; line-height:1.7; margin:12px 0; }
+  .home-msg strong { color:var(--coral); }
+
+  .kid-picker { display:flex; gap:10px; margin:14px 0; }
+  .kid-card { flex:1; padding:12px 8px; border-radius:16px; text-align:center; background:var(--bg); border:3px solid transparent; cursor:pointer; transition:all .2s; }
+  .kid-card.active { border-color:var(--coral); background:white; transform:scale(1.03); box-shadow:var(--shadow); }
+  .kid-card .avatar { font-size:36px; }
+  .kid-card .name { font-weight:800; font-size:15px; margin-top:2px; }
+  .kid-card .age { font-size:11px; color:var(--text-light); }
+
+  .map-btn { width:100%; padding:15px; border:none; border-radius:18px; font-family:inherit; font-weight:700; cursor:pointer; display:flex; align-items:center; gap:13px; box-shadow:var(--shadow); margin-bottom:10px; text-align:left; transition:transform .15s; background:white; }
+  .map-btn:active { transform:translateY(2px); }
+  .map-btn .icon { font-size:30px; flex-shrink:0; }
+  .map-btn .text { flex:1; }
+  .map-btn .t1 { font-size:15px; }
+  .map-btn .t2 { font-size:11px; color:var(--text-light); font-weight:500; margin-top:2px; line-height:1.4; }
+  .map-btn .done-badge { font-size:11px; font-weight:800; color:var(--green); white-space:nowrap; }
+  .map-btn.star { background:linear-gradient(135deg,#FFE07A,#FF9E7A); }
+
+  .hidden { display:none !important; }
+  .speak-btns { display:flex; gap:8px; justify-content:center; margin:10px 0; flex-wrap:wrap; }
+  .icon-btn { background:var(--blue); border:none; padding:10px 14px; border-radius:14px; font-size:13px; font-weight:700; cursor:pointer; box-shadow:var(--shadow-sm); font-family:inherit; display:inline-flex; align-items:center; gap:5px; }
+  .icon-btn:active { transform:translateY(1px); }
+  .icon-btn.yellow { background:var(--yellow); }
+  .icon-btn.coral { background:var(--coral); color:white; }
+  .icon-btn.mint { background:var(--mint); }
+  .icon-btn.purple { background:var(--purple); }
+
+  .pulse { animation:pulse 1.5s ease-in-out infinite; }
+  @keyframes pulse { 0%,100%{transform:scale(1)} 50%{transform:scale(1.06)} }
+
+  .feedback { margin-top:14px; padding:13px; border-radius:14px; font-size:13px; line-height:1.6; display:none; }
+  .feedback.show { display:block; animation:slideUp .3s; }
+  .feedback.right { background:#E8F8EC; border-left:4px solid var(--green); }
+  .feedback.wrong { background:#FFF3E0; border-left:4px solid var(--coral); }
+  .feedback .title { font-weight:800; margin-bottom:5px; font-size:14px; }
+  @keyframes slideUp { from{opacity:0; transform:translateY(10px)} to{opacity:1; transform:translateY(0)} }
+
+  .options { display:grid; gap:9px; margin-top:12px; }
+  .option { background:var(--bg); border:3px solid transparent; border-radius:14px; padding:13px; font-size:15px; font-weight:600; cursor:pointer; transition:all .15s; text-align:left; display:flex; align-items:center; gap:10px; font-family:inherit; }
+  .option:active { transform:scale(.98); }
+  .option .letter { width:24px; height:24px; border-radius:50%; background:white; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:13px; flex-shrink:0; }
+  .option.correct { background:var(--mint); border-color:var(--green); }
+  .option.wrong { background:#FFD6D6; border-color:var(--red); }
+  .option.disabled { pointer-events:none; }
+
+  /* 发音诊所 */
+  .pron-word { font-size:38px; font-weight:800; text-align:center; letter-spacing:1px; }
+  .pron-ipa { font-size:19px; color:var(--blue-deep); font-family:Georgia,serif; text-align:center; margin:4px 0; }
+  .pron-cn { font-size:15px; color:var(--text-light); text-align:center; margin-bottom:8px; }
+  .syll { display:flex; justify-content:center; gap:6px; margin:10px 0; flex-wrap:wrap; }
+  .syll span { background:var(--bg); padding:8px 12px; border-radius:12px; font-weight:800; font-size:16px; cursor:pointer; }
+  .syll span.hot { background:var(--yellow); color:var(--coral); transform:scale(1.1); }
+  .pron-tip { background:var(--yellow-soft); border-radius:14px; padding:12px; font-size:13px; line-height:1.6; margin:12px 0; }
+  .acc-row { display:flex; align-items:center; gap:8px; justify-content:center; margin:10px 0; font-size:13px; flex-wrap:wrap; }
+  .acc-chip { padding:4px 10px; border-radius:10px; font-weight:800; font-size:13px; }
+  .acc-low { background:#FFE0D0; color:#C05a2a; }
+  .acc-hi { background:#D6F5DC; color:#2F855A; }
+
+  /* 比较级机 */
+  .cmp-stage { text-align:center; margin:14px 0; }
+  .cmp-base { font-size:30px; font-weight:800; display:inline-block; }
+  .cmp-arrow { font-size:24px; margin:10px 0; color:var(--coral); }
+  .cmp-result { font-size:32px; font-weight:800; opacity:0; transform:scale(.8); transition:all .4s; }
+  .cmp-result.show { opacity:1; transform:scale(1); }
+  .cmp-result .add { color:var(--coral); background:var(--yellow); border-radius:6px; padding:0 4px; }
+  .rule-chip { display:inline-block; padding:5px 12px; border-radius:12px; font-size:13px; font-weight:800; margin-top:8px; }
+  .rule-short { background:var(--mint); }
+  .rule-double { background:#FFD7C2; }
+  .rule-y { background:var(--yellow); }
+  .rule-more { background:var(--purple); color:#fff; }
+  .rule-irregular { background:#FBC7DC; }
+
+  /* 句子块 */
+  .build { display:flex; flex-wrap:wrap; gap:7px; justify-content:center; align-items:center; margin:14px 0; }
+  .chunk { padding:10px 14px; border-radius:13px; font-weight:800; font-size:16px; opacity:0; transform:translateY(8px); animation:pop .4s forwards; }
+  @keyframes pop { to{opacity:1; transform:translateY(0)} }
+  .chunk.a { background:var(--blue); }
+  .chunk.cmp { background:var(--yellow); color:var(--coral); }
+  .chunk.than { background:var(--mint); }
+  .chunk.b { background:var(--coral); color:white; }
+  .chunk-note { font-size:11px; font-weight:600; color:var(--text-light); display:block; text-align:center; margin-top:3px; }
+
+  /* 句子小医院 */
+  .sent-box { font-size:18px; font-weight:700; text-align:center; margin:14px 0; line-height:1.6; }
+  .bad-word { background:var(--yellow); padding:2px 8px; border-radius:8px; cursor:pointer; transition:all .3s; display:inline-block; text-decoration:line-through; text-decoration-color:var(--coral); }
+  .bad-word.fixed { background:var(--mint); text-decoration:none; transform:scale(1.08); }
+  .sparkle { position:fixed; font-size:22px; pointer-events:none; z-index:9999; animation:spark 1s forwards; }
+  @keyframes spark { to{ transform:translateY(-40px) scale(1.6); opacity:0; } }
+
+  /* a/an 摊 */
+  .toggle-row { display:flex; gap:8px; justify-content:center; flex-wrap:wrap; margin:12px 0; }
+  .toggle { background:var(--bg); border:3px solid transparent; border-radius:13px; padding:11px 20px; font-weight:800; cursor:pointer; font-size:17px; }
+  .toggle.active { border-color:var(--blue-deep); background:white; }
+  .toggle.disabled { pointer-events:none; }
+  .item-big { font-size:40px; text-align:center; margin:6px 0; }
+
+  /* 词汇翻卡 */
+  .vocab-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+  .flip { perspective:800px; height:96px; cursor:pointer; }
+  .flip-in { position:relative; width:100%; height:100%; transition:transform .5s; transform-style:preserve-3d; }
+  .flip.on .flip-in { transform:rotateY(180deg); }
+  .flip-face { position:absolute; width:100%; height:100%; backface-visibility:hidden; border-radius:14px; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:6px; box-shadow:var(--shadow-sm); }
+  .flip-front { background:var(--bg); }
+  .flip-front .w { font-size:17px; font-weight:800; }
+  .flip-back { background:var(--mint); transform:rotateY(180deg); text-align:center; font-size:13px; line-height:1.4; }
+  .cefr { font-size:10px; font-weight:800; padding:1px 6px; border-radius:7px; background:var(--blue); margin-top:3px; }
+
+  /* 故事 */
+  .story-p { font-size:16px; line-height:1.9; margin-bottom:6px; }
+  .story-line { display:flex; align-items:flex-start; gap:6px; margin-bottom:6px; }
+  .story-line .txt { flex:1; }
+
+  /* en 翻译 */
+  .en { border-bottom:1px dashed rgba(122,110,130,.35); cursor:pointer; user-select:none; -webkit-touch-callout:none; padding:0 2px; border-radius:3px; }
+  .en:active { background:rgba(255,224,122,.5); }
+  #transBubble { position:fixed; background:white; border-radius:14px; padding:12px 16px; box-shadow:0 8px 24px rgba(0,0,0,.2); z-index:99999; min-width:150px; max-width:280px; text-align:center; border:2px solid var(--coral); animation:slideUp .2s; }
+  #transBubble .bubble-en { font-size:14px; font-weight:700; margin-bottom:4px; }
+  #transBubble .bubble-cn { font-size:16px; font-weight:800; color:var(--coral); margin-bottom:8px; }
+  #transBubble .bubble-speak { background:var(--blue); border:none; padding:6px 14px; border-radius:12px; font-weight:700; font-size:12px; cursor:pointer; font-family:inherit; }
+
+  .report-sec { background:var(--bg); border-radius:14px; padding:12px 14px; margin-bottom:10px; }
+  .report-sec h3 { font-size:13px; font-weight:800; margin-bottom:8px; }
+  .report-sec .item { font-size:13px; line-height:1.6; padding:2px 0; }
+  .badge { display:inline-block; padding:2px 8px; border-radius:8px; font-size:11px; font-weight:700; margin-right:4px; }
+  .badge-red { background:#FFD6D6; color:#C53030; }
+  .badge-green { background:#D6F5DC; color:#2F855A; }
+
+  .confetti { position:fixed; top:-10px; width:9px; height:9px; z-index:9999; animation:fall 3s linear forwards; }
+  @keyframes fall { to{ transform:translateY(100vh) rotate(720deg); } }
+</style>
+</head>
+<body>
+<div class="app" id="app">
+
+  <div id="topbar" class="topbar hidden">
+    <div class="pill" onclick="goHome()">← 首页</div>
+    <div class="pill" id="whoPill">👦 Kenton</div>
+    <div class="pill">⭐ <span id="starCount">0</span></div>
+  </div>
+
+  <!-- 首页 -->
+  <div id="home" class="card home-hero">
+    <div class="home-emoji">🏖️☀️🍦</div>
+    <div class="home-title">Summer<br>Comparisons</div>
+    <div class="home-sub">外教课预习 / 复习 · 比较级 + 冠词 a/an</div>
+
+    <div class="home-msg">
+      这节课是关于 <strong>夏天 + 比大小（比较级）</strong>。这个软件帮你把它玩懂、读顺：<br>
+      <strong>① 比较级变形机</strong> · warm→warmer, sunny→sunnier<br>
+      <strong>② 发音诊所</strong> · 读顺 towels / homework / weather / relaxed<br>
+      <strong>③ 句子小医院</strong> · 把课上几句变得更棒<br>
+      <strong>④ a / an 冷饮摊</strong> · It's an ice cream<br>
+      <strong>⑤ 同义词升级器 · ⑥ Joshua 的夏天故事</strong><br>
+      <strong>⑦ 单词卡 · ⑧ 小测验</strong>
+    </div>
+
+    <div style="background:var(--yellow-soft); border-radius:14px; padding:11px; margin:12px 0; font-size:12px; line-height:1.6;">
+      🌈 <strong>不用怕说错！</strong>外教说，这个阶段<b>敢开口、能表达</b>最重要，说错很正常，多听多说慢慢就顺了。这里都是好玩的，错了有讲解 😊
+    </div>
+    <div style="background:#FFF4E0; border-radius:14px; padding:11px; margin:12px 0; font-size:12px; line-height:1.6;">
+      📢 <strong>先测声音：</strong>手机首次要先点一下，浏览器才允许朗读。
+      <button id="testVoiceBtn" class="btn btn-yellow btn-small" style="margin-top:8px; width:100%;" onclick="testVoice()">🔊 点这里测试声音</button>
+    </div>
+
+    <div style="font-weight:800; margin:10px 0 6px; font-size:14px;">先选一下你是谁：</div>
+    <div class="kid-picker">
+      <div class="kid-card" data-kid="kenton" onclick="pickKid('kenton')">
+        <div class="avatar">👦</div><div class="name">Kenton</div><div class="age">哥哥</div>
+      </div>
+      <div class="kid-card" data-kid="eddey" onclick="pickKid('eddey')">
+        <div class="avatar">🧒</div><div class="name">Eddey</div><div class="age">弟弟</div>
+      </div>
+    </div>
+
+    <div id="mapBox" style="opacity:.4; pointer-events:none; text-align:left;"></div>
+  </div>
+
+  <div id="stageBox" class="card hidden">
+    <div class="stage-title" id="stageTitle"></div>
+    <div class="stage-sub" id="stageSub"></div>
+    <div id="stageContent"></div>
+  </div>
+</div>
+
+<script>
+/* ========== 语音 ========== */
+let voicesReady=false, enVoice=null, voiceUnlocked=false;
+function loadVoices(){
+  if(!('speechSynthesis' in window))return;
+  const vs=window.speechSynthesis.getVoices();
+  if(!vs.length)return;
+  enVoice = vs.find(v=>v.lang==='en-US') || vs.find(v=>v.lang&&v.lang.startsWith('en-US')) || vs.find(v=>v.lang&&v.lang.startsWith('en')) || vs[0];
+  voicesReady=true;
+}
+if('speechSynthesis' in window){
+  loadVoices();
+  if(window.speechSynthesis.onvoiceschanged!==undefined) window.speechSynthesis.onvoiceschanged=loadVoices;
+  setInterval(()=>{ if(window.speechSynthesis.paused) window.speechSynthesis.resume(); },10000);
+}
+function unlockVoice(){
+  if(voiceUnlocked||!('speechSynthesis' in window))return;
+  try{ const u=new SpeechSynthesisUtterance(' '); u.volume=0; window.speechSynthesis.speak(u); voiceUnlocked=true; }catch(e){}
+}
+function speak(text, slow){
+  if(!('speechSynthesis' in window)){ alert('⚠️ 浏览器不支持朗读。请用最新版 Chrome / Safari / Edge。'); return; }
+  window.speechSynthesis.cancel();
+  if(!voicesReady) loadVoices();
+  setTimeout(()=>{
+    const u=new SpeechSynthesisUtterance(text);
+    u.lang='en-US'; u.rate=slow?0.55:0.92; u.pitch=1.05; u.volume=1;
+    if(enVoice) u.voice=enVoice;
+    window.speechSynthesis.speak(u); voiceUnlocked=true;
+  },50);
+}
+function speakTimes(text, n, slow){
+  let i=0;
+  (function go(){ if(i>=n)return; speak(text, slow); i++; setTimeout(go, slow?2200:1500); })();
+}
+function testVoice(){
+  unlockVoice();
+  setTimeout(()=>{ speak('Today is sunnier and warmer than yesterday.'); const b=document.getElementById('testVoiceBtn'); if(b){b.textContent='✅ 声音正常！'; b.style.background='var(--mint)';} },100);
+}
+
+/* ========== 词典：长按翻译 ========== */
+const DICT={
+  'summer':'夏天','comparison':'比较','comparisons':'比较','warmer':'更暖和','warm':'暖和的',
+  'sunnier':'更晴朗','sunny':'晴朗的','hotter':'更热','hot':'热的','cooler':'更凉快','cool':'凉快的',
+  'colder':'更冷','cold':'冷的','bigger':'更大','big':'大的','taller':'更高','tall':'高的',
+  'happier':'更开心','happy':'开心的','farther':'更远','far':'远的','better':'更好','good':'好的',
+  'delicious':'美味的','more delicious':'更美味','relaxed':'放松的','more relaxed':'更放松',
+  'than':'比','umbrella':'雨伞','towel':'毛巾','towels':'毛巾(复数)','basket':'篮子','ice cream':'冰淇淋',
+  'lemonade':'柠檬水','fruit salad':'水果沙拉','beach ball':'沙滩球','beach':'海滩','park':'公园',
+  'juice':'果汁','weather':'天气','homework':'作业','favorite':'最喜欢的','scream':'尖叫','yell':'大喊',
+  'like':'喜欢','enjoy':'享受/喜欢','larger':'更大的','story':'故事','a lot of':'很多','during':'在…期间',
+  "It's an ice cream":'这是个冰淇淋',"It's a basket":'这是个篮子','holidays':'假期','holiday':'假期',
+  'Joshua':'Joshua(人名)','yesterday':'昨天','today':'今天','more fun':'更好玩','fun':'好玩的',
+  'a':'一个(辅音前)','an':'一个(元音前)','drinking':'正在喝','drink':'喝',
+  'The beach is more fun than the park':'海滩比公园好玩','Today is sunnier than yesterday':'今天比昨天晴',
+};
+let lpTimer=null, lpTarget=null;
+function getTrans(t){
+  if(!t)return null;
+  const c=t.trim().replace(/[.,!?;:'"]+$/,'').trim();
+  if(DICT[c])return DICT[c];
+  const lo=c.toLowerCase();
+  for(const k in DICT) if(k.toLowerCase()===lo) return DICT[k];
+  const ws=c.split(/\s+/);
+  if(ws.length>1){
+    return ws.map(w=>{ const wc=w.replace(/[.,!?;:'"]+$/,''); if(DICT[wc])return DICT[wc]; const wl=wc.toLowerCase(); for(const k in DICT) if(k.toLowerCase()===wl)return DICT[k]; return wc; }).join(' · ');
+  }
+  return null;
+}
+function showBubble(text,x,y,noRead){
+  hideBubble();
+  const tr=getTrans(text); if(!tr)return;
+  const b=document.createElement('div'); b.id='transBubble';
+  const sb=noRead?'':`<button class="bubble-speak" onclick="event.stopPropagation(); speak('${text.replace(/'/g,"\\'")}',true);">🔊 听</button>`;
+  b.innerHTML=`<div class="bubble-en">${text}</div><div class="bubble-cn">${tr}</div>${sb}`;
+  document.body.appendChild(b);
+  const r=b.getBoundingClientRect();
+  let l=x-r.width/2, t=y-r.height-18;
+  if(l<10)l=10; if(l+r.width>window.innerWidth-10)l=window.innerWidth-r.width-10; if(t<10)t=y+28;
+  b.style.left=l+'px'; b.style.top=t+'px';
+  setTimeout(()=>{ document.addEventListener('click',hideBubble,{once:true}); document.addEventListener('touchstart',hideBubble,{once:true}); },100);
+}
+function hideBubble(){ const b=document.getElementById('transBubble'); if(b)b.remove(); }
+function setupLongPress(){
+  document.addEventListener('touchstart',e=>{ const el=e.target.closest('.en'); if(!el)return; lpTarget=el; const tc=e.touches[0]; const nr=el.classList.contains('noread'); lpTimer=setTimeout(()=>{ if(lpTarget===el){ showBubble(el.textContent||'',tc.clientX,tc.clientY,nr); if(navigator.vibrate)navigator.vibrate(30);} },500); },{passive:true});
+  document.addEventListener('touchend',()=>{clearTimeout(lpTimer);lpTarget=null;},{passive:true});
+  document.addEventListener('touchmove',()=>{clearTimeout(lpTimer);lpTarget=null;},{passive:true});
+  document.addEventListener('mousedown',e=>{ const el=e.target.closest('.en'); if(!el)return; lpTarget=el; const nr=el.classList.contains('noread'); lpTimer=setTimeout(()=>{ if(lpTarget===el) showBubble(el.textContent||'',e.clientX,e.clientY,nr); },500); });
+  document.addEventListener('mouseup',()=>{clearTimeout(lpTimer);lpTarget=null;});
+  document.addEventListener('dblclick',e=>{ const el=e.target.closest('.en'); if(!el)return; e.preventDefault(); showBubble(el.textContent||'',e.clientX,e.clientY,el.classList.contains('noread')); });
+}
+function $(id){return document.getElementById(id);}
+function en(t){ const s=String(t).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); return `<span class="en">${s}</span>`; }
+function enT(t){ const s=String(t).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); return `<span class="en noread">${s}</span>`; }
+
+/* ========== 数据 ========== */
+// 比较级变形机 · 演示
+const CMP_DEMO=[
+  { base:'warm', comp:'warmer', add:'er', keep:'warm', rule:'short', tag:'短词直接 +er',
+    note:'短形容词直接在后面加 -er。', ex:'Summer is warmer than winter.', exCn:'夏天比冬天暖和。' },
+  { base:'cool', comp:'cooler', add:'er', keep:'cool', rule:'short', tag:'短词直接 +er',
+    note:'cool + er → cooler。', ex:'The park is cooler than the beach.', exCn:'公园比海滩凉快。' },
+  { base:'hot', comp:'hotter', add:'ter', keep:'hot', rule:'double', tag:'双写末字母 +er',
+    note:'重读闭音节(元音+1个辅音)要先双写末字母：hot → hot·t·er。', ex:'Today is hotter than yesterday.', exCn:'今天比昨天热。' },
+  { base:'big', comp:'bigger', add:'ger', keep:'big', rule:'double', tag:'双写末字母 +er',
+    note:'big → big·g·er，双写 g。', ex:'A beach ball is bigger than an apple.', exCn:'沙滩球比苹果大。' },
+  { base:'sunny', comp:'sunnier', add:'ier', keep:'sunn', rule:'y', tag:'y 变 i +er',
+    note:'"辅音 + y" 结尾：把 y 变 i 再加 er：sunny → sunn·i·er。', ex:'Today is sunnier than yesterday.', exCn:'今天比昨天晴。' },
+  { base:'happy', comp:'happier', add:'ier', keep:'happ', rule:'y', tag:'y 变 i +er',
+    note:'happy → happ·i·er。', ex:'I am happier in summer.', exCn:'我夏天更开心。' },
+  { base:'delicious', comp:'more delicious', add:'', keep:'delicious', rule:'more', tag:'长词前加 more',
+    note:'较长的形容词前面加 more，不加 -er。', ex:'Ice cream is more delicious than fruit salad.', exCn:'冰淇淋比水果沙拉好吃。' },
+  { base:'relaxed', comp:'more relaxed', add:'', keep:'relaxed', rule:'more', tag:'长词前加 more',
+    note:'relaxed 前面加 more。', ex:'I feel more relaxed at the beach.', exCn:'我在海滩上更放松。' },
+  { base:'far', comp:'farther', add:'', keep:'far', rule:'irregular', tag:'不规则(要背)',
+    note:'far 是特殊词：far → farther(更远)。要单独记。', ex:'The beach is farther than the park.', exCn:'海滩比公园更远。' },
+  { base:'good', comp:'better', add:'', keep:'good', rule:'irregular', tag:'不规则(要背)',
+    note:'good → better，完全变样，要背下来。', ex:'Summer is better than winter!', exCn:'夏天比冬天好！' },
+];
+// 比较级 · 你来变
+const CMP_TRY=[
+  { base:'tall', opts:['taller','more tall','tallerer'], a:0, why:'短词直接 +er → taller。' },
+  { base:'hot', opts:['hoter','hotter','more hot'], a:1, why:'重读闭音节双写末字母 → hotter。' },
+  { base:'sunny', opts:['sunnyer','more sunny','sunnier'], a:2, why:'辅音+y → y 变 i +er → sunnier。' },
+  { base:'delicious', opts:['deliciouser','more delicious','deliciouer'], a:1, why:'长词前加 more → more delicious。' },
+  { base:'big', opts:['bigger','biger','more big'], a:0, why:'双写末字母 → bigger。' },
+  { base:'good', opts:['gooder','more good','better'], a:2, why:'不规则 → better（要背）。' },
+  { base:'happy', opts:['happier','happyer','more happy'], a:0, why:'y 变 i +er → happier。' },
+];
+// than 造句
+const CMP_THAN=[
+  { a:'The beach', cmp:'more fun', b:'the park', full:'The beach is more fun than the park.', cn:'海滩比公园好玩。' },
+  { a:'Ice cream', cmp:'more delicious', b:'fruit salad', full:'Ice cream is more delicious than fruit salad.', cn:'冰淇淋比水果沙拉好吃。' },
+  { a:'Today', cmp:'sunnier', b:'yesterday', full:'Today is sunnier than yesterday.', cn:'今天比昨天晴。' },
+];
+
+// 发音诊所
+const PRON=[
+  { w:'towels', ipa:'/ˈtaʊ·əlz/', cn:'毛巾(复数)', acc:40, syll:['TOW','els'], stress:'TOW',
+    tip:'重音在前 <b>TOW</b>(像"套")。结尾 -els 有个 /z/ 的嗡嗡音。读 <b>TOW</b>-elz。' },
+  { w:'homework', ipa:'/ˈhoʊm·wɜrk/', cn:'作业', acc:36, syll:['HOME','work'], stress:'HOME',
+    tip:'两段：<b>HOME</b>-work。home 读"houm"(有 ou)，重音在前。别读成"哄-work"。' },
+  { w:'weather', ipa:'/ˈwe·ðər/', cn:'天气', acc:54, syll:['WE','ther'], stress:'WE',
+    tip:'th 是咬舌音 /ð/(舌尖轻碰上齿)。读 <b>WE</b>-ther，重音在前。' },
+  { w:'relaxed', ipa:'/rɪ·ˈlækst/', cn:'放松的', acc:55, syll:['re','LAXED'], stress:'LAXED',
+    tip:'重音在后 <b>LAXED</b>。结尾 -xed 读 /kst/(k+s+t 连在一起)，短促收尾。' },
+];
+
+// 句子小医院（课上的真实句子 → 更棒的说法，温柔修）
+const HOSPITAL=[
+  { parts:['She is ',['drink','drinking'],' lemonade.'], tag:'现在进行时',
+    good:'She is drinking lemonade.',
+    why:'"正在做某事" = am/is/are + 动词-ing。所以 is 后面的 drink 要变成 drinking。' },
+  { parts:['The beach is ',['far','farther'],' than the park.'], tag:'比较级',
+    good:'The beach is farther than the park.',
+    why:'比两样东西要用比较级。far 是不规则词，比较级是 farther(更远)。' },
+  { parts:['We are ',['more happy','happier'],' in the summer holidays.'], tag:'比较级',
+    good:'We are happier during the summer holidays.',
+    why:'happy 是"辅音+y"，比较级把 y 变 i 加 er → happier(不是 more happy)。（"假期期间"用 during 更准。）' },
+  { parts:['Ice cream ',['made it more','is more'],' delicious than salad.'], tag:'说得更简单',
+    good:'Ice cream is more delicious than salad.',
+    why:'句子绕了一点。直接用 is 做简单比较最清楚：Ice cream is more delicious than salad.' },
+  { parts:['I like ',['give you many','to give you a lot of'],' homework.'], tag:'不定式 + 量词',
+    good:'I like to give you a lot of homework.',
+    why:'like 后面接 to do → like to give。homework 是不可数名词，不能用 many，要用 a lot of。' },
+];
+
+// a / an 冷饮摊
+const ART=[
+  { noun:'ice cream', emoji:'🍦', a:'an', why:'ice cream 以元音音 /aɪ/ 开头 → an ice cream。' },
+  { noun:'umbrella', emoji:'☂️', a:'an', why:'umbrella 以元音 /ʌ/ 开头 → an umbrella。' },
+  { noun:'basket', emoji:'🧺', a:'a', why:'basket 以辅音 /b/ 开头 → a basket。' },
+  { noun:'towel', emoji:'🧻', a:'a', why:'towel 以辅音 /t/ 开头 → a towel。' },
+  { noun:'apple', emoji:'🍎', a:'an', why:'apple 元音开头 → an apple。' },
+  { noun:'lemonade', emoji:'🥤', a:'a', why:'lemonade 以辅音 /l/ 开头 → a lemonade。' },
+];
+
+// 同义词升级
+const SYN=[
+  { sent:["The kids ","scream"," at the beach."], word:'scream', up:'yell', cn:'scream → yell（尖叫 / 大喊）' },
+  { sent:["I ","like"," summer."], word:'like', up:'enjoy', cn:'like → enjoy（喜欢 → 享受，更高级）' },
+  { sent:["A beach ball is ","bigger"," than an apple."], word:'bigger', up:'larger', cn:'bigger → larger（更大，更正式）' },
+];
+
+// Joshua 的夏天故事
+const STORY=[
+  { en:"It is summer! Joshua is very happy.", cn:'夏天到啦！Joshua 很开心。' },
+  { en:"Today is sunnier and warmer than yesterday.", cn:'今天比昨天更晴、更暖。' },
+  { en:"Joshua goes to the beach with his family.", cn:'Joshua 和家人去海滩。' },
+  { en:"The beach is more fun than the park!", cn:'海滩比公园好玩！' },
+  { en:"He has an ice cream. Ice cream is more delicious than fruit salad.", cn:'他有个冰淇淋。冰淇淋比水果沙拉好吃。' },
+  { en:"\"I don't have any homework!\" says Joshua.", cn:'“我没有任何作业！”Joshua 说。' },
+  { en:"He feels more relaxed at the beach.", cn:'他在海滩上更放松。' },
+];
+const STORY_Q=[
+  { q:'Joshua 去了哪里？', opts:['the park','the beach','school'], a:1, explain:'故事说 Joshua goes to the beach（去海滩）。' },
+  { q:'今天和昨天比，天气怎么样？', opts:['sunnier & warmer','colder','the same'], a:0, explain:'Today is sunnier and warmer than yesterday（更晴更暖）。' },
+  { q:'哪个更好吃？', opts:['fruit salad','ice cream','homework'], a:1, explain:'Ice cream is more delicious than fruit salad。冰淇淋更好吃。' },
+  { q:'Joshua 有作业吗？', opts:["Yes, a lot.","No, he doesn't have any.","Only a little."], a:1, explain:"I don't have any homework! 他没有任何作业。" },
+];
+
+// 词汇卡（10 核心词）
+const VOCAB=[
+  { w:'juice', cefr:'A1', cn:'果汁' },
+  { w:'umbrella', cefr:'A1', cn:'雨伞' },
+  { w:'lemonade', cefr:'A1', cn:'柠檬水' },
+  { w:'delicious', cefr:'A2', cn:'美味的' },
+  { w:'warm', cefr:'A1', cn:'暖和的' },
+  { w:'happy', cefr:'A1', cn:'开心的' },
+  { w:'tall', cefr:'A1', cn:'高的' },
+  { w:'favorite', cefr:'A1', cn:'最喜欢的' },
+  { w:'homework', cefr:'A1', cn:'作业' },
+  { w:'towel', cefr:'A1', cn:'毛巾' },
+];
+
+// 小测验
+const QUIZ=[
+  { q:'sunny 的比较级是？', opts:['sunnyer','sunnier','more sunny'], a:1, explain:'辅音+y → y 变 i +er → sunnier。' },
+  { q:'hot 的比较级是？', opts:['hotter','hoter','more hot'], a:0, explain:'重读闭音节双写末字母 → hotter。' },
+  { q:'delicious 的比较级是？', opts:['deliciouser','more delicious','deliciouier'], a:1, explain:'长词前加 more → more delicious。' },
+  { q:'选正确的：It\'s ___ ice cream.', opts:['a','an'], a:1, explain:'ice cream 元音开头 → an ice cream。' },
+  { q:'选正确的：It\'s ___ basket.', opts:['a','an'], a:0, explain:'basket 辅音开头 → a basket。' },
+  { q:'"正在喝柠檬水" She is ___ lemonade.', opts:['drink','drinking','drinks'], a:1, explain:'现在进行时 is + 动词-ing → drinking。' },
+  { q:'far 的比较级是？', opts:['farer','more far','farther'], a:2, explain:'不规则 → farther（要背）。' },
+  { q:'"海滩比公园好玩" The beach is ___ the park.', opts:['more fun than','funner than','more fun that'], a:0, explain:'比较用 more fun + than。' },
+];
+
+/* ========== 状态 ========== */
+let kid=null, stars=0;
+let prog={ done:{}, stars:0, log:[] };
+const MODULES=[
+  { id:'recap',   icon:'📋', t1:'这节课学了啥', t2:'2 个话题 + 比较级/冠词 语法（带例句朗读）' },
+  { id:'compare', icon:'⚖️', t1:'比较级变形机 ⭐', t2:'看形容词怎么变 warmer/sunnier/more…，还能自己变', star:true },
+  { id:'pron',    icon:'🔊', t1:'发音诊所 ⭐', t2:'读顺 towels / homework / weather / relaxed（可录音自测）', star:true },
+  { id:'hospital',icon:'🔧', t1:'句子小医院 ⭐', t2:'把课上几句变得更棒（点一下就治好，带讲解）', star:true },
+  { id:'article', icon:'🍦', t1:'a / an 冷饮摊', t2:'It\'s an ice cream / It\'s a basket' },
+  { id:'syn',     icon:'🔁', t1:'同义词升级器', t2:'scream→yell, like→enjoy, bigger→larger' },
+  { id:'story',   icon:'📖', t1:'Joshua 的夏天', t2:'读小故事 + 回答问题（真人朗读）' },
+  { id:'vocab',   icon:'📒', t1:'单词卡', t2:'10 个夏天词（翻卡 + 朗读 + 等级）' },
+  { id:'quiz',    icon:'🏆', t1:'小测验', t2:'懂了再玩一遍，每题有讲解' },
+];
+
+function saveProg(){ if(kid) localStorage.setItem('preplySC_'+kid, JSON.stringify({stars, prog})); }
+function loadProg(k){ try{ const r=localStorage.getItem('preplySC_'+k); return r?JSON.parse(r):null; }catch(e){return null;} }
+function pickKid(k){
+  kid=k;
+  document.querySelectorAll('.kid-card').forEach(el=>el.classList.toggle('active', el.dataset.kid===k));
+  const d=loadProg(k);
+  stars = d?d.stars||0:0;
+  prog = d&&d.prog ? d.prog : { done:{}, stars:0, log:[] };
+  $('mapBox').style.opacity='1'; $('mapBox').style.pointerEvents='auto';
+  $('whoPill').innerHTML = k==='kenton'?'👦 Kenton':'🧒 Eddey';
+  $('starCount').textContent=stars;
+  renderMap();
+}
+function renderMap(){
+  $('mapBox').innerHTML = MODULES.map(m=>{
+    const dn=prog.done[m.id];
+    const badge = dn ? `<span class="done-badge">✅${dn.ok}/${dn.total}</span>` : '';
+    return `<button class="map-btn ${m.star?'star':''}" onclick="openModule('${m.id}')">
+      <span class="icon">${m.icon}</span>
+      <span class="text"><div class="t1">${m.t1}</div><div class="t2">${m.t2}</div></span>
+      ${badge}
+    </button>`;
+  }).join('') + `
+    <button class="map-btn" onclick="openModule('report')">
+      <span class="icon">👨‍👩‍👧</span>
+      <span class="text"><div class="t1">学习记录 / 家长页</div><div class="t2">看练了哪些 + 复制导出</div></span>
+    </button>`;
+}
+function addStar(n){ stars+=n; $('starCount').textContent=stars; saveProg(); }
+function markDone(id,ok,total){ prog.done[id]={ok,total}; prog.log.push({id,ok,total,ts:Date.now()}); saveProg(); }
+function openModule(id){
+  if(!kid){ alert('先选 Kenton 或 Eddey！'); return; }
+  $('home').classList.add('hidden');
+  $('topbar').classList.remove('hidden');
+  $('stageBox').classList.remove('hidden');
+  window.scrollTo({top:0,behavior:'smooth'});
+  ({recap:renderRecap,compare:renderCompare,pron:renderPron,hospital:renderHospital,article:renderArticle,syn:renderSyn,story:renderStory,vocab:renderVocab,quiz:renderQuiz,report:renderReport}[id])();
+}
+function goHome(){
+  $('topbar').classList.add('hidden'); $('stageBox').classList.add('hidden');
+  $('home').classList.remove('hidden'); renderMap();
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function setTitle(t,s){ $('stageTitle').textContent=t; $('stageSub').textContent=s; }
+function backBtn(){ return `<button class="btn btn-blue" style="width:100%; margin-top:14px;" onclick="goHome()">🏠 回模块地图</button>`; }
+function shuffle(a){ a=[...a]; for(let i=a.length-1;i>0;i--){const j=(Math.random()*(i+1))|0;[a[i],a[j]]=[a[j],a[i]];} return a; }
+function confetti(){ const cs=['#FFE07A','#A8D8EA','#FF9E7A','#B5EAD7','#C7B8EA']; for(let i=0;i<28;i++){ const c=document.createElement('div'); c.className='confetti'; c.style.left=Math.random()*100+'%'; c.style.background=cs[(Math.random()*cs.length)|0]; c.style.animationDelay=(Math.random()*.5)+'s'; c.style.borderRadius=Math.random()>.5?'50%':'0'; document.body.appendChild(c); setTimeout(()=>c.remove(),3300);} }
+
+/* ========== 1. 这节课学了啥 ========== */
+function renderRecap(){
+  setTitle('📋 这节课学了啥','点 🔊 听例句。看不懂的英文长按看中文。');
+  const topics=[
+    ['🎮 热身：Switch + 天气','I played games. It is raining and cold today.','聊了新 Switch、玩的游戏、今天的天气。'],
+    ['🧺 夏天词汇','umbrella, towel, basket, ice cream, lemonade, fruit salad','看图说名字，练 It\'s an ice cream / It\'s a basket。'],
+    ['⚖️ 比较级 + 读故事','The beach is more fun than the park.','读 Joshua 的夏天故事，学 sunnier/warmer/more delicious。'],
+  ];
+  const grammar=[
+    ['比较级形容词','比两样东西：短词+er，长词加 more','Today is sunnier than yesterday. Ice cream is more delicious than fruit salad.'],
+    ['冠词 a / an','单数可数名词前：辅音音用 a，元音音用 an','It\'s an ice cream. It\'s a basket.'],
+  ];
+  $('stageContent').innerHTML = `
+    <div style="font-weight:800; margin:6px 0 8px;">课上的 3 个环节</div>
+    ${topics.map(t=>`<div class="report-sec"><h3>${t[0]}</h3>
+      <div class="item">${en(t[1])} <button class="icon-btn mint btn-small" style="padding:4px 8px;" onclick="speak('${t[1].replace(/'/g,"\\'")}')">🔊</button></div>
+      <div class="item" style="color:var(--text-light); font-size:12px;">${t[2]}</div></div>`).join('')}
+    <div style="font-weight:800; margin:14px 0 8px;">2 条核心语法</div>
+    ${grammar.map(g=>`<div class="report-sec"><h3>📌 ${g[0]}</h3>
+      <div class="item" style="font-size:12px; color:var(--text-light);">${g[1]}</div>
+      <div class="item">${en(g[2])} <button class="icon-btn mint btn-small" style="padding:4px 8px;" onclick="speak('${g[2].replace(/'/g,"\\'")}')">🔊</button></div></div>`).join('')}
+    <div style="background:var(--yellow-soft); border-radius:12px; padding:11px; font-size:12px; line-height:1.6; margin-top:12px;">
+      💪 先去 <b>比较级变形机</b> 玩懂"怎么变"，再去 <b>发音诊所</b> 把 4 个词读顺！
+    </div>
+    ${backBtn()}`;
+  markDone('recap',1,1); renderMap();
+}
+
+/* ========== 2. 比较级变形机 ========== */
+let cIdx=0, cPhase='demo', cTryOk=0, cThanIdx=0;
+function renderCompare(){ cIdx=0; cPhase='demo'; cTryOk=0; cThanIdx=0; cmpDemoOne(); }
+function ruleClass(r){ return 'rule-'+r; }
+function cmpDemoOne(){
+  if(cIdx>=CMP_DEMO.length){ cPhase='try'; cIdx=0; cmpTryOne(); return; }
+  const d=CMP_DEMO[cIdx];
+  setTitle('⚖️ 比较级变形机 · 看它怎么变','点"变身"，看形容词怎么变成"更…"的比较级。');
+  $('stageContent').innerHTML=`
+    <div style="text-align:center; font-size:13px; color:var(--text-light);">第 ${cIdx+1} / ${CMP_DEMO.length} 个</div>
+    <div class="cmp-stage">
+      <div class="cmp-base">${d.base}</div>
+      <div class="cmp-arrow">⬇️ 变身</div>
+      <div class="cmp-result" id="cmpRes">${cmpResultHTML(d)}</div>
+    </div>
+    <div id="cmpRuleBox" style="text-align:center;"></div>
+    <div id="cmpExBox" style="display:none;">
+      <div class="pron-tip" style="margin-top:12px;">💡 ${d.note}</div>
+      <div class="report-sec" style="margin-top:8px;"><div class="item">${en(d.ex)} <button class="icon-btn mint btn-small" style="padding:4px 8px;" onclick="speak('${d.ex.replace(/'/g,"\\'")}')">🔊</button></div>
+        <div class="item" style="color:var(--text-light); font-size:12px;">${d.exCn}</div></div>
+    </div>
+    <div class="btn-row" style="margin-top:14px;">
+      <button class="btn btn-yellow" id="cmpGo" style="flex:1;" onclick="cmpReveal()">✨ 变身！</button>
+      <button class="btn btn-primary" id="cmpNext" style="flex:1; display:none;" onclick="cIdx++; cmpDemoOne();">${cIdx<CMP_DEMO.length-1?'下一个 →':'去自己变 →'}</button>
+    </div>`;
+}
+function cmpResultHTML(d){
+  if(d.rule==='more') return `<span class="add">more</span> ${d.keep}`;
+  if(d.rule==='irregular') return `${d.comp}`;
+  return `${d.keep}<span class="add">${d.add}</span>`;
+}
+function cmpReveal(){
+  const d=CMP_DEMO[cIdx];
+  $('cmpRes').classList.add('show');
+  $('cmpRuleBox').innerHTML=`<span class="rule-chip ${ruleClass(d.rule)}">${d.tag}</span>`;
+  $('cmpExBox').style.display='block';
+  $('cmpGo').style.display='none';
+  $('cmpNext').style.display='block';
+  speak(d.comp.replace('more ','more '));
+}
+function cmpTryOne(){
+  if(cIdx>=CMP_TRY.length){ cPhase='than'; cIdx=0; cmpThanOne(); return; }
+  const t=CMP_TRY[cIdx];
+  setTitle('⚖️ 比较级变形机 · 你来变','轮到你！选出正确的比较级。');
+  $('stageContent').innerHTML=`
+    <div style="text-align:center; font-size:13px; color:var(--text-light);">第 ${cIdx+1} / ${CMP_TRY.length} 题 · 对 ${cTryOk}</div>
+    <div style="text-align:center; margin:16px 0;"><span class="cmp-base">${t.base}</span> <span style="color:var(--text-light);">的比较级是？</span></div>
+    <div class="options" id="cmpOpts">
+      ${t.opts.map((o,i)=>`<button class="option" onclick="cmpTryPick(${i})"><span class="letter">${String.fromCharCode(65+i)}</span><span>${o}</span></button>`).join('')}
+    </div>
+    <div id="cmpFb" class="feedback"></div>`;
+}
+function cmpTryPick(i){
+  const t=CMP_TRY[cIdx];
+  const els=document.querySelectorAll('#cmpOpts .option');
+  els.forEach(e=>e.classList.add('disabled'));
+  const ok=i===t.a;
+  els[i].classList.add(ok?'correct':'wrong');
+  if(!ok) els[t.a].classList.add('correct');
+  if(ok){ cTryOk++; addStar(1); }
+  const fb=$('cmpFb'); fb.className='feedback show '+(ok?'right':'wrong');
+  fb.innerHTML=`<div class="title">${ok?'🎉 对啦！':'看这里 👇'}</div>
+    <div style="font-size:13px;">💡 ${t.why}</div>
+    <button class="icon-btn mint btn-small" style="margin-top:8px;" onclick="speak('${t.opts[t.a].replace(/'/g,"\\'")}')">🔊 听</button>
+    <button class="btn btn-primary btn-small" style="width:100%; margin-top:8px;" onclick="cIdx++; cmpTryOne();">${cIdx<CMP_TRY.length-1?'下一题 →':'去造句 →'}</button>`;
+}
+function cmpThanOne(){
+  if(cThanIdx>=CMP_THAN.length){ cmpDone(); return; }
+  const t=CMP_THAN[cThanIdx];
+  setTitle('⚖️ 比较级变形机 · than 造句','用 A is 比较级 than B 说出"A 比 B 更…"。');
+  $('stageContent').innerHTML=`
+    <div style="text-align:center; font-size:13px; color:var(--text-light);">第 ${cThanIdx+1} / ${CMP_THAN.length}</div>
+    <div style="text-align:center; margin:14px 0; font-size:14px; color:var(--text-light);">${t.cn}</div>
+    <div class="build" id="thanBox"></div>
+    <div style="text-align:center;"><button class="btn btn-yellow" id="thanGo" onclick="cmpThanBuild()" style="margin-top:6px;">✨ 一块块拼出来</button></div>
+    <div id="thanNext" style="display:none;">
+      <div style="text-align:center; margin-top:10px;"><button class="icon-btn mint" onclick="speak('${t.full.replace(/'/g,"\\'")}')">🔊 听整句</button></div>
+      <button class="btn btn-primary" style="width:100%; margin-top:12px;" onclick="cThanIdx++; cmpThanOne();">${cThanIdx<CMP_THAN.length-1?'下一句 →':'完成 ✅'}</button>
+    </div>`;
+}
+function cmpThanBuild(){
+  const t=CMP_THAN[cThanIdx];
+  const parts=[{c:'a',x:t.a,n:'A'},{c:'cmp',x:'is '+t.cmp,n:'更…'},{c:'than',x:'than',n:'比'},{c:'b',x:t.b,n:'B'}];
+  const box=$('thanBox'); box.innerHTML='';
+  parts.forEach((p,i)=>setTimeout(()=>{
+    const d=document.createElement('div'); d.className='chunk '+p.c;
+    d.innerHTML=`${p.x}<span class="chunk-note">${p.n}</span>`; box.appendChild(d);
+  }, i*450));
+  $('thanGo').style.display='none';
+  setTimeout(()=>{ $('thanNext').style.display='block'; speak(t.full); }, parts.length*450+200);
+}
+function cmpDone(){
+  setTitle('⚖️ 比较级变形机','全部玩完啦！');
+  markDone('compare',CMP_TRY.length+cTryOk*0,CMP_TRY.length); prog.done.compare={ok:cTryOk,total:CMP_TRY.length}; saveProg(); renderMap();
+  $('stageContent').innerHTML=`<div style="text-align:center; padding:16px;">
+    <div style="font-size:54px;">⚖️✨</div>
+    <div style="font-weight:800; font-size:18px; margin:8px 0;">比较级你已经会变了！</div>
+    <div style="font-size:13px; color:var(--text-light); line-height:1.7;">口诀：<br><b>短词 +er</b>（warmer）<br><b>双写末字母</b>（hotter, bigger）<br><b>y 变 i +er</b>（sunnier, happier）<br><b>长词加 more</b>（more delicious）<br><b>不规则要背</b>（good→better, far→farther）</div>
+  </div>${backBtn()}`;
+  confetti();
+}
+
+/* ========== 3. 发音诊所 ========== */
+let pIdx=0;
+function renderPron(){ pIdx=0; pronOne(); }
+function pronOne(){
+  if(pIdx>=PRON.length){ pronDone(); return; }
+  const p=PRON[pIdx];
+  setTitle('🔊 发音诊所','课上这几个词读得不太准，我们一个一个读顺。');
+  $('stageContent').innerHTML=`
+    <div style="text-align:center; font-size:13px; color:var(--text-light);">第 ${pIdx+1} / ${PRON.length} 个</div>
+    <div class="pron-word">${p.w}</div>
+    <div class="pron-ipa">${p.ipa}</div>
+    <div class="pron-cn">${p.cn}</div>
+    <div class="acc-row">课上准确率 <span class="acc-chip acc-low">${p.acc}%</span> → 我们读到 <span class="acc-chip acc-hi" id="newAcc">？</span></div>
+    <div class="syll">${p.syll.map(s=>`<span class="${s===p.stress?'hot':''}" onclick="speak('${s}',true)">${s.toLowerCase()}</span>`).join('')}</div>
+    <div class="speak-btns">
+      <button class="icon-btn coral pulse" style="font-size:16px; padding:14px 20px;" onclick="speak('${p.w}')">🔊 听整词</button>
+      <button class="icon-btn yellow" onclick="speak('${p.w}',true)">🐢 慢速</button>
+      <button class="icon-btn mint" onclick="speakTimes('${p.w}',3,true)">🔁 连读3遍</button>
+    </div>
+    <div class="pron-tip">💡 ${p.tip}</div>
+    <div id="recArea" style="text-align:center;"></div>
+    <div class="btn-row" style="margin-top:14px;">
+      <button class="btn btn-blue" style="flex:1;" onclick="${pIdx>0?'pIdx--,pronOne()':'goHome()'}">${pIdx>0?'← 上一个':'🏠 地图'}</button>
+      <button class="btn btn-primary" style="flex:1;" onclick="pIdx++; pronOne();">${pIdx<PRON.length-1?'下一个 →':'完成 ✅'}</button>
+    </div>`;
+  renderRec(p);
+}
+function renderRec(p){
+  const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+  if(!SR){ $('recArea').innerHTML=`<div style="font-size:12px; color:var(--text-light); margin-top:10px;">（这台设备不支持录音自测，多听几遍跟读就行 🎧）</div>`; return; }
+  $('recArea').innerHTML=`<button class="btn btn-purple" style="width:100%; margin-top:12px;" id="micBtn" onclick="recPron('${p.w}')">🎤 点我说一遍，看读得准不准</button>
+    <div id="recRes" style="font-size:13px; margin-top:8px; line-height:1.5;"></div>`;
+}
+function recPron(word){
+  const SR=window.SpeechRecognition||window.webkitSpeechRecognition;
+  const rec=new SR(); rec.lang='en-US'; rec.maxAlternatives=5; rec.interimResults=false;
+  const mb=$('micBtn'); mb.textContent='🎙️ 在听…大声读出来'; mb.style.background='var(--coral)';
+  rec.onresult=e=>{
+    let best=0, said='';
+    for(let i=0;i<e.results[0].length;i++){
+      const h=e.results[0][i].transcript.trim().toLowerCase();
+      const sc=similar(h, word.toLowerCase());
+      if(sc>best){ best=sc; said=h; }
+    }
+    const pct=Math.round(best*100);
+    const ok=pct>=60;
+    $('newAcc').textContent=pct+'%';
+    $('newAcc').className='acc-chip '+(ok?'acc-hi':'acc-low');
+    $('recRes').innerHTML = ok
+      ? `<div style="color:#2F855A; font-weight:800;">🎉 读得不错！(听到："${said}") 比课上的 ${PRON[pIdx].acc}% 进步啦！</div>`
+      : `<div style="color:#C05a2a; font-weight:800;">再来一次～(听到："${said}") 先点 🔁连读3遍 跟着读，重音别忘了。</div>`;
+    mb.textContent='🎤 再说一遍'; mb.style.background='var(--purple)';
+    if(ok) addStar(1);
+  };
+  rec.onerror=()=>{ mb.textContent='🎤 再试一次'; mb.style.background='var(--purple)'; $('recRes').innerHTML='<div style="color:var(--text-light);">没听清，靠近话筒再试一次～</div>'; };
+  rec.onend=()=>{ if(mb.textContent==='🎙️ 在听…大声读出来'){ mb.textContent='🎤 点我说一遍'; mb.style.background='var(--purple)'; } };
+  try{ rec.start(); }catch(e){}
+}
+function similar(a,b){
+  a=a.replace(/[^a-z]/g,''); b=b.replace(/[^a-z]/g,'');
+  if(!a)return 0; if(a===b)return 1;
+  const m=a.length,n=b.length, d=Array.from({length:m+1},()=>new Array(n+1).fill(0));
+  for(let i=0;i<=m;i++)d[i][0]=i; for(let j=0;j<=n;j++)d[0][j]=j;
+  for(let i=1;i<=m;i++)for(let j=1;j<=n;j++){ d[i][j]=Math.min(d[i-1][j]+1,d[i][j-1]+1,d[i-1][j-1]+(a[i-1]===b[j-1]?0:1)); }
+  return 1 - d[m][n]/Math.max(m,n);
+}
+function pronDone(){
+  setTitle('🔊 发音诊所','全部读完啦！');
+  markDone('pron',PRON.length,PRON.length); renderMap();
+  $('stageContent').innerHTML=`<div style="text-align:center; padding:16px;">
+    <div style="font-size:54px;">🎤✨</div>
+    <div style="font-weight:800; font-size:18px; margin:8px 0;">4 个词都练顺啦！</div>
+    <div style="font-size:13px; color:var(--text-light); line-height:1.6;">下次课读到 towels / homework / weather / relaxed，记得<b>重音</b>和<b>结尾音</b>。</div>
+  </div>${backBtn()}`;
+  confetti();
+}
+
+/* ========== 4. 句子小医院 ========== */
+let hIdx=0;
+function renderHospital(){ hIdx=0; hospitalOne(); }
+function hospitalOne(){
+  if(hIdx>=HOSPITAL.length){ hospitalDone(); return; }
+  const it=HOSPITAL[hIdx];
+  setTitle('🔧 句子小医院','课上这几句可以更棒 —— 点黄色的地方，帮它"治好"。');
+  let html='';
+  it.parts.forEach((p,i)=>{
+    if(Array.isArray(p)) html+=`<span class="bad-word" id="badw" onclick="hospitalFix(event)">${p[0]}</span>`;
+    else html+=p;
+  });
+  $('stageContent').innerHTML=`
+    <div style="text-align:center; font-size:13px; color:var(--text-light);">第 ${hIdx+1} / ${HOSPITAL.length} 句 · <span class="badge badge-green">${it.tag}</span></div>
+    <div class="sent-box" id="sentBox">${html}</div>
+    <div style="text-align:center; font-size:12px; color:var(--text-light);">👆 点一下黄色的词，看更棒的说法</div>
+    <div id="hospFb" class="feedback"></div>`;
+}
+function hospitalFix(ev){
+  const it=HOSPITAL[hIdx];
+  const el=$('badw');
+  if(el.classList.contains('fixed')) return;
+  const fixText=it.parts.find(p=>Array.isArray(p))[1];
+  el.textContent=fixText; el.classList.add('fixed');
+  const sp=document.createElement('div'); sp.className='sparkle'; sp.textContent='✨';
+  sp.style.left=(ev.clientX-8)+'px'; sp.style.top=(ev.clientY-20)+'px'; document.body.appendChild(sp); setTimeout(()=>sp.remove(),1000);
+  const fb=$('hospFb'); fb.className='feedback show right';
+  fb.innerHTML=`<div class="title">✅ 治好啦！更棒的说法：</div>
+    <div style="font-size:15px; font-weight:800; color:#2F855A; margin:4px 0;">${it.good}</div>
+    <div style="font-size:13px;">💡 ${it.why}</div>
+    <button class="icon-btn mint btn-small" style="margin-top:8px;" onclick="speak('${it.good.replace(/'/g,"\\'")}')">🔊 听</button>
+    <button class="btn btn-primary btn-small" style="width:100%; margin-top:8px;" onclick="hIdx++; hospitalOne();">${hIdx<HOSPITAL.length-1?'下一句 →':'完成 ✅'}</button>`;
+  addStar(1);
+}
+function hospitalDone(){
+  setTitle('🔧 句子小医院','全部治好啦！');
+  markDone('hospital',HOSPITAL.length,HOSPITAL.length); renderMap();
+  $('stageContent').innerHTML=`<div style="text-align:center; padding:16px;">
+    <div style="font-size:54px;">🔧💚</div>
+    <div style="font-weight:800; font-size:18px; margin:8px 0;">5 句都变棒啦！</div>
+    <div style="font-size:13px; color:var(--text-light); line-height:1.7;">这些都是你课上说的句子——已经很敢说了 👍<br>记住：<b>is + 动词ing</b>、<b>比较级</b>、<b>like to do</b>、<b>homework 用 a lot of</b>。</div>
+  </div>${backBtn()}`;
+  confetti();
+}
+
+/* ========== 5. a / an 冷饮摊 ========== */
+let arIdx=0, arOk=0;
+function renderArticle(){ arIdx=0; arOk=0; articleOne(); }
+function articleOne(){
+  if(arIdx>=ART.length){ articleDone(); return; }
+  const it=ART[arIdx];
+  setTitle('🍦 a / an 冷饮摊','元音音开头用 an，辅音音开头用 a。选对的那个！');
+  $('stageContent').innerHTML=`
+    <div style="text-align:center; font-size:13px; color:var(--text-light);">第 ${arIdx+1} / ${ART.length}</div>
+    <div class="item-big">${it.emoji}</div>
+    <div style="text-align:center; font-size:22px; font-weight:800; margin:6px 0;">It's <span style="color:var(--coral);">___</span> ${it.noun}.</div>
+    <div class="toggle-row" id="arRow">
+      <button class="toggle" onclick="articlePick('a')">a</button>
+      <button class="toggle" onclick="articlePick('an')">an</button>
+    </div>
+    <div id="arFb" class="feedback"></div>`;
+}
+function articlePick(v){
+  const it=ART[arIdx];
+  const ok=v===it.a;
+  document.querySelectorAll('#arRow .toggle').forEach(t=>{ t.classList.add('disabled'); if(t.textContent===it.a) t.classList.add('active'); });
+  if(ok){ arOk++; addStar(1); }
+  const fb=$('arFb'); fb.className='feedback show '+(ok?'right':'wrong');
+  fb.innerHTML=`<div class="title">${ok?'🎉 对啦！':'看这里 👇'}</div>
+    <div style="font-size:15px; font-weight:800; margin:4px 0;">It's ${it.a} ${it.noun}.</div>
+    <div style="font-size:13px;">💡 ${it.why}</div>
+    <button class="icon-btn mint btn-small" style="margin-top:8px;" onclick="speak(\"It's ${it.a} ${it.noun}.\")">🔊 听</button>
+    <button class="btn btn-primary btn-small" style="width:100%; margin-top:8px;" onclick="arIdx++; articleOne();">${arIdx<ART.length-1?'下一个 →':'完成 ✅'}</button>`;
+}
+function articleDone(){
+  setTitle('🍦 a / an 冷饮摊','完成！');
+  markDone('article',arOk,ART.length); renderMap();
+  $('stageContent').innerHTML=`<div style="text-align:center; padding:16px;">
+    <div style="font-size:54px;">🍦✨</div>
+    <div style="font-weight:800; font-size:18px; margin:8px 0;">对了 ${arOk} / ${ART.length}</div>
+    <div style="font-size:13px; color:var(--text-light); line-height:1.6;">记住：<b>元音音(a/e/i/o/u)开头 → an</b>（an ice cream, an umbrella, an apple）。</div>
+  </div>${backBtn()}`;
+  if(arOk===ART.length) confetti();
+}
+
+/* ========== 6. 同义词升级器 ========== */
+function renderSyn(){
+  setTitle('🔁 同义词升级器','点黄色的词，看它"变身"成同义词。');
+  $('stageContent').innerHTML = SYN.map((s,i)=>`
+    <div class="report-sec">
+      <div class="sent-box" style="margin:6px 0;" id="syn${i}">
+        ${s.sent[0]}<span class="bad-word" style="text-decoration:none;" id="sw${i}" onclick="upgrade(${i},event)">${s.word}</span>${s.sent[2]}
+      </div>
+      <div style="text-align:center; font-size:12px; color:var(--text-light);">${s.cn}</div>
+      <div style="text-align:center; margin-top:8px;">
+        <button class="icon-btn mint btn-small" onclick="speak('${(s.sent[0]+s.up+s.sent[2]).replace(/'/g,"\\'")}')">🔊 听高级版</button>
+      </div>
+    </div>`).join('') + `
+    <div style="background:var(--yellow-soft); border-radius:12px; padding:11px; font-size:12px; line-height:1.6; margin-top:10px;">
+      💡 会用 yell / enjoy / larger 这些词，表达就更丰富啦！
+    </div>${backBtn()}`;
+}
+function upgrade(i,ev){
+  const s=SYN[i], el=$('sw'+i);
+  if(el.classList.contains('fixed')) return;
+  el.textContent=s.up; el.classList.add('fixed');
+  const sp=document.createElement('div'); sp.className='sparkle'; sp.textContent='✨';
+  sp.style.left=(ev.clientX-8)+'px'; sp.style.top=(ev.clientY-20)+'px'; document.body.appendChild(sp); setTimeout(()=>sp.remove(),1000);
+  speak(s.sent[0]+s.up+s.sent[2]);
+  addStar(1);
+  markDone('syn',SYN.length,SYN.length); renderMap();
+}
+
+/* ========== 7. Joshua 的夏天 ========== */
+function renderStory(){
+  setTitle('📖 Joshua 的夏天','点 🔊 一句句听。读完回答几个小问题。长按看中文。');
+  $('stageContent').innerHTML=`
+    <div class="report-sec">
+      ${STORY.map((s,i)=>`<div class="story-line">
+        <button class="icon-btn btn-small" style="padding:5px 8px;" onclick="speak('${s.en.replace(/'/g,"\\'")}')">🔊</button>
+        <div class="txt"><div class="story-p">${en(s.en)}</div></div>
+      </div>`).join('')}
+    </div>
+    <div class="speak-btns"><button class="icon-btn coral" onclick="readStory()">🔊 从头连读整个故事</button></div>
+    <button class="btn btn-primary" style="width:100%; margin-top:12px;" onclick="storyQuiz()">读完了，回答问题 →</button>`;
+}
+function readStory(){ let i=0; (function go(){ if(i>=STORY.length)return; speak(STORY[i].en); i++; setTimeout(go,2600); })(); }
+let sqIdx=0, sqOk=0;
+function storyQuiz(){ sqIdx=0; sqOk=0; storyQOne(); }
+function storyQOne(){
+  if(sqIdx>=STORY_Q.length){ storyDone(); return; }
+  const q=STORY_Q[sqIdx];
+  setTitle('📖 Joshua 的夏天 · 小问题','读懂了吗？选一个。');
+  $('stageContent').innerHTML=`
+    <div style="text-align:center; font-size:13px; color:var(--text-light);">第 ${sqIdx+1} / ${STORY_Q.length} 题 · 对 ${sqOk}</div>
+    <div style="font-size:16px; font-weight:700; margin:14px 0;">${q.q}</div>
+    <div class="options" id="sqOpts">
+      ${q.opts.map((o,i)=>`<button class="option" onclick="storyQPick(${i})"><span class="letter">${String.fromCharCode(65+i)}</span><span>${enT(o)}</span></button>`).join('')}
+    </div>
+    <div id="sqFb" class="feedback"></div>`;
+}
+function storyQPick(i){
+  const q=STORY_Q[sqIdx];
+  const els=document.querySelectorAll('#sqOpts .option');
+  els.forEach(e=>e.classList.add('disabled'));
+  const ok=i===q.a;
+  els[i].classList.add(ok?'correct':'wrong');
+  if(!ok) els[q.a].classList.add('correct');
+  if(ok){ sqOk++; addStar(1); }
+  const fb=$('sqFb'); fb.className='feedback show '+(ok?'right':'wrong');
+  fb.innerHTML=`<div class="title">${ok?'🎉 对啦！':'正确答案：'+q.opts[q.a]}</div>
+    <div style="font-size:13px;">💡 ${q.explain}</div>
+    <button class="btn btn-primary btn-small" style="width:100%; margin-top:8px;" onclick="sqIdx++; storyQOne();">${sqIdx<STORY_Q.length-1?'下一题 →':'完成 ✅'}</button>`;
+}
+function storyDone(){
+  setTitle('📖 Joshua 的夏天','读完啦！');
+  markDone('story',sqOk,STORY_Q.length); renderMap();
+  $('stageContent').innerHTML=`<div style="text-align:center; padding:16px;">
+    <div style="font-size:54px;">📖☀️</div>
+    <div style="font-weight:800; font-size:18px; margin:8px 0;">读懂了 ${sqOk} / ${STORY_Q.length}</div>
+    <div style="font-size:13px; color:var(--text-light); line-height:1.6;">故事里全是比较级：sunnier, warmer, more fun, more delicious, more relaxed 😎</div>
+  </div>${backBtn()}`;
+  if(sqOk===STORY_Q.length) confetti();
+}
+
+/* ========== 8. 单词卡 ========== */
+function renderVocab(){
+  setTitle('📒 单词卡','点卡片翻面看中文，点 🔊 听发音。右上角是 CEFR 难度等级。');
+  $('stageContent').innerHTML=`<div class="vocab-grid">
+    ${VOCAB.map((v,i)=>`<div class="flip" id="fc${i}" onclick="flip(${i})">
+      <div class="flip-in">
+        <div class="flip-face flip-front"><div class="w">${v.w}</div><div class="cefr">${v.cefr}</div></div>
+        <div class="flip-face flip-back"><div style="font-weight:800; font-size:15px;">${v.cn}</div></div>
+      </div></div>`).join('')}
+  </div>
+  <div class="speak-btns" style="margin-top:14px;"><button class="icon-btn coral" onclick="readAllVocab()">🔊 全部读一遍</button></div>
+  ${backBtn()}`;
+  markDone('vocab',VOCAB.length,VOCAB.length); renderMap();
+}
+function flip(i){ $('fc'+i).classList.toggle('on'); speak(VOCAB[i].w); }
+function readAllVocab(){ let i=0; (function go(){ if(i>=VOCAB.length)return; speak(VOCAB[i].w); i++; setTimeout(go,1300); })(); }
+
+/* ========== 9. 小测验 ========== */
+let qIdx=0, qOk=0, qList=[];
+function renderQuiz(){ qIdx=0; qOk=0; qList=shuffle(QUIZ); quizOne(); }
+function quizOne(){
+  if(qIdx>=qList.length){ quizDone(); return; }
+  const q=qList[qIdx];
+  setTitle('🏆 小测验','懂了再玩一遍。答错有讲解，别担心。');
+  $('stageContent').innerHTML=`
+    <div style="text-align:center; font-size:13px; color:var(--text-light);">第 ${qIdx+1} / ${qList.length} 题 · 对 ${qOk}</div>
+    <div style="font-size:16px; font-weight:700; margin:14px 0; line-height:1.5;">${q.q}</div>
+    <div class="options" id="qOpts">
+      ${q.opts.map((o,i)=>`<button class="option" onclick="pickQuiz(${i})"><span class="letter">${String.fromCharCode(65+i)}</span><span>${enT(o)}</span></button>`).join('')}
+    </div>
+    <div id="quizFb" class="feedback"></div>`;
+}
+function pickQuiz(i){
+  const q=qList[qIdx];
+  const els=document.querySelectorAll('#qOpts .option');
+  els.forEach(e=>e.classList.add('disabled'));
+  const ok=i===q.a;
+  els[i].classList.add(ok?'correct':'wrong');
+  if(!ok) els[q.a].classList.add('correct');
+  if(ok){ qOk++; addStar(1); }
+  const fb=$('quizFb'); fb.className='feedback show '+(ok?'right':'wrong');
+  fb.innerHTML=`<div class="title">${ok?'🎉 答对了！':'正确答案：'+q.opts[q.a]}</div>
+    <div style="font-size:12px;">💡 ${q.explain}</div>
+    <button class="btn btn-primary btn-small" style="width:100%; margin-top:8px;" onclick="qIdx++; quizOne();">${qIdx<qList.length-1?'下一题 →':'看成绩 🏆'}</button>`;
+}
+function quizDone(){
+  setTitle('🏆 小测验','完成！');
+  markDone('quiz',qOk,qList.length); renderMap();
+  const star = qOk===qList.length?'⭐⭐⭐':qOk>=qList.length*0.6?'⭐⭐':'⭐';
+  $('stageContent').innerHTML=`<div style="text-align:center; padding:16px;">
+    <div style="font-size:54px;">🏆</div>
+    <div style="font-size:30px; font-weight:800; color:var(--coral); margin:6px 0;">${qOk} / ${qList.length}</div>
+    <div style="font-size:26px;">${star}</div>
+    <div style="font-size:13px; color:var(--text-light); line-height:1.6; margin-top:8px;">${qOk===qList.length?'全对！可以去给外教露一手了 🎉':'再回去玩玩比较级变形机，很快就全懂啦。'}</div>
+  </div>${backBtn()}`;
+  if(qOk>=qList.length*0.8) confetti();
+}
+
+/* ========== 学习记录 / 家长页 ========== */
+function renderReport(){
+  setTitle('👨‍👩‍👧 学习记录','基于这台设备上的真实练习。可复制导出投喂给爸爸。');
+  const done=prog.done;
+  const rows=MODULES.map(m=>{ const d=done[m.id]; return `<div class="item">${m.icon} ${m.t1} — ${d?`<span class="badge badge-green">✅ ${d.ok}/${d.total}</span>`:'<span class="badge badge-red">未练</span>'}</div>`; }).join('');
+  const exportObj={ child: kid==='kenton'?'哥哥':'弟弟', subject:'外教Preply', lesson:'Summer comparisons', stars, done:prog.done, events:prog.log };
+  $('stageContent').innerHTML=`
+    <div class="report-sec"><h3>⭐ 总星星：${stars}</h3>${rows}</div>
+    <div class="report-sec"><h3>📌 这节课重点（给爸爸看）</h3>
+      <div class="item">• 语法：比较级(短词+er / 双写 / y变i / long+more / 不规则)、冠词 a/an</div>
+      <div class="item">• 发音待加强：towels 40% / homework 36% / weather 54% / relaxed 55%</div>
+      <div class="item">• 课上纠的句子：is+drinking、far→farther、more happy→happier、like to do、homework 用 a lot of</div>
+      <div class="item">• 表现好：more delicious、a fruit salad、happier in、go to the beach、for her（老师夸）</div>
+    </div>
+    <div class="btn-row">
+      <button class="btn btn-mint" style="flex:1;" onclick='copyExport(${JSON.stringify(JSON.stringify(exportObj))})'>📋 复制记录</button>
+      <button class="btn btn-yellow" style="flex:1;" onclick='downloadExport(${JSON.stringify(JSON.stringify(exportObj))})'>💾 存成文件</button>
+    </div>
+    <div id="copyMsg" style="text-align:center; font-size:12px; color:var(--green); margin-top:8px;"></div>
+    ${backBtn()}`;
+}
+function copyExport(s){
+  const txt='【外教课·Summer comparisons】\n'+s;
+  if(navigator.clipboard) navigator.clipboard.writeText(txt).then(()=>{ $('copyMsg').textContent='✅ 已复制，可以粘贴发给爸爸啦'; },()=>fallbackCopy(txt));
+  else fallbackCopy(txt);
+}
+function fallbackCopy(txt){ const t=document.createElement('textarea'); t.value=txt; document.body.appendChild(t); t.select(); try{document.execCommand('copy'); $('copyMsg').textContent='✅ 已复制';}catch(e){$('copyMsg').textContent='请长按手动复制';} t.remove(); }
+function downloadExport(s){
+  const blob=new Blob(['【外教课·Summer comparisons】\n'+s],{type:'text/plain'});
+  const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='preply_summer_comparisons_'+(kid||'kid')+'.txt'; a.click();
+  $('copyMsg').textContent='✅ 文件已下载';
+}
+
+/* ========== 启动 ========== */
+setupLongPress();
+renderMap();
+</script>
+</body>
+</html>

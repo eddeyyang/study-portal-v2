@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>无人机 L1 入门实训营 · 全流程 + 趣味竞技</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+:root{--ink:#22304A;--blue:#2E9BFF;--blue-d:#1B7BD8;--yellow:#FFD166;--pink:#FF9EC4;--green:#8CE99A;--orange:#FF9F43;--red:#FF5D5D;--purple:#B39DDB;--muted:#6B7A94}
+html{font-size:17px}
+body{font-family:"PingFang SC","Microsoft YaHei","Segoe UI",system-ui,sans-serif;color:var(--ink);
+background:linear-gradient(180deg,#BFE6FF 0%,#E8F7FF 45%,#FFF7E8 100%);min-height:100vh;padding-bottom:40px}
+.wrap{max-width:560px;margin:0 auto;padding:16px}
+.screen{display:none;animation:pop .35s ease}.screen.on{display:block}
+@keyframes pop{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.card{background:#fff;border-radius:22px;padding:18px;box-shadow:0 8px 22px rgba(70,110,160,.16);margin-bottom:14px}
+h1{font-size:26px;font-weight:800;line-height:1.2}h2{font-size:20px;font-weight:700;margin-bottom:8px}
+.sub{color:var(--muted);font-size:13px;margin-top:6px;line-height:1.5}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:52px;padding:12px 22px;border:none;border-radius:16px;background:var(--yellow);color:var(--ink);font-size:16px;font-weight:700;cursor:pointer;box-shadow:0 4px 0 rgba(34,48,74,.9);transition:transform .08s,box-shadow .08s;user-select:none;font-family:inherit}
+.btn:active{transform:scale(.98);box-shadow:0 1px 0 rgba(34,48,74,.9)}
+.btn.blue{background:var(--blue);color:#fff}.btn.green{background:var(--green)}.btn.pink{background:var(--pink)}.btn.purple{background:var(--purple);color:#fff}.btn.orange{background:var(--orange);color:#fff}.btn.ghost{background:#fff;box-shadow:0 0 0 2px var(--ink)}
+.btn.big{width:100%;font-size:18px;min-height:58px;border-radius:18px}
+.btnrow{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+.menu{display:flex;flex-direction:column;gap:12px;margin-top:16px}
+.menu .btn{justify-content:flex-start;font-size:17px;min-height:62px;border-radius:18px}.menu .btn .ico{font-size:26px}
+.topbar{display:flex;align-items:center;gap:10px;margin-bottom:12px}.topbar .btn{min-height:44px;padding:8px 14px;font-size:14px}
+.prog{flex:1;height:14px;background:#fff;border-radius:99px;box-shadow:inset 0 0 0 2px var(--ink);overflow:hidden}
+.prog>i{display:block;height:100%;background:linear-gradient(90deg,var(--blue),var(--yellow));width:0%;transition:width .4s}
+.tip{background:#FFF8E1;border:2px dashed var(--yellow);border-radius:14px;padding:12px 14px;font-size:14.5px;margin:10px 0;line-height:1.7}
+.demo{background:#F0F8FF;border-radius:14px;padding:14px;margin:10px 0;line-height:1.8;box-shadow:inset 0 0 0 2px var(--blue)}
+.opt{display:block;width:100%;text-align:left;min-height:56px;margin:10px 0;padding:14px 16px;background:#fff;border:none;border-radius:16px;font-size:16px;cursor:pointer;box-shadow:0 0 0 2px var(--ink),0 4px 0 rgba(34,48,74,.9);transition:transform .08s;font-family:inherit;color:var(--ink);font-weight:600}
+.opt:active{transform:scale(.98)}
+.opt.right{background:#D8F8E8;box-shadow:0 0 0 2px #1e9e62,0 4px 0 rgba(34,48,74,.9)}
+.opt.wrong{background:#FFE0E0;box-shadow:0 0 0 2px var(--red),0 4px 0 rgba(34,48,74,.9);animation:shake .35s}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-8px)}75%{transform:translateX(8px)}}
+.explain{display:none;background:#EAF4FF;border-radius:14px;padding:14px 16px;margin-top:12px;font-size:15px;line-height:1.75;box-shadow:inset 0 0 0 2px var(--blue)}
+.explain.on{display:block;animation:pop .3s}
+.badge{display:inline-block;background:var(--blue);color:#fff;border-radius:999px;padding:4px 14px;font-size:12.5px;font-weight:700;margin-bottom:8px}
+.badge.gray{background:var(--muted)}.badge.yellow{background:var(--yellow);color:var(--ink)}.badge.orange{background:var(--orange)}.badge.red{background:var(--red)}
+.center{text-align:center}.big-emoji{font-size:52px;display:block;margin:4px 0 10px}
+.confetti{position:fixed;top:-10px;width:12px;height:12px;z-index:99;animation:fall linear forwards;pointer-events:none;border-radius:3px}
+@keyframes fall{to{transform:translateY(105vh) rotate(720deg);opacity:.7}}
+.footer-note{text-align:center;color:var(--muted);font-size:12px;margin-top:20px;line-height:1.7}
+.recall-answer{filter:blur(8px);cursor:pointer;user-select:none;border-radius:8px;display:inline-block;transition:filter .3s}
+.recall-answer.show{filter:none}
+.recall-item{background:#fff;border-radius:16px;box-shadow:0 4px 0 rgba(34,48,74,.9),0 0 0 2px var(--ink);padding:14px 16px;margin:10px 0;line-height:1.7}
+/* 口诀翻卡 */
+.mantra4{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.mcard{position:relative;height:170px;perspective:700px;cursor:pointer}
+.mcard .in{position:absolute;inset:0;transition:transform .5s;transform-style:preserve-3d}
+.mcard.flip .in{transform:rotateY(180deg)}
+.mface{position:absolute;inset:0;backface-visibility:hidden;border-radius:18px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;box-shadow:0 0 0 2px var(--ink),0 6px 0 rgba(34,48,74,.9);padding:10px;text-align:center}
+.mfront{background:linear-gradient(135deg,#DFF1FF,#BFE6FF)}
+.mfront .zi{font-size:40px;font-weight:900}
+.mback{background:var(--yellow);transform:rotateY(180deg);font-size:13px;font-weight:700;line-height:1.6}
+/* 考点翻卡 */
+.kcard{position:relative;min-height:150px;perspective:700px;cursor:pointer;margin:10px 0}
+.kcard .in{position:absolute;inset:0;transition:transform .5s;transform-style:preserve-3d}
+.kcard.flip .in{transform:rotateY(180deg)}
+.kface{position:absolute;inset:0;backface-visibility:hidden;border-radius:16px;box-shadow:0 0 0 2px var(--ink),0 4px 0 rgba(34,48,74,.9);padding:14px;display:flex;flex-direction:column;justify-content:center}
+.kfront{background:linear-gradient(135deg,#EDE7FF,#D9CCFF)}
+.kback{background:#FFF6DC;transform:rotateY(180deg);font-size:13.5px;line-height:1.7}
+.kfront .t{font-size:17px;font-weight:900}
+/* 判断场景 */
+.scene{background:#fff;border-radius:18px;box-shadow:0 0 0 2px var(--ink);padding:16px;margin:10px 0;text-align:center}
+.scene .semoji{font-size:46px}
+.scene .stxt{font-size:16px;font-weight:700;line-height:1.7;margin:8px 0}
+/* 排序 */
+.seqitem{background:#fff;border-radius:14px;box-shadow:0 0 0 2px var(--ink);padding:12px 14px;margin:8px 0;font-size:15px;font-weight:700;display:flex;align-items:center;gap:10px}
+.seqitem .n{width:30px;height:30px;border-radius:50%;background:#EDF2F7;display:flex;align-items:center;justify-content:center;font-weight:900;flex:none}
+.seqitem.set .n{background:var(--green)}
+.seqitem.bad{animation:shake .35s;background:#FFE0E0}
+/* 速记卡 */
+.memo h3{font-size:16px;margin:12px 0 6px;color:var(--blue-d)}
+.memo ul{padding-left:20px;line-height:1.9;font-size:14.5px}
+.verse{background:linear-gradient(135deg,#FFF3D6,#FFE8B8);border-radius:14px;padding:14px;font-weight:800;font-size:15.5px;line-height:2;text-align:center;margin:10px 0}
+.flymsg{text-align:center;font-weight:800;margin:12px 0;font-size:15px;min-height:24px;line-height:1.6}
+@media print{.menu,.topbar,.btnrow,.btn,.footer-note{display:none!important}.card{box-shadow:none;border:1px solid #ccc}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<section id="home" class="screen on">
+  <div class="card center">
+    <span class="badge purple">🚁 无人机集训 · L1 考级必须掌握</span>
+    <span class="big-emoji">🛫</span>
+    <h1>无人机 L1 入门实训营<br>全流程 + 趣味竞技</h1>
+    <p class="sub">第 9 课《完整科目初学实训：入门飞行循序渐进》<br>+ 第 10 课《飞行强化拓展：基础实操 + 趣味飞球竞技》<br>吃透「慢起稳悬细调多练」，再进竞技场练精准手感。</p>
+  </div>
+  <div class="menu">
+    <button class="btn blue" onclick="go('mantra')"><span class="ico">🀄</span>关卡一：双课八字口诀翻卡</button>
+    <button class="btn orange" onclick="go('flow')"><span class="ico">🧩</span>关卡二：完整流程排序机</button>
+    <button class="btn pink" onclick="go('judge')"><span class="ico">👮</span>关卡三：四阶段标准判断官</button>
+    <button class="btn green" onclick="go('games')"><span class="ico">⚽</span>关卡四：趣味竞技场规则通关</button>
+    <button class="btn purple" onclick="go('recall')"><span class="ico">🙈</span>遮一遮：考点回忆卡</button>
+    <button class="btn blue" onclick="startQuiz()"><span class="ico">📝</span>考级模拟：12 题通关考</button>
+    <button class="btn orange" onclick="go('memo')"><span class="ico">📇</span>速记卡：考前 3 分钟过一遍</button>
+    <button class="btn ghost" onclick="go('errbook')"><span class="ico">📒</span>错题本 <span id="errCount"></span></button>
+  </div>
+  <div class="card" style="margin-top:14px">
+    <span class="badge gray">🗂 学习记录（两人共用一份）</span>
+    <div id="recInfo" style="font-size:14.5px;line-height:1.8">开始闯关后自动记录。</div>
+    <div class="btnrow">
+      <button class="btn ghost" onclick="recExport('json')">⬇ 导出 JSON</button>
+      <button class="btn ghost" onclick="recExport('md')">⬇ 导出 Markdown</button>
+      <button class="btn ghost" onclick="recImport()">⬆ 导入记录（粘贴 JSON 后点此）</button>
+    </div>
+    <textarea id="recBox" style="display:none;width:100%;min-height:120px;border-radius:12px;border:2px solid #E8E2F4;padding:10px;font-size:12px;margin-top:8px"></textarea>
+  </div>
+  <p class="footer-note">哥哥弟弟学的内容一样，本营共用进度不分人。<br>音频不适用：本课以手感训练与流程记忆为主，无需朗读。</p>
+</section>
+
+<section id="mantra" class="screen">
+  <div class="topbar"><button class="btn ghost" onclick="go('home')">🏠 首页</button></div>
+  <div class="card">
+    <span class="badge">关卡一 · 第 9 课口诀</span>
+    <div class="verse">慢起 · 稳悬 · 细调 · 多练</div>
+    <div class="mantra4" style="margin-top:10px">
+      <div class="mcard" onclick="this.classList.toggle('flip')"><div class="in">
+        <div class="mface mfront"><span class="zi">慢</span><b>慢起</b><span class="sub">点我翻面</span></div>
+        <div class="mface mback">起飞油门<b>缓慢匀速</b>推送，新手切勿急推油门，避免无人机<b>突然冲高、剧烈晃动</b>。</div>
+      </div></div>
+      <div class="mcard" onclick="this.classList.toggle('flip')"><div class="in">
+        <div class="mface mfront"><span class="zi">悬</span><b>稳悬</b><span class="sub">点我翻面</span></div>
+        <div class="mface mback">起飞后锁定 <b>1–1.5 米</b>标准高度<b>对尾悬停</b>。高度起伏是初学最常见问题，稳住高度是基础！</div>
+      </div></div>
+      <div class="mcard" onclick="this.classList.toggle('flip')"><div class="in">
+        <div class="mface mfront"><span class="zi">调</span><b>细调</b><span class="sub">点我翻面</span></div>
+        <div class="mface mback">机身偏移时<b>小幅微量</b>修正摇杆。猛打杆会让机身乱飘，<b>微调才能平稳控机</b>。</div>
+      </div></div>
+      <div class="mcard" onclick="this.classList.toggle('flip')"><div class="in">
+        <div class="mface mfront"><span class="zi">练</span><b>多练</b><span class="sub">点我翻面</span></div>
+        <div class="mface mback">起飞→悬停→降落整套流程<b>反复循环</b>，每轮结束复盘操作问题，一点点修正短板。</div>
+      </div></div>
+    </div>
+  </div>
+  <div class="card">
+    <span class="badge green">关卡一 · 第 10 课口诀</span>
+    <div class="verse">夯实 · 稳悬 · 竞技 · 协作</div>
+    <div class="mantra4" style="margin-top:10px">
+      <div class="mcard" onclick="this.classList.toggle('flip')"><div class="in">
+        <div class="mface mfront"><span class="zi">实</span><b>夯实</b><span class="sub">点我翻面</span></div>
+        <div class="mface mback">扎实巩固 L1 <b>全套标准飞行步骤</b>：起飞、对尾悬停、平稳降落流程熟练落地，筑牢基础操控手感。</div>
+      </div></div>
+      <div class="mcard" onclick="this.classList.toggle('flip')"><div class="in">
+        <div class="mface mfront"><span class="zi">悬</span><b>稳悬</b><span class="sub">点我翻面</span></div>
+        <div class="mface mback">全程保持<b>尾杆朝向自身</b>标准视角，稳定维持 1–1.5 米高度悬停，<b>精准控高、微量修正</b>机身漂移。</div>
+      </div></div>
+      <div class="mcard" onclick="this.classList.toggle('flip')"><div class="in">
+        <div class="mface mfront"><span class="zi">竞</span><b>竞技</b><span class="sub">点我翻面</span></div>
+        <div class="mface mback">依托基础操控开展趣味科目：<b>限时穿门、无人机足球挑战</b>，锻炼精准控机与短距离微调能力。</div>
+      </div></div>
+      <div class="mcard" onclick="this.classList.toggle('flip')"><div class="in">
+        <div class="mface mfront"><span class="zi">协</span><b>协作</b><span class="sub">点我翻面</span></div>
+        <div class="mface mback">接力赛<b>分组配合</b>完成飞行任务，在趣味飞行中培养耐心，熟练摇杆<b>细微操控力度</b>。</div>
+      </div></div>
+    </div>
+  </div>
+</section>
+
+<section id="flow" class="screen">
+  <div class="topbar"><button class="btn ghost" onclick="go('home')">🏠 首页</button></div>
+  <div class="card">
+    <span class="badge orange">关卡二 · 完整流程排序机</span>
+    <p class="sub">课堂考核标准：<b>整套流程连贯完成</b>。按正确顺序点击下面的步骤，排错会抖一抖重来。</p>
+    <div id="seqBox"></div>
+    <div class="flymsg" id="seqMsg">从第 1 步开始点！</div>
+    <div class="btnrow" style="justify-content:center"><button class="btn ghost" onclick="seqReset()">🔄 重新排</button></div>
+  </div>
+  <div class="card">
+    <span class="badge orange">四阶段标准卡 · 点卡翻面</span>
+    <div class="kcard" onclick="this.classList.toggle('flip')"><div class="in">
+      <div class="kface kfront"><span class="badge">标准 1</span><span class="t">🛫 起飞阶段</span><span class="sub">点我翻面</span></div>
+      <div class="kface kback">油门<b>匀速缓慢推动</b>，无骤然拉升、无机身剧烈晃动。</div>
+    </div></div>
+    <div class="kcard" onclick="this.classList.toggle('flip')"><div class="in">
+      <div class="kface kfront"><span class="badge">标准 2</span><span class="t">🎯 悬停阶段</span><span class="sub">点我翻面</span></div>
+      <div class="kface kback">严格保持<b>对尾姿态</b>、高度稳定（1–1.5 米）；机身微小偏移<b>及时微量修正</b>，全程不出现大范围漂移；稳定停留 <b>10 秒以上</b>。</div>
+    </div></div>
+    <div class="kcard" onclick="this.classList.toggle('flip')"><div class="in">
+      <div class="kface kfront"><span class="badge">标准 3</span><span class="t">🛬 降落阶段</span><span class="sub">点我翻面</span></div>
+      <div class="kface kback"><b>匀速收油门</b>，平稳落地，<b>无砸机、无侧滑</b>。</div>
+    </div></div>
+    <div class="kcard" onclick="this.classList.toggle('flip')"><div class="in">
+      <div class="kface kfront"><span class="badge">标准 4</span><span class="t">✋ 操作习惯</span><span class="sub">点我翻面</span></div>
+      <div class="kface kback">全程<b>轻推微修摇杆</b>，杜绝猛打杆、大幅度频繁推拉摇杆等不良习惯。</div>
+    </div></div>
+  </div>
+</section>
+
+<section id="judge" class="screen">
+  <div class="topbar"><button class="btn ghost" onclick="go('home')">🏠 首页</button></div>
+  <div class="card">
+    <span class="badge pink">关卡三 · 标准判断官</span>
+    <p class="sub">下面 8 个飞行动作，是「标准操作」还是「陋习」？判错了会进错题本哦。</p>
+    <div id="judgeBox"></div>
+    <div class="flymsg" id="judgeMsg"></div>
+  </div>
+</section>
+
+<section id="games" class="screen">
+  <div class="topbar"><button class="btn ghost" onclick="go('home')">🏠 首页</button></div>
+  <div class="card">
+    <span class="badge green">关卡四 · 趣味竞技场 · 点卡看规则</span>
+    <div class="demo">趣味竞技不是瞎玩——它练的是<b>精准微调、障碍避让</b>的操控能力，而且全程沿用<b>对尾视角</b>，和考级要求完全一致！</div>
+    <div class="kcard" onclick="this.classList.toggle('flip')"><div class="in">
+      <div class="kface kfront"><span class="badge orange">项目 1</span><span class="t">🚪 限时穿门</span><span class="sub">点我翻面</span></div>
+      <div class="kface kback">操控无人机<b>平稳穿过门框障碍</b>，限时内完成往返飞行，<b>不碰撞门框</b>。考的是短距离精准控机！</div>
+    </div></div>
+    <div class="kcard" onclick="this.classList.toggle('flip')"><div class="in">
+      <div class="kface kfront"><span class="badge orange">项目 2</span><span class="t">⚽ 无人机足球接力赛</span><span class="sub">点我翻面</span></div>
+      <div class="kface kback">分组依次操控无人机<b>触碰足球完成传递</b>，依次穿过障碍门，<b>团队接力完成全程</b>；飞行过程<b>不撞障、不丢球</b>。</div>
+    </div></div>
+    <div class="kcard" onclick="this.classList.toggle('flip')"><div class="in">
+      <div class="kface kfront"><span class="badge orange">项目 3</span><span class="t">👀 统一视角要求</span><span class="sub">点我翻面</span></div>
+      <div class="kface kback">趣味项目同样<b>沿用对尾视角</b>飞行，同步巩固基础视角操控逻辑——这是 L1 等级考试统一要求视角，熟练掌握后能从根源避免方向操作反向、操控混乱。</div>
+    </div></div>
+  </div>
+</section>
+
+<section id="recall" class="screen">
+  <div class="topbar"><button class="btn ghost" onclick="go('home')">🏠 首页</button></div>
+  <div class="card">
+    <span class="badge" style="background:var(--purple)">🙈 遮一遮</span>
+    <h2>先在心里回答，再点开核对</h2>
+    <div id="recallList"></div>
+  </div>
+</section>
+
+<section id="quiz" class="screen">
+  <div class="topbar"><button class="btn ghost" onclick="go('home')">🏠 首页</button><div class="prog"><i id="quizProg"></i></div><span id="quizNum" style="font-weight:800;font-size:14px"></span></div>
+  <div class="card" id="quizCard"></div>
+</section>
+
+<section id="memo" class="screen">
+  <div class="topbar"><button class="btn ghost" onclick="go('home')">🏠 首页</button><button class="btn ghost" onclick="window.print()">🖨 打印</button></div>
+  <div class="card memo">
+    <span class="badge yellow">📇 考前 3 分钟速记卡 · L1-9 + L1-10</span>
+    <div class="verse">慢起稳悬细调多练，<br>夯实稳悬竞技协作；<br>起飞匀速悬停对尾，<br>降落匀速不砸不滑。</div>
+    <h3>一、两课口诀</h3>
+    <ul>
+      <li><b>慢起：</b>油门缓慢匀速推送，切勿急推，防止突然冲高晃动。</li>
+      <li><b>稳悬：</b>锁定 1–1.5 米对尾悬停，稳住高度是基础。</li>
+      <li><b>细调：</b>偏移时小幅微量修正，猛打杆会乱飘。</li>
+      <li><b>多练：</b>整套流程反复循环，每轮复盘短板。</li>
+      <li><b>夯实/竞技/协作：</b>巩固全套标准步骤 → 趣味科目练精准 → 接力配合练耐心。</li>
+    </ul>
+    <h3>二、完整流程考核标准</h3>
+    <ul>
+      <li>原地起飞 → <b>1–1.5 米标准对尾悬停（稳定 10 秒以上，无大幅漂移、不失控）</b>→ 平稳缓慢降落。</li>
+      <li>起飞：匀速缓慢推动，无骤然拉升；悬停：对尾姿态+高度稳+微量修正；降落：匀速收油门，无砸机无侧滑；习惯：全程轻推微修，杜绝猛打杆。</li>
+    </ul>
+    <h3>三、趣味竞技规则</h3>
+    <ul>
+      <li><b>限时穿门：</b>平稳穿过门框，限时往返，不碰门框。</li>
+      <li><b>无人机足球接力：</b>分组触碰足球传递、穿过障碍门，不撞障、不丢球。</li>
+      <li>趣味项目同样用<b>对尾视角</b>，与考级要求一致。</li>
+    </ul>
+  </div>
+</section>
+
+<section id="errbook" class="screen">
+  <div class="topbar"><button class="btn ghost" onclick="go('home')">🏠 首页</button></div>
+  <div class="card">
+    <span class="badge red">📒 错题本</span>
+    <p class="sub">答错的题会住在这里，连对 2 次才能毕业。</p>
+    <div id="errList"></div>
+  </div>
+</section>
+
+</div>
+<script>
+"use strict";
+const $=s=>document.querySelector(s);
+function go(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('on'));document.getElementById(id).classList.add('on');window.scrollTo(0,0);REC.page(id);}
+
+/* ===== 学习记录 ===== */
+const APP_ID='drone_l1_rookie_camp',ERR_KEY=APP_ID+'_err';
+const REC=(()=>{const KEY=APP_ID+'_record';
+  let d=null;try{d=JSON.parse(localStorage.getItem(KEY))}catch(e){}
+  if(!d||typeof d!=='object')d={child:'both',pages:{},quiz:{best:0,try:0},events:[]};
+  function save(){try{localStorage.setItem(KEY,JSON.stringify(d))}catch(e){}}
+  return{
+    page(id){d.pages[id]=(d.pages[id]||0)+1;save();renderRec();},
+    quiz(score,total){d.quiz.try++;d.quiz.best=Math.max(d.quiz.best,score);d.events.push({t:Date.now(),kind:'quiz',score,total});save();renderRec();},
+    event(kind,note){d.events.push({t:Date.now(),kind,note});save();renderRec();},
+    exportJSON(){return JSON.stringify(d,null,2)},
+    exportMD(){const L=['# 学习记录 · '+APP_ID,'孩子：both','题目最佳：'+d.quiz.best+' / 12（共 '+d.quiz.try+' 次）','','## 事件'];
+      d.events.forEach(e=>{L.push('- '+new Date(e.t).toLocaleString()+' · '+e.kind+(e.note?(' · '+e.note):'')+(e.score!=null?(' · '+e.score+'/12'):''))});
+      return L.join('\n')},
+    importJSON(txt){const o=JSON.parse(txt);if(o&&o.events&&o.pages){d=o;save();renderRec();return true}return false}
+  };
+})();
+function renderRec(){const el=$('#recInfo');if(el){let d;try{d=JSON.parse(localStorage.getItem(APP_ID+'_record'))}catch(e){}el.textContent=d?('已完成 '+Object.keys(d.pages||{}).length+' 个关卡 · 测验最佳 '+(d.quiz?d.quiz.best:0)+' / 12'):'还没有记录，快开始吧！';}}
+
+/* ===== 错题本 ===== */
+const ERR=(()=>{let d=null;try{d=JSON.parse(localStorage.getItem(ERR_KEY))}catch(e){}
+  if(!Array.isArray(d))d=[];
+  function save(){try{localStorage.setItem(ERR_KEY,JSON.stringify(d))}catch(e){}}
+  return{
+    add(q){const f=d.find(x=>x.q===q.q);if(f)f.streak=0;else d.push({q:q.q,opts:q.opts,a:q.a,why:q.why,streak:0});save();renderErr();},
+    hit(qi){const f=d[qi];if(!f)return;f.streak++;if(f.streak>=2)d.splice(qi,1);save();},
+    miss(qi){if(d[qi])d[qi].streak=0;save();},
+    list(){return d}
+  };
+})();
+
+/* ===== 关卡二：流程排序 ===== */
+const FLOW=['原地起飞（油门匀速缓慢推动）','爬升到 1–1.5 米，锁定对尾悬停','稳定悬停 10 秒以上，无大幅漂移','微量修正机身小偏移','匀速收油门，平稳缓慢降落','落地无砸机、无侧滑，复盘本轮问题'];
+let seqOrder=[],seqNext=0;
+function seqReset(){seqNext=0;$('#seqMsg').textContent='从第 1 步开始点！';
+  seqOrder=FLOW.map((t,i)=>i).sort(()=>Math.random()-.5);
+  const box=$('#seqBox');box.innerHTML='';
+  seqOrder.forEach(idx=>{const d=document.createElement('div');d.className='seqitem';d.dataset.idx=idx;
+    d.innerHTML='<span class="n">?</span><span>'+FLOW[idx]+'</span>';
+    d.onclick=()=>seqPick(d);box.appendChild(d);});}
+function seqPick(el){const idx=+el.dataset.idx;
+  if(el.classList.contains('set'))return;
+  if(idx===seqNext){el.classList.add('set');el.querySelector('.n').textContent=++seqNext;
+    if(seqNext===FLOW.length){$('#seqMsg').textContent='🎉 全流程排对！起飞→悬停→降落，一步不能跳。';confetti();REC.event('flow','排序全对');}
+    else $('#seqMsg').textContent='对！下一步是第 '+(seqNext+1)+' 步。';}
+  else{el.classList.add('bad');setTimeout(()=>el.classList.remove('bad'),400);
+    $('#seqMsg').textContent='❌ 顺序不对，想想：先起飞？先悬停？还是先降落？';REC.event('flow','排序点错');}}
+seqReset();
+
+/* ===== 关卡三：判断官 ===== */
+const JUDGE=[
+ ['🚀','起飞时一把猛推油门，让飞机“嗖”地冲上去。',false,'慢起：油门要缓慢匀速推送，急推会突然冲高、剧烈晃动。'],
+ ['📈','悬停时高度一会儿 1 米一会儿 2 米，觉得“差不多就行”。',false,'稳悬：锁定 1–1.5 米，高度起伏是初学最常见问题，稳住高度是基础。'],
+ ['🤏','机身轻微向右偏移，向左轻轻带一点摇杆拉回来。',true,'细调：小幅微量修正才是平稳控机，猛打杆会乱飘。'],
+ ['🛬','降落时快速收油门，让飞机快点落地省时间。',false,'降落要匀速收油门、平稳落地，快收会砸机、侧滑。'],
+ ['🔁','每轮飞行结束后，复盘这一轮的操作问题再练下一轮。',true,'多练的核心就是循环+复盘，一点点修正短板。'],
+ ['🚪','限时穿门时加速冲过去，碰到门框也没关系。',false,'穿门要求平稳穿过、不碰撞门框，考的是精准控机不是速度。'],
+ ['⚽','足球接力赛里和队友分组配合，轮流完成飞行任务。',true,'协作：接力配合能培养耐心和细微操控力度。'],
+ ['🕹','为了让飞机“听话”，大幅度、频繁地推拉摇杆。',false,'全程轻推微修摇杆，杜绝猛打杆、大幅推拉等不良习惯。']];
+let ji=0,jOk=0;
+function renderJudge(){const box=$('#judgeBox');
+  if(ji>=JUDGE.length){box.innerHTML='<div class="explain on">🎉 判断完毕！答对 '+jOk+' / '+JUDGE.length+'。'+(jOk>=7?'火眼金睛，标准已刻进脑子！':'把判错的场景再想想为什么。')+'</div>';$('#judgeMsg').textContent='';return;}
+  const s=JUDGE[ji];$('#judgeMsg').textContent='第 '+(ji+1)+' / '+JUDGE.length+' 个场景';
+  box.innerHTML='<div class="scene"><span class="semoji">'+s[0]+'</span><div class="stxt">'+s[1]+'</div></div>'+
+    '<div class="btnrow" style="justify-content:center"><button class="btn green" id="jYes">✓ 标准操作</button><button class="btn pink" id="jNo">✗ 这是陋习</button></div>'+
+    '<div class="explain" id="jExp"></div>';
+  $('#jYes').onclick=()=>jPick(true);$('#jNo').onclick=()=>jPick(false);}
+function jPick(said){const s=JUDGE[ji];const ok=said===s[2];
+  $('#jYes').disabled=true;$('#jNo').disabled=true;
+  const exp=$('#jExp');exp.classList.add('on');
+  if(ok){jOk++;exp.innerHTML='✅ 判断正确！'+s[3];}
+  else{exp.innerHTML='❌ '+s[3];
+    ERR.add({q:'【判断】'+s[1],opts:['✓ 标准操作','✗ 这是陋习'],a:s[2]?0:1,why:s[3]});
+    REC.event('judge','判错：'+s[1]);}
+  setTimeout(()=>{ji++;renderJudge();},1600);}
+renderJudge();
+
+/* ===== 遮一遮 ===== */
+const RECALL=[
+ ['第 9 课四字口诀？','慢起、稳悬、细调、多练。'],
+ ['第 10 课四字口诀？','夯实、稳悬、竞技、协作。'],
+ ['慢起的要领？','油门缓慢匀速推送，切勿急推，避免突然冲高、晃动。'],
+ ['稳悬的高度和视角？','1–1.5 米标准高度、对尾悬停；稳住高度是基础。'],
+ ['完整流程考核标准？','原地起飞→1–1.5 米对尾悬停稳定 10 秒以上（无大幅漂移、不失控）→平稳缓慢降落。'],
+ ['降落阶段的标准？','匀速收油门，平稳落地，无砸机、无侧滑。'],
+ ['限时穿门规则？','平稳穿过门框障碍，限时内往返，不碰撞门框。'],
+ ['无人机足球接力规则？','分组触碰足球传递、依次穿障碍门，团队接力完成全程，不撞障、不丢球。']];
+(function(){const box=$('#recallList');RECALL.forEach((r,i)=>{const d=document.createElement('div');d.className='card recall-item';
+  d.innerHTML='<b>Q'+(i+1)+' · '+r[0]+'</b><div class="recall-answer" onclick="this.classList.toggle(\'show\')">'+r[1]+'</div>';box.appendChild(d);});})();
+
+/* ===== 测验 12 题 ===== */
+const QUIZ=[
+ {q:'第 9 课的核心训练口诀是——',opts:['慢起、稳悬、细调、多练','快起、猛打、急停、快落','控高、盯柱、缓杆、顺切'],a:0,why:'第 9 课：慢起、稳悬、细调、多练。「控高盯柱」是后面绕柱课的口诀。'},
+ {q:'起飞阶段的标准动作是——',opts:['猛推油门快速升空','油门匀速缓慢推动，无骤然拉升','先拉到最高再慢慢降'],a:1,why:'慢起：匀速缓慢推送，防止冲高晃动。'},
+ {q:'标准对尾悬停的高度是——',opts:['0.5 米以下','1–1.5 米','3 米以上'],a:1,why:'锁定 1–1.5 米标准高度。'},
+ {q:'悬停稳定停留的考核要求是——',opts:['3 秒以上','10 秒以上，无大幅漂移、不失控','随便停一下就行'],a:1,why:'稳定 10 秒以上才算达标。'},
+ {q:'机身出现小偏移时应该——',opts:['猛打反方向杆','松手等它自己停','小幅微量修正摇杆'],a:2,why:'细调：猛打杆会乱飘，微调才能平稳控机。'},
+ {q:'降落阶段的标准是——',opts:['匀速收油门，平稳落地，无砸机无侧滑','快速收油门快点落地','直接关油门掉下来'],a:0,why:'匀速收油门是降落关键。'},
+ {q:'下列哪条是「陋习」？',opts:['每轮结束复盘问题','全程轻推微修摇杆','大幅度频繁推拉摇杆'],a:2,why:'大幅推拉是明确要杜绝的不良习惯。'},
+ {q:'限时穿门的要求是——',opts:['全速冲过门框','平稳穿过、限时往返、不碰门框','飞到门框上方越过'],a:1,why:'考的是精准控机，碰门框算失败。'},
+ {q:'无人机足球接力赛中，下列做法正确的是——',opts:['一个人飞完全程','分组接力传递，不撞障不丢球','用手把球扔进球门'],a:1,why:'接力赛考协作+精准，必须不撞障、不丢球。'},
+ {q:'趣味竞技项目采用的视角是——',opts:['随便什么视角','机头视角','对尾视角（与考级统一）'],a:2,why:'对尾视角是 L1 考级统一要求，趣味项目同样沿用。'},
+ {q:'「多练」指的是——',opts:['一次飞很久不休息','整套流程反复循环+每轮复盘','只练自己喜欢的动作'],a:1,why:'循环练习+复盘问题，逐步修正短板。'},
+ {q:'第 10 课口诀「竞技」锻炼的是——',opts:['精准控机与短距离微调','飞行速度极限','花式翻滚动作'],a:0,why:'限时穿门、无人机足球练的是精准微调能力。'}];
+let qi=0,qScore=0,qLock=false;
+function renderQuiz(){if(qi>=QUIZ.length){const c=$('#quizCard');
+    c.innerHTML='<h2>🎉 测验完成！得分 '+qScore+' / '+QUIZ.length+'</h2><div class="explain on">'+(qScore>=10?'太棒了，入门全流程+竞技场规则双通关！':'把错题本里的题再练两遍，连对 2 次就能毕业。')+'</div><div class="btnrow" style="justify-content:center"><button class="btn green" onclick="go(\'errbook\')">📒 去错题本</button><button class="btn ghost" onclick="restartQuiz()">🔄 再测一次</button></div>';
+    REC.quiz(qScore,QUIZ.length);if(qScore>=10)confetti();$('#quizProg').style.width='100%';$('#quizNum').textContent='完成';return;}
+  const q=QUIZ[qi];qLock=false;$('#quizNum').textContent=(qi+1)+' / '+QUIZ.length;$('#quizProg').style.width=(qi/QUIZ.length*100)+'%';
+  const c=$('#quizCard');c.innerHTML='<h2>'+q.q+'</h2><div id="qOpts"></div><div class="explain" id="qExp"></div>';
+  q.opts.forEach((o,i)=>{const b=document.createElement('button');b.className='opt';b.textContent=o;b.onclick=()=>pick(b,i,q);$('#qOpts').appendChild(b);});}
+function pick(el,i,q){if(qLock)return;qLock=true;
+  const opts=[...document.querySelectorAll('#qOpts .opt')];opts[q.a].classList.add('right');
+  if(i===q.a){qScore++;$('#qExp').innerHTML='✅ 答对！'+q.why;}
+  else{el.classList.add('wrong');$('#qExp').innerHTML='❌ '+q.why;ERR.add(q);REC.event('quiz','错：'+q.q);}
+  $('#qExp').classList.add('on');
+  opts.forEach(o=>o.disabled=true);
+  setTimeout(()=>{qi++;renderQuiz();},1400);}
+function restartQuiz(){qi=0;qScore=0;renderQuiz();}
+function startQuiz(){restartQuiz();go('quiz');}
+renderQuiz();
+
+/* ===== 错题本渲染 ===== */
+function renderErr(){const ec=$('#errCount');if(ec)ec.textContent=ERR.list().length?('· '+ERR.list().length+' 题'):'';
+  const list=ERR.list(),box=$('#errList');if(!box)return;
+  if(!list.length){box.innerHTML='<div class="explain on">📒 错题本空空如也，太棒了！去测验里挑战一下吧。</div>';return;}
+  box.innerHTML='';list.forEach((e,idx)=>{const d=document.createElement('div');d.className='card';
+    d.innerHTML='<b>'+e.q+'</b> <span class="badge orange">连对 '+e.streak+'/2</span><div id="eOpts'+idx+'"></div><div class="explain" id="eExp'+idx+'"></div>';
+    box.appendChild(d);let lock=false;
+    e.opts.forEach((o,i)=>{const b=document.createElement('button');b.className='opt';b.textContent=o;
+      b.onclick=()=>{if(lock)return;lock=true;const oo=[...document.querySelectorAll('#eOpts'+idx+' .opt')];oo[e.a].classList.add('right');
+        $('#eExp'+idx).classList.add('on');
+        if(i===e.a){ERR.hit(idx);$('#eExp'+idx).innerHTML='✅ 答对！再连对一次就毕业。'+(ERR.list()[idx]?'':'🎓 已从错题本毕业！');}
+        else{b.classList.add('wrong');ERR.miss(idx);$('#eExp'+idx).innerHTML='❌ '+e.why;}
+        oo.forEach(x=>x.disabled=true);setTimeout(renderErr,1500);};
+      d.querySelector('#eOpts'+idx).appendChild(b);});});}
+
+/* ===== 记录导出导入 ===== */
+function recExport(kind){const t=kind==='json'?REC.exportJSON():REC.exportMD();
+  const ta=$('#recBox');ta.value=t;ta.style.display='block';}
+function recImport(){const ta=$('#recBox');try{if(REC.importJSON(ta.value)){alert('导入成功！');renderRec();}else alert('格式不对，导入失败。');}catch(e){alert('格式不对，导入失败。');}}
+renderRec();renderErr();
+if(location.hash&&document.getElementById(location.hash.slice(1)))go(location.hash.slice(1));
+function confetti(){for(let i=0;i<26;i++){const s=document.createElement('span');s.className='confetti';
+  s.style.left=Math.random()*100+'vw';s.style.background=['#FFD166','#2E9BFF','#FF6B9D','#7AE582','#B28DFF'][i%5];
+  s.style.animationDelay=(Math.random()*0.6)+'s';document.body.appendChild(s);setTimeout(()=>s.remove(),2600);}}
+</script>
+</body>
+</html>

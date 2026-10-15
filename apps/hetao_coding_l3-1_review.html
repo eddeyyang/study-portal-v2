@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<script src="../assets/learning-sync.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>核桃 L3-1 复习 · 找最大值擂台赛</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+:root{
+  --orange-1:#FF6B35; --orange-2:#FF8C42; --orange-3:#FFB347;
+  --purple-1:#6B5BFF; --green-1:#2BB673; --green-2:#4ECDC4;
+  --yellow-1:#FFD93D; --pink-1:#FF6B9D; --blue-1:#3B82F6;
+  --bg:#FFF8F0; --ink:#2D2A4A; --ink-soft:#5A5775;
+  --card:#ffffff; --shadow:0 8px 28px rgba(45,42,74,.12);
+  --good:#2BB673; --bad:#E64A4A;
+}
+html,body{ font-family:"PingFang SC","Microsoft YaHei",sans-serif; color:var(--ink);
+  background:linear-gradient(135deg,#FFF8F0 0%,#FFE8D6 100%); min-height:100%; }
+body{ -webkit-tap-highlight-color:transparent; }
+.wrap{ max-width:680px; margin:0 auto; padding:0 14px 80px; }
+
+.topbar{ position:sticky; top:0; z-index:50; backdrop-filter:blur(10px);
+  background:rgba(255,255,255,.86); border-bottom:2px solid rgba(255,107,53,.15);
+  display:flex; align-items:center; gap:10px; padding:10px 14px; }
+.logo{ width:34px;height:34px;border-radius:9px; display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(135deg,var(--orange-1),var(--orange-2)); color:#fff;font-size:19px;
+  box-shadow:0 4px 12px rgba(255,107,53,.4); }
+.brand b{ font-size:15px; color:var(--orange-1); display:block; line-height:1.2;}
+.brand span{ font-size:11px; color:var(--ink-soft);}
+.home{ margin-left:auto; text-decoration:none; background:#fff; border:2px solid var(--orange-1);
+  color:var(--orange-1); padding:6px 12px; border-radius:11px; font-weight:800; font-size:13px;}
+
+.nav{ display:flex; gap:8px; overflow-x:auto; padding:12px 2px; position:sticky; top:56px; z-index:40;
+  background:linear-gradient(180deg,rgba(255,248,240,.96),rgba(255,248,240,.7)); }
+.nav::-webkit-scrollbar{ display:none; }
+.chip{ flex:0 0 auto; border:none; background:#fff; color:var(--ink-soft); font-weight:800;
+  padding:9px 14px; border-radius:999px; font-size:13px; cursor:pointer; box-shadow:var(--shadow);
+  font-family:inherit; transition:.15s; }
+.chip.active{ background:linear-gradient(135deg,var(--orange-1),var(--orange-2)); color:#fff; transform:translateY(-1px);}
+
+section{ display:none; animation:fade .35s ease; }
+section.show{ display:block; }
+@keyframes fade{ from{opacity:0; transform:translateY(8px)} to{opacity:1; transform:none} }
+
+.card{ background:var(--card); border-radius:20px; box-shadow:var(--shadow); padding:18px; margin:14px 0; }
+.h2{ font-size:21px; font-weight:900; display:flex; align-items:center; gap:9px; margin-bottom:4px; }
+.sub{ color:var(--ink-soft); font-size:14px; line-height:1.6; margin-bottom:6px;}
+.tip{ background:#FFF3E8; border-left:4px solid var(--orange-1); border-radius:10px; padding:10px 13px;
+  font-size:14px; line-height:1.7; margin:10px 0; }
+.tip b{ color:#C84B1A; }
+.method{ background:#F3F0FF; border-left:4px solid var(--purple-1); border-radius:10px; padding:10px 13px;
+  font-size:14px; line-height:1.7; margin:10px 0; }
+
+/* 单词卡 */
+.wordgrid{ display:grid; grid-template-columns:1fr; gap:12px; }
+.wcard{ border:2px solid #FFE0C4; border-radius:16px; padding:14px 16px; background:linear-gradient(135deg,#fff,#FFF6EE);}
+.wtop{ display:flex; align-items:center; gap:10px; flex-wrap:wrap;}
+.wen{ font-size:26px; font-weight:900; color:var(--orange-1); }
+.wph{ color:var(--ink-soft); font-size:14px; }
+.spk{ margin-left:auto; border:none; background:var(--orange-1); color:#fff; width:40px;height:40px;
+  border-radius:50%; font-size:18px; cursor:pointer; box-shadow:0 4px 10px rgba(255,107,53,.4);}
+.wmean{ margin-top:6px; font-size:15px; line-height:1.7;}
+.wmean .pos{ display:inline-block; background:#EEE9FF; color:var(--purple-1); font-size:12px; font-weight:800;
+  border-radius:6px; padding:1px 7px; margin-right:6px;}
+.wph2{ margin-top:6px; font-size:13px; color:var(--green-1); font-weight:700;}
+
+/* 代码块 */
+.code{ background:#1E1B33; color:#Efeaff; border-radius:14px; padding:14px 16px; font-size:15px;
+  font-family:"SF Mono",Consolas,Menlo,monospace; line-height:1.85; overflow-x:auto; }
+.code .ln{ display:block; border-radius:6px; padding:0 6px; transition:background .15s; }
+.code .ln.on{ background:rgba(255,217,61,.28); }
+.k{color:#FF9D66;} .v{color:#7FE0FF;} .n{color:#FFD93D;} .s{color:#9DE89D;} .o{color:#FF8FB0;} .c{color:#8B86A8;}
+
+.btn{ border:none; border-radius:13px; padding:11px 16px; font-weight:800; font-size:15px; cursor:pointer;
+  font-family:inherit; background:linear-gradient(135deg,var(--orange-1),var(--orange-2)); color:#fff;
+  box-shadow:0 5px 14px rgba(255,107,53,.35); transition:.15s; }
+.btn:active{ transform:translateY(2px); }
+.btn.ghost{ background:#fff; color:var(--orange-1); border:2px solid var(--orange-1); box-shadow:none;}
+.btn.green{ background:linear-gradient(135deg,#2BB673,#4ECDC4); box-shadow:0 5px 14px rgba(43,182,115,.3);}
+.btn.blue{ background:linear-gradient(135deg,#3B82F6,#6B5BFF); box-shadow:0 5px 14px rgba(59,130,246,.3);}
+.btn.row{ display:block; width:100%; margin:7px 0; }
+.btnrow{ display:flex; gap:10px; flex-wrap:wrap; margin-top:12px; }
+.btn:disabled{ opacity:.4; cursor:default; }
+
+.screen{ background:#0E1230; color:#7FE0FF; border-radius:14px; padding:12px 16px; font-family:monospace;
+  font-size:17px; min-height:54px; line-height:1.7; border:2px solid #2a2f55; margin-top:10px; }
+.screen .lab{ color:#8B86A8; font-size:12px; display:block; margin-bottom:4px; font-family:inherit;}
+.outch{ display:inline-block; animation:pop .25s ease; }
+@keyframes pop{ from{transform:scale(0) rotate(-15deg); opacity:0} to{transform:none; opacity:1} }
+
+.step{ background:#FFF3E8; border-radius:10px; padding:10px 13px; font-size:14px; line-height:1.7; margin-top:10px; min-height:44px;}
+
+/* 三个变量盒子 */
+.boxrow{ display:flex; gap:10px; justify-content:center; margin:12px 0; }
+.vbox{ flex:1; max-width:110px; background:linear-gradient(135deg,#FFF6EE,#fff); border:3px solid var(--orange-1);
+  border-radius:14px; text-align:center; padding:8px; }
+.vbox .name{ display:block; font-size:13px; color:var(--ink-soft); font-weight:800;}
+.vbox .val{ font-size:30px; font-weight:900; color:var(--orange-1); display:block; min-height:38px;}
+.vbox.empty{ border-style:dashed; border-color:#ddd; }
+.vbox.empty .val{ color:#ccc; }
+.vbox.bump .val{ animation:bump .35s ease; }
+@keyframes bump{ 0%{transform:scale(1)} 40%{transform:scale(1.3); color:#2BB673} 100%{transform:scale(1)} }
+.numpad{ display:flex; gap:8px; flex-wrap:wrap; justify-content:center; margin-top:10px; }
+.numk{ border:none; background:var(--purple-1); color:#fff; border-radius:12px; width:60px; padding:12px 0;
+  font-weight:900; font-size:17px; cursor:pointer; font-family:inherit; transition:.1s; }
+.numk:active{ transform:scale(.9); }
+.numk:disabled{ opacity:.35; }
+
+/* 输出顺序拼装 */
+.orderrow{ display:flex; gap:8px; justify-content:center; flex-wrap:wrap; margin-top:10px;}
+.ordk{ border:2px solid var(--blue-1); background:#fff; color:var(--blue-1); border-radius:12px; width:64px;
+  padding:10px 0; font-weight:900; font-size:17px; cursor:pointer; font-family:monospace; }
+.ordk:disabled{ opacity:.3; }
+
+/* 运算分步 */
+.expr{ text-align:center; font-family:"SF Mono",Consolas,monospace; font-size:22px; font-weight:900;
+  background:#1E1B33; color:#Efeaff; border-radius:14px; padding:18px 8px; margin:10px 0; }
+.expr .tk{ display:inline-block; border-radius:8px; padding:2px 6px; transition:.3s; }
+.expr .tk.hot{ background:rgba(255,217,61,.35); transform:scale(1.15); }
+.expr .tk.done{ color:#9DE89D; }
+.sliderlab{ font-size:14px; font-weight:800; margin-top:8px;}
+.slider{ width:100%; -webkit-appearance:none; height:10px; border-radius:999px;
+  background:linear-gradient(90deg,#FFD93D,#FF6B35); outline:none; margin:6px 0; }
+.slider::-webkit-slider-thumb{ -webkit-appearance:none; width:28px;height:28px;border-radius:50%;
+  background:#fff; border:4px solid var(--orange-1); cursor:pointer; box-shadow:0 3px 8px rgba(0,0,0,.2);}
+.slider::-moz-range-thumb{ width:28px;height:28px;border-radius:50%; background:#fff; border:4px solid var(--orange-1); cursor:pointer;}
+
+/* 擂台 */
+.arena{ position:relative; height:230px; background:linear-gradient(180deg,#FFE9D2,#FFF8F0); border-radius:16px;
+  border:2px solid #FFE0C4; overflow:hidden; margin:12px 0;}
+.stage{ position:absolute; left:50%; transform:translateX(-50%); bottom:64px; width:150px; height:16px;
+  background:linear-gradient(135deg,#C84B1A,#FF8C42); border-radius:8px 8px 0 0; }
+.stage::after{ content:"擂台"; position:absolute; top:18px; left:50%; transform:translateX(-50%);
+  font-size:11px; font-weight:900; color:#C84B1A; }
+.champ{ position:absolute; left:50%; transform:translateX(-50%); bottom:80px; text-align:center;
+  transition:all .5s ease; }
+.champ .face{ font-size:44px; display:block; }
+.champ .num{ font-size:17px; font-weight:900; color:#C84B1A; background:#fff; border-radius:999px; padding:1px 10px;
+  border:2px solid var(--orange-1); }
+.champ .crown{ position:absolute; top:-20px; left:50%; transform:translateX(-50%); font-size:20px; }
+.queue{ position:absolute; left:0; right:0; bottom:4px; display:flex; justify-content:center; gap:26px; }
+.fighter{ text-align:center; transition:all .6s ease; }
+.fighter .face{ font-size:36px; display:block; }
+.fighter .num{ font-size:14px; font-weight:900; background:#fff; border-radius:999px; padding:1px 8px; border:2px solid #ccc; }
+.fighter.gone{ opacity:.25; filter:grayscale(1); transform:scale(.85); }
+.vsbubble{ position:absolute; left:50%; top:12px; transform:translateX(-50%); background:#fff; border:2px solid var(--purple-1);
+  color:var(--purple-1); font-weight:900; border-radius:999px; padding:5px 14px; font-size:15px; opacity:0; transition:.3s; }
+.vsbubble.show{ opacity:1; }
+
+/* quiz */
+.q{ font-size:16px; font-weight:800; margin-bottom:10px; line-height:1.6;}
+.opt{ display:block; width:100%; text-align:left; border:2px solid #eee; background:#fff; border-radius:13px;
+  padding:12px 14px; margin:8px 0; font-size:15px; font-weight:700; cursor:pointer; font-family:inherit; transition:.15s;}
+.opt:hover{ border-color:var(--orange-3); }
+.opt.ok{ border-color:var(--good); background:#EBFBF2; color:var(--good);}
+.opt.no{ border-color:var(--bad); background:#FDECEC; color:var(--bad);}
+.explain{ display:none; margin-top:10px; background:#F3F0FF; border-left:4px solid var(--purple-1);
+  border-radius:10px; padding:11px 13px; font-size:14px; line-height:1.7;}
+.explain.show{ display:block; }
+.scorebar{ font-weight:900; color:var(--orange-1); font-size:16px; }
+
+.foot{ text-align:center; color:var(--ink-soft); font-size:12px; margin-top:18px; line-height:1.7;}
+.flag{ display:inline-block; background:#EBFBF2; color:var(--good); border-radius:999px; font-size:12px;
+  font-weight:800; padding:2px 10px; margin-left:8px;}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div class="logo">🥊</div>
+  <div class="brand"><b>核桃编程 · L3-1 复习</b><span>多变量运算 & 找最大值擂台赛</span></div>
+  <a class="home" href="cpp_hub.html">🏠 学习馆</a>
+</div>
+
+<div class="wrap">
+  <div class="nav" id="nav"></div>
+
+  <!-- 0 总览 -->
+  <section id="s-intro" class="show">
+    <div class="card">
+      <div class="h2">🥊 这节课我们学了什么？</div>
+      <div class="sub">两块内容：<b>模块 17 · 多变量运算</b> + <b>模块 18 · 多 if 找最大值</b>。一个程序里可以同时养 a、b、c 三个变量，还能让它们上擂台 PK 出最大值！</div>
+      <div class="tip">🧩 三个核心：<b>① 多变量的输入与输出</b>（一行定义三个、一个 cin 连着输）· <b>② 多变量运算</b>（ans=a*2+b+c*3 先算右边再赋值）· <b>③ 擂台法找最大值</b>（max 是擂主，谁大谁上台）。</div>
+      <button class="btn row" onclick="go('s-words')">先认 2 个单词 →</button>
+      <button class="btn row blue" onclick="go('s-arena')">直接去打擂台 🥊</button>
+    </div>
+  </section>
+
+  <!-- 1 单词 -->
+  <section id="s-words">
+    <div class="card">
+      <div class="h2">📖 L3-1 单词卡 <span class="flag">点 🔊 跟读</span></div>
+      <div class="sub">这节课就 2 个词，都和"找最大值"有关。</div>
+      <div class="wordgrid" id="wordgrid"></div>
+    </div>
+  </section>
+
+  <!-- 2 多变量输入输出 -->
+  <section id="s-multi">
+    <div class="card">
+      <div class="h2">📥 多变量的输入与输出</div>
+      <div class="method"><b>方法点拨：</b>同一行可以新建三个变量 <b>int a,b,c;</b>（逗号隔开）。只写一个 cin，用<b>两个大于号</b>隔开变量：<b>cin&gt;&gt;a&gt;&gt;b&gt;&gt;c;</b>——程序按<b>从左到右</b>的顺序，把输入的数字挨个装进变量。</div>
+      <div class="code">
+        <span class="ln"><span class="v">int</span> a,b,c;</span>
+        <span class="ln" id="mv-cin"><span class="k">cin</span>&gt;&gt;a&gt;&gt;b&gt;&gt;c;</span>
+      </div>
+      <div class="boxrow">
+        <div class="vbox empty" id="boxA"><span class="name">a</span><span class="val">?</span></div>
+        <div class="vbox empty" id="boxB"><span class="name">b</span><span class="val">?</span></div>
+        <div class="vbox empty" id="boxC"><span class="name">c</span><span class="val">?</span></div>
+      </div>
+      <div class="sub" style="text-align:center;">连着点 3 个数，看它们<b>从左到右</b>依次住进 a、b、c：</div>
+      <div class="numpad" id="mvPad"></div>
+      <div class="step" id="mvStep">先点第 1 个数——它会住进最左边的 a。</div>
+      <div class="tip">📤 <b>输出顺序自己定</b>：程序按<b>从上到下</b>的顺序输出。改变 cout 语句的顺序，输出内容的顺序就跟着变。装满 a、b、c 后，点下面的键拼一个输出顺序：</div>
+      <div class="orderrow" id="ordRow">
+        <button class="ordk" data-v="a" disabled>a</button>
+        <button class="ordk" data-v="b" disabled>b</button>
+        <button class="ordk" data-v="c" disabled>c</button>
+        <button class="btn ghost" onclick="ordReset()" style="padding:8px 12px;">↺</button>
+      </div>
+      <div class="code" id="ordCode" style="margin-top:10px;"><span class="c">// 点上面的 a/b/c 生成 cout 语句</span></div>
+      <div class="screen"><span class="lab">终端输出：</span><span id="ordOut"></span></div>
+      <div class="btnrow"><button class="btn ghost" onclick="mvReset()">↺ 全部重来</button></div>
+    </div>
+  </section>
+
+  <!-- 3 多变量运算 -->
+  <section id="s-calc">
+    <div class="card">
+      <div class="h2">🧮 多变量运算 · ans = a*2 + b + c*3</div>
+      <div class="method"><b>方法点拨：</b>好几个变量可以一起算！运行过程还是那两步：<b>① 按"先乘除后加减"算出等号右边</b> → <b>② 把结果赋值给左边的 ans</b>。</div>
+      <div class="sliderlab">a = <b id="caV">2</b></div>
+      <input class="slider" id="caS" type="range" min="1" max="9" value="2" step="1">
+      <div class="sliderlab">b = <b id="cbV">5</b></div>
+      <input class="slider" id="cbS" type="range" min="1" max="9" value="5" step="1">
+      <div class="sliderlab">c = <b id="ccV">3</b></div>
+      <input class="slider" id="ccS" type="range" min="1" max="9" value="3" step="1">
+      <div class="expr" id="expr">
+        <span class="tk">ans</span><span class="tk">=</span><span class="tk" id="tkA">a*2</span><span class="tk">+</span><span class="tk" id="tkB">b</span><span class="tk">+</span><span class="tk" id="tkC">c*3</span><span class="tk">;</span>
+      </div>
+      <div class="boxrow"><div class="vbox empty" id="ansBox"><span class="name">ans</span><span class="val" id="ansVal">?</span></div></div>
+      <div class="btnrow"><button class="btn green" id="calcBtn" onclick="calcRun()">▶ 一步步算</button></div>
+      <div class="step" id="calcStep">拖滑块设 a、b、c，再点「一步步算」——先看乘法亮起来，再相加，最后装进 ans。</div>
+    </div>
+  </section>
+
+  <!-- 4 擂台赛 -->
+  <section id="s-arena">
+    <div class="card">
+      <div class="h2">🥊 擂台法找最大值</div>
+      <div class="method"><b>方法点拨（擂台法）：</b><b>max 是擂主</b>。先让 a 当擂主（max=a），之后每个选手都要跟擂主 PK：<b>比擂主大，就成为新擂主（max=b）</b>；比不过就下台。最后站在台上的擂主，就是<b>最大值</b>。</div>
+      <div class="code">
+        <span class="ln" id="ar-0"><span class="v">int</span> a,b,c; <span class="k">cin</span>&gt;&gt;a&gt;&gt;b&gt;&gt;c;</span>
+        <span class="ln" id="ar-1"><span class="v">int</span> max; max=a;　<span class="c">// a 先当擂主</span></span>
+        <span class="ln" id="ar-2"><span class="k">cout</span>&lt;&lt;max&lt;&lt;<span class="k">endl</span>;　<span class="c">// ①</span></span>
+        <span class="ln" id="ar-3"><span class="k">if</span>(b&gt;max){ max=b; }　<span class="c">// b 挑战</span></span>
+        <span class="ln" id="ar-4"><span class="k">cout</span>&lt;&lt;max&lt;&lt;<span class="k">endl</span>;　<span class="c">// ②</span></span>
+        <span class="ln" id="ar-5"><span class="k">if</span>(c&gt;max){ max=c; }　<span class="c">// c 挑战</span></span>
+        <span class="ln" id="ar-6"><span class="k">cout</span>&lt;&lt;max&lt;&lt;<span class="k">endl</span>;　<span class="c">// ③</span></span>
+      </div>
+      <div class="sliderlab">a（🐯）= <b id="aaV">153</b></div>
+      <input class="slider" id="aaS" type="range" min="100" max="500" value="153" step="1">
+      <div class="sliderlab">b（🦁）= <b id="abV">410</b></div>
+      <input class="slider" id="abS" type="range" min="100" max="500" value="410" step="1">
+      <div class="sliderlab">c（🐼）= <b id="acV">109</b></div>
+      <input class="slider" id="acS" type="range" min="100" max="500" value="109" step="1">
+      <div class="arena">
+        <div class="vsbubble" id="vsb">VS</div>
+        <div class="stage"></div>
+        <div class="champ" id="champ" style="opacity:0;">
+          <span class="crown">👑</span>
+          <span class="face" id="champFace">🐯</span>
+          <span class="num" id="champNum">153</span>
+        </div>
+        <div class="queue">
+          <div class="fighter" id="f-a"><span class="face">🐯</span><span class="num" id="fnA">a=153</span></div>
+          <div class="fighter" id="f-b"><span class="face">🦁</span><span class="num" id="fnB">b=410</span></div>
+          <div class="fighter" id="f-c"><span class="face">🐼</span><span class="num" id="fnC">c=109</span></div>
+        </div>
+      </div>
+      <div class="screen"><span class="lab">终端输出（① ② ③ 三次）：</span><span id="arOut"></span></div>
+      <div class="btnrow"><button class="btn green" id="arBtn" onclick="arenaRun()">▶ 开赛！</button></div>
+      <div class="step" id="arStep">拖滑块给三位选手定实力值，再点「开赛」。讲义原题就是 153、410、109——先按这个跑一遍！</div>
+      <div class="tip">💡 为什么中途要 cout 三次？就是让你看清：<b>擂主（max）是一步步换人的</b>。原题输出是 153、410、410——最后 c=109 打不过 410，max 不变。</div>
+    </div>
+  </section>
+
+  <!-- 5 检验 -->
+  <section id="s-quiz">
+    <div class="card">
+      <div class="h2">🎯 小检验 <span class="scorebar" id="score"></span></div>
+      <div class="sub">打完擂台来 4 道小题（理解之后的检验）。答错有讲解。</div>
+      <div id="quizBox"></div>
+      <button class="btn row green" id="restartBtn" style="display:none" onclick="buildQuiz()">🔁 再做一遍</button>
+    </div>
+    <div class="foot">核桃编程 · L3-1 多变量运算 & 找最大值擂台赛 · 拖一拖、赛一赛，看清"为什么"</div>
+  </section>
+</div>
+
+<script>
+/* ============ 导航 ============ */
+const SECTIONS = [
+  ['s-intro','🏁 总览'],['s-words','📖 单词'],['s-multi','📥 多变量'],
+  ['s-calc','🧮 多变量运算'],['s-arena','🥊 擂台赛'],['s-quiz','🎯 检验']
+];
+const nav = document.getElementById('nav');
+SECTIONS.forEach(([id,label])=>{
+  const b=document.createElement('button'); b.className='chip'; b.textContent=label; b.dataset.id=id;
+  b.onclick=()=>go(id); nav.appendChild(b);
+});
+function go(id){
+  document.querySelectorAll('section').forEach(s=>s.classList.toggle('show', s.id===id));
+  document.querySelectorAll('.chip').forEach(c=>c.classList.toggle('active', c.dataset.id===id));
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+go('s-intro');
+
+/* ============ 朗读：预合成神经音优先，浏览器 TTS 回退 ============ */
+const AUDIO_DIR="audio/hetao_coding_l3-1_review/";
+let exAudio=null, audioTok=0;
+function audioHash(s){const b=new TextEncoder().encode(s);let x=0x811c9dc5>>>0;for(let i=0;i<b.length;i++){x^=b[i];x=Math.imul(x,0x01000193)>>>0;}return ('0000000'+x.toString(16)).slice(-8);}
+function getExAudio(){if(!exAudio){exAudio=new Audio();exAudio.setAttribute('playsinline','');exAudio.preload='auto';try{document.body.appendChild(exAudio);}catch(e){}}return exAudio;}
+const synth = window.speechSynthesis;
+let vEn=null,vZh=null;
+function loadV(){ if(!synth) return; const vs=synth.getVoices();
+  vEn = vs.find(v=>/en-US/i.test(v.lang)&&/female|aria|samantha|ava/i.test(v.name))||vs.find(v=>/^en/i.test(v.lang));
+  vZh = vs.find(v=>/zh-CN/i.test(v.lang))||vs.find(v=>/zh/i.test(v.lang)); }
+if(synth){ loadV(); if(synth.onvoiceschanged!==undefined) synth.onvoiceschanged=loadV; }
+function ttsSay(text,lang){ if(!synth) return; try{ synth.cancel(); const u=new SpeechSynthesisUtterance(text);
+  if(lang==='en'){ u.lang='en-US'; u.voice=vEn; u.rate=.8; } else { u.lang='zh-CN'; u.voice=vZh; u.rate=.95; }
+  synth.speak(u);}catch(e){} }
+function say(text,lang){
+  try{if(synth)synth.cancel();}catch(e){}
+  audioTok++; const myTok=audioTok;
+  const a=getExAudio(); let done=false;
+  const stale=()=>done||myTok!==audioTok;
+  const fb=()=>{ if(stale())return; done=true; ttsSay(text,lang); };
+  a.onended=()=>{ if(stale())return; done=true; };
+  a.onerror=fb;
+  try{a.pause();}catch(e){}
+  a.src=AUDIO_DIR+audioHash(lang+"|"+text)+".mp3";
+  try{a.currentTime=0;}catch(e){}
+  const p=a.play(); if(p&&typeof p.catch==='function')p.catch(fb);
+}
+
+/* ============ 单词卡 ============ */
+const WORDS=[
+  {en:'answer',ph:'/ˈɑːnsər/',pos:'n./v.',mean:'回答；答案',ex:'程序算出的答案就是 answer'},
+  {en:'max',ph:'/mæks/',pos:'n.',mean:'最大值（maximum 的缩写）',ex:'变量 max 记录擂台上的最大值'}
+];
+const wg=document.getElementById('wordgrid');
+WORDS.forEach(w=>{
+  const d=document.createElement('div'); d.className='wcard';
+  d.innerHTML=`<div class="wtop"><span class="wen">${w.en}</span><span class="wph">${w.ph}</span>
+    <button class="spk">🔊</button></div>
+    <div class="wmean"><span class="pos">${w.pos}</span>${w.mean}</div>
+    <div class="wph2">💡 ${w.ex}</div>`;
+  d.querySelector('.spk').onclick=()=>say(w.en,'en');
+  wg.appendChild(d);
+});
+
+/* ============ 多变量输入输出 ============ */
+const MV_VALS={a:null,b:null,c:null};
+let mvIdx=0; const MV_ORDER=['a','b','c'];
+const mvPad=document.getElementById('mvPad');
+[153,410,109,77,260].forEach(n=>{
+  const b=document.createElement('button'); b.className='numk'; b.textContent=n;
+  b.onclick=()=>mvFeed(n,b); mvPad.appendChild(b);
+});
+function mvFeed(n,btn){
+  if(mvIdx>=3) return;
+  const name=MV_ORDER[mvIdx];
+  MV_VALS[name]=n;
+  const box=document.getElementById('box'+name.toUpperCase());
+  box.classList.remove('empty');
+  box.querySelector('.val').textContent=n;
+  box.classList.remove('bump'); void box.offsetWidth; box.classList.add('bump');
+  btn.disabled=true;
+  mvIdx++;
+  if(mvIdx<3){
+    document.getElementById('mvStep').innerHTML=`<b>${n}</b> 住进了 <b>${name}</b>。再点第 ${mvIdx+1} 个数 → 会住进 <b>${MV_ORDER[mvIdx]}</b>（从左到右！）`;
+  }else{
+    document.getElementById('mvStep').innerHTML=`✅ 装满了：a=${MV_VALS.a}、b=${MV_VALS.b}、c=${MV_VALS.c}。<b>一个 cin，按从左到右的顺序依次装</b>。现在去下面拼输出顺序吧！`;
+    document.querySelectorAll('#ordRow .ordk').forEach(k=>k.disabled=false);
+  }
+}
+let ordSeq=[];
+document.querySelectorAll('#ordRow .ordk').forEach(k=>{
+  k.onclick=()=>{
+    const v=k.dataset.v;
+    ordSeq.push(v); k.disabled=true;
+    const code=ordSeq.map(x=>`<span class="ln"><span class="k">cout</span>&lt;&lt;${x}&lt;&lt;<span class="k">endl</span>;</span>`).join('');
+    document.getElementById('ordCode').innerHTML=code;
+    const sp=document.createElement('span'); sp.className='outch'; sp.textContent=MV_VALS[v]+' ';
+    document.getElementById('ordOut').appendChild(sp);
+    if(ordSeq.length===3){
+      document.getElementById('mvStep').innerHTML=`📤 你排的顺序是 <b>${ordSeq.join(' → ')}</b>，输出就是 <b>${ordSeq.map(x=>MV_VALS[x]).join('、')}</b>。<b>改变 cout 的顺序，输出顺序就变</b>——变量里的数没变哦！点 ↺ 换个顺序再试。`;
+    }
+  };
+});
+function ordReset(){
+  ordSeq=[];
+  document.getElementById('ordCode').innerHTML='<span class="c">// 点上面的 a/b/c 生成 cout 语句</span>';
+  document.getElementById('ordOut').innerHTML='';
+  document.querySelectorAll('#ordRow .ordk').forEach(k=>k.disabled=(mvIdx<3));
+}
+function mvReset(){
+  mvIdx=0; MV_VALS.a=MV_VALS.b=MV_VALS.c=null;
+  ['boxA','boxB','boxC'].forEach(id=>{ const b=document.getElementById(id); b.classList.add('empty'); b.querySelector('.val').textContent='?'; });
+  mvPad.querySelectorAll('.numk').forEach(b=>b.disabled=false);
+  document.getElementById('mvStep').textContent='先点第 1 个数——它会住进最左边的 a。';
+  ordReset();
+}
+
+/* ============ 多变量运算 ============ */
+const caS=document.getElementById('caS'), cbS=document.getElementById('cbS'), ccS=document.getElementById('ccS');
+function calcRead(){
+  document.getElementById('caV').textContent=caS.value;
+  document.getElementById('cbV').textContent=cbS.value;
+  document.getElementById('ccV').textContent=ccS.value;
+  document.getElementById('ansVal').textContent='?';
+  document.getElementById('ansBox').classList.add('empty');
+  ['tkA','tkB','tkC'].forEach(id=>{ const t=document.getElementById(id); t.classList.remove('hot','done');
+    t.textContent = id==='tkA'?'a*2':(id==='tkB'?'b':'c*3'); });
+}
+[caS,cbS,ccS].forEach(s=>s.addEventListener('input',calcRead));
+let calcTimer=[];
+function calcRun(){
+  calcTimer.forEach(clearTimeout); calcTimer=[]; calcRead();
+  const a=+caS.value, b=+cbS.value, c=+ccS.value;
+  const btn=document.getElementById('calcBtn'); btn.disabled=true;
+  const st=document.getElementById('calcStep');
+  const tkA=document.getElementById('tkA'), tkB=document.getElementById('tkB'), tkC=document.getElementById('tkC');
+  calcTimer.push(setTimeout(()=>{
+    tkA.classList.add('hot');
+    st.innerHTML=`① 先算乘法：a*2 = ${a}×2 = <b>${a*2}</b>（先乘除后加减！）`;
+  },300));
+  calcTimer.push(setTimeout(()=>{
+    tkA.classList.remove('hot'); tkA.classList.add('done'); tkA.textContent=a*2;
+    tkC.classList.add('hot');
+    st.innerHTML=`① 先算乘法：c*3 = ${c}×3 = <b>${c*3}</b>`;
+  },1500));
+  calcTimer.push(setTimeout(()=>{
+    tkC.classList.remove('hot'); tkC.classList.add('done'); tkC.textContent=c*3;
+    tkB.classList.add('hot');
+    st.innerHTML=`② 再算加法：${a*2} + ${b} + ${c*3} = <b>${a*2+b+c*3}</b>`;
+  },2700));
+  calcTimer.push(setTimeout(()=>{
+    tkB.classList.remove('hot');
+    const box=document.getElementById('ansBox');
+    box.classList.remove('empty');
+    document.getElementById('ansVal').textContent=a*2+b+c*3;
+    box.classList.remove('bump'); void box.offsetWidth; box.classList.add('bump');
+    st.innerHTML=`③ 最后赋值：把 <b>${a*2+b+c*3}</b> 装进 ans 的盒子。口诀：<b>先算右边（先乘除后加减），再赋值给左边</b>。`;
+    btn.disabled=false;
+  },3900));
+}
+calcRead();
+
+/* ============ 擂台赛 ============ */
+const aaS=document.getElementById('aaS'), abS=document.getElementById('abS'), acS=document.getElementById('acS');
+function arenaRead(){
+  document.getElementById('aaV').textContent=aaS.value;
+  document.getElementById('abV').textContent=abS.value;
+  document.getElementById('acV').textContent=acS.value;
+  document.getElementById('fnA').textContent='a='+aaS.value;
+  document.getElementById('fnB').textContent='b='+abS.value;
+  document.getElementById('fnC').textContent='c='+acS.value;
+  document.getElementById('champ').style.opacity=0;
+  ['f-a','f-b','f-c'].forEach(id=>document.getElementById(id).classList.remove('gone'));
+  document.getElementById('arOut').innerHTML='';
+  document.getElementById('vsb').classList.remove('show');
+}
+[aaS,abS,acS].forEach(s=>s.addEventListener('input',arenaRead));
+let arTimer=[];
+function hlAr(id,on){ document.getElementById(id).classList.toggle('on',on); }
+function arenaRun(){
+  arTimer.forEach(clearTimeout); arTimer=[]; arenaRead();
+  ['ar-0','ar-1','ar-2','ar-3','ar-4','ar-5','ar-6'].forEach(id=>hlAr(id,false));
+  const a=+aaS.value, b=+abS.value, c=+acS.value;
+  const btn=document.getElementById('arBtn'); btn.disabled=true;
+  const st=document.getElementById('arStep');
+  const champ=document.getElementById('champ');
+  const face=document.getElementById('champFace'), num=document.getElementById('champNum');
+  const out=document.getElementById('arOut');
+  const vsb=document.getElementById('vsb');
+  let max=a, maxFace='🐯';
+  const emit=v=>{ const sp=document.createElement('span'); sp.className='outch'; sp.textContent=v+' '; out.appendChild(sp); };
+  arTimer.push(setTimeout(()=>{
+    hlAr('ar-1',true);
+    face.textContent='🐯'; num.textContent=a; champ.style.opacity=1;
+    document.getElementById('f-a').classList.add('gone');
+    st.innerHTML=`max=a：🐯 <b>a=${a}</b> 先上台当擂主。`;
+  },300));
+  arTimer.push(setTimeout(()=>{
+    hlAr('ar-1',false); hlAr('ar-2',true); emit(max);
+    st.innerHTML=`① cout&lt;&lt;max → 输出 <b>${max}</b>（现在的擂主）。`;
+  },1500));
+  arTimer.push(setTimeout(()=>{
+    hlAr('ar-2',false); hlAr('ar-3',true);
+    vsb.textContent=`${b} > ${max} ?`; vsb.classList.add('show');
+    st.innerHTML=`🦁 b=${b} 上台挑战：if(b&gt;max)，${b}&gt;${max} ${b>max?'<b style="color:var(--good)">成立</b>':'<b style="color:var(--bad)">不成立</b>'}…`;
+  },2700));
+  arTimer.push(setTimeout(()=>{
+    vsb.classList.remove('show');
+    document.getElementById('f-b').classList.add('gone');
+    if(b>max){ const oldMax=max; max=b; maxFace='🦁'; face.textContent='🦁'; num.textContent=b;
+      champ.style.transform='translateX(-50%) scale(1.15)';
+      setTimeout(()=>champ.style.transform='translateX(-50%)',350);
+      st.innerHTML=`💥 ${b}&gt;${oldMax} 成立 → <b>max=b</b>，🦁 成为新擂主！`;
+      say('新擂主诞生','zh');
+    }else{
+      st.innerHTML=`🦁 打不过（${b} 不大于 ${max}）→ 跳过大括号，max 不变，擂主还是 ${maxFace}。`;
+    }
+  },4000));
+  arTimer.push(setTimeout(()=>{
+    hlAr('ar-3',false); hlAr('ar-4',true); emit(max);
+    st.innerHTML=`② cout&lt;&lt;max → 输出 <b>${max}</b>。`;
+  },5200));
+  arTimer.push(setTimeout(()=>{
+    hlAr('ar-4',false); hlAr('ar-5',true);
+    vsb.textContent=`${c} > ${max} ?`; vsb.classList.add('show');
+    st.innerHTML=`🐼 c=${c} 上台挑战：if(c&gt;max)，${c}&gt;${max} ${c>max?'<b style="color:var(--good)">成立</b>':'<b style="color:var(--bad)">不成立</b>'}…`;
+  },6400));
+  arTimer.push(setTimeout(()=>{
+    vsb.classList.remove('show');
+    document.getElementById('f-c').classList.add('gone');
+    if(c>max){ max=c; maxFace='🐼'; face.textContent='🐼'; num.textContent=c;
+      champ.style.transform='translateX(-50%) scale(1.15)';
+      setTimeout(()=>champ.style.transform='translateX(-50%)',350);
+      st.innerHTML=`💥 成立 → <b>max=c</b>，🐼 成为新擂主！`;
+      say('新擂主诞生','zh');
+    }else{
+      st.innerHTML=`🐼 打不过（${c} 不大于 ${max}）→ max 不变。`;
+    }
+  },7700));
+  arTimer.push(setTimeout(()=>{
+    hlAr('ar-5',false); hlAr('ar-6',true); emit(max);
+    st.innerHTML=`③ 比赛结束！最后的擂主 ${maxFace} <b>${max}</b> 就是<b>最大值</b>。三次输出：看终端——擂主是一步步换人的。`;
+    say('最大值出炉','zh');
+    setTimeout(()=>hlAr('ar-6',false),1200);
+    btn.disabled=false;
+  },8900));
+}
+arenaRead();
+
+/* ============ 小检验 ============ */
+const QUIZ=[
+  {q:'（讲义原题）输入 153、410、109，程序里 ①②③ 三处 cout<<max 分别输出什么？',
+   opts:['153、410、410','153、410、109','410、410、410','153、153、410'],a:0,
+   ex:'max=a 先输出 <b>153</b>；b=410&gt;153 成立 → max 变 410，输出 <b>410</b>；c=109&gt;410 <b>不成立</b> → max 不变，还是输出 <b>410</b>。'},
+  {q:'cin>>a>>b>>c; 输入 7、8、9，变量 b 里装的是几？',
+   opts:['8','7','9','三个都装'],a:0,
+   ex:'一个 cin 连着输，按<b>从左到右</b>的顺序装：a=7、<b>b=8</b>、c=9。'},
+  {q:'a=2、b=5、c=3 时，ans=a*2+b+c*3 算出多少？',
+   opts:['18','30','21','10'],a:0,
+   ex:'<b>先乘除后加减</b>：a*2=4，c*3=9，再加：4+5+9=<b>18</b>。最后把 18 赋值给 ans。'},
+  {q:'擂台法里，如果 b 比擂主小，if(b>max) 大括号里的 max=b 会怎样？',
+   opts:['不执行，max 保持原样','照样执行','max 变成 0','程序报错'],a:0,
+   ex:'if 条件不成立就<b>跳过大括号</b>——挑战失败，擂主（max）不换人。这就是为什么最后留下的一定是最大值。'}
+];
+let qi=0, qok=0;
+function buildQuiz(){
+  qi=0; qok=0; document.getElementById('restartBtn').style.display='none';
+  document.getElementById('score').textContent='';
+  renderQ();
+}
+function renderQ(){
+  const box=document.getElementById('quizBox');
+  if(qi>=QUIZ.length){
+    box.innerHTML=`<div style="text-align:center;padding:18px 0;">
+      <div style="font-size:54px">${qok===QUIZ.length?'🏆':qok>=2?'👍':'💪'}</div>
+      <div style="font-size:20px;font-weight:900;margin-top:8px;">答对 ${qok} / ${QUIZ.length}</div>
+      <div class="sub" style="margin-top:6px;">${qok===QUIZ.length?'全对！擂台法你全懂了。':'再去打一场擂台赛，把错的地方看清楚～'}</div></div>`;
+    document.getElementById('restartBtn').style.display='block';
+    return;
+  }
+  const item=QUIZ[qi];
+  box.innerHTML=`<div class="q">第 ${qi+1} 题　${item.q}</div>
+    <div id="opts"></div>
+    <div class="explain" id="ex">${item.ex}</div>
+    <button class="btn row" id="next" style="display:none" onclick="qi++;renderQ();">下一题 →</button>`;
+  const opts=document.getElementById('opts');
+  item.opts.forEach((o,i)=>{
+    const b=document.createElement('button'); b.className='opt'; b.textContent=o;
+    b.onclick=()=>{
+      if(document.getElementById('ex').classList.contains('show')) return;
+      const right=i===item.a;
+      if(right){ b.classList.add('ok'); qok++; say('答对了','zh'); }
+      else{ b.classList.add('no'); opts.children[item.a].classList.add('ok'); say('再想想','zh'); }
+      document.getElementById('ex').classList.add('show');
+      document.getElementById('next').style.display='block';
+      document.getElementById('score').textContent='✅ '+qok;
+    };
+    opts.appendChild(b);
+  });
+}
+buildQuiz();
+</script>
+</body>
+</html>

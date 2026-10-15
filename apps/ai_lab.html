@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<script src="../assets/learning-sync.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>AI 探索馆</title>
+<style>
+:root{
+ --main:#7C5CFF;--maind:#5b3fd6;--soft:#efeaff;--mainbg:#f6f3ff;
+ --ink:#23303a;--paper:#f4f1fb;--card:#fff;--line:#e3ddf3;
+ --green:#2e9c54;--greenbg:#e9f7ee;--red:#e1553f;--redbg:#fdecea;
+ --gold:#f2b632;--golddk:#c98a00;--muted:#7d8a96;}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+html,body{margin:0;padding:0;}
+body{font-family:'LXGW WenKai Screen','PingFang SC','Microsoft YaHei',system-ui,sans-serif;
+ background:radial-gradient(circle at 10% 4%,var(--soft) 0,transparent 42%),radial-gradient(circle at 92% 98%,var(--soft) 0,transparent 46%),var(--paper);
+ color:var(--ink);min-height:100vh;padding:0 0 50px;}
+.wrap{max-width:640px;margin:0 auto;padding:12px;}
+.top{display:flex;align-items:center;gap:10px;padding:8px 2px 6px;}
+.badge{background:var(--main);color:#fff;font-weight:800;font-size:17px;padding:6px 13px;border-radius:13px 13px 13px 4px;box-shadow:0 4px 0 var(--maind);}
+.top h1{font-size:16px;margin:0;flex:1;}
+.top .home{text-decoration:none;font-size:20px;background:#fff;width:38px;height:38px;border-radius:11px;display:grid;place-items:center;color:var(--ink);box-shadow:0 3px 0 #cfc6ea;}
+.intro{font-size:13.5px;color:#4a5560;line-height:1.75;background:#fff;border:2px solid var(--line);border-radius:14px;padding:13px 15px;margin:8px 0;}
+.intro b{color:var(--maind);}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:6px;}
+.tile{background:#fff;border:2px solid var(--line);border-radius:18px;padding:16px 12px;cursor:pointer;box-shadow:0 6px 0 #e6e0f5;text-align:center;transition:transform .08s;border-top:6px solid var(--main);}
+.tile:active{transform:translateY(3px);box-shadow:0 3px 0 #e6e0f5;}
+.tile .ic{font-size:38px;line-height:1;}
+.tile .nm{font-weight:800;font-size:16px;margin-top:8px;color:var(--maind);}
+.tile .ds{font-size:11.5px;color:var(--muted);margin-top:4px;line-height:1.5;}
+.card{background:var(--card);border:2px solid var(--line);border-radius:18px;padding:16px;margin:11px 0;box-shadow:0 6px 0 #ece6f8;}
+.h2{font-size:18px;font-weight:800;margin:0 0 4px;color:var(--maind);display:flex;align-items:center;gap:8px;}
+.hint{font-size:13px;color:var(--muted);line-height:1.7;}
+.btn{font-family:inherit;font-weight:800;font-size:15px;border:none;border-radius:13px;padding:11px 16px;cursor:pointer;color:#fff;background:var(--main);box-shadow:0 5px 0 var(--maind);transition:transform .06s;}
+.btn:active{transform:translateY(3px);box-shadow:0 2px 0 var(--maind);}
+.btn.gold{background:var(--gold);box-shadow:0 5px 0 var(--golddk);color:#5a3d00;}
+.btn.ghost{background:#fff;color:var(--maind);border:2px solid var(--main);box-shadow:0 5px 0 #cfc6ea;}
+.btn.green{background:var(--green);box-shadow:0 5px 0 #1f7a3e;}
+.btn.sm{font-size:13.5px;padding:9px 13px;}
+.btn:disabled{opacity:.45;box-shadow:none;transform:none;}
+.row{display:flex;gap:9px;flex-wrap:wrap;align-items:center;}
+.center{justify-content:center;}
+.hide{display:none!important;}
+.back{background:none;border:none;color:var(--muted);font-size:15px;font-family:inherit;cursor:pointer;font-weight:800;padding:6px 2px;}
+.speak{background:#fffaf0;border:2px solid var(--gold);color:var(--golddk);border-radius:10px;width:36px;height:36px;font-size:16px;cursor:pointer;box-shadow:0 3px 0 #f0dca0;}
+.chip{font-family:inherit;font-size:15px;font-weight:800;padding:8px 13px;border-radius:11px;border:2px solid var(--line);background:#fff;color:var(--maind);cursor:pointer;box-shadow:0 3px 0 #ece6f8;}
+.chip.on{background:var(--main);color:#fff;border-color:var(--main);}
+.why{background:var(--greenbg);border-left:5px solid var(--green);border-radius:10px;padding:11px 14px;font-size:13.5px;line-height:1.75;margin:10px 0;}
+.why .lab{font-weight:800;color:var(--green);}
+.warn{background:var(--redbg);border-left:5px solid var(--red);border-radius:10px;padding:11px 14px;font-size:13.5px;line-height:1.75;margin:10px 0;}
+.warn .lab{font-weight:800;color:var(--red);}
+.popcard{background:var(--soft);border-radius:13px;padding:14px;text-align:center;margin-top:8px;font-size:15px;line-height:1.8;animation:pop .4s;}
+@keyframes pop{0%{transform:scale(.6);opacity:0;}60%{transform:scale(1.08);}100%{transform:scale(1);opacity:1;}}
+.tipbar{font-size:12px;color:var(--muted);text-align:center;margin-top:14px;line-height:1.6;}
+.em{color:var(--red);}
+/* 预测机 */
+.sentbox{background:var(--mainbg);border:2px dashed var(--main);border-radius:14px;padding:14px;font-size:21px;font-weight:800;color:var(--maind);min-height:58px;line-height:1.6;margin:8px 0;}
+.cursor{color:var(--main);animation:blink 1s steps(2) infinite;}
+@keyframes blink{50%{opacity:0;}}
+.cand{display:flex;align-items:center;gap:8px;margin:7px 0;cursor:pointer;}
+.cand .wd{min-width:74px;font-weight:800;font-size:16px;color:var(--ink);background:#fff;border:2px solid var(--line);border-radius:10px;padding:7px 8px;text-align:center;box-shadow:0 3px 0 #ece6f8;}
+.cand:active .wd{transform:translateY(2px);}
+.barwrap{flex:1;background:#eee;border-radius:8px;height:20px;overflow:hidden;}
+.bar{height:100%;background:linear-gradient(90deg,var(--main),var(--maind));border-radius:8px;width:0;transition:width .5s ease;}
+.pct{min-width:42px;text-align:right;font-size:12px;font-weight:800;color:var(--muted);}
+.slider{width:100%;margin:6px 0;accent-color:var(--main);height:26px;}
+.dial{display:flex;justify-content:space-between;font-size:12px;color:var(--muted);font-weight:800;}
+/* 配方台 */
+.recipe{background:var(--mainbg);border:2px solid var(--main);border-radius:14px;padding:13px;margin:8px 0;font-size:14px;line-height:1.7;}
+.recipe .lbl{font-size:12px;color:var(--muted);font-weight:800;}
+.stars{font-size:22px;letter-spacing:3px;}
+.qbar{background:#eee;border-radius:8px;height:16px;overflow:hidden;margin-top:4px;}
+.qfill{height:100%;background:linear-gradient(90deg,#ffd34d,var(--green));width:0;transition:width .5s;}
+.ck{display:flex;align-items:flex-start;gap:8px;margin:6px 0;font-size:13px;line-height:1.55;}
+.ck .mk{font-size:16px;}
+/* 侦探/分类 */
+.stmt{text-align:left;background:#fff;border:2px solid var(--line);border-radius:13px;padding:13px 15px;cursor:pointer;color:var(--ink);box-shadow:0 4px 0 #ece6f8;font-size:15px;line-height:1.5;margin:9px 0;}
+.stmt:active{transform:translateY(2px);box-shadow:0 2px 0 #ece6f8;}
+.stmt.right{background:var(--greenbg);border-color:var(--green);}
+.stmt.wrong{background:var(--redbg);border-color:var(--red);}
+.bucket{font-family:inherit;font-weight:800;font-size:14px;padding:13px 8px;border-radius:13px;border:2px solid var(--line);background:#fff;cursor:pointer;box-shadow:0 4px 0 #ece6f8;flex:1;text-align:center;line-height:1.4;}
+.bucket:active{transform:translateY(2px);box-shadow:0 2px 0 #ece6f8;}
+.taskcard{background:var(--soft);border-radius:14px;padding:18px 14px;text-align:center;font-size:18px;font-weight:800;color:var(--maind);margin:8px 0;min-height:64px;display:flex;align-items:center;justify-content:center;}
+.prog{font-size:13px;color:var(--muted);font-weight:800;text-align:center;}
+/* 创意卡 */
+.seedcard{background:linear-gradient(180deg,#fffaf0,#fff5e0);border:2px solid var(--gold);border-radius:14px;padding:15px;margin:9px 0;font-size:15px;line-height:1.85;color:#5a3d00;}
+.seedcard .big{font-size:17px;font-weight:800;}
+.spin{display:flex;gap:8px;justify-content:center;margin:8px 0;flex-wrap:wrap;}
+.reel{background:#fff;border:2px solid var(--main);border-radius:12px;padding:10px 6px;min-width:92px;text-align:center;box-shadow:0 4px 0 #ece6f8;}
+.reel .rl{font-size:11px;color:var(--muted);font-weight:800;}
+.reel .rv{font-size:16px;font-weight:800;color:var(--maind);margin-top:3px;min-height:22px;}
+.whatif{background:var(--mainbg);border:2px dashed var(--main);border-radius:14px;padding:18px 14px;text-align:center;font-size:19px;font-weight:800;color:var(--maind);line-height:1.5;margin:8px 0;}
+.guard{background:#fff;border:2px solid var(--line);border-radius:13px;padding:13px;margin:8px 0;box-shadow:0 4px 0 #ece6f8;}
+.guard .q{font-size:16px;font-weight:800;color:var(--ink);line-height:1.55;}
+.medal{font-size:15px;line-height:1.9;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top">
+    <a class="home" href="../index.html">‹</a>
+    <span class="badge" id="badge">AI</span>
+    <h1>AI 探索馆</h1>
+    <button class="speak" id="welcomeSpk" title="读一读">🔊</button>
+  </div>
+  <div id="pick" class="hide"></div>
+  <div id="home"></div>
+  <div id="view" class="hide">
+    <button class="back" id="backBtn">← 回探索馆</button>
+    <div id="stage"></div>
+  </div>
+  <div class="tipbar">这是「会动的 AI 课」——看穿原理、问得更好、学会核对、动手创造。不是刷题机。<br>配套课程见《AI课程_设计大纲》。和真 AI 玩时请爸爸妈妈陪着，只用小名、不说真实信息。</div>
+</div>
+
+<script>
+"use strict";
+function $(id){return document.getElementById(id);}
+function el(tag,cls,html){var e=document.createElement(tag);if(cls)e.className=cls;if(html!=null)e.innerHTML=html;return e;}
+function shuffle(a){a=a.slice();for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t;}return a;}
+function pick(a){return a[Math.floor(Math.random()*a.length)];}
+
+/* ---------- 主题（按 who 上色） ---------- */
+function getParam(k){var m=new RegExp('[?&]'+k+'=([^&]+)').exec(location.search);return m?decodeURIComponent(m[1]):null;}
+var THEME={
+ kenton:{name:"哥哥",emoji:"🦁",main:"#36c5d6",maind:"#1f97a6",soft:"#e3fbff",mainbg:"#f0fdff"},
+ eddey:{name:"弟弟",emoji:"🐯",main:"#ff8a5b",maind:"#e0623a",soft:"#fff0e6",mainbg:"#fff6f0"}
+};
+var who=getParam("who");
+function applyTheme(w){
+ var t=THEME[w];if(!t)return false;
+ var r=document.documentElement.style;
+ r.setProperty('--main',t.main);r.setProperty('--maind',t.maind);
+ r.setProperty('--soft',t.soft);r.setProperty('--mainbg',t.mainbg);
+ $("badge").textContent=t.emoji+" "+t.name;
+ document.title="AI 探索馆 · "+t.name;
+ return true;
+}
+
+/* ---------- 音效（Web Audio 即时合成，无需文件） ---------- */
+var actx=null;
+function beep(ok){try{if(!actx)actx=new (window.AudioContext||window.webkitAudioContext)();var o=actx.createOscillator(),g=actx.createGain();o.connect(g);g.connect(actx.destination);o.type="triangle";o.frequency.value=ok?880:200;var t=actx.currentTime;g.gain.setValueAtTime(0.0001,t);g.gain.exponentialRampToValueAtTime(0.2,t+0.02);g.gain.exponentialRampToValueAtTime(0.0001,t+(ok?0.25:0.3));o.start(t);o.stop(t+(ok?0.26:0.32));if(ok){var o2=actx.createOscillator(),g2=actx.createGain();o2.connect(g2);g2.connect(actx.destination);o2.type="triangle";o2.frequency.value=1320;g2.gain.setValueAtTime(0.0001,t+0.1);g2.gain.exponentialRampToValueAtTime(0.18,t+0.12);g2.gain.exponentialRampToValueAtTime(0.0001,t+0.32);o2.start(t+0.1);o2.stop(t+0.33);}}catch(e){}}
+
+/* ---------- 朗读（先播预合成 MP3，缺失回退浏览器 TTS）。音色锁定见 CLAUDE.md ---------- */
+var AUDIO_DIR="audio/ai_lab/";var exAudio=null;var audioTok=0;
+function audioHash(s){var b=new TextEncoder().encode(s);var x=0x811c9dc5>>>0;for(var i=0;i<b.length;i++){x^=b[i];x=Math.imul(x,0x01000193)>>>0;}return ('0000000'+x.toString(16)).slice(-8);}
+function mkUtter(t,lang){var u=new SpeechSynthesisUtterance(t);u.lang=(lang==='en')?'en-US':'zh-CN';u.rate=(lang==='en')?0.9:1.0;return u;}
+function ttsSpeak(t,lang){try{speechSynthesis.cancel();speechSynthesis.resume();}catch(e){}try{speechSynthesis.speak(mkUtter(t,lang));}catch(e){}}
+function speak(t,lang){
+ lang=lang||'zh';try{speechSynthesis.cancel();}catch(e){}
+ audioTok++;var myTok=audioTok;
+ if(!exAudio){exAudio=new Audio();exAudio.setAttribute('playsinline','');try{document.body.appendChild(exAudio);}catch(e){}}
+ var a=exAudio,done=false;
+ var stale=function(){return done||myTok!==audioTok;};
+ var fb=function(){if(stale())return;done=true;ttsSpeak(t,lang);};
+ a.onended=function(){if(stale())return;done=true;};a.onerror=fb;
+ try{a.pause();}catch(e){}
+ a.src=AUDIO_DIR+audioHash((lang==='en'?'en':'zh')+"|"+t)+".mp3";
+ try{a.currentTime=0;}catch(e){}
+ var p=a.play();if(p&&p.catch)p.catch(fb);
+}
+var NARR={
+ welcome:"欢迎来到 AI 探索馆！这里我们一起看看 AI 到底是怎么回事。",
+ predict:"AI 其实是一台超级猜下一个词的机器。来，自己点一点，看它怎么一个词一个词地往下猜。",
+ prompt:"你问得越清楚，AI 答得越好。往锅里加配料，看答案越变越棒。",
+ detective:"AI 有时候会很自信地说错话。当个小侦探，把那句胡说的揪出来！",
+ create:"AI 是放大你创意的工具。你出点子，它帮你变成故事和图画。",
+ safe:"AI 不是真正的朋友。有些东西，永远不要告诉它。",
+ sort:"什么时候该信 AI，什么时候要靠自己？来分一分类。"
+};
+$("welcomeSpk").onclick=function(){speak(NARR.welcome);};
+
+/* ---------- 选孩子（无 who 参数时） ---------- */
+function renderPick(){
+ $("home").classList.add("hide");$("pick").classList.remove("hide");
+ $("pick").innerHTML='<div class="intro">先选一下是谁在玩：</div>'+
+  '<div class="grid">'+
+   '<div class="tile" data-w="kenton" style="border-top-color:#36c5d6"><div class="ic">🦁</div><div class="nm" style="color:#1f97a6">哥哥 Kenton</div></div>'+
+   '<div class="tile" data-w="eddey" style="border-top-color:#ff8a5b"><div class="ic">🐯</div><div class="nm" style="color:#e0623a">弟弟 Eddey</div></div>'+
+  '</div>';
+ $("pick").querySelectorAll(".tile").forEach(function(t){t.onclick=function(){who=t.dataset.w;applyTheme(who);$("pick").classList.add("hide");renderHome();};});
+}
+
+/* ---------- 探索馆首页 ---------- */
+var MODS=[
+ {id:"predict",ic:"🔮",nm:"预测机",ds:"AI 怎么一个词一个词地猜出句子？"},
+ {id:"prompt",ic:"🧪",nm:"配方台",ds:"加5种配料，让 AI 答得越来越棒"},
+ {id:"detective",ic:"🕵️",nm:"侦探馆",ds:"抓出 AI 一本正经的胡说"},
+ {id:"create",ic:"🎨",nm:"创意工坊",ds:"故事·画画·好奇心，做出来！"},
+ {id:"safe",ic:"🛡️",nm:"安全馆",ds:"哪些话永远不告诉 AI？"},
+ {id:"sort",ic:"🗂️",nm:"分类岛",ds:"什么信 AI、什么靠自己"}
+];
+function renderHome(){
+ $("home").classList.remove("hide");
+ var h='<div class="intro">AI 不是魔法，也不是真人——它是一台<b>超级"猜下一个词"的机器</b>。<br>选一个馆进去<b>动手玩</b>：看穿它怎么工作、学会怎么问、学会核对、还能和它一起<b>造东西</b>。</div><div class="grid">';
+ MODS.forEach(function(m){h+='<div class="tile" data-id="'+m.id+'"><div class="ic">'+m.ic+'</div><div class="nm">'+m.nm+'</div><div class="ds">'+m.ds+'</div></div>';});
+ h+='</div>';
+ $("home").innerHTML=h;
+ $("home").querySelectorAll(".tile").forEach(function(t){t.onclick=function(){openMod(t.dataset.id);};});
+}
+function openMod(id){$("home").classList.add("hide");$("view").classList.remove("hide");window.scrollTo(0,0);RENDER[id]($("stage"));}
+$("backBtn").onclick=function(){$("view").classList.add("hide");$("home").classList.remove("hide");window.scrollTo(0,0);};
+function modHead(ic,nm,key,hint){
+ return '<div class="card"><div class="h2">'+ic+' '+nm+' <button class="speak" onclick="speak(NARR.'+key+')">🔊</button></div><div class="hint">'+hint+'</div><div id="modbody"></div></div>';
+}
+var RENDER={};
+
+/* ============================================================
+   1. 预测机 —— AI = 超级猜下一个词的机器
+   ============================================================ */
+var MODEL={
+ "START":[["我",5],["今天",4],["小猫",3],["机器人",3],["科学家",2]],
+ "今天":[["我",6],["阳光",2]],"阳光":[["很好",1]],"很好":[["。",1]],
+ "我":[["想",5],["看见",3],["有",2],["要",2]],
+ "想":[["吃",4],["去",3],["变成",2],["飞",2]],
+ "要":[["去",3],["吃",2]],
+ "吃":[["冰淇淋",4],["西瓜",3],["蛋糕",2]],
+ "冰淇淋":[["。",1]],"西瓜":[["。",1]],"蛋糕":[["。",1]],
+ "去":[["太空",3],["海边",3],["学校",2]],
+ "太空":[["探险",2],["。",2]],"探险":[["。",1]],
+ "海边":[["玩",2],["。",2]],"玩":[["。",1]],
+ "学校":[["上课",2],["。",2]],"上课":[["。",1]],
+ "变成":[["超人",3],["恐龙",3],["机器人",2]],
+ "超人":[["。",1]],"恐龙":[["。",1]],
+ "飞":[["上天",3],["到月球",2]],"上天":[["。",1]],"到月球":[["。",1]],
+ "看见":[["一只",4],["一个",3]],
+ "一只":[["小狗",3],["大象",2],["恐龙",2]],
+ "小狗":[["在跑",2],["。",2]],"大象":[["。",1]],"在跑":[["。",1]],
+ "一个":[["机器人",3],["外星人",2]],"外星人":[["。",1]],
+ "机器人":[["在",3],["会",3],["。",2]],
+ "会":[["跳舞",3],["说话",3],["唱歌",2]],
+ "跳舞":[["。",1]],"说话":[["。",1]],"唱歌":[["。",1]],
+ "在":[["唱歌",2],["跳舞",2],["睡觉",1]],"睡觉":[["。",1]],
+ "有":[["一个",3],["好多",2]],"好多":[["糖果",3],["朋友",2]],
+ "糖果":[["。",1]],"朋友":[["。",1]],
+ "小猫":[["在",3],["想",3],["爱",2]],"爱":[["吃鱼",3],["睡觉",2]],"吃鱼":[["。",1]],
+ "科学家":[["发明",3],["发现",2]],"发明":[["了",2]],"发现":[["了",2]],
+ "了":[["机器人",2],["火箭",2]],"火箭":[["。",1]]
+};
+function cands(tok){return MODEL[tok]||[["。",1]];}
+function tempOf(s){return 0.35+(s/100)*1.9;}              // 惊喜度 0..100 → 温度
+function probs(cs,T){var p=cs.map(function(c){return Math.pow(c[1],1/T);});var sum=p.reduce(function(a,b){return a+b;},0)||1;return p.map(function(x){return x/sum;});}
+function sampleIdx(ps){var r=Math.random(),acc=0;for(var i=0;i<ps.length;i++){acc+=ps[i];if(r<=acc)return i;}return ps.length-1;}
+RENDER.predict=function(stage){
+ var toks=["START"],surprise=20,auto=false;
+ stage.innerHTML=modHead("🔮","预测机 · AI 怎么写句子的","predict",
+   "AI 写字，其实是<b>一个词一个词地猜“下一个最可能的词”</b>。下面每个候选词后面的<b>长条</b>＝它觉得有多可能。<br>点一个词把它接上去；也可以让 AI 自己接。拖动<b>惊喜度</b>，看长条怎么变！")+
+   '<div class="card"><div class="lbl" style="font-size:12px;color:var(--muted);font-weight:800">😄 惊喜度（温度）</div>'+
+   '<input type="range" min="0" max="100" value="20" class="slider" id="sld">'+
+   '<div class="dial"><span>← 稳重（总挑最可能）</span><span>大胆（爱挑冷门）→</span></div></div>'+
+   '<div class="sentbox" id="sent"></div>'+
+   '<div id="cbox"></div>'+
+   '<div class="row center" style="margin-top:6px"><button class="btn green sm" id="auto">🤖 让 AI 自己接一个</button><button class="btn ghost sm" id="rst">🔄 重新开始</button></div>'+
+   '<div id="pexplain"></div>';
+ var sent=$("sent"),cbox=$("cbox");
+ function sentence(){var s=toks.slice(1).join("");return s;}
+ function done(){return toks[toks.length-1]==="。"||toks.length>14;}
+ function paintSent(){sent.innerHTML=(sentence()||'<span style="color:var(--muted);font-size:14px">（空白——AI 要开始猜了）</span>')+(done()?'':' <span class="cursor">▌</span>');}
+ function paintCands(){
+   if(done()){cbox.innerHTML='<div class="popcard">✅ 一句话写完了！<br><b>看，AI 就是这样一个词一个词“猜”出来的。</b></div>';
+     $("pexplain").innerHTML='<div class="why"><span class="lab">为什么会这样？</span> AI 读过海量句子，记住了“哪个词后面常跟哪个词”。它不“懂”意思，它在<b>猜最可能的下一个词</b>——所以同一个开头，它每次可能写得不一样，也可能写出怪句子。</div>';
+     return;}
+   $("pexplain").innerHTML="";
+   var cs=cands(toks[toks.length-1]);var T=tempOf(surprise);var ps=probs(cs,T);
+   var order=cs.map(function(c,i){return i;}).sort(function(a,b){return cs[b][1]-cs[a][1];});
+   var h="";order.forEach(function(i){var c=cs[i];var pc=Math.round(ps[i]*100);
+     h+='<div class="cand" data-w="'+c[0]+'"><div class="wd">'+(c[0]==="。"?"。(结束)":c[0])+'</div><div class="barwrap"><div class="bar" style="width:0" data-p="'+pc+'"></div></div><div class="pct">'+pc+'%</div></div>';});
+   cbox.innerHTML=h;
+   setTimeout(function(){cbox.querySelectorAll(".bar").forEach(function(b){b.style.width=b.dataset.p+"%";});},30);
+   cbox.querySelectorAll(".cand").forEach(function(el2){el2.onclick=function(){step(el2.dataset.w,false);};});
+ }
+ function step(w,isAuto){beep(true);toks.push(w);paintSent();paintCands();}
+ function autoStep(){
+   if(done())return;var cs=cands(toks[toks.length-1]);var ps=probs(cs,tempOf(surprise));
+   var i=sampleIdx(ps);
+   // 先闪一下长条，再选
+   paintCands();
+   var nodes=cbox.querySelectorAll(".cand");
+   setTimeout(function(){var pickWord=cs[i][0];nodes.forEach(function(n){if(n.dataset.w===pickWord)n.style.outline="3px solid var(--gold)";});
+     setTimeout(function(){step(pickWord,true);},420);},220);
+ }
+ $("sld").oninput=function(){surprise=+this.value;if(!done())paintCands();};
+ $("auto").onclick=autoStep;
+ $("rst").onclick=function(){toks=["START"];paintSent();paintCands();};
+ paintSent();paintCands();
+};
+
+/* ============================================================
+   2. 配方台 —— 问得越清楚，答得越好
+   ============================================================ */
+var INGRED=[
+ {k:"role",ic:"🎭",nm:"角色",eff:"告诉 AI“你是谁”，它就知道该多专业、用什么口气。"},
+ {k:"task",ic:"🎯",nm:"任务",eff:"说清楚到底要它“做什么”——这是最重要的一味。"},
+ {k:"detail",ic:"🔍",nm:"细节",eff:"给出具体要求，AI 才不会乱猜。"},
+ {k:"example",ic:"📋",nm:"例子",eff:"“照这个样子来”——给个范例，结果立刻像样。"},
+ {k:"format",ic:"📐",nm:"格式",eff:"规定怎么排版（分几条、用表格…），答案更整齐。"}
+];
+var SCENES=[
+ {nm:"🎨 让 AI 画一张画",parts:{role:"你是儿童绘本画家，",task:"画一只狗，",detail:"是一只戴红帽子、在雪地里堆雪人的柴犬，",example:"画风像可爱的卡通贴纸，",format:"竖版，适合做手机壁纸。"},
+  bad:"AI 随便画一只普通的狗，可能是照片风、也可能是简笔画，多半不是你想要的。",
+  good:"AI 画出一只戴红帽子、在雪地堆雪人的卡通柴犬，竖版壁纸——基本就是你脑子里那张图！"},
+ {nm:"🎉 让 AI 想生日游戏",parts:{role:"你是儿童活动策划老师，",task:"帮我想几个生日派对游戏，",detail:"有 8 个 9 到 10 岁的小朋友、在客厅、不能太吵，",example:"像“你画我猜”那种动脑又好玩的，",format:"列成 3 条，每条一句话说清楚怎么玩。"},
+  bad:"AI 给一堆通用游戏，可能太吵、不适合客厅、也不知道几个人玩——还要你自己挑半天。",
+  good:"AI 给出 3 个适合客厅、8 人、安静又好玩的游戏，每条都说清玩法——直接能用！"}
+];
+RENDER.prompt=function(stage){
+ var si=0;var on={role:false,task:true,detail:false,example:false,format:false}; // 任务默认开
+ stage.innerHTML=modHead("🧪","配方台 · 把提示词调成五星","prompt",
+   "和 AI 说话就像点菜：你说得越清楚，它做得越对。试试往锅里加 <b>5 种配料</b>，看答案越变越棒。")+
+   '<div class="card"><div class="row center" id="scTabs"></div><div id="pbody"></div></div>';
+ function scTabs(){$("scTabs").innerHTML=SCENES.map(function(s,i){return '<button class="chip'+(i===si?' on':'')+'" data-i="'+i+'">'+s.nm+'</button>';}).join("");
+   $("scTabs").querySelectorAll(".chip").forEach(function(c){c.onclick=function(){si=+c.dataset.i;on={role:false,task:true,detail:false,example:false,format:false};paint();scTabs();};});}
+ function paint(){
+   var sc=SCENES[si];var n=0;
+   var chips=INGRED.map(function(g){if(on[g.k])n++;return '<button class="chip'+(on[g.k]?' on':'')+'" data-k="'+g.k+'">'+g.ic+' '+g.nm+'</button>';}).join("");
+   var prompt=INGRED.map(function(g){return on[g.k]?sc.parts[g.k]:"";}).join("");
+   if(!prompt)prompt='<span style="color:var(--muted)">（还没加任何配料……AI 不知道你要干嘛）</span>';
+   var stars="⭐".repeat(n)+"☆".repeat(5-n);
+   var tier=n<=1?{t:"😕 模糊",col:"var(--red)",ans:sc.bad}:(n<=3?{t:"🙂 还行",col:"var(--golddk)",ans:"答案开始靠谱了，但还能更准。再加配料试试！"}:{t:"🤩 超棒",col:"var(--green)",ans:sc.good});
+   var ck=INGRED.map(function(g){return '<div class="ck"><span class="mk">'+(on[g.k]?"✅":"⬜")+'</span><span><b>'+g.nm+'</b>：'+g.eff+'</span></div>';}).join("");
+   $("pbody").innerHTML=
+     '<div class="hint" style="margin:6px 0 2px">点一点，往提示里加 / 去掉配料：</div>'+
+     '<div class="row" style="margin-bottom:6px">'+chips+'</div>'+
+     '<div class="recipe"><div class="lbl">🍲 你拼出的提示词：</div>'+prompt+'</div>'+
+     '<div class="row" style="justify-content:space-between;align-items:center;margin-top:4px"><span class="stars">'+stars+'</span><b style="color:'+tier.col+'">'+tier.t+'</b></div>'+
+     '<div class="qbar"><div class="qfill" style="width:0"></div></div>'+
+     '<div class="recipe" style="border-color:var(--line);background:#fbfaff;margin-top:8px"><div class="lbl">🤖 AI 答案预览：</div>'+tier.ans+'</div>'+
+     '<div style="margin-top:8px">'+ck+'</div>'+
+     (n>=5?'<div class="why"><span class="lab">满分啦！</span> 记住配方口诀：<b>角色·任务·细节·例子·格式</b>。下次问真 AI，照这五样说，准没错。</div>':'');
+   setTimeout(function(){var f=$("pbody").querySelector(".qfill");if(f)f.style.width=(n*20)+"%";},30);
+   $("pbody").querySelectorAll(".chip").forEach(function(c){c.onclick=function(){on[c.dataset.k]=!on[c.dataset.k];beep(true);paint();};});
+ }
+ scTabs();paint();
+};
+
+/* ============================================================
+   3. 侦探馆 —— AI 会一本正经地胡说
+   ============================================================ */
+var DET=[
+ {topic:"🪐 太阳系",s:["地球是太阳系里离太阳第三近的行星。","太阳其实是一颗会自己发光的恒星。","月亮自己会发光，所以晚上能照亮地球。"],fake:2,
+  why:"月亮<b>自己不发光</b>，我们看到的是它<b>反射的太阳光</b>。AI 把“月亮很亮”顺嘴说成“自己发光”，听起来很顺，其实错了。",verify:"核对法：查一本科普书或问大人“月亮的光哪来的”。"},
+ {topic:"🐟 动物冷知识",s:["蝙蝠靠声音的回声来“看”路，这叫回声定位。","企鹅生活在很冷的地方，会游泳但不会飞。","金鱼只有 3 秒记忆，转个身就忘了主人。"],fake:2,
+  why:"“金鱼只有 3 秒记忆”是流传很广的<b>谣言</b>。研究发现金鱼能记住事情<b>好几个月</b>。AI 学了很多人这么说，就跟着说了。",verify:"核对法：遇到“大家都这么说”的冷知识，更要查一查可靠来源。"},
+ {topic:"🧠 关于身体",s:["心脏会一直跳动，把血液送到全身。","打喷嚏的时候，我们会不由自主地闭上眼睛。","人一辈子只用了大脑的 10%，其余都浪费了。"],fake:2,
+  why:"“只用 10% 大脑”是著名的<b>误解</b>。科学家发现我们几乎<b>整个大脑都会用到</b>，只是不同时用。电影里常这么演，AI 也学了去。",verify:"核对法：电影/网络上的“惊人说法”，先存疑、再查证。"},
+ {topic:"🌈 自然现象",s:["一年大约有 365 天。","彩虹常被分成红橙黄绿蓝靛紫七种颜色。","闪电绝不会两次劈在同一个地方。"],fake:2,
+  why:"“闪电不劈同一处”是<b>老话，但不对</b>。高塔、大树常被反复击中（比如很高的电视塔一年被劈很多次）。顺口的俗语不一定是事实。",verify:"核对法：俗语≠科学，重要结论去查科普资料。"}
+];
+RENDER.detective=function(stage){
+ var order=shuffle(DET.map(function(_,i){return i;}));var qi=0,score=0,answered=false;
+ stage.innerHTML=modHead("🕵️","侦探馆 · 抓出 AI 的胡说","detective",
+   "下面是“AI”给的三句话，<b>有一句是它一本正经编出来的</b>。当个小侦探，点出那句假的！")+
+   '<div class="card"><div class="prog" id="dprog"></div><div id="dbody"></div></div>';
+ function paint(){
+   answered=false;var d=DET[order[qi]];
+   $("dprog").textContent="第 "+(qi+1)+" / "+DET.length+" 关　🏅 抓到 "+score+" 个";
+   var h='<div class="taskcard" style="font-size:16px">'+d.topic+'：哪句是 AI 编的？</div>';
+   // 句子顺序也打乱，记录真实 fake 位置
+   var idxs=shuffle([0,1,2]);d._map=idxs;
+   idxs.forEach(function(realI,pos){h+='<div class="stmt" data-real="'+realI+'">'+d.s[realI]+'</div>';});
+   h+='<div id="dwhy"></div>';
+   $("dbody").innerHTML=h;
+   $("dbody").querySelectorAll(".stmt").forEach(function(s){s.onclick=function(){if(answered)return;judge(+s.dataset.real,s,d);};});
+ }
+ function judge(realI,node,d){
+   answered=true;var ok=(realI===d.fake);
+   $("dbody").querySelectorAll(".stmt").forEach(function(s){var ri=+s.dataset.real;if(ri===d.fake)s.classList.add(ok?"right":"right");if(s===node&&!ok)s.classList.add("wrong");});
+   beep(ok);if(ok)score++;
+   $("dwhy").innerHTML='<div class="'+(ok?'why':'warn')+'"><span class="lab">'+(ok?"抓到了！✅":"差一点～")+'</span> 那句假的是：<b>"'+d.s[d.fake]+'"</b><br>'+d.why+'</div>'+
+     '<div class="why" style="background:var(--soft);border-left-color:var(--main)"><span class="lab" style="color:var(--maind)">侦探守则</span> '+d.verify+'</div>'+
+     '<div class="row center" style="margin-top:8px"><button class="btn sm" id="dnext">'+(qi<DET.length-1?"下一关 →":"看结果 🎉")+'</button></div>';
+   $("dnext").onclick=function(){if(qi<DET.length-1){qi++;paint();}else finish();};
+ }
+ function finish(){
+   $("dbody").innerHTML='<div class="popcard">🎉 你抓到了 <b>'+score+' / '+DET.length+'</b> 个胡说！<br><br><b>记住：AI 说得再自信，重要的事也要核对。</b><br>它不是骗你，它是在“猜”，猜不到就编一个像样的。</div>'+
+     '<div class="row center" style="margin-top:8px"><button class="btn sm" id="dagain">🔄 再玩一次</button></div>';
+   $("dagain").onclick=function(){order=shuffle(DET.map(function(_,i){return i;}));qi=0;score=0;paint();};
+ }
+ paint();
+};
+
+/* ============================================================
+   4. 创意工坊 —— 故事 / 画画 / 好奇心
+   ============================================================ */
+var CH_ROLE=["会魔法的小猫","爱发明的机器人","胆小的小恐龙","会说话的铅笔","迷路的小宇航员","贪吃的小龙","会飞的书包","害羞的小怪兽"];
+var CH_PLACE=["一座漂在云上的城堡","学校的地下迷宫","一颗会下糖果雨的星球","海底的玻璃图书馆","时间倒流的小镇","机器人开的面包店"];
+var CH_TROUBLE=["不小心把太阳的开关关掉了","发现自己会隐身但停不下来","捡到一张藏宝图，却看不懂","和最好的朋友吵架了","变成了一只巨大的仓鼠","听见了没人能听见的求救声"];
+var ART_SUBJ=["一只柴犬","一座城堡","一艘宇宙飞船","一条龙","一个机器人","一片森林"];
+var ART_STYLE=["可爱卡通贴纸","水彩画","像素方块风","铅笔素描","梦幻发光风","乐高积木风"];
+var ART_DETAIL=["戴着红帽子","在下着星星雨","旁边有只小猫","在彩虹下面","闪着金光","被气球围着"];
+var ART_MOOD=["温暖治愈","神秘冒险","欢乐搞笑","安静梦幻"];
+var WHATIF=["如果恐龙没有灭绝，今天会怎样？","如果人类能像鱼一样在水里呼吸会怎样？","如果一天有 30 个小时会怎样？","如果颜色能被吃掉是什么味道？","如果重力突然变成一半会发生什么？","如果你的影子能自己跑掉会怎样？","如果植物会说话，它们会聊什么？","如果月亮是用奶酪做的会怎样？","如果你能和一种动物交换一天会选谁？"];
+RENDER.create=function(stage){
+ stage.innerHTML='<div class="card"><div class="h2">🎨 创意工坊 <button class="speak" onclick="speak(NARR.create)">🔊</button></div><div class="hint">选一个工具，做出一张<b>可以直接拿给真 AI 用</b>的卡片。记住：<b>你是导演，AI 是画笔</b>——点子是你的！</div>'+
+   '<div class="row center" style="margin-top:8px"><button class="chip on" data-t="story">🎲 故事种子机</button><button class="chip" data-t="art">🖼️ 画画咒语台</button><button class="chip" data-t="wonder">💡 如果…会怎样</button></div>'+
+   '<div id="cwbody"></div></div>';
+ var tabs=stage.querySelectorAll(".chip");
+ function setTab(t){tabs.forEach(function(c){c.classList.toggle("on",c.dataset.t===t);});TOOLS[t]();}
+ tabs.forEach(function(c){c.onclick=function(){setTab(c.dataset.t);};});
+ var body=function(){return $("cwbody");};
+ function copyCard(txt,btn){
+   if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(txt).then(function(){btn.textContent="✅ 已复制";speak("复制好了，拿给爸爸妈妈和 AI 一起玩吧。");setTimeout(function(){btn.textContent="📋 复制这张卡";},1500);}).catch(function(){btn.textContent="长按上面文字复制";});}
+   else btn.textContent="长按上面文字复制";
+ }
+ var TOOLS={
+  story:function(){
+   var r,p,t;
+   function spin(){r=pick(CH_ROLE);p=pick(CH_PLACE);t=pick(CH_TROUBLE);draw();beep(true);}
+   function draw(){
+    var prompt="请帮我写一个故事的有趣开头：主角是"+r+"，故事发生在"+p+"，结果"+t+"。后面怎么发展我来决定，你先写大约 5 句话的开头，留个悬念。";
+    body().innerHTML='<div class="spin"><div class="reel"><div class="rl">主角</div><div class="rv">'+r+'</div></div><div class="reel"><div class="rl">地点</div><div class="rv">'+p+'</div></div><div class="reel"><div class="rl">麻烦事</div><div class="rv">'+t+'</div></div></div>'+
+      '<div class="seedcard"><div class="rl" style="font-size:12px;color:var(--golddk);font-weight:800">📜 你的故事提示卡</div><div class="big" style="margin-top:4px">'+prompt+'</div></div>'+
+      '<div class="row center"><button class="btn gold sm" id="respin">🎲 再摇一次</button><button class="btn sm" id="cpy">📋 复制这张卡</button></div>'+
+      '<div class="hint" style="margin-top:8px;text-align:center">把这张卡发给真 AI（请爸妈陪着）→ 它写开头 → <b>你来决定后面怎么走！</b></div>';
+    $("respin").onclick=spin;$("cpy").onclick=function(){copyCard(prompt,this);};
+   }
+   spin();
+  },
+  art:function(){
+   var sel={subj:ART_SUBJ[0],style:ART_STYLE[0],detail:ART_DETAIL[0],mood:ART_MOOD[0]};
+   function grp(lbl,key,arr){return '<div class="recipe" style="padding:9px 11px"><div class="lbl">'+lbl+'</div><div class="row" style="margin-top:5px">'+arr.map(function(v){return '<button class="chip sm'+(sel[key]===v?' on':'')+'" data-k="'+key+'" data-v="'+v+'" style="font-size:13px;padding:6px 10px">'+v+'</button>';}).join("")+'</div></div>';}
+   function draw(){
+    var prompt="请画一张图："+sel.subj+"，"+sel.detail+"，画风是"+sel.style+"，整体感觉"+sel.mood+"。";
+    body().innerHTML=grp("🐾 画什么","subj",ART_SUBJ)+grp("🎨 什么画风","style",ART_STYLE)+grp("✨ 加点细节","detail",ART_DETAIL)+grp("🌈 什么心情","mood",ART_MOOD)+
+      '<div class="seedcard"><div class="rl" style="font-size:12px;color:var(--golddk);font-weight:800">🪄 你的画画咒语</div><div class="big" style="margin-top:4px">'+prompt+'</div></div>'+
+      '<div class="row center"><button class="btn sm" id="cpy">📋 复制这张卡</button></div>'+
+      '<div class="hint" style="margin-top:8px;text-align:center">把咒语交给会画画的 AI（爸妈操作）→ 看它画出你脑子里的图！</div>';
+    body().querySelectorAll(".chip[data-k]").forEach(function(c){c.onclick=function(){sel[c.dataset.k]=c.dataset.v;beep(true);draw();};});
+    $("cpy").onclick=function(){copyCard(prompt,this);};
+   }
+   draw();
+  },
+  wonder:function(){
+   var cur=pick(WHATIF);
+   function draw(){
+    body().innerHTML='<div class="whatif">💡 '+cur+'</div>'+
+      '<div class="row center"><button class="btn gold sm" id="another">🎲 换一个</button></div>'+
+      '<div class="why" style="background:var(--soft);border-left-color:var(--main)"><span class="lab" style="color:var(--maind)">好奇心三步走</span> ① 先<b>自己猜</b>一个答案；② 再<b>问 AI</b>，看它给几种角度；③ 最后<b>问爸爸妈妈</b>，比一比三种答案有什么不一样。</div>'+
+      '<div class="hint" style="text-align:center">想到更妙的“如果”？说给爸爸妈妈听，记进你的创作本！</div>';
+    $("another").onclick=function(){var n=cur;while(n===cur)n=pick(WHATIF);cur=n;beep(true);draw();};
+   }
+   draw();
+  }
+ };
+ setTab("story");
+};
+
+/* ============================================================
+   5. 安全馆 —— 哪些话永远不告诉 AI
+   ============================================================ */
+var SAFE=[
+ {q:"AI 聊天时问你：“你住在哪里呀？”你要告诉它真实地址吗？",yes:"告诉它",no:"不告诉",ok:"no",
+  why:"<b>永远不要</b>把真实地址告诉 AI 或任何网上不认识的对象。说“我住在中国”这种大范围就够了。"},
+ {q:"AI 问你的真实姓名和学校，方便“更好地帮你”。",yes:"告诉它",no:"用小名就好",ok:"no",
+  why:"用小名（Kenton / Eddey）或“我”就行。<b>真名、学校、班级</b>都不要说出去。"},
+ {q:"一个页面说：“输入爸爸妈妈手机的密码，就能解锁更多功能！”",yes:"输进去",no:"不输，去找爸妈",ok:"no",
+  why:"<b>密码绝不能输给它！</b>任何让你输密码、验证码的，都先停下来找爸爸妈妈。"},
+ {q:"你今天很难过，想找个人说说心里话。",yes:"只跟 AI 说，不告诉别人",no:"可以跟 AI 聊聊，但更要告诉爸妈",ok:"no",
+  why:"AI 可以陪你聊几句，但它<b>不是真正的朋友</b>，不能真的懂你、抱抱你。难过的时候，<b>一定要告诉爸爸妈妈</b>。"},
+ {q:"AI 写好了一道作业题的答案，你想直接抄到作业本上交。",yes:"直接抄上去",no:"先自己弄懂再写",ok:"no",
+  why:"AI 会出错，而且<b>抄答案你就没学会</b>。可以让它讲解思路，但要<b>自己理解、自己写</b>。"},
+ {q:"玩 AI 玩了很久，眼睛有点酸、有点累了。",yes:"再玩一会儿没事",no:"该停下来休息一下",ok:"no",
+  why:"用一会儿就要<b>让眼睛和大脑休息</b>。AI 随时都在，不用一次玩个够。"},
+ {q:"AI 突然蹦出一段吓人的、或者让你觉得怪怪的内容。",yes:"自己憋着别说",no:"马上告诉大人",ok:"no",
+  why:"遇到吓人、奇怪、不舒服的内容，<b>立刻停下来告诉爸爸妈妈</b>，这不是你的错。"}
+];
+RENDER.safe=function(stage){
+ var order=shuffle(SAFE.map(function(_,i){return i;}));var qi=0,answered=false;
+ stage.innerHTML=modHead("🛡️","安全馆 · AI 安全小卫士","safe",
+   "AI 很好玩，但它<b>不是真人朋友</b>。下面每张卡，想一想该怎么做——做对了，你就是合格的 AI 小卫士！")+
+   '<div class="card"><div class="prog" id="sprog"></div><div id="sbody"></div></div>';
+ function paint(){
+   answered=false;var d=SAFE[order[qi]];
+   $("sprog").textContent="守则 "+(qi+1)+" / "+SAFE.length;
+   $("sbody").innerHTML='<div class="guard"><div class="q">'+d.q+'</div></div>'+
+     '<div class="row" style="margin-top:8px"><button class="bucket" data-c="yes">'+d.yes+'</button><button class="bucket" data-c="no">'+d.no+'</button></div>'+
+     '<div id="swhy"></div>';
+   $("sbody").querySelectorAll(".bucket").forEach(function(b){b.onclick=function(){if(answered)return;judge(b.dataset.c,d);};});
+ }
+ function judge(c,d){
+   answered=true;var ok=(c===d.ok);beep(ok);
+   $("swhy").innerHTML='<div class="'+(ok?'why':'warn')+'"><span class="lab">'+(ok?"做得对！🛡️":"要小心哦～")+'</span> '+d.why+'</div>'+
+     '<div class="row center" style="margin-top:8px"><button class="btn sm" id="snext">'+(qi<SAFE.length-1?"下一条 →":"领徽章 🏅")+'</button></div>';
+   $("snext").onclick=function(){if(qi<SAFE.length-1){qi++;paint();}else finish();};
+ }
+ function finish(){
+   $("sbody").innerHTML='<div class="popcard">🏅 <b>AI 安全小卫士 徽章</b> 🏅</div>'+
+     '<div class="card" style="box-shadow:none;border-color:var(--main)"><div class="medal">'+
+     "🛡️ <b>小卫士守则</b><br>① 不说真名、住址、学校、密码、照片<br>② AI 不是真朋友，不开心要找爸爸妈妈<br>③ 它会出错，重要的事要核对<br>④ 用一会儿就休息眼睛和大脑<br>⑤ 遇到吓人/奇怪内容，马上告诉大人"+
+     '</div></div><div class="row center"><button class="btn sm" id="sagain">🔄 再练一次</button></div>';
+   $("sagain").onclick=function(){order=shuffle(SAFE.map(function(_,i){return i;}));qi=0;paint();};
+ }
+ paint();
+};
+
+/* ============================================================
+   6. 分类岛 —— 什么信 AI、什么靠自己
+   ============================================================ */
+var BUCKETS=[{k:"good",t:"✅ 很在行"},{k:"check",t:"⚠️ 要你检查"},{k:"no",t:"🙅 做不到"}];
+var TASKS=[
+ {t:"陪你头脑风暴，想一堆点子",b:"good",why:"想点子、给灵感是 AI 最擅长的事之一——它能一口气给你很多方向。"},
+ {t:"给你编一个睡前小故事",b:"good",why:"编故事、写小诗、玩文字游戏，AI 很在行（而且每次都不一样）。"},
+ {t:"把你的作文改得更通顺",b:"good",why:"润色语句、挑错别字它很会——但记得<b>自己再读一遍</b>，保留你的想法。"},
+ {t:"算清楚你这道数学题对不对",b:"check",why:"AI <b>有时会算错</b>！可以让它讲思路，但答案要<b>自己再算一遍</b>核对。"},
+ {t:"告诉你今天的天气、最新的新闻",b:"check",why:"AI 不一定知道<b>最新</b>的事，可能说出过时或编的信息——要去可靠的地方核对。"},
+ {t:"保证它说的每一句话都是对的",b:"no",why:"做不到。AI 会自信地说错话，<b>没有任何 AI 能保证句句正确</b>。"},
+ {t:"当你真正的好朋友，给你一个拥抱",b:"no",why:"AI 不是真人，给不了真实的陪伴和拥抱。真朋友、家人才可以。"},
+ {t:"替你决定该和谁做朋友",b:"no",why:"这是<b>你自己的事</b>，要用你的心去感受，不能让 AI 替你决定。"}
+];
+RENDER.sort=function(stage){
+ var order=shuffle(TASKS.map(function(_,i){return i;}));var qi=0,right=0,wrong=0,answered=false;
+ stage.innerHTML=modHead("🗂️","分类岛 · 这件事该交给 AI 吗？","sort",
+   "把每件事丢进对的桶里：<b>✅很在行</b> / <b>⚠️要你检查</b> / <b>🙅做不到</b>。学会“什么时候信它、什么时候靠自己”。")+
+   '<div class="card"><div class="prog" id="zprog"></div><div id="zbody"></div></div>';
+ function paint(){
+   answered=false;var d=TASKS[order[qi]];
+   $("zprog").textContent="第 "+(qi+1)+" / "+TASKS.length+" 件　✅ "+right+"　❌ "+wrong;
+   $("zbody").innerHTML='<div class="taskcard">'+d.t+'</div>'+
+     '<div class="row" style="margin-top:6px">'+BUCKETS.map(function(b){return '<button class="bucket" data-b="'+b.k+'">'+b.t+'</button>';}).join("")+'</div>'+
+     '<div id="zwhy"></div>';
+   $("zbody").querySelectorAll(".bucket").forEach(function(b){b.onclick=function(){if(answered)return;judge(b.dataset.b,b,d);};});
+ }
+ function judge(b,node,d){
+   answered=true;var ok=(b===d.b);beep(ok);if(ok)right++;else wrong++;
+   $("zbody").querySelectorAll(".bucket").forEach(function(x){if(x.dataset.b===d.b)x.style.borderColor="var(--green)",x.style.background="var(--greenbg)";if(x===node&&!ok)x.style.borderColor="var(--red)",x.style.background="var(--redbg)";});
+   var label=BUCKETS.filter(function(x){return x.k===d.b;})[0].t;
+   $("zwhy").innerHTML='<div class="'+(ok?'why':'warn')+'"><span class="lab">'+(ok?"对！✅":"应该放「"+label+"」")+'</span> '+d.why+'</div>'+
+     '<div class="row center" style="margin-top:8px"><button class="btn sm" id="znext">'+(qi<TASKS.length-1?"下一件 →":"看结果 🎉")+'</button></div>';
+   $("znext").onclick=function(){if(qi<TASKS.length-1){qi++;paint();}else finish();};
+ }
+ function finish(){
+   $("zbody").innerHTML='<div class="popcard">🎉 分类完成！✅ '+right+'　❌ '+wrong+'<br><br><b>记住这条线：</b><br>想点子、写东西 → 大胆用；<br>算数、查事实 → 用了也要<b>自己核对</b>；<br>真感情、自己的决定 → <b>靠你自己</b>。</div>'+
+     '<div class="row center" style="margin-top:8px"><button class="btn sm" id="zagain">🔄 再玩一次</button></div>';
+   $("zagain").onclick=function(){order=shuffle(TASKS.map(function(_,i){return i;}));qi=0;right=0;wrong=0;paint();};
+ }
+ paint();
+};
+
+/* ---------- 启动 ---------- */
+if(applyTheme(who)){renderHome();}else{renderPick();}
+</script>
+</body>
+</html>

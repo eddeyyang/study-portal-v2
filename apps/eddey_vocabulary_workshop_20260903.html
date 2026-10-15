@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#fff8f2">
+  <meta name="study-portal-design" content="2.0">
+  <meta name="study-portal-child-answer" content="child-first-v1">
+  <meta name="study-portal-open-answer" content="required">
+  <meta name="lesson-audio" content="required">
+  <meta name="lesson-audio-engine" content="browser-system-voice">
+  <meta name="lesson-audio-browser-override" content="user-explicit">
+  <meta name="lesson-audio-rejected-voice" content="bf_emma">
+  <title>单词工坊｜Eddey</title>
+  <link rel="stylesheet" href="../assets/vocabulary-workshop.css">
+  <style>:root{--tap:48px;--canvas:#fff8f2;--identity:#ff8a5b;--identity-dark:#a94220;--identity-soft:#fff0e8}.lesson-shell{width:min(100%,760px)}.button,.type-input{min-height:var(--tap)}@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}</style>
+</head>
+<body data-child="eddey">
+  <main class="lesson-shell">
+    <header class="topbar">
+      <a class="back" href="../apps.html?who=eddey" aria-label="返回 Eddey 软件"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 18-6-6 6-6"/><path d="M9 12h10"/></svg></a>
+      <div class="brand"><span class="brand-mark">E</span><div><strong id="appName">Eddey</strong><span>校内主线 · 课外整批</span></div></div>
+      <span class="identity">弟弟 · <span id="appGrade">四年级</span></span>
+    </header>
+
+    <section class="hero">
+      <span class="eyebrow">9月7—13日 · 课外词复习</span>
+      <h1>单词工坊</h1>
+      <p>先拼一轮，只练卡住的词。不会时，看词块、听发音，再自己试。</p>
+      <div class="goal"><strong>本周范围：</strong><span id="goalText"></span></div>
+      <div class="chips"><span class="chip" id="teacherSource"></span><span class="chip">大小写不计 · 字母与顺序严格</span><span class="chip">提示后完成留待复习</span></div>
+    </section>
+
+    <section class="today-card" aria-label="今日词量">
+      <div class="today-top"><strong>课外优先 · 校内可选</strong><span id="todayDate"></span></div>
+      <div class="count-grid"><div class="count"><b id="schoolCount">0</b><span>校内复习词</span></div><div class="count"><b id="extraCount">0</b><span>课外整批</span></div><div class="count"><b id="masteredCount">0/0</b><span>拼写通过</span></div></div>
+      <div class="progress-track"><div class="progress-fill" id="summaryProgress"></div></div>
+      <button class="button wide" id="startWeekly" type="button">开始课外 8 词拼写</button><details class="week-details"><summary>查看课外词表</summary><p class="hint" id="todayList"></p></details>
+      <div class="audio-status"><div><b>系统英语发音</b><span id="voiceStatus" role="status" aria-live="polite">正在读取这台设备的英语声线……</span></div><button class="voice-test" type="button" id="voiceTest">先试听</button></div>
+      <div class="daily" data-micro-surprise="daily"><button type="button" id="dailyButton" aria-expanded="false">今日暗号</button><span id="dailyText">点开看今天的拼写暗号</span></div>
+    </section>
+
+    <nav class="route" aria-label="六步学习路线">
+      <button type="button" data-route="teach" class="active">1 看懂</button><button type="button" data-route="guided">2 组装</button><button type="button" data-route="recall">3 遮挡</button><button type="button" data-route="independent">4 键盘</button><button type="button" data-route="repair">5 返修</button><button type="button" data-route="transfer">6 应用</button>
+    </nav>
+
+    <section class="view active" data-phase="teach">
+      <div class="panel">
+        <div class="view-head"><span class="step">1</span><div><h2>词块帮你记</h2><p>点词块把单词装起来；下面同时告诉你它在教材里怎么用。</p></div></div>
+        <div class="word-picker"><label for="teachSelect">选一个词</label><select id="teachSelect"></select></div>
+        <div class="word-stage">
+          <div class="word-meta"><span class="source-pill" id="teachSource"></span><span class="date-pill" id="teachDate"></span></div>
+          <div class="word-main" id="teachWord"></div><div class="word-meaning" id="teachZh"></div>
+          <div class="mechanism"><p class="mechanism-title">按顺序组装</p><div class="part-bank" id="partBank"></div><div class="assembly empty" id="teachAssembly"></div></div>
+          <div class="why-use"><article class="explain-card"><b>为什么这样背</b><p id="teachWhy"></p></article><article class="explain-card"><b>具体用在哪里</b><p><span class="use-en" id="teachUse"></span><span class="use-zh" id="teachUseZh"></span></p></article></div>
+          <div class="audio-actions"><button class="audio-button" type="button" id="playTeachWord"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 10v4h3l4 3V7l-4 3H5Z"/><path d="M16 9c1 .8 1.5 1.8 1.5 3S17 14.2 16 15"/><path d="M18.5 6.5c1.8 1.4 2.7 3.2 2.7 5.5s-.9 4.1-2.7 5.5"/></svg><span>慢速听单词</span></button><button class="audio-button" type="button" id="playTeachSentence"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 10v4h3l4 3V7l-4 3H5Z"/><path d="M16 9c1 .8 1.5 1.8 1.5 3S17 14.2 16 15"/><path d="M18.5 6.5c1.8 1.4 2.7 3.2 2.7 5.5s-.9 4.1-2.7 5.5"/></svg><span>听完整例句</span></button></div>
+        </div>
+        <div class="button-row"><button class="button secondary" type="button" id="teachPrev">上一个词</button><button class="button secondary" type="button" id="teachNext">下一个词</button><button class="button" type="button" id="startGuided">开始组装练习</button><button class="button success" type="button" id="directStart">直接开始课外拼写</button></div>
+      </div>
+    </section>
+
+    <section class="view" data-phase="guided">
+      <div class="panel"><div class="view-head"><span class="step">2</span><div><h2>词块组装</h2><p>先找有意义的部分，再按顺序连成完整拼写。</p></div></div><div class="task"><div class="task-kicker"><span>看中文组装</span><span id="guidedCounter"></span></div><div class="cue" id="guidedCue"></div><div class="hint" id="guidedHint"></div><div class="choice-bank" id="guidedChoices"></div><div class="guided-rail empty" id="guidedRail"></div><div class="feedback" id="guidedFeedback" aria-live="polite"></div><div class="button-row"><button class="button" id="guidedNext" type="button" hidden>下一个</button></div></div><div class="button-row"><button class="button secondary" id="toRecall" type="button">进入遮挡回忆</button></div></div>
+    </section>
+
+    <section class="view" data-phase="recall">
+      <div class="panel"><div class="view-head"><span class="step">3</span><div><h2>遮住再想</h2><p>看中文和记忆理由，先在心里拼，再揭晓核对。</p></div></div><div class="task"><div class="task-kicker"><span>不看字母回忆</span><span id="recallCounter"></span></div><div class="cue" id="recallCue"></div><div class="hint" id="recallHint"></div><div class="recall-mask covered" id="recallMask"><div class="answer" id="recallAnswer"></div></div><div class="button-row"><button class="button" id="revealRecall" type="button">我想好了，揭晓</button></div><div class="button-row" id="recallMarks" hidden><button class="button secondary" type="button" data-recall-mark="weak">还不稳</button><button class="button success" type="button" data-recall-mark="ok">我记得</button></div></div></div>
+    </section>
+
+    <section class="view" data-phase="independent">
+      <div class="panel"><div class="view-head"><span class="step">4</span><div><h2>听音后键盘拼写</h2><p>看中文或听发音，打出英文。不会也能继续，错词会留下。</p></div></div><div class="button-row"><button class="button secondary active" type="button" data-mode="today">本周课外</button><button class="button secondary" type="button" data-mode="school">校内全部</button><button class="button secondary" type="button" data-mode="extra">课外整批</button><button class="button secondary" type="button" data-mode="wrong">错词返修</button></div><div class="task"><div class="task-kicker"><span id="sourceLabel"></span><span><span id="streakLabel"></span> · <span id="independentCounter"></span></span></div><div class="cue" id="independentCue"></div><div class="hint" id="independentHint"></div><button class="dictation-listen" type="button" id="playDictationWord"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 10v4h3l4 3V7l-4 3H5Z"/><path d="M16 9c1 .8 1.5 1.8 1.5 3S17 14.2 16 15"/><path d="M18.5 6.5c1.8 1.4 2.7 3.2 2.7 5.5s-.9 4.1-2.7 5.5"/></svg><span>只听单词</span><small>不显示答案，可重复播放</small></button><label class="type-label" for="spellingInput">请打出完整英文</label><input class="type-input" id="spellingInput" type="text" inputmode="text" enterkeyhint="done" spellcheck="false" autocapitalize="off"><div class="keyboard-note">按 Enter 也能提交；大小写不计，内部字母、顺序和必要空格必须正确。</div><div class="button-row"><button class="button wide" id="checkSpelling" type="button">检查拼写</button></div><div class="feedback" id="spellingFeedback" aria-live="polite"></div><section class="answer-escape" id="answerEscape" data-learning-escape="answer-and-continue" data-reference-answer="dynamic" hidden><b>参考答案</b><div class="reference" id="referenceAnswer" data-reference-answer="dynamic"></div><p>看过答案后，这次不算拼写通过。</p><div class="button-row"><button class="button secondary" type="button" data-retry-after-reveal>看清后再试一次</button><button class="button danger" type="button" data-continue-after-reveal>记为待复习并继续</button></div></section></div></div>
+    </section>
+
+    <section class="view" data-phase="repair">
+      <div class="panel"><div class="view-head"><span class="step">5</span><div><h2>只修第一个错位</h2><p>不罚抄整页。先定位第一个错字，再回到同一个词重新打。</p></div></div><div class="repair-model"><div class="repair-word" id="repairWord"></div><div class="letter-row" id="letterRow"></div><p class="repair-reason" id="repairReason"></p><section class="child-explanation" data-child-explanation="primary"><p data-child-part="gap"><b>先修：</b><span id="childGap">找第一个不同的位置。</span></p><p data-child-part="reason"><b>为什么：</b><span id="childReason">词块能帮你守住字母顺序。</span></p><p data-child-part="check"><b>现在检查：</b><span id="childCheck">遮住后重新拼一次。</span></p></section></div><div class="button-row"><button class="button wide" type="button" data-return-to-question="independent">我看懂了，返回刚才这个词</button></div></div>
+    </section>
+
+    <section class="view" data-phase="transfer">
+      <div class="panel"><div class="view-head"><span class="step">6</span><div><h2>放回真实句子</h2><p>最后把词放进教材场景，证明不只是背字母，也能听懂它在句子里的用法。</p></div></div><div class="task"><div class="sentence"><span id="transferPrompt"></span><span class="use-zh" id="transferZh"></span></div><button class="audio-button sentence-listen" type="button" id="playTransferSentence"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 10v4h3l4 3V7l-4 3H5Z"/><path d="M16 9c1 .8 1.5 1.8 1.5 3S17 14.2 16 15"/><path d="M18.5 6.5c1.8 1.4 2.7 3.2 2.7 5.5s-.9 4.1-2.7 5.5"/></svg><span>听完整例句</span></button><label class="type-label" for="transferInput">句子缺少哪个英文词或词组？</label><input class="type-input" id="transferInput" type="text" spellcheck="false" autocapitalize="off"><div class="button-row"><button class="button" type="button" id="checkTransfer">检查应用</button><button class="button secondary" type="button" id="finishAssisted" hidden>看过答案，先结束</button></div><div class="feedback" id="transferFeedback" aria-live="polite"></div><div class="completion" id="completion" data-surprise="word-evidence"><h3 id="completionTitle"></h3><p id="completionCopy"></p><div class="button-row"><button class="button secondary" type="button" id="practiceWrong">练错词</button><button class="button secondary" type="button" id="restartToday">再练本周课外词</button></div></div></div></div>
+    </section>
+
+    <button class="records-button" type="button" id="openRecords">学习档案</button>
+    <aside class="drawer" id="recordDrawer" aria-hidden="true"><div class="drawer-card"><div class="drawer-head"><h2>Eddey 单词档案</h2><button type="button" id="closeRecords" aria-label="关闭">×</button></div><div class="record-stats"><div class="record-stat"><b id="recordAttempts">0</b><span>作答次数</span></div><div class="record-stat"><b id="recordMastered">0</b><span>拼写通过</span></div><div class="record-stat"><b id="recordOpen">0</b><span>待回炉</span></div></div><div class="wrong-list" id="wrongList"></div><div class="button-row"><button class="button secondary" type="button" id="exportJson">导出 JSON</button><button class="button secondary" type="button" id="exportMarkdown">导出报告</button><button class="button secondary" type="button" id="importButton">导入进度</button><input id="importFile" type="file" accept="application/json" hidden></div><div class="parent-note">本周课外优先；校内复习按剩余时间选择。拼写通过不代表整课掌握。方法说明：先用校园地点和固定句型建立词义，再拆成短词块，最后用无选项键盘输入做提取。课外短语本次整批完成；学校 Unit 1 分日推进，错词留待后续独立检验；长期掌握需另日复验。</div></div></aside>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  </main>
+
+  <script>
+    const LESSON_BLUEPRINT = Object.freeze({
+      appId:"eddey-vocabulary-workshop-20260903",child:"eddey",source:"四上英语金牌训练 Unit 1 与 2026-09-02 Phrased Reading L2 老师作业",courseDate:"2026-09-03",currentGap:"能认出大致词义，但精确拼写和完整词组输出容易只记大概，需要先听准声音，再做短回合与立即反馈",observableOutcome:"听清发音后，独立键盘拼对本周8个课外词组，并能把抽中的词放回句子",essentialQuestion:"怎样从声音和校园、故事场景出发，把一个词准确写完整？",coreInsight:"先听准声音、知道词指什么，再拆短词块，遮挡后的键盘提取才能把大概记忆变成精确拼写",realMeaning:"准确发音与拼写帮助介绍学校、理解 Gordon 故事并完成老师的笔记练习",compressionPath:"单词声音→场景词义→短词块→教材句→听音键盘拼写→错位修复→句子迁移",visibleMechanism:"点击词块时，零散部分按顺序进入拼写轨道；点击发音时，单词慢读与完整例句分开播放",transferProof:"只听声音也能拼写，并在新句子空格中再次输入",knowledgeMechanism:"声音、校园场景、固定搭配与短词块共同建立音形义连接",primaryInteraction:"听单词→点击词块组装→遮挡→用电脑键盘完整拼写",childAnswerContract:"child-first-v1",childFirstLayerLimit:100,escapePolicy:"repair-once-then-reveal-and-continue",maxBlockingAttempts:2,masteryBoundary:"看过答案只记待复习；错词后续两次独立正确通过本轮拼写；长期掌握仍待延迟验证",audio:"required: deterministic browser system English voice explicitly approved by user; bf_emma rejected",surprise:"word-evidence",surpriseTrigger:"完成今日独立拼写并在句子里正确应用",phases:["teach","guided","recall","independent","repair","transfer"]
+    });
+    const DAILY_SURPRISES = Object.freeze(["先找词块，再守住每个字母的位置。","会认不等于会写，遮住后打出来才算。","短语要整块拿出来，不能临时逐词翻译。","错一个字母，只修第一个错位。","把词放进句子，记忆会更牢。"]);
+    const dailySurpriseKey = (appId,child) => `${appId}|${child}|Asia/Shanghai`;
+    window.VOCABULARY_WORKSHOP = {
+      appId:LESSON_BLUEPRINT.appId,child:"eddey",name:"Eddey 单词工坊",grade:"四年级",version:"2026.09.03.1",storageKey:"study:eddey:vocabulary-workshop:20260903:v1",dailySurprises:DAILY_SURPRISES,focusSource:"extra",reviewWeek:"2026-09-07/2026-09-13",
+      goal:"课外 8 词先练；校内 Unit 1 的 13 词在单独入口复习。",sourceNote:"教材 Unit 1 + Phrased Reading L2",
+      words:[
+        {id:"e-u1-classroom",answer:"classroom",zh:"教室",source:"school",unit:"校内 Unit 1",date:"2026-09-03",chunks:["class","room"],why:"class 是课，room 是房间；两块合起来就是上课的房间。",sentence:"We read books in the classroom.",sentenceZh:"我们在教室里读书。",sentenceCloze:"We read books in the ______."},
+        {id:"e-u1-hall",answer:"hall",zh:"礼堂",source:"school",unit:"校内 Unit 1",date:"2026-09-03",chunks:["h","all"],why:"先写 h，再接熟悉的 all；ll 要双写。",sentence:"We have a party in the school hall.",sentenceZh:"我们在学校礼堂举办派对。",sentenceCloze:"We have a party in the school ______."},
+        {id:"e-u1-sports-field",answer:"sports field",zh:"运动场",source:"school",unit:"校内 Unit 1",date:"2026-09-03",chunks:["sports","field"],why:"这是地点词组：sports 表示运动，field 表示场地；中间要留空格。",sentence:"We play football on the sports field.",sentenceZh:"我们在运动场上踢足球。",sentenceCloze:"We play football on the ______."},
+        {id:"e-u1-computer-room",answer:"computer room",zh:"计算机机房",source:"school",unit:"校内 Unit 1",date:"2026-09-03",chunks:["computer","room"],why:"computer 是电脑，room 是房间；先写完整 computer，再空一格写 room。",sentence:"We learn to use computers in the computer room.",sentenceZh:"我们在计算机机房里学习使用电脑。",sentenceCloze:"We learn to use computers in the ______."},
+        {id:"e-u1-school-building",answer:"school building",zh:"教学楼",source:"school",unit:"校内 Unit 1",date:"2026-09-03",chunks:["school","build","ing"],why:"school 是学校，build 是建造，加 ing 得 building；词组中间要空一格。",sentence:"Our classroom is in the school building.",sentenceZh:"我们的教室在教学楼里。",sentenceCloze:"Our classroom is in the ______."},
+        {id:"e-u1-art-room",answer:"art room",zh:"美术教室",source:"school",unit:"校内 Unit 1",date:"2026-09-04",chunks:["art","room"],why:"art 是美术，room 是房间；两个短词中间留一个空格。",sentence:"We paint in the art room.",sentenceZh:"我们在美术教室里画画。",sentenceCloze:"We paint in the ______."},
+        {id:"e-u1-keep-tidy",answer:"keep tidy",display:"keep ... tidy",aliases:["keep...tidy","keep ... tidy"],zh:"保持……整洁",source:"school",unit:"校内 Unit 1",date:"2026-09-04",chunks:["keep","...","tidy"],keyboardHint:"键盘默写可以打 keep tidy；三个点表示中间能放 classroom、room 等对象。",why:"这是一个框架：keep 放前面，tidy 放后面，中间装要保持整洁的东西。",sentence:"We should keep our classroom tidy.",sentenceZh:"我们应该保持教室整洁。",sentenceCloze:"We should ______ our classroom ______."},
+        {id:"e-u1-project",answer:"project",zh:"课题；项目",source:"school",unit:"校内 Unit 1",date:"2026-09-04",chunks:["pro","ject"],why:"分成 pro + ject 两个声音块；结尾是 ject，不是 jet。",sentence:"I do a project about animals.",sentenceZh:"我做一个关于动物的课题。",sentenceCloze:"I do a ______ about animals."},
+        {id:"e-u1-begin",answer:"begin",zh:"开始",source:"school",unit:"校内 Unit 1",date:"2026-09-04",chunks:["be","gin"],why:"分成 be + gin；中间只有一个 g，结尾是 in。",sentence:"Shall we begin with our project?",sentenceZh:"我们开始做课题好吗？",sentenceCloze:"Shall we ______ with our project?"},
+        {id:"e-u1-let",answer:"let",zh:"让；允许",source:"school",unit:"校内 Unit 1",date:"2026-09-04",chunks:["l","et"],why:"只有三个字母 l-e-t；放进 Let's 时后面接动词原形。",sentence:"The teacher lets us draw pictures.",sentenceZh:"老师让我们画画。",sentenceCloze:"Please ______ me draw this picture."},
+        {id:"e-u1-bamboo",answer:"bamboo",zh:"竹子",source:"school",unit:"校内 Unit 1",date:"2026-09-07",chunks:["bam","boo"],why:"先写 bam，再接 boo；结尾两个 o 要保住。",sentence:"Pandas like to eat bamboo.",sentenceZh:"熊猫喜欢吃竹子。",sentenceCloze:"Pandas like to eat ______."},
+        {id:"e-u1-tall",answer:"tall",zh:"高的",source:"school",unit:"校内 Unit 1",date:"2026-09-07",chunks:["t","all"],why:"和 hall 一样都带 all，只把开头换成 t；ll 仍然双写。",sentence:"That school building is tall.",sentenceZh:"那栋教学楼很高。",sentenceCloze:"That school building is ______."},
+        {id:"e-u1-student",answer:"student",zh:"学生",source:"school",unit:"校内 Unit 1",date:"2026-09-07",chunks:["stu","dent"],why:"分成 stu + dent；后半块 dent 的 d 不能漏。",sentence:"Every student has a project.",sentenceZh:"每个学生都有一个课题。",sentenceCloze:"Every ______ has a project."},
+        {id:"e-pr-be-pals",answer:"be pals with",display:"be pals with sb.",aliases:["be pals with sb","be pals with sb."],zh:"和某人成为朋友",source:"extra",unit:"Phrased Reading L2",date:"2026-09-03",chunks:["be","pals","with"],why:"这是完整关系词块：be + pals + with，with 后面接朋友对象。",sentence:"Gordon wants to be pals with the birds.",sentenceZh:"Gordon 想和这些鸟做朋友。",sentenceCloze:"Gordon wants to ______ the birds."},
+        {id:"e-pr-any",answer:"any",zh:"任何；一些（疑问句/否定句）",source:"extra",unit:"Phrased Reading L2",date:"2026-09-03",chunks:["a","ny"],why:"a + ny 三个字母；先把它和疑问、否定句绑在一起，不和 some 混。",sentence:"Does Gordon know any birds?",sentenceZh:"Gordon 认识一些鸟吗？",sentenceCloze:"Does Gordon know ______ birds?"},
+        {id:"e-pr-some",answer:"some",zh:"一些（肯定句）",source:"extra",unit:"Phrased Reading L2",date:"2026-09-03",chunks:["so","me"],why:"so + me；把它放进肯定句 Gordon knows some birds，就知道何时用。",sentence:"Gordon knows some birds.",sentenceZh:"Gordon 认识一些鸟。",sentenceCloze:"Gordon knows ______ birds."},
+        {id:"e-pr-get-dark",answer:"get dark",zh:"天黑；变暗",source:"extra",unit:"Phrased Reading L2",date:"2026-09-03",chunks:["get","dark"],why:"get 表示变得，dark 表示黑；两个词合起来表示“天黑起来”。",sentence:"It gets dark in the evening.",sentenceZh:"傍晚天黑了。",sentenceCloze:"It begins to ______ in the evening."},
+        {id:"e-pr-now",answer:"now",zh:"现在",source:"extra",unit:"Phrased Reading L2",date:"2026-09-03",chunks:["n","ow"],why:"n + ow，三个字母；看到 now 要想到“此刻正在发生”。",sentence:"Gordon is sitting in the tree now.",sentenceZh:"Gordon 现在正坐在树上。",sentenceCloze:"Gordon is sitting in the tree ______."},
+        {id:"e-pr-look",answer:"look",zh:"看",source:"extra",unit:"Phrased Reading L2",date:"2026-09-03",chunks:["l","ook"],why:"l 后面接 ook，中间两个 o；Look! 常放句首提醒别人看。",sentence:"Look at Gordon in the tree.",sentenceZh:"看树上的 Gordon。",sentenceCloze:"______ at Gordon in the tree."},
+        {id:"e-pr-listen",answer:"listen",zh:"听",source:"extra",unit:"Phrased Reading L2",date:"2026-09-03",chunks:["lis","ten"],why:"lis + ten；读的时候 t 不明显，但拼写时 t 必须在。",sentence:"Listen to the birds in the tree.",sentenceZh:"听树上的鸟儿。",sentenceCloze:"______ to the birds in the tree."},
+        {id:"e-pr-at-the-moment",answer:"at the moment",zh:"此刻；现在",source:"extra",unit:"Phrased Reading L2",date:"2026-09-03",chunks:["at","the","moment"],why:"三个词要整块提取，顺序固定；它也是现在进行时常见的时间信号。",sentence:"Gordon is safe at the moment.",sentenceZh:"Gordon 此刻很安全。",sentenceCloze:"Gordon is safe ______."}
+      ]
+    };
+  </script>
+  <script src="../assets/learning-sync.js"></script>
+  <script src="../assets/vocabulary-workshop.js"></script>
+</body>
+</html>
+

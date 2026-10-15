@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="lesson-audio" content="pending: 16条Aria神经音已外置apps/audio/kenton_sentence_patterns_20260802/，机器校验通过；手机实播待家长验收">
+<title>句型三剑客 · 主谓 / 主系表 / 主谓宾 · Kenton</title>
+<style>
+:root{--bg:#f0f7ff;--card:#ffffff;--ink:#2d3049;--teal:#0ea5a5;--teal-d:#0b7c7c;--pink:#f472b6;--amber:#f59e0b;--blue:#3b82f6;--line:#dce8f5;--soft:#eaf3fc}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--ink);padding-bottom:40px}
+header{position:sticky;top:0;z-index:9;background:var(--bg);padding:12px 16px 8px;display:flex;align-items:center;gap:10px;border-bottom:1px solid var(--line)}
+.logo{width:38px;height:38px;border-radius:12px;background:linear-gradient(135deg,var(--teal),#22d3ee);display:flex;align-items:center;justify-content:center;color:#fff;font-size:20px;box-shadow:0 3px 0 var(--teal-d)}
+.brand{font-weight:800;font-size:14.5px}
+header .sp{flex:1}
+.pill{border:1px solid var(--line);background:#fff;border-radius:999px;padding:7px 12px;font-size:12px;font-weight:700;color:var(--ink);cursor:pointer}
+main{padding:14px 16px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:18px;box-shadow:0 4px 0 rgba(220,232,245,.9);margin-bottom:14px}
+.tag{display:inline-block;background:#e0f5f5;color:var(--teal-d);font-size:12px;font-weight:800;border-radius:8px;padding:4px 10px;margin-bottom:10px}
+h1{font-size:23px;line-height:1.3;margin-bottom:8px}
+h2{font-size:19px;margin-bottom:6px}
+.sub{font-size:13.5px;color:#7a7690;line-height:1.7}
+.big{font-size:34px;font-weight:900;text-align:center;letter-spacing:1px}
+.zh{text-align:center;color:#7a7690;font-size:14px;margin-top:2px}
+.btn{display:block;width:100%;border:none;border-radius:16px;padding:15px;font-size:16.5px;font-weight:800;cursor:pointer;margin-top:12px;font-family:inherit}
+.btn-teal{background:var(--teal);color:#fff;box-shadow:0 4px 0 var(--teal-d)}
+.btn-teal:active{transform:translateY(3px);box-shadow:0 1px 0 var(--teal-d)}
+.btn-soft{background:var(--soft);color:var(--ink);border:1px solid var(--line);box-shadow:0 4px 0 var(--line)}
+.btn[disabled]{opacity:.45;pointer-events:none}
+.opt{display:block;width:100%;text-align:left;background:#fff;border:2px solid var(--line);border-radius:14px;padding:13px 15px;font-size:16px;font-weight:700;margin-top:10px;cursor:pointer;font-family:inherit}
+.opt.ok{border-color:var(--teal);background:#e0f5f5}
+.opt.no{border-color:#ef4444;background:#fee2e2}
+.opt .k{display:inline-block;width:26px;height:26px;line-height:26px;text-align:center;border-radius:8px;background:var(--soft);margin-right:8px;font-size:13px}
+.sword-row{display:grid;grid-template-columns:1fr;gap:10px;margin-top:12px}
+.scard{border-radius:16px;padding:14px;line-height:1.8}
+.scard b{font-size:17px;display:block;margin-bottom:2px}
+.s1{background:#e0f5f5;color:var(--teal-d)}
+.s2{background:#fef3d9;color:#a86a00}
+.s3{background:#fde8f3;color:#c2377f}
+.sentence{font-size:19px;font-weight:800;line-height:1.9;background:rgba(255,255,255,.8);border-radius:12px;padding:12px;margin-top:8px}
+.sentence .part{border-bottom:2.5px solid currentColor;padding:0 2px}
+.sig-word{background:#fff;border:2px solid var(--line);border-radius:14px;padding:12px;text-align:center;font-size:20px;font-weight:900;margin-top:10px;box-shadow:0 3px 0 var(--line)}
+.bin-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+.bin{border:2px dashed var(--line);border-radius:14px;padding:12px 8px;text-align:center;font-size:13px;font-weight:800;cursor:pointer;background:#fff;line-height:1.5}
+.bin small{display:block;font-weight:600;color:#8a8496;font-size:11px;margin-top:2px}
+.bin.b1{border-color:var(--teal);color:var(--teal-d)}
+.bin.b2{border-color:var(--amber);color:#a86a00}
+.bin.b3{border-color:var(--pink);color:#c2377f}
+.bin.b4{border-color:var(--blue);color:#1d4ed8}
+.progress{height:10px;background:var(--line);border-radius:99px;overflow:hidden;margin:10px 0 4px}
+.progress i{display:block;height:100%;background:linear-gradient(90deg,var(--teal),#22d3ee);border-radius:99px;transition:width .4s}
+.steps{display:flex;gap:6px;margin-top:12px}
+.step{flex:1;background:var(--soft);border-radius:10px;text-align:center;font-size:11px;font-weight:700;padding:8px 3px;color:#8a8496;line-height:1.5}
+.step b{display:block;font-size:15px;color:var(--teal)}
+.fb{border-radius:14px;padding:12px 14px;font-size:14px;font-weight:700;line-height:1.7;margin-top:12px;display:none}
+.fb.ok{display:block;background:#e0f5f5;color:var(--teal-d)}
+.fb.no{display:block;background:#fee2e2;color:#b91c1c}
+.note{font-size:12px;color:#9a94b0;line-height:1.7;margin-top:12px;border-top:1px dashed var(--line);padding-top:10px}
+.voice-note{background:#fdf0f8;border:1px solid #f5c6e0;color:#a3437c;font-size:12px;border-radius:12px;padding:9px 12px;line-height:1.6;margin-top:10px}
+.recall-card{background:#fff;border:2px solid var(--line);border-radius:16px;padding:16px;margin-top:12px}
+.recall-card .q{font-size:16px;font-weight:800;line-height:1.6}
+.recall-card .a{font-size:14.5px;line-height:1.8;color:var(--teal-d);margin-top:10px;display:none;background:#e0f5f5;border-radius:12px;padding:10px 12px}
+.recall-card.open .a{display:block}
+.recall-card .tap{font-size:12px;color:var(--pink);font-weight:700;margin-top:6px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+.mini{background:var(--soft);border-radius:14px;padding:12px;text-align:center;font-weight:800;font-size:14px}
+.mini small{display:block;font-weight:600;color:#8a8496;font-size:11.5px;margin-top:4px}
+.hidden{display:none}
+.taprow{display:flex;gap:8px;margin-top:12px}
+.taprow .btn{margin-top:0}
+.formula{display:flex;justify-content:center;gap:6px;margin-top:10px;flex-wrap:wrap}
+.fchip{border-radius:10px;padding:6px 12px;font-weight:900;font-size:14px;color:#fff}
+.f-s{background:#0ea5a5}.f-v{background:#f59e0b}.f-p{background:#f472b6}.f-o{background:#3b82f6}
+</style>
+</head>
+<body>
+<header>
+  <div class="logo">⚔️</div>
+  <div class="brand">Kenton · 句型三剑客</div>
+  <div class="sp"></div>
+  <button class="pill" id="soundToggle">声</button>
+  <button class="pill" onclick="go('records')">学习档案</button>
+</header>
+<main id="app"></main>
+<script>
+(function(){
+'use strict';
+const APP_ID='kenton-sentence-patterns-20260802';
+const VERSION='1.0.0';
+const STORAGE_KEY='study:kenton:'+APP_ID+':v1';
+const MATERIAL='2026-08-02 老师课堂新授（基本句型：主谓/主系表/主谓宾）·《知识点梳理》第9章系动词 + 第13章基本句型 p.91—99';
+const AUDIO_DIR='audio/kenton_sentence_patterns_20260802/';
+/* ============ 数据 ============ */
+const PATTERNS=[
+ {id:'sv',name:'主谓 SV',hero:'The sun rises.',cn:'太阳升起来了。',rule:'主语 + 谓语（不及物动词），动词自己就能站住，后面不需要接东西。',audio:'p-sv.mp3'},
+ {id:'svc',name:'主系表 S+V系+表',hero:'The cake smells nice.',cn:'这蛋糕闻起来真香。',rule:'主语 + 系动词 + 表语。系动词是"桥"，表语多为形容词，说明主语"怎么样、是什么"。',audio:'p-svc.mp3'},
+ {id:'svo',name:'主谓宾 SVO',hero:'I like English.',cn:'我喜欢英语。',rule:'主语 + 谓语（及物动词）+ 宾语。及物动词后面必须接一个"承受动作"的宾语。',audio:'p-svo.mp3'}
+];
+/* 系动词四大家族（教材第9章原表，明天默写范围） */
+const LINKS=[
+ {w:'be',fam:'be',cn:'是（am/is/are/was/were）',audio:'l-be.mp3'},
+ {w:'look',fam:'sense',cn:'看起来',audio:'l-look.mp3'},
+ {w:'sound',fam:'sense',cn:'听起来',audio:'l-sound.mp3'},
+ {w:'smell',fam:'sense',cn:'闻起来',audio:'l-smell.mp3'},
+ {w:'taste',fam:'sense',cn:'尝起来',audio:'l-taste.mp3'},
+ {w:'feel',fam:'sense',cn:'摸起来；感觉',audio:'l-feel.mp3'},
+ {w:'get',fam:'change',cn:'变得',audio:'l-get.mp3'},
+ {w:'become',fam:'change',cn:'变成',audio:'l-become.mp3'},
+ {w:'turn',fam:'change',cn:'变（颜色等）',audio:'l-turn.mp3'},
+ {w:'grow',fam:'change',cn:'渐渐变得',audio:'l-grow.mp3'},
+ {w:'keep',fam:'stay',cn:'保持',audio:'l-keep.mp3'},
+ {w:'stay',fam:'stay',cn:'保持；停留',audio:'l-stay.mp3'},
+ {w:'seem',fam:'stay',cn:'似乎',audio:'l-seem.mp3'}
+];
+const FAMS={
+ be:{name:'be 家族',sub:'就它自己'},
+ sense:{name:'五感家族',sub:'看听闻尝摸'},
+ change:{name:'变化家族',sub:'变得…'},
+ stay:{name:'保持家族',sub:'保持/似乎'}
+};
+/* 句型分拣 8 句 */
+const SORTS=[
+ {s:'The sun rises.',p:'sv',why:'rises 自己站得住，后面什么都不用接 → 主谓。'},
+ {s:'Birds fly in the sky.',p:'sv',why:'fly 不及物，in the sky 只是地点状语 → 主谓。'},
+ {s:'The soup tastes good.',p:'svc',why:'tastes 是五感系动词，good 形容词作表语 → 主系表。'},
+ {s:'She looks happy.',p:'svc',why:'looks=看起来，happy 说明"她怎么样" → 主系表。'},
+ {s:'I like English.',p:'svo',why:'like 及物，后面接宾语 English → 主谓宾。'},
+ {s:'He plays the piano.',p:'svo',why:'plays 后面接了宾语 the piano → 主谓宾。'},
+ {s:'The leaves turned yellow.',p:'svc',why:'turned 是变化系动词，yellow 表语 → 主系表。'},
+ {s:'Tom became a doctor.',p:'svc',why:'became 系动词，a doctor 说明 Tom 的身份 → 主系表。'}
+];
+/* 翻译小火车（呼应句型卷子翻译作业） */
+const TRANS=[
+ {cn:'太阳升起来了。',a:'The sun rises.',opts:['The sun rises.','The sun is rise.','The sun rises the sky.'],why:'主谓句：rises 不及物，不需要宾语。'},
+ {cn:'这首歌听起来很美。',a:'The song sounds beautiful.',opts:['The song sounds beautiful.','The song sounds beautifully.','The song hears beautiful.'],why:'系动词后接形容词：beautiful，不接副词 beautifully。'},
+ {cn:'我喜欢英语。',a:'I like English.',opts:['I like English.','I am like English.','I liking English.'],why:'主谓宾：like 直接作谓语，不用加 be。'},
+ {cn:'树叶变黄了。',a:'The leaves turned yellow.',opts:['The leaves turned yellow.','The leaves turned to yellow.','The leaves are yellowing now.'],why:'变化系动词 turn + 颜色形容词。'}
+];
+const RECALL=[
+ {q:'三种基本句型，一句话说清区别？',a:'主谓=主语+不及物动词（The sun rises.）；主系表=主语+系动词+表语（The cake smells nice.）；主谓宾=主语+及物动词+宾语（I like English.）。'},
+ {q:'系动词四大家族，背！',a:'① be；② 五感 look/sound/smell/taste/feel；③ 变化 get/become/turn/grow；④ 保持似乎 keep/stay/seem。明天默写范围！'},
+ {q:'系动词后面接形容词还是副词？',a:'形容词！The soup tastes good.（不说 well）。系动词是"桥"，表语描述主语怎么样。'},
+ {q:'怎么快速分辨主谓和主谓宾？',a:'问一句"动词后面有没有接东西"：接了宾语→主谓宾（plays the piano）；没接→主谓（rises）。地点/时间状语不算宾语（fly in the sky 仍是主谓）。'},
+ {q:'become / turn / grow / get 都是"变"，有区别吗？',a:'都是变化系动词后接形容词/名词；turn 常接颜色（turn yellow），grow 强调渐渐变（grow dark），考试先把它们认成"系动词"即可。'},
+ {q:'She is happy. 是什么句型？',a:'主系表！be 是头号系动词，happy 是表语。别把 is 当普通谓语动词找宾语。'}
+];
+const QUIZ=[
+ {cat:'句型判断',q:'Birds fly.',opts:['主谓','主系表','主谓宾'],a:0,why:'fly 不及物，后面没有宾语 → 主谓。'},
+ {cat:'句型判断',q:'The music sounds nice.',opts:['主谓','主系表','主谓宾'],a:1,why:'sounds 是五感系动词，nice 是表语 → 主系表。'},
+ {cat:'句型判断',q:'We play football after school.',opts:['主谓','主系表','主谓宾'],a:2,why:'play 接了宾语 football → 主谓宾（after school 是时间状语）。'},
+ {cat:'系动词家族',q:'下列哪个是"五感"系动词？',opts:['smell','keep','become'],a:0,why:'smell 闻起来，属五感；keep 保持家族；become 变化家族。'},
+ {cat:'系动词家族',q:'"变得"家族（变化系动词）有哪四个？',opts:['get/become/turn/grow','look/sound/smell/taste','keep/stay/seem/be'],a:0,why:'变化四兄弟：get/become/turn/grow。'},
+ {cat:'系动词用法',q:'The flowers smell ___.',opts:['sweet','sweetly','sweeter to'],a:0,why:'系动词后接形容词 sweet，不接副词。'},
+ {cat:'系动词用法',q:'He ___ a teacher last year.（变成了老师）',opts:['became','was become','becomed'],a:0,why:'become 的过去式是 became（不规则）。'},
+ {cat:'句型判断',q:'She is a clever girl.',opts:['主谓','主系表','主谓宾'],a:1,why:'is 是系动词，a clever girl 是表语 → 主系表。'},
+ {cat:'翻译',q:'"汤尝起来很美味。"',opts:['The soup tastes good.','The soup tastes well.','The soup is taste good.'],a:0,why:'taste+形容词 good；is+taste 是病句。'},
+ {cat:'翻译',q:'"我喜欢英语。"',opts:['I like English.','I am like English.','I likes English.'],a:0,why:'主谓宾：I like English. 第一人称不加 s，也不加 be。'}
+];
+/* ============ 基础 ============ */
+const app=document.getElementById('app');
+let soundOn=localStorage.getItem('study:kenton:ui-sound')!=='0';
+let S=load();
+function load(){try{const s=JSON.parse(localStorage.getItem(STORAGE_KEY));if(s&&s.v===VERSION)return s}catch(e){}
+ return {v:VERSION,done:{},attempts:[],wrong:{},created:Date.now()};}
+function save(){localStorage.setItem(STORAGE_KEY,JSON.stringify(S));}
+function recordAttempt(kind,key,ok){S.attempts.push({t:Date.now(),kind,key,ok});if(!ok){S.wrong[key]=(S.wrong[key]||0)+1}else if(S.wrong[key]){S.wrong[key]=0}save();}
+function el(html){app.innerHTML=html;window.scrollTo(0,0);}
+function tone(k){if(!soundOn)return;try{const c=new (window.AudioContext||window.webkitAudioContext)();const o=c.createOscillator();const g=c.createGain();o.connect(g);g.connect(c.destination);o.frequency.value=k==='ok'?660:220;g.gain.value=.08;o.start();setTimeout(()=>{o.stop();c.close()},k==='ok'?120:220)}catch(e){}}
+function playFile(fn,rate){const a=new Audio(AUDIO_DIR+fn);a.playbackRate=rate||1;const p=a.play();if(p&&p.catch)p.catch(()=>{});}
+function shuffled(arr){const a=arr.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));const t=a[i];a[i]=a[j];a[j]=t;}return a;}
+/* ============ 页面 ============ */
+function go(m){({home,teach,links,sort,trans,recall,quiz,records}[m]||home)();}
+function head(tag,title,sub,back){
+ return (back?'<button class="pill" onclick="go(\'home\')" style="margin-bottom:10px">←</button>':'')
+ +'<div class="card"><span class="tag">'+tag+'</span><h2>'+title+'</h2>'
+ +(sub?'<div class="sub">'+sub+'</div>':'')+'</div>';
+}
+function home(){
+ const d=Object.keys(S.done).filter(function(k){return S.done[k]}).length;
+ el('<div class="card"><span class="tag">今日新授 · 英语三种基本句型</span>'
+ +'<h1>⚔️ 句型三剑客</h1>'
+ +'<div class="sub">再长的句子，骨架只有三种：<b>主谓、主系表、主谓宾</b>。今天认识三剑客，找到连接"主系表"的那座桥——<b>系动词</b>（明天就要默写！）。</div>'
+ +'<div class="sword-row">'
+ +'<div class="scard s1"><b>🗡️ 大剑客 · 主谓</b>主语 + 谓语：The sun <span style="border-bottom:2px solid">rises</span>.</div>'
+ +'<div class="scard s2"><b>🗡️ 二剑客 · 主系表</b>主语 + 系动词 + 表语：The cake <span style="border-bottom:2px solid">smells</span> nice.</div>'
+ +'<div class="scard s3"><b>🗡️ 三剑客 · 主谓宾</b>主语 + 谓语 + 宾语：I <span style="border-bottom:2px solid">like</span> English.</div>'
+ +'</div>'
+ +'<button class="btn btn-teal" onclick="go(\'teach\')">认识三剑客 →</button>'
+ +'<div class="steps"><div class="step"><b>1</b>学句型</div><div class="step"><b>2</b>系动词</div><div class="step"><b>3</b>分拣句</div><div class="step"><b>4</b>翻译</div><div class="step"><b>5</b>闯关</div></div>'
+ +'<div class="note">⚠️ 明天默写系动词！第 2 站"系动词四大家族"就是默写范围，今天务必过两遍。</div>'
+ +'<div class="voice-note">🔊 音频待验收（手机）：句型与系动词用统一预录音，首次播放前请先点任意按钮解锁声音。</div>'
+ +'</div>'
+ +'<div class="card"><div class="sub">完成进度 '+d+'/6</div><div class="progress"><i style="width:'+(d/6*100)+'%"></i></div>'
+ +'<div class="grid2">'
+ +'<div class="mini">📚 材料<small>'+MATERIAL+'</small></div>'
+ +'<div class="mini">🎯 目标<small>分辨三种句型 + 默出13个系动词</small></div>'
+ +'</div></div>');
+}
+function teach(){
+ el(head('第 1 站 · 三剑客登场','看骨架、听招牌句','点 🔊 听例句，注意每句的"骨架"怎么拆。',1)
+ +'<div class="card">'
+ +PATTERNS.map(function(p){
+  return '<div class="scard '+(p.id==='sv'?'s1':p.id==='svc'?'s2':'s3')+'" style="margin-bottom:12px">'
+  +'<b>'+p.name+'</b>'+p.rule
+  +'<div class="sentence">'+p.hero+'<div style="font-size:13px;font-weight:600;color:#7a7690">'+p.cn+'</div></div>'
+  +'<button class="btn btn-soft" style="margin-top:8px;padding:10px" onclick="playFile(\''+p.audio+'\')">🔊 听招牌句</button>'
+  +'</div>';}).join('')
+ +'<div class="owl" style="background:#e0f5f5;border-radius:14px;padding:12px;font-size:13.5px;line-height:1.8">💡 辨认口诀：先看动词——后面<b>接了宾语</b>→主谓宾；动词是<b>系动词</b>（be/感官/变化/保持）→主系表；动词<b>自己站得住</b>→主谓。</div>'
+ +'<button class="btn btn-teal" onclick="finishStage(\'teach\');go(\'links\')">去见系动词四大家族 →</button>'
+ +'</div>');
+}
+let linkQueue=[],linkOk=0;
+function links(){linkQueue=shuffled(LINKS);linkOk=0;linkCard();}
+function linkCard(){
+ if(linkQueue.length===0){
+  finishStage('links');
+  el(head('第 2 站 · 系动词四大家族',null,null,1)
+  +'<div class="card" style="text-align:center"><div class="big">🌉</div>'
+  +'<div class="big" style="font-size:24px;margin-top:8px">13 个系动词归队完成！</div>'
+  +'<div class="sub" style="margin-top:8px">答对 '+linkOk+' / '+LINKS.length+'。明天默写就考它们：<b>be / look / sound / smell / taste / feel / get / become / turn / grow / keep / stay / seem</b>，睡前再听一遍！</div>'
+  +'<button class="btn btn-soft" onclick="linkListenAll()">🔊 从头听一遍（默写磨耳朵）</button>'
+  +'<button class="btn btn-teal" onclick="go(\'sort\')">去分拣句子 →</button></div>');
+  return;
+ }
+ const cur=linkQueue[0];
+ const doneN=LINKS.length-linkQueue.length;
+ el(head('第 2 站 · 系动词四大家族','第 '+(doneN+1)+' / '+LINKS.length+' 个 · 明天默写范围，认祖归宗',null,1)
+ +'<div class="card">'
+ +'<div class="sig-word">'+cur.w+'<div style="font-size:13px;font-weight:600;color:#8a8496;margin-top:4px">'+cur.cn+'</div></div>'
+ +'<button class="btn btn-soft" style="padding:10px" onclick="playFile(\''+cur.audio+'\')">🔊 听发音</button>'
+ +'<div class="bin-grid">'
+ +'<button class="bin b1" onclick="linkPick(\'be\')">👑 be 家族<small>就它自己</small></button>'
+ +'<button class="bin b2" onclick="linkPick(\'sense\')">👃 五感家族<small>看听闻尝摸</small></button>'
+ +'<button class="bin b3" onclick="linkPick(\'change\')">🦋 变化家族<small>变得…</small></button>'
+ +'<button class="bin b4" onclick="linkPick(\'stay\')">🗿 保持家族<small>保持/似乎</small></button>'
+ +'</div>'
+ +'<div class="fb" id="lfb"></div>'
+ +'<button class="btn btn-teal hidden" id="lnext" onclick="linkNext()">下一个 →</button>'
+ +'</div>'
+ +'<div class="progress"><i style="width:'+(doneN/LINKS.length*100)+'%"></i></div>');
+}
+window.linkPick=function(k){
+ const cur=linkQueue[0];const ok=k===cur.fam;
+ const fb=document.getElementById('lfb');
+ if(ok){linkOk++;tone('ok');fb.className='fb ok';fb.textContent='✅ 对！'+cur.w+'（'+cur.cn+'）→ '+FAMS[cur.fam].name+'。';}
+ else{tone('no');fb.className='fb no';fb.textContent='💡 '+cur.w+' 属于「'+FAMS[cur.fam].name+'」。记住：'+FAMS[cur.fam].sub+'。';}
+ recordAttempt('link',cur.w,ok);
+ document.querySelectorAll('.bin').forEach(function(b){b.style.pointerEvents='none';});
+ document.getElementById('lnext').classList.remove('hidden');
+};
+window.linkNext=function(){linkQueue.shift();linkCard();};
+window.linkListenAll=function(){
+ let i=0;
+ function next(){if(i>=LINKS.length)return;playFile(LINKS[i].audio);i++;setTimeout(next,1300);}
+ next();
+};
+let sQueue=[],sOk=0,sLock=false;
+function sort(){sQueue=shuffled(SORTS);sOk=0;sortCard();}
+function sortCard(){
+ if(sQueue.length===0){
+  finishStage('sort');
+  el(head('第 3 站 · 句型分拣台',null,null,1)
+  +'<div class="card" style="text-align:center"><div class="big">⚔️</div>'
+  +'<div class="big" style="font-size:24px;margin-top:8px">分拣完成 '+sOk+' / '+SORTS.length+'</div>'
+  +'<div class="sub" style="margin-top:8px">'+(sOk>=7?'三剑客都被你认出来啦！':'错的句子回第 1 站再看看骨架。')+'</div>'
+  +'<button class="btn btn-teal" onclick="go(\'trans\')">去翻译小火车 →</button></div>');
+  return;
+ }
+ const cur=sQueue[0];
+ const doneN=SORTS.length-sQueue.length;
+ el(head('第 3 站 · 句型分拣台','第 '+(doneN+1)+' / '+SORTS.length+' 句 · 这句的骨架是什么？',null,1)
+ +'<div class="card">'
+ +'<div class="sentence" style="background:#f6fbff;border:1.5px solid #dbeafe">'+cur.s+'</div>'
+ +'<button class="opt" onclick="sortPick(\'sv\')"><span class="k">🗡</span>主谓（主语+谓语）</button>'
+ +'<button class="opt" onclick="sortPick(\'svc\')"><span class="k">🗡</span>主系表（主语+系动词+表语）</button>'
+ +'<button class="opt" onclick="sortPick(\'svo\')"><span class="k">🗡</span>主谓宾（主语+谓语+宾语）</button>'
+ +'<div class="fb" id="sfb"></div>'
+ +'<button class="btn btn-teal hidden" id="snext" onclick="sortNext()">下一句 →</button>'
+ +'</div>');
+}
+window.sortPick=function(k){
+ const cur=sQueue[0];const ok=k===cur.p;
+ const fb=document.getElementById('sfb');
+ if(ok){sOk++;tone('ok');fb.className='fb ok';fb.textContent='✅ '+cur.why;}
+ else{tone('no');fb.className='fb no';fb.textContent='💡 这是「'+(cur.p==='sv'?'主谓':cur.p==='svc'?'主系表':'主谓宾')+'」。'+cur.why;}
+ recordAttempt('sort',cur.s,ok);
+ document.querySelectorAll('.opt').forEach(function(b){b.style.pointerEvents='none';});
+ document.getElementById('snext').classList.remove('hidden');
+};
+window.sortNext=function(){sQueue.shift();sortCard();};
+let tIdx=0,tOk=0,tLock=false;
+function trans(){tIdx=0;tOk=0;transCard();}
+function transCard(){
+ if(tIdx>=TRANS.length){
+  finishStage('trans');
+  el(head('第 4 站 · 翻译小火车',null,null,1)
+  +'<div class="card" style="text-align:center"><div class="big">🚂</div>'
+  +'<div class="big" style="font-size:24px;margin-top:8px">翻译 '+tOk+' / '+TRANS.length+' 句</div>'
+  +'<div class="sub" style="margin-top:8px">回家作业是句型卷子翻译——就用今天的口诀：先定句型，再动笔。</div>'
+  +'<button class="btn btn-teal" onclick="go(\'recall\')">去回忆屋 →</button></div>');
+  return;
+ }
+ const t=TRANS[tIdx];tLock=false;
+ const order=shuffled([0,1,2]);
+ el(head('第 4 站 · 翻译小火车','第 '+(tIdx+1)+' / '+TRANS.length+' 句 · 呼应今天的翻译作业',null,1)
+ +'<div class="card">'
+ +'<div class="sig-word" style="font-size:19px">'+t.cn+'</div>'
+ +'<div class="sub" style="margin-top:8px">哪节"车厢"是对的？</div>'
+ +order.map(function(oi){
+   return '<button class="opt" id="topt'+oi+'" onclick="transPick('+oi+')"><span class="k">'+'ABC'[order.indexOf(oi)]+'</span>'+t.opts[oi]+'</button>';}).join('')
+ +'<div class="fb" id="tfb"></div>'
+ +'<button class="btn btn-teal hidden" id="tnext" onclick="transNext()">'+(tIdx<TRANS.length-1?'下一句 →':'看成绩 →')+'</button>'
+ +'</div>');
+}
+window.transPick=function(oi){
+ if(tLock)return;tLock=true;
+ const t=TRANS[tIdx];const ok=t.opts[oi]===t.a;
+ const fb=document.getElementById('tfb');
+ document.querySelectorAll('.opt').forEach(function(b){b.style.pointerEvents='none';});
+ if(t.opts.indexOf(t.a)>=0)document.getElementById('topt'+t.opts.indexOf(t.a)).classList.add('ok');
+ if(ok){tOk++;tone('ok');fb.className='fb ok';fb.textContent='✅ '+t.why;}
+ else{document.getElementById('topt'+oi).classList.add('no');tone('no');fb.className='fb no';fb.textContent='💡 '+t.why;}
+ recordAttempt('trans',t.cn,ok);
+ document.getElementById('tnext').classList.remove('hidden');
+};
+window.transNext=function(){tIdx++;transCard();};
+function recall(){
+ el(head('第 5 站 · 遮挡回忆','先说答案，再点开核对；可以反复翻回',null,1)
+ +'<div class="card">'+RECALL.map(function(c,i){
+  return '<div class="recall-card" id="rc'+i+'"><div class="q">'+(i+1)+'. '+c.q+'</div>'
+  +'<div class="tap" onclick="document.getElementById(\'rc'+i+'\').classList.toggle(\'open\')">先自己说，再点开 👆</div>'
+  +'<div class="a">'+c.a+'</div></div>';}).join('')
+ +'<button class="btn btn-teal" onclick="finishStage(\'recall\');go(\'quiz\')">回忆完成，去闯关 →</button></div>');
+}
+let qIdx=0,qScore=0,qLock=false;
+function quiz(){qIdx=0;qScore=0;quizCard();}
+function quizCard(){
+ const q=QUIZ[qIdx];qLock=false;
+ el(head('独立闯关','第 '+(qIdx+1)+' / '+QUIZ.length+' 题 · 不看提示，独立作答',null,1)
+ +'<div class="card"><span class="tag">'+q.cat+'</span>'
+ +'<div style="font-size:19px;font-weight:800;line-height:1.8;margin-top:4px">'+q.q+'</div>'
+ +q.opts.map(function(o,i){return '<button class="opt" id="opt'+i+'" onclick="answer('+i+')"><span class="k">'+'ABC'[i]+'</span>'+o+'</button>';}).join('')
+ +'<div class="fb" id="qfb"></div>'
+ +'<button class="btn btn-teal hidden" id="qnext" onclick="quizNext()">'+(qIdx<QUIZ.length-1?'下一题 →':'看成绩单 →')+'</button>'
+ +'</div>');
+}
+window.answer=function(i){
+ if(qLock)return;qLock=true;
+ const q=QUIZ[qIdx];const ok=i===q.a;
+ document.getElementById('opt'+q.a).classList.add('ok');
+ const fb=document.getElementById('qfb');
+ if(ok){qScore++;tone('ok');fb.className='fb ok';fb.textContent='✅ '+q.why;}
+ else{document.getElementById('opt'+i).classList.add('no');tone('no');fb.className='fb no';fb.textContent='💡 '+q.why;}
+ recordAttempt('quiz',q.q,ok);
+ document.getElementById('qnext').classList.remove('hidden');
+};
+window.quizNext=function(){
+ if(qIdx<QUIZ.length-1){qIdx++;quizCard();return;}
+ finishStage('quiz');
+ const pct=Math.round(qScore/QUIZ.length*100);
+ el(head('闯关成绩',null,null,1)
+ +'<div class="card" style="text-align:center">'
+ +'<div class="big">'+(pct>=80?'🏆':pct>=60?'💪':'📖')+'</div>'
+ +'<div class="big" style="font-size:26px;margin-top:8px">'+qScore+' / '+QUIZ.length+' 题</div>'
+ +'<div class="sub" style="margin-top:8px">'+(pct>=80?'句型三剑客正式归队！睡前记得把 13 个系动词再听一遍，明天默写稳了。':'错题已记进学习档案，回"系动词四大家族"和"分拣台"再练一轮。')+'</div>'
+ +'<div class="taprow"><button class="btn btn-soft" onclick="go(\'home\')">回首页</button>'
+ +'<button class="btn btn-teal" onclick="go(\'links\')">再背系动词</button></div>'
+ +'</div>');
+};
+function finishStage(k){S.done[k]=true;save();}
+window.finishStage=finishStage;
+function records(){
+ const okN=S.attempts.filter(function(a){return a.ok}).length;
+ const rows=S.attempts.slice(-30).reverse().map(function(a){
+  return '<div style="font-size:12.5px;padding:7px 0;border-bottom:1px dashed var(--line)">'+(a.ok?'✅':'❌')+' ['+a.kind+'] '+a.key+'<span style="color:#9a94b0"> · '+new Date(a.t).toLocaleString('zh-CN',{hour12:false})+'</span></div>';}).join('');
+ el(head('学习档案','本次练习记录','',1)
+ +'<div class="card">'
+ +'<div class="sub">完成环节：'+(Object.keys(S.done).filter(function(k){return S.done[k]}).join('、')||'（暂无）')+'</div>'
+ +'<div class="sub" style="margin-top:6px">总作答：'+S.attempts.length+' 次 · 正确 '+okN+' 次</div>'
+ +'<div style="margin-top:10px">'+(rows||'<div class="sub">还没有作答记录。</div>')+'</div>'
+ +'<div class="taprow"><button class="btn btn-soft" onclick="dlJson()">导出 JSON</button>'
+ +'<button class="btn btn-soft" onclick="dlMd()">导出 Markdown</button></div>'
+ +'</div>');
+}
+function dl(name,text,type){const b=new Blob([text],{type});const u=URL.createObjectURL(b);const a=document.createElement('a');a.href=u;a.download=name;a.click();URL.revokeObjectURL(u);}
+window.dlJson=function(){dl('kenton-sentence-patterns-record.json',JSON.stringify({app:APP_ID,material:MATERIAL,exported:new Date().toISOString(),state:S},null,1),'application/json');};
+window.dlMd=function(){
+ let md='# Kenton 基本句型学习记录\n\n- 材料：'+MATERIAL+'\n- 作答：'+S.attempts.length+' 次，正确 '+S.attempts.filter(function(a){return a.ok}).length+' 次\n\n| 时间 | 环节 | 内容 | 结果 |\n|---|---|---|---|\n';
+ S.attempts.forEach(function(a){md+='| '+new Date(a.t).toLocaleString('zh-CN',{hour12:false})+' | '+a.kind+' | '+a.key+' | '+(a.ok?'对':'错')+' |\n';});
+ dl('kenton-sentence-patterns-report.md',md,'text/markdown');
+};
+document.getElementById('soundToggle').addEventListener('click',function(){soundOn=!soundOn;localStorage.setItem('study:kenton:ui-sound',soundOn?'1':'0');this.textContent=soundOn?'声':'静';if(soundOn)tone('ok');});
+document.getElementById('soundToggle').textContent=soundOn?'声':'静';
+Object.assign(window,{go,playFile});
+home();
+})();
+</script>
+</body>
+</html>

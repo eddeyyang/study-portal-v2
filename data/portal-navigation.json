@@ -1,0 +1,575 @@
+{
+  "schemaVersion": 1,
+  "updated": "2026-10-12",
+  "timeZone": "Asia/Shanghai",
+  "currentTerm": {
+    "id": "2026-autumn",
+    "label": "2026 秋季学期",
+    "start": "2026-09-01",
+    "end": "2027-02-28"
+  },
+  "periods": [
+    {
+      "id": "2026-autumn",
+      "label": "本学期"
+    },
+    {
+      "id": "2026-summer",
+      "label": "暑假"
+    },
+    {
+      "id": "earlier",
+      "label": "以前的内容"
+    },
+    {
+      "id": "exam",
+      "label": "备考归档"
+    },
+    {
+      "id": "2026-travel",
+      "label": "旅行学习归档"
+    }
+  ],
+  "subjects": [
+    {
+      "id": "chinese",
+      "label": "语文",
+      "tagline": "读进去，也能讲出来",
+      "art": "book"
+    },
+    {
+      "id": "math",
+      "label": "数学",
+      "tagline": "把数量与关系看明白",
+      "art": "shapes"
+    },
+    {
+      "id": "english",
+      "label": "英语",
+      "tagline": "听、说、读、写，一起练",
+      "art": "words"
+    },
+    {
+      "id": "coding",
+      "label": "编程",
+      "tagline": "看代码怎样一步步运行",
+      "art": "code"
+    },
+    {
+      "id": "explore",
+      "label": "探索与实践",
+      "tagline": "无人机、AI 与综合练习",
+      "art": "orbit"
+    }
+  ],
+  "unavailableFiles": [
+    "apps/news_20260722.html",
+    "apps/news_20260720.html",
+    "apps/news_20260716.html",
+    "apps/news_20260715.html",
+    "apps/news_20260714.html",
+    "apps/news_20260713.html",
+    "apps/news_20260711.html",
+    "apps/news_20260710.html",
+    "apps/news_20260709.html",
+    "apps/news_20260708.html",
+    "apps/news_20260707.html",
+    "apps/news_20260706.html",
+    "apps/news_20260703.html",
+    "apps/news_20260702.html",
+    "apps/news_20260701.html",
+    "apps/news_20260630.html",
+    "apps/news_20260629.html",
+    "apps/news_20260628.html",
+    "apps/news_20260627.html",
+    "apps/news_20260626.html",
+    "apps/news_20260625.html",
+    "apps/news_20260624.html",
+    "apps/news_20260623.html",
+    "apps/hetao_coding_l3-1_l3-2.html",
+    "apps/hetao_coding_l2-4_l3-1.html",
+    "apps/hetao_coding_l2-3_l2-4.html"
+  ],
+  "overrides": {
+    "apps/cpp_hub.html": {
+      "state": "active",
+      "period": "2026-autumn",
+      "kind": "hub",
+      "group": "lessons",
+      "displayTitle": "C++ 课程目录",
+      "summary": "核桃与小码王分开找，备考资料放在归档"
+    },
+    "apps/drone_hub.html": {
+      "state": "archive",
+      "period": "exam",
+      "kind": "hub",
+      "displayTitle": "无人机备考目录"
+    },
+    "apps/kenton_cpp_breakthrough_20260908.html": {
+      "state": "archive",
+      "period": "exam",
+      "displayTitle": "代码考前短练"
+    },
+    "apps/eddey_cpp_score_notes_20260907.html": {
+      "state": "archive",
+      "period": "exam",
+      "displayTitle": "代码考前笔记"
+    },
+    "apps/eddey_cpp_gesp_repair_lab_20260831.html": {
+      "state": "archive",
+      "period": "exam",
+      "displayTitle": "GESP 错题修复"
+    },
+    "apps/hetao_ctl_prep_20260815.html": {
+      "state": "archive",
+      "period": "exam",
+      "displayTitle": "CTL 考前练习"
+    },
+    "apps/drone_l1_exam_sprint_20260826.html": {
+      "state": "archive",
+      "period": "exam",
+      "displayTitle": "无人机考前练习"
+    },
+    "apps/kenton_vocabulary_workshop_20260903.html": {
+      "state": "active",
+      "period": "2026-autumn",
+      "displayTitle": "本周单词工坊",
+      "summary": "听清发音，自己拼出每个单词",
+      "group": "words"
+    },
+    "apps/eddey_vocabulary_workshop_20260903.html": {
+      "state": "active",
+      "period": "2026-autumn",
+      "displayTitle": "本周单词工坊",
+      "summary": "听清发音，自己拼出每个单词",
+      "group": "words"
+    },
+    "apps/eddey_english_school_rhyme_20260907.html": {
+      "state": "active",
+      "period": "2026-autumn",
+      "displayTitle": "校园背诵地图",
+      "summary": "跟着线索，背出 I like my school",
+      "group": "reading"
+    },
+    "apps/eddey_chinese_guanchao_preview_20260901.html": {
+      "state": "active",
+      "period": "2026-autumn",
+      "displayTitle": "《观潮》江潮镜头台",
+      "summary": "看潮水怎样变化，找出描写线索",
+      "group": "reading"
+    },
+    "apps/kenton_math_g5_u1_textbook_complete_20260901.html": {
+      "state": "active",
+      "period": "2026-autumn",
+      "displayTitle": "小数的乘法与除法",
+      "summary": "五上第一单元 · 按书学习与练习",
+      "group": "units"
+    },
+    "apps/eddey_math_g4_u1_textbook_complete_20260901.html": {
+      "state": "active",
+      "period": "2026-autumn",
+      "displayTitle": "运算关系与运算律",
+      "summary": "四上第一单元 · 按书学习与练习",
+      "group": "units"
+    },
+    "apps/kenton_math_gold_g5u1.html": {
+      "state": "archive",
+      "period": "earlier",
+      "displayTitle": "小数乘除 · 旧版练习",
+      "group": "units"
+    },
+    "apps/eddey_math_gold_g4u1.html": {
+      "state": "archive",
+      "period": "earlier",
+      "displayTitle": "运算关系 · 旧版练习",
+      "group": "units"
+    },
+    "apps/eddey_math_g4_u1_week1_20260901.html": {
+      "state": "archive",
+      "period": "earlier",
+      "displayTitle": "运算关系反推机 · 旧版",
+      "group": "units"
+    },
+    "apps/math_gold_hub.html": {
+      "state": "active",
+      "period": "2026-autumn",
+      "kind": "hub",
+      "displayTitle": "金牌数学 · 单元目录",
+      "summary": "按教材单元找课，查看单元学习进度",
+      "group": "units"
+    },
+    "apps/kenton_math_gold_g5u2.html": {
+      "state": "active",
+      "period": "2026-autumn",
+      "displayTitle": "小数的应用",
+      "summary": "五上第二单元",
+      "group": "units"
+    },
+    "apps/kenton_math_gold_g5u3.html": {
+      "state": "active",
+      "period": "2026-autumn",
+      "displayTitle": "平均数",
+      "summary": "五上第三单元",
+      "group": "units"
+    },
+    "apps/eddey_math_gold_g4u2.html": {
+      "state": "active",
+      "period": "2026-autumn",
+      "displayTitle": "四面八方的学问",
+      "summary": "四上第二单元",
+      "group": "units"
+    },
+    "apps/eddey_math_gold_g4u3.html": {
+      "state": "active",
+      "period": "2026-autumn",
+      "displayTitle": "整数的四则运算与应用题",
+      "summary": "四上第三单元",
+      "group": "units"
+    },
+    "apps/eddey_math_gold_g4u4.html": {
+      "state": "active",
+      "period": "2026-autumn",
+      "displayTitle": "大数的认识与改写",
+      "summary": "四上第四单元",
+      "group": "units"
+    },
+    "apps/travel_learning_director_20260916.html": {
+      "state": "archive",
+      "period": "2026-travel"
+    },
+    "apps/kenton_chinese_preview_20260915.html": {
+      "state": "archive",
+      "period": "2026-travel"
+    },
+    "apps/eddey_chinese_preview_20260915.html": {
+      "state": "archive",
+      "period": "2026-travel"
+    },
+    "apps/kenton_math_catchup_20260916.html": {
+      "state": "archive",
+      "period": "2026-travel"
+    },
+    "apps/eddey_math_catchup_20260916.html": {
+      "state": "archive",
+      "period": "2026-travel"
+    }
+  },
+  "supplemental": [
+    {
+      "child": "both",
+      "subject": "数学",
+      "title": "计算技法大通关 · 暑假探索馆",
+      "file": "apps/calc_datongguan.html",
+      "added": null,
+      "navigation": {
+        "period": "2026-summer",
+        "state": "archive",
+        "kind": "hub",
+        "group": "calculation"
+      }
+    },
+    {
+      "child": "both",
+      "subject": "编程",
+      "title": "C++ 学习馆",
+      "file": "apps/cpp_hub.html",
+      "added": null,
+      "navigation": {
+        "period": "earlier",
+        "state": "archive",
+        "kind": "hub",
+        "group": "lessons"
+      }
+    },
+    {
+      "child": "both",
+      "subject": "无人机",
+      "title": "无人机馆 · 考级通关基地",
+      "file": "apps/drone_hub.html",
+      "added": null,
+      "navigation": {
+        "period": "earlier",
+        "state": "archive",
+        "kind": "hub",
+        "group": "lessons"
+      }
+    },
+    {
+      "child": "eddey",
+      "subject": "数学",
+      "title": "计算技法大通关（11 馆）",
+      "file": "apps/eddey_calc_datongguan.html",
+      "added": null,
+      "navigation": {
+        "period": "2026-summer",
+        "state": "archive",
+        "kind": "lesson",
+        "group": "calculation"
+      }
+    },
+    {
+      "child": "eddey",
+      "subject": "数学",
+      "title": "计算技法大通关（技巧篇速算 10 馆）",
+      "file": "apps/eddey_calc_skills.html",
+      "added": null,
+      "navigation": {
+        "period": "2026-summer",
+        "state": "archive",
+        "kind": "lesson",
+        "group": "calculation"
+      }
+    },
+    {
+      "child": "eddey",
+      "subject": "数学",
+      "title": "运算关系反推机",
+      "file": "apps/eddey_math_g4_u1_week1_20260901.html",
+      "added": null,
+      "navigation": {
+        "period": "earlier",
+        "state": "archive",
+        "kind": "lesson",
+        "group": "lessons"
+      }
+    },
+    {
+      "child": "eddey",
+      "subject": "英语",
+      "title": "句子变身乐园 · 祈使句与感叹句",
+      "file": "apps/eddey_sentence_moods_lab_20260722.html",
+      "added": null,
+      "navigation": {
+        "period": "earlier",
+        "state": "archive",
+        "kind": "lesson",
+        "group": "lessons"
+      }
+    },
+    {
+      "child": "eddey",
+      "subject": "综合",
+      "title": "暑假生活 · 页码老师",
+      "file": "apps/eddey_summer_life_tutor.html",
+      "added": null,
+      "navigation": {
+        "period": "2026-summer",
+        "state": "archive",
+        "kind": "lesson",
+        "group": "lessons"
+      }
+    },
+    {
+      "child": "eddey",
+      "subject": "英语",
+      "title": "There be 句型变形实验室",
+      "file": "apps/eddey_therebe_sentence_lab.html",
+      "added": null,
+      "navigation": {
+        "period": "earlier",
+        "state": "archive",
+        "kind": "lesson",
+        "group": "lessons"
+      }
+    },
+    {
+      "child": "both",
+      "subject": "编程",
+      "title": "核桃 L2-4 预习 · 赋值语句 & 变量运算",
+      "file": "apps/hetao_coding_l2-4_preview.html",
+      "added": null,
+      "navigation": {
+        "period": "earlier",
+        "state": "archive",
+        "kind": "lesson",
+        "group": "lessons"
+      }
+    },
+    {
+      "child": "both",
+      "subject": "编程",
+      "title": "核桃 L3-1 复习 · 找最大值擂台赛",
+      "file": "apps/hetao_coding_l3-1_review.html",
+      "added": null,
+      "navigation": {
+        "period": "earlier",
+        "state": "archive",
+        "kind": "lesson",
+        "group": "lessons"
+      }
+    },
+    {
+      "child": "both",
+      "subject": "编程",
+      "title": "核桃 L3-2 复习 · 循环嵌套实验室",
+      "file": "apps/hetao_coding_l3-2_review.html",
+      "added": null,
+      "navigation": {
+        "period": "earlier",
+        "state": "archive",
+        "kind": "lesson",
+        "group": "lessons"
+      }
+    },
+    {
+      "child": "both",
+      "subject": "编程",
+      "title": "核桃 L3-3 预习 · if嵌套探秘城堡",
+      "file": "apps/hetao_coding_l3-3_preview.html",
+      "added": null,
+      "navigation": {
+        "period": "earlier",
+        "state": "archive",
+        "kind": "lesson",
+        "group": "lessons"
+      }
+    },
+    {
+      "child": "both",
+      "subject": "编程",
+      "title": "核桃 L3-3 复习 · 嵌套结构总复习实验室",
+      "file": "apps/hetao_coding_l3-3_review.html",
+      "added": null,
+      "navigation": {
+        "period": "earlier",
+        "state": "archive",
+        "kind": "lesson",
+        "group": "lessons"
+      }
+    },
+    {
+      "child": "kenton",
+      "subject": "数学",
+      "title": "计算技法大通关（方法篇 16 馆）",
+      "file": "apps/kenton_calc_datongguan.html",
+      "added": null,
+      "navigation": {
+        "period": "2026-summer",
+        "state": "archive",
+        "kind": "lesson",
+        "group": "calculation"
+      }
+    },
+    {
+      "child": "kenton",
+      "subject": "数学",
+      "title": "计算技法大通关（技巧篇速算 16 馆）",
+      "file": "apps/kenton_calc_skills.html",
+      "added": null,
+      "navigation": {
+        "period": "2026-summer",
+        "state": "archive",
+        "kind": "lesson",
+        "group": "calculation"
+      }
+    },
+    {
+      "child": "kenton",
+      "subject": "英语",
+      "title": "哥哥英语 · 状语从句时光机",
+      "file": "apps/kenton_english_clause_lab.html",
+      "added": null,
+      "navigation": {
+        "period": "earlier",
+        "state": "archive",
+        "kind": "lesson",
+        "group": "lessons"
+      }
+    },
+    {
+      "child": "kenton",
+      "subject": "英语",
+      "title": "暑假课外英语学习馆",
+      "file": "apps/kenton_english_hub.html",
+      "added": null,
+      "navigation": {
+        "period": "earlier",
+        "state": "archive",
+        "kind": "hub",
+        "group": "lessons"
+      }
+    },
+    {
+      "child": "kenton",
+      "subject": "英语",
+      "title": "哥哥英语 · 从句与数词学习馆",
+      "file": "apps/kenton_english_monday_lab.html",
+      "added": null,
+      "navigation": {
+        "period": "earlier",
+        "state": "archive",
+        "kind": "lesson",
+        "group": "lessons"
+      }
+    },
+    {
+      "child": "kenton",
+      "subject": "英语",
+      "title": "英语 · 被动语态白板与课本实验室",
+      "file": "apps/kenton_passive_voice_class_20260721.html",
+      "added": null,
+      "navigation": {
+        "period": "earlier",
+        "state": "archive",
+        "kind": "lesson",
+        "group": "lessons"
+      }
+    },
+    {
+      "child": "kenton",
+      "subject": "英语",
+      "title": "虚拟语气与不规则动词 91—136",
+      "file": "apps/kenton_subjunctive_verbs_91_136.html",
+      "added": null,
+      "navigation": {
+        "period": "earlier",
+        "state": "archive",
+        "kind": "lesson",
+        "group": "lessons"
+      }
+    },
+    {
+      "child": "kenton",
+      "subject": "英语",
+      "title": "哥哥英语 · 不规则动词变形实验室",
+      "file": "apps/kenton_verb_lab.html",
+      "added": null,
+      "navigation": {
+        "period": "earlier",
+        "state": "archive",
+        "kind": "lesson",
+        "group": "lessons"
+      }
+    },
+    {
+      "child": "both",
+      "subject": "英语",
+      "title": "暑假英语学习馆 · Kenton & Eddey",
+      "file": "apps/summer_english_hub.html",
+      "added": null,
+      "navigation": {
+        "period": "2026-summer",
+        "state": "archive",
+        "kind": "hub",
+        "group": "lessons"
+      }
+    }
+  ],
+  "archiveLinks": [
+    {
+      "title": "暑假整体计划",
+      "file": "summer.html",
+      "summary": "保留当时的任务与打卡"
+    },
+    {
+      "title": "暑假每日安排",
+      "file": "summer_day.html",
+      "summary": "按日期回看原来的安排"
+    },
+    {
+      "title": "赛考备考资料",
+      "file": "exam-prep.html",
+      "summary": "GESP、CTL 等备考资料与记录"
+    }
+  ]
+}

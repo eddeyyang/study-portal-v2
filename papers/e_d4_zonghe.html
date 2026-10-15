@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eddey 三科综合冲刺 · 第4天</title>
+<style>
+  @page { size: A4; margin: 12mm 13mm; }
+  * { box-sizing: border-box; }
+  html,body { margin:0; padding:0; }
+  body{
+    font-family:"Noto Sans CJK SC","Microsoft YaHei","WenQuanYi Zen Hei",sans-serif;
+    font-size:11.8pt; line-height:1.55; color:#000; background:#fff;
+  }
+  .wrap{ max-width:780px; margin:0 auto; padding:6px 4px 30px; }
+
+  /* 卷首固定区 */
+  .head{ border:3px double #000; padding:8px 12px; margin-bottom:10px; }
+  .head h1{ font-size:16pt; margin:0 0 4px; text-align:center; letter-spacing:1px; }
+  .head .meta{ display:flex; justify-content:space-between; flex-wrap:wrap;
+               font-size:10.5pt; gap:4px 16px; }
+  .head .meta b{ font-weight:700; }
+  .fillline{ display:inline-block; min-width:90px; border-bottom:1px solid #000; }
+  .sign{ margin-top:4px; font-size:10pt; color:#000; }
+
+  /* 大题区块 */
+  .section{ border:2.5px solid #000; margin-bottom:10px; page-break-inside:avoid; }
+  .sec-bar{ display:flex; justify-content:space-between; align-items:center;
+            border-bottom:2px solid #000; padding:4px 10px; font-weight:700; }
+  .sec-bar .t{ font-size:12.5pt; }
+  .sec-bar .score{ font-size:9.8pt; font-weight:600; }
+  .sec-bar .score span{ border:1px solid #000; padding:0 6px; margin-left:4px; }
+  .sec-body{ padding:8px 12px; }
+
+  .q{ margin:5px 0; }
+  .q .n{ font-weight:700; }
+  ol.qlist{ margin:4px 0 4px 0; padding-left:22px; }
+  ol.qlist li{ margin:6px 0; }
+
+  .blank-s{ display:inline-block; min-width:130px; border-bottom:1.5px solid #000; line-height:1.2; }
+  .blank-m{ display:inline-block; min-width:200px; border-bottom:1.5px solid #000; }
+  .blank-l{ display:inline-block; min-width:320px; border-bottom:1.5px solid #000; }
+  .blank-xs{ display:inline-block; min-width:46px; border-bottom:1.5px solid #000; text-align:center; }
+
+  /* 计算书写区 */
+  .calc-grid{ display:grid; grid-template-columns:1fr 1fr; gap:2px 24px; }
+  .calc-grid .item{ padding:3px 0; }
+  .work{ height:46px; border:1px solid #999; margin-top:3px; }
+  .write-line{ height:22px; border-bottom:1px solid #999; margin:6px 0; }
+
+  /* 陷阱/易错提示框 */
+  .trap{ border:2px dashed #000; padding:6px 10px; margin:8px 0; font-size:10.6pt;
+         background:repeating-linear-gradient(45deg,#fff,#fff 6px,#eee 6px,#eee 8px); }
+  .trap b{ font-weight:800; }
+  .tag{ color:#444; font-weight:700; }
+
+  table.tbl{ border-collapse:collapse; width:100%; font-size:11pt; }
+  table.tbl td,table.tbl th{ border:1px solid #000; padding:4px 6px; text-align:center; }
+
+  .two-col{ column-count:2; column-gap:26px; }
+  .nowrap{ white-space:nowrap; }
+
+  /* 页脚 */
+  .foot{ display:flex; justify-content:space-between; font-size:8.5pt; color:#555;
+         border-top:1px solid #999; margin-top:6px; padding-top:3px; }
+
+  /* 答案页 */
+  .answers{ page-break-before:always; }
+  .answers h2{ font-size:15pt; border-bottom:2px solid #000; padding-bottom:4px; }
+  .ans-block{ margin-bottom:10px; }
+  .ans-block h3{ font-size:12pt; margin:8px 0 3px; }
+  .ans-block ol{ margin:2px 0 2px 0; padding-left:22px; }
+  .ans-block li{ margin:2px 0; }
+  .ans-block p{ margin:3px 0; }
+
+  @media print{
+    .no-print{ display:none; }
+    body{ font-size:11.5pt; }
+    .section{ page-break-inside:avoid; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- ===== 卷首 ===== -->
+  <div class="head">
+    <h1>Eddey 三科综合冲刺 · 第4天</h1>
+    <div class="meta">
+      <span><b>年级：</b>三年级下（3B）</span>
+      <span><b>学科：</b>语文 · 数学 · 英语（综合）</span>
+      <span><b>总时长：</b>35 分钟</span>
+      <span><b>总分：</b>100 分</span>
+    </div>
+    <div class="meta" style="margin-top:4px;">
+      <span><b>姓名：</b><span class="fillline">Eddey</span></span>
+      <span><b>日期：</b><span class="fillline"></span></span>
+      <span><b>用时：</b><span class="fillline"></span>分</span>
+      <span class="sign"><b>家长签字：</b><span class="fillline" style="min-width:120px;"></span></span>
+    </div>
+  </div>
+
+  <!-- ===== 第一部分 语文 ===== -->
+  <div class="section">
+    <div class="sec-bar">
+      <span class="t">一、语文（拼音 · 字词 · 短阅读）</span>
+      <span class="score">⏱ 13 分　满分 36　得分<span>&nbsp;&nbsp;&nbsp;</span></span>
+    </div>
+    <div class="sec-body">
+
+      <div class="q"><span class="n">1.</span> 看拼音写词语。（每空 1 分，共 8 分）</div>
+      <div class="two-col" style="font-size:11pt; margin:2px 0 4px;">
+        <div>(1) chūn tiān（&nbsp;<span class="blank-s"></span>&nbsp;）</div>
+        <div>(2) liǔ shù（&nbsp;<span class="blank-s"></span>&nbsp;）</div>
+        <div>(3) yàn zi（&nbsp;<span class="blank-s"></span>&nbsp;）</div>
+        <div>(4) huā duǒ（&nbsp;<span class="blank-s"></span>&nbsp;）</div>
+        <div>(5) měi lì（&nbsp;<span class="blank-s"></span>&nbsp;）</div>
+        <div>(6) kuài lè（&nbsp;<span class="blank-s"></span>&nbsp;）</div>
+        <div>(7) péng you（&nbsp;<span class="blank-s"></span>&nbsp;）</div>
+        <div>(8) qīng cǎo（&nbsp;<span class="blank-s"></span>&nbsp;）</div>
+      </div>
+
+      <div class="q"><span class="n">2.</span> 选择加点字的正确读音，在正确的后面打“√”。（每题 1 分，共 3 分）</div>
+      <ol class="qlist" style="margin-top:2px;">
+        <li><u>长</u>大：&nbsp; cháng（&nbsp;&nbsp;）&nbsp;&nbsp; zhǎng（&nbsp;&nbsp;）</li>
+        <li>快<u>乐</u>：&nbsp; lè（&nbsp;&nbsp;）&nbsp;&nbsp; yuè（&nbsp;&nbsp;）</li>
+        <li>音<u>乐</u>：&nbsp; lè（&nbsp;&nbsp;）&nbsp;&nbsp; yuè（&nbsp;&nbsp;）</li>
+      </ol>
+
+      <div class="q"><span class="n">3.</span> 照样子，写词语。（每空 1 分，共 4 分）</div>
+      <ol class="qlist" style="margin-top:2px;">
+        <li>例：绿油油 → <span class="blank-s"></span> 、 <span class="blank-s"></span></li>
+        <li>例：又大又圆 → <span class="blank-s"></span> 、 <span class="blank-s"></span></li>
+      </ol>
+
+      <div class="trap">
+        <span class="tag">【易错提醒】</span> <b>“乐”</b>是多音字：高兴时读 <b>lè</b>（快乐），音乐里读 <b>yuè</b>。<b>“燕子”</b>的“燕”下面是四点底（灬），不要漏点。
+      </div>
+
+      <div class="q"><span class="n">4.</span> 短文阅读。（共 21 分）</div>
+      <div style="border:1.5px solid #000; padding:6px 10px; margin:4px 0; font-size:11pt; line-height:1.7;">
+        　　春天来了。小河边的柳树长出了嫩绿的新叶，像小姑娘的长头发。草地上开满了黄色的、红色的小花。几只小燕子从南方飞回来了，在天空中飞来飞去，唱着好听的歌。小明和小红在草地上放风筝，他们玩得真开心。春天，真美呀！
+      </div>
+      <ol class="qlist" style="margin-top:2px;">
+        <li>这篇短文写的是哪个季节？（3 分）<span class="blank-s"></span></li>
+        <li>短文里把柳树的新叶比作（&nbsp;<span class="blank-s"></span>&nbsp;）。（4 分）</li>
+        <li>草地上的小花有哪两种颜色？（4 分）<span class="blank-s"></span> 和 <span class="blank-s"></span></li>
+        <li>小明和小红在草地上做什么？（4 分）<span class="blank-m"></span></li>
+        <li>读完短文，你觉得春天怎么样？用文中的一个词回答。（6 分）<div class="write-line"></div></li>
+      </ol>
+
+    </div>
+  </div>
+
+  <!-- ===== 第二部分 数学 ===== -->
+  <div class="section">
+    <div class="sec-bar">
+      <span class="t">二、数学（口算 · 除法 · 应用题）</span>
+      <span class="score">⏱ 14 分　满分 39　得分<span>&nbsp;&nbsp;&nbsp;</span></span>
+    </div>
+    <div class="sec-body">
+
+      <div class="q"><span class="n">5.</span> 直接写出得数（口算）。（每题 1 分，共 12 分）</div>
+      <table class="tbl" style="margin:4px 0;">
+        <tr>
+          <td>24 ÷ 6 =</td><td>56 ÷ 8 =</td><td>72 ÷ 9 =</td>
+        </tr>
+        <tr>
+          <td>40 ÷ 5 =</td><td>63 ÷ 7 =</td><td>48 ÷ 6 =</td>
+        </tr>
+        <tr>
+          <td>13 ÷ 4 =（　）……（　）</td><td>20 ÷ 3 =（　）……（　）</td><td>30 ÷ 7 =（　）……（　）</td>
+        </tr>
+        <tr>
+          <td>60 ÷ 3 =</td><td>80 ÷ 4 =</td><td>90 ÷ 3 =</td>
+        </tr>
+      </table>
+
+      <div class="trap">
+        <span class="tag">【有余数的除法想一想】</span> <b>13 ÷ 4</b>：13 颗糖平均分给 4 个小朋友，每人分 <b>3</b> 颗（4×3=12），还剩 <b>1</b> 颗，写成 <b>3……1</b>。<b>余数一定要比除数小</b>，如果余数还能再分，就说明商小了！
+      </div>
+
+      <div class="q"><span class="n">6.</span> 竖式计算（写出过程）。（每题 3 分，共 9 分）</div>
+      <div class="calc-grid">
+        <div class="item">(1) 48 ÷ 3 = <div class="work" style="height:60px;"></div></div>
+        <div class="item">(2) 65 ÷ 5 = <div class="work" style="height:60px;"></div></div>
+        <div class="item">(3) 47 ÷ 6 =（有余数，验算）<div class="work" style="height:60px;"></div></div>
+        <div class="item"></div>
+      </div>
+
+      <div class="q"><span class="n">7.</span> 解决问题（应用题）。（共 18 分，每小问 9 分）</div>
+      <div style="font-size:11pt; margin:2px 0;">
+        图书角有 96 本图书，老师要把它们平均放进 4 个书架里。
+      </div>
+      <ol class="qlist" style="margin-top:2px;">
+        <li>每个书架放多少本图书？<div class="work" style="height:50px;"></div></li>
+        <li>如果每个书架最多放 20 本，4 个书架够放这 96 本书吗？请算一算并说明。<div class="work" style="height:55px;"></div></li>
+      </ol>
+
+    </div>
+  </div>
+
+  <!-- ===== 第三部分 英语 ===== -->
+  <div class="section">
+    <div class="sec-bar">
+      <span class="t">三、英语（词汇 · 句型）Colours · Tastes · Animals &amp; Toys</span>
+      <span class="score">⏱ 8 分　满分 25　得分<span>&nbsp;&nbsp;&nbsp;</span></span>
+    </div>
+    <div class="sec-body">
+
+      <div class="q"><span class="n">8.</span> 看中文写单词。（每空 1 分，共 6 分）</div>
+      <div class="two-col" style="font-size:11pt;">
+        <div>(1) 红色的 <span class="blank-s"></span></div>
+        <div>(2) 黄色的 <span class="blank-s"></span></div>
+        <div>(3) 甜的 <span class="blank-s"></span></div>
+        <div>(4) 大象 <span class="blank-s"></span></div>
+        <div>(5) 猴子 <span class="blank-s"></span></div>
+        <div>(6) 球 <span class="blank-s"></span></div>
+      </div>
+
+      <div class="q"><span class="n">9.</span> 选择填空，把正确答案的字母写在括号里。（每题 2 分，共 8 分）</div>
+      <ol class="qlist" style="margin-top:2px;">
+        <li>The apple is <u>____</u>. It tastes sweet.（&nbsp;&nbsp;）<br>
+            A. red&nbsp;&nbsp; B. blue&nbsp;&nbsp; C. cold</li>
+        <li>—What's your favourite animal?&nbsp; —<u>____</u> favourite animal is the panda.（&nbsp;&nbsp;）<br>
+            A. My&nbsp;&nbsp; B. I&nbsp;&nbsp; C. You</li>
+        <li>I have a toy car. <u>____</u> is red.（&nbsp;&nbsp;）<br>
+            A. It&nbsp;&nbsp; B. They&nbsp;&nbsp; C. He</li>
+        <li>The lemon tastes <u>____</u>.（&nbsp;&nbsp;）<br>
+            A. sweet&nbsp;&nbsp; B. sour&nbsp;&nbsp; C. tall</li>
+      </ol>
+
+      <div class="trap">
+        <span class="tag">【句型框架】</span> 问喜好：<b>What's your favourite ___?</b> 答：<b>My favourite ___ is ___.</b> 一个东西用 <b>It</b>（It is red.），多个东西用 <b>They</b>。
+      </div>
+
+      <div class="q"><span class="n">10.</span> 连词成句（注意大小写和标点）。（每题 3 分，共 6 分）。剩 5 分计入卷面整洁。</div>
+      <ol class="qlist" style="margin-top:2px;">
+        <li>favourite&nbsp; is&nbsp; My&nbsp; animal&nbsp; the&nbsp; monkey&nbsp; (.)<div class="write-line"></div></li>
+        <li>like&nbsp; I&nbsp; toy&nbsp; my&nbsp; ball&nbsp; (.)<div class="write-line"></div></li>
+      </ol>
+
+    </div>
+  </div>
+
+  <div class="foot">
+    <span>Eddey 三科综合冲刺 · 第4天</span>
+    <span>第 1 页 / 共 2 页</span>
+    <span>姓名______　日期______</span>
+  </div>
+
+  <!-- ===== 答案页 ===== -->
+  <div class="answers">
+    <h2>参考答案（家长批改用，可不打印）</h2>
+
+    <div class="ans-block">
+      <h3>一、语文</h3>
+      <p><b>1. 看拼音写词语：</b>(1) 春天　(2) 柳树　(3) 燕子　(4) 花朵　(5) 美丽　(6) 快乐　(7) 朋友　(8) 青草</p>
+      <p><b>2. 选读音：</b>(1) 长大 → zhǎng √　(2) 快乐 → lè √　(3) 音乐 → yuè √</p>
+      <p><b>3. 照样子写词语（答案不唯一，举例）：</b></p>
+      <ol>
+        <li>ABB 式：红彤彤、白花花、亮晶晶、笑眯眯 等任写两个。</li>
+        <li>又…又…式：又香又甜、又高又大、又白又胖、又细又长 等任写两个。</li>
+      </ol>
+      <p><b>4. 短文阅读：</b></p>
+      <ol>
+        <li>春天（春季）。</li>
+        <li>（小姑娘的）长头发。</li>
+        <li>黄色 和 红色。</li>
+        <li>（在草地上）放风筝。</li>
+        <li>美（春天真美呀 / “美”）。意思对即可。</li>
+      </ol>
+    </div>
+
+    <div class="ans-block">
+      <h3>二、数学</h3>
+      <p><b>5. 口算：</b></p>
+      <ol>
+        <li>24 ÷ 6 = <b>4</b>　　56 ÷ 8 = <b>7</b>　　72 ÷ 9 = <b>8</b></li>
+        <li>40 ÷ 5 = <b>8</b>　　63 ÷ 7 = <b>9</b>　　48 ÷ 6 = <b>8</b></li>
+        <li>13 ÷ 4 = <b>3……1</b>　　20 ÷ 3 = <b>6……2</b>　　30 ÷ 7 = <b>4……2</b></li>
+        <li>60 ÷ 3 = <b>20</b>　　80 ÷ 4 = <b>20</b>　　90 ÷ 3 = <b>30</b></li>
+      </ol>
+      <p><b>6. 竖式计算：</b></p>
+      <ol>
+        <li>48 ÷ 3 = <b>16</b>（验算：16 × 3 = 48 ✓）</li>
+        <li>65 ÷ 5 = <b>13</b>（验算：13 × 5 = 65 ✓）</li>
+        <li>47 ÷ 6 = <b>7……5</b>（验算：6 × 7 + 5 = 42 + 5 = 47 ✓；余数 5 < 除数 6 ✓）</li>
+      </ol>
+      <p><b>7. 应用题：</b></p>
+      <ol>
+        <li>每个书架：96 ÷ 4 = <b>24（本）</b>　答：每个书架放 24 本图书。</li>
+        <li>每架最多 20 本，4 架最多放 20 × 4 = <b>80（本）</b>；80 &lt; 96，<b>不够放</b>。（或：每架需放 24 本，24 &gt; 20，所以不够。）</li>
+      </ol>
+    </div>
+
+    <div class="ans-block">
+      <h3>三、英语</h3>
+      <p><b>8. 看中文写单词：</b>(1) red　(2) yellow　(3) sweet　(4) elephant　(5) monkey　(6) ball</p>
+      <p><b>9. 选择填空：</b>(1) <b>A</b> (red)　(2) <b>A</b> (My)　(3) <b>A</b> (It)　(4) <b>B</b> (sour)</p>
+      <p><b>10. 连词成句：</b></p>
+      <ol>
+        <li>My favourite animal is the monkey.</li>
+        <li>I like my toy ball.</li>
+      </ol>
+    </div>
+
+    <div class="foot">
+      <span>Eddey 三科综合冲刺 · 第4天 — 参考答案</span>
+      <span>第 2 页 / 共 2 页</span>
+      <span>家长签字______</span>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

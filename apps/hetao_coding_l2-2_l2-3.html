@@ -1,0 +1,2087 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<script src="../assets/learning-sync.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>核桃 L2-2 复习 & L2-3 预习 · 听读版</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --orange-1: #FF6B35;
+  --orange-2: #FF8C42;
+  --orange-3: #FFB347;
+  --purple-1: #6B5BFF;
+  --purple-2: #8B7FFF;
+  --green-1: #4ECDC4;
+  --green-2: #5FD9D0;
+  --yellow-1: #FFD93D;
+  --pink-1: #FF6B9D;
+  --bg-warm: #FFF8F0;
+  --ink: #2D2A4A;
+  --ink-soft: #5A5775;
+  --shadow: 0 8px 32px rgba(45, 42, 74, 0.15);
+  --good: #2BB673;
+  --bad: #E64A4A;
+}
+
+html, body {
+  height: 100%;
+  font-family: "PingFang SC", "Microsoft YaHei", "Helvetica Neue", sans-serif;
+  background: linear-gradient(135deg, #FFF8F0 0%, #FFE8D6 100%);
+  color: var(--ink);
+  overflow: hidden;
+  user-select: none;
+}
+
+.topbar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: 56px;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  z-index: 100;
+  border-bottom: 2px solid rgba(255, 107, 53, 0.15);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 800;
+  font-size: 16px;
+  color: var(--orange-1);
+}
+
+.brand .logo {
+  width: 32px; height: 32px;
+  background: linear-gradient(135deg, var(--orange-1), var(--orange-2));
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 18px;
+  box-shadow: 0 4px 12px rgba(255, 107, 53, 0.4);
+}
+
+.controls { display: flex; gap: 8px; align-items: center; }
+
+.btn {
+  background: white;
+  border: 2px solid var(--orange-1);
+  color: var(--orange-1);
+  padding: 7px 12px;
+  border-radius: 12px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: inherit;
+}
+
+.btn:hover { background: var(--orange-1); color: white; transform: translateY(-2px); }
+.btn.muted { background: #ccc; border-color: #999; color: #555; }
+
+.start-overlay {
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(135deg, var(--orange-1) 0%, var(--orange-2) 50%, var(--yellow-1) 100%);
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-align: center;
+  padding: 32px;
+  transition: opacity 0.6s, visibility 0.6s;
+}
+
+.start-overlay.hidden { opacity: 0; visibility: hidden; }
+
+.start-emoji { font-size: 110px; margin-bottom: 12px; animation: float 3s ease-in-out infinite; }
+.start-title { font-size: 48px; font-weight: 900; margin-bottom: 14px; letter-spacing: -1px; }
+.start-sub { font-size: 20px; font-weight: 600; opacity: 0.95; margin-bottom: 30px; max-width: 640px; line-height: 1.6; }
+
+.start-btn {
+  background: white;
+  color: var(--orange-1);
+  border: none;
+  padding: 18px 50px;
+  border-radius: 999px;
+  font-size: 24px;
+  font-weight: 900;
+  cursor: pointer;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  transition: all 0.2s;
+  font-family: inherit;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.start-btn:hover { transform: scale(1.05); }
+
+.start-tips {
+  margin-top: 28px;
+  font-size: 15px;
+  opacity: 0.88;
+  font-weight: 600;
+  line-height: 1.7;
+}
+
+.progress-bar {
+  position: fixed;
+  top: 56px;
+  left: 0; right: 0;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.5);
+  z-index: 99;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--orange-1), var(--yellow-1));
+  width: 0%;
+  transition: width 0.4s ease-out;
+  box-shadow: 0 0 12px rgba(255, 107, 53, 0.6);
+}
+
+.speech-indicator {
+  position: fixed;
+  top: 70px;
+  right: 16px;
+  background: white;
+  padding: 8px 14px;
+  border-radius: 999px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+  display: none;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--orange-1);
+  z-index: 98;
+  max-width: 70%;
+}
+
+.speech-indicator.show { display: flex; }
+
+.speech-indicator .wave { display: inline-flex; gap: 2px; align-items: center; }
+.speech-indicator .wave span {
+  width: 3px;
+  background: var(--orange-1);
+  border-radius: 2px;
+  animation: wave 1s ease-in-out infinite;
+}
+.speech-indicator .wave span:nth-child(1) { height: 10px; animation-delay: 0s; }
+.speech-indicator .wave span:nth-child(2) { height: 16px; animation-delay: 0.15s; }
+.speech-indicator .wave span:nth-child(3) { height: 12px; animation-delay: 0.3s; }
+.speech-indicator .wave span:nth-child(4) { height: 18px; animation-delay: 0.45s; }
+.speech-indicator .wave span:nth-child(5) { height: 10px; animation-delay: 0.6s; }
+
+@keyframes wave {
+  0%, 100% { transform: scaleY(0.5); }
+  50% { transform: scaleY(1); }
+}
+
+.stage {
+  position: fixed;
+  top: 62px; left: 0;
+  right: 0; bottom: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.slide {
+  position: absolute;
+  width: 100%;
+  max-width: 1100px;
+  height: 100%;
+  max-height: 720px;
+  background: white;
+  border-radius: 32px;
+  box-shadow: var(--shadow);
+  padding: 30px 42px;
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  transform: translateY(40px) scale(0.96);
+  transition: opacity 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.slide.active {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+
+.slide-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  flex-shrink: 0;
+}
+
+.chapter-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 16px;
+  border-radius: 999px;
+  font-weight: 800;
+  font-size: 15px;
+  letter-spacing: 0.5px;
+}
+
+.tag-review {
+  background: linear-gradient(135deg, #4ECDC4, #5FD9D0);
+  color: white;
+  box-shadow: 0 4px 16px rgba(78, 205, 196, 0.35);
+}
+
+.tag-new {
+  background: linear-gradient(135deg, var(--orange-1), var(--orange-2));
+  color: white;
+  box-shadow: 0 4px 16px rgba(255, 107, 53, 0.35);
+}
+
+.tag-tip {
+  background: linear-gradient(135deg, var(--purple-1), var(--purple-2));
+  color: white;
+  box-shadow: 0 4px 16px rgba(107, 91, 255, 0.35);
+}
+
+.slide-counter {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--ink-soft);
+  background: var(--bg-warm);
+  padding: 5px 12px;
+  border-radius: 999px;
+}
+
+.slide-title {
+  font-size: 33px;
+  font-weight: 900;
+  line-height: 1.15;
+  margin-bottom: 6px;
+  background: linear-gradient(135deg, var(--ink) 0%, var(--orange-1) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.slide-subtitle {
+  font-size: 18px;
+  color: var(--ink-soft);
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+.slide-body {
+  flex: 1;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* 单词卡 */
+.word-card {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 28px;
+  align-items: center;
+}
+
+.word-left { min-width: 0; }
+
+.word-big {
+  font-family: "Georgia", serif;
+  font-size: 84px;
+  font-weight: 900;
+  color: var(--orange-1);
+  line-height: 1;
+  letter-spacing: -2px;
+  margin-bottom: 4px;
+  cursor: pointer;
+  transition: transform 0.2s;
+  display: inline-block;
+}
+
+.word-big:hover { transform: scale(1.05); }
+
+.speak-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: linear-gradient(135deg, var(--purple-1), var(--purple-2));
+  color: white;
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(107, 91, 255, 0.3);
+  margin-bottom: 12px;
+}
+
+.word-phonetic {
+  font-size: 26px;
+  color: var(--ink-soft);
+  font-weight: 400;
+  margin-bottom: 16px;
+  font-family: "Georgia", serif;
+}
+
+.word-meaning {
+  font-size: 22px;
+  line-height: 1.55;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 14px;
+}
+
+.word-meaning .pos {
+  color: var(--purple-1);
+  font-style: italic;
+  margin-right: 8px;
+  font-weight: 800;
+}
+
+.word-meaning .line { display: block; margin-bottom: 4px; }
+
+.word-phrase {
+  background: linear-gradient(135deg, #FFE8D6 0%, #FFD4A3 100%);
+  padding: 14px 18px;
+  border-radius: 14px;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--ink);
+  border-left: 6px solid var(--orange-1);
+  display: inline-block;
+}
+
+.word-phrase .label {
+  display: inline-block;
+  background: var(--orange-1);
+  color: white;
+  padding: 2px 10px;
+  border-radius: 8px;
+  font-size: 13px;
+  margin-right: 10px;
+  vertical-align: middle;
+}
+
+.word-emoji {
+  font-size: 160px;
+  text-align: center;
+  filter: drop-shadow(0 8px 24px rgba(0, 0, 0, 0.15));
+}
+
+/* 知识点卡 */
+.concept-grid { display: grid; gap: 14px; }
+
+.concept-row {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 20px;
+  align-items: center;
+  padding: 16px 20px;
+  background: var(--bg-warm);
+  border-radius: 18px;
+  border-left: 6px solid var(--orange-1);
+  font-size: 19px;
+}
+
+.concept-row.alt { border-left-color: var(--purple-1); background: #F0EEFF; }
+.concept-row.alt2 { border-left-color: var(--green-1); background: #E8FAF8; }
+
+.concept-icon { font-size: 38px; flex-shrink: 0; }
+.concept-text { font-weight: 600; line-height: 1.5; }
+.concept-text strong { color: var(--orange-1); font-weight: 900; }
+.concept-row.alt .concept-text strong { color: var(--purple-1); }
+.concept-row.alt2 .concept-text strong { color: var(--green-1); }
+
+/* 代码块 */
+.code-block {
+  background: #1E1B3A;
+  color: #E0E0F0;
+  border-radius: 16px;
+  padding: 20px 24px;
+  font-family: "Consolas", "Monaco", monospace;
+  font-size: 20px;
+  line-height: 1.7;
+  box-shadow: 0 8px 24px rgba(30, 27, 58, 0.3);
+  position: relative;
+  margin-bottom: 12px;
+}
+
+.code-block::before {
+  content: "● ● ●";
+  position: absolute;
+  top: 10px;
+  left: 16px;
+  color: #FF6B6B;
+  font-size: 12px;
+  letter-spacing: 4px;
+}
+
+.code-block .code-content { margin-top: 16px; }
+
+.code-key { color: #FF6B9D; font-weight: 700; }
+.code-str { color: #FFD93D; }
+.code-num { color: #4ECDC4; }
+.code-cmt { color: #888; font-style: italic; }
+.code-var { color: #95EFFE; }
+.code-op { color: #FFB347; }
+.code-fn { color: #C5A0FF; font-weight: 700; }
+
+.code-explain {
+  background: linear-gradient(135deg, #FFF4D6 0%, #FFE8A3 100%);
+  padding: 14px 18px;
+  border-radius: 14px;
+  font-size: 17px;
+  font-weight: 600;
+  color: #5A3D00;
+  line-height: 1.6;
+  border-left: 5px solid #FFB347;
+}
+
+.code-explain .label {
+  display: inline-block;
+  background: #FFB347;
+  color: white;
+  padding: 2px 10px;
+  border-radius: 8px;
+  font-size: 12px;
+  margin-right: 8px;
+  vertical-align: middle;
+  font-weight: 800;
+}
+
+/* 逻辑运算符大符号卡 */
+.logic-hero {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 28px;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.logic-symbol-box {
+  background: linear-gradient(135deg, var(--orange-1), var(--orange-2));
+  color: white;
+  border-radius: 24px;
+  padding: 24px 32px;
+  text-align: center;
+  box-shadow: 0 8px 24px rgba(255, 107, 53, 0.4);
+}
+
+.logic-symbol-box.or {
+  background: linear-gradient(135deg, var(--purple-1), var(--purple-2));
+  box-shadow: 0 8px 24px rgba(107, 91, 255, 0.4);
+}
+
+.logic-symbol {
+  font-family: "Consolas", monospace;
+  font-size: 72px;
+  font-weight: 900;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.logic-cn { font-size: 30px; font-weight: 900; }
+
+.logic-rule {
+  font-size: 21px;
+  font-weight: 700;
+  line-height: 1.6;
+  color: var(--ink);
+}
+
+.logic-rule strong { color: var(--orange-1); font-weight: 900; }
+.logic-rule.or strong { color: var(--purple-1); }
+
+/* 例题卡（&& 和 || 的四个例子） */
+.example-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.example-cell {
+  background: var(--bg-warm);
+  border-radius: 16px;
+  padding: 16px 18px;
+  border: 2px solid #eee;
+}
+
+.example-cell.good { border-color: var(--good); background: #EAFBF2; }
+.example-cell.bad { border-color: var(--bad); background: #FDEEEE; }
+
+.example-vals {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 6px;
+}
+
+.example-expr {
+  font-family: "Consolas", monospace;
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--ink-soft);
+  margin-bottom: 8px;
+}
+
+.example-result {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 18px;
+  font-weight: 900;
+  padding: 4px 14px;
+  border-radius: 999px;
+}
+
+.example-cell.good .example-result { background: var(--good); color: white; }
+.example-cell.bad .example-result { background: var(--bad); color: white; }
+
+/* 注意提示卡 */
+.note-card {
+  background: linear-gradient(135deg, #FFF4D6 0%, #FFE8A3 100%);
+  border-radius: 18px;
+  padding: 20px 24px;
+  border-left: 6px solid #FFB347;
+}
+
+.note-title {
+  font-size: 20px;
+  font-weight: 900;
+  color: #C84B1A;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.note-item {
+  font-size: 18px;
+  font-weight: 700;
+  color: #5A3D00;
+  line-height: 1.6;
+  margin-bottom: 6px;
+  display: flex;
+  gap: 8px;
+}
+
+.note-item .num {
+  background: #FFB347;
+  color: white;
+  width: 24px; height: 24px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+/* 与或对比卡 */
+.andor-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.andor-card {
+  padding: 22px;
+  border-radius: 22px;
+  text-align: center;
+}
+
+.andor-and {
+  background: linear-gradient(135deg, #FFE8D6 0%, #FFD4A3 100%);
+  border: 3px solid var(--orange-1);
+}
+
+.andor-or {
+  background: linear-gradient(135deg, #E0DAFF 0%, #C5BAFF 100%);
+  border: 3px solid var(--purple-1);
+}
+
+.andor-symbol {
+  font-family: "Consolas", monospace;
+  font-size: 60px;
+  font-weight: 900;
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+.andor-and .andor-symbol { color: var(--orange-1); }
+.andor-or .andor-symbol { color: var(--purple-1); }
+
+.andor-cn {
+  font-size: 28px;
+  font-weight: 900;
+  margin-bottom: 12px;
+}
+
+.andor-and .andor-cn { color: #C84B1A; }
+.andor-or .andor-cn { color: #4B3FB8; }
+
+.andor-rule {
+  background: white;
+  padding: 14px;
+  border-radius: 12px;
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.5;
+}
+
+.andor-rule .key-and { color: var(--orange-1); font-weight: 900; }
+.andor-rule .key-or { color: var(--purple-1); font-weight: 900; }
+
+/* 哥哥弟弟差异化 */
+.compare-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  height: 100%;
+}
+
+.compare-card {
+  padding: 20px;
+  border-radius: 22px;
+  display: flex;
+  flex-direction: column;
+}
+
+.compare-gege {
+  background: linear-gradient(135deg, #FFE8D6 0%, #FFD4A3 100%);
+  border: 3px solid var(--orange-1);
+}
+
+.compare-didi {
+  background: linear-gradient(135deg, #E8FAF8 0%, #B8F0EA 100%);
+  border: 3px solid var(--green-1);
+}
+
+.compare-title {
+  font-size: 23px;
+  font-weight: 900;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.compare-gege .compare-title { color: #C84B1A; }
+.compare-didi .compare-title { color: #2A8F87; }
+
+.compare-list { list-style: none; padding: 0; }
+
+.compare-list li {
+  font-size: 16px;
+  font-weight: 600;
+  padding: 6px 0;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  line-height: 1.45;
+}
+
+.compare-list li::before {
+  content: "✓";
+  font-weight: 900;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.compare-gege .compare-list li::before { color: var(--orange-1); }
+.compare-didi .compare-list li::before { color: var(--green-1); }
+
+/* 章节封面 */
+.cover-slide {
+  background: linear-gradient(135deg, var(--orange-1) 0%, var(--orange-2) 50%, var(--yellow-1) 100%);
+  color: white;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.cover-slide.purple {
+  background: linear-gradient(135deg, var(--purple-1) 0%, var(--purple-2) 50%, var(--pink-1) 100%);
+}
+
+.cover-slide.green {
+  background: linear-gradient(135deg, var(--green-1) 0%, #5FD9D0 50%, var(--yellow-1) 100%);
+}
+
+.cover-slide.night {
+  background: linear-gradient(135deg, #2C3E73 0%, #4B3FB8 50%, #6B5BFF 100%);
+}
+
+.cover-mega-title {
+  font-size: 76px;
+  font-weight: 900;
+  line-height: 1.05;
+  margin-bottom: 20px;
+  text-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  letter-spacing: -2px;
+}
+
+.cover-sub {
+  font-size: 22px;
+  font-weight: 700;
+  opacity: 0.95;
+  margin-bottom: 14px;
+  white-space: pre-line;
+  line-height: 1.5;
+}
+
+.cover-emoji {
+  font-size: 130px;
+  margin-bottom: 18px;
+  filter: drop-shadow(0 12px 32px rgba(0, 0, 0, 0.2));
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+
+/* 主题封面卡 */
+.theme-card {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  align-items: center;
+}
+
+.theme-emoji-big {
+  font-size: 180px;
+  text-align: center;
+  filter: drop-shadow(0 8px 32px rgba(0,0,0,0.15));
+}
+
+.theme-info {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.theme-label {
+  display: inline-block;
+  background: linear-gradient(135deg, var(--orange-1), var(--orange-2));
+  color: white;
+  padding: 6px 16px;
+  border-radius: 999px;
+  font-weight: 800;
+  font-size: 14px;
+  width: fit-content;
+}
+
+.theme-name {
+  font-size: 38px;
+  font-weight: 900;
+  color: var(--ink);
+  line-height: 1.15;
+}
+
+.theme-desc {
+  font-size: 17px;
+  color: var(--ink-soft);
+  font-weight: 600;
+  line-height: 1.6;
+}
+
+.theme-list {
+  background: var(--bg-warm);
+  padding: 14px 18px;
+  border-radius: 14px;
+  border-left: 5px solid var(--orange-1);
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.7;
+}
+
+/* if-else 对比图 */
+.ifelse-flow {
+  background: var(--bg-warm);
+  border-radius: 18px;
+  padding: 24px;
+  text-align: center;
+}
+
+.ifelse-top {
+  font-size: 22px;
+  font-weight: 900;
+  color: var(--ink);
+  margin-bottom: 18px;
+}
+
+.ifelse-branch {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+
+.branch-card {
+  border-radius: 16px;
+  padding: 18px;
+  border: 3px solid;
+}
+
+.branch-yes { background: #EAFBF2; border-color: var(--good); }
+.branch-no { background: #FDEEEE; border-color: var(--bad); }
+
+.branch-head {
+  font-size: 20px;
+  font-weight: 900;
+  margin-bottom: 8px;
+}
+
+.branch-yes .branch-head { color: var(--good); }
+.branch-no .branch-head { color: var(--bad); }
+
+.branch-body { font-size: 17px; font-weight: 700; color: var(--ink); line-height: 1.4; }
+
+/* 提示卡 */
+.tip-card {
+  background: linear-gradient(135deg, #FFD93D 0%, #FFB347 100%);
+  padding: 24px 28px;
+  border-radius: 20px;
+  font-size: 20px;
+  font-weight: 700;
+  color: #5A3D00;
+  line-height: 1.6;
+  text-align: center;
+  box-shadow: 0 8px 24px rgba(255, 179, 71, 0.4);
+}
+
+.tip-card .star { font-size: 36px; display: block; margin-bottom: 8px; }
+
+/* 底部控制 */
+.bottom-controls {
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  height: 100px;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  padding: 0 20px;
+  z-index: 100;
+  border-top: 2px solid rgba(255, 107, 53, 0.15);
+}
+
+.big-btn {
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  border: none;
+  background: white;
+  color: var(--orange-1);
+  font-size: 24px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 16px rgba(255, 107, 53, 0.25);
+  transition: all 0.2s;
+  font-family: inherit;
+}
+
+.big-btn:hover { transform: scale(1.08); }
+.big-btn:active { transform: scale(0.95); }
+
+.big-btn.play {
+  width: 74px;
+  height: 74px;
+  background: linear-gradient(135deg, var(--orange-1), var(--orange-2));
+  color: white;
+  font-size: 28px;
+  box-shadow: 0 8px 24px rgba(255, 107, 53, 0.5);
+}
+
+.big-btn.speak-now {
+  background: linear-gradient(135deg, var(--purple-1), var(--purple-2));
+  color: white;
+}
+
+.dots {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  margin: 0 12px;
+  flex-wrap: wrap;
+  max-width: 42%;
+  justify-content: center;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255, 107, 53, 0.25);
+  transition: all 0.3s;
+  cursor: pointer;
+}
+
+.dot.active {
+  background: var(--orange-1);
+  width: 24px;
+  border-radius: 999px;
+}
+
+.dot.review { background: rgba(78, 205, 196, 0.4); }
+.dot.review.active { background: var(--green-1); }
+
+.dot.new { background: rgba(255, 107, 53, 0.4); }
+.dot.new.active { background: var(--orange-1); }
+
+.bg-decor { position: fixed; pointer-events: none; z-index: 1; }
+
+.bg-decor.d1 {
+  top: 80px; right: -60px;
+  width: 200px; height: 200px;
+  background: radial-gradient(circle, rgba(255, 179, 71, 0.3), transparent 70%);
+  border-radius: 50%;
+}
+
+.bg-decor.d2 {
+  bottom: 120px; left: -80px;
+  width: 280px; height: 280px;
+  background: radial-gradient(circle, rgba(107, 91, 255, 0.2), transparent 70%);
+  border-radius: 50%;
+}
+
+/* 响应式 */
+@media (max-width: 768px) {
+  .slide { padding: 18px 20px; border-radius: 24px; }
+  .slide-title { font-size: 21px; }
+  .slide-subtitle { font-size: 14px; }
+  .word-big { font-size: 48px; }
+  .word-emoji { font-size: 76px; }
+  .word-phonetic { font-size: 18px; }
+  .word-meaning { font-size: 16px; }
+  .word-phrase { font-size: 14px; padding: 10px 12px; }
+  .word-card { grid-template-columns: 1fr; gap: 10px; }
+  .word-emoji { display: none; }
+  .cover-mega-title { font-size: 38px; }
+  .cover-emoji { font-size: 70px; }
+  .cover-sub { font-size: 16px; }
+  .concept-row { font-size: 14px; padding: 10px 12px; gap: 10px; }
+  .concept-icon { font-size: 26px; }
+  .code-block { font-size: 13px; padding: 14px 16px; }
+  .code-explain { font-size: 13px; padding: 10px 12px; }
+  .logic-hero { grid-template-columns: 1fr; gap: 12px; }
+  .logic-symbol { font-size: 48px; }
+  .logic-cn { font-size: 22px; }
+  .logic-symbol-box { padding: 16px; }
+  .logic-rule { font-size: 16px; }
+  .example-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
+  .example-cell { padding: 10px 12px; }
+  .example-vals { font-size: 14px; }
+  .example-expr { font-size: 12px; }
+  .example-result { font-size: 14px; padding: 3px 10px; }
+  .note-card { padding: 14px 16px; }
+  .note-title { font-size: 16px; }
+  .note-item { font-size: 14px; }
+  .andor-grid { grid-template-columns: 1fr; gap: 10px; }
+  .andor-symbol { font-size: 44px; }
+  .andor-cn { font-size: 22px; }
+  .andor-rule { font-size: 13px; padding: 10px; }
+  .compare-grid { grid-template-columns: 1fr; gap: 10px; }
+  .compare-title { font-size: 18px; }
+  .compare-list li { font-size: 13px; }
+  .tip-card { font-size: 15px; padding: 16px; }
+  .theme-card { grid-template-columns: 1fr; gap: 10px; }
+  .theme-emoji-big { font-size: 80px; }
+  .theme-name { font-size: 24px; }
+  .theme-desc { font-size: 13px; }
+  .theme-list { font-size: 12px; padding: 10px 12px; }
+  .ifelse-flow { padding: 16px; }
+  .ifelse-top { font-size: 17px; }
+  .ifelse-branch { gap: 10px; }
+  .branch-card { padding: 12px; }
+  .branch-head { font-size: 16px; }
+  .branch-body { font-size: 13px; }
+  .big-btn { width: 46px; height: 46px; font-size: 18px; }
+  .big-btn.play { width: 58px; height: 58px; font-size: 22px; }
+  .btn { padding: 5px 9px; font-size: 12px; }
+  .brand { font-size: 13px; }
+  .brand .logo { width: 26px; height: 26px; font-size: 13px; }
+  .topbar { padding: 0 10px; }
+  .stage { padding: 10px; top: 60px; bottom: 88px; }
+  .bottom-controls { height: 88px; gap: 6px; padding: 0 10px; }
+  .start-title { font-size: 30px; }
+  .start-sub { font-size: 15px; }
+  .start-emoji { font-size: 70px; }
+  .start-btn { font-size: 18px; padding: 14px 32px; }
+  .start-tips { font-size: 12px; }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.slide.active .slide-title,
+.slide.active .slide-subtitle,
+.slide.active .slide-body > * {
+  animation: slideUp 0.5s cubic-bezier(0.22, 1, 0.36, 1) backwards;
+}
+
+.slide.active .slide-subtitle { animation-delay: 0.08s; }
+.slide.active .slide-body > * { animation-delay: 0.15s; }
+</style>
+</head>
+<body>
+
+<div class="bg-decor d1"></div>
+<div class="bg-decor d2"></div>
+
+<div class="start-overlay" id="startOverlay">
+  <div class="start-emoji">🚀</div>
+  <div class="start-title">开始复习预习</div>
+  <div class="start-sub">复习 L2-2（if-else 语句）<br>预习 L2-3（智能门 & 密码门）<br><br>🇬🇧 英文发音 · 🇨🇳 中文讲解 · 自动播放</div>
+  <button class="start-btn" id="startBtn">
+    <span>🔊</span>
+    <span>开始播放（带声音）</span>
+  </button>
+  <div class="start-tips">
+    💡 提示：把设备音量调到能听清的程度<br>
+    👆 任何时候点单词或按钮，都可重听
+  </div>
+</div>
+
+<div class="topbar">
+  <div class="brand">
+    <div class="logo">🥜</div>
+    <span>L2-2 复习 · L2-3 预习</span>
+  </div>
+  <div class="controls">
+    <a class="btn" href="cpp_hub.html" style="text-decoration:none;">🏠 学习馆</a>
+    <button class="btn" onclick="toggleMute()" id="muteBtn">🔊 朗读开</button>
+    <button class="btn" onclick="toggleSection()" id="jumpBtn">⏩ 跳到预习</button>
+  </div>
+</div>
+
+<div class="progress-bar">
+  <div class="progress-fill" id="progressFill"></div>
+</div>
+
+<div class="speech-indicator" id="speechIndicator">
+  <div class="wave"><span></span><span></span><span></span><span></span><span></span></div>
+  <span id="speechText">正在朗读...</span>
+</div>
+
+<div class="stage" id="stage"></div>
+
+<div class="bottom-controls">
+  <button class="big-btn" onclick="prevSlide()">◀</button>
+  <button class="big-btn speak-now" onclick="repeatSpeech()">🔁</button>
+  <button class="big-btn play" onclick="togglePlay()" id="playBtn">⏸</button>
+  <button class="big-btn" onclick="nextSlide()">▶</button>
+  <div class="dots" id="dots"></div>
+</div>
+
+<script>
+const slides = [
+  // ===== 开场 =====
+  {
+    type: 'cover', section: 'intro', bg: 'orange',
+    icon: '🚀',
+    title: '开始复习啦',
+    sub: '哥哥 + 弟弟，一起复习预习\n复习 L2-2，预习 L2-3',
+    sequence: [
+      { lang: 'zh', text: '哥哥、弟弟好！我们一起来复习、预习。' },
+      { lang: 'zh', text: '先复习刚学过的 L2 第 2 课，if-else 语句。' },
+      { lang: 'zh', text: '再预习下次要学的 L2 第 3 课，超好玩的智能门和密码门项目。' }
+    ]
+  },
+
+  // ===== 第一部分：复习 L2-2 =====
+  {
+    type: 'cover', section: 'review', bg: 'green',
+    icon: '🔁',
+    title: '复习 L2-2',
+    sub: 'if-else 语句（如果……否则……）\n这是赛考必考，要扎实',
+    sequence: [
+      { lang: 'zh', text: '第一部分，复习 L2 第 2 课。' },
+      { lang: 'zh', text: '上次课最重要的，就是 if-else 语句。' },
+      { lang: 'zh', text: 'if 是如果，else 是否则。我们好好过一遍。' }
+    ]
+  },
+
+  // 旧单词 else
+  {
+    type: 'word', section: 'review', tag: '复习单词 1/3',
+    word: 'else', phonetic: '/els/', pos: 'adv./adj.',
+    meaningHTML: '<span class="line"><span class="pos">adv.</span>其他的；别的</span><span class="line"><span class="pos">编程</span>否则</span>',
+    phrase: 'something else 别的东西', emoji: '🔀',
+    sequence: [
+      { lang: 'en', text: 'else' },
+      { lang: 'zh', text: 'else，意思是其他的、别的。' },
+      { lang: 'en', text: 'else' },
+      { lang: 'zh', text: '在 if-else 里，else 的意思是"否则"。这是最重要的一个词。' }
+    ]
+  },
+  // 旧单词 kick
+  {
+    type: 'word', section: 'review', tag: '复习单词 2/3',
+    word: 'kick', phonetic: '/kɪk/', pos: 'v./n.',
+    meaningHTML: '<span class="line"><span class="pos">v.</span>踹、踢（腿）</span><span class="line"><span class="pos">n.</span>踢、踢腿</span>',
+    phrase: 'kick off 活动/比赛的"开始"', emoji: '⚽',
+    sequence: [
+      { lang: 'en', text: 'kick' },
+      { lang: 'zh', text: 'kick，意思是踢、踹。' },
+      { lang: 'en', text: 'kick off' },
+      { lang: 'zh', text: '短语 kick off，活动或比赛的开始。' }
+    ]
+  },
+  // 旧单词 forward
+  {
+    type: 'word', section: 'review', tag: '复习单词 3/3',
+    word: 'forward', phonetic: '/ˈfɔːwəd/', pos: 'adv./adj.',
+    meaningHTML: '<span class="line"><span class="pos">adv.</span>向前、前进</span><span class="line"><span class="pos">adj.</span>向前的</span>',
+    phrase: 'look forward to 期待、盼望', emoji: '⬆️',
+    sequence: [
+      { lang: 'en', text: 'forward' },
+      { lang: 'zh', text: 'forward，意思是向前、前进。' },
+      { lang: 'en', text: 'look forward to' },
+      { lang: 'zh', text: '短语 look forward to，期待、盼望。' }
+    ]
+  },
+
+  // if-else 概念
+  {
+    type: 'concept', section: 'review', tag: 'if-else 组成',
+    title: 'if-else 语句长什么样？',
+    sub: '两个关键字：if 在前，else 在后',
+    rows: [
+      { icon: '🎯', text: '<strong>作用</strong>：根据条件成不成立，执行<strong>不同</strong>的代码', cls: '' },
+      { icon: '🔑', text: '包含 <strong>if</strong>、<strong>else</strong> 两个关键字，if 在前、else 在后', cls: 'alt' },
+      { icon: '( )', text: '<strong>if 后面有小括号</strong>填条件；<strong>else 后面不要</strong>小括号', cls: 'alt2' },
+      { icon: '{ }', text: 'if 和 else 后面<strong>都要一对大括号</strong>包住代码', cls: '' }
+    ],
+    sequence: [
+      { lang: 'zh', text: '先看 if-else 语句长什么样。' },
+      { lang: 'zh', text: '它的作用是：根据条件成不成立，执行不同的代码。' },
+      { lang: 'zh', text: '它有两个关键字：if 在前面，else 在后面，顺序不能错。' },
+      { lang: 'zh', text: 'if 后面有一对小括号，里面填判断条件；但 else 后面不需要小括号。' },
+      { lang: 'zh', text: 'if 和 else 后面，都要用一对大括号，把要执行的代码包起来。' }
+    ]
+  },
+  // if-else 运行逻辑（分岔图）
+  {
+    type: 'ifelse', section: 'review', tag: 'if-else 运行逻辑',
+    title: 'if-else 怎么走？',
+    sub: '一道分岔路，只能走一边',
+    sequence: [
+      { lang: 'zh', text: 'if-else 就像一道分岔路，只能走其中一边。' },
+      { lang: 'zh', text: '先看 if 的条件。条件成立，走"是"这边，执行 if 大括号里的代码。' },
+      { lang: 'zh', text: '条件不成立，走"否"这边，执行 else 大括号里的代码。' },
+      { lang: 'zh', text: '记住最关键的一点：只会执行一组代码，绝不会两边都执行。' }
+    ]
+  },
+  // if-else 代码示例
+  {
+    type: 'code', section: 'review', tag: 'if-else 示例',
+    title: 'a 大于 10 吗？',
+    sub: '成立打印 s，否则打印 n',
+    code: `<span class="code-key">if</span>(<span class="code-var">a</span> <span class="code-op">&gt;</span> <span class="code-num">10</span>)
+{
+    <span class="code-key">cout</span> <span class="code-op">&lt;&lt;</span> <span class="code-str">"s"</span> <span class="code-op">&lt;&lt;</span> <span class="code-key">endl</span>;
+}
+<span class="code-key">else</span>
+{
+    <span class="code-key">cout</span> <span class="code-op">&lt;&lt;</span> <span class="code-str">"n"</span> <span class="code-op">&lt;&lt;</span> <span class="code-key">endl</span>;
+}`,
+    explain: '<span class="label">读代码</span>翻译：<strong>如果 a 大于 10，打印 s；否则打印 n</strong>。两句<strong style="color:#C84B1A">只会打印一句</strong>，看条件成不成立。',
+    sequence: [
+      { lang: 'zh', text: '看这个例子。' },
+      { lang: 'zh', text: 'if 小括号里：a 大于 10。如果成立，打印字母 s。' },
+      { lang: 'zh', text: 'else 后面，也就是否则的情况：打印字母 n。' },
+      { lang: 'zh', text: '关键：s 和 n，只会打印一个。' }
+    ]
+  },
+
+  // 难点：两个if vs if-else
+  {
+    type: 'concept', section: 'review', tag: '⭐ 难点',
+    title: '难点：两个 if 能改成 if-else 吗？',
+    sub: '要看两个条件是不是"正好相反"',
+    rows: [
+      { icon: '🔢', text: '<strong>两个并列 if</strong>：从上到下各判断一次，可能都执行', cls: '' },
+      { icon: '🔀', text: '<strong>if-else</strong>：只走一边，非此即彼，只执行一个', cls: 'alt' },
+      { icon: '⚠️', text: '若两个 if 条件<strong>不是正好相反</strong>（如 a&lt;15 和 a&gt;10），<strong>不能</strong>改成 if-else', cls: 'alt2' }
+    ],
+    sequence: [
+      { lang: 'zh', text: '本课难点：两个 if 能不能改成 if-else？' },
+      { lang: 'zh', text: '两个并列的 if，从上到下各判断一次，有可能两个都执行。' },
+      { lang: 'zh', text: 'if-else 只走一边，只会执行一个。' },
+      { lang: 'zh', text: '要看两个 if 的条件是不是正好相反。' },
+      { lang: 'zh', text: '比如 a 小于 15 和 a 大于 10，它们不是正好相反，有重叠，所以不能改成 if-else。' }
+    ]
+  },
+  // 易错点
+  {
+    type: 'concept', section: 'review', tag: '🚫 易错点',
+    title: '写 if-else 最容易错的 3 个地方',
+    sub: '考试常考，要小心',
+    rows: [
+      { icon: '🚫', text: '条件后面<strong>多加分号</strong>：<code>if(a&lt;3<span style="color:#E64A4A">;</span>)</code> ← 错！', cls: '' },
+      { icon: '🚫', text: 'cout 句<strong>漏掉分号</strong>：<code>cout&lt;&lt;"g"&lt;&lt;endl</code> ← 错！要加 ;', cls: 'alt' },
+      { icon: '🚫', text: 'else 后<strong>多加括号条件</strong>：<code>else<span style="color:#E64A4A">(a&gt;=3)</span></code> ← 错！else 不要条件', cls: 'alt2' }
+    ],
+    sequence: [
+      { lang: 'zh', text: '写 if-else 最容易错的三个地方，考试常考。' },
+      { lang: 'zh', text: '第一，if 条件后面不能多加分号。' },
+      { lang: 'zh', text: '第二，cout 输出这一句后面，分号不能漏掉。' },
+      { lang: 'zh', text: '第三，else 后面不需要加小括号和条件，加了就错。' },
+      { lang: 'zh', text: '哥哥要特别记住这三个坑。' }
+    ]
+  },
+  // 多变量输入
+  {
+    type: 'code', section: 'review', tag: '多变量输入',
+    title: '连续输入：cin 的顺序',
+    sub: '先 cin 谁，就先读给谁',
+    code: `<span class="code-key">int</span> <span class="code-var">a</span>, <span class="code-var">b</span>;
+<span class="code-key">cin</span> <span class="code-op">&gt;&gt;</span> <span class="code-var">a</span>;
+<span class="code-key">cin</span> <span class="code-op">&gt;&gt;</span> <span class="code-var">b</span>;   <span class="code-cmt">// 先读给 a，再读给 b</span>`,
+    explain: '<span class="label">读代码</span>如果先输入 <strong>18</strong> 再输入 <strong>5</strong>，那么 <strong style="color:#C84B1A">a 是 18，b 是 5</strong>。先写的变量先拿到数字。',
+    sequence: [
+      { lang: 'zh', text: '复习多变量输入。' },
+      { lang: 'zh', text: '先 cin 大于号大于号 a，再 cin 大于号大于号 b。' },
+      { lang: 'zh', text: '如果先输入 18，再输入 5，那么 a 就是 18，b 就是 5。' },
+      { lang: 'zh', text: '记住：先写的变量先拿到数字，顺序不能乱。' }
+    ]
+  },
+
+  // 复习收尾
+  {
+    type: 'cover', section: 'review', bg: 'green',
+    icon: '✅',
+    title: 'L2-2 复习完毕',
+    sub: '掌握了：\nif-else（只走一边）· 易错点 · cin 顺序\n下面去看下次课要学什么',
+    sequence: [
+      { lang: 'zh', text: 'L2 第 2 课复习完啦！' },
+      { lang: 'zh', text: '你们已经掌握：if-else 只走一边、三个易错点、还有 cin 输入顺序。' },
+      { lang: 'zh', text: '接下来，看看下次课要学什么，是个超好玩的硬件项目！' }
+    ]
+  },
+
+  // ===== 第二部分：预习 L2-3 =====
+  {
+    type: 'cover', section: 'new', bg: 'night',
+    icon: '🚪',
+    title: '预习 L2-3',
+    sub: '智能门 & 密码门\n用编程做一个真正的密码锁！',
+    sequence: [
+      { lang: 'zh', text: '第二部分，预习。下次课是 L2 第 3 课。' },
+      { lang: 'zh', text: '主题是智能门和密码门，要用编程做一个真正能用的密码锁。' },
+      { lang: 'zh', text: '会学到控制舵机开门、红外遥控、还有怎么记录和验证密码。超酷的！' }
+    ]
+  },
+
+  // 项目主题
+  {
+    type: 'theme', section: 'new', tag: '本课项目',
+    themeLabel: 'L2-3 编程项目',
+    themeName: '智能门 & 密码门 🔐',
+    themeEmoji: '🏠',
+    themeDesc: '用智慧小屋 + 舵机 + 红外遥控器，做一个密码门。用遥控器输入密码，密码对了门就打开，等 5 秒自动关门；密码错了屏幕显示"密码错误"。',
+    themeList: '🔑 课后作业：做出一个密码锁<br>邀请家人来猜你设置的密码！',
+    sequence: [
+      { lang: 'zh', text: '这次的项目，是做智能门和密码门。' },
+      { lang: 'zh', text: '用智慧小屋、舵机、还有红外遥控器，做一个密码门。' },
+      { lang: 'zh', text: '用遥控器输入密码，对了门就自动打开，等 5 秒再关上；错了屏幕就显示密码错误。' },
+      { lang: 'zh', text: '课后作业，就是自己做一个密码锁，邀请家人来猜你设的密码，很好玩。' }
+    ]
+  },
+
+  // 学习目标
+  {
+    type: 'concept', section: 'new', tag: '🎯 学习目标',
+    title: '下次课要学会什么？',
+    sub: '4 个新本领',
+    rows: [
+      { icon: '⚙️', text: '学会用 <strong>rotateTo()</strong> 控制舵机转动（开门关门）', cls: '' },
+      { icon: '📡', text: '学会用 <strong>getIRKey()</strong> 读红外遥控按了哪个键', cls: 'alt' },
+      { icon: '🔗', text: '学会<strong>字符串拼接</strong>记录密码，用 <strong>isdigit()</strong> 判断是不是数字', cls: 'alt2' },
+      { icon: '🔐', text: '学会<strong>输入密码并检测</strong>对不对的算法', cls: '' }
+    ],
+    sequence: [
+      { lang: 'zh', text: '下次课要学会四个新本领。' },
+      { lang: 'zh', text: '第一，用 rotateTo 控制舵机转动，来开门关门。' },
+      { lang: 'zh', text: '第二，用 getIRKey 读红外遥控器按了哪个键。' },
+      { lang: 'zh', text: '第三，用字符串拼接记录密码，用 isdigit 判断按的是不是数字。' },
+      { lang: 'zh', text: '第四，学会输入密码并检测对不对的算法。' }
+    ]
+  },
+
+  // 新单词封面
+  {
+    type: 'cover', section: 'new', bg: 'purple',
+    icon: '📚',
+    title: '6 个新单词',
+    sub: 'rotate · infrared · key\ndigit · result · password',
+    sequence: [
+      { lang: 'zh', text: '下次课会学 6 个英文单词。' },
+      { lang: 'zh', text: 'rotate、infrared、key、digit、result、password。' },
+      { lang: 'zh', text: '这些词都和这次的密码门项目有关，我们一个一个来听。' }
+    ]
+  },
+
+  // 单词 rotate
+  {
+    type: 'word', section: 'new', tag: '新单词 1/6',
+    word: 'rotate', phonetic: '/rəʊˈteɪt/', pos: 'v.',
+    meaning: '旋转、转动', phrase: 'rotateTo() 转到某个角度', emoji: '🔄',
+    sequence: [
+      { lang: 'en', text: 'rotate' },
+      { lang: 'zh', text: 'rotate，意思是旋转、转动。' },
+      { lang: 'en', text: 'rotate' },
+      { lang: 'zh', text: '指令 rotateTo，就是让舵机转到某个角度，用来开门。' }
+    ]
+  },
+  // 单词 infrared
+  {
+    type: 'word', section: 'new', tag: '新单词 2/6',
+    word: 'infrared', phonetic: '/ˌɪnfrəˈred/', pos: 'adj.',
+    meaning: '红外线的', phrase: 'infrared remote 红外遥控', emoji: '📡',
+    sequence: [
+      { lang: 'en', text: 'infrared' },
+      { lang: 'zh', text: 'infrared，意思是红外线的。' },
+      { lang: 'en', text: 'infrared' },
+      { lang: 'zh', text: '我们用的遥控器，就是红外遥控器。' }
+    ]
+  },
+  // 单词 key
+  {
+    type: 'word', section: 'new', tag: '新单词 3/6',
+    word: 'key', phonetic: '/kiː/', pos: 'n.',
+    meaning: '按键；钥匙；关键', phrase: 'getIRKey() 获取按键', emoji: '🔑',
+    sequence: [
+      { lang: 'en', text: 'key' },
+      { lang: 'zh', text: 'key，意思是按键、钥匙，也表示关键。' },
+      { lang: 'en', text: 'key' },
+      { lang: 'zh', text: '指令 getIRKey，就是获取遥控器按了哪个键。' }
+    ]
+  },
+  // 单词 digit
+  {
+    type: 'word', section: 'new', tag: '新单词 4/6',
+    word: 'digit', phonetic: '/ˈdɪdʒɪt/', pos: 'n.',
+    meaning: '数字；手指或脚趾', phrase: 'isdigit() 判断是不是数字', emoji: '🔢',
+    sequence: [
+      { lang: 'en', text: 'digit' },
+      { lang: 'zh', text: 'digit，意思是数字，也可以指手指或脚趾。' },
+      { lang: 'en', text: 'digit' },
+      { lang: 'zh', text: '指令 isdigit，就是判断内容是不是数字。' }
+    ]
+  },
+  // 单词 result
+  {
+    type: 'word', section: 'new', tag: '新单词 5/6',
+    word: 'result', phonetic: '/rɪˈzʌlt/', pos: 'n.',
+    meaning: '结果', phrase: 'result 变量存输入的密码', emoji: '📊',
+    sequence: [
+      { lang: 'en', text: 'result' },
+      { lang: 'zh', text: 'result，意思是结果。' },
+      { lang: 'en', text: 'result' },
+      { lang: 'zh', text: '在这次项目里，我们用 result 这个变量，存你输入的密码。' }
+    ]
+  },
+  // 单词 password
+  {
+    type: 'word', section: 'new', tag: '新单词 6/6',
+    word: 'password', phonetic: '/ˈpæsˌwɜːd/', pos: 'n.',
+    meaning: '密码', phrase: 'password 变量存正确密码', emoji: '🔐',
+    sequence: [
+      { lang: 'en', text: 'password' },
+      { lang: 'zh', text: 'password，意思是密码。' },
+      { lang: 'en', text: 'password' },
+      { lang: 'zh', text: '我们用 password 这个变量，存正确的密码。' }
+    ]
+  },
+
+  // 知识点1：控制舵机
+  {
+    type: 'code', section: 'new', tag: '知识点 1：控制舵机',
+    title: 'rotateTo() 控制舵机',
+    sub: '括号里填角度（0~180 度）',
+    code: `<span class="code-key">if</span>(<span class="code-fn">isPressed</span>(<span class="code-str">"A"</span>))
+{
+    <span class="code-fn">rotateTo</span>(<span class="code-num">180</span>);   <span class="code-cmt">// 舵机转到 180 度</span>
+}`,
+    explain: '<span class="label">读代码</span><strong>如果按下 A 按钮，舵机就转到 180 度</strong>。舵机带着门转，就能开门关门。范围是 <strong>0 到 180 度</strong>。',
+    sequence: [
+      { lang: 'zh', text: '知识点一，控制舵机。' },
+      { lang: 'zh', text: '用 rotateTo 指令，括号里填一个角度数字，舵机就转到那个角度。' },
+      { lang: 'zh', text: '舵机的转动范围是 0 度到 180 度。' },
+      { lang: 'zh', text: '这段代码意思是：如果按下 A 按钮，舵机就转到 180 度。舵机带着门转，就能开门。' }
+    ]
+  },
+  // 知识点2：红外遥控
+  {
+    type: 'code', section: 'new', tag: '知识点 2：红外遥控',
+    title: 'getIRKey() 读遥控按键',
+    sub: '获得按下的是哪个键',
+    code: `<span class="code-key">string</span> <span class="code-var">key</span>;          <span class="code-cmt">// 创建字符串变量</span>
+<span class="code-var">key</span> <span class="code-op">=</span> <span class="code-fn">getIRKey</span>();   <span class="code-cmt">// 检测遥控器按键</span>
+<span class="code-key">if</span>(<span class="code-var">key</span> <span class="code-op">==</span> <span class="code-str">"左"</span>)    <span class="code-cmt">// 按键是不是"左"</span>
+{
+    <span class="code-fn">rotateTo</span>(<span class="code-num">180</span>);   <span class="code-cmt">// 控制舵机开门</span>
+}`,
+    explain: '<span class="label">读代码</span>用 <strong>getIRKey()</strong> 读出遥控器按了哪个键，存进 key。<strong>如果按的是"左"键，就开门</strong>。遥控器灯亮代表收到了信号。',
+    sequence: [
+      { lang: 'zh', text: '知识点二，红外遥控。' },
+      { lang: 'zh', text: '先创建一个字符串变量 key。' },
+      { lang: 'zh', text: '用 getIRKey 检测遥控器按了哪个键，存到 key 里。' },
+      { lang: 'zh', text: '然后判断：如果 key 等于"左"，就用 rotateTo 控制舵机开门。' }
+    ]
+  },
+  // 知识点3：记录密码 + isdigit
+  {
+    type: 'code', section: 'new', tag: '知识点 3：记录密码',
+    title: '字符串拼接 + isdigit()',
+    sub: '把按下的数字一个个拼起来',
+    code: `<span class="code-var">password</span> <span class="code-op">=</span> <span class="code-str">"123"</span>;        <span class="code-cmt">// 设置正确密码</span>
+<span class="code-var">key</span> <span class="code-op">=</span> <span class="code-fn">getIRKey</span>();        <span class="code-cmt">// 检测按键</span>
+<span class="code-key">if</span>(<span class="code-fn">isdigit</span>(<span class="code-var">key</span>))        <span class="code-cmt">// 如果按的是数字</span>
+{
+    <span class="code-var">result</span> <span class="code-op">=</span> <span class="code-var">result</span> <span class="code-op">+</span> <span class="code-var">key</span>;  <span class="code-cmt">// 拼接记录</span>
+}`,
+    explain: '<span class="label">读代码</span>字符串拼接：<strong>"12" + "3" = "123"</strong>。<strong>isdigit()</strong> 判断是不是数字（isdigit("12")成立，isdigit("ab")不成立）。按下数字键，就把它拼到 result 里。',
+    sequence: [
+      { lang: 'zh', text: '知识点三，记录密码。' },
+      { lang: 'zh', text: '用字符串拼接记录密码。两个字符串中间加个加号就能拼起来，比如 12 加 3，等于 123。' },
+      { lang: 'zh', text: 'isdigit 这个指令，可以判断内容是不是数字。是数字就成立，不是就不成立。' },
+      { lang: 'zh', text: '这段代码：先设正确密码 123，检测按键，如果按的是数字键，就把它拼接记录到 result 里。' }
+    ]
+  },
+  // 知识点4：验证密码
+  {
+    type: 'code', section: 'new', tag: '知识点 4：验证密码',
+    title: '验证密码：if-else 上场！',
+    sub: '复习的 if-else 在这里用上了',
+    code: `<span class="code-key">if</span>(<span class="code-var">result</span> <span class="code-op">==</span> <span class="code-var">password</span>)  <span class="code-cmt">// 密码对吗</span>
+{
+    <span class="code-fn">rotateTo</span>(<span class="code-num">180</span>);  <span class="code-cmt">// 开门</span>
+    <span class="code-fn">sleep</span>(<span class="code-num">5</span>);        <span class="code-cmt">// 等 5 秒</span>
+    <span class="code-fn">rotateTo</span>(<span class="code-num">90</span>);   <span class="code-cmt">// 关门</span>
+}
+<span class="code-key">else</span>
+{
+    <span class="code-fn">printPos</span>(<span class="code-str">"密码错误"</span>, <span class="code-str">"中间"</span>);
+}`,
+    explain: '<span class="label">读代码</span>用 <strong>==</strong> 判断输入的 result 和正确的 password 相不相等。<strong>相等就开门，等 5 秒自动关；不相等就显示"密码错误"</strong>。这就是复习过的 if-else！',
+    sequence: [
+      { lang: 'zh', text: '知识点四，验证密码。这里就用到我们复习的 if-else 啦！' },
+      { lang: 'zh', text: '用两个等号，判断输入的 result 和正确的 password 相不相等。' },
+      { lang: 'zh', text: '如果相等，就开门，等 5 秒后自动关门。' },
+      { lang: 'zh', text: '否则，也就是 else，就在屏幕中间显示"密码错误"。' },
+      { lang: 'zh', text: '看，复习的 if-else 在真实项目里就这么用上了！' }
+    ]
+  },
+
+  // 课后作业 / 赛考
+  {
+    type: 'concept', section: 'new', tag: '📝 课后作业',
+    title: '课后作业 & 要点',
+    sub: '动手做一个密码锁',
+    rows: [
+      { icon: '🔐', text: '<strong>做出一个密码锁</strong>，邀请家人来猜密码 ⭐重点', cls: '' },
+      { icon: '⚙️', text: '记住舵机范围 <strong>0~180 度</strong>，rotateTo() 填角度', cls: 'alt' },
+      { icon: '🧩', text: '密码门 = <strong>记录密码 + 验证密码（if-else）</strong>', cls: 'alt2' }
+    ],
+    sequence: [
+      { lang: 'zh', text: '课后作业和要点。' },
+      { lang: 'zh', text: '作业是：用学到的知识做出一个密码锁，然后邀请家人来猜密码，这是重点。' },
+      { lang: 'zh', text: '记住舵机范围是 0 到 180 度。' },
+      { lang: 'zh', text: '密码门其实就是两步：记录密码，加上用 if-else 验证密码。' }
+    ]
+  },
+
+  // 哥哥弟弟差异化
+  {
+    type: 'compare', section: 'new', tag: '听课目标',
+    title: '哥哥 vs 弟弟：下次课的目标',
+    sub: '两个人重点不一样',
+    gege: {
+      title: '哥哥（4B）',
+      icon: '🧑‍🎓',
+      items: [
+        '搞懂记录密码 + 验证密码的完整算法',
+        '能说出 rotateTo / getIRKey / isdigit 各自作用',
+        '想想：怎么改密码？怎么让密码更长？',
+        '独立完成密码锁，给家人出题'
+      ]
+    },
+    didi: {
+      title: '弟弟（3B）',
+      icon: '🥷',
+      items: [
+        '记住 rotateTo 是"转角度开门"',
+        '会念 6 个新单词',
+        '理解遥控器按键怎么变成密码',
+        '跟着老师把密码门做出来就超棒！'
+      ]
+    },
+    sequence: [
+      { lang: 'zh', text: '下次上课，哥哥弟弟目标不一样。' },
+      { lang: 'zh', text: '哥哥的目标：搞懂记录密码加验证密码的完整算法，能说出三个新指令各自的作用，还可以想想怎么改密码、怎么让密码更长。' },
+      { lang: 'zh', text: '弟弟的目标：记住 rotateTo 是转角度开门，会念 6 个新单词，理解遥控器按键怎么变成密码。' },
+      { lang: 'zh', text: '弟弟跟着老师把密码门做出来，就非常棒了。' }
+    ]
+  },
+
+  // 收尾
+  {
+    type: 'cover', section: 'new', bg: 'night',
+    icon: '🔐',
+    title: '复习预习完成！',
+    sub: '今天关键词：\nif-else · rotateTo · getIRKey · 密码门\n加油！',
+    sequence: [
+      { lang: 'zh', text: '复习预习都完成啦！' },
+      { lang: 'zh', text: '今天的关键词：if-else 只走一边、rotateTo 控制舵机、getIRKey 读遥控、还有密码门。' },
+      { lang: 'zh', text: '下次课能做出一个真正能用的密码锁，去考考家人。加油！' }
+    ]
+  }
+];
+
+// ============== 语音引擎 ==============
+const synth = window.speechSynthesis;
+let voices = [];
+let voiceZh = null;
+let voiceEn = null;
+let isMuted = false;
+// 播放令牌：每次切换 slide / 重听 / 停止，都让 token +1
+// 所有异步回调都检查自己的 token 是否还等于当前 token，不等于就立刻作废
+let speechToken = 0;
+
+function loadVoices() {
+  voices = synth.getVoices();
+  voiceZh = voices.find(v => /zh-CN/i.test(v.lang) && /female|女|xiaoxiao|huihui/i.test(v.name))
+         || voices.find(v => /zh-CN/i.test(v.lang))
+         || voices.find(v => /zh/i.test(v.lang))
+         || voices.find(v => /chinese/i.test(v.name));
+  voiceEn = voices.find(v => /en-US/i.test(v.lang) && /female|samantha|ava|aria/i.test(v.name))
+         || voices.find(v => /en-US/i.test(v.lang))
+         || voices.find(v => /en-GB/i.test(v.lang))
+         || voices.find(v => /^en/i.test(v.lang));
+}
+
+loadVoices();
+if (synth.onvoiceschanged !== undefined) {
+  synth.onvoiceschanged = loadVoices;
+}
+
+const indicator = document.getElementById('speechIndicator');
+const indicatorText = document.getElementById('speechText');
+
+function showIndicator(text) {
+  indicatorText.textContent = text;
+  indicator.classList.add('show');
+}
+function hideIndicator() { indicator.classList.remove('show'); }
+
+// myToken：发起这次朗读时的令牌。中途 token 变了就立即作废
+function speakOne(item, myToken) {
+  return new Promise((resolve) => {
+    if (isMuted || myToken !== speechToken) { resolve(); return; }
+    try {
+      if (!voiceZh || !voiceEn) loadVoices();
+
+      const u = new SpeechSynthesisUtterance(item.text);
+      if (item.lang === 'en') {
+        u.lang = 'en-US';
+        u.voice = voiceEn || null;
+        u.rate = 0.82;
+        u.pitch = 1.0;
+        showIndicator('🇬🇧 ' + item.text);
+      } else {
+        u.lang = 'zh-CN';
+        u.voice = voiceZh || null;
+        u.rate = 0.95;
+        u.pitch = 1.05;
+        showIndicator('🔊 ' + (item.text.length > 26 ? item.text.slice(0, 26) + '...' : item.text));
+      }
+      u.volume = 1;
+
+      let resolved = false;
+      const finish = () => { if (!resolved) { resolved = true; resolve(); } };
+
+      const heartbeat = setInterval(() => {
+        if (resolved) { clearInterval(heartbeat); return; }
+        // token 变了：这次朗读已作废，立即结束
+        if (myToken !== speechToken) { clearInterval(heartbeat); finish(); return; }
+        if (!synth.speaking && !synth.pending) { clearInterval(heartbeat); finish(); }
+      }, 200);
+
+      const keepAlive = setInterval(() => {
+        if (resolved || myToken !== speechToken) { clearInterval(keepAlive); return; }
+        if (synth.speaking) { synth.pause(); synth.resume(); }
+      }, 10000);
+
+      const cleanFinish = () => {
+        clearInterval(heartbeat);
+        clearInterval(keepAlive);
+        finish();
+      };
+      u.onend = cleanFinish;
+      u.onerror = cleanFinish;
+
+      synth.speak(u);
+    } catch (e) {
+      console.warn('Speak error', e);
+      resolve();
+    }
+  });
+}
+
+function speakSequence(sequence, myToken) {
+  return _runSequence(sequence, myToken);
+}
+
+async function _runSequence(sequence, myToken) {
+  if (!sequence || isMuted) return;
+  const total = sequence.length;
+  // 只有当前 token 才更新进度条
+  if (myToken === speechToken) progressFill.style.width = '0%';
+
+  for (let i = 0; i < sequence.length; i++) {
+    // 每句开始前都检查 token
+    if (myToken !== speechToken) return;
+    if (myToken === speechToken) progressFill.style.width = ((i / total) * 100) + '%';
+    await speakOne(sequence[i], myToken);
+    // 念完一句再检查一次 token
+    if (myToken !== speechToken) return;
+    progressFill.style.width = (((i + 1) / total) * 100) + '%';
+    await new Promise(r => setTimeout(r, 280));
+    if (myToken !== speechToken) return;
+  }
+  // 全部念完且仍是当前 token，才触发翻页
+  if (myToken === speechToken) {
+    hideIndicator();
+    if (speechFinishedCallback) {
+      const cb = speechFinishedCallback;
+      speechFinishedCallback = null;
+      cb();
+    }
+  }
+}
+
+let speechFinishedCallback = null;
+
+// 停止当前所有朗读：让 token +1，使所有进行中的回调全部作废
+function stopSpeech() {
+  speechToken++;            // 关键：旧的播放循环检测到 token 变了会立即退出
+  speechFinishedCallback = null;
+  try { synth.cancel(); } catch(e) {}
+  // 某些浏览器 cancel 后仍有残留，再 cancel 一次
+  setTimeout(() => { try { synth.cancel(); } catch(e) {} }, 0);
+  hideIndicator();
+}
+
+function toggleMute() {
+  isMuted = !isMuted;
+  const btn = document.getElementById('muteBtn');
+  if (isMuted) {
+    btn.textContent = '🔇 朗读关';
+    btn.classList.add('muted');
+    stopSpeech();
+    if (isPlaying) startTimer();
+  } else {
+    btn.textContent = '🔊 朗读开';
+    btn.classList.remove('muted');
+    repeatSpeech();
+  }
+}
+
+function repeatSpeech() {
+  stopSpeech();
+  const myToken = speechToken;   // stopSpeech 已 +1，这里拿到的是最新 token
+  setTimeout(() => {
+    if (myToken !== speechToken) return;  // 这期间又翻页了，作废
+    const s = slides[currentIndex];
+    if (s.sequence && !isMuted) speakSequence(s.sequence, myToken);
+  }, 120);
+}
+
+// ============== 渲染 ==============
+const stage = document.getElementById('stage');
+const dotsContainer = document.getElementById('dots');
+const progressFill = document.getElementById('progressFill');
+const playBtn = document.getElementById('playBtn');
+const jumpBtn = document.getElementById('jumpBtn');
+
+let currentIndex = 0;
+let isPlaying = true;
+let timer = null;
+let progressTimer = null;
+const MUTED_DURATION = 9000;
+
+function renderSlide(slide, idx) {
+  const div = document.createElement('div');
+  div.className = 'slide';
+  div.dataset.idx = idx;
+
+  let bodyHTML = '';
+  let headerHTML = '';
+
+  if (slide.type === 'cover') {
+    div.classList.add('cover-slide');
+    if (slide.bg === 'purple') div.classList.add('purple');
+    if (slide.bg === 'green') div.classList.add('green');
+    if (slide.bg === 'night') div.classList.add('night');
+    div.innerHTML = `
+      <div class="cover-emoji">${slide.icon}</div>
+      <div class="cover-mega-title">${slide.title}</div>
+      <div class="cover-sub">${slide.sub}</div>
+    `;
+    stage.appendChild(div);
+    return;
+  }
+
+  const tagClass = slide.section === 'review' ? 'tag-review'
+                 : slide.section === 'new' ? 'tag-new' : 'tag-tip';
+  headerHTML = `
+    <div class="slide-header">
+      <div class="chapter-tag ${tagClass}">${slide.tag || ''}</div>
+      <div class="slide-counter">${idx + 1} / ${slides.length}</div>
+    </div>
+    <div class="slide-title">${slide.title}</div>
+    <div class="slide-subtitle">${slide.sub || ''}</div>
+  `;
+
+  if (slide.type === 'word') {
+    const meaningContent = slide.meaningHTML
+      ? slide.meaningHTML
+      : `<span class="pos">${slide.pos}</span>${slide.meaning}`;
+    bodyHTML = `
+      <div class="slide-body">
+        <div class="word-card">
+          <div class="word-left">
+            <div class="word-big" onclick="speakWord('${slide.word.replace(/'/g, "\\'")}')">${slide.word}</div>
+            <div class="speak-tag" onclick="speakWord('${slide.word.replace(/'/g, "\\'")}')">🔊 点单词听发音</div>
+            <div class="word-phonetic">${slide.phonetic}</div>
+            <div class="word-meaning">${meaningContent}</div>
+            <div class="word-phrase"><span class="label">短语</span>${slide.phrase}</div>
+          </div>
+          <div class="word-emoji">${slide.emoji}</div>
+        </div>
+      </div>
+    `;
+  } else if (slide.type === 'concept') {
+    bodyHTML = `
+      <div class="slide-body">
+        <div class="concept-grid">
+          ${slide.rows.map(r => `
+            <div class="concept-row ${r.cls}">
+              <div class="concept-icon">${r.icon}</div>
+              <div class="concept-text">${r.text}</div>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    `;
+  } else if (slide.type === 'code') {
+    bodyHTML = `
+      <div class="slide-body">
+        <div class="code-block">
+          <div class="code-content"><pre style="font-family:inherit;font-size:inherit;line-height:inherit;color:inherit;background:transparent;margin:0;">${slide.code}</pre></div>
+        </div>
+        ${slide.explain ? `<div class="code-explain">${slide.explain}</div>` : ''}
+      </div>
+    `;
+  } else if (slide.type === 'logic') {
+    const boxClass = slide.logicType === 'or' ? 'or' : '';
+    const ruleClass = slide.logicType === 'or' ? 'or' : '';
+    bodyHTML = `
+      <div class="slide-body">
+        <div class="logic-hero">
+          <div class="logic-symbol-box ${boxClass}">
+            <div class="logic-symbol">${slide.symbol}</div>
+            <div class="logic-cn">${slide.cn}</div>
+          </div>
+          <div class="logic-rule ${ruleClass}">${slide.rule}</div>
+        </div>
+        <div class="code-block">
+          <div class="code-content"><pre style="font-family:inherit;font-size:inherit;line-height:inherit;color:inherit;background:transparent;margin:0;">${slide.code}</pre></div>
+        </div>
+      </div>
+    `;
+  } else if (slide.type === 'example') {
+    bodyHTML = `
+      <div class="slide-body">
+        <div class="example-grid">
+          ${slide.examples.map(e => `
+            <div class="example-cell ${e.good ? 'good' : 'bad'}">
+              <div class="example-vals">${e.vals}</div>
+              <div class="example-expr">${e.expr}</div>
+              <div class="example-result">${e.good ? '✓ ' : '✗ '}${e.result}</div>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    `;
+  } else if (slide.type === 'andor') {
+    bodyHTML = `
+      <div class="slide-body">
+        <div class="andor-grid">
+          <div class="andor-card andor-and">
+            <div class="andor-symbol">&&</div>
+            <div class="andor-cn">与</div>
+            <div class="andor-rule">两个条件<span class="key-and">都成立</span><br>整体才成立<br>👉 记住一个字：<span class="key-and">都</span></div>
+          </div>
+          <div class="andor-card andor-or">
+            <div class="andor-symbol">||</div>
+            <div class="andor-cn">或</div>
+            <div class="andor-rule">只要<span class="key-or">有一个成立</span><br>整体就成立<br>👉 记住一个字：<span class="key-or">有</span></div>
+          </div>
+        </div>
+      </div>
+    `;
+  } else if (slide.type === 'ifelse') {
+    bodyHTML = `
+      <div class="slide-body">
+        <div class="ifelse-flow">
+          <div class="ifelse-top">🤔 先看 if 的条件成不成立？</div>
+          <div class="ifelse-branch">
+            <div class="branch-card branch-yes">
+              <div class="branch-head">✓ 条件成立</div>
+              <div class="branch-body">走"是"这边<br>执行 <b>if { }</b> 里的代码</div>
+            </div>
+            <div class="branch-card branch-no">
+              <div class="branch-head">✗ 条件不成立</div>
+              <div class="branch-body">走"否"这边<br>执行 <b>else { }</b> 里的代码</div>
+            </div>
+          </div>
+          <div style="margin-top:16px;font-size:18px;font-weight:900;color:#C84B1A;">⚠️ 两边只走一边，绝不会都执行！</div>
+        </div>
+      </div>
+    `;
+  } else if (slide.type === 'theme') {
+    bodyHTML = `
+      <div class="slide-body">
+        <div class="theme-card">
+          <div class="theme-emoji-big">${slide.themeEmoji}</div>
+          <div class="theme-info">
+            <div class="theme-label">${slide.themeLabel}</div>
+            <div class="theme-name">${slide.themeName}</div>
+            <div class="theme-desc">${slide.themeDesc}</div>
+            <div class="theme-list">${slide.themeList}</div>
+          </div>
+        </div>
+      </div>
+    `;
+  } else if (slide.type === 'compare') {
+    bodyHTML = `
+      <div class="slide-body">
+        <div class="compare-grid">
+          <div class="compare-card compare-gege">
+            <div class="compare-title">${slide.gege.icon} ${slide.gege.title}</div>
+            <ul class="compare-list">
+              ${slide.gege.items.map(i => `<li>${i}</li>`).join('')}
+            </ul>
+          </div>
+          <div class="compare-card compare-didi">
+            <div class="compare-title">${slide.didi.icon} ${slide.didi.title}</div>
+            <ul class="compare-list">
+              ${slide.didi.items.map(i => `<li>${i}</li>`).join('')}
+            </ul>
+          </div>
+        </div>
+      </div>
+    `;
+  } else if (slide.type === 'tip') {
+    bodyHTML = `
+      <div class="slide-body" style="justify-content:center;">
+        <div class="tip-card">
+          <span class="star">${slide.tipStar}</span>
+          ${slide.tipText}
+        </div>
+      </div>
+    `;
+  }
+
+  div.innerHTML = headerHTML + bodyHTML;
+  stage.appendChild(div);
+}
+
+slides.forEach((s, i) => renderSlide(s, i));
+
+slides.forEach((s, i) => {
+  const dot = document.createElement('div');
+  dot.className = 'dot ' + (s.section === 'review' ? 'review' : 'new');
+  dot.onclick = () => goTo(i);
+  dotsContainer.appendChild(dot);
+});
+
+const allSlides = document.querySelectorAll('.slide');
+const allDots = document.querySelectorAll('.dot');
+
+function showSlide(idx) {
+  allSlides.forEach(s => s.classList.remove('active'));
+  allDots.forEach(d => d.classList.remove('active'));
+  allSlides[idx].classList.add('active');
+  allDots[idx].classList.add('active');
+
+  if (slides[idx].section === 'review' || slides[idx].section === 'intro') {
+    jumpBtn.textContent = '⏩ 跳到预习';
+  } else {
+    jumpBtn.textContent = '⏪ 回到复习';
+  }
+  progressFill.style.width = '0%';
+}
+
+function goTo(idx) {
+  if (idx < 0) idx = slides.length - 1;
+  if (idx >= slides.length) idx = 0;
+  stopSpeech();              // 令牌 +1，作废所有旧朗读
+  clearInterval(progressTimer);
+  clearTimeout(timer);
+
+  currentIndex = idx;
+  showSlide(currentIndex);
+
+  const myToken = speechToken;   // 本次切换后的最新令牌
+
+  if (isPlaying) {
+    if (isMuted) {
+      startTimer();
+    } else {
+      const s = slides[idx];
+      if (s.sequence && s.sequence.length > 0) {
+        speechFinishedCallback = () => {
+          // 只有本次令牌仍然有效，才在念完后翻页
+          if (isPlaying && myToken === speechToken) {
+            setTimeout(() => {
+              if (isPlaying && myToken === speechToken) nextSlide();
+            }, 1200);
+          }
+        };
+        speakSequence(s.sequence, myToken);
+      } else {
+        startTimer();
+      }
+    }
+  }
+}
+
+function nextSlide() { goTo(currentIndex + 1); }
+function prevSlide() { goTo(currentIndex - 1); }
+
+function startTimer() {
+  clearInterval(progressTimer);
+  clearTimeout(timer);
+  const startTime = Date.now();
+  progressTimer = setInterval(() => {
+    const elapsed = Date.now() - startTime;
+    const pct = Math.min(100, (elapsed / MUTED_DURATION) * 100);
+    progressFill.style.width = pct + '%';
+    if (pct >= 100) {
+      clearInterval(progressTimer);
+      nextSlide();
+    }
+  }, 60);
+}
+
+function togglePlay() {
+  isPlaying = !isPlaying;
+  playBtn.textContent = isPlaying ? '⏸' : '▶';
+  if (isPlaying) {
+    goTo(currentIndex);
+  } else {
+    stopSpeech();
+    clearInterval(progressTimer);
+    clearTimeout(timer);
+  }
+}
+
+function toggleSection() {
+  const currentSection = slides[currentIndex].section;
+  if (currentSection === 'intro' || currentSection === 'review') {
+    const firstNew = slides.findIndex(s => s.section === 'new');
+    goTo(firstNew);
+  } else {
+    const firstReview = slides.findIndex(s => s.section === 'review');
+    goTo(firstReview);
+  }
+}
+
+function speakWord(word) {
+  stopSpeech();
+  const myToken = speechToken;
+  setTimeout(() => {
+    if (myToken !== speechToken) return;
+    if (!voiceEn) loadVoices();
+    const u = new SpeechSynthesisUtterance(word);
+    u.lang = 'en-US';
+    u.voice = voiceEn || null;
+    u.rate = 0.78;
+    u.volume = 1;
+    showIndicator('🇬🇧 ' + word);
+    u.onend = () => { if (myToken === speechToken) hideIndicator(); };
+    u.onerror = () => { if (myToken === speechToken) hideIndicator(); };
+    synth.speak(u);
+  }, 120);
+}
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); nextSlide(); }
+  else if (e.key === 'ArrowLeft') { e.preventDefault(); prevSlide(); }
+  else if (e.key === 'p' || e.key === 'P') { togglePlay(); }
+  else if (e.key === 'r' || e.key === 'R') { repeatSpeech(); }
+});
+
+let touchStartX = 0;
+document.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; });
+document.addEventListener('touchend', e => {
+  const dx = e.changedTouches[0].clientX - touchStartX;
+  if (Math.abs(dx) > 50) { if (dx < 0) nextSlide(); else prevSlide(); }
+});
+
+document.getElementById('startBtn').addEventListener('click', () => {
+  try {
+    const unlock = new SpeechSynthesisUtterance('');
+    unlock.volume = 0;
+    synth.speak(unlock);
+  } catch(e) {}
+  loadVoices();
+  document.getElementById('startOverlay').classList.add('hidden');
+  setTimeout(() => { showSlide(0); goTo(0); }, 400);
+});
+
+showSlide(0);
+</script>
+
+</body>
+</html>

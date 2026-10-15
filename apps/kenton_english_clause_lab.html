@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<script src="../assets/learning-sync.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>哥哥英语 · 状语从句时光机</title>
+<style>
+:root{--blue:#2f6fb3;--blued:#225182;--bluebg:#e8f0fa;--gold:#f2b632;--golddk:#c98a00;
+ --ink:#23303a;--paper:#eef5fc;--card:#fff;--line:#dbe7f3;--green:#2e9c54;--greenbg:#e9f7ee;
+ --red:#e1553f;--redbg:#fdecea;--muted:#7d8a96;--purple:#7b54c0;--purplebg:#f1ebfa;--orange:#e8842c;}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+html,body{margin:0;padding:0;}
+body{font-family:'LXGW WenKai Screen','PingFang SC','Microsoft YaHei',system-ui,sans-serif;
+ background:radial-gradient(circle at 10% 4%,#d3e6fb 0,transparent 40%),radial-gradient(circle at 92% 98%,#dde9fb 0,transparent 44%),var(--paper);
+ color:var(--ink);min-height:100vh;padding:0 0 50px;}
+.wrap{max-width:620px;margin:0 auto;padding:12px;}
+.top{display:flex;align-items:center;gap:10px;padding:8px 2px 6px;}
+.badge{background:var(--blue);color:#fff;font-weight:800;font-size:17px;padding:6px 13px;border-radius:13px 13px 13px 4px;box-shadow:0 4px 0 var(--blued);}
+.top h1{font-size:16px;margin:0;flex:1;}
+.top .home{text-decoration:none;font-size:20px;background:#fff;width:38px;height:38px;border-radius:11px;display:grid;place-items:center;color:var(--ink);box-shadow:0 3px 0 #cddcec;}
+.mute{font-size:18px;background:#fff;border:none;width:38px;height:38px;border-radius:11px;cursor:pointer;box-shadow:0 3px 0 #cddcec;}
+.intro{font-size:13px;color:var(--muted);line-height:1.7;background:#fff;border:2px solid var(--line);border-radius:14px;padding:12px 14px;margin:8px 0;}
+.intro b{color:var(--blued);}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:6px;}
+.tile{background:#fff;border:2px solid var(--line);border-radius:18px;padding:16px 12px;cursor:pointer;box-shadow:0 6px 0 #e1ecf7;text-align:center;transition:transform .08s;border-top:6px solid var(--blue);position:relative;}
+.tile:active{transform:translateY(3px);box-shadow:0 3px 0 #e1ecf7;}
+.tile .ic{font-size:38px;line-height:1;}
+.tile .nm{font-weight:800;font-size:16px;margin-top:8px;color:var(--blued);}
+.tile .ds{font-size:11.5px;color:var(--muted);margin-top:4px;line-height:1.5;}
+.tile .done{position:absolute;top:6px;right:8px;font-size:11px;font-weight:800;color:var(--green);background:var(--greenbg);border-radius:8px;padding:2px 7px;}
+.card{background:var(--card);border:2px solid var(--line);border-radius:18px;padding:16px;margin:11px 0;box-shadow:0 6px 0 #e4eef8;}
+.h2{font-size:18px;font-weight:800;margin:0 0 4px;color:var(--blued);}
+.hint{font-size:13px;color:var(--muted);line-height:1.7;}
+.btn{font-family:inherit;font-weight:800;font-size:15px;border:none;border-radius:13px;padding:11px 16px;cursor:pointer;color:#fff;background:var(--blue);box-shadow:0 5px 0 var(--blued);transition:transform .06s;}
+.btn:active{transform:translateY(3px);box-shadow:0 2px 0 var(--blued);}
+.btn.gold{background:var(--gold);box-shadow:0 5px 0 var(--golddk);color:#5a3d00;}
+.btn.ghost{background:#fff;color:var(--blued);border:2px solid var(--blue);box-shadow:0 5px 0 #cddcec;}
+.btn.green{background:var(--green);box-shadow:0 5px 0 #1f7a3e;}
+.btn.sm{font-size:13.5px;padding:9px 13px;}
+.btn:disabled{opacity:.45;box-shadow:none;transform:none;}
+.row{display:flex;gap:9px;flex-wrap:wrap;align-items:center;}
+.center{justify-content:center;}
+.hide{display:none!important;}
+.back{background:none;border:none;color:var(--muted);font-size:15px;font-family:inherit;cursor:pointer;font-weight:800;padding:6px 2px;}
+.why{background:var(--greenbg);border-left:5px solid var(--green);border-radius:10px;padding:11px 14px;font-size:14px;line-height:1.7;margin:10px 0;}
+.why.bad{background:var(--redbg);border-left-color:var(--red);}
+.why .lab{font-weight:800;color:var(--green);}
+.why.bad .lab{color:var(--red);}
+.opts{display:grid;gap:10px;margin-top:8px;}
+.opt{font-family:inherit;font-size:16px;text-align:left;background:#fff;border:2px solid var(--line);border-radius:13px;padding:12px 15px;cursor:pointer;color:var(--ink);box-shadow:0 4px 0 #e4eef8;}
+.opt:active{transform:translateY(2px);box-shadow:0 2px 0 #e4eef8;}
+.opt.right{background:var(--greenbg);border-color:var(--green);color:var(--green);font-weight:800;}
+.opt.wrong{background:var(--redbg);border-color:var(--red);color:var(--red);font-weight:800;}
+.opt.off{pointer-events:none;}
+.formula{background:var(--bluebg);border-radius:13px;padding:12px 14px;font-size:15px;line-height:1.8;margin:8px 0;}
+.formula b{color:var(--blued);}
+.sen{font-size:17px;font-weight:700;line-height:1.7;text-align:center;margin:10px 0 2px;}
+.sen .sub{background:var(--bluebg);border-radius:7px;padding:1px 5px;color:var(--blued);}
+.sen .main{background:#fff6dd;border-radius:7px;padding:1px 5px;color:var(--golddk);}
+.sencn{font-size:13px;color:var(--muted);text-align:center;margin-bottom:6px;}
+.say{font-family:inherit;font-size:13.5px;font-weight:800;padding:7px 13px;border-radius:11px;border:2px solid var(--gold);background:#fffaf0;color:var(--golddk);cursor:pointer;box-shadow:0 3px 0 #f0dca0;}
+.pgr{font-size:12.5px;color:var(--muted);text-align:center;margin:2px 0 6px;}
+/* ---- 时光机时间轴 ---- */
+.tl{position:relative;height:190px;background:linear-gradient(180deg,#f7fbff,#eef5fd);border:2px solid var(--line);border-radius:14px;margin:10px 0;overflow:hidden;}
+.tl .axis{position:absolute;left:4%;right:4%;top:130px;height:5px;background:#c8d9ec;border-radius:3px;}
+.tl .axis:after{content:"";position:absolute;right:-2px;top:-6px;border-left:14px solid #c8d9ec;border-top:8px solid transparent;border-bottom:8px solid transparent;}
+.tl .mk{position:absolute;top:142px;font-size:12px;font-weight:800;color:var(--muted);transform:translateX(-50%);}
+.tl .nowline{position:absolute;top:26px;bottom:44px;width:0;border-left:2px dashed var(--red);left:50%;}
+.tl .nowtag{position:absolute;top:8px;left:50%;transform:translateX(-50%);font-size:11px;font-weight:800;color:var(--red);}
+.ech{position:absolute;font-size:12.5px;font-weight:800;background:#fff;border:2px solid var(--blue);color:var(--blued);border-radius:10px;padding:5px 8px;box-shadow:0 3px 0 #d7e5f4;opacity:0;transform:translateY(10px) scale(.85);transition:all .5s;white-space:nowrap;}
+.ech.gold{border-color:var(--gold);color:var(--golddk);}
+.ech.go{opacity:1;transform:translateY(0) scale(1);}
+.ech .tag{display:block;font-size:10.5px;color:var(--red);font-weight:800;}
+.ebar{position:absolute;height:16px;border-radius:8px;background:repeating-linear-gradient(90deg,var(--blue) 0 12px,#6f9fd0 12px 24px);width:0;transition:width 1.6s linear;opacity:.9;}
+.ebar.gold{background:repeating-linear-gradient(90deg,var(--gold) 0 12px,#f5cf7a 12px 24px);}
+.ebar.wait{background:repeating-linear-gradient(90deg,#b9c6d4 0 10px,#dde6ee 10px 20px);}
+.ebarlab{position:absolute;font-size:11.5px;font-weight:800;color:var(--blued);opacity:0;transition:opacity .4s;white-space:nowrap;}
+.ebarlab.go{opacity:1;}
+.tlcap{background:var(--purplebg);border-radius:11px;padding:10px 13px;font-size:14px;line-height:1.7;min-height:44px;margin:8px 0;}
+.tlcap b{color:var(--purple);}
+@keyframes pulse{0%,100%{transform:scale(1);}50%{transform:scale(1.12);}}
+.ech.pulse{animation:pulse 1s infinite;}
+@keyframes flash{0%,100%{background:#fff;}50%{background:#ffe9a8;}}
+.ech.flash{animation:flash .8s 3;}
+/* ---- 变身机 ---- */
+.morph{background:#fff;border:2px solid var(--line);border-radius:13px;padding:13px;margin:9px 0;font-size:16.5px;line-height:1.9;text-align:center;font-weight:700;}
+.morph s{color:var(--red);}
+.morph b{color:var(--green);background:var(--greenbg);border-radius:6px;padding:0 4px;}
+.morph.zoom{animation:pop .45s;}
+@keyframes pop{0%{transform:scale(.7);opacity:0;}60%{transform:scale(1.06);}100%{transform:scale(1);opacity:1;}}
+.stepn{background:var(--bluebg);border-radius:10px;padding:9px 12px;font-size:13.5px;line-height:1.7;margin:6px 0;}
+.stamp{display:inline-block;border:3px solid var(--green);color:var(--green);font-weight:800;border-radius:10px;padding:3px 10px;font-size:14px;transform:rotate(-6deg);margin:6px 0;}
+/* ---- 红绿灯 ---- */
+.lightbox{display:flex;gap:12px;justify-content:center;margin:10px 0;flex-wrap:wrap;}
+.lamp{flex:1;min-width:130px;background:#243447;border-radius:15px;padding:12px;text-align:center;color:#fff;}
+.lamp .bulb{width:44px;height:44px;border-radius:50%;margin:4px auto;background:#44546a;transition:all .5s;display:grid;place-items:center;font-size:20px;}
+.lamp.on1 .bulb{background:#3ddc74;box-shadow:0 0 22px #3ddc74;}
+.lamp.on2 .bulb{background:#4aa3ff;box-shadow:0 0 22px #4aa3ff;}
+.lamp .t{font-size:12.5px;font-weight:800;line-height:1.5;}
+.lamp .v{font-size:15px;font-weight:800;color:#ffe07a;min-height:22px;}
+/* ---- 分拣机 ---- */
+.baskets{display:flex;gap:12px;margin:12px 0;}
+.basket{flex:1;border:3px dashed var(--blue);background:var(--bluebg);border-radius:15px;padding:14px 8px;text-align:center;font-weight:800;color:var(--blued);cursor:pointer;font-size:15px;font-family:inherit;}
+.basket small{display:block;font-weight:600;color:var(--muted);font-size:11px;margin-top:3px;}
+.basket:active{transform:scale(.97);}
+.basket.hit{background:var(--greenbg);border-color:var(--green);color:var(--green);}
+.basket.miss{background:var(--redbg);border-color:var(--red);color:var(--red);}
+/* ---- 脑图 ---- */
+.mapsvg{width:100%;height:auto;display:block;}
+.mapsvg .node{cursor:pointer;}
+.famchips{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0;}
+.chip{font-family:inherit;font-size:14.5px;font-weight:800;padding:8px 13px;border-radius:11px;border:2px solid var(--line);background:#fff;color:var(--blued);cursor:pointer;box-shadow:0 3px 0 #e4eef8;}
+.chip.on{background:var(--blue);color:#fff;border-color:var(--blue);}
+/* ---- 篮球 ---- */
+.court{position:relative;height:110px;background:linear-gradient(180deg,#fdf3e3,#f7e3c4);border:2px solid #eed9b0;border-radius:14px;margin:8px 0;overflow:hidden;}
+.hoop{position:absolute;right:14px;top:12px;font-size:34px;}
+.ball{position:absolute;left:18px;bottom:10px;font-size:30px;opacity:0;}
+.ball.shoot{animation:shoot 1s forwards;}
+@keyframes shoot{0%{opacity:1;left:18px;bottom:10px;}50%{left:45%;bottom:75px;}100%{opacity:1;left:78%;bottom:44px;transform:rotate(360deg);}}
+.scorebd{position:absolute;left:12px;top:10px;font-size:14px;font-weight:800;color:#8a5a00;}
+.en{border-bottom:1px dashed rgba(122,110,130,.4);cursor:pointer;padding:0 1px;border-radius:3px;}
+.en:active{background:#ffe9a8;}
+#bub{position:fixed;background:#fff;border-radius:13px;padding:11px 15px;box-shadow:0 8px 24px rgba(0,0,0,.22);z-index:9999;max-width:280px;text-align:center;border:2px solid var(--gold);animation:pop .25s;}
+#bub .be{font-size:13.5px;font-weight:800;}
+#bub .bc{font-size:15px;font-weight:800;color:var(--blued);margin-top:3px;}
+.rec{background:var(--bluebg);border-radius:12px;padding:11px 13px;margin:8px 0;font-size:13.5px;line-height:1.8;}
+.rec b{color:var(--blued);}
+.tipbar{font-size:12px;color:var(--muted);text-align:center;margin-top:14px;line-height:1.6;}
+.proverb{background:linear-gradient(180deg,#fffaf0,#fff3d9);border:2px solid var(--gold);border-radius:13px;padding:12px;text-align:center;margin:10px 0;}
+.proverb .p1{font-size:15.5px;font-weight:800;color:#6a4a00;}
+.proverb .p2{font-size:12.5px;color:var(--muted);margin-top:3px;}
+textarea.exp{width:100%;height:120px;font-family:inherit;font-size:12px;border:2px solid var(--line);border-radius:10px;padding:8px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top">
+    <a class="home" href="../apps.html?who=kenton">‹</a>
+    <span class="badge">哥哥</span>
+    <h1>英语 · 状语从句时光机</h1>
+    <button class="mute" id="muteBtn">🔔</button>
+  </div>
+  <div id="home"></div>
+  <div id="view" class="hide">
+    <button class="back" id="backBtn">← 回时光机大厅</button>
+    <div id="stage"></div>
+  </div>
+  <div class="tipbar">把「状语从句」讲义做成会动的时光机——看动画懂时态，不是刷题。<br>英文看不懂？<b>长按</b>带虚线的英文可以看中文。</div>
+</div>
+
+<script>
+"use strict";
+/* ===================== 朗读：audio-first（预合成神经音优先，缺失回退浏览器TTS） ===================== */
+const AUDIO_DIR="audio/kenton_english_clause_lab/";
+let exAudio=null,audioTok=0;
+/* 必须与 tools 脚本 fnv() 一致：对 (lang+"|"+text) 的 UTF-8 字节做 FNV-1a，8位十六进制 */
+function audioHash(s){const b=new TextEncoder().encode(s);let x=0x811c9dc5>>>0;for(let i=0;i<b.length;i++){x^=b[i];x=Math.imul(x,0x01000193)>>>0;}return('0000000'+x.toString(16)).slice(-8);}
+function getExAudio(){if(!exAudio){exAudio=new Audio();exAudio.setAttribute('playsinline','');exAudio.preload='auto';try{document.body.appendChild(exAudio);}catch(e){}}return exAudio;}
+function mkUtter(t,lang){const u=new SpeechSynthesisUtterance(t);u.lang=(lang==='en')?'en-US':'zh-CN';u.rate=(lang==='en')?0.9:0.95;u.pitch=1.03;
+  try{const vs=speechSynthesis.getVoices();const v=vs.find(x=>x.lang&&x.lang.startsWith(lang==='en'?'en':'zh'));if(v)u.voice=v;}catch(e){}return u;}
+function ttsSpeakOnce(t,lang){if(!('speechSynthesis'in window))return;try{speechSynthesis.cancel();speechSynthesis.resume();}catch(e){}try{speechSynthesis.speak(mkUtter(t,lang));}catch(e){}}
+function speakOnce(t,lang){
+  lang=lang||'en';
+  try{speechSynthesis.cancel();}catch(e){}
+  audioTok++;const myTok=audioTok;
+  const a=getExAudio();let done=false;
+  const stale=()=>done||myTok!==audioTok;
+  const fb=()=>{if(stale())return;done=true;ttsSpeakOnce(t,lang);};
+  a.onended=()=>{if(stale())return;done=true;};
+  a.onerror=fb;
+  try{a.pause();}catch(e){}
+  a.src=AUDIO_DIR+audioHash(lang+"|"+t)+".mp3";
+  try{a.currentTime=0;}catch(e){}
+  const p=a.play();
+  if(p&&typeof p.catch==='function')p.catch(fb);
+}
+/* ===================== 音效 + 静音 ===================== */
+let actx=null,muted=localStorage.getItem('kcl_mute')==='1';
+function beep(ok){
+  if(muted)return;
+  try{
+    if(!actx)actx=new (window.AudioContext||window.webkitAudioContext)();
+    if(actx.state==='suspended')actx.resume();
+    const t=actx.currentTime;
+    (ok?[[523,0],[659,.09],[784,.18]]:[[196,0],[147,.14]]).forEach(f=>{
+      const o=actx.createOscillator(),g=actx.createGain();
+      o.type=ok?'triangle':'sawtooth';o.frequency.value=f[0];
+      g.gain.setValueAtTime(.0001,t+f[1]);g.gain.exponentialRampToValueAtTime(.18,t+f[1]+.02);g.gain.exponentialRampToValueAtTime(.0001,t+f[1]+.22);
+      o.connect(g);g.connect(actx.destination);o.start(t+f[1]);o.stop(t+f[1]+.26);});
+  }catch(e){}
+}
+function syncMute(){document.getElementById('muteBtn').textContent=muted?'🔕':'🔔';}
+document.getElementById('muteBtn').onclick=()=>{muted=!muted;localStorage.setItem('kcl_mute',muted?'1':'0');syncMute();};
+syncMute();
+
+/* ===================== 记录（localStorage + 导出） ===================== */
+const EV_KEY='kcl_events_v1';
+function loadEv(){try{return JSON.parse(localStorage.getItem(EV_KEY)||'[]');}catch(e){return[];}}
+function logEvent(ev){const a=loadEv();a.push(ev);localStorage.setItem(EV_KEY,JSON.stringify(a));}
+function lastScore(lesson){const a=loadEv();for(let i=a.length-1;i>=0;i--)if(a[i].lesson===lesson)return a[i];return null;}
+
+/* ===================== 长按英文看中文 ===================== */
+const DICT={'while':'当…的时候(同时)','typing':'正在打字','letters':'信件','notes':'笔记','taking notes':'记笔记',
+'when':'当…的时候','typed':'打字(过去式)','before':'在…之前','arrived':'到达(过去式)','arrive':'到达','airport':'机场',
+'plane':'飞机','had taken off':'已经起飞了','taken off':'起飞','after':'在…之后','school':'学校','class':'课','ended':'结束了',
+'until':'直到','everyone':'每个人','here':'这里','since':'自从','played':'玩/打(过去式)','basketball':'篮球',
+'as soon as':'一…就','Shanghai':'上海','call':'打电话','by the time':'到…的时候','got home':'到家','brother':'弟弟/哥哥',
+'finished':'完成了','homework':'作业','so that':'为了/以便','stay':'留下','reading':'阅读','classroom':'教室',
+'big':'大的','hold':'容纳','people':'人','runs':'跑','fast':'快','no one':'没有人','catch up with':'追上',
+'enough':'足够','too':'太','tired':'累的','dark':'黑暗的','bright':'明亮的','see':'看见','anything':'任何东西',
+'room':'房间','such':'如此(接名词)','because':'因为(接句子)','because of':'因为(接短语)','rain':'雨','rained':'下雨了',
+'heavily':'猛烈地','ill':'生病的','illness':'疾病','weather':'天气','if':'如果','rains':'下雨','tomorrow':'明天',
+'stay at home':'待在家','rest':'休息','please':'请','him':'他','will':'将要','practice':'练习','perfect':'完美的',
+'a will':'志向/意志','way':'方法/路','Cherry':'Cherry(人名)','Mike':'Mike(人名)','Mark':'Mark(人名)','No.1':'第一名'};
+function getTrans(t){
+  if(!t)return null;const c=t.trim().replace(/[.,!?;:'"]+$/,'').trim();
+  if(DICT[c])return DICT[c];const lo=c.toLowerCase();
+  for(const k in DICT)if(k.toLowerCase()===lo)return DICT[k];
+  const ws=c.split(/\s+/);
+  if(ws.length>1)return ws.map(w=>{const wc=w.replace(/[.,!?;:'"]+$/,'');if(DICT[wc])return DICT[wc];const wl=wc.toLowerCase();for(const k in DICT)if(k.toLowerCase()===wl)return DICT[k];return wc;}).join(' · ');
+  return null;
+}
+function hideBub(){const b=document.getElementById('bub');if(b)b.remove();}
+function showBub(text,x,y){
+  hideBub();const tr=getTrans(text);if(!tr)return;
+  const b=document.createElement('div');b.id='bub';
+  b.innerHTML='<div class="be">'+text+'</div><div class="bc">'+tr+'</div>';
+  document.body.appendChild(b);
+  const r=b.getBoundingClientRect();
+  let l=x-r.width/2,t=y-r.height-16;
+  if(l<8)l=8;if(l+r.width>window.innerWidth-8)l=window.innerWidth-r.width-8;if(t<8)t=y+24;
+  b.style.left=l+'px';b.style.top=t+'px';
+  setTimeout(()=>{document.addEventListener('click',hideBub,{once:true});document.addEventListener('touchstart',hideBub,{once:true});},120);
+}
+let lpT=null,lpEl=null;
+document.addEventListener('touchstart',e=>{const el=e.target.closest('.en');if(!el)return;lpEl=el;const tc=e.touches[0];
+  lpT=setTimeout(()=>{if(lpEl===el){showBub(el.textContent||'',tc.clientX,tc.clientY);if(navigator.vibrate)navigator.vibrate(30);}},480);},{passive:true});
+document.addEventListener('touchend',()=>{clearTimeout(lpT);lpEl=null;},{passive:true});
+document.addEventListener('touchmove',()=>{clearTimeout(lpT);lpEl=null;},{passive:true});
+document.addEventListener('mousedown',e=>{const el=e.target.closest('.en');if(!el)return;lpEl=el;
+  lpT=setTimeout(()=>{if(lpEl===el)showBub(el.textContent||'',e.clientX,e.clientY);},480);});
+document.addEventListener('mouseup',()=>{clearTimeout(lpT);lpEl=null;});
+document.addEventListener('dblclick',e=>{const el=e.target.closest('.en');if(!el)return;e.preventDefault();showBub(el.textContent||'',e.clientX,e.clientY);});
+/* 🔊 按钮统一走 data-say */
+document.addEventListener('click',e=>{const el=e.target.closest('[data-say]');if(!el)return;speakOnce(el.dataset.say,el.dataset.lang||'en');});
+function esc(t){return String(t).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+function enS(t){return '<span class="en">'+esc(t)+'</span>';}
+function sayBtn(t,label){return '<button class="say" data-say="'+esc(t)+'" data-lang="en">🔊 '+(label||'听')+'</button>';}
+
+/* ===================== 内容数据（全部来自「状语从句」讲义） ===================== */
+const TIME=[
+{key:'while',emoji:'🔀',name:'while · 同时进行',
+ rule:'<b>while</b> 表示两个动作<b>同时进行</b> —— 主句、从句<b>都用进行时</b>（be + 动词ing）',
+ sen:'While Cherry is typing letters, we are taking notes.',cn:'当Cherry在打字的时候，我们在记笔记。',
+ type:'parallel',aLab:'⌨️ Cherry is typing…',bLab:'📝 we are taking notes…',
+ caps:['两件事像<b>两条并排的跑道</b>，同一时间一起往前跑','所以两边<b>都穿进行时</b>：is typing ↔ are taking'],
+ q:{stem:'While Cherry is typing letters, we ____ notes.',opts:['are taking','took','had taken'],a:0,
+    why:'while=两动作同时进行，主从句都用进行时 → are taking。'}},
+{key:'when',emoji:'⚡',name:'when + 过去的一刻',
+ rule:'<b>when + 一般过去时</b>（过去某个<b>具体时刻</b>），主句用<b>过去进行时</b>（was/were + ing）',
+ sen:'When Cherry typed letters, we were taking notes.',cn:'当Cherry打字的那一刻，我们正在记笔记。',
+ type:'pastpoint',aLab:'⚡ typed（那一刻）',bLab:'📝 were taking notes…',
+ caps:['when 后面的 typed 是过去的<b>一个时刻</b>，像闪电一闪','那一刻，记笔记<b>正进行到一半</b> → 主句用 were taking（过去进行时）'],
+ q:{stem:'When Cherry typed letters, we ____ notes.',opts:['are taking','were taking','take'],a:1,
+    why:'when+过去时=过去某一刻；那一刻正在做的事用过去进行时 → were taking。'}},
+{key:'before',emoji:'✈️',name:'before · 更早的戴王冠',
+ rule:'<b>Before + 一般过去时</b>，主句用<b>过去完成时（had done）</b>——两件过去的事，<b>更早发生的用 had done</b>',
+ sen:'Before I arrived at the airport, the plane had taken off.',cn:'在我到机场之前，飞机已经起飞了。',
+ type:'order',e1:'✈️ 飞机起飞',e1tag:'更早 👑 had taken off',e2:'🧍 我到机场 arrived',
+ caps:['两件事都发生在过去，但有<b>先后</b>','<b>更早发生</b>的那件（✈️起飞）戴王冠 → 用 <b>had done</b>','before：主句的事更早 → 主句用过去完成时'],
+ q:{stem:'Before I arrived at the airport, the plane ____ off.',opts:['takes','took','had taken'],a:2,
+    why:'两件过去的事，更早的用过去完成时。飞机起飞在"我到"之前 → had taken off。'}},
+{key:'after',emoji:'🏫',name:'after · 王冠换人戴',
+ rule:'<b>After + 过去完成时</b>，主句用<b>一般过去时</b>——这回是<b>从句的事更早</b>',
+ sen:'After I had arrived at the school, the class ended.',cn:'在我到学校之后，下课了。',
+ type:'order',e1:'🧍 我到学校',e1tag:'更早 👑 had arrived',e2:'🔔 下课 ended',
+ caps:['after = 在…之后，说明<b>从句的事先发生</b>','更早的（我到学校）戴王冠 → <b>had arrived</b>','主句的事在后面发生 → 用一般过去时 ended'],
+ q:{stem:'After I had arrived at the school, the class ____.',opts:['ended','had ended','ends'],a:0,
+    why:'after+过去完成时（更早），主句的事更晚 → 用一般过去时 ended。'}},
+{key:'until',emoji:'🚧',name:'not…until · 直到…才',
+ rule:'<b>not … until …</b> = <b>直到…才…</b>：闸门打开之前，动作一直"不做"',
+ sen:'I will not have class until everyone is here.',cn:'直到大家都到齐，我才会上课。',
+ type:'until',gate:'🚧 everyone is here',act:'🏫 开始上课',
+ caps:['前面是长长的<b>等待</b>：not have class（一直不上课）','直到闸门打开（大家到齐）——<b>才</b>开始上课！','记住搭配：<b>not … until</b>（直到…才）'],
+ q:{stem:'I will not have class ____ everyone is here.',opts:['while','until','since'],a:1,
+    why:'not…until 固定搭配：直到大家到齐，才上课。'}},
+{key:'since',emoji:'🏀',name:'since · 一直到现在',
+ rule:'<b>since + 过去时</b>句子，主句用<b>现在完成时（have/has done）</b>：从过去一直持续到现在',
+ sen:'He has played basketball since he was six.',cn:'他从六岁起就一直打篮球。',
+ type:'since',from:'🎂 he was six',bar:'🏀 has played…一直打到现在',
+ caps:['since 指着过去的<b>起点</b>（六岁那年）','从那时起<b>一直持续到现在</b>，像一条拉长的橡皮筋','所以主句用<b>现在完成时</b>：has played'],
+ q:{stem:'He ____ basketball since he was six.',opts:['plays','has played','played'],a:1,
+    why:'since+过去时（起点），主句=从那时一直到现在 → 现在完成时 has played。'}},
+{key:'assoonas',emoji:'📞',name:'as soon as · 一…就（主将从现）',
+ rule:'<b>as soon as</b>（一…就）：<b>主将从现</b>——主句用将来时 will，从句<b>明明是将来的事，却穿"一般现在时"的衣服</b>',
+ sen:'As soon as I arrive in Shanghai, I will call you.',cn:'我一到上海，就给你打电话。',
+ type:'future',aLab:'🛬 I arrive',aTag:'穿现在时的衣服👕',bLab:'📞 I will call you',bTag:'主句才用 will',
+ caps:['两件事都发生在<b>将来</b>','但从句不许穿 will —— 要穿<b>一般现在时</b>的衣服：arrive','主句才用 <b>will</b>：will call。这就叫<b>主将从现</b>'],
+ q:{stem:'As soon as I ____ in Shanghai, I will call you.',opts:['will arrive','arrive','arrived'],a:1,
+    why:'主将从现：从句用一般现在时 arrive，主句用 will call。'}},
+{key:'bythetime',emoji:'🏠',name:'by the time · 到…的时候(已经)',
+ rule:'<b>by the time + 过去时</b>句子，主句用<b>过去完成时（had done）</b>：到那时，事情<b>早就完成了</b>',
+ sen:'By the time I got home, my brother had finished his homework.',cn:'等我到家的时候，弟弟已经把作业写完了。',
+ type:'order',e1:'✅ 弟弟写完作业',e1tag:'更早 👑 had finished',e2:'🏠 我到家 got home',
+ caps:['by the time = <b>到…的时候</b>','我到家之前，弟弟的作业<b>早就写完了</b>（更早 → 戴王冠）','所以主句用<b>had finished</b>（过去完成时）'],
+ q:{stem:'By the time I got home, my brother ____ his homework.',opts:['finishes','finished','had finished'],a:2,
+    why:'by the time+过去时：到那时主句的事早已完成 → had finished。'}}
+];
+
+const TR=[
+{name:'so…that → enough（够…可以…）',tag:'保持句意不变',
+ from:'The classroom is so big that it can hold 10 people.',fromCn:'教室如此大，以至于能容纳10个人。',
+ steps:[
+  {h:'The classroom is <s>so</s> big <s>that it can</s> hold 10 people.',n:'① 划掉 so 和 that it can，留下形容词 big'},
+  {h:'The classroom is big <b>enough</b> ___ hold 10 people.',n:'② 请出 enough，站在形容词 big 的<b>后面</b>（adj + enough）'},
+  {h:'The classroom is big enough <b>to</b> hold 10 people.',n:'③ that 句子变成 <b>to do</b> → to hold ✅'}],
+ to:'The classroom is big enough to hold 10 people.',toCn:'教室够大，可以容纳10个人。'},
+{name:'副词也一样：跑得够快',tag:'so fast that → fast enough',
+ from:'Mark runs so fast that he can be No.1.',fromCn:'Mark 跑得如此快，以至于能当第一。',
+ steps:[
+  {h:'Mark runs <s>so</s> fast <s>that he can</s> be No.1.',n:'① 一样的套路：划掉 so / that he can'},
+  {h:'Mark runs fast <b>enough to</b> be No.1.',n:'② enough 站在副词 fast 后面 + to do ✅'}],
+ to:'Mark runs fast enough to be No.1.',toCn:'Mark 跑得够快，可以当第一。'},
+{name:'黑到看不见：too…to（否定藏在里面）',tag:'三件变身衣',
+ from:"The room is so dark that we can't see anything.",fromCn:'房间如此黑，以至于我们什么都看不见。',
+ steps:[
+  {h:"The room is <b>too</b> dark <b>for us to</b> see anything.",n:"① 变身衣一：<b>too…to</b>（太…以至于不能）。can't 的否定<b>藏进 too 里</b>，不用再写 not；动作是谁做的用 <b>for us</b> 说清楚"},
+  {h:'The room is <b>not bright enough</b> to see anything.',n:'② 变身衣二：换反义词 bright（亮）+ <b>not…enough</b>（不够亮）→ 意思还是一样'}],
+ to:'The room is too dark for us to see anything.',toCn:'房间太黑了，我们没法看见任何东西。'},
+{name:'so ↔ such 换装间',tag:'词序会变哦',
+ from:'The classroom is so big that it can hold 10 people.',fromCn:'so + 形容词 + that…',
+ steps:[
+  {h:'It is <b>such a big classroom</b> that it can hold 10 people.',n:'① such 后面跟的是<b>名词</b>：such + a/an + 形容词 + 名词 + that…'},
+  {h:'<b>so</b> + big（形容词） ↔ <b>such</b> + a big classroom（名词）',n:'② 口诀：<b>so 接形副，such 接名词</b>，意思完全一样'}],
+ to:'It is such a big classroom that it can hold 10 people.',toCn:'这是一间如此大的教室，能容纳10个人。'},
+{name:'目的家族：so that = so as to',tag:'为了…',
+ from:'Mike will stay here so that he can do the reading.',fromCn:'Mike 会留在这里，以便他能做阅读。',
+ steps:[
+  {h:'Mike will stay here <s>so that he can</s> do the reading.',n:'① so that 后面是<b>句子</b>；变身时把"he can"收进肚子里'},
+  {h:'Mike will stay here <b>so as to</b> do the reading.',n:'② so as to + 动词原形 = so that + 句子。同款：<b>in order that</b> + 句子 = <b>in order to</b> do'}],
+ to:'Mike will stay here so as to do the reading.',toCn:'Mike 会留在这里以便做阅读。'}
+];
+const TRQ=[
+ {stem:'The classroom is so big that it can hold 10 people. = The classroom is big ____ to hold 10 people.',opts:['enough','too','such'],a:0,why:'adj + enough + to do：big enough to hold。'},
+ {stem:"I'm ____ tired to have classes.",opts:['so','too','enough'],a:1,why:'too…to：太累了以至于不能上课。否定藏在 too 里。'},
+ {stem:"The room is so dark that we can't see anything. = The room is too dark ____ to see anything.",opts:['for us','of us','we'],a:0,why:'too + adj + for sb. + to do：动作的人用 for us 说清楚。'},
+ {stem:'It is ____ a big classroom that it can hold 10 people.',opts:['so','such','very'],a:1,why:'后面是名词 classroom → such + a + adj + n + that。so 只接形容词/副词。'},
+ {stem:'Mike will stay here ____ he can do the reading.',opts:['so that','so as to','in order to'],a:0,why:'后面是句子（he can…）→ 用 so that；so as to / in order to 后面只接动词原形。'}
+];
+
+const COND={
+ demo:{sen:'As soon as I arrive in Shanghai, I will call you.',cn:'我一到上海，就给你打电话。',
+   sub:'arrive',subT:'从句：一般现在时 ✅',main:'will call',mainT:'主句：will + 动词'},
+ rules:[
+  {t:'主<b>将</b>从现',ex:'If it rains tomorrow, we will stay at home.',cn:'如果明天下雨，我们就待在家。（主句 will）'},
+  {t:'主<b>情</b>从现',ex:'If you are tired, you can have a rest.',cn:'如果你累了，你可以休息。（主句 can/may/must…）'},
+  {t:'主<b>祈</b>从现',ex:'If you see him, please call me.',cn:'如果你见到他，请给我打电话。（主句是祈使句）'}],
+ qs:[
+  {stem:'As soon as he ____ home, he will do his homework.',opts:['gets','will get','got'],a:0,why:'主将从现：从句用一般现在时 gets（他/she 要加s哦）。'},
+  {stem:'If it ____ tomorrow, we will stay at home.',opts:['rains','will rain','rained'],a:0,why:'if 条件句主将从现：虽然是明天的事，从句也用一般现在时 rains。'},
+  {stem:'If you ____ him, please call me.',opts:['will see','see','saw'],a:1,why:'主祈从现：主句是祈使句 please call，从句仍用一般现在时 see。'}]
+};
+
+const BEC=[
+ {tail:'it rained heavily',ans:0,why:'it rained heavily 有主语(it)有动词(rained)，是<b>句子</b> → because。'},
+ {tail:'the heavy rain',ans:1,why:'the heavy rain 只是一个<b>名词短语</b>（没有动词）→ because of。'},
+ {tail:'he was ill',ans:0,why:'he was ill 是句子（主语he + 动词was）→ because。'},
+ {tail:'his illness',ans:1,why:'his illness（他的病）是名词短语 → because of。'},
+ {tail:'I was too tired',ans:0,why:'I was too tired 是句子 → because。'},
+ {tail:'the bad weather',ans:1,why:'the bad weather 是名词短语 → because of。'}
+];
+
+const FAM=[
+ {id:'time',nm:'⏰ 时间',col:'#2f6fb3',ds:'什么时候发生',
+  items:[['while','两动作同时进行 → 都用进行时','While Cherry is typing letters, we are taking notes.','当Cherry在打字时，我们在记笔记。'],
+   ['when + 过去时','过去某一刻 → 主句过去进行时','When Cherry typed letters, we were taking notes.','当Cherry打字那一刻，我们正在记笔记。'],
+   ['before','主句的事更早 → 主句用 had done','Before I arrived at the airport, the plane had taken off.','我到机场前，飞机已经起飞了。'],
+   ['after','从句的事更早 → 从句用 had done','After I had arrived at the school, the class ended.','我到学校后，下课了。'],
+   ['not…until','直到…才','I will not have class until everyone is here.','直到大家到齐我才上课。'],
+   ['since','从过去持续到现在 → 主句现在完成时','He has played basketball since he was six.','他从六岁起一直打篮球。'],
+   ['as soon as','一…就 → 主将从现','As soon as I arrive in Shanghai, I will call you.','我一到上海就给你打电话。'],
+   ['by the time','到那时早已完成 → 主句 had done','By the time I got home, my brother had finished his homework.','我到家时弟弟已写完作业。']]},
+ {id:'purpose',nm:'🎯 目的',col:'#7b54c0',ds:'为了什么',
+  items:[['so that + 句子','= so as to do','Mike will stay here so that he can do the reading.','Mike留下来以便做阅读。'],
+   ['in order that + 句子','= in order to do','Mike will stay here so as to do the reading.','Mike留下来以便做阅读。']]},
+ {id:'result',nm:'💥 结果',col:'#e8842c',ds:'结果怎么样',
+  items:[['so + adj/adv + that','如此…以至于','Mark runs so fast that no one can catch up with him.','Mark跑得太快，没人追得上。'],
+   ['such + a + adj + n + that','such 接名词','It is such a big classroom that it can hold 10 people.','这么大的教室能容纳10人。'],
+   ['adj/adv + enough + to do','够…可以…','The classroom is big enough to hold 10 people.','教室够大能容纳10人。'],
+   ['too … to do','太…以至于不能','I\'m too tired to have classes.','我太累了没法上课。']]},
+ {id:'cause',nm:'🤔 原因',col:'#2e9c54',ds:'为什么',
+  items:[['because + 句子','后面有主语和动词','I stayed at home because it rained heavily.','因为雨下得大，我待在家。'],
+   ['because of + 短语','后面是名词短语','I stayed at home because of the bad weather.','因为坏天气，我待在家。']]},
+ {id:'cond',nm:'🚦 条件',col:'#e1553f',ds:'如果…',
+  items:[['if 主将从现','主句 will，从句现在时','If it rains tomorrow, we will stay at home.','如果明天下雨我们就待在家。'],
+   ['if 主情从现','主句 can/may…','If you are tired, you can have a rest.','累了可以休息。'],
+   ['if 主祈从现','主句是祈使句','If you see him, please call me.','见到他请给我打电话。'],
+   ['as 正如','As you said…','As you said, practice makes perfect.','正如你说的，熟能生巧。']]}
+];
+
+const QUIZ=[
+ {stem:'While Cherry is typing letters, we ____ notes.',opts:['are taking','took','had taken'],a:0,why:'while 两动作同时进行 → 主从都用进行时 are taking。'},
+ {stem:'When Cherry typed letters, we ____ notes.',opts:['take','were taking','have taken'],a:1,why:'when+过去时=过去某一刻，主句用过去进行时 were taking。'},
+ {stem:'Before I arrived at the airport, the plane ____ off.',opts:['had taken','took','takes'],a:0,why:'更早发生的事用过去完成时：飞机先起飞 → had taken off。'},
+ {stem:'He ____ basketball since he was six.',opts:['played','plays','has played'],a:2,why:'since+过去起点 → 主句现在完成时 has played（一直打到现在）。'},
+ {stem:'As soon as I ____ in Shanghai, I will call you.',opts:['will arrive','arrive','arrived'],a:1,why:'主将从现：从句穿一般现在时的衣服 arrive。'},
+ {stem:'By the time I got home, my brother ____ his homework.',opts:['finished','had finished','finishes'],a:1,why:'by the time+过去时：到那时早已完成 → had finished。'},
+ {stem:'I will not have class ____ everyone is here.',opts:['until','while','because'],a:0,why:'not…until：直到大家到齐才上课。'},
+ {stem:'The classroom is so big that it can hold 10 people. = The classroom is big ____ to hold 10 people.',opts:['too','enough','such'],a:1,why:'adj + enough + to do，句意不变。'},
+ {stem:"The room is so dark that we can't see anything. = The room is ____ dark for us to see anything.",opts:['too','so','very'],a:0,why:"too…to 自带否定：can't 藏进 too 里。"},
+ {stem:'I stayed at home ____ the bad weather.',opts:['because','because of','so that'],a:1,why:'the bad weather 是名词短语 → because of。'}
+];
+
+/* ===================== 导航 ===================== */
+const MODS=[
+ {id:'map',ic:'🧠',nm:'家族脑图',ds:'状语从句5大家族，点一点全认识'},
+ {id:'time',ic:'⏰',nm:'时光机实验室 ⭐',ds:'8个时间词，在时间轴上看动画懂时态'},
+ {id:'trans',ic:'🔧',nm:'句意变形机 ⭐',ds:'so…that ↔ enough ↔ too…to 一步步变身'},
+ {id:'cond',ic:'🚦',nm:'主将从现红绿灯',ds:'as soon as / if：从句为什么穿现在时'},
+ {id:'bec',ic:'🧺',nm:'because 分拣机',ds:'because 接句子 / because of 接短语'},
+ {id:'quiz',ic:'🏀',nm:'篮球检验赛',ds:'懂了再来投篮，每题都有讲解'},
+ {id:'rec',ic:'📖',nm:'我的学习记录',ds:'成绩 + 错题回顾 + 一键导出给爸爸'}
+];
+const $=id=>document.getElementById(id);
+function renderHome(){
+  let h='<div class="intro">这是把你的<b>「状语从句」讲义</b>变成的时光机 🛸——从句就是给句子挂上的"小车厢"，说清<b>什么时候、为什么、结果怎样</b>。'+
+    '先去 <b>⏰时光机实验室</b> 看时间轴动画，再去 <b>🔧变形机</b> 玩"保持句意不变"。'+
+    '<div style="margin-top:8px;"><button class="btn gold sm" id="tvBtn">🔊 先点我测试声音</button></div></div><div class="grid">';
+  MODS.forEach(m=>{
+    const ls=lastScore(m.nm);
+    const done=ls?('<span class="done">✅对'+(ls.total-ls.wrong)+' ❌错'+ls.wrong+'</span>'):'';
+    h+='<div class="tile" data-mod="'+m.id+'"><div class="ic">'+m.ic+'</div><div class="nm">'+m.nm+'</div><div class="ds">'+m.ds+'</div>'+done+'</div>';
+  });
+  h+='</div><div class="proverb" data-say="Where there is a will, there is a way." data-lang="en">'+
+     '<div class="p1">Where there is a will, there is a way. 🔊</div>'+
+     '<div class="p2">有志者事竟成。—— 讲义里送你的一句谚语，点我听</div></div>';
+  $('home').innerHTML=h;
+  $('tvBtn').onclick=()=>{beep(true);speakOnce('While Cherry is typing letters, we are taking notes.','en');};
+  document.querySelectorAll('.tile').forEach(t=>t.onclick=()=>openMod(t.dataset.mod));
+}
+function openMod(id){
+  $('home').classList.add('hide');$('view').classList.remove('hide');
+  window.scrollTo({top:0,behavior:'smooth'});
+  ({map:renderMap,time:renderTime,trans:renderTrans,cond:renderCond,bec:renderBec,quiz:renderQuiz,rec:renderRec})[id]();
+}
+$('backBtn').onclick=()=>{$('view').classList.add('hide');$('home').classList.remove('hide');renderHome();window.scrollTo({top:0,behavior:'smooth'});};
+
+/* 通用：结束并记录 */
+function finishMod(lesson,items,t0){
+  const wrong=items.filter(x=>!x.ok).length;
+  logEvent({ts:Date.now(),type:'quiz',subject:'英语·状语从句',lesson:lesson,total:items.length,wrong:wrong,
+    durationSec:Math.round((Date.now()-t0)/1000),items:items});
+}
+function senHTML(sen,cn){
+  return '<div class="sen">'+enS(sen)+'</div><div class="sencn">'+cn+'</div>'+
+   '<div class="row center">'+sayBtn(sen,'听整句')+'</div>';
+}
+
+/* ===================== 🧠 家族脑图 ===================== */
+let famOn=0,famChip=0;
+function renderMap(){
+  const pos=[[180,52],[52,140],[308,140],[62,300],[298,300]];
+  let svg='<svg class="mapsvg" viewBox="0 0 360 360">';
+  pos.forEach((p,i)=>{svg+='<line x1="180" y1="185" x2="'+p[0]+'" y2="'+p[1]+'" stroke="#c8d9ec" stroke-width="3"/>';});
+  pos.forEach((p,i)=>{const f=FAM[i];
+    svg+='<g class="node" data-fam="'+i+'"><circle cx="'+p[0]+'" cy="'+p[1]+'" r="40" fill="'+(i===famOn?f.col:'#fff')+'" stroke="'+f.col+'" stroke-width="3"/>'+
+     '<text x="'+p[0]+'" y="'+(p[1]-4)+'" text-anchor="middle" font-size="15" font-weight="800" fill="'+(i===famOn?'#fff':f.col)+'">'+f.nm+'</text>'+
+     '<text x="'+p[0]+'" y="'+(p[1]+14)+'" text-anchor="middle" font-size="10" fill="'+(i===famOn?'#fff':'#7d8a96')+'">'+f.ds+'</text></g>';});
+  svg+='<circle cx="180" cy="185" r="44" fill="#225182"/><text x="180" y="180" text-anchor="middle" font-size="14" font-weight="800" fill="#fff">状语从句</text>'+
+   '<text x="180" y="198" text-anchor="middle" font-size="10" fill="#cfe1f5">句子的小车厢</text></svg>';
+  const f=FAM[famOn];
+  let chips='<div class="famchips">'+f.items.map((it,i)=>'<button class="chip'+(i===famChip?' on':'')+'" data-chip="'+i+'">'+it[0]+'</button>').join('')+'</div>';
+  const it=f.items[famChip]||f.items[0];
+  let card='<div class="formula">📌 <b>'+it[0]+'</b> —— '+it[1]+'</div>'+senHTML(it[2],it[3]);
+  $('stage').innerHTML='<div class="card"><div class="h2">🧠 状语从句家族脑图</div>'+
+   '<div class="hint">从句 = 挂在主句上的小车厢 🚃。点圆圈换家族，点小按钮看每个词的用法和例句。</div>'+svg+chips+card+'</div>';
+  document.querySelectorAll('.node').forEach(n=>n.onclick=()=>{famOn=+n.dataset.fam;famChip=0;renderMap();beep(true);});
+  document.querySelectorAll('[data-chip]').forEach(c=>c.onclick=()=>{famChip=+c.dataset.chip;renderMap();});
+  if(!lastScore('家族脑图'))logEvent({ts:Date.now(),type:'quiz',subject:'英语·状语从句',lesson:'家族脑图',total:1,wrong:0,durationSec:0,items:[{word:'看过脑图',hint:'',ok:true,ms:0}]});
+}
+
+/* ===================== ⏰ 时光机实验室 ===================== */
+let tIdx=0,tItems=[],tT0=0;
+function renderTime(){tIdx=0;tItems=[];tT0=Date.now();timeOne();}
+function buildTL(d){
+  let inner='<div class="axis"></div><div class="nowline"></div><div class="nowtag">现在</div>'+
+   '<div class="mk" style="left:22%;">过去</div><div class="mk" style="left:50%;">现在</div><div class="mk" style="left:80%;">将来</div>';
+  if(d.type==='parallel'){
+    inner+='<div class="ebarlab" id="labA" style="left:32%;top:26px;">'+d.aLab+'</div><div class="ebar" id="barA" style="left:32%;top:44px;"></div>'+
+           '<div class="ebarlab" id="labB" style="left:32%;top:70px;">'+d.bLab+'</div><div class="ebar gold" id="barB" style="left:32%;top:88px;"></div>';
+  }else if(d.type==='pastpoint'){
+    inner+='<div class="ebarlab" id="labB" style="left:8%;top:60px;">'+d.bLab+'</div><div class="ebar gold" id="barB" style="left:8%;top:80px;"></div>'+
+           '<div class="ech pulse" id="chA" style="left:18%;top:26px;">'+d.aLab+'</div>';
+  }else if(d.type==='order'){
+    inner+='<div class="ech" id="chA" style="left:7%;top:40px;">'+d.e1+'<span class="tag">'+d.e1tag+'</span></div>'+
+           '<div class="ech gold" id="chB" style="left:30%;top:92px;">'+d.e2+'</div>';
+  }else if(d.type==='until'){
+    inner+='<div class="ebarlab" id="labB" style="left:8%;top:52px;">⏳ not have class（一直等）</div><div class="ebar wait" id="barB" style="left:8%;top:72px;"></div>'+
+           '<div class="ech" id="chGate" style="left:44%;top:92px;">'+d.gate+'</div>'+
+           '<div class="ech gold" id="chAct" style="left:62%;top:40px;">'+d.act+'</div>';
+  }else if(d.type==='since'){
+    inner+='<div class="ech" id="chA" style="left:10%;top:92px;">'+d.from+'</div>'+
+           '<div class="ebarlab" id="labB" style="left:14%;top:44px;">'+d.bar+'</div><div class="ebar" id="barB" style="left:14%;top:64px;"></div>';
+  }else if(d.type==='future'){
+    inner+='<div class="ech" id="chA" style="left:56%;top:36px;">'+d.aLab+'<span class="tag">'+d.aTag+'</span></div>'+
+           '<div class="ech gold" id="chB" style="left:72%;top:92px;">'+d.bLab+'<span class="tag">'+d.bTag+'</span></div>';
+  }
+  return '<div class="tl" id="tlBox">'+inner+'</div>';
+}
+function playTL(d){
+  const cap=$('tlCap');let step=0;
+  const caps=d.caps;
+  function showCap(i){if(caps[i])cap.innerHTML='👉 '+caps[i];}
+  showCap(0);
+  const on=id=>{const e=$(id);if(e)e.classList.add('go');};
+  const grow=(id,w)=>{const e=$(id);if(e)e.style.width=w;};
+  if(d.type==='parallel'){
+    on('labA');on('labB');grow('barA','30%');grow('barB','30%');
+    setTimeout(()=>showCap(1),1800);
+  }else if(d.type==='pastpoint'){
+    on('labB');grow('barB','26%');
+    setTimeout(()=>{on('chA');$('chA').classList.add('flash');showCap(1);},1400);
+  }else if(d.type==='order'){
+    setTimeout(()=>{on('chA');},200);
+    setTimeout(()=>{showCap(1);},1300);
+    setTimeout(()=>{on('chB');showCap(2);},2600);
+  }else if(d.type==='until'){
+    grow('barB','34%');
+    setTimeout(()=>{on('chGate');showCap(1);},1500);
+    setTimeout(()=>{const g=$('chGate');if(g)g.innerHTML='✅ everyone is here';on('chAct');showCap(2);},2800);
+  }else if(d.type==='since'){
+    on('chA');
+    setTimeout(()=>{grow('barB','36%');showCap(1);},700);
+    setTimeout(()=>{showCap(2);},2400);
+  }else if(d.type==='future'){
+    setTimeout(()=>{on('chA');showCap(1);},300);
+    setTimeout(()=>{on('chB');showCap(2);},1900);
+  }
+  setTimeout(()=>speakOnce(d.sen,'en'),600);
+}
+function timeOne(){
+  if(tIdx>=TIME.length){
+    finishMod('时光机实验室',tItems,tT0);beep(true);
+    $('stage').innerHTML='<div class="card" style="text-align:center;"><div style="font-size:52px;">⏰✨</div>'+
+     '<div class="h2">时光机通关！</div><div class="hint">口诀带走：<b>while 同时都进行 · when一刻正进行 · 更早的事 had done · since 一直到现在(has done) · 一…就 主将从现</b></div>'+
+     '<div class="row center" style="margin-top:10px;"><button class="btn" onclick="renderTime()">🔁 再玩一遍</button><button class="btn ghost" onclick="document.getElementById(\'backBtn\').click()">回大厅</button></div></div>';
+    return;
+  }
+  const d=TIME[tIdx];
+  $('stage').innerHTML='<div class="card"><div class="pgr">时间词 '+(tIdx+1)+' / '+TIME.length+'</div>'+
+   '<div class="h2">'+d.emoji+' '+d.name+'</div>'+
+   '<div class="formula">'+d.rule+'</div>'+
+   senHTML(d.sen,d.cn)+
+   buildTL(d)+
+   '<div class="tlcap" id="tlCap">点 ▶ 播放，看这两件事在时间轴上怎么发生</div>'+
+   '<div class="row center"><button class="btn gold" id="playBtn">▶ 播放动画</button><button class="btn ghost sm" id="skipBtn">直接做检验 →</button></div>'+
+   '<div id="qBox" class="hide" style="margin-top:12px;"></div></div>';
+  $('playBtn').onclick=()=>{playTL(d);$('playBtn').textContent='🔁 再播一遍';showQ();};
+  $('skipBtn').onclick=showQ;
+  function showQ(){
+    if(!$('qBox').classList.contains('hide'))return;
+    $('qBox').classList.remove('hide');
+    const q=d.q,t0=Date.now();
+    $('qBox').innerHTML='<div style="font-weight:800;color:var(--blued);margin-bottom:4px;">🎯 小检验（看懂动画再选）</div>'+
+     '<div class="sen" style="font-size:16px;">'+enS(q.stem)+'</div><div class="opts" id="opts">'+
+     q.opts.map((o,i)=>'<button class="opt" data-i="'+i+'">'+String.fromCharCode(65+i)+'. '+o+'</button>').join('')+'</div><div id="fb"></div>';
+    document.querySelectorAll('#opts .opt').forEach(b=>b.onclick=()=>{
+      const i=+b.dataset.i,ok=i===q.a;
+      document.querySelectorAll('#opts .opt').forEach(x=>x.classList.add('off'));
+      b.classList.add(ok?'right':'wrong');
+      if(!ok)document.querySelector('#opts .opt[data-i="'+q.a+'"]').classList.add('right');
+      beep(ok);
+      tItems.push({word:d.name,hint:q.stem,ok:ok,ms:Date.now()-t0,user:q.opts[i],tag:ok?'':'时态'});
+      $('fb').innerHTML='<div class="why'+(ok?'':' bad')+'"><span class="lab">'+(ok?'✅ 答对了！':'❌ 先别急，看讲解：')+'</span> '+q.why+'</div>'+
+       '<div class="row center"><button class="btn" id="nx">'+(tIdx<TIME.length-1?'下一个时间词 →':'完成 ✅')+'</button></div>';
+      $('nx').onclick=()=>{tIdx++;timeOne();};
+    });
+  }
+}
+
+/* ===================== 🔧 句意变形机 ===================== */
+let rIdx=0,rStep=0,rItems=[],rT0=0,rPhase='demo';
+function renderTrans(){rIdx=0;rStep=0;rItems=[];rT0=Date.now();rPhase='demo';transOne();}
+function transOne(){
+  if(rPhase==='try'){transTry();return;}
+  if(rIdx>=TR.length){rPhase='try';rIdx=0;transTry();return;}
+  const d=TR[rIdx];
+  let h='<div class="card"><div class="pgr">变身 '+(rIdx+1)+' / '+TR.length+' · '+d.tag+'</div>'+
+   '<div class="h2">🔧 '+d.name+'</div>'+
+   '<div class="morph">'+enS(d.from)+'</div><div class="sencn">'+d.fromCn+'</div>'+
+   '<div id="stepBox"></div>'+
+   '<div class="row center" style="margin-top:8px;"><button class="btn gold" id="stepBtn">✨ 下一步变身</button></div></div>';
+  $('stage').innerHTML=h;rStep=0;
+  $('stepBtn').onclick=()=>{
+    if(rStep<d.steps.length){
+      const s=d.steps[rStep];
+      $('stepBox').insertAdjacentHTML('beforeend','<div class="morph zoom">'+s.h+'</div><div class="stepn">'+s.n+'</div>');
+      rStep++;beep(true);
+      if(rStep===d.steps.length){
+        $('stepBox').insertAdjacentHTML('beforeend',
+         '<div style="text-align:center;"><span class="stamp">句意不变 ✅</span></div>'+
+         '<div class="sencn">'+d.toCn+'</div><div class="row center">'+sayBtn(d.to,'听变身后')+sayBtn(d.from,'听变身前')+'</div>');
+        $('stepBtn').textContent=(rIdx<TR.length-1)?'下一个变身 →':'去「你来变」→';
+        $('stepBtn').onclick=()=>{rIdx++;transOne();window.scrollTo({top:0,behavior:'smooth'});};
+      }
+    }
+  };
+}
+function transTry(){
+  if(rIdx>=TRQ.length){
+    finishMod('句意变形机',rItems,rT0);beep(true);
+    $('stage').innerHTML='<div class="card" style="text-align:center;"><div style="font-size:52px;">🔧✨</div>'+
+     '<div class="h2">变形机毕业！</div><div class="hint">口诀：<b>enough 站在形副后 · too 里藏着"不能" · so 接形副 such 接名词 · so that 接句子，so as to 接原形</b></div>'+
+     '<div class="row center" style="margin-top:10px;"><button class="btn" onclick="renderTrans()">🔁 再玩一遍</button><button class="btn ghost" onclick="document.getElementById(\'backBtn\').click()">回大厅</button></div></div>';
+    return;
+  }
+  const q=TRQ[rIdx],t0=Date.now();
+  $('stage').innerHTML='<div class="card"><div class="pgr">你来变 '+(rIdx+1)+' / '+TRQ.length+'</div>'+
+   '<div class="h2">🫵 你来变身</div>'+
+   '<div class="sen" style="font-size:16px;">'+enS(q.stem)+'</div><div class="opts" id="opts">'+
+   q.opts.map((o,i)=>'<button class="opt" data-i="'+i+'">'+String.fromCharCode(65+i)+'. '+o+'</button>').join('')+'</div><div id="fb"></div></div>';
+  document.querySelectorAll('#opts .opt').forEach(b=>b.onclick=()=>{
+    const i=+b.dataset.i,ok=i===q.a;
+    document.querySelectorAll('#opts .opt').forEach(x=>x.classList.add('off'));
+    b.classList.add(ok?'right':'wrong');
+    if(!ok)document.querySelector('#opts .opt[data-i="'+q.a+'"]').classList.add('right');
+    beep(ok);
+    rItems.push({word:'变形'+(rIdx+1),hint:q.stem,ok:ok,ms:Date.now()-t0,user:q.opts[i],tag:ok?'':'句型转换'});
+    $('fb').innerHTML='<div class="why'+(ok?'':' bad')+'"><span class="lab">'+(ok?'✅ 变身成功！':'❌ 看讲解：')+'</span> '+q.why+'</div>'+
+     '<div class="row center"><button class="btn" id="nx">'+(rIdx<TRQ.length-1?'下一题 →':'完成 ✅')+'</button></div>';
+    $('nx').onclick=()=>{rIdx++;transTry();};
+  });
+}
+
+/* ===================== 🚦 主将从现红绿灯 ===================== */
+let cIdx=0,cItems=[],cT0=0;
+function renderCond(){
+  cIdx=0;cItems=[];cT0=Date.now();
+  const d=COND.demo;
+  $('stage').innerHTML='<div class="card"><div class="h2">🚦 主将从现红绿灯</div>'+
+   '<div class="hint">将来的事，从句却不许用 will —— 它要穿<b>一般现在时</b>的衣服。点亮红绿灯看看谁穿什么。</div>'+
+   senHTML(d.sen,d.cn)+
+   '<div class="lightbox"><div class="lamp" id="lamp1"><div class="t">从句（as soon as / if…）</div><div class="bulb">🚃</div><div class="v" id="v1"></div><div class="t" id="t1"></div></div>'+
+   '<div class="lamp" id="lamp2"><div class="t">主句</div><div class="bulb">🚂</div><div class="v" id="v2"></div><div class="t" id="t2"></div></div></div>'+
+   '<div class="row center"><button class="btn gold" id="goLight">💡 点亮红绿灯</button></div>'+
+   '<div id="ruleBox" class="hide"><div class="formula">🚦 <b>主将从现</b>三兄弟（if 同款）：</div>'+
+   COND.rules.map(r=>'<div class="rec"><b>'+r.t+'</b>：'+enS(r.ex)+' <button class="say" data-say="'+esc(r.ex)+'" data-lang="en">🔊</button><br><span style="color:var(--muted);font-size:12.5px;">'+r.cn+'</span></div>').join('')+
+   '<div class="row center" style="margin-top:6px;"><button class="btn" id="goTry">🫵 你来点灯 →</button></div></div>'+
+   '<div id="tryBox"></div></div>';
+  $('goLight').onclick=()=>{
+    $('lamp1').classList.add('on1');$('v1').textContent=d.sub;$('t1').innerHTML=d.subT;
+    setTimeout(()=>{$('lamp2').classList.add('on2');$('v2').textContent=d.main;$('t2').innerHTML=d.mainT;},700);
+    setTimeout(()=>{$('ruleBox').classList.remove('hide');},1400);
+    speakOnce(d.sen,'en');beep(true);
+    $('goLight').textContent='🔁 再点一遍';
+  };
+  const tryBind=()=>{$('goTry').onclick=condTry;};
+  tryBind();
+}
+function condTry(){
+  if(cIdx>=COND.qs.length){
+    finishMod('主将从现红绿灯',cItems,cT0);beep(true);
+    $('stage').innerHTML='<div class="card" style="text-align:center;"><div style="font-size:52px;">🚦✅</div>'+
+     '<div class="h2">红绿灯全亮！</div><div class="hint">记住：<b>主句 will / 情态 / 祈使，从句一律穿"一般现在时"的衣服</b>。</div>'+
+     '<div class="row center" style="margin-top:10px;"><button class="btn" onclick="renderCond()">🔁 再玩一遍</button><button class="btn ghost" onclick="document.getElementById(\'backBtn\').click()">回大厅</button></div></div>';
+    return;
+  }
+  const q=COND.qs[cIdx],t0=Date.now();
+  $('stage').innerHTML='<div class="card"><div class="pgr">点灯 '+(cIdx+1)+' / '+COND.qs.length+'</div>'+
+   '<div class="h2">🫵 你来点灯：从句该穿哪件衣服？</div>'+
+   '<div class="sen" style="font-size:16px;">'+enS(q.stem)+'</div><div class="opts" id="opts">'+
+   q.opts.map((o,i)=>'<button class="opt" data-i="'+i+'">'+String.fromCharCode(65+i)+'. '+o+'</button>').join('')+'</div><div id="fb"></div></div>';
+  document.querySelectorAll('#opts .opt').forEach(b=>b.onclick=()=>{
+    const i=+b.dataset.i,ok=i===q.a;
+    document.querySelectorAll('#opts .opt').forEach(x=>x.classList.add('off'));
+    b.classList.add(ok?'right':'wrong');
+    if(!ok)document.querySelector('#opts .opt[data-i="'+q.a+'"]').classList.add('right');
+    beep(ok);
+    cItems.push({word:'主将从现'+(cIdx+1),hint:q.stem,ok:ok,ms:Date.now()-t0,user:q.opts[i],tag:ok?'':'主将从现'});
+    $('fb').innerHTML='<div class="why'+(ok?'':' bad')+'"><span class="lab">'+(ok?'✅ 灯亮了！':'❌ 看讲解：')+'</span> '+q.why+'</div>'+
+     '<div class="row center"><button class="btn" id="nx">'+(cIdx<COND.qs.length-1?'下一题 →':'完成 ✅')+'</button></div>';
+    $('nx').onclick=()=>{cIdx++;condTry();};
+  });
+}
+
+/* ===================== 🧺 because 分拣机 ===================== */
+let bIdx=0,bItems=[],bT0=0;
+function renderBec(){bIdx=0;bItems=[];bT0=Date.now();becOne();}
+function becOne(){
+  if(bIdx>=BEC.length){
+    finishMod('because 分拣机',bItems,bT0);beep(true);
+    $('stage').innerHTML='<div class="card" style="text-align:center;"><div style="font-size:52px;">🧺✅</div>'+
+     '<div class="h2">分拣完成！</div><div class="hint">口诀：<b>because 接句子（有主语有动词），because of 接短语（一团名词）</b>。</div>'+
+     '<div class="row center" style="margin-top:10px;"><button class="btn" onclick="renderBec()">🔁 再玩一遍</button><button class="btn ghost" onclick="document.getElementById(\'backBtn\').click()">回大厅</button></div></div>';
+    return;
+  }
+  const d=BEC[bIdx],t0=Date.now();
+  $('stage').innerHTML='<div class="card"><div class="pgr">包裹 '+(bIdx+1)+' / '+BEC.length+'</div>'+
+   '<div class="h2">🧺 because 分拣机</div>'+
+   '<div class="hint">规则很简单：后面是<b>句子</b>（有主语+动词）→ because；后面是<b>名词短语</b> → because of。把包裹丢进对的篮子！</div>'+
+   '<div class="sen">I stayed at home ____ '+enS(d.tail)+' .</div>'+
+   '<div class="baskets"><button class="basket" data-b="0">because<small>+ 句子</small></button>'+
+   '<button class="basket" data-b="1">because of<small>+ 短语</small></button></div><div id="fb"></div></div>';
+  document.querySelectorAll('.basket').forEach(bk=>bk.onclick=()=>{
+    const i=+bk.dataset.b,ok=i===d.ans;
+    document.querySelectorAll('.basket').forEach(x=>x.style.pointerEvents='none');
+    bk.classList.add(ok?'hit':'miss');
+    if(!ok)document.querySelector('.basket[data-b="'+d.ans+'"]').classList.add('hit');
+    beep(ok);
+    bItems.push({word:d.tail,hint:'because / because of',ok:ok,ms:Date.now()-t0,user:['because','because of'][i],tag:ok?'':'because辨析'});
+    const full='I stayed at home '+(d.ans===0?'because ':'because of ')+d.tail+'.';
+    $('fb').innerHTML='<div class="why'+(ok?'':' bad')+'"><span class="lab">'+(ok?'✅ 分对了！':'❌ 看讲解：')+'</span> '+d.why+'</div>'+
+     '<div class="row center">'+sayBtn(full,'听整句')+'<button class="btn" id="nx">'+(bIdx<BEC.length-1?'下一个包裹 →':'完成 ✅')+'</button></div>';
+    $('nx').onclick=()=>{bIdx++;becOne();};
+  });
+}
+
+/* ===================== 🏀 篮球检验赛 ===================== */
+let qIdx=0,qItems=[],qT0=0,qScore=0,qTimer=null;
+function renderQuiz(){
+  qIdx=0;qItems=[];qT0=Date.now();qScore=0;
+  quizOne();
+  if(qTimer)clearInterval(qTimer);
+  qTimer=setInterval(()=>{const e=$('qClock');if(e)e.textContent='⏱ '+Math.round((Date.now()-qT0)/1000)+'s';},500);
+}
+function quizOne(){
+  if(qIdx>=QUIZ.length){
+    if(qTimer){clearInterval(qTimer);qTimer=null;}
+    finishMod('篮球检验赛',qItems,qT0);beep(true);
+    const wrong=qItems.filter(x=>!x.ok);
+    const sec=Math.round((Date.now()-qT0)/1000);
+    $('stage').innerHTML='<div class="card" style="text-align:center;"><div style="font-size:52px;">🏀🏆</div>'+
+     '<div class="h2">终场哨响！得分 '+qScore+' / '+(QUIZ.length*2)+' 分</div>'+
+     '<div class="hint">用时 '+sec+' 秒 · 平均每球 '+Math.round(sec/QUIZ.length)+' 秒 · 投进 '+(QUIZ.length-wrong.length)+' 球 · 打铁 '+wrong.length+' 球</div>'+
+     (wrong.length?'<div style="text-align:left;margin-top:8px;"><b style="color:var(--red);">打铁回顾（记住讲解再来！）</b>'+
+       wrong.map(w=>'<div class="rec">❌ '+esc(w.hint)+'<br><span style="color:var(--muted);">'+esc(w.tag)+'</span></div>').join('')+'</div>':'<div class="stamp">全场命中 🔥</div>')+
+     '<div class="row center" style="margin-top:10px;"><button class="btn" onclick="renderQuiz()">🔁 再赛一场</button><button class="btn ghost" onclick="document.getElementById(\'backBtn\').click()">回大厅</button></div></div>';
+    return;
+  }
+  const q=QUIZ[qIdx],t0=Date.now();
+  $('stage').innerHTML='<div class="card"><div class="pgr">第 '+(qIdx+1)+' / '+QUIZ.length+' 球 · <span id="qClock">⏱ 0s</span></div>'+
+   '<div class="court"><div class="scorebd">得分 '+qScore+'</div><div class="hoop">🥅</div><div class="ball" id="ball">🏀</div></div>'+
+   '<div class="sen" style="font-size:16px;">'+enS(q.stem)+'</div><div class="opts" id="opts">'+
+   q.opts.map((o,i)=>'<button class="opt" data-i="'+i+'">'+String.fromCharCode(65+i)+'. '+o+'</button>').join('')+'</div><div id="fb"></div></div>';
+  document.querySelectorAll('#opts .opt').forEach(b=>b.onclick=()=>{
+    const i=+b.dataset.i,ok=i===q.a;
+    document.querySelectorAll('#opts .opt').forEach(x=>x.classList.add('off'));
+    b.classList.add(ok?'right':'wrong');
+    if(!ok)document.querySelector('#opts .opt[data-i="'+q.a+'"]').classList.add('right');
+    beep(ok);
+    if(ok){qScore+=2;const ball=$('ball');ball.classList.add('shoot');const sb=document.querySelector('.scorebd');if(sb)setTimeout(()=>{sb.textContent='得分 '+qScore;},900);}
+    qItems.push({word:'第'+(qIdx+1)+'球',hint:q.stem,ok:ok,ms:Date.now()-t0,user:q.opts[i],tag:q.why});
+    $('fb').innerHTML='<div class="why'+(ok?'':' bad')+'"><span class="lab">'+(ok?'🏀 唰！进了 +2分':'❌ 打铁！看讲解：')+'</span> '+q.why+'</div>'+
+     '<div class="row center"><button class="btn" id="nx">'+(qIdx<QUIZ.length-1?'下一球 →':'终场 🏁')+'</button></div>';
+    $('nx').onclick=()=>{qIdx++;quizOne();};
+  });
+}
+
+/* ===================== 📖 学习记录 ===================== */
+function buildExport(){
+  const evs=loadEv();
+  const wrongMap={};
+  evs.forEach(e=>(e.items||[]).forEach(it=>{if(!it.ok){const k=it.hint||it.word;wrongMap[k]=(wrongMap[k]||0)+1;}}));
+  let txt='【哥哥 · 英语状语从句时光机 · 练习导出】\n日期：'+new Date().toLocaleString('zh-CN')+'\n\n== 反复错的题（错≥2） ==\n';
+  const rep=Object.entries(wrongMap).filter(x=>x[1]>=2);
+  txt+=rep.length?rep.map(x=>'- '+x[0]+'（错'+x[1]+'次）').join('\n'):'（暂无）';
+  txt+='\n\n== 每次明细 ==\n';
+  evs.forEach(e=>{txt+='['+new Date(e.ts).toLocaleString('zh-CN')+'] '+e.lesson+'：共'+e.total+'题 错'+e.wrong+'题 用时'+(e.durationSec||0)+'s\n';
+    (e.items||[]).forEach(it=>{if(!it.ok)txt+='   ❌ '+(it.hint||it.word)+'（选了 '+(it.user||'?')+'）\n';});});
+  txt+='\n== 原始JSON（投喂给爸爸的Claude归档用） ==\n'+JSON.stringify({child:'哥哥',subject:'英语·状语从句',events:evs});
+  return txt;
+}
+function renderRec(){
+  const evs=loadEv();
+  const mods={};evs.forEach(e=>{mods[e.lesson]=e;});
+  let h='<div class="card"><div class="h2">📖 我的学习记录</div>';
+  if(!evs.length){h+='<div class="hint">还没有记录，先去玩时光机吧！</div></div>';$('stage').innerHTML=h;return;}
+  h+='<div class="rec"><b>已练 '+evs.length+' 次</b> · 共 '+evs.reduce((s,e)=>s+e.total,0)+' 题 · 错 '+evs.reduce((s,e)=>s+e.wrong,0)+' 题</div>';
+  h+=Object.values(mods).map(e=>'<div class="rec"><b>'+e.lesson+'</b>（最近一次）：✅对'+(e.total-e.wrong)+' ❌错'+e.wrong+' · '+new Date(e.ts).toLocaleDateString('zh-CN')+'</div>').join('');
+  const wrong=[];evs.forEach(e=>(e.items||[]).forEach(it=>{if(!it.ok)wrong.push(it);}));
+  if(wrong.length){h+='<div style="margin-top:8px;"><b style="color:var(--red);">错题回顾</b>'+
+    wrong.slice(-8).map(w=>'<div class="rec">❌ '+esc(w.hint||w.word)+'<br><span style="color:var(--muted);font-size:12px;">选了：'+esc(w.user||'?')+(w.tag?' · '+esc(w.tag):'')+'</span></div>').join('')+'</div>';}
+  h+='<div class="row center" style="margin-top:10px;"><button class="btn" id="cpBtn">📋 复制导出</button>'+
+     '<button class="btn ghost" id="dlBtn">💾 存成文件</button>'+
+     '<button class="btn ghost sm" id="clrBtn" style="color:var(--red);border-color:var(--red);">🗑 清空</button></div>'+
+     '<textarea class="exp hide" id="expTxt"></textarea></div>';
+  $('stage').innerHTML=h;
+  $('cpBtn').onclick=()=>{const t=buildExport();const ta=$('expTxt');ta.classList.remove('hide');ta.value=t;ta.select();
+    if(navigator.clipboard)navigator.clipboard.writeText(t).then(()=>{$('cpBtn').textContent='✅ 已复制';}).catch(()=>{document.execCommand('copy');$('cpBtn').textContent='✅ 已复制';});
+    else{document.execCommand('copy');$('cpBtn').textContent='✅ 已复制';}};
+  $('dlBtn').onclick=()=>{const b=new Blob([buildExport()],{type:'text/plain;charset=utf-8'});const a=document.createElement('a');
+    a.href=URL.createObjectURL(b);a.download='哥哥_状语从句_练习记录_'+new Date().toISOString().slice(0,10)+'.txt';a.click();};
+  $('clrBtn').onclick=()=>{if(confirm('确定清空全部练习记录？（导出之后再清哦）')){localStorage.removeItem(EV_KEY);renderRec();}};
+}
+
+renderHome();
+</script>
+</body>
+</html>

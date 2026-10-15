@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<script src="../assets/learning-sync.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>C++ 学习馆</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+:root{
+  --orange-1:#FF6B35; --orange-2:#FF8C42; --orange-3:#FFB347;
+  --purple-1:#6B5BFF; --green-1:#2BB673; --green-2:#4ECDC4; --blue-1:#3B82F6;
+  --yellow-1:#FFD93D; --ink:#2D2A4A; --ink-soft:#5A5775;
+  --card:#fff; --shadow:0 8px 28px rgba(45,42,74,.12);
+}
+html,body{ font-family:"PingFang SC","Microsoft YaHei",sans-serif; color:var(--ink);
+  background:linear-gradient(135deg,#FFF8F0 0%,#FFE8D6 100%); min-height:100%;}
+body{ -webkit-tap-highlight-color:transparent; }
+.wrap{ max-width:680px; margin:0 auto; padding:0 16px 60px; }
+
+.hero{ text-align:center; padding:30px 16px 14px; }
+.hero .badge{ width:74px;height:74px;border-radius:20px;margin:0 auto 12px;
+  display:flex;align-items:center;justify-content:center;font-size:40px;
+  background:linear-gradient(135deg,var(--orange-1),var(--orange-2));color:#fff;
+  box-shadow:0 10px 26px rgba(255,107,53,.45);}
+.hero h1{ font-size:28px; font-weight:900; letter-spacing:-.5px; }
+.hero p{ color:var(--ink-soft); font-size:14px; margin-top:6px; line-height:1.6;}
+.home{ display:inline-block; margin-top:12px; text-decoration:none; background:#fff;
+  border:2px solid var(--orange-1); color:var(--orange-1); padding:7px 16px; border-radius:999px;
+  font-weight:800; font-size:13px; }
+
+.stats{ display:flex; gap:10px; margin:8px 0 20px; }
+.stat{ flex:1; background:var(--card); border-radius:16px; box-shadow:var(--shadow); padding:14px; text-align:center;}
+.stat b{ display:block; font-size:26px; font-weight:900; color:var(--orange-1); }
+.stat span{ font-size:12px; color:var(--ink-soft); font-weight:700;}
+
+.tracks{ display:grid; grid-template-columns:1fr 1fr; gap:12px; margin:2px 0 18px; }
+.track{ min-height:190px; border-radius:22px; padding:18px; box-shadow:var(--shadow);
+  display:flex; flex-direction:column; position:relative; overflow:hidden; }
+.track::after{ position:absolute; right:-8px; bottom:-18px; font-size:78px; opacity:.12; transform:rotate(-8deg); }
+.track.hetao{ background:linear-gradient(135deg,#fff4e9,#ffe1c8); border:2px solid #ffc18f; }
+.track.hetao::after{ content:"🌰"; }
+.track.xmw{ background:linear-gradient(135deg,#eafcff,#d8f5fb); border:2px solid #8bdce8; }
+.track.xmw::after{ content:"🧭"; }
+.track .track-label{ font-size:12px; font-weight:900; letter-spacing:.5px; color:var(--ink-soft); }
+.track h2{ font-size:21px; margin:7px 0 6px; position:relative; z-index:1; }
+.track p{ color:var(--ink-soft); font-size:12.5px; line-height:1.65; position:relative; z-index:1; }
+.track a{ align-self:flex-start; margin-top:auto; text-decoration:none; color:#fff; font-size:13px; font-weight:900;
+  border-radius:11px; padding:9px 13px; position:relative; z-index:1; }
+.track.hetao a{ background:var(--orange-1); }
+.track.xmw a{ background:#078ca1; }
+
+.grouphead{ display:flex; align-items:center; gap:8px; margin:22px 4px 10px; font-size:16px; font-weight:900;}
+.grouphead .dot{ width:10px;height:10px;border-radius:50%; }
+.grouphead .cnt{ margin-left:auto; font-size:12px; color:var(--ink-soft); font-weight:700;}
+
+.lesson{ display:block; text-decoration:none; color:inherit; background:var(--card); border-radius:20px;
+  box-shadow:var(--shadow); padding:16px 16px; margin-bottom:14px; position:relative; overflow:hidden;
+  border:2px solid transparent; transition:.18s; }
+.lesson:active{ transform:scale(.985); }
+.lesson::before{ content:""; position:absolute; left:0; top:0; bottom:0; width:6px; }
+.lesson.review::before{ background:var(--green-1); }
+.lesson.preview::before{ background:var(--blue-1); }
+.lesson.mix::before{ background:var(--orange-1); }
+.ltop{ display:flex; align-items:center; gap:10px; }
+.lcode{ font-size:12px; font-weight:900; padding:3px 9px; border-radius:999px; color:#fff; }
+.lcode.review{ background:var(--green-1); }
+.lcode.preview{ background:var(--blue-1); }
+.lcode.mix{ background:var(--orange-1); }
+.lemoji{ font-size:30px; margin-left:auto; }
+.lesson h3{ font-size:18px; font-weight:900; margin:9px 0 4px; }
+.lesson p{ font-size:13px; color:var(--ink-soft); line-height:1.6; }
+.tags{ display:flex; gap:6px; flex-wrap:wrap; margin-top:10px; }
+.tag{ font-size:11px; font-weight:800; background:#FFF3E8; color:#C84B1A; padding:3px 9px; border-radius:999px;}
+.tag.blue{ background:#EEF4FF; color:var(--blue-1);}
+.tag.green{ background:#EBFBF2; color:var(--green-1);}
+.go{ position:absolute; right:14px; bottom:14px; font-size:13px; font-weight:900; color:var(--orange-1);}
+.newflag{ position:absolute; top:12px; right:12px; background:var(--orange-1); color:#fff; font-size:11px;
+  font-weight:900; padding:2px 9px; border-radius:999px; box-shadow:0 3px 8px rgba(255,107,53,.4);}
+
+.daily{ background:linear-gradient(135deg,#FFF9E5,#FFF3C4); border:2px solid #F5D66B; border-radius:20px;
+  padding:16px; margin-bottom:8px; box-shadow:var(--shadow); }
+.daily .dhead{ font-size:17px; font-weight:900; margin-bottom:10px; }
+.daily .ditem{ display:flex; gap:10px; align-items:flex-start; background:rgba(255,255,255,.75);
+  border-radius:14px; padding:12px; margin-top:10px; font-size:14px; line-height:1.7; }
+.daily .dnum{ font-size:20px; }
+.daily .dtip{ font-size:12.5px; color:var(--ink-soft); }
+.daily .dbtn{ display:inline-block; margin-top:8px; text-decoration:none; color:#fff; font-weight:900;
+  font-size:14px; padding:9px 16px; border-radius:12px;
+  background:linear-gradient(135deg,var(--orange-1),var(--orange-2));
+  box-shadow:0 5px 14px rgba(255,107,53,.35); }
+.ctl{ display:flex; align-items:center; gap:12px; text-decoration:none; color:#fff;
+  background:linear-gradient(135deg,var(--orange-1),var(--orange-2)); border-radius:20px;
+  padding:16px; margin:14px 0 8px; box-shadow:0 10px 26px rgba(255,107,53,.4); transition:.18s; }
+.ctl:active{ transform:scale(.985); }
+.ctl .ce{ font-size:34px; }
+.ctl b{ display:block; font-size:19px; font-weight:900; letter-spacing:.5px; }
+.ctl .cs{ font-size:12.5px; font-weight:700; opacity:.92; line-height:1.5; }
+.ctl .cgo{ margin-left:auto; flex:none; background:rgba(255,255,255,.24); border-radius:12px;
+  padding:9px 14px; font-weight:900; font-size:14px; white-space:nowrap; }
+.note{ background:#fff; border-radius:16px; box-shadow:var(--shadow); padding:16px; margin-top:20px;
+  font-size:13px; color:var(--ink-soft); line-height:1.8;}
+.note b{ color:var(--orange-1);}
+.foot{ text-align:center; color:var(--ink-soft); font-size:12px; margin-top:18px; }
+@media(max-width:560px){ .tracks{ grid-template-columns:1fr; } .track{ min-height:170px; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="hero">
+    <div class="badge">💻</div>
+    <h1>C++ 学习馆</h1>
+    <p>一个总入口，两条学习线<br>核桃打基础，小码王练独立编程</p>
+    <a class="home" href="../subject.html?subject=coding">‹ 回编程学科</a>
+  </div>
+
+  <div class="stats">
+    <div class="stat"><b id="stCount">10</b><span>学习软件</span></div>
+    <div class="stat"><b>2</b><span>并列学习线</span></div>
+    <div class="stat"><b>C++</b><span>语言</span></div>
+  </div>
+
+  <div class="tracks" aria-label="C++ 两条学习线">
+    <section class="track hetao">
+      <div class="track-label">基础线 · 看懂代码为什么这样跑</div>
+      <h2>🌰 核桃编程</h2>
+      <p>课程复习 / 预习、for 运行过程、嵌套结构、可视化与硬件项目。</p>
+      <a href="#hetaoCourses">进入核桃学习线 ↓</a>
+    </section>
+    <section class="track xmw">
+      <div class="track-label">独立线 · 按题面自己写并提交</div>
+      <h2>🧭 小码王</h2>
+      <p>动态知识地图、五课会动实验、正式 C++ 类型与分支、ACGO 作业救援和独立通过记录。</p>
+      <a href="#xiaomawangCourses">进入小码王学习线 ↓</a>
+    </section>
+  </div>
+
+  <div class="grouphead" id="hetaoTasks">
+    <span class="dot" style="background:var(--orange-1)"></span>🌰 核桃任务区
+  </div>
+  <div class="daily">
+    <div class="dhead">🌰 核桃每日任务打卡</div>
+    <div class="ditem"><span class="dnum">1️⃣</span><div><b>经典例题抄写</b><br>抄写经典例题并<b>标注代码含义</b>，拍照提交到群内小程序。<br><span class="dtip">👉 不知道怎么标注？打开「L3-3 复习」软件里的 <b>✍ 抄写帮手</b>，每行含义都给你示范好了。</span></div></div>
+  </div>
+
+  <div id="board"></div>
+  <details style="margin:24px 0;padding:16px;border:1px solid var(--line);border-radius:16px">
+    <summary style="cursor:pointer;min-height:44px;font-weight:700">以前的备考资料</summary>
+    <p style="font-size:13px">原有学习内容和记录继续保留。</p>
+    <a class="home" href="../subject.html?subject=coding&amp;period=exam">查看 GESP / CTL 备考归档 →</a>
+    <a class="home" href="https://hetao1.wjx.cn/vm/PFWqwI4.aspx" target="_blank" rel="noopener">原 CTL 练习链接 →</a>
+  </details>
+
+  <div class="note">
+    💡 <b>怎么用</b>：核桃课程用会动的实验室打牢概念；小码王先用「动态知识地图」看清五课关系，再进入对应实验或 ACGO 作业救援。Kenton 和 Eddey 一起学同一套内容，进入后先选自己；进度、错题与用时各记各的。<br>
+    🔒 学习馆不保存小码王账号、手机号或密码；作业是否通过由孩子按 ACGO 的真实结果手动标记。
+  </div>
+  <div class="foot">C++ 双轨学习 · 家庭学习门户</div>
+</div>
+
+<script>
+// C++ 学习软件清单（按课程顺序，最新在前）。以后加新课在这里追加一条即可。
+const APPS = [
+  {
+    provider:'小码王', code:'单元复习 / 数组', kind:'mix', label:'双人同课', emoji:'', isNew:true,
+    title:'程序实验室 · 补回这一课',
+    desc:'从课堂框架排错开始，把输入输出、分支、循环、火星计算和数组串起来。先预测，再逐步运行，最后独立写；随时暂停，下次从原处继续。',
+    file:'cpp_unit_review_20260914.html',
+    tags:[['课堂真题','blue'],['6个学习节点','green'],['逐步执行','blue'],['分别记录','']]
+  },
+  {
+    provider:'小码王', code:'GESP一级/8-30', kind:'mix', label:'Eddey专项', emoji:'🔎', isNew:true,
+    title:'代码侦察台 · 昨日10道错题修复',
+    desc:'不是把错题再刷一遍：先用类型关、循环入口、变量盒和输出屏看懂代码怎样跑，再重做2026-08-30整卷中的10道原错题；答错只修对应知识点，自动回到同一道原题，连续答对2次后再做迁移题。记录仅属于Eddey。',
+    file:'eddey_cpp_gesp_repair_lab_20260831.html',
+    tags:[['10道原错题','red'],['四关执行动画','blue'],['错后回原题','green'],['Eddey独立记录','']]
+  },
+  {
+    provider:'核桃', code:'CTL一级/8-15', kind:'mix', label:'双人同课', emoji:'🏁', isNew:true,
+    title:'CTL 一级备考基地 · 打字+真题+规则全通关',
+    desc:'2026-08-15 CTL 一级考试专用：内容全部来自官方《CTL备考笔记&赛考题库》。考试规则局讲清 90 分钟/100 分/60 分过与三大题型分值；必背框架打字机逐行默打基础框架、高频词、三类大题框架；三套真题模拟卷（45 单选+30 判断）逐题带解析、答错进错题本；10 道编程真题打字通关，可照打练熟再遮住答案默打；另有回忆卡与进考场前 3 分钟速记卡。Kenton / Eddey 进度、最佳成绩、错题完全独立。',
+    file:'hetao_ctl_prep_20260815.html',
+    tags:[['8月15日开考','red'],['3套真题75题','blue'],['10道编程默打','blue'],['双人记录分开','']]
+  },
+  {
+    provider:'小码王', code:'4.5/ACGO', kind:'mix', label:'双人同课', emoji:'🧭', isNew:false,
+    title:'小码王 C++ 4.5 · 动态知识地图与作业救援站',
+    desc:'把初识 C++、基本运算、分支一、分支二、分支三连成五站动态知识图；点一站进入对应会动软件，再把能力接到 6 道 ACGO 作业。Kenton 与 Eddey 共用知识，课程闯关、错题和作业记录严格分开。',
+    file:'xiaomawang_cpp_4_5.html',
+    tags:[['动态知识地图','green'],['5课会动软件','blue'],['ACGO 6题','blue'],['双人记录分开','']]
+  },
+  {
+    provider:'核桃', code:'L4-1', kind:'mix', label:'双人同课', emoji:'🧱', isNew:false,
+    title:'L3-4 复习 & L4-1 预习 · for 循环累加实验室',
+    desc:'2026-07-30 课前学习包：先用逐行执行台复习 if-else、for、简单计算三类必背框架，再用可调参数的四步轨道看清 for 运行过程、可变步长、零次与无限循环；用积木塔理解固定数字、输入变量和工资的循环累加。含奇偶分拣、4 张单词卡、遮挡回忆、8 题定点重教、错题连续答对 2 次毕业，以及 Kenton / Eddey 完全独立的进度、错题、用时和导入导出。',
+    file:'hetao_coding_l3-4_l4-1_20260730.html',
+    tags:[['L3-4复习','green'],['L4-1预习','blue'],['for循环累加','blue'],['双人记录分开','']]
+  },
+  {
+    provider:'核桃', code:'L3-4/CTL3', kind:'review', emoji:'🛰️', isNew:false,
+    title:'L3-4 复习 & CTL 专项课 3 · 循环侦察站',
+    desc:'2026-07-26 新课复习：可调起点/终点/步长的 for 运行慢放轨道，辨析 < 与 <=、零次执行和无限循环；最大值擂台；输入输出、if、for 三类必背框架；输出 6 到 10 的两种写法。10 题带解析检验、持久错题本、连续答对 2 次毕业、Kenton 专用记录与 JSON/Markdown 导入导出。',
+    file:'hetao_coding_l3-4_ctl3.html',
+    tags:[['L3-4复习','green'],['CTL专项课3','blue'],['for边界','blue'],['错题回炉','']]
+  },
+  {
+    code:'L3-3/L3-4', kind:'mix', emoji:'🔁', isNew:false,
+    title:'L3-3 复习 & L3-4 预习 · 嵌套整理练习 + for 循环强化',
+    desc:'2026-07-23 新课包：上节课（if嵌套）整理练习 + 新课（for的运行过程&for循环强化）预习。存钱罐累加机、if嵌套透视镜、if-else选路轨道、i值打印机；for运行慢放机（三要素）、擂台法找最大值、&&/||判断器、终点条件放大镜（<=和<的区别·重难点）。13题检验+错题本。',
+    file:'hetao_coding_l3-3_l3-4.html',
+    tags:[['L3-3复习','green'],['L3-4预习','blue'],['for三要素','blue'],['错题本','']]
+  },
+  {
+    code:'L3-3', kind:'review', emoji:'🔬', isNew:false,
+    title:'L3-3 复习 · 嵌套结构总复习实验室（作业满分🏆）',
+    desc:'2026-07-16 上完，作业满分！课堂四大知识块整体复习：循环累加放大镜（存钱罐sum，原题1·2·4→1·3·7）、if嵌套透视镜（p/w/c 各在哪层大括号）、if-else选路轨道（选择结构只走一条路，af/w/rh）、i值打印机挑战（调初始值和条件印任意连续整数）。',
+    file:'hetao_coding_l3-3_review.html',
+    tags:[['循环输入&累加','green'],['if嵌套if','green'],['if-else嵌套','green'],['循环输出i','green']]
+  },
+  {
+    code:'L3-3', kind:'preview', emoji:'🏰', isNew:false,
+    title:'L3-3 预习 · if嵌套探秘城堡',
+    desc:'课前预习版（已上完课）：初识 if 嵌套 & 嵌套结构强化。sum+=a 变身器、双重门城堡（多 if 嵌套）、嵌套 vs && 双胞胎、if-else 分岔树、for 里的 cout-if 预言机。',
+    file:'hetao_coding_l3-3_preview.html',
+    tags:[['if嵌套','blue'],['sum+=a','blue'],['嵌套vs&&','blue'],['if-else嵌套','blue']]
+  },
+  {
+    code:'L3-2', kind:'review', emoji:'🔁', isNew:false,
+    title:'L3-2 复习 · 循环嵌套实验室 + 赛考加油站',
+    desc:'模块19 for语句应用 + 模块20 初识嵌套结构 + CTL赛考专项课2。循环输入输出机、累加魔法盒、if嵌套for慢动作（d的位置①②③辨析）、游泳还是爬山。',
+    file:'hetao_coding_l3-2_review.html',
+    tags:[['循环输入输出','green'],['变量累加','green'],['if嵌套for','green'],['赛考95%','green']]
+  },
+  {
+    code:'L3-1', kind:'review', emoji:'🥊', isNew:false,
+    title:'L3-1 复习 · 多变量运算 & 找最大值擂台赛',
+    desc:'模块17 多变量运算 + 模块18 多if找最大值。cin>>a>>b>>c 从左到右装数、cout 顺序自己拼、ans=a*2+b+c*3 分步算、擂台法找最大值动画（含讲义原题153/410/410）。',
+    file:'hetao_coding_l3-1_review.html',
+    tags:[['多变量输入输出','green'],['多变量运算','green'],['擂台法max','green']]
+  },
+  {
+    code:'L2-4', kind:'preview', emoji:'🔢', isNew:false,
+    title:'L2-4 预习 · 赋值语句 & 变量运算',
+    desc:'模块15赋值语句初识 + 模块16简单变量运算。会动的赋值魔法盒、会跑的循环、if-else 分岔小球、命名规则、连线挑战。',
+    file:'hetao_coding_l2-4_preview.html',
+    tags:[['赋值语句','blue'],['变量循环','blue'],['if-else','blue'],['命名规则','blue']]
+  },
+  {
+    code:'L2-3', kind:'review', emoji:'🔐', isNew:false,
+    title:'L2-3 复习 · 智能密码门实验室',
+    desc:'上节课做的密码门项目。可拖动的舵机 rotateTo、能按的红外遥控 getIRKey、会拼接的密码串、if 验证开门动画。',
+    file:'hetao_coding_l2-3_review.html',
+    tags:[['rotateTo 舵机','green'],['getIRKey 遥控','green'],['字符串拼接','green'],['密码验证','green']]
+  },
+  {
+    code:'L2-2/2-3', kind:'mix', emoji:'🚀', isNew:false,
+    title:'L2-2 复习 & L2-3 预习（听读版）',
+    desc:'if-else 语句复习 + 智能门 / 密码门预习。语音听读版讲义，一句句念给孩子听。',
+    file:'hetao_coding_l2-2_l2-3.html',
+    tags:[['if-else',''],['舵机门',''],['听读版','']]
+  }
+];
+
+const KIND = {
+  review:{label:'复习',color:'var(--green-1)'},
+  preview:{label:'预习',color:'var(--blue-1)'},
+  mix:{label:'复习+预习',color:'var(--orange-1)'}
+};
+
+// 两条学习线分组展示，避免品牌、任务和进度混在一起。
+const board=document.getElementById('board');
+[
+  {provider:'小码王',id:'xiaomawangCourses',title:'🧭 小码王 · 独立编程线',color:'#078ca1'},
+  {provider:'核桃',id:'hetaoCourses',title:'🌰 核桃 · 概念基础线',color:'var(--orange-1)'}
+].forEach(group=>{
+  const apps=APPS.filter(a=>(a.provider||'核桃')===group.provider&&!['eddey_cpp_gesp_repair_lab_20260831.html','hetao_ctl_prep_20260815.html'].includes(a.file));
+  const h=document.createElement('div'); h.className='grouphead'; h.id=group.id;
+  h.innerHTML=`<span class="dot" style="background:${group.color}"></span>${group.title}<span class="cnt">${apps.length} 个</span>`;
+  board.appendChild(h);
+  apps.forEach(a=>{
+    const card=document.createElement('a'); card.className='lesson '+a.kind; card.href=a.file; if(a.file==='cpp_unit_review_20260914.html'){ const params=new URLSearchParams(location.search);const learner=params.get('who')||params.get('child'); if(['kenton','eddey'].includes(learner))card.href=a.file+'?child='+learner; }
+    card.innerHTML=`
+      ${a.isNew?'<span class="newflag">🆕 新</span>':''}
+      <div class="ltop">
+        <span class="lcode ${a.kind}">${a.provider||'核桃'} · ${a.code} · ${a.label||KIND[a.kind].label}</span>
+        <span class="lemoji">${a.emoji}</span>
+      </div>
+      <h3>${a.title}</h3>
+      <p>${a.desc}</p>
+      <div class="tags">${a.tags.map(t=>`<span class="tag ${t[1]}">${t[0]}</span>`).join('')}</div>
+      <div class="go">打开 →</div>`;
+    board.appendChild(card);
+  });
+});
+document.getElementById('stCount').textContent=APPS.filter(a=>!['eddey_cpp_gesp_repair_lab_20260831.html','hetao_ctl_prep_20260815.html'].includes(a.file)).length;
+</script>
+</body>
+</html>
+

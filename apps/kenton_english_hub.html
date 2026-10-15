@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<script src="../assets/learning-sync.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>哥哥 · 暑假课外英语学习馆</title>
+<style>
+:root{--blue:#2f6fb3;--blued:#225182;--bluebg:#e8f0fa;--gold:#f2b632;--golddk:#c98a00;
+ --ink:#23303a;--paper:#eef5fc;--line:#dbe7f3;--green:#2e9c54;--greenbg:#e9f7ee;
+ --red:#e1553f;--redbg:#fdecea;--muted:#7d8a96;--purple:#7b54c0;--orange:#e8842c;}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+html,body{margin:0;padding:0;}
+body{font-family:'LXGW WenKai Screen','PingFang SC','Microsoft YaHei',system-ui,sans-serif;
+ background:radial-gradient(circle at 10% 4%,#d3e6fb 0,transparent 40%),radial-gradient(circle at 92% 98%,#ffe9c7 0,transparent 40%),var(--paper);
+ color:var(--ink);min-height:100vh;padding:0 0 50px;}
+.wrap{max-width:620px;margin:0 auto;padding:12px;}
+.top{display:flex;align-items:center;gap:10px;padding:8px 2px 10px;}
+.badge{background:var(--blue);color:#fff;font-weight:800;font-size:17px;padding:6px 13px;border-radius:13px 13px 13px 4px;box-shadow:0 4px 0 var(--blued);}
+.top h1{font-size:17px;margin:0;flex:1;color:var(--blued);}
+.top .home{text-decoration:none;font-size:20px;background:#fff;width:38px;height:38px;border-radius:11px;display:grid;place-items:center;color:var(--ink);box-shadow:0 3px 0 #cddcec;}
+.sub{font-size:12.5px;color:var(--muted);line-height:1.6;text-align:center;margin:0 4px 12px;}
+.sub b{color:var(--blued);}
+/* 本周任务 */
+.taskcard{background:#fff;border:2px solid #f3c3ba;border-radius:18px;overflow:hidden;margin:0 0 18px;box-shadow:0 6px 0 #f4dcd7;}
+.taskhead{display:flex;align-items:center;gap:8px;background:linear-gradient(135deg,#fdecea,#fff5f3);padding:11px 15px;}
+.taskhead .tt{font-size:16px;font-weight:800;color:var(--red);flex:1;}
+.taskhead .due{font-size:12px;font-weight:800;color:#fff;background:var(--red);border-radius:9px;padding:3px 10px;white-space:nowrap;}
+.taskrow{display:flex;align-items:center;gap:11px;padding:12px 15px;border-top:1.5px dashed #f6ddd8;text-decoration:none;color:var(--ink);}
+.taskrow:active{background:#fff8f6;}
+.taskrow .ic{font-size:24px;width:30px;text-align:center;flex:none;}
+.taskrow .tx{flex:1;min-width:0;}
+.taskrow .t1{display:block;font-size:14.5px;font-weight:800;}
+.taskrow .t1 b{color:var(--red);}
+.taskrow .t2{display:block;font-size:12px;color:var(--muted);line-height:1.55;margin-top:2px;}
+.taskrow .go{flex:none;font-size:12.5px;font-weight:800;color:#fff;background:var(--blue);border-radius:10px;padding:7px 11px;box-shadow:0 3px 0 var(--blued);white-space:nowrap;}
+.taskrow .go.paper{background:#a8b4c0;box-shadow:0 3px 0 #8494a4;}
+/* 分区标题 */
+.sec{display:flex;align-items:center;gap:8px;font-size:15px;font-weight:800;color:var(--blued);margin:18px 4px 9px;}
+.sec:after{content:"";flex:1;height:2px;background:linear-gradient(90deg,#cfe0f1,transparent);border-radius:2px;}
+/* 软件卡 */
+.appcard{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--ink);background:#fff;border:2px solid var(--line);border-radius:16px;padding:13px 14px;margin:10px 0;box-shadow:0 5px 0 #e4eef8;transition:transform .08s;position:relative;}
+.appcard:active{transform:translateY(3px);box-shadow:0 2px 0 #e4eef8;}
+.appcard .ico{font-size:30px;width:44px;height:44px;border-radius:13px;display:grid;place-items:center;flex:none;}
+.appcard .bd{flex:1;min-width:0;}
+.appcard .nm{font-weight:800;font-size:15.5px;color:var(--blued);}
+.appcard .pills{display:flex;flex-wrap:wrap;gap:4px;margin-top:5px;}
+.pill{font-size:10.5px;font-weight:700;color:var(--muted);background:var(--bluebg);border-radius:7px;padding:2px 7px;}
+.appcard .arrow{flex:none;color:#b9c9da;font-size:18px;font-weight:800;}
+.appcard .tag{position:absolute;top:-9px;right:12px;font-size:11px;font-weight:800;background:var(--red);color:#fff;border-radius:9px;padding:2px 9px;}
+.appcard .tag.g{background:var(--green);}
+.appcard .tag.o{background:var(--orange);}
+/* 时间线 */
+.tl{margin:4px 0 0 7px;border-left:3px solid #c8d9ec;padding:2px 0 2px 15px;}
+.tlrow{position:relative;margin:0 0 13px;}
+.tlrow:before{content:"";position:absolute;left:-22px;top:4px;width:10px;height:10px;border-radius:50%;background:var(--blue);border:2.5px solid #eef5fc;}
+.tlrow.now:before{background:var(--red);}
+.tlrow .d{font-size:13px;font-weight:800;color:var(--blued);}
+.tlrow.now .d{color:var(--red);}
+.tlrow .w{font-size:12.5px;color:var(--ink);line-height:1.6;margin-top:1px;}
+.tlrow .hw{font-size:11.5px;color:var(--muted);line-height:1.6;margin-top:1px;}
+.tlrow .hw a{color:var(--blued);font-weight:800;text-decoration:none;border-bottom:1.5px dashed #9fc0de;}
+.tipbar{font-size:11.5px;color:var(--muted);text-align:center;margin-top:18px;line-height:1.6;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top">
+    <a class="home" href="../index.html">‹</a>
+    <span class="badge">哥哥</span>
+    <h1>☀️ 暑假课外英语学习馆</h1>
+  </div>
+  <div class="sub">课外英语班<b>每节课一个配套软件</b>：上课前点开预习 · 回家点开复习 + 完成任务</div>
+
+  <div class="taskcard">
+    <div class="taskhead"><span style="font-size:20px;">📌</span><span class="tt">本周任务</span><span class="due">下周一 7/20 交</span></div>
+    <a class="taskrow" href="kenton_verb_lab.html">
+      <span class="ic">🎤</span>
+      <span class="tx"><span class="t1">背诵不规则动词 <b>61~90</b>（默写）</span>
+      <span class="t2">变形实验室切到第2批 → 先看家族规律 → 背诵演练</span></span>
+      <span class="go">去背 →</span>
+    </a>
+    <a class="taskrow" href="kenton_english_monday_lab.html">
+      <span class="ic">✏️</span>
+      <span class="tx"><span class="t1">数词练习《习题精选》勾选部分</span>
+      <span class="t2">纸质作业 · 先玩「数词变身机」再做，又快又对</span></span>
+      <span class="go">先热身 →</span>
+    </a>
+    <a class="taskrow" href="kenton_english_monday_lab.html">
+      <span class="ic">🔁</span>
+      <span class="tx"><span class="t1">复习状语从句 + 定语从句</span>
+      <span class="t2">「复习卡」30秒过一遍 · 忘了的去时光机看动画</span></span>
+      <span class="go">去复习 →</span>
+    </a>
+  </div>
+
+  <div class="sec">🧰 学习软件</div>
+  <a class="appcard" href="kenton_verb_lab.html">
+    <span class="tag">本周任务 🔥</span>
+    <span class="ico" style="background:var(--bluebg);">🔤</span>
+    <span class="bd"><span class="nm">不规则动词变形实验室（31~90）</span>
+      <span class="pills"><span class="pill">家族魔法阵</span><span class="pill">三张脸入门</span><span class="pill">变形动画</span><span class="pill">记忆翻卡</span><span class="pill">背诵演练</span><span class="pill">错词本</span><span class="pill">可切批次</span></span>
+    </span><span class="arrow">›</span>
+  </a>
+  <a class="appcard" href="kenton_english_monday_lab.html">
+    <span class="tag o">新</span>
+    <span class="ico" style="background:#fdf1e3;">🧩</span>
+    <span class="bd"><span class="nm">从句与数词学习馆</span>
+      <span class="pills"><span class="pill">从句积木工厂</span><span class="pill">主语/表语从句认脸</span><span class="pill">定语从句合并机</span><span class="pill">数词变身机</span><span class="pill">日历点读</span><span class="pill">复习卡</span></span>
+    </span><span class="arrow">›</span>
+  </a>
+  <a class="appcard" href="kenton_english_clause_lab.html">
+    <span class="tag g">复习用</span>
+    <span class="ico" style="background:var(--greenbg);">🛸</span>
+    <span class="bd"><span class="nm">状语从句时光机</span>
+      <span class="pills"><span class="pill">时间轴动画</span><span class="pill">8个时间词</span><span class="pill">句意变形机</span><span class="pill">主将从现红绿灯</span><span class="pill">because分拣机</span></span>
+    </span><span class="arrow">›</span>
+  </a>
+
+  <div class="sec">📅 课程时间线</div>
+  <div class="tl">
+    <div class="tlrow now">
+      <div class="d">7/13 周一 ← 最新</div>
+      <div class="w">主语从句 & 表语从句（概念）· 数词的用法 · 默写不规则动词 31~61</div>
+      <div class="hw">任务：背 61~90（下周一默）· 数词《习题精选》勾选部分 · 配套 <a href="kenton_english_monday_lab.html">从句与数词学习馆</a>、<a href="kenton_verb_lab.html">变形实验室</a></div>
+    </div>
+    <div class="tlrow">
+      <div class="d">7/12 周日</div>
+      <div class="w">复习状语从句并完成练习 · 讲解状语从句和定语从句练习</div>
+      <div class="hw">配套 <a href="kenton_english_clause_lab.html">状语从句时光机</a>、<a href="kenton_english_monday_lab.html">定语从句合并机</a></div>
+    </div>
+    <div class="tlrow">
+      <div class="d">更早</div>
+      <div class="w">状语从句 · 不规则动词 31~61 背诵默写 ✅</div>
+      <div class="hw">配套 <a href="kenton_english_clause_lab.html">状语从句时光机</a>、<a href="kenton_verb_lab.html">变形实验室（第1批）</a></div>
+    </div>
+  </div>
+
+  <div class="tipbar">目录会一直更新：每节课后把老师布置的内容发给 Claude，新软件和新任务就会自动加进来。</div>
+</div>
+</body>
+</html>

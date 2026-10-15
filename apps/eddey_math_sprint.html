@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<script src="../assets/learning-sync.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Eddey 数学冲刺 · 三下</title>
+<style>
+:root{--red:#E0533F;--redd:#B23A2A;--gold:#F2B632;--golddk:#D89400;--ink:#36281C;--paper:#FFF6E9;--line:#F0E0C6;
+--green:#36A85A;--greend:#268044;--greenbg:#E9F8ED;--blue:#3C82CC;--blued:#2A5E96;--bluebg:#E9F2FB;--purple:#8A4FB0;--pink:#EE6F9E;}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+html,body{margin:0;padding:0;}
+body{font-family:'LXGW WenKai Screen','PingFang SC','Microsoft YaHei',sans-serif;
+background:radial-gradient(circle at 8% 4%,#FFE6B0 0,transparent 40%),radial-gradient(circle at 94% 98%,#FFD2C4 0,transparent 44%),var(--paper);
+color:var(--ink);min-height:100vh;padding-bottom:40px;}
+.wrap{max-width:720px;margin:0 auto;padding:14px;}
+.top{display:flex;align-items:center;gap:10px;padding:12px 4px 6px;}
+.top .badge{background:var(--red);color:#fff;font-weight:800;font-size:19px;padding:7px 14px;border-radius:14px 14px 14px 4px;box-shadow:0 4px 0 var(--redd);}
+.top h1{font-size:20px;margin:0;}
+.top .sub{font-size:12px;color:#b09a72;}
+.card{background:#fff;border:2px solid var(--line);border-radius:20px;padding:18px;margin:13px 0;box-shadow:0 6px 0 #f1e3c9;}
+.card h2{margin:0 0 8px;font-size:19px;color:var(--redd);}
+.lead{font-size:14px;color:#8a7656;line-height:1.7;margin:0 0 10px;}
+.lion{display:flex;gap:10px;align-items:flex-start;margin:6px 0 12px;}
+.lion .face{font-size:34px;flex-shrink:0;}
+.lion .bubble{background:#fff;border:2px solid var(--line);border-radius:16px 16px 16px 3px;padding:11px 14px;font-size:14.5px;line-height:1.75;box-shadow:0 3px 0 #f1e3c9;}
+.kou{background:linear-gradient(180deg,#FFF1CF,#FFE7B2);border:2px dashed var(--golddk);border-radius:14px;padding:11px 14px;margin:11px 0;color:#7a5800;font-weight:700;font-size:14px;line-height:1.8;text-align:center;}
+/* 知识点卡片网格 */
+.topics{display:grid;grid-template-columns:1fr 1fr;gap:13px;}
+@media(max-width:480px){.topics{grid-template-columns:1fr 1fr;}}
+.tcard{background:#fff;border:3px solid var(--line);border-radius:20px;padding:16px 12px;cursor:pointer;box-shadow:0 6px 0 #f1e3c9;text-align:center;transition:transform .08s;position:relative;}
+.tcard:active{transform:translateY(3px);box-shadow:0 3px 0 #f1e3c9;}
+.tcard .ic{font-size:42px;line-height:1;}
+.tcard .nm{font-weight:800;font-size:16px;margin-top:8px;}
+.tcard .ds{font-size:11px;color:#a89070;margin-top:4px;}
+.tcard .star{position:absolute;top:8px;right:10px;font-size:14px;}
+.tcard.done{border-color:var(--green);background:var(--greenbg);}
+.tcard.c0{border-color:#F4C0B5;} .tcard.c1{border-color:#F6D89A;} .tcard.c2{border-color:#AFD6B9;}
+.tcard.c3{border-color:#B7CFEC;} .tcard.c4{border-color:#D9C0EA;} .tcard.c5{border-color:#F6C2D5;}
+.tcard.c6{border-color:#B9E0DA;} .tcard.c7{border-color:#F2CBA0;}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;background:var(--red);color:#fff;border:none;font-family:inherit;font-weight:800;font-size:16px;padding:13px 22px;border-radius:15px;box-shadow:0 4px 0 var(--redd);cursor:pointer;transition:transform .06s;}
+.btn:active{transform:translateY(3px);box-shadow:0 1px 0 var(--redd);}
+.btn.ghost{background:#fff;color:var(--redd);border:2px solid var(--red);box-shadow:0 4px 0 #f4cfc9;}
+.btn.green{background:var(--green);box-shadow:0 4px 0 var(--greend);}
+.btn.blue{background:var(--blue);box-shadow:0 4px 0 var(--blued);}
+.btn.gold{background:var(--gold);color:#5a4200;box-shadow:0 4px 0 var(--golddk);}
+.btn.big{font-size:19px;padding:16px 28px;}
+.btn.sm{font-size:14px;padding:9px 14px;}
+.row{display:flex;gap:9px;flex-wrap:wrap;align-items:center;margin-top:12px;justify-content:center;}
+.back{background:none;border:none;color:#a89070;font-size:15px;font-family:inherit;cursor:pointer;padding:8px 2px;font-weight:800;}
+.hidden{display:none!important;}
+/* 答题界面 */
+.qhead{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:6px;}
+.qnum{font-size:14px;color:#a89070;font-weight:800;}
+.qscore{font-size:14px;color:var(--greend);font-weight:800;}
+.progbar{height:14px;background:#F0E6D2;border-radius:8px;margin:8px 0 4px;overflow:hidden;border:2px solid #EAD7B0;}
+.progbar i{display:block;height:100%;background:linear-gradient(90deg,var(--gold),#FFD877);border-radius:6px;transition:width .3s;}
+.qbox{text-align:center;padding:6px 0;}
+.qtag{display:inline-block;background:var(--bluebg);color:var(--blued);font-size:12px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:10px;}
+.qtext{font-size:26px;font-weight:800;line-height:1.5;margin:6px 0 4px;color:var(--ink);}
+.qtext .big{font-size:34px;color:var(--redd);}
+.qsub{font-size:13px;color:#8a7656;margin-bottom:8px;}
+.qpic{margin:10px auto;}
+/* 选择题选项 */
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:11px;margin:14px 0 6px;}
+.opts.one{grid-template-columns:1fr;}
+.opt{background:#fff;border:3px solid var(--line);border-radius:16px;padding:16px 10px;font-size:21px;font-weight:800;cursor:pointer;box-shadow:0 4px 0 #f1e3c9;transition:transform .07s;color:var(--ink);font-family:inherit;}
+.opt:active{transform:translateY(2px);}
+.opt.right{background:var(--greenbg);border-color:var(--green);color:var(--greend);}
+.opt.wrong{background:#FCE6E1;border-color:var(--red);color:var(--redd);}
+.opt:disabled{cursor:default;}
+/* 数字键盘填空 */
+.inpwrap{text-align:center;margin:12px 0 4px;}
+.inpbox{display:inline-block;min-width:140px;font-size:34px;font-weight:800;background:#FFFDF6;border:3px solid var(--gold);border-radius:14px;padding:10px 18px;color:var(--redd);min-height:60px;letter-spacing:2px;}
+.inpbox .ph{color:#cdbb92;font-size:22px;font-weight:700;}
+.inpunit{font-size:18px;color:#8a7656;font-weight:700;margin-left:6px;}
+.keypad{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;max-width:300px;margin:14px auto 4px;}
+.key{background:#fff;border:2px solid var(--line);border-radius:14px;padding:15px 0;font-size:24px;font-weight:800;cursor:pointer;box-shadow:0 4px 0 #f1e3c9;font-family:inherit;color:var(--ink);transition:transform .06s;}
+.key:active{transform:translateY(2px);}
+.key.fn{font-size:18px;background:#FBF1DC;}
+.key.ok{background:var(--green);color:#fff;border-color:var(--green);box-shadow:0 4px 0 var(--greend);}
+.fb{margin-top:12px;min-height:10px;}
+.fbbox{border-radius:14px;padding:12px 14px;font-size:15px;font-weight:700;line-height:1.7;text-align:left;}
+.fbbox.ok{background:var(--greenbg);color:var(--greend);border:2px solid var(--green);}
+.fbbox.no{background:#FCE6E1;color:var(--redd);border:2px solid var(--red);}
+.fbbox .ans{font-size:18px;}
+.fbbox .ex{display:block;margin-top:5px;font-weight:400;color:#6a5a44;font-size:13.5px;}
+.dots{display:flex;gap:5px;flex-wrap:wrap;justify-content:center;margin:12px 0;}
+.dots i{width:9px;height:9px;border-radius:50%;background:#ecdcbf;}
+.dots i.ok{background:var(--green);}
+.dots i.no{background:var(--red);}
+.dots i.cur{background:var(--gold);transform:scale(1.35);}
+/* 小结 */
+.scoreBig{font-size:54px;font-weight:800;line-height:1;margin:10px 0;}
+.starline{font-size:30px;letter-spacing:4px;margin:6px 0 10px;}
+.weakrow{display:flex;align-items:center;gap:10px;background:#fff;border:2px solid var(--line);border-radius:12px;padding:9px 12px;margin:7px 0;font-size:14px;}
+.weakrow.bad{background:#FCE6E1;border-color:var(--red);}
+.weakrow.good{background:var(--greenbg);border-color:var(--green);}
+.weakrow .wn{flex:1;font-weight:700;}
+.weakrow .wp{font-weight:800;}
+/* 图形 */
+.gridfig{display:inline-block;border:2px solid #c9b78f;background:#FFFDF5;}
+.gridfig td{width:22px;height:22px;border:1px solid #e3d3b0;padding:0;}
+.gridfig td.fill{background:#FFD877;}
+textarea{width:100%;height:200px;font-size:12px;font-family:monospace;border:2px solid var(--line);border-radius:10px;padding:10px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top">
+    <div class="badge">Eddey</div>
+    <div style="flex:1"><h1>数学冲刺 · 三下</h1><div class="sub">考前刷一轮 · 选一选 · 写数字 · 即时对错</div></div>
+    <div style="font-size:30px">🚀</div>
+  </div>
+
+  <div id="home">
+    <div class="card">
+      <div class="lion"><div class="face">🦊</div><div class="bubble">嗨 Eddey！点一个知识点就开始刷题。<b>能选就选，要写就用下面的数字键盘</b>，不用打字。做完每组会告诉你<b>哪里还不熟</b>。加油冲！</div></div>
+      <div class="kou">建议：每天刷 2-3 个知识点，错的题会自动记进错题本 📒</div>
+    </div>
+    <div class="card">
+      <h2>📚 选一个知识点开刷</h2>
+      <div class="topics" id="topicGrid"></div>
+    </div>
+    <div class="card" style="cursor:pointer" onclick="showArchive()">
+      <div style="display:flex;align-items:center;gap:12px">
+        <div style="font-size:34px">📒</div>
+        <div style="flex:1"><div style="font-weight:800;font-size:18px;color:var(--redd)">错题本 / 学习档案</div>
+        <div style="font-size:13px;color:#8a7656" id="homestat">查看做过几组、反复错的题，导出给爸爸/老师</div></div>
+        <div style="font-size:22px;color:#a89070">›</div>
+      </div>
+    </div>
+  </div>
+
+  <div id="quiz" class="hidden"></div>
+  <div id="summary" class="hidden"></div>
+  <div id="archive" class="hidden"></div>
+</div>
+
+<script>
+/* =====================================================================
+   Eddey 数学冲刺 · 三年级下
+   知识点：除数是一位数的除法 / 两位数乘两位数 / 面积(含单位) /
+           分数的初步认识 / 小数的初步认识 / 年月日 / 典型应用题
+   每题答案均已逐题手算核对。
+   ===================================================================== */
+
+/* ---- 工具：单选题、填数题、判断题 ---- */
+/* 题型:
+   {type:'mc', q, opts:[...], a:正确下标, ex:讲解, tag, fig:可选小图html}
+   {type:'fill', q, a:'正确数字字符串', unit:可选单位, ex, tag, allowDot, allowSlash}
+*/
+
+const TOPICS = [
+{ id:'div', name:'一位数除法', ic:'➗', cls:'c0', subj:'除数是一位数的除法',
+  qs:[
+   {type:'fill', tag:'口算', q:'48 ÷ 4 = ?', a:'12', ex:'40÷4=10，8÷4=2，合起来 12。'},
+   {type:'fill', tag:'口算', q:'96 ÷ 3 = ?', a:'32', ex:'90÷3=30，6÷3=2，合起来 32。'},
+   {type:'fill', tag:'笔算', q:'375 ÷ 5 = ?', a:'75', ex:'37÷5=7余2，把2和5合成25，25÷5=5，得 75。'},
+   {type:'fill', tag:'笔算', q:'608 ÷ 4 = ?', a:'152', ex:'6÷4=1余2，20÷4=5，8÷4=2，得 152。中间有计算别漏。'},
+   {type:'fill', tag:'有余数', q:'63 ÷ 4 = ? 余 ?（先写商，再写余数）', a:'15 3', ex:'4×15=60，63−60=3，所以商15余3。两个数中间空一格。', twoNum:true},
+   {type:'mc', tag:'估算', q:'365 ÷ 6 的商大约是几位数？', opts:['一位数','两位数','三位数','四位数'], a:1, ex:'3百多除以6，比6×10=60大，比6×100=600小，所以是两位数。'},
+   {type:'mc', tag:'判断', q:'下面哪个除法<b>商中间有0</b>？', opts:['840÷4','618÷3','609÷3','936÷3'], a:2, ex:'609÷3：6÷3=2，0÷3=0，9÷3=3，得203，中间有0。'},
+   {type:'fill', tag:'笔算', q:'500 ÷ 4 = ?', a:'125', ex:'5÷4=1余1，10÷4=2余2，20÷4=5，得 125。'},
+  ]},
+
+{ id:'mul', name:'两位数乘两位数', ic:'✖️', cls:'c1', subj:'两位数乘两位数',
+  qs:[
+   {type:'fill', tag:'口算', q:'30 × 12 = ?', a:'360', ex:'3×12=36，末尾添一个0，得 360。'},
+   {type:'fill', tag:'笔算', q:'23 × 13 = ?', a:'299', ex:'23×3=69，23×10=230，69+230=299。'},
+   {type:'fill', tag:'笔算', q:'45 × 12 = ?', a:'540', ex:'45×2=90，45×10=450，90+450=540。'},
+   {type:'fill', tag:'笔算', q:'34 × 21 = ?', a:'714', ex:'34×1=34，34×20=680，34+680=714。'},
+   {type:'fill', tag:'巧算', q:'25 × 16 = ?', a:'400', ex:'25×4=100，16=4×4，所以25×16=100×4=400。'},
+   {type:'fill', tag:'笔算', q:'48 × 15 = ?', a:'720', ex:'48×5=240，48×10=480，240+480=720。'},
+   {type:'mc', tag:'估算', q:'29 × 41 大约等于多少？', opts:['约 800','约 1200','约 2000','约 400'], a:1, ex:'29≈30，41≈40，30×40=1200。'},
+   {type:'fill', tag:'笔算', q:'18 × 45 = ?', a:'810', ex:'18×5=90，18×40=720，90+720=810。'},
+  ]},
+
+{ id:'area', name:'面积(含单位)', ic:'⬛', cls:'c2', subj:'面积',
+  qs:[
+   {type:'mc', tag:'单位', q:'量一张课桌桌面的大小，用哪个单位合适？', opts:['平方厘米','平方分米','平方米','平方千米'], a:1, ex:'课桌面比较大，用平方分米合适；橡皮用平方厘米，地面/教室用平方米。'},
+   {type:'fill', tag:'长方形', q:'长方形长 12 厘米、宽 5 厘米，面积是多少平方厘米？', a:'60', unit:'平方厘米', ex:'长方形面积=长×宽=12×5=60（平方厘米）。'},
+   {type:'fill', tag:'正方形', q:'正方形边长 8 厘米，面积是多少平方厘米？', a:'64', unit:'平方厘米', ex:'正方形面积=边长×边长=8×8=64（平方厘米）。'},
+   {type:'mc', tag:'周长还是面积', q:'给相框四周包一圈金边，求金边长度，是求？', opts:['面积','周长'], a:1, ex:'四周一圈的长度是“周长”；铺满里面才是面积。', twoOnly:true},
+   {type:'fill', tag:'周长', q:'正方形边长 6 厘米，周长是多少厘米？', a:'24', unit:'厘米', ex:'正方形周长=边长×4=6×4=24（厘米）。'},
+   {type:'mc', tag:'单位换算', q:'1 平方分米 = 多少平方厘米？', opts:['10','100','1000','1'], a:1, ex:'1分米=10厘米，所以1平方分米=10×10=100平方厘米。'},
+   {type:'fill', tag:'长方形', q:'一块菜地长 20 米、宽 3 米，面积是多少平方米？', a:'60', unit:'平方米', ex:'20×3=60（平方米）。'},
+   {type:'mc', tag:'比较', q:'A正方形边长5厘米，B长方形长8厘米宽2厘米，谁面积大？', opts:['A 大','B 大','一样大'], a:0, ex:'A=5×5=25，B=8×2=16，A的25比B的16大。'},
+  ]},
+
+{ id:'frac', name:'分数初步认识', ic:'🍰', cls:'c3', subj:'分数的初步认识',
+  qs:[
+   {type:'mc', tag:'认识', q:'把一个蛋糕<b>平均分成 4 份</b>，每份是它的几分之几？', opts:['1/2','1/3','1/4','4/1'], a:2, ex:'平均分成4份，每份就是四分之一，写作 1/4。'},
+   {type:'mc', tag:'比大小', q:'1/3 和 1/5 哪个大？', opts:['1/3 大','1/5 大','一样大'], a:0, ex:'同样一个东西，分的份数越少每份越大。分成3份比分成5份每份大，所以 1/3 大。'},
+   {type:'fill', tag:'同分母加', q:'2/7 + 3/7 = 几分之几？（只填分子）', a:'5', unit:'/7', ex:'分母不变，分子相加：2+3=5，得 5/7。'},
+   {type:'fill', tag:'同分母减', q:'5/8 − 2/8 = 几分之几？（只填分子）', a:'3', unit:'/8', ex:'分母不变，分子相减：5−2=3，得 3/8。'},
+   {type:'mc', tag:'1减分数', q:'一根绳子用去 1/4，还剩它的几分之几？', opts:['1/4','2/4','3/4','4/4'], a:2, ex:'整根看作 4/4，用去 1/4，还剩 4/4−1/4=3/4。'},
+   {type:'mc', tag:'读图', q:'一个圆平均分成6份，涂色了5份，涂色部分是几分之几？', opts:['1/6','5/6','6/5','5/1'], a:1, ex:'平均6份取5份，就是 5/6。'},
+   {type:'fill', tag:'同分母加', q:'1/4 + 1/4 = 几分之几？（只填分子，得 ?/4）', a:'2', unit:'/4', ex:'1+1=2，得 2/4（也就是一半 1/2）。'},
+   {type:'mc', tag:'比大小', q:'下面哪个分数最大？', opts:['3/8','5/8','1/8','4/8'], a:1, ex:'分母都是8，分子越大分数越大，5/8 最大。'},
+  ]},
+
+{ id:'dec', name:'小数初步认识', ic:'💰', cls:'c4', subj:'小数的初步认识',
+  qs:[
+   {type:'mc', tag:'读小数', q:'小数 3.5 读作？', opts:['三点五','三十五','三百五','三又五'], a:0, ex:'小数点读“点”，3.5 读作“三点五”。'},
+   {type:'mc', tag:'元角分', q:'5 角 写成用“元”作单位的小数是？', opts:['5元','0.5元','0.05元','50元'], a:1, ex:'1元=10角，5角就是半元=0.5元。'},
+   {type:'fill', tag:'小数加', q:'0.8 + 0.8 = ?（填小数）', a:'1.6', allowDot:true, ex:'8角+8角=16角=1元6角=1.6元。'},
+   {type:'fill', tag:'小数减', q:'5.6 − 2.3 = ?（填小数）', a:'3.3', allowDot:true, ex:'整数部分5−2=3，小数部分6−3=3，得 3.3。'},
+   {type:'mc', tag:'比大小', q:'哪个数最大？', opts:['0.7','0.5','0.9','0.3'], a:2, ex:'都是零点几，比小数点后第一位：9最大，0.9最大。'},
+   {type:'fill', tag:'小数加', q:'1.2 + 0.6 = ?（填小数）', a:'1.8', allowDot:true, ex:'整数1，小数2+6=8，得 1.8。'},
+   {type:'mc', tag:'元角分', q:'一支笔 3 元 2 角，写成小数是多少元？', opts:['3.2元','32元','3.02元','3.20元都对(选3.2)'], a:0, ex:'2角=0.2元，3元2角=3.2元。'},
+   {type:'fill', tag:'小数减', q:'1 − 0.6 = ?（填小数）', a:'0.4', allowDot:true, ex:'1元=10角，10角−6角=4角=0.4元。'},
+  ]},
+
+{ id:'cal', name:'年月日', ic:'📅', cls:'c5', subj:'年月日',
+  qs:[
+   {type:'mc', tag:'大小月', q:'下面哪个月是 31 天（大月）？', opts:['4月','6月','8月','9月'], a:2, ex:'大月(31天)：1,3,5,7,8,10,12月；小月(30天)：4,6,9,11月。8月是大月。'},
+   {type:'mc', tag:'二月', q:'平年的 2 月有多少天？', opts:['28天','29天','30天','31天'], a:0, ex:'平年2月28天，闰年2月29天。'},
+   {type:'mc', tag:'闰年', q:'下面哪一年是<b>闰年</b>？', opts:['2023年','2024年','2025年','2026年'], a:1, ex:'公历年份除以4没有余数(且不是整百年特殊判断)就是闰年。2024÷4=606没余数，是闰年。'},
+   {type:'fill', tag:'一年天数', q:'平年一年共有多少天？', a:'365', unit:'天', ex:'平年365天，闰年366天（闰年2月多1天）。'},
+   {type:'mc', tag:'24时制', q:'下午 3 时，用 24 时计时法是？', opts:['3时','13时','15时','30时'], a:2, ex:'下午的时间加12：3+12=15时。'},
+   {type:'fill', tag:'季度', q:'第一季度（1、2、3月）平年共有多少天？', a:'90', unit:'天', ex:'31+28+31=90天（平年）。'},
+   {type:'mc', tag:'生活', q:'国庆节是哪一天？', opts:['10月1日','1月1日','6月1日','12月25日'], a:0, ex:'国庆节10月1日；元旦1月1日；儿童节6月1日。'},
+   {type:'mc', tag:'经过时间', q:'从上午 8 时到中午 12 时，经过了几小时？', opts:['3小时','4小时','5小时','12小时'], a:1, ex:'12−8=4小时。'},
+  ]},
+
+{ id:'app', name:'典型应用题', ic:'🧠', cls:'c6', subj:'典型应用题',
+  qs:[
+   {type:'fill', tag:'平均分', q:'72 个苹果平均装进 6 个篮子，每篮几个？', a:'12', unit:'个', ex:'求每份用除法：72÷6=12（个）。'},
+   {type:'fill', tag:'总价', q:'每个本子 5 元，买 24 个要多少元？', a:'120', unit:'元', ex:'总价=单价×数量=5×24=120（元）。'},
+   {type:'fill', tag:'归一', q:'3 支笔 12 元，照这样，5 支笔多少元？', a:'20', unit:'元', ex:'先求1支：12÷3=4元；再求5支：4×5=20（元）。'},
+   {type:'fill', tag:'乘法', q:'电影院每排 22 个座位，共 15 排，一共多少个座位？', a:'330', unit:'个', ex:'22×15=330（个）。22×5=110，22×10=220，合330。'},
+   {type:'mc', tag:'选算法', q:'“小明有84元，平均分给4人，每人多少元”用什么算？', opts:['加法','减法','乘法','除法'], a:3, ex:'平均分求每份用除法：84÷4=21元。'},
+   {type:'fill', tag:'两步', q:'妈妈带 100 元，买了 3 千克橘子，每千克 20 元，找回多少元？', a:'40', unit:'元', ex:'先算花了多少：20×3=60元；再算找回：100−60=40（元）。'},
+   {type:'fill', tag:'有余数', q:'50 个乒乓球，每盒装 8 个，能装满几盒？', a:'6', unit:'盒', ex:'50÷8=6余2，能装满6盒，还剩2个。问“装满”取商6。'},
+   {type:'fill', tag:'植树/间隔', q:'路一边每隔 5 米栽 1 棵树，从头到尾共栽到第 6 棵，全长多少米？', a:'25', unit:'米', ex:'6棵之间有 6−1=5 个间隔，每隔5米：5×5=25（米）。'},
+  ]},
+];
+
+/* ===================== 归档引擎（与 kenton_dictation 对齐） ===================== */
+const CHILD='弟弟';
+const AKEY='mx_archive_弟弟_math3b';
+function loadArchive(){try{return JSON.parse(localStorage.getItem(AKEY))||{child:CHILD,subject:'math3b',events:[]};}catch(e){return{child:CHILD,subject:'math3b',events:[]};}}
+function saveArchive(a){try{localStorage.setItem(AKEY,JSON.stringify(a));}catch(e){}}
+function logEvent(ev){const a=loadArchive();a.events.push(ev);saveArchive(a);cloudUpload(ev);}
+/* 云端上传：fire-and-forget；端点缺失/断网/出错都静默，绝不影响使用 */
+function cloudUpload(ev){
+  try{
+    var endpoint=null;
+    try{endpoint=localStorage.getItem('eb_endpoint');}catch(e){}
+    if(!endpoint)return;
+    var items=(ev.items||[]).map(function(it){
+      return {kid:'eddey',subject:'数学',topic:ev.topic||'',
+        item:(it.word!=null?it.word:''),
+        ok:!!it.ok,hint:(it.hint!=null?it.hint:'')};
+    });
+    if(!items.length)return;
+    fetch(endpoint,{method:'POST',headers:{'Content-Type':'text/plain'},body:JSON.stringify(items)})
+      .then(function(){}).catch(function(){});
+  }catch(e){}
+}
+function fmtDate(ts){const d=new Date(ts);const p=n=>(n<10?'0':'')+n;return d.getFullYear()+'-'+p(d.getMonth()+1)+'-'+p(d.getDate())+' '+p(d.getHours())+':'+p(d.getMinutes());}
+/* 聚合每道题累计对错（按 topic+题面） */
+function aggregateItems(events){
+  const m={};
+  events.forEach(ev=>{(ev.items||[]).forEach(it=>{
+    const key=(ev.topic||'')+'|'+it.word;
+    if(!m[key])m[key]={word:it.word,hint:it.hint||'',topic:ev.topic,ok:0,wrong:0,last:ev.ts};
+    if(it.ok)m[key].ok++;else m[key].wrong++;
+    m[key].last=Math.max(m[key].last,ev.ts);
+  });});
+  return Object.values(m);
+}
+/* 各知识点最佳成绩(用于首页星星) */
+function topicBest(events){
+  const m={};
+  events.forEach(ev=>{const r=ev.total?(ev.total-ev.wrong)/ev.total:0;if(m[ev.tid]==null||r>m[ev.tid])m[ev.tid]=r;});
+  return m;
+}
+
+/* ===================== 首页知识点网格 ===================== */
+function renderTopicGrid(){
+  const a=loadArchive();const best=topicBest(a.events);
+  const g=document.getElementById('topicGrid');
+  g.innerHTML=TOPICS.map((t,i)=>{
+    const r=best[t.id];
+    let stars='';
+    if(r!=null){const s=r>=0.95?3:(r>=0.75?2:(r>=0.5?1:0));stars='⭐'.repeat(s)+(s===0?'💪':'');}
+    const doneCls=(r!=null&&r>=0.75)?' done':'';
+    return '<div class="tcard '+t.cls+doneCls+'" onclick="startTopic(\''+t.id+'\')">'+
+      (stars?'<div class="star">'+stars+'</div>':'')+
+      '<div class="ic">'+t.ic+'</div><div class="nm">'+t.name+'</div>'+
+      '<div class="ds">'+t.qs.length+' 题</div></div>';
+  }).join('');
+}
+function refreshHomeStat(){
+  const a=loadArchive();const el=document.getElementById('homestat');if(!el)return;
+  if(!a.events.length){el.textContent='还没有记录——刷一组题就会自动归档';return;}
+  const items=aggregateItems(a.events);
+  const repeat=items.filter(w=>w.wrong>=2).length;
+  el.innerHTML='已刷 <b>'+a.events.length+'</b> 组 ｜ 反复错的题 <b style="color:var(--red)">'+repeat+'</b> 道 ｜ 点这里看/导出';
+}
+
+/* ===================== 答题状态 ===================== */
+const S={tid:null,topic:null,subj:'',qs:[],idx:0,correct:0,results:[],input:'',answered:false};
+
+function show(id){['home','quiz','summary','archive'].forEach(x=>document.getElementById(x).classList.add('hidden'));
+  document.getElementById(id).classList.remove('hidden');window.scrollTo(0,0);}
+function goHome(){renderTopicGrid();refreshHomeStat();show('home');}
+
+function startTopic(tid){
+  const t=TOPICS.find(x=>x.id===tid);if(!t)return;
+  S.tid=tid;S.topic=t.name;S.subj=t.subj;
+  S.qs=t.qs.slice();S.idx=0;S.correct=0;S.results=[];S.input='';S.answered=false;
+  renderQuestion();show('quiz');
+}
+
+function esc(s){return (''+s);}
+
+function renderQuestion(){
+  const q=S.qs[S.idx];S.input='';S.answered=false;
+  const b=document.getElementById('quiz');
+  const pct=Math.round((S.idx)/S.qs.length*100);
+  let body='';
+  // 头部
+  body+='<button class="back" onclick="quitTopic()">← 退出本组</button>'+
+    '<div class="card">'+
+    '<div class="qhead"><div class="qnum">'+S.topic+' ｜ 第 '+(S.idx+1)+' / '+S.qs.length+' 题</div>'+
+    '<div class="qscore">✅ '+S.correct+'</div></div>'+
+    '<div class="progbar"><i style="width:'+pct+'%"></i></div>'+
+    '<div class="qbox">'+
+    '<div class="qtag">'+q.tag+'</div>'+
+    '<div class="qtext">'+q.q+'</div>';
+  // 题型区
+  if(q.type==='mc'){
+    const cls=(q.opts.length<=2||q.twoOnly)?'opts one':(q.opts.length===2?'opts one':'opts');
+    body+='<div class="'+cls+'" id="optArea">'+
+      q.opts.map((o,i)=>'<button class="opt" id="opt'+i+'" onclick="answerMC('+i+')">'+o+'</button>').join('')+'</div>';
+  } else {
+    // 填空：数字键盘
+    body+='<div class="inpwrap"><span class="inpbox" id="inpbox"><span class="ph">点数字</span></span>'+
+      (q.unit?'<span class="inpunit">'+q.unit+'</span>':'')+'</div>'+
+      buildKeypad(q);
+  }
+  body+='<div class="fb" id="fb"></div>'+
+    '<div class="dots">'+S.qs.map((_,i)=>{
+      let c=(i<S.idx)?(S.results[i]&&S.results[i].ok?'ok':'no'):(i===S.idx?'cur':'');
+      return '<i class="'+c+'"></i>';}).join('')+'</div>'+
+    '</div></div>';
+  b.innerHTML=body;
+}
+
+function buildKeypad(q){
+  let keys=['1','2','3','4','5','6','7','8','9'];
+  // 第四行
+  let row4=[];
+  if(q.allowDot)row4.push({k:'.',label:'.',cls:'fn'});
+  if(q.twoNum)row4.push({k:' ',label:'空格',cls:'fn'});
+  row4.push({k:'0',label:'0',cls:''});
+  row4.push({k:'del',label:'⌫',cls:'fn'});
+  let html='<div class="keypad">';
+  keys.forEach(k=>{html+='<button class="key" onclick="press(\''+k+'\')">'+k+'</button>';});
+  // 补满第四行到3列：若按钮少于3个，前面补空
+  while(row4.length<3)row4.unshift({k:'',label:'',cls:'',blank:true});
+  row4.forEach(o=>{
+    if(o.blank){html+='<span></span>';}
+    else html+='<button class="key '+o.cls+'" onclick="press(\''+(o.k===' '?'SPACE':o.k)+'\')">'+o.label+'</button>';
+  });
+  html+='</div><div class="row"><button class="btn green big" id="okBtn" onclick="submitFill()">确定 ✓</button></div>';
+  return html;
+}
+
+function press(ch){
+  if(S.answered)return;
+  if(ch==='del'){S.input=S.input.slice(0,-1);}
+  else if(ch==='SPACE'){if(S.input&&!S.input.endsWith(' '))S.input+=' ';}
+  else if(ch==='.'){if(!S.input.split(' ').pop().includes('.'))S.input+=(S.input===''?'0.':'.');}
+  else {if(S.input.replace(/\D/g,'').length<6)S.input+=ch;}
+  const el=document.getElementById('inpbox');
+  if(el)el.innerHTML=S.input?esc(S.input):'<span class="ph">点数字</span>';
+}
+
+function submitFill(){
+  if(S.answered)return;
+  const q=S.qs[S.idx];
+  let val=S.input.trim().replace(/\s+/g,' ');
+  if(val===''){const el=document.getElementById('inpbox');if(el)el.innerHTML='<span class="ph">先点数字再确定</span>';return;}
+  // 规范化小数：去掉无意义前导，比较数值或字符串
+  let ok=false;
+  const want=q.a.trim();
+  if(q.twoNum){
+    ok=(val===want);
+  } else if(q.allowDot){
+    ok=(parseFloat(val)===parseFloat(want));
+  } else {
+    ok=(parseInt(val,10)===parseInt(want,10)) && /^\d+$/.test(val);
+  }
+  finishAnswer(ok,q,'你的答案：'+val);
+}
+
+function answerMC(i){
+  if(S.answered)return;
+  const q=S.qs[S.idx];
+  const ok=(i===q.a);
+  // 标记按钮
+  document.querySelectorAll('#quiz .opt').forEach(b=>b.disabled=true);
+  const chosen=document.getElementById('opt'+i);
+  if(chosen)chosen.classList.add(ok?'right':'wrong');
+  if(!ok){const right=document.getElementById('opt'+q.a);if(right)right.classList.add('right');}
+  finishAnswer(ok,q,'');
+}
+
+function finishAnswer(ok,q,extra){
+  S.answered=true;
+  if(ok)S.correct++;
+  // 正确答案展示文本
+  let ansText;
+  if(q.type==='mc')ansText=q.opts[q.a];
+  else ansText=q.a.replace(' ',' 余 ')+(q.unit?(' '+q.unit):'');
+  S.results[S.idx]={word:q.q,ok:ok,hint:ansText,tag:q.tag};
+  const fb=document.getElementById('fb');
+  if(fb){
+    if(ok){
+      fb.innerHTML='<div class="fbbox ok"><span class="ans">✅ 答对啦！</span><span class="ex">'+q.ex+'</span></div>';
+      ding(true);
+    } else {
+      fb.innerHTML='<div class="fbbox no"><span class="ans">❌ '+(extra?extra+'。':'')+'正确答案：<b>'+ansText+'</b></span><span class="ex">💡 '+q.ex+'</span></div>';
+      ding(false);
+    }
+  }
+  // 更新进度点 + 计分
+  const sc=document.querySelector('#quiz .qscore');if(sc)sc.textContent='✅ '+S.correct;
+  // 隐藏键盘确定/选项，显示“下一题”
+  const okBtn=document.getElementById('okBtn');
+  const nextHtml='<div class="row"><button class="btn big '+(S.idx<S.qs.length-1?'blue':'gold')+'" onclick="nextQuestion()">'+(S.idx<S.qs.length-1?'下一题 →':'看小结 🎉')+'</button></div>';
+  if(fb)fb.insertAdjacentHTML('beforeend',nextHtml);
+  // 更新本题进度点颜色
+  const dots=document.querySelectorAll('#quiz .dots i');
+  if(dots[S.idx]){dots[S.idx].className=ok?'ok':'no';}
+}
+
+function nextQuestion(){
+  if(S.idx<S.qs.length-1){S.idx++;renderQuestion();}
+  else{finishTopic();}
+}
+
+function quitTopic(){
+  // 退出不记录半组
+  goHome();
+}
+
+function ding(ok){
+  try{const ctx=new(window.AudioContext||window.webkitAudioContext)();const o=ctx.createOscillator();const g=ctx.createGain();
+    o.connect(g);g.connect(ctx.destination);
+    if(ok){o.frequency.setValueAtTime(660,ctx.currentTime);o.frequency.setValueAtTime(990,ctx.currentTime+0.09);}
+    else{o.frequency.setValueAtTime(300,ctx.currentTime);o.frequency.setValueAtTime(200,ctx.currentTime+0.12);}
+    g.gain.setValueAtTime(0.16,ctx.currentTime);g.gain.exponentialRampToValueAtTime(0.001,ctx.currentTime+(ok?0.25:0.3));
+    o.start();o.stop(ctx.currentTime+(ok?0.25:0.3));}catch(e){}
+}
+
+/* ===================== 小结 ===================== */
+function finishTopic(){
+  const wrong=S.qs.length-S.correct;
+  // 归档
+  const items=S.results.map(r=>({word:r.word,ok:r.ok,hint:r.hint}));
+  logEvent({ts:Date.now(),tid:S.tid,topic:S.topic,subject:'数学',
+    total:S.qs.length,wrong:wrong,
+    durationSec:0,items:items});
+  // 弱项：按 tag 分组统计错题
+  const tagStat={};
+  S.results.forEach(r=>{if(!tagStat[r.tag])tagStat[r.tag]={ok:0,total:0};tagStat[r.tag].total++;if(r.ok)tagStat[r.tag].ok++;});
+  const rate=S.correct/S.qs.length;
+  const s3=rate>=0.95?3:(rate>=0.75?2:(rate>=0.5?1:0));
+  const stars='⭐'.repeat(s3)+'☆'.repeat(3-s3);
+  let praise= rate>=0.95?'太厉害了，全对/接近全对！这个知识点你稳了 🏆'
+            : rate>=0.75?'很棒！大部分都会，把下面错的看一眼就更牢了 👍'
+            : rate>=0.5 ?'不错，过了一半！错的地方多看两遍讲解再刷一次 💪'
+            : '没关系，刚学会刷题最重要。看完讲解再来一次会进步很多 🌱';
+  const wrongList=S.results.filter(r=>!r.ok);
+  let weakHtml='';
+  Object.keys(tagStat).forEach(tag=>{
+    const t=tagStat[tag];const r=t.ok/t.total;
+    const cls=r>=0.75?'good':(r<0.5?'bad':'');
+    const ic=r>=0.75?'✅':(r<0.5?'🔴':'🟡');
+    weakHtml+='<div class="weakrow '+cls+'"><span>'+ic+'</span><span class="wn">'+tag+'</span><span class="wp">'+t.ok+'/'+t.total+'</span></div>';
+  });
+  let wrongHtml='';
+  if(wrongList.length){
+    wrongHtml='<div class="card"><h2 style="color:var(--red)">📌 这次做错的题（看一眼正确答案）</h2>'+
+      wrongList.map(r=>'<div style="border-bottom:1px dashed var(--line);padding:8px 0">'+
+        '<div style="font-weight:700;font-size:14px">'+r.word+'</div>'+
+        '<div style="font-size:14px;color:var(--green);margin-top:2px">✔ 正确答案：<b>'+r.hint+'</b></div></div>').join('')+
+      '<div class="row"><button class="btn green" onclick="redoWrong()">🔁 只重做这些错题</button></div></div>';
+  }
+  const b=document.getElementById('summary');
+  b.innerHTML='<button class="back" onclick="goHome()">← 返回首页</button>'+
+    '<div class="card" style="text-align:center">'+
+    '<h2>'+S.topic+' · 小结</h2>'+
+    '<div class="starline">'+stars+'</div>'+
+    '<div class="scoreBig" style="color:'+(rate>=0.75?'var(--green)':'var(--red)')+'">'+S.correct+' / '+S.qs.length+'</div>'+
+    '<div class="kou">'+praise+'</div>'+
+    '<div style="text-align:left;margin-top:10px"><div style="font-weight:800;color:var(--redd);margin-bottom:4px">📊 各类型掌握情况</div>'+weakHtml+'</div>'+
+    '<div class="row"><button class="btn blue big" onclick="startTopic(\''+S.tid+'\')">🔁 再刷一遍</button>'+
+    '<button class="btn gold big" onclick="goHome()">🏠 换知识点</button></div>'+
+    '</div>'+wrongHtml;
+  show('summary');
+}
+
+function redoWrong(){
+  const wrongQs=[];
+  S.results.forEach((r,i)=>{if(!r.ok)wrongQs.push(S.qs[i]);});
+  if(!wrongQs.length){goHome();return;}
+  S.qs=wrongQs;S.idx=0;S.correct=0;S.results=[];S.input='';S.answered=false;
+  renderQuestion();show('quiz');
+}
+
+/* ===================== 错题本 / 档案 ===================== */
+function showArchive(){
+  const a=loadArchive();const b=document.getElementById('archive');
+  const items=aggregateItems(a.events);
+  const repeat=items.filter(w=>w.wrong>=1).sort((x,y)=>y.wrong-x.wrong);
+  const evs=a.events.slice().reverse();
+  b.innerHTML='<button class="back" onclick="goHome()">← 返回</button>'+
+    '<div class="card"><h2>📒 '+'Eddey'+' 的数学错题本</h2>'+
+    '<div class="lead">共刷 '+a.events.length+' 组。下面数据可<b>一键复制</b>发给爸爸，或<b>下载</b>保存。</div>'+
+    '<div class="row" style="justify-content:flex-start">'+
+      '<button class="btn sm blue" onclick="copyArchive()">📋 一键复制</button>'+
+      '<button class="btn sm green" onclick="downloadArchive()">📥 下载</button>'+
+      '<button class="btn sm ghost" onclick="clearArchive()">🗑 清空</button></div></div>'+
+    (repeat.length?'<div class="card"><h2 style="color:var(--red)">🔴 做错过的题（重点复习）</h2>'+
+      repeat.map(w=>'<div style="border-bottom:1px dashed var(--line);padding:8px 0">'+
+        '<div style="font-weight:700;font-size:14px">['+(w.topic||'')+'] '+w.word+'</div>'+
+        '<div style="font-size:13px;color:var(--green);margin-top:2px">✔ '+w.hint+' <span style="color:var(--red);float:right">错'+w.wrong+'次/对'+w.ok+'次</span></div></div>').join('')+
+      '</div>':'<div class="card"><div class="lead">还没有错题，全都做对了或还没开始刷 🎉</div></div>')+
+    '<div class="card"><h2>📅 刷题记录</h2>'+
+      (evs.length?evs.map(ev=>{
+        const wrongItems=(ev.items||[]).filter(it=>!it.ok).length;
+        return '<div style="border-bottom:1px solid var(--line);padding:9px 0">'+
+          '<div style="font-weight:700">'+ev.topic+
+            '<span style="float:right;color:#a89070;font-size:12px">'+fmtDate(ev.ts)+'</span></div>'+
+          '<div style="font-size:13px;color:#8a7656;margin-top:3px">'+(ev.total-ev.wrong)+'/'+ev.total+' 对'+
+            (wrongItems?' ｜ 错 <span style="color:var(--red)">'+wrongItems+'</span> 题':' ｜ 全对 ✓')+'</div></div>';
+      }).join(''):'<div class="lead">还没有记录</div>')+'</div>'+
+    '<div class="card hidden" id="copybox"><h2>复制下面全部文字</h2>'+
+      '<textarea id="copytext"></textarea></div>';
+  show('archive');
+}
+function archiveText(){
+  const a=loadArchive();const items=aggregateItems(a.events);
+  const repeat=items.filter(w=>w.wrong>=1).sort((x,y)=>y.wrong-x.wrong);
+  let t='【Eddey 数学冲刺·三下 学习档案】导出时间:'+fmtDate(Date.now())+'\n刷题总组数:'+a.events.length+'\n\n';
+  t+='== 做错过的题(重点复习) ==\n';
+  t+=repeat.length?repeat.map(w=>'['+(w.topic||'')+'] '+w.word+' → 正确:'+w.hint+' (错'+w.wrong+'次/对'+w.ok+'次)').join('\n'):'(无)';
+  t+='\n\n== 每组刷题明细 ==\n';
+  a.events.forEach(ev=>{
+    const wrongItems=(ev.items||[]).filter(it=>!it.ok).map(it=>it.word+'→'+it.hint);
+    t+='\n['+fmtDate(ev.ts)+'] '+ev.topic+' ｜ '+(ev.total-ev.wrong)+'/'+ev.total+'对';
+    if(wrongItems.length)t+='\n  错题:\n   '+wrongItems.join('\n   ');
+  });
+  t+='\n\n== 原始数据(JSON) ==\n'+JSON.stringify(a);
+  return t;
+}
+function copyArchive(){
+  const txt=archiveText();
+  const box=document.getElementById('copybox');const ta=document.getElementById('copytext');
+  if(box&&ta){box.classList.remove('hidden');ta.value=txt;ta.focus();ta.select();}
+  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(txt).then(()=>{}).catch(()=>{});}
+}
+function downloadArchive(){
+  const txt=archiveText();const blob=new Blob([txt],{type:'text/plain;charset=utf-8'});
+  const url=URL.createObjectURL(blob);const a=document.createElement('a');
+  a.href=url;a.download='Eddey数学错题本.txt';
+  document.body.appendChild(a);a.click();document.body.removeChild(a);
+  setTimeout(()=>URL.revokeObjectURL(url),1000);
+}
+function clearArchive(){if(confirm('确定清空 Eddey 的所有数学记录吗？不能撤销。')){localStorage.removeItem(AKEY);showArchive();}}
+
+/* ===================== 启动 ===================== */
+window.addEventListener('load',()=>{renderTopicGrid();refreshHomeStat();});
+</script>
+</body>
+</html>

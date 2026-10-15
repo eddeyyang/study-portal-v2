@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<script src="../assets/learning-sync.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>核桃 L3-2 复习 · 循环嵌套实验室</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+:root{
+  --orange-1:#FF6B35; --orange-2:#FF8C42; --orange-3:#FFB347;
+  --purple-1:#6B5BFF; --green-1:#2BB673; --green-2:#4ECDC4;
+  --yellow-1:#FFD93D; --pink-1:#FF6B9D; --blue-1:#3B82F6;
+  --bg:#FFF8F0; --ink:#2D2A4A; --ink-soft:#5A5775;
+  --card:#ffffff; --shadow:0 8px 28px rgba(45,42,74,.12);
+  --good:#2BB673; --bad:#E64A4A;
+}
+html,body{ font-family:"PingFang SC","Microsoft YaHei",sans-serif; color:var(--ink);
+  background:linear-gradient(135deg,#FFF8F0 0%,#FFE8D6 100%); min-height:100%; }
+body{ -webkit-tap-highlight-color:transparent; }
+.wrap{ max-width:680px; margin:0 auto; padding:0 14px 80px; }
+
+.topbar{ position:sticky; top:0; z-index:50; backdrop-filter:blur(10px);
+  background:rgba(255,255,255,.86); border-bottom:2px solid rgba(255,107,53,.15);
+  display:flex; align-items:center; gap:10px; padding:10px 14px; }
+.logo{ width:34px;height:34px;border-radius:9px; display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(135deg,var(--orange-1),var(--orange-2)); color:#fff;font-size:19px;
+  box-shadow:0 4px 12px rgba(255,107,53,.4); }
+.brand b{ font-size:15px; color:var(--orange-1); display:block; line-height:1.2;}
+.brand span{ font-size:11px; color:var(--ink-soft);}
+.home{ margin-left:auto; text-decoration:none; background:#fff; border:2px solid var(--orange-1);
+  color:var(--orange-1); padding:6px 12px; border-radius:11px; font-weight:800; font-size:13px;}
+
+.nav{ display:flex; gap:8px; overflow-x:auto; padding:12px 2px; position:sticky; top:56px; z-index:40;
+  background:linear-gradient(180deg,rgba(255,248,240,.96),rgba(255,248,240,.7)); }
+.nav::-webkit-scrollbar{ display:none; }
+.chip{ flex:0 0 auto; border:none; background:#fff; color:var(--ink-soft); font-weight:800;
+  padding:9px 14px; border-radius:999px; font-size:13px; cursor:pointer; box-shadow:var(--shadow);
+  font-family:inherit; transition:.15s; }
+.chip.active{ background:linear-gradient(135deg,var(--orange-1),var(--orange-2)); color:#fff; transform:translateY(-1px);}
+
+section{ display:none; animation:fade .35s ease; }
+section.show{ display:block; }
+@keyframes fade{ from{opacity:0; transform:translateY(8px)} to{opacity:1; transform:none} }
+
+.card{ background:var(--card); border-radius:20px; box-shadow:var(--shadow); padding:18px; margin:14px 0; }
+.h2{ font-size:21px; font-weight:900; display:flex; align-items:center; gap:9px; margin-bottom:4px; }
+.sub{ color:var(--ink-soft); font-size:14px; line-height:1.6; margin-bottom:6px;}
+.tip{ background:#FFF3E8; border-left:4px solid var(--orange-1); border-radius:10px; padding:10px 13px;
+  font-size:14px; line-height:1.7; margin:10px 0; }
+.tip b{ color:#C84B1A; }
+.method{ background:#F3F0FF; border-left:4px solid var(--purple-1); border-radius:10px; padding:10px 13px;
+  font-size:14px; line-height:1.7; margin:10px 0; }
+
+/* 单词卡 */
+.wordgrid{ display:grid; grid-template-columns:1fr; gap:12px; }
+.wcard{ border:2px solid #FFE0C4; border-radius:16px; padding:14px 16px; background:linear-gradient(135deg,#fff,#FFF6EE);}
+.wtop{ display:flex; align-items:center; gap:10px; flex-wrap:wrap;}
+.wen{ font-size:26px; font-weight:900; color:var(--orange-1); }
+.wph{ color:var(--ink-soft); font-size:14px; }
+.spk{ margin-left:auto; border:none; background:var(--orange-1); color:#fff; width:40px;height:40px;
+  border-radius:50%; font-size:18px; cursor:pointer; box-shadow:0 4px 10px rgba(255,107,53,.4);}
+.wmean{ margin-top:6px; font-size:15px; line-height:1.7;}
+.wmean .pos{ display:inline-block; background:#EEE9FF; color:var(--purple-1); font-size:12px; font-weight:800;
+  border-radius:6px; padding:1px 7px; margin-right:6px;}
+.wph2{ margin-top:6px; font-size:13px; color:var(--green-1); font-weight:700;}
+
+/* 代码块 */
+.code{ background:#1E1B33; color:#Efeaff; border-radius:14px; padding:14px 16px; font-size:15px;
+  font-family:"SF Mono",Consolas,Menlo,monospace; line-height:1.85; overflow-x:auto; }
+.code .ln{ display:block; border-radius:6px; padding:0 6px; transition:background .15s; }
+.code .ln.on{ background:rgba(255,217,61,.28); }
+.k{color:#FF9D66;} .v{color:#7FE0FF;} .n{color:#FFD93D;} .s{color:#9DE89D;} .o{color:#FF8FB0;} .c{color:#8B86A8;}
+.hl{ background:rgba(255,217,61,.22); border-radius:5px; padding:0 4px; }
+
+.btn{ border:none; border-radius:13px; padding:11px 16px; font-weight:800; font-size:15px; cursor:pointer;
+  font-family:inherit; background:linear-gradient(135deg,var(--orange-1),var(--orange-2)); color:#fff;
+  box-shadow:0 5px 14px rgba(255,107,53,.35); transition:.15s; }
+.btn:active{ transform:translateY(2px); }
+.btn.ghost{ background:#fff; color:var(--orange-1); border:2px solid var(--orange-1); box-shadow:none;}
+.btn.green{ background:linear-gradient(135deg,#2BB673,#4ECDC4); box-shadow:0 5px 14px rgba(43,182,115,.3);}
+.btn.blue{ background:linear-gradient(135deg,#3B82F6,#6B5BFF); box-shadow:0 5px 14px rgba(59,130,246,.3);}
+.btn.row{ display:block; width:100%; margin:7px 0; }
+.btnrow{ display:flex; gap:10px; flex-wrap:wrap; margin-top:12px; }
+.btn:disabled{ opacity:.4; cursor:default; }
+
+/* 屏幕 / 输出区 */
+.screen{ background:#0E1230; color:#7FE0FF; border-radius:14px; padding:12px 16px; font-family:monospace;
+  font-size:17px; min-height:54px; line-height:1.7; border:2px solid #2a2f55; margin-top:10px; }
+.screen .lab{ color:#8B86A8; font-size:12px; display:block; margin-bottom:4px; font-family:inherit;}
+.outch{ display:inline-block; animation:pop .25s ease; }
+@keyframes pop{ from{transform:scale(0) rotate(-15deg); opacity:0} to{transform:none; opacity:1} }
+
+/* 变量盒子 */
+.varbox{ width:130px; margin:12px auto; background:linear-gradient(135deg,#FFF6EE,#fff); border:3px solid var(--orange-1);
+  border-radius:16px; text-align:center; padding:10px; box-shadow:var(--shadow); }
+.varbox .name{ display:block; font-size:13px; color:var(--ink-soft); font-weight:800;}
+.varbox .val{ font-size:38px; font-weight:900; color:var(--orange-1); display:block; }
+.varbox.bump .val{ animation:bump .35s ease; }
+@keyframes bump{ 0%{transform:scale(1)} 40%{transform:scale(1.35); color:#2BB673} 100%{transform:scale(1)} }
+
+.roundbar{ display:flex; gap:8px; justify-content:center; margin:10px 0; }
+.rdot{ width:34px;height:34px;border-radius:50%; background:#eee; color:#999; display:flex;align-items:center;
+  justify-content:center; font-weight:900; }
+.rdot.on{ background:var(--orange-1); color:#fff; }
+.rdot.done{ background:#EBFBF2; color:var(--good); border:2px solid var(--good); }
+
+.numpad{ display:flex; gap:8px; flex-wrap:wrap; justify-content:center; margin-top:10px; }
+.numk{ border:none; background:var(--purple-1); color:#fff; border-radius:12px; width:56px; padding:12px 0;
+  font-weight:900; font-size:18px; cursor:pointer; font-family:inherit; transition:.1s; }
+.numk:active{ transform:scale(.9); }
+.numk:disabled{ opacity:.35; }
+
+.step{ background:#FFF3E8; border-radius:10px; padding:10px 13px; font-size:14px; line-height:1.7; margin-top:10px; min-height:44px;}
+.slider{ width:100%; -webkit-appearance:none; height:10px; border-radius:999px;
+  background:linear-gradient(90deg,#FFD93D,#FF6B35); outline:none; margin:8px 0; }
+.slider::-webkit-slider-thumb{ -webkit-appearance:none; width:30px;height:30px;border-radius:50%;
+  background:#fff; border:4px solid var(--orange-1); cursor:pointer; box-shadow:0 3px 8px rgba(0,0,0,.2);}
+.slider::-moz-range-thumb{ width:30px;height:30px;border-radius:50%; background:#fff; border:4px solid var(--orange-1); cursor:pointer;}
+.bigread{ text-align:center; font-size:17px; font-weight:900; margin:4px 0; }
+.bigread b{ color:var(--orange-1); font-size:24px; }
+
+/* 位置选择 */
+.posrow{ display:flex; gap:8px; flex-wrap:wrap; margin:10px 0;}
+.poschip{ border:2px solid #ddd; background:#fff; color:var(--ink-soft); font-weight:800; border-radius:999px;
+  padding:8px 13px; font-size:13px; cursor:pointer; font-family:inherit; }
+.poschip.on{ border-color:var(--purple-1); background:#F3F0FF; color:var(--purple-1); }
+
+/* 温度台 */
+.scene{ text-align:center; font-size:64px; margin:8px 0; min-height:80px; }
+.scene .who{ display:inline-block; transition:transform .4s; }
+
+/* 进度条 */
+.pbar{ background:#eee; border-radius:999px; height:18px; overflow:hidden; margin:10px 0;}
+.pbar>div{ height:100%; width:0; border-radius:999px; background:linear-gradient(90deg,#FFD93D,#FF6B35);
+  transition:width 1.2s ease; display:flex; align-items:center; justify-content:flex-end; color:#fff;
+  font-size:11px; font-weight:900; padding-right:8px; }
+.checklist{ list-style:none; margin:8px 0; }
+.checklist li{ padding:7px 0; border-bottom:1px dashed #f0e0d0; font-size:15px; font-weight:700; }
+.checklist li::before{ content:"✅ "; }
+
+/* quiz */
+.q{ font-size:16px; font-weight:800; margin-bottom:10px; line-height:1.6;}
+.opt{ display:block; width:100%; text-align:left; border:2px solid #eee; background:#fff; border-radius:13px;
+  padding:12px 14px; margin:8px 0; font-size:15px; font-weight:700; cursor:pointer; font-family:inherit; transition:.15s;}
+.opt:hover{ border-color:var(--orange-3); }
+.opt.ok{ border-color:var(--good); background:#EBFBF2; color:var(--good);}
+.opt.no{ border-color:var(--bad); background:#FDECEC; color:var(--bad);}
+.explain{ display:none; margin-top:10px; background:#F3F0FF; border-left:4px solid var(--purple-1);
+  border-radius:10px; padding:11px 13px; font-size:14px; line-height:1.7;}
+.explain.show{ display:block; }
+.scorebar{ font-weight:900; color:var(--orange-1); font-size:16px; }
+
+.foot{ text-align:center; color:var(--ink-soft); font-size:12px; margin-top:18px; line-height:1.7;}
+.flag{ display:inline-block; background:#EBFBF2; color:var(--good); border-radius:999px; font-size:12px;
+  font-weight:800; padding:2px 10px; margin-left:8px;}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div class="logo">🌰</div>
+  <div class="brand"><b>核桃编程 · L3-2 复习</b><span>循环嵌套实验室 + 赛考加油站</span></div>
+  <a class="home" href="cpp_hub.html">🏠 学习馆</a>
+</div>
+
+<div class="wrap">
+  <div class="nav" id="nav"></div>
+
+  <!-- 0 总览 -->
+  <section id="s-intro" class="show">
+    <div class="card">
+      <div class="h2">🔁 上次课我们学了什么？</div>
+      <div class="sub">两块内容：<b>模块 19 · for 语句应用</b> + <b>模块 20 · 初识嵌套结构</b>，外加一节 <b>CTL 一级赛考专项课 2</b>（把基本运算、if、if-else、for 全串了一遍）。这个实验室把每个概念都做成<b>会动的</b>——按一按、拖一拖，把"为什么"看清楚。</div>
+      <div class="tip">🧩 三个核心：<b>① 循环输入输出</b>（cin/cout 一组放进 for 里）· <b>② 循环与变量累加</b>（a=a+1 越滚越大）· <b>③ if 嵌套 for</b>（大括号里套大括号，谁先跑？）。</div>
+      <button class="btn row" onclick="go('s-words')">先认 5 个单词 →</button>
+      <button class="btn row blue" onclick="go('s-nest')">直接看嵌套慢动作 🎬</button>
+    </div>
+  </section>
+
+  <!-- 1 单词 -->
+  <section id="s-words">
+    <div class="card">
+      <div class="h2">📖 L3-2 单词卡 <span class="flag">点 🔊 跟读</span></div>
+      <div class="sub">这次课的 5 个词，点喇叭听一遍、自己读一遍。</div>
+      <div class="wordgrid" id="wordgrid"></div>
+    </div>
+  </section>
+
+  <!-- 2 循环输入输出机 -->
+  <section id="s-io">
+    <div class="card">
+      <div class="h2">⌨️ 循环输入输出机</div>
+      <div class="method"><b>方法点拨：</b>把 <b>cin 和 cout 当成一"组"</b>。这组代码放进 for 循环里，就会发生<b>多次的输入和输出</b>：每一轮都是"先输入一个数 → 加上 5 → 再输出"。</div>
+      <div class="code">
+        <span class="ln" id="io-l0"><span class="v">int</span> a;</span>
+        <span class="ln" id="io-l1"><span class="k">for</span>(<span class="v">int</span> i=<span class="n">1</span>; i&lt;=<span class="n">3</span>; i++)</span>
+        <span class="ln">{</span>
+        <span class="ln" id="io-l2">&nbsp;&nbsp;<span class="k">cin</span>&gt;&gt;a;   <span class="c">// 输入一个数</span></span>
+        <span class="ln" id="io-l3">&nbsp;&nbsp;<span class="k">cout</span>&lt;&lt;a+<span class="n">5</span>&lt;&lt;<span class="k">endl</span>; <span class="c">// 输出计算后的结果</span></span>
+        <span class="ln">}</span>
+      </div>
+      <div class="roundbar" id="ioRounds"></div>
+      <div class="varbox" id="ioBox"><span class="name">变量 a</span><span class="val" id="ioA">?</span></div>
+      <div class="sub" style="text-align:center;">轮到你输入了！点一个数字喂给 cin：</div>
+      <div class="numpad" id="ioPad"></div>
+      <div class="screen"><span class="lab">终端输出：</span><span id="ioOut"></span></div>
+      <div class="step" id="ioStep">点一个数字试试——它会被装进 a，然后输出 a+5。一共要输 3 轮（i 从 1 到 3）。</div>
+      <div class="btnrow"><button class="btn ghost" onclick="ioReset()">↺ 重新跑一遍</button></div>
+    </div>
+  </section>
+
+  <!-- 3 累加魔法盒 -->
+  <section id="s-acc">
+    <div class="card">
+      <div class="h2">📦 累加魔法盒 · a = a + 1</div>
+      <div class="method"><b>方法点拨：</b>a=a+1 要分两步看：<b>① 先算右边</b>（旧的 a 加 1）→ <b>② 把结果放回左边盒子</b>。放进 for 里跑 5 次，a 就一步一步长大。<b>初始值不一样，输出的结果也不一样！</b></div>
+      <div class="code">
+        <span class="ln" id="ac-l0"><span class="v">int</span> a=<span class="n" id="acInit">0</span>;</span>
+        <span class="ln" id="ac-l1"><span class="k">for</span>(<span class="v">int</span> i=<span class="n">1</span>; i&lt;=<span class="n">5</span>; i++)</span>
+        <span class="ln">{</span>
+        <span class="ln" id="ac-l2">&nbsp;&nbsp;a = a+<span class="n">1</span>;</span>
+        <span class="ln" id="ac-l3">&nbsp;&nbsp;<span class="k">cout</span>&lt;&lt;<span class="s">"p:"</span>&lt;&lt;a&lt;&lt;<span class="k">endl</span>;</span>
+        <span class="ln">}</span>
+      </div>
+      <div class="bigread">初始值 a = <b id="acInitRead">0</b>（点下面换）</div>
+      <div class="btnrow" style="justify-content:center;">
+        <button class="btn ghost" onclick="acSetInit(0)">a = 0</button>
+        <button class="btn ghost" onclick="acSetInit(2)">a = 2</button>
+        <button class="btn ghost" onclick="acSetInit(10)">a = 10</button>
+        <button class="btn green" onclick="acRun()" id="acRunBtn">▶ 跑 5 次循环</button>
+      </div>
+      <div class="varbox" id="acBox"><span class="name">变量 a</span><span class="val" id="acA">0</span></div>
+      <div class="screen"><span class="lab">终端输出：</span><span id="acOut"></span></div>
+      <div class="step" id="acStep">先选一个初始值，再点「跑 5 次循环」，看 a 怎么一步步长大。</div>
+      <div class="tip">✍️ <b>赋值的三种写法，效果一样</b>：a=a+10、a=a+1+9、a=a+2*5——右边算式不同，但算出来都是加 10。规则：<b>有算式就先算右边的结果，再赋值</b>（先乘除后加减，和数学一样）。点下面试试：</div>
+      <div class="btnrow" style="justify-content:center;">
+        <button class="btn blue" onclick="eqTry('a+10','+10')">a = a+10</button>
+        <button class="btn blue" onclick="eqTry('a+1+9','+1+9')">a = a+1+9</button>
+        <button class="btn blue" onclick="eqTry('a+2*5','+2×5')">a = a+2*5</button>
+      </div>
+      <div class="step" id="eqStep">三个按钮都从 a=4 开始算。点点看，是不是殊途同归？</div>
+    </div>
+  </section>
+
+  <!-- 4 嵌套慢动作 -->
+  <section id="s-nest">
+    <div class="card">
+      <div class="h2">🎬 if 嵌套 for · 慢动作回放</div>
+      <div class="method"><b>方法点拨：</b>代码始终<b>从上到下</b>运行。一旦进入大括号——不管是 if 的还是 for 的——都要把<b>括号里的代码全部跑完</b>，才能继续往下走。</div>
+      <div class="bigread">输入 a = <b id="nestARead">8</b></div>
+      <input class="slider" id="nestSlider" type="range" min="0" max="10" value="8" step="1">
+      <div class="sub" style="text-align:center;">再选一个位置，把 <b style="color:var(--purple-1)">cout&lt;&lt;"d"&lt;&lt;endl;</b> 插进去（上次课的辨析题！）：</div>
+      <div class="posrow" id="posRow">
+        <button class="poschip" data-p="0">不插 d</button>
+        <button class="poschip on" data-p="1">① for 大括号里面</button>
+        <button class="poschip" data-p="2">② 两层大括号中间</button>
+        <button class="poschip" data-p="3">③ if 大括号外面</button>
+      </div>
+      <div class="code" id="nestCode"></div>
+      <div class="btnrow">
+        <button class="btn green" onclick="nestRun()" id="nestBtn">▶ 一步步走一遍</button>
+        <button class="btn ghost" onclick="nestRender();">↺ 复位</button>
+      </div>
+      <div class="screen"><span class="lab">终端输出：</span><span id="nestOut"></span></div>
+      <div class="step" id="nestStep">拖滑块改 a（a&gt;5 才能进 if 的门），选好 d 的位置，点「一步步走一遍」。</div>
+    </div>
+  </section>
+
+  <!-- 5 赛考加油站 -->
+  <section id="s-exam">
+    <div class="card">
+      <div class="h2">🏆 赛考加油站 · CTL 专项课 2</div>
+      <div class="sub">赛考专项课把四样武器串了一遍：<b>基本运算 → if → if-else → for</b>。老师说赛考知识已经掌握 <b>95%</b> 啦！</div>
+      <div class="pbar"><div id="examBar">95%</div></div>
+      <ul class="checklist">
+        <li>基本运算 + - * /（cout 能直接输出算式结果）</li>
+        <li>if 语句：条件成立才执行大括号</li>
+        <li>if-else：非此即彼，只走一边</li>
+        <li>for 循环三要素：初始化 · 条件 · i++</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="h2">🌡️ 游泳还是爬山？（if-else 实战）</div>
+      <div class="sub">赛考真题风格：输入温度 t（1~40），<b>t 大于 30</b> 就去游泳（swim），否则去爬山（climb）。拖温度试试：</div>
+      <div class="bigread">今天温度 t = <b id="tRead">20</b> ℃</div>
+      <input class="slider" id="tSlider" type="range" min="1" max="40" value="20" step="1">
+      <div class="code">
+        <span class="ln" id="sw-if"><span class="k">if</span>(t&gt;<span class="n">30</span>){ <span class="k">cout</span>&lt;&lt;<span class="s">"swim"</span>; }</span>
+        <span class="ln" id="sw-el"><span class="k">else</span>{ <span class="k">cout</span>&lt;&lt;<span class="s">"climb"</span>; }</span>
+      </div>
+      <div class="scene"><span class="who" id="who">🧗</span></div>
+      <div class="step" id="swStep">t=20，20&gt;30 不成立 → 走 else → 输出 <b>climb</b>，去爬山。</div>
+      <div class="tip">⚠️ <b>易错点</b>：t=30 时，30&gt;30 <b>不成立</b>（"大于"不包括相等）→ 还是 climb！赛考最爱考这种边界。</div>
+    </div>
+    <div class="card">
+      <div class="h2">🛒 小卖部计算器（基本运算）</div>
+      <div class="sub">cout 不仅能输出文字，还能<b>输出运算结果</b>。一支笔 5 元，买 a 支要多少钱？</div>
+      <div class="bigread">买 a = <b id="buyRead">3</b> 支</div>
+      <input class="slider" id="buySlider" type="range" min="1" max="9" value="3" step="1">
+      <div class="code"><span class="k">cout</span> &lt;&lt; a <span class="o">*</span> <span class="n">5</span> &lt;&lt; <span class="k">endl</span>;  <span class="c" id="buyNote">// 输出 15</span></div>
+      <div class="screen"><span class="lab">终端输出：</span><span id="buyOut">15</span></div>
+      <div class="tip">四个运算符号别记混：加 <b>+</b> · 减 <b>-</b> · 乘 <b>*</b>（不是×）· 除 <b>/</b>（不是÷）。</div>
+    </div>
+  </section>
+
+  <!-- 6 检验 -->
+  <section id="s-quiz">
+    <div class="card">
+      <div class="h2">🎯 小检验 <span class="scorebar" id="score"></span></div>
+      <div class="sub">玩明白了再来 5 道小题（理解之后的检验，不是刷题）。答错会讲清楚为什么。</div>
+      <div id="quizBox"></div>
+      <button class="btn row green" id="restartBtn" style="display:none" onclick="buildQuiz()">🔁 再做一遍</button>
+    </div>
+    <div class="foot">核桃编程 · L3-2 循环嵌套实验室 · 按一按、拖一拖，看清"为什么"</div>
+  </section>
+</div>
+
+<script>
+/* ============ 导航 ============ */
+const SECTIONS = [
+  ['s-intro','🏁 总览'],['s-words','📖 单词'],['s-io','⌨️ 循环输入输出'],
+  ['s-acc','📦 累加魔法盒'],['s-nest','🎬 嵌套慢动作'],['s-exam','🏆 赛考加油站'],['s-quiz','🎯 检验']
+];
+const nav = document.getElementById('nav');
+SECTIONS.forEach(([id,label])=>{
+  const b=document.createElement('button'); b.className='chip'; b.textContent=label; b.dataset.id=id;
+  b.onclick=()=>go(id); nav.appendChild(b);
+});
+function go(id){
+  document.querySelectorAll('section').forEach(s=>s.classList.toggle('show', s.id===id));
+  document.querySelectorAll('.chip').forEach(c=>c.classList.toggle('active', c.dataset.id===id));
+  if(id==='s-exam'){ setTimeout(()=>{document.getElementById('examBar').style.width='95%';},80); }
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+go('s-intro');
+
+/* ============ 朗读：预合成神经音优先，浏览器 TTS 回退 ============ */
+const AUDIO_DIR="audio/hetao_coding_l3-2_review/";
+let exAudio=null, audioTok=0;
+function audioHash(s){const b=new TextEncoder().encode(s);let x=0x811c9dc5>>>0;for(let i=0;i<b.length;i++){x^=b[i];x=Math.imul(x,0x01000193)>>>0;}return ('0000000'+x.toString(16)).slice(-8);}
+function getExAudio(){if(!exAudio){exAudio=new Audio();exAudio.setAttribute('playsinline','');exAudio.preload='auto';try{document.body.appendChild(exAudio);}catch(e){}}return exAudio;}
+const synth = window.speechSynthesis;
+let vEn=null,vZh=null;
+function loadV(){ if(!synth) return; const vs=synth.getVoices();
+  vEn = vs.find(v=>/en-US/i.test(v.lang)&&/female|aria|samantha|ava/i.test(v.name))||vs.find(v=>/^en/i.test(v.lang));
+  vZh = vs.find(v=>/zh-CN/i.test(v.lang))||vs.find(v=>/zh/i.test(v.lang)); }
+if(synth){ loadV(); if(synth.onvoiceschanged!==undefined) synth.onvoiceschanged=loadV; }
+function ttsSay(text,lang){ if(!synth) return; try{ synth.cancel(); const u=new SpeechSynthesisUtterance(text);
+  if(lang==='en'){ u.lang='en-US'; u.voice=vEn; u.rate=.8; } else { u.lang='zh-CN'; u.voice=vZh; u.rate=.95; }
+  synth.speak(u);}catch(e){} }
+function say(text,lang){
+  try{if(synth)synth.cancel();}catch(e){}
+  audioTok++; const myTok=audioTok;
+  const a=getExAudio(); let done=false;
+  const stale=()=>done||myTok!==audioTok;
+  const fb=()=>{ if(stale())return; done=true; ttsSay(text,lang); };
+  a.onended=()=>{ if(stale())return; done=true; };
+  a.onerror=fb;
+  try{a.pause();}catch(e){}
+  a.src=AUDIO_DIR+audioHash(lang+"|"+text)+".mp3";
+  try{a.currentTime=0;}catch(e){}
+  const p=a.play(); if(p&&typeof p.catch==='function')p.catch(fb);
+}
+
+/* ============ 单词卡 ============ */
+const WORDS=[
+  {en:'forward',ph:'/ˈfɔːrwərd/',pos:'adv.',mean:'向前，前进',ex:'机器人 move forward 向前走'},
+  {en:'dig',ph:'/dɪg/',pos:'v.',mean:'挖，掘',ex:'dig into 刻苦钻研'},
+  {en:'put',ph:'/pʊt/',pos:'v./n./adj.',mean:'放，使处于；投掷、推；不动的',ex:'put down 放下'},
+  {en:'climb up',ph:'/klaɪm ʌp/',pos:'v.',mean:'向上攀爬',ex:'爬山就是 climb'},
+  {en:'climb down',ph:'/klaɪm daʊn/',pos:'v.',mean:'向下攀爬',ex:'上去 up，下来 down'}
+];
+const wg=document.getElementById('wordgrid');
+WORDS.forEach(w=>{
+  const d=document.createElement('div'); d.className='wcard';
+  d.innerHTML=`<div class="wtop"><span class="wen">${w.en}</span><span class="wph">${w.ph}</span>
+    <button class="spk">🔊</button></div>
+    <div class="wmean"><span class="pos">${w.pos}</span>${w.mean}</div>
+    <div class="wph2">💡 ${w.ex}</div>`;
+  d.querySelector('.spk').onclick=()=>say(w.en,'en');
+  wg.appendChild(d);
+});
+
+/* ============ 循环输入输出机 ============ */
+const IO_N=3; let ioRound=0, ioBusy=false;
+const ioRoundsEl=document.getElementById('ioRounds');
+function ioDrawRounds(){
+  ioRoundsEl.innerHTML='';
+  for(let i=1;i<=IO_N;i++){
+    const d=document.createElement('div'); d.className='rdot'+(i<=ioRound?' done':(i===ioRound+1?' on':''));
+    d.textContent='i='+i; ioRoundsEl.appendChild(d);
+  }
+}
+const ioPad=document.getElementById('ioPad');
+[3,7,10,20,35].forEach(n=>{
+  const b=document.createElement('button'); b.className='numk'; b.textContent=n;
+  b.onclick=()=>ioFeed(n); ioPad.appendChild(b);
+});
+function ioLn(id,on){ const el=document.getElementById(id); if(el) el.classList.toggle('on',on); }
+function ioFeed(n){
+  if(ioBusy||ioRound>=IO_N) return;
+  ioBusy=true;
+  ioLn('io-l2',true);
+  const box=document.getElementById('ioBox');
+  document.getElementById('ioA').textContent=n;
+  box.classList.remove('bump'); void box.offsetWidth; box.classList.add('bump');
+  document.getElementById('ioStep').innerHTML=`第 ${ioRound+1} 轮：<b>cin&gt;&gt;a</b> 把 <b>${n}</b> 装进了 a…`;
+  setTimeout(()=>{
+    ioLn('io-l2',false); ioLn('io-l3',true);
+    const sp=document.createElement('span'); sp.className='outch'; sp.textContent=(n+5)+' ';
+    document.getElementById('ioOut').appendChild(sp);
+    document.getElementById('ioStep').innerHTML=`第 ${ioRound+1} 轮：<b>cout&lt;&lt;a+5</b> → ${n}+5 = <b>${n+5}</b>，输出！`;
+    ioRound++; ioDrawRounds();
+    setTimeout(()=>{
+      ioLn('io-l3',false); ioBusy=false;
+      if(ioRound>=IO_N){
+        document.getElementById('ioStep').innerHTML=`✅ i 已经超过 3，循环结束！<b>同一组 cin/cout 跑了 3 遍</b>——这就是循环输入输出。`;
+        ioPad.querySelectorAll('.numk').forEach(b=>b.disabled=true);
+      }
+    },700);
+  },800);
+}
+function ioReset(){
+  ioRound=0; ioBusy=false; ioDrawRounds();
+  document.getElementById('ioA').textContent='?';
+  document.getElementById('ioOut').innerHTML='';
+  document.getElementById('ioStep').textContent='点一个数字试试——它会被装进 a，然后输出 a+5。一共要输 3 轮（i 从 1 到 3）。';
+  ioPad.querySelectorAll('.numk').forEach(b=>b.disabled=false);
+}
+ioDrawRounds();
+
+/* ============ 累加魔法盒 ============ */
+let acInit=0, acTimer=null;
+function acSetInit(v){
+  acInit=v; clearInterval(acTimer);
+  document.getElementById('acInit').textContent=v;
+  document.getElementById('acInitRead').textContent=v;
+  document.getElementById('acA').textContent=v;
+  document.getElementById('acOut').innerHTML='';
+  document.getElementById('acStep').innerHTML=`初始值改成 <b>${v}</b> 了。点「跑 5 次循环」看输出会变成什么。`;
+  document.getElementById('acRunBtn').disabled=false;
+}
+function acRun(){
+  clearInterval(acTimer);
+  let a=acInit, i=1;
+  document.getElementById('acA').textContent=a;
+  document.getElementById('acOut').innerHTML='';
+  document.getElementById('acRunBtn').disabled=true;
+  const box=document.getElementById('acBox');
+  acTimer=setInterval(()=>{
+    if(i>5){
+      clearInterval(acTimer);
+      document.getElementById('acStep').innerHTML=`✅ 跑完啦：初始值 ${acInit} → 输出 <b>${acInit+1}、${acInit+2}、${acInit+3}、${acInit+4}、${acInit+5}</b>。换个初始值再跑，输出就全变了！`;
+      ['ac-l2','ac-l3'].forEach(id=>document.getElementById(id).classList.remove('on'));
+      document.getElementById('acRunBtn').disabled=false;
+      return;
+    }
+    const old=a; a=old+1;
+    document.getElementById('ac-l2').classList.add('on');
+    document.getElementById('acA').textContent=a;
+    box.classList.remove('bump'); void box.offsetWidth; box.classList.add('bump');
+    document.getElementById('acStep').innerHTML=`第 ${i} 次：a = a+1 → <b>先算右边</b> ${old}+1=${a}，<b>再放回盒子</b>。`;
+    const sp=document.createElement('span'); sp.className='outch'; sp.textContent='p:'+a+' ';
+    document.getElementById('acOut').appendChild(sp);
+    i++;
+  },900);
+}
+function eqTry(expr,calc){
+  const start=4, result=14;
+  document.getElementById('eqStep').innerHTML=
+    `a=4 时执行 <b>a = ${expr}</b>：① 先算右边 4${calc} = <b>${result}</b>（先乘除后加减）→ ② 把 <b>${result}</b> 放进 a。三种写法结果都一样！`;
+}
+
+/* ============ 嵌套慢动作 ============ */
+let nestPos=1, nestTimer=null;
+const nestSlider=document.getElementById('nestSlider');
+nestSlider.addEventListener('input',e=>{ document.getElementById('nestARead').textContent=e.target.value; nestRender(); });
+document.querySelectorAll('#posRow .poschip').forEach(ch=>{
+  ch.onclick=()=>{ nestPos=+ch.dataset.p;
+    document.querySelectorAll('#posRow .poschip').forEach(c=>c.classList.toggle('on',c===ch));
+    nestRender(); };
+});
+const D_LINE = '<span class="k">cout</span>&lt;&lt;<span class="s">"d"</span>&lt;&lt;<span class="k">endl</span>;';
+function nestRender(){
+  clearInterval(nestTimer);
+  const lines=[
+    {id:'n0', html:'<span class="k">cout</span>&lt;&lt;<span class="s">"f"</span>&lt;&lt;<span class="k">endl</span>;', out:'f'},
+    {id:'n1', html:'<span class="v">int</span> a; <span class="k">cin</span>&gt;&gt;a;', out:''},
+    {id:'n2', html:'<span class="k">if</span>(a&gt;<span class="n">5</span>)', out:'', gate:true},
+    {id:'n3', html:'{', out:'', inIf:true},
+    {id:'n4', html:'&nbsp;&nbsp;<span class="k">cout</span>&lt;&lt;<span class="s">"cu"</span>&lt;&lt;<span class="k">endl</span>;', out:'cu', inIf:true},
+    {id:'n5', html:'&nbsp;&nbsp;<span class="k">for</span>(<span class="v">int</span> i=<span class="n">1</span>; i&lt;=<span class="n">4</span>; i++)', out:'', inIf:true, forHead:true},
+    {id:'n6', html:'&nbsp;&nbsp;{', out:'', inIf:true},
+    {id:'n7', html:'&nbsp;&nbsp;&nbsp;&nbsp;<span class="k">cout</span>&lt;&lt;<span class="s">"f"</span>&lt;&lt;<span class="k">endl</span>;', out:'f', inIf:true, inFor:true}
+  ];
+  if(nestPos===1) lines.push({id:'nd', html:'&nbsp;&nbsp;&nbsp;&nbsp;'+D_LINE+' <span class="c">// ①</span>', out:'d', inIf:true, inFor:true});
+  lines.push({id:'n8', html:'&nbsp;&nbsp;}', out:'', inIf:true, forEnd:true});
+  if(nestPos===2) lines.push({id:'nd', html:'&nbsp;&nbsp;'+D_LINE+' <span class="c">// ②</span>', out:'d', inIf:true});
+  lines.push({id:'n9', html:'}', out:''});
+  if(nestPos===3) lines.push({id:'nd', html:D_LINE+' <span class="c">// ③</span>', out:'d'});
+  lines.push({id:'n10', html:'<span class="k">cout</span>&lt;&lt;<span class="s">"p"</span>&lt;&lt;<span class="k">endl</span>;', out:'p'});
+  window.NEST_LINES=lines;
+  document.getElementById('nestCode').innerHTML=
+    lines.map((l,idx)=>`<span class="ln" id="nl${idx}">${l.html}</span>`).join('');
+  document.getElementById('nestOut').innerHTML='';
+  document.getElementById('nestStep').innerHTML='拖滑块改 a（a&gt;5 才能进 if 的门），选好 d 的位置，点「一步步走一遍」。';
+  document.getElementById('nestBtn').disabled=false;
+}
+function nestRun(){
+  clearInterval(nestTimer);
+  const a=+nestSlider.value, hold=a>5;
+  const lines=window.NEST_LINES;
+  /* 展开真实执行序列 */
+  const seq=[];
+  let i=0;
+  while(i<lines.length){
+    const L=lines[i];
+    if(L.gate){ seq.push({idx:i, note:`if(a&gt;5)：a=${a}，${a}&gt;5 ${hold?'<b style="color:var(--good)">成立 ✅ 进大括号</b>':'<b style="color:var(--bad)">不成立 ❌ 整个大括号跳过</b>'}`});
+      if(!hold){ while(i<lines.length && lines[i+1] && lines[i+1].inIf) i++; }
+      i++; continue; }
+    if(L.forHead){
+      /* for 循环体 = forHead 之后到 forEnd 之间的行，重复 4 遍 */
+      let bodyStart=i+1, bodyEnd=bodyStart;
+      while(!lines[bodyEnd].forEnd) bodyEnd++;
+      for(let t=1;t<=4;t++){
+        seq.push({idx:i, note:`for 第 ${t} 次（i=${t}，i≤4 成立）`});
+        for(let j=bodyStart;j<=bodyEnd-1;j++){
+          if(lines[j].out) seq.push({idx:j, out:lines[j].out, note:`第 ${t} 次循环，输出 <b>${lines[j].out}</b>`});
+        }
+      }
+      seq.push({idx:i, note:'i 变成 5，5≤4 不成立 → for 结束，跳出小括号'});
+      i=bodyEnd+1; continue;
+    }
+    if(L.out) seq.push({idx:i, out:L.out, note:`输出 <b>${L.out}</b>`});
+    else if(L.id==='n1') seq.push({idx:i, note:`输入 a = ${a}`});
+    i++;
+  }
+  /* 播放 */
+  let k=0; document.getElementById('nestOut').innerHTML='';
+  document.getElementById('nestBtn').disabled=true;
+  let expected='';
+  nestTimer=setInterval(()=>{
+    document.querySelectorAll('#nestCode .ln').forEach(l=>l.classList.remove('on'));
+    if(k>=seq.length){
+      clearInterval(nestTimer);
+      document.getElementById('nestStep').innerHTML=`🏁 跑完了！a=${a} 时输出：<b>${expected}</b>。${hold?'if 成立，里面的 for 也要整个跑完才能出来。':'if 不成立时，大括号里的 cu、for 全部跳过'+(nestPos===3?'，但 ③ 在 if 外面，照样输出 d':'')+'。'}`;
+      document.getElementById('nestBtn').disabled=false;
+      return;
+    }
+    const st=seq[k];
+    const el=document.getElementById('nl'+st.idx); if(el) el.classList.add('on');
+    if(st.out){ const sp=document.createElement('span'); sp.className='outch'; sp.textContent=st.out;
+      document.getElementById('nestOut').appendChild(sp); expected+=st.out; }
+    document.getElementById('nestStep').innerHTML=st.note;
+    k++;
+  },850);
+}
+nestRender();
+
+/* ============ 赛考加油站 ============ */
+const tSlider=document.getElementById('tSlider');
+function swRender(){
+  const t=+tSlider.value, swim=t>30;
+  document.getElementById('tRead').textContent=t;
+  document.getElementById('who').textContent= swim?'🏊':'🧗';
+  document.getElementById('who').style.transform= swim?'translateX(20px)':'translateX(-20px)';
+  document.getElementById('sw-if').classList.toggle('on',swim);
+  document.getElementById('sw-el').classList.toggle('on',!swim);
+  document.getElementById('swStep').innerHTML=
+    swim? `t=${t}，${t}&gt;30 <b style="color:var(--good)">成立</b> → 走 if → 输出 <b>swim</b>，去游泳！`
+        : `t=${t}，${t}&gt;30 <b style="color:var(--bad)">不成立</b>${t===30?'（30 不大于 30！）':''} → 走 else → 输出 <b>climb</b>，去爬山。`;
+}
+tSlider.addEventListener('input',swRender); swRender();
+
+const buySlider=document.getElementById('buySlider');
+function buyRender(){
+  const n=+buySlider.value;
+  document.getElementById('buyRead').textContent=n;
+  document.getElementById('buyOut').textContent=n*5;
+  document.getElementById('buyNote').textContent='// 输出 '+(n*5);
+}
+buySlider.addEventListener('input',buyRender); buyRender();
+
+/* ============ 小检验 ============ */
+const QUIZ=[
+  {q:'（上次课原题）a 的值为 25 时，这段程序输出什么？\nif(a>20){ cout<<"f"; for(int i=1;i<=3;i++){ cout<<"j"; cout<<"p"; } } cout<<"d";',
+   opts:['fjpjpjpd','fjpjpjpjpd','fjpjpjp','fjjjpppd'],a:0,
+   ex:'25&gt;20 成立 → 进 if：先输出 <b>f</b>；for 跑 3 次，每次输出 j、p → <b>jpjpjp</b>；出了 if 再输出 <b>d</b>。连起来 <b>fjpjpjpd</b>。'},
+  {q:'int a=2; for 循环里执行 5 次 a=a+1 并每次输出 a，输出的是？',
+   opts:['3、4、5、6、7','1、2、3、4、5','2、3、4、5、6','5 个 3'],a:0,
+   ex:'初始值是 2，每次先算 a+1 再放回：第 1 次变 3，然后 4、5、6、7。<b>初始值不一样，输出就不一样</b>——初始值 0 才输出 1~5。'},
+  {q:'for(int i=1;i<=3;i++){ cin>>a; cout<<a+5; } 第一轮输入 10，屏幕先输出什么？',
+   opts:['15','10','5','105'],a:0,
+   ex:'cin 和 cout 是"一组"，每轮先输入再输出：a=10，输出 a+5=<b>15</b>。这组代码会重复 3 轮。'},
+  {q:'温度 t=30 时，if(t>30){swim}else{climb} 输出什么？',
+   opts:['climb','swim','都输出','都不输出'],a:0,
+   ex:'30&gt;30 <b>不成立</b>——"大于"不包括相等！所以走 else，输出 <b>climb</b>。这是赛考最爱的边界陷阱。'},
+  {q:'把 cout<<"d" 放在 ③（if 大括号外面、p 前面），当 if 条件不成立时输出？',
+   opts:['fdp','fp','fcuffffdp','什么都不输出'],a:0,
+   ex:'if 不成立 → 大括号里全跳过；但 ③ 在 <b>if 外面</b>，必执行。所以是 f、d、p → <b>fdp</b>。（放在①或②就只有 fp。）'}
+];
+let qi=0, qok=0;
+function buildQuiz(){
+  qi=0; qok=0; document.getElementById('restartBtn').style.display='none';
+  document.getElementById('score').textContent='';
+  renderQ();
+}
+function renderQ(){
+  const box=document.getElementById('quizBox');
+  if(qi>=QUIZ.length){
+    box.innerHTML=`<div style="text-align:center;padding:18px 0;">
+      <div style="font-size:54px">${qok===QUIZ.length?'🏆':qok>=3?'👍':'💪'}</div>
+      <div style="font-size:20px;font-weight:900;margin-top:8px;">答对 ${qok} / ${QUIZ.length}</div>
+      <div class="sub" style="margin-top:6px;">${qok===QUIZ.length?'全对！循环和嵌套你全懂了。':'再回上面玩一玩慢动作，把错的地方看清楚～'}</div></div>`;
+    document.getElementById('restartBtn').style.display='block';
+    return;
+  }
+  const item=QUIZ[qi];
+  box.innerHTML=`<div class="q">第 ${qi+1} 题　${item.q.replace(/\n/g,'<br><span style="font-family:monospace;font-size:13px;color:#5A5775">')+(item.q.includes('\n')?'</span>':'')}</div>
+    <div id="opts"></div>
+    <div class="explain" id="ex">${item.ex}</div>
+    <button class="btn row" id="next" style="display:none" onclick="qi++;renderQ();">下一题 →</button>`;
+  const opts=document.getElementById('opts');
+  item.opts.forEach((o,i)=>{
+    const b=document.createElement('button'); b.className='opt'; b.textContent=o;
+    b.onclick=()=>{
+      if(document.getElementById('ex').classList.contains('show')) return;
+      const right=i===item.a;
+      if(right){ b.classList.add('ok'); qok++; say('答对了','zh'); }
+      else{ b.classList.add('no'); opts.children[item.a].classList.add('ok'); say('再想想','zh'); }
+      document.getElementById('ex').classList.add('show');
+      document.getElementById('next').style.display='block';
+      document.getElementById('score').textContent='✅ '+qok;
+    };
+    opts.appendChild(b);
+  });
+}
+buildQuiz();
+</script>
+</body>
+</html>

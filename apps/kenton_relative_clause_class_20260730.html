@@ -1,0 +1,433 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#fff7f0">
+  <meta name="study-portal-design" content="2.0">
+  <meta name="lesson-audio" content="pending">
+  <title>定语从句 · 句子合并工作室</title>
+  <script src="../assets/learning-sync.js"></script>
+  <style>
+    :root{
+      --ink:#3a2e3f;--muted:#756978;--cyan:#36c5d6;--cyan-deep:#177c8d;--cyan-soft:#e3fbff;
+      --pink:#ff9ec4;--pink-soft:#fff0f6;--gold:#ffd166;--gold-soft:#fff7d7;
+      --green:#8ce99a;--green-soft:#effcf1;--purple:#b39ddb;--paper:#fffdf9;
+      --wash:#fff7f0;--line:#eadde5;--ok:#267a48;--ok-soft:#effcf1;--bad:#b1465a;--bad-soft:#fff0f3;
+      --shadow:0 8px 22px rgba(120,90,140,.14);--press:0 5px 0 #238f9d;--tap:48px
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;min-height:100vh;color:var(--ink);font-family:ui-rounded,"PingFang SC","Microsoft YaHei",system-ui,sans-serif;background:
+      radial-gradient(circle at 12% 4%,rgba(255,209,102,.3),transparent 18rem),
+      radial-gradient(circle at 94% 15%,rgba(255,158,196,.18),transparent 18rem),var(--wash);overscroll-behavior-y:contain}
+    button,input{font:inherit}button{touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+    .btn,.round-btn,.hub,.back,.home-card,.word-chip,.pronoun,.choice,.primary-launch,.tool-btn{min-height:var(--tap)}
+    button:focus-visible,a:focus-visible{outline:3px solid var(--purple);outline-offset:3px}
+    button:disabled{opacity:.48;cursor:not-allowed;box-shadow:none}
+    .wrap{width:min(680px,100%);margin:auto;padding:16px 14px 100px}
+    .topbar{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:14px}
+    .brand{display:flex;align-items:center;gap:10px;font-size:14px;font-weight:800}
+    .brand-mark{display:grid;place-items:center;width:42px;height:42px;border-radius:15px;background:var(--cyan);color:#fff;box-shadow:0 4px 0 #218e9c}
+    .brand-mark svg,.icon svg{width:24px;height:24px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+    .top-actions{display:flex;gap:7px;align-items:center}
+    .round-btn,.hub,.back{min-width:46px;min-height:46px;border:1px solid var(--line);background:var(--paper);color:var(--ink);border-radius:15px;display:inline-grid;place-items:center;text-decoration:none;font-weight:800;padding:9px 12px;box-shadow:0 3px 0 #e1d2db}
+    .round-btn{padding:0;cursor:pointer}
+    .lesson-intro{position:relative;overflow:hidden;border:2px solid #f0dfe7;border-radius:26px;background:rgba(255,253,249,.94);padding:22px 18px 18px;box-shadow:var(--shadow)}
+    .lesson-intro:before,.lesson-intro:after{content:"";position:absolute;border-radius:50%;pointer-events:none}
+    .lesson-intro:before{width:130px;height:130px;right:-50px;top:-55px;background:rgba(54,197,214,.14)}
+    .lesson-intro:after{width:86px;height:86px;left:-42px;bottom:90px;background:rgba(255,158,196,.13)}
+    .lesson-kicker,.pill{position:relative;z-index:1;display:inline-flex;align-items:center;gap:6px;border-radius:999px;background:var(--cyan-soft);color:var(--cyan-deep);padding:7px 11px;font-size:12px;font-weight:800}
+    .lesson-intro h1{position:relative;z-index:1;margin:12px 0 8px;font-size:clamp(23px,7vw,39px);line-height:1.12;letter-spacing:-.035em;white-space:nowrap}
+    .lesson-intro h1 span{color:var(--cyan-deep)}
+    .lesson-intro>p{position:relative;z-index:1;margin:0;color:var(--muted);font-size:15px;line-height:1.7}
+    .paper-stage{position:relative;z-index:1;margin:18px 0 16px;padding:14px 11px 16px;border:2px dashed #d7c8d1;border-radius:23px;background:#fff9ee;min-height:236px}
+    .paper-note{position:relative;width:92%;padding:14px 15px;border:1px solid #e7d7df;border-radius:14px;background:#fff;box-shadow:0 5px 0 #eadce4;font-size:17px;font-weight:800;line-height:1.45}
+    .paper-note mark,.paper-result mark{background:var(--gold);color:var(--ink);border-radius:7px;padding:1px 4px}
+    .note-a{transform:rotate(-1.2deg)}.note-b{margin:10px 0 0 auto;transform:rotate(1deg)}
+    .merge-hinge{position:absolute;right:8px;top:72px;transform:rotate(7deg);display:grid;place-items:center;width:62px;height:44px;border-radius:14px;background:var(--pink);color:#67384f;border:3px solid #fff;box-shadow:0 5px 0 #dc7da4;font-size:18px;font-weight:800;z-index:2}
+    .paper-result{margin-top:17px;padding:14px 12px;border-radius:15px;background:var(--cyan-soft);border:2px solid var(--cyan);text-align:center;font-weight:800;line-height:1.55}
+    .paper-result u{text-decoration-color:var(--pink);text-decoration-thickness:3px;text-underline-offset:3px}
+    .primary-launch{position:relative;z-index:1;width:100%;min-height:56px;border:0;border-radius:17px;background:var(--cyan);color:#103e46;font-weight:800;font-size:18px;box-shadow:var(--press);cursor:pointer}
+    .primary-launch:active,.btn:active,.round-btn:active,.tool-btn:active,.home-card:active{transform:translateY(3px);box-shadow:none}
+    .micro-route{position:relative;z-index:1;display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-top:15px;color:var(--muted);font-size:12px;font-weight:800}
+    .micro-route span{display:inline-flex;align-items:center;gap:5px}.micro-route b{display:grid;place-items:center;width:22px;height:22px;border-radius:50%;background:#fff;border:2px solid var(--cyan);color:var(--cyan-deep)}
+    .voice-note{display:flex;gap:10px;align-items:flex-start;margin:13px 0;border:1px solid #efd59c;border-radius:16px;background:var(--gold-soft);padding:12px 14px;color:#715a23;font-size:13px;line-height:1.55}
+    .voice-note i{flex:0 0 auto;display:grid;place-items:center;width:30px;height:30px;border-radius:11px;background:var(--gold);color:#66501e;font-style:normal;font-size:12px;font-weight:800;box-shadow:0 3px 0 #d8a941}
+    .daily-note{display:block;width:100%;margin-top:4px;color:var(--muted);font-size:12px;text-align:center}
+    .quick-tools{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin:14px 0}
+    .tool-btn{min-height:74px;border:1px solid var(--line);border-radius:18px;background:var(--paper);color:var(--ink);padding:10px 6px;font-weight:800;cursor:pointer;box-shadow:0 4px 0 #eadce4}
+    .tool-btn .tool-icon{display:grid;place-items:center;width:31px;height:31px;margin:0 auto 5px;border-radius:11px;background:var(--pink-soft);color:#9d4a70}.tool-btn .tool-icon svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}.tool-btn small{display:block;color:var(--muted);font-size:11px}
+    details.source{margin-top:14px;border:1px solid var(--line);border-radius:15px;background:rgba(255,255,255,.66);color:var(--muted);font-size:12px;line-height:1.65;padding:10px 13px}
+    details.source summary{cursor:pointer;font-weight:800;color:var(--ink)}
+    .progress,.panel{margin:14px 0;background:var(--paper);border:1px solid var(--line);border-radius:24px;padding:clamp(17px,4vw,26px);box-shadow:var(--shadow)}
+    .metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.metric{text-align:center;border-radius:14px;background:#fff8f4;padding:10px}.metric strong{display:block;color:var(--cyan-deep);font-size:22px}.metric span{font-size:11px;color:var(--muted)}
+    .bar{height:9px;border-radius:999px;background:#efe4ea;overflow:hidden;margin-top:12px}.bar i{display:block;height:100%;border-radius:inherit;background:linear-gradient(90deg,var(--cyan),var(--pink));transition:width .25s ease}
+    .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.home-card{position:relative;text-align:left;border:1px solid var(--line);border-radius:20px;background:var(--paper);padding:17px;color:var(--ink);cursor:pointer;box-shadow:0 4px 0 #eadce4}.home-card.primary{background:var(--cyan-soft);border-color:#a7e5ec}.home-card.done:after{content:"完成";position:absolute;top:12px;right:12px;border-radius:999px;padding:4px 8px;background:var(--green-soft);color:var(--ok);font-size:11px;font-weight:800}.home-card .kicker{font-size:11px;color:var(--cyan-deep);font-weight:800}.home-card h3{font-size:18px;margin:9px 0 6px}.home-card p{line-height:1.55;margin:0;color:var(--muted);font-size:13px}
+    .icon{display:grid;place-items:center;width:42px;height:42px;border-radius:14px;background:var(--pink-soft);color:#a84e76;margin-top:10px}
+    .page-head{display:flex;align-items:center;gap:12px;margin:8px 0 14px}.page-head .back{width:46px;padding:0;cursor:pointer}.page-head h1{font-size:clamp(25px,6vw,34px);margin:0;line-height:1.15}.page-head p{margin:4px 0 0;color:var(--muted);font-size:13px}
+    .panel h2{font-size:clamp(22px,5vw,30px);margin:11px 0 8px}.panel p{line-height:1.68;color:var(--muted)}
+    .stepper{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin:4px 0 16px}.step{border-radius:12px;background:#f6edf2;color:var(--muted);padding:9px 5px;text-align:center;font-size:11px;font-weight:800}.step.on{background:var(--pink);color:#65374c}.step.done{background:var(--green-soft);color:var(--ok)}
+    .sentence-lab{border-radius:22px;background:#fff9ee;border:2px dashed #d8c9d1;padding:15px}.tray-title{font-size:11px;font-weight:800;color:var(--muted);margin:13px 0 7px}
+    .word-tray{display:flex;gap:7px;align-items:center;flex-wrap:wrap;min-height:68px;border:1px solid #e4d5dd;border-radius:16px;background:#fff;padding:11px;box-shadow:0 4px 0 #eadce4}
+    .word-chip{min-width:44px;min-height:44px;border:1px solid transparent;background:transparent;color:var(--ink);border-radius:10px;padding:8px 9px;font-weight:800;cursor:pointer}.word-chip:hover{background:#fff7d7}.word-chip.chosen{background:var(--gold);border-color:#e0ac38;color:#4f3d15;box-shadow:0 3px 0 #d3a236}
+    .hint-box{border-radius:16px;background:var(--gold-soft);border:1px solid #ead17b;padding:12px 14px;margin:14px 0;line-height:1.65;font-size:14px}
+    .pronoun-dock{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:14px 0}.pronoun{min-height:70px;border:2px solid #e2d4dc;border-radius:16px;background:#fff;color:var(--ink);font-weight:800;font-size:20px;cursor:pointer;box-shadow:0 3px 0 #e6d9e1}.pronoun small{display:block;color:var(--muted);font-size:11px;margin-top:3px}.pronoun.on{border-color:var(--cyan);background:var(--cyan-soft);color:var(--cyan-deep)}
+    .merge-rail{display:grid;grid-template-columns:auto 1fr auto;gap:9px;align-items:center;margin:16px 0}.rail-part{border:2px solid #e1d3dc;border-radius:14px;padding:13px;background:#fff;font-weight:800;line-height:1.55}.rail-part.relation{background:var(--pink-soft);border-color:var(--pink);color:#7c3f5d}.rail-arrow{font-weight:800;color:var(--cyan-deep);font-size:22px}
+    .final-sentence{border:2px solid var(--cyan);border-radius:18px;background:var(--cyan-soft);padding:18px;text-align:center;font-size:clamp(17px,4vw,22px);font-weight:800;line-height:1.65;animation:join .32s ease-out}.final-sentence .noun{background:var(--gold);border-radius:6px;padding:1px 4px}.final-sentence .clause{color:var(--cyan-deep);border-bottom:3px solid var(--pink)}
+    @keyframes join{from{opacity:.2;transform:translateY(8px) scale(.98)}to{opacity:1;transform:none}}
+    .btn-row{display:flex;gap:9px;justify-content:flex-end;flex-wrap:wrap;margin-top:17px}.btn{min-height:48px;border:0;border-radius:14px;padding:12px 16px;font-weight:800;cursor:pointer;box-shadow:0 4px 0 #ded0d9;background:#f3eaf0;color:var(--ink)}.btn.primary{background:var(--cyan);color:#16434a;box-shadow:0 4px 0 #238f9d}.btn.gold{background:var(--gold);color:#4f3d15;box-shadow:0 4px 0 #d7aa40}.btn.danger{background:var(--bad-soft);color:var(--bad);border:1px solid #efbdc6;box-shadow:none}.btn.wide{flex:1}
+    .lens-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.selector{border:1px solid var(--line);border-radius:18px;padding:14px;background:#fff8f4}.selector h3{margin:0 0 10px}.seg{display:grid;gap:8px}.seg button{min-height:48px;border:2px solid #e2d4dc;border-radius:13px;background:#fff;color:var(--ink);font-weight:800;cursor:pointer}.seg button.on{background:var(--cyan);border-color:var(--cyan);color:#16434a}.lens-result{margin-top:15px;border-radius:19px;background:var(--cyan-soft);border:2px solid var(--cyan);color:var(--ink);padding:18px}.lens-result strong{font-size:30px;color:var(--cyan-deep)}.lens-result p{margin-bottom:0}
+    .recall-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:11px}.recall{min-height:180px;border:2px solid #e2d4dc;border-radius:20px;background:#fff;padding:17px;text-align:left;cursor:pointer;color:var(--ink);box-shadow:0 4px 0 #e6d9e1}.recall .front{font-size:18px;font-weight:800}.recall .back{display:none;margin-top:12px;line-height:1.65;color:var(--muted)}.recall.open{border-color:var(--pink);background:var(--pink-soft)}.recall.open .back{display:block}.recall .tap{display:block;margin-top:15px;color:var(--cyan-deep);font-size:11px;font-weight:800}
+    .choices{display:grid;gap:10px;margin-top:16px}.choice{text-align:left;min-height:52px;border:2px solid #e2d4dc;border-radius:15px;background:#fff;padding:13px 15px;color:var(--ink);font-weight:800;cursor:pointer}.choice.right{border-color:#65c878;background:var(--ok-soft)}.choice.wrong{border-color:#d26b7c;background:var(--bad-soft)}.choice:disabled{cursor:default}
+    .feedback{border-radius:17px;padding:15px 17px;margin-top:15px;line-height:1.65}.feedback.ok{background:var(--ok-soft);border:1px solid #8bd29b}.feedback.no{background:var(--bad-soft);border:1px solid #e7aeb9}.feedback h3{margin:0 0 5px}.repair-rule{border-left:5px solid var(--gold);background:var(--gold-soft);border-radius:14px;padding:15px;line-height:1.7;margin:14px 0}
+    .wrong-list{display:grid;gap:10px}.wrong-item{border:1px solid var(--line);border-radius:15px;padding:14px;display:flex;justify-content:space-between;gap:12px}.wrong-item strong{display:block}.status{white-space:nowrap;border-radius:999px;padding:5px 9px;font-size:12px;font-weight:800}.status.open{background:var(--bad-soft);color:var(--bad)}.status.solved{background:var(--ok-soft);color:var(--ok)}
+    .empty{text-align:center;padding:24px}.empty strong{display:block;font-size:28px;color:var(--cyan-deep)}.privacy{text-align:center;font-size:12px;color:var(--muted)}
+    .toast{position:fixed;left:50%;bottom:70px;transform:translate(-50%,24px);opacity:0;pointer-events:none;background:var(--ink);color:#fff;border-radius:999px;padding:11px 17px;font-size:13px;font-weight:800;z-index:80;transition:.2s;max-width:90%;text-align:center}.toast.show{opacity:1;transform:translate(-50%,0)}
+    @media(max-width:560px){
+      .grid,.lens-grid,.recall-grid{grid-template-columns:1fr}.pronoun-dock{grid-template-columns:repeat(2,1fr)}.merge-rail{grid-template-columns:1fr}.rail-arrow{transform:rotate(90deg);text-align:center}.stepper{grid-template-columns:repeat(2,1fr)}.wrong-item{flex-direction:column}
+    }
+    @media(max-width:390px){.wrap{padding-left:11px;padding-right:11px}.hub{font-size:12px;padding:8px}.brand{font-size:13px}.brand>span:last-child{white-space:nowrap}.quick-tools{gap:7px}.tool-btn{font-size:12px}.paper-note{font-size:15px}}
+    @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
+  </style>
+</head>
+<body data-child="kenton">
+  <main class="wrap">
+    <div class="topbar">
+      <div class="brand">
+        <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 6h6v5H4zM14 13h6v5h-6zM10 8.5h4M12 8.5V15M12 15h2"/></svg></span>
+        <span>Kenton · 句子拼装站</span>
+      </div>
+      <div class="top-actions">
+        <button class="round-btn" id="soundToggle" type="button" aria-label="关闭点击音">声</button>
+        <a class="hub" href="summer_english_hub.html?who=kenton">回学习馆</a>
+      </div>
+    </div>
+    <div id="app"></div>
+  </main>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script>
+  (() => {
+    'use strict';
+    const APP_ID='kenton-relative-clause-20260730';
+    const VERSION='2.0.0';
+    const STORAGE_KEY='study:kenton:kenton-relative-clause-20260730:v1';
+    const MATERIAL='《知识点梳理》p.112—114（定语从句）与 2026-07-30 老师课堂反馈';
+    const AUDIO_DIR='audio/kenton_relative_clause_class_20260730';
+    const LESSON_BLUEPRINT=Object.freeze({
+      appId:APP_ID,
+      child:'kenton',
+      source:MATERIAL,
+      courseDate:'2026-07-30',
+      currentGap:'暂时不能独立把两句话合并成定语从句并稳定选择关系代词',
+      observableOutcome:'能圈出重复的人或物、选对关系代词并把从句贴回先行词后',
+      knowledgeMechanism:'第二句的重复成分换成关系代词，再整体移动到先行词后',
+      primaryInteraction:'句子纸条拼装、关系代词连接扣与错后原题返回',
+      audio:'pending',
+      surprise:'两张句子纸条在关系代词连接后合拢成完整句',
+      surpriseTrigger:'完成圈重复、选代词和贴回三步',
+      phases:['teach','guided','recall','independent','repair','transfer']
+    });
+    const DAILY_SURPRISES=Object.freeze([
+      '先不看答案，猜猜今天第一枚连接扣是 who 还是 which。',
+      '合并完成后，把关系从句轻声读两遍。',
+      '今天找一句可以把关系代词省略的句子。'
+    ]);
+    function dailySurpriseKey(){
+      const date=new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Shanghai',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date());
+      return`${APP_ID}|kenton|${date}`;
+    }
+    function dailySurprise(){
+      let hash=0;
+      for(const char of dailySurpriseKey())hash=(hash*31+char.charCodeAt(0))>>>0;
+      return DAILY_SURPRISES[hash%DAILY_SURPRISES.length];
+    }
+    const mergeCases=[
+      {
+        id:'person',label:'说明人',pronoun:'who',audio:'01-everyone-who.mp3',
+        first:[['Good news for',0],['everyone',1],['!',0]],second:[['Everyone',1],['loves the stars',0],['.',0]],
+        noun:'everyone',clause:'who loves the stars',result:'Good news for everyone who loves the stars!',
+        rule:'先行词 everyone 指人；第二句的 Everyone 是 loves 的主语，所以换成 who。'
+      },
+      {
+        id:'thing',label:'说明物',pronoun:'that',audio:'02-suckers-that.mp3',
+        first:[['Those eight arms are covered with rows of',0],['round suckers',1],['.',0]],second:[['The round suckers',1],['can taste and grip at the very same time',0],['.',0]],
+        noun:'round suckers',clause:'that can taste and grip at the very same time',result:'Those eight arms are covered with rows of round suckers that can taste and grip at the very same time.',
+        rule:'先行词 round suckers 是物；第二句缺主语，这里用 that，也可以用 which。'
+      },
+      {
+        id:'thing-extra',label:'补充说明物',pronoun:'which',audio:'03-arms-which.mp3',
+        first:[['And of course it has',0],['eight long arms',1],['.',0]],second:[['The eight long arms',1],['are exactly what its name means: eight feet',0],['.',0]],
+        noun:'eight long arms',clause:'which is exactly what its name means: eight feet',result:'And of course it has eight long arms, which is exactly what its name means: eight feet.',
+        rule:'先行词 eight long arms 是物；逗号后的 which 补充说明整件事，这里不能换成 who。'
+      }
+    ];
+    const recallCards=[
+      ['先行词是什么？','被后面小句说明的人或物。定语从句要紧贴先行词。'],
+      ['人和物怎样选？','人常用 who；物常用 which；that 可指人或物。'],
+      ['什么时候用 whose？','表达“谁的 / 什么的”，结构是 whose + 名词。'],
+      ['关系代词能省吗？','作主语不能省；作宾语时 who/whom/which/that 常可省。']
+    ];
+    const questions=[
+      makeQ('q1','人 + 缺主语','The doctor ___ helped me was patient.',['which','who','whose'],1,'先行词 doctor 是人，从句 ___ helped me 缺主语，用 who。','人 + 缺主语 → who。',transfer('The teacher ___ speaks English is friendly.',['who','which','whose'],0)),
+      makeQ('q2','物 + 缺主语','The camera ___ takes clear photos is mine.',['who','which','whom'],1,'camera 是物，从句缺主语，用 which 或 that。','物 + 缺主语 → which / that。',transfer('The bike ___ is outside is mine.',['who','which','whose'],1)),
+      makeQ('q3','所属关系','The girl ___ bag is blue is my cousin.',['whose','who','which'],0,'空格后有名词 bag，表示“女孩的书包”，用 whose。','whose 后面要带名词。',transfer('I saw a tree ___ leaves were yellow.',['which','whose','who'],1)),
+      makeQ('q4','宾语可省略','The book (that) I bought is interesting. 括号里的 that：',['必须保留','可以省略','改成 whose'],1,'从句 I bought ___ 已有主语 I；that 作宾语，可以省略。','从句已有主语时，关系代词可能作宾语。',transfer('The boy (whom) we met was kind. whom：',['可以省略','不能省略','改成 which'],0)),
+      makeQ('q5','主语不可省略','The dog ___ is barking is mine.',['可以不填','必须填 who','必须填 which / that'],2,'从句 ___ is barking 缺主语；先行词 dog 是物，用 which / that，不能省。','作主语不能省。',transfer('The man ___ lives here is a pilot.',['可以不填','必须填 who / that','必须填 whose'],1)),
+      makeQ('q6','句子合并','He is the man. The man lives next door.',['He is the man who lives next door.','He who is the man lives next door.','He is who the man lives next door.'],0,'圈出 the man，把第二句的 The man 换成 who，再贴回先行词后。','圈重复 → 换关系代词 → 贴回名词后。',transfer('I like the dog. The dog has blue eyes.',['I like the dog which has blue eyes.','I which like the dog has blue eyes.','The dog I like which has blue eyes.'],0))
+    ];
+    function makeQ(id,skill,prompt,options,answer,explain,repair,variation){return{id,skill,prompt,options,answer,explain,repair,variation}}
+    function transfer(prompt,options,answer){return{prompt,options,answer}}
+    const defaultState=()=>({schema:2,child:'Kenton',appId:APP_ID,version:VERSION,createdAt:new Date().toISOString(),lastOpened:new Date().toISOString(),totalMs:0,modules:{},attempts:[],wrongbook:{},recall:{},sessions:0});
+    let state=load(),route='home',caseIndex=0,mergePhase=0,picked=new Set(),pickedPronoun='',lensTarget='person',lensGap='subject',
+      quizPos=0,quizMode='original',answerState=null,repairQuestion=null,started=Date.now(),currentAudio=null,audioBroken=false,toastTimer,
+      soundOn=localStorage.getItem('study:kenton:ui-sound')!=='0',audioContext=null;
+
+    function load(){
+      try{
+        const old=JSON.parse(localStorage.getItem(STORAGE_KEY)||'null');
+        if(old&&old.child==='Kenton'){
+          return{...defaultState(),...old,schema:2,version:VERSION,modules:old.modules||{},attempts:old.attempts||[],wrongbook:old.wrongbook||{},recall:old.recall||{}};
+        }
+      }catch(_){}
+      return defaultState();
+    }
+    function save(){state.lastOpened=new Date().toISOString();localStorage.setItem(STORAGE_KEY,JSON.stringify(state))}
+    function tick(){const now=Date.now();state.totalMs+=now-started;started=now;save()}
+    setInterval(tick,30000);addEventListener('beforeunload',tick);
+    function esc(value){return String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+    function tone(kind='tap'){
+      if(!soundOn)return;
+      try{
+        if(!audioContext)audioContext=new (window.AudioContext||window.webkitAudioContext)();
+        if(audioContext.state==='suspended')audioContext.resume();
+        const now=audioContext.currentTime;
+        const notes=kind==='ok'?[[523,.00],[659,.08]]:kind==='bad'?[[196,.00],[165,.12]]:[[340,.00]];
+        notes.forEach(([hz,delay])=>{
+          const osc=audioContext.createOscillator(),gain=audioContext.createGain();
+          osc.type=kind==='bad'?'triangle':'sine';osc.frequency.value=hz;
+          gain.gain.setValueAtTime(.0001,now+delay);gain.gain.exponentialRampToValueAtTime(kind==='tap'?.035:.075,now+delay+.015);gain.gain.exponentialRampToValueAtTime(.0001,now+delay+.13);
+          osc.connect(gain);gain.connect(audioContext.destination);osc.start(now+delay);osc.stop(now+delay+.15);
+        });
+      }catch(_){}
+    }
+    function toast(message){const el=document.getElementById('toast');el.textContent=message;el.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>el.classList.remove('show'),2200)}
+    function recordAttempt(data){
+      const row={...data,child:'Kenton',appId:APP_ID,version:VERSION,at:new Date().toISOString(),materialSource:MATERIAL};
+      state.attempts.push(row);if(state.attempts.length>600)state.attempts=state.attempts.slice(-600);save();
+      window.DDLearningSync?.recordAttempt?.(row);
+    }
+    function markModule(id,meta={}){state.modules[id]={status:'complete',at:new Date().toISOString(),meta};save()}
+    window.DDMemory={recordAttempt,markModule};
+    function stopAudio(){
+      if(currentAudio){
+        currentAudio.pause();
+        currentAudio.currentTime=0;
+        currentAudio=null
+      }
+    }
+    function go(next){stopAudio();route=next;answerState=null;render();scrollTo({top:0,behavior:'smooth'})}
+    function pageHead(title,sub){return`<div class="page-head"><button class="back" type="button" onclick="go('home')" aria-label="返回首页">←</button><div><h1>${esc(title)}</h1><p>${esc(sub)}</p></div></div>`}
+    function playSentence(file,label='英语整句'){
+      stopAudio();
+      const audio=new Audio(`${AUDIO_DIR}/${file}`);
+      audio.preload='auto';
+      audio.playsInline=true;
+      currentAudio=audio;
+      audio.onended=()=>{if(currentAudio===audio)currentAudio=null};
+      audio.onerror=()=>{audioBroken=true;if(currentAudio===audio)currentAudio=null;toast('这条英语 MP3 没有成功播放，请再点一次')};
+      audio.play().then(()=>toast(`正在播放：${label}`)).catch(()=>{
+        audioBroken=true;
+        if(currentAudio===audio)currentAudio=null;
+        toast('英语 MP3 没有成功播放，请检查媒体音量')
+      })
+    }
+    function progress(){
+      const done=['merge','lens','recall','quiz'].filter(x=>state.modules[x]?.status==='complete').length;
+      const open=Object.values(state.wrongbook).filter(x=>x.errors>0&&!x.solved).length;
+      return{done,open,attempts:state.attempts.length};
+    }
+    function render(){
+      const app=document.getElementById('app');
+      if(route==='home')app.innerHTML=home();
+      else if(route==='merge')app.innerHTML=mergePage();
+      else if(route==='lens')app.innerHTML=lensPage();
+      else if(route==='recall')app.innerHTML=recallPage();
+      else if(route==='quiz')app.innerHTML=quizPage();
+      else if(route==='repair')app.innerHTML=repairPage();
+      else if(route==='records')app.innerHTML=recordsPage();
+      else app.innerHTML=home();
+      syncSoundButton();
+    }
+    function home(){
+      const p=progress();
+      return`<section class="lesson-intro" data-phase="teach">
+        <span class="lesson-kicker">今日任务 · 亲手拼一句</span>
+        <h1>把两句话<span>轻轻扣在一起</span></h1>
+        <p>先找出两张纸条里重复的人或物，再选一个连接扣，把说明贴回名词后面。</p>
+        <div class="paper-stage" data-surprise="sentence-joiner" aria-label="句子拼装示例">
+          <div class="paper-note note-a">I know the <mark>boy</mark>.</div>
+          <div class="merge-hinge">who</div>
+          <div class="paper-note note-b">The <mark>boy</mark> won the race.</div>
+          <div class="paper-result">I know the <mark>boy</mark> <u>who won the race</u>.</div>
+        </div>
+        <button class="primary-launch" type="button" onclick="startMerge()">我来拼第一句 →</button>
+        <div class="micro-route" data-micro-surprise="daily"><span><b>1</b>找重复</span><span><b>2</b>选连接扣</span><span><b>3</b>拼回去</span><span class="daily-note">今日小彩蛋：${esc(dailySurprise())}</span></div>
+      </section>
+      <div class="voice-note"><i>声</i><span><b>音频待验收（手机）· Eddey 同款英文声音。</b>使用和弟弟英语软件相同的预合成 MP3 播放方式，不依赖设备自带声线。</span></div>
+      <section class="quick-tools" aria-label="其他学习工具">
+        <button class="tool-btn" onclick="go('lens')"><span class="tool-icon">${iconFor('lens')}</span>怎么选<small>who / which / whose</small></button>
+        <button class="tool-btn" onclick="go('recall')"><span class="tool-icon">${iconFor('recall')}</span>翻卡复习<small>先说再看答案</small></button>
+        <button class="tool-btn" onclick="startQuiz()"><span class="tool-icon">${iconFor('quiz')}</span>独立闯关<small>${p.open} 个待回炉</small></button>
+      </section>
+      <section class="progress"><div class="metrics"><div class="metric"><strong>${p.done}/4</strong><span>完成环节</span></div><div class="metric"><strong>${p.open}</strong><span>待回炉</span></div><div class="metric"><strong>${p.attempts}</strong><span>独立作答</span></div></div><div class="bar"><i style="width:${p.done*25}%"></i></div><div class="btn-row"><button class="btn" onclick="go('records')">查看学习记录</button></div></section>
+      <details class="source"><summary>给家长看的材料说明</summary><div><b>材料依据：</b>${MATERIAL}。三条英语整句是软件助教补充的听力例句，不冒充教材原句；后续例句继续标清教材内容与软件补充内容。</div></details>`;
+    }
+    function homeCard(id,kicker,title,text,primary=false){
+      const action=id==='merge'?'startMerge()':id==='quiz'?'startQuiz()':`go('${id}')`;
+      return`<button class="home-card ${primary?'primary':''} ${state.modules[id]?.status==='complete'?'done':''}" onclick="${action}"><span class="kicker">${kicker}</span><span class="icon" aria-hidden="true">${iconFor(id)}</span><h3>${title}</h3><p>${text}</p></button>`;
+    }
+    function iconFor(id){
+      const icons={
+        merge:'<svg viewBox="0 0 24 24"><path d="M4 6h6v5H4zM14 13h6v5h-6zM10 8.5h4M12 8.5V15M12 15h2"/></svg>',
+        lens:'<svg viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 4 4M8 10.5h5"/></svg>',
+        recall:'<svg viewBox="0 0 24 24"><path d="M5 4h12a2 2 0 0 1 2 2v14H7a2 2 0 0 1-2-2z"/><path d="M7 20a2 2 0 0 1 0-4h12M9 8h6"/></svg>',
+        quiz:'<svg viewBox="0 0 24 24"><path d="M8 4h8l3 3v13H5V7z"/><path d="M9 11h6M9 15h4M8 4v3h8V4"/></svg>'
+      };return icons[id];
+    }
+    function startMerge(){caseIndex=0;mergePhase=0;picked=new Set();pickedPronoun='';route='merge';render();scrollTo(0,0)}
+    function mergePage(){
+      if(caseIndex>=mergeCases.length){
+        markModule('merge',{cases:mergeCases.length});
+        return`${pageHead('合并机完成','三种关系都亲手做过了')}<section class="panel" data-phase="guided"><div class="empty"><strong>圈 · 换 · 贴</strong><p>你已经完成“说明人、说明物、逗号后补充说明”三种句子合并。下一步用关系代词透镜练判断。</p><div class="btn-row"><button class="btn primary wide" onclick="go('lens')">进入关系代词透镜 →</button></div></div></section>`;
+      }
+      const item=mergeCases[caseIndex];
+      return`${pageHead('句子合并机',`第 ${caseIndex+1} / ${mergeCases.length} 组 · ${item.label}`)}
+      <section class="panel" data-phase="guided"><div class="stepper">${['圈重复词','选关系代词','贴回名词后','听完整句'].map((x,i)=>`<div class="step ${i===mergePhase?'on':i<mergePhase?'done':''}">${i+1}. ${x}</div>`).join('')}</div>
+      <div class="sentence-lab">
+        <span class="pill">${item.label}</span>
+        <div class="tray-title">原料句 A</div>${wordTray(item.first,'a')}
+        <div class="tray-title">原料句 B</div>${wordTray(item.second,'b')}
+        ${mergeControls(item)}
+      </div></section>`;
+    }
+    function wordTray(parts,row){
+      return`<div class="word-tray">${parts.map((part,i)=>`<button class="word-chip ${picked.has(`${row}:${i}`)?'chosen':''}" type="button" onclick="pickWord('${row}',${i},${part[1]})">${esc(part[0])}</button>`).join('')}</div>`;
+    }
+    function mergeControls(item){
+      if(mergePhase===0)return`<div class="hint-box"><b>任务：</b>两句话里，哪个人或物重复出现？在 A、B 各点一次。</div><div class="btn-row"><button class="btn primary" ${picked.size<2?'disabled':''} onclick="confirmRepeat()">我圈好了 →</button></div>`;
+      if(mergePhase===1)return`<div class="hint-box"><b>重复部分：</b>${esc(item.noun)}。现在把第二句的重复部分换成关系代词。</div><div class="pronoun-dock">${[['who','人'],['which','物'],['that','人或物'],['whose','所属']].map(([word,label])=>`<button class="pronoun ${pickedPronoun===word?'on':''}" onclick="pickPronoun('${word}')">${word}<small>${label}</small></button>`).join('')}</div>`;
+      if(mergePhase===2)return`<div class="hint-box"><b>换好了：</b>第二句的重复部分变成 <strong>${item.pronoun}</strong>。把这段说明贴到先行词后面。</div><div class="merge-rail"><div class="rail-part">${esc(item.noun)}</div><div class="rail-arrow">→</div><div class="rail-part relation">${esc(item.clause)}</div></div><div class="btn-row"><button class="btn primary wide" onclick="joinSentence()">启动合并 →</button></div>`;
+      return`<div class="final-sentence"><span class="noun">${esc(item.noun)}</span> 后面紧跟 <span class="clause">${esc(item.clause)}</span><br><span style="font-size:.85em">${esc(item.result)}</span></div><div class="hint-box"><b>为什么：</b>${esc(item.rule)}</div><div class="btn-row"><button class="btn" onclick="playSentence('${item.audio}','合并后的完整句')">🔊 播放完整英语</button><button class="btn primary" onclick="nextMerge()">${caseIndex===mergeCases.length-1?'完成合并机':'下一组 →'}</button></div>`;
+    }
+    function pickWord(row,index,isTarget){
+      const key=`${row}:${index}`;
+      if(isTarget){picked.add(key);tone('ok');toast('找到了一个重复部分')}else{tone('bad');toast('再看一眼：两句里要出现同一个人或物')}
+      render();
+    }
+    function confirmRepeat(){if(picked.size<2)return;mergePhase=1;tone('ok');render()}
+    function pickPronoun(word){
+      const item=mergeCases[caseIndex];pickedPronoun=word;
+      if(word===item.pronoun||(item.id==='thing'&&word==='which')){mergePhase=2;tone('ok');toast('选择正确：继续把小句贴回去')}else{tone('bad');toast(item.pronoun==='who'?'先行词是人，先试试 who':item.pronoun==='whose'?'这里表达所属关系，试试 whose':`先行词是物，这一组试试 ${item.pronoun}`)}
+      render();
+    }
+    function joinSentence(){mergePhase=3;tone('ok');render()}
+    function nextMerge(){caseIndex++;mergePhase=0;picked=new Set();pickedPronoun='';render();scrollTo({top:0,behavior:'smooth'})}
+    function lensPage(){
+      const result=lensResult();
+      return`${pageHead('关系代词透镜','先看先行词，再看从句空位')}<section class="panel"><span class="pill">判断不是靠猜</span><h2>转动两层透镜</h2><div class="lens-grid">
+        <div class="selector"><h3>第一层：说明谁？</h3><div class="seg">${[['person','人'],['thing','物'],['owner','所属关系']].map(([id,label])=>`<button class="${lensTarget===id?'on':''}" onclick="setLens('target','${id}')">${label}</button>`).join('')}</div></div>
+        <div class="selector"><h3>第二层：从句缺什么？</h3><div class="seg">${[['subject','缺主语'],['object','缺宾语'],['noun','后面紧跟名词']].map(([id,label])=>`<button class="${lensGap===id?'on':''}" onclick="setLens('gap','${id}')">${label}</button>`).join('')}</div></div>
+      </div><div class="lens-result"><span>透镜建议</span><br><strong>${result.word}</strong><p>${result.why}</p></div>
+      <div class="btn-row"><button class="btn" onclick="markLens()">我能说出判断顺序</button><button class="btn primary" onclick="go('recall')">下一步：遮挡回忆 →</button></div></section>`;
+    }
+    function lensResult(){
+      if(lensTarget==='owner'||lensGap==='noun')return{word:'whose + 名词',why:'表达所属关系，whose 后面必须跟名词。'};
+      if(lensTarget==='person')return{word:lensGap==='object'?'whom / who / that（常可省）':'who / that',why:lensGap==='object'?'先行词是人，空位作宾语。':'先行词是人，空位作主语，不能省略。'};
+      return{word:lensGap==='object'?'which / that（常可省）':'which / that',why:lensGap==='object'?'先行词是物，空位作宾语。':'先行词是物，空位作主语，不能省略。'};
+    }
+    function setLens(kind,value){if(kind==='target')lensTarget=value;else lensGap=value;tone('tap');render()}
+    function markLens(){markModule('lens',{target:lensTarget,gap:lensGap});tone('ok');toast('判断顺序已记录：先看先行词，再看空位');render()}
+    function recallPage(){
+      const opened=Object.values(state.recall).filter(Boolean).length;
+      return`${pageHead('遮挡回忆','先说答案，再点开核对；可以反复翻回')}<section class="panel" data-phase="recall"><span class="pill">${opened}/4 已核对</span><h2>四张规则翻卡</h2><div class="recall-grid">${recallCards.map((card,i)=>`<button class="recall ${state.recall[i]?'open':''}" onclick="flipRecall(${i})"><span class="front">${i+1}. ${esc(card[0])}</span><span class="back">${esc(card[1])}</span><span class="tap">${state.recall[i]?'再点一次翻回':'先自己说，再点开'}</span></button>`).join('')}</div><div class="btn-row"><button class="btn" onclick="resetRecall()">全部翻回</button><button class="btn primary" onclick="finishRecall()">我能遮住说出四条 →</button></div></section>`;
+    }
+    function flipRecall(i){state.recall[i]=!state.recall[i];save();tone('tap');render()}
+    function resetRecall(){state.recall={};save();render()}
+    function finishRecall(){markModule('recall',{cards:4});tone('ok');startQuiz()}
+    function startQuiz(){quizPos=0;quizMode='original';answerState=null;route='quiz';render();scrollTo(0,0)}
+    function currentQuestion(){return questions[quizPos]}
+    function currentPart(){const q=currentQuestion();return quizMode==='transfer'?q.variation:q}
+    function quizPage(){
+      if(quizPos>=questions.length){
+        markModule('quiz',{questions:questions.length});
+        return`${pageHead('独立检验完成','错后重教与原题返回都已保留')}<section class="panel"><div class="empty"><strong>完成</strong><p>六题已经做完。待回炉项目会保留在记录里，连续答对两次才算解决。</p><div class="btn-row"><button class="btn" onclick="go('records')">查看记录</button><button class="btn primary" onclick="startQuiz()">再做一轮</button></div></div></section>`;
+      }
+      const q=currentQuestion(),part=currentPart();
+      return`${pageHead('独立合并检验',`第 ${quizPos+1} / ${questions.length} 题${quizMode==='transfer'?' · 小变式':''}`)}<section class="panel" ${quizMode==='transfer'?'data-phase="transfer"':'data-phase="independent"'}><span class="pill">${esc(q.skill)}</span><h2>${esc(part.prompt)}</h2><div class="choices">${part.options.map((option,i)=>`<button class="choice ${choiceClass(i)}" ${answerState?.locked?'disabled':''} onclick="answerQuiz(${i})">${String.fromCharCode(65+i)}. ${esc(option)}</button>`).join('')}</div>${quizFeedback()}</section>`;
+    }
+    function choiceClass(i){if(!answerState?.locked)return'';const p=currentPart();if(i===p.answer)return'right';if(i===answerState.selected)return'wrong';return''}
+    function answerQuiz(index){
+      if(answerState?.locked)return;
+      const q=currentQuestion(),part=currentPart(),correct=index===part.answer,wasWrong=Boolean(state.wrongbook[q.id]?.errors);
+      recordAttempt({questionId:`${q.id}-${quizMode}`,prompt:part.prompt,selected:part.options[index],expected:part.options[part.answer],correct,reason:correct?'':q.repair,skill:q.skill,activity:'independent',stage:quizMode,ms:0});
+      if(correct){
+        updateWrong(q,true);
+        answerState={locked:true,selected:index,correct:true};
+        tone('ok');
+        if(quizMode==='original'&&wasWrong){answerState.needTransfer=true}
+      }else{
+        updateWrong(q,false);answerState={locked:true,selected:index,correct:false};tone('bad');
+      }
+      save();render();
+    }
+    function updateWrong(q,correct){
+      const item=state.wrongbook[q.id]||(state.wrongbook[q.id]={id:q.id,skill:q.skill,errors:0,streak:0,solved:false,lastWrong:null});
+      if(correct){if(item.errors>0)item.streak++;if(item.errors>0&&item.streak>=2)item.solved=true}
+      else{item.errors++;item.streak=0;item.solved=false;item.lastWrong=new Date().toISOString()}
+    }
+    function quizFeedback(){
+      if(!answerState)return'';
+      const q=currentQuestion();
+      if(!answerState.correct)return`<div class="feedback no"><h3>先停一下，不跳题</h3><div>${esc(q.explain)}</div><div class="btn-row"><button class="btn danger wide" onclick="openRepair()">进入定点重教 →</button></div></div>`;
+      const need=answerState.needTransfer;
+      return`<div class="feedback ok"><h3>${need?'原题改对了，再做一个小变式':'判断正确'}</h3><div>${esc(q.explain)}</div><div class="btn-row"><button class="btn primary wide" onclick="${need?'startTransfer()':'nextQuiz()'}">${need?'做小变式 →':quizPos===questions.length-1?'查看结果':'下一题 →'}</button></div></div>`;
+    }
+    function openRepair(){repairQuestion=currentQuestion();route='repair';render();scrollTo(0,0)}
+    function repairPage(){
+      const q=repairQuestion;
+      return`${pageHead('定点重教',`保持第 ${quizPos+1} 题现场，不丢进度`)}<section class="panel" data-phase="repair"><span class="pill">${esc(q.skill)}</span><h2>这一步为什么会错？</h2><div class="repair-rule"><b>判断口令：</b>${esc(q.repair)}<br><b>放回原句：</b>${esc(q.explain)}</div><p>请把口令说一遍，再回到刚才那一道题改答。</p><div class="btn-row"><button class="btn primary wide" data-return-to-question="independent" onclick="returnToQuestion()">我看懂了，返回刚才第 ${quizPos+1} 题 →</button></div></section>`;
+    }
+    function returnToQuestion(){route='quiz';quizMode='original';answerState=null;render();scrollTo(0,0)}
+    function startTransfer(){quizMode='transfer';answerState=null;render();scrollTo(0,0)}
+    function nextQuiz(){quizPos++;quizMode='original';answerState=null;render();scrollTo(0,0)}
+    function recordsPage(){
+      const wrong=Object.values(state.wrongbook).filter(x=>x.errors>0);
+      return`${pageHead('学习记录','只属于 Kenton 与本软件')}<section class="panel"><div class="metrics"><div class="metric"><strong>${state.attempts.length}</strong><span>独立作答</span></div><div class="metric"><strong>${wrong.filter(x=>!x.solved).length}</strong><span>待回炉</span></div><div class="metric"><strong>${wrong.filter(x=>x.solved).length}</strong><span>已解决</span></div></div></section>
+      <section class="panel"><h2>错题回炉</h2>${wrong.length?`<div class="wrong-list">${wrong.map(item=>`<div class="wrong-item"><div><strong>${esc(item.skill)}</strong><small>错 ${item.errors} 次 · 连对 ${item.streak}/2</small></div><span class="status ${item.solved?'solved':'open'}">${item.solved?'已解决':'待回炉'}</span></div>`).join('')}</div>`:'<div class="empty"><strong>暂无错题</strong><p>完成独立检验后，这里会按知识点记录。</p></div>'}
+      <div class="btn-row"><button class="btn" onclick="downloadJson()">导出 JSON</button><button class="btn" onclick="downloadMarkdown()">导出学习汇报</button><button class="btn" onclick="document.getElementById('importFile').click()">导入记录</button><input id="importFile" type="file" accept="application/json" hidden onchange="importJson(event)"><button class="btn primary" onclick="startQuiz()">只做检验</button></div><p class="privacy">本机记录键包含 Kenton、软件名和版本；不会与 Eddey 或家长测试记录混用。</p></section>`;
+    }
+    function report(){
+      const wrong=Object.values(state.wrongbook).filter(x=>x.errors>0&&!x.solved);
+      return`# Kenton 定语从句学习汇报\n\n- 软件版本：${VERSION}\n- 最近学习：${state.lastOpened}\n- 累计学习：${Math.round(state.totalMs/60000)} 分钟\n- 独立作答：${state.attempts.length}\n- 待回炉：${wrong.length}\n\n## 待回炉\n${wrong.length?wrong.map(x=>`- ${x.skill}：错 ${x.errors} 次，连对 ${x.streak}/2`).join('\n'):'- 无'}\n\n材料：${MATERIAL}\n`;
+    }
+    function download(name,type,text){const link=document.createElement('a');link.href=URL.createObjectURL(new Blob([text],{type}));link.download=name;link.click();setTimeout(()=>URL.revokeObjectURL(link.href),1000)}
+    function downloadJson(){download('kenton-relative-clause-record.json','application/json',JSON.stringify(state,null,2))}
+    function downloadMarkdown(){download('kenton-relative-clause-report.md','text/markdown',report())}
+    function importJson(event){
+      const file=event.target.files?.[0];if(!file)return;
+      const reader=new FileReader();
+      reader.onload=()=>{try{const data=JSON.parse(reader.result);if(data?.child!=='Kenton'||data?.appId!==APP_ID||!Array.isArray(data.attempts)||typeof data.wrongbook!=='object')throw new Error();state={...defaultState(),...data,schema:2,version:VERSION};save();toast('记录导入成功');go('records')}catch(_){toast('导入失败：不是本软件的 Kenton 记录')}};
+      reader.readAsText(file);event.target.value='';
+    }
+    function syncSoundButton(){
+      const button=document.getElementById('soundToggle');if(!button)return;
+      button.textContent=soundOn?'声':'静';button.setAttribute('aria-label',soundOn?'关闭点击反馈音':'打开点击反馈音');
+    }
+    document.getElementById('soundToggle').addEventListener('click',()=>{soundOn=!soundOn;localStorage.setItem('study:kenton:ui-sound',soundOn?'1':'0');if(soundOn)tone('ok');syncSoundButton()});
+    Object.assign(window,{go,startMerge,pickWord,confirmRepeat,pickPronoun,joinSentence,nextMerge,playSentence,setLens,markLens,flipRecall,resetRecall,finishRecall,startQuiz,answerQuiz,openRepair,returnToQuestion,startTransfer,nextQuiz,downloadJson,downloadMarkdown,importJson});
+    render();
+  })();
+  </script>
+</body>
+</html>

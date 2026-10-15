@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<script src="../assets/learning-sync.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Kenton · 数学五上预习馆③平均数</title>
+<style>
+:root{--c:#2f6fb3;--cd:#225182;--cbg:#e0f0ff;--gold:#f2b632;--golddk:#c98a00;--ink:#2e2a26;--paper:#fdf6ee;
+ --line:#eadfd2;--muted:#8a8178;--green:#2e9c54;--greenbg:#e9f7ee;--red:#d64545;--redbg:#fdecec;--orange:#e8862f;--orangebg:#fdf1e3;--purple:#7a5fc9;--purplebg:#efeafc;}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+body{margin:0;font-family:'LXGW WenKai Screen','PingFang SC','Microsoft YaHei',system-ui,sans-serif;color:var(--ink);min-height:100vh;padding-bottom:50px;
+ background:radial-gradient(circle at 15% 5%,#d9ebfd 0,transparent 45%),radial-gradient(circle at 85% 20%,#ffe9d2 0,transparent 40%),var(--paper);}
+.wrap{max-width:620px;margin:0 auto;padding:14px;}
+.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;}
+.badge{background:var(--c);color:#fff;font-weight:800;font-size:17px;padding:6px 13px;border-radius:13px 13px 13px 4px;box-shadow:0 4px 0 var(--cd);}
+.back{background:none;border:none;color:var(--muted);font-size:15px;font-family:inherit;font-weight:800;cursor:pointer;padding:6px 2px;}
+.mute{background:none;border:none;font-size:20px;cursor:pointer;}
+h1{font-size:21px;text-align:center;margin:8px 0 2px;color:var(--cd);}
+.sub{text-align:center;font-size:12.5px;color:var(--muted);margin-bottom:10px;line-height:1.7;}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;}
+@media(max-width:400px){.grid{grid-template-columns:repeat(2,1fr);}}
+.tile{position:relative;background:#fff;border:2px solid var(--line);border-radius:16px;padding:14px 8px 10px;text-align:center;cursor:pointer;box-shadow:0 5px 0 #efe3d4;transition:transform .12s;min-height:46px;}
+.tile:active{transform:translateY(3px);box-shadow:0 2px 0 #efe3d4;}
+.tile.lock{opacity:.55;filter:grayscale(.6);}
+.tile .ic{font-size:32px;}
+.tile .nm{font-weight:800;font-size:14px;margin-top:6px;color:var(--cd);line-height:1.3;}
+.tile .ds{font-size:10.5px;color:var(--muted);margin-top:3px;line-height:1.45;}
+.tile .done{position:absolute;top:6px;right:8px;font-size:10.5px;font-weight:800;background:var(--greenbg);color:var(--green);border-radius:8px;padding:2px 6px;}
+.tile .done.pending{background:#eee8e1;color:#776d64;}
+.tile .today{position:absolute;top:-9px;left:10px;font-size:11px;font-weight:800;background:var(--gold);color:#5a3d00;border-radius:8px;padding:2px 8px;box-shadow:0 2px 0 var(--golddk);}
+.card{background:#fff;border:2px solid var(--line);border-radius:18px;padding:15px;margin:12px 0;box-shadow:0 6px 0 #f2e7d9;}
+.h2{font-size:17px;font-weight:800;color:var(--cd);margin:0 0 8px;}
+.h2 .tag{font-size:11px;background:var(--cbg);color:var(--cd);border-radius:8px;padding:2px 8px;vertical-align:2px;margin-left:6px;}
+.btn{font-family:inherit;font-weight:800;font-size:15px;border:none;border-radius:12px;padding:12px 16px;cursor:pointer;color:#fff;background:var(--c);box-shadow:0 4px 0 var(--cd);min-height:46px;}
+.btn:active{transform:translateY(3px);box-shadow:0 1px 0 var(--cd);}
+.btn.gold{background:var(--gold);color:#5a3d00;box-shadow:0 4px 0 var(--golddk);}
+.btn.ghost{background:#fff;color:var(--cd);border:2px solid var(--line);box-shadow:0 4px 0 #efe3d4;}
+.btn.red{background:var(--red);box-shadow:0 4px 0 #a83232;}
+.btn.wide{display:block;width:100%;margin:8px 0;}
+.hide{display:none!important;}
+/* 放大镜 */
+.bigexpr{text-align:center;font-size:26px;font-weight:900;margin:12px 0;line-height:1.8;word-break:break-all;}
+.bigexpr .tk{display:inline-block;padding:1px 2px;border-radius:6px;transition:all .3s;}
+.bigexpr .tk.hn{background:var(--orangebg);color:var(--orange);animation:pulse 1s ease 2;}
+.bigexpr .tk.ho{background:var(--cbg);color:var(--c);animation:pulse 1s ease 2;}
+@keyframes pulse{0%{transform:scale(1)}50%{transform:scale(1.25)}100%{transform:scale(1)}}
+.mirbtns{display:flex;gap:8px;}
+.mirbtns .btn{flex:1;font-size:14px;}
+.feat{background:var(--orangebg);border-radius:12px;padding:9px 12px;font-size:14px;line-height:1.7;margin:8px 0;font-weight:700;animation:fadein .5s;}
+.feat.blue{background:var(--cbg);}
+.mchip{display:inline-block;background:#fff;border:2px solid var(--gold);color:#a8730a;border-radius:12px;padding:5px 12px;font-size:13.5px;font-weight:800;margin:3px;animation:fadein .5s;}
+@keyframes fadein{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+/* 分步动画 */
+.srow{display:flex;align-items:flex-start;gap:8px;margin:10px 0;animation:slidein .5s ease;}
+@keyframes slidein{from{opacity:0;transform:translateX(-18px)}to{opacity:1;transform:none}}
+.srow .math{font-size:19px;font-weight:800;line-height:1.6;word-break:break-all;flex:1;}
+.srow.cur .math{background:#fffbe8;border-radius:8px;padding:2px 6px;}
+.snote{align-self:center;flex-shrink:0;max-width:42%;background:var(--orange);color:#fff;font-size:12px;font-weight:800;border-radius:10px 10px 10px 2px;padding:5px 9px;line-height:1.5;animation:fadein .6s;}
+.snote:before{content:"⬅ ";}
+.swhy{font-size:12.5px;color:#8a6a3a;background:var(--orangebg);border-radius:8px;padding:6px 10px;margin:-4px 0 10px 6px;line-height:1.7;animation:fadein .7s;}
+.fin{text-align:center;font-size:16px;font-weight:900;color:var(--green);margin:10px 0;animation:pop .4s;}
+@keyframes pop{0%{transform:scale(.6)}70%{transform:scale(1.15)}100%{transform:scale(1)}}
+/* 妙招 */
+.fmla{background:linear-gradient(135deg,#fff8e0,#ffefc9);border:2px dashed var(--gold);border-radius:12px;padding:10px 13px;font-size:16.5px;font-weight:900;color:#7a5200;text-align:center;margin:8px 0;line-height:1.8;word-break:break-all;}
+.usebox{font-size:14px;line-height:1.8;color:#4a443e;}
+.usebox b{color:#a8730a;}
+/* 遮挡回忆 */
+.rcsent{font-size:17px;font-weight:800;line-height:2;margin:12px 0;text-align:center;animation:fadein .5s;}
+.rcsent .blank{display:inline-block;min-width:64px;border-bottom:3px dashed var(--gold);color:var(--golddk);padding:0 6px;}
+.rcbtns{display:flex;gap:10px;justify-content:center;margin:8px 0 16px;flex-wrap:wrap;}
+.rcbtns .opt{width:auto;min-width:110px;margin:0;}
+/* 实验室通用 */
+.labtip{font-size:13px;color:var(--muted);line-height:1.7;margin:4px 0 10px;}
+.labbig{text-align:center;font-size:30px;font-weight:900;margin:14px 0;letter-spacing:2px;position:relative;}
+.labnote{text-align:center;font-size:15px;font-weight:800;color:var(--cd);margin:8px 0;min-height:24px;animation:fadein .4s;}
+input[type=range]{width:100%;height:34px;accent-color:var(--c);}
+/* 闸门 */
+.gatebox{text-align:center;font-size:30px;font-weight:900;letter-spacing:3px;margin:14px 0;}
+.gatebox .keep{color:var(--ink);}
+.gatebox .look{background:var(--orangebg);color:var(--orange);border-radius:8px;padding:2px 6px;animation:pulse 1.2s ease infinite;}
+.gatebox .drop{color:#c9beb2;text-decoration:line-through;}
+.gatebox .zero{background:var(--gold);border-radius:8px;padding:2px 6px;animation:pulse 1.2s ease infinite;}
+/* 分装瓶 */
+.jars{display:flex;gap:10px;justify-content:center;margin:12px 0;flex-wrap:wrap;}
+.jar{width:64px;text-align:center;}
+.jar .cup{height:82px;border:3px solid var(--line);border-top-width:2px;border-radius:6px 6px 14px 14px;background:#fff;position:relative;overflow:hidden;}
+.jar .fill{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(180deg,#ffd66b,#f2b632);transition:height .5s ease;}
+.jar .cap{font-size:12px;font-weight:800;color:var(--cd);margin-top:4px;}
+.jar.last .cup{border-color:var(--orange);animation:pulse 1s ease 2;}
+/* 兑换机 */
+.exbig{text-align:center;font-size:24px;font-weight:900;margin:10px 0;line-height:2;word-break:break-all;}
+.exbig .cur{color:var(--c);}
+.exres{font-family:'Courier New',monospace;font-size:22px;font-weight:800;text-align:center;background:#fbf7f0;border:2px dashed var(--line);border-radius:12px;padding:10px;margin:8px 0;animation:fadein .5s;}
+/* 电表 */
+.meters{display:flex;gap:12px;justify-content:center;margin:10px 0;flex-wrap:wrap;}
+.meter{background:#fff;border:2px solid var(--line);border-radius:14px;padding:10px 14px;min-width:150px;box-shadow:0 4px 0 #efe3d4;}
+.meter .mt{font-size:13px;font-weight:800;color:var(--muted);}
+.meter .rd{font-family:'Courier New',monospace;font-size:21px;font-weight:900;background:#2e2a26;color:#8fff9e;border-radius:8px;padding:4px 10px;text-align:center;margin:5px 0;letter-spacing:2px;}
+.meter .use{font-size:15px;font-weight:900;color:var(--green);text-align:center;min-height:22px;animation:fadein .5s;}
+.meter.peak .mt{color:var(--orange);}
+.meter.valley .mt{color:var(--c);}
+/* 线段图 */
+.segbar{display:flex;height:44px;border-radius:12px;overflow:hidden;border:2px solid var(--line);margin:12px 0;}
+.seg{display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;color:#fff;cursor:pointer;transition:filter .2s;border-right:2px solid #fff;}
+.seg:last-child{border-right:none;}
+.seg.s1{background:var(--gold);color:#5a3d00;}
+.seg.s2{background:var(--c);}
+.seg.s3{background:var(--orange);}
+.seg.on{filter:brightness(1.18);box-shadow:inset 0 0 0 3px #fff;}
+.segcost{text-align:center;font-size:16px;font-weight:900;color:var(--cd);min-height:26px;animation:fadein .4s;}
+/* 脑图 */
+.mmcenter{text-align:center;margin:6px auto 2px;background:var(--c);color:#fff;font-weight:900;font-size:18px;border-radius:16px;padding:10px 18px;width:fit-content;box-shadow:0 4px 0 var(--cd);}
+.mmline{width:3px;height:14px;background:var(--line);margin:0 auto;}
+.mmnode{background:#fff;border:2px solid var(--line);border-radius:14px;padding:10px 13px;margin:8px 0;cursor:pointer;box-shadow:0 4px 0 #efe3d4;transition:all .2s;}
+.mmnode:active{transform:translateY(2px);box-shadow:0 2px 0 #efe3d4;}
+.mmnode .mt{font-weight:800;font-size:15px;color:var(--cd);}
+.mmnode .mt .dot{display:inline-block;width:10px;height:10px;border-radius:50%;background:#ddd;margin-right:8px;}
+.mmnode.open .mt .dot{background:var(--green);}
+.mmrule{font-size:13.5px;line-height:1.8;color:#4a443e;background:var(--cbg);border-radius:10px;padding:8px 11px;margin-top:8px;animation:fadein .5s;}
+/* 训练 */
+.qhead{display:flex;justify-content:space-between;align-items:center;font-size:13px;font-weight:800;color:var(--muted);margin-bottom:6px;}
+.hint{background:var(--cbg);border-radius:12px 12px 12px 2px;padding:8px 12px;font-size:13px;font-weight:700;color:var(--cd);margin:6px 0;line-height:1.6;}
+.hint:before{content:"💡 ";}
+.star{color:#c98a00;font-weight:900;}
+.lvtag{font-size:11px;font-weight:800;border-radius:8px;padding:2px 8px;margin-left:6px;}
+.lvtag.lv1{background:var(--greenbg);color:var(--green);}
+.lvtag.lv2{background:var(--orangebg);color:var(--orange);}
+.lvtag.lv3{background:#fde3e3;color:var(--red);}
+.qtext{font-size:21px;font-weight:900;text-align:center;margin:10px 0 12px;line-height:1.8;word-break:break-all;}
+.qtext.word{font-size:16.5px;text-align:left;font-weight:700;line-height:1.9;}
+.opt{display:block;width:100%;text-align:center;background:#fff;border:2px solid var(--line);border-radius:12px;padding:13px;font-size:18px;font-weight:800;font-family:inherit;cursor:pointer;margin:8px 0;min-height:46px;}
+.opt.good{border-color:var(--green);background:var(--greenbg);color:var(--green);}
+.opt.bad{border-color:var(--red);background:var(--redbg);color:var(--red);animation:shake .35s;}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+.errtag{background:var(--redbg);border:2px solid var(--red);border-radius:12px;padding:10px 13px;font-size:14px;line-height:1.7;margin:10px 0;animation:fadein .4s;}
+.errtag .t{display:inline-block;background:var(--red);color:#fff;font-weight:800;font-size:12.5px;border-radius:8px;padding:2px 9px;margin-bottom:5px;}
+.steps{background:#fff;border:2px dashed var(--line);border-radius:12px;padding:10px 14px;font-size:16.5px;line-height:2;margin:10px 0;font-weight:800;word-break:break-all;animation:fadein .4s;}
+.steps .lb{font-size:12px;color:var(--muted);font-weight:800;display:block;}
+.steps .last{background:var(--gold);border-radius:6px;padding:0 5px;}
+.stat{background:#fff;border:2px solid var(--line);border-radius:14px;padding:10px 13px;display:flex;gap:14px;justify-content:space-around;font-size:13px;font-weight:800;color:var(--cd);margin:8px 0;text-align:center;}
+.wbitem{display:flex;justify-content:space-between;gap:8px;font-size:13.5px;padding:7px 2px;border-bottom:1px dashed var(--line);align-items:center;}
+.wbitem .t{font-size:11px;color:var(--red);font-weight:800;white-space:nowrap;}
+textarea{width:100%;height:130px;font-size:12px;border:2px solid var(--line);border-radius:10px;padding:8px;font-family:monospace;}
+.note{font-size:12px;color:var(--muted);line-height:1.7;margin-top:6px;}
+@media (prefers-reduced-motion: reduce){
+ *{animation:none!important;transition:none!important;}
+}
+/* 基准数积木 */
+.cols{display:flex;align-items:flex-end;gap:8px;justify-content:center;height:170px;position:relative;margin:16px 0 8px;}
+.colwrap{display:flex;flex-direction:column;align-items:center;justify-content:flex-end;}
+.col{width:38px;background:var(--cbg);border:2px solid var(--c);border-radius:6px 6px 0 0;position:relative;transition:height .6s ease;}
+.col .colv{position:absolute;top:-19px;left:50%;transform:translateX(-50%);font-size:12px;font-weight:800;color:var(--cd);white-space:nowrap;}
+.diff{font-size:13px;font-weight:900;color:var(--orange);height:18px;}
+.baseline{position:absolute;left:2%;right:2%;border-top:3px dashed var(--red);}
+/* 数轴 */
+.nl{position:relative;height:64px;margin:6px 0 4px;}
+.nl .track{position:absolute;top:34px;left:0;right:0;height:6px;background:var(--line);border-radius:3px;}
+.nl .tick{position:absolute;top:44px;font-size:11px;font-weight:800;color:var(--muted);transform:translateX(-50%);}
+.nl .pin{position:absolute;top:4px;font-size:26px;transform:translateX(-50%);transition:left .1s;}
+/* 评委打分台 */
+.jrow{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:12px 0;}
+.jcard{width:52px;height:52px;display:flex;align-items:center;justify-content:center;font-size:17px;font-weight:900;background:#fff;border:2px solid var(--line);border-radius:12px;cursor:pointer;box-shadow:0 3px 0 #efe3d4;transition:all .2s;}
+.jcard.out{background:var(--redbg);color:var(--red);text-decoration:line-through;border-color:var(--red);transform:scale(.92);}
+.jcard.bad{border-color:var(--red);}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<!-- ============ 首页 ============ -->
+<div id="vHome">
+  <div class="top"><span class="badge">🦁 Kenton</span><button class="mute" id="muteBtn" onclick="toggleMute()">🔔</button></div>
+  <h1>🏫 数学预习馆 · 五上③平均数</h1>
+  <div class="sub">照《金牌数学·五年级上》第3单元重建（书页p55-76）：放大镜 → 分步变身 → 实验室动画 → 遮挡回忆 → 真题检验<br>📘 自动判分 · 每题错因标签 · 错题本连对 2 次才毕业 · 每天开一个新馆</div>
+  <div id="wbEntry"></div>
+  <div id="reviewEntry"></div>
+  <div class="grid" id="homeGrid"></div>
+  <div class="card">
+    <div class="h2">📋 我的练习记录</div>
+    <div class="stat" id="statBar"></div>
+    <div id="wbPanel"></div>
+    <button class="btn ghost wide" onclick="exportCopy()">📋 复制记录（发给爸爸）</button>
+    <button class="btn ghost wide" onclick="exportFile()">💾 存成文件</button>
+    <button class="btn ghost wide" onclick="toggleExp()">👀 看一眼导出内容</button>
+    <div id="expBox" class="hide"><textarea id="expTa" aria-label="学习记录导出内容" readonly></textarea></div>
+    <button class="btn gold wide" onclick="parentUnlock()">🔓 家长提前解锁下一馆</button>
+  </div>
+</div>
+
+<!-- ============ 教学页 ============ -->
+<div id="vTeach" class="hide">
+  <div class="top"><button class="back" onclick="goHome()">← 回选馆</button><span class="badge" id="tBadge"></span></div>
+  <div class="card">
+    <div class="h2">🔍 题干放大镜<span class="tag" id="tTag"></span></div>
+    <div class="note">别急着算！先像书里一样，用放大镜看看这道题长什么样：</div>
+    <div class="bigexpr" id="mExpr"></div>
+    <div class="mirbtns">
+      <button class="btn" id="btnNum" onclick="revealNum()">🔍 数字有什么特点?</button>
+      <button class="btn" id="btnOp" onclick="revealOp()">🔍 算法有什么特点?</button>
+    </div>
+    <div id="mFeats"></div>
+    <div id="mMethods" class="hide" style="margin-top:8px"></div>
+    <button class="btn gold wide hide" id="btnToSteps" onclick="showSteps()">▶ 看它一步步变身!</button>
+  </div>
+  <div class="card hide" id="cardSteps">
+    <div class="h2">🎬 分步变身（每一步都有为什么）</div>
+    <div id="stepRows"></div>
+    <button class="btn wide" id="btnStep" onclick="nextStep()">▶ 下一步</button>
+  </div>
+  <div class="card hide" id="cardLab">
+    <div class="h2">🧪 实验室（动手玩一玩）</div>
+    <div id="labBox"></div>
+    <button class="btn gold wide hide" id="btnLabNext" onclick="labNext()">🧙 玩明白了，去看妙招 →</button>
+  </div>
+  <div class="card hide" id="cardTips">
+    <div class="h2">🧙 法则妙招卡（背下来）</div>
+    <div class="usebox" id="tipUse"></div>
+    <div id="tipFms"></div>
+    <button class="btn gold wide" id="btnTipsNext" onclick="tipsNext()">🙈 遮挡回忆挑战 →</button>
+  </div>
+  <div class="card hide" id="cardRecall">
+    <div class="h2">🙈 遮挡回忆（合上答案，自己想）</div>
+    <div class="note">刚才的法则被挡住了一块！不看妙招卡，选出正确的词。</div>
+    <div id="rcBox"></div>
+    <button class="btn gold wide hide" id="btnRcNext" onclick="rcNext()">✏️ 回忆成功！开始真题检验</button>
+  </div>
+</div>
+
+<!-- ============ 训练页 ============ -->
+<div id="vQuiz" class="hide">
+  <div class="top"><button class="back" onclick="quitQuiz()">← 退出</button><span class="badge" id="qTime">⏱ 0:00</span></div>
+  <div class="card">
+    <div class="qhead"><span id="qProg"></span><span id="qScore"></span></div>
+    <div id="qHint"></div>
+    <div id="qText" class="qtext"></div>
+    <div id="qOpts"></div>
+    <div id="qEx"></div>
+    <button class="btn wide hide" id="btnNext" onclick="qNext()">下一题 →</button>
+  </div>
+</div>
+
+<!-- ============ 结果页 ============ -->
+<div id="vResult" class="hide">
+  <div class="top"><button class="back" onclick="goHome()">← 回选馆</button><span class="badge">🏁 完成</span></div>
+  <div class="card" id="resCard"></div>
+</div>
+
+</div>
+<script>
+"use strict";
+function $(id){return document.getElementById(id);}
+var LSK='g5u3_app_kenton_v1', WBK=LSK+'_wb', START='2026-07-23';
+function load(k,d){try{var s=localStorage.getItem(k);return s?JSON.parse(s):d;}catch(e){return d;}}
+function save(k,v){try{localStorage.setItem(k,JSON.stringify(v));}catch(e){}}
+var DB=load(LSK,{done:{},events:[]});
+var WB=load(WBK,{items:{}});
+var UNL_EXTRA=load(LSK+'_unl',0);
+var MUTE=localStorage.getItem(LSK+'_mute')==='1';
+
+/* ---- 声音（Web Audio 音效；本软件为数学操作类，语音朗读不适用） ---- */
+var AC=null;
+function ac(){if(!AC){try{AC=new (window.AudioContext||window.webkitAudioContext)();}catch(e){}}if(AC&&AC.state==='suspended')AC.resume();return AC;}
+function tone(f,dur,delay,type,vol){var a=ac();if(!a||MUTE)return;var o=a.createOscillator(),g=a.createGain();o.type=type||'sine';o.frequency.value=f;
+ g.gain.setValueAtTime(vol||0.18,a.currentTime+(delay||0));g.gain.exponentialRampToValueAtTime(0.001,a.currentTime+(delay||0)+dur);
+ o.connect(g);g.connect(a.destination);o.start(a.currentTime+(delay||0));o.stop(a.currentTime+(delay||0)+dur+0.05);}
+function ding(){tone(660,0.14,0);tone(880,0.2,0.12);}
+function buzz(){tone(170,0.28,0,'sawtooth',0.1);}
+function tick(){tone(520,0.06,0,'triangle',0.12);}
+function toggleMute(){MUTE=!MUTE;localStorage.setItem(LSK+'_mute',MUTE?'1':'0');$('muteBtn').textContent=MUTE?'🔕':'🔔';}
+
+/* ---- 错题本（错1次必进本，连对2次才出本） ---- */
+function wbAddWrong(d){var it=WB.items[d.q];
+ if(!it){it={streak:0,mastered:false,wrong:0};for(var k in d){if(k!=='_wtag'&&k!=='_wwhy'&&k!=='rq'&&k!=='wb')it[k]=d[k];}WB.items[d.q]=it;}
+ it.wrong++;it.streak=0;it.mastered=false;it.ex=d.ex;save(WBK,WB);}
+function wbAddRight(q){var it=WB.items[q];if(!it||it.mastered)return;it.streak++;if(it.streak>=2)it.mastered=true;save(WBK,WB);}
+function wbList(){var r=[];for(var k in WB.items){if(!WB.items[k].mastered)r.push(WB.items[k]);}return r;}
+function logEvent(ev){ev.ts=Date.now();DB.events.push(ev);save(LSK,DB);}
+function modStat(id){var d=DB.done[id];if(!d)return null;var st=d.wrong===0?'⭐⭐⭐':(d.wrong<=2?'⭐⭐':'⭐');return st+'✅'+d.ok+'❌'+d.wrong;}
+
+
+/* =================== 6 馆数据（照《金牌数学·五上》第3单元《平均数》，书页p55-76） =================== */
+var MODS=[
+{id:'u1',ic:'🥤',nm:'第1课 平均数的意义与计算',ds:'水位拉平机 · 总和÷个数',
+ ex:{expr:'(5+8+8+8+6) ÷ 5',num:'5、8、8、8、6 是欢欢5轮投壶成绩——有高有低，"平均水平"是多少？',op:'平均数=数据总和÷数据个数——先加后除。',
+  feats:['先把5轮成绩加起来求总和','再除以轮数5','平均数代表整体水平'],
+  methods:['求总和','÷个数','得平均数'],
+  steps:[{t:'(5+8+8+8+6) ÷ 5'},
+   {t:'5+8+8+8+6 = 35（分）',n:'先求总和',w:'平均数是"移多补少"拉平后的数，先要知道一共有多少分。'},
+   {t:'35 ÷ 5 = 7（分）',n:'再÷个数',w:'5轮成绩，÷5。口诀：总和、个数确定好，二者相除要记牢。'},
+   {t:'答：欢欢平均成绩是 7 分。',n:'完成',w:'7分不代表每轮都得7分，它是描述这组数据的"代表数"。'}]},
+ lab:'level',
+ tips:{use:'平均数 = <b>数据总和 ÷ 数据个数</b>。知识巧记：一组数值平均数，集中趋势它代表；总和、个数确定好，二者相除要记牢。⚠️没出现的那天/那次如果是 <b>0，也要算进数据</b>（王奶奶做毽子：÷7 不是 ÷6）！',fms:['平均数=总和÷个数','0 也要参加计算','平均数代表整体水平']},
+ recall:[
+  {s:'平均数=数据【总和】÷数据个数。',opts:['总和','最大数'],a:'总和',why:'先把所有数据加起来，再除以个数。'},
+  {s:'王奶奶一周做毽子，有一天没做记 0 个，计算时要除以【7】。',opts:['7','6'],a:'7',why:'0也要作为数据参加计算，一周7天就÷7。'}],
+ drills:[
+  {q:'欢欢投壶 5 轮成绩：5 分、8 分、8 分、8 分、6 分，平均成绩是多少分？',a:7,lv:1,word:1,opts:[7,7.4,8,5.83],
+   wr:{'7.4':{tag:'抄错了数据',why:'7.4是乐乐(6+8+7+8+8)÷5的成绩；欢欢是(5+8+8+8+6)÷5=7。'},'8':{tag:'拿最大数当平均数',why:'平均数=总和÷个数：35÷5=7，不是出现最多的8。'},'5.83':{tag:'个数数错',why:'5轮成绩÷5，35÷6≈5.83是把轮数数成了6。'}},
+   ex:'5+8+8+8+6=35（分）\n35÷5=7（分）\n答：平均成绩 7 分',hint:'先加总和，再除以轮数。'},
+  {q:'王奶奶一周做毽子：20、16、0、17、16、24、26 个，平均每天做多少个？',a:17,lv:1,word:1,opts:[17,19.83,16,20],
+   wr:{'19.83':{tag:'漏算了"0"那天',why:'没做的那天是0个也要算进数据：÷7不是÷6，119÷6≈19.83是错的。'},'16':{tag:'拿中间数当平均数',why:'平均数要算：总和÷个数=119÷7=17。'},'20':{tag:'拿最大数当平均数',why:'平均数=总和÷个数，不是挑一个数。'}},
+   ex:'20+16+0+17+16+24+26=119（个）\n0也要算！÷7\n119÷7=17（个）',hint:'星期三做了0个，算不算数据？'},
+  {q:'杨洋家上周喝豆奶：600、720、660、600、580、520、750 毫升，平均每天喝多少毫升？（保留两位小数）',a:632.86,lv:2,word:1,opts:[632.86,632.85,632.8,633],
+   wr:{'632.85':{tag:'该进没进',why:'4430÷7=632.857…，千分位7≥5进1：632.86。'},'632.8':{tag:'保留位数错',why:'保留两位小数。'},'633':{tag:'精确到个位了',why:'要保留两位小数。'}},
+   ex:'600+720+660+600+580+520+750=4430\n4430÷7=632.857…\n千分位7≥5 进1\n≈ 632.86（毫升）',hint:'7天的数据，÷7。'},
+  {q:'图书馆周一到周五借阅人数：46、52、37、23、58 人，平均每天借阅多少人？',a:43.2,lv:2,word:1,opts:[43.2,43,44,58],
+   wr:{'43':{tag:'擅自去尾取整',why:'平均人数可以是小数！43.2是表示平均水平的"虚拟"数，题目没要求取整就不用取整。'},'44':{tag:'擅自进一取整',why:'平均数可以是小数43.2，它不代表实际某天的人数。'},'58':{tag:'拿最大数当平均数',why:'216÷5=43.2，平均数在最大数和最小数之间。'}},
+   ex:'46+52+37+23+58=216（人）\n216÷5=43.2（人）\n平均数可以是小数——它是"虚拟"的代表数',hint:'人数是整数，平均人数呢？'},
+  {q:'★ 气象站在 1 时、6 时、11 时、16 时、21 时测得气温 3℃、12℃、22℃、18℃、10℃，求这天的平均气温，正确的算式是？',sopts:['(3+12+22+18+10)÷5','(3+12+22+18+10)÷(1+6+11+16+21)','(1+6+11+16+21)÷5'],a:'(3+12+22+18+10)÷5',lv:3,word:1,
+   wr:{'(3+12+22+18+10)÷(1+6+11+16+21)':{tag:'把时刻之和当个数',why:'1、6、11、16、21是测量的"时刻"，不是数据个数！个数是5次，÷5。'},'(1+6+11+16+21)÷5':{tag:'总数个数全搞反',why:'分子是气温总和(3+12+22+18+10)，分母是次数5。'}},
+   ex:'错解：÷(1+6+11+16+21)——把时刻和当个数\n正解：(3+12+22+18+10)÷5\n平均数=总和÷个数，先找准"个数"是什么！',hint:'★除以"几次"，不是除以"几时"。'}]},
+
+{id:'u2',ic:'📏',nm:'第1课 平均数的取值与意义',ds:'数轴夹夹乐 · 虚拟代表数',
+ ex:{expr:'216 ÷ 5 = 43.2（人）',num:'借阅人数最少23、最多58，平均数43.2正好"夹"在中间——而且它是个小数！',op:'平均数在最大数与最小数之间；表示人数时可以是小数。',
+  feats:['平均数≥最小数，≤最大数','人数是整数，平均人数可以是小数','平均数是"虚拟"的代表数'],
+  methods:['估范围','算准确值','理解意义'],
+  steps:[{t:'46、52、37、23、58'},
+   {t:'最小 23 人，最多 58 人',n:'先看两端',w:'平均数一定住在 23 和 58 之间——超出这个范围的答案直接排除！'},
+   {t:'216 ÷ 5 = 43.2（人）',n:'算一算',w:'总和216÷5天=43.2，确实在23~58之间。'},
+   {t:'"43.2 人"是什么意思？',n:'完成',w:'人没有0.2个！43.2是表示这组数据平均水平的"虚拟"数，不是说某天真有43.2人。'}]},
+ lab:'between',
+ tips:{use:'平均数的脾气：① 它一定在<b>最大数和最小数之间</b>（各不相同的一组数，平均数不会等于最值）；② 它是借助"平均分"算出来的<b>虚拟数</b>——河水平均深110cm，不代表处处110cm，可能比小明身高145cm还深！③ 只知道平均数，<b>不能确定</b>每个数据是多少。',fms:['最小 ≤ 平均数 ≤ 最大','平均数是"虚拟"代表数','平均深110cm≠处处110cm']},
+ recall:[
+  {s:'平均数一定在最大数和最小数【之间】。',opts:['之间','之外'],a:'之间',why:'超出最大或小于最小的"平均数"一定是算错了。'},
+  {s:'河水平均深110cm，身高145cm的小明下河【可能有危险】，因为有的地方可能更深。',opts:['可能有危险','一定安全'],a:'可能有危险',why:'平均深度不代表处处深度，有的河段可能超过145cm。'}],
+ drills:[
+  {q:'4 名同学身高各不相同，最高 152 厘米、最矮 137 厘米，他们的平均身高可能是？',sopts:['145 厘米','137 厘米','152 厘米','153 厘米'],a:'145 厘米',lv:1,word:1,
+   wr:{'137 厘米':{tag:'平均数碰到端点了',why:'各不相同的一组数，平均数在最值"之间"，不可能等于最矮的137。'},'152 厘米':{tag:'平均数碰到端点了',why:'平均数不可能等于最高的152。'},'153 厘米':{tag:'超出最大值',why:'平均数不会超过最大数152。'}},
+   ex:'平均数住在 137 ~ 152 之间\n137、152、153 都排除\n只可能是 145 厘米',hint:'先用最大、最小数夹一夹。'},
+  {q:'判断：小明身高 145 厘米，某河水平均深度 110 厘米，他下河游泳一定安全。',sopts:['不对：河里有的地方可能比 145 厘米还深','对：145 > 110，肯定安全','对：平均才 110 厘米深'],a:'不对：河里有的地方可能比 145 厘米还深',lv:1,word:1,
+   wr:{'对：145 > 110，肯定安全':{tag:'把平均数当"处处相等"',why:'平均深110cm是"虚拟"数：浅处不到110，深处可能超过145，有危险！'},'对：平均才 110 厘米深':{tag:'把平均数当"处处相等"',why:'平均数不代表每个地方的真实深度。'}},
+   ex:'平均深度110cm ≠ 处处110cm\n有的地方更浅，有的地方可能更深\n可能有危险！',hint:'"平均"两个字意味着什么？'},
+  {q:'三人打靶：小明 99 分、小华 90 分，小龙比小华成绩好但不超过 93 分。估计三人平均成绩在什么范围？',sopts:['大于 93 分、小于等于 94 分','大于 90 分、小于 93 分','大于 94 分、小于等于 96 分','大于 96 分、小于等于 99 分'],a:'大于 93 分、小于等于 94 分',lv:2,word:1,
+   wr:{'大于 90 分、小于 93 分':{tag:'范围端点算错',why:'小龙>90：总分>279，平均>93；小龙≤93：总分≤282，平均≤94。'},'大于 94 分、小于等于 96 分':{tag:'范围端点算错',why:'下限：小龙刚比90多一点时平均刚比93大；上限：小龙=93时(99+90+93)÷3=94。'},'大于 96 分、小于等于 99 分':{tag:'范围端点算错',why:'最高平均也只到94：小龙最多93分。'}},
+   ex:'小龙最低(>90)：总分>279 → 平均>93\n小龙最高(=93)：总分=282 → 平均=94\n范围：大于93、小于等于94',hint:'把小龙的最低、最高分别代入算算。'},
+  {q:'甲泳池池口 15m×8m、有 30 人；乙泳池池口 40m×25m、有 200 人。哪个泳池更拥挤？',sopts:['甲池（平均每人 4㎡ < 5㎡）','乙池（人更多）','一样拥挤'],a:'甲池（平均每人 4㎡ < 5㎡）',lv:2,word:1,
+   wr:{'乙池（人更多）':{tag:'只看总人数',why:'要比"平均每人占地"：甲120÷30=4㎡，乙1000÷200=5㎡，4<5，甲更挤。'},'一样拥挤':{tag:'没算平均数',why:'分别算出平均每人占地面积再比：4㎡<5㎡。'}},
+   ex:'甲：15×8=120㎡，120÷30=4（㎡/人）\n乙：40×25=1000㎡，1000÷200=5（㎡/人）\n4<5 → 甲池更拥挤',hint:'不能直接比，算"平均每人占地"再比。'},
+  {q:'★ 小杰家四个季度用水：16 吨、24 吨、35 吨、21 吨。平均每月用水多少吨？',a:8,lv:3,word:1,opts:[8,24,0.26,96],
+   wr:{'24':{tag:'"个数"找错',why:'24是÷4得到的"平均每季度"；问"每月"要÷12。求平均数先圈"每__"后面的个数！'},'0.26':{tag:'除成了天数',why:'÷365是"平均每天"≈0.26吨；"每月"是96÷12=8。'},'96':{tag:'忘了除',why:'96是一年的总量，平均每月要÷12=8。'}},
+   ex:'全年：16+24+35+21=96（吨）\n一年12个月\n96÷12=8（吨）',hint:'★看清"每月"、"每季度"、"每天"，个数各不同！'}]},
+
+{id:'u3',ic:'🧱',nm:'第1课 基准数法求平均数',ds:'基准数积木 · 快的算法',
+ ex:{expr:'55 + (1+2+3+0+6+0) ÷ 6',num:'56、57、58、55、61、55 都紧紧挨着55——不用硬加6个大数！',op:'基准数法：以55为基准，只算差值的平均，最后加回来。',
+  feats:['数据较大且都接近某个数','先选基准数，算每个数与它的差','差的平均+基准数=平均数'],
+  methods:['选基准数','算差求平均','加回基准数'],
+  steps:[{t:'56、57、58、55、61、55'},
+   {t:'选 55 作基准数',n:'大家都接近它',w:'一般取最大数与最小数之间的某个数，55正好是最小数，方便！'},
+   {t:'差值：+1、+2、+3、0、+6、0',n:'各减55',w:'56−55=1，57−55=2……只跟小小的差值打交道。'},
+   {t:'(1+2+3+0+6+0)÷6 = 2',n:'差的平均',w:'12÷6=2，每人平均比55多折2只。'},
+   {t:'55 + 2 = 57（只）',n:'完成',w:'别忘加回基准数！验算：(56+57+58+55+61+55)÷6=342÷6=57 ✓'}]},
+ lab:'base',
+ tips:{use:'基准数法（数据较大且接近时用）：① 选一个大家都接近的数作<b>基准数</b>（一般取最大与最小之间的某个数）；② 算出每个数与基准数的<b>差</b>（比它小记负的）；③ 求差的平均；④ <b>加上基准数</b>。最后一定验算一次总和！',fms:['平均数=基准数+差的平均','比基准小记负差','算完验算总和']},
+ recall:[
+  {s:'基准数法：平均数=基准数【+】差的平均数。',opts:['+','−'],a:'+',why:'差的平均是"比基准多多少"，要加回去。'},
+  {s:'数据都很大且接近时，选基准数一般取最大值与最小值【之间】的某个数。',opts:['之间','之外'],a:'之间',why:'取中间的数，差值小、好算。'}],
+ drills:[
+  {q:'6 人折千纸鹤：56、57、58、55、61、55 只，用 55 作基准数，平均每人折多少只？',a:57,lv:1,word:1,opts:[57,55,58,2],
+   wr:{'55':{tag:'忘了加回差的平均',why:'基准数55还要加上差值的平均2：55+2=57。'},'58':{tag:'差值算错',why:'差值是1,2,3,0,6,0，和为12，12÷6=2，55+2=57。'},'2':{tag:'只算了差的平均',why:'2是差值的平均，平均数=55+2=57。'}},
+   ex:'差值：1,2,3,0,6,0\n(1+2+3+0+6+0)÷6=12÷6=2\n55+2=57（只）',hint:'最后一步是什么？'},
+  {q:'用基准数法求平均数，第一步应该做什么？',sopts:['选一个大家都接近的数作基准数','把最大的数当平均数','把所有数四舍五入'],a:'选一个大家都接近的数作基准数',lv:1,word:1,
+   wr:{'把最大的数当平均数':{tag:'概念错误',why:'基准数法是先选基准、算差、再补回；最大数不是平均数。'},'把所有数四舍五入':{tag:'方法错误',why:'四舍五入会改变数据，基准数法不改数据，只算差值。'}},
+   ex:'第一步：选基准数（最大与最小之间）\n第二步：算每个数与基准数的差\n第三步：差的平均+基准数',hint:'想想为什么要选"基准"？'},
+  {q:'一次数学测试，某小组 6 名同学成绩：86、88、90、84、86、82 分，平均分是多少？',a:86,lv:2,word:1,opts:[86,85,87,1],
+   wr:{'85':{tag:'忘了加回差的平均',why:'以85为基准，差值和是6，6÷6=1，85+1=86。'},'87':{tag:'差值符号算错',why:'84和82比85小，差是−1和−3，别当成正数加。'},'1':{tag:'只算了差的平均',why:'1是差的平均，平均分=85+1=86。'}},
+   ex:'基准85，差值：1,3,5,−1,1,−3\n(1+3+5−1+1−3)÷6=6÷6=1\n85+1=86（分）\n验算：516÷6=86 ✓',hint:'比85小的数，差值要记负的！'},
+  {q:'张叔叔水果店 1~6 月苹果销量：225、237、236、242、224、228 千克，平均每月卖出多少千克？',a:232,lv:2,word:1,opts:[232,230,231,2],
+   wr:{'230':{tag:'忘了加回差的平均',why:'以230为基准，差值和是12，12÷6=2，230+2=232。'},'231':{tag:'差值算错',why:'差值−5,7,6,12,−6,−2，和为12，不是6。'},'2':{tag:'只算了差的平均',why:'2是差的平均，还要加回230。'}},
+   ex:'基准230，差值：−5,7,6,12,−6,−2\n(−5+7+6+12−6−2)÷6=12÷6=2\n230+2=232（千克）\n验算：1392÷6=232 ✓',hint:'224、225、228都比230小哦。'},
+  {q:'★ 甲、乙两数的和是 7.8，乙、丙两数的和是 9.2，甲、丙两数的和是 7，求甲、乙、丙三个数的平均数。',a:4,lv:3,word:1,opts:[4,8,12,24],
+   wr:{'8':{tag:'忘了÷2',why:'7.8+9.2+7=24里每个数被算了两次，先÷2=12是三数和，再÷3=4。'},'12':{tag:'只算到三数之和',why:'(7.8+9.2+7)÷2=12是三个数的"和"，平均数还要÷3=4。'},'24':{tag:'什么都没除',why:'24是两倍的三数和：先÷2再÷3。'}},
+   ex:'三个"两两之和"相加：7.8+9.2+7=24\n正好是三数和的2倍\n三数和：24÷2=12\n平均数：12÷3=4',hint:'★每个数被加了几遍？'}]},
+
+{id:'u4',ic:'👣',nm:'第2课 平均数的应用',ds:'步幅测距机 · 部分估总体',
+ ex:{expr:'0.48 × 83.25 ≈ 40（米）',num:'0.48是"平均步幅"、83.25是"平均步数"——两个平均数乘起来，估出教学楼的长度！',op:'用部分数据的平均数估算：路程=平均步幅×平均步数。',
+  feats:['每一步步幅有随机误差','多测几次求平均更准','平均步幅×平均步数=路程'],
+  methods:['测平均步幅','测平均步数','相乘估距离'],
+  steps:[{t:'0.48 × 83.25'},
+   {t:'4.8 ÷ 10 = 0.48（米）',n:'先测平均步幅',w:'走10步量得4.8米，平均一步0.48米。'},
+   {t:'(84+82+83+84)÷4 = 83.25（步）',n:'再测平均步数',w:'从A到B走4次，步数取平均，减少误差。'},
+   {t:'0.48 × 83.25 = 39.96 ≈ 40（米）',n:'完成',w:'答：教学楼这一端约40米。估算结果取整更合理。'}]},
+ lab:'stride',
+ tips:{use:'用部分平均数估算整体：① <b>路程=平均步幅×平均步数</b>；步数=路程÷平均步幅；平均步幅=路程÷步数。② <b>部分平均×个数≈总数</b>（5个橘子的平均×40≈一箱）。③ 三百星类题：分段算平均（100÷41≈2.4，100÷6≈16.7，100÷3≈33.3），能看出发射越来越快！',fms:['路程=平均步幅×平均步数','部分平均×个数≈总数','分段平均看趋势']},
+ recall:[
+  {s:'路程=平均步幅【×】平均步数。',opts:['×','÷'],a:'×',why:'每步多长×走了几步=总路程。'},
+  {s:'一箱橘子40个，随机称5个求平均，再用平均质量【×40】估计整箱总质量。',opts:['×40','÷40'],a:'×40',why:'部分数据的平均数×个数≈总数。'}],
+ drills:[
+  {q:'中国航天"三百星"：从第一颗到第三百颗历时 50 年，平均每年发射多少颗？',a:6,lv:1,word:1,opts:[6,2.4,16.7,60],
+   wr:{'2.4':{tag:'用错总年数',why:'100÷41≈2.4只是"第一个百星"的速度；问的是300颗历时50年：300÷50=6。'},'16.7':{tag:'用错总年数',why:'100÷6≈16.7是"第二个百星"的速度；总平均是300÷50=6。'},'60':{tag:'个数找错',why:'300颗÷50年=6颗/年。'}},
+   ex:'总颗数300，总年数50\n300÷50=6（颗）\n分段：100÷41≈2.4，100÷6≈16.7，100÷3≈33.3——越来越快！',hint:'总数÷总年数。'},
+  {q:'欢欢走 10 步量得 4.8 米，他的平均步幅是多少米？',a:0.48,lv:1,word:1,opts:[0.48,4.8,48,10],
+   wr:{'4.8':{tag:'忘了÷10',why:'4.8米是10步的路程，平均步幅=4.8÷10=0.48米。'},'48':{tag:'小数点位置错',why:'4.8÷10，小数点向左移一位：0.48。'},'10':{tag:'算反了',why:'路程÷步数=平均步幅。'}},
+   ex:'平均步幅=路程÷步数\n4.8÷10=0.48（米）',hint:'一步的长度=总路程÷几步。'},
+  {q:'欢欢平均步幅 0.48 米，从教学楼 A 到 B 走了 4 次：84、82、83、84 步，A 到 B 的距离约是多少米？',a:40,lv:2,word:1,opts:[40,39.96,42,83.25],
+   wr:{'39.96':{tag:'估算题没取整',why:'步幅测距是估算：39.96≈40米更合理（书上答案就是约40米）。'},'42':{tag:'步数没求平均',why:'要先求平均步数83.25，再×0.48。'},'83.25':{tag:'只算了平均步数',why:'还要乘平均步幅：0.48×83.25≈40米。'}},
+   ex:'平均步数：(84+82+83+84)÷4=83.25（步）\n距离：0.48×83.25=39.96≈40（米）',hint:'两个"平均"都要用上。'},
+  {q:'一箱橘子 40 个，随机取出 5 个称得：125、132、128、130、124 克，这箱橘子的总质量大约是多少克？',a:5112,lv:2,word:1,opts:[5112,639,127.8,5000],
+   wr:{'639':{tag:'忘了×40',why:'639克只是5个的总重；先算平均127.8克，再×40=5112克。'},'127.8':{tag:'只算了平均数',why:'问整箱总质量：127.8×40=5112。'},'5000':{tag:'估算没依据',why:'要用"部分平均×个数"：127.8×40=5112。'}},
+   ex:'5个平均：(125+132+128+130+124)÷5=639÷5=127.8（克）\n整箱约：127.8×40=5112（克）',hint:'先求5个的平均，再估40个的总量。'},
+  {q:'★ 李爷爷在 360 米的环形跑道上跑步，第一圈平均每分钟跑 90 米，第二圈每分钟跑 72 米，全程平均每分钟跑多少米？',a:80,lv:3,word:1,opts:[80,81,82,720],
+   wr:{'81':{tag:'直接平均两个速度',why:'(90+72)÷2=81是经典错误！两圈用时不同（4分和5分），平均速度=总路程÷总时间=720÷9=80。'},'82':{tag:'总时间算错',why:'第一圈360÷90=4分，第二圈360÷72=5分，共9分，720÷9=80。'},'720':{tag:'只算了总路程',why:'还要÷总时间9分钟：720÷9=80。'}},
+   ex:'第一圈用时：360÷90=4（分）\n第二圈用时：360÷72=5（分）\n平均速度=总路程÷总时间\n720÷(4+5)=720÷9=80（米/分）',hint:'★平均速度≠两个速度的平均！'}]},
+
+{id:'u5',ic:'🎤',nm:'第2课 比赛评分与决策',ds:'评委打分台 · 去掉最值',
+ ex:{expr:'(88.7 − 9.3 − 8.0) ÷ 8',num:'10个评委打分，最高的9.3和最低的8.0先划掉——为什么比赛都爱这么算？',op:'去掉一个最高分和一个最低分再平均，避免极端分数影响，更公平。',
+  feats:['评委打分有主观性，偶有极端分','去掉最高、最低各一个','注意：个数也要相应减去2'],
+  methods:['先算总平均','去掉最值重算','比较哪种公平'],
+  steps:[{t:'9.0 9.3 9.2 9.1 8.7 8.0 8.5 9.1 8.8 9.0'},
+   {t:'88.7 ÷ 10 = 8.87（分）',n:'先算总平均',w:'10个分数全算：总和88.7，÷10。'},
+   {t:'去掉 9.3 和 8.0：(88.7−9.3−8.0)÷8 = 8.925（分）',n:'去最值重算',w:'⚠️去掉2个分数，分母要减2：÷8不是÷10！'},
+   {t:'8.925 比 8.87 更有代表性',n:'完成',w:'极端的8.0拉低了总分，去掉后更公平——正式比赛都这么算。'}]},
+ lab:'judge',
+ tips:{use:'比赛评分规则：为避免<b>极端值</b>影响，一般<b>去掉一个最高分和一个最低分</b>再取平均。⚠️去掉2个分数后，所统计的<b>个数也要减去2</b>（10个变8个）。选队员类决策题：不能只看平均数，还要看<b>稳定性</b>——落后时派平均高、有爆发力的；领先时派发挥稳的。',fms:['去最高+去最低，个数减2','极端分数会拉偏平均数','决策=平均数+稳定性+实际情况']},
+ recall:[
+  {s:'去掉一个最高分和一个最低分后，评委个数要【减去2】再除。',opts:['减去2','不变'],a:'减去2',why:'10个分数去掉2个，÷8不是÷10。'},
+  {s:'去掉最高、最低分求平均更公平，因为它避免了【极端分数】的影响。',opts:['极端分数','中间分数'],a:'极端分数',why:'评委打分有主观性，特别高或特别低的分会拉偏平均数。'}],
+ drills:[
+  {q:'某位选手参加歌唱比赛，10 位评委打分：9.0、9.3、9.2、9.1、8.7、8.0、8.5、9.1、8.8、9.0，平均得分是多少？',a:8.87,lv:1,word:1,opts:[8.87,8.925,8.8,9],
+   wr:{'8.925':{tag:'那是去最值后的分',why:'题目没让去最值：10个分数全算，88.7÷10=8.87。'},'8.8':{tag:'总和算错',why:'10个分数总和是88.7，88.7÷10=8.87。'},'9':{tag:'拿常见分当平均数',why:'平均数=总和÷个数=8.87。'}},
+   ex:'9.0+9.3+9.2+9.1+8.7+8.0+8.5+9.1+8.8+9.0=88.7\n88.7÷10=8.87（分）',hint:'10个分数全部加起来÷10。'},
+  {q:'计算比赛得分时，"去掉一个最高分和一个最低分"，求平均时应该除以几？（原来 10 位评委）',a:8,lv:1,word:1,opts:[8,10,9,2],
+   wr:{'10':{tag:'个数没跟着减',why:'去掉2个分数只剩8个，÷8。'},'9':{tag:'只减了1个',why:'最高、最低各去掉1个，共减2：10−2=8。'},'2':{tag:'概念搞反',why:'是"剩下8个分数"参与平均，不是÷2。'}},
+   ex:'10位评委，去掉最高、最低各1个\n10−2=8\n÷8',hint:'去掉几个，分母就减几。'},
+  {q:'10 位评委打分总和 88.7 分，去掉最高分 9.3 和最低分 8.0 后，平均得分是多少？',a:8.925,lv:2,word:1,opts:[8.925,8.87,7.14,8.93],
+   wr:{'8.87':{tag:'忘减最高最低',why:'要去掉9.3和8.0再算：(88.7−17.3)÷8=8.925。'},'7.14':{tag:'除成10了',why:'去掉2个分数只剩8个：71.4÷8=8.925，不是÷10。'},'8.93':{tag:'擅自四舍五入',why:'题目没要求保留位数，8.925就是准确答案。'}},
+   ex:'88.7−9.3−8.0=71.4\n71.4÷8=8.925（分）',hint:'先减两个最值，再看除以几。'},
+  {q:'歌唱比赛采用"去掉一个最高分和一个最低分"的评分方式，这样做为什么更合理？',sopts:['避免极端分数影响，平均分更有代表性、更公平','不合理：浪费了评委的打分','没区别：和直接平均一样'],a:'避免极端分数影响，平均分更有代表性、更公平',lv:2,word:1,
+   wr:{'不合理：浪费了评委的打分':{tag:'不理解极端值的影响',why:'评委打分有主观性，一个8.0就能把平均拉低0.1分，去掉最值更公平。'},'没区别：和直接平均一样':{tag:'没算过',why:'8.87 vs 8.925，确实不一样：极端的8.0拉低了总分。'}},
+   ex:'直接平均：8.87（被8.0拉低）\n去最值平均：8.925\n去掉极端分，成绩更能代表真实水平',hint:'想想那个8.0分的影响。'},
+  {q:'★ 30 秒颠球比赛选替补：甲平均每次 15 个（成绩 13、15、14、17、16，很稳定）；乙平均 15.4 个（成绩 8、10、40、10、9，波动大）。球队整体比分落后时，派谁上场更合适？',sopts:['乙：平均更高，有单场 40 个的爆发力，可能追分','甲：成绩稳定，不会失误','随便派一个都行'],a:'乙：平均更高，有单场 40 个的爆发力，可能追分',lv:3,word:1,
+   wr:{'甲：成绩稳定，不会失误':{tag:'没结合实际情况',why:'落后时需要"搏一把"：乙平均更高、有40个的爆发可能；领先时才派甲稳住局面。'},'随便派一个都行':{tag:'不会用数据决策',why:'要综合平均数、稳定性和比赛形势：落后派乙，领先派甲。'}},
+   ex:'落后→需要追分→派乙（平均高、能爆发）\n领先→需要稳住→派甲（发挥稳定）\n利用平均数决策要结合实际！',hint:'★落后要"搏"还是要"稳"？'}]},
+
+{id:'u6',ic:'🗺️',nm:'单元总览 · 知识导图',ds:'加权平均 · 公式法 · 移多补少',
+ ex:{expr:'平均数 = 总数量 ÷ 份数',num:'平均数×份数=总数量，总数量÷平均数=份数——三个量知道两个就能求第三个！',op:'整个单元=认识平均数+算平均数+用平均数分析数据。',
+  feats:['总和÷个数，零值也算','在最值之间，可以是"虚拟"小数','应用：估算、评分、决策、移多补少'],
+  methods:['先找准总数和个数','去最值防极端','移多补少求份数'],
+  steps:[{t:'第 3 单元 平均数'},
+   {t:'平均数 = 数据总和 ÷ 数据个数',n:'核心公式',w:'零值要算；求之前先圈"每__"找准个数。'},
+   {t:'最小 ≤ 平均数 ≤ 最大',n:'脾气',w:'表示人数时可以是小数，它是"虚拟"的代表数。'},
+   {t:'基准数法 & 移多补少',n:'两大利器',w:'大数计算用基准数；知道平均数求份数用移多补少。'},
+   {t:'估算 · 评分 · 决策',n:'完成',w:'平均步幅×平均步数；去最值评分；看平均数+稳定性做决策。'}]},
+ lab:'mindmap',
+ tips:{use:'培优三招：① <b>加权平均</b>：男女生平均合成全班——(3×6+4×4)÷(6+4)，平均数不能直接相加！② <b>公式法</b>：三个两两之和÷2=三数和。③ <b>移多补少</b>：比总平均多出的总分÷每人补的分=人数：(92−91.2)×21÷(91.2−90.5)=24人。',fms:['总数量÷份数=平均数','平均数×份数=总数量','移多补少：多的总分÷每人补的=人数']},
+ recall:[
+  {s:'平均数 × 份数 = 【总数量】。',opts:['总数量','平均数'],a:'总数量',why:'三个关系式：总÷份=平均；平均×份=总；总÷平均=份。'},
+  {s:'移多补少：女生比全班平均分高出的总分 ÷ 每个男生要补的分 = 【男生人数】。',opts:['男生人数','女生人数'],a:'男生人数',why:'多的总分补给男生，每人补0.7分，16.8÷0.7=24人。'}],
+ drills:[
+  {q:'五(4)班男生 6 人平均每人阅读 3 本，女生 4 人平均每人阅读 4 本。这些同学平均每人阅读多少本？正确的算式是？',sopts:['(3×6+4×4)÷(6+4)','(3+4)÷(6+4)','(3×6+4×4)÷2','(3+4)÷2'],a:'(3×6+4×4)÷(6+4)',lv:1,word:1,
+   wr:{'(3+4)÷(6+4)':{tag:'平均数不能直接相加',why:'3和4是"平均数"，要先×各自人数变回总本数：(18+16)÷10。'},'(3×6+4×4)÷2':{tag:'个数找错',why:'总本数÷总人数10人，不是÷2。'},'(3+4)÷2':{tag:'平均数不能直接平均',why:'6人和4人不一样多，要按人数加权：(18+16)÷10=3.4。'}},
+   ex:'总本数：3×6+4×4=18+16=34（本）\n总人数：6+4=10（人）\n34÷10=3.4（本）',hint:'先把平均数"还原"成总数。'},
+  {q:'五(3)班调查 10 位同学：男生 4 人平均每人每月阅读 2.5 本，女生 6 人每月共阅读 28 本。这些同学人均每月阅读多少本？',a:3.8,lv:1,word:1,opts:[3.8,3.05,5.3,2.5],
+   wr:{'3.05':{tag:'男生部分忘×4',why:'2.5是男生平均，男生共读2.5×4=10本，不是2.5本：(10+28)÷10=3.8。'},'5.3':{tag:'把平均当总数',why:'总本数=10+28=38，÷10=3.8。'},'2.5':{tag:'拿部分平均当全体平均',why:'要把男女生合在一起算。'}},
+   ex:'男生共读：2.5×4=10（本）\n总本数：10+28=38（本）\n38÷10=3.8（本）',hint:'先求男生共读多少本。'},
+  {q:'12 个双数的平均数保留一位小数约是 14.8，保留两位小数约是多少？',a:14.83,lv:2,word:1,opts:[14.83,14.8,14.85,14.75],
+   wr:{'14.8':{tag:'没去推理',why:'用"双数和仍是双数"推理：和的范围177~178.2，双数只有178，178÷12≈14.83。'},'14.85':{tag:'端点用错',why:'平均数<14.85，和<178.2；和>177，双数只能是178。'},'14.75':{tag:'端点用错',why:'平均数≥14.75，和≥177；但和>177的双数只有178。'}},
+   ex:'平均数范围：14.75~14.85\n和的范围：14.75×12=177 ~ 14.85×12=178.2\n双数的和仍是双数 → 和=178\n178÷12≈14.83',hint:'★12个双数相加，和还是双数！'},
+  {q:'甲、乙的平均数是 72，乙、丙的平均数是 74，甲、丙的平均数是 76，求甲、乙、丙三个数的平均数。',a:74,lv:2,word:1,opts:[74,222,111,76],
+   wr:{'222':{tag:'只算到三数之和',why:'144+148+152=444是两倍三数和，÷2=222是三数和，还要÷3=74。'},'111':{tag:'没乘2还原',why:'先把平均数×2变回两数和：144、148、152，再相加÷2÷3。'},'76':{tag:'拿一组平均当答案',why:'三数平均=(144+148+152)÷2÷3=74。'}},
+   ex:'甲乙和：72×2=144；乙丙和：74×2=148；甲丙和：76×2=152\n三数和：(144+148+152)÷2=222\n平均数：222÷3=74',hint:'先把"平均数"×2变回"和"。'},
+  {q:'★ 五(1)班数学竞赛全班平均 91.2 分，女生 21 人平均 92 分，男生平均 90.5 分，男生有多少人？',a:24,lv:3,word:1,opts:[24,21,23,25],
+   wr:{'21':{tag:'移补方向搞反',why:'21是女生人数；男生=(92−91.2)×21÷(91.2−90.5)=16.8÷0.7=24。'},'23':{tag:'移补计算错',why:'女生共多出21×0.8=16.8分，每个男生补0.7分，16.8÷0.7=24。'},'25':{tag:'移补计算错',why:'(92−91.2)×21=16.8，16.8÷0.7=24人。'}},
+   ex:'每个女生移出：92−91.2=0.8（分）\n21名女生共移：21×0.8=16.8（分）\n每个男生要补：91.2−90.5=0.7（分）\n男生：16.8÷0.7=24（人）',hint:'★女生多的分给男生补，补完大家都91.2。'}]}
+];
+
+/* =================== 实验室（每馆一个"纸笔做不到"的互动动画） =================== */
+var LAB_PASS=false;
+function labDone(){if(LAB_PASS)return;LAB_PASS=true;$('btnLabNext').classList.remove('hide');}
+var LAB={
+level:function(box,pass){
+ box.innerHTML='<div class="labtip">欢欢 5 轮投壶成绩：<b>5、8、8、8、6 分</b>。把 5 杯"成绩水"拉平，每杯一样高，就是平均数！</div>'
+ +'<div class="jars" id="lvJars">'
+ +[5,8,8,8,6].map(function(v,i){return '<div class="jar"><div class="cup"><div class="fill" id="lvf'+i+'" style="height:'+Math.round(v/9*100)+'%"></div></div><div class="cap" id="lvc'+i+'">'+v+'分</div></div>';}).join('')
+ +'</div>'
+ +'<div class="labnote" id="lvNote">5 杯水，有高有低……</div>'
+ +'<button class="btn wide" id="lvSum">🧮 先算总数</button><div id="lvStage"></div>';
+ $('lvSum').onclick=function(){this.disabled=true;tick();
+  $('lvNote').innerHTML='5+8+8+8+6 = <b>35（分）</b>';
+  $('lvStage').innerHTML='<button class="btn gold wide" id="lvGo">🥤 拉平它们！</button>';
+  $('lvGo').onclick=function(){this.disabled=true;ding();
+   for(var i=0;i<5;i++){$('lvf'+i).style.height=Math.round(7/9*100)+'%';$('lvc'+i).textContent='7分';}
+   $('lvNote').innerHTML='🎉 35 ÷ 5 = <b>7（分）</b>——拉平后每杯都是 7 分！';
+   $('lvStage').innerHTML='<div class="feat">平均数就是"移多补少"拉平后的数：<b>总和 ÷ 个数</b>。<br>🤔 小测一下：小海的成绩 4、6、8、8、9，拉平后是多少？</div>'
+   +'<div class="rcbtns"><button class="opt" id="lvA1">7 分</button><button class="opt" id="lvA2">8 分</button></div>';
+   $('lvA1').onclick=function(){ding();this.classList.add('good');$('lvA2').disabled=true;
+    $('lvStage').insertAdjacentHTML('beforeend','<div class="labnote">✅ (4+6+8+8+9)÷5=35÷5=7！你已经在心里拉平了！</div>');pass();};
+   $('lvA2').onclick=function(){buzz();this.classList.add('bad');$('lvStage').insertAdjacentHTML('beforeend','<div class="labnote" style="color:var(--red)">8分是出现最多的，但平均数=总和÷个数：35÷5=7。</div>');};
+  };
+ };
+},
+between:function(box,pass){
+ box.innerHTML='<div class="labtip">图书馆一周借阅人数：<b>46、52、37、23、58 人</b>。先别算——平均数会落在哪个范围？</div>'
+ +'<div class="rcbtns"><button class="opt" id="bt1">23 ~ 58 之间</button><button class="opt" id="bt2">比 23 还小</button><button class="opt" id="bt3">比 58 还大</button></div>'
+ +'<div id="btStage"></div>';
+ $('bt2').onclick=$('bt3').onclick=function(){buzz();this.classList.add('bad');
+  $('btStage').innerHTML='<div class="labnote" style="color:var(--red)">移多补少拉平后，一定在最小数和最大数之间！</div>';};
+ $('bt1').onclick=function(){ding();this.classList.add('good');$('bt2').disabled=$('bt3').disabled=true;stage2();};
+ function stage2(){
+  $('btStage').innerHTML='<div class="exres">(46+52+37+23+58) ÷ 5 = 216 ÷ 5 = <b>43.2（人）</b></div>'
+  +'<div class="labtip">👆 拖动滑块，把 📍 放到数轴上 43.2 的位置（43~44 之间都算对）：</div>'
+  +'<div class="nl"><div class="track"></div><div class="pin" id="btPin">📍</div>'
+  +'<span class="tick" style="left:0%">20</span><span class="tick" style="left:25%">30</span><span class="tick" style="left:50%">40</span><span class="tick" style="left:75%">50</span><span class="tick" style="left:100%">60</span></div>'
+  +'<input type="range" id="btSlider" min="20" max="60" step="0.1" value="20">'
+  +'<button class="btn wide" id="btOk">✅ 放好了</button><div id="btFin"></div>';
+  var sl=$('btSlider');
+  sl.oninput=function(){$('btPin').style.left=((sl.value-20)/40*100)+'%';};
+  $('btOk').onclick=function(){
+   var v=Number(sl.value);
+   if(Math.abs(v-43.2)<=1.2){ding();this.disabled=true;sl.disabled=true;
+    $('btFin').innerHTML='<div class="labnote">🎯 正好！43.2 在 23~58 之间 ✓</div>'
+    +'<div class="feat">🤔 等等——<b>43.2 人</b>？人怎么会有 0.2 个？</div>'
+    +'<div class="rcbtns"><button class="opt" id="btQ1">平均数可以是小数，它是"虚拟"的代表数</button><button class="opt" id="btQ2">算错了，人数必须是整数</button></div>';
+    $('btQ1').onclick=function(){ding();this.classList.add('good');$('btQ2').disabled=true;
+     $('btFin').insertAdjacentHTML('beforeend','<div class="labnote">🎉 对！43.2 是表示平均水平的"虚拟"数，不是说某天真有 43.2 个人。平均数在最大、最小数之间，而且可以是小数！</div>');pass();};
+    $('btQ2').onclick=function(){buzz();this.classList.add('bad');};
+   }else{buzz();$('btFin').innerHTML='<div class="labnote" style="color:var(--red)">📍 在 43.2 附近哦——40 再过去一点点！</div>';}
+  };
+ }
+},
+base:function(box,pass){
+ var data=[56,57,58,55,61,55],diffs=['+1','+2','+3','0','+6','0'];
+ box.innerHTML='<div class="labtip">6 人折千纸鹤：<b>56、57、58、55、61、55 只</b>。数字都很大还挨得近——硬加 6 个数太累，用<b>基准数法</b>！</div>'
+ +'<div class="cols" id="bsCols">'
+ +data.map(function(v,i){return '<div class="colwrap"><div class="diff" id="bsd'+i+'"></div><div class="col" id="bsc'+i+'" style="height:'+((v-50)*12)+'px"><span class="colv">'+v+'</span></div></div>';}).join('')
+ +'<div class="baseline" id="bsLine" style="bottom:60px;display:none"></div>'
+ +'</div>'
+ +'<div class="labnote" id="bsNote">第一步：以最小的 55 为基准数，画一条基准线</div>'
+ +'<button class="btn wide" id="bsDraw">📏 以 55 为基准画线</button><div id="bsStage"></div>';
+ $('bsDraw').onclick=function(){this.disabled=true;tick();
+  $('bsLine').style.display='block';
+  for(var i=0;i<6;i++){$('bsd'+i).textContent=diffs[i];}
+  $('bsNote').innerHTML='每个数与 55 的差：<b>+1、+2、+3、0、+6、0</b>（比55小就记负的）';
+  $('bsStage').innerHTML='<button class="btn gold wide" id="bsShare">⚖️ 把多出来的平分给每人</button>';
+  $('bsShare').onclick=function(){this.disabled=true;ding();
+   for(var i=0;i<6;i++){$('bsc'+i).style.height='84px';}
+   $('bsNote').innerHTML='(1+2+3+0+6+0)÷6 = 12÷6 = <b>2</b>，每根柱子都变成 <b>57</b>！';
+   $('bsStage').innerHTML='<div class="exres">55 + 2 = <b>57（只）</b></div>'
+   +'<div class="feat">🎉 基准数法：平均数 = 基准数 + 差的平均。<br>🔍 验算：(56+57+58+55+61+55)÷6 = 342÷6 = 57 ✓ 一样！</div>';
+   pass();};
+ };
+},
+stride:function(box,pass){
+ box.innerHTML='<div class="labtip">欢欢要用<b>步幅</b>测教学楼 A 端到 B 端的距离，跟着做三遍平均！</div>'
+ +'<div class="labbig" id="stBig">🚶</div>'
+ +'<div class="labnote" id="stNote">第一步：走 10 步，量一量有多远</div>'
+ +'<button class="btn wide" id="stGo1">🚶 走 10 步</button><div id="stStage"></div>';
+ $('stGo1').onclick=function(){this.disabled=true;
+  var n=0;var iv=setInterval(function(){n++;$('stBig').textContent='🚶 '+n+' 步';tick();
+   if(n>=10){clearInterval(iv);ding();
+    $('stNote').innerHTML='10 步量得 <b>4.8 米</b> → 平均步幅 = 4.8 ÷ 10 = <b>0.48（米）</b>';
+    $('stStage').innerHTML='<button class="btn wide" id="stGo2">🔁 A→B 走 4 次，记步数</button>';
+    $('stGo2').onclick=function(){this.disabled=true;tick();
+     $('stBig').innerHTML='84 · 82 · 83 · 84';
+     $('stNote').innerHTML='平均步数 = (84+82+83+84)÷4 = <b>83.25（步）</b>';
+     $('stStage').innerHTML='<button class="btn wide" id="stGo3">📐 算出距离</button>';
+     $('stGo3').onclick=function(){this.disabled=true;ding();
+      $('stBig').innerHTML='0.48 × 83.25';
+      $('stNote').innerHTML='= 39.96 ≈ <b>40（米）</b>！教学楼这一端约 40 米。';
+      $('stStage').innerHTML='<div class="feat">🤔 为什么要走 10 步、走 4 次，测好几次求平均？</div>'
+      +'<div class="rcbtns"><button class="opt" id="stQ1">每步步幅有随机误差，多测几次求平均更准</button><button class="opt" id="stQ2">为了把数字凑大</button></div>';
+      $('stQ1').onclick=function(){ding();this.classList.add('good');$('stQ2').disabled=true;
+       $('stStage').insertAdjacentHTML('beforeend','<div class="labnote">🎉 对！单测一次误差大，用"平均步幅×平均步数"推测更精确——这就是用部分数据的平均数进行估算！</div>');pass();};
+      $('stQ2').onclick=function(){buzz();this.classList.add('bad');};
+     };
+    };}
+  },250);
+ };
+},
+judge:function(box,pass){
+ var scores=[9.0,9.3,9.2,9.1,8.7,8.0,8.5,9.1,8.8,9.0],removed=0;
+ box.innerHTML='<div class="labtip">10 位评委给选手打分。第一步：先算 10 个分数的总平均；第二步：把<b>最高分</b>和<b>最低分</b>点掉，看看平均数怎么变！</div>'
+ +'<div class="jrow" id="jRow">'
+ +scores.map(function(s,i){return '<div class="jcard" id="jc'+i+'">'+s.toFixed(1)+'</div>';}).join('')
+ +'</div>'
+ +'<div class="labnote" id="jNote">10 位评委打分完毕！</div>'
+ +'<button class="btn wide" id="jAvg">🧮 先算总平均</button><div id="jStage"></div>';
+ var mode='avg';
+ $('jAvg').onclick=function(){this.disabled=true;tick();mode='pick';
+  $('jNote').innerHTML='总和 88.7 ÷ 10 = <b>8.87（分）</b>。👆 现在<b>点掉</b>那个最高分！';
+ };
+ for(var i=0;i<10;i++){
+  (function(i){
+   $('jc'+i).onclick=function(){
+    if(mode!=='pick')return;
+    var s=scores[i];
+    if(s===9.3||s===8.0){
+     this.classList.add('out');ding();removed++;
+     $('jNote').innerHTML=s===9.3?'✅ 最高分 9.3 去掉！再点掉最低分。':'✅ 最低分 8.0 也去掉！';
+     if(removed>=2){mode='done';
+      $('jStage').innerHTML='<button class="btn gold wide" id="jRe">🧮 用剩下 8 个分数重新算</button>';
+      $('jRe').onclick=function(){this.disabled=true;tick();
+       $('jNote').innerHTML='(88.7 − 9.3 − 8.0) ÷ 8 = 71.4 ÷ 8 = <b>8.925（分）</b>';
+       $('jStage').innerHTML='<div class="feat">⚠️ 注意：去掉 2 个分数，分母也要减 2，<b>÷8 不是 ÷10</b>！<br>🤔 8.925 > 8.87——极端的 8.0 把总平均拉低了。哪种算法更公平？</div>'
+       +'<div class="rcbtns"><button class="opt" id="jQ1">去最值的更公平：避免极端分数影响</button><button class="opt" id="jQ2">一样公平，没区别</button></div>';
+       $('jQ1').onclick=function(){ding();this.classList.add('good');$('jQ2').disabled=true;
+        $('jStage').insertAdjacentHTML('beforeend','<div class="labnote">🎉 对啦！正式比赛都这样：去掉一个最高分和一个最低分，平均分更有代表性！</div>');pass();};
+       $('jQ2').onclick=function(){buzz();this.classList.add('bad');};
+      };
+     }
+    }else{buzz();this.classList.add('bad');setTimeout(function(el){el.classList.remove('bad');},400,this);
+     $('jNote').innerHTML=removed===0?'这是 '+s.toFixed(1)+' 分——最高的是 9.3 哦！':'这是 '+s.toFixed(1)+' 分——最低的是 8.0 哦！';}
+   };
+  })(i);
+ }
+},
+mindmap:function(box,pass){
+ var nodes=[
+  {t:'① 平均数的意义',r:'平均数=数据总和÷数据个数（0也要算）；它是描述一组数据的"代表数"，表示人数时可以是小数（"虚拟"的数）。'},
+  {t:'② 取值范围',r:'平均数在一组数据的最大数与最小数之间；只知道平均数，不能确定每个数据是多少（平均深110cm≠处处110cm）。'},
+  {t:'③ 基准数法',r:'数据较大且都接近某数：选基准数→算每个数与它的差→求差的平均→加回基准数。算完验算总和！'},
+  {t:'④ 平均数的应用',r:'平均步幅×平均步数=路程；部分平均×个数≈总数；分段算平均能看变化趋势（三百星：2.4→16.7→33.3颗/年）。'},
+  {t:'⑤ 比赛评分与决策',r:'去掉一个最高分和一个最低分再平均（个数也要减2），避免极端值影响更公平；选队员要看平均数+稳定性+实际情况。'},
+  {t:'⑥ 培优三招',r:'加权平均：(3×6+4×4)÷(6+4)；公式法：两两之和相加÷2=三数和；移多补少：多的总分÷每人补的分=份数（16.8÷0.7=24人）。'}];
+ var opened=0;
+ box.innerHTML='<div class="labtip">这就是第3单元的全部家当！<b>把 6 个知识节点全部点亮</b>，就能开启常考题型检验。</div>'
+ +'<div class="mmcenter">🗺️ 平均数</div><div class="mmline"></div>'
+ +nodes.map(function(n,i){return '<div class="mmnode" id="mn'+i+'"><div class="mt"><span class="dot"></span>'+n.t+'</div></div>';}).join('')
+ +'<div class="labnote" id="mmNote">已点亮 0 / 6</div>';
+ nodes.forEach(function(n,i){
+  $('mn'+i).onclick=function(){
+   if(this.classList.contains('open'))return;
+   this.classList.add('open');tick();
+   this.insertAdjacentHTML('beforeend','<div class="mmrule">'+n.r+'</div>');
+   opened++;$('mmNote').textContent='已点亮 '+opened+' / 6';
+   if(opened>=6){ding();$('mmNote').innerHTML='🎉 导图全部点亮！口诀：<b>总和÷个数，零值也要算；最值之间住，小数不奇怪；去极值更公平，移补求份数。</b>';pass();}
+  };
+ });
+}
+};
+
+/* =================== 引擎 =================== */
+var CUR=null, TS={idx:0,gDone:-1}, Q={}, RC={i:0};
+function guessStep(btn){
+ var ok=(btn.textContent===window._gAns);
+ if(ok){btn.classList.add('good');ding();}else{btn.classList.add('bad');buzz();}
+ document.querySelectorAll('#guessBox .opt').forEach(function(b){b.disabled=true;if(b.textContent===window._gAns)b.classList.add('good');});
+ setTimeout(function(){var gb=$('guessBox');if(gb)gb.remove();$('btnStep').classList.remove('hide');nextStep();},ok?500:1100);
+}
+
+function unlockedCount(){var d0=new Date(START+'T00:00:00');var days=Math.floor((Date.now()-d0.getTime())/86400000);
+ return Math.max(1,Math.min(MODS.length,days+1+UNL_EXTRA));}
+function parentUnlock(){if(unlockedCount()>=MODS.length){alert('所有馆都已开放!');return;}UNL_EXTRA++;save(LSK+'_unl',UNL_EXTRA);ding();renderHome();}
+function lockMsg(day){buzz();alert('这个馆第 '+day+' 天才开放哦!\n每天学一个馆,学得牢。\n(家长可在「练习记录」里提前解锁)');}
+
+function renderHome(){
+ show('vHome');
+ var unl=unlockedCount(),g=$('homeGrid'),h='';
+ MODS.forEach(function(m,i){
+  var open=i<unl, st=modStat(m.id);
+  h+='<div class="tile'+(open?'':' lock')+'" onclick="'+(open?('openMod(\''+m.id+'\')'):('lockMsg('+(i+1)+')'))+'">'
+   +(i===unl-1&&open?'<span class="today">今日</span>':'')
+   +(st?'<span class="done">已练 · '+st+'</span>':(open?'<span class="done pending">未练</span>':''))
+   +'<div class="ic">'+(open?m.ic:'🔒')+'</div><div class="nm">'+m.nm+'</div><div class="ds">'+m.ds+'</div></div>';
+ });
+ g.innerHTML=h;
+ var done=0;for(var k in DB.done)done++;
+ var wrong=0;DB.events.forEach(function(e){if(e.type==='quiz'&&!e.ok)wrong++;});
+ $('statBar').innerHTML='<span>已练 '+done+'/'+MODS.length+' 馆</span><span>共答 '+DB.events.filter(function(e){return e.type==='quiz';}).length+' 题</span><span>错 '+wrong+' 题</span>';
+ var wl=wbList();
+ $('wbEntry').innerHTML=wl.length?'<div class="card" style="border-color:var(--red)"><div class="h2" style="color:var(--red)">📕 错题本（'+wl.length+' 题待掌握）</div><div class="note">错过的题连续答对 2 次才算掌握。</div><button class="btn red wide" onclick="startWrongbook()">🔁 重做错题</button></div>':'';
+ $('wbPanel').innerHTML=wl.length?wl.map(function(it){return '<div class="wbitem"><span>'+esc(short(it.q))+'</span><span class="t">错'+it.wrong+'次·连对'+it.streak+'/2</span></div>';}).join(''):'<div class="note">错题本是空的，太棒了！</div>';
+ var rh='';
+ if(done>0)rh+='<button class="btn ghost wide" onclick="startWarmup()">🔄 今日热身：把学过的再练 5 题</button>';
+ $('reviewEntry').innerHTML=rh?'<div class="card"><div class="h2">🧠 学得牢小工具</div>'+rh+'<div class="note">🔄 热身＝学过的题再见一面，记得更牢。</div></div>':'';
+}
+function short(s){return s.length>24?s.slice(0,24)+'…':s;}
+function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+function show(id){['vHome','vTeach','vQuiz','vResult'].forEach(function(v){$(v).classList.toggle('hide',v!==id);});window.scrollTo(0,0);}
+function goHome(){if(Q.timer)clearInterval(Q.timer);renderHome();}
+
+/* ---- 教学流程：放大镜 → 分步 → 实验室 → 妙招 → 遮挡回忆 ---- */
+var mir={n:false,o:false};
+function openMod(id){
+ CUR=null;MODS.forEach(function(m){if(m.id===id)CUR=m;});
+ if(!CUR)return;tick();
+ mir={n:false,o:false};TS.idx=0;TS.gDone=-1;LAB_PASS=false;RC={i:0};
+ show('vTeach');
+ $('tBadge').textContent=CUR.ic+' '+CUR.nm.replace(/^第.+课 /,'');
+ $('tTag').textContent='金牌数学·'+CUR.nm.split(' ')[0];
+ var html='';
+ String(CUR.ex.expr).split(/([0-9.]+)/).forEach(function(seg){
+  if(!seg)return;
+  if(/^[0-9.]+$/.test(seg))html+='<span class="tk num">'+seg+'</span>';
+  else html+='<span class="tk op">'+esc(seg)+'</span>';
+ });
+ $('mExpr').innerHTML=html;
+ $('mFeats').innerHTML='';$('mMethods').innerHTML='';$('mMethods').classList.add('hide');
+ $('btnToSteps').classList.add('hide');
+ $('btnNum').style.opacity=1;$('btnOp').style.opacity=1;
+ ['cardSteps','cardLab','cardTips','cardRecall'].forEach(function(c){$(c).classList.add('hide');});
+ $('stepRows').innerHTML='';$('btnStep').classList.remove('hide');$('btnStep').textContent='▶ 下一步';
+ $('btnLabNext').classList.add('hide');
+}
+function revealNum(){if(mir.n)return;mir.n=true;tick();
+ document.querySelectorAll('#mExpr .tk.num').forEach(function(el){el.classList.add('hn');});
+ $('mFeats').innerHTML+='<div class="feat">🔢 数字特点：'+CUR.ex.num+'</div>';
+ $('btnNum').style.opacity=.4;mirDone();}
+function revealOp(){if(mir.o)return;mir.o=true;tick();
+ document.querySelectorAll('#mExpr .tk.op').forEach(function(el){el.classList.add('ho');});
+ $('mFeats').innerHTML+='<div class="feat blue">➗ 算法特点：'+CUR.ex.op+'</div>';
+ $('btnOp').style.opacity=.4;mirDone();}
+function mirDone(){
+ if(!(mir.n&&mir.o))return;
+ var h='<div class="note" style="margin-top:8px">✅ 题干特点：'+CUR.ex.feats.map(function(f,i){return (i+1)+'.'+f;}).join('　')+'</div><div style="margin-top:4px">'
+  +CUR.ex.methods.map(function(m){return '<span class="mchip">🏷️ '+m+'</span>';}).join('')+'</div>';
+ $('mMethods').innerHTML=h;$('mMethods').classList.remove('hide');
+ $('btnToSteps').classList.remove('hide');ding();
+}
+function showSteps(){$('cardSteps').classList.remove('hide');$('btnToSteps').classList.add('hide');nextStep();
+ $('cardSteps').scrollIntoView({behavior:'smooth'});}
+function nextStep(){
+ var steps=CUR.ex.steps;
+ if(TS.idx>=steps.length)return;
+ var s=steps[TS.idx];
+ if(s.n&&TS.idx>=1&&TS.idx<steps.length-1&&TS.gDone!==TS.idx){
+  TS.gDone=TS.idx;
+  var pool=['从左往右硬算','列竖式慢慢算','先算最大的数'];
+  MODS.forEach(function(m){m.ex.steps.forEach(function(x){if(x.n&&x.n!==s.n&&pool.indexOf(x.n)<0)pool.push(x.n);});});
+  var dtr=pool[Math.floor(Math.random()*pool.length)];if(dtr===s.n)dtr=pool[0];
+  var go=Math.random()<0.5?[s.n,dtr]:[dtr,s.n];
+  window._gAns=s.n;
+  $('btnStep').classList.add('hide');
+  var box=document.createElement('div');box.id='guessBox';
+  box.innerHTML='<div class="hint">🤔 猜一猜：下一步该用哪一招？</div>'+go.map(function(o){return '<button class="opt" onclick="guessStep(this)">'+esc(o)+'</button>';}).join('');
+  $('stepRows').appendChild(box);box.scrollIntoView({behavior:'smooth',block:'center'});
+  return;
+ }
+ tick();
+ document.querySelectorAll('#stepRows .srow').forEach(function(el){el.classList.remove('cur');});
+ var row=document.createElement('div');row.className='srow cur';
+ row.innerHTML='<div class="math">'+esc(s.t)+'</div>'+(s.n?'<div class="snote">'+s.n+'</div>':'');
+ $('stepRows').appendChild(row);
+ if(s.w){var wd=document.createElement('div');wd.className='swhy';wd.innerHTML='🤔 为什么：'+s.w;$('stepRows').appendChild(wd);}
+ TS.idx++;
+ if(TS.idx>=steps.length){
+  $('btnStep').classList.add('hide');ding();
+  var f=document.createElement('div');f.className='fin';f.textContent='🎉 变身完成！去实验室亲手玩一遍';$('stepRows').appendChild(f);
+  $('cardLab').classList.remove('hide');
+  LAB[CUR.lab]($('labBox'),labDone);
+ }else{
+  $('btnStep').textContent='▶ 下一步（'+TS.idx+'/'+steps.length+'）';
+ }
+ row.scrollIntoView({behavior:'smooth',block:'center'});
+}
+function labNext(){
+ $('cardTips').classList.remove('hide');
+ $('tipUse').innerHTML=CUR.tips.use;
+ $('tipFms').innerHTML=CUR.tips.fms.map(function(x){return '<div class="fmla">'+x+'</div>';}).join('');
+ $('btnTipsNext').textContent=(CUR.recall&&CUR.recall.length)?'🙈 遮挡回忆挑战 →':'✏️ 开始真题检验 →';
+ $('cardTips').scrollIntoView({behavior:'smooth'});
+}
+function tipsNext(){
+ if(CUR.recall&&CUR.recall.length){$('cardRecall').classList.remove('hide');rcRender(0);$('cardRecall').scrollIntoView({behavior:'smooth'});}
+ else qStart(CUR.id);
+}
+/* ---- 遮挡回忆 ---- */
+function rcRender(i){
+ RC.i=i;var r=CUR.recall[i];
+ var sent=r.s.replace(/【(.+?)】/,'<span class="blank" id="rcBlank">？？</span>');
+ var sh=r.opts.slice().sort(function(){return Math.random()-0.5;});
+ var h='<div class="rcsent">'+sent+'</div>';
+ h+='<div class="rcbtns">'+sh.map(function(o,j){return '<button class="opt" onclick="rcPick(this,'+j+',\''+o.replace(/'/g,"\\'")+'\')">'+esc(o)+'</button>';}).join('')+'</div>';
+ h+='<div class="labnote" id="rcNote">第 '+(i+1)+' / '+CUR.recall.length+' 题：不看妙招卡，自己回忆！</div>';
+ $('rcBox').innerHTML=h;
+ window._rcSh=sh;
+}
+function rcPick(btn,j,val){
+ var r=CUR.recall[RC.i];
+ if(val===r.a){
+  ding();btn.classList.add('good');
+  var blank=$('rcBlank');if(blank)blank.textContent=r.a;
+  $('rcNote').innerHTML='✅ 对啦！'+r.why;
+  document.querySelectorAll('#rcBox .opt').forEach(function(b){b.disabled=true;});
+  setTimeout(function(){
+   if(RC.i+1<CUR.recall.length)rcRender(RC.i+1);
+   else{$('btnRcNext').classList.remove('hide');$('rcBox').innerHTML='<div class="fin">🎉 全部回忆成功！法则已经装进小脑袋</div>';$('btnRcNext').scrollIntoView({behavior:'smooth'});}
+  },900);
+ }else{
+  buzz();btn.classList.add('bad');btn.disabled=true;
+  $('rcNote').innerHTML='💡 '+r.why;
+ }
+}
+function rcNext(){qStart(CUR.id);}
+
+/* ---- 训练（自动判分 + 错因标签） ---- */
+function fmt(n){return (Math.round(Number(n)*10000)/10000).toString();}
+function shuffle(arr){for(var i=arr.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=arr[i];arr[i]=arr[j];arr[j]=t;}return arr;}
+function lvTag(d){if(d.lv===3)return '<span class="lvtag lv3">★拔高</span>';if(d.lv===2)return '<span class="lvtag lv2">巩固</span>';return '<span class="lvtag lv1">基础</span>';}
+function qStart(modId){
+ var m=null;MODS.forEach(function(x){if(x.id===modId)m=x;});
+ Q={list:m.drills.slice(),i:0,t0:Date.now(),sess0:Date.now(),mod:modId,nm:m.nm,ok:0,wrong:0,timer:null,isWb:false,wrongs:[]};
+ show('vQuiz');qRender();
+ Q.timer=setInterval(function(){var el=$('qTime');if(el){var s=Math.floor((Date.now()-Q.sess0)/1000);el.textContent='⏱ '+Math.floor(s/60)+':'+('0'+s%60).slice(-2);}},500);
+}
+function startWrongbook(){
+ var wl=wbList();if(!wl.length)return;
+ Q={list:wl.map(function(it){var c={};for(var k in it)c[k]=it[k];c.wb=1;return c;}),i:0,t0:Date.now(),sess0:Date.now(),mod:'wrongbook',nm:'错题本重做',ok:0,wrong:0,timer:null,isWb:true,wrongs:[]};
+ show('vQuiz');qRender();
+ Q.timer=setInterval(function(){var el=$('qTime');if(el){var s=Math.floor((Date.now()-Q.sess0)/1000);el.textContent='⏱ '+Math.floor(s/60)+':'+('0'+s%60).slice(-2);}},500);
+}
+function startWarmup(){
+ var pool=[];
+ MODS.forEach(function(m){if(DB.done[m.id])m.drills.forEach(function(dd){pool.push(dd);});});
+ if(!pool.length){alert('先练完至少一个馆，再来热身！');return;}
+ var picks=wbList().slice(0,2).map(function(it){var c={};for(var k in it)c[k]=it[k];c.wb=1;return c;});
+ var guard=0;
+ while(picks.length<5&&guard<80){guard++;var dd=pool[Math.floor(Math.random()*pool.length)];var dup=false;picks.forEach(function(p){if(p.q===dd.q)dup=true;});if(!dup)picks.push(dd);}
+ Q={list:shuffle(picks),i:0,t0:Date.now(),sess0:Date.now(),mod:'warmup',nm:'今日热身',ok:0,wrong:0,timer:null,isWb:false,warm:true,wrongs:[]};
+ show('vQuiz');qRender();
+ Q.timer=setInterval(function(){var el=$('qTime');if(el){var s=Math.floor((Date.now()-Q.sess0)/1000);el.textContent='⏱ '+Math.floor(s/60)+':'+('0'+s%60).slice(-2);}},500);
+}
+function quitQuiz(){if(Q.timer)clearInterval(Q.timer);if(Q.isWb||Q.warm)renderHome();else openMod(Q.mod);}
+function qRender(){
+ var d=Q.list[Q.i];Q.t0=Date.now();
+ $('qProg').innerHTML=(Q.isWb?'📕 错题本 ':'')+(Q.i+1)+' / '+Q.list.length+lvTag(d)+(d.wb?'　<span class="star">📕</span>':'')+(d.rq?'　<span class="star">🔁再战</span>':'');
+ $('qScore').textContent='✅'+Q.ok+' ❌'+Q.wrong;
+ var gh=d.hint?'<div class="hint">'+esc(d.hint)+'</div>':'';
+ if(Q.i===0&&!Q.isWb&&!Q.warm&&!d.rq){
+  var gl=d.ex.split('\n');
+  if(gl.length>2){gl.pop();gh+='<div class="steps"><span class="lb">🧭 第一题扶你走：思路都摆好了，最后一步你来选！</span>'+gl.map(esc).join('<br>')+'</div>';}
+ }
+ $('qHint').innerHTML=gh;
+ $('qText').className='qtext'+(d.word?' word':'');
+ $('qText').textContent=d.q;
+ if(d.sopts){
+  Q.curSopts=d.sopts.slice();
+  $('qOpts').innerHTML=d.sopts.map(function(o,i){return '<button class="opt" onclick="qAnsS(this,'+i+')">'+esc(o)+'</button>';}).join('');
+ }else{
+  Q.curOpts=shuffle(d.opts.slice());
+  $('qOpts').innerHTML=Q.curOpts.map(function(o,i){return '<button class="opt" onclick="qAns(this,'+i+')">'+fmt(o)+'</button>';}).join('');
+ }
+ $('qEx').innerHTML='';$('btnNext').classList.add('hide');
+}
+function afterAns(d,ok,ms,user,btn){
+ if(ok){Q.ok++;ding();if(Q.isWb||d.wb)wbAddRight(d.q);}
+ else{
+  Q.wrong++;buzz();wbAddWrong(d);Q.wrongs.push(d);
+  if(!d.rq&&!Q.isWb){var c={};for(var k in d)c[k]=d[k];c.rq=1;Q.list.push(c);}
+ }
+ if(!Q.isWb)logEvent({type:'quiz',subject:'数学',lesson:Q.nm,word:d.q,hint:d.hint||'',ok:ok,ms:ms,user:String(user),tag:ok?(d.lv===3?'拔高✓':'答对'):(d._wtag||'答错')});
+ var lines=d.ex.split('\n');
+ var eh='';
+ if(!ok&&d._wtag)eh+='<div class="errtag"><span class="t">🏷️ 错因：'+esc(d._wtag)+'</span><br>'+esc(d._wwhy||'')+'</div>';
+ eh+='<div class="steps"><span class="lb">'+(ok?'✅ 对啦！再看一遍书上的分步：':'❌ 别急，跟着书上的思路走一遍：')+'</span>'
+  +lines.map(function(l,i){return i===lines.length-1?'<span class="last">'+esc(l)+'</span>':esc(l);}).join('<br>')+'</div>';
+ $('qEx').innerHTML=eh;
+ $('btnNext').classList.remove('hide');
+ $('qScore').textContent='✅'+Q.ok+' ❌'+Q.wrong;
+}
+function qAns(btn,idx){
+ var d=Q.list[Q.i],val=Q.curOpts[idx],ok=(Math.abs(val-Number(d.a))<1e-9),ms=Date.now()-Q.t0;
+ d._wtag=null;d._wwhy=null;
+ if(!ok&&d.wr&&d.wr[String(val)]){d._wtag=d.wr[String(val)].tag;d._wwhy=d.wr[String(val)].why;}
+ document.querySelectorAll('#qOpts .opt').forEach(function(b,i){b.disabled=true;
+  if(Math.abs(Q.curOpts[i]-Number(d.a))<1e-9)b.classList.add('good');});
+ if(!ok)btn.classList.add('bad');
+ afterAns(d,ok,ms,val,btn);
+}
+function qAnsS(btn,idx){
+ var d=Q.list[Q.i],text=d.sopts[idx],ok=(text===d.a),ms=Date.now()-Q.t0;
+ d._wtag=null;d._wwhy=null;
+ if(!ok&&d.wr&&d.wr[text]){d._wtag=d.wr[text].tag;d._wwhy=d.wr[text].why;}
+ document.querySelectorAll('#qOpts .opt').forEach(function(b){b.disabled=true;if(b.textContent===d.a)b.classList.add('good');});
+ if(!ok)btn.classList.add('bad');
+ afterAns(d,ok,ms,text,btn);
+}
+function qNext(){
+ Q.i++;
+ if(Q.i>=Q.list.length){qFinish();return;}
+ qRender();window.scrollTo(0,0);
+}
+function qFinish(){
+ if(Q.timer)clearInterval(Q.timer);
+ var sec=Math.floor((Date.now()-Q.sess0)/1000);
+ if(!Q.isWb&&!Q.warm){
+  DB.done[Q.mod]={ok:Q.ok,wrong:Q.wrong,ts:Date.now()};save(LSK,DB);
+  logEvent({type:'lesson',subject:'数学',lesson:Q.nm,total:Q.list.length,wrong:Q.wrong,durationSec:sec});
+ }
+ show('vResult');
+ var h='<div class="h2">'+(Q.isWb?'📕 错题重做完成':'🏁 '+Q.nm+' 完成!')+'</div>'
+  +'<div class="stat"><span>✅ 对 '+Q.ok+'</span><span>❌ 错 '+Q.wrong+'</span><span>⏱ '+Math.floor(sec/60)+'分'+(sec%60)+'秒</span></div>';
+ if(Q.wrongs.length){
+  h+='<div class="h2" style="margin-top:12px">错题回顾（看懂再走）</div>';
+  Q.wrongs.forEach(function(d){
+   h+='<div class="note" style="font-weight:800;color:var(--red)">✗ '+esc(d.q)+'</div>';
+   if(d._wtag)h+='<div class="errtag"><span class="t">🏷️ 错因：'+esc(d._wtag)+'</span><br>'+esc(d._wwhy||'')+'</div>';
+   h+='<div class="steps">'+d.ex.split('\n').map(esc).join('<br>')+'</div>';
+  });
+  h+='<div class="note">这些题已进错题本，连续答对 2 次才能出来哦。</div>';
+ }else{
+  h+='<div class="fin">🌟 全对！太厉害了！</div>';
+ }
+ if(!Q.isWb&&!Q.warm&&Q.wrong>0)h+='<button class="btn gold wide" onclick="qStart(Q.mod)">🔁 再练一次，冲 ⭐⭐⭐ 满星</button>';
+ h+='<button class="btn wide" onclick="goHome()">回选馆地图</button>';
+ $('resCard').innerHTML=h;
+}
+
+/* ---- 导出（兼容 data/learning 归档格式） ---- */
+function exportText(){
+ var wl=wbList();
+ var t='【Kenton 数学五上预习馆③平均数 练习记录】\n导出时间:'+new Date().toLocaleString()+'\n\n';
+ t+='== 各馆成绩 ==\n';
+ MODS.forEach(function(m){var d=DB.done[m.id];if(d)t+=m.nm+': ✅'+d.ok+' ❌'+d.wrong+'\n';});
+ t+='\n== 错题本(未掌握 '+wl.length+' 题) ==\n';
+ wl.forEach(function(it){t+='· '+it.q+'（错'+it.wrong+'次,连对'+it.streak+'/2）\n';});
+ var cnt={},tcnt={};
+ DB.events.forEach(function(e){if(e.type==='quiz'&&!e.ok){cnt[e.word]=(cnt[e.word]||0)+1;if(e.tag&&e.tag!=='答错')tcnt[e.tag]=(tcnt[e.tag]||0)+1;}});
+ var rep=Object.keys(cnt).filter(function(k){return cnt[k]>=2;});
+ t+='\n== 反复错的题(错≥2次) ==\n'+(rep.length?rep.map(function(k){return '· '+k+' ×'+cnt[k];}).join('\n'):'(无)')+'\n';
+ t+='\n== 错因标签统计 ==\n';
+ var tk=Object.keys(tcnt);
+ t+=tk.length?tk.map(function(k){return '· '+k+' ×'+tcnt[k];}).join('\n'):'(暂无)';
+ t+='\n\n== 原始JSON ==\n'+JSON.stringify({child:'kenton',subject:'数学',app:'g5u3_average',unit:'五上第3单元 平均数',events:DB.events,wrongbook:wl});
+ return t;
+}
+function exportCopy(){var t=exportText();
+ if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(function(){alert('已复制!把内容发给爸爸即可');},function(){fallbackCopy(t);});}
+ else fallbackCopy(t);}
+function fallbackCopy(t){var ta=document.createElement('textarea');ta.value=t;document.body.appendChild(ta);ta.select();try{document.execCommand('copy');alert('已复制!');}catch(e){alert('复制失败,请用「看一眼」手动复制');}document.body.removeChild(ta);}
+function exportFile(){var b=new Blob([exportText()],{type:'text/plain'});var a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='kenton_平均数预习记录_'+new Date().toISOString().slice(0,10)+'.txt';a.click();}
+function toggleExp(){var box=$('expBox');box.classList.toggle('hide');if(!box.classList.contains('hide'))$('expTa').value=exportText();}
+
+$('muteBtn').textContent=MUTE?'🔕':'🔔';
+renderHome();
+</script>
+</body>
+</html>

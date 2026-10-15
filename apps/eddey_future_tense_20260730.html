@@ -1,0 +1,1308 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<script src="../assets/learning-sync.js"></script>
+<meta charset="UTF-8">
+<meta name="lesson-audio" content="pending: 86条Aria神经音已外置apps/audio/，机器校验通过；手机实播待家长验收">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>一般将来时四大法宝 · Eddey 英语复习</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
+  :root {
+    --pink:#FFB6C1; --pink-deep:#FF8DA8;
+    --blue:#A8D8EA; --blue-deep:#5AB6DB;
+    --yellow:#FFE07A; --yellow-soft:#FFF0B8; --mint:#B5EAD7;
+    --purple:#C7B8EA; --coral:#FF9E7A;
+    --bg:#FFFBF2; --text:#3D3142; --text-light:#7A6E82;
+    --green:#5FBE77; --red:#FF6B6B;
+    --shadow:0 4px 0 rgba(0,0,0,0.07), 0 8px 24px rgba(90,182,219,0.15);
+    --shadow-sm:0 2px 0 rgba(0,0,0,0.07), 0 4px 12px rgba(90,182,219,0.12);
+  }
+  body {
+    font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;
+    background:var(--bg); color:var(--text); min-height:100vh; overflow-x:hidden;
+    background-image:
+      radial-gradient(circle at 12% 12%, rgba(255,224,122,0.30) 0%, transparent 40%),
+      radial-gradient(circle at 88% 88%, rgba(168,216,234,0.28) 0%, transparent 42%);
+  }
+  .app { max-width:480px; margin:0 auto; padding:14px; min-height:100vh; }
+
+  .topbar { display:flex; align-items:center; justify-content:space-between; padding:10px 4px; margin-bottom:10px; }
+  .pill { background:white; padding:6px 12px; border-radius:18px; font-size:13px; font-weight:700; box-shadow:var(--shadow-sm); display:flex; align-items:center; gap:5px; cursor:pointer; }
+
+  .card { background:white; border-radius:22px; padding:20px 16px; box-shadow:var(--shadow); margin-bottom:14px; }
+  .stage-title { font-size:20px; font-weight:800; margin-bottom:4px; }
+  .stage-sub { font-size:12px; color:var(--text-light); margin-bottom:14px; line-height:1.5; }
+
+  .btn { display:inline-flex; align-items:center; justify-content:center; gap:6px; border:none; border-radius:16px; padding:13px 18px; font-size:15px; font-weight:700; cursor:pointer; transition:all .15s; font-family:inherit; box-shadow:var(--shadow); user-select:none; }
+  .btn:active { transform:translateY(2px); box-shadow:var(--shadow-sm); }
+  .btn-primary { background:var(--coral); color:white; width:100%; }
+  .btn-blue { background:var(--blue); color:var(--text); }
+  .btn-yellow { background:var(--yellow); color:var(--text); }
+  .btn-mint { background:var(--mint); color:var(--text); }
+  .btn-purple { background:var(--purple); color:var(--text); }
+  .btn-small { padding:9px 13px; font-size:13px; }
+  .btn-row { display:flex; gap:8px; flex-wrap:wrap; }
+
+  .home-hero { text-align:center; padding:18px 14px; }
+  .home-emoji { font-size:58px; display:inline-block; animation:bounce 2.2s infinite; }
+  @keyframes bounce { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
+  .home-title { font-size:24px; font-weight:800; margin:8px 0 2px; background:linear-gradient(135deg,var(--coral),var(--blue-deep)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+  .home-sub { color:var(--text-light); font-size:12px; margin-bottom:12px; }
+  .home-msg { background:var(--bg); border-radius:14px; padding:13px; text-align:left; font-size:13px; line-height:1.7; margin:12px 0; }
+  .home-msg strong { color:var(--coral); }
+
+  .kid-picker { display:flex; gap:10px; margin:14px 0; }
+  .kid-card { flex:1; padding:12px 8px; border-radius:16px; text-align:center; background:var(--bg); border:3px solid transparent; cursor:pointer; transition:all .2s; }
+  .kid-card.active { border-color:var(--coral); background:white; transform:scale(1.03); box-shadow:var(--shadow); }
+  .kid-card .avatar { font-size:36px; }
+  .kid-card .name { font-weight:800; font-size:15px; margin-top:2px; }
+  .kid-card .age { font-size:11px; color:var(--text-light); }
+
+  .map-btn { width:100%; padding:15px; border:none; border-radius:18px; font-family:inherit; font-weight:700; cursor:pointer; display:flex; align-items:center; gap:13px; box-shadow:var(--shadow); margin-bottom:10px; text-align:left; transition:transform .15s; background:white; }
+  .map-btn:active { transform:translateY(2px); }
+  .map-btn .icon { font-size:30px; flex-shrink:0; }
+  .map-btn .text { flex:1; }
+  .map-btn .t1 { font-size:15px; }
+  .map-btn .t2 { font-size:11px; color:var(--text-light); font-weight:500; margin-top:2px; line-height:1.4; }
+  .map-btn .done-badge { font-size:11px; font-weight:800; color:var(--green); white-space:nowrap; }
+  .map-btn.star { background:linear-gradient(135deg,#FFE07A,#FF9E7A); }
+
+  .hidden { display:none !important; }
+  .speak-btns { display:flex; gap:8px; justify-content:center; margin:10px 0; flex-wrap:wrap; }
+  .icon-btn { background:var(--blue); border:none; padding:10px 14px; border-radius:14px; font-size:13px; font-weight:700; cursor:pointer; box-shadow:var(--shadow-sm); font-family:inherit; display:inline-flex; align-items:center; gap:5px; }
+  .icon-btn:active { transform:translateY(1px); }
+  .icon-btn.yellow { background:var(--yellow); }
+  .icon-btn.coral { background:var(--coral); color:white; }
+  .icon-btn.mint { background:var(--mint); }
+  .icon-btn.purple { background:var(--purple); }
+
+  .pulse { animation:pulse 1.5s ease-in-out infinite; }
+  @keyframes pulse { 0%,100%{transform:scale(1)} 50%{transform:scale(1.06)} }
+
+  .feedback { margin-top:14px; padding:13px; border-radius:14px; font-size:13px; line-height:1.6; display:none; }
+  .feedback.show { display:block; animation:slideUp .3s; }
+  .feedback.right { background:#E8F8EC; border-left:4px solid var(--green); }
+  .feedback.wrong { background:#FFF3E0; border-left:4px solid var(--coral); }
+  .feedback .title { font-weight:800; margin-bottom:5px; font-size:14px; }
+  @keyframes slideUp { from{opacity:0; transform:translateY(10px)} to{opacity:1; transform:translateY(0)} }
+
+  .options { display:grid; gap:9px; margin-top:12px; }
+  .option { background:var(--bg); border:3px solid transparent; border-radius:14px; padding:13px; font-size:15px; font-weight:600; cursor:pointer; transition:all .15s; text-align:left; display:flex; align-items:center; gap:10px; font-family:inherit; }
+  .option:active { transform:scale(.98); }
+  .option .letter { width:24px; height:24px; border-radius:50%; background:white; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:13px; flex-shrink:0; }
+  .option.correct { background:var(--mint); border-color:var(--green); }
+  .option.wrong { background:#FFD6D6; border-color:var(--red); }
+  .option.disabled { pointer-events:none; }
+
+  /* 发音诊所 */
+  .pron-word { font-size:38px; font-weight:800; text-align:center; letter-spacing:1px; }
+  .pron-ipa { font-size:19px; color:var(--blue-deep); font-family:Georgia,serif; text-align:center; margin:4px 0; }
+  .pron-cn { font-size:15px; color:var(--text-light); text-align:center; margin-bottom:8px; }
+  .syll { display:flex; justify-content:center; gap:6px; margin:10px 0; flex-wrap:wrap; }
+  .syll span { background:var(--bg); padding:8px 12px; border-radius:12px; font-weight:800; font-size:16px; cursor:pointer; }
+  .syll span.hot { background:var(--yellow); color:var(--coral); transform:scale(1.1); }
+  .pron-tip { background:var(--yellow-soft); border-radius:14px; padding:12px; font-size:13px; line-height:1.6; margin:12px 0; }
+  .acc-row { display:flex; align-items:center; gap:8px; justify-content:center; margin:10px 0; font-size:13px; flex-wrap:wrap; }
+  .acc-chip { padding:4px 10px; border-radius:10px; font-weight:800; font-size:13px; }
+  .acc-low { background:#FFE0D0; color:#C05a2a; }
+  .acc-hi { background:#D6F5DC; color:#2F855A; }
+
+  /* going to 造句机 */
+  .chip-row { display:flex; gap:7px; flex-wrap:wrap; justify-content:center; margin:8px 0; }
+  .chip { background:var(--bg); border:3px solid transparent; border-radius:13px; padding:9px 13px; font-weight:800; font-size:14px; cursor:pointer; transition:all .15s; font-family:inherit; }
+  .chip:active { transform:scale(.95); }
+  .chip.on { border-color:var(--blue-deep); background:white; box-shadow:var(--shadow-sm); }
+  .chip-label { font-size:11px; font-weight:800; color:var(--text-light); text-align:center; margin-top:10px; }
+
+  /* 句子块 */
+  .build { display:flex; flex-wrap:wrap; gap:7px; justify-content:center; align-items:center; margin:14px 0; min-height:52px; }
+  .chunk { padding:10px 14px; border-radius:13px; font-weight:800; font-size:16px; opacity:0; transform:translateY(8px); animation:pop .4s forwards; position:relative; }
+  @keyframes pop { to{opacity:1; transform:translateY(0)} }
+  .chunk.a { background:var(--blue); }
+  .chunk.be { background:var(--yellow); color:var(--coral); }
+  .chunk.gt { background:var(--mint); }
+  .chunk.b { background:var(--coral); color:white; }
+  .chunk.t { background:var(--purple); color:white; }
+  .chunk-note { font-size:11px; font-weight:600; color:var(--text-light); display:block; text-align:center; margin-top:3px; }
+  .chunk.flash { animation:pop .4s forwards, flash .8s .45s; }
+  @keyframes flash { 0%,100%{transform:scale(1)} 30%{transform:scale(1.18)} }
+  .rule-chip { display:inline-block; padding:5px 12px; border-radius:12px; font-size:13px; font-weight:800; margin-top:8px; background:var(--yellow-soft); }
+
+  /* 时光机 */
+  .tm-lever { text-align:center; margin:12px 0; }
+  .tm-steps { margin:10px 0; }
+  .tm-step { background:var(--bg); border-radius:12px; padding:9px 12px; font-size:13px; line-height:1.5; margin-bottom:7px; opacity:0; transform:translateX(-10px); transition:all .4s; }
+  .tm-step.show { opacity:1; transform:translateX(0); }
+  .tm-step b { color:var(--coral); }
+  .drop-ing { display:inline-block; animation:dropIng .8s forwards; }
+  @keyframes dropIng { to{ transform:translateY(26px) rotate(30deg); opacity:0; } }
+
+  /* 缩写压缩机 */
+  .sq-card { background:var(--bg); border-radius:16px; padding:14px; margin-bottom:10px; text-align:center; }
+  .sq-full { font-size:24px; font-weight:800; display:inline-block; transition:all .3s; }
+  .sq-full.squeezed { animation:squeeze .5s; color:var(--coral); }
+  @keyframes squeeze { 0%{letter-spacing:3px} 50%{transform:scaleX(.65)} 100%{transform:scaleX(1)} }
+  .sq-ex { font-size:13px; color:var(--text-light); margin-top:8px; }
+
+  /* 海滩寻宝 */
+  .beach-scene { position:relative; height:330px; border-radius:18px; overflow:hidden; box-shadow:var(--shadow-sm);
+    background:linear-gradient(180deg,#BDE9FF 0%,#BDE9FF 42%,#63CBF2 42%,#3FBBEE 60%,#FBE7AF 60%,#F5D689 100%); }
+  .beach-item { position:absolute; font-size:30px; cursor:pointer; transition:transform .2s; user-select:none; filter:drop-shadow(0 2px 2px rgba(0,0,0,.15)); }
+  .beach-item:active { transform:scale(1.25); }
+  .beach-item.found::after { content:'✅'; position:absolute; top:-10px; right:-12px; font-size:14px; }
+  .beach-deco { position:absolute; font-size:26px; pointer-events:none; user-select:none; }
+  .beach-people { position:absolute; font-size:34px; cursor:pointer; user-select:none; }
+  .found-chips { display:flex; gap:6px; flex-wrap:wrap; margin-top:10px; }
+  .found-chip { background:var(--mint); border-radius:10px; padding:4px 9px; font-size:12px; font-weight:700; animation:pop .3s forwards; }
+
+  /* 句子小医院 */
+  .sent-box { font-size:18px; font-weight:700; text-align:center; margin:14px 0; line-height:1.7; }
+  .bad-word { background:var(--yellow); padding:2px 8px; border-radius:8px; cursor:pointer; transition:all .3s; display:inline-block; text-decoration:line-through; text-decoration-color:var(--coral); }
+  .bad-word.fixed { background:var(--mint); text-decoration:none; transform:scale(1.08); }
+  .sparkle { position:fixed; font-size:22px; pointer-events:none; z-index:9999; animation:spark 1s forwards; }
+  @keyframes spark { to{ transform:translateY(-40px) scale(1.6); opacity:0; } }
+
+  /* 词汇翻卡 */
+  .vocab-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+  .flip { perspective:800px; height:96px; cursor:pointer; }
+  .flip-in { position:relative; width:100%; height:100%; transition:transform .5s; transform-style:preserve-3d; }
+  .flip.on .flip-in { transform:rotateY(180deg); }
+  .flip-face { position:absolute; width:100%; height:100%; backface-visibility:hidden; border-radius:14px; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:6px; box-shadow:var(--shadow-sm); }
+  .flip-front { background:var(--bg); }
+  .flip-front .w { font-size:16px; font-weight:800; text-align:center; }
+  .flip-back { background:var(--mint); transform:rotateY(180deg); text-align:center; font-size:13px; line-height:1.4; }
+  .cefr { font-size:10px; font-weight:800; padding:1px 6px; border-radius:7px; background:var(--blue); margin-top:3px; }
+
+  /* en 翻译 */
+  .en { border-bottom:1px dashed rgba(122,110,130,.35); cursor:pointer; user-select:none; -webkit-touch-callout:none; padding:0 2px; border-radius:3px; }
+  .en:active { background:rgba(255,224,122,.5); }
+  #transBubble { position:fixed; background:white; border-radius:14px; padding:12px 16px; box-shadow:0 8px 24px rgba(0,0,0,.2); z-index:99999; min-width:150px; max-width:280px; text-align:center; border:2px solid var(--coral); animation:slideUp .2s; }
+  #transBubble .bubble-en { font-size:14px; font-weight:700; margin-bottom:4px; }
+  #transBubble .bubble-cn { font-size:16px; font-weight:800; color:var(--coral); margin-bottom:8px; }
+  #transBubble .bubble-speak { background:var(--blue); border:none; padding:6px 14px; border-radius:12px; font-weight:700; font-size:12px; cursor:pointer; font-family:inherit; }
+
+  .report-sec { background:var(--bg); border-radius:14px; padding:12px 14px; margin-bottom:10px; }
+  .report-sec h3 { font-size:13px; font-weight:800; margin-bottom:8px; }
+  .report-sec .item { font-size:13px; line-height:1.6; padding:2px 0; }
+  .badge { display:inline-block; padding:2px 8px; border-radius:8px; font-size:11px; font-weight:700; margin-right:4px; }
+  .badge-red { background:#FFD6D6; color:#C53030; }
+  .badge-green { background:#D6F5DC; color:#2F855A; }
+
+  .confetti { position:fixed; top:-10px; width:9px; height:9px; z-index:9999; animation:fall 3s linear forwards; }
+  @keyframes fall { to{ transform:translateY(100vh) rotate(720deg); } }
+
+  /* 7月18日 · 露营与滑雪课次 */
+  .unit-heading { display:flex; align-items:center; gap:9px; margin:18px 2px 9px; color:var(--text); }
+  .unit-heading::after { content:""; height:2px; flex:1; background:linear-gradient(90deg,var(--blue),transparent); }
+  .unit-heading .date { font-size:11px; font-weight:900; letter-spacing:.06em; padding:4px 8px; border-radius:999px; background:var(--text); color:white; }
+  .unit-heading strong { font-size:14px; }
+  .source-note { padding:10px 12px; border:1px solid #DCE8EE; border-radius:13px; background:#F8FCFD; color:var(--text-light); font-size:12px; line-height:1.65; }
+  .plan-rail { position:relative; display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:5px; padding:20px 5px 9px; margin:12px 0; }
+  .plan-rail::before { content:""; position:absolute; left:5%; right:5%; bottom:3px; height:5px; border-radius:5px; background:repeating-linear-gradient(90deg,#7A6E82 0 16px,transparent 16px 24px); opacity:.35; }
+  .rail-car { min-height:76px; border:2px solid #DCE8EE; border-radius:15px 15px 11px 11px; padding:8px 4px; background:white; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; box-shadow:0 4px 0 #DCE8EE; }
+  .rail-car b { font-size:clamp(12px,3.4vw,15px); line-height:1.25; overflow-wrap:anywhere; }
+  .rail-car small { color:var(--text-light); font-size:9px; margin-top:4px; }
+  .rail-car.be { background:#E9F7FC; border-color:var(--blue); }
+  .rail-car.going { background:#FFF4D0; border-color:var(--yellow); }
+  .rail-car.verb { background:#E7F8EF; border-color:var(--mint); }
+  .choice-strip { display:flex; gap:7px; overflow-x:auto; padding:4px 1px 9px; scrollbar-width:none; }
+  .choice-strip::-webkit-scrollbar { display:none; }
+  .choice-chip { flex:0 0 auto; min-height:44px; border:2px solid #E1E8EC; border-radius:14px; background:white; padding:8px 12px; font-weight:800; color:var(--text); }
+  .choice-chip.active { border-color:var(--coral); background:#FFF0E9; }
+  .gear-layout { display:grid; grid-template-columns:1fr; gap:12px; }
+  .gear-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:8px; }
+  .gear { min-height:82px; border:2px solid #E0E9EC; border-radius:16px; background:#fff; padding:8px 4px; display:grid; place-items:center; text-align:center; font-weight:800; font-size:11px; color:var(--text); }
+  .gear span { display:block; font-size:28px; line-height:1.1; }
+  .gear.packed { background:#E7F8EF; border-color:var(--green); color:#246B3C; }
+  .pack-zone { position:relative; min-height:150px; border:3px dashed var(--coral); border-radius:22px; background:linear-gradient(145deg,#FFF6E7,#FFE9DF); display:grid; place-items:center; text-align:center; padding:18px; overflow:hidden; }
+  .pack-zone::after { content:"🎒"; position:absolute; right:-6px; bottom:-18px; font-size:92px; opacity:.12; }
+  .pack-zone strong { position:relative; z-index:1; font-size:17px; }
+  .ski-scene { position:relative; min-height:300px; border-radius:20px; overflow:hidden; background:linear-gradient(#BEE7FA 0 42%,#F9FCFF 42% 100%); border:2px solid #DCE8EE; }
+  .ski-scene::before { content:""; position:absolute; left:-12%; right:-12%; bottom:-30%; height:68%; background:#EAF5FA; clip-path:polygon(0 76%,24% 22%,43% 68%,65% 10%,100% 72%,100% 100%,0 100%); }
+  .ski-pin { position:absolute; z-index:2; min-width:48px; min-height:48px; border:2px solid white; border-radius:15px; background:rgba(255,255,255,.92); box-shadow:var(--shadow-sm); display:grid; place-items:center; font-size:25px; }
+  .ski-pin.found { border-color:var(--green); background:#E7F8EF; }
+  .lesson-card { border:2px solid #E0E9EC; border-radius:18px; padding:13px; margin-bottom:10px; background:white; }
+  .lesson-card.good { border-left:7px solid var(--green); }
+  .lesson-card.repair { border-left:7px solid var(--yellow); }
+  .lesson-label { font-size:10px; font-weight:900; letter-spacing:.06em; color:var(--text-light); text-transform:uppercase; }
+  .lesson-sentence { margin:7px 0; font-size:15px; font-weight:800; line-height:1.55; }
+  .lesson-reason { display:none; padding:9px 10px; border-radius:12px; background:var(--bg); color:var(--text-light); font-size:12px; line-height:1.6; }
+  .lesson-card.open .lesson-reason { display:block; }
+  .vocab-filter { display:flex; gap:6px; flex-wrap:wrap; margin-bottom:10px; }
+  .vocab-filter button { border:0; border-radius:999px; background:#EDF3F5; padding:8px 11px; font-size:12px; font-weight:800; color:var(--text); }
+  .vocab-filter button.active { background:var(--text); color:white; }
+  .vocab718-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px; }
+  .vocab718-card { min-height:82px; border:2px solid #E0E9EC; border-radius:16px; background:white; padding:10px; text-align:left; }
+  .vocab718-card.seen { border-color:var(--blue-deep); background:#EEF9FD; }
+  .vocab718-card b { display:block; font-size:14px; overflow-wrap:anywhere; }
+  .vocab718-card small { display:block; margin-top:4px; color:var(--text-light); }
+  .dialogue { display:flex; flex-direction:column; gap:8px; margin:12px 0; }
+  .bubble { max-width:88%; border-radius:18px 18px 18px 5px; padding:11px 13px; background:#EDF8FC; font-weight:700; line-height:1.5; }
+  .bubble.me { margin-left:auto; border-radius:18px 18px 5px 18px; background:#FFF0E9; }
+  .wrong-summary { padding:10px 12px; border-radius:13px; background:#FFF4E0; font-size:12px; line-height:1.65; }
+  .sr-only { position:absolute!important; width:1px!important; height:1px!important; padding:0!important; margin:-1px!important; overflow:hidden!important; clip:rect(0,0,0,0)!important; white-space:nowrap!important; border:0!important; }
+  @media (min-width:44rem){ .app{max-width:47.5rem}.gear-layout{grid-template-columns:1.45fr .8fr}.vocab718-grid{grid-template-columns:repeat(3,minmax(0,1fr))} }
+  @media (max-width:22.5rem){ .plan-rail{grid-template-columns:repeat(5,4rem);overflow-x:auto}.gear-grid{grid-template-columns:repeat(2,1fr)} }
+  @media (prefers-reduced-motion:reduce){ *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important} }
+</style>
+</head>
+<body>
+<div class="app" id="app">
+
+  <div id="topbar" class="topbar hidden">
+    <div class="pill" onclick="goHome()">← 首页</div>
+    <div class="pill" id="whoPill">🧒 Eddey</div>
+    <div class="pill">⭐ <span id="starCount">0</span></div>
+  </div>
+
+  <!-- 首页 -->
+  <div id="home" class="card home-hero">
+    <div class="home-emoji">🔮⚙️🎧</div>
+    <div class="home-title">一般将来时<br>四大法宝</div>
+    <div class="home-sub">Eddey 英语复习 · 2026年7月30日 · 三单巩固 × will / be going to</div>
+
+    <div class="home-msg">
+      <strong>这节课学了两大块：</strong><br>
+      <strong>⚙️ 复习·三单</strong> · He plays / She watches / It studies（一般现在时）<br>
+      <strong>🔮 新授·将来时</strong> · will + 原形（预测·承诺） vs be going to + 原形（计划·打算）<br>
+      <strong>✂️ 缩写</strong> · I'll / He'll / won't（不是 willn't！）<br>
+      <strong>🎧 听写训练营</strong> · 下节课要听写例句，先来磨耳朵！<br>
+      推荐路线：学了啥 → 三单变形机 → 法宝分拣台 → 时光机 → 时间信号 → 小医院 → 听写训练营 → 独立判断。
+    </div>
+
+    <div class="source-note">📎 材料依据：2026-07-30 补习班老师课堂反馈（复习三单 + 新授一般将来时）· 教材 Lesson 21–22 原句。页面只收录知识点与例句。</div>
+
+    <div style="background:var(--yellow-soft); border-radius:14px; padding:11px; margin:12px 0; font-size:12px; line-height:1.6;">
+      🎧 <strong>下节课要听写！</strong>老师说的：熟记将来时种类，<b>下节课进行例句听写</b>。今天先去「听写训练营」把 6 个例句听熟、选对，明天就稳了 😊
+    </div>
+    <div style="background:#FFF4E0; border-radius:14px; padding:11px; margin:12px 0; font-size:12px; line-height:1.6;">
+      📢 <strong>先测声音：</strong>手机首次要先点一下，浏览器才允许朗读。
+      <button id="testVoiceBtn" class="btn btn-yellow btn-small" style="margin-top:8px; width:100%;" onclick="testVoice()">🔊 点这里测试声音</button>
+    </div>
+
+    <div id="mapBox" style="text-align:left;"></div>
+  </div>
+
+  <div id="stageBox" class="card hidden">
+    <div class="stage-title" id="stageTitle"></div>
+    <div class="stage-sub" id="stageSub"></div>
+    <div id="stageContent"></div>
+  </div>
+</div>
+
+<script>
+/* ========== 语音：预合成真人音 mp3 优先，浏览器 TTS 兜底 ========== */
+// 预合成音频目录（爸爸电脑用 edge-tts 小晓/Aria 生成；文件名 = FNV-1a 哈希）
+// _manifest.json 已更新；当前仓库尚无锁定音色 Aria 的 mp3，因此直接走浏览器兜底，避免逐句 404。
+// 待爸爸电脑按 manifest 生成 Aria 文件后，将这里恢复为 "audio/preply-going-to/" 即可无缝启用。
+const AUDIO_DIR = "audio/eddey_future_tense_20260730/";
+let bcAudio = null;      // 复用单个 Audio 元素（移动端更兼容）
+let audioToken = 0;      // 打断/过期保护
+let voicesReady=false, enVoice=null, voiceUnlocked=false;
+
+// 必须与生成脚本 fnv() 一致：对 (lang+"|"+text) 的 UTF-8 字节做 FNV-1a，输出 8 位十六进制
+function audioHash(s){ const b=new TextEncoder().encode(s); let x=0x811c9dc5>>>0; for(let i=0;i<b.length;i++){ x^=b[i]; x=Math.imul(x,0x01000193)>>>0; } return ('0000000'+x.toString(16)).slice(-8); }
+
+// 内嵌预合成神经音（edge-tts Aria，语速 -10%；键 = FNV-1a('en|'+文本)）
+const AUDIO_DATA={};
+
+
+function loadVoices(){
+  if(!('speechSynthesis' in window))return;
+  const vs=window.speechSynthesis.getVoices();
+  if(!vs.length)return;
+  enVoice = vs.find(v=>/en-US/i.test(v.lang)&&/natural|aria|jenny|guy/i.test(v.name)) || vs.find(v=>v.lang==='en-US') || vs.find(v=>v.lang&&v.lang.startsWith('en-US')) || vs.find(v=>v.lang&&v.lang.startsWith('en')) || vs[0];
+  voicesReady=true;
+}
+if('speechSynthesis' in window){
+  loadVoices();
+  if(window.speechSynthesis.onvoiceschanged!==undefined) window.speechSynthesis.onvoiceschanged=loadVoices;
+  setInterval(()=>{ if(window.speechSynthesis.paused) window.speechSynthesis.resume(); },10000);
+}
+function unlockVoice(){
+  if(voiceUnlocked||!('speechSynthesis' in window))return;
+  try{ const u=new SpeechSynthesisUtterance(' '); u.volume=0; window.speechSynthesis.speak(u); voiceUnlocked=true; }catch(e){}
+}
+// 浏览器 TTS（仅当预合成 mp3 缺失/失败时兜底）
+function ttsSpeak(text, slow){
+  if(!('speechSynthesis' in window)){ alert('⚠️ 浏览器不支持朗读。请用最新版 Chrome / Safari / Edge。'); return; }
+  window.speechSynthesis.cancel();
+  if(!voicesReady) loadVoices();
+  setTimeout(()=>{
+    const u=new SpeechSynthesisUtterance(text);
+    u.lang='en-US'; u.rate=slow?0.55:0.92; u.pitch=1.05; u.volume=1;
+    if(enVoice) u.voice=enVoice;
+    window.speechSynthesis.speak(u); voiceUnlocked=true;
+  },50);
+}
+// 主朗读：先放真人神经音 mp3，放不出再退回浏览器 TTS；慢速用降速播放
+function speak(text, slow=false){
+  audioToken++;
+  const myToken=audioToken;
+  const stale=()=>myToken!==audioToken;
+  try{ if(window.speechSynthesis) window.speechSynthesis.cancel(); }catch(e){}
+  const embedded=(typeof AUDIO_DATA!=='undefined')?AUDIO_DATA[audioHash('en|'+text)]:null;
+  if((embedded||AUDIO_DIR) && typeof Audio!=='undefined'){
+    if(!bcAudio){
+      bcAudio=new Audio();
+      bcAudio.setAttribute('playsinline','');
+      bcAudio.preload='auto';
+      try{ document.body.appendChild(bcAudio); }catch(e){}
+    }
+    const a=bcAudio;
+    try{ a.pause(); }catch(e){}
+    const fb=()=>{ if(stale())return; ttsSpeak(text, slow); };
+    a.onended=null;
+    a.onerror=fb;
+    a.src=embedded||(AUDIO_DIR+audioHash('en|'+text)+'.mp3');
+    try{ a.currentTime=0; }catch(e){}
+    try{ a.playbackRate=slow?0.7:1; }catch(e){}
+    const p=a.play();
+    if(p&&typeof p.catch==='function') p.catch(fb);
+    voiceUnlocked=true;
+    return;
+  }
+  ttsSpeak(text, slow);
+}
+function speakTimes(text, n, slow){
+  let i=0;
+  (function go(){ if(i>=n)return; speak(text, slow); i++; setTimeout(go, slow?2600:1800); })();
+}
+function testVoice(){
+  unlockVoice();
+  setTimeout(()=>{ speak('I am going to the shopping mall tomorrow.'); const b=document.getElementById('testVoiceBtn'); if(b){b.textContent='✅ 声音正常！'; b.style.background='var(--mint)';} },100);
+}
+
+/* ========== 词典：长按翻译 ========== */
+/* ========== 词典：长按翻译 ========== */
+const DICT={
+  'will':'将要','will not':'不会',"won't":'不会(will not 的缩写)',"I'll":'我将要(I will)',"he'll":'他将要',"she'll":'她将要',"we'll":'我们将要',"they'll":'他们将要',"you'll":'你/你们将要',
+  'be going to':'打算/将要','going to':'打算','I am going to':'我打算…',"I'm going to":'我打算…',
+  'future':'将来','tomorrow':'明天','tonight':'今晚','this evening':'今天晚上','soon':'很快','later':'稍后','next week':'下周','next year':'明年','this weekend':'这个周末','every day':'每天','usually':'通常','always':'总是','on Mondays':'每周一',
+  'play':'玩/踢','plays':'玩/踢(三单)','watch':'看','watches':'看(三单)','study':'学习','studies':'学习(三单)','go':'去','goes':'去(三单)','have':'有','has':'有(三单)','eat':'吃','eats':'吃(三单)','read':'读','reads':'读(三单)','wash':'洗','washes':'洗(三单)','fly':'飞','flies':'飞(三单)','buy':'买','buys':'买(三单)','rain':'下雨','rains':'下雨(三单)',
+  'football':'足球','play football':'踢足球','watch TV':'看电视','buy a cake':'买蛋糕','visit grandma':'看望奶奶','do homework':'做作业','help':'帮助','help you':'帮助你','cake':'蛋糕','sunny':'晴朗的','cloudy':'多云的',
+  'He plays football every day.':'他每天踢足球。',
+  'She watches TV on Saturdays.':'她每周六看电视。',
+  'The sheep eats grass.':'羊吃草。',
+  'It will rain tomorrow.':'明天会下雨。',
+  'I will help you.':'我会帮助你的。',
+  "I won't be late.":"我不会迟到的。",
+  'I am going to buy a cake.':'我打算买一个蛋糕。',
+  'We are going to visit grandma this weekend.':'我们这个周末打算去看望奶奶。',
+  'He is going to play football tomorrow.':'他明天打算踢足球。',
+  'Will you come tomorrow?':'你明天会来吗？',
+  'The sun rises in the east.':'太阳从东方升起。',
+  'She studies English every morning.':'她每天早上学英语。',
+  'My dad goes to work by bus.':'我爸爸坐公交车上班。',
+  'He will play football tomorrow.':'他明天要踢足球。',
+  'They are going to swim next week.':'他们下周打算去游泳。',
+  'not':'不','no':'没有','and':'和','a':'一个(辅音前)','an':'一个(元音前)','the':'这个/那个','with':'和……一起','my':'我的','his':'他的','her':'她的','in':'在……里','on':'在……上/在某天','at':'在(时刻)',
+};
+
+function getTrans(t){
+  if(!t)return null;
+  const c=t.trim().replace(/[.,!?;:'"]+$/,'').trim();
+  if(DICT[c])return DICT[c];
+  if(DICT[t.trim()])return DICT[t.trim()];
+  const lo=c.toLowerCase();
+  for(const k in DICT) if(k.toLowerCase()===lo) return DICT[k];
+  const ws=c.split(/\s+/);
+  if(ws.length>1){
+    return ws.map(w=>{ const wc=w.replace(/[.,!?;:'"]+$/,''); if(DICT[wc])return DICT[wc]; const wl=wc.toLowerCase(); for(const k in DICT) if(k.toLowerCase()===wl)return DICT[k]; return wc; }).join(' · ');
+  }
+  return null;
+}
+function showBubble(text,x,y,noRead){
+  hideBubble();
+  const tr=getTrans(text); if(!tr)return;
+  const b=document.createElement('div'); b.id='transBubble';
+  const sb=noRead?'':`<button class="bubble-speak" onclick="event.stopPropagation(); speak('${text.replace(/'/g,"\\'")}',true);">🔊 听</button>`;
+  b.innerHTML=`<div class="bubble-en">${text}</div><div class="bubble-cn">${tr}</div>${sb}`;
+  document.body.appendChild(b);
+  const r=b.getBoundingClientRect();
+  let l=x-r.width/2, t=y-r.height-18;
+  if(l<10)l=10; if(l+r.width>window.innerWidth-10)l=window.innerWidth-r.width-10; if(t<10)t=y+28;
+  b.style.left=l+'px'; b.style.top=t+'px';
+  setTimeout(()=>{ document.addEventListener('click',hideBubble,{once:true}); document.addEventListener('touchstart',hideBubble,{once:true}); },100);
+}
+function hideBubble(){ const b=document.getElementById('transBubble'); if(b)b.remove(); }
+function setupLongPress(){
+  document.addEventListener('touchstart',e=>{ const el=e.target.closest('.en'); if(!el)return; lpTarget=el; const tc=e.touches[0]; const nr=el.classList.contains('noread'); lpTimer=setTimeout(()=>{ if(lpTarget===el){ showBubble(el.textContent||'',tc.clientX,tc.clientY,nr); if(navigator.vibrate)navigator.vibrate(30);} },500); },{passive:true});
+  document.addEventListener('touchend',()=>{clearTimeout(lpTimer);lpTarget=null;},{passive:true});
+  document.addEventListener('touchmove',()=>{clearTimeout(lpTimer);lpTarget=null;},{passive:true});
+  document.addEventListener('mousedown',e=>{ const el=e.target.closest('.en'); if(!el)return; lpTarget=el; const nr=el.classList.contains('noread'); lpTimer=setTimeout(()=>{ if(lpTarget===el) showBubble(el.textContent||'',e.clientX,e.clientY,nr); },500); });
+  document.addEventListener('mouseup',()=>{clearTimeout(lpTimer);lpTarget=null;});
+  document.addEventListener('dblclick',e=>{ const el=e.target.closest('.en'); if(!el)return; e.preventDefault(); showBubble(el.textContent||'',e.clientX,e.clientY,el.classList.contains('noread')); });
+}
+function $(id){return document.getElementById(id);}
+function en(t){ const s=String(t).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); return `<span class="en">${s}</span>`; }
+function enT(t){ const s=String(t).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); return `<span class="en noread">${s}</span>`; }
+
+/* ========== 数据 ========== */
+// 三单变形机：主语 × 动作（三单结尾自动变身）
+const S_SUBJ=[
+  { s:'I', third:false, note:'I 不是三单 → 动词用原形 play' },
+  { s:'He', third:true, note:'He 是三单 → 动词要变身！' },
+  { s:'She', third:true, note:'She 是三单 → 动词要变身！' },
+  { s:'It', third:true, note:'It 是三单 → 动词要变身！' },
+  { s:'My dad', third:true, note:'My dad = 一个人（三单）→ 动词要变身！' },
+  { s:'The sheep', third:true, note:'The sheep = 一只羊（三单）→ 动词要变身！' },
+];
+const S_VERB=[
+  { emoji:'⚽', base:'play', third:'plays', rule:'一般动词直接 +s', rest:'football every day' },
+  { emoji:'📺', base:'watch', third:'watches', rule:'ch 结尾 +es', rest:'TV on Saturdays' },
+  { emoji:'📚', base:'study', third:'studies', rule:'辅音+y → 变 y 为 i +es', rest:'English every morning' },
+  { emoji:'🚌', base:'go', third:'goes', rule:'o 结尾 +es', rest:'to work by bus' },
+  { emoji:'🍰', base:'have', third:'has', rule:'特殊变化 have → has', rest:'a cake' },
+  { emoji:'🛒', base:'buy', third:'buys', rule:'元音+y 只 +s（buys）', rest:'apples every week' },
+];
+const S_TRY=[
+  { q:['He ',' football every day.'], opts:['play','plays','playing'], a:1, why:'He 是三单，一般动词 +s → plays。' },
+  { q:['She ',' TV on Saturdays.'], opts:['watch','watchs','watches'], a:2, why:'watch 以 ch 结尾 → +es = watches。' },
+  { q:['My dad ',' English every morning.'], opts:['studys','studies','study'], a:1, why:'study 辅音+y → 变 y 为 i +es = studies。' },
+  { q:['The sheep ',' grass.'], opts:['eat','eats','eating'], a:1, why:'The sheep 一只羊是三单 → eats（教材原句！）。' },
+  { q:['I ',' football every day.'], opts:['play','plays','playes'], a:0, why:'I 不是三单，动词用原形 play。' },
+  { q:['He ',' a new bike.'], opts:['have','haves','has'], a:2, why:'have 特殊变化 → has，不是 haves！' },
+];
+// 将来时光机：现在正在做 → 打算做（be going to）
+const TM=[
+  { subj:'I', be:'am', ving:'buying', base:'buy', rest:'a cake', time:'this weekend',
+    now:'I am buying a cake.', future:'I am going to buy a cake this weekend.',
+    real:false, why:'"am buying" 是正在买；说这周末的<b>计划</b> → am going to buy，buy 脱掉 -ing 变原形。' },
+  { subj:'He', be:'is', ving:'playing', base:'play', rest:'football', time:'tomorrow',
+    now:'He is playing football.', future:'He is going to play football tomorrow.',
+    real:false, why:'be 是锚不动，插进 going to，playing 变回原形 play，挂上时间牌 tomorrow。' },
+  { subj:'They', be:'are', ving:'swimming', base:'swim', rest:'', time:'next week',
+    now:'They are swimming.', future:'They are going to swim next week.',
+    real:false, why:'swimming 双写了 m，回原形 swim 时把多余的 m 也脱掉！' },
+];
+const TM_TRY=[
+  { q:'现在说：She is watching TV. 要说"她今晚打算看电视"，怎么说？',
+    opts:['She is going to watch TV this evening.','She is going to watching TV this evening.','She going to watch TV this evening.'], a:0,
+    explain:'be going to + 动词原形：watching 脱掉 -ing → watch。第2个忘了脱，第3个丢了 is。' },
+  { q:'现在说：We are visiting grandma. 要说"我们这周末打算看望奶奶"，怎么说？',
+    opts:['We are going to visit grandma this weekend.','We are going to visiting grandma this weekend.','We will visiting grandma this weekend.'], a:0,
+    explain:'are going to + 原形 visit。will 后面也要跟原形，但不能跟 visiting！' },
+];
+// 缩写压缩机：will 家族
+const SQ=[
+  { full:'I will', short:"I'll", ex:"I'll help you." },
+  { full:'He will', short:"He'll", ex:"He'll play football tomorrow." },
+  { full:'She will', short:"She'll", ex:"She'll buy a cake." },
+  { full:'We will', short:"We'll", ex:"We'll visit grandma this weekend." },
+  { full:'They will', short:"They'll", ex:"They'll swim next week." },
+  { full:'will not', short:"won't", ex:"I won't be late." },
+];
+// 发音诊所（本节重点词）
+const PRON=[
+  { w:'will', ipa:'/wɪl/', cn:'将要', syll:['WI','ll'], stress:'WI',
+    tip:'短短的 /wɪ/ + 清楚的 ll 结尾，舌头抵住上牙龈。别读成"well"。' },
+  { w:"won't", ipa:'/wəʊnt/', cn:'不会', syll:['WO',"NT"], stress:'WO',
+    tip:'won\'t = will not 的缩写，读"窝-恩特"一气呵成，结尾 t 轻轻收住。' },
+  { w:'tomorrow', ipa:'/təˈmɒr·əʊ/', cn:'明天', syll:['te','MO','rrow'], stress:'MO',
+    tip:'重音在中间 <b>MO</b>！前面 te 轻轻带过，别读成"托-莫-罗"三个一样重。' },
+  { w:'future', ipa:'/ˈfjuː·tʃə/', cn:'将来', syll:['FU','ture'], stress:'FU',
+    tip:'<b>FU</b> 读"fju"（像"飞优"快速连读），后面 -ture 是轻轻的"车"音。' },
+];
+// 句子小医院（三单 + 将来时典型错误）
+const HOSPITAL=[
+  { parts:['He ',['play','plays'],' football every day.'], tag:'三单·+s',
+    good:'He plays football every day.',
+    why:'He 是三单！主语是 He/She/It/一个人时，一般现在时的动词要 +s：<b>plays</b>。' },
+  { parts:['She ',['watchs','watches'],' TV on Saturdays.'], tag:'三单·+es',
+    good:'She watches TV on Saturdays.',
+    why:'watch 以 <b>ch</b> 结尾，三单要 +es：<b>watches</b>。同类：wash→washes, guess→guesses, mix→mixes。' },
+  { parts:['My dad ',['studys','studies'],' English every morning.'], tag:'三单·y→ies',
+    good:'My dad studies English every morning.',
+    why:'study 是"辅音+y"结尾，要把 y 变 i 再 +es：<b>studies</b>。但 say/pay/play/buy 是"元音+y"，只 +s！' },
+  { parts:['It will ',['rains','rain'],' tomorrow.'], tag:'将来时·will+原形',
+    good:'It will rain tomorrow.',
+    why:'<b>will 后面永远跟动词原形</b>！不管主语是谁，will 后面的动词不变身：will rain（教材原句）。' },
+  { parts:['He is going to ',['plays','play'],' football tomorrow.'], tag:'将来时·going to+原形',
+    good:'He is going to play football tomorrow.',
+    why:'be going to 后面也跟<b>动词原形</b>：is going to play。三单的 s 只长在"一般现在时"的句子里，将来时不用。' },
+  { parts:['I ',['will','am will'],' help you.'], tag:'将来时·will 直接加',
+    good:'I will help you.',
+    why:'will 是"小帮手"（情态动词），直接放在主语后面就行：<b>I will help you</b>，前面不需要 am/is/are。' },
+];
+// 时间信号分拣机：一般现在时 vs 一般将来时
+const SIGNALS=[
+  { w:'every day', cn:'每天', bin:'present' },
+  { w:'usually', cn:'通常', bin:'present' },
+  { w:'always', cn:'总是', bin:'present' },
+  { w:'on Mondays', cn:'每周一', bin:'present' },
+  { w:'tomorrow', cn:'明天', bin:'future' },
+  { w:'next week', cn:'下周', bin:'future' },
+  { w:'this evening', cn:'今晚', bin:'future' },
+  { w:'soon', cn:'很快', bin:'future' },
+];
+// will 法宝 vs going to 法宝分拣台
+const FORECAST=[
+  { card:'🌧️ 看乌云密布，你说："要下雨了！"', ans:'will', sent:'It will rain tomorrow.',
+    why:'对天气的<b>预测</b>（没有计划，只是判断）→ will。教材原句！' },
+  { card:'🤝 弟弟够不到书架上的书，你说："我来帮你！"', ans:'will', sent:'I will help you.',
+    why:'说话时<b>临时决定/承诺</b> → will。' },
+  { card:'🎂 你早就想好了，周末要给妈妈买个蛋糕。', ans:'going', sent:'I am going to buy a cake.',
+    why:'<b>早就计划好</b>的事 → be going to（教材原句！）。' },
+  { card:'📝 你看着作业清单说："今晚我打算先写数学。"', ans:'going', sent:'I am going to do math homework first this evening.',
+    why:'按计划清单说<b>打算</b> → be going to。' },
+  { card:'⏰ 朋友担心迟到，你安慰他："我们不会迟到的！"', ans:'will', sent:"We won't be late.",
+    why:'<b>预测/保证</b> → will（否定 = won\'t）。' },
+  { card:'👵 全家商量好了，这周末去看望奶奶。', ans:'going', sent:'We are going to visit grandma this weekend.',
+    why:'<b>商量好的计划</b> → be going to。' },
+  { card:'☀️ 天气预报员说："明天会是晴天。"', ans:'will', sent:'It will be sunny tomorrow.',
+    why:'天气预报 = <b>预测</b> → will。' },
+  { card:'🏊 暑假计划表上写着：下周开始学游泳。', ans:'going', sent:'I am going to swim next week.',
+    why:'计划表上的<b>打算</b> → be going to。' },
+];
+// 听写训练营（下节课要听写的例句类型）
+const DICTATION=[
+  { sent:'It will rain tomorrow.', cn:'明天会下雨。',
+    wrong:['It will rains tomorrow.','It is rain tomorrow.'], tip:'will + 原形 rain，时间牌 tomorrow 挂句尾。' },
+  { sent:'I will help you.', cn:'我会帮助你的。',
+    wrong:['I will helps you.','I am will help you.'], tip:'will 直接跟在主语后，后面用原形 help。' },
+  { sent:"I won't be late.", cn:'我不会迟到的。',
+    wrong:["I willn't be late.","I don't will be late."], tip:'will not 的缩写是 won\'t，不是 willn\'t！' },
+  { sent:'I am going to buy a cake.', cn:'我打算买一个蛋糕。',
+    wrong:['I am going to buys a cake.','I going to buy a cake.'], tip:'I 配 am；going to 后面用原形 buy。' },
+  { sent:'He is going to play football tomorrow.', cn:'他明天打算踢足球。',
+    wrong:['He is going to plays football tomorrow.','He going to play football tomorrow.'], tip:'He 配 is；将来时里 play 不加 s！' },
+  { sent:'She studies English every morning.', cn:'她每天早上学英语。',
+    wrong:['She studys English every morning.','She study English every morning.'], tip:'一般现在时三单：study → studies（y 变 i +es）。' },
+];
+// 用法变形台：肯定 / 否定 / 疑问
+const FEEDBACK=[
+  {id:'f-yes',kind:'good',tag:'肯定句',before:'He will play football tomorrow.',after:'He will play football tomorrow.',reason:'主语 + will + 动词原形 + 时间牌，will 谁也不挑，He/I/They 都能直接配。'},
+  {id:'f-going',kind:'good',tag:'肯定句·计划',before:'We are going to visit grandma this weekend.',after:'We are going to visit grandma this weekend.',reason:'be going to 表"早就想好"的计划，We 配 are，visit 用原形。'},
+  {id:'f-wont',kind:'good',tag:'否定句',before:"I won't be late.",after:"I won't be late.",reason:'will not 挤一挤 = won\'t。注意不是 willn\'t！'},
+  {id:'f-question',kind:'good',tag:'疑问句',before:'Will you come tomorrow?',after:'Will you come tomorrow?',reason:'疑问句把 will 提到最前面：Will + 主语 + 动词原形…？回答：Yes, I will. / No, I won\'t.'},
+  {id:'f-fix1',kind:'repair',tag:'常见错·will+三单',before:'It will rains tomorrow.',after:'It will rain tomorrow.',reason:'will 后面永远原形！三单的 s 只出现在一般现在时。'},
+  {id:'f-fix2',kind:'repair',tag:'常见错·going to+ing',before:'He is going to playing football.',after:'He is going to play football.',reason:'be going to 后面用原形 play，不是 playing。playing 属于"现在进行时"。'},
+];
+// 单词卡
+const VOCAB=[
+  { w:'will', cefr:'A1', cn:'将要' },
+  { w:"won't", cefr:'A1', cn:'不会（will not）' },
+  { w:'future', cefr:'A2', cn:'将来' },
+  { w:'tomorrow', cefr:'A1', cn:'明天' },
+  { w:'tonight', cefr:'A2', cn:'今晚' },
+  { w:'soon', cefr:'A1', cn:'很快' },
+  { w:'next week', cefr:'A1', cn:'下周' },
+  { w:'plan', cefr:'A2', cn:'计划' },
+  { w:'help', cefr:'A1', cn:'帮助' },
+  { w:'buy a cake', cefr:'A1', cn:'买蛋糕' },
+];
+// 独立判断任务
+const MISSION=[
+  {id:'730-s-play',q:'He ___ football every day.',opts:['plays','play','playing'],a:0,skill:'三单·+s',explain:'every day → 一般现在时；He 是三单 → plays。',say:'He plays football every day.'},
+  {id:'730-s-watch',q:'She ___ TV on Saturdays.',opts:['watches','watchs','watch'],a:0,skill:'三单·+es',explain:'ch 结尾 +es → watches。',say:'She watches TV on Saturdays.'},
+  {id:'730-s-study',q:'My dad ___ English every morning.',opts:['studies','studys','study'],a:0,skill:'三单·y→ies',explain:'辅音+y → y 变 i +es → studies。',say:'My dad studies English every morning.'},
+  {id:'730-s-has',q:'He ___ a new bike.',opts:['has','have','haves'],a:0,skill:'三单·have→has',explain:'have 特殊 → has。',say:'He has a new bike.'},
+  {id:'730-f-rain',q:'It will ___ tomorrow.（明天会下雨）',opts:['rain','rains','raining'],a:0,skill:'will+原形',explain:'will 后面永远用原形 rain。',say:'It will rain tomorrow.'},
+  {id:'730-f-wont',q:'"我不会迟到"英文是？',opts:["I won't be late.","I willn't be late.","I don't will be late."],a:0,skill:'won\'t 否定',explain:'will not = won\'t，不是 willn\'t。',say:"I won't be late."},
+  {id:'730-f-plan',q:'早就计划好周末买蛋糕，应该说——',opts:['I am going to buy a cake.','I will buying a cake.','I going to buy a cake.'],a:0,skill:'going to 表计划',explain:'计划好的事 → be going to + 原形；I 配 am。',say:'I am going to buy a cake.'},
+  {id:'730-f-predict',q:'看着乌云说"要下雨了"，应该用——',opts:['It will rain.','It is going to raining.','It rains.'],a:0,skill:'will 表预测',explain:'预测（没计划的判断）→ will + 原形。',say:'It will rain.'},
+  {id:'730-f-question',q:'"你明天会来吗？"英文怎么问？',opts:['Will you come tomorrow?','Do you will come tomorrow?','You will come tomorrow?'],a:0,skill:'Will 疑问句',explain:'Will 提到句首：Will + 主语 + 原形…？',say:'Will you come tomorrow?'},
+  {id:'730-signal',q:'下列哪个是"将来时"的时间信号词？',opts:['tomorrow','every day','usually'],a:0,skill:'时间信号词',explain:'tomorrow/next week/soon/this evening → 将来；every day/usually/always → 一般现在。',say:'It will rain tomorrow.'},
+];
+
+const APP_ID='eddey-future-tense-20260730';
+const APP_VERSION='1.0.0';
+let kid=null, stars=0, moduleStartedAt=Date.now(), activeModule=null;
+let prog={ done:{}, stars:0, log:[], attempts:[], wrongbook:{}, feedbackSeen:[], timeByModule:{}, totalMs:0 };
+const MODULES=[
+  { id:'recap',icon:'📋',t1:'这节课学了啥',t2:'2 大块 + 4 条核心规则（带例句朗读）' },
+  { id:'machine',icon:'⚙️',t1:'三单变形机 ⭐',t2:'点人称和动词，看 play→plays 怎么变身',star:true },
+  { id:'forecast',icon:'🔮',t1:'法宝分拣台 ⭐',t2:'will（预测·承诺） vs be going to（计划），8 个场景你来判',star:true },
+  { id:'timemachine',icon:'🕰️',t1:'将来时光机',t2:'is watching ➜ is going to watch（正在做 → 打算做）' },
+  { id:'contract',icon:'✂️',t1:'缩写压缩机',t2:"I will ➜ I'll，will not ➜ won't" },
+  { id:'signals',icon:'🚦',t1:'时间信号分拣',t2:'every day 走现在道，tomorrow 走将来道' },
+  { id:'pron',icon:'🔊',t1:'发音诊所',t2:"读顺 will / won't / tomorrow / future（可录音自测）" },
+  { id:'hospital',icon:'🔧',t1:'句子小医院 ⭐',t2:'6 个典型病句：三单 + 将来时（点一下治好）',star:true },
+  { id:'dictation',icon:'🎧',t1:'听写训练营 ⭐',t2:'下节课要听写！听句子选答案，6 句过关',star:true },
+  { id:'vocab',icon:'📒',t1:'单词卡',t2:'10 个核心词（翻卡 + 朗读 + CEFR 等级）' },
+  { id:'feedback',icon:'🧪',t1:'用法变形台',t2:'肯定 / 否定 / 疑问 + 2 个常踩的坑，点开看原因' },
+  { id:'mission',icon:'💬',t1:'独立判断任务',t2:'遮住提示独立判断；答错自动进错题本，定点回教' },
+  { id:'wrong',icon:'🔁',t1:'只重做错题',t2:'错一次进本，连续答对2次才解决' },
+];
+function emptyProgress(){ return {done:{},stars:0,log:[],attempts:[],wrongbook:{},feedbackSeen:[],timeByModule:{},totalMs:0}; }
+function normalizeProgress(p){ const n=Object.assign(emptyProgress(),p||{}); n.done=n.done||{}; n.log=Array.isArray(n.log)?n.log:[]; n.attempts=Array.isArray(n.attempts)?n.attempts:[]; n.wrongbook=n.wrongbook||{}; n.feedbackSeen=Array.isArray(n.feedbackSeen)?n.feedbackSeen:[]; n.timeByModule=n.timeByModule||{}; n.totalMs=Number(n.totalMs)||0; return n; }
+
+function storageKey(k){ return `dd:${k}:${APP_ID}:v2`; }
+function saveProg(){ if(kid) localStorage.setItem(storageKey(kid), JSON.stringify({schemaVersion:2,child:kid,app:APP_ID,version:APP_VERSION,stars,prog})); }
+function loadProg(k){
+  try{
+    const current=localStorage.getItem(storageKey(k));
+    if(current)return JSON.parse(current);
+    return null;
+  }catch(e){return null;}
+}
+function pickKid(k){
+  if(kid&&kid!==k)flushModuleTime();
+  kid=k;
+  document.querySelectorAll('.kid-card').forEach(el=>el.classList.toggle('active', el.dataset.kid===k));
+  const d=loadProg(k);
+  stars = d?d.stars||0:0;
+  prog = normalizeProgress(d&&d.prog);
+  $('mapBox').style.opacity='1'; $('mapBox').style.pointerEvents='auto';
+  $('whoPill').innerHTML = k==='kenton'?'👦 Kenton':'🧒 Eddey';
+  $('starCount').textContent=stars;
+  renderMap();
+}
+function renderMap(){
+  const moduleButtons=()=>MODULES.map(m=>{
+    const dn=prog.done[m.id];
+    const badge = dn ? `<span class="done-badge">✅${dn.ok}/${dn.total}</span>` : '';
+    return `<button class="map-btn ${m.star?'star':''}" onclick="openModule('${m.id}')">
+      <span class="icon">${m.icon}</span>
+      <span class="text"><div class="t1">${m.t1}</div><div class="t2">${m.t2}</div></span>
+      ${badge}
+    </button>`;
+  }).join('');
+  const left=Object.values(prog.wrongbook).filter(w=>!w.resolved).length;
+  $('mapBox').innerHTML=`
+    <div class="unit-heading"><span class="date">07·30</span><strong>三单复习 × 将来时四大法宝</strong></div>
+    ${moduleButtons()}
+    <button class="map-btn" onclick="openModule('report')">
+      <span class="icon">👨‍👩‍👧</span>
+      <span class="text"><div class="t1">学习记录 / 家长页</div><div class="t2">用时、尝试、错题本、JSON / Markdown 导入导出</div></span>
+    </button>`;
+}
+function addStar(n){ stars+=n; $('starCount').textContent=stars; saveProg(); }
+function flushModuleTime(){
+  if(!kid||!activeModule)return;
+  const ms=Math.max(0,Date.now()-moduleStartedAt);
+  prog.timeByModule[activeModule]=(prog.timeByModule[activeModule]||0)+ms;
+  prog.totalMs+=ms;
+  moduleStartedAt=Date.now(); activeModule=null; saveProg();
+}
+function markDone(id,ok,total){ prog.done[id]={ok,total}; prog.log.push({id,ok,total,ts:Date.now()}); if(activeModule===id)flushModuleTime(); else saveProg(); }
+function openModule(id){
+  if(!kid){ kid='eddey'; }
+  flushModuleTime(); activeModule=id;
+  moduleStartedAt=Date.now();
+  $('home').classList.add('hidden');
+  $('topbar').classList.remove('hidden');
+  $('stageBox').classList.remove('hidden');
+  window.scrollTo({top:0,behavior:'smooth'});
+  ({recap:renderRecap,machine:renderMachine,forecast:renderForecast,timemachine:renderTM,contract:renderContract,signals:renderSignals,pron:renderPron,hospital:renderHospital,dictation:renderDictation,vocab:renderVocab,feedback:renderFeedback,mission:()=>renderMission(false),wrong:renderWrong,report:renderReport}[id])();
+}
+function goHome(){
+  flushModuleTime();
+  $('topbar').classList.add('hidden'); $('stageBox').classList.add('hidden');
+  $('home').classList.remove('hidden'); renderMap();
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function setTitle(t,s){ $('stageTitle').textContent=t; $('stageSub').textContent=s; }
+function backBtn(){ return `<button class="btn btn-blue" style="width:100%; margin-top:14px;" onclick="goHome()">🏠 回模块地图</button>`; }
+function shuffle(a){ a=[...a]; for(let i=a.length-1;i>0;i--){const j=(Math.random()*(i+1))|0;[a[i],a[j]]=[a[j],a[i]];} return a; }
+function confetti(){ const cs=['#FFE07A','#A8D8EA','#FF9E7A','#B5EAD7','#C7B8EA']; for(let i=0;i<28;i++){ const c=document.createElement('div'); c.className='confetti'; c.style.left=Math.random()*100+'%'; c.style.background=cs[(Math.random()*cs.length)|0]; c.style.animationDelay=(Math.random()*.5)+'s'; c.style.borderRadius=Math.random()>.5?'50%':'0'; document.body.appendChild(c); setTimeout(()=>c.remove(),3300);} }
+
+/* ========== 1. 这节课学了啥 ========== */
+/* ========== 1. 这节课学了啥 ========== */
+function renderRecap(){
+  setTitle('📋 这节课学了啥','点 🔊 听例句。看不懂的英文长按看中文。');
+  const topics=[
+    ['⚙️ 复习：一般现在时·三单','The sheep eats. The fish swims.','主语是 He/She/It/一个人/一只动物（三单）时，动词要变身：+s、+es、y→ies、have→has。I/We/They 不变身！'],
+    ['🔮 新授：一般将来时 will','It will rain tomorrow.','will + 动词原形，表<b>预测</b>（我觉得会…）或<b>承诺</b>（我会帮你）。will 后面的动词永远不变身！'],
+    ['📅 新授：一般将来时 be going to','I am going to buy a cake.','be(am/is/are) + going to + 动词原形，表<b>早就想好的计划</b>。be 要跟着主语变：I am / He is / They are。'],
+  ];
+  const grammar=[
+    ['三单变身规则','一般 +s（plays）· s/x/ch/sh/o 结尾 +es（watches）· 辅音+y → ies（studies）· 元音+y 只 +s（buys）· have → has','She studies English every morning.'],
+    ['will 法宝（预测·承诺）','主语 + will + 动词原形；否定 won\'t（不是 willn\'t！）；疑问 Will + 主语 + 原形…？','I will help you.'],
+    ['be going to 法宝（计划）','主语 + am/is/are + going to + 动词原形，be 跟着主语变身','We are going to visit grandma this weekend.'],
+    ['时间信号词','将来：tomorrow / next week / this evening / soon / later；一般现在：every day / usually / always / on Mondays','He plays football every day.'],
+  ];
+  $('stageContent').innerHTML = `
+    <div style="font-weight:800; margin:6px 0 8px;">课上的 3 个环节</div>
+    ${topics.map(t=>`<div class="report-sec"><h3>${t[0]}</h3>
+      <div class="item">${en(t[1])} <button class="icon-btn mint btn-small" style="padding:4px 8px;" onclick="speak('${t[1].replace(/'/g,"\\'")}')">🔊</button></div>
+      <div class="item" style="color:var(--text-light); font-size:12px;">${t[2]}</div></div>`).join('')}
+    <div style="font-weight:800; margin:14px 0 8px;">4 条核心规则</div>
+    ${grammar.map(g=>`<div class="report-sec"><h3>📌 ${g[0]}</h3>
+      <div class="item" style="font-size:12px; color:var(--text-light);">${g[1]}</div>
+      <div class="item">${en(g[2])} <button class="icon-btn mint btn-small" style="padding:4px 8px;" onclick="speak('${g[2].replace(/'/g,"\\'")}')">🔊</button></div></div>`).join('')}
+    <div style="background:var(--yellow-soft); border-radius:12px; padding:11px; font-size:12px; line-height:1.6; margin-top:12px;">
+      💪 先去 <b>三单变形机</b> 玩懂动词怎么变身，再去 <b>法宝分拣台</b> 分清 will 和 be going to，最后去 <b>听写训练营</b> 备战下节课的听写！
+    </div>
+    ${backBtn()}`;
+  markDone('recap',1,1); renderMap();
+}
+
+/* ========== 2. 三单变形机 ========== */
+let mSubj=1, mVerb=0, mSeen=null, mtIdx=0, mtOk=0;
+function renderMachine(){ mSubj=1; mVerb=0; mSeen=new Set(); machinePlay(false); }
+function machineSentence(){
+  const s=S_SUBJ[mSubj], v=S_VERB[mVerb];
+  const vv=s.third?v.third:v.base;
+  return `${s.s} ${vv} ${v.rest}.`;
+}
+function machinePlay(spk){
+  const s=S_SUBJ[mSubj], v=S_VERB[mVerb];
+  const vv=s.third?v.third:v.base;
+  mSeen.add(mSubj+'|'+mVerb);
+  setTitle('⚙️ 三单变形机','换人、换动词，看动词结尾变不变身！至少玩出 5 种组合。');
+  $('stageContent').innerHTML=`
+    <div class="chip-label">👤 谁？（试试 I 和 He 的区别！）</div>
+    <div class="chip-row">${S_SUBJ.map((x,i)=>`<button class="chip ${i===mSubj?'on':''}" onclick="mSubj=${i};machinePlay(true)">${x.s}</button>`).join('')}</div>
+    <div class="chip-label">🎬 做什么？</div>
+    <div class="chip-row">${S_VERB.map((x,i)=>`<button class="chip ${i===mVerb?'on':''}" onclick="mVerb=${i};machinePlay(true)">${x.emoji} ${x.base}</button>`).join('')}</div>
+    <div class="build">
+      <div class="chunk a" style="animation-delay:0s">${s.s}<span class="chunk-note">谁</span></div>
+      <div class="chunk ${s.third?'be flash':'b'}" style="animation-delay:.15s">${vv}<span class="chunk-note">${s.third?'变身啦!':'不变身'}</span></div>
+      <div class="chunk gt" style="animation-delay:.3s">${v.rest}<span class="chunk-note">其余照抄</span></div>
+    </div>
+    <div style="text-align:center;"><span class="rule-chip">💡 ${s.third?s.note+' · '+v.rule:s.note}</span></div>
+    <div style="text-align:center; margin-top:6px;"><span class="rule-chip" style="background:var(--bg); font-weight:600; font-size:12px;">口诀：+s 一般 · +es(s/x/ch/sh/o) · 辅音+y→ies · have→has · 元音+y 只+s</span></div>
+    <div class="speak-btns"><button class="icon-btn coral" onclick="speak('${machineSentence().replace(/'/g,"\\'")}')">🔊 再听一遍</button></div>
+    <div style="text-align:center; font-size:12px; color:var(--text-light); margin-top:6px;">已玩出 <b>${mSeen.size}</b> / 5 种组合</div>
+    ${mSeen.size>=5?`<button class="btn btn-primary" style="margin-top:12px;" onclick="mtIdx=0;mtOk=0;machineTryOne()">🎯 会了！去闯关 →</button>`:''}
+    ${backBtn()}`;
+  if(spk) speak(machineSentence());
+}
+function machineTryOne(){
+  if(mtIdx>=S_TRY.length){ machineDone(); return; }
+  const t=S_TRY[mtIdx];
+  setTitle('⚙️ 三单变形机 · 你来变','轮到你！选出正确的动词形式。');
+  $('stageContent').innerHTML=`
+    <div style="text-align:center; font-size:13px; color:var(--text-light);">第 ${mtIdx+1} / ${S_TRY.length} 题 · 对 ${mtOk}</div>
+    <div class="sent-box">${enT(t.q[0])}<span style="color:var(--coral);">___</span>${enT(t.q[1])}</div>
+    <div class="options" id="mtOpts">
+      ${t.opts.map((o,i)=>`<button class="option" onclick="machineTryPick(${i})"><span class="letter">${String.fromCharCode(65+i)}</span><span>${o}</span></button>`).join('')}
+    </div>
+    <div id="mtFb" class="feedback"></div>`;
+}
+function machineTryPick(i){
+  const t=S_TRY[mtIdx];
+  const els=document.querySelectorAll('#mtOpts .option');
+  els.forEach(e=>e.classList.add('disabled'));
+  const ok=i===t.a;
+  els[i].classList.add(ok?'correct':'wrong');
+  if(!ok) els[t.a].classList.add('correct');
+  if(ok){ mtOk++; addStar(1); }
+  const full=t.q[0]+t.opts[t.a]+t.q[1];
+  const fb=$('mtFb'); fb.className='feedback show '+(ok?'right':'wrong');
+  fb.innerHTML=`<div class="title">${ok?'🎉 对啦！':'看这里 👇'}</div>
+    <div style="font-size:13px;">💡 ${t.why}</div>
+    <button class="icon-btn mint btn-small" style="margin-top:8px;" onclick="speak('${full.replace(/'/g,"\\'")}')">🔊 听整句</button>
+    <button class="btn btn-primary btn-small" style="width:100%; margin-top:8px;" onclick="mtIdx++; machineTryOne();">${mtIdx<S_TRY.length-1?'下一题 →':'完成 ✅'}</button>`;
+}
+function machineDone(){
+  setTitle('⚙️ 三单变形机','全部玩完啦！');
+  markDone('machine',mtOk,S_TRY.length); renderMap();
+  $('stageContent').innerHTML=`<div style="text-align:center; padding:16px;">
+    <div style="font-size:54px;">⚙️✨</div>
+    <div style="font-weight:800; font-size:18px; margin:8px 0;">三单变形：对了 ${mtOk} / ${S_TRY.length}</div>
+    <div style="font-size:13px; color:var(--text-light); line-height:1.8;">主语是 He/She/It/一个人 → 动词变身：<br>一般 <b>+s</b>（plays）· s/x/ch/sh/o 结尾 <b>+es</b>（watches）<br>辅音+y → <b>ies</b>（studies）· 元音+y 只 <b>+s</b>（buys）<br>特殊：<b>have → has</b><br>I/We/They 不变身！</div>
+  </div>${backBtn()}`;
+  confetti();
+}
+
+
+/* ========== 法宝分拣台：will vs be going to ========== */
+let fcIdx=0, fcOk=0;
+function renderForecast(){ fcIdx=0; fcOk=0; forecastOne(); }
+function forecastOne(){
+  if(fcIdx>=FORECAST.length){ forecastDone(); return; }
+  const f=FORECAST[fcIdx];
+  setTitle('🔮 法宝分拣台','将来时有两大法宝：will（预测·承诺）和 be going to（计划·打算）。这个场景该用哪个？');
+  $('stageContent').innerHTML=`
+    <div style="text-align:center; font-size:13px; color:var(--text-light);">第 ${fcIdx+1} / ${FORECAST.length} 个场景 · 对 ${fcOk}</div>
+    <div class="sent-box" style="font-size:16px; line-height:1.7;">${f.card}</div>
+    <div class="options" id="fcOpts">
+      <button class="option" onclick="forecastPick(0)"><span class="letter">A</span><span>🔮 will + 原形<small style="display:block;font-weight:600;color:var(--text-light)">预测 / 临时决定 / 承诺</small></span></button>
+      <button class="option" onclick="forecastPick(1)"><span class="letter">B</span><span>📝 be going to + 原形<small style="display:block;font-weight:600;color:var(--text-light)">早就想好的计划 / 打算</small></span></button>
+    </div>
+    <div id="fcFb" class="feedback"></div>`;
+}
+function forecastPick(i){
+  const f=FORECAST[fcIdx];
+  const want=f.ans==='will'?0:1;
+  const ok=i===want;
+  const els=document.querySelectorAll('#fcOpts .option');
+  els.forEach(e=>e.classList.add('disabled'));
+  els[i].classList.add(ok?'correct':'wrong');
+  if(!ok) els[want].classList.add('correct');
+  if(ok){ fcOk++; addStar(1); }
+  const fb=$('fcFb'); fb.className='feedback show '+(ok?'right':'wrong');
+  fb.innerHTML=`<div class="title">${ok?'🎉 选对法宝！':'法宝选错啦，看这里 👇'}</div>
+    <div style="font-size:13px;">💡 ${f.why}</div>
+    <div style="font-size:14px; font-weight:800; margin-top:6px;">${enT(f.sent)}</div>
+    <button class="icon-btn mint btn-small" style="margin-top:8px;" onclick="speak('${f.sent.replace(/'/g,"\'")}')">🔊 听</button>
+    <button class="btn btn-primary btn-small" style="width:100%; margin-top:8px;" onclick="fcIdx++; forecastOne();">${fcIdx<FORECAST.length-1?'下一场景 →':'完成 ✅'}</button>`;
+}
+function forecastDone(){
+  setTitle('🔮 法宝分拣台','分拣完成！');
+  markDone('forecast',fcOk,FORECAST.length); renderMap();
+  $('stageContent').innerHTML=`<div style="text-align:center; padding:16px;">
+    <div style="font-size:54px;">🔮✨</div>
+    <div style="font-weight:800; font-size:18px; margin:8px 0;">选对 ${fcOk} / ${FORECAST.length} 个法宝！</div>
+    <div style="font-size:13px; color:var(--text-light); line-height:1.8;">一句话记住：<br>🔮 <b>will</b> = 预测（要下雨了）· 承诺（我来帮你）· 临时决定<br>📝 <b>be going to</b> = 早就想好的计划（打算买蛋糕、打算看奶奶）</div>
+  </div>${backBtn()}`;
+  confetti();
+}
+
+/* ========== 时间信号分拣机 ========== */
+let sigList=[], sigIdx=0, sigOk=0;
+function renderSignals(){
+  sigList=shuffle(SIGNALS); sigIdx=0; sigOk=0; signalOne();
+}
+function signalOne(){
+  if(sigIdx>=sigList.length){ signalDone(); return; }
+  const s=sigList[sigIdx];
+  setTitle('⏰ 时间信号分拣机','时间牌决定用什么时态！这块牌子该进哪个箱子？');
+  $('stageContent').innerHTML=`
+    <div style="text-align:center; font-size:13px; color:var(--text-light);">第 ${sigIdx+1} / ${sigList.length} 块 · 对 ${sigOk}</div>
+    <div class="sent-box" style="font-size:20px;">${enT(s.w)} <span style="font-size:13px; color:var(--text-light); font-weight:600;">${s.cn}</span></div>
+    <div class="options" id="sigOpts">
+      <button class="option" onclick="signalPick(0)"><span class="letter">📦</span><span>一般现在时<small style="display:block;font-weight:600;color:var(--text-light)">每天 / 经常 / 总是这样</small></span></button>
+      <button class="option" onclick="signalPick(1)"><span class="letter">📮</span><span>一般将来时<small style="display:block;font-weight:600;color:var(--text-light)">明天 / 下周 / 很快</small></span></button>
+    </div>
+    <div id="sigFb" class="feedback"></div>`;
+}
+function signalPick(i){
+  const s=sigList[sigIdx];
+  const want=s.bin==='present'?0:1;
+  const ok=i===want;
+  const els=document.querySelectorAll('#sigOpts .option');
+  els.forEach(e=>e.classList.add('disabled'));
+  els[i].classList.add(ok?'correct':'wrong');
+  if(!ok) els[want].classList.add('correct');
+  if(ok){ sigOk++; addStar(1); }
+  const ex=s.bin==='present'?'He plays football every day.':'It will rain tomorrow.';
+  const fb=$('sigFb'); fb.className='feedback show '+(ok?'right':'wrong');
+  fb.innerHTML=`<div class="title">${ok?'🎉 对啦！':'看这里 👇'}</div>
+    <div style="font-size:13px;">💡 <b>${s.w}（${s.cn}）</b>是${s.bin==='present'?'「经常发生」':'「还没发生」'}的信号 → ${s.bin==='present'?'一般现在时，动词看三单':'一般将来时，will / be going to'}。</div>
+    <div style="font-size:13px; margin-top:4px;">例句：${enT(ex)} <button class="icon-btn mint btn-small" style="padding:3px 7px;" onclick="speak('${ex.replace(/'/g,"\'")}')">🔊</button></div>
+    <button class="btn btn-primary btn-small" style="width:100%; margin-top:8px;" onclick="sigIdx++; signalOne();">${sigIdx<sigList.length-1?'下一块 →':'完成 ✅'}</button>`;
+}
+function signalDone(){
+  setTitle('⏰ 时间信号分拣机','全部分完！');
+  markDone('signals',sigOk,sigList.length); renderMap();
+  $('stageContent').innerHTML=`<div style="text-align:center; padding:16px;">
+    <div style="font-size:54px;">⏰✨</div>
+    <div style="font-weight:800; font-size:18px; margin:8px 0;">分对 ${sigOk} / ${sigList.length} 块时间牌！</div>
+    <div style="font-size:13px; color:var(--text-light); line-height:1.8;">📦 现在时信号：every day / usually / always / on Mondays<br>📮 将来时信号：tomorrow / next week / this evening / soon</div>
+  </div>${backBtn()}`;
+  confetti();
+}
+
+/* ========== 听写训练营 ========== */
+let dcIdx=0, dcOk=0;
+function renderDictation(){ dcIdx=0; dcOk=0; dictationOne(); }
+function dictationOne(){
+  if(dcIdx>=DICTATION.length){ dictationDone(); return; }
+  const d=DICTATION[dcIdx];
+  setTitle('🎧 听写训练营','下节课要听写！先点播放听句子，再选出你听到的那一句。');
+  const opts=shuffle([d.sent,...d.wrong]);
+  $('stageContent').innerHTML=`
+    <div style="text-align:center; font-size:13px; color:var(--text-light);">第 ${dcIdx+1} / ${DICTATION.length} 句 · 对 ${dcOk}</div>
+    <div class="speak-btns" style="margin:14px 0;">
+      <button class="icon-btn coral pulse" style="font-size:17px; padding:15px 22px;" onclick="speak('${d.sent.replace(/'/g,"\'")}')">🔊 播放句子</button>
+      <button class="icon-btn yellow" onclick="speak('${d.sent.replace(/'/g,"\'")}',true)">🐢 慢速</button>
+      <button class="icon-btn mint" onclick="speakTimes('${d.sent.replace(/'/g,"\'")}',3,true)">🔁 听3遍</button>
+    </div>
+    <div style="text-align:center; font-size:12px; color:var(--text-light); margin-bottom:8px;">听到的是哪一句？（听写前先看清楚每个词）</div>
+    <div class="options" id="dcOpts">
+      ${opts.map((o,i)=>`<button class="option" data-ok="${o===d.sent?1:0}" onclick="dictationPick(${i})"><span class="letter">${String.fromCharCode(65+i)}</span><span>${enT(o)}</span></button>`).join('')}
+    </div>
+    <div id="dcFb" class="feedback"></div>`;
+}
+function dictationPick(i){
+  const d=DICTATION[dcIdx];
+  const els=document.querySelectorAll('#dcOpts .option');
+  const ok=els[i].dataset.ok==='1';
+  els.forEach(e=>{e.classList.add('disabled'); if(e.dataset.ok==='1')e.classList.add('correct');});
+  if(!ok) els[i].classList.add('wrong');
+  if(ok){ dcOk++; addStar(1); }
+  const fb=$('dcFb'); fb.className='feedback show '+(ok?'right':'wrong');
+  fb.innerHTML=`<div class="title">${ok?'🎉 耳朵真灵！':'听岔啦，看这里 👇'}</div>
+    <div style="font-size:14px; font-weight:800;">${enT(d.sent)} <span style="font-weight:600; color:var(--text-light); font-size:12px;">${d.cn}</span></div>
+    <div style="font-size:13px; margin-top:4px;">💡 ${d.tip}</div>
+    <button class="icon-btn mint btn-small" style="margin-top:8px;" onclick="speakTimes('${d.sent.replace(/'/g,"\'")}',3,true)">🔁 跟读3遍</button>
+    <button class="btn btn-primary btn-small" style="width:100%; margin-top:8px;" onclick="dcIdx++; dictationOne();">${dcIdx<DICTATION.length-1?'下一句 →':'完成 ✅'}</button>`;
+}
+function dictationDone(){
+  setTitle('🎧 听写训练营','训练完成！');
+  markDone('dictation',dcOk,DICTATION.length); renderMap();
+  $('stageContent').innerHTML=`<div style="text-align:center; padding:16px;">
+    <div style="font-size:54px;">🎧✨</div>
+    <div style="font-weight:800; font-size:18px; margin:8px 0;">听对 ${dcOk} / ${DICTATION.length} 句！</div>
+    <div style="font-size:13px; color:var(--text-light); line-height:1.8;">听写小妙招：<br>① 先听整句，抓<b>时间牌</b>（tomorrow/every morning）<br>② 将来时盯住 <b>will / be going to + 原形</b><br>③ 一般现在时盯住<b>三单的 s/es</b><br>睡前再把 6 句各听一遍，明天听写稳了！</div>
+    <button class="btn btn-yellow" style="width:100%; margin-top:12px;" onclick="readAllDictation()">🔊 6 句全部连播一遍</button>
+  </div>${backBtn()}`;
+  confetti();
+}
+function readAllDictation(){ let i=0; (function go(){ if(i>=DICTATION.length)return; speak(DICTATION[i].sent); i++; setTimeout(go,3200); })(); }
+
+/* ========== 3. 将来时光机 ========== */
+let tmIdx=0, tmqIdx=0, tmqOk=0;
+function renderTM(){ tmIdx=0; tmOne(); }
+function tmOne(){
+  if(tmIdx>=TM.length){ tmqIdx=0; tmqOk=0; tmTryOne(); return; }
+  const t=TM[tmIdx];
+  setTitle('🕰️ 将来时光机','现在"正在做" ➜ 推到明天，变成"打算做"。看句子一步步变身！');
+  $('stageContent').innerHTML=`
+    <div style="text-align:center; font-size:13px; color:var(--text-light);">第 ${tmIdx+1} / ${TM.length} 句 ${t.real?'· <span class="badge badge-green">课上真实句</span>':''}</div>
+    <div style="text-align:center; font-size:12px; color:var(--text-light); margin-top:8px;">现在 🕐</div>
+    <div class="build" id="tmBox">
+      <div class="chunk a" style="animation-delay:0s">${t.subj}</div>
+      <div class="chunk be" style="animation-delay:.1s" id="tmBe">${t.be}</div>
+      <div class="chunk b" style="animation-delay:.2s" id="tmV">${t.ving}</div>
+      <div class="chunk gt" style="animation-delay:.3s" id="tmRest">${t.rest}</div>
+    </div>
+    <div class="tm-lever">
+      <button class="btn btn-yellow pulse" id="tmGo" onclick="tmPush()">🕰️ 推到明天！→</button>
+    </div>
+    <div class="tm-steps" id="tmSteps"></div>
+    <div id="tmNext" style="display:none;">
+      <div class="pron-tip">💡 ${t.why}</div>
+      <div style="text-align:center;"><button class="icon-btn mint" onclick="speak('${t.future.replace(/'/g,"\\'")}')">🔊 听将来版</button>
+      <button class="icon-btn" onclick="speak('${t.now.replace(/'/g,"\\'")}')">🔊 对比现在版</button></div>
+      <button class="btn btn-primary" style="width:100%; margin-top:12px;" onclick="tmIdx++; tmOne();">${tmIdx<TM.length-1?'下一句 →':'去闯关 →'}</button>
+    </div>`;
+}
+function tmPush(){
+  const t=TM[tmIdx];
+  $('tmGo').style.display='none';
+  const steps=[
+    `① <b>${t.be}</b> 是锚，留在原地不动`,
+    `② be 后面插进 <b>going to</b>（"打算"开关打开！）`,
+    `③ ${t.ving} 脱掉 -ing，变回原形 <b>${t.base}</b>`,
+    `④ 句尾挂上时间牌 <b>${t.time}</b>`,
+  ];
+  const box=$('tmSteps');
+  box.innerHTML=steps.map((s,i)=>`<div class="tm-step" id="tms${i}">${s}</div>`).join('');
+  // ① be 高亮
+  setTimeout(()=>{ $('tms0').classList.add('show'); $('tmBe').classList.add('flash'); },200);
+  // ② 插入 going to
+  setTimeout(()=>{
+    $('tms1').classList.add('show');
+    const g=document.createElement('div'); g.className='chunk gt'; g.innerHTML='going to<span class="chunk-note">打算</span>';
+    $('tmBox').insertBefore(g, $('tmV'));
+  },1300);
+  // ③ -ing 掉落变原形
+  setTimeout(()=>{
+    $('tms2').classList.add('show');
+    const v=$('tmV');
+    v.innerHTML=`${TM[tmIdx].base}<span class="drop-ing" style="color:var(--red);">ing</span>`;
+    setTimeout(()=>{ v.innerHTML=`${TM[tmIdx].base}<span class="chunk-note">动词原形</span>`; v.classList.add('flash'); },800);
+  },2400);
+  // ④ 时间牌 + 朗读
+  setTimeout(()=>{
+    $('tms3').classList.add('show');
+    const tt=document.createElement('div'); tt.className='chunk t'; tt.innerHTML=`${TM[tmIdx].time}<span class="chunk-note">时间</span>`;
+    $('tmBox').appendChild(tt);
+    speak(TM[tmIdx].future);
+    $('tmNext').style.display='block';
+  },3600);
+}
+function tmTryOne(){
+  if(tmqIdx>=TM_TRY.length){ tmDone(); return; }
+  const q=TM_TRY[tmqIdx];
+  setTitle('🕰️ 将来时光机 · 你来变','轮到你！把"正在做"变成"打算做"。');
+  $('stageContent').innerHTML=`
+    <div style="text-align:center; font-size:13px; color:var(--text-light);">第 ${tmqIdx+1} / ${TM_TRY.length} 题 · 对 ${tmqOk}</div>
+    <div style="font-size:15px; font-weight:700; margin:14px 0; line-height:1.6;">${q.q}</div>
+    <div class="options" id="tmqOpts">
+      ${q.opts.map((o,i)=>`<button class="option" onclick="tmTryPick(${i})"><span class="letter">${String.fromCharCode(65+i)}</span><span>${enT(o)}</span></button>`).join('')}
+    </div>
+    <div id="tmqFb" class="feedback"></div>`;
+}
+function tmTryPick(i){
+  const q=TM_TRY[tmqIdx];
+  const els=document.querySelectorAll('#tmqOpts .option');
+  els.forEach(e=>e.classList.add('disabled'));
+  const ok=i===q.a;
+  els[i].classList.add(ok?'correct':'wrong');
+  if(!ok) els[q.a].classList.add('correct');
+  if(ok){ tmqOk++; addStar(1); }
+  const fb=$('tmqFb'); fb.className='feedback show '+(ok?'right':'wrong');
+  fb.innerHTML=`<div class="title">${ok?'🎉 对啦！':'看这里 👇'}</div>
+    <div style="font-size:13px;">💡 ${q.explain}</div>
+    <button class="icon-btn mint btn-small" style="margin-top:8px;" onclick="speak('${q.opts[q.a].replace(/'/g,"\\'")}')">🔊 听</button>
+    <button class="btn btn-primary btn-small" style="width:100%; margin-top:8px;" onclick="tmqIdx++; tmTryOne();">${tmqIdx<TM_TRY.length-1?'下一题 →':'完成 ✅'}</button>`;
+}
+function tmDone(){
+  setTitle('🕰️ 将来时光机','变身成功！');
+  markDone('timemachine',tmqOk,TM_TRY.length); renderMap();
+  $('stageContent').innerHTML=`<div style="text-align:center; padding:16px;">
+    <div style="font-size:54px;">🕰️✨</div>
+    <div style="font-weight:800; font-size:18px; margin:8px 0;">将来变身三步曲学会啦！</div>
+    <div style="font-size:13px; color:var(--text-light); line-height:1.8;">① be(am/is/are) 留下<br>② 插进 <b>going to</b><br>③ 动词变回<b>原形</b>（eating→eat）<br>最后挂上时间牌 tomorrow / next week / next month</div>
+  </div>${backBtn()}`;
+  confetti();
+}
+
+/* ========== 缩写压缩机 ========== */
+let sqDone=null;
+function renderContract(){
+  sqDone=new Set();
+  setTitle('✂️ 缩写压缩机','will 家族也能挤一挤：I will ➜ I\'ll，will not ➜ won\'t。点"压缩"！');
+  $('stageContent').innerHTML = SQ.map((s,i)=>`
+    <div class="sq-card">
+      <span class="sq-full" id="sqf${i}">${s.full}</span>
+      <button class="icon-btn yellow btn-small" id="sqb${i}" style="margin-left:10px;" onclick="squeeze(${i})">✂️ 压缩</button>
+      <div class="sq-ex hidden" id="sqe${i}">${en(s.ex)} <button class="icon-btn mint btn-small" style="padding:3px 7px;" onclick="speak('${s.ex.replace(/'/g,"\\'")}')">🔊</button></div>
+    </div>`).join('') + `
+    <div style="background:var(--yellow-soft); border-radius:12px; padding:11px; font-size:12px; line-height:1.6; margin-top:10px;">
+      💡 撇号 ' 就是"被挤掉的字母"留下的小脚印：I <b>wi</b>ll → I'll（wi 被挤掉了）。注意 <b>will not → won't</b>，不是 willn't！
+    </div>
+    <div style="text-align:center; font-size:12px; color:var(--text-light); margin-top:8px;">已压缩 <span id="sqCount">0</span> / ${SQ.length}</div>
+    ${backBtn()}`;
+}
+function squeeze(i){
+  if(sqDone.has(i))return;
+  sqDone.add(i);
+  const s=SQ[i];
+  const el=$('sqf'+i);
+  el.textContent=s.short; el.classList.add('squeezed');
+  $('sqb'+i).style.display='none';
+  $('sqe'+i).classList.remove('hidden');
+  $('sqCount').textContent=sqDone.size;
+  speak(s.ex);
+  addStar(1);
+  if(sqDone.size===SQ.length){ markDone('contract',SQ.length,SQ.length); renderMap(); confetti(); }
+}
+
+/* ========== 发音诊所 ========== */
+let pIdx=0;
+function renderPron(){ pIdx=0; pronOne(); }
+function pronOne(){
+  if(pIdx>=PRON.length){ pronDone(); return; }
+  const p=PRON[pIdx];
+  setTitle('🔊 发音诊所','将来时的几个关键词，一个一个读顺。');
+  $('stageContent').innerHTML=`
+    <div style="text-align:center; font-size:13px; color:var(--text-light);">第 ${pIdx+1} / ${PRON.length} 个</div>
+    <div class="pron-word">${p.w}</div>
+    <div class="pron-ipa">${p.ipa}</div>
+    <div class="pron-cn">${p.cn}</div>
+
+    <div class="syll">${p.syll.map(s=>`<span class="${s===p.stress?'hot':''}" onclick="speak('${s}',true)">${s.toLowerCase()}</span>`).join('')}</div>
+    <div class="speak-btns">
+      <button class="icon-btn coral pulse" style="font-size:16px; padding:14px 20px;" onclick="speak('${p.w}')">🔊 听整词</button>
+      <button class="icon-btn yellow" onclick="speak('${p.w}',true)">🐢 慢速</button>
+      <button class="icon-btn mint" onclick="speakTimes('${p.w}',3,true)">🔁 连读3遍</button>
+    </div>
+    <div class="pron-tip">💡 ${p.tip}</div>
+    <div id="recArea" style="text-align:center;"></div>
+    <div class="btn-row" style="margin-top:14px;">
+      <button class="btn btn-blue" style="flex:1;" onclick="${pIdx>0?'pIdx--,pronOne()':'goHome()'}">${pIdx>0?'← 上一个':'🏠 地图'}</button>
+      <button class="btn btn-primary" style="flex:1;" onclick="pIdx++; pronOne();">${pIdx<PRON.length-1?'下一个 →':'完成 ✅'}</button>
+    </div>`;
+  renderRec(p);
+}
+function renderRec(p){
+  const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+  if(!SR){ $('recArea').innerHTML=`<div style="font-size:12px; color:var(--text-light); margin-top:10px;">（这台设备不支持录音自测，多听几遍跟读就行 🎧）</div>`; return; }
+  $('recArea').innerHTML=`<button class="btn btn-purple" style="width:100%; margin-top:12px;" id="micBtn" onclick="recPron('${p.w}')">🎤 点我说一遍，看读得准不准</button>
+    <div id="recRes" style="font-size:13px; margin-top:8px; line-height:1.5;"></div>`;
+}
+function recPron(word){
+  const SR=window.SpeechRecognition||window.webkitSpeechRecognition;
+  const rec=new SR(); rec.lang='en-US'; rec.maxAlternatives=5; rec.interimResults=false;
+  const mb=$('micBtn'); mb.textContent='🎙️ 在听…大声读出来'; mb.style.background='var(--coral)';
+  rec.onresult=e=>{
+    let best=0, said='';
+    for(let i=0;i<e.results[0].length;i++){
+      const h=e.results[0][i].transcript.trim().toLowerCase();
+      const sc=similar(h, word.toLowerCase());
+      if(sc>best){ best=sc; said=h; }
+    }
+    const pct=Math.round(best*100);
+    const ok=pct>=60;
+    $('newAcc').textContent=pct+'%';
+    $('newAcc').className='acc-chip '+(ok?'acc-hi':'acc-low');
+    $('recRes').innerHTML = ok
+      ? `<div style="color:#2F855A; font-weight:800;">🎉 读得不错！(听到："${said}") 比课上的 ${PRON[pIdx].acc}% 进步啦！</div>`
+      : `<div style="color:#C05a2a; font-weight:800;">再来一次～(听到："${said}") 先点 🔁连读3遍 跟着读，重音别忘了。</div>`;
+    mb.textContent='🎤 再说一遍'; mb.style.background='var(--purple)';
+    if(ok) addStar(1);
+  };
+  rec.onerror=()=>{ mb.textContent='🎤 再试一次'; mb.style.background='var(--purple)'; $('recRes').innerHTML='<div style="color:var(--text-light);">没听清，靠近话筒再试一次～</div>'; };
+  rec.onend=()=>{ if(mb.textContent==='🎙️ 在听…大声读出来'){ mb.textContent='🎤 点我说一遍'; mb.style.background='var(--purple)'; } };
+  try{ rec.start(); }catch(e){}
+}
+function similar(a,b){
+  a=a.replace(/[^a-z]/g,''); b=b.replace(/[^a-z]/g,'');
+  if(!a)return 0; if(a===b)return 1;
+  const m=a.length,n=b.length, d=Array.from({length:m+1},()=>new Array(n+1).fill(0));
+  for(let i=0;i<=m;i++)d[i][0]=i; for(let j=0;j<=n;j++)d[0][j]=j;
+  for(let i=1;i<=m;i++)for(let j=1;j<=n;j++){ d[i][j]=Math.min(d[i-1][j]+1,d[i][j-1]+1,d[i-1][j-1]+(a[i-1]===b[j-1]?0:1)); }
+  return 1 - d[m][n]/Math.max(m,n);
+}
+function pronDone(){
+  setTitle('🔊 发音诊所','全部读完啦！');
+  markDone('pron',PRON.length,PRON.length); renderMap();
+  $('stageContent').innerHTML=`<div style="text-align:center; padding:16px;">
+    <div style="font-size:54px;">🎤✨</div>
+    <div style="font-weight:800; font-size:18px; margin:8px 0;">4 个词都练顺啦！</div>
+    <div style="font-size:13px; color:var(--text-light); line-height:1.6;">记住：<b>won't</b> 一气呵成、<b>tomorrow</b> 重音在中间 MO、<b>future</b> 开头读"fju"。</div>
+  </div>${backBtn()}`;
+  confetti();
+}
+
+/* ========== 6. 句子小医院 ========== */
+let hIdx=0;
+function renderHospital(){ hIdx=0; hospitalOne(); }
+function hospitalOne(){
+  if(hIdx>=HOSPITAL.length){ hospitalDone(); return; }
+  const it=HOSPITAL[hIdx];
+  setTitle('🔧 句子小医院','三单和将来时最容易写错的几句 —— 点黄色的地方，帮它"治好"。');
+  let html='';
+  it.parts.forEach((p,i)=>{
+    if(Array.isArray(p)) html+=`<span class="bad-word" id="badw" onclick="hospitalFix(event)">${p[0]}</span>`;
+    else html+=p;
+  });
+  $('stageContent').innerHTML=`
+    <div style="text-align:center; font-size:13px; color:var(--text-light);">第 ${hIdx+1} / ${HOSPITAL.length} 句 · <span class="badge badge-green">${it.tag}</span></div>
+    <div class="sent-box" id="sentBox">${html}</div>
+    <div style="text-align:center; font-size:12px; color:var(--text-light);">👆 点一下黄色的词，看更棒的说法</div>
+    <div id="hospFb" class="feedback"></div>`;
+}
+function hospitalFix(ev){
+  const it=HOSPITAL[hIdx];
+  const el=$('badw');
+  if(el.classList.contains('fixed')) return;
+  const fixText=it.parts.find(p=>Array.isArray(p))[1];
+  el.textContent=fixText; el.classList.add('fixed');
+  const sp=document.createElement('div'); sp.className='sparkle'; sp.textContent='✨';
+  sp.style.left=(ev.clientX-8)+'px'; sp.style.top=(ev.clientY-20)+'px'; document.body.appendChild(sp); setTimeout(()=>sp.remove(),1000);
+  const fb=$('hospFb'); fb.className='feedback show right';
+  fb.innerHTML=`<div class="title">✅ 治好啦！更棒的说法：</div>
+    <div style="font-size:15px; font-weight:800; color:#2F855A; margin:4px 0;">${it.good}</div>
+    <div style="font-size:13px;">💡 ${it.why}</div>
+    <button class="icon-btn mint btn-small" style="margin-top:8px;" onclick="speak('${it.good.replace(/'/g,"\\'")}')">🔊 听</button>
+    <button class="btn btn-primary btn-small" style="width:100%; margin-top:8px;" onclick="hIdx++; hospitalOne();">${hIdx<HOSPITAL.length-1?'下一句 →':'完成 ✅'}</button>`;
+  addStar(1);
+}
+function hospitalDone(){
+  setTitle('🔧 句子小医院','全部治好啦！');
+  markDone('hospital',HOSPITAL.length,HOSPITAL.length); renderMap();
+  $('stageContent').innerHTML=`<div style="text-align:center; padding:16px;">
+    <div style="font-size:54px;">🔧💚</div>
+    <div style="font-weight:800; font-size:18px; margin:8px 0;">${HOSPITAL.length} 句都变棒啦！</div>
+    <div style="font-size:13px; color:var(--text-light); line-height:1.7;">这些都是你课上说的句子——已经很敢说了 👍<br>记住：<b>牛肉是 beef</b>、<b>事情让人累用 tiring</b>、<b>说时间用 It's 开头</b>、<b>度假是 be on vacation</b>、<b>"说不"是 say no</b>。</div>
+  </div>${backBtn()}`;
+  confetti();
+}
+
+/* ========== 7. 图片寻宝（描述图片：现在进行时 + 方位词） ========== */
+let bFound=null;
+/* ========== 9. 单词卡 ========== */
+function renderVocab(){
+  setTitle('📒 单词卡','点卡片翻面看中文，点 🔊 听发音。右上角是 CEFR 难度等级。');
+  $('stageContent').innerHTML=`<div class="vocab-grid">
+    ${VOCAB.map((v,i)=>`<div class="flip" id="fc${i}" onclick="flip(${i})">
+      <div class="flip-in">
+        <div class="flip-face flip-front"><div class="w">${v.w}</div><div class="cefr">${v.cefr}</div></div>
+        <div class="flip-face flip-back"><div style="font-weight:800; font-size:15px;">${v.cn}</div></div>
+      </div></div>`).join('')}
+  </div>
+  <div class="speak-btns" style="margin-top:14px;"><button class="icon-btn coral" onclick="readAllVocab()">🔊 全部读一遍</button></div>
+  ${backBtn()}`;
+  markDone('vocab',VOCAB.length,VOCAB.length); renderMap();
+}
+function flip(i){ $('fc'+i).classList.toggle('on'); speak(VOCAB[i].w); }
+function readAllVocab(){ let i=0; (function go(){ if(i>=VOCAB.length)return; speak(VOCAB[i].w); i++; setTimeout(go,1500); })(); }
+
+/* ========== 8b. 课堂反馈实验室 + 独立判断任务 ========== */
+
+function renderFeedback(){
+  setTitle('🧪 用法变形台','将来时的 4 种正确姿势 + 2 个常踩的坑。点每张卡展开原因。');
+  const seen=new Set(prog.feedbackSeen);
+  $('stageContent').innerHTML=`
+    <div class="unit-heading"><span class="date">4句</span><strong>正确姿势</strong></div>
+    ${FEEDBACK.filter(f=>f.kind==='good').map(f=>feedbackCard(f,seen)).join('')}
+    <div class="unit-heading"><span class="date">2句</span><strong>常踩的坑</strong></div>
+    ${FEEDBACK.filter(f=>f.kind==='repair').map(f=>feedbackCard(f,seen)).join('')}
+    <div style="text-align:center;font-size:12px;color:var(--text-light)">已查看 ${seen.size} / ${FEEDBACK.length}</div>
+    ${seen.size===FEEDBACK.length?`<button class="btn btn-primary" style="width:100%;margin-top:10px" onclick="markDone('feedback',FEEDBACK.length,FEEDBACK.length);openModule('mission')">反馈看完，去独立判断 →</button>`:''}${backBtn()}`;
+}
+function feedbackCard(f,seen){ const open=seen.has(f.id);return `<div class="lesson-card ${f.kind} ${open?'open':''}" id="fb-${f.id}"><div class="lesson-label">${f.kind==='good'?'✅ 做得好':'🔧 需要修理'} · ${f.tag}</div><div class="lesson-sentence">${enT(f.before)}</div>${f.kind==='repair'?`<div style="font-size:12px;color:var(--text-light)">建议改为：<b>${enT(f.after)}</b></div>`:''}<button class="icon-btn ${f.kind==='good'?'mint':'yellow'} btn-small" style="margin-top:7px" onclick="openFeedback('${f.id}')">${open?'再看原因':'为什么？'}</button><button class="icon-btn btn-small" style="margin-top:7px" onclick="speak('${f.after.replace(/'/g,"\\'")}')">🔊</button><div class="lesson-reason">${f.reason}</div></div>`; }
+function openFeedback(id){ if(!prog.feedbackSeen.includes(id)){prog.feedbackSeen.push(id);addStar(1);saveProg();}renderFeedback();const el=$('fb-'+id);if(el)el.scrollIntoView({block:'center'}); }
+
+/* ========== 9. 独立判断任务 + 错题回炉 ========== */
+let missionList=[],missionIdx=0,missionOk=0,missionWrongMode=false,missionQStart=0;
+function renderMission(wrongOnly){
+  missionWrongMode=wrongOnly;missionIdx=0;missionOk=0;
+  const unresolved=new Set(Object.entries(prog.wrongbook).filter(([,w])=>!w.resolved).map(([id])=>id));
+  missionList=wrongOnly?MISSION.filter(q=>unresolved.has(q.id)):MISSION.slice();
+  if(!missionList.length){setTitle('🔁 只重做错题','现在没有未解决错题。错一次会自动进本，连续答对两次才移出。');$('stageContent').innerHTML=`<div style="text-align:center;padding:22px"><div style="font-size:58px">🌟</div><h3>错题本是空的</h3><p style="font-size:13px;color:var(--text-light);line-height:1.7">先完成"独立判断任务"，答错的题会自动来到这里。</p></div>${backBtn()}`;return;}
+  missionOne();
+}
+function missionOne(){
+  if(missionIdx>=missionList.length){missionDone();return;}
+  const q=missionList[missionIdx];missionQStart=Date.now();
+  setTitle(missionWrongMode?'🔁 错题回炉':'💬 独立判断任务',missionWrongMode?'这次没有提示。连续答对两次，才算真正解决。':'现在遮住讲解，独立判断。答错后会带你回到对应模块。');
+  $('stageContent').innerHTML=`<div style="text-align:center;font-size:12px;color:var(--text-light)">第 ${missionIdx+1} / ${missionList.length} · ${q.skill}</div><div style="font-size:16px;font-weight:800;line-height:1.6;margin:14px 0">${enT(q.q)}</div><div class="options" id="mopts">${q.opts.map((o,i)=>`<button class="option" onclick="pickMission(${i})"><span class="letter">${String.fromCharCode(65+i)}</span><span>${enT(o)}</span></button>`).join('')}</div><div id="mfb" class="feedback"></div>`;
+}
+function pickMission(i){
+  const q=missionList[missionIdx],ok=i===q.a,els=document.querySelectorAll('#mopts .option');els.forEach(e=>e.classList.add('disabled'));els[i].classList.add(ok?'correct':'wrong');if(!ok)els[q.a].classList.add('correct');if(ok){missionOk++;addStar(1);}recordAttempt(q,i,ok);
+  const fb=$('mfb');fb.className='feedback show '+(ok?'right':'wrong');fb.innerHTML=`<div class="title">${ok?'✅ 判断正确':'正确答案：'+q.opts[q.a]}</div><div style="font-size:12px;line-height:1.65">💡 ${q.explain}</div><button class="icon-btn mint btn-small" style="margin-top:8px" onclick="speak('${q.say.replace(/'/g,"\\'")}')">🔊 听整句</button>${!ok?`<button class="icon-btn yellow btn-small" style="margin-top:8px" onclick="reteach('${q.id}')">🧭 回去重教</button>`:''}<button class="btn btn-primary btn-small" style="width:100%;margin-top:9px" onclick="missionIdx++;missionOne()">${missionIdx<missionList.length-1?'下一题 →':'看结果'}</button>`;
+}
+function recordAttempt(q,i,ok){
+  const now=Date.now(),selected=q.opts[i],expected=q.opts[q.a];
+  prog.attempts.push({child:kid,app:APP_ID,version:APP_VERSION,questionId:q.id,prompt:q.q,selected,expected,correct:ok,explain:q.explain,skill:q.skill,ms:Math.max(0,now-missionQStart),source:'2026-07-30 课外英语班（三单复习 + 一般将来时）',ts:now});
+  let w=prog.wrongbook[q.id];
+  if(!ok){w=w||{wrongCount:0,rightStreak:0,resolved:false};w.wrongCount++;w.rightStreak=0;w.resolved=false;w.lastWrongAt=now;w.lastSelected=selected;w.expected=expected;w.explain=q.explain;w.skill=q.skill;prog.wrongbook[q.id]=w;}
+  else if(w&&!w.resolved){w.rightStreak=(w.rightStreak||0)+1;if(w.rightStreak>=2){w.resolved=true;w.resolvedAt=now;}}
+  saveProg();
+}
+function reteach(id){ openModule(/signal/.test(id)?'signals':/predict|plan/.test(id)?'forecast':/wont|question/.test(id)?'feedback':/730-f/.test(id)?'hospital':'machine'); }
+function missionDone(){
+  markDone(missionWrongMode?'wrong':'mission',missionOk,missionList.length);renderMap();const left=Object.values(prog.wrongbook).filter(w=>!w.resolved).length;
+  $('stageContent').innerHTML=`<div style="text-align:center;padding:18px"><div style="font-size:58px">${missionOk===missionList.length?'🏆':'🧭'}</div><div style="font-size:28px;font-weight:900;color:var(--coral)">${missionOk} / ${missionList.length}</div><p style="font-size:13px;line-height:1.7;color:var(--text-light)">${missionOk===missionList.length?'已经能独立判断了！':'答错并不可怕，错题已经进入回炉。'}<br>当前未解决错题：${left} 道。</p></div><button class="btn btn-yellow" style="width:100%" onclick="renderMission(true)">🔁 只重做错题</button>${backBtn()}`;if(missionOk===missionList.length)confetti();
+}
+function renderWrong(){ renderMission(true); }
+
+/* ========== 学习记录 / 家长页 ========== */
+function renderReport(){
+  flushModuleTime();activeModule='report';moduleStartedAt=Date.now();
+  setTitle('👨‍👩‍👧 学习记录','只读取这台设备、当前孩子的数据；不会自动上传。');
+  const done=prog.done;
+  const rows=MODULES.map(m=>{ const d=done[m.id]; return `<div class="item">${m.icon} ${m.t1} — ${d?`<span class="badge badge-green">✅ ${d.ok}/${d.total}</span>`:'<span class="badge badge-red">未练</span>'}</div>`; }).join('');
+  const unresolved=Object.entries(prog.wrongbook).filter(([,w])=>!w.resolved),resolved=Object.values(prog.wrongbook).filter(w=>w.resolved).length;
+  $('stageContent').innerHTML=`
+    <div class="report-sec"><h3>⏱ 累计 ${formatDuration(prog.totalMs)} · ⭐ ${stars} · 独立作答 ${prog.attempts.length} 次</h3><div class="item">未解决错题 ${unresolved.length} 道 · 已连续答对两次解决 ${resolved} 道 · 变形台已看 ${prog.feedbackSeen.length}/${FEEDBACK.length}</div></div>
+    <div class="wrong-summary"><b>当前回炉：</b>${unresolved.length?unresolved.map(([id,w])=>`${w.skill}（错${w.wrongCount}次，连对${w.rightStreak||0}/2）`).join('；'):'暂无未解决错题'}</div>
+    <div class="report-sec" style="margin-top:10px"><h3>模块进度</h3>${rows}</div>
+    <div class="report-sec"><h3>📌 本课重点（给爸爸看）</h3>
+      <div class="item">• 主题：一般将来时（will / be going to）+ 一般现在时三单复习（2026-07-30，课外英语班）。</div>
+      <div class="item">• 语法：三单变身（+s / +es / y→ies / have→has）；will + 原形表预测·承诺；be going to + 原形表计划；否定 won't；疑问 Will 提前。</div>
+      <div class="item">• 时间信号：tomorrow / next week / this evening / soon → 将来；every day / usually / always → 一般现在。</div>
+      <div class="item">• 作业跟进：订正听写本与试卷错题、完成配套练习卷；老师预告<b>下节课进行例句听写</b>，软件内已设「听写训练营」6 句备战。</div>
+      <div class="item">• 教材依据：Lesson 21（三单：The sheep eats. The fish swims.）、Lesson 22（It will rain tomorrow. / I will help you. / I am going to buy a cake.）。</div>
+    </div>
+    <div class="btn-row">
+      <button class="btn btn-mint" style="flex:1" onclick="copyMarkdown()">📋 复制给 AI</button>
+      <button class="btn btn-yellow" style="flex:1" onclick="downloadMarkdown()">📝 Markdown</button>
+      <button class="btn btn-blue" style="flex:1" onclick="downloadJSON()">💾 JSON</button>
+      <button class="btn btn-purple" style="flex:1" onclick="$('importFile').click()">📥 导入 JSON</button>
+    </div>
+    <input class="sr-only" id="importFile" type="file" accept="application/json,.json" onchange="importProgress(event)">
+    <div id="copyMsg" style="text-align:center; font-size:12px; color:var(--green); margin-top:8px;"></div>
+    ${backBtn()}`;
+}
+function formatDuration(ms){const m=Math.floor((Number(ms)||0)/60000),s=Math.floor(((Number(ms)||0)%60000)/1000);return m?`${m}分${s}秒`:`${s}秒`;}
+function buildExport(){return {schemaVersion:2,child:kid,childLabel:kid==='kenton'?'Kenton':'Eddey',subject:'课外英语班',app:APP_ID,version:APP_VERSION,lesson:"一般将来时（will / be going to）+ 三单复习 · 2026-07-30",source:'2026-07-30 课外英语班老师反馈 · 教材 Lesson 21–22',exportedAt:new Date().toISOString(),stars,progress:prog};}
+function buildMarkdown(){const d=buildExport(),wrong=Object.entries(prog.wrongbook).filter(([,w])=>!w.resolved);return `# ${d.childLabel} · 一般将来时四大法宝 复习记录\n\n- 软件版本：${APP_VERSION}\n- 累计用时：${formatDuration(prog.totalMs)}\n- 独立作答：${prog.attempts.length} 次\n- 变形台已看：${prog.feedbackSeen.length}/${FEEDBACK.length}\n- 未解决错题：${wrong.length}\n\n## 当前错题\n\n${wrong.length?wrong.map(([id,w])=>`- ${w.skill}：错 ${w.wrongCount} 次，连续答对 ${w.rightStreak||0}/2；${w.explain}`).join('\n'):'- 暂无'}\n\n## 模块进度\n\n${MODULES.map(m=>`- ${m.t1}：${prog.done[m.id]?`${prog.done[m.id].ok}/${prog.done[m.id].total}`:'未完成'}`).join('\n')}\n`;}
+function copyMarkdown(){const txt=buildMarkdown();if(navigator.clipboard)navigator.clipboard.writeText(txt).then(()=>{$('copyMsg').textContent='✅ 已复制，可直接发给 AI';},()=>fallbackCopy(txt));else fallbackCopy(txt);}
+function fallbackCopy(txt){ const t=document.createElement('textarea'); t.value=txt; document.body.appendChild(t); t.select(); try{document.execCommand('copy'); $('copyMsg').textContent='✅ 已复制';}catch(e){$('copyMsg').textContent='请长按手动复制';} t.remove(); }
+function saveBlob(text,type,name){const blob=new Blob([text],{type}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);$('copyMsg').textContent='✅ 文件已下载';}
+function downloadJSON(){saveBlob(JSON.stringify(buildExport(),null,2),'application/json',`eddey-future-tense-${kid}-v1.json`);}
+function downloadMarkdown(){saveBlob(buildMarkdown(),'text/markdown;charset=utf-8',`eddey-future-tense-${kid}-record.md`);}
+function importProgress(event){const file=event.target.files&&event.target.files[0];if(!file)return;const reader=new FileReader();reader.onload=()=>{try{const d=JSON.parse(reader.result);if(d.schemaVersion!==2||d.app!==APP_ID)throw new Error('这不是本软件导出的 v2 JSON');if(d.child!==kid)throw new Error(`这是 ${d.child} 的记录，不能导入 ${kid}`);if(!d.progress||typeof d.progress!=='object')throw new Error('缺少 progress 数据');prog=normalizeProgress(d.progress);stars=Number(d.stars)||0;$('starCount').textContent=stars;saveProg();renderReport();$('copyMsg').textContent='✅ 导入成功';}catch(err){$('copyMsg').textContent='⚠️ 导入失败：'+err.message;}finally{event.target.value='';}};reader.readAsText(file,'utf-8');}
+
+/* ========== 启动 ========== */
+setupLongPress();
+pickKid('eddey');
+document.addEventListener('visibilitychange',()=>{if(document.hidden)flushModuleTime();});
+window.addEventListener('beforeunload',flushModuleTime);
+// hash 深链：#m=模块id 直达模块（便于验收与分享）
+if(location.hash){const m=location.hash.match(/m=([a-z]+)/);if(m&&document.getElementById('stageBox'))openModule(m[1]);}
+
+</script>
+</body>
+</html>

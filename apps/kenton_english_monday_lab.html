@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<script src="../assets/learning-sync.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>哥哥英语 · 从句与数词学习馆</title>
+<style>
+:root{--blue:#2f6fb3;--blued:#225182;--bluebg:#e8f0fa;--gold:#f2b632;--golddk:#c98a00;
+ --ink:#23303a;--paper:#eef5fc;--card:#fff;--line:#dbe7f3;--green:#2e9c54;--greenbg:#e9f7ee;
+ --red:#e1553f;--redbg:#fdecea;--muted:#7d8a96;--purple:#7b54c0;--purplebg:#f1ebfa;--orange:#e8842c;--orangebg:#fdf1e3;--teal:#0e8f8f;--tealbg:#e5f6f6;}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+html,body{margin:0;padding:0;}
+body{font-family:'LXGW WenKai Screen','PingFang SC','Microsoft YaHei',system-ui,sans-serif;
+ background:radial-gradient(circle at 10% 4%,#d3e6fb 0,transparent 40%),radial-gradient(circle at 92% 98%,#dde9fb 0,transparent 44%),var(--paper);
+ color:var(--ink);min-height:100vh;padding:0 0 50px;}
+.wrap{max-width:620px;margin:0 auto;padding:12px;}
+.top{display:flex;align-items:center;gap:10px;padding:8px 2px 6px;}
+.badge{background:var(--blue);color:#fff;font-weight:800;font-size:17px;padding:6px 13px;border-radius:13px 13px 13px 4px;box-shadow:0 4px 0 var(--blued);}
+.top h1{font-size:16px;margin:0;flex:1;}
+.top .home{text-decoration:none;font-size:20px;background:#fff;width:38px;height:38px;border-radius:11px;display:grid;place-items:center;color:var(--ink);box-shadow:0 3px 0 #cddcec;}
+.mute{font-size:18px;background:#fff;border:none;width:38px;height:38px;border-radius:11px;cursor:pointer;box-shadow:0 3px 0 #cddcec;}
+.intro{font-size:13px;color:var(--muted);line-height:1.7;background:#fff;border:2px solid var(--line);border-radius:14px;padding:12px 14px;margin:8px 0;}
+.intro b{color:var(--blued);}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:6px;}
+.tile{background:#fff;border:2px solid var(--line);border-radius:18px;padding:16px 12px;cursor:pointer;box-shadow:0 6px 0 #e1ecf7;text-align:center;transition:transform .08s;border-top:6px solid var(--blue);position:relative;}
+.tile:active{transform:translateY(3px);box-shadow:0 3px 0 #e1ecf7;}
+.tile .ic{font-size:38px;line-height:1;}
+.tile .nm{font-weight:800;font-size:16px;margin-top:8px;color:var(--blued);}
+.tile .ds{font-size:11.5px;color:var(--muted);margin-top:4px;line-height:1.5;}
+.tile .done{position:absolute;top:6px;right:8px;font-size:11px;font-weight:800;color:var(--green);background:var(--greenbg);border-radius:8px;padding:2px 7px;}
+.card{background:var(--card);border:2px solid var(--line);border-radius:18px;padding:16px;margin:11px 0;box-shadow:0 6px 0 #e4eef8;}
+.h2{font-size:18px;font-weight:800;margin:0 0 4px;color:var(--blued);}
+.hint{font-size:13px;color:var(--muted);line-height:1.7;}
+.btn{font-family:inherit;font-weight:800;font-size:15px;border:none;border-radius:13px;padding:11px 16px;cursor:pointer;color:#fff;background:var(--blue);box-shadow:0 5px 0 var(--blued);transition:transform .06s;}
+.btn:active{transform:translateY(3px);box-shadow:0 2px 0 var(--blued);}
+.btn.gold{background:var(--gold);box-shadow:0 5px 0 var(--golddk);color:#5a3d00;}
+.btn.ghost{background:#fff;color:var(--blued);border:2px solid var(--blue);box-shadow:0 5px 0 #cddcec;}
+.btn.green{background:var(--green);box-shadow:0 5px 0 #1f7a3e;}
+.btn.sm{font-size:13.5px;padding:9px 13px;}
+.row{display:flex;gap:9px;flex-wrap:wrap;align-items:center;}
+.center{justify-content:center;}
+.hide{display:none!important;}
+.back{background:none;border:none;color:var(--muted);font-size:15px;font-family:inherit;cursor:pointer;font-weight:800;padding:6px 2px;}
+.why{background:var(--greenbg);border-left:5px solid var(--green);border-radius:10px;padding:11px 14px;font-size:14px;line-height:1.7;margin:10px 0;}
+.why.bad{background:var(--redbg);border-left-color:var(--red);}
+.why .lab{font-weight:800;color:var(--green);}
+.why.bad .lab{color:var(--red);}
+.opts{display:grid;gap:10px;margin-top:8px;}
+.opt{font-family:inherit;font-size:15.5px;text-align:left;background:#fff;border:2px solid var(--line);border-radius:13px;padding:12px 15px;cursor:pointer;color:var(--ink);box-shadow:0 4px 0 #e4eef8;}
+.opt:active{transform:translateY(2px);box-shadow:0 2px 0 #e4eef8;}
+.opt.right{background:var(--greenbg);border-color:var(--green);color:var(--green);font-weight:800;}
+.opt.wrong{background:var(--redbg);border-color:var(--red);color:var(--red);font-weight:800;}
+.opt.off{pointer-events:none;}
+.formula{background:var(--bluebg);border-radius:13px;padding:12px 14px;font-size:15px;line-height:1.8;margin:8px 0;}
+.formula b{color:var(--blued);}
+.say{font-family:inherit;font-size:13.5px;font-weight:800;padding:7px 13px;border-radius:11px;border:2px solid var(--gold);background:#fffaf0;color:var(--golddk);cursor:pointer;box-shadow:0 3px 0 #f0dca0;}
+.pgr{font-size:12.5px;color:var(--muted);text-align:center;margin:2px 0 6px;}
+.stamp{display:inline-block;border:3px solid var(--green);color:var(--green);font-weight:800;border-radius:10px;padding:3px 10px;font-size:14px;transform:rotate(-6deg);margin:6px 0;}
+.sen{font-size:16px;font-weight:700;line-height:1.7;text-align:center;margin:10px 0 2px;}
+.sencn{font-size:13px;color:var(--muted);text-align:center;margin-bottom:6px;}
+.term{border-bottom:2px dotted var(--blue);cursor:pointer;color:inherit;font-style:normal;}
+.term:active{background:#ffe9a8;border-radius:3px;}
+.termbar{font-size:11.5px;color:var(--muted);text-align:center;margin:4px 0 0;}
+#bub{position:fixed;background:#fff;border-radius:13px;padding:11px 15px;box-shadow:0 8px 24px rgba(0,0,0,.22);z-index:9999;max-width:290px;text-align:center;border:2px solid var(--gold);animation:pop .25s;}
+#bub .be{font-size:13.5px;font-weight:800;}
+#bub .bc{font-size:13px;font-weight:600;color:var(--ink);margin-top:3px;text-align:left;line-height:1.7;}
+@keyframes pop{0%{transform:scale(.7);opacity:0;}60%{transform:scale(1.06);}100%{transform:scale(1);opacity:1;}}
+@keyframes pulse{0%,100%{transform:scale(1);}50%{transform:scale(1.1);}}
+.rec{background:var(--bluebg);border-radius:12px;padding:11px 13px;margin:8px 0;font-size:13.5px;line-height:1.8;}
+.rec b{color:var(--blued);}
+.tipbar{font-size:12px;color:var(--muted);text-align:center;margin-top:14px;line-height:1.6;}
+textarea.exp{width:100%;height:120px;font-family:inherit;font-size:12px;border:2px solid var(--line);border-radius:10px;padding:8px;}
+.famchips{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0;}
+.chip{font-family:inherit;font-size:14.5px;font-weight:800;padding:8px 12px;border-radius:11px;border:2px solid var(--line);background:#fff;color:var(--blued);cursor:pointer;box-shadow:0 3px 0 #e4eef8;}
+.chip.on{background:var(--blue);color:#fff;border-color:var(--blue);}
+.tipbox{background:#fffaf0;border:2px dashed var(--gold);border-radius:12px;padding:10px 13px;font-size:13.5px;line-height:1.8;margin:8px 0;}
+.tipbox b{color:var(--golddk);}
+/* ---- 句子侦探社 ---- */
+.dsen{display:flex;flex-wrap:wrap;gap:7px;justify-content:center;background:linear-gradient(180deg,#f7fbff,#eef5fd);border:2px solid var(--line);border-radius:14px;padding:16px 10px;margin:10px 0;}
+.tok{font-family:inherit;font-size:18px;font-weight:800;background:#fff;border:2.5px solid var(--line);border-radius:12px;padding:9px 12px;cursor:pointer;color:var(--ink);transition:all .2s;position:relative;}
+.tok:active{transform:scale(.95);}
+.tok.lit{color:#fff;animation:pop .5s;}
+.tok.lit small{display:block;font-size:10px;font-weight:800;letter-spacing:0;}
+.tok.dud{pointer-events:none;opacity:.9;}
+@keyframes shakeX{0%,100%{transform:translateX(0);}25%{transform:translateX(-6px);}75%{transform:translateX(6px);}}
+.tok.no{animation:shakeX .3s;border-color:var(--red);}
+.qcard{background:#fff8ec;border:2.5px dashed var(--gold);border-radius:14px;padding:12px 15px;margin:8px 0;text-align:center;}
+.qcard .qq{font-size:17px;font-weight:800;color:#7a5600;}
+.qcard .qs{font-size:12px;color:var(--muted);margin-top:3px;}
+.payoff{background:var(--greenbg);border:2px solid #bfe3cc;border-radius:13px;padding:12px;margin:8px 0;text-align:center;font-size:16px;font-weight:700;line-height:1.9;}
+.payoff .zh{font-size:12px;color:var(--muted);font-weight:600;}
+/* ---- 积木工厂 ---- */
+.machine{background:linear-gradient(180deg,#f7fbff,#eef5fd);border:2px solid var(--line);border-radius:14px;padding:16px 10px;margin:10px 0;text-align:center;min-height:150px;}
+.slotrow{display:flex;gap:6px;justify-content:center;align-items:center;flex-wrap:wrap;font-size:16px;font-weight:800;}
+.slot{border:3px dashed #b9c9da;border-radius:12px;padding:9px 12px;color:#9fb2c4;min-width:86px;transition:all .5s;}
+.slot.fill{border-style:solid;animation:pop .55s;}
+.slot small{display:block;font-size:10px;font-weight:800;}
+.fixedw{background:#fff;border:2px solid var(--line);border-radius:12px;padding:9px 12px;}
+.fixedw small{display:block;font-size:10px;color:var(--muted);font-weight:800;}
+.blockpiece{display:inline-block;border-radius:12px;padding:9px 13px;font-weight:800;font-size:15px;margin:10px 4px 2px;animation:pop .5s;}
+.blockpiece small{display:block;font-size:10.5px;font-weight:700;}
+/* ---- 合并机 ---- */
+.morph{background:#fff;border:2px solid var(--line);border-radius:13px;padding:13px;margin:9px 0;font-size:16px;line-height:1.9;text-align:center;font-weight:700;}
+.morph s{color:var(--red);}
+.morph b{color:var(--green);background:var(--greenbg);border-radius:6px;padding:0 4px;}
+.morph.zoom{animation:pop .45s;}
+.morph .mk{background:#fff6dd;border-radius:6px;padding:0 4px;color:var(--golddk);}
+.stepn{background:var(--bluebg);border-radius:10px;padding:9px 12px;font-size:13.5px;line-height:1.7;margin:6px 0;}
+/* ---- 数词变身机 ---- */
+.numrow{display:flex;gap:8px;align-items:center;justify-content:center;flex-wrap:wrap;margin:12px 0 6px;}
+.numstage{font-size:24px;font-weight:800;background:#fff;border:2px solid var(--blue);color:var(--blued);border-radius:13px;padding:9px 15px;letter-spacing:1px;}
+.numstage.o{border-color:var(--orange);color:var(--orange);opacity:0;transform:scale(.6);transition:all .5s cubic-bezier(.34,1.56,.64,1);}
+.numstage.o.go{opacity:1;transform:scale(1);}
+.numstage .hl{color:var(--red);border-bottom:3px solid var(--red);font-style:normal;}
+.numstage small{display:block;font-size:10.5px;color:var(--muted);letter-spacing:0;font-weight:800;}
+.cal{display:grid;grid-template-columns:repeat(7,1fr);gap:5px;margin:10px 0;}
+.day{font-family:inherit;font-size:14px;font-weight:800;background:#fff;border:2px solid var(--line);border-radius:9px;padding:8px 0;cursor:pointer;color:var(--ink);}
+.day.on{background:var(--gold);border-color:var(--golddk);color:#5a3d00;}
+.numshow{background:var(--orangebg);border:2px dashed var(--orange);border-radius:13px;padding:12px;text-align:center;margin:8px 0;min-height:74px;}
+.numshow .big{font-size:21px;font-weight:800;color:#8a5200;}
+.numshow .ab{font-size:14px;color:var(--muted);font-weight:700;margin-top:2px;}
+/* ---- 复习卡 ---- */
+.rulecard{background:#fff;border:2px solid var(--line);border-left:6px solid var(--blue);border-radius:13px;padding:11px 14px;margin:8px 0;font-size:14px;line-height:1.8;}
+.rulecard b{color:var(--blued);}
+.rulecard .ex{font-size:13.5px;color:var(--ink);}
+.rulecard .cn{font-size:12px;color:var(--muted);}
+.en{border-bottom:1px dashed rgba(122,110,130,.4);cursor:pointer;padding:0 1px;border-radius:3px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top">
+    <a class="home" href="../apps.html?who=kenton">‹</a>
+    <span class="badge">哥哥</span>
+    <h1>英语 · 从句与数词学习馆</h1>
+    <button class="mute" id="muteBtn">🔔</button>
+  </div>
+  <div id="home"></div>
+  <div id="view" class="hide">
+    <button class="back" id="backBtn">← 回预习馆大厅</button>
+    <div id="stage"></div>
+  </div>
+  <div class="tipbar">周一课的内容：主语/表语从句（认识概念）+ 数词用法 + 定语/状语从句。<br>课前玩=预习不慌，课后玩=快速复习巩固！</div>
+</div>
+
+<script>
+"use strict";
+/* ===================== 朗读：audio-first ===================== */
+const AUDIO_DIR="audio/kenton_english_monday_lab/";
+let exAudio=null,audioTok=0;
+function audioHash(s){const b=new TextEncoder().encode(s);let x=0x811c9dc5>>>0;for(let i=0;i<b.length;i++){x^=b[i];x=Math.imul(x,0x01000193)>>>0;}return('0000000'+x.toString(16)).slice(-8);}
+function getExAudio(){if(!exAudio){exAudio=new Audio();exAudio.setAttribute('playsinline','');exAudio.preload='auto';try{document.body.appendChild(exAudio);}catch(e){}}return exAudio;}
+function mkUtter(t,lang){const u=new SpeechSynthesisUtterance(t);u.lang=(lang==='en')?'en-US':'zh-CN';u.rate=(lang==='en')?0.85:0.95;u.pitch=1.03;
+  try{const vs=speechSynthesis.getVoices();const v=vs.find(x=>x.lang&&x.lang.startsWith(lang==='en'?'en':'zh'));if(v)u.voice=v;}catch(e){}return u;}
+/* Chrome/Edge 坑：cancel() 后立刻 speak() 会被静默吞掉，必须隔一拍再说 */
+let ttsTok=0;
+try{speechSynthesis.getVoices();speechSynthesis.onvoiceschanged=()=>{try{speechSynthesis.getVoices();}catch(e){}};}catch(e){}
+function ttsSpeakOnce(t,lang){
+  if(!('speechSynthesis'in window))return;
+  try{speechSynthesis.cancel();}catch(e){}
+  ttsTok++;const my=ttsTok;
+  setTimeout(()=>{if(my!==ttsTok)return;
+    try{speechSynthesis.resume();speechSynthesis.speak(mkUtter(t,lang));}catch(e){}
+  },120);
+}
+function speakOnce(t,lang){
+  lang=lang||'en';
+  try{speechSynthesis.cancel();}catch(e){}
+  ttsTok++;audioTok++;const myTok=audioTok;
+  const a=getExAudio();let done=false;
+  const stale=()=>done||myTok!==audioTok;
+  const fb=()=>{if(stale())return;done=true;ttsSpeakOnce(t,lang);};
+  a.onended=()=>{if(stale())return;done=true;};
+  a.onerror=fb;
+  try{a.pause();}catch(e){}
+  a.src=AUDIO_DIR+audioHash(lang+"|"+t)+".mp3";
+  try{a.currentTime=0;}catch(e){}
+  const p=a.play();
+  if(p&&typeof p.catch==='function')p.catch(fb);
+}
+/* ===================== 音效 + 静音 ===================== */
+let actx=null,muted=localStorage.getItem('kml_mute')==='1';
+function beep(ok){
+  if(muted)return;
+  try{
+    if(!actx)actx=new (window.AudioContext||window.webkitAudioContext)();
+    if(actx.state==='suspended')actx.resume();
+    const t=actx.currentTime;
+    (ok?[[523,0],[659,.09],[784,.18]]:[[196,0],[147,.14]]).forEach(f=>{
+      const o=actx.createOscillator(),g=actx.createGain();
+      o.type=ok?'triangle':'sawtooth';o.frequency.value=f[0];
+      g.gain.setValueAtTime(.0001,t+f[1]);g.gain.exponentialRampToValueAtTime(.18,t+f[1]+.02);g.gain.exponentialRampToValueAtTime(.0001,t+f[1]+.22);
+      o.connect(g);g.connect(actx.destination);o.start(t+f[1]);o.stop(t+f[1]+.26);});
+  }catch(e){}
+}
+function syncMute(){document.getElementById('muteBtn').textContent=muted?'🔕':'🔔';}
+document.getElementById('muteBtn').onclick=()=>{muted=!muted;localStorage.setItem('kml_mute',muted?'1':'0');syncMute();};
+syncMute();
+/* ===================== 记录 ===================== */
+const EV_KEY='kml_events_v1';
+function loadEv(){try{return JSON.parse(localStorage.getItem(EV_KEY)||'[]');}catch(e){return[];}}
+function logEvent(ev){const a=loadEv();a.push(ev);localStorage.setItem(EV_KEY,JSON.stringify(a));}
+function lastScore(lesson){const a=loadEv();for(let i=a.length-1;i>=0;i--)if(a[i].lesson===lesson)return a[i];return null;}
+function finishMod(lesson,items,t0){
+  const wrong=items.filter(x=>!x.ok).length;
+  logEvent({ts:Date.now(),type:'quiz',subject:'英语·周一预习(从句+数词)',lesson:lesson,total:items.length,wrong:wrong,
+    durationSec:Math.round((Date.now()-t0)/1000),items:items});
+}
+/* ===================== 术语点击解释 ===================== */
+const TERMS={
+ '从句':'把一个小句子当"积木"，塞进大句子里干活——这块积木就叫从句。它干什么活，就叫什么从句。',
+ '主语':'句子的主人公，就是"谁"。The boy runs.（男孩跑）里的 The boy 男孩。它一般站在句子最前面。',
+ '表语':'站在 is/am/are 后面的词，说主人公"是什么样"。He is happy.（他很开心）里的 happy。',
+ '定语':'形容名词的词，回答"什么样的？"。a red apple（一个红苹果）里的 red 红色的。',
+ '状语':'说"什么时候、在哪儿、为什么"做的部分。I run in the morning.（我早上跑步）里的 in the morning 在早上。',
+ '主语从句':'一个小句子当了主人公。What he said is true. = "他说的话"是真的。"他说的话"就是主人公！（高中才学，认识就行）',
+ '表语从句':'一个小句子站在 is 后面，说"是什么"。The news is that we won. = 消息就是：我们赢啦！（高中才学，认识就行）',
+ '定语从句':'一个小句子跟在名词屁股后面，说"哪一个"。the boy who runs fast = 跑得快的那个男孩。',
+ '状语从句':'一个小句子挂在旁边，说"什么时候/为什么"。as soon as I arrive = 我一到（就……）。你已经学过啦！',
+ '名词':'人和东西的名字：boy 男孩、book 书、news 消息。',
+ 'be动词':'is / am / are，意思是"是"。过去的事用 was / were。',
+ '基数词':'数数的数字：one, two, three…（1、2、3…）。',
+ '序数词':'排队报"第几"的数字：first, second, third…（第1、第2、第3…）。说日期、名次、第几课都用它。'
+};
+function term(t){return '<span class="term" data-term="'+t+'">'+t+'</span>';}
+function hideBub(){const b=document.getElementById('bub');if(b)b.remove();}
+function showTermBub(t,x,y){
+  hideBub();const tr=TERMS[t];if(!tr)return;
+  const b=document.createElement('div');b.id='bub';
+  b.innerHTML='<div class="be">📖 '+t+'</div><div class="bc">'+tr+'</div>';
+  document.body.appendChild(b);
+  const r=b.getBoundingClientRect();
+  let l=x-r.width/2,tp=y-r.height-16;
+  if(l<8)l=8;if(l+r.width>window.innerWidth-8)l=window.innerWidth-r.width-8;if(tp<8)tp=y+24;
+  b.style.left=l+'px';b.style.top=tp+'px';
+  setTimeout(()=>{document.addEventListener('click',hideBub,{once:true});document.addEventListener('touchstart',hideBub,{once:true});},120);
+}
+document.addEventListener('click',e=>{const el=e.target.closest('.term');if(!el)return;e.stopPropagation();showTermBub(el.dataset.term,e.clientX||window.innerWidth/2,e.clientY||120);});
+document.addEventListener('click',e=>{const el=e.target.closest('[data-say]');if(!el)return;speakOnce(el.dataset.say,el.dataset.lang||'en');});
+function esc(t){return String(t).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+function sayBtn(t,label){return '<button class="say" data-say="'+esc(t)+'" data-lang="en">🔊 '+(label||'听')+'</button>';}
+
+/* ===================== 🧩 从句积木工厂数据 ===================== */
+const BLOCKS=[
+{key:'sub',nm:'主语从句',emoji:'👑',col:'var(--purple)',bg:'var(--purplebg)',lv:'高中·认识就行',
+ frame:[{t:'____',slot:1,lab:'主语'},{t:'is',lab:'be动词'},{t:'true',lab:'表语'}],
+ piece:'What he said',pieceCn:'他说的话',
+ full:'What he said is true.',cn:'他说的话是真的。',
+ cap:'看！<b>What he said</b>（他说的话）是个小句子。<br>它坐到了<b>最前面的宝座</b>上，当了句子的主人公（'+term('主语')+'）。<br>👉 小句子当主语 → 就叫<b>主语从句</b>。<br>🎓 高中才学，今天<b>认得它</b>就赢了！'},
+{key:'pred',nm:'表语从句',emoji:'🪞',col:'var(--teal)',bg:'var(--tealbg)',lv:'高中·认识就行',
+ frame:[{t:'The good news',lab:'主语'},{t:'is',lab:'be动词'},{t:'____',slot:1,lab:'表语'}],
+ piece:'that we won the game',pieceCn:'我们赢了比赛',
+ full:'The good news is that we won the game.',cn:'好消息是：我们赢了比赛。',
+ cap:'好消息 is —— 是什么呀？<br>小句子 <b>that we won the game</b>（我们赢了比赛）站到 <b>is 后面</b>回答了这个问题（这位置叫'+term('表语')+'）。<br>👉 小句子站在 is 后面 → 就叫<b>表语从句</b>。<br>🎓 也是高中的，认得脸就行！'},
+{key:'attr',nm:'定语从句',emoji:'🐒',col:'var(--orange)',bg:'var(--orangebg)',lv:'周日讲过·要会',
+ frame:[{t:'The boy',lab:'名词'},{t:'____',slot:1,lab:'小尾巴'},{t:'is my friend',lab:'剩下的话'}],
+ piece:'who runs fast',pieceCn:'跑得快的',
+ full:'The boy who runs fast is my friend.',cn:'跑得快的那个男孩是我的朋友。',
+ cap:'男孩那么多，说的是<b>哪一个</b>？<br>小句子 <b>who runs fast</b>（跑得快的）像小尾巴，<b>跟在 the boy 后面</b>回答了这个问题（形容名词的活叫'+term('定语')+'）。<br>👉 小句子形容名词 → 就叫<b>定语从句</b>。<br>🔍 去「合并机」看它怎么造出来！'},
+{key:'adv',nm:'状语从句',emoji:'🚃',col:'var(--green)',bg:'var(--greenbg)',lv:'已学·最熟',
+ frame:[{t:'I will call you',lab:'主句'},{t:'____',slot:1,lab:'小车厢'}],
+ piece:'as soon as I arrive',pieceCn:'我一到',
+ full:'I will call you as soon as I arrive.',cn:'我一到就给你打电话。',
+ cap:'<b>什么时候</b>给你打电话？<br>小句子 <b>as soon as I arrive</b>（我一到）像小车厢挂在旁边，回答了这个问题（说时间/原因的活叫'+term('状语')+'）。<br>👉 小句子说明时间 → 就叫<b>状语从句</b>。<br>✅ 你在时光机学过，最熟！'}
+];
+/* ===================== 🔍 定语从句合并机数据 ===================== */
+const MERGE=[
+{name:'人 → 用 who',
+ s1:'The boy is my friend.',s1cn:'那个男孩是我的朋友。',s2:'The boy runs fast.',s2cn:'那个男孩跑得快。',
+ steps:[
+  {h:'<span class="mk">The boy</span> is my friend. ＋ <span class="mk">The boy</span> runs fast.',n:'① 两句话里有一个<b>相同的人</b>：The boy（发光的地方）'},
+  {h:'The boy is my friend. ＋ <s>The boy</s> <b>who</b> runs fast',n:'② 把第二句的 The boy 换成 <b>who</b>（是"人"，用 who）'},
+  {h:'The boy <b>who runs fast</b> is my friend.',n:'③ 把 who 的句子<b>塞到 The boy 屁股后面</b>当小尾巴 ✅'}],
+ full:'The boy who runs fast is my friend.',cn:'跑得快的那个男孩是我的朋友。'},
+{name:'物 → 用 which',
+ s1:'I like the book.',s1cn:'我喜欢那本书。',s2:'The book has many pictures.',s2cn:'那本书有很多图画。',
+ steps:[
+  {h:'I like <span class="mk">the book</span>. ＋ <span class="mk">The book</span> has many pictures.',n:'① 相同的东西：the book（一本书，是"物"）'},
+  {h:'I like the book. ＋ <s>The book</s> <b>which</b> has many pictures',n:'② 物不用 who，换成 <b>which</b>'},
+  {h:'I like the book <b>which has many pictures</b>.',n:'③ 塞到 the book 后面 ✅（which 也可以换成 that）'}],
+ full:'I like the book which has many pictures.',cn:'我喜欢那本有很多图画的书。'}
+];
+const MQ=[
+ {stem:'The girl ____ is singing is my sister.（正在唱歌的女孩是我姐姐）',opts:['who','which'],a:0,why:'girl 是"人" → 用 who。which 只能指物。'},
+ {stem:'I ate the cake ____ mom made.（我吃了妈妈做的蛋糕）',opts:['who','which'],a:1,why:'cake 蛋糕是"物" → 用 which（或 that）。'},
+ {stem:'The man ____ helped me is a doctor.（帮过我的那个人是医生）',opts:['which','who'],a:1,why:'man 是"人" → who。口诀：人用who，物用which，that两边都能用。'}
+];
+/* ===================== 🔢 数词数据 ===================== */
+const CARD=['one','two','three','four','five','six','seven','eight','nine','ten','eleven','twelve','thirteen','fourteen','fifteen','sixteen','seventeen','eighteen','nineteen','twenty','twenty-one','twenty-two','twenty-three','twenty-four','twenty-five','twenty-six','twenty-seven','twenty-eight','twenty-nine','thirty','thirty-one'];
+const ORD=['first','second','third','fourth','fifth','sixth','seventh','eighth','ninth','tenth','eleventh','twelfth','thirteenth','fourteenth','fifteenth','sixteenth','seventeenth','eighteenth','nineteenth','twentieth','twenty-first','twenty-second','twenty-third','twenty-fourth','twenty-fifth','twenty-sixth','twenty-seventh','twenty-eighth','twenty-ninth','thirtieth','thirty-first'];
+function abbr(n){const t=n%10,h=n%100;if(h>=11&&h<=13)return n+'th';return n+(t===1?'st':t===2?'nd':t===3?'rd':'th');}
+/* 变身示范：数字, 基数hl, 序数hl, 规则说明 */
+const NDEMO=[
+ [1,'one','[first]','⭐ 特殊三兄弟：one→first，整个换新词（第1）'],
+ [2,'two','[second]','⭐ 特殊三兄弟：two→second（第2）'],
+ [3,'three','[third]','⭐ 特殊三兄弟：three→third（第3）'],
+ [4,'four','four[th]','😄 普通队员：直接加 th → fourth'],
+ [5,'fi[ve]','fi[f]th','⚠️ ve 要变 f 再加 th：five→fifth'],
+ [8,'eight','eigh[th]','⚠️ eight 本来就有 t，只加 h → eighth'],
+ [9,'nin[e]','nin[th]','⚠️ nine 去掉 e 再加 th → ninth'],
+ [12,'twel[ve]','twel[f]th','⚠️ ve 变 f：twelve→twelfth'],
+ [20,'twent[y]','twent[ieth]','⚠️ 整十：y 变 ie 再加 th → twentieth'],
+ [21,'twenty-one','twenty-[first]','🎯 几十几：只变个位！twenty 不动，one→first'],
+ [30,'thirt[y]','thirt[ieth]','⚠️ 整十：y 变 ie 加 th → thirtieth']
+];
+const NQ=[
+ {stem:'今天是6月1日——"1日"要用哪个词？June the ____',opts:['one','first','oneth'],a:1,why:'说"几月几号"的"第几天"用序数词：first（1st）。日期永远用序数词！'},
+ {stem:'nine（9）的序数词是？',opts:['nineth','ninth','ninethe'],a:1,why:'nine 去掉 e 再加 th → ninth（nineth 多了 e，是最常见的错法）！'},
+ {stem:'twenty-one（21）的序数词是？',opts:['twentieth-one','twenty-oneth','twenty-first'],a:2,why:'几十几只变个位：twenty 不动，one→first → twenty-first（21st）。'},
+ {stem:'"三百"怎么说？',opts:['three hundreds','three hundred','third hundred'],a:1,why:'hundred/thousand 前面有数字时不加 s：three hundred。（hundreds of 一大堆 才加s）'},
+ {stem:'"第二课"= Lesson Two = the ____ lesson',opts:['two','second','twoth'],a:1,why:'第几课用序数词加the：the second lesson；编号在后面时用基数词：Lesson Two。'}
+];
+/* ===================== ⏰ 状语从句复习卡数据 ===================== */
+const ADVCARDS=[
+ ['while 同时','两个动作<b>同时进行</b>→都用进行时','While Cherry is typing letters, we are taking notes.','当Cherry打字时，我们在记笔记。'],
+ ['when + 过去一刻','主句用<b>过去进行时</b>','When Cherry typed letters, we were taking notes.','当她打字那一刻，我们正记着笔记。'],
+ ['before / by the time','主句的事<b>更早</b>→主句 had done','Before I arrived at the airport, the plane had taken off.','我到机场前，飞机已经起飞了。'],
+ ['after','<b>从句</b>的事更早→从句 had done','After I had arrived at the school, the class ended.','我到学校后，下课了。'],
+ ['not…until','直到…<b>才</b>…','I will not have class until everyone is here.','直到大家到齐我才上课。'],
+ ['since','从过去<b>一直到现在</b>→主句现在完成时','He has played basketball since he was six.','他从六岁起一直打篮球。'],
+ ['as soon as / if','<b>主将从现</b>：主句will，从句现在时','As soon as I arrive in Shanghai, I will call you.','我一到上海就给你打电话。']
+];
+const AQ=[
+ {stem:'____ I arrive in Shanghai, I will call you.',opts:['As soon as','Until','Because'],a:0,why:'一…就… = as soon as，并且主将从现：主句 will call，从句 arrive。'},
+ {stem:'He ____ basketball since he was six.',opts:['played','has played','plays'],a:1,why:'since+过去起点 → 主句用现在完成时 has played（一直打到现在）。'},
+ {stem:'Before I arrived, the plane ____ off.',opts:['took','had taken','takes'],a:1,why:'两件过去的事，更早的（飞机起飞）用过去完成时 had taken。'}
+];
+/* ===================== 🏆 综合小检验 ===================== */
+const QUIZ=[
+ {stem:'【认脸】What he said is true. 加粗的 What he said 是什么从句？',opts:['主语从句','表语从句','定语从句'],a:0,why:'它坐在句子开头当主语（"他说的话"是真的）→ 主语从句。'},
+ {stem:'【认脸】The news is that we won. 里 that we won 是什么从句？',opts:['主语从句','表语从句','状语从句'],a:1,why:'它站在 is 后面说明"消息是什么" → 表语从句。'},
+ {stem:'【认脸】The boy who runs fast is my friend. 里 who runs fast 是什么从句？',opts:['定语从句','表语从句','主语从句'],a:0,why:'它跟在名词 the boy 后面当小尾巴，形容"哪一个男孩" → 定语从句。'},
+ {stem:'【认脸】I will call you as soon as I arrive. 里 as soon as I arrive 是什么从句？',opts:['定语从句','主语从句','状语从句'],a:2,why:'它是挂在句子旁边的小车厢，说明"什么时候打" → （时间）状语从句。'},
+ {stem:'The girl ____ is dancing is my classmate.',opts:['who','which','what'],a:0,why:'girl 是人 → 定语从句用 who。'},
+ {stem:'6月3日 = June the ____',opts:['three','third','threeth'],a:1,why:'日期用序数词：three→third（特殊三兄弟）。'},
+ {stem:'five（5）的序数词是？',opts:['fiveth','fifth','fivth'],a:1,why:'ve 变 f 再加 th：five→fifth。'},
+ {stem:'"第21名"是 the ____',opts:['twenty-first','twentieth-one','twenty-one'],a:0,why:'几十几只变个位：twenty-first。名次也用序数词。'},
+ {stem:'"两千人"怎么说？____ people',opts:['two thousands','two thousand','second thousand'],a:1,why:'thousand 前面有数字不加 s：two thousand people。'},
+ {stem:'If it ____ tomorrow, we will stay at home.',opts:['rains','will rain','rained'],a:0,why:'状语从句复习：主将从现——从句用一般现在时 rains。'}
+];
+
+/* ===================== 导航 ===================== */
+const MODS=[
+ {id:'det',ic:'🕵️',nm:'句子侦探社 ⭐先玩我',ds:'中文句子点一点：主语/定语/状语/表语一下就懂'},
+ {id:'blocks',ic:'🧩',nm:'从句积木工厂 ⭐',ds:'主语/表语/定语/状语从句：同一招——句子当零件插进插槽'},
+ {id:'merge',ic:'🔍',nm:'定语从句合并机',ds:'两句变一句：who/which 一步步看'},
+ {id:'num',ic:'🔢',nm:'数词变身机 ⭐',ds:'one→first 变身动画 + 日历点读 + 口诀'},
+ {id:'adv',ic:'⏰',nm:'状语从句复习卡',ds:'周日学的7张卡快速过，配3题热身'},
+ {id:'quiz',ic:'🏆',nm:'综合小检验',ds:'认脸+数词+复习混合10题，都有讲解'},
+ {id:'rec',ic:'📖',nm:'学习记录',ds:'成绩+导出给爸爸'}
+];
+const $=id=>document.getElementById(id);
+function renderHome(){
+  let h='<div class="intro"><b>周一课的内容：</b>① '+term('主语从句')+'和'+term('表语从句')+'（高中语法，<b>认识概念就行</b>）'+
+   '② 数词的用法（'+term('基数词')+'→'+term('序数词')+'）③ 默写不规则动词（61~90 去<a href="kenton_verb_lab.html" style="color:var(--blued);font-weight:800;">变形实验室</a>背，下周一默）。'+
+   '第一次来？<b>先玩 🕵️句子侦探社</b>——不背定义，点一点就懂。带虚线的词都能点开看解释。'+
+   '<div style="margin-top:8px;"><button class="btn gold sm" id="tvBtn">🔊 先点我测试声音</button></div></div><div class="grid">';
+  MODS.forEach(m=>{
+    const ls=lastScore(m.nm.split(' ⭐')[0]);
+    const done=ls?('<span class="done">✅对'+(ls.total-ls.wrong)+' ❌错'+ls.wrong+'</span>'):'';
+    h+='<div class="tile" data-mod="'+m.id+'"><div class="ic">'+m.ic+'</div><div class="nm">'+m.nm+'</div><div class="ds">'+m.ds+'</div>'+done+'</div>';
+  });
+  h+='</div>';
+  $('home').innerHTML=h;
+  $('tvBtn').onclick=()=>{beep(true);speakOnce('What he said is true.','en');};
+  document.querySelectorAll('.tile').forEach(t=>t.onclick=()=>openMod(t.dataset.mod));
+}
+function openMod(id){
+  $('home').classList.add('hide');$('view').classList.remove('hide');
+  window.scrollTo({top:0,behavior:'smooth'});
+  ({det:renderDet,blocks:renderBlocks,merge:renderMerge,num:renderNum,adv:renderAdv,quiz:renderQuiz,rec:renderRec})[id]();
+}
+$('backBtn').onclick=()=>{$('view').classList.add('hide');$('home').classList.remove('hide');renderHome();window.scrollTo({top:0,behavior:'smooth'});};
+
+/* ===================== 🕵️ 句子侦探社 ===================== */
+const ROLECOL={'主语':'#2f6fb3','定语':'#e8842c','状语':'#2e9c54','表语':'#7b54c0'};
+const SCENES=[
+{key:'apple',nm:'🍎 吃苹果句',
+ tokens:[{t:'跑得快的',r:'attr'},{t:'男孩',r:'subj'},{t:'昨天',r:'adv'},{t:'在公园',r:'adv2'},{t:'开心地',r:'adv3'},{t:'吃了',r:'verb'},{t:'一个',r:''},{t:'大大的',r:'attr2'},{t:'苹果',r:'obj'}],
+ qs:[
+  {q:'第1问：谁在吃苹果？',hint:'点出句子的主人公',ans:'subj',role:'主语',why:'「男孩」！<b>做事的主人公＝主语</b>。'},
+  {q:'第2问：哪一个男孩？',hint:'哪个词在形容男孩？',ans:'attr',role:'定语',why:'「跑得快的」！凡是<b>「○○的」</b>、贴着名词形容它的＝<b>定语</b>。'},
+  {q:'第3问：什么时候吃的？',hint:'找表示时间的词',ans:'adv',role:'状语',why:'「昨天」！说动作<b>什么时候</b>发生＝<b>状语</b>。'},
+  {q:'第4问：在哪儿吃的？',hint:'找表示地点的词',ans:'adv2',role:'状语',why:'「在公园」！说<b>地点</b>的也是<b>状语</b>。'},
+  {q:'第5问：怎么吃的？',hint:'找「○○地」',ans:'adv3',role:'状语',why:'「开心地」！<b>「○○地」</b>说动作怎么做＝还是<b>状语</b>。'},
+  {q:'第6问：什么样的苹果？',hint:'苹果前面找找',ans:'attr2',role:'定语',why:'「大大的」！又是<b>「○○的」</b>——形容哪个名词都算<b>定语</b>。'}],
+ en:'Yesterday, the fast boy happily ate a big apple in the park.',
+ enHtml:'<b style="color:#2e9c54">Yesterday</b>, the <b style="color:#e8842c">fast</b> <b style="color:#2f6fb3">boy</b> <b style="color:#2e9c54">happily</b> ate a <b style="color:#e8842c">big</b> apple <b style="color:#2e9c54">in the park</b>.',
+ enNote:'看！英语里这些"活"一个不少，颜色一一对应——只是位置挪了挪（时间跑到了最前面）。'},
+{key:'bro',nm:'🐯 弟弟句',
+ tokens:[{t:'我的',r:'attr'},{t:'弟弟',r:'subj'},{t:'是',r:'verb'},{t:'一个',r:''},{t:'调皮的',r:'attr2'},{t:'小孩',r:'pred'}],
+ qs:[
+  {q:'第1问：这句话说的是谁？',hint:'点主人公',ans:'subj',role:'主语',why:'「弟弟」＝<b>主语</b>。'},
+  {q:'第2问：谁的弟弟？',hint:'找「○○的」',ans:'attr',role:'定语',why:'「我的」！"我的"也带<b>的</b>——回答"谁的/哪一个"＝<b>定语</b>。'},
+  {q:'第3问：弟弟「是」什么？',hint:'点「是」后面最关键的词',ans:'pred',role:'表语',why:'「小孩」！站在<b>「是」后面</b>、说主人公是什么＝<b>表语</b>。'},
+  {q:'第4问：什么样的小孩？',hint:'又是「○○的」',ans:'attr2',role:'定语',why:'「调皮的」！看到<b>「的」</b>就想到<b>定语</b>。'}],
+ en:'My little brother is a naughty kid.',
+ enHtml:'<b style="color:#e8842c">My</b> little <b style="color:#2f6fb3">brother</b> is a <b style="color:#e8842c">naughty</b> <b style="color:#7b54c0">kid</b>.',
+ enNote:'英语一样：is 后面＝表语；my、naughty＝定语。'}
+];
+const DQ=[
+ {stem:'「红红的」苹果——「红红的」干的是什么活？',opts:['定语（形容名词）','状语（说时间地点）','表语（是后面）'],a:0,why:'带「的」、形容苹果 → 定语。'},
+ {stem:'我「今天早上」刷牙——「今天早上」呢？',opts:['定语','状语','主语'],a:1,why:'说动作什么时候发生 → 状语。'},
+ {stem:'他「慢慢地」走——「慢慢地」呢？',opts:['表语','定语','状语'],a:2,why:'「○○地」说怎么做 → 状语。（"的"归定语，"地"归状语！）'},
+ {stem:'爸爸是「医生」——「医生」呢？',opts:['表语（是后面）','定语','状语'],a:0,why:'站在「是」后面说主人公是什么 → 表语。'}
+];
+let dScene=0,dQi=0,dLit={},dTried=false,dItems=[],dT0=0,dWhyMsg='';
+function renderDet(){dScene=0;dQi=0;dLit={};dTried=false;dItems=[];dT0=Date.now();dWhyMsg='';detShow();}
+function detSwitch(i){dScene=i;dQi=0;dLit={};dTried=false;dWhyMsg='';detShow();}
+function detShow(){
+  const sc=SCENES[dScene],done=dQi>=sc.qs.length;
+  let h='<div class="card"><div class="h2">🕵️ 句子侦探社</div>'+
+   '<div class="hint">别背定义！侦探问一句，你在句子里<b>点出答案</b>——点完你就发现：这些名字其实就是句子里<b>不同的活</b>。</div>'+
+   '<div class="famchips">'+SCENES.map((x,i)=>'<button class="chip'+(i===dScene?' on':'')+'" data-ds="'+i+'">'+x.nm+'</button>').join('')+'</div>'+
+   '<div class="dsen">'+sc.tokens.map((tk,i)=>{
+     const lit=dLit[i];
+     if(lit)return '<span class="tok lit dud" style="background:'+ROLECOL[lit]+';border-color:'+ROLECOL[lit]+';">'+tk.t+'<small>'+lit+'</small></span>';
+     return '<button class="tok" data-tk="'+i+'">'+tk.t+'</button>';
+   }).join('')+'</div>';
+  if(dWhyMsg)h+='<div class="why" style="text-align:left;"><span class="lab">✅ 找到了！</span> '+dWhyMsg+'</div>';
+  if(!done){
+    const q=sc.qs[dQi];
+    h+='<div class="qcard"><div class="qq">🔎 '+q.q+'</div><div class="qs">'+q.hint+'（在上面句子里点出来）</div></div>';
+  }else{
+    h+='<div class="payoff">'+sc.enHtml+'<div class="zh">'+sc.enNote+'</div>'+
+     '<div class="row center" style="margin-top:6px;">'+sayBtn(sc.en,'听英语版')+'</div></div>'+
+     '<div class="row center" style="margin-top:8px;">'+
+      (dScene<SCENES.length-1?'<button class="btn" id="dNextScene">下一句（学表语）→</button>':'<button class="btn gold" id="dSecret">🗝️ 领破案秘诀 + 小测</button>')+
+     '</div>';
+  }
+  h+='</div>';
+  $('stage').innerHTML=h;
+  document.querySelectorAll('[data-ds]').forEach(c=>c.onclick=()=>detSwitch(+c.dataset.ds));
+  document.querySelectorAll('[data-tk]').forEach(b=>b.onclick=()=>{
+    const i=+b.dataset.tk,sc2=SCENES[dScene],q=sc2.qs[dQi];
+    if(!q)return;
+    if(sc2.tokens[i].r===q.ans){
+      beep(true);
+      dItems.push({word:q.role,hint:q.q,ok:!dTried,ms:0,user:sc2.tokens[i].t,tag:q.why.replace(/<[^>]+>/g,'')});
+      dLit[i]=q.role;dWhyMsg=q.why;dTried=false;dQi++;
+      detShow();
+    }else{
+      beep(false);dTried=true;
+      b.classList.add('no');setTimeout(()=>b.classList.remove('no'),350);
+    }
+  });
+  const ns=$('dNextScene');if(ns)ns.onclick=()=>detSwitch(dScene+1);
+  const sec=$('dSecret');if(sec)sec.onclick=()=>detSecret();
+  if(done&&dScene===SCENES.length-1)speakOnce(sc.en,'en');
+}
+function detSecret(){
+  $('stage').innerHTML='<div class="card"><div class="h2">🗝️ 破案秘诀（抓中文小尾巴）</div>'+
+   '<div class="formula">🟠 看到<b>「○○的」</b> → <b>定语</b>（形容名词）：跑得快<b>的</b>、大大<b>的</b>、我<b>的</b>、调皮<b>的</b><br>'+
+   '🟢 看到<b>时间 / 地点 / 「○○地」</b> → <b>状语</b>（说动作）：昨天、在公园、开心<b>地</b><br>'+
+   '🔵 <b>做事的主人公</b> → <b>主语</b>：男孩、弟弟<br>'+
+   '🟣 <b>「是」后面</b> → <b>表语</b>：（是）小孩、（是）医生</div>'+
+   '<div class="tipbox">💡 <b>英语一模一样！</b>唯一的不同：英语里<b>太长的定语</b>不站在名词前面，要搬到名词<b>后面</b>——<br>'+
+   '跑得快的男孩 = the boy <b>who runs fast</b> ← 这就是「定语从句」的秘密！</div>'+
+   '<div class="row center"><button class="btn gold" id="dQuiz">✏️ 小测4题收工</button></div></div>';
+  $('dQuiz').onclick=()=>{dqI=0;dT0=Date.now();detQ();};
+}
+let dqI=0;
+function detQ(){
+  if(dqI>=DQ.length){
+    finishMod('句子侦探社',dItems,dT0);beep(true);
+    const wrong=dItems.filter(x=>!x.ok).length;
+    $('stage').innerHTML='<div class="card" style="text-align:center;"><div style="font-size:52px;">🕵️🎉</div>'+
+     '<div class="h2">破案成功！</div>'+
+     '<div class="hint">秘诀带走：<b>「的」→定语 · 时间地点「地」→状语 · 主人公→主语 · 「是」后面→表语</b><br>现在去🧩积木工厂，看"从句"怎么干这些活！</div>'+
+     '<div class="row center" style="margin-top:10px;"><button class="btn" onclick="renderDet()">🔁 再当一次侦探</button>'+
+     '<button class="btn gold" onclick="openMod(\'blocks\')">🧩 去积木工厂</button></div></div>';
+    return;
+  }
+  const q=DQ[dqI],t0=Date.now();
+  $('stage').innerHTML='<div class="card"><div class="pgr">破案小测 '+(dqI+1)+' / '+DQ.length+'</div>'+
+   '<div class="sen" style="font-size:16px;">'+esc(q.stem)+'</div><div class="opts" id="dqOpts">'+
+   q.opts.map((o,i)=>'<button class="opt" data-i="'+i+'">'+String.fromCharCode(65+i)+'. '+o+'</button>').join('')+'</div><div id="dqFb"></div></div>';
+  document.querySelectorAll('#dqOpts .opt').forEach(b=>b.onclick=()=>{
+    const i=+b.dataset.i,ok=i===q.a;
+    document.querySelectorAll('#dqOpts .opt').forEach(x=>x.classList.add('off'));
+    b.classList.add(ok?'right':'wrong');
+    if(!ok)document.querySelector('#dqOpts .opt[data-i="'+q.a+'"]').classList.add('right');
+    beep(ok);
+    dItems.push({word:'破案小测',hint:q.stem,ok:ok,ms:Date.now()-t0,user:q.opts[i],tag:q.why});
+    $('dqFb').innerHTML='<div class="why'+(ok?'':' bad')+'"><span class="lab">'+(ok?'✅ 破案！':'❌ 看讲解：')+'</span> '+q.why+'</div>'+
+     '<div class="row center"><button class="btn" id="dqNx">'+(dqI<DQ.length-1?'下一题 →':'收工 ✅')+'</button></div>';
+    $('dqNx').onclick=()=>{dqI++;detQ();};
+  });
+}
+
+/* ===================== 🧩 从句积木工厂 ===================== */
+let bkOn=0;
+function renderBlocks(){
+  const d=BLOCKS[bkOn];
+  let frame='<div class="slotrow">'+d.frame.map(f=>f.slot
+    ?'<span class="slot" id="theSlot">____<small>'+f.lab+'的位置</small></span>'
+    :'<span class="fixedw">'+f.t+'<small>'+f.lab+'</small></span>').join('')+'</div>';
+  $('stage').innerHTML='<div class="card"><div class="h2">🧩 从句积木工厂</div>'+
+   '<div class="hint">（分不清主语/定语/状语？<b>先去🕵️句子侦探社</b>玩一遍再来！）<br>一个大句子就像<b>乐高</b>：主人公、is后面、名词尾巴、旁边的小车厢……都是可以插积木的<b>空位</b>。<br>把一个<b>小句子</b>当积木插进去，它就成了'+term('从句')+'——<b>插在哪儿，就叫什么从句</b>。点4个按钮各插一次试试！</div>'+
+   '<div class="famchips">'+BLOCKS.map((x,i)=>'<button class="chip'+(i===bkOn?' on':'')+'" data-bk="'+i+'" style="'+(i===bkOn?'background:'+x.col+';border-color:'+x.col+';':'')+'">'+x.emoji+' '+x.nm+'</button>').join('')+'</div>'+
+   '<div class="machine">'+frame+
+    '<div class="blockpiece" id="piece" style="background:'+d.bg+';border:3px solid '+d.col+';color:'+d.col+';">🧱 '+d.piece+'<small>'+d.pieceCn+'（一个完整的小句子）</small></div>'+
+    '<div class="row center" style="margin-top:8px;"><button class="btn sm" id="plug" style="background:'+d.col+';box-shadow:0 4px 0 rgba(0,0,0,.25);">👇 把它插进空位！</button></div>'+
+    '<div id="result"></div></div>'+
+   '<div class="tlcapx formula" id="bkCap">'+d.emoji+' <b>'+d.nm+'</b>（'+d.lv+'）：点上面按钮把积木插进去，看看会发生什么！</div>'+
+   '<div class="formula">🗝️ <b>一句话记住</b>：从句<b>在哪儿干活，就叫什么从句</b>——<br>当主人公 → 主语从句 ｜ 站 is 后面 → 表语从句<br>形容名词 → 定语从句 ｜ 说时间原因 → 状语从句</div>'+
+   '<div class="termbar">'+term('主语')+' · '+term('表语')+' · '+term('定语')+' · '+term('状语')+' ——忘了是啥？点一下看解释</div></div>';
+  document.querySelectorAll('[data-bk]').forEach(c=>c.onclick=()=>{bkOn=+c.dataset.bk;renderBlocks();beep(true);});
+  $('plug').onclick=()=>{
+    const slot=$('theSlot');
+    slot.innerHTML=d.piece+'<small>'+d.pieceCn+'</small>';
+    slot.classList.add('fill');
+    slot.style.borderColor=d.col;slot.style.color=d.col;slot.style.background=d.bg;
+    $('piece').style.opacity='.25';
+    $('result').innerHTML='<div class="sen" style="margin-top:10px;">'+esc(d.full)+'</div><div class="sencn">'+esc(d.cn)+'</div>'+
+     '<div class="row center">'+sayBtn(d.full,'听整句')+'</div>';
+    $('bkCap').innerHTML='👉 '+d.cap;
+    beep(true);speakOnce(d.full,'en');
+    if(!lastScore('从句积木工厂'))logEvent({ts:Date.now(),type:'quiz',subject:'英语·周一预习(从句+数词)',lesson:'从句积木工厂',total:1,wrong:0,durationSec:0,items:[{word:'玩过积木工厂',hint:'',ok:true,ms:0}]});
+  };
+}
+
+/* ===================== 🔍 定语从句合并机 ===================== */
+let mgOn=0,mgStep=0,mqIdx=0,mqItems=[],mqT0=0;
+function renderMerge(){mgOn=0;mgStep=0;mergeShow();}
+function mergeShow(){
+  const d=MERGE[mgOn];
+  let h='<div class="card"><div class="h2">🔍 定语从句合并机</div>'+
+   '<div class="hint">'+term('定语从句')+'其实是<b>两句话合成一句</b>！法宝口诀：<b>人用 who，物用 which，that 两边都能用</b>。</div>'+
+   '<div class="famchips">'+MERGE.map((x,i)=>'<button class="chip'+(i===mgOn?' on':'')+'" data-mg="'+i+'">'+x.name+'</button>').join('')+'</div>'+
+   '<div class="stepn">🧪 原料两句：<br>'+esc(d.s1)+'（'+esc(d.s1cn)+'）<br>'+esc(d.s2)+'（'+esc(d.s2cn)+'）</div>';
+  for(let i=0;i<=mgStep&&i<d.steps.length;i++){
+    h+='<div class="morph'+(i===mgStep?' zoom':'')+'">'+d.steps[i].h+'</div><div class="stepn">'+d.steps[i].n+'</div>';
+  }
+  if(mgStep<d.steps.length-1){
+    h+='<div class="row center"><button class="btn" id="mgNext">下一步变身 →</button></div>';
+  }else{
+    h+='<div class="sencn">✅ '+esc(d.cn)+'</div><div class="row center">'+sayBtn(d.full,'听合并好的句子')+
+     (mgOn<MERGE.length-1?'<button class="btn" id="mgNextDemo">换"物"再看一遍 →</button>':'<button class="btn gold" id="mgQuiz">✏️ 我来试3题</button>')+'</div>';
+  }
+  h+='</div>';
+  $('stage').innerHTML=h;
+  document.querySelectorAll('[data-mg]').forEach(c=>c.onclick=()=>{mgOn=+c.dataset.mg;mgStep=0;mergeShow();});
+  const n=$('mgNext');if(n)n.onclick=()=>{mgStep++;mergeShow();beep(true);};
+  const nd=$('mgNextDemo');if(nd)nd.onclick=()=>{mgOn++;mgStep=0;mergeShow();beep(true);};
+  const q=$('mgQuiz');if(q)q.onclick=()=>{mqIdx=0;mqItems=[];mqT0=Date.now();mergeQ();};
+}
+function mergeQ(){
+  if(mqIdx>=MQ.length){
+    finishMod('定语从句合并机',mqItems,mqT0);beep(true);
+    const wrong=mqItems.filter(x=>!x.ok).length;
+    $('stage').innerHTML='<div class="card" style="text-align:center;"><div style="font-size:52px;">🔍🎉</div>'+
+     '<div class="h2">合并机通关！对 '+(MQ.length-wrong)+' / '+MQ.length+'</div>'+
+     '<div class="hint">口诀带走：<b>人用 who，物用 which，that 两边都能用</b></div>'+
+     '<div class="row center" style="margin-top:10px;"><button class="btn" onclick="renderMerge()">🔁 再看一遍</button><button class="btn ghost" onclick="document.getElementById(\'backBtn\').click()">回大厅</button></div></div>';
+    return;
+  }
+  const q=MQ[mqIdx],t0=Date.now();
+  $('stage').innerHTML='<div class="card"><div class="pgr">合并机小题 '+(mqIdx+1)+' / '+MQ.length+'</div>'+
+   '<div class="sen" style="font-size:15.5px;">'+esc(q.stem)+'</div><div class="opts" id="mqOpts">'+
+   q.opts.map((o,i)=>'<button class="opt" data-i="'+i+'">'+String.fromCharCode(65+i)+'. '+o+'</button>').join('')+'</div><div id="mqFb"></div></div>';
+  document.querySelectorAll('#mqOpts .opt').forEach(b=>b.onclick=()=>{
+    const i=+b.dataset.i,ok=i===q.a;
+    document.querySelectorAll('#mqOpts .opt').forEach(x=>x.classList.add('off'));
+    b.classList.add(ok?'right':'wrong');
+    if(!ok)document.querySelector('#mqOpts .opt[data-i="'+q.a+'"]').classList.add('right');
+    beep(ok);
+    mqItems.push({word:'who/which',hint:q.stem,ok:ok,ms:Date.now()-t0,user:q.opts[i],tag:q.why});
+    $('mqFb').innerHTML='<div class="why'+(ok?'':' bad')+'"><span class="lab">'+(ok?'✅ 对啦！':'❌ 看讲解：')+'</span> '+q.why+'</div>'+
+     '<div class="row center"><button class="btn" id="mqNx">'+(mqIdx<MQ.length-1?'下一题 →':'完成 ✅')+'</button></div>';
+    $('mqNx').onclick=()=>{mqIdx++;mergeQ();};
+  });
+}
+
+/* ===================== 🔢 数词变身机 ===================== */
+let ndOn=0,calSel=-1;
+function hlN(s){return esc(s).replace(/\[([^\]]+)\]/g,'<i class="hl">$1</i>');}
+function renderNum(){
+  const d=NDEMO[ndOn];
+  let h='<div class="card"><div class="h2">🔢 数词变身机</div>'+
+   '<div class="hint">'+term('基数词')+'（one 数数）→ '+term('序数词')+'（first 第几）。说<b>日期、名次、第几课</b>都要用序数词！点数字看变身。</div>'+
+   '<div class="famchips">'+NDEMO.map((x,i)=>'<button class="chip'+(i===ndOn?' on':'')+'" data-nd="'+i+'">'+x[0]+'</button>').join('')+'</div>'+
+   '<div class="numrow"><span class="numstage">'+hlN(d[1])+'<small>基数词·数数</small></span>'+
+    '<span style="font-size:20px;color:var(--muted);">→</span>'+
+    '<span class="numstage o" id="ordStage">'+hlN(d[2])+'<small>序数词·第'+d[0]+'（'+abbr(d[0])+'）</small></span></div>'+
+   '<div class="tipbox">💡 '+esc(d[3])+'</div>'+
+   '<div class="row center">'+sayBtn(CARD[d[0]-1]+', '+ORD[d[0]-1],'听变身')+'</div>'+
+   '<div class="formula">📢 <b>基变序口诀</b>：一二三，特殊记（first / second / third）；<br>四到十九，直接加 <b>th</b>；<b>ve 变 f</b>（five→fifth）、<b>九去 e</b>（ninth）、eight 只加 h；<br>整十 <b>y 变 ie</b> 加 th（twentieth）；<b>几十几，只变个位</b>（twenty-first）。</div>'+
+   '<div style="border-top:2px dashed var(--line);margin-top:10px;padding-top:8px;"><b style="color:var(--blued);">📅 六月日历点读机</b>'+
+   '<div class="hint">点任何一天，看"几号"怎么说（日期用序数词！）</div><div class="cal">'+
+   Array.from({length:30},(x,i)=>'<button class="day'+(i===calSel?' on':'')+'" data-day="'+i+'">'+(i+1)+'</button>').join('')+'</div>'+
+   '<div class="numshow" id="dayShow">'+(calSel>=0
+     ?'<div class="big">June '+abbr(calSel+1)+' · 六月'+(calSel+1)+'日</div><div class="ab">the '+ORD[calSel]+' of June</div>'
+     :'<div class="ab">👆 点一个日子试试（比如今天）</div>')+'</div>'+
+   '<div class="formula">🎓 <b>数词还要记住：</b><br>① hundred / thousand 前面有数字<b>不加s</b>：three hundred（三百）✅ three hundreds ❌<br>'+
+   '② "第二课" = Lesson <b>Two</b>（基数）= the <b>second</b> lesson（序数+the）<br>③ 名次用序数词：I am the <b>first</b>! 我第一名！</div>'+
+   '<div class="row center"><button class="btn gold" id="nQuiz">✏️ 数词5题闯一闯</button></div></div>';
+  $('stage').innerHTML=h;
+  setTimeout(()=>{const e=$('ordStage');if(e)e.classList.add('go');},250);
+  speakOnce(CARD[NDEMO[ndOn][0]-1]+', '+ORD[NDEMO[ndOn][0]-1],'en');
+  document.querySelectorAll('[data-nd]').forEach(c=>c.onclick=()=>{ndOn=+c.dataset.nd;renderNum();});
+  document.querySelectorAll('[data-day]').forEach(c=>c.onclick=()=>{calSel=+c.dataset.day;renderNum();
+    speakOnce('June the '+ORD[calSel],'en');});
+  $('nQuiz').onclick=()=>{nqIdx=0;nqItems=[];nqT0=Date.now();numQ();};
+}
+let nqIdx=0,nqItems=[],nqT0=0;
+function numQ(){
+  if(nqIdx>=NQ.length){
+    finishMod('数词变身机',nqItems,nqT0);beep(true);
+    const wrong=nqItems.filter(x=>!x.ok).length;
+    $('stage').innerHTML='<div class="card" style="text-align:center;"><div style="font-size:52px;">🔢🏆</div>'+
+     '<div class="h2">数词通关！对 '+(NQ.length-wrong)+' / '+NQ.length+'</div>'+
+     '<div class="hint">周一老师讲数词时，你已经全见过啦！别忘了《习题精选》勾选的数词练习。</div>'+
+     '<div class="row center" style="margin-top:10px;"><button class="btn" onclick="renderNum()">🔁 回变身机</button><button class="btn ghost" onclick="document.getElementById(\'backBtn\').click()">回大厅</button></div></div>';
+    return;
+  }
+  const q=NQ[nqIdx],t0=Date.now();
+  $('stage').innerHTML='<div class="card"><div class="pgr">数词小题 '+(nqIdx+1)+' / '+NQ.length+'</div>'+
+   '<div class="sen" style="font-size:15.5px;">'+esc(q.stem)+'</div><div class="opts" id="nqOpts">'+
+   q.opts.map((o,i)=>'<button class="opt" data-i="'+i+'">'+String.fromCharCode(65+i)+'. '+o+'</button>').join('')+'</div><div id="nqFb"></div></div>';
+  document.querySelectorAll('#nqOpts .opt').forEach(b=>b.onclick=()=>{
+    const i=+b.dataset.i,ok=i===q.a;
+    document.querySelectorAll('#nqOpts .opt').forEach(x=>x.classList.add('off'));
+    b.classList.add(ok?'right':'wrong');
+    if(!ok)document.querySelector('#nqOpts .opt[data-i="'+q.a+'"]').classList.add('right');
+    beep(ok);
+    nqItems.push({word:'数词',hint:q.stem,ok:ok,ms:Date.now()-t0,user:q.opts[i],tag:q.why});
+    $('nqFb').innerHTML='<div class="why'+(ok?'':' bad')+'"><span class="lab">'+(ok?'✅ 对啦！':'❌ 看讲解：')+'</span> '+q.why+'</div>'+
+     '<div class="row center"><button class="btn" id="nqNx">'+(nqIdx<NQ.length-1?'下一题 →':'完成 ✅')+'</button></div>';
+    $('nqNx').onclick=()=>{nqIdx++;numQ();};
+  });
+}
+
+/* ===================== ⏰ 状语从句复习卡 ===================== */
+let aqIdx=0,aqItems=[],aqT0=0;
+function renderAdv(){
+  let h='<div class="card"><div class="h2">⏰ 状语从句复习卡</div>'+
+   '<div class="hint">周日学过的7张卡，30秒过一遍。想看动画？去<a href="kenton_english_clause_lab.html" style="color:var(--blued);font-weight:800;">状语从句时光机</a>深练！</div>';
+  ADVCARDS.forEach(c=>{h+='<div class="rulecard"><b>'+c[0]+'</b>：'+c[1]+'<br><span class="ex en" data-say="'+esc(c[2])+'" data-lang="en">🔊 '+esc(c[2])+'</span><br><span class="cn">'+esc(c[3])+'</span></div>';});
+  h+='<div class="row center" style="margin-top:8px;"><button class="btn gold" id="aQuiz">✏️ 热身3题</button></div></div>';
+  $('stage').innerHTML=h;
+  $('aQuiz').onclick=()=>{aqIdx=0;aqItems=[];aqT0=Date.now();advQ();};
+}
+function advQ(){
+  if(aqIdx>=AQ.length){
+    finishMod('状语从句复习卡',aqItems,aqT0);beep(true);
+    const wrong=aqItems.filter(x=>!x.ok).length;
+    $('stage').innerHTML='<div class="card" style="text-align:center;"><div style="font-size:52px;">⏰✨</div>'+
+     '<div class="h2">复习完成！对 '+(AQ.length-wrong)+' / '+AQ.length+'</div>'+
+     '<div class="row center" style="margin-top:10px;"><button class="btn" onclick="renderAdv()">🔁 再看卡片</button>'+
+     '<a class="btn ghost" href="kenton_english_clause_lab.html" style="text-decoration:none;display:inline-block;">🛸 去时光机深练</a></div></div>';
+    return;
+  }
+  const q=AQ[aqIdx],t0=Date.now();
+  $('stage').innerHTML='<div class="card"><div class="pgr">热身 '+(aqIdx+1)+' / '+AQ.length+'</div>'+
+   '<div class="sen" style="font-size:15.5px;">'+esc(q.stem)+'</div><div class="opts" id="aqOpts">'+
+   q.opts.map((o,i)=>'<button class="opt" data-i="'+i+'">'+String.fromCharCode(65+i)+'. '+o+'</button>').join('')+'</div><div id="aqFb"></div></div>';
+  document.querySelectorAll('#aqOpts .opt').forEach(b=>b.onclick=()=>{
+    const i=+b.dataset.i,ok=i===q.a;
+    document.querySelectorAll('#aqOpts .opt').forEach(x=>x.classList.add('off'));
+    b.classList.add(ok?'right':'wrong');
+    if(!ok)document.querySelector('#aqOpts .opt[data-i="'+q.a+'"]').classList.add('right');
+    beep(ok);
+    aqItems.push({word:'状语从句',hint:q.stem,ok:ok,ms:Date.now()-t0,user:q.opts[i],tag:q.why});
+    $('aqFb').innerHTML='<div class="why'+(ok?'':' bad')+'"><span class="lab">'+(ok?'✅ 对啦！':'❌ 看讲解：')+'</span> '+q.why+'</div>'+
+     '<div class="row center"><button class="btn" id="aqNx">'+(aqIdx<AQ.length-1?'下一题 →':'完成 ✅')+'</button></div>';
+    $('aqNx').onclick=()=>{aqIdx++;advQ();};
+  });
+}
+
+/* ===================== 🏆 综合小检验 ===================== */
+let qIdx=0,qItems=[],qT0=0,qTimer=null;
+function renderQuiz(){
+  qIdx=0;qItems=[];qT0=Date.now();
+  if(qTimer)clearInterval(qTimer);
+  qTimer=setInterval(()=>{const e=$('qClock');if(e)e.textContent='⏱ '+Math.round((Date.now()-qT0)/1000)+'s';},500);
+  quizOne();
+}
+function quizOne(){
+  if(qIdx>=QUIZ.length){
+    if(qTimer){clearInterval(qTimer);qTimer=null;}
+    finishMod('综合小检验',qItems,qT0);beep(true);
+    const wrong=qItems.filter(x=>!x.ok);
+    const sec=Math.round((Date.now()-qT0)/1000);
+    $('stage').innerHTML='<div class="card" style="text-align:center;"><div style="font-size:52px;">🏆🎉</div>'+
+     '<div class="h2">检验完成！对 '+(QUIZ.length-wrong.length)+' / '+QUIZ.length+'</div>'+
+     '<div class="hint">用时 '+sec+' 秒 · 平均每题 '+Math.round(sec/QUIZ.length)+' 秒</div>'+
+     (wrong.length?'<div style="text-align:left;margin-top:8px;"><b style="color:var(--red);">错题回顾（记住讲解！）</b>'+
+       wrong.map(w=>'<div class="rec">❌ '+esc(w.hint)+'<br><span style="color:var(--muted);font-size:12px;">'+esc(w.tag)+'</span></div>').join('')+'</div>':'<div class="stamp">全对，周一见！🔥</div>')+
+     '<div class="row center" style="margin-top:10px;"><button class="btn" onclick="renderQuiz()">🔁 再来一轮</button><button class="btn ghost" onclick="document.getElementById(\'backBtn\').click()">回大厅</button></div></div>';
+    return;
+  }
+  const q=QUIZ[qIdx],t0=Date.now();
+  $('stage').innerHTML='<div class="card"><div class="pgr">第 '+(qIdx+1)+' / '+QUIZ.length+' 题 · <span id="qClock">⏱ 0s</span></div>'+
+   '<div class="sen" style="font-size:15.5px;">'+esc(q.stem)+'</div><div class="opts" id="qOpts">'+
+   q.opts.map((o,i)=>'<button class="opt" data-i="'+i+'">'+String.fromCharCode(65+i)+'. '+o+'</button>').join('')+'</div><div id="qFb"></div></div>';
+  document.querySelectorAll('#qOpts .opt').forEach(b=>b.onclick=()=>{
+    const i=+b.dataset.i,ok=i===q.a;
+    document.querySelectorAll('#qOpts .opt').forEach(x=>x.classList.add('off'));
+    b.classList.add(ok?'right':'wrong');
+    if(!ok)document.querySelector('#qOpts .opt[data-i="'+q.a+'"]').classList.add('right');
+    beep(ok);
+    qItems.push({word:'第'+(qIdx+1)+'题',hint:q.stem,ok:ok,ms:Date.now()-t0,user:q.opts[i],tag:q.why});
+    $('qFb').innerHTML='<div class="why'+(ok?'':' bad')+'"><span class="lab">'+(ok?'✅ 对啦！':'❌ 看讲解：')+'</span> '+q.why+'</div>'+
+     '<div class="row center"><button class="btn" id="qNx">'+(qIdx<QUIZ.length-1?'下一题 →':'交卷 🏁')+'</button></div>';
+    $('qNx').onclick=()=>{qIdx++;quizOne();};
+  });
+}
+
+/* ===================== 📖 学习记录 ===================== */
+function buildExport(){
+  const evs=loadEv();
+  const wrongMap={};
+  evs.forEach(e=>(e.items||[]).forEach(it=>{if(!it.ok){const k=it.hint||it.word;wrongMap[k]=(wrongMap[k]||0)+1;}}));
+  let txt='【哥哥 · 周一课前预习馆（从句+数词） · 练习导出】\n日期：'+new Date().toLocaleString('zh-CN')+'\n\n== 反复错的题（错≥2） ==\n';
+  const rep=Object.entries(wrongMap).filter(x=>x[1]>=2);
+  txt+=rep.length?rep.map(x=>'- '+x[0]+'（错'+x[1]+'次）').join('\n'):'（暂无）';
+  txt+='\n\n== 每次明细 ==\n';
+  evs.forEach(e=>{txt+='['+new Date(e.ts).toLocaleString('zh-CN')+'] '+e.lesson+'：共'+e.total+'题 错'+e.wrong+'题 用时'+(e.durationSec||0)+'s\n';
+    (e.items||[]).forEach(it=>{if(!it.ok)txt+='   ❌ '+(it.hint||it.word)+'（选了 '+(it.user||'?')+'）\n';});});
+  txt+='\n== 原始JSON（投喂给爸爸的Claude归档用） ==\n'+JSON.stringify({child:'哥哥',subject:'英语·周一预习(从句+数词)',events:evs});
+  return txt;
+}
+function renderRec(){
+  const evs=loadEv();
+  const mods={};evs.forEach(e=>{mods[e.lesson]=e;});
+  let h='<div class="card"><div class="h2">📖 我的学习记录</div>';
+  if(!evs.length){h+='<div class="hint">还没有记录，先去🧩积木工厂吧！</div></div>';$('stage').innerHTML=h;return;}
+  h+='<div class="rec"><b>已练 '+evs.length+' 次</b> · 共 '+evs.reduce((s,e)=>s+e.total,0)+' 题 · 错 '+evs.reduce((s,e)=>s+e.wrong,0)+' 题</div>';
+  h+=Object.values(mods).map(e=>'<div class="rec"><b>'+e.lesson+'</b>（最近一次）：✅对'+(e.total-e.wrong)+' ❌错'+e.wrong+' · '+new Date(e.ts).toLocaleDateString('zh-CN')+'</div>').join('');
+  const wrong=[];evs.forEach(e=>(e.items||[]).forEach(it=>{if(!it.ok)wrong.push(it);}));
+  if(wrong.length){h+='<div style="margin-top:8px;"><b style="color:var(--red);">错题回顾</b>'+
+    wrong.slice(-8).map(w=>'<div class="rec">❌ '+esc(w.hint||w.word)+'<br><span style="color:var(--muted);font-size:12px;">选了：'+esc(w.user||'?')+(w.tag?' · '+esc(w.tag):'')+'</span></div>').join('')+'</div>';}
+  h+='<div class="row center" style="margin-top:10px;"><button class="btn" id="cpBtn">📋 复制导出</button>'+
+     '<button class="btn ghost" id="dlBtn">💾 存成文件</button>'+
+     '<button class="btn ghost sm" id="clrBtn" style="color:var(--red);border-color:var(--red);">🗑 清空</button></div>'+
+     '<textarea class="exp hide" id="expTxt"></textarea></div>';
+  $('stage').innerHTML=h;
+  $('cpBtn').onclick=()=>{const t=buildExport();const ta=$('expTxt');ta.classList.remove('hide');ta.value=t;ta.select();
+    if(navigator.clipboard)navigator.clipboard.writeText(t).then(()=>{$('cpBtn').textContent='✅ 已复制';}).catch(()=>{document.execCommand('copy');$('cpBtn').textContent='✅ 已复制';});
+    else{document.execCommand('copy');$('cpBtn').textContent='✅ 已复制';}};
+  $('dlBtn').onclick=()=>{const b=new Blob([buildExport()],{type:'text/plain;charset=utf-8'});const a=document.createElement('a');
+    a.href=URL.createObjectURL(b);a.download='哥哥_周一预习_练习记录_'+new Date().toISOString().slice(0,10)+'.txt';a.click();};
+  $('clrBtn').onclick=()=>{if(confirm('确定清空全部练习记录？（导出之后再清哦）')){localStorage.removeItem(EV_KEY);renderRec();}};
+}
+
+renderHome();
+</script>
+</body>
+</html>

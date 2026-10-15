@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<script src="../assets/learning-sync.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>计算技法大通关 · 暑假探索馆</title>
+<style>
+:root{--kenton:#2f6fb3;--kentond:#225182;--eddey:#e8642f;--eddeyd:#c24e20;--gold:#f2b632;--golddk:#c98a00;
+ --ink:#2e2a26;--paper:#fdf6ee;--line:#eadfd2;--muted:#8a8178;--green:#2e9c54;--greenbg:#e9f7ee;}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+body{margin:0;font-family:'LXGW WenKai Screen','PingFang SC','Microsoft YaHei',system-ui,sans-serif;
+ background:radial-gradient(circle at 15% 5%,#ffe9d2 0,transparent 45%),radial-gradient(circle at 85% 20%,#d9ebfd 0,transparent 40%),var(--paper);
+ color:var(--ink);min-height:100vh;padding-bottom:40px;}
+.wrap{max-width:620px;margin:0 auto;padding:16px;}
+h1{font-size:24px;text-align:center;margin:18px 0 4px;color:#5a3d1e;}
+.sub{text-align:center;font-size:13px;color:var(--muted);margin-bottom:6px;line-height:1.7;}
+.book{display:inline-block;background:#fff;border:2px solid var(--line);border-radius:10px;padding:2px 10px;font-size:12px;font-weight:800;color:#a8730a;margin:2px;}
+.cards{display:grid;grid-template-columns:1fr;gap:16px;margin-top:16px;}
+@media(min-width:520px){.cards{grid-template-columns:1fr 1fr;}}
+.kid{display:block;text-decoration:none;color:inherit;background:#fff;border-radius:22px;padding:20px 16px;text-align:center;
+ border:3px solid var(--line);box-shadow:0 8px 0 #efe3d4;transition:transform .12s;position:relative;overflow:hidden;}
+.kid:active{transform:translateY(4px);box-shadow:0 4px 0 #efe3d4;}
+.kid.k{border-top:10px solid var(--kenton);}
+.kid.e{border-top:10px solid var(--eddey);}
+.kid .face{font-size:56px;}
+.kid .nm{font-size:22px;font-weight:900;margin-top:6px;}
+.kid.k .nm{color:var(--kentond);}
+.kid.e .nm{color:var(--eddeyd);}
+.kid .info{font-size:13px;color:var(--muted);margin-top:4px;line-height:1.7;}
+.kid .prog{margin-top:10px;background:var(--greenbg);color:var(--green);border-radius:10px;font-size:13px;font-weight:800;padding:6px 10px;display:inline-block;}
+.kid .go{margin-top:12px;display:inline-block;color:#fff;font-weight:900;font-size:16px;border-radius:14px;padding:11px 26px;}
+.kid.k .go{background:var(--kenton);box-shadow:0 4px 0 var(--kentond);}
+.kid.e .go{background:var(--eddey);box-shadow:0 4px 0 var(--eddeyd);}
+.card{background:#fff;border:2px solid var(--line);border-radius:18px;padding:15px;margin:16px 0;box-shadow:0 6px 0 #f2e7d9;}
+.h2{font-size:16px;font-weight:800;color:#5a3d1e;margin:0 0 6px;}
+.card p{font-size:13.5px;line-height:1.9;margin:6px 0;color:#4a443e;}
+.card b{color:#a8730a;}
+.tipbar{font-size:12px;color:var(--muted);text-align:center;margin-top:14px;line-height:1.7;}
+.rule{display:flex;gap:10px;align-items:flex-start;font-size:13.5px;line-height:1.8;margin:8px 0;color:#4a443e;}
+.rule .n{flex-shrink:0;width:26px;height:26px;border-radius:50%;background:var(--gold);color:#5a3d00;font-weight:900;display:grid;place-items:center;box-shadow:0 2px 0 var(--golddk);}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a href="../subject.html?subject=math&amp;group=calculation&amp;period=all" style="display:inline-flex;align-items:center;min-height:48px;color:var(--ink);text-decoration:none;font-size:14px">‹ 返回数学 · 计算练习</a>
+  <h1>🏰 计算技法大通关</h1>
+  <div class="sub">暑假探索馆 · 方法篇+技巧篇 · 每馆先教后练<br>
+  <span class="book">📘 计算技法大通关</span><span class="book">📗 简便运算专项训练</span></div>
+
+  <div class="cards">
+    <a class="kid k" href="kenton_calc_datongguan.html">
+      <div class="face">🦁</div>
+      <div class="nm">Kenton</div>
+      <div class="info">方法篇 16 馆 · 照原书重建<br>放大镜找特点 · 分步变身 · 妙招 · 原书真题</div>
+      <div class="prog" id="pk">进度读取中…</div><br>
+      <span class="go">进入探索馆 →</span>
+    </a>
+    <a class="kid e" href="eddey_calc_datongguan.html">
+      <div class="face">🐯</div>
+      <div class="nm">Eddey</div>
+      <div class="info">10 讲 + 余数还原专项 共 11 馆<br>放大镜找特点 · 分步变身 · 妙招 · 原书真题</div>
+      <div class="prog" id="pe">进度读取中…</div><br>
+      <span class="go">进入探索馆 →</span>
+    </a>
+  </div>
+
+  <div class="cards">
+    <a class="kid k" href="kenton_calc_skills.html">
+      <div class="face">⚡</div>
+      <div class="nm">Kenton · 技巧篇</div>
+      <div class="info">速算口诀 16 馆<br>颠倒数 · ×5÷5 · ×11 · 九十几 · 合十 · 乘9重复数</div>
+      <div class="prog" id="psk">进度读取中…</div><br>
+      <span class="go">进入速算馆 →</span>
+    </a>
+    <a class="kid e" href="eddey_calc_skills.html">
+      <div class="face">⚡</div>
+      <div class="nm">Eddey · 技巧篇</div>
+      <div class="info">速算口诀 10 馆<br>颠倒数 · 100减法 · ×5÷5 · 交叉相乘 · ×11 · 乘9</div>
+      <div class="prog" id="pse">进度读取中…</div><br>
+      <span class="go">进入速算馆 →</span>
+    </a>
+  </div>
+
+  <div class="card">
+    <div class="h2">👨 给爸爸妈妈的说明</div>
+    <div class="rule"><div class="n">1</div><div><b>每天一个馆</b>:馆按天自动解锁,锁住的馆会写明第几天开放。想提前开,进孩子的探索馆,在「练习记录」里点「🔓 家长提前解锁」。</div></div>
+    <div class="rule"><div class="n">2</div><div><b>先教后练</b>:每个馆必须先过三关——🔍题干放大镜(自己点出数字/算法特点)→🎬分步变身动画(每一步都讲为什么)→🧙帮帮妙招(公式口诀),之后才进入原书真题训练(含★举一反三拔高题),答完每题都展示完整分步过程。</div></div>
+    <div class="rule"><div class="n">3</div><div><b>错题自动进错题本</b>:答错的题要<b>连续答对 2 次</b>才算掌握。探索馆首页会出现红色「错题本重做」入口。</div></div>
+    <div class="rule"><div class="n">4</div><div><b>每周把记录发回来</b>:进入探索馆 → 练习记录 → 「📋 复制记录」,把内容发给 Claude,就能自动更新学情画像、调整后面的内容。</div></div>
+    <div class="rule"><div class="n">5</div><div><b>两个孩子的进度互相独立</b>,存在各自设备的浏览器里。换设备练,进度不通用(这是纯静态网站的设计,没有账号系统)。</div></div>
+  </div>
+
+  <div class="tipbar">学习软件管「看懂为什么」,重复熟练用打印卷子。<br>零依赖纯静态 · 全家任何设备打开即用</div>
+</div>
+<script>
+"use strict";
+function readProg(lsk,total){
+ try{
+  var s=localStorage.getItem(lsk);
+  if(!s)return '还没开始 · 今天开第 1 馆';
+  var db=JSON.parse(s);
+  var done=0;for(var k in db.done)done++;
+  var wrong=0;(db.events||[]).forEach(function(e){if(e.type==='quiz'&&!e.ok)wrong++;});
+  return '已练完 '+done+'/'+total+' 馆'+(wrong>0?' · 累计错 '+wrong+' 题':'');
+ }catch(e){return '还没开始';}
+}
+document.getElementById('pk').textContent=readProg('calc_dtg_kenton_v2',16);
+document.getElementById('pe').textContent=readProg('calc_dtg_eddey_v2',11);
+document.getElementById('psk').textContent=readProg('calc_skills_kenton_v1',16);
+document.getElementById('pse').textContent=readProg('calc_skills_eddey_v1',10);
+</script>
+</body>
+</html>

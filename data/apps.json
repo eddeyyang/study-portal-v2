@@ -1,0 +1,1878 @@
+[
+  {
+    "child": "kenton",
+    "subject": "英语",
+    "title": "哥哥 · 校内每日单词",
+    "file": "apps/kenton_school_vocabulary_20261012.html",
+    "added": "2026-10-12",
+    "updated": "2026-10-12",
+    "navigation": {
+      "state": "active",
+      "kind": "lesson",
+      "period": "2026-autumn",
+      "group": "units",
+      "displayTitle": "哥哥 · 校内每日单词",
+      "summary": "全学期单词和词组按单元归类，先练已学单元；每天5个新词加到期复习，15分钟内。"
+    }
+  },
+  {
+    "child": "eddey",
+    "subject": "英语",
+    "title": "弟弟 · 校内每日单词",
+    "file": "apps/eddey_school_vocabulary_20261012.html",
+    "added": "2026-10-12",
+    "updated": "2026-10-12",
+    "navigation": {
+      "state": "active",
+      "kind": "lesson",
+      "period": "2026-autumn",
+      "group": "units",
+      "displayTitle": "弟弟 · 校内每日单词",
+      "summary": "全学期单词和词组按单元归类，先练已学单元；每天5个新词加到期复习，15分钟内。"
+    }
+  },
+  {
+    "child": "kenton",
+    "subject": "数学",
+    "title": "哥哥 · 数学学习脑图",
+    "file": "knowledge-map.html?child=kenton&subject=math",
+    "added": "2026-10-12",
+    "updated": "2026-10-12",
+    "navigation": {
+      "state": "active",
+      "kind": "hub",
+      "period": "2026-autumn",
+      "group": "units",
+      "displayTitle": "数学学习脑图 · 整理与笔记",
+      "summary": "展开当前学习范围，连接相似知识，分人记录、补充与导出笔记。"
+    }
+  },
+  {
+    "child": "kenton",
+    "subject": "英语",
+    "title": "哥哥 · 英语学习脑图",
+    "file": "knowledge-map.html?child=kenton&subject=english",
+    "added": "2026-10-12",
+    "updated": "2026-10-12",
+    "navigation": {
+      "state": "active",
+      "kind": "hub",
+      "period": "2026-autumn",
+      "group": "units",
+      "displayTitle": "英语学习脑图 · 整理与笔记",
+      "summary": "展开当前学习范围，连接相似知识，分人记录、补充与导出笔记。"
+    }
+  },
+  {
+    "child": "eddey",
+    "subject": "数学",
+    "title": "弟弟 · 数学学习脑图",
+    "file": "knowledge-map.html?child=eddey&subject=math",
+    "added": "2026-10-12",
+    "updated": "2026-10-12",
+    "navigation": {
+      "state": "active",
+      "kind": "hub",
+      "period": "2026-autumn",
+      "group": "units",
+      "displayTitle": "数学学习脑图 · 整理与笔记",
+      "summary": "展开当前学习范围，连接相似知识，分人记录、补充与导出笔记。"
+    }
+  },
+  {
+    "child": "eddey",
+    "subject": "英语",
+    "title": "弟弟 · 英语学习脑图",
+    "file": "knowledge-map.html?child=eddey&subject=english",
+    "added": "2026-10-12",
+    "updated": "2026-10-12",
+    "navigation": {
+      "state": "active",
+      "kind": "hub",
+      "period": "2026-autumn",
+      "group": "units",
+      "displayTitle": "英语学习脑图 · 整理与笔记",
+      "summary": "展开当前学习范围，连接相似知识，分人记录、补充与导出笔记。"
+    }
+  },
+  {
+    "child": "eddey",
+    "subject": "语文",
+    "title": "弟弟 · 按课背默",
+    "file": "apps/eddey_chinese_words_20261012.html",
+    "added": "2026-10-12",
+    "updated": "2026-10-12",
+    "navigation": {
+      "state": "active",
+      "kind": "practice",
+      "period": "2026-autumn",
+      "group": "words",
+      "displayTitle": "弟弟 · 按课背默",
+      "summary": "按本学期课序找词语：先背再默、看拼音写、纸笔核对与错词复习。近期单元按已知材料推算。"
+    }
+  },
+  {
+    "child": "kenton",
+    "subject": "语文",
+    "title": "哥哥 · 按课背默",
+    "file": "apps/kenton_chinese_words_20261012.html",
+    "added": "2026-10-12",
+    "updated": "2026-10-12",
+    "navigation": {
+      "state": "active",
+      "kind": "practice",
+      "period": "2026-autumn",
+      "group": "words",
+      "displayTitle": "哥哥 · 按课背默",
+      "summary": "按本学期课序找词语：先背再默、看拼音写、纸笔核对与错词复习。近期单元按已知材料推算。"
+    }
+  },
+  {
+    "child": "kenton",
+    "subject": "英语",
+    "title": "哥哥 · 课本语法变形台",
+    "file": "apps/kenton_english_grammar_20261006.html",
+    "added": "2026-10-06",
+    "updated": "2026-10-06",
+    "navigation": {
+      "state": "active",
+      "kind": "lesson",
+      "period": "2026-autumn",
+      "group": "units",
+      "displayTitle": "哥哥 · 课本语法变形台",
+      "summary": "按标注PDF的14组语法重点，变句观察、记规则、撤提示运用与家长考察。"
+    }
+  },
+  {
+    "child": "eddey",
+    "subject": "英语",
+    "title": "弟弟 · 课本语法变形台",
+    "file": "apps/eddey_english_grammar_20261006.html",
+    "added": "2026-10-06",
+    "updated": "2026-10-06",
+    "navigation": {
+      "state": "active",
+      "kind": "lesson",
+      "period": "2026-autumn",
+      "group": "units",
+      "displayTitle": "弟弟 · 课本语法变形台",
+      "summary": "按标注PDF的11组语法重点，变句观察、记规则、撤提示运用与家长考察。"
+    }
+  },
+  {
+    "child": "kenton",
+    "subject": "英语",
+    "title": "声音连线 · ow / ou / ui",
+    "file": "apps/kenton_sound_connections_20261001.html",
+    "added": "2026-10-01",
+    "updated": "2026-10-01",
+    "navigation": {
+      "state": "active",
+      "kind": "lesson",
+      "period": "2026-autumn",
+      "group": "units",
+      "displayTitle": "声音连线 · ow / ou / ui",
+      "summary": "先听与分类，记关键笔记，再回原题找直线；bow区分词义。音频待验收。"
+    }
+  },
+  {
+    "child": "eddey",
+    "subject": "英语",
+    "title": "Unit 3 · 读写背",
+    "file": "apps/eddey_english_unit3_memory_20260917.html",
+    "added": "2026-09-17",
+    "updated": "2026-09-17",
+    "navigation": {
+      "state": "active",
+      "kind": "practice",
+      "period": "2026-autumn",
+      "group": "words",
+      "displayTitle": "Unit 3 · 读写背",
+      "summary": "核心词、短语与重点句型：先读、遮住写、对照改、再背。音频待验收。"
+    }
+  },
+  {
+    "child": "eddey",
+    "subject": "英语",
+    "title": "Unit 3 · Animals and their homes",
+    "file": "apps/eddey_english_unit3_20260917.html",
+    "added": "2026-09-17",
+    "updated": "2026-09-17",
+    "navigation": {
+      "state": "active",
+      "kind": "lesson",
+      "period": "2026-autumn",
+      "group": "units",
+      "displayTitle": "Unit 3 · Animals and their homes",
+      "summary": "植物或动物主题图文精读、句型变化与完整参考答案；从旅行入口直接打开。音频待验收。"
+    }
+  },
+  {
+    "child": "kenton",
+    "subject": "英语",
+    "title": "Unit 3 · 读写背",
+    "file": "apps/kenton_english_unit3_memory_20260917.html",
+    "added": "2026-09-17",
+    "updated": "2026-09-17",
+    "navigation": {
+      "state": "active",
+      "kind": "practice",
+      "period": "2026-autumn",
+      "group": "words",
+      "displayTitle": "Unit 3 · 读写背",
+      "summary": "核心词、短语与重点句型：先读、遮住写、对照改、再背。音频待验收。"
+    }
+  },
+  {
+    "child": "kenton",
+    "subject": "英语",
+    "title": "Unit 3 · Amazing plants",
+    "file": "apps/kenton_english_unit3_20260917.html",
+    "added": "2026-09-17",
+    "updated": "2026-09-17",
+    "navigation": {
+      "state": "active",
+      "kind": "lesson",
+      "period": "2026-autumn",
+      "group": "units",
+      "displayTitle": "Unit 3 · Amazing plants",
+      "summary": "植物或动物主题图文精读、句型变化与完整参考答案；从旅行入口直接打开。音频待验收。"
+    }
+  },
+  {
+    "child": "kenton",
+    "subject": "英语",
+    "title": "Unit 2 · Traditional games",
+    "file": "apps/kenton_english_unit2_20260917.html",
+    "added": "2026-09-17",
+    "updated": "2026-09-17",
+    "navigation": {
+      "state": "active",
+      "kind": "lesson",
+      "period": "2026-autumn",
+      "group": "units",
+      "displayTitle": "Unit 2 · Traditional games",
+      "summary": "图文精读、动手换句型、完整参考答案；另有独立读写背入口。"
+    }
+  },
+  {
+    "child": "kenton",
+    "subject": "英语",
+    "title": "Unit 2 · 读写背",
+    "file": "apps/kenton_english_memory_20260917.html",
+    "added": "2026-09-17",
+    "updated": "2026-09-17",
+    "navigation": {
+      "state": "active",
+      "kind": "practice",
+      "period": "2026-autumn",
+      "group": "words",
+      "displayTitle": "Unit 2 · 读写背",
+      "summary": "核心词、短语与重点句型：先读、遮住写、对照改、再背。音频待验收。"
+    }
+  },
+  {
+    "child": "kenton",
+    "subject": "语文",
+    "title": "语文背诵与默写",
+    "file": "apps/kenton_chinese_memory_20260917.html",
+    "added": "2026-09-17",
+    "updated": "2026-09-17",
+    "navigation": {
+      "state": "active",
+      "kind": "practice",
+      "period": "2026-autumn",
+      "group": "words",
+      "displayTitle": "语文背诵与默写",
+      "summary": "按资料整理第二、三单元会写字词、古诗和园地背默；一次只练一小组。"
+    }
+  },
+  {
+    "child": "eddey",
+    "subject": "英语",
+    "title": "Unit 2 · My classmates",
+    "file": "apps/eddey_english_unit2_20260917.html",
+    "added": "2026-09-17",
+    "updated": "2026-09-17",
+    "navigation": {
+      "state": "active",
+      "kind": "lesson",
+      "period": "2026-autumn",
+      "group": "units",
+      "displayTitle": "Unit 2 · My classmates",
+      "summary": "图文精读、动手换句型、完整参考答案；另有独立读写背入口。"
+    }
+  },
+  {
+    "child": "eddey",
+    "subject": "英语",
+    "title": "Unit 2 · 读写背",
+    "file": "apps/eddey_english_memory_20260917.html",
+    "added": "2026-09-17",
+    "updated": "2026-09-17",
+    "navigation": {
+      "state": "active",
+      "kind": "practice",
+      "period": "2026-autumn",
+      "group": "words",
+      "displayTitle": "Unit 2 · 读写背",
+      "summary": "核心词、短语与重点句型：先读、遮住写、对照改、再背。音频待验收。"
+    }
+  },
+  {
+    "child": "eddey",
+    "subject": "语文",
+    "title": "语文背诵与默写",
+    "file": "apps/eddey_chinese_memory_20260917.html",
+    "added": "2026-09-17",
+    "updated": "2026-09-17",
+    "navigation": {
+      "state": "active",
+      "kind": "practice",
+      "period": "2026-autumn",
+      "group": "words",
+      "displayTitle": "语文背诵与默写",
+      "summary": "课本三篇会写字单列：爬山虎的脚、盘古开天地、普罗米修斯；原单元背默继续保留。"
+    }
+  },
+  {
+    "child": "kenton",
+    "subject": "数学",
+    "title": "看图学小数",
+    "file": "apps/kenton_math_catchup_20260916.html",
+    "added": "2026-09-16",
+    "updated": "2026-09-17",
+    "navigation": {
+      "state": "active",
+      "kind": "lesson",
+      "period": "2026-autumn",
+      "group": "units",
+      "displayTitle": "看图学小数",
+      "summary": "用元角分、绳子和数轴看懂小数；每次只讲一步，看完再自己试。"
+    }
+  },
+  {
+    "child": "eddey",
+    "subject": "数学",
+    "title": "看图学运算",
+    "file": "apps/eddey_math_catchup_20260916.html",
+    "added": "2026-09-16",
+    "updated": "2026-09-17",
+    "navigation": {
+      "state": "active",
+      "kind": "lesson",
+      "period": "2026-autumn",
+      "group": "units",
+      "displayTitle": "看图学运算",
+      "summary": "用贴纸看懂拆开与合起来；找好搭档，改一部分时把其余的留下。"
+    }
+  },
+  {
+    "child": "both",
+    "subject": "综合",
+    "title": "旅行学习 · 语文、数学、英语",
+    "file": "apps/travel_learning_director_20260916.html",
+    "added": "2026-09-16",
+    "updated": "2026-09-17",
+    "navigation": {
+      "state": "active",
+      "kind": "hub",
+      "period": "2026-autumn",
+      "group": "lessons",
+      "displayTitle": "旅行学习 · 语数英",
+      "summary": "语数英按日期选课，也可自由跳选；弟弟新增两篇神话与课本会写字，英语 Unit 2–3 可见。"
+    }
+  },
+  {
+    "child": "kenton",
+    "subject": "英语",
+    "title": "读懂，也能写出来",
+    "file": "apps/kenton_english_answer_builder_20260915.html",
+    "added": "2026-09-15",
+    "updated": "2026-09-15",
+    "navigation": {
+      "state": "active",
+      "kind": "lesson",
+      "period": "2026-autumn",
+      "group": "lessons",
+      "displayTitle": "读懂，也能写出来",
+      "summary": "先看问什么，再找证据、换主语，写出完整答句；用新情境练习独立表达。"
+    }
+  },
+  {
+    "child": "kenton",
+    "subject": "语文",
+    "title": "旅途语文 · 读课文",
+    "file": "apps/kenton_chinese_preview_20260915.html?child=kenton",
+    "added": "2026-09-15",
+    "updated": "2026-09-17",
+    "navigation": {
+      "state": "active",
+      "kind": "lesson",
+      "period": "2026-autumn",
+      "group": "lessons",
+      "displayTitle": "旅途语文 · 读课文",
+      "summary": "原文阅读、逐段讲解、完整主观题参考答案；单独入口练背诵与默写。"
+    }
+  },
+  {
+    "child": "eddey",
+    "subject": "语文",
+    "title": "旅途语文 · 读课文",
+    "file": "apps/eddey_chinese_preview_20260915.html?child=eddey",
+    "added": "2026-09-15",
+    "updated": "2026-09-17",
+    "navigation": {
+      "state": "active",
+      "kind": "lesson",
+      "period": "2026-autumn",
+      "group": "lessons",
+      "displayTitle": "旅途语文 · 读课文",
+      "summary": "课本新增盘古开天地、普罗米修斯；爬山虎的脚补齐课后练习，均可跳选，含完整参考答案。"
+    }
+  },
+  {
+    "child": "eddey",
+    "subject": "编程",
+    "title": "程序实验室 · 单元复习与数组",
+    "file": "apps/cpp_unit_review_20260914.html?child=eddey",
+    "added": "2026-09-14",
+    "updated": "2026-09-14",
+    "navigation": {
+      "state": "active",
+      "kind": "lesson",
+      "period": "2026-autumn",
+      "group": "lessons",
+      "displayTitle": "程序实验室 · 补回这一课",
+      "summary": "老师课堂复习：输入输出、分支循环、火星计算、数组；逐步运行，独立练习，可暂停接续。"
+    }
+  },
+  {
+    "child": "kenton",
+    "subject": "编程",
+    "title": "程序实验室 · 单元复习与数组",
+    "file": "apps/cpp_unit_review_20260914.html?child=kenton",
+    "added": "2026-09-14",
+    "updated": "2026-09-14",
+    "navigation": {
+      "state": "active",
+      "kind": "lesson",
+      "period": "2026-autumn",
+      "group": "lessons",
+      "displayTitle": "程序实验室 · 补回这一课",
+      "summary": "老师课堂复习：输入输出、分支循环、火星计算、数组；逐步运行，独立练习，可暂停接续。"
+    }
+  },
+  {
+    "child": "eddey",
+    "subject": "英语",
+    "title": "一句一句读",
+    "file": "apps/eddey_english_reading_20260913.html",
+    "added": "2026-09-13",
+    "updated": "2026-09-16",
+    "navigation": {
+      "state": "active",
+      "kind": "lesson",
+      "period": "2026-autumn",
+      "group": "listening",
+      "displayTitle": "一句一句读",
+      "summary": "校内原文分段选读；一次一小段，朗读仅记自报，音频待验收。"
+    }
+  },
+  {
+    "child": "eddey",
+    "subject": "英语",
+    "title": "把一句话说清",
+    "file": "apps/eddey_english_questions_20260913.html",
+    "added": "2026-09-13",
+    "updated": "2026-09-16",
+    "navigation": {
+      "state": "active",
+      "kind": "lesson",
+      "period": "2026-autumn",
+      "group": "vocabulary",
+      "displayTitle": "把一句话说清",
+      "summary": "四格句子与时间词分开练；用自己的话讲，结算后可以停。"
+    }
+  },
+  {
+    "child": "eddey",
+    "subject": "英语",
+    "title": "听清，自己拼",
+    "file": "apps/eddey_english_words_20260913.html",
+    "added": "2026-09-13",
+    "updated": "2026-09-16",
+    "navigation": {
+      "state": "active",
+      "kind": "lesson",
+      "period": "2026-autumn",
+      "group": "vocabulary",
+      "displayTitle": "听清，自己拼",
+      "summary": "Word Bank 36词分8小组，校内词另选；每段6–8分钟。"
+    }
+  },
+  {
+    "child": "kenton",
+    "subject": "英语",
+    "title": "一句一句读",
+    "file": "apps/kenton_english_reading_20260913.html",
+    "added": "2026-09-13",
+    "updated": "2026-09-16",
+    "navigation": {
+      "state": "active",
+      "kind": "lesson",
+      "period": "2026-autumn",
+      "group": "listening",
+      "displayTitle": "一句一句读",
+      "summary": "原文分成5–6句的小段，可听、遮挡和自己读；音频待验收。"
+    }
+  },
+  {
+    "child": "kenton",
+    "subject": "英语",
+    "title": "动物在哪里",
+    "file": "apps/kenton_english_positions_20260913.html",
+    "added": "2026-09-13",
+    "updated": "2026-09-16",
+    "navigation": {
+      "state": "active",
+      "kind": "lesson",
+      "period": "2026-autumn",
+      "group": "vocabulary",
+      "displayTitle": "动物在哪里",
+      "summary": "看小鸟和树的位置变化，再遮住自己说；6分钟内收尾。"
+    }
+  },
+  {
+    "child": "kenton",
+    "subject": "英语",
+    "title": "听清，自己拼",
+    "file": "apps/kenton_english_words_20260913.html",
+    "added": "2026-09-13",
+    "updated": "2026-09-16",
+    "navigation": {
+      "state": "active",
+      "kind": "lesson",
+      "period": "2026-autumn",
+      "group": "vocabulary",
+      "displayTitle": "听清，自己拼",
+      "summary": "动物分小组，袋鼠拼写优先；每段保留原始作答与隔天复测。"
+    }
+  },
+  {
+    "child": "kenton",
+    "subject": "英语",
+    "title": "词形变一变",
+    "file": "apps/kenton_english_forms_20260913.html",
+    "added": "2026-09-13",
+    "updated": "2026-09-16",
+    "navigation": {
+      "state": "active",
+      "kind": "lesson",
+      "period": "2026-autumn",
+      "group": "vocabulary",
+      "displayTitle": "词形变一变",
+      "summary": "先练长词、不规则变化；各段独立结算，原15组默写完整保留。"
+    }
+  },
+  {
+    "child": "eddey",
+    "subject": "英语",
+    "title": "英语 · 一次一个重点",
+    "file": "apps/eddey_english_week_20260913.html",
+    "added": "2026-09-13",
+    "updated": "2026-09-16",
+    "navigation": {
+      "state": "active",
+      "kind": "hub",
+      "period": "2026-autumn",
+      "group": "vocabulary",
+      "displayTitle": "英语 · 一次一个重点",
+      "summary": "本周词汇、四格组句、时间词与朗读分段选择；每段5–8分钟，独立保存，本轮最多30分钟。音频待验收。"
+    }
+  },
+  {
+    "child": "kenton",
+    "subject": "英语",
+    "title": "英语 · 一次一个重点",
+    "file": "apps/kenton_english_week_20260913.html",
+    "added": "2026-09-13",
+    "updated": "2026-09-16",
+    "navigation": {
+      "state": "active",
+      "kind": "hub",
+      "period": "2026-autumn",
+      "group": "vocabulary",
+      "displayTitle": "英语 · 一次一个重点",
+      "summary": "词形、拼写、方位与朗读分段选择；每段5–9分钟，独立保存，本轮最多30分钟。音频待验收。"
+    }
+  },
+  {
+    "child": "eddey",
+    "subject": "语文",
+    "title": "好地方推荐手记 · 先想理由，再补细节，自己写作文",
+    "file": "apps/eddey_chinese_place_writer_20260912.html",
+    "added": "2026-09-12",
+    "updated": "2026-09-12",
+    "navigation": {
+      "state": "active",
+      "kind": "lesson",
+      "period": "2026-autumn",
+      "group": "writing",
+      "displayTitle": "好地方推荐手记",
+      "summary": "按老师材料和金牌训练，一步步搭想法、选词句、排提纲，保留自己的正文。"
+    }
+  },
+  {
+    "child": "kenton",
+    "subject": "语文",
+    "title": "暑假回忆剪辑室 · 真实选材、分镜详写与独立修改",
+    "file": "apps/kenton_summer_story_20260912.html",
+    "added": "2026-09-12",
+    "updated": "2026-09-12",
+    "navigation": {
+      "state": "active",
+      "kind": "lesson",
+      "period": "2026-autumn",
+      "displayTitle": "暑假回忆剪辑室",
+      "summary": "选一件暑假真事，放大经过与感受；自己写满450字，再改一处。"
+    }
+  },
+  {
+    "child": "eddey",
+    "subject": "编程",
+    "title": "选择题收分站 · 四选一、概念辨析与排除法（约20—25分钟）",
+    "file": "apps/gesp_last_night_20260911.html?who=eddey",
+    "added": "2026-09-11",
+    "updated": "2026-09-11",
+    "navigation": {
+      "state": "active",
+      "kind": "lesson",
+      "period": "2026-autumn",
+      "summary": "先学怎么选，再做24道四选一；无需编写代码。",
+      "displayTitle": "选择题收分站"
+    }
+  },
+  {
+    "child": "kenton",
+    "subject": "编程",
+    "title": "选择题收分站 · 四选一、读题排除与短代码阅读（约20—25分钟）",
+    "file": "apps/gesp_last_night_20260911.html?who=kenton",
+    "added": "2026-09-11",
+    "updated": "2026-09-11",
+    "navigation": {
+      "state": "active",
+      "kind": "lesson",
+      "period": "2026-autumn",
+      "summary": "先学怎么选，再做24道四选一；无需编写代码。",
+      "displayTitle": "选择题收分站"
+    }
+  },
+  {
+    "child": "eddey",
+    "subject": "英语",
+    "title": "校园背诵地图 · I like my school（分组遮词背诵＋关键句型笔记）",
+    "file": "apps/eddey_english_school_rhyme_20260907.html",
+    "added": "2026-09-07"
+  },
+  {
+    "child": "kenton",
+    "subject": "编程",
+    "title": "代码得分突破 · 循环收口、客观题补漏、最近身高（关键笔记、执行模型、原题迁移、完整程序草稿与提交检查；分段使用）",
+    "file": "apps/kenton_cpp_breakthrough_20260908.html",
+    "added": "2026-09-07"
+  },
+  {
+    "child": "eddey",
+    "subject": "编程",
+    "title": "考前代码笔记 · 先抄得分点，再做取位与循环原题（约15分钟，变量逐步变化、短输入迁移、待复习出口、提交检查）",
+    "file": "apps/eddey_cpp_score_notes_20260907.html",
+    "added": "2026-09-07"
+  },
+  {
+    "child": "kenton",
+    "subject": "英语",
+    "title": "本周单词工坊 · 课外9词优先＋校内U1共7词（键盘拼写、发音、词块记忆、错词复习）",
+    "file": "apps/kenton_vocabulary_workshop_20260903.html",
+    "added": "2026-09-03",
+    "updated": "2026-09-08"
+  },
+  {
+    "child": "eddey",
+    "subject": "英语",
+    "title": "本周单词工坊 · 课外8词优先＋校内U1共13词（键盘拼写、发音、词块记忆、错词复习）",
+    "file": "apps/eddey_vocabulary_workshop_20260903.html",
+    "added": "2026-09-03",
+    "updated": "2026-09-08"
+  },
+  {
+    "child": "eddey",
+    "subject": "语文",
+    "title": "《观潮》江潮镜头台 · 认知直达标杆预习（45秒已会快测、单屏六站潮镜、立即讲回核心、14页扫描件可操作导图、错后定点修复回原题、雷雨近迁移+自选场景远迁移）",
+    "file": "apps/eddey_chinese_guanchao_preview_20260901.html",
+    "added": "2026-09-01"
+  },
+  {
+    "child": "kenton",
+    "subject": "数学",
+    "title": "五上第一单元完整教材课（教辅p1–37逐段精讲、7课全部开放、分步变形与数位实验、35+道独立题、短输入、错后定点修复并返回原题）",
+    "file": "apps/kenton_math_g5_u1_textbook_complete_20260901.html",
+    "added": "2026-09-01",
+    "updated": "2026-09-16"
+  },
+  {
+    "child": "eddey",
+    "subject": "数学",
+    "title": "四上第一单元完整教材课（教辅p1–31逐段精讲、关系图与规则导图、36道独立题、短输入、错后定点修复并返回原题）",
+    "file": "apps/eddey_math_g4_u1_textbook_complete_20260901.html",
+    "added": "2026-09-01"
+  },
+  {
+    "child": "eddey",
+    "subject": "编程",
+    "title": "代码侦察台 · GESP一级昨日错题修复（类型关/循环入口/变量盒/精确输出四关动画，2026-08-30十道原错题逐题重做，答错定点重教后回原题、连续答对2次毕业、5道迁移题、独立记录同步）",
+    "file": "apps/eddey_cpp_gesp_repair_lab_20260831.html",
+    "added": "2026-08-31"
+  },
+  {
+    "child": "eddey",
+    "subject": "英语",
+    "title": "第一周英语拼写工厂 · 星期/学科/数字默写（构词动画、33词固定发音听三遍、键盘独立默写、错词两连对返修后回原题、教材计划句迁移）",
+    "file": "apps/eddey_week1_spelling_factory_20260831.html",
+    "added": "2026-08-31"
+  },
+  {
+    "child": "eddey",
+    "subject": "英语",
+    "title": "现在正在做，平时经常做 · 时态双轨实验室（现在进行时/一般现在时时间信号、-ing三种变形、第三人称单数+s/-es/-ies、10题独立挑战、错后定点重教与两连对回炉）",
+    "file": "apps/eddey_present_tense_lab_20260730.html",
+    "added": "2026-07-30"
+  },
+  {
+    "child": "kenton",
+    "subject": "英语",
+    "title": "八大时态实验室 · 先划时间词（八大时态全家福、16词时间词金库四家族分拣、划词判态所10案两步法、spend/cost/pay/take花费四兄弟8题抠细节、遮挡回忆6条、通关考12题、12条录音频）",
+    "file": "apps/kenton_tense8_lab_20260807.html",
+    "added": "2026-08-07"
+  },
+  {
+    "child": "eddey",
+    "subject": "英语",
+    "title": "水乡时光相机 · 一般过去时定点修复（Unit 5 同构昼夜水乡镜头、独立打字产出、Did/didn't 动词还原、答错定点重教回原题、两连对错题回炉）",
+    "file": "apps/eddey_past_tense_lab_20260806.html",
+    "added": "2026-08-06"
+  },
+  {
+    "child": "eddey",
+    "subject": "英语",
+    "title": "三单拼写 + 将来时修复站（点原错看讲解；按教材72—78页复习 studies/opens/flies、around/earth/live/school 与 will do/be going to do；先教后练、错后回题、16题独立检测、完成后同步 Neon）",
+    "file": "apps/eddey_3s_spelling_lab_20260731.html",
+    "added": "2026-07-31"
+  },
+  {
+    "child": "eddey",
+    "subject": "英语",
+    "title": "语法毕业典礼 · 时态侦探学院（语法班结业总复习 L1—L23：四态时光罗盘、16词信号分拣、过去式变形工厂10词、时态侦探8案、全册10题结业闯关、每周复盘入口）",
+    "file": "apps/eddey_grammar_graduation_20260801.html",
+    "added": "2026-08-01"
+  },
+  {
+    "child": "eddey",
+    "subject": "英语",
+    "title": "一般将来时四大法宝（will/be going to 预测承诺与计划打算、三单变形复习、缩写 I'll/won't、时间信号分拣、6句听写训练营、10题独立判断、错后定点重教与两连对回炉）",
+    "file": "apps/eddey_future_tense_20260730.html",
+    "added": "2026-07-30"
+  },
+  {
+    "child": "kenton",
+    "subject": "英语",
+    "title": "定语从句 · 句子合并工作室 2.0（亲手圈重复词、选关系代词、动态贴回先行词、3条自然英语整句、判断透镜、可逆翻卡、6题错后定点重教与原题返回）",
+    "file": "apps/kenton_relative_clause_class_20260730.html",
+    "added": "2026-07-30"
+  },
+  {
+    "child": "kenton",
+    "subject": "英语",
+    "title": "不规则动词 1—30 · 三态变身轨道 2.0（老师原表七栏、30条英语三态朗读同步亮轨、变化家族、每5个遮挡回忆、报读纸笔默写、错栏原词回做与两连对）",
+    "file": "apps/kenton_irregular_verbs_1_30_20260730.html",
+    "added": "2026-07-30"
+  },
+  {
+    "child": "kenton",
+    "subject": "编程",
+    "title": "核桃 CTL一级备考基地 · 8月15日开考（考试规则局90分钟/100分/60分过+必背框架打字机+3套真题模拟卷45单选30判断逐题解析+10道编程真题照打/默打通关+回忆卡+考场速记卡+错题本，双人记录独立）",
+    "file": "apps/hetao_ctl_prep_20260815.html?who=kenton",
+    "added": "2026-08-03"
+  },
+  {
+    "child": "eddey",
+    "subject": "编程",
+    "title": "核桃 CTL一级备考基地 · 8月15日开考（考试规则局90分钟/100分/60分过+必背框架打字机+3套真题模拟卷45单选30判断逐题解析+10道编程真题照打/默打通关+回忆卡+考场速记卡+错题本，双人记录独立）",
+    "file": "apps/hetao_ctl_prep_20260815.html?who=eddey",
+    "added": "2026-08-03"
+  },
+  {
+    "child": "kenton",
+    "subject": "编程",
+    "title": "核桃 L3-4复习 & L4-1预习 · for循环累加实验室（if-else/for/简单计算三类必背框逐行复习，for四步轨道/可变步长/零次与无限循环/固定数字与输入变量累加/奇偶分拣/工资计算/4张单词卡/8题定点重教+错题两连对毕业）",
+    "file": "apps/hetao_coding_l3-4_l4-1_20260730.html?who=kenton",
+    "added": "2026-07-30"
+  },
+  {
+    "child": "eddey",
+    "subject": "编程",
+    "title": "核桃 L3-4复习 & L4-1预习 · for循环累加实验室（if-else/for/简单计算三类必背框逐行复习，for四步轨道/可变步长/零次与无限循环/固定数字与输入变量累加/奇偶分拣/工资计算/4张单词卡/8题定点重教+错题两连对毕业）",
+    "file": "apps/hetao_coding_l3-4_l4-1_20260730.html?who=eddey",
+    "added": "2026-07-30"
+  },
+  {
+    "child": "eddey",
+    "subject": "英语",
+    "title": "疑问句发动机实验室 · be / can / do / does（动态词块搬家、特殊疑问词证据、老师10题作业、6个批改错点两连对回炉、Neon学习同步）",
+    "file": "apps/eddey_english_question_engine_lab_20260729.html",
+    "added": "2026-07-29"
+  },
+  {
+    "child": "kenton",
+    "subject": "英语",
+    "title": "状语从句 · 连词分拣工作室（时间/地点/目的/结果四类分拣、时间连词显微镜8卡、主将从现、such/so辨析、不规则动词31—60三态翻卡、10题独立检验含变式）",
+    "file": "apps/kenton_adverbial_clause_class_20260731.html",
+    "added": "2026-07-31"
+  },
+  {
+    "child": "kenton",
+    "subject": "英语",
+    "title": "动词三态 · 1—30默写冲刺营（最高优先级：磨耳朵、6组分组默写、错词集中营连对2次出营、10词模拟默写90分过关；be/was/were、can/could、burn/dream双写法特殊处理）",
+    "file": "apps/kenton_verb_sprint_0130_20260803.html",
+    "added": "2026-08-03"
+  },
+  {
+    "child": "kenton",
+    "subject": "英语",
+    "title": "句型三剑客 · 主谓/主系表/主谓宾（三句型教学、系动词四大家族分拣=明天默写范围、8句句型分拣、4句翻译小火车、6卡回忆、10题闯关）",
+    "file": "apps/kenton_sentence_patterns_20260802.html",
+    "added": "2026-08-02"
+  },
+  {
+    "child": "kenton",
+    "subject": "英语",
+    "title": "动词三态 · 31—60默写冲刺营（两天计划、30词三态磨耳朵、分组默写闯关、错词集中营连对2次出营、10词模拟默写90分过关）",
+    "file": "apps/kenton_verb_sprint_3160_20260802.html",
+    "added": "2026-08-02"
+  },
+  {
+    "child": "kenton",
+    "subject": "英语",
+    "title": "动词三态 · 61—90默写冲刺营（老师136词表原表逐行核对lend→set、周末两天计划、30词三态磨耳朵、分组默写闯关、错词集中营连对2次出营、10词模拟默写90分过关、may/must情态词只默两态）",
+    "file": "apps/kenton_verb_sprint_6190_20260807.html",
+    "added": "2026-08-07"
+  },
+  {
+    "child": "kenton",
+    "subject": "英语",
+    "title": "宾语从句 · 句子调度站（that / if-whether / wh-连词门、疑问语序重排、主句与从句时态轨道、错后定点重教、错题原因模板、不规则动词1—30编号进度）",
+    "file": "apps/kenton_object_clause_class_20260728.html",
+    "added": "2026-07-28"
+  },
+  {
+    "child": "kenton",
+    "subject": "编程",
+    "title": "小码王 C++ 4.5 · 动态知识地图与作业救援站（五课关系图/逐课会动软件/6道作业专属微课/错题回原课/个人进度独立）",
+    "file": "apps/xiaomawang_cpp_4_5.html?who=kenton",
+    "added": "2026-07-26"
+  },
+  {
+    "child": "eddey",
+    "subject": "编程",
+    "title": "小码王 C++ 4.5 · 动态知识地图与作业救援站（五课关系图/逐课会动软件/6道作业专属微课/错题回原课/个人进度独立）",
+    "file": "apps/xiaomawang_cpp_4_5.html?who=eddey",
+    "added": "2026-07-26"
+  },
+  {
+    "child": "kenton",
+    "subject": "编程",
+    "title": "核桃 L3-4复习 & CTL专项课3 · 循环侦察站（for运行慢放/边界条件/零次与无限循环/最大值擂台/三类必背框架/输出6到10两种写法/10题解析检验+错题本连对2次毕业+学习记录导入导出）",
+    "file": "apps/hetao_coding_l3-4_ctl3.html",
+    "added": "2026-07-26"
+  },
+  {
+    "child": "eddey",
+    "subject": "英语",
+    "title": "句子侦探局 · 祈使句、What/How 与 Who/What（动态证据扫描+8题边学边测+16题闯关+老师批改错点两连对回炉）",
+    "file": "apps/eddey_grammar_detective_20260724.html?v=20260724a",
+    "added": "2026-07-24"
+  },
+  {
+    "child": "kenton",
+    "subject": "数学",
+    "title": "🏅 金牌数学 · 五上预习馆 第3单元《平均数》（水位拉平机/数轴夹夹乐/基准数积木/评委打分台/会动知识导图+自动判分+错因标签+错题本连对2次毕业）",
+    "file": "apps/kenton_math_gold_g5u3.html",
+    "added": "2026-07-23"
+  },
+  {
+    "child": "kenton",
+    "subject": "数学",
+    "title": "🏅 金牌数学 · 五上预习馆 第2单元《小数的应用》（四舍五入闸门/进一法与去尾法分装器/汇率兑换机/峰谷电表/分段计费线段图/会动知识导图+自动判分+错因标签+错题本连对2次毕业）",
+    "file": "apps/kenton_math_gold_g5u2.html",
+    "added": "2026-07-23"
+  },
+  {
+    "child": "eddey",
+    "subject": "数学",
+    "title": "🏅 金牌数学 · 四上预习馆 第2单元《四面八方的学问》（方向罗盘/风向标实验室/路线小导游/遮挡回忆卡/12题检验自动判分+错因标签+错题本连对2次毕业）",
+    "file": "apps/eddey_math_gold_g4u2.html",
+    "added": "2026-07-23"
+  },
+  {
+    "child": "eddey",
+    "subject": "数学",
+    "title": "🏅 金牌数学 · 四上预习馆 第3单元《整数的四则运算与应用题》（运算顺序红绿灯/工作效率工厂/跟着做三关/遮挡回忆卡/12题检验自动判分+错因标签+错题本连对2次毕业）",
+    "file": "apps/eddey_math_gold_g4u3.html",
+    "added": "2026-07-23"
+  },
+  {
+    "child": "eddey",
+    "subject": "数学",
+    "title": "🏅 金牌数学 · 四上预习馆 第4单元《大数的认识与改写》（数位天梯/改写变身器/跟着做三关/遮挡回忆卡/12题检验自动判分+错因标签+错题本连对2次毕业）",
+    "file": "apps/eddey_math_gold_g4u4.html",
+    "added": "2026-07-23"
+  },
+  {
+    "child": "kenton",
+    "subject": "编程",
+    "title": "核桃 L3-3复习 & L3-4预习 · 嵌套整理练习+for循环强化（存钱罐累加机/if嵌套透视镜/if-else选路轨道/i值打印机/for运行慢放机三要素/擂台法找最大值/终点条件放大镜<=和<区别，13题检验+错题本）",
+    "file": "apps/hetao_coding_l3-3_l3-4.html",
+    "added": "2026-07-23"
+  },
+  {
+    "child": "kenton",
+    "subject": "数学",
+    "title": "🏅 金牌数学 · 五上预习馆 第1单元《小数的乘法与除法》（元角变身/小数点滑梯/竖式慢动作/好朋友吸铁石/四舍五入闸门/会动知识导图+12题检验自动判分+错因标签+错题本连对2次毕业）",
+    "file": "apps/kenton_math_gold_g5u1.html",
+    "added": "2026-07-23"
+  },
+  {
+    "child": "eddey",
+    "subject": "数学",
+    "title": "🏅 金牌数学 · 四上预习馆 第1单元《运算关系与运算律》（算式变身机/凑整猎手/未知数侦探/遮挡回忆卡/12题检验自动判分+错因标签+错题本连对2次毕业）",
+    "file": "apps/eddey_math_gold_g4u1.html",
+    "added": "2026-07-23"
+  },
+  {
+    "child": "kenton",
+    "subject": "数学",
+    "title": "🏅 数学金牌训练馆 · 新学期入口（哥哥五上+弟弟四上，按书逐单元开馆）",
+    "file": "apps/math_gold_hub.html?who=kenton",
+    "added": "2026-07-23"
+  },
+  {
+    "child": "eddey",
+    "subject": "数学",
+    "title": "🏅 数学金牌训练馆 · 新学期入口（哥哥五上+弟弟四上，按书逐单元开馆）",
+    "file": "apps/math_gold_hub.html?who=eddey",
+    "added": "2026-07-23"
+  },
+  {
+    "child": "kenton",
+    "subject": "英语",
+    "title": "小小世界播报 7.22（AI新发现 · 海底两万里鹦鹉螺号）",
+    "file": "apps/news_20260722.html",
+    "added": "2026-07-22"
+  },
+  {
+    "child": "eddey",
+    "subject": "英语",
+    "title": "小小世界播报 7.22（AI新发现 · 海底两万里鹦鹉螺号）",
+    "file": "apps/news_20260722.html",
+    "added": "2026-07-22"
+  },
+  {
+    "child": "kenton",
+    "subject": "英语",
+    "title": "小小世界播报 7.20（太阳系最大峡谷 · 会跑的机器人）",
+    "file": "apps/news_20260720.html",
+    "added": "2026-07-20"
+  },
+  {
+    "child": "eddey",
+    "subject": "英语",
+    "title": "小小世界播报 7.20（太阳系最大峡谷 · 会跑的机器人）",
+    "file": "apps/news_20260720.html",
+    "added": "2026-07-20"
+  },
+  {
+    "child": "kenton",
+    "subject": "英语",
+    "title": "小小世界播报 7.16（会飞的出租车 · 沙漠下雪）",
+    "file": "apps/news_20260716.html",
+    "added": "2026-07-16"
+  },
+  {
+    "child": "eddey",
+    "subject": "英语",
+    "title": "小小世界播报 7.16（会飞的出租车 · 沙漠下雪）",
+    "file": "apps/news_20260716.html",
+    "added": "2026-07-16"
+  },
+  {
+    "child": "kenton",
+    "subject": "英语",
+    "title": "小小世界播报 7.15（月球背面 samples · 机器鱼）",
+    "file": "apps/news_20260715.html",
+    "added": "2026-07-15"
+  },
+  {
+    "child": "eddey",
+    "subject": "英语",
+    "title": "小小世界播报 7.15（月球背面 samples · 机器鱼）",
+    "file": "apps/news_20260715.html",
+    "added": "2026-07-15"
+  },
+  {
+    "child": "kenton",
+    "subject": "英语",
+    "title": "小小世界播报 7.14（大熊猫新家 · 海底热泉）",
+    "file": "apps/news_20260714.html",
+    "added": "2026-07-14"
+  },
+  {
+    "child": "eddey",
+    "subject": "英语",
+    "title": "小小世界播报 7.14（大熊猫新家 · 海底热泉）",
+    "file": "apps/news_20260714.html",
+    "added": "2026-07-14"
+  },
+  {
+    "child": "kenton",
+    "subject": "英语",
+    "title": "小小世界播报 7.13（祝融号新发现 · 聪明的章鱼）",
+    "file": "apps/news_20260713.html",
+    "added": "2026-07-13"
+  },
+  {
+    "child": "eddey",
+    "subject": "英语",
+    "title": "小小世界播报 7.13（祝融号新发现 · 聪明的章鱼）",
+    "file": "apps/news_20260713.html",
+    "added": "2026-07-13"
+  },
+  {
+    "child": "kenton",
+    "subject": "英语",
+    "title": "小小世界播报 7.11（太空种土豆 · 长江江豚）",
+    "file": "apps/news_20260711.html",
+    "added": "2026-07-11"
+  },
+  {
+    "child": "eddey",
+    "subject": "英语",
+    "title": "小小世界播报 7.11（太空种土豆 · 长江江豚）",
+    "file": "apps/news_20260711.html",
+    "added": "2026-07-11"
+  },
+  {
+    "child": "kenton",
+    "subject": "英语",
+    "title": "小小世界播报 7.10（最深的海沟 · 会飞的汽车）",
+    "file": "apps/news_20260710.html",
+    "added": "2026-07-10"
+  },
+  {
+    "child": "eddey",
+    "subject": "英语",
+    "title": "小小世界播报 7.10（最深的海沟 · 会飞的汽车）",
+    "file": "apps/news_20260710.html",
+    "added": "2026-07-10"
+  },
+  {
+    "child": "kenton",
+    "subject": "英语",
+    "title": "小小世界播报 7.9（神舟十九号 · 珊瑚礁恢复）",
+    "file": "apps/news_20260709.html",
+    "added": "2026-07-09"
+  },
+  {
+    "child": "eddey",
+    "subject": "英语",
+    "title": "小小世界播报 7.9（神舟十九号 · 珊瑚礁恢复）",
+    "file": "apps/news_20260709.html",
+    "added": "2026-07-09"
+  },
+  {
+    "child": "kenton",
+    "subject": "英语",
+    "title": "小小世界播报 7.8（火星直升机 · 蓝鲸心脏）",
+    "file": "apps/news_20260708.html",
+    "added": "2026-07-08"
+  },
+  {
+    "child": "eddey",
+    "subject": "英语",
+    "title": "小小世界播报 7.8（火星直升机 · 蓝鲸心脏）",
+    "file": "apps/news_20260708.html",
+    "added": "2026-07-08"
+  },
+  {
+    "child": "kenton",
+    "subject": "英语",
+    "title": "小小世界播报 7.7（小暑节气 · 沙漠变绿洲）",
+    "file": "apps/news_20260707.html",
+    "added": "2026-07-07"
+  },
+  {
+    "child": "eddey",
+    "subject": "英语",
+    "title": "小小世界播报 7.7（小暑节气 · 沙漠变绿洲）",
+    "file": "apps/news_20260707.html",
+    "added": "2026-07-07"
+  },
+  {
+    "child": "kenton",
+    "subject": "英语",
+    "title": "小小世界播报 7.6（北斗卫星 · 深海探测器）",
+    "file": "apps/news_20260706.html",
+    "added": "2026-07-06"
+  },
+  {
+    "child": "eddey",
+    "subject": "英语",
+    "title": "小小世界播报 7.6（北斗卫星 · 深海探测器）",
+    "file": "apps/news_20260706.html",
+    "added": "2026-07-06"
+  },
+  {
+    "child": "kenton",
+    "subject": "英语",
+    "title": "小小世界播报 7.3（人工智能助手 · 古老金字塔）",
+    "file": "apps/news_20260703.html",
+    "added": "2026-07-03"
+  },
+  {
+    "child": "eddey",
+    "subject": "英语",
+    "title": "小小世界播报 7.3（人工智能助手 · 古老金字塔）",
+    "file": "apps/news_20260703.html",
+    "added": "2026-07-03"
+  },
+  {
+    "child": "kenton",
+    "subject": "英语",
+    "title": "小小世界播报 7.2（空间站生活 · 珍稀动物保护）",
+    "file": "apps/news_20260702.html",
+    "added": "2026-07-02"
+  },
+  {
+    "child": "eddey",
+    "subject": "英语",
+    "title": "小小世界播报 7.2（空间站生活 · 珍稀动物保护）",
+    "file": "apps/news_20260702.html",
+    "added": "2026-07-02"
+  },
+  {
+    "child": "kenton",
+    "subject": "英语",
+    "title": "小小世界播报 7.1（建党节 · 磁悬浮列车）",
+    "file": "apps/news_20260701.html",
+    "added": "2026-07-01"
+  },
+  {
+    "child": "eddey",
+    "subject": "英语",
+    "title": "小小世界播报 7.1（建党节 · 磁悬浮列车）",
+    "file": "apps/news_20260701.html",
+    "added": "2026-07-01"
+  },
+  {
+    "child": "kenton",
+    "subject": "英语",
+    "title": "小小世界播报 6.30（宇宙黑洞照片 · 故宫修复）",
+    "file": "apps/news_20260630.html",
+    "added": "2026-06-30"
+  },
+  {
+    "child": "eddey",
+    "subject": "英语",
+    "title": "小小世界播报 6.30（宇宙黑洞照片 · 故宫修复）",
+    "file": "apps/news_20260630.html",
+    "added": "2026-06-30"
+  },
+  {
+    "child": "kenton",
+    "subject": "英语",
+    "title": "小小世界播报 6.29（机器人医生 · 长城保护）",
+    "file": "apps/news_20260629.html",
+    "added": "2026-06-29"
+  },
+  {
+    "child": "eddey",
+    "subject": "英语",
+    "title": "小小世界播报 6.29（机器人医生 · 长城保护）",
+    "file": "apps/news_20260629.html",
+    "added": "2026-06-29"
+  },
+  {
+    "child": "kenton",
+    "subject": "英语",
+    "title": "小小世界播报 6.28（嫦娥六号回家 · 世界杯足球）",
+    "file": "apps/news_20260628.html",
+    "added": "2026-06-28"
+  },
+  {
+    "child": "eddey",
+    "subject": "英语",
+    "title": "小小世界播报 6.28（嫦娥六号回家 · 世界杯足球）",
+    "file": "apps/news_20260628.html",
+    "added": "2026-06-28"
+  },
+  {
+    "child": "kenton",
+    "subject": "英语",
+    "title": "小小世界播报 6.27（量子计算机 · 三星堆面具）",
+    "file": "apps/news_20260627.html",
+    "added": "2026-06-27"
+  },
+  {
+    "child": "eddey",
+    "subject": "英语",
+    "title": "小小世界播报 6.27（量子计算机 · 三星堆面具）",
+    "file": "apps/news_20260627.html",
+    "added": "2026-06-27"
+  },
+  {
+    "child": "kenton",
+    "subject": "英语",
+    "title": "小小世界播报 6.26（新能源汽车 · 敦煌壁画）",
+    "file": "apps/news_20260626.html",
+    "added": "2026-06-26"
+  },
+  {
+    "child": "eddey",
+    "subject": "英语",
+    "title": "小小世界播报 6.26（新能源汽车 · 敦煌壁画）",
+    "file": "apps/news_20260626.html",
+    "added": "2026-06-26"
+  },
+  {
+    "child": "kenton",
+    "subject": "英语",
+    "title": "小小世界播报 6.25（天眼望远镜 · 大熊猫幼崽）",
+    "file": "apps/news_20260625.html",
+    "added": "2026-06-25"
+  },
+  {
+    "child": "eddey",
+    "subject": "英语",
+    "title": "小小世界播报 6.25（天眼望远镜 · 大熊猫幼崽）",
+    "file": "apps/news_20260625.html",
+    "added": "2026-06-25"
+  },
+  {
+    "child": "kenton",
+    "subject": "英语",
+    "title": "小小世界播报 6.24（复兴号高铁 · 南极科考站）",
+    "file": "apps/news_20260624.html",
+    "added": "2026-06-24"
+  },
+  {
+    "child": "eddey",
+    "subject": "英语",
+    "title": "小小世界播报 6.24（复兴号高铁 · 南极科考站）",
+    "file": "apps/news_20260624.html",
+    "added": "2026-06-24"
+  },
+  {
+    "child": "kenton",
+    "subject": "英语",
+    "title": "小小世界播报 6.23（人工智能画展 · 西双版纳大象）",
+    "file": "apps/news_20260623.html",
+    "added": "2026-06-23"
+  },
+  {
+    "child": "eddey",
+    "subject": "英语",
+    "title": "小小世界播报 6.23（人工智能画展 · 西双版纳大象）",
+    "file": "apps/news_20260623.html",
+    "added": "2026-06-23"
+  },
+  {
+    "child": "kenton",
+    "subject": "编程",
+    "title": "核桃编程 · L3-1 复习 & L3-2 预习（侦测与广播：消息传声筒/角色对讲机/多场景广播剧/倒计时发射台，12题检验+错题本）",
+    "file": "apps/hetao_coding_l3-1_l3-2.html",
+    "added": "2026-07-15"
+  },
+  {
+    "child": "eddey",
+    "subject": "编程",
+    "title": "核桃编程 · L3-1 复习 & L3-2 预习（侦测与广播：消息传声筒/角色对讲机/多场景广播剧/倒计时发射台，12题检验+错题本）",
+    "file": "apps/hetao_coding_l3-1_l3-2.html",
+    "added": "2026-07-15"
+  },
+  {
+    "child": "kenton",
+    "subject": "编程",
+    "title": "核桃编程 · L2-4 复习 & L3-1 预习（循环嵌套与侦测：彩灯循环机/按键侦探/迷宫巡逻车/成绩判断器，12题检验+错题本）",
+    "file": "apps/hetao_coding_l2-4_l3-1.html",
+    "added": "2026-07-08"
+  },
+  {
+    "child": "eddey",
+    "subject": "编程",
+    "title": "核桃编程 · L2-4 复习 & L3-1 预习（循环嵌套与侦测：彩灯循环机/按键侦探/迷宫巡逻车/成绩判断器，12题检验+错题本）",
+    "file": "apps/hetao_coding_l2-4_l3-1.html",
+    "added": "2026-07-08"
+  },
+  {
+    "child": "kenton",
+    "subject": "编程",
+    "title": "核桃编程 · L2-3 复习 & L2-4 预习（变量与循环：计数器/累加器/循环画图形/列表购物单，12题检验+错题本）",
+    "file": "apps/hetao_coding_l2-3_l2-4.html",
+    "added": "2026-07-01"
+  },
+  {
+    "child": "eddey",
+    "subject": "编程",
+    "title": "核桃编程 · L2-3 复习 & L2-4 预习（变量与循环：计数器/累加器/循环画图形/列表购物单，12题检验+错题本）",
+    "file": "apps/hetao_coding_l2-3_l2-4.html",
+    "added": "2026-07-01"
+  },
+  {
+    "child": "kenton",
+    "subject": "编程",
+    "title": "核桃 L2-3 复习 · 智能密码门实验室（可拖舵机rotateTo/可按红外遥控/字符串拼接/if验证开门动画）",
+    "file": "apps/hetao_coding_l2-3_review.html",
+    "added": "2026-06-25"
+  },
+  {
+    "child": "eddey",
+    "subject": "编程",
+    "title": "核桃 L2-3 复习 · 智能密码门实验室（可拖舵机rotateTo/可按红外遥控/字符串拼接/if验证开门动画）",
+    "file": "apps/hetao_coding_l2-3_review.html",
+    "added": "2026-06-25"
+  },
+  {
+    "child": "kenton",
+    "subject": "AI",
+    "title": "🔬 AI 学院 · 引擎室（旗舰·暗色科幻指挥中心：拆词→词向量3D星空→神经网络→注意力→训练场，手绘高维可视化讲清AI怎么思考）",
+    "file": "apps/ai_academy.html?who=kenton",
+    "added": "2026-06-25"
+  },
+  {
+    "child": "eddey",
+    "subject": "AI",
+    "title": "🔬 AI 学院 · 引擎室（旗舰·暗色科幻指挥中心：拆词→词向量3D星空→神经网络→注意力→训练场，手绘高维可视化讲清AI怎么思考）",
+    "file": "apps/ai_academy.html?who=eddey",
+    "added": "2026-06-25"
+  },
+  {
+    "child": "kenton",
+    "subject": "AI",
+    "title": "AI 探索馆 · 和 AI 做朋友（预测机/配方台/侦探馆/创意工坊/安全馆/分类岛·会动地讲清AI怎么回事，激发好奇与创造）",
+    "file": "apps/ai_lab.html?who=kenton",
+    "added": "2026-06-25"
+  },
+  {
+    "child": "eddey",
+    "subject": "AI",
+    "title": "AI 探索馆 · 和 AI 做朋友（预测机/配方台/侦探馆/创意工坊/安全馆/分类岛·会动地讲清AI怎么回事，激发好奇与创造）",
+    "file": "apps/ai_lab.html?who=eddey",
+    "added": "2026-06-25"
+  },
+  {
+    "child": "kenton",
+    "subject": "外教Preply",
+    "title": "外教课预习 · Summer Comparisons（比较级变形机·a/an·句子小医院·发音诊所·夏天故事）",
+    "file": "apps/preply-summer-comparisons.html",
+    "added": "2026-07-07"
+  },
+  {
+    "child": "eddey",
+    "subject": "外教Preply",
+    "title": "外教课预习 · Summer Comparisons（比较级变形机·a/an·句子小医院·发音诊所·夏天故事）",
+    "file": "apps/preply-summer-comparisons.html",
+    "added": "2026-07-07"
+  },
+  {
+    "child": "kenton",
+    "subject": "外教Preply",
+    "title": "外教课复习 · Choosing Travel Destinations（选目的地·should建议·现在进行时·主谓一致·发音诊所，Denys 6.20）",
+    "file": "apps/preply-choosing-travel-destinations.html",
+    "added": "2026-06-22"
+  },
+  {
+    "child": "eddey",
+    "subject": "外教Preply",
+    "title": "外教课复习 · Choosing Travel Destinations（选目的地·should建议·现在进行时·主谓一致·发音诊所，Denys 6.20）",
+    "file": "apps/preply-choosing-travel-destinations.html",
+    "added": "2026-06-22"
+  },
+  {
+    "child": "kenton",
+    "subject": "英语",
+    "title": "小小世界播报 6.22（夏至天文 · 章鱼海洋）",
+    "file": "apps/news_20260622.html",
+    "added": "2026-06-22"
+  },
+  {
+    "child": "eddey",
+    "subject": "英语",
+    "title": "小小世界播报 6.22（夏至天文 · 章鱼海洋）",
+    "file": "apps/news_20260622.html",
+    "added": "2026-06-22"
+  },
+  {
+    "child": "kenton",
+    "subject": "外教Preply",
+    "title": "外教课复习 · Transport & should（交通/给建议/过去式·课堂改错，截图生成版）",
+    "file": "apps/preply-transport-and-advice.html",
+    "added": "2026-06-15"
+  },
+  {
+    "child": "eddey",
+    "subject": "外教Preply",
+    "title": "外教课复习 · Transport & should（交通/给建议/过去式·课堂改错，截图生成版）",
+    "file": "apps/preply-transport-and-advice.html",
+    "added": "2026-06-15"
+  },
+  {
+    "child": "kenton",
+    "subject": "编程",
+    "title": "核桃编程 · L2-2 复习 & L2-3 预习（听读版）",
+    "file": "apps/hetao_coding_l2-2_l2-3.html",
+    "added": "2026-06-20"
+  },
+  {
+    "child": "eddey",
+    "subject": "编程",
+    "title": "核桃编程 · L2-2 复习 & L2-3 预习（听读版）",
+    "file": "apps/hetao_coding_l2-2_l2-3.html",
+    "added": "2026-06-20"
+  },
+  {
+    "child": "kenton",
+    "subject": "外教Preply",
+    "title": "外教课复习 · Travel & Transport（旅行+交通·should建议·过去式·课堂改错）",
+    "file": "apps/preply-travel-vocabulary.html",
+    "added": "2026-06-20"
+  },
+  {
+    "child": "eddey",
+    "subject": "外教Preply",
+    "title": "外教课复习 · Travel & Transport（旅行+交通·should建议·过去式·课堂改错）",
+    "file": "apps/preply-travel-vocabulary.html",
+    "added": "2026-06-20"
+  },
+  {
+    "child": "kenton",
+    "subject": "语文",
+    "title": "语文表达实验室 · 四下（主观题会动·引导式：仿写连续动作分镜机+阅读按点答得分雷达，先教思路再考）",
+    "file": "apps/kenton_chinese_express_lab.html",
+    "added": "2026-06-20"
+  },
+  {
+    "child": "eddey",
+    "subject": "语文",
+    "title": "语文表达实验室 · 三下（主观题会动·引导式：复述故事三步拼装机+阅读按点答找得分点，先教思路再考）",
+    "file": "apps/eddey_chinese_express_lab.html",
+    "added": "2026-06-20"
+  },
+  {
+    "child": "kenton",
+    "subject": "语文",
+    "title": "语文总复习 · 四下（错字+易错字 报默·易错点小测带讲解·错词本反复练）",
+    "file": "apps/kenton_chinese_master.html",
+    "added": "2026-06-20"
+  },
+  {
+    "child": "eddey",
+    "subject": "语文",
+    "title": "语文总复习 · 三下（错字+易错字 报默·易错点小测带讲解·错词本反复练）",
+    "file": "apps/eddey_chinese_master.html",
+    "added": "2026-06-20"
+  },
+  {
+    "child": "kenton",
+    "subject": "综合",
+    "title": "语数英综合 · 输出爆破（第11天）",
+    "file": "apps/kenton_day11_output.html",
+    "added": "2026-06-11"
+  },
+  {
+    "child": "kenton",
+    "subject": "综合",
+    "title": "默写助手 · 语文+英语（全自动报默）",
+    "file": "apps/kenton_dictation.html",
+    "added": "2026-06-14"
+  },
+  {
+    "child": "kenton",
+    "subject": "综合",
+    "title": "默写错词重做 · 昨天错的词（中英）",
+    "file": "apps/kenton_dictation_redo.html",
+    "added": "2026-06-14"
+  },
+  {
+    "child": "kenton",
+    "subject": "英语",
+    "title": "英语单元默写 · 四下（教材12单元·全自动报默）",
+    "file": "apps/kenton_english_textbook.html",
+    "added": "2026-06-14"
+  },
+  {
+    "child": "eddey",
+    "subject": "英语",
+    "title": "英语练习 · 三下（错词重做+单元默写+句子）",
+    "file": "apps/eddey_english.html",
+    "added": "2026-06-14"
+  },
+  {
+    "child": "eddey",
+    "subject": "语文",
+    "title": "语文 · 三下复习探索馆（会动的复习：多音字转盘/转述句变身机/一词多义/课文关系脑图/古诗日积月累馆/寻物启事拼装台）",
+    "file": "apps/eddey_chinese_index_lab.html",
+    "added": "2026-06-19"
+  },
+  {
+    "child": "kenton",
+    "subject": "英语",
+    "title": "小小世界播报 6.17",
+    "file": "apps/news_20260617.html",
+    "added": "2026-06-17"
+  },
+  {
+    "child": "eddey",
+    "subject": "英语",
+    "title": "小小世界播报 6.17",
+    "file": "apps/news_20260617.html",
+    "added": "2026-06-17"
+  },
+  {
+    "child": "kenton",
+    "subject": "数学",
+    "title": "数学冲刺软件 · 四下（刷题48题·错题自动归档）",
+    "file": "apps/kenton_math_sprint.html",
+    "added": "2026-06-15"
+  },
+  {
+    "child": "eddey",
+    "subject": "数学",
+    "title": "数学冲刺软件 · 三下（刷题56题·错题自动归档）",
+    "file": "apps/eddey_math_sprint.html",
+    "added": "2026-06-15"
+  },
+  {
+    "child": "kenton",
+    "subject": "英语",
+    "title": "英语冲刺软件 · 四下（刷题48题·真人朗读·错题归档）",
+    "file": "apps/kenton_english_sprint.html",
+    "added": "2026-06-15"
+  },
+  {
+    "child": "eddey",
+    "subject": "英语",
+    "title": "英语冲刺软件 · 三下（刷题45题·真人朗读·错题归档）",
+    "file": "apps/eddey_english_sprint.html",
+    "added": "2026-06-15"
+  },
+  {
+    "child": "kenton",
+    "subject": "英语",
+    "title": "英语 Module 4 总复习（U1音乐课·U2节日·U3故事，结合错题）",
+    "file": "apps/kenton_m4_review.html",
+    "added": "2026-06-15"
+  },
+  {
+    "child": "eddey",
+    "subject": "数学",
+    "title": "数学错题专项 · 三下（6.15错题·点选少打字·讲解+回炉）",
+    "file": "apps/eddey_math_redo.html",
+    "added": "2026-06-15"
+  },
+  {
+    "child": "eddey",
+    "subject": "英语",
+    "title": "英语错点专项（6.15老师讲评：单复数/一般现在时/oo短音/after/运动）",
+    "file": "apps/eddey_english_redo_grammar.html",
+    "added": "2026-06-16"
+  },
+  {
+    "child": "kenton",
+    "subject": "英语",
+    "title": "英语单词默写 · 全册整合（★易错词+M1-M4单词句子+互译，自动报默）",
+    "file": "apps/kenton_english_dictation.html",
+    "added": "2026-06-16"
+  },
+  {
+    "child": "eddey",
+    "subject": "英语",
+    "title": "英语单词默写 · 全册整合（★易错词+M1-M4单词句子+互译，自动报默）",
+    "file": "apps/eddey_english_dictation.html",
+    "added": "2026-06-16"
+  },
+  {
+    "child": "kenton",
+    "subject": "英语",
+    "title": "英语期末冲刺复习 · 错题闯关（冲刺卷做成点选题+讲解+回炉）",
+    "file": "apps/kenton_english_sprint_quiz.html",
+    "added": "2026-06-17"
+  },
+  {
+    "child": "eddey",
+    "subject": "英语",
+    "title": "英语期末冲刺复习 · 错题闯关（冲刺卷做成点选题+讲解+回炉）",
+    "file": "apps/eddey_english_sprint_quiz.html",
+    "added": "2026-06-17"
+  },
+  {
+    "child": "kenton",
+    "subject": "语文",
+    "title": "语文 · 思维实验室（转述句变身动画+名家名作关系脑图+古诗记忆翻卡，不是刷题）",
+    "file": "apps/kenton_chinese_lab.html",
+    "added": "2026-06-19"
+  },
+  {
+    "child": "kenton",
+    "subject": "语文",
+    "title": "语文 · 四下复习探索馆（按期末索引：多音字转盘/形近字/关联词搭桥/句子医院/名家脑图/古诗记忆馆）",
+    "file": "apps/kenton_chinese_index_lab.html",
+    "added": "2026-06-19"
+  },
+  {
+    "child": "eddey",
+    "subject": "数学",
+    "title": "数学专项 · 试商余数+除法含0+比大小（错题汇总·讲解+回炉）",
+    "file": "apps/eddey_math_div_redo.html",
+    "added": "2026-06-16"
+  },
+  {
+    "child": "kenton",
+    "subject": "数学",
+    "title": "数学 · 四下探索馆（小数数位/小数加减/三角形内角和三边/分配律/平均数·可拖动动画讲基础）",
+    "file": "apps/kenton_math_lab.html",
+    "added": "2026-06-21"
+  },
+  {
+    "child": "eddey",
+    "subject": "数学",
+    "title": "数学 · 三下探索馆（面积vs周长/两位数乘法/分数/行程/植树/元角分·可拖动动画讲基础）",
+    "file": "apps/eddey_math_lab.html",
+    "added": "2026-06-21"
+  },
+  {
+    "child": "kenton",
+    "subject": "语文",
+    "title": "错词重默 · 两娃（只默之前默错的语文词，连续默对2次自动消失）",
+    "file": "apps/wrong_redo_both.html",
+    "added": "2026-06-21"
+  },
+  {
+    "child": "eddey",
+    "subject": "语文",
+    "title": "错词重默 · 两娃（只默之前默错的语文词，连续默对2次自动消失）",
+    "file": "apps/wrong_redo_both.html",
+    "added": "2026-06-21"
+  },
+  {
+    "child": "kenton",
+    "subject": "编程",
+    "title": "小码王 C++ 4.5 · 初识C++小工厂（代码打印机/变量盒子/运算小怪兽+学一学遮一遮+10题闯关+错题本连对2次毕业+记录导出，Kenton与Eddey同课独立记录）",
+    "file": "apps/xiaomawang_cpp_4_5_intro.html?who=kenton",
+    "added": "2026-07-26"
+  },
+  {
+    "child": "eddey",
+    "subject": "编程",
+    "title": "小码王 C++ 4.5 · 初识C++小工厂（代码打印机/变量盒子/运算小怪兽+学一学遮一遮+10题闯关+错题本连对2次毕业+记录导出，Kenton与Eddey同课独立记录）",
+    "file": "apps/xiaomawang_cpp_4_5_intro.html?who=eddey",
+    "added": "2026-07-26"
+  },
+  {
+    "child": "kenton",
+    "subject": "编程",
+    "title": "小码王 C++ 4.5 · 第10课基本运算实验室（数据类型行李箱/printf格式化机/整除取余/类型转换滑梯+10题闯关+错题本+记录导出）",
+    "file": "apps/xiaomawang_cpp_4_5_l10.html?who=kenton",
+    "added": "2026-07-26"
+  },
+  {
+    "child": "eddey",
+    "subject": "编程",
+    "title": "小码王 C++ 4.5 · 第10课基本运算实验室（数据类型行李箱/printf格式化机/整除取余/类型转换滑梯+10题闯关+错题本+记录导出）",
+    "file": "apps/xiaomawang_cpp_4_5_l10.html?who=eddey",
+    "added": "2026-07-26"
+  },
+  {
+    "child": "kenton",
+    "subject": "编程",
+    "title": "小码王 C++ 4.5 · 第11课分支结构（一）如果大门（关系天平/90分大门/三杯子交换动画/奇偶分拣机+10题闯关+错题本+记录导出）",
+    "file": "apps/xiaomawang_cpp_4_5_l11.html?who=kenton",
+    "added": "2026-07-26"
+  },
+  {
+    "child": "eddey",
+    "subject": "编程",
+    "title": "小码王 C++ 4.5 · 第11课分支结构（一）如果大门（关系天平/90分大门/三杯子交换动画/奇偶分拣机+10题闯关+错题本+记录导出）",
+    "file": "apps/xiaomawang_cpp_4_5_l11.html?who=eddey",
+    "added": "2026-07-26"
+  },
+  {
+    "child": "kenton",
+    "subject": "编程",
+    "title": "小码王 C++ 4.5 · 第12课分支结构（二）开关小火车（多分支阶梯/switch进站动画可关break/字符判断机+10题闯关+错题本+记录导出）",
+    "file": "apps/xiaomawang_cpp_4_5_l12.html?who=kenton",
+    "added": "2026-07-26"
+  },
+  {
+    "child": "eddey",
+    "subject": "编程",
+    "title": "小码王 C++ 4.5 · 第12课分支结构（二）开关小火车（多分支阶梯/switch进站动画可关break/字符判断机+10题闯关+错题本+记录导出）",
+    "file": "apps/xiaomawang_cpp_4_5_l12.html?who=eddey",
+    "added": "2026-07-26"
+  },
+  {
+    "child": "kenton",
+    "subject": "编程",
+    "title": "小码王 C++ 4.5 · 第13课分支结构（三）逻辑闸门（&&串联||并联开关电路/优秀学生判定器/闰年转盘+10题闯关+错题本+记录导出）",
+    "file": "apps/xiaomawang_cpp_4_5_l13.html?who=kenton",
+    "added": "2026-07-26"
+  },
+  {
+    "child": "eddey",
+    "subject": "编程",
+    "title": "小码王 C++ 4.5 · 第13课分支结构（三）逻辑闸门（&&串联||并联开关电路/优秀学生判定器/闰年转盘+10题闯关+错题本+记录导出）",
+    "file": "apps/xiaomawang_cpp_4_5_l13.html?who=eddey",
+    "added": "2026-07-26"
+  },
+  {
+    "child": "eddey",
+    "subject": "英语",
+    "title": "疑问词四兄弟侦探社（补习班L18复习+L19新课：when/where/why/how 答案反推四扇门、造句变身机、how三岔口+预合成示范朗读+10题考核+错题本连对2次毕业+记录导出）",
+    "file": "apps/eddey_wh_question_lab_20260727.html",
+    "added": "2026-07-27"
+  },
+  {
+    "child": "kenton",
+    "subject": "无人机",
+    "title": "无人机馆：L1考级通关营（千年飞天梦时间轴/12秒体验/轻重分拣机/图鉴翻卡+考点回忆卡+12题考级模拟+可打印速记卡+错题本，两娃同学不分人）",
+    "file": "apps/drone_l1_camp.html",
+    "added": "2026-07-27"
+  },
+  {
+    "child": "eddey",
+    "subject": "无人机",
+    "title": "无人机馆：L1考级通关营（千年飞天梦时间轴/12秒体验/轻重分拣机/图鉴翻卡+考点回忆卡+12题考级模拟+可打印速记卡+错题本，两娃同学不分人）",
+    "file": "apps/drone_l1_camp.html",
+    "added": "2026-07-27"
+  },
+  {
+    "child": "kenton",
+    "subject": "无人机",
+    "title": "无人机馆：L1操控特训营（美国手双摇杆模拟器/对尾悬停10秒挑战/安全铁律判断官/三大秘诀+DRL四步排序+考点回忆卡+12题考级模拟+可打印速记卡+错题本，两娃同学不分人）",
+    "file": "apps/drone_l1_pilot_camp.html",
+    "added": "2026-07-28"
+  },
+  {
+    "child": "eddey",
+    "subject": "无人机",
+    "title": "无人机馆：L1操控特训营（美国手双摇杆模拟器/对尾悬停10秒挑战/安全铁律判断官/三大秘诀+DRL四步排序+考点回忆卡+12题考级模拟+可打印速记卡+错题本，两娃同学不分人）",
+    "file": "apps/drone_l1_pilot_camp.html",
+    "added": "2026-07-28"
+  },
+  {
+    "child": "kenton",
+    "subject": "无人机",
+    "title": "无人机馆：L1起飞特训营（锂电池安全+充电实验/对频五步排序/起飞前检查清单流程/1分钟科目一起降大考+考点回忆卡+12题考级模拟+可打印速记卡+错题本，两娃同学不分人）",
+    "file": "apps/drone_l1_takeoff_camp.html",
+    "added": "2026-07-28"
+  },
+  {
+    "child": "eddey",
+    "subject": "无人机",
+    "title": "无人机馆：L1起飞特训营（锂电池安全+充电实验/对频五步排序/起飞前检查清单流程/1分钟科目一起降大考+考点回忆卡+12题考级模拟+可打印速记卡+错题本，两娃同学不分人）",
+    "file": "apps/drone_l1_takeoff_camp.html",
+    "added": "2026-07-28"
+  },
+  {
+    "child": "kenton",
+    "subject": "无人机",
+    "title": "无人机馆：L1悬停大师+理论通关（四字口诀翻卡/动态平衡演示/双摇杆悬停10秒大师挑战/航空史5大考点翻卡+考级标准+考点回忆卡+12题考级模拟+可打印速记卡+错题本，两娃同学不分人）",
+    "file": "apps/drone_l1_hover_master.html",
+    "added": "2026-07-28"
+  },
+  {
+    "child": "kenton",
+    "subject": "无人机",
+    "title": "无人机馆：L1入门实训营（L1-9完整科目初学+L1-10强化趣味竞技：双课八字口诀翻卡/完整流程排序机/四阶段标准判断官/趣味竞技场规则+考点回忆卡+12题考级模拟+可打印速记卡+错题本，两娃同学不分人）",
+    "file": "apps/drone_l1_rookie_camp.html",
+    "added": "2026-08-03"
+  },
+  {
+    "child": "kenton",
+    "subject": "无人机",
+    "title": "无人机馆：L1零失误巩固+绕柱专项营（L1-11零失误流程+L1-12水平八字与直线S：双课八字口诀翻卡/S形八字航线图解/陋习纠察官/绕柱实操排序机+考点回忆卡+12题考级模拟+可打印速记卡+错题本，两娃同学不分人）",
+    "file": "apps/drone_l1_obstacle_camp.html",
+    "added": "2026-08-03"
+  },
+  {
+    "child": "eddey",
+    "subject": "无人机",
+    "title": "无人机馆：L1悬停大师+理论通关（四字口诀翻卡/动态平衡演示/双摇杆悬停10秒大师挑战/航空史5大考点翻卡+考级标准+考点回忆卡+12题考级模拟+可打印速记卡+错题本，两娃同学不分人）",
+    "file": "apps/drone_l1_hover_master.html",
+    "added": "2026-07-28"
+  },
+  {
+    "child": "eddey",
+    "subject": "无人机",
+    "title": "无人机馆：L1入门实训营（L1-9完整科目初学+L1-10强化趣味竞技：双课八字口诀翻卡/完整流程排序机/四阶段标准判断官/趣味竞技场规则+考点回忆卡+12题考级模拟+可打印速记卡+错题本，两娃同学不分人）",
+    "file": "apps/drone_l1_rookie_camp.html",
+    "added": "2026-08-03"
+  },
+  {
+    "child": "eddey",
+    "subject": "无人机",
+    "title": "无人机馆：L1零失误巩固+绕柱专项营（L1-11零失误流程+L1-12水平八字与直线S：双课八字口诀翻卡/S形八字航线图解/陋习纠察官/绕柱实操排序机+考点回忆卡+12题考级模拟+可打印速记卡+错题本，两娃同学不分人）",
+    "file": "apps/drone_l1_obstacle_camp.html",
+    "added": "2026-08-03"
+  },
+  {
+    "child": "kenton",
+    "subject": "无人机",
+    "title": "无人机 L1足球竞技营：趣味对抗+综合巩固（L1-15足球竞技穿针引线高低回溯/L1-16四项科目精细控杆，双课口诀翻卡+实操排序机+细腻控杆判断官8场景+七项科目标准卡+回忆卡+12题考级模拟+速记卡+错题本，两娃同学不分人）",
+    "file": "apps/drone_l1_soccer_camp.html",
+    "added": "2026-08-06"
+  },
+  {
+    "child": "kenton",
+    "subject": "无人机",
+    "title": "无人机 L1空间定位营：四位悬停+提速稳控（L1-17四方定点四位悬停/L1-18四边航线与计时八字提速，双课口诀翻卡+四位悬停排序机+提速稳控判断官8场景+航线标准通关卡+回忆卡+12题考级模拟+速记卡+错题本，两娃同学不分人）",
+    "file": "apps/drone_l1_square_camp.html",
+    "added": "2026-08-06"
+  },
+  {
+    "child": "eddey",
+    "subject": "无人机",
+    "title": "无人机 L1足球竞技营：趣味对抗+综合巩固（L1-15足球竞技穿针引线高低回溯/L1-16四项科目精细控杆，双课口诀翻卡+实操排序机+细腻控杆判断官8场景+七项科目标准卡+回忆卡+12题考级模拟+速记卡+错题本，两娃同学不分人）",
+    "file": "apps/drone_l1_soccer_camp.html",
+    "added": "2026-08-06"
+  },
+  {
+    "child": "eddey",
+    "subject": "无人机",
+    "title": "无人机 L1空间定位营：四位悬停+提速稳控（L1-17四方定点四位悬停/L1-18四边航线与计时八字提速，双课口诀翻卡+四位悬停排序机+提速稳控判断官8场景+航线标准通关卡+回忆卡+12题考级模拟+速记卡+错题本，两娃同学不分人）",
+    "file": "apps/drone_l1_square_camp.html",
+    "added": "2026-08-06"
+  },
+  {
+    "child": "kenton",
+    "subject": "无人机",
+    "title": "无人机一级两天冲刺（看题3步/10题热身/30题考试练习/错题再练/飞行5步，Kenton入口）",
+    "file": "apps/drone_l1_exam_sprint_20260826.html?who=kenton",
+    "added": "2026-08-26"
+  },
+  {
+    "child": "eddey",
+    "subject": "无人机",
+    "title": "无人机一级两天冲刺（看题3步/10题热身/30题考试练习/错题再练/飞行5步，Eddey入口）",
+    "file": "apps/drone_l1_exam_sprint_20260826.html?who=eddey",
+    "added": "2026-08-26"
+  }
+]

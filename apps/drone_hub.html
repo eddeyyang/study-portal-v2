@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>无人机馆 · 考级通关基地</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+:root{--ink:#22304A;--blue:#2E9BFF;--blue-d:#1B7BD8;--orange:#FF9F43;--yellow:#FFD166;--muted:#6B7A94}
+html,body{font-family:"PingFang SC","Microsoft YaHei",sans-serif;color:var(--ink);
+background:linear-gradient(180deg,#BFE6FF 0%,#E8F7FF 50%,#FFF7E8 100%);min-height:100%}
+.wrap{max-width:680px;margin:0 auto;padding:0 16px 60px}
+.hero{text-align:center;padding:34px 16px 16px}
+.hero .badge{width:78px;height:78px;border-radius:22px;margin:0 auto 12px;display:flex;align-items:center;justify-content:center;font-size:42px;background:linear-gradient(135deg,#2E9BFF,#5BC8FF);color:#fff;box-shadow:0 10px 26px rgba(46,155,255,.45)}
+.hero h1{font-size:28px;font-weight:900}
+.hero p{color:var(--muted);font-size:14px;margin-top:6px;line-height:1.6}
+.hero .tag{display:inline-block;margin-top:8px;background:#fff;border-radius:999px;padding:5px 16px;font-size:12.5px;font-weight:800;color:var(--blue-d);box-shadow:0 3px 10px rgba(70,110,160,.18)}
+.home{display:inline-block;margin-top:12px;text-decoration:none;background:#fff;border:2px solid var(--blue);color:var(--blue);padding:7px 16px;border-radius:999px;font-weight:800;font-size:13px}
+.sec-title{font-size:14px;font-weight:900;color:var(--muted);margin:22px 4px 10px;letter-spacing:.5px}
+.course{background:#fff;border-radius:22px;box-shadow:0 8px 28px rgba(70,110,160,.16);padding:18px;display:flex;gap:14px;align-items:flex-start;position:relative;overflow:hidden}
+.course::after{position:absolute;right:-6px;bottom:-16px;font-size:72px;opacity:.1;transform:rotate(-8deg);content:"🛩️"}
+.course .ico{font-size:40px;flex:none}
+.course h2{font-size:19px;margin-bottom:6px}
+.course p{color:var(--muted);font-size:13px;line-height:1.7;position:relative;z-index:1}
+.course a{display:inline-block;margin-top:10px;text-decoration:none;color:#fff;font-size:13.5px;font-weight:900;border-radius:12px;padding:10px 16px;background:var(--blue);position:relative;z-index:1}
+.course.sprint{display:block;padding:22px;border:3px solid #FF9F43;background:linear-gradient(145deg,#0E405E,#145D75);color:#fff;box-shadow:0 14px 34px rgba(14,64,94,.28)}
+.course.sprint::after{content:"🎯";opacity:.12}
+.course.sprint h2{font-size:23px;margin:8px 0}.course.sprint p{color:#D8EEF4;font-size:14px}
+.course.sprint a{background:#FF7A3D;padding:12px 20px;font-size:15px}
+.course.sprint .flag{display:inline-block;border-radius:999px;padding:5px 11px;background:#FFD166;color:#513500;font-size:12px;font-weight:900}
+.sprint-doors{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:16px}
+.course.sprint .sprint-doors a{display:flex;align-items:center;justify-content:center;gap:8px;margin:0;min-height:58px;border:2px solid rgba(255,255,255,.42);box-shadow:0 10px 22px rgba(0,0,0,.18);font-size:16px}
+.course.sprint .sprint-doors a:first-child{background:#168FC3}.course.sprint .sprint-doors a:last-child{background:#ED642F}
+.sprint-doors small{display:block;font-size:10px;font-weight:700;opacity:.88}
+.course-note{margin-top:14px;padding:13px 15px;border-radius:16px;background:#FFF8E7;border:1px solid #F0D39D;color:#755626;font-size:12.5px;line-height:1.65}.course-note summary{min-height:32px;display:flex;align-items:center;font-weight:900;cursor:pointer}.course-note[open] summary{margin-bottom:6px}
+.soon{background:#fff;border-radius:22px;box-shadow:0 8px 28px rgba(70,110,160,.10);padding:16px 18px;color:var(--muted);font-size:13px;line-height:1.7;text-align:center}
+.stats{display:flex;gap:10px;margin-top:18px}
+.stat{flex:1;background:#fff;border-radius:16px;box-shadow:0 8px 22px rgba(70,110,160,.14);padding:14px;text-align:center}
+.stat b{display:block;font-size:24px;font-weight:900;color:var(--blue-d)}
+.stat span{font-size:12px;color:var(--muted);font-weight:700}
+@media(max-width:520px){.sprint-doors{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="hero">
+    <div class="badge">🚁</div>
+    <h1>无人机馆</h1>
+    <p>在这里学无人机、刷题和练飞行。</p>
+    <span class="tag">两个人各走自己的入口，成绩不会混</span><br>
+    <a class="home" href="../index.html">🏠 回学习主页</a>
+  </div>
+
+  <div class="sec-title">🔥 考试前先练这个</div>
+  <div class="course sprint">
+    <span class="flag">2026-08-26 更新</span>
+    <h2>无人机一级两天冲刺</h2>
+    <p>先学“看题3步”，再做10题热身和30题考试练习。答错会练2道小题，然后回原题再试。最后按顺序练飞行5步。</p>
+    <div class="sprint-doors" aria-label="选择孩子的入口">
+      <a href="drone_l1_exam_sprint_20260826.html?who=kenton">👦 <span>Kenton 哥哥<small>我的成绩 · 我的错题</small></span></a>
+      <a href="drone_l1_exam_sprint_20260826.html?who=eddey">🧒 <span>Eddey 弟弟<small>我的成绩 · 我的错题</small></span></a>
+    </div>
+  </div>
+  <details class="course-note"><summary>给家长看的题目说明</summary><p>官网没有公开本考试真题。本软件的练习题依据现行考试标准、官方教学参考和权威航空史资料编写，不冒充官方原题。下方旧课中的绕杆、八字、足球和四边航线属于课堂拓展。现有资料编号为1–12、15–18，没有13–14课原始资料，因此没有自行补写。</p></details>
+
+  <div class="sec-title">📚 历史授课复习 · 含课堂拓展</div>
+  <div class="course">
+    <span class="ico">🛩️</span>
+    <span>
+      <h2>L1 考级通关营 · 千年飞天梦 + 飞行器图鉴</h2>
+      <p>对应授课 L1-1《千年飞天梦真相》与 L1-2《飞行器图鉴与身份识别》：会飞的历史时间轴（墨子木鸢→万户→热气球→莱特兄弟）、12 秒体验器、轻重分拣机、图鉴翻卡，配考点回忆卡、12 题课堂复习、可打印速记卡和错题本。</p>
+      <a href="drone_l1_camp.html">🚀 进营开练</a>
+    </span>
+  </div>
+
+  <div class="course" style="margin-top:14px">
+    <span class="ico">🕹️</span>
+    <span>
+      <h2>L1 操控特训营 · 手柄安全 + 对尾悬停</h2>
+      <p>对应授课 L1-3《新手试飞：手柄与安全守则》与 L1-4《空间觉醒：精准操控的秘密》：美国手 Mode2 双摇杆模拟器（真弹回摇杆+高度计+5 个飞行任务）、对尾悬停 10 秒挑战（反向打杆口诀实操）、安全铁律判断官 8 场景、三大秘诀 + DRL 四步排序，配考点回忆卡、12 题课堂复习、可打印速记卡和错题本。</p>
+      <a href="drone_l1_pilot_camp.html">🚀 进营开练</a>
+    </span>
+  </div>
+
+
+  <div class="course" style="margin-top:14px">
+    <span class="ico">🛫</span>
+    <span>
+      <h2>L1 起飞特训营 · 装备检查 + 起降训练</h2>
+      <p>对应授课 L1-5《起飞准备：场地侦查与装备检查》与 L1-6《首秀时刻：起降悬停的基础训练》：锂电池安全、对频排序、起飞前检查与课堂起降训练。旧页流程未包含现行官网的原地旋转动作，正式冲刺请以上方新软件为准；内含12题课堂复习和错题本。</p>
+      <a href="drone_l1_takeoff_camp.html">🚀 进营开练</a>
+    </span>
+  </div>
+
+  <div class="course" style="margin-top:14px">
+    <span class="ico">🎯</span>
+    <span>
+      <h2>L1 悬停大师 + 理论通关 · 动态平衡 + 航空史</h2>
+      <p>对应授课 L1-7《稳住！悬停与动态平衡》与 L1-8《航空史与考级理论》：四字口诀翻卡（定高/对尾/稳杆/微修）、动态平衡演示、课堂悬停 10 秒挑战、航空史 5 大考点翻卡。旧页中的高度、对尾和次数属于课堂口径，不作全国统一考规；内含12题课堂复习。</p>
+      <a href="drone_l1_hover_master.html">🚀 进营开练</a>
+    </span>
+  </div>
+
+  <div class="course" style="margin-top:14px">
+    <span class="ico">🛫</span>
+    <span>
+      <h2>L1 入门实训营 · 完整流程 + 趣味竞技</h2>
+      <p>对应授课 L1-9《完整科目初学实训：入门飞行循序渐进》与 L1-10《飞行强化拓展：基础实操+趣味飞球竞技》：课堂基础起降、对尾悬停、限时穿门与无人机足球接力。高度、对尾、穿门和足球均按课堂强化理解；内含12题课堂复习。</p>
+      <a href="drone_l1_rookie_camp.html">🚀 进营开练</a>
+    </span>
+  </div>
+
+  <div class="course" style="margin-top:14px">
+    <span class="ico">🎪</span>
+    <span>
+      <h2>L1 零失误巩固 + 绕柱专项营 · 八字与直线 S</h2>
+      <p>对应授课 L1-11《L1 飞行巩固强化：零失误完整流程训练》与 L1-12《水平八字飞行与直线 S 飞行专项》：S 形与八字航线图解、陋习纠察与绕柱流程。绕柱、S形、八字属于课堂进阶加练，不是现行L1科目一；内含12题课堂复习。</p>
+      <a href="drone_l1_obstacle_camp.html">🚀 进营开练</a>
+    </span>
+  </div>
+
+  <div class="course" style="margin-top:14px">
+    <span class="ico">⚽</span>
+    <span>
+      <h2>L1 足球竞技营 · 趣味对抗 + 综合巩固</h2>
+      <p>对应授课 L1-15《无人机足球趣味竞技：穿针引线与高低回溯飞行专项》与 L1-16《飞行科目综合巩固：精细化控杆强化专项》：足球对抗、穿针、高低回溯与精细控杆，全部按课堂进阶加练定位；内含12题课堂复习。</p>
+      <a href="drone_l1_soccer_camp.html">🚀 进营开练</a>
+    </span>
+  </div>
+
+  <div class="course" style="margin-top:14px">
+    <span class="ico">🧭</span>
+    <span>
+      <h2>L1 空间定位营 · 四位悬停 + 提速稳控</h2>
+      <p>对应授课 L1-17《四方定点四位悬停：空间定位操控专项》与 L1-18《四边航线与计时八字航线：提速稳控专项》：四位悬停、四边航线、计时八字与提速稳控，全部按课堂进阶加练定位；内含12题课堂复习。</p>
+      <a href="drone_l1_square_camp.html">🚀 进营开练</a>
+    </span>
+  </div>
+
+  <div class="stats">
+    <div class="stat"><b>45</b><span>考试练习题</span></div>
+    <div class="stat"><b>96</b><span>历史课堂复习题</span></div>
+    <div class="stat"><b>16</b><span>已整理授课</span></div>
+  </div>
+
+  <div class="sec-title">🗓 后面怎么更新</div>
+  <div class="soon">每次拿到新的授课内容，就按同样方式做成新的通关营挂到这里——<br>发给 Kimi 一句"无人机新课入库"即可。</div>
+</div>
+</body>
+</html>

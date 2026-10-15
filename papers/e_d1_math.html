@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eddey 数学冲刺 · 第1天</title>
+<style>
+  @page { size: A4; margin: 12mm 13mm; }
+  * { box-sizing: border-box; }
+  body {
+    font-family: "Microsoft YaHei","Noto Sans CJK SC","WenQuanYi Zen Hei",sans-serif;
+    font-size: 12pt; line-height: 1.5; color:#000; margin:0; padding:0;
+  }
+  .paper { max-width: 190mm; margin: 0 auto; padding: 6px 4px 0; }
+
+  /* 卷首 */
+  .head { border:3px solid #000; padding:8px 12px; margin-bottom:10px; }
+  .head h1 { font-size:18pt; margin:0 0 6px; text-align:center; letter-spacing:1px; }
+  .head .meta { display:flex; flex-wrap:wrap; justify-content:space-between; font-size:10.5pt; gap:4px 14px; }
+  .head .meta span { white-space:nowrap; }
+  .fill { display:inline-block; min-width:70px; border-bottom:1.3px solid #000; }
+  .scope { font-size:10pt; color:#333; margin-top:6px; border-top:1.2px dashed #000; padding-top:5px; }
+
+  /* 大题区块 */
+  .section { border:2.5px solid #000; margin-bottom:9px; page-break-inside:avoid; }
+  .sec-head {
+    display:flex; justify-content:space-between; align-items:center;
+    border-bottom:1.6px solid #000; padding:4px 8px; font-weight:700; font-size:12.5pt;
+    background:repeating-linear-gradient(45deg,#fff,#fff 5px,#f0f0f0 5px,#f0f0f0 7px);
+  }
+  .sec-head .right { font-size:9.5pt; font-weight:600; white-space:nowrap; }
+  .sec-body { padding:7px 10px 9px; }
+
+  ol.q { margin:0; padding-left:26px; }
+  ol.q > li { margin:5px 0; padding-left:2px; }
+  .twocol { column-count:2; column-gap:24px; }
+  .twocol li { break-inside:avoid; }
+  .threecol { column-count:3; column-gap:18px; }
+  .threecol li { break-inside:avoid; }
+
+  .blank-s { display:inline-block; min-width:80px; border-bottom:1.4px solid #000; height:16px; vertical-align:bottom; }
+  .blank-m { display:inline-block; min-width:130px; border-bottom:1.4px solid #000; height:16px; vertical-align:bottom; }
+  .blank-l { display:inline-block; min-width:230px; border-bottom:1.4px solid #000; height:16px; vertical-align:bottom; }
+  .paren { display:inline-block; min-width:46px; text-align:center; }
+
+  .work-box { border:1.3px dashed #000; min-height:62px; margin-top:4px; }
+  .work-box.tall { min-height:80px; }
+  .work-grid { display:grid; grid-template-columns:1fr 1fr; gap:6px; }
+  .work-cell { border:1.3px dashed #000; min-height:70px; padding:3px 5px; }
+  .work-cell .lbl { font-size:10pt; }
+
+  .tag { color:#444; font-weight:700; }
+  .trap {
+    border:2px dashed #000; padding:5px 8px; margin:7px 0; font-size:10.5pt;
+    background:repeating-linear-gradient(45deg,#fff,#fff 6px,#ececec 6px,#ececec 8px);
+  }
+
+  table.tbl { border-collapse:collapse; width:100%; font-size:11pt; margin:3px 0; }
+  table.tbl th, table.tbl td { border:1.4px solid #000; padding:5px 6px; text-align:center; }
+
+  .footer { display:flex; justify-content:space-between; font-size:9pt; color:#444;
+            border-top:1.2px solid #000; padding-top:4px; margin-top:8px; }
+
+  /* 答案页 */
+  .answers { page-break-before:always; }
+  .answers h2 { text-align:center; border:2.5px solid #000; padding:6px; margin:0 0 10px; font-size:15pt; }
+  .answers .ablock { border:1.6px solid #000; padding:6px 10px; margin-bottom:8px; page-break-inside:avoid; }
+  .answers .ablock b { display:block; border-bottom:1px solid #999; margin-bottom:4px; padding-bottom:2px; }
+  .answers ol { margin:0; padding-left:24px; }
+  .answers li { margin:2px 0; font-size:11pt; }
+  .answers .note { font-size:9.5pt; color:#333; }
+
+  @media print {
+    body { font-size:12pt; }
+    .no-print { display:none; }
+  }
+  .no-print { text-align:center; margin:10px 0; }
+  .no-print button { font-size:13px; padding:6px 16px; cursor:pointer; }
+</style>
+</head>
+<body>
+<div class="paper">
+
+  <div class="no-print"><button onclick="window.print()">打印 / 保存为 PDF</button></div>
+
+  <!-- 卷首固定区 -->
+  <div class="head">
+    <h1>Eddey 数学冲刺 · 第1天</h1>
+    <div class="meta">
+      <span>姓名（小名）：<span class="fill">Eddey</span></span>
+      <span>日期：<span class="fill"></span></span>
+      <span>用时：<span class="fill"></span>分钟</span>
+      <span>总分：100 分　得分：<span class="fill"></span></span>
+      <span>家长签字：<span class="fill"></span></span>
+    </div>
+    <div class="scope">范围（三年级下 常规期末）：除数是一位数的除法 · 两位数乘两位数 · 面积与单位 · 分数的初步认识 · 小数的初步认识 · 年月日 · 解决问题。建议总时长 35 分钟。</div>
+  </div>
+
+  <!-- 一、口算直通车 -->
+  <div class="section">
+    <div class="sec-head">
+      <span>一、口算直通车</span>
+      <span class="right">⏱ 5 分钟　|　每题 1 分　共 10 分　得分 ____</span>
+    </div>
+    <div class="sec-body">
+      <ol class="q threecol">
+        <li>84 ÷ 4 = <span class="blank-s"></span></li>
+        <li>96 ÷ 3 = <span class="blank-s"></span></li>
+        <li>60 ÷ 5 = <span class="blank-s"></span></li>
+        <li>23 × 3 = <span class="blank-s"></span></li>
+        <li>40 × 20 = <span class="blank-s"></span></li>
+        <li>0.6 + 0.3 = <span class="blank-s"></span></li>
+        <li>1 − 0.4 = <span class="blank-s"></span></li>
+        <li>13 × 5 = <span class="blank-s"></span></li>
+        <li>500 ÷ 5 = <span class="blank-s"></span></li>
+        <li>11 × 11 = <span class="blank-s"></span></li>
+      </ol>
+    </div>
+  </div>
+
+  <!-- 二、填空 -->
+  <div class="section">
+    <div class="sec-head">
+      <span>二、用心填一填</span>
+      <span class="right">⏱ 8 分钟　|　每空 2 分　共 20 分　得分 ____</span>
+    </div>
+    <div class="sec-body">
+      <ol class="q" start="11">
+        <li>把一个蛋糕平均分成 8 份，每份是它的 <span class="blank-s"></span>，3 份是它的 <span class="blank-s"></span>。</li>
+        <li>0.7 写成几分之几是 <span class="blank-s"></span>；五角写成元做单位是 <span class="blank-s"></span> 元。</li>
+        <li>一年有 <span class="blank-s"></span> 个月，其中大月有 <span class="blank-s"></span> 个月。</li>
+        <li>2026 年的二月有 <span class="blank-s"></span> 天（先判断它是平年还是闰年：<span class="blank-s"></span>）。</li>
+        <li>边长是 1 厘米的正方形，面积是 1 <span class="blank-s"></span>（填面积单位）。</li>
+        <li>一个数除以 6，商是 12，余数是 5，这个数是 <span class="blank-s"></span>。</li>
+        <li>在 ○ 里填 &gt; &lt; 或 =：　0.8 ○ 0.80　　　1 元 ○ 9 角</li>
+      </ol>
+    </div>
+  </div>
+
+  <!-- 三、选择 -->
+  <div class="section">
+    <div class="sec-head">
+      <span>三、火眼金睛选一选</span>
+      <span class="right">⏱ 4 分钟　|　每题 2 分　共 10 分　得分 ____</span>
+    </div>
+    <div class="sec-body">
+      <ol class="q" start="18">
+        <li>下面除法算式中，商是三位数的是（<span class="paren"></span>）。<br>
+          A. 408 ÷ 4　　B. 360 ÷ 4　　C. 296 ÷ 3</li>
+        <li>下面哪个分数最大？（<span class="paren"></span>）<br>
+          A. 1/2　　B. 1/4　　C. 1/8</li>
+        <li>下面表示面积、应该用“平方米”的是（<span class="paren"></span>）。<br>
+          A. 课桌桌面的大小　　B. 教室地面的大小　　C. 橡皮一个面的大小</li>
+        <li>7 月、8 月连在一起，这两个月一共有（<span class="paren"></span>）天。<br>
+          A. 61　　B. 62　　C. 60</li>
+        <li>下面与 25 × 12 结果相等的是（<span class="paren"></span>）。<br>
+          A. 25 × 10 + 2　　B. 25 × 10 + 25 × 2　　C. 25 × 10 × 2</li>
+      </ol>
+    </div>
+  </div>
+
+  <!-- 四、竖式计算 -->
+  <div class="section">
+    <div class="sec-head">
+      <span>四、竖式计算（要写竖式）</span>
+      <span class="right">⏱ 8 分钟　|　每题 4 分　共 16 分　得分 ____</span>
+    </div>
+    <div class="sec-body">
+      <ol class="q" start="23" style="margin-bottom:4px;">
+        <li style="list-style:none; margin-left:-26px;"></li>
+      </ol>
+      <div class="work-grid">
+        <div class="work-cell"><span class="lbl tag">23.</span> 525 ÷ 5 = </div>
+        <div class="work-cell"><span class="lbl tag">24.</span> 416 ÷ 3 = ____ ……____ <span style="font-size:9pt;color:#444;">（有余数）</span></div>
+        <div class="work-cell"><span class="lbl tag">25.</span> 34 × 26 = </div>
+        <div class="work-cell"><span class="lbl tag">26.</span> 48 × 25 = </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 五、解决问题 -->
+  <div class="section">
+    <div class="sec-head">
+      <span>五、动脑解决问题</span>
+      <span class="right">⏱ 10 分钟　|　每题 6 分　共 24 分　得分 ____</span>
+    </div>
+    <div class="sec-body">
+      <ol class="q" start="27">
+        <li>三年级 3 个班去春游，每班 38 人。一辆大巴能坐 50 人，2 辆大巴够坐吗？请算一算并说明理由。
+          <div class="work-box"></div>
+        </li>
+        <li>水果店运来 252 个苹果，平均装在 6 个箱子里。每箱装多少个？
+          <div class="work-box"></div>
+        </li>
+        <li>一块长方形菜地，长 12 米，宽 8 米。
+          <div class="trap"><span class="tag">[易错提醒]</span> 周长和面积不一样！周长用米作单位，面积用平方米作单位，别用错算法。</div>
+          （1）这块菜地的面积是多少平方米？　（2）在它四周围一圈篱笆，篱笆长多少米？
+          <div class="work-box tall"></div>
+        </li>
+        <li>明明 6 月 14 日开始练字，连续练到 6 月 30 日（含这两天）。他一共练了多少天？
+          <div class="work-box"></div>
+        </li>
+      </ol>
+    </div>
+  </div>
+
+  <!-- 六、聪明大挑战 -->
+  <div class="section">
+    <div class="sec-head">
+      <span>六、聪明大挑战（★加深思考）</span>
+      <span class="right">⏱ ~ 　|　每题 10 分　共 20 分　得分 ____</span>
+    </div>
+    <div class="sec-body">
+      <ol class="q" start="31">
+        <li>一根 1 米长的彩带，先剪去 3/10 米，又剪去 0.4 米。
+          <div class="trap"><span class="tag">[想一想]</span> 3/10 米和 0.4 米，哪一段更长？先比一比再算。</div>
+          还剩下多少米？（用米作单位，写成小数或分数都可以）
+          <div class="work-box"></div>
+        </li>
+        <li>用 1、2、3 三张数字卡片，每张只用一次，组成一个两位数乘一位数的算式（如 □□ × □）。
+          怎样组才能让乘积最大？写出这个最大的算式和结果。
+          <div class="work-box tall"></div>
+        </li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>Eddey 数学冲刺 · 第1天</span>
+    <span>第 1 页 / 共 2 页</span>
+    <span>姓名 Eddey　日期 ______</span>
+  </div>
+
+  <!-- ================= 答案页 ================= -->
+  <div class="answers">
+    <h2>参考答案（家长可撕下或不打印）</h2>
+
+    <div class="ablock">
+      <b>一、口算直通车</b>
+      <ol class="q threecol" style="padding-left:24px;">
+        <li>21</li><li>32</li><li>12</li>
+        <li>69</li><li>800</li><li>0.9</li>
+        <li>0.6</li><li>65</li><li>100</li>
+        <li>121</li>
+      </ol>
+    </div>
+
+    <div class="ablock">
+      <b>二、用心填一填</b>
+      <ol class="q" start="11">
+        <li>每份是 1/8；3 份是 3/8</li>
+        <li>0.7 = 7/10；五角 = 0.5 元</li>
+        <li>一年 12 个月；大月 7 个（1、3、5、7、8、10、12 月）</li>
+        <li>2026 年 2 月有 28 天；2026 年是平年（2026 不能被 4 整除）</li>
+        <li>1 平方厘米（cm²）</li>
+        <li>这个数 = 6 × 12 + 5 = 77</li>
+        <li>0.8 = 0.80（相等）；　1 元 &gt; 9 角</li>
+      </ol>
+    </div>
+
+    <div class="ablock">
+      <b>三、火眼金睛选一选</b>
+      <ol class="q" start="18">
+        <li>A　<span class="note">（408÷4=102 是三位数；360÷4=90，296÷3 不能整除且商两位数）</span></li>
+        <li>A　<span class="note">（分子都是1，分母越小分数越大，1/2 最大）</span></li>
+        <li>B　<span class="note">（教室地面较大，用平方米；课桌面、橡皮面用平方厘米/分米）</span></li>
+        <li>B　<span class="note">（7月31天 + 8月31天 = 62天）</span></li>
+        <li>B　<span class="note">（乘法分配律：25×12 = 25×10 + 25×2 = 250+50 = 300）</span></li>
+      </ol>
+    </div>
+
+    <div class="ablock">
+      <b>四、竖式计算</b>
+      <ol class="q" start="23">
+        <li>525 ÷ 5 = <b style="display:inline">105</b></li>
+        <li>416 ÷ 3 = <b style="display:inline">138 …… 2</b>（138×3=414，414+2=416）</li>
+        <li>34 × 26 = <b style="display:inline">884</b></li>
+        <li>48 × 25 = <b style="display:inline">1200</b></li>
+      </ol>
+    </div>
+
+    <div class="ablock">
+      <b>五、动脑解决问题</b>
+      <ol class="q" start="27">
+        <li>总人数 = 38 × 3 = 114（人）；2 辆大巴 = 50 × 2 = 100（人）。100 &lt; 114，<b style="display:inline">不够坐</b>，还差 14 人（需要 3 辆大巴）。</li>
+        <li>252 ÷ 6 = <b style="display:inline">42</b>（个）。每箱装 42 个。</li>
+        <li>（1）面积 = 12 × 8 = <b style="display:inline">96 平方米</b>；（2）周长（篱笆长）=（12 + 8）× 2 = <b style="display:inline">40 米</b>。</li>
+        <li>从 14 日到 30 日：30 − 14 + 1 = <b style="display:inline">17</b>（天）。注意首尾都要算，用减法后要加 1。</li>
+      </ol>
+    </div>
+
+    <div class="ablock">
+      <b>六、聪明大挑战</b>
+      <ol class="q" start="31">
+        <li>先比较：3/10 米 = 0.3 米，0.4 米更长一些。剩下 = 1 − 0.3 − 0.4 = <b style="display:inline">0.3 米</b>（也可写成 3/10 米）。</li>
+        <li>要乘积最大，把大数字放高位且配最大的一位数：比较 31×2=62、21×3=63、32×1=32 等，<b style="display:inline">21 × 3 = 63</b> 最大。（说明：让十位是次大数字、一位数取最大数字，乘积最大）</li>
+      </ol>
+    </div>
+
+    <div class="footer">
+      <span>Eddey 数学冲刺 · 第1天（答案）</span>
+      <span>第 2 页 / 共 2 页</span>
+      <span>家长签字 ______</span>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

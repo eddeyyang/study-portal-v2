@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<script src="../assets/learning-sync.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="小小世界播报">
+<title>小小世界播报 · 第 004 期 · 2026 年 6 月 15 日</title>
+<link href="https://fonts.googleapis.com/css2?family=Bangers&family=Fraunces:wght@700;900&family=Inter:wght@600;800&family=Noto+Serif+SC:wght@700;900&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#F8F2E4;--cream:#F4ECD8;--ink:#1A1410;--vermillion:#C8553D;--terra:#E08E45;--gold:#D4A04A;--muted:#8B7355;}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}
+html{scroll-behavior:smooth;}
+body{font-family:'Inter','PingFang SC',system-ui,sans-serif;background:var(--paper);color:var(--ink);line-height:1.6;min-height:100vh;padding-bottom:150px;background-image:radial-gradient(at 18% 8%,rgba(224,142,69,0.12) 0,transparent 50%),radial-gradient(at 82% 92%,rgba(58,124,165,0.08) 0,transparent 50%);overflow-x:hidden;}
+.header{padding:34px 24px 24px;text-align:center;}
+.header::after{content:'';display:block;width:60%;height:1px;margin:24px auto 0;background:linear-gradient(90deg,transparent,rgba(43,33,24,0.3),transparent);}
+.date-banner{background:var(--ink);color:var(--gold);display:inline-block;padding:8px 20px;border-radius:100px;font-family:'Fraunces',serif;font-weight:700;font-size:13px;letter-spacing:2px;margin-bottom:14px;box-shadow:0 3px 12px rgba(0,0,0,0.15);}
+.date-banner .icon{margin-right:6px;}
+.title-zh{font-family:'Noto Serif SC',serif;font-size:42px;font-weight:700;letter-spacing:6px;margin-bottom:6px;}
+.title-en{font-family:'Fraunces',serif;font-style:italic;font-size:20px;color:var(--vermillion);letter-spacing:1px;}
+.title-en::before,.title-en::after{content:'✦';font-size:10px;color:var(--gold);margin:0 12px;}
+.subtitle{margin-top:16px;font-size:13px;color:var(--muted);display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;}
+.badge{display:inline-block;background:var(--ink);color:var(--paper);padding:4px 12px;border-radius:12px;font-size:10px;font-weight:700;letter-spacing:1.5px;}
+.badge.gold{background:var(--gold);color:var(--ink);}
+.episode-meta{display:flex;justify-content:center;gap:8px;padding:20px 16px;flex-wrap:wrap;}
+.meta-card{background:white;padding:10px 16px;border-radius:100px;font-size:11px;color:var(--muted);font-weight:600;display:flex;align-items:center;gap:8px;border:1px solid rgba(43,33,24,0.08);box-shadow:0 1px 4px rgba(43,33,24,0.04);}
+.meta-card .val{color:var(--ink);font-family:'Fraunces',serif;font-weight:700;}
+.hero-play{margin:8px 16px 28px;max-width:720px;margin-left:auto;margin-right:auto;background:linear-gradient(135deg,#1A1410 0%,#3A2818 100%);color:var(--paper);border-radius:24px;padding:24px;display:flex;align-items:center;gap:18px;cursor:pointer;position:relative;overflow:hidden;box-shadow:0 10px 30px rgba(26,20,16,0.25);}
+.hero-play .play-icon{width:60px;height:60px;border-radius:50%;background:var(--vermillion);display:flex;align-items:center;justify-content:center;font-size:22px;color:white;box-shadow:0 4px 12px rgba(200,85,61,0.4);flex-shrink:0;}
+.hero-play .play-info{flex:1;}
+.hero-play .label{font-size:10px;letter-spacing:3px;color:var(--gold);font-weight:700;margin-bottom:4px;}
+.hero-play .ep-title{font-family:'Fraunces',serif;font-size:18px;font-weight:700;}
+.hero-play .ep-sub{font-size:12px;color:rgba(255,255,255,0.6);font-style:italic;}
+
+.opening{margin:0 16px 28px;max-width:720px;margin-left:auto;margin-right:auto;background:linear-gradient(135deg,#FFF6E0 0%,#FCEFD0 100%);border-radius:24px;padding:22px 24px;border:2px solid rgba(212,160,74,0.3);box-shadow:0 4px 18px rgba(212,160,74,0.12);position:relative;overflow:hidden;}
+.opening::before{content:'🌧️';position:absolute;top:-14px;right:-6px;font-size:80px;opacity:.15;}
+.opening .op-eyebrow{font-size:10px;letter-spacing:3px;color:var(--vermillion);font-weight:800;margin-bottom:10px;}
+.op-weather{position:relative;height:92px;border-radius:14px;overflow:hidden;margin-bottom:14px;background:linear-gradient(180deg,#a7d4ee,#e8f4fb);}
+.op-weather .wx-sun{position:absolute;top:14px;left:26px;width:44px;height:44px;border-radius:50%;background:radial-gradient(circle at 40% 40%,#FFE680,#FFB300);box-shadow:0 0 20px rgba(255,193,7,.65);animation:wxSun 4s ease-in-out infinite;}
+@keyframes wxSun{0%,100%{transform:scale(1)}50%{transform:scale(1.08)}}
+.op-weather .wx-cloud{position:absolute;height:22px;width:74px;background:#fff;border-radius:18px;box-shadow:0 6px 12px rgba(0,0,0,.06);}
+.op-weather .wx-cloud::before,.op-weather .wx-cloud::after{content:'';position:absolute;background:#fff;border-radius:50%;}
+.op-weather .wx-cloud::before{width:26px;height:26px;top:-12px;left:12px;}
+.op-weather .wx-cloud::after{width:34px;height:34px;top:-18px;left:32px;}
+.op-weather .c1{top:18px;animation:wxDrift 16s linear infinite;}
+.op-weather .c2{top:44px;width:56px;opacity:.85;animation:wxDrift 23s linear infinite 4s;}
+@keyframes wxDrift{from{left:-90px}to{left:115%}}
+.op-weather .wx-drops{position:absolute;inset:0;display:none;pointer-events:none;}
+.op-weather .wx-drops i{position:absolute;top:-14px;width:2px;height:13px;background:linear-gradient(#6fa8d6,rgba(111,168,214,0));border-radius:2px;animation:wxFall .85s linear infinite;}
+@keyframes wxFall{to{transform:translateY(112px);opacity:.15}}
+.op-weather.wx-sunny{background:linear-gradient(180deg,#8fd0f2,#e8f4fb);}
+.op-weather.wx-sunny .wx-cloud{display:none;}
+.op-weather.wx-rain{background:linear-gradient(180deg,#8ea7b6,#cdd9e0);}
+.op-weather.wx-rain .wx-sun{opacity:.3;}
+.op-weather.wx-rain .wx-drops{display:block;}
+.op-weather.wx-snow{background:linear-gradient(180deg,#a9bccb,#e7eef3);}
+.op-weather.wx-snow .wx-sun{opacity:.4;}
+.op-weather.wx-snow .wx-drops{display:block;}
+.op-weather.wx-snow .wx-drops i{width:6px;height:6px;border-radius:50%;background:#fff;animation-duration:2.6s;}
+.opening .op-seg{padding:12px 14px;border-radius:12px;margin-top:10px;line-height:1.75;cursor:pointer;transition:all .35s;border-left:3px solid;position:relative;}
+.opening .op-seg.en{background:rgba(238,245,240,0.8);border-left-color:#6B8E5A;font-family:'Fraunces',serif;font-size:15px;color:var(--ink);}
+.opening .op-seg.zh{background:rgba(255,255,255,0.7);border-left-color:var(--terra);font-family:'Noto Serif SC',serif;font-size:14.5px;color:#5a4a3a;}
+.opening .op-seg::before{content:attr(data-lang);position:absolute;top:-7px;left:12px;background:white;font-size:8px;font-weight:800;padding:2px 7px;border-radius:6px;letter-spacing:1.5px;font-family:'Inter',sans-serif;}
+.opening .op-seg.zh::before{color:var(--terra);}
+.opening .op-seg.en::before{color:#6B8E5A;}
+.opening .op-seg.active{transform:translateX(8px) scale(1.02);box-shadow:0 8px 24px rgba(200,85,61,0.22);font-weight:600;}
+.opening .op-seg.active.en{background:linear-gradient(135deg,#A8E6A1,#7FCB7C);color:#1A1410;}
+.opening .op-seg.active.zh{background:linear-gradient(135deg,#FFE066,#FFC94D);color:#2B1810;}
+
+.stories{padding:0 16px 30px;max-width:720px;margin:0 auto;}
+.story{background:white;border-radius:24px;margin-bottom:24px;overflow:hidden;box-shadow:0 4px 20px rgba(43,33,24,0.08);border:2px solid rgba(26,20,16,0.06);transition:all .4s cubic-bezier(.16,1,.3,1);}
+.story.playing{border-color:var(--vermillion);box-shadow:0 0 0 4px rgba(200,85,61,0.12),0 16px 40px rgba(200,85,61,0.18);}
+.story-header{padding:20px 22px 16px;background:linear-gradient(180deg,#fff 0%,#FAF5E8 100%);border-bottom:1px dashed rgba(139,115,85,0.2);position:relative;}
+.story-cat{display:inline-flex;align-items:center;gap:6px;background:var(--ink);color:var(--paper);padding:4px 12px;border-radius:100px;font-size:10px;font-weight:800;letter-spacing:1.5px;margin-bottom:10px;}
+.story-cat .dot{width:6px;height:6px;border-radius:50%;animation:pulse 1.5s infinite;}
+.story-level{display:inline-block;margin-left:8px;background:#EAF3EC;color:#5C7A52;border:1px solid #BBD3B4;padding:3px 9px;border-radius:100px;font-size:9px;font-weight:800;letter-spacing:1px;vertical-align:middle;}
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:.5;}}
+.headline-en{font-family:'Fraunces',serif;font-size:23px;font-weight:700;line-height:1.25;margin-bottom:4px;}
+.headline-zh{font-size:13px;color:var(--muted);font-family:'Noto Serif SC',serif;}
+.story-num{position:absolute;top:18px;right:18px;width:38px;height:38px;background:linear-gradient(135deg,var(--gold),var(--terra));color:white;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Fraunces',serif;font-weight:900;font-size:18px;box-shadow:0 4px 10px rgba(212,160,74,0.3);}
+.scene-unit{position:relative;}
+.stage{width:100%;aspect-ratio:16/9;position:relative;overflow:hidden;background:#1A1410;}
+.scene-content{padding:16px 22px 20px;background:white;}
+.segment{padding:14px 16px 14px 18px;border-radius:14px;font-size:14.5px;line-height:1.75;transition:all .35s;position:relative;border-left:3px solid;cursor:pointer;margin-top:10px;}
+.segment.zh{background:linear-gradient(135deg,#FFF6E0 0%,#FAEBC8 100%);color:#5a4a3a;border-left-color:var(--terra);font-family:'Noto Serif SC',serif;}
+.segment.en{background:linear-gradient(135deg,#EEF5F0 0%,#DCE9DE 100%);color:var(--ink);border-left-color:#6B8E5A;font-family:'Fraunces',serif;font-size:15.5px;}
+.segment::before{content:attr(data-lang);position:absolute;top:-7px;left:12px;background:white;font-size:8px;font-weight:800;padding:2px 7px;border-radius:6px;letter-spacing:1.5px;border:1px solid rgba(43,33,24,0.08);font-family:'Inter',sans-serif;}
+.segment.zh::before{color:var(--terra);}.segment.en::before{color:#6B8E5A;}
+.segment.active{transform:translateX(8px) scale(1.02);box-shadow:0 8px 24px rgba(200,85,61,0.25);font-weight:600;}
+.segment.active.zh{background:linear-gradient(135deg,#FFE066 0%,#FFC94D 100%);color:#2B1810;}
+.segment.active.en{background:linear-gradient(135deg,#A8E6A1 0%,#7FCB7C 100%);color:#1A1410;}
+.scene-unit.playing .stage{box-shadow:inset 0 0 0 3px var(--vermillion);}
+.scene-unit.playing::before{content:'🎙️ ON AIR';position:absolute;top:10px;right:10px;background:var(--vermillion);color:white;font-size:9px;font-weight:700;letter-spacing:1.5px;padding:4px 10px;border-radius:100px;animation:pulse 1.5s infinite;z-index:20;}
+.vocab{margin:14px 22px 22px;background:linear-gradient(135deg,#EFE6D2 0%,#F4ECD8 100%);border-radius:14px;padding:16px 18px;border:1px dashed rgba(139,115,85,0.3);}
+.vocab-title{font-size:9px;letter-spacing:2.5px;color:var(--vermillion);font-weight:800;margin-bottom:12px;}
+.vocab-title::before{content:'✦ ';color:var(--gold);}
+.vocab-item{display:flex;align-items:center;gap:10px;padding:10px 12px;margin-bottom:6px;background:white;border-radius:10px;border:1px solid rgba(139,115,85,0.15);cursor:pointer;transition:all .2s;}
+.vocab-item:hover{background:#FFF8E8;transform:translateX(3px);}
+.vocab-item.speaking{background:linear-gradient(135deg,#FFE8B8 0%,#F5D08C 100%);}
+.vocab-item .speaker{width:28px;height:28px;border-radius:50%;background:var(--vermillion);color:white;display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0;}
+.vocab-item.speaking .speaker{animation:pulse 1s infinite;}
+.vocab-item .word{font-family:'Fraunces',serif;font-weight:700;font-size:15px;min-width:90px;}
+.vocab-item .pron{color:var(--muted);font-size:10px;font-style:italic;}
+.vocab-item .meaning{color:var(--muted);flex:1;font-family:'Noto Serif SC',serif;font-size:12px;text-align:right;}
+
+@keyframes titleBounce{0%,100%{transform:translateX(-50%) translateY(0) rotate(-2deg);}50%{transform:translateX(-50%) translateY(-8px) rotate(2deg);}}
+@keyframes breathe{0%,100%{transform:translateY(0);}50%{transform:translateY(-4px);}}
+.eye{transform-origin:center;animation:blink 4s infinite;transform-box:fill-box;}
+@keyframes blink{0%,92%,100%{transform:scaleY(1);}94%,96%{transform:scaleY(.1);}}
+
+/* SPACE */
+.space-a{background:radial-gradient(ellipse at 50% 100%,#FF6B35 0%,#C8553D 20%,#2A1F5F 60%,#0A0E27 100%);}
+.stars-tiny{position:absolute;inset:0;background-image:radial-gradient(1px 1px at 10% 12%,white,transparent),radial-gradient(1px 1px at 25% 8%,white,transparent),radial-gradient(2px 2px at 40% 14%,#FFE066,transparent),radial-gradient(1px 1px at 55% 6%,white,transparent),radial-gradient(2px 2px at 70% 18%,white,transparent),radial-gradient(2px 2px at 85% 10%,#FFE066,transparent);animation:starsTwinkle 3s infinite alternate;}
+@keyframes starsTwinkle{0%{opacity:.7;}100%{opacity:1;}}
+.rocket-flying{position:absolute;left:50%;top:18%;transform:translateX(-50%);width:50px;height:110px;z-index:6;}
+.rocket-trail{position:absolute;bottom:-80px;left:50%;transform:translateX(-50%);width:24px;height:80px;background:linear-gradient(180deg,#FFE066,#FF6B35 50%,transparent);border-radius:50%;filter:blur(6px);animation:trailFlick .15s infinite;}
+@keyframes trailFlick{0%,100%{transform:translateX(-50%) scaleX(1);}50%{transform:translateX(-50%) scaleX(1.3);}}
+.earth-bottom{position:absolute;bottom:-20%;left:-10%;right:-10%;height:50%;background:radial-gradient(ellipse at top,#4FC3F7,#0288D1 40%,#01579B 80%);border-radius:50% 50% 0 0 / 100% 100% 0 0;z-index:3;}
+.earth-bottom::before{content:'';position:absolute;top:25%;left:20%;width:25%;height:30%;background:#4ADE80;border-radius:40%;opacity:.7;}
+.cn-flag{position:absolute;top:42%;left:50%;transform:translateX(-50%);width:28px;height:18px;background:#DE2910;border:2px solid #fff;border-radius:3px;z-index:7;display:flex;align-items:center;justify-content:center;font-size:11px;color:#FFDE00;}
+.space-a-title{position:absolute;top:8%;left:50%;transform:translateX(-50%);font-family:'Bangers',cursive;font-size:34px;color:#FFE066;text-shadow:-3px -3px 0 #0A0E27,3px -3px 0 #0A0E27,-3px 3px 0 #0A0E27,3px 3px 0 #0A0E27,0 5px 0 #050715;animation:titleBounce 2s infinite;z-index:10;letter-spacing:3px;text-align:center;white-space:nowrap;}
+.space-a-title small{display:block;font-family:'Inter',sans-serif;font-size:10px;font-weight:800;letter-spacing:4px;color:#fff;margin-top:3px;}
+.space-b{background:linear-gradient(180deg,#2A1F5F 0%,#1A1340 50%,#0A0E27 100%);}
+.station{position:absolute;top:40%;left:50%;transform:translate(-50%,-50%);z-index:6;animation:breathe 4s infinite;}
+.year-badge{position:absolute;top:12%;right:8%;background:#DE2910;border:3px solid #FFE066;border-radius:12px;padding:8px 12px;z-index:8;text-align:center;transform:rotate(6deg);}
+.year-badge .big{font-family:'Bangers',cursive;font-size:26px;color:#FFDE00;line-height:.9;}
+.year-badge .small{font-family:'Inter',sans-serif;font-size:8px;font-weight:800;color:#fff;letter-spacing:1px;}
+.space-c{background:radial-gradient(ellipse at center,#FFE066 0%,#FF6B35 30%,#C8553D 60%,#2A1F5F 100%);}
+.celebration-stars{position:absolute;font-family:'Bangers',cursive;color:#FFE066;text-shadow:-2px -2px 0 #1A0E08,2px -2px 0 #1A0E08,-2px 2px 0 #1A0E08,2px 2px 0 #1A0E08;z-index:5;animation:starSpin 3s infinite;}
+.cs1{top:14%;left:10%;font-size:24px;}.cs2{top:25%;right:12%;font-size:20px;animation-delay:.5s;}
+.cs3{bottom:28%;left:15%;font-size:22px;animation-delay:1s;}.cs4{bottom:18%;right:15%;font-size:24px;animation-delay:1.5s;}
+@keyframes starSpin{0%,100%{transform:rotate(0) scale(1);}50%{transform:rotate(180deg) scale(1.2);}}
+.destination-board{position:absolute;top:10%;left:50%;transform:translateX(-50%);background:#1A0E08;border:3px solid #FFE066;border-radius:12px;padding:10px 18px;z-index:10;box-shadow:0 6px 18px rgba(0,0,0,0.5);}
+.next-stop{font-family:'Inter',sans-serif;font-size:9px;font-weight:800;color:#FFE066;letter-spacing:2px;text-align:center;margin-bottom:2px;}
+.destination{font-family:'Bangers',cursive;font-size:24px;color:#fff;letter-spacing:2px;text-align:center;}
+.destination span{color:#FFE066;}
+.moon-base{position:absolute;bottom:6%;left:50%;transform:translateX(-50%);width:240px;z-index:4;}
+
+/* MOON / night sky */
+.moon-a{background:linear-gradient(180deg,#0A0E27 0%,#1A1340 60%,#2A2A3F 100%);}
+.big-moon{position:absolute;top:14%;left:50%;transform:translateX(-50%);width:120px;height:120px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#fff,#D0D0D0 70%,#A0A0A0);box-shadow:0 0 40px rgba(255,255,255,0.3);z-index:4;}
+.big-moon::before{content:'';position:absolute;top:25%;left:30%;width:18px;height:18px;border-radius:50%;background:rgba(0,0,0,0.12);}
+.big-moon::after{content:'';position:absolute;top:55%;left:55%;width:12px;height:12px;border-radius:50%;background:rgba(0,0,0,0.1);}
+.moon-a-title{position:absolute;bottom:12%;left:50%;transform:translateX(-50%);font-family:'Bangers',cursive;font-size:30px;color:#FFE066;text-shadow:-2px -2px 0 #0A0E27,2px -2px 0 #0A0E27,-2px 2px 0 #0A0E27,2px 2px 0 #0A0E27,0 5px 0 #050715;animation:titleBounce 2s infinite;z-index:10;letter-spacing:2px;text-align:center;white-space:nowrap;}
+.moon-a-title small{display:block;font-family:'Inter',sans-serif;font-size:10px;font-weight:800;letter-spacing:3px;color:#fff;margin-top:3px;}
+.planet-dot{position:absolute;border-radius:50%;z-index:5;}
+.pl-venus{top:30%;left:24%;width:18px;height:18px;background:radial-gradient(circle at 35% 35%,#FFF6C0,#FFD23F);box-shadow:0 0 16px #FFE066;}
+.pl-jup{top:42%;left:48%;width:22px;height:22px;background:radial-gradient(circle at 35% 35%,#FFE0A3,#E0922C);}
+.pl-merc{top:54%;left:70%;width:11px;height:11px;background:radial-gradient(circle at 35% 35%,#E0E0E0,#9AA0A6);}
+.planet-label{position:absolute;font-family:'Inter',sans-serif;font-size:9px;font-weight:800;color:#FFE066;z-index:6;}
+.moon-b{background:linear-gradient(180deg,#1A1340 0%,#2A2A3F 50%,#4A4A5A 100%);}
+.count-burst{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:10;text-align:center;}
+.count-burst .burst-bg{position:absolute;inset:-18px;background:radial-gradient(circle,#FFE066,#FF8A4C 60%,transparent 72%);filter:blur(8px);z-index:-1;animation:pulse 1.2s infinite;}
+.count-num{font-family:'Bangers',cursive;font-size:64px;color:#FFE066;line-height:.9;text-shadow:-3px -3px 0 #1A1340,3px -3px 0 #1A1340,-3px 3px 0 #1A1340,3px 3px 0 #1A1340,0 8px 0 #0A0820;}
+.count-label{font-family:'Bangers',cursive;font-size:18px;color:#fff;letter-spacing:2px;}
+.moon-c{background:radial-gradient(ellipse at center,#10183A 0%,#0A0E27 60%,#05060F 100%);}
+.crescent{position:absolute;top:20%;left:50%;transform:translateX(-50%);width:70px;height:70px;border-radius:50%;background:#FFF3C4;box-shadow:18px 6px 0 0 #0A0E27;z-index:5;}
+
+/* SPORTS */
+.sports-a{background:linear-gradient(180deg,#9BE0F0 0%,#BDEBC0 55%,#7BC97F 100%);}
+.sports-field{position:absolute;bottom:0;left:0;right:0;height:30%;background:repeating-linear-gradient(90deg,#74C178 0 34px,#69B96D 34px 68px);border-top:3px solid #fff;}
+.sports-cloud{position:absolute;background:#fff;border-radius:40px;opacity:.85;z-index:2;}
+.sports-a-title{position:absolute;top:7%;left:50%;transform:translateX(-50%);font-family:'Bangers',cursive;font-size:30px;color:#FF6B35;text-shadow:-2px -2px 0 #fff,2px -2px 0 #fff,-2px 2px 0 #fff,2px 2px 0 #fff,0 5px 0 #C8553D;animation:titleBounce 2s infinite;z-index:10;letter-spacing:2px;text-align:center;white-space:nowrap;}
+.sports-a-title small{display:block;font-family:'Inter',sans-serif;font-size:10px;font-weight:800;letter-spacing:3px;color:#1A1410;margin-top:3px;}
+.hopper{position:absolute;bottom:24%;left:50%;width:96px;z-index:6;animation:hopAnim .55s infinite;}
+@keyframes hopAnim{0%,100%{transform:translateX(-50%) translateY(0);}45%{transform:translateX(-50%) translateY(-26px);}}
+.sports-b{background:radial-gradient(ellipse at center,#FFE066 0%,#FF8A4C 50%,#C8553D 100%);}
+.sports-c{background:linear-gradient(180deg,#FFD54F 0%,#FF8A65 60%,#F06292 100%);}
+
+/* OCEAN */
+.ocean-a{background:linear-gradient(180deg,#4FC3F7 0%,#0288D1 35%,#01579B 70%,#012E52 100%);}
+.bubble{position:absolute;border-radius:50%;background:rgba(255,255,255,0.35);border:1px solid rgba(255,255,255,0.5);animation:bubbleRise 6s linear infinite;}
+@keyframes bubbleRise{0%{transform:translateY(0);opacity:0;}10%{opacity:1;}100%{transform:translateY(-260px);opacity:0;}}
+.light-ray{position:absolute;top:0;width:40px;height:70%;background:linear-gradient(180deg,rgba(255,255,255,0.25),transparent);transform:skewX(-12deg);animation:rayShine 5s infinite alternate;}
+.lr1{left:18%;}.lr2{left:48%;animation-delay:1.5s;}.lr3{left:75%;animation-delay:.8s;}
+@keyframes rayShine{0%{opacity:.3;}100%{opacity:.7;}}
+.ocean-a-title{position:absolute;top:8%;left:50%;transform:translateX(-50%);font-family:'Bangers',cursive;font-size:30px;color:#FFE066;text-shadow:-2px -2px 0 #012E52,2px -2px 0 #012E52,-2px 2px 0 #012E52,2px 2px 0 #012E52,0 5px 0 #001A30;animation:titleBounce 2s infinite;z-index:10;letter-spacing:2px;text-align:center;white-space:nowrap;}
+.ocean-a-title small{display:block;font-family:'Inter',sans-serif;font-size:10px;font-weight:800;letter-spacing:3px;color:#fff;margin-top:3px;}
+.octo{position:absolute;bottom:14%;left:50%;transform:translateX(-50%);width:130px;z-index:5;animation:floatBob 3s infinite;}
+@keyframes floatBob{0%,100%{transform:translateX(-50%) translateY(0);}50%{transform:translateX(-50%) translateY(-12px);}}
+.ocean-b{background:linear-gradient(180deg,#01579B 0%,#012E52 60%,#001220 100%);}
+.depth-ruler{position:absolute;left:6%;top:5%;bottom:5%;width:26px;background:linear-gradient(180deg,#4FC3F7,#012E52);border:2px solid #fff;border-radius:4px;display:flex;flex-direction:column;justify-content:space-between;padding:6px 0;z-index:6;}
+.depth-ruler .dmark{height:1.5px;background:#fff;margin:0 3px;}
+.depth-tag{position:absolute;bottom:6%;left:40px;background:#C8553D;color:#FFE066;font-size:11px;padding:3px 8px;border:2px solid #fff;border-radius:6px;font-weight:800;font-family:'Inter',sans-serif;z-index:7;}
+.golf-compare{position:absolute;top:18%;right:8%;z-index:8;text-align:center;}
+.golf-ball{width:46px;height:46px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#fff,#ddd 70%);border:2px solid #4E2A12;margin:0 auto;box-shadow:0 4px 10px rgba(0,0,0,0.3);}
+.golf-label{font-family:'Bangers',cursive;font-size:12px;color:#FFE066;text-shadow:-1px -1px 0 #012E52,1px -1px 0 #012E52,-1px 1px 0 #012E52,1px 1px 0 #012E52;margin-top:4px;letter-spacing:1px;}
+.octo-small{position:absolute;top:40%;left:50%;transform:translate(-50%,-50%);width:90px;z-index:5;animation:floatBob 3s infinite;}
+.ocean-c{background:radial-gradient(ellipse at center,#4FC3F7 0%,#0288D1 40%,#01579B 100%);}
+.new-species-tag{position:absolute;top:12%;left:50%;transform:translateX(-50%);background:#1B5E20;border:3px solid #FFE066;border-radius:12px;padding:8px 16px;z-index:10;text-align:center;box-shadow:0 6px 16px rgba(0,0,0,0.4);}
+.new-species-tag .small{font-family:'Inter',sans-serif;font-size:9px;font-weight:800;color:#FFE066;letter-spacing:2px;}
+.new-species-tag .big{font-family:'Bangers',cursive;font-size:22px;color:#fff;letter-spacing:1px;}
+.octo-happy{position:absolute;bottom:8%;left:50%;transform:translateX(-50%);width:150px;z-index:5;animation:floatBob 2.5s infinite;}
+.heart-float{position:absolute;font-size:16px;animation:heartFloat 3s infinite;z-index:4;}
+.h1{bottom:30%;left:18%;}.h2{bottom:45%;left:78%;animation-delay:1s;}.h3{bottom:35%;left:86%;animation-delay:2s;}
+@keyframes heartFloat{0%{transform:translateY(0);opacity:0;}30%{opacity:1;}100%{transform:translateY(-90px) scale(.5);opacity:0;}}
+
+/* TECH */
+.tech-a{background:linear-gradient(180deg,#0F2027 0%,#203A43 50%,#2C5364 100%);}
+.tech-a .grid-floor{position:absolute;bottom:0;left:0;right:0;height:40%;background-image:linear-gradient(rgba(79,195,247,0.3) 1px,transparent 1px),linear-gradient(90deg,rgba(79,195,247,0.3) 1px,transparent 1px);background-size:30px 30px;transform:perspective(200px) rotateX(50deg);transform-origin:bottom;}
+.robot-an{position:absolute;bottom:16%;left:50%;transform:translateX(-50%);width:130px;z-index:6;animation:breathe 3s infinite;}
+.heart-pulse{position:absolute;top:14%;right:12%;font-size:36px;animation:pulse 1.2s infinite;z-index:7;}
+.tech-a-title{position:absolute;top:8%;left:50%;transform:translateX(-50%);font-family:'Bangers',cursive;font-size:30px;color:#4FC3F7;text-shadow:-3px -3px 0 #0F2027,3px -3px 0 #0F2027,-3px 3px 0 #0F2027,3px 3px 0 #0F2027,0 5px 0 #021014;animation:titleBounce 2s infinite;z-index:10;letter-spacing:2px;text-align:center;white-space:nowrap;}
+.tech-a-title small{display:block;font-family:'Inter',sans-serif;font-size:10px;font-weight:800;letter-spacing:3px;color:#FFE066;margin-top:3px;}
+.tech-b{background:radial-gradient(ellipse at center,#00BCD4 0%,#006064 50%,#002730 100%);}
+.sensor-ring{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);border:3px solid rgba(255,224,102,0.6);border-radius:50%;animation:ringExpand 2.5s ease-out infinite;}
+.sr1{width:50px;height:50px;}.sr2{width:50px;height:50px;animation-delay:.8s;}.sr3{width:50px;height:50px;animation-delay:1.6s;}
+@keyframes ringExpand{0%{width:50px;height:50px;opacity:1;}100%{width:280px;height:280px;opacity:0;}}
+.robot-face{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:120px;z-index:6;animation:breathe 3s infinite;}
+.emo-icons{position:absolute;top:10%;right:8%;display:flex;flex-direction:column;gap:6px;z-index:8;}
+.emo-icons span{font-size:26px;animation:floatBob 2.5s infinite;}
+.tech-c{background:linear-gradient(135deg,#43E97B 0%,#38F9D7 100%);}
+.award-display{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center;z-index:10;}
+.award-trophy{font-size:80px;animation:bounce 1.2s infinite;}
+.award-label{font-family:'Inter',sans-serif;font-size:11px;font-weight:800;letter-spacing:2px;background:#002730;color:#fff;padding:5px 12px;border-radius:5px;display:inline-block;margin-top:6px;transform:rotate(-3deg);}
+@keyframes bounce{0%,100%{transform:translateY(0);}50%{transform:translateY(-10px);}}
+.ces-badge{position:absolute;top:12%;left:8%;background:#002730;border:2px solid #FFE066;border-radius:8px;padding:5px 10px;font-family:'Bangers',cursive;color:#FFE066;font-size:14px;z-index:7;letter-spacing:1px;}
+
+/* KID artist */
+.kid-a{background:linear-gradient(135deg,#FFD54F 0%,#FF8A65 50%,#BA68C8 100%);}
+.paint-splat{position:absolute;border-radius:50%;animation:splatPulse 3s infinite;z-index:3;}
+@keyframes splatPulse{0%,100%{transform:scale(1);opacity:.7;}50%{transform:scale(1.15);opacity:1;}}
+.easel{position:absolute;bottom:8%;left:50%;transform:translateX(-50%);width:160px;z-index:5;animation:breathe 3s infinite;}
+.kid-a-title{position:absolute;top:8%;left:50%;transform:translateX(-50%);font-family:'Bangers',cursive;font-size:30px;color:#fff;text-shadow:-2px -2px 0 #6A1B9A,2px -2px 0 #6A1B9A,-2px 2px 0 #6A1B9A,2px 2px 0 #6A1B9A,0 5px 0 #4A148C;animation:titleBounce 2s infinite;z-index:10;letter-spacing:2px;text-align:center;white-space:nowrap;}
+.kid-a-title small{display:block;font-family:'Inter',sans-serif;font-size:10px;font-weight:800;letter-spacing:3px;color:#FFE066;margin-top:3px;}
+.kid-b{background:linear-gradient(180deg,#FFE0B2 0%,#FFCC80 100%);}
+.age-burst{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:10;text-align:center;}
+.age-burst .burst-bg{position:absolute;inset:-20px;background:radial-gradient(circle,#FFE066,#FF8A4C 60%,transparent 72%);filter:blur(8px);z-index:-1;animation:pulse 1.2s infinite;}
+.age-num{font-family:'Bangers',cursive;font-size:70px;color:#fff;line-height:.9;text-shadow:-3px -3px 0 #6A1B9A,3px -3px 0 #6A1B9A,-3px 3px 0 #6A1B9A,3px 3px 0 #6A1B9A,0 8px 0 #4A148C;}
+.age-label{font-family:'Bangers',cursive;font-size:20px;color:#6A1B9A;letter-spacing:2px;}
+.kid-c{background:radial-gradient(ellipse at center,#FFF176 0%,#FFB74D 40%,#BA68C8 100%);}
+.gallery-frame{position:absolute;border:5px solid #6A1B9A;border-radius:6px;background:#fff;z-index:5;animation:floatBob 3s infinite;box-shadow:0 6px 14px rgba(0,0,0,0.25);}
+.gf1{top:18%;left:12%;width:70px;height:80px;}.gf2{top:30%;right:14%;width:64px;height:74px;animation-delay:.6s;}.gf3{bottom:14%;left:24%;width:60px;height:70px;animation-delay:1.2s;}
+.kid-c-title{position:absolute;top:8%;left:50%;transform:translateX(-50%);font-family:'Bangers',cursive;font-size:30px;color:#fff;text-shadow:-2px -2px 0 #6A1B9A,2px -2px 0 #6A1B9A,-2px 2px 0 #6A1B9A,2px 2px 0 #6A1B9A,0 5px 0 #4A148C;animation:titleBounce 2s infinite;z-index:10;letter-spacing:2px;text-align:center;white-space:nowrap;}
+.kid-c-title small{display:block;font-family:'Inter',sans-serif;font-size:10px;font-weight:800;letter-spacing:3px;color:#FFE066;margin-top:3px;}
+
+.signoff{text-align:center;padding:30px 24px 20px;}
+.signoff .ornament{font-size:14px;color:var(--gold);letter-spacing:8px;margin-bottom:14px;}
+.signoff .message{font-family:'Fraunces',serif;font-style:italic;font-size:18px;color:var(--vermillion);margin-bottom:8px;}
+.signoff .credit{font-size:10px;letter-spacing:2px;color:var(--muted);}
+.player{position:fixed;bottom:0;left:0;right:0;background:linear-gradient(180deg,rgba(26,20,16,0.96),#1A1410);color:var(--paper);padding:14px 18px 22px;z-index:100;box-shadow:0 -8px 24px rgba(0,0,0,0.25);border-top:1px solid rgba(212,160,74,0.15);}
+.player-info{display:flex;justify-content:space-between;align-items:center;font-size:11px;margin-bottom:12px;gap:12px;}
+.now{color:var(--gold);letter-spacing:1.5px;font-weight:700;flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.count{color:rgba(255,255,255,0.5);font-family:'Fraunces',serif;font-weight:600;}
+.player-controls{display:flex;gap:12px;justify-content:center;align-items:center;}
+.pbtn{background:rgba(255,255,255,0.08);color:var(--paper);border:none;width:46px;height:46px;border-radius:50%;cursor:pointer;font-size:15px;display:flex;align-items:center;justify-content:center;transition:all .2s;}
+.pbtn:hover{background:rgba(255,255,255,0.16);}
+.pbtn.main{width:62px;height:62px;background:var(--vermillion);font-size:22px;box-shadow:0 4px 16px rgba(200,85,61,0.45);}
+.progress{height:3px;background:rgba(255,255,255,0.12);border-radius:2px;margin-top:14px;overflow:hidden;}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--vermillion),var(--gold));width:0%;transition:width .4s;}
+@media (max-width:380px){.title-zh{font-size:34px;}.space-a-title{font-size:28px;}.age-num{font-size:50px;}.count-num{font-size:52px;}.headline-en{font-size:21px;}}
+</style>
+</head>
+<body>
+<header class="header">
+  <div class="date-banner"><span class="icon">📅</span><span id="dateText">2026 年 6 月 15 日 · 周一</span></div>
+  <h1 class="title-zh">小小世界播报</h1>
+  <div class="title-en">Little World Daily</div>
+  <div class="subtitle">
+    <span class="badge gold">第 004 期</span>
+    <span class="badge">分级精读 · A2–B1</span>
+    <span style="font-family:'Fraunces',serif;font-style:italic;">动画播报 · 中英朗读跟随</span>
+  </div>
+</header>
+<div class="episode-meta">
+  <div class="meta-card">📰 <span class="val">2</span> stories</div>
+  <div class="meta-card">📖 <span class="val">40</span> 段精读</div>
+  <div class="meta-card">⏱ <span class="val">~18</span> min</div>
+  <div class="meta-card">🎬 <span class="val">8</span> scenes</div>
+</div>
+<div class="hero-play" onclick="togglePlay()">
+  <div class="play-icon" id="heroIcon">▶</div>
+  <div class="play-info">
+    <div class="label">▸ TODAY'S EPISODE</div>
+    <div class="ep-title">点我播放 · 一键听完今日全部</div>
+    <div class="ep-sub">画面跟着朗读自动滚动 · 英文一句中文一句</div>
+  </div>
+</div>
+
+<div class="opening" id="opening">
+  <div class="op-weather wx-rain" id="opWeather" aria-hidden="true"><div class="wx-sun"></div><div class="wx-cloud c1"></div><div class="wx-cloud c2"></div><div class="wx-drops"><i style="left:10%"></i><i style="left:19%;animation-delay:.4s"></i><i style="left:28%;animation-delay:.1s"></i><i style="left:37%;animation-delay:.6s"></i><i style="left:46%;animation-delay:.25s"></i><i style="left:55%;animation-delay:.7s"></i><i style="left:64%;animation-delay:.3s"></i><i style="left:73%;animation-delay:.55s"></i><i style="left:82%;animation-delay:.15s"></i><i style="left:91%;animation-delay:.65s"></i></div></div>
+  <div class="op-eyebrow">🌧️ GOOD MORNING · 今日天气开场</div>
+  <div class="op-seg en" data-lang="EN" id="op-en" onclick="jumpToOpening('en')"></div>
+  <div class="op-seg zh" data-lang="ZH" id="op-zh" onclick="jumpToOpening('zh')"></div>
+</div>
+
+<main class="stories" id="stories"></main>
+<div class="signoff">
+  <div class="ornament">✦ ✦ ✦</div>
+  <div class="message">That's all for today, little explorers. See you tomorrow!</div>
+  <div class="credit">小小世界播报 · 分级精读 · Made with ❤️</div>
+</div>
+<div class="player">
+  <div class="player-info">
+    <span class="now" id="nowPlaying">▸ READY TO PLAY</span>
+    <span class="count" id="counter">0 / 6</span>
+  </div>
+  <div class="player-controls">
+    <button class="pbtn" onclick="prevStory()">⏮</button>
+    <button class="pbtn" onclick="rewindSeg()">↺</button>
+    <button class="pbtn main" onclick="togglePlay()" id="playBtn">▶</button>
+    <button class="pbtn" onclick="nextSeg()">⇥</button>
+    <button class="pbtn" onclick="nextStory()">⏭</button>
+  </div>
+  <div class="progress"><div class="progress-fill" id="progressFill"></div></div>
+</div>
+
+<script>
+// ===== Opening (weather + date) =====
+const opening = {
+  en: "Good morning, Kenton and Eddey, and good morning to all our little explorers! Today is Monday, June fifteenth, and a brand new week is starting. Shanghai is still in the plum-rain season, so the morning is cloudy with a few light showers, and the air is warm and a little sticky, about twenty-six degrees. Please put a small umbrella in your bag, because the rain likes to come and go very quickly at this time of year. We have only two stories today, but they are big, deep ones, so get comfy and listen all the way to the end. First we fly into the world of clever computers, and then we blast off to a tiny rock in space. Are you ready? Let's explore the big world together!",
+  zh: "Kenton、Eddey，早上好，也祝所有小探险家们早上好！今天是 6 月 15 日，星期一，全新的一周开始啦。上海还在梅雨季节，早上多云，有几阵小雨，空气暖暖的、有点黏，气温大约 26 度。记得在书包里放一把小伞，因为这个季节的雨总是来得快、去得也快。今天我们只讲两条新闻，但都是又长又深的大新闻，所以坐舒服一点，一直听到最后哦。我们先飞进聪明电脑的世界，再发射到太空里一块小小的石头上。准备好了吗？我们一起去看看这个大世界吧！"
+};
+
+// ===== Story Data — 分级精读（每条约 20 句中英对照，2 条深度）=====
+const stories = [
+  {category:'TECH · 人工智能', catColor:'#00BCD4', sceneSetId:'tech', level:'A2·B1',
+   headlineEn:"One Billion People Now Chat With AI, and AI Is Learning to Do Real Jobs",
+   headlineZh:'AI 用户突破 10 亿，人工智能从"会聊天"走向"会干活"',
+   units:[
+     {scene:'a',segs:[
+       {en:"Good morning again, Kenton and Eddey. Our first story today is about something you have probably already heard your dad talk about: artificial intelligence, or AI for short.",zh:'Kenton、Eddey，再次早上好。今天第一条新闻，讲的是一件你们大概已经听爸爸聊过的事——人工智能，英文里简称 AI。'},
+       {en:"AI is a kind of computer program that can understand our words, answer our questions, and even write stories or solve problems for us.",zh:'AI 是一种电脑程序，它能听懂我们说的话，回答我们的问题，甚至能帮我们写故事、解难题。'},
+       {en:"The most famous AI helper is called ChatGPT, and this year it reached a huge milestone: more than one billion people use it every month.",zh:'最有名的 AI 助手叫 ChatGPT，今年它达到了一个巨大的里程碑：每个月有超过 10 亿人在使用它。'},
+       {en:"One billion is a number that is very hard to picture, so let's try together. It is one thousand millions, written as a one with nine zeros after it.",zh:'10 亿这个数字非常难想象，我们一起来试试看。它等于十个"一亿"，写出来就是 1 后面跟着 9 个 0。'},
+       {en:"Think of it this way, boys: out of every eight people on the whole Earth, about one of them now talks to this AI. That shows how fast it has spread around the world.",zh:'孩子们，可以这样想：地球上每 8 个人里，差不多就有 1 个人在用这个 AI。这说明它在全世界传播得有多快。'},
+     ]},
+     {scene:'b',segs:[
+       {en:"Now here is the big change happening in the year twenty twenty-six. Until recently, AI mostly just talked with us and gave us answers.",zh:'接下来要说的，是 2026 年正在发生的大变化。在不久之前，AI 大多只是和我们聊天、给我们答案。'},
+       {en:"But this year, AI is learning to actually do things, step by step, all on its own. People call this new kind of AI an agent.",zh:'但今年，AI 开始学着自己动手，一步一步把事情真正做完。人们把这种新的 AI 叫做"智能体"，英文是 agent。'},
+       {en:"Here is a way to understand the word agent. Imagine you ask a friend, please plan a birthday party for me.",zh:'我们来理解一下"智能体"这个词。想象你对一个朋友说：请帮我安排一场生日派对。'},
+       {en:"An old helper would only tell you how to do it. But an agent goes off and does the whole job: it makes a list, books the room, and orders the cake.",zh:'以前的助手只会告诉你"该怎么做"。而一个"智能体"会自己跑去把整件事做完：列清单、订房间、还会去订蛋糕。'},
+       {en:"So an agent is like a helper who not only answers your question, but actually gets up and finishes the task for you. This year, companies are using these agents to do research, write computer code, and help customers.",zh:'所以"智能体"就像一个帮手：它不只回答你的问题，还会真的起身，把任务替你做完。今年，很多公司就用这些"智能体"来做调研、写电脑代码、帮助顾客。'},
+     ]},
+     {scene:'c',segs:[
+       {en:"But wait, here is a very important lesson, and I want both of you to remember it. Even very clever AI can still make mistakes.",zh:'不过等一下，这里有一个非常重要的道理，我希望你们俩都记住：再聪明的 AI，也还是会犯错。'},
+       {en:"Scientists gave the top AI models a kind of attention test, a bit like the focus games you sometimes play in class.",zh:'科学家给最厉害的几个 AI 做了一种"注意力测试"，有点像你们有时在课堂上玩的专注力小游戏。'},
+       {en:"They found something surprising. When a task was short, the AI did well. But when the task grew long and tricky, the AI slowly lost focus and started making mistakes.",zh:'他们发现了一件意外的事：任务短的时候，AI 做得很好；可一旦任务变长、变难，AI 就会慢慢走神，开始出错。'},
+       {en:"That is actually a lot like us. When homework gets long, we get tired too, and we have to slow down and check our work.",zh:'这其实和我们很像。作业一长，我们也会累，所以要慢下来，仔细检查自己做的题。'},
+       {en:"So the smart rule is this: AI is a wonderful helper, but it is not always right. A clever person always checks what the AI says, instead of believing every word.",zh:'所以聪明的做法是：AI 是个很棒的帮手，但它并不总是对的。聪明的人会去核对 AI 说的话，而不是每个字都照单全收。'},
+     ]},
+     {scene:'a',segs:[
+       {en:"AI is not only good at chatting and homework. It can also help doctors save people, and that is the warmest part of today's story.",zh:'AI 不只擅长聊天和做作业，它还能帮医生救人——这是今天这条新闻里最暖心的部分。'},
+       {en:"In France, a small new company called Zenkolab built an AI that can carefully look at photos of the inside of the eye.",zh:'在法国，有一家叫 Zenkolab 的小公司，做出了一种 AI，它能仔细看清眼睛内部的照片。'},
+       {en:"By studying those eye pictures, the AI can spot tiny early signs of eye disease, often before a person even feels anything wrong.",zh:'通过研究这些眼睛照片，AI 能找出眼病非常早期的小小迹象，常常在人还没感觉到不舒服之前就发现了。'},
+       {en:"When a doctor catches a problem early, it is much easier to fix, so this clever AI helps doctors protect people's eyesight.",zh:'医生越早发现问题，就越容易治好，所以这个聪明的 AI 帮医生保护了人们的视力。'},
+       {en:"Your dad is learning about AI right now too. So here is a thought for you both: if AI can help doctors and help your dad, how might it help YOU learn, as long as you always check its work?",zh:'你们的爸爸现在也正在学习 AI。所以留给你们俩一个小问题：如果 AI 能帮医生、能帮爸爸，那么——只要你们记得核对它的答案——它又能怎样帮助你们学习呢？'},
+     ]},
+   ],
+   vocab:[{word:'artificial intelligence',pron:'/ˌɑːtɪˈfɪʃl ɪnˈtelɪdʒəns/',meaning:'人工智能'},{word:'billion',pron:'/ˈbɪljən/',meaning:'十亿'},{word:'agent',pron:'/ˈeɪdʒənt/',meaning:'智能体；代办者'},{word:'task',pron:'/tɑːsk/',meaning:'任务'},{word:'focus',pron:'/ˈfəʊkəs/',meaning:'专注'},{word:'check',pron:'/tʃek/',meaning:'检查；核对'}]},
+
+  {category:'SPACE · 太空探索', catColor:'#6A11CB', sceneSetId:'space', level:'A2·B1',
+   headlineEn:"China's Tianwen-2 Visits a Tiny Space Rock That May Be a Piece of the Moon",
+   headlineZh:'中国天问二号探访小行星卡莫奥阿莱瓦，它也许是月球碎片',
+   units:[
+     {scene:'a',segs:[
+       {en:"Buckle up, Kenton and Eddey, because our second story blasts off far away from Earth, all the way into deep space.",zh:'系好安全带，Kenton、Eddey，因为第二条新闻要发射到离地球很远很远的深空里去。'},
+       {en:"China has a space mission with a beautiful name, Tianwen-2. The word Tianwen means questions to the heavens.",zh:'中国有一项太空任务，名字很美，叫"天问二号"。"天问"的意思是"向天空发问"。'},
+       {en:"Right now, this brave little spacecraft is chasing a small space rock that has a long and unusual name: Kamoʻoalewa.",zh:'此刻，这艘勇敢的小飞船正在追赶一块小小的太空岩石，它有一个又长又特别的名字：卡莫奥阿莱瓦。'},
+       {en:"A space rock like this is called an asteroid. Asteroids are the leftover building blocks from when our solar system was first made.",zh:'像这样的太空岩石叫做"小行星"。小行星是太阳系刚刚形成时，剩下来的"积木块"。'},
+       {en:"This one is special because it travels around the Sun almost side by side with the Earth, like a quiet little friend walking next to us. Scientists call it a quasi-satellite.",zh:'这一颗很特别，因为它几乎和地球肩并肩地绕着太阳走，就像一个安静的小伙伴走在我们身旁。科学家叫它"准卫星"。'},
+     ]},
+     {scene:'b',segs:[
+       {en:"Now here comes the part that gives scientists goosebumps. They have an exciting guess about where this little rock came from.",zh:'下面要说的，是让科学家起鸡皮疙瘩的部分——他们对这块小石头的"老家"，有一个很激动人心的猜想。'},
+       {en:"They think Kamoʻoalewa might actually be a chip of our own Moon. Yes, boys, a real piece of the Moon, flying free in space!",zh:'他们认为，卡莫奥阿莱瓦也许真的是我们月亮的一块碎片。没错，孩子们，是月球真正的一小块，正在太空里自由地飞！'},
+       {en:"How could that happen? Long, long ago, something big may have crashed into the Moon and knocked a piece of it loose.",zh:'这怎么可能呢？在很久很久以前，也许有个大东西撞到了月亮，把它的一小块撞了下来。'},
+       {en:"That broken piece then went into its own orbit around the Sun, and after a very long journey, it became this near-Earth asteroid.",zh:'那块碎片后来进入了自己的轨道，绕着太阳转，经过非常漫长的旅程，就变成了这颗"近地小行星"。'},
+       {en:"To find out if the guess is right, Tianwen-2 will fly up close and study the rock with its cameras and special science tools.",zh:'为了弄清这个猜想对不对，天问二号会飞到它近旁，用相机和特别的科学仪器去研究这块石头。'},
+       {en:"But here is something important, Kenton and Eddey: some other scientists are not so sure, and they think the rock may instead come from the faraway asteroid belt, not the Moon. That is exactly why Tianwen-2 must go and look up close.",zh:'但有件重要的事要告诉你们，Kenton、Eddey：也有一些科学家并不那么确定，他们觉得这块石头也许来自更远的"小行星带"，而不是月亮。所以天问二号才更要亲自飞过去，看个明白。'},
+     ]},
+     {scene:'a',segs:[
+       {en:"And here is the most amazing plan of all. The spacecraft will try to grab a small sample, a little handful of the rock, and carry it all the way back to Earth.",zh:'而最了不起的计划是这样的：飞船会尝试"抓"一小份样本——一小把岩石，再把它一路带回地球。'},
+       {en:"Bringing a sample home is like opening a time capsule. The rock has not changed for billions of years, so it still holds very old secrets.",zh:'把样本带回家，就像打开一个"时间胶囊"。这块石头已经几十亿年没怎么变过，所以它还藏着非常古老的秘密。'},
+       {en:"By studying it in a lab on Earth, scientists hope to learn how the Moon and our whole solar system were born long ago.",zh:'科学家希望在地球的实验室里研究它，弄明白月亮和整个太阳系很久很久以前是怎么诞生的。'},
+       {en:"Studying asteroids is useful in another way too. Some asteroids fly close to Earth, so the more we know about them, the better we can keep our planet safe.",zh:'研究小行星还有一个用处：有些小行星会飞到地球附近，我们越了解它们，就越能保护我们的星球安全。'},
+       {en:"It is a slow journey, and it may take a few years for the sample to come home, so this is a story we will follow for a long time.",zh:'这是一段慢慢的旅程，样本回到地球可能要好几年，所以这条新闻，我们会关注很久很久。'},
+     ]},
+     {scene:'c',segs:[
+       {en:"So let's think about what this all means for us, here at home on a rainy Monday morning.",zh:'那么，在这个下着雨的星期一早上，我们一起想想，这一切对我们意味着什么。'},
+       {en:"Right now, far above the clouds, a Chinese spacecraft is quietly chasing a piece of the Moon through the dark and silent sky.",zh:'此时此刻，在云层之上很远的地方，一艘中国飞船正在又黑又静的天空里，悄悄追着一块月亮的碎片。'},
+       {en:"Every big discovery in space started the same way: with a curious person looking up and asking a simple question, why?",zh:'太空里的每一个大发现，都是从同一件事开始的：一个好奇的人抬头看天，问出一个简单的问题——为什么呢？'},
+       {en:"Kenton and Eddey, when this sample finally reaches Earth, you will be a little older. Maybe one of you will be the scientist who studies it.",zh:'Kenton、Eddey，当这份样本最终回到地球时，你们已经长大一些了。也许研究它的科学家，就是你们其中的一个呢。'},
+       {en:"So keep wondering, keep asking questions, and keep looking up. That is all for today, little explorers. See you tomorrow!",zh:'所以，保持好奇，多问问题，常常抬头看天。今天的新闻就到这里啦，小探险家们，我们明天见！'},
+     ]},
+   ],
+   vocab:[{word:'asteroid',pron:'/ˈæstərɔɪd/',meaning:'小行星'},{word:'spacecraft',pron:'/ˈspeɪskrɑːft/',meaning:'宇宙飞船'},{word:'sample',pron:'/ˈsɑːmpl/',meaning:'样本'},{word:'orbit',pron:'/ˈɔːbɪt/',meaning:'轨道；环绕'},{word:'solar system',pron:'/ˈsəʊlə ˈsɪstəm/',meaning:'太阳系'},{word:'curious',pron:'/ˈkjʊəriəs/',meaning:'好奇的'}]},
+];
+
+// Fixed date for this dated edition (2026-06-15, Monday)
+document.getElementById('dateText').textContent = '2026 年 6 月 15 日 · 周一';
+document.getElementById('op-en').textContent = opening.en;
+document.getElementById('op-zh').textContent = opening.zh;
+</script>
+
+<script>
+// ===== Number-to-English-words preprocessor =====
+function numbersToEnglishWords(text){
+  const ones=['zero','one','two','three','four','five','six','seven','eight','nine','ten','eleven','twelve','thirteen','fourteen','fifteen','sixteen','seventeen','eighteen','nineteen'];
+  const tens=['','','twenty','thirty','forty','fifty','sixty','seventy','eighty','ninety'];
+  const ordinalMap={'1st':'first','2nd':'second','3rd':'third','4th':'fourth','5th':'fifth','6th':'sixth','7th':'seventh','8th':'eighth','9th':'ninth','10th':'tenth','11th':'eleventh','12th':'twelfth','13th':'thirteenth','16th':'sixteenth','21st':'twenty-first','23rd':'twenty-third','24th':'twenty-fourth'};
+  function intToWords(n){
+    n=parseInt(n,10);
+    if(isNaN(n)) return '';
+    if(n<20) return ones[n];
+    if(n<100){const t=Math.floor(n/10),o=n%10;return tens[t]+(o?'-'+ones[o]:'');}
+    if(n<1000){const h=Math.floor(n/100),r=n%100;return ones[h]+' hundred'+(r?' '+intToWords(r):'');}
+    if(n<1000000){const th=Math.floor(n/1000),r=n%1000;return intToWords(th)+' thousand'+(r?' '+intToWords(r):'');}
+    if(n<1000000000){const m=Math.floor(n/1000000),r=n%1000000;return intToWords(m)+' million'+(r?' '+intToWords(r):'');}
+    const b=Math.floor(n/1000000000),r=n%1000000000;return intToWords(b)+' billion'+(r?' '+intToWords(r):'');
+  }
+  function yearToWords(y){
+    y=parseInt(y,10);
+    if(y>=2000&&y<=2099){const r=y-2000;if(r===0)return 'two thousand';if(r<10)return 'two thousand '+ones[r];return 'twenty '+intToWords(r);}
+    if(y>=1000&&y<=1999){const hi=Math.floor(y/100),lo=y%100;if(lo===0)return intToWords(hi)+' hundred';return intToWords(hi)+' '+(lo<10?'oh '+ones[lo]:intToWords(lo));}
+    return intToWords(y);
+  }
+  text=text.replace(/\b(\d+(?:st|nd|rd|th))\b/gi,(m)=>ordinalMap[m.toLowerCase()]||m);
+  text=text.replace(/\b(\d+)\.(\d+)\b/g,(m,a,b)=>intToWords(a)+' point '+b.split('').map(d=>ones[parseInt(d,10)]).join(' '));
+  text=text.replace(/\b(1\d{3}|20\d{2})\b/g,(m,y)=>yearToWords(y));
+  text=text.replace(/\b(\d{1,3}(?:,\d{3})+)\b/g,(m)=>intToWords(m.replace(/,/g,'')));
+  text=text.replace(/\b(\d+)\b/g,(m)=>intToWords(m));
+  return text;
+}
+</script>
+
+<script>
+// ===== Scene templates =====
+function sceneSpace(L){
+  if(L==='a') return `<div class="stars-tiny"></div><div class="space-a-title">BLAST OFF!<small>JOURNEY TO SPACE</small></div><div class="rocket-flying"><svg viewBox="0 0 50 110"><ellipse cx="25" cy="108" rx="16" ry="2.5" fill="rgba(0,0,0,0.4)"/><path d="M 25 4 L 15 28 L 15 76 L 35 76 L 35 28 Z" fill="#fff" stroke="#1A0E08" stroke-width="2"/><path d="M 25 4 L 18 22 L 32 22 Z" fill="#DE2910" stroke="#1A0E08" stroke-width="1.5"/><circle cx="25" cy="42" r="4" fill="#4FC3F7" stroke="#1A0E08" stroke-width="1.2"/><path d="M 15 62 L 7 84 L 15 80 Z" fill="#DE2910" stroke="#1A0E08" stroke-width="1.5"/><path d="M 35 62 L 43 84 L 35 80 Z" fill="#DE2910" stroke="#1A0E08" stroke-width="1.5"/><rect x="17" y="68" width="16" height="8" fill="#DE2910"/><text x="25" y="74" text-anchor="middle" font-family="Bangers" font-size="5" fill="#FFDE00">CHINA</text></svg><div class="rocket-trail"></div></div><div class="cn-flag">★</div><div class="earth-bottom"></div>`;
+  if(L==='b') return `<div class="stars-tiny"></div><div class="year-badge"><div class="big">★</div><div class="small">FAR FROM EARTH</div></div><div class="station"><svg viewBox="0 0 220 120" width="200"><rect x="80" y="48" width="60" height="24" rx="6" fill="#E0E0E0" stroke="#1A0E08" stroke-width="2.5"/><circle cx="110" cy="60" r="6" fill="#4FC3F7" stroke="#1A0E08" stroke-width="1.5"/><rect x="10" y="54" width="64" height="12" fill="#1565C0" stroke="#1A0E08" stroke-width="2"/><rect x="146" y="54" width="64" height="12" fill="#1565C0" stroke="#1A0E08" stroke-width="2"/><line x1="74" y1="60" x2="80" y2="60" stroke="#1A0E08" stroke-width="3"/><line x1="140" y1="60" x2="146" y2="60" stroke="#1A0E08" stroke-width="3"/><rect x="100" y="30" width="20" height="20" rx="4" fill="#DE2910" stroke="#1A0E08" stroke-width="2"/><text x="110" y="44" text-anchor="middle" font-family="Bangers" font-size="9" fill="#FFDE00">天宫</text></svg></div>`;
+  return `<div class="stars-tiny"></div><div class="celebration-stars cs1">★</div><div class="celebration-stars cs2">✦</div><div class="celebration-stars cs3">★</div><div class="celebration-stars cs4">✦</div><div class="destination-board"><div class="next-stop">SAMPLE RETURN</div><div class="destination"><span>SPACE</span> SCIENCE</div></div><div class="moon-base"><svg viewBox="0 0 240 110" width="230"><ellipse cx="120" cy="100" rx="90" ry="8" fill="rgba(0,0,0,0.3)"/><g transform="translate(90,30)"><circle cx="30" cy="40" r="22" fill="#fff" stroke="#1A0E08" stroke-width="2.5"/><rect x="20" y="22" width="20" height="10" rx="4" fill="#FFE066" stroke="#1A0E08" stroke-width="2"/><rect x="14" y="20" width="32" height="6" rx="3" fill="#DE2910"/><circle cx="24" cy="40" r="3" fill="#1A0E08"/><circle cx="36" cy="40" r="3" fill="#1A0E08"/><path d="M 24 48 Q 30 52 36 48" stroke="#1A0E08" stroke-width="2" fill="none"/></g></svg></div>`;
+}
+
+function sceneMoon(L){
+  if(L==='a') return `<div class="stars-tiny"></div><div class="big-moon"></div><div class="planet-dot pl-venus"></div><div class="planet-label" style="top:26%;left:20%;">Venus</div><div class="planet-dot pl-jup"></div><div class="planet-label" style="top:38%;left:45%;">Jupiter</div><div class="planet-dot pl-merc"></div><div class="planet-label" style="top:50%;left:67%;">Mercury</div><div class="moon-a-title">NIGHT SKY<small>LOOK UP</small></div>`;
+  if(L==='b') return `<div class="stars-tiny"></div><div class="count-burst"><div class="burst-bg"></div><div class="count-num">★</div><div class="count-label">NIGHT SKY</div></div>`;
+  return `<div class="stars-tiny"></div><div class="crescent"></div><div class="planet-dot pl-venus" style="top:46%;left:30%;"></div><div class="planet-dot pl-jup" style="top:52%;left:55%;"></div><div class="destination-board"><div class="next-stop">STARGAZING</div><div class="destination">LOOK <span>UP!</span></div></div>`;
+}
+
+
+function sceneOcean(L){
+  if(L==='a') return `<div class="light-ray lr1"></div><div class="light-ray lr2"></div><div class="light-ray lr3"></div><div class="bubble" style="width:10px;height:10px;left:20%;bottom:5%;"></div><div class="bubble" style="width:14px;height:14px;left:45%;bottom:10%;animation-delay:1.5s;"></div><div class="bubble" style="width:8px;height:8px;left:70%;bottom:0;animation-delay:.8s;"></div><div class="bubble" style="width:12px;height:12px;left:85%;bottom:8%;animation-delay:2.2s;"></div><div class="ocean-a-title">OCEAN<small>UNDER THE SEA</small></div><div class="octo"><svg viewBox="0 0 130 130"><ellipse cx="65" cy="126" rx="42" ry="4" fill="rgba(0,0,0,0.25)"/><ellipse cx="65" cy="50" rx="38" ry="36" fill="#5C6BC0" stroke="#283593" stroke-width="3"/><ellipse class="eye" cx="50" cy="46" rx="6" ry="7" fill="#fff"/><circle cx="51" cy="47" r="3" fill="#1A0E08"/><ellipse class="eye" cx="80" cy="46" rx="6" ry="7" fill="#fff"/><circle cx="81" cy="47" r="3" fill="#1A0E08"/><path d="M 56 62 Q 65 68 74 62" stroke="#283593" stroke-width="2.5" fill="none"/><path d="M 35 78 Q 25 100 30 118 Q 33 108 40 100 Z" fill="#5C6BC0" stroke="#283593" stroke-width="2.5"/><path d="M 50 84 Q 44 108 48 122 Q 52 110 56 100 Z" fill="#5C6BC0" stroke="#283593" stroke-width="2.5"/><path d="M 65 86 Q 65 110 65 124 Q 68 112 70 100 Z" fill="#5C6BC0" stroke="#283593" stroke-width="2.5"/><path d="M 80 84 Q 86 108 82 122 Q 78 110 74 100 Z" fill="#5C6BC0" stroke="#283593" stroke-width="2.5"/><path d="M 95 78 Q 105 100 100 118 Q 97 108 90 100 Z" fill="#5C6BC0" stroke="#283593" stroke-width="2.5"/></svg></div>`;
+  if(L==='b') return `<div class="depth-ruler"><div class="dmark"></div><div class="dmark"></div><div class="dmark"></div><div class="dmark"></div><div class="dmark"></div><div class="dmark"></div></div><div class="depth-tag">DEEP SEA</div><div class="golf-compare"><div class="golf-ball"></div><div class="golf-label">AMAZING</div></div><div class="octo-small"><svg viewBox="0 0 90 90"><ellipse cx="45" cy="50" rx="26" ry="24" fill="#5C6BC0" stroke="#283593" stroke-width="2.5"/><ellipse class="eye" cx="35" cy="46" rx="4" ry="5" fill="#fff"/><circle cx="36" cy="47" r="2" fill="#1A0E08"/><ellipse class="eye" cx="55" cy="46" rx="4" ry="5" fill="#fff"/><circle cx="56" cy="47" r="2" fill="#1A0E08"/><path d="M 39 58 Q 45 62 51 58" stroke="#283593" stroke-width="2" fill="none"/><path d="M 26 68 Q 20 82 24 88" stroke="#283593" stroke-width="3" fill="none" stroke-linecap="round"/><path d="M 38 72 Q 36 84 38 88" stroke="#283593" stroke-width="3" fill="none" stroke-linecap="round"/><path d="M 52 72 Q 54 84 52 88" stroke="#283593" stroke-width="3" fill="none" stroke-linecap="round"/><path d="M 64 68 Q 70 82 66 88" stroke="#283593" stroke-width="3" fill="none" stroke-linecap="round"/></svg></div>`;
+  return `<div class="bubble" style="width:12px;height:12px;left:25%;bottom:5%;"></div><div class="bubble" style="width:9px;height:9px;left:60%;bottom:0;animation-delay:1.2s;"></div><div class="heart-float h1">💙</div><div class="heart-float h2">💙</div><div class="heart-float h3">💙</div><div class="new-species-tag"><div class="small">SCIENTISTS SAY</div><div class="big">WOW! ✨</div></div><div class="octo-happy"><svg viewBox="0 0 150 130"><ellipse cx="75" cy="126" rx="48" ry="4" fill="rgba(0,0,0,0.2)"/><ellipse cx="75" cy="52" rx="44" ry="40" fill="#5C6BC0" stroke="#283593" stroke-width="3"/><ellipse class="eye" cx="58" cy="46" rx="7" ry="8" fill="#fff"/><circle cx="60" cy="48" r="3.5" fill="#1A0E08"/><ellipse class="eye" cx="92" cy="46" rx="7" ry="8" fill="#fff"/><circle cx="94" cy="48" r="3.5" fill="#1A0E08"/><path d="M 62 66 Q 75 76 88 66" stroke="#283593" stroke-width="3" fill="none"/><circle cx="48" cy="60" r="5" fill="#FF8AAB" opacity="0.5"/><circle cx="102" cy="60" r="5" fill="#FF8AAB" opacity="0.5"/><path d="M 40 84 Q 28 108 34 122 Q 38 110 46 102 Z" fill="#5C6BC0" stroke="#283593" stroke-width="2.5"/><path d="M 58 90 Q 52 114 56 126 Q 60 112 64 102 Z" fill="#5C6BC0" stroke="#283593" stroke-width="2.5"/><path d="M 75 92 Q 75 116 75 128 Q 78 114 80 102 Z" fill="#5C6BC0" stroke="#283593" stroke-width="2.5"/><path d="M 92 90 Q 98 114 94 126 Q 90 112 86 102 Z" fill="#5C6BC0" stroke="#283593" stroke-width="2.5"/><path d="M 110 84 Q 122 108 116 122 Q 112 110 104 102 Z" fill="#5C6BC0" stroke="#283593" stroke-width="2.5"/></svg></div>`;
+}
+
+function sceneTech(L){
+  if(L==='a') return `<div class="grid-floor"></div><div class="heart-pulse">💗</div><div class="tech-a-title">HELLO, AI!<small>SMART HELPERS</small></div><div class="robot-an"><svg viewBox="0 0 130 150"><ellipse cx="65" cy="146" rx="44" ry="4" fill="rgba(0,0,0,0.3)"/><rect x="35" y="60" width="60" height="56" rx="14" fill="#E0F7FA" stroke="#006064" stroke-width="3"/><rect x="40" y="30" width="50" height="40" rx="16" fill="#fff" stroke="#006064" stroke-width="3"/><circle cx="55" cy="50" r="6" fill="#00BCD4" stroke="#006064" stroke-width="2"/><circle cx="75" cy="50" r="6" fill="#00BCD4" stroke="#006064" stroke-width="2"/><circle cx="55" cy="49" r="2" fill="#fff"/><circle cx="75" cy="49" r="2" fill="#fff"/><path d="M 56 60 Q 65 66 74 60" stroke="#006064" stroke-width="2.5" fill="none"/><line x1="65" y1="20" x2="65" y2="30" stroke="#006064" stroke-width="3"/><circle cx="65" cy="17" r="4" fill="#FFE066" stroke="#006064" stroke-width="2"/><rect x="20" y="68" width="14" height="34" rx="6" fill="#B2EBF2" stroke="#006064" stroke-width="2.5"/><rect x="96" y="68" width="14" height="34" rx="6" fill="#B2EBF2" stroke="#006064" stroke-width="2.5"/><rect x="48" y="84" width="34" height="20" rx="4" fill="#00BCD4" opacity="0.3"/><path d="M 58 90 L 65 98 L 72 88" stroke="#006064" stroke-width="2" fill="none"/></svg></div>`;
+  if(L==='b') return `<div class="sensor-ring sr1"></div><div class="sensor-ring sr2"></div><div class="sensor-ring sr3"></div><div class="emo-icons"><span>🤖</span><span>💬</span><span>✨</span></div><div class="robot-face"><svg viewBox="0 0 120 120"><rect x="20" y="25" width="80" height="70" rx="22" fill="#fff" stroke="#006064" stroke-width="3.5"/><circle cx="45" cy="55" r="9" fill="#00BCD4" stroke="#006064" stroke-width="2.5"/><circle cx="75" cy="55" r="9" fill="#00BCD4" stroke="#006064" stroke-width="2.5"/><circle cx="46" cy="53" r="3" fill="#fff"/><circle cx="76" cy="53" r="3" fill="#fff"/><path d="M 45 75 Q 60 86 75 75" stroke="#006064" stroke-width="3" fill="none" stroke-linecap="round"/><line x1="60" y1="10" x2="60" y2="25" stroke="#006064" stroke-width="3"/><circle cx="60" cy="7" r="5" fill="#FFE066" stroke="#006064" stroke-width="2"/></svg></div>`;
+  return `<div class="ces-badge">AI · 2026</div><div class="award-display"><div class="award-trophy">🌍</div><div class="award-label">1 BILLION USERS</div></div>`;
+}
+
+function sceneKid(L){
+  if(L==='a') return `<div class="paint-splat" style="width:40px;height:40px;background:#FF6B6B;top:18%;left:12%;"></div><div class="paint-splat" style="width:34px;height:34px;background:#4FC3F7;top:30%;right:14%;animation-delay:.6s;"></div><div class="paint-splat" style="width:30px;height:30px;background:#FFE066;bottom:24%;left:18%;animation-delay:1.2s;"></div><div class="paint-splat" style="width:28px;height:28px;background:#66BB6A;bottom:30%;right:20%;animation-delay:.3s;"></div><div class="kid-a-title">YOUNG STARS<small>AMAZING KIDS</small></div><div class="easel"><svg viewBox="0 0 160 150"><ellipse cx="80" cy="146" rx="60" ry="4" fill="rgba(0,0,0,0.2)"/><line x1="40" y1="40" x2="30" y2="140" stroke="#8D6E63" stroke-width="6" stroke-linecap="round"/><line x1="120" y1="40" x2="130" y2="140" stroke="#8D6E63" stroke-width="6" stroke-linecap="round"/><line x1="80" y1="60" x2="80" y2="145" stroke="#8D6E63" stroke-width="6" stroke-linecap="round"/><rect x="38" y="35" width="84" height="70" rx="4" fill="#fff" stroke="#6A1B9A" stroke-width="4"/><circle cx="62" cy="60" r="12" fill="#FF6B6B"/><path d="M 88 50 Q 105 60 95 85 L 78 85 Q 80 65 88 50 Z" fill="#4FC3F7"/><path d="M 50 80 L 70 88 L 60 95 Z" fill="#FFE066"/><circle cx="100" cy="72" r="8" fill="#66BB6A"/></svg></div>`;
+  if(L==='b') return `<div class="age-burst"><div class="burst-bg"></div><div class="age-num">★</div><div class="age-label">SO YOUNG!</div></div>`;
+  return `<div class="gallery-frame gf1"><svg viewBox="0 0 70 80" width="100%" height="100%"><rect width="70" height="80" fill="#FFF9C4"/><circle cx="30" cy="35" r="14" fill="#FF6B6B"/><path d="M 45 20 L 60 60 L 30 60 Z" fill="#4FC3F7"/></svg></div><div class="gallery-frame gf2"><svg viewBox="0 0 64 74" width="100%" height="100%"><rect width="64" height="74" fill="#E1F5FE"/><circle cx="32" cy="37" r="18" fill="#FFE066"/><path d="M 10 60 Q 32 40 54 60" stroke="#66BB6A" stroke-width="5" fill="none"/></svg></div><div class="gallery-frame gf3"><svg viewBox="0 0 60 70" width="100%" height="100%"><rect width="60" height="70" fill="#F3E5F5"/><rect x="14" y="20" width="32" height="32" fill="#FF8A65"/><circle cx="30" cy="36" r="8" fill="#4FC3F7"/></svg></div><div class="kid-c-title">YOUNG STARS<small>START AT ANY AGE</small></div>`;
+}
+
+function sceneSports(L){
+  if(L==='a') return `<div class="sports-cloud" style="width:54px;height:20px;top:16%;left:12%;"></div><div class="sports-cloud" style="width:40px;height:16px;top:24%;right:14%;"></div><div class="sports-field"></div><div class="sports-a-title">SPORTS<small>GO GO GO</small></div><div class="hopper"><svg viewBox="0 0 96 120"><ellipse cx="48" cy="116" rx="20" ry="4" fill="rgba(0,0,0,0.2)"/><circle cx="48" cy="26" r="16" fill="#FFD9A8" stroke="#1A0E08" stroke-width="3"/><path d="M 33 19 Q 35 4 48 4 Q 61 4 63 19 Q 56 12 48 12 Q 40 12 33 19 Z" fill="#5D3A1A"/><circle cx="42" cy="26" r="2.5" fill="#1A0E08"/><circle cx="54" cy="26" r="2.5" fill="#1A0E08"/><path d="M 42 33 Q 48 39 54 33" stroke="#1A0E08" stroke-width="2" fill="none" stroke-linecap="round"/><rect x="38" y="42" width="20" height="34" rx="8" fill="#FF6B35" stroke="#1A0E08" stroke-width="3"/><path d="M 40 46 L 22 26" stroke="#FF6B35" stroke-width="7" stroke-linecap="round"/><path d="M 56 46 L 74 26" stroke="#FF6B35" stroke-width="7" stroke-linecap="round"/><circle cx="20" cy="24" r="4" fill="#FFD9A8" stroke="#1A0E08" stroke-width="2"/><circle cx="76" cy="24" r="4" fill="#FFD9A8" stroke="#1A0E08" stroke-width="2"/><path d="M 44 76 L 42 100" stroke="#3A6EA5" stroke-width="8" stroke-linecap="round"/><path d="M 54 76 L 62 92" stroke="#3A6EA5" stroke-width="8" stroke-linecap="round"/><ellipse cx="40" cy="104" rx="8" ry="4" fill="#fff" stroke="#1A0E08" stroke-width="2"/></svg></div>`;
+  if(L==='b') return `<div class="count-burst"><div class="burst-bg"></div><div class="count-num">★</div><div class="count-label">GREAT EFFORT</div></div>`;
+  return `<div class="award-display"><div class="award-trophy">🏅</div><div class="award-label">ANYTHING IS POSSIBLE</div></div>`;
+}
+
+const sceneMap = {space:sceneSpace, moon:sceneMoon, sports:sceneSports, ocean:sceneOcean, tech:sceneTech, kid:sceneKid};
+const sceneClassMap = {space:'space', moon:'moon', sports:'sports', ocean:'ocean', tech:'tech', kid:'kid'};
+</script>
+
+<script>
+// ===== Render =====
+const storiesEl = document.getElementById('stories');
+stories.forEach((s, i) => {
+  const sceneFn = sceneMap[s.sceneSetId];
+  const setId = sceneClassMap[s.sceneSetId];
+  let unitsHtml = '';
+  s.units.forEach((unit, j) => {
+    const sceneInner = sceneFn(unit.scene);
+    let segsHtml = '';
+    unit.segs.forEach((p, k) => {
+      segsHtml += `<div class="segment en" data-lang="EN" id="seg-${i}-${j}-${k}-en" onclick="jumpToSeg(${i},${j},${k},'en')">${p.en}</div><div class="segment zh" data-lang="ZH" id="seg-${i}-${j}-${k}-zh" onclick="jumpToSeg(${i},${j},${k},'zh')">${p.zh}</div>`;
+    });
+    unitsHtml += `<div class="scene-unit" data-story="${i}" data-unit="${j}"><div class="stage"><div class="scene ${setId}-${unit.scene}">${sceneInner}</div></div><div class="scene-content">${segsHtml}</div></div>`;
+  });
+  const vocabHtml = s.vocab.map((v, k) =>
+    `<div class="vocab-item" onclick="speakVocab(this, ${i}, ${k})"><div class="speaker">🔊</div><div class="word">${v.word}</div><div class="pron">${v.pron}</div><div class="meaning">${v.meaning}</div></div>`
+  ).join('');
+  storiesEl.innerHTML += `<article class="story" data-story-idx="${i}"><div class="story-header"><div class="story-cat"><span class="dot" style="background:${s.catColor};"></span>${s.category}</div><span class="story-level">📖 LEVEL ${s.level}</span><h2 class="headline-en">${s.headlineEn}</h2><div class="headline-zh">${s.headlineZh}</div><div class="story-num">${i + 1}</div></div>${unitsHtml}<div class="vocab"><div class="vocab-title">Key Words · 点击单词朗读</div>${vocabHtml}</div></article>`;
+});
+
+// ===== Flat segment list (opening + stories) =====
+const allSegments = [];
+allSegments.push({type:'opening', lang:'en', text:opening.en, id:'op-en'});
+allSegments.push({type:'opening', lang:'zh', text:opening.zh, id:'op-zh'});
+stories.forEach((s, si) => {
+  s.units.forEach((u, ui) => {
+    u.segs.forEach((p, ki) => {
+      allSegments.push({type:'story', storyIdx:si, unitIdx:ui, segIdx:ki, lang:'en', text:p.en, id:`seg-${si}-${ui}-${ki}-en`});
+      allSegments.push({type:'story', storyIdx:si, unitIdx:ui, segIdx:ki, lang:'zh', text:p.zh, id:`seg-${si}-${ui}-${ki}-zh`});
+    });
+  });
+});
+
+let curSegIdx = 0, playing = false, cnVoice = null, enVoice = null;
+
+function loadVoices() {
+  const voices = window.speechSynthesis.getVoices();
+  const zh = voices.filter(v => v.lang && v.lang.toLowerCase().startsWith('zh'));
+  const en = voices.filter(v => v.lang && v.lang.toLowerCase().startsWith('en'));
+  const pick = (list, names) => { for (const n of names){ const hit = list.find(v => v.name && v.name.toLowerCase().includes(n)); if (hit) return hit; } return null; };
+  // 优先挑设备上最自然/神经网络语音，其次在线语音，最后任意中文/英文
+  cnVoice = pick(zh, ['natural','xiaoxiao','xiaoyi','yunxi','yunyang','google 普通话','google','tingting','mei-jia','huihui']) || zh.find(v => !v.localService) || zh[0] || null;
+  enVoice = pick(en, ['natural','aria','jenny','guy','google us','google uk','samantha','karen','daniel']) || en.find(v => !v.localService) || en[0] || null;
+}
+window.speechSynthesis.onvoiceschanged = loadVoices;
+loadVoices();
+
+// 预合成神经语音目录（每日任务设为 audio/news_YYYYMMDD/；为空则纯浏览器TTS）
+const AUDIO_DIR = "audio/news_20260615/";
+let bcAudio = null;       // 单个复用音频元素：首次点击时被手势解锁，之后每段复用（移动端浏览器更兼容）
+let audioToken = 0;       // 打断/超时保护：自增令牌让过期回调失效
+// 必须与 gen_audio.py 的 fnv() 一致：对 (lang+"|"+text) 的 UTF-8 字节做 FNV-1a
+function audioHash(s){const b=new TextEncoder().encode(s);let x=0x811c9dc5>>>0;for(let i=0;i<b.length;i++){x^=b[i];x=Math.imul(x,0x01000193)>>>0;}return ('0000000'+x.toString(16)).slice(-8);}
+function haltSpeech(){var ss=window.speechSynthesis;ss.cancel();audioToken++;if(bcAudio){try{bcAudio.pause();}catch(e){}}}
+function ttsSpeak(text, lang, onEnd) {
+  const speakText = (lang === 'en') ? numbersToEnglishWords(text) : text;
+  const u = new SpeechSynthesisUtterance(speakText);
+  u.lang = lang === 'en' ? 'en-US' : 'zh-CN';
+  u.rate = lang === 'en' ? 0.85 : 1.15;
+  u.pitch = 1.0;
+  if (lang === 'en' && enVoice) u.voice = enVoice;
+  if (lang === 'zh' && cnVoice) u.voice = cnVoice;
+  if (onEnd) { u.onend = onEnd; u.onerror = onEnd; }
+  window.speechSynthesis.speak(u);
+}
+function speakOnce(text, lang, onEnd) {
+  audioToken++;
+  const myToken = audioToken;
+  if (typeof AUDIO_DIR === 'string' && AUDIO_DIR) {
+    if (!bcAudio) { bcAudio = new Audio(); bcAudio.setAttribute('playsinline',''); bcAudio.preload = 'auto'; try{ document.body.appendChild(bcAudio); }catch(e){} }
+    const a = bcAudio;
+    let done = false;
+    const stale = () => done || myToken !== audioToken;
+    const fb = () => { if(stale()) return; done = true; ttsSpeak(text, lang, onEnd); };
+    a.onended = () => { if(stale()) return; done = true; if(onEnd) onEnd(); };
+    a.onerror = fb;
+    try { a.pause(); } catch(e){}
+    a.src = AUDIO_DIR + audioHash(lang + "|" + text) + ".mp3";
+    try { a.currentTime = 0; } catch(e){}
+    const p = a.play();
+    if (p && typeof p.catch === 'function') p.catch(fb);
+    return;
+  }
+  ttsSpeak(text, lang, onEnd);
+}
+
+function clearHighlights(){
+  document.querySelectorAll('.segment,.op-seg').forEach(el => el.classList.remove('active'));
+  document.querySelectorAll('.scene-unit').forEach(el => el.classList.remove('playing'));
+  document.querySelectorAll('.story').forEach(el => el.classList.remove('playing'));
+}
+function highlightSeg(idx) {
+  clearHighlights();
+  if (idx >= allSegments.length) return;
+  const s = allSegments[idx];
+  const segEl = document.getElementById(s.id);
+  if (segEl) {
+    segEl.classList.add('active');
+    const unit = segEl.closest('.scene-unit'); if (unit) unit.classList.add('playing');
+    const story = segEl.closest('.story'); if (story) story.classList.add('playing');
+    const rect = segEl.getBoundingClientRect();
+    const targetY = window.scrollY + rect.top - window.innerHeight / 2 + rect.height / 2;
+    window.scrollTo({top: targetY, behavior: 'smooth'});
+  }
+}
+function updateUI() {
+  if (allSegments.length === 0) return;
+  const s = allSegments[Math.min(curSegIdx, allSegments.length-1)];
+  let label, count;
+  if (s.type === 'opening') { label = '今日天气 · 开场'; count = `开场 / ${stories.length}`; }
+  else { label = stories[s.storyIdx].headlineZh; count = `${s.storyIdx + 1} / ${stories.length}`; }
+  document.getElementById('counter').textContent = count;
+  document.getElementById('progressFill').style.width = (curSegIdx / allSegments.length * 100) + '%';
+  document.getElementById('nowPlaying').textContent = `${playing?'🎙️ PLAYING':'⏸ PAUSED'} · ${label}`;
+  const icon = playing ? '⏸' : '▶';
+  document.getElementById('playBtn').textContent = icon;
+  document.getElementById('heroIcon').textContent = icon;
+}
+function playCurrent() {
+  if (curSegIdx >= allSegments.length) { finish(); return; }
+  const s = allSegments[curSegIdx];
+  highlightSeg(curSegIdx);
+  updateUI();
+  speakOnce(s.text, s.lang, () => { if (playing) { curSegIdx++; setTimeout(playCurrent, 360); } });
+}
+function togglePlay() {
+  if (playing) { playing = false; haltSpeech(); updateUI(); }
+  else { if (curSegIdx >= allSegments.length) curSegIdx = 0; playing = true; updateUI(); playCurrent(); }
+}
+function nextSeg() {
+  haltSpeech();
+  curSegIdx = Math.min(curSegIdx + 1, allSegments.length - 1);
+  if (playing) playCurrent(); else { highlightSeg(curSegIdx); updateUI(); }
+}
+function rewindSeg() { haltSpeech(); if (playing) playCurrent(); else highlightSeg(curSegIdx); }
+function nextStory() {
+  haltSpeech();
+  const cur = allSegments[curSegIdx];
+  const curStory = cur.type === 'opening' ? -1 : cur.storyIdx;
+  const next = allSegments.findIndex(s => s.type === 'story' && s.storyIdx > curStory);
+  curSegIdx = next === -1 ? allSegments.length - 1 : next;
+  if (playing) playCurrent(); else { highlightSeg(curSegIdx); updateUI(); }
+}
+function prevStory() {
+  haltSpeech();
+  const cur = allSegments[curSegIdx];
+  const curStory = cur.type === 'opening' ? 0 : cur.storyIdx;
+  let prev = 0;
+  for (let i = allSegments.length - 1; i >= 0; i--) {
+    if (allSegments[i].type === 'story' && allSegments[i].storyIdx < curStory) { prev = i; break; }
+  }
+  while (prev > 0 && allSegments[prev-1].type === 'story' && allSegments[prev].type === 'story' && allSegments[prev-1].storyIdx === allSegments[prev].storyIdx) prev--;
+  curSegIdx = prev;
+  if (playing) playCurrent(); else { highlightSeg(curSegIdx); updateUI(); }
+}
+function jumpToSeg(si, ui, ki, lang) {
+  haltSpeech();
+  curSegIdx = allSegments.findIndex(s => s.type==='story' && s.storyIdx === si && s.unitIdx === ui && s.segIdx === ki && s.lang === lang);
+  if (curSegIdx < 0) curSegIdx = 0;
+  playing = false;
+  highlightSeg(curSegIdx); updateUI();
+}
+function jumpToOpening(lang) {
+  haltSpeech();
+  curSegIdx = allSegments.findIndex(s => s.type==='opening' && s.lang === lang);
+  if (curSegIdx < 0) curSegIdx = 0;
+  playing = false;
+  highlightSeg(curSegIdx); updateUI();
+}
+function finish() {
+  playing = false; curSegIdx = 0;
+  document.getElementById('nowPlaying').textContent = '✨ 今天的新闻听完啦! 明天见!';
+  document.getElementById('progressFill').style.width = '100%';
+  clearHighlights();
+  document.getElementById('playBtn').textContent = '▶';
+  document.getElementById('heroIcon').textContent = '▶';
+  setTimeout(() => document.querySelector('.signoff').scrollIntoView({behavior:'smooth'}), 500);
+}
+function speakVocab(el, si, vi) {
+  haltSpeech();
+  document.querySelectorAll('.vocab-item').forEach(e => e.classList.remove('speaking'));
+  el.classList.add('speaking');
+  const v = stories[si].vocab[vi];
+  speakOnce(v.word, 'en', () => { setTimeout(() => speakOnce(v.word, 'en', () => { setTimeout(() => speakOnce(v.meaning, 'zh', () => el.classList.remove('speaking')), 300); }), 400); });
+}
+updateUI();
+</script>
+</body>
+</html>

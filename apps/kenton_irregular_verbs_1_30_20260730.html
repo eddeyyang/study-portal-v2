@@ -1,0 +1,421 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#fff7f0">
+  <meta name="study-portal-design" content="2.0">
+  <meta name="lesson-audio" content="pending">
+  <title>不规则动词 1—30 · 三态变身轨道</title>
+  <script src="../assets/learning-sync.js"></script>
+  <style>
+    :root{
+      --ink:#153b46;--muted:#5e7580;--cyan:#087f8c;--cyan-dark:#075c68;--cyan-soft:#e3fbff;
+      --gold:#f3b93c;--gold-soft:#fff4cb;--paper:#fff;--wash:#f4fbfc;--line:#cce2e6;
+      --ok:#13765f;--ok-soft:#e4f7ef;--bad:#aa3c4f;--bad-soft:#fff0f3;
+      --shadow:0 16px 44px rgba(15,75,88,.12);--press:0 3px 0 rgba(9,79,91,.24);--tap:48px
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;min-height:100vh;color:var(--ink);font-family:ui-rounded,"PingFang SC","Microsoft YaHei",system-ui,sans-serif;background:
+      radial-gradient(circle at 92% 2%,rgba(243,185,60,.22),transparent 26rem),linear-gradient(180deg,#effbfc,#fffdf5 58%,#f1fafb);overscroll-behavior-y:contain}
+    button,input{font:inherit}button{touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+    .btn,.round-btn,.hub,.back,.chip,.home-card,.verb-chip,.field-check,.audio-mini,.primary-launch,.group-chip,.voice-play,.tool-btn{min-height:var(--tap)}
+    button:focus-visible,a:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+    button:disabled{opacity:.48;cursor:not-allowed;box-shadow:none}
+    .wrap{width:min(760px,100%);margin:auto;padding:18px clamp(14px,4vw,38px) 110px}
+    .topbar{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:14px}
+    .brand{display:flex;align-items:center;gap:10px;font-weight:800}.brand-mark{display:grid;place-items:center;width:42px;height:42px;border-radius:14px;background:var(--cyan);color:#fff;box-shadow:var(--press)}
+    .brand-mark svg,.icon svg{width:24px;height:24px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+    .top-actions{display:flex;align-items:center;gap:8px}.round-btn,.hub,.back{min-width:46px;min-height:46px;border:1px solid var(--line);background:#fff;color:var(--ink);border-radius:14px;display:inline-grid;place-items:center;text-decoration:none;font-weight:800;padding:9px 13px}.round-btn{padding:0;cursor:pointer}
+    .hero{position:relative;overflow:hidden;border-radius:26px;background:linear-gradient(135deg,#073b48,#087f8c 64%,#12a3aa);color:#fff;padding:clamp(25px,6vw,52px);box-shadow:var(--shadow)}
+    .hero-grid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(260px,.85fr);gap:28px;align-items:center}
+    .eyebrow,.pill{display:inline-flex;align-items:center;gap:7px;border-radius:999px;padding:7px 12px;background:var(--cyan-soft);color:var(--cyan-dark);font-size:13px;font-weight:800}.hero .eyebrow{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.2);color:#fff}
+    h1{font-size:clamp(28px,7vw,44px);line-height:1.05;letter-spacing:-.045em;margin:14px 0 12px}.hero p{font-size:clamp(16px,2vw,20px);line-height:1.72;color:#d8f5f6;margin:0;max-width:690px}
+    .hero-cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}.hero-track{border:1px solid rgba(255,255,255,.25);background:rgba(255,255,255,.11);border-radius:22px;padding:18px;backdrop-filter:blur(7px)}
+    .hero-word{font-size:28px;font-weight:800}.hero-forms{display:flex;gap:7px;align-items:center;margin-top:12px}.hero-form{flex:1;border-radius:12px;background:rgba(255,255,255,.14);padding:10px 7px;text-align:center;font-size:14px;font-weight:800}.hero-arrow{color:#8ee4df;font-weight:800}
+    .route-line{display:flex;gap:7px;align-items:center;flex-wrap:wrap;margin-top:14px;color:#d4f3f4;font-size:12px;font-weight:800}.route-line b{display:grid;place-items:center;width:24px;height:24px;border-radius:50%;background:rgba(255,255,255,.16)}
+    .source,.audio-state{margin:14px 0;border:1px solid var(--line);border-radius:15px;background:#fff;padding:13px 15px;line-height:1.65;color:var(--muted);font-size:13px}.source{border-left:5px solid var(--cyan)}.audio-state{display:flex;align-items:center;gap:10px;background:#fffaf0;border-color:#eed99a}.audio-state .dot{width:10px;height:10px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 4px rgba(243,185,60,.16)}
+    .progress,.panel{margin:15px 0;background:#fff;border:1px solid var(--line);border-radius:24px;padding:clamp(17px,4vw,29px);box-shadow:var(--shadow)}
+    .metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:9px}.metric{text-align:center;border-radius:14px;background:var(--wash);padding:10px}.metric strong{display:block;color:var(--cyan);font-size:24px}.metric span{font-size:12px;color:var(--muted)}
+    .bar{height:10px;border-radius:999px;background:#dcecef;overflow:hidden;margin-top:13px}.bar i{display:block;height:100%;border-radius:inherit;background:linear-gradient(90deg,var(--cyan),#35c0b6);transition:width .25s}
+    .section-title{margin:24px 2px 12px}.section-title h2{font-size:25px;margin:0}.section-title p{margin:4px 0 0;color:var(--muted)}
+    .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.home-card{position:relative;text-align:left;border:1px solid var(--line);border-radius:22px;background:#fff;padding:20px;color:var(--ink);cursor:pointer;box-shadow:0 8px 23px rgba(15,75,88,.07);transition:transform .16s,border-color .16s}.home-card:hover{border-color:#7dc1c7}.home-card:active,.btn:active,.round-btn:active{transform:translateY(2px);box-shadow:none}.home-card.primary{background:linear-gradient(145deg,#e3fbff,#fff);border-color:#78c6ce}.home-card.done:after{content:"已完成";position:absolute;top:15px;right:15px;border-radius:999px;padding:5px 9px;background:var(--ok-soft);color:var(--ok);font-size:12px;font-weight:800}.home-card .kicker{font-size:12px;color:var(--cyan);font-weight:800}.home-card h3{font-size:21px;margin:12px 0 7px}.home-card p{line-height:1.65;margin:0;color:var(--muted)}
+    .icon{display:grid;place-items:center;width:45px;height:45px;border-radius:15px;background:var(--cyan-soft);color:var(--cyan);margin-top:12px}
+    .page-head{display:flex;align-items:center;gap:12px;margin:8px 0 16px}.page-head .back{width:46px;padding:0;cursor:pointer}.page-head h1{font-size:clamp(28px,5vw,44px);margin:0}.page-head p{margin:3px 0 0;color:var(--muted)}.panel h2{font-size:clamp(23px,4vw,35px);margin:12px 0 8px}.panel p{line-height:1.72;color:var(--muted)}
+    .range-tabs,.family-tabs{display:flex;gap:8px;flex-wrap:wrap;margin:13px 0}.chip{min-height:44px;border:1px solid var(--line);border-radius:999px;background:#fff;padding:8px 13px;color:var(--ink);font-weight:800;cursor:pointer}.chip.on{background:var(--cyan);border-color:var(--cyan);color:#fff}
+    .track-card{position:relative;overflow:hidden;border:2px solid #b9dce1;border-radius:25px;background:linear-gradient(145deg,#fff,#f1fbfc);padding:clamp(20px,5vw,36px);min-height:390px}.track-card:after{content:attr(data-no);position:absolute;right:10px;top:-34px;color:rgba(8,127,140,.055);font-size:150px;font-weight:800;pointer-events:none}
+    .word{font-size:clamp(45px,10vw,80px);line-height:1;font-weight:800;letter-spacing:-.045em;color:var(--cyan)}.ipa{font:700 17px/1.5 ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--muted);margin:10px 0}.meaning{font-size:22px;font-weight:800}
+    .audio-track{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:8px;align-items:stretch;margin:22px 0}.station{position:relative;min-width:0;border:2px solid var(--line);border-radius:17px;background:#fff;padding:14px 8px;text-align:center;transition:.18s}.station span{display:block;color:var(--muted);font-size:11px}.station strong{display:block;margin-top:7px;color:var(--cyan-dark);font-size:clamp(16px,3vw,22px);overflow-wrap:anywhere}.station.playing{background:var(--gold-soft);border-color:var(--gold);transform:translateY(-3px);box-shadow:0 7px 0 rgba(209,158,34,.22)}.track-arrow{align-self:center;color:var(--cyan);font-size:22px;font-weight:800}
+    .tip{border-radius:16px;background:var(--gold-soft);border:1px solid #e8cf77;padding:14px 16px;line-height:1.7}.cover{display:grid;place-items:center;min-height:150px;border:2px dashed #7bbac1;border-radius:18px;background:var(--wash);text-align:center;padding:18px;margin:17px 0}.cover strong{font-size:22px}.cover small{display:block;color:var(--muted);margin-top:7px}
+    .btn-row{display:flex;gap:9px;justify-content:flex-end;flex-wrap:wrap;margin-top:18px}.btn{min-height:48px;border:0;border-radius:14px;padding:12px 18px;background:#e9f4f5;color:var(--ink);font-weight:800;cursor:pointer;box-shadow:var(--press)}.btn.primary{background:var(--cyan);color:#fff}.btn.gold{background:var(--gold);color:#423000;box-shadow:0 3px 0 #c6931d}.btn.danger{background:var(--bad-soft);color:var(--bad);border:1px solid #efbdc6;box-shadow:none}.btn.wide{flex:1}
+    .family-board{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.family-lane{border:1px solid var(--line);border-radius:18px;background:var(--wash);padding:15px}.family-lane h3{margin:0;color:var(--cyan-dark)}.family-lane p{margin:5px 0 10px;font-size:13px}.verb-chips{display:flex;gap:7px;flex-wrap:wrap}.verb-chip{min-height:42px;border:1px solid var(--line);border-radius:11px;background:#fff;color:var(--ink);padding:8px 10px;font-weight:800;cursor:pointer}
+    .deck-nav{display:grid;grid-template-columns:repeat(6,1fr);gap:7px;margin:14px 0}.deck-nav button{min-height:48px;border:1px solid var(--line);border-radius:12px;background:var(--wash);color:var(--muted);font-size:12px;font-weight:800}.deck-nav button.on{background:var(--cyan);color:#fff}.deck-nav button.done{border-color:#6fc0ad;color:var(--ok)}
+    .forms{display:grid;grid-template-columns:repeat(4,1fr);gap:9px;margin:17px 0}.form{min-width:0;border:1px solid var(--line);border-radius:15px;background:#fff;padding:12px 8px;text-align:center}.form span{display:block;color:var(--muted);font-size:11px}.form strong{display:block;color:var(--cyan-dark);margin-top:6px;overflow-wrap:anywhere}
+    .paper-fields{display:grid;grid-template-columns:repeat(5,1fr);gap:9px;margin:17px 0}.paper-field{min-height:88px;border:2px dashed #b8d0d4;border-radius:14px;background:#fff;padding:10px;text-align:center}.paper-field span{display:block;color:var(--muted);font-size:11px}.paper-field strong{display:block;margin-top:12px;color:var(--cyan-dark);overflow-wrap:anywhere}.field-checks{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}.field-check{min-height:48px;border:1px solid var(--line);border-radius:12px;background:var(--ok-soft);color:var(--ok);font-size:12px;font-weight:800;cursor:pointer}.field-check.wrong{background:var(--bad-soft);color:var(--bad);border-color:#e5aeb8}
+    .table-wrap{overflow:auto;border:1px solid var(--line);border-radius:17px;margin-top:14px}table{width:100%;border-collapse:collapse;background:#fff}th,td{padding:11px 9px;border-bottom:1px solid #e7f0f2;text-align:left;overflow-wrap:anywhere}th{position:sticky;top:0;background:#e8f7f8;color:var(--cyan-dark);font-size:12px;z-index:1}td:first-child{color:var(--cyan);font-weight:800}td:nth-child(2){font-weight:800}.audio-mini{width:42px;height:42px;border:0;border-radius:13px;background:var(--cyan-soft);color:var(--cyan);font-weight:800;cursor:pointer}
+    .wrong-list{display:grid;gap:10px}.wrong-item{border:1px solid var(--line);border-radius:15px;padding:14px;display:flex;justify-content:space-between;gap:12px}.wrong-item strong{display:block}.status{white-space:nowrap;border-radius:999px;padding:5px 9px;font-size:12px;font-weight:800}.status.open{background:var(--bad-soft);color:var(--bad)}.status.solved{background:var(--ok-soft);color:var(--ok)}
+    .empty{text-align:center;padding:24px}.empty strong{display:block;color:var(--cyan);font-size:30px}.privacy{text-align:center;color:var(--muted);font-size:12px}
+    .toast{position:fixed;left:50%;bottom:84px;transform:translate(-50%,24px);opacity:0;pointer-events:none;background:#153b46;color:#fff;border-radius:999px;padding:11px 17px;font-weight:800;z-index:80;transition:.2s}.toast.show{opacity:1;transform:translate(-50%,0)}
+    @media(max-width:760px){
+      .hero-grid,.grid,.family-board{grid-template-columns:1fr}.hero-track{display:none}.metrics{grid-template-columns:repeat(2,1fr)}.audio-track{grid-template-columns:1fr}.track-arrow{transform:rotate(90deg);text-align:center}.forms{grid-template-columns:repeat(2,1fr)}.deck-nav{grid-template-columns:repeat(3,1fr)}
+      .paper-fields,.field-checks{grid-template-columns:repeat(2,1fr)}.paper-field:last-child,.field-check:last-child{grid-column:1/-1}.topbar{align-items:flex-start}.hub{font-size:13px}.hero{border-radius:23px}.wrong-item{flex-direction:column}
+      .table-wrap{border:0;overflow:visible}table,tbody{display:block}thead{display:none}tr{display:grid;grid-template-columns:42px minmax(0,1fr) 48px;gap:0 8px;border:1px solid var(--line);border-radius:15px;margin:9px 0;padding:9px;background:#fff}td{border:0;padding:7px 5px}td:first-child{grid-column:1;grid-row:1}td:nth-child(2){grid-column:2;grid-row:1}td:nth-child(8){grid-column:3;grid-row:1;padding:3px}td:nth-child(n+3):nth-child(-n+7){grid-column:1/-1;display:flex;justify-content:space-between;gap:12px;border-top:1px dashed #dce9ec}td:nth-child(n+3):nth-child(-n+7):before{content:attr(data-label);font-size:11px;color:var(--muted);font-weight:700}
+    }
+    @media(max-width:390px){.wrap{padding-left:12px;padding-right:12px}.metric strong{font-size:20px}.top-actions{gap:5px}.hub{padding:8px 9px}}
+    /* 3.0 preview: return to the warm, tactile Study Portal language. */
+    :root{
+      --ink:#3a2e3f;--muted:#756978;--cyan:#36c5d6;--cyan-dark:#177c8d;--cyan-soft:#e3fbff;
+      --gold:#ffd166;--gold-soft:#fff7d7;--pink:#ff9ec4;--pink-soft:#fff0f6;
+      --green:#8ce99a;--ok:#267a48;--ok-soft:#effcf1;--bad:#b1465a;--bad-soft:#fff0f3;
+      --paper:#fffdf9;--wash:#fff7f0;--line:#eadde5;--shadow:0 8px 22px rgba(120,90,140,.14);--press:0 5px 0 #238f9d
+    }
+    body{background:radial-gradient(circle at 12% 4%,rgba(255,209,102,.3),transparent 18rem),radial-gradient(circle at 94% 15%,rgba(255,158,196,.18),transparent 18rem),var(--wash)}
+    .wrap{width:min(680px,100%);padding:16px 14px 100px}.brand{font-size:14px}.brand-mark{border-radius:15px;background:var(--cyan);box-shadow:0 4px 0 #218e9c}
+    .round-btn,.hub,.back{border-color:var(--line);background:var(--paper);border-radius:15px;color:var(--ink);box-shadow:0 3px 0 #e1d2db}
+    .lesson-intro{position:relative;overflow:hidden;border:2px solid #f0dfe7;border-radius:26px;background:rgba(255,253,249,.94);padding:22px 18px 18px;box-shadow:var(--shadow)}
+    .lesson-intro:before,.lesson-intro:after{content:"";position:absolute;border-radius:50%;pointer-events:none}.lesson-intro:before{width:130px;height:130px;right:-50px;top:-55px;background:rgba(54,197,214,.14)}.lesson-intro:after{width:86px;height:86px;left:-42px;bottom:80px;background:rgba(255,158,196,.13)}
+    .lesson-kicker,.pill{position:relative;z-index:1;background:var(--cyan-soft);color:var(--cyan-dark);font-size:12px;padding:7px 11px}
+    .lesson-intro h1{position:relative;z-index:1;margin:12px 0 8px;font-size:clamp(23px,7vw,39px);line-height:1.12;letter-spacing:-.035em;white-space:nowrap}.lesson-intro h1 span{color:var(--cyan-dark)}
+    .lesson-intro>p{position:relative;z-index:1;margin:0;color:var(--muted);font-size:15px;line-height:1.7}
+    .verb-stage{position:relative;z-index:1;margin:18px 0 16px;padding:17px 12px 18px;border:2px dashed #d7c8d1;border-radius:23px;background:#fff9ee}
+    .verb-ticket{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:17px}.verb-ticket strong{font-size:30px;color:var(--cyan-dark)}.verb-ticket span{border-radius:999px;background:var(--pink-soft);color:#8e4768;padding:7px 10px;font-size:12px;font-weight:800}
+    .preview-track{position:relative;display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:7px;align-items:center}.preview-track:before{content:"";position:absolute;left:9%;right:9%;top:50%;height:7px;border-radius:999px;background:#eadde5;transform:translateY(-50%);z-index:0}
+    .preview-station{position:relative;z-index:1;min-width:0;border:2px solid #e4d5dd;border-radius:17px;background:#fff;padding:12px 5px;text-align:center;box-shadow:0 4px 0 #eadce4}.preview-station:nth-of-type(2){background:var(--gold-soft);border-color:var(--gold)}.preview-station:nth-of-type(3){background:var(--cyan-soft);border-color:var(--cyan)}.preview-station small{display:block;color:var(--muted);font-size:10px}.preview-station b{display:block;margin-top:5px;font-size:15px;overflow-wrap:anywhere}.preview-arrow{position:relative;z-index:2;color:var(--cyan-dark);font-weight:800}
+    .primary-launch{position:relative;z-index:1;width:100%;min-height:56px;border:0;border-radius:17px;background:var(--cyan);color:#103e46;font-weight:800;font-size:18px;box-shadow:var(--press);cursor:pointer}
+    .primary-launch:active,.btn:active,.round-btn:active,.tool-btn:active,.group-chip:active{transform:translateY(3px);box-shadow:none}
+    .group-picker{position:relative;z-index:1;display:grid;grid-template-columns:repeat(6,1fr);gap:6px;margin-top:14px}.group-chip{min-height:44px;border:1px solid var(--line);border-radius:13px;background:#fff;color:var(--ink);font-size:11px;font-weight:800;box-shadow:0 3px 0 #eadce4;cursor:pointer}.group-chip:first-child{background:var(--gold-soft);border-color:var(--gold)}
+    .voice-note{display:flex;gap:10px;align-items:flex-start;margin:13px 0;border:1px solid #efd59c;border-radius:16px;background:var(--gold-soft);padding:12px 14px;color:#715a23;font-size:13px;line-height:1.55}.voice-note i{flex:0 0 auto;display:grid;place-items:center;width:30px;height:30px;border-radius:11px;background:var(--gold);color:#66501e;font-style:normal;font-size:12px;font-weight:800;box-shadow:0 3px 0 #d8a941}.voice-note>span{min-width:0;flex:1}.voice-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:9px}.voice-play{min-height:44px;border:1px solid #dab951;border-radius:13px;background:#fff;color:#6a531c;padding:9px 13px;font-weight:800;cursor:pointer;box-shadow:0 3px 0 rgba(188,145,31,.2)}.voice-play:active{transform:translateY(2px);box-shadow:none}
+    .daily-note{margin:9px 0 0;color:var(--muted);font-size:12px;text-align:center}
+    .quick-tools{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:14px 0}.tool-btn{min-height:78px;border:1px solid var(--line);border-radius:18px;background:var(--paper);color:var(--ink);padding:9px 5px;font-weight:800;cursor:pointer;box-shadow:0 4px 0 #eadce4}.tool-btn .tool-icon{display:grid;place-items:center;width:31px;height:31px;margin:0 auto 5px;border-radius:11px;background:var(--pink-soft);color:#9d4a70}.tool-btn .tool-icon svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}.tool-btn small{display:block;color:var(--muted);font-size:10px}
+    details.source{margin-top:14px;border:1px solid var(--line);border-radius:15px;background:rgba(255,255,255,.66);color:var(--muted);font-size:12px;line-height:1.65;padding:10px 13px}.source summary{cursor:pointer;font-weight:800;color:var(--ink)}
+    .progress,.panel{background:var(--paper);border-color:var(--line);border-radius:24px;box-shadow:var(--shadow)}.metric{background:#fff8f4}.metric strong{color:var(--cyan-dark)}.bar{background:#efe4ea}.bar i{background:linear-gradient(90deg,var(--cyan),var(--pink))}
+    .page-head h1{font-size:clamp(25px,6vw,34px);line-height:1.15}.page-head p{font-size:13px}.panel h2{font-size:clamp(22px,5vw,30px)}
+    .chip{border-color:var(--line);border-radius:14px;box-shadow:0 3px 0 #eadce4}.chip.on{background:var(--cyan);border-color:var(--cyan);color:#16434a}
+    .track-card{border:2px dashed #d7c8d1;border-radius:24px;background:#fff9ee;min-height:360px}.track-card:after{color:rgba(177,145,165,.08)}.word{color:var(--cyan-dark);font-size:clamp(40px,10vw,64px)}.audio-track{position:relative}.station{border-color:#e4d5dd;border-radius:17px;box-shadow:0 4px 0 #eadce4}.station strong{color:var(--cyan-dark)}.station.playing{background:var(--gold-soft);border-color:var(--gold);box-shadow:0 5px 0 #d9ad46}.tip{background:var(--gold-soft);border-color:#ead17b}.cover{border-color:#d2b9c8;background:#fff8f4}
+    .btn{background:#f3eaf0;color:var(--ink);box-shadow:0 4px 0 #ded0d9}.btn.primary{background:var(--cyan);color:#16434a;box-shadow:0 4px 0 #238f9d}.btn.gold{background:var(--gold);color:#4f3d15;box-shadow:0 4px 0 #d7aa40}
+    .family-lane{border-color:var(--line);background:#fff8f4}.family-lane h3{color:var(--cyan-dark)}.verb-chip{min-height:44px;border-color:var(--line);box-shadow:0 3px 0 #eadce4}.deck-nav button{border-color:var(--line);background:#fff8f4}.deck-nav button.on{background:var(--cyan);color:#16434a}.form,.paper-field{border-color:#e4d5dd}.form strong,.paper-field strong{color:var(--cyan-dark)}th{background:var(--cyan-soft);color:var(--cyan-dark)}td:first-child{color:var(--cyan-dark)}.audio-mini{width:44px;height:44px;background:var(--cyan-soft);color:var(--cyan-dark)}
+    .toast{background:var(--ink);bottom:70px;font-size:13px;max-width:90%;text-align:center}
+    @media(max-width:560px){.quick-tools{grid-template-columns:repeat(2,1fr)}.preview-track{gap:4px}.group-picker{grid-template-columns:repeat(3,1fr)}}
+    @media(max-width:390px){.wrap{padding-left:11px;padding-right:11px}.hub{font-size:12px;padding:8px}.brand{font-size:13px}.brand>span:last-child{white-space:nowrap}.preview-station b{font-size:13px}}
+    @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
+  </style>
+</head>
+<body data-child="kenton">
+  <main class="wrap">
+    <div class="topbar">
+      <div class="brand"><span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 12h4l2-5 4 10 2-5h4"/><path d="M4 20h16M4 4h16"/></svg></span><span>Kenton · 动词变身站</span></div>
+      <div class="top-actions"><button class="round-btn" id="soundToggle" type="button" aria-label="关闭点击音">声</button><button class="round-btn" type="button" onclick="go('records')" aria-label="学习记录">记</button><a class="hub" href="summer_english_hub.html?who=kenton">回学习馆</a></div>
+    </div>
+    <div id="app"></div>
+  </main>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script>
+  (() => {
+    'use strict';
+    const APP_ID='kenton-irregular-verbs-1-30-20260730';
+    const VERSION='2.0.0';
+    const STORAGE_KEY='study:kenton:kenton-irregular-verbs-1-30-20260730:v1';
+    const MATERIAL='《136个常用英语不规则动词变化表》1—30（逐行核对原表）';
+    const AUDIO_DIR='audio/kenton_irregular_verbs_1_30_20260730';
+    const LESSON_BLUEPRINT=Object.freeze({
+      appId:APP_ID,
+      child:'kenton',
+      source:MATERIAL,
+      courseDate:'2026-07-30',
+      currentGap:'暂时不能独立、稳定地说出并写出不规则动词 1—30 的三态',
+      observableOutcome:'能按五个一组独立说出三态，并在纸笔默写后定位具体错栏',
+      knowledgeMechanism:'动词沿原形、过去式、过去分词三站变化，并按共同变化规律组成家族',
+      primaryInteraction:'三态同步轨道、遮挡回忆与逐栏纸笔核对',
+      audio:'pending',
+      surprise:'动词经过三站时对应词形依次点亮',
+      surpriseTrigger:'点击播放或遮挡后核对三态',
+      phases:['teach','guided','recall','independent','repair','transfer']
+    });
+    const DAILY_SURPRISES=Object.freeze([
+      '先猜一个动词会不会回到原形，再送它上轨道。',
+      '今天找一组后两态完全一样的双胞胎。',
+      '完成一组后，闭眼把最难的三态再说一遍。'
+    ]);
+    function dailySurpriseKey(){
+      const date=new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Shanghai',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date());
+      return`${APP_ID}|kenton|${date}`;
+    }
+    function dailySurprise(){
+      let hash=0;
+      for(const char of dailySurpriseKey())hash=(hash*31+char.charCodeAt(0))>>>0;
+      return DAILY_SURPRISES[hash%DAILY_SURPRISES.length];
+    }
+    const verbs=[
+      v(1,'be (is, am, are)','/biː/','is','being','was/were','been','是','special','be 有两副过去式面孔：单数常用 was，复数和 you 常用 were。'),
+      v(2,'bear','/beə(r)/','bears','bearing','bore','born','出生，忍受','en','bear—bore—born：o 变长，最后穿 n。'),
+      v(3,'beat','/biːt/','beats','beating','beat','beaten','（心）跳动，打','en','过去式不变 beat，过去分词加 -en：beaten。'),
+      v(4,'become','/bɪˈkʌm/','becomes','becoming','became','become','变为','aba','become—became—become：第三态回到原形。'),
+      v(5,'begin','/bɪˈɡɪn/','begins','beginning','began','begun','开始','vowel','i—a—u 三拍：begin—began—begun。'),
+      v(6,'bend','/bend/','bends','bending','bent','bent','弯曲','abb','结尾 d 变 t，后两项相同。'),
+      v(7,'bite','/baɪt/','bites','biting','bit','bit','咬','abb','按老师原表记：bite—bit—bit。'),
+      v(8,'bleed','/bliːd/','bleeds','bleeding','bled','bled','流血','abb','长 ee 缩短：bleed—bled—bled。'),
+      v(9,'blow','/bləʊ/','blows','blowing','blew','blown','吹，刮风','en','ow—ew—own：blow—blew—blown。'),
+      v(10,'break','/breɪk/','breaks','breaking','broke','broken','打破','en','ea 变 o，最后加 n：break—broke—broken。'),
+      v(11,'bring','/brɪŋ/','brings','bringing','brought','brought','带来','abb','bring—brought—brought，后两项双胞胎。'),
+      v(12,'build','/bɪld/','builds','building','built','built','建筑，建设','abb','结尾 d 变 t：build—built—built。'),
+      v(13,'burn','/bɜːn/','burns','burning','burnt/burned','burnt/burned','燃烧','variant','原表保留两种：burnt / burned；主背左边，也认得右边。'),
+      v(14,'burst','/bɜːst/','bursts','bursting','burst','burst','爆发','same','三态原地不动：burst—burst—burst。'),
+      v(15,'buy','/baɪ/','buys','buying','bought','bought','买','abb','buy—bought—bought，和 bring 的 -ought 家族一起记。'),
+      v(16,'can','/kæn/','/','/','could','/','能','modal','情态搭档 can—could；原表三单、现在分词、过去分词为 /。'),
+      v(17,'cast','/kɑːst/','casts','casting','cast','cast','投，抛','same','三态不变：cast—cast—cast。'),
+      v(18,'catch','/kætʃ/','catches','catching','caught','caught','捉，抓','abb','catch—caught—caught，后两项双胞胎。'),
+      v(19,'choose','/tʃuːz/','chooses','choosing','chose','chosen','选择','en','choose—chose—chosen：最后加 n。'),
+      v(20,'come','/kʌm/','comes','coming','came','come','来','aba','come—came—come：第三态回到原形。'),
+      v(21,'cost','/kɒst/','costs','costing','cost','cost','价值，花费','same','三态不变：cost—cost—cost。'),
+      v(22,'cut','/kʌt/','cuts','cutting','cut','cut','割，切','same','三态不变；现在分词要双写 t：cutting。'),
+      v(23,'deal','/diːl/','deals','dealing','dealt','dealt','对付，对待','abb','deal—dealt—dealt，后两项双胞胎。'),
+      v(24,'dig','/dɪɡ/','digs','digging','dug','dug','挖，掘','abb','i 变 u：dig—dug—dug；现在分词双写 g。'),
+      v(25,'do','/duː/','does','doing','did','done','做','special','do—did—done，三项各不相同。'),
+      v(26,'draw','/drɔː/','draws','drawing','drew','drawn','画画，拉','en','aw—ew—awn：draw—drew—drawn。'),
+      v(27,'dream','/driːm/','dreams','dreaming','dreamed/dreamt','dreamed/dreamt','做梦','variant','原表保留 dreamed / dreamt；先背左边，也认得右边。'),
+      v(28,'drink','/drɪŋk/','drinks','drinking','drank','drunk','喝','vowel','i—a—u 三拍：drink—drank—drunk。'),
+      v(29,'drive','/draɪv/','drives','driving','drove','driven','驾驶，驱赶','en','drive—drove—driven：最后穿 -en。'),
+      v(30,'eat','/iːt/','eats','eating','ate','eaten','吃','en','eat—ate—eaten：最后穿 -en。')
+    ];
+    function v(n,base,ipa,third,ing,past,pp,zh,fam,tip){return{n,base,ipa,third,ing,past,pp,zh,fam,tip}}
+    const families={
+      same:['AAA 原地不动','burst / cast / cost / cut','过去式和过去分词都不变。'],
+      abb:['ABB 后两项双胞胎','bend / bleed / bring / build / buy / catch / deal / dig','过去式 = 过去分词。'],
+      aba:['ABA 第三态回家','become / come','过去分词回到原形。'],
+      vowel:['元音节奏队','begin / drink','跟着 i—a—u 的口腔节奏记。'],
+      en:['完成态穿 n / en','bear / beat / blow / break / choose / draw / drive / eat','过去分词常出现 n / en。'],
+      variant:['斜杠双写法','burn / dream','老师原表里的两种写法都保留。'],
+      special:['特别路线','be / do','不能只套一种字母变化规律。'],
+      modal:['情态搭档','can → could','can 不按普通五栏硬填。']
+    };
+    const defaultState=()=>({schema:2,child:'Kenton',appId:APP_ID,version:VERSION,createdAt:new Date().toISOString(),lastOpened:new Date().toISOString(),totalMs:0,modules:{},attempts:[],seen:{},stats:{},wrongbook:{},sessions:0});
+    let state=load(),route='home',trackNo=1,trackCovered=false,playingStation=-1,currentAudio=null,audioBroken=false,
+      familyFilter='all',recallQueue=[],recallPos=0,recallRevealed=false,recallRetry=false,
+      dictQueue=[],dictPos=0,dictRevealed=false,dictWrong=new Set(),dictRetry=false,started=Date.now(),toastTimer,
+      soundOn=localStorage.getItem('study:kenton:ui-sound')!=='0',audioContext=null;
+
+    function load(){
+      try{
+        const old=JSON.parse(localStorage.getItem(STORAGE_KEY)||'null');
+        if(old&&old.child==='Kenton')return{...defaultState(),...old,schema:2,version:VERSION,modules:old.modules||{},attempts:old.attempts||[],seen:old.seen||{},stats:old.stats||{},wrongbook:old.wrongbook||{}};
+      }catch(_){}
+      return defaultState();
+    }
+    function save(){state.lastOpened=new Date().toISOString();localStorage.setItem(STORAGE_KEY,JSON.stringify(state))}
+    function tick(){const now=Date.now();state.totalMs+=now-started;started=now;save()}setInterval(tick,30000);addEventListener('beforeunload',tick);
+    function esc(value){return String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+    function tone(kind='tap'){
+      if(!soundOn)return;
+      try{
+        if(!audioContext)audioContext=new (window.AudioContext||window.webkitAudioContext)();
+        if(audioContext.state==='suspended')audioContext.resume();
+        const now=audioContext.currentTime,notes=kind==='ok'?[[523,0],[659,.08]]:kind==='bad'?[[196,0],[165,.12]]:[[340,0]];
+        notes.forEach(([hz,delay])=>{const osc=audioContext.createOscillator(),gain=audioContext.createGain();osc.type=kind==='bad'?'triangle':'sine';osc.frequency.value=hz;gain.gain.setValueAtTime(.0001,now+delay);gain.gain.exponentialRampToValueAtTime(kind==='tap'?.035:.075,now+delay+.015);gain.gain.exponentialRampToValueAtTime(.0001,now+delay+.13);osc.connect(gain);gain.connect(audioContext.destination);osc.start(now+delay);osc.stop(now+delay+.15)});
+      }catch(_){}
+    }
+    function toast(message){const el=document.getElementById('toast');el.textContent=message;el.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>el.classList.remove('show'),2200)}
+    function stopVoice(){
+      if(currentAudio){
+        currentAudio.pause();
+        currentAudio.currentTime=0;
+        currentAudio=null
+      }
+      playingStation=-1
+    }
+    function audioFile(verb){
+      const base=verb.base.split(' ')[0].replace(/[^a-z]/gi,'').toLowerCase();
+      return`${AUDIO_DIR}/${String(verb.n).padStart(2,'0')}-${base}.mp3`
+    }
+    function playVerb(n,showTrack=true){
+      const verb=verbs.find(x=>x.n===n);if(!verb)return;
+      stopVoice();
+      const audio=new Audio(audioFile(verb));
+      audio.preload='auto';
+      audio.playsInline=true;
+      currentAudio=audio;
+      audio.ontimeupdate=()=>{
+        if(!showTrack||!audio.duration)return;
+        const count=verb.n===16?2:3;
+        const next=Math.min(count-1,Math.floor(audio.currentTime/(audio.duration/count)));
+        if(next!==playingStation){
+          playingStation=next;
+          document.querySelectorAll('.station').forEach((station,i)=>station.classList.toggle('playing',i===next))
+        }
+      };
+      audio.onended=()=>{currentAudio=null;playingStation=-1;document.querySelectorAll('.station').forEach(station=>station.classList.remove('playing'))};
+      audio.onerror=()=>{audioBroken=true;currentAudio=null;playingStation=-1;toast('这条英语 MP3 没有成功播放，请再点一次')};
+      audio.play().then(()=>{
+        state.seen[verb.n]=true;
+        save();
+        toast(`正在播放：${verb.base} 的三态`)
+      }).catch(()=>{
+        audioBroken=true;
+        currentAudio=null;
+        playingStation=-1;
+        toast('英语 MP3 没有成功播放，请检查媒体音量')
+      })
+    }
+    function recordAttempt(data){const row={...data,child:'Kenton',appId:APP_ID,version:VERSION,at:new Date().toISOString(),materialSource:MATERIAL};state.attempts.push(row);if(state.attempts.length>900)state.attempts=state.attempts.slice(-900);save();window.DDLearningSync?.recordAttempt?.(row)}
+    function markModule(id,meta={}){state.modules[id]={status:'complete',at:new Date().toISOString(),meta};save()}
+    window.DDMemory={recordAttempt,markModule};
+    function fieldName(field){return{third:'第三人称单数',ing:'现在分词',past:'过去式',pp:'过去分词',zh:'中文',triple:'三态'}[field]||field}
+    function statKey(n,field){return`${n}:${field}`}
+    function updateField(verb,field,correct,activity,selected,expected){
+      const key=statKey(verb.n,field),stat=state.stats[key]||(state.stats[key]={errors:0,streak:0,solved:false,lastWrong:null}),wrong=state.wrongbook[key]||(state.wrongbook[key]={key,n:verb.n,base:verb.base,field,errors:0,streak:0,solved:false,lastWrong:null});
+      if(correct){stat.streak++;wrong.streak++;if(stat.errors>0&&stat.streak>=2)stat.solved=true;if(wrong.errors>0&&wrong.streak>=2)wrong.solved=true}
+      else{stat.errors++;stat.streak=0;stat.solved=false;stat.lastWrong=new Date().toISOString();wrong.errors++;wrong.streak=0;wrong.solved=false;wrong.lastWrong=new Date().toISOString()}
+      recordAttempt({questionId:`verb-${verb.n}-${field}`,prompt:`${verb.base} 的${fieldName(field)}`,selected:selected||(correct?'自评正确':'自评错误'),expected:expected||verb[field]||`${verb.base}—${verb.past}—${verb.pp}`,correct,reason:correct?'':'三态、拼写或栏目记混',skill:`irregular-verb-${field}`,activity,ms:0});
+    }
+    function openWrong(){return Object.values(state.wrongbook).filter(x=>x.errors>0&&!x.solved)}
+    function progress(){return{seen:Object.keys(state.seen).length,open:openWrong().length,attempts:state.attempts.length,done:['track','families','recall','dictation'].filter(x=>state.modules[x]?.status==='complete').length}}
+    function go(next){stopVoice();route=next;render();scrollTo({top:0,behavior:'smooth'})}
+    function pageHead(title,sub){return`<div class="page-head"><button class="back" type="button" onclick="go('home')" aria-label="返回首页">←</button><div><h1>${esc(title)}</h1><p>${esc(sub)}</p></div></div>`}
+    function render(){
+      const app=document.getElementById('app');
+      if(route==='home')app.innerHTML=home();
+      else if(route==='track')app.innerHTML=trackPage();
+      else if(route==='families')app.innerHTML=familyPage();
+      else if(route==='recall')app.innerHTML=recallPage();
+      else if(route==='dictation')app.innerHTML=dictationPage();
+      else if(route==='table')app.innerHTML=tablePage();
+      else if(route==='records')app.innerHTML=recordsPage();
+      else app.innerHTML=home();
+      syncSoundButton();
+    }
+    function home(){
+      const p=progress();
+      return`<section class="lesson-intro" data-phase="teach">
+        <span class="lesson-kicker">今日任务 · 每次只练 5 个</span>
+        <h1>让动词坐上<span>三态变身轨道</span></h1>
+        <p>看着一个动词经过三站变化，先听、再遮住说，最后才去纸上写。</p>
+        <div class="verb-stage" data-surprise="three-form-track" aria-label="不规则动词三态轨道示例">
+          <div class="verb-ticket"><strong>begin</strong><span>i → a → u</span></div>
+          <div class="preview-track">
+            <div class="preview-station"><small>原形</small><b>begin</b></div><div class="preview-arrow">→</div>
+            <div class="preview-station"><small>过去式</small><b>began</b></div><div class="preview-arrow">→</div>
+            <div class="preview-station"><small>过去分词</small><b>begun</b></div>
+          </div>
+        </div>
+        <button class="primary-launch" type="button" onclick="startTrack(1)">从 1—5 开始变身 →</button>
+        <div class="group-picker" data-micro-surprise="daily" aria-label="选择练习组">
+          ${Array.from({length:6},(_,i)=>`<button class="group-chip" onclick="startTrack(${i*5+1})">${i*5+1}—${i*5+5}</button>`).join('')}
+        </div>
+        <p class="daily-note">今日小彩蛋：${esc(dailySurprise())}</p>
+      </section>
+      <div class="voice-note"><i>声</i><span><b>音频待验收（手机）· Eddey 同款英文声音</b><br>使用和弟弟英语软件相同的预合成 MP3 播放方式，不依赖设备自带声线。
+        <span class="voice-actions"><button class="voice-play" type="button" onclick="playVerb(5,false)">听 begin → began → begun</button></span>
+      </span></div>
+      <section class="quick-tools" aria-label="其他学习工具">
+        <button class="tool-btn" onclick="go('families')"><span class="tool-icon">${iconFor('families')}</span>变化家族<small>同规律一起记</small></button>
+        <button class="tool-btn" onclick="chooseRecall()"><span class="tool-icon">${iconFor('recall')}</span>遮住再说<small>自己先提取</small></button>
+        <button class="tool-btn" onclick="chooseDictation()"><span class="tool-icon">${iconFor('dictation')}</span>纸笔默写<small>错栏原词重来</small></button>
+        <button class="tool-btn" onclick="go('table')"><span class="tool-icon"><svg viewBox="0 0 24 24"><path d="M5 4h14v16H5zM8 8h8M8 12h8M8 16h5"/></svg></span>老师原表<small>保留七栏顺序</small></button>
+      </section>
+      <section class="progress"><div class="metrics"><div class="metric"><strong>${p.seen}/30</strong><span>已学动词</span></div><div class="metric"><strong>${p.done}/4</strong><span>完成环节</span></div><div class="metric"><strong>${p.open}</strong><span>待回炉栏</span></div><div class="metric"><strong>${p.attempts}</strong><span>学习记录</span></div></div><div class="bar"><i style="width:${Math.round((p.seen/30*.65+p.done/4*.35)*100)}%"></i></div></section>
+      <details class="source"><summary>给家长看的材料说明</summary><div><b>材料依据：</b>${MATERIAL}。bear—bore—born、bite—bit—bit 等继续按老师原表保留，不用通用词表静默替换。</div></details>`;
+    }
+    function homeCard(id,kicker,title,text,primary=false){
+      const action=id==='track'?'startTrack(1)':id==='recall'?'chooseRecall()':id==='dictation'?'chooseDictation()':`go('${id}')`;
+      return`<button class="home-card ${primary?'primary':''} ${state.modules[id]?.status==='complete'?'done':''}" onclick="${action}"><span class="kicker">${kicker}</span><span class="icon" aria-hidden="true">${iconFor(id)}</span><h3>${title}</h3><p>${text}</p></button>`;
+    }
+    function iconFor(id){
+      const icons={
+        track:'<svg viewBox="0 0 24 24"><path d="M4 12h4l2-5 4 10 2-5h4"/><path d="M4 20h16M4 4h16"/></svg>',
+        families:'<svg viewBox="0 0 24 24"><path d="M5 5h5v5H5zM14 5h5v5h-5zM9.5 14h5v5h-5zM7.5 10v2h4.5v2M16.5 10v2H12"/></svg>',
+        recall:'<svg viewBox="0 0 24 24"><path d="M5 4h12a2 2 0 0 1 2 2v14H7a2 2 0 0 1-2-2z"/><path d="M7 20a2 2 0 0 1 0-4h12M9 8h6"/></svg>',
+        dictation:'<svg viewBox="0 0 24 24"><path d="m4 20 4.5-1 10-10-3.5-3.5-10 10zM13.5 7l3.5 3.5M4 20h16"/></svg>'
+      };return icons[id];
+    }
+    function startTrack(n){trackNo=n;trackCovered=false;playingStation=-1;route='track';render();scrollTo(0,0)}
+    function trackPage(){
+      const verb=verbs[trackNo-1],forms=verb.n===16?[verb.base,verb.past]:[verb.base,verb.past,verb.pp];
+      return`${pageHead('三态同步轨道',`老师原表第 ${verb.n} 个 · 每次建议只学 5 个`)}<section class="panel" data-phase="guided"><div class="range-tabs">${Array.from({length:6},(_,i)=>{const a=i*5+1,b=a+4,seen=verbs.filter(x=>x.n>=a&&x.n<=b&&state.seen[x.n]).length;return`<button class="chip ${verb.n>=a&&verb.n<=b?'on':''}" onclick="startTrack(${a})">${a}—${b} · ${seen}/5</button>`}).join('')}</div>
+      <div class="track-card" data-no="${String(verb.n).padStart(2,'0')}"><div class="word">${esc(verb.base)}</div><div class="ipa">${esc(verb.ipa)}</div><div class="meaning">${esc(verb.zh)}</div>
+      ${trackCovered?`<div class="cover"><div><strong>先开口说三态</strong><small>${verb.n===16?'can 的过去式是什么？':'原形 → 过去式 → 过去分词'}</small></div></div><div class="btn-row"><button class="btn primary wide" onclick="revealTrack()">我说完了，播放并核对</button></div>`:
+      `<div class="audio-track">${forms.map((form,i)=>`${i?'<div class="track-arrow">→</div>':''}<div class="station ${playingStation===i?'playing':''}"><span>${i===0?'原形':i===1?'过去式':'过去分词'}</span><strong>${esc(form)}</strong></div>`).join('')}</div><div class="tip"><b>记忆钩子：</b>${esc(verb.tip)}</div><div class="btn-row"><button class="btn" onclick="playVerb(${verb.n})">播放三态</button><button class="btn" onclick="coverTrack()">遮住，我自己说</button><button class="btn primary" onclick="nextTrack()">${verb.n===30?'完成轨道':'下一个 →'}</button></div>`}</div></section>`;
+    }
+    function coverTrack(){trackCovered=true;stopVoice();render()}
+    function revealTrack(){trackCovered=false;render();setTimeout(()=>playVerb(trackNo),100)}
+    function nextTrack(){
+      state.seen[trackNo]=true;save();tone('ok');
+      if(trackNo===30){markModule('track',{seen:Object.keys(state.seen).length});go('families');return}
+      trackNo++;trackCovered=false;playingStation=-1;render();scrollTo(0,0)
+    }
+    function familyPage(){
+      const entries=Object.entries(families);
+      return`${pageHead('变化家族','同一路线一起背，减少 30 个孤立记忆')}<section class="panel" data-phase="transfer"><span class="pill">8 条路线</span><h2>点动词，直接听它的三态</h2><div class="family-board">${entries.map(([key,data])=>`<div class="family-lane"><h3>${data[0]}</h3><p>${data[2]}</p><div class="verb-chips">${verbs.filter(x=>x.fam===key).map(verb=>`<button class="verb-chip" onclick="openFamilyVerb(${verb.n})">${esc(verb.base.split(' ')[0])}</button>`).join('')}</div></div>`).join('')}</div><div class="btn-row"><button class="btn" onclick="markFamilies()">我能说出家族规律</button><button class="btn primary" onclick="chooseRecall()">去遮挡回忆 →</button></div></section>`;
+    }
+    function openFamilyVerb(n){trackNo=n;trackCovered=false;route='track';render();scrollTo(0,0);setTimeout(()=>playVerb(n),100)}
+    function markFamilies(){markModule('families',{groups:8});tone('ok');toast('变化家族已记录')}
+    function chooseRecall(){recallQueue=[];recallPos=0;recallRevealed=false;recallRetry=false;route='recall';render();scrollTo(0,0)}
+    function startRecall(a,b){recallQueue=verbs.filter(x=>x.n>=a&&x.n<=b);recallPos=0;recallRevealed=false;recallRetry=false;render();scrollTo(0,0)}
+    function recallPage(){
+      if(!recallQueue.length)return`${pageHead('遮挡回忆卡','先选 5 个，短时学习更容易坚持')}<section class="panel" data-phase="recall"><span class="pill">每组 5 个</span><h2>今天从哪一组开始？</h2><div class="grid">${Array.from({length:6},(_,i)=>{const a=i*5+1,b=a+4;return`<button class="home-card" onclick="startRecall(${a},${b})"><span class="kicker">${a}—${b}</span><h3>${verbs[a-1].base.split(' ')[0]} → ${verbs[b-1].base}</h3><p>看原形和中文，遮住说三态，翻开后自己判断。</p></button>`}).join('')}</div></section>`;
+      if(recallPos>=recallQueue.length){markModule('recall',{count:recallQueue.length});return`${pageHead('这一组回忆完成','错误仍保留，连续正确两次才解决')}<section class="panel" data-phase="recall"><div class="empty"><strong>${recallQueue.length} 个完成</strong><p>下一步进入纸笔默写，检查是不是能真正写出来。</p><div class="btn-row"><button class="btn" onclick="chooseRecall()">换一组</button><button class="btn primary" onclick="chooseDictation()">去纸笔默写 →</button></div></div></section>`}
+      const verb=recallQueue[recallPos];
+      return`${pageHead('遮挡回忆卡',`第 ${recallPos+1} / ${recallQueue.length} 张${recallRetry?' · 原词重说':''}`)}<section class="panel" data-phase="recall"><div class="deck-nav">${Array.from({length:6},(_,i)=>{const a=i*5+1,b=a+4,done=Object.keys(state.seen).filter(n=>+n>=a&&+n<=b).length;return`<button class="${verb.n>=a&&verb.n<=b?'on':done===5?'done':''}" onclick="startRecall(${a},${b})">${a}—${b}<br>${done}/5</button>`}).join('')}</div>
+      <div class="track-card" data-no="${String(verb.n).padStart(2,'0')}"><div class="word">${esc(verb.base)}</div><div class="ipa">${esc(verb.ipa)}</div><div class="meaning">${esc(verb.zh)}</div>
+      ${recallRevealed?`<div class="forms">${form('三单',verb.third)}${form('现在分词',verb.ing)}${form('过去式',verb.past)}${form('过去分词',verb.pp)}</div><div class="tip"><b>记忆钩子：</b>${esc(verb.tip)}</div><div class="btn-row"><button class="btn danger" data-phase="repair" data-return-to-question="recall" onclick="rateRecall(false)">还没说对，重教原词</button><button class="btn primary" onclick="rateRecall(true)">遮住后能说对 →</button></div>`:
+      `<div class="cover"><div><strong>先别翻：请开口说</strong><small>${verb.n===16?'can → 过去式':'原形 → 过去式 → 过去分词'}</small></div></div><div class="btn-row"><button class="btn" onclick="playVerb(${verb.n},false)">先听一遍</button><button class="btn primary wide" onclick="revealRecall()">我说完了，翻开核对</button></div>`}</div></section>`;
+    }
+    function form(label,value){return`<div class="form"><span>${label}</span><strong>${esc(value)}</strong></div>`}
+    function revealRecall(){recallRevealed=true;state.seen[recallQueue[recallPos].n]=true;save();render();setTimeout(()=>playVerb(recallQueue[recallPos].n),100)}
+    function rateRecall(correct){
+      const verb=recallQueue[recallPos];updateField(verb,'triple',correct,'covered-recall',correct?'口述正确':'口述错误',`${verb.base}—${verb.past}—${verb.pp}`);tone(correct?'ok':'bad');
+      if(correct){recallPos++;recallRetry=false;recallRevealed=false}else{recallRetry=true;recallRevealed=false;toast('不跳词：遮住后再说同一个原词')}
+      render();scrollTo(0,0)
+    }
+    function chooseDictation(){dictQueue=[];dictPos=0;dictRevealed=false;dictWrong=new Set();dictRetry=false;route='dictation';render();scrollTo(0,0)}
+    function startDictation(a,b){dictQueue=verbs.filter(x=>x.n>=a&&x.n<=b);dictPos=0;dictRevealed=false;dictWrong=new Set();dictRetry=false;render();scrollTo(0,0)}
+    function dictationPage(){
+      if(!dictQueue.length)return`${pageHead('报读纸笔默写','拿出纸和笔，再选今天的范围')}<section class="panel" data-phase="independent"><span class="pill">作业出口</span><h2>每次 10 个，或完整默写 30 个</h2><p>点“播放三态”，在纸上写三单、现在分词、过去式、过去分词和中文。写完后翻开逐栏核对。</p><div class="grid">${[[1,10],[11,20],[21,30],[1,30]].map(([a,b])=>`<button class="home-card" onclick="startDictation(${a},${b})"><span class="kicker">${a}—${b}</span><h3>${b-a+1} 个动词</h3><p>${a===1&&b===30?'完整作业检查':'分段完成，控制学习时长'}</p></button>`).join('')}</div></section>`;
+      if(dictPos>=dictQueue.length){markModule('dictation',{count:dictQueue.length});return`${pageHead('纸笔默写完成','错栏已经进入 Kenton 专属回炉记录')}<section class="panel" data-phase="independent"><div class="empty"><strong>${dictQueue.length} 个完成</strong><p>错哪一栏，就按哪一栏继续回炉；一次答对不会抹掉历史错误。</p><div class="btn-row"><button class="btn primary wide" onclick="go('records')">查看错栏记录 →</button></div></div></section>`}
+      const verb=dictQueue[dictPos];
+      return`${pageHead('报读纸笔默写',`第 ${dictPos+1} / ${dictQueue.length} 个${dictRetry?' · 原词重默':''}`)}<section class="panel" data-phase="independent"><span class="pill">老师原表第 ${verb.n} 个</span>
+      <div class="track-card" data-no="${String(verb.n).padStart(2,'0')}">${dictRevealed?`<div class="word">${esc(verb.base)}</div><div class="ipa">${esc(verb.ipa)}</div><div class="meaning">${esc(verb.zh)}</div>`:`<div class="cover"><div><strong>先听，再写在纸上</strong><small>原形 · 三单 · 现在分词 · 过去式 · 过去分词 · 中文</small></div></div>`}
+      <div class="btn-row" style="justify-content:flex-start"><button class="btn gold" onclick="playVerb(${verb.n},false)">播放三态</button></div>
+      <div class="paper-fields">${['third','ing','past','pp','zh'].map(field=>`<div class="paper-field"><span>${fieldName(field)}</span><strong>${dictRevealed?esc(verb[field]):'纸上完成 ______'}</strong></div>`).join('')}</div>
+      ${dictRevealed?`<div class="tip"><b>记忆钩子：</b>${esc(verb.tip)}</div><p><b>点出写错的栏目；没有点的栏目按正确记录。</b></p><div class="field-checks">${['third','ing','past','pp','zh'].map(field=>`<button class="field-check ${dictWrong.has(field)?'wrong':''}" onclick="toggleField('${field}')">${fieldName(field)} ${dictWrong.has(field)?'× 写错':'✓ 写对'}</button>`).join('')}</div><div class="btn-row"><button class="btn primary wide" onclick="finishDictWord()">${dictWrong.size?'保存错栏，回到同一个词重默':'核对完成，下一个 →'}</button></div>`:
+      `<div class="btn-row"><button class="btn primary wide" onclick="revealDict()">纸上写完了，翻开原表核对</button></div>`}</div></section>`;
+    }
+    function revealDict(){dictRevealed=true;render()}
+    function toggleField(field){dictWrong.has(field)?dictWrong.delete(field):dictWrong.add(field);tone('tap');render()}
+    function finishDictWord(){
+      const verb=dictQueue[dictPos],hadWrong=dictWrong.size>0;
+      ['third','ing','past','pp','zh'].forEach(field=>updateField(verb,field,!dictWrong.has(field),'paper-dictation',dictWrong.has(field)?'纸笔自评错误':'纸笔自评正确',verb[field]));
+      tone(hadWrong?'bad':'ok');
+      if(hadWrong){dictRetry=true;dictRevealed=false;dictWrong=new Set();toast('不跳词：先看钩子，再重默同一个原词')}else{dictPos++;dictRetry=false;dictRevealed=false;dictWrong=new Set()}
+      render();scrollTo(0,0)
+    }
+    function tablePage(){
+      const list=familyFilter==='all'?verbs:verbs.filter(x=>x.fam===familyFilter);
+      return`${pageHead('老师原表 1—30','七个栏目与顺序保持不变')}<section class="panel"><div class="family-tabs"><button class="chip ${familyFilter==='all'?'on':''}" onclick="setFamilyFilter('all')">全部 30 个</button>${Object.entries(families).map(([key,data])=>`<button class="chip ${familyFilter===key?'on':''}" onclick="setFamilyFilter('${key}')">${data[0]}</button>`).join('')}</div><div class="table-wrap"><table><thead><tr><th>#</th><th>原形 / 音标</th><th>三单</th><th>现在分词</th><th>过去式</th><th>过去分词</th><th>中文</th><th>听</th></tr></thead><tbody>${list.map(x=>`<tr><td>${x.n}</td><td>${esc(x.base)}<br><small>${esc(x.ipa)}</small></td><td data-label="三单">${esc(x.third)}</td><td data-label="现在分词">${esc(x.ing)}</td><td data-label="过去式">${esc(x.past)}</td><td data-label="过去分词">${esc(x.pp)}</td><td data-label="中文">${esc(x.zh)}</td><td><button class="audio-mini" onclick="playVerb(${x.n},false)" aria-label="朗读 ${esc(x.base)}">听</button></td></tr>`).join('')}</tbody></table></div><div class="btn-row"><button class="btn primary" onclick="startTrack(1)">回到三态轨道 →</button></div></section>`;
+    }
+    function setFamilyFilter(value){familyFilter=value;render()}
+    function recordsPage(){
+      const wrong=Object.values(state.wrongbook).filter(x=>x.errors>0).sort((a,b)=>a.n-b.n);
+      return`${pageHead('错栏与学习记录','具体到每个动词、每一栏；连续正确两次才解决')}<section class="panel"><div class="metrics"><div class="metric"><strong>${Object.keys(state.seen).length}</strong><span>已听动词</span></div><div class="metric"><strong>${state.attempts.length}</strong><span>学习记录</span></div><div class="metric"><strong>${wrong.filter(x=>!x.solved).length}</strong><span>待回炉栏</span></div><div class="metric"><strong>${wrong.filter(x=>x.solved).length}</strong><span>已解决栏</span></div></div></section>
+      <section class="panel"><h2>错栏明细</h2>${wrong.length?`<div class="wrong-list">${wrong.map(item=>`<div class="wrong-item"><div><strong>#${item.n} ${esc(item.base)} · ${fieldName(item.field)}</strong><small>错 ${item.errors} 次 · 连对 ${item.streak}/2</small></div><span class="status ${item.solved?'solved':'open'}">${item.solved?'已解决':'待回炉'}</span></div>`).join('')}</div>`:'<div class="empty"><strong>暂无错栏</strong><p>完成遮挡回忆或纸笔默写后，这里会精确记录。</p></div>'}
+      <div class="btn-row"><button class="btn" onclick="downloadJson()">导出 JSON</button><button class="btn" onclick="downloadMarkdown()">导出学习汇报</button><button class="btn" onclick="document.getElementById('importFile').click()">导入记录</button><input id="importFile" type="file" accept="application/json" hidden onchange="importJson(event)"><button class="btn primary" onclick="chooseRecall()">重新回忆</button></div><p class="privacy">本机记录键包含 Kenton、软件名和版本；不会与 Eddey 或家长测试记录混用。</p></section>`;
+    }
+    function report(){
+      const open=openWrong();
+      return`# Kenton 不规则动词 1—30 学习汇报\n\n- 软件版本：${VERSION}\n- 最近学习：${state.lastOpened}\n- 已听三态：${Object.keys(state.seen).length}/30\n- 累计学习：${Math.round(state.totalMs/60000)} 分钟\n- 学习记录：${state.attempts.length}\n- 待回炉栏目：${open.length}\n\n## 待回炉\n${open.length?open.map(x=>`- #${x.n} ${x.base} · ${fieldName(x.field)}（错 ${x.errors} 次，连对 ${x.streak}/2）`).join('\n'):'- 无'}\n\n材料：${MATERIAL}\n`;
+    }
+    function download(name,type,text){const link=document.createElement('a');link.href=URL.createObjectURL(new Blob([text],{type}));link.download=name;link.click();setTimeout(()=>URL.revokeObjectURL(link.href),1000)}
+    function downloadJson(){download('kenton-irregular-verbs-1-30-record.json','application/json',JSON.stringify(state,null,2))}
+    function downloadMarkdown(){download('kenton-irregular-verbs-1-30-report.md','text/markdown',report())}
+    function importJson(event){
+      const file=event.target.files?.[0];if(!file)return;const reader=new FileReader();
+      reader.onload=()=>{try{const data=JSON.parse(reader.result);if(data?.child!=='Kenton'||data?.appId!==APP_ID||!Array.isArray(data.attempts)||typeof data.wrongbook!=='object')throw new Error();state={...defaultState(),...data,schema:2,version:VERSION};save();toast('记录导入成功');go('records')}catch(_){toast('导入失败：不是本软件的 Kenton 记录')}};
+      reader.readAsText(file);event.target.value='';
+    }
+    function syncSoundButton(){const button=document.getElementById('soundToggle');if(!button)return;button.textContent=soundOn?'声':'静';button.setAttribute('aria-label',soundOn?'关闭点击反馈音':'打开点击反馈音')}
+    document.getElementById('soundToggle').addEventListener('click',()=>{soundOn=!soundOn;localStorage.setItem('study:kenton:ui-sound',soundOn?'1':'0');if(soundOn)tone('ok');syncSoundButton()});
+    Object.assign(window,{go,startTrack,playVerb,coverTrack,revealTrack,nextTrack,openFamilyVerb,markFamilies,chooseRecall,startRecall,revealRecall,rateRecall,chooseDictation,startDictation,revealDict,toggleField,finishDictWord,setFamilyFilter,downloadJson,downloadMarkdown,importJson});
+    render();
+  })();
+  </script>
+</body>
+</html>

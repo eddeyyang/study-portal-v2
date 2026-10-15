@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<script src="../assets/learning-sync.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#f5fbff">
+<title>暑假英语学习馆 · Kenton & Eddey</title>
+<style>
+:root{
+  --ink:#173341;--muted:#667985;--paper:#fffdf8;--sky:#2f6fb3;--sky-soft:#e5f2ff;
+  --coral:#f26c4f;--coral-soft:#fff0e9;--mint:#2f9b75;--lemon:#ffd766;--line:#d7e3e8;
+  --shadow:0 10px 28px rgba(29,67,88,.12);--radius:22px;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{background:#edf7fb}
+body{margin:0;min-height:100vh;color:var(--ink);font-family:"PingFang SC","Microsoft YaHei",system-ui,sans-serif;background:
+  linear-gradient(rgba(255,255,255,.56) 1px,transparent 1px),
+  linear-gradient(90deg,rgba(255,255,255,.56) 1px,transparent 1px),
+  radial-gradient(circle at 12% 8%,#dceeff 0,transparent 34%),
+  radial-gradient(circle at 90% 92%,#ffe7d9 0,transparent 35%),#edf7fb;
+  background-size:24px 24px,24px 24px,auto,auto,auto;
+}
+button,a{font:inherit}
+button{cursor:pointer}
+.shell{width:min(100%,760px);margin:0 auto;padding:14px 14px calc(44px + env(safe-area-inset-bottom))}
+.topbar{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.back{width:46px;height:46px;border:1px solid var(--line);border-radius:15px;display:grid;place-items:center;background:rgba(255,255,255,.9);color:var(--ink);text-decoration:none;font-size:25px;font-weight:900;box-shadow:0 4px 12px rgba(30,65,82,.08)}
+.brand{min-width:0}.brand strong{display:block;font-size:17px}.brand span{display:block;color:var(--muted);font-size:12px;margin-top:2px}
+.hero{position:relative;overflow:hidden;background:var(--paper);border:1px solid rgba(47,111,179,.16);border-radius:28px;padding:25px 22px 23px;box-shadow:var(--shadow)}
+.hero:after{content:"ABC";position:absolute;right:-8px;bottom:-28px;font-size:96px;line-height:1;font-weight:1000;letter-spacing:-10px;color:rgba(47,111,179,.07);transform:rotate(-5deg)}
+.eyebrow{display:inline-flex;align-items:center;gap:7px;padding:5px 10px;border-radius:999px;background:#173341;color:white;font-size:11px;font-weight:900;letter-spacing:.08em}
+.hero h1{position:relative;z-index:1;font-size:clamp(27px,8vw,42px);line-height:1.12;margin:14px 0 9px;letter-spacing:-.04em}
+.hero p{position:relative;z-index:1;margin:0;color:var(--muted);line-height:1.7;font-size:14px;max-width:520px}
+.route{display:flex;align-items:center;flex-wrap:wrap;gap:7px;margin-top:15px;color:var(--muted);font-size:12px;font-weight:800}
+.route span{background:#f0f5f6;border:1px solid #e0e9ec;padding:4px 8px;border-radius:8px}.route b{color:#9aa9b0}
+.section-title{display:flex;align-items:end;justify-content:space-between;gap:12px;margin:24px 4px 11px}.section-title h2{font-size:19px;margin:0}.section-title p{font-size:12px;color:var(--muted);margin:0}
+.child-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.child-card{position:relative;min-height:184px;text-align:left;border:0;border-radius:24px;padding:19px;overflow:hidden;color:var(--ink);box-shadow:var(--shadow);transition:transform .18s ease,box-shadow .18s ease}
+.child-card:hover{transform:translateY(-2px)}.child-card:active{transform:translateY(2px)}
+.child-card.kenton{background:linear-gradient(145deg,#f9fdff,#dceeff);border:2px solid #9bc9ef}
+.child-card.eddey{background:linear-gradient(145deg,#fffdf9,#ffe1d4);border:2px solid #ffb49f}
+.child-card .avatar{display:grid;place-items:center;width:58px;height:58px;border-radius:18px;background:white;font-size:34px;box-shadow:0 6px 15px rgba(30,65,82,.1)}
+.child-card .role{display:block;margin-top:14px;font-size:12px;font-weight:900;color:var(--muted)}
+.child-card .name{display:block;font-size:24px;font-weight:1000;letter-spacing:-.02em;margin-top:1px}
+.child-card .count{display:block;margin-top:6px;font-size:12px;color:var(--muted)}
+.child-card .go{position:absolute;right:14px;bottom:14px;width:38px;height:38px;border-radius:50%;display:grid;place-items:center;color:#fff;font-size:22px;font-weight:900}
+.kenton .go{background:var(--sky)}.eddey .go{background:var(--coral)}
+.library{display:none}.library.active{display:block;animation:rise .28s ease-out both}
+.identity{display:flex;align-items:center;gap:13px;margin:18px 0 13px;padding:15px;background:rgba(255,255,255,.88);border:1px solid var(--line);border-radius:20px;box-shadow:0 6px 18px rgba(30,65,82,.08)}
+.identity .avatar{font-size:32px;width:50px;height:50px;display:grid;place-items:center;border-radius:16px;background:var(--child-soft)}
+.identity-copy{flex:1;min-width:0}.identity-copy strong{font-size:19px}.identity-copy span{display:block;color:var(--muted);font-size:12px;margin-top:3px}
+.switch-person{min-height:44px;border:1px solid var(--line);background:#fff;border-radius:13px;padding:0 12px;color:var(--ink);font-weight:900;font-size:12px}
+.task-strip{background:#173341;color:white;border-radius:20px;padding:15px 16px;margin-bottom:13px;box-shadow:0 8px 20px rgba(23,51,65,.17)}
+.task-strip .label{display:flex;align-items:center;justify-content:space-between;gap:10px;color:#b9d5e0;font-size:11px;font-weight:900;letter-spacing:.08em}.task-strip .label span:last-child{letter-spacing:0}
+.task-strip strong{display:block;margin-top:7px;font-size:16px;line-height:1.45}.task-strip a{display:inline-flex;align-items:center;justify-content:center;min-height:42px;margin-top:10px;padding:0 14px;border-radius:12px;background:var(--lemon);color:#273844;text-decoration:none;font-size:13px;font-weight:1000}
+.tabs{display:grid;grid-template-columns:1fr 1fr;background:#dfe9ed;padding:5px;border-radius:17px;gap:5px;position:sticky;top:8px;z-index:5;box-shadow:0 6px 15px rgba(30,65,82,.08)}
+.tab{min-height:48px;border:0;background:transparent;border-radius:13px;color:#61747e;font-weight:1000}.tab[aria-selected="true"]{background:#fff;color:var(--child);box-shadow:0 3px 10px rgba(30,65,82,.12)}
+.shelf-head{display:flex;justify-content:space-between;align-items:center;margin:18px 4px 9px}.shelf-head h2{font-size:18px;margin:0}.shelf-head span{color:var(--muted);font-size:12px}
+.timeline{position:relative;padding-left:20px}.timeline:before{content:"";position:absolute;left:5px;top:9px;bottom:18px;width:3px;border-radius:3px;background:linear-gradient(var(--child),rgba(120,150,160,.16))}
+.entry{position:relative;display:block;color:var(--ink);text-decoration:none;background:rgba(255,255,255,.94);border:1px solid var(--line);border-radius:19px;padding:15px 15px 14px;margin:0 0 12px;box-shadow:0 5px 16px rgba(30,65,82,.08);transition:transform .15s ease,border-color .15s ease}
+.entry:before{content:"";position:absolute;left:-21px;top:22px;width:10px;height:10px;border-radius:50%;background:var(--child);border:3px solid #edf7fb}
+.entry:hover{transform:translateX(3px);border-color:var(--child)}.entry:active{transform:translateX(3px) translateY(2px)}
+.entry-top{display:flex;align-items:center;justify-content:space-between;gap:10px}.date{display:inline-flex;align-items:center;gap:6px;font-size:11px;color:var(--child);font-weight:1000}.source{font-size:10px;color:var(--muted);background:#f0f4f5;border-radius:999px;padding:4px 8px;max-width:48%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.entry h3{font-size:16px;line-height:1.45;margin:8px 0 5px}.entry p{color:var(--muted);font-size:12.5px;line-height:1.65;margin:0}.tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:10px}.tag{font-size:10px;font-weight:800;color:#536a75;background:var(--child-soft);border-radius:7px;padding:3px 7px}.entry-arrow{position:absolute;right:13px;bottom:10px;color:var(--child);font-size:18px;font-weight:1000}
+.empty,.error{padding:26px 18px;text-align:center;background:#fff;border:1px dashed #b8c9d0;border-radius:18px;color:var(--muted);line-height:1.7}.error button{display:block;margin:12px auto 0;min-height:44px;border:0;border-radius:12px;background:var(--ink);color:#fff;padding:0 18px;font-weight:900}
+.footer{text-align:center;color:#81919a;font-size:11px;line-height:1.7;margin-top:24px}
+.k-theme{--child:var(--sky);--child-soft:var(--sky-soft)}.e-theme{--child:var(--coral);--child-soft:var(--coral-soft)}
+button:focus-visible,a:focus-visible{outline:4px solid var(--lemon);outline-offset:3px}
+@keyframes rise{from{opacity:0;transform:translateY(9px)}to{opacity:1;transform:none}}
+@media (max-width:430px){.shell{padding-inline:11px}.hero{padding:22px 18px}.child-grid{gap:9px}.child-card{min-height:176px;padding:15px}.child-card .name{font-size:21px}.identity{padding:12px}.identity-copy strong{font-size:17px}.task-strip{padding:14px}}
+@media (max-width:350px){.child-grid{grid-template-columns:1fr}.child-card{min-height:148px}.child-card .go{bottom:15px}.identity-copy span{display:none}}
+@media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<main class="shell">
+  <header class="topbar">
+    <a class="back" href="../subject.html?subject=english&amp;period=2026-summer" aria-label="返回英语暑假内容">‹</a>
+    <div class="brand"><strong>暑假英语学习馆</strong><span>Kenton &amp; Eddey · 2026 Summer</span></div>
+  </header>
+
+  <section class="hero" aria-labelledby="pageTitle">
+    <span class="eyebrow">SUMMER ENGLISH LIBRARY</span>
+    <h1 id="pageTitle">先选人，再开馆</h1>
+    <p>哥哥和弟弟各有自己的英语书架。学习软件归“学习”，自动报默和错词重做归“默写”，最新内容排在最前面。</p>
+    <div class="route" aria-label="使用路径"><span>选哥哥 / 弟弟</span><b>→</b><span>选学习 / 默写</span><b>→</b><span>按日期打开</span></div>
+  </section>
+
+  <section id="chooser" aria-labelledby="chooseTitle">
+    <div class="section-title"><h2 id="chooseTitle">今天谁来学习？</h2><p id="updatedText">正在读取书架…</p></div>
+    <div class="child-grid">
+      <button class="child-card kenton" type="button" data-child="kenton" aria-label="进入哥哥 Kenton 的暑假英语学习库">
+        <span class="avatar" aria-hidden="true">🦁</span><span class="role">哥哥</span><span class="name">Kenton</span><span class="count" data-count="kenton">读取中…</span><span class="go" aria-hidden="true">›</span>
+      </button>
+      <button class="child-card eddey" type="button" data-child="eddey" aria-label="进入弟弟 Eddey 的暑假英语学习库">
+        <span class="avatar" aria-hidden="true">🐯</span><span class="role">弟弟</span><span class="name">Eddey</span><span class="count" data-count="eddey">读取中…</span><span class="go" aria-hidden="true">›</span>
+      </button>
+    </div>
+  </section>
+
+  <section id="library" class="library" aria-live="polite">
+    <div class="identity">
+      <span class="avatar" id="identityAvatar" aria-hidden="true"></span>
+      <div class="identity-copy"><strong id="identityName"></strong><span id="identityMeta"></span></div>
+      <button class="switch-person" id="switchPerson" type="button">换一个人</button>
+    </div>
+    <div id="featured"></div>
+    <div class="tabs" role="tablist" aria-label="英语资料分类">
+      <button class="tab" id="learningTab" type="button" role="tab" aria-selected="true" data-kind="learning">📚 学习</button>
+      <button class="tab" id="dictationTab" type="button" role="tab" aria-selected="false" data-kind="dictation">🎧 默写</button>
+    </div>
+    <div class="shelf-head"><h2 id="shelfTitle">学习书架</h2><span id="shelfCount"></span></div>
+    <div id="timeline" class="timeline" role="tabpanel" aria-labelledby="learningTab"></div>
+  </section>
+
+  <div id="loadError" class="error" hidden>书架暂时没有读出来，请检查网络后再试。<button id="retry" type="button">重新读取</button></div>
+  <footer class="footer">以后新增英语软件：按孩子分开 · 学习与默写分开 · 使用北京时间归档</footer>
+</main>
+<script>
+(() => {
+  'use strict';
+  const DATA_URL = '../data/summer-english-library.json';
+  const PEOPLE = {
+    kenton:{name:'Kenton',role:'哥哥',avatar:'🦁',theme:'k-theme'},
+    eddey:{name:'Eddey',role:'弟弟',avatar:'🐯',theme:'e-theme'}
+  };
+  const state = {items:[],updated:'',child:null,kind:'learning'};
+  const $ = (id) => document.getElementById(id);
+  const chooser = $('chooser');
+  const library = $('library');
+  const timeline = $('timeline');
+
+  function formatDate(value){
+    const parts = String(value || '').split('-');
+    return parts.length === 3 ? `${Number(parts[1])}月${Number(parts[2])}日` : value;
+  }
+
+  function hrefFor(file){
+    if(!file) return '#';
+    if(/^(https?:|\.\.?\/)/.test(file)) return file;
+    return '../' + file.replace(/^\//,'');
+  }
+
+  function childItems(child){
+    return state.items.filter(item => item.child === child).sort((a,b) => String(b.date).localeCompare(String(a.date)) || String(b.id).localeCompare(String(a.id)));
+  }
+
+  function setCounts(){
+    Object.keys(PEOPLE).forEach(child => {
+      const items = childItems(child);
+      const learning = items.filter(item => item.kind === 'learning').length;
+      const dictation = items.filter(item => item.kind === 'dictation').length;
+      document.querySelector(`[data-count="${child}"]`).textContent = `${learning} 个学习 · ${dictation} 个默写`;
+    });
+    $('updatedText').textContent = state.updated ? `更新到 ${formatDate(state.updated)}` : '按日期持续更新';
+  }
+
+  function make(tag,className,text){
+    const node = document.createElement(tag);
+    if(className) node.className = className;
+    if(text !== undefined) node.textContent = text;
+    return node;
+  }
+
+  function renderFeatured(items){
+    const root = $('featured');
+    root.replaceChildren();
+    const item = items.find(entry => entry.featured && entry.kind === state.kind) || items.find(entry => entry.featured);
+    if(!item) return;
+    const box = make('div','task-strip');
+    const label = make('div','label');
+    label.append(make('span','',state.kind === 'dictation' ? '最近要默写' : '最近要学习'),make('span','',formatDate(item.date)));
+    box.append(label,make('strong','',item.title));
+    const link = make('a','',state.kind === 'dictation' ? '开始默写 →' : '打开学习 →');
+    link.href = hrefFor(item.file);
+    box.append(link);
+    root.append(box);
+  }
+
+  function renderShelf(){
+    if(!state.child) return;
+    const all = childItems(state.child);
+    const items = all.filter(item => item.kind === state.kind);
+    renderFeatured(all);
+    $('shelfTitle').textContent = state.kind === 'learning' ? '学习书架' : '默写书架';
+    $('shelfCount').textContent = `${items.length} 个软件 · 新的在上面`;
+    timeline.setAttribute('aria-labelledby',state.kind === 'learning' ? 'learningTab' : 'dictationTab');
+    timeline.replaceChildren();
+    if(!items.length){
+      timeline.append(make('div','empty',state.kind === 'learning' ? '这里还没有学习软件。下一次更新后会按日期出现在这里。' : '这里还没有默写软件。报默、听写和错词重做会统一放在这里。'));
+      return;
+    }
+    items.forEach(item => {
+      const card = make('a','entry');
+      card.href = hrefFor(item.file);
+      const top = make('div','entry-top');
+      top.append(make('span','date',`● ${formatDate(item.date)}`),make('span','source',item.source || '英语学习'));
+      card.append(top,make('h3','',item.title),make('p','',item.summary || '打开开始学习'));
+      const tags = make('div','tags');
+      (Array.isArray(item.tags) ? item.tags : []).forEach(tag => tags.append(make('span','tag',tag)));
+      card.append(tags,make('span','entry-arrow','›'));
+      timeline.append(card);
+    });
+  }
+
+  function selectKind(kind){
+    state.kind = kind === 'dictation' ? 'dictation' : 'learning';
+    document.querySelectorAll('.tab').forEach(tab => tab.setAttribute('aria-selected',String(tab.dataset.kind === state.kind)));
+    renderShelf();
+  }
+
+  function selectChild(child,updateUrl=true){
+    if(!PEOPLE[child]) return;
+    state.child = child;
+    state.kind = 'learning';
+    const person = PEOPLE[child];
+    document.body.classList.remove('k-theme','e-theme');
+    document.body.classList.add(person.theme);
+    $('identityAvatar').textContent = person.avatar;
+    $('identityName').textContent = `${person.role} · ${person.name}`;
+    const items = childItems(child);
+    $('identityMeta').textContent = `${items.filter(x=>x.kind==='learning').length} 个学习软件 · ${items.filter(x=>x.kind==='dictation').length} 个默写软件`;
+    chooser.hidden = true;
+    library.classList.add('active');
+    document.querySelector('.back').href=`../subject.html?subject=english&period=2026-summer&who=${child}`;
+    if(updateUrl) history.replaceState(null,'',`${location.pathname}?who=${child}`);
+    selectKind('learning');
+    window.scrollTo({top:0,behavior:'smooth'});
+  }
+
+  function showChooser(){
+    state.child = null;
+    document.body.classList.remove('k-theme','e-theme');
+    library.classList.remove('active');
+    chooser.hidden = false;
+    history.replaceState(null,'',location.pathname);
+    window.scrollTo({top:0,behavior:'smooth'});
+  }
+
+  async function load(){
+    $('loadError').hidden = true;
+    try{
+      const response = await fetch(DATA_URL,{cache:'no-store'});
+      if(!response.ok) throw new Error(`HTTP ${response.status}`);
+      const data = await response.json();
+      if(!data || data.schemaVersion !== 1 || !Array.isArray(data.items)) throw new Error('Invalid library data');
+      state.items = data.items.filter(item => PEOPLE[item.child] && ['learning','dictation'].includes(item.kind) && item.id && item.date && item.title && item.file);
+      state.updated = data.updated || '';
+      state.child = null;
+      document.body.classList.remove('k-theme','e-theme');
+      library.classList.remove('active');
+      chooser.hidden = false;
+      setCounts();
+      const who = new URLSearchParams(location.search).get('who');
+      if(PEOPLE[who]) selectChild(who,false);
+    }catch(error){
+      console.error('Summer English library failed to load',error);
+      chooser.hidden = true;
+      library.classList.remove('active');
+      $('loadError').hidden = false;
+      $('updatedText').textContent = '读取失败';
+    }
+  }
+
+  document.querySelectorAll('[data-child]').forEach(button => button.addEventListener('click',() => selectChild(button.dataset.child)));
+  document.querySelectorAll('.tab').forEach(button => button.addEventListener('click',() => selectKind(button.dataset.kind)));
+  $('switchPerson').addEventListener('click',showChooser);
+  $('retry').addEventListener('click',load);
+  load();
+})();
+</script>
+</body>
+</html>

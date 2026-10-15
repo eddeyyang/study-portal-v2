@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="study-portal-design" content="2.0">
+<meta name="lesson-audio" content="pending">
+<title>三单拼写 + 将来时修复站 · Eddey</title>
+<style>
+:root{--bg:#fff7f0;--card:#ffffff;--ink:#33304b;--teal:#0ea5a5;--teal-d:#0b7c7c;--pink:#f472b6;--amber:#f59e0b;--line:#f3e4d8;--soft:#fdf1e7;--tap:48px}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--ink);padding-bottom:40px}
+header{position:sticky;top:0;z-index:9;background:var(--bg);padding:12px 16px 8px;display:flex;align-items:center;gap:10px;border-bottom:1px solid var(--line)}
+.logo{width:38px;height:38px;border-radius:12px;background:linear-gradient(135deg,var(--teal),#22d3ee);display:flex;align-items:center;justify-content:center;color:#fff;font-size:20px;box-shadow:0 3px 0 var(--teal-d)}
+.brand{font-weight:800;font-size:15px}
+header .sp{flex:1}
+.pill{border:1px solid var(--line);background:#fff;border-radius:999px;padding:7px 12px;font-size:12px;font-weight:700;color:var(--ink);cursor:pointer;min-height:var(--tap)}
+main{padding:14px 16px}
+#app{max-width:760px;margin:0 auto}
+.card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:18px;box-shadow:0 4px 0 rgba(243,228,216,.8);margin-bottom:14px}
+.tag{display:inline-block;background:#e0f5f5;color:var(--teal-d);font-size:12px;font-weight:800;border-radius:8px;padding:4px 10px;margin-bottom:10px}
+h1{font-size:23px;line-height:1.3;margin-bottom:8px}
+h2{font-size:19px;margin-bottom:6px}
+.sub{font-size:13.5px;color:#7a7690;line-height:1.7}
+.big{font-size:34px;font-weight:800;text-align:center;letter-spacing:1px}
+.ipa{text-align:center;color:#9a94b0;font-size:14px;margin-top:4px}
+.zh{text-align:center;color:#7a7690;font-size:14px;margin-top:2px}
+.btn{display:block;width:100%;min-height:var(--tap);border:none;border-radius:16px;padding:15px;font-size:16.5px;font-weight:800;cursor:pointer;margin-top:12px;font-family:inherit}
+.btn-teal{background:var(--teal);color:#fff;box-shadow:0 4px 0 var(--teal-d)}
+.btn-teal:active{transform:translateY(3px);box-shadow:0 1px 0 var(--teal-d)}
+.btn-soft{background:var(--soft);color:var(--ink);border:1px solid var(--line);box-shadow:0 4px 0 var(--line)}
+.btn-pink{background:var(--pink);color:#fff;box-shadow:0 4px 0 #d14d92}
+.btn[disabled]{opacity:.45;pointer-events:none}
+.opt{display:block;width:100%;min-height:var(--tap);text-align:left;background:#fff;border:2px solid var(--line);border-radius:14px;padding:13px 15px;font-size:16px;font-weight:700;margin-top:10px;cursor:pointer;font-family:inherit}
+.opt.ok{border-color:var(--teal);background:#e0f5f5}
+.opt.no{border-color:#ef4444;background:#fee2e2}
+.opt .k{display:inline-block;width:26px;height:26px;line-height:26px;text-align:center;border-radius:8px;background:var(--soft);margin-right:8px;font-size:13px}
+.rule-row{display:flex;gap:10px;margin-top:12px}
+.rule-card{flex:1;border-radius:16px;padding:12px 10px;text-align:center;font-size:12.5px;font-weight:700;line-height:1.6}
+.r1{background:#e0f5f5;color:var(--teal-d)}.r2{background:#fde8f3;color:#c2377f}.r3{background:#fef3d9;color:#a86a00}
+.rule-card b{font-size:17px;display:block;margin-bottom:2px}
+.blank-word{font-size:30px;font-weight:800;letter-spacing:6px;text-align:center;background:var(--soft);border:2px dashed var(--amber);border-radius:16px;padding:16px 8px;margin-top:10px}
+.blank-word .miss{color:var(--pink);border-bottom:3px solid var(--pink);padding:0 2px}
+.tiles{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:14px}
+.tile{width:52px;height:52px;border-radius:14px;background:#fff;border:2px solid var(--line);box-shadow:0 3px 0 var(--line);font-size:22px;font-weight:800;display:flex;align-items:center;justify-content:center;cursor:pointer}
+.tile:active{transform:translateY(2px);box-shadow:none}
+.tile.used{opacity:.25;pointer-events:none}
+.sentence{font-size:19px;font-weight:800;line-height:1.9;background:#f6fbff;border:1.5px solid #dbeafe;border-radius:14px;padding:14px;margin-top:10px}
+.sentence .gap{color:var(--pink);border-bottom:2.5px solid var(--pink);padding:0 4px;letter-spacing:2px}
+.progress{height:10px;background:var(--line);border-radius:10px;overflow:hidden;margin:10px 0 4px}
+.progress i{display:block;height:100%;background:linear-gradient(90deg,var(--teal),#22d3ee);border-radius:10px;transition:width .4s}
+.steps{display:flex;gap:6px;margin-top:12px}
+.step{flex:1;background:var(--soft);border-radius:10px;text-align:center;font-size:11.5px;font-weight:700;padding:8px 4px;color:#8a8496}
+.step b{display:block;font-size:16px;color:var(--teal)}
+.fb{border-radius:14px;padding:12px 14px;font-size:14px;font-weight:700;line-height:1.7;margin-top:12px;display:none}
+.fb.ok{display:block;background:#e0f5f5;color:var(--teal-d)}
+.fb.no{display:block;background:#fee2e2;color:#b91c1c}
+.note{font-size:12px;color:#9a94b0;line-height:1.7;margin-top:12px;border-top:1px dashed var(--line);padding-top:10px}
+.voice-note{background:#fdf0f8;border:1px solid #f5c6e0;color:#a3437c;font-size:12px;border-radius:12px;padding:9px 12px;line-height:1.6;margin-top:10px}
+.recall-card{background:#fff;border:2px solid var(--line);border-radius:16px;padding:16px;margin-top:12px}
+.recall-card .q{font-size:16px;font-weight:800;line-height:1.6}
+.recall-card .a{font-size:14.5px;line-height:1.8;color:var(--teal-d);margin-top:10px;display:none;background:#e0f5f5;border-radius:12px;padding:10px 12px}
+.recall-card.open .a{display:block}
+.recall-card .tap{font-size:12px;color:var(--pink);font-weight:700;margin-top:6px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+.mini{background:var(--soft);border-radius:14px;padding:12px;text-align:center;font-weight:800;font-size:15px}
+.mini small{display:block;font-weight:600;color:#8a8496;font-size:11.5px;margin-top:4px}
+.hidden{display:none}
+.taprow{display:flex;gap:8px;margin-top:12px}
+.taprow .btn{margin-top:0}
+input.spellin{width:100%;border:2px solid var(--line);border-radius:14px;padding:13px;font-size:18px;font-weight:800;letter-spacing:3px;text-align:center;margin-top:12px;font-family:inherit;outline:none}
+input.spellin:focus{border-color:var(--teal)}
+.star{color:var(--amber)}
+.paper{background:linear-gradient(180deg,#fffdf8,#fff);border:1px solid #ecdccf;border-radius:18px;padding:14px 12px;box-shadow:inset 0 0 0 1px #fff}
+.paper-line{min-height:50px;padding:10px 8px;border-bottom:1px solid #dbe7ef;font:700 16px/1.75 "Segoe Print","Comic Sans MS",sans-serif;letter-spacing:.2px}
+.paper-line:last-child{border-bottom:0}.paper-line small{display:block;color:#8a8496;font:600 11px/1.4 -apple-system,"PingFang SC",sans-serif}
+.hot{border:0;border-bottom:3px solid #ef4444;background:#fff2f2;color:#b91c1c;border-radius:7px;padding:1px 5px;font:800 16px/1.5 inherit;cursor:pointer;min-height:36px}
+.hot:focus-visible,.btn:focus-visible,.opt:focus-visible,.pill:focus-visible{outline:3px solid #2563eb;outline-offset:2px}
+.paper-help{display:none;margin-top:12px;border-left:5px solid var(--amber);border-radius:14px;background:#fff8df;padding:13px 14px;line-height:1.75;font-size:14px}
+.paper-help.show{display:block}.paper-help b{color:#9a5e00}
+.future-stage{border-radius:19px;padding:14px;background:linear-gradient(145deg,#edfafa,#fff8e5);border:1px solid #cde7e7;margin-top:12px}
+.future-scene{font-size:17px;font-weight:800;line-height:1.65;text-align:center;padding:10px}
+.future-switch{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}
+.future-track{border:2px solid var(--line);border-radius:16px;background:#fff;padding:12px;text-align:center;min-height:112px;transition:border-color .25s,transform .45s,background .25s}
+.future-track.active{border-color:var(--teal);background:#e8fbfb;transform:translateY(-3px)}
+.future-track strong{display:block;color:var(--teal-d);font-size:17px;margin-bottom:5px}.future-track span{font-size:12.5px;line-height:1.55;color:#6e687d}
+.chunks{display:flex;flex-wrap:wrap;justify-content:center;gap:7px;margin:14px 0 4px}
+.chunk{border-radius:10px;padding:8px 10px;background:#fff;border:1px solid var(--line);font-weight:800;transition:transform .45s,background .25s}.chunk.hotchunk{background:#fff0d5;color:#8a5900;transform:translateY(-4px)}
+.gap-chip{display:flex;align-items:flex-start;gap:9px;padding:9px 0;border-bottom:1px dashed var(--line);font-size:13px;line-height:1.55}.gap-chip:last-child{border:0}.status-open{color:#b91c1c;font-weight:800}.status-done{color:var(--teal-d);font-weight:800}
+.sync-status{margin-top:9px;min-height:20px;color:var(--teal-d);font-size:13px;font-weight:700;text-align:center}
+@media(max-width:390px){header{padding-left:12px;padding-right:12px}.brand{font-size:13px}.rule-row{flex-direction:column}.future-switch{grid-template-columns:1fr}.steps{display:grid;grid-template-columns:repeat(3,1fr)}.taprow{flex-direction:column}.paper-line{font-size:15px}.hot{font-size:15px}}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
+</style>
+</head>
+<body data-child="eddey">
+<header>
+  <div class="logo">🐝</div>
+  <div class="brand">Eddey · 三单拼写 &amp; 将来时修复站</div>
+  <div class="sp"></div>
+  <button class="pill" id="soundToggle">声</button>
+  <button class="pill" onclick="go('records')">学习档案</button>
+</header>
+<main id="app"></main>
+<template id="lessonPhaseContract">
+  <section data-phase="independent"></section>
+  <section data-phase="transfer"></section>
+</template>
+<script src="../assets/learning-sync.js"></script>
+<script>
+(function(){
+'use strict';
+const APP_ID='eddey-3s-spelling-lab-20260731';
+const VERSION='2.0.0';
+const STORAGE_KEY='study:eddey:'+APP_ID+':v2';
+const OLD_STORAGE_KEY='study:eddey:'+APP_ID+':v1';
+const MATERIAL='2026-07-31 老师听写与后续反馈 · 教材连续书页72—78（Lesson 21—22）';
+const AUDIO_DIR='audio/eddey_3s_spelling_lab_20260731/';
+const FUTURE_AUDIO_DIR='audio/eddey_future_tense_20260730/';
+const LESSON_BLUEPRINT=Object.freeze({
+ appId:APP_ID,
+ child:'eddey',
+ source:'2026-07-31老师听写原卷、老师后续反馈、教材原扫描连续书页72—78',
+ courseDate:'2026-07-31',
+ currentGap:'三单词尾规则、重点词块拼写，以及 will do 与 be going to do 的用途和结构容易混用',
+ observableOutcome:'能解释规则并在无提示检测中正确拼写目标词、按场景选择将来时且保持动词原形',
+ knowledgeMechanism:'先识别词尾或将来场景，再选择规则轨道，最后检查词形与动词原形',
+ primaryInteraction:'点击匿名错题卷定点讲解，并切换将来时双轨完成场景分流',
+ audio:'pending',
+ surprise:'future-rail-switch',
+ surpriseTrigger:'点击 will 与 be going to 轨道，观察用途、be 与动词原形同步变化',
+ phases:['teach','guided','recall','independent','repair','transfer']
+});
+const DAILY_SURPRISES=Object.freeze([
+ '把 around 和 earth 各分块拼 3 遍。',
+ '说一个 will 预测句，再说一个 be going to 计划句。',
+ '把 study、fly、pay 分成两条 y 结尾规则轨道。',
+ '快速口答：I am、he is、they are，再接 going to。',
+ '闭眼拼 school，再检查 sch + oo + l。'
+]);
+function beijingDateKey(){
+ const parts=new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Shanghai',year:'numeric',month:'2-digit',day:'2-digit'}).formatToParts(new Date());
+ const values=Object.fromEntries(parts.map(function(p){return [p.type,p.value];}));
+ return values.year+'-'+values.month+'-'+values.day;
+}
+function stableIndex(value,length){let hash=0x811c9dc5;for(let i=0;i<value.length;i++){hash^=value.charCodeAt(i);hash=Math.imul(hash,0x01000193);}return (hash>>>0)%length;}
+const dailySurpriseKey=LESSON_BLUEPRINT.appId+'|'+LESSON_BLUEPRINT.child+'|'+beijingDateKey();
+const dailySurprise=DAILY_SURPRISES[stableIndex(dailySurpriseKey,DAILY_SURPRISES.length)];
+/* ============ 数据 ============ */
+/* 三单特训词：wrong 取自老师批改的真实错形 */
+const WORDS=[
+ {base:'study',form:'studies',rule:'ies',wrong:'studyes',tip:'辅音 d + y → 把 y 变 i 再加 es',audio:'w-studies.mp3',zh:'学习'},
+ {base:'open',form:'opens',rule:'s',wrong:'openes',tip:'open 是普普通通的动词，直接 +s 就够啦，不用加 e',audio:'w-opens.mp3',zh:'打开'},
+ {base:'fly',form:'flies',rule:'ies',wrong:'flys',tip:'辅音 l + y → y 变 i 加 es；不能直接只加 s',audio:'w-flies.mp3',zh:'飞'},
+ {base:'catch',form:'catches',rule:'es',wrong:'catchs',tip:'ch 结尾要 +es',audio:'w-catches.mp3',zh:'接住'},
+ {base:'guess',form:'guesses',rule:'es',wrong:'guesss',tip:'ss 结尾要 +es',audio:'w-guesses.mp3',zh:'猜'},
+ {base:'fix',form:'fixes',rule:'es',wrong:'fixs',tip:'x 结尾要 +es',audio:'w-fixes.mp3',zh:'修理'},
+ {base:'have',form:'has',rule:'special',wrong:'haves',tip:'have 最调皮，整个变成 has',audio:'w-has.mp3',zh:'有'},
+ {base:'pay',form:'pays',rule:'s',wrong:'paies',tip:'元音 a + y 不变！只加 s（pays / says / plays）',audio:'w-pays.mp3',zh:'付钱'},
+ {base:'clean',form:'cleans',rule:'s',wrong:'cleanes',tip:'直接 +s：My mum cleans the room.',audio:'w-cleans.mp3',zh:'打扫'}
+];
+/* 拼写四小强：miss 为挖空字母 */
+const SPELL=[
+ {w:'around',show:'ar__nd',miss:'ou',cn:'围绕；在……周围',sent:'The moon goes around the earth.',wrong:'arond / aroud',audio:'p-around.mp3'},
+ {w:'earth',show:'ear__',miss:'th',cn:'地球',sent:'The moon goes around the earth.',wrong:'eath / earh',audio:'p-earth.mp3'},
+ {w:'live',show:'l__e',miss:'iv',cn:'活着；生活',sent:'A fish needs water to live.',wrong:'leave（这是"离开"，别搞混）',audio:'p-live.mp3'},
+ {w:'school',show:'sch__l',miss:'oo',cn:'学校',sent:'He goes to school five days a week.',wrong:'shool / schol',audio:'p-school.mp3'}
+];
+/* 听写五句（老师原卷） */
+const DICT=[
+ {t:'My mum cleans the room every day.',gaps:['cleans'],cn:'我妈妈每天打扫房间。',audio:'s1-mum-cleans.mp3'},
+ {t:'The moon goes around the earth.',gaps:['around','earth'],cn:'月亮绕着地球转。',audio:'s2-moon-earth.mp3'},
+ {t:'He always sleeps after nine o\'clock.',gaps:['always'],cn:'他总是九点后睡觉。',audio:'s3-always-sleeps.mp3'},
+ {t:'A fish needs water to live.',gaps:['live'],cn:'鱼需要水才能活。',audio:'s4-fish-live.mp3'},
+ {t:'He goes to school five days a week.',gaps:['school'],cn:'他一周上学五天。',audio:'s5-school.mp3'}
+];
+/* 公开页面只做匿名数字还原，不上传儿童手写原图。 */
+const PAPER_ERRORS=[
+ {id:'studies',wrong:'studyes',right:'studies',group:'三单 y→ies',why:'study 的 y 前是辅音 d，所以去 y，再加 ies。'},
+ {id:'opens',wrong:'openes',right:'opens',group:'三单直接 +s',why:'open 不以 s/x/ch/sh/o 结尾，直接加 s，不能多塞 e。'},
+ {id:'flies',wrong:'flys',right:'flies',group:'三单 y→ies',why:'fly 的 y 前是辅音 l，所以 fly→flies。'},
+ {id:'has',wrong:'haves',right:'has',group:'不规则三单',why:'have 是特殊变化：he/she/it has。'},
+ {id:'around',wrong:'aroud',right:'around',group:'词块拼写',why:'around 要保住中间的 ou，再接 nd。'},
+ {id:'earth',wrong:'eathe',right:'earth',group:'词块拼写',why:'earth 结尾是 th；先拼 ear，再接 th。'},
+ {id:'always',wrong:'often',right:'always',group:'听意辨词',why:'原句意思是“总是九点后睡”，这里要写 always，不是 often。'},
+ {id:'live',wrong:'leave',right:'live',group:'词义辨析',why:'live 是“活着”；leave 是“离开”。鱼需要水才能 live。'},
+ {id:'school',wrong:'shool',right:'school',group:'词块拼写',why:'school 开头是 sch，里面保住 oo：s-c-h-o-o-l。'}
+];
+const FUTURE_SCENARIOS=[
+ {id:'future-will-predict',scene:'天气预报告诉我们：明天会下雨。',mode:'will',sentence:'It will rain tomorrow.',audio:'dca3f592.mp3',why:'这是对将来的预测，用 will + rain。will 后的 rain 不加 s。'},
+ {id:'future-plan-cake',scene:'我已经计划好，周末要买一个蛋糕。',mode:'going',sentence:'I am going to buy a cake.',audio:'34bd227d.mp3',why:'这是提前想好的计划，用 I am going to + buy。'},
+ {id:'future-will-promise',scene:'朋友需要帮助，我当场承诺：“我会帮你。”',mode:'will',sentence:'I will help you.',audio:'7c769ef5.mp3',why:'这是承诺，用 will + help。'},
+ {id:'future-plan-visit',scene:'我们已经安排好周末去看奶奶。',mode:'going',sentence:'We are going to visit grandma this weekend.',audio:'4b0638bd.mp3',why:'这是已经安排好的计划；We 后用 are going to + visit。'}
+];
+const RECALL=[
+ {q:'三单变身三条规则，说得出来吗？',a:'① 一般直接 +s（opens/cleans）② s/x/ch/sh 结尾 +es（guesses/fixes/catches）③ 辅音+y → 变 i 加 es（studies/flies）'},
+ {q:'open 的三单是 opens 还是 openes？',a:'opens！open 直接 +s。openes 是老师批改过的错形，多塞了一个 e。'},
+ {q:'study 和 fly 的三单怎么变？pay 呢？',a:'study→studies、fly→flies（辅音+y 变 ies）；但 pay→pays，因为 a 是元音，元音+y 只 +s。'},
+ {q:'have 的三单是什么？',a:'has，不规则，整个换掉，不能写 haves。'},
+ {q:'around / earth 最容易丢哪几个字母？',a:'around 中间的 ou；earth 结尾的 th。口诀：月亮 around 有 ou，地球 earth 长尾巴 th。'},
+ {q:'live 和 leave 怎么分？',a:'live=活着（A fish needs water to live.）；leave=离开。听写句里是"活"，写 live。'},
+ {q:'will 和 be going to 分别什么时候用？',a:'will 更常表示预测、临时决定或承诺；be going to 更常表示已经决定好的计划、打算，或眼前有迹象的预测。'},
+ {q:'两种将来时后面的动作词怎么写？',a:'都用动词原形：will rain / is going to rain。不能写 will rains，也不能写 going to raining。'},
+ {q:'be going to 里的 be 怎么选？',a:'跟主语走：I am；he/she/it is；you/we/they are。'}
+];
+const QUIZ=[
+ {id:'q-studies',skill:'studies',cat:'三单',q:'He ___ English every day.（study）',opts:['studys','studies','studyes'],a:1,why:'辅音+y → y变i加es：studies。',repair:'先看 study 的最后两个字母 dy。d 是辅音，所以划掉 y，换成 ies。'},
+ {id:'q-opens',skill:'opens',cat:'三单',q:'The shop ___ at eight.（open）',opts:['openes','opens','openies'],a:1,why:'open 直接 +s：opens。',repair:'open 不是 s/x/ch/sh/o 结尾，也没有辅音+y，走最普通的“直接+s”轨道。'},
+ {id:'q-flies',skill:'flies',cat:'三单',q:'A bird ___ in the sky.（fly）',opts:['flys','flies','flyes'],a:1,why:'fly → flies（y变i加es）。',repair:'fly 的 y 前面是辅音 l：划掉 y，换成 ies。'},
+ {id:'q-has',skill:'has',cat:'三单',q:'She ___ breakfast at seven.（have）',opts:['haves','has','hase'],a:1,why:'have 不规则 → has。',repair:'have 不走普通加词尾轨道。看到 he/she/it，直接换成 has。'},
+ {id:'q-always',skill:'always',cat:'听义辨词',q:'He ___ sleeps after nine o\'clock.（总是）',opts:['often','always','usually'],a:1,why:'“总是”是 always；often 是“经常”。',repair:'先看中文频率意思：总是=always，经常=often，通常=usually。'},
+ {id:'q-pays',skill:'pays',cat:'三单',q:'He ___ for the book.（pay）',opts:['paies','pays','payes'],a:1,why:'元音+y 只 +s：pays。',repair:'pay 的 y 前面是元音 a，所以 y 不变，直接加 s。'},
+ {id:'q-around',skill:'around',cat:'拼写',q:'The moon goes ar__nd the earth.',opts:['ou','o','au'],a:0,why:'around 中间是 ou。',repair:'把词切成 a + round；round 里一定有 ou。'},
+ {id:'q-earth',skill:'earth',cat:'拼写',q:'The moon goes around the ear__.',opts:['th','f','te'],a:0,why:'earth 结尾是 th。',repair:'先写 ear，再接 th：ear + th = earth。'},
+ {id:'q-live',skill:'live',cat:'拼写',q:'A fish needs water to ___.',opts:['leave','live','lif'],a:1,why:'"活着"是 live；leave 是"离开"。',repair:'先看句意。鱼需要水才能“活着”，选 live；leave 是离开。'},
+ {id:'q-school',skill:'school',cat:'拼写',q:'He goes to sch__l five days a week.',opts:['oo','o','u'],a:0,why:'school 中间是 oo。',repair:'按字母块记：sch + oo + l。'},
+ {id:'q-future-will',skill:'future-choice',cat:'将来时',q:'I think Tom ___ win.',opts:['will','is going to','will to'],a:0,why:'I think 是预测，用 will + win。',repair:'教材把“预测/承诺”放到 will 轨道；will 后直接接动词原形。'},
+ {id:'q-future-plan',skill:'future-choice',cat:'将来时',q:'Lina\'s birthday is coming. I ___ buy a cake.',opts:['will to','am going to','am going'],a:1,why:'已经决定买蛋糕，是计划：am going to + buy。',repair:'教材把“已经决定/计划”放到 be going to 轨道；I 后的 be 是 am。'},
+ {id:'q-future-be-he',skill:'future-choice',cat:'将来时',q:'He ___ play football tomorrow.（已经计划好）',opts:['am going to','is going to','are going to'],a:1,why:'He 搭配 is：He is going to play。',repair:'先选 be：I am；he/she/it is；you/we/they are。'},
+ {id:'q-future-be-they',skill:'future-choice',cat:'将来时',q:'They ___ swim next week.（已经计划好）',opts:['is going to','will to','are going to'],a:2,why:'They 搭配 are：They are going to swim。',repair:'They 是复数，be 要用 are；going to 后接 swim 原形。'},
+ {id:'q-future-base',skill:'future-choice',cat:'将来时',q:'The weather report says it ___ tomorrow.',opts:['will rains','will rain','is going to raining'],a:1,why:'will 后接 rain 原形：will rain。',repair:'两条将来时轨道的最后一节车厢都必须是动词原形。'},
+ {id:'q-future-transfer',skill:'future-choice',cat:'迁移',q:'We made the plan yesterday. We ___ visit grandma this weekend.',opts:['will to','are going to','are going'],a:1,why:'昨天已做好计划，用 are going to + visit。',repair:'抓“made the plan yesterday”：已经计划好，所以选 be going to。',transfer:true}
+];
+/* ============ 基础 ============ */
+const app=document.getElementById('app');
+let soundOn=localStorage.getItem('study:eddey:ui-sound')!=='0';
+let S=load();
+function seedInitial(s){
+ if(!s.wrongbook)s.wrongbook={};
+ PAPER_ERRORS.forEach(function(x){if(!s.wrongbook[x.id])s.wrongbook[x.id]={skill:x.id,label:x.right,status:'open',wrongCount:1,rightStreak:0,correctVariants:{},transferPassed:false,source:'2026-07-31老师批改原卷',hint:x.why};});
+ if(!s.wrongbook['future-choice'])s.wrongbook['future-choice']={skill:'future-choice',label:'will / be going to',status:'open',wrongCount:1,rightStreak:0,correctVariants:{},transferPassed:false,source:'2026-07-31老师后续反馈',hint:'先判断预测/承诺还是已有计划，再检查 am/is/are 与动词原形。'};
+ Object.keys(s.wrongbook).forEach(function(k){s.wrongbook[k].correctVariants=s.wrongbook[k].correctVariants||{};});
+ return s;
+}
+function load(){
+ try{const s=JSON.parse(localStorage.getItem(STORAGE_KEY));if(s&&s.v===VERSION)return seedInitial(s)}catch(e){}
+ try{const old=JSON.parse(localStorage.getItem(OLD_STORAGE_KEY));if(old&&old.attempts){old.v=VERSION;old.migratedAt=Date.now();old.wrongbook=old.wrongbook||{};return seedInitial(old)}}catch(e){}
+ return seedInitial({v:VERSION,done:{},attempts:[],wrong:{},wrongbook:{},spellDone:{},dicDone:{},verbSeen:{},created:Date.now()});
+}
+function save(){localStorage.setItem(STORAGE_KEY,JSON.stringify(S));}
+function recordAttempt(kind,key,ok,meta){
+ meta=meta||{};const now=Date.now();const skill=meta.skill||key;
+ const answer=meta.answer||'',expected=meta.expected||'';
+ const syncHint=!ok&&answer?'孩子答案：'+answer+'；正确答案：'+expected+'；讲解：'+(meta.hint||''):meta.hint||'';
+ S.attempts.push({id:APP_ID+'-'+now+'-'+Math.random().toString(36).slice(2,7),ts:now,t:now,kind,activity:'attempt',subject:'英语',topic:meta.topic||(kind==='future'||meta.cat==='将来时'||meta.cat==='迁移'?'一般将来时结构':'三单与听写拼写'),key,skill,prompt:meta.prompt||key,answer,correct_answer:expected,ok:!!ok,hint:syncHint,source:MATERIAL,transfer:!!meta.transfer});
+ const w=S.wrongbook[skill]||{skill,label:meta.label||skill,status:'open',wrongCount:0,rightStreak:0,correctVariants:{},transferPassed:false,source:'软件独立作答',hint:meta.hint||''};
+ w.correctVariants=w.correctVariants||{};
+ if(!ok){w.wrongCount++;w.rightStreak=0;w.correctVariants={};w.transferPassed=false;w.status='open';w.lastWrongAt=now;w.lastAnswer=meta.answer||'';w.hint=meta.hint||w.hint;}
+ else if(w.status==='open'){w.correctVariants[key]=1;w.rightStreak=Object.keys(w.correctVariants).length;if(meta.transfer)w.transferPassed=true;if(w.rightStreak>=2&&w.transferPassed){w.status='resolved';w.resolvedAt=now;}}
+ S.wrongbook[skill]=w;S.wrong[key]=ok?0:(S.wrong[key]||0)+1;save();
+}
+function el(html){app.innerHTML=html;window.scrollTo(0,0);}
+function tone(k){if(!soundOn)return;try{const c=new (window.AudioContext||window.webkitAudioContext)();const o=c.createOscillator();const g=c.createGain();o.connect(g);g.connect(c.destination);o.frequency.value=k==='ok'?660:220;g.gain.value=.08;o.start();setTimeout(()=>{o.stop();c.close()},k==='ok'?120:220)}catch(e){}}
+function playFile(fn,rate){
+ const a=new Audio(AUDIO_DIR+fn);a.playbackRate=rate||1;
+ a.onerror=function(){/* 开发自测兜底 */};
+ const p=a.play();if(p&&p.catch)p.catch(()=>{});
+}
+function playFuture(fn,rate){const a=new Audio(FUTURE_AUDIO_DIR+fn);a.playbackRate=rate||1;const p=a.play();if(p&&p.catch)p.catch(()=>{});}
+/* ============ 页面 ============ */
+function go(m){({home,paper,teach,verbs,spell,recall,futureTeach,futureGuided,dictation,quiz,quizRepair,records}[m]||home)();}
+function head(tag,title,sub,back){
+ return (back?'<button class="pill" onclick="go(\'home\')" style="margin-bottom:10px">←</button>':'')
+ +'<div class="card"><span class="tag">'+tag+'</span><h2>'+title+'</h2>'
+ +(sub?'<div class="sub">'+sub+'</div>':'')+'</div>';
+}
+function home(){
+ const d=Object.keys(S.done).filter(k=>S.done[k]).length;
+ el(
+ '<div class="card" data-phase="teach"><span class="tag">老师反馈定点修复 · 先教后测</span>'
+ +'<h1>三单拼写 + 将来时修复站</h1>'
+ +'<div class="sub">先修复原默写中的 <b>studies、opens、flies、around、earth、live、school</b>，再分清 <b>will do</b> 和 <b>be going to do</b>。教材原页第72—78页已核对。</div>'
+ +'<div class="rule-row">'
+ +'<div class="rule-card r1"><b>+s</b>open→opens<br>普通动词直接加</div>'
+ +'<div class="rule-card r2"><b>+es</b>catch→catches<br>s/x/ch 结尾</div>'
+ +'<div class="rule-card r3"><b>y→ies</b>study→studies<br>辅音+y</div>'
+ +'</div>'
+ +'<div class="sentence">The moon goes <span class="gap">around</span> the <span class="gap">earth</span>. 🌙</div>'
+ +'<button class="btn btn-soft" onclick="go(\'paper\')">先打开可点击错题卷</button>'
+ +'<button class="btn btn-teal" onclick="go(\'teach\')">开始完整复习 →</button>'
+ +'<div class="steps"><div class="step"><b>1</b>看原错</div><div class="step"><b>2</b>修三单</div><div class="step"><b>3</b>练拼写</div><div class="step"><b>4</b>分将来</div><div class="step"><b>5</b>再听写</div><div class="step"><b>6</b>最后测</div></div>'
+ +'<div class="note" data-micro-surprise="daily">今日小彩蛋：'+dailySurprise+'</div>'
+ +'<div class="voice-note">🔊 音频待验收（手机）：单词与句子用统一预录音，首次播放前请先点任意按钮解锁声音。</div>'
+ +'</div>'
+ +'<div class="card"><div class="sub">完成进度 '+d+'/8</div><div class="progress"><i style="width:'+(Math.min(d,8)/8*100)+'%"></i></div>'
+ +'<div class="grid2">'
+ +'<div class="mini">📚 材料<small>'+MATERIAL+'</small></div>'
+ +'<div class="mini">🎯 目标<small>短板词能拼对；能说明并正确使用两种将来时</small></div>'
+ +'</div></div>');
+}
+function paper(){
+ const rows=[
+  'catches · <button class="hot" onclick="paperExplain(\'studies\')">studyes</button> · <button class="hot" onclick="paperExplain(\'has\')">haves</button> · <button class="hot" onclick="paperExplain(\'opens\')">openes</button> · guesses',
+  'fixes · studying · stopping · waiting · pays · <button class="hot" onclick="paperExplain(\'flies\')">flys</button>',
+  'The moon goes <button class="hot" onclick="paperExplain(\'around\')">aroud</button> the <button class="hot" onclick="paperExplain(\'earth\')">eathe</button>.',
+  'He <button class="hot" onclick="paperExplain(\'always\')">often</button> sleeps after nine o\'clock.',
+  'A fish needs water to <button class="hot" onclick="paperExplain(\'live\')">leave</button>.',
+  'He goes to <button class="hot" onclick="paperExplain(\'school\')">shool</button> five days a week.'
+ ];
+ el(head('可点击错题卷','点红色错词，立即打开对应讲解','按原默写位置匿名还原；为保护儿童隐私，正式公开网页不上传手写照片。',1)
+ +'<div class="card" data-phase="teach"><div class="paper">'+rows.map(function(r){return '<div class="paper-line">'+r+'</div>';}).join('')+'</div><div class="paper-help" id="paperHelp" aria-live="polite"></div>'
+ +'<button class="btn btn-teal" onclick="finishStage(\'paper\');go(\'teach\')">错点看完，开始系统复习 →</button></div>');
+}
+window.paperExplain=function(id){const x=PAPER_ERRORS.find(function(e){return e.id===id});const box=document.getElementById('paperHelp');if(!x||!box)return;box.className='paper-help show';box.innerHTML='<b>'+x.group+'｜<s>'+x.wrong+'</s> → '+x.right+'</b><br>'+x.why;box.scrollIntoView({block:'nearest',behavior:'smooth'});};
+function teach(){
+ el(head('第 1 站 · 看规则','三单三条变身规则','教材 L21：主语是"他/她/它"（三单）时，动词要变身。',1)
+ +'<div class="card">'
+ +'<div class="rule-card r1" style="text-align:left;margin-bottom:10px"><b>规则① 直接 +s</b>open→opens · clean→cleans · sleep→sleeps<br><span style="font-weight:600">大多数动词走这条，最省事。open 不要画蛇添足写成 openes！</span></div>'
+ +'<div class="rule-card r2" style="text-align:left;margin-bottom:10px"><b>规则② +es</b>s / x / ch / sh 结尾：guess→guesses · fix→fixes · catch→catches · wash→washes<br><span style="font-weight:600">这些词"咝咝响"，一个 s 不够，要 es。</span></div>'
+ +'<div class="rule-card r3" style="text-align:left;margin-bottom:10px"><b>规则③ 辅音+y → ies</b>study→studies · fly→flies<br><span style="font-weight:600">但是！元音+y（ay/ey/oy）不变：pay→pays · say→says · play→plays。</span></div>'
+ +'<div class="rule-card" style="background:#ede9fe;color:#5b21b6;text-align:left"><b>特别嘉宾 have→has</b>整个换掉，haves 不存在！</div>'
+ +'</div>'
+ +'<button class="btn btn-teal" onclick="finishStage(\'teach\');go(\'verbs\')">我会了，去变身 →</button>');
+}
+let vIdx=0,vStage=0;
+function verbs(){
+ vIdx=0;vStage=0;verbCard();
+}
+function verbCard(){
+ const w=WORDS[vIdx];
+ const seen=Object.keys(S.verbSeen).length;
+ el(head('第 2 站 · 三单变身机','第 '+(vIdx+1)+' / '+WORDS.length+' 个 · 先在心里变，再点开核对',null,1)
+ +'<div class="card">'
+ +'<div class="tag">原形</div>'
+ +'<div class="big">'+w.base+'</div>'
+ +'<div class="zh">'+w.zh+' · He / She / It ______</div>'
+ +(vStage===0?
+   '<div class="taprow"><button class="btn btn-soft" onclick="playFile(\''+w.audio+'\')">🔊 听答案音</button>'
+   +'<button class="btn btn-teal" onclick="verbShow()">我变好了，核对 →</button></div>'
+  :'<div class="blank-word" style="margin-top:14px">'+w.form+'</div>'
+   +'<div class="sub" style="margin-top:10px">💡 '+w.tip+'</div>'
+   +'<div class="sub" style="color:#b91c1c;margin-top:6px">🚫 老师改过的错形：<s>'+w.wrong+'</s></div>'
+   +'<div class="fb" id="vfb"></div>'
+   +'<div class="taprow"><button class="btn btn-soft" onclick="verbMark(0)">还没记住</button>'
+   +'<button class="btn btn-teal" onclick="verbMark(1)">记住啦 →</button></div>')
+ +'</div>'
+ +'<div class="progress"><i style="width:'+((vIdx+1)/WORDS.length*100)+'%"></i></div>');
+}
+window.verbShow=function(){vStage=1;S.verbSeen[WORDS[vIdx].base]=1;save();verbCard();playFile(WORDS[vIdx].audio);};
+window.verbMark=function(ok){
+ const w=WORDS[vIdx];recordAttempt('verb',w.form,!!ok,{skill:w.form,label:w.form,prompt:w.base+' 的第三人称单数',answer:ok?w.form:'还没记住',expected:w.form,hint:w.tip});
+ tone(ok?'ok':'no');
+ if(vIdx<WORDS.length-1){vIdx++;vStage=0;verbCard();}
+ else{finishStage('verbs');go('spell');}
+};
+let sIdx=0,sStage=0,sPicked=[];
+function spell(){sIdx=0;spellCard();}
+function spellCard(){
+ const w=SPELL[sIdx];
+ if(sStage===0){
+  el(head('第 3 站 · 拼写诊所','单词 '+(sIdx+1)+' / '+SPELL.length+' · 听一听，把缺的字母补上',null,1)
+  +'<div class="card">'
+  +'<div class="zh" style="font-size:16px;font-weight:800">'+w.cn+'</div>'
+  +'<div class="blank-word">'+w.show.replace(/_+/,'<span class="miss">?</span>')+'</div>'
+  +'<button class="btn btn-soft" onclick="playFile(\''+w.audio+'\')">🔊 听单词</button>'
+  +'<input class="spellin" id="spin" maxlength="'+w.w.length+'" placeholder="完整拼出这个单词" autocomplete="off" autocapitalize="off">'
+  +'<div class="fb" id="sfb"></div>'
+  +'<button class="btn btn-teal" onclick="spellCheck()">检查拼写 →</button>'
+  +'</div>');
+  setTimeout(()=>{const i=document.getElementById('spin');if(i)i.focus()},300);
+ }else{
+  el(head('第 3 站 · 拼写诊所',null,null,1)
+  +'<div class="card">'
+  +'<div class="big" style="color:var(--teal)">'+w.w+'</div>'
+  +'<div class="zh">'+w.cn+'</div>'
+  +'<div class="sentence">'+w.sent+'</div>'
+  +'<div class="sub" style="color:#b91c1c;margin-top:8px">🚫 常错：<s>'+w.wrong+'</s></div>'
+  +'<button class="btn btn-teal" onclick="spellNext()">'+(sIdx<SPELL.length-1?'下一个 →':'去回忆屋 →')+'</button>'
+  +'</div>');
+ }
+}
+window.spellCheck=function(){
+ const w=SPELL[sIdx];const v=(document.getElementById('spin').value||'').trim().toLowerCase();
+ const fb=document.getElementById('sfb');
+ if(v===w.w){fb.className='fb ok';fb.textContent='✅ 拼对啦！'+w.w+' = '+w.cn;tone('ok');recordAttempt('spell',w.w,true,{skill:w.w,label:w.w,prompt:'听音拼写：'+w.cn,answer:v,expected:w.w,hint:'关键字母：'+w.miss});S.spellDone[w.w]=1;save();sStage=1;setTimeout(spellCard,900);}
+ else{fb.className='fb no';fb.innerHTML='还差一点点！缺的字母是 <b>'+w.miss+'</b>，再试一次。';tone('no');recordAttempt('spell',w.w,false,{skill:w.w,label:w.w,prompt:'听音拼写：'+w.cn,answer:v,expected:w.w,hint:'关键字母：'+w.miss});}
+};
+window.spellNext=function(){if(sIdx<SPELL.length-1){sIdx++;sStage=0;spellCard();}else{finishStage('spell');go('recall');}};
+function recall(){
+ el(head('第 4 站 · 遮挡回忆','先说答案，再点开核对；可以反复翻回',null,1)
+ +'<div class="card" data-phase="recall">'+RECALL.map(function(c,i){
+  return '<div class="recall-card" id="rc'+i+'"><div class="q">'+(i+1)+'. '+c.q+'</div>'
+  +'<div class="tap" onclick="document.getElementById(\'rc'+i+'\').classList.toggle(\'open\')">先自己说，再点开 👆</div>'
+  +'<div class="a">'+c.a+'</div></div>';}).join('')
+ +'<button class="btn btn-teal" onclick="finishStage(\'recall\');go(\'futureTeach\')">回忆完成，去分清两种将来时 →</button></div>');
+}
+let futureMode='will',fIdx=0;
+function futureTeach(){
+ el(head('第 5 站 · 将来时双轨','先看用途，再看结构','教材 Lesson 22：will do 与 be going to do 都说将来，但使用场景不同。',1)
+ +'<div class="card" data-phase="teach"><div class="future-stage" data-surprise="future-rail-switch"><div class="future-scene">点一条轨道，看意思和句子结构一起变化</div>'
+ +'<div class="future-switch"><button class="future-track active" id="trackWill" onclick="futureDemo(\'will\')"><strong>will + 动词原形</strong><span>预测 · 临时决定 · 承诺</span></button><button class="future-track" id="trackGoing" onclick="futureDemo(\'going\')"><strong>am/is/are going to + 原形</strong><span>已经决定的计划 · 打算 · 明显迹象</span></button></div>'
+ +'<div class="chunks" id="futureChunks"><span class="chunk">It</span><span class="chunk hotchunk">will</span><span class="chunk">rain</span><span class="chunk">tomorrow</span></div>'
+ +'<div class="sentence" id="futureSentence">It will rain tomorrow.</div><div class="sub" id="futureWhy" style="margin-top:8px">天气预报是预测：will 后直接接 rain 原形。</div><button class="btn btn-soft" id="futureAudio" onclick="playFuture(\'dca3f592.mp3\')">听教材同类例句</button></div>'
+ +'<div class="voice-note">结构底线：I <b>am</b>，he/she/it <b>is</b>，you/we/they <b>are</b>；两条轨道最后都接<b>动词原形</b>。</div>'
+ +'<button class="btn btn-teal" onclick="finishStage(\'futureTeach\');go(\'futureGuided\')">我看懂了，开始分轨 →</button></div>');
+}
+window.futureDemo=function(mode){futureMode=mode;const will=mode==='will';document.getElementById('trackWill').classList.toggle('active',will);document.getElementById('trackGoing').classList.toggle('active',!will);document.getElementById('futureChunks').innerHTML=will?'<span class="chunk">It</span><span class="chunk hotchunk">will</span><span class="chunk">rain</span><span class="chunk">tomorrow</span>':'<span class="chunk">I</span><span class="chunk hotchunk">am</span><span class="chunk hotchunk">going to</span><span class="chunk">buy</span><span class="chunk">a cake</span>';document.getElementById('futureSentence').textContent=will?'It will rain tomorrow.':'I am going to buy a cake.';document.getElementById('futureWhy').textContent=will?'天气预报是预测：will 后直接接 rain 原形。':'已经想好的计划：I 配 am，going to 后接 buy 原形。';const b=document.getElementById('futureAudio');b.setAttribute('onclick',will?"playFuture('dca3f592.mp3')":"playFuture('34bd227d.mp3')");};
+function futureGuided(){fIdx=0;futureCard();}
+function futureCard(){
+ const f=FUTURE_SCENARIOS[fIdx];
+ el(head('第 6 站 · 场景分轨','第 '+(fIdx+1)+' / '+FUTURE_SCENARIOS.length+' 个场景','先说理由，再选择轨道。答错会留在原场景重教。',1)
+ +'<div class="card" data-phase="guided"><div class="future-scene">'+f.scene+'</div><div class="future-switch"><button class="future-track" onclick="futurePick(\'will\')"><strong>will + 原形</strong><span>预测 / 承诺 / 临时决定</span></button><button class="future-track" onclick="futurePick(\'going\')"><strong>be going to + 原形</strong><span>计划 / 打算 / 明显迹象</span></button></div><div class="fb" id="ffb"></div></div>');
+}
+window.futurePick=function(mode){
+ const f=FUTURE_SCENARIOS[fIdx],ok=mode===f.mode,fb=document.getElementById('ffb');
+ recordAttempt('future',f.id,ok,{skill:'future-choice',label:'will / be going to',topic:'一般将来时结构',prompt:f.scene,answer:mode,expected:f.mode,hint:f.why});
+ if(!ok){fb.className='fb no';fb.innerHTML='<b>先别跳下一题。</b><br>'+f.why+'<button class="btn btn-soft" onclick="futureCard()">返回同一场景再选一次</button>';tone('no');return;}
+ tone('ok');fb.className='fb ok';fb.innerHTML='✅ '+f.why+'<div class="sentence">'+f.sentence+'</div><button class="btn btn-soft" onclick="playFuture(\''+f.audio+'\')">听整句</button><button class="btn btn-teal" onclick="futureNext()">'+(fIdx<FUTURE_SCENARIOS.length-1?'下一个场景 →':'去听写训练 →')+'</button>';
+};
+window.futureNext=function(){if(fIdx<FUTURE_SCENARIOS.length-1){fIdx++;futureCard();}else{finishStage('futureGuided');go('dictation');}};
+let dIdx=0,dPlayed=0;
+function dictation(){dIdx=0;dictCard();}
+function dictCard(){
+ const d=DICT[dIdx];
+ let shown=d.t;
+ d.gaps.forEach(function(g){shown=shown.replace(new RegExp('\\b'+g+'\\b'),'<span class="gap">'+g.replace(/./g,'_')+'</span>');});
+ el(head('第 7 站 · 听写训练营','第 '+(dIdx+1)+' / '+DICT.length+' 句 · 先听音频，再在纸上写整句',null,1)
+ +'<div class="card">'
+ +'<div class="zh">'+d.cn+'</div>'
+ +'<div class="sentence">'+shown+'</div>'
+ +'<div class="taprow">'
+ +'<button class="btn btn-soft" onclick="dicPlay(1)">🔊 读一遍</button>'
+ +'<button class="btn btn-soft" onclick="dicPlay(0.75)">🐢 慢速听写</button>'
+ +'</div>'
+ +'<div class="sub" style="margin-top:10px">在纸上写出<b>完整句子</b>，写完后点"核对"。</div>'
+ +'<div class="fb" id="dfb"></div>'
+ +'<button class="btn btn-soft" onclick="dicShow()">核对原句</button>'
+ +'<div class="taprow hidden" id="dmarks"><button class="btn btn-soft" onclick="dicMark(0)">这句有错，回炉</button><button class="btn btn-teal" onclick="dicMark(1)">整句写对了 →</button></div></div>');
+}
+window.dicPlay=function(r){dPlayed++;playFile(DICT[dIdx].audio,r);};
+window.dicShow=function(){
+ const d=DICT[dIdx];const fb=document.getElementById('dfb');
+ fb.className='fb ok';fb.innerHTML='📖 '+d.t+'<br>重点词：<b>'+d.gaps.join('、')+'</b>，对照你的纸，写错就订正 3 遍。';
+ document.getElementById('dmarks').classList.remove('hidden');
+};
+window.dicMark=function(ok){
+ const d=DICT[dIdx];
+ if(ok){d.gaps.forEach(function(g){recordAttempt('dict','dict-'+(dIdx+1)+'-'+g,true,{skill:g,label:g,topic:'句子听写',prompt:d.cn,answer:'纸笔自报整句正确',expected:d.t,hint:'重点词：'+g});});}
+ else{recordAttempt('dict','dict-'+(dIdx+1),false,{skill:'dict-'+d.gaps.join('-'),label:d.gaps.join(' / '),topic:'句子听写',prompt:d.cn,answer:'纸笔自报仍有错',expected:d.t,hint:'重点词：'+d.gaps.join('、')});}
+ if(!ok){const fb=document.getElementById('dfb');fb.className='fb no';fb.innerHTML='先把 <b>'+d.gaps.join('、')+'</b> 分块拼一遍，再回到同一句重新听写。<button class="btn btn-soft" onclick="dictCard()">返回同一句重写</button>';tone('no');return;}
+ S.dicDone[dIdx]=1;save();tone('ok');if(dIdx<DICT.length-1){dIdx++;dictCard();}else{finishStage('dictation');go('quiz');}
+};
+let qIdx=0,qScore=0,qLock=false;
+function quiz(){qIdx=0;qScore=0;quizCard();}
+function quizCard(){
+ const q=QUIZ[qIdx];qLock=false;
+ el(head('第 8 站 · 混合检测','第 '+(qIdx+1)+' / '+QUIZ.length+' 题 · 不看提示，独立作答',null,1)
+ +'<div class="card" data-phase="'+(q.transfer?'transfer':'independent')+'"><span class="tag">'+q.cat+'</span>'
+ +'<div style="font-size:19px;font-weight:800;line-height:1.8;margin-top:4px">'+q.q+'</div>'
+ +q.opts.map(function(o,i){return '<button class="opt" id="opt'+i+'" onclick="answer('+i+')"><span class="k">'+'ABC'[i]+'</span>'+o+'</button>';}).join('')
+ +'<div class="fb" id="qfb"></div>'
+ +'<button class="btn btn-teal hidden" id="qnext" onclick="quizNext()">'+(qIdx<QUIZ.length-1?'下一题 →':'看成绩单 →')+'</button>'
+ +'</div>');
+}
+window.answer=function(i){
+ if(qLock)return;qLock=true;
+ const q=QUIZ[qIdx];const ok=i===q.a;
+ const fb=document.getElementById('qfb');
+ recordAttempt('quiz',q.id,ok,{skill:q.skill,label:q.skill,cat:q.cat,topic:q.cat==='将来时'||q.cat==='迁移'?'一般将来时结构':'三单与听写拼写',prompt:q.q,answer:q.opts[i],expected:q.opts[q.a],hint:q.why,transfer:true});
+ if(ok){document.getElementById('opt'+q.a).classList.add('ok');qScore++;tone('ok');fb.className='fb ok';fb.textContent='✅ '+q.why;document.getElementById('qnext').classList.remove('hidden');}
+ else{document.getElementById('opt'+i).classList.add('no');tone('no');fb.className='fb no';fb.innerHTML='先修刚才卡住的那一步，不直接看答案。<button class="btn btn-soft" onclick="go(\'quizRepair\')">打开定点重教</button>';}
+};
+function quizRepair(){const q=QUIZ[qIdx];el(head('定点重教 · '+q.cat,'只修刚才卡住的一步','看懂后会返回同一道原题，不会跳题。',1)+'<div class="card" data-phase="repair"><div class="rule-card r3" style="text-align:left"><b>修理方法</b>'+q.repair+'</div><div class="sentence">原题：'+q.q+'</div><button class="btn btn-teal" data-return-to-question="quiz" onclick="quizCard()">我看懂了，返回同一道题</button></div>');}
+window.quizNext=function(){
+ if(qIdx<QUIZ.length-1){qIdx++;quizCard();return;}
+ finishStage('quiz');
+ const pct=Math.round(qScore/QUIZ.length*100);
+ el(head('闯关成绩',null,null,1)
+ +'<div class="card" style="text-align:center">'
+ +'<div class="big">'+(pct>=80?'🏆':pct>=60?'💪':'📖')+'</div>'
+ +'<div class="big" style="font-size:26px;margin-top:8px">'+qScore+' / '+QUIZ.length+' 题</div>'
+ +'<div class="sub" style="margin-top:8px">'+(pct>=80?'三单、重点拼写和两种将来时都完成了一轮独立检测。是否真正掌握，还要看下一次无提示复测。':'没关系，错题已经进入 Eddey 的回炉记录；先回对应模块，再做下一轮。')+'</div>'
+ +'<div class="taprow"><button class="btn btn-soft" onclick="go(\'home\')">回首页</button>'
+ +'<button class="btn btn-teal" onclick="go(\'quiz\')">再闯一次</button></div>'
+ +'<button class="btn btn-pink" onclick="syncNow()">完成学习并同步 Neon</button><div class="sync-status" id="syncStatus"></div>'
+ +'</div>');
+};
+function finishStage(k){S.done[k]=true;save();}
+window.finishStage=finishStage;
+function records(){
+ const rows=S.attempts.slice(-30).reverse().map(function(a){
+  return '<div style="font-size:12.5px;padding:7px 0;border-bottom:1px dashed var(--line)">'+(a.ok?'✅':'❌')+' ['+a.kind+'] '+a.key+'<span style="color:#9a94b0"> · '+new Date(a.t).toLocaleString('zh-CN',{hour12:false})+'</span></div>';}).join('');
+ const gaps=Object.values(S.wrongbook||{}).sort(function(a,b){return a.status===b.status?0:a.status==='open'?-1:1;});
+ el(head('学习档案','本次练习记录','',1)
+ +'<div class="card">'
+ +'<div class="sub">完成环节：'+Object.keys(S.done).filter(k=>S.done[k]).join('、')+'（暂无）</div>'.replace('（暂无）',Object.keys(S.done).filter(k=>S.done[k]).length?'':'（暂无）')
+ +'<div class="sub" style="margin-top:6px">总作答：'+S.attempts.length+' 次 · 正确 '+S.attempts.filter(a=>a.ok).length+' 次</div>'
+ +'<div style="margin-top:12px"><b>错题与待修复知识点</b>'+gaps.map(function(g){return '<div class="gap-chip"><span>'+(g.status==='resolved'?'✅':'⏳')+'</span><div><b>'+g.label+'</b> · <span class="'+(g.status==='resolved'?'status-done':'status-open')+'">'+(g.status==='resolved'?'已完成两连对+迁移':'待回炉')+'</span><br><span class="sub">'+g.hint+'</span></div></div>';}).join('')+'</div>'
+ +'<div style="margin-top:10px">'+(rows||'<div class="sub">还没有作答记录。</div>')+'</div>'
+ +'<div class="taprow"><button class="btn btn-soft" onclick="dlJson()">导出 JSON</button>'
+ +'<button class="btn btn-soft" onclick="dlMd()">导出 Markdown</button></div>'
+ +'<button class="btn btn-pink" onclick="syncNow()">完成学习并同步 Neon</button><div class="sync-status" id="syncStatus"></div>'
+ +'</div>');
+}
+window.syncNow=async function(){
+ const status=document.getElementById('syncStatus');
+ if(!window.DDLearningSync){if(status)status.textContent='同步组件未加载，记录已保存在本机。';return;}
+ if(window.DDLearningSync.isTest()){if(status)status.textContent='当前是测试环境：不会写入正式 Neon。';return;}
+ window.DDLearningSync.setChild('eddey');
+ const saved=window.DDLearningSync.complete({kid:'eddey',subject:'英语',topic:'三单拼写与一般将来时修复',item:'完成本次复习',source:'apps/eddey_3s_spelling_lab_20260731.html',payload:{app_id:APP_ID,version:VERSION,course_date:'2026-07-31',attempts:S.attempts.length,open_gaps:Object.values(S.wrongbook||{}).filter(function(g){return g.status==='open'}).length}});
+ if(!saved){if(status)status.textContent='没有生成同步记录；本机记录仍保留。';return;}
+ if(status)status.textContent='正在同步…';const result=await window.DDLearningSync.flush();if(status)status.textContent=result&&result.ok&&!result.pending?'已同步到 Neon ✓':'已保存，联网后会自动补传。';
+};
+function dl(name,text,type){const b=new Blob([text],{type});const u=URL.createObjectURL(b);const a=document.createElement('a');a.href=u;a.download=name;a.click();URL.revokeObjectURL(u);}
+window.dlJson=function(){dl('eddey-3s-future-record.json',JSON.stringify({schema:'study-portal-eddey-v2',child:'eddey',app:APP_ID,version:VERSION,material:MATERIAL,exported:new Date().toISOString(),state:S},null,1),'application/json');};
+window.dlMd=function(){
+ let md='# Eddey 三单·拼写·将来时复习记录\n\n- 材料：'+MATERIAL+'\n- 作答：'+S.attempts.length+' 次，正确 '+S.attempts.filter(a=>a.ok).length+' 次\n\n| 时间 | 环节 | 内容 | 结果 |\n|---|---|---|---|\n';
+ S.attempts.forEach(function(a){md+='| '+new Date(a.t).toLocaleString('zh-CN',{hour12:false})+' | '+a.kind+' | '+a.key+' | '+(a.ok?'对':'错')+' |\n';});
+ dl('eddey-3s-future-report.md',md,'text/markdown');
+};
+document.getElementById('soundToggle').addEventListener('click',function(){soundOn=!soundOn;localStorage.setItem('study:eddey:ui-sound',soundOn?'1':'0');this.textContent=soundOn?'声':'静';if(soundOn)tone('ok');});
+document.getElementById('soundToggle').textContent=soundOn?'声':'静';
+Object.assign(window,{go,playFile,playFuture});
+if(window.DDLearningSync)window.DDLearningSync.setChild('eddey');
+save();
+home();
+})();
+</script>
+</body>
+</html>

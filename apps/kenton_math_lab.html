@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<script src="../assets/learning-sync.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>哥哥数学 · 四下探索馆</title>
+<style>
+:root{--c:#2f6fb3;--cd:#225182;--cbg:#e8f0fa;--gold:#f2b632;--golddk:#c98a00;--ink:#23303a;--paper:#eef5fc;
+ --card:#fff;--line:#dbe7f3;--green:#2e9c54;--greenbg:#e9f7ee;--red:#e1553f;--muted:#7d8a96;--purple:#7b54c0;}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+body{margin:0;font-family:'LXGW WenKai Screen','PingFang SC','Microsoft YaHei',system-ui,sans-serif;
+ background:radial-gradient(circle at 10% 4%,#d3e6fb 0,transparent 40%),var(--paper);color:var(--ink);min-height:100vh;padding-bottom:46px;}
+.wrap{max-width:620px;margin:0 auto;padding:12px;}
+.top{display:flex;align-items:center;gap:10px;padding:8px 2px;}
+.badge{background:var(--c);color:#fff;font-weight:800;font-size:17px;padding:6px 13px;border-radius:13px 13px 13px 4px;box-shadow:0 4px 0 var(--cd);}
+.top h1{font-size:16px;margin:0;flex:1;}.home{text-decoration:none;font-size:20px;background:#fff;width:38px;height:38px;border-radius:11px;display:grid;place-items:center;color:var(--ink);box-shadow:0 3px 0 #cddcec;}
+.intro{font-size:13px;color:var(--muted);line-height:1.7;background:#fff;border:2px solid var(--line);border-radius:14px;padding:12px 14px;margin:8px 0;}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.tile{background:#fff;border:2px solid var(--line);border-top:6px solid var(--c);border-radius:18px;padding:15px 11px;cursor:pointer;box-shadow:0 6px 0 #e1ecf7;text-align:center;}
+.tile:active{transform:translateY(3px);box-shadow:0 3px 0 #e1ecf7;}
+.tile .ic{font-size:34px;}.tile .nm{font-weight:800;font-size:15px;margin-top:7px;color:var(--cd);}.tile .ds{font-size:11px;color:var(--muted);margin-top:3px;line-height:1.4;}
+.card{background:var(--card);border:2px solid var(--line);border-radius:18px;padding:15px;margin:11px 0;box-shadow:0 6px 0 #e4eef8;}
+.h2{font-size:17px;font-weight:800;color:var(--cd);margin:0 0 4px;}
+.base{background:var(--cbg);border-radius:12px;padding:11px 13px;font-size:14.5px;line-height:1.7;margin:6px 0;}
+.base b{color:var(--cd);}
+.why{background:var(--greenbg);border-left:5px solid var(--green);border-radius:10px;padding:10px 13px;font-size:14px;line-height:1.7;margin:8px 0;}
+.why b{color:var(--green);}
+.deep{background:#fff7ef;border:1px solid #f0dca8;border-radius:11px;padding:11px 13px;font-size:14px;line-height:1.7;margin:8px 0;}
+.deep .q{font-weight:800;color:#a8730a;}
+.sld{display:flex;align-items:center;gap:10px;margin:8px 0;font-size:14px;font-weight:700;color:var(--cd);}
+.sld input[type=range]{flex:1;accent-color:var(--c);height:26px;}
+.val{min-width:54px;text-align:center;background:var(--cbg);border-radius:8px;padding:3px 6px;font-weight:800;}
+svg{width:100%;height:auto;display:block;}
+.big{font-size:30px;font-weight:900;color:var(--cd);text-align:center;margin:6px 0;}
+.btn{font-family:inherit;font-weight:800;font-size:15px;border:none;border-radius:12px;padding:11px 15px;cursor:pointer;color:#fff;background:var(--c);box-shadow:0 4px 0 var(--cd);}
+.btn.gold{background:var(--gold);box-shadow:0 4px 0 var(--golddk);color:#5a3d00;}
+.btn:active{transform:translateY(2px);}
+.btn.sm{font-size:13px;padding:8px 12px;}
+.back{background:none;border:none;color:var(--muted);font-size:15px;font-family:inherit;font-weight:800;cursor:pointer;padding:6px 2px;}
+.hide{display:none!important;}
+.tag{display:inline-block;background:var(--gold);color:#5a3d00;font-size:11px;font-weight:800;border-radius:8px;padding:2px 8px;}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:8px;}
+.tipbar{font-size:12px;color:var(--muted);text-align:center;margin-top:14px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top"><a class="home" href="../index.html">‹</a><span class="badge">哥哥</span><h1>数学 · 四下探索馆</h1></div>
+  <div id="home"></div>
+  <div id="view" class="hide"><button class="back" id="back">← 回探索馆</button><div id="stage"></div></div>
+  <div class="tipbar">拖一拖、看图变化，先把基础概念看懂记牢——这些都是必考的。再用「深入一题」练怎么想。</div>
+</div>
+<script>
+"use strict";
+function $(id){return document.getElementById(id);}
+function clamp(v,a,b){return Math.max(a,Math.min(b,v));}
+var MODS=[
+ {id:"xs",ic:"🔢",nm:"小数数位放大镜",ds:"看清0.1和0.01是多少"},
+ {id:"jj",ic:"➕",nm:"小数加减·对齐点",ds:"为什么要对齐小数点"},
+ {id:"nj",ic:"📐",nm:"三角形内角和",ds:"三个角永远=180°"},
+ {id:"sb",ic:"📏",nm:"三角形三边关系",ds:"哪三根小棒能拼成"},
+ {id:"fp",ic:"✖️",nm:"乘法分配律",ds:"用面积看懂巧算"},
+ {id:"pj",ic:"⚖️",nm:"平均数·移多补少",ds:"平均数怎么来的"},
+ {id:"sd",ic:"📍",nm:"数对·确定位置",ds:"先列后行(几列几行)"},
+ {id:"py",ic:"➡️",nm:"图形平移",ds:"整体移动·数对怎么变"},
+ {id:"zh",ic:"🧩",nm:"组合图形面积",ds:"拆开/补全再算"},
+ {id:"bc",ic:"🔼",nm:"小数大小比较",ds:"从高位一位位比"},
+ {id:"zm",ic:"🔤",nm:"用字母表示数",ds:"2a · 代入求值"}
+];
+function renderHome(){
+  var h='<div class="intro">这是<b>会动的数学</b>：每个馆先用图讲清一个<b>必考的基础概念</b>，你拖一拖看它怎么变；看懂了再做<b>深入一题</b>，学会<b>怎么想</b>。</div><div class="grid">';
+  MODS.forEach(function(m){h+='<div class="tile" data-id="'+m.id+'"><div class="ic">'+m.ic+'</div><div class="nm">'+m.nm+'</div><div class="ds">'+m.ds+'</div></div>';});
+  h+='</div>';$('home').innerHTML=h;
+  $('home').querySelectorAll('.tile').forEach(function(t){t.onclick=function(){openMod(t.dataset.id);};});
+}
+function openMod(id){$('home').classList.add('hide');$('view').classList.remove('hide');window.scrollTo(0,0);R[id]();}
+$('back').onclick=function(){$('view').classList.add('hide');$('home').classList.remove('hide');window.scrollTo(0,0);};
+function deep(q,a,q2,a2){
+  var h='<div class="deep"><span class="q">🤔 深入思考：</span>';
+  h+='<div style="margin-top:4px"><b>① '+q+'</b><br><button class="btn gold sm" style="margin-top:5px" onclick="this.nextElementSibling.classList.toggle(\'hide\')">看思路</button><div class="hide" style="margin-top:6px;color:#7a5800">'+a+'</div></div>';
+  if(q2)h+='<div style="margin-top:11px"><b>② ★更深入：'+q2+'</b><br><button class="btn gold sm" style="margin-top:5px" onclick="this.nextElementSibling.classList.toggle(\'hide\')">看思路</button><div class="hide" style="margin-top:6px;color:#7a5800">'+a2+'</div></div>';
+  h+='</div>';return h;
+}
+var R={};
+
+/* 1. 小数数位放大镜 */
+R.xs=function(){
+  $('stage').innerHTML='<div class="card"><div class="h2">🔢 小数数位放大镜 <span class="tag">必考</span></div>'+
+   '<div class="base"><b>基础概念：</b>把"1"平均分成10份，每份是 <b>0.1</b>（十分之一）；再把0.1分成10份，每份是 <b>0.01</b>（百分之一）。所以 <b>0.1 里有10个0.01</b>。</div>'+
+   '<div class="sld">十分位 <input type="range" id="xt" min="0" max="9" value="4" oninput="updX()"><span class="val" id="xtv">4</span></div>'+
+   '<div class="sld">百分位 <input type="range" id="xh" min="0" max="9" value="5" oninput="updX()"><span class="val" id="xhv">5</span></div>'+
+   '<div class="big" id="xbig"></div><div id="xsvg"></div>'+
+   '<div class="why" id="xwhy"></div>'+
+   deep("0.45 里面有几个 0.01？", "把0.45看成百格图——填了45格，所以是 <b>45个0.01</b>。同理 0.4=40个0.01=4个0.1。",
+        "0.1、0.01、1 之间是几倍关系？为什么小数点后第一位叫十分位？", "相邻数位之间都是 <b>10倍</b>：1=10个0.1=100个0.01；0.1=10个0.01。因为把1平均分成10份(十分之一)所以第一位叫十分位，分成100份(百分之一)所以第二位叫百分位。")+
+   '</div>';
+  updX();
+};
+function updX(){
+  var t=+$('xt').value,h=+$('xh').value;$('xtv').textContent=t;$('xhv').textContent=h;
+  var val=(t/10+h/100);$('xbig').textContent='0.'+t+''+h+' = '+ (t)+'个0.1 + '+h+'个0.01';
+  // 100格图：t整列(每列10格)+h格
+  var filled=t*10+h, s='<svg viewBox="0 0 220 220">';
+  for(var r=0;r<10;r++)for(var c=0;c<10;c++){var i=r*10+c;var on=i<filled;s+='<rect x="'+(10+c*20)+'" y="'+(10+r*20)+'" width="19" height="19" rx="2" fill="'+(on?(c<t&&i<t*10?'#2f6fb3':'#7b54c0'):'#eef2f7')+'" stroke="#cdd9e6"/>';}
+  s+='</svg>';$('xsvg').innerHTML=s;
+  $('xwhy').innerHTML='<b>看图：</b>蓝色是 <b>'+t+'</b> 整列（'+t+'个0.1='+(t*10)+'格），紫色是 <b>'+h+'</b> 个0.01（'+h+'格）。整张100格代表"1"，一共填了 <b>'+filled+'</b> 格 = '+filled+'个0.01 = 0.'+t+''+h+'。';
+}
+
+/* 2. 小数加减对齐 */
+R.jj=function(){
+  $('stage').innerHTML='<div class="card"><div class="h2">➕ 小数加减 · 对齐小数点 <span class="tag">必考</span></div>'+
+   '<div class="base"><b>基础概念：</b>小数加减要<b>小数点对齐</b>——因为只有<b>相同数位</b>（个位对个位、十分位对十分位）才能相加减。整数可以看成末尾".0"。</div>'+
+   '<div class="sld">第一个数 <input type="range" id="ja" min="0" max="99" value="35" oninput="updJ()"><span class="val" id="jav"></span></div>'+
+   '<div class="sld">第二个数 <input type="range" id="jb" min="0" max="99" value="8" oninput="updJ()"><span class="val" id="jbv"></span></div>'+
+   '<div id="jsvg"></div><div class="why" id="jwhy"></div>'+
+   deep("3.5 + 2 等于多少？", "把 2 看成 <b>2.0</b>，小数点对齐：3.5 + 2.0 = <b>5.5</b>。千万别把 2 对到十分位上变成 3.5+0.2。",
+        "3 − 0.8 怎么算？", "3 看成 <b>3.0</b>，对齐相减：3.0 − 0.8 = <b>2.2</b>。个位不够减，向个位借 1（=10个0.1），10个0.1减8个0.1=2个0.1。结果末尾别丢小数点。")+
+   '</div>';updJ();
+};
+function updJ(){
+  var a=(+$('ja').value)/10,b=(+$('jb').value)/10;$('jav').textContent=a.toFixed(1);$('jbv').textContent=b.toFixed(1);
+  var sum=Math.round((a+b)*10)/10;
+  function row(x,y,col){var s=x.toFixed(1);var dot=s.indexOf('.');var intp=s.slice(0,dot),dec=s.slice(dot+1);
+    return '<text x="120" y="'+y+'" text-anchor="end" font-size="22" font-weight="800" fill="'+col+'" font-family="monospace">'+intp+'</text>'+
+    '<text x="126" y="'+y+'" text-anchor="middle" font-size="22" font-weight="800" fill="#e1553f" font-family="monospace">.</text>'+
+    '<text x="138" y="'+y+'" text-anchor="start" font-size="22" font-weight="800" fill="'+col+'" font-family="monospace">'+dec+'</text>';}
+  var s='<svg viewBox="0 0 220 150">';
+  s+='<rect x="100" y="20" width="6" height="110" fill="#fde6e2"/>';// 小数点对齐竖线区
+  s+=row(a,45,'#23303a');s+='<text x="60" y="80" font-size="22" font-weight="800" fill="#2f6fb3">+</text>'+row(b,80,'#23303a');
+  s+='<line x1="40" y1="92" x2="170" y2="92" stroke="#23303a" stroke-width="2"/>';
+  s+=row(sum,118,'#2e9c54');s+='</svg>';
+  $('jsvg').innerHTML=s;
+  $('jwhy').innerHTML='<b>看图：</b>红色小数点<b>上下对齐</b>，于是 个位对个位、十分位对十分位。'+a.toFixed(1)+' + '+b.toFixed(1)+' = <b>'+sum.toFixed(1)+'</b>。';
+}
+
+/* 3. 三角形内角和 */
+R.nj=function(){
+  $('stage').innerHTML='<div class="card"><div class="h2">📐 三角形内角和 = 180° <span class="tag">必考</span></div>'+
+   '<div class="base"><b>基础概念：</b>任何三角形的<b>三个内角加起来都是 180°</b>（把三个角撕下来能拼成一条直线）。</div>'+
+   '<div class="sld">∠A <input type="range" id="na" min="20" max="140" value="60" oninput="updN()"><span class="val" id="nav"></span></div>'+
+   '<div class="sld">∠B <input type="range" id="nb" min="20" max="140" value="70" oninput="updN()"><span class="val" id="nbv"></span></div>'+
+   '<div id="nsvg"></div><div class="why" id="nwhy"></div>'+
+   deep("一个三角形两个角是 60° 和 70°，第三个角多少度？", "180−60−70 = <b>50°</b>。口诀：第三角 = 180 − 另两角之和。直角三角形里，两个锐角加起来 = 90°。",
+        "等腰三角形顶角是 100°，两个底角各几度？", "等腰三角形两个底角<b>相等</b>：(180−100)÷2 = <b>40°</b>。再记：等边三角形三个角都相等，每个 180÷3 = 60°。")+
+   '</div>';updN();
+};
+function updN(){
+  var a=+$('na').value,b=+$('nb').value;
+  if(a+b>160){if(event&&event.target&&event.target.id==='na')a=160-b;else b=160-a;$('na').value=a;$('nb').value=b;}
+  var c=180-a-b;$('nav').textContent=a+'°';$('nbv').textContent=b+'°';
+  var W=300;var wa=a/180*W,wb=b/180*W,wc=c/180*W;
+  function seg(x,w,col,lab){var t='<rect x="'+x+'" y="40" width="'+w+'" height="34" fill="'+col+'"/>';if(w>30)t+='<text x="'+(x+w/2)+'" y="62" text-anchor="middle" font-size="13" font-weight="800" fill="#fff">'+lab+'</text>';return t;}
+  var s='<svg viewBox="0 0 320 100">';
+  s+='<text x="160" y="22" text-anchor="middle" font-size="13" fill="#7d8a96">三个角拼起来 = 一条直线 = 180°</text>';
+  s+=seg(10,wa,'#2f6fb3','A '+a+'°')+seg(10+wa,wb,'#e8642f','B '+b+'°')+seg(10+wa+wb,wc,'#7b54c0','C '+c+'°');
+  s+='<rect x="10" y="40" width="'+W+'" height="34" fill="none" stroke="#23303a" stroke-width="2"/>';
+  s+='<text x="160" y="92" text-anchor="middle" font-size="14" font-weight="800" fill="#23303a">'+a+'° + '+b+'° + '+c+'° = 180°</text>';
+  s+='</svg>';
+  $('nsvg').innerHTML=s;
+  $('nwhy').innerHTML='<b>看图：</b>蓝+橙+紫三段正好铺满整条 180° 的直线。∠A+∠B+∠C = '+a+'+'+b+'+'+c+' = <b>180°</b>。不管怎么拖，永远是180°！';
+}
+
+/* 4. 三边关系 */
+R.sb=function(){
+  $('stage').innerHTML='<div class="card"><div class="h2">📏 三角形三边关系 <span class="tag">必考</span></div>'+
+   '<div class="base"><b>基础概念：</b><b>两根短边之和 > 最长边</b>，三根小棒才能拼成三角形。（即任意两边之和大于第三边）</div>'+
+   '<div class="sld">边a <input type="range" id="sa" min="1" max="10" value="3" oninput="updS()"><span class="val" id="sav"></span></div>'+
+   '<div class="sld">边b <input type="range" id="sbb" min="1" max="10" value="4" oninput="updS()"><span class="val" id="sbv"></span></div>'+
+   '<div class="sld">边c <input type="range" id="sc" min="1" max="10" value="5" oninput="updS()"><span class="val" id="scv"></span></div>'+
+   '<div id="ssvg"></div><div class="why" id="swhy"></div>'+
+   deep("3、4、5 能拼成三角形吗？2、3、6 呢？", "3+4=7>5 ✅ 能；2+3=5 < 6 ✗ 不能（两根短的接起来还够不到长的）。只要检查<b>两短边之和 > 最长边</b>即可。",
+        "两根小棒 5cm 和 8cm，第三根取整数厘米，可以是几？", "第三边要 <b>大于 8−5=3</b>、<b>小于 8+5=13</b>，所以是 <b>4、5、6…12cm（共9种）</b>。口诀：比两边的差大，比两边的和小。")+
+   '</div>';updS();
+};
+function updS(){
+  var a=+$('sa').value,b=+$('sbb').value,c=+$('sc').value;$('sav').textContent=a;$('sbv').textContent=b;$('scv').textContent=c;
+  var arr=[a,b,c].sort(function(x,y){return x-y;});var ok=arr[0]+arr[1]>arr[2];
+  var u=18;var s='<svg viewBox="0 0 320 90">';
+  // 画三根小棒
+  function bar(y,len,col,lab){return '<rect x="10" y="'+y+'" width="'+(len*u)+'" height="14" rx="3" fill="'+col+'"/><text x="'+(16+len*u)+'" y="'+(y+12)+'" font-size="12" font-weight="800" fill="'+col+'">'+lab+'='+len+'</text>';}
+  s+=bar(8,a,'#2f6fb3','a')+bar(34,b,'#e8642f','b')+bar(60,c,'#7b54c0','c')+'</svg>';
+  $('ssvg').innerHTML=s;
+  $('swhy').innerHTML='<b>判断：</b>两短边 '+arr[0]+'+'+arr[1]+' = '+(arr[0]+arr[1])+(ok?' > ':' ≤ ')+'最长边 '+arr[2]+' → '+(ok?'<b style="color:var(--green)">✅ 能拼成三角形</b>':'<b style="color:var(--red)">✗ 拼不成</b>（两短棒接起来够不到）');
+}
+
+/* 5. 乘法分配律 */
+R.fp=function(){
+  $('stage').innerHTML='<div class="card"><div class="h2">✖️ 乘法分配律 <span class="tag">必考·巧算</span></div>'+
+   '<div class="base"><b>基础概念：</b><b>a×(b+c) = a×b + a×c</b>。用面积看：一个大长方形（宽a，长b+c）= 两个小长方形面积之和。</div>'+
+   '<div class="sld">a（宽）<input type="range" id="fa" min="1" max="9" value="3" oninput="updF()"><span class="val" id="fav"></span></div>'+
+   '<div class="sld">b <input type="range" id="fb" min="1" max="9" value="4" oninput="updF()"><span class="val" id="fbv"></span></div>'+
+   '<div class="sld">c <input type="range" id="fc" min="1" max="9" value="2" oninput="updF()"><span class="val" id="fcv"></span></div>'+
+   '<div id="fsvg"></div><div class="why" id="fwhy"></div>'+
+   deep("用分配律巧算 25×44", "44=40+4，25×44 = 25×40 + 25×4 = 1000+100 = <b>1100</b>。把一个数拆成<b>整十/整百+零头</b>再分配，又快又准。",
+        "巧算 99×36", "99=100−1，99×36 = 100×36 − 1×36 = 3600−36 = <b>3564</b>。这是分配律的“减法版”：(100−1)×36 = 100×36 − 1×36。接近整百的数都能这么拆。")+
+   '</div>';updF();
+};
+function updF(){
+  var a=+$('fa').value,b=+$('fb').value,c=+$('fc').value;$('fav').textContent=a;$('fbv').textContent=b;$('fcv').textContent=c;
+  var u=20,x0=30,y0=22;var H=a*u,Wb=b*u,Wc=c*u;
+  var s='<svg viewBox="0 0 '+(x0+Wb+Wc+12)+' '+(y0+H+14)+'">';
+  s+='<text x="'+(x0+Wb/2)+'" y="16" text-anchor="middle" font-size="12" font-weight="800" fill="#2f6fb3">'+b+'</text>';
+  s+='<text x="'+(x0+Wb+Wc/2)+'" y="16" text-anchor="middle" font-size="12" font-weight="800" fill="#e8642f">'+c+'</text>';
+  s+='<text x="'+(x0-7)+'" y="'+(y0+H/2+4)+'" text-anchor="end" font-size="12" font-weight="800" fill="#23303a">'+a+'</text>';
+  s+='<rect x="'+x0+'" y="'+y0+'" width="'+Wb+'" height="'+H+'" fill="#cfe2f6" stroke="#fff"/>';
+  s+='<rect x="'+(x0+Wb)+'" y="'+y0+'" width="'+Wc+'" height="'+H+'" fill="#ffe1cc" stroke="#fff"/>';
+  s+='<rect x="'+x0+'" y="'+y0+'" width="'+(Wb+Wc)+'" height="'+H+'" fill="none" stroke="#23303a" stroke-width="2"/>';
+  s+='</svg>';$('fsvg').innerHTML=s;
+  $('fwhy').innerHTML='<b>看图：</b>大长方形 '+a+'×('+b+'+'+c+') = <span style="color:#2f6fb3;font-weight:800">'+a+'×'+b+'='+(a*b)+'</span> + <span style="color:#e8642f;font-weight:800">'+a+'×'+c+'='+(a*c)+'</span> = <b>'+(a*(b+c))+'</b>。';
+}
+
+/* 6. 平均数 */
+R.pj=function(){
+  $('stage').innerHTML='<div class="card"><div class="h2">⚖️ 平均数 · 移多补少 <span class="tag">必考</span></div>'+
+   '<div class="base"><b>基础概念：</b><b>平均数 = 总和 ÷ 个数</b>。意义是"<b>移多补少</b>"——把多的匀给少的，让每份一样高。</div>'+
+   '<div class="sld">A <input type="range" id="pa" min="0" max="10" value="8" oninput="updP()"><span class="val" id="pav"></span></div>'+
+   '<div class="sld">B <input type="range" id="pb" min="0" max="10" value="2" oninput="updP()"><span class="val" id="pbv"></span></div>'+
+   '<div class="sld">C <input type="range" id="pc" min="0" max="10" value="6" oninput="updP()"><span class="val" id="pcv"></span></div>'+
+   '<div class="sld">D <input type="range" id="pd" min="0" max="10" value="4" oninput="updP()"><span class="val" id="pdv"></span></div>'+
+   '<div id="psvg"></div><div class="row"><button class="btn gold sm" onclick="window._lvl=!window._lvl;updP();">'+'⚖️ 移多补少 / 看原来</button></div><div class="why" id="pwhy"></div>'+
+   deep("4个人平均每人5本，一共多少本？", "总数 = 平均数 × 个数 = 5 × 4 = <b>20本</b>。求总数就把平均数<b>乘回去</b>。",
+        "小明前3次考试平均90分，他想4次平均到92分，第4次要考几分？", "4次总分要 92×4 = 368，前3次 90×3 = 270，第4次 = 368−270 = <b>98分</b>。思路：先用“平均×个数”求出需要的总分，再减已有的。")+
+   '</div>';window._lvl=false;updP();
+};
+function updP(){
+  var v=[+$('pa').value,+$('pb').value,+$('pc').value,+$('pd').value];
+  $('pav').textContent=v[0];$('pbv').textContent=v[1];$('pcv').textContent=v[2];$('pdv').textContent=v[3];
+  var sum=v[0]+v[1]+v[2]+v[3];var avg=sum/4;
+  var u=11,base=130,bw=46,gap=14;var s='<svg viewBox="0 0 280 150">';
+  for(var i=0;i<4;i++){var hgt=(window._lvl?avg:v[i])*u;var x=14+i*(bw+gap);
+    s+='<rect x="'+x+'" y="'+(base-hgt)+'" width="'+bw+'" height="'+hgt+'" rx="3" fill="'+(window._lvl?'#2e9c54':'#2f6fb3')+'"/>';
+    s+='<text x="'+(x+bw/2)+'" y="'+(base+14)+'" text-anchor="middle" font-size="12" font-weight="800" fill="#23303a">'+(window._lvl?avg:v[i])+'</text>';}
+  var ay=base-avg*u;s+='<line x1="6" y1="'+ay+'" x2="274" y2="'+ay+'" stroke="#e1553f" stroke-dasharray="5 4" stroke-width="2"/><text x="278" y="'+(ay+4)+'" text-anchor="end" font-size="11" fill="#e1553f">平均'+avg+'</text>';
+  s+='</svg>';$('psvg').innerHTML=s;
+  $('pwhy').innerHTML='<b>算一算：</b>总和 '+v.join('+')+' = '+sum+'，÷ 4 = <b>平均数 '+avg+'</b>。'+(window._lvl?'（已"移多补少"——每根都齐到红线）':'（点上面按钮看"移多补少"动画）');
+}
+
+/* 7. 数对 */
+R.sd=function(){
+  $('stage').innerHTML='<div class="card"><div class="h2">📍 数对 · 确定位置 <span class="tag">必考</span></div>'+
+   '<div class="base"><b>基础概念：</b>用<b>数对</b>表示位置，写成 <b>(列, 行)</b>——<b>先列后行</b>：先看第几<b>列</b>(从左往右数)，再看第几<b>行</b>(从下往上数)。</div>'+
+   '<div class="sld">第几列 <input type="range" id="dc" min="1" max="6" value="2" oninput="updSd()"><span class="val" id="dcv"></span></div>'+
+   '<div class="sld">第几行 <input type="range" id="dr" min="1" max="6" value="3" oninput="updSd()"><span class="val" id="drv"></span></div>'+
+   '<div id="dsvg"></div><div class="big" id="dbig"></div><div class="why" id="dwhy"></div>'+
+   deep("点A的数对是 (4,2)，它在哪里？","先找第<b>4列</b>(从左数第4格)，再找第<b>2行</b>(从下数第2格)，交叉处就是A。记牢<b>先列后行</b>，别写反成(2,4)。",
+        "A在(2,3)，向右平移3格、再向上1格，新数对是？","向右→列+3=5，向上→行+1=4，所以是 <b>(5,4)</b>。规律：右移加在列上、上移加在行上。")+
+   '</div>';updSd();
+};
+function updSd(){
+  var c=+$('dc').value,r=+$('dr').value;$('dcv').textContent=c;$('drv').textContent=r;
+  var n=6,u=28,x0=26,top=8;var s='<svg viewBox="0 0 '+(x0+n*u+8)+' '+(top+n*u+24)+'">';
+  for(var i=0;i<=n;i++){s+='<line x1="'+(x0+i*u)+'" y1="'+top+'" x2="'+(x0+i*u)+'" y2="'+(top+n*u)+'" stroke="#dbe7f3"/><line x1="'+x0+'" y1="'+(top+i*u)+'" x2="'+(x0+n*u)+'" y2="'+(top+i*u)+'" stroke="#dbe7f3"/>';}
+  for(var col=1;col<=n;col++)s+='<text x="'+(x0+(col-0.5)*u)+'" y="'+(top+n*u+16)+'" text-anchor="middle" font-size="11" fill="#7d8a96">'+col+'</text>';
+  for(var row=1;row<=n;row++)s+='<text x="'+(x0-9)+'" y="'+(top+(n-row+0.5)*u+4)+'" text-anchor="middle" font-size="11" fill="#7d8a96">'+row+'</text>';
+  s+='<rect x="'+(x0+(c-1)*u)+'" y="'+(top+(n-r)*u)+'" width="'+u+'" height="'+u+'" fill="#fff3d6"/>';
+  var px=x0+(c-0.5)*u,py=top+(n-r+0.5)*u;
+  s+='<circle cx="'+px+'" cy="'+py+'" r="9" fill="#e8642f"/><text x="'+px+'" y="'+(py+4)+'" text-anchor="middle" font-size="11" font-weight="800" fill="#fff">A</text>';
+  s+='</svg>';$('dsvg').innerHTML=s;
+  $('dbig').textContent='A 的数对 = ('+c+', '+r+')';
+  $('dwhy').innerHTML='<b>读法：</b>A 在第 <b>'+c+'</b> 列（从左数）、第 <b>'+r+'</b> 行（从下数），数对 <b>('+c+','+r+')</b>。列在前、行在后，别写反。';
+}
+
+/* 8. 图形平移 */
+R.py=function(){
+  $('stage').innerHTML='<div class="card"><div class="h2">➡️ 图形平移 <span class="tag">必考</span></div>'+
+   '<div class="base"><b>基础概念：</b>平移＝图形<b>整体沿直线移动</b>，<b>方向、形状、大小都不变</b>，只是位置变。看图形上<b>一个点</b>移动几格，整个图形就移动几格。</div>'+
+   '<div class="sld">向右 <input type="range" id="mx" min="0" max="5" value="3" oninput="updPy()"><span class="val" id="mxv"></span></div>'+
+   '<div class="sld">向上 <input type="range" id="my" min="0" max="4" value="2" oninput="updPy()"><span class="val" id="myv"></span></div>'+
+   '<div id="pysvg"></div><div class="why" id="pywhy"></div>'+
+   deep("一个图形平移以后，周长和面积变不变？","都<b>不变</b>！平移只改变位置，形状大小没变，所以周长、面积都和原来一样。",
+        "三角形一个顶点从 (1,1) 平移到 (4,3)，是怎么平移的？","横着 1→4 是<b>向右3格</b>，竖着 1→3 是<b>向上2格</b>。所以向右平移3格、向上平移2格。看对应点的变化就知道平移方向和格数。")+
+   '</div>';updPy();
+};
+function updPy(){
+  var dx=+$('mx').value,dy=+$('my').value;$('mxv').textContent=dx;$('myv').textContent=dy;
+  var n=8,u=24,x0=10,top=8;var shape=[[0,0],[0,1],[1,0]];
+  function cell(c,r,fill,op){var X=x0+c*u,Y=top+(n-1-r)*u;return '<rect x="'+X+'" y="'+Y+'" width="'+u+'" height="'+u+'" fill="'+fill+'" fill-opacity="'+op+'" stroke="#ccc"/>';}
+  var s='<svg viewBox="0 0 '+(x0*2+n*u)+' '+(top*2+n*u)+'">';
+  for(var i=0;i<=n;i++){s+='<line x1="'+(x0+i*u)+'" y1="'+top+'" x2="'+(x0+i*u)+'" y2="'+(top+n*u)+'" stroke="#eef2f7"/><line x1="'+x0+'" y1="'+(top+i*u)+'" x2="'+(x0+n*u)+'" y2="'+(top+i*u)+'" stroke="#eef2f7"/>';}
+  shape.forEach(function(p){s+=cell(p[0],p[1],'#cdd9e6',0.85);});
+  shape.forEach(function(p){s+=cell(p[0]+dx,p[1]+dy,'#e8642f',0.9);});
+  s+='</svg>';$('pysvg').innerHTML=s;
+  $('pywhy').innerHTML='<b>看图：</b>灰色是原图形，橙色是<b>向右'+dx+'格、向上'+dy+'格</b>平移后的——形状大小完全一样，只是挪了位置。';
+}
+
+/* 9. 组合图形面积 */
+R.zh=function(){
+  $('stage').innerHTML='<div class="card"><div class="h2">🧩 组合图形面积 <span class="tag">必考</span></div>'+
+   '<div class="base"><b>基础概念：</b>不规则图形两种算法：<b>① 拆</b>——切成几个长方形，分别算再相加；<b>② 补</b>——补成一个大长方形，再减去多补的。</div>'+
+   '<div class="sld">大长 a <input type="range" id="za" min="4" max="9" value="8" oninput="updZh()"><span class="val" id="zav"></span></div>'+
+   '<div class="sld">大宽 b <input type="range" id="zb" min="4" max="8" value="6" oninput="updZh()"><span class="val" id="zbv"></span></div>'+
+   '<div class="sld">缺口宽 p <input type="range" id="zp" min="1" max="5" value="3" oninput="updZh()"><span class="val" id="zpv"></span></div>'+
+   '<div class="sld">缺口高 q <input type="range" id="zq" min="1" max="5" value="2" oninput="updZh()"><span class="val" id="zqv"></span></div>'+
+   '<div class="row"><button class="btn gold sm" onclick="window._zh=(window._zh===\'cut\'?\'fill\':\'cut\');updZh()">🔄 换种方法：拆 / 补</button></div>'+
+   '<div id="zhsvg"></div><div class="why" id="zhwhy"></div>'+
+   deep("一块L形地，大长方形 8×6，右上角挖去 2×3，面积是多少？","<b>补法</b>：8×6 − 2×3 = 48−6 = <b>42</b>。<b>拆法</b>：下面 8×(6−3)=24 ＋ 上面 (8−2)×3=18 = 42。两种都行、结果一样。",
+        "为什么拆法和补法结果一定相等？","因为算的是<b>同一块图形</b>，只是数法不同：拆是“一块块加起来”，补是“先多算再减掉多的”，最后都等于那块L形的面积。考试两种都会更稳。")+
+   '</div>';window._zh='cut';updZh();
+};
+function updZh(){
+  var a=+$('za').value,b=+$('zb').value,p=Math.min(+$('zp').value,a-1),q=Math.min(+$('zq').value,b-1);
+  $('zav').textContent=a;$('zbv').textContent=b;$('zpv').textContent=p;$('zqv').textContent=q;
+  var u=22,x0=14,y0=10,cw=p*u,ch=q*u;var s='<svg viewBox="0 0 '+(x0*2+a*u)+' '+(y0*2+b*u)+'">';
+  if(window._zh==='cut'){
+    s+='<rect x="'+x0+'" y="'+(y0+ch)+'" width="'+(a*u)+'" height="'+(b*u-ch)+'" fill="#cfe2f6" stroke="#2f6fb3"/>';
+    s+='<rect x="'+x0+'" y="'+y0+'" width="'+((a-p)*u)+'" height="'+ch+'" fill="#e9f7ee" stroke="#2e9c54"/>';
+    s+='<text x="'+(x0+a*u/2)+'" y="'+(y0+ch+(b*u-ch)/2+4)+'" text-anchor="middle" font-size="11" font-weight="800" fill="#2f6fb3">'+a+'×'+(b-q)+'='+(a*(b-q))+'</text>';
+    s+='<text x="'+(x0+(a-p)*u/2)+'" y="'+(y0+ch/2+4)+'" text-anchor="middle" font-size="10" font-weight="800" fill="#2e9c54">'+(a-p)+'×'+q+'='+((a-p)*q)+'</text>';
+  }else{
+    s+='<rect x="'+x0+'" y="'+y0+'" width="'+(a*u)+'" height="'+(b*u)+'" fill="#cfe2f6" stroke="#2f6fb3"/>';
+    s+='<rect x="'+(x0+(a-p)*u)+'" y="'+y0+'" width="'+cw+'" height="'+ch+'" fill="#fbe6e2" stroke="#e1553f" stroke-dasharray="4 3"/>';
+    s+='<text x="'+(x0+a*u/2)+'" y="'+(y0+b*u/2+ch/2+4)+'" text-anchor="middle" font-size="11" font-weight="800" fill="#2f6fb3">大 '+a+'×'+b+'='+(a*b)+'</text>';
+    s+='<text x="'+(x0+(a-p)*u+cw/2)+'" y="'+(y0+ch/2+3)+'" text-anchor="middle" font-size="9" font-weight="800" fill="#e1553f">−'+p+'×'+q+'</text>';
+  }
+  s+='</svg>';$('zhsvg').innerHTML=s;
+  var area=a*b-p*q;
+  $('zhwhy').innerHTML=(window._zh==='cut'?'<b>拆法：</b>下面 '+a+'×'+(b-q)+'='+(a*(b-q))+' ＋ 上面 '+(a-p)+'×'+q+'='+((a-p)*q)+' = <b>'+area+'</b>':'<b>补法：</b>大 '+a+'×'+b+'='+(a*b)+' − 缺口 '+p+'×'+q+'='+(p*q)+' = <b>'+area+'</b>')+'（拆、补结果相同）。';
+}
+
+/* 10. 小数大小比较 */
+R.bc=function(){
+  $('stage').innerHTML='<div class="card"><div class="h2">🔼 小数大小比较 <span class="tag">必考</span></div>'+
+   '<div class="base"><b>基础概念：</b>比小数<b>从高位往低位</b>一位位比：先比<b>整数部分</b>；整数相同再比<b>十分位</b>，再比<b>百分位</b>……位数不够末尾<b>补0</b>。<b>不是位数越多越大！</b></div>'+
+   '<div class="sld">第一个数 A <input type="range" id="ba" min="0" max="999" value="80" oninput="updBc()"><span class="val" id="bav"></span></div>'+
+   '<div class="sld">第二个数 B <input type="range" id="bb" min="0" max="999" value="75" oninput="updBc()"><span class="val" id="bbv"></span></div>'+
+   '<div class="big" id="bbig"></div><div id="bsvg"></div><div class="why" id="bwhy"></div>'+
+   deep("0.8 和 0.75 谁大？","0.8 = 0.80，比 0.75 大（十分位 8>7）。<b>别被“0.75 位数多”骗了</b>——先比十分位就分出大小。",
+        "3.□6 < 3.46，□里能填几？","整数都是3；比十分位：□ 要比 4 <b>小</b>（□=4 时两数相等，不满足 <）。所以 □ 填 <b>0、1、2、3</b>。")+
+   '</div>';updBc();
+};
+function updBc(){
+  var a=(+$('ba').value)/100,b=(+$('bb').value)/100;$('bav').textContent=a.toFixed(2);$('bbv').textContent=b.toFixed(2);
+  var sign=a>b?'>':(a<b?'<':'=');
+  $('bbig').innerHTML=a.toFixed(2)+' <span style="color:#e8642f">'+sign+'</span> '+b.toFixed(2);
+  function dig(x){x=x.toFixed(2);return [x[0],x[2],x[3]];}
+  var da=dig(a),db=dig(b),labels=['个位','十分位','百分位'];
+  var diff=-1;for(var i=0;i<3;i++){if(da[i]!==db[i]){diff=i;break;}}
+  var u=50,x0=58,s='<svg viewBox="0 0 '+(x0+3*u+10)+' 104">';
+  for(var i=0;i<3;i++){var hl=(i===diff);
+    s+='<text x="'+(x0+i*u+(u-6)/2)+'" y="20" text-anchor="middle" font-size="10" fill="#7d8a96">'+labels[i]+'</text>';
+    s+='<rect x="'+(x0+i*u)+'" y="28" width="'+(u-6)+'" height="30" rx="4" fill="'+(hl?'#fff3d6':'#eef2f7')+'"/><text x="'+(x0+i*u+(u-6)/2)+'" y="49" text-anchor="middle" font-size="18" font-weight="800" fill="'+(hl?'#e8642f':'#23303a')+'">'+da[i]+'</text>';
+    s+='<rect x="'+(x0+i*u)+'" y="64" width="'+(u-6)+'" height="30" rx="4" fill="'+(hl?'#fff3d6':'#eef2f7')+'"/><text x="'+(x0+i*u+(u-6)/2)+'" y="85" text-anchor="middle" font-size="18" font-weight="800" fill="'+(hl?'#e8642f':'#23303a')+'">'+db[i]+'</text>';}
+  s+='<text x="'+(x0-10)+'" y="49" text-anchor="end" font-size="13" font-weight="800" fill="#2f6fb3">A</text><text x="'+(x0-10)+'" y="85" text-anchor="end" font-size="13" font-weight="800" fill="#2f6fb3">B</text>';
+  s+='</svg>';$('bsvg').innerHTML=s;
+  $('bwhy').innerHTML=(diff<0?'<b>每一位都相同 → 两数相等。</b>':'<b>比较：</b>前面几位相同，到 <b>'+labels[diff]+'</b> 分出大小（'+da[diff]+(a>b?' > ':' < ')+db[diff]+'），所以 '+a.toFixed(2)+' '+sign+' '+b.toFixed(2)+'。');
+}
+
+/* 11. 用字母表示数 */
+R.zm=function(){
+  $('stage').innerHTML='<div class="card"><div class="h2">🔤 用字母表示数 <span class="tag">必考</span></div>'+
+   '<div class="base"><b>基础概念：</b>可以用字母表示数。<b>a+a=2a</b>；<b>a×4 写成 4a</b>（数字在前、乘号省略）；含字母的式子，把字母<b>代入</b>一个数就能算出结果。</div>'+
+   '<div class="sld">设 a = <input type="range" id="zma" min="0" max="20" value="8" oninput="updZm()"><span class="val" id="zmav"></span></div>'+
+   '<div id="zmbox"></div>'+
+   deep("每本书 b 元，买 5 本要多少钱？","<b>5b 元</b>（b×5 写成 5b）。如果 b=7，就是 5×7=35 元。",
+        "小明 a 岁，爸爸比他大 28 岁，爸爸几岁？当 a=8 时爸爸多少岁？","爸爸 = <b>(a+28) 岁</b>；a=8 时 = 8+28 = <b>36 岁</b>。用字母把关系写成式子，给 a 一个数就能求出。")+
+   '</div>';updZm();
+};
+function updZm(){
+  var a=+$('zma').value;$('zmav').textContent=a;
+  var rows=[['2a （= a+a）',2*a],['a + 5',a+5],['4a （= a×4）',4*a],['10 + a',10+a],['a + 28 （爸爸年龄）',a+28]];
+  var h='<div class="base" style="background:#fff;border:1px solid var(--line)"><b>当 a = '+a+' 时：</b>';
+  h+=rows.map(function(r){return '<div style="display:flex;justify-content:space-between;padding:4px 2px;border-bottom:1px dashed #eef2f7"><span style="font-weight:800;color:var(--cd)">'+r[0]+'</span><span style="font-weight:800;color:#2e9c54">= '+r[1]+'</span></div>';}).join('');
+  h+='</div>';$('zmbox').innerHTML=h;
+}
+
+renderHome();
+</script>
+</body>
+</html>

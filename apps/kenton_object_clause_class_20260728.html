@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <script src="../assets/learning-sync.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#e8fbff">
+  <title>Kenton 英语 · 宾语从句调度站</title>
+  <style>
+    :root{
+      --ink:#183447;--muted:#647985;--paper:#f7fbfc;--surface:#fff;--line:#d7e7eb;
+      --kenton:#36c5d6;--kenton-dark:#08788a;--kenton-soft:#e3fbff;
+      --navy:#183447;--amber:#ffd166;--amber-dark:#7a5600;--amber-soft:#fff6d9;
+      --mint:#8ce99a;--mint-dark:#176b35;--mint-soft:#eafbed;
+      --coral:#f27b68;--coral-dark:#a23526;--coral-soft:#fff0ed;
+      --violet:#8066b5;--violet-soft:#f2edfb;
+      --shadow:0 15px 34px rgba(42,91,110,.13);--soft-shadow:0 7px 18px rgba(42,91,110,.10);
+    }
+    *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+    html{background:var(--paper);scroll-behavior:smooth}
+    body{
+      margin:0;min-height:100vh;color:var(--ink);
+      font-family:"PingFang SC","Microsoft YaHei","Segoe UI",system-ui,-apple-system,sans-serif;
+      background:
+        radial-gradient(circle at 8% 0%,rgba(54,197,214,.18),transparent 28%),
+        radial-gradient(circle at 96% 82%,rgba(255,209,102,.16),transparent 25%),
+        linear-gradient(180deg,#fbfeff 0,#f3f9fa 100%);
+    }
+    button,input,textarea{font:inherit}
+    button{cursor:pointer}
+    button:focus-visible,a:focus-visible,textarea:focus-visible{
+      outline:3px solid #6c58ad;outline-offset:3px
+    }
+    .app{width:min(100%,760px);margin:0 auto;padding:12px 14px calc(94px + env(safe-area-inset-bottom))}
+    .topbar{display:flex;align-items:center;gap:10px;min-height:48px;margin-bottom:12px}
+    .back{
+      width:46px;height:46px;border:1px solid var(--line);border-radius:14px;background:#fff;
+      display:grid;place-items:center;text-decoration:none;color:var(--ink);font-size:25px;
+      box-shadow:var(--soft-shadow)
+    }
+    .brand{min-width:0}
+    .brand strong{display:block;font-size:16px}
+    .brand span{display:block;color:var(--muted);font-size:11.5px;margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .identity{margin-left:auto;border-radius:999px;padding:7px 10px;background:var(--kenton-soft);color:var(--kenton-dark);font-size:12px;font-weight:900}
+    .hero{
+      position:relative;overflow:hidden;border:1px solid rgba(8,120,138,.18);border-radius:30px;
+      padding:23px 19px 20px;background:#fff;box-shadow:var(--shadow)
+    }
+    .hero:after{
+      content:"";position:absolute;width:190px;height:190px;border:28px solid rgba(54,197,214,.06);
+      border-radius:50%;right:-95px;top:-105px
+    }
+    .source-pill{position:relative;z-index:1;display:inline-flex;align-items:center;gap:7px;border-radius:999px;padding:6px 10px;background:var(--navy);color:#fff;font-size:11px;font-weight:900}
+    .hero h1{position:relative;z-index:1;margin:14px 0 8px;font-size:clamp(29px,8.3vw,44px);line-height:1.1;letter-spacing:-.045em}
+    .hero h1 em{font-style:normal;color:var(--kenton-dark)}
+    .hero-lead{position:relative;z-index:1;margin:0;color:var(--muted);font-size:14px;line-height:1.75}
+    .goal{position:relative;z-index:1;margin-top:15px;padding:12px 13px;border:1px solid #b9dee4;border-radius:16px;background:linear-gradient(135deg,var(--kenton-soft),#faffff);font-size:13px;line-height:1.62}
+    .goal b{color:var(--kenton-dark)}
+    .mini-rail{position:relative;z-index:1;margin-top:15px;padding:12px 9px;border-radius:18px;background:#f6fafb;border:1px solid var(--line)}
+    .rail{height:8px;margin:12px 11px 5px;border-radius:999px;background:repeating-linear-gradient(90deg,#bad2d8 0 16px,#eef4f5 16px 25px)}
+    .mini-cars{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:8px}
+    .mini-car{min-width:0;text-align:center;padding:9px 7px;border-radius:13px;font-size:12px;font-weight:900}
+    .mini-car small{display:block;font-size:9.5px;margin-bottom:4px;opacity:.72}
+    .main-car{background:var(--navy);color:#fff}.clause-car{background:var(--kenton-soft);color:var(--kenton-dark);border:2px solid #9fd9e2}
+    .coupler{font-size:22px;color:var(--amber-dark);font-weight:1000}
+    .home-actions{position:relative;z-index:1;display:grid;gap:10px;margin-top:15px}
+    .primary,.secondary,.quiet,.choice,.token,.tile,.return-btn,.flip-card,.number-tile{
+      min-height:48px;border-radius:14px;font-weight:900;transition:transform .12s ease,box-shadow .12s ease
+    }
+    .primary{border:0;padding:0 17px;background:var(--kenton-dark);color:#fff;box-shadow:0 6px 0 #075c69;font-size:16px}
+    .primary:active{transform:translateY(4px);box-shadow:0 2px 0 #075c69}
+    .secondary{border:2px solid #a8d6dd;padding:0 14px;background:#fff;color:var(--kenton-dark);box-shadow:0 4px 0 #d5eaed}
+    .quiet{border:1px solid var(--line);padding:0 13px;background:transparent;color:var(--muted)}
+    .home-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+    .home-card{display:flex;flex-direction:column;min-height:162px;padding:14px;border:1px solid var(--line);border-radius:20px;background:rgba(255,255,255,.9);box-shadow:var(--soft-shadow)}
+    .home-card strong{display:block;font-size:14px}.home-card span{display:block;color:var(--muted);font-size:11.5px;line-height:1.55;margin-top:4px}
+    .home-card button{width:100%;margin-top:auto}
+    .section-label{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:22px 4px 10px}
+    .section-label h2{font-size:17px;margin:0}.section-label span{font-size:11px;color:var(--muted)}
+    .source-box{padding:14px 15px;border:1px solid var(--line);border-radius:19px;background:rgba(255,255,255,.84);font-size:12px;line-height:1.75;color:var(--muted)}
+    .source-box b{color:var(--ink)}
+    .lesson-head{margin-bottom:11px;padding:14px 15px;border:1px solid var(--line);border-radius:22px;background:#fff;box-shadow:var(--soft-shadow)}
+    .lesson-head-top{display:flex;align-items:center;justify-content:space-between;gap:10px}
+    .lesson-head-top strong{font-size:15px}.lesson-head-top span{font-size:11px;color:var(--muted)}
+    .progress-track{height:8px;margin-top:10px;border-radius:999px;overflow:hidden;background:#e6eef0}
+    .progress-fill{height:100%;border-radius:inherit;background:linear-gradient(90deg,var(--kenton),var(--mint));transition:width .35s ease}
+    .stage{overflow:hidden;padding:20px 17px;border:1px solid var(--line);border-radius:27px;background:#fff;box-shadow:var(--shadow)}
+    .step-tag{display:inline-flex;align-items:center;gap:6px;padding:5px 9px;border-radius:999px;background:var(--kenton-soft);color:var(--kenton-dark);font-size:11px;font-weight:1000}
+    .stage h2{margin:12px 0 7px;font-size:clamp(23px,6vw,32px);line-height:1.2;letter-spacing:-.035em}
+    .coach{margin:0;color:var(--muted);font-size:14px;line-height:1.75}
+    .stage-actions{display:grid;gap:10px;margin-top:18px}
+    .stage-actions.two{grid-template-columns:1fr 1fr}
+    .teacher-note{display:flex;gap:10px;align-items:flex-start;margin-top:14px;padding:12px 13px;border:1px solid #efd789;border-radius:15px;background:var(--amber-soft);font-size:13px;line-height:1.62}
+    .teacher-note .face{font-size:23px;line-height:1}.teacher-note b{color:var(--amber-dark)}
+    .train-lab{position:relative;margin-top:16px;padding:16px 12px;border:1px solid #d0e3e7;border-radius:21px;background:linear-gradient(180deg,#f9fcfd,#edf7f9);overflow:hidden}
+    .station-label{display:flex;justify-content:space-between;gap:8px;color:var(--muted);font-size:10.5px;font-weight:900}
+    .clause-train{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1.45fr);gap:8px;align-items:center;margin-top:14px}
+    .train-car{min-height:77px;display:grid;align-content:center;text-align:center;padding:10px 8px;border-radius:16px;font-weight:950;line-height:1.38}
+    .train-car small{display:block;margin-top:4px;font-size:9.5px;font-weight:800;opacity:.7}
+    .train-main{background:var(--navy);color:#fff}.train-link{background:var(--amber-soft);color:var(--amber-dark);border:2px solid #edce73}
+    .train-clause{background:var(--kenton-soft);color:var(--kenton-dark);border:2px solid #9bd8e0}
+    .joiner{font-size:21px;color:var(--amber-dark);font-weight:1000}
+    .dispatch-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px;margin-top:15px}
+    .dispatch{min-height:136px;padding:11px 8px;border:2px solid var(--line);border-radius:17px;background:#fff;text-align:center;color:var(--ink)}
+    .dispatch.seen{border-color:#83cf98;background:var(--mint-soft)}
+    .dispatch .icon{font-size:28px}.dispatch b{display:block;margin-top:6px;font-size:15px}.dispatch span{display:block;margin-top:5px;color:var(--muted);font-size:10.5px;line-height:1.45}
+    .dispatch-result{margin-top:11px;min-height:87px;padding:13px;border-radius:16px;background:var(--navy);color:#fff;font-size:14px;line-height:1.6}
+    .dispatch-result b{color:#aef4ff}
+    .question-board{margin-top:16px;padding:14px;border-radius:19px;background:#173646;color:#fff}
+    .question-board small{display:block;color:#b9d1dc;font-size:10px;font-weight:900}
+    .question-board .sentence{margin-top:8px;font-family:"Trebuchet MS","Segoe UI",sans-serif;font-size:clamp(18px,5vw,23px);line-height:1.55;font-weight:800}
+    .question-board mark{background:transparent;color:#ffe28d;border-bottom:3px solid #ffe28d}
+    .order-track{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:7px;margin-top:13px}
+    .order-word{padding:9px 10px;border-radius:10px;background:rgba(255,255,255,.11);border:1px solid rgba(255,255,255,.18);font-size:15px;font-weight:900}
+    .order-word.move{background:rgba(54,197,214,.24);border-color:#7fe4ef;animation:wordMove 1.3s ease-in-out infinite}
+    .choice-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+    .choice{padding:10px 12px;border:2px solid var(--line);background:#fff;color:var(--ink);box-shadow:0 4px 0 #e2ecee;text-align:left;font-size:14px;line-height:1.45}
+    .choice.correct{border-color:#74c98b;background:var(--mint-soft);color:var(--mint-dark)}
+    .choice.wrong{border-color:var(--coral);background:var(--coral-soft);color:var(--coral-dark)}
+    .question{margin-top:15px;font-size:15px;font-weight:950;line-height:1.55}
+    .feedback{margin-top:12px;padding:12px 13px;border-left:5px solid var(--mint-dark);border-radius:14px;background:var(--mint-soft);font-size:13px;line-height:1.65}
+    .feedback.bad{border-left-color:var(--coral);background:var(--coral-soft)}
+    .feedback b{display:block;margin-bottom:2px}
+    .assembly{min-height:72px;display:flex;align-items:center;justify-content:center;gap:7px;flex-wrap:wrap;margin-top:15px;padding:10px;border:2px dashed #aac9d0;border-radius:17px;background:#eef7f9}
+    .assembly.empty:before{content:"按陈述语序点下面的词块";color:var(--muted);font-size:12px}
+    .token-bank{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-top:11px}
+    .token{min-height:44px;padding:8px 11px;border:2px solid var(--line);background:#fff;color:var(--ink);box-shadow:0 3px 0 #e0eaec}
+    .token[disabled]{opacity:.28;cursor:default;box-shadow:none}
+    .timeline{display:grid;gap:9px;margin-top:15px}
+    .time-row{display:grid;grid-template-columns:98px minmax(0,1fr);gap:9px;align-items:stretch}
+    .time-engine{display:grid;place-items:center;text-align:center;padding:9px;border-radius:15px;background:var(--navy);color:#fff;font-size:12px;font-weight:900}
+    .time-engine small{display:block;color:#b9d1dc;font-size:9.5px;margin-top:3px}
+    .time-rule{padding:11px 12px;border:1px solid var(--line);border-radius:15px;background:#fff;font-size:12.5px;line-height:1.55}
+    .time-rule b{color:var(--kenton-dark)}
+    .book-edge{display:grid;gap:9px;margin-top:14px}
+    .edge-row{display:grid;grid-template-columns:36px minmax(0,1fr);gap:9px;align-items:start;padding:10px 11px;border:1px solid var(--line);border-radius:14px;background:#fafcfd;font-size:12.5px;line-height:1.55}
+    .edge-row strong{width:34px;height:34px;display:grid;place-items:center;border-radius:11px;background:var(--amber-soft);color:var(--amber-dark)}
+    .flip-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px;margin-top:15px}
+    .flip-card{position:relative;min-height:182px;padding:0;border:0;background:transparent;perspective:900px}
+    .flip-inner{position:absolute;inset:0;transform-style:preserve-3d;transition:transform .5s ease}
+    .flip-card.flipped .flip-inner{transform:rotateY(180deg)}
+    .flip-face{
+      position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;
+      display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;
+      gap:7px;padding:16px 12px;border:2px solid #addbe2;border-radius:18px;background:var(--kenton-soft);
+      color:var(--kenton-dark);box-shadow:var(--soft-shadow);font-size:15px;font-weight:950;line-height:1.45
+    }
+    .flip-face small{font-size:10.5px;color:var(--muted);font-weight:800}
+    .flip-back{transform:rotateY(180deg);border-color:#e5ca73;background:var(--amber-soft);color:var(--amber-dark)}
+    .repair-banner{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px;align-items:center;margin:14px 0;padding:12px;border:2px solid #7fcf97;border-radius:17px;background:linear-gradient(135deg,var(--mint-soft),#fbfffc);box-shadow:0 5px 0 #d8efdf}
+    .repair-banner strong{display:block;color:var(--mint-dark);font-size:13px}.repair-banner span{display:block;margin-top:2px;color:#50715a;font-size:11px;line-height:1.5}
+    .return-btn{min-height:45px;border:0;padding:8px 12px;background:var(--mint-dark);color:#fff;box-shadow:0 4px 0 #0d5127;white-space:nowrap}
+    .practice-card{padding:18px 16px;border:1px solid var(--line);border-radius:25px;background:#fff;box-shadow:var(--shadow)}
+    .practice-meta{display:flex;align-items:center;justify-content:space-between;gap:9px;color:var(--muted);font-size:11px;font-weight:900}
+    .practice-card h2{font-size:21px;line-height:1.35;margin:13px 0 6px}
+    .reason-chip{display:inline-flex;margin-top:9px;padding:5px 9px;border-radius:999px;background:var(--violet-soft);color:var(--violet);font-size:11px;font-weight:900}
+    .homework-grid{display:grid;gap:12px;margin-top:14px}
+    .panel{padding:17px 16px;border:1px solid var(--line);border-radius:23px;background:#fff;box-shadow:var(--soft-shadow)}
+    .panel h2{margin:0 0 6px;font-size:19px}.panel p{color:var(--muted);font-size:13px;line-height:1.65}
+    .reason-steps{display:grid;gap:8px;margin-top:12px}
+    .reason-step{display:grid;grid-template-columns:30px minmax(0,1fr);gap:9px;align-items:center;padding:9px 10px;border-radius:13px;background:#f7fafb;border:1px solid var(--line);font-size:12.5px;line-height:1.5}
+    .reason-step b{width:30px;height:30px;display:grid;place-items:center;border-radius:10px;background:var(--kenton-soft);color:var(--kenton-dark)}
+    .number-board{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:7px;margin-top:12px}
+    .number-tile{min-height:47px;border:2px solid var(--line);background:#fff;color:var(--ink);font-size:13px}
+    .number-tile.ok{border-color:#73c98a;background:var(--mint-soft);color:var(--mint-dark)}
+    .number-tile.weak{border-color:#e98a78;background:var(--coral-soft);color:var(--coral-dark)}
+    .legend{display:flex;flex-wrap:wrap;gap:7px;margin-top:10px;color:var(--muted);font-size:10.5px}
+    .legend span{padding:4px 7px;border-radius:999px;border:1px solid var(--line);background:#fff}
+    .wrong-list{display:grid;gap:9px;margin-top:12px}
+    .wrong-item{padding:12px;border:1px solid var(--line);border-radius:15px;background:#fafcfd}
+    .wrong-item h3{margin:0;font-size:14px}.wrong-item p{margin:5px 0 0;font-size:12px;color:var(--muted);line-height:1.55}
+    .stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin-top:12px}
+    .stat{padding:12px 5px;border-radius:15px;background:#f4f9fa;text-align:center}
+    .stat strong{display:block;font-size:20px;color:var(--kenton-dark)}.stat span{display:block;margin-top:3px;color:var(--muted);font-size:9.5px}
+    .report-actions{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:12px}
+    .empty{text-align:center;padding:18px 8px;color:var(--muted)}
+    .empty .big{font-size:42px}.empty h2{color:var(--ink)}
+    .source-list{display:grid;gap:10px;margin-top:14px}
+    .source-item{padding:13px;border:1px solid var(--line);border-radius:16px;background:#fff;font-size:12.5px;line-height:1.65}
+    .source-item b{display:block;margin-bottom:3px;color:var(--kenton-dark)}
+    .toast{position:fixed;z-index:50;left:50%;bottom:78px;transform:translate(-50%,18px);max-width:calc(100% - 28px);padding:10px 15px;border-radius:999px;background:var(--navy);color:#fff;font-size:13px;font-weight:900;box-shadow:0 9px 28px rgba(20,50,65,.26);opacity:0;pointer-events:none;transition:.22s ease}
+    .toast.show{opacity:1;transform:translate(-50%,0)}
+    .privacy{font-size:10.5px!important;color:var(--muted)!important}
+    @keyframes wordMove{0%,100%{transform:translateX(0)}50%{transform:translateX(-8px)}}
+    @media (max-width:520px){
+      .dispatch-grid,.flip-grid{grid-template-columns:1fr}
+      .dispatch{min-height:104px;display:grid;grid-template-columns:40px 1fr;align-items:center;text-align:left;column-gap:8px}
+      .dispatch .icon{grid-row:1/3}.dispatch b{margin:0}.dispatch span{margin-top:3px}
+      .stage-actions.two,.report-actions{grid-template-columns:1fr}
+      .number-board{grid-template-columns:repeat(5,minmax(0,1fr))}
+      .repair-banner{grid-template-columns:1fr}.return-btn{width:100%}
+    }
+    @media (max-width:390px){
+      .app{padding-left:11px;padding-right:11px}.hero{padding-left:16px;padding-right:16px}
+      .home-grid{grid-template-columns:1fr}.home-card{min-height:130px}
+      .clause-train{grid-template-columns:1fr}.joiner{transform:rotate(90deg);text-align:center}
+      .choice-grid{grid-template-columns:1fr}.time-row{grid-template-columns:82px minmax(0,1fr)}
+    }
+    @media (prefers-reduced-motion:reduce){
+      *,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}
+    }
+  </style>
+</head>
+<body>
+  <main class="app">
+    <header class="topbar">
+      <a class="back" href="summer_english_hub.html?who=kenton" aria-label="返回暑假英语学习馆">‹</a>
+      <div class="brand"><strong>宾语从句调度站</strong><span>课外英语 · 2026-07-28 · 课本第100—102页</span></div>
+      <div class="identity">🦁 Kenton</div>
+    </header>
+    <div id="root"></div>
+  </main>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <input id="importInput" type="file" accept="application/json,.json" aria-label="导入Kenton宾语从句学习记录" hidden>
+
+  <script>
+  (() => {
+    "use strict";
+    const APP_ID = "kenton-object-clause-20260728";
+    const VERSION = "1.0.0";
+    const STORE_KEY = "dd:kenton:object-clause-20260728:v1";
+    const SOURCE_DATE = "2026-07-28";
+    const root = document.getElementById("root");
+    const toast = document.getElementById("toast");
+    const importInput = document.getElementById("importInput");
+    const LESSON_STEPS = 7;
+    let view = "home";
+    let sessionAnchor = Date.now();
+    let toastTimer = 0;
+    let practiceQueue = [];
+    let practicePosition = 0;
+
+    const DEFAULT_STATE = {
+      schema:1,child:"Kenton",childId:"kenton",app:APP_ID,version:VERSION,courseDate:SOURCE_DATE,
+      createdAt:"",updatedAt:"",totalMs:0,lessonStep:0,lessonComplete:false,
+      connectorSeen:[],assembly:[],flip:{},attempts:[],wrongBook:{},repairReturn:null,
+      practiceDone:false,verbChecklist:{},events:[]
+    };
+
+    const CONNECTORS = [
+      {id:"that",icon:"💬",label:"that",when:"原句是陈述句",example:"Amy likes science.",result:"I know (that) Amy likes science."},
+      {id:"whether",icon:"❓",label:"if / whether",when:"原句是一般疑问句",example:"Is the museum open?",result:"I wonder whether / if the museum is open."},
+      {id:"wh",icon:"🔎",label:"wh-词",when:"原句是特殊疑问句",example:"Where will they meet?",result:"I don't know where they will meet."}
+    ];
+
+    const PRACTICE = [
+      {id:"p-connect-that",prompt:"I know ___ Amy likes science.",options:["that","whether","where"],answer:"that",skill:"连词",reason:"陈述句作宾语从句，用 that；只有一个从句时 that 一般可省略。",repair:1},
+      {id:"p-connect-whether",prompt:"Do you know ___ the museum is open?",options:["that","whether / if","why"],answer:"whether / if",skill:"连词",reason:"原来是一般疑问句，进入宾语从句后用 if 或 whether 表示“是否”。",repair:1},
+      {id:"p-order-where",prompt:"I don't know where ___.",options:["will they have the meeting","they will have the meeting","do they have the meeting"],answer:"they will have the meeting",skill:"语序",reason:"宾语从句不用疑问倒装，要排成“连接词 + 主语 + 谓语”的陈述语序。",repair:2},
+      {id:"p-tense-past",prompt:"He told me that he ___ the first prize.",options:["has got","had got","gets"],answer:"had got",skill:"时态",reason:"主句 told 是过去时，从句要进入相应的过去时态；“得奖”发生得更早，用 had got。",repair:4},
+      {id:"p-truth",prompt:"The boy asked whether water ___ at 0℃.",options:["freezes","froze","would freeze"],answer:"freezes",skill:"时态",reason:"水在0℃结冰是客观事实，即使主句 asked 是过去时，从句仍用一般现在时。",repair:4},
+      {id:"p-whether-edge",prompt:"We are not sure ___ they will come or not.",options:["if","whether","that"],answer:"whether",skill:"连词",reason:"whether 可以和 or not 连用；课本此处明确不用 if。",repair:5}
+    ];
+
+    function cloneDefault(){return JSON.parse(JSON.stringify(DEFAULT_STATE))}
+    function load(){
+      try{
+        const data = JSON.parse(localStorage.getItem(STORE_KEY) || "null");
+        if(!data || data.child !== "Kenton" || data.app !== APP_ID || data.schema !== 1) return cloneDefault();
+        return Object.assign(cloneDefault(),data);
+      }catch(_){return cloneDefault()}
+    }
+    let state = load();
+    if(!state.createdAt) state.createdAt = new Date().toISOString();
+    function commitTime(){
+      const now = Date.now();
+      state.totalMs += Math.max(0,now-sessionAnchor);
+      sessionAnchor = now;
+      state.updatedAt = new Date().toISOString();
+      try{localStorage.setItem(STORE_KEY,JSON.stringify(state))}catch(_){}
+    }
+    function save(){commitTime()}
+    setInterval(commitTime,15000);
+    document.addEventListener("visibilitychange",()=>{if(document.hidden)commitTime();else sessionAnchor=Date.now()});
+    window.addEventListener("beforeunload",commitTime);
+
+    function esc(value){return String(value).replace(/[&<>"']/g,ch=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[ch]))}
+    function showToast(message){toast.textContent=message;toast.classList.add("show");clearTimeout(toastTimer);toastTimer=setTimeout(()=>toast.classList.remove("show"),2200)}
+    function formatMs(ms){const m=Math.floor(ms/60000),s=Math.floor((ms%60000)/1000);return m?`${m}分${s}秒`:`${s}秒`}
+    function setView(next){view=next;window.scrollTo({top:0,behavior:"smooth"});render()}
+    function progressPct(){return state.lessonComplete?100:Math.round((Math.min(state.lessonStep,LESSON_STEPS-1)/(LESSON_STEPS-1))*100)}
+
+    function syncAttempt(item,selected,correct){
+      if(window.DDLearningSync && typeof window.DDLearningSync.recordAttempt === "function"){
+        window.DDLearningSync.recordAttempt({
+          kid:"kenton",subject:"英语",activity:"object_clause_attempt",
+          topic:"宾语从句：连词、时态、语序",item:item.prompt,ok:correct,
+          hint:item.reason,source:"apps/kenton_object_clause_class_20260728.html",
+          payload:{app:APP_ID,version:VERSION,question_id:item.id,selected,expected:item.answer,skill:item.skill,course_date:SOURCE_DATE}
+        });
+      }
+    }
+    function markWrong(item,selected){
+      const old=state.wrongBook[item.id]||{id:item.id,prompt:item.prompt,expected:item.answer,skill:item.skill,reason:item.reason,wrongCount:0,rightStreak:0,resolved:false};
+      old.wrongCount+=1;old.rightStreak=0;old.resolved=false;old.lastSelected=selected;old.lastWrongAt=new Date().toISOString();state.wrongBook[item.id]=old
+    }
+    function markRight(item){
+      const old=state.wrongBook[item.id];if(!old)return;
+      old.rightStreak=(old.rightStreak||0)+1;if(old.rightStreak>=2)old.resolved=true
+    }
+    function recordAttempt(item,selected,correct,source="independent"){
+      const row={ts:new Date().toISOString(),questionId:item.id,prompt:item.prompt,selected,expected:item.answer,correct,explain:item.reason,skill:item.skill,source};
+      state.attempts.push(row);if(state.attempts.length>500)state.attempts=state.attempts.slice(-500);
+      correct?markRight(item):markWrong(item,selected);
+      syncAttempt(item,selected,correct);save()
+    }
+    function repairMarkup(){
+      if(!state.repairReturn)return "";
+      return `<div class="repair-banner" role="status"><div><strong>正在重看刚才第 ${state.repairReturn.index+1} 题需要的知识</strong><span>看懂后会回到同一道题；原进度和作答现场都保留。</span></div><button class="return-btn" type="button" data-action="return-question">↩ 我看懂了，回原题</button></div>`
+    }
+    function lessonHeader(){
+      return `<div class="lesson-head"><div class="lesson-head-top"><strong>宾语从句 · 三道调度门</strong><span>第 ${Math.min(state.lessonStep+1,LESSON_STEPS)} / ${LESSON_STEPS} 步</span></div><div class="progress-track"><div class="progress-fill" style="width:${progressPct()}%"></div></div></div>`
+    }
+    function stage(tag,title,coach,body,actions=""){
+      return `${lessonHeader()}<section class="stage"><span class="step-tag">${tag}</span><h2>${title}</h2><p class="coach">${coach}</p>${repairMarkup()}${body}${actions?`<div class="stage-actions">${actions}</div>`:""}${state.repairReturn?repairMarkup():""}</section>`
+    }
+
+    function renderHome(){
+      commitTime();
+      const active=Object.values(state.wrongBook).filter(x=>!x.resolved).length;
+      const checked=Object.values(state.verbChecklist).filter(x=>x==="ok").length;
+      const resume=state.lessonStep>0&&!state.lessonComplete;
+      root.innerHTML=`
+        <section class="hero">
+          <span class="source-pill">📘 课本第100—102页 × 今天课堂反馈</span>
+          <h1>把问题句<br><em>调回正确轨道</em></h1>
+          <p class="hero-lead">宾语从句不是把问句原样塞进去。先选连词，再把语序排成陈述句，最后让时态跟主句配合。</p>
+          <div class="goal"><b>今天学完要做到：</b>看到宾语从句能自己判断“连词、时态、语序”，写错时也能说清到底错在哪一步。</div>
+          <div class="mini-rail">
+            <div class="mini-cars"><div class="mini-car main-car"><small>主句车头</small>I don't know</div><div class="coupler">＋</div><div class="mini-car clause-car"><small>宾语从句车厢</small>where they will meet</div></div>
+            <div class="rail" aria-hidden="true"></div>
+          </div>
+          <div class="home-actions"><button class="primary" type="button" data-view="lesson">${state.lessonComplete?"从头复习":resume?`继续第 ${state.lessonStep+1} 步`:"老师带我学"} →</button></div>
+        </section>
+        <div class="home-grid">
+          <div class="home-card"><strong>🧪 独立检验</strong><span>6道少量检验，错后会回到对应讲解，再一键返回原题。</span><button class="secondary" type="button" data-action="start-practice">开始检验</button></div>
+          <div class="home-card"><strong>📒 回家作业</strong><span>错题原因整理 + 不规则动词1—30编号进度板；已标会背 ${checked}/30。</span><button class="secondary" type="button" data-view="homework">打开作业台</button></div>
+          <div class="home-card"><strong>🧠 错题与记录</strong><span>待回炉 ${active} 项 · 学习 ${formatMs(state.totalMs)} · 连对2次才解决。</span><button class="secondary" type="button" data-view="records">查看记录</button></div>
+          <div class="home-card"><strong>🔍 材料核对</strong><span>查看课本、老师反馈、改编练习和未取得材料的边界。</span><button class="secondary" type="button" data-view="sources">家长查看</button></div>
+        </div>
+        <div class="section-label"><h2>本课依据</h2><span>原文 / 改编 / 补充分开</span></div>
+        <div class="source-box"><b>课本：</b>《初中英语语法专项练习（知识点梳理）》第14章，第100—102页。<br><b>老师今日反馈：</b>新授宾语从句的连词、时态、语序；Kenton起初对从句语序较模糊，练习后错误减少。<br><b>音频：</b>不适用。本课核心是看见并操作语序变化，不使用浏览器随机英语声音。</div>`;
+    }
+
+    function renderLesson(){
+      switch(state.lessonStep){
+        case 0:return renderMeaning();
+        case 1:return renderConnector();
+        case 2:return renderOrder();
+        case 3:return renderAssembly();
+        case 4:return renderTense();
+        case 5:return renderEdges();
+        default:return renderRecall()
+      }
+    }
+    function renderMeaning(){
+      const body=`<div class="train-lab"><div class="station-label"><span>一句话装进另一句话</span><span>宾语从句 = “知道/问/告诉”的内容</span></div><div class="clause-train"><div class="train-car train-main">I know<small>我知道</small></div><div class="joiner">＋</div><div class="train-car train-clause">Amy likes science.<small>我知道的“内容”</small></div></div><div class="rail" aria-hidden="true"></div><div class="dispatch-result"><b>I know (that) Amy likes science.</b><br>后面整句话回答了“我知道什么”，所以它在大句子里做宾语。</div></div><div class="teacher-note"><span class="face">🦁</span><div><b>先别背术语。</b>只要先找“知道什么、问什么、告诉什么”，就找到了宾语从句车厢。</div></div>`;
+      return stage("第1步 · 看懂","什么叫宾语从句？","它就是放在 know、think、ask、tell 等词后面，说明“内容是什么”的一整句话。",body,`<button class="primary" type="button" data-next-step>看三种连词入口 →</button>`)
+    }
+    function renderConnector(){
+      const selected=state.connectorSelected||"that";
+      const current=CONNECTORS.find(x=>x.id===selected);
+      const allSeen=CONNECTORS.every(x=>state.connectorSeen.includes(x.id));
+      const body=`<div class="dispatch-grid">${CONNECTORS.map(x=>`<button class="dispatch ${state.connectorSeen.includes(x.id)?"seen":""}" type="button" data-connector="${x.id}"><span class="icon">${x.icon}</span><b>${x.label}</b><span>${x.when}</span></button>`).join("")}</div><div class="dispatch-result"><b>${esc(current.example)}</b><br>→ ${esc(current.result)}</div><div class="teacher-note"><span class="face">🚦</span><div><b>连词不是凭感觉。</b>先把从句单独拿出来，看它原来是陈述句、一般疑问句，还是特殊疑问句。</div></div>`;
+      return stage("第2步 · 连词门","三种句子，走三条入口","依次点开三扇门。原句是什么类型，决定它用 that、if/whether，还是 wh-词。",body,allSeen?`<button class="primary" type="button" data-next-step>去修最容易错的语序 →</button>`:`<button class="quiet" type="button" disabled>三扇门都点过后继续</button>`)
+    }
+    function renderOrder(){
+      const solved=state.orderSolved;
+      const body=`<div class="question-board"><small>原来的特殊疑问句</small><div class="sentence">Where <mark>will they</mark> have the meeting?</div><div class="order-track"><span class="order-word">where</span><span class="order-word ${solved?"move":""}">will</span><span class="order-word ${solved?"move":""}">they</span><span class="order-word">have the meeting</span></div></div><div class="question">装进 “I don't know …” 后，哪一种语序正确？</div><div class="choice-grid"><button class="choice" type="button" data-order="question">where will they have the meeting</button><button class="choice ${solved?"correct":""}" type="button" data-order="statement">where they will have the meeting</button></div><div id="feedback">${solved?`<div class="feedback"><b>对：疑问词保留，倒装要撤掉。</b>宾语从句里面排成“连接词 + 主语 + 谓语”：where + they + will have …</div>`:""}</div><div class="teacher-note"><span class="face">🧲</span><div><b>语序检查磁铁：</b>先找从句主语，再把谓语放到它后面。不要让 will / do / does / did 冲到主语前面。</div></div>`;
+      return stage("第3步 · 语序门","问号拿走，队伍重排","这正是老师说Kenton一开始最模糊的地方：宾语从句必须使用陈述语序。",body,solved?`<button class="primary" type="button" data-next-step>我来亲手排一次 →</button>`:"")
+    }
+    function renderAssembly(){
+      const order=["where","they","will have","the meeting"];
+      const bank=["will have","where","the meeting","they"];
+      const complete=state.assembly.length===order.length;
+      const body=`<div class="question-board"><small>把从句接到 I don't know 后面</small><div class="sentence">I don't know <mark>__________</mark>.</div></div><div class="assembly ${state.assembly.length?"":"empty"}">${state.assembly.map(x=>`<span class="order-word" style="background:#fff;color:var(--ink);border:1px solid var(--line)">${esc(x)}</span>`).join("")}</div><div class="token-bank">${bank.map(x=>`<button class="token" type="button" data-token="${esc(x)}" ${state.assembly.includes(x)?"disabled":""}>${esc(x)}</button>`).join("")}</div><div id="feedback">${complete?`<div class="feedback"><b>I don't know where they will have the meeting.</b>你已经亲手排成“where + they + will have …”。</div>`:""}</div>`;
+      return stage("第4步 · 跟着做","把主语送到谓语前面","按正确顺序点词块。点错不会直接亮答案，先回想：连接词后面应该先看到谁？",body,complete?`<button class="primary" type="button" data-next-step>进入时态调度 →</button>`:`<button class="quiet" type="button" data-action="clear-assembly">清空重排</button>`)
+    }
+    function renderTense(){
+      const body=`<div class="timeline"><div class="time-row"><div class="time-engine">主句现在<small>know / ask</small></div><div class="time-rule"><b>从句按意思选时态。</b><br>I know where he <b>lived last year</b>.</div></div><div class="time-row"><div class="time-engine">主句过去<small>knew / told</small></div><div class="time-rule"><b>从句进入相应过去时。</b><br>He told me that he <b>had got</b> the prize.</div></div><div class="time-row"><div class="time-engine">客观真理<small>永远成立</small></div><div class="time-rule"><b>不受主句过去影响。</b><br>The boy asked whether water <b>freezes</b> at 0℃.</div></div></div><div class="teacher-note"><span class="face">⏰</span><div><b>先看主句，再看事实。</b>主句现在，从句按意思；主句过去，从句通常后退；自然规律不后退。</div></div>`;
+      return stage("第5步 · 时态门","先看车头时间，再调车厢时间","课本第101—102页把时态分成三种情况。不要只背“主过从过”，还要记住客观真理例外。",body,`<button class="primary" type="button" data-next-step>看看课本边界 →</button>`)
+    }
+    function renderEdges(){
+      const body=`<div class="book-edge"><div class="edge-row"><strong>1</strong><span><b>that 一般可省：</b>I heard (that) he joined the Youth League.<br>但连续出现两个以上宾语从句时，后一个 that 不省。</span></div><div class="edge-row"><strong>2</strong><span><b>whether 的专用位置：</b>whether 可与 or not 连用；about 等介词后，以及课本的 sure 结构中使用 whether。</span></div><div class="edge-row"><strong>3</strong><span><b>wh-词仍有意思：</b>what、who、when、where、why、how 要保留，但后面的语序仍是陈述语序。</span></div></div><div class="teacher-note"><span class="face">📖</span><div><b>本课主线只练连词、时态、语序。</b>第102页后半的否定转移和反意疑问句先不混进今天的独立检验。</div></div>`;
+      return stage("第6步 · 课本边界","不是所有连词都能随便换","这三条来自课本第100—101页，帮助你避免“只会一个口诀”的机械错误。",body,`<button class="primary" type="button" data-next-step>遮住规则，讲回来 →</button>`)
+    }
+    function renderRecall(){
+      const cards=[
+        ["连词门","先看原句类型","陈述句 that；一般疑问 if/whether；特殊疑问保留 wh-词。"],
+        ["语序门","主语必须在谓语前","宾语从句使用陈述语序：连接词 + 主语 + 谓语。"],
+        ["时态门","先看主句，再看事实","主现从任意；主过从过去；客观真理仍用现在。"]
+      ];
+      const all=cards.every((_,i)=>state.flip[i]);
+      const body=`<div class="flip-grid">${cards.map((c,i)=>`<button class="flip-card ${state.flip[i]?"flipped":""}" type="button" data-flip="${i}" aria-pressed="${!!state.flip[i]}"><span class="flip-inner"><span class="flip-face"><small>点我翻开</small>${c[0]}<small>${c[1]}</small></span><span class="flip-face flip-back"><small>再点可翻回</small>${c[2]}</span></span></button>`).join("")}</div><div class="teacher-note"><span class="face">🗣</span><div><b>翻开前先说，翻开后核对。</b>三张卡都能反复“翻开 → 翻回 → 再翻”，不会锁死。</div></div>`;
+      const actions=all?`<button class="primary" type="button" data-action="finish-lesson">我能讲回来，开始独立检验 →</button>`:`<button class="quiet" type="button" disabled>三张卡都翻开核对后继续</button>`;
+      return stage("第7步 · 遮挡回忆","把三道门讲回来","不要急着看答案。先自己说出规则，再点卡片核对。",body,actions)
+    }
+
+    function renderPractice(){
+      const actualIndex=practiceQueue[practicePosition];
+      const item=PRACTICE[actualIndex];
+      if(!item)return renderPracticeResult();
+      const existing=state.practiceFeedback;
+      root.innerHTML=`<section class="practice-card"><div class="practice-meta"><span>独立检验 ${practicePosition+1} / ${practiceQueue.length}</span><span>只做少量高质量复验</span></div><span class="reason-chip">本题检查：${esc(item.skill)}</span><h2>${esc(item.prompt)}</h2><div class="choice-grid">${item.options.map(x=>`<button class="choice ${existing&&existing.selected===x?(existing.correct?"correct":"wrong"):""}" type="button" data-practice="${esc(x)}">${esc(x)}</button>`).join("")}</div><div id="feedback">${existing?`<div class="feedback ${existing.correct?"":"bad"}"><b>${existing.correct?"判断正确":"先别记答案，找错因"}</b>${esc(item.reason)}</div>`:""}</div>${existing&&existing.correct?`<div class="stage-actions"><button class="primary" type="button" data-action="next-practice">${practicePosition===practiceQueue.length-1?"查看本轮结果":"下一题 →"}</button></div>`:""}<div class="stage-actions"><button class="quiet" type="button" data-view="home">先回首页</button></div></section>`
+    }
+    function renderPracticeResult(){
+      const recent=state.attempts.filter(x=>PRACTICE.some(q=>q.id===x.questionId)).slice(-30);
+      const wrongSkills=[...new Set(recent.filter(x=>!x.correct).map(x=>x.skill))];
+      state.practiceDone=true;save();
+      root.innerHTML=`<section class="stage"><span class="step-tag">本轮完成</span><h2>${wrongSkills.length?"错因已经归类":"三道调度门都能独立使用"}</h2><p class="coach">${wrongSkills.length?`本轮出现过：${wrongSkills.join("、")}。错误不会被一次答对抹掉，连续答对2次后才解决。`:"这轮没有出现错误。可以去回家作业台整理老师练习卷。"} </p><div class="stats"><div class="stat"><strong>${practiceQueue.length}</strong><span>完成题数</span></div><div class="stat"><strong>${wrongSkills.length}</strong><span>错因类型</span></div><div class="stat"><strong>${Object.values(state.wrongBook).filter(x=>!x.resolved).length}</strong><span>待回炉</span></div><div class="stat"><strong>${formatMs(state.totalMs)}</strong><span>累计用时</span></div></div><div class="stage-actions"><button class="primary" type="button" data-view="homework">去整理回家作业 →</button><button class="secondary" type="button" data-view="records">看错题本</button></div></section>`
+    }
+
+    function renderHomework(){
+      const active=Object.values(state.wrongBook).filter(x=>!x.resolved);
+      const ok=Object.values(state.verbChecklist).filter(x=>x==="ok").length;
+      const weak=Object.values(state.verbChecklist).filter(x=>x==="weak").length;
+      root.innerHTML=`<div class="section-label" style="margin-top:4px"><h2>今天回家作业台</h2><span>只记录Kenton</span></div><div class="homework-grid"><section class="panel"><h2>1. 练习卷错题要写明原因</h2><p>不要只抄正确答案。按下面四步写，软件已把做错过的题按“连词 / 时态 / 语序”归类。</p><div class="reason-steps"><div class="reason-step"><b>①</b><span>抄原题和自己的错误答案。</span></div><div class="reason-step"><b>②</b><span>圈出错因：连词、时态或语序。</span></div><div class="reason-step"><b>③</b><span>写判断方法：我应该先看什么？</span></div><div class="reason-step"><b>④</b><span>把正确句完整写一遍，再口头解释。</span></div></div>${active.length?`<div class="wrong-list">${active.map(x=>`<div class="wrong-item"><h3>${esc(x.skill)} · 累计错 ${x.wrongCount} 次</h3><p>原题：${esc(x.prompt)}<br>我的错误：${esc(x.lastSelected||"未记录")}<br>应写原因：${esc(x.reason)}</p></div>`).join("")}</div>`:`<div class="empty"><div class="big">📘</div><p>软件内还没有未解决错题。请把纸质练习卷上的错题也按这四步整理。</p></div>`}</section><section class="panel"><h2>2. 不规则动词 1—30</h2><p>请把老师原表放在旁边使用。每个编号点击可循环：未检查 → 会背 → 待回炉。当前会背 ${ok}/30，待回炉 ${weak}/30。</p><div class="source-box" style="margin-top:10px"><b>材料边界：</b>本轮没有取得老师136词表的1—30原文，所以这里不显示或猜测词形、顺序和中文，只做与原表编号一致的进度记录。</div><div class="number-board">${Array.from({length:30},(_,i)=>{const n=i+1,s=state.verbChecklist[n]||"";return `<button class="number-tile ${s}" type="button" data-verb-number="${n}" aria-label="不规则动词第${n}项，${s==="ok"?"会背":s==="weak"?"待回炉":"未检查"}">${n}${s==="ok"?" ✓":s==="weak"?" ↺":""}</button>`}).join("")}</div><div class="legend"><span>白色：未检查</span><span>绿色 ✓：会背</span><span>红色 ↺：待回炉</span></div><div class="reason-steps"><div class="reason-step"><b>A</b><span>看原形，读“原形—过去式—过去分词”。</span></div><div class="reason-step"><b>B</b><span>遮住后两项，自己完整说出。</span></div><div class="reason-step"><b>C</b><span>纸上默写；错一项就把该编号点成待回炉。</span></div><div class="reason-step"><b>D</b><span>只重背红色编号，第二轮再检查。</span></div></div></section></div><div class="stage-actions"><button class="primary" type="button" data-view="records">保存并查看学习记录 →</button><button class="quiet" type="button" data-view="home">返回首页</button></div>`
+    }
+
+    function renderRecords(){
+      commitTime();
+      const all=Object.values(state.wrongBook),active=all.filter(x=>!x.resolved),solved=all.filter(x=>x.resolved);
+      const ok=Object.values(state.verbChecklist).filter(x=>x==="ok").length;
+      const weak=Object.values(state.verbChecklist).filter(x=>x==="weak").length;
+      root.innerHTML=`<section class="panel"><h2>学习记录</h2><p>记录使用“Kenton + 本软件 + 版本”独立命名空间；不与Eddey、家长测试或其他课程混用。</p><div class="stats"><div class="stat"><strong>${progressPct()}%</strong><span>主课进度</span></div><div class="stat"><strong>${state.attempts.length}</strong><span>作答次数</span></div><div class="stat"><strong>${active.length}</strong><span>待回炉</span></div><div class="stat"><strong>${formatMs(state.totalMs)}</strong><span>累计用时</span></div></div></section><section class="panel" style="margin-top:12px"><h2>宾语从句错题本</h2>${active.length?`<div class="wrong-list">${active.map(x=>`<div class="wrong-item"><h3>${esc(x.skill)} · 连对 ${x.rightStreak||0}/2</h3><p>${esc(x.prompt)}<br>错因：${esc(x.reason)}<br>累计错误：${x.wrongCount} 次</p></div>`).join("")}</div><div class="stage-actions"><button class="secondary" type="button" data-action="redo-wrong">只重做待回炉题</button></div>`:`<div class="empty"><div class="big">🌱</div><p>目前没有未解决错题。</p></div>`}${solved.length?`<p class="privacy">已连续答对2次并解决：${solved.map(x=>esc(x.skill)).join("、")}</p>`:""}</section><section class="panel" style="margin-top:12px"><h2>不规则动词1—30进度</h2><p>会背 ${ok}/30 · 待回炉 ${weak}/30。这里只记录编号，不替代老师原表。</p></section><section class="panel" style="margin-top:12px"><h2>导出与跨设备</h2><div class="report-actions"><button class="primary" type="button" data-action="download-json">下载 JSON</button><button class="secondary" type="button" data-action="download-md">下载 Markdown</button><button class="secondary" type="button" data-action="copy-md">复制给 ChatGPT</button><button class="quiet" type="button" data-action="import-json">导入 JSON</button></div><p class="privacy">只记录Kenton、本课学习步骤、作答、错因和编号进度；不保存学校、班级、账号、密码或任何仓库凭据。</p></section><div class="stage-actions"><button class="primary" type="button" data-view="home">返回首页</button></div>`
+    }
+
+    function renderSources(){
+      root.innerHTML=`<section class="stage"><span class="step-tag">家长核对区</span><h2>这版实际用了什么材料？</h2><p class="coach">以下内容只说明本轮实际依据，不把OCR、教师反馈和软件改编混称为同一种“课本原文”。</p><div class="source-list"><div class="source-item"><b>本轮实际读取 · 课本结构化文本</b>《初中英语语法专项练习（知识点梳理）》第100—102页：that；if/whether；wh-词；陈述语序；主句现在/过去的时态呼应；客观真理仍用现在时。文本保存了原扫描页映射与OCR置信度。</div><div class="source-item"><b>本轮未直接打开 · 原扫描图片</b>当前附件只提供了结构化文本和原图定位信息，没有提供第100—102页图片字节。本软件没有把“读取结构化文本”写成“重新看过原扫描图”。</div><div class="source-item"><b>用户当前提供 · 老师反馈</b>2026-07-28：新授宾语从句，重点为连词、时态、语序；Kenton开始对从句语序较模糊，后续练习中错误减少；回家需复习笔记并整理错题原因。</div><div class="source-item"><b>依据材料改编 · 软件互动</b>句子列车、三道调度门、词块排序、遮挡翻卡、6道独立迁移题和错因分类。</div><div class="source-item"><b>未取得 · 老师不规则动词表1—30</b>仓库只有31—90和91—136的已核版本。为避免错序，本版只提供1—30编号进度板，不显示未核词形。</div><div class="source-item"><b>本课暂不纳入</b>课本第102页后半的否定转移、反意疑问句，以及第103页宾语从句的虚拟语气；它们不是老师今天提出的三项主重点。</div><div class="source-item"><b>音频适用性</b>不适用。核心学习证据是能看懂并操作连词、时态和语序变化；未加入浏览器随机TTS。</div></div><div class="stage-actions"><button class="primary" type="button" data-view="home">返回首页</button></div></section>`
+    }
+
+    function render(){
+      if(view==="home")renderHome();
+      else if(view==="lesson")root.innerHTML=renderLesson();
+      else if(view==="practice")renderPractice();
+      else if(view==="homework")renderHomework();
+      else if(view==="records")renderRecords();
+      else if(view==="sources")renderSources();
+    }
+
+    function nextStep(){
+      if(state.lessonStep<LESSON_STEPS-1){state.lessonStep+=1;save();render();window.scrollTo({top:0,behavior:"smooth"})}
+    }
+    function startPractice(indices){
+      practiceQueue=Array.isArray(indices)&&indices.length?indices:PRACTICE.map((_,i)=>i);
+      practicePosition=0;state.practiceFeedback=null;view="practice";save();render();window.scrollTo({top:0,behavior:"smooth"})
+    }
+    function practiceItemById(id){return PRACTICE.find(x=>x.id===id)}
+
+    root.addEventListener("click",event=>{
+      const viewButton=event.target.closest("[data-view]");
+      if(viewButton){setView(viewButton.dataset.view);return}
+      if(event.target.closest("[data-next-step]")){nextStep();return}
+      const connector=event.target.closest("[data-connector]");
+      if(connector){
+        state.connectorSelected=connector.dataset.connector;
+        if(!state.connectorSeen.includes(connector.dataset.connector))state.connectorSeen.push(connector.dataset.connector);
+        save();render();return
+      }
+      const order=event.target.closest("[data-order]");
+      if(order){
+        const correct=order.dataset.order==="statement";
+        const item={id:"guided-order",prompt:"宾语从句使用哪种语序？",answer:"陈述语序",skill:"语序",reason:"宾语从句使用陈述语序：连接词 + 主语 + 谓语。"};
+        recordAttempt(item,order.textContent.trim(),correct,"guided");
+        if(correct){state.orderSolved=true;save();render()}else{
+          order.classList.add("wrong");
+          const fb=document.getElementById("feedback");if(fb)fb.innerHTML=`<div class="feedback bad"><b>先找从句主语 they。</b>will 不能再冲到主语前面；请把 they 放到 will 前面再选。</div>`
+        }return
+      }
+      const token=event.target.closest("[data-token]");
+      if(token){
+        const expected=["where","they","will have","the meeting"][state.assembly.length];
+        const selected=token.dataset.token;
+        const item={id:`guided-assembly-${state.assembly.length}`,prompt:`语序第${state.assembly.length+1}个词块`,answer:expected,skill:"语序",reason:"连接词后按“主语 + 谓语”排列。"};
+        const correct=selected===expected;recordAttempt(item,selected,correct,"guided");
+        if(correct){state.assembly.push(selected);save();render()}else{
+          const fb=document.getElementById("feedback");if(fb)fb.innerHTML=`<div class="feedback bad"><b>${state.assembly.length===0?"先放连接词 where。":state.assembly.length===1?"where 后面先找主语 they。":"继续按主语后放谓语。"} </b>现在不要直接找答案，再看上一步的陈述语序。</div>`
+        }return
+      }
+      if(event.target.closest('[data-action="clear-assembly"]')){state.assembly=[];save();render();return}
+      const flip=event.target.closest("[data-flip]");
+      if(flip){const i=flip.dataset.flip;state.flip[i]=!state.flip[i];save();render();return}
+      if(event.target.closest('[data-action="finish-lesson"]')){
+        state.lessonComplete=true;save();startPractice();return
+      }
+      if(event.target.closest('[data-action="start-practice"]')){startPractice();return}
+      const answer=event.target.closest("[data-practice]");
+      if(answer){
+        const actualIndex=practiceQueue[practicePosition],item=PRACTICE[actualIndex],selected=answer.dataset.practice,correct=selected===item.answer;
+        recordAttempt(item,selected,correct);
+        state.practiceFeedback={selected,correct};save();
+        if(correct){render();showToast("判断正确，说明这一步已经会用")}else{
+          state.repairReturn={index:actualIndex,position:practicePosition,questionId:item.id};state.lessonStep=item.repair;view="lesson";save();render();window.scrollTo({top:0,behavior:"smooth"});showToast(`错因：${item.skill}。先回讲解定点重学`)
+        }return
+      }
+      if(event.target.closest('[data-action="return-question"]')){
+        if(!practiceQueue.length&&state.repairReturn)practiceQueue=[state.repairReturn.index];
+        practicePosition=state.repairReturn&&Number.isInteger(state.repairReturn.position)?state.repairReturn.position:0;
+        state.repairReturn=null;state.practiceFeedback=null;view="practice";save();render();window.scrollTo({top:0,behavior:"smooth"});return
+      }
+      if(event.target.closest('[data-action="next-practice"]')){practicePosition+=1;state.practiceFeedback=null;save();render();window.scrollTo({top:0,behavior:"smooth"});return}
+      const verb=event.target.closest("[data-verb-number]");
+      if(verb){
+        const n=verb.dataset.verbNumber,current=state.verbChecklist[n]||"";
+        state.verbChecklist[n]=current===""?"ok":current==="ok"?"weak":"";
+        state.events.push({ts:new Date().toISOString(),type:"verb-check",number:Number(n),status:state.verbChecklist[n],source:"teacher-table-not-in-repo"});
+        save();render();return
+      }
+      if(event.target.closest('[data-action="redo-wrong"]')){
+        const indices=PRACTICE.map((x,i)=>state.wrongBook[x.id]&&!state.wrongBook[x.id].resolved?i:-1).filter(i=>i>=0);
+        startPractice(indices);return
+      }
+      if(event.target.closest('[data-action="download-json"]')){downloadJSON();return}
+      if(event.target.closest('[data-action="download-md"]')){downloadMarkdown();return}
+      if(event.target.closest('[data-action="copy-md"]')){copyMarkdown();return}
+      if(event.target.closest('[data-action="import-json"]')){importInput.click();return}
+    });
+
+    function exportObject(){commitTime();return Object.assign({},state,{materialSources:{lesson:"2026-07-28 teacher feedback",textbook:"知识点梳理 p.100-102 structured text",verbs:"teacher table 1-30 not available"},exportedAt:new Date().toISOString()})}
+    function markdownReport(){
+      commitTime();
+      const active=Object.values(state.wrongBook).filter(x=>!x.resolved);
+      const ok=Object.entries(state.verbChecklist).filter(([,v])=>v==="ok").map(([n])=>n);
+      const weak=Object.entries(state.verbChecklist).filter(([,v])=>v==="weak").map(([n])=>n);
+      return `# Kenton 英语学习记录：宾语从句\n\n- 课程日期：${SOURCE_DATE}\n- 软件版本：${VERSION}\n- 累计学习时长：${formatMs(state.totalMs)}\n- 主课进度：${progressPct()}%\n- 作答次数：${state.attempts.length}\n\n## 今日课堂重点\n- 连词：that / if-whether / wh-\n- 时态：主现从任意、主过从过去、客观真理仍用现在\n- 语序：宾语从句使用陈述语序\n\n## 待回炉错题\n${active.length?active.map(x=>`- [${x.skill}] ${x.prompt}\\n  - 错因：${x.reason}\\n  - 累计错误：${x.wrongCount}次；连续正确：${x.rightStreak||0}/2`).join("\n"):"- 无"}\n\n## 不规则动词1—30编号进度\n- 会背：${ok.length?ok.join("、"):"无"}\n- 待回炉：${weak.length?weak.join("、"):"无"}\n- 说明：未取得老师原表1—30原文，本软件不显示或猜测具体词形。\n\n## 下一步\n- 把练习卷错题按“原题—错误答案—错因—判断方法—正确句”整理到错题本。\n- 待回炉内容连续答对2次后再标记解决。\n`
+    }
+    function download(name,text,type){
+      const blob=new Blob([text],{type}),a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),900)
+    }
+    function downloadJSON(){download("Kenton_宾语从句_2026-07-28_学习记录.json",JSON.stringify(exportObject(),null,2),"application/json;charset=utf-8");showToast("JSON学习记录已下载")}
+    function downloadMarkdown(){download("Kenton_宾语从句_2026-07-28_学习汇报.md",markdownReport(),"text/markdown;charset=utf-8");showToast("Markdown学习汇报已下载")}
+    async function copyMarkdown(){
+      try{await navigator.clipboard.writeText(markdownReport());showToast("学习汇报已复制，可以发给ChatGPT")}
+      catch(_){downloadMarkdown()}
+    }
+    importInput.addEventListener("change",event=>{
+      const file=event.target.files&&event.target.files[0];if(!file)return;
+      const reader=new FileReader();
+      reader.onload=()=>{
+        try{
+          const data=JSON.parse(reader.result);
+          if(data.schema!==1||data.child!=="Kenton"||data.app!==APP_ID||data.version!==VERSION)throw new Error("mismatch");
+          state=Object.assign(cloneDefault(),data);save();showToast("Kenton本课记录导入成功");render()
+        }catch(_){showToast("这不是本软件v1的Kenton学习记录")}
+        event.target.value=""
+      };
+      reader.readAsText(file)
+    });
+    render();
+  })();
+  </script>
+</body>
+</html>

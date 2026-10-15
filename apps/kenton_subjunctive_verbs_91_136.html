@@ -1,0 +1,328 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<script src="../assets/learning-sync.js"></script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta name="theme-color" content="#0b76da" />
+  <title>Kenton 虚拟语气与不规则动词 91—136</title>
+  <style>
+    :root{
+      --bg:#eef8ff;--paper:#fff;--ink:#14324b;--muted:#637b90;--line:#d7e7f5;
+      --blue:#0b76da;--cyan:#14b8c9;--navy:#11538a;--green:#16a36a;--red:#e24a5a;
+      --yellow:#f6c744;--purple:#7b61d9;--shadow:0 14px 34px rgba(30,93,145,.13);
+      --radius:22px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:radial-gradient(circle at 9% 0,#d9f3ff 0,transparent 34%),linear-gradient(180deg,#f7fbff,#eef7ff 56%,#f8fbfd);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",Arial,sans-serif;min-height:100vh}
+    button,input{font:inherit}
+    button{cursor:pointer;-webkit-tap-highlight-color:transparent}
+    button:focus-visible{outline:3px solid rgba(11,118,218,.28);outline-offset:3px}
+    .topbar{position:sticky;top:0;z-index:20;background:rgba(247,252,255,.92);backdrop-filter:blur(14px);border-bottom:1px solid rgba(187,216,238,.8)}
+    .top-inner{max-width:980px;margin:auto;min-height:62px;padding:9px 16px;display:flex;align-items:center;gap:10px}
+    .brand{display:flex;align-items:center;gap:9px;font-weight:900;min-width:0}
+    .lion{width:42px;height:42px;border-radius:15px;background:linear-gradient(145deg,#26c6da,#0876d8);display:grid;place-items:center;color:#fff;box-shadow:0 7px 16px rgba(11,118,218,.24);font-size:22px}
+    .brand-title{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .brand small{display:block;color:var(--muted);font-weight:700;font-size:11px;margin-top:2px}
+    .top-actions{margin-left:auto;display:flex;gap:8px}
+    .icon-btn{border:1px solid var(--line);background:#fff;color:var(--navy);min-width:42px;height:42px;border-radius:14px;font-weight:900;box-shadow:0 4px 11px rgba(28,83,130,.08);display:grid;place-items:center;text-decoration:none}
+    main{max-width:980px;margin:0 auto;padding:22px 16px 110px}
+    .hero{position:relative;overflow:hidden;border-radius:28px;background:linear-gradient(135deg,#075da9,#0b86d4 54%,#14b8c9);color:#fff;padding:28px;box-shadow:0 20px 44px rgba(0,99,174,.24)}
+    .hero:after{content:"";position:absolute;width:240px;height:240px;border:34px solid rgba(255,255,255,.09);border-radius:50%;right:-88px;top:-105px}
+    .eyebrow{font-size:12px;font-weight:900;letter-spacing:.12em;text-transform:uppercase;opacity:.83}
+    h1,h2,h3,p{margin-top:0}
+    .hero h1{font-size:clamp(28px,7vw,48px);line-height:1.12;margin:10px 0 12px;max-width:720px}
+    .hero p{max-width:650px;line-height:1.72;margin-bottom:18px;color:#eaf7ff}
+    .due{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.25);padding:9px 13px;border-radius:999px;font-weight:800;font-size:13px}
+    .route-line{margin-top:17px;display:flex;align-items:center;gap:7px;flex-wrap:wrap;font-size:12px;font-weight:800;color:#e9f9ff}
+    .route-line span{padding:7px 10px;border-radius:999px;background:rgba(255,255,255,.13)}
+    .section-title{display:flex;align-items:end;justify-content:space-between;gap:12px;margin:26px 2px 12px}
+    .section-title h2{margin:0;font-size:21px}
+    .section-title p{margin:0;color:var(--muted);font-size:13px}
+    .progress-board{margin-top:18px;background:rgba(255,255,255,.9);border:1px solid var(--line);border-radius:var(--radius);padding:16px;box-shadow:var(--shadow)}
+    .progress-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:9px}
+    .metric{background:#f6fbff;border:1px solid #e2eff8;border-radius:17px;padding:12px;text-align:center}
+    .metric strong{display:block;color:var(--blue);font-size:22px}.metric span{font-size:11px;color:var(--muted);font-weight:800}
+    .bar{height:9px;background:#e7f0f6;border-radius:999px;overflow:hidden;margin-top:13px}.bar>i{display:block;height:100%;background:linear-gradient(90deg,var(--cyan),var(--blue));border-radius:inherit;transition:width .35s}
+    .home-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}
+    .home-card{position:relative;text-align:left;border:1px solid var(--line);border-bottom:5px solid #bddcf1;background:var(--paper);border-radius:22px;padding:19px;min-height:166px;color:var(--ink);box-shadow:0 9px 22px rgba(31,93,138,.09);transition:.16s transform,.16s box-shadow}
+    .home-card:active,.btn:active,.choice:active{transform:translateY(3px)}
+    .home-card.primary{background:linear-gradient(145deg,#fff,#eaf8ff);border-color:#b9e2fa;border-bottom-color:var(--blue)}
+    .home-card .num{position:absolute;right:15px;top:13px;font-size:12px;color:var(--muted);font-weight:900}
+    .card-icon{width:45px;height:45px;border-radius:16px;display:grid;place-items:center;background:#e6f5ff;font-size:22px;margin-bottom:13px}
+    .home-card h3{margin:0 0 7px;font-size:18px}.home-card p{margin:0;color:var(--muted);line-height:1.55;font-size:13px}.home-card b{color:var(--blue)}
+    .panel{background:rgba(255,255,255,.96);border:1px solid var(--line);border-radius:var(--radius);padding:20px;box-shadow:var(--shadow)}
+    .panel+.panel{margin-top:14px}
+    .page-head{display:flex;align-items:center;gap:12px;margin-bottom:17px}.back{border:1px solid var(--line);background:#fff;width:43px;height:43px;border-radius:14px;color:var(--navy);font-weight:900}.page-head h1{font-size:25px;margin:0}.page-head p{margin:3px 0 0;color:var(--muted);font-size:13px}
+    .pill{display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:7px 11px;background:#eaf6ff;color:var(--navy);font-weight:900;font-size:12px}
+    .teacher-note{border-left:5px solid var(--yellow);background:#fff9de;padding:14px 15px;border-radius:15px;margin:13px 0;color:#5d5224;line-height:1.65;font-size:14px}
+    .source-note{border:1px solid #c8e1f3;background:#f4faff;padding:13px 14px;border-radius:16px;margin:13px 0;color:#365d78;line-height:1.65;font-size:13px}
+    .source-note strong{color:var(--navy)}.source-note .source-tag{display:inline-flex;align-items:center;border-radius:999px;padding:4px 8px;margin-right:7px;background:#dff2ff;color:#075d9c;font-size:11px;font-weight:950;vertical-align:1px}
+    .source-note.supplement{border-color:#e5dafd;background:#faf7ff;color:#594b78}.source-note.supplement .source-tag{background:#eee7ff;color:#644db1}
+    .world-stage{overflow:hidden;border-radius:22px;background:linear-gradient(180deg,#eff9ff,#fff);border:1px solid #cfe7f6;padding:18px;margin-top:12px}
+    .world-labels{display:flex;justify-content:space-between;gap:12px;margin-bottom:12px}.world-label{flex:1;border-radius:15px;padding:11px;text-align:center;font-weight:900}.real{background:#e8f5ec;color:#137447}.wish{background:#f0ebff;color:#6147b6}
+    .timeline{position:relative;display:grid;grid-template-columns:1fr auto 1fr;gap:10px;align-items:center;min-height:128px}.world-box{border-radius:18px;padding:15px;line-height:1.55;min-height:100px}.world-box.real-box{background:#fff;border:2px solid #bce5cf}.world-box.wish-box{background:#fff;border:2px solid #d9cdfa}.arrow{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;background:var(--blue);color:#fff;font-weight:900;animation:pulse 1.6s infinite}@keyframes pulse{50%{box-shadow:0 0 0 9px rgba(11,118,218,.1)}}
+    .sentence{font-size:20px;font-weight:900;line-height:1.45}.sentence em{font-style:normal;color:var(--purple);text-decoration:underline 3px #d9cdfa;text-underline-offset:4px}.translation{font-size:13px;color:var(--muted);margin-top:7px}
+    .formula{margin:15px 0;background:#102f4b;color:#fff;border-radius:18px;padding:16px;text-align:center;font-weight:900;font-size:clamp(16px,4.5vw,22px);line-height:1.55}.formula .optional{color:#9be7f0}.formula .change{color:#ffd869}
+    .step-dots{display:flex;gap:7px;justify-content:center;margin:17px 0}.dot{width:34px;height:7px;border-radius:999px;background:#d7e7f3}.dot.on{background:var(--blue)}.dot.done{background:var(--green)}
+    .btn-row{display:flex;gap:9px;flex-wrap:wrap;margin-top:14px}.btn{border:0;border-radius:15px;padding:12px 16px;font-weight:900;min-height:46px;transition:.15s transform;display:inline-flex;align-items:center;justify-content:center;gap:7px}.btn.primary{background:linear-gradient(135deg,var(--blue),#0a93d1);color:#fff;box-shadow:0 8px 17px rgba(11,118,218,.2)}.btn.secondary{background:#eaf6ff;color:var(--navy);border:1px solid #cde5f5}.btn.green{background:#e5f7ee;color:#08754a;border:1px solid #bfe7d1}.btn.danger{background:#fff0f2;color:#b52f41;border:1px solid #f3c4cb}.btn.ghost{background:#fff;color:var(--muted);border:1px solid var(--line)}.btn.wide{width:100%}
+    .choice-list{display:grid;gap:10px;margin-top:15px}.choice{border:2px solid var(--line);background:#fff;border-radius:17px;padding:14px 15px;text-align:left;color:var(--ink);font-weight:800;min-height:51px}.choice:hover{border-color:#9ed4f1}.choice.right{border-color:#68c99d;background:#edf9f3}.choice.wrong{border-color:#ee8a97;background:#fff1f3}.explain{margin-top:14px;border-radius:17px;padding:14px;line-height:1.65;font-size:14px}.explain.ok{background:#eaf8f1;color:#126340}.explain.no{background:#fff2f3;color:#85303b}
+    .copy-groups,.family-grid,.range-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}.group-card,.family-card,.range-card{border:1px solid var(--line);border-radius:18px;background:#fff;padding:15px}.group-card h3,.family-card h3{margin-bottom:7px}.group-card p,.family-card p{color:var(--muted);font-size:13px;line-height:1.55;margin-bottom:0}.family-card button,.range-card button{margin-top:11px;width:100%}
+    .word-focus{text-align:center;padding:16px 8px}.word-focus .word{font-size:clamp(34px,10vw,57px);font-weight:950;color:var(--blue);letter-spacing:-.03em}.word-focus .meaning{font-size:19px;font-weight:850;margin-top:5px}.word-focus .copy-count{margin-top:15px;display:flex;gap:10px;justify-content:center}.copy-check{border:2px dashed #b9d8ed;background:#f7fcff;border-radius:16px;padding:13px 15px;font-weight:900;color:var(--navy)}.copy-check.done{border-style:solid;border-color:#62c694;background:#eaf8f1;color:#096942}
+    .word-strip{display:flex;gap:7px;overflow:auto;padding:7px 1px 11px;scrollbar-width:thin}.word-chip{flex:0 0 auto;border:1px solid var(--line);background:#fff;border-radius:999px;padding:8px 11px;color:var(--navy);font-size:12px;font-weight:850}.word-chip.done{background:#e6f7ef;border-color:#b9e4cd;color:#087348}.word-chip.on{background:var(--blue);color:#fff;border-color:var(--blue)}
+    .structure-list{display:grid;gap:9px}.structure-item{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center;border:1px solid var(--line);border-radius:16px;padding:13px;background:#fff}.structure-item code{white-space:normal;font-family:inherit;font-weight:900;color:var(--navy);line-height:1.55}.mini-check{border:0;border-radius:12px;background:#eaf6ff;color:var(--navy);padding:9px 11px;font-weight:900}.mini-check.done{background:#e3f7ec;color:#087348}
+    .family-tag{display:inline-flex;border-radius:999px;padding:7px 10px;font-size:12px;font-weight:900;background:#eff3ff;color:#5d52ad}.family-list{margin-top:7px;color:var(--muted);font-size:12px;line-height:1.6}
+    .verb-card{overflow:hidden;border:1px solid #cfe4f3;border-radius:23px;background:linear-gradient(180deg,#f7fcff,#fff)}.verb-top{background:linear-gradient(125deg,#0d5fa6,#0b80ce);color:#fff;padding:18px}.verb-n{font-size:12px;font-weight:900;opacity:.8}.verb-main{display:flex;align-items:end;gap:10px;flex-wrap:wrap}.verb-main strong{font-size:clamp(35px,10vw,58px);line-height:1.1}.verb-main span{opacity:.83;font-weight:800}.verb-meaning{font-size:18px;font-weight:850;margin-top:7px}.forms{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding:15px}.form-box{border:1px solid var(--line);border-radius:16px;padding:13px 8px;text-align:center;background:#fff;min-height:94px}.form-box small{display:block;color:var(--muted);font-weight:800;margin-bottom:7px}.form-box b{font-size:clamp(16px,4.6vw,22px);line-height:1.32;overflow-wrap:anywhere}.form-box b .changed{color:var(--red);background:#fff0b9;border-radius:5px;padding:0 2px}.covered{filter:blur(8px);user-select:none;color:#aac0d1!important}.side-forms{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:0 15px 14px}.side-forms div{background:#edf7fd;border-radius:14px;padding:10px;text-align:center;font-size:13px}.tip-box{margin:0 15px 15px;border-radius:17px;padding:14px;background:#fff7d9;border:1px solid #f4df8c;line-height:1.65;color:#5a4b19}.tip-box b{color:#8b6510}
+    .recall-cue{text-align:center;padding:26px 15px}.recall-cue .base{font-size:clamp(40px,13vw,70px);font-weight:950;color:var(--blue)}.recall-cue .ipa{color:var(--muted);font-weight:800}.recall-cue .zh{font-size:20px;font-weight:900;margin-top:10px}.say-line{margin-top:18px;color:var(--purple);font-weight:900}.answer-reveal{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:15px}.answer-reveal>div{border-radius:16px;background:#f3f8fc;padding:14px;text-align:center}.answer-reveal span{display:block;color:var(--muted);font-size:12px;font-weight:800}.answer-reveal strong{font-size:20px;display:block;margin-top:4px}.mark-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin-top:12px}
+    .dictation-sheet{background:#fff;border:1px solid var(--line);border-radius:20px;padding:18px}.paper-lines{height:110px;background:repeating-linear-gradient(180deg,transparent 0,transparent 34px,#cbdce8 35px,#cbdce8 36px);margin:16px 0}.field-tags{display:flex;gap:7px;flex-wrap:wrap}.field-toggle{border:1px solid var(--line);background:#f7fbfd;color:var(--muted);padding:8px 10px;border-radius:12px;font-weight:850;font-size:12px}.field-toggle.bad{background:#fff0f2;color:#b32e40;border-color:#ef9aa5}
+    .weak-list{display:grid;gap:10px}.weak-item{border:1px solid var(--line);border-radius:17px;padding:13px;background:#fff;display:grid;grid-template-columns:1fr auto;gap:10px}.weak-item h3{margin:0 0 5px;font-size:16px}.weak-item p{margin:0;color:var(--muted);font-size:12px;line-height:1.5}.streak{align-self:center;background:#fff4ca;color:#7b5a0b;padding:7px 9px;border-radius:999px;font-size:11px;font-weight:900}.empty{text-align:center;padding:30px 15px}.empty .big{font-size:46px}.empty p{color:var(--muted);line-height:1.6}
+    .report-actions{display:grid;grid-template-columns:repeat(2,1fr);gap:9px}.privacy{font-size:12px;color:var(--muted);line-height:1.6;margin-top:12px}.toast{position:fixed;left:50%;bottom:25px;transform:translate(-50%,130px);background:#102f4b;color:#fff;padding:11px 16px;border-radius:14px;font-weight:800;font-size:13px;z-index:99;box-shadow:var(--shadow);transition:.25s;max-width:calc(100vw - 32px);text-align:center}.toast.show{transform:translate(-50%,0)}
+    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+    @media(max-width:640px){main{padding:15px 12px 100px}.top-inner{padding-inline:12px}.brand-title{max-width:190px}.hero{padding:22px 18px;border-radius:23px}.home-grid,.copy-groups,.family-grid,.range-grid{grid-template-columns:1fr}.home-card{min-height:142px}.progress-grid{grid-template-columns:repeat(2,1fr)}.timeline{grid-template-columns:1fr}.arrow{transform:rotate(90deg);margin:auto}.forms{grid-template-columns:1fr}.form-box{min-height:75px}.mark-grid{grid-template-columns:1fr}.answer-reveal{grid-template-columns:1fr}.page-head h1{font-size:21px}.top-actions .label{display:none}.report-actions{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="top-inner">
+      <div class="brand"><div class="lion">🦁</div><div class="brand-title">Kenton 英语带学馆<small>虚拟语气 · 不规则动词 91—136</small></div></div>
+      <div class="top-actions">
+        <a class="icon-btn" href="summer_english_hub.html?who=kenton" aria-label="返回 Kenton 暑假英语学习馆" title="返回暑假英语学习馆">←</a>
+        <button class="icon-btn" type="button" onclick="goHome()" aria-label="回到首页">⌂</button>
+        <button class="icon-btn" type="button" onclick="go('records')" aria-label="学习记录">▤</button>
+      </div>
+    </div>
+  </header>
+  <main id="app"></main>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <input id="importInput" class="sr-only" type="file" accept="application/json,.json" aria-label="导入 Kenton 学习记录" onchange="importProgress(event)" />
+  <script>
+  'use strict';
+  const STORAGE_KEY='ddLearning:kenton:subjunctive-verbs-91-136:v1';
+  const DUE='2026-07-27';
+  const MATERIAL_SOURCES=Object.freeze({
+    grammar:'《知识点梳理》第14章“宾语从句”p.103',
+    verbs:'老师发《136个常用英语不规则动词变化表》91—136',
+    pedagogy:'软件助教依据材料设计：时间轨道、记忆家族、口诀和改编练习'
+  });
+  const grammarSteps=[
+    {id:'wish-now',label:'现在不如愿',fact:'It is not true.',factZh:'事实：这不是真的。',wish:'I wish (that) it were true.',wishZh:'教材例句：我但愿这是真的。',formula:'主语 + wish + (that) + 主语 + 过去式 / were',why:'说的是“现在”，却把动词往过去退一步，表示它和现在事实相反。教材本页例句使用 were，本课按教材写 were。',cue:'现在不是真的 → 往回退一步'},
+    {id:'wish-past',label:'过去已错过',fact:'He did not study hard at middle school.',factZh:'事实：他在中学时学习不努力。',wish:'He wishes (that) he had studied hard at middle school.',wishZh:'教材例句：他想他要是在中学时努力学习该多好。',formula:'主语 + wish + (that) + 主语 + had + 过去分词',why:'过去已经不能重来，所以再往前退一层，用 had + 过去分词。',cue:'过去已发生 → had + 过去分词'},
+    {id:'wish-future',label:'将来难实现',fact:'I cannot stay with you tomorrow.',factZh:'事实：明天我不能和你在一起。',wish:'I wish (that) I could stay with you tomorrow.',wishZh:'教材例句：但愿明天我能和你在一起。',formula:'主语 + wish + (that) + 主语 + should (would, could, might) + 动词原形',why:'说的是将来的愿望或很难实现的事，教材结构使用 should（would、could、might）加动词原形。',cue:'将来不确定 → 情态词 + 原形'},
+    {id:'mandative',label:'建议命令类',fact:'She gives us a suggestion.',factZh:'现实信息：她向我们提出建议。',wish:'She suggested that we (should) have lunch at the new restaurant.',wishZh:'教材例句：她建议我们在那家新开的餐馆吃午餐。',formula:'主语 + suggest / order 等及物动词 + that + 主语 + (should) + 动词原形',why:'把 should 想成一个“隐形背包”：它可以显示，也可以隐藏；但后面的动词保持原形。按教材本页要求，that 不可省略。',cue:'建议命令出现 → should 可藏，动词不变'}
+  ];
+  const grammarQs=[
+    {rule:'wish-now',q:'I wish I ___ taller now.',opts:['am','were','had been'],a:1,ex:'now 指现在；与现在事实相反，用过去式，be 优先用 were。'},
+    {rule:'wish-past',q:'I wish I ___ harder last year.',opts:['study','had studied','would study'],a:1,ex:'last year 是已经过去的事实，用 had + 过去分词。'},
+    {rule:'wish-future',q:'I wish I ___ with you tomorrow.',opts:['could go','had gone','went'],a:0,ex:'tomorrow 指将来愿望，用 could + 动词原形。'},
+    {rule:'mandative',q:'The teacher suggested that he ___ more carefully.',opts:['studies','(should) study','studied'],a:1,ex:'suggest 表示建议：that + 主语 + (should) + 动词原形。'},
+    {rule:'wish-now',q:'I wish it ___ true now.',opts:['is','were','had been'],a:1,ex:'现在并非如此，用过去式表达与现在事实相反。'},
+    {rule:'wish-past',q:'She wishes she ___ the answer yesterday.',opts:['knew','had known','would know'],a:1,ex:'yesterday 的遗憾已经发生，用 had known。'},
+    {rule:'mandative',q:'Dad ordered that I ___ home at once.',opts:['went','(should) go','goes'],a:1,ex:'order 表示命令，should 可省，但 go 必须是原形。'},
+    {rule:'wish-future',q:'I wish it ___ raining soon.',opts:['would stop','stopped','had stopped'],a:0,ex:'soon 是对将来的愿望，用 would + 动词原形。'}
+  ];
+  const p103Words=[
+    {w:'ask',z:'要求',g:'要求请求队'},{w:'demand',z:'要求',g:'要求请求队'},{w:'desire',z:'要求，期望',g:'要求请求队'},
+    {w:'require',z:'需要，要求',g:'要求请求队'},{w:'urge',z:'强烈要求',g:'要求请求队'},{w:'insist',z:'坚持，坚决要求',g:'坚持决定队'},
+    {w:'maintain',z:'坚持，主张',g:'坚持决定队'},{w:'request',z:'请求',g:'要求请求队'},{w:'recommend',z:'推荐',g:'建议推荐队'},
+    {w:'advise',z:'建议',g:'建议推荐队'},{w:'suggest',z:'建议',g:'建议推荐队'},{w:'propose',z:'建议',g:'建议推荐队'},
+    {w:'prefer',z:'宁愿',g:'建议推荐队'},{w:'arrange',z:'安排',g:'安排命令队'},{w:'order',z:'命令',g:'安排命令队'},
+    {w:'direct',z:'命令',g:'安排命令队'},{w:'command',z:'命令',g:'安排命令队'},{w:'decide',z:'决定',g:'坚持决定队'},
+    {w:'determine',z:'下决心',g:'坚持决定队'}
+  ];
+  const structures=[
+    '主语 + wish + (that) + 主语 + 过去式 / were（与现在事实相反）',
+    '主语 + wish + (that) + 主语 + had + 过去分词（与过去事实相反）',
+    '主语 + wish + (that) + 主语 + should (would, could, might) + 动词原形（与将来事实相反）',
+    '主语 + suggest / order 等及物动词 + that + 主语 + (should) + 动词原形'
+  ];
+  const families={
+    same:{name:'原地不动队',icon:'🧊',rule:'原形、过去式、过去分词长得一样。',chant:'不变、不变、还是不变'},
+    abb:{name:'后两项双胞胎',icon:'👯',rule:'过去式和过去分词相同，重点一次记住后两项。',chant:'A 变 B，后面跟着 B'},
+    vowel:{name:'i—片—u 元音节奏队',icon:'🎵',rule:'中间元音按节奏变化，适合整组三连读。',chant:'sing—sang—sung'},
+    en:{name:'完成态穿 -n 外套',icon:'🧥',rule:'过去分词常出现 -n / -en，和过去式明显不同。',chant:'最后一态，常把 n 穿上'},
+    variant:{name:'两种写法都接受队',icon:'🔀',rule:'书上给出斜线变体；主背第一种，同时认得第二种。',chant:'先背左边，再认右边'},
+    modal:{name:'情态时间搭档',icon:'⏳',rule:'shall—should、will—would，不按普通三态填写。',chant:'情态搭档，没有过去分词'}
+  };
+  const verbs=[
+    {n:91,base:'sew',ipa:'/səʊ/',third:'sews',ing:'sewing',past:'sewed',pp:'sewn/sewed',zh:'缝',fam:'en',tip:'过去式加 -ed；完成态常穿上 n：sewn。'},
+    {n:92,base:'shake',ipa:'/ʃeɪk/',third:'shakes',ing:'shaking',past:'shook',pp:'shaken',zh:'摇动',fam:'en',tip:'a 摇成 oo，最后加 -en：shake—shook—shaken。'},
+    {n:93,base:'shall',ipa:'/ʃæl/',third:'/',ing:'/',past:'should',pp:'/',zh:'将，将要',fam:'modal',tip:'shall 的时间搭档是 should；它没有普通过去分词。'},
+    {n:94,base:'shave',ipa:'/ʃeɪv/',third:'shaves',ing:'shaving',past:'shaved',pp:'shaven/shaved',zh:'刮脸',fam:'en',tip:'过去式 shaved；完成态可用 shaven，也接受 shaved。'},
+    {n:95,base:'shine',ipa:'/ʃaɪn/',third:'shines',ing:'shining',past:'shone/shined',pp:'shone/shined',zh:'发光',fam:'variant',tip:'书上两种都接受；先背 shine—shone—shone。'},
+    {n:96,base:'shoot',ipa:'/ʃuːt/',third:'shoots',ing:'shooting',past:'shot',pp:'shot',zh:'射击',fam:'abb',tip:'长音 oo 缩成短 o：shoot—shot—shot。'},
+    {n:97,base:'show',ipa:'/ʃəʊ/',third:'shows',ing:'showing',past:'showed',pp:'shown/showed',zh:'表明，指示',fam:'en',tip:'过去式 showed；完成态常用 shown，像穿上 n 外套。'},
+    {n:98,base:'shut',ipa:'/ʃʌt/',third:'shuts',ing:'shutting',past:'shut',pp:'shut',zh:'关闭',fam:'same',tip:'三态完全不变：shut—shut—shut。'},
+    {n:99,base:'sing',ipa:'/sɪŋ/',third:'sings',ing:'singing',past:'sang',pp:'sung',zh:'唱',fam:'vowel',tip:'i—a—u 三步唱：sing—sang—sung。'},
+    {n:100,base:'sink',ipa:'/sɪŋk/',third:'sinks',ing:'sinking',past:'sank/sunk',pp:'sunk',zh:'沉',fam:'vowel',tip:'主背 sink—sank—sunk；过去式也可用 sunk。'},
+    {n:101,base:'sit',ipa:'/sɪt/',third:'sits',ing:'sitting',past:'sat',pp:'sat',zh:'坐',fam:'abb',tip:'i 变 a，后两项相同：sit—sat—sat。'},
+    {n:102,base:'sleep',ipa:'/sliːp/',third:'sleeps',ing:'sleeping',past:'slept',pp:'slept',zh:'睡',fam:'abb',tip:'eep 收紧成 ept：sleep—slept—slept。'},
+    {n:103,base:'smell',ipa:'/smel/',third:'smells',ing:'smelling',past:'smelt/smelled',pp:'smelt/smelled',zh:'闻，嗅',fam:'variant',tip:'先背英式 smelt—smelt，同时认得 smelled。'},
+    {n:104,base:'sow',ipa:'/səʊ/',third:'sows',ing:'sowing',past:'sowed',pp:'sown/sowed',zh:'播种',fam:'en',tip:'播种后种子长出 n：sow—sowed—sown。'},
+    {n:105,base:'speak',ipa:'/spiːk/',third:'speaks',ing:'speaking',past:'spoke',pp:'spoken',zh:'说话',fam:'en',tip:'ea 变 o，最后加 n：speak—spoke—spoken。'},
+    {n:106,base:'speed',ipa:'/spiːd/',third:'speeds',ing:'speeding',past:'sped/speeded',pp:'sped/speeded',zh:'急行',fam:'variant',tip:'先背短写 sped—sped，同时认得 speeded。'},
+    {n:107,base:'spell',ipa:'/spel/',third:'spells',ing:'spelling',past:'spelt/spelled',pp:'spelt/spelled',zh:'拼写',fam:'variant',tip:'先背 spelt—spelt，同时认得 spelled。'},
+    {n:108,base:'spend',ipa:'/spend/',third:'spends',ing:'spending',past:'spent',pp:'spent',zh:'花费',fam:'abb',tip:'结尾 d 变 t：spend—spent—spent。'},
+    {n:109,base:'spill',ipa:'/spɪl/',third:'spills',ing:'spilling',past:'spilt/spilled',pp:'spilt/spilled',zh:'溢出，流出',fam:'variant',tip:'先背 spilt—spilt，同时认得 spilled。'},
+    {n:110,base:'spit',ipa:'/spɪt/',third:'spits',ing:'spitting',past:'spat',pp:'spat',zh:'吐唾沫',fam:'abb',tip:'i 变 a，后两项同：spit—spat—spat。'},
+    {n:111,base:'split',ipa:'/splɪt/',third:'splits',ing:'splitting',past:'split',pp:'split',zh:'分裂',fam:'same',tip:'三态不变：split—split—split。'},
+    {n:112,base:'spoil',ipa:'/spɔɪl/',third:'spoils',ing:'spoiling',past:'spoilt',pp:'spoilt',zh:'溺爱，损坏',fam:'abb',tip:'结尾加 t：spoil—spoilt—spoilt。'},
+    {n:113,base:'spread',ipa:'/spred/',third:'spreads',ing:'spreading',past:'spread',pp:'spread',zh:'展开，传播',fam:'same',tip:'三态原地不动：spread—spread—spread。'},
+    {n:114,base:'stand',ipa:'/stænd/',third:'stands',ing:'standing',past:'stood',pp:'stood',zh:'站，立',fam:'abb',tip:'and 变成 oo+d：stand—stood—stood。'},
+    {n:115,base:'steal',ipa:'/stiːl/',third:'steals',ing:'stealing',past:'stole',pp:'stolen',zh:'偷',fam:'en',tip:'ea 变 o，完成态加 n：steal—stole—stolen。'},
+    {n:116,base:'stick',ipa:'/stɪk/',third:'sticks',ing:'sticking',past:'stuck',pp:'stuck',zh:'粘住，刺',fam:'abb',tip:'i 变 u：stick—stuck—stuck。'},
+    {n:117,base:'strike',ipa:'/straɪk/',third:'strikes',ing:'striking',past:'struck',pp:'struck',zh:'打',fam:'abb',tip:'i-e 变 u：strike—struck—struck。'},
+    {n:118,base:'swear',ipa:'/sweə(r)/',third:'swears',ing:'swearing',past:'swore',pp:'sworn',zh:'发誓，诅咒',fam:'en',tip:'ear 变 ore，再收成 orn：swear—swore—sworn。'},
+    {n:119,base:'sweep',ipa:'/swiːp/',third:'sweeps',ing:'sweeping',past:'swept',pp:'swept',zh:'打扫，扫地',fam:'abb',tip:'eep 收紧成 ept：sweep—swept—swept。'},
+    {n:120,base:'swim',ipa:'/swɪm/',third:'swims',ing:'swimming',past:'swam',pp:'swum',zh:'游泳',fam:'vowel',tip:'i—a—u 游三段：swim—swam—swum。'},
+    {n:121,base:'swing',ipa:'/swɪŋ/',third:'swings',ing:'swinging',past:'swung',pp:'swung',zh:'摇摆',fam:'abb',tip:'i 变 u：swing—swung—swung。'},
+    {n:122,base:'take',ipa:'/teɪk/',third:'takes',ing:'taking',past:'took',pp:'taken',zh:'拿',fam:'en',tip:'a-e 变 oo，最后 -en：take—took—taken。'},
+    {n:123,base:'teach',ipa:'/tiːtʃ/',third:'teaches',ing:'teaching',past:'taught',pp:'taught',zh:'教',fam:'abb',tip:'记住 -aught 双胞胎：teach—taught—taught。'},
+    {n:124,base:'tear',ipa:'/teə(r)/',third:'tears',ing:'tearing',past:'tore',pp:'torn',zh:'撕',fam:'en',tip:'ear 变 ore，再收成 orn：tear—tore—torn。'},
+    {n:125,base:'tell',ipa:'/tel/',third:'tells',ing:'telling',past:'told',pp:'told',zh:'告诉',fam:'abb',tip:'e 变 o：tell—told—told。'},
+    {n:126,base:'think',ipa:'/θɪŋk/',third:'thinks',ing:'thinking',past:'thought',pp:'thought',zh:'想',fam:'abb',tip:'记住 -ought 双胞胎：think—thought—thought。'},
+    {n:127,base:'throw',ipa:'/θrəʊ/',third:'throws',ing:'throwing',past:'threw',pp:'thrown',zh:'抛，掷',fam:'en',tip:'ow 变 ew，最后穿 n：throw—threw—thrown。'},
+    {n:128,base:'understand',ipa:'/ˌʌndəˈstænd/',third:'understands',ing:'understanding',past:'understood',pp:'understood',zh:'了解，理解',fam:'abb',tip:'里面藏着 stand—stood—stood，所以 understand—understood—understood。'},
+    {n:129,base:'undertake',ipa:'/ˌʌndəˈteɪk/',third:'undertakes',ing:'undertaking',past:'undertook',pp:'undertaken',zh:'承担，保证',fam:'en',tip:'里面藏着 take—took—taken，前面的 under- 不动。'},
+    {n:130,base:'wake',ipa:'/weɪk/',third:'wakes',ing:'waking',past:'woke/waked',pp:'woke/waked',zh:'醒',fam:'variant',tip:'按书上记 wake—woke—woke，也认得 waked。'},
+    {n:131,base:'wear',ipa:'/weə(r)/',third:'wears',ing:'wearing',past:'wore',pp:'worn',zh:'穿',fam:'en',tip:'ear 变 ore，再收成 orn：wear—wore—worn。'},
+    {n:132,base:'weave',ipa:'/wiːv/',third:'weaves',ing:'weaving',past:'wove',pp:'woven',zh:'编织，组合',fam:'en',tip:'ea 变 o，最后加 n：weave—wove—woven。'},
+    {n:133,base:'will',ipa:'/wɪl/',third:'/',ing:'/',past:'would',pp:'/',zh:'将，将要',fam:'modal',tip:'will 的时间搭档是 would；它没有普通过去分词。'},
+    {n:134,base:'win',ipa:'/wɪn/',third:'wins',ing:'winning',past:'won',pp:'won',zh:'得胜',fam:'abb',tip:'i 变 o：win—won—won。'},
+    {n:135,base:'wind',ipa:'/waɪnd/',third:'winds',ing:'winding',past:'wound/winded',pp:'wound/winded',zh:'缠绕',fam:'variant',tip:'“缠绕”主背 wind—wound—wound，同时认得 winded。'},
+    {n:136,base:'write',ipa:'/raɪt/',third:'writes',ing:'writing',past:'wrote',pp:'written',zh:'写',fam:'en',tip:'i-e 变 o，完成态双写 t + en：write—wrote—written。'}
+  ];
+
+  const defaultState=()=>({schema:1,child:'Kenton',lesson:'subjunctive-verbs-91-136',materialSources:MATERIAL_SOURCES,createdAt:new Date().toISOString(),lastOpened:new Date().toISOString(),totalMs:0,p103:{copies:{},structures:{}},grammar:{seen:{},stats:{},attempts:0},verbs:{seen:{},stats:{},attempts:0},modules:{},attempts:[],events:[]});
+  let state=loadState();
+  let route='home',grammarStep=0,grammarQueue=[],grammarPos=0,grammarAnswered=null,copyIndex=0;
+  let verbQueue=[],verbPos=0,verbCovered=false,verbRevealed=false,verbMode='teach';
+  let dictationWrong=new Set(),dictationRevealed=false,sessionStart=Date.now(),toastTimer;
+
+  function loadState(){try{const x=JSON.parse(localStorage.getItem(STORAGE_KEY)||'null');if(x&&x.child==='Kenton'&&x.schema===1)return x}catch(e){}return defaultState()}
+  function save(){state.lastOpened=new Date().toISOString();localStorage.setItem(STORAGE_KEY,JSON.stringify(state))}
+  function sessionTick(){const now=Date.now();state.totalMs+=(now-sessionStart);sessionStart=now;save()}
+  setInterval(sessionTick,30000);addEventListener('beforeunload',sessionTick);
+  window.DDMemory={
+    recordAttempt(a){state.attempts.push({...a,child:'Kenton',lesson:state.lesson,at:new Date().toISOString()});if(state.attempts.length>600)state.attempts=state.attempts.slice(-600);save()},
+    markModule(id,status,meta={}){state.modules[id]={status,meta,at:new Date().toISOString()};save()}
+  };
+  function esc(v){return String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+  function toast(msg){const el=document.getElementById('toast');el.textContent=msg;el.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>el.classList.remove('show'),2100)}
+  function go(r,payload){route=r;if(payload&&typeof payload==='object')Object.assign(window,payload);render();scrollTo({top:0,behavior:'smooth'})}
+  function goHome(){route='home';render();scrollTo({top:0,behavior:'smooth'})}
+  function pageHead(title,sub,back="goHome()") {return `<div class="page-head"><button class="back" type="button" onclick="${back}" aria-label="返回">←</button><div><h1>${title}</h1><p>${sub}</p></div></div>`}
+  function sourceNote(kind,text){const supplement=kind==='supplement';return `<div class="source-note ${supplement?'supplement':''}"><span class="source-tag">${supplement?'软件助教补充':'材料依据'}</span>${esc(text)}</div>`}
+  function pct(a,b){return b?Math.round(a/b*100):0}
+  function primary(s){return String(s||'').split('/')[0]}
+  function isModal(v){return v.pp==='/'||v.pp==='' }
+  function statsKey(n,field){return `${n}:${field}`}
+  function getStat(n,field){const k=statsKey(n,field);return state.verbs.stats[k]||(state.verbs.stats[k]={errors:0,streak:0,solved:false,lastWrong:null,lastAt:null})}
+  function updateVerbField(v,field,correct,source){const st=getStat(v.n,field);st.lastAt=new Date().toISOString();if(correct){st.streak+=1;if(st.errors>0&&st.streak>=2)st.solved=true}else{st.errors+=1;st.streak=0;st.solved=false;st.lastWrong=new Date().toISOString()}state.verbs.attempts++;DDMemory.recordAttempt({questionId:`verb-${v.n}-${field}`,prompt:`${v.base} 的${fieldName(field)}`,selected:correct?'自评正确':'自评错误',expected:v[field],correct,explain:correct?'已完成回忆':'回到带背卡，重新观察变化和记忆钩子',skill:`irregular-verb-${field}`,ms:0,source,materialSource:MATERIAL_SOURCES.verbs});save()}
+  function fieldName(f){return ({third:'第三人称单数',ing:'现在分词',past:'过去式',pp:'过去分词',zh:'中文'})[f]||f}
+  function updateGrammar(rule,correct,q){const st=state.grammar.stats[rule]||(state.grammar.stats[rule]={errors:0,streak:0,solved:false});if(correct){st.streak++;if(st.streak>=2)st.solved=true}else{st.errors++;st.streak=0;st.solved=false}state.grammar.attempts++;DDMemory.recordAttempt({questionId:`grammar-${grammarPos}-${rule}`,prompt:q.q,selected:q.opts[grammarAnswered?.selected]||'',expected:q.opts[q.a],correct,explain:q.ex,skill:rule,ms:0,source:'grammar-check',materialSource:MATERIAL_SOURCES.grammar});save()}
+  function speak(text,times=1,rate=.84){if(!('speechSynthesis'in window)){toast('当前浏览器暂不支持朗读');return}speechSynthesis.cancel();let n=0;const play=()=>{const u=new SpeechSynthesisUtterance(text);u.lang='en-US';u.rate=rate;const vs=speechSynthesis.getVoices();u.voice=vs.find(v=>/Aria/i.test(v.name)&&/^en/i.test(v.lang))||vs.find(v=>/^en-US/i.test(v.lang))||vs.find(v=>/^en/i.test(v.lang))||null;u.onend=()=>{n++;if(n<times)setTimeout(play,380)};speechSynthesis.speak(u)};play()}
+  function speakVerb(v,times=1){const seq=isModal(v)?`${v.base}, ${primary(v.past)}`:`${v.base}, ${primary(v.past)}, ${primary(v.pp)}`;speak(seq,times,.76)}
+  function highlight(base,form){if(form==='/'||!form)return '/';const parts=form.split('/');return parts.map(p=>{let i=0;while(i<base.length&&i<p.length&&base[i].toLowerCase()===p[i].toLowerCase())i++;return esc(p.slice(0,i))+`<span class="changed">${esc(p.slice(i)||p)}</span>`}).join('/');}
+  function verbSelection(label,value){if(label==='range'){const [a,b]=value;return verbs.filter(v=>v.n>=a&&v.n<=b)}if(label==='family')return verbs.filter(v=>v.fam===value);if(label==='weak')return verbs.filter(v=>verbIsWeak(v));return [...verbs]}
+  function verbIsWeak(v){return ['past','pp','third','ing','zh'].some(f=>!((f==='pp'&&isModal(v)))&&getStat(v.n,f).errors>0&&!getStat(v.n,f).solved)}
+  function progressSummary(){const copyDone=p103Words.reduce((s,w)=>s+((state.p103.copies[w.w]||[]).filter(Boolean).length),0);const grammarDone=grammarSteps.filter(g=>state.grammar.stats[g.id]?.solved).length;const seen=verbs.filter(v=>state.verbs.seen[v.n]).length;const weak=verbs.filter(verbIsWeak).length;return{copyDone,grammarDone,seen,weak}}
+  function render(){const app=document.getElementById('app');if(route==='home')app.innerHTML=renderHome();else if(route==='grammar')app.innerHTML=renderGrammar();else if(route==='grammarPractice')app.innerHTML=renderGrammarPractice();else if(route==='copy')app.innerHTML=renderCopy();else if(route==='verbHub')app.innerHTML=renderVerbHub();else if(route==='verbTeach')app.innerHTML=renderVerbTeach();else if(route==='verbRecall')app.innerHTML=renderVerbRecall();else if(route==='dictation')app.innerHTML=renderDictation();else if(route==='records')app.innerHTML=renderRecords();else app.innerHTML=renderHome()}
+
+  function renderHome(){const p=progressSummary();const total=Math.round((pct(p.copyDone,38)+pct(p.grammarDone,4)+pct(p.seen,46))/3);return `
+    <section class="hero"><div class="eyebrow">老师带学 · 先懂再背</div><h1>把“想象世界”和 46 个新变化真正学会</h1><p>今天先理解虚拟语气，再完成第 103 页抄写，最后按变化家族带背 91—136。背熟以后才做纸笔默写。</p><div class="due">📅 下周一（7月27日）默写 91—136</div><div class="route-line"><span>看懂时间</span>→<span>跟老师说</span>→<span>遮住回忆</span>→<span>最后纸笔默</span></div></section>
+    ${sourceNote('material','语法与19个动词依据《知识点梳理》第14章“宾语从句”p.103；91—136的音标、三单、现在分词、过去式、过去分词和词义依据老师发《136个常用英语不规则动词变化表》。')}
+    ${sourceNote('supplement','“真实世界/心愿世界”、六个变化家族、记忆口令和小检查题，是根据上述材料设计的讲解与练习，不是教材原文。')}
+    <section class="progress-board"><div class="progress-grid"><div class="metric"><strong>${p.grammarDone}/4</strong><span>语法规则过关</span></div><div class="metric"><strong>${p.copyDone}/38</strong><span>单词抄写遍数</span></div><div class="metric"><strong>${p.seen}/46</strong><span>新词已带背</span></div><div class="metric"><strong>${p.weak}</strong><span>待回炉词</span></div></div><div class="bar"><i style="width:${total}%"></i></div></section>
+    <div class="section-title"><div><h2>今天按这个顺序</h2><p>第一入口永远是老师讲解</p></div></div>
+    <section class="home-grid">
+      <button class="home-card primary" onclick="startGrammar()"><span class="num">01 · 先做</span><div class="card-icon">🧭</div><h3>虚拟语气时光机</h3><p>用<b>真实轨道 / 心愿轨道</b>看懂三种 wish 和 should 隐形结构。</p></button>
+      <button class="home-card" onclick="go('copy')"><span class="num">02 · 作业</span><div class="card-icon">✍️</div><h3>第 103 页抄两遍</h3><p>19 个提示动词分四组，边读边抄，每遍单独打卡。</p></button>
+      <button class="home-card" onclick="go('verbHub')"><span class="num">03 · 带背</span><div class="card-icon">🔁</div><h3>91—136 老师带背</h3><p>六个变化家族、完整三态朗读、遮挡口述，再做背诵检查。</p></button>
+      <button class="home-card" onclick="go('records')"><span class="num">04 · 回炉</span><div class="card-icon">🧠</div><h3>错词与学习记录</h3><p>具体记录错在过去式还是过去分词，连续对 2 次才解决。</p></button>
+    </section>`}
+
+  function startGrammar(){grammarStep=0;route='grammar';render();scrollTo(0,0)}
+  function renderGrammar(){const s=grammarSteps[grammarStep];return `${pageHead('虚拟语气时光机','先看事实，再把句子送到“心愿世界”')}
+    ${sourceNote('material','本页结构与示例取自《知识点梳理》p.103；“时间轨道”和老师口令是软件助教解释。')}
+    <section class="panel"><div class="pill">第 ${grammarStep+1} / ${grammarSteps.length} 站 · ${s.label}</div><div class="step-dots">${grammarSteps.map((_,i)=>`<i class="dot ${i===grammarStep?'on':i<grammarStep?'done':''}"></i>`).join('')}</div>
+      <div class="world-stage"><div class="world-labels"><div class="world-label real">🌍 真实世界</div><div class="world-label wish">✨ 心愿世界</div></div><div class="timeline"><div class="world-box real-box"><div class="sentence">${esc(s.fact)}</div><div class="translation">${esc(s.factZh)}</div></div><div class="arrow">→</div><div class="world-box wish-box"><div class="sentence">${emphasize(s.wish)}</div><div class="translation">${esc(s.wishZh)}</div></div></div></div>
+      <div class="formula">${formulaHtml(s.formula)}</div><div class="teacher-note"><b>老师口令：</b>${esc(s.cue)}<br>${esc(s.why)}</div>
+      <div class="btn-row"><button class="btn secondary" onclick="speak('${escAttr(s.wish)}',2,.78)">🔊 听完整句 2 遍</button><button class="btn primary" onclick="finishGrammarStep()">${grammarStep===grammarSteps.length-1?'我会判断了，去小检查':'我懂了，下一站 →'}</button></div>
+    </section>`}
+  function escAttr(s){return String(s).replace(/\\/g,'\\\\').replace(/'/g,"\\'").replace(/\n/g,' ')}
+  function emphasize(s){const words=s.split(' ');return words.map((w,i)=>i>2?`<em>${esc(w)}</em>`:esc(w)).join(' ')}
+  function formulaHtml(s){return esc(s).replace(/\(should\)/g,'<span class="optional">(should)</span>').replace(/过去式|过去分词|动词原形/g,m=>`<span class="change">${m}</span>`)}
+  function finishGrammarStep(){state.grammar.seen[grammarSteps[grammarStep].id]=true;DDMemory.markModule(`grammar-teach-${grammarSteps[grammarStep].id}`,'complete',{step:grammarStep+1});save();if(grammarStep<grammarSteps.length-1){grammarStep++;render();scrollTo(0,0)}else startGrammarPractice(false)}
+  function startGrammarPractice(weakOnly){grammarQueue=grammarQs.map((_,i)=>i).filter(i=>!weakOnly||!state.grammar.stats[grammarQs[i].rule]?.solved);if(!grammarQueue.length)grammarQueue=grammarQs.map((_,i)=>i);grammarPos=0;grammarAnswered=null;route='grammarPractice';render();scrollTo(0,0)}
+  function renderGrammarPractice(){if(grammarPos>=grammarQueue.length)return renderGrammarResult();const q=grammarQs[grammarQueue[grammarPos]];return `${pageHead('虚拟语气小检查',`第 ${grammarPos+1} / ${grammarQueue.length} 题 · 先找时间词`,'go(\'grammar\')')}
+    ${sourceNote('supplement','以下题目由软件根据《知识点梳理》p.103的四条结构改编，用于检查理解；题目本身不冒充教材原题。')}
+    <section class="panel"><div class="pill">${grammarSteps.find(x=>x.id===q.rule)?.label}</div><h2 style="margin:16px 0 7px;font-size:25px;line-height:1.5">${esc(q.q)}</h2><p style="color:var(--muted)">先问自己：现在、过去还是将来？它是真实还是愿望？</p><div class="choice-list">${q.opts.map((o,i)=>`<button class="choice ${grammarAnswered?(i===q.a?'right':i===grammarAnswered.selected?'wrong':''):''}" ${grammarAnswered?'disabled':''} onclick="answerGrammar(${i})">${String.fromCharCode(65+i)}. ${esc(o)}</button>`).join('')}</div>${grammarAnswered?`<div class="explain ${grammarAnswered.correct?'ok':'no'}"><b>${grammarAnswered.correct?'判断正确！':'这里要退回时间轴。'}</b><br>${esc(q.ex)}</div><div class="btn-row"><button class="btn primary wide" onclick="nextGrammarQ()">下一题 →</button></div>`:''}</section>`}
+  function answerGrammar(i){if(grammarAnswered)return;const q=grammarQs[grammarQueue[grammarPos]];grammarAnswered={selected:i,correct:i===q.a};updateGrammar(q.rule,i===q.a,q);render()}
+  function nextGrammarQ(){grammarPos++;grammarAnswered=null;render();scrollTo(0,0)}
+  function renderGrammarResult(){const done=grammarSteps.filter(g=>state.grammar.stats[g.id]?.solved).length;const weak=grammarSteps.filter(g=>!state.grammar.stats[g.id]?.solved);if(done===4)DDMemory.markModule('virtual-subjunctive-core','complete',{mastered:4});return `${pageHead('本轮检查完成','不是看总分，而是看哪条时间线还没稳')}
+    <section class="panel"><div class="empty"><div class="big">${done===4?'✅':'🧭'}</div><h2>${done===4?'四条结构都连续答对了':'已过关 '+done+' / 4 条结构'}</h2><p>${done===4?'可以去完成第 103 页抄写，再开始 91—136 带背。':'还没过关：'+weak.map(x=>x.label).join('、')+'。回到对应时间轨道再练，连续正确 2 次才算稳。'}</p></div><div class="btn-row">${weak.length?'<button class="btn secondary" onclick="startGrammarPractice(true)">只练没过关的</button>':''}<button class="btn primary" onclick="go('copy')">下一步：第103页抄写 →</button></div></section>`}
+
+  function groupWords(){return [...new Set(p103Words.map(w=>w.g))]}
+  function renderCopy(){const w=p103Words[copyIndex];const done=(state.p103.copies[w.w]||[]).filter(Boolean).length;const total=progressSummary().copyDone;return `${pageHead('第 103 页词汇抄写','每个单词两遍；边读、边看中文、边写')}
+    ${sourceNote('material','19个动词、中文释义和4条结构均逐项对应《知识点梳理》p.103；单词浏览顺序也按页面从左到右、从上到下排列。')}
+    <section class="panel"><div class="pill">${esc(w.g)} · ${copyIndex+1}/${p103Words.length}</div><div class="word-strip">${p103Words.map((x,i)=>{const d=(state.p103.copies[x.w]||[]).filter(Boolean).length;return `<button class="word-chip ${i===copyIndex?'on':d===2?'done':''}" onclick="copyIndex=${i};render()">${esc(x.w)} ${d}/2</button>`}).join('')}</div>
+      <div class="word-focus"><div class="word">${esc(w.w)}</div><div class="meaning">${esc(w.z)}</div><div class="btn-row" style="justify-content:center"><button class="btn secondary" onclick="speak('${escAttr(w.w)}',2,.8)">🔊 听 2 遍</button></div><div class="copy-count"><button class="copy-check ${(state.p103.copies[w.w]||[])[0]?'done':''}" onclick="markCopy(0)">① 第一遍 ${(state.p103.copies[w.w]||[])[0]?'✓':'□'}</button><button class="copy-check ${(state.p103.copies[w.w]||[])[1]?'done':''}" onclick="markCopy(1)">② 第二遍 ${(state.p103.copies[w.w]||[])[1]?'✓':'□'}</button></div></div>
+      <div class="bar"><i style="width:${pct(total,38)}%"></i></div><p class="privacy" style="text-align:center">已完成 ${total} / 38 个抄写格</p>
+    </section>
+    <section class="panel"><h2>把 4 条结构也抄下来</h2><p style="color:var(--muted)">不是只抄字母：每抄一条，口头说出它对应的时间。</p><div class="structure-list">${structures.map((s,i)=>`<div class="structure-item"><code>${esc(s)}</code><button class="mini-check ${state.p103.structures[i]?'done':''}" onclick="markStructure(${i})">${state.p103.structures[i]?'写完 ✓':'写完 □'}</button></div>`).join('')}</div></section>
+    <section class="panel"><h2>四组词的关系</h2>${sourceNote('supplement','四组分类是为了帮助记忆而重新归类，不是教材原有分组；抄写顺序仍严格保留教材顺序。')}<div class="copy-groups">${groupWords().map(g=>`<div class="group-card"><h3>${esc(g)}</h3><p>${p103Words.filter(w=>w.g===g).map(w=>w.w).join(' · ')}</p></div>`).join('')}</div><div class="btn-row"><button class="btn primary wide" onclick="go('verbHub')">抄完后，去带背 91—136 →</button></div></section>`}
+  function markCopy(round){const w=p103Words[copyIndex];const a=state.p103.copies[w.w]||(state.p103.copies[w.w]=[false,false]);a[round]=!a[round];state.events.push({type:'copy',word:w.w,round:round+1,done:a[round],materialSource:MATERIAL_SOURCES.grammar,at:new Date().toISOString()});save();if(a[0]&&a[1]&&copyIndex<p103Words.length-1){copyIndex++;toast('这个词两遍完成，进入下一个')}render()}
+  function markStructure(i){state.p103.structures[i]=!state.p103.structures[i];state.events.push({type:'structure-copy',index:i,done:state.p103.structures[i],materialSource:MATERIAL_SOURCES.grammar,at:new Date().toISOString()});save();render()}
+
+  function renderVerbHub(){const counts=Object.fromEntries(Object.keys(families).map(k=>[k,verbs.filter(v=>v.fam===k).length]));return `${pageHead('91—136 老师带背课','先按小组学会变化，再遮住开口背')}
+    ${sourceNote('material','46个词的编号、原形、音标、第三人称单数、现在分词、过去式、过去分词和词义，逐项照老师发《136个常用英语不规则动词变化表》91—136录入；斜线两种写法按原表保留。')}
+    <section class="panel"><h2>建议分 4 段完成</h2><p style="color:var(--muted)">每段 10—16 个，不追求一次背完 46 个。</p><div class="range-grid">${[[91,100],[101,110],[111,120],[121,136]].map((r,i)=>`<div class="range-card"><b>第 ${i+1} 段 · ${r[0]}—${r[1]}</b><p style="color:var(--muted);font-size:13px">${r[1]-r[0]+1} 个词</p><button class="btn primary" onclick="startVerbTeach('range',[${r[0]},${r[1]}])">老师带背</button></div>`).join('')}</div></section>
+    <section class="panel"><div class="section-title" style="margin-top:0"><div><h2>六个变化家族</h2><p>先看规律，再记单词</p></div></div>${sourceNote('supplement','六个变化家族、每词口诀及分四段学习，是软件助教根据原表变化特点设计的记忆支架，不属于老师原表的栏目。')}<div class="family-grid">${Object.entries(families).map(([k,f])=>`<div class="family-card"><span class="family-tag">${f.icon} ${counts[k]} 个</span><h3 style="margin-top:10px">${esc(f.name)}</h3><p>${esc(f.rule)}</p><div class="family-list">${verbs.filter(v=>v.fam===k).map(v=>v.base).join(' · ')}</div><button class="btn secondary" onclick="startVerbTeach('family','${k}')">学这一家</button></div>`).join('')}</div></section>
+    <section class="panel"><h2>学完后再检查</h2><div class="btn-row"><button class="btn green" onclick="startVerbRecall('all')">🗣 背诵检查</button><button class="btn secondary" onclick="startDictation('all')">📝 最后纸笔默写</button><button class="btn ghost" onclick="startVerbTeach('weak')">只教待回炉词</button></div><div class="teacher-note">纸笔默写会按原表提示“原形 + 音标”，让哥哥写第三人称单数、现在分词、过去式、过去分词和中文。</div></section>`}
+  function startVerbTeach(kind,value){verbQueue=verbSelection(kind,value);if(!verbQueue.length){toast('目前没有待回炉词');return}verbPos=0;verbCovered=false;verbRevealed=false;verbMode='teach';route='verbTeach';render();scrollTo(0,0);setTimeout(()=>speakVerb(verbQueue[0],1),300)}
+  function renderVerbTeach(){const v=verbQueue[verbPos];const f=families[v.fam];const hide=verbCovered&&!verbRevealed;return `${pageHead('老师带背',`${verbPos+1} / ${verbQueue.length} · ${f.name}`,'go(\'verbHub\')')}
+    <section class="verb-card"><div class="verb-top"><div class="verb-n">NO. ${v.n} · ${f.icon} ${esc(f.name)}</div><div class="verb-main"><strong>${esc(v.base)}</strong><span>${esc(v.ipa)}</span></div><div class="verb-meaning">${esc(v.zh)}</div></div><div class="forms"><div class="form-box"><small>原形</small><b>${esc(v.base)}</b></div><div class="form-box"><small>过去式</small><b class="${hide?'covered':''}">${highlight(v.base,v.past)}</b></div><div class="form-box"><small>过去分词</small><b class="${hide?'covered':''}">${highlight(v.base,v.pp)}</b></div></div><div class="side-forms"><div>第三人称：<b>${esc(v.third)}</b></div><div>现在分词：<b>${esc(v.ing)}</b></div></div><div class="tip-box"><b>软件助记：</b>${esc(v.tip)}<br><b>软件家族口令：</b>${esc(f.chant)}</div></section>
+    <section class="panel"><h3>先完整读，再遮住背</h3><div class="btn-row"><button class="btn secondary" onclick="speakVerb(verbQueue[verbPos],3)">🔊 完整三态读 3 遍</button>${!verbCovered?'<button class="btn primary" onclick="coverVerb()">🙈 遮住新形态，开口背</button>':!verbRevealed?'<button class="btn primary" onclick="revealVerb()">说完了，翻开核对</button>':'<button class="btn green" onclick="markTeach(\'ok\')">两项都背对了</button>'}</div>${verbRevealed?`<div class="mark-grid"><button class="btn danger" onclick="markTeach('past')">过去式需要回炉</button>${isModal(v)?'':`<button class="btn danger" onclick="markTeach('pp')">过去分词需要回炉</button>`}<button class="btn danger" onclick="markTeach('both')">${isModal(v)?'这项没背对':'两项都需要回炉'}</button><button class="btn ghost" onclick="nextVerbTeach()">暂不判断，下一词</button></div>`:''}</section>
+    <div class="btn-row"><button class="btn ghost" ${verbPos===0?'disabled':''} onclick="prevVerbTeach()">← 上一个</button><button class="btn primary" onclick="nextVerbTeach()">${verbPos===verbQueue.length-1?'完成这一组':'下一个 →'}</button></div>`}
+  function coverVerb(){verbCovered=true;verbRevealed=false;render();speak(verbQueue[verbPos].base,1,.8)}
+  function revealVerb(){verbRevealed=true;render();speakVerb(verbQueue[verbPos],1)}
+  function markTeach(code){const v=verbQueue[verbPos];if(code==='ok'){updateVerbField(v,'past',true,'guided-recall');if(!isModal(v))updateVerbField(v,'pp',true,'guided-recall')}else if(code==='past'){updateVerbField(v,'past',false,'guided-recall');if(!isModal(v))updateVerbField(v,'pp',true,'guided-recall')}else if(code==='pp'){updateVerbField(v,'past',true,'guided-recall');updateVerbField(v,'pp',false,'guided-recall')}else{updateVerbField(v,'past',false,'guided-recall');if(!isModal(v))updateVerbField(v,'pp',false,'guided-recall')}nextVerbTeach()}
+  function nextVerbTeach(){const v=verbQueue[verbPos];state.verbs.seen[v.n]=true;save();if(verbPos<verbQueue.length-1){verbPos++;verbCovered=false;verbRevealed=false;render();scrollTo(0,0);setTimeout(()=>speakVerb(verbQueue[verbPos],1),220)}else{DDMemory.markModule(`verb-teach-${verbQueue[0].n}-${verbQueue.at(-1).n}`,'complete',{count:verbQueue.length});toast('这一组带背完成');go('verbHub')}}
+  function prevVerbTeach(){if(verbPos>0){verbPos--;verbCovered=false;verbRevealed=false;render();scrollTo(0,0)}}
+
+  function startVerbRecall(mode){verbQueue=mode==='weak'?verbSelection('weak'):verbs.filter(v=>state.verbs.seen[v.n]);if(!verbQueue.length)verbQueue=[...verbs];verbPos=0;verbRevealed=false;verbMode='recall';route='verbRecall';render();scrollTo(0,0)}
+  function renderVerbRecall(){if(verbPos>=verbQueue.length)return renderRecallResult();const v=verbQueue[verbPos];return `${pageHead('背诵检查',`${verbPos+1} / ${verbQueue.length} · 先说过去式，再说过去分词`,'go(\'verbHub\')')}
+    <section class="panel"><div class="recall-cue"><div class="base">${esc(v.base)}</div><div class="ipa">${esc(v.ipa)}</div><div class="zh">${esc(v.zh)}</div><div class="say-line">请开口说：${isModal(v)?'过去式':'过去式 → 过去分词'}</div></div>${!verbRevealed?`<div class="btn-row"><button class="btn secondary" onclick="speak('${escAttr(v.base)}',2,.8)">🔊 听原形 2 遍</button><button class="btn primary" onclick="verbRevealed=true;render();speakVerb(verbQueue[verbPos],1)">我说完了，核对答案</button></div>`:`<div class="answer-reveal"><div><span>过去式</span><strong>${esc(v.past)}</strong></div>${isModal(v)?'':`<div><span>过去分词</span><strong>${esc(v.pp)}</strong></div>`}</div><div class="mark-grid"><button class="btn green" onclick="markRecall('ok')">${isModal(v)?'过去式正确':'两项都正确'}</button><button class="btn danger" onclick="markRecall('past')">过去式错误</button>${isModal(v)?'':`<button class="btn danger" onclick="markRecall('pp')">过去分词错误</button><button class="btn danger" onclick="markRecall('both')">两项都错误</button>`}</div>`}</section>`}
+  function markRecall(code){const v=verbQueue[verbPos];if(code==='ok'){updateVerbField(v,'past',true,'oral-recall');if(!isModal(v))updateVerbField(v,'pp',true,'oral-recall')}else if(code==='past'){updateVerbField(v,'past',false,'oral-recall');if(!isModal(v))updateVerbField(v,'pp',true,'oral-recall')}else if(code==='pp'){updateVerbField(v,'past',true,'oral-recall');updateVerbField(v,'pp',false,'oral-recall')}else{updateVerbField(v,'past',false,'oral-recall');if(!isModal(v))updateVerbField(v,'pp',false,'oral-recall')}verbPos++;verbRevealed=false;render();scrollTo(0,0)}
+  function renderRecallResult(){const weak=verbs.filter(verbIsWeak);return `${pageHead('背诵检查完成','错误已经精确记到对应形态')}
+    <section class="panel"><div class="empty"><div class="big">${weak.length?'🧠':'🌟'}</div><h2>${weak.length?`还有 ${weak.length} 个词需要回炉`:'本轮没有待回炉词'}</h2><p>${weak.length?'一次答对不会抹掉错误历史；每个错栏连续答对 2 次后才解决。':'可以进入最后的纸笔默写，检查五个栏目。'}</p></div><div class="btn-row">${weak.length?'<button class="btn secondary" onclick="startVerbTeach(\'weak\')">老师重教错词</button><button class="btn green" onclick="startVerbRecall(\'weak\')">只背错词</button>':''}<button class="btn primary" onclick="startDictation('${weak.length?'weak':'all'}')">最后纸笔默写 →</button></div></section>`}
+
+  function startDictation(mode){verbQueue=mode==='weak'?verbSelection('weak'):[...verbs];if(!verbQueue.length){toast('没有待回炉词');return}verbPos=0;dictationWrong=new Set();dictationRevealed=false;route='dictation';render();scrollTo(0,0);setTimeout(()=>playDictation(),350)}
+  function playDictation(){const v=verbQueue[verbPos];speak(v.base,3,.72)}
+  function renderDictation(){if(verbPos>=verbQueue.length)return renderDictationResult();const v=verbQueue[verbPos];const fields=['third','ing','past','pp','zh'].filter(f=>!(f==='pp'&&isModal(v)));return `${pageHead('最后纸笔默写',`${verbPos+1} / ${verbQueue.length} · 原表提示原形和音标`,'go(\'verbHub\')')}
+    <section class="dictation-sheet"><div class="pill">NO. ${v.n}</div><div class="recall-cue" style="padding-bottom:7px"><div class="base">${esc(v.base)}</div><div class="ipa">${esc(v.ipa)}</div><div class="say-line">在纸上写：三单、-ing、过去式、过去分词、中文</div></div><div class="paper-lines" aria-hidden="true"></div><div class="btn-row"><button class="btn secondary" onclick="playDictation()">🔊 再听原形 3 遍</button>${!dictationRevealed?'<button class="btn primary" onclick="dictationRevealed=true;render();speakVerb(verbQueue[verbPos],1)">写完了，显示答案</button>':''}</div>
+      ${dictationRevealed?`<div class="answer-reveal" style="grid-template-columns:repeat(2,1fr)">${fields.map(f=>`<div><span>${fieldName(f)}</span><strong>${esc(v[f])}</strong></div>`).join('')}</div><p style="font-weight:900;margin:15px 0 8px">点亮写错的栏目；没点亮就按正确记录：</p><div class="field-tags">${fields.map(f=>`<button class="field-toggle ${dictationWrong.has(f)?'bad':''}" onclick="toggleDictationField('${f}')">${dictationWrong.has(f)?'✕':'✓'} ${fieldName(f)}</button>`).join('')}</div><div class="btn-row"><button class="btn primary wide" onclick="submitDictation()">记录并进入下一个 →</button></div>`:''}</section>`}
+  function toggleDictationField(f){dictationWrong.has(f)?dictationWrong.delete(f):dictationWrong.add(f);render()}
+  function submitDictation(){const v=verbQueue[verbPos];['third','ing','past','pp','zh'].filter(f=>!(f==='pp'&&isModal(v))).forEach(f=>updateVerbField(v,f,!dictationWrong.has(f),'paper-dictation'));verbPos++;dictationWrong=new Set();dictationRevealed=false;render();scrollTo(0,0);if(verbPos<verbQueue.length)setTimeout(playDictation,320)}
+  function renderDictationResult(){const weak=verbs.filter(verbIsWeak);DDMemory.markModule('paper-dictation-91-136','complete',{tested:verbQueue.length,weak:weak.length});return `${pageHead('纸笔默写完成','五个栏目分别记录，不用只看总分')}
+    <section class="panel"><div class="empty"><div class="big">📝</div><h2>本轮完成 ${verbQueue.length} 个词</h2><p>当前仍有 ${weak.length} 个词存在未解决错栏。回炉时只重学具体错误形态，连续正确 2 次才关闭。</p></div><div class="btn-row">${weak.length?'<button class="btn secondary" onclick="startVerbTeach(\'weak\')">老师重教错词</button><button class="btn green" onclick="startVerbRecall(\'weak\')">只背错词</button>':''}<button class="btn primary" onclick="go('records')">查看学习记录</button></div></section>`}
+
+  function grammarWeakItems(){return grammarSteps.filter(g=>state.grammar.stats[g.id]?.errors>0&&!state.grammar.stats[g.id]?.solved)}
+  function verbWeakFields(v){return ['third','ing','past','pp','zh'].filter(f=>!(f==='pp'&&isModal(v))).filter(f=>{const s=getStat(v.n,f);return s.errors>0&&!s.solved})}
+  function renderRecords(){const p=progressSummary(),gWeak=grammarWeakItems(),vWeak=verbs.filter(verbIsWeak);return `${pageHead('错题与学习记录','记录只保存在这台设备，可导出后回传')}
+    <section class="progress-board" style="margin-top:0"><div class="progress-grid"><div class="metric"><strong>${p.grammarDone}/4</strong><span>语法过关</span></div><div class="metric"><strong>${p.copyDone}/38</strong><span>抄写格</span></div><div class="metric"><strong>${p.seen}/46</strong><span>已带背</span></div><div class="metric"><strong>${vWeak.length}</strong><span>错词待回炉</span></div></div></section>
+    <section class="panel"><h2>虚拟语气待回炉</h2>${gWeak.length?`<div class="weak-list">${gWeak.map(g=>{const s=state.grammar.stats[g.id];return `<div class="weak-item"><div><h3>${esc(g.label)}</h3><p>${esc(g.formula)} · 累计错 ${s.errors} 次</p></div><span class="streak">连对 ${s.streak}/2</span></div>`}).join('')}</div><div class="btn-row"><button class="btn secondary" onclick="startGrammarPractice(true)">只练这些结构</button></div>`:'<div class="empty"><div class="big">✅</div><p>目前没有未解决的虚拟语气错误。</p></div>'}</section>
+    <section class="panel"><h2>不规则动词待回炉</h2>${vWeak.length?`<div class="weak-list">${vWeak.map(v=>`<div class="weak-item"><div><h3>${v.n}. ${esc(v.base)}</h3><p>错栏：${verbWeakFields(v).map(fieldName).join('、')}</p></div><span class="streak">${families[v.fam].icon}</span></div>`).join('')}</div><div class="btn-row"><button class="btn secondary" onclick="startVerbTeach('weak')">老师重教</button><button class="btn green" onclick="startVerbRecall('weak')">只背错词</button><button class="btn ghost" onclick="startDictation('weak')">只默错词</button></div>`:'<div class="empty"><div class="big">🌱</div><p>目前没有未解决错词。正式默写后如果出现错误，会自动进入这里。</p></div>'}</section>
+    <section class="panel"><h2>导出与跨设备</h2><div class="report-actions"><button class="btn primary" onclick="downloadJSON()">下载 JSON 学习记录</button><button class="btn secondary" onclick="downloadMarkdown()">下载 Markdown 汇报</button><button class="btn green" onclick="copyMarkdown()">一键复制给 ChatGPT</button><button class="btn ghost" onclick="document.getElementById('importInput').click()">导入另一台设备记录</button></div><p class="privacy">隐私说明：只记录 Kenton、本课学习步骤、作答和错因；不保存学校、班级、账号、密码或任何 GitHub Token。</p></section>`}
+  function exportObject(){sessionTick();return{...state,materialSources:MATERIAL_SOURCES,exportedAt:new Date().toISOString(),summary:progressSummary()}}
+  function markdownReport(){const p=progressSummary(),vWeak=verbs.filter(verbIsWeak),gWeak=grammarWeakItems();return `# Kenton 英语学习记录：虚拟语气 + 不规则动词 91—136\n\n- 导出时间：${new Date().toLocaleString('zh-CN')}\n- 目标日期：${DUE}\n- 虚拟语气过关：${p.grammarDone}/4\n- 第103页抄写：${p.copyDone}/38 格\n- 已带背动词：${p.seen}/46\n- 累计学习时长：${Math.round(state.totalMs/60000)} 分钟\n\n## 材料依据\n- ${MATERIAL_SOURCES.grammar}\n- ${MATERIAL_SOURCES.verbs}\n- ${MATERIAL_SOURCES.pedagogy}\n\n## 虚拟语气待回炉\n${gWeak.length?gWeak.map(g=>`- ${g.label}：累计错 ${state.grammar.stats[g.id].errors} 次，连续正确 ${state.grammar.stats[g.id].streak}/2`).join('\n'):'- 无'}\n\n## 不规则动词待回炉\n${vWeak.length?vWeak.map(v=>`- ${v.n}. ${v.base}：${verbWeakFields(v).map(fieldName).join('、')}`).join('\n'):'- 无'}\n\n## 下一步\n- 先重教未解决结构和错词。\n- 每个错栏连续答对 2 次后再标记解决。\n- 下周一正式默写结果需继续回传。\n`}
+  function download(name,text,type){const blob=new Blob([text],{type});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),800)}
+  function downloadJSON(){download('Kenton_虚拟语气_不规则动词91-136_学习记录.json',JSON.stringify(exportObject(),null,2),'application/json;charset=utf-8');toast('JSON 已下载')}
+  function downloadMarkdown(){download('Kenton_虚拟语气_不规则动词91-136_学习汇报.md',markdownReport(),'text/markdown;charset=utf-8');toast('Markdown 已下载')}
+  async function copyMarkdown(){try{await navigator.clipboard.writeText(markdownReport());toast('学习汇报已复制，可以发给 ChatGPT')}catch(e){downloadMarkdown()}}
+  function importProgress(e){const file=e.target.files?.[0];if(!file)return;const reader=new FileReader();reader.onload=()=>{try{const x=JSON.parse(reader.result);if(x.child!=='Kenton'||x.lesson!=='subjunctive-verbs-91-136')throw Error('wrong');state=x;state.schema=1;save();toast('学习记录导入成功');render()}catch(err){toast('这不是本软件的 Kenton 学习记录')}e.target.value=''};reader.readAsText(file)}
+  render();
+  </script>
+</body>
+</html>

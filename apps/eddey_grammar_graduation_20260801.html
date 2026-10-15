@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="lesson-audio" content="pending: 14条Aria神经音已外置apps/audio/eddey_grammar_graduation_20260801/，机器校验通过；手机实播待家长验收">
+<title>语法毕业典礼 · 时态侦探学院 · Eddey</title>
+<style>
+:root{--bg:#fff7f0;--card:#ffffff;--ink:#33304b;--teal:#0ea5a5;--teal-d:#0b7c7c;--pink:#f472b6;--amber:#f59e0b;--violet:#8b5cf6;--line:#f3e4d8;--soft:#fdf1e7}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--ink);padding-bottom:40px}
+header{position:sticky;top:0;z-index:9;background:var(--bg);padding:12px 16px 8px;display:flex;align-items:center;gap:10px;border-bottom:1px solid var(--line)}
+.logo{width:38px;height:38px;border-radius:12px;background:linear-gradient(135deg,var(--violet),#c084fc);display:flex;align-items:center;justify-content:center;color:#fff;font-size:20px;box-shadow:0 3px 0 #6d40c4}
+.brand{font-weight:800;font-size:14.5px}
+header .sp{flex:1}
+.pill{border:1px solid var(--line);background:#fff;border-radius:999px;padding:7px 12px;font-size:12px;font-weight:700;color:var(--ink);cursor:pointer}
+main{padding:14px 16px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:18px;box-shadow:0 4px 0 rgba(243,228,216,.8);margin-bottom:14px}
+.tag{display:inline-block;background:#efe7fd;color:#6d40c4;font-size:12px;font-weight:800;border-radius:8px;padding:4px 10px;margin-bottom:10px}
+h1{font-size:23px;line-height:1.3;margin-bottom:8px}
+h2{font-size:19px;margin-bottom:6px}
+.sub{font-size:13.5px;color:#7a7690;line-height:1.7}
+.big{font-size:34px;font-weight:900;text-align:center;letter-spacing:1px}
+.zh{text-align:center;color:#7a7690;font-size:14px;margin-top:2px}
+.btn{display:block;width:100%;border:none;border-radius:16px;padding:15px;font-size:16.5px;font-weight:800;cursor:pointer;margin-top:12px;font-family:inherit}
+.btn-teal{background:var(--teal);color:#fff;box-shadow:0 4px 0 var(--teal-d)}
+.btn-teal:active{transform:translateY(3px);box-shadow:0 1px 0 var(--teal-d)}
+.btn-soft{background:var(--soft);color:var(--ink);border:1px solid var(--line);box-shadow:0 4px 0 var(--line)}
+.btn-violet{background:var(--violet);color:#fff;box-shadow:0 4px 0 #6d40c4}
+.btn[disabled]{opacity:.45;pointer-events:none}
+.opt{display:block;width:100%;text-align:left;background:#fff;border:2px solid var(--line);border-radius:14px;padding:13px 15px;font-size:16px;font-weight:700;margin-top:10px;cursor:pointer;font-family:inherit}
+.opt.ok{border-color:var(--teal);background:#e0f5f5}
+.opt.no{border-color:#ef4444;background:#fee2e2}
+.opt .k{display:inline-block;width:26px;height:26px;line-height:26px;text-align:center;border-radius:8px;background:var(--soft);margin-right:8px;font-size:13px}
+.tense-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+.tcard{border-radius:16px;padding:13px 12px;font-size:12.5px;font-weight:700;line-height:1.7}
+.tcard b{font-size:16px;display:block;margin-bottom:3px}
+.t-now{background:#e0f5f5;color:var(--teal-d)}
+.t-usual{background:#fef3d9;color:#a86a00}
+.t-future{background:#e0edfd;color:#1d4ed8}
+.t-past{background:#fde8f3;color:#c2377f}
+.sig-word{background:#fff;border:2px solid var(--line);border-radius:14px;padding:12px;text-align:center;font-size:20px;font-weight:900;margin-top:10px;box-shadow:0 3px 0 var(--line)}
+.bin-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+.bin{border:2px dashed var(--line);border-radius:14px;padding:12px 8px;text-align:center;font-size:13px;font-weight:800;cursor:pointer;background:#fff;line-height:1.5}
+.bin small{display:block;font-weight:600;color:#8a8496;font-size:11px;margin-top:2px}
+.bin.b-now{border-color:var(--teal);color:var(--teal-d)}
+.bin.b-usual{border-color:var(--amber);color:#a86a00}
+.bin.b-future{border-color:#3b82f6;color:#1d4ed8}
+.bin.b-past{border-color:var(--pink);color:#c2377f}
+.bin.hit{background:#e0f5f5}
+.sentence{font-size:18.5px;font-weight:800;line-height:1.9;background:#f6fbff;border:1.5px solid #dbeafe;border-radius:14px;padding:14px;margin-top:10px}
+.sentence .gap{color:var(--pink);border-bottom:2.5px solid var(--pink);padding:0 3px}
+.progress{height:10px;background:var(--line);border-radius:99px;overflow:hidden;margin:10px 0 4px}
+.progress i{display:block;height:100%;background:linear-gradient(90deg,var(--violet),#c084fc);border-radius:99px;transition:width .4s}
+.steps{display:flex;gap:6px;margin-top:12px}
+.step{flex:1;background:var(--soft);border-radius:10px;text-align:center;font-size:11px;font-weight:700;padding:8px 3px;color:#8a8496;line-height:1.5}
+.step b{display:block;font-size:15px;color:var(--violet)}
+.fb{border-radius:14px;padding:12px 14px;font-size:14px;font-weight:700;line-height:1.7;margin-top:12px;display:none}
+.fb.ok{display:block;background:#e0f5f5;color:var(--teal-d)}
+.fb.no{display:block;background:#fee2e2;color:#b91c1c}
+.note{font-size:12px;color:#9a94b0;line-height:1.7;margin-top:12px;border-top:1px dashed var(--line);padding-top:10px}
+.voice-note{background:#fdf0f8;border:1px solid #f5c6e0;color:#a3437c;font-size:12px;border-radius:12px;padding:9px 12px;line-height:1.6;margin-top:10px}
+.recall-card{background:#fff;border:2px solid var(--line);border-radius:16px;padding:16px;margin-top:12px}
+.recall-card .q{font-size:16px;font-weight:800;line-height:1.6}
+.recall-card .a{font-size:14.5px;line-height:1.8;color:var(--teal-d);margin-top:10px;display:none;background:#e0f5f5;border-radius:12px;padding:10px 12px}
+.recall-card.open .a{display:block}
+.recall-card .tap{font-size:12px;color:var(--pink);font-weight:700;margin-top:6px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+.mini{background:var(--soft);border-radius:14px;padding:12px;text-align:center;font-weight:800;font-size:14px}
+.mini small{display:block;font-weight:600;color:#8a8496;font-size:11.5px;margin-top:4px}
+.hidden{display:none}
+.taprow{display:flex;gap:8px;margin-top:12px}
+.taprow .btn{margin-top:0}
+.badge-row{display:flex;gap:8px;justify-content:center;margin-top:14px;flex-wrap:wrap}
+.badge{width:64px;text-align:center;font-size:11px;font-weight:800;color:#8a8496}
+.badge .ico{width:56px;height:56px;border-radius:50%;background:var(--soft);border:2px solid var(--line);display:flex;align-items:center;justify-content:center;font-size:26px;margin:0 auto 4px;filter:grayscale(1);opacity:.5}
+.badge.on .ico{filter:none;opacity:1;border-color:var(--amber);background:#fef3d9}
+.owl{background:linear-gradient(135deg,#efe7fd,#fdf0f8);border-radius:16px;padding:14px 16px;font-size:13.5px;line-height:1.8;margin-top:12px}
+.owl b{color:#6d40c4}
+.rule-card{flex:1;border-radius:16px;padding:12px 10px;text-align:center;font-size:12.5px;font-weight:700;line-height:1.6}
+.rule-row{display:flex;gap:10px;margin-top:12px}
+.r1{background:#e0f5f5;color:var(--teal-d)}.r2{background:#fde8f3;color:#c2377f}.r3{background:#fef3d9;color:#a86a00}.r4{background:#ede9fe;color:#5b21b6}
+.rule-card b{font-size:16px;display:block;margin-bottom:2px}
+</style>
+</head>
+<body>
+<header>
+  <div class="logo">🦉</div>
+  <div class="brand">Eddey · 语法毕业典礼</div>
+  <div class="sp"></div>
+  <button class="pill" id="soundToggle">声</button>
+  <button class="pill" onclick="go('records')">学习档案</button>
+</header>
+<main id="app"></main>
+<script>
+(function(){
+'use strict';
+const APP_ID='eddey-grammar-graduation-20260801';
+const VERSION='1.0.0';
+const STORAGE_KEY='study:eddey:'+APP_ID+':v1';
+const MATERIAL='2026-08-01 语法班结业课（总复习）· 教材 L1—L23 全册';
+const AUDIO_DIR='audio/eddey_grammar_graduation_20260801/';
+/* ============ 数据 ============ */
+/* 四大时态 */
+const TENSES={
+ now:{name:'现在进行时',sig:'now · Look! · Listen!',form:'be + 动词-ing',ex:'Look! The sheep is eating.',audio:'t-now.mp3',cn:'看！小羊正在吃草。'},
+ usual:{name:'一般现在时',sig:'every day · always · often',form:'动词原形 / 三单+s',ex:'The sheep eats grass every day.',audio:'t-usual.mp3',cn:'小羊每天吃草。'},
+ future:{name:'一般将来时',sig:'tomorrow · soon · next…',form:'will + 原形 / be going to',ex:'It will rain tomorrow.',audio:'t-future.mp3',cn:'明天会下雨。'},
+ past:{name:'一般过去时',sig:'yesterday · last… · just now',form:'动词过去式 / was,were',ex:'I walked the dog yesterday morning.',audio:'t-past.mp3',cn:'我昨天早上遛了狗。'}
+};
+/* 信号词分拣 16 词 */
+const SIGNALS=[
+ {w:'now',t:'now'},{w:'Look!',t:'now'},{w:'Listen!',t:'now'},{w:'at the moment',t:'now'},
+ {w:'every day',t:'usual'},{w:'always',t:'usual'},{w:'often',t:'usual'},{w:'on Mondays',t:'usual'},
+ {w:'tomorrow',t:'future'},{w:'next week',t:'future'},{w:'soon',t:'future'},{w:'this evening',t:'future'},
+ {w:'yesterday',t:'past'},{w:'last year',t:'past'},{w:'just now',t:'past'},{w:'in 2020',t:'past'}
+];
+/* 过去式变形工厂 10 词（L23 规则全覆盖） */
+const PAST=[
+ {base:'walk',past:'walked',rule:'+ed',tip:'直接加 ed，最普通',audio:'v-walk.mp3'},
+ {base:'play',past:'played',rule:'+ed',tip:'元音+y 直接加 ed（和三单 pays 一家）',audio:'v-play.mp3'},
+ {base:'live',past:'lived',rule:'+d',tip:'结尾已有 e，只加 d',audio:'v-live.mp3'},
+ {base:'close',past:'closed',rule:'+d',tip:'结尾有 e 只加 d',audio:'v-close.mp3'},
+ {base:'study',past:'studied',rule:'y→ied',tip:'辅音+y：y 变 i 加 ed（想想 studies）',audio:'v-study.mp3'},
+ {base:'try',past:'tried',rule:'y→ied',tip:'辅音+y：y 变 i 加 ed',audio:'v-try.mp3'},
+ {base:'pay',past:'paid',rule:'不规则',tip:'不 payed！特殊变成 paid',audio:'v-pay.mp3'},
+ {base:'say',past:'said',rule:'不规则',tip:'不 sayed！变成 said',audio:'v-say.mp3'},
+ {base:'go',past:'went',rule:'不规则',tip:'整个换掉：go→went',audio:'v-go.mp3'},
+ {base:'see',past:'saw',rule:'不规则',tip:'see→saw；read→read 拼写不变读音变',audio:'v-see.mp3'}
+];
+/* 时态侦探所 8 案 */
+const CASES=[
+ {s:'Listen! The birds ___ in the tree.',ans:'are singing',t:'now',why:'信号 Listen! → 现在进行时：be + 动词-ing。'},
+ {s:'My mum ___ the room every day.',ans:'cleans',t:'usual',why:'信号 every day + 三单 → cleans。'},
+ {s:'It ___ rain tomorrow.',ans:'will',t:'future',why:'信号 tomorrow → will + 原形（预测）。'},
+ {s:'I ___ the dog yesterday morning.',ans:'walked',t:'past',why:'信号 yesterday → 过去式 walked。'},
+ {s:'He ___ to school five days a week.',ans:'goes',t:'usual',why:'five days a week 是规律 → 一般现在时三单 goes。'},
+ {s:'We ___ a picnic next Sunday.',ans:'are going to have',t:'future',why:'next Sunday + 已计划 → be going to。'},
+ {s:'She ___ TV just now.',ans:'watched',t:'past',why:'just now（刚才）→ 过去式 watched。'},
+ {s:'Please be quiet! The baby ___.',ans:'is sleeping',t:'now',why:'此刻正在发生 → 现在进行时。'}
+];
+const RECALL=[
+ {q:'四大时态各抓哪些信号词？',a:'现在进行：now/Look!/Listen!；一般现在：every…/always/often；将来：tomorrow/soon/next…；过去：yesterday/last…/just now/in 2020。'},
+ {q:'动词过去式四条规则？',a:'① +ed（walked）② 有 e 只 +d（lived/closed）③ 辅音+y→ied（studied）④ 不规则要背（paid/said/went/saw/had/ate/read）。'},
+ {q:'过去时的否定和疑问怎么造？',a:'否定 didn\'t + 原形（I didn\'t go.）；疑问 Did + 主语 + 原形（Did you go?）。be 用 was/were、wasn\'t/weren\'t。'},
+ {q:'will 和 be going to 怎么选？',a:'预测/临时决定用 will（It will rain.）；早就计划好用 be going to（I am going to buy a cake.）。'},
+ {q:'三单和过去式都遇到 y 结尾，怎么变？',a:'三单：辅音+y→ies（studies），元音+y 只 +s（pays）；过去式：辅音+y→ied（studied），元音+y 直接 +ed（played），但 pay→paid 特殊。'},
+ {q:'时间介词 in / on / at 怎么分？（L9）',a:'in+月/季/年/the morning；on+星期/日期/节日；at+时刻/noon/night。'}
+];
+/* 结业闯关 10 题（L1—L23 全册抽样） */
+const QUIZ=[
+ {cat:'L2 名词复数',q:'一只 fox，两只 ___',opts:['foxs','foxes','foxies'],a:1,why:'x 结尾 +es：foxes（和三单 fixes 同一条规则）。'},
+ {cat:'L7 代词',q:'Jim sees ___ at school.（我）',opts:['I','me','my'],a:1,why:'动词后面用宾格 me。'},
+ {cat:'L9 介词',q:'We have English class ___ Monday.',opts:['in','on','at'],a:1,why:'星期前面用 on。'},
+ {cat:'L10 冠词',q:'It takes me ___ hour to finish homework.',opts:['a','an','/'],a:1,why:'hour 的 h 不发音，读音以元音开头 → an hour。'},
+ {cat:'L13 There be',q:'There ___ an apple and two peaches on the table.',opts:['is','are','be'],a:0,why:'就近原则：挨着 an apple → There is。'},
+ {cat:'L15 感叹句',q:'___ a cute dog!',opts:['How','What','What a'],a:1,why:'What + (a/an) + 形容词 + 名词：What a cute dog!'},
+ {cat:'L19 疑问词',q:'— ___ do you go to school? — By bus.',opts:['What','When','How'],a:2,why:'问交通方式用 How。'},
+ {cat:'L20 现在进行时',q:'Look! The sheep ___ grass.',opts:['eats','is eating','ate'],a:1,why:'信号 Look! → be + 动词-ing。'},
+ {cat:'L22 将来时',q:'我计划好了：I ___ buy a cake for mum.',opts:['will','am going to','go to'],a:1,why:'早已计划 → be going to；临时预测才用 will。'},
+ {cat:'L23 过去时',q:'He ___ his homework just now.',opts:['does','didn\'t did','did'],a:2,why:'just now → 过去式；do 的过去式是 did。'}
+];
+/* ============ 基础 ============ */
+const app=document.getElementById('app');
+let soundOn=localStorage.getItem('study:eddey:ui-sound')!=='0';
+let S=load();
+function load(){try{const s=JSON.parse(localStorage.getItem(STORAGE_KEY));if(s&&s.v===VERSION)return s}catch(e){}
+ return {v:VERSION,done:{},attempts:[],wrong:{},sigIdx:0,pastSeen:{},created:Date.now()};}
+function save(){localStorage.setItem(STORAGE_KEY,JSON.stringify(S));}
+function recordAttempt(kind,key,ok){S.attempts.push({t:Date.now(),kind,key,ok});if(!ok){S.wrong[key]=(S.wrong[key]||0)+1}else if(S.wrong[key]){S.wrong[key]=0}save();}
+function el(html){app.innerHTML=html;window.scrollTo(0,0);}
+function tone(k){if(!soundOn)return;try{const c=new (window.AudioContext||window.webkitAudioContext)();const o=c.createOscillator();const g=c.createGain();o.connect(g);g.connect(c.destination);o.frequency.value=k==='ok'?660:220;g.gain.value=.08;o.start();setTimeout(()=>{o.stop();c.close()},k==='ok'?120:220)}catch(e){}}
+function playFile(fn,rate){const a=new Audio(AUDIO_DIR+fn);a.playbackRate=rate||1;const p=a.play();if(p&&p.catch)p.catch(()=>{});}
+function shuffled(arr){const a=arr.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));const t=a[i];a[i]=a[j];a[j]=t;}return a;}
+/* ============ 页面 ============ */
+function go(m){({home,compass,signal,past,detective,recall,quiz,records}[m]||home)();}
+function head(tag,title,sub,back){
+ return (back?'<button class="pill" onclick="go(\'home\')" style="margin-bottom:10px">←</button>':'')
+ +'<div class="card"><span class="tag">'+tag+'</span><h2>'+title+'</h2>'
+ +(sub?'<div class="sub">'+sub+'</div>':'')+'</div>';
+}
+function badges(){
+ const b=[['compass','🧭','时光罗盘'],['signal','🕵️','信号侦探'],['past','🏭','过去工厂'],['quiz','🎓','结业闯关']];
+ return '<div class="badge-row">'+b.map(function(x){
+  return '<div class="badge'+(S.done[x[0]]?' on':'')+'"><div class="ico">'+x[1]+'</div>'+x[2]+'</div>';}).join('')+'</div>';
+}
+function home(){
+ const d=Object.keys(S.done).filter(function(k){return S.done[k]}).length;
+ el('<div class="card"><span class="tag">语法班结业 · 全册总复习 L1—L23</span>'
+ +'<h1>🎓 语法毕业典礼</h1>'
+ +'<div class="sub">最后一课啦！猫头鹰博士说：时态学得好不好，就看会不会<b>抓信号词</b>。今天闯四关，集齐四枚徽章，把整本语法书装进脑袋里带回家！</div>'
+ +'<div class="owl">🦉 <b>猫头鹰博士：</b>"看到 yesterday 想过去式，看到 Look! 想 be+ing，看到 every day 想三单。信号词就是时态的脚印！"</div>'
+ +'<div class="tense-row">'
+ +'<div class="tcard t-now"><b>🏃 现在进行</b>now · Look!<br>be + ing</div>'
+ +'<div class="tcard t-usual"><b>📅 一般现在</b>every day · always<br>原形 / 三单+s</div>'
+ +'<div class="tcard t-future"><b>🚀 一般将来</b>tomorrow · next…<br>will / going to</div>'
+ +'<div class="tcard t-past"><b>⏪ 一般过去</b>yesterday · last…<br>过去式 / was,were</div>'
+ +'</div>'
+ +'<button class="btn btn-violet" onclick="go(\'compass\')">🧭 出发，转动时光罗盘 →</button>'
+ +'<div class="steps"><div class="step"><b>1</b>时光罗盘</div><div class="step"><b>2</b>信号分拣</div><div class="step"><b>3</b>过去工厂</div><div class="step"><b>4</b>侦探破案</div><div class="step"><b>5</b>结业闯关</div></div>'
+ +badges()
+ +'<div class="note">今日小彩蛋：每集齐一枚徽章，猫头鹰博士的毕业帽就亮一分；四枚集齐，毕业典礼正式开始 🎓</div>'
+ +'<div class="voice-note">🔊 音频待验收（手机）：例句与过去式用统一预录音，首次播放前请先点任意按钮解锁声音。</div>'
+ +'</div>'
+ +'<div class="card"><div class="sub">毕业进度 '+d+'/6</div><div class="progress"><i style="width:'+(d/6*100)+'%"></i></div>'
+ +'<div class="grid2">'
+ +'<div class="mini">📚 材料<small>'+MATERIAL+'</small></div>'
+ +'<div class="mini">🎯 目标<small>抓信号词辨四态 + 过去式四规则</small></div>'
+ +'</div></div>');
+}
+function compass(){
+ el(head('第 1 关 · 时光罗盘','四大时态一览','点 🔊 听每个时态的"招牌句"，跟着读两遍。',1)
+ +'<div class="card">'
+ +['now','usual','future','past'].map(function(k){
+  const t=TENSES[k];
+  return '<div class="tcard t-'+k+'" style="margin-bottom:10px;text-align:left">'
+  +'<b>'+t.name+'</b>信号词：'+t.sig+'<br>结构：'+t.form
+  +'<div class="sentence" style="background:rgba(255,255,255,.75)">'+t.ex+'<div style="font-size:13px;font-weight:600;color:#7a7690">'+t.cn+'</div></div>'
+  +'<button class="btn btn-soft" style="margin-top:8px;padding:10px" onclick="playFile(\''+t.audio+'\')">🔊 听招牌句</button>'
+  +'</div>';}).join('')
+ +'<button class="btn btn-violet" onclick="finishStage(\'compass\');go(\'signal\')">我记住了，去分拣信号词 →</button>'
+ +'</div>');
+}
+let sigQueue=[],sigOk=0;
+function signal(){
+ sigQueue=shuffled(SIGNALS);sigOk=0;sigCard();
+}
+function sigCard(){
+ if(sigQueue.length===0){
+  finishStage('signal');
+  el(head('第 2 关 · 信号词分拣台',null,null,1)
+  +'<div class="card" style="text-align:center"><div class="big">🕵️</div>'
+  +'<div class="big" style="font-size:24px;margin-top:8px">16 个信号词分拣完成！</div>'
+  +'<div class="sub" style="margin-top:8px">正确 '+sigOk+' / 16。时态的脚印你已经会认啦！</div>'
+  +'<button class="btn btn-violet" onclick="go(\'past\')">去过去式变形工厂 →</button></div>');
+  return;
+ }
+ const cur=sigQueue[0];
+ const doneN=SIGNALS.length-sigQueue.length;
+ el(head('第 2 关 · 信号词分拣台','第 '+(doneN+1)+' / 16 个 · 这个词一出现，该用哪个时态？',null,1)
+ +'<div class="card">'
+ +'<div class="sig-word">'+cur.w+'</div>'
+ +'<div class="bin-grid">'
+ +'<button class="bin b-now" onclick="sigPick(\'now\')">🏃 现在进行<small>be + ing</small></button>'
+ +'<button class="bin b-usual" onclick="sigPick(\'usual\')">📅 一般现在<small>原形 / 三单</small></button>'
+ +'<button class="bin b-future" onclick="sigPick(\'future\')">🚀 一般将来<small>will / going to</small></button>'
+ +'<button class="bin b-past" onclick="sigPick(\'past\')">⏪ 一般过去<small>过去式</small></button>'
+ +'</div>'
+ +'<div class="fb" id="sigfb"></div>'
+ +'<button class="btn btn-teal hidden" id="signext" onclick="sigNext()">下一个 →</button>'
+ +'</div>'
+ +'<div class="progress"><i style="width:'+(doneN/16*100)+'%"></i></div>');
+}
+window.sigPick=function(k){
+ const cur=sigQueue[0];const ok=k===cur.t;
+ const fb=document.getElementById('sigfb');
+ if(ok){sigOk++;tone('ok');fb.className='fb ok';fb.textContent='✅ 对！「'+cur.w+'」→ '+TENSES[cur.t].name+'（'+TENSES[cur.t].form+'）。';}
+ else{tone('no');fb.className='fb no';fb.textContent='💡 「'+cur.w+'」是'+TENSES[cur.t].name+'的信号词，记住这个脚印！';}
+ recordAttempt('signal',cur.w,ok);
+ document.querySelectorAll('.bin').forEach(function(b){b.style.pointerEvents='none';});
+ document.getElementById('signext').classList.remove('hidden');
+};
+window.sigNext=function(){sigQueue.shift();sigCard();};
+let pIdx=0,pStage=0;
+function past(){pIdx=0;pStage=0;pastCard();}
+function pastCard(){
+ const w=PAST[pIdx];
+ el(head('第 3 关 · 过去式变形工厂','第 '+(pIdx+1)+' / '+PAST.length+' 个 · 先在心里变，再点开核对',null,1)
+ +'<div class="card">'
+ +'<div class="tag">原形 · '+w.rule+'</div>'
+ +'<div class="big">'+w.base+'</div>'
+ +'<div class="zh">yesterday, he ______</div>'
+ +(pStage===0?
+   '<div class="taprow"><button class="btn btn-soft" onclick="playFile(\''+w.audio+'\')">🔊 听答案音</button>'
+   +'<button class="btn btn-teal" onclick="pastShow()">我变好了，核对 →</button></div>'
+  :'<div class="big" style="color:var(--teal);font-size:30px;margin-top:12px">'+w.past+'</div>'
+   +'<div class="sub" style="margin-top:8px;text-align:center">💡 '+w.tip+'</div>'
+   +'<div class="taprow"><button class="btn btn-soft" onclick="pastMark(0)">还没记住</button>'
+   +'<button class="btn btn-teal" onclick="pastMark(1)">记住啦 →</button></div>')
+ +'</div>'
+ +'<div class="progress"><i style="width:'+((pIdx+1)/PAST.length*100)+'%"></i></div>');
+}
+window.pastShow=function(){pStage=1;S.pastSeen[PAST[pIdx].base]=1;save();pastCard();playFile(PAST[pIdx].audio);};
+window.pastMark=function(ok){
+ recordAttempt('past',PAST[pIdx].base+'→'+PAST[pIdx].past,!!ok);tone(ok?'ok':'no');
+ if(pIdx<PAST.length-1){pIdx++;pStage=0;pastCard();}
+ else{finishStage('past');go('detective');}
+};
+let cIdx=0,cOk=0;
+function detective(){cIdx=0;cOk=0;caseCard();}
+function caseCard(){
+ if(cIdx>=CASES.length){
+  finishStage('detective');
+  el(head('第 4 关 · 时态侦探所',null,null,1)
+  +'<div class="card" style="text-align:center"><div class="big">🔍</div>'
+  +'<div class="big" style="font-size:24px;margin-top:8px">破案 '+cOk+' / '+CASES.length+'</div>'
+  +'<div class="sub" style="margin-top:8px">'+(cOk>=6?'漂亮！信号词一抓一个准。':'错案已记进学习档案，回时光罗盘再看看。')+'</div>'
+  +'<button class="btn btn-violet" onclick="go(\'recall\')">去回忆屋 →</button></div>');
+  return;
+ }
+ const c=CASES[cIdx];
+ el(head('第 4 关 · 时态侦探所','案件 '+(cIdx+1)+' / '+CASES.length+' · 先圈出句里的信号词，再断案',null,1)
+ +'<div class="card">'
+ +'<div class="sentence">'+c.s+'</div>'
+ +'<div class="sub" style="margin-top:8px">🔍 这个空该填什么？</div>'
+ +'<button class="opt" onclick="casePick(1)"><span class="k">🅰</span>'+c.ans+'</button>'
+ +CASES.filter(function(x,i){return i!==cIdx}).slice(0,2).map(function(x,i){
+   return '<button class="opt" onclick="casePick(0,this)"><span class="k">'+['🅱','🅲'][i]+'</span>'+x.ans+'</button>';}).join('')
+ +'<div class="fb" id="cfb"></div>'
+ +'<button class="btn btn-teal hidden" id="cnext" onclick="caseNext()">'+(cIdx<CASES.length-1?'下一案 →':'看结案报告 →')+'</button>'
+ +'</div>');
+ /* 打乱选项顺序 */
+ const card=app.querySelector('.card');const opts=Array.from(card.querySelectorAll('.opt'));
+ shuffled(opts).forEach(function(o){card.insertBefore(o,card.querySelector('#cfb'));});
+}
+window.casePick=function(ok,btn){
+ const c=CASES[cIdx];const fb=document.getElementById('cfb');
+ document.querySelectorAll('.opt').forEach(function(o){o.style.pointerEvents='none';});
+ if(ok){cOk++;tone('ok');fb.className='fb ok';fb.textContent='✅ 破案！'+c.why;event&&event.currentTarget&&event.currentTarget.classList.add('ok');}
+ else{tone('no');if(btn)btn.classList.add('no');fb.className='fb no';fb.textContent='💡 正确是「'+c.ans+'」。'+c.why;}
+ recordAttempt('case',c.s,!!ok);
+ document.getElementById('cnext').classList.remove('hidden');
+};
+window.caseNext=function(){cIdx++;caseCard();};
+function recall(){
+ el(head('第 5 关 · 遮挡回忆','先说答案，再点开核对；可以反复翻回',null,1)
+ +'<div class="card">'+RECALL.map(function(c,i){
+  return '<div class="recall-card" id="rc'+i+'"><div class="q">'+(i+1)+'. '+c.q+'</div>'
+  +'<div class="tap" onclick="document.getElementById(\'rc'+i+'\').classList.toggle(\'open\')">先自己说，再点开 👆</div>'
+  +'<div class="a">'+c.a+'</div></div>';}).join('')
+ +'<button class="btn btn-violet" onclick="finishStage(\'recall\');go(\'quiz\')">回忆完成，参加结业闯关 →</button></div>');
+}
+let qIdx=0,qScore=0,qLock=false;
+function quiz(){qIdx=0;qScore=0;quizCard();}
+function quizCard(){
+ const q=QUIZ[qIdx];qLock=false;
+ el(head('🎓 结业闯关 · L1—L23 抽样','第 '+(qIdx+1)+' / '+QUIZ.length+' 题 · 不看提示，独立作答',null,1)
+ +'<div class="card"><span class="tag">'+q.cat+'</span>'
+ +'<div style="font-size:19px;font-weight:800;line-height:1.8;margin-top:4px">'+q.q+'</div>'
+ +q.opts.map(function(o,i){return '<button class="opt" id="opt'+i+'" onclick="answer('+i+')"><span class="k">'+'ABC'[i]+'</span>'+o+'</button>';}).join('')
+ +'<div class="fb" id="qfb"></div>'
+ +'<button class="btn btn-violet hidden" id="qnext" onclick="quizNext()">'+(qIdx<QUIZ.length-1?'下一题 →':'🎓 领取毕业证书 →')+'</button>'
+ +'</div>');
+}
+window.answer=function(i){
+ if(qLock)return;qLock=true;
+ const q=QUIZ[qIdx];const ok=i===q.a;
+ document.getElementById('opt'+q.a).classList.add('ok');
+ const fb=document.getElementById('qfb');
+ if(ok){qScore++;tone('ok');fb.className='fb ok';fb.textContent='✅ '+q.why;}
+ else{document.getElementById('opt'+i).classList.add('no');tone('no');fb.className='fb no';fb.textContent='💡 '+q.why;}
+ recordAttempt('quiz',q.q,ok);
+ document.getElementById('qnext').classList.remove('hidden');
+};
+window.quizNext=function(){
+ if(qIdx<QUIZ.length-1){qIdx++;quizCard();return;}
+ finishStage('quiz');
+ const pct=Math.round(qScore/QUIZ.length*100);
+ el(head('🎓 毕业典礼',null,null,1)
+ +'<div class="card" style="text-align:center">'
+ +'<div class="big">'+(pct>=80?'🎓🏆':pct>=60?'🎓💪':'🎓📖')+'</div>'
+ +'<div class="big" style="font-size:25px;margin-top:8px">结业闯关 '+qScore+' / '+QUIZ.length+'</div>'
+ +'<div class="owl" style="text-align:left;margin-top:12px">🦉 <b>猫头鹰博士寄语：</b>'+(pct>=80?
+  '"太棒了！初阶语法正式毕业 🎉 老师说语法要长期巩固——以后每周回来转一次时光罗盘，别让知识睡大觉！"'
+  :'"毕业不代表结束！错的题已经存进学习档案，先回对应关卡补课，再来闯一次，80 分就能拿到金徽章！"')+'</div>'
+ +'<div class="sub" style="margin-top:10px">📌 老师的叮嘱：订正听写本和试卷错题，常翻看，时态线索词要持续复盘。</div>'
+ +badges()
+ +'<div class="taprow"><button class="btn btn-soft" onclick="go(\'home\')">回首页</button>'
+ +'<button class="btn btn-violet" onclick="go(\'quiz\')">再闯一次</button></div>'
+ +'</div>');
+};
+function finishStage(k){S.done[k]=true;save();}
+window.finishStage=finishStage;
+function records(){
+ const okN=S.attempts.filter(function(a){return a.ok}).length;
+ const rows=S.attempts.slice(-30).reverse().map(function(a){
+  return '<div style="font-size:12.5px;padding:7px 0;border-bottom:1px dashed var(--line)">'+(a.ok?'✅':'❌')+' ['+a.kind+'] '+a.key+'<span style="color:#9a94b0"> · '+new Date(a.t).toLocaleString('zh-CN',{hour12:false})+'</span></div>';}).join('');
+ el(head('学习档案','本次练习记录','',1)
+ +'<div class="card">'
+ +'<div class="sub">完成环节：'+(Object.keys(S.done).filter(function(k){return S.done[k]}).join('、')||'（暂无）')+'</div>'
+ +'<div class="sub" style="margin-top:6px">总作答：'+S.attempts.length+' 次 · 正确 '+okN+' 次</div>'
+ +'<div style="margin-top:10px">'+(rows||'<div class="sub">还没有作答记录。</div>')+'</div>'
+ +'<div class="taprow"><button class="btn btn-soft" onclick="dlJson()">导出 JSON</button>'
+ +'<button class="btn btn-soft" onclick="dlMd()">导出 Markdown</button></div>'
+ +'</div>');
+}
+function dl(name,text,type){const b=new Blob([text],{type});const u=URL.createObjectURL(b);const a=document.createElement('a');a.href=u;a.download=name;a.click();URL.revokeObjectURL(u);}
+window.dlJson=function(){dl('eddey-grammar-graduation-record.json',JSON.stringify({app:APP_ID,material:MATERIAL,exported:new Date().toISOString(),state:S},null,1),'application/json');};
+window.dlMd=function(){
+ let md='# Eddey 语法毕业典礼（总复习）记录\n\n- 材料：'+MATERIAL+'\n- 作答：'+S.attempts.length+' 次，正确 '+S.attempts.filter(function(a){return a.ok}).length+' 次\n\n| 时间 | 环节 | 内容 | 结果 |\n|---|---|---|---|\n';
+ S.attempts.forEach(function(a){md+='| '+new Date(a.t).toLocaleString('zh-CN',{hour12:false})+' | '+a.kind+' | '+a.key+' | '+(a.ok?'对':'错')+' |\n';});
+ dl('eddey-grammar-graduation-report.md',md,'text/markdown');
+};
+document.getElementById('soundToggle').addEventListener('click',function(){soundOn=!soundOn;localStorage.setItem('study:eddey:ui-sound',soundOn?'1':'0');this.textContent=soundOn?'声':'静';if(soundOn)tone('ok');});
+document.getElementById('soundToggle').textContent=soundOn?'声':'静';
+Object.assign(window,{go,playFile});
+home();
+})();
+</script>
+</body>
+</html>
