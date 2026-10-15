@@ -1,0 +1,639 @@
+{
+  "updated": "2026-07-14",
+  "_latest_note": "2026-07-14 技巧篇速算馆上线(哥哥16/弟弟10)+方法篇1-4讲换原书真题,全书32讲入库完毕",
+  "_schema": {
+    "id": "唯一编号，建议 <child>_dayNN 或 <child>_<subject>_<date>",
+    "knowledge_points": "本卷覆盖的知识点名称数组，用于和 profile 联动、避免重复、循序渐进",
+    "difficulty": "easy | medium | hard | 未标注",
+    "result": "批改后回填的总体表现（如 正确率/星数/简评），未批改填 未录入"
+  },
+  "papers": [
+    {
+      "id": "kenton_day11",
+      "date": "2026-06-11",
+      "child": "kenton",
+      "subject": "综合(语数英)",
+      "title": "语数英综合卷 · 第11天",
+      "quiz_file": "papers/kenton_day11_quiz.pdf",
+      "answer_file": "papers/kenton_day11_answers.pdf",
+      "app_file": "apps/kenton_day11_output.html",
+      "knowledge_points": [],
+      "difficulty": "未标注",
+      "result": "未录入",
+      "notes": "导入记忆层时的台账第一条。标题为'第11天'，说明此前还有第 1-10 天的卷子未入库——如有历史文件可补录到本台账，记忆会更连贯。"
+    },
+    {
+      "id": "kenton_dictation_2026-06-13",
+      "date": "2026-06-13",
+      "child": "kenton",
+      "subject": "英语+语文",
+      "title": "默写软件练习 · 37 次（导入存档）",
+      "source_file": "data/learning/dictation_kenton.json",
+      "knowledge_points": [
+        "语文第23课词语",
+        "英语 M4U3 nest/swan",
+        "英语 bedroom/sound"
+      ],
+      "difficulty": "—",
+      "result": "整体优秀；薄弱：语文第23课(顽强/惊天动地/摧毁 小测1/4)、英语 nest/swan",
+      "notes": "来自孩子端默写软件本地记录导出，原始逐词明细见 source_file。下次复习应优先安排这些薄弱点。"
+    },
+    {
+      "id": "kenton_chinese_review_4xz",
+      "date": "2026-06-13",
+      "child": "kenton",
+      "subject": "语文",
+      "title": "四下期末复习索引（5-8单元）+ 配套104题冲刺软件",
+      "index_file": "data/learning/chinese_review_grade4b.json",
+      "outline_file": "docs/复习大纲_kenton_语文4下.md",
+      "app_file": "apps/kenton_chinese_review.html",
+      "knowledge_points": [
+        "多音字",
+        "易错字音",
+        "形近字",
+        "词语积累",
+        "古诗警句",
+        "关联词",
+        "文学常识",
+        "课文主旨",
+        "古文字义",
+        "修改病句"
+      ],
+      "difficulty": "medium",
+      "result": "题库已上线，等孩子练习后导出成绩回填掌握度",
+      "notes": "来源纸质复习索引（已匿名化，未录入姓名/学号/班级）。软件带 localStorage 后台记录+导出（格式兼容默写软件），导出后投喂即可归档进化。"
+    },
+    {
+      "id": "eddey_chinese_review_3b",
+      "date": "2026-06-13",
+      "child": "eddey",
+      "subject": "语文",
+      "title": "三下期末复习索引（总骨架）+ 语文期末闯关王（15关64题）",
+      "index_file": "data/learning/chinese_review_eddey_grade3b.json",
+      "outline_file": "docs/复习大纲_eddey_语文3下.md",
+      "app_file": "apps/eddey_chinese_review.html",
+      "knowledge_points": [
+        "字词默写",
+        "背默",
+        "多音字",
+        "课文判断",
+        "仿写词句",
+        "加点词",
+        "写具体",
+        "有趣开头",
+        "寻物启事",
+        "拟声词",
+        "有趣题目",
+        "转述句",
+        "阅读表达",
+        "作文",
+        "错题回炉"
+      ],
+      "difficulty": "medium",
+      "result": "弟弟语文期末复习主线骨架；配套闯关软件已于 2026-06-19 正式建成（见 eddey_chinese_review_build_2026-06-19）。",
+      "notes": "这是弟弟语文期末复习总骨架，后续复习/出题/软件都以此索引为准、全覆盖。索引页姓名栏空白，未录入身份信息。"
+    },
+    {
+      "id": "eddey_english_2026-06-13",
+      "date": "2026-06-13",
+      "child": "eddey",
+      "subject": "英语",
+      "title": "英语练习导入 · 房间+好玩的活动（正确率95%）",
+      "source_file": "data/learning/english_eddey.json",
+      "knowledge_points": [
+        "听音判对错",
+        "英语句子语序",
+        "名词复数s",
+        "地道用词take classes",
+        "发音rooms/bathroom",
+        "There is/are"
+      ],
+      "difficulty": "—",
+      "result": "正确率95%，整体好；薄弱：听音判对错(错3)、句子语序(错2)、名词复数s、take classes、发音rooms40%/bathroom46%",
+      "notes": "来自英语练习软件家长页导出。下次英语优先补'听音判对错'，并练名词复数s与rooms/bathroom发音。"
+    },
+    {
+      "id": "eddey_unit8_2026-06-13",
+      "date": "2026-06-13",
+      "child": "eddey",
+      "subject": "语文",
+      "title": "三下第八单元《有趣的故事》整体复习 + 11关闯关软件",
+      "index_file": "data/learning/chinese_unit8_eddey.json",
+      "app_file": "apps/eddey_unit8_review.html",
+      "knowledge_points": [
+        "生字词",
+        "多音字",
+        "课文内容/主旨",
+        "课文判断",
+        "复述故事",
+        "拟声词动作",
+        "有趣题目",
+        "转述句",
+        "日积月累(大林寺桃花)",
+        "想象作文"
+      ],
+      "difficulty": "medium",
+      "result": "题库已上线，等导出成绩回填掌握度",
+      "notes": "来源第八单元课文扫描件+语文园地八，结合期末复习索引（📌标注重合考点：课文判断/转述句/有趣题目/想象作文/日积月累）。课文：慢性子裁缝、方帽子店、漏、枣核。扫描件含学习批注、无姓名。"
+    },
+    {
+      "id": "eddey_english_errors_2026-06-13",
+      "date": "2026-06-13",
+      "child": "eddey",
+      "subject": "英语",
+      "title": "英语期末冲刺卷（四）错题归档 + 错题重做卷",
+      "archive_file": "data/learning/english_errors_eddey_2026-06-13.json",
+      "redo_sheet": "（依隐私红线未入仓库，A4 可打印 PDF/HTML 已私发家长）",
+      "knowledge_points": [
+        "物主代词",
+        "对划线提问",
+        "单数改复数",
+        "改否定句",
+        "一般疑问句应答",
+        "阅读判断",
+        "阅读问答",
+        "like+doing",
+        "合成词拼写"
+      ],
+      "difficulty": "medium",
+      "result": "9 个错题组；薄弱：she/her、句型转换、Do you 应答、like+doing。重做卷已交付，等弟弟重做后回填掌握度。",
+      "notes": "来源为老师批改的纸质期末冲刺卷扫描件。错题原文/批改属敏感明细未入公开仓库，仅归档匿名化知识点统计；重做卷（错因分析+原题+每题两道类似题+答案页）通过会话私发家长。阅读判断/作文部分手写红批字迹较糊，已尽力对照核对。"
+    },
+    {
+      "id": "eddey_english_module4_review",
+      "date": "2026-06-14",
+      "child": "eddey",
+      "subject": "英语",
+      "title": "英语 Module 4 复习闯关王（5关 + 错题回炉）",
+      "app_file": "apps/eddey_english_review.html",
+      "content_source": "data/learning/english_errors_eddey_2026-06-13.json (learning_log · 2026-06-12)",
+      "knowledge_points": [
+        "身体部位名词复数(foot→feet/tooth→teeth)",
+        "a/an用法",
+        "I have描述句型(单/复数)",
+        "My...is/are",
+        "一般现在时(I/you)",
+        "三单变化(goes/Does/What does)"
+      ],
+      "difficulty": "easy-medium",
+      "result": "题库已上线，等弟弟练习后导出成绩回填掌握度",
+      "notes": "依据 6.12 课堂 Module 4 复习内容做的复习软件。内置标准模板：输入自动判分(fill)+选择+自评、答对/答错音效、英语 TTS 朗读(en-US)、计时、localStorage 记录面板与兼容导出({child:'弟弟',subject:'英语Module4复习',events:[]})、家长检查页。内容均为通用英语语法，无身份信息。"
+    },
+    {
+      "id": "kenton_dictation_apps",
+      "date": "2026-06-14",
+      "child": "kenton",
+      "subject": "语文+英语",
+      "title": "默写助手（收录）+ 默写错词重做（中英双科）",
+      "app_file": "apps/kenton_dictation.html",
+      "app_file_2": "apps/kenton_dictation_redo.html",
+      "knowledge_points": [
+        "语文词语默写",
+        "英语单词/句子默写",
+        "中英互译理解",
+        "错词重做"
+      ],
+      "difficulty": "—",
+      "result": "默写助手为哥哥实测好用版本，已收录为生词默写标准机制(见CLAUDE.md第7条)；错词重做装入昨天默写错的词(语文4+英语单词4+句子2)。",
+      "notes": "默写助手机制=全自动报默(读3遍)+大倒计时+答案对照点红+只重默标红+理解小测+档案导出。错词来源 data/learning/dictation_kenton.json 的 ok:false 项。"
+    },
+    {
+      "id": "kenton_chinese_review_session_2026-06-14",
+      "date": "2026-06-14",
+      "child": "kenton",
+      "subject": "语文",
+      "title": "四下5-8单元复习 13关 成绩归档",
+      "archive_file": "data/learning/chinese_review_kenton_sessions.json",
+      "knowledge_points": [
+        "多音字",
+        "易错字音",
+        "形近字",
+        "词语意思",
+        "成语",
+        "古诗警句",
+        "名句出处",
+        "关联词",
+        "文学常识",
+        "课文主旨",
+        "古文字义"
+      ],
+      "difficulty": "medium",
+      "result": "整体优秀、无反复错题；薄弱：易错字音(彬/矩/屑/矢)、名句出处(老子/周易)、近义辨析。已回填 profile_kenton。",
+      "notes": "孩子端 apps/kenton_chinese_review.html 导出归档。"
+    },
+    {
+      "id": "eddey_chinese_review_session_2026-06-14",
+      "date": "2026-06-14",
+      "child": "eddey",
+      "subject": "语文",
+      "title": "三下第八单元复习 11关 成绩归档",
+      "archive_file": "data/learning/chinese_review_eddey_sessions.json",
+      "knowledge_points": [
+        "多音字",
+        "课文内容/判断",
+        "复述故事",
+        "拟声词",
+        "有趣题目",
+        "转述句",
+        "日积月累",
+        "想象作文",
+        "生字词"
+      ],
+      "difficulty": "medium",
+      "result": "字词/多音字/课文/作文都稳；最薄弱=复述故事『只答一点』(1/3，错2次)。已回填 profile_eddey。",
+      "notes": "孩子端 apps/eddey_chinese_review.html 导出归档。下次重点练按顺序/谁+做了什么+结果复述。"
+    },
+    {
+      "id": "kenton_m4_review_2026-06-15",
+      "date": "2026-06-15",
+      "child": "kenton",
+      "subject": "英语",
+      "title": "哥哥英语 Module 4 总复习软件（U1/U2/U3 一个入口，11关36题）",
+      "app_file": "apps/kenton_m4_review.html",
+      "knowledge_points": [
+        "U1 play the+乐器/Where's/Whose",
+        "U2 the…Festival/at-on-during/look-see-watch",
+        "U3 feed…with/序数词fourth/lovely-lonely形容词/现在进行时",
+        "三单元词汇默写"
+      ],
+      "difficulty": "medium",
+      "result": "结合老师M4U2知识梳理(PDF)+哥哥错题(I like the Spring Festival.)；待练习后回填。",
+      "notes": "老师 M4 知识梳理PDF(U1 Music class/U2 Festivals/U3 Story time)合成哥哥一个总入口。选择25/🎤口说2/纸上默写9，每题讲解+错题回炉。"
+    },
+    {
+      "id": "eddey_lesson_2026-06-15",
+      "date": "2026-06-15",
+      "child": "eddey",
+      "subject": "英语",
+      "title": "老师课堂记录 · 试卷6解析 + 试卷8讲评（Eddey）",
+      "source_file": "data/learning/lesson_eddey_2026-06-15.json",
+      "knowledge_points": [
+        "听力oo短音/ʊ/",
+        "after class≠after school",
+        "名词单复数(these/are标志词)",
+        "一般现在时",
+        "作文运动动词搭配(ski/skate不+play)"
+      ],
+      "difficulty": "—",
+      "result": "进步：试卷6听力比试卷4好、试卷8单复数全对(表扬)、作文句型多元；仍弱：单复数错误率高、一般现在时(明天解析)。作业：整理试卷6错题笔记。",
+      "notes": "老师对今天 Eddey 课程内容与判断的口头记录，家长转述。"
+    },
+    {
+      "id": "eddey_math_2026-06-15",
+      "date": "2026-06-15",
+      "child": "eddey",
+      "subject": "数学",
+      "title": "数学三下冲刺 9组刷题 错题归档",
+      "archive_file": "data/learning/math_eddey_2026-06-15.json",
+      "knowledge_points": [
+        "面积与周长区分",
+        "元角分↔小数",
+        "两位数乘两位数竖式",
+        "植树问题",
+        "整百数除法",
+        "分数比较"
+      ],
+      "difficulty": "medium",
+      "result": "年月日8/8全对；其余多7/8。薄弱见档案。",
+      "notes": "孩子端数学冲刺软件导出。错点：周长当面积、元角分换算、竖式进位、植树两端都栽、500÷4。"
+    },
+    {
+      "id": "eddey_math_redo_2026-06-15",
+      "date": "2026-06-15",
+      "child": "eddey",
+      "subject": "数学",
+      "title": "数学错题专项练软件（6.15错题，7关22题）",
+      "app_file": "apps/eddey_math_redo.html",
+      "knowledge_points": [
+        "周长vs面积+单位",
+        "元角分↔小数",
+        "两位数乘两位数竖式",
+        "植树问题",
+        "整百/商中间0除法",
+        "分数比大小"
+      ],
+      "difficulty": "medium",
+      "result": "明天安排弟弟做；练完导出回填掌握度。",
+      "notes": "基于 math_eddey_2026-06-15.json 的6类错点，点选为主+少量🎤说数字，每题讲解+错题回炉。"
+    },
+    {
+      "id": "eddey_english_redo_2026-06-16",
+      "date": "2026-06-16",
+      "child": "eddey",
+      "subject": "英语",
+      "title": "英语错点专项练(6.15老师讲评，6关18题)",
+      "app_file": "apps/eddey_english_redo_grammar.html",
+      "knowledge_points": [
+        "名词单复数标志词",
+        "一般现在时",
+        "oo短音/ʊ/",
+        "after class/school",
+        "运动动词搭配"
+      ],
+      "difficulty": "medium",
+      "result": "今天做；练完导出回填。",
+      "notes": "基于 lesson_eddey_2026-06-15.json 老师讲评做的针对练，点选为主+1🎤，每题讲解+错题回炉。"
+    },
+    {
+      "id": "kenton_chinese_redo_2026-06-16",
+      "date": "2026-06-16",
+      "child": "kenton",
+      "subject": "语文",
+      "title": "语文易错专项练(四下5-8单元错题，6关14题)",
+      "app_file": "apps/kenton_chinese_redo.html",
+      "knowledge_points": [
+        "易错字音(彬/屑/矢/冲/刹)",
+        "形近字(履/覆)",
+        "近义辨析",
+        "关联词",
+        "文学常识/名句/主旨"
+      ],
+      "difficulty": "medium",
+      "result": "今天做；练完导出回填。",
+      "notes": "基于 chinese_review_kenton_sessions.json 6.14错题做的针对练，点选+每题讲解+错题回炉。"
+    },
+    {
+      "id": "kenton_english_errors_2026-06-16",
+      "date": "2026-06-16",
+      "child": "kenton",
+      "subject": "英语",
+      "title": "四下英语期末复习卷错题归档（学校卷·老师批改）",
+      "archive_file": "data/learning/english_errors_kenton_2026-06-16.json",
+      "knowledge_points": [
+        "一般现在时vs现在进行时",
+        "第三人称单数s/Does/doesn't",
+        "名词单复数(knife→knives)",
+        "对划线部分提问/改一般疑问句",
+        "短语搭配(Let's/play the/finish doing/It's time for/any)",
+        "介词on/in/at/for",
+        "作文My week(开头/介词/大小写/拼写/时态)"
+      ],
+      "difficulty": "medium",
+      "result": "15 个错题组。错点高度命中长期弱项：时态切换、三单s、单复数、句型转换、介词、作文。基础词汇/听力/阅读判断较稳。下次英语优先做针对练。",
+      "notes": "来源为老师批改的纸质四下英语期末复习卷扫描件（4页）。试卷含真实姓名等身份信息——按隐私红线一律不入仓库，本台账与归档文件只保留匿名化知识点/错因统计。部分手写批改偏糊，已尽力对照辨认，错因类别可靠。"
+    },
+    {
+      "id": "eddey_math_weekly_archive",
+      "date": "2026-06-16",
+      "child": "eddey",
+      "subject": "数学",
+      "title": "三下数学历史周练卷错题归档（卷四/六/八/九，学校卷·已批改）",
+      "archive_file": "data/learning/math_eddey_weekly_archive.json",
+      "knowledge_points": [
+        "多位数笔算乘法(错位/进位/末尾0)",
+        "笔算除法(含0)",
+        "递等式运算顺序+简便",
+        "列式计算(文字→算式)",
+        "面积与周长+单位",
+        "行程问题",
+        "铺砖归一/组合图形面积",
+        "分数比较"
+      ],
+      "difficulty": "medium",
+      "result": "⏳历史卷(无确切日期，弟弟『之前的』)。错点反复：多位数竖式乘法、笔算除法、脱式运算顺序、列式计算、面积↔周长、行程、铺砖归一、分数比较。与6.15冲刺卷结论一致：计算基本功+应用题建模是两大长板。仅作历史佐证，不改近期掌握度趋势。",
+      "notes": "来源4张三下数学周练卷扫描件(卷四/六/八/九)。含真实姓名等身份信息——按隐私红线不入仓库，归档只保留匿名化题型/考点/错因。手写竖式批改偏糊，已尽力辨认，个别题标 confidence。"
+    },
+    {
+      "id": "lesson_eddey_2026-06-16",
+      "date": "2026-06-16",
+      "child": "eddey",
+      "subject": "英语",
+      "title": "考前老师英语复习总结（试卷8解析）",
+      "source_file": "data/learning/lesson_eddey_2026-06-16.json",
+      "knowledge_points": [
+        "一般现在时三单(灵活/复数不加s)",
+        "情态动词can句型(与does无关)",
+        "句子结构(肯定/否定/一般疑问及答)",
+        "听力填词预测+语法",
+        "阅读细心+拼写",
+        "作文拼写swimming pool/playground"
+      ],
+      "difficulty": "—",
+      "result": "明天(6.17)期末考。三单敏感度已高；要点：can句独立于does、句子三态、拼写、阅读细心。已据此出考前冲刺背诵文档。",
+      "notes": "老师课堂复习要点，家长转述。考前最后一练。"
+    },
+    {
+      "id": "english_m3m4_kenton",
+      "date": "2026-06-16",
+      "child": "kenton",
+      "subject": "英语",
+      "title": "老师 M3/M4 知识梳理（M3U1-U3、M4U1-U2 核心词汇/句型/语法）",
+      "source_file": "data/learning/english_m3m4_kenton.json",
+      "source_pdf": "（老师复习PDF，5页思维导图；为学习资料，未入公开仓库）",
+      "knowledge_points": [
+        "M3U1 Shapes(What shape/a不可省/like两义)",
+        "M3U2 Colours(is/are+单复数/like+doing)",
+        "M3U3 Seasons(can+原形/go+doing/单数不单用)",
+        "M4U1 My body(复数+s/foot→feet)",
+        "M4U2 Children's Day(on+日期/with sb.)"
+      ],
+      "difficulty": "—",
+      "result": "明天(6.17)期末考。M3/M4五单元重点已结构化存档，并据此+哥哥错题出考前冲刺背诵文档。",
+      "notes": "老师知识梳理思维导图(5页)转录。M4U3不在本资料内。"
+    },
+    {
+      "id": "chinese_errors_kenton_2026-06-19",
+      "date": "2026-06-19",
+      "child": "kenton",
+      "subject": "语文",
+      "title": "四下语文五~八单元试卷错题归档（基础补充卷+5/6单元卷+7/8单元卷，12页）",
+      "archive_file": "data/learning/chinese_errors_kenton_2026-06-19.json",
+      "knowledge_points": [
+        "默写与积累(囊萤夜读/芙蓉楼/墨梅/长歌行/塞下曲/韩愈名联/文学常识)",
+        "转述句(人称/标点/语气/时间词)",
+        "字音字形(颊/刹/经传/盛名/差/乾坤/谜/壮丽)",
+        "比喻句辨析与多义字",
+        "仿写连续动作",
+        "阅读主观题按点答/续写概括"
+      ],
+      "difficulty": "medium",
+      "result": "错点集中在默写积累(最多)与转述句。据此出《语文期末冲刺卷_哥哥Kenton》(默写/转述句加量+各类错题整合+参考答案)与配套错题闯关软件 apps/kenton_chinese_sprint_quiz.html。",
+      "notes": "试卷含真实姓名等身份信息，按隐私红线不入仓库；归档只保留匿名化题型/考点/正确答案。"
+    },
+    {
+      "id": "eddey_chinese_review_build_2026-06-19",
+      "date": "2026-06-19",
+      "child": "eddey",
+      "subject": "语文",
+      "title": "三下期末复习索引落地：① 语文期末闯关王（新建·13关81题）② 语文听写扩充全词语表",
+      "index_file": "data/learning/chinese_review_eddey_grade3b.json",
+      "outline_file": "docs/复习大纲_eddey_语文3下.md",
+      "app_file": "apps/eddey_chinese_review.html",
+      "app_file_2": "apps/eddey_chinese_dictation.html",
+      "source": "纸质《三年级第二学期语文期末复习索引》扫描件（家长上传 2026-06-19，姓名栏空白未录入）",
+      "knowledge_points": [
+        "多音字辨析(扇/降/参/缝/磨/分/相/应/了/假/几/转)",
+        "仿写词语(ABB/AABB/又又/半半/并列)",
+        "仿写句子(比喻/拟人/排比)",
+        "加点词一词多义(熟/味道)",
+        "围绕意思写具体",
+        "有趣开头介绍事物(设问)",
+        "寻物启事六要素",
+        "拟声词作用",
+        "有趣题目(反义对比)",
+        "转述句(三步:改标点/换人称/读通顺)",
+        "古诗课文背默(溪边·江上/火烧云)",
+        "日积月累背默(改过三句/谚语四句/大林寺桃花)",
+        "阅读表达三步法",
+        "词语表听写(课11-27全覆盖,P122-123)"
+      ],
+      "difficulty": "medium",
+      "result": "两个软件已上线。闯关王=讲练合一(每关方法点拨+每题讲解)+错题回炉+家长记录面板，13关81题全部校验答案唯一；听写软件CN词库从2课扩到15课(词语表P122-123按课文分组+易错回炉)。等弟弟练习后导出成绩回填掌握度。",
+      "notes": "对应扫描件『一、默写』(词语表→听写软件) + 『二、要掌握的知识点(1-10)』与『三、阅读表达』(→闯关王)。两软件均零依赖纯静态，复用神经真人配音层(缺MP3自动回退浏览器TTS)，已为爸爸端预留 _manifest.json 供 edge-tts 预合成。注:用户口述称『地理』，实际扫描件全为三下语文期末复习,按语文落地。"
+    },
+    {
+      "id": "kenton_chinese_dictation_redo_2026-06-16",
+      "date": "2026-06-16",
+      "child": "kenton",
+      "subject": "语文",
+      "title": "语文错词默写软件(汇总仓库已记录的哥哥语文错词)",
+      "app_file": "apps/kenton_chinese_dictation_redo.html",
+      "knowledge_points": [
+        "复习错词8(柔嫩/奢侈/贤惠/悲戚/临危不惧/焦躁不安/心急如焚/维持)",
+        "试卷易错字词(乾坤/冰心/玉壶/练囊/萤火/不解之谜/壮丽/心悦诚服)",
+        "古诗名句默写(芙蓉楼/墨梅/长歌行/塞下曲/韩愈名联)"
+      ],
+      "difficulty": "medium",
+      "result": "今天默写再做一遍；错词本连续答对2次才移出。",
+      "notes": "数据源：dictation_kenton_review_2026-06-19.json(家长核对8真错词)+chinese_errors_kenton_2026-06-19.json(试卷默写积累错点)。语文听写引擎(限时报默+拼音/中文双读+答案对照点红+错词本)，青蓝配色。"
+    },
+    {
+      "id": "eddey_math_div_redo_2026-06-16",
+      "date": "2026-06-16",
+      "child": "eddey",
+      "subject": "数学",
+      "title": "数学试商/余数/比大小 专项练(错题汇总)",
+      "app_file": "apps/eddey_math_div_redo.html",
+      "archive_file": "data/learning/math_eddey_div_errors.json",
+      "knowledge_points": [
+        "试商与有余数除法",
+        "余数<除数/余数最大",
+        "含0整百除法(500÷4/609÷3/30000÷5)",
+        "分数比大小",
+        "组数最大最小(拓展)"
+      ],
+      "difficulty": "medium",
+      "result": "汇总弟弟所有相关错题做成专项；练完导出回填。",
+      "notes": "数据源 math_eddey_2026-06-15 + math_eddey_weekly_archive + profile_eddey。最大最小=弟弟实为分数比大小；组数最大最小为标准拓展题(弟弟无该类错题记录)。"
+    },
+    {
+      "id": "eddey_chinese_dictation_review_2026-06-19",
+      "date": "2026-06-19",
+      "child": "eddey",
+      "subject": "语文",
+      "grade": "三下",
+      "kind": "听写归档+错词重默软件",
+      "knowledge_points": [
+        "词语表默写(课11~课27+第八单元)",
+        "形近字",
+        "多音字(提防dī)",
+        "选词填空"
+      ],
+      "difficulty": "基础-巩固",
+      "app_file": "apps/eddey_chinese_dictation_redo.html",
+      "archive_file": "data/learning/dictation_eddey_review_2026-06-19.json",
+      "result": "首轮全词语表默写整体好;默写错9词(适应/淡雅/展示/沿途/陌生/想念/受刑/提防/窟窿)+小测错2词(摧毁/唠叨)。已建错词重默软件(讲解+报默+错词本)。",
+      "follow_up": "弟弟用错词重默软件掌握后,回填字词默写mastery。"
+    },
+    {
+      "id": "kenton_dictation_wrongbook_2026-06-20",
+      "date": "2026-06-20",
+      "child": "kenton",
+      "subject": "语文",
+      "grade": "四下",
+      "kind": "默写错词本导出归档+继续默写",
+      "knowledge_points": [
+        "复习默写错词(柔嫩/奢侈/贤惠/悲戚/临危不惧/焦躁不安/心急如焚/维持)",
+        "勤学成语默写(凿壁偷光/悬梁刺股/囊萤夜读/程门立雪)"
+      ],
+      "difficulty": "巩固",
+      "app_file": "apps/kenton_chinese_dictation_redo.html",
+      "archive_file": "data/learning/dictation_kenton_review_2026-06-20.json",
+      "result": "错词本12词中11词已连对2次毕业(含6.19八个真错词全攻克);仅凿壁偷光仍未掌握(错3次)。已加入软件首组『★仍需巩固·勤学成语』并种入错词本,连对2次才毕业。",
+      "follow_up": "哥哥继续默写凿壁偷光,掌握后回填 profile mastery。"
+    },
+    {
+      "id": "chinese_apps_consolidation_2026-06-20",
+      "date": "2026-06-20",
+      "child": "both",
+      "subject": "语文",
+      "grade": "哥哥四下/弟弟三下",
+      "kind": "语文软件大整合(每人1个总复习软件)",
+      "knowledge_points": [
+        "错字/易错字报默",
+        "字音字形/近义/文学常识(哥哥)",
+        "选词/读音/转述句(弟弟)",
+        "错词本反复练",
+        "多音字报读订正(提防→堤防)"
+      ],
+      "difficulty": "巩固-拔高",
+      "app_file": "apps/kenton_chinese_master.html | apps/eddey_chinese_master.html",
+      "archive_file": "(各软件 localStorage 导出)",
+      "result": "每人整合为1个语文总复习软件(默写+易错小测带讲解+错词本);删除旧语文软件12个,保留3个交互探索馆。修正弟弟提防多音字报读。",
+      "follow_up": "等两娃用新软件导出后回填掌握度。"
+    },
+    {
+      "id": "chinese_express_labs_2026-06-20",
+      "date": "2026-06-20",
+      "child": "both",
+      "subject": "语文",
+      "grade": "哥哥四下/弟弟三下",
+      "kind": "主观题交互引导实验室(教+考)",
+      "knowledge_points": [
+        "复述/概括故事(按顺序+谁/做了什么/结果)",
+        "阅读按点答(因为所以/品质词+原文事例≥2点)",
+        "仿写连续动作(动词链)"
+      ],
+      "difficulty": "巩固-拔高",
+      "app_file": "apps/eddey_chinese_express_lab.html | apps/kenton_chinese_express_lab.html",
+      "archive_file": "(交互引导式,暂不归档分数)",
+      "result": "主观题做成会动·引导式实验室:三段式(方法→动画示范→自己做+检验)。弟弟攻复述(最弱)+阅读按点答;哥哥攻仿写连续动作+阅读品质题按点答。",
+      "follow_up": "观察孩子使用,后续可加更多故事/短文素材;复述模块可接入更多课文。"
+    },
+    {
+      "id": "calc_datongguan_2026-07-14",
+      "date": "2026-07-14",
+      "child": "both",
+      "subject": "数学",
+      "grade": "哥哥四下/弟弟三下",
+      "kind": "暑假计算技法大通关探索馆(教技法+少量检验)",
+      "knowledge_points": [
+        "凑整/基准数/带符号搬家/添去括号(a-(b-c)变号陷阱)",
+        "提公因数(隐形×1)/乘法分配律面积模型(哥哥)",
+        "头同尾合十/尾同头合十/小数补0对齐/小数点搬家(哥哥)",
+        "乘法好朋友数/多退少补/加减竖式谜(弟弟)",
+        "余数单位还原 800÷90 余80不是8(弟弟红色警报M02专馆)",
+        "高斯求和/乘除竖式谜/技法雷达(哥哥)"
+      ],
+      "difficulty": "基础-拔高",
+      "app_file": "apps/kenton_calc_datongguan.html | apps/eddey_calc_datongguan.html (主入口 apps/calc_datongguan.html)",
+      "archive_file": "(各软件 localStorage 导出)",
+      "result": "v2 重建：家长反馈初版太简单/无动画无思路，遂精读原书扫描件(103-186页)后照书重做。哥哥=方法篇16讲全馆，弟弟=前10讲+余数还原专项11馆。每馆=题干放大镜(交互找特点)→分步变身动画(每步带书上箭头标注+为什么)→帮帮妙招→原书即时训练+举一反三★(原题原难度,答完必显完整分步)。书方法体系已入库 data/learning/calc_datongguan_reference.md。",
+      "follow_up": "待家长补传 part01-03(原书1-102页:技巧篇16讲正文+方法篇1-4讲正文)后,增补技巧篇速算馆。孩子每周导出记录回填画像。"
+    },
+    {
+      "id": "calc_skills_2026-07-14",
+      "date": "2026-07-14",
+      "child": "both",
+      "subject": "数学",
+      "grade": "哥哥四下/弟弟三下",
+      "kind": "技巧篇速算探索馆(教口诀+原书真题)",
+      "knowledge_points": [
+        "颠倒数加/减法((首±尾)×11/×9)",
+        "100/1000减法(前9末10)",
+        "×5÷5(添0取半/去0乘2)",
+        "交叉相乘法(任意两位数)",
+        "十几乘十几/九十几乘九十几(补数)",
+        "任意数×11(两头一拉)",
+        "个位同/十位同分层竖式(哥哥)",
+        "乘9重复数(去1添补/两边拉)",
+        "头同尾合十/尾同头合十/合十乘重复(哥哥)"
+      ],
+      "difficulty": "基础-拔高",
+      "app_file": "apps/kenton_calc_skills.html | apps/eddey_calc_skills.html (入口 apps/calc_datongguan.html)",
+      "archive_file": "(各软件 localStorage 导出)",
+      "result": "原书扫描件全书32讲100%精读入库后上线技巧篇速算馆：哥哥16馆全讲、弟弟10馆(适配三下)。每馆=放大镜→分步变身(每步为什么)→口诀卡→原书即时训练+举一反三★+错题本。方法篇馆第1-4讲例题同步换成原书真题(11+7+89+3/128−65+72/67+56+24/47+49+52+53+55)。",
+      "follow_up": "孩子每周导出记录回填画像；口诀类错题重点看是否混淆相似口诀(头同尾合十vs尾同头合十)。"
+    }
+  ]
+}

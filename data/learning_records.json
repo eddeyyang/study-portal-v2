@@ -1,0 +1,106 @@
+{
+  "schemaVersion": 1,
+  "updatedAt": "2026-07-22T13:26:34+08:00",
+  "privacy": "Public-safe child learning summaries only. Uses Kenton/Eddey nicknames and excludes real names, school, class, addresses, credentials, and detailed private answer sheets.",
+  "records": [
+    {
+      "id": "eddey-english-sentence-moods-lab-2026-07-22",
+      "child": "eddey",
+      "displayName": "Eddey",
+      "subject": "英语",
+      "appId": "sentence-moods-lab",
+      "appFile": "apps/eddey_sentence_moods_lab_20260722.html",
+      "title": "句子调度台：祈使句与 What/How 感叹句",
+      "exportedAt": "2026-07-22T13:26:34+08:00",
+      "sourceMaterials": [
+        "Lesson 14：教材 part02 PDF 第6-11页",
+        "Lesson 15：教材 part02 PDF 第12-16页",
+        "软件助教补充：动态句子模型、按教材结构改编练习与教材差异说明"
+      ],
+      "metrics": {
+        "attempts": 0,
+        "recordedMinutes": 0,
+        "accuracyPct": 0,
+        "openIssues": 0,
+        "masteredIssues": 0
+      },
+      "knowledgePoints": [
+        "陈述句分肯定与否定；一般疑问句可用 Yes/No 回答；特殊疑问句用疑问词询问具体信息",
+        "祈使句通常省略 you，以动词原形开头；请求可加 please；否定用 Don't + 动词原形",
+        "按本课基础句式：What 带名词；How + 形容词；句尾用感叹号",
+        "What 后单数可数名词注意 a/an，复数及不可数名词不加 a/an"
+      ],
+      "openReview": [],
+      "mastered": [],
+      "nextStep": "先完成跟着练，再做16题完整通关；错题连续答对2次才标记解决，并导出记录回传。",
+      "status": "baseline_created"
+    },
+    {
+      "id": "eddey-english-therebe-sentence-lab-2026-07-20",
+      "child": "eddey",
+      "displayName": "Eddey",
+      "subject": "英语",
+      "appId": "therebe-sentence-lab",
+      "appFile": "apps/eddey_therebe_sentence_lab.html",
+      "title": "There be 与句型变形",
+      "exportedAt": "2026-07-20T20:47:57+08:00",
+      "sourceMaterials": [
+        "Lesson 13：教材 part01 第33-34页、part02 第1-5页",
+        "Lesson 14：教材 part02 第6-11页"
+      ],
+      "metrics": {
+        "attempts": 30,
+        "recordedMinutes": 6,
+        "accuracyPct": 83,
+        "openIssues": 0,
+        "masteredIssues": 3
+      },
+      "knowledgePoints": [
+        "There be 表示某地有某物；is/are 看离 be 最近的名词",
+        "否定句使用 isn't / aren't，some 通常改 any",
+        "be/can 队否定加 not，提问搬到主语前",
+        "普通动词队用 do/does，does 后动词恢复原形",
+        "特殊疑问句先选疑问词，再接对应提问结构"
+      ],
+      "openReview": [],
+      "mastered": [
+        "There be 否定",
+        "can 一般疑问句",
+        "does + 动词原形"
+      ],
+      "nextStep": "下次先问：离 be 最近的是谁 / 句子是哪一队发动机；错题需连续答对 2 次以上再标记解决。",
+      "status": "no_open_issues"
+    },
+    {
+      "id": "kenton-english-subjunctive-verbs-91-136-2026-07-20",
+      "child": "kenton",
+      "displayName": "Kenton",
+      "subject": "英语",
+      "appId": "subjunctive-verbs-91-136",
+      "appFile": "apps/kenton_subjunctive_verbs_91_136.html",
+      "title": "虚拟语气 + 不规则动词 91-136",
+      "exportedAt": "2026-07-20T20:50:12+08:00",
+      "targetDate": "2026-07-27",
+      "sourceMaterials": [
+        "《知识点梳理》第14章 宾语从句 p.103",
+        "老师发《136个常用英语不规则动词变化表》91-136",
+        "软件助教依据材料设计：时间轨道、记忆家族、口诀和改编练习"
+      ],
+      "metrics": {
+        "subjunctivePassed": 0,
+        "subjunctiveTotal": 4,
+        "page103CopyDone": 0,
+        "page103CopyTotal": 38,
+        "verbsGuided": 0,
+        "verbsTotal": 46,
+        "recordedMinutes": 0,
+        "openSubjunctiveIssues": 0,
+        "openVerbIssues": 0
+      },
+      "openReview": [],
+      "mastered": [],
+      "nextStep": "先重教未解决结构和错词；每个错栏连续答对 2 次后再标记解决；下周一正式默写结果需继续回传。",
+      "status": "baseline_created"
+    }
+  ]
+}

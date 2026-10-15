@@ -1,0 +1,1548 @@
+{
+  "updated": "2026-07-21",
+  "purpose": "教材对齐总纲：今后两娃的英语（及找得到的语文/数学）复习、出题、做软件，都以这套同步教材的方向、单元结构、栏目和题型为准。",
+  "archive_status": {
+    "三年级下/四年级下": "已于 2026-07-21 归档：孩子升入新年级（弟弟4上、哥哥5上），原册内容保留作结构模板，开学拍新教材后按同结构替换。",
+    "待录入": [
+      "四年级上（eddey）",
+      "五年级上（kenton）"
+    ]
+  },
+  "series": {
+    "name": "上海《尖子生笔记·同步教材》",
+    "brand": "钟书金牌（丛书主编：钟书）",
+    "publisher": "天津人民出版社 / 天津出版传媒集团",
+    "slogan": "紧跟新考向",
+    "edition": "沪教版（上海 N版/牛津上海版方向）",
+    "subjects_available": [
+      "英语",
+      "语文",
+      "数学"
+    ],
+    "note": "钟书金牌为上海沪教版正规教辅品牌（同品牌另有『钟书新教材全练 语文+数学+英语 N版』）。本系列同时出语文/数学，待拿到其目录后补录到本文件 subjects 下。"
+  },
+  "five_columns": [
+    {
+      "栏目": "思维导图",
+      "作用": "理知识",
+      "用途": "每单元先用思维导图梳理知识框架"
+    },
+    {
+      "栏目": "单元词汇",
+      "作用": "巧预习",
+      "用途": "单词解析+记忆法（谐音/象形/联想），做软件的词表来源"
+    },
+    {
+      "栏目": "解析教材",
+      "作用": "划重点",
+      "用途": "逐课讲解课文与重点（一课一练教法对齐这一栏）"
+    },
+    {
+      "栏目": "单元复习",
+      "作用": "抓考点",
+      "用途": "单元复习与考点，出复习题/卷对齐这一栏"
+    },
+    {
+      "栏目": "拓展阅读",
+      "作用": "提素养",
+      "用途": "课外拓展阅读，做阅读软件/材料的方向"
+    }
+  ],
+  "child_grade_map": {
+    "kenton": "英语 五年级上（5上）· 新教材待拍录",
+    "eddey": "英语 四年级上（4上）· 新教材待拍录"
+  },
+  "subjects": {
+    "英语": {
+      "structure": "每册 4 个 Module，每 Module 3 个 Unit；每 Unit 五栏目（思维导图/单元词汇/解析教材/单元复习/拓展阅读）；书末 INDEX 索引（核心词汇 + 重点句型/语法）。",
+      "grades": {
+        "三年级下": {
+          "child": "eddey",
+          "主编": "沈怡雯",
+          "status": "archived",
+          "archived_at": "2026-07-21",
+          "archive_note": "已升年级，本册归档仅作结构模板；开学拍新教材后按此结构新增对应年级节点并替换引用。",
+          "index": {
+            "核心词汇": 67,
+            "重点句型语法": 41
+          },
+          "modules": [
+            {
+              "module": "Module 1 Using my five senses",
+              "units": [
+                "U1 Seeing and hearing",
+                "U2 Touching and feeling",
+                "U3 Tasting and smelling"
+              ]
+            },
+            {
+              "module": "Module 2 My favourite things",
+              "units": [
+                "U1 Animals",
+                "U2 Toys",
+                "U3 Clothes"
+              ]
+            },
+            {
+              "module": "Module 3 Things around us",
+              "units": [
+                "U1 Shapes",
+                "U2 Colours",
+                "U3 Seasons"
+              ]
+            },
+            {
+              "module": "Module 4 More things to learn",
+              "units": [
+                "U1 My body",
+                "U2 Children's Day",
+                "U3 Story time"
+              ]
+            }
+          ],
+          "句型语法要点": {
+            "M1": [
+              "询问看到什么的句型及回答",
+              "表达'(某地)有某物/某人'(There is/are)",
+              "询问数量(名词复数)",
+              "并列连词 and/but",
+              "询问某物摸/尝起来怎么样",
+              "Do型祈使句(动词原形+其他)",
+              "询问物品价格",
+              "Me too. 的用法"
+            ],
+            "M2": [
+              "询问对方是否喜欢某物(Do you like…?)",
+              "表达'我(不)喜欢某物'",
+              "询问对方喜欢什么",
+              "一般现在时 like",
+              "表达歉意交际用语",
+              "want 的用法"
+            ],
+            "M3": [
+              "表达'我有某物'",
+              "一般现在时 have/has",
+              "'它是什么形状?'句型",
+              "颜色/季节相关句型",
+              "Be 型祈使句"
+            ],
+            "M4": [
+              "描述身体部位(I have a/an+形容词+部位；I have+形容词+复数部位；My…is/are)",
+              "Children's Day 节日表达",
+              "Story time 一般现在时叙述"
+            ]
+          },
+          "units_detail": {
+            "M1U1 Seeing and hearing 看与听": {
+              "words": [
+                [
+                  "see",
+                  "看见"
+                ],
+                [
+                  "hear",
+                  "听见"
+                ],
+                [
+                  "look",
+                  "看"
+                ],
+                [
+                  "listen",
+                  "听"
+                ],
+                [
+                  "eye",
+                  "眼睛"
+                ],
+                [
+                  "ear",
+                  "耳朵"
+                ],
+                [
+                  "bird",
+                  "鸟"
+                ],
+                [
+                  "plane",
+                  "飞机"
+                ],
+                [
+                  "train",
+                  "火车"
+                ],
+                [
+                  "loud",
+                  "响亮的"
+                ]
+              ],
+              "sentences": [
+                [
+                  "I can see a bird.",
+                  "我能看见一只鸟。"
+                ],
+                [
+                  "I can hear a plane.",
+                  "我能听见一架飞机。"
+                ],
+                [
+                  "Look! Listen!",
+                  "看！听！"
+                ]
+              ],
+              "knowledge": [
+                "I can see/hear + 名词",
+                "眼睛耳朵等感官名词",
+                "look/listen 祈使句"
+              ]
+            },
+            "M1U2 Touching and feeling 触摸与感觉": {
+              "words": [
+                [
+                  "touch",
+                  "触摸"
+                ],
+                [
+                  "feel",
+                  "感觉"
+                ],
+                [
+                  "hard",
+                  "硬的"
+                ],
+                [
+                  "soft",
+                  "软的"
+                ],
+                [
+                  "rough",
+                  "粗糙的"
+                ],
+                [
+                  "smooth",
+                  "光滑的"
+                ],
+                [
+                  "warm",
+                  "温暖的"
+                ],
+                [
+                  "cold",
+                  "冷的"
+                ]
+              ],
+              "sentences": [
+                [
+                  "Touch it. How does it feel?",
+                  "摸一摸，它感觉怎么样？"
+                ],
+                [
+                  "It is hard.",
+                  "它是硬的。"
+                ],
+                [
+                  "It is soft and smooth.",
+                  "它又软又滑。"
+                ]
+              ],
+              "knowledge": [
+                "It is + 形容词(描述触感)",
+                "Touch... 祈使句",
+                "形容词 hard/soft/rough/smooth"
+              ]
+            },
+            "M1U3 Tasting and smelling 尝与闻": {
+              "words": [
+                [
+                  "taste",
+                  "尝"
+                ],
+                [
+                  "smell",
+                  "闻"
+                ],
+                [
+                  "sweet",
+                  "甜的"
+                ],
+                [
+                  "sour",
+                  "酸的"
+                ],
+                [
+                  "salty",
+                  "咸的"
+                ],
+                [
+                  "bitter",
+                  "苦的"
+                ],
+                [
+                  "lemon",
+                  "柠檬"
+                ],
+                [
+                  "sugar",
+                  "糖"
+                ],
+                [
+                  "coffee",
+                  "咖啡"
+                ]
+              ],
+              "sentences": [
+                [
+                  "What can you taste?",
+                  "你能尝到什么？"
+                ],
+                [
+                  "It tastes sweet.",
+                  "它尝起来是甜的。"
+                ],
+                [
+                  "It smells nice.",
+                  "它闻起来很香。"
+                ]
+              ],
+              "knowledge": [
+                "It tastes/smells + 形容词",
+                "What can you taste/smell?",
+                "味道形容词"
+              ]
+            },
+            "M2U1 Animals 动物": {
+              "words": [
+                [
+                  "animal",
+                  "动物"
+                ],
+                [
+                  "tiger",
+                  "老虎"
+                ],
+                [
+                  "lion",
+                  "狮子"
+                ],
+                [
+                  "monkey",
+                  "猴子"
+                ],
+                [
+                  "elephant",
+                  "大象"
+                ],
+                [
+                  "panda",
+                  "熊猫"
+                ],
+                [
+                  "zebra",
+                  "斑马"
+                ],
+                [
+                  "giraffe",
+                  "长颈鹿"
+                ],
+                [
+                  "tall",
+                  "高的"
+                ],
+                [
+                  "fat",
+                  "胖的"
+                ]
+              ],
+              "sentences": [
+                [
+                  "Do you like tigers?",
+                  "你喜欢老虎吗？"
+                ],
+                [
+                  "Yes, I do. / No, I don't.",
+                  "是的我喜欢。/不，我不喜欢。"
+                ],
+                [
+                  "It is tall and fat.",
+                  "它又高又胖。"
+                ]
+              ],
+              "knowledge": [
+                "Do you like + 复数名词? 答 Yes,I do./No,I don't.（不可用 I am）",
+                "动物名词复数加 s",
+                "形容词描述动物"
+              ]
+            },
+            "M2U2 Toys 玩具": {
+              "words": [
+                [
+                  "toy",
+                  "玩具"
+                ],
+                [
+                  "doll",
+                  "洋娃娃"
+                ],
+                [
+                  "ball",
+                  "球"
+                ],
+                [
+                  "kite",
+                  "风筝"
+                ],
+                [
+                  "car",
+                  "小汽车"
+                ],
+                [
+                  "robot",
+                  "机器人"
+                ],
+                [
+                  "train",
+                  "火车"
+                ],
+                [
+                  "teddy bear",
+                  "泰迪熊"
+                ],
+                [
+                  "favourite",
+                  "最喜欢的"
+                ]
+              ],
+              "sentences": [
+                [
+                  "What is your favourite toy?",
+                  "你最喜欢的玩具是什么？"
+                ],
+                [
+                  "My favourite toy is the robot.",
+                  "我最喜欢的玩具是机器人。"
+                ],
+                [
+                  "This is my kite.",
+                  "这是我的风筝。"
+                ]
+              ],
+              "knowledge": [
+                "What's your favourite...? ",
+                "my/your + 名词(物主)",
+                "this/that 指示"
+              ]
+            },
+            "M2U3 Clothes 衣服": {
+              "words": [
+                [
+                  "clothes",
+                  "衣服"
+                ],
+                [
+                  "shirt",
+                  "衬衫"
+                ],
+                [
+                  "T-shirt",
+                  "T恤衫"
+                ],
+                [
+                  "dress",
+                  "连衣裙"
+                ],
+                [
+                  "skirt",
+                  "短裙"
+                ],
+                [
+                  "trousers",
+                  "裤子"
+                ],
+                [
+                  "shoes",
+                  "鞋子"
+                ],
+                [
+                  "socks",
+                  "袜子"
+                ],
+                [
+                  "cap",
+                  "帽子"
+                ],
+                [
+                  "coat",
+                  "外套"
+                ]
+              ],
+              "sentences": [
+                [
+                  "This is her dress.",
+                  "这是她的连衣裙。"
+                ],
+                [
+                  "I like the red T-shirt.",
+                  "我喜欢这件红色T恤。"
+                ],
+                [
+                  "Put on your coat.",
+                  "穿上你的外套。"
+                ]
+              ],
+              "knowledge": [
+                "物主代词 my/your/his/her + 衣物",
+                "衣物多为复数 shoes/socks/trousers",
+                "Put on... 祈使句"
+              ]
+            },
+            "M3U1 Shapes 形状": {
+              "words": [
+                [
+                  "shape",
+                  "形状"
+                ],
+                [
+                  "circle",
+                  "圆形"
+                ],
+                [
+                  "square",
+                  "正方形"
+                ],
+                [
+                  "triangle",
+                  "三角形"
+                ],
+                [
+                  "rectangle",
+                  "长方形"
+                ],
+                [
+                  "star",
+                  "星形"
+                ],
+                [
+                  "round",
+                  "圆的"
+                ]
+              ],
+              "sentences": [
+                [
+                  "What shape is it?",
+                  "它是什么形状？"
+                ],
+                [
+                  "It is a circle.",
+                  "它是一个圆形。"
+                ],
+                [
+                  "It has four sides.",
+                  "它有四条边。"
+                ]
+              ],
+              "knowledge": [
+                "What shape is it? It's a/an...",
+                "a/an 的用法(元音前 an)",
+                "has/have"
+              ]
+            },
+            "M3U2 Colours 颜色": {
+              "words": [
+                [
+                  "colour",
+                  "颜色"
+                ],
+                [
+                  "red",
+                  "红色"
+                ],
+                [
+                  "yellow",
+                  "黄色"
+                ],
+                [
+                  "blue",
+                  "蓝色"
+                ],
+                [
+                  "green",
+                  "绿色"
+                ],
+                [
+                  "orange",
+                  "橙色"
+                ],
+                [
+                  "purple",
+                  "紫色"
+                ],
+                [
+                  "pink",
+                  "粉色"
+                ],
+                [
+                  "brown",
+                  "棕色"
+                ],
+                [
+                  "black",
+                  "黑色"
+                ],
+                [
+                  "white",
+                  "白色"
+                ]
+              ],
+              "sentences": [
+                [
+                  "What colour is it?",
+                  "它是什么颜色？"
+                ],
+                [
+                  "It is red and yellow.",
+                  "它是红色和黄色的。"
+                ],
+                [
+                  "What colour are they? They are blue.",
+                  "它们是什么颜色？是蓝色的。"
+                ]
+              ],
+              "knowledge": [
+                "What colour is it/are they?",
+                "单数 is / 复数 are",
+                "and 连接两种颜色"
+              ]
+            },
+            "M3U3 Seasons 季节": {
+              "words": [
+                [
+                  "season",
+                  "季节"
+                ],
+                [
+                  "spring",
+                  "春天"
+                ],
+                [
+                  "summer",
+                  "夏天"
+                ],
+                [
+                  "autumn",
+                  "秋天"
+                ],
+                [
+                  "winter",
+                  "冬天"
+                ],
+                [
+                  "warm",
+                  "温暖的"
+                ],
+                [
+                  "hot",
+                  "炎热的"
+                ],
+                [
+                  "cool",
+                  "凉爽的"
+                ],
+                [
+                  "cold",
+                  "寒冷的"
+                ]
+              ],
+              "sentences": [
+                [
+                  "Which season do you like?",
+                  "你喜欢哪个季节？"
+                ],
+                [
+                  "I like summer.",
+                  "我喜欢夏天。"
+                ],
+                [
+                  "It is hot in summer.",
+                  "夏天很热。"
+                ]
+              ],
+              "knowledge": [
+                "Which season do you like?",
+                "It is + 天气 + in + 季节",
+                "四季名词"
+              ]
+            },
+            "M4U1 My body 身体": {
+              "words": [
+                [
+                  "body",
+                  "身体"
+                ],
+                [
+                  "head",
+                  "头"
+                ],
+                [
+                  "hair",
+                  "头发"
+                ],
+                [
+                  "face",
+                  "脸"
+                ],
+                [
+                  "mouth",
+                  "嘴"
+                ],
+                [
+                  "neck",
+                  "脖子"
+                ],
+                [
+                  "shoulder",
+                  "肩膀"
+                ],
+                [
+                  "arm",
+                  "手臂"
+                ],
+                [
+                  "hand",
+                  "手"
+                ],
+                [
+                  "leg",
+                  "腿"
+                ],
+                [
+                  "foot",
+                  "脚"
+                ],
+                [
+                  "knee",
+                  "膝盖"
+                ]
+              ],
+              "sentences": [
+                [
+                  "Touch your head.",
+                  "摸摸你的头。"
+                ],
+                [
+                  "I have two hands.",
+                  "我有两只手。"
+                ],
+                [
+                  "My feet are big.",
+                  "我的脚很大。"
+                ]
+              ],
+              "knowledge": [
+                "I have + (形容词) + 身体部位",
+                "身体部位复数；特殊 foot→feet",
+                "My ... is/are ..."
+              ]
+            },
+            "M4U2 Children's Day 儿童节": {
+              "words": [
+                [
+                  "present",
+                  "礼物"
+                ],
+                [
+                  "party",
+                  "聚会"
+                ],
+                [
+                  "balloon",
+                  "气球"
+                ],
+                [
+                  "card",
+                  "卡片"
+                ],
+                [
+                  "sing",
+                  "唱歌"
+                ],
+                [
+                  "dance",
+                  "跳舞"
+                ],
+                [
+                  "play",
+                  "玩"
+                ],
+                [
+                  "happy",
+                  "高兴的"
+                ]
+              ],
+              "sentences": [
+                [
+                  "Happy Children's Day!",
+                  "儿童节快乐！"
+                ],
+                [
+                  "We sing and dance at the party.",
+                  "我们在聚会上又唱又跳。"
+                ],
+                [
+                  "I like playing games.",
+                  "我喜欢玩游戏。"
+                ]
+              ],
+              "knowledge": [
+                "Happy ... Day! 祝福语",
+                "like + doing(动名词)",
+                "现在进行时 be + doing"
+              ]
+            },
+            "M4U3 Story time 故事时间": {
+              "words": [
+                [
+                  "story",
+                  "故事"
+                ],
+                [
+                  "duck",
+                  "鸭子"
+                ],
+                [
+                  "duckling",
+                  "小鸭子"
+                ],
+                [
+                  "swan",
+                  "天鹅"
+                ],
+                [
+                  "nest",
+                  "鸟巢"
+                ],
+                [
+                  "egg",
+                  "蛋"
+                ],
+                [
+                  "ugly",
+                  "丑的"
+                ],
+                [
+                  "beautiful",
+                  "美丽的"
+                ]
+              ],
+              "sentences": [
+                [
+                  "Mother Duck has five eggs.",
+                  "鸭妈妈有五个蛋。"
+                ],
+                [
+                  "The ugly duckling becomes a swan.",
+                  "丑小鸭变成了天鹅。"
+                ],
+                [
+                  "It is beautiful.",
+                  "它很美丽。"
+                ]
+              ],
+              "knowledge": [
+                "一般现在时叙述(has/is)",
+                "形容词 ugly/beautiful",
+                "故事顺序复述"
+              ]
+            }
+          },
+          "units_detail_note": "按沪教版3B单元主题整理的课程级词表/句型/知识点(大纲事实，非逐字录自该教辅)；如需与课本100%一致，请补拍各单元『单元词汇』内页逐字锁定。"
+        },
+        "四年级下": {
+          "child": "kenton",
+          "主编": "蒋超健、王志勤",
+          "status": "archived",
+          "archived_at": "2026-07-21",
+          "archive_note": "已升年级，本册归档仅作结构模板；开学拍新教材后按此结构新增对应年级节点并替换引用。",
+          "index": {
+            "核心词汇": 99,
+            "重点句型语法": 36
+          },
+          "modules": [
+            {
+              "module": "Module 1 Using my five senses",
+              "units": [
+                "U1 What can you smell and taste?",
+                "U2 How does it feel?",
+                "U3 Look at the shadow!"
+              ]
+            },
+            {
+              "module": "Module 2 My favourite things",
+              "units": [
+                "U1 Sports",
+                "U2 Cute animals",
+                "U3 Home life"
+              ]
+            },
+            {
+              "module": "Module 3 Things around us",
+              "units": [
+                "U1 Sounds",
+                "U2 Time",
+                "U3 Days of the week"
+              ]
+            },
+            {
+              "module": "Module 4 More things to learn",
+              "units": [
+                "U1 A Music class",
+                "U2 Festivals in China",
+                "U3 Story time"
+              ]
+            }
+          ],
+          "句型语法要点": {
+            "M1": [
+              "对某物进行确认的句型及回答",
+              "表达'我认为…'",
+              "询问单个物品名称及回答",
+              "right 的用法",
+              "询问某物尝起来怎么样及回答",
+              "What 引导的感叹句"
+            ],
+            "M2": [
+              "询问/表达喜欢某物",
+              "询问对方喜欢什么",
+              "Do 型祈使句",
+              "询问动物吃什么",
+              "询问对方在做什么(现在进行时)",
+              "一般现在时"
+            ],
+            "M3": [
+              "询问某人是否正在做某事(现在进行时)",
+              "表达某地有某物",
+              "Be 型祈使句",
+              "几点了/时间表达法",
+              "频度副词的用法",
+              "对方周末通常做什么"
+            ],
+            "M4": [
+              "询问会演奏什么乐器(can)",
+              "确认/询问物品归属",
+              "询问物品位置",
+              "询问对方喜欢什么节日及回答",
+              "询问节日通常做什么"
+            ]
+          },
+          "units_detail": {
+            "M1U1 What can you smell and taste? 闻与尝": {
+              "words": [
+                [
+                  "a glass of",
+                  "一杯"
+                ],
+                [
+                  "cherry",
+                  "樱桃"
+                ],
+                [
+                  "grape",
+                  "葡萄"
+                ],
+                [
+                  "juice",
+                  "果汁"
+                ],
+                [
+                  "watermelon",
+                  "西瓜"
+                ],
+                [
+                  "strawberry",
+                  "草莓"
+                ],
+                [
+                  "plum",
+                  "李子"
+                ]
+              ],
+              "knowledge": [
+                "对某物进行确认的句型及回答",
+                "表达'我认为……'",
+                "询问某物尝起来怎么样及回答"
+              ]
+            },
+            "M1U2 How does it feel? 感觉如何": {
+              "words": [
+                [
+                  "hard",
+                  "硬的"
+                ],
+                [
+                  "soft",
+                  "软的"
+                ],
+                [
+                  "rough",
+                  "粗糙的"
+                ],
+                [
+                  "smooth",
+                  "光滑的"
+                ],
+                [
+                  "sharp",
+                  "锋利的"
+                ],
+                [
+                  "blunt",
+                  "钝的"
+                ],
+                [
+                  "thick",
+                  "厚的"
+                ],
+                [
+                  "thin",
+                  "薄的"
+                ],
+                [
+                  "knife",
+                  "小刀"
+                ],
+                [
+                  "pencil",
+                  "铅笔"
+                ],
+                [
+                  "pencil case",
+                  "铅笔盒"
+                ]
+              ],
+              "knowledge": [
+                "询问单个物品名称及回答",
+                "描述某物特征的句型",
+                "What 引导的感叹句"
+              ]
+            },
+            "M1U3 Look at the shadow! 看影子": {
+              "words": [
+                [
+                  "sun",
+                  "太阳"
+                ],
+                [
+                  "rise",
+                  "升起"
+                ],
+                [
+                  "go down",
+                  "落下"
+                ],
+                [
+                  "high",
+                  "高的"
+                ],
+                [
+                  "at noon",
+                  "在中午"
+                ],
+                [
+                  "hill",
+                  "小山"
+                ],
+                [
+                  "lawn",
+                  "草坪"
+                ],
+                [
+                  "path",
+                  "小路"
+                ],
+                [
+                  "bench",
+                  "长椅"
+                ],
+                [
+                  "shadow",
+                  "影子"
+                ]
+              ],
+              "knowledge": [
+                "一般现在时",
+                "辨析 also/too/as well 与 either"
+              ]
+            },
+            "M2U1 Sports 运动": {
+              "words": [
+                [
+                  "sport",
+                  "运动"
+                ],
+                [
+                  "club",
+                  "俱乐部"
+                ],
+                [
+                  "join",
+                  "加入"
+                ],
+                [
+                  "poster",
+                  "海报"
+                ],
+                [
+                  "play football",
+                  "踢足球"
+                ],
+                [
+                  "play basketball",
+                  "打篮球"
+                ],
+                [
+                  "play table tennis",
+                  "打乒乓球"
+                ],
+                [
+                  "play volleyball",
+                  "打排球"
+                ],
+                [
+                  "play badminton",
+                  "打羽毛球"
+                ]
+              ],
+              "knowledge": [
+                "询问他人是否喜欢做某事及回答",
+                "询问是否愿意做某事(Would you like to…?)",
+                "表达喜欢做某事(like doing)"
+              ]
+            },
+            "M2U2 Cute animals 可爱的动物": {
+              "words": [
+                [
+                  "cute",
+                  "可爱的"
+                ],
+                [
+                  "fish",
+                  "鱼"
+                ],
+                [
+                  "bone",
+                  "骨头"
+                ],
+                [
+                  "cat food",
+                  "猫粮"
+                ],
+                [
+                  "dog food",
+                  "狗粮"
+                ],
+                [
+                  "parrot",
+                  "鹦鹉"
+                ],
+                [
+                  "tortoise",
+                  "乌龟"
+                ]
+              ],
+              "knowledge": [
+                "询问动物/他人喜欢(吃)什么",
+                "表达某地有某物(There is/are)",
+                "Do 型祈使句"
+              ]
+            },
+            "M2U3 Home life 家庭生活": {
+              "words": [
+                [
+                  "bedroom",
+                  "卧室"
+                ],
+                [
+                  "bathroom",
+                  "浴室"
+                ],
+                [
+                  "kitchen",
+                  "厨房"
+                ],
+                [
+                  "living room",
+                  "客厅"
+                ],
+                [
+                  "dinner",
+                  "晚餐"
+                ],
+                [
+                  "homework",
+                  "家庭作业"
+                ],
+                [
+                  "model plane",
+                  "飞机模型"
+                ],
+                [
+                  "wash",
+                  "洗"
+                ],
+                [
+                  "watch TV",
+                  "看电视"
+                ]
+              ],
+              "knowledge": [
+                "询问对方有什么",
+                "现在进行时",
+                "一般现在时与现在进行时对比"
+              ]
+            },
+            "M3U1 Sounds 声音": {
+              "words": [
+                [
+                  "sound",
+                  "声音"
+                ],
+                [
+                  "noisy",
+                  "吵闹的"
+                ],
+                [
+                  "quiet",
+                  "安静的"
+                ],
+                [
+                  "loud",
+                  "响亮的"
+                ],
+                [
+                  "bell",
+                  "铃"
+                ],
+                [
+                  "television (TV)",
+                  "电视"
+                ]
+              ],
+              "knowledge": [
+                "询问某人是否正在做某事及回答",
+                "Be 型祈使句",
+                "表达某地有某物"
+              ]
+            },
+            "M3U2 Time 时间": {
+              "words": [
+                [
+                  "seven o'clock",
+                  "七点钟"
+                ],
+                [
+                  "half past seven",
+                  "七点半"
+                ],
+                [
+                  "a quarter past seven",
+                  "七点一刻"
+                ],
+                [
+                  "a quarter to eight",
+                  "差一刻八点"
+                ],
+                [
+                  "get up",
+                  "起床"
+                ],
+                [
+                  "brush my teeth",
+                  "刷牙"
+                ],
+                [
+                  "wash my face",
+                  "洗脸"
+                ],
+                [
+                  "have breakfast",
+                  "吃早餐"
+                ]
+              ],
+              "knowledge": [
+                "询问几点了及回答",
+                "时间表达法",
+                "表达'该做某事了'"
+              ]
+            },
+            "M3U3 Days of the week 星期": {
+              "words": [
+                [
+                  "Monday",
+                  "星期一"
+                ],
+                [
+                  "Tuesday",
+                  "星期二"
+                ],
+                [
+                  "Wednesday",
+                  "星期三"
+                ],
+                [
+                  "Thursday",
+                  "星期四"
+                ],
+                [
+                  "Friday",
+                  "星期五"
+                ],
+                [
+                  "Saturday",
+                  "星期六"
+                ],
+                [
+                  "Sunday",
+                  "星期日"
+                ],
+                [
+                  "always",
+                  "总是"
+                ],
+                [
+                  "usually",
+                  "通常"
+                ],
+                [
+                  "often",
+                  "经常"
+                ],
+                [
+                  "sometimes",
+                  "有时"
+                ],
+                [
+                  "never",
+                  "从不"
+                ],
+                [
+                  "at weekends",
+                  "在周末"
+                ],
+                [
+                  "Chinese chess",
+                  "中国象棋"
+                ]
+              ],
+              "knowledge": [
+                "频度副词的用法",
+                "询问周末通常做什么及回答",
+                "描述他人正在做某事"
+              ]
+            },
+            "M4U1 A Music class 音乐课": {
+              "words": [
+                [
+                  "music",
+                  "音乐"
+                ],
+                [
+                  "piano",
+                  "钢琴"
+                ],
+                [
+                  "violin",
+                  "小提琴"
+                ],
+                [
+                  "drum",
+                  "鼓"
+                ],
+                [
+                  "triangle",
+                  "三角铁"
+                ]
+              ],
+              "knowledge": [
+                "询问'你会演奏什么乐器?'及回答(can)",
+                "确认物品归属及回答"
+              ]
+            },
+            "M4U2 Festivals in China 中国节日": {
+              "words": [
+                [
+                  "festival",
+                  "节日"
+                ],
+                [
+                  "the Spring Festival",
+                  "春节"
+                ],
+                [
+                  "the Dragon Boat Festival",
+                  "端午节"
+                ],
+                [
+                  "the Mid-Autumn Festival",
+                  "中秋节"
+                ],
+                [
+                  "the Double Ninth Festival",
+                  "重阳节"
+                ],
+                [
+                  "rice dumpling",
+                  "粽子"
+                ],
+                [
+                  "mooncake",
+                  "月饼"
+                ],
+                [
+                  "red envelope",
+                  "红包"
+                ],
+                [
+                  "lantern",
+                  "灯笼"
+                ],
+                [
+                  "fireworks",
+                  "烟花"
+                ],
+                [
+                  "dragon boat race",
+                  "龙舟赛"
+                ],
+                [
+                  "relative",
+                  "亲戚"
+                ],
+                [
+                  "New Year's Eve",
+                  "除夕"
+                ]
+              ],
+              "knowledge": [
+                "节日名固定结构：the+…+Festival，the 不能省、首字母大写",
+                "介词：在某节日 at the…Festival；具体某天 On(New Year's Eve)；期间 during",
+                "look(看的动作)/see(看到的结果)/watch(全神贯注看电视、比赛、表演) 辨析",
+                "问答：What festivals do you like? / What do you do at…? 用 I/We+动词回答"
+              ]
+            },
+            "M4U3 Story time 故事时间": {
+              "words": [
+                [
+                  "duckling",
+                  "小鸭子"
+                ],
+                [
+                  "swan",
+                  "天鹅"
+                ],
+                [
+                  "nest",
+                  "鸟巢"
+                ]
+              ],
+              "knowledge": [
+                "一般现在时叙述",
+                "询问某物位置及回答",
+                "故事顺序复述"
+              ]
+            }
+          },
+          "module_sentences": {
+            "M1 句子(五感)": [
+              [
+                "What can you taste?",
+                "你能尝到什么？"
+              ],
+              [
+                "It tastes sweet.",
+                "它尝起来是甜的。"
+              ],
+              [
+                "How does it feel? It is soft.",
+                "它感觉如何？很柔软。"
+              ],
+              [
+                "Look at the shadow.",
+                "看那影子。"
+              ]
+            ],
+            "M2 句子(运动/动物/家庭)": [
+              [
+                "Do you like playing football?",
+                "你喜欢踢足球吗？"
+              ],
+              [
+                "Would you like to join us?",
+                "你想加入我们吗？"
+              ],
+              [
+                "What does it eat? It eats fish.",
+                "它吃什么？它吃鱼。"
+              ],
+              [
+                "What are you doing? I am doing my homework.",
+                "你在做什么？我在做作业。"
+              ]
+            ],
+            "M3 句子(声音/时间/星期)": [
+              [
+                "What time is it? It is half past seven.",
+                "几点了？七点半。"
+              ],
+              [
+                "I usually get up at seven o'clock.",
+                "我通常七点起床。"
+              ],
+              [
+                "We play Chinese chess at weekends.",
+                "我们周末下中国象棋。"
+              ],
+              [
+                "Be quiet!",
+                "安静！"
+              ]
+            ],
+            "M4 句子(音乐/节日/故事)": [
+              [
+                "What can you play? I can play the piano.",
+                "你会演奏什么？我会弹钢琴。"
+              ],
+              [
+                "What festivals do you like?",
+                "你喜欢什么节日？"
+              ],
+              [
+                "We eat rice dumplings at the Dragon Boat Festival.",
+                "端午节我们吃粽子。"
+              ],
+              [
+                "The ugly duckling becomes a swan.",
+                "丑小鸭变成了天鹅。"
+              ]
+            ]
+          },
+          "units_detail_note": "英文词条与重点句型清单【逐字录自该书 INDEX 索引】(核心词汇99/句型语法36)，按 INDEX 页码归入各单元；中文释义为标准义；例句为对齐句型的练习句。不含教辅独创的思维导图/解析/拓展阅读原文。"
+        }
+      }
+    },
+    "语文": {
+      "status": "待补录",
+      "note": "同系列语文（沪教版）目录拿到后补录到此处。已有弟弟三下/哥哥四下语文复习数据在 chinese_review_*_sessions.json，可与本教材单元对齐。"
+    },
+    "数学": {
+      "status": "待补录",
+      "note": "同系列数学（沪教版）目录拿到后补录到此处。"
+    }
+  },
+  "alignment_rules": [
+    "英语出题/复习/做软件：按 Module→Unit 组织，词表取自『单元词汇』，讲解对齐『解析教材』，复习题对齐『单元复习』考点，阅读对齐『拓展阅读』。",
+    "题型对齐：参照各册 INDEX『重点句型/语法』清单（3下41条、4下36条）逐条覆盖。",
+    "一课一练教法：按『解析教材划重点 → 单元复习抓考点』的节奏，一个 Unit 一练。",
+    "默写/单词软件词表：优先取自对应年级『单元词汇』与 INDEX 核心词汇。",
+    "随孩子升学，年级/教材升级由家长告知后在 child_grade_map 与 subjects 下更新。",
+    "年级升级流程（2026-07-21 起）：3下/4下内容已归档仅作模板，不再作为出题/做软件的当前依据；开学拍到新教材（弟弟4上、哥哥5上）后，按相同结构在 grades 下新增年级节点、status 置为 active，并同步更新 child_grade_map 与本文件 updated。"
+  ]
+}

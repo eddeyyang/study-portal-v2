@@ -1,0 +1,32 @@
+{
+  "child": "eddey",
+  "subject": "语文",
+  "grade": "三下",
+  "source": "apps/eddey_chinese_dictation.html 孩子端导出（爸爸端归档）",
+  "exported_at": "2026-06-19 17:14",
+  "summary": {
+    "total_sessions": 23,
+    "dictation_lessons": 15,
+    "note": "首轮全词语表默写（课11~课27 + 第八单元），整体掌握很好。多数课全对；错词集中在少数形近/多音/易混词。理解小测基本全对（第八单元一次错摧毁/唠叨，立即重做全对）。"
+  },
+  "dict_wrong_words": [
+    { "word": "适应", "pinyin": "shì yìng", "lesson": "课13 花钟", "why": "与「适宜(shì yí)」形近义近易混；注意是 yìng（第四声）。" },
+    { "word": "淡雅", "pinyin": "dàn yǎ", "lesson": "课13 花钟", "why": "「雅」字结构复杂，右边是「隹」。" },
+    { "word": "展示", "pinyin": "zhǎn shì", "lesson": "课13 花钟", "why": "「展」字下半部易写错（尸+共下加一撇）。" },
+    { "word": "沿途", "pinyin": "yán tú", "lesson": "课14 蜜蜂", "why": "「沿」右边是「㕣」非「几」；「途」走之底。" },
+    { "word": "陌生", "pinyin": "mò shēng", "lesson": "课14 蜜蜂", "why": "「陌」左耳旁+百，易与「百」「阡陌」混。" },
+    { "word": "想念", "pinyin": "xiǎng niàn", "lesson": "课17 我变成了一棵树", "why": "「念」上「今」非「令」（无点）。" },
+    { "word": "受刑", "pinyin": "shòu xíng", "lesson": "课19 剃头大师", "why": "「刑」右边立刀旁；与「形」「型」区分。" },
+    { "word": "提防", "pinyin": "dī fang", "lesson": "课25 慢性子裁缝", "why": "多音字：「提」在「提防」读 dī，不读 tí。" },
+    { "word": "窟窿", "pinyin": "kū long", "lesson": "第八单元 字词", "why": "都是穴宝盖；「窿」读轻声 long。" }
+  ],
+  "quiz_wrong_words": [
+    { "word": "摧毁", "pinyin": "cuī huǐ", "lesson": "第八单元 字词", "type": "选词填空小测", "note": "一次选错，立即重做正确。「摧」提手旁。" },
+    { "word": "唠叨", "pinyin": "láo dao", "lesson": "第八单元 字词", "type": "选词填空小测", "note": "一次选错，立即重做正确（默写时写对）。" }
+  ],
+  "all_clear_lessons": [
+    "课11 赵州桥", "课16 宇宙的另一边", "课18 童年的水墨画", "课20 肥皂泡",
+    "课22 我们奇妙的世界", "课23 海底世界", "课24 火烧云", "课27 漏", "⭐易错词回炉"
+  ],
+  "follow_up": "建成 apps/eddey_chinese_dictation_redo.html（错词重默），预置以上 11 个错词 + 形近/多音对比讲解。掌握后回填 profile_eddey 字词掌握度。"
+}

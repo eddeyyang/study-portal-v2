@@ -1,0 +1,14 @@
+{
+  "name": "study-portal-cloud-api",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "esbuild src/index.js --bundle --format=esm --platform=browser --target=es2022 --outfile=dist/worker.js"
+  },
+  "dependencies": {
+    "@neondatabase/serverless": "1.1.0"
+  },
+  "devDependencies": {
+    "esbuild": "0.28.1"
+  }
+}

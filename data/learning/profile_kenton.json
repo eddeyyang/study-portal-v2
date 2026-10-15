@@ -1,0 +1,296 @@
+{
+  "child": "kenton",
+  "name": "Kenton",
+  "updated": "2026-06-20",
+  "学习总档案": "docs/学习记忆_哥哥.md —— 长期画像/三科错题/复习规则权威总档，出题前必读",
+  "教材": {
+    "英语": "上海《尖子生笔记·同步教材》英语 四年级下（沪教版/钟书金牌）",
+    "参考": "data/learning/textbook_reference.json"
+  },
+  "summary": "2026-06-13 导入默写软件 37 次真实练习。英语词汇与句型整体扎实，语文默写量大且准；薄弱集中在语文第23课词语和英语个别单词。",
+  "subjects": {
+    "语文": {
+      "strengths": [
+        "默写量大且准（第19课11/11、第24课16/16、第27课17/17全对）",
+        "四下5-8单元复习整体优秀（13关多在90%+，古诗警句/名句/古文字义满分）"
+      ],
+      "weaknesses": [
+        "⭐默写与积累(古诗文)易错字：囊/萤/练囊/盛、乾坤(非钱坤)、冰心/玉壶、悲——五~八单元卷错最多",
+        "⭐转述句：人称(我→说话人/你→听话人)、标点(冒号引号→逗号)、语气(问句命令改陈述)、时间词(今天→那天/明天→第二天)",
+        "文学常识10组：巴金《海上日出》/叶圣陶《双龙洞》/安徒生(丹麦·世界童话之王)/雨果《诺曼底号》/王尔德《巨人的花园》",
+        "易错字音：颊jiá、刹chà、经传zhuàn、盛名shèng、不差chà、单于chán；及 彬bīn/矩jū/屑xiè/矢shǐ",
+        "易错字形：乾坤、不解之谜、壮丽、心悦诚服",
+        "名句出处《老子》易与《周易》混",
+        "形近字 履≠覆",
+        "近义辨析 焦躁不安/心急如焚、程门立雪/囊萤夜读",
+        "关联词 如果就(假设)/因为所以(因果)",
+        "课文主旨 哈尔威船长=临危不乱忠于职守",
+        "比喻句辨析(有无『像/好似+喻体』)、多义字(奇观的观=景象)",
+        "阅读主观题按点答(品质词+原文事例≥2点)、仿写连续动作、续写概括",
+        "第23课词语：顽强、惊天动地、摧毁（默写曾弱）"
+      ],
+      "knowledge_points": {
+        "易错字音(彬/矩/屑/矢)": {
+          "mastery": 72,
+          "trend": "flat",
+          "last_seen": "2026-06-14"
+        },
+        "多音字": {
+          "mastery": 90,
+          "trend": "up",
+          "last_seen": "2026-06-14"
+        },
+        "形近字(履/覆)": {
+          "mastery": 88,
+          "trend": "up",
+          "last_seen": "2026-06-14"
+        },
+        "词语意思(近义辨析)": {
+          "mastery": 85,
+          "trend": "flat",
+          "last_seen": "2026-06-14"
+        },
+        "读书求学成语": {
+          "mastery": 85,
+          "trend": "flat",
+          "last_seen": "2026-06-14"
+        },
+        "古诗警句填空": {
+          "mastery": 96,
+          "trend": "up",
+          "last_seen": "2026-06-14"
+        },
+        "名句出处(老子/周易)": {
+          "mastery": 82,
+          "trend": "flat",
+          "last_seen": "2026-06-14"
+        },
+        "关联词": {
+          "mastery": 86,
+          "trend": "flat",
+          "last_seen": "2026-06-14"
+        },
+        "文学常识": {
+          "mastery": 88,
+          "trend": "flat",
+          "last_seen": "2026-06-14"
+        },
+        "课文主旨": {
+          "mastery": 85,
+          "trend": "flat",
+          "last_seen": "2026-06-14"
+        },
+        "古文字义": {
+          "mastery": 96,
+          "trend": "up",
+          "last_seen": "2026-06-14"
+        },
+        "默写与积累(古诗文/文学常识)": {
+          "mastery": 60,
+          "trend": "flat",
+          "last_seen": "2026-06-19"
+        },
+        "复习默写错词(柔嫩/奢侈/贤惠/悲戚/临危不惧/焦躁不安/心急如焚/维持)": {
+          "mastery": 90,
+          "trend": "up",
+          "last_seen": "2026-06-20"
+        },
+        "勤学成语默写(凿壁偷光)": {
+          "mastery": 40,
+          "trend": "up",
+          "last_seen": "2026-06-20"
+        },
+        "转述句": {
+          "mastery": 70,
+          "trend": "flat",
+          "last_seen": "2026-06-19"
+        },
+        "易错字音(颊/刹/经传/盛名)": {
+          "mastery": 70,
+          "trend": "flat",
+          "last_seen": "2026-06-19"
+        },
+        "易错字形(乾坤/谜/壮丽)": {
+          "mastery": 68,
+          "trend": "flat",
+          "last_seen": "2026-06-19"
+        },
+        "比喻句辨析与多义字": {
+          "mastery": 72,
+          "trend": "flat",
+          "last_seen": "2026-06-19"
+        },
+        "阅读主观题按点答": {
+          "mastery": 68,
+          "trend": "flat",
+          "last_seen": "2026-06-19"
+        },
+        "第23课词语(顽强/惊天动地/摧毁)": {
+          "mastery": 45,
+          "trend": "up",
+          "last_seen": "2026-06-13"
+        },
+        "第14课(凄惨)": {
+          "mastery": 70,
+          "trend": "flat",
+          "last_seen": "2026-06-13"
+        },
+        "第15/16/17/19/24/26/27课默写": {
+          "mastery": 95,
+          "trend": "up",
+          "last_seen": "2026-06-13"
+        }
+      }
+    },
+    "数学": {
+      "strengths": [],
+      "weaknesses": [
+        "小数体系(意义/数位/末尾0/加减)",
+        "单位换算易忘统一单位",
+        "递等式巧算会背不会用",
+        "文字列式(增加了/增加到、几倍多少)",
+        "应用题建模找不到中间量",
+        "小数反推/逆向效率最后一步错",
+        "组合图形平移、数对方向",
+        "平均数先求总数"
+      ],
+      "note": "四下不考三视图；详见 docs/学习记忆_哥哥.md",
+      "knowledge_points": {}
+    },
+    "英语": {
+      "strengths": [
+        "词汇与句型整体扎实，多数单元小测满分",
+        "Module 1-4 单词量稳固",
+        "听力、阅读判断(T/F)相对稳"
+      ],
+      "weaknesses": [
+        "一般现在时 vs 现在进行时：标志词(usually/now/but now)切换不自动（期末卷再栽）",
+        "第三人称单数 s 与 Does/doesn't + 动词原形(has→have)",
+        "名词单复数：knife→knives 等不规则、this/these↔is/are 随单复数变",
+        "对划线部分提问/改一般疑问句：选错疑问词、语序、人称乱改",
+        "短语搭配：Let's+原形/play the+乐器/finish+doing/It's time for/否定句 any",
+        "介词：on+星期、in the morning、at home、for+名词",
+        "作文 My week：开头(My week is busy)、星期介词 on、首字母大写、拼写(Friday)、用一般现在时",
+        "M4U3：nest、swan（小测 2/3 错，默写曾对，不稳定）",
+        "M2U3：bedroom",
+        "M3U1：sound",
+        "句子：Would you like to join us?；I like the Spring Festival."
+      ],
+      "knowledge_points": {
+        "一般现在时vs现在进行时": {
+          "mastery": 60,
+          "trend": "flat",
+          "last_seen": "2026-06-16"
+        },
+        "三单s与Does/doesn't": {
+          "mastery": 62,
+          "trend": "flat",
+          "last_seen": "2026-06-16"
+        },
+        "名词单复数(knife→knives)": {
+          "mastery": 65,
+          "trend": "flat",
+          "last_seen": "2026-06-16"
+        },
+        "对划线部分提问/改疑问句": {
+          "mastery": 65,
+          "trend": "flat",
+          "last_seen": "2026-06-16"
+        },
+        "短语搭配(Let's/play the/finish doing/any)": {
+          "mastery": 68,
+          "trend": "flat",
+          "last_seen": "2026-06-16"
+        },
+        "介词on/in/at/for": {
+          "mastery": 66,
+          "trend": "flat",
+          "last_seen": "2026-06-16"
+        },
+        "作文My week": {
+          "mastery": 60,
+          "trend": "flat",
+          "last_seen": "2026-06-16"
+        },
+        "M4U3 故事时间(nest/swan)": {
+          "mastery": 55,
+          "trend": "down",
+          "last_seen": "2026-06-13"
+        },
+        "M2U3 家庭生活(bedroom)": {
+          "mastery": 80,
+          "trend": "flat",
+          "last_seen": "2026-06-13"
+        },
+        "M3U1 声音(sound)": {
+          "mastery": 80,
+          "trend": "flat",
+          "last_seen": "2026-06-13"
+        },
+        "句型默写(疑问句/节日句)": {
+          "mastery": 80,
+          "trend": "flat",
+          "last_seen": "2026-06-13"
+        },
+        "M1-M4 单词整体": {
+          "mastery": 92,
+          "trend": "up",
+          "last_seen": "2026-06-13"
+        },
+        "外教课英语(句子语序/介词by/听辨)": {
+          "mastery": 78,
+          "trend": "flat",
+          "last_seen": "2026-06-20"
+        }
+      }
+    }
+  },
+  "milestones": [
+    {
+      "date": "2026-06-13",
+      "text": "首次导入默写软件真实数据：37 次练习。英语/语文整体扎实，定位薄弱点：语文第23课词语、英语 nest/swan。"
+    },
+    {
+      "date": "2026-06-14",
+      "text": "四下5-8单元复习软件 13 关导出归档：整体优秀、无反复错题。薄弱集中在易错字音(彬/矩/屑/矢)、名句出处(老子/周易)、近义辨析。明细见 data/learning/chinese_review_kenton_sessions.json。"
+    },
+    {
+      "date": "2026-06-16",
+      "text": "导入四下英语期末复习卷(学校卷·老师批改)错题：15组，高度命中长期弱项——时态切换(usually/now)、三单s/Does、名词复数(knives)、对划线提问/改疑问句、介词on/in/at/for、作文My week。基础词汇/听力/阅读判断较稳。明细见 data/learning/english_errors_kenton_2026-06-16.json。"
+    },
+    {
+      "date": "2026-06-16",
+      "text": "英语期末考前(6.17考)存档老师 M3/M4 知识梳理(M3U1 Shapes/M3U2 Colours/M3U3 Seasons/M4U1 My body/M4U2 Children's Day)核心词汇/句型/语法，并据此+错题出考前冲刺背诵PDF。明细见 data/learning/english_m3m4_kenton.json。"
+    },
+    {
+      "date": "2026-06-19",
+      "text": "归档四下语文五~八单元试卷错题(12页)：错点集中在默写积累(囊萤夜读/芙蓉楼/墨梅/长歌行/名联/文学常识，最多)与转述句。据此出《语文期末冲刺卷》(默写/转述句加量+各类错题整合)与错题闯关软件 kenton_chinese_sprint_quiz.html。明细见 data/learning/chinese_errors_kenton_2026-06-19.json。"
+    },
+    {
+      "date": "2026-06-19",
+      "text": "复习默写软件首轮导出归档(23场)：词语/古诗文/名言整体好。家长核对确认真错词8个=柔嫩·奢侈·贤惠·悲戚·临危不惧·焦躁不安·心急如焚·维持(已入软件持久错词本,连续答对2次才移出)。注意:部分极快重默场次的标红疑似误标(字其实写对,如窟窿/爆炸),判分以家长核对为准。明细见 data/learning/dictation_kenton_review_2026-06-19.json。"
+    },
+    {
+      "date": "2026-06-20",
+      "text": "默写错词本导出归档:12词中11词已连对2次毕业(含昨日8个真错词全部攻克),仅【凿壁偷光】仍未掌握(错3次、连对0/2)。已把凿壁偷光+悬梁刺股/囊萤夜读/程门立雪做成『★仍需巩固·勤学成语』首组放进 kenton_chinese_dictation_redo.html 并种入错词本(连对2次才毕业),供继续默写。明细见 data/learning/dictation_kenton_review_2026-06-20.json。"
+    },
+    {
+      "date": "2026-06-20",
+      "text": "语文软件整合为单一《语文总复习·四下》(apps/kenton_chinese_master.html)：默写(勤学成语/复习错词8/试卷易错字词/古诗名句)+易错点小测(字音/字形/近义/文学常识,每题带讲解)+错字讲解15张+错词本(已种凿壁偷光)。删除旧语文软件7个,保留思维实验室与复习探索馆(交互标杆)。"
+    },
+    {
+      "date": "2026-06-20",
+      "text": "新建《语文表达实验室》(apps/kenton_chinese_express_lab.html)：主观题交互引导式——仿写连续动作分镜机(动词链按序拼装+自动成句)、阅读简答得分点雷达(人物品质题:品质词+原文事例≥2点)。三段式:方法→动画示范→自己做+检验。"
+    },
+    {
+      "date": "2026-06-20",
+      "text": "首次用外教课复习软件 Travel & Transport(preply-travel-vocabulary)，正确率86%(61⭐)。整体强、错少偏粗心:语序(by car放错)、缩写说全(No.→number one)、介词(by bus误填take)、听音判对错错2;发音关未练。⚠️『冠词the』那道实为考介词by(软件错因标签不准)、同义词配对2个为日志bug,均不计入掌握度。"
+    }
+  ],
+  "_schema": {
+    "knowledge_points": "形如 { \"小数除法\": { \"mastery\": 85, \"trend\": \"up|flat|down\", \"last_seen\": \"YYYY-MM-DD\" } }，mastery 为 0-100 的掌握度估计",
+    "strengths/weaknesses": "知识点名称数组，从 knowledge_points 中提炼，便于出卷时快速取用",
+    "milestones": "形如 { \"date\": \"YYYY-MM-DD\", \"text\": \"小数除法从 62% 提升到 85%\" }",
+    "原始明细": "完整逐次记录见 data/learning/dictation_kenton.json"
+  }
+}

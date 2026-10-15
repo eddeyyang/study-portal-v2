@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#fff7f0">
+<title>外教课复习 · 家庭学习门户</title>
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+<div class="wrap">
+
+  <div class="topbar">
+    <a class="back" href="index.html">‹</a>
+    <h1>🌍 外教课复习</h1>
+  </div>
+
+  <div class="card" style="background:linear-gradient(135deg,#e3fbff,#d6f3ff);border-left:8px solid var(--kenton)">
+    <div style="font-weight:800;font-size:16px;margin-bottom:6px">🗣️ 上 Preply 外教课前，5 分钟热身</div>
+    <div style="font-size:13px;color:var(--muted);line-height:1.6">
+      把上一节外教课的薄弱点变成小游戏：长按英文看中文翻译 · 真人发音跟读 · 选择题不报答案。<br>
+      Kenton 和 Eddey 各自独立存档，打开软件后先选自己。
+    </div>
+  </div>
+
+  <div id="list" class="grid">
+    <div class="empty">正在加载外教软件…</div>
+  </div>
+
+  <div class="footer-note">点一张卡片，直接打开复习，带着能说出口的句子进课堂</div>
+</div>
+
+<script>
+  async function load() {
+    const list = document.getElementById("list");
+    try {
+      const res = await fetch("data/preply.json", { cache: "no-store" });
+      const courses = await res.json();
+      if (!courses.length) {
+        list.innerHTML = '<div class="empty">还没有外教复习软件，等爸爸添加 ✨</div>';
+        return;
+      }
+      // 最新加入的排前面
+      courses.sort((a, b) => (a.added < b.added ? 1 : -1));
+      list.innerHTML = courses.map(c => `
+        <a class="app-card" style="border-left-color:var(--kenton)" href="${c.file}">
+          <span class="ico">🌍</span>
+          <span>
+            <div class="t">${c.title}${c.level ? ` <span class="tag eng">${c.level}</span>` : ""}</div>
+            <div class="meta">${c.en || ""}</div>
+            ${c.focus ? `<div class="meta">${c.focus}</div>` : ""}
+            <div class="meta">加入于 ${c.added}</div>
+          </span>
+        </a>`).join("");
+    } catch (e) {
+      list.innerHTML = '<div class="empty">外教软件清单读取失败，请稍后再试</div>';
+    }
+  }
+  load();
+</script>
+</body>
+</html>

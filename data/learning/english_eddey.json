@@ -1,0 +1,61 @@
+{
+  "child": "eddey",
+  "subject": "英语",
+  "updated": "2026-06-20",
+  "source": "英语练习软件家长页导出（家长投喂）",
+  "note": "弟弟英语学习档案主线。后续每次导出追加一个 session，并据此刷新 profile_eddey 英语知识点。",
+  "sessions": [
+    {
+      "date": "2026-06-13",
+      "topic": "房间 + 好玩的活动（rooms + fun activities）",
+      "stars": 153,
+      "accuracy": "95%",
+      "practice_days": 1,
+      "error_categories": {
+        "听音判对错": 3,
+        "句子顺序": 2,
+        "房间/家具词": 1,
+        "There is/are": 1,
+        "地道用词": 1
+      },
+      "pronunciation_counts": { "swimming": 82, "rooms": 11, "bathroom": 1, "second": 1 },
+      "pronunciation_weak": { "rooms": "40%", "bathroom": "46%" },
+      "wrong_items": [
+        { "type": "句子顺序", "q": "有很多好玩的事可以做。", "user": "There are lots to fun of things do", "correct": "There are lots of fun things to do." },
+        { "type": "句子顺序", "q": "我喜欢在泳池里游泳。", "user": "I like in the swimming pool", "correct": "I like swimming in the pool." },
+        { "type": "地道用词", "q": "I ___ English classes every week.（我每周上英语课）", "user": "have", "correct": "take" },
+        { "type": "听音判对错", "q": "There is a balcony on the second floor.", "user": "False", "correct": "True" },
+        { "type": "听音判对错", "q": "The balcony is on the first floor.", "user": "True", "correct": "False" }
+      ],
+      "teacher_note": "主题：房间+好玩活动。重点薄弱：名词复数 s、地道用词(take classes / certified in skills)、发音(rooms 40% / bathroom 46%)。建议每天 8-10 分钟，外教课前再做 5 分钟冲刺。",
+      "next_focus": "听音判对错"
+    },
+    {
+      "date": "2026-06-20",
+      "topic": "外教课复习软件 Travel & Transport（旅行+交通·should·过去式）",
+      "app": "apps/preply-travel-vocabulary.html",
+      "stars": 120,
+      "accuracy": "86%",
+      "practice_days": 1,
+      "error_categories": {
+        "旅行/交通词汇": 5,
+        "过去式": 3,
+        "句子顺序/语序": 3,
+        "听音判对错": 2,
+        "改错(语法)": 1,
+        "句子/问句(地道)": 1,
+        "同义词(⚠️软件日志问题,非真实薄弱)": 5
+      },
+      "pronunciation_counts": { "timetable": 23, "comfortable": 16, "passengers": 12, "destination": 8, "expensive": 3 },
+      "wrong_items": [
+        { "type": "句子顺序", "q": "我喜欢开车旅行。", "user": "I love by traveling car", "correct": "I love traveling by car." },
+        { "type": "句子顺序", "q": "你应该睡 8 个小时。", "user": "You should for eight sleep hours", "correct": "You should sleep for eight hours." },
+        { "type": "句子顺序", "q": "我坐公交去上学。", "user": "I take to the school bus", "correct": "I take the bus to school." },
+        { "type": "句子/问句", "q": "怎么说\"我坐公交\"最地道?", "user": "I use a bus car.", "correct": "I take the bus." }
+      ],
+      "note": "弟弟首次用外教课复习软件,正确率 86%。真实薄弱集中在【英语语序】(by 的位置/should+动词原形/take the bus 结构,错3题)、过去式、听音判对错、地道用词(take the bus 不是 use a bus car)。发音练得勤:timetable 23 次、comfortable 16 次。",
+      "software_issue": "⚠️ preply-travel-vocabulary.html 的『同义词配对』关:配错时只记录无意义的『配错/应该匹配同含义』,且累计多条假错题,污染错因统计(本次5条同义词错应剔除)。下个版本应按具体词对记录或不计入错题。家长 6/20 指出。",
+      "next_focus": "英语句子语序(by/should/take the bus 结构)"
+    }
+  ]
+}

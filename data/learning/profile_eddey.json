@@ -1,0 +1,401 @@
+{
+  "child": "eddey",
+  "name": "Eddey",
+  "updated": "2026-06-20",
+  "学习总档案": "docs/学习记忆_弟弟.md —— 长期画像/三科错题/复习规则权威总档，出题前必读",
+  "教材": {
+    "英语": "上海《尖子生笔记·同步教材》英语 三年级下（沪教版/钟书金牌）",
+    "参考": "data/learning/textbook_reference.json"
+  },
+  "summary": "2026-06-13 建立语文期末复习主线（三下，以期末复习索引为总骨架）；同日归档英语期末冲刺卷（四）错题，建立英语学情画像。各知识点掌握度待孩子练习/重做后回填。",
+  "语文复习主线": {
+    "index": "data/learning/chinese_review_eddey_grade3b.json",
+    "outline": "docs/复习大纲_eddey_语文3下.md",
+    "app": "apps/eddey_chinese_review.html",
+    "说明": "三下语文期末以此索引为出题总骨架，全覆盖默写/知识点/表达/习作四大部分。"
+  },
+  "subjects": {
+    "语文": {
+      "strengths": [],
+      "weaknesses": [
+        "⭐复述/概括故事『只答一点』：要按顺序/『谁+做了什么+结果』完整复述（《慢性子裁缝》顾客要求变化、《漏》两次都错，本次最该补）",
+        "字词个别字形：莫名其妙；颜色词等仍需巩固",
+        "转述句：『你→我』人称转换不稳（妈妈对我说：你明天要早点起床）",
+        "寻物启事：格式易漏项",
+        "阅读表达：不会按点答（原因题缺'因为…所以…'、品质题只写一点）",
+        "作文：能写但不够具体"
+      ],
+      "knowledge_points": {
+        "字词默写": {
+          "mastery": 80,
+          "trend": "up",
+          "last_seen": "2026-06-19",
+          "note": "6.19首轮全词语表默写整体好(多数课全对);易错形近/多音:适应(vs适宜)、淡雅、展示、沿途、陌生、想念、受刑、提防(dī)、窟窿、摧毁、唠叨。已配错词重默软件。"
+        },
+        "多音字辨析": {
+          "mastery": 85,
+          "trend": "up",
+          "last_seen": "2026-06-14"
+        },
+        "课文判断": {
+          "mastery": 80,
+          "trend": "up",
+          "last_seen": "2026-06-14"
+        },
+        "复述/概括故事(按点说)": {
+          "mastery": 40,
+          "trend": "down",
+          "last_seen": "2026-06-14"
+        },
+        "转述句": {
+          "mastery": 70,
+          "trend": "up",
+          "last_seen": "2026-06-14"
+        },
+        "寻物启事": {
+          "mastery": 65,
+          "trend": "flat",
+          "last_seen": "2026-06-13"
+        },
+        "阅读表达": {
+          "mastery": 50,
+          "trend": "flat",
+          "last_seen": "2026-06-13"
+        },
+        "拟声词/有趣题目": {
+          "mastery": 80,
+          "trend": "up",
+          "last_seen": "2026-06-14"
+        },
+        "作文": {
+          "mastery": 65,
+          "trend": "up",
+          "last_seen": "2026-06-14"
+        }
+      }
+    },
+    "数学": {
+      "strengths": [
+        "年月日全对(8/8)",
+        "除法/分数/典型应用题多在7/8以上"
+      ],
+      "weaknesses": [
+        "计算(竖式对位/进位/漏0)",
+        "余数单位还原(如800÷90余80元)",
+        "脱式顺序、乱用简便",
+        "应用题建模找中间量",
+        "单位量感(长度/周长/面积)",
+        "组合图形面积(拆/补/移)",
+        "线段图(少的一份→多的量)",
+        "分数意义",
+        "统计图表达",
+        "周长↔面积混淆(求周长当面积；课桌用平方分米)",
+        "元角分↔小数(5角=0.5元、3元2角=3.2元)",
+        "两位数乘两位数竖式进位/错位(34×21=714、25×16=400)",
+        "植树问题(两端都栽:棵数-1=段数，第6棵→5段→25米)",
+        "整百数除法 500÷4=125 竖式",
+        "分数大小比较(谁最大)",
+        "多位数笔算乘法(错位/进位/末尾0)：三/四位数×两位数反复错(历史周练四/六/八/九)",
+        "笔算除法含0(如30000÷5)",
+        "递等式/脱式运算顺序(先乘除后加减、带括号)+乱用简便",
+        "列式计算(文字→算式:和/差/倍/除的语序)",
+        "行程问题(路程÷速度=时间)",
+        "铺砖/归一问题(先求面积再归一)",
+        "组合/剪拼图形面积(拆补、求剩余)"
+      ],
+      "note": "校内沪教版；详见 docs/学习记忆_弟弟.md。多位数竖式乘法+脱式运算顺序+应用题建模为长期短板(历史周练四/六/八/九佐证，明细 data/learning/math_eddey_weekly_archive.json)。",
+      "knowledge_points": {
+        "年月日": {
+          "mastery": 90,
+          "trend": "up",
+          "last_seen": "2026-06-15"
+        },
+        "面积与周长(区分+单位)": {
+          "mastery": 70,
+          "trend": "flat",
+          "last_seen": "2026-06-15"
+        },
+        "一位数除法(含整百/商中间0)": {
+          "mastery": 80,
+          "trend": "flat",
+          "last_seen": "2026-06-15"
+        },
+        "分数初步(意义/加减/比较)": {
+          "mastery": 80,
+          "trend": "flat",
+          "last_seen": "2026-06-15"
+        },
+        "典型应用题(归一/植树)": {
+          "mastery": 80,
+          "trend": "flat",
+          "last_seen": "2026-06-15"
+        },
+        "小数初步(元角分↔小数)": {
+          "mastery": 70,
+          "trend": "flat",
+          "last_seen": "2026-06-15"
+        },
+        "两位数乘两位数(竖式)": {
+          "mastery": 70,
+          "trend": "flat",
+          "last_seen": "2026-06-15"
+        },
+        "多位数笔算乘法(错位/进位/末尾0)": {
+          "mastery": 60,
+          "trend": "flat",
+          "last_seen": "历史周练(无确切日期)"
+        },
+        "笔算除法(含0)": {
+          "mastery": 65,
+          "trend": "flat",
+          "last_seen": "历史周练(无确切日期)"
+        },
+        "递等式运算顺序+简便": {
+          "mastery": 60,
+          "trend": "flat",
+          "last_seen": "历史周练(无确切日期)"
+        },
+        "列式计算(文字→算式)": {
+          "mastery": 60,
+          "trend": "flat",
+          "last_seen": "历史周练(无确切日期)"
+        },
+        "行程问题": {
+          "mastery": 60,
+          "trend": "flat",
+          "last_seen": "历史周练(无确切日期)"
+        },
+        "铺砖归一/组合图形面积": {
+          "mastery": 55,
+          "trend": "flat",
+          "last_seen": "历史周练(无确切日期)"
+        }
+      }
+    },
+    "英语": {
+      "主线": "data/learning/english_eddey.json",
+      "strengths": [
+        "整体正确率高（95%）",
+        "swimming 发音已熟练（练82次）",
+        "试卷8单复数考点全对(老师表扬·进步)",
+        "试卷6听力比试卷4进步",
+        "作文句型多元化"
+      ],
+      "weaknesses": [
+        "名词复数 s（rooms 等）",
+        "英语句子语序（如 There are lots of fun things to do. / I like swimming in the pool.）",
+        "听音判对错（错最多，3题）",
+        "地道用词（take classes，不是 have）",
+        "发音 rooms(40%)、bathroom(46%)",
+        "There is / There are 区分",
+        "形容词性物主代词：she/her 混用（This is Kitty. Her dress...）",
+        "句型转换：对划线提问(What/Who)、单数改复数(strawberry→strawberries)、be动词改否定(am not)",
+        "一般疑问句应答：Do you...? 误用 Yes, I am.（应 Yes, I do.）",
+        "阅读理解：判断题不回原文找细节、问答题漏 is/不用完整句",
+        "动词搭配：like + doing（误写 I like play football）",
+        "单词拼写：合成长词 skateboard、see 误拼 cee",
+        "名词单复数错误率高：these/are 标志词会划但仍用单数(重点)",
+        "一般现在时仍有错(明天解析)",
+        "听力 oo 短音/ʊ/ 仅 good/look/book/foot/cook/wood",
+        "阅读 after class ≠ after school 要区分",
+        "作文运动动词搭配：ski/skate 等不+play"
+      ],
+      "knowledge_points": {
+        "听音判对错": {
+          "mastery": 50,
+          "trend": "flat",
+          "last_seen": "2026-06-13"
+        },
+        "英语句子语序": {
+          "mastery": 55,
+          "trend": "flat",
+          "last_seen": "2026-06-13"
+        },
+        "名词复数s": {
+          "mastery": 55,
+          "trend": "flat",
+          "last_seen": "2026-06-13"
+        },
+        "地道用词(take classes)": {
+          "mastery": 45,
+          "trend": "flat",
+          "last_seen": "2026-06-13"
+        },
+        "发音 rooms": {
+          "mastery": 40,
+          "trend": "up",
+          "last_seen": "2026-06-13"
+        },
+        "发音 bathroom": {
+          "mastery": 46,
+          "trend": "flat",
+          "last_seen": "2026-06-13"
+        },
+        "There is/are": {
+          "mastery": 65,
+          "trend": "flat",
+          "last_seen": "2026-06-13"
+        },
+        "房间/家具词": {
+          "mastery": 70,
+          "trend": "flat",
+          "last_seen": "2026-06-13"
+        },
+        "三下单元词汇拼写(家长指出错词)": {
+          "mastery": 55,
+          "trend": "flat",
+          "last_seen": "2026-06-14"
+        },
+        "名词复数(身体部位)": {
+          "mastery": 55,
+          "trend": "flat",
+          "last_seen": "2026-06-14"
+        },
+        "a/an用法": {
+          "mastery": 55,
+          "trend": "flat",
+          "last_seen": "2026-06-14"
+        },
+        "描述句型(I have/My...are)": {
+          "mastery": 55,
+          "trend": "flat",
+          "last_seen": "2026-06-14"
+        },
+        "一般现在时(含三单)": {
+          "mastery": 55,
+          "trend": "flat",
+          "last_seen": "2026-06-14"
+        },
+        "物主代词": {
+          "mastery": 50,
+          "trend": "flat",
+          "last_seen": "2026-06-13"
+        },
+        "句型转换": {
+          "mastery": 50,
+          "trend": "flat",
+          "last_seen": "2026-06-13"
+        },
+        "一般疑问句应答": {
+          "mastery": 55,
+          "trend": "flat",
+          "last_seen": "2026-06-13"
+        },
+        "阅读理解": {
+          "mastery": 60,
+          "trend": "flat",
+          "last_seen": "2026-06-13"
+        },
+        "动词搭配(like+doing)": {
+          "mastery": 50,
+          "trend": "flat",
+          "last_seen": "2026-06-13"
+        },
+        "单词拼写": {
+          "mastery": 60,
+          "trend": "flat",
+          "last_seen": "2026-06-13"
+        },
+        "写作(自我介绍)": {
+          "mastery": 55,
+          "trend": "flat",
+          "last_seen": "2026-06-14"
+        },
+        "名词单复数(标志词these/are)": {
+          "mastery": 55,
+          "trend": "down",
+          "last_seen": "2026-06-15"
+        },
+        "一般现在时": {
+          "mastery": 60,
+          "trend": "flat",
+          "last_seen": "2026-06-15"
+        },
+        "听力 oo 短音/ʊ/": {
+          "mastery": 65,
+          "trend": "up",
+          "last_seen": "2026-06-15"
+        },
+        "阅读细节(after class/school)": {
+          "mastery": 60,
+          "trend": "flat",
+          "last_seen": "2026-06-15"
+        },
+        "作文运动动词搭配(play)": {
+          "mastery": 60,
+          "trend": "flat",
+          "last_seen": "2026-06-15"
+        },
+        "一般过去时(go→went/ate)": {
+          "mastery": 55,
+          "trend": "flat",
+          "last_seen": "2026-06-20"
+        },
+        "英语语序(外教Preply:by/should+原形/take the bus)": {
+          "mastery": 52,
+          "trend": "down",
+          "last_seen": "2026-06-20"
+        }
+      }
+    }
+  },
+  "milestones": [
+    {
+      "date": "2026-06-13",
+      "text": "建立三下语文期末复习主线，上线15关'语文期末闯关王'。掌握度为基于历史错题的初估，待真实练习数据回填。"
+    },
+    {
+      "date": "2026-06-13",
+      "text": "导入首批英语练习真实数据（房间+活动主题，正确率95%）。定位薄弱：听音判对错、句子语序、名词复数s、take classes、rooms/bathroom发音。详见 english_eddey.json。"
+    },
+    {
+      "date": "2026-06-13",
+      "text": "归档英语期末冲刺卷（四）错题，建立英语学情画像。9 个错题组，重点薄弱：物主代词、句型转换、一般疑问句应答、like+doing。已生成可打印错题重做卷私发家长。"
+    },
+    {
+      "date": "2026-06-14",
+      "text": "存档 6.12 课堂 Module 4 复习内容（身体部位复数/I have描述句型/一般现在时含三单），并上线『英语 Module 4 闯关王』复习软件（5关+错题回炉，含输入自动判分与英语朗读）。"
+    },
+    {
+      "date": "2026-06-14",
+      "text": "归档三下第八单元复习 11 关：字词/多音字/课文/拟声词/作文都稳；最薄弱=复述故事『只答一点』(1/3，错2次)。明细见 data/learning/chinese_review_eddey_sessions.json。下次重点练『按顺序/谁+做了什么+结果』复述。"
+    },
+    {
+      "date": "2026-06-14",
+      "text": "英语单元默写首次导出判分存疑：导出全标'对'但家长反映实际有反复错词——默写助手原判分(只点红错词、其余默认对)不可靠。已改为对答案时每词强制点✅/❌。此次数据不计入掌握度，待用新版重默或家长提供错词后回填。"
+    },
+    {
+      "date": "2026-06-15",
+      "text": "老师课堂(试卷6解析+试卷8讲评)：进步=试卷6听力↑、试卷8单复数全对(表扬)、作文句型多元；待补=名词单复数(标志词仍用单数)、一般现在时(明天解析)、oo短音词、after class/school、运动不+play。详见 data/learning/lesson_eddey_2026-06-15.json。作业：整理试卷6错题笔记。"
+    },
+    {
+      "date": "2026-06-15",
+      "text": "数学三下冲刺9组刷题导出归档：年月日全对(8/8)，其余多在7/8。薄弱=周长↔面积混、元角分↔小数、两位数乘两位数竖式、植树问题、500÷4。明细见 data/learning/math_eddey_2026-06-15.json。"
+    },
+    {
+      "date": "2026-06-16",
+      "text": "整理在册弟弟『之前的』三下数学周练卷(卷四/六/八/九)历史错题：反复错点=多位数笔算乘法(错位/进位/末尾0)、笔算除法含0、递等式运算顺序+乱用简便、列式计算、面积↔周长、行程、铺砖归一、分数比较。与6.15冲刺卷一致——计算基本功+应用题建模两大长板。属历史卷无确切日期，仅作长期弱点佐证、不改近期趋势。明细见 data/learning/math_eddey_weekly_archive.json。"
+    },
+    {
+      "date": "2026-06-16",
+      "text": "英语期末考前(6.17考)老师复习总结存档：三单要灵活(第三人称且单数才加s，The boys复数不加)、can句独立于does、句子三态(肯定/否定/一般疑问及答)、拼写swimming pool/playground/English、听力填词预测+阅读细心。三单敏感度已高，重点提醒can≠does。已出考前冲刺背诵PDF。明细见 data/learning/lesson_eddey_2026-06-16.json。"
+    },
+    {
+      "date": "2026-06-20",
+      "text": "语文软件整合为单一《语文总复习·三下》(apps/eddey_chinese_master.html)：默写错字+易错字(含莫名其妙)、易错点小测(选词/读音/转述句,每题带讲解)、错词本(连对2次毕业)。修正『提防』多音字报读(用『堤防』替身读对dī)，『窟窿』标注轻声。删除旧语文软件5个,保留三下复习探索馆(交互标杆)。"
+    },
+    {
+      "date": "2026-06-20",
+      "text": "新建《语文表达实验室》(apps/eddey_chinese_express_lab.html)：主观题交互引导式——复述故事三步拼装机(针对最弱『复述只答一点』,点选排序+谁/做了什么/结果+口述)、阅读按点答找得分点(因为…所以…/品质+事例)。三段式:方法→动画示范→自己做+检验。"
+    },
+    {
+      "date": "2026-06-20",
+      "text": "首次用外教课复习软件 Travel & Transport(preply-travel-vocabulary)，正确率86%(120⭐)。真实薄弱=英语语序(by位置/should+动词原形/take the bus结构,错3题)、过去式、听音判对错、地道用词(take the bus≠use a bus car)；发音timetable刷23次、comfortable16次。⚠️软件『同义词配对』关5个错是日志bug(记假错题),已剔除不计入掌握度。详见 english_eddey.json 2026-06-20 session。"
+    }
+  ],
+  "_schema": {
+    "knowledge_points": "形如 { \"小数除法\": { \"mastery\": 85, \"trend\": \"up|flat|down\", \"last_seen\": \"YYYY-MM-DD\" } }，mastery 为 0-100 的掌握度估计",
+    "strengths/weaknesses": "知识点名称数组，从 knowledge_points 中提炼，便于出卷时快速取用",
+    "milestones": "形如 { \"date\": \"YYYY-MM-DD\", \"text\": \"小数除法从 62% 提升到 85%\" }"
+  }
+}

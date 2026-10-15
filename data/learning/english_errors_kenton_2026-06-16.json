@@ -1,0 +1,42 @@
+{
+  "child": "kenton",
+  "subject": "英语",
+  "date": "2026-06-16",
+  "source": "四年级下学期英语期末复习卷（学校卷·老师批改版，4 页扫描）",
+  "summary": "哥哥英语期末复习卷错题首次归档。错点高度集中在他的长期弱项上：(1) 一般现在时 vs 现在进行时切换、(2) 第三人称单数动词加 s、(3) 名词单复数变化、(4) 对划线部分提问 / 改一般疑问句、(5) 介词搭配(on/in/at/for)、(6) 作文 My week 的时态/介词/大小写/拼写。基础单词、听力和阅读判断相对稳。这卷再次印证总档结论：哥哥规则知道但考试输出不自动化，容易漏 s、漏完整成分。",
+  "privacy_note": "依 CLAUDE.md 隐私红线：试卷扫描含真实姓名等身份信息，错题原文/批改记录属敏感明细，一律不入公开仓库（真实姓名绝不记录，全程只用小名 Kenton）。本文件仅保留匿名化的知识点与错因统计，均为通用英语语法点，无姓名/学校/班级/身份信息。",
+  "legibility_note": "手写批改 + 拍照，部分笔迹偏糊。下列错题按红笔批改痕迹尽力辨认，按『题型/考点/错因』归类；个别具体作答还原标 confidence。重点是错因类别，用于针对练，不追求逐字还原。",
+  "errors": [
+    { "id": 1, "section": "用所给词的适当形式填空", "point": "名词复数不规则变化(f/fe→ves)", "type": "词法", "example": "some ___(knife) → knives", "error_desc": "knife 变复数要把 fe 改 ves，易写成 knifes/knife", "teacher_mark": "红改" },
+    { "id": 2, "section": "用所给词的适当形式填空", "point": "第三人称单数动词加 s/es + Does 引导疑问", "type": "词法/句法", "example": "___ Alice ___(play) basketball? → Does Alice play …", "error_desc": "Does + 主语 + 动词原形；三单与助动词 Does 搭配易乱", "teacher_mark": "红改" },
+    { "id": 3, "section": "用所给词的适当形式填空", "point": "一般现在时 vs 现在进行时切换", "type": "时态", "example": "My father usually ___(watch) TV …, but now he ___(read) … → watches … is reading", "error_desc": "usually 用一般现在时(watches)、now/but now 用现在进行时(is reading)，标志词没看到位", "teacher_mark": "红改", "confidence": "高" },
+    { "id": 4, "section": "用所给词的适当形式填空", "point": "否定句助动词 doesn't/isn't + 动词形式", "type": "时态/句法", "example": "Sam ___(not eat) bread now → isn't eating（now 提示进行时否定）", "error_desc": "否定句里时态与动词形式没对应到标志词 now", "teacher_mark": "红改", "confidence": "中" },
+    { "id": 5, "section": "单项选择(语法)", "point": "频率副词位置/选词", "type": "选择", "example": "Wendy doesn't like playing football. She ___ plays it. (often/never/always) → never", "error_desc": "句意是『不喜欢→几乎不玩』应选 never", "teacher_mark": "红圈", "confidence": "中" },
+    { "id": 6, "section": "单项选择(语法)", "point": "Let's + 动词原形", "type": "选择", "example": "Let's go and ___ our hands. (washing/wash/washes) → wash", "error_desc": "Let's 后用动词原形", "teacher_mark": "红圈", "confidence": "中" },
+    { "id": 7, "section": "单项选择(语法)", "point": "play + 球类(不加 the) / play the + 乐器", "type": "选择", "example": "Tom can play ___ volleyball but can't play ___ piano. → (/) ; (the)", "error_desc": "球类运动 play volleyball 不加 the；乐器 play the piano 要加 the", "teacher_mark": "红圈", "confidence": "中" },
+    { "id": 8, "section": "单项选择(语法)", "point": "some/any 在否定句", "type": "选择", "example": "There isn't ___ orange juice. (some/any) → any", "error_desc": "否定句用 any，不用 some", "teacher_mark": "红圈", "confidence": "中" },
+    { "id": 9, "section": "单项选择(语法)", "point": "finish + doing / It's time for", "type": "选择", "example": "Can I finish ___(watch) the cartoon? → watching；It's time ___ Music class → for", "error_desc": "finish 后接动名词 -ing；It's time for + 名词", "teacher_mark": "红圈", "confidence": "中" },
+    { "id": 10, "section": "句型转换 · 对划线部分提问", "point": "对时间提问 What time", "type": "句型转换", "example": "It's a quarter to five now.(划线时间) → What time is it now?", "error_desc": "对时间提问用 What time；语序 What time is it", "teacher_mark": "红改" },
+    { "id": 11, "section": "句型转换 · 对划线部分提问", "point": "对物/所属提问 What are these / Whose", "type": "句型转换", "example": "These are our pets.(划线) → What are these?（或 Whose pets are these?）", "error_desc": "this/these↔单复数 + be 动词随之变；选对疑问词", "teacher_mark": "红改", "confidence": "中" },
+    { "id": 12, "section": "句型转换 · 改一般疑问句", "point": "Does + 主语 + 动词原形", "type": "句型转换", "example": "Eddie always has breakfast at 7.(改一般疑问句) → Does Eddie have breakfast at 7 o'clock?", "error_desc": "三单变疑问句要提 Does，has 还原成 have", "teacher_mark": "红改" },
+    { "id": 13, "section": "句型转换 · 对划线部分提问", "point": "对方式提问 How / 对动作提问 What…doing", "type": "句型转换", "example": "go to school by bus → How do you go to school?；The Lis are having a picnic.(划线动作) → What are the Lis doing in the park?", "error_desc": "对方式用 How、对正在做的动作用 What…doing，并保持原句人称(对划线提问不乱改 we/you)", "teacher_mark": "红改", "confidence": "中" },
+    { "id": 14, "section": "语篇填空 · 龙舟短文", "point": "据上下文选词(名词/动词形式)", "type": "语篇/选词", "example": "a big ___ on the boat, he plays it → drum；People like ___ the boats racing → watching", "error_desc": "据短文逻辑选词；like + doing(watching)", "teacher_mark": "红圈", "confidence": "中" },
+    { "id": 15, "section": "作文 My week", "point": "题目与开头写法/介词/时态/拼写/大小写", "type": "写作", "error_desc": "开头写成 On/In this week（应为 My week is busy / In this week 写法被红改）；星期前介词 on（on Monday）、时间段 in the morning；句首与星期名首字母大写；Friday 等拼写；动词时态用一般现在时描述每周习惯。多处红改。", "teacher_mark": "整段红改", "confidence": "中" }
+  ],
+  "knowledge_points_summary": {
+    "一般现在时vs现在进行时": "靠标志词判断：usually/every day/always→一般现在时；now/look/but now→现在进行时(be+doing)。本卷 watches/is reading、isn't eating 都栽在标志词。",
+    "三单与助动词": "He/Tom/Alice 后动词加 s/es；变疑问/否定用 Does/doesn't + 动词原形(has→have)。",
+    "名词单复数": "knife→knives 等不规则；this/these、is/are 随单复数一起变。",
+    "对划线部分提问": "先判信息类型再选疑问词(What time/What/Whose/How/What…doing)；只换划线信息，原句人称(we/you)不乱改。",
+    "短语固定搭配": "Let's+原形；play+球类(不加the)/play the+乐器；finish+doing；It's time for+名词；否定句用 any。",
+    "介词": "on+星期(on Monday)、in the morning、at home、with my classmates、for+名词。",
+    "写作My week": "标题/开头规范(My week is busy/I have a busy week)、星期介词 on、首字母大写、星期拼写、用一般现在时写每周习惯。"
+  },
+  "redo_plan": {
+    "title": "Kenton · 英语期末错题专项练（待出）",
+    "format": "沿用标准模板的针对练软件(点选为主+少量🎤口说+纸上句型改写)，每题先讲『为什么错』再练，错题回炉",
+    "focus": ["现在进行时vs一般现在时(标志词)", "三单s与Does/doesn't", "名词复数knives类", "对划线提问/改一般疑问句", "介词on/in/at/for", "My week作文骨架"],
+    "delivery": "重做卷/软件按隐私红线处理；原题原文不入公开仓库",
+    "status": "计划中，下次英语优先安排"
+  }
+}

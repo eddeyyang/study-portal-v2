@@ -1,0 +1,27 @@
+{
+  "child": "eddey",
+  "subject": "英语",
+  "date": "2026-06-16",
+  "source": "老师课堂英语复习总结（试卷8解析），家长转述",
+  "context": "弟弟明天(6.17)英语期末考试。本条为考前最后一次老师复习要点。",
+  "summary": "试卷8解析 + 期末考前重点：听力(填词题靠上下文预测+语法)、阅读(细心+拼写)、语法(一般现在时三单灵活运用 / The boys 是复数不用三单 / can 句型)、作文(swimming pool、playground 拼写)。作业：查错题集+熟悉课文；重点熟悉句子结构(肯定/否定/一般疑问及回答)、一般现在时、can 句型。",
+  "review_points": [
+    { "area": "听力", "point": "填词题是失分点(其他题正确率高)", "method": "结合上下文先预测空格内容；注意填入词的语法形式(单复数/三单/时态)。" },
+    { "area": "阅读", "point": "细心 + 单词拼写", "method": "短文中往往出现正确答案原词；抄写时别拼错(例：把 English 错拼成 Englih)。" },
+    { "area": "语法-一般现在时三单", "point": "三单要灵活运用，不能机械", "method": "必须同时满足『第三人称』且『单数』才用三单加 s；缺一个就不用。句型改动里 The boys 虽是第三人称但为复数 → 动词不加 s(用原形)。" },
+    { "area": "语法-情态动词 can", "point": "can 句型结构", "method": "can + 动词原形；can 的疑问/否定与 do/does 无关——can 句用 Can…? / can't，不借助 does。⚠️Eddey 易把 can 和 does 混。" },
+    { "area": "作文", "point": "高频拼写", "method": "swimming pool(游泳池)、playground(操场/游乐场) 要拼对。" }
+  ],
+  "homework": [
+    "查阅错题集 & 熟悉课文内容",
+    "⚠️重点熟悉句子结构(肯定句 / 否定句 / 一般疑问句及回答)、一般现在时、情态动词 can 句型"
+  ],
+  "teacher_note": "近几节课复习一般现在时尤其三单较多，Eddey 现在对三单敏感度很高；但要注意 can 的句型和 does 无关，是不同语法点，需区分(别因为三单练多了就在 can 句里乱加 does/s)。",
+  "exam_priority_for_eddey": [
+    "一般现在时三单：第三人称单数才加 s；复数(The boys)不加",
+    "can 句型独立：Can you…? / I can… / I can't…，不用 does",
+    "句子结构三态：肯定 / 否定(don't/doesn't/can't) / 一般疑问及简答(Yes, I do./No, I don't. / Yes, I can./No, I can't.)",
+    "拼写：swimming pool、playground、English",
+    "听力填词预测+语法、阅读细心抄词"
+  ]
+}

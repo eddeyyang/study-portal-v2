@@ -1,0 +1,129 @@
+{
+  "child": "kenton",
+  "subject": "英语",
+  "date": "2026-06-16",
+  "source": "老师『知识梳理』复习资料 PDF（5 页：M3U1/U2/U3、M4U1/U2）",
+  "context": "哥哥明天(6.17)英语期末考试。本文件是 M3、M4 复习重点的结构化存档（核心词汇/句型/语法），用于考前冲刺与出复习文档。",
+  "textbook": "上海《尖子生笔记·同步教材》英语 四年级下（沪教/牛津版方向）",
+  "units": [
+    {
+      "unit": "M3U1",
+      "topic": "Shapes 形状",
+      "core_words": ["circle 圆形", "square 正方形", "triangle 三角形", "star 星形", "rectangle 长方形"],
+      "extra_words": ["shape 形状", "count 数", "hungry 饿的", "like 像", "side 边"],
+      "phonics": "字母组合 ff：turn off, take off",
+      "core_sentences": [
+        "I have some shapes. 我有一些(不同的)形状。",
+        "I have some small rectangles. 我有一些小长方形。",
+        "How many triangles? 多少个三角形?",
+        "What shape is your cake? 你的蛋糕是什么形状的?",
+        "It's a circle. 它是一个圆形。"
+      ],
+      "extra_sentences": [
+        "How are you today? 你今天好吗?",
+        "Very well. 很好。",
+        "A circle's like a ball. 圆形像个球。",
+        "A triangle has three sides. 一个三角形有三条边。"
+      ],
+      "grammar": [
+        "What shape is it? 询问单数物品的形状；答 It's a + 形状，表数量的 a 不能省略。",
+        "like 两种含义：①动词『喜欢』 I like dolls. ②介词『像』 He looks like his father."
+      ]
+    },
+    {
+      "unit": "M3U2",
+      "topic": "Colours 颜色",
+      "core_words": ["sky 天空", "sea 海", "mountain 山", "river 河流"],
+      "extra_words": ["rainbow 彩虹", "violet 紫罗兰色", "ant 蚂蚁", "grasshopper 蚱蜢", "outside 在外面", "plant 植物", "plate 盘子"],
+      "phonics": "cl：clothes, Clare；pl：plant, plate；gl：gloves, Gladys",
+      "core_sentences": [
+        "What colour is the sky? 天空是什么颜色的?",
+        "It's blue. 它是蓝色的。",
+        "What colour are the leaves? 树叶是什么颜色的?",
+        "They're green. 它们是绿色的。"
+      ],
+      "extra_sentences": [
+        "I like sleeping in spring and summer. 我喜欢在春天和夏天睡觉。"
+      ],
+      "grammar": [
+        "like + doing sth. 表示『喜欢做某事』。",
+        "rainbow 彩虹颜色：red, orange, yellow, green, blue, purple and violet。",
+        "区分 orange：①颜色『橙色』 ②水果『橘子;橙子』。"
+      ]
+    },
+    {
+      "unit": "M3U3",
+      "topic": "Seasons 季节",
+      "core_words": ["plant a tree 植树", "have a picnic 野餐", "ice-skate 滑冰", "ski 滑雪"],
+      "extra_words": ["season 季节", "ride a bicycle 骑自行车", "fly a kite 放风筝", "sandcastle 沙堡", "grow 生长", "shine 照耀", "July 七月"],
+      "phonics": "bl：blue, black；fl：flower, fly；sl：slowly",
+      "core_sentences": [
+        "What season is it? 是什么季节?",
+        "Is it summer? 是夏天吗?",
+        "It's warm and rainy. 天气暖和而又多雨。",
+        "We can have picnics in the park. 我们可以在公园里野餐。"
+      ],
+      "extra_sentences": [
+        "In winter, it's cold. 冬天天气寒冷。",
+        "We have hats, gloves and scarves. 我们戴上帽子、手套和围巾。",
+        "What's your favourite season? 你最喜欢的季节是什么?"
+      ],
+      "grammar": [
+        "可数名词单数不能单独使用：ride a bicycle = ride bicycles；have a picnic = have picnics。",
+        "go + doing sth. 表示『去做某事』：go ice-skating, go skiing。",
+        "情态动词 can 后接动词原形。"
+      ]
+    },
+    {
+      "unit": "M4U1",
+      "topic": "My body 身体",
+      "core_words": ["body 身体", "head 头部", "shoulder 肩膀", "arm 手臂", "hand 手", "finger 手指", "leg 腿", "knee 膝盖", "foot 脚"],
+      "extra_words": ["myself 我自己", "yourself 你自己", "easy 容易的", "stretch 伸展", "raise 举起", "stamp 跺(脚)", "clap 拍(手)"],
+      "core_sentences": [
+        "I have a big head and a big body. 我有一个大头和大的身体。",
+        "My nose is small. 我的鼻子小的。"
+      ],
+      "extra_sentences": [
+        "Can you draw yourself? 你能画出你自己吗?",
+        "These are my eyes. 这些是我的眼睛。",
+        "How funny! 太有趣了!",
+        "Raise your hands. 举起你的双手。"
+      ],
+      "grammar": [
+        "身体部位名词的复数在词尾加 -s，只有 foot 变为 feet。",
+        "Yes, of course. 强调理所当然，比 Yes, I can. 语气更肯定。"
+      ]
+    },
+    {
+      "unit": "M4U2",
+      "topic": "Children's Day 儿童节",
+      "core_words": ["park 公园", "cinema 电影院", "zoo 动物园"],
+      "extra_words": ["the first of June 六月一日", "photograph 照片", "the UK 英国", "middle 中间;中部", "Singapore 新加坡", "October 十月", "Thailand 泰国", "the third of March 三月三日", "the fifth of May 五月五日", "catch 接球游戏", "second 第二", "January 一月", "Japan 日本"],
+      "core_sentences": [
+        "What do you do on Children's Day? 你在儿童节做什么?",
+        "I go to the cinema. 我去电影院。",
+        "Do you have a class party on Children's Day? 你们儿童节举行班级聚会吗?"
+      ],
+      "extra_sentences": [
+        "Happy Children's Day! 儿童节快乐!",
+        "In the afternoon, I go to the park with my parents. 下午，我和父母去公园。",
+        "In China, Children's Day is on the first of June. 在中国，儿童节在六月一日。",
+        "Everyone is having fun. 每个人都玩得开心。"
+      ],
+      "grammar": [
+        "with sb. 表示『和某人一起』。",
+        "时间介词 on 用在有具体日期的节日前：on Children's Day, on Mother's Day, on New Year's Day。"
+      ]
+    }
+  ],
+  "exam_priority_for_kenton": [
+    "一般现在时 vs 现在进行时(usually→watches/now→is reading) + 三单 s/Does/doesn't(has→have)",
+    "可数名词单复数：a+单数不可省、foot→feet、单数不能单独用(have picnics)",
+    "What shape/colour is/are…? 单复数对应 is/are；对划线提问选对疑问词",
+    "like 的动词/介词两义 + like/go + doing",
+    "情态动词 can + 动词原形",
+    "时间介词 on + 具体日期/节日；with sb.；介词 on/in/at/for",
+    "作文：My week / My body / Children's Day 句型与介词、首字母大写、拼写(Friday/swimming pool/playground)"
+  ],
+  "note": "本卷为老师 M3/M4 知识梳理(思维导图)。M4U3 不在本资料内(此前 nest/swan 等见 profile)。"
+}

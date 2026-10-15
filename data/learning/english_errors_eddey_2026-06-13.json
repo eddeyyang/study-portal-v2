@@ -1,0 +1,56 @@
+{
+  "child": "eddey",
+  "subject": "英语",
+  "date": "2026-06-13",
+  "source": "期末满分冲刺卷（四）· 老师批改版",
+  "summary": "弟弟英语期末冲刺卷错题首次归档。共 9 个错题组，主要薄弱点：物主代词(she→her)、句型转换(对划线提问/改复数/改否定)、一般疑问句应答、阅读细节判断、like+doing、合成词拼写。已生成可打印『错题重做卷』（错因分析+原题重现+每题两道类似题），按隐私红线私发家长、未入公开仓库。",
+  "privacy_note": "依 CLAUDE.md 隐私红线：错题原文/批改记录属敏感明细，不入公开仓库。本文件仅保留匿名化的知识点与错因统计（均为通用英语语法点，无姓名/学校/身份信息）。可打印重做卷通过会话私发家长留存。",
+  "errors": [
+    { "id": 1, "section": "看图写单词", "point": "合成长词拼写", "type": "拼写", "target_word": "skateboard", "error_desc": "滑板拼写错误（skate+board 合成词易漏字母）", "teacher_mark": "红 ✗" },
+    { "id": 2, "section": "用所给词适当形式填空", "point": "形容词性物主代词", "type": "词法", "right": "Her", "wrong": "She", "error_desc": "Kitty 是女生，修饰名词应用 her 而非主格 she", "teacher_mark": "红改 Her" },
+    { "id": 3, "section": "对划线部分提问", "point": "What 引导特殊疑问句 + 拼写", "type": "句型转换", "right": "What can we see in summer?", "error_desc": "对物提问用 What；see 误拼为 cee", "teacher_mark": "红圈" },
+    { "id": 4, "section": "单数改复数", "point": "名词复数(辅音+y→ies) / This→These / is→are", "type": "句型转换", "right": "These are red strawberries.", "error_desc": "复数转换三处未全变到位", "teacher_mark": "红改" },
+    { "id": 5, "section": "改否定句", "point": "be 动词否定 am not", "type": "句型转换", "right": "I am not fat.", "error_desc": "am 后加 not（疑似，字迹偏糊，已对照核对）", "teacher_mark": "红改", "confidence": "中" },
+    { "id": 6, "section": "听录音/选择应答句", "point": "一般疑问句 Do you...? 的应答", "type": "句法", "right": "Yes, I do. / No, I don't.", "wrong": "Yes, I am.", "error_desc": "用 am 回答 Do you 问句", "teacher_mark": "红 ✗" },
+    { "id": 7, "section": "阅读判断(T/F)", "point": "阅读细节理解", "type": "阅读", "right": "F", "error_desc": "短文中两人都说 I like them(oranges)，'不喜欢橘子'应判 F", "teacher_mark": "红圈" },
+    { "id": 8, "section": "阅读问答", "point": "Who 问句完整句作答", "type": "阅读", "right": "Peter is happy.", "error_desc": "漏写 is（写成 Peters happy）", "teacher_mark": "红改" },
+    { "id": 9, "section": "看图写话/作文", "point": "like + doing；句子结构与顺序", "type": "写作", "right": "I like playing football.", "error_desc": "like 后接动词应用 -ing；并有句序混乱、表达重复(Me I'm nine)", "teacher_mark": "整段红改" }
+  ],
+  "knowledge_points_summary": {
+    "物主代词": "she/her 混用，需强化 my/your/his/her/its/our/their + 名词",
+    "句型转换": "对划线提问(What/Who)、单数改复数、be 动词改否定 三类都易错",
+    "一般疑问句应答": "Do you...? 用 do/don't；Are you...? 才用 am",
+    "阅读理解": "判断/问答需回原文找细节、用完整句作答",
+    "动词搭配": "like + doing（动名词）",
+    "单词拼写": "合成长词(skateboard)、see 等基础词需稳"
+  },
+  "redo_sheet": {
+    "title": "弟弟 Eddey · 英语期末错题重做卷",
+    "format": "A4 可打印 PDF + HTML（错因分析 + 原题重现 + 每题两道类似题 + 家长核对答案页）",
+    "delivery": "依隐私红线未入公开仓库，已于 2026-06-13 通过会话私发家长。",
+    "groups": 9
+  },
+  "learning_log": [
+    {
+      "date": "2026-06-12",
+      "module": "Module 4 复习",
+      "title": "Module 4 重点语法句型（课堂学习内容存档）",
+      "points": [
+        {
+          "name": "身体部位名词的复数变化",
+          "detail": "通常以复数出现的身体部位：eyes, ears, shoulders, legs, knees。特殊变化：foot → feet。例：My feet are big."
+        },
+        {
+          "name": "描述身体部位的句型",
+          "detail": "I have + a/an + 形容词 + 单数身体部位（I have a big head. / I have a small nose.）；I have + 形容词 + 复数身体部位（I have big hands. / I have long legs.）；或 My hands are big. 句型。"
+        },
+        {
+          "name": "一般现在时（含三单切换）",
+          "detail": "I go to the park/cinema/zoo. / Do you go…? / What do you do? 切换到三单：Alice goes to the park. / Does she go…? / What does she do?"
+        }
+      ],
+      "app": "apps/eddey_english_review.html",
+      "note": "本条为 6.12 课堂复习内容存档，并据此做出『英语 Module 4 闯关王』复习软件（5 关 + 错题回炉，含输入自动判分/英语朗读/计时/记录导出）。"
+    }
+  ]
+}

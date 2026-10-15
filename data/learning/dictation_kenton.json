@@ -1,0 +1,1816 @@
+{
+  "child": "kenton",
+  "source": "默写软件（输出爆破 / apps/kenton_day11_output.html）",
+  "updated": "2026-06-13",
+  "note": "孩子端在平板本地练习后导出，由爸爸端投喂归档。后续每次导出追加一个 session。",
+  "sessions": [
+    {
+      "export_date": "2026-06-13 13:00",
+      "total_practices": 37,
+      "raw": {
+        "child": "哥哥",
+        "events": [
+          {
+            "ts": 1781319943022,
+            "type": "dict",
+            "subject": "en",
+            "lesson": "M3U3 星期",
+            "total": 1,
+            "wrong": 0,
+            "durationSec": 266,
+            "items": [
+              {
+                "word": "Chinese chess",
+                "hint": "中国象棋",
+                "ok": true,
+                "ms": 12002
+              }
+            ]
+          },
+          {
+            "ts": 1781320022618,
+            "type": "dict",
+            "subject": "en",
+            "lesson": "M4U1 音乐课",
+            "total": 5,
+            "wrong": 0,
+            "durationSec": 74,
+            "items": [
+              {
+                "word": "piano",
+                "hint": "钢琴",
+                "ok": true,
+                "ms": 9501
+              },
+              {
+                "word": "violin",
+                "hint": "小提琴",
+                "ok": true,
+                "ms": 9508
+              },
+              {
+                "word": "triangle",
+                "hint": "三角铁",
+                "ok": true,
+                "ms": 9501
+              },
+              {
+                "word": "drum",
+                "hint": "鼓",
+                "ok": true,
+                "ms": 9503
+              },
+              {
+                "word": "music",
+                "hint": "音乐",
+                "ok": true,
+                "ms": 9504
+              }
+            ]
+          },
+          {
+            "ts": 1781320245523,
+            "type": "dict",
+            "subject": "en",
+            "lesson": "M4U2 中国节日",
+            "total": 6,
+            "wrong": 0,
+            "durationSec": 147,
+            "items": [
+              {
+                "word": "the Spring Festival",
+                "hint": "春节",
+                "ok": true,
+                "ms": 12004
+              },
+              {
+                "word": "the Dragon Boat Festival",
+                "hint": "端午节",
+                "ok": true,
+                "ms": 29006
+              },
+              {
+                "word": "the Mid-Autumn Festival",
+                "hint": "中秋节",
+                "ok": true,
+                "ms": 12006
+              },
+              {
+                "word": "the Double Ninth Festival",
+                "hint": "重阳节",
+                "ok": true,
+                "ms": 12003
+              },
+              {
+                "word": "festival",
+                "hint": "节日",
+                "ok": true,
+                "ms": 33756
+              },
+              {
+                "word": "rice dumpling",
+                "hint": "粽子",
+                "ok": true,
+                "ms": 12007
+              }
+            ]
+          },
+          {
+            "ts": 1781320357523,
+            "type": "dict",
+            "subject": "en",
+            "lesson": "M4U3 故事时间",
+            "total": 3,
+            "wrong": 0,
+            "durationSec": 22,
+            "items": [
+              {
+                "word": "duckling",
+                "hint": "小鸭子",
+                "ok": true,
+                "ms": 7229
+              },
+              {
+                "word": "swan",
+                "hint": "天鹅",
+                "ok": true,
+                "ms": 4746
+              },
+              {
+                "word": "nest",
+                "hint": "鸟巢",
+                "ok": true,
+                "ms": 4767
+              }
+            ]
+          },
+          {
+            "ts": 1781320409074,
+            "type": "quiz",
+            "subject": "en",
+            "lesson": "M1U1 水果与味道",
+            "total": 6,
+            "wrong": 0,
+            "durationSec": 23,
+            "items": [
+              {
+                "word": "a glass of juice",
+                "hint": "一杯果汁",
+                "ok": true,
+                "ms": 0
+              },
+              {
+                "word": "strawberry",
+                "hint": "草莓",
+                "ok": true,
+                "ms": 0
+              },
+              {
+                "word": "grape",
+                "hint": "葡萄",
+                "ok": true,
+                "ms": 0
+              },
+              {
+                "word": "cherry",
+                "hint": "樱桃",
+                "ok": true,
+                "ms": 0
+              },
+              {
+                "word": "watermelon",
+                "hint": "西瓜",
+                "ok": true,
+                "ms": 0
+              },
+              {
+                "word": "plum",
+                "hint": "李子",
+                "ok": true,
+                "ms": 0
+              }
+            ]
+          },
+          {
+            "ts": 1781320440855,
+            "type": "quiz",
+            "subject": "en",
+            "lesson": "M1U2 触感",
+            "total": 8,
+            "wrong": 0,
+            "durationSec": 26,
+            "items": [
+              {
+                "word": "hard",
+                "hint": "硬的",
+                "ok": true,
+                "ms": 0
+              },
+              {
+                "word": "thick",
+                "hint": "厚的",
+                "ok": true,
+                "ms": 0
+              },
+              {
+                "word": "knife",
+                "hint": "小刀",
+                "ok": true,
+                "ms": 0
+              },
+              {
+                "word": "rough",
+                "hint": "粗糙的",
+                "ok": true,
+                "ms": 0
+              },
+              {
+                "word": "soft",
+                "hint": "软的",
+                "ok": true,
+                "ms": 0
+              },
+              {
+                "word": "thin",
+                "hint": "薄的",
+                "ok": true,
+                "ms": 0
+              },
+              {
+                "word": "pencil case",
+                "hint": "铅笔盒",
+                "ok": true,
+                "ms": 0
+              },
+              {
+                "word": "blunt",
+                "hint": "钝的",
+                "ok": true,
+                "ms": 0
+              }
+            ]
+          },
+          {
+            "ts": 1781320473694,
+            "type": "quiz",
+            "subject": "en",
+            "lesson": "M1U3 影子",
+            "total": 8,
+            "wrong": 0,
+            "durationSec": 26,
+            "items": [
+              {
+                "word": "at noon",
+                "hint": "在中午",
+                "ok": true,
+                "ms": 0
+              },
+              {
+                "word": "path",
+                "hint": "小路",
+                "ok": true,
+                "ms": 0
+              },
+              {
+                "word": "bench",
+                "hint": "长椅",
+                "ok": true,
+                "ms": 0
+              },
+              {
+                "word": "lawn",
+                "hint": "草坪",
+                "ok": true,
+                "ms": 0
+              },
+              {
+                "word": "rise",
+                "hint": "升起",
+                "ok": true,
+                "ms": 0
+              },
+              {
+                "word": "shadow",
+                "hint": "影子",
+                "ok": true,
+                "ms": 0
+              },
+              {
+                "word": "hill",
+                "hint": "小山",
+                "ok": true,
+                "ms": 0
+              },
+              {
+                "word": "high",
+                "hint": "高的",
+                "ok": true,
+                "ms": 0
+              }
+            ]
+          },
+          {
+            "ts": 1781320508233,
+            "type": "quiz",
+            "subject": "en",
+            "lesson": "M2U1 运动",
+            "total": 8,
+            "wrong": 0,
+            "durationSec": 26,
+            "items": [
+              {
+                "word": "poster",
+                "hint": "海报",
+                "ok": true,
+                "ms": 0
+              },
+              {
+                "word": "sport",
+                "hint": "运动",
+                "ok": true,
+                "ms": 0
+              },
+              {
+                "word": "play badminton",
+                "hint": "打羽毛球",
+                "ok": true,
+                "ms": 0
+              },
+              {
+                "word": "play table tennis",
+                "hint": "打乒乓球",
+                "ok": true,
+                "ms": 0
+              },
+              {
+                "word": "play football",
+                "hint": "踢足球",
+                "ok": true,
+                "ms": 0
+              },
+              {
+                "word": "play basketball",
+                "hint": "打篮球",
+                "ok": true,
+                "ms": 0
+              },
+              {
+                "word": "play volleyball",
+                "hint": "打排球",
+                "ok": true,
+                "ms": 0
+              },
+              {
+                "word": "join",
+                "hint": "加入",
+                "ok": true,
+                "ms": 0
+              }
+            ]
+          },
+          {
+            "ts": 1781320545775,
+            "type": "quiz",
+            "subject": "en",
+            "lesson": "M2U2 可爱动物",
+            "total": 7,
+            "wrong": 0,
+            "durationSec": 25,
+            "items": [
+              {
+                "word": "fish",
+                "hint": "鱼",
+                "ok": true,
+                "ms": 0
+              },
+              {
+                "word": "tortoise",
+                "hint": "乌龟",
+                "ok": true,
+                "ms": 0
+              },
+              {
+                "word": "cute",
+                "hint": "可爱的",
+                "ok": true,
+                "ms": 0
+              },
+              {
+                "word": "cat food",
+                "hint": "猫粮",
+                "ok": true,
+                "ms": 0
+              },
+              {
+                "word": "parrot",
+                "hint": "鹦鹉",
+                "ok": true,
+                "ms": 0
+              },
+              {
+                "word": "dog food",
+                "hint": "狗粮",
+                "ok": true,
+                "ms": 0
+              },
+              {
+                "word": "bone",
+                "hint": "骨头",
+                "ok": true,
+                "ms": 0
+              }
+            ]
+          },
+          {
+            "ts": 1781320582754,
+            "type": "quiz",
+            "subject": "en",
+            "lesson": "M2U3 家庭生活",
+            "total": 8,
+            "wrong": 1,
+            "durationSec": 32,
+            "items": [
+              {
+                "word": "dinner",
+                "hint": "晚餐",
+                "ok": true,
+                "ms": 0
+              },
+              {
+                "word": "living room",
+                "hint": "客厅",
+                "ok": true,
+                "ms": 0
+              },
+              {
+                "word": "bedroom",
+                "hint": "卧室",
+                "ok": false,
+                "ms": 0
+              },
+              {
+                "word": "bathroom",
+                "hint": "浴室",
+                "ok": true,
+                "ms": 0
+              },
+              {
+                "word": "wash",
+                "hint": "洗",
+                "ok": true,
+                "ms": 0
+              },
+              {
+                "word": "model plane",
+                "hint": "飞机模型",
+                "ok": true,
+                "ms": 0
+              },
+              {
+                "word": "kitchen",
+                "hint": "厨房",
+                "ok": true,
+                "ms": 0
+              },
+              {
+                "word": "homework",
+                "hint": "家庭作业",
+                "ok": true,
+                "ms": 0
+              }
+            ]
+          },
+          {
+            "ts": 1781320622558,
+            "type": "quiz",
+            "subject": "en",
+            "lesson": "M3U1 声音",
+            "total": 8,
+            "wrong": 1,
+            "durationSec": 32,
+            "items": [
+              {
+                "word": "loud",
+                "hint": "响亮的",
+                "ok": true,
+                "ms": 0
+              },
+              {
+                "word": "quiet",
+                "hint": "安静的",
+                "ok": true,
+                "ms": 0
+              },
+              {
+                "word": "noisy",
+                "hint": "吵闹的",
+                "ok": true,
+                "ms": 0
+              },
+              {
+                "word": "television",
+                "hint": "电视",
+                "ok": true,
+                "ms": 0
+              },
+              {
+                "word": "bell",
+                "hint": "铃",
+                "ok": true,
+                "ms": 0
+              },
+              {
+                "word": "ring",
+                "hint": "响铃",
+                "ok": true,
+                "ms": 0
+              },
+              {
+                "word": "watch TV",
+                "hint": "看电视",
+                "ok": true,
+                "ms": 0
+              },
+              {
+                "word": "sound",
+                "hint": "声音",
+                "ok": false,
+                "ms": 0
+              }
+            ]
+          },
+          {
+            "ts": 1781320727145,
+            "type": "quiz",
+            "subject": "en",
+            "lesson": "M3U2 时间",
+            "total": 8,
+            "wrong": 0,
+            "durationSec": 45,
+            "items": [
+              {
+                "word": "half past seven",
+                "hint": "七点半",
+                "ok": true,
+                "ms": 0
+              },
+              {
+                "word": "brush my teeth",
+                "hint": "刷牙",
+                "ok": true,
+                "ms": 0
+              },
+              {
+                "word": "have breakfast",
+                "hint": "吃早餐",
+                "ok": true,
+                "ms": 0
+              },
+              {
+                "word": "wash my face",
+                "hint": "洗脸",
+                "ok": true,
+                "ms": 0
+              },
+              {
+                "word": "seven o'clock",
+                "hint": "七点钟",
+                "ok": true,
+                "ms": 0
+              },
+              {
+                "word": "get up",
+                "hint": "起床",
+                "ok": true,
+                "ms": 0
+              },
+              {
+                "word": "a quarter past seven",
+                "hint": "七点一刻",
+                "ok": true,
+                "ms": 0
+              },
+              {
+                "word": "a quarter to eight",
+                "hint": "差一刻八点",
+                "ok": true,
+                "ms": 0
+              }
+            ]
+          },
+          {
+            "ts": 1781320821583,
+            "type": "quiz",
+            "subject": "en",
+            "lesson": "M3U3 星期",
+            "total": 8,
+            "wrong": 0,
+            "durationSec": 29,
+            "items": [
+              {
+                "word": "often",
+                "hint": "经常",
+                "ok": true,
+                "ms": 0
+              },
+              {
+                "word": "at weekends",
+                "hint": "在周末",
+                "ok": true,
+                "ms": 0
+              },
+              {
+                "word": "Saturday",
+                "hint": "星期六",
+                "ok": true,
+                "ms": 0
+              },
+              {
+                "word": "Friday",
+                "hint": "星期五",
+                "ok": true,
+                "ms": 0
+              },
+              {
+                "word": "Wednesday",
+                "hint": "星期三",
+                "ok": true,
+                "ms": 0
+              },
+              {
+                "word": "Monday",
+                "hint": "星期一",
+                "ok": true,
+                "ms": 0
+              },
+              {
+                "word": "Thursday",
+                "hint": "星期四",
+                "ok": true,
+                "ms": 0
+              },
+              {
+                "word": "Chinese chess",
+                "hint": "中国象棋",
+                "ok": true,
+                "ms": 0
+              }
+            ]
+          },
+          {
+            "ts": 1781321069244,
+            "type": "dict",
+            "subject": "en",
+            "lesson": "M1 句子(感官)",
+            "total": 8,
+            "wrong": 0,
+            "durationSec": 220,
+            "items": [
+              {
+                "word": "Is it a grape or a plum?",
+                "hint": "它是葡萄还是李子?",
+                "ok": true,
+                "ms": 29752
+              },
+              {
+                "word": "Do you like apples or bananas?",
+                "hint": "你喜欢苹果还是香蕉?",
+                "ok": true,
+                "ms": 16502
+              },
+              {
+                "word": "Yes, you are right.",
+                "hint": "对,你说得对。",
+                "ok": true,
+                "ms": 16009
+              },
+              {
+                "word": "What's this? It's a knife.",
+                "hint": "这是什么?是一把小刀。",
+                "ok": true,
+                "ms": 16001
+              },
+              {
+                "word": "It's hard and smooth.",
+                "hint": "它又硬又光滑。",
+                "ok": true,
+                "ms": 16016
+              },
+              {
+                "word": "Please look and guess.",
+                "hint": "请看一看,猜一猜。",
+                "ok": true,
+                "ms": 15998
+              },
+              {
+                "word": "The sun rises behind the hill.",
+                "hint": "太阳从小山后面升起。",
+                "ok": true,
+                "ms": 16502
+              },
+              {
+                "word": "Whose shadow is this? It's Danny's.",
+                "hint": "这是谁的影子?是丹尼的。",
+                "ok": true,
+                "ms": 24254
+              }
+            ]
+          },
+          {
+            "ts": 1781321451261,
+            "type": "dict",
+            "subject": "en",
+            "lesson": "M2 句子(爱好)",
+            "total": 9,
+            "wrong": 1,
+            "durationSec": 377,
+            "items": [
+              {
+                "word": "Does she like playing football?",
+                "hint": "她喜欢踢足球吗?",
+                "ok": true,
+                "ms": 17507
+              },
+              {
+                "word": "Yes, she does.",
+                "hint": "是的,她喜欢。",
+                "ok": true,
+                "ms": 15233
+              },
+              {
+                "word": "She often plays badminton with me.",
+                "hint": "她经常和我打羽毛球。",
+                "ok": true,
+                "ms": 18010
+              },
+              {
+                "word": "Would you like to join us?",
+                "hint": "你想加入我们吗?",
+                "ok": false,
+                "ms": 23752
+              },
+              {
+                "word": "Sure. I'd love to.",
+                "hint": "当然,我很乐意。",
+                "ok": true,
+                "ms": 29006
+              },
+              {
+                "word": "What does it eat? It eats fish.",
+                "hint": "它吃什么?它吃鱼。",
+                "ok": true,
+                "ms": 16498
+              },
+              {
+                "word": "There is a parrot in the room.",
+                "hint": "房间里有一只鹦鹉。",
+                "ok": true,
+                "ms": 19003
+              },
+              {
+                "word": "What are you doing? I am doing my homework.",
+                "hint": "你在做什么?我在做作业。",
+                "ok": true,
+                "ms": 19505
+              },
+              {
+                "word": "Come and help me.",
+                "hint": "来帮帮我。",
+                "ok": true,
+                "ms": 16003
+              }
+            ]
+          },
+          {
+            "ts": 1781321653402,
+            "type": "dict",
+            "subject": "en",
+            "lesson": "M3 句子(时间)",
+            "total": 8,
+            "wrong": 0,
+            "durationSec": 196,
+            "items": [
+              {
+                "word": "Be careful. Be quiet.",
+                "hint": "小心。安静。",
+                "ok": true,
+                "ms": 16009
+              },
+              {
+                "word": "There are two bells.",
+                "hint": "有两个铃。",
+                "ok": true,
+                "ms": 16005
+              },
+              {
+                "word": "What time is it? It's half past seven.",
+                "hint": "几点了?七点半。",
+                "ok": true,
+                "ms": 18004
+              },
+              {
+                "word": "It's time for breakfast.",
+                "hint": "该吃早餐了。",
+                "ok": true,
+                "ms": 15999
+              },
+              {
+                "word": "I get up at seven o'clock.",
+                "hint": "我七点钟起床。",
+                "ok": true,
+                "ms": 16001
+              },
+              {
+                "word": "Peter goes to school from Monday to Friday.",
+                "hint": "彼得周一到周五上学。",
+                "ok": true,
+                "ms": 20001
+              },
+              {
+                "word": "We play Chinese chess at weekends.",
+                "hint": "我们周末下中国象棋。",
+                "ok": true,
+                "ms": 18003
+              },
+              {
+                "word": "I usually watch TV on Sunday.",
+                "hint": "我通常周日看电视。",
+                "ok": true,
+                "ms": 16507
+              }
+            ]
+          },
+          {
+            "ts": 1781322068581,
+            "type": "dict",
+            "subject": "en",
+            "lesson": "M4 句子(节日故事)",
+            "total": 10,
+            "wrong": 1,
+            "durationSec": 403,
+            "items": [
+              {
+                "word": "What can you play? I can play the piano.",
+                "hint": "你会演奏什么?我会弹钢琴。",
+                "ok": true,
+                "ms": 18503
+              },
+              {
+                "word": "Whose violin is it?",
+                "hint": "这是谁的小提琴?",
+                "ok": true,
+                "ms": 16004
+              },
+              {
+                "word": "What festivals do you like?",
+                "hint": "你喜欢什么节日?",
+                "ok": true,
+                "ms": 16003
+              },
+              {
+                "word": "I like the Spring Festival.",
+                "hint": "我喜欢春节。",
+                "ok": false,
+                "ms": 16012
+              },
+              {
+                "word": "What do you usually do at the Spring Festival?",
+                "hint": "春节你通常做什么?",
+                "ok": true,
+                "ms": 21002
+              },
+              {
+                "word": "We eat rice dumplings at the Dragon Boat Festival.",
+                "hint": "端午节我们吃粽子。",
+                "ok": true,
+                "ms": 21998
+              },
+              {
+                "word": "That's right.",
+                "hint": "没错。",
+                "ok": true,
+                "ms": 16012
+              },
+              {
+                "word": "Mother Duck is making a nest.",
+                "hint": "鸭妈妈正在筑巢。",
+                "ok": true,
+                "ms": 16504
+              },
+              {
+                "word": "She has five eggs.",
+                "hint": "她有五个蛋。",
+                "ok": true,
+                "ms": 16001
+              },
+              {
+                "word": "Mother Duck sits on the nest.",
+                "hint": "鸭妈妈坐在巢上。",
+                "ok": true,
+                "ms": 16501
+              }
+            ]
+          },
+          {
+            "ts": 1781322151819,
+            "type": "quiz",
+            "subject": "en",
+            "lesson": "M3U3 星期",
+            "total": 8,
+            "wrong": 0,
+            "durationSec": 33,
+            "items": [
+              {
+                "word": "Chinese chess",
+                "hint": "中国象棋",
+                "ok": true,
+                "ms": 0
+              },
+              {
+                "word": "Thursday",
+                "hint": "星期四",
+                "ok": true,
+                "ms": 0
+              },
+              {
+                "word": "Saturday",
+                "hint": "星期六",
+                "ok": true,
+                "ms": 0
+              },
+              {
+                "word": "sometimes",
+                "hint": "有时",
+                "ok": true,
+                "ms": 0
+              },
+              {
+                "word": "Friday",
+                "hint": "星期五",
+                "ok": true,
+                "ms": 0
+              },
+              {
+                "word": "always",
+                "hint": "总是",
+                "ok": true,
+                "ms": 0
+              },
+              {
+                "word": "Tuesday",
+                "hint": "星期二",
+                "ok": true,
+                "ms": 0
+              },
+              {
+                "word": "Sunday",
+                "hint": "星期日",
+                "ok": true,
+                "ms": 0
+              }
+            ]
+          },
+          {
+            "ts": 1781322175156,
+            "type": "quiz",
+            "subject": "en",
+            "lesson": "M4U1 音乐课",
+            "total": 5,
+            "wrong": 0,
+            "durationSec": 13,
+            "items": [
+              {
+                "word": "triangle",
+                "hint": "三角铁",
+                "ok": true,
+                "ms": 0
+              },
+              {
+                "word": "music",
+                "hint": "音乐",
+                "ok": true,
+                "ms": 0
+              },
+              {
+                "word": "violin",
+                "hint": "小提琴",
+                "ok": true,
+                "ms": 0
+              },
+              {
+                "word": "piano",
+                "hint": "钢琴",
+                "ok": true,
+                "ms": 0
+              },
+              {
+                "word": "drum",
+                "hint": "鼓",
+                "ok": true,
+                "ms": 0
+              }
+            ]
+          },
+          {
+            "ts": 1781322202175,
+            "type": "quiz",
+            "subject": "en",
+            "lesson": "M4U2 中国节日",
+            "total": 6,
+            "wrong": 0,
+            "durationSec": 22,
+            "items": [
+              {
+                "word": "the Mid-Autumn Festival",
+                "hint": "中秋节",
+                "ok": true,
+                "ms": 0
+              },
+              {
+                "word": "rice dumpling",
+                "hint": "粽子",
+                "ok": true,
+                "ms": 0
+              },
+              {
+                "word": "the Double Ninth Festival",
+                "hint": "重阳节",
+                "ok": true,
+                "ms": 0
+              },
+              {
+                "word": "festival",
+                "hint": "节日",
+                "ok": true,
+                "ms": 0
+              },
+              {
+                "word": "the Dragon Boat Festival",
+                "hint": "端午节",
+                "ok": true,
+                "ms": 0
+              },
+              {
+                "word": "the Spring Festival",
+                "hint": "春节",
+                "ok": true,
+                "ms": 0
+              }
+            ]
+          },
+          {
+            "ts": 1781322221413,
+            "type": "quiz",
+            "subject": "en",
+            "lesson": "M4U3 故事时间",
+            "total": 3,
+            "wrong": 2,
+            "durationSec": 8,
+            "items": [
+              {
+                "word": "duckling",
+                "hint": "小鸭子",
+                "ok": true,
+                "ms": 0
+              },
+              {
+                "word": "nest",
+                "hint": "鸟巢",
+                "ok": false,
+                "ms": 0
+              },
+              {
+                "word": "swan",
+                "hint": "天鹅",
+                "ok": false,
+                "ms": 0
+              }
+            ]
+          },
+          {
+            "ts": 1781323184612,
+            "type": "dict",
+            "subject": "cn",
+            "lesson": "第11课",
+            "total": 2,
+            "wrong": 0,
+            "durationSec": 175,
+            "items": [
+              {
+                "word": "朦胧",
+                "hint": "",
+                "ok": true,
+                "ms": 9503
+              },
+              {
+                "word": "徜徉",
+                "hint": "",
+                "ok": true,
+                "ms": 9505
+              }
+            ]
+          },
+          {
+            "ts": 1781323392757,
+            "type": "dict",
+            "subject": "cn",
+            "lesson": "第13课",
+            "total": 1,
+            "wrong": 0,
+            "durationSec": 198,
+            "items": [
+              {
+                "word": "凝视",
+                "hint": "",
+                "ok": true,
+                "ms": 9500
+              }
+            ]
+          },
+          {
+            "ts": 1781323730854,
+            "type": "dict",
+            "subject": "cn",
+            "lesson": "第14课",
+            "total": 1,
+            "wrong": 0,
+            "durationSec": 334,
+            "items": [
+              {
+                "word": "警戒",
+                "hint": "",
+                "ok": true,
+                "ms": 9502
+              }
+            ]
+          },
+          {
+            "ts": 1781324245239,
+            "type": "dict",
+            "subject": "cn",
+            "lesson": "第15课",
+            "total": 3,
+            "wrong": 0,
+            "durationSec": 411,
+            "items": [
+              {
+                "word": "叫嚣",
+                "hint": "",
+                "ok": true,
+                "ms": 9503
+              },
+              {
+                "word": "奢侈",
+                "hint": "",
+                "ok": true,
+                "ms": 19252
+              },
+              {
+                "word": "脾气",
+                "hint": "",
+                "ok": true,
+                "ms": 9499
+              }
+            ]
+          },
+          {
+            "ts": 1781324380011,
+            "type": "dict",
+            "subject": "cn",
+            "lesson": "第16课",
+            "total": 8,
+            "wrong": 0,
+            "durationSec": 129,
+            "items": [
+              {
+                "word": "清静",
+                "hint": "",
+                "ok": true,
+                "ms": 10251
+              },
+              {
+                "word": "扩大",
+                "hint": "",
+                "ok": true,
+                "ms": 9503
+              },
+              {
+                "word": "范围",
+                "hint": "",
+                "ok": true,
+                "ms": 9501
+              },
+              {
+                "word": "努力",
+                "hint": "",
+                "ok": true,
+                "ms": 9508
+              },
+              {
+                "word": "刹那",
+                "hint": "",
+                "ok": true,
+                "ms": 9502
+              },
+              {
+                "word": "夺目",
+                "hint": "",
+                "ok": true,
+                "ms": 9502
+              },
+              {
+                "word": "分辨",
+                "hint": "",
+                "ok": true,
+                "ms": 9502
+              },
+              {
+                "word": "灿烂",
+                "hint": "",
+                "ok": true,
+                "ms": 9502
+              }
+            ]
+          },
+          {
+            "ts": 1781324756348,
+            "type": "dict",
+            "subject": "cn",
+            "lesson": "第17课",
+            "total": 1,
+            "wrong": 0,
+            "durationSec": 354,
+            "items": [
+              {
+                "word": "石笋",
+                "hint": "",
+                "ok": true,
+                "ms": 51750
+              }
+            ]
+          },
+          {
+            "ts": 1781324992345,
+            "type": "dict",
+            "subject": "cn",
+            "lesson": "第19课",
+            "total": 11,
+            "wrong": 0,
+            "durationSec": 192,
+            "items": [
+              {
+                "word": "芦花",
+                "hint": "",
+                "ok": true,
+                "ms": 9502
+              },
+              {
+                "word": "发愣",
+                "hint": "",
+                "ok": true,
+                "ms": 9503
+              },
+              {
+                "word": "铅笔",
+                "hint": "",
+                "ok": true,
+                "ms": 9501
+              },
+              {
+                "word": "脊背",
+                "hint": "",
+                "ok": true,
+                "ms": 9503
+              },
+              {
+                "word": "劫难",
+                "hint": "",
+                "ok": true,
+                "ms": 9501
+              },
+              {
+                "word": "鬼脸",
+                "hint": "",
+                "ok": true,
+                "ms": 9501
+              },
+              {
+                "word": "戒指",
+                "hint": "",
+                "ok": true,
+                "ms": 9501
+              },
+              {
+                "word": "试探",
+                "hint": "",
+                "ok": true,
+                "ms": 51501
+              },
+              {
+                "word": "尸首",
+                "hint": "",
+                "ok": true,
+                "ms": 9503
+              },
+              {
+                "word": "防备",
+                "hint": "",
+                "ok": true,
+                "ms": 9501
+              },
+              {
+                "word": "慌忙",
+                "hint": "",
+                "ok": true,
+                "ms": 9500
+              }
+            ]
+          },
+          {
+            "ts": 1781325247722,
+            "type": "dict",
+            "subject": "cn",
+            "lesson": "第23课",
+            "total": 1,
+            "wrong": 0,
+            "durationSec": 251,
+            "items": [
+              {
+                "word": "光荣",
+                "hint": "",
+                "ok": true,
+                "ms": 9505
+              }
+            ]
+          },
+          {
+            "ts": 1781325556381,
+            "type": "dict",
+            "subject": "cn",
+            "lesson": "第24课",
+            "total": 16,
+            "wrong": 0,
+            "durationSec": 238,
+            "items": [
+              {
+                "word": "弥漫",
+                "hint": "",
+                "ok": true,
+                "ms": 9508
+              },
+              {
+                "word": "距离",
+                "hint": "",
+                "ok": true,
+                "ms": 9503
+              },
+              {
+                "word": "山脉",
+                "hint": "",
+                "ok": true,
+                "ms": 9503
+              },
+              {
+                "word": "行驶",
+                "hint": "",
+                "ok": true,
+                "ms": 9502
+              },
+              {
+                "word": "起航",
+                "hint": "",
+                "ok": true,
+                "ms": 9501
+              },
+              {
+                "word": "葬身",
+                "hint": "",
+                "ok": true,
+                "ms": 24242
+              },
+              {
+                "word": "哭泣",
+                "hint": "",
+                "ok": true,
+                "ms": 9502
+              },
+              {
+                "word": "混乱",
+                "hint": "",
+                "ok": true,
+                "ms": 9501
+              },
+              {
+                "word": "绳索",
+                "hint": "",
+                "ok": true,
+                "ms": 9502
+              },
+              {
+                "word": "维持",
+                "hint": "",
+                "ok": true,
+                "ms": 9502
+              },
+              {
+                "word": "秩序",
+                "hint": "",
+                "ok": true,
+                "ms": 9504
+              },
+              {
+                "word": "岗位",
+                "hint": "",
+                "ok": true,
+                "ms": 21746
+              },
+              {
+                "word": "主宰",
+                "hint": "",
+                "ok": true,
+                "ms": 8580
+              },
+              {
+                "word": "考虑",
+                "hint": "",
+                "ok": true,
+                "ms": 17874
+              },
+              {
+                "word": "灾难",
+                "hint": "",
+                "ok": true,
+                "ms": 9502
+              },
+              {
+                "word": "践行",
+                "hint": "",
+                "ok": true,
+                "ms": 28251
+              }
+            ]
+          },
+          {
+            "ts": 1781325742958,
+            "type": "dict",
+            "subject": "cn",
+            "lesson": "第26课",
+            "total": 8,
+            "wrong": 0,
+            "durationSec": 114,
+            "items": [
+              {
+                "word": "介绍",
+                "hint": "",
+                "ok": true,
+                "ms": 9501
+              },
+              {
+                "word": "声明",
+                "hint": "",
+                "ok": true,
+                "ms": 9502
+              },
+              {
+                "word": "妖怪",
+                "hint": "",
+                "ok": true,
+                "ms": 9502
+              },
+              {
+                "word": "规矩",
+                "hint": "",
+                "ok": true,
+                "ms": 9502
+              },
+              {
+                "word": "胳膊",
+                "hint": "",
+                "ok": true,
+                "ms": 9502
+              },
+              {
+                "word": "劈面",
+                "hint": "",
+                "ok": true,
+                "ms": 17506
+              },
+              {
+                "word": "龙宫",
+                "hint": "",
+                "ok": true,
+                "ms": 9501
+              },
+              {
+                "word": "向日葵",
+                "hint": "",
+                "ok": true,
+                "ms": 19501
+              }
+            ]
+          },
+          {
+            "ts": 1781325930818,
+            "type": "dict",
+            "subject": "cn",
+            "lesson": "第27课",
+            "total": 17,
+            "wrong": 0,
+            "durationSec": 185,
+            "items": [
+              {
+                "word": "柔嫩",
+                "hint": "",
+                "ok": true,
+                "ms": 9502
+              },
+              {
+                "word": "丰硕",
+                "hint": "",
+                "ok": true,
+                "ms": 9502
+              },
+              {
+                "word": "允许",
+                "hint": "",
+                "ok": true,
+                "ms": 9502
+              },
+              {
+                "word": "禁止",
+                "hint": "",
+                "ok": true,
+                "ms": 12275
+              },
+              {
+                "word": "踪迹",
+                "hint": "",
+                "ok": true,
+                "ms": 5793
+              },
+              {
+                "word": "覆盖",
+                "hint": "",
+                "ok": true,
+                "ms": 17251
+              },
+              {
+                "word": "呼啸",
+                "hint": "",
+                "ok": true,
+                "ms": 9502
+              },
+              {
+                "word": "始终",
+                "hint": "",
+                "ok": true,
+                "ms": 6211
+              },
+              {
+                "word": "吼叫",
+                "hint": "",
+                "ok": true,
+                "ms": 9503
+              },
+              {
+                "word": "自私",
+                "hint": "",
+                "ok": true,
+                "ms": 5865
+              },
+              {
+                "word": "后悔",
+                "hint": "",
+                "ok": true,
+                "ms": 8246
+              },
+              {
+                "word": "举动",
+                "hint": "",
+                "ok": true,
+                "ms": 7075
+              },
+              {
+                "word": "脸颊",
+                "hint": "",
+                "ok": true,
+                "ms": 7507
+              },
+              {
+                "word": "凶狠",
+                "hint": "",
+                "ok": true,
+                "ms": 9502
+              },
+              {
+                "word": "拆除",
+                "hint": "",
+                "ok": true,
+                "ms": 16869
+              },
+              {
+                "word": "撵走",
+                "hint": "",
+                "ok": true,
+                "ms": 7330
+              },
+              {
+                "word": "窟窿",
+                "hint": "",
+                "ok": true,
+                "ms": 5505
+              }
+            ]
+          },
+          {
+            "ts": 1781325975085,
+            "type": "quiz",
+            "subject": "cn",
+            "lesson": "第14课",
+            "total": 5,
+            "wrong": 1,
+            "durationSec": 31,
+            "items": [
+              {
+                "word": "忠厚",
+                "hint": "",
+                "ok": true,
+                "ms": 0
+              },
+              {
+                "word": "凄惨",
+                "hint": "",
+                "ok": false,
+                "ms": 0
+              },
+              {
+                "word": "慈爱",
+                "hint": "",
+                "ok": true,
+                "ms": 0
+              },
+              {
+                "word": "警戒",
+                "hint": "",
+                "ok": true,
+                "ms": 0
+              },
+              {
+                "word": "可恶",
+                "hint": "",
+                "ok": true,
+                "ms": 0
+              }
+            ]
+          },
+          {
+            "ts": 1781325998565,
+            "type": "quiz",
+            "subject": "cn",
+            "lesson": "第15课",
+            "total": 5,
+            "wrong": 0,
+            "durationSec": 19,
+            "items": [
+              {
+                "word": "高傲",
+                "hint": "",
+                "ok": true,
+                "ms": 0
+              },
+              {
+                "word": "一丝不苟",
+                "hint": "",
+                "ok": true,
+                "ms": 0
+              },
+              {
+                "word": "从容不迫",
+                "hint": "",
+                "ok": true,
+                "ms": 0
+              },
+              {
+                "word": "空空如也",
+                "hint": "",
+                "ok": true,
+                "ms": 0
+              },
+              {
+                "word": "侍候",
+                "hint": "",
+                "ok": true,
+                "ms": 0
+              }
+            ]
+          },
+          {
+            "ts": 1781326017730,
+            "type": "quiz",
+            "subject": "cn",
+            "lesson": "第17课",
+            "total": 4,
+            "wrong": 0,
+            "durationSec": 15,
+            "items": [
+              {
+                "word": "漆黑",
+                "hint": "",
+                "ok": true,
+                "ms": 0
+              },
+              {
+                "word": "聚集",
+                "hint": "",
+                "ok": true,
+                "ms": 0
+              },
+              {
+                "word": "蜿蜒",
+                "hint": "",
+                "ok": true,
+                "ms": 0
+              },
+              {
+                "word": "石钟乳",
+                "hint": "",
+                "ok": true,
+                "ms": 0
+              }
+            ]
+          },
+          {
+            "ts": 1781326047944,
+            "type": "quiz",
+            "subject": "cn",
+            "lesson": "第23课",
+            "total": 4,
+            "wrong": 3,
+            "durationSec": 26,
+            "items": [
+              {
+                "word": "顽强",
+                "hint": "",
+                "ok": false,
+                "ms": 0
+              },
+              {
+                "word": "艰巨",
+                "hint": "",
+                "ok": true,
+                "ms": 0
+              },
+              {
+                "word": "惊天动地",
+                "hint": "",
+                "ok": false,
+                "ms": 0
+              },
+              {
+                "word": "摧毁",
+                "hint": "",
+                "ok": false,
+                "ms": 0
+              }
+            ]
+          },
+          {
+            "ts": 1781326069885,
+            "type": "quiz",
+            "subject": "cn",
+            "lesson": "第27课",
+            "total": 4,
+            "wrong": 0,
+            "durationSec": 18,
+            "items": [
+              {
+                "word": "禁止",
+                "hint": "",
+                "ok": true,
+                "ms": 0
+              },
+              {
+                "word": "覆盖",
+                "hint": "",
+                "ok": true,
+                "ms": 0
+              },
+              {
+                "word": "自私",
+                "hint": "",
+                "ok": true,
+                "ms": 0
+              },
+              {
+                "word": "呼啸",
+                "hint": "",
+                "ok": true,
+                "ms": 0
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

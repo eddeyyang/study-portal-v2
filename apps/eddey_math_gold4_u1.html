@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>弟弟数学 · 四上预习 第1单元 运算关系与运算律</title>
+<style>
+:root{--blue:#f47b4f;--blued:#d85a32;--bluebg:#fff0e6;--gold:#f2b632;--golddk:#c98a00;
+ --ink:#3a2a1e;--paper:#fbf3e6;--card:#fff;--line:#ecdcc6;--green:#2e9c54;--greenbg:#e9f7ee;
+ --red:#e1553f;--redbg:#fdecea;--muted:#9b8a78;--purple:#9a6cc0;--purplebg:#f3ecfa;--teal:#2fa8b8;--tealbg:#e3fbff;}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+html,body{margin:0;padding:0;}
+body{font-family:'LXGW WenKai Screen','PingFang SC','Microsoft YaHei',system-ui,sans-serif;
+ background:radial-gradient(circle at 10% 4%,#ffe6d4 0,transparent 40%),radial-gradient(circle at 92% 98%,#ffeede 0,transparent 44%),var(--paper);
+ color:var(--ink);min-height:100vh;padding:0 0 50px;}
+.wrap{max-width:620px;margin:0 auto;padding:12px;}
+.top{display:flex;align-items:center;gap:10px;padding:8px 2px 6px;}
+.badge{background:var(--blue);color:#fff;font-weight:800;font-size:15px;padding:6px 13px;border-radius:13px 13px 13px 4px;box-shadow:0 4px 0 var(--blued);}
+.top h1{font-size:15px;margin:0;flex:1;}
+.top .home{text-decoration:none;font-size:22px;background:#fff;width:38px;height:38px;border-radius:11px;display:grid;place-items:center;color:var(--ink);box-shadow:0 3px 0 #e7d3bd;}
+.intro{font-size:13px;color:var(--muted);line-height:1.7;background:#fff;border:2px solid var(--line);border-radius:14px;padding:12px 14px;margin:8px 0;}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:6px;}
+.tile{background:#fff;border:2px solid var(--line);border-radius:18px;padding:16px 12px;cursor:pointer;box-shadow:0 6px 0 #efe0cd;text-align:center;transition:transform .08s;border-top:6px solid var(--blue);}
+.tile:active{transform:translateY(3px);box-shadow:0 3px 0 #efe0cd;}
+.tile .ic{font-size:36px;line-height:1;}
+.tile .nm{font-weight:800;font-size:15px;margin-top:8px;color:var(--blued);}
+.tile .ds{font-size:11.5px;color:var(--muted);margin-top:4px;line-height:1.5;}
+.tile.hot{border-top-color:var(--red);}
+.tile.hot .nm{color:var(--red);}
+.card{background:var(--card);border:2px solid var(--line);border-radius:18px;padding:16px;margin:11px 0;box-shadow:0 6px 0 #efe0cd;}
+.h2{font-size:18px;font-weight:800;margin:0 0 4px;color:var(--blued);}
+.hint{font-size:13px;color:var(--muted);line-height:1.7;}
+.btn{font-family:inherit;font-weight:800;font-size:15px;border:none;border-radius:13px;padding:11px 16px;cursor:pointer;color:#fff;background:var(--blue);box-shadow:0 5px 0 var(--blued);transition:transform .06s;}
+.btn:active{transform:translateY(3px);box-shadow:0 2px 0 var(--blued);}
+.btn.gold{background:var(--gold);box-shadow:0 5px 0 var(--golddk);color:#5a3d00;}
+.btn.ghost{background:#fff;color:var(--blued);border:2px solid var(--blue);box-shadow:0 5px 0 #e7d3bd;}
+.btn.green{background:var(--green);box-shadow:0 5px 0 #1f7a3e;}
+.btn.sm{font-size:13.5px;padding:9px 13px;}
+.btn:disabled{opacity:.45;box-shadow:none;transform:none;}
+.row{display:flex;gap:9px;flex-wrap:wrap;align-items:center;}
+.center{justify-content:center;}
+.hide{display:none!important;}
+.back{background:none;border:none;color:var(--muted);font-size:15px;font-family:inherit;cursor:pointer;font-weight:800;padding:6px 2px;}
+.saybtn{font-family:inherit;font-size:13px;font-weight:800;padding:7px 12px;border-radius:11px;border:2px solid var(--gold);background:#fffaf0;color:var(--golddk);cursor:pointer;box-shadow:0 3px 0 #f0dca0;}
+/* 算式块 */
+.eqline{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;align-items:center;margin:12px 0;}
+.tok{font-size:24px;font-weight:800;color:var(--blued);background:var(--bluebg);border-radius:12px;padding:8px 13px;min-width:44px;text-align:center;transition:all .35s;border:2px solid transparent;}
+.tok.op{background:#fff;color:var(--ink);border-color:var(--line);font-size:20px;padding:8px 9px;}
+.tok.num{cursor:pointer;}
+.tok.num:active{transform:scale(.92);}
+.tok.gone{background:#fff;color:var(--golddk);border:2px dashed var(--gold);}
+.tok.box{background:#fff8ea;color:var(--golddk);border:2px dashed var(--gold);animation:pop .45s;}
+.tok.new{animation:pop .5s;}
+.tok.hl{background:var(--gold);color:#5a3d00;border-color:var(--gold);}
+@keyframes pop{0%{transform:scale(.5);opacity:0;}60%{transform:scale(1.1);}100%{transform:scale(1);opacity:1;}}
+@keyframes shake{0%,100%{transform:translateX(0);}25%{transform:translateX(-6px);}75%{transform:translateX(6px);}}
+.shake{animation:shake .3s;}
+.popcard{background:var(--bluebg);border-radius:13px;padding:13px;text-align:center;margin-top:10px;font-size:16px;line-height:1.8;animation:pop .45s;}
+.popcard .w{font-size:20px;font-weight:800;color:var(--blued);}
+.why{background:var(--greenbg);border-left:5px solid var(--green);border-radius:10px;padding:11px 14px;font-size:14px;line-height:1.7;margin:10px 0;}
+.why .lab{font-weight:800;color:var(--green);}
+.warn{background:var(--redbg);border-left:5px solid var(--red);border-radius:10px;padding:11px 14px;font-size:14px;line-height:1.7;margin:10px 0;}
+.warn .lab{font-weight:800;color:var(--red);}
+.tagchip{display:inline-block;background:var(--redbg);color:var(--red);font-weight:800;font-size:13px;border-radius:9px;padding:4px 10px;margin:4px 0;}
+/* 选项 */
+.opts{display:grid;gap:10px;margin-top:10px;}
+.opt{font-family:inherit;font-size:16px;text-align:left;background:#fff;border:2px solid var(--line);border-radius:13px;padding:12px 15px;cursor:pointer;color:var(--ink);box-shadow:0 4px 0 #efe0cd;}
+.opt:active{transform:translateY(2px);box-shadow:0 2px 0 #efe0cd;}
+.opt.right{background:var(--greenbg);border-color:var(--green);color:var(--green);font-weight:800;}
+.opt.wrong{background:var(--redbg);border-color:var(--red);color:var(--red);font-weight:800;}
+.opt:disabled{cursor:default;}
+.qq{font-size:18px;font-weight:800;line-height:1.7;color:var(--ink);margin:6px 0 2px;}
+/* 病历 */
+.stepline{font-family:'LXGW WenKai Screen',monospace;font-size:19px;font-weight:700;background:#fff;border:2px solid var(--line);border-radius:11px;padding:10px 14px;margin:8px 0;cursor:pointer;box-shadow:0 3px 0 #efe0cd;text-align:center;}
+.stepline.bad{background:var(--redbg);border-color:var(--red);color:var(--red);animation:pop .4s;}
+.stepline.ok{background:var(--greenbg);border-color:var(--green);color:var(--green);animation:pop .4s;}
+.stepline.dim{opacity:.55;cursor:default;}
+/* 找朋友卡 */
+.fcards{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:12px 0;}
+.fcard{font-family:inherit;font-size:26px;font-weight:800;background:#fff;border:2px solid var(--line);border-radius:14px;padding:16px 0;text-align:center;cursor:pointer;color:var(--blued);box-shadow:0 4px 0 #efe0cd;transition:all .2s;}
+.fcard.sel{background:var(--gold);color:#5a3d00;border-color:var(--gold);}
+.fcard.done{background:var(--greenbg);border-color:var(--green);color:var(--green);cursor:default;}
+.fcard .sub{display:block;font-size:12px;color:var(--green);font-weight:800;margin-top:2px;}
+/* 分配律面积模型 */
+.areawrap{background:#fffdf7;border:2px solid var(--line);border-radius:14px;padding:12px;margin:10px 0;}
+/* 脑图 */
+svg{width:100%;height:auto;display:block;touch-action:manipulation;}
+.node-c{cursor:pointer;}
+.infocard{background:var(--bluebg);border-radius:12px;padding:13px 15px;margin-top:8px;font-size:14.5px;line-height:1.8;min-height:40px;}
+.infocard b{color:var(--blued);}
+/* 进度 */
+.prog{display:flex;gap:6px;justify-content:center;margin:8px 0;}
+.dot{width:11px;height:11px;border-radius:50%;background:#e7d3bd;}
+.dot.on{background:var(--blue);}
+.dot.done{background:var(--green);}
+.scorebig{font-size:44px;font-weight:800;color:var(--golddk);text-align:center;line-height:1.1;}
+.tipbar{font-size:12px;color:var(--muted);text-align:center;margin-top:14px;line-height:1.6;}
+.koujue{background:linear-gradient(180deg,#fffaf0,#fff5e0);border:2px solid var(--gold);border-radius:12px;padding:12px;margin:10px 0;text-align:center;font-size:16px;font-weight:800;color:#5a3d00;line-height:1.8;animation:pop .45s;}
+.stepbadge{display:inline-block;background:var(--purple);color:#fff;font-weight:800;font-size:12.5px;border-radius:8px;padding:3px 9px;margin-bottom:6px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top">
+    <a class="home" href="math_gold_hub.html">‹</a>
+    <span class="badge">Eddey 🐯</span>
+    <h1>四上预习 · 第1单元 运算关系与运算律</h1>
+  </div>
+
+  <!-- 首页 -->
+  <div id="home">
+    <div class="intro" id="homeIntro">
+      这个单元回答两个问题：<b>① 加减、乘除之间有什么关系？② 怎样算得又对又快（运算律）？</b><br>
+      先看会动的讲解，再动手玩，最后做 6 道小题检验自己。点🔊可以听讲解。
+    </div>
+    <div class="grid" id="tileGrid"></div>
+    <div class="tipbar">内容对齐《金牌数学·尖子生学习笔记》四上第 1 单元（书页 1-31）· 错题会记住，隔天先来回炉</div>
+  </div>
+
+  <!-- 通用视图 -->
+  <div id="view" class="hide">
+    <button class="back" onclick="goHome()">‹ 返回大厅</button>
+    <div id="viewBody"></div>
+  </div>
+</div>
+
+<script>
+/* ================= 语音（小晓 MP3 优先，浏览器 TTS 兜底） ================= */
+const AUDIO_DIR = "audio/eddey_math_gold4_u1/";
+function audioHash(s){ // FNV-1a，与生成脚本一致
+  let h = 0x811c9dc5;
+  const bytes = new TextEncoder().encode(s);
+  for (let i=0;i<bytes.length;i++){ h ^= bytes[i]; h = Math.imul(h, 0x01000193) >>> 0; }
+  return ("0000000"+h.toString(16)).slice(-8);
+}
+let _audioEl = null, _audioTok = 0;
+function speakOnce(zhText){
+  const my = ++_audioTok;
+  try{ if(window.speechSynthesis) speechSynthesis.cancel(); }catch(e){}
+  const file = AUDIO_DIR + audioHash("zh|"+zhText) + ".mp3";
+  if(!_audioEl) _audioEl = new Audio();
+  const el = _audioEl;
+  el.src = file;
+  el.play().catch(()=>{ fallbackTTS(zhText, my); });
+  el.onerror = ()=>{ if(my===_audioTok) fallbackTTS(zhText, my); };
+}
+function fallbackTTS(t, my){
+  if(my!==_audioTok || !window.speechSynthesis) return;
+  const u = new SpeechSynthesisUtterance(t); u.lang="zh-CN"; u.rate=0.95;
+  speechSynthesis.speak(u);
+}
+
+/* ================= 导航 ================= */
+const TILES = [
+ {id:"scale", ic:"⚖️", nm:"互逆天平", ds:"加↔减 · 乘↔除 怎么会互相倒推？点数字看它变身"},
+ {id:"laws",  ic:"🔀", nm:"运算律变形机", ds:"五大运算律逐个演：交换、结合、分配律面积切一刀"},
+ {id:"friends", ic:"🤝", nm:"凑整配对工坊", ds:"2×5·4×25·8×125 找朋友，再学简算三步"},
+ {id:"clinic", ic:"🩺", nm:"错因诊疗室", ds:"4 份真实病历：找出哪一步开始错了"},
+ {id:"map",   ic:"🗺️", nm:"单元知识脑图", ds:"点圆圈复习全单元 10 条核心知识"},
+ {id:"pro",   ic:"🚀", nm:"培优巧算动画", ds:"添1法 · 拆倍法 · 转化法，三步看明白"},
+ {id:"quiz",  ic:"⭐", nm:"小检验 · 6 题", ds:"理解之后的检验：判分 + 错因标签 + 变式"}
+];
+function goHome(){
+  document.getElementById("view").classList.add("hide");
+  document.getElementById("home").classList.remove("hide");
+  renderTiles();
+  window.scrollTo(0,0);
+}
+function open(id){
+  document.getElementById("home").classList.add("hide");
+  document.getElementById("view").classList.remove("hide");
+  const b = document.getElementById("viewBody");
+  b.innerHTML = "";
+  ({scale:renderScale, laws:renderLaws, friends:renderFriends, clinic:renderClinic,
+    map:renderMap, pro:renderPro, quiz:()=>renderQuiz(false), redo:()=>renderQuiz(true)}[id])(b);
+  window.scrollTo(0,0);
+}
+function renderTiles(){
+  const g = document.getElementById("tileGrid");
+  const wrong = loadWrong();
+  let html = "";
+  if(wrong.length){
+    html += `<div class="tile hot" onclick="open('redo')"><div class="ic">🔥</div><div class="nm">错题回炉 · ${wrong.length} 道</div><div class="ds">连续答对 2 次就毕业，清空为止</div></div>`;
+  }
+  html += TILES.map(t=>`<div class="tile" onclick="open('${t.id}')"><div class="ic">${t.ic}</div><div class="nm">${t.nm}</div><div class="ds">${t.ds}</div></div>`).join("");
+  g.innerHTML = html;
+}
+
+/* ================= 1. 互逆天平 ================= */
+const FAMS = [
+ {a:5,b:4,c:9,op:"+"},{a:120,b:50,c:170,op:"+"},{a:8,b:7,c:15,op:"+"},
+ {a:3,b:4,c:12,op:"×"},{a:21,b:13,c:273,op:"×"},{a:6,b:35,c:210,op:"×"}
+];
+let famIdx = 0;
+function renderScale(b){
+  b.innerHTML = `
+  <div class="card">
+    <div class="h2">⚖️ 互逆天平 <button class="saybtn" onclick="speakOnce('加法和减法互为逆运算，乘法和除法互为逆运算。点任意一个数，看它怎么被倒推出来。')">🔊 听讲解</button></div>
+    <div class="hint">点算式里<b>任意一个数</b>，它会躲起来变成 □，看看要用哪条关系式把它找回来。</div>
+    <div id="famBox"></div>
+    <div class="row center"><button class="btn ghost sm" onclick="famIdx=(famIdx+1)%FAMS.length;drawFam()">🔄 换一组</button></div>
+  </div>
+  <div class="card">
+    <div class="h2">🕵️ 未知数倒推器 <button class="saybtn" onclick="speakOnce('先想一想，方块在算式里是什么角色，再决定用哪条关系式。')">🔊 听讲解</button></div>
+    <div class="hint">像侦探一样三步走：<b>认角色 → 选关系式 → 算出答案</b>。</div>
+    <div id="boxGame"></div>
+  </div>`;
+  drawFam(); drawBoxGame();
+}
+function drawFam(){
+  const f = FAMS[famIdx];
+  const box = document.getElementById("famBox");
+  box.innerHTML = `
+    <div class="eqline" id="famEq">
+      <span class="tok num" data-p="a" onclick="famTap('a')">${f.a}</span>
+      <span class="tok op">${f.op}</span>
+      <span class="tok num" data-p="b" onclick="famTap('b')">${f.b}</span>
+      <span class="tok op">=</span>
+      <span class="tok num" data-p="c" onclick="famTap('c')">${f.c}</span>
+    </div>
+    <div id="famOut"></div>`;
+}
+function famTap(p){
+  const f = FAMS[famIdx];
+  const el = document.querySelector(`#famEq .tok[data-p="${p}"]`);
+  el.classList.add("gone"); el.textContent = "□";
+  const inv = f.op === "+" ? "−" : "÷";
+  let msg = "";
+  if(p==="a") msg = f.op==="+" ? `□ = ${f.c} ${inv} ${f.b} = <b>${f.c-f.b}</b><br><span style="font-size:13.5px">一个加数 = 和 − 另一个加数</span>`
+                               : `□ = ${f.c} ${inv} ${f.b} = <b>${f.c/f.b}</b><br><span style="font-size:13.5px">一个乘数 = 积 ÷ 另一个乘数</span>`;
+  if(p==="b") msg = f.op==="+" ? `□ = ${f.c} ${inv} ${f.a} = <b>${f.c-f.a}</b><br><span style="font-size:13.5px">一个加数 = 和 − 另一个加数</span>`
+                               : `□ = ${f.c} ${inv} ${f.a} = <b>${f.c/f.a}</b><br><span style="font-size:13.5px">一个乘数 = 积 ÷ 另一个乘数</span>`;
+  if(p==="c") msg = f.op==="+" ? `□ = ${f.a} + ${f.b} = <b>${f.c}</b><br><span style="font-size:13.5px">和 = 加数 + 加数（减法是加法的逆运算）</span>`
+                               : `□ = ${f.a} × ${f.b} = <b>${f.c}</b><br><span style="font-size:13.5px">积 = 乘数 × 乘数（除法是乘法的逆运算）</span>`;
+  document.getElementById("famOut").innerHTML = `<div class="popcard"><div class="w">${msg}</div></div>
+    <div class="row center" style="margin-top:8px"><button class="btn sm ghost" onclick="drawFam()">↩ 复原</button></div>`;
+}
+const BOXES = [
+ {eq:["□","+","78","=","256"], role:"加数", roles:["加数","被减数"], rule:"一个加数 = 和 − 另一个加数", calc:"□ = 256 − 78", ans:"178"},
+ {eq:["927","−","□","=","73"], role:"减数", roles:["减数","被减数"], rule:"减数 = 被减数 − 差", calc:"□ = 927 − 73", ans:"854"},
+ {eq:["□","×","18","=","1080"], role:"乘数", roles:["乘数","被除数"], rule:"一个乘数 = 积 ÷ 另一个乘数", calc:"□ = 1080 ÷ 18", ans:"60"},
+ {eq:["□","÷","45","=","45"], role:"被除数", roles:["被除数","除数"], rule:"被除数 = 商 × 除数", calc:"□ = 45 × 45", ans:"2025"},
+ {eq:["621","÷","□","=","27"], role:"除数", roles:["除数","被除数"], rule:"除数 = 被除数 ÷ 商", calc:"□ = 621 ÷ 27", ans:"23"},
+ {eq:["7","×","□","=","7"], role:"乘数", roles:["乘数","积"], rule:"一个乘数 = 积 ÷ 另一个乘数", calc:"□ = 7 ÷ 7", ans:"1"}
+];
+let boxIdx = 0;
+function drawBoxGame(){
+  const x = BOXES[boxIdx];
+  document.getElementById("boxGame").innerHTML = `
+    <div class="eqline">${x.eq.map(t=>`<span class="tok ${t==="□"?"box":"op"}" style="${/^[0-9]+$|^□$/.test(t)?"":"font-size:20px;padding:8px 9px;"}">${t}</span>`).join("")}</div>
+    <div class="stepbadge">第 1 步 · 认角色</div>
+    <div class="hint" style="text-align:center">□ 在这个算式里是什么？</div>
+    <div class="opts">
+      ${x.roles.map(r=>`<button class="opt" onclick="boxRole(this,'${r}')">${r}</button>`).join("")}
+    </div>
+    <div id="boxOut"></div>
+    <div class="row center" style="margin-top:8px"><button class="btn ghost sm" onclick="boxIdx=(boxIdx+1)%BOXES.length;drawBoxGame()">🔄 下一题</button></div>`;
+}
+function boxRole(btn, r){
+  const x = BOXES[boxIdx];
+  if(r !== x.role){
+    btn.classList.add("wrong","shake");
+    document.getElementById("boxOut").innerHTML = `<div class="warn"><span class="lab">再想想：</span>□ ${x.eq[0]==="□"?"在等号左边最前面":"在中间"}，它${x.role==="减数"||x.role==="除数"?"是减/除号后面的那个数":"不是"+(x.roles.find(z=>z!==x.role))}哦。</div>`;
+    setTimeout(()=>btn.classList.remove("wrong","shake"), 500);
+    return;
+  }
+  btn.classList.add("right");
+  document.querySelectorAll("#boxGame .opt").forEach(o=>o.disabled=true);
+  document.getElementById("boxOut").innerHTML = `
+    <div class="why"><span class="lab">第 2 步 · 选关系式：</span>□ 是${x.role}，所以——<br><b>${x.rule}</b></div>
+    <div class="popcard"><div class="stepbadge">第 3 步 · 算一算</div><div class="w">${x.calc} = ${x.ans}</div></div>
+    <div class="koujue">🎉 倒推成功！${x.eq.join(" ").replace("□", x.ans)}</div>`;
+}
+
+/* ================= 2. 运算律变形机 ================= */
+const LAWS = [
+ {id:"jiaSwap", name:"加法交换律", formula:"a + b = b + a", say:"加法交换律：交换加数的位置，和不变。还可以用交换位置来验算。",
+  demo:{before:["74","+","641"], after:["641","+","74"], note:"= 715，两种算式结果一样 → 可以用交换位置来<b>验算</b>加法"}},
+ {id:"jiaBind", name:"加法结合律", formula:"(a+b)+c = a+(b+c)", say:"加法结合律：改变运算顺序，和不变。交换律换位置，结合律换顺序。",
+  demo:{before:["( 20","+","40 )","+","18"], after:["20","+","( 40","+","18 )"], note:"都等于 78。结合律只改变<b>先算谁</b>，不改变位置"}},
+ {id:"chengSwap", name:"乘法交换律", formula:"a × b = b × a", say:"乘法交换律：交换乘数的位置，积不变。",
+  demo:{before:["25","×","17","×","4"], after:["25","×","4","×","17"], note:"交换后 = 100 × 17 = <b>1700</b>，凑整更好算"}},
+ {id:"chengBind", name:"乘法结合律", formula:"(a×b)×c = a×(b×c)", say:"乘法结合律：先把后两个数相乘，积不变。记住三组好朋友：二乘五、四乘二十五、八乘一百二十五。",
+  demo:{before:["17","×","( 25","×","4 )"], after:["17","×","100"], note:"先算括号里的 25×4 = 100，= <b>1700</b>。凑整的两个数在后面先算，要加括号"}},
+ {id:"fenpei", name:"乘法分配律", formula:"(a+b)×c = a×c + b×c", say:"乘法分配律：括号里的每一个数，都要和括号外的数相乘，再把积相加。看，长方形切一刀就明白了。", area:true}
+];
+let lawIdx = 0;
+function renderLaws(b){
+  b.innerHTML = `
+  <div class="card">
+    <div class="h2">🔀 运算律变形机</div>
+    <div class="hint">五大运算律逐个看。点「变！」看算式变身，想一想：<b>变了什么，什么没变？</b></div>
+    <div class="row" id="lawTabs" style="margin:10px 0"></div>
+    <div id="lawBody"></div>
+  </div>`;
+  document.getElementById("lawTabs").innerHTML = LAWS.map((l,i)=>
+    `<button class="btn sm ${i===lawIdx?"":"ghost"}" onclick="lawIdx=${i};renderLaws(document.getElementById('viewBody'))">${l.name}</button>`).join("");
+  drawLaw();
+}
+function drawLaw(){
+  const l = LAWS[lawIdx];
+  const body = document.getElementById("lawBody");
+  if(l.area){
+    body.innerHTML = `
+      <div class="popcard" style="animation:none"><div class="w">${l.name}　${l.formula}</div></div>
+      <div class="areawrap">
+        <div class="hint" style="text-align:center">向日葵园长 (3+2) 米、宽 4 米。面积是多少？点「切一刀」👇</div>
+        <svg viewBox="0 0 320 170" id="areaSvg">
+          <rect x="40" y="30" width="150" height="100" rx="6" fill="#ffe3c2" stroke="#f47b4f" stroke-width="3"/>
+          <rect x="190" y="30" width="90" height="100" rx="6" fill="#ffd9ec" stroke="#e1553f" stroke-width="3" id="rectB"/>
+          <text x="115" y="85" text-anchor="middle" font-size="20" font-weight="800" fill="#d85a32">3 × 4</text>
+          <text x="235" y="85" text-anchor="middle" font-size="20" font-weight="800" fill="#e1553f">2 × 4</text>
+          <text x="115" y="152" text-anchor="middle" font-size="14" fill="#9b8a78">3 米</text>
+          <text x="235" y="152" text-anchor="middle" font-size="14" fill="#9b8a78">2 米</text>
+          <text x="160" y="18" text-anchor="middle" font-size="15" font-weight="800" fill="#3a2a1e">长 (3+2) 米 × 宽 4 米</text>
+        </svg>
+      </div>
+      <div class="row center">
+        <button class="btn gold sm" onclick="areaCalc()">🔪 分别算两块</button>
+        <button class="saybtn" onclick="speakOnce('${l.say}')">🔊 听讲解</button>
+      </div>
+      <div id="areaOut"></div>`;
+    return;
+  }
+  body.innerHTML = `
+    <div class="popcard" style="animation:none"><div class="w">${l.name}　${l.formula}</div></div>
+    <div class="eqline" id="lawEq">${l.demo.before.map(t=>`<span class="tok ${/^[0-9]+$/.test(t)?"":"op"}">${t}</span>`).join("")}</div>
+    <div class="row center">
+      <button class="btn sm" onclick="lawMorph()">变！</button>
+      <button class="saybtn" onclick="speakOnce('${l.say}')">🔊 听讲解</button>
+    </div>
+    <div id="lawOut"></div>`;
+}
+function lawMorph(){
+  const l = LAWS[lawIdx];
+  const eq = document.getElementById("lawEq");
+  eq.innerHTML = l.demo.after.map(t=>`<span class="tok new ${/^[0-9]+$/.test(t)?"":"op"}">${t}</span>`).join("");
+  document.getElementById("lawOut").innerHTML = `<div class="why"><span class="lab">发现了什么：</span>${l.demo.note}</div>
+    <div class="koujue">口诀：${l.id.includes("Swap")?"交换律 = 只换位置，结果不变":"结合律 = 只换顺序，结果不变"}</div>`;
+}
+function areaCalc(){
+  document.getElementById("areaOut").innerHTML = `
+    <div class="why"><span class="lab">两种算法一样多：</span><br>
+      整体算：( 3 + 2 ) × 4 = 5 × 4 = <b>20</b> 平方米<br>
+      切开算：3 × 4 + 2 × 4 = 12 + 8 = <b>20</b> 平方米<br>
+      所以 (a+b)×c = a×c + b×c ——括号里<b>每一个数</b>都要乘外面的数！</div>`;
+}
+
+/* ================= 3. 凑整配对工坊 ================= */
+const FRIENDS = [["2","5","10"],["4","25","100"],["8","125","1000"]];
+let frSel = [], frDone = 0;
+function renderFriends(b){
+  frSel = []; frDone = 0;
+  b.innerHTML = `
+  <div class="card">
+    <div class="h2">🤝 第一步 · 找朋友 <button class="saybtn" onclick="speakOnce('找朋友：二乘五等于十，四乘二十五等于一百，八乘一百二十五等于一千。连乘简算，先找这三组好朋友。')">🔊 听讲解</button></div>
+    <div class="hint">乘法凑整有三组好朋友。点两张卡，乘起来是 10 / 100 / 1000 就是一对！</div>
+    <div class="fcards" id="frCards"></div>
+    <div id="frOut"></div>
+  </div>
+  <div class="card hide" id="ezCard">
+    <div class="h2">🪄 第二步 · 简算三步 <button class="saybtn" onclick="speakOnce('简算三步：一找好朋友，二交换位置，三加括号先算。')">🔊 听讲解</button></div>
+    <div class="hint">简算 <b>235 + 178 + 165</b>：先点出能凑成整百的两个数。</div>
+    <div class="eqline" id="ezEq">
+      <span class="tok num" onclick="ezPick(this,'235')">235</span><span class="tok op">+</span>
+      <span class="tok num" onclick="ezPick(this,'178')">178</span><span class="tok op">+</span>
+      <span class="tok num" onclick="ezPick(this,'165')">165</span>
+    </div>
+    <div id="ezOut"></div>
+  </div>`;
+  const nums = ["2","5","4","25","8","125"].sort(()=>Math.random()-.5);
+  document.getElementById("frCards").innerHTML = nums.map(n=>`<button class="fcard" data-n="${n}" onclick="frTap(this)">${n}</button>`).join("");
+}
+function frTap(btn){
+  if(btn.classList.contains("done")||btn.classList.contains("sel")) return;
+  btn.classList.add("sel"); frSel.push(btn);
+  if(frSel.length<2) return;
+  const [x,y] = frSel;
+  const pair = FRIENDS.find(f=>(f[0]===x.dataset.n&&f[1]===y.dataset.n)||(f[1]===x.dataset.n&&f[0]===y.dataset.n));
+  if(pair){
+    x.classList.add("done"); y.classList.add("done");
+    x.innerHTML = `${x.dataset.n}<span class="sub">×${y.dataset.n}=${pair[2]}</span>`;
+    y.innerHTML = `${y.dataset.n}<span class="sub">×${x.dataset.n}=${pair[2]}</span>`;
+    frDone++;
+    document.getElementById("frOut").innerHTML = `<div class="why"><span class="lab">配对成功：</span>${pair[0]} × ${pair[1]} = ${pair[2]} ${frDone===3?"🎉 三组好朋友全找到，简算三步解锁！👇":""}</div>`;
+    if(frDone===3) document.getElementById("ezCard").classList.remove("hide");
+  }else{
+    x.classList.add("shake"); y.classList.add("shake");
+    document.getElementById("frOut").innerHTML = `<div class="warn"><span class="lab">不是一对：</span>${x.dataset.n} × ${y.dataset.n} 凑不出 10 / 100 / 1000，再找找。</div>`;
+    setTimeout(()=>{x.classList.remove("sel","shake");y.classList.remove("sel","shake");},450);
+  }
+  frSel = [];
+}
+let ezPicked = [];
+function ezPick(el, v){
+  if(el.classList.contains("hl")) return;
+  el.classList.add("hl"); ezPicked.push(v);
+  if(ezPicked.length<2) return;
+  if(ezPicked.includes("235")&&ezPicked.includes("165")){
+    document.getElementById("ezEq").innerHTML = `
+      <span class="tok new">178</span><span class="tok op">+</span>
+      <span class="tok new hl">( 235</span><span class="tok op">+</span><span class="tok new hl">165 )</span>
+      <span class="tok op">=</span><span class="tok new">178 + 400</span><span class="tok op">=</span><span class="tok new hl">578</span>`;
+    document.getElementById("ezOut").innerHTML = `
+      <div class="why"><span class="lab">看明白了吗：</span>① 找：235 和 165 凑成 400　② 换：交换律把 165 搬到 235 旁边　③ 合：结合律加括号先算。<br>再试一道乘法：<b>25 × 17 × 4</b>，好朋友是谁？</div>
+      <div class="opts">
+        <button class="opt" onclick="ezMul(this,true)">25 和 4（25×4=100）</button>
+        <button class="opt" onclick="ezMul(this,false)">17 和 4（17×4=68）</button>
+      </div><div id="ezMulOut"></div>`;
+  }else{
+    document.getElementById("ezOut").innerHTML = `<div class="warn"><span class="lab">这两个数：</span>${ezPicked.join(" 和 ")} 加起来不是整百，重新点。</div>`;
+    setTimeout(()=>{document.querySelectorAll("#ezEq .tok").forEach(t=>t.classList.remove("hl"));ezPicked=[];},700);
+  }
+}
+function ezMul(btn, ok){
+  if(!ok){ btn.classList.add("wrong","shake"); setTimeout(()=>btn.classList.remove("wrong","shake"),500); return; }
+  btn.classList.add("right");
+  document.getElementById("ezMulOut").innerHTML = `
+    <div class="popcard"><div class="w">25 × 17 × 4 = 17 × ( 25 × 4 ) = 17 × 100 = 1700</div></div>
+    <div class="koujue">🎓 简算三步毕业！看到 25 想 4，看到 125 想 8。</div>`;
+}
+
+/* ================= 4. 错因诊疗室 ================= */
+const CASES = [
+ {title:"病历 1 · 凑整忘加括号", wrong:["57 × 25 × 4","= 57 × 100","= 5700"], wrongAt:1,
+  diag:"忘添括号", why:"25×4 在后面先算，必须加括号写成 57×(25×4)。直接写 57×100 是改变了运算顺序，书写不规范。",
+  right:["57 × 25 × 4","= 57 × (25 × 4)","= 57 × 100","= 5700"], kj:"凑整的两个数在后面，一定要加括号！"},
+ {title:"病历 2 · 乘加混合乱结合", wrong:["32 × 15 + 85","= 32 × (15 + 85)","= 32 × 100","= 3200"], wrongAt:1,
+  diag:"乱用运算律", why:"这是「乘加混合」，不是三个数相乘，不能用乘法结合律。要按先乘后加的顺序算。",
+  right:["32 × 15 + 85","= 480 + 85","= 565"], kj:"先观察算式结构，再决定用不用运算律！"},
+ {title:"病历 3 · 把结合律当分配律", wrong:["25 × (8 × 3)","= (25 × 8) × (25 × 3)","= 200 × 75","= 15000"], wrongAt:1,
+  diag:"混淆乘法运算律", why:"括号里是 8×3（乘法），不是加法，不能用分配律拆开。三个数相乘，用乘法交换律和结合律就够了。",
+  right:["25 × (8 × 3)","= (25 × 8) × 3","= 200 × 3","= 600"], kj:"括号里是乘 → 结合律；括号里是加 → 才能分配律！"},
+ {title:"病历 4 · 减法关系没吃透", wrong:["被减数 + 减数 + 差 = 240","被减数 = 240 ÷ 3 = 80"], wrongAt:1,
+  diag:"没掌握减法各部分关系", why:"被减数 = 减数 + 差，所以三个量的和其实是 2 个被减数，不是平均分成 3 份。",
+  right:["被减数 + 减数 + 差 = 240","被减数 + 被减数 = 240","被减数 = 240 ÷ 2 = 120"], kj:"被减数 = 减数 + 差，三个量的和 = 被减数 × 2！"}
+];
+function renderClinic(b){
+  b.innerHTML = `
+  <div class="card">
+    <div class="h2">🩺 错因诊疗室 <button class="saybtn" onclick="speakOnce('今天你来当小医生。每份病历里有一步算错了，把它点出来。')">🔊 听讲解</button></div>
+    <div class="hint">这 4 份病历都是书上真实的高频错误。点出<b>开始出错的那一步</b>，再开药方。</div>
+    <div class="row" id="caseTabs" style="margin:10px 0"></div>
+    <div id="caseBody"></div>
+  </div>`;
+  document.getElementById("caseTabs").innerHTML = CASES.map((c,i)=>
+    `<button class="btn sm ghost" id="ctab${i}" onclick="drawCase(${i})">${i+1}</button>`).join("");
+  drawCase(0);
+}
+function drawCase(i){
+  const c = CASES[i];
+  document.querySelectorAll("[id^=ctab]").forEach(t=>t.classList.add("ghost"));
+  document.getElementById("ctab"+i).classList.remove("ghost");
+  document.getElementById("caseBody").innerHTML = `
+    <div class="popcard" style="animation:none"><div class="w" style="font-size:16.5px">${c.title}</div></div>
+    <div style="margin:8px 0">${c.wrong.map((s,j)=>`<div class="stepline" onclick="caseTap(this,${i},${j})">${s}</div>`).join("")}</div>
+    <div id="caseOut"></div>`;
+}
+function caseTap(el, i, j){
+  const c = CASES[i];
+  if(j !== c.wrongAt){
+    el.classList.add("shake");
+    document.getElementById("caseOut").innerHTML = `<div class="hint" style="text-align:center">这一步本身没问题，再往下找找 👀</div>`;
+    setTimeout(()=>el.classList.remove("shake"),450);
+    return;
+  }
+  el.classList.add("bad");
+  document.querySelectorAll("#caseBody .stepline").forEach(s=>s.classList.add("dim"));
+  el.classList.remove("dim");
+  document.getElementById("caseOut").innerHTML = `
+    <div class="warn"><span class="lab">诊断 · 错因标签：</span><span class="tagchip">${c.diag}</span><br>${c.why}</div>
+    <div class="why"><span class="lab">正确做法：</span><br>${c.right.map(s=>s+"<br>").join("")}</div>
+    <div class="koujue">💊 药方：${c.kj}</div>`;
+}
+
+/* ================= 5. 知识脑图 ================= */
+const MAPNODES = {
+ root:{t:"运算关系与运算律", d:"<b>本单元两大块：</b>① 加减乘除之间的关系（互逆）② 五大运算律（让计算又对又快）。"},
+ rel:{t:"运算关系", d:"<b>加法与减法互逆，乘法与除法互逆。</b>乘法是加法的简便运算。"},
+ add:{t:"加法", d:"把两个数合起来。<br><b>加数 + 加数 = 和</b><br>一个加数 = 和 − 另一个加数"},
+ sub:{t:"减法", d:"已知和与一个加数，求另一个加数。<br><b>被减数 − 减数 = 差</b><br>被减数 = 差 + 减数；减数 = 被减数 − 差"},
+ mul:{t:"乘法", d:"求几个相同加数的和。<br><b>乘数 × 乘数 = 积</b><br>一个乘数 = 积 ÷ 另一个乘数"},
+ div:{t:"除法", d:"已知积与一个乘数，求另一个乘数。<br><b>被除数 ÷ 除数 = 商</b><br>被除数 = 商 × 除数；除数 = 被除数 ÷ 商"},
+ law:{t:"运算律", d:"<b>五大运算律</b>：加法交换律、加法结合律、乘法交换律、乘法结合律、乘法对加法的分配律。用途：简便计算。"},
+ swap:{t:"交换律", d:"<b>a+b=b+a　a×b=b×a</b><br>只换位置，结果不变。加法可用交换来验算。"},
+ bind:{t:"结合律", d:"<b>(a+b)+c=a+(b+c)　(a×b)×c=a×(b×c)</b><br>只换运算顺序。凑整的两个数在后面先算，要加括号。"},
+ dist:{t:"分配律", d:"<b>(a+b)×c = a×c + b×c</b><br>括号里每一个数都要乘外面的数。可推广到减法与除法（除以同一个数）。"},
+ easy:{t:"简算秘诀", d:"<b>凑整！</b>加法找整十整百；乘法找 2×5、4×25、8×125。交换律搬家 + 结合律加括号。"}
+};
+function renderMap(b){
+  b.innerHTML = `
+  <div class="card">
+    <div class="h2">🗺️ 单元知识脑图 <button class="saybtn" onclick="speakOnce('点一点脑图上的圆圈，复习每一条知识。')">🔊 听讲解</button></div>
+    <svg viewBox="0 0 340 300">
+      <line x1="170" y1="52" x2="80" y2="105" stroke="#e7d3bd" stroke-width="3"/>
+      <line x1="170" y1="52" x2="260" y2="105" stroke="#e7d3bd" stroke-width="3"/>
+      <line x1="80" y1="128" x2="30" y2="185" stroke="#e7d3bd" stroke-width="2.5"/>
+      <line x1="80" y1="128" x2="80" y2="185" stroke="#e7d3bd" stroke-width="2.5"/>
+      <line x1="80" y1="128" x2="130" y2="185" stroke="#e7d3bd" stroke-width="2.5"/>
+      <line x1="80" y1="128" x2="180" y2="185" stroke="#e7d3bd" stroke-width="2.5"/>
+      <line x1="260" y1="128" x2="225" y2="185" stroke="#e7d3bd" stroke-width="2.5"/>
+      <line x1="260" y1="128" x2="270" y2="185" stroke="#e7d3bd" stroke-width="2.5"/>
+      <line x1="260" y1="128" x2="315" y2="185" stroke="#e7d3bd" stroke-width="2.5"/>
+      <line x1="270" y1="208" x2="270" y2="248" stroke="#e7d3bd" stroke-width="2.5"/>
+      <g class="node-c" onclick="mapTap('root')"><circle cx="170" cy="40" r="34" fill="#f47b4f"/><text x="170" y="36" text-anchor="middle" font-size="12" font-weight="800" fill="#fff">运算关系</text><text x="170" y="50" text-anchor="middle" font-size="12" font-weight="800" fill="#fff">与运算律</text></g>
+      <g class="node-c" onclick="mapTap('rel')"><circle cx="80" cy="116" r="26" fill="#f2b632"/><text x="80" y="121" text-anchor="middle" font-size="13" font-weight="800" fill="#5a3d00">运算关系</text></g>
+      <g class="node-c" onclick="mapTap('law')"><circle cx="260" cy="116" r="26" fill="#2fa8b8"/><text x="260" y="121" text-anchor="middle" font-size="13" font-weight="800" fill="#fff">运算律</text></g>
+      <g class="node-c" onclick="mapTap('add')"><circle cx="30" cy="198" r="19" fill="#ffe3c2" stroke="#f47b4f" stroke-width="2"/><text x="30" y="203" text-anchor="middle" font-size="12" font-weight="800" fill="#d85a32">加法</text></g>
+      <g class="node-c" onclick="mapTap('sub')"><circle cx="80" cy="198" r="19" fill="#ffe3c2" stroke="#f47b4f" stroke-width="2"/><text x="80" y="203" text-anchor="middle" font-size="12" font-weight="800" fill="#d85a32">减法</text></g>
+      <g class="node-c" onclick="mapTap('mul')"><circle cx="130" cy="198" r="19" fill="#ffe3c2" stroke="#f47b4f" stroke-width="2"/><text x="130" y="203" text-anchor="middle" font-size="12" font-weight="800" fill="#d85a32">乘法</text></g>
+      <g class="node-c" onclick="mapTap('div')"><circle cx="180" cy="198" r="19" fill="#ffe3c2" stroke="#f47b4f" stroke-width="2"/><text x="180" y="203" text-anchor="middle" font-size="12" font-weight="800" fill="#d85a32">除法</text></g>
+      <g class="node-c" onclick="mapTap('swap')"><circle cx="225" cy="198" r="19" fill="#d8f3f6" stroke="#2fa8b8" stroke-width="2"/><text x="225" y="203" text-anchor="middle" font-size="11" font-weight="800" fill="#1d7f8d">交换律</text></g>
+      <g class="node-c" onclick="mapTap('bind')"><circle cx="270" cy="198" r="19" fill="#d8f3f6" stroke="#2fa8b8" stroke-width="2"/><text x="270" y="203" text-anchor="middle" font-size="11" font-weight="800" fill="#1d7f8d">结合律</text></g>
+      <g class="node-c" onclick="mapTap('dist')"><circle cx="315" cy="198" r="19" fill="#d8f3f6" stroke="#2fa8b8" stroke-width="2"/><text x="315" y="203" text-anchor="middle" font-size="11" font-weight="800" fill="#1d7f8d">分配律</text></g>
+      <g class="node-c" onclick="mapTap('easy')"><circle cx="270" cy="262" r="19" fill="#f3ecfa" stroke="#9a6cc0" stroke-width="2"/><text x="270" y="267" text-anchor="middle" font-size="11" font-weight="800" fill="#9a6cc0">简算</text></g>
+    </svg>
+    <div class="infocard" id="mapInfo">👆 点一个圆圈，这条知识就会出现在这里。</div>
+  </div>`;
+}
+function mapTap(k){
+  const n = MAPNODES[k];
+  document.getElementById("mapInfo").innerHTML = `<b>${n.t}</b>｜${n.d}`;
+}
+
+/* ================= 6. 小检验 + 回炉 ================= */
+const QUIZ = [
+ {id:1, q:"□ + 78 = 256 ，□ 里是几？", opts:["178","188","334","166"], ans:0,
+  tag:"规则错 · 一个加数 = 和 − 另一个加数", tip:"□ 是加数。一个加数 = 和 − 另一个加数，所以 □ = 256 − 78 = 178。"},
+ {id:2, q:"927 − □ = 73 ，□ 里是几？", opts:["854","844","1000","746"], ans:0,
+  tag:"规则错 · 减数 = 被减数 − 差", tip:"□ 是减数。减数 = 被减数 − 差，所以 □ = 927 − 73 = 854。"},
+ {id:3, q:"235 + 178 + 165 = 178 + ( 235 + 165 )，这里用了什么运算律？", opts:["加法交换律和加法结合律","只用了加法结合律","只用了加法交换律","乘法分配律"], ans:0,
+  tag:"规则错 · 交换律换位置、结合律加括号", tip:"165 先交换了位置（交换律），再把 235 和 165 加括号先算（结合律），两个都用了。"},
+ {id:4, q:"用简便方法算 25 × ( 8 × 3 )，哪个做法对？", opts:["(25×8)×3 = 200×3 = 600","25×8 + 25×3 = 275","(25×8)×(25×3) = 15000","25×(8+3) = 275"], ans:0,
+  tag:"乱用运算律 · 括号里是乘号，不能用分配律", tip:"括号里是 8×3（乘法），三个数相乘只能用乘法交换律、结合律。分配律是给「和乘一个数」用的。"},
+ {id:5, q:"99 × 56 的简算结果是多少？", opts:["5544","5656","5545","5600"], ans:0,
+  tag:"计算错 · 把 99 看成 (100−1) 再分配", tip:"99 = 100 − 1，所以 99×56 = 100×56 − 1×56 = 5600 − 56 = 5544。"},
+ {id:6, q:"58 × 59 + 58 = 58 × ( 59 + □ )，□ 里是几？", opts:["1","58","59","0"], ans:0,
+  tag:"规则错 · 单独的 58 要看成 58×1（添 1 法）", tip:"添『1』法：58 = 58×1，所以原式 = 58×(59+1) = 58×60 = 3480。"}
+];
+const VARIANTS = {
+ 1:{q:"□ + 65 = 183 ，□ 里是几？", opts:["118","128","248","108"], ans:0, tip:"□ = 183 − 65 = 118。"},
+ 2:{q:"681 − □ = 57 ，□ 里是几？", opts:["624","634","738","614"], ans:0, tip:"□ = 681 − 57 = 624。"},
+ 3:{q:"125 × 37 × 8 = 37 × ( 125 × 8 )，这里用了什么运算律？", opts:["乘法交换律和乘法结合律","只用了乘法结合律","只用了乘法交换律","乘法分配律"], ans:0, tip:"8 交换了位置，又把 125 和 8 加括号先算，两个律都用了。"},
+ 4:{q:"用简便方法算 25 × ( 4 × 9 )，哪个做法对？", opts:["(25×4)×9 = 100×9 = 900","25×4 + 25×9 = 325","(25×4)×(25×9) = 9000","25×(4+9) = 325"], ans:0, tip:"乘法结合律：(25×4)×9 = 100×9 = 900。"},
+ 5:{q:"98 × 56 的简算结果是多少？", opts:["5488","5588","5600","5388"], ans:0, tip:"98 = 100 − 2，98×56 = 5600 − 112 = 5488。"},
+ 6:{q:"37 × 99 + 37 = 37 × ( 99 + □ )，□ 里是几？", opts:["1","37","99","0"], ans:0, tip:"37 = 37×1，原式 = 37×(99+1) = 3700。"}
+};
+const WKEY = "gold4u1_wrong_v1";
+function loadWrong(){ try{ return JSON.parse(localStorage.getItem(WKEY)||"[]"); }catch(e){ return []; } }
+function saveWrong(w){ localStorage.setItem(WKEY, JSON.stringify(w)); }
+let qz = null;
+function renderQuiz(isRedo){
+  const pool = isRedo ? loadWrong() : QUIZ.map(q=>({...q, streak:0}));
+  if(isRedo && !pool.length){ goHome(); return; }
+  qz = {isRedo, pool, i:0, right:0, done:0, graduated:0};
+  document.getElementById("viewBody").innerHTML = `
+  <div class="card">
+    <div class="h2">${isRedo?"🔥 错题回炉":"⭐ 小检验 · 6 题"}</div>
+    <div class="hint">${isRedo?"都是之前做错的题。连续答对 2 次，这题就毕业移出。":"理解之后的检验。答错不可怕——错因标签会告诉你卡在哪，还有 1 道同类变式马上练。"}</div>
+    <div class="prog" id="qzProg"></div>
+    <div id="qzBody"></div>
+  </div>`;
+  drawQ();
+}
+function drawQ(){
+  const item = qz.pool[qz.i];
+  document.getElementById("qzProg").innerHTML = qz.pool.map((_,j)=>
+    `<span class="dot ${j<qz.i?"done":j===qz.i?"on":""}"></span>`).join("");
+  document.getElementById("qzBody").innerHTML = `
+    <div class="qq">${item.q}</div>
+    ${qz.isRedo?`<div class="hint">已连续答对 ${item.streak||0} 次，再对 ${2-(item.streak||0)} 次毕业</div>`:""}
+    <div class="opts">${item.opts.map((o,j)=>`<button class="opt" onclick="answer(this,${j})">${o}</button>`).join("")}</div>
+    <div id="qOut"></div>`;
+}
+function answer(btn, j){
+  const item = qz.pool[qz.i];
+  const opts = document.querySelectorAll("#qzBody .opt");
+  opts.forEach(o=>o.disabled=true);
+  if(j === item.ans){
+    btn.classList.add("right");
+    qz.right++;
+    if(qz.isRedo){
+      item.streak = (item.streak||0)+1;
+      const w = loadWrong();
+      const k = w.findIndex(x=>x.id===item.id);
+      if(k>=0){ w[k].streak = item.streak; if(item.streak>=2){ w.splice(k,1); qz.graduated++; } saveWrong(w); }
+    }
+    document.getElementById("qOut").innerHTML = `
+      <div class="why"><span class="lab">答对了！</span>${item.tip}</div>
+      ${qz.isRedo&&item.streak>=2?`<div class="koujue">🎓 这道题毕业啦，移出回炉本！</div>`:""}
+      <div class="row center"><button class="btn sm" onclick="nextQ()">${qz.i+1<qz.pool.length?"下一题":"看成绩"}</button></div>`;
+    speakOnce("答对了，真棒！");
+  }else{
+    btn.classList.add("wrong");
+    opts[item.ans].classList.add("right");
+    if(!qz.isRedo){
+      const w = loadWrong().filter(x=>x.id!==item.id);
+      w.push({id:item.id, q:item.q, opts:item.opts, ans:item.ans, tag:item.tag, tip:item.tip, streak:0, date:new Date().toISOString().slice(0,10)});
+      saveWrong(w);
+    }else{
+      const w = loadWrong(); const k = w.findIndex(x=>x.id===item.id);
+      if(k>=0){ w[k].streak = 0; saveWrong(w); } item.streak = 0;
+    }
+    const v = VARIANTS[item.id];
+    document.getElementById("qOut").innerHTML = `
+      <div class="warn"><span class="lab">错因标签：</span><span class="tagchip">${item.tag}</span><br>${item.tip}</div>
+      <div class="popcard"><div class="stepbadge">同类变式 · 马上练 1 题</div><div class="qq" style="font-size:16px">${v.q}</div>
+        <div class="opts">${v.opts.map((o,jj)=>`<button class="opt" onclick="answerVar(this,${jj})">${o}</button>`).join("")}</div>
+      </div><div id="vOut"></div>`;
+    speakOnce("没关系，看看错因标签，下次就会了。");
+  }
+}
+function answerVar(btn, j){
+  const item = qz.pool[qz.i];
+  const v = VARIANTS[item.id];
+  document.querySelectorAll("#qOut .opt").forEach(o=>o.disabled=true);
+  if(j===v.ans){
+    btn.classList.add("right");
+    document.getElementById("vOut").innerHTML = `<div class="why"><span class="lab">变式也对了！</span>${v.tip}</div>
+      <div class="row center"><button class="btn sm" onclick="nextQ()">${qz.i+1<qz.pool.length?"继续下一题":"看成绩"}</button></div>`;
+  }else{
+    btn.classList.add("wrong","shake");
+    document.getElementById("vOut").innerHTML = `<div class="warn"><span class="lab">再想想：</span>${v.tip}</div>
+      <div class="row center"><button class="btn sm ghost" onclick="nextQ()">${qz.i+1<qz.pool.length?"继续下一题":"看成绩"}</button></div>`;
+  }
+}
+function nextQ(){
+  qz.i++;
+  if(qz.i < qz.pool.length){ drawQ(); return; }
+  const total = qz.pool.length;
+  document.getElementById("qzBody").innerHTML = `
+    <div class="scorebig">${qz.right} / ${total}</div>
+    <div class="popcard"><div class="w">${qz.right===total?"🏆 满分！运算关系与运算律，拿下！":qz.right>=total-2?"💪 很棒！错的题已经帮你记进回炉本。":"🌱 错题都进回炉本了，明天先来回炉，越练越熟。"}</div></div>
+    ${qz.isRedo?`<div class="why"><span class="lab">回炉成果：</span>本次毕业 ${qz.graduated} 道，回炉本还剩 ${loadWrong().length} 道。</div>`:""}
+    <div class="row center" style="margin-top:10px">
+      <button class="btn ghost sm" onclick="open('map')">🗺️ 再看遍脑图</button>
+      <button class="btn sm" onclick="goHome()">回大厅</button>
+    </div>`;
+}
+
+/* ================= 7. 培优巧算动画 ================= */
+const PROS = [
+ {name:"添「1」法", say:"培优巧算第一招，添一法。把单独的乘数看成它乘一，就能逆用分配律。",
+  steps:["58 × 59 + 58","= 58 × 59 + 58 × 1  ← 单独的 58 添上 ×1","= 58 × ( 59 + 1 )  ← 逆用分配律","= 58 × 60","= 3480"],
+  note:"看到 a×b + a 这种样子，就把单独的 a 变成 a×1。"},
+ {name:"拆倍法", say:"培优巧算第二招，拆倍法。没有相同乘数，就拆一个数出来凑相同的乘数。",
+  steps:["12 × 97 + 36","= 12 × 97 + 12 × 3  ← 36 拆成 12×3","= 12 × ( 97 + 3 )  ← 逆用分配律","= 12 × 100","= 1200"],
+  note:"找倍数关系：36 是 12 的 3 倍，拆出相同的 12。"},
+ {name:"转化法", say:"培优巧算第三招，转化法。看到二十五想四，看到一百二十五想八。",
+  steps:["25 × 125 × 32","= 25 × 125 × ( 4 × 8 )  ← 32 拆成 4×8","= ( 25 × 4 ) × ( 125 × 8 )  ← 交换 + 结合","= 100 × 1000","= 100000"],
+  note:"连乘里有 25 或 125，就把别的乘数拆出 4 或 8。"}
+];
+let proIdx = 0, proStep = 0;
+function renderPro(b){
+  proIdx = 0; proStep = 0;
+  b.innerHTML = `
+  <div class="card">
+    <div class="h2">🚀 培优巧算动画</div>
+    <div class="hint">书上「培优精练」的三招巧算。点「下一步」一招一招看，每一步想想为什么可以这样变。</div>
+    <div class="row" id="proTabs" style="margin:10px 0"></div>
+    <div id="proBody"></div>
+  </div>`;
+  document.getElementById("proTabs").innerHTML = PROS.map((p,i)=>
+    `<button class="btn sm ${i===0?"":"ghost"}" id="ptab${i}" onclick="proIdx=${i};proStep=0;drawPro()">${p.name}</button>`).join("");
+  drawPro();
+}
+function drawPro(){
+  const p = PROS[proIdx];
+  document.querySelectorAll("[id^=ptab]").forEach((t,i)=>t.classList.toggle("ghost", i!==proIdx));
+  document.getElementById("proBody").innerHTML = `
+    <div class="popcard" style="animation:none"><div class="w" style="font-size:17px">${p.name}</div></div>
+    <div id="proSteps" style="margin:10px 0"></div>
+    <div class="row center">
+      <button class="btn sm" id="proNext" onclick="proNext()">下一步 ▶</button>
+      <button class="saybtn" onclick="speakOnce('${p.say}')">🔊 听讲解</button>
+    </div>
+    <div id="proNote"></div>`;
+  proStep = 0; showProStep();
+}
+function showProStep(){
+  const p = PROS[proIdx];
+  const box = document.getElementById("proSteps");
+  box.innerHTML = p.steps.slice(0, proStep+1).map((s,j)=>
+    `<div class="stepline ${j===proStep?"ok":"dim"}" style="cursor:default">${s}</div>`).join("");
+  if(proStep >= p.steps.length-1){
+    document.getElementById("proNext").disabled = true;
+    document.getElementById("proNote").innerHTML = `<div class="koujue">💡 ${p.note}</div>`;
+  }
+}
+function proNext(){ proStep++; showProStep(); }
+
+/* ================= 启动 ================= */
+renderTiles();
+</script>
+</body>
+</html>

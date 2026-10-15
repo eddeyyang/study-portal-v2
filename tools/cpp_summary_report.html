@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>核桃编程 · C++ 学习进度总结</title>
+<style>
+@page { size: A4; margin: 14mm 14mm 16mm; }
+*{ margin:0; padding:0; box-sizing:border-box; }
+html{ -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+body{ font-family:"WenQuanYi Zen Hei","Noto Sans CJK SC",sans-serif; color:#23203a; font-size:11.5px; line-height:1.65;}
+:root{ --o:#FF6B35; --o2:#FF8C42; --g:#2BB673; --b:#3B82F6; --p:#6B5BFF; --ink:#23203a; --soft:#6b6880; --line:#ece8f5; }
+
+.cover{ text-align:center; padding:18px 0 14px; border-bottom:3px solid var(--o); margin-bottom:16px; }
+.cover .logo{ width:54px;height:54px;border-radius:14px;margin:0 auto 8px;display:flex;align-items:center;justify-content:center;
+  font-size:30px;background:linear-gradient(135deg,var(--o),var(--o2));color:#fff;}
+.cover h1{ font-size:24px; letter-spacing:.5px; }
+.cover .sub{ color:var(--soft); font-size:12px; margin-top:4px;}
+.cover .meta{ font-size:10.5px; color:var(--soft); margin-top:8px;}
+.cover .who{ display:inline-flex; gap:14px; margin-top:8px; }
+.cover .who span{ background:#FFF3E8; border:1px solid #ffd9bf; border-radius:999px; padding:3px 12px; font-size:11px; font-weight:700; color:#c84b1a;}
+
+h2{ font-size:15px; margin:16px 0 8px; padding-left:9px; border-left:5px solid var(--o); display:flex; align-items:baseline; gap:8px;}
+h2 small{ font-size:10px; color:var(--soft); font-weight:400;}
+h3{ font-size:12.5px; margin:9px 0 4px; color:#3a3658;}
+p{ margin:3px 0; }
+.muted{ color:var(--soft); }
+ul{ margin:4px 0 4px 18px; } li{ margin:2px 0; }
+b{ color:#c84b1a; }
+.avoid-break{ page-break-inside:avoid; }
+
+/* 进度时间线 */
+.timeline{ display:flex; gap:0; margin:10px 0 4px; }
+.tl{ flex:1; text-align:center; position:relative; }
+.tl .dot{ width:20px;height:20px;border-radius:50%; margin:0 auto 5px; color:#fff; font-size:11px;
+  display:flex;align-items:center;justify-content:center; font-weight:800;}
+.tl.done .dot{ background:var(--g);} .tl.now .dot{ background:var(--b);} .tl.todo .dot{ background:#cfcad9;}
+.tl .bar{ position:absolute; top:9px; left:50%; width:100%; height:3px; background:#e6e2f0; z-index:-1;}
+.tl.done .bar{ background:var(--g);}
+.tl .lab{ font-size:9.5px; font-weight:700; }
+.tl .st{ font-size:8.5px; color:var(--soft); }
+
+.statline{ display:flex; gap:10px; margin:10px 0;}
+.stat{ flex:1; border:1px solid var(--line); border-radius:10px; padding:8px 10px; background:#fbfaff;}
+.stat b{ display:block; font-size:18px; color:var(--o); }
+.stat span{ font-size:9.5px; color:var(--soft); }
+
+/* 知识卡 */
+.kcard{ border:1px solid var(--line); border-radius:10px; padding:9px 11px; margin:7px 0; background:#fff; page-break-inside:avoid;}
+.kcard .tt{ font-weight:800; font-size:12px; color:#2d2a4a; }
+.kcard .tt .pill{ font-size:8.5px; font-weight:800; color:#fff; background:var(--p); border-radius:999px; padding:1px 7px; margin-left:6px; vertical-align:middle;}
+.kcard .pill.g{ background:var(--g);} .kcard .pill.b{ background:var(--b);} .kcard .pill.o{ background:var(--o);}
+.code{ background:#1e1b33; color:#efeaff; border-radius:7px; padding:7px 9px; font-family:"Courier New",monospace;
+  font-size:10px; line-height:1.6; margin:5px 0; white-space:pre-wrap; }
+.code .k{color:#FF9D66;}.code .v{color:#7FE0FF;}.code .n{color:#FFD93D;}.code .s{color:#9DE89D;}.code .o{color:#FF8FB0;}.code .c{color:#8b86a8;}
+
+table{ border-collapse:collapse; width:100%; margin:6px 0; font-size:10.5px;}
+th,td{ border:1px solid var(--line); padding:5px 7px; text-align:left; vertical-align:top;}
+th{ background:#FFF3E8; color:#c84b1a; font-weight:800;}
+td .en{ font-weight:800; color:var(--o); }
+
+.tag{ display:inline-block; font-size:9px; font-weight:700; background:#EEF4FF; color:var(--b); border-radius:6px; padding:1px 7px; margin:1px 2px;}
+.tag.g{ background:#EBFBF2; color:var(--g);}
+.tag.o{ background:#FFF3E8; color:#c84b1a;}
+
+.box{ border:1px solid var(--line); border-radius:10px; padding:9px 11px; margin:7px 0; background:#fbfaff;}
+.box.green{ background:#f3fcf7; border-color:#cdeedd; }
+.box.blue{ background:#f4f8ff; }
+.proj{ display:flex; gap:10px; align-items:flex-start;}
+.proj .em{ font-size:26px; }
+
+.assess td:first-child{ width:34%; font-weight:700;}
+.dots{ color:var(--o); letter-spacing:2px; }
+
+.foot{ margin-top:14px; padding-top:8px; border-top:1px solid var(--line); font-size:9px; color:var(--soft); text-align:center;}
+.pagebreak{ page-break-before:always; }
+</style>
+</head>
+<body>
+
+<div class="cover">
+  <div class="logo">🌰</div>
+  <h1>核桃编程 · C++ 学习进度总结</h1>
+  <div class="sub">Hetao Coding · C++ Progress Report</div>
+  <div class="who"><span>🦁 哥哥 Kenton（四年级）</span><span>🐯 弟弟 Eddey（三年级）</span></div>
+  <div class="meta">课程方向：少儿 C++ 编程（核桃编程 L2 阶段）　·　报告生成日期：2026-06-27</div>
+</div>
+
+<h2>一、当前进度 <small>学到哪儿了</small></h2>
+<p class="muted">核桃编程 L2 阶段（C++ 语言方向）。已系统学完 <b>条件判断（if-else）</b> 与 <b>智能硬件「密码门」项目</b>，能独立做出一个真正能用的密码锁。目前正衔接 <b>L2-4：赋值语句与变量运算</b>（已预习，课堂学习中）。</p>
+
+<div class="timeline">
+  <div class="tl done"><div class="bar"></div><div class="dot">✓</div><div class="lab">L2-2</div><div class="st">if-else 条件</div></div>
+  <div class="tl done"><div class="bar"></div><div class="dot">✓</div><div class="lab">L2-3</div><div class="st">密码门项目</div></div>
+  <div class="tl now"><div class="bar"></div><div class="dot">▶</div><div class="lab">L2-4</div><div class="st">赋值·变量运算</div></div>
+  <div class="tl todo"><div class="bar"></div><div class="dot">·</div><div class="lab">L2-5…</div><div class="st">后续</div></div>
+</div>
+
+<div class="statline">
+  <div class="stat"><b>L2-3</b><span>已完成到此课</span></div>
+  <div class="stat"><b>1</b><span>能独立完成的项目（密码门）</span></div>
+  <div class="stat"><b>10</b><span>掌握的英文编程词</span></div>
+  <div class="stat"><b>C++</b><span>使用语言</span></div>
+</div>
+
+<h2>二、已掌握的核心知识 <small>截至 L2-3</small></h2>
+
+<h3>① 编程基础</h3>
+<div class="kcard">
+  <div class="tt">变量与数据类型 <span class="pill g">已掌握</span></div>
+  <p>会用 <b>int</b>（整数）和 <b>string</b>（字符串）两种变量来"装"数据。</p>
+  <div class="code"><span class="v">int</span> a, b;        <span class="c">// 整数变量</span>
+<span class="v">string</span> key;      <span class="c">// 字符串变量</span></div>
+</div>
+<div class="kcard">
+  <div class="tt">输入与输出 <span class="pill g">已掌握</span></div>
+  <p>用 <b>cout &lt;&lt;</b> 输出、<b>cin &gt;&gt;</b> 输入，<b>endl</b> 换行。理解<b>多变量输入的顺序</b>：先写的变量先拿到数字。</p>
+  <div class="code"><span class="k">cin</span> <span class="o">&gt;&gt;</span> a;
+<span class="k">cin</span> <span class="o">&gt;&gt;</span> b;     <span class="c">// 先输 18 再输 5 → a=18, b=5</span>
+<span class="k">cout</span> <span class="o">&lt;&lt;</span> a <span class="o">&lt;&lt;</span> <span class="k">endl</span>;</div>
+</div>
+
+<h3>② 条件判断（本阶段重点）</h3>
+<div class="kcard">
+  <div class="tt">if-else 语句 <span class="pill g">已掌握·重点</span></div>
+  <p>根据条件成不成立执行不同代码，<b>只走一边，绝不两边都执行</b>。会用比较运算符 <b>==、&gt;、&gt;=、&lt;</b>。</p>
+  <div class="code"><span class="k">if</span>(a <span class="o">&gt;</span> <span class="n">10</span>) { <span class="k">cout</span><span class="o">&lt;&lt;</span><span class="s">"s"</span>; }   <span class="c">// 成立打印 s</span>
+<span class="k">else</span>       { <span class="k">cout</span><span class="o">&lt;&lt;</span><span class="s">"n"</span>; }   <span class="c">// 否则打印 n</span></div>
+</div>
+<div class="kcard">
+  <div class="tt">进阶与易错点 <span class="pill o">考点</span></div>
+  <ul>
+    <li><b>两个并列 if vs if-else</b>：两个 if 可能都执行；if-else 只执行一个。只有条件"正好相反"时才能互换。</li>
+    <li>三个常见错误：① if 条件后<b>多写分号</b> <code>if(a&lt;3;)</code>　② cout 句<b>漏分号</b>　③ <b>else 后多加条件</b> <code>else(a&gt;=3)</code></li>
+  </ul>
+</div>
+
+<h3>③ 智能硬件 ·「密码门」项目（L2-3）</h3>
+<p class="muted">用智慧小屋 + 舵机 + 红外遥控器，把编程和真实硬件结合，做出一个会开关的密码锁。</p>
+<div class="kcard">
+  <div class="tt">控制舵机开门 — rotateTo() <span class="pill g">已掌握</span></div>
+  <p>括号里填角度（范围 <b>0~180 度</b>），舵机带着门转。</p>
+  <div class="code"><span class="k">if</span>(<span class="k">isPressed</span>(<span class="s">"A"</span>)) { <span class="k">rotateTo</span>(<span class="n">180</span>); }  <span class="c">// 按A键，转到180°开门</span></div>
+</div>
+<div class="kcard">
+  <div class="tt">读红外遥控 — getIRKey() <span class="pill g">已掌握</span></div>
+  <p>读出"刚按了遥控的哪个键"，存进字符串变量。</p>
+  <div class="code"><span class="v">string</span> key;
+key <span class="o">=</span> <span class="k">getIRKey</span>();          <span class="c">// 检测按键</span>
+<span class="k">if</span>(key <span class="o">==</span> <span class="s">"左"</span>) { <span class="k">rotateTo</span>(<span class="n">180</span>); }</div>
+</div>
+<div class="kcard">
+  <div class="tt">记录密码 — 字符串拼接 + isdigit() <span class="pill g">已掌握</span></div>
+  <p>用 <b>+</b> 把按下的数字一个个接起来（"12"+"3"="123"）；用 <b>isdigit()</b> 判断按的是不是数字。</p>
+  <div class="code"><span class="k">if</span>(<span class="k">isdigit</span>(key))            <span class="c">// 按的是数字吗</span>
+{ result <span class="o">=</span> result <span class="o">+</span> key; }  <span class="c">// 拼接到密码后面</span></div>
+</div>
+<div class="kcard">
+  <div class="tt">验证密码 — if-else 实战 <span class="pill g">已掌握</span></div>
+  <p>用 <b>==</b> 比较输入与正确密码，对了开门、等 5 秒自动关；错了屏幕提示。把学过的 if-else 用在真实项目里。</p>
+  <div class="code"><span class="k">if</span>(result <span class="o">==</span> password) {
+   <span class="k">rotateTo</span>(<span class="n">180</span>); <span class="k">sleep</span>(<span class="n">5</span>); <span class="k">rotateTo</span>(<span class="n">90</span>);  <span class="c">// 开门→等待→关门</span>
+} <span class="k">else</span> {
+   <span class="k">printPos</span>(<span class="s">"密码错误"</span>, <span class="s">"中间"</span>);
+}</div>
+</div>
+
+<div class="box green avoid-break">
+  <div class="proj">
+    <div class="em">🔐</div>
+    <div>
+      <h3 style="margin-top:0">✅ 能独立做出的项目：密码门 / 密码锁</h3>
+      <p>遥控器输入密码 → 程序记录并拼接 → 用 if-else 验证 → 正确则舵机开门、5 秒后自动关门，错误则屏幕提示。<b>已能动手完成，并邀请家人来猜密码。</b></p>
+      <p class="muted">综合用到：字符串、输入检测、条件判断、硬件控制——是一个完整的"输入→处理→输出"小系统。</p>
+    </div>
+  </div>
+</div>
+
+<h2 class="pagebreak">三、英文编程词汇 <small>已会读会认</small></h2>
+<table>
+  <tr><th>单词</th><th>词性/含义</th><th>在编程里</th></tr>
+  <tr><td><span class="en">if / else</span></td><td>如果 / 否则</td><td>条件判断关键字</td></tr>
+  <tr><td><span class="en">rotate</span></td><td>v. 旋转、转动</td><td>rotateTo() 转到某角度</td></tr>
+  <tr><td><span class="en">infrared</span></td><td>adj. 红外线的</td><td>infrared remote 红外遥控</td></tr>
+  <tr><td><span class="en">key</span></td><td>n. 按键；钥匙；关键</td><td>getIRKey() 获取按键</td></tr>
+  <tr><td><span class="en">digit</span></td><td>n. 数字（0–9）</td><td>isdigit() 判断是否数字</td></tr>
+  <tr><td><span class="en">result</span></td><td>n. 结果</td><td>存放输入的密码</td></tr>
+  <tr><td><span class="en">password</span></td><td>n. 密码</td><td>存放正确密码</td></tr>
+  <tr><td><span class="en">max</span></td><td>n. 最大值</td><td>maximum 的缩写（L2-4）</td></tr>
+  <tr><td><span class="en">integer</span></td><td>n. 整数</td><td>int 类型（L2-4）</td></tr>
+  <tr><td><span class="en">kick</span></td><td>v./n. 踢、踹</td><td>动作指令 / 起步（L2-4）</td></tr>
+</table>
+
+<h2>四、正在学习 <small>L2-4 · 已预习，课堂进行中</small></h2>
+<p class="muted">模块 15「赋值语句初识」+ 模块 16「简单变量运算」。核心是让一个变量（盒子）里的数值变来变去。</p>
+<div class="kcard">
+  <div class="tt">赋值语句 <span class="pill b">学习中</span></div>
+  <p><b>a = 5</b> 直接赋值；<b>a = a + 2</b> 要分两步：<b>先算右边算式，再把结果放进左边变量</b>。</p>
+  <div class="code">a <span class="o">=</span> <span class="n">5</span>;       <span class="c">// 直接把 5 放进 a</span>
+a <span class="o">=</span> a <span class="o">+</span> <span class="n">2</span>;   <span class="c">// 先算 a+2，再赋值给 a</span></div>
+</div>
+<div class="kcard">
+  <div class="tt">变量控制循环次数 <span class="pill b">学习中</span></div>
+  <p>for 小括号中间的数字是循环次数；用<b>变量</b>代替数字，次数就随变量变化。</p>
+  <div class="code"><span class="k">for</span>(<span class="v">int</span> i<span class="o">=</span><span class="n">1</span>; i<span class="o">&lt;=</span>a; i<span class="o">++</span>) { <span class="k">cout</span><span class="o">&lt;&lt;</span><span class="s">"f"</span>; }  <span class="c">// 循环 a 次</span></div>
+</div>
+<div class="kcard">
+  <div class="tt">变量命名规则 <span class="pill b">学习中</span></div>
+  <ul>
+    <li>区分大小写（a 和 A 不同）；只能用字母、下划线、数字，<b>不能数字开头</b>；不能用 C++ 关键字（如 if、int）。</li>
+  </ul>
+</div>
+
+<h2>五、能力评估与下一步</h2>
+<table class="assess">
+  <tr><th>维度</th><th>表现</th></tr>
+  <tr><td>条件判断 if-else</td><td><span class="dots">●●●●○</span> 熟练，能识别易错点</td></tr>
+  <tr><td>变量与输入输出</td><td><span class="dots">●●●●○</span> 掌握，注意输入顺序</td></tr>
+  <tr><td>硬件项目（密码门）</td><td><span class="dots">●●●●○</span> 能独立搭建完整流程</td></tr>
+  <tr><td>赋值与变量运算</td><td><span class="dots">●●○○○</span> 预习中，下一步重点</td></tr>
+  <tr><td>循环 for</td><td><span class="dots">●●○○○</span> 初识，需多练</td></tr>
+</table>
+<div class="box blue">
+  <h3 style="margin-top:0">📌 下一步建议</h3>
+  <ul>
+    <li>巩固 <b>赋值语句的两步思维</b>（先算右边、再放左边），尤其 <code>a = a + n</code> 这类。</li>
+    <li>多练 <b>用变量控制循环次数</b>，把"写死的数字"换成"会变的变量"。</li>
+    <li>把密码门项目<b>升级</b>：尝试更长的密码、可重设密码——自然用到赋值与循环。</li>
+  </ul>
+</div>
+
+<div class="box">
+  <h3 style="margin-top:0">🧩 配套自学软件（家庭学习门户）</h3>
+  <p>每节课都配有"会动、能玩"的复习/预习软件（可拖动的舵机、会变的赋值盒、循环动画等），孩子在家任意设备打开即可巩固：</p>
+  <p><span class="tag o">C++ 学习馆主入口 cpp_hub</span> <span class="tag g">L2-3 密码门复习实验室</span> <span class="tag">L2-4 赋值·变量运算预习</span> <span class="tag">L2-2/2-3 听读讲义</span></p>
+</div>
+
+<div class="foot">核桃编程 C++ 学习进度总结 · 家庭学习门户自动生成 · 仅用英文小名，未含任何隐私信息 · 2026-06-27</div>
+
+</body>
+</html>

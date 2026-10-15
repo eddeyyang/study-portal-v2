@@ -1,0 +1,66 @@
+{
+    "kenton":  [
+                   {
+                       "type":  "app",
+                       "subject":  "数学",
+                       "title":  "计算大通关 · 今日新馆（暑假巧算探索馆）",
+                       "link":  "apps/kenton_calc_datongguan.html"
+                   },
+                   {
+                       "type":  "app",
+                       "subject":  "英语",
+                       "title":  "外教课复习 · Travel \u0026 Transport（旅行+交通·should·过去式）",
+                       "link":  "apps/preply-travel-vocabulary.html"
+                   },
+                   {
+                       "type":  "app",
+                       "subject":  "数学",
+                       "title":  "数学冲刺软件 · 刷题（四下）",
+                       "link":  "apps/kenton_math_sprint.html"
+                   },
+                   {
+                       "type":  "pdf",
+                       "subject":  "数学",
+                       "title":  "数学冲刺卷 · 第1天（做完对答案）",
+                       "link":  "papers/k_d1_math.html"
+                   }
+               ],
+    "eddey":  [
+                  {
+                      "type":  "app",
+                      "subject":  "数学",
+                      "title":  "计算大通关 · 今日新馆（暑假巧算探索馆）",
+                      "link":  "apps/eddey_calc_datongguan.html"
+                  },
+                  {
+                      "type":  "app",
+                      "subject":  "英语",
+                      "title":  "外教课复习 · Travel \u0026 Transport（旅行+交通·should·过去式）",
+                      "link":  "apps/preply-travel-vocabulary.html"
+                  },
+                  {
+                      "type":  "app",
+                      "subject":  "语文",
+                      "title":  "语文复习探索馆 · 三下（会动的复习：转盘/变身机/脑图）",
+                      "link":  "apps/eddey_chinese_index_lab.html"
+                  },
+                  {
+                      "type":  "app",
+                      "subject":  "语文",
+                      "title":  "语文总复习 · 三下（错字+易错字 报默·易错小测·错词本）",
+                      "link":  "apps/eddey_chinese_master.html"
+                  },
+                  {
+                      "type":  "app",
+                      "subject":  "数学",
+                      "title":  "数学冲刺软件 · 刷题（三下）",
+                      "link":  "apps/eddey_math_sprint.html"
+                  },
+                  {
+                      "type":  "pdf",
+                      "subject":  "数学",
+                      "title":  "数学冲刺卷 · 第1天（做完对答案）",
+                      "link":  "papers/e_d1_math.html"
+                  }
+              ]
+}
