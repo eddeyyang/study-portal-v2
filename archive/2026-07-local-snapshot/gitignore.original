@@ -1,0 +1,17 @@
+# ===== 隐私红线：本地敏感数据，永不上传 =====
+local-data/
+
+# 系统/编辑器杂物
+.DS_Store
+Thumbs.db
+desktop.ini
+*.tmp
+node_modules/
+
+# 云端服务密钥（Neon / Cloudflare 等）永不提交
+.env
+.env.*
+!.env.example
+.dev.vars
+.dev.vars.*
+!.dev.vars.example
