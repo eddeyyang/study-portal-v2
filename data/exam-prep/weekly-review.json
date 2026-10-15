@@ -1,0 +1,21 @@
+{
+  "updated": "2026-06-14",
+  "_schema": {
+    "weekStart": "本周起始 YYYY-MM-DD（周一）",
+    "child": "kenton | eddey | both",
+    "sessions": "训练次数",
+    "minutes": "总训练时长",
+    "typingTimes": "打字次数",
+    "problems": "编程题数",
+    "accuracy": "正确率(0-100)",
+    "topCause": "高频错因",
+    "bestProgress": "最明显进步",
+    "biggestIssue": "最大问题",
+    "keep": "下周保留内容",
+    "drop": "下周删除内容",
+    "add": "下周增加内容",
+    "focusErrors": "重点错题",
+    "sept": "是否适合继续冲 9 月考级：yes | maybe | no + 一句话"
+  },
+  "reviews": []
+}

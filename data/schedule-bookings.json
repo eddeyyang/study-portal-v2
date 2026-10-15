@@ -1,0 +1,66 @@
+{
+  "schema": "study-bookings-v1",
+  "timeZone": "Asia/Shanghai",
+  "dates": {
+    "2026-10-14": {
+      "checkedAt": "2026-10-10T08:43:49.000Z",
+      "lessons": [
+        {
+          "child": "eddey",
+          "teacher": "Valeria",
+          "start": "18:00",
+          "end": "18:25"
+        }
+      ]
+    },
+    "2026-10-16": {
+      "checkedAt": "2026-10-10T08:43:49.000Z",
+      "lessons": [
+        {
+          "child": "kenton",
+          "teacher": "Bryony",
+          "start": "18:00",
+          "end": "18:25"
+        },
+        {
+          "child": "eddey",
+          "teacher": "Valeria",
+          "start": "20:30",
+          "end": "20:55"
+        }
+      ]
+    },
+    "2026-10-12": {
+      "checkedAt": "2026-10-12T14:13:29.000Z",
+      "lessons": []
+    },
+    "2026-10-23": {
+      "checkedAt": "2026-10-12T14:13:29.000Z",
+      "lessons": [
+        {
+          "child": "kenton",
+          "teacher": "Bryony",
+          "start": "18:00",
+          "end": "18:25"
+        },
+        {
+          "child": "eddey",
+          "teacher": "Valeria",
+          "start": "20:30",
+          "end": "20:55"
+        }
+      ]
+    },
+    "2026-10-15": {
+      "checkedAt": "2026-10-13T02:42:22.000Z",
+      "lessons": [
+        {
+          "child": "kenton",
+          "teacher": "Bryony",
+          "start": "18:30",
+          "end": "18:55"
+        }
+      ]
+    }
+  }
+}

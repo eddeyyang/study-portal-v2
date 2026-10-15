@@ -1,0 +1,30 @@
+{
+  "updated": "2026-06-14",
+  "_schema": {
+    "id": "唯一编号，建议 <child首字母><级别>-<序号>，如 k1-2",
+    "date": "错题日期 YYYY-MM-DD",
+    "child": "kenton | eddey",
+    "source": "GESP | CTL | 老师 | 自编",
+    "type": "输入输出 | 判断 | 循环 | 数组 | 字符串 | 逻辑 | 函数 | 其它",
+    "cause": "读题 | 语法 | 打字 | 逻辑 | 建模 | 时间不够 | 粗心",
+    "secondError": "是否二错: true | false",
+    "idea": "正确思路一句话",
+    "redoDate": "复做日期 YYYY-MM-DD（建议 3 天后 / 7 天后）",
+    "mastered": "是否掌握: true | false",
+    "note": "备注（题目原文若敏感请只存 local-data/，这里只放匿名化描述）"
+  },
+  "errors": [],
+  "_example": {
+    "id": "k1-2",
+    "date": "2026-06-18",
+    "child": "kenton",
+    "source": "GESP",
+    "type": "判断",
+    "cause": "逻辑",
+    "secondError": false,
+    "idea": "奇偶用 n%2==0 判断，余 0 是偶数",
+    "redoDate": "2026-06-21",
+    "mastered": false,
+    "note": "取余符号 % 含义没记牢"
+  }
+}
