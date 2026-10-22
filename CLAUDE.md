@@ -4,7 +4,7 @@
 
 ## 这个仓库是什么
 
-- Kenton 与 Eddey 的家庭学习门户的 Claude 工作仓库，放在 Claude 专用的 GitHub 账号 `eddeyyang` 下，**私有**。
+- Kenton 与 Eddey 的家庭学习门户的 Claude 工作仓库，放在 Claude 专用的 GitHub 账号 `eddeyyang` 下，**公开**（家长 2026-10-22 改为公开），并开了 GitHub Pages 预览站 https://eddeyyang.github.io/study-portal-v2/ 。推到 `main` 的内容会公开可见，提交前确认不含私密件。根目录的 `.nojekyll` 让下划线开头的文件（如音频 `_manifest.json`）也能发布，不要删。
 - 2026-10-15 由两部分合成：线上网站 study-portal-eta.vercel.app 的完整抓取（根目录），加上家长电脑里 7 月本地快照中线上没有的部分（`archive/2026-07-local-snapshot/`）。
 - **Claude 的提交一律推到这里**（`eddeyyang/study-portal-v2`，家长 2026-10-22 指定）。原仓库 `easonyoung1990-create/study-portal` 不给 Claude 写权限，也不向它推送。
 - 线上网站目前仍由原仓库部署。v2 的改动要不要上线、怎么接 Vercel 和 Neon，由家长另行决定；决定之前不部署、不覆盖线上。
