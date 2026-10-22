@@ -4,6 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>无人机馆 · 考级通关基地</title>
+<script>window.DDLearningSyncConfig={manualOnly:true};</script>
+<script src="../assets/learning-sync.js" defer></script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 :root{--ink:#22304A;--blue:#2E9BFF;--blue-d:#1B7BD8;--orange:#FF9F43;--yellow:#FFD166;--muted:#6B7A94}
@@ -28,6 +30,11 @@ background:linear-gradient(180deg,#BFE6FF 0%,#E8F7FF 50%,#FFF7E8 100%);min-heigh
 .course.sprint h2{font-size:23px;margin:8px 0}.course.sprint p{color:#D8EEF4;font-size:14px}
 .course.sprint a{background:#FF7A3D;padding:12px 20px;font-size:15px}
 .course.sprint .flag{display:inline-block;border-radius:999px;padding:5px 11px;background:#FFD166;color:#513500;font-size:12px;font-weight:900}
+.course.level-two{border-color:#58CBDA;background:linear-gradient(145deg,#143C50,#175B64)}
+.course.level-two::after{content:"✦";right:10px;bottom:-18px;font-size:150px}
+.course.level-two .flag{background:#D6F5E8;color:#185849}
+.course.level-two h2{max-width:20ch;line-height:1.45}
+.course.level-two [aria-current="true"]{outline:3px solid #FFD166;outline-offset:3px}
 .sprint-doors{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:16px}
 .course.sprint .sprint-doors a{display:flex;align-items:center;justify-content:center;gap:8px;margin:0;min-height:58px;border:2px solid rgba(255,255,255,.42);box-shadow:0 10px 22px rgba(0,0,0,.18);font-size:16px}
 .course.sprint .sprint-doors a:first-child{background:#168FC3}.course.sprint .sprint-doors a:last-child{background:#ED642F}
@@ -46,12 +53,23 @@ background:linear-gradient(180deg,#BFE6FF 0%,#E8F7FF 50%,#FFF7E8 100%);min-heigh
   <div class="hero">
     <div class="badge">🚁</div>
     <h1>无人机馆</h1>
-    <p>在这里学无人机、刷题和练飞行。</p>
+    <p>先看懂为什么能飞，再记住关键规律。</p>
     <span class="tag">两个人各走自己的入口，成绩不会混</span><br>
-    <a class="home" href="../index.html">🏠 回学习主页</a>
+    <a class="home" href="../subject.html?subject=explore">← 回探索与实践</a>
   </div>
 
-  <div class="sec-title">🔥 考试前先练这个</div>
+  <div class="sec-title">现在开始 · 无人机二级</div>
+  <section class="course sprint level-two" aria-labelledby="level-two-title">
+    <span class="flag">L2-1 · 2026-10-18 新课</span>
+    <h2 id="level-two-title">航空器家族与飞行原理</h2>
+    <p>热气球、飞机和直升机，为什么都能飞？先动手改变模型，再遮挡回忆五大家族、飞行规律与人物。</p>
+    <div class="sprint-doors" aria-label="无人机二级：选择孩子的入口">
+      <a href="drone_l2_flight_principles_20261018.html?who=kenton">👦 <span>Kenton 哥哥<small>从我的进度继续</small></span></a>
+      <a href="drone_l2_flight_principles_20261018.html?who=eddey">🧒 <span>Eddey 弟弟<small>从我的进度继续</small></span></a>
+    </div>
+  </section>
+
+  <div class="sec-title">一级复习 · 已有内容继续保留</div>
   <div class="course sprint">
     <span class="flag">2026-08-26 更新</span>
     <h2>无人机一级两天冲刺</h2>
@@ -137,6 +155,7 @@ background:linear-gradient(180deg,#BFE6FF 0%,#E8F7FF 50%,#FFF7E8 100%);min-heigh
     </span>
   </div>
 
+  <div class="sec-title">一级内容概览</div>
   <div class="stats">
     <div class="stat"><b>45</b><span>考试练习题</span></div>
     <div class="stat"><b>96</b><span>历史课堂复习题</span></div>
@@ -146,5 +165,24 @@ background:linear-gradient(180deg,#BFE6FF 0%,#E8F7FF 50%,#FFF7E8 100%);min-heigh
   <div class="sec-title">🗓 后面怎么更新</div>
   <div class="soon">每次拿到新的授课内容，就按同样方式做成新的通关营挂到这里——<br>发给 Kimi 一句"无人机新课入库"即可。</div>
 </div>
+<script>
+(function(){
+  const incoming=new URLSearchParams(location.search);
+  const selected=incoming.get('who')||incoming.get('child');
+  const who=['kenton','eddey'].includes(selected)?selected:null;
+  document.querySelectorAll('a[href]').forEach(function(link){
+    const url=new URL(link.getAttribute('href'),location.href);
+    if(url.origin!==location.origin)return;
+    if(who&&!url.searchParams.has('who')&&!url.searchParams.has('child'))url.searchParams.set('who',who);
+    ['mode','test','parentTest'].forEach(function(key){
+      const value=incoming.get(key);
+      if((key==='mode'&&value==='test')||(key!=='mode'&&(value==='1'||value==='true')))url.searchParams.set(key,value);
+    });
+    const original=link.getAttribute('href').split(/[?#]/)[0];
+    link.setAttribute('href',original+url.search+url.hash);
+    if(who&&link.closest('.level-two')&&url.searchParams.get('who')===who)link.setAttribute('aria-current','true');
+  });
+})();
+</script>
 </body>
 </html>

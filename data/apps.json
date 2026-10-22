@@ -1,5 +1,101 @@
 [
   {
+    "child": "eddey",
+    "subject": "英语",
+    "title": "弟弟 · U4生日计划室",
+    "file": "apps/eddey_english_u4_review_20261019.html",
+    "added": "2026-10-19",
+    "updated": "2026-10-19",
+    "navigation": {
+      "state": "active",
+      "kind": "lesson",
+      "period": "2026-autumn",
+      "group": "units",
+      "displayTitle": "弟弟 · U4生日计划室",
+      "summary": "先接顺对话、分清谁做什么，再换句型、默5词2句；约25分钟，可暂停续做。"
+    }
+  },
+  {
+    "child": "eddey",
+    "subject": "英语",
+    "title": "弟弟 · U4读写背",
+    "file": "apps/eddey_english_u4_review_20261019.html?section=memory",
+    "added": "2026-10-19",
+    "updated": "2026-10-19",
+    "navigation": {
+      "state": "active",
+      "kind": "tool",
+      "period": "2026-autumn",
+      "group": "words",
+      "displayTitle": "弟弟 · U4读写背",
+      "summary": "20词与词组、10个建议默写句；中文提示自测、词块遮挡、错后原题重试。"
+    }
+  },
+  {
+    "child": "eddey",
+    "subject": "英语",
+    "title": "弟弟 · U4知识脑图",
+    "file": "apps/eddey_english_u4_review_20261019.html?section=map",
+    "added": "2026-10-19",
+    "updated": "2026-10-19",
+    "navigation": {
+      "state": "active",
+      "kind": "hub",
+      "period": "2026-autumn",
+      "group": "units",
+      "displayTitle": "弟弟 · U4知识脑图",
+      "summary": "邀请与感谢、对话、活动、语法和词句六个分支，点击进入复习。"
+    }
+  },
+  {
+    "child": "eddey",
+    "subject": "语文",
+    "title": "语文复习地图 · 第三四单元",
+    "file": "apps/eddey_chinese_u3u4_review_20261019.html",
+    "added": "2026-10-19",
+    "updated": "2026-10-19",
+    "navigation": {
+      "state": "active",
+      "kind": "lesson",
+      "period": "2026-autumn",
+      "group": "lessons",
+      "displayTitle": "第三四单元 · 语文复习地图",
+      "summary": "沿脑图梳理课文，练24个字词、6组背诵和6道回原文找依据的阅读题。"
+    }
+  },
+  {
+    "child": "kenton",
+    "subject": "无人机",
+    "title": "无人机二级第1课 · 航空器家族与飞行原理",
+    "file": "apps/drone_l2_flight_principles_20261018.html?who=kenton",
+    "added": "2026-10-18",
+    "updated": "2026-10-22",
+    "navigation": {
+      "state": "active",
+      "kind": "lesson",
+      "period": "2026-autumn",
+      "group": "lessons",
+      "displayTitle": "无人机二级 · 为什么能飞？",
+      "summary": "先动手观察空气、机翼与旋翼，再藏起模型讲回来；五家族原理、人物配对、遮挡背诵与独立自测，进度按孩子保存。"
+    }
+  },
+  {
+    "child": "eddey",
+    "subject": "无人机",
+    "title": "无人机二级第1课 · 航空器家族与飞行原理",
+    "file": "apps/drone_l2_flight_principles_20261018.html?who=eddey",
+    "added": "2026-10-18",
+    "updated": "2026-10-22",
+    "navigation": {
+      "state": "active",
+      "kind": "lesson",
+      "period": "2026-autumn",
+      "group": "lessons",
+      "displayTitle": "无人机二级 · 为什么能飞？",
+      "summary": "先动手观察空气、机翼与旋翼，再藏起模型讲回来；五家族原理、人物配对、遮挡背诵与独立自测，进度按孩子保存。"
+    }
+  },
+  {
     "child": "kenton",
     "subject": "英语",
     "title": "哥哥 · 校内每日单词",
@@ -1876,3 +1972,4 @@
     "added": "2026-08-26"
   }
 ]
+
