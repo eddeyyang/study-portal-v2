@@ -50,7 +50,7 @@ STR_RE = re.compile(r"""(["'`])((?:\\.|(?!\1)[^\\\n])*)\1""")
 CHILDREN = ("kenton", "eddey")
 MAX_DISCOVER = 4000
 MAX_AUDIO_PROBES = 8000          # 每天：新增/变化页面的哈希音频探测上限
-MAX_AUDIO_PROBES_WEEKLY = 40000  # 每周：加上线上原本缺音频的页面
+MAX_AUDIO_PROBES_WEEKLY = 15000  # 每 30 天一轮：加上线上原本缺音频的页面（到上限只提示，不算错误）
 UA = "study-portal-v2-sync/2 (+https://github.com/eddeyyang/study-portal-v2)"
 
 
@@ -340,9 +340,26 @@ def cmd_sync(dry, force_backfill=False):
         rep["conflicts"].append(p)
         return False
 
+    # 节奏：页面、数据、清单每天核；音频文件（mp3，约 1900 个，几乎不变）每 7 天核一次；
+    # 线上原本缺的哈希音频每 30 天探一次。--backfill-audio 则这次全做。
+    today = datetime.now(timezone.utc)
+    def days_since(key):
+        v = st.get(key)
+        return 10**6 if not v else (today - datetime.strptime(v, "%Y-%m-%d").replace(tzinfo=timezone.utc)).days
+    audio_week = force_backfill or days_since("last_audio_check") >= 7
+    weekly = force_backfill or days_since("last_audio_backfill") >= 30
+    rep["audio_files_checked"] = audio_week
+    rep["audio_backfill_round"] = weekly
+
     # 1. 已跟踪文件：条件请求，变了就取
+    def is_audio_file(p):
+        return p.startswith("apps/audio/") and p.endswith((".mp3", ".wav", ".m4a", ".ogg"))
+    check = [p for p in F if audio_week or not is_audio_file(p)]
+    rep["skipped_audio_files"] = len(F) - len(check)
     with ThreadPoolExecutor(12) as ex:
-        results = list(ex.map(lambda p: (p, fetch(p, F[p].get("etag"))), list(F)))
+        results = list(ex.map(lambda p: (p, fetch(p, F[p].get("etag"))), check))
+    if audio_week and not dry:
+        st["last_audio_check"] = today.strftime("%Y-%m-%d")
     for p, (code, body, etag) in results:
         e = F[p]
         if code == 304:
@@ -423,9 +440,6 @@ def cmd_sync(dry, force_backfill=False):
     # 3. 按哈希命名的朗读音频：对新增/变化的页面，把可能被朗读的文字逐条算哈希去探。
     #    线上本来就缺音频的页面（目录不存在或为空）每 7 天再探一次，看线上有没有补。
     probe_pages = dict(new_text)
-    last_bf = st.get("last_audio_backfill")
-    weekly = force_backfill or not last_bf or \
-        (datetime.now(timezone.utc) - datetime.strptime(last_bf, "%Y-%m-%d").replace(tzinfo=timezone.utc)).days >= 7
     if weekly:
         for hp in sorted(ROOT.glob("apps/*.html")):
             b = hp.read_bytes()
@@ -464,7 +478,7 @@ def cmd_sync(dry, force_backfill=False):
             found_for_page += len(have)
             room = (MAX_AUDIO_PROBES_WEEKLY if weekly else MAX_AUDIO_PROBES) - rep["audio_probes"]
             if room <= 0:
-                rep["errors"].append(f"{p}: 音频探测到达上限，{d} 未探完"); break
+                rep.setdefault("audio_probe_capped", []).append(f"{p} → {d}"); break
             todo = todo[:room]
             rep["audio_probes"] += len(todo)
             with ThreadPoolExecutor(12) as ex:
