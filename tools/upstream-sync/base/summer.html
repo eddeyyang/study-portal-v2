@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#fff7f0">
+<title>2026 暑假计划表</title>
+<link rel="stylesheet" href="assets/styles.css">
+<script src="assets/learning-sync.js"></script>
+<style>
+  .tabs { display:flex; gap:8px; margin:14px 0 18px; }
+  .tabs button {
+    flex:1; border:none; border-radius:16px; padding:12px 6px; font-size:16px; font-weight:700;
+    background:#fff; color:var(--muted); box-shadow:var(--shadow); cursor:pointer; font-family:inherit;
+  }
+  .tabs button.on { background:linear-gradient(135deg,#ffd166,#ff9ec4); color:#fff; }
+  .sec { background:var(--card); border-radius:var(--radius); box-shadow:var(--shadow); padding:16px 16px 12px; margin-bottom:16px; }
+  .sec h2 { font-size:17px; margin:0 0 10px; display:flex; align-items:center; gap:8px; }
+  .sec h3 { font-size:15px; margin:14px 0 6px; }
+  .kv { display:flex; gap:10px; padding:7px 0; border-bottom:1px dashed #f0e6ee; font-size:14px; align-items:baseline; }
+  .kv:last-child { border-bottom:none; }
+  .kv .k { flex:0 0 92px; font-weight:700; }
+  .kv .v { flex:1; color:#5c5064; }
+  table.wk { width:100%; border-collapse:collapse; font-size:13px; }
+  table.wk th, table.wk td { border:1px solid #f0e2ef; padding:6px 5px; text-align:left; vertical-align:top; }
+  table.wk th { background:#fff3df; white-space:nowrap; }
+  .pill { display:inline-block; border-radius:8px; padding:1px 6px; font-size:12px; font-weight:700; margin:1px 0; }
+  .p-eng { background:#e3fbff; color:#0e7a8c; }
+  .p-code { background:#f3e9ff; color:#6a3fb5; }
+  .p-drone { background:#ffe9e0; color:#c04b1e; }
+  .p-ball { background:#e9fbe9; color:#2e7d32; }
+  .p-write { background:#fff0e6; color:#b05a1e; }
+  .p-hold { background:#eeeeee; color:#777; border:1px dashed #bdbdbd; }
+  .warn { background:#fff4f2; border-left:5px solid #ff8a5b; border-radius:12px; padding:10px 12px; font-size:14px; margin:8px 0; }
+  .date-list li { margin:5px 0; font-size:14px; }
+  .due { color:#d6336c; font-weight:700; }
+  ul.chk { list-style:none; padding:0; margin:0; }
+  ul.chk li { display:flex; gap:10px; padding:8px 0; border-bottom:1px dashed #f0e6ee; font-size:14px; align-items:flex-start; }
+  ul.chk li:last-child { border-bottom:none; }
+  ul.chk input { width:20px; height:20px; margin-top:1px; accent-color:#ff8a5b; flex:0 0 auto; }
+  ul.chk .done { text-decoration:line-through; color:#b3a8ba; }
+  .sub-note { color:var(--muted); font-size:12.5px; display:block; margin-top:2px; }
+  .tag-daily { color:#0e7a8c; font-weight:700; }
+  .countdown { display:flex; gap:10px; }
+  .countdown div { flex:1; background:linear-gradient(135deg,#fff3df,#ffe6c9); border-radius:14px; padding:10px 8px; text-align:center; }
+  .countdown b { font-size:22px; display:block; color:#d6336c; }
+  .countdown span { font-size:12.5px; color:#7a6d55; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="topbar">
+    <a class="back" href="index.html">←</a>
+    <h1>☀️ 2026 暑假计划表</h1>
+  </div>
+
+  <div class="countdown" id="cd"></div>
+
+  <a href="summer_day.html" style="display:flex;gap:10px;align-items:center;background:linear-gradient(135deg,#ffd166,#ff9ec4);color:#fff;border-radius:16px;padding:12px 14px;margin:14px 0 0;text-decoration:none;font-weight:800;box-shadow:var(--shadow)">
+    <span style="font-size:24px">📅</span>
+    <span>每日时间表 · 打卡<br><span style="font-weight:400;font-size:12.5px">今天几点做什么 + 任务打勾 + 接送提醒，每天看这个 →</span></span>
+  </a>
+
+  <div class="tabs">
+    <button class="on" data-t="all" onclick="tab('all',this)">📅 总课表</button>
+    <button data-t="eddey" onclick="tab('eddey',this)">🐯 Eddey</button>
+    <button data-t="kenton" onclick="tab('kenton',this)">🦁 Kenton</button>
+  </div>
+
+  <!-- ============ 总览 ============ -->
+  <div class="tp" id="tp-all">
+
+    <div class="sec">
+      <h2>⏰ 每天的节奏（两人相同）</h2>
+      <div class="kv"><span class="k">上午 9:00–11:00</span><span class="v"><span class="pill p-eng">英语课</span> <b>周一到周五都有，7/10 起上到 8/20</b>（8/21 之前）。🚶 8:50 出门，11:00 下课，约 11:10 到家。<br><b>11:20 起做英语课后巩固</b>：老师发了卷子就先完成并订错；没有卷子就背单词 / 不规则动词、复习笔记或准备听写。Kenton、Eddey 分开完成各自内容。8/15 前再接一段 CTL 短训练，具体按当天时间表执行。</span></div>
+      <div class="kv"><span class="k">下午</span><span class="v">按下面的课表上课；<b>周一到周五</b>没课的日子 <span class="pill p-ball">篮球 14:00–15:30</span>（可以请假，优先级最低，有任何课都给课让路）。<b>周六、周日不打篮球</b>。</span></div>
+      <div class="kv"><span class="k">写字课</span><span class="v"><span class="pill p-write">Eddey 写字课</span> <b>只在周一/三/四 16:20–17:50</b>（线下 90 分钟，🚶 16:15 出门；17:50 下课）。其他天不再固定安排爷爷带的写字课，作为自由时间。</span></div>
+      <div class="kv"><span class="k">数学 30 分钟</span><span class="v"><span class="tag-daily">家庭学习门户：</span>周一/三/五分别进入 Kenton 五上、Eddey 四上数学预习馆学 1 小节；其余日做计算大通关、热身或错题本。周四按当天课程挪到 15:30 或核桃课后。</span></div>
+      <div class="kv"><span class="k">晚上 / 空档</span><span class="v">阅读半小时 + 好词好句摘抄。白天出现空档时可以先摘 1–2 句，睡前已经完成就只阅读，不重复做。</span></div>
+    </div>
+
+    <div class="sec">
+      <h2>📚 《暑假生活》完成计划（目标：<span class="due">7/19 整本做完</span>）</h2>
+      <div class="kv"><span class="k">册子多厚</span><span class="v">同系列《寒假生活》为 50 页，《暑假生活》约为其两倍——按 <b>约 90 页</b>估算（拿到实体书数一下真实页数告诉爸爸，按真实页数重排）。</span></div>
+      <div class="kv"><span class="k">怎么分配</span><span class="v">忙日（周一–周五，有英语课）每天保底 4 页≈一周 20 页；<b>周末上午 9:00–11:00 每天集中冲 15–20 页</b>≈一个周末 30–40 页。一周合计 50–60 页。</span></div>
+      <div class="kv"><span class="k">里程碑</span><span class="v">✅ <b>7/12（周日）晚</b>：累计约 40–55 页（哥哥 7/8 已做 15+ 页，领先）→ ✅ <b>7/19（周日）晚：整本完成</b> → 最晚兜底 7/26（无人机集训前）。</span></div>
+      <div class="kv"><span class="k">做完之后</span><span class="v">工作日午后的书面作业时段就空出来：Kenton 转《快乐宫》和作文，Eddey 转阅读理解加练/作品任务。</span></div>
+    </div>
+
+    <div class="sec">
+      <h2>📆 每周固定课表（两人目前相同）</h2>
+      <p class="sub-note" style="margin:0 0 8px"><span class="pill p-eng">英语课 9:00–11:00</span> 周一到周五每天都有（7/10–8/20），下表只列下午和晚上。</p>
+      <table class="wk">
+        <tr><th>周一</th><td><span class="pill p-ball">篮球 14:00</span> <span class="pill p-write">Eddey 写字课 16:20–17:50</span></td></tr>
+        <tr><th>周二</th><td><span class="pill p-ball">篮球 14:00</span> <span class="pill p-hold">原外教课 17:30–18:20 · 暂停 / 自由安排</span></td></tr>
+        <tr><th>周三</th><td><span class="pill p-ball">篮球 14:00</span> <span class="pill p-write">Eddey 写字课 16:20–17:50</span>（8月部分周三是编程日，见下方日历）</td></tr>
+        <tr><th>周四</th><td><span class="pill p-hold">原外教课 13:00–13:50 · 暂停 / 自由安排</span> <span class="pill p-write">Eddey 写字课 16:20–17:50</span> <span class="pill p-code">核桃编程线上 19:00</span></td></tr>
+        <tr><th>周五</th><td><span class="pill p-ball">篮球 14:00</span>（8月部分周五是编程日）</td></tr>
+        <tr><th>周六</th><td><span class="pill p-hold">原外教课 20:00–20:50 · 暂停 / 自由安排</span></td></tr>
+        <tr><th>周日</th><td><span class="pill p-code">编程课 13:30–15:30</span>（按日历，不是每周日都有）</td></tr>
+      </table>
+      <p class="sub-note">灰色“原外教课”只保留旧时间位置，目前不上课、不占用孩子安排；以后恢复外教时可优先放回这些时段。</p>
+    </div>
+
+    <div class="sec">
+      <h2>🗓️ 特定日期（编程 / 试听 / 无人机）</h2>
+      <h3>编程课（线下）</h3>
+      <ul class="date-list">
+        <li>7月：<b>7/9（周四）15:30–17:30</b>、<b>7/12（周日）13:30–15:30</b>（7/3、7/5 已上完）</li>
+        <li>8月：<b>8/12（三）、8/14（五）、8/16（日）、8/19（三）、8/21（五）、8/23（日）</b> 均 13:30–15:30</li>
+      </ul>
+      <h3>临时安排</h3>
+      <ul class="date-list">
+        <li><b>7/9（周四）9:00–11:00</b> 英语试听课（走路去，之后正式课就在这里上）</li>
+        <li><b>8/1（周六）12:00–12:50</b> Preply 外教试听课（新，50 分钟；午饭 12:50 开始）</li>
+        <li><b>8/6（周四）12:00–12:50</b> Preply 外教试听课（新，50 分钟；午饭 12:50–13:30，13:40 出发去无人机；CTL 当天只做晚饭后 10 分钟保底复习）</li>
+      </ul>
+      <h3>无人机集训</h3>
+      <ul class="date-list">
+        <li><b>7/27 – 8/7</b> 连续两周，周一至周五 <b>14:00–16:00</b>（🚗 开车+停车约 10–15 分钟：13:40 出门，16:15 左右到家。这两周下午全被占，篮球停）</li>
+      </ul>
+    </div>
+
+    <div class="sec">
+      <h2>⚠️ 冲突提醒（家长注意）</h2>
+      <div class="warn"><b>原固定外教课暂时暂停</b>。旧时间仍以灰色“原外教课”保留，但不占用安排；8/1、8/6 两节 Preply 新试听仍按临时安排正常显示。</div>
+      <div class="warn">编程日（13:30–15:30）和无人机期间（7/27–8/7）：篮球自动请假。</div>
+      <div class="warn"><b>⚠️ 无人机 × 写字课衔接：</b>无人机集训（7/27–8/7，14:00–16:00）下课接回家约 16:15，Eddey 周一/三/四写字课 16:20 开始、步行 5 分钟刚好赶上——衔接紧但能赶上，无人机下课别拖堂（每日时间表当天也会弹提醒）。</div>
+    </div>
+
+    <div class="sec">
+      <h2>🚩 四个阶段怎么走</h2>
+      <div class="kv"><span class="k">① 7/8–7/26<br>作品冲刺期</span><span class="v">下午课少，是做<b>征集活动作品</b>的黄金期（长征漫画/书信、情绪表情包、劳动实践打卡拍照）。目标：7/26 前全部完成初稿——因为接下来无人机两周没时间。</span></div>
+      <div class="kv"><span class="k">② 7/27–8/7<br>无人机集训</span><span class="v">下午全占；11 点英语课后优先做卷子 / 订错 / 背词，8/3 起再接一段 CTL 短训练，晚上轮换安排家庭门户数学和阅读摘抄。<span class="due">8/10（周一）作品电子稿交班主任（上传 ClassIn）</span>，8/8–8/9 周末做最后检查提交。</span></div>
+      <div class="kv"><span class="k">③ 8/8–8/15<br>CTL 冲刺</span><span class="v">两次小模拟 + 错题回炉 + 代码框架默写；8/14 只做轻模拟，不上新难度。<span class="due">8/15 CTL 考试</span>，考试时间地点以老师通知为准。</span></div>
+      <div class="kv"><span class="k">④ 8/16–8/30<br>返校收尾</span><span class="v">恢复家庭门户数学预习 / 刷题、编程短练和语文阅读；分周完成尚缺的观察日记、快乐宫和作文、明信片、绿卡，8/30 做最后打包。</span></div>
+      <div class="kv"><span class="k">🏫 返校/开学</span><span class="v"><span class="due">8/31（周一）8:20–11:00 返校交作业</span>；<span class="due">9/1（周二）8:20 开学</span>。</span></div>
+    </div>
+  </div>
+
+  <!-- ============ Eddey ============ -->
+  <div class="tp" id="tp-eddey" style="display:none">
+    <div class="sec">
+      <h2>🐯 Eddey（升四年级）· 每天必做</h2>
+      <div class="kv"><span class="k">🇬🇧 9:00–11:00</span><span class="v">英语课（周一到周五，7/10–8/20，8:50 出门走路去）</span></div>
+      <div class="kv"><span class="k">📝 11:20 起</span><span class="v">英语卷子 / 订错优先；没有卷子就背单词、复习笔记或准备听写</span></div>
+      <div class="kv"><span class="k">🧮 每天 30 分钟</span><span class="v">进入家庭学习门户的四上数学预习馆，预习 1 小节或完成计算刷题 / 错题回炉</span></div>
+      <div class="kv"><span class="k">✍️ 写字</span><span class="v">只在周一/三/四写字课 16:20–17:50（🚶 步行 5 分钟，到家约 18:00）；其他天自由安排</span></div>
+      <div class="kv"><span class="k">🌙 睡前</span><span class="v">阅读半小时 + 好词好句摘抄（老师画了 ⭐ 重点）</span></div>
+      <p class="sub-note">每天打勾去 <a href="summer_day.html">📅 每日时间表</a>——按当天日期排好几点做什么。</p>
+    </div>
+    <div class="sec">
+      <h2>🎨 作品任务（<span class="due">8/10 前交班主任 · 上传 ClassIn</span>）</h2>
+      <ul class="chk" data-k="e-works">
+        <li><input type="checkbox"><span>🖼️ 长征四宫格漫画：A4 纸、2×2 四格（或竖排四格），画长征里的大事件/英雄故事，每格可配一句话说明，要原创。交：高清照片（≥1M）+ 推荐表 PDF<span class="sub-note">🔍 待核对：老师红笔按学号点了名单（照片在爸爸电脑），Eddey 是 <b>38 号</b>——名单里有 38 才必做，没有就是选做</span></span></li>
+        <li><input type="checkbox"><span>😊 情绪表情包"贴心能量站"：九宫格系列表情包 或 9 张独立心情贴（二选一），整套拼在 A3 内，拍成 JPEG（≥2M）+ 50–100字说明（Word）<span class="sub-note">🔍 待核对：名单照片在爸爸电脑，看有没有 <b>38 号</b></span></span></li>
+        <li><input type="checkbox"><span>🧹 劳动实践"汇劳动"：学会一项技能（家务/做菜/公益），过程拍照（JPEG ≥1M）+ 50字以内感想，压缩包按"班级+姓名+汇劳动"命名<span class="sub-note">🔍 待核对：名单照片在爸爸电脑，看有没有 <b>38 号</b></span></span></li>
+      </ul>
+    </div>
+    <div class="sec">
+      <h2>🏫 返校要交的（8/31 带回学校）</h2>
+      <ul class="chk" data-k="e-school">
+        <li><input type="checkbox"><span>📕《暑假生活》整本完成</span></li>
+        <li><input type="checkbox"><span>🥗 健康生活观察日记 3 张（要美化）</span></li>
+        <li><input type="checkbox"><span>📔 阅读摘抄本（每天积累的成果）</span></li>
+        <li><input type="checkbox"><span>💌 创意书摘明信片：摘抄不超过 50 字、美化、15×10cm，反面按老师要求写信息</span></li>
+        <li><input type="checkbox"><span>💚 "乐享夏日"绿卡：7月、8月各测 3 次身高体重视力 + 做一份轻食 + 手工遮阳帽 + 运动打卡（打篮球正好用上！）</span></li>
+        <li><input type="checkbox"><span>📮 读书征文"以书为友 以书会友"：<span class="due">8/31 前</span>上传 co-library.com 并发学校邮箱<span class="sub-note">🔍 待核对：名单照片在爸爸电脑，看有没有 <b>38 号</b>（哥哥那份标了"暂无"，弟弟以名单为准）</span></span></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ============ Kenton ============ -->
+  <div class="tp" id="tp-kenton" style="display:none">
+    <div class="sec">
+      <h2>🦁 Kenton（升五年级）· 每天必做</h2>
+      <div class="kv"><span class="k">🇬🇧 9:00–11:00</span><span class="v">英语课（周一到周五，7/10–8/20，8:50 出门走路去）</span></div>
+      <div class="kv"><span class="k">📝 11:20 起</span><span class="v">英语卷子 / 订错优先；没有卷子就背单词、不规则动词、复习笔记或准备听写</span></div>
+      <div class="kv"><span class="k">🧮 每天 30 分钟</span><span class="v">进入家庭学习门户的五上数学预习馆，预习 1 小节或完成计算刷题 / 错题回炉</span></div>
+      <div class="kv"><span class="k">🏰 周末</span><span class="v">《快乐宫》<b>不用每天做</b>（老师只要求 8/31 整本完成交）——攒着周末上午集中推进，做完为止</span></div>
+      <div class="kv"><span class="k">🌙 睡前</span><span class="v">阅读半小时 + 好词好句摘抄</span></div>
+      <p class="sub-note">每天打勾去 <a href="summer_day.html">📅 每日时间表</a>——按当天日期排好几点做什么。</p>
+    </div>
+    <div class="sec">
+      <h2>🎨 作品任务（<span class="due">8/10 前交班主任 · 上传 ClassIn</span>）</h2>
+      <ul class="chk" data-k="k-works">
+        <li><input type="checkbox"><span>✉️ 长征主题"写给未来的自己"：一封信 + 配一幅主题创意画，A4 纸，写自己的成长理想和目标，要原创<span class="sub-note">✅ 已核对：老师名单标的是 34 号，Kenton 是 <b>39 号</b>，不在名单 → <b>选做，可不做</b></span></span></li>
+        <li><input type="checkbox"><span>😊 情绪表情包"贴心能量站"：九宫格，整套拼在 A3 内交电子稿<span class="sub-note">✅ 已核对：老师名单标的是 1 号，Kenton 是 <b>39 号</b>，不在名单 → <b>选做，可不做</b></span></span></li>
+        <li><input type="checkbox"><span>🧹 劳动实践"汇劳动"：一项技能 + 照片 + 50字感想（以老师通知为准）</span></li>
+      </ul>
+    </div>
+    <div class="sec">
+      <h2>🏫 返校要交的（8/31 带回学校）</h2>
+      <ul class="chk" data-k="k-school">
+        <li><input type="checkbox"><span>📕《暑假生活》整本完成</span></li>
+        <li><input type="checkbox"><span>🏰《四年级暑假语文学习快乐宫》整本完成</span></li>
+        <li><input type="checkbox"><span>✏️ 作文《我的心爱之物》400 字左右</span></li>
+        <li><input type="checkbox"><span>📔 阅读摘抄本</span></li>
+        <li><input type="checkbox"><span>💌 创意书摘明信片（全班都要）：≤50 字、美化、15×10cm</span></li>
+        <li><input type="checkbox"><span>💚 "乐享夏日"绿卡（全班都要）：7月、8月各测 3 次身高体重视力 + 轻食 + 遮阳帽手工 + 运动打卡</span></li>
+      </ul>
+      <p class="sub-note">读书征文这次老师标了"暂无"，不用做。</p>
+    </div>
+  </div>
+
+  <div class="footer-note">有变动随时更新 · 以老师最新通知为准</div>
+</div>
+
+<script>
+function tab(t, btn){
+  document.querySelectorAll('.tp').forEach(el=>el.style.display='none');
+  document.getElementById('tp-'+t).style.display='';
+  document.querySelectorAll('.tabs button').forEach(b=>b.classList.remove('on'));
+  btn.classList.add('on');
+}
+
+// 倒计时
+(function(){
+  const days = d => Math.max(0, Math.ceil((new Date(d) - new Date()) / 864e5));
+  document.getElementById('cd').innerHTML =
+    `<div><b>${days('2026-08-10')}</b><span>天 · 8/10 交作品</span></div>`+
+    `<div><b>${days('2026-08-15')}</b><span>天 · 8/15 CTL</span></div>`+
+    `<div><b>${days('2026-08-31')}</b><span>天 · 8/31 返校</span></div>`;
+})();
+
+// 打勾持久化：daily 类每天清空，其余长期保存
+(function(){
+  const today = new Date().toISOString().slice(0,10);
+  document.querySelectorAll('ul.chk').forEach(ul=>{
+    const key = 'summer2026_' + ul.dataset.k;
+    const daily = /daily/.test(ul.dataset.k);
+    let saved = {};
+    try { saved = JSON.parse(localStorage.getItem(key)) || {}; } catch(e){}
+    if (daily && saved._d !== today) saved = { _d: today };
+    ul.querySelectorAll('li').forEach((li,i)=>{
+      const cb = li.querySelector('input'), span = li.querySelector('span');
+      if (saved[i]) { cb.checked = true; span.classList.add('done'); }
+      cb.addEventListener('change', ()=>{
+        saved[i] = cb.checked; if (daily) saved._d = today;
+        span.classList.toggle('done', cb.checked);
+        localStorage.setItem(key, JSON.stringify(saved));
+      });
+    });
+    if (daily) localStorage.setItem(key, JSON.stringify(saved));
+  });
+})();
+</script>
+</body>
+</html>

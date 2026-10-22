@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#fff7f0">
+<title>上传错题卷 · 家庭学习门户</title>
+<link rel="stylesheet" href="assets/styles.css">
+<link rel="stylesheet" href="assets/paper-tools.css">
+<script src="assets/learning-sync.js"></script>
+<script src="assets/paper-archive.js"></script>
+<script src="assets/paper-intake.js" defer></script>
+</head>
+<body>
+<main class="paper-shell">
+  <div class="paper-topbar">
+    <a class="paper-back" id="backLink" href="parent.html" aria-label="返回家长页">←</a>
+    <h1>家长整理 · 上传错题卷</h1>
+  </div>
+
+  <section class="paper-hero">
+    <div class="paper-kicker">PAPER MISTAKE INTAKE · DEVICE PRIVATE</div>
+    <h2><span id="heroEmoji">📷</span> 拍下来，框出错题</h2>
+    <p>上传时自动裁掉顶部姓名栏，再由家长确认错题和模糊字迹。确认后的文字、知识点和学习证据才进入 Neon；卷子照片不会上传。</p>
+  </section>
+
+  <div class="paper-progress" aria-label="卷子整理步骤">
+    <div class="active" data-progress="1"><b>1</b><span>选孩子 · 拍卷子</span></div>
+    <div data-progress="2"><b>2</b><span>框错题 · 确认字迹</span></div>
+    <div data-progress="3"><b>3</b><span>生成讲解入口</span></div>
+  </div>
+
+  <section class="paper-card" id="paperMetaCard">
+    <div class="paper-card-head">
+      <div class="step-ico">👨‍👦</div>
+      <div><h2>这是谁的哪张卷子？</h2><p>孩子必须先选对，哥哥和弟弟的档案不会混在一起。</p></div>
+    </div>
+    <div class="paper-fields">
+      <div class="paper-field wide">
+        <span class="paper-label">孩子</span>
+        <div class="child-choice" role="group" aria-label="选择孩子">
+          <button type="button" data-child="kenton">🦁 哥哥 Kenton</button>
+          <button type="button" data-child="eddey">🐯 弟弟 Eddey</button>
+        </div>
+      </div>
+      <div class="paper-field">
+        <label for="paperSubject">学科</label>
+        <select id="paperSubject">
+          <option value="数学">数学</option>
+          <option value="英语">英语</option>
+          <option value="语文">语文</option>
+          <option value="编程">编程</option>
+          <option value="综合">综合</option>
+        </select>
+      </div>
+      <div class="paper-field">
+        <label for="paperDate">卷子日期</label>
+        <input id="paperDate" type="date">
+      </div>
+      <div class="paper-field wide">
+        <label for="paperTitle">卷子名称</label>
+        <input id="paperTitle" type="text" maxlength="80" placeholder="可不填，系统会按日期和学科自动命名">
+      </div>
+    </div>
+  </section>
+
+  <section class="paper-card">
+    <div class="paper-card-head">
+      <div class="step-ico">📸</div>
+      <div><h2>拍照或选择卷子图片</h2><p>最多 5 页。系统会先检查亮度、清晰度和分辨率，较差的页面会提示重拍。</p></div>
+    </div>
+    <label class="paper-upload" id="uploadZone" for="paperFiles">
+      <span>
+        <span class="upload-icon">📄＋</span>
+        <strong>点击拍照或选择图片</strong>
+        <span>支持 JPG、PNG、WebP · 每张不超过 15MB</span>
+      </span>
+    </label>
+    <input id="paperFiles" type="file" accept="image/jpeg,image/png,image/webp" capture="environment" multiple hidden>
+    <div class="paper-tips">
+      <div class="paper-tip">🔒 顶部姓名栏保存前自动裁掉</div>
+      <div class="paper-tip">🌤️ 避免灯光反光和手部阴影</div>
+      <div class="paper-tip">✍️ 模糊手写最后由家长确认</div>
+    </div>
+    <div class="paper-status" id="uploadStatus" role="status" aria-live="polite"></div>
+  </section>
+
+  <section class="paper-card" id="markingCard" hidden>
+    <div class="paper-card-head">
+      <div class="step-ico">🔴</div>
+      <div><h2>在卷子上框出每一道错题</h2><p>切换页面后点“框选一道错题”，用手指拖出红框；再在右侧补充和确认内容。</p></div>
+    </div>
+    <div class="page-tabs" id="pageTabs" aria-label="卷子页码"></div>
+    <div class="workspace-grid">
+      <div class="paper-stage-card">
+        <div class="quality-banner" id="qualityBanner"></div>
+        <div class="stage-empty" id="stageEmpty">先上传一张卷子图片</div>
+        <div class="paper-canvas-wrap" id="canvasWrap" hidden>
+          <img id="paperImage" alt="当前卷子页面">
+          <div class="paper-overlay" id="paperOverlay" aria-label="拖动框选错题区域"></div>
+        </div>
+        <div class="stage-actions">
+          <button class="paper-btn primary" id="drawBox" type="button">＋ 框选一道错题</button>
+          <button class="paper-btn ghost" id="cancelDraw" type="button" hidden>取消框选</button>
+          <button class="paper-btn danger" id="removePage" type="button">删除这一页</button>
+        </div>
+      </div>
+
+      <aside class="question-editor" id="questionEditor">
+        <div class="editor-empty" id="editorEmpty">先在左边框出一道错题，再来确认题目与答案。</div>
+        <div id="editorForm" hidden>
+          <div class="paper-card-head">
+            <div class="step-ico">🔎</div>
+            <div><h3 id="editorTitle">确认这道错题</h3><p>机器识别只做参考，正式记录以家长确认内容为准。</p></div>
+          </div>
+          <div class="paper-fields">
+            <div class="paper-field">
+              <label for="questionNumber">题号</label>
+              <input id="questionNumber" type="text" maxlength="20" placeholder="例如：12（2）">
+            </div>
+            <div class="paper-field">
+              <label for="errorType">错误类型</label>
+              <select id="errorType">
+                <option value="暂不确定">暂不确定</option>
+                <option value="审题漏条件">审题漏条件</option>
+                <option value="概念混淆">概念混淆</option>
+                <option value="步骤遗漏">步骤遗漏</option>
+                <option value="计算或拼写">计算或拼写</option>
+                <option value="表达不完整">表达不完整</option>
+              </select>
+            </div>
+            <div class="paper-field wide">
+              <label for="questionText">题目文字</label>
+              <textarea id="questionText" placeholder="可以手动输入；也可以点下面的“本机识别印刷文字”"></textarea>
+              <button class="paper-btn ghost" id="runOcr" type="button">🔍 本机识别印刷文字</button>
+              <div class="ocr-status" id="ocrStatus">识别模型只在浏览器运行；首次使用会下载免费模型，照片不会上传。</div>
+            </div>
+            <div class="paper-field wide">
+              <label for="studentAnswer">孩子原答案</label>
+              <textarea id="studentAnswer" placeholder="字迹看不清时，请家长看原卷后补充"></textarea>
+            </div>
+            <div class="paper-field wide">
+              <label for="correctAnswer">正确答案或参考答案</label>
+              <textarea id="correctAnswer" placeholder="填写后可以自动核对；开放题可留空，改为孩子自行对照"></textarea>
+            </div>
+            <div class="paper-field wide">
+              <label for="knowledgeTag">背后的知识点</label>
+              <input id="knowledgeTag" type="text" maxlength="80" placeholder="例如：小数除法 · 商不变规律">
+            </div>
+            <div class="paper-field wide">
+              <label for="rootCause">实际不会的原因（可选）</label>
+              <textarea id="rootCause" placeholder="例如：知道规则，但遇到单位换算时不会把条件放进式子"></textarea>
+            </div>
+            <div class="paper-field wide">
+              <label for="parentHint">家长想补充的一句话（可选）</label>
+              <textarea id="parentHint" placeholder="例如：这题老师课堂上讲过，孩子当时也说没听懂"></textarea>
+            </div>
+          </div>
+          <label class="confirm-check">
+            <input id="parentConfirmed" type="checkbox">
+            <span><strong>我已看过原卷并确认</strong><br>题目、孩子答案和知识点没有被模糊字迹误导。</span>
+          </label>
+          <div class="teaching-preview" id="teachingPreview"></div>
+          <div class="editor-actions">
+            <button class="paper-btn primary" id="saveQuestion" type="button">保存这道错题</button>
+            <button class="paper-btn danger" id="deleteQuestion" type="button">删除误框</button>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <section class="paper-card" id="questionListCard" hidden>
+    <div class="paper-card-head">
+      <div class="step-ico">🗂️</div>
+      <div><h2>本卷错题清单</h2><p>点任意一题可重新检查。所有题都由家长确认后，才会生成孩子入口。</p></div>
+    </div>
+    <div class="question-list" id="questionList"></div>
+  </section>
+
+  <section class="paper-card" id="confirmCard">
+    <div class="paper-card-head">
+      <div class="step-ico">✅</div>
+      <div><h2>确认并生成讲解入口</h2><p>确认后，本机保存原卷；正式网站同时把匿名化错题、知识点和原因写入 Neon。</p></div>
+    </div>
+    <div class="confirm-actions">
+      <button class="paper-btn good" id="confirmPaper" type="button" disabled>生成孩子的错题讲解</button>
+      <a class="paper-btn ghost" id="returnArchive" href="mistakes.html">返回错题档案</a>
+    </div>
+    <div class="paper-status" id="confirmStatus" role="status" aria-live="polite">请先上传卷子并确认至少一道错题。</div>
+  </section>
+
+  <section class="paper-success" id="successCard" hidden>
+    <div class="big">🎉</div>
+    <h2>错题讲解入口已经生成</h2>
+    <p id="successText"></p>
+    <div class="confirm-actions" style="justify-content:center">
+      <a class="paper-btn primary" id="openLesson" href="paper-lesson.html">打开孩子讲解</a>
+      <a class="paper-btn ghost" id="openArchive" href="mistakes.html">返回错题档案</a>
+    </div>
+  </section>
+
+  <div class="footer-note">原卷照片只在当前设备 · Neon 只保存家长确认后的结构化学习证据</div>
+</main>
+</body>
+</html>

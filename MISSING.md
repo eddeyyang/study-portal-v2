@@ -14,14 +14,15 @@
 | `kenton_verb_lab` | 135 | 哥哥暑假英语馆的动词实验室 |
 | `kenton_english_monday_lab` | 55 | 哥哥暑假英语馆的周一实验室 |
 | `kenton_english_clause_lab` | 30 | 哥哥暑假英语馆的从句实验室 |
-| `kenton-sound-connections-20261001` | 21 | 哥哥《声音连线 · ow / ou / ui》 |
 | `hetao_coding_l3-1_review` `l3-2_review` `l3-3_preview` `l3-3_review` | 6 + 7 + 13 + 10 | 编程中心里的四节核桃编程复习/预习 |
 | `ai_academy` `ai_lab` | 8 + 8 | 《AI 学院 · 引擎室》《AI 探索馆》（两孩共用） |
 | `eddey_chinese_master` `kenton_chinese_master` | 没有清单 | 两孩《语文总复习》（三下、四下） |
 | `eddey_en_sprint` `kenton_en_sprint` | 没有清单 | 两孩《英语期末冲刺复习 · 错题闯关》 |
 | `news_20260615` `news_20260616` `news_20260617` | 没有清单 | 6 月 15–17 日三期《小小世界播报》 |
 
-有清单的合计约 735 条。
+有清单的合计约 714 条。
+
+2026-10-23 已补：哥哥《声音连线 · ow / ou / ui》（`kenton-sound-connections-20261001`）21 条，线上后来补录了，由内容同步工具按清单取回（21/21）。**未逐条试听、未实机播放**，声线是否合要求待家长确认。此后线上补录的音频由每天的内容同步自动带回（见 `tools/upstream-sync/README.md`），本清单按同步记录更新。
 
 2026-10-22 已补：弟弟《英语练习 · 三下》（`eddey_english`）154 条，取自家长电脑 7 月本地源码；文件名与应用里的文字逐条对上（154/154），都是有效 MP3。**尚未逐条试听、未在手机上实播**，声线是否仍合现行要求待家长确认。
 

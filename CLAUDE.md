@@ -6,6 +6,7 @@
 
 - Kenton 与 Eddey 的家庭学习门户的 Claude 工作仓库，放在 Claude 专用的 GitHub 账号 `eddeyyang` 下，**公开**（家长 2026-10-22 改为公开），并开了 GitHub Pages 预览站 https://eddeyyang.github.io/study-portal-v2/ 。推到 `main` 的内容会公开可见，提交前确认不含私密件。根目录的 `.nojekyll` 让下划线开头的文件（如音频 `_manifest.json`）也能发布，不要删。
 - 2026-10-15 由两部分合成：线上网站 study-portal-eta.vercel.app 的完整抓取（根目录），加上家长电脑里 7 月本地快照中线上没有的部分（`archive/2026-07-local-snapshot/`）。
+- **内容镜像（家长 2026-10-22 定）**：正式站由 GPT 维护；v2 的学习内容和更新每天自动跟正式站同步（定时任务「Study Portal 内容同步」，工具和说明在 `tools/upstream-sync/`），只搬内容、不动 v2 自己的设计。教法和设计上的改动只在家长单独交办时做；同步是单向的，v2 不往正式站推。在 v2 里改一个从正式站来的文件之前，先运行 `python3 -I tools/upstream-sync/sync.py --mark-custom <路径>` 登记基线，之后上游的内容改动会合并进来而不是覆盖。
 - **Claude 的提交一律推到这里**（`eddeyyang/study-portal-v2`，家长 2026-10-22 指定）。原仓库 `easonyoung1990-create/study-portal` 不给 Claude 写权限，也不向它推送。
 - 线上网站目前仍由原仓库部署。v2 的改动要不要上线、怎么接 Vercel 和 Neon，由家长另行决定；决定之前不部署、不覆盖线上。
 - 原仓库的现行 `AGENTS.md`、`DESIGN.md` 等 Claude 目前读不到，需要家长另行提供只读副本（见缺口条例 A3）。`eddeyyang/study-portal` 里另有一份可只读参考，是否与原仓库同步未核。
@@ -30,6 +31,7 @@
 | `apps/audio/` | 朗读音频。文件名是对 `语言|文字` 做 FNV-1a 得到的 8 位十六进制，与页面里的 `audioHash()` 一致 |
 | `archive/2026-07-local-snapshot/` | 7 月本地快照，只读参考，不是当前学情 |
 | `MISSING.md` | 线上本来就缺、仓库也没有的页面和音频 |
+| `tools/upstream-sync/` | 正式站 → v2 的内容同步工具、同步状态和每日记录（`log/`）；`conflicts/` 里有东西就是有待人处理的合并冲突 |
 
 ## 必须守住
 

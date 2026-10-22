@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#fff7f0">
+<title>暑假 · 今日时间表</title>
+<link rel="stylesheet" href="assets/styles.css">
+<script src="assets/learning-sync.js"></script>
+<style>
+  .daynav { display:flex; align-items:center; gap:8px; margin:12px 0; }
+  .daynav button {
+    border:none; border-radius:14px; padding:10px 14px; font-size:16px; font-weight:700;
+    background:#fff; box-shadow:var(--shadow); cursor:pointer; font-family:inherit; color:#5c5064;
+  }
+  .daynav .dt { flex:1; text-align:center; }
+  .daynav .dt b { font-size:19px; display:block; }
+  .daynav .dt span { font-size:12.5px; color:var(--muted); }
+  .daynav .today-btn { background:linear-gradient(135deg,#ffd166,#ff9ec4); color:#fff; }
+  .phase { background:linear-gradient(135deg,#fff3df,#ffe6c9); border-radius:14px; padding:10px 14px; font-size:13.5px; margin-bottom:12px; }
+  .phase b { color:#d6336c; }
+  .sec { background:var(--card); border-radius:var(--radius); box-shadow:var(--shadow); padding:16px 16px 12px; margin-bottom:16px; }
+  .sec h2 { font-size:17px; margin:0 0 10px; display:flex; align-items:center; gap:8px; }
+  .warn { background:#fff4f2; border-left:5px solid #ff8a5b; border-radius:12px; padding:10px 12px; font-size:13.5px; margin:8px 0; }
+  .car-list { list-style:none; padding:0; margin:0; }
+  .car-list li { padding:7px 0; border-bottom:1px dashed #f0e6ee; font-size:14.5px; font-weight:700; }
+  .car-list li:last-child { border-bottom:none; }
+  .car-list .no { color:var(--muted); font-weight:400; }
+  /* 时间表行 */
+  .tl { list-style:none; padding:0; margin:0; }
+  .tl li { display:flex; gap:10px; padding:9px 0; border-bottom:1px dashed #f0e6ee; align-items:center; }
+  .tl li:last-child { border-bottom:none; }
+  .tl .tm { flex:0 0 88px; font-weight:800; font-size:13.5px; color:#7a5c00; background:#fff3df; border-radius:10px; padding:6px 4px; text-align:center; }
+  .tl .bd { flex:1; font-size:14px; }
+  .tl .bd .nt { display:block; font-size:12px; color:var(--muted); margin-top:2px; }
+  .tl .car { color:#c04b1e; font-weight:800; font-size:12.5px; }
+  .tl li.mut { opacity:.55; }
+  .tl li.free { opacity:.9; }
+  .tl li.free .tm { background:#e9fbe9; color:#2e7d32; }
+  .tl li.free .bd { color:#4a7d4e; }
+  .tl li.cls .tm { background:#e3fbff; color:#0e7a8c; }
+  .tl li.eve .tm { background:#efe7ff; color:#6a3fb5; }
+  .tl li.hold { opacity:.62; }
+  .tl li.hold .tm { background:#eeeeee; color:#777; }
+  .tl li.hold .bd { color:#777; }
+  /* 打卡按钮：🐯 Eddey 橙 / 🦁 Kenton 蓝 */
+  .cks { display:flex; gap:6px; flex:0 0 auto; }
+  .ck { width:34px; height:34px; border-radius:50%; border:2px solid #e6dbea; background:#fff; cursor:pointer;
+        font-size:15px; line-height:1; display:flex; align-items:center; justify-content:center; padding:0; }
+  .ck.e.on { background:var(--eddey,#ff8a5b); border-color:var(--eddey,#ff8a5b); }
+  .ck.k.on { background:var(--kenton,#36c5d6); border-color:var(--kenton,#36c5d6); }
+  .ck.on { filter:none; }
+  /* 任务表 */
+  .kid-h { display:flex; align-items:center; gap:8px; }
+  .kid-h .prog { margin-left:auto; font-size:13px; font-weight:800; color:#d6336c; }
+  ul.chk { list-style:none; padding:0; margin:0; }
+  ul.chk li { display:flex; gap:10px; padding:9px 0; border-bottom:1px dashed #f0e6ee; font-size:14.5px; align-items:center; }
+  ul.chk li:last-child { border-bottom:none; }
+  ul.chk input { width:22px; height:22px; accent-color:#ff8a5b; flex:0 0 auto; }
+  ul.chk .done { text-decoration:line-through; color:#b3a8ba; }
+  .cd-line { text-align:center; font-size:13px; color:#7a6d55; margin:2px 0 10px; }
+  .cd-line b { color:#d6336c; }
+  .link-plan { display:block; text-align:center; font-size:13.5px; margin:4px 0 16px; }
+  /* 今日小惊喜 */
+  .gift { text-align:center; padding:4px 0 8px; cursor:pointer; }
+  .gift .box { font-size:46px; display:inline-block; animation:giftShake 1.6s ease-in-out infinite; }
+  .gift p { font-size:13px; color:var(--muted); margin-top:2px; }
+  @keyframes giftShake { 0%,100%{transform:rotate(0)} 20%{transform:rotate(-8deg) scale(1.06)} 40%{transform:rotate(8deg)} 60%{transform:rotate(-5deg)} 80%{transform:rotate(5deg)} }
+  .reveal { display:none; position:relative; overflow:hidden; }
+  .quote { background:linear-gradient(135deg,#fff3df,#ffe3ef); border-radius:14px; padding:12px 14px; font-size:14.5px; line-height:1.75; margin-bottom:10px; animation:popIn .45s ease; }
+  .quote .en { display:block; color:#7a5c9e; font-size:13px; margin-top:2px; }
+  .funbox { background:#f2fbff; border-radius:14px; padding:12px 14px; font-size:14px; line-height:1.7; animation:popIn .65s ease; }
+  .funbox .tag { font-weight:800; color:#0e7a8c; display:block; margin-bottom:2px; }
+  @keyframes popIn { from{transform:scale(.85);opacity:0} to{transform:scale(1);opacity:1} }
+  .ansbtn { margin-top:8px; border:none; background:#ffd166; border-radius:10px; padding:6px 14px; font-family:inherit; font-weight:700; cursor:pointer; font-size:13px; }
+  .confetti span { position:absolute; top:-14px; animation:fall 1.9s ease-in forwards; font-size:18px; pointer-events:none; }
+  @keyframes fall { to { transform:translateY(360px) rotate(380deg); opacity:0; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="topbar">
+    <a class="back" href="index.html">←</a>
+    <h1>📅 暑假 · 每日时间表</h1>
+  </div>
+
+  <div class="cd-line" id="cd"></div>
+
+  <div class="daynav">
+    <button onclick="move(-1)">◀ 前一天</button>
+    <div class="dt"><b id="d-title"></b><span id="d-sub"></span></div>
+    <button onclick="move(1)">后一天 ▶</button>
+  </div>
+  <div style="text-align:center;margin:-4px 0 12px"><button class="today-btn" style="border:none;border-radius:12px;padding:7px 16px;font-weight:700;font-family:inherit;cursor:pointer;background:linear-gradient(135deg,#ffd166,#ff9ec4);color:#fff" onclick="goToday()">回到今天</button></div>
+
+  <div class="phase" id="phase"></div>
+  <div id="warns"></div>
+
+  <div class="sec">
+    <h2>🎁 今日小惊喜（每天不一样）</h2>
+    <div class="gift" id="giftBox"><span class="box">🎁</span><p>点我拆开今天的惊喜！</p></div>
+    <div class="reveal" id="giftReveal"></div>
+  </div>
+
+  <div class="sec">
+    <h2>🚗 家长接送（当天）</h2>
+    <ul class="car-list" id="cars"></ul>
+  </div>
+
+  <div class="sec">
+    <h2>⏰ 时间表（做完点右边圆圈：🐯 Eddey / 🦁 Kenton）</h2>
+    <ul class="tl" id="tl"></ul>
+  </div>
+
+  <div class="sec">
+    <div class="kid-h"><h2>🐯 Eddey · 任务表</h2><span class="prog" id="pr-e"></span></div>
+    <ul class="chk" id="task-e"></ul>
+  </div>
+
+  <div class="sec">
+    <div class="kid-h"><h2>🦁 Kenton · 任务表</h2><span class="prog" id="pr-k"></span></div>
+    <ul class="chk" id="task-k"></ul>
+  </div>
+
+  <a class="link-plan" href="summer.html">📋 看整个暑假的总计划（课表 · 作品 · 返校清单）→</a>
+  <div class="footer-note">打勾按天保存在本设备 · 有变动随时告诉爸爸更新</div>
+</div>
+
+<script>
+/* ================= 日程数据 ================= */
+// 编程课（线下，🚗 接送）
+const CODING = {
+  '2026-07-09':'15:30–17:30', '2026-07-12':'13:30–15:30',
+  '2026-08-12':'13:30–15:30', '2026-08-14':'13:30–15:30', '2026-08-16':'13:30–15:30',
+  '2026-08-19':'13:30–15:30', '2026-08-21':'13:30–15:30', '2026-08-23':'13:30–15:30'
+};
+const DRONE_A='2026-07-27', DRONE_B='2026-08-07';        // 无人机集训（周一至周五 14:00–16:00；🚗 开车+停车约10–15分钟）
+const ENG_A='2026-07-10', ENG_B='2026-08-20';            // 英语课：周一至周五 9:00–11:00（8/21 前）
+const STUDY_SWITCH='2026-07-21';                         // 7/21 起《暑假生活》固定时段改为编程刷题 + 语文阅读
+const WRITE_DAYS=[1,3,4];                                // Eddey 写字课：周一/三/四 16:20–17:50（90 分钟，🚗接送）
+const CTL_A='2026-08-03', CTL_EXAM='2026-08-15';         // CTL：8/3 起短时冲刺，8/15 考试
+const WEEK=['周日','周一','周二','周三','周四','周五','周六'];
+const PREPLY_TRIALS={
+  '2026-08-01':'12:00–12:50',
+  '2026-08-06':'12:00–12:50'
+};
+
+const CTL_PLAN={
+  '2026-08-03':'基线小测：完整代码框架 + 输入输出，圈出真正不会的题',
+  '2026-08-04':'基本运算与数据类型：读题 → 列式 → 输入输出',
+  '2026-08-05':'if / if-else：判断条件、== 与 =、只走一条分支',
+  '2026-08-06':'忙碌日保底：只练完整框架、括号和分号 10 分钟',
+  '2026-08-07':'循环输入与累加：cin/cout、sum+=a、完整代码打两遍',
+  '2026-08-08':'第一次小模拟：限时完成，结束后只分“不会 / 打错 / 读错”',
+  '2026-08-09':'错题回炉：重做第一次模拟错题 + 三类代码框架遮挡默写',
+  '2026-08-10':'第二次小模拟：独立读题、独立打字、做完自己检查',
+  '2026-08-11':'高频错题二刷：输入输出、if/else、for 各选 1–2 题',
+  '2026-08-12':'编程课日轻复习：只清 2–3 道错题，保持手感',
+  '2026-08-13':'框架盲打 + 边界陷阱：括号、分号、< / <=、循环变量',
+  '2026-08-14':'考前轻模拟：只做熟题并订正，不学新知识、不刷难题'
+};
+
+const SCHOOL_BLOCKS={
+  '2026-08-08':{t:'15:00–16:00',title:'8/10 作品最后检查',nt:'只处理老师确认必交但尚未完成的项目：定稿、拍清楚、整理文件、准备上传'},
+  '2026-08-09':{t:'15:00–16:00',title:'8/10 作品提交前补缺',nt:'两人分别对照总计划打勾；已经完成就直接休息，不重复做'},
+  '2026-08-16':{t:'16:00–17:00',title:'学校清单补 1 项',nt:'Eddey：观察日记 / 明信片 / 绿卡；Kenton：《快乐宫》/ 作文 / 明信片 / 绿卡，各自只选尚未完成的'},
+  '2026-08-22':{t:'14:00–15:00',title:'学校清单补 1 项',nt:'Eddey 优先观察日记美化；Kenton 优先《快乐宫》或《我的心爱之物》初稿，已完成则换下一项'},
+  '2026-08-23':{t:'16:00–17:00',title:'明信片 / 绿卡集中补缺',nt:'两人分别完成自己尚缺的部分；不要把已完成项目重新做一遍'},
+  '2026-08-29':{t:'14:00–15:00',title:'返校作业最后收尾',nt:'Eddey 查观察日记、摘抄本；Kenton 查《快乐宫》和作文；两人查明信片、绿卡'},
+  '2026-08-30':{t:'14:00–15:00',title:'8/31 返校清单打包',nt:'只补最后缺项，完成后把要交的材料集中放好'}
+};
+
+function ctlActive(s){ return s>=CTL_A && s<CTL_EXAM; }
+function englishPractice(dow){
+  if ([1,3,5].includes(dow)) return {
+    title:'英语课后：有卷子先做卷子 + 订正错题',
+    nt:'按老师当天要求完成；没有卷子时改做背单词 / 不规则动词 / 例句听写，两人各做各的内容'
+  };
+  return {
+    title:'英语课后：复习背单词 + 课堂内容回顾',
+    nt:'当天若发了练习卷或有未订正错题，卷子优先；Kenton、Eddey 分开完成各自任务'
+  };
+}
+
+function ymd(d){ return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0'); }
+function phaseOf(s){
+  if (s < '2026-07-27')  return s < STUDY_SWITCH
+    ? ['① 作品冲刺期（7/8–7/26）','下午课少，抓紧做三项作品（长征/表情包/汇劳动）——<b>7/26 前要有初稿</b>。《暑假生活》（约90页）目标 <b>7/19 整本做完</b>：忙日 4 页 + 周末上午冲 15–20 页。']
+    : ['① 作品冲刺期（7/8–7/26）','《暑假生活》已基本完成。原固定时段从 <b>7/21 起改为编程刷题 + 语文阅读</b>；剩余零散页只做查漏补缺，不再占主时段。'];
+  if (s < CTL_A) return ['② 无人机集训期（7/27–8/2）','工作日下午是无人机；空闲时保底完成英语复习、家庭门户数学、阅读和摘抄。<b>8/10（周一）交作品电子稿</b>。'];
+  if (s <= '2026-08-07') return ['② 无人机 + CTL 准备期（8/3–8/7）','下午是无人机；11 点英语课结束后完成卷子 / 错题 / 背词，再做一段 CTL 短训练。晚上保留家庭门户数学和摘抄。<b>8/10（周一）交作品电子稿</b>。'];
+  if (s < CTL_EXAM) return ['③ CTL 冲刺期（8/8–8/14）','不学新知识：两次小模拟 + 错题回炉 + 代码框架默写；每天仍保留英语课后任务、家庭门户数学和休息。<b>8/15 CTL 考试</b>。'];
+  if (s === CTL_EXAM) return ['🏁 CTL 考试日（8/15）','出门前只做 15–20 分钟轻复习，不刷难题、不学新内容；考试时间和地点以老师最新通知为准。'];
+  if (s <= '2026-08-30') return ['④ 返校收尾期（8/16–8/30）','主线回到英语巩固、家庭门户数学预习 / 刷题、语文阅读与学校补缺；每周集中完成 1–2 项，<b>8/31 返校交作业</b>。'];
+  return ['🏫 返校 / 开学','8/31（周一）8:20–11:00 返校交作业；9/1（周二）8:20 开学。'];
+}
+
+/* 生成某天的时间表：who = both | e | k */
+function dayPlan(s, dow){
+  const rows=[], inDrone = s>=DRONE_A && s<=DRONE_B && dow>=1 && dow<=5;
+  const coding = CODING[s];
+  const preplyTrial = PREPLY_TRIALS[s];
+  const writeClass = WRITE_DAYS.includes(dow);   // 周一/三/四 Eddey 写字课
+  const R=(sort,t,i,title,who,o)=>rows.push(Object.assign({sort,t,i,title,who},o||{}));
+
+  const examDay = s===CTL_EXAM;
+
+  /* —— 上午 —— */
+  const engClass = s>=ENG_A && s<=ENG_B && dow>=1 && dow<=5;   // 周一到周五 9:00–11:00 英语课
+  if (examDay){
+    R(820,'出门前 15–20 分钟','💻','CTL 考前轻复习','both',{nt:'只看三类代码框架和高频错题；不做新题。正式考试时间、地点以老师通知为准'});
+    R(900,'时间待老师通知','🏁','CTL 考试','both',{cls:'cls'});
+  } else if (s==='2026-07-09'){
+    R(855,'8:50 出门','🚶','走路去英语试听课','both',{mut:1});
+    R(900,'9:00–10:30','🎧','英语试听课','both',{cls:'cls'});
+    R(1030,'10:30–10:40','🚶','走回家','both',{mut:1});
+    R(1420,'14:20–15:10','📚','《暑假生活》能做几页做几页','both',{nt:'编程课 15:30 开始，提前出发'});
+  } else if (engClass){
+    R(855,'8:50 出门','🚶','走路去英语课（5 分钟路，留 10 分钟慢慢走）','both',{mut:1});
+    R(900,'9:00–11:00','🇬🇧','英语课','both',{cls:'cls',nt:'周一到周五都有，上到 8/20'});
+    R(1100,'11:00–11:10','🚶','走回家','both',{mut:1});
+    const ep=englishPractice(dow);
+    const epTitle=preplyTrial ? '英语课后：先做当天最急卷子 / 订错' : ep.title;
+    R(1120,preplyTrial?'11:20–11:45':(dow===4&&ctlActive(s)?'11:20–11:50':'11:20–12:00'),'📝',epTitle,'both',
+      {nt:preplyTrial?'今天 12:00–12:50 有 Preply 试听，只做当天最急的卷子 / 订错，其余顺延':ep.nt});
+    if (ctlActive(s) && !preplyTrial) R(dow===4?1150:1200,dow===4?'11:50–12:20':'12:00–12:35','💻','CTL 冲刺：'+CTL_PLAN[s],'both',
+      {nt:'短时、独立完成；错题说清是“不会 / 打错 / 读错”，当天就回炉'});
+  } else if (s >= STUDY_SWITCH) {
+    if (ctlActive(s)) R(900,'9:00–10:00','💻','CTL 冲刺：'+CTL_PLAN[s],'both',{nt:'周末可用 45–60 分钟；做完立即订正，不把错题留到第二天'});
+    else R(900,'9:00–10:00','💻','编程刷题','both',{nt:'先复习 1 个知识点，再完成当天题目；错题要说清错在哪里'});
+    R(ctlActive(s)?1015:1000,ctlActive(s)?'10:15–11:00':'10:00–11:00','📖','语文阅读','both',{nt:'精读或阅读理解训练，完成后积累 1–2 个好词好句'});
+    R(1101,'11:00–11:45','🏰','《快乐宫》集中推进（不用每天，8/31 前整本完成）','k');
+  } else {
+    R(900,'9:00–11:00','📚','《暑假生活》集中冲：目标 15–20 页','both',
+      {nt:'空的上午就多做（哥哥 7/8 一上午做过 15 页）'+(s>ENG_B?'；英语课 8/20 已上完，上午都空出来了':'')});
+    R(1100,'11:00–11:30','📖','语文阅读理解 1 篇','e');
+    R(1101,'11:00–11:45','🏰','《快乐宫》集中推进（不用每天，8/31 前整本完成）','k');
+  }
+  if (examDay) R(1830,'下午 / 晚上','🌿','考试后休息·自由活动','both',{mut:1,cls:'free',nt:'今天不再安排打字、数学或新题；想读书可以轻松读'});
+  else R(1830,ctlActive(s)?'18:30–18:40':'18:30–18:50','⌨️',ctlActive(s)?'CTL 代码手感 10 分钟':'打字练习 15–20 分钟','both',
+    {nt:preplyTrial?'今天中午有试听，CTL 只做这 10 分钟保底，不再补整段训练':(ctlActive(s)?'只练 #include / main / 括号 / 分号和当天错过的代码片段':'晚饭后')});
+
+  /* —— 家庭学习门户数学：预习与刷题轮换，约 30 分钟 —— */
+  const previewDay=[1,3,5].includes(dow);
+  const mathTitle=previewDay
+    ? '家庭学习门户 · 数学预习：Kenton 五上 / Eddey 四上各学 1 小节'
+    : '家庭学习门户 · 数学刷题：计算大通关 / 热身 / 错题本';
+  const mathNt=previewDay
+    ? '各自进入自己的数学预习馆：先看方法和分步变化，再做 3–5 题'
+    : '先清错题本，再做当天热身；已经掌握就换到下一馆';
+  if (examDay){
+    // 考试日不另排数学，避免考后继续堆任务。
+  } else if (dow===4){
+    if (inDrone) R(2035,'20:35–21:05','🧮',mathTitle,'both',{nt:'核桃编程下课后；太晚就只做 🔄热身+错题本，新馆明天补'});
+    else R(1530,'15:30–16:00','🧮',mathTitle,'both',{nt:mathNt+'；16:15 Eddey 出门去写字课，所以提前完成'});
+  } else {
+    R(1900,'19:00–19:30','🧮',mathTitle,'both',{nt:mathNt});
+  }
+  if (examDay) {
+    R(1200,'按考试通知灵活安排','🍚','午饭 / 出发 / 休息','both',{
+      mut:1, nt:'CTL 正式时间尚未确定；收到老师通知后，以考试时间为中心前后安排'
+    });
+  } else {
+    const lunchTime = preplyTrial
+      ? '12:50–13:30'
+      : engClass && ctlActive(s)
+      ? (dow===4?'12:20–13:00':'12:35–13:30')
+      : ((engClass||s==='2026-07-09')?'12:00–13:00':'12:00–13:30');
+    R(preplyTrial?1230:1200,lunchTime,'🍚','午饭 + 午休','both',{mut:1});
+  }
+
+  /* —— 下午 —— */
+  if (preplyTrial) R(1200,preplyTrial,'🎧','Preply 外教试听课（新）','both',{cls:'cls',
+      nt:'50 分钟；当天午饭顺延到 12:50'});
+  if (dow===4) R(1300,'13:00–13:50','🌫️','原外教课（暂停，时间保留）','both',{mut:1,hold:1,cls:'hold',
+      nt:'只是灰色位置标记，不占用时间，可与午饭 / 自由安排重叠；以后恢复外教时优先放回这里'});
+  if (coding) R(parseInt(coding)===15 ? 1530 : 1330, coding,'💻','编程课（线下）','both',{car:'🚗 接送',cls:'cls'});
+  if (inDrone){
+    R(1340,'13:40–14:00','🚗','出门去无人机（开车+停车约10–15分钟）','both',{mut:1});
+    R(1400,'14:00–16:00','🚁','无人机集训','both',{car:'🚗 接送',cls:'cls',nt:'周一至周五，7/27–8/7'});
+    R(1600,'16:00–16:15','🚗','下课回家（约10–15分钟）','both',{mut:1});
+  }
+  const ballDay=[1,2,3,5].includes(dow);   // 只在周一到周五（周四除外）；周六周日不打篮球
+  if (ballDay && !coding && !inDrone) R(1400,'14:00–15:30','🏀','篮球（优先级最低，可请假）','both',{car:'🚗 接送'});
+  else if (ballDay) R(1400,'——','🏀','篮球请假（'+(inDrone?'无人机':'编程日')+'）','both',{mut:1});
+
+  const school=SCHOOL_BLOCKS[s];
+  if (school){
+    const schoolSort=Number(school.t.slice(0,2))*100+Number(school.t.slice(3,5));
+    R(schoolSort,school.t,'🏫',school.title,'both',{nt:school.nt});
+  }
+
+  /* —— 傍晚 / 晚上 —— */
+  if (writeClass){
+    R(1620,'16:20–17:50','✍️','写字课（线下，90 分钟）','e',{cls:'cls',
+      nt: inDrone ? '⚠️ 衔接紧：无人机 16:00 下课、接回家约 16:15，换鞋出门步行 5 分钟刚好赶上——无人机下课别拖，家长盯着点'
+                  : '🚶 16:15 出门，步行 5 分钟；17:50 下课，到家约 18:00，回来吃晚饭'});
+  }
+  if (dow===2) R(1730,'17:30–18:20','🌫️','原外教课（暂停，时间保留）','both',{mut:1,hold:1,cls:'hold',nt:'目前不上课，孩子自由安排；以后恢复外教时可继续使用这个时间'});
+  if (dow===4) R(1900,'19:00 开始','🖥️','核桃编程（线上，在家上）','both',{cls:'eve'});
+  if (dow===6) R(2000,'20:00–20:50','🌫️','原外教课（暂停，时间保留）','both',{mut:1,hold:1,cls:'hold',nt:'目前不上课，孩子自由安排；以后恢复外教时可继续使用这个时间'});
+  R(2130,'睡前','🌙','阅读半小时 + 好词好句摘抄（老师 ⭐ 重点）','both',{nt:'如果白天空档已经摘抄完，睡前只阅读，不重复做'});
+
+  /* 自动找空档：已排事项之间 ≥45 分钟的空隙标成 🌿 空闲 */
+  (function(){
+    // 考试时间尚未确定，不能自动把未知时段误标成“可补任务”。
+    if(examDay)return;
+    const parse=t=>{const m=t.match(/^(\d{1,2}):(\d{2})–(\d{1,2}):(\d{2})/);return m?{a:+m[1]*60+ +m[2],b:+m[3]*60+ +m[4]}:null;};
+    const busy=[];
+    for(const r of rows){
+      const p=parse(r.t);
+      if(p)busy.push(p);
+      else if(/^19:00/.test(r.t))busy.push({a:19*60,b:20*60+30});   // 核桃编程约到 20:30
+    }
+    if(preplyTrial)busy.push({a:12*60,b:13*60+30});                  // 试听 50 分钟 + 顺延午饭一起占位
+    busy.sort((x,y)=>x.a-y.a);
+    const fmt=m=>Math.floor(m/60)+':'+String(m%60).padStart(2,'0');
+    let end=8*60+30;                                                 // 一天从 8:30 起算
+    const put=(a,b)=>{
+      const len=b-a;
+      rows.push({sort:Math.floor(a/60)*100+a%60, t:fmt(a)+'–'+fmt(b), i:'🌿',
+        title: len>=120 ? '大块空闲 · 先补 1 个小任务，其余自由安排' : '空闲 · 自由安排',
+        who:'both', mut:1, cls:'free', nt:'好词好句摘抄、学校补缺可优先放这里；当天已完成就安心休息'});
+    };
+    for(const seg of busy){ if(seg.a-end>=45)put(end,seg.a); end=Math.max(end,seg.b); }
+    if(20*60+30-end>=45)put(end,20*60+30);                           // 到 20:30，之后是睡前阅读
+  })();
+
+  rows.sort((a,b)=>a.sort-b.sort);
+  return rows;
+}
+
+/* ============ 今日小惊喜（按日期轮换，54 天不重复） ============ */
+const QUOTES=[
+`每天进步一点点，就是最棒的超能力｜Small steps every day are a real superpower.`,
+`你不需要完美，只需要开始｜You don't need to be perfect — just start.`,
+`错题是宝藏，它告诉你下次怎么赢｜Mistakes are treasures: they teach you how to win.`,
+`坚持的人，运气不会太差｜Good luck loves people who keep trying.`,
+`今天的你比昨天更聪明一点点｜Today's you is a little smarter than yesterday's.`,
+`勇敢开口说英语，说错也很酷｜Be brave and speak English — mistakes are cool too.`,
+`慢慢来，比较快｜Slow and steady wins the race.`,
+`大脑像肌肉，越练越强壮｜Your brain is like a muscle — it grows with exercise.`,
+`先做完，再玩得痛快｜Finish first, then play your heart out.`,
+`一页一页做，一本就做完了｜Page by page, the whole book gets done.`,
+`专注 10 分钟，胜过磨蹭 1 小时｜Ten focused minutes beat one lazy hour.`,
+`爱问"为什么"的孩子最了不起｜Kids who ask "why" go far.`,
+`读书是给大脑吃好吃的｜Reading is yummy food for your brain.`,
+`你写的每一个字，都在帮未来的你｜Every word you write helps future you.`,
+`困难像弹簧，你强它就弱｜Difficulties shrink when you grow brave.`,
+`兄弟俩互相加油，力量翻倍｜Brothers cheering each other are twice as strong.`,
+`现在流的汗，都会变成星星｜Today's sweat becomes tomorrow's stars.`,
+`会休息的人才会学习｜Good learners are good resters too.`,
+`把大任务切成小块，一口一口吃掉｜Cut big tasks into bites and eat them one by one.`,
+`认真写字的样子，特别帅｜You look super cool when writing carefully.`,
+`多读一页书，世界就大一点｜One more page, one bigger world.`,
+`不怕慢，就怕站｜Don't fear being slow; fear standing still.`,
+`好习惯是每天喂大的小怪兽｜Good habits are little monsters you feed daily.`,
+`提问不丢人，不懂装懂才吃亏｜Asking is smart; pretending is not.`,
+`今天也要做说到做到的人｜Be the kid who keeps promises — today too.`,
+`汗水不会骗人｜Hard work never lies.`,
+`你比你想象的更勇敢｜You are braver than you think.`,
+`字写漂亮一点，心情也好一点｜Neat writing, happy feeling.`,
+`玩要玩得开心，学要学得认真｜Play with joy, learn with focus.`,
+`每个高手都曾是新手｜Every expert was once a beginner.`,
+`阅读半小时，等于让大脑去旅行｜Thirty minutes of reading is a trip for your brain.`,
+`别人休息你练习，悄悄变厉害｜Practice quietly, surprise everyone later.`,
+`做完打个勾，快乐加一分｜Every check mark adds a happy point.`,
+`太阳每天升起，你每天进步｜The sun rises daily — so does your progress.`,
+`想放弃的时候，再坚持 5 分钟｜When you want to quit, try five more minutes.`,
+`认真本身就是一种超能力｜Focus is a superpower.`,
+`帮爸妈做件小事，也是了不起的本领｜Helping at home is a great skill too.`,
+`你的努力，全家都看得见｜The whole family sees your hard work.`,
+`作业早做完，暑假加倍甜｜Finish early, enjoy double the summer.`,
+`好词好句抄下来，写作文时它来救你｜Saved sentences will rescue your essays.`,
+`打字练得快，将来省时间｜Fast typing saves future time.`,
+`运动会让大脑更聪明｜Exercise makes brains brighter.`,
+`无人机、编程、英语——你在学未来的本领｜Drones, coding, English — future skills!`,
+`难题只是还没被你认识的朋友｜A hard problem is a stranger, not an enemy.`,
+`微笑着开始，事情简单一半｜Start with a smile and it's half as hard.`,
+`耐心是最厉害的隐形武器｜Patience is a secret weapon.`,
+`今天背的单词，明天替你说话｜Today's words will speak for you tomorrow.`,
+`每天摘抄一句，一年就是一本书｜A line a day becomes a book a year.`,
+`拿三分玩的劲头来学习，就无敌了｜Learn with a bit of your play-energy — unbeatable!`,
+`输了不哭，赢了不骄｜Lose with grace, win with humility.`,
+`心急吃不了热豆腐，做题也一样｜Rushing spoils hot tofu — and math problems.`,
+`你负责努力，时间负责惊喜｜You do the work; time brings the surprise.`,
+`离开学越来越近，你也越来越强｜School is nearing — and you are getting stronger.`,
+`新学期的你，会感谢这个暑假的你｜Next-term you will thank summer you.`];
+const FUN=[
+{t:'🧠 冷知识',c:'章鱼有 3 颗心脏、9 个大脑！An octopus has 3 hearts and 9 brains!'},
+{t:'❓ 脑筋急转弯',c:'什么东西越洗越脏？',a:'水！Water gets dirtier as it washes things.'},
+{t:'💪 今日小挑战',c:'晚饭时用英语说一句：“This is delicious!”（这真好吃）'},
+{t:'😄 今日笑话',c:'老师：“作业为什么没写完？”小明：“铅笔没电了……”'},
+{t:'🔮 今日幸运',c:'幸运色：蓝色 Blue · 幸运词：brave（勇敢）——今天穿点蓝色试试！'},
+{t:'🎨 创意一分钟',c:'用 3 个圆圈画一只小动物，让爷爷猜是什么。'},
+{t:'🧠 冷知识',c:'蜂鸟是唯一能倒着飞的鸟！Hummingbirds can fly backwards!'},
+{t:'❓ 脑筋急转弯',c:'什么门永远关不上？',a:'球门！A goal!'},
+{t:'💪 今日小挑战',c:'今天教爸爸或妈妈一个你会的英语单词。'},
+{t:'🧠 冷知识',c:'在月球上，你的体重只有地球上的六分之一！On the Moon you would weigh 6 times less!'},
+{t:'😄 今日笑话',c:'“医生，我总觉得自己是台冰箱。”“别担心，你只是有点太冷静。”'},
+{t:'🔮 今日幸运',c:'幸运数字：7 · 幸运词：lucky——今天在生活里找找数字 7！'},
+{t:'🎨 创意一分钟',c:'把今天读到的最棒的一句话，大声念给全家听。'},
+{t:'🧠 冷知识',c:'鲨鱼比恐龙出现得还早！Sharks are older than dinosaurs!'},
+{t:'❓ 脑筋急转弯',c:'什么东西有很多牙齿，却从不咬人？',a:'梳子！A comb!'},
+{t:'💪 今日小挑战',c:'原地开合跳 20 个，给自己充满电！20 jumping jacks!'},
+{t:'🧠 冷知识',c:'蜗牛最长可以睡 3 年！A snail can sleep for 3 years!'},
+{t:'😄 今日笑话',c:'妈妈：“考试紧张吗？”“不紧张，题目都似曾相识——就是想不起来。”'},
+{t:'🔮 今日幸运',c:'幸运色：绿色 Green · 幸运词：grow（成长）'},
+{t:'🎨 创意一分钟',c:'用积木或折纸做一个“梦想小屋”，摆在书桌上。'},
+{t:'🧠 冷知识',c:'香蕉其实是浆果，草莓反而不是！A banana is a berry; a strawberry is not!'},
+{t:'❓ 脑筋急转弯',c:'一年里有几个月有 28 天？',a:'12 个月都有！Every month has a 28th!'},
+{t:'💪 今日小挑战',c:'帮家里摆一次碗筷，喊一句：“Dinner is ready!”'},
+{t:'🧠 冷知识',c:'北极熊的皮肤其实是黑色的！Polar bears have black skin!'},
+{t:'😄 今日笑话',c:'“数学书为什么总是很难过？”“因为它的问题太多了。”(problems)'},
+{t:'🔮 今日幸运',c:'幸运数字：3 · 幸运词：smile——今天对 3 个人微笑试试！'},
+{t:'🎨 创意一分钟',c:'闭上眼睛画一只猫，睁开看看有多好笑。'},
+{t:'🧠 冷知识',c:'闪电比太阳表面还热 5 倍！Lightning is 5× hotter than the Sun&#39;s surface!'},
+{t:'❓ 脑筋急转弯',c:'什么杯子不能用来装水？',a:'奖杯！A trophy!'},
+{t:'💪 今日小挑战',c:'用英语从 1 数到 20，边走楼梯边数。'},
+{t:'🧠 冷知识',c:'蜜蜂能认出人的脸！Bees can recognize human faces!'},
+{t:'😄 今日笑话',c:'“你的梦想是什么？”“躺着把作业写完。”“那叫做梦。”'},
+{t:'🔮 今日幸运',c:'幸运色：橙色 Orange · 幸运词：energy（能量）'},
+{t:'🎨 创意一分钟',c:'给 8 月底的自己写一句悄悄话，夹进册子最后一页。'},
+{t:'🧠 冷知识',c:'长颈鹿一天只睡大约 2 小时！Giraffes sleep only about 2 hours a day!'},
+{t:'❓ 脑筋急转弯',c:'什么东西越分享越多？',a:'快乐！Happiness grows when shared!'},
+{t:'💪 今日小挑战',c:'喝水的时候跟兄弟碰个杯，说一声：“Cheers!”'},
+{t:'🧠 冷知识',c:'企鹅会送小石头给喜欢的企鹅当礼物！Penguins give pebbles as gifts!'},
+{t:'😄 今日笑话',c:'“老师夸我的字像艺术品——看不懂的那种。”'},
+{t:'🔮 今日幸运',c:'幸运数字：8 · 幸运词：super——今天你是 super kid！'},
+{t:'🎨 创意一分钟',c:'用今天学的一个新词，编一句超搞笑的话。'},
+{t:'🧠 冷知识',c:'同样重量下，人的骨头比钢还结实！Bones are stronger than steel by weight!'},
+{t:'❓ 脑筋急转弯',c:'什么路不能走人？',a:'电路！A circuit!'},
+{t:'💪 今日小挑战',c:'睡前对镜子说：“I did a great job today!”'},
+{t:'🧠 冷知识',c:'猫一生大约 70% 的时间在睡觉！Cats sleep 70% of their lives!'},
+{t:'😄 今日笑话',c:'“我打字越来越快了！”“嗯，错字也越来越快了。”'},
+{t:'🔮 今日幸运',c:'幸运色：金色 Gold · 幸运词：champion（冠军）'},
+{t:'🎨 创意一分钟',c:'把今天的天空画下来，给它起个好听的名字。'},
+{t:'🧠 冷知识',c:'地球上蚂蚁的数量是人类的一百万倍！Ants outnumber humans a million to one!'},
+{t:'❓ 脑筋急转弯',c:'什么东西早上四条腿、中午两条腿、晚上三条腿？',a:'人！婴儿爬、大人走、老人拄拐杖。A human!'},
+{t:'💪 今日小挑战',c:'用不常用的那只手写自己的名字，笑一笑。'},
+{t:'🧠 冷知识',c:'声音在水里的速度是空气里的 4 倍多！Sound travels 4× faster in water!'},
+{t:'😄 今日笑话',c:'“无人机为什么飞不高？”“它今天心情有点低落。”'},
+{t:'🔮 今日幸运',c:'幸运数字：10 · 幸运词：finish（完成）——今天很适合把一件事做完！'}];
+function giftIdx(s){
+  const d=Math.round((new Date(s+'T12:00:00')-new Date('2026-07-01T12:00:00'))/864e5);
+  return ((d%QUOTES.length)+QUOTES.length)%QUOTES.length;
+}
+document.getElementById('giftBox').addEventListener('click',()=>{
+  const s=ymd(cur), i=giftIdx(s);
+  const q=QUOTES[i].split('｜'), f=FUN[i%FUN.length];
+  const rv=document.getElementById('giftReveal');
+  let html=`<div class="quote">💌 ${q[0]}<span class="en">${q[1]||''}</span></div>`;
+  html+=`<div class="funbox"><span class="tag">${f.t}</span>${f.c}`;
+  if(f.a)html+=`<br><button class="ansbtn">🙈 看答案</button><div class="ans" style="display:none;margin-top:6px;font-weight:700">${f.a}</div>`;
+  html+=`</div><div class="confetti">${['🎉','⭐','🎈','✨','🍬','🎊','💫','🌟','🍭','🎉','⭐','✨'].map((e,j)=>`<span style="left:${j*8+4}%;animation-delay:${j*0.07}s">${e}</span>`).join('')}</div>`;
+  rv.innerHTML=html; rv.style.display='block';
+  document.getElementById('giftBox').style.display='none';
+  const ab=rv.querySelector('.ansbtn');
+  if(ab)ab.addEventListener('click',()=>{rv.querySelector('.ans').style.display='block';ab.style.display='none';});
+});
+
+/* 任务表（每天固定，按天各自打勾） */
+const LEGACY_TASKS = {
+  e: ['📚 《暑假生活》达标（忙日 ≥4 页 / 空日冲 15–20 页）','📖 语文阅读理解 1 篇','⌨️ 打字练习 15–20 分钟','🌙 阅读半小时 + 好词好句摘抄'],
+  k: ['📚 《暑假生活》达标（忙日 ≥4 页 / 空日冲 15–20 页）','⌨️ 打字练习 15–20 分钟','🌙 阅读半小时 + 好词好句摘抄']
+};
+const NEW_TASKS = {
+  e: ['📖 语文阅读（精读或阅读理解 + 积累 1–2 个好词好句）','🧮 家庭学习门户：四上数学预习 / 计算刷题 30 分钟','⌨️ 打字练习（CTL 冲刺日按时间表缩短）','🌙 阅读半小时 + 好词好句摘抄'],
+  k: ['📖 语文阅读（精读或阅读理解 + 积累 1–2 个好词好句）','🧮 家庭学习门户：五上数学预习 / 计算刷题 30 分钟','⌨️ 打字练习（CTL 冲刺日按时间表缩短）','🌙 阅读半小时 + 好词好句摘抄']
+};
+function tasksFor(s,dow){
+  if (s===CTL_EXAM) return {
+    e:['🏁 CTL 考试：考前只轻复习，不刷难题','🌿 考试后休息，晚上可选轻松阅读'],
+    k:['🏁 CTL 考试：考前只轻复习，不刷难题','🌿 考试后休息，晚上可选轻松阅读']
+  };
+  const source = s >= STUDY_SWITCH ? NEW_TASKS : LEGACY_TASKS;
+  const tasks = {e:[...source.e], k:[...source.k]};
+  const engClass = s>=ENG_A && s<=ENG_B && dow>=1 && dow<=5;
+  if (engClass){
+    tasks.e.unshift('📝 英语课后：卷子 / 订错优先；无卷子就背单词与复习课堂内容');
+    tasks.k.unshift('📝 英语课后：卷子 / 订错优先；无卷子就背单词与复习课堂内容');
+  }
+  if (PREPLY_TRIALS[s]){
+    tasks.e.unshift('🎧 '+PREPLY_TRIALS[s]+' Preply 外教试听课');
+    tasks.k.unshift('🎧 '+PREPLY_TRIALS[s]+' Preply 外教试听课');
+  }
+  if (ctlActive(s)){
+    const ctlTask=PREPLY_TRIALS[s]?'💻 CTL 忙碌日保底：晚饭后代码手感 10 分钟':'💻 CTL：'+CTL_PLAN[s];
+    tasks.e.unshift(ctlTask);
+    tasks.k.unshift(ctlTask);
+  }
+  if (SCHOOL_BLOCKS[s]){
+    tasks.e.splice(tasks.e.length-1,0,'🏫 学校未完成项：按今天的补缺安排完成 Eddey 自己的一项');
+    tasks.k.splice(tasks.k.length-1,0,'🏫 学校未完成项：按今天的补缺安排完成 Kenton 自己的一项');
+  }
+  if (WRITE_DAYS.includes(dow)) tasks.e.splice(tasks.e.length-1,0,'✍️ 写字课 16:20–17:50（仅周一/三/四）');
+  return tasks;
+}
+
+/* ================= 渲染 ================= */
+let cur = new Date();
+const qd = new URLSearchParams(location.search).get('d');
+if (qd && /^\d{4}-\d{2}-\d{2}$/.test(qd)) cur = new Date(qd+'T12:00:00');
+
+function move(n){ cur.setDate(cur.getDate()+n); render(); }
+function goToday(){ cur = new Date(); render(); }
+function store(k){ try{ return JSON.parse(localStorage.getItem(k))||{} }catch(e){ return {} } }
+
+function render(){
+  const s = ymd(cur), dow = cur.getDay(), today = ymd(new Date());
+  document.getElementById('d-title').textContent = (cur.getMonth()+1)+'月'+cur.getDate()+'日 · '+WEEK[dow];
+  document.getElementById('d-sub').textContent = s===today ? '今天' : (s>today?'还没到':'已过去');
+  const ph = phaseOf(s);
+  document.getElementById('phase').innerHTML = '<b>'+ph[0]+'</b> — '+ph[1];
+
+  // 特别提醒
+  let w='';
+  if (s>=DRONE_A && s<=DRONE_B && WRITE_DAYS.includes(dow)) w+='<div class="warn"><b>⚠️ 衔接提醒：</b>无人机 16:00 下课（接回家约 16:15），Eddey 写字课 16:20 开始、步行 5 分钟能赶上——无人机下课别拖堂；实在来不及就跟写字老师请个短假。</div>';
+  if (s==='2026-07-09') w+='<div class="warn"><b>今天很满：</b>9:00–10:30 英语试听（走路去）→ 13:00–13:50 英语外教（线上）→ 15:30–17:30 编程课（要接送）。</div>';
+  if (s==='2026-08-08'||s==='2026-08-09') w+='<div class="warn"><b>作品最后检查：</b>8/10（周一）要交班主任（上传 ClassIn），这两天把三项作品定稿提交。</div>';
+  if (s==='2026-08-10') w+='<div class="warn"><b>今天交作品：</b>电子稿上传 ClassIn 交班主任。</div>';
+  if (PREPLY_TRIALS[s]) w+='<div class="warn"><b>Preply 新试听：</b>今天 12:00–12:50，共 50 分钟；午饭排到 12:50–13:30。'+(s==='2026-08-06'?'13:40 出发去无人机，CTL 只保留晚饭后 10 分钟手感练习。':'')+'</div>';
+  if (s>=CTL_A && s<CTL_EXAM) w+='<div class="warn"><b>CTL 倒计时：</b>8/15 考试。今天只完成时间表里的短训练，错题当天回炉，不再额外加难题。</div>';
+  if (s===CTL_EXAM) w+='<div class="warn"><b>今天 CTL 考试：</b>出门前轻看框架和高频错题，正式时间、地点与携带物品以老师最新通知为准。</div>';
+  if (s==='2026-08-31') w+='<div class="warn"><b>今天返校：</b>8:20–11:00 交作业，带齐清单（见总计划页）。</div>';
+  document.getElementById('warns').innerHTML = w;
+
+  // 换一天 = 一个全新的礼物盒
+  document.getElementById('giftReveal').style.display='none';
+  document.getElementById('giftReveal').innerHTML='';
+  document.getElementById('giftBox').style.display='';
+
+  const rows = dayPlan(s,dow);
+
+  // 接送一览
+  const cars = rows.filter(r=>r.car && !r.mut);
+  document.getElementById('cars').innerHTML = cars.length
+    ? cars.map(r=>'<li>'+r.i+' '+r.t+' '+r.title+'</li>').join('')
+    : '<li class="no">今天没有要接送的安排 🎉</li>';
+
+  // 时间表 + 双人打卡（按天保存）
+  const key='sd_'+s, saved=store(key);
+  document.getElementById('tl').innerHTML = rows.map((r,idx)=>{
+    const cks = r.mut ? '' :
+      '<span class="cks">'+
+      (r.who!=='k' ? '<button class="ck e'+(saved[idx+'e']?' on':'')+'" data-i="'+idx+'" data-w="e">🐯</button>' : '')+
+      (r.who!=='e' ? '<button class="ck k'+(saved[idx+'k']?' on':'')+'" data-i="'+idx+'" data-w="k">🦁</button>' : '')+
+      '</span>';
+    const whoTag = r.who==='e' ? '（Eddey）' : r.who==='k' ? '（Kenton）' : '';
+    return '<li class="'+(r.mut?'mut ':'')+(r.cls||'')+'"><span class="tm">'+r.t+'</span>'+
+      '<span class="bd">'+r.i+' '+r.title+whoTag+(r.car?' <span class="car">'+r.car+'</span>':'')+
+      (r.nt?'<span class="nt">'+r.nt+'</span>':'')+'</span>'+cks+'</li>';
+  }).join('');
+  document.querySelectorAll('#tl .ck').forEach(b=>b.addEventListener('click',()=>{
+    const k2='sd_'+s, sv=store(k2), id=b.dataset.i+b.dataset.w;
+    sv[id]=!sv[id]; localStorage.setItem(k2,JSON.stringify(sv)); b.classList.toggle('on',sv[id]);
+  }));
+
+  // 任务表
+  const tasks = tasksFor(s,dow);
+  ['e','k'].forEach(whoK=>{
+    const tkey='sdt_'+s+'_'+whoK, sv=store(tkey), ul=document.getElementById('task-'+whoK);
+    ul.innerHTML = tasks[whoK].map((t,i)=>'<li><input type="checkbox" data-i="'+i+'"'+(sv[i]?' checked':'')+'><span class="'+(sv[i]?'done':'')+'">'+t+'</span></li>').join('');
+    const prog=()=>{ const sv2=store(tkey); const n=tasks[whoK].filter((_,i)=>sv2[i]).length;
+      document.getElementById('pr-'+whoK).textContent='今日 '+n+'/'+tasks[whoK].length; };
+    prog();
+    ul.querySelectorAll('input').forEach(cb=>cb.addEventListener('change',()=>{
+      const sv2=store(tkey); sv2[cb.dataset.i]=cb.checked; localStorage.setItem(tkey,JSON.stringify(sv2));
+      cb.nextElementSibling.classList.toggle('done',cb.checked); prog();
+    }));
+  });
+}
+
+// 倒计时行
+(function(){
+  const days = d => Math.max(0, Math.ceil((new Date(d) - new Date()) / 864e5));
+  document.getElementById('cd').innerHTML =
+    '距 8/10 交作品 <b>'+days('2026-08-10')+'</b> 天 · 距 8/15 CTL <b>'+days('2026-08-15')+'</b> 天 · 距 8/31 返校 <b>'+days('2026-08-31')+'</b> 天';
+})();
+
+render();
+</script>
+</body>
+</html>

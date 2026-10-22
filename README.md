@@ -11,6 +11,7 @@ Kenton 和 Eddey 的家庭学习门户：每日学习入口、学科页、错题
 | 来源 | 放在哪里 | 怎么用 |
 | --- | --- | --- |
 | 线上网站 study-portal-eta.vercel.app，逐个文件抓取，含 1,900 多个朗读音频 | 根目录 | 当前版本，以它为准 |
+| 线上网站之后的每一次内容更新（新小应用、数据、音频） | 根目录，由 `tools/upstream-sync/` 每天自动同步进来 | 只同步内容，不动 v2 自己的外观；每天的变化见 `tools/upstream-sync/log/` |
 | “今日天空”首页外观（2026-10-22 家长选定） | `assets/portal-theme.css`、`assets/portal.js` 的首页部分 | 门户四页使用；工具页仍是线上原版；随本仓库的 GitHub 网站发布，正式网站未换 |
 | 家长电脑里 7 月的本地源码（旧仓库 `easonyoung1990-dot/study-portal`）中线上没有的部分 | `archive/2026-07-local-snapshot/` | 只读参考，不是当前状态 |
 
