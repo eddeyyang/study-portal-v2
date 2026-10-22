@@ -137,11 +137,11 @@ async function load(){
   const paths=['apps','preply','papers','podcast','portal-navigation'];
   const values=await Promise.all(paths.map(async p=>{const r=await fetch('data/'+p+'.json',{cache:'no-store',signal:abort.signal});if(!r.ok)throw new Error(p);return r.json();}));
   if(values.slice(0,4).some(x=>!Array.isArray(x))||values[4]?.schemaVersion!==1||!Array.isArray(values[4]?.subjects)||!Array.isArray(values[4]?.periods))throw new Error('catalog format');
-  config=values[4];catalog=M.buildCatalog(Object.fromEntries(paths.slice(0,4).map((p,i)=>[p,values[i]])),config);render();
+  config=values[4];catalog=M.buildCatalog(Object.fromEntries(paths.slice(0,4).map((p,i)=>[p,values[i]])),config);if(window.V2CourseRoutes)catalog=window.V2CourseRoutes(catalog);render();
  }catch(error){
   const cached=window.StudyPortalSnapshot;
   const notice=document.getElementById('portal-notice');
-  if(cached?.config&&Array.isArray(cached.catalog)){config=cached.config;catalog=cached.catalog;notice.hidden=false;notice.innerHTML=`暂时无法刷新目录，正在显示 ${esc(cached.generatedOn)} 保存的内容。<button type="button" onclick="location.reload()">重新获取</button>`;render();}
+  if(cached?.config&&Array.isArray(cached.catalog)){config=cached.config;catalog=window.V2CourseRoutes?window.V2CourseRoutes(cached.catalog):cached.catalog;notice.hidden=false;notice.innerHTML=`暂时无法刷新目录，正在显示 ${esc(cached.generatedOn)} 保存的内容。<button type="button" onclick="location.reload()">重新获取</button>`;render();}
   else{notice.hidden=false;notice.textContent='学习目录暂时没有加载成功，请刷新重试。';root.innerHTML='<a class="small-schedule" href="school_day.html">打开日程与接送表</a><div class="quiet-links"><a href="parent.html">学习记录与家长页</a></div>';root.setAttribute('aria-busy','false');}
  }finally{clearTimeout(timer);}
 }

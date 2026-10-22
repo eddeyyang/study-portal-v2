@@ -28,6 +28,8 @@ Kenton 和 Eddey 的家庭学习门户：每日学习入口、学科页、错题
 | `paper-intake.html` `paper-lesson.html` | 试卷录入（浏览器端识字，`assets/paper-ocr/`）和试卷讲解 |
 | `knowledge-map.html` | 知识地图 |
 | `apps/` | 互动学习小应用，一节一个 HTML；音频、插图在 `apps/audio/` `apps/media/` `apps/assets/` |
+| `apps/drone/` | 无人机二级航线（2026-10-23 Claude 重做，v2 自有）：9 个航点、动手实验、盖住说、秒答、间隔复习、模拟机考、一页全图、家长页。知识点和题目来自正式站的无人机页，设计和练法是 v2 自己的 |
+| `assets/v2-course-routes.js` | v2 自有：把门户里的“无人机二级”入口指向 `apps/drone/` |
 | `papers/` | 试卷页 |
 | `data/` | 目录与配置：`apps.json`（学习内容清单）、`portal-navigation.json`（导航、学期、下架清单）等 |
 | `assets/` | 共享脚本与样式 |
