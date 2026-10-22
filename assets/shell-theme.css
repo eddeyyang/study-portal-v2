@@ -1,0 +1,164 @@
+/* 书桌主题 · 工具页 · 2026-10-22
+   用于日程与接送表、家长页、错题本、暑假与备考、试卷录入/讲解等页面。
+   放在每页 </head> 前最后一个，只改外观，不动结构、脚本和数据。
+   颜色与 assets/portal-theme.css 同一套。 */
+html:root{
+  --paper:#f3f5f0;
+  --sheet:#fffffd;
+  --ink:#1f2d4d;
+  --ink-soft:#2f4068;
+  --muted:#5b6578;
+  --rule:#e1e5de;
+  --rule-strong:#cbd2c8;
+  --red:#c8423a;
+  --wash:#eef1f5;
+  --kenton:#1f7a8c;--kenton-soft:#e6f2f3;--kenton-deep:#155766;
+  --eddey:#cc632c;--eddey-soft:#fcefe5;--eddey-deep:#8f4318;
+  --chinese:#76589f;--math:#3c8462;--english:#3b6ba8;
+  --serif:"Songti SC","Noto Serif SC","Noto Serif CJK SC","Source Han Serif SC","STSong",serif;
+  --sans:"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans CJK SC","Noto Sans SC",system-ui,sans-serif;
+  --lift:0 1px 0 rgba(31,45,77,.04),0 10px 26px -18px rgba(31,45,77,.30);
+  /* 旧糖果色收敛到同一套 */
+  --candy-yellow:#f2c55c;--candy-pink:#e3a1bb;--candy-green:#8fc9a1;--candy-purple:#a49ac8;
+  /* 日程表自带的颜色 */
+  --schedule:#2f4a7a;--schedule-soft:#eef1f6;--line:#e4e8e1;
+  --confirmed:#2c7653;--confirmed-soft:#ebf6ef;
+  --pending:#86621a;--pending-soft:#fbf3dc;
+  --conflict:#a8403a;--conflict-soft:#fbefed;
+  --free:#2f7445;--free-soft:#eef7f0;
+  /* 试卷工具 */
+  --paper-accent:#cc632c;--paper-accent-dark:#8f4318;--paper-soft:#fcefe5;
+}
+body,body.portal-support{
+  --bg:var(--paper);--card:var(--sheet);--shadow:var(--lift);--radius:16px;
+  --ink:#1f2d4d;--muted:#5b6578;
+  --kenton:#1f7a8c;--kenton-soft:#e6f2f3;--eddey:#cc632c;--eddey-soft:#fcefe5;
+  font-family:var(--sans);color:var(--ink);line-height:1.6;
+  background:linear-gradient(rgba(31,45,77,.035) 1px,transparent 1px) 0 0/100% 32px,var(--paper);
+}
+/* 错题本按孩子换色：脚本把颜色写在 <html> 上，这里换成同一套 */
+html[style*="#36c5d6"]{--accent:#1f7a8c!important;--accent-soft:#e6f2f3!important;--accent-dark:#155766!important;--paper-accent:#1f7a8c!important;--paper-soft:#e6f2f3!important;--paper-accent-dark:#155766!important}
+html[style*="#ff8a5b"]{--accent:#cc632c!important;--accent-soft:#fcefe5!important;--accent-dark:#8f4318!important;--paper-accent:#cc632c!important;--paper-soft:#fcefe5!important;--paper-accent-dark:#8f4318!important}
+
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visible,textarea:focus-visible{outline:2.5px solid var(--ink);outline-offset:3px}
+h1,h2,.topbar h1,.paper-topbar h1{font-family:var(--serif);letter-spacing:.03em}
+
+/* 页头 */
+.topbar,.portal-support .topbar{padding-bottom:14px;margin-bottom:20px;border-bottom:1px solid var(--rule-strong)}
+.topbar h1,.portal-support .topbar h1{font-size:22px;line-height:1.35;font-weight:700}
+.topbar .back,.portal-support .topbar .back,.paper-back{
+  background:var(--sheet);border:1px solid var(--rule-strong);border-radius:12px;box-shadow:none;color:var(--ink)
+}
+.topbar .back:hover,.paper-back:hover{border-color:#aab4c2}
+.version-pill{color:var(--ink-soft)!important;background:var(--wash)!important;font-weight:600!important}
+
+/* 纸面：卡片统一成一张张白纸 */
+.card,.portal-support .card,.app-card,.portal-support .app-card,.sec,.section-card,.portal-support .section-card,
+.paper-card,.paper-stage-card,.question-editor,.lesson-sidebar,.lesson-stage,.archive-item,.review-tools,.portal-support .review-tools{
+  background:var(--sheet);border:1px solid var(--rule);border-radius:16px;box-shadow:var(--lift)
+}
+.app-card,.portal-support .app-card{border-left:4px solid var(--candy-purple)}
+.app-card:hover{border-color:#b8c0cc}
+.app-card .t{font-weight:600}
+.card[style*="gradient"],.portal-support .card[style*="gradient"]{background:var(--sheet)!important}
+.card[style*="border:2px"]{border-width:1px!important}
+.card h2,.sec h2,.section-card h2{font-family:var(--serif)}
+.tag{font-weight:600;background:#f8ecc6;color:#6b5210}
+.footer-note{color:var(--muted)}
+
+/* 环境提示条、家长测试面板（脚本生成，带行内样式） */
+#dd-test-banner{background:var(--ink)!important;font:600 12.5px/1.4 var(--sans)!important;letter-spacing:.02em;box-shadow:none!important}
+@media(max-width:420px){#dd-test-banner{font-size:11.5px!important;padding:7px 10px!important}}
+
+/* ===== 日程与接送表 school_day ===== */
+.schedule-hero,.portal-support .schedule-hero{
+  background:var(--sheet);border:1px solid var(--rule-strong);border-radius:20px;box-shadow:var(--lift);padding:22px 24px
+}
+.schedule-hero::after,.tomorrow-brief::after{display:none}
+.schedule-hero h2,.portal-support .schedule-hero h2{font-family:var(--serif);color:var(--ink);font-size:26px;letter-spacing:.05em}
+.schedule-hero .eyebrow{background:transparent;color:var(--ink-soft);padding:0;min-height:0;font-weight:600}
+.schedule-hero .eyebrow::before{background:var(--red)}
+.day-button{background:var(--sheet);border:1px solid var(--rule-strong);box-shadow:none}
+.date-copy b{font-family:var(--serif);font-size:21px;letter-spacing:.04em}
+.today-button{background:var(--ink);box-shadow:none;border-radius:999px;font-weight:600}
+.week-day{border-color:var(--rule-strong);background:var(--sheet)}
+.week-day[aria-current="date"]{background:var(--ink);border-color:var(--ink);box-shadow:none}
+.phase{color:var(--ink-soft);background:var(--wash)}
+.phase b{color:var(--ink)}
+.alert{border-left-width:4px}
+.section-icon{background:var(--wash)}
+.section-title{font-family:var(--serif)}
+.focus-line{background:#fbf5e3}
+.focus-line b{color:#86531c}
+.lane-legend span,.school-meta span{color:var(--muted);background:var(--wash);font-weight:600}
+.lane-card,.school-child,.execution-child{border-width:1.5px}
+.lane-card.kenton,.school-child.kenton,.execution-child.kenton,.tomorrow-child.kenton{border-color:color-mix(in srgb,var(--kenton) 60%,white)}
+.lane-card.eddey,.school-child.eddey,.execution-child.eddey,.tomorrow-child.eddey{border-color:color-mix(in srgb,var(--eddey) 60%,white)}
+.lane-time,.timeline-time{font-variant-numeric:tabular-nums}
+.lane-row.online .lane-time{color:var(--schedule);background:var(--schedule-soft)}
+.lane-row.class .lane-time,.timeline-row.class .timeline-time{color:var(--kenton-deep);background:var(--kenton-soft)}
+.lane-learning-title,.lane-question,.task-question{color:var(--ink-soft);background:var(--wash)}
+.task-card,.task-card.kenton,.task-card.eddey{background:var(--sheet);border-width:1.5px}
+.task-card.kenton{border-color:color-mix(in srgb,var(--kenton) 60%,white)}
+.task-card.eddey{border-color:color-mix(in srgb,var(--eddey) 60%,white)}
+.task-open,.tomorrow-open,.execution-detail{background:var(--ink);border-radius:12px}
+.day-execution{border:1.5px solid var(--ink);background:var(--sheet)}
+.execution-kicker,.tomorrow-kicker{color:var(--red);letter-spacing:.04em;font-weight:700}
+.execution-date{color:var(--ink-soft);background:var(--wash)}
+.execution-step::before{background:var(--ink)}
+.execution-fixed{background:#f5f6f3}
+.director-intro,.tomorrow-brief{border:1px solid var(--rule-strong);background:var(--sheet)}
+.director-rule span{color:var(--ink-soft);background:var(--wash)}
+.tool-map{border:1px solid var(--rule);background:var(--sheet)}
+.tool-item{background:#f6f7f4}
+.load-button{background:#f5f6f3}
+.load-advice{color:var(--ink-soft)}
+.prompt-level[aria-pressed="true"]{border-color:var(--ink);background:var(--ink)}
+.prompt-help summary,.actual-progress summary{color:var(--ink-soft)}
+.school-chip,.dictation-toggle,.repair-button,.prompt-level,.progress-input,.print-link{border-color:var(--rule-strong)}
+.task-badge{background:var(--wash);color:var(--ink-soft)}
+.check-button{border-color:var(--rule-strong)}
+.task-progress,.execution-load,.tomorrow-load{color:var(--muted)}
+.parent-notes{background:var(--sheet);border:1px solid var(--rule);box-shadow:none}
+.print-link{background:var(--sheet)}
+.print-actions .muted{margin:0;align-self:center;color:var(--muted);font-size:12.5px;line-height:1.6}
+
+/* ===== 错题本 mistakes ===== */
+.archive-hero,.portal-support .archive-hero{border:1px solid var(--rule-strong);border-top:4px solid var(--accent);border-radius:18px;background:var(--sheet);box-shadow:var(--lift)}
+.archive-kicker{letter-spacing:.06em}
+.archive-hero h2{font-family:var(--serif)}
+.flow-step,.portal-support .flow-step{background:var(--sheet);border:1px solid var(--rule);box-shadow:none}
+.primary-btn,.portal-support .primary-btn{box-shadow:none;border:0;color:#fff;background:var(--accent);border-radius:12px;font-weight:600}
+.filter-field input,.filter-field select{border:1px solid var(--rule-strong)}
+.privacy-card{background:#f1f6f2}
+.safe-note{background:#fbf6e6}
+.paper-library-entry{border:1px solid var(--rule);box-shadow:var(--lift)}
+
+/* ===== 暑假计划 / 暑假每日页 / 备考 ===== */
+.tabs button,.daynav button{background:var(--sheet);border:1px solid var(--rule-strong);box-shadow:none}
+.tabs button.on,.daynav .today-btn,.today-btn,.today-btn[style]{background:var(--ink)!important;color:#fff;border-color:var(--ink)}
+[style*="#ffd166,#ff9ec4"]{background:var(--ink)!important;color:#fff!important;box-shadow:none!important}
+.daynav .dt b{font-family:var(--serif);font-size:18px;white-space:nowrap}
+.countdown div,.quote{background:var(--sheet);border:1px solid var(--rule)}
+.warn{border-left-color:var(--red)}
+ul.chk input{accent-color:var(--ink)}
+.ck{border-color:var(--rule-strong)}
+.funbox{background:#f1f5f9}
+.ansbtn{background:var(--ink);color:#fff}
+.tab.on{background:var(--ink)!important;border-color:var(--ink)!important}
+.stage.cur{background:var(--wash)}
+.stage.cur .dot{background:var(--ink)}
+
+/* ===== 试卷录入 / 试卷讲解 ===== */
+.paper-hero{border:1px solid var(--rule-strong);border-top:4px solid var(--paper-accent);border-radius:18px;background:var(--sheet);box-shadow:var(--lift)}
+.paper-hero:after{display:none}
+.paper-progress div{box-shadow:none;border:1px solid var(--rule)}
+.paper-btn.primary{box-shadow:none}
+.paper-success{border:1px solid #9ccdb8;background:#f1f8f4}
+
+@media print{
+  body,body.portal-support{background:#fff}
+  #dd-test-banner{display:none!important}
+  .card,.section-card,.sec{box-shadow:none}
+}
+.sec>h2{display:block}

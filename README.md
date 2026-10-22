@@ -9,7 +9,7 @@ Kenton 和 Eddey 的家庭学习门户：每日学习入口、学科页、错题
 | 来源 | 放在哪里 | 怎么用 |
 | --- | --- | --- |
 | 线上网站 study-portal-eta.vercel.app，逐个文件抓取，含 1,900 多个朗读音频 | 根目录 | 当前版本，以它为准 |
-| “作业本”视觉改版 | `assets/portal-theme.css` | 候选，待家长实看验收 |
+| “书桌”视觉改版（2026-10-22） | `assets/portal-theme.css`（门户四页）、`assets/shell-theme.css`（日程、家长页、错题本等工具页） | 候选，待家长实看验收 |
 | 家长电脑里 7 月的本地源码（旧仓库 `easonyoung1990-dot/study-portal`）中线上没有的部分 | `archive/2026-07-local-snapshot/` | 只读参考，不是当前状态 |
 
 ## 目录
