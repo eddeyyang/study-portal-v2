@@ -6,7 +6,9 @@
 
 - Kenton 与 Eddey 的家庭学习门户的 Claude 工作仓库，放在 Claude 专用的 GitHub 账号 `eddeyyang` 下，**私有**。
 - 2026-10-15 由两部分合成：线上网站 study-portal-eta.vercel.app 的完整抓取（根目录），加上家长电脑里 7 月本地快照中线上没有的部分（`archive/2026-07-local-snapshot/`）。
-- 项目规则指定的**正式代码基线**仍是 `easonyoung1990-create/study-portal` 的 main，Claude 目前读不到。拿到它之前，这里的改动都只是候选，不能当成正式线，也不能直接拿去部署覆盖线上。
+- **Claude 的提交一律推到这里**（`eddeyyang/study-portal-v2`，家长 2026-10-22 指定）。原仓库 `easonyoung1990-create/study-portal` 不给 Claude 写权限，也不向它推送。
+- 线上网站目前仍由原仓库部署。v2 的改动要不要上线、怎么接 Vercel 和 Neon，由家长另行决定；决定之前不部署、不覆盖线上。
+- 原仓库的现行 `AGENTS.md`、`DESIGN.md` 等 Claude 目前读不到，需要家长另行提供只读副本（见缺口条例 A3）。
 
 ## 规则在哪里
 

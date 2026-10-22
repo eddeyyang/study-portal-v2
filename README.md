@@ -2,7 +2,7 @@
 
 Kenton 和 Eddey 的家庭学习门户：每日学习入口、学科页、错题本、日程与接送表、家长页，以及 160 多个独立的互动学习小应用。
 
-这是 Claude 的工作仓库（GitHub 账号 `eddeyyang`，私有）。项目规则指定的正式代码基线仍是 `easonyoung1990-create/study-portal` 的 main；两者的关系和待决定事项见 Claude 项目文档《Study Portal 交接整理与缺口条例》。
+这是 Claude 的工作仓库（GitHub 账号 `eddeyyang`，私有），Claude 的提交都推到这里（家长 2026-10-22 指定）。线上网站目前仍由原仓库 `easonyoung1990-create/study-portal` 部署；上线方式和其他待决定事项见 Claude 项目文档《Study Portal 交接整理与缺口条例》。
 
 ## 内容从哪里来（2026-10-15）
 
