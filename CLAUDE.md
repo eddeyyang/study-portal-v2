@@ -8,7 +8,7 @@
 - 2026-10-15 由两部分合成：线上网站 study-portal-eta.vercel.app 的完整抓取（根目录），加上家长电脑里 7 月本地快照中线上没有的部分（`archive/2026-07-local-snapshot/`）。
 - **Claude 的提交一律推到这里**（`eddeyyang/study-portal-v2`，家长 2026-10-22 指定）。原仓库 `easonyoung1990-create/study-portal` 不给 Claude 写权限，也不向它推送。
 - 线上网站目前仍由原仓库部署。v2 的改动要不要上线、怎么接 Vercel 和 Neon，由家长另行决定；决定之前不部署、不覆盖线上。
-- 原仓库的现行 `AGENTS.md`、`DESIGN.md` 等 Claude 目前读不到，需要家长另行提供只读副本（见缺口条例 A3）。
+- 原仓库的现行 `AGENTS.md`、`DESIGN.md` 等 Claude 目前读不到，需要家长另行提供只读副本（见缺口条例 A3）。`eddeyyang/study-portal` 里另有一份可只读参考，是否与原仓库同步未核。
 
 ## 规则在哪里
 
@@ -26,8 +26,7 @@
 | 位置 | 说明 |
 | --- | --- |
 | 根目录、`apps/`、`assets/`、`data/`、`papers/`、`materials/` | 线上 2026-10-15 版本，以它为准 |
-| `assets/portal-theme.css` | “书桌”新外观（2026-10-22），只改首页、今日、学科、全部内容四页的外观；首页日历页和田字格学科名在 `assets/portal.js` 里；未经家长手机和电脑实看验收 |
-| `assets/shell-theme.css` | 同一套“书桌”外观用于日程与接送表、家长页、错题本、暑假、备考、试卷录入/讲解；每页 `</head>` 前最后一个样式表，只改外观；单个学习小应用（`apps/`）不改 |
+| 外观 | 家长 2026-10-22 决定：审美和配色以线上原版为准，先不改网站大框架。首页用家长选定的“今日天空”（`assets/portal-theme.css` 加 `assets/portal.js` 的首页部分，天空随真实时间变化）；今日、学科、全部内容三页套用同一份样式；日程、家长页、错题本等工具页是线上原版。Claude 做过的“作业本”“书桌”两版已撤回，只留在 Git 历史里 |
 | `apps/audio/` | 朗读音频。文件名是对 `语言|文字` 做 FNV-1a 得到的 8 位十六进制，与页面里的 `audioHash()` 一致 |
 | `archive/2026-07-local-snapshot/` | 7 月本地快照，只读参考，不是当前学情 |
 | `MISSING.md` | 线上本来就缺、仓库也没有的页面和音频 |
