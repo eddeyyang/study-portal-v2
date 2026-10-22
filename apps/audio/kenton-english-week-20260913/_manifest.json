@@ -1,0 +1,2354 @@
+{
+  "schemaVersion": 1,
+  "appId": "kenton-english-week-20260913",
+  "engine": "Kokoro-82M ONNX INT8",
+  "voice": "af_heart",
+  "lang": "en-US",
+  "speed": 0.92,
+  "normalization": "EBU R128 -18 LUFS / true peak -2dB",
+  "items": [
+    {
+      "id": "3fb8f409",
+      "lang": "en-US",
+      "text": "lion",
+      "file": "voice-00.mp3",
+      "start": 0.24,
+      "end": 1.0933
+    },
+    {
+      "id": "75253f4a",
+      "lang": "en-US",
+      "text": "This is a lion.",
+      "file": "voice-00.mp3",
+      "start": 1.5733,
+      "end": 2.7253
+    },
+    {
+      "id": "98e2c3b5",
+      "lang": "en-US",
+      "text": "bear",
+      "file": "voice-00.mp3",
+      "start": 3.2053,
+      "end": 3.9733
+    },
+    {
+      "id": "b05a663e",
+      "lang": "en-US",
+      "text": "This is a bear.",
+      "file": "voice-00.mp3",
+      "start": 4.4533,
+      "end": 5.4773
+    },
+    {
+      "id": "0fd68ba5",
+      "lang": "en-US",
+      "text": "kangaroo",
+      "file": "voice-00.mp3",
+      "start": 5.9573,
+      "end": 6.7893
+    },
+    {
+      "id": "ada77cae",
+      "lang": "en-US",
+      "text": "This is a kangaroo.",
+      "file": "voice-00.mp3",
+      "start": 7.2693,
+      "end": 8.5707
+    },
+    {
+      "id": "11a56ab0",
+      "lang": "en-US",
+      "text": "kitten",
+      "file": "voice-00.mp3",
+      "start": 9.0507,
+      "end": 9.84
+    },
+    {
+      "id": "cb031f15",
+      "lang": "en-US",
+      "text": "This is a kitten.",
+      "file": "voice-00.mp3",
+      "start": 10.32,
+      "end": 11.4293
+    },
+    {
+      "id": "fab5840b",
+      "lang": "en-US",
+      "text": "parrot",
+      "file": "voice-00.mp3",
+      "start": 11.9093,
+      "end": 12.7627
+    },
+    {
+      "id": "25dbc5a4",
+      "lang": "en-US",
+      "text": "This is a parrot.",
+      "file": "voice-00.mp3",
+      "start": 13.2427,
+      "end": 14.3947
+    },
+    {
+      "id": "38fc5f4b",
+      "lang": "en-US",
+      "text": "rabbit",
+      "file": "voice-00.mp3",
+      "start": 14.8747,
+      "end": 15.728
+    },
+    {
+      "id": "796211dc",
+      "lang": "en-US",
+      "text": "This is a rabbit.",
+      "file": "voice-00.mp3",
+      "start": 16.208,
+      "end": 17.36
+    },
+    {
+      "id": "939f3192",
+      "lang": "en-US",
+      "text": "bat",
+      "file": "voice-00.mp3",
+      "start": 17.84,
+      "end": 18.5867
+    },
+    {
+      "id": "e854fff5",
+      "lang": "en-US",
+      "text": "This is a bat.",
+      "file": "voice-00.mp3",
+      "start": 19.0667,
+      "end": 20.1333
+    },
+    {
+      "id": "51bbf660",
+      "lang": "en-US",
+      "text": "snail",
+      "file": "voice-00.mp3",
+      "start": 20.6133,
+      "end": 21.5307
+    },
+    {
+      "id": "cf2e4667",
+      "lang": "en-US",
+      "text": "This is a snail.",
+      "file": "voice-00.mp3",
+      "start": 22.0107,
+      "end": 23.184
+    },
+    {
+      "id": "a3a9e7f1",
+      "lang": "en-US",
+      "text": "penguin",
+      "file": "voice-01.mp3",
+      "start": 0.24,
+      "end": 1.1147
+    },
+    {
+      "id": "947f0500",
+      "lang": "en-US",
+      "text": "This is a penguin.",
+      "file": "voice-01.mp3",
+      "start": 1.5947,
+      "end": 2.768
+    },
+    {
+      "id": "70d617ad",
+      "lang": "en-US",
+      "text": "panda",
+      "file": "voice-01.mp3",
+      "start": 3.248,
+      "end": 4.1013
+    },
+    {
+      "id": "9b477698",
+      "lang": "en-US",
+      "text": "This is a panda.",
+      "file": "voice-01.mp3",
+      "start": 4.5813,
+      "end": 5.712
+    },
+    {
+      "id": "73da26f5",
+      "lang": "en-US",
+      "text": "dolphin",
+      "file": "voice-01.mp3",
+      "start": 6.192,
+      "end": 7.1307
+    },
+    {
+      "id": "42890270",
+      "lang": "en-US",
+      "text": "This is a dolphin.",
+      "file": "voice-01.mp3",
+      "start": 7.6107,
+      "end": 8.8907
+    },
+    {
+      "id": "ae7e6284",
+      "lang": "en-US",
+      "text": "above",
+      "file": "voice-01.mp3",
+      "start": 9.3707,
+      "end": 10.2027
+    },
+    {
+      "id": "e76d05e7",
+      "lang": "en-US",
+      "text": "The bat is above the tree.",
+      "file": "voice-01.mp3",
+      "start": 10.6827,
+      "end": 12.304
+    },
+    {
+      "id": "b73caf7c",
+      "lang": "en-US",
+      "text": "below",
+      "file": "voice-01.mp3",
+      "start": 12.784,
+      "end": 13.616
+    },
+    {
+      "id": "e48f2d34",
+      "lang": "en-US",
+      "text": "The snail is below the flower.",
+      "file": "voice-01.mp3",
+      "start": 14.096,
+      "end": 15.9733
+    },
+    {
+      "id": "14f7fa41",
+      "lang": "en-US",
+      "text": "near",
+      "file": "voice-01.mp3",
+      "start": 16.4533,
+      "end": 17.2213
+    },
+    {
+      "id": "aeab5335",
+      "lang": "en-US",
+      "text": "The parrot is near the cage.",
+      "file": "voice-01.mp3",
+      "start": 17.7013,
+      "end": 19.408
+    },
+    {
+      "id": "75054586",
+      "lang": "en-US",
+      "text": "opposite",
+      "file": "voice-01.mp3",
+      "start": 19.888,
+      "end": 20.784
+    },
+    {
+      "id": "357ba61c",
+      "lang": "en-US",
+      "text": "The bus stop is opposite the zoo.",
+      "file": "voice-01.mp3",
+      "start": 21.264,
+      "end": 23.2693
+    },
+    {
+      "id": "0ccdaadf",
+      "lang": "en-US",
+      "text": "taller",
+      "file": "voice-01.mp3",
+      "start": 23.7493,
+      "end": 24.5813
+    },
+    {
+      "id": "9c8a6849",
+      "lang": "en-US",
+      "text": "tall, taller, tallest.",
+      "file": "voice-01.mp3",
+      "start": 25.0613,
+      "end": 26.5333
+    },
+    {
+      "id": "ccc16328",
+      "lang": "en-US",
+      "text": "tallest",
+      "file": "voice-02.mp3",
+      "start": 0.24,
+      "end": 1.1147
+    },
+    {
+      "id": "993535f6",
+      "lang": "en-US",
+      "text": "wider",
+      "file": "voice-02.mp3",
+      "start": 1.5947,
+      "end": 2.4693
+    },
+    {
+      "id": "6dd40163",
+      "lang": "en-US",
+      "text": "wide, wider, widest.",
+      "file": "voice-02.mp3",
+      "start": 2.9493,
+      "end": 4.592
+    },
+    {
+      "id": "bec72347",
+      "lang": "en-US",
+      "text": "widest",
+      "file": "voice-02.mp3",
+      "start": 5.072,
+      "end": 5.9893
+    },
+    {
+      "id": "4d120de4",
+      "lang": "en-US",
+      "text": "happier",
+      "file": "voice-02.mp3",
+      "start": 6.4693,
+      "end": 7.344
+    },
+    {
+      "id": "1da6b644",
+      "lang": "en-US",
+      "text": "happy, happier, happiest.",
+      "file": "voice-02.mp3",
+      "start": 7.824,
+      "end": 9.488
+    },
+    {
+      "id": "e96da1b9",
+      "lang": "en-US",
+      "text": "happiest",
+      "file": "voice-02.mp3",
+      "start": 9.968,
+      "end": 10.9067
+    },
+    {
+      "id": "a0bfd2b9",
+      "lang": "en-US",
+      "text": "hotter",
+      "file": "voice-02.mp3",
+      "start": 11.3867,
+      "end": 12.2187
+    },
+    {
+      "id": "988ea9b7",
+      "lang": "en-US",
+      "text": "hot, hotter, hottest.",
+      "file": "voice-02.mp3",
+      "start": 12.6987,
+      "end": 14.192
+    },
+    {
+      "id": "ccf68416",
+      "lang": "en-US",
+      "text": "hottest",
+      "file": "voice-02.mp3",
+      "start": 14.672,
+      "end": 15.5253
+    },
+    {
+      "id": "d6af63fc",
+      "lang": "en-US",
+      "text": "nicer",
+      "file": "voice-02.mp3",
+      "start": 16.0053,
+      "end": 16.9653
+    },
+    {
+      "id": "0c79b595",
+      "lang": "en-US",
+      "text": "nice, nicer, nicest.",
+      "file": "voice-02.mp3",
+      "start": 17.4453,
+      "end": 19.1307
+    },
+    {
+      "id": "841d8a21",
+      "lang": "en-US",
+      "text": "nicest",
+      "file": "voice-02.mp3",
+      "start": 19.6107,
+      "end": 20.6133
+    },
+    {
+      "id": "60e173c7",
+      "lang": "en-US",
+      "text": "bigger",
+      "file": "voice-02.mp3",
+      "start": 21.0933,
+      "end": 21.904
+    },
+    {
+      "id": "7c10fe12",
+      "lang": "en-US",
+      "text": "big, bigger, biggest.",
+      "file": "voice-02.mp3",
+      "start": 22.384,
+      "end": 23.856
+    },
+    {
+      "id": "2fe6dac0",
+      "lang": "en-US",
+      "text": "biggest",
+      "file": "voice-02.mp3",
+      "start": 24.336,
+      "end": 25.2107
+    },
+    {
+      "id": "7b539463",
+      "lang": "en-US",
+      "text": "easiest",
+      "file": "voice-03.mp3",
+      "start": 0.24,
+      "end": 1.2213
+    },
+    {
+      "id": "b94f176c",
+      "lang": "en-US",
+      "text": "easy, easier, easiest.",
+      "file": "voice-03.mp3",
+      "start": 1.7013,
+      "end": 3.4933
+    },
+    {
+      "id": "7a89ce1d",
+      "lang": "en-US",
+      "text": "more beautiful",
+      "file": "voice-03.mp3",
+      "start": 3.9733,
+      "end": 5.0187
+    },
+    {
+      "id": "14a976a6",
+      "lang": "en-US",
+      "text": "beautiful, more beautiful, most beautiful.",
+      "file": "voice-03.mp3",
+      "start": 5.4987,
+      "end": 8.08
+    },
+    {
+      "id": "857f251f",
+      "lang": "en-US",
+      "text": "most beautiful",
+      "file": "voice-03.mp3",
+      "start": 8.56,
+      "end": 9.6267
+    },
+    {
+      "id": "19bd0b11",
+      "lang": "en-US",
+      "text": "better",
+      "file": "voice-03.mp3",
+      "start": 10.1067,
+      "end": 10.9387
+    },
+    {
+      "id": "f6c76218",
+      "lang": "en-US",
+      "text": "good, better, best.",
+      "file": "voice-03.mp3",
+      "start": 11.4187,
+      "end": 12.72
+    },
+    {
+      "id": "a7056c01",
+      "lang": "en-US",
+      "text": "best",
+      "file": "voice-03.mp3",
+      "start": 13.2,
+      "end": 13.9893
+    },
+    {
+      "id": "7f87f2a5",
+      "lang": "en-US",
+      "text": "worse",
+      "file": "voice-03.mp3",
+      "start": 14.4693,
+      "end": 15.3227
+    },
+    {
+      "id": "03b97d71",
+      "lang": "en-US",
+      "text": "bad, worse, worst.",
+      "file": "voice-03.mp3",
+      "start": 15.8027,
+      "end": 17.2107
+    },
+    {
+      "id": "8e880a42",
+      "lang": "en-US",
+      "text": "worst",
+      "file": "voice-03.mp3",
+      "start": 17.6907,
+      "end": 18.544
+    },
+    {
+      "id": "c493416a",
+      "lang": "en-US",
+      "text": "more",
+      "file": "voice-03.mp3",
+      "start": 19.024,
+      "end": 19.7493
+    },
+    {
+      "id": "8178e2d0",
+      "lang": "en-US",
+      "text": "many, more, most.",
+      "file": "voice-03.mp3",
+      "start": 20.2293,
+      "end": 21.4453
+    },
+    {
+      "id": "cf911424",
+      "lang": "en-US",
+      "text": "most",
+      "file": "voice-03.mp3",
+      "start": 21.9253,
+      "end": 22.7787
+    },
+    {
+      "id": "4631d792",
+      "lang": "en-US",
+      "text": "less",
+      "file": "voice-03.mp3",
+      "start": 23.2587,
+      "end": 24.048
+    },
+    {
+      "id": "5f696343",
+      "lang": "en-US",
+      "text": "little, less, least.",
+      "file": "voice-03.mp3",
+      "start": 24.528,
+      "end": 25.8293
+    },
+    {
+      "id": "b99580f0",
+      "lang": "en-US",
+      "text": "least",
+      "file": "voice-04.mp3",
+      "start": 0.24,
+      "end": 1.0933
+    },
+    {
+      "id": "1d776947",
+      "lang": "en-US",
+      "text": "older",
+      "file": "voice-04.mp3",
+      "start": 1.5733,
+      "end": 2.448
+    },
+    {
+      "id": "0f4857e1",
+      "lang": "en-US",
+      "text": "old, older, oldest.",
+      "file": "voice-04.mp3",
+      "start": 2.928,
+      "end": 4.5493
+    },
+    {
+      "id": "8ff85340",
+      "lang": "en-US",
+      "text": "oldest",
+      "file": "voice-04.mp3",
+      "start": 5.0293,
+      "end": 5.968
+    },
+    {
+      "id": "c0e4dd6f",
+      "lang": "en-US",
+      "text": "farther",
+      "file": "voice-04.mp3",
+      "start": 6.448,
+      "end": 7.344
+    },
+    {
+      "id": "7bca9ac9",
+      "lang": "en-US",
+      "text": "far, farther, farthest.",
+      "file": "voice-04.mp3",
+      "start": 7.824,
+      "end": 9.4027
+    },
+    {
+      "id": "bd45c978",
+      "lang": "en-US",
+      "text": "farthest",
+      "file": "voice-04.mp3",
+      "start": 9.8827,
+      "end": 10.8213
+    },
+    {
+      "id": "71e7015b",
+      "lang": "en-US",
+      "text": "bamboo",
+      "file": "voice-04.mp3",
+      "start": 11.3013,
+      "end": 12.24
+    },
+    {
+      "id": "d4efb0a3",
+      "lang": "en-US",
+      "text": "The pot is made of bamboo.",
+      "file": "voice-04.mp3",
+      "start": 12.72,
+      "end": 14.4907
+    },
+    {
+      "id": "f1a8e9ce",
+      "lang": "en-US",
+      "text": "brush pot",
+      "file": "voice-04.mp3",
+      "start": 14.9707,
+      "end": 15.952
+    },
+    {
+      "id": "a786bd74",
+      "lang": "en-US",
+      "text": "James makes a brush pot.",
+      "file": "voice-04.mp3",
+      "start": 16.432,
+      "end": 17.9893
+    },
+    {
+      "id": "71530c7b",
+      "lang": "en-US",
+      "text": "leaves",
+      "file": "voice-04.mp3",
+      "start": 18.4693,
+      "end": 19.408
+    },
+    {
+      "id": "897d49f3",
+      "lang": "en-US",
+      "text": "It is hard to draw the leaves.",
+      "file": "voice-04.mp3",
+      "start": 19.888,
+      "end": 21.616
+    },
+    {
+      "id": "e0b3da27",
+      "lang": "en-US",
+      "text": "give up",
+      "file": "voice-04.mp3",
+      "start": 22.096,
+      "end": 22.9707
+    },
+    {
+      "id": "0a05c6e9",
+      "lang": "en-US",
+      "text": "Do not give up.",
+      "file": "voice-04.mp3",
+      "start": 23.4507,
+      "end": 24.5387
+    },
+    {
+      "id": "c95921f2",
+      "lang": "en-US",
+      "text": "easier",
+      "file": "voice-04.mp3",
+      "start": 25.0187,
+      "end": 25.9147
+    },
+    {
+      "id": "8e5d6ab2",
+      "lang": "en-US",
+      "text": "This is our wildlife park. We've got our masks.",
+      "file": "voice-05.mp3",
+      "start": 0.24,
+      "end": 3.1413
+    },
+    {
+      "id": "5022b0ff",
+      "lang": "en-US",
+      "text": "This",
+      "file": "voice-05.mp3",
+      "start": 3.6213,
+      "end": 4.3893
+    },
+    {
+      "id": "1f748b63",
+      "lang": "en-US",
+      "text": "is",
+      "file": "voice-05.mp3",
+      "start": 4.8693,
+      "end": 5.5733
+    },
+    {
+      "id": "1fce16f7",
+      "lang": "en-US",
+      "text": "our",
+      "file": "voice-05.mp3",
+      "start": 6.0533,
+      "end": 6.8427
+    },
+    {
+      "id": "75dcf289",
+      "lang": "en-US",
+      "text": "wildlife",
+      "file": "voice-05.mp3",
+      "start": 7.3227,
+      "end": 8.304
+    },
+    {
+      "id": "8124cafb",
+      "lang": "en-US",
+      "text": "park",
+      "file": "voice-05.mp3",
+      "start": 8.784,
+      "end": 9.5947
+    },
+    {
+      "id": "e3d07885",
+      "lang": "en-US",
+      "text": "We've",
+      "file": "voice-05.mp3",
+      "start": 10.0747,
+      "end": 10.8
+    },
+    {
+      "id": "707e7323",
+      "lang": "en-US",
+      "text": "got",
+      "file": "voice-05.mp3",
+      "start": 11.28,
+      "end": 12.0053
+    },
+    {
+      "id": "b1901c78",
+      "lang": "en-US",
+      "text": "masks",
+      "file": "voice-05.mp3",
+      "start": 12.4853,
+      "end": 13.424
+    },
+    {
+      "id": "d52c6a1a",
+      "lang": "en-US",
+      "text": "And we're all moving like wild animals!",
+      "file": "voice-05.mp3",
+      "start": 13.904,
+      "end": 16.1867
+    },
+    {
+      "id": "7f042508",
+      "lang": "en-US",
+      "text": "And",
+      "file": "voice-05.mp3",
+      "start": 16.6667,
+      "end": 17.3707
+    },
+    {
+      "id": "be71f569",
+      "lang": "en-US",
+      "text": "we're",
+      "file": "voice-05.mp3",
+      "start": 17.8507,
+      "end": 18.5547
+    },
+    {
+      "id": "f87dd1ea",
+      "lang": "en-US",
+      "text": "all",
+      "file": "voice-05.mp3",
+      "start": 19.0347,
+      "end": 19.5467
+    },
+    {
+      "id": "f6ad67e1",
+      "lang": "en-US",
+      "text": "moving",
+      "file": "voice-05.mp3",
+      "start": 20.0267,
+      "end": 20.944
+    },
+    {
+      "id": "34ae555c",
+      "lang": "en-US",
+      "text": "like",
+      "file": "voice-05.mp3",
+      "start": 21.424,
+      "end": 22.2347
+    },
+    {
+      "id": "e688d85b",
+      "lang": "en-US",
+      "text": "wild",
+      "file": "voice-05.mp3",
+      "start": 22.7147,
+      "end": 23.5893
+    },
+    {
+      "id": "296cfd28",
+      "lang": "en-US",
+      "text": "animals",
+      "file": "voice-06.mp3",
+      "start": 0.24,
+      "end": 1.1787
+    },
+    {
+      "id": "b22e6afd",
+      "lang": "en-US",
+      "text": "He's running, running, running like a lion.",
+      "file": "voice-06.mp3",
+      "start": 1.6587,
+      "end": 4.2187
+    },
+    {
+      "id": "bbb33ef2",
+      "lang": "en-US",
+      "text": "He's",
+      "file": "voice-06.mp3",
+      "start": 4.6987,
+      "end": 5.5093
+    },
+    {
+      "id": "4b96017e",
+      "lang": "en-US",
+      "text": "running",
+      "file": "voice-06.mp3",
+      "start": 5.9893,
+      "end": 6.8427
+    },
+    {
+      "id": "77eabd1a",
+      "lang": "en-US",
+      "text": "a",
+      "file": "voice-06.mp3",
+      "start": 7.3227,
+      "end": 7.984
+    },
+    {
+      "id": "12e52dc4",
+      "lang": "en-US",
+      "text": "She's climbing, climbing, climbing like a bear.",
+      "file": "voice-06.mp3",
+      "start": 8.464,
+      "end": 11.1093
+    },
+    {
+      "id": "65d06d7d",
+      "lang": "en-US",
+      "text": "She's",
+      "file": "voice-06.mp3",
+      "start": 11.5893,
+      "end": 12.3787
+    },
+    {
+      "id": "a9762980",
+      "lang": "en-US",
+      "text": "climbing",
+      "file": "voice-06.mp3",
+      "start": 12.8587,
+      "end": 13.7547
+    },
+    {
+      "id": "d3ac49ee",
+      "lang": "en-US",
+      "text": "He's jumping, jumping, jumping like a kangaroo.",
+      "file": "voice-06.mp3",
+      "start": 14.2347,
+      "end": 17.456
+    },
+    {
+      "id": "8369ed2d",
+      "lang": "en-US",
+      "text": "jumping",
+      "file": "voice-06.mp3",
+      "start": 17.936,
+      "end": 18.8747
+    },
+    {
+      "id": "13ed40a9",
+      "lang": "en-US",
+      "text": "She's hiding, hiding, hiding. Can you see the kitten there?",
+      "file": "voice-06.mp3",
+      "start": 19.3547,
+      "end": 22.64
+    },
+    {
+      "id": "ca3b8218",
+      "lang": "en-US",
+      "text": "hiding",
+      "file": "voice-06.mp3",
+      "start": 23.12,
+      "end": 23.9947
+    },
+    {
+      "id": "81e6a1d3",
+      "lang": "en-US",
+      "text": "Can",
+      "file": "voice-06.mp3",
+      "start": 24.4747,
+      "end": 25.264
+    },
+    {
+      "id": "cac5c276",
+      "lang": "en-US",
+      "text": "you",
+      "file": "voice-06.mp3",
+      "start": 25.744,
+      "end": 26.4693
+    },
+    {
+      "id": "680a09a2",
+      "lang": "en-US",
+      "text": "see",
+      "file": "voice-06.mp3",
+      "start": 26.9493,
+      "end": 27.76
+    },
+    {
+      "id": "0bde615a",
+      "lang": "en-US",
+      "text": "the",
+      "file": "voice-06.mp3",
+      "start": 28.24,
+      "end": 28.7307
+    },
+    {
+      "id": "2fd25a27",
+      "lang": "en-US",
+      "text": "there",
+      "file": "voice-07.mp3",
+      "start": 0.24,
+      "end": 0.944
+    },
+    {
+      "id": "a6bcc662",
+      "lang": "en-US",
+      "text": "The parrot's getting food.",
+      "file": "voice-07.mp3",
+      "start": 1.424,
+      "end": 2.896
+    },
+    {
+      "id": "6e68f8fa",
+      "lang": "en-US",
+      "text": "The",
+      "file": "voice-07.mp3",
+      "start": 3.376,
+      "end": 3.8667
+    },
+    {
+      "id": "d8c81995",
+      "lang": "en-US",
+      "text": "parrot's",
+      "file": "voice-07.mp3",
+      "start": 4.3467,
+      "end": 5.264
+    },
+    {
+      "id": "5a0db9c1",
+      "lang": "en-US",
+      "text": "getting",
+      "file": "voice-07.mp3",
+      "start": 5.744,
+      "end": 6.6827
+    },
+    {
+      "id": "973e13b7",
+      "lang": "en-US",
+      "text": "food",
+      "file": "voice-07.mp3",
+      "start": 7.1627,
+      "end": 8.0373
+    },
+    {
+      "id": "11734f40",
+      "lang": "en-US",
+      "text": "It likes to fly.",
+      "file": "voice-07.mp3",
+      "start": 8.5173,
+      "end": 9.7973
+    },
+    {
+      "id": "2424e162",
+      "lang": "en-US",
+      "text": "It",
+      "file": "voice-07.mp3",
+      "start": 10.2773,
+      "end": 10.832
+    },
+    {
+      "id": "1d7018fd",
+      "lang": "en-US",
+      "text": "likes",
+      "file": "voice-07.mp3",
+      "start": 11.312,
+      "end": 12.208
+    },
+    {
+      "id": "3b58e0fa",
+      "lang": "en-US",
+      "text": "to",
+      "file": "voice-07.mp3",
+      "start": 12.688,
+      "end": 13.4347
+    },
+    {
+      "id": "e85d3164",
+      "lang": "en-US",
+      "text": "fly",
+      "file": "voice-07.mp3",
+      "start": 13.9147,
+      "end": 14.7253
+    },
+    {
+      "id": "1fc32e84",
+      "lang": "en-US",
+      "text": "It's losing its banana!",
+      "file": "voice-07.mp3",
+      "start": 15.2053,
+      "end": 16.72
+    },
+    {
+      "id": "b405c084",
+      "lang": "en-US",
+      "text": "It's",
+      "file": "voice-07.mp3",
+      "start": 17.2,
+      "end": 17.8187
+    },
+    {
+      "id": "44e96b25",
+      "lang": "en-US",
+      "text": "losing",
+      "file": "voice-07.mp3",
+      "start": 18.2987,
+      "end": 19.2373
+    },
+    {
+      "id": "9483b623",
+      "lang": "en-US",
+      "text": "its",
+      "file": "voice-07.mp3",
+      "start": 19.7173,
+      "end": 20.336
+    },
+    {
+      "id": "3e908c56",
+      "lang": "en-US",
+      "text": "banana",
+      "file": "voice-07.mp3",
+      "start": 20.816,
+      "end": 21.6907
+    },
+    {
+      "id": "4094cb17",
+      "lang": "en-US",
+      "text": "It's falling in the sky!",
+      "file": "voice-08.mp3",
+      "start": 0.24,
+      "end": 1.648
+    },
+    {
+      "id": "ebfa4412",
+      "lang": "en-US",
+      "text": "falling",
+      "file": "voice-08.mp3",
+      "start": 2.128,
+      "end": 3.024
+    },
+    {
+      "id": "1a748384",
+      "lang": "en-US",
+      "text": "in",
+      "file": "voice-08.mp3",
+      "start": 3.504,
+      "end": 4.1867
+    },
+    {
+      "id": "602c8f4c",
+      "lang": "en-US",
+      "text": "sky",
+      "file": "voice-08.mp3",
+      "start": 4.6667,
+      "end": 5.5413
+    },
+    {
+      "id": "7519451c",
+      "lang": "en-US",
+      "text": "He's jumping, jumping, jumping like a rabbit.",
+      "file": "voice-08.mp3",
+      "start": 6.0213,
+      "end": 8.88
+    },
+    {
+      "id": "93143b47",
+      "lang": "en-US",
+      "text": "She's flying, flying, flying like a bat.",
+      "file": "voice-08.mp3",
+      "start": 9.36,
+      "end": 12.112
+    },
+    {
+      "id": "605e5274",
+      "lang": "en-US",
+      "text": "flying",
+      "file": "voice-08.mp3",
+      "start": 12.592,
+      "end": 13.5093
+    },
+    {
+      "id": "9efdb485",
+      "lang": "en-US",
+      "text": "She's very slow. She's moving like a snail.",
+      "file": "voice-08.mp3",
+      "start": 13.9893,
+      "end": 16.7627
+    },
+    {
+      "id": "72636263",
+      "lang": "en-US",
+      "text": "very",
+      "file": "voice-08.mp3",
+      "start": 17.2427,
+      "end": 18.0747
+    },
+    {
+      "id": "97123be6",
+      "lang": "en-US",
+      "text": "slow",
+      "file": "voice-08.mp3",
+      "start": 18.5547,
+      "end": 19.3867
+    },
+    {
+      "id": "b554b4c1",
+      "lang": "en-US",
+      "text": "He's walking like a penguin. Can you do that?",
+      "file": "voice-08.mp3",
+      "start": 19.8667,
+      "end": 22.448
+    },
+    {
+      "id": "4c5099a6",
+      "lang": "en-US",
+      "text": "walking",
+      "file": "voice-08.mp3",
+      "start": 22.928,
+      "end": 23.7813
+    },
+    {
+      "id": "1b7fbe0a",
+      "lang": "en-US",
+      "text": "do",
+      "file": "voice-08.mp3",
+      "start": 24.2613,
+      "end": 25.0293
+    },
+    {
+      "id": "dd0a010e",
+      "lang": "en-US",
+      "text": "that",
+      "file": "voice-08.mp3",
+      "start": 25.5093,
+      "end": 26.2347
+    },
+    {
+      "id": "758f6d5f",
+      "lang": "en-US",
+      "text": "The bear's sleeping.",
+      "file": "voice-08.mp3",
+      "start": 26.7147,
+      "end": 27.9733
+    },
+    {
+      "id": "c8597dbf",
+      "lang": "en-US",
+      "text": "bear's",
+      "file": "voice-08.mp3",
+      "start": 28.4533,
+      "end": 29.3493
+    },
+    {
+      "id": "6ed44fbe",
+      "lang": "en-US",
+      "text": "sleeping",
+      "file": "voice-09.mp3",
+      "start": 0.24,
+      "end": 1.2213
+    },
+    {
+      "id": "e984a53c",
+      "lang": "en-US",
+      "text": "No, it isn't. It's climbing a tree!",
+      "file": "voice-09.mp3",
+      "start": 1.7013,
+      "end": 4.0053
+    },
+    {
+      "id": "1b180744",
+      "lang": "en-US",
+      "text": "No",
+      "file": "voice-09.mp3",
+      "start": 4.4853,
+      "end": 5.2747
+    },
+    {
+      "id": "24749342",
+      "lang": "en-US",
+      "text": "it",
+      "file": "voice-09.mp3",
+      "start": 5.7547,
+      "end": 6.3093
+    },
+    {
+      "id": "91ab83cc",
+      "lang": "en-US",
+      "text": "isn't",
+      "file": "voice-09.mp3",
+      "start": 6.7893,
+      "end": 7.664
+    },
+    {
+      "id": "7c649be3",
+      "lang": "en-US",
+      "text": "tree",
+      "file": "voice-09.mp3",
+      "start": 8.144,
+      "end": 8.9973
+    },
+    {
+      "id": "b6d97d4d",
+      "lang": "en-US",
+      "text": "The parrot's eating its banana.",
+      "file": "voice-09.mp3",
+      "start": 9.4773,
+      "end": 11.2267
+    },
+    {
+      "id": "2f61e7ed",
+      "lang": "en-US",
+      "text": "eating",
+      "file": "voice-09.mp3",
+      "start": 11.7067,
+      "end": 12.6027
+    },
+    {
+      "id": "42e2acab",
+      "lang": "en-US",
+      "text": "No, it isn't. It's losing its banana!",
+      "file": "voice-09.mp3",
+      "start": 13.0827,
+      "end": 15.6427
+    },
+    {
+      "id": "08e4ce3b",
+      "lang": "en-US",
+      "text": "The bat's above the tree.",
+      "file": "voice-09.mp3",
+      "start": 16.1227,
+      "end": 17.5733
+    },
+    {
+      "id": "58652294",
+      "lang": "en-US",
+      "text": "bat's",
+      "file": "voice-09.mp3",
+      "start": 18.0533,
+      "end": 18.8427
+    },
+    {
+      "id": "8f073e38",
+      "lang": "en-US",
+      "text": "The snail's below the flower.",
+      "file": "voice-09.mp3",
+      "start": 19.3227,
+      "end": 21.0293
+    },
+    {
+      "id": "8103c182",
+      "lang": "en-US",
+      "text": "snail's",
+      "file": "voice-09.mp3",
+      "start": 21.5093,
+      "end": 22.512
+    },
+    {
+      "id": "5438ec38",
+      "lang": "en-US",
+      "text": "flower",
+      "file": "voice-09.mp3",
+      "start": 22.992,
+      "end": 23.888
+    },
+    {
+      "id": "66ade98f",
+      "lang": "en-US",
+      "text": "The parrot's near the cage.",
+      "file": "voice-09.mp3",
+      "start": 24.368,
+      "end": 25.9467
+    },
+    {
+      "id": "d9425667",
+      "lang": "en-US",
+      "text": "cage",
+      "file": "voice-09.mp3",
+      "start": 26.4267,
+      "end": 27.2373
+    },
+    {
+      "id": "f372df5a",
+      "lang": "en-US",
+      "text": "The bus stop's opposite the zoo.",
+      "file": "voice-10.mp3",
+      "start": 0.24,
+      "end": 2.0747
+    },
+    {
+      "id": "96bbb85f",
+      "lang": "en-US",
+      "text": "bus",
+      "file": "voice-10.mp3",
+      "start": 2.5547,
+      "end": 3.344
+    },
+    {
+      "id": "6ad09609",
+      "lang": "en-US",
+      "text": "stop's",
+      "file": "voice-10.mp3",
+      "start": 3.824,
+      "end": 4.784
+    },
+    {
+      "id": "743c12cd",
+      "lang": "en-US",
+      "text": "zoo",
+      "file": "voice-10.mp3",
+      "start": 5.264,
+      "end": 6.0747
+    },
+    {
+      "id": "3ef35db9",
+      "lang": "en-US",
+      "text": "Our sister rabbit's opposite the brother rabbit. They're playing.",
+      "file": "voice-10.mp3",
+      "start": 6.5547,
+      "end": 10.0533
+    },
+    {
+      "id": "825a4197",
+      "lang": "en-US",
+      "text": "Our",
+      "file": "voice-10.mp3",
+      "start": 10.5333,
+      "end": 11.3227
+    },
+    {
+      "id": "f6f4657f",
+      "lang": "en-US",
+      "text": "sister",
+      "file": "voice-10.mp3",
+      "start": 11.8027,
+      "end": 12.72
+    },
+    {
+      "id": "ded55055",
+      "lang": "en-US",
+      "text": "rabbit's",
+      "file": "voice-10.mp3",
+      "start": 13.2,
+      "end": 14.1173
+    },
+    {
+      "id": "b0a9596b",
+      "lang": "en-US",
+      "text": "brother",
+      "file": "voice-10.mp3",
+      "start": 14.5973,
+      "end": 15.3013
+    },
+    {
+      "id": "27725c07",
+      "lang": "en-US",
+      "text": "They're",
+      "file": "voice-10.mp3",
+      "start": 15.7813,
+      "end": 16.6347
+    },
+    {
+      "id": "177573b3",
+      "lang": "en-US",
+      "text": "playing",
+      "file": "voice-10.mp3",
+      "start": 17.1147,
+      "end": 17.968
+    },
+    {
+      "id": "62fc4bdc",
+      "lang": "en-US",
+      "text": "Our mummy rabbit's above the ground. She's watching her children.",
+      "file": "voice-10.mp3",
+      "start": 18.448,
+      "end": 22.1387
+    },
+    {
+      "id": "60f1d6ce",
+      "lang": "en-US",
+      "text": "mummy",
+      "file": "voice-10.mp3",
+      "start": 22.6187,
+      "end": 23.4293
+    },
+    {
+      "id": "09627cb0",
+      "lang": "en-US",
+      "text": "ground",
+      "file": "voice-10.mp3",
+      "start": 23.9093,
+      "end": 24.784
+    },
+    {
+      "id": "b097d07a",
+      "lang": "en-US",
+      "text": "watching",
+      "file": "voice-10.mp3",
+      "start": 25.264,
+      "end": 26.2453
+    },
+    {
+      "id": "002c4786",
+      "lang": "en-US",
+      "text": "her",
+      "file": "voice-10.mp3",
+      "start": 26.7253,
+      "end": 27.3653
+    },
+    {
+      "id": "4c7c7ef8",
+      "lang": "en-US",
+      "text": "children",
+      "file": "voice-11.mp3",
+      "start": 0.24,
+      "end": 1.1573
+    },
+    {
+      "id": "31005baa",
+      "lang": "en-US",
+      "text": "Here, our baby rabbit's asleep below the ground.",
+      "file": "voice-11.mp3",
+      "start": 1.6373,
+      "end": 4.4533
+    },
+    {
+      "id": "a8e17679",
+      "lang": "en-US",
+      "text": "Here",
+      "file": "voice-11.mp3",
+      "start": 4.9333,
+      "end": 5.6587
+    },
+    {
+      "id": "4ab3938b",
+      "lang": "en-US",
+      "text": "baby",
+      "file": "voice-11.mp3",
+      "start": 6.1387,
+      "end": 6.9707
+    },
+    {
+      "id": "2f91661d",
+      "lang": "en-US",
+      "text": "asleep",
+      "file": "voice-11.mp3",
+      "start": 7.4507,
+      "end": 8.3467
+    },
+    {
+      "id": "bf369052",
+      "lang": "en-US",
+      "text": "And this is our daddy rabbit. He's jumping near the flowers.",
+      "file": "voice-11.mp3",
+      "start": 8.8267,
+      "end": 12.2613
+    },
+    {
+      "id": "cff4d1df",
+      "lang": "en-US",
+      "text": "this",
+      "file": "voice-11.mp3",
+      "start": 12.7413,
+      "end": 13.5093
+    },
+    {
+      "id": "2904e333",
+      "lang": "en-US",
+      "text": "daddy",
+      "file": "voice-11.mp3",
+      "start": 13.9893,
+      "end": 14.7573
+    },
+    {
+      "id": "e09bfa11",
+      "lang": "en-US",
+      "text": "flowers",
+      "file": "voice-11.mp3",
+      "start": 15.2373,
+      "end": 16.304
+    },
+    {
+      "id": "c1180d8e",
+      "lang": "en-US",
+      "text": "Dolphins can swim. The sea is near the board!",
+      "file": "voice-11.mp3",
+      "start": 16.784,
+      "end": 19.6853
+    },
+    {
+      "id": "1c4dd612",
+      "lang": "en-US",
+      "text": "Dolphins",
+      "file": "voice-11.mp3",
+      "start": 20.1653,
+      "end": 21.1893
+    },
+    {
+      "id": "1ce1a133",
+      "lang": "en-US",
+      "text": "can",
+      "file": "voice-11.mp3",
+      "start": 21.6693,
+      "end": 22.4587
+    },
+    {
+      "id": "3b861ff7",
+      "lang": "en-US",
+      "text": "swim",
+      "file": "voice-11.mp3",
+      "start": 22.9387,
+      "end": 23.8133
+    },
+    {
+      "id": "640a0356",
+      "lang": "en-US",
+      "text": "sea",
+      "file": "voice-11.mp3",
+      "start": 24.2933,
+      "end": 25.104
+    },
+    {
+      "id": "0a32cefd",
+      "lang": "en-US",
+      "text": "board",
+      "file": "voice-11.mp3",
+      "start": 25.584,
+      "end": 26.3947
+    },
+    {
+      "id": "fea6c2ae",
+      "lang": "en-US",
+      "text": "Bats can fly above trees! The tree's behind the door!",
+      "file": "voice-11.mp3",
+      "start": 26.8747,
+      "end": 30.2667
+    },
+    {
+      "id": "c4c7d153",
+      "lang": "en-US",
+      "text": "Bats",
+      "file": "voice-12.mp3",
+      "start": 0.24,
+      "end": 1.0293
+    },
+    {
+      "id": "6260e3b0",
+      "lang": "en-US",
+      "text": "trees",
+      "file": "voice-12.mp3",
+      "start": 1.5093,
+      "end": 2.4267
+    },
+    {
+      "id": "ba08006d",
+      "lang": "en-US",
+      "text": "tree's",
+      "file": "voice-12.mp3",
+      "start": 2.9067,
+      "end": 3.824
+    },
+    {
+      "id": "48a87943",
+      "lang": "en-US",
+      "text": "behind",
+      "file": "voice-12.mp3",
+      "start": 4.304,
+      "end": 5.2427
+    },
+    {
+      "id": "30ea85f7",
+      "lang": "en-US",
+      "text": "door",
+      "file": "voice-12.mp3",
+      "start": 5.7227,
+      "end": 6.4907
+    },
+    {
+      "id": "fe629bbb",
+      "lang": "en-US",
+      "text": "Good idea! James begins to paint.",
+      "file": "voice-12.mp3",
+      "start": 6.9707,
+      "end": 9.2747
+    },
+    {
+      "id": "0c2ac42e",
+      "lang": "en-US",
+      "text": "Good",
+      "file": "voice-12.mp3",
+      "start": 9.7547,
+      "end": 10.48
+    },
+    {
+      "id": "6410bcdc",
+      "lang": "en-US",
+      "text": "idea",
+      "file": "voice-12.mp3",
+      "start": 10.96,
+      "end": 11.8773
+    },
+    {
+      "id": "1fff02e9",
+      "lang": "en-US",
+      "text": "James",
+      "file": "voice-12.mp3",
+      "start": 12.3573,
+      "end": 13.2747
+    },
+    {
+      "id": "b4ad7489",
+      "lang": "en-US",
+      "text": "begins",
+      "file": "voice-12.mp3",
+      "start": 13.7547,
+      "end": 14.7787
+    },
+    {
+      "id": "a35cc2ed",
+      "lang": "en-US",
+      "text": "paint",
+      "file": "voice-12.mp3",
+      "start": 15.2587,
+      "end": 16.112
+    },
+    {
+      "id": "8036d8b3",
+      "lang": "en-US",
+      "text": "Oh, it's hard to draw the leaves! James says.",
+      "file": "voice-12.mp3",
+      "start": 16.592,
+      "end": 19.3653
+    },
+    {
+      "id": "3415f008",
+      "lang": "en-US",
+      "text": "Oh",
+      "file": "voice-12.mp3",
+      "start": 19.8453,
+      "end": 20.5707
+    },
+    {
+      "id": "33d7e164",
+      "lang": "en-US",
+      "text": "it's",
+      "file": "voice-12.mp3",
+      "start": 21.0507,
+      "end": 21.6693
+    },
+    {
+      "id": "ec8cd24a",
+      "lang": "en-US",
+      "text": "hard",
+      "file": "voice-12.mp3",
+      "start": 22.1493,
+      "end": 22.9387
+    },
+    {
+      "id": "4a9b5dbd",
+      "lang": "en-US",
+      "text": "draw",
+      "file": "voice-12.mp3",
+      "start": 23.4187,
+      "end": 24.208
+    },
+    {
+      "id": "4d5fdfd3",
+      "lang": "en-US",
+      "text": "says",
+      "file": "voice-13.mp3",
+      "start": 0.24,
+      "end": 1.136
+    },
+    {
+      "id": "2cda7fcb",
+      "lang": "en-US",
+      "text": "Don't give up. Draw like this! Xiaopu shows James.",
+      "file": "voice-13.mp3",
+      "start": 1.616,
+      "end": 4.944
+    },
+    {
+      "id": "e74b271f",
+      "lang": "en-US",
+      "text": "Don't",
+      "file": "voice-13.mp3",
+      "start": 5.424,
+      "end": 6.2347
+    },
+    {
+      "id": "ff66c82e",
+      "lang": "en-US",
+      "text": "give",
+      "file": "voice-13.mp3",
+      "start": 6.7147,
+      "end": 7.4187
+    },
+    {
+      "id": "38569daa",
+      "lang": "en-US",
+      "text": "up",
+      "file": "voice-13.mp3",
+      "start": 7.8987,
+      "end": 8.5387
+    },
+    {
+      "id": "b3f55ddd",
+      "lang": "en-US",
+      "text": "Draw",
+      "file": "voice-13.mp3",
+      "start": 9.0187,
+      "end": 9.808
+    },
+    {
+      "id": "90ef96ef",
+      "lang": "en-US",
+      "text": "Xiaopu",
+      "file": "voice-13.mp3",
+      "start": 10.288,
+      "end": 11.248
+    },
+    {
+      "id": "e85b9f53",
+      "lang": "en-US",
+      "text": "shows",
+      "file": "voice-13.mp3",
+      "start": 11.728,
+      "end": 12.6453
+    },
+    {
+      "id": "aa14b2b0",
+      "lang": "en-US",
+      "text": "At last, James makes a nice bamboo brush pot.",
+      "file": "voice-13.mp3",
+      "start": 13.1253,
+      "end": 16.0907
+    },
+    {
+      "id": "3438824a",
+      "lang": "en-US",
+      "text": "At",
+      "file": "voice-13.mp3",
+      "start": 16.5707,
+      "end": 17.1253
+    },
+    {
+      "id": "8ca85e3f",
+      "lang": "en-US",
+      "text": "last",
+      "file": "voice-13.mp3",
+      "start": 17.6053,
+      "end": 18.5013
+    },
+    {
+      "id": "f06a2d5a",
+      "lang": "en-US",
+      "text": "makes",
+      "file": "voice-13.mp3",
+      "start": 18.9813,
+      "end": 19.856
+    },
+    {
+      "id": "ac5079e6",
+      "lang": "en-US",
+      "text": "nice",
+      "file": "voice-13.mp3",
+      "start": 20.336,
+      "end": 21.2533
+    },
+    {
+      "id": "bb27d29d",
+      "lang": "en-US",
+      "text": "brush",
+      "file": "voice-13.mp3",
+      "start": 21.7333,
+      "end": 22.608
+    },
+    {
+      "id": "9d0bf686",
+      "lang": "en-US",
+      "text": "pot",
+      "file": "voice-13.mp3",
+      "start": 23.088,
+      "end": 23.8133
+    },
+    {
+      "id": "df13fbe4",
+      "lang": "en-US",
+      "text": "With your help, it becomes easier! James says.",
+      "file": "voice-13.mp3",
+      "start": 24.2933,
+      "end": 26.96
+    },
+    {
+      "id": "497d83e7",
+      "lang": "en-US",
+      "text": "With",
+      "file": "voice-14.mp3",
+      "start": 0.24,
+      "end": 0.9867
+    },
+    {
+      "id": "39506c4c",
+      "lang": "en-US",
+      "text": "your",
+      "file": "voice-14.mp3",
+      "start": 1.4667,
+      "end": 2.1707
+    },
+    {
+      "id": "37f4564c",
+      "lang": "en-US",
+      "text": "help",
+      "file": "voice-14.mp3",
+      "start": 2.6507,
+      "end": 3.3547
+    },
+    {
+      "id": "8378050f",
+      "lang": "en-US",
+      "text": "becomes",
+      "file": "voice-14.mp3",
+      "start": 3.8347,
+      "end": 4.8587
+    },
+    {
+      "id": "b8893517",
+      "lang": "en-US",
+      "text": "The bird is above the tree.",
+      "file": "voice-14.mp3",
+      "start": 5.3387,
+      "end": 6.96
+    },
+    {
+      "id": "6656d9df",
+      "lang": "en-US",
+      "text": "The bird is below the tree.",
+      "file": "voice-14.mp3",
+      "start": 7.44,
+      "end": 9.0187
+    },
+    {
+      "id": "7423d286",
+      "lang": "en-US",
+      "text": "The bird is near the tree.",
+      "file": "voice-14.mp3",
+      "start": 9.4987,
+      "end": 11.0347
+    },
+    {
+      "id": "e19363ad",
+      "lang": "en-US",
+      "text": "The bird is opposite the tree.",
+      "file": "voice-14.mp3",
+      "start": 11.5147,
+      "end": 13.2853
+    },
+    {
+      "id": "149319b0",
+      "lang": "en-US",
+      "text": "The blue giraffe is taller than the yellow giraffe.",
+      "file": "voice-14.mp3",
+      "start": 13.7653,
+      "end": 16.496
+    },
+    {
+      "id": "59a9fdd4",
+      "lang": "en-US",
+      "text": "The blue giraffe is the tallest of the three.",
+      "file": "voice-14.mp3",
+      "start": 16.976,
+      "end": 19.472
+    },
+    {
+      "id": "4e6ad63f",
+      "lang": "en-US",
+      "text": "My bag is bigger than your bag.",
+      "file": "voice-14.mp3",
+      "start": 19.952,
+      "end": 21.7013
+    },
+    {
+      "id": "db104885",
+      "lang": "en-US",
+      "text": "This is the biggest bag.",
+      "file": "voice-14.mp3",
+      "start": 22.1813,
+      "end": 23.7173
+    },
+    {
+      "id": "8bfe780e",
+      "lang": "en-US",
+      "text": "good",
+      "file": "voice-14.mp3",
+      "start": 24.1973,
+      "end": 24.9227
+    },
+    {
+      "id": "f9e54e47",
+      "lang": "en-US",
+      "text": "well",
+      "file": "voice-14.mp3",
+      "start": 25.4027,
+      "end": 26.1493
+    },
+    {
+      "id": "a39f4ac2",
+      "lang": "en-US",
+      "text": "bad",
+      "file": "voice-14.mp3",
+      "start": 26.6293,
+      "end": 27.4187
+    },
+    {
+      "id": "18480469",
+      "lang": "en-US",
+      "text": "badly",
+      "file": "voice-14.mp3",
+      "start": 27.8987,
+      "end": 28.816
+    },
+    {
+      "id": "917029b2",
+      "lang": "en-US",
+      "text": "ill",
+      "file": "voice-15.mp3",
+      "start": 0.24,
+      "end": 0.944
+    },
+    {
+      "id": "e9266ee8",
+      "lang": "en-US",
+      "text": "many",
+      "file": "voice-15.mp3",
+      "start": 1.424,
+      "end": 2.256
+    },
+    {
+      "id": "6212a9f2",
+      "lang": "en-US",
+      "text": "much",
+      "file": "voice-15.mp3",
+      "start": 2.736,
+      "end": 3.504
+    },
+    {
+      "id": "79f2b3fb",
+      "lang": "en-US",
+      "text": "little",
+      "file": "voice-15.mp3",
+      "start": 3.984,
+      "end": 4.8587
+    },
+    {
+      "id": "1807f5f0",
+      "lang": "en-US",
+      "text": "old",
+      "file": "voice-15.mp3",
+      "start": 5.3387,
+      "end": 6.1493
+    },
+    {
+      "id": "33f23271",
+      "lang": "en-US",
+      "text": "elder",
+      "file": "voice-15.mp3",
+      "start": 6.6293,
+      "end": 7.504
+    },
+    {
+      "id": "dd429b9e",
+      "lang": "en-US",
+      "text": "eldest",
+      "file": "voice-15.mp3",
+      "start": 7.984,
+      "end": 8.88
+    },
+    {
+      "id": "f1658e54",
+      "lang": "en-US",
+      "text": "far",
+      "file": "voice-15.mp3",
+      "start": 9.36,
+      "end": 10.1493
+    },
+    {
+      "id": "dcc21ca3",
+      "lang": "en-US",
+      "text": "further",
+      "file": "voice-15.mp3",
+      "start": 10.6293,
+      "end": 11.5253
+    },
+    {
+      "id": "56911e6c",
+      "lang": "en-US",
+      "text": "furthest",
+      "file": "voice-15.mp3",
+      "start": 12.0053,
+      "end": 12.9227
+    },
+    {
+      "id": "0b320f68",
+      "lang": "en-US",
+      "text": "tall",
+      "file": "voice-15.mp3",
+      "start": 13.4027,
+      "end": 13.936
+    },
+    {
+      "id": "b5750380",
+      "lang": "en-US",
+      "text": "wide",
+      "file": "voice-15.mp3",
+      "start": 14.416,
+      "end": 15.248
+    },
+    {
+      "id": "bf9e6dff",
+      "lang": "en-US",
+      "text": "happy",
+      "file": "voice-15.mp3",
+      "start": 15.728,
+      "end": 16.56
+    },
+    {
+      "id": "1646020e",
+      "lang": "en-US",
+      "text": "hot",
+      "file": "voice-15.mp3",
+      "start": 17.04,
+      "end": 17.7653
+    },
+    {
+      "id": "92b2b7b7",
+      "lang": "en-US",
+      "text": "big",
+      "file": "voice-15.mp3",
+      "start": 18.2453,
+      "end": 18.992
+    },
+    {
+      "id": "84a77409",
+      "lang": "en-US",
+      "text": "easy",
+      "file": "voice-15.mp3",
+      "start": 19.472,
+      "end": 20.2827
+    },
+    {
+      "id": "ddd37472",
+      "lang": "en-US",
+      "text": "beautiful",
+      "file": "voice-16.mp3",
+      "start": 0.24,
+      "end": 1.2213
+    },
+    {
+      "id": "1f88b359",
+      "text": "smaller",
+      "lang": "en-US",
+      "file": "dictation-extra-00.mp3",
+      "start": 0.24,
+      "end": 1.1147
+    },
+    {
+      "id": "80f4e76b",
+      "text": "small, smaller, smallest.",
+      "lang": "en-US",
+      "file": "dictation-extra-00.mp3",
+      "start": 1.5947,
+      "end": 3.2587
+    },
+    {
+      "id": "c32fbb36",
+      "text": "smallest",
+      "lang": "en-US",
+      "file": "dictation-extra-00.mp3",
+      "start": 3.7387,
+      "end": 4.656
+    },
+    {
+      "id": "7191796e",
+      "text": "funnier",
+      "lang": "en-US",
+      "file": "dictation-extra-00.mp3",
+      "start": 5.136,
+      "end": 6.032
+    },
+    {
+      "id": "ca1ab4ae",
+      "text": "funny, funnier, funniest.",
+      "lang": "en-US",
+      "file": "dictation-extra-00.mp3",
+      "start": 6.512,
+      "end": 8.1973
+    },
+    {
+      "id": "d005592f",
+      "text": "funniest",
+      "lang": "en-US",
+      "file": "dictation-extra-00.mp3",
+      "start": 8.6773,
+      "end": 9.5947
+    },
+    {
+      "id": "3c44c6bc",
+      "text": "more interesting",
+      "lang": "en-US",
+      "file": "dictation-extra-00.mp3",
+      "start": 10.0747,
+      "end": 11.2053
+    },
+    {
+      "id": "d4fa0e4d",
+      "text": "interesting, more interesting, most interesting.",
+      "lang": "en-US",
+      "file": "dictation-extra-00.mp3",
+      "start": 11.6853,
+      "end": 14.4373
+    },
+    {
+      "id": "18acf572",
+      "text": "most interesting",
+      "lang": "en-US",
+      "file": "dictation-extra-00.mp3",
+      "start": 14.9173,
+      "end": 16.1333
+    },
+    {
+      "id": "71ca4f8f",
+      "text": "more popular",
+      "lang": "en-US",
+      "file": "dictation-extra-00.mp3",
+      "start": 16.6133,
+      "end": 17.7013
+    },
+    {
+      "id": "3b4ad424",
+      "text": "popular, more popular, most popular.",
+      "lang": "en-US",
+      "file": "dictation-extra-00.mp3",
+      "start": 18.1813,
+      "end": 20.592
+    },
+    {
+      "id": "b5a692f9",
+      "text": "most popular",
+      "lang": "en-US",
+      "file": "dictation-extra-00.mp3",
+      "start": 21.072,
+      "end": 22.2027
+    },
+    {
+      "id": "3aa8e48c",
+      "text": "more excited",
+      "lang": "en-US",
+      "file": "dictation-extra-00.mp3",
+      "start": 22.6827,
+      "end": 23.7493
+    },
+    {
+      "id": "a384540d",
+      "text": "excited, more excited, most excited.",
+      "lang": "en-US",
+      "file": "dictation-extra-00.mp3",
+      "start": 24.2293,
+      "end": 26.896
+    },
+    {
+      "id": "0e5e1272",
+      "text": "most excited",
+      "lang": "en-US",
+      "file": "dictation-extra-00.mp3",
+      "start": 27.376,
+      "end": 28.528
+    },
+    {
+      "id": "f7071688",
+      "text": "whale",
+      "lang": "en-US",
+      "file": "dictation-extra-00.mp3",
+      "start": 29.008,
+      "end": 29.7547
+    },
+    {
+      "id": "cfb37797",
+      "text": "This is a whale.",
+      "lang": "en-US",
+      "file": "dictation-extra-01.mp3",
+      "start": 0.24,
+      "end": 1.328
+    },
+    {
+      "id": "7d152a58",
+      "text": "This is a cage.",
+      "lang": "en-US",
+      "file": "dictation-extra-01.mp3",
+      "start": 1.808,
+      "end": 2.9387
+    },
+    {
+      "id": "e259f9ae",
+      "text": "small",
+      "lang": "en-US",
+      "file": "dictation-extra-01.mp3",
+      "start": 3.4187,
+      "end": 4.1653
+    },
+    {
+      "id": "9493b44d",
+      "text": "funny",
+      "lang": "en-US",
+      "file": "dictation-extra-01.mp3",
+      "start": 4.6453,
+      "end": 5.4987
+    },
+    {
+      "id": "ef1023ff",
+      "text": "interesting",
+      "lang": "en-US",
+      "file": "dictation-extra-01.mp3",
+      "start": 5.9787,
+      "end": 6.96
+    },
+    {
+      "id": "a7e34021",
+      "text": "ill, worse, worst.",
+      "lang": "en-US",
+      "file": "dictation-extra-01.mp3",
+      "start": 7.44,
+      "end": 8.8053
+    },
+    {
+      "id": "cf109064",
+      "text": "popular",
+      "lang": "en-US",
+      "file": "dictation-extra-01.mp3",
+      "start": 9.2853,
+      "end": 10.288
+    },
+    {
+      "id": "f8c3da2f",
+      "text": "excited",
+      "lang": "en-US",
+      "file": "dictation-extra-01.mp3",
+      "start": 10.768,
+      "end": 11.792
+    }
+  ],
+  "files": {
+    "voice-04.mp3": {
+      "bytes": 262365,
+      "sha256": "c4d823959ee681ba6ed80830618084160ad330b1b393f1a53bfba634c429f8ed"
+    },
+    "voice-09.mp3": {
+      "bytes": 275565,
+      "sha256": "5b8e996132ecee8b3c09f7980c56c24ddfbe0c36b1cc0f6d61415b12ba16434d"
+    },
+    "voice-01.mp3": {
+      "bytes": 268605,
+      "sha256": "274e5df873073210e43e386b17c389fd309d970ef71aa37fad8623183638d660"
+    },
+    "voice-06.mp3": {
+      "bytes": 290685,
+      "sha256": "8a319449eda5206cd145e83bae1d92bbcb38471ce031a5ceea4e0a4981320382"
+    },
+    "voice-03.mp3": {
+      "bytes": 261645,
+      "sha256": "38fff2611cf0d5f222f3bc80038746f13ef22eca111b9ae7ffca395ee2b074d0"
+    },
+    "voice-02.mp3": {
+      "bytes": 255405,
+      "sha256": "4697d998b9e23a8efdd9f7d5de92e405199ebbc3a34fbdfd2d91a764ae43053d"
+    },
+    "voice-12.mp3": {
+      "bytes": 245325,
+      "sha256": "8e67b5408815058c0ecf988f312db556e671f5cd6d113cc472cee4523f22bdf7"
+    },
+    "voice-10.mp3": {
+      "bytes": 277005,
+      "sha256": "bc42523f69c7db133e97c30e5a131ee9c51b6288847509a7f2956b10bff44c10"
+    },
+    "voice-16.mp3": {
+      "bytes": 15405,
+      "sha256": "4424e18010ec9ecfe2003bf1b4e781d41ab8bec2711104c4edc6055ca44ae8e0"
+    },
+    "voice-11.mp3": {
+      "bytes": 306045,
+      "sha256": "249982c0f726162891766c7acc6d572778468714e5041203b0dd2c73989b3b9e"
+    },
+    "voice-07.mp3": {
+      "bytes": 220125,
+      "sha256": "a45502876e36785c0e1b8b4523e397efc6d2158a9331e9695d98f304d5c128ea"
+    },
+    "voice-00.mp3": {
+      "bytes": 235005,
+      "sha256": "92881d165d0e0682def49e59ddbab0c6c082a058e3023452adc2242db9fe6506"
+    },
+    "voice-08.mp3": {
+      "bytes": 296685,
+      "sha256": "fede216639016634c8f9d0df09d71d4b59d7fd3284af9913522922e42f98c299"
+    },
+    "voice-13.mp3": {
+      "bytes": 272925,
+      "sha256": "8440678b2257b37ef76eeffe9cade003212f9b66782485bc31e6fb3ed3f84ec5"
+    },
+    "voice-14.mp3": {
+      "bytes": 291405,
+      "sha256": "a3a822a9169b946c2c9aeee2066b179f5cb99857924cc575a6639aa37d2b69ed"
+    },
+    "voice-15.mp3": {
+      "bytes": 206205,
+      "sha256": "82348e0008b20cff546b580faad9932eaa9dfa3b8934b196a4fa5121ae192753"
+    },
+    "voice-05.mp3": {
+      "bytes": 239085,
+      "sha256": "44584cb450bb19691089bd8a291aabe137b69f0bcd2f45b4dc2e2a415b924763"
+    },
+    "dictation-extra-00.mp3": {
+      "bytes": 300765,
+      "sha256": "290d5b16d02baa5ab98f11fd5e5285cad5c0392aaf43bfed8c67bcfda23fc714"
+    },
+    "dictation-extra-01.mp3": {
+      "bytes": 121245,
+      "sha256": "0335f52b70c0fffe9d880a37ee919d61c882839ad1bc56d46e8b267c9cfd1263"
+    }
+  },
+  "verification": {
+    "status": "pending",
+    "fileCount": 19,
+    "clipCount": 281,
+    "listenedCount": 0,
+    "regeneratedCount": 0,
+    "mobilePlayback": false,
+    "desktopPlayback": false,
+    "reason": "技术检查与完整听感验收分开；尚未完成逐条听感及目标手机硬件实播，不宣称通过。",
+    "dictationUpdate": {
+      "addedClips": 24,
+      "addedFiles": 2,
+      "listenedCount": 0,
+      "status": "pending",
+      "date": "2026-09-13"
+    }
+  }
+}

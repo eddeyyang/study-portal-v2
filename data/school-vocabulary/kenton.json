@@ -1,0 +1,3303 @@
+{
+  "schemaVersion": 1,
+  "child": "kenton",
+  "edition": "2026秋季校内英语",
+  "checkedOn": "2026-10-12",
+  "defaultThroughUnit": 3,
+  "maxSeconds": 900,
+  "dailyNewLimit": 5,
+  "dailyReviewLimit": 5,
+  "scopeNote": "完整收录已上传电子课本Words to use；当前单元另核课堂原页和学校朗读纸。不是老师新发布的整学期必默清单。课堂版本差异单列，不自动排入。",
+  "units": [
+    {
+      "id": 1,
+      "title": "Clubs in our school",
+      "pageStart": 9
+    },
+    {
+      "id": 2,
+      "title": "Traditional games",
+      "pageStart": 17
+    },
+    {
+      "id": 3,
+      "title": "Amazing plants",
+      "pageStart": 25
+    },
+    {
+      "id": 4,
+      "title": "Together with animals",
+      "pageStart": 33
+    },
+    {
+      "id": 5,
+      "title": "Seeing a doctor",
+      "pageStart": 41
+    },
+    {
+      "id": 6,
+      "title": "Try my best",
+      "pageStart": 49,
+      "editionNote": "教辅标题 Try my best；电子课本标题 Rise to the challenge。后续按学校进度确认。"
+    },
+    {
+      "id": 7,
+      "title": "Great scientists",
+      "pageStart": 57
+    },
+    {
+      "id": 8,
+      "title": "Useful inventions",
+      "pageStart": 65
+    },
+    {
+      "id": 9,
+      "title": "Using computers",
+      "pageStart": 73
+    },
+    {
+      "id": 10,
+      "title": "A greener life",
+      "pageStart": 81
+    }
+  ],
+  "items": [
+    {
+      "unit": 1,
+      "en": "gardening",
+      "zh": "园艺",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p89",
+          "pdfPage": 95
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U1"
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "kenton-u1-gardening",
+      "tier": "textbook"
+    },
+    {
+      "unit": 1,
+      "en": "storytelling",
+      "zh": "讲故事",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p89",
+          "pdfPage": 95
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U1"
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "kenton-u1-storytelling",
+      "tier": "textbook"
+    },
+    {
+      "unit": 1,
+      "en": "photography",
+      "zh": "摄影",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p89",
+          "pdfPage": 95
+        }
+      ],
+      "schedule": false,
+      "kind": "word",
+      "id": "kenton-u1-photography",
+      "note": "旧电子版词条；当前课堂材料未确认，暂不进入每日默写。",
+      "tier": "textbook"
+    },
+    {
+      "unit": 1,
+      "en": "join",
+      "zh": "成为……的一员；参加",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p89",
+          "pdfPage": 95
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U1"
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "kenton-u1-join",
+      "tier": "textbook"
+    },
+    {
+      "unit": 1,
+      "en": "view",
+      "zh": "景色",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p89",
+          "pdfPage": 95
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U1"
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "kenton-u1-view",
+      "tier": "textbook"
+    },
+    {
+      "unit": 1,
+      "en": "pottery",
+      "zh": "制陶手艺；制陶技艺",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p89",
+          "pdfPage": 95
+        }
+      ],
+      "schedule": false,
+      "kind": "word",
+      "id": "kenton-u1-pottery",
+      "note": "旧电子版词条；当前课堂材料未确认，暂不进入每日默写。",
+      "tier": "textbook"
+    },
+    {
+      "unit": 1,
+      "en": "how about",
+      "zh": "（问信息）……怎么样？",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p89",
+          "pdfPage": 95
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U1"
+        }
+      ],
+      "schedule": true,
+      "kind": "phrase",
+      "id": "kenton-u1-how-about",
+      "tier": "textbook"
+    },
+    {
+      "unit": 1,
+      "en": "take photos",
+      "zh": "拍照片",
+      "sources": [
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U1"
+        },
+        {
+          "type": "classroom",
+          "label": "当前课堂课本 p14",
+          "pdfPage": 1
+        }
+      ],
+      "schedule": true,
+      "kind": "phrase",
+      "id": "kenton-u1-take-photos",
+      "tier": "classroom"
+    },
+    {
+      "unit": 1,
+      "en": "moment",
+      "zh": "时光；时刻",
+      "sources": [
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U1"
+        }
+      ],
+      "schedule": false,
+      "kind": "word",
+      "id": "kenton-u1-moment",
+      "note": "教辅核心词表补充；未见当前课本词表或学校单词单佐证，先供对照。",
+      "tier": "reference"
+    },
+    {
+      "unit": 1,
+      "en": "give up",
+      "zh": "放弃",
+      "sources": [
+        {
+          "type": "classroom",
+          "label": "当前课堂课本 p14",
+          "pdfPage": 1
+        }
+      ],
+      "schedule": true,
+      "kind": "phrase",
+      "id": "kenton-u1-give-up",
+      "tier": "classroom"
+    },
+    {
+      "unit": 1,
+      "en": "photo diary",
+      "zh": "照片日记",
+      "sources": [
+        {
+          "type": "classroom",
+          "label": "当前课堂课本 p15",
+          "pdfPage": 2
+        }
+      ],
+      "schedule": true,
+      "kind": "phrase",
+      "id": "kenton-u1-photo-diary",
+      "tier": "classroom"
+    },
+    {
+      "unit": 1,
+      "en": "art",
+      "zh": "美术",
+      "sources": [
+        {
+          "type": "topic",
+          "label": "电子课本 U1 Topic words p10",
+          "pdfPage": 16
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "kenton-u1-art",
+      "tier": "classroom"
+    },
+    {
+      "unit": 2,
+      "en": "traditional",
+      "zh": "传统的",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p89",
+          "pdfPage": 95
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U2"
+        },
+        {
+          "type": "school",
+          "label": "学校 U2 朗读纸「单词和短语」",
+          "pdfPage": 4
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "kenton-u2-traditional",
+      "tier": "school"
+    },
+    {
+      "unit": 2,
+      "en": "Chinese yo-yo",
+      "zh": "空竹",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p89",
+          "pdfPage": 95
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U2"
+        },
+        {
+          "type": "school",
+          "label": "学校 U2 朗读纸「单词和短语」",
+          "pdfPage": 4
+        }
+      ],
+      "schedule": true,
+      "kind": "phrase",
+      "id": "kenton-u2-chinese-yo-yo",
+      "tier": "school"
+    },
+    {
+      "unit": 2,
+      "en": "kite-flying",
+      "zh": "放风筝",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p89",
+          "pdfPage": 95
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U2"
+        },
+        {
+          "type": "school",
+          "label": "学校 U2 朗读纸「单词和短语」",
+          "pdfPage": 4
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "kenton-u2-kite-flying",
+      "tier": "school"
+    },
+    {
+      "unit": 2,
+      "en": "dragon dance",
+      "zh": "舞龙",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p89",
+          "pdfPage": 95
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U2"
+        },
+        {
+          "type": "school",
+          "label": "学校 U2 朗读纸「单词和短语」",
+          "pdfPage": 4
+        }
+      ],
+      "schedule": true,
+      "kind": "phrase",
+      "id": "kenton-u2-dragon-dance",
+      "tier": "school"
+    },
+    {
+      "unit": 2,
+      "en": "tug of war",
+      "zh": "拔河",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p89",
+          "pdfPage": 95
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U2"
+        },
+        {
+          "type": "school",
+          "label": "学校 U2 朗读纸「单词和短语」",
+          "pdfPage": 4
+        }
+      ],
+      "schedule": true,
+      "kind": "phrase",
+      "id": "kenton-u2-tug-of-war",
+      "tier": "school"
+    },
+    {
+      "unit": 2,
+      "en": "hopscotch",
+      "zh": "跳房子",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p89",
+          "pdfPage": 95
+        }
+      ],
+      "schedule": false,
+      "kind": "word",
+      "id": "kenton-u2-hopscotch",
+      "note": "旧电子版词条；当前课堂材料未确认，暂不进入每日默写。",
+      "tier": "textbook"
+    },
+    {
+      "unit": 2,
+      "en": "stamp",
+      "zh": "盖章",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p89",
+          "pdfPage": 95
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U2"
+        },
+        {
+          "type": "school",
+          "label": "学校 U2 朗读纸「单词和短语」",
+          "pdfPage": 4
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "kenton-u2-stamp",
+      "tier": "school"
+    },
+    {
+      "unit": 2,
+      "en": "prize",
+      "zh": "奖励；奖品",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p89",
+          "pdfPage": 95
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U2"
+        },
+        {
+          "type": "school",
+          "label": "学校 U2 朗读纸「单词和短语」",
+          "pdfPage": 4
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "kenton-u2-prize",
+      "tier": "school"
+    },
+    {
+      "unit": 2,
+      "en": "style",
+      "zh": "风格；招式",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p89",
+          "pdfPage": 95
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U2"
+        },
+        {
+          "type": "school",
+          "label": "学校 U2 朗读纸「单词和短语」",
+          "pdfPage": 4
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "kenton-u2-style",
+      "tier": "school"
+    },
+    {
+      "unit": 2,
+      "en": "action",
+      "zh": "动作",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p89",
+          "pdfPage": 95
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U2"
+        },
+        {
+          "type": "school",
+          "label": "学校 U2 朗读纸「单词和短语」",
+          "pdfPage": 4
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "kenton-u2-action",
+      "tier": "school"
+    },
+    {
+      "unit": 2,
+      "en": "straight",
+      "zh": "直的",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p89",
+          "pdfPage": 95
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U2"
+        },
+        {
+          "type": "school",
+          "label": "学校 U2 朗读纸「单词和短语」",
+          "pdfPage": 4
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "kenton-u2-straight",
+      "tier": "school"
+    },
+    {
+      "unit": 2,
+      "en": "keep up with",
+      "zh": "跟上",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p89",
+          "pdfPage": 95
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U2"
+        },
+        {
+          "type": "school",
+          "label": "学校 U2 朗读纸「单词和短语」",
+          "pdfPage": 4
+        }
+      ],
+      "schedule": true,
+      "kind": "phrase",
+      "id": "kenton-u2-keep-up-with",
+      "tier": "school"
+    },
+    {
+      "unit": 2,
+      "en": "control",
+      "zh": "控制",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p89",
+          "pdfPage": 95
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U2"
+        },
+        {
+          "type": "school",
+          "label": "学校 U2 朗读纸「单词和短语」",
+          "pdfPage": 4
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "kenton-u2-control",
+      "tier": "school"
+    },
+    {
+      "unit": 2,
+      "en": "pace",
+      "zh": "移动的速度；步速",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p89",
+          "pdfPage": 95
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U2"
+        },
+        {
+          "type": "school",
+          "label": "学校 U2 朗读纸「单词和短语」",
+          "pdfPage": 4
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "kenton-u2-pace",
+      "tier": "school"
+    },
+    {
+      "unit": 2,
+      "en": "changquan",
+      "zh": "长拳",
+      "sources": [
+        {
+          "type": "school",
+          "label": "学校 U2 朗读纸「单词和短语」",
+          "pdfPage": 4
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "kenton-u2-changquan",
+      "tier": "school"
+    },
+    {
+      "unit": 2,
+      "en": "even",
+      "zh": "更；甚至",
+      "sources": [
+        {
+          "type": "school",
+          "label": "学校 U2 朗读纸「单词和短语」",
+          "pdfPage": 4
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "kenton-u2-even",
+      "tier": "school"
+    },
+    {
+      "unit": 2,
+      "en": "train",
+      "zh": "训练",
+      "sources": [
+        {
+          "type": "school",
+          "label": "学校 U2 朗读纸「单词和短语」",
+          "pdfPage": 4
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "kenton-u2-train",
+      "tier": "school"
+    },
+    {
+      "unit": 2,
+      "en": "another",
+      "zh": "另一个",
+      "sources": [
+        {
+          "type": "school",
+          "label": "学校 U2 朗读纸「单词和短语」",
+          "pdfPage": 4
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "kenton-u2-another",
+      "tier": "school"
+    },
+    {
+      "unit": 2,
+      "en": "call out",
+      "zh": "大喊",
+      "sources": [
+        {
+          "type": "school",
+          "label": "学校 U2 朗读纸「单词和短语」",
+          "pdfPage": 4
+        }
+      ],
+      "schedule": true,
+      "kind": "phrase",
+      "id": "kenton-u2-call-out",
+      "tier": "school"
+    },
+    {
+      "unit": 2,
+      "en": "garden party",
+      "zh": "游园会",
+      "sources": [
+        {
+          "type": "school",
+          "label": "学校 U2 朗读纸「单词和短语」",
+          "pdfPage": 4
+        }
+      ],
+      "schedule": true,
+      "kind": "phrase",
+      "id": "kenton-u2-garden-party",
+      "tier": "school"
+    },
+    {
+      "unit": 2,
+      "en": "lose control",
+      "zh": "失去控制",
+      "sources": [
+        {
+          "type": "school",
+          "label": "学校 U2 朗读纸「单词和短语」",
+          "pdfPage": 4
+        }
+      ],
+      "schedule": true,
+      "kind": "phrase",
+      "id": "kenton-u2-lose-control",
+      "tier": "school"
+    },
+    {
+      "unit": 2,
+      "en": "come to life",
+      "zh": "活灵活现",
+      "sources": [
+        {
+          "type": "school",
+          "label": "学校 U2 朗读纸「单词和短语」",
+          "pdfPage": 4
+        }
+      ],
+      "schedule": true,
+      "kind": "phrase",
+      "id": "kenton-u2-come-to-life",
+      "tier": "school"
+    },
+    {
+      "unit": 2,
+      "en": "all kinds of",
+      "zh": "各种各样的",
+      "sources": [
+        {
+          "type": "school",
+          "label": "学校 U2 朗读纸「单词和短语」",
+          "pdfPage": 4
+        }
+      ],
+      "schedule": true,
+      "kind": "phrase",
+      "id": "kenton-u2-all-kinds-of",
+      "tier": "school"
+    },
+    {
+      "unit": 2,
+      "en": "as fast as the wind",
+      "zh": "像风一样快",
+      "sources": [
+        {
+          "type": "school",
+          "label": "学校 U2 朗读纸「单词和短语」",
+          "pdfPage": 4
+        }
+      ],
+      "schedule": true,
+      "kind": "phrase",
+      "id": "kenton-u2-as-fast-as-the-wind",
+      "tier": "school"
+    },
+    {
+      "unit": 2,
+      "en": "work as a team",
+      "zh": "团队合作",
+      "sources": [
+        {
+          "type": "school",
+          "label": "学校 U2 朗读纸「单词和短语」",
+          "pdfPage": 4
+        }
+      ],
+      "schedule": true,
+      "kind": "phrase",
+      "id": "kenton-u2-work-as-a-team",
+      "tier": "school"
+    },
+    {
+      "unit": 2,
+      "en": "faster",
+      "zh": "更快地（fast 的比较级）",
+      "sources": [
+        {
+          "type": "school",
+          "label": "学校 U2 朗读纸「单词和短语」",
+          "pdfPage": 4
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "kenton-u2-faster",
+      "tier": "school"
+    },
+    {
+      "unit": 2,
+      "en": "train hard",
+      "zh": "努力训练",
+      "sources": [
+        {
+          "type": "school",
+          "label": "学校 U2 朗读纸「单词和短语」",
+          "pdfPage": 4
+        }
+      ],
+      "schedule": true,
+      "kind": "phrase",
+      "id": "kenton-u2-train-hard",
+      "tier": "school"
+    },
+    {
+      "unit": 3,
+      "en": "root",
+      "zh": "根",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p89",
+          "pdfPage": 95
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U3"
+        },
+        {
+          "type": "school",
+          "label": "学校 U3 朗读纸「单词和短语」",
+          "pdfPage": 13
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "kenton-u3-root",
+      "tier": "school"
+    },
+    {
+      "unit": 3,
+      "en": "take in",
+      "zh": "吸入；吸收",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p89",
+          "pdfPage": 95
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U3"
+        },
+        {
+          "type": "school",
+          "label": "学校 U3 朗读纸「单词和短语」",
+          "pdfPage": 13
+        }
+      ],
+      "schedule": true,
+      "kind": "phrase",
+      "id": "kenton-u3-take-in",
+      "tier": "school"
+    },
+    {
+      "unit": 3,
+      "en": "stem",
+      "zh": "茎",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p89",
+          "pdfPage": 95
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U3"
+        },
+        {
+          "type": "school",
+          "label": "学校 U3 朗读纸「单词和短语」",
+          "pdfPage": 13
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "kenton-u3-stem",
+      "tier": "school"
+    },
+    {
+      "unit": 3,
+      "en": "thick",
+      "zh": "厚的；粗的",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p89",
+          "pdfPage": 95
+        },
+        {
+          "type": "school",
+          "label": "学校 U3 朗读纸「单词和短语」",
+          "pdfPage": 13
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "kenton-u3-thick",
+      "tier": "school"
+    },
+    {
+      "unit": 3,
+      "en": "water lily",
+      "zh": "睡莲",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p89",
+          "pdfPage": 95
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U3"
+        },
+        {
+          "type": "school",
+          "label": "学校 U3 朗读纸「单词和短语」",
+          "pdfPage": 13
+        }
+      ],
+      "schedule": true,
+      "kind": "phrase",
+      "id": "kenton-u3-water-lily",
+      "tier": "school"
+    },
+    {
+      "unit": 3,
+      "en": "react",
+      "zh": "作出反应",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p89",
+          "pdfPage": 95
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U3"
+        },
+        {
+          "type": "school",
+          "label": "学校 U3 朗读纸「单词和短语」",
+          "pdfPage": 13
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "kenton-u3-react",
+      "tier": "school"
+    },
+    {
+      "unit": 3,
+      "en": "pine cone",
+      "zh": "松果",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p89",
+          "pdfPage": 95
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U3"
+        },
+        {
+          "type": "school",
+          "label": "学校 U3 朗读纸「单词和短语」",
+          "pdfPage": 13
+        }
+      ],
+      "schedule": true,
+      "kind": "phrase",
+      "id": "kenton-u3-pine-cone",
+      "tier": "school"
+    },
+    {
+      "unit": 3,
+      "en": "scale",
+      "zh": "鳞片",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p89",
+          "pdfPage": 95
+        },
+        {
+          "type": "school",
+          "label": "学校 U3 朗读纸「单词和短语」",
+          "pdfPage": 13
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "kenton-u3-scale",
+      "tier": "school"
+    },
+    {
+      "unit": 3,
+      "en": "morning glory",
+      "zh": "牵牛花",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p89",
+          "pdfPage": 95
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U3"
+        },
+        {
+          "type": "school",
+          "label": "学校 U3 朗读纸「单词和短语」",
+          "pdfPage": 13
+        }
+      ],
+      "schedule": true,
+      "kind": "phrase",
+      "id": "kenton-u3-morning-glory",
+      "tier": "school"
+    },
+    {
+      "unit": 3,
+      "en": "thin",
+      "zh": "瘦的；细的",
+      "sources": [
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U3"
+        },
+        {
+          "type": "school",
+          "label": "学校 U3 朗读纸「单词和短语」",
+          "pdfPage": 13
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "kenton-u3-thin",
+      "tier": "school"
+    },
+    {
+      "unit": 3,
+      "en": "protect",
+      "zh": "保护",
+      "sources": [
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U3"
+        },
+        {
+          "type": "school",
+          "label": "学校 U3 朗读纸「单词和短语」",
+          "pdfPage": 13
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "kenton-u3-protect",
+      "tier": "school"
+    },
+    {
+      "unit": 3,
+      "en": "leaf",
+      "zh": "叶",
+      "sources": [
+        {
+          "type": "school",
+          "label": "学校 U3 朗读纸「单词和短语」",
+          "pdfPage": 13
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "kenton-u3-leaf",
+      "tier": "school"
+    },
+    {
+      "unit": 3,
+      "en": "tulip",
+      "zh": "郁金香",
+      "sources": [
+        {
+          "type": "school",
+          "label": "学校 U3 朗读纸「单词和短语」",
+          "pdfPage": 13
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "kenton-u3-tulip",
+      "tier": "school"
+    },
+    {
+      "unit": 3,
+      "en": "soil",
+      "zh": "土",
+      "sources": [
+        {
+          "type": "school",
+          "label": "学校 U3 朗读纸「单词和短语」",
+          "pdfPage": 13
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "kenton-u3-soil",
+      "tier": "school"
+    },
+    {
+      "unit": 3,
+      "en": "mud",
+      "zh": "泥",
+      "sources": [
+        {
+          "type": "school",
+          "label": "学校 U3 朗读纸「单词和短语」",
+          "pdfPage": 13
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "kenton-u3-mud",
+      "tier": "school"
+    },
+    {
+      "unit": 3,
+      "en": "creeper",
+      "zh": "攀缘植物",
+      "sources": [
+        {
+          "type": "school",
+          "label": "学校 U3 朗读纸「单词和短语」",
+          "pdfPage": 13
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "kenton-u3-creeper",
+      "tier": "school"
+    },
+    {
+      "unit": 3,
+      "en": "botanical gardens",
+      "zh": "植物园",
+      "sources": [
+        {
+          "type": "school",
+          "label": "学校 U3 朗读纸「单词和短语」",
+          "pdfPage": 13
+        }
+      ],
+      "schedule": true,
+      "kind": "phrase",
+      "id": "kenton-u3-botanical-gardens",
+      "tier": "school"
+    },
+    {
+      "unit": 3,
+      "en": "an ice cream cone",
+      "zh": "一个冰淇淋蛋卷筒",
+      "sources": [
+        {
+          "type": "school",
+          "label": "学校 U3 朗读纸「单词和短语」",
+          "pdfPage": 13
+        }
+      ],
+      "schedule": true,
+      "kind": "phrase",
+      "id": "kenton-u3-an-ice-cream-cone",
+      "tier": "school"
+    },
+    {
+      "unit": 3,
+      "en": "four-o'clock flower",
+      "zh": "四时花",
+      "sources": [
+        {
+          "type": "school",
+          "label": "学校 U3 朗读纸「单词和短语」",
+          "pdfPage": 13
+        }
+      ],
+      "schedule": true,
+      "kind": "phrase",
+      "id": "kenton-u3-four-o-clock-flower",
+      "tier": "school"
+    },
+    {
+      "unit": 3,
+      "en": "a meat-eating plant",
+      "zh": "食肉植物",
+      "sources": [
+        {
+          "type": "school",
+          "label": "学校 U3 朗读纸「单词和短语」",
+          "pdfPage": 13
+        }
+      ],
+      "schedule": true,
+      "kind": "phrase",
+      "id": "kenton-u3-a-meat-eating-plant",
+      "tier": "school"
+    },
+    {
+      "unit": 4,
+      "en": "safari park",
+      "zh": "野生动物园",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p89",
+          "pdfPage": 95
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U4"
+        }
+      ],
+      "schedule": true,
+      "kind": "phrase",
+      "id": "kenton-u4-safari-park",
+      "tier": "textbook"
+    },
+    {
+      "unit": 4,
+      "en": "tiger",
+      "zh": "虎；老虎",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p89",
+          "pdfPage": 95
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U4"
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "kenton-u4-tiger",
+      "tier": "textbook"
+    },
+    {
+      "unit": 4,
+      "en": "lion",
+      "zh": "狮子",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p89",
+          "pdfPage": 95
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U4"
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "kenton-u4-lion",
+      "tier": "textbook"
+    },
+    {
+      "unit": 4,
+      "en": "threat",
+      "zh": "威胁",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p89",
+          "pdfPage": 95
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "kenton-u4-threat",
+      "tier": "textbook"
+    },
+    {
+      "unit": 4,
+      "en": "whale",
+      "zh": "鲸",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p89",
+          "pdfPage": 95
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U4"
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "kenton-u4-whale",
+      "tier": "textbook"
+    },
+    {
+      "unit": 4,
+      "en": "toe",
+      "zh": "脚趾",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p89",
+          "pdfPage": 95
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U4"
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "kenton-u4-toe",
+      "tier": "textbook"
+    },
+    {
+      "unit": 4,
+      "en": "protect",
+      "zh": "保护",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p89",
+          "pdfPage": 95
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "kenton-u4-protect",
+      "tier": "textbook"
+    },
+    {
+      "unit": 4,
+      "en": "truck tour",
+      "zh": "卡车游览",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p89",
+          "pdfPage": 95
+        }
+      ],
+      "schedule": true,
+      "kind": "phrase",
+      "id": "kenton-u4-truck-tour",
+      "tier": "textbook"
+    },
+    {
+      "unit": 4,
+      "en": "giraffe",
+      "zh": "长颈鹿",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p89",
+          "pdfPage": 95
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U4"
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "kenton-u4-giraffe",
+      "tier": "textbook"
+    },
+    {
+      "unit": 4,
+      "en": "keeper",
+      "zh": "饲养员",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p89",
+          "pdfPage": 95
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U4"
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "kenton-u4-keeper",
+      "tier": "textbook"
+    },
+    {
+      "unit": 4,
+      "en": "get close to",
+      "zh": "靠近",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p89",
+          "pdfPage": 95
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U4"
+        }
+      ],
+      "schedule": true,
+      "kind": "phrase",
+      "id": "kenton-u4-get-close-to",
+      "tier": "textbook"
+    },
+    {
+      "unit": 4,
+      "en": "hair",
+      "zh": "毛发",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p89",
+          "pdfPage": 95
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U4"
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "kenton-u4-hair",
+      "tier": "textbook"
+    },
+    {
+      "unit": 4,
+      "en": "hippo",
+      "zh": "河马",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p89",
+          "pdfPage": 95
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U4"
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "kenton-u4-hippo",
+      "tier": "textbook"
+    },
+    {
+      "unit": 4,
+      "en": "dive",
+      "zh": "跳水",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p89",
+          "pdfPage": 95
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U4"
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "kenton-u4-dive",
+      "tier": "textbook"
+    },
+    {
+      "unit": 4,
+      "en": "tour",
+      "zh": "游览",
+      "sources": [
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U4"
+        }
+      ],
+      "schedule": false,
+      "kind": "word",
+      "id": "kenton-u4-tour",
+      "note": "教辅核心词表补充；未见当前课本词表或学校单词单佐证，先供对照。",
+      "tier": "reference"
+    },
+    {
+      "id": "kenton-u4-panda",
+      "unit": 4,
+      "en": "panda",
+      "zh": "大熊猫",
+      "sources": [
+        {
+          "type": "topic",
+          "label": "电子课本 U4 Topic words（目录核对）",
+          "pdfPage": 4
+        }
+      ],
+      "kind": "word",
+      "tier": "classroom",
+      "schedule": true
+    },
+    {
+      "id": "kenton-u4-elephant",
+      "unit": 4,
+      "en": "elephant",
+      "zh": "象",
+      "sources": [
+        {
+          "type": "topic",
+          "label": "电子课本 U4 Topic words（目录核对）",
+          "pdfPage": 4
+        }
+      ],
+      "kind": "word",
+      "tier": "classroom",
+      "schedule": true
+    },
+    {
+      "unit": 5,
+      "en": "treat",
+      "zh": "治疗",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p90",
+          "pdfPage": 96
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "kenton-u5-treat",
+      "tier": "textbook"
+    },
+    {
+      "unit": 5,
+      "en": "runny nose",
+      "zh": "流鼻涕",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p90",
+          "pdfPage": 96
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U5"
+        }
+      ],
+      "schedule": true,
+      "kind": "phrase",
+      "id": "kenton-u5-runny-nose",
+      "tier": "textbook"
+    },
+    {
+      "unit": 5,
+      "en": "cough",
+      "zh": "咳嗽",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p90",
+          "pdfPage": 96
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U5"
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "kenton-u5-cough",
+      "tier": "textbook"
+    },
+    {
+      "unit": 5,
+      "en": "nurse",
+      "zh": "护士",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p90",
+          "pdfPage": 96
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U5"
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "kenton-u5-nurse",
+      "tier": "textbook"
+    },
+    {
+      "unit": 5,
+      "en": "temperature",
+      "zh": "体温",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p90",
+          "pdfPage": 96
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U5"
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "kenton-u5-temperature",
+      "tier": "textbook"
+    },
+    {
+      "unit": 5,
+      "en": "fever",
+      "zh": "发烧；发热",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p90",
+          "pdfPage": 96
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U5"
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "kenton-u5-fever",
+      "tier": "textbook"
+    },
+    {
+      "unit": 5,
+      "en": "flu",
+      "zh": "流行性感冒；流感",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p90",
+          "pdfPage": 96
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "kenton-u5-flu",
+      "tier": "textbook"
+    },
+    {
+      "unit": 5,
+      "en": "medicine",
+      "zh": "药",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p90",
+          "pdfPage": 96
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U5"
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "kenton-u5-medicine",
+      "tier": "textbook"
+    },
+    {
+      "unit": 5,
+      "en": "take it easy",
+      "zh": "别急；从容点",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p90",
+          "pdfPage": 96
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U5"
+        }
+      ],
+      "schedule": true,
+      "kind": "phrase",
+      "id": "kenton-u5-take-it-easy",
+      "tier": "textbook"
+    },
+    {
+      "unit": 5,
+      "en": "check",
+      "zh": "检查",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p90",
+          "pdfPage": 96
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U5"
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "kenton-u5-check",
+      "tier": "textbook"
+    },
+    {
+      "unit": 5,
+      "en": "cycling",
+      "zh": "骑自行车运动",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p90",
+          "pdfPage": 96
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "kenton-u5-cycling",
+      "tier": "textbook"
+    },
+    {
+      "unit": 5,
+      "en": "patient",
+      "zh": "病人",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p90",
+          "pdfPage": 96
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "kenton-u5-patient",
+      "tier": "textbook"
+    },
+    {
+      "unit": 5,
+      "en": "reduce",
+      "zh": "减少",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p90",
+          "pdfPage": 96
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U5"
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "kenton-u5-reduce",
+      "tier": "textbook"
+    },
+    {
+      "unit": 5,
+      "en": "pain",
+      "zh": "疼痛",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p90",
+          "pdfPage": 96
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U5"
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "kenton-u5-pain",
+      "tier": "textbook"
+    },
+    {
+      "unit": 5,
+      "en": "treatment",
+      "zh": "治疗",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p90",
+          "pdfPage": 96
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "kenton-u5-treatment",
+      "tier": "textbook"
+    },
+    {
+      "unit": 5,
+      "en": "by mistake",
+      "zh": "错误地",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p90",
+          "pdfPage": 96
+        }
+      ],
+      "schedule": true,
+      "kind": "phrase",
+      "id": "kenton-u5-by-mistake",
+      "tier": "textbook"
+    },
+    {
+      "unit": 5,
+      "en": "operation",
+      "zh": "手术",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p90",
+          "pdfPage": 96
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "kenton-u5-operation",
+      "tier": "textbook"
+    },
+    {
+      "id": "kenton-u5-doctor",
+      "unit": 5,
+      "en": "doctor",
+      "zh": "医生",
+      "sources": [
+        {
+          "type": "topic",
+          "label": "电子课本 U5 Topic words（目录核对）",
+          "pdfPage": 4
+        }
+      ],
+      "kind": "word",
+      "tier": "classroom",
+      "schedule": true
+    },
+    {
+      "unit": 6,
+      "en": "challenge",
+      "zh": "挑战",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p90",
+          "pdfPage": 96
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "kenton-u6-challenge",
+      "tier": "textbook"
+    },
+    {
+      "unit": 6,
+      "en": "impossible",
+      "zh": "不可能的",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p90",
+          "pdfPage": 96
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "kenton-u6-impossible",
+      "tier": "textbook"
+    },
+    {
+      "unit": 6,
+      "en": "willing",
+      "zh": "积极肯干的",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p90",
+          "pdfPage": 96
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "kenton-u6-willing",
+      "tier": "textbook"
+    },
+    {
+      "unit": 6,
+      "en": "will",
+      "zh": "意志；毅力",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p90",
+          "pdfPage": 96
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U6"
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "kenton-u6-will",
+      "tier": "textbook"
+    },
+    {
+      "unit": 6,
+      "en": "succeed",
+      "zh": "成功",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p90",
+          "pdfPage": 96
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U6"
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "kenton-u6-succeed",
+      "tier": "textbook"
+    },
+    {
+      "unit": 6,
+      "en": "confident",
+      "zh": "自信的；有自信心的",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p90",
+          "pdfPage": 96
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "kenton-u6-confident",
+      "tier": "textbook"
+    },
+    {
+      "unit": 6,
+      "en": "front",
+      "zh": "前面",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p90",
+          "pdfPage": 96
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U6"
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "kenton-u6-front",
+      "tier": "textbook"
+    },
+    {
+      "unit": 6,
+      "en": "practice",
+      "zh": "训练；练习",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p90",
+          "pdfPage": 96
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U6"
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "kenton-u6-practice",
+      "tier": "textbook"
+    },
+    {
+      "unit": 6,
+      "en": "better",
+      "zh": "更好的",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p90",
+          "pdfPage": 96
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U6"
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "kenton-u6-better",
+      "tier": "textbook"
+    },
+    {
+      "unit": 6,
+      "en": "give up",
+      "zh": "放弃",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p90",
+          "pdfPage": 96
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U6"
+        }
+      ],
+      "schedule": true,
+      "kind": "phrase",
+      "id": "kenton-u6-give-up",
+      "tier": "textbook"
+    },
+    {
+      "unit": 6,
+      "en": "try my best",
+      "zh": "尽自己最大的努力；全力以赴",
+      "sources": [
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U6"
+        }
+      ],
+      "schedule": false,
+      "kind": "phrase",
+      "id": "kenton-u6-try-my-best",
+      "note": "教辅核心词表补充；未见当前课本词表或学校单词单佐证，先供对照。",
+      "tier": "reference"
+    },
+    {
+      "unit": 6,
+      "en": "chalk",
+      "zh": "粉笔",
+      "sources": [
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U6"
+        }
+      ],
+      "schedule": false,
+      "kind": "word",
+      "id": "kenton-u6-chalk",
+      "note": "教辅核心词表补充；未见当前课本词表或学校单词单佐证，先供对照。",
+      "tier": "reference"
+    },
+    {
+      "unit": 7,
+      "en": "scientist",
+      "zh": "科学家",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p90",
+          "pdfPage": 96
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U7"
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "kenton-u7-scientist",
+      "tier": "textbook"
+    },
+    {
+      "unit": 7,
+      "en": "human",
+      "zh": "人",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p90",
+          "pdfPage": 96
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "kenton-u7-human",
+      "tier": "textbook"
+    },
+    {
+      "unit": 7,
+      "en": "explore",
+      "zh": "探索",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p90",
+          "pdfPage": 96
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U7"
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "kenton-u7-explore",
+      "tier": "textbook"
+    },
+    {
+      "unit": 7,
+      "en": "outer space",
+      "zh": "外层空间；太空",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p90",
+          "pdfPage": 96
+        }
+      ],
+      "schedule": true,
+      "kind": "phrase",
+      "id": "kenton-u7-outer-space",
+      "tier": "textbook"
+    },
+    {
+      "unit": 7,
+      "en": "discover",
+      "zh": "（第一个）发现",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p90",
+          "pdfPage": 96
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U7"
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "kenton-u7-discover",
+      "tier": "textbook"
+    },
+    {
+      "unit": 7,
+      "en": "gravity",
+      "zh": "重力；地球引力",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p90",
+          "pdfPage": 96
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "kenton-u7-gravity",
+      "tier": "textbook"
+    },
+    {
+      "unit": 7,
+      "en": "rocket",
+      "zh": "火箭",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p90",
+          "pdfPage": 96
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "kenton-u7-rocket",
+      "tier": "textbook"
+    },
+    {
+      "unit": 7,
+      "en": "fan",
+      "zh": "迷；狂热爱好者",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p90",
+          "pdfPage": 96
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U7"
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "kenton-u7-fan",
+      "tier": "textbook"
+    },
+    {
+      "unit": 7,
+      "en": "research",
+      "zh": "研究",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p90",
+          "pdfPage": 96
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U7"
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "kenton-u7-research",
+      "tier": "textbook"
+    },
+    {
+      "unit": 7,
+      "en": "hybrid rice",
+      "zh": "杂交水稻",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p90",
+          "pdfPage": 96
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U7"
+        }
+      ],
+      "schedule": true,
+      "kind": "phrase",
+      "id": "kenton-u7-hybrid-rice",
+      "tier": "textbook"
+    },
+    {
+      "unit": 7,
+      "en": "creative",
+      "zh": "创造（性）的",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p90",
+          "pdfPage": 96
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U7"
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "kenton-u7-creative",
+      "tier": "textbook"
+    },
+    {
+      "unit": 7,
+      "en": "hard-working",
+      "zh": "勤奋的",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p90",
+          "pdfPage": 96
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U7"
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "kenton-u7-hard-working",
+      "tier": "textbook"
+    },
+    {
+      "unit": 7,
+      "en": "be known as",
+      "zh": "被认为是",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p90",
+          "pdfPage": 96
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U7"
+        }
+      ],
+      "schedule": true,
+      "kind": "phrase",
+      "id": "kenton-u7-be-known-as",
+      "tier": "textbook"
+    },
+    {
+      "unit": 7,
+      "en": "invent",
+      "zh": "发明",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p90",
+          "pdfPage": 96
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U7"
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "kenton-u7-invent",
+      "tier": "textbook"
+    },
+    {
+      "unit": 7,
+      "en": "practical",
+      "zh": "有用的；实用的",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p90",
+          "pdfPage": 96
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "kenton-u7-practical",
+      "tier": "textbook"
+    },
+    {
+      "unit": 7,
+      "en": "technique",
+      "zh": "技术",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p90",
+          "pdfPage": 96
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "kenton-u7-technique",
+      "tier": "textbook"
+    },
+    {
+      "unit": 7,
+      "en": "the deaf",
+      "zh": "耳聋的人",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p90",
+          "pdfPage": 96
+        }
+      ],
+      "schedule": true,
+      "kind": "phrase",
+      "id": "kenton-u7-the-deaf",
+      "tier": "textbook"
+    },
+    {
+      "unit": 7,
+      "en": "space",
+      "zh": "太空",
+      "sources": [
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U7"
+        }
+      ],
+      "schedule": false,
+      "kind": "word",
+      "id": "kenton-u7-space",
+      "note": "教辅核心词表补充；未见当前课本词表或学校单词单佐证，先供对照。",
+      "tier": "reference"
+    },
+    {
+      "id": "kenton-u7-famous",
+      "unit": 7,
+      "en": "famous",
+      "zh": "著名的",
+      "sources": [
+        {
+          "type": "topic",
+          "label": "电子课本 U7 Topic words（目录核对）",
+          "pdfPage": 6
+        }
+      ],
+      "kind": "word",
+      "tier": "classroom",
+      "schedule": true
+    },
+    {
+      "unit": 8,
+      "en": "invention",
+      "zh": "发明；创造",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p90",
+          "pdfPage": 96
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U8"
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "kenton-u8-invention",
+      "tier": "textbook"
+    },
+    {
+      "unit": 8,
+      "en": "problem",
+      "zh": "难题",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p90",
+          "pdfPage": 96
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U8"
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "kenton-u8-problem",
+      "tier": "textbook"
+    },
+    {
+      "unit": 8,
+      "en": "wheel",
+      "zh": "轮；车轮；机轮",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p90",
+          "pdfPage": 96
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U8"
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "kenton-u8-wheel",
+      "tier": "textbook"
+    },
+    {
+      "unit": 8,
+      "en": "ancient times",
+      "zh": "古代",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p90",
+          "pdfPage": 96
+        }
+      ],
+      "schedule": true,
+      "kind": "phrase",
+      "id": "kenton-u8-ancient-times",
+      "tier": "textbook"
+    },
+    {
+      "unit": 8,
+      "en": "printing",
+      "zh": "印刷术",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p90",
+          "pdfPage": 96
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U8"
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "kenton-u8-printing",
+      "tier": "textbook"
+    },
+    {
+      "unit": 8,
+      "en": "television",
+      "zh": "电视机",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p90",
+          "pdfPage": 96
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U8"
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "kenton-u8-television",
+      "tier": "textbook"
+    },
+    {
+      "unit": 8,
+      "en": "robot",
+      "zh": "机器人",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p90",
+          "pdfPage": 96
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U8"
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "kenton-u8-robot",
+      "tier": "textbook"
+    },
+    {
+      "unit": 8,
+      "en": "useful",
+      "zh": "有用的；有帮助的",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p90",
+          "pdfPage": 96
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U8"
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "kenton-u8-useful",
+      "tier": "textbook"
+    },
+    {
+      "unit": 8,
+      "en": "fresh water",
+      "zh": "淡水",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p90",
+          "pdfPage": 96
+        }
+      ],
+      "schedule": true,
+      "kind": "phrase",
+      "id": "kenton-u8-fresh-water",
+      "tier": "textbook"
+    },
+    {
+      "unit": 8,
+      "en": "electric fan",
+      "zh": "电风扇",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p90",
+          "pdfPage": 96
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U8"
+        }
+      ],
+      "schedule": true,
+      "kind": "phrase",
+      "id": "kenton-u8-electric-fan",
+      "tier": "textbook"
+    },
+    {
+      "unit": 8,
+      "en": "juicer",
+      "zh": "榨汁机",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p91",
+          "pdfPage": 97
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "kenton-u8-juicer",
+      "tier": "textbook"
+    },
+    {
+      "unit": 8,
+      "en": "washing machine",
+      "zh": "洗衣机",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p91",
+          "pdfPage": 97
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U8"
+        }
+      ],
+      "schedule": true,
+      "kind": "phrase",
+      "id": "kenton-u8-washing-machine",
+      "tier": "textbook"
+    },
+    {
+      "unit": 8,
+      "en": "housework",
+      "zh": "家务劳动",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p91",
+          "pdfPage": 97
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U8"
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "kenton-u8-housework",
+      "tier": "textbook"
+    },
+    {
+      "unit": 8,
+      "en": "comfortably",
+      "zh": "舒服地",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p91",
+          "pdfPage": 97
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "kenton-u8-comfortably",
+      "tier": "textbook"
+    },
+    {
+      "id": "kenton-u8-light",
+      "unit": 8,
+      "en": "light",
+      "zh": "灯；光",
+      "sources": [
+        {
+          "type": "topic",
+          "label": "电子课本 U8 Topic words（目录核对）",
+          "pdfPage": 6
+        }
+      ],
+      "kind": "word",
+      "tier": "classroom",
+      "schedule": true
+    },
+    {
+      "unit": 9,
+      "en": "enemy",
+      "zh": "敌人；大敌",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p91",
+          "pdfPage": 97
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "kenton-u9-enemy",
+      "tier": "textbook"
+    },
+    {
+      "unit": 9,
+      "en": "laptop",
+      "zh": "便携式电脑；笔记本电脑",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p91",
+          "pdfPage": 97
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U9"
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "kenton-u9-laptop",
+      "tier": "textbook"
+    },
+    {
+      "unit": 9,
+      "en": "password",
+      "zh": "口令；密码",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p91",
+          "pdfPage": 97
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U9"
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "kenton-u9-password",
+      "tier": "textbook"
+    },
+    {
+      "unit": 9,
+      "en": "click",
+      "zh": "点击",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p91",
+          "pdfPage": 97
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U9"
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "kenton-u9-click",
+      "tier": "textbook"
+    },
+    {
+      "unit": 9,
+      "en": "mouse",
+      "zh": "鼠标",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p91",
+          "pdfPage": 97
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U9"
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "kenton-u9-mouse",
+      "tier": "textbook"
+    },
+    {
+      "unit": 9,
+      "en": "store",
+      "zh": "（在计算机里）储存",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p91",
+          "pdfPage": 97
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "kenton-u9-store",
+      "tier": "textbook"
+    },
+    {
+      "unit": 9,
+      "en": "delete",
+      "zh": "删去；删除",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p91",
+          "pdfPage": 97
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U9"
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "kenton-u9-delete",
+      "tier": "textbook"
+    },
+    {
+      "unit": 9,
+      "en": "Recycle Bin",
+      "zh": "回收站",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p91",
+          "pdfPage": 97
+        }
+      ],
+      "schedule": true,
+      "kind": "phrase",
+      "id": "kenton-u9-recycle-bin",
+      "tier": "textbook"
+    },
+    {
+      "unit": 9,
+      "en": "best-known",
+      "zh": "最有名的",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p91",
+          "pdfPage": 97
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U9"
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "kenton-u9-best-known",
+      "tier": "textbook"
+    },
+    {
+      "unit": 9,
+      "en": "keyboard",
+      "zh": "键盘",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p91",
+          "pdfPage": 97
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U9"
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "kenton-u9-keyboard",
+      "tier": "textbook"
+    },
+    {
+      "unit": 9,
+      "en": "microchip",
+      "zh": "微芯片；芯片",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p91",
+          "pdfPage": 97
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "kenton-u9-microchip",
+      "tier": "textbook"
+    },
+    {
+      "unit": 9,
+      "en": "a grain of salt",
+      "zh": "一粒盐",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p91",
+          "pdfPage": 97
+        }
+      ],
+      "schedule": true,
+      "kind": "phrase",
+      "id": "kenton-u9-a-grain-of-salt",
+      "tier": "textbook"
+    },
+    {
+      "unit": 9,
+      "en": "email",
+      "zh": "电子邮件",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p91",
+          "pdfPage": 97
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U9"
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "kenton-u9-email",
+      "tier": "textbook"
+    },
+    {
+      "unit": 9,
+      "en": "search for information",
+      "zh": "搜索信息",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p91",
+          "pdfPage": 97
+        }
+      ],
+      "schedule": true,
+      "kind": "phrase",
+      "id": "kenton-u9-search-for-information",
+      "tier": "textbook"
+    },
+    {
+      "unit": 9,
+      "en": "symbol",
+      "zh": "符号",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p91",
+          "pdfPage": 97
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U9"
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "kenton-u9-symbol",
+      "tier": "textbook"
+    },
+    {
+      "unit": 9,
+      "en": "desktop",
+      "zh": "电脑桌面；台式电脑",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p91",
+          "pdfPage": 97
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "kenton-u9-desktop",
+      "tier": "textbook"
+    },
+    {
+      "unit": 10,
+      "en": "reuse",
+      "zh": "再次使用",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p91",
+          "pdfPage": 97
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U10"
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "kenton-u10-reuse",
+      "tier": "textbook"
+    },
+    {
+      "unit": 10,
+      "en": "recycle",
+      "zh": "回收利用",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p91",
+          "pdfPage": 97
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U10"
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "kenton-u10-recycle",
+      "tier": "textbook"
+    },
+    {
+      "unit": 10,
+      "en": "throw away",
+      "zh": "扔掉；丢弃",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p91",
+          "pdfPage": 97
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U10"
+        }
+      ],
+      "schedule": true,
+      "kind": "phrase",
+      "id": "kenton-u10-throw-away",
+      "tier": "textbook"
+    },
+    {
+      "unit": 10,
+      "en": "plastic",
+      "zh": "塑料制的；塑料的",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p91",
+          "pdfPage": 97
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U10"
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "kenton-u10-plastic",
+      "tier": "textbook"
+    },
+    {
+      "unit": 10,
+      "en": "cloth",
+      "zh": "织物；布料",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p91",
+          "pdfPage": 97
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U10"
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "kenton-u10-cloth",
+      "tier": "textbook"
+    },
+    {
+      "unit": 10,
+      "en": "turn off",
+      "zh": "关掉",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p91",
+          "pdfPage": 97
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U10"
+        }
+      ],
+      "schedule": true,
+      "kind": "phrase",
+      "id": "kenton-u10-turn-off",
+      "tier": "textbook"
+    },
+    {
+      "unit": 10,
+      "en": "tap",
+      "zh": "水龙头",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p91",
+          "pdfPage": 97
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U10"
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "kenton-u10-tap",
+      "tier": "textbook"
+    },
+    {
+      "unit": 10,
+      "en": "wood",
+      "zh": "木头",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p91",
+          "pdfPage": 97
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U10"
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "kenton-u10-wood",
+      "tier": "textbook"
+    },
+    {
+      "unit": 10,
+      "en": "unplug",
+      "zh": "拔掉……电源插头",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p91",
+          "pdfPage": 97
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "kenton-u10-unplug",
+      "tier": "textbook"
+    },
+    {
+      "unit": 10,
+      "en": "pollution",
+      "zh": "污染",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p91",
+          "pdfPage": 97
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "kenton-u10-pollution",
+      "tier": "textbook"
+    },
+    {
+      "unit": 10,
+      "en": "swim by",
+      "zh": "游过",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p91",
+          "pdfPage": 97
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U10"
+        }
+      ],
+      "schedule": true,
+      "kind": "phrase",
+      "id": "kenton-u10-swim-by",
+      "tier": "textbook"
+    },
+    {
+      "unit": 10,
+      "en": "swallow",
+      "zh": "吞下",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p91",
+          "pdfPage": 97
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "kenton-u10-swallow",
+      "tier": "textbook"
+    },
+    {
+      "unit": 10,
+      "en": "lie around",
+      "zh": "到处乱放",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p91",
+          "pdfPage": 97
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U10"
+        }
+      ],
+      "schedule": true,
+      "kind": "phrase",
+      "id": "kenton-u10-lie-around",
+      "tier": "textbook"
+    },
+    {
+      "unit": 10,
+      "en": "pick up",
+      "zh": "拿起",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p91",
+          "pdfPage": 97
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U10"
+        }
+      ],
+      "schedule": true,
+      "kind": "phrase",
+      "id": "kenton-u10-pick-up",
+      "tier": "textbook"
+    },
+    {
+      "id": "kenton-u10-reduce",
+      "unit": 10,
+      "en": "reduce",
+      "zh": "减少",
+      "sources": [
+        {
+          "type": "topic",
+          "label": "电子课本 U10 Topic words（目录核对）",
+          "pdfPage": 6
+        }
+      ],
+      "kind": "word",
+      "tier": "classroom",
+      "schedule": true
+    }
+  ],
+  "sourcePolicy": "当前课堂原页与学校朗读纸优先。完整词库含电子课本 Words to use、Topic words 及教辅对照项；朗读纸并非老师逐日必默通知。版本差异和仅教辅词不自动安排。",
+  "counts": {
+    "all": 171,
+    "scheduled": 163,
+    "current": 55,
+    "word": 123,
+    "phrase": 48
+  }
+}

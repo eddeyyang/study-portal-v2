@@ -1,0 +1,3089 @@
+{
+  "schemaVersion": 1,
+  "child": "eddey",
+  "edition": "2026秋季校内英语",
+  "checkedOn": "2026-10-12",
+  "defaultThroughUnit": 3,
+  "maxSeconds": 900,
+  "dailyNewLimit": 5,
+  "dailyReviewLimit": 5,
+  "scopeNote": "完整收录已上传电子课本Words to use；当前单元另核课堂原页和学校朗读纸。不是老师新发布的整学期必默清单。课堂版本差异单列，不自动排入。",
+  "units": [
+    {
+      "id": 1,
+      "title": "My school",
+      "pageStart": 7
+    },
+    {
+      "id": 2,
+      "title": "My classmates",
+      "pageStart": 15
+    },
+    {
+      "id": 3,
+      "title": "Animals and their homes",
+      "pageStart": 23
+    },
+    {
+      "id": 4,
+      "title": "Our birthday",
+      "pageStart": 31
+    },
+    {
+      "id": 5,
+      "title": "Visiting places",
+      "pageStart": 39
+    },
+    {
+      "id": 6,
+      "title": "It’s autumn!",
+      "pageStart": 47
+    },
+    {
+      "id": 7,
+      "title": "My healthy breakfast",
+      "pageStart": 55
+    },
+    {
+      "id": 8,
+      "title": "Be honest",
+      "pageStart": 63
+    },
+    {
+      "id": 9,
+      "title": "What time is it?",
+      "pageStart": 71
+    },
+    {
+      "id": 10,
+      "title": "Weather",
+      "pageStart": 79
+    }
+  ],
+  "items": [
+    {
+      "unit": 1,
+      "en": "classroom",
+      "zh": "教室",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p87",
+          "pdfPage": 93
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U1"
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "eddey-u1-classroom",
+      "tier": "textbook"
+    },
+    {
+      "unit": 1,
+      "en": "keep … tidy",
+      "zh": "保持……整洁",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p87",
+          "pdfPage": 93
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U1"
+        }
+      ],
+      "schedule": true,
+      "kind": "phrase",
+      "id": "eddey-u1-keep-tidy",
+      "tier": "textbook",
+      "promptNote": "省略号写成 ...，不用填人或物。"
+    },
+    {
+      "unit": 1,
+      "en": "sports field",
+      "zh": "运动场",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p87",
+          "pdfPage": 93
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U1"
+        }
+      ],
+      "schedule": true,
+      "kind": "phrase",
+      "id": "eddey-u1-sports-field",
+      "tier": "textbook"
+    },
+    {
+      "unit": 1,
+      "en": "hall",
+      "zh": "礼堂",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p87",
+          "pdfPage": 93
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U1"
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "eddey-u1-hall",
+      "tier": "textbook"
+    },
+    {
+      "unit": 1,
+      "en": "begin",
+      "zh": "开始",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p87",
+          "pdfPage": 93
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U1"
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "eddey-u1-begin",
+      "tier": "textbook"
+    },
+    {
+      "unit": 1,
+      "en": "project",
+      "zh": "专题研究",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p87",
+          "pdfPage": 93
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U1"
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "eddey-u1-project",
+      "tier": "textbook"
+    },
+    {
+      "unit": 1,
+      "en": "reading room",
+      "zh": "阅览室",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p87",
+          "pdfPage": 93
+        }
+      ],
+      "schedule": true,
+      "kind": "phrase",
+      "id": "eddey-u1-reading-room",
+      "tier": "textbook"
+    },
+    {
+      "unit": 1,
+      "en": "computer room",
+      "zh": "计算机机房",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p87",
+          "pdfPage": 93
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U1"
+        }
+      ],
+      "schedule": true,
+      "kind": "phrase",
+      "id": "eddey-u1-computer-room",
+      "tier": "textbook"
+    },
+    {
+      "unit": 1,
+      "en": "let",
+      "zh": "允许；让",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p87",
+          "pdfPage": 93
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U1"
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "eddey-u1-let",
+      "tier": "textbook"
+    },
+    {
+      "unit": 1,
+      "en": "bamboo",
+      "zh": "竹子",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p87",
+          "pdfPage": 93
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U1"
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "eddey-u1-bamboo",
+      "tier": "textbook"
+    },
+    {
+      "unit": 1,
+      "en": "school building",
+      "zh": "教学楼",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p87",
+          "pdfPage": 93
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U1"
+        }
+      ],
+      "schedule": true,
+      "kind": "phrase",
+      "id": "eddey-u1-school-building",
+      "tier": "textbook"
+    },
+    {
+      "unit": 1,
+      "en": "tall",
+      "zh": "高大的",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p87",
+          "pdfPage": 93
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U1"
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "eddey-u1-tall",
+      "tier": "textbook"
+    },
+    {
+      "unit": 1,
+      "en": "believe it or not",
+      "zh": "信不信由你",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p87",
+          "pdfPage": 93
+        }
+      ],
+      "schedule": true,
+      "kind": "phrase",
+      "id": "eddey-u1-believe-it-or-not",
+      "tier": "textbook"
+    },
+    {
+      "unit": 1,
+      "en": "student",
+      "zh": "学生",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p87",
+          "pdfPage": 93
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U1"
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "eddey-u1-student",
+      "tier": "textbook"
+    },
+    {
+      "unit": 1,
+      "en": "art room",
+      "zh": "美术教室",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p87",
+          "pdfPage": 93
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U1"
+        }
+      ],
+      "schedule": true,
+      "kind": "phrase",
+      "id": "eddey-u1-art-room",
+      "tier": "textbook"
+    },
+    {
+      "unit": 1,
+      "en": "library",
+      "zh": "图书馆",
+      "sources": [
+        {
+          "type": "topic",
+          "label": "电子课本 U1 Topic words p8",
+          "pdfPage": 14
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "eddey-u1-library",
+      "tier": "classroom"
+    },
+    {
+      "unit": 2,
+      "en": "lovely",
+      "zh": "可爱的；令人愉快的",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p87",
+          "pdfPage": 93
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U2"
+        },
+        {
+          "type": "classroom",
+          "label": "当前课堂课本 U2 Topic words p16",
+          "pdfPage": 2
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "eddey-u2-lovely",
+      "tier": "classroom"
+    },
+    {
+      "unit": 2,
+      "en": "great",
+      "zh": "很棒的",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p87",
+          "pdfPage": 93
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U2"
+        },
+        {
+          "type": "classroom",
+          "label": "当前课堂课本 U2 Topic words p16",
+          "pdfPage": 2
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "eddey-u2-great",
+      "tier": "classroom"
+    },
+    {
+      "unit": 2,
+      "en": "often",
+      "zh": "时常",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p87",
+          "pdfPage": 93
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U2"
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "eddey-u2-often",
+      "tier": "textbook"
+    },
+    {
+      "unit": 2,
+      "en": "polite",
+      "zh": "有礼貌的",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p87",
+          "pdfPage": 93
+        }
+      ],
+      "schedule": false,
+      "kind": "word",
+      "id": "eddey-u2-polite",
+      "note": "旧电子版词条；当前课堂材料未确认，暂不进入每日默写。",
+      "tier": "textbook"
+    },
+    {
+      "unit": 2,
+      "en": "always",
+      "zh": "总是",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p87",
+          "pdfPage": 93
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U2"
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "eddey-u2-always",
+      "tier": "textbook"
+    },
+    {
+      "unit": 2,
+      "en": "interesting",
+      "zh": "有趣的",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p87",
+          "pdfPage": 93
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U2"
+        },
+        {
+          "type": "classroom",
+          "label": "当前课堂课本 U2 Topic words p16",
+          "pdfPage": 2
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "eddey-u2-interesting",
+      "tier": "classroom"
+    },
+    {
+      "unit": 2,
+      "en": "helpful",
+      "zh": "乐于助人的",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p87",
+          "pdfPage": 93
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U2"
+        },
+        {
+          "type": "classroom",
+          "label": "当前课堂课本 U2 Topic words p16",
+          "pdfPage": 2
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "eddey-u2-helpful",
+      "tier": "classroom"
+    },
+    {
+      "unit": 2,
+      "en": "English",
+      "zh": "英语",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p87",
+          "pdfPage": 93
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U2"
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "eddey-u2-english",
+      "tier": "textbook"
+    },
+    {
+      "unit": 2,
+      "en": "duck",
+      "zh": "躲闪；躲避",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p87",
+          "pdfPage": 93
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U2"
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "eddey-u2-duck",
+      "tier": "textbook"
+    },
+    {
+      "unit": 2,
+      "en": "different",
+      "zh": "不同的",
+      "sources": [
+        {
+          "type": "classroom",
+          "label": "当前课堂课本 U2 Topic words p16",
+          "pdfPage": 2
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "eddey-u2-different",
+      "tier": "classroom"
+    },
+    {
+      "unit": 3,
+      "en": "panda",
+      "zh": "大熊猫",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p87",
+          "pdfPage": 93
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U3"
+        },
+        {
+          "type": "classroom",
+          "label": "当前课堂课本 U3 Topic words p24",
+          "pdfPage": 10
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "eddey-u3-panda",
+      "tier": "classroom"
+    },
+    {
+      "unit": 3,
+      "en": "black",
+      "zh": "黑的；黑色的",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p87",
+          "pdfPage": 93
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U3"
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "eddey-u3-black",
+      "tier": "textbook"
+    },
+    {
+      "unit": 3,
+      "en": "white",
+      "zh": "白的；白色的",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p87",
+          "pdfPage": 93
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U3"
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "eddey-u3-white",
+      "tier": "textbook"
+    },
+    {
+      "unit": 3,
+      "en": "hometown",
+      "zh": "家乡",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p87",
+          "pdfPage": 93
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U3"
+        },
+        {
+          "type": "classroom",
+          "label": "当前课堂课本 U3 Topic words p24",
+          "pdfPage": 10
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "eddey-u3-hometown",
+      "tier": "classroom"
+    },
+    {
+      "unit": 3,
+      "en": "monkey",
+      "zh": "猴子",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p87",
+          "pdfPage": 93
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U3"
+        },
+        {
+          "type": "classroom",
+          "label": "当前课堂课本 U3 Topic words p24",
+          "pdfPage": 10
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "eddey-u3-monkey",
+      "tier": "classroom"
+    },
+    {
+      "unit": 3,
+      "en": "golden",
+      "zh": "金色的",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p87",
+          "pdfPage": 93
+        }
+      ],
+      "schedule": false,
+      "kind": "word",
+      "id": "eddey-u3-golden",
+      "note": "电子版为 golden，当前课堂页为 yellow；此词暂不排入。",
+      "tier": "textbook"
+    },
+    {
+      "unit": 3,
+      "en": "elephant",
+      "zh": "象",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p87",
+          "pdfPage": 93
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U3"
+        },
+        {
+          "type": "classroom",
+          "label": "当前课堂课本 U3 Topic words p24",
+          "pdfPage": 10
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "eddey-u3-elephant",
+      "tier": "classroom"
+    },
+    {
+      "unit": 3,
+      "en": "grey",
+      "zh": "灰色的",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p87",
+          "pdfPage": 93
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U3"
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "eddey-u3-grey",
+      "tier": "textbook",
+      "accepted": [
+        "grey",
+        "gray"
+      ]
+    },
+    {
+      "unit": 3,
+      "en": "trunk",
+      "zh": "象鼻",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p87",
+          "pdfPage": 93
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U3"
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "eddey-u3-trunk",
+      "tier": "textbook"
+    },
+    {
+      "unit": 3,
+      "en": "family",
+      "zh": "家庭；家族",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p87",
+          "pdfPage": 93
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U3"
+        },
+        {
+          "type": "classroom",
+          "label": "当前课堂课本 U3 Topic words p24",
+          "pdfPage": 10
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "eddey-u3-family",
+      "tier": "classroom"
+    },
+    {
+      "unit": 3,
+      "en": "India",
+      "zh": "印度",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p87",
+          "pdfPage": 93
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U3"
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "eddey-u3-india",
+      "tier": "textbook"
+    },
+    {
+      "unit": 3,
+      "en": "Africa",
+      "zh": "非洲",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p87",
+          "pdfPage": 93
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U3"
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "eddey-u3-africa",
+      "tier": "textbook"
+    },
+    {
+      "unit": 3,
+      "en": "baby elephant",
+      "zh": "小象",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p87",
+          "pdfPage": 93
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U3"
+        },
+        {
+          "type": "classroom",
+          "label": "当前课堂课本 U3 Topic words p24",
+          "pdfPage": 10
+        }
+      ],
+      "schedule": true,
+      "kind": "phrase",
+      "id": "eddey-u3-baby-elephant",
+      "tier": "classroom"
+    },
+    {
+      "unit": 3,
+      "en": "tail",
+      "zh": "尾巴",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p87",
+          "pdfPage": 93
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U3"
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "eddey-u3-tail",
+      "tier": "textbook"
+    },
+    {
+      "unit": 3,
+      "en": "kind",
+      "zh": "友好的",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p87",
+          "pdfPage": 93
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U3"
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "eddey-u3-kind",
+      "tier": "textbook"
+    },
+    {
+      "unit": 3,
+      "en": "polar bear",
+      "zh": "北极熊",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p87",
+          "pdfPage": 93
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U3"
+        },
+        {
+          "type": "classroom",
+          "label": "当前课堂课本 U3 Topic words p24",
+          "pdfPage": 10
+        }
+      ],
+      "schedule": true,
+      "kind": "phrase",
+      "id": "eddey-u3-polar-bear",
+      "tier": "classroom"
+    },
+    {
+      "unit": 3,
+      "en": "the North Pole",
+      "zh": "北极",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p87",
+          "pdfPage": 93
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U3"
+        }
+      ],
+      "schedule": true,
+      "kind": "phrase",
+      "id": "eddey-u3-the-north-pole",
+      "tier": "textbook"
+    },
+    {
+      "unit": 3,
+      "en": "warm",
+      "zh": "温暖的",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p87",
+          "pdfPage": 93
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U3"
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "eddey-u3-warm",
+      "tier": "textbook"
+    },
+    {
+      "unit": 3,
+      "en": "bed",
+      "zh": "床",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p87",
+          "pdfPage": 93
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U3"
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "eddey-u3-bed",
+      "tier": "textbook"
+    },
+    {
+      "unit": 3,
+      "en": "yellow",
+      "zh": "黄色的",
+      "sources": [
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U3"
+        },
+        {
+          "type": "classroom",
+          "label": "当前课堂课本 U3 Chant time p25",
+          "pdfPage": 11
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "eddey-u3-yellow",
+      "tier": "classroom"
+    },
+    {
+      "unit": 4,
+      "en": "invitation",
+      "zh": "（口头或书面的）邀请",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p87",
+          "pdfPage": 93
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U4"
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "eddey-u4-invitation",
+      "tier": "textbook"
+    },
+    {
+      "unit": 4,
+      "en": "party",
+      "zh": "聚会；联欢会",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p87",
+          "pdfPage": 93
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U4"
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "eddey-u4-party",
+      "tier": "textbook"
+    },
+    {
+      "unit": 4,
+      "en": "activity",
+      "zh": "活动",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p87",
+          "pdfPage": 93
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U4"
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "eddey-u4-activity",
+      "tier": "textbook"
+    },
+    {
+      "unit": 4,
+      "en": "share a cake",
+      "zh": "分享蛋糕",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p87",
+          "pdfPage": 93
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U4"
+        }
+      ],
+      "schedule": true,
+      "kind": "phrase",
+      "id": "eddey-u4-share-a-cake",
+      "tier": "textbook"
+    },
+    {
+      "unit": 4,
+      "en": "bring",
+      "zh": "带来",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p87",
+          "pdfPage": 93
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U4"
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "eddey-u4-bring",
+      "tier": "textbook"
+    },
+    {
+      "unit": 4,
+      "en": "letter",
+      "zh": "信；函",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p87",
+          "pdfPage": 93
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U4"
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "eddey-u4-letter",
+      "tier": "textbook"
+    },
+    {
+      "unit": 4,
+      "en": "child",
+      "zh": "儿童",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p87",
+          "pdfPage": 93
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U4"
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "eddey-u4-child",
+      "tier": "textbook"
+    },
+    {
+      "unit": 4,
+      "en": "tradition",
+      "zh": "传统",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p88",
+          "pdfPage": 94
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U4"
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "eddey-u4-tradition",
+      "tier": "textbook"
+    },
+    {
+      "unit": 4,
+      "en": "love",
+      "zh": "爱；热爱",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p88",
+          "pdfPage": 94
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U4"
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "eddey-u4-love",
+      "tier": "textbook"
+    },
+    {
+      "unit": 4,
+      "en": "bowl",
+      "zh": "碗",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p88",
+          "pdfPage": 94
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U4"
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "eddey-u4-bowl",
+      "tier": "textbook"
+    },
+    {
+      "unit": 4,
+      "en": "egg",
+      "zh": "鸡蛋",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p88",
+          "pdfPage": 94
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U4"
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "eddey-u4-egg",
+      "tier": "textbook"
+    },
+    {
+      "unit": 4,
+      "en": "wish",
+      "zh": "祝愿",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p88",
+          "pdfPage": 94
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U4"
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "eddey-u4-wish",
+      "tier": "textbook"
+    },
+    {
+      "unit": 4,
+      "en": "soup",
+      "zh": "汤；羹",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p88",
+          "pdfPage": 94
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U4"
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "eddey-u4-soup",
+      "tier": "textbook"
+    },
+    {
+      "id": "eddey-u4-noodles",
+      "unit": 4,
+      "en": "noodles",
+      "zh": "面条",
+      "sources": [
+        {
+          "type": "topic",
+          "label": "电子课本 U4 Topic words（目录核对）",
+          "pdfPage": 4
+        }
+      ],
+      "kind": "word",
+      "tier": "classroom",
+      "schedule": true
+    },
+    {
+      "unit": 5,
+      "en": "neighbourhood",
+      "zh": "街区",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p88",
+          "pdfPage": 94
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U5"
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "eddey-u5-neighbourhood",
+      "tier": "textbook"
+    },
+    {
+      "unit": 5,
+      "en": "park",
+      "zh": "公园",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p88",
+          "pdfPage": 94
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U5"
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "eddey-u5-park",
+      "tier": "textbook"
+    },
+    {
+      "unit": 5,
+      "en": "bakery",
+      "zh": "面包店",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p88",
+          "pdfPage": 94
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "eddey-u5-bakery",
+      "tier": "textbook"
+    },
+    {
+      "unit": 5,
+      "en": "cinema",
+      "zh": "电影院",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p88",
+          "pdfPage": 94
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U5"
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "eddey-u5-cinema",
+      "tier": "textbook"
+    },
+    {
+      "unit": 5,
+      "en": "supermarket",
+      "zh": "超市",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p88",
+          "pdfPage": 94
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U5"
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "eddey-u5-supermarket",
+      "tier": "textbook"
+    },
+    {
+      "unit": 5,
+      "en": "go around",
+      "zh": "参观（附近某处）",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p88",
+          "pdfPage": 94
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U5"
+        }
+      ],
+      "schedule": true,
+      "kind": "phrase",
+      "id": "eddey-u5-go-around",
+      "tier": "textbook"
+    },
+    {
+      "unit": 5,
+      "en": "boat",
+      "zh": "小船",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p88",
+          "pdfPage": 94
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U5"
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "eddey-u5-boat",
+      "tier": "textbook"
+    },
+    {
+      "unit": 5,
+      "en": "bridge",
+      "zh": "桥",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p88",
+          "pdfPage": 94
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U5"
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "eddey-u5-bridge",
+      "tier": "textbook"
+    },
+    {
+      "unit": 5,
+      "en": "photo",
+      "zh": "照片",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p88",
+          "pdfPage": 94
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U5"
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "eddey-u5-photo",
+      "tier": "textbook"
+    },
+    {
+      "unit": 5,
+      "en": "amazing",
+      "zh": "令人大为惊奇的",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p88",
+          "pdfPage": 94
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U5"
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "eddey-u5-amazing",
+      "tier": "textbook"
+    },
+    {
+      "unit": 5,
+      "en": "shop",
+      "zh": "商店",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p88",
+          "pdfPage": 94
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U5"
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "eddey-u5-shop",
+      "tier": "textbook"
+    },
+    {
+      "unit": 5,
+      "en": "waterway",
+      "zh": "水路；航道",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p88",
+          "pdfPage": 94
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "eddey-u5-waterway",
+      "tier": "textbook"
+    },
+    {
+      "unit": 5,
+      "en": "people",
+      "zh": "人",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p88",
+          "pdfPage": 94
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U5"
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "eddey-u5-people",
+      "tier": "textbook"
+    },
+    {
+      "unit": 5,
+      "en": "restaurant",
+      "zh": "餐馆",
+      "sources": [
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U5"
+        }
+      ],
+      "schedule": false,
+      "kind": "word",
+      "id": "eddey-u5-restaurant",
+      "note": "教辅核心词表补充；未见当前课本词表或学校单词单佐证，先供对照。",
+      "tier": "reference"
+    },
+    {
+      "unit": 5,
+      "en": "out of battery",
+      "zh": "没电了（教材原词块）",
+      "sources": [
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U5"
+        }
+      ],
+      "schedule": false,
+      "kind": "phrase",
+      "id": "eddey-u5-out-of-battery",
+      "note": "教辅核心词表补充；未见当前课本词表或学校单词单佐证，先供对照。",
+      "tier": "reference"
+    },
+    {
+      "id": "eddey-u5-museum",
+      "unit": 5,
+      "en": "museum",
+      "zh": "博物馆",
+      "sources": [
+        {
+          "type": "topic",
+          "label": "电子课本 U5 Topic words（目录核对）",
+          "pdfPage": 4
+        }
+      ],
+      "kind": "word",
+      "tier": "classroom",
+      "schedule": true
+    },
+    {
+      "unit": 6,
+      "en": "autumn",
+      "zh": "秋天",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p88",
+          "pdfPage": 94
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U6"
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "eddey-u6-autumn",
+      "tier": "textbook"
+    },
+    {
+      "unit": 6,
+      "en": "farm",
+      "zh": "农场",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p88",
+          "pdfPage": 94
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U6"
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "eddey-u6-farm",
+      "tier": "textbook"
+    },
+    {
+      "unit": 6,
+      "en": "boy",
+      "zh": "男孩",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p88",
+          "pdfPage": 94
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U6"
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "eddey-u6-boy",
+      "tier": "textbook"
+    },
+    {
+      "unit": 6,
+      "en": "fruit",
+      "zh": "水果",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p88",
+          "pdfPage": 94
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U6"
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "eddey-u6-fruit",
+      "tier": "textbook"
+    },
+    {
+      "unit": 6,
+      "en": "fly south",
+      "zh": "往南飞",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p88",
+          "pdfPage": 94
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U6"
+        }
+      ],
+      "schedule": true,
+      "kind": "phrase",
+      "id": "eddey-u6-fly-south",
+      "tier": "textbook"
+    },
+    {
+      "unit": 6,
+      "en": "girl",
+      "zh": "女孩",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p88",
+          "pdfPage": 94
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U6"
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "eddey-u6-girl",
+      "tier": "textbook"
+    },
+    {
+      "unit": 6,
+      "en": "piece",
+      "zh": "片；块",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p88",
+          "pdfPage": 94
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "eddey-u6-piece",
+      "tier": "textbook"
+    },
+    {
+      "unit": 6,
+      "en": "apple",
+      "zh": "苹果",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p88",
+          "pdfPage": 94
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U6"
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "eddey-u6-apple",
+      "tier": "textbook"
+    },
+    {
+      "unit": 6,
+      "en": "pine tree",
+      "zh": "松树",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p88",
+          "pdfPage": 94
+        }
+      ],
+      "schedule": true,
+      "kind": "phrase",
+      "id": "eddey-u6-pine-tree",
+      "tier": "textbook"
+    },
+    {
+      "unit": 6,
+      "en": "worker",
+      "zh": "工作者",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p88",
+          "pdfPage": 94
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U6"
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "eddey-u6-worker",
+      "tier": "textbook"
+    },
+    {
+      "unit": 6,
+      "en": "land",
+      "zh": "陆地；大地",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p88",
+          "pdfPage": 94
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "eddey-u6-land",
+      "tier": "textbook"
+    },
+    {
+      "unit": 6,
+      "en": "golden",
+      "zh": "金色的",
+      "sources": [
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U6"
+        }
+      ],
+      "schedule": false,
+      "kind": "word",
+      "id": "eddey-u6-golden",
+      "note": "教辅核心词表补充；未见当前课本词表或学校单词单佐证，先供对照。",
+      "tier": "reference"
+    },
+    {
+      "id": "eddey-u6-fall",
+      "unit": 6,
+      "en": "fall",
+      "zh": "落下",
+      "sources": [
+        {
+          "type": "topic",
+          "label": "电子课本 U6 Topic words（目录核对）",
+          "pdfPage": 6
+        }
+      ],
+      "kind": "word",
+      "tier": "classroom",
+      "schedule": true
+    },
+    {
+      "id": "eddey-u6-leaf",
+      "unit": 6,
+      "en": "leaf",
+      "zh": "叶",
+      "sources": [
+        {
+          "type": "topic",
+          "label": "电子课本 U6 Topic words（目录核对）",
+          "pdfPage": 6
+        }
+      ],
+      "kind": "word",
+      "tier": "classroom",
+      "schedule": true
+    },
+    {
+      "unit": 7,
+      "en": "breakfast",
+      "zh": "早餐",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p88",
+          "pdfPage": 94
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U7"
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "eddey-u7-breakfast",
+      "tier": "textbook"
+    },
+    {
+      "unit": 7,
+      "en": "menu",
+      "zh": "菜单",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p88",
+          "pdfPage": 94
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U7"
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "eddey-u7-menu",
+      "tier": "textbook"
+    },
+    {
+      "unit": 7,
+      "en": "porridge",
+      "zh": "面糊；粥",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p88",
+          "pdfPage": 94
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "eddey-u7-porridge",
+      "tier": "textbook"
+    },
+    {
+      "unit": 7,
+      "en": "juice",
+      "zh": "果汁",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p88",
+          "pdfPage": 94
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U7"
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "eddey-u7-juice",
+      "tier": "textbook"
+    },
+    {
+      "unit": 7,
+      "en": "milk",
+      "zh": "（牛或羊等的）奶",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p88",
+          "pdfPage": 94
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U7"
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "eddey-u7-milk",
+      "tier": "textbook"
+    },
+    {
+      "unit": 7,
+      "en": "soya milk",
+      "zh": "豆浆",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p88",
+          "pdfPage": 94
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U7"
+        }
+      ],
+      "schedule": true,
+      "kind": "phrase",
+      "id": "eddey-u7-soya-milk",
+      "tier": "textbook"
+    },
+    {
+      "unit": 7,
+      "en": "banana",
+      "zh": "香蕉",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p88",
+          "pdfPage": 94
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U7"
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "eddey-u7-banana",
+      "tier": "textbook"
+    },
+    {
+      "unit": 7,
+      "en": "week",
+      "zh": "周；星期",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p88",
+          "pdfPage": 94
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U7"
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "eddey-u7-week",
+      "tier": "textbook"
+    },
+    {
+      "unit": 7,
+      "en": "eat",
+      "zh": "吃",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p88",
+          "pdfPage": 94
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U7"
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "eddey-u7-eat",
+      "tier": "textbook"
+    },
+    {
+      "unit": 7,
+      "en": "tomorrow",
+      "zh": "明天",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p88",
+          "pdfPage": 94
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U7"
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "eddey-u7-tomorrow",
+      "tier": "textbook"
+    },
+    {
+      "unit": 7,
+      "en": "energy",
+      "zh": "能量",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p88",
+          "pdfPage": 94
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U7"
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "eddey-u7-energy",
+      "tier": "textbook"
+    },
+    {
+      "unit": 7,
+      "en": "protein",
+      "zh": "蛋白质",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p88",
+          "pdfPage": 94
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U7"
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "eddey-u7-protein",
+      "tier": "textbook"
+    },
+    {
+      "unit": 7,
+      "en": "vitamin",
+      "zh": "维生素",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p88",
+          "pdfPage": 94
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U7"
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "eddey-u7-vitamin",
+      "tier": "textbook"
+    },
+    {
+      "unit": 7,
+      "en": "cry",
+      "zh": "喊叫；呼喊",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p88",
+          "pdfPage": 94
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U7"
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "eddey-u7-cry",
+      "tier": "textbook"
+    },
+    {
+      "id": "eddey-u7-bread",
+      "unit": 7,
+      "en": "bread",
+      "zh": "面包",
+      "sources": [
+        {
+          "type": "topic",
+          "label": "电子课本 U7 Topic words（目录核对）",
+          "pdfPage": 6
+        }
+      ],
+      "kind": "word",
+      "tier": "classroom",
+      "schedule": true
+    },
+    {
+      "unit": 8,
+      "en": "keep one’s word",
+      "zh": "遵守诺言",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p88",
+          "pdfPage": 94
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U8"
+        }
+      ],
+      "schedule": true,
+      "kind": "phrase",
+      "id": "eddey-u8-keep-one-s-word",
+      "tier": "textbook",
+      "promptNote": "one’s 可用直撇号写成 one's。"
+    },
+    {
+      "unit": 8,
+      "en": "give … back",
+      "zh": "归还……",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p88",
+          "pdfPage": 94
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U8"
+        }
+      ],
+      "schedule": true,
+      "kind": "phrase",
+      "id": "eddey-u8-give-back",
+      "tier": "textbook",
+      "promptNote": "省略号写成 ...，不用填人或物。"
+    },
+    {
+      "unit": 8,
+      "en": "on time",
+      "zh": "准时",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p88",
+          "pdfPage": 94
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U8"
+        }
+      ],
+      "schedule": true,
+      "kind": "phrase",
+      "id": "eddey-u8-on-time",
+      "tier": "textbook"
+    },
+    {
+      "unit": 8,
+      "en": "trust each other",
+      "zh": "互相信任",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p88",
+          "pdfPage": 94
+        }
+      ],
+      "schedule": true,
+      "kind": "phrase",
+      "id": "eddey-u8-trust-each-other",
+      "tier": "textbook"
+    },
+    {
+      "unit": 8,
+      "en": "honest",
+      "zh": "诚实的；正直的",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p88",
+          "pdfPage": 94
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U8"
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "eddey-u8-honest",
+      "tier": "textbook"
+    },
+    {
+      "unit": 8,
+      "en": "honesty",
+      "zh": "诚实；正直",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p88",
+          "pdfPage": 94
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "eddey-u8-honesty",
+      "tier": "textbook"
+    },
+    {
+      "unit": 8,
+      "en": "tell the truth",
+      "zh": "说真话",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p88",
+          "pdfPage": 94
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U8"
+        }
+      ],
+      "schedule": true,
+      "kind": "phrase",
+      "id": "eddey-u8-tell-the-truth",
+      "tier": "textbook"
+    },
+    {
+      "unit": 8,
+      "en": "never tell a lie",
+      "zh": "从不撒谎",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p88",
+          "pdfPage": 94
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U8"
+        }
+      ],
+      "schedule": true,
+      "kind": "phrase",
+      "id": "eddey-u8-never-tell-a-lie",
+      "tier": "textbook"
+    },
+    {
+      "unit": 8,
+      "en": "stop",
+      "zh": "停止；停下",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p88",
+          "pdfPage": 94
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U8"
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "eddey-u8-stop",
+      "tier": "textbook"
+    },
+    {
+      "unit": 8,
+      "en": "doll",
+      "zh": "玩偶；玩具娃娃",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p88",
+          "pdfPage": 94
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U8"
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "eddey-u8-doll",
+      "tier": "textbook"
+    },
+    {
+      "unit": 8,
+      "en": "carelessly",
+      "zh": "不小心地",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p88",
+          "pdfPage": 94
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "eddey-u8-carelessly",
+      "tier": "textbook"
+    },
+    {
+      "unit": 8,
+      "en": "break",
+      "zh": "打碎；打破",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p88",
+          "pdfPage": 94
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U8"
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "eddey-u8-break",
+      "tier": "textbook"
+    },
+    {
+      "unit": 8,
+      "en": "arm",
+      "zh": "手臂",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p89",
+          "pdfPage": 95
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U8"
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "eddey-u8-arm",
+      "tier": "textbook"
+    },
+    {
+      "unit": 8,
+      "en": "anyway",
+      "zh": "无论如何；反正",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p89",
+          "pdfPage": 95
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "eddey-u8-anyway",
+      "tier": "textbook"
+    },
+    {
+      "unit": 8,
+      "en": "empty",
+      "zh": "空的",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p89",
+          "pdfPage": 95
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U8"
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "eddey-u8-empty",
+      "tier": "textbook"
+    },
+    {
+      "unit": 8,
+      "en": "pot",
+      "zh": "罐；壶；锅",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p89",
+          "pdfPage": 95
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U8"
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "eddey-u8-pot",
+      "tier": "textbook"
+    },
+    {
+      "unit": 8,
+      "en": "seed",
+      "zh": "种子",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p89",
+          "pdfPage": 95
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "eddey-u8-seed",
+      "tier": "textbook"
+    },
+    {
+      "unit": 8,
+      "en": "month",
+      "zh": "月份",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p89",
+          "pdfPage": 95
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U8"
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "eddey-u8-month",
+      "tier": "textbook"
+    },
+    {
+      "unit": 9,
+      "en": "time",
+      "zh": "时间",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p89",
+          "pdfPage": 95
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U9"
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "eddey-u9-time",
+      "tier": "textbook"
+    },
+    {
+      "unit": 9,
+      "en": "hour hand",
+      "zh": "（钟表的）时针",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p89",
+          "pdfPage": 95
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U9"
+        }
+      ],
+      "schedule": true,
+      "kind": "phrase",
+      "id": "eddey-u9-hour-hand",
+      "tier": "textbook"
+    },
+    {
+      "unit": 9,
+      "en": "minute hand",
+      "zh": "（钟表的）分针",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p89",
+          "pdfPage": 95
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U9"
+        }
+      ],
+      "schedule": true,
+      "kind": "phrase",
+      "id": "eddey-u9-minute-hand",
+      "tier": "textbook"
+    },
+    {
+      "unit": 9,
+      "en": "seven o’clock",
+      "zh": "七点钟",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p89",
+          "pdfPage": 95
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U9"
+        }
+      ],
+      "schedule": true,
+      "kind": "phrase",
+      "id": "eddey-u9-seven-o-clock",
+      "tier": "textbook"
+    },
+    {
+      "unit": 9,
+      "en": "half past eleven",
+      "zh": "十一点半",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p89",
+          "pdfPage": 95
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U9"
+        }
+      ],
+      "schedule": true,
+      "kind": "phrase",
+      "id": "eddey-u9-half-past-eleven",
+      "tier": "textbook"
+    },
+    {
+      "unit": 9,
+      "en": "ten to four",
+      "zh": "三点五十分",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p89",
+          "pdfPage": 95
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U9"
+        }
+      ],
+      "schedule": true,
+      "kind": "phrase",
+      "id": "eddey-u9-ten-to-four",
+      "tier": "textbook"
+    },
+    {
+      "unit": 9,
+      "en": "evening",
+      "zh": "晚上；傍晚",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p89",
+          "pdfPage": 95
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U9"
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "eddey-u9-evening",
+      "tier": "textbook"
+    },
+    {
+      "unit": 9,
+      "en": "prepare",
+      "zh": "使（自己）有准备",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p89",
+          "pdfPage": 95
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "eddey-u9-prepare",
+      "tier": "textbook"
+    },
+    {
+      "unit": 9,
+      "en": "line",
+      "zh": "线条",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p89",
+          "pdfPage": 95
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "eddey-u9-line",
+      "tier": "textbook"
+    },
+    {
+      "unit": 9,
+      "en": "circle",
+      "zh": "圆形",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p89",
+          "pdfPage": 95
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "eddey-u9-circle",
+      "tier": "textbook"
+    },
+    {
+      "unit": 9,
+      "en": "explain",
+      "zh": "解释；说明",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p89",
+          "pdfPage": 95
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "eddey-u9-explain",
+      "tier": "textbook"
+    },
+    {
+      "unit": 9,
+      "en": "the earth",
+      "zh": "地球",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p89",
+          "pdfPage": 95
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U9"
+        }
+      ],
+      "schedule": true,
+      "kind": "phrase",
+      "id": "eddey-u9-the-earth",
+      "tier": "textbook"
+    },
+    {
+      "unit": 9,
+      "en": "the moon",
+      "zh": "月球",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p89",
+          "pdfPage": 95
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U9"
+        }
+      ],
+      "schedule": true,
+      "kind": "phrase",
+      "id": "eddey-u9-the-moon",
+      "tier": "textbook"
+    },
+    {
+      "unit": 9,
+      "en": "night",
+      "zh": "夜；夜晚",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p89",
+          "pdfPage": 95
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U9"
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "eddey-u9-night",
+      "tier": "textbook"
+    },
+    {
+      "unit": 10,
+      "en": "father",
+      "zh": "父亲；爸爸",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p89",
+          "pdfPage": 95
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U10"
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "eddey-u10-father",
+      "tier": "textbook"
+    },
+    {
+      "unit": 10,
+      "en": "sunny",
+      "zh": "阳光充足的",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p89",
+          "pdfPage": 95
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U10"
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "eddey-u10-sunny",
+      "tier": "textbook"
+    },
+    {
+      "unit": 10,
+      "en": "rainy",
+      "zh": "多雨的",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p89",
+          "pdfPage": 95
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "eddey-u10-rainy",
+      "tier": "textbook"
+    },
+    {
+      "unit": 10,
+      "en": "cloudy",
+      "zh": "阴天的；多云的",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p89",
+          "pdfPage": 95
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U10"
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "eddey-u10-cloudy",
+      "tier": "textbook"
+    },
+    {
+      "unit": 10,
+      "en": "brother",
+      "zh": "哥哥；弟弟",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p89",
+          "pdfPage": 95
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U10"
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "eddey-u10-brother",
+      "tier": "textbook"
+    },
+    {
+      "unit": 10,
+      "en": "windy",
+      "zh": "多风的；风大的",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p89",
+          "pdfPage": 95
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U10"
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "eddey-u10-windy",
+      "tier": "textbook"
+    },
+    {
+      "unit": 10,
+      "en": "snowy",
+      "zh": "下雪多的",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p89",
+          "pdfPage": 95
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U10"
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "eddey-u10-snowy",
+      "tier": "textbook"
+    },
+    {
+      "unit": 10,
+      "en": "weather",
+      "zh": "天气；气象",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p89",
+          "pdfPage": 95
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U10"
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "eddey-u10-weather",
+      "tier": "textbook"
+    },
+    {
+      "unit": 10,
+      "en": "weather report",
+      "zh": "气象报告",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p89",
+          "pdfPage": 95
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U10"
+        }
+      ],
+      "schedule": true,
+      "kind": "phrase",
+      "id": "eddey-u10-weather-report",
+      "tier": "textbook"
+    },
+    {
+      "unit": 10,
+      "en": "degree",
+      "zh": "度（温度单位）",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p89",
+          "pdfPage": 95
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U10"
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "eddey-u10-degree",
+      "tier": "textbook"
+    },
+    {
+      "unit": 10,
+      "en": "weather reporter",
+      "zh": "天气预报员",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p89",
+          "pdfPage": 95
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U10"
+        }
+      ],
+      "schedule": true,
+      "kind": "phrase",
+      "id": "eddey-u10-weather-reporter",
+      "tier": "textbook"
+    },
+    {
+      "unit": 10,
+      "en": "lamb",
+      "zh": "小羊",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p89",
+          "pdfPage": 95
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U10"
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "eddey-u10-lamb",
+      "tier": "textbook"
+    },
+    {
+      "unit": 10,
+      "en": "tortoise",
+      "zh": "陆龟",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p89",
+          "pdfPage": 95
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U10"
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "eddey-u10-tortoise",
+      "tier": "textbook"
+    },
+    {
+      "unit": 10,
+      "en": "sign",
+      "zh": "迹象；征兆",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p89",
+          "pdfPage": 95
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U10"
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "eddey-u10-sign",
+      "tier": "textbook"
+    },
+    {
+      "unit": 10,
+      "en": "continue",
+      "zh": "（停顿后）继续说",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p89",
+          "pdfPage": 95
+        }
+      ],
+      "schedule": true,
+      "kind": "word",
+      "id": "eddey-u10-continue",
+      "tier": "textbook"
+    },
+    {
+      "unit": 10,
+      "en": "heavy rain",
+      "zh": "大雨",
+      "sources": [
+        {
+          "type": "textbook",
+          "label": "电子课本 Words to use p89",
+          "pdfPage": 95
+        },
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U10"
+        }
+      ],
+      "schedule": true,
+      "kind": "phrase",
+      "id": "eddey-u10-heavy-rain",
+      "tier": "textbook"
+    },
+    {
+      "unit": 10,
+      "en": "hurry",
+      "zh": "赶快；急忙（做某事）",
+      "sources": [
+        {
+          "type": "reference",
+          "label": "金牌训练 核心词汇 · U10"
+        }
+      ],
+      "schedule": false,
+      "kind": "word",
+      "id": "eddey-u10-hurry",
+      "note": "教辅核心词表补充；未见当前课本词表或学校单词单佐证，先供对照。",
+      "tier": "reference"
+    }
+  ],
+  "sourcePolicy": "当前课堂原页与学校朗读纸优先。完整词库含电子课本 Words to use、Topic words 及教辅对照项；朗读纸并非老师逐日必默通知。版本差异和仅教辅词不自动安排。",
+  "counts": {
+    "all": 154,
+    "scheduled": 148,
+    "current": 44,
+    "word": 122,
+    "phrase": 32
+  }
+}

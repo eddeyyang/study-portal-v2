@@ -1,0 +1,2095 @@
+{
+  "schemaVersion": 1,
+  "appId": "eddey-english-week-20260913",
+  "engine": "Kokoro-82M ONNX INT8",
+  "voice": "af_heart",
+  "lang": "en-US",
+  "speed": 0.92,
+  "normalization": "EBU R128 -18 LUFS / true peak -2dB",
+  "items": [
+    {
+      "id": "bf81a9cc",
+      "lang": "en-US",
+      "text": "actor",
+      "file": "voice-00.mp3",
+      "start": 0.24,
+      "end": 1.1787
+    },
+    {
+      "id": "e7812e6f",
+      "lang": "en-US",
+      "text": "The actor is on the stage.",
+      "file": "voice-00.mp3",
+      "start": 1.6587,
+      "end": 3.3013
+    },
+    {
+      "id": "0b15adb7",
+      "lang": "en-US",
+      "text": "after",
+      "file": "voice-00.mp3",
+      "start": 3.7813,
+      "end": 4.6987
+    },
+    {
+      "id": "9a3dd197",
+      "lang": "en-US",
+      "text": "We play after school.",
+      "file": "voice-00.mp3",
+      "start": 5.1787,
+      "end": 6.5013
+    },
+    {
+      "id": "3fdeeb81",
+      "lang": "en-US",
+      "text": "April",
+      "file": "voice-00.mp3",
+      "start": 6.9813,
+      "end": 7.8773
+    },
+    {
+      "id": "b2058ae5",
+      "lang": "en-US",
+      "text": "My birthday is in April.",
+      "file": "voice-00.mp3",
+      "start": 8.3573,
+      "end": 10.0853
+    },
+    {
+      "id": "21b6a3e8",
+      "lang": "en-US",
+      "text": "artist",
+      "file": "voice-00.mp3",
+      "start": 10.5653,
+      "end": 11.4613
+    },
+    {
+      "id": "927ae469",
+      "lang": "en-US",
+      "text": "An artist paints a picture.",
+      "file": "voice-00.mp3",
+      "start": 11.9413,
+      "end": 13.6693
+    },
+    {
+      "id": "90628fb0",
+      "lang": "en-US",
+      "text": "author",
+      "file": "voice-00.mp3",
+      "start": 14.1493,
+      "end": 15.0027
+    },
+    {
+      "id": "2b3a6625",
+      "lang": "en-US",
+      "text": "The author writes a book.",
+      "file": "voice-00.mp3",
+      "start": 15.4827,
+      "end": 17.04
+    },
+    {
+      "id": "83cf6a6e",
+      "lang": "en-US",
+      "text": "beach",
+      "file": "voice-00.mp3",
+      "start": 17.52,
+      "end": 18.3307
+    },
+    {
+      "id": "2c615e5a",
+      "lang": "en-US",
+      "text": "We play on the beach.",
+      "file": "voice-00.mp3",
+      "start": 18.8107,
+      "end": 20.112
+    },
+    {
+      "id": "85921408",
+      "lang": "en-US",
+      "text": "before",
+      "file": "voice-00.mp3",
+      "start": 20.592,
+      "end": 21.4453
+    },
+    {
+      "id": "838586f6",
+      "lang": "en-US",
+      "text": "Wash your hands before dinner.",
+      "file": "voice-00.mp3",
+      "start": 21.9253,
+      "end": 23.6747
+    },
+    {
+      "id": "f0ba86d0",
+      "lang": "en-US",
+      "text": "block",
+      "file": "voice-00.mp3",
+      "start": 24.1547,
+      "end": 24.9653
+    },
+    {
+      "id": "3bb2991f",
+      "lang": "en-US",
+      "text": "The shop is one block away.",
+      "file": "voice-00.mp3",
+      "start": 25.4453,
+      "end": 27.1947
+    },
+    {
+      "id": "38d0ff23",
+      "lang": "en-US",
+      "text": "bowl",
+      "file": "voice-01.mp3",
+      "start": 0.24,
+      "end": 1.008
+    },
+    {
+      "id": "59744bc8",
+      "lang": "en-US",
+      "text": "There is rice in the bowl.",
+      "file": "voice-01.mp3",
+      "start": 1.488,
+      "end": 3.024
+    },
+    {
+      "id": "cf62a851",
+      "lang": "en-US",
+      "text": "captain",
+      "file": "voice-01.mp3",
+      "start": 3.504,
+      "end": 4.4427
+    },
+    {
+      "id": "04245bc4",
+      "lang": "en-US",
+      "text": "The captain is on the ship.",
+      "file": "voice-01.mp3",
+      "start": 4.9227,
+      "end": 6.48
+    },
+    {
+      "id": "38e1cd47",
+      "lang": "en-US",
+      "text": "car",
+      "file": "voice-01.mp3",
+      "start": 6.96,
+      "end": 7.6853
+    },
+    {
+      "id": "9e9b5405",
+      "lang": "en-US",
+      "text": "The car is near the house.",
+      "file": "voice-01.mp3",
+      "start": 8.1653,
+      "end": 9.744
+    },
+    {
+      "id": "24086f70",
+      "lang": "en-US",
+      "text": "city",
+      "file": "voice-01.mp3",
+      "start": 10.224,
+      "end": 11.056
+    },
+    {
+      "id": "b4f2f021",
+      "lang": "en-US",
+      "text": "I live in a big city.",
+      "file": "voice-01.mp3",
+      "start": 11.536,
+      "end": 13.0507
+    },
+    {
+      "id": "b8f6367b",
+      "lang": "en-US",
+      "text": "day",
+      "file": "voice-01.mp3",
+      "start": 13.5307,
+      "end": 14.2773
+    },
+    {
+      "id": "081b32e4",
+      "lang": "en-US",
+      "text": "We study during the day.",
+      "file": "voice-01.mp3",
+      "start": 14.7573,
+      "end": 16.2933
+    },
+    {
+      "id": "908824fe",
+      "lang": "en-US",
+      "text": "dime",
+      "file": "voice-01.mp3",
+      "start": 16.7733,
+      "end": 17.6053
+    },
+    {
+      "id": "5b490ad5",
+      "lang": "en-US",
+      "text": "A dime is ten cents.",
+      "file": "voice-01.mp3",
+      "start": 18.0853,
+      "end": 19.5787
+    },
+    {
+      "id": "a6c69dfc",
+      "lang": "en-US",
+      "text": "doctor",
+      "file": "voice-01.mp3",
+      "start": 20.0587,
+      "end": 20.9973
+    },
+    {
+      "id": "ade775fa",
+      "lang": "en-US",
+      "text": "The doctor helps people.",
+      "file": "voice-01.mp3",
+      "start": 21.4773,
+      "end": 22.992
+    },
+    {
+      "id": "d5656240",
+      "lang": "en-US",
+      "text": "fan",
+      "file": "voice-01.mp3",
+      "start": 23.472,
+      "end": 24.2827
+    },
+    {
+      "id": "3d48e88a",
+      "lang": "en-US",
+      "text": "The fan keeps us cool.",
+      "file": "voice-01.mp3",
+      "start": 24.7627,
+      "end": 26.2133
+    },
+    {
+      "id": "10be8e98",
+      "lang": "en-US",
+      "text": "farmer",
+      "file": "voice-02.mp3",
+      "start": 0.24,
+      "end": 1.0933
+    },
+    {
+      "id": "e66643ed",
+      "lang": "en-US",
+      "text": "The farmer works on a farm.",
+      "file": "voice-02.mp3",
+      "start": 1.5733,
+      "end": 3.28
+    },
+    {
+      "id": "59ae4fe9",
+      "lang": "en-US",
+      "text": "guitar",
+      "file": "voice-02.mp3",
+      "start": 3.76,
+      "end": 4.656
+    },
+    {
+      "id": "738cd59f",
+      "lang": "en-US",
+      "text": "I play the guitar.",
+      "file": "voice-02.mp3",
+      "start": 5.136,
+      "end": 6.48
+    },
+    {
+      "id": "7a2e3789",
+      "lang": "en-US",
+      "text": "house",
+      "file": "voice-02.mp3",
+      "start": 6.96,
+      "end": 7.8133
+    },
+    {
+      "id": "5186a90b",
+      "lang": "en-US",
+      "text": "My house is near the lake.",
+      "file": "voice-02.mp3",
+      "start": 8.2933,
+      "end": 9.936
+    },
+    {
+      "id": "7384cd7e",
+      "lang": "en-US",
+      "text": "island",
+      "file": "voice-02.mp3",
+      "start": 10.416,
+      "end": 11.3333
+    },
+    {
+      "id": "5abc4ee2",
+      "lang": "en-US",
+      "text": "The island is in the sea.",
+      "file": "voice-02.mp3",
+      "start": 11.8133,
+      "end": 13.456
+    },
+    {
+      "id": "ca6acd1c",
+      "lang": "en-US",
+      "text": "king",
+      "file": "voice-02.mp3",
+      "start": 13.936,
+      "end": 14.7467
+    },
+    {
+      "id": "a65af1dc",
+      "lang": "en-US",
+      "text": "The king lives in a castle.",
+      "file": "voice-02.mp3",
+      "start": 15.2267,
+      "end": 16.9333
+    },
+    {
+      "id": "09d5e2ab",
+      "lang": "en-US",
+      "text": "Monday",
+      "file": "voice-02.mp3",
+      "start": 17.4133,
+      "end": 18.352
+    },
+    {
+      "id": "fd8e2e67",
+      "lang": "en-US",
+      "text": "We go to school on Monday.",
+      "file": "voice-02.mp3",
+      "start": 18.832,
+      "end": 20.368
+    },
+    {
+      "id": "a8ab3eec",
+      "lang": "en-US",
+      "text": "kite",
+      "file": "voice-02.mp3",
+      "start": 20.848,
+      "end": 21.616
+    },
+    {
+      "id": "2740bcf6",
+      "lang": "en-US",
+      "text": "The kite is in the sky.",
+      "file": "voice-02.mp3",
+      "start": 22.096,
+      "end": 23.568
+    },
+    {
+      "id": "8bbbe464",
+      "lang": "en-US",
+      "text": "lake",
+      "file": "voice-02.mp3",
+      "start": 24.048,
+      "end": 24.816
+    },
+    {
+      "id": "317d8235",
+      "lang": "en-US",
+      "text": "We walk around the lake.",
+      "file": "voice-02.mp3",
+      "start": 25.296,
+      "end": 26.7253
+    },
+    {
+      "id": "ae737439",
+      "lang": "en-US",
+      "text": "morning",
+      "file": "voice-03.mp3",
+      "start": 0.24,
+      "end": 1.1147
+    },
+    {
+      "id": "4e71f518",
+      "lang": "en-US",
+      "text": "I read in the morning.",
+      "file": "voice-03.mp3",
+      "start": 1.5947,
+      "end": 3.024
+    },
+    {
+      "id": "4bfd2e98",
+      "lang": "en-US",
+      "text": "mountain",
+      "file": "voice-03.mp3",
+      "start": 3.504,
+      "end": 4.5067
+    },
+    {
+      "id": "35326007",
+      "lang": "en-US",
+      "text": "The mountain is very high.",
+      "file": "voice-03.mp3",
+      "start": 4.9867,
+      "end": 6.5653
+    },
+    {
+      "id": "2e6efb87",
+      "lang": "en-US",
+      "text": "night",
+      "file": "voice-03.mp3",
+      "start": 7.0453,
+      "end": 7.8773
+    },
+    {
+      "id": "88e01066",
+      "lang": "en-US",
+      "text": "I sleep at night.",
+      "file": "voice-03.mp3",
+      "start": 8.3573,
+      "end": 9.616
+    },
+    {
+      "id": "ae6f6aed",
+      "lang": "en-US",
+      "text": "noon",
+      "file": "voice-03.mp3",
+      "start": 10.096,
+      "end": 10.9067
+    },
+    {
+      "id": "6ac4b24a",
+      "lang": "en-US",
+      "text": "We eat lunch at noon.",
+      "file": "voice-03.mp3",
+      "start": 11.3867,
+      "end": 12.7947
+    },
+    {
+      "id": "25855f66",
+      "lang": "en-US",
+      "text": "playground",
+      "file": "voice-03.mp3",
+      "start": 13.2747,
+      "end": 14.2987
+    },
+    {
+      "id": "c998d2c8",
+      "lang": "en-US",
+      "text": "We play in the playground.",
+      "file": "voice-03.mp3",
+      "start": 14.7787,
+      "end": 16.2507
+    },
+    {
+      "id": "460e4075",
+      "lang": "en-US",
+      "text": "pool",
+      "file": "voice-03.mp3",
+      "start": 16.7307,
+      "end": 17.52
+    },
+    {
+      "id": "7ad86237",
+      "lang": "en-US",
+      "text": "We swim in the pool.",
+      "file": "voice-03.mp3",
+      "start": 18.0,
+      "end": 19.344
+    },
+    {
+      "id": "b2f6dfff",
+      "lang": "en-US",
+      "text": "rag",
+      "file": "voice-03.mp3",
+      "start": 19.824,
+      "end": 20.6347
+    },
+    {
+      "id": "67bea8b7",
+      "lang": "en-US",
+      "text": "Use a rag to clean the desk.",
+      "file": "voice-03.mp3",
+      "start": 21.1147,
+      "end": 22.864
+    },
+    {
+      "id": "2319f469",
+      "lang": "en-US",
+      "text": "ruler",
+      "file": "voice-03.mp3",
+      "start": 23.344,
+      "end": 24.2187
+    },
+    {
+      "id": "ba4f3cbe",
+      "lang": "en-US",
+      "text": "My ruler is on the desk.",
+      "file": "voice-03.mp3",
+      "start": 24.6987,
+      "end": 26.32
+    },
+    {
+      "id": "28543f27",
+      "lang": "en-US",
+      "text": "scientist",
+      "file": "voice-04.mp3",
+      "start": 0.24,
+      "end": 1.264
+    },
+    {
+      "id": "bc9f2dcd",
+      "lang": "en-US",
+      "text": "The scientist studies plants.",
+      "file": "voice-04.mp3",
+      "start": 1.744,
+      "end": 3.536
+    },
+    {
+      "id": "68865e9f",
+      "lang": "en-US",
+      "text": "skate",
+      "file": "voice-04.mp3",
+      "start": 4.016,
+      "end": 4.976
+    },
+    {
+      "id": "7cc27153",
+      "lang": "en-US",
+      "text": "I can skate on the ice.",
+      "file": "voice-04.mp3",
+      "start": 5.456,
+      "end": 6.9707
+    },
+    {
+      "id": "fb090cc7",
+      "lang": "en-US",
+      "text": "sock",
+      "file": "voice-04.mp3",
+      "start": 7.4507,
+      "end": 8.2187
+    },
+    {
+      "id": "95a708cd",
+      "lang": "en-US",
+      "text": "This sock is blue.",
+      "file": "voice-04.mp3",
+      "start": 8.6987,
+      "end": 9.9573
+    },
+    {
+      "id": "61823a5b",
+      "lang": "en-US",
+      "text": "teacher",
+      "file": "voice-04.mp3",
+      "start": 10.4373,
+      "end": 11.3333
+    },
+    {
+      "id": "58f4d73f",
+      "lang": "en-US",
+      "text": "The teacher reads a story.",
+      "file": "voice-04.mp3",
+      "start": 11.8133,
+      "end": 13.4987
+    },
+    {
+      "id": "0639459e",
+      "lang": "en-US",
+      "text": "classroom",
+      "file": "voice-04.mp3",
+      "start": 13.9787,
+      "end": 15.0027
+    },
+    {
+      "id": "29741fa1",
+      "lang": "en-US",
+      "text": "We study in the classroom.",
+      "file": "voice-04.mp3",
+      "start": 15.4827,
+      "end": 17.1893
+    },
+    {
+      "id": "e0542e40",
+      "lang": "en-US",
+      "text": "sports field",
+      "file": "voice-04.mp3",
+      "start": 17.6693,
+      "end": 18.8
+    },
+    {
+      "id": "1d46b854",
+      "lang": "en-US",
+      "text": "We play on the sports field.",
+      "file": "voice-04.mp3",
+      "start": 19.28,
+      "end": 20.8587
+    },
+    {
+      "id": "00916ef4",
+      "lang": "en-US",
+      "text": "hall",
+      "file": "voice-04.mp3",
+      "start": 21.3387,
+      "end": 21.9147
+    },
+    {
+      "id": "52a0e425",
+      "lang": "en-US",
+      "text": "We sing in the hall.",
+      "file": "voice-04.mp3",
+      "start": 22.3947,
+      "end": 23.632
+    },
+    {
+      "id": "a471d342",
+      "lang": "en-US",
+      "text": "library",
+      "file": "voice-04.mp3",
+      "start": 24.112,
+      "end": 25.1573
+    },
+    {
+      "id": "2f36fb42",
+      "lang": "en-US",
+      "text": "We read in the library.",
+      "file": "voice-04.mp3",
+      "start": 25.6373,
+      "end": 27.1947
+    },
+    {
+      "id": "6e8f4239",
+      "lang": "en-US",
+      "text": "computer room",
+      "file": "voice-05.mp3",
+      "start": 0.24,
+      "end": 1.2853
+    },
+    {
+      "id": "0ce7eafc",
+      "lang": "en-US",
+      "text": "We use computers in the computer room.",
+      "file": "voice-05.mp3",
+      "start": 1.7653,
+      "end": 4.0693
+    },
+    {
+      "id": "af033049",
+      "lang": "en-US",
+      "text": "school building",
+      "file": "voice-05.mp3",
+      "start": 4.5493,
+      "end": 5.616
+    },
+    {
+      "id": "8c6f5cb4",
+      "lang": "en-US",
+      "text": "Our school building has three floors.",
+      "file": "voice-05.mp3",
+      "start": 6.096,
+      "end": 8.1227
+    },
+    {
+      "id": "414fc7d7",
+      "lang": "en-US",
+      "text": "art room",
+      "file": "voice-05.mp3",
+      "start": 8.6027,
+      "end": 9.584
+    },
+    {
+      "id": "085d9ffb",
+      "lang": "en-US",
+      "text": "We paint in the art room.",
+      "file": "voice-05.mp3",
+      "start": 10.064,
+      "end": 11.728
+    },
+    {
+      "id": "098144a5",
+      "lang": "en-US",
+      "text": "I like my school. It's lovely and cool.",
+      "file": "voice-05.mp3",
+      "start": 12.208,
+      "end": 14.832
+    },
+    {
+      "id": "4fea7e22",
+      "lang": "en-US",
+      "text": "I",
+      "file": "voice-05.mp3",
+      "start": 15.312,
+      "end": 16.08
+    },
+    {
+      "id": "34ae555c",
+      "lang": "en-US",
+      "text": "like",
+      "file": "voice-05.mp3",
+      "start": 16.56,
+      "end": 17.3707
+    },
+    {
+      "id": "316a1a5d",
+      "lang": "en-US",
+      "text": "my",
+      "file": "voice-05.mp3",
+      "start": 17.8507,
+      "end": 18.6187
+    },
+    {
+      "id": "0213212b",
+      "lang": "en-US",
+      "text": "school",
+      "file": "voice-05.mp3",
+      "start": 19.0987,
+      "end": 19.9947
+    },
+    {
+      "id": "b405c084",
+      "lang": "en-US",
+      "text": "It's",
+      "file": "voice-05.mp3",
+      "start": 20.4747,
+      "end": 21.0933
+    },
+    {
+      "id": "bfddae34",
+      "lang": "en-US",
+      "text": "lovely",
+      "file": "voice-05.mp3",
+      "start": 21.5733,
+      "end": 22.4693
+    },
+    {
+      "id": "1c798d68",
+      "lang": "en-US",
+      "text": "and",
+      "file": "voice-05.mp3",
+      "start": 22.9493,
+      "end": 23.6533
+    },
+    {
+      "id": "41dc0c32",
+      "lang": "en-US",
+      "text": "cool",
+      "file": "voice-05.mp3",
+      "start": 24.1333,
+      "end": 24.944
+    },
+    {
+      "id": "8e00b495",
+      "lang": "en-US",
+      "text": "In the classroom I study. We always keep it tidy.",
+      "file": "voice-05.mp3",
+      "start": 25.424,
+      "end": 28.432
+    },
+    {
+      "id": "1a24d1a4",
+      "lang": "en-US",
+      "text": "In",
+      "file": "voice-06.mp3",
+      "start": 0.24,
+      "end": 0.9227
+    },
+    {
+      "id": "0bde615a",
+      "lang": "en-US",
+      "text": "the",
+      "file": "voice-06.mp3",
+      "start": 1.4027,
+      "end": 1.8933
+    },
+    {
+      "id": "a1026de8",
+      "lang": "en-US",
+      "text": "study",
+      "file": "voice-06.mp3",
+      "start": 2.3733,
+      "end": 3.2267
+    },
+    {
+      "id": "41027cc7",
+      "lang": "en-US",
+      "text": "We",
+      "file": "voice-06.mp3",
+      "start": 3.7067,
+      "end": 4.432
+    },
+    {
+      "id": "6eafce8e",
+      "lang": "en-US",
+      "text": "always",
+      "file": "voice-06.mp3",
+      "start": 4.912,
+      "end": 5.872
+    },
+    {
+      "id": "7c6ba6be",
+      "lang": "en-US",
+      "text": "keep",
+      "file": "voice-06.mp3",
+      "start": 6.352,
+      "end": 7.12
+    },
+    {
+      "id": "24749342",
+      "lang": "en-US",
+      "text": "it",
+      "file": "voice-06.mp3",
+      "start": 7.6,
+      "end": 8.1547
+    },
+    {
+      "id": "692fc647",
+      "lang": "en-US",
+      "text": "tidy",
+      "file": "voice-06.mp3",
+      "start": 8.6347,
+      "end": 9.4667
+    },
+    {
+      "id": "efa12144",
+      "lang": "en-US",
+      "text": "On the sports field I play. We do sports there every day.",
+      "file": "voice-06.mp3",
+      "start": 9.9467,
+      "end": 13.3387
+    },
+    {
+      "id": "3a15f97a",
+      "lang": "en-US",
+      "text": "On",
+      "file": "voice-06.mp3",
+      "start": 13.8187,
+      "end": 14.608
+    },
+    {
+      "id": "9e46c1b4",
+      "lang": "en-US",
+      "text": "sports",
+      "file": "voice-06.mp3",
+      "start": 15.088,
+      "end": 16.0693
+    },
+    {
+      "id": "4cffbb01",
+      "lang": "en-US",
+      "text": "field",
+      "file": "voice-06.mp3",
+      "start": 16.5493,
+      "end": 17.4453
+    },
+    {
+      "id": "cc1e35ed",
+      "lang": "en-US",
+      "text": "play",
+      "file": "voice-06.mp3",
+      "start": 17.9253,
+      "end": 18.7147
+    },
+    {
+      "id": "1b7fbe0a",
+      "lang": "en-US",
+      "text": "do",
+      "file": "voice-06.mp3",
+      "start": 19.1947,
+      "end": 19.9627
+    },
+    {
+      "id": "2fd25a27",
+      "lang": "en-US",
+      "text": "there",
+      "file": "voice-06.mp3",
+      "start": 20.4427,
+      "end": 21.1467
+    },
+    {
+      "id": "cfa87592",
+      "lang": "en-US",
+      "text": "every",
+      "file": "voice-06.mp3",
+      "start": 21.6267,
+      "end": 22.4587
+    },
+    {
+      "id": "13652a35",
+      "lang": "en-US",
+      "text": "In the hall I sing for all. The library is the best of all.",
+      "file": "voice-07.mp3",
+      "start": 0.24,
+      "end": 3.7813
+    },
+    {
+      "id": "d839e554",
+      "lang": "en-US",
+      "text": "sing",
+      "file": "voice-07.mp3",
+      "start": 4.2613,
+      "end": 5.0507
+    },
+    {
+      "id": "f15683ca",
+      "lang": "en-US",
+      "text": "for",
+      "file": "voice-07.mp3",
+      "start": 5.5307,
+      "end": 6.2773
+    },
+    {
+      "id": "f87dd1ea",
+      "lang": "en-US",
+      "text": "all",
+      "file": "voice-07.mp3",
+      "start": 6.7573,
+      "end": 7.2693
+    },
+    {
+      "id": "6e68f8fa",
+      "lang": "en-US",
+      "text": "The",
+      "file": "voice-07.mp3",
+      "start": 7.7493,
+      "end": 8.24
+    },
+    {
+      "id": "1f748b63",
+      "lang": "en-US",
+      "text": "is",
+      "file": "voice-07.mp3",
+      "start": 8.72,
+      "end": 9.424
+    },
+    {
+      "id": "a7056c01",
+      "lang": "en-US",
+      "text": "best",
+      "file": "voice-07.mp3",
+      "start": 9.904,
+      "end": 10.6933
+    },
+    {
+      "id": "32659ec2",
+      "lang": "en-US",
+      "text": "of",
+      "file": "voice-07.mp3",
+      "start": 11.1733,
+      "end": 11.856
+    },
+    {
+      "id": "04f4aafc",
+      "lang": "en-US",
+      "text": "Shenshen, shall we begin with our project?",
+      "file": "voice-07.mp3",
+      "start": 12.336,
+      "end": 14.768
+    },
+    {
+      "id": "92bbc1cf",
+      "lang": "en-US",
+      "text": "Shenshen",
+      "file": "voice-07.mp3",
+      "start": 15.248,
+      "end": 16.208
+    },
+    {
+      "id": "55f1059f",
+      "lang": "en-US",
+      "text": "shall",
+      "file": "voice-07.mp3",
+      "start": 16.688,
+      "end": 17.456
+    },
+    {
+      "id": "41509ba7",
+      "lang": "en-US",
+      "text": "we",
+      "file": "voice-07.mp3",
+      "start": 17.936,
+      "end": 18.6613
+    },
+    {
+      "id": "d875f280",
+      "lang": "en-US",
+      "text": "begin",
+      "file": "voice-07.mp3",
+      "start": 19.1413,
+      "end": 20.0587
+    },
+    {
+      "id": "e29decc7",
+      "lang": "en-US",
+      "text": "with",
+      "file": "voice-07.mp3",
+      "start": 20.5387,
+      "end": 21.2853
+    },
+    {
+      "id": "1fce16f7",
+      "lang": "en-US",
+      "text": "our",
+      "file": "voice-07.mp3",
+      "start": 21.7653,
+      "end": 22.5547
+    },
+    {
+      "id": "e44e2e9c",
+      "lang": "en-US",
+      "text": "project",
+      "file": "voice-07.mp3",
+      "start": 23.0347,
+      "end": 23.9733
+    },
+    {
+      "id": "df0a870a",
+      "lang": "en-US",
+      "text": "Sure. But where are James and Xiaopu?",
+      "file": "voice-08.mp3",
+      "start": 0.24,
+      "end": 2.5227
+    },
+    {
+      "id": "debdbdb2",
+      "lang": "en-US",
+      "text": "Sure",
+      "file": "voice-08.mp3",
+      "start": 3.0027,
+      "end": 3.728
+    },
+    {
+      "id": "f647de46",
+      "lang": "en-US",
+      "text": "But",
+      "file": "voice-08.mp3",
+      "start": 4.208,
+      "end": 4.9333
+    },
+    {
+      "id": "7d6a08c6",
+      "lang": "en-US",
+      "text": "where",
+      "file": "voice-08.mp3",
+      "start": 5.4133,
+      "end": 6.1813
+    },
+    {
+      "id": "1d5b79e7",
+      "lang": "en-US",
+      "text": "are",
+      "file": "voice-08.mp3",
+      "start": 6.6613,
+      "end": 7.3653
+    },
+    {
+      "id": "1fff02e9",
+      "lang": "en-US",
+      "text": "James",
+      "file": "voice-08.mp3",
+      "start": 7.8453,
+      "end": 8.7627
+    },
+    {
+      "id": "90ef96ef",
+      "lang": "en-US",
+      "text": "Xiaopu",
+      "file": "voice-08.mp3",
+      "start": 9.2427,
+      "end": 10.2027
+    },
+    {
+      "id": "51d9b37c",
+      "lang": "en-US",
+      "text": "James is in the library. I can go and look for him.",
+      "file": "voice-08.mp3",
+      "start": 10.6827,
+      "end": 13.8613
+    },
+    {
+      "id": "1a748384",
+      "lang": "en-US",
+      "text": "in",
+      "file": "voice-08.mp3",
+      "start": 14.3413,
+      "end": 15.024
+    },
+    {
+      "id": "1ce1a133",
+      "lang": "en-US",
+      "text": "can",
+      "file": "voice-08.mp3",
+      "start": 15.504,
+      "end": 16.2933
+    },
+    {
+      "id": "1b790245",
+      "lang": "en-US",
+      "text": "go",
+      "file": "voice-08.mp3",
+      "start": 16.7733,
+      "end": 17.4987
+    },
+    {
+      "id": "b0b5f004",
+      "lang": "en-US",
+      "text": "look",
+      "file": "voice-08.mp3",
+      "start": 17.9787,
+      "end": 18.6827
+    },
+    {
+      "id": "1b4a871b",
+      "lang": "en-US",
+      "text": "him",
+      "file": "voice-08.mp3",
+      "start": 19.1627,
+      "end": 19.888
+    },
+    {
+      "id": "f60bf959",
+      "lang": "en-US",
+      "text": "Xiaopu likes playing football. I think he is on the sports field. I can try there.",
+      "file": "voice-08.mp3",
+      "start": 20.368,
+      "end": 25.7013
+    },
+    {
+      "id": "1d7018fd",
+      "lang": "en-US",
+      "text": "likes",
+      "file": "voice-08.mp3",
+      "start": 26.1813,
+      "end": 27.0773
+    },
+    {
+      "id": "177573b3",
+      "lang": "en-US",
+      "text": "playing",
+      "file": "voice-08.mp3",
+      "start": 27.5573,
+      "end": 28.4107
+    },
+    {
+      "id": "1818716a",
+      "lang": "en-US",
+      "text": "football",
+      "file": "voice-09.mp3",
+      "start": 0.24,
+      "end": 1.1573
+    },
+    {
+      "id": "ea953d99",
+      "lang": "en-US",
+      "text": "think",
+      "file": "voice-09.mp3",
+      "start": 1.6373,
+      "end": 2.4053
+    },
+    {
+      "id": "3176e650",
+      "lang": "en-US",
+      "text": "he",
+      "file": "voice-09.mp3",
+      "start": 2.8853,
+      "end": 3.5893
+    },
+    {
+      "id": "3a65ab5a",
+      "lang": "en-US",
+      "text": "on",
+      "file": "voice-09.mp3",
+      "start": 4.0693,
+      "end": 4.8587
+    },
+    {
+      "id": "eba68200",
+      "lang": "en-US",
+      "text": "try",
+      "file": "voice-09.mp3",
+      "start": 5.3387,
+      "end": 6.128
+    },
+    {
+      "id": "597459a4",
+      "lang": "en-US",
+      "text": "Shall we meet in the classroom?",
+      "file": "voice-09.mp3",
+      "start": 6.608,
+      "end": 8.272
+    },
+    {
+      "id": "fbac773f",
+      "lang": "en-US",
+      "text": "Shall",
+      "file": "voice-09.mp3",
+      "start": 8.752,
+      "end": 9.52
+    },
+    {
+      "id": "31c0f0f0",
+      "lang": "en-US",
+      "text": "meet",
+      "file": "voice-09.mp3",
+      "start": 10.0,
+      "end": 10.8107
+    },
+    {
+      "id": "eb763f55",
+      "lang": "en-US",
+      "text": "The classroom has no computers. How about the computer room?",
+      "file": "voice-09.mp3",
+      "start": 11.2907,
+      "end": 14.8107
+    },
+    {
+      "id": "1936fc3d",
+      "lang": "en-US",
+      "text": "has",
+      "file": "voice-09.mp3",
+      "start": 15.2907,
+      "end": 16.144
+    },
+    {
+      "id": "1b67b924",
+      "lang": "en-US",
+      "text": "no",
+      "file": "voice-09.mp3",
+      "start": 16.624,
+      "end": 17.4133
+    },
+    {
+      "id": "d148d317",
+      "lang": "en-US",
+      "text": "computers",
+      "file": "voice-09.mp3",
+      "start": 17.8933,
+      "end": 18.832
+    },
+    {
+      "id": "77d0981b",
+      "lang": "en-US",
+      "text": "How",
+      "file": "voice-09.mp3",
+      "start": 19.312,
+      "end": 20.0587
+    },
+    {
+      "id": "ad76122c",
+      "lang": "en-US",
+      "text": "about",
+      "file": "voice-09.mp3",
+      "start": 20.5387,
+      "end": 21.328
+    },
+    {
+      "id": "742dea9e",
+      "lang": "en-US",
+      "text": "computer",
+      "file": "voice-09.mp3",
+      "start": 21.808,
+      "end": 22.7253
+    },
+    {
+      "id": "01c75378",
+      "lang": "en-US",
+      "text": "room",
+      "file": "voice-09.mp3",
+      "start": 23.2053,
+      "end": 24.0373
+    },
+    {
+      "id": "cd7d57c6",
+      "lang": "en-US",
+      "text": "Which one? The one on the ground floor?",
+      "file": "voice-10.mp3",
+      "start": 0.24,
+      "end": 2.5227
+    },
+    {
+      "id": "0312cc20",
+      "lang": "en-US",
+      "text": "Which",
+      "file": "voice-10.mp3",
+      "start": 3.0027,
+      "end": 3.7707
+    },
+    {
+      "id": "2d0c942d",
+      "lang": "en-US",
+      "text": "one",
+      "file": "voice-10.mp3",
+      "start": 4.2507,
+      "end": 4.9333
+    },
+    {
+      "id": "09627cb0",
+      "lang": "en-US",
+      "text": "ground",
+      "file": "voice-10.mp3",
+      "start": 5.4133,
+      "end": 6.288
+    },
+    {
+      "id": "821b1433",
+      "lang": "en-US",
+      "text": "floor",
+      "file": "voice-10.mp3",
+      "start": 6.768,
+      "end": 7.5787
+    },
+    {
+      "id": "6c1d1213",
+      "lang": "en-US",
+      "text": "Sure. Let's meet there then.",
+      "file": "voice-10.mp3",
+      "start": 8.0587,
+      "end": 9.7227
+    },
+    {
+      "id": "147b4fb2",
+      "lang": "en-US",
+      "text": "Let's",
+      "file": "voice-10.mp3",
+      "start": 10.2027,
+      "end": 11.0133
+    },
+    {
+      "id": "e31304dc",
+      "lang": "en-US",
+      "text": "then",
+      "file": "voice-10.mp3",
+      "start": 11.4933,
+      "end": 12.304
+    },
+    {
+      "id": "2a7f83e7",
+      "lang": "en-US",
+      "text": "Good. See you soon.",
+      "file": "voice-10.mp3",
+      "start": 12.784,
+      "end": 14.0427
+    },
+    {
+      "id": "0c2ac42e",
+      "lang": "en-US",
+      "text": "Good",
+      "file": "voice-10.mp3",
+      "start": 14.5227,
+      "end": 15.248
+    },
+    {
+      "id": "ca963442",
+      "lang": "en-US",
+      "text": "See",
+      "file": "voice-10.mp3",
+      "start": 15.728,
+      "end": 16.5387
+    },
+    {
+      "id": "cac5c276",
+      "lang": "en-US",
+      "text": "you",
+      "file": "voice-10.mp3",
+      "start": 17.0187,
+      "end": 17.744
+    },
+    {
+      "id": "f62586fc",
+      "lang": "en-US",
+      "text": "soon",
+      "file": "voice-10.mp3",
+      "start": 18.224,
+      "end": 19.056
+    },
+    {
+      "id": "4fd1b8eb",
+      "lang": "en-US",
+      "text": "Green School Bali is special.",
+      "file": "voice-10.mp3",
+      "start": 19.536,
+      "end": 21.264
+    },
+    {
+      "id": "2b243696",
+      "lang": "en-US",
+      "text": "Green",
+      "file": "voice-10.mp3",
+      "start": 21.744,
+      "end": 22.5973
+    },
+    {
+      "id": "5b1a8a4b",
+      "lang": "en-US",
+      "text": "School",
+      "file": "voice-10.mp3",
+      "start": 23.0773,
+      "end": 23.9733
+    },
+    {
+      "id": "df029169",
+      "lang": "en-US",
+      "text": "Bali",
+      "file": "voice-11.mp3",
+      "start": 0.24,
+      "end": 1.1147
+    },
+    {
+      "id": "56ae158e",
+      "lang": "en-US",
+      "text": "special",
+      "file": "voice-11.mp3",
+      "start": 1.5947,
+      "end": 2.5333
+    },
+    {
+      "id": "3e1638d3",
+      "lang": "en-US",
+      "text": "All its school buildings are made of bamboo.",
+      "file": "voice-11.mp3",
+      "start": 3.0133,
+      "end": 5.4027
+    },
+    {
+      "id": "5b08698a",
+      "lang": "en-US",
+      "text": "All",
+      "file": "voice-11.mp3",
+      "start": 5.8827,
+      "end": 6.3947
+    },
+    {
+      "id": "9483b623",
+      "lang": "en-US",
+      "text": "its",
+      "file": "voice-11.mp3",
+      "start": 6.8747,
+      "end": 7.4933
+    },
+    {
+      "id": "c6c06668",
+      "lang": "en-US",
+      "text": "buildings",
+      "file": "voice-11.mp3",
+      "start": 7.9733,
+      "end": 8.976
+    },
+    {
+      "id": "d90cbdd2",
+      "lang": "en-US",
+      "text": "made",
+      "file": "voice-11.mp3",
+      "start": 9.456,
+      "end": 10.0107
+    },
+    {
+      "id": "71e7015b",
+      "lang": "en-US",
+      "text": "bamboo",
+      "file": "voice-11.mp3",
+      "start": 10.4907,
+      "end": 11.4293
+    },
+    {
+      "id": "f689d7a3",
+      "lang": "en-US",
+      "text": "These bamboo buildings have no walls.",
+      "file": "voice-11.mp3",
+      "start": 11.9093,
+      "end": 14.0853
+    },
+    {
+      "id": "b991714a",
+      "lang": "en-US",
+      "text": "These",
+      "file": "voice-11.mp3",
+      "start": 14.5653,
+      "end": 15.4613
+    },
+    {
+      "id": "0d8278e1",
+      "lang": "en-US",
+      "text": "have",
+      "file": "voice-11.mp3",
+      "start": 15.9413,
+      "end": 16.7307
+    },
+    {
+      "id": "16524818",
+      "lang": "en-US",
+      "text": "walls",
+      "file": "voice-11.mp3",
+      "start": 17.2107,
+      "end": 18.128
+    },
+    {
+      "id": "c2aed682",
+      "lang": "en-US",
+      "text": "They look like big umbrellas. Each building has three floors.",
+      "file": "voice-11.mp3",
+      "start": 18.608,
+      "end": 22.2773
+    },
+    {
+      "id": "523f3639",
+      "lang": "en-US",
+      "text": "They",
+      "file": "voice-11.mp3",
+      "start": 22.7573,
+      "end": 23.504
+    },
+    {
+      "id": "92b2b7b7",
+      "lang": "en-US",
+      "text": "big",
+      "file": "voice-11.mp3",
+      "start": 23.984,
+      "end": 24.7307
+    },
+    {
+      "id": "26dff56c",
+      "lang": "en-US",
+      "text": "umbrellas",
+      "file": "voice-11.mp3",
+      "start": 25.2107,
+      "end": 26.192
+    },
+    {
+      "id": "16755036",
+      "lang": "en-US",
+      "text": "Each",
+      "file": "voice-12.mp3",
+      "start": 0.24,
+      "end": 0.752
+    },
+    {
+      "id": "6111a08b",
+      "lang": "en-US",
+      "text": "building",
+      "file": "voice-12.mp3",
+      "start": 1.232,
+      "end": 2.128
+    },
+    {
+      "id": "2519af9d",
+      "lang": "en-US",
+      "text": "three",
+      "file": "voice-12.mp3",
+      "start": 2.608,
+      "end": 3.3973
+    },
+    {
+      "id": "10a0e0c0",
+      "lang": "en-US",
+      "text": "floors",
+      "file": "voice-12.mp3",
+      "start": 3.8773,
+      "end": 4.8373
+    },
+    {
+      "id": "aa4da28b",
+      "lang": "en-US",
+      "text": "Students learn and play in bamboo classrooms, computer rooms, music rooms and art rooms.",
+      "file": "voice-12.mp3",
+      "start": 5.3173,
+      "end": 10.9067
+    },
+    {
+      "id": "dd3e2d1f",
+      "lang": "en-US",
+      "text": "Students",
+      "file": "voice-12.mp3",
+      "start": 11.3867,
+      "end": 12.3893
+    },
+    {
+      "id": "d597eb9b",
+      "lang": "en-US",
+      "text": "learn",
+      "file": "voice-12.mp3",
+      "start": 12.8693,
+      "end": 13.7013
+    },
+    {
+      "id": "b9291417",
+      "lang": "en-US",
+      "text": "classrooms",
+      "file": "voice-12.mp3",
+      "start": 14.1813,
+      "end": 15.2693
+    },
+    {
+      "id": "d7c7ba51",
+      "lang": "en-US",
+      "text": "rooms",
+      "file": "voice-12.mp3",
+      "start": 15.7493,
+      "end": 16.6667
+    },
+    {
+      "id": "2f356ca2",
+      "lang": "en-US",
+      "text": "music",
+      "file": "voice-12.mp3",
+      "start": 17.1467,
+      "end": 18.064
+    },
+    {
+      "id": "0c5b5f24",
+      "lang": "en-US",
+      "text": "art",
+      "file": "voice-12.mp3",
+      "start": 18.544,
+      "end": 19.3333
+    },
+    {
+      "id": "9d012e9e",
+      "lang": "en-US",
+      "text": "Floors, desks and chairs are all made of bamboo.",
+      "file": "voice-12.mp3",
+      "start": 19.8133,
+      "end": 22.7573
+    },
+    {
+      "id": "69a6b6e0",
+      "lang": "en-US",
+      "text": "Floors",
+      "file": "voice-12.mp3",
+      "start": 23.2373,
+      "end": 24.1973
+    },
+    {
+      "id": "fb162553",
+      "lang": "en-US",
+      "text": "desks",
+      "file": "voice-12.mp3",
+      "start": 24.6773,
+      "end": 25.552
+    },
+    {
+      "id": "b6aa4449",
+      "lang": "en-US",
+      "text": "chairs",
+      "file": "voice-12.mp3",
+      "start": 26.032,
+      "end": 26.9493
+    },
+    {
+      "id": "f55a8c7d",
+      "lang": "en-US",
+      "text": "Even the school toilets are made of bamboo!",
+      "file": "voice-12.mp3",
+      "start": 27.4293,
+      "end": 29.6907
+    },
+    {
+      "id": "ed5e62bb",
+      "lang": "en-US",
+      "text": "Even",
+      "file": "voice-13.mp3",
+      "start": 0.24,
+      "end": 1.072
+    },
+    {
+      "id": "1b0e9d87",
+      "lang": "en-US",
+      "text": "toilets",
+      "file": "voice-13.mp3",
+      "start": 1.552,
+      "end": 2.448
+    },
+    {
+      "id": "f41e7f7e",
+      "lang": "en-US",
+      "text": "I like the library in my school best.",
+      "file": "voice-13.mp3",
+      "start": 2.928,
+      "end": 5.232
+    },
+    {
+      "id": "6322d465",
+      "lang": "en-US",
+      "text": "It is on the ground floor. It is very special.",
+      "file": "voice-13.mp3",
+      "start": 5.712,
+      "end": 8.528
+    },
+    {
+      "id": "2424e162",
+      "lang": "en-US",
+      "text": "It",
+      "file": "voice-13.mp3",
+      "start": 9.008,
+      "end": 9.5627
+    },
+    {
+      "id": "72636263",
+      "lang": "en-US",
+      "text": "very",
+      "file": "voice-13.mp3",
+      "start": 10.0427,
+      "end": 10.8747
+    },
+    {
+      "id": "cd959369",
+      "lang": "en-US",
+      "text": "It looks like a boat. The room does not have any chairs or desks.",
+      "file": "voice-13.mp3",
+      "start": 11.3547,
+      "end": 15.1307
+    },
+    {
+      "id": "a5698b55",
+      "lang": "en-US",
+      "text": "looks",
+      "file": "voice-13.mp3",
+      "start": 15.6107,
+      "end": 16.4213
+    },
+    {
+      "id": "77eabd1a",
+      "lang": "en-US",
+      "text": "a",
+      "file": "voice-13.mp3",
+      "start": 16.9013,
+      "end": 17.5627
+    },
+    {
+      "id": "34ea90bd",
+      "lang": "en-US",
+      "text": "boat",
+      "file": "voice-13.mp3",
+      "start": 18.0427,
+      "end": 18.8107
+    },
+    {
+      "id": "30041c4a",
+      "lang": "en-US",
+      "text": "does",
+      "file": "voice-13.mp3",
+      "start": 19.2907,
+      "end": 20.1867
+    },
+    {
+      "id": "7448b8f0",
+      "lang": "en-US",
+      "text": "not",
+      "file": "voice-13.mp3",
+      "start": 20.6667,
+      "end": 21.4347
+    },
+    {
+      "id": "09796f7f",
+      "lang": "en-US",
+      "text": "any",
+      "file": "voice-13.mp3",
+      "start": 21.9147,
+      "end": 22.6613
+    },
+    {
+      "id": "1e657f46",
+      "lang": "en-US",
+      "text": "or",
+      "file": "voice-13.mp3",
+      "start": 23.1413,
+      "end": 23.8027
+    },
+    {
+      "id": "165062de",
+      "lang": "en-US",
+      "text": "In the library, I read many interesting books.",
+      "file": "voice-13.mp3",
+      "start": 24.2827,
+      "end": 27.056
+    },
+    {
+      "id": "8d63a4c3",
+      "lang": "en-US",
+      "text": "read",
+      "file": "voice-13.mp3",
+      "start": 27.536,
+      "end": 28.24
+    },
+    {
+      "id": "e9266ee8",
+      "lang": "en-US",
+      "text": "many",
+      "file": "voice-14.mp3",
+      "start": 0.24,
+      "end": 1.072
+    },
+    {
+      "id": "ef1023ff",
+      "lang": "en-US",
+      "text": "interesting",
+      "file": "voice-14.mp3",
+      "start": 1.552,
+      "end": 2.5333
+    },
+    {
+      "id": "37ccc66b",
+      "lang": "en-US",
+      "text": "books",
+      "file": "voice-14.mp3",
+      "start": 3.0133,
+      "end": 3.76
+    },
+    {
+      "id": "1eca1b2d",
+      "lang": "en-US",
+      "text": "Who",
+      "file": "voice-14.mp3",
+      "start": 4.24,
+      "end": 5.0507
+    },
+    {
+      "id": "c50667f5",
+      "lang": "en-US",
+      "text": "What",
+      "file": "voice-14.mp3",
+      "start": 5.5307,
+      "end": 6.2347
+    },
+    {
+      "id": "4f648b66",
+      "lang": "en-US",
+      "text": "Where",
+      "file": "voice-14.mp3",
+      "start": 6.7147,
+      "end": 7.4827
+    },
+    {
+      "id": "bb0f5293",
+      "lang": "en-US",
+      "text": "When",
+      "file": "voice-14.mp3",
+      "start": 7.9627,
+      "end": 8.6667
+    },
+    {
+      "id": "08c9f88b",
+      "lang": "en-US",
+      "text": "Why",
+      "file": "voice-14.mp3",
+      "start": 9.1467,
+      "end": 9.936
+    },
+    {
+      "id": "2d0444c7",
+      "lang": "en-US",
+      "text": "An artist",
+      "file": "voice-14.mp3",
+      "start": 10.416,
+      "end": 11.3973
+    },
+    {
+      "id": "04047805",
+      "lang": "en-US",
+      "text": "A farmer",
+      "file": "voice-14.mp3",
+      "start": 11.8773,
+      "end": 12.8373
+    },
+    {
+      "id": "78f39cb0",
+      "lang": "en-US",
+      "text": "A teacher",
+      "file": "voice-14.mp3",
+      "start": 13.3173,
+      "end": 14.3413
+    },
+    {
+      "id": "dd1b9b39",
+      "lang": "en-US",
+      "text": "plays the guitar",
+      "file": "voice-14.mp3",
+      "start": 14.8213,
+      "end": 16.0587
+    },
+    {
+      "id": "b5f9e510",
+      "lang": "en-US",
+      "text": "holds a ruler",
+      "file": "voice-14.mp3",
+      "start": 16.5387,
+      "end": 17.6907
+    },
+    {
+      "id": "1215007a",
+      "lang": "en-US",
+      "text": "flies a kite",
+      "file": "voice-14.mp3",
+      "start": 18.1707,
+      "end": 19.3013
+    },
+    {
+      "id": "c6fce85e",
+      "lang": "en-US",
+      "text": "on the beach",
+      "file": "voice-14.mp3",
+      "start": 19.7813,
+      "end": 20.8053
+    },
+    {
+      "id": "36d076f2",
+      "lang": "en-US",
+      "text": "near the house",
+      "file": "voice-14.mp3",
+      "start": 21.2853,
+      "end": 22.352
+    },
+    {
+      "id": "4bf50494",
+      "lang": "en-US",
+      "text": "in the playground",
+      "file": "voice-15.mp3",
+      "start": 0.24,
+      "end": 1.328
+    },
+    {
+      "id": "8fcd4ad7",
+      "lang": "en-US",
+      "text": "in the morning",
+      "file": "voice-15.mp3",
+      "start": 1.808,
+      "end": 2.832
+    },
+    {
+      "id": "346828b8",
+      "lang": "en-US",
+      "text": "at noon",
+      "file": "voice-15.mp3",
+      "start": 3.312,
+      "end": 4.2933
+    },
+    {
+      "id": "731d0bbe",
+      "lang": "en-US",
+      "text": "on Monday",
+      "file": "voice-15.mp3",
+      "start": 4.7733,
+      "end": 5.8187
+    },
+    {
+      "id": "f7f28e20",
+      "lang": "en-US",
+      "text": "at night",
+      "file": "voice-15.mp3",
+      "start": 6.2987,
+      "end": 7.28
+    },
+    {
+      "id": "c04b47e8",
+      "lang": "en-US",
+      "text": "in April",
+      "file": "voice-15.mp3",
+      "start": 7.76,
+      "end": 8.6773
+    },
+    {
+      "id": "fd66579e",
+      "lang": "en-US",
+      "text": "An artist plays the guitar on the beach in the morning.",
+      "file": "voice-15.mp3",
+      "start": 9.1573,
+      "end": 12.0373
+    },
+    {
+      "id": "2088c75e",
+      "lang": "en-US",
+      "text": "We have no computers.",
+      "file": "voice-15.mp3",
+      "start": 12.5173,
+      "end": 13.968
+    },
+    {
+      "id": "0e973be9",
+      "lang": "en-US",
+      "text": "We do not have any computers.",
+      "file": "voice-15.mp3",
+      "start": 14.448,
+      "end": 16.176
+    },
+    {
+      "id": "dde44048",
+      "lang": "en-US",
+      "text": "She has no ruler.",
+      "file": "voice-15.mp3",
+      "start": 16.656,
+      "end": 17.936
+    },
+    {
+      "id": "54c2d40b",
+      "lang": "en-US",
+      "text": "She does not have any ruler.",
+      "file": "voice-15.mp3",
+      "start": 18.416,
+      "end": 19.9947
+    }
+  ],
+  "files": {
+    "voice-04.mp3": {
+      "bytes": 275325,
+      "sha256": "f0667371bf3b19bfc429bfddb4b452d15b60dddf488758e17e395e2c70d3811a"
+    },
+    "voice-09.mp3": {
+      "bytes": 243645,
+      "sha256": "1fd89b40d70abdfce747e85e4e9639178c20c937425b409ae864d6bdba904eb7"
+    },
+    "voice-01.mp3": {
+      "bytes": 265485,
+      "sha256": "2d12c4f45638ace24e8b9fefb019521142c91044a424c80344ae8df53d2cc947"
+    },
+    "voice-06.mp3": {
+      "bytes": 227805,
+      "sha256": "9b2833761e1edceb4f7f78ca4e96855317d0ef8af4f3de58006a3245d6b33b50"
+    },
+    "voice-03.mp3": {
+      "bytes": 266445,
+      "sha256": "c7c68159b9c3bf5a6ed434c98192c5fa5b31cff1d56ea32fe69ca91fc72e8ee6"
+    },
+    "voice-02.mp3": {
+      "bytes": 270525,
+      "sha256": "7b7cfcd281efd8a5be9bfb34401f07ccc1a0625c8fe9f0983024a3dc5406862d"
+    },
+    "voice-12.mp3": {
+      "bytes": 300285,
+      "sha256": "718b7c860605680eab6a322e83cd7b179d975b75fd6febb2ec1b3b403918dd2c"
+    },
+    "voice-10.mp3": {
+      "bytes": 242925,
+      "sha256": "feb49507420f5856f0b1445b81b5dd92c9b77ca9e44219bc831cf091afa01063"
+    },
+    "voice-11.mp3": {
+      "bytes": 265245,
+      "sha256": "6eeece1d9a5b783f82b2cbaa57786aa1492288267d7313704e6fefddce67706e"
+    },
+    "voice-07.mp3": {
+      "bytes": 242925,
+      "sha256": "7459d70e6bc1ad66c866550295d00cd4f3e1bf769017c586a837a3d2f4acf3ea"
+    },
+    "voice-00.mp3": {
+      "bytes": 275325,
+      "sha256": "e010d528144c9ed3df4860837154e03a70876c2ea51ca823c6c4b813679dc21c"
+    },
+    "voice-08.mp3": {
+      "bytes": 287325,
+      "sha256": "6cd2baeff7f07e0de3db882790c9b036486ff913e7a52980bc2ac2f03b541c29"
+    },
+    "voice-13.mp3": {
+      "bytes": 285645,
+      "sha256": "f6fa5eb3136e563e7de59d9aa3f414f14cbc28e2ecb03b03eedeea350d0a8a19"
+    },
+    "voice-14.mp3": {
+      "bytes": 226845,
+      "sha256": "80eaf42d37b3f9080cf66372f427a6edd71875724a8ccdffd2a1ca75371f00ba"
+    },
+    "voice-15.mp3": {
+      "bytes": 203325,
+      "sha256": "38929fddef23967c74bb098bf6e578a8afeb9d7901da043c4855b120cdd0e594"
+    },
+    "voice-05.mp3": {
+      "bytes": 287565,
+      "sha256": "c218daf52b508126cdbc1b4a5cc4951ba8307188260d4f27f5d8544a83a6f911"
+    }
+  },
+  "verification": {
+    "status": "pending",
+    "fileCount": 16,
+    "clipCount": 251,
+    "listenedCount": 0,
+    "regeneratedCount": 0,
+    "mobilePlayback": false,
+    "desktopPlayback": false,
+    "reason": "技术检查与完整听感验收分开；尚未完成逐条听感及目标手机硬件实播，不宣称通过。"
+  }
+}
