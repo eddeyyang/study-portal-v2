@@ -79,6 +79,8 @@
     <p>这里集中显示还没解决的知识点，也保留原卷档案。先找到卡点，再进入对应教学；连续独立答对 2 次后才标记解决，历史记录不删除。</p>
   </section>
 
+  <a class="paper-library-entry" id="mathBankLink" href="subject.html?subject=math"><span class="paper-library-icon" aria-hidden="true">∑</span><span><h3>打开我的数学错题本</h3><p>按类别找题，直接作答、订正和复查。</p></span><span class="arrow">›</span></a>
+
   <div class="flow" aria-label="错题分析学习流程">
     <div class="flow-step"><span class="flow-icon">🧾</span><span class="flow-title">整卷回看</span><span class="flow-meta">保留原卷位置</span></div>
     <div class="flow-step"><span class="flow-icon">🔎</span><span class="flow-title">点错题</span><span class="flow-meta">单题打开解析</span></div>
@@ -158,6 +160,7 @@
     ? {name:'Kenton',emoji:'🦁',accent:'#36c5d6',soft:'#e3fbff',dark:'#127889'}
     : {name:'Eddey',emoji:'🐯',accent:'#ff8a5b',soft:'#fff0e6',dark:'#a84a25'};
   const $ = id => document.getElementById(id);
+  $('mathBankLink').href='apps/v2/math-mistakes/index.html?who='+who+(new URLSearchParams(location.search).get('test')==='1'?'&test=1':''); /* v2：指向 Claude 重做的错题本 */
   document.documentElement.style.setProperty('--accent',meta.accent);
   document.documentElement.style.setProperty('--accent-soft',meta.soft);
   document.documentElement.style.setProperty('--accent-dark',meta.dark);
@@ -386,7 +389,7 @@
     const status=document.createElement('span');status.className='status-pill';status.textContent=item.statusLabel||'待回炉';
     const subject=document.createElement('span');subject.className='meta-pill';subject.textContent=item.subject||'综合';
     const origin=document.createElement('span');origin.className='origin-pill';
-    origin.textContent=item.originKind==='paper-confirmed'?'卷子确认':item.originKind==='neon-history'?'Neon 历史':'CNB 档案';
+    origin.textContent=item.originKind==='math-bank'?'数学复练':item.originKind==='paper-confirmed'?'卷子确认':item.originKind==='neon-history'?'Neon 历史':'CNB 档案';
     badges.append(status,subject,origin);
     if(Number(item.errorCount)>1){
       const count=document.createElement('span');count.className='origin-pill';count.textContent='累计错 '+Number(item.errorCount)+' 次';badges.appendChild(count);
@@ -546,3 +549,4 @@
 </script>
 </body>
 </html>
+

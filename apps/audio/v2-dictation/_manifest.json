@@ -1,0 +1,3570 @@
+{
+ "generated": "2026-10-24",
+ "voices": {
+  "zh": "zh-CN-XiaoxiaoNeural",
+  "en": "en-US-AriaNeural"
+ },
+ "rate": {
+  "zh": "-12%",
+  "en": "-10%"
+ },
+ "note": "机器检查：文件有效、时长在区间内。未经人耳逐条试听。",
+ "items": {
+  "zh|桂花": {
+   "file": "0090ac47.mp3",
+   "text": "桂花",
+   "lang": "zh",
+   "seconds": 2.736,
+   "ok": true
+  },
+  "zh|故乡": {
+   "file": "d5ab80e3.mp3",
+   "text": "故乡",
+   "lang": "zh",
+   "seconds": 2.736,
+   "ok": true
+  },
+  "zh|欣赏": {
+   "file": "18814db8.mp3",
+   "text": "欣赏",
+   "lang": "zh",
+   "seconds": 2.904,
+   "ok": true
+  },
+  "zh|木兰花": {
+   "file": "b5c201f6.mp3",
+   "text": "木兰花",
+   "lang": "zh",
+   "seconds": 2.952,
+   "ok": true
+  },
+  "zh|台风": {
+   "file": "a7ba83ab.mp3",
+   "text": "台风",
+   "lang": "zh",
+   "seconds": 2.784,
+   "ok": true
+  },
+  "zh|老婆婆": {
+   "file": "861a3328.mp3",
+   "text": "老婆婆",
+   "lang": "zh",
+   "seconds": 3.096,
+   "ok": true
+  },
+  "zh|糕饼": {
+   "file": "4d1b2408.mp3",
+   "text": "糕饼",
+   "lang": "zh",
+   "seconds": 2.736,
+   "ok": true
+  },
+  "zh|尤其": {
+   "file": "c69dcf90.mp3",
+   "text": "尤其",
+   "lang": "zh",
+   "seconds": 2.808,
+   "ok": true
+  },
+  "zh|使劲": {
+   "file": "35a3c12e.mp3",
+   "text": "使劲",
+   "lang": "zh",
+   "seconds": 2.856,
+   "ok": true
+  },
+  "zh|茶叶": {
+   "file": "2013a98d.mp3",
+   "text": "茶叶",
+   "lang": "zh",
+   "seconds": 2.856,
+   "ok": true
+  },
+  "zh|笨拙": {
+   "file": "3619aac0.mp3",
+   "text": "笨拙",
+   "lang": "zh",
+   "seconds": 2.736,
+   "ok": true
+  },
+  "zh|沉浸": {
+   "file": "8296716b.mp3",
+   "text": "沉浸",
+   "lang": "zh",
+   "seconds": 2.784,
+   "ok": true
+  },
+  "zh|浇水": {
+   "file": "3124e695.mp3",
+   "text": "浇水",
+   "lang": "zh",
+   "seconds": 2.904,
+   "ok": true
+  },
+  "zh|食品": {
+   "file": "cae45099.mp3",
+   "text": "食品",
+   "lang": "zh",
+   "seconds": 3.0,
+   "ok": true
+  },
+  "zh|吩咐": {
+   "file": "f29ee14c.mp3",
+   "text": "吩咐",
+   "lang": "zh",
+   "seconds": 2.856,
+   "ok": true
+  },
+  "zh|茅亭": {
+   "file": "8bf18975.mp3",
+   "text": "茅亭",
+   "lang": "zh",
+   "seconds": 2.784,
+   "ok": true
+  },
+  "zh|可贵": {
+   "file": "4ff05979.mp3",
+   "text": "可贵",
+   "lang": "zh",
+   "seconds": 2.76,
+   "ok": true
+  },
+  "zh|嫩绿": {
+   "file": "0394a173.mp3",
+   "text": "嫩绿",
+   "lang": "zh",
+   "seconds": 2.64,
+   "ok": true
+  },
+  "zh|体面": {
+   "file": "cc13c2b5.mp3",
+   "text": "体面",
+   "lang": "zh",
+   "seconds": 2.736,
+   "ok": true
+  },
+  "zh|半亩": {
+   "file": "4bdda14c.mp3",
+   "text": "半亩",
+   "lang": "zh",
+   "seconds": 2.712,
+   "ok": true
+  },
+  "zh|荒地": {
+   "file": "7376c153.mp3",
+   "text": "荒地",
+   "lang": "zh",
+   "seconds": 2.736,
+   "ok": true
+  },
+  "zh|矮小": {
+   "file": "652fdfcb.mp3",
+   "text": "矮小",
+   "lang": "zh",
+   "seconds": 2.784,
+   "ok": true
+  },
+  "zh|卧虎藏龙": {
+   "file": "330e0e47.mp3",
+   "text": "卧虎藏龙",
+   "lang": "zh",
+   "seconds": 3.552,
+   "ok": true
+  },
+  "zh|龙飞凤舞": {
+   "file": "76080fef.mp3",
+   "text": "龙飞凤舞",
+   "lang": "zh",
+   "seconds": 3.672,
+   "ok": true
+  },
+  "zh|凤毛麟角": {
+   "file": "34e2bdd4.mp3",
+   "text": "凤毛麟角",
+   "lang": "zh",
+   "seconds": 3.744,
+   "ok": true
+  },
+  "zh|如虎添翼": {
+   "file": "de86ce19.mp3",
+   "text": "如虎添翼",
+   "lang": "zh",
+   "seconds": 3.72,
+   "ok": true
+  },
+  "zh|龙马精神": {
+   "file": "f7699c74.mp3",
+   "text": "龙马精神",
+   "lang": "zh",
+   "seconds": 3.672,
+   "ok": true
+  },
+  "zh|鹤立鸡群": {
+   "file": "c6e2398b.mp3",
+   "text": "鹤立鸡群",
+   "lang": "zh",
+   "seconds": 3.696,
+   "ok": true
+  },
+  "zh|鱼跃龙门": {
+   "file": "3bef806f.mp3",
+   "text": "鱼跃龙门",
+   "lang": "zh",
+   "seconds": 3.432,
+   "ok": true
+  },
+  "zh|一马当先": {
+   "file": "bb0acf3c.mp3",
+   "text": "一马当先",
+   "lang": "zh",
+   "seconds": 3.552,
+   "ok": true
+  },
+  "zh|鼠目寸光": {
+   "file": "8116670d.mp3",
+   "text": "鼠目寸光",
+   "lang": "zh",
+   "seconds": 3.528,
+   "ok": true
+  },
+  "zh|抱头鼠窜": {
+   "file": "dc224a31.mp3",
+   "text": "抱头鼠窜",
+   "lang": "zh",
+   "seconds": 3.648,
+   "ok": true
+  },
+  "zh|狼心狗肺": {
+   "file": "848cb8a3.mp3",
+   "text": "狼心狗肺",
+   "lang": "zh",
+   "seconds": 3.624,
+   "ok": true
+  },
+  "zh|狼狈为奸": {
+   "file": "a9af5139.mp3",
+   "text": "狼狈为奸",
+   "lang": "zh",
+   "seconds": 3.576,
+   "ok": true
+  },
+  "zh|狡兔三窟": {
+   "file": "aeeb4d0b.mp3",
+   "text": "狡兔三窟",
+   "lang": "zh",
+   "seconds": 3.576,
+   "ok": true
+  },
+  "zh|呆若木鸡": {
+   "file": "feff2ec3.mp3",
+   "text": "呆若木鸡",
+   "lang": "zh",
+   "seconds": 3.504,
+   "ok": true
+  },
+  "zh|虾兵蟹将": {
+   "file": "8bf87564.mp3",
+   "text": "虾兵蟹将",
+   "lang": "zh",
+   "seconds": 3.744,
+   "ok": true
+  },
+  "zh|黔驴技穷": {
+   "file": "9c7dce7a.mp3",
+   "text": "黔驴技穷",
+   "lang": "zh",
+   "seconds": 3.792,
+   "ok": true
+  },
+  "zh|平原": {
+   "file": "c17b7140.mp3",
+   "text": "平原",
+   "lang": "zh",
+   "seconds": 2.808,
+   "ok": true
+  },
+  "zh|封锁": {
+   "file": "8363d3f1.mp3",
+   "text": "封锁",
+   "lang": "zh",
+   "seconds": 2.904,
+   "ok": true
+  },
+  "zh|粉碎": {
+   "file": "dfb8b4ac.mp3",
+   "text": "粉碎",
+   "lang": "zh",
+   "seconds": 2.856,
+   "ok": true
+  },
+  "zh|简直": {
+   "file": "f8675f86.mp3",
+   "text": "简直",
+   "lang": "zh",
+   "seconds": 2.76,
+   "ok": true
+  },
+  "zh|广阔": {
+   "file": "3806a76f.mp3",
+   "text": "广阔",
+   "lang": "zh",
+   "seconds": 2.784,
+   "ok": true
+  },
+  "zh|照常": {
+   "file": "37413d99.mp3",
+   "text": "照常",
+   "lang": "zh",
+   "seconds": 2.784,
+   "ok": true
+  },
+  "zh|游击": {
+   "file": "4efe174a.mp3",
+   "text": "游击",
+   "lang": "zh",
+   "seconds": 2.736,
+   "ok": true
+  },
+  "zh|战争": {
+   "file": "ff1bb0a6.mp3",
+   "text": "战争",
+   "lang": "zh",
+   "seconds": 2.664,
+   "ok": true
+  },
+  "zh|妨碍": {
+   "file": "10662876.mp3",
+   "text": "妨碍",
+   "lang": "zh",
+   "seconds": 2.664,
+   "ok": true
+  },
+  "zh|距离": {
+   "file": "b9ed684f.mp3",
+   "text": "距离",
+   "lang": "zh",
+   "seconds": 2.688,
+   "ok": true
+  },
+  "zh|厕所": {
+   "file": "07d4500c.mp3",
+   "text": "厕所",
+   "lang": "zh",
+   "seconds": 2.856,
+   "ok": true
+  },
+  "zh|光线": {
+   "file": "08f8f7c4.mp3",
+   "text": "光线",
+   "lang": "zh",
+   "seconds": 2.784,
+   "ok": true
+  },
+  "zh|陷坑": {
+   "file": "0e0ac891.mp3",
+   "text": "陷坑",
+   "lang": "zh",
+   "seconds": 2.928,
+   "ok": true
+  },
+  "zh|民兵": {
+   "file": "a5091acf.mp3",
+   "text": "民兵",
+   "lang": "zh",
+   "seconds": 2.616,
+   "ok": true
+  },
+  "zh|拐弯": {
+   "file": "4f937bd0.mp3",
+   "text": "拐弯",
+   "lang": "zh",
+   "seconds": 2.616,
+   "ok": true
+  },
+  "zh|木棒": {
+   "file": "36bcb530.mp3",
+   "text": "木棒",
+   "lang": "zh",
+   "seconds": 2.52,
+   "ok": true
+  },
+  "zh|破坏": {
+   "file": "70967b51.mp3",
+   "text": "破坏",
+   "lang": "zh",
+   "seconds": 2.808,
+   "ok": true
+  },
+  "zh|对付": {
+   "file": "3369000f.mp3",
+   "text": "对付",
+   "lang": "zh",
+   "seconds": 2.784,
+   "ok": true
+  },
+  "zh|铜铃": {
+   "file": "a081d520.mp3",
+   "text": "铜铃",
+   "lang": "zh",
+   "seconds": 2.784,
+   "ok": true
+  },
+  "zh|无穷无尽": {
+   "file": "06b2077c.mp3",
+   "text": "无穷无尽",
+   "lang": "zh",
+   "seconds": 3.48,
+   "ok": true
+  },
+  "zh|抗日战争": {
+   "file": "5ac962e3.mp3",
+   "text": "抗日战争",
+   "lang": "zh",
+   "seconds": 3.504,
+   "ok": true
+  },
+  "zh|任丘": {
+   "file": "dff81573.mp3",
+   "text": "任丘",
+   "lang": "zh",
+   "seconds": 2.856,
+   "ok": true
+  },
+  "zh|无价之宝": {
+   "file": "1ca8b202.mp3",
+   "text": "无价之宝",
+   "lang": "zh",
+   "seconds": 3.528,
+   "ok": true
+  },
+  "zh|召集": {
+   "file": "78990baf.mp3",
+   "text": "召集",
+   "lang": "zh",
+   "seconds": 2.856,
+   "ok": true
+  },
+  "zh|大臣": {
+   "file": "bc679879.mp3",
+   "text": "大臣",
+   "lang": "zh",
+   "seconds": 2.856,
+   "ok": true
+  },
+  "zh|商议": {
+   "file": "c680ac4d.mp3",
+   "text": "商议",
+   "lang": "zh",
+   "seconds": 2.856,
+   "ok": true
+  },
+  "zh|理亏": {
+   "file": "0fa8766f.mp3",
+   "text": "理亏",
+   "lang": "zh",
+   "seconds": 2.76,
+   "ok": true
+  },
+  "zh|进宫": {
+   "file": "10bf47db.mp3",
+   "text": "进宫",
+   "lang": "zh",
+   "seconds": 2.712,
+   "ok": true
+  },
+  "zh|交付": {
+   "file": "2b774544.mp3",
+   "text": "交付",
+   "lang": "zh",
+   "seconds": 2.784,
+   "ok": true
+  },
+  "zh|允诺": {
+   "file": "ddcebbbf.mp3",
+   "text": "允诺",
+   "lang": "zh",
+   "seconds": 2.712,
+   "ok": true
+  },
+  "zh|隆重": {
+   "file": "532c79a3.mp3",
+   "text": "隆重",
+   "lang": "zh",
+   "seconds": 2.736,
+   "ok": true
+  },
+  "zh|典礼": {
+   "file": "fa1e295a.mp3",
+   "text": "典礼",
+   "lang": "zh",
+   "seconds": 2.712,
+   "ok": true
+  },
+  "zh|约定": {
+   "file": "875bf7c1.mp3",
+   "text": "约定",
+   "lang": "zh",
+   "seconds": 2.592,
+   "ok": true
+  },
+  "zh|思量": {
+   "file": "84d66f3b.mp3",
+   "text": "思量",
+   "lang": "zh",
+   "seconds": 2.808,
+   "ok": true
+  },
+  "zh|承诺": {
+   "file": "4e19c2ca.mp3",
+   "text": "承诺",
+   "lang": "zh",
+   "seconds": 2.736,
+   "ok": true
+  },
+  "zh|国君": {
+   "file": "3b7ed0d2.mp3",
+   "text": "国君",
+   "lang": "zh",
+   "seconds": 2.736,
+   "ok": true
+  },
+  "zh|推辞": {
+   "file": "fcdabdd9.mp3",
+   "text": "推辞",
+   "lang": "zh",
+   "seconds": 2.904,
+   "ok": true
+  },
+  "zh|助兴": {
+   "file": "a3f08365.mp3",
+   "text": "助兴",
+   "lang": "zh",
+   "seconds": 2.664,
+   "ok": true
+  },
+  "zh|拒绝": {
+   "file": "65de2125.mp3",
+   "text": "拒绝",
+   "lang": "zh",
+   "seconds": 2.76,
+   "ok": true
+  },
+  "zh|同归于尽": {
+   "file": "da65f2e8.mp3",
+   "text": "同归于尽",
+   "lang": "zh",
+   "seconds": 3.528,
+   "ok": true
+  },
+  "zh|诸位": {
+   "file": "0d5c2d2e.mp3",
+   "text": "诸位",
+   "lang": "zh",
+   "seconds": 2.64,
+   "ok": true
+  },
+  "zh|同心协力": {
+   "file": "d1b7a768.mp3",
+   "text": "同心协力",
+   "lang": "zh",
+   "seconds": 3.6,
+   "ok": true
+  },
+  "zh|罢了": {
+   "file": "b67ab917.mp3",
+   "text": "罢了",
+   "lang": "zh",
+   "seconds": 2.52,
+   "ok": true
+  },
+  "zh|抄写": {
+   "file": "2ea1682f.mp3",
+   "text": "抄写",
+   "lang": "zh",
+   "seconds": 2.88,
+   "ok": true
+  },
+  "zh|杀气": {
+   "file": "0afa4c26.mp3",
+   "text": "杀气",
+   "lang": "zh",
+   "seconds": 2.976,
+   "ok": true
+  },
+  "zh|敲打": {
+   "file": "bffc11f0.mp3",
+   "text": "敲打",
+   "lang": "zh",
+   "seconds": 2.736,
+   "ok": true
+  },
+  "zh|速度": {
+   "file": "c0867bf0.mp3",
+   "text": "速度",
+   "lang": "zh",
+   "seconds": 2.784,
+   "ok": true
+  },
+  "zh|赛跑": {
+   "file": "40edd3b1.mp3",
+   "text": "赛跑",
+   "lang": "zh",
+   "seconds": 2.808,
+   "ok": true
+  },
+  "zh|冠军": {
+   "file": "c6084086.mp3",
+   "text": "冠军",
+   "lang": "zh",
+   "seconds": 2.712,
+   "ok": true
+  },
+  "zh|超过": {
+   "file": "0e8c3520.mp3",
+   "text": "超过",
+   "lang": "zh",
+   "seconds": 2.76,
+   "ok": true
+  },
+  "zh|高度": {
+   "file": "ae780c52.mp3",
+   "text": "高度",
+   "lang": "zh",
+   "seconds": 2.64,
+   "ok": true
+  },
+  "zh|火箭": {
+   "file": "51aac346.mp3",
+   "text": "火箭",
+   "lang": "zh",
+   "seconds": 2.784,
+   "ok": true
+  },
+  "zh|摆脱": {
+   "file": "9a1887b1.mp3",
+   "text": "摆脱",
+   "lang": "zh",
+   "seconds": 2.76,
+   "ok": true
+  },
+  "zh|发动机": {
+   "file": "6c81224f.mp3",
+   "text": "发动机",
+   "lang": "zh",
+   "seconds": 3.12,
+   "ok": true
+  },
+  "zh|照例": {
+   "file": "3a3b7a41.mp3",
+   "text": "照例",
+   "lang": "zh",
+   "seconds": 2.736,
+   "ok": true
+  },
+  "zh|航线": {
+   "file": "a496b345.mp3",
+   "text": "航线",
+   "lang": "zh",
+   "seconds": 2.808,
+   "ok": true
+  },
+  "zh|弥漫": {
+   "file": "0d40ea42.mp3",
+   "text": "弥漫",
+   "lang": "zh",
+   "seconds": 2.664,
+   "ok": true
+  },
+  "zh|小心翼翼": {
+   "file": "3079221e.mp3",
+   "text": "小心翼翼",
+   "lang": "zh",
+   "seconds": 3.648,
+   "ok": true
+  },
+  "zh|海峡": {
+   "file": "89954ab0.mp3",
+   "text": "海峡",
+   "lang": "zh",
+   "seconds": 2.784,
+   "ok": true
+  },
+  "zh|容量": {
+   "file": "689d29d2.mp3",
+   "text": "容量",
+   "lang": "zh",
+   "seconds": 2.76,
+   "ok": true
+  },
+  "zh|凌晨": {
+   "file": "c55da56a.mp3",
+   "text": "凌晨",
+   "lang": "zh",
+   "seconds": 2.856,
+   "ok": true
+  },
+  "zh|隐约": {
+   "file": "b5b0a443.mp3",
+   "text": "隐约",
+   "lang": "zh",
+   "seconds": 2.664,
+   "ok": true
+  },
+  "zh|剖开": {
+   "file": "5fb7b6de.mp3",
+   "text": "剖开",
+   "lang": "zh",
+   "seconds": 2.712,
+   "ok": true
+  },
+  "zh|震荡": {
+   "file": "fca2f211.mp3",
+   "text": "震荡",
+   "lang": "zh",
+   "seconds": 2.64,
+   "ok": true
+  },
+  "zh|惊恐万状": {
+   "file": "e2cbcf29.mp3",
+   "text": "惊恐万状",
+   "lang": "zh",
+   "seconds": 3.552,
+   "ok": true
+  },
+  "zh|混乱": {
+   "file": "2d4912f7.mp3",
+   "text": "混乱",
+   "lang": "zh",
+   "seconds": 2.712,
+   "ok": true
+  },
+  "zh|势不可当": {
+   "file": "2fa6528a.mp3",
+   "text": "势不可当",
+   "lang": "zh",
+   "seconds": 3.432,
+   "ok": true
+  },
+  "zh|违抗": {
+   "file": "276e82b0.mp3",
+   "text": "违抗",
+   "lang": "zh",
+   "seconds": 2.76,
+   "ok": true
+  },
+  "zh|争执": {
+   "file": "7022a170.mp3",
+   "text": "争执",
+   "lang": "zh",
+   "seconds": 2.856,
+   "ok": true
+  },
+  "zh|悲壮": {
+   "file": "42a958ed.mp3",
+   "text": "悲壮",
+   "lang": "zh",
+   "seconds": 2.736,
+   "ok": true
+  },
+  "zh|岗位": {
+   "file": "fc66db3b.mp3",
+   "text": "岗位",
+   "lang": "zh",
+   "seconds": 2.616,
+   "ok": true
+  },
+  "zh|主宰": {
+   "file": "f9dd98d3.mp3",
+   "text": "主宰",
+   "lang": "zh",
+   "seconds": 2.736,
+   "ok": true
+  },
+  "zh|惊慌失措": {
+   "file": "e5d9c7d1.mp3",
+   "text": "惊慌失措",
+   "lang": "zh",
+   "seconds": 3.6,
+   "ok": true
+  },
+  "zh|犹如": {
+   "file": "5d6f6bf2.mp3",
+   "text": "犹如",
+   "lang": "zh",
+   "seconds": 2.712,
+   "ok": true
+  },
+  "zh|纹丝不动": {
+   "file": "18645342.mp3",
+   "text": "纹丝不动",
+   "lang": "zh",
+   "seconds": 3.336,
+   "ok": true
+  },
+  "zh|相提并论": {
+   "file": "957d445a.mp3",
+   "text": "相提并论",
+   "lang": "zh",
+   "seconds": 3.576,
+   "ok": true
+  },
+  "zh|忠于职守": {
+   "file": "f308d8ef.mp3",
+   "text": "忠于职守",
+   "lang": "zh",
+   "seconds": 3.552,
+   "ok": true
+  },
+  "zh|壮举": {
+   "file": "3eb41ee1.mp3",
+   "text": "壮举",
+   "lang": "zh",
+   "seconds": 2.784,
+   "ok": true
+  },
+  "zh|哗啦": {
+   "file": "7d458d96.mp3",
+   "text": "哗啦",
+   "lang": "zh",
+   "seconds": 2.712,
+   "ok": true
+  },
+  "zh|喘气": {
+   "file": "1382f9a8.mp3",
+   "text": "喘气",
+   "lang": "zh",
+   "seconds": 2.856,
+   "ok": true
+  },
+  "zh|流传": {
+   "file": "9d372029.mp3",
+   "text": "流传",
+   "lang": "zh",
+   "seconds": 2.808,
+   "ok": true
+  },
+  "zh|呼救": {
+   "file": "0545a55b.mp3",
+   "text": "呼救",
+   "lang": "zh",
+   "seconds": 2.808,
+   "ok": true
+  },
+  "zh|救命": {
+   "file": "bcbb1924.mp3",
+   "text": "救命",
+   "lang": "zh",
+   "seconds": 2.688,
+   "ok": true
+  },
+  "zh|酬谢": {
+   "file": "a8010a51.mp3",
+   "text": "酬谢",
+   "lang": "zh",
+   "seconds": 2.88,
+   "ok": true
+  },
+  "zh|叮嘱": {
+   "file": "2f2b31b3.mp3",
+   "text": "叮嘱",
+   "lang": "zh",
+   "seconds": 2.76,
+   "ok": true
+  },
+  "zh|飞禽走兽": {
+   "file": "c877bed1.mp3",
+   "text": "飞禽走兽",
+   "lang": "zh",
+   "seconds": 3.744,
+   "ok": true
+  },
+  "zh|议论": {
+   "file": "d63dd40d.mp3",
+   "text": "议论",
+   "lang": "zh",
+   "seconds": 2.64,
+   "ok": true
+  },
+  "zh|催促": {
+   "file": "ea3807c4.mp3",
+   "text": "催促",
+   "lang": "zh",
+   "seconds": 2.808,
+   "ok": true
+  },
+  "zh|千真万确": {
+   "file": "5ce6c789.mp3",
+   "text": "千真万确",
+   "lang": "zh",
+   "seconds": 3.72,
+   "ok": true
+  },
+  "zh|迟延": {
+   "file": "f285f0e9.mp3",
+   "text": "迟延",
+   "lang": "zh",
+   "seconds": 2.88,
+   "ok": true
+  },
+  "zh|镇定": {
+   "file": "3ed5dff3.mp3",
+   "text": "镇定",
+   "lang": "zh",
+   "seconds": 2.616,
+   "ok": true
+  },
+  "zh|避难": {
+   "file": "4641017b.mp3",
+   "text": "避难",
+   "lang": "zh",
+   "seconds": 2.664,
+   "ok": true
+  },
+  "zh|后悔": {
+   "file": "8d7e9196.mp3",
+   "text": "后悔",
+   "lang": "zh",
+   "seconds": 2.784,
+   "ok": true
+  },
+  "zh|密布": {
+   "file": "e9f5f7d1.mp3",
+   "text": "密布",
+   "lang": "zh",
+   "seconds": 2.664,
+   "ok": true
+  },
+  "zh|怒号": {
+   "file": "14ebafac.mp3",
+   "text": "怒号",
+   "lang": "zh",
+   "seconds": 2.76,
+   "ok": true
+  },
+  "zh|倾盆大雨": {
+   "file": "6bb78844.mp3",
+   "text": "倾盆大雨",
+   "lang": "zh",
+   "seconds": 3.6,
+   "ok": true
+  },
+  "zh|震天动地": {
+   "file": "e9cd54b3.mp3",
+   "text": "震天动地",
+   "lang": "zh",
+   "seconds": 3.6,
+   "ok": true
+  },
+  "zh|世世代代": {
+   "file": "44a12641.mp3",
+   "text": "世世代代",
+   "lang": "zh",
+   "seconds": 3.744,
+   "ok": true
+  },
+  "zh|小蛇": {
+   "file": "2b1b745d.mp3",
+   "text": "小蛇",
+   "lang": "zh",
+   "seconds": 2.88,
+   "ok": true
+  },
+  "zh|涌动": {
+   "file": "5a497ab4.mp3",
+   "text": "涌动",
+   "lang": "zh",
+   "seconds": 2.736,
+   "ok": true
+  },
+  "zh|嫂子": {
+   "file": "34eb151d.mp3",
+   "text": "嫂子",
+   "lang": "zh",
+   "seconds": 2.784,
+   "ok": true
+  },
+  "zh|牛棚": {
+   "file": "f811b709.mp3",
+   "text": "牛棚",
+   "lang": "zh",
+   "seconds": 2.784,
+   "ok": true
+  },
+  "zh|床铺": {
+   "file": "1977d3f6.mp3",
+   "text": "床铺",
+   "lang": "zh",
+   "seconds": 2.784,
+   "ok": true
+  },
+  "zh|眉开眼笑": {
+   "file": "e30b2f6d.mp3",
+   "text": "眉开眼笑",
+   "lang": "zh",
+   "seconds": 3.696,
+   "ok": true
+  },
+  "zh|美中不足": {
+   "file": "48a776bf.mp3",
+   "text": "美中不足",
+   "lang": "zh",
+   "seconds": 3.552,
+   "ok": true
+  },
+  "zh|成家立业": {
+   "file": "786cf3d3.mp3",
+   "text": "成家立业",
+   "lang": "zh",
+   "seconds": 3.552,
+   "ok": true
+  },
+  "zh|稀罕": {
+   "file": "5d14a989.mp3",
+   "text": "稀罕",
+   "lang": "zh",
+   "seconds": 2.784,
+   "ok": true
+  },
+  "zh|幸亏": {
+   "file": "f09f9cd4.mp3",
+   "text": "幸亏",
+   "lang": "zh",
+   "seconds": 2.928,
+   "ok": true
+  },
+  "zh|打柴": {
+   "file": "ed56ab9a.mp3",
+   "text": "打柴",
+   "lang": "zh",
+   "seconds": 2.76,
+   "ok": true
+  },
+  "zh|纱衣": {
+   "file": "1543a2a9.mp3",
+   "text": "纱衣",
+   "lang": "zh",
+   "seconds": 2.856,
+   "ok": true
+  },
+  "zh|妻子": {
+   "file": "f959a4c3.mp3",
+   "text": "妻子",
+   "lang": "zh",
+   "seconds": 2.76,
+   "ok": true
+  },
+  "zh|装饰": {
+   "file": "9f6249cf.mp3",
+   "text": "装饰",
+   "lang": "zh",
+   "seconds": 2.88,
+   "ok": true
+  },
+  "zh|一辈子": {
+   "file": "4e60ceb7.mp3",
+   "text": "一辈子",
+   "lang": "zh",
+   "seconds": 3.096,
+   "ok": true
+  },
+  "zh|结婚": {
+   "file": "fe9f70c8.mp3",
+   "text": "结婚",
+   "lang": "zh",
+   "seconds": 2.736,
+   "ok": true
+  },
+  "zh|相依为命": {
+   "file": "38ad4231.mp3",
+   "text": "相依为命",
+   "lang": "zh",
+   "seconds": 3.576,
+   "ok": true
+  },
+  "zh|新郎": {
+   "file": "40d2904b.mp3",
+   "text": "新郎",
+   "lang": "zh",
+   "seconds": 2.856,
+   "ok": true
+  },
+  "zh|挺好": {
+   "file": "2998f8c0.mp3",
+   "text": "挺好",
+   "lang": "zh",
+   "seconds": 2.784,
+   "ok": true
+  },
+  "zh|习惯": {
+   "file": "9608460a.mp3",
+   "text": "习惯",
+   "lang": "zh",
+   "seconds": 2.88,
+   "ok": true
+  },
+  "zh|哎呀": {
+   "file": "dd9e6475.mp3",
+   "text": "哎呀",
+   "lang": "zh",
+   "seconds": 2.592,
+   "ok": true
+  },
+  "zh|乃至": {
+   "file": "530816fb.mp3",
+   "text": "乃至",
+   "lang": "zh",
+   "seconds": 2.88,
+   "ok": true
+  },
+  "zh|杭州": {
+   "file": "19189247.mp3",
+   "text": "杭州",
+   "lang": "zh",
+   "seconds": 2.808,
+   "ok": true
+  },
+  "zh|哀伤": {
+   "file": "67375ad9.mp3",
+   "text": "哀伤",
+   "lang": "zh",
+   "seconds": 2.784,
+   "ok": true
+  },
+  "zh|欧洲": {
+   "file": "c5e560f4.mp3",
+   "text": "欧洲",
+   "lang": "zh",
+   "seconds": 2.736,
+   "ok": true
+  },
+  "zh|倾泻": {
+   "file": "3d28bf16.mp3",
+   "text": "倾泻",
+   "lang": "zh",
+   "seconds": 2.808,
+   "ok": true
+  },
+  "zh|潜水": {
+   "file": "c7913002.mp3",
+   "text": "潜水",
+   "lang": "zh",
+   "seconds": 2.928,
+   "ok": true
+  },
+  "zh|腾飞": {
+   "file": "7f1b22e6.mp3",
+   "text": "腾飞",
+   "lang": "zh",
+   "seconds": 2.76,
+   "ok": true
+  },
+  "zh|野兽": {
+   "file": "379af362.mp3",
+   "text": "野兽",
+   "lang": "zh",
+   "seconds": 2.784,
+   "ok": true
+  },
+  "zh|泥胎": {
+   "file": "5023480e.mp3",
+   "text": "泥胎",
+   "lang": "zh",
+   "seconds": 2.712,
+   "ok": true
+  },
+  "zh|皇帝": {
+   "file": "ee77e24f.mp3",
+   "text": "皇帝",
+   "lang": "zh",
+   "seconds": 2.76,
+   "ok": true
+  },
+  "zh|前途": {
+   "file": "897fe8a1.mp3",
+   "text": "前途",
+   "lang": "zh",
+   "seconds": 2.904,
+   "ok": true
+  },
+  "zh|毁灭": {
+   "file": "34c729d8.mp3",
+   "text": "毁灭",
+   "lang": "zh",
+   "seconds": 2.736,
+   "ok": true
+  },
+  "zh|不可估量": {
+   "file": "1425bc90.mp3",
+   "text": "不可估量",
+   "lang": "zh",
+   "seconds": 3.384,
+   "ok": true
+  },
+  "zh|损失": {
+   "file": "9d66e51f.mp3",
+   "text": "损失",
+   "lang": "zh",
+   "seconds": 2.904,
+   "ok": true
+  },
+  "zh|举世闻名": {
+   "file": "79906326.mp3",
+   "text": "举世闻名",
+   "lang": "zh",
+   "seconds": 3.648,
+   "ok": true
+  },
+  "zh|园林": {
+   "file": "085f2a19.mp3",
+   "text": "园林",
+   "lang": "zh",
+   "seconds": 2.76,
+   "ok": true
+  },
+  "zh|组成": {
+   "file": "fdd77cf9.mp3",
+   "text": "组成",
+   "lang": "zh",
+   "seconds": 2.712,
+   "ok": true
+  },
+  "zh|众星拱月": {
+   "file": "4927ae91.mp3",
+   "text": "众星拱月",
+   "lang": "zh",
+   "seconds": 3.672,
+   "ok": true
+  },
+  "zh|环绕": {
+   "file": "0dbba642.mp3",
+   "text": "环绕",
+   "lang": "zh",
+   "seconds": 2.784,
+   "ok": true
+  },
+  "zh|殿堂": {
+   "file": "a65a3b77.mp3",
+   "text": "殿堂",
+   "lang": "zh",
+   "seconds": 2.76,
+   "ok": true
+  },
+  "zh|亭台楼阁": {
+   "file": "e9f47053.mp3",
+   "text": "亭台楼阁",
+   "lang": "zh",
+   "seconds": 3.624,
+   "ok": true
+  },
+  "zh|象征": {
+   "file": "45391571.mp3",
+   "text": "象征",
+   "lang": "zh",
+   "seconds": 2.856,
+   "ok": true
+  },
+  "zh|仿照": {
+   "file": "8c548ac6.mp3",
+   "text": "仿照",
+   "lang": "zh",
+   "seconds": 2.76,
+   "ok": true
+  },
+  "zh|名胜": {
+   "file": "6561a38e.mp3",
+   "text": "名胜",
+   "lang": "zh",
+   "seconds": 2.76,
+   "ok": true
+  },
+  "zh|诗情画意": {
+   "file": "d9f2e486.mp3",
+   "text": "诗情画意",
+   "lang": "zh",
+   "seconds": 3.744,
+   "ok": true
+  },
+  "zh|漫步": {
+   "file": "16a36670.mp3",
+   "text": "漫步",
+   "lang": "zh",
+   "seconds": 2.688,
+   "ok": true
+  },
+  "zh|漫游": {
+   "file": "156f897a.mp3",
+   "text": "漫游",
+   "lang": "zh",
+   "seconds": 2.712,
+   "ok": true
+  },
+  "zh|天南海北": {
+   "file": "5ac73b02.mp3",
+   "text": "天南海北",
+   "lang": "zh",
+   "seconds": 3.672,
+   "ok": true
+  },
+  "zh|饱览": {
+   "file": "289c8371.mp3",
+   "text": "饱览",
+   "lang": "zh",
+   "seconds": 2.736,
+   "ok": true
+  },
+  "zh|宏伟": {
+   "file": "ea94425c.mp3",
+   "text": "宏伟",
+   "lang": "zh",
+   "seconds": 2.784,
+   "ok": true
+  },
+  "zh|奇珍异宝": {
+   "file": "e2939db4.mp3",
+   "text": "奇珍异宝",
+   "lang": "zh",
+   "seconds": 3.504,
+   "ok": true
+  },
+  "zh|博物馆": {
+   "file": "2b978b99.mp3",
+   "text": "博物馆",
+   "lang": "zh",
+   "seconds": 3.072,
+   "ok": true
+  },
+  "zh|销毁": {
+   "file": "8b3af75e.mp3",
+   "text": "销毁",
+   "lang": "zh",
+   "seconds": 2.928,
+   "ok": true
+  },
+  "zh|罪证": {
+   "file": "968233d3.mp3",
+   "text": "罪证",
+   "lang": "zh",
+   "seconds": 2.712,
+   "ok": true
+  },
+  "zh|奉命": {
+   "file": "03c2c637.mp3",
+   "text": "奉命",
+   "lang": "zh",
+   "seconds": 2.76,
+   "ok": true
+  },
+  "zh|瑰宝": {
+   "file": "ded3a0bb.mp3",
+   "text": "瑰宝",
+   "lang": "zh",
+   "seconds": 2.736,
+   "ok": true
+  },
+  "zh|精华": {
+   "file": "27a6a112.mp3",
+   "text": "精华",
+   "lang": "zh",
+   "seconds": 2.808,
+   "ok": true
+  },
+  "zh|唐朝": {
+   "file": "d4154725.mp3",
+   "text": "唐朝",
+   "lang": "zh",
+   "seconds": 2.856,
+   "ok": true
+  },
+  "zh|太平盛世": {
+   "file": "3860509e.mp3",
+   "text": "太平盛世",
+   "lang": "zh",
+   "seconds": 3.792,
+   "ok": true
+  },
+  "zh|政通人和": {
+   "file": "899ed394.mp3",
+   "text": "政通人和",
+   "lang": "zh",
+   "seconds": 3.72,
+   "ok": true
+  },
+  "zh|国泰民安": {
+   "file": "c9071ea8.mp3",
+   "text": "国泰民安",
+   "lang": "zh",
+   "seconds": 3.432,
+   "ok": true
+  },
+  "zh|人寿年丰": {
+   "file": "be82840e.mp3",
+   "text": "人寿年丰",
+   "lang": "zh",
+   "seconds": 3.696,
+   "ok": true
+  },
+  "zh|丰衣足食": {
+   "file": "64869fb5.mp3",
+   "text": "丰衣足食",
+   "lang": "zh",
+   "seconds": 3.696,
+   "ok": true
+  },
+  "zh|夜不闭户": {
+   "file": "e1a06f1d.mp3",
+   "text": "夜不闭户",
+   "lang": "zh",
+   "seconds": 3.552,
+   "ok": true
+  },
+  "zh|安居乐业": {
+   "file": "4d2a8127.mp3",
+   "text": "安居乐业",
+   "lang": "zh",
+   "seconds": 3.6,
+   "ok": true
+  },
+  "zh|路不拾遗": {
+   "file": "8eea127a.mp3",
+   "text": "路不拾遗",
+   "lang": "zh",
+   "seconds": 3.36,
+   "ok": true
+  },
+  "zh|多事之秋": {
+   "file": "c1509ee2.mp3",
+   "text": "多事之秋",
+   "lang": "zh",
+   "seconds": 3.6,
+   "ok": true
+  },
+  "zh|家破人亡": {
+   "file": "277ad2d8.mp3",
+   "text": "家破人亡",
+   "lang": "zh",
+   "seconds": 3.552,
+   "ok": true
+  },
+  "zh|兵荒马乱": {
+   "file": "276d4b55.mp3",
+   "text": "兵荒马乱",
+   "lang": "zh",
+   "seconds": 3.528,
+   "ok": true
+  },
+  "zh|哀鸿遍野": {
+   "file": "c0eb545e.mp3",
+   "text": "哀鸿遍野",
+   "lang": "zh",
+   "seconds": 3.6,
+   "ok": true
+  },
+  "zh|流离失所": {
+   "file": "77a85320.mp3",
+   "text": "流离失所",
+   "lang": "zh",
+   "seconds": 3.696,
+   "ok": true
+  },
+  "zh|民不聊生": {
+   "file": "db7dcae8.mp3",
+   "text": "民不聊生",
+   "lang": "zh",
+   "seconds": 3.384,
+   "ok": true
+  },
+  "zh|生灵涂炭": {
+   "file": "bc4c789c.mp3",
+   "text": "生灵涂炭",
+   "lang": "zh",
+   "seconds": 3.792,
+   "ok": true
+  },
+  "zh|内忧外患": {
+   "file": "1a3b5ad8.mp3",
+   "text": "内忧外患",
+   "lang": "zh",
+   "seconds": 3.6,
+   "ok": true
+  },
+  "en|gardening": {
+   "file": "4d5e4561.mp3",
+   "text": "gardening",
+   "lang": "en",
+   "seconds": 3.456,
+   "ok": true
+  },
+  "en|storytelling": {
+   "file": "48daf94c.mp3",
+   "text": "storytelling",
+   "lang": "en",
+   "seconds": 4.224,
+   "ok": true
+  },
+  "en|join": {
+   "file": "67550a4e.mp3",
+   "text": "join",
+   "lang": "en",
+   "seconds": 3.336,
+   "ok": true
+  },
+  "en|view": {
+   "file": "c551e6eb.mp3",
+   "text": "view",
+   "lang": "en",
+   "seconds": 3.288,
+   "ok": true
+  },
+  "en|how about": {
+   "file": "6d473e89.mp3",
+   "text": "how about",
+   "lang": "en",
+   "seconds": 3.84,
+   "ok": true
+  },
+  "en|take photos": {
+   "file": "f0685d22.mp3",
+   "text": "take photos",
+   "lang": "en",
+   "seconds": 4.224,
+   "ok": true
+  },
+  "en|give up": {
+   "file": "e5c1d224.mp3",
+   "text": "give up",
+   "lang": "en",
+   "seconds": 3.48,
+   "ok": true
+  },
+  "en|photo diary": {
+   "file": "2ba846d9.mp3",
+   "text": "photo diary",
+   "lang": "en",
+   "seconds": 4.224,
+   "ok": true
+  },
+  "en|art": {
+   "file": "5afb24df.mp3",
+   "text": "art",
+   "lang": "en",
+   "seconds": 3.144,
+   "ok": true
+  },
+  "en|traditional": {
+   "file": "7f0adafb.mp3",
+   "text": "traditional",
+   "lang": "en",
+   "seconds": 3.744,
+   "ok": true
+  },
+  "en|Chinese yo-yo": {
+   "file": "b3bcb7de.mp3",
+   "text": "Chinese yo-yo",
+   "lang": "en",
+   "seconds": 4.704,
+   "ok": true
+  },
+  "en|kite-flying": {
+   "file": "a9f43a43.mp3",
+   "text": "kite-flying",
+   "lang": "en",
+   "seconds": 3.96,
+   "ok": true
+  },
+  "en|dragon dance": {
+   "file": "d575840a.mp3",
+   "text": "dragon dance",
+   "lang": "en",
+   "seconds": 4.272,
+   "ok": true
+  },
+  "en|tug of war": {
+   "file": "e487f459.mp3",
+   "text": "tug of war",
+   "lang": "en",
+   "seconds": 3.912,
+   "ok": true
+  },
+  "en|stamp": {
+   "file": "9d295f49.mp3",
+   "text": "stamp",
+   "lang": "en",
+   "seconds": 3.624,
+   "ok": true
+  },
+  "en|prize": {
+   "file": "61b841ce.mp3",
+   "text": "prize",
+   "lang": "en",
+   "seconds": 3.528,
+   "ok": true
+  },
+  "en|style": {
+   "file": "5519a947.mp3",
+   "text": "style",
+   "lang": "en",
+   "seconds": 3.624,
+   "ok": true
+  },
+  "en|action": {
+   "file": "1c677e30.mp3",
+   "text": "action",
+   "lang": "en",
+   "seconds": 3.504,
+   "ok": true
+  },
+  "en|straight": {
+   "file": "e202a55c.mp3",
+   "text": "straight",
+   "lang": "en",
+   "seconds": 3.552,
+   "ok": true
+  },
+  "en|keep up with": {
+   "file": "aa0714e8.mp3",
+   "text": "keep up with",
+   "lang": "en",
+   "seconds": 3.96,
+   "ok": true
+  },
+  "en|control": {
+   "file": "670df057.mp3",
+   "text": "control",
+   "lang": "en",
+   "seconds": 3.624,
+   "ok": true
+  },
+  "en|pace": {
+   "file": "d3eadd45.mp3",
+   "text": "pace",
+   "lang": "en",
+   "seconds": 3.384,
+   "ok": true
+  },
+  "en|changquan": {
+   "file": "a7b1ad06.mp3",
+   "text": "changquan",
+   "lang": "en",
+   "seconds": 3.888,
+   "ok": true
+  },
+  "en|even": {
+   "file": "ed65c9be.mp3",
+   "text": "even",
+   "lang": "en",
+   "seconds": 3.216,
+   "ok": true
+  },
+  "en|train": {
+   "file": "af578530.mp3",
+   "text": "train",
+   "lang": "en",
+   "seconds": 3.312,
+   "ok": true
+  },
+  "en|another": {
+   "file": "46464f25.mp3",
+   "text": "another",
+   "lang": "en",
+   "seconds": 3.456,
+   "ok": true
+  },
+  "en|call out": {
+   "file": "ab4df5a6.mp3",
+   "text": "call out",
+   "lang": "en",
+   "seconds": 3.624,
+   "ok": true
+  },
+  "en|garden party": {
+   "file": "d3ab6907.mp3",
+   "text": "garden party",
+   "lang": "en",
+   "seconds": 4.008,
+   "ok": true
+  },
+  "en|lose control": {
+   "file": "638bcee2.mp3",
+   "text": "lose control",
+   "lang": "en",
+   "seconds": 4.224,
+   "ok": true
+  },
+  "en|come to life": {
+   "file": "e7f75b8b.mp3",
+   "text": "come to life",
+   "lang": "en",
+   "seconds": 3.96,
+   "ok": true
+  },
+  "en|all kinds of": {
+   "file": "64d5df93.mp3",
+   "text": "all kinds of",
+   "lang": "en",
+   "seconds": 4.176,
+   "ok": true
+  },
+  "en|as fast as the wind": {
+   "file": "91fc3f4b.mp3",
+   "text": "as fast as the wind",
+   "lang": "en",
+   "seconds": 4.944,
+   "ok": true
+  },
+  "en|work as a team": {
+   "file": "62d2c36f.mp3",
+   "text": "work as a team",
+   "lang": "en",
+   "seconds": 4.344,
+   "ok": true
+  },
+  "en|faster": {
+   "file": "546231df.mp3",
+   "text": "faster",
+   "lang": "en",
+   "seconds": 3.672,
+   "ok": true
+  },
+  "en|train hard": {
+   "file": "d729328d.mp3",
+   "text": "train hard",
+   "lang": "en",
+   "seconds": 3.96,
+   "ok": true
+  },
+  "en|root": {
+   "file": "9cbf4e16.mp3",
+   "text": "root",
+   "lang": "en",
+   "seconds": 3.24,
+   "ok": true
+  },
+  "en|take in": {
+   "file": "d9ef4098.mp3",
+   "text": "take in",
+   "lang": "en",
+   "seconds": 3.624,
+   "ok": true
+  },
+  "en|stem": {
+   "file": "52cf1ae7.mp3",
+   "text": "stem",
+   "lang": "en",
+   "seconds": 3.456,
+   "ok": true
+  },
+  "en|thick": {
+   "file": "c8a8b20b.mp3",
+   "text": "thick",
+   "lang": "en",
+   "seconds": 3.24,
+   "ok": true
+  },
+  "en|water lily": {
+   "file": "8ff3d17f.mp3",
+   "text": "water lily",
+   "lang": "en",
+   "seconds": 3.984,
+   "ok": true
+  },
+  "en|react": {
+   "file": "a30c016d.mp3",
+   "text": "react",
+   "lang": "en",
+   "seconds": 3.768,
+   "ok": true
+  },
+  "en|pine cone": {
+   "file": "d6f5be27.mp3",
+   "text": "pine cone",
+   "lang": "en",
+   "seconds": 3.912,
+   "ok": true
+  },
+  "en|scale": {
+   "file": "f5e2cc78.mp3",
+   "text": "scale",
+   "lang": "en",
+   "seconds": 3.696,
+   "ok": true
+  },
+  "en|morning glory": {
+   "file": "2d5b0ef7.mp3",
+   "text": "morning glory",
+   "lang": "en",
+   "seconds": 4.32,
+   "ok": true
+  },
+  "en|thin": {
+   "file": "1822c0a1.mp3",
+   "text": "thin",
+   "lang": "en",
+   "seconds": 3.192,
+   "ok": true
+  },
+  "en|protect": {
+   "file": "62048461.mp3",
+   "text": "protect",
+   "lang": "en",
+   "seconds": 3.552,
+   "ok": true
+  },
+  "en|leaf": {
+   "file": "4a51d796.mp3",
+   "text": "leaf",
+   "lang": "en",
+   "seconds": 3.36,
+   "ok": true
+  },
+  "en|tulip": {
+   "file": "fb1add12.mp3",
+   "text": "tulip",
+   "lang": "en",
+   "seconds": 3.384,
+   "ok": true
+  },
+  "en|soil": {
+   "file": "ab453ec1.mp3",
+   "text": "soil",
+   "lang": "en",
+   "seconds": 3.624,
+   "ok": true
+  },
+  "en|mud": {
+   "file": "91dfac34.mp3",
+   "text": "mud",
+   "lang": "en",
+   "seconds": 3.264,
+   "ok": true
+  },
+  "en|creeper": {
+   "file": "99f94c44.mp3",
+   "text": "creeper",
+   "lang": "en",
+   "seconds": 3.504,
+   "ok": true
+  },
+  "en|botanical gardens": {
+   "file": "68f1fd23.mp3",
+   "text": "botanical gardens",
+   "lang": "en",
+   "seconds": 4.92,
+   "ok": true
+  },
+  "en|an ice cream cone": {
+   "file": "c4ef6ebb.mp3",
+   "text": "an ice cream cone",
+   "lang": "en",
+   "seconds": 4.848,
+   "ok": true
+  },
+  "en|four-o'clock flower": {
+   "file": "d1e461c6.mp3",
+   "text": "four-o'clock flower",
+   "lang": "en",
+   "seconds": 4.752,
+   "ok": true
+  },
+  "en|a meat-eating plant": {
+   "file": "77e5778c.mp3",
+   "text": "a meat-eating plant",
+   "lang": "en",
+   "seconds": 4.728,
+   "ok": true
+  },
+  "en|safari park": {
+   "file": "028e7aa2.mp3",
+   "text": "safari park",
+   "lang": "en",
+   "seconds": 4.392,
+   "ok": true
+  },
+  "en|tiger": {
+   "file": "7463e695.mp3",
+   "text": "tiger",
+   "lang": "en",
+   "seconds": 3.432,
+   "ok": true
+  },
+  "en|lion": {
+   "file": "16dd2a64.mp3",
+   "text": "lion",
+   "lang": "en",
+   "seconds": 3.384,
+   "ok": true
+  },
+  "en|threat": {
+   "file": "27025f86.mp3",
+   "text": "threat",
+   "lang": "en",
+   "seconds": 3.216,
+   "ok": true
+  },
+  "en|whale": {
+   "file": "58d4c5ff.mp3",
+   "text": "whale",
+   "lang": "en",
+   "seconds": 3.504,
+   "ok": true
+  },
+  "en|toe": {
+   "file": "8359a0f6.mp3",
+   "text": "toe",
+   "lang": "en",
+   "seconds": 3.216,
+   "ok": true
+  },
+  "en|truck tour": {
+   "file": "0c5ae4c5.mp3",
+   "text": "truck tour",
+   "lang": "en",
+   "seconds": 3.792,
+   "ok": true
+  },
+  "en|giraffe": {
+   "file": "74f4019a.mp3",
+   "text": "giraffe",
+   "lang": "en",
+   "seconds": 3.624,
+   "ok": true
+  },
+  "en|keeper": {
+   "file": "2d47cd8c.mp3",
+   "text": "keeper",
+   "lang": "en",
+   "seconds": 3.384,
+   "ok": true
+  },
+  "en|get close to": {
+   "file": "8658e6d7.mp3",
+   "text": "get close to",
+   "lang": "en",
+   "seconds": 4.152,
+   "ok": true
+  },
+  "en|hair": {
+   "file": "5d1c9f1a.mp3",
+   "text": "hair",
+   "lang": "en",
+   "seconds": 3.264,
+   "ok": true
+  },
+  "en|hippo": {
+   "file": "77547db6.mp3",
+   "text": "hippo",
+   "lang": "en",
+   "seconds": 3.36,
+   "ok": true
+  },
+  "en|dive": {
+   "file": "6394aaf0.mp3",
+   "text": "dive",
+   "lang": "en",
+   "seconds": 3.48,
+   "ok": true
+  },
+  "en|panda": {
+   "file": "13d75b3a.mp3",
+   "text": "panda",
+   "lang": "en",
+   "seconds": 3.432,
+   "ok": true
+  },
+  "en|elephant": {
+   "file": "e3e2e9c3.mp3",
+   "text": "elephant",
+   "lang": "en",
+   "seconds": 3.6,
+   "ok": true
+  },
+  "zh|农历": {
+   "file": "5a68e2e1.mp3",
+   "text": "农历",
+   "lang": "zh",
+   "seconds": 2.712,
+   "ok": true
+  },
+  "zh|据说": {
+   "file": "7ee41a2d.mp3",
+   "text": "据说",
+   "lang": "zh",
+   "seconds": 2.712,
+   "ok": true
+  },
+  "zh|大堤": {
+   "file": "d2f9b4fc.mp3",
+   "text": "大堤",
+   "lang": "zh",
+   "seconds": 2.76,
+   "ok": true
+  },
+  "zh|屹立": {
+   "file": "f518d085.mp3",
+   "text": "屹立",
+   "lang": "zh",
+   "seconds": 2.64,
+   "ok": true
+  },
+  "zh|人山人海": {
+   "file": "b53e792a.mp3",
+   "text": "人山人海",
+   "lang": "zh",
+   "seconds": 3.816,
+   "ok": true
+  },
+  "zh|顿时": {
+   "file": "9b79ef5f.mp3",
+   "text": "顿时",
+   "lang": "zh",
+   "seconds": 2.88,
+   "ok": true
+  },
+  "zh|风平浪静": {
+   "file": "8348d2d6.mp3",
+   "text": "风平浪静",
+   "lang": "zh",
+   "seconds": 3.672,
+   "ok": true
+  },
+  "zh|变化": {
+   "file": "ccda29bc.mp3",
+   "text": "变化",
+   "lang": "zh",
+   "seconds": 2.76,
+   "ok": true
+  },
+  "zh|逐渐": {
+   "file": "c45a202a.mp3",
+   "text": "逐渐",
+   "lang": "zh",
+   "seconds": 2.736,
+   "ok": true
+  },
+  "zh|齐头并进": {
+   "file": "a920d19e.mp3",
+   "text": "齐头并进",
+   "lang": "zh",
+   "seconds": 3.576,
+   "ok": true
+  },
+  "zh|浩浩荡荡": {
+   "file": "0f1e3c85.mp3",
+   "text": "浩浩荡荡",
+   "lang": "zh",
+   "seconds": 3.384,
+   "ok": true
+  },
+  "zh|山崩地裂": {
+   "file": "c2dee032.mp3",
+   "text": "山崩地裂",
+   "lang": "zh",
+   "seconds": 3.696,
+   "ok": true
+  },
+  "zh|霎时": {
+   "file": "80c3e381.mp3",
+   "text": "霎时",
+   "lang": "zh",
+   "seconds": 3.024,
+   "ok": true
+  },
+  "zh|余波": {
+   "file": "a1f3b2e4.mp3",
+   "text": "余波",
+   "lang": "zh",
+   "seconds": 2.592,
+   "ok": true
+  },
+  "zh|一堵墙": {
+   "file": "8433fe9d.mp3",
+   "text": "一堵墙",
+   "lang": "zh",
+   "seconds": 3.168,
+   "ok": true
+  },
+  "zh|繁星": {
+   "file": "80e527cb.mp3",
+   "text": "繁星",
+   "lang": "zh",
+   "seconds": 2.808,
+   "ok": true
+  },
+  "zh|密密麻麻": {
+   "file": "69dabb31.mp3",
+   "text": "密密麻麻",
+   "lang": "zh",
+   "seconds": 3.336,
+   "ok": true
+  },
+  "zh|忘记": {
+   "file": "ef05519f.mp3",
+   "text": "忘记",
+   "lang": "zh",
+   "seconds": 2.808,
+   "ok": true
+  },
+  "zh|静寂": {
+   "file": "72a4359c.mp3",
+   "text": "静寂",
+   "lang": "zh",
+   "seconds": 2.784,
+   "ok": true
+  },
+  "zh|虽然": {
+   "file": "8ab09254.mp3",
+   "text": "虽然",
+   "lang": "zh",
+   "seconds": 2.856,
+   "ok": true
+  },
+  "zh|谈话": {
+   "file": "1019ab15.mp3",
+   "text": "谈话",
+   "lang": "zh",
+   "seconds": 2.76,
+   "ok": true
+  },
+  "zh|渐渐": {
+   "file": "4e441661.mp3",
+   "text": "渐渐",
+   "lang": "zh",
+   "seconds": 2.76,
+   "ok": true
+  },
+  "zh|模糊": {
+   "file": "8874c8e2.mp3",
+   "text": "模糊",
+   "lang": "zh",
+   "seconds": 2.64,
+   "ok": true
+  },
+  "zh|周围": {
+   "file": "de5c22df.mp3",
+   "text": "周围",
+   "lang": "zh",
+   "seconds": 2.664,
+   "ok": true
+  },
+  "zh|梦幻": {
+   "file": "78535bfc.mp3",
+   "text": "梦幻",
+   "lang": "zh",
+   "seconds": 2.712,
+   "ok": true
+  },
+  "zh|怀抱": {
+   "file": "52431238.mp3",
+   "text": "怀抱",
+   "lang": "zh",
+   "seconds": 2.784,
+   "ok": true
+  },
+  "zh|算是": {
+   "file": "042fcc48.mp3",
+   "text": "算是",
+   "lang": "zh",
+   "seconds": 2.952,
+   "ok": true
+  },
+  "zh|腰带": {
+   "file": "d77e8a4f.mp3",
+   "text": "腰带",
+   "lang": "zh",
+   "seconds": 2.712,
+   "ok": true
+  },
+  "zh|躺着": {
+   "file": "93f77089.mp3",
+   "text": "躺着",
+   "lang": "zh",
+   "seconds": 2.616,
+   "ok": true
+  },
+  "zh|一颗星": {
+   "file": "7115dddc.mp3",
+   "text": "一颗星",
+   "lang": "zh",
+   "seconds": 3.072,
+   "ok": true
+  },
+  "zh|暖洋洋": {
+   "file": "5f5e006b.mp3",
+   "text": "暖洋洋",
+   "lang": "zh",
+   "seconds": 3.12,
+   "ok": true
+  },
+  "zh|舒适": {
+   "file": "bd715df6.mp3",
+   "text": "舒适",
+   "lang": "zh",
+   "seconds": 2.928,
+   "ok": true
+  },
+  "zh|黑暗": {
+   "file": "1b16a6fd.mp3",
+   "text": "黑暗",
+   "lang": "zh",
+   "seconds": 2.64,
+   "ok": true
+  },
+  "zh|揭晓": {
+   "file": "dbfe5e35.mp3",
+   "text": "揭晓",
+   "lang": "zh",
+   "seconds": 2.76,
+   "ok": true
+  },
+  "zh|身份": {
+   "file": "c7a638c8.mp3",
+   "text": "身份",
+   "lang": "zh",
+   "seconds": 2.856,
+   "ok": true
+  },
+  "zh|滑落": {
+   "file": "2328596c.mp3",
+   "text": "滑落",
+   "lang": "zh",
+   "seconds": 2.784,
+   "ok": true
+  },
+  "zh|虚弱": {
+   "file": "518650bc.mp3",
+   "text": "虚弱",
+   "lang": "zh",
+   "seconds": 2.88,
+   "ok": true
+  },
+  "zh|安静": {
+   "file": "263f6ac6.mp3",
+   "text": "安静",
+   "lang": "zh",
+   "seconds": 2.736,
+   "ok": true
+  },
+  "zh|但愿": {
+   "file": "489b19df.mp3",
+   "text": "但愿",
+   "lang": "zh",
+   "seconds": 2.736,
+   "ok": true
+  },
+  "zh|棍子": {
+   "file": "07f520a5.mp3",
+   "text": "棍子",
+   "lang": "zh",
+   "seconds": 2.64,
+   "ok": true
+  },
+  "zh|的确": {
+   "file": "ae7bbeba.mp3",
+   "text": "的确",
+   "lang": "zh",
+   "seconds": 2.856,
+   "ok": true
+  },
+  "zh|曾经": {
+   "file": "78a6bd5b.mp3",
+   "text": "曾经",
+   "lang": "zh",
+   "seconds": 2.76,
+   "ok": true
+  },
+  "zh|打滚": {
+   "file": "c79b944c.mp3",
+   "text": "打滚",
+   "lang": "zh",
+   "seconds": 2.808,
+   "ok": true
+  },
+  "zh|水沟": {
+   "file": "01ca7ac6.mp3",
+   "text": "水沟",
+   "lang": "zh",
+   "seconds": 2.904,
+   "ok": true
+  },
+  "zh|摩擦": {
+   "file": "431b17d2.mp3",
+   "text": "摩擦",
+   "lang": "zh",
+   "seconds": 2.64,
+   "ok": true
+  },
+  "zh|探头": {
+   "file": "2e7dae64.mp3",
+   "text": "探头",
+   "lang": "zh",
+   "seconds": 2.808,
+   "ok": true
+  },
+  "zh|涨大": {
+   "file": "16410b57.mp3",
+   "text": "涨大",
+   "lang": "zh",
+   "seconds": 2.688,
+   "ok": true
+  },
+  "zh|蚊子": {
+   "file": "503cdbe7.mp3",
+   "text": "蚊子",
+   "lang": "zh",
+   "seconds": 2.688,
+   "ok": true
+  },
+  "zh|问题": {
+   "file": "bf78e172.mp3",
+   "text": "问题",
+   "lang": "zh",
+   "seconds": 2.76,
+   "ok": true
+  },
+  "zh|科学家": {
+   "file": "485eba7d.mp3",
+   "text": "科学家",
+   "lang": "zh",
+   "seconds": 3.12,
+   "ok": true
+  },
+  "zh|绳子": {
+   "file": "1a0eb132.mp3",
+   "text": "绳子",
+   "lang": "zh",
+   "seconds": 2.88,
+   "ok": true
+  },
+  "zh|苍蝇": {
+   "file": "b54f3e9d.mp3",
+   "text": "苍蝇",
+   "lang": "zh",
+   "seconds": 2.736,
+   "ok": true
+  },
+  "zh|证明": {
+   "file": "c17262d5.mp3",
+   "text": "证明",
+   "lang": "zh",
+   "seconds": 2.688,
+   "ok": true
+  },
+  "zh|配合": {
+   "file": "eb9c2279.mp3",
+   "text": "配合",
+   "lang": "zh",
+   "seconds": 2.856,
+   "ok": true
+  },
+  "zh|研究": {
+   "file": "a4efd970.mp3",
+   "text": "研究",
+   "lang": "zh",
+   "seconds": 2.784,
+   "ok": true
+  },
+  "zh|传播": {
+   "file": "88cfd85e.mp3",
+   "text": "传播",
+   "lang": "zh",
+   "seconds": 2.76,
+   "ok": true
+  },
+  "zh|如何": {
+   "file": "3f21764e.mp3",
+   "text": "如何",
+   "lang": "zh",
+   "seconds": 2.712,
+   "ok": true
+  },
+  "zh|现代": {
+   "file": "6c9ae0a6.mp3",
+   "text": "现代",
+   "lang": "zh",
+   "seconds": 2.808,
+   "ok": true
+  },
+  "zh|安装": {
+   "file": "2d144fbb.mp3",
+   "text": "安装",
+   "lang": "zh",
+   "seconds": 2.712,
+   "ok": true
+  },
+  "zh|类似": {
+   "file": "c9ec7c5e.mp3",
+   "text": "类似",
+   "lang": "zh",
+   "seconds": 2.856,
+   "ok": true
+  },
+  "zh|驾驶员": {
+   "file": "2e61dae1.mp3",
+   "text": "驾驶员",
+   "lang": "zh",
+   "seconds": 3.216,
+   "ok": true
+  },
+  "zh|嘴巴": {
+   "file": "60dadfb4.mp3",
+   "text": "嘴巴",
+   "lang": "zh",
+   "seconds": 2.712,
+   "ok": true
+  },
+  "zh|依靠": {
+   "file": "b7886b7c.mp3",
+   "text": "依靠",
+   "lang": "zh",
+   "seconds": 2.712,
+   "ok": true
+  },
+  "zh|帽子": {
+   "file": "ff8cd5df.mp3",
+   "text": "帽子",
+   "lang": "zh",
+   "seconds": 2.688,
+   "ok": true
+  },
+  "zh|脑袋": {
+   "file": "c9573ac3.mp3",
+   "text": "脑袋",
+   "lang": "zh",
+   "seconds": 2.664,
+   "ok": true
+  },
+  "zh|舒服": {
+   "file": "0b83db2a.mp3",
+   "text": "舒服",
+   "lang": "zh",
+   "seconds": 2.952,
+   "ok": true
+  },
+  "zh|香蕉": {
+   "file": "72e3e609.mp3",
+   "text": "香蕉",
+   "lang": "zh",
+   "seconds": 2.856,
+   "ok": true
+  },
+  "zh|假如": {
+   "file": "4443dfc3.mp3",
+   "text": "假如",
+   "lang": "zh",
+   "seconds": 2.736,
+   "ok": true
+  },
+  "zh|设法": {
+   "file": "4373595b.mp3",
+   "text": "设法",
+   "lang": "zh",
+   "seconds": 2.88,
+   "ok": true
+  },
+  "zh|懂事": {
+   "file": "06c1e8cf.mp3",
+   "text": "懂事",
+   "lang": "zh",
+   "seconds": 2.784,
+   "ok": true
+  },
+  "zh|圆筒": {
+   "file": "4b60a724.mp3",
+   "text": "圆筒",
+   "lang": "zh",
+   "seconds": 2.808,
+   "ok": true
+  },
+  "zh|各式各样": {
+   "file": "67cc1e10.mp3",
+   "text": "各式各样",
+   "lang": "zh",
+   "seconds": 3.336,
+   "ok": true
+  },
+  "zh|摆放": {
+   "file": "9e52cf56.mp3",
+   "text": "摆放",
+   "lang": "zh",
+   "seconds": 2.712,
+   "ok": true
+  },
+  "zh|玻璃": {
+   "file": "d486a3ed.mp3",
+   "text": "玻璃",
+   "lang": "zh",
+   "seconds": 2.592,
+   "ok": true
+  },
+  "zh|广告": {
+   "file": "c6c23e38.mp3",
+   "text": "广告",
+   "lang": "zh",
+   "seconds": 2.712,
+   "ok": true
+  },
+  "zh|改变": {
+   "file": "9107892e.mp3",
+   "text": "改变",
+   "lang": "zh",
+   "seconds": 2.736,
+   "ok": true
+  },
+  "zh|扣子": {
+   "file": "c468b71d.mp3",
+   "text": "扣子",
+   "lang": "zh",
+   "seconds": 2.712,
+   "ok": true
+  },
+  "zh|提纲": {
+   "file": "80cdd777.mp3",
+   "text": "提纲",
+   "lang": "zh",
+   "seconds": 2.712,
+   "ok": true
+  },
+  "zh|挨揍": {
+   "file": "d0900729.mp3",
+   "text": "挨揍",
+   "lang": "zh",
+   "seconds": 2.808,
+   "ok": true
+  },
+  "zh|生锈": {
+   "file": "712fa38e.mp3",
+   "text": "生锈",
+   "lang": "zh",
+   "seconds": 2.928,
+   "ok": true
+  },
+  "zh|泡沫": {
+   "file": "344e4f3a.mp3",
+   "text": "泡沫",
+   "lang": "zh",
+   "seconds": 2.736,
+   "ok": true
+  },
+  "zh|矿物": {
+   "file": "786f90f7.mp3",
+   "text": "矿物",
+   "lang": "zh",
+   "seconds": 2.64,
+   "ok": true
+  },
+  "zh|综合": {
+   "file": "52750ee0.mp3",
+   "text": "综合",
+   "lang": "zh",
+   "seconds": 2.856,
+   "ok": true
+  },
+  "zh|氧气": {
+   "file": "2d544656.mp3",
+   "text": "氧气",
+   "lang": "zh",
+   "seconds": 2.904,
+   "ok": true
+  },
+  "zh|俱乐部": {
+   "file": "c6dda3bc.mp3",
+   "text": "俱乐部",
+   "lang": "zh",
+   "seconds": 2.976,
+   "ok": true
+  },
+  "zh|残阳": {
+   "file": "e3003a74.mp3",
+   "text": "残阳",
+   "lang": "zh",
+   "seconds": 2.856,
+   "ok": true
+  },
+  "zh|铺开": {
+   "file": "c7cafa28.mp3",
+   "text": "铺开",
+   "lang": "zh",
+   "seconds": 2.712,
+   "ok": true
+  },
+  "zh|墙壁": {
+   "file": "8b4735b4.mp3",
+   "text": "墙壁",
+   "lang": "zh",
+   "seconds": 2.784,
+   "ok": true
+  },
+  "zh|横竖": {
+   "file": "6b6260cd.mp3",
+   "text": "横竖",
+   "lang": "zh",
+   "seconds": 2.784,
+   "ok": true
+  },
+  "zh|侧面": {
+   "file": "ede60fe4.mp3",
+   "text": "侧面",
+   "lang": "zh",
+   "seconds": 2.784,
+   "ok": true
+  },
+  "zh|山峰": {
+   "file": "317cb12e.mp3",
+   "text": "山峰",
+   "lang": "zh",
+   "seconds": 2.856,
+   "ok": true
+  },
+  "zh|庐山": {
+   "file": "155cd903.mp3",
+   "text": "庐山",
+   "lang": "zh",
+   "seconds": 2.76,
+   "ok": true
+  },
+  "zh|边缘": {
+   "file": "f82d141b.mp3",
+   "text": "边缘",
+   "lang": "zh",
+   "seconds": 2.76,
+   "ok": true
+  },
+  "zh|梅花": {
+   "file": "19bbbabd.mp3",
+   "text": "梅花",
+   "lang": "zh",
+   "seconds": 2.736,
+   "ok": true
+  },
+  "zh|投降": {
+   "file": "816669d1.mp3",
+   "text": "投降",
+   "lang": "zh",
+   "seconds": 2.808,
+   "ok": true
+  },
+  "zh|文章": {
+   "file": "b7f83384.mp3",
+   "text": "文章",
+   "lang": "zh",
+   "seconds": 2.664,
+   "ok": true
+  },
+  "zh|运输": {
+   "file": "900ad39f.mp3",
+   "text": "运输",
+   "lang": "zh",
+   "seconds": 2.784,
+   "ok": true
+  },
+  "zh|爬山虎": {
+   "file": "8cae5ae2.mp3",
+   "text": "爬山虎",
+   "lang": "zh",
+   "seconds": 3.312,
+   "ok": true
+  },
+  "zh|操场": {
+   "file": "5757291a.mp3",
+   "text": "操场",
+   "lang": "zh",
+   "seconds": 2.808,
+   "ok": true
+  },
+  "zh|新鲜": {
+   "file": "8cf7d8c8.mp3",
+   "text": "新鲜",
+   "lang": "zh",
+   "seconds": 2.88,
+   "ok": true
+  },
+  "zh|均匀": {
+   "file": "62ea6df7.mp3",
+   "text": "均匀",
+   "lang": "zh",
+   "seconds": 2.712,
+   "ok": true
+  },
+  "zh|空隙": {
+   "file": "048fa8f5.mp3",
+   "text": "空隙",
+   "lang": "zh",
+   "seconds": 2.784,
+   "ok": true
+  },
+  "zh|叶柄": {
+   "file": "7b749ff2.mp3",
+   "text": "叶柄",
+   "lang": "zh",
+   "seconds": 2.712,
+   "ok": true
+  },
+  "zh|触角": {
+   "file": "7f334cd7.mp3",
+   "text": "触角",
+   "lang": "zh",
+   "seconds": 2.736,
+   "ok": true
+  },
+  "zh|弯曲": {
+   "file": "b1f4fb2c.mp3",
+   "text": "弯曲",
+   "lang": "zh",
+   "seconds": 2.784,
+   "ok": true
+  },
+  "zh|细小": {
+   "file": "7513159f.mp3",
+   "text": "细小",
+   "lang": "zh",
+   "seconds": 2.856,
+   "ok": true
+  },
+  "zh|痕迹": {
+   "file": "aa5d0842.mp3",
+   "text": "痕迹",
+   "lang": "zh",
+   "seconds": 2.808,
+   "ok": true
+  },
+  "zh|瞧不起": {
+   "file": "e4001ae8.mp3",
+   "text": "瞧不起",
+   "lang": "zh",
+   "seconds": 3.24,
+   "ok": true
+  },
+  "zh|牢固": {
+   "file": "8705692d.mp3",
+   "text": "牢固",
+   "lang": "zh",
+   "seconds": 2.712,
+   "ok": true
+  },
+  "zh|休想": {
+   "file": "ec64eae0.mp3",
+   "text": "休想",
+   "lang": "zh",
+   "seconds": 2.856,
+   "ok": true
+  },
+  "zh|茎叶": {
+   "file": "299fc625.mp3",
+   "text": "茎叶",
+   "lang": "zh",
+   "seconds": 2.736,
+   "ok": true
+  },
+  "zh|枯萎": {
+   "file": "cd7dd3dc.mp3",
+   "text": "枯萎",
+   "lang": "zh",
+   "seconds": 2.712,
+   "ok": true
+  },
+  "zh|住宅": {
+   "file": "2e96ead3.mp3",
+   "text": "住宅",
+   "lang": "zh",
+   "seconds": 2.76,
+   "ok": true
+  },
+  "zh|毫不": {
+   "file": "459ec28a.mp3",
+   "text": "毫不",
+   "lang": "zh",
+   "seconds": 2.712,
+   "ok": true
+  },
+  "zh|选择": {
+   "file": "dc157457.mp3",
+   "text": "选择",
+   "lang": "zh",
+   "seconds": 2.784,
+   "ok": true
+  },
+  "zh|住址": {
+   "file": "43752537.mp3",
+   "text": "住址",
+   "lang": "zh",
+   "seconds": 2.808,
+   "ok": true
+  },
+  "zh|洞穴": {
+   "file": "e52a7ea5.mp3",
+   "text": "洞穴",
+   "lang": "zh",
+   "seconds": 2.88,
+   "ok": true
+  },
+  "zh|大厅": {
+   "file": "c86a54cd.mp3",
+   "text": "大厅",
+   "lang": "zh",
+   "seconds": 2.736,
+   "ok": true
+  },
+  "zh|专家": {
+   "file": "5fae0edd.mp3",
+   "text": "专家",
+   "lang": "zh",
+   "seconds": 2.736,
+   "ok": true
+  },
+  "zh|柔弱": {
+   "file": "ca5e874a.mp3",
+   "text": "柔弱",
+   "lang": "zh",
+   "seconds": 2.808,
+   "ok": true
+  },
+  "zh|惊奇": {
+   "file": "48e973eb.mp3",
+   "text": "惊奇",
+   "lang": "zh",
+   "seconds": 2.904,
+   "ok": true
+  },
+  "zh|内部": {
+   "file": "848250a3.mp3",
+   "text": "内部",
+   "lang": "zh",
+   "seconds": 2.736,
+   "ok": true
+  },
+  "zh|光滑": {
+   "file": "3bf1e9e8.mp3",
+   "text": "光滑",
+   "lang": "zh",
+   "seconds": 2.736,
+   "ok": true
+  },
+  "zh|修理": {
+   "file": "78b85c11.mp3",
+   "text": "修理",
+   "lang": "zh",
+   "seconds": 2.808,
+   "ok": true
+  },
+  "zh|清洁": {
+   "file": "1298d5af.mp3",
+   "text": "清洁",
+   "lang": "zh",
+   "seconds": 2.784,
+   "ok": true
+  },
+  "zh|较大": {
+   "file": "eb5a070e.mp3",
+   "text": "较大",
+   "lang": "zh",
+   "seconds": 2.64,
+   "ok": true
+  },
+  "zh|增长": {
+   "file": "7cd8cb6b.mp3",
+   "text": "增长",
+   "lang": "zh",
+   "seconds": 2.736,
+   "ok": true
+  },
+  "zh|宇宙": {
+   "file": "3e24de4f.mp3",
+   "text": "宇宙",
+   "lang": "zh",
+   "seconds": 2.712,
+   "ok": true
+  },
+  "zh|醒来": {
+   "file": "396d72f8.mp3",
+   "text": "醒来",
+   "lang": "zh",
+   "seconds": 2.664,
+   "ok": true
+  },
+  "zh|黑乎乎": {
+   "file": "108aabde.mp3",
+   "text": "黑乎乎",
+   "lang": "zh",
+   "seconds": 3.168,
+   "ok": true
+  },
+  "zh|翻身": {
+   "file": "0c90562b.mp3",
+   "text": "翻身",
+   "lang": "zh",
+   "seconds": 2.808,
+   "ok": true
+  },
+  "zh|缓缓": {
+   "file": "75c59b49.mp3",
+   "text": "缓缓",
+   "lang": "zh",
+   "seconds": 2.856,
+   "ok": true
+  },
+  "zh|上升": {
+   "file": "bde6b9d0.mp3",
+   "text": "上升",
+   "lang": "zh",
+   "seconds": 2.904,
+   "ok": true
+  },
+  "zh|下降": {
+   "file": "31690bff.mp3",
+   "text": "下降",
+   "lang": "zh",
+   "seconds": 2.856,
+   "ok": true
+  },
+  "zh|随着": {
+   "file": "bc34c279.mp3",
+   "text": "随着",
+   "lang": "zh",
+   "seconds": 2.88,
+   "ok": true
+  },
+  "zh|重新": {
+   "file": "d3a4ef6c.mp3",
+   "text": "重新",
+   "lang": "zh",
+   "seconds": 2.784,
+   "ok": true
+  },
+  "zh|精疲力竭": {
+   "file": "a86bf5c2.mp3",
+   "text": "精疲力竭",
+   "lang": "zh",
+   "seconds": 3.744,
+   "ok": true
+  },
+  "zh|照耀": {
+   "file": "274c59d2.mp3",
+   "text": "照耀",
+   "lang": "zh",
+   "seconds": 2.736,
+   "ok": true
+  },
+  "zh|四肢": {
+   "file": "5f409372.mp3",
+   "text": "四肢",
+   "lang": "zh",
+   "seconds": 2.952,
+   "ok": true
+  },
+  "zh|奔流不息": {
+   "file": "beafa718.mp3",
+   "text": "奔流不息",
+   "lang": "zh",
+   "seconds": 3.528,
+   "ok": true
+  },
+  "zh|茂盛": {
+   "file": "3aa7bfac.mp3",
+   "text": "茂盛",
+   "lang": "zh",
+   "seconds": 2.76,
+   "ok": true
+  },
+  "zh|创造": {
+   "file": "eb69eb7c.mp3",
+   "text": "创造",
+   "lang": "zh",
+   "seconds": 2.736,
+   "ok": true
+  },
+  "zh|轻重": {
+   "file": "aca242d2.mp3",
+   "text": "轻重",
+   "lang": "zh",
+   "seconds": 2.76,
+   "ok": true
+  },
+  "zh|踏步": {
+   "file": "1aed21ea.mp3",
+   "text": "踏步",
+   "lang": "zh",
+   "seconds": 2.736,
+   "ok": true
+  },
+  "zh|丈量": {
+   "file": "1132ac50.mp3",
+   "text": "丈量",
+   "lang": "zh",
+   "seconds": 2.712,
+   "ok": true
+  },
+  "zh|名曰": {
+   "file": "3d888564.mp3",
+   "text": "名曰",
+   "lang": "zh",
+   "seconds": 2.712,
+   "ok": true
+  },
+  "zh|溺水": {
+   "file": "19d11d55.mp3",
+   "text": "溺水",
+   "lang": "zh",
+   "seconds": 2.856,
+   "ok": true
+  },
+  "zh|衔着": {
+   "file": "a49cadce.mp3",
+   "text": "衔着",
+   "lang": "zh",
+   "seconds": 2.88,
+   "ok": true
+  },
+  "zh|精卫填海": {
+   "file": "3da41b32.mp3",
+   "text": "精卫填海",
+   "lang": "zh",
+   "seconds": 3.648,
+   "ok": true
+  },
+  "zh|喷射": {
+   "file": "b513a7c6.mp3",
+   "text": "喷射",
+   "lang": "zh",
+   "seconds": 2.784,
+   "ok": true
+  },
+  "zh|驱赶": {
+   "file": "c2367ef9.mp3",
+   "text": "驱赶",
+   "lang": "zh",
+   "seconds": 2.856,
+   "ok": true
+  },
+  "zh|严厉": {
+   "file": "1fc46c46.mp3",
+   "text": "严厉",
+   "lang": "zh",
+   "seconds": 2.712,
+   "ok": true
+  },
+  "zh|立即": {
+   "file": "a6eda6d7.mp3",
+   "text": "立即",
+   "lang": "zh",
+   "seconds": 2.856,
+   "ok": true
+  },
+  "zh|执行": {
+   "file": "a8eae446.mp3",
+   "text": "执行",
+   "lang": "zh",
+   "seconds": 2.856,
+   "ok": true
+  },
+  "zh|敬佩": {
+   "file": "7e6b2c82.mp3",
+   "text": "敬佩",
+   "lang": "zh",
+   "seconds": 2.784,
+   "ok": true
+  },
+  "zh|归还": {
+   "file": "99dd7e8e.mp3",
+   "text": "归还",
+   "lang": "zh",
+   "seconds": 2.808,
+   "ok": true
+  },
+  "zh|坚定": {
+   "file": "92ac95aa.mp3",
+   "text": "坚定",
+   "lang": "zh",
+   "seconds": 2.688,
+   "ok": true
+  },
+  "zh|忍受": {
+   "file": "7a61aee9.mp3",
+   "text": "忍受",
+   "lang": "zh",
+   "seconds": 2.904,
+   "ok": true
+  },
+  "zh|遭受": {
+   "file": "baea1d13.mp3",
+   "text": "遭受",
+   "lang": "zh",
+   "seconds": 2.808,
+   "ok": true
+  },
+  "zh|尽管": {
+   "file": "efe10565.mp3",
+   "text": "尽管",
+   "lang": "zh",
+   "seconds": 2.856,
+   "ok": true
+  },
+  "zh|屈服": {
+   "file": "fd8165c6.mp3",
+   "text": "屈服",
+   "lang": "zh",
+   "seconds": 2.928,
+   "ok": true
+  },
+  "zh|肝脏": {
+   "file": "b82c576b.mp3",
+   "text": "肝脏",
+   "lang": "zh",
+   "seconds": 2.736,
+   "ok": true
+  },
+  "zh|承受": {
+   "file": "10af5f92.mp3",
+   "text": "承受",
+   "lang": "zh",
+   "seconds": 2.856,
+   "ok": true
+  },
+  "zh|既然": {
+   "file": "e4b63083.mp3",
+   "text": "既然",
+   "lang": "zh",
+   "seconds": 2.616,
+   "ok": true
+  },
+  "zh|收获": {
+   "file": "f3f2224a.mp3",
+   "text": "收获",
+   "lang": "zh",
+   "seconds": 2.952,
+   "ok": true
+  },
+  "zh|花卉": {
+   "file": "f75d4847.mp3",
+   "text": "花卉",
+   "lang": "zh",
+   "seconds": 2.808,
+   "ok": true
+  },
+  "zh|玫瑰": {
+   "file": "f9dbc22f.mp3",
+   "text": "玫瑰",
+   "lang": "zh",
+   "seconds": 2.736,
+   "ok": true
+  },
+  "zh|牡丹": {
+   "file": "4c63d4a7.mp3",
+   "text": "牡丹",
+   "lang": "zh",
+   "seconds": 2.592,
+   "ok": true
+  },
+  "zh|花蕾": {
+   "file": "a5a3f6a1.mp3",
+   "text": "花蕾",
+   "lang": "zh",
+   "seconds": 2.76,
+   "ok": true
+  },
+  "zh|茉莉": {
+   "file": "196b668d.mp3",
+   "text": "茉莉",
+   "lang": "zh",
+   "seconds": 2.64,
+   "ok": true
+  },
+  "zh|海棠": {
+   "file": "58f1aee2.mp3",
+   "text": "海棠",
+   "lang": "zh",
+   "seconds": 2.736,
+   "ok": true
+  },
+  "en|classroom": {
+   "file": "5d2dfbc1.mp3",
+   "text": "classroom",
+   "lang": "en",
+   "seconds": 3.6,
+   "ok": true
+  },
+  "en|keep … tidy": {
+   "file": "493cf431.mp3",
+   "text": "keep … tidy",
+   "lang": "en",
+   "seconds": 3.84,
+   "ok": true
+  },
+  "en|sports field": {
+   "file": "7065ed79.mp3",
+   "text": "sports field",
+   "lang": "en",
+   "seconds": 4.272,
+   "ok": true
+  },
+  "en|hall": {
+   "file": "6515efed.mp3",
+   "text": "hall",
+   "lang": "en",
+   "seconds": 3.264,
+   "ok": true
+  },
+  "en|begin": {
+   "file": "f6e21487.mp3",
+   "text": "begin",
+   "lang": "en",
+   "seconds": 3.384,
+   "ok": true
+  },
+  "en|project": {
+   "file": "11ae83c3.mp3",
+   "text": "project",
+   "lang": "en",
+   "seconds": 3.6,
+   "ok": true
+  },
+  "en|reading room": {
+   "file": "d5264c91.mp3",
+   "text": "reading room",
+   "lang": "en",
+   "seconds": 3.888,
+   "ok": true
+  },
+  "en|computer room": {
+   "file": "d115d972.mp3",
+   "text": "computer room",
+   "lang": "en",
+   "seconds": 4.128,
+   "ok": true
+  },
+  "en|let": {
+   "file": "173941cb.mp3",
+   "text": "let",
+   "lang": "en",
+   "seconds": 3.288,
+   "ok": true
+  },
+  "en|bamboo": {
+   "file": "0fdd041e.mp3",
+   "text": "bamboo",
+   "lang": "en",
+   "seconds": 3.648,
+   "ok": true
+  },
+  "en|school building": {
+   "file": "2b04d736.mp3",
+   "text": "school building",
+   "lang": "en",
+   "seconds": 4.176,
+   "ok": true
+  },
+  "en|tall": {
+   "file": "ffd9fe39.mp3",
+   "text": "tall",
+   "lang": "en",
+   "seconds": 3.264,
+   "ok": true
+  },
+  "en|believe it or not": {
+   "file": "e10c0a31.mp3",
+   "text": "believe it or not",
+   "lang": "en",
+   "seconds": 4.272,
+   "ok": true
+  },
+  "en|student": {
+   "file": "d41d0771.mp3",
+   "text": "student",
+   "lang": "en",
+   "seconds": 3.648,
+   "ok": true
+  },
+  "en|art room": {
+   "file": "60a2aed2.mp3",
+   "text": "art room",
+   "lang": "en",
+   "seconds": 3.504,
+   "ok": true
+  },
+  "en|library": {
+   "file": "2b2fd345.mp3",
+   "text": "library",
+   "lang": "en",
+   "seconds": 3.912,
+   "ok": true
+  },
+  "en|lovely": {
+   "file": "38a54411.mp3",
+   "text": "lovely",
+   "lang": "en",
+   "seconds": 3.6,
+   "ok": true
+  },
+  "en|great": {
+   "file": "0478d0f3.mp3",
+   "text": "great",
+   "lang": "en",
+   "seconds": 3.312,
+   "ok": true
+  },
+  "en|often": {
+   "file": "1153aefa.mp3",
+   "text": "often",
+   "lang": "en",
+   "seconds": 3.384,
+   "ok": true
+  },
+  "en|always": {
+   "file": "ff2b4f9f.mp3",
+   "text": "always",
+   "lang": "en",
+   "seconds": 3.744,
+   "ok": true
+  },
+  "en|interesting": {
+   "file": "30867550.mp3",
+   "text": "interesting",
+   "lang": "en",
+   "seconds": 3.96,
+   "ok": true
+  },
+  "en|helpful": {
+   "file": "775c90b8.mp3",
+   "text": "helpful",
+   "lang": "en",
+   "seconds": 3.552,
+   "ok": true
+  },
+  "en|English": {
+   "file": "9ecf4e82.mp3",
+   "text": "English",
+   "lang": "en",
+   "seconds": 3.6,
+   "ok": true
+  },
+  "en|duck": {
+   "file": "e759e7db.mp3",
+   "text": "duck",
+   "lang": "en",
+   "seconds": 3.168,
+   "ok": true
+  },
+  "en|different": {
+   "file": "c5c6fdef.mp3",
+   "text": "different",
+   "lang": "en",
+   "seconds": 3.528,
+   "ok": true
+  },
+  "en|black": {
+   "file": "3e0b81cd.mp3",
+   "text": "black",
+   "lang": "en",
+   "seconds": 3.312,
+   "ok": true
+  },
+  "en|white": {
+   "file": "e220df6f.mp3",
+   "text": "white",
+   "lang": "en",
+   "seconds": 3.264,
+   "ok": true
+  },
+  "en|hometown": {
+   "file": "e4cdac9d.mp3",
+   "text": "hometown",
+   "lang": "en",
+   "seconds": 3.816,
+   "ok": true
+  },
+  "en|monkey": {
+   "file": "a9279317.mp3",
+   "text": "monkey",
+   "lang": "en",
+   "seconds": 3.528,
+   "ok": true
+  },
+  "en|grey": {
+   "file": "67bb02bd.mp3",
+   "text": "grey",
+   "lang": "en",
+   "seconds": 3.288,
+   "ok": true
+  },
+  "en|trunk": {
+   "file": "71545f38.mp3",
+   "text": "trunk",
+   "lang": "en",
+   "seconds": 3.288,
+   "ok": true
+  },
+  "en|family": {
+   "file": "0700f176.mp3",
+   "text": "family",
+   "lang": "en",
+   "seconds": 3.648,
+   "ok": true
+  },
+  "en|India": {
+   "file": "67e64745.mp3",
+   "text": "India",
+   "lang": "en",
+   "seconds": 3.552,
+   "ok": true
+  },
+  "en|Africa": {
+   "file": "bfad1614.mp3",
+   "text": "Africa",
+   "lang": "en",
+   "seconds": 3.648,
+   "ok": true
+  },
+  "en|baby elephant": {
+   "file": "d23b13db.mp3",
+   "text": "baby elephant",
+   "lang": "en",
+   "seconds": 4.344,
+   "ok": true
+  },
+  "en|tail": {
+   "file": "19ceee34.mp3",
+   "text": "tail",
+   "lang": "en",
+   "seconds": 3.384,
+   "ok": true
+  },
+  "en|kind": {
+   "file": "6ca6c114.mp3",
+   "text": "kind",
+   "lang": "en",
+   "seconds": 3.36,
+   "ok": true
+  },
+  "en|polar bear": {
+   "file": "0bc5babc.mp3",
+   "text": "polar bear",
+   "lang": "en",
+   "seconds": 3.888,
+   "ok": true
+  },
+  "en|the North Pole": {
+   "file": "dc730b6c.mp3",
+   "text": "the North Pole",
+   "lang": "en",
+   "seconds": 4.056,
+   "ok": true
+  },
+  "en|warm": {
+   "file": "bb43be5f.mp3",
+   "text": "warm",
+   "lang": "en",
+   "seconds": 3.312,
+   "ok": true
+  },
+  "en|bed": {
+   "file": "369ac361.mp3",
+   "text": "bed",
+   "lang": "en",
+   "seconds": 3.072,
+   "ok": true
+  },
+  "en|yellow": {
+   "file": "c5eb08d2.mp3",
+   "text": "yellow",
+   "lang": "en",
+   "seconds": 3.456,
+   "ok": true
+  },
+  "en|invitation": {
+   "file": "b6645071.mp3",
+   "text": "invitation",
+   "lang": "en",
+   "seconds": 4.056,
+   "ok": true
+  },
+  "en|party": {
+   "file": "71e5526e.mp3",
+   "text": "party",
+   "lang": "en",
+   "seconds": 3.288,
+   "ok": true
+  },
+  "en|activity": {
+   "file": "9540ebbf.mp3",
+   "text": "activity",
+   "lang": "en",
+   "seconds": 3.864,
+   "ok": true
+  },
+  "en|share a cake": {
+   "file": "530c95be.mp3",
+   "text": "share a cake",
+   "lang": "en",
+   "seconds": 4.224,
+   "ok": true
+  },
+  "en|bring": {
+   "file": "4084a13a.mp3",
+   "text": "bring",
+   "lang": "en",
+   "seconds": 3.144,
+   "ok": true
+  },
+  "en|letter": {
+   "file": "fe9b709e.mp3",
+   "text": "letter",
+   "lang": "en",
+   "seconds": 3.264,
+   "ok": true
+  },
+  "en|child": {
+   "file": "b60d4b08.mp3",
+   "text": "child",
+   "lang": "en",
+   "seconds": 3.432,
+   "ok": true
+  },
+  "en|tradition": {
+   "file": "678a4956.mp3",
+   "text": "tradition",
+   "lang": "en",
+   "seconds": 3.696,
+   "ok": true
+  },
+  "en|love": {
+   "file": "fade042a.mp3",
+   "text": "love",
+   "lang": "en",
+   "seconds": 3.456,
+   "ok": true
+  },
+  "en|bowl": {
+   "file": "66bc55b6.mp3",
+   "text": "bowl",
+   "lang": "en",
+   "seconds": 3.192,
+   "ok": true
+  },
+  "en|egg": {
+   "file": "fdd63a53.mp3",
+   "text": "egg",
+   "lang": "en",
+   "seconds": 3.264,
+   "ok": true
+  },
+  "en|wish": {
+   "file": "72e6c221.mp3",
+   "text": "wish",
+   "lang": "en",
+   "seconds": 3.336,
+   "ok": true
+  },
+  "en|soup": {
+   "file": "8f4fa009.mp3",
+   "text": "soup",
+   "lang": "en",
+   "seconds": 3.456,
+   "ok": true
+  },
+  "en|noodles": {
+   "file": "7793f7c2.mp3",
+   "text": "noodles",
+   "lang": "en",
+   "seconds": 3.528,
+   "ok": true
+  }
+ }
+}

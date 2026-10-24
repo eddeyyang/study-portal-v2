@@ -30,6 +30,9 @@
 | 外观 | 家长 2026-10-22 决定：审美和配色以线上原版为准，先不改网站大框架。首页用家长选定的“今日天空”（`assets/portal-theme.css` 加 `assets/portal.js` 的首页部分，天空随真实时间变化）；今日、学科、全部内容三页套用同一份样式；日程、家长页、错题本等工具页是线上原版。Claude 做过的“作业本”“书桌”两版已撤回，只留在 Git 历史里 |
 | `apps/audio/` | 朗读音频。文件名是对 `语言|文字` 做 FNV-1a 得到的 8 位十六进制，与页面里的 `audioHash()` 一致 |
 | `apps/drone/` | 无人机二级航线，Claude 重做（家长 2026-10-23 交办），v2 自有、同步工具不碰。门户里的二级入口由 `assets/v2-course-routes.js` 指过来（`assets/portal.js` 里一行接入）。学习记录只存浏览器，按孩子和正式/测试分开的键保存。科目一、科目二的绕法按官方示意图理解，待教练确认 |
+| `apps/v2/dictation/` | 听写台，Claude 重做（家长 2026-10-24 交办，替代正式站的《期中听写桌》）。流程：选课 → 先看一遍 → 立刻计时逐词报读（屏幕不显示词） → 对答案点错 → 错词再默。词库仍读同步来的 `data/midterm-dictation-20261024.json`；录音在 `apps/audio/v2-dictation/`（`tools/dictation-audio/make_audio.py` 用微软神经网络语音逐词生成，文件名 FNV-1a(`zh|词` / `en|word`)，`_manifest.json` 有时长；只做了机器检查，未人耳逐条试听）。没有录音的词明示家长口报，不用浏览器语音兜底。记录键 `sp2.dictation:<who>:<subject>:<formal|test>` |
+| `apps/v2/math-mistakes/` | 两孩数学错题本，Claude 重做（2026-10-24，替代正式站的两个 `*_math_mistakes_20261024.html`）。每天 10 题，先独立做 → 错一次给关键关系 → 再错看步骤后回原题 → 不同两天独立做对才过关。题库读同步来的 `data/learning/<who>_math_mistakes_20261024.json`。记录键 `sp2.math-mistakes:<who>:<formal|test>` |
+| `assets/v2-course-routes.js` | v2 自有：把门户目录里的入口改指向上面这些 Claude 重做的应用（无人机二级、听写、数学错题本）。`mistakes.html` 里的错题本链接也改指 v2（已 `--mark-custom`） |
 | `archive/2026-07-local-snapshot/` | 7 月本地快照，只读参考，不是当前学情 |
 | `MISSING.md` | 线上本来就缺、仓库也没有的页面和音频 |
 | `tools/upstream-sync/` | 正式站 → v2 的内容同步工具、同步状态和每日记录（`log/`）；`conflicts/` 里有东西就是有待人处理的合并冲突 |
