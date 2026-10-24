@@ -1,5 +1,101 @@
 [
   {
+    "child": "kenton",
+    "subject": "数学",
+    "title": "哥哥 · 数学错题本",
+    "file": "apps/kenton_math_mistakes_20261024.html",
+    "added": "2026-10-24",
+    "updated": "2026-10-24",
+    "navigation": {
+      "state": "active",
+      "kind": "lesson",
+      "period": "2026-autumn",
+      "group": "mistakes",
+      "displayTitle": "哥哥 · 数学错题本",
+      "summary": "按知识点找题，直接重做；重要题优先，错后看方法、回原题，再安排复查。"
+    }
+  },
+  {
+    "child": "eddey",
+    "subject": "数学",
+    "title": "弟弟 · 数学错题本",
+    "file": "apps/eddey_math_mistakes_20261024.html",
+    "added": "2026-10-24",
+    "updated": "2026-10-24",
+    "navigation": {
+      "state": "active",
+      "kind": "lesson",
+      "period": "2026-autumn",
+      "group": "mistakes",
+      "displayTitle": "弟弟 · 数学错题本",
+      "summary": "按知识点找题，直接重做；重要题优先，错后看方法、回原题，再安排复查。"
+    }
+  },
+  {
+    "child": "eddey",
+    "subject": "英语",
+    "title": "弟弟期中听写桌 · 英语",
+    "file": "apps/midterm-dictation-20261024.html?child=eddey&subject=english",
+    "added": "2026-10-24",
+    "updated": "2026-10-24",
+    "navigation": {
+      "period": "2026-autumn",
+      "state": "active",
+      "kind": "lesson",
+      "group": "words",
+      "displayTitle": "期中听写桌 · 英语",
+      "summary": "前四单元词库、逐词报读、遮挡默写与错词复查。音频待验收。"
+    }
+  },
+  {
+    "child": "eddey",
+    "subject": "语文",
+    "title": "弟弟期中听写桌 · 语文",
+    "file": "apps/midterm-dictation-20261024.html?child=eddey&subject=chinese",
+    "added": "2026-10-24",
+    "updated": "2026-10-24",
+    "navigation": {
+      "period": "2026-autumn",
+      "state": "active",
+      "kind": "lesson",
+      "group": "words",
+      "displayTitle": "期中听写桌 · 语文",
+      "summary": "前四单元词库、逐词报读、遮挡默写与错词复查。音频待验收。"
+    }
+  },
+  {
+    "child": "kenton",
+    "subject": "英语",
+    "title": "哥哥期中听写桌 · 英语",
+    "file": "apps/midterm-dictation-20261024.html?child=kenton&subject=english",
+    "added": "2026-10-24",
+    "updated": "2026-10-24",
+    "navigation": {
+      "period": "2026-autumn",
+      "state": "active",
+      "kind": "lesson",
+      "group": "words",
+      "displayTitle": "期中听写桌 · 英语",
+      "summary": "前四单元词库、逐词报读、遮挡默写与错词复查。音频待验收。"
+    }
+  },
+  {
+    "child": "kenton",
+    "subject": "语文",
+    "title": "哥哥期中听写桌 · 语文",
+    "file": "apps/midterm-dictation-20261024.html?child=kenton&subject=chinese",
+    "added": "2026-10-24",
+    "updated": "2026-10-24",
+    "navigation": {
+      "period": "2026-autumn",
+      "state": "active",
+      "kind": "lesson",
+      "group": "words",
+      "displayTitle": "期中听写桌 · 语文",
+      "summary": "前四单元词库、逐词报读、遮挡默写与错词复查。音频待验收。"
+    }
+  },
+  {
     "child": "eddey",
     "subject": "英语",
     "title": "弟弟 · U4生日计划室",
@@ -1972,4 +2068,3 @@
     "added": "2026-08-26"
   }
 ]
-

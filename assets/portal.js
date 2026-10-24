@@ -6,7 +6,7 @@ const page=document.body.dataset.portalPage||'home';
 const q=new URLSearchParams(location.search);
 const state={who:['kenton','eddey'].includes(q.get('who'))?q.get('who'):'both',subject:q.get('subject')||'',period:q.get('period')||'',group:q.get('group')||'',query:q.get('q')||''};
 const names={kenton:'哥哥 · Kenton',eddey:'弟弟 · Eddey',both:'两个人'};
-const groups={units:'教材单元',calculation:'计算练习',papers:'试卷与打印',words:'词汇与默写',reading:'阅读与背诵',speaking:'外教课复习',listening:'听力与播报',lessons:'专题学习'};
+const groups={mistakes:'错题复练',units:'教材单元',calculation:'计算练习',papers:'试卷与打印',words:'词汇与默写',reading:'阅读与背诵',speaking:'外教课复习',listening:'听力与播报',lessons:'专题学习'};
 let config,catalog;
 const esc=x=>String(x??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const svg=(body,cls='icon',view='0 0 24 24')=>`<svg class="${cls}" viewBox="${view}" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">${body}</svg>`;
@@ -103,7 +103,7 @@ function catalogPage(){
  if(!config.periods.some(p=>p.id===state.period)&&state.period!=='all')state.period=config.currentTerm.id;
  const s=config.subjects.find(s=>s.id===state.subject);
  document.title=(isSubject?s.label:'全部学习内容')+' · 家庭学习室';
- const collection=state.subject==='math'?[['units','教材单元'],['calculation','计算练习'],['papers','试卷与打印']]:state.subject==='english'?[['words','词汇与默写'],['speaking','外教课复习'],['listening','听力与播报']]:[];
+ const collection=state.subject==='math'?[['mistakes','错题复练'],['units','教材单元'],['calculation','计算练习'],['papers','试卷与打印']]:state.subject==='english'?[['words','词汇与默写'],['speaking','外教课复习'],['listening','听力与播报']]:[];
  root.innerHTML=`<nav class="breadcrumbs" aria-label="当前位置"><a href="index.html">学习室</a><span>/</span><span>${esc(isSubject?s.label:'全部学习内容')}</span></nav><header class="page-intro ${esc(state.subject)}"><div class="intro-copy"><span class="eyebrow">${esc(config.currentTerm.label)} · 自己选内容</span><h1>${esc(isSubject?s.label:'学习内容书架')}</h1><p>${esc(isSubject?s.tagline:'最近的学习在前面，以前的内容也都留着。')}</p></div>${art(isSubject?s.id:'chinese','intro-art')}</header><nav class="subject-nav" aria-label="切换学科">${config.subjects.map(s=>`<a href="${esc(subjectURL(s.id))}" ${s.id===state.subject?'aria-current="page"':''}>${esc(s.label)}</a>`).join('')}${!isSubject?'<button type="button" class="text-button" data-filter="subject" data-value="">全部学科</button>':''}</nav><div class="control-row"><div class="segmented" role="group" aria-label="选择孩子">${buttons([{id:'both',label:'两个人'},{id:'kenton',label:'哥哥 Kenton'},{id:'eddey',label:'弟弟 Eddey'}],'who')}</div><label class="search-box">${icon('search')}<span class="sr-only">搜索学习内容</span><input id="catalog-search" type="search" placeholder="找课文、单元或练习…" value="${esc(state.query)}" autocomplete="off"></label></div><div class="filter-line" role="group" aria-label="选择时段">${buttons([...config.periods.filter(x=>x.id!=='exam'),{id:'all',label:'全部时段'},{id:'exam',label:'备考归档'}],'period')}</div>${collection.length?`<nav class="collection-links" aria-label="${esc(s.label)}内容分类">${collection.map(([id,label])=>`<a class="collection-link" href="${esc(subjectURL(state.subject,{group:id,period:id==='units'?config.currentTerm.id:'all'}))}">${label}${arrow()}</a>`).join('')}</nav>`:''}<div id="group-filters" class="filter-line" role="group" aria-label="内容类型"></div><div id="catalog-results" aria-live="polite" aria-atomic="false"></div><details class="quiet-area"><summary>学习记录和其他资料</summary><div class="quiet-links">${state.who==='both'?'<a href="today.html?who=kenton">哥哥的学习室</a><a href="today.html?who=eddey">弟弟的学习室</a>':`<a href="mistakes.html?who=${state.who}">错题与复习</a>`}<a href="parent.html">学习记录与家长页</a><a href="${esc(libraryURL())}">全部学习内容</a></div></details>`;
  root.querySelector('#catalog-search').addEventListener('input',e=>{state.query=e.target.value;updateURL();renderResults();});
  renderResults();
@@ -147,4 +147,5 @@ async function load(){
 }
 load();
 })();
+
 

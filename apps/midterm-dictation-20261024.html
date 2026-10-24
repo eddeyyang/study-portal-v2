@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="study-portal-design" content="2.0">
+  <meta name="study-portal-child-answer" content="child-first-v1">
+  <meta name="study-portal-open-answer" content="required">
+  <meta name="lesson-audio" content="pending">
+  <title>期中听写桌 · Study Portal</title>
+  <link rel="stylesheet" href="../assets/midterm-dictation.css">
+  <style>:root{--tap:48px}.lesson-shell{max-width:760px}button,.button,select{min-height:var(--tap)}@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}</style>
+  <script>
+    window.DDLearningSyncConfig = {manualOnly:true};
+    const LESSON_BLUEPRINT = Object.freeze({
+      appId:'midterm-dictation-20261024',child:'both',courseDate:'2026-10-24',
+      source:'本学期教材词表、课后词语与已核教学资料；逐项出处见词库',
+      currentGap:'认得词不等于能在遮住答案时准确写出；已读、提示后改对与独立默对需分开。',
+      observableOutcome:'选择本人范围，听词或看词后遮挡，完成书写并逐字核对；错词在另一轮再次独立复查。',
+      essentialQuestion:'没有答案提示时，我能把听到或想到的词准确写出来吗？',
+      coreInsight:'听清词义，记住字形或字母顺序，再遮挡输出；核对差异才知道哪里需要重记。',
+      realMeaning:'把课本中会读的词变成能在听写与表达时独立写出的词。',
+      compressionPath:'看词或听词→遮住→独立写→逐字核对→只修错处→另轮再默。',
+      visibleMechanism:'同一词卡可展开、遮住、逐字对照，答案暴露状态跟随该题，不能抹掉提示记录。',
+      transferProof:'切换为乱序的错词复查，在另一轮不看答案写出；英文从声音线索切换到词义线索。',
+      knowledgeMechanism:'答案遮挡与字形、字母差异对照',primaryInteraction:'听写、纸笔自查和独立拼打',
+      childAnswerContract:'child-first-v1',childFirstLayerLimit:100,
+      escapePolicy:'repair-once-then-reveal-and-continue',maxBlockingAttempts:2,
+      masteryBoundary:'纸笔结果为本人自查；看答案后正确仅记为订正，不算独立；错词需不同回合两次独立通过才从待复习移出。',
+      audio:'pending',surprise:'遮挡词卡让同一个词从看得见变成能想起',surpriseTrigger:'孩子主动遮住答案，再独立写出',
+      phases:['teach','guided','recall','independent','repair','transfer']
+    });
+    const DAILY_SURPRISES = ['先读懂，再遮住。记住的是词，不是卡片的位置。','今天抓住一个容易漏写的地方，就有收获。','写完先别急着翻答案，自己检查一遍。','换个顺序再默一次，看看它还在不在脑海里。'];
+    function dailySurpriseKey(child){return LESSON_BLUEPRINT.appId+'|'+child+'|'+new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Shanghai'}).format(new Date());}
+  </script>
+  <script src="../assets/learning-sync.js" defer></script>
+  <script src="../assets/midterm-dictation.js" defer></script>
+</head>
+<body data-child="both">
+  <svg class="sprite" aria-hidden="true"><defs>
+    <symbol id="i-back" viewBox="0 0 24 24"><path d="m14 6-6 6 6 6M8 12h12"/></symbol>
+    <symbol id="i-audio" viewBox="0 0 24 24"><path d="M11 5 6 9H3v6h3l5 4V5ZM15 8a6 6 0 0 1 0 8m3-11a10 10 0 0 1 0 14"/></symbol>
+    <symbol id="i-eye" viewBox="0 0 24 24"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol>
+    <symbol id="i-book" viewBox="0 0 24 24"><path d="M12 6v15M3 3l9 3 9-3v15l-9 3-9-3V3Z"/></symbol>
+    <symbol id="i-repeat" viewBox="0 0 24 24"><path d="M20 7h-5m5 0V2M4 17h5m-5 0v5M20 7A9 9 0 0 0 4 8m0 9a9 9 0 0 0 16-1"/></symbol>
+  </defs></svg>
+  <div class="lesson-shell">
+    <header class="topbar">
+      <a id="portalBack" class="back-link" href="../index.html" aria-label="返回学习门户"><svg><use href="#i-back"/></svg></a>
+      <a id="homeLink" href="#" class="brand">STUDY PORTAL <span>复习小册</span></a>
+      <button id="parentOpen" class="quiet small-button">记录与设置</button>
+    </header>
+    <p id="notice" class="notice" role="status" hidden></p>
+    <p id="loading" class="loading">正在打开你的词语小册…</p>
+    <div id="app" hidden>
+      <div class="identity-row" id="identityRow">
+        <div class="switcher" role="group" aria-label="选择孩子"><button data-child-choice="kenton">哥哥 <span>Kenton</span></button><button data-child-choice="eddey">弟弟 <span>Eddey</span></button></div>
+        <div class="subject-switch" role="group" aria-label="选择学科"><button data-subject-choice="chinese">语文</button><button data-subject-choice="english">英语</button></div>
+      </div>
+      <p class="audio-note"><span class="status-dot"></span><b>音频待验收 · 界面待实机验收</b><span id="audioCoverage">有录音的词可报读，其余可看词遮挡默写。</span></p>
+      <main>
+        <section data-screen="home" id="homeScreen" data-phase="teach">
+          <div class="opening"><p class="eyebrow" id="gradeLine">期中复习 · 语文与英语</p><h1>期中听写桌</h1><p class="intro">听一听，写下来。<br>把不稳的词，再记牢一点。</p></div>
+          <div class="desk" data-surprise="cover-and-recall">
+            <div class="desk-label"><span id="homeRange">当前复习范围</span><span class="paper-tab">词语小册</span></div>
+            <div class="sample-card" aria-hidden="true"><div class="sample-word" id="sampleWord">听 · 写 · 记</div><div class="writing-rule"></div><div class="sample-caption">读懂意思 · 记清写法 · 遮住再写</div></div>
+            <div class="desk-controls"><p id="scopeCount"></p><button id="startButton" class="primary">开始这一轮 <span aria-hidden="true">→</span></button></div>
+          </div>
+          <div class="home-tools"><button id="catalogOpen" class="tool-link"><svg><use href="#i-book"/></svg><span>全部词库</span><small id="catalogCount"></small></button><button id="reviewOpen" class="tool-link"><svg><use href="#i-repeat"/></svg><span>错词复查</span><small id="reviewCount"></small></button></div>
+          <details class="range-details"><summary>选择单元和练习方式</summary><div class="range-content"><div id="unitChoices" class="unit-choices" role="group" aria-label="复习单元"></div><div class="settings-grid"><label>练习内容<select id="practiceType"><option value="all">全部词语类别</option></select></label><label>这一轮<select id="roundSize"><option value="10">10 项</option><option value="20">20 项</option><option value="all">所选范围全部</option></select></label><label>怎么练<select id="entryMode"><option value="listen">听词默写</option><option value="memory">看词后遮住</option><option value="meaning">看提示默写</option></select></label><label>写在哪里<select id="answerMode"><option value="paper">纸上写，自己核对</option><option value="type">在这里拼打</option></select></label><label class="check-setting"><input type="checkbox" id="shuffle">打乱顺序</label></div><p class="muted" id="scopeNote"></p></div></details>
+          <p class="daily-note" id="dailyNote" data-micro-surprise="daily"></p>
+        </section>
+        <section data-screen="practice" id="practiceScreen" hidden>
+          <div class="practice-heading"><button id="pauseButton" class="quiet">暂停并保存</button><span id="questionNumber"></span><span id="clock" class="clock">0:00</span></div>
+          <div class="progress-track"><span id="progressBar"></span></div>
+          <article class="word-card" id="wordCard" data-phase="independent">
+            <div class="word-meta"><span id="unitLine"></span><span id="typeLine"></span></div>
+            <p class="task-label" id="taskLabel">听清这个词，写在纸上</p>
+            <div id="previewBlock" data-phase="guided" hidden><p id="previewWord" class="target-word"></p><p id="previewMeaning" class="meaning"></p><button id="coverButton" class="primary">遮住，试着写</button></div>
+            <div id="questionBlock" data-phase="recall">
+              <div id="coveredWord" class="covered-word" aria-label="答案已遮住"><span></span><span></span><span></span></div>
+              <p id="questionClue" class="question-clue"></p>
+              <div class="play-controls"><button id="playButton" class="sound-button"><svg><use href="#i-audio"/></svg><span>报读这个词</span></button><button id="slowButton" class="quiet">慢速听</button></div>
+              <p id="audioMessage" class="audio-message" aria-live="polite"></p>
+              <form id="answerForm" hidden><label class="sr-only" for="typedAnswer">写出这个词</label><input id="typedAnswer" type="text" autocomplete="off" autocapitalize="none" spellcheck="false" placeholder="在这里写答案"><button id="checkTyped" type="submit" class="primary">检查答案</button></form>
+              <button id="paperDone" class="primary">我写好了，核对答案</button>
+              <button id="peekButton" class="quiet wide">想不起来，看一眼</button>
+            </div>
+            <div id="answerBlock" hidden><div class="answer-caption"><span>对照答案</span><button id="answerAudio" class="icon-button" aria-label="再听一次"><svg><use href="#i-audio"/></svg></button></div><p id="referenceWord" class="target-word" data-reference-answer></p><p id="referenceMeaning" class="meaning"></p><p id="originalAnswer" class="original-answer"></p><div id="letterCompare" class="letter-compare" aria-label="拼写对照"></div><p id="answerHint" class="muted"></p><div id="paperJudgement" class="judgement"><button id="paperCorrect" class="primary"><svg><use href="#i-check"/></svg>我写对了</button><button id="paperWrong" class="secondary">有错，记下来</button></div><button id="peekRetry" class="primary wide" hidden>再遮住写一次</button></div>
+            <aside id="repairBlock" class="repair" data-phase="repair" hidden>
+              <div data-child-explanation="primary"><p data-child-part="gap" id="repairGap">这里还没记稳。</p><p data-child-part="reason">找出漏写、错写的地方。</p><p data-child-part="check">看清后遮住，再写一次。</p></div>
+              <section data-learning-escape="answer-and-continue"><p class="repair-reference" id="repairReference" data-reference-answer></p><button id="repairRetry" class="primary" data-return-to-question="same-item">遮住，重写这个词</button><button id="repairContinue" class="quiet wide" data-continue-after-reveal>记为待复习，继续</button></section>
+            </aside>
+            <div id="successBlock" class="success" hidden><svg><use href="#i-check"/></svg><p id="successText"></p><button id="nextButton" class="primary">下一个词 <span aria-hidden="true">→</span></button></div>
+          </article>
+          <div class="practice-footer"><button id="previousButton" class="quiet">回看上一词</button><button id="finishButton" class="quiet">这次先到这里</button></div>
+        </section>
+        <section data-screen="catalog" id="catalogScreen" hidden>
+          <div class="screen-top"><button class="quiet" data-home>返回听写桌</button><button id="printWords" class="quiet">打印词表</button></div><h2>你的词语小册</h2><p class="muted" id="catalogScope"></p><div class="catalog-filters"><label class="sr-only" for="wordSearch">搜索词语或释义</label><input type="search" id="wordSearch" placeholder="搜索词语、单词或意思"><label class="sr-only" for="catalogUnit">选择单元</label><select id="catalogUnit"><option value="all">全部单元</option></select><label class="sr-only" for="catalogType">选择内容类别</label><select id="catalogType"><option value="all">全部类别</option></select></div><p id="wordResultCount" class="muted"></p><div id="wordList" class="word-list"></div><details id="recitationChecklist" class="recitation-checklist" hidden><summary>背诵与默写清单</summary><p class="muted">按课后要求分清背诵和默写。展开核对原文，收起后再试一次。</p><div id="recitationList"></div></details>
+        </section>
+        <section data-screen="review" id="reviewScreen" data-phase="transfer" hidden>
+          <button class="quiet" data-home>返回听写桌</button><p class="eyebrow">换个顺序，再想一想</p><h2>错词复查</h2><p class="muted">之前写错的词，今天再独立试一次。</p><button id="startReview" class="primary wide">开始复查</button><div id="reviewList" class="word-list"></div><p id="reviewEmpty" class="empty" hidden>这里暂时没有错词。<br>你随时可以回词库选一组练习。</p>
+        </section>
+        <section data-screen="summary" id="summaryScreen" hidden>
+          <p class="eyebrow">这一轮，收好</p><h2 id="summaryTitle">又记牢了一点。</h2><div class="summary-paper"><p id="summaryMain"></p><div class="summary-numbers"><div><strong id="independentCount">0</strong><span>独立写对</span></div><div><strong id="assistedCount">0</strong><span>看后订正</span></div><div><strong id="pendingCount">0</strong><span>仍需复查</span></div></div><p id="summaryDetails" class="muted"></p></div><p id="syncStatus" class="muted" aria-live="polite"></p><button id="syncButton" class="primary wide">完成并同步</button><button id="endRoundButton" class="secondary wide">结束本轮，保留已写记录</button><button id="resumeButton" class="secondary wide">继续没写完的词</button><button class="quiet wide" data-home>返回听写桌</button>
+        </section>
+        <section data-screen="parent" id="parentScreen" data-parent-analysis hidden>
+          <button class="quiet" data-home>返回听写桌</button><h2>记录与设置</h2><p id="parentMode" class="muted"></p><details open><summary>复习范围与来源</summary><p id="parentScope"></p><p>已列出的内容按教材与资料整理；学校最终考试范围以老师通知为准，可在首页选择单元。纸笔成绩是本人核对后的自报，拼打成绩按实际输入检查。看过答案后正确，记为订正。</p><p>有录音的词可以报读；未完成逐条试听及双端实播，因此保留“音频待验收”。无录音时，可切换看词遮挡或提示默写，不使用随机系统语音。</p></details><details><summary>本机练习记录</summary><p id="parentStatistics"></p><div id="historyList" class="history-list"></div></details><div class="export-buttons"><button id="exportJson" class="secondary">导出完整记录</button><button id="exportMarkdown" class="secondary">导出可读记录</button><label class="button secondary">导入记录<input type="file" id="importJson" accept="application/json,.json" hidden></label><button id="testToggle" class="quiet">进入家长测试</button></div><p id="parentStatus" role="status"></p>
+        </section>
+      </main>
+      <footer class="page-footer"><span id="footerIdentity"></span><span>读懂 · 遮住 · 再写一次</span></footer>
+    </div>
+  </div>
+</body>
+</html>

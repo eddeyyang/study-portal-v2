@@ -1,0 +1,3884 @@
+{
+  "schema": "midterm-dictation-audio-v1",
+  "generated": "2026-10-24",
+  "status": "incomplete",
+  "audioIndex": "_index.json",
+  "segmentCount": 508,
+  "itemCoverage": {
+    "chineseRows": 383,
+    "englishRows": 129,
+    "chineseUniqueTexts": 382,
+    "englishUniqueTexts": 126,
+    "missing": 0
+  },
+  "verification": {
+    "status": "incomplete",
+    "fileCount": 22,
+    "listenedCount": 0,
+    "mobilePlayback": false,
+    "desktopPlayback": false,
+    "decodedFileCount": 22,
+    "sha256VerifiedFileCount": 22,
+    "segmentBoundsVerified": true,
+    "acousticContentCheck": "not-verified"
+  },
+  "engines": {
+    "zh": {
+      "name": "sherpa-onnx / MeloTTS zh_en speaker0",
+      "modelSha256": "bf30582eb1b012250a35b1a4a80e7dfbcf8485e7bb9de0d95efbbeef0e4ad86d",
+      "speed": 0.9
+    },
+    "en": {
+      "name": "kokoro-onnx 0.4.9 / Kokoro-82M INT8",
+      "voice": "af_heart",
+      "language": "en-us",
+      "modelSha256": "6e742170d309016e5891a994e1ce1559c702a2ccd0075e67ef7157974f6406cb",
+      "voicesSha256": "bca610b8308e8d99f32e6fe4197e7ec01679264efed0cac9140fe9c29f1fbf7d",
+      "speed": 0.9
+    }
+  },
+  "items": [
+    {
+      "file": "zh-01.mp3",
+      "lang": "zh",
+      "text": "一堵墙；一辈子；一颗星；一马当先；丈量；上升；下降；不可估量；专家；世世代代；严厉；丰衣足食；主宰；举世闻名；乃至；习惯；争执；交付；亭台楼阁；人寿年丰；人山人海；任丘；仿照；休想",
+      "voice": "MeloTTS-zh_en-speaker0",
+      "sha256": "52387b1082088d112e2536cdb42ac7ae47eccbfb80d8107e854ba30b254168d4",
+      "duration": 28.734694,
+      "bytes": 345174,
+      "listened": false,
+      "acousticContentCheck": "not-verified",
+      "segments": [
+        {
+          "text": "一堵墙",
+          "spokenText": "一堵墙",
+          "start": 0.08,
+          "end": 0.952698,
+          "duration": 0.812698
+        },
+        {
+          "text": "一辈子",
+          "spokenText": "一辈子",
+          "start": 1.392698,
+          "end": 2.323447,
+          "duration": 0.870748
+        },
+        {
+          "text": "一颗星",
+          "spokenText": "一颗星",
+          "start": 2.763447,
+          "end": 3.717415,
+          "duration": 0.893968
+        },
+        {
+          "text": "一马当先",
+          "spokenText": "一马当先",
+          "start": 4.157415,
+          "end": 5.102834,
+          "duration": 0.88542
+        },
+        {
+          "text": "丈量",
+          "spokenText": "丈量",
+          "start": 5.542834,
+          "end": 6.218163,
+          "duration": 0.615329
+        },
+        {
+          "text": "上升",
+          "spokenText": "上升",
+          "start": 6.658163,
+          "end": 7.030272,
+          "duration": 0.312109
+        },
+        {
+          "text": "下降",
+          "spokenText": "下降",
+          "start": 7.470272,
+          "end": 8.008345,
+          "duration": 0.478073
+        },
+        {
+          "text": "不可估量",
+          "spokenText": "不可估量",
+          "start": 8.448345,
+          "end": 9.344263,
+          "duration": 0.835918
+        },
+        {
+          "text": "专家",
+          "spokenText": "专家",
+          "start": 9.784263,
+          "end": 10.436372,
+          "duration": 0.592109
+        },
+        {
+          "text": "世世代代",
+          "spokenText": "世世代代",
+          "start": 10.876372,
+          "end": 11.7839,
+          "duration": 0.847528
+        },
+        {
+          "text": "严厉",
+          "spokenText": "严厉",
+          "start": 12.2239,
+          "end": 12.701859,
+          "duration": 0.417959
+        },
+        {
+          "text": "丰衣足食",
+          "spokenText": "丰衣足食",
+          "start": 13.141859,
+          "end": 14.258367,
+          "duration": 1.056508
+        },
+        {
+          "text": "主宰",
+          "spokenText": "主宰",
+          "start": 14.698367,
+          "end": 15.304036,
+          "duration": 0.545669
+        },
+        {
+          "text": "举世闻名",
+          "spokenText": "举世闻名",
+          "start": 15.744036,
+          "end": 16.582698,
+          "duration": 0.778662
+        },
+        {
+          "text": "乃至",
+          "spokenText": "乃至",
+          "start": 17.022698,
+          "end": 17.698027,
+          "duration": 0.615329
+        },
+        {
+          "text": "习惯",
+          "spokenText": "习惯",
+          "start": 18.138027,
+          "end": 18.63059,
+          "duration": 0.432562
+        },
+        {
+          "text": "争执",
+          "spokenText": "争执",
+          "start": 19.07059,
+          "end": 19.734308,
+          "duration": 0.603719
+        },
+        {
+          "text": "交付",
+          "spokenText": "交付",
+          "start": 20.174308,
+          "end": 21.000567,
+          "duration": 0.766259
+        },
+        {
+          "text": "亭台楼阁",
+          "spokenText": "亭台楼阁",
+          "start": 21.440567,
+          "end": 22.475805,
+          "duration": 0.975238
+        },
+        {
+          "text": "人寿年丰",
+          "spokenText": "人寿年丰",
+          "start": 22.915805,
+          "end": 23.904603,
+          "duration": 0.928798
+        },
+        {
+          "text": "人山人海",
+          "spokenText": "人山人海",
+          "start": 24.344603,
+          "end": 25.286961,
+          "duration": 0.882358
+        },
+        {
+          "text": "任丘",
+          "spokenText": "任丘",
+          "start": 25.726961,
+          "end": 26.33263,
+          "duration": 0.545669
+        },
+        {
+          "text": "仿照",
+          "spokenText": "仿照",
+          "start": 26.77263,
+          "end": 27.366689,
+          "duration": 0.534059
+        },
+        {
+          "text": "休想",
+          "spokenText": "休想",
+          "start": 27.806689,
+          "end": 28.327098,
+          "duration": 0.460408
+        }
+      ]
+    },
+    {
+      "file": "zh-02.mp3",
+      "lang": "zh",
+      "text": "众星拱月；传播；但愿；住址；住宅；体面；余波；使劲；依靠；侧面；修理；俱乐部；倾泻；倾盆大雨；假如；催促；允诺；光滑；光线；兵荒马乱；典礼；内忧外患；内部；农历",
+      "voice": "MeloTTS-zh_en-speaker0",
+      "sha256": "152a494bbd982bebfe4e21d4fa9fbfd126cac1a898cd0b7014eacd6099e3f5d3",
+      "duration": 25.626122,
+      "bytes": 307871,
+      "listened": false,
+      "acousticContentCheck": "not-verified",
+      "segments": [
+        {
+          "text": "众星拱月",
+          "spokenText": "众星拱月",
+          "start": 0.08,
+          "end": 0.295556,
+          "duration": 0.155556
+        },
+        {
+          "text": "传播",
+          "spokenText": "传播",
+          "start": 0.735556,
+          "end": 1.306395,
+          "duration": 0.510839
+        },
+        {
+          "text": "但愿",
+          "spokenText": "但愿",
+          "start": 1.746395,
+          "end": 2.468163,
+          "duration": 0.661769
+        },
+        {
+          "text": "住址",
+          "spokenText": "住址",
+          "start": 2.908163,
+          "end": 3.537052,
+          "duration": 0.568889
+        },
+        {
+          "text": "住宅",
+          "spokenText": "住宅",
+          "start": 3.977052,
+          "end": 4.478231,
+          "duration": 0.441179
+        },
+        {
+          "text": "体面",
+          "spokenText": "体面",
+          "start": 4.918231,
+          "end": 5.53551,
+          "duration": 0.557279
+        },
+        {
+          "text": "余波",
+          "spokenText": "余波",
+          "start": 5.97551,
+          "end": 6.534739,
+          "duration": 0.499229
+        },
+        {
+          "text": "使劲",
+          "spokenText": "使劲",
+          "start": 6.974739,
+          "end": 7.580408,
+          "duration": 0.545669
+        },
+        {
+          "text": "依靠",
+          "spokenText": "依靠",
+          "start": 8.020408,
+          "end": 8.525556,
+          "duration": 0.445147
+        },
+        {
+          "text": "侧面",
+          "spokenText": "侧面",
+          "start": 8.965556,
+          "end": 9.548005,
+          "duration": 0.522449
+        },
+        {
+          "text": "修理",
+          "spokenText": "修理",
+          "start": 9.988005,
+          "end": 10.560839,
+          "duration": 0.512834
+        },
+        {
+          "text": "俱乐部",
+          "spokenText": "俱乐部",
+          "start": 11.000839,
+          "end": 11.677188,
+          "duration": 0.616349
+        },
+        {
+          "text": "倾泻",
+          "spokenText": "倾泻",
+          "start": 12.117188,
+          "end": 12.618367,
+          "duration": 0.441179
+        },
+        {
+          "text": "倾盆大雨",
+          "spokenText": "倾盆大雨",
+          "start": 13.058367,
+          "end": 13.977506,
+          "duration": 0.859138
+        },
+        {
+          "text": "假如",
+          "spokenText": "假如",
+          "start": 14.417506,
+          "end": 15.046395,
+          "duration": 0.568889
+        },
+        {
+          "text": "催促",
+          "spokenText": "催促",
+          "start": 15.486395,
+          "end": 15.985306,
+          "duration": 0.438912
+        },
+        {
+          "text": "允诺",
+          "spokenText": "允诺",
+          "start": 16.425306,
+          "end": 16.961315,
+          "duration": 0.476009
+        },
+        {
+          "text": "光滑",
+          "spokenText": "光滑",
+          "start": 17.401315,
+          "end": 17.974762,
+          "duration": 0.513447
+        },
+        {
+          "text": "光线",
+          "spokenText": "光线",
+          "start": 18.414762,
+          "end": 19.047188,
+          "duration": 0.572426
+        },
+        {
+          "text": "兵荒马乱",
+          "spokenText": "兵荒马乱",
+          "start": 19.487188,
+          "end": 20.592086,
+          "duration": 1.044898
+        },
+        {
+          "text": "典礼",
+          "spokenText": "典礼",
+          "start": 21.032086,
+          "end": 21.695805,
+          "duration": 0.603719
+        },
+        {
+          "text": "内忧外患",
+          "spokenText": "内忧外患",
+          "start": 22.135805,
+          "end": 23.078163,
+          "duration": 0.882358
+        },
+        {
+          "text": "内部",
+          "spokenText": "内部",
+          "start": 23.518163,
+          "end": 24.170272,
+          "duration": 0.592109
+        },
+        {
+          "text": "农历",
+          "spokenText": "农历",
+          "start": 24.610272,
+          "end": 25.239161,
+          "duration": 0.568889
+        }
+      ]
+    },
+    {
+      "file": "zh-03.mp3",
+      "lang": "zh",
+      "text": "冠军；凌晨；凤毛麟角；创造；前途；剖开；助兴；势不可当；千真万确；半亩；博物馆；卧虎藏龙；厕所；发动机；变化；召集；叮嘱；可贵；台风；叶柄；各式各样；同归于尽；同心协力；名曰",
+      "voice": "MeloTTS-zh_en-speaker0",
+      "sha256": "cdc3a06416d310b49c1cdec59172a18da63d3f9e80446d896820ca4fe6e6d148",
+      "duration": 27.820408,
+      "bytes": 334203,
+      "listened": false,
+      "acousticContentCheck": "not-verified",
+      "segments": [
+        {
+          "text": "冠军",
+          "spokenText": "冠军",
+          "start": 0.08,
+          "end": 0.671338,
+          "duration": 0.531338
+        },
+        {
+          "text": "凌晨",
+          "spokenText": "凌晨",
+          "start": 1.111338,
+          "end": 1.682177,
+          "duration": 0.510839
+        },
+        {
+          "text": "凤毛麟角",
+          "spokenText": "凤毛麟角",
+          "start": 2.122177,
+          "end": 3.041315,
+          "duration": 0.859138
+        },
+        {
+          "text": "创造",
+          "spokenText": "创造",
+          "start": 3.481315,
+          "end": 4.086984,
+          "duration": 0.545669
+        },
+        {
+          "text": "前途",
+          "spokenText": "前途",
+          "start": 4.526984,
+          "end": 5.065941,
+          "duration": 0.478957
+        },
+        {
+          "text": "剖开",
+          "spokenText": "剖开",
+          "start": 5.505941,
+          "end": 5.982132,
+          "duration": 0.41619
+        },
+        {
+          "text": "助兴",
+          "spokenText": "助兴",
+          "start": 6.422132,
+          "end": 6.923311,
+          "duration": 0.441179
+        },
+        {
+          "text": "势不可当",
+          "spokenText": "势不可当",
+          "start": 7.363311,
+          "end": 8.236009,
+          "duration": 0.812698
+        },
+        {
+          "text": "千真万确",
+          "spokenText": "千真万确",
+          "start": 8.676009,
+          "end": 9.565397,
+          "duration": 0.829388
+        },
+        {
+          "text": "半亩",
+          "spokenText": "半亩",
+          "start": 10.005397,
+          "end": 10.692336,
+          "duration": 0.626939
+        },
+        {
+          "text": "博物馆",
+          "spokenText": "博物馆",
+          "start": 11.132336,
+          "end": 11.912154,
+          "duration": 0.719819
+        },
+        {
+          "text": "卧虎藏龙",
+          "spokenText": "卧虎藏龙",
+          "start": 12.352154,
+          "end": 13.348481,
+          "duration": 0.936327
+        },
+        {
+          "text": "厕所",
+          "spokenText": "厕所",
+          "start": 13.788481,
+          "end": 14.24322,
+          "duration": 0.394739
+        },
+        {
+          "text": "发动机",
+          "spokenText": "发动机",
+          "start": 14.68322,
+          "end": 15.486259,
+          "duration": 0.743039
+        },
+        {
+          "text": "变化",
+          "spokenText": "变化",
+          "start": 15.926259,
+          "end": 16.613197,
+          "duration": 0.626939
+        },
+        {
+          "text": "召集",
+          "spokenText": "召集",
+          "start": 17.053197,
+          "end": 17.821406,
+          "duration": 0.708209
+        },
+        {
+          "text": "叮嘱",
+          "spokenText": "叮嘱",
+          "start": 18.261406,
+          "end": 18.971565,
+          "duration": 0.650159
+        },
+        {
+          "text": "可贵",
+          "spokenText": "可贵",
+          "start": 19.411565,
+          "end": 20.098503,
+          "duration": 0.626939
+        },
+        {
+          "text": "台风",
+          "spokenText": "台风",
+          "start": 20.538503,
+          "end": 21.271882,
+          "duration": 0.673379
+        },
+        {
+          "text": "叶柄",
+          "spokenText": "叶柄",
+          "start": 21.711882,
+          "end": 22.213061,
+          "duration": 0.441179
+        },
+        {
+          "text": "各式各样",
+          "spokenText": "各式各样",
+          "start": 22.653061,
+          "end": 23.665079,
+          "duration": 0.952018
+        },
+        {
+          "text": "同归于尽",
+          "spokenText": "同归于尽",
+          "start": 24.105079,
+          "end": 25.035828,
+          "duration": 0.870748
+        },
+        {
+          "text": "同心协力",
+          "spokenText": "同心协力",
+          "start": 25.475828,
+          "end": 26.511066,
+          "duration": 0.975238
+        },
+        {
+          "text": "名曰",
+          "spokenText": "名曰",
+          "start": 26.951066,
+          "end": 27.429025,
+          "duration": 0.417959
+        }
+      ]
+    },
+    {
+      "file": "zh-04.mp3",
+      "lang": "zh",
+      "text": "名胜；后悔；吩咐；呆若木鸡；周围；呼救；哀伤；哀鸿遍野；哎呀；哗啦；唐朝；商议；喘气；喷射；嘴巴；四肢；园林；国君；国泰民安；圆筒；均匀；坚定；墙壁；增长",
+      "voice": "MeloTTS-zh_en-speaker0",
+      "sha256": "0c3be6534b11965cd50a86213e4d604eeceb3856f37354c549820da135390253",
+      "duration": 25.782857,
+      "bytes": 309752,
+      "listened": false,
+      "acousticContentCheck": "not-verified",
+      "segments": [
+        {
+          "text": "名胜",
+          "spokenText": "名胜",
+          "start": 0.08,
+          "end": 0.662449,
+          "duration": 0.522449
+        },
+        {
+          "text": "后悔",
+          "spokenText": "后悔",
+          "start": 1.102449,
+          "end": 1.679524,
+          "duration": 0.517075
+        },
+        {
+          "text": "吩咐",
+          "spokenText": "吩咐",
+          "start": 2.119524,
+          "end": 2.771633,
+          "duration": 0.592109
+        },
+        {
+          "text": "呆若木鸡",
+          "spokenText": "呆若木鸡",
+          "start": 3.211633,
+          "end": 4.304921,
+          "duration": 1.033288
+        },
+        {
+          "text": "周围",
+          "spokenText": "周围",
+          "start": 4.744921,
+          "end": 5.38542,
+          "duration": 0.580499
+        },
+        {
+          "text": "呼救",
+          "spokenText": "呼救",
+          "start": 5.82542,
+          "end": 6.500748,
+          "duration": 0.615329
+        },
+        {
+          "text": "哀伤",
+          "spokenText": "哀伤",
+          "start": 6.940748,
+          "end": 7.441927,
+          "duration": 0.441179
+        },
+        {
+          "text": "哀鸿遍野",
+          "spokenText": "哀鸿遍野",
+          "start": 7.881927,
+          "end": 8.963605,
+          "duration": 1.021678
+        },
+        {
+          "text": "哎呀",
+          "spokenText": "哎呀",
+          "start": 9.403605,
+          "end": 10.020884,
+          "duration": 0.557279
+        },
+        {
+          "text": "哗啦",
+          "spokenText": "哗啦",
+          "start": 10.460884,
+          "end": 10.984399,
+          "duration": 0.463515
+        },
+        {
+          "text": "唐朝",
+          "spokenText": "唐朝",
+          "start": 11.424399,
+          "end": 12.006848,
+          "duration": 0.522449
+        },
+        {
+          "text": "商议",
+          "spokenText": "商议",
+          "start": 12.446848,
+          "end": 13.098957,
+          "duration": 0.592109
+        },
+        {
+          "text": "喘气",
+          "spokenText": "喘气",
+          "start": 13.538957,
+          "end": 13.754059,
+          "duration": 0.155102
+        },
+        {
+          "text": "喷射",
+          "spokenText": "喷射",
+          "start": 14.194059,
+          "end": 14.660408,
+          "duration": 0.406349
+        },
+        {
+          "text": "嘴巴",
+          "spokenText": "嘴巴",
+          "start": 15.100408,
+          "end": 15.695737,
+          "duration": 0.535329
+        },
+        {
+          "text": "四肢",
+          "spokenText": "四肢",
+          "start": 16.135737,
+          "end": 16.695329,
+          "duration": 0.499592
+        },
+        {
+          "text": "园林",
+          "spokenText": "园林",
+          "start": 17.135329,
+          "end": 17.740998,
+          "duration": 0.545669
+        },
+        {
+          "text": "国君",
+          "spokenText": "国君",
+          "start": 18.180998,
+          "end": 18.798277,
+          "duration": 0.557279
+        },
+        {
+          "text": "国泰民安",
+          "spokenText": "国泰民安",
+          "start": 19.238277,
+          "end": 20.149274,
+          "duration": 0.850998
+        },
+        {
+          "text": "圆筒",
+          "spokenText": "圆筒",
+          "start": 20.589274,
+          "end": 21.322653,
+          "duration": 0.673379
+        },
+        {
+          "text": "均匀",
+          "spokenText": "均匀",
+          "start": 21.762653,
+          "end": 22.252766,
+          "duration": 0.430113
+        },
+        {
+          "text": "坚定",
+          "spokenText": "坚定",
+          "start": 22.692766,
+          "end": 23.281837,
+          "duration": 0.52907
+        },
+        {
+          "text": "墙壁",
+          "spokenText": "墙壁",
+          "start": 23.721837,
+          "end": 24.362336,
+          "duration": 0.580499
+        },
+        {
+          "text": "增长",
+          "spokenText": "增长",
+          "start": 24.802336,
+          "end": 25.386508,
+          "duration": 0.524172
+        }
+      ]
+    },
+    {
+      "file": "zh-05.mp3",
+      "lang": "zh",
+      "text": "壮举；多事之秋；夜不闭户；大厅；大堤；大臣；天南海北；太平盛世；奇珍异宝；奉命；奔流不息；如何；如虎添翼；妨碍；妻子；嫂子；嫩绿；宇宙；安居乐业；安装；安静；宏伟；家破人亡；容量",
+      "voice": "MeloTTS-zh_en-speaker0",
+      "sha256": "f97294a1fc1cff675ea003f3f14bf9e8c340e7328eae96fd3587c995939580a1",
+      "duration": 28.447347,
+      "bytes": 341726,
+      "listened": false,
+      "acousticContentCheck": "not-verified",
+      "segments": [
+        {
+          "text": "壮举",
+          "spokenText": "壮举",
+          "start": 0.08,
+          "end": 0.766939,
+          "duration": 0.626939
+        },
+        {
+          "text": "多事之秋",
+          "spokenText": "多事之秋",
+          "start": 1.206939,
+          "end": 2.114467,
+          "duration": 0.847528
+        },
+        {
+          "text": "夜不闭户",
+          "spokenText": "夜不闭户",
+          "start": 2.554467,
+          "end": 3.624535,
+          "duration": 1.010068
+        },
+        {
+          "text": "大厅",
+          "spokenText": "大厅",
+          "start": 4.064535,
+          "end": 4.751474,
+          "duration": 0.626939
+        },
+        {
+          "text": "大堤",
+          "spokenText": "大堤",
+          "start": 5.191474,
+          "end": 5.924853,
+          "duration": 0.673379
+        },
+        {
+          "text": "大臣",
+          "spokenText": "大臣",
+          "start": 6.364853,
+          "end": 7.016961,
+          "duration": 0.592109
+        },
+        {
+          "text": "天南海北",
+          "spokenText": "天南海北",
+          "start": 7.456961,
+          "end": 8.44576,
+          "duration": 0.928798
+        },
+        {
+          "text": "太平盛世",
+          "spokenText": "太平盛世",
+          "start": 8.88576,
+          "end": 10.013878,
+          "duration": 1.068118
+        },
+        {
+          "text": "奇珍异宝",
+          "spokenText": "奇珍异宝",
+          "start": 10.453878,
+          "end": 11.250703,
+          "duration": 0.736825
+        },
+        {
+          "text": "奉命",
+          "spokenText": "奉命",
+          "start": 11.690703,
+          "end": 12.342812,
+          "duration": 0.592109
+        },
+        {
+          "text": "奔流不息",
+          "spokenText": "奔流不息",
+          "start": 12.782812,
+          "end": 13.70195,
+          "duration": 0.859138
+        },
+        {
+          "text": "如何",
+          "spokenText": "如何",
+          "start": 14.14195,
+          "end": 14.724399,
+          "duration": 0.522449
+        },
+        {
+          "text": "如虎添翼",
+          "spokenText": "如虎添翼",
+          "start": 15.164399,
+          "end": 16.048707,
+          "duration": 0.824308
+        },
+        {
+          "text": "妨碍",
+          "spokenText": "妨碍",
+          "start": 16.488707,
+          "end": 17.047937,
+          "duration": 0.499229
+        },
+        {
+          "text": "妻子",
+          "spokenText": "妻子",
+          "start": 17.487937,
+          "end": 18.015737,
+          "duration": 0.4678
+        },
+        {
+          "text": "嫂子",
+          "spokenText": "嫂子",
+          "start": 18.455737,
+          "end": 19.154286,
+          "duration": 0.638549
+        },
+        {
+          "text": "嫩绿",
+          "spokenText": "嫩绿",
+          "start": 19.594286,
+          "end": 20.154422,
+          "duration": 0.500136
+        },
+        {
+          "text": "宇宙",
+          "spokenText": "宇宙",
+          "start": 20.594422,
+          "end": 21.13932,
+          "duration": 0.484898
+        },
+        {
+          "text": "安居乐业",
+          "spokenText": "安居乐业",
+          "start": 21.57932,
+          "end": 22.568118,
+          "duration": 0.928798
+        },
+        {
+          "text": "安装",
+          "spokenText": "安装",
+          "start": 23.008118,
+          "end": 23.602177,
+          "duration": 0.534059
+        },
+        {
+          "text": "安静",
+          "spokenText": "安静",
+          "start": 24.042177,
+          "end": 24.667188,
+          "duration": 0.565011
+        },
+        {
+          "text": "宏伟",
+          "spokenText": "宏伟",
+          "start": 25.107188,
+          "end": 25.585147,
+          "duration": 0.417959
+        },
+        {
+          "text": "家破人亡",
+          "spokenText": "家破人亡",
+          "start": 26.025147,
+          "end": 27.030907,
+          "duration": 0.94576
+        },
+        {
+          "text": "容量",
+          "spokenText": "容量",
+          "start": 27.470907,
+          "end": 28.053356,
+          "duration": 0.522449
+        }
+      ]
+    },
+    {
+      "file": "zh-06.mp3",
+      "lang": "zh",
+      "text": "密密麻麻；密布；对付；封锁；小心翼翼；小蛇；尤其；尽管；屈服；山峰；山崩地裂；屹立；岗位；帽子；平原；幸亏；广告；广阔；床铺；庐山；弥漫；弯曲；归还；忍受",
+      "voice": "MeloTTS-zh_en-speaker0",
+      "sha256": "a3e6f1f47c44cf56e0d8c3e3675b12ec6142f81ce38135c19ecc672cb2a4632d",
+      "duration": 26.383673,
+      "bytes": 316962,
+      "listened": false,
+      "acousticContentCheck": "not-verified",
+      "segments": [
+        {
+          "text": "密密麻麻",
+          "spokenText": "密密麻麻",
+          "start": 0.08,
+          "end": 1.045578,
+          "duration": 0.905578
+        },
+        {
+          "text": "密布",
+          "spokenText": "密布",
+          "start": 1.485578,
+          "end": 1.951927,
+          "duration": 0.406349
+        },
+        {
+          "text": "对付",
+          "spokenText": "对付",
+          "start": 2.391927,
+          "end": 3.148526,
+          "duration": 0.696599
+        },
+        {
+          "text": "封锁",
+          "spokenText": "封锁",
+          "start": 3.588526,
+          "end": 4.252245,
+          "duration": 0.603719
+        },
+        {
+          "text": "小心翼翼",
+          "spokenText": "小心翼翼",
+          "start": 4.692245,
+          "end": 5.634603,
+          "duration": 0.882358
+        },
+        {
+          "text": "小蛇",
+          "spokenText": "小蛇",
+          "start": 6.074603,
+          "end": 6.854422,
+          "duration": 0.719819
+        },
+        {
+          "text": "尤其",
+          "spokenText": "尤其",
+          "start": 7.294422,
+          "end": 8.00458,
+          "duration": 0.650159
+        },
+        {
+          "text": "尽管",
+          "spokenText": "尽管",
+          "start": 8.44458,
+          "end": 9.00381,
+          "duration": 0.499229
+        },
+        {
+          "text": "屈服",
+          "spokenText": "屈服",
+          "start": 9.44381,
+          "end": 10.089932,
+          "duration": 0.586122
+        },
+        {
+          "text": "山峰",
+          "spokenText": "山峰",
+          "start": 10.529932,
+          "end": 11.092177,
+          "duration": 0.502245
+        },
+        {
+          "text": "山崩地裂",
+          "spokenText": "山崩地裂",
+          "start": 11.532177,
+          "end": 12.532585,
+          "duration": 0.940408
+        },
+        {
+          "text": "屹立",
+          "spokenText": "屹立",
+          "start": 12.972585,
+          "end": 13.469524,
+          "duration": 0.436939
+        },
+        {
+          "text": "岗位",
+          "spokenText": "岗位",
+          "start": 13.909524,
+          "end": 14.387166,
+          "duration": 0.417642
+        },
+        {
+          "text": "帽子",
+          "spokenText": "帽子",
+          "start": 14.827166,
+          "end": 15.548934,
+          "duration": 0.661769
+        },
+        {
+          "text": "平原",
+          "spokenText": "平原",
+          "start": 15.988934,
+          "end": 16.464512,
+          "duration": 0.415578
+        },
+        {
+          "text": "幸亏",
+          "spokenText": "幸亏",
+          "start": 16.904512,
+          "end": 17.370317,
+          "duration": 0.405805
+        },
+        {
+          "text": "广告",
+          "spokenText": "广告",
+          "start": 17.810317,
+          "end": 18.439206,
+          "duration": 0.568889
+        },
+        {
+          "text": "广阔",
+          "spokenText": "广阔",
+          "start": 18.879206,
+          "end": 19.682245,
+          "duration": 0.743039
+        },
+        {
+          "text": "床铺",
+          "spokenText": "床铺",
+          "start": 20.122245,
+          "end": 20.844014,
+          "duration": 0.661769
+        },
+        {
+          "text": "庐山",
+          "spokenText": "庐山",
+          "start": 21.284014,
+          "end": 21.901293,
+          "duration": 0.557279
+        },
+        {
+          "text": "弥漫",
+          "spokenText": "弥漫",
+          "start": 22.341293,
+          "end": 22.888912,
+          "duration": 0.487619
+        },
+        {
+          "text": "弯曲",
+          "spokenText": "弯曲",
+          "start": 23.328912,
+          "end": 23.9578,
+          "duration": 0.568889
+        },
+        {
+          "text": "归还",
+          "spokenText": "归还",
+          "start": 24.3978,
+          "end": 25.097302,
+          "duration": 0.639501
+        },
+        {
+          "text": "忍受",
+          "spokenText": "忍受",
+          "start": 25.537302,
+          "end": 25.980431,
+          "duration": 0.383129
+        }
+      ]
+    },
+    {
+      "file": "zh-07.mp3",
+      "lang": "zh",
+      "text": "忘记；忠于职守；怀抱；怒号；思量；悲壮；惊奇；惊恐万状；惊慌失措；懂事；成家立业；战争；打柴；打滚；扣子；执行；承受；承诺；抄写；投降；抗日战争；抱头鼠窜；拐弯；拒绝",
+      "voice": "MeloTTS-zh_en-speaker0",
+      "sha256": "a31e1bf8fc18818a323cb8a430143e83bef462f1dc60833a23f2558f3871f137",
+      "duration": 27.559184,
+      "bytes": 331068,
+      "listened": false,
+      "acousticContentCheck": "not-verified",
+      "segments": [
+        {
+          "text": "忘记",
+          "spokenText": "忘记",
+          "start": 0.08,
+          "end": 0.813379,
+          "duration": 0.673379
+        },
+        {
+          "text": "忠于职守",
+          "spokenText": "忠于职守",
+          "start": 1.253379,
+          "end": 2.230567,
+          "duration": 0.917188
+        },
+        {
+          "text": "怀抱",
+          "spokenText": "怀抱",
+          "start": 2.670567,
+          "end": 3.182812,
+          "duration": 0.452245
+        },
+        {
+          "text": "怒号",
+          "spokenText": "怒号",
+          "start": 3.622812,
+          "end": 4.274921,
+          "duration": 0.592109
+        },
+        {
+          "text": "思量",
+          "spokenText": "思量",
+          "start": 4.714921,
+          "end": 5.30898,
+          "duration": 0.534059
+        },
+        {
+          "text": "悲壮",
+          "spokenText": "悲壮",
+          "start": 5.74898,
+          "end": 6.215329,
+          "duration": 0.406349
+        },
+        {
+          "text": "惊奇",
+          "spokenText": "惊奇",
+          "start": 6.655329,
+          "end": 7.223741,
+          "duration": 0.508413
+        },
+        {
+          "text": "惊恐万状",
+          "spokenText": "惊恐万状",
+          "start": 7.663741,
+          "end": 8.688118,
+          "duration": 0.964376
+        },
+        {
+          "text": "惊慌失措",
+          "spokenText": "惊慌失措",
+          "start": 9.128118,
+          "end": 10.176213,
+          "duration": 0.988095
+        },
+        {
+          "text": "懂事",
+          "spokenText": "懂事",
+          "start": 10.616213,
+          "end": 11.152222,
+          "duration": 0.476009
+        },
+        {
+          "text": "成家立业",
+          "spokenText": "成家立业",
+          "start": 11.592222,
+          "end": 12.60424,
+          "duration": 0.952018
+        },
+        {
+          "text": "战争",
+          "spokenText": "战争",
+          "start": 13.04424,
+          "end": 13.603469,
+          "duration": 0.499229
+        },
+        {
+          "text": "打柴",
+          "spokenText": "打柴",
+          "start": 14.043469,
+          "end": 14.672358,
+          "duration": 0.568889
+        },
+        {
+          "text": "打滚",
+          "spokenText": "打滚",
+          "start": 15.112358,
+          "end": 15.636757,
+          "duration": 0.464399
+        },
+        {
+          "text": "扣子",
+          "spokenText": "扣子",
+          "start": 16.076757,
+          "end": 16.634422,
+          "duration": 0.497664
+        },
+        {
+          "text": "执行",
+          "spokenText": "执行",
+          "start": 17.074422,
+          "end": 17.8078,
+          "duration": 0.673379
+        },
+        {
+          "text": "承受",
+          "spokenText": "承受",
+          "start": 18.2478,
+          "end": 18.66771,
+          "duration": 0.359909
+        },
+        {
+          "text": "承诺",
+          "spokenText": "承诺",
+          "start": 19.10771,
+          "end": 19.817868,
+          "duration": 0.650159
+        },
+        {
+          "text": "抄写",
+          "spokenText": "抄写",
+          "start": 20.257868,
+          "end": 20.886757,
+          "duration": 0.568889
+        },
+        {
+          "text": "投降",
+          "spokenText": "投降",
+          "start": 21.326757,
+          "end": 21.909206,
+          "duration": 0.522449
+        },
+        {
+          "text": "抗日战争",
+          "spokenText": "抗日战争",
+          "start": 22.349206,
+          "end": 23.349615,
+          "duration": 0.940408
+        },
+        {
+          "text": "抱头鼠窜",
+          "spokenText": "抱头鼠窜",
+          "start": 23.789615,
+          "end": 24.975782,
+          "duration": 1.126168
+        },
+        {
+          "text": "拐弯",
+          "spokenText": "拐弯",
+          "start": 25.415782,
+          "end": 26.172381,
+          "duration": 0.696599
+        },
+        {
+          "text": "拒绝",
+          "spokenText": "拒绝",
+          "start": 26.612381,
+          "end": 27.170635,
+          "duration": 0.498254
+        }
+      ]
+    },
+    {
+      "file": "zh-08.mp3",
+      "lang": "zh",
+      "text": "挨揍；挺好；损失；据说；探头；推辞；提纲；揭晓；摆放；摆脱；摩擦；操场；收获；改变；政通人和；故乡；救命；敬佩；敲打；文章；新郎；新鲜；无价之宝；无穷无尽",
+      "voice": "MeloTTS-zh_en-speaker0",
+      "sha256": "a107a6e397dcb3dcb1f4166d4b072987ceec0ff3bc55f2bf0af2d055708eb76a",
+      "duration": 25.70449,
+      "bytes": 308812,
+      "listened": false,
+      "acousticContentCheck": "not-verified",
+      "segments": [
+        {
+          "text": "挨揍",
+          "spokenText": "挨揍",
+          "start": 0.08,
+          "end": 0.630816,
+          "duration": 0.490816
+        },
+        {
+          "text": "挺好",
+          "spokenText": "挺好",
+          "start": 1.070816,
+          "end": 1.473696,
+          "duration": 0.34288
+        },
+        {
+          "text": "损失",
+          "spokenText": "损失",
+          "start": 1.913696,
+          "end": 2.501542,
+          "duration": 0.527846
+        },
+        {
+          "text": "据说",
+          "spokenText": "据说",
+          "start": 2.941542,
+          "end": 3.345102,
+          "duration": 0.34356
+        },
+        {
+          "text": "探头",
+          "spokenText": "探头",
+          "start": 3.785102,
+          "end": 4.272222,
+          "duration": 0.42712
+        },
+        {
+          "text": "推辞",
+          "spokenText": "推辞",
+          "start": 4.712222,
+          "end": 5.468821,
+          "duration": 0.696599
+        },
+        {
+          "text": "提纲",
+          "spokenText": "提纲",
+          "start": 5.908821,
+          "end": 6.5261,
+          "duration": 0.557279
+        },
+        {
+          "text": "揭晓",
+          "spokenText": "揭晓",
+          "start": 6.9661,
+          "end": 7.51381,
+          "duration": 0.48771
+        },
+        {
+          "text": "摆放",
+          "spokenText": "摆放",
+          "start": 7.95381,
+          "end": 8.571088,
+          "duration": 0.557279
+        },
+        {
+          "text": "摆脱",
+          "spokenText": "摆脱",
+          "start": 9.011088,
+          "end": 9.581927,
+          "duration": 0.510839
+        },
+        {
+          "text": "摩擦",
+          "spokenText": "摩擦",
+          "start": 10.021927,
+          "end": 10.766916,
+          "duration": 0.684989
+        },
+        {
+          "text": "操场",
+          "spokenText": "操场",
+          "start": 11.206916,
+          "end": 11.673265,
+          "duration": 0.406349
+        },
+        {
+          "text": "收获",
+          "spokenText": "收获",
+          "start": 12.113265,
+          "end": 12.73458,
+          "duration": 0.561315
+        },
+        {
+          "text": "改变",
+          "spokenText": "改变",
+          "start": 13.17458,
+          "end": 13.826689,
+          "duration": 0.592109
+        },
+        {
+          "text": "政通人和",
+          "spokenText": "政通人和",
+          "start": 14.266689,
+          "end": 15.429637,
+          "duration": 1.102948
+        },
+        {
+          "text": "故乡",
+          "spokenText": "故乡",
+          "start": 15.869637,
+          "end": 16.466757,
+          "duration": 0.53712
+        },
+        {
+          "text": "救命",
+          "spokenText": "救命",
+          "start": 16.906757,
+          "end": 17.540771,
+          "duration": 0.574014
+        },
+        {
+          "text": "敬佩",
+          "spokenText": "敬佩",
+          "start": 17.980771,
+          "end": 18.561882,
+          "duration": 0.521111
+        },
+        {
+          "text": "敲打",
+          "spokenText": "敲打",
+          "start": 19.001882,
+          "end": 19.508662,
+          "duration": 0.44678
+        },
+        {
+          "text": "文章",
+          "spokenText": "文章",
+          "start": 19.948662,
+          "end": 20.589161,
+          "duration": 0.580499
+        },
+        {
+          "text": "新郎",
+          "spokenText": "新郎",
+          "start": 21.029161,
+          "end": 21.63483,
+          "duration": 0.545669
+        },
+        {
+          "text": "新鲜",
+          "spokenText": "新鲜",
+          "start": 22.07483,
+          "end": 22.528231,
+          "duration": 0.393401
+        },
+        {
+          "text": "无价之宝",
+          "spokenText": "无价之宝",
+          "start": 22.968231,
+          "end": 23.837007,
+          "duration": 0.808776
+        },
+        {
+          "text": "无穷无尽",
+          "spokenText": "无穷无尽",
+          "start": 24.277007,
+          "end": 25.300635,
+          "duration": 0.963628
+        }
+      ]
+    },
+    {
+      "file": "zh-09.mp3",
+      "lang": "zh",
+      "text": "既然；暖洋洋；曾经；木兰花；木棒；杀气；杭州；枯萎；柔弱；桂花；梅花；梦幻；棍子；模糊；横竖；欣赏；欧洲；残阳；殿堂；毁灭；毫不；民不聊生；民兵；氧气",
+      "voice": "MeloTTS-zh_en-speaker0",
+      "sha256": "7937f992594f12dfcc537d15cfde3bb828b58de866e4df03c8cf482a6b60d350",
+      "duration": 26.044082,
+      "bytes": 312887,
+      "listened": false,
+      "acousticContentCheck": "not-verified",
+      "segments": [
+        {
+          "text": "既然",
+          "spokenText": "既然",
+          "start": 0.08,
+          "end": 0.620363,
+          "duration": 0.480363
+        },
+        {
+          "text": "暖洋洋",
+          "spokenText": "暖洋洋",
+          "start": 1.060363,
+          "end": 1.805351,
+          "duration": 0.684989
+        },
+        {
+          "text": "曾经",
+          "spokenText": "曾经",
+          "start": 2.245351,
+          "end": 3.07161,
+          "duration": 0.766259
+        },
+        {
+          "text": "木兰花",
+          "spokenText": "木兰花",
+          "start": 3.51161,
+          "end": 4.268209,
+          "duration": 0.696599
+        },
+        {
+          "text": "木棒",
+          "spokenText": "木棒",
+          "start": 4.708209,
+          "end": 5.302268,
+          "duration": 0.534059
+        },
+        {
+          "text": "杀气",
+          "spokenText": "杀气",
+          "start": 5.742268,
+          "end": 6.287846,
+          "duration": 0.485578
+        },
+        {
+          "text": "杭州",
+          "spokenText": "杭州",
+          "start": 6.727846,
+          "end": 7.414785,
+          "duration": 0.626939
+        },
+        {
+          "text": "枯萎",
+          "spokenText": "枯萎",
+          "start": 7.854785,
+          "end": 8.297914,
+          "duration": 0.383129
+        },
+        {
+          "text": "柔弱",
+          "spokenText": "柔弱",
+          "start": 8.737914,
+          "end": 9.366803,
+          "duration": 0.568889
+        },
+        {
+          "text": "桂花",
+          "spokenText": "桂花",
+          "start": 9.806803,
+          "end": 10.496939,
+          "duration": 0.630136
+        },
+        {
+          "text": "梅花",
+          "spokenText": "梅花",
+          "start": 10.936939,
+          "end": 11.623878,
+          "duration": 0.626939
+        },
+        {
+          "text": "梦幻",
+          "spokenText": "梦幻",
+          "start": 12.063878,
+          "end": 12.646327,
+          "duration": 0.522449
+        },
+        {
+          "text": "棍子",
+          "spokenText": "棍子",
+          "start": 13.086327,
+          "end": 13.741791,
+          "duration": 0.595465
+        },
+        {
+          "text": "模糊",
+          "spokenText": "模糊",
+          "start": 14.181791,
+          "end": 14.682971,
+          "duration": 0.441179
+        },
+        {
+          "text": "横竖",
+          "spokenText": "横竖",
+          "start": 15.122971,
+          "end": 15.58932,
+          "duration": 0.406349
+        },
+        {
+          "text": "欣赏",
+          "spokenText": "欣赏",
+          "start": 16.02932,
+          "end": 16.592472,
+          "duration": 0.503152
+        },
+        {
+          "text": "欧洲",
+          "spokenText": "欧洲",
+          "start": 17.032472,
+          "end": 17.71941,
+          "duration": 0.626939
+        },
+        {
+          "text": "残阳",
+          "spokenText": "残阳",
+          "start": 18.15941,
+          "end": 18.60254,
+          "duration": 0.383129
+        },
+        {
+          "text": "殿堂",
+          "spokenText": "殿堂",
+          "start": 19.04254,
+          "end": 19.787528,
+          "duration": 0.684989
+        },
+        {
+          "text": "毁灭",
+          "spokenText": "毁灭",
+          "start": 20.227528,
+          "end": 21.007347,
+          "duration": 0.719819
+        },
+        {
+          "text": "毫不",
+          "spokenText": "毫不",
+          "start": 21.447347,
+          "end": 22.134286,
+          "duration": 0.626939
+        },
+        {
+          "text": "民不聊生",
+          "spokenText": "民不聊生",
+          "start": 22.574286,
+          "end": 23.481814,
+          "duration": 0.847528
+        },
+        {
+          "text": "民兵",
+          "spokenText": "民兵",
+          "start": 23.921814,
+          "end": 24.550703,
+          "duration": 0.568889
+        },
+        {
+          "text": "氧气",
+          "spokenText": "氧气",
+          "start": 24.990703,
+          "end": 25.654422,
+          "duration": 0.603719
+        }
+      ]
+    },
+    {
+      "file": "zh-10.mp3",
+      "lang": "zh",
+      "text": "水沟；沉浸；泡沫；泥胎；洞穴；流传；流离失所；浇水；浩浩荡荡；海峡；海棠；涌动；涨大；混乱；清洁；渐渐；游击；溺水；滑落；漫步；漫游；潜水；火箭；照例",
+      "voice": "MeloTTS-zh_en-speaker0",
+      "sha256": "14ac25fdb12071c1a899932e2bf8c99e9e770ec36a6704fa79fb8f471f58dd6a",
+      "duration": 26.305306,
+      "bytes": 316022,
+      "listened": false,
+      "acousticContentCheck": "not-verified",
+      "segments": [
+        {
+          "text": "水沟",
+          "spokenText": "水沟",
+          "start": 0.08,
+          "end": 0.720499,
+          "duration": 0.580499
+        },
+        {
+          "text": "沉浸",
+          "spokenText": "沉浸",
+          "start": 1.160499,
+          "end": 1.719728,
+          "duration": 0.499229
+        },
+        {
+          "text": "泡沫",
+          "spokenText": "泡沫",
+          "start": 2.159728,
+          "end": 2.893107,
+          "duration": 0.673379
+        },
+        {
+          "text": "泥胎",
+          "spokenText": "泥胎",
+          "start": 3.333107,
+          "end": 3.927166,
+          "duration": 0.534059
+        },
+        {
+          "text": "洞穴",
+          "spokenText": "洞穴",
+          "start": 4.367166,
+          "end": 5.239864,
+          "duration": 0.812698
+        },
+        {
+          "text": "流传",
+          "spokenText": "流传",
+          "start": 5.679864,
+          "end": 6.320363,
+          "duration": 0.580499
+        },
+        {
+          "text": "流离失所",
+          "spokenText": "流离失所",
+          "start": 6.760363,
+          "end": 7.830431,
+          "duration": 1.010068
+        },
+        {
+          "text": "浇水",
+          "spokenText": "浇水",
+          "start": 8.270431,
+          "end": 9.096689,
+          "duration": 0.766259
+        },
+        {
+          "text": "浩浩荡荡",
+          "spokenText": "浩浩荡荡",
+          "start": 9.536689,
+          "end": 10.513878,
+          "duration": 0.917188
+        },
+        {
+          "text": "海峡",
+          "spokenText": "海峡",
+          "start": 10.953878,
+          "end": 11.397007,
+          "duration": 0.383129
+        },
+        {
+          "text": "海棠",
+          "spokenText": "海棠",
+          "start": 11.837007,
+          "end": 12.396236,
+          "duration": 0.499229
+        },
+        {
+          "text": "涌动",
+          "spokenText": "涌动",
+          "start": 12.836236,
+          "end": 13.488345,
+          "duration": 0.592109
+        },
+        {
+          "text": "涨大",
+          "spokenText": "涨大",
+          "start": 13.928345,
+          "end": 14.557234,
+          "duration": 0.568889
+        },
+        {
+          "text": "混乱",
+          "spokenText": "混乱",
+          "start": 14.997234,
+          "end": 15.537687,
+          "duration": 0.480454
+        },
+        {
+          "text": "清洁",
+          "spokenText": "清洁",
+          "start": 15.977687,
+          "end": 16.455646,
+          "duration": 0.417959
+        },
+        {
+          "text": "渐渐",
+          "spokenText": "渐渐",
+          "start": 16.895646,
+          "end": 17.475102,
+          "duration": 0.519456
+        },
+        {
+          "text": "游击",
+          "spokenText": "游击",
+          "start": 17.915102,
+          "end": 18.578821,
+          "duration": 0.603719
+        },
+        {
+          "text": "溺水",
+          "spokenText": "溺水",
+          "start": 19.018821,
+          "end": 19.54322,
+          "duration": 0.464399
+        },
+        {
+          "text": "滑落",
+          "spokenText": "滑落",
+          "start": 19.98322,
+          "end": 20.670159,
+          "duration": 0.626939
+        },
+        {
+          "text": "漫步",
+          "spokenText": "漫步",
+          "start": 21.110159,
+          "end": 21.785488,
+          "duration": 0.615329
+        },
+        {
+          "text": "漫游",
+          "spokenText": "漫游",
+          "start": 22.225488,
+          "end": 22.865986,
+          "duration": 0.580499
+        },
+        {
+          "text": "潜水",
+          "spokenText": "潜水",
+          "start": 23.305986,
+          "end": 23.7161,
+          "duration": 0.350113
+        },
+        {
+          "text": "火箭",
+          "spokenText": "火箭",
+          "start": 24.1561,
+          "end": 24.737143,
+          "duration": 0.521043
+        },
+        {
+          "text": "照例",
+          "spokenText": "照例",
+          "start": 25.177143,
+          "end": 25.910522,
+          "duration": 0.673379
+        }
+      ]
+    },
+    {
+      "file": "zh-11.mp3",
+      "lang": "zh",
+      "text": "照常；照耀；爬山虎；牛棚；牡丹；牢固；犹如；狡兔三窟；狼心狗肺；狼狈为奸；玫瑰；环绕；现代；玻璃；理亏；瑰宝；生灵涂炭；生锈；痕迹；的确；皇帝；相依为命；相提并论；眉开眼笑",
+      "voice": "MeloTTS-zh_en-speaker0",
+      "sha256": "8878814f59a7cdacf6d8943479e9ed383ce1c63e0ac599549dd8255f0a55504a",
+      "duration": 27.324082,
+      "bytes": 328247,
+      "listened": false,
+      "acousticContentCheck": "not-verified",
+      "segments": [
+        {
+          "text": "照常",
+          "spokenText": "照常",
+          "start": 0.08,
+          "end": 0.685669,
+          "duration": 0.545669
+        },
+        {
+          "text": "照耀",
+          "spokenText": "照耀",
+          "start": 1.125669,
+          "end": 1.638458,
+          "duration": 0.452789
+        },
+        {
+          "text": "爬山虎",
+          "spokenText": "爬山虎",
+          "start": 2.078458,
+          "end": 2.974376,
+          "duration": 0.835918
+        },
+        {
+          "text": "牛棚",
+          "spokenText": "牛棚",
+          "start": 3.414376,
+          "end": 4.159365,
+          "duration": 0.684989
+        },
+        {
+          "text": "牡丹",
+          "spokenText": "牡丹",
+          "start": 4.599365,
+          "end": 5.135374,
+          "duration": 0.476009
+        },
+        {
+          "text": "牢固",
+          "spokenText": "牢固",
+          "start": 5.575374,
+          "end": 6.250703,
+          "duration": 0.615329
+        },
+        {
+          "text": "犹如",
+          "spokenText": "犹如",
+          "start": 6.690703,
+          "end": 7.238322,
+          "duration": 0.487619
+        },
+        {
+          "text": "狡兔三窟",
+          "spokenText": "狡兔三窟",
+          "start": 7.678322,
+          "end": 8.731655,
+          "duration": 0.993333
+        },
+        {
+          "text": "狼心狗肺",
+          "spokenText": "狼心狗肺",
+          "start": 9.171655,
+          "end": 10.172063,
+          "duration": 0.940408
+        },
+        {
+          "text": "狼狈为奸",
+          "spokenText": "狼狈为奸",
+          "start": 10.612063,
+          "end": 11.496372,
+          "duration": 0.824308
+        },
+        {
+          "text": "玫瑰",
+          "spokenText": "玫瑰",
+          "start": 11.936372,
+          "end": 12.507211,
+          "duration": 0.510839
+        },
+        {
+          "text": "环绕",
+          "spokenText": "环绕",
+          "start": 12.947211,
+          "end": 13.48322,
+          "duration": 0.476009
+        },
+        {
+          "text": "现代",
+          "spokenText": "现代",
+          "start": 13.92322,
+          "end": 14.449138,
+          "duration": 0.465918
+        },
+        {
+          "text": "玻璃",
+          "spokenText": "玻璃",
+          "start": 14.889138,
+          "end": 15.390317,
+          "duration": 0.441179
+        },
+        {
+          "text": "理亏",
+          "spokenText": "理亏",
+          "start": 15.830317,
+          "end": 16.319887,
+          "duration": 0.429569
+        },
+        {
+          "text": "瑰宝",
+          "spokenText": "瑰宝",
+          "start": 16.759887,
+          "end": 17.304626,
+          "duration": 0.484739
+        },
+        {
+          "text": "生灵涂炭",
+          "spokenText": "生灵涂炭",
+          "start": 17.744626,
+          "end": 18.745034,
+          "duration": 0.940408
+        },
+        {
+          "text": "生锈",
+          "spokenText": "生锈",
+          "start": 19.185034,
+          "end": 19.848027,
+          "duration": 0.602993
+        },
+        {
+          "text": "痕迹",
+          "spokenText": "痕迹",
+          "start": 20.288027,
+          "end": 20.716009,
+          "duration": 0.367982
+        },
+        {
+          "text": "的确",
+          "spokenText": "的确",
+          "start": 21.156009,
+          "end": 21.773288,
+          "duration": 0.557279
+        },
+        {
+          "text": "皇帝",
+          "spokenText": "皇帝",
+          "start": 22.213288,
+          "end": 22.656417,
+          "duration": 0.383129
+        },
+        {
+          "text": "相依为命",
+          "spokenText": "相依为命",
+          "start": 23.096417,
+          "end": 23.989615,
+          "duration": 0.833197
+        },
+        {
+          "text": "相提并论",
+          "spokenText": "相提并论",
+          "start": 24.429615,
+          "end": 25.592562,
+          "duration": 1.102948
+        },
+        {
+          "text": "眉开眼笑",
+          "spokenText": "眉开眼笑",
+          "start": 26.032562,
+          "end": 26.928481,
+          "duration": 0.835918
+        }
+      ]
+    },
+    {
+      "file": "zh-12.mp3",
+      "lang": "zh",
+      "text": "瞧不起；矮小；矿物；研究；破坏；科学家；稀罕；空隙；立即；笨拙；简直；算是；类似；粉碎；精华；精卫填海；精疲力竭；糕饼；繁星；约定；纱衣；纹丝不动；组成；细小",
+      "voice": "MeloTTS-zh_en-speaker0",
+      "sha256": "d6e2c4320c81c018ded9ca5a84a38ff24ef502dbcc89e70fb3262ba8a3fd91e1",
+      "duration": 26.462041,
+      "bytes": 317903,
+      "listened": false,
+      "acousticContentCheck": "not-verified",
+      "segments": [
+        {
+          "text": "瞧不起",
+          "spokenText": "瞧不起",
+          "start": 0.08,
+          "end": 0.999138,
+          "duration": 0.859138
+        },
+        {
+          "text": "矮小",
+          "spokenText": "矮小",
+          "start": 1.439138,
+          "end": 2.068027,
+          "duration": 0.568889
+        },
+        {
+          "text": "矿物",
+          "spokenText": "矿物",
+          "start": 2.508027,
+          "end": 3.066689,
+          "duration": 0.498662
+        },
+        {
+          "text": "研究",
+          "spokenText": "研究",
+          "start": 3.506689,
+          "end": 4.158798,
+          "duration": 0.592109
+        },
+        {
+          "text": "破坏",
+          "spokenText": "破坏",
+          "start": 4.598798,
+          "end": 5.320567,
+          "duration": 0.661769
+        },
+        {
+          "text": "科学家",
+          "spokenText": "科学家",
+          "start": 5.760567,
+          "end": 6.633265,
+          "duration": 0.812698
+        },
+        {
+          "text": "稀罕",
+          "spokenText": "稀罕",
+          "start": 7.073265,
+          "end": 7.516395,
+          "duration": 0.383129
+        },
+        {
+          "text": "空隙",
+          "spokenText": "空隙",
+          "start": 7.956395,
+          "end": 8.411134,
+          "duration": 0.394739
+        },
+        {
+          "text": "立即",
+          "spokenText": "立即",
+          "start": 8.851134,
+          "end": 9.514853,
+          "duration": 0.603719
+        },
+        {
+          "text": "笨拙",
+          "spokenText": "笨拙",
+          "start": 9.954853,
+          "end": 10.572132,
+          "duration": 0.557279
+        },
+        {
+          "text": "简直",
+          "spokenText": "简直",
+          "start": 11.012132,
+          "end": 11.647188,
+          "duration": 0.575057
+        },
+        {
+          "text": "算是",
+          "spokenText": "算是",
+          "start": 12.087188,
+          "end": 12.578889,
+          "duration": 0.431701
+        },
+        {
+          "text": "类似",
+          "spokenText": "类似",
+          "start": 13.018889,
+          "end": 13.763878,
+          "duration": 0.684989
+        },
+        {
+          "text": "粉碎",
+          "spokenText": "粉碎",
+          "start": 14.203878,
+          "end": 14.937256,
+          "duration": 0.673379
+        },
+        {
+          "text": "精华",
+          "spokenText": "精华",
+          "start": 15.377256,
+          "end": 15.871361,
+          "duration": 0.434104
+        },
+        {
+          "text": "精卫填海",
+          "spokenText": "精卫填海",
+          "start": 16.311361,
+          "end": 17.215442,
+          "duration": 0.844082
+        },
+        {
+          "text": "精疲力竭",
+          "spokenText": "精疲力竭",
+          "start": 17.655442,
+          "end": 18.630454,
+          "duration": 0.915011
+        },
+        {
+          "text": "糕饼",
+          "spokenText": "糕饼",
+          "start": 19.070454,
+          "end": 19.577914,
+          "duration": 0.44746
+        },
+        {
+          "text": "繁星",
+          "spokenText": "繁星",
+          "start": 20.017914,
+          "end": 20.716463,
+          "duration": 0.638549
+        },
+        {
+          "text": "约定",
+          "spokenText": "约定",
+          "start": 21.156463,
+          "end": 21.750522,
+          "duration": 0.534059
+        },
+        {
+          "text": "纱衣",
+          "spokenText": "纱衣",
+          "start": 22.190522,
+          "end": 22.640181,
+          "duration": 0.38966
+        },
+        {
+          "text": "纹丝不动",
+          "spokenText": "纹丝不动",
+          "start": 23.080181,
+          "end": 24.127029,
+          "duration": 0.986848
+        },
+        {
+          "text": "组成",
+          "spokenText": "组成",
+          "start": 24.567029,
+          "end": 25.15415,
+          "duration": 0.52712
+        },
+        {
+          "text": "细小",
+          "spokenText": "细小",
+          "start": 25.59415,
+          "end": 26.055918,
+          "duration": 0.401769
+        }
+      ]
+    },
+    {
+      "file": "zh-13.mp3",
+      "lang": "zh",
+      "text": "结婚；绳子；综合；缓缓；罢了；罪证；美中不足；翻身；老婆婆；肝脏；脑袋；腰带；腾飞；舒服；舒适；航线；花卉；花蕾；苍蝇；茂盛；茅亭；茉莉；茎叶；茶叶",
+      "voice": "MeloTTS-zh_en-speaker0",
+      "sha256": "e8f2c19f96b2ec5a0f75cb95d448a8cee8575ad05d3c918cccac72110e9091ab",
+      "duration": 25.861224,
+      "bytes": 310693,
+      "listened": false,
+      "acousticContentCheck": "not-verified",
+      "segments": [
+        {
+          "text": "结婚",
+          "spokenText": "结婚",
+          "start": 0.08,
+          "end": 0.766939,
+          "duration": 0.626939
+        },
+        {
+          "text": "绳子",
+          "spokenText": "绳子",
+          "start": 1.206939,
+          "end": 1.719728,
+          "duration": 0.452789
+        },
+        {
+          "text": "综合",
+          "spokenText": "综合",
+          "start": 2.159728,
+          "end": 2.683719,
+          "duration": 0.463991
+        },
+        {
+          "text": "缓缓",
+          "spokenText": "缓缓",
+          "start": 3.123719,
+          "end": 3.694558,
+          "duration": 0.510839
+        },
+        {
+          "text": "罢了",
+          "spokenText": "罢了",
+          "start": 4.134558,
+          "end": 4.740227,
+          "duration": 0.545669
+        },
+        {
+          "text": "罪证",
+          "spokenText": "罪证",
+          "start": 5.180227,
+          "end": 5.768571,
+          "duration": 0.528345
+        },
+        {
+          "text": "美中不足",
+          "spokenText": "美中不足",
+          "start": 6.208571,
+          "end": 7.19737,
+          "duration": 0.928798
+        },
+        {
+          "text": "翻身",
+          "spokenText": "翻身",
+          "start": 7.63737,
+          "end": 8.301088,
+          "duration": 0.603719
+        },
+        {
+          "text": "老婆婆",
+          "spokenText": "老婆婆",
+          "start": 8.741088,
+          "end": 9.625397,
+          "duration": 0.824308
+        },
+        {
+          "text": "肝脏",
+          "spokenText": "肝脏",
+          "start": 10.065397,
+          "end": 10.740726,
+          "duration": 0.615329
+        },
+        {
+          "text": "脑袋",
+          "spokenText": "脑袋",
+          "start": 11.180726,
+          "end": 11.786395,
+          "duration": 0.545669
+        },
+        {
+          "text": "腰带",
+          "spokenText": "腰带",
+          "start": 12.226395,
+          "end": 12.959773,
+          "duration": 0.673379
+        },
+        {
+          "text": "腾飞",
+          "spokenText": "腾飞",
+          "start": 13.399773,
+          "end": 13.854512,
+          "duration": 0.394739
+        },
+        {
+          "text": "舒服",
+          "spokenText": "舒服",
+          "start": 14.294512,
+          "end": 14.848617,
+          "duration": 0.494104
+        },
+        {
+          "text": "舒适",
+          "spokenText": "舒适",
+          "start": 15.288617,
+          "end": 15.94263,
+          "duration": 0.594014
+        },
+        {
+          "text": "航线",
+          "spokenText": "航线",
+          "start": 16.38263,
+          "end": 16.83737,
+          "duration": 0.394739
+        },
+        {
+          "text": "花卉",
+          "spokenText": "花卉",
+          "start": 17.27737,
+          "end": 17.883946,
+          "duration": 0.546576
+        },
+        {
+          "text": "花蕾",
+          "spokenText": "花蕾",
+          "start": 18.323946,
+          "end": 19.034104,
+          "duration": 0.650159
+        },
+        {
+          "text": "苍蝇",
+          "spokenText": "苍蝇",
+          "start": 19.474104,
+          "end": 20.253923,
+          "duration": 0.719819
+        },
+        {
+          "text": "茂盛",
+          "spokenText": "茂盛",
+          "start": 20.693923,
+          "end": 21.237868,
+          "duration": 0.483946
+        },
+        {
+          "text": "茅亭",
+          "spokenText": "茅亭",
+          "start": 21.677868,
+          "end": 22.399637,
+          "duration": 0.661769
+        },
+        {
+          "text": "茉莉",
+          "spokenText": "茉莉",
+          "start": 22.839637,
+          "end": 23.503356,
+          "duration": 0.603719
+        },
+        {
+          "text": "茎叶",
+          "spokenText": "茎叶",
+          "start": 23.943356,
+          "end": 24.463764,
+          "duration": 0.460408
+        },
+        {
+          "text": "茶叶",
+          "spokenText": "茶叶",
+          "start": 24.903764,
+          "end": 25.451383,
+          "duration": 0.487619
+        }
+      ]
+    },
+    {
+      "file": "zh-14.mp3",
+      "lang": "zh",
+      "text": "荒地；虚弱；虽然；虾兵蟹将；蚊子；衔着；装饰；触角；议论；设法；证明；诗情画意；诸位；谈话；象征；赛跑；超过；距离；路不拾遗；踏步；身份；躺着；轻重；较大",
+      "voice": "MeloTTS-zh_en-speaker0",
+      "sha256": "d163df3e2197bd7da978895654a3832ffd550f45010eb0d83ae3ec258255bf33",
+      "duration": 26.77551,
+      "bytes": 321664,
+      "listened": false,
+      "acousticContentCheck": "not-verified",
+      "segments": [
+        {
+          "text": "荒地",
+          "spokenText": "荒地",
+          "start": 0.08,
+          "end": 0.813379,
+          "duration": 0.673379
+        },
+        {
+          "text": "虚弱",
+          "spokenText": "虚弱",
+          "start": 1.253379,
+          "end": 1.731338,
+          "duration": 0.417959
+        },
+        {
+          "text": "虽然",
+          "spokenText": "虽然",
+          "start": 2.171338,
+          "end": 2.659796,
+          "duration": 0.428458
+        },
+        {
+          "text": "虾兵蟹将",
+          "spokenText": "虾兵蟹将",
+          "start": 3.099796,
+          "end": 4.135034,
+          "duration": 0.975238
+        },
+        {
+          "text": "蚊子",
+          "spokenText": "蚊子",
+          "start": 4.575034,
+          "end": 5.273583,
+          "duration": 0.638549
+        },
+        {
+          "text": "衔着",
+          "spokenText": "衔着",
+          "start": 5.713583,
+          "end": 6.179932,
+          "duration": 0.406349
+        },
+        {
+          "text": "装饰",
+          "spokenText": "装饰",
+          "start": 6.619932,
+          "end": 7.399751,
+          "duration": 0.719819
+        },
+        {
+          "text": "触角",
+          "spokenText": "触角",
+          "start": 7.839751,
+          "end": 8.480249,
+          "duration": 0.580499
+        },
+        {
+          "text": "议论",
+          "spokenText": "议论",
+          "start": 8.920249,
+          "end": 9.560748,
+          "duration": 0.580499
+        },
+        {
+          "text": "设法",
+          "spokenText": "设法",
+          "start": 10.000748,
+          "end": 10.931497,
+          "duration": 0.870748
+        },
+        {
+          "text": "证明",
+          "spokenText": "证明",
+          "start": 11.371497,
+          "end": 12.093265,
+          "duration": 0.661769
+        },
+        {
+          "text": "诗情画意",
+          "spokenText": "诗情画意",
+          "start": 12.533265,
+          "end": 13.380771,
+          "duration": 0.787506
+        },
+        {
+          "text": "诸位",
+          "spokenText": "诸位",
+          "start": 13.820771,
+          "end": 14.42644,
+          "duration": 0.545669
+        },
+        {
+          "text": "谈话",
+          "spokenText": "谈话",
+          "start": 14.86644,
+          "end": 15.448889,
+          "duration": 0.522449
+        },
+        {
+          "text": "象征",
+          "spokenText": "象征",
+          "start": 15.888889,
+          "end": 16.506281,
+          "duration": 0.557392
+        },
+        {
+          "text": "赛跑",
+          "spokenText": "赛跑",
+          "start": 16.946281,
+          "end": 17.70288,
+          "duration": 0.696599
+        },
+        {
+          "text": "超过",
+          "spokenText": "超过",
+          "start": 18.14288,
+          "end": 18.934308,
+          "duration": 0.731429
+        },
+        {
+          "text": "距离",
+          "spokenText": "距离",
+          "start": 19.374308,
+          "end": 20.017256,
+          "duration": 0.582948
+        },
+        {
+          "text": "路不拾遗",
+          "spokenText": "路不拾遗",
+          "start": 20.457256,
+          "end": 21.364785,
+          "duration": 0.847528
+        },
+        {
+          "text": "踏步",
+          "spokenText": "踏步",
+          "start": 21.804785,
+          "end": 22.480113,
+          "duration": 0.615329
+        },
+        {
+          "text": "身份",
+          "spokenText": "身份",
+          "start": 22.920113,
+          "end": 23.396417,
+          "duration": 0.416304
+        },
+        {
+          "text": "躺着",
+          "spokenText": "躺着",
+          "start": 23.836417,
+          "end": 24.442086,
+          "duration": 0.545669
+        },
+        {
+          "text": "轻重",
+          "spokenText": "轻重",
+          "start": 24.882086,
+          "end": 25.379546,
+          "duration": 0.43746
+        },
+        {
+          "text": "较大",
+          "spokenText": "较大",
+          "start": 25.819546,
+          "end": 26.37034,
+          "duration": 0.490794
+        }
+      ]
+    },
+    {
+      "file": "zh-15.mp3",
+      "lang": "zh",
+      "text": "边缘；运输；进宫；违抗；迟延；选择；逐渐；速度；遭受；避难；配合；酬谢；醒来；重新；野兽；铜铃；铺开；销毁；镇定；问题；陷坑；隆重；随着；隐约",
+      "voice": "MeloTTS-zh_en-speaker0",
+      "sha256": "d7310acbd0874156b6203e1b2700dfd4091d48228e59cc76567b15e632978ebe",
+      "duration": 24.659592,
+      "bytes": 296273,
+      "listened": false,
+      "acousticContentCheck": "not-verified",
+      "segments": [
+        {
+          "text": "边缘",
+          "spokenText": "边缘",
+          "start": 0.08,
+          "end": 0.627619,
+          "duration": 0.487619
+        },
+        {
+          "text": "运输",
+          "spokenText": "运输",
+          "start": 1.067619,
+          "end": 1.580408,
+          "duration": 0.452789
+        },
+        {
+          "text": "进宫",
+          "spokenText": "进宫",
+          "start": 2.020408,
+          "end": 2.61898,
+          "duration": 0.538571
+        },
+        {
+          "text": "违抗",
+          "spokenText": "违抗",
+          "start": 3.05898,
+          "end": 3.618209,
+          "duration": 0.499229
+        },
+        {
+          "text": "迟延",
+          "spokenText": "迟延",
+          "start": 4.058209,
+          "end": 4.501338,
+          "duration": 0.383129
+        },
+        {
+          "text": "选择",
+          "spokenText": "选择",
+          "start": 4.941338,
+          "end": 5.430907,
+          "duration": 0.429569
+        },
+        {
+          "text": "逐渐",
+          "spokenText": "逐渐",
+          "start": 5.870907,
+          "end": 6.546236,
+          "duration": 0.615329
+        },
+        {
+          "text": "速度",
+          "spokenText": "速度",
+          "start": 6.986236,
+          "end": 7.537029,
+          "duration": 0.490794
+        },
+        {
+          "text": "遭受",
+          "spokenText": "遭受",
+          "start": 7.977029,
+          "end": 8.756848,
+          "duration": 0.719819
+        },
+        {
+          "text": "避难",
+          "spokenText": "避难",
+          "start": 9.196848,
+          "end": 9.848957,
+          "duration": 0.592109
+        },
+        {
+          "text": "配合",
+          "spokenText": "配合",
+          "start": 10.288957,
+          "end": 10.941066,
+          "duration": 0.592109
+        },
+        {
+          "text": "酬谢",
+          "spokenText": "酬谢",
+          "start": 11.381066,
+          "end": 11.800975,
+          "duration": 0.359909
+        },
+        {
+          "text": "醒来",
+          "spokenText": "醒来",
+          "start": 12.240975,
+          "end": 12.712494,
+          "duration": 0.411519
+        },
+        {
+          "text": "重新",
+          "spokenText": "重新",
+          "start": 13.152494,
+          "end": 13.618844,
+          "duration": 0.406349
+        },
+        {
+          "text": "野兽",
+          "spokenText": "野兽",
+          "start": 14.058844,
+          "end": 14.536803,
+          "duration": 0.417959
+        },
+        {
+          "text": "铜铃",
+          "spokenText": "铜铃",
+          "start": 14.976803,
+          "end": 15.675351,
+          "duration": 0.638549
+        },
+        {
+          "text": "铺开",
+          "spokenText": "铺开",
+          "start": 16.115351,
+          "end": 16.582358,
+          "duration": 0.407007
+        },
+        {
+          "text": "销毁",
+          "spokenText": "销毁",
+          "start": 17.022358,
+          "end": 17.860227,
+          "duration": 0.777868
+        },
+        {
+          "text": "镇定",
+          "spokenText": "镇定",
+          "start": 18.300227,
+          "end": 18.975556,
+          "duration": 0.615329
+        },
+        {
+          "text": "问题",
+          "spokenText": "问题",
+          "start": 19.415556,
+          "end": 20.125714,
+          "duration": 0.650159
+        },
+        {
+          "text": "陷坑",
+          "spokenText": "陷坑",
+          "start": 20.565714,
+          "end": 21.148163,
+          "duration": 0.522449
+        },
+        {
+          "text": "隆重",
+          "spokenText": "隆重",
+          "start": 21.588163,
+          "end": 22.217052,
+          "duration": 0.568889
+        },
+        {
+          "text": "随着",
+          "spokenText": "随着",
+          "start": 22.657052,
+          "end": 23.355601,
+          "duration": 0.638549
+        },
+        {
+          "text": "隐约",
+          "spokenText": "隐约",
+          "start": 23.795601,
+          "end": 24.25034,
+          "duration": 0.394739
+        }
+      ]
+    },
+    {
+      "file": "zh-16.mp3",
+      "lang": "zh",
+      "text": "震天动地；震荡；霎时；静寂；顿时；风平浪静；飞禽走兽；食品；饱览；香蕉；驱赶；驾驶员；高度；鱼跃龙门；鹤立鸡群；黑乎乎；黑暗；黔驴技穷；鼠目寸光；齐头并进；龙飞凤舞；龙马精神",
+      "voice": "MeloTTS-zh_en-speaker0",
+      "sha256": "2105d47a0db0e19a6e6ed718476e5d45d725d81033b03ef15eb561629f3de8d7",
+      "duration": 27.271837,
+      "bytes": 327620,
+      "listened": false,
+      "acousticContentCheck": "not-verified",
+      "segments": [
+        {
+          "text": "震天动地",
+          "spokenText": "震天动地",
+          "start": 0.08,
+          "end": 1.184898,
+          "duration": 1.044898
+        },
+        {
+          "text": "震荡",
+          "spokenText": "震荡",
+          "start": 1.624898,
+          "end": 2.184127,
+          "duration": 0.499229
+        },
+        {
+          "text": "霎时",
+          "spokenText": "霎时",
+          "start": 2.624127,
+          "end": 3.334286,
+          "duration": 0.650159
+        },
+        {
+          "text": "静寂",
+          "spokenText": "静寂",
+          "start": 3.774286,
+          "end": 4.306621,
+          "duration": 0.472336
+        },
+        {
+          "text": "顿时",
+          "spokenText": "顿时",
+          "start": 4.746621,
+          "end": 5.51483,
+          "duration": 0.708209
+        },
+        {
+          "text": "风平浪静",
+          "spokenText": "风平浪静",
+          "start": 5.95483,
+          "end": 7.048118,
+          "duration": 1.033288
+        },
+        {
+          "text": "飞禽走兽",
+          "spokenText": "飞禽走兽",
+          "start": 7.488118,
+          "end": 8.418866,
+          "duration": 0.870748
+        },
+        {
+          "text": "食品",
+          "spokenText": "食品",
+          "start": 8.858866,
+          "end": 9.522585,
+          "duration": 0.603719
+        },
+        {
+          "text": "饱览",
+          "spokenText": "饱览",
+          "start": 9.962585,
+          "end": 10.568254,
+          "duration": 0.545669
+        },
+        {
+          "text": "香蕉",
+          "spokenText": "香蕉",
+          "start": 11.008254,
+          "end": 11.741633,
+          "duration": 0.673379
+        },
+        {
+          "text": "驱赶",
+          "spokenText": "驱赶",
+          "start": 12.181633,
+          "end": 12.519864,
+          "duration": 0.278231
+        },
+        {
+          "text": "驾驶员",
+          "spokenText": "驾驶员",
+          "start": 12.959864,
+          "end": 13.832562,
+          "duration": 0.812698
+        },
+        {
+          "text": "高度",
+          "spokenText": "高度",
+          "start": 14.272562,
+          "end": 14.906893,
+          "duration": 0.574331
+        },
+        {
+          "text": "鱼跃龙门",
+          "spokenText": "鱼跃龙门",
+          "start": 15.346893,
+          "end": 16.249932,
+          "duration": 0.843039
+        },
+        {
+          "text": "鹤立鸡群",
+          "spokenText": "鹤立鸡群",
+          "start": 16.689932,
+          "end": 17.74839,
+          "duration": 0.998458
+        },
+        {
+          "text": "黑乎乎",
+          "spokenText": "黑乎乎",
+          "start": 18.18839,
+          "end": 18.951247,
+          "duration": 0.702857
+        },
+        {
+          "text": "黑暗",
+          "spokenText": "黑暗",
+          "start": 19.391247,
+          "end": 19.795692,
+          "duration": 0.344444
+        },
+        {
+          "text": "黔驴技穷",
+          "spokenText": "黔驴技穷",
+          "start": 20.235692,
+          "end": 21.165578,
+          "duration": 0.869887
+        },
+        {
+          "text": "鼠目寸光",
+          "spokenText": "鼠目寸光",
+          "start": 21.605578,
+          "end": 22.582766,
+          "duration": 0.917188
+        },
+        {
+          "text": "齐头并进",
+          "spokenText": "齐头并进",
+          "start": 23.022766,
+          "end": 23.919751,
+          "duration": 0.836984
+        },
+        {
+          "text": "龙飞凤舞",
+          "spokenText": "龙飞凤舞",
+          "start": 24.359751,
+          "end": 25.441429,
+          "duration": 1.021678
+        },
+        {
+          "text": "龙马精神",
+          "spokenText": "龙马精神",
+          "start": 25.881429,
+          "end": 26.870227,
+          "duration": 0.928798
+        }
+      ]
+    },
+    {
+      "file": "en-01.mp3",
+      "lang": "en",
+      "text": "Africa；Chinese yo-yo；English；India；a meat-eating plant；action；activity；all kinds of；always；an ice cream cone；another；art；art room；as fast as the wind；baby elephant；bamboo；bed；begin；believe it or not；black；botanical gardens；bowl；bring；call out",
+      "voice": "af_heart",
+      "sha256": "60dfc9422305cefd2a6d9d4d31bded6dc4453d1f68af4594b42ac211084769c1",
+      "duration": 36.888,
+      "bytes": 442989,
+      "listened": false,
+      "acousticContentCheck": "not-verified",
+      "segments": [
+        {
+          "text": "Africa",
+          "spokenText": "Africa",
+          "start": 0.08,
+          "end": 1.185333,
+          "duration": 1.045333
+        },
+        {
+          "text": "Chinese yo-yo",
+          "spokenText": "Chinese yo-yo",
+          "start": 1.625333,
+          "end": 2.922667,
+          "duration": 1.237333
+        },
+        {
+          "text": "English",
+          "spokenText": "English",
+          "start": 3.362667,
+          "end": 4.382667,
+          "duration": 0.96
+        },
+        {
+          "text": "India",
+          "spokenText": "India",
+          "start": 4.822667,
+          "end": 5.736,
+          "duration": 0.853333
+        },
+        {
+          "text": "a meat-eating plant",
+          "spokenText": "a meat-eating plant",
+          "start": 6.176,
+          "end": 7.537333,
+          "duration": 1.301333
+        },
+        {
+          "text": "action",
+          "spokenText": "action",
+          "start": 7.977333,
+          "end": 8.954667,
+          "duration": 0.917333
+        },
+        {
+          "text": "activity",
+          "spokenText": "activity",
+          "start": 9.394667,
+          "end": 10.542667,
+          "duration": 1.088
+        },
+        {
+          "text": "all kinds of",
+          "spokenText": "all kinds of",
+          "start": 10.982667,
+          "end": 12.109333,
+          "duration": 1.066667
+        },
+        {
+          "text": "always",
+          "spokenText": "always",
+          "start": 12.549333,
+          "end": 13.612,
+          "duration": 1.002667
+        },
+        {
+          "text": "an ice cream cone",
+          "spokenText": "an ice cream cone",
+          "start": 14.052,
+          "end": 15.456,
+          "duration": 1.344
+        },
+        {
+          "text": "another",
+          "spokenText": "another",
+          "start": 15.896,
+          "end": 16.809333,
+          "duration": 0.853333
+        },
+        {
+          "text": "art",
+          "spokenText": "art",
+          "start": 17.249333,
+          "end": 18.12,
+          "duration": 0.810667
+        },
+        {
+          "text": "art room",
+          "spokenText": "art room",
+          "start": 18.56,
+          "end": 19.622667,
+          "duration": 1.002667
+        },
+        {
+          "text": "as fast as the wind",
+          "spokenText": "as fast as the wind",
+          "start": 20.062667,
+          "end": 21.616,
+          "duration": 1.493333
+        },
+        {
+          "text": "baby elephant",
+          "spokenText": "baby elephant",
+          "start": 22.056,
+          "end": 23.310667,
+          "duration": 1.194667
+        },
+        {
+          "text": "bamboo",
+          "spokenText": "bamboo",
+          "start": 23.750667,
+          "end": 24.856,
+          "duration": 1.045333
+        },
+        {
+          "text": "bed",
+          "spokenText": "bed",
+          "start": 25.296,
+          "end": 25.996,
+          "duration": 0.64
+        },
+        {
+          "text": "begin",
+          "spokenText": "begin",
+          "start": 26.436,
+          "end": 27.456,
+          "duration": 0.96
+        },
+        {
+          "text": "believe it or not",
+          "spokenText": "believe it or not",
+          "start": 27.896,
+          "end": 29.172,
+          "duration": 1.216
+        },
+        {
+          "text": "black",
+          "spokenText": "black",
+          "start": 29.612,
+          "end": 30.482667,
+          "duration": 0.810667
+        },
+        {
+          "text": "botanical gardens",
+          "spokenText": "botanical gardens",
+          "start": 30.922667,
+          "end": 32.390667,
+          "duration": 1.408
+        },
+        {
+          "text": "bowl",
+          "spokenText": "bowl",
+          "start": 32.830667,
+          "end": 33.658667,
+          "duration": 0.768
+        },
+        {
+          "text": "bring",
+          "spokenText": "bring",
+          "start": 34.098667,
+          "end": 34.990667,
+          "duration": 0.832
+        },
+        {
+          "text": "call out",
+          "spokenText": "call out",
+          "start": 35.430667,
+          "end": 36.472,
+          "duration": 0.981333
+        }
+      ]
+    },
+    {
+      "file": "en-02.mp3",
+      "lang": "en",
+      "text": "changquan；child；classroom；come to life；computer room；control；creeper；different；dive；dragon dance；duck；egg；elephant；even；family；faster；four-o'clock flower；garden party；gardening；get close to；giraffe；give up；great；grey",
+      "voice": "af_heart",
+      "sha256": "41cea0f4f22df4fb9c459775bc517e6f3ebd021f7d9de8f7b3b7a7895f8378d7",
+      "duration": 35.136,
+      "bytes": 421965,
+      "listened": false,
+      "acousticContentCheck": "not-verified",
+      "segments": [
+        {
+          "text": "changquan",
+          "spokenText": "changquan",
+          "start": 0.08,
+          "end": 1.036,
+          "duration": 0.896
+        },
+        {
+          "text": "child",
+          "spokenText": "child",
+          "start": 1.476,
+          "end": 2.474667,
+          "duration": 0.938667
+        },
+        {
+          "text": "classroom",
+          "spokenText": "classroom",
+          "start": 2.914667,
+          "end": 3.998667,
+          "duration": 1.024
+        },
+        {
+          "text": "come to life",
+          "spokenText": "come to life",
+          "start": 4.438667,
+          "end": 5.586667,
+          "duration": 1.088
+        },
+        {
+          "text": "computer room",
+          "spokenText": "computer room",
+          "start": 6.026667,
+          "end": 7.132,
+          "duration": 1.045333
+        },
+        {
+          "text": "control",
+          "spokenText": "control",
+          "start": 7.572,
+          "end": 8.528,
+          "duration": 0.896
+        },
+        {
+          "text": "creeper",
+          "spokenText": "creeper",
+          "start": 8.968,
+          "end": 9.881333,
+          "duration": 0.853333
+        },
+        {
+          "text": "different",
+          "spokenText": "different",
+          "start": 10.321333,
+          "end": 11.341333,
+          "duration": 0.96
+        },
+        {
+          "text": "dive",
+          "spokenText": "dive",
+          "start": 11.781333,
+          "end": 12.652,
+          "duration": 0.810667
+        },
+        {
+          "text": "dragon dance",
+          "spokenText": "dragon dance",
+          "start": 13.092,
+          "end": 14.346667,
+          "duration": 1.194667
+        },
+        {
+          "text": "duck",
+          "spokenText": "duck",
+          "start": 14.786667,
+          "end": 15.593333,
+          "duration": 0.746667
+        },
+        {
+          "text": "egg",
+          "spokenText": "egg",
+          "start": 16.033333,
+          "end": 16.818667,
+          "duration": 0.725333
+        },
+        {
+          "text": "elephant",
+          "spokenText": "elephant",
+          "start": 17.258667,
+          "end": 18.3,
+          "duration": 0.981333
+        },
+        {
+          "text": "even",
+          "spokenText": "even",
+          "start": 18.74,
+          "end": 19.696,
+          "duration": 0.896
+        },
+        {
+          "text": "family",
+          "spokenText": "family",
+          "start": 20.136,
+          "end": 21.134667,
+          "duration": 0.938667
+        },
+        {
+          "text": "faster",
+          "spokenText": "faster",
+          "start": 21.574667,
+          "end": 22.637333,
+          "duration": 1.002667
+        },
+        {
+          "text": "four-o'clock flower",
+          "spokenText": "four-o'clock flower",
+          "start": 23.077333,
+          "end": 24.502667,
+          "duration": 1.365333
+        },
+        {
+          "text": "garden party",
+          "spokenText": "garden party",
+          "start": 24.942667,
+          "end": 26.090667,
+          "duration": 1.088
+        },
+        {
+          "text": "gardening",
+          "spokenText": "gardening",
+          "start": 26.530667,
+          "end": 27.593333,
+          "duration": 1.002667
+        },
+        {
+          "text": "get close to",
+          "spokenText": "get close to",
+          "start": 28.033333,
+          "end": 29.202667,
+          "duration": 1.109333
+        },
+        {
+          "text": "giraffe",
+          "spokenText": "giraffe",
+          "start": 29.642667,
+          "end": 30.662667,
+          "duration": 0.96
+        },
+        {
+          "text": "give up",
+          "spokenText": "give up",
+          "start": 31.102667,
+          "end": 32.037333,
+          "duration": 0.874667
+        },
+        {
+          "text": "great",
+          "spokenText": "great",
+          "start": 32.477333,
+          "end": 33.390667,
+          "duration": 0.853333
+        },
+        {
+          "text": "grey",
+          "spokenText": "grey",
+          "start": 33.830667,
+          "end": 34.722667,
+          "duration": 0.832
+        }
+      ]
+    },
+    {
+      "file": "en-03.mp3",
+      "lang": "en",
+      "text": "hair；hall；helpful；hippo；hometown；how about；interesting；invitation；join；keep up with；keep … tidy；keeper；kind；kite-flying；leaf；let；letter；library；lion；lose control；love；lovely；monkey；morning glory",
+      "voice": "af_heart",
+      "sha256": "04a34c5d2f281fa103d4b3a8579b79ad72f3488d177619cc6971488c4fc1ae76",
+      "duration": 34.44,
+      "bytes": 413613,
+      "listened": false,
+      "acousticContentCheck": "not-verified",
+      "segments": [
+        {
+          "text": "hair",
+          "spokenText": "hair",
+          "start": 0.08,
+          "end": 0.865333,
+          "duration": 0.725333
+        },
+        {
+          "text": "hall",
+          "spokenText": "hall",
+          "start": 1.305333,
+          "end": 2.090667,
+          "duration": 0.725333
+        },
+        {
+          "text": "helpful",
+          "spokenText": "helpful",
+          "start": 2.530667,
+          "end": 3.529333,
+          "duration": 0.938667
+        },
+        {
+          "text": "hippo",
+          "spokenText": "hippo",
+          "start": 3.969333,
+          "end": 4.882667,
+          "duration": 0.853333
+        },
+        {
+          "text": "hometown",
+          "spokenText": "hometown",
+          "start": 5.322667,
+          "end": 6.3,
+          "duration": 0.917333
+        },
+        {
+          "text": "how about",
+          "spokenText": "how about",
+          "start": 6.74,
+          "end": 7.845333,
+          "duration": 1.045333
+        },
+        {
+          "text": "interesting",
+          "spokenText": "interesting",
+          "start": 8.285333,
+          "end": 9.369333,
+          "duration": 1.024
+        },
+        {
+          "text": "invitation",
+          "spokenText": "invitation",
+          "start": 9.809333,
+          "end": 10.978667,
+          "duration": 1.109333
+        },
+        {
+          "text": "join",
+          "spokenText": "join",
+          "start": 11.418667,
+          "end": 12.353333,
+          "duration": 0.874667
+        },
+        {
+          "text": "keep up with",
+          "spokenText": "keep up with",
+          "start": 12.793333,
+          "end": 13.856,
+          "duration": 1.002667
+        },
+        {
+          "text": "keep … tidy",
+          "spokenText": "keep  tidy",
+          "start": 14.296,
+          "end": 15.444,
+          "duration": 1.088
+        },
+        {
+          "text": "keeper",
+          "spokenText": "keeper",
+          "start": 15.884,
+          "end": 16.776,
+          "duration": 0.832
+        },
+        {
+          "text": "kind",
+          "spokenText": "kind",
+          "start": 17.216,
+          "end": 18.172,
+          "duration": 0.896
+        },
+        {
+          "text": "kite-flying",
+          "spokenText": "kite-flying",
+          "start": 18.612,
+          "end": 19.781333,
+          "duration": 1.109333
+        },
+        {
+          "text": "leaf",
+          "spokenText": "leaf",
+          "start": 20.221333,
+          "end": 21.070667,
+          "duration": 0.789333
+        },
+        {
+          "text": "let",
+          "spokenText": "let",
+          "start": 21.510667,
+          "end": 22.338667,
+          "duration": 0.768
+        },
+        {
+          "text": "letter",
+          "spokenText": "letter",
+          "start": 22.778667,
+          "end": 23.713333,
+          "duration": 0.874667
+        },
+        {
+          "text": "library",
+          "spokenText": "library",
+          "start": 24.153333,
+          "end": 25.28,
+          "duration": 1.066667
+        },
+        {
+          "text": "lion",
+          "spokenText": "lion",
+          "start": 25.72,
+          "end": 26.676,
+          "duration": 0.896
+        },
+        {
+          "text": "lose control",
+          "spokenText": "lose control",
+          "start": 27.116,
+          "end": 28.328,
+          "duration": 1.152
+        },
+        {
+          "text": "love",
+          "spokenText": "love",
+          "start": 28.768,
+          "end": 29.638667,
+          "duration": 0.810667
+        },
+        {
+          "text": "lovely",
+          "spokenText": "lovely",
+          "start": 30.078667,
+          "end": 30.970667,
+          "duration": 0.832
+        },
+        {
+          "text": "monkey",
+          "spokenText": "monkey",
+          "start": 31.410667,
+          "end": 32.409333,
+          "duration": 0.938667
+        },
+        {
+          "text": "morning glory",
+          "spokenText": "morning glory",
+          "start": 32.849333,
+          "end": 34.018667,
+          "duration": 1.109333
+        }
+      ]
+    },
+    {
+      "file": "en-04.mp3",
+      "lang": "en",
+      "text": "mud；noodles；often；pace；panda；party；photo diary；pine cone；polar bear；prize；project；protect；react；reading room；root；safari park；scale；school building；share a cake；soil；soup；sports field；stamp；stem",
+      "voice": "af_heart",
+      "sha256": "b23a82e5b5899b698ebefca99e8324666f5422603abe89673f55e6691372a2d1",
+      "duration": 35.136,
+      "bytes": 421965,
+      "listened": false,
+      "acousticContentCheck": "not-verified",
+      "segments": [
+        {
+          "text": "mud",
+          "spokenText": "mud",
+          "start": 0.08,
+          "end": 0.886667,
+          "duration": 0.746667
+        },
+        {
+          "text": "noodles",
+          "spokenText": "noodles",
+          "start": 1.326667,
+          "end": 2.389333,
+          "duration": 1.002667
+        },
+        {
+          "text": "often",
+          "spokenText": "often",
+          "start": 2.829333,
+          "end": 3.806667,
+          "duration": 0.917333
+        },
+        {
+          "text": "pace",
+          "spokenText": "pace",
+          "start": 4.246667,
+          "end": 5.202667,
+          "duration": 0.896
+        },
+        {
+          "text": "panda",
+          "spokenText": "panda",
+          "start": 5.642667,
+          "end": 6.577333,
+          "duration": 0.874667
+        },
+        {
+          "text": "party",
+          "spokenText": "party",
+          "start": 7.017333,
+          "end": 7.973333,
+          "duration": 0.896
+        },
+        {
+          "text": "photo diary",
+          "spokenText": "photo diary",
+          "start": 8.413333,
+          "end": 9.668,
+          "duration": 1.194667
+        },
+        {
+          "text": "pine cone",
+          "spokenText": "pine cone",
+          "start": 10.108,
+          "end": 11.256,
+          "duration": 1.088
+        },
+        {
+          "text": "polar bear",
+          "spokenText": "polar bear",
+          "start": 11.696,
+          "end": 12.822667,
+          "duration": 1.066667
+        },
+        {
+          "text": "prize",
+          "spokenText": "prize",
+          "start": 13.262667,
+          "end": 14.282667,
+          "duration": 0.96
+        },
+        {
+          "text": "project",
+          "spokenText": "project",
+          "start": 14.722667,
+          "end": 15.742667,
+          "duration": 0.96
+        },
+        {
+          "text": "protect",
+          "spokenText": "protect",
+          "start": 16.182667,
+          "end": 17.16,
+          "duration": 0.917333
+        },
+        {
+          "text": "react",
+          "spokenText": "react",
+          "start": 17.6,
+          "end": 18.577333,
+          "duration": 0.917333
+        },
+        {
+          "text": "reading room",
+          "spokenText": "reading room",
+          "start": 19.017333,
+          "end": 20.208,
+          "duration": 1.130667
+        },
+        {
+          "text": "root",
+          "spokenText": "root",
+          "start": 20.648,
+          "end": 21.497333,
+          "duration": 0.789333
+        },
+        {
+          "text": "safari park",
+          "spokenText": "safari park",
+          "start": 21.937333,
+          "end": 23.213333,
+          "duration": 1.216
+        },
+        {
+          "text": "scale",
+          "spokenText": "scale",
+          "start": 23.653333,
+          "end": 24.609333,
+          "duration": 0.896
+        },
+        {
+          "text": "school building",
+          "spokenText": "school building",
+          "start": 25.049333,
+          "end": 26.24,
+          "duration": 1.130667
+        },
+        {
+          "text": "share a cake",
+          "spokenText": "share a cake",
+          "start": 26.68,
+          "end": 27.806667,
+          "duration": 1.066667
+        },
+        {
+          "text": "soil",
+          "spokenText": "soil",
+          "start": 28.246667,
+          "end": 29.16,
+          "duration": 0.853333
+        },
+        {
+          "text": "soup",
+          "spokenText": "soup",
+          "start": 29.6,
+          "end": 30.385333,
+          "duration": 0.725333
+        },
+        {
+          "text": "sports field",
+          "spokenText": "sports field",
+          "start": 30.825333,
+          "end": 32.037333,
+          "duration": 1.152
+        },
+        {
+          "text": "stamp",
+          "spokenText": "stamp",
+          "start": 32.477333,
+          "end": 33.348,
+          "duration": 0.810667
+        },
+        {
+          "text": "stem",
+          "spokenText": "stem",
+          "start": 33.788,
+          "end": 34.722667,
+          "duration": 0.874667
+        }
+      ]
+    },
+    {
+      "file": "en-05.mp3",
+      "lang": "en",
+      "text": "storytelling；straight；student；style；tail；take in；take photos；tall；the North Pole；thick；thin；threat；tiger；toe；tradition；traditional；train；train hard；truck tour；trunk；tug of war；tulip；view；warm",
+      "voice": "af_heart",
+      "sha256": "83694067894badc38f721c44c6acafc8b5c70eeacbcc728caf04d93a0f7a4c18",
+      "duration": 33.984,
+      "bytes": 408141,
+      "listened": false,
+      "acousticContentCheck": "not-verified",
+      "segments": [
+        {
+          "text": "storytelling",
+          "spokenText": "storytelling",
+          "start": 0.08,
+          "end": 1.292,
+          "duration": 1.152
+        },
+        {
+          "text": "straight",
+          "spokenText": "straight",
+          "start": 1.732,
+          "end": 2.752,
+          "duration": 0.96
+        },
+        {
+          "text": "student",
+          "spokenText": "student",
+          "start": 3.192,
+          "end": 4.254667,
+          "duration": 1.002667
+        },
+        {
+          "text": "style",
+          "spokenText": "style",
+          "start": 4.694667,
+          "end": 5.672,
+          "duration": 0.917333
+        },
+        {
+          "text": "tail",
+          "spokenText": "tail",
+          "start": 6.112,
+          "end": 7.004,
+          "duration": 0.832
+        },
+        {
+          "text": "take in",
+          "spokenText": "take in",
+          "start": 7.444,
+          "end": 8.442667,
+          "duration": 0.938667
+        },
+        {
+          "text": "take photos",
+          "spokenText": "take photos",
+          "start": 8.882667,
+          "end": 10.073333,
+          "duration": 1.130667
+        },
+        {
+          "text": "tall",
+          "spokenText": "tall",
+          "start": 10.513333,
+          "end": 11.149333,
+          "duration": 0.576
+        },
+        {
+          "text": "the North Pole",
+          "spokenText": "the North Pole",
+          "start": 11.589333,
+          "end": 12.694667,
+          "duration": 1.045333
+        },
+        {
+          "text": "thick",
+          "spokenText": "thick",
+          "start": 13.134667,
+          "end": 13.984,
+          "duration": 0.789333
+        },
+        {
+          "text": "thin",
+          "spokenText": "thin",
+          "start": 14.424,
+          "end": 15.273333,
+          "duration": 0.789333
+        },
+        {
+          "text": "threat",
+          "spokenText": "threat",
+          "start": 15.713333,
+          "end": 16.584,
+          "duration": 0.810667
+        },
+        {
+          "text": "tiger",
+          "spokenText": "tiger",
+          "start": 17.024,
+          "end": 17.98,
+          "duration": 0.896
+        },
+        {
+          "text": "toe",
+          "spokenText": "toe",
+          "start": 18.42,
+          "end": 19.226667,
+          "duration": 0.746667
+        },
+        {
+          "text": "tradition",
+          "spokenText": "tradition",
+          "start": 19.666667,
+          "end": 20.750667,
+          "duration": 1.024
+        },
+        {
+          "text": "traditional",
+          "spokenText": "traditional",
+          "start": 21.190667,
+          "end": 22.210667,
+          "duration": 0.96
+        },
+        {
+          "text": "train",
+          "spokenText": "train",
+          "start": 22.650667,
+          "end": 23.585333,
+          "duration": 0.874667
+        },
+        {
+          "text": "train hard",
+          "spokenText": "train hard",
+          "start": 24.025333,
+          "end": 25.130667,
+          "duration": 1.045333
+        },
+        {
+          "text": "truck tour",
+          "spokenText": "truck tour",
+          "start": 25.570667,
+          "end": 26.590667,
+          "duration": 0.96
+        },
+        {
+          "text": "trunk",
+          "spokenText": "trunk",
+          "start": 27.030667,
+          "end": 27.922667,
+          "duration": 0.832
+        },
+        {
+          "text": "tug of war",
+          "spokenText": "tug of war",
+          "start": 28.362667,
+          "end": 29.489333,
+          "duration": 1.066667
+        },
+        {
+          "text": "tulip",
+          "spokenText": "tulip",
+          "start": 29.929333,
+          "end": 30.842667,
+          "duration": 0.853333
+        },
+        {
+          "text": "view",
+          "spokenText": "view",
+          "start": 31.282667,
+          "end": 32.217333,
+          "duration": 0.874667
+        },
+        {
+          "text": "warm",
+          "spokenText": "warm",
+          "start": 32.657333,
+          "end": 33.570667,
+          "duration": 0.853333
+        }
+      ]
+    },
+    {
+      "file": "en-06.mp3",
+      "lang": "en",
+      "text": "water lily；whale；white；wish；work as a team；yellow",
+      "voice": "af_heart",
+      "sha256": "be0e816b640258cd1a3e23a35fbcb9be430d1256ad3434222bf43f20f242fef7",
+      "duration": 8.616,
+      "bytes": 103725,
+      "listened": false,
+      "acousticContentCheck": "not-verified",
+      "segments": [
+        {
+          "text": "water lily",
+          "spokenText": "water lily",
+          "start": 0.08,
+          "end": 1.185333,
+          "duration": 1.045333
+        },
+        {
+          "text": "whale",
+          "spokenText": "whale",
+          "start": 1.625333,
+          "end": 2.453333,
+          "duration": 0.768
+        },
+        {
+          "text": "white",
+          "spokenText": "white",
+          "start": 2.893333,
+          "end": 3.806667,
+          "duration": 0.853333
+        },
+        {
+          "text": "wish",
+          "spokenText": "wish",
+          "start": 4.246667,
+          "end": 5.138667,
+          "duration": 0.832
+        },
+        {
+          "text": "work as a team",
+          "spokenText": "work as a team",
+          "start": 5.578667,
+          "end": 6.812,
+          "duration": 1.173333
+        },
+        {
+          "text": "yellow",
+          "spokenText": "yellow",
+          "start": 7.252,
+          "end": 8.186667,
+          "duration": 0.874667
+        }
+      ]
+    }
+  ]
+}

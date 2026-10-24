@@ -1,7 +1,7 @@
 {
 "upstream": "https://study-portal-eta.vercel.app/",
 "initialized_from": "a00e05e",
-"last_sync": "2026-10-23",
+"last_sync": "2026-10-24",
 "files": {
 "apps.html": {
 "sha": "6e2adf9d152d2b8939866fc63b0a13fb18ae1e2ac94b3f47ecf97a7702521842",
@@ -9868,6 +9868,126 @@
 "etag": "\"765be15fe8fde36224a491436afa8f0f\"",
 "upstream": true
 },
+"apps/audio/midterm-dictation-20261024/_index.json": {
+"sha": "e791f0bdfcf05690fed2fec6450e1f8df5d8a0681f7a6fd2996af494513146aa",
+"etag": "\"40a3941ee9df3ad8c7cb496793af46b8\"",
+"upstream": true
+},
+"apps/audio/midterm-dictation-20261024/_manifest.json": {
+"sha": "78977c1a932b089412ac4160019eb67de7ca338acbee444d83637f2de1f2d66b",
+"etag": "\"3a73c32d41368f4c8f3c4019dadabd28\"",
+"upstream": true
+},
+"apps/audio/midterm-dictation-20261024/en-01.mp3": {
+"sha": "60dfc9422305cefd2a6d9d4d31bded6dc4453d1f68af4594b42ac211084769c1",
+"etag": "\"9237a92e3f0c71a8072897cbe9bf6489\"",
+"upstream": true
+},
+"apps/audio/midterm-dictation-20261024/en-02.mp3": {
+"sha": "41cea0f4f22df4fb9c459775bc517e6f3ebd021f7d9de8f7b3b7a7895f8378d7",
+"etag": "\"bcc48491d2ba426cb1d7eea9c2264c1a\"",
+"upstream": true
+},
+"apps/audio/midterm-dictation-20261024/en-03.mp3": {
+"sha": "04a34c5d2f281fa103d4b3a8579b79ad72f3488d177619cc6971488c4fc1ae76",
+"etag": "\"0fadcd0507c463d2a94f3b5318a15b13\"",
+"upstream": true
+},
+"apps/audio/midterm-dictation-20261024/en-04.mp3": {
+"sha": "b23a82e5b5899b698ebefca99e8324666f5422603abe89673f55e6691372a2d1",
+"etag": "\"9372682ff1481815d78c9958c1aadf01\"",
+"upstream": true
+},
+"apps/audio/midterm-dictation-20261024/en-05.mp3": {
+"sha": "83694067894badc38f721c44c6acafc8b5c70eeacbcc728caf04d93a0f7a4c18",
+"etag": "\"fceed60b063086aad79aa04d25270620\"",
+"upstream": true
+},
+"apps/audio/midterm-dictation-20261024/en-06.mp3": {
+"sha": "be0e816b640258cd1a3e23a35fbcb9be430d1256ad3434222bf43f20f242fef7",
+"etag": "\"5bc27f4f481fc688da4787f8d4a43aa5\"",
+"upstream": true
+},
+"apps/audio/midterm-dictation-20261024/zh-01.mp3": {
+"sha": "52387b1082088d112e2536cdb42ac7ae47eccbfb80d8107e854ba30b254168d4",
+"etag": "\"ce1941557f03c2674ecd83dabd91660d\"",
+"upstream": true
+},
+"apps/audio/midterm-dictation-20261024/zh-02.mp3": {
+"sha": "152a494bbd982bebfe4e21d4fa9fbfd126cac1a898cd0b7014eacd6099e3f5d3",
+"etag": "\"1b6e7979f973d5d352007dacc6ae9b10\"",
+"upstream": true
+},
+"apps/audio/midterm-dictation-20261024/zh-03.mp3": {
+"sha": "cdc3a06416d310b49c1cdec59172a18da63d3f9e80446d896820ca4fe6e6d148",
+"etag": "\"08840ec52d88e7e13f33c87eeac13d5f\"",
+"upstream": true
+},
+"apps/audio/midterm-dictation-20261024/zh-04.mp3": {
+"sha": "0c3be6534b11965cd50a86213e4d604eeceb3856f37354c549820da135390253",
+"etag": "\"4bcb49d6d80ac63ac25922b72239038c\"",
+"upstream": true
+},
+"apps/audio/midterm-dictation-20261024/zh-05.mp3": {
+"sha": "f97294a1fc1cff675ea003f3f14bf9e8c340e7328eae96fd3587c995939580a1",
+"etag": "\"2dfa4da98c364569f254911b87a4db56\"",
+"upstream": true
+},
+"apps/audio/midterm-dictation-20261024/zh-06.mp3": {
+"sha": "a3e6f1f47c44cf56e0d8c3e3675b12ec6142f81ce38135c19ecc672cb2a4632d",
+"etag": "\"17fc7b169faea351a1bb19ed2140b605\"",
+"upstream": true
+},
+"apps/audio/midterm-dictation-20261024/zh-07.mp3": {
+"sha": "a31e1bf8fc18818a323cb8a430143e83bef462f1dc60833a23f2558f3871f137",
+"etag": "\"a05af169b6b7078b2e5d1a6572196b09\"",
+"upstream": true
+},
+"apps/audio/midterm-dictation-20261024/zh-08.mp3": {
+"sha": "a107a6e397dcb3dcb1f4166d4b072987ceec0ff3bc55f2bf0af2d055708eb76a",
+"etag": "\"f8b062936e924e2f9ca1c027d5289f07\"",
+"upstream": true
+},
+"apps/audio/midterm-dictation-20261024/zh-09.mp3": {
+"sha": "7937f992594f12dfcc537d15cfde3bb828b58de866e4df03c8cf482a6b60d350",
+"etag": "\"0dd8dcf54c89a01b83f9a188d5f00b7e\"",
+"upstream": true
+},
+"apps/audio/midterm-dictation-20261024/zh-10.mp3": {
+"sha": "14ac25fdb12071c1a899932e2bf8c99e9e770ec36a6704fa79fb8f471f58dd6a",
+"etag": "\"163e0726df4eb2c356e0f96fa9dbb211\"",
+"upstream": true
+},
+"apps/audio/midterm-dictation-20261024/zh-11.mp3": {
+"sha": "8878814f59a7cdacf6d8943479e9ed383ce1c63e0ac599549dd8255f0a55504a",
+"etag": "\"b28d0ac36569bb43e9cfb765457c611c\"",
+"upstream": true
+},
+"apps/audio/midterm-dictation-20261024/zh-12.mp3": {
+"sha": "d6e2c4320c81c018ded9ca5a84a38ff24ef502dbcc89e70fb3262ba8a3fd91e1",
+"etag": "\"a1983028bb037affb5216ef09d2d70b7\"",
+"upstream": true
+},
+"apps/audio/midterm-dictation-20261024/zh-13.mp3": {
+"sha": "e8f2c19f96b2ec5a0f75cb95d448a8cee8575ad05d3c918cccac72110e9091ab",
+"etag": "\"6954b12fba8306f87fa6029a7cd839ce\"",
+"upstream": true
+},
+"apps/audio/midterm-dictation-20261024/zh-14.mp3": {
+"sha": "d163df3e2197bd7da978895654a3832ffd550f45010eb0d83ae3ec258255bf33",
+"etag": "\"414f0ad582c5eb1ce437a3829ace46f1\"",
+"upstream": true
+},
+"apps/audio/midterm-dictation-20261024/zh-15.mp3": {
+"sha": "d7310acbd0874156b6203e1b2700dfd4091d48228e59cc76567b15e632978ebe",
+"etag": "\"21b66c105d4f7f979d822742099a2f70\"",
+"upstream": true
+},
+"apps/audio/midterm-dictation-20261024/zh-16.mp3": {
+"sha": "2105d47a0db0e19a6e6ed718476e5d45d725d81033b03ef15eb561629f3de8d7",
+"etag": "\"2d4a5fccfc64542ae386d81de50e80d6\"",
+"upstream": true
+},
 "apps/audio/news_20260622/006e5d50.mp3": {
 "sha": "f822009c40251c37fd9986c841536d3343bfaa50efbd2519842c92f1f50c80a5",
 "etag": "\"e85040dcd77dba7006d0164973231500\"",
@@ -10993,6 +11113,11 @@
 "etag": "\"367191f11eb32707eda2904381c9092c\"",
 "upstream": true
 },
+"apps/eddey_math_mistakes_20261024.html": {
+"sha": "3092c00ef5a741211618266fdb42a80bf401724468b120f6a7e136d00b39147b",
+"etag": "\"4fbc064c11e5cfd03e4c987239e7c6f2\"",
+"upstream": true
+},
 "apps/eddey_math_redo.html": {
 "sha": "89fd8e1bf35a56dc442fdc5a267ceb95cc7ecb8d628659f7bb90dff85499b64f",
 "etag": "\"f6aed774a31a49d151d386b41652e387\"",
@@ -11313,6 +11438,11 @@
 "etag": "\"807710103e4a29237c94843b720e9095\"",
 "upstream": true
 },
+"apps/kenton_math_mistakes_20261024.html": {
+"sha": "2c32f8435f57f60b1c1c290cb9717e3a5af51257c612a563e43b1446797d7cde",
+"etag": "\"709b39d23d13f29bedf5a5868422505f\"",
+"upstream": true
+},
 "apps/kenton_math_sprint.html": {
 "sha": "f9aa3a78886943c6010df87aec238edc687b4ad26b6e01c26077e4514adaeb12",
 "etag": "\"e9f56dcc29fc747ffc4be5ffcd582eb1\"",
@@ -11411,6 +11541,11 @@
 "apps/media/eddey_week1_spelling_20260831/word-blocks.vtt": {
 "sha": "3a2ae2601bcdc5c771a475fed4e0254e4cdf22d23d7bbea385c2c47b6786ccea",
 "etag": "\"43b8558513004241abcbd26ced25f8cd\"",
+"upstream": true
+},
+"apps/midterm-dictation-20261024.html": {
+"sha": "373346c7a238839d1434ebde7de3ed9ffc09cf4e092600ac82a7822a17f8d03a",
+"etag": "\"8ef0e615362b5b10a9890502dd4165c7\"",
 "upstream": true
 },
 "apps/news_20260615.html": {
@@ -11553,6 +11688,76 @@
 "etag": "\"6481369717f468e2e6fe47e79c9bc819\"",
 "upstream": true
 },
+"assets/math-mistake-bank.js": {
+"sha": "15417fab21cf32e0f3726f548e8ec92c8718f085c7bac766ac7e136d6208f0b7",
+"etag": "\"9368cdc2e438c0eadd8ec9d4a8aaee13\"",
+"upstream": true
+},
+"assets/math-mistakes/forest-directions.svg": {
+"sha": "7afa2ccd314bf691e3d9fd2fe9b10cf06f8b61348dfd2c45ce115bcb04bce925",
+"etag": "\"699523f4309a87ad531141ca11573c16\"",
+"upstream": true
+},
+"assets/math-mistakes/forest-fill.svg": {
+"sha": "af23630fe415492276e477091d28d45024f5a358663b15c2a1a60ee53cc0be06",
+"etag": "\"b3cffb57eb3f28a175a86aaab7de773b\"",
+"upstream": true
+},
+"assets/math-mistakes/kenton-bar-grid.svg": {
+"sha": "2643ee3ff760c6fc17208a3e41a7b90b9b742f77162c9ad28d1efd8586efc18e",
+"etag": "\"b1581077ac2d4086c865947ac59adab0\"",
+"upstream": true
+},
+"assets/math-mistakes/kenton-bar-reference.svg": {
+"sha": "7d759be38243303a13eeef37c328e3b2a93c0f08e9835b14dd31966e38fa489c",
+"etag": "\"97dc8b118bb6fd7a7f32a279092512af\"",
+"upstream": true
+},
+"assets/math-mistakes/kenton-division-choice.svg": {
+"sha": "78d24e35c4fda815ec291e23b7e1d2fe0e9e05ea58fa5e7416aedecac9fa2c6c",
+"etag": "\"466e26bd8a155bdeb3b79f4c1beaa0d6\"",
+"upstream": true
+},
+"assets/math-mistakes/kenton-division-fill.svg": {
+"sha": "9ba045dfe8dfc061e5099b1527ee5343f2f9fd12dd38656feac9da8b7bb5f776",
+"etag": "\"33c581757a50676bbf5b22a31926b90f\"",
+"upstream": true
+},
+"assets/math-mistakes/kenton-grid-area.svg": {
+"sha": "9f4d5c1d88fda1457d2dcc3a546a36644d06a17555b8844d96da373d002fde23",
+"etag": "\"35237f7969c98b59c0e4f7f94f93f749\"",
+"upstream": true
+},
+"assets/math-mistakes/multiplication-groups.svg": {
+"sha": "07333dd9e8004f91bf1c98af558c2fa65fde4e0a5df262edeb0700900960a67b",
+"etag": "\"c8eddbd6a18b444bdb41303ee93f97c5\"",
+"upstream": true
+},
+"assets/math-mistakes/park-directions.svg": {
+"sha": "b01325df7af3bf11e980ba249ceea0e4baee851f4cf15ba8ad1c06f88539cdd6",
+"etag": "\"099afd1f3a07d89a037eabab22f7b2a7\"",
+"upstream": true
+},
+"assets/math-mistakes/park-fill.svg": {
+"sha": "8248f87a7fd4a09c2014e5be8c7bcc45b0373fb2aac0e7d9657ca6e0d7d38d3b",
+"etag": "\"e8e11d139138f4da35cafbce4ce0b6b1\"",
+"upstream": true
+},
+"assets/math-mistakes/zoo-directions.svg": {
+"sha": "04bb2f95565d67c38d80308bda4489bc4c0332a0ee446255cb97e1356bd479b0",
+"etag": "\"93f04c052b2359e5f359800bcca0f4d6\"",
+"upstream": true
+},
+"assets/midterm-dictation.css": {
+"sha": "37fc413c73e1537488255735b7d36cd21cd2646f2a993d249df4e34b9a680483",
+"etag": "\"9bc3e909382c7de8b130f85be1ea679a\"",
+"upstream": true
+},
+"assets/midterm-dictation.js": {
+"sha": "11fd3c3853353b38b972817efa282c09e041b550811e6f0bd0bf502ef67b5db5",
+"etag": "\"5b91f78e169697cef1a3c300faeecc89\"",
+"upstream": true
+},
 "assets/mistake-history.js": {
 "sha": "ba50d41630b97119a12bd7f3c0689bbf375d81a348daa524b4e013f9cdd90f62",
 "etag": "\"1048d5400a70bae8e84daf7ed8b5d66c\"",
@@ -11599,8 +11804,8 @@
 "upstream": true
 },
 "assets/portal-snapshot.js": {
-"sha": "86e971cc19a8e5848350cea61fae8d1ffdc6e9163ad79199b2e5d36af834db38",
-"etag": "\"5a2bd24dea0be65418384d81798ad6a2\"",
+"sha": "a764129f33f5333c886356ba44297e713eba766dd5194459156dfb67a44820f6",
+"etag": "\"dad4d3e8ed074e51f2269a6a43355f65\"",
 "upstream": true
 },
 "assets/portal-support.css": {
@@ -11614,8 +11819,8 @@
 "upstream": true
 },
 "assets/portal.js": {
-"sha": "802a331cc98b9fd0396750cef25e84eca4a917f89f95af8172108e15e8c3e5e1",
-"etag": "\"a65fd29c6337b0c1319add82367c194a\"",
+"sha": "fc65b55868785b89f48ea0b6b9c72fc7b9cee3f77f4f08d30bffed1547e463e7",
+"etag": "\"b00633bb8ffa5bf77e72ff2abfc33aae\"",
 "upstream": true
 },
 "assets/printables/kenton-grade5-timetable-a4-landscape.png": {
@@ -11704,8 +11909,8 @@
 "upstream": true
 },
 "data/apps.json": {
-"sha": "6a0d21788ae0b5fde96bb124117240082f2f9a0d2c40a609705ba8653f18ed2c",
-"etag": "\"402ecd49d1272ec07d217e3ae10c9f29\"",
+"sha": "32bc0ddccbf9b809dbabf6097ccec0e22066151ab34a0ce1a4ecc81176b73709",
+"etag": "\"0fbcd2e15b526416984cfd6e8fc2ffbe\"",
 "upstream": true
 },
 "data/exam-prep/calendar.json": {
@@ -11753,14 +11958,29 @@
 "etag": "\"22203330a86af2255b071f928fb29f51\"",
 "upstream": true
 },
+"data/learning/eddey_math_mistakes_20261024.json": {
+"sha": "a1f8e0f4e7596662c3f81908549b26f5372724bbe7e6250e19582e04b381b92f",
+"etag": "\"34aeeba7817107af79080acdf4e97cf9\"",
+"upstream": true
+},
+"data/learning/kenton_math_mistakes_20261024.json": {
+"sha": "eebd325ad6c8df40b0f99f89e8cfe7ed188fcd774b90235f48b967a9d608cf53",
+"etag": "\"9676da89d909114d5a352a938beea193\"",
+"upstream": true
+},
 "data/math_gold_hub.json": {
 "sha": "b4d34b0de3b0ea166356abd0433fd8125a40169c4574303e3c33767ac4671454",
 "etag": "\"f18e42b34ddebc430e9457b721b34836\"",
 "upstream": true
 },
+"data/midterm-dictation-20261024.json": {
+"sha": "12be9dd34de19392d7cf3d565d60ef27129e1999986c230880c2d144659a2922",
+"etag": "\"1ed8e5b8d4402ad07fc4fa03dbf02066\"",
+"upstream": true
+},
 "data/mistake-archives.json": {
-"sha": "3b1410cf5a1f8835928e095565eecd85cae61b1b47b400dfbb9d3212e2d195d6",
-"etag": "\"b72b2aba52d5395026c7acf4bd5f823a\"",
+"sha": "8c0193fa427a770dfcc74a1dfcded3d072827edd2c053ff49180cb96df9ab039",
+"etag": "\"453903e06ab26b5303f92585bdcfdfb4\"",
 "upstream": true
 },
 "data/papers.json": {
@@ -11774,8 +11994,8 @@
 "upstream": true
 },
 "data/portal-navigation.json": {
-"sha": "8235cd29c9ac3aa79fc61b9774448062a5c7a36967a91a4dda79a7e0db6f71ea",
-"etag": "\"c65f94cc155dc8f2fa2edcf0cb693cfc\"",
+"sha": "39974b757c66d2c58b99d155843e26e429e908cfb771f0cb2827e9ccc03e00c0",
+"etag": "\"3abf6095bd3c691d5c495b0a7b0a18d1\"",
 "upstream": true
 },
 "data/preply.json": {
@@ -11794,8 +12014,8 @@
 "upstream": true
 },
 "data/school-vocabulary/kenton.json": {
-"sha": "73d991db996970e5d94113ab9054a10659c2e8bbbc780f6920c191152eca1fa6",
-"etag": "\"a5dd60c3c5ca5a90a4d32fb15389ef39\"",
+"sha": "ce7a1be79ffd9fc54b55a4f5f86f51810009ee95af596002640f8088b03442b0",
+"etag": "\"3029288806b00e156d1daf9c32e98d35\"",
 "upstream": true
 },
 "data/summer-english-library.json": {
@@ -11816,6 +12036,21 @@
 "knowledge-map.html": {
 "sha": "43bf6a87a1e45647eb5812d8720fbad929129994d3afe133b2a9550545d8228e",
 "etag": "\"f22f17db54cd0483760179b8d9b0bf54\"",
+"upstream": true
+},
+"learning-records/eddey/english/past-tense-2026-08-06.md": {
+"sha": "b94819f1aa29da5b5608b5f505afa8bbb9d886bf0e45f4ffc2f04388a85b6cab",
+"etag": "\"45de6c0a5f137c6a61689f134b7531b7\"",
+"upstream": true
+},
+"learning-records/eddey/programming/xiaomawang-a457-code-2026-07-30.md": {
+"sha": "bb2787876fecc6f0c2467be3ffa24b292b22f872938da6ace43b7e7a64d5cc91",
+"etag": "\"e34fc5e01c567923e7760154077cb477\"",
+"upstream": true
+},
+"learning-records/kenton/programming/xiaomawang-a457-code-2026-07-30.md": {
+"sha": "566cb52676206fa1a94cac5b17def6d1520356550f4170104b872c42c7b09322",
+"etag": "\"6e0af582e090707e56a4c057506d67b2\"",
 "upstream": true
 },
 "materials/programming/xiaomawang/kenton/cpp-4.5/lessons/00-cpp-intro.pdf": {
@@ -11844,8 +12079,8 @@
 "upstream": true
 },
 "mistakes.html": {
-"sha": "b564924cbd4823d37153029f151e70d4ff056c75dfff55a198ffaad70e1e7d46",
-"etag": "\"7b0d55ef41da62df20ca250c8e0c2f5c\"",
+"sha": "7e2a2720f31297ff004f4ab2041369e4987c2a56a9d96361142fb422e483ae69",
+"etag": "\"3b85498e92fa11828d5e0f044c1616dc\"",
 "upstream": true
 },
 "paper-intake.html": {

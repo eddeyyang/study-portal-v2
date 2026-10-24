@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="520" height="370" viewBox="0 0 520 370" role="img" aria-labelledby="title desc">
+<title id="title">方格面积图</title>
+<desc id="desc">坐标网格，整数刻度间为一个单位，部分边界包含十分之一的细分。</desc>
+<rect width="520" height="370" fill="#ffffff"/>
+<g stroke="#3c5773" fill="none">
+<path d="M70 300 V57.99999999999997" stroke-width="2"/>
+<path d="M180 300 V57.99999999999997" stroke-width="2"/>
+<path d="M290 300 V57.99999999999997" stroke-width="2"/>
+<path d="M400 300 V57.99999999999997" stroke-width="2"/>
+<path d="M411.0 300 V57.99999999999997" stroke-width="1"/>
+<path d="M422.0 300 V57.99999999999997" stroke-width="1"/>
+<path d="M433.0 300 V57.99999999999997" stroke-width="1"/>
+<path d="M444.0 300 V57.99999999999997" stroke-width="1"/>
+<path d="M70 300 H444.0" stroke-width="2"/>
+<path d="M70 190 H444.0" stroke-width="2"/>
+<path d="M70 80 H444.0" stroke-width="2"/>
+<path d="M70 69.0 H444.0" stroke-width="1"/>
+<path d="M70 57.99999999999997 H444.0" stroke-width="1"/>
+</g>
+<g font-family="Arial,sans-serif" font-size="22" fill="#203549" text-anchor="middle">
+<text x="70" y="332">0</text>
+<text x="180" y="332">1</text>
+<text x="290" y="332">2</text>
+<text x="400" y="332">3</text>
+<text x="44" y="197">1</text>
+<text x="44" y="87">2</text>
+</g></svg>

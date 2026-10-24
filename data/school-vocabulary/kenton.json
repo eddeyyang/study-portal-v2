@@ -207,8 +207,8 @@
         },
         {
           "type": "classroom",
-          "label": "当前课堂课本 p14",
-          "pdfPage": 1
+          "label": "当前课堂课本 p16",
+          "pdfPage": 3
         }
       ],
       "schedule": true,
@@ -239,8 +239,8 @@
       "sources": [
         {
           "type": "classroom",
-          "label": "当前课堂课本 p14",
-          "pdfPage": 1
+          "label": "当前课堂课本 p15",
+          "pdfPage": 2
         }
       ],
       "schedule": true,
@@ -255,8 +255,8 @@
       "sources": [
         {
           "type": "classroom",
-          "label": "当前课堂课本 p15",
-          "pdfPage": 2
+          "label": "当前课堂课本 p16",
+          "pdfPage": 3
         }
       ],
       "schedule": true,

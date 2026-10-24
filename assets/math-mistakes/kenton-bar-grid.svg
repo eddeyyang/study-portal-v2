@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 430" width="660" height="430" role="img" aria-labelledby="title">
+<title id="title">条形统计图坐标</title>
+<rect width="660" height="430" fill="white"/>
+<g font-family="Arial,sans-serif" fill="#203549" font-size="18">
+<text x="36" y="38">人数（人）</text>
+<path d="M70 340H620" stroke="#dbe3ea" stroke-width="1"/>
+<text x="51" y="346" text-anchor="end">0</text>
+<path d="M70 312H620" stroke="#dbe3ea" stroke-width="1"/>
+<text x="51" y="318" text-anchor="end">1</text>
+<path d="M70 284H620" stroke="#dbe3ea" stroke-width="1"/>
+<text x="51" y="290" text-anchor="end">2</text>
+<path d="M70 256H620" stroke="#dbe3ea" stroke-width="1"/>
+<text x="51" y="262" text-anchor="end">3</text>
+<path d="M70 228H620" stroke="#dbe3ea" stroke-width="1"/>
+<text x="51" y="234" text-anchor="end">4</text>
+<path d="M70 200H620" stroke="#dbe3ea" stroke-width="1"/>
+<text x="51" y="206" text-anchor="end">5</text>
+<path d="M70 172H620" stroke="#dbe3ea" stroke-width="1"/>
+<text x="51" y="178" text-anchor="end">6</text>
+<path d="M70 144H620" stroke="#dbe3ea" stroke-width="1"/>
+<text x="51" y="150" text-anchor="end">7</text>
+<path d="M70 116H620" stroke="#dbe3ea" stroke-width="1"/>
+<text x="51" y="122" text-anchor="end">8</text>
+<path d="M70 88H620" stroke="#dbe3ea" stroke-width="1"/>
+<text x="51" y="94" text-anchor="end">9</text>
+<path d="M70 60H620" stroke="#dbe3ea" stroke-width="1"/>
+<text x="51" y="66" text-anchor="end">10</text>
+<path d="M70 50V340H625" fill="none" stroke="#526b80" stroke-width="2"/>
+<text x="124" y="377" text-anchor="middle">篮球</text>
+<text x="232" y="377" text-anchor="middle">乒乓球</text>
+<text x="340" y="377" text-anchor="middle">美术</text>
+<text x="448" y="377" text-anchor="middle">合唱</text>
+<text x="556" y="377" text-anchor="middle">电脑</text>
+</g></svg>

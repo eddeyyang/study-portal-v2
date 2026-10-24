@@ -1,0 +1,3723 @@
+{
+  "child": "kenton",
+  "version": 1,
+  "asOf": "2026-10-24",
+  "items": [
+    {
+      "id": "K-M-595",
+      "title": "计算：6.4×92",
+      "category": "小数计算",
+      "priority": "important",
+      "prompt": "计算：6.4×92。",
+      "kind": "number",
+      "answers": [
+        "588.8"
+      ],
+      "unit": "",
+      "hint": "92包含90与2，两个部分都要算。",
+      "explanation": "把92看成90＋2，十位上的9表示90。 6.4×90＝576，6.4×2＝12.8。 把两部分积相加：576＋12.8＝588.8。",
+      "steps": [
+        "把92看成90＋2，十位上的9表示90。",
+        "6.4×90＝576，6.4×2＝12.8。",
+        "把两部分积相加：576＋12.8＝588.8。"
+      ],
+      "source": {
+        "date": "2026-09-03",
+        "label": "小数乘两位数·部分积",
+        "page": "",
+        "question": "",
+        "kind": "original"
+      },
+      "status": "ready",
+      "recordType": "confirmed-error"
+    },
+    {
+      "id": "K-M-596",
+      "title": "计算：35×2.4",
+      "category": "小数计算",
+      "priority": "important",
+      "prompt": "计算：35×2.4。",
+      "kind": "number",
+      "answers": [
+        "84"
+      ],
+      "unit": "",
+      "hint": "先按整数乘，写出每一处进位。",
+      "explanation": "35×24＝840；原式一个因数有1位小数，积为84.0＝84。",
+      "steps": [
+        "35×24＝840",
+        "原式一个因数有1位小数，积为84.0＝84"
+      ],
+      "source": {
+        "date": "2026-09-03",
+        "label": "小数乘法竖式·进位",
+        "page": "",
+        "question": "",
+        "kind": "original"
+      },
+      "status": "ready",
+      "recordType": "confirmed-error"
+    },
+    {
+      "id": "K-M-597",
+      "title": "计算：0.082×160",
+      "category": "小数计算",
+      "priority": "important",
+      "prompt": "计算：0.082×160。",
+      "kind": "number",
+      "answers": [
+        "13.12"
+      ],
+      "unit": "",
+      "hint": "最高位的进位也要保留下来。",
+      "explanation": "先按整数计算：82×6＝492，82×10＝820，所以82×16＝1312。 160＝16×10，因此82×160＝13120。 0.082有3位小数，积从13120的小数点向左移3位，得到13.120＝13.12。",
+      "steps": [
+        "先按整数计算：82×6＝492，82×10＝820，所以82×16＝1312。",
+        "160＝16×10，因此82×160＝13120。",
+        "0.082有3位小数，积从13120的小数点向左移3位，得到13.120＝13.12。"
+      ],
+      "source": {
+        "date": "2026-09-03",
+        "label": "小数乘法竖式·最高位进位",
+        "page": "",
+        "question": "",
+        "kind": "original"
+      },
+      "status": "ready",
+      "recordType": "confirmed-error"
+    },
+    {
+      "id": "K-M-598",
+      "title": "计算：2.7×0.18",
+      "category": "小数计算",
+      "priority": "important",
+      "prompt": "计算：2.7×0.18。",
+      "kind": "number",
+      "answers": [
+        "0.486"
+      ],
+      "unit": "",
+      "hint": "先核对题目和竖式中的两个因数。",
+      "explanation": "先核对两个因数是2.7和0.18，再按整数计算27×18。 27×8＝216，27×10＝270，216＋270＝486。 两个因数共有3位小数，所以2.7×0.18＝0.486。",
+      "steps": [
+        "先核对两个因数是2.7和0.18，再按整数计算27×18。",
+        "27×8＝216，27×10＝270，216＋270＝486。",
+        "两个因数共有3位小数，所以2.7×0.18＝0.486。"
+      ],
+      "source": {
+        "date": "2026-09-03",
+        "label": "小数乘法竖式·抄数复核",
+        "page": "",
+        "question": "",
+        "kind": "original"
+      },
+      "status": "ready",
+      "recordType": "confirmed-error"
+    },
+    {
+      "id": "K-M-600",
+      "title": "0.208平方米＝（ ）平方厘米",
+      "category": "图形与单位",
+      "priority": "normal",
+      "prompt": "0.208平方米＝（ ）平方厘米。",
+      "kind": "number",
+      "answers": [
+        "2080"
+      ],
+      "unit": "平方厘米",
+      "hint": "长和宽都要从米换成厘米。",
+      "explanation": "1平方米＝100×100＝10000平方厘米；0.208×10000＝2080。",
+      "steps": [
+        "1平方米＝100×100＝10000平方厘米",
+        "0.208×10000＝2080"
+      ],
+      "source": {
+        "date": "2026-09-03",
+        "label": "小数的认识与加减法复习",
+        "page": "",
+        "question": "8",
+        "kind": "original"
+      },
+      "status": "ready",
+      "recordType": "confirmed-error"
+    },
+    {
+      "id": "K-M-601",
+      "title": "填入＞、＜或＝：2.4×19 （ ） 24×1.9",
+      "category": "运算规律",
+      "priority": "normal",
+      "prompt": "填入＞、＜或＝：2.4×19 （ ） 24×1.9",
+      "kind": "choice",
+      "answers": [
+        "＝"
+      ],
+      "unit": "",
+      "hint": "看两个因数分别扩大或缩小了多少倍。",
+      "explanation": "2.4变成24是扩大10倍，19变成1.9是缩小10倍；一边×10、另一边÷10，积不变。",
+      "steps": [
+        "2.4变成24是扩大10倍，19变成1.9是缩小10倍",
+        "一边×10、另一边÷10，积不变"
+      ],
+      "source": {
+        "date": "2026-09-03",
+        "label": "五年级·小数乘法比较",
+        "page": "",
+        "question": "",
+        "kind": "original"
+      },
+      "status": "ready",
+      "options": [
+        "＞",
+        "＜",
+        "＝"
+      ],
+      "recordType": "confirmed-error"
+    },
+    {
+      "id": "K-M-602",
+      "title": "填入＞、＜或＝：1.4×15 （ ） 140×0.15",
+      "category": "运算规律",
+      "priority": "normal",
+      "prompt": "填入＞、＜或＝：1.4×15 （ ） 140×0.15",
+      "kind": "choice",
+      "answers": [
+        "＝"
+      ],
+      "unit": "",
+      "hint": "看两个因数分别扩大或缩小了多少倍。",
+      "explanation": "1.4变成140是扩大100倍，15变成0.15是缩小100倍；一边×100、另一边÷100，积不变。",
+      "steps": [
+        "1.4变成140是扩大100倍，15变成0.15是缩小100倍",
+        "一边×100、另一边÷100，积不变"
+      ],
+      "source": {
+        "date": "2026-09-03",
+        "label": "五年级·小数乘法比较",
+        "page": "",
+        "question": "",
+        "kind": "original"
+      },
+      "status": "ready",
+      "options": [
+        "＞",
+        "＜",
+        "＝"
+      ],
+      "recordType": "confirmed-error"
+    },
+    {
+      "id": "K-M-606",
+      "title": "判断：任何数乘1，都等于1",
+      "category": "运算规律",
+      "priority": "normal",
+      "prompt": "判断：任何数乘1，都等于1。",
+      "kind": "choice",
+      "answers": [
+        "错误"
+      ],
+      "unit": "",
+      "hint": "用一个不等于1的数试一试。",
+      "explanation": "a×1＝a，例如8×1＝8。",
+      "steps": [
+        "a×1＝a，例如8×1＝8"
+      ],
+      "source": {
+        "date": "2026-09-04",
+        "label": "五年级·小数乘小数 · 按原记录整理",
+        "page": "",
+        "question": "",
+        "kind": "reconstructed"
+      },
+      "status": "ready",
+      "options": [
+        "正确",
+        "错误"
+      ],
+      "recordType": "important-review"
+    },
+    {
+      "id": "K-M-617",
+      "title": "甲数除以乙数，商是1.2，还余0.24；乙数是8.8",
+      "category": "数量关系",
+      "priority": "important",
+      "prompt": "甲数除以乙数，商是1.2，还余0.24；乙数是8.8。甲数是多少？",
+      "kind": "number",
+      "answers": [
+        "10.8"
+      ],
+      "unit": "",
+      "hint": "被除数＝除数×商＋余数。",
+      "explanation": "8.8×1.2＋0.24＝10.56＋0.24＝10.8。",
+      "steps": [
+        "8.8×1.2＋0.24＝10.56＋0.24＝10.8"
+      ],
+      "source": {
+        "date": "2026-09-05",
+        "label": "华东师大版一课一练·五年级数学第一学期（增强版）",
+        "page": "",
+        "question": "9",
+        "kind": "original"
+      },
+      "status": "ready",
+      "recordType": "confirmed-error"
+    },
+    {
+      "id": "K-M-618",
+      "title": "把12个边长1.2厘米的正方形，整齐拼成一个长方形",
+      "category": "图形与单位",
+      "priority": "normal",
+      "prompt": "把12个边长1.2厘米的正方形，整齐拼成一个长方形。最短周长是多少？",
+      "kind": "number",
+      "answers": [
+        "16.8"
+      ],
+      "unit": "厘米",
+      "hint": "列出12的所有整数因数对，只算外圈。",
+      "explanation": "1×12、2×6、3×4三种排列的周长分别为31.2、19.2、16.8厘米。",
+      "steps": [
+        "1×12、2×6、3×4三种排列的周长分别为31.2、19.2、16.8厘米"
+      ],
+      "source": {
+        "date": "2026-09-05",
+        "label": "华东师大版一课一练·五年级数学第一学期（增强版）",
+        "page": "",
+        "question": "11",
+        "kind": "original"
+      },
+      "status": "ready",
+      "recordType": "confirmed-error"
+    },
+    {
+      "id": "K-M-619",
+      "title": "3.5乘自然数A，积不小于14，也不大于30",
+      "category": "枚举与条件",
+      "priority": "normal",
+      "prompt": "3.5乘自然数A，积不小于14，也不大于30。A可以是哪些数？从小到大用逗号隔开。",
+      "kind": "text",
+      "answers": [
+        "4,5,6,7,8",
+        "4，5，6，7，8"
+      ],
+      "unit": "",
+      "hint": "边界14和30都包括在范围内。",
+      "explanation": "3.5×4＝14，3.5×8＝28，3.5×9＝31.5已超过上界，所以A为4至8。",
+      "steps": [
+        "3.5×4＝14，3.5×8＝28，3.5×9＝31.5已超过上界，所以A为4至8"
+      ],
+      "source": {
+        "date": "2026-09-05",
+        "label": "华东师大版一课一练·五年级数学第一学期（增强版） · 按原记录整理",
+        "page": "",
+        "question": "6",
+        "kind": "reconstructed"
+      },
+      "status": "ready",
+      "recordType": "confirmed-error"
+    },
+    {
+      "id": "K-M-662",
+      "title": "计算：0.17＋4.3",
+      "category": "小数计算",
+      "priority": "normal",
+      "prompt": "计算：0.17＋4.3。",
+      "kind": "number",
+      "answers": [
+        "4.47"
+      ],
+      "unit": "",
+      "hint": "相同数位对齐后计算。",
+      "explanation": "先对齐小数点：4.30＋0.17＝4.47。",
+      "steps": [
+        "先对齐小数点：4.30＋0.17＝4.47"
+      ],
+      "source": {
+        "date": "2026-09-07",
+        "label": "小数加法",
+        "page": "",
+        "question": "第3组第3题",
+        "kind": "original"
+      },
+      "status": "ready",
+      "recordType": "confirmed-error"
+    },
+    {
+      "id": "K-M-663",
+      "title": "计算：1.9＋7.6",
+      "category": "小数计算",
+      "priority": "normal",
+      "prompt": "计算：1.9＋7.6。",
+      "kind": "number",
+      "answers": [
+        "9.5"
+      ],
+      "unit": "",
+      "hint": "相同数位对齐后计算。",
+      "explanation": "小数点对齐：1.9＋7.6。十分位9＋6＝15，写5并向个位进1。 个位1＋7＋1＝9，所以和为9.5。",
+      "steps": [
+        "小数点对齐：1.9＋7.6。十分位9＋6＝15，写5并向个位进1。",
+        "个位1＋7＋1＝9，所以和为9.5。"
+      ],
+      "source": {
+        "date": "2026-09-07",
+        "label": "小数加法",
+        "page": "",
+        "question": "第3组第9题",
+        "kind": "original"
+      },
+      "status": "ready",
+      "recordType": "confirmed-error"
+    },
+    {
+      "id": "K-M-664",
+      "title": "计算：0.43＋5.08",
+      "category": "小数计算",
+      "priority": "normal",
+      "prompt": "计算：0.43＋5.08。",
+      "kind": "number",
+      "answers": [
+        "5.51"
+      ],
+      "unit": "",
+      "hint": "相同数位对齐后计算。",
+      "explanation": "小数点对齐，写成0.43＋5.08。 小数部分0.43＋0.08＝0.51，整数部分0＋5＝5。 合起来得到5＋0.51＝5.51。",
+      "steps": [
+        "小数点对齐，写成0.43＋5.08。",
+        "小数部分0.43＋0.08＝0.51，整数部分0＋5＝5。",
+        "合起来得到5＋0.51＝5.51。"
+      ],
+      "source": {
+        "date": "2026-09-07",
+        "label": "小数加法",
+        "page": "",
+        "question": "第3组第10题",
+        "kind": "original"
+      },
+      "status": "ready",
+      "recordType": "confirmed-error"
+    },
+    {
+      "id": "K-M-744",
+      "title": "计算：3.11－0.09",
+      "category": "小数计算",
+      "priority": "normal",
+      "prompt": "计算：3.11－0.09。",
+      "kind": "number",
+      "answers": [
+        "3.02"
+      ],
+      "unit": "",
+      "hint": "相同数位对齐后计算。",
+      "explanation": "0.11－0.09＝0.02，3个一不变；用3.02＋0.09验算。",
+      "steps": [
+        "0.11－0.09＝0.02，3个一不变",
+        "用3.02＋0.09验算"
+      ],
+      "source": {
+        "date": "2026-09-09",
+        "label": "小数减法",
+        "page": "",
+        "question": "第5组第13题（左栏倒数第6题）",
+        "kind": "original"
+      },
+      "status": "ready",
+      "recordType": "confirmed-error"
+    },
+    {
+      "id": "K-M-0-周练1诊断-4",
+      "title": "计算：20.5×0.2",
+      "category": "数位与验算",
+      "priority": "important",
+      "prompt": "计算：20.5×0.2。",
+      "kind": "number",
+      "answers": [
+        "4.1"
+      ],
+      "unit": "",
+      "hint": "乘0.2表示取原数的五分之一。",
+      "explanation": "205×2＝410，两位小数得到4.10，即4.1。",
+      "steps": [
+        "205×2＝410，两位小数得到4.10，即4.1"
+      ],
+      "source": {
+        "date": "2026-09-16",
+        "label": "数学周练（1）",
+        "page": "",
+        "question": "Q01 P1 一·口算，第3行第1题",
+        "kind": "original"
+      },
+      "status": "ready",
+      "recordType": "confirmed-error"
+    },
+    {
+      "id": "K-M-0-周练1诊断-5",
+      "title": "0.026×45的积，化简后是几位小数？",
+      "category": "数位与验算",
+      "priority": "normal",
+      "prompt": "0.026×45的积，化简后是几位小数？",
+      "kind": "number",
+      "answers": [
+        "2"
+      ],
+      "unit": "",
+      "hint": "先算出积，再去掉小数末尾的0。",
+      "explanation": "0.026×45＝1.170＝1.17，所以是两位小数。",
+      "steps": [
+        "0.026×45＝1.170＝1.17，所以是两位小数"
+      ],
+      "source": {
+        "date": "2026-09-16",
+        "label": "数学周练（1）",
+        "page": "",
+        "question": "Q02 P2 五·选择，第2题",
+        "kind": "original"
+      },
+      "status": "ready",
+      "recordType": "confirmed-error"
+    },
+    {
+      "id": "K-M-0-周练1诊断-6",
+      "title": "每千克24元，买6.5千克，一共需要多少钱？",
+      "category": "小数计算",
+      "priority": "normal",
+      "prompt": "每千克24元，买6.5千克，一共需要多少钱？",
+      "kind": "number",
+      "answers": [
+        "156"
+      ],
+      "unit": "元",
+      "hint": "单价×数量；注意部分积的进位。",
+      "explanation": "24×6.5＝156。",
+      "steps": [
+        "24×6.5＝156"
+      ],
+      "source": {
+        "date": "2026-09-16",
+        "label": "数学周练（1）",
+        "page": "",
+        "question": "Q03 P3 七·应用题1",
+        "kind": "original"
+      },
+      "status": "ready",
+      "recordType": "confirmed-error"
+    },
+    {
+      "id": "K-M-0-周练1诊断-7",
+      "title": "每个算式都用4、5、6、7各一次组成三位数乘一位数",
+      "category": "枚举与条件",
+      "priority": "normal",
+      "prompt": "每个算式都用4、5、6、7各一次组成三位数乘一位数。两式乘积的最大差是多少？",
+      "kind": "number",
+      "answers": [
+        "2310"
+      ],
+      "unit": "",
+      "hint": "分别找出最大积和最小积，再相减。",
+      "explanation": "最大654×7＝4578，最小567×4＝2268，差4578－2268＝2310。",
+      "steps": [
+        "最大654×7＝4578，最小567×4＝2268，差4578－2268＝2310"
+      ],
+      "source": {
+        "date": "2026-09-16",
+        "label": "数学周练（1）",
+        "page": "",
+        "question": "Q04 P4 八·动脑筋3",
+        "kind": "original"
+      },
+      "status": "ready",
+      "recordType": "confirmed-error"
+    },
+    {
+      "id": "K-M-0-周练1诊断-8",
+      "title": "长串0相乘后的数位",
+      "category": "数位与验算",
+      "priority": "normal",
+      "prompt": "a的小数部分是15个0后面接数字4；b的小数部分是15个0后面接数字25。这15个0都不含整数位的0。求a×b。把积写成小数后，小数点后、数字1前共有多少个0？",
+      "kind": "number",
+      "answers": [
+        "30"
+      ],
+      "unit": "",
+      "hint": "先把4×25算出来，再根据两个因数的小数位数确定数位。",
+      "explanation": "a有16位小数，b有17位小数，共33位。4×25＝100，把100按33位小数定位并去掉末尾两个0，积在小数点后第31位是1，所以小数点后、1前有30个0。",
+      "steps": [
+        "a有16位小数，b有17位小数，共33位",
+        "4×25＝100，把100按33位小数定位并去掉末尾两个0，积在小数点后第31位是1，所以小数点后、1前有30个0"
+      ],
+      "source": {
+        "date": "2026-09-16",
+        "label": "数学周练（1） · 按原记录整理",
+        "page": "4",
+        "question": "八·2",
+        "kind": "reconstructed"
+      },
+      "status": "ready",
+      "recordType": "important-review"
+    },
+    {
+      "id": "K-M-0-周练1诊断-10",
+      "title": "用竖式计算0.26×1.52，写全每一行部分积，再填乘积",
+      "category": "数位与验算",
+      "priority": "normal",
+      "prompt": "用竖式计算0.26×1.52，写全每一行部分积，再填乘积。",
+      "kind": "number",
+      "answers": [
+        "0.3952"
+      ],
+      "unit": "",
+      "hint": "1.52的个位、十分位、百分位都参与相乘。",
+      "explanation": "先计算152×26：152×6＝912；152×20＝3040，第二行要对齐十位。 两个部分积相加：912＋3040＝3952。 0.26和1.52共4位小数，所以乘积为0.3952。",
+      "steps": [
+        "先计算152×26：152×6＝912；152×20＝3040，第二行要对齐十位。",
+        "两个部分积相加：912＋3040＝3952。",
+        "0.26和1.52共4位小数，所以乘积为0.3952。"
+      ],
+      "source": {
+        "date": "2026-09-16",
+        "label": "数学周练（1） · 按原记录整理",
+        "page": "",
+        "question": "Q07 P1 二·竖式，第1行左",
+        "kind": "reconstructed"
+      },
+      "status": "ready",
+      "recordType": "process-gap"
+    },
+    {
+      "id": "K-M-0-周练1诊断-11",
+      "title": "用竖式计算2.5×0.46，检查每行部分积与所写因数是否对应，再",
+      "category": "数位与验算",
+      "priority": "normal",
+      "prompt": "用竖式计算2.5×0.46，检查每行部分积与所写因数是否对应，再填乘积。",
+      "kind": "number",
+      "answers": [
+        "1.15"
+      ],
+      "unit": "",
+      "hint": "纸上的乘数方向要和每一行部分积对应。",
+      "explanation": "先计算25×46：25×6＝150；25×40＝1000，第二行对应十位的4。 两个部分积相加：150＋1000＝1150。 2.5和0.46共3位小数，乘积为1.150＝1.15；每行部分积都应与所写乘数对应。",
+      "steps": [
+        "先计算25×46：25×6＝150；25×40＝1000，第二行对应十位的4。",
+        "两个部分积相加：150＋1000＝1150。",
+        "2.5和0.46共3位小数，乘积为1.150＝1.15；每行部分积都应与所写乘数对应。"
+      ],
+      "source": {
+        "date": "2026-09-16",
+        "label": "数学周练（1） · 按原记录整理",
+        "page": "",
+        "question": "Q08 P1 二·竖式，第1行右",
+        "kind": "reconstructed"
+      },
+      "status": "ready",
+      "recordType": "process-gap"
+    },
+    {
+      "id": "K-M-0-周练2诊断-4",
+      "title": "计算：0.28÷0.4",
+      "category": "数位与验算",
+      "priority": "important",
+      "prompt": "计算：0.28÷0.4。",
+      "kind": "number",
+      "answers": [
+        "0.7"
+      ],
+      "unit": "",
+      "hint": "把两个数同时扩大10倍。",
+      "explanation": "0.28÷0.4＝2.8÷4＝0.7；0.7×0.4＝0.28。",
+      "steps": [
+        "0.28÷0.4＝2.8÷4＝0.7",
+        "0.7×0.4＝0.28"
+      ],
+      "source": {
+        "date": "2026-09-16",
+        "label": "数学周练（2）",
+        "page": "",
+        "question": "W01 P1 一·口算，第1行第3题",
+        "kind": "original"
+      },
+      "status": "ready",
+      "recordType": "confirmed-error"
+    },
+    {
+      "id": "K-M-0-周练2诊断-6",
+      "title": "递等式完整算式待补",
+      "category": "运算规律",
+      "priority": "normal",
+      "prompt": "递等式计算：原卷顶部被裁，完整算式待补。",
+      "kind": "number",
+      "answers": [
+        ""
+      ],
+      "unit": "",
+      "hint": "补齐算式后再开放练习。",
+      "explanation": "现有原件未包含完整算式，需补齐题目后练习。",
+      "steps": [
+        "现有原件未包含完整算式，需补齐题目后练习"
+      ],
+      "source": {
+        "date": "2026-09-16",
+        "label": "数学周练（2）",
+        "page": "",
+        "question": "W03 P2 顶部右，原题首行被截",
+        "kind": "original"
+      },
+      "status": "needs-source",
+      "recordType": "pending-review"
+    },
+    {
+      "id": "K-M-0-周练2诊断-7",
+      "title": "2.5减去1.3的差，乘它们的积，结果是多少？",
+      "category": "数量关系",
+      "priority": "normal",
+      "prompt": "2.5减去1.3的差，乘它们的积，结果是多少？",
+      "kind": "number",
+      "answers": [
+        "3.9"
+      ],
+      "unit": "",
+      "hint": "“它们”始终指2.5和1.3。",
+      "explanation": "(2.5－1.3)×(2.5×1.3)＝1.2×3.25＝3.9。",
+      "steps": [
+        "(2.5－1.3)×(2.5×1.3)＝1.2×3.25＝3.9"
+      ],
+      "source": {
+        "date": "2026-09-16",
+        "label": "数学周练（2）",
+        "page": "",
+        "question": "W04 P2 五·文字题2",
+        "kind": "original"
+      },
+      "status": "ready",
+      "recordType": "confirmed-error"
+    },
+    {
+      "id": "K-M-0-周练2诊断-8",
+      "title": "8.7减去6.9的差乘1.01，结果是多少？",
+      "category": "数量关系",
+      "priority": "important",
+      "prompt": "8.7减去6.9的差乘1.01，结果是多少？",
+      "kind": "number",
+      "answers": [
+        "1.818"
+      ],
+      "unit": "",
+      "hint": "先求差，在算式中用括号表达。",
+      "explanation": "(8.7－6.9)×1.01＝1.8×1.01＝1.818。",
+      "steps": [
+        "(8.7－6.9)×1.01＝1.8×1.01＝1.818"
+      ],
+      "source": {
+        "date": "2026-09-16",
+        "label": "数学周练（2）",
+        "page": "",
+        "question": "W05 P2 五·文字题3",
+        "kind": "original"
+      },
+      "status": "ready",
+      "recordType": "confirmed-error"
+    },
+    {
+      "id": "K-M-0-周练2诊断-9",
+      "title": "450×（ ）＝5.4",
+      "category": "数位与验算",
+      "priority": "normal",
+      "prompt": "450×（ ）＝5.4。",
+      "kind": "number",
+      "answers": [
+        "0.012"
+      ],
+      "unit": "",
+      "hint": "填好后把它乘回450检查。",
+      "explanation": "5.4÷450＝0.012；450×0.012＝5.4。",
+      "steps": [
+        "5.4÷450＝0.012",
+        "450×0.012＝5.4"
+      ],
+      "source": {
+        "date": "2026-09-16",
+        "label": "数学周练（2）",
+        "page": "",
+        "question": "W06 P3 六·填空(2)，第3空",
+        "kind": "original"
+      },
+      "status": "ready",
+      "recordType": "confirmed-error"
+    },
+    {
+      "id": "K-M-0-周练2诊断-10",
+      "title": "45×（ ）＝0.54",
+      "category": "数位与验算",
+      "priority": "normal",
+      "prompt": "45×（ ）＝0.54。",
+      "kind": "number",
+      "answers": [
+        "0.012"
+      ],
+      "unit": "",
+      "hint": "45变为450时，积也从0.54变为5.4。",
+      "explanation": "0.54÷45＝0.012。",
+      "steps": [
+        "0.54÷45＝0.012"
+      ],
+      "source": {
+        "date": "2026-09-16",
+        "label": "数学周练（2）",
+        "page": "",
+        "question": "W07 P3 六·填空(2)，第4空",
+        "kind": "original"
+      },
+      "status": "ready",
+      "recordType": "confirmed-error"
+    },
+    {
+      "id": "K-M-876",
+      "title": "判断：一个数乘一个大于1的数，积一定大于原数",
+      "category": "运算规律",
+      "priority": "normal",
+      "prompt": "判断：一个数乘一个大于1的数，积一定大于原数。",
+      "kind": "choice",
+      "answers": [
+        "错误"
+      ],
+      "unit": "",
+      "hint": "题目有没有排除0？",
+      "explanation": "0×2＝0，积没有大于原数。要加上原数大于0的条件，结论才成立。",
+      "steps": [
+        "0×2＝0，积没有大于原数",
+        "要加上原数大于0的条件，结论才成立"
+      ],
+      "source": {
+        "date": "2026-09-15",
+        "label": "小数乘法：规律成立条件与0的特殊情况",
+        "page": "",
+        "question": "第3页 七·判断(4)",
+        "kind": "original"
+      },
+      "status": "ready",
+      "options": [
+        "正确",
+        "错误"
+      ],
+      "recordType": "confirmed-error"
+    },
+    {
+      "id": "K-M-0-周练2诊断-12",
+      "title": "计算器坏键与等值计算",
+      "category": "运算规律",
+      "priority": "normal",
+      "prompt": "计算器的8键坏了，要计算6.8×9。下面哪种输入方法不符合要求？\nA. 3.4×2×9\nB. 7×9－1.8\nC. 6×9＋7.2\nD. 6.9×9－0.9",
+      "kind": "choice",
+      "answers": [
+        "B"
+      ],
+      "unit": "",
+      "hint": "不仅要核对得数，还要检查算式中是否需要按坏掉的键。",
+      "explanation": "四个算式的得数都是61.2，但B中的1.8需要按8键。因此B不符合输入要求。",
+      "steps": [
+        "四个算式的得数都是61.2，但B中的1.8需要按8键",
+        "因此B不符合输入要求"
+      ],
+      "source": {
+        "date": "2026-09-16",
+        "label": "数学周练（2）",
+        "page": "3",
+        "question": "八·1",
+        "kind": "original"
+      },
+      "status": "ready",
+      "options": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "recordType": "confirmed-error"
+    },
+    {
+      "id": "K-M-0-周练2诊断-13",
+      "title": "计算：0.24×0.025",
+      "category": "数位与验算",
+      "priority": "normal",
+      "prompt": "计算：0.24×0.025。",
+      "kind": "number",
+      "answers": [
+        "0.006"
+      ],
+      "unit": "",
+      "hint": "24×25＝600，原式共有5位小数。",
+      "explanation": "先按整数计算：24×25＝600。 0.24有2位小数，0.025有3位小数，共5位。 把600的小数点向左移5位，前面补0，得到0.00600＝0.006。",
+      "steps": [
+        "先按整数计算：24×25＝600。",
+        "0.24有2位小数，0.025有3位小数，共5位。",
+        "把600的小数点向左移5位，前面补0，得到0.00600＝0.006。"
+      ],
+      "source": {
+        "date": "2026-09-16",
+        "label": "数学周练（2）",
+        "page": "",
+        "question": "W10 P3 八·选择(4)",
+        "kind": "original"
+      },
+      "status": "ready",
+      "recordType": "confirmed-error"
+    },
+    {
+      "id": "K-M-0-周练2诊断-14",
+      "title": "84.5元比小亚花费的2倍多2.5元",
+      "category": "数量关系",
+      "priority": "normal",
+      "prompt": "84.5元比小亚花费的2倍多2.5元。小亚花了多少钱？",
+      "kind": "number",
+      "answers": [
+        "41"
+      ],
+      "unit": "元",
+      "hint": "先去掉多出的2.5元，再平均分成2份。",
+      "explanation": "(84.5－2.5)÷2＝82÷2＝41元。",
+      "steps": [
+        "(84.5－2.5)÷2＝82÷2＝41元"
+      ],
+      "source": {
+        "date": "2026-09-16",
+        "label": "数学周练（2）",
+        "page": "",
+        "question": "W11 P4 九·应用题1",
+        "kind": "original"
+      },
+      "status": "ready",
+      "recordType": "confirmed-error"
+    },
+    {
+      "id": "K-M-0-周练2诊断-15",
+      "title": "每根长6.4米，每米重4.9千克，共35根",
+      "category": "图形与单位",
+      "priority": "normal",
+      "prompt": "每根长6.4米，每米重4.9千克，共35根。一共重多少吨？",
+      "kind": "number",
+      "answers": [
+        "1.0976"
+      ],
+      "unit": "吨",
+      "hint": "先算千克，再按1000千克＝1吨换算。",
+      "explanation": "先求每根的质量：6.4×4.9＝31.36千克。 35根共重31.36×35＝1097.6千克。 1吨＝1000千克，1097.6÷1000＝1.0976吨。",
+      "steps": [
+        "先求每根的质量：6.4×4.9＝31.36千克。",
+        "35根共重31.36×35＝1097.6千克。",
+        "1吨＝1000千克，1097.6÷1000＝1.0976吨。"
+      ],
+      "source": {
+        "date": "2026-09-16",
+        "label": "数学周练（2） · 按原记录整理",
+        "page": "",
+        "question": "W12 P4 九·应用题2",
+        "kind": "reconstructed"
+      },
+      "status": "ready",
+      "recordType": "confirmed-error"
+    },
+    {
+      "id": "K-M-0-周练2诊断-16",
+      "title": "每天路程与五天总路程",
+      "category": "数量关系",
+      "priority": "normal",
+      "prompt": "欢欢每天步行从家到学校走2.75千米。照这样计算一周（5天），她一共走多少千米？本次按题目给出的每天2.75千米计算。",
+      "kind": "number",
+      "answers": [
+        "13.75"
+      ],
+      "unit": "千米",
+      "hint": "按题面给出的每天路程乘天数。",
+      "explanation": "2.75×5＝13.75千米。题面只给每天2.75千米，按此条件求5天总路程，不另外添加往返次数。",
+      "steps": [
+        "2.75×5＝13.75千米",
+        "题面只给每天2.75千米，按此条件求5天总路程，不另外添加往返次数"
+      ],
+      "source": {
+        "date": "2026-09-16",
+        "label": "数学周练（2） · 按原记录整理",
+        "page": "4",
+        "question": "九·3",
+        "kind": "reconstructed"
+      },
+      "status": "ready",
+      "recordType": "important-review"
+    },
+    {
+      "id": "K-M-905",
+      "title": "用简便方法计算：7.2×3.1＋3.1×2.7－9.9×2.1",
+      "category": "运算规律",
+      "priority": "normal",
+      "prompt": "用简便方法计算：7.2×3.1＋3.1×2.7－9.9×2.1。",
+      "kind": "number",
+      "answers": [
+        "9.9"
+      ],
+      "unit": "",
+      "hint": "先合并含3.1的两项。",
+      "explanation": "(7.2＋2.7)×3.1－9.9×2.1＝9.9×(3.1－2.1)＝9.9。",
+      "steps": [
+        "(7.2＋2.7)×3.1－9.9×2.1＝9.9×(3.1－2.1)＝9.9"
+      ],
+      "source": {
+        "date": "2026-09-30",
+        "label": "五年级第一学期数学小练习四",
+        "page": "",
+        "question": "",
+        "kind": "original"
+      },
+      "status": "ready",
+      "recordType": "important-review"
+    },
+    {
+      "id": "K-M-909",
+      "title": "计算：2.46÷41",
+      "category": "数位与验算",
+      "priority": "important",
+      "prompt": "计算：2.46÷41。",
+      "kind": "number",
+      "answers": [
+        "0.06"
+      ],
+      "unit": "",
+      "hint": "检查41乘所试的商，能否与减去的数对上。",
+      "explanation": "个位和十分位都不够商1，要写0占位；41×6＝246，所以2.46÷41＝0.06。",
+      "steps": [
+        "个位和十分位都不够商1，要写0占位",
+        "41×6＝246，所以2.46÷41＝0.06"
+      ],
+      "source": {
+        "date": "2026-10-01",
+        "label": "小数除以整数：试商乘积、零占位与结果检查",
+        "page": "",
+        "question": "竖式计算中间一题",
+        "kind": "original"
+      },
+      "status": "ready",
+      "recordType": "confirmed-error"
+    },
+    {
+      "id": "K-M-918",
+      "title": "a÷4=b÷5，且a、b都大于0，b是a的几倍？",
+      "category": "数量关系",
+      "priority": "normal",
+      "prompt": "a÷4=b÷5，且a、b都大于0，b是a的几倍？",
+      "kind": "number",
+      "answers": [
+        "1.25"
+      ],
+      "unit": "",
+      "hint": "先标清每个数量表示什么，再核对所有条件。",
+      "explanation": "相同的商表示同样大的1份，a为4份，b为5份。 以a为比较整体，5÷4=1.25。",
+      "steps": [
+        "相同的商表示同样大的1份，a为4份，b为5份",
+        "以a为比较整体，5÷4=1.25"
+      ],
+      "source": {
+        "date": "2026-10-02",
+        "label": "华东师大版一课一练·五年级数学（第一学期）（增强版）·第三周",
+        "page": "",
+        "question": "填空第4题",
+        "kind": "original"
+      },
+      "status": "ready",
+      "recordType": "important-review"
+    },
+    {
+      "id": "K-M-919",
+      "title": "同一根绳子围成长6.8厘米、宽4.2厘米的长方形，改围正方形，边",
+      "category": "图形与单位",
+      "priority": "normal",
+      "prompt": "同一根绳子围成长6.8厘米、宽4.2厘米的长方形，改围正方形，边长是多少？",
+      "kind": "number",
+      "answers": [
+        "5.5"
+      ],
+      "unit": "",
+      "hint": "先标清每个数量表示什么，再核对所有条件。",
+      "explanation": "(6.8+4.2)×2=22厘米。 22÷4=5.5厘米；5.5×4=22验算。",
+      "steps": [
+        "(6.8+4.2)×2=22厘米",
+        "22÷4=5.5厘米",
+        "5.5×4=22验算"
+      ],
+      "source": {
+        "date": "2026-10-02",
+        "label": "华东师大版一课一练·五年级数学（第一学期）（增强版）·第三周",
+        "page": "",
+        "question": "填空第5题",
+        "kind": "original"
+      },
+      "status": "ready",
+      "recordType": "confirmed-error"
+    },
+    {
+      "id": "K-M-920",
+      "title": "1.2÷7+1.6÷7",
+      "category": "运算规律",
+      "priority": "normal",
+      "prompt": "1.2÷7+1.6÷7。",
+      "kind": "number",
+      "answers": [
+        "0.4"
+      ],
+      "unit": "",
+      "hint": "先标清每个数量表示什么，再核对所有条件。",
+      "explanation": "(1.2+1.6)÷7=2.8÷7=0.4。",
+      "steps": [
+        "(1.2+1.6)÷7=2.8÷7=0.4"
+      ],
+      "source": {
+        "date": "2026-10-02",
+        "label": "华东师大版一课一练·五年级数学（第一学期）（增强版）·第三周",
+        "page": "",
+        "question": "填空第6题",
+        "kind": "original"
+      },
+      "status": "ready",
+      "recordType": "important-review"
+    },
+    {
+      "id": "K-M-921",
+      "title": "A÷2=B÷3，A+B=12，求A和B",
+      "category": "数量关系",
+      "priority": "important",
+      "prompt": "A÷2=B÷3，A+B=12，求A和B。按A、B顺序，只填两个数，用逗号隔开。",
+      "kind": "text",
+      "answers": [
+        "4.8,7.2",
+        "4.8，7.2"
+      ],
+      "unit": "",
+      "hint": "先标清每个数量表示什么，再核对所有条件。",
+      "explanation": "2+3=5份。 12÷5=2.4，每份2.4。 A=2.4×2=4.8，B=2.4×3=7.2。 4.8+7.2=12，4.8÷2=7.2÷3=2.4。",
+      "steps": [
+        "2+3=5份",
+        "12÷5=2.4，每份2.4",
+        "A=2.4×2=4.8，B=2.4×3=7.2",
+        "4.8+7.2=12，4.8÷2=7.2÷3=2.4"
+      ],
+      "source": {
+        "date": "2026-10-02",
+        "label": "华东师大版一课一练·五年级数学（第一学期）（增强版）·第三周",
+        "page": "",
+        "question": "填空第7题",
+        "kind": "original"
+      },
+      "status": "ready",
+      "recordType": "confirmed-error"
+    },
+    {
+      "id": "K-M-922",
+      "title": "根据竖式限制找除数",
+      "category": "枚举与条件",
+      "priority": "normal",
+      "prompt": "在方框里填入合适的数字使竖式成立。除数可以是哪两个数？按从小到大顺序，用逗号隔开。",
+      "kind": "text",
+      "answers": [
+        "24,25",
+        "24，25"
+      ],
+      "unit": "",
+      "hint": "商的整数部分是3，第一行乘积是七十多。先筛除数，再代回所有方框。",
+      "explanation": "第一行乘积是7□，所以除数×3在70至79之间，除数只能是24、25、26。84÷24＝3.5，85÷25＝3.4都符合。若除数26，后续被除数只能为100或110，均不能被26整除，所以除数是24或25。",
+      "steps": [
+        "第一行乘积是7□，所以除数×3在70至79之间，除数只能是24、25、26",
+        "84÷24＝3.5，85÷25＝3.4都符合",
+        "若除数26，后续被除数只能为100或110，均不能被26整除，所以除数是24或25"
+      ],
+      "source": {
+        "date": "2026-10-02",
+        "label": "华东师大版一课一练·五年级数学（第一学期）（增强版）·第三周",
+        "page": "10",
+        "question": "3(8)",
+        "kind": "original"
+      },
+      "status": "ready",
+      "image": "../assets/math-mistakes/kenton-division-fill.svg",
+      "recordType": "important-review"
+    },
+    {
+      "id": "K-M-923",
+      "title": "△=○+○+○，○=□+□+□，△−□=18，求○",
+      "category": "数量关系",
+      "priority": "normal",
+      "prompt": "△=○+○+○，○=□+□+□，△−□=18，求○。",
+      "kind": "number",
+      "answers": [
+        "6.75"
+      ],
+      "unit": "",
+      "hint": "先标清每个数量表示什么，再核对所有条件。",
+      "explanation": "△相当于9个□，△−□相当于8个□。 18÷8=2.25，一个□为2.25。 ○=2.25×3=6.75。",
+      "steps": [
+        "△相当于9个□，△−□相当于8个□",
+        "18÷8=2.25，一个□为2.25",
+        "○=2.25×3=6.75"
+      ],
+      "source": {
+        "date": "2026-10-02",
+        "label": "华东师大版一课一练·五年级数学（第一学期）（增强版）·第三周",
+        "page": "",
+        "question": "填空第9题",
+        "kind": "original"
+      },
+      "status": "ready",
+      "recordType": "important-review"
+    },
+    {
+      "id": "K-M-924",
+      "title": "原有大米19.8千克，是吃掉量的3倍少2.4千克，问剩多少",
+      "category": "数量关系",
+      "priority": "normal",
+      "prompt": "原有大米19.8千克，是吃掉量的3倍少2.4千克，问剩多少。",
+      "kind": "number",
+      "answers": [
+        "12.4"
+      ],
+      "unit": "",
+      "hint": "先标清每个数量表示什么，再核对所有条件。",
+      "explanation": "19.8+2.4=22.2，对应吃掉量的3倍。 22.2÷3=7.4，为吃掉量。 19.8−7.4=12.4，为剩下量。",
+      "steps": [
+        "19.8+2.4=22.2，对应吃掉量的3倍",
+        "22.2÷3=7.4，为吃掉量",
+        "19.8−7.4=12.4，为剩下量"
+      ],
+      "source": {
+        "date": "2026-10-02",
+        "label": "华东师大版一课一练·五年级数学（第一学期）（增强版）·第三周",
+        "page": "",
+        "question": "填空第10题",
+        "kind": "original"
+      },
+      "status": "ready",
+      "recordType": "confirmed-error"
+    },
+    {
+      "id": "K-M-925",
+      "title": "用3、5、7各一次填□.□÷□，组成除得尽的算式有几个？",
+      "category": "枚举与条件",
+      "priority": "normal",
+      "prompt": "用3、5、7各一次填□.□÷□，组成除得尽的算式有几个？",
+      "kind": "number",
+      "answers": [
+        "5"
+      ],
+      "unit": "",
+      "hint": "先标清每个数量表示什么，再核对所有条件。",
+      "explanation": "六式：7.5÷3、5.7÷3、3.5÷7、5.3÷7、7.3÷5、3.7÷5。 其中5.3÷7除不尽；其余分别2.5、1.9、0.5、1.46、0.74。",
+      "steps": [
+        "六式：7.5÷3、5.7÷3、3.5÷7、5.3÷7、7.3÷5、3.7÷5",
+        "其中5.3÷7除不尽",
+        "其余分别2.5、1.9、0.5、1.46、0.74"
+      ],
+      "source": {
+        "date": "2026-10-02",
+        "label": "华东师大版一课一练·五年级数学（第一学期）（增强版）·第三周 · 按原记录整理",
+        "page": "",
+        "question": "选择第1题",
+        "kind": "reconstructed"
+      },
+      "status": "ready",
+      "recordType": "confirmed-error"
+    },
+    {
+      "id": "K-M-926",
+      "title": "一个三位数，百位与个位数字的和除以十位数字，商为1.25，求这样",
+      "category": "枚举与条件",
+      "priority": "normal",
+      "prompt": "一个三位数，百位与个位数字的和除以十位数字，商为1.25，求这样的三位数个数。",
+      "kind": "number",
+      "answers": [
+        "14"
+      ],
+      "unit": "",
+      "hint": "先标清每个数量表示什么，再核对所有条件。",
+      "explanation": "(百位+个位)÷十位=1.25=5÷4。 十位只能是4或8；对应百位+个位为5或10。 十位4有144、243、342、441、540，共5个。 十位8有189、288、387、486、585、684、783、882、981，共9个。 5+9=14。",
+      "steps": [
+        "(百位+个位)÷十位=1.25=5÷4",
+        "十位只能是4或8",
+        "对应百位+个位为5或10",
+        "十位4有144、243、342、441、540，共5个",
+        "十位8有189、288、387、486、585、684、783、882、981，共9个"
+      ],
+      "source": {
+        "date": "2026-10-02",
+        "label": "华东师大版一课一练·五年级数学（第一学期）（增强版）·第三周 · 按原记录整理",
+        "page": "",
+        "question": "选择第2题",
+        "kind": "reconstructed"
+      },
+      "status": "ready",
+      "recordType": "confirmed-error"
+    },
+    {
+      "id": "K-M-927",
+      "title": "核验竖式的全部选项",
+      "category": "枚举与条件",
+      "priority": "normal",
+      "prompt": "把图中的除法竖式补充完整，被除数可以是哪个选项？\nA. 10.2\nB. 10.5\nC. 10.8\nD. 前三个答案都正确",
+      "kind": "choice",
+      "answers": [
+        "D"
+      ],
+      "unit": "",
+      "hint": "依次把每个候选数代回同一个竖式，检查所有已知数字。",
+      "explanation": "10.2÷3＝3.4，10.5÷3＝3.5，10.8÷3＝3.6。三个算式的第一行乘积都是9，下一行分别是12、15、18，均符合图中的1□且最后余数为0。因此选D。",
+      "steps": [
+        "10.2÷3＝3.4，10.5÷3＝3.5，10.8÷3＝3.6",
+        "三个算式的第一行乘积都是9，下一行分别是12、15、18，均符合图中的1□且最后余数为0",
+        "因此选D"
+      ],
+      "source": {
+        "date": "2026-10-02",
+        "label": "华东师大版一课一练·五年级数学（第一学期）（增强版）·第三周",
+        "page": "11",
+        "question": "4(3)",
+        "kind": "original"
+      },
+      "status": "ready",
+      "options": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "image": "../assets/math-mistakes/kenton-division-choice.svg",
+      "recordType": "confirmed-error"
+    },
+    {
+      "id": "K-M-928",
+      "title": "小亚、小巧共3496.9元，小亚钱数小数点向左移一位后和小巧一样",
+      "category": "数量关系",
+      "priority": "important",
+      "prompt": "小亚、小巧共3496.9元，小亚钱数小数点向左移一位后和小巧一样多，求各有多少钱。按小亚、小巧顺序，只填两个数，用逗号隔开。",
+      "kind": "text",
+      "answers": [
+        "3179,317.9",
+        "3179，317.9"
+      ],
+      "unit": "",
+      "hint": "先标清每个数量表示什么，再核对所有条件。",
+      "explanation": "小亚÷10=小巧，所以小亚为10份、小巧为1份。 3496.9÷(10+1)=317.9，为小巧。 317.9×10=3179，为小亚。",
+      "steps": [
+        "小亚÷10=小巧，所以小亚为10份、小巧为1份",
+        "3496.9÷(10+1)=317.9，为小巧",
+        "317.9×10=3179，为小亚"
+      ],
+      "source": {
+        "date": "2026-10-02",
+        "label": "华东师大版一课一练·五年级数学（第一学期）（增强版）·第三周",
+        "page": "",
+        "question": "应用第3题",
+        "kind": "original"
+      },
+      "status": "ready",
+      "recordType": "confirmed-error"
+    },
+    {
+      "id": "K-M-929",
+      "title": "长不变，宽加6分米，面积加31.2平方分米；宽不变，长减5分米，",
+      "category": "图形与单位",
+      "priority": "normal",
+      "prompt": "长不变，宽加6分米，面积加31.2平方分米；宽不变，长减5分米，面积减18.5平方分米，求原面积。",
+      "kind": "number",
+      "answers": [
+        "19.24"
+      ],
+      "unit": "",
+      "hint": "先标清每个数量表示什么，再核对所有条件。",
+      "explanation": "31.2÷6=5.2分米，为长。 18.5÷5=3.7分米，为宽。 5.2×3.7=19.24平方分米。",
+      "steps": [
+        "31.2÷6=5.2分米，为长",
+        "18.5÷5=3.7分米，为宽",
+        "5.2×3.7=19.24平方分米"
+      ],
+      "source": {
+        "date": "2026-10-02",
+        "label": "华东师大版一课一练·五年级数学（第一学期）（增强版）·第三周",
+        "page": "",
+        "question": "应用第4题",
+        "kind": "original"
+      },
+      "status": "ready",
+      "recordType": "confirmed-error"
+    },
+    {
+      "id": "K-M-930",
+      "title": "三个数和为175.5，分别除以11、13、15的商相等且无余数，",
+      "category": "数量关系",
+      "priority": "important",
+      "prompt": "三个数和为175.5，分别除以11、13、15的商相等且无余数，求商和三个数。按商、除以11的数、除以13的数、除以15的数顺序填写，用逗号隔开。",
+      "kind": "text",
+      "answers": [
+        "4.5,49.5,58.5,67.5",
+        "4.5，49.5，58.5，67.5"
+      ],
+      "unit": "",
+      "hint": "先标清每个数量表示什么，再核对所有条件。",
+      "explanation": "共同的商看作1份，三个数分别11、13、15份。 11+13+15=39，175.5÷39=4.5。 4.5×11=49.5，4.5×13=58.5，4.5×15=67.5。 三个数相加175.5，分别除回11、13、15均为4.5。",
+      "steps": [
+        "共同的商看作1份，三个数分别11、13、15份",
+        "11+13+15=39，175.5÷39=4.5",
+        "4.5×11=49.5，4.5×13=58.5，4.5×15=67.5",
+        "三个数相加175.5，分别除回11、13、15均为4.5"
+      ],
+      "source": {
+        "date": "2026-10-02",
+        "label": "华东师大版一课一练·五年级数学（第一学期）（增强版）·第三周",
+        "page": "",
+        "question": "拓展第1题",
+        "kind": "original"
+      },
+      "status": "ready",
+      "recordType": "confirmed-error"
+    },
+    {
+      "id": "K-M-931",
+      "title": "甲乙带同样多的钱全部买同样练习本，甲10本、乙6本，甲再补乙10",
+      "category": "数量关系",
+      "priority": "normal",
+      "prompt": "甲乙带同样多的钱全部买同样练习本，甲10本、乙6本，甲再补乙10.8元，求单价。",
+      "kind": "number",
+      "answers": [
+        "5.4"
+      ],
+      "unit": "",
+      "hint": "先标清每个数量表示什么，再核对所有条件。",
+      "explanation": "(10+6)÷2=8本，为每人原本应得。 甲多拿10−8=2本，相当于从乙的份额取得2本。 10.8÷2=5.4元/本。",
+      "steps": [
+        "(10+6)÷2=8本，为每人原本应得",
+        "甲多拿10−8=2本，相当于从乙的份额取得2本",
+        "10.8÷2=5.4元/本"
+      ],
+      "source": {
+        "date": "2026-10-02",
+        "label": "华东师大版一课一练·五年级数学（第一学期）（增强版）·第三周",
+        "page": "",
+        "question": "拓展第2题",
+        "kind": "original"
+      },
+      "status": "ready",
+      "recordType": "important-review"
+    },
+    {
+      "id": "K-M-953",
+      "title": "3.6×1.01",
+      "category": "运算规律",
+      "priority": "normal",
+      "prompt": "3.6×1.01",
+      "kind": "number",
+      "answers": [
+        "3.636"
+      ],
+      "unit": "",
+      "hint": "运算前先估计大小，再逐步计算。",
+      "explanation": "1.01＝1＋0.01，用乘法分配律展开。 3.6×1.01＝3.6×1＋3.6×0.01＝3.6＋0.036＝3.636。",
+      "steps": [
+        "1.01＝1＋0.01，用乘法分配律展开。",
+        "3.6×1.01＝3.6×1＋3.6×0.01＝3.6＋0.036＝3.636。"
+      ],
+      "source": {
+        "date": "2026-10-03",
+        "label": "小数乘法",
+        "page": "",
+        "question": "multiply-3p6",
+        "kind": "original"
+      },
+      "status": "ready",
+      "recordType": "confirmed-error"
+    },
+    {
+      "id": "K-M-954",
+      "title": "判断：一个因数扩大10倍，另一个因数扩大100倍，积就扩大100",
+      "category": "运算规律",
+      "priority": "normal",
+      "prompt": "判断：一个因数扩大10倍，另一个因数扩大100倍，积就扩大1000倍。",
+      "kind": "choice",
+      "answers": [
+        "正确"
+      ],
+      "unit": "",
+      "hint": "运算前先估计大小，再逐步计算。",
+      "explanation": "把原来的两个因数记为a和b，原积为a×b。 变化后的积为(a×10)×(b×100)＝(a×b)×(10×100)。 10×100＝1000，所以积扩大1000倍，判断正确。",
+      "steps": [
+        "把原来的两个因数记为a和b，原积为a×b。",
+        "变化后的积为(a×10)×(b×100)＝(a×b)×(10×100)。",
+        "10×100＝1000，所以积扩大1000倍，判断正确。"
+      ],
+      "source": {
+        "date": "2026-10-03",
+        "label": "积的变化规律",
+        "page": "",
+        "question": "product-scale",
+        "kind": "original"
+      },
+      "status": "ready",
+      "options": [
+        "正确",
+        "错误"
+      ],
+      "recordType": "confirmed-error"
+    },
+    {
+      "id": "K-M-955",
+      "title": "3.2×1.5",
+      "category": "小数计算",
+      "priority": "normal",
+      "prompt": "3.2×1.5",
+      "kind": "number",
+      "answers": [
+        "4.8"
+      ],
+      "unit": "",
+      "hint": "运算前先估计大小，再逐步计算。",
+      "explanation": "先按整数计算：32×15＝32×10＋32×5＝320＋160＝480。 3.2和1.5共2位小数，积为4.80＝4.8。",
+      "steps": [
+        "先按整数计算：32×15＝32×10＋32×5＝320＋160＝480。",
+        "3.2和1.5共2位小数，积为4.80＝4.8。"
+      ],
+      "source": {
+        "date": "2026-10-03",
+        "label": "小数乘法",
+        "page": "",
+        "question": "multiply-table",
+        "kind": "original"
+      },
+      "status": "ready",
+      "recordType": "confirmed-error"
+    },
+    {
+      "id": "K-M-956",
+      "title": "计算：0.326×1.3",
+      "category": "小数计算",
+      "priority": "normal",
+      "prompt": "计算：0.326×1.3。",
+      "kind": "number",
+      "answers": [
+        "0.4238"
+      ],
+      "unit": "",
+      "hint": "运算前先估计大小，再逐步计算。",
+      "explanation": "先按整数计算：326×13＝326×10＋326×3＝3260＋978＝4238。 0.326和1.3共4位小数，所以0.326×1.3＝0.4238。",
+      "steps": [
+        "先按整数计算：326×13＝326×10＋326×3＝3260＋978＝4238。",
+        "0.326和1.3共4位小数，所以0.326×1.3＝0.4238。"
+      ],
+      "source": {
+        "date": "2026-10-03",
+        "label": "小数乘法 · 按原记录整理",
+        "page": "",
+        "question": "weight",
+        "kind": "reconstructed"
+      },
+      "status": "ready",
+      "recordType": "confirmed-error"
+    },
+    {
+      "id": "K-M-957",
+      "title": "计算：1.12×1.1",
+      "category": "小数计算",
+      "priority": "normal",
+      "prompt": "计算：1.12×1.1。",
+      "kind": "number",
+      "answers": [
+        "1.232"
+      ],
+      "unit": "",
+      "hint": "运算前先估计大小，再逐步计算。",
+      "explanation": "先按整数计算：112×11＝1120＋112＝1232。 1.12和1.1共3位小数，所以1.12×1.1＝1.232。",
+      "steps": [
+        "先按整数计算：112×11＝1120＋112＝1232。",
+        "1.12和1.1共3位小数，所以1.12×1.1＝1.232。"
+      ],
+      "source": {
+        "date": "2026-10-03",
+        "label": "小数乘法 · 按原记录整理",
+        "page": "",
+        "question": "height",
+        "kind": "reconstructed"
+      },
+      "status": "ready",
+      "recordType": "confirmed-error"
+    },
+    {
+      "id": "K-M-959",
+      "title": "18.9−(8.9+4.95)",
+      "category": "小数计算",
+      "priority": "normal",
+      "prompt": "18.9−(8.9+4.95)",
+      "kind": "number",
+      "answers": [
+        "5.05"
+      ],
+      "unit": "",
+      "hint": "运算前先估计大小，再逐步计算。",
+      "explanation": "先算括号内的和：8.9＋4.95＝13.85。 小数点对齐后相减：18.90－13.85＝5.05。",
+      "steps": [
+        "先算括号内的和：8.9＋4.95＝13.85。",
+        "小数点对齐后相减：18.90－13.85＝5.05。"
+      ],
+      "source": {
+        "date": "2026-10-03",
+        "label": "小数减法",
+        "page": "",
+        "question": "subtract-brackets",
+        "kind": "original"
+      },
+      "status": "ready",
+      "recordType": "confirmed-error"
+    },
+    {
+      "id": "K-M-960",
+      "title": "83÷2.4（保留三位小数）",
+      "category": "近似数",
+      "priority": "important",
+      "prompt": "83÷2.4（保留三位小数）",
+      "kind": "number",
+      "answers": [
+        "34.583"
+      ],
+      "unit": "",
+      "hint": "运算前先估计大小，再逐步计算。",
+      "explanation": "被除数和除数同时乘10：83÷2.4＝830÷24。 830÷24＝34.583333…，至少算到小数点后第4位。 第4位是3，小于5，舍去；保留三位小数得34.583。",
+      "steps": [
+        "被除数和除数同时乘10：83÷2.4＝830÷24。",
+        "830÷24＝34.583333…，至少算到小数点后第4位。",
+        "第4位是3，小于5，舍去；保留三位小数得34.583。"
+      ],
+      "source": {
+        "date": "2026-10-03",
+        "label": "小数除法",
+        "page": "",
+        "question": "divide-83",
+        "kind": "original"
+      },
+      "status": "ready",
+      "recordType": "confirmed-error",
+      "requiredDecimals": 3
+    },
+    {
+      "id": "K-M-961",
+      "title": "65÷0.58（保留三位小数）",
+      "category": "近似数",
+      "priority": "important",
+      "prompt": "65÷0.58（保留三位小数）",
+      "kind": "number",
+      "answers": [
+        "112.069"
+      ],
+      "unit": "",
+      "hint": "运算前先估计大小，再逐步计算。",
+      "explanation": "被除数和除数同时乘100：65÷0.58＝6500÷58。 6500÷58＝112.068965…，至少算到小数点后第4位。 第4位是9，向第3位的8进1，所以保留三位小数得112.069。",
+      "steps": [
+        "被除数和除数同时乘100：65÷0.58＝6500÷58。",
+        "6500÷58＝112.068965…，至少算到小数点后第4位。",
+        "第4位是9，向第3位的8进1，所以保留三位小数得112.069。"
+      ],
+      "source": {
+        "date": "2026-10-03",
+        "label": "小数除法",
+        "page": "",
+        "question": "divide-65",
+        "kind": "original"
+      },
+      "status": "ready",
+      "recordType": "confirmed-error",
+      "requiredDecimals": 3
+    },
+    {
+      "id": "K-M-962",
+      "title": "0.125×2.4",
+      "category": "运算规律",
+      "priority": "normal",
+      "prompt": "0.125×2.4",
+      "kind": "number",
+      "answers": [
+        "0.3"
+      ],
+      "unit": "",
+      "hint": "运算前先估计大小，再逐步计算。",
+      "explanation": "先按整数计算：125×24＝125×(8×3)＝1000×3＝3000。 0.125和2.4共4位小数，所以积为0.3000＝0.3。",
+      "steps": [
+        "先按整数计算：125×24＝125×(8×3)＝1000×3＝3000。",
+        "0.125和2.4共4位小数，所以积为0.3000＝0.3。"
+      ],
+      "source": {
+        "date": "2026-10-03",
+        "label": "小数运算练习",
+        "page": "",
+        "question": "multiply-0125",
+        "kind": "original"
+      },
+      "status": "ready",
+      "recordType": "confirmed-error"
+    },
+    {
+      "id": "K-M-963",
+      "title": "(0.4+0.4)−0.4×0.4",
+      "category": "运算规律",
+      "priority": "normal",
+      "prompt": "(0.4+0.4)−0.4×0.4",
+      "kind": "number",
+      "answers": [
+        "0.64"
+      ],
+      "unit": "",
+      "hint": "运算前先估计大小，再逐步计算。",
+      "explanation": "先算括号：0.4＋0.4＝0.8。 再算乘法：0.4×0.4＝0.16。 最后相减：0.8－0.16＝0.64。",
+      "steps": [
+        "先算括号：0.4＋0.4＝0.8。",
+        "再算乘法：0.4×0.4＝0.16。",
+        "最后相减：0.8－0.16＝0.64。"
+      ],
+      "source": {
+        "date": "2026-10-03",
+        "label": "小数运算练习",
+        "page": "",
+        "question": "mixed-04",
+        "kind": "original"
+      },
+      "status": "ready",
+      "recordType": "confirmed-error"
+    },
+    {
+      "id": "K-M-964",
+      "title": "48比某数的5倍多3，求某数",
+      "category": "数量关系",
+      "priority": "normal",
+      "prompt": "48比某数的5倍多3，求某数",
+      "kind": "number",
+      "answers": [
+        "9"
+      ],
+      "unit": "",
+      "hint": "运算前先估计大小，再逐步计算。",
+      "explanation": "48比某数的5倍多3，所以某数的5倍是48－3＝45。 某数为45÷5＝9。 代回核对：9×5＋3＝48。",
+      "steps": [
+        "48比某数的5倍多3，所以某数的5倍是48－3＝45。",
+        "某数为45÷5＝9。",
+        "代回核对：9×5＋3＝48。"
+      ],
+      "source": {
+        "date": "2026-10-03",
+        "label": "小数运算练习",
+        "page": "",
+        "question": "inverse-48",
+        "kind": "original"
+      },
+      "status": "ready",
+      "recordType": "confirmed-error"
+    },
+    {
+      "id": "K-M-967",
+      "title": "连续7个偶数的和为84，这7个偶数依次是什么？用逗号隔开",
+      "category": "枚举与条件",
+      "priority": "normal",
+      "prompt": "连续7个偶数的和为84，这7个偶数依次是什么？用逗号隔开。",
+      "kind": "text",
+      "answers": [
+        "6,8,10,12,14,16,18",
+        "6，8，10，12，14，16，18"
+      ],
+      "unit": "",
+      "hint": "运算前先估计大小，再逐步计算。",
+      "explanation": "7个连续偶数关于中间的第4个数对称，所以中间数等于平均数：84÷7＝12。 相邻偶数相差2，前3个依次为6、8、10，后3个依次为14、16、18。 这7个偶数从小到大是6、8、10、12、14、16、18，相加为84。",
+      "steps": [
+        "7个连续偶数关于中间的第4个数对称，所以中间数等于平均数：84÷7＝12。",
+        "相邻偶数相差2，前3个依次为6、8、10，后3个依次为14、16、18。",
+        "这7个偶数从小到大是6、8、10、12、14、16、18，相加为84。"
+      ],
+      "source": {
+        "date": "2026-10-03",
+        "label": "连续偶数",
+        "page": "",
+        "question": "even-seven",
+        "kind": "original"
+      },
+      "status": "ready",
+      "recordType": "confirmed-error"
+    },
+    {
+      "id": "K-M-968",
+      "title": "15.9÷15",
+      "category": "小数计算",
+      "priority": "important",
+      "prompt": "15.9÷15",
+      "kind": "number",
+      "answers": [
+        "1.06"
+      ],
+      "unit": "",
+      "hint": "运算前先估计大小，再逐步计算。",
+      "explanation": "15×1＝15，15.9减去15还剩0.9。 0.9÷15＝0.06，因为15×0.06＝0.9。 所以15.9÷15＝1＋0.06＝1.06；用1.06×15＝15.9核对。",
+      "steps": [
+        "15×1＝15，15.9减去15还剩0.9。",
+        "0.9÷15＝0.06，因为15×0.06＝0.9。",
+        "所以15.9÷15＝1＋0.06＝1.06；用1.06×15＝15.9核对。"
+      ],
+      "source": {
+        "date": "2026-10-03",
+        "label": "小数除法",
+        "page": "",
+        "question": "divide-15p9",
+        "kind": "original"
+      },
+      "status": "ready",
+      "recordType": "confirmed-error"
+    },
+    {
+      "id": "K-M-1049-p2-choice1",
+      "title": "一个长方形长35分米、宽2.2米，面积是多少平方米？",
+      "category": "图形与单位",
+      "priority": "normal",
+      "prompt": "一个长方形长35分米、宽2.2米，面积是多少平方米？",
+      "kind": "number",
+      "answers": [
+        "7.7"
+      ],
+      "unit": "平方米",
+      "hint": "先把两个长度化为相同单位。",
+      "explanation": "35分米＝3.5米；3.5×2.2＝7.7平方米。",
+      "steps": [
+        "35分米＝3.5米",
+        "3.5×2.2＝7.7平方米"
+      ],
+      "source": {
+        "date": "2026-10-05",
+        "label": "华东师大版一课一练·五年级数学第一学期（增强版）第1—16页 · 按原记录整理",
+        "page": "2",
+        "question": "p2-choice1",
+        "kind": "reconstructed"
+      },
+      "status": "ready",
+      "recordType": "confirmed-error"
+    },
+    {
+      "id": "K-M-1050-p3-app5-core",
+      "title": "计算：7.5×12.8",
+      "category": "小数计算",
+      "priority": "normal",
+      "prompt": "计算：7.5×12.8。",
+      "kind": "number",
+      "answers": [
+        "96"
+      ],
+      "unit": "",
+      "hint": "按位写出部分积，再合并。",
+      "explanation": "75×128＝9600，共2位小数，积96。",
+      "steps": [
+        "75×128＝9600，共2位小数，积96"
+      ],
+      "source": {
+        "date": "2026-10-05",
+        "label": "华东师大版一课一练·五年级数学第一学期（增强版）第1—16页 · 按原记录整理",
+        "page": "3",
+        "question": "p3-app5-core",
+        "kind": "reconstructed"
+      },
+      "status": "ready",
+      "recordType": "confirmed-error"
+    },
+    {
+      "id": "K-M-1051-p4-basketball-core",
+      "title": "计算：18×32.8",
+      "category": "小数计算",
+      "priority": "normal",
+      "prompt": "计算：18×32.8。金额要求精确到角，不能省去小数部分。",
+      "kind": "number",
+      "answers": [
+        "590.4"
+      ],
+      "unit": "元",
+      "hint": "精确金额与估算金额分开。",
+      "explanation": "把18看成20－2：32.8×20＝656，32.8×2＝65.6。 656－65.6＝590.4。 精确到角就是保留一位小数，金额写590.4元。",
+      "steps": [
+        "把18看成20－2：32.8×20＝656，32.8×2＝65.6。",
+        "656－65.6＝590.4。",
+        "精确到角就是保留一位小数，金额写590.4元。"
+      ],
+      "source": {
+        "date": "2026-10-05",
+        "label": "华东师大版一课一练·五年级数学第一学期（增强版）第1—16页 · 按原记录整理",
+        "page": "4",
+        "question": "p4-basketball-core",
+        "kind": "reconstructed"
+      },
+      "status": "ready",
+      "recordType": "process-gap",
+      "requiredDecimals": 1
+    },
+    {
+      "id": "K-M-1052-p5-q1-2",
+      "title": "计算：26.4×0.008",
+      "category": "小数计算",
+      "priority": "important",
+      "prompt": "计算：26.4×0.008。",
+      "kind": "number",
+      "answers": [
+        "0.2112"
+      ],
+      "unit": "",
+      "hint": "先重算264×8，再定位小数点。",
+      "explanation": "264×8＝2112，共4位小数，所以0.2112。",
+      "steps": [
+        "264×8＝2112，共4位小数，所以0.2112"
+      ],
+      "source": {
+        "date": "2026-10-05",
+        "label": "华东师大版一课一练·五年级数学第一学期（增强版）第1—16页",
+        "page": "5",
+        "question": "p5-q1-2",
+        "kind": "original"
+      },
+      "status": "ready",
+      "recordType": "confirmed-error"
+    },
+    {
+      "id": "K-M-1052-p5-q2-3",
+      "title": "用简便方法计算：(3.8×8.7－3.8×7.9)×1.25",
+      "category": "运算规律",
+      "priority": "normal",
+      "prompt": "用简便方法计算：(3.8×8.7－3.8×7.9)×1.25。",
+      "kind": "number",
+      "answers": [
+        "3.8"
+      ],
+      "unit": "",
+      "hint": "每次写等式时，外面的×1.25也要带下来。",
+      "explanation": "3.8×(8.7－7.9)×1.25＝3.8×0.8×1.25＝3.8。",
+      "steps": [
+        "3.8×(8.7－7.9)×1.25＝3.8×0.8×1.25＝3.8"
+      ],
+      "source": {
+        "date": "2026-10-05",
+        "label": "华东师大版一课一练·五年级数学第一学期（增强版）第1—16页",
+        "page": "5",
+        "question": "p5-q2-3",
+        "kind": "original"
+      },
+      "status": "ready",
+      "recordType": "process-gap"
+    },
+    {
+      "id": "K-M-1056-p9-division",
+      "title": "计算：2.72÷32",
+      "category": "数位与验算",
+      "priority": "important",
+      "prompt": "计算：2.72÷32。",
+      "kind": "number",
+      "answers": [
+        "0.085"
+      ],
+      "unit": "",
+      "hint": "商比0.1大还是小？再用乘法验算。",
+      "explanation": "把2.72看成2720个千分之一，先计算2720÷32。 32×80＝2560，还剩160；160÷32＝5，所以2720÷32＝85。 85个千分之一是0.085，因此2.72÷32＝0.085。",
+      "steps": [
+        "把2.72看成2720个千分之一，先计算2720÷32。",
+        "32×80＝2560，还剩160；160÷32＝5，所以2720÷32＝85。",
+        "85个千分之一是0.085，因此2.72÷32＝0.085。"
+      ],
+      "source": {
+        "date": "2026-10-05",
+        "label": "华东师大版一课一练·五年级数学第一学期（增强版）第1—16页",
+        "page": "9",
+        "question": "p9-division",
+        "kind": "original"
+      },
+      "status": "ready",
+      "recordType": "confirmed-error"
+    },
+    {
+      "id": "K-M-1058-p11-app1",
+      "title": "小华买8件同样商品花13.6元，小海买6件同样商品花10.8元",
+      "category": "数量关系",
+      "priority": "normal",
+      "prompt": "小华买8件同样商品花13.6元，小海买6件同样商品花10.8元。谁买的单价便宜？",
+      "kind": "choice",
+      "answers": [
+        "小华"
+      ],
+      "unit": "",
+      "hint": "算出单价后，把单价与人物对应。",
+      "explanation": "小华13.6÷8＝1.7元；小海10.8÷6＝1.8元；小华便宜。",
+      "steps": [
+        "小华13.6÷8＝1.7元",
+        "小海10.8÷6＝1.8元",
+        "小华便宜"
+      ],
+      "source": {
+        "date": "2026-10-05",
+        "label": "华东师大版一课一练·五年级数学第一学期（增强版）第1—16页 · 按原记录整理",
+        "page": "11",
+        "question": "p11-app1",
+        "kind": "reconstructed"
+      },
+      "status": "ready",
+      "options": [
+        "小华",
+        "小海"
+      ],
+      "recordType": "confirmed-error"
+    },
+    {
+      "id": "K-M-1060-p13-q2-3",
+      "title": "计算0.51÷0.78，保留两位小数",
+      "category": "近似数",
+      "priority": "important",
+      "prompt": "计算0.51÷0.78，保留两位小数。",
+      "kind": "number",
+      "answers": [
+        "0.65"
+      ],
+      "unit": "",
+      "hint": "要算到千分位，再决定百分位。",
+      "explanation": "0.51÷0.78＝0.653846…，保留两位是0.65。",
+      "steps": [
+        "0.51÷0.78＝0.653846…，保留两位是0.65"
+      ],
+      "source": {
+        "date": "2026-10-05",
+        "label": "华东师大版一课一练·五年级数学第一学期（增强版）第1—16页",
+        "page": "13",
+        "question": "p13-q2-3",
+        "kind": "original"
+      },
+      "status": "ready",
+      "recordType": "confirmed-error",
+      "requiredDecimals": 2
+    },
+    {
+      "id": "K-M-1060-p13-q2-4",
+      "title": "计算31.6÷7.7，保留两位小数",
+      "category": "近似数",
+      "priority": "important",
+      "prompt": "计算31.6÷7.7，保留两位小数。",
+      "kind": "number",
+      "answers": [
+        "4.10"
+      ],
+      "unit": "",
+      "hint": "商中不够商1的数位要写0。",
+      "explanation": "31.6÷7.7＝4.103896…；保留两位写4.10，末尾0不能省。",
+      "steps": [
+        "31.6÷7.7＝4.103896…",
+        "保留两位写4.10，末尾0不能省"
+      ],
+      "source": {
+        "date": "2026-10-05",
+        "label": "华东师大版一课一练·五年级数学第一学期（增强版）第1—16页",
+        "page": "13",
+        "question": "p13-q2-4",
+        "kind": "original"
+      },
+      "status": "ready",
+      "recordType": "confirmed-error",
+      "requiredDecimals": 2
+    },
+    {
+      "id": "K-M-1061-p14-q2a",
+      "title": "填入＞、＜或＝：3.5÷0.89 （ ） 3.5",
+      "category": "运算规律",
+      "priority": "normal",
+      "prompt": "填入＞、＜或＝：3.5÷0.89 （ ） 3.5。",
+      "kind": "choice",
+      "answers": [
+        "＞"
+      ],
+      "unit": "",
+      "hint": "除数是0到1之间的数。",
+      "explanation": "正数除以小于1的正数，商比原数大。",
+      "steps": [
+        "正数除以小于1的正数，商比原数大"
+      ],
+      "source": {
+        "date": "2026-10-05",
+        "label": "华东师大版一课一练·五年级数学第一学期（增强版）第1—16页",
+        "page": "14",
+        "question": "p14-q2a",
+        "kind": "original"
+      },
+      "status": "ready",
+      "options": [
+        "＞",
+        "＜",
+        "＝"
+      ],
+      "recordType": "confirmed-error"
+    },
+    {
+      "id": "K-M-1061-p14-q2b",
+      "title": "填入＞、＜或＝：4.8÷1.5 （ ） 4.8",
+      "category": "运算规律",
+      "priority": "normal",
+      "prompt": "填入＞、＜或＝：4.8÷1.5 （ ） 4.8。",
+      "kind": "choice",
+      "answers": [
+        "＜"
+      ],
+      "unit": "",
+      "hint": "除数大于1。",
+      "explanation": "正数除以大于1的数，商比原数小。",
+      "steps": [
+        "正数除以大于1的数，商比原数小"
+      ],
+      "source": {
+        "date": "2026-10-05",
+        "label": "华东师大版一课一练·五年级数学第一学期（增强版）第1—16页",
+        "page": "14",
+        "question": "p14-q2b",
+        "kind": "original"
+      },
+      "status": "ready",
+      "options": [
+        "＞",
+        "＜",
+        "＝"
+      ],
+      "recordType": "confirmed-error"
+    },
+    {
+      "id": "K-M-1061-p14-choice2",
+      "title": "甲数除以乙数，商15、余1.2",
+      "category": "数量关系",
+      "priority": "important",
+      "prompt": "甲数除以乙数，商15、余1.2。被除数和除数同时乘10后，商是多少，余数是多少？按商、余数顺序用逗号隔开。",
+      "kind": "text",
+      "answers": [
+        "15,12",
+        "15，12"
+      ],
+      "unit": "",
+      "hint": "把“被除数＝除数×商＋余数”整个等式同时乘10。",
+      "explanation": "商不变，余数也要乘10；因此商15、余12。",
+      "steps": [
+        "商不变，余数也要乘10",
+        "因此商15、余12"
+      ],
+      "source": {
+        "date": "2026-10-05",
+        "label": "华东师大版一课一练·五年级数学第一学期（增强版）第1—16页",
+        "page": "14",
+        "question": "p14-choice2",
+        "kind": "original"
+      },
+      "status": "ready",
+      "recordType": "confirmed-error"
+    },
+    {
+      "id": "K-M-1062-p15-app4",
+      "title": "今年有3.9万人，是去年的2倍多0.14万人",
+      "category": "数量关系",
+      "priority": "normal",
+      "prompt": "今年有3.9万人，是去年的2倍多0.14万人。去年有多少万人？",
+      "kind": "number",
+      "answers": [
+        "1.88"
+      ],
+      "unit": "万人",
+      "hint": "先减去多出的部分，再除以倍数。",
+      "explanation": "(3.9－0.14)÷2＝1.88万人；1.88×2＋0.14＝3.9。",
+      "steps": [
+        "(3.9－0.14)÷2＝1.88万人",
+        "1.88×2＋0.14＝3.9"
+      ],
+      "source": {
+        "date": "2026-10-05",
+        "label": "华东师大版一课一练·五年级数学第一学期（增强版）第1—16页 · 按原记录整理",
+        "page": "15",
+        "question": "p15-app4",
+        "kind": "reconstructed"
+      },
+      "status": "ready",
+      "recordType": "confirmed-error"
+    },
+    {
+      "id": "K-M-1061-p14-q3",
+      "title": "四舍五入保留三位小数",
+      "category": "近似数",
+      "priority": "normal",
+      "prompt": "用四舍五入法把9.95473保留三位小数。",
+      "kind": "number",
+      "answers": [
+        "9.955"
+      ],
+      "unit": "",
+      "hint": "保留千分位，要看万分位。",
+      "explanation": "千分位是4，万分位是7，应向千分位进1，所以保留三位小数为9.955。",
+      "steps": [
+        "千分位是4，万分位是7，应向千分位进1，所以保留三位小数为9.955"
+      ],
+      "source": {
+        "date": "2026-10-05",
+        "label": "华东师大版一课一练·五年级数学第一学期（增强版）第1—16页",
+        "page": "14",
+        "question": "3(3)末项",
+        "kind": "original"
+      },
+      "status": "ready",
+      "recordType": "important-review",
+      "requiredDecimals": 3
+    },
+    {
+      "id": "K-M-1061-p14-q8",
+      "title": "由商余与总和求甲乙数",
+      "category": "近似数",
+      "priority": "normal",
+      "prompt": "甲数除以乙数，商是3，还剩余0.2。甲数、乙数、商的总和是9.8。乙数和甲数分别是多少？按乙数、甲数顺序用逗号隔开。",
+      "kind": "text",
+      "answers": [
+        "1.65,5.15",
+        "1.65，5.15"
+      ],
+      "unit": "",
+      "hint": "先从总和中减去商；甲数＝乙数×3＋0.2。",
+      "explanation": "甲数＋乙数＝9.8－3＝6.8。4个乙数＋0.2＝6.8，所以乙数＝(6.8－0.2)÷4＝1.65，甲数＝1.65×3＋0.2＝5.15。",
+      "steps": [
+        "甲数＋乙数＝9.8－3＝6.8",
+        "4个乙数＋0.2＝6.8，所以乙数＝(6.8－0.2)÷4＝1.65，甲数＝1.65×3＋0.2＝5.15"
+      ],
+      "source": {
+        "date": "2026-10-05",
+        "label": "华东师大版一课一练·五年级数学第一学期（增强版）第1—16页",
+        "page": "14",
+        "question": "3(8)",
+        "kind": "original"
+      },
+      "status": "ready",
+      "recordType": "important-review"
+    },
+    {
+      "id": "K-M-1061-p14-choice3",
+      "title": "五句判断的判分口径待核",
+      "category": "近似数",
+      "priority": "normal",
+      "prompt": "五句判断题：原题已核，判分口径待核。",
+      "kind": "number",
+      "answers": [
+        ""
+      ],
+      "unit": "",
+      "hint": "需明确第①句的判分口径。",
+      "explanation": "原题已核对。第①句中的“必须……才能”存在不同解读，待明确统一判分口径后开放。",
+      "steps": [
+        "原题已核对",
+        "第①句中的“必须……才能”存在不同解读，待明确统一判分口径后开放"
+      ],
+      "source": {
+        "date": "2026-10-05",
+        "label": "华东师大版一课一练·五年级数学第一学期（增强版）第1—16页",
+        "page": "14",
+        "question": "p14-choice3",
+        "kind": "original"
+      },
+      "status": "needs-source",
+      "recordType": "pending-review"
+    },
+    {
+      "id": "K-M-1067",
+      "title": "(202.5＋20.25＋2.025＋0.2025)÷0.111",
+      "category": "运算规律",
+      "priority": "important",
+      "prompt": "(202.5＋20.25＋2.025＋0.2025)÷0.1111",
+      "kind": "number",
+      "answers": [
+        "2025"
+      ],
+      "unit": "",
+      "hint": "提取202.5后，原来的202.5不能再变小。",
+      "explanation": "提取202.5：202.5×(1＋0.1＋0.01＋0.001)÷0.1111＝202.5×1.111÷0.1111＝202.5×10＝2025。",
+      "steps": [
+        "提取202.5：202.5×(1＋0.1＋0.01＋0.001)÷0.1111＝202.5×1.111÷0.1111＝202.5×10＝2025"
+      ],
+      "source": {
+        "date": "2026-10-06",
+        "label": "华东师大版一课一练·5年级数学第一学期增强版",
+        "page": "18",
+        "question": "2-8",
+        "kind": "original"
+      },
+      "status": "ready",
+      "recordType": "confirmed-error"
+    },
+    {
+      "id": "K-M-1072",
+      "title": "[(12.5－□)÷1.8＋4.2]×5.6＝34.72",
+      "category": "数量关系",
+      "priority": "important",
+      "prompt": "[(12.5－□)÷1.8＋4.2]×5.6＝34.72",
+      "kind": "number",
+      "answers": [
+        "8.9"
+      ],
+      "unit": "",
+      "hint": "从最后一步开始反着推。",
+      "explanation": "34.72÷5.6＝6.2，6.2－4.2＝2，2×1.8＝3.6，12.5－3.6＝8.9。",
+      "steps": [
+        "34.72÷5.6＝6.2，6.2－4.2＝2，2×1.8＝3.6，12.5－3.6＝8.9"
+      ],
+      "source": {
+        "date": "2026-10-06",
+        "label": "华东师大版一课一练·5年级数学第一学期增强版",
+        "page": "18",
+        "question": "3-5",
+        "kind": "original"
+      },
+      "status": "ready",
+      "recordType": "confirmed-error"
+    },
+    {
+      "id": "K-M-1073",
+      "title": "方案一每月10元，加0.25元/分钟；方案二每月30元，加0.1",
+      "category": "数量关系",
+      "priority": "normal",
+      "prompt": "方案一每月10元，加0.25元/分钟；方案二每月30元，加0.15元/分钟。通话多少分钟时，两种费用相等？",
+      "kind": "number",
+      "answers": [
+        "200"
+      ],
+      "unit": "",
+      "hint": "比较固定费用差与每分钟费用差。",
+      "explanation": "两种固定费用相差20元，每分钟费用相差0.10元；20÷0.10＝200分钟。",
+      "steps": [
+        "两种固定费用相差20元，每分钟费用相差0.10元",
+        "20÷0.10＝200分钟"
+      ],
+      "source": {
+        "date": "2026-10-06",
+        "label": "华东师大版一课一练·5年级数学第一学期增强版 · 按原记录整理",
+        "page": "18",
+        "question": "3-6",
+        "kind": "reconstructed"
+      },
+      "status": "ready",
+      "recordType": "confirmed-error"
+    },
+    {
+      "id": "K-M-1074",
+      "title": "正方形边长增加0.9米，面积增加4.59平方米，求原面积",
+      "category": "图形与单位",
+      "priority": "normal",
+      "prompt": "正方形边长增加0.9米，面积增加4.59平方米，求原面积",
+      "kind": "number",
+      "answers": [
+        "4.41"
+      ],
+      "unit": "",
+      "hint": "增加面积包括两条长方形和一个小正方形。",
+      "explanation": "设原边长为a米，增加的面积由两条长为a、宽为0.9的长方形及一个边长0.9的小正方形组成。 所以增加的面积为2×0.9×a＋0.9×0.9＝4.59。 原边长a＝(4.59－0.81)÷1.8＝2.1米，原面积为2.1×2.1＝4.41平方米。",
+      "steps": [
+        "设原边长为a米，增加的面积由两条长为a、宽为0.9的长方形及一个边长0.9的小正方形组成。",
+        "所以增加的面积为2×0.9×a＋0.9×0.9＝4.59。",
+        "原边长a＝(4.59－0.81)÷1.8＝2.1米，原面积为2.1×2.1＝4.41平方米。"
+      ],
+      "source": {
+        "date": "2026-10-06",
+        "label": "华东师大版一课一练·5年级数学第一学期增强版",
+        "page": "18",
+        "question": "3-7",
+        "kind": "original"
+      },
+      "status": "ready",
+      "recordType": "confirmed-error"
+    },
+    {
+      "id": "K-M-1078",
+      "title": "用简便方法计算：0.4×(2.5＋1.25)×0.8",
+      "category": "运算规律",
+      "priority": "normal",
+      "prompt": "用简便方法计算：0.4×(2.5＋1.25)×0.8。",
+      "kind": "number",
+      "answers": [
+        "1.2"
+      ],
+      "unit": "",
+      "hint": "括号里是加法，不能直接改成连乘。",
+      "explanation": "2.5＋1.25＝1.25×3；原式＝(0.4×3)×(1.25×0.8)＝1.2。",
+      "steps": [
+        "2.5＋1.25＝1.25×3",
+        "原式＝(0.4×3)×(1.25×0.8)＝1.2"
+      ],
+      "source": {
+        "date": "2026-10-06",
+        "label": "华东师大版一课一练·5年级数学第一学期增强版 · 按原记录整理",
+        "page": "19",
+        "question": "4-3",
+        "kind": "reconstructed"
+      },
+      "status": "ready",
+      "recordType": "confirmed-error"
+    },
+    {
+      "id": "K-M-1081",
+      "title": "边长20米的正方形花布，按边平行或垂直排放，裁成4.5米×2.5",
+      "category": "图形与单位",
+      "priority": "important",
+      "prompt": "边长20米的正方形花布，按边平行或垂直排放，裁成4.5米×2.5米的小长方形，最多能裁多少整块？",
+      "kind": "number",
+      "answers": [
+        "32"
+      ],
+      "unit": "",
+      "hint": "必须按边长排整块，不能只用总面积相除。",
+      "explanation": "沿20米的一边能排4段4.5米，另一边排8段2.5米，共4×8＝32块；不能把面积商直接当整块数量。",
+      "steps": [
+        "沿20米的一边能排4段4.5米，另一边排8段2.5米，共4×8＝32块",
+        "不能把面积商直接当整块数量"
+      ],
+      "source": {
+        "date": "2026-10-06",
+        "label": "华东师大版一课一练·5年级数学第一学期增强版 · 按原记录整理",
+        "page": "19",
+        "question": "5-2",
+        "kind": "reconstructed"
+      },
+      "status": "ready",
+      "recordType": "confirmed-error"
+    },
+    {
+      "id": "K-M-1077",
+      "title": "乘除关系中的大小比较",
+      "category": "运算规律",
+      "priority": "normal",
+      "prompt": "a、b都大于0。下面哪一项的结论是错误的？\nA. a×0.8＝b×0.9，所以a＞b。\nB. a÷0.8＝b÷0.9，所以a＜b。\nC. a×0.8＝b÷0.9，所以a＜b。\nD. a÷0.8＝b×0.9，所以a＜b。",
+      "kind": "choice",
+      "answers": [
+        "C"
+      ],
+      "unit": "",
+      "hint": "把每个等式整理成a等于b的几倍。",
+      "explanation": "C项中a＝b÷(0.9×0.8)＝b÷0.72。b大于0，除以小于1的数，结果大于b，所以应为a＞b。",
+      "steps": [
+        "C项中a＝b÷(0.9×0.8)＝b÷0.72",
+        "b大于0，除以小于1的数，结果大于b，所以应为a＞b"
+      ],
+      "source": {
+        "date": "2026-10-06",
+        "label": "华东师大版一课一练·5年级数学第一学期增强版",
+        "page": "19",
+        "question": "4(2)",
+        "kind": "original"
+      },
+      "status": "ready",
+      "options": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "recordType": "confirmed-error"
+    },
+    {
+      "id": "K-M-1079",
+      "title": "检查四个计算过程",
+      "category": "运算规律",
+      "priority": "normal",
+      "prompt": "下面四个计算中，有几个是错误的？\n① 2.3÷0.38＝6……0.2\n② (4.9＋0.25)×4＝4.9＋0.25×4＝5.9\n③ 6.1÷1.25×0.8＝6.1÷(1.25×0.8)＝6.1\n④ 7.7×9.9＋0.77＝7.7×(9.9＋0.1)＝77",
+      "kind": "number",
+      "answers": [
+        "3"
+      ],
+      "unit": "",
+      "hint": "检查余数、分配律和同级运算顺序。",
+      "explanation": "①余数为2.3－0.38×6＝0.02。②括号里的每一项都要乘4，结果20.6。③从左到右计算，结果3.904。④正确。所以共有3个错误。",
+      "steps": [
+        "①余数为2.3－0.38×6＝0.02",
+        "②括号里的每一项都要乘4，结果20.6",
+        "③从左到右计算，结果3.904",
+        "④正确",
+        "所以共有3个错误"
+      ],
+      "source": {
+        "date": "2026-10-06",
+        "label": "华东师大版一课一练·5年级数学第一学期增强版 · 按原记录整理",
+        "page": "19",
+        "question": "4(4)",
+        "kind": "reconstructed"
+      },
+      "status": "ready",
+      "recordType": "confirmed-error"
+    },
+    {
+      "id": "K-M-0-动态学习总控-248-p20-q1-core",
+      "title": "计算：92×0.85",
+      "category": "小数计算",
+      "priority": "normal",
+      "prompt": "计算：92×0.85。",
+      "kind": "number",
+      "answers": [
+        "78.2"
+      ],
+      "unit": "",
+      "hint": "先核整数乘积，再定位小数。",
+      "explanation": "先按整数计算：92×85＝92×80＋92×5＝7360＋460＝7820。 0.85有2位小数，所以92×0.85＝78.20＝78.2。",
+      "steps": [
+        "先按整数计算：92×85＝92×80＋92×5＝7360＋460＝7820。",
+        "0.85有2位小数，所以92×0.85＝78.20＝78.2。"
+      ],
+      "source": {
+        "date": "2026-10-09",
+        "label": "一课一练p20拓展(1) · 原题计算部分 · 按原记录整理",
+        "page": "20",
+        "question": "2026-10-09",
+        "kind": "reconstructed"
+      },
+      "status": "ready",
+      "recordType": "confirmed-error"
+    },
+    {
+      "id": "K-M-0-动态学习总控-248-p20-q2-apples-pears",
+      "title": "9千克苹果和9千克梨共88.2元；3千克苹果的钱等于4千克梨的钱",
+      "category": "数量关系",
+      "priority": "important",
+      "prompt": "9千克苹果和9千克梨共88.2元；3千克苹果的钱等于4千克梨的钱。苹果和梨各多少元/千克？按苹果、梨顺序用逗号隔开。",
+      "kind": "text",
+      "answers": [
+        "5.6,4.2",
+        "5.6，4.2"
+      ],
+      "unit": "",
+      "hint": "把苹果换成等价的梨后，别漏掉原来的梨。",
+      "explanation": "9千克苹果的钱相当于12千克梨的钱，总价对应12＋9＝21千克梨；梨88.2÷21＝4.2元/千克，苹果4.2×4÷3＝5.6元/千克。",
+      "steps": [
+        "9千克苹果的钱相当于12千克梨的钱，总价对应12＋9＝21千克梨",
+        "梨88.2÷21＝4.2元/千克，苹果4.2×4÷3＝5.6元/千克"
+      ],
+      "source": {
+        "date": "2026-10-09",
+        "label": "一课一练p20拓展(2) · 按完整带学记录整理 · 按原记录整理",
+        "page": "20",
+        "question": "2026-10-09",
+        "kind": "reconstructed"
+      },
+      "status": "ready",
+      "recordType": "confirmed-error"
+    },
+    {
+      "id": "K-M-1233-1(1)",
+      "title": "计算：2.4×0.05",
+      "category": "小数计算",
+      "priority": "important",
+      "prompt": "计算：2.4×0.05。",
+      "kind": "number",
+      "answers": [
+        "0.12"
+      ],
+      "unit": "",
+      "hint": "先写出完整计算，再核对商与乘积。",
+      "explanation": "24×5＝120；两因数共3位小数，积为0.120＝0.12。",
+      "steps": [
+        "24×5＝120",
+        "两因数共3位小数，积为0.120＝0.12"
+      ],
+      "source": {
+        "date": "2026-10-12",
+        "label": "一课一练数学五年级上",
+        "page": "21",
+        "question": "1(1)",
+        "kind": "original"
+      },
+      "status": "ready",
+      "recordType": "confirmed-error"
+    },
+    {
+      "id": "K-M-1233-1(6)",
+      "title": "计算：0.125×0.16",
+      "category": "小数计算",
+      "priority": "important",
+      "prompt": "计算：0.125×0.16。",
+      "kind": "number",
+      "answers": [
+        "0.02"
+      ],
+      "unit": "",
+      "hint": "先写出完整计算，再核对商与乘积。",
+      "explanation": "125×16＝2000；两因数共5位小数，积为0.02000＝0.02。",
+      "steps": [
+        "125×16＝2000",
+        "两因数共5位小数，积为0.02000＝0.02"
+      ],
+      "source": {
+        "date": "2026-10-12",
+        "label": "一课一练数学五年级上",
+        "page": "21",
+        "question": "1(6)",
+        "kind": "original"
+      },
+      "status": "ready",
+      "recordType": "confirmed-error"
+    },
+    {
+      "id": "K-M-1233-1(9)",
+      "title": "计算：0.5×0.25×0.24",
+      "category": "小数计算",
+      "priority": "important",
+      "prompt": "计算：0.5×0.25×0.24。",
+      "kind": "number",
+      "answers": [
+        "0.03"
+      ],
+      "unit": "",
+      "hint": "先写出完整计算，再核对商与乘积。",
+      "explanation": "0.5×0.25＝0.125；0.125×0.24＝0.03。也可先算0.5×0.24＝0.12，再乘0.25。",
+      "steps": [
+        "0.5×0.25＝0.125",
+        "0.125×0.24＝0.03",
+        "也可先算0.5×0.24＝0.12，再乘0.25"
+      ],
+      "source": {
+        "date": "2026-10-12",
+        "label": "一课一练数学五年级上",
+        "page": "21",
+        "question": "1(9)",
+        "kind": "original"
+      },
+      "status": "ready",
+      "recordType": "confirmed-error"
+    },
+    {
+      "id": "K-M-1233-2(4)",
+      "title": "计算：3.75÷7，四舍五入精确到十分位",
+      "category": "近似数",
+      "priority": "important",
+      "prompt": "计算：3.75÷7，四舍五入精确到十分位。",
+      "kind": "number",
+      "answers": [
+        "0.5"
+      ],
+      "unit": "",
+      "hint": "先写出完整计算，再核对商与乘积。",
+      "explanation": "3.75÷7＝0.535714…，百分位为3，精确到十分位得0.5。每次试商后，用除数乘商核对部分积。",
+      "steps": [
+        "3.75÷7＝0.535714…，百分位为3，精确到十分位得0.5",
+        "每次试商后，用除数乘商核对部分积"
+      ],
+      "source": {
+        "date": "2026-10-12",
+        "label": "一课一练数学五年级上",
+        "page": "21",
+        "question": "2(4)",
+        "kind": "original"
+      },
+      "status": "ready",
+      "recordType": "process-gap",
+      "requiredDecimals": 1
+    },
+    {
+      "id": "K-M-1233-2(5)",
+      "title": "计算：3.69×0.19，四舍五入精确到百分位",
+      "category": "近似数",
+      "priority": "important",
+      "prompt": "计算：3.69×0.19，四舍五入精确到百分位。",
+      "kind": "number",
+      "answers": [
+        "0.70"
+      ],
+      "unit": "",
+      "hint": "先写出完整计算，再核对商与乘积。",
+      "explanation": "369×19＝7011；原式共4位小数，准确积为0.7011。精确到百分位写0.70，末尾0不能省。",
+      "steps": [
+        "369×19＝7011",
+        "原式共4位小数，准确积为0.7011",
+        "精确到百分位写0.70，末尾0不能省"
+      ],
+      "source": {
+        "date": "2026-10-12",
+        "label": "一课一练数学五年级上",
+        "page": "21",
+        "question": "2(5)",
+        "kind": "original"
+      },
+      "status": "ready",
+      "recordType": "confirmed-error",
+      "requiredDecimals": 2
+    },
+    {
+      "id": "K-M-1233-2(6)",
+      "title": "计算：10.1÷2.6，四舍五入保留两位小数",
+      "category": "近似数",
+      "priority": "important",
+      "prompt": "计算：10.1÷2.6，四舍五入保留两位小数。",
+      "kind": "number",
+      "answers": [
+        "3.88"
+      ],
+      "unit": "",
+      "hint": "先写出完整计算，再核对商与乘积。",
+      "explanation": "10.1÷2.6＝101÷26＝3.884615…；千分位4舍去，保留两位得3.88。",
+      "steps": [
+        "10.1÷2.6＝101÷26＝3.884615…",
+        "千分位4舍去，保留两位得3.88"
+      ],
+      "source": {
+        "date": "2026-10-12",
+        "label": "一课一练数学五年级上",
+        "page": "21",
+        "question": "2(6)",
+        "kind": "original"
+      },
+      "status": "ready",
+      "recordType": "confirmed-error",
+      "requiredDecimals": 2
+    },
+    {
+      "id": "K-M-1259",
+      "title": "20.7是207个0.1，207÷9＝23",
+      "category": "数位与验算",
+      "priority": "normal",
+      "prompt": "20.7是207个0.1，207÷9＝23。23个0.1是（ ）。",
+      "kind": "number",
+      "answers": [
+        "2.3"
+      ],
+      "unit": "",
+      "hint": "“个数”乘“每个的大小”，才是原来的数。",
+      "explanation": "23×0.1＝2.3。",
+      "steps": [
+        "23×0.1＝2.3"
+      ],
+      "source": {
+        "date": "2026-10-13",
+        "label": "五年级第一学期数学小练习（7） · 按原记录整理",
+        "page": "",
+        "question": "二(1)",
+        "kind": "reconstructed"
+      },
+      "status": "ready",
+      "recordType": "process-gap"
+    },
+    {
+      "id": "K-M-1260",
+      "title": "28.35是2835个0.01，2835÷7＝405",
+      "category": "数位与验算",
+      "priority": "normal",
+      "prompt": "28.35是2835个0.01，2835÷7＝405。405个0.01是（ ）。",
+      "kind": "number",
+      "answers": [
+        "4.05"
+      ],
+      "unit": "",
+      "hint": "405个百分之一，还原成小数。",
+      "explanation": "405×0.01＝4.05。",
+      "steps": [
+        "405×0.01＝4.05"
+      ],
+      "source": {
+        "date": "2026-10-13",
+        "label": "五年级第一学期数学小练习（7） · 按原记录整理",
+        "page": "",
+        "question": "二(2)",
+        "kind": "reconstructed"
+      },
+      "status": "ready",
+      "recordType": "process-gap"
+    },
+    {
+      "id": "K-M-1268-p25-1-2",
+      "title": "1.2÷（ ）＝2.4",
+      "category": "数量关系",
+      "priority": "important",
+      "prompt": "1.2÷（ ）＝2.4。",
+      "kind": "number",
+      "answers": [
+        "0.5"
+      ],
+      "unit": "",
+      "hint": "除数×商＝被除数。",
+      "explanation": "1.2÷2.4＝0.5；0.5×2.4＝1.2。",
+      "steps": [
+        "1.2÷2.4＝0.5",
+        "0.5×2.4＝1.2"
+      ],
+      "source": {
+        "date": "2026-10-14",
+        "label": "一课一练·单元练习二",
+        "page": "25",
+        "question": "p25-1-2",
+        "kind": "original"
+      },
+      "status": "ready",
+      "recordType": "confirmed-error"
+    },
+    {
+      "id": "K-M-1268-p25-1(5)",
+      "title": "计算：9.9÷3.3×0.3。",
+      "category": "小数计算",
+      "priority": "normal",
+      "prompt": "计算：9.9÷3.3×0.3。",
+      "kind": "number",
+      "answers": [
+        "0.9"
+      ],
+      "unit": "",
+      "hint": "同级运算按从左到右计算。",
+      "explanation": "9.9÷3.3×0.3＝3×0.3＝0.9。",
+      "steps": [
+        "9.9÷3.3×0.3＝3×0.3＝0.9"
+      ],
+      "source": {
+        "date": "2026-10-14",
+        "label": "一课一练·单元练习二",
+        "page": "25",
+        "question": "1(5)",
+        "kind": "original"
+      },
+      "status": "ready",
+      "recordType": "confirmed-error"
+    },
+    {
+      "id": "K-M-1268-p25-1(10)",
+      "title": "（ ）÷0.6＋2.4＝3。",
+      "category": "小数计算",
+      "priority": "normal",
+      "prompt": "（ ）÷0.6＋2.4＝3。",
+      "kind": "number",
+      "answers": [
+        "0.36"
+      ],
+      "unit": "",
+      "hint": "先求括号除以0.6的商。",
+      "explanation": "3－2.4＝0.6；0.6×0.6＝0.36。",
+      "steps": [
+        "3－2.4＝0.6",
+        "0.6×0.6＝0.36"
+      ],
+      "source": {
+        "date": "2026-10-14",
+        "label": "一课一练·单元练习二",
+        "page": "25",
+        "question": "1(10)",
+        "kind": "original"
+      },
+      "status": "ready",
+      "recordType": "confirmed-error"
+    },
+    {
+      "id": "K-M-1268-p25-2(5)",
+      "title": "计算5.2÷3.7，精确到十分位。",
+      "category": "近似数",
+      "priority": "important",
+      "prompt": "计算5.2÷3.7，精确到十分位。",
+      "kind": "number",
+      "answers": [
+        "1.4"
+      ],
+      "unit": "",
+      "hint": "余数15添0后是150，继续除。",
+      "explanation": "5.2÷3.7＝1.405405…，精确到十分位是1.4。",
+      "steps": [
+        "5.2÷3.7＝1.405405…，精确到十分位是1.4"
+      ],
+      "source": {
+        "date": "2026-10-14",
+        "label": "一课一练·单元练习二",
+        "page": "25",
+        "question": "2(5)",
+        "kind": "original"
+      },
+      "status": "ready",
+      "recordType": "confirmed-error",
+      "requiredDecimals": 1
+    },
+    {
+      "id": "K-M-1268-p25-2(6)",
+      "title": "计算0.28÷2.7，保留两位小数。",
+      "category": "近似数",
+      "priority": "important",
+      "prompt": "计算0.28÷2.7，保留两位小数。",
+      "kind": "number",
+      "answers": [
+        "0.10"
+      ],
+      "unit": "",
+      "hint": "被除数、除数要同时扩大相同倍数。",
+      "explanation": "0.28÷2.7＝2.8÷27＝0.103703…，保留两位写0.10。",
+      "steps": [
+        "0.28÷2.7＝2.8÷27＝0.103703…，保留两位写0.10"
+      ],
+      "source": {
+        "date": "2026-10-14",
+        "label": "一课一练·单元练习二",
+        "page": "25",
+        "question": "2(6)",
+        "kind": "original"
+      },
+      "status": "ready",
+      "recordType": "confirmed-error",
+      "requiredDecimals": 2
+    },
+    {
+      "id": "K-M-1268-p25-2(3)",
+      "title": "计算31.4×0.09，先写准确积，再保留一位小数。按准确积、近",
+      "category": "近似数",
+      "priority": "normal",
+      "prompt": "计算31.4×0.09，先写准确积，再保留一位小数。按准确积、近似值顺序用逗号隔开。",
+      "kind": "text",
+      "answers": [
+        "2.826,2.8",
+        "2.826，2.8"
+      ],
+      "unit": "",
+      "hint": "近似值正确，也要核对准确积。",
+      "explanation": "先按整数计算：314×9＝2826。 31.4和0.09共3位小数，准确积为2.826。 保留一位小数看百分位，百分位是2，舍去，近似值为2.8。",
+      "steps": [
+        "先按整数计算：314×9＝2826。",
+        "31.4和0.09共3位小数，准确积为2.826。",
+        "保留一位小数看百分位，百分位是2，舍去，近似值为2.8。"
+      ],
+      "source": {
+        "date": "2026-10-14",
+        "label": "一课一练·单元练习二 · 按原记录整理",
+        "page": "25",
+        "question": "2(3)",
+        "kind": "reconstructed"
+      },
+      "status": "ready",
+      "recordType": "process-gap",
+      "perAnswerDecimals": [
+        null,
+        1
+      ]
+    },
+    {
+      "id": "K-M-1314",
+      "title": "计算：0.25×0.04",
+      "category": "小数计算",
+      "priority": "important",
+      "prompt": "计算：0.25×0.04。",
+      "kind": "number",
+      "answers": [
+        "0.01"
+      ],
+      "unit": "",
+      "hint": "先核题目数据，再检查每次变形是否等值。",
+      "explanation": "25×4＝100；两因数共4位小数，先得0.0100，再化简为0.01。",
+      "steps": [
+        "25×4＝100",
+        "两因数共4位小数，先得0.0100，再化简为0.01"
+      ],
+      "source": {
+        "date": "2026-10-19",
+        "label": "第一次单元（计算）原卷与订正",
+        "page": "",
+        "question": "一（2）口算",
+        "kind": "original"
+      },
+      "status": "ready",
+      "recordType": "confirmed-error"
+    },
+    {
+      "id": "K-M-1315",
+      "title": "用竖式计算2.4×0.645，把竖式和横式末答都写完整",
+      "category": "数位与验算",
+      "priority": "important",
+      "prompt": "用竖式计算2.4×0.645，把竖式和横式末答都写完整。",
+      "kind": "number",
+      "answers": [
+        "1.548"
+      ],
+      "unit": "",
+      "hint": "先核题目数据，再检查每次变形是否等值。",
+      "explanation": "先计算645×24：645×4＝2580，645×20＝12900。 把两个部分积按数位对齐相加：2580＋12900＝15480。 2.4和0.645共4位小数，竖式末行写1.5480，化简为1.548，横式末答也写1.548。",
+      "steps": [
+        "先计算645×24：645×4＝2580，645×20＝12900。",
+        "把两个部分积按数位对齐相加：2580＋12900＝15480。",
+        "2.4和0.645共4位小数，竖式末行写1.5480，化简为1.548，横式末答也写1.548。"
+      ],
+      "source": {
+        "date": "2026-10-19",
+        "label": "第一次单元（计算）原卷与订正 · 按原记录整理",
+        "page": "",
+        "question": "二（2）竖式",
+        "kind": "reconstructed"
+      },
+      "status": "ready",
+      "recordType": "process-gap"
+    },
+    {
+      "id": "K-M-1316",
+      "title": "计算6.3÷1.6，保留两位小数",
+      "category": "近似数",
+      "priority": "important",
+      "prompt": "计算6.3÷1.6，保留两位小数。",
+      "kind": "number",
+      "answers": [
+        "3.94"
+      ],
+      "unit": "",
+      "hint": "先核题目数据，再检查每次变形是否等值。",
+      "explanation": "6.3÷1.6＝3.9375；千分位7应向百分位进1，得3.94。",
+      "steps": [
+        "6.3÷1.6＝3.9375",
+        "千分位7应向百分位进1，得3.94"
+      ],
+      "source": {
+        "date": "2026-10-19",
+        "label": "第一次单元（计算）原卷与订正",
+        "page": "",
+        "question": "二（3）近似商",
+        "kind": "original"
+      },
+      "status": "ready",
+      "recordType": "confirmed-error",
+      "requiredDecimals": 2
+    },
+    {
+      "id": "K-M-1317",
+      "title": "5.36比一个数的2.5倍还少2.4，这个数是多少？",
+      "category": "数量关系",
+      "priority": "important",
+      "prompt": "5.36比一个数的2.5倍还少2.4，这个数是多少？",
+      "kind": "number",
+      "answers": [
+        "3.104"
+      ],
+      "unit": "",
+      "hint": "先核题目数据，再检查每次变形是否等值。",
+      "explanation": "原数的2.5倍＝5.36＋2.4＝7.76；原数＝7.76÷2.5＝3.104。代回：3.104×2.5－2.4＝5.36。",
+      "steps": [
+        "原数的2.5倍＝5.36＋2.4＝7.76",
+        "原数＝7.76÷2.5＝3.104",
+        "代回：3.104×2.5－2.4＝5.36"
+      ],
+      "source": {
+        "date": "2026-10-19",
+        "label": "第一次单元（计算）原卷与订正",
+        "page": "",
+        "question": "四（2）列式计算",
+        "kind": "original"
+      },
+      "status": "ready",
+      "recordType": "confirmed-error"
+    },
+    {
+      "id": "K-M-1318",
+      "title": "两小数分别为0.000000000085和0.000000000",
+      "category": "数位与验算",
+      "priority": "important",
+      "prompt": "两小数分别为0.000000000085和0.000000000005，前者除以后者是多少？",
+      "kind": "number",
+      "answers": [
+        "17"
+      ],
+      "unit": "",
+      "hint": "先核题目数据，再检查每次变形是否等值。",
+      "explanation": "两数同时扩大相同倍数后变为85÷5；商不变，结果为17。",
+      "steps": [
+        "两数同时扩大相同倍数后变为85÷5",
+        "商不变，结果为17"
+      ],
+      "source": {
+        "date": "2026-10-19",
+        "label": "第一次单元（计算）原卷与订正 · 按原记录整理",
+        "page": "",
+        "question": "五（1）零很多的除法",
+        "kind": "reconstructed"
+      },
+      "status": "ready",
+      "recordType": "confirmed-error"
+    },
+    {
+      "id": "K-M-1319",
+      "title": "简便计算：3.69×5.3＋36.9×0.46＋0.369",
+      "category": "运算规律",
+      "priority": "important",
+      "prompt": "简便计算：3.69×5.3＋36.9×0.46＋0.369。",
+      "kind": "number",
+      "answers": [
+        "36.9"
+      ],
+      "unit": "",
+      "hint": "先核题目数据，再检查每次变形是否等值。",
+      "explanation": "36.9×0.46＝3.69×4.6，0.369＝3.69×0.1；原式＝3.69×(5.3＋4.6＋0.1)＝36.9。",
+      "steps": [
+        "36.9×0.46＝3.69×4.6，0.369＝3.69×0.1",
+        "原式＝3.69×(5.3＋4.6＋0.1)＝36.9"
+      ],
+      "source": {
+        "date": "2026-10-19",
+        "label": "第一次单元（计算）原卷与订正",
+        "page": "",
+        "question": "五（3）左题简便计算",
+        "kind": "original"
+      },
+      "status": "ready",
+      "recordType": "confirmed-error"
+    },
+    {
+      "id": "K-M-1321",
+      "title": "填入＞、＜或＝：2.24×0.8 （ ） 2.24",
+      "category": "运算规律",
+      "priority": "important",
+      "prompt": "填入＞、＜或＝：2.24×0.8 （ ） 2.24。",
+      "kind": "choice",
+      "answers": [
+        "＜"
+      ],
+      "unit": "",
+      "hint": "先确定题目所求的量和最终单位。",
+      "explanation": "0.8小于1，正数乘0.8所得的积小于原数，所以填＜。",
+      "steps": [
+        "0.8小于1，正数乘0.8所得的积小于原数，所以填＜"
+      ],
+      "source": {
+        "date": "2026-10-19",
+        "label": "第一次单元（概念与应用）原卷与订正",
+        "page": "1",
+        "question": "概念·填空一（3）",
+        "kind": "original"
+      },
+      "status": "ready",
+      "options": [
+        "＞",
+        "＜",
+        "＝"
+      ],
+      "recordType": "confirmed-error"
+    },
+    {
+      "id": "K-M-1322",
+      "title": "判断：0.815×0.27的积一定是五位小数",
+      "category": "数位与验算",
+      "priority": "important",
+      "prompt": "判断：0.815×0.27的积一定是五位小数。",
+      "kind": "choice",
+      "answers": [
+        "正确"
+      ],
+      "unit": "",
+      "hint": "先确定题目所求的量和最终单位。",
+      "explanation": "√；0.815×0.27＝0.22005，恰有五位小数。",
+      "steps": [
+        "√",
+        "0.815×0.27＝0.22005，恰有五位小数"
+      ],
+      "source": {
+        "date": "2026-10-19",
+        "label": "第一次单元（概念与应用）原卷与订正",
+        "page": "1",
+        "question": "概念·判断二（1）",
+        "kind": "original"
+      },
+      "status": "ready",
+      "options": [
+        "正确",
+        "错误"
+      ],
+      "recordType": "confirmed-error"
+    },
+    {
+      "id": "K-M-1323",
+      "title": "7.8米编6个大结；10.2米编15个小结，每个相差多少米？",
+      "category": "数量关系",
+      "priority": "important",
+      "prompt": "7.8米编6个大结；10.2米编15个小结，每个相差多少米？",
+      "kind": "number",
+      "answers": [
+        "0.62"
+      ],
+      "unit": "",
+      "hint": "先确定题目所求的量和最终单位。",
+      "explanation": "7.8÷6−10.2÷15＝1.3−0.68＝0.62米。",
+      "steps": [
+        "7.8÷6−10.2÷15＝1.3−0.68＝0.62米"
+      ],
+      "source": {
+        "date": "2026-10-19",
+        "label": "第一次单元（概念与应用）原卷与订正",
+        "page": "2",
+        "question": "应用（3）中国结",
+        "kind": "original"
+      },
+      "status": "ready",
+      "recordType": "confirmed-error"
+    },
+    {
+      "id": "K-M-1324",
+      "title": "一个长方形的宽是1.05米，长是宽的3倍",
+      "category": "图形与单位",
+      "priority": "important",
+      "prompt": "一个长方形的宽是1.05米，长是宽的3倍。面积是多少平方分米？",
+      "kind": "number",
+      "answers": [
+        "330.75"
+      ],
+      "unit": "",
+      "hint": "先确定题目所求的量和最终单位。",
+      "explanation": "长为1.05×3＝3.15米；面积为1.05×3.15＝3.3075平方米＝330.75平方分米。",
+      "steps": [
+        "长为1.05×3＝3.15米",
+        "面积为1.05×3.15＝3.3075平方米＝330.75平方分米"
+      ],
+      "source": {
+        "date": "2026-10-19",
+        "label": "第一次单元（概念与应用）原卷与订正 · 按原记录整理",
+        "page": "2",
+        "question": "应用（4）长方形面积",
+        "kind": "reconstructed"
+      },
+      "status": "ready",
+      "recordType": "confirmed-error"
+    },
+    {
+      "id": "K-M-1325",
+      "title": "用周长5.16米的铁丝围成正方形，面积是多少平方分米？",
+      "category": "图形与单位",
+      "priority": "important",
+      "prompt": "用周长5.16米的铁丝围成正方形，面积是多少平方分米？",
+      "kind": "number",
+      "answers": [
+        "166.41"
+      ],
+      "unit": "",
+      "hint": "先确定题目所求的量和最终单位。",
+      "explanation": "正方形的4条边相等，边长为5.16÷4＝1.29米。 面积为1.29×1.29＝1.6641平方米。 1平方米＝100平方分米，所以面积为1.6641×100＝166.41平方分米。",
+      "steps": [
+        "正方形的4条边相等，边长为5.16÷4＝1.29米。",
+        "面积为1.29×1.29＝1.6641平方米。",
+        "1平方米＝100平方分米，所以面积为1.6641×100＝166.41平方分米。"
+      ],
+      "source": {
+        "date": "2026-10-19",
+        "label": "第一次单元（概念与应用）原卷与订正",
+        "page": "3",
+        "question": "应用（5）铁丝围正方形",
+        "kind": "original"
+      },
+      "status": "ready",
+      "recordType": "confirmed-error"
+    },
+    {
+      "id": "K-M-1326",
+      "title": "从方格图读出乘法算式",
+      "category": "图形与单位",
+      "priority": "normal",
+      "prompt": "根据方格图，在纸上写出乘法算式，再填写乘积。每段从0到1的长度表示1个单位。",
+      "kind": "number",
+      "answers": [
+        "7.48"
+      ],
+      "unit": "",
+      "hint": "分别读出横向和纵向有多少个完整单位、多少个十分之一。",
+      "explanation": "横向长度3.4，纵向长度2.2；算式为3.4×2.2＝7.48。",
+      "steps": [
+        "横向长度3.4，纵向长度2.2",
+        "算式为3.4×2.2＝7.48"
+      ],
+      "source": {
+        "date": "2026-10-19",
+        "label": "第一次单元（概念与应用）原卷与订正 · 按原记录整理",
+        "page": "3",
+        "question": "4.根据图写算式",
+        "kind": "reconstructed"
+      },
+      "status": "ready",
+      "image": "../assets/math-mistakes/kenton-grid-area.svg",
+      "recordType": "confirmed-error"
+    },
+    {
+      "id": "K-M-0-数学p29-32_1018-14",
+      "title": "制作条形图并标出平均人数",
+      "category": "平均数与统计",
+      "priority": "normal",
+      "prompt": "篮球8人、乒乓球4人、美术7人、合唱10人、电脑6人。在纸上制作条形统计图，并用水平虚线标出平均人数。完成后打开参考图逐项核对。",
+      "kind": "manual",
+      "answers": [
+        "各直条高度依次为8、4、7、10、6人，平均人数7人；各组直条独立，平均人数以水平线标示。"
+      ],
+      "unit": "",
+      "hint": "每组用一根独立的直条表示人数。平均数＝总人数÷组数。",
+      "explanation": "总人数8＋4＋7＋10＋6＝35人，共5组，平均35÷5＝7人。分别画出高度8、4、7、10、6的直条，并在7人的位置画水平虚线。",
+      "steps": [
+        "总人数8＋4＋7＋10＋6＝35人，共5组，平均35÷5＝7人",
+        "分别画出高度8、4、7、10、6的直条，并在7人的位置画水平虚线"
+      ],
+      "source": {
+        "date": "2026-10-18",
+        "label": "数学练习第29—32页 · 按原记录整理",
+        "page": "30",
+        "question": "3(3)②",
+        "kind": "reconstructed"
+      },
+      "status": "ready",
+      "image": "../assets/math-mistakes/kenton-bar-grid.svg",
+      "referenceImage": "../assets/math-mistakes/kenton-bar-reference.svg",
+      "expectedChecks": [
+        "五组名称与顺序对应：篮球、乒乓球、美术、合唱、电脑。",
+        "纵轴单位为人，各刻度间隔相等。",
+        "五根独立直条的高度依次为8、4、7、10、6，不连接各直条顶点。",
+        "平均人数计算为35÷5＝7人，并在7人处画水平虚线。"
+      ],
+      "recordType": "process-gap"
+    },
+    {
+      "id": "K-M-0-数学p29-32_1018-23",
+      "title": "6名裁判评分9.1、9.3、8.8、9.8、9.9、9.5分",
+      "category": "平均数与统计",
+      "priority": "important",
+      "prompt": "6名裁判评分9.1、9.3、8.8、9.8、9.9、9.5分。去掉一个最高分和一个最低分，剩余平均分是多少？",
+      "kind": "number",
+      "answers": [
+        "9.425"
+      ],
+      "unit": "",
+      "hint": "剩下4个分数，平均分应落在9.1和9.8之间。",
+      "explanation": "(9.1＋9.3＋9.8＋9.5)÷4＝37.7÷4＝9.425。",
+      "steps": [
+        "(9.1＋9.3＋9.8＋9.5)÷4＝37.7÷4＝9.425"
+      ],
+      "source": {
+        "date": "2026-10-18",
+        "label": "数学练习第29—32页",
+        "page": "",
+        "question": "p32-4(1)④",
+        "kind": "original"
+      },
+      "status": "ready",
+      "recordType": "confirmed-error"
+    },
+    {
+      "id": "K-M-1379",
+      "title": "0.63÷0.3",
+      "category": "数位与验算",
+      "priority": "normal",
+      "prompt": "0.63÷0.3",
+      "kind": "number",
+      "answers": [
+        "2.1"
+      ],
+      "unit": "",
+      "hint": "先圈清所求量、精度和保留位数。",
+      "explanation": "被除数和除数同时乘10，得6.3÷3＝2.1。",
+      "steps": [
+        "被除数和除数同时乘10，得6.3÷3＝2.1"
+      ],
+      "source": {
+        "date": "2026-10-21",
+        "label": "五年级数学周练卷（5）",
+        "page": "1",
+        "question": "一·直接写得数 第2行第3题",
+        "kind": "original"
+      },
+      "status": "ready",
+      "recordType": "confirmed-error"
+    },
+    {
+      "id": "K-M-1380",
+      "title": "用竖式计算并核对每行步骤：350×0.087",
+      "category": "数位与验算",
+      "priority": "normal",
+      "prompt": "用竖式计算并核对每行步骤：350×0.087。",
+      "kind": "number",
+      "answers": [
+        "30.45"
+      ],
+      "unit": "",
+      "hint": "先圈清所求量、精度和保留位数。",
+      "explanation": "先按整数列竖式：350×7＝2450，350×80＝28000；第二行对应十位上的8。 部分积相加：2450＋28000＝30450。 0.087有3位小数，所以乘积为30.450＝30.45；竖式和横式的小数点都要写全。",
+      "steps": [
+        "先按整数列竖式：350×7＝2450，350×80＝28000；第二行对应十位上的8。",
+        "部分积相加：2450＋28000＝30450。",
+        "0.087有3位小数，所以乘积为30.450＝30.45；竖式和横式的小数点都要写全。"
+      ],
+      "source": {
+        "date": "2026-10-21",
+        "label": "五年级数学周练卷（5） · 按原记录整理",
+        "page": "1",
+        "question": "二·竖式计算（1）",
+        "kind": "reconstructed"
+      },
+      "status": "ready",
+      "recordType": "process-gap"
+    },
+    {
+      "id": "K-M-1381",
+      "title": "用竖式计算并核对每行步骤：43.5÷0.29",
+      "category": "数位与验算",
+      "priority": "normal",
+      "prompt": "用竖式计算并核对每行步骤：43.5÷0.29。",
+      "kind": "number",
+      "answers": [
+        "150"
+      ],
+      "unit": "",
+      "hint": "先圈清所求量、精度和保留位数。",
+      "explanation": "被除数和除数同时乘100：43.5÷0.29＝4350÷29。 竖式先算43÷29，商1、减29、余14；落下5成为145。 145÷29＝5，减145余0；再落下最后的0，商的个位写0，所以商是150。 验算：150×0.29＝43.5。",
+      "steps": [
+        "被除数和除数同时乘100：43.5÷0.29＝4350÷29。",
+        "竖式先算43÷29，商1、减29、余14；落下5成为145。",
+        "145÷29＝5，减145余0；再落下最后的0，商的个位写0，所以商是150。",
+        "验算：150×0.29＝43.5。"
+      ],
+      "source": {
+        "date": "2026-10-21",
+        "label": "五年级数学周练卷（5） · 按原记录整理",
+        "page": "1",
+        "question": "二·竖式计算（2）",
+        "kind": "reconstructed"
+      },
+      "status": "ready",
+      "recordType": "process-gap"
+    },
+    {
+      "id": "K-M-1382",
+      "title": "7.6÷12（商保留2位小数）",
+      "category": "近似数",
+      "priority": "important",
+      "prompt": "7.6÷12（商保留2位小数）",
+      "kind": "number",
+      "answers": [
+        "0.63"
+      ],
+      "unit": "",
+      "hint": "先圈清所求量、精度和保留位数。",
+      "explanation": "7.6÷12＝0.6333…；千分位3舍去，保留两位得0.63。",
+      "steps": [
+        "7.6÷12＝0.6333…",
+        "千分位3舍去，保留两位得0.63"
+      ],
+      "source": {
+        "date": "2026-10-21",
+        "label": "五年级数学周练卷（5）",
+        "page": "1",
+        "question": "二·竖式计算（3）",
+        "kind": "original"
+      },
+      "status": "ready",
+      "recordType": "confirmed-error",
+      "requiredDecimals": 2
+    },
+    {
+      "id": "K-M-1383",
+      "title": "38×0.75+75×0.62",
+      "category": "运算规律",
+      "priority": "important",
+      "prompt": "38×0.75+75×0.62",
+      "kind": "number",
+      "answers": [
+        "75"
+      ],
+      "unit": "",
+      "hint": "先圈清所求量、精度和保留位数。",
+      "explanation": "0.38×75+75×0.62=(0.38+0.62)×75=75",
+      "steps": [
+        "0.38×75+75×0.62=(0.38+0.62)×75=75"
+      ],
+      "source": {
+        "date": "2026-10-21",
+        "label": "五年级数学周练卷（5）",
+        "page": "1",
+        "question": "三·递等式计算 第2行右题",
+        "kind": "original"
+      },
+      "status": "ready",
+      "recordType": "confirmed-error"
+    },
+    {
+      "id": "K-M-1384",
+      "title": "5次成绩是95、90、93、95、97分",
+      "category": "平均数与统计",
+      "priority": "important",
+      "prompt": "5次成绩是95、90、93、95、97分。再投最后一次，要使6次平均分达到95分，最后一次需要多少分？",
+      "kind": "number",
+      "answers": [
+        "100"
+      ],
+      "unit": "",
+      "hint": "先圈清所求量、精度和保留位数。",
+      "explanation": "前5次总分为95＋90＋93＋95＋97＝470分。 6次平均95分，需要总分95×6＝570分。 最后一次需要570－470＝100分。",
+      "steps": [
+        "前5次总分为95＋90＋93＋95＋97＝470分。",
+        "6次平均95分，需要总分95×6＝570分。",
+        "最后一次需要570－470＝100分。"
+      ],
+      "source": {
+        "date": "2026-10-21",
+        "label": "五年级数学周练卷（5） · 按原记录整理",
+        "page": "2",
+        "question": "五·填空（3）第二空",
+        "kind": "reconstructed"
+      },
+      "status": "ready",
+      "recordType": "confirmed-error"
+    },
+    {
+      "id": "K-M-1385",
+      "title": "4升蜂蜜，每瓶装满0.24升，可以装满几瓶？",
+      "category": "数量关系",
+      "priority": "important",
+      "prompt": "4升蜂蜜，每瓶装满0.24升，可以装满几瓶？",
+      "kind": "number",
+      "answers": [
+        "16"
+      ],
+      "unit": "",
+      "hint": "先圈清所求量、精度和保留位数。",
+      "explanation": "按每瓶0.24升计算，4÷0.24＝400÷24＝16.666…。 只能计装满的整瓶，因此取16瓶；用去16×0.24＝3.84升，还剩4－3.84＝0.16升。 剩余0.16升不够再装满一瓶，所以最多装满16瓶。",
+      "steps": [
+        "按每瓶0.24升计算，4÷0.24＝400÷24＝16.666…。",
+        "只能计装满的整瓶，因此取16瓶；用去16×0.24＝3.84升，还剩4－3.84＝0.16升。",
+        "剩余0.16升不够再装满一瓶，所以最多装满16瓶。"
+      ],
+      "source": {
+        "date": "2026-10-21",
+        "label": "五年级数学周练卷（5） · 按原记录整理",
+        "page": "3",
+        "question": "八·应用（1）",
+        "kind": "reconstructed"
+      },
+      "status": "ready",
+      "recordType": "confirmed-error"
+    },
+    {
+      "id": "K-M-1386",
+      "title": "一堆煤用去26吨，比剩下煤的2.5倍少1.5吨，原有多少吨？",
+      "category": "数位与验算",
+      "priority": "important",
+      "prompt": "一堆煤用去26吨，比剩下煤的2.5倍少1.5吨，原有多少吨？",
+      "kind": "number",
+      "answers": [
+        "37"
+      ],
+      "unit": "",
+      "hint": "先圈清所求量、精度和保留位数。",
+      "explanation": "剩下(26+1.5)÷2.5=11吨；原有26+11=37吨",
+      "steps": [
+        "剩下(26+1.5)÷2.5=11吨",
+        "原有26+11=37吨"
+      ],
+      "source": {
+        "date": "2026-10-21",
+        "label": "五年级数学周练卷（5）",
+        "page": "4",
+        "question": "八·应用（3）",
+        "kind": "original"
+      },
+      "status": "ready",
+      "recordType": "confirmed-error"
+    },
+    {
+      "id": "K-M-1387",
+      "title": "5千克海水可提炼110克盐",
+      "category": "图形与单位",
+      "priority": "normal",
+      "prompt": "5千克海水可提炼110克盐。每千克海水可提炼多少克盐？",
+      "kind": "number",
+      "answers": [
+        "22"
+      ],
+      "unit": "",
+      "hint": "先圈清所求量、精度和保留位数。",
+      "explanation": "110÷5＝22，因此每千克海水可提炼22克盐。",
+      "steps": [
+        "110÷5＝22，因此每千克海水可提炼22克盐"
+      ],
+      "source": {
+        "date": "2026-10-21",
+        "label": "五年级数学周练卷（5） · 按原记录整理",
+        "page": "4",
+        "question": "八·应用（4）首步单位",
+        "kind": "reconstructed"
+      },
+      "status": "ready",
+      "recordType": "process-gap"
+    },
+    {
+      "id": "K-M-1390",
+      "title": "78.5÷3.9（保留三位小数）",
+      "category": "近似数",
+      "priority": "normal",
+      "prompt": "78.5÷3.9（保留三位小数）",
+      "kind": "number",
+      "answers": [
+        "20.128"
+      ],
+      "unit": "",
+      "hint": "先圈清所求量、精度和保留位数。",
+      "explanation": "78.5÷3.9＝20.128205…；万分位2舍去，保留三位得20.128。",
+      "steps": [
+        "78.5÷3.9＝20.128205…",
+        "万分位2舍去，保留三位得20.128"
+      ],
+      "source": {
+        "date": "2026-10-21",
+        "label": "商的近似数",
+        "page": "",
+        "question": "p30 举一反三 1(2)",
+        "kind": "original"
+      },
+      "status": "ready",
+      "recordType": "important-review",
+      "requiredDecimals": 3
+    },
+    {
+      "id": "K-M-1391",
+      "title": "袋鼠每小时58.8千米、企鹅每小时3.6千米，速度是几倍（四舍五",
+      "category": "近似数",
+      "priority": "important",
+      "prompt": "袋鼠每小时58.8千米、企鹅每小时3.6千米，速度是几倍（四舍五入精确到个位）？",
+      "kind": "number",
+      "answers": [
+        "16"
+      ],
+      "unit": "",
+      "hint": "先圈清所求量、精度和保留位数。",
+      "explanation": "求速度倍数，用袋鼠的速度除以企鹅的速度：58.8÷3.6＝588÷36＝16.333…。 四舍五入到个位，看十分位3，小于5，得到约16倍。 倍数表示两个速度的比较关系，不带千米等计量单位。",
+      "steps": [
+        "求速度倍数，用袋鼠的速度除以企鹅的速度：58.8÷3.6＝588÷36＝16.333…。",
+        "四舍五入到个位，看十分位3，小于5，得到约16倍。",
+        "倍数表示两个速度的比较关系，不带千米等计量单位。"
+      ],
+      "source": {
+        "date": "2026-10-21",
+        "label": "商的近似数",
+        "page": "",
+        "question": "p30 举一反三 2",
+        "kind": "original"
+      },
+      "status": "ready",
+      "recordType": "confirmed-error"
+    },
+    {
+      "id": "K-M-1392",
+      "title": "15.98÷1.6（保留一位小数）",
+      "category": "近似数",
+      "priority": "important",
+      "prompt": "15.98÷1.6（保留一位小数）",
+      "kind": "number",
+      "answers": [
+        "10.0"
+      ],
+      "unit": "",
+      "hint": "先圈清所求量、精度和保留位数。",
+      "explanation": "15.98÷1.6＝9.9875；百分位8使十分位进1，连续进位后写10.0，表示保留一位小数。",
+      "steps": [
+        "15.98÷1.6＝9.9875",
+        "百分位8使十分位进1，连续进位后写10.0，表示保留一位小数"
+      ],
+      "source": {
+        "date": "2026-10-21",
+        "label": "商的近似数",
+        "page": "",
+        "question": "p31 举一反三 3 左",
+        "kind": "original"
+      },
+      "status": "ready",
+      "recordType": "process-gap",
+      "requiredDecimals": 1
+    },
+    {
+      "id": "K-M-1394",
+      "title": "a÷1.5＝b",
+      "category": "近似数",
+      "priority": "important",
+      "prompt": "a÷1.5＝b。b是两位小数，保留一位小数是3.0。a最小是多少？",
+      "kind": "number",
+      "answers": [
+        "4.425"
+      ],
+      "unit": "",
+      "hint": "先圈清所求量、精度和保留位数。",
+      "explanation": "保留一位小数为3.0的两位小数中，最小为2.95；a＝b×1.5，所以a最小为2.95×1.5＝4.425。",
+      "steps": [
+        "保留一位小数为3.0的两位小数中，最小为2.95",
+        "a＝b×1.5，所以a最小为2.95×1.5＝4.425"
+      ],
+      "source": {
+        "date": "2026-10-21",
+        "label": "商的近似数 · 按原记录整理",
+        "page": "",
+        "question": "末张举一反三 1（页码未拍）",
+        "kind": "reconstructed"
+      },
+      "status": "ready",
+      "recordType": "confirmed-error"
+    },
+    {
+      "id": "K-M-1395",
+      "title": "x×1.2=y；y是三位小数，保留两位是3.14，求x最大、最小",
+      "category": "数量关系",
+      "priority": "important",
+      "prompt": "x×1.2=y；y是三位小数，保留两位是3.14，求x最大、最小（保留四位），按最大、最小顺序填写，用逗号隔开，均保留四位小数。",
+      "kind": "text",
+      "answers": [
+        "2.6200,2.6125",
+        "2.6200，2.6125"
+      ],
+      "unit": "",
+      "hint": "先圈清所求量、精度和保留位数。",
+      "explanation": "y最大3.144、最小3.135；x最大3.144÷1.2=2.6200，最小3.135÷1.2=2.6125",
+      "steps": [
+        "y最大3.144、最小3.135",
+        "x最大3.144÷1.2=2.6200，最小3.135÷1.2=2.6125"
+      ],
+      "source": {
+        "date": "2026-10-21",
+        "label": "商的近似数",
+        "page": "",
+        "question": "末张举一反三 2（页码未拍）",
+        "kind": "original"
+      },
+      "status": "ready",
+      "recordType": "confirmed-error",
+      "perAnswerDecimals": [
+        4,
+        4
+      ]
+    },
+    {
+      "id": "K-M-1404-q9",
+      "title": "计算14.96÷15，保留三位小数",
+      "category": "数位与验算",
+      "priority": "important",
+      "prompt": "计算14.96÷15，保留三位小数。请写出竖式，重点核对110÷15这一步。",
+      "kind": "number",
+      "answers": [
+        "0.997"
+      ],
+      "unit": "",
+      "hint": "每次相减后，余数必须小于除数。",
+      "explanation": "14小于15，商的整数部分写0，并在商中点上小数点；落下9，149÷15商9、余14。 落下6，146÷15商9、余11；继续添0，110÷15商7、减105、余5。 再添0，50÷15商3、余5，所以商为0.997333…。 保留三位小数看第4位3，舍去，得到0.997；每一步相减后的余数都应小于15。",
+      "steps": [
+        "14小于15，商的整数部分写0，并在商中点上小数点；落下9，149÷15商9、余14。",
+        "落下6，146÷15商9、余11；继续添0，110÷15商7、减105、余5。",
+        "再添0，50÷15商3、余5，所以商为0.997333…。",
+        "保留三位小数看第4位3，舍去，得到0.997；每一步相减后的余数都应小于15。"
+      ],
+      "source": {
+        "date": "2026-10-21",
+        "label": "小数除法·商的近似数",
+        "page": "",
+        "question": "q9",
+        "kind": "original"
+      },
+      "status": "ready",
+      "recordType": "process-gap",
+      "requiredDecimals": 3
+    }
+  ],
+  "coverage": {
+    "periodStart": "2026-09-01",
+    "asOf": "2026-10-24",
+    "totalItems": 132,
+    "ready": 130,
+    "needsSource": 2,
+    "scope": "2026年秋季学期已收录数学题，经分类、去重和原件复核；包含确认错题、过程复查与重要复验。",
+    "dateMeaning": "来源日期为收录或已确认学习日期；未核实的原作答日期不推测。",
+    "confirmedAndReviewSeparated": true,
+    "categories": {
+      "小数计算": 24,
+      "图形与单位": 12,
+      "运算规律": 22,
+      "数量关系": 24,
+      "枚举与条件": 7,
+      "数位与验算": 21,
+      "近似数": 19,
+      "平均数与统计": 3
+    },
+    "recordTypes": {
+      "confirmed-error": 103,
+      "important-review": 12,
+      "process-gap": 15,
+      "pending-review": 2
+    },
+    "excludedCorrectOrUnsupported": 7
+  }
+}

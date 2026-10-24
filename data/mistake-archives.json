@@ -1,8 +1,27 @@
 {
   "schemaVersion": 2,
-  "updatedAt": "2026-09-15",
+  "updatedAt": "2026-10-24",
   "privacy": "Public-safe mistake and review records. No original screenshots, real names, school data, credentials, or private answer sheets.",
   "kenton": [
+    {
+      "id": "kenton-math-mistakes-20261024",
+      "title": "哥哥 · 数学错题本",
+      "subject": "数学",
+      "topic": "本学期数学分类复练",
+      "added": "2026-10-24",
+      "source": "已核对的匿名化数学题目与方法",
+      "status": "review",
+      "statusLabel": "分类复练",
+      "needReview": true,
+      "originKind": "math-bank",
+      "summary": "选择重要题或某一类题，直接作答；保留订正和复查进度。",
+      "reviewSteps": [
+        "先独立做一道题。",
+        "需要帮助时看方法，再回到原题。",
+        "完成后回看订正记录，隔天再独立复查。"
+      ],
+      "file": "apps/kenton_math_mistakes_20261024.html"
+    },
     {
       "id": "kenton-english-answer-builder-20260915",
       "title": "读懂，也能写出来",
@@ -63,6 +82,25 @@
   ],
   "eddey": [
     {
+      "id": "eddey-math-mistakes-20261024",
+      "title": "弟弟 · 数学错题本",
+      "subject": "数学",
+      "topic": "本学期数学分类复练",
+      "added": "2026-10-24",
+      "source": "已核对的匿名化数学题目与方法",
+      "status": "review",
+      "statusLabel": "分类复练",
+      "needReview": true,
+      "originKind": "math-bank",
+      "summary": "选择重要题或某一类题，直接作答；保留订正和复查进度。",
+      "reviewSteps": [
+        "先独立做一道题。",
+        "需要帮助时看方法，再回到原题。",
+        "完成后回看订正记录，隔天再独立复查。"
+      ],
+      "file": "apps/eddey_math_mistakes_20261024.html"
+    },
+    {
       "id": "eddey-cpp-a457-max1-min1-2026-07-30",
       "title": "A457：max1 / min1 与最大最小值初始化",
       "subject": "编程",
@@ -111,10 +149,34 @@
       "statusLabel": "待回炉",
       "needReview": true,
       "summary": "能识别基础线索词，但还不能稳定根据 every summer、yesterday、last…、…ago 区分一般现在时与一般过去时。",
-      "reviewSteps": ["先圈出时间线索。","判断事情是经常发生还是已经结束。","最后决定用一般现在时或动词过去式。","完成两道不同情境迁移后再判断是否解决。"],
+      "reviewSteps": [
+        "先圈出时间线索。",
+        "判断事情是经常发生还是已经结束。",
+        "最后决定用一般现在时或动词过去式。",
+        "完成两道不同情境迁移后再判断是否解决。"
+      ],
       "file": "apps/eddey_past_tense_lab_20260806.html",
       "recordFile": "learning-records/eddey/english/past-tense-2026-08-06.md",
-      "neon": {"client_event_id":"study-portal:knowledge-gap:eddey:english:past-tense-clue:2026-08-06","ts":"2026-08-06T08:14:00.000Z","kid":"eddey","subject":"英语","activity":"knowledge_gap","topic":"一般过去时：时态区分","item":"根据时间线索区分一般现在时与一般过去时","ok":false,"hint":"先圈 every summer / yesterday / last… / …ago，再判断事情是否已经结束。","source":"wendy/teacher-feedback/2026-08-06","payload":{"status":"not_mastered","need_review":true,"gap_id":"past-tense-clue","app_id":"eddey-past-tense-lab-20260806","record_file":"learning-records/eddey/english/past-tense-2026-08-06.md","evidence_type":"teacher_feedback"}}
+      "neon": {
+        "client_event_id": "study-portal:knowledge-gap:eddey:english:past-tense-clue:2026-08-06",
+        "ts": "2026-08-06T08:14:00.000Z",
+        "kid": "eddey",
+        "subject": "英语",
+        "activity": "knowledge_gap",
+        "topic": "一般过去时：时态区分",
+        "item": "根据时间线索区分一般现在时与一般过去时",
+        "ok": false,
+        "hint": "先圈 every summer / yesterday / last… / …ago，再判断事情是否已经结束。",
+        "source": "wendy/teacher-feedback/2026-08-06",
+        "payload": {
+          "status": "not_mastered",
+          "need_review": true,
+          "gap_id": "past-tense-clue",
+          "app_id": "eddey-past-tense-lab-20260806",
+          "record_file": "learning-records/eddey/english/past-tense-2026-08-06.md",
+          "evidence_type": "teacher_feedback"
+        }
+      }
     },
     {
       "id": "eddey-english-past-tense-verb-change-2026-08-06",
@@ -127,10 +189,34 @@
       "statusLabel": "待回炉",
       "needReview": true,
       "summary": "已经学过 +ed、+d、辅音加 y 变 ied，但规则还不稳定；take→took 等常见不规则变化仍需单独巩固。",
-      "reviewSteps": ["先分清普通词、末尾有 e、辅音加 y 和不规则四类。","让动词穿过变形机器并听原形—过去式。","遮住答案独立说出变化。","完成两道不同动词迁移后再判断是否解决。"],
+      "reviewSteps": [
+        "先分清普通词、末尾有 e、辅音加 y 和不规则四类。",
+        "让动词穿过变形机器并听原形—过去式。",
+        "遮住答案独立说出变化。",
+        "完成两道不同动词迁移后再判断是否解决。"
+      ],
       "file": "apps/eddey_past_tense_lab_20260806.html",
       "recordFile": "learning-records/eddey/english/past-tense-2026-08-06.md",
-      "neon": {"client_event_id":"study-portal:knowledge-gap:eddey:english:past-tense-verb-change:2026-08-06","ts":"2026-08-06T08:14:01.000Z","kid":"eddey","subject":"英语","activity":"knowledge_gap","topic":"一般过去时：动词变化","item":"规则过去式与常见不规则过去式变化","ok":false,"hint":"visit→visited，like→liked，study→studied；take→took 需要单独记。","source":"wendy/teacher-feedback/2026-08-06","payload":{"status":"not_mastered","need_review":true,"gap_id":"past-tense-verb-change","app_id":"eddey-past-tense-lab-20260806","record_file":"learning-records/eddey/english/past-tense-2026-08-06.md","evidence_type":"teacher_feedback"}}
+      "neon": {
+        "client_event_id": "study-portal:knowledge-gap:eddey:english:past-tense-verb-change:2026-08-06",
+        "ts": "2026-08-06T08:14:01.000Z",
+        "kid": "eddey",
+        "subject": "英语",
+        "activity": "knowledge_gap",
+        "topic": "一般过去时：动词变化",
+        "item": "规则过去式与常见不规则过去式变化",
+        "ok": false,
+        "hint": "visit→visited，like→liked，study→studied；take→took 需要单独记。",
+        "source": "wendy/teacher-feedback/2026-08-06",
+        "payload": {
+          "status": "not_mastered",
+          "need_review": true,
+          "gap_id": "past-tense-verb-change",
+          "app_id": "eddey-past-tense-lab-20260806",
+          "record_file": "learning-records/eddey/english/past-tense-2026-08-06.md",
+          "evidence_type": "teacher_feedback"
+        }
+      }
     },
     {
       "id": "eddey-english-past-tense-did-transform-2026-08-06",
@@ -143,10 +229,34 @@
       "statusLabel": "待回炉",
       "needReview": true,
       "summary": "肯定句、否定句和一般疑问句互换仍不稳定；最关键缺口是 Did / didn't 出现后，后面的动词必须还原。",
-      "reviewSteps": ["先让 Did / didn't 承担过去标志。","把后面的动词从 took / visited 还原为 take / visit。","回到刚才原题重新完成转换。","连续完成否定句和疑问句两种变式后再判断是否解决。"],
+      "reviewSteps": [
+        "先让 Did / didn't 承担过去标志。",
+        "把后面的动词从 took / visited 还原为 take / visit。",
+        "回到刚才原题重新完成转换。",
+        "连续完成否定句和疑问句两种变式后再判断是否解决。"
+      ],
       "file": "apps/eddey_past_tense_lab_20260806.html",
       "recordFile": "learning-records/eddey/english/past-tense-2026-08-06.md",
-      "neon": {"client_event_id":"study-portal:knowledge-gap:eddey:english:past-tense-did-transform:2026-08-06","ts":"2026-08-06T08:14:02.000Z","kid":"eddey","subject":"英语","activity":"knowledge_gap","topic":"一般过去时：Did/didn't句型转换","item":"把过去时肯定句转换为否定句和 Did 一般疑问句","ok":false,"hint":"Did / didn't 已经表示过去，后面的动词必须使用原形。","source":"wendy/teacher-feedback/2026-08-06","payload":{"status":"not_mastered","need_review":true,"gap_id":"past-tense-did-transform","app_id":"eddey-past-tense-lab-20260806","record_file":"learning-records/eddey/english/past-tense-2026-08-06.md","evidence_type":"teacher_feedback"}}
+      "neon": {
+        "client_event_id": "study-portal:knowledge-gap:eddey:english:past-tense-did-transform:2026-08-06",
+        "ts": "2026-08-06T08:14:02.000Z",
+        "kid": "eddey",
+        "subject": "英语",
+        "activity": "knowledge_gap",
+        "topic": "一般过去时：Did/didn't句型转换",
+        "item": "把过去时肯定句转换为否定句和 Did 一般疑问句",
+        "ok": false,
+        "hint": "Did / didn't 已经表示过去，后面的动词必须使用原形。",
+        "source": "wendy/teacher-feedback/2026-08-06",
+        "payload": {
+          "status": "not_mastered",
+          "need_review": true,
+          "gap_id": "past-tense-did-transform",
+          "app_id": "eddey-past-tense-lab-20260806",
+          "record_file": "learning-records/eddey/english/past-tense-2026-08-06.md",
+          "evidence_type": "teacher_feedback"
+        }
+      }
     }
   ]
 }
