@@ -192,16 +192,26 @@ function renderManualCheck() {
   </div>`);
 }
 function next() { if (session.index + 1 >= session.ids.length) { renderResult(); return; } session.index++; renderQuestion(); }
+function reportText(rs) {
+  const list = rs.filter(x => x.r?.done); const ind = list.filter(x => x.r.result === 'independent').length, ast = list.filter(x => x.r.result === 'assisted').length, wr = list.filter(x => x.r.result === 'wrong').length;
+  const bad = list.filter(x => x.r.result !== 'independent').map(x => `${x.it.title || x.it.prompt}（${x.r.result === 'assisted' ? '订正对' : '没做对'}）`);
+  return `${CHILD[who].label}数学错题本 ${today()}${TEST ? '（测试）' : ''}\n${session.label}：做了 ${list.length} 题，独立 ${ind}，订正 ${ast}，错 ${wr}${bad.length ? '\n要再练：' + bad.join('；') : ''}`;
+}
+function report(rs) {
+  if (!window.V2Records) return;
+  const list = rs.filter(x => x.r?.done);
+  try { window.V2Records.enqueue({ app: 'math-mistakes', who, subject: 'math', mode: TEST ? 'test' : 'formal', roundId: session.id, label: session.label, total: list.length, items: list.map(x => ({ id: x.it.id, title: x.it.title || x.it.prompt.slice(0, 40), category: x.it.category, result: x.r.result, attempts: x.r.attempts, hinted: x.r.hinted, explained: x.r.explained, answer: String(x.r.answer || '').slice(0, 60) })), text: reportText(rs) }); } catch (e) { }
+}
 function renderResult() {
   const rs = session.ids.map(id => ({ it: byId.get(id), r: session.results[id] })); const ind = rs.filter(x => x.r?.result === 'independent').length, ast = rs.filter(x => x.r?.result === 'assisted').length, wr = rs.filter(x => x.r?.result === 'wrong').length;
   const done = rs.filter(x => x.r?.done).length;
-  if (done) { state.sessions.push({ id: session.id, at: session.startedAt, label: session.label, total: done, independent: ind, assisted: ast, wrong: wr }); save(); }
+  if (done && !session.recorded) { session.recorded = true; state.sessions.push({ id: session.id, at: session.startedAt, label: session.label, total: done, independent: ind, assisted: ast, wrong: wr }); save(); report(rs); }
   view('result', `${topbar('今天的结果', CHILD[who].label, { back: 'home' })}
   <div class="result"><h1>${wr === 0 && ast === 0 ? '全部自己做对了' : ind >= done * .7 ? '大部分自己做对了' : '今天挑出了要再练的题'}</h1>
     <div class="big-num"><div class="ok"><b class="num">${ind}</b><small>独立做对</small></div><div class="half"><b class="num">${ast}</b><small>订正对</small></div><div class="no"><b class="num">${wr}</b><small>没做对</small></div></div>
     <div class="result-list">${rs.filter(x => x.r?.done).map((x, i) => `<div class="rl"><b class="num">${i + 1}</b><span>${esc(x.it.title || x.it.prompt)}</span><span class="pill ${x.r.result === 'independent' ? 'good' : x.r.result === 'assisted' ? 'imp' : 'due'}">${x.r.result === 'independent' ? '独立' : x.r.result === 'assisted' ? '订正' : '再练'}</span></div>`).join('')}</div>
     <p>${ast + wr ? '订正对和没做对的题，明天会再排进"今天这 10 题"，不看提示做对两次才算过关。' : '独立做对的题，换一天再做对一次就过关。'}</p>
-    <div class="actions"><button class="btn primary big" data-act="home">回到首页</button></div>
+    <div class="actions"><button class="btn primary big" data-act="home">回到首页</button><button class="btn quiet" data-act="share">发给爸爸</button></div>
   </div>`);
 }
 
@@ -251,6 +261,7 @@ document.addEventListener('click', e => {
   if (act === 'manual-right') { finishItem('independent'); next(); return; }
   if (act === 'manual-wrong') { finishItem('wrong'); next(); return; }
   if (act === 'parent') { renderParent(); return; }
+  if (act === 'share') { if (session) window.V2Records?.share(`${CHILD[who].label}数学错题本结果`, reportText(session.ids.map(id => ({ it: byId.get(id), r: session.results[id] })))); return; }
   if (act === 'export-md') { exportMd(); return; }
   if (act === 'export-json') { download(`${who}-数学错题备份-${today()}.json`, JSON.stringify(state, null, 2), 'application/json'); return; }
   if (act === 'clear-all') { if (!confirm('清空这个孩子的全部错题记录？不能恢复。')) return; state = fresh(); save(); renderParent(); return; }

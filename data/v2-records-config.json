@@ -1,0 +1,5 @@
+{
+  "note": "v2 学习记录上报配置。endpoint 为空＝不上报，记录只留在孩子设备；填 https 地址后自动开始发送并补发排队记录。parentEmail 用于“一键发给爸爸”的邮件兜底。",
+  "endpoint": "",
+  "parentEmail": "eddeyyang@gmail.com"
+}

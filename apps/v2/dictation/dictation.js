@@ -181,7 +181,16 @@ function commitRound() {
   const at = new Date().toISOString(); const results = [];
   for (const id of round.ids) { const r = wordRec(id); const w = round.wrong.has(id); r.last = at; r.lastResult = w ? 'wrong' : (round.previewed ? 'right-after-preview' : 'right-independent'); if (w) { r.wrong++; r.streak = 0; r.needReview = true; } else { r.right++; r.streak++; if (r.streak >= 2) r.needReview = false; } results.push({ id, wrong: w }); }
   state.rounds.push({ id: round.id, at, kind: round.kind, previewed: round.previewed, pace: round.pace, seconds: Math.round(round.seconds), total: round.ids.length, wrong: [...round.wrong], lessons: round.kind === 'review' ? ['review'] : selectedLessons() });
-  save(); renderResult();
+  save(); report(); renderResult();
+}
+function reportText() {
+  const map = itemMap(); const wrong = [...round.wrong].map(id => map.get(id)?.text || id);
+  return `${CHILD[who].label}${isEn() ? '英语' : '语文'}听写 ${today()}${TEST ? '（测试）' : ''}\n范围：${round.kind === 'review' ? '错词再默' : selectedLessons().map(k => k.split('|')[1]).join('、')}\n${round.previewed ? '看后默写' : '直接默写'} ${round.ids.length} 个，用时 ${fmtClock(round.seconds)}，错 ${wrong.length} 个${wrong.length ? '：' + wrong.join('、') : ''}`;
+}
+function report() {
+  if (!window.V2Records) return;
+  const map = itemMap();
+  try { window.V2Records.enqueue({ app: 'dictation', who, subject, mode: TEST ? 'test' : 'formal', roundId: round.id, kind: round.kind, previewed: round.previewed, pace: round.pace, seconds: Math.round(round.seconds), total: round.ids.length, lessons: round.kind === 'review' ? ['review'] : selectedLessons(), wrong: [...round.wrong].map(id => ({ id, text: map.get(id)?.text || '' })), text: reportText() }); } catch (e) { }
 }
 function renderResult() {
   const map = itemMap(); const wrong = [...round.wrong].map(id => map.get(id)); const total = round.ids.length; const right = total - wrong.length;
@@ -189,7 +198,7 @@ function renderResult() {
   <div class="result"><h1>${wrong.length === 0 ? '全部写对了' : wrong.length <= 3 ? `还差 ${wrong.length} 个` : `有 ${wrong.length} 个要再练`}</h1>
     <div class="big-num"><div class="ok"><b class="num">${right}</b><small>写对</small></div><div class="no"><b class="num">${wrong.length}</b><small>写错</small></div><div><b class="num">${fmtClock(round.seconds)}</b><small>用时</small></div></div>
     ${wrong.length ? `<div class="wrong-list">${wrong.map(it => `<span>${esc(it.text)}</span>`).join('')}</div><p>先把这几个在本子上再写两遍，然后把它们再默一遍。连续两轮默对，才算过关。</p>` : `<p>${round.previewed ? '这一轮是看过一遍之后默的。下次可以关掉"先看一遍"，直接报读检验一次。' : '这是没看答案直接默对的，算数。'}</p>`}
-    <div class="actions">${wrong.length ? `<button class="btn primary big" data-act="redo-wrong">${icons.repeat}错词再默一遍</button>` : ''}<button class="btn quiet" data-act="home">回到选课页</button>${storageOK ? '' : '<p class="note bad">这台设备无法保存记录，本轮结果只在当前页面。</p>'}</div>
+    <div class="actions">${wrong.length ? `<button class="btn primary big" data-act="redo-wrong">${icons.repeat}错词再默一遍</button>` : ''}<button class="btn quiet" data-act="share">发给爸爸</button><button class="btn quiet" data-act="home">回到选课页</button>${storageOK ? '' : '<p class="note bad">这台设备无法保存记录，本轮结果只在当前页面。</p>'}</div>
   </div>`);
 }
 
@@ -245,6 +254,7 @@ document.addEventListener('click', e => {
   if (act === 'mark') { toggleMark(b.dataset.id); return; }
   if (act === 'done') { commitRound(); return; }
   if (act === 'redo-wrong') { startRound([...round.wrong], 'review'); return; }
+  if (act === 'share') { window.V2Records?.share(`${CHILD[who].label}${isEn() ? '英语' : '语文'}听写结果`, reportText()); return; }
   if (act === 'parent') { renderParent(); return; }
   if (act === 'export-md') { exportMd(); return; }
   if (act === 'export-json') { download(`${who}-${subject}-听写备份-${today()}.json`, JSON.stringify(state, null, 2), 'application/json'); return; }
