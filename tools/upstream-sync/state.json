@@ -1,7 +1,7 @@
 {
 "upstream": "https://study-portal-eta.vercel.app/",
 "initialized_from": "a00e05e",
-"last_sync": "2026-10-24",
+"last_sync": "2026-10-25",
 "files": {
 "apps.html": {
 "sha": "6e2adf9d152d2b8939866fc63b0a13fb18ae1e2ac94b3f47ecf97a7702521842",
@@ -11114,8 +11114,8 @@
 "upstream": true
 },
 "apps/eddey_math_mistakes_20261024.html": {
-"sha": "3092c00ef5a741211618266fdb42a80bf401724468b120f6a7e136d00b39147b",
-"etag": "\"4fbc064c11e5cfd03e4c987239e7c6f2\"",
+"sha": "2e96c31651871fafba4ca5cedcec779663e103a5850e1c9cf49703bef6c82bb3",
+"etag": "\"f6313a3f3cacca61f3b8e6c6a0befbe2\"",
 "upstream": true
 },
 "apps/eddey_math_redo.html": {
@@ -11439,8 +11439,8 @@
 "upstream": true
 },
 "apps/kenton_math_mistakes_20261024.html": {
-"sha": "2c32f8435f57f60b1c1c290cb9717e3a5af51257c612a563e43b1446797d7cde",
-"etag": "\"709b39d23d13f29bedf5a5868422505f\"",
+"sha": "1f103fc805baba4ed145cdaa0f381eb29d491b976681e0a42b2262c9d6a88929",
+"etag": "\"e387c356fa57121b75b8696dc7b76ee4\"",
 "upstream": true
 },
 "apps/kenton_math_sprint.html": {
@@ -11689,8 +11689,238 @@
 "upstream": true
 },
 "assets/math-mistake-bank.js": {
-"sha": "15417fab21cf32e0f3726f548e8ec92c8718f085c7bac766ac7e136d6208f0b7",
-"etag": "\"9368cdc2e438c0eadd8ec9d4a8aaee13\"",
+"sha": "35f077a675dd80a1b225165b00ced10642fa07d1e19f737cbe4d6d54abc43732",
+"etag": "\"a2551c6ea98d5426e6efa873164583ee\"",
+"upstream": true
+},
+"assets/math-mistakes/eddey-upgrade-all-factors.svg": {
+"sha": "acb7c7899dc4ee6ccc04abf01419515d6fd6d8d135a1d7ef665c555c04129e16",
+"etag": "\"51785ac8dda945a6feb3c85008b2340f\"",
+"upstream": true
+},
+"assets/math-mistakes/eddey-upgrade-animal-height.svg": {
+"sha": "725fa68562164d45429908411de0246dfc44c7a56d71c0968ca9243570d4daed",
+"etag": "\"3988ff883015e598f6b969af37502ad1\"",
+"upstream": true
+},
+"assets/math-mistakes/eddey-upgrade-buy-three-gift.svg": {
+"sha": "5de280d451047506784abff29ec57c0381c06627f4286ce31003fd6d7752fdf1",
+"etag": "\"914f33401aabc39d651606c4ebe70a39\"",
+"upstream": true
+},
+"assets/math-mistakes/eddey-upgrade-chain-49.svg": {
+"sha": "703892a8593975c21288cc99caaeaba86933152c441db1194d6d85f0b717945c",
+"etag": "\"b96f9acb0e10139d0cbc2b290ae0ae2a\"",
+"upstream": true
+},
+"assets/math-mistakes/eddey-upgrade-chain-512.svg": {
+"sha": "22667166664f4651da6a62e07d6952d360674c57af6a79349674611ea7643967",
+"etag": "\"087db4a1d5c9efdf79df91823a9b5653\"",
+"upstream": true
+},
+"assets/math-mistakes/eddey-upgrade-face-east.svg": {
+"sha": "7875559184d8ca62ebeb2639b1d346ada02e5c0aaecf4f71c10224e66d894643",
+"etag": "\"9c996831fb2b03290cdc4a4f63e1782c\"",
+"upstream": true
+},
+"assets/math-mistakes/eddey-upgrade-flow-70.svg": {
+"sha": "29541f1191839746021980d351feb1074339569beca61ee122f11f348d81c87a",
+"etag": "\"c84383b430d5e8e5c1095de301dc4893\"",
+"upstream": true
+},
+"assets/math-mistakes/eddey-upgrade-flow-forward.svg": {
+"sha": "ec0d790882356099bf703c7709ae3b401bb09537718dc45a44582430200e733b",
+"etag": "\"79bb651f15efa51c18a4d2782c6f26f3\"",
+"upstream": true
+},
+"assets/math-mistakes/eddey-upgrade-flow-inverse.svg": {
+"sha": "3d8ef3b40e7b9e416c2840ea93a9d9919d29c34a3ff2151968950851a056025a",
+"etag": "\"d3e41203c4fac62e562bace24a4bcc86\"",
+"upstream": true
+},
+"assets/math-mistakes/eddey-upgrade-fruit-boxes.svg": {
+"sha": "7988d0a44d240c9c1095a6c50a9fe8cea6597332c94d40266dae7e044d690457",
+"etag": "\"7912bbb4e1df6b67ab91d48ea873e46e\"",
+"upstream": true
+},
+"assets/math-mistakes/eddey-upgrade-homes-direction.svg": {
+"sha": "9e47100e7fc04b940ba2d420a481d31c6539bc6b5eb223f6a392cc633a9f5ee5",
+"etag": "\"ae784ffdb37b8f450d0586c2dc25e552\"",
+"upstream": true
+},
+"assets/math-mistakes/eddey-upgrade-money-parts.svg": {
+"sha": "535189c990a4229f1cb76552173fa39b9cf16a62555ecdd8c62ff1022e0b1046",
+"etag": "\"a82de19a62ab077ba7d01b0fadd73422\"",
+"upstream": true
+},
+"assets/math-mistakes/eddey-upgrade-monthly-output.svg": {
+"sha": "102bf91021db42361101fcdfcd6bf6e64f814e0b4efff497cc5c10f853e38412",
+"etag": "\"48b940f17ab67a9fb0f105b5f8012a1f\"",
+"upstream": true
+},
+"assets/math-mistakes/eddey-upgrade-nested-subtraction.svg": {
+"sha": "e5db6d62fd6ca4d19d3d49e71779795a0b96a60b402ce2904552ec2c87c0a276",
+"etag": "\"6baf8904be90e73a9d56a525b6d7ab7b\"",
+"upstream": true
+},
+"assets/math-mistakes/eddey-upgrade-people-table.svg": {
+"sha": "9e83e9f2a3e60c9e50515d8c352e111237e09f03a5f3de24a2c26a5ac9722455",
+"etag": "\"864fc938048a87379cf490d21dfc3d91\"",
+"upstream": true
+},
+"assets/math-mistakes/eddey-upgrade-place-boxes.svg": {
+"sha": "3ee75ccfd19aaf37e7f0532c4cf181a66dfe2e1859921afa1bbf9e278d085c13",
+"etag": "\"1dd58bb290c303b721d4300e25d808c4\"",
+"upstream": true
+},
+"assets/math-mistakes/eddey-upgrade-place-value.svg": {
+"sha": "ae382356546768b5d40ef252d530013b40380176a25ce1837eb348d3d9f7bd6e",
+"etag": "\"b9467e5a22bbb8bef2e533cafbbe1bf7\"",
+"upstream": true
+},
+"assets/math-mistakes/eddey-upgrade-product-gap.svg": {
+"sha": "460938072cf10613220624797ab76d7f792190d156ab4d7621d076ca05753a45",
+"etag": "\"b61f73389c2374539a3b1241a737d103\"",
+"upstream": true
+},
+"assets/math-mistakes/eddey-upgrade-rate-time-total.svg": {
+"sha": "beccc22243b04f082536e078dea12e392cf553cf75604d9a8ea6d5abd3a8e780",
+"etag": "\"a5ae477b503d583811baa88c315e6f95\"",
+"upstream": true
+},
+"assets/math-mistakes/eddey-upgrade-receipt-parts.svg": {
+"sha": "9680898971efd9da1a3650d3016d0db6ffe94f92e6c65216432dc20a423f3d6f",
+"etag": "\"d6953abdad6cdf09e777f1db5706081e\"",
+"upstream": true
+},
+"assets/math-mistakes/eddey-upgrade-return-trip.svg": {
+"sha": "fde225cfcd1ce7dfb110745ed3e574be90812ba4ccd7069e72e2f78be702b7ee",
+"etag": "\"086f226b97a8cb7a08232b11666153f0\"",
+"upstream": true
+},
+"assets/math-mistakes/eddey-upgrade-reverse-60.svg": {
+"sha": "65de9558885ed15494d7b8dd4ace053ba7d0aebc25577062f64fb271820dbfd5",
+"etag": "\"4c78468ba85182a57308afdb6fb7d7fd\"",
+"upstream": true
+},
+"assets/math-mistakes/eddey-upgrade-rice-reverse.svg": {
+"sha": "2892d6358e5767ddfb6f5de03613d53dd1461591f61f059e59025147cee24fbc",
+"etag": "\"ef4d34521015164ec10325e4528e1021\"",
+"upstream": true
+},
+"assets/math-mistakes/eddey-upgrade-road-difference.svg": {
+"sha": "b8635ca386be3be26f96ca1e27d574a9b27ffb67938d343692f699f0b26ca93b",
+"etag": "\"6f1c1c0e6b39dfd60e6670590ee06ba4\"",
+"upstream": true
+},
+"assets/math-mistakes/eddey-upgrade-rope-unit.svg": {
+"sha": "bcaf8e99e3beea5082bd586e6f62d7bfc701e032e80bca4eb360dd3d1697a0b0",
+"etag": "\"9aabc5d5b80fcbbe738a3803f91e790f\"",
+"upstream": true
+},
+"assets/math-mistakes/eddey-upgrade-shopping-price.svg": {
+"sha": "5584e7b042cdc50ec07507cd5a60a297d4d4607398af9cef1c3a4becbac97e07",
+"etag": "\"37f993d323654a15e594acc6f4ba83ff\"",
+"upstream": true
+},
+"assets/math-mistakes/eddey-upgrade-signed-groups.svg": {
+"sha": "255caf831406429f03312875d62bc1433187f697e4600ed5b21697c8ef114179",
+"etag": "\"6f6671c7f05613123de813b97b7bffc4\"",
+"upstream": true
+},
+"assets/math-mistakes/eddey-upgrade-split-1091.svg": {
+"sha": "c3f079d088d3b8a905220f51a0bfb3a404dd218ac52ac753c56496073514a8de",
+"etag": "\"f890aff40bf7e4adb72baa39964b8f61\"",
+"upstream": true
+},
+"assets/math-mistakes/eddey-upgrade-split-1110.svg": {
+"sha": "736946ba1766be5d4474a75527cc98ac88971e499970fa6fa5273409e2e2d206",
+"etag": "\"37d1281668f29fb87739319b24b98b4d\"",
+"upstream": true
+},
+"assets/math-mistakes/eddey-upgrade-split-1254.svg": {
+"sha": "08b99a87b566ea198ee023903a16600fde93861b399f843f487fd355f0358fac",
+"etag": "\"b6ffca5b9c6feb15537c1fad43520652\"",
+"upstream": true
+},
+"assets/math-mistakes/eddey-upgrade-split-1402.svg": {
+"sha": "475313438d77e15bcba2821b6f9c506e6470400ef877eb6b4e643e00761f7a3f",
+"etag": "\"704a354b3611ed5946589ce5321437f0\"",
+"upstream": true
+},
+"assets/math-mistakes/eddey-upgrade-split-990.svg": {
+"sha": "fb7019ea39597de4be847330564372b61818a23ab26be344b7d7dd473a8ff93d",
+"etag": "\"86c8ae453c129283d5500c212071adb7\"",
+"upstream": true
+},
+"assets/math-mistakes/eddey-upgrade-symbols-equal.svg": {
+"sha": "3fc58ed4bf185a93930a839aff30df98b2abfc4c559a9dec32875b5b3186f028",
+"etag": "\"6d5add347794e6094a4d019b09230d52\"",
+"upstream": true
+},
+"assets/math-mistakes/eddey-upgrade-toy-prices.svg": {
+"sha": "86291efe0e3d20765b1dc6ce03f159c0c38c6c33dfbb94d34842b95a82f960fa",
+"etag": "\"bb5d5cb94e9fe8391463128362ea7ee3\"",
+"upstream": true
+},
+"assets/math-mistakes/eddey-upgrade-train-distance.svg": {
+"sha": "a4c9981590e7e76feb9a21f98d58bee0ac3ef5ca8c6829dd3093689be6c190a6",
+"etag": "\"4233bf5ac9082e660b3ee6190de6a80f\"",
+"upstream": true
+},
+"assets/math-mistakes/eddey-upgrade-tree-164.svg": {
+"sha": "3d560c82f56c4732aae613a406b065e5b9d88dc6b4ee3301cc008e4535e8e419",
+"etag": "\"51f173dea19ad8b0cb381b87f390f639\"",
+"upstream": true
+},
+"assets/math-mistakes/eddey-upgrade-tree-500.svg": {
+"sha": "a24d00d08ecedd16eb4e387e8dcb2e8d87a8b4d3df18248f49eba28119c6487a",
+"etag": "\"7940280e015ce2a635b77231f539780b\"",
+"upstream": true
+},
+"assets/math-mistakes/eddey-upgrade-tree-540.svg": {
+"sha": "25273070b659aff0d68082306f8d625a2da6e1fcd35faa2caec3abdeeed9eedb",
+"etag": "\"a94fde17d13ef916e9665494344b4f7a\"",
+"upstream": true
+},
+"assets/math-mistakes/eddey-upgrade-unknown-509.svg": {
+"sha": "297a90b53b5c46e6fb2499461b24423629529b5838660d966cad37c48e44e401",
+"etag": "\"9e25df8afc53fd8df652a1c7c2bad24a\"",
+"upstream": true
+},
+"assets/math-mistakes/eddey-upgrade-unknown-divisor.svg": {
+"sha": "b897addad6ec25812cff46f36428b7f7864081f8a4ffdd48bc7a090d9b81351e",
+"etag": "\"b336f6e7134827e5792250b8ba909491\"",
+"upstream": true
+},
+"assets/math-mistakes/eddey-upgrade-unknown-whole.svg": {
+"sha": "3f85e433472b356ab329546eaf6fdba8b2db57d2cf8a83239d09b11ea7965584",
+"etag": "\"9c0365acfdce6f139bfe09846f3afbf3\"",
+"upstream": true
+},
+"assets/math-mistakes/eddey-upgrade-weight-parts.svg": {
+"sha": "1f6d7f77545e5405dda31b0592bdc9ee4af4e0bf6dfdb76de1554fff7b106d22",
+"etag": "\"fc3a48da177257c759b8e47b01f87d0d\"",
+"upstream": true
+},
+"assets/math-mistakes/eddey-upgrade-whole-time.svg": {
+"sha": "dd2f134885695717024bc96088c4160aeac6eea91f518d2d69cc3562f82e6d11",
+"etag": "\"fb583b621a16568d0a83db2c1fe88be1\"",
+"upstream": true
+},
+"assets/math-mistakes/eddey-upgrade-wind-origin.svg": {
+"sha": "5459fcad89b6f0d16b4e519978224b3c5254dcafebd743f15cdb1a48c8fc2a05",
+"etag": "\"d0a43881847c3d86ee51d99b193a8363\"",
+"upstream": true
+},
+"assets/math-mistakes/eddey-upgrade-workers-rate.svg": {
+"sha": "442a6f9900f9e33f31f41d79f4ce3724e97498e0b858bbd881412e6d910ef3aa",
+"etag": "\"c5c755cd0cc7eb92c0a80afc76a33179\"",
+"upstream": true
+},
+"assets/math-mistakes/eddey-upgrade-wrong-and-right.svg": {
+"sha": "a631b9192104bcc0b3ffa7e5e2077798093db3911b964f30e2c78a01d4227696",
+"etag": "\"378f3e6bea6aa86ed8569b4c730f1201\"",
 "upstream": true
 },
 "assets/math-mistakes/forest-directions.svg": {
@@ -11726,6 +11956,221 @@
 "assets/math-mistakes/kenton-grid-area.svg": {
 "sha": "9f4d5c1d88fda1457d2dcc3a546a36644d06a17555b8844d96da373d002fde23",
 "etag": "\"35237f7969c98b59c0e4f7f94f93f749\"",
+"upstream": true
+},
+"assets/math-mistakes/kenton-upgrade-apples-pears.svg": {
+"sha": "2ea332a9f0e418c45efa245a75b2d4d2841d65abc12415ad01344e53b58afbac",
+"etag": "\"63719da4cfc252b642e27b4b52b25691\"",
+"upstream": true
+},
+"assets/math-mistakes/kenton-upgrade-area-units.svg": {
+"sha": "70117b1d011104af90503b7cead70bedfa045e6829e5c1bcd4141106b6997a32",
+"etag": "\"1d5a55c0b96048f16adc2d9e8a8a85f5\"",
+"upstream": true
+},
+"assets/math-mistakes/kenton-upgrade-carry.svg": {
+"sha": "5e79ea332830c524db052f1a002ca1819a1be4beacd4c5e48504479c325784c9",
+"etag": "\"6cada7af119e6185f10e94ec695181e2\"",
+"upstream": true
+},
+"assets/math-mistakes/kenton-upgrade-cloth-grid.svg": {
+"sha": "51e465e851300f2cddede11e550bdf94abdebd689e42a8617c5d58fd47198a0e",
+"etag": "\"41c91150b7a2021717413869f1baed8c\"",
+"upstream": true
+},
+"assets/math-mistakes/kenton-upgrade-cloth-question.svg": {
+"sha": "207dac1b21213dcd86c47d874fd0f702fbf0aaa6657a72899c1e6087724277c7",
+"etag": "\"b9426eb1ec0f7c06606def14795b7e76\"",
+"upstream": true
+},
+"assets/math-mistakes/kenton-upgrade-consecutive-even.svg": {
+"sha": "81601d7e2c442618746bb0f1b508158ae8b3ce03d0f0f48ef53edd621cc30988",
+"etag": "\"9831a1608fbf61c3c2a72e0deb72c25d\"",
+"upstream": true
+},
+"assets/math-mistakes/kenton-upgrade-dividend-remainder.svg": {
+"sha": "9fc4a25792c8f262965fb8afe5d9d4500a220afa357b97c089d4a2055cc7bbf2",
+"etag": "\"148cc7e1d51468d3e0069d5dbbebc7fd\"",
+"upstream": true
+},
+"assets/math-mistakes/kenton-upgrade-equal-quotient-ab.svg": {
+"sha": "cce108370585eb52ea844684cd681f4a39c8d94325f67381503b8ec72ca3ad0f",
+"etag": "\"414cf597f8ba700c89b77595ae6e7402\"",
+"upstream": true
+},
+"assets/math-mistakes/kenton-upgrade-five-shares.svg": {
+"sha": "fef3b33deaf427b53e406eefcf6afc06b41b93064be2006c5afb903b88549d35",
+"etag": "\"3c2dfef2574d87ed01cee6cb63d18b31\"",
+"upstream": true
+},
+"assets/math-mistakes/kenton-upgrade-five-times.svg": {
+"sha": "4ac36f6afa9417f9136744652528d90f772b0c6a690868ee8d2ff3ca1b30d83b",
+"etag": "\"cd9e4152163680772b746f5439f5fe52\"",
+"upstream": true
+},
+"assets/math-mistakes/kenton-upgrade-full-bottles.svg": {
+"sha": "a34f8ff2f5a2ed631d3146dc6f97f6fd52996cf73bf21cca87f287de1b91ab7e",
+"etag": "\"1793b284b9a20186fc1a12008d878f3f\"",
+"upstream": true
+},
+"assets/math-mistakes/kenton-upgrade-leading-carry.svg": {
+"sha": "3e51fe14365e4e91cbe556fa6590abbeca4d5625442afc54d1643ed4836d1088",
+"etag": "\"520e6625be8b20f3b30d5b0a69e98030\"",
+"upstream": true
+},
+"assets/math-mistakes/kenton-upgrade-less-than-times.svg": {
+"sha": "577d44083858d94add5a577f6389627662ecb06d91480d36cf20757aa317803d",
+"etag": "\"39bf61acddb923eeccf3989d068f5401\"",
+"upstream": true
+},
+"assets/math-mistakes/kenton-upgrade-money-difference.svg": {
+"sha": "fd4030402185fa001fef2d10f666da2cf0fd3e3c6d17310cf0010e37fbd7f128",
+"etag": "\"913b504ca8e7c46aa02d6f9d66d5122b\"",
+"upstream": true
+},
+"assets/math-mistakes/kenton-upgrade-money-eleven.svg": {
+"sha": "1ef9dfdee237cf1f55cb78f7c2596b071eda1f7a21e8949209e7c2bd4b725624",
+"etag": "\"b4d19306bcd78d64eadaf10bcef72d22\"",
+"upstream": true
+},
+"assets/math-mistakes/kenton-upgrade-natural-boundary.svg": {
+"sha": "59ddbda3e584355c8d178ffda4a954c66d17c9c9ea2cd25fce59d57a50632e8c",
+"etag": "\"bccdf46b395a24b01b9015e025287b6a\"",
+"upstream": true
+},
+"assets/math-mistakes/kenton-upgrade-notebooks.svg": {
+"sha": "4fe1e727643ac9885262af99449c3d6ac1dc3932f23f191dedbd753b2e723210",
+"etag": "\"7f2240da04c4a39e0e92ba656981ce70\"",
+"upstream": true
+},
+"assets/math-mistakes/kenton-upgrade-partial-tens.svg": {
+"sha": "7b3e207740c0faea668482ed11d17f26df9d00524943bd3fcd3df054b42f5270",
+"etag": "\"05336167e8c33026a252983d0142eedd\"",
+"upstream": true
+},
+"assets/math-mistakes/kenton-upgrade-phone-fees.svg": {
+"sha": "b516bb349c0af929ddfb49e019f0ff237074809ab38a7d4b1e7b776352133b7e",
+"etag": "\"5c60c98c8c729638d5371378ed768031\"",
+"upstream": true
+},
+"assets/math-mistakes/kenton-upgrade-population.svg": {
+"sha": "f54d158b38f73ead95e291f3796d673be7fb889b8d93ba210d58eb7cb8dc8f22",
+"etag": "\"bea5a43f73b4f426a856830fe5fe2751\"",
+"upstream": true
+},
+"assets/math-mistakes/kenton-upgrade-quotient-39.svg": {
+"sha": "008f22c09d3cd4bdfc47b2b924c8ad5320f043e3df7f46af40f01add650327c8",
+"etag": "\"74866e31b64f3a87f6b5035c769899a6\"",
+"upstream": true
+},
+"assets/math-mistakes/kenton-upgrade-rectangle-change.svg": {
+"sha": "fcae09398bf9757eb468778bf986d4fba30b443a26ba376d6ce5301b9b827439",
+"etag": "\"54bfeef93cfac3309f2a51b59fbd3f82\"",
+"upstream": true
+},
+"assets/math-mistakes/kenton-upgrade-rectangle-units.svg": {
+"sha": "12734ead62338345a9e9a56ccfaf3eee1eb95050d4fa8a49633a98c8515dd857",
+"etag": "\"94de96ce8270f56f18cf09acf4dc0bde\"",
+"upstream": true
+},
+"assets/math-mistakes/kenton-upgrade-remainder-scale.svg": {
+"sha": "7869dfcc0cfbf5c23e27ccd742bd449818e0d483163a37ffe2fd58eb4c4e0467",
+"etag": "\"da479aa3dab92462126b350b7f334018\"",
+"upstream": true
+},
+"assets/math-mistakes/kenton-upgrade-reverse-steps.svg": {
+"sha": "fbe4c232715cf25f3b6f7c75d593a6f08d8112ffbfe45ab8eab2de9a62d9769f",
+"etag": "\"4b6cd194d2ccf52a228a41516bb5009f\"",
+"upstream": true
+},
+"assets/math-mistakes/kenton-upgrade-rice-objects.svg": {
+"sha": "1f6c9ebcf3c8a2f51845dc66688697709da2f7f2774f08dba7a0fb428046e2fb",
+"etag": "\"2562ad23f5e6b863d90df1626600bd04\"",
+"upstream": true
+},
+"assets/math-mistakes/kenton-upgrade-rounding-lower.svg": {
+"sha": "5be468cd2474034d6ca96b5c0042d8819ae37d539a4d68302f6f5ec55b434b41",
+"etag": "\"b095449ab10298e53a38cc230a4e47b2\"",
+"upstream": true
+},
+"assets/math-mistakes/kenton-upgrade-rounding-range.svg": {
+"sha": "3b56f9912a51525283704beeb349dc11f79210dfec41b45ff7301f181f39ad17",
+"etag": "\"119642ad29aed5ce7a62b6ea6be477b6\"",
+"upstream": true
+},
+"assets/math-mistakes/kenton-upgrade-same-rope.svg": {
+"sha": "228b9c53cbaf2e814e257b281516ce270b9b2000844309913c54022a401dd8a1",
+"etag": "\"53cecf27e7aeecc99ed1e9baa15dd36a\"",
+"upstream": true
+},
+"assets/math-mistakes/kenton-upgrade-scores-average.svg": {
+"sha": "021921c738a00cbacafa523c929998f56635711fc185b7f0361077e20875ab88",
+"etag": "\"5173eedac7e210bbec15928ac350e184\"",
+"upstream": true
+},
+"assets/math-mistakes/kenton-upgrade-shape-replacement.svg": {
+"sha": "e2c6e6ee006803a2dbabe8b2fdc4c1e7ec0bd3a2256e03b47462d538ef8fff12",
+"etag": "\"ed385ef6988eba78a337bfbb4a1f2fcc\"",
+"upstream": true
+},
+"assets/math-mistakes/kenton-upgrade-square-expand-question.svg": {
+"sha": "441d29de1dce7029cd68044e85d038a44cacf33b2d5c17dbda85d8829c19a7f2",
+"etag": "\"795f39308387d0b68a918cb7ed1058fe\"",
+"upstream": true
+},
+"assets/math-mistakes/kenton-upgrade-square-expand.svg": {
+"sha": "7ff772c07402ec525b18f3b26ce55b749921b1e45ebd0d02adc8093c62459271",
+"etag": "\"92d57911ab655a09fc35590a4136d535\"",
+"upstream": true
+},
+"assets/math-mistakes/kenton-upgrade-target-average.svg": {
+"sha": "ae85973832fa0def7a3f3664ce90f9a57750dd051c67cbd71fba9ef28517705b",
+"etag": "\"a9f88fa20a279b65e615c77290646037\"",
+"upstream": true
+},
+"assets/math-mistakes/kenton-upgrade-trial-product.svg": {
+"sha": "69659bd9adbef695a79ee84dcfafa79c5478337c756646fe50ebe60a1ded6823",
+"etag": "\"9c8cd8d319f1aca6c85e91a3b0cc1da7\"",
+"upstream": true
+},
+"assets/math-mistakes/kenton-upgrade-trial-remainder.svg": {
+"sha": "485afeb65587f4393e432ba0187d86eda20a488012564439a4b2f63069049e10",
+"etag": "\"5e8ac269bf67392c83b7facd7daaa45d\"",
+"upstream": true
+},
+"assets/math-mistakes/kenton-upgrade-triple-width.svg": {
+"sha": "4431e850186eea46992fe719b4b761e5a438f5a1e1cde08b477f14bfa8a558e1",
+"etag": "\"faaf741d2e83854bf1ee267868ea3a89\"",
+"upstream": true
+},
+"assets/math-mistakes/kenton-upgrade-twelve-perimeters.svg": {
+"sha": "324d172465389ff22948740e23a2fdc17131ad432e0e10027c09a96ad5a45909",
+"etag": "\"ae6b35d040d5f273743c17e0e6a80938\"",
+"upstream": true
+},
+"assets/math-mistakes/kenton-upgrade-twelve-squares.svg": {
+"sha": "da6e73eec93f61250982d20cdb3edde2d91f38d591da0d412fd48f77bdee4da3",
+"etag": "\"15dad217c093ab7b8e2a29424c6077e1\"",
+"upstream": true
+},
+"assets/math-mistakes/kenton-upgrade-unit-hundredths.svg": {
+"sha": "91fe53160c2aa4b167d1a5fc8ea3ffe4ab44833ea2a765fd95ede69b53704c0e",
+"etag": "\"bec6b2ef5d8b3f486834774675243499\"",
+"upstream": true
+},
+"assets/math-mistakes/kenton-upgrade-unit-tenths.svg": {
+"sha": "cdedf875e8aac6b206e119229cf959ba203e2cd03ff6bd611162b648b0ad9da0",
+"etag": "\"9fc0e3695162f29be18898e37e071337\"",
+"upstream": true
+},
+"assets/math-mistakes/kenton-upgrade-wire-square.svg": {
+"sha": "c1e4f55b9ac6983cf8aceb3251ff88ccf6b3ed6b3eab53b96f3bbb920fbb5463",
+"etag": "\"59777317601f49f20dc1d546fd733cdc\"",
+"upstream": true
+},
+"assets/math-mistakes/kenton-upgrade-zero-place.svg": {
+"sha": "d44d2f7224aaa06af8b90d5f1c01be75521a17abbdb5f8b1ff2b73e51001854e",
+"etag": "\"657006d16f06ddca7da50417be2c7090\"",
 "upstream": true
 },
 "assets/math-mistakes/multiplication-groups.svg": {
@@ -11804,8 +12249,8 @@
 "upstream": true
 },
 "assets/portal-snapshot.js": {
-"sha": "a764129f33f5333c886356ba44297e713eba766dd5194459156dfb67a44820f6",
-"etag": "\"dad4d3e8ed074e51f2269a6a43355f65\"",
+"sha": "8fc84f2935055e2696537b4bfa413a48f6c4252cb90caefaf9a28b238707e0de",
+"etag": "\"7f73161f524fba4f665f119f0e0c651e\"",
 "upstream": true
 },
 "assets/portal-support.css": {
@@ -11909,8 +12354,8 @@
 "upstream": true
 },
 "data/apps.json": {
-"sha": "32bc0ddccbf9b809dbabf6097ccec0e22066151ab34a0ce1a4ecc81176b73709",
-"etag": "\"0fbcd2e15b526416984cfd6e8fc2ffbe\"",
+"sha": "a891b301f9045a922a2af327e19db8ef6afd432b63832ca2a315a37449c585b4",
+"etag": "\"d87c055e744d58ad55eb6cca8c74d705\"",
 "upstream": true
 },
 "data/exam-prep/calendar.json": {
@@ -11959,13 +12404,13 @@
 "upstream": true
 },
 "data/learning/eddey_math_mistakes_20261024.json": {
-"sha": "a1f8e0f4e7596662c3f81908549b26f5372724bbe7e6250e19582e04b381b92f",
-"etag": "\"34aeeba7817107af79080acdf4e97cf9\"",
+"sha": "73d1ee545ba3303f3f6c89485d88fc2aa39d98a6663df5aa0000e835a269350e",
+"etag": "\"aeda68acac76a690fd0253646a5c306e\"",
 "upstream": true
 },
 "data/learning/kenton_math_mistakes_20261024.json": {
-"sha": "eebd325ad6c8df40b0f99f89e8cfe7ed188fcd774b90235f48b967a9d608cf53",
-"etag": "\"9676da89d909114d5a352a938beea193\"",
+"sha": "ac1140ca3c2bc85bf3f1e43bd780b03a4101d993a41979528e34456f41621be0",
+"etag": "\"645c2527bc6624917cb2778366c16eb1\"",
 "upstream": true
 },
 "data/math_gold_hub.json": {
@@ -11979,8 +12424,8 @@
 "upstream": true
 },
 "data/mistake-archives.json": {
-"sha": "8c0193fa427a770dfcc74a1dfcded3d072827edd2c053ff49180cb96df9ab039",
-"etag": "\"453903e06ab26b5303f92585bdcfdfb4\"",
+"sha": "1ab5262630323b3bf3c4eeebc21fc4ac0218486f92d4176a6316d3e8de9332b9",
+"etag": "\"cd5471790a01d2870dcc0b9cb06eac91\"",
 "upstream": true
 },
 "data/papers.json": {

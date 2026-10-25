@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "updatedAt": "2026-10-24",
+  "updatedAt": "2026-10-25",
   "privacy": "Public-safe mistake and review records. No original screenshots, real names, school data, credentials, or private answer sheets.",
   "kenton": [
     {
@@ -14,13 +14,14 @@
       "statusLabel": "分类复练",
       "needReview": true,
       "originKind": "math-bank",
-      "summary": "选择重要题或某一类题，直接作答；保留订正和复查进度。",
+      "summary": "按知识路线或关键问题找题，查看真实出处；题图与讲解图帮助理解，订正后保留独立复查进度。",
       "reviewSteps": [
-        "先独立做一道题。",
-        "需要帮助时看方法，再回到原题。",
-        "完成后回看订正记录，隔天再独立复查。"
+        "先独立做一道题，必要时放大题图。",
+        "查看关键问题，用对应图解弄清方法，再回原题。",
+        "遮住讲解说清方法，完成后隔天独立复查。"
       ],
-      "file": "apps/kenton_math_mistakes_20261024.html"
+      "file": "apps/kenton_math_mistakes_20261024.html",
+      "updated": "2026-10-25"
     },
     {
       "id": "kenton-english-answer-builder-20260915",
@@ -92,13 +93,14 @@
       "statusLabel": "分类复练",
       "needReview": true,
       "originKind": "math-bank",
-      "summary": "选择重要题或某一类题，直接作答；保留订正和复查进度。",
+      "summary": "按知识路线或关键问题找题，查看真实出处；题图与讲解图帮助理解，订正后保留独立复查进度。",
       "reviewSteps": [
-        "先独立做一道题。",
-        "需要帮助时看方法，再回到原题。",
-        "完成后回看订正记录，隔天再独立复查。"
+        "先独立做一道题，必要时放大题图。",
+        "查看关键问题，用对应图解弄清方法，再回原题。",
+        "遮住讲解说清方法，完成后隔天独立复查。"
       ],
-      "file": "apps/eddey_math_mistakes_20261024.html"
+      "file": "apps/eddey_math_mistakes_20261024.html",
+      "updated": "2026-10-25"
     },
     {
       "id": "eddey-cpp-a457-max1-min1-2026-07-30",

@@ -25,10 +25,49 @@
         "date": "2026-09-07",
         "label": "四上数学周练一",
         "question": "三·第一行",
-        "kind": "original"
+        "kind": "original",
+        "material": "四年级第一学期数学周练卷（1）",
+        "dateLabel": "资料记录日期",
+        "locatorStatus": "题号已核，纸页未记录",
+        "note": "日期为资料记录或收卷日期；不据此认定实际作答日。纸页未记录。"
       },
       "status": "ready",
-      "recordType": "confirmed-error"
+      "recordType": "confirmed-error",
+      "diagnosis": {
+        "type": "计算检查",
+        "breakpoint": "每一步只接前一步的结果。",
+        "reason": "加86、减45、减21是三次连续变化。",
+        "check": "把末值依次加21、加45、减86，能回到49吗？",
+        "certainty": "本题检查点；具体错误原因需结合本次过程核实"
+      },
+      "teaching": {
+        "goal": "每一步只接前一步的结果。",
+        "prerequisites": [
+          "数位与四则计算",
+          "加减、乘除的互逆关系"
+        ],
+        "focus": "加86、减45、减21是三次连续变化。 49＋86＝135；135－45＝90；90－21＝69",
+        "recallPrompt": "收起讲解，用自己的话说：每一步只接前一步的结果，为什么？",
+        "transferPrompt": "自编迁移（不计入历史错题）：把起点49改成59，运算链仍为加86、减45、减21。末值比原来多多少？再计算。",
+        "reference": {
+          "label": "四上《学习笔记同步教材》（项目目录：金牌数学）",
+          "unit": "运算关系；四则运算",
+          "pages": "书本第3–6、45–47页",
+          "scope": "方法依据；本题来源另见题目来源。采用已核概念文字，未把OCR公式当作标准答案。"
+        },
+        "transferCheck": "末值增加10；59＋86－45－21＝79。",
+        "transferSource": "authored-practice-not-historical-error"
+      },
+      "visual": {
+        "kind": "question",
+        "caption": "按原题条件重绘，空框由你填写。",
+        "alt": "运算链",
+        "required": true,
+        "reason": "题面用图表达运算、数据或位置关系。"
+      },
+      "image": "../assets/math-mistakes/eddey-upgrade-chain-49.svg",
+      "diagramAlt": "运算链",
+      "diagramCaption": "按原题条件重绘，空框由你填写。"
     },
     {
       "id": "E-M-642-b",
@@ -52,10 +91,49 @@
         "date": "2026-09-07",
         "label": "四上数学周练一",
         "question": "三·第三行",
-        "kind": "original"
+        "kind": "original",
+        "material": "四年级第一学期数学周练卷（1）",
+        "dateLabel": "资料记录日期",
+        "locatorStatus": "题号已核，纸页未记录",
+        "note": "日期为资料记录或收卷日期；不据此认定实际作答日。纸页未记录。"
       },
       "status": "ready",
-      "recordType": "confirmed-error"
+      "recordType": "confirmed-error",
+      "diagnosis": {
+        "type": "计算检查",
+        "breakpoint": "先核对512－45这一处。",
+        "reason": "把45拆成40和5，退位后十位也要改变。",
+        "check": "把减得的数加回45，应回到512。",
+        "certainty": "本题检查点；具体错误原因需结合本次过程核实"
+      },
+      "teaching": {
+        "goal": "先核对512－45这一处。",
+        "prerequisites": [
+          "数位与四则计算",
+          "加减、乘除的互逆关系"
+        ],
+        "focus": "把45拆成40和5，退位后十位也要改变。 从已知的512继续；512－45＝467；467－21＝446",
+        "recallPrompt": "收起讲解，用自己的话说：先核对512－45这一处，为什么？",
+        "transferPrompt": "自编迁移（不计入历史错题）：已知加86后的数改成522，接着减45、减21。求末值，并逆算回522。",
+        "reference": {
+          "label": "四上《学习笔记同步教材》（项目目录：金牌数学）",
+          "unit": "运算关系；四则运算",
+          "pages": "书本第3–6、45–47页",
+          "scope": "方法依据；本题来源另见题目来源。采用已核概念文字，未把OCR公式当作标准答案。"
+        },
+        "transferCheck": "522－45＝477；477－21＝456；456＋21＋45＝522。",
+        "transferSource": "authored-practice-not-historical-error"
+      },
+      "visual": {
+        "kind": "question",
+        "caption": "按已核运算链重绘，从给定的512继续。",
+        "alt": "从已知512继续",
+        "required": true,
+        "reason": "题面用图表达运算、数据或位置关系。"
+      },
+      "image": "../assets/math-mistakes/eddey-upgrade-chain-512.svg",
+      "diagramAlt": "从已知512继续",
+      "diagramCaption": "按已核运算链重绘，从给定的512继续。"
     },
     {
       "id": "E-M-643",
@@ -79,7 +157,11 @@
         "date": "2026-09-07",
         "label": "四年级第一学期数学周练卷（1）",
         "kind": "original",
-        "question": "item-02"
+        "question": "四·1 关系填空",
+        "material": "四年级第一学期数学周练卷（1）",
+        "dateLabel": "资料记录日期",
+        "locatorStatus": "题号已核，纸页未记录",
+        "note": "日期为资料记录或收卷日期；不据此认定实际作答日。纸页未记录。"
       },
       "status": "ready",
       "recordType": "confirmed-error",
@@ -87,7 +169,44 @@
         "差＝被减数－减数",
         "减数＝被减数－差",
         "被减数＝减数＋差"
-      ]
+      ],
+      "diagnosis": {
+        "type": "数量关系",
+        "breakpoint": "第三天在减法中是减数。",
+        "reason": "前两天合计减第三天才是108米。",
+        "check": "第三天的米数加108，是否等于前两天合计？",
+        "certainty": "本题检查点；具体错误原因需结合本次过程核实"
+      },
+      "teaching": {
+        "goal": "第三天在减法中是减数。",
+        "prerequisites": [
+          "加减、乘除的互逆关系",
+          "辨认运算中的各部分"
+        ],
+        "focus": "前两天合计减第三天才是108米。 第三天是被减去的量；求减数，用被减数减差；245＋312－108＝449米",
+        "recallPrompt": "收起讲解，用自己的话说：第三天在减法中是减数，为什么？",
+        "transferPrompt": "自编迁移（不计入历史错题）：前两天合计600米，比第三天多80米。第三天多少米？说清减法里谁是减数。",
+        "reference": {
+          "label": "四上《学习笔记同步教材》（项目目录：金牌数学）",
+          "unit": "运算关系；树状算图求未知数",
+          "pages": "书本第3–9、53页",
+          "scope": "方法依据；本题来源另见题目来源。采用已核概念文字，未把OCR公式当作标准答案。"
+        },
+        "transferCheck": "600－80＝520米；在600－第三天＝80中，第三天是减数。",
+        "transferSource": "authored-practice-not-historical-error"
+      },
+      "visual": {
+        "kind": "teaching",
+        "caption": "教学示意：前两天合计比第三天多108米",
+        "alt": "前两天合计比第三天多108米",
+        "required": true,
+        "reason": "图示将本题的关键数量关系或运算对象显出来。"
+      },
+      "teachingImage": {
+        "src": "../assets/math-mistakes/eddey-upgrade-road-difference.svg",
+        "alt": "前两天合计比第三天多108米",
+        "caption": "教学示意：前两天合计比第三天多108米"
+      }
     },
     {
       "id": "E-M-644",
@@ -110,14 +229,50 @@
         "date": "2026-09-07",
         "label": "四年级第一学期数学周练卷（1）",
         "kind": "original",
-        "question": "item-03"
+        "question": "四·7（3）单位",
+        "material": "四年级第一学期数学周练卷（1）",
+        "dateLabel": "资料记录日期",
+        "locatorStatus": "题号已核，纸页未记录",
+        "note": "日期为资料记录或收卷日期；不据此认定实际作答日。纸页未记录。"
       },
       "status": "ready",
       "recordType": "confirmed-error",
       "options": [
         "名",
         "组"
-      ]
+      ],
+      "diagnosis": {
+        "type": "单位表达",
+        "breakpoint": "5表示每组的人数。",
+        "reason": "平均分后改变组别，人数仍用人的单位。",
+        "check": "读一遍“每组5……”是否回答了问句？",
+        "certainty": "本题检查点；具体错误原因需结合本次过程核实"
+      },
+      "teaching": {
+        "goal": "5表示每组的人数。",
+        "prerequisites": [
+          "读懂所求对象",
+          "数量与单位对应"
+        ],
+        "focus": "平均分后改变组别，人数仍用人的单位。 所求的是每组人数；人数用“名”，组数用“组”",
+        "recallPrompt": "收起讲解，用自己的话说：5表示每组的人数，为什么？",
+        "transferPrompt": "自编迁移（不计入历史错题）：36名学生平均分成6组，每组6（ ）。再说“6组”与“6名”的对象有什么不同。",
+        "reference": {
+          "label": "四上《学习笔记同步教材》（项目目录：金牌数学）",
+          "unit": "运算关系；复合应用题的单位",
+          "pages": "书本第4–6、54–59页",
+          "scope": "方法依据；本题来源另见题目来源。采用已核概念文字，未把OCR公式当作标准答案。"
+        },
+        "transferCheck": "填名（人也可）；6组数小组，6名数学生。",
+        "transferSource": "authored-practice-not-historical-error"
+      },
+      "visual": {
+        "kind": "none",
+        "caption": "",
+        "alt": "",
+        "required": false,
+        "reason": "当前题意可用完整算式和分步过程表达；不添加装饰图。"
+      }
     },
     {
       "id": "E-M-645",
@@ -140,7 +295,11 @@
         "date": "2026-09-07",
         "label": "四上数学周练一",
         "question": "五·4（按记录重排选项）",
-        "kind": "reconstructed"
+        "kind": "reconstructed",
+        "material": "四年级第一学期数学周练卷（1）",
+        "dateLabel": "资料记录日期",
+        "locatorStatus": "题号已核，纸页未记录",
+        "note": "日期为资料记录或收卷日期；不据此认定实际作答日。纸页未记录。题意与条件保留，按已核记录重新排版。"
       },
       "status": "ready",
       "recordType": "confirmed-error",
@@ -148,7 +307,39 @@
         "298－200－1",
         "298－200＋1",
         "298＋200－1"
-      ]
+      ],
+      "diagnosis": {
+        "type": "等价变形",
+        "breakpoint": "把199变200后，多减了1。",
+        "reason": "多减的部分要加回来。",
+        "check": "分别算原式和改写式，结果应相同。",
+        "certainty": "本题检查点；具体错误原因需结合本次过程核实"
+      },
+      "teaching": {
+        "goal": "把199变200后，多减了1。",
+        "prerequisites": [
+          "乘法的意义",
+          "因数与项的区别"
+        ],
+        "focus": "多减的部分要加回来。 把199改成200，相当于多减了1，要把这1加回来。 298－199＝298－200＋1＝98＋1＝99，所以选298－200＋1。",
+        "recallPrompt": "收起讲解，用自己的话说：把199变200后，多减了1，为什么？",
+        "transferPrompt": "自编迁移（不计入历史错题）：不先竖算，改写398－297：把297凑成300后应加回还是再减3？",
+        "reference": {
+          "label": "四上《学习笔记同步教材》（项目目录：金牌数学）",
+          "unit": "加减、乘除法中的错算问题",
+          "pages": "书本第7–9、51–53页",
+          "scope": "方法依据；本题来源另见题目来源。采用已核概念文字，未把OCR公式当作标准答案。"
+        },
+        "transferCheck": "398－300＋3＝101；多减3就加回3。",
+        "transferSource": "authored-practice-not-historical-error"
+      },
+      "visual": {
+        "kind": "none",
+        "caption": "",
+        "alt": "",
+        "required": false,
+        "reason": "当前题意可用完整算式和分步过程表达；不添加装饰图。"
+      }
     },
     {
       "id": "E-M-646",
@@ -172,10 +363,51 @@
         "date": "2026-09-07",
         "label": "四年级第一学期数学周练卷（1）",
         "kind": "original",
-        "question": "item-05"
+        "question": "五·5 符号替换",
+        "material": "四年级第一学期数学周练卷（1）",
+        "dateLabel": "资料记录日期",
+        "locatorStatus": "题号已核，纸页未记录",
+        "note": "日期为资料记录或收卷日期；不据此认定实际作答日。纸页未记录。"
       },
       "status": "ready",
-      "recordType": "confirmed-error"
+      "recordType": "confirmed-error",
+      "diagnosis": {
+        "type": "逆运算",
+        "breakpoint": "先把☆×△换成○。",
+        "reason": "商乘除数等于被除数。",
+        "check": "把求得的○代入○＋○＝220。",
+        "certainty": "本题检查点；具体错误原因需结合本次过程核实"
+      },
+      "teaching": {
+        "goal": "先把☆×△换成○。",
+        "prerequisites": [
+          "加减、乘除的互逆关系",
+          "辨认运算中的各部分"
+        ],
+        "focus": "商乘除数等于被除数。 由○÷△＝☆可知☆×△＝○；所以○＋○＝220；220÷2＝110",
+        "recallPrompt": "收起讲解，用自己的话说：先把☆×△换成○，为什么？",
+        "transferPrompt": "自编迁移（不计入历史错题）：已知A÷B＝C，且C×B＋A＝180，A是多少？",
+        "reference": {
+          "label": "四上《学习笔记同步教材》（项目目录：金牌数学）",
+          "unit": "运算关系；树状算图求未知数",
+          "pages": "书本第3–9、53页",
+          "scope": "方法依据；本题来源另见题目来源。采用已核概念文字，未把OCR公式当作标准答案。"
+        },
+        "transferCheck": "C×B＝A，因此2个A合计180，A＝90。",
+        "transferSource": "authored-practice-not-historical-error"
+      },
+      "visual": {
+        "kind": "teaching",
+        "caption": "教学示意：先把相等的量换成同一个量",
+        "alt": "先把相等的量换成同一个量",
+        "required": true,
+        "reason": "图示将本题的关键数量关系或运算对象显出来。"
+      },
+      "teachingImage": {
+        "src": "../assets/math-mistakes/eddey-upgrade-symbols-equal.svg",
+        "alt": "先把相等的量换成同一个量",
+        "caption": "教学示意：先把相等的量换成同一个量"
+      }
     },
     {
       "id": "E-M-647",
@@ -198,10 +430,46 @@
         "date": "2026-09-07",
         "label": "四年级第一学期数学周练卷（1）",
         "kind": "original",
-        "question": "item-06"
+        "question": "六·1 女生人数",
+        "material": "四年级第一学期数学周练卷（1）",
+        "dateLabel": "资料记录日期",
+        "locatorStatus": "题号已核，纸页未记录",
+        "note": "日期为资料记录或收卷日期；不据此认定实际作答日。纸页未记录。"
       },
       "status": "ready",
-      "recordType": "confirmed-error"
+      "recordType": "confirmed-error",
+      "diagnosis": {
+        "type": "计算检查",
+        "breakpoint": "把843－418按数位对齐。",
+        "reason": "列式后的退位减法也要逐位核对。",
+        "check": "差加418应回到843。",
+        "certainty": "本题检查点；具体错误原因需结合本次过程核实"
+      },
+      "teaching": {
+        "goal": "把843－418按数位对齐。",
+        "prerequisites": [
+          "数位与四则计算",
+          "加减、乘除的互逆关系"
+        ],
+        "focus": "列式后的退位减法也要逐位核对。 843－418＝425；验算：425＋418＝843",
+        "recallPrompt": "收起讲解，用自己的话说：把843－418按数位对齐，为什么？",
+        "transferPrompt": "自编迁移（不计入历史错题）：全校743人，男生318人，女生多少人？用加法验算。",
+        "reference": {
+          "label": "四上《学习笔记同步教材》（项目目录：金牌数学）",
+          "unit": "运算关系；四则运算",
+          "pages": "书本第3–6、45–47页",
+          "scope": "方法依据；本题来源另见题目来源。采用已核概念文字，未把OCR公式当作标准答案。"
+        },
+        "transferCheck": "743－318＝425人；425＋318＝743。",
+        "transferSource": "authored-practice-not-historical-error"
+      },
+      "visual": {
+        "kind": "none",
+        "caption": "",
+        "alt": "",
+        "required": false,
+        "reason": "当前题意可用完整算式和分步过程表达；不添加装饰图。"
+      }
     },
     {
       "id": "E-M-648",
@@ -224,10 +492,51 @@
         "date": "2026-09-07",
         "label": "四年级第一学期数学周练卷（1）",
         "kind": "original",
-        "question": "item-07"
+        "question": "六·4 企鹅身高",
+        "material": "四年级第一学期数学周练卷（1）",
+        "dateLabel": "资料记录日期",
+        "locatorStatus": "题号已核，纸页未记录",
+        "note": "日期为资料记录或收卷日期；不据此认定实际作答日。纸页未记录。"
       },
       "status": "ready",
-      "recordType": "confirmed-error"
+      "recordType": "confirmed-error",
+      "diagnosis": {
+        "type": "计算检查",
+        "breakpoint": "先求猫的身高，再求企鹅。",
+        "reason": "第二次减108要接第一次的正确结果。",
+        "check": "从企鹅加108、再加192，应回到386。",
+        "certainty": "本题检查点；具体错误原因需结合本次过程核实"
+      },
+      "teaching": {
+        "goal": "先求猫的身高，再求企鹅。",
+        "prerequisites": [
+          "数位与四则计算",
+          "加减、乘除的互逆关系"
+        ],
+        "focus": "第二次减108要接第一次的正确结果。 先求猫：386－192＝194；再求企鹅：194－108＝86",
+        "recallPrompt": "收起讲解，用自己的话说：先求猫的身高，再求企鹅，为什么？",
+        "transferPrompt": "自编迁移（不计入历史错题）：甲高286厘米，比乙高92厘米；乙比丙高108厘米。丙多高？",
+        "reference": {
+          "label": "四上《学习笔记同步教材》（项目目录：金牌数学）",
+          "unit": "运算关系；四则运算",
+          "pages": "书本第3–6、45–47页",
+          "scope": "方法依据；本题来源另见题目来源。采用已核概念文字，未把OCR公式当作标准答案。"
+        },
+        "transferCheck": "286－92＝194；194－108＝86厘米；加回108和92可验证。",
+        "transferSource": "authored-practice-not-historical-error"
+      },
+      "visual": {
+        "kind": "teaching",
+        "caption": "教学关系示意，不按动物实际大小绘制。",
+        "alt": "按高矮关系逐层比较",
+        "required": true,
+        "reason": "图示将本题的关键数量关系或运算对象显出来。"
+      },
+      "teachingImage": {
+        "src": "../assets/math-mistakes/eddey-upgrade-animal-height.svg",
+        "alt": "按高矮关系逐层比较",
+        "caption": "教学关系示意，不按动物实际大小绘制。"
+      }
     },
     {
       "id": "E-M-649",
@@ -251,10 +560,51 @@
         "date": "2026-09-07",
         "label": "四年级第一学期数学周练卷（1）",
         "kind": "original",
-        "question": "item-08"
+        "question": "六·5 看错数位",
+        "material": "四年级第一学期数学周练卷（1）",
+        "dateLabel": "资料记录日期",
+        "locatorStatus": "题号已核，纸页未记录",
+        "note": "日期为资料记录或收卷日期；不据此认定实际作答日。纸页未记录。"
       },
       "status": "ready",
-      "recordType": "confirmed-error"
+      "recordType": "confirmed-error",
+      "diagnosis": {
+        "type": "位值核查",
+        "breakpoint": "十位的9和6表示90和60。",
+        "reason": "看错的差包含个位6和十位30。",
+        "check": "正确的和减36，应回到错算的136。",
+        "certainty": "本题检查点；具体错误原因需结合本次过程核实"
+      },
+      "teaching": {
+        "goal": "十位的9和6表示90和60。",
+        "prerequisites": [
+          "部分与整体",
+          "每份量、份数和总量"
+        ],
+        "focus": "看错的差包含个位6和十位30。 个位少算7－1＝6；十位少算90－60＝30；正确的和：136＋6＋30＝172",
+        "recallPrompt": "收起讲解，用自己的话说：十位的9和6表示90和60，为什么？",
+        "transferPrompt": "自编迁移（不计入历史错题）：一道加法把加数十位上的8看成3，个位上的6看成2，错算得120。正确的和是多少？",
+        "reference": {
+          "label": "四上《学习笔记同步教材》（项目目录：金牌数学）",
+          "unit": "加减、乘除法中的错算问题",
+          "pages": "书本第7–9、51–53页",
+          "scope": "方法依据；本题来源另见题目来源。采用已核概念文字，未把OCR公式当作标准答案。"
+        },
+        "transferCheck": "十位少50，个位少4；120＋50＋4＝174。",
+        "transferSource": "authored-practice-not-historical-error"
+      },
+      "visual": {
+        "kind": "teaching",
+        "caption": "教学示意：把看错的两位分开",
+        "alt": "把看错的两位分开",
+        "required": true,
+        "reason": "图示将本题的关键数量关系或运算对象显出来。"
+      },
+      "teachingImage": {
+        "src": "../assets/math-mistakes/eddey-upgrade-place-value.svg",
+        "alt": "把看错的两位分开",
+        "caption": "教学示意：把看错的两位分开"
+      }
     },
     {
       "id": "E-M-651-a",
@@ -278,7 +628,11 @@
         "date": "2026-09-07",
         "label": "四年级第一学期数学周练卷（1）",
         "question": "六·应用题2",
-        "kind": "original"
+        "kind": "original",
+        "material": "四年级第一学期数学周练卷（1）",
+        "dateLabel": "资料记录日期",
+        "locatorStatus": "题号已核，纸页未记录",
+        "note": "日期为资料记录或收卷日期；不据此认定实际作答日。纸页未记录。"
       },
       "status": "ready",
       "recordType": "process-gap",
@@ -287,7 +641,39 @@
         "列式为30÷6＝5（米/时）。",
         "答句包含蜗牛、平均每小时、5米。",
         "“答：”和文字写清楚，答句与问题对应。"
-      ]
+      ],
+      "diagnosis": {
+        "type": "单位表达",
+        "breakpoint": "答句要写每小时爬多少米。",
+        "reason": "30米是6小时合计，要先求1小时。",
+        "check": "核对对象、每小时、数值、米四部分。",
+        "certainty": "过程与表达检查；不等于数值计算错误"
+      },
+      "teaching": {
+        "goal": "答句要写每小时爬多少米。",
+        "prerequisites": [
+          "读懂所求对象",
+          "数量与单位对应"
+        ],
+        "focus": "30米是6小时合计，要先求1小时。 平均每小时的路程＝总路程÷所用小时数。\n30÷6＝5（米/时）。\n答：蜗牛平均每小时爬行5米。核对答句中的对象、时间范围、数量与单位。",
+        "recallPrompt": "收起讲解，用自己的话说：答句要写每小时爬多少米，为什么？",
+        "transferPrompt": "自编迁移（不计入历史错题）：一只蜗牛4小时爬24米。写算式与完整答句，说明平均每小时爬多少米。",
+        "reference": {
+          "label": "四上《学习笔记同步教材》（项目目录：金牌数学）",
+          "unit": "运算关系；复合应用题的单位",
+          "pages": "书本第4–6、54–59页",
+          "scope": "方法依据；本题来源另见题目来源。采用已核概念文字，未把OCR公式当作标准答案。"
+        },
+        "transferCheck": "24÷4＝6（米/时）；答：蜗牛平均每小时爬行6米。",
+        "transferSource": "authored-practice-not-historical-error"
+      },
+      "visual": {
+        "kind": "none",
+        "caption": "",
+        "alt": "",
+        "required": false,
+        "reason": "当前题意可用完整算式和分步过程表达；不添加装饰图。"
+      }
     },
     {
       "id": "E-M-651-b",
@@ -311,7 +697,11 @@
         "date": "2026-09-07",
         "label": "四年级第一学期数学周练卷（1）",
         "question": "六·应用题3·价格图转文字",
-        "kind": "reconstructed"
+        "kind": "reconstructed",
+        "material": "四年级第一学期数学周练卷（1）",
+        "dateLabel": "资料记录日期",
+        "locatorStatus": "题号已核，纸页未记录",
+        "note": "日期为资料记录或收卷日期；不据此认定实际作答日。纸页未记录。题意与条件保留，按已核记录重新排版。"
       },
       "status": "ready",
       "recordType": "process-gap",
@@ -320,7 +710,42 @@
         "包括2辆汽车与1个机器人，两类金额都计算。",
         "综合式为100×2＋310＝510（元）。",
         "答句完整回答总价，一共要510元。"
-      ]
+      ],
+      "diagnosis": {
+        "type": "单位表达",
+        "breakpoint": "两辆汽车都要计价。",
+        "reason": "先算汽车总价，再加1个机器人。",
+        "check": "答句要回应“一共要多少元”。",
+        "certainty": "过程与表达检查；不等于数值计算错误"
+      },
+      "teaching": {
+        "goal": "两辆汽车都要计价。",
+        "prerequisites": [
+          "读懂所求对象",
+          "数量与单位对应"
+        ],
+        "focus": "先算汽车总价，再加1个机器人。 两辆玩具汽车的价钱：100×2＝200（元）。\n再加一个机器人的价钱：200＋310＝510（元）。\n综合算式为100×2＋310＝510（元）。答：一共要510元。",
+        "recallPrompt": "收起讲解，用自己的话说：两辆汽车都要计价，为什么？",
+        "transferPrompt": "自编迁移（不计入历史错题）：仍买2辆汽车和1个机器人；汽车改成每辆120元，机器人仍310元。列式并写完整答句。",
+        "reference": {
+          "label": "四上《学习笔记同步教材》（项目目录：金牌数学）",
+          "unit": "运算关系；复合应用题的单位",
+          "pages": "书本第4–6、54–59页",
+          "scope": "方法依据；本题来源另见题目来源。采用已核概念文字，未把OCR公式当作标准答案。"
+        },
+        "transferCheck": "120×2＋310＝550（元）；答：一共要550元。",
+        "transferSource": "authored-practice-not-historical-error"
+      },
+      "visual": {
+        "kind": "question",
+        "caption": "按原价目图的已核数值重新绘制。",
+        "alt": "两种玩具的价格与数量",
+        "required": true,
+        "reason": "题面用图表达运算、数据或位置关系。"
+      },
+      "image": "../assets/math-mistakes/eddey-upgrade-toy-prices.svg",
+      "diagramAlt": "两种玩具的价格与数量",
+      "diagramCaption": "按原价目图的已核数值重新绘制。"
     },
     {
       "id": "E-M-651-c",
@@ -344,7 +769,11 @@
         "date": "2026-09-07",
         "label": "四年级第一学期数学周练卷（1）",
         "question": "六·应用题6",
-        "kind": "original"
+        "kind": "original",
+        "material": "四年级第一学期数学周练卷（1）",
+        "dateLabel": "资料记录日期",
+        "locatorStatus": "题号已核，纸页未记录",
+        "note": "日期为资料记录或收卷日期；不据此认定实际作答日。纸页未记录。"
       },
       "status": "ready",
       "recordType": "process-gap",
@@ -353,7 +782,39 @@
         "先用900÷15还原被除数60。",
         "再用60÷15求原算式结果4。",
         "答句明确回答正确结果，数字和文字写清楚。"
-      ]
+      ],
+      "diagnosis": {
+        "type": "单位表达",
+        "breakpoint": "先还原被除数，再正确计算。",
+        "reason": "错算的900是乘15的结果。",
+        "check": "把还原的数乘15应得900，答句写正确结果。",
+        "certainty": "过程与表达检查；不等于数值计算错误"
+      },
+      "teaching": {
+        "goal": "先还原被除数，再正确计算。",
+        "prerequisites": [
+          "读懂所求对象",
+          "数量与单位对应"
+        ],
+        "focus": "错算的900是乘15的结果。 错误计算中，被除数×15＝900，所以被除数为900÷15＝60。\n按原来的除法计算：60÷15＝4。\n综合式为900÷15÷15＝4。答：这道算式正确的结果是4。",
+        "recallPrompt": "收起讲解，用自己的话说：先还原被除数，再正确计算，为什么？",
+        "transferPrompt": "自编迁移（不计入历史错题）：把除以12错算成乘12，得到576。正确结果是多少？",
+        "reference": {
+          "label": "四上《学习笔记同步教材》（项目目录：金牌数学）",
+          "unit": "加减、乘除法中的错算问题",
+          "pages": "书本第7–9、51–53页",
+          "scope": "方法依据；本题来源另见题目来源。采用已核概念文字，未把OCR公式当作标准答案。"
+        },
+        "transferCheck": "先576÷12＝48还原原数，再48÷12＝4。",
+        "transferSource": "authored-practice-not-historical-error"
+      },
+      "visual": {
+        "kind": "none",
+        "caption": "",
+        "alt": "",
+        "required": false,
+        "reason": "当前题意可用完整算式和分步过程表达；不添加装饰图。"
+      }
     },
     {
       "id": "E-M-653",
@@ -377,10 +838,51 @@
         "date": "2026-09-07",
         "label": "四年级第一学期数学周练卷（1）",
         "kind": "original",
-        "question": "item-12"
+        "question": "四·6 旧题关联",
+        "material": "四年级第一学期数学周练卷（1）",
+        "dateLabel": "资料记录日期",
+        "locatorStatus": "题号已核，纸页未记录",
+        "note": "日期为资料记录或收卷日期；不据此认定实际作答日。纸页未记录。"
       },
       "status": "ready",
-      "recordType": "important-review"
+      "recordType": "important-review",
+      "diagnosis": {
+        "type": "数量关系",
+        "breakpoint": "积少270对应因数少135。",
+        "reason": "另一个因数没变，减少的135份共是270。",
+        "check": "原积减错积应等于270。",
+        "certainty": "重要复练；不作为新的已确认错题"
+      },
+      "teaching": {
+        "goal": "积少270对应因数少135。",
+        "prerequisites": [
+          "部分与整体",
+          "每份量、份数和总量"
+        ],
+        "focus": "另一个因数没变，减少的135份共是270。 先找两次因数相差多少：150－15＝135；另一个因数：270÷135＝2；正确的积：150×2＝300",
+        "recallPrompt": "收起讲解，用自己的话说：积少270对应因数少135，为什么？",
+        "transferPrompt": "自编迁移（不计入历史错题）：把一个乘数80看成8，积少144。另一个乘数和正确的积各是多少？",
+        "reference": {
+          "label": "四上《学习笔记同步教材》（项目目录：金牌数学）",
+          "unit": "加减、乘除法中的错算问题",
+          "pages": "书本第7–9、51–53页",
+          "scope": "方法依据；本题来源另见题目来源。采用已核概念文字，未把OCR公式当作标准答案。"
+        },
+        "transferCheck": "80－8＝72；144÷72＝2；80×2＝160。",
+        "transferSource": "authored-practice-not-historical-error"
+      },
+      "visual": {
+        "kind": "teaching",
+        "caption": "教学分块示意，不按比例：150份由15份和135份组成。",
+        "alt": "积的差来自因数的差",
+        "required": true,
+        "reason": "图示将本题的关键数量关系或运算对象显出来。"
+      },
+      "teachingImage": {
+        "src": "../assets/math-mistakes/eddey-upgrade-product-gap.svg",
+        "alt": "积的差来自因数的差",
+        "caption": "教学分块示意，不按比例：150份由15份和135份组成。"
+      }
     },
     {
       "id": "E-M-814",
@@ -403,10 +905,51 @@
         "date": "2026-09-13",
         "label": "一课一练数学（本次已归档四上材料）",
         "kind": "original",
-        "question": "E18"
+        "question": "6（1）",
+        "material": "一课一练数学（本次已归档四上材料）",
+        "dateLabel": "资料记录日期",
+        "locatorStatus": "题号已核，纸页未记录",
+        "note": "日期为资料记录或收卷日期；不据此认定实际作答日。纸页未记录。"
       },
       "status": "ready",
-      "recordType": "confirmed-error"
+      "recordType": "confirmed-error",
+      "diagnosis": {
+        "type": "读题核查",
+        "breakpoint": "把225对应到书包那一部分。",
+        "reason": "500元分成书包、文具和剩下的钱。",
+        "check": "三部分相加应等于500元。",
+        "certainty": "本题检查点；具体错误原因需结合本次过程核实"
+      },
+      "teaching": {
+        "goal": "把225对应到书包那一部分。",
+        "prerequisites": [
+          "部分与整体",
+          "每份量、份数和总量"
+        ],
+        "focus": "500元分成书包、文具和剩下的钱。 花掉的钱分成书包和文具两部分；500－225－160＝115",
+        "recallPrompt": "收起讲解，用自己的话说：把225对应到书包那一部分，为什么？",
+        "transferPrompt": "自编迁移（不计入历史错题）：仍带500元、剩160元，把书包价改成215元。文具花多少元？与原题比较。",
+        "reference": {
+          "label": "四上《学习笔记同步教材》（项目目录：金牌数学）",
+          "unit": "复合应用题；工作效率",
+          "pages": "书本第54–60页",
+          "scope": "方法依据；本题来源另见题目来源。采用已核概念文字，未把OCR公式当作标准答案。"
+        },
+        "transferCheck": "500－215－160＝125元；书包少花10元，文具比原题多10元。",
+        "transferSource": "authored-practice-not-historical-error"
+      },
+      "visual": {
+        "kind": "teaching",
+        "caption": "教学示意：500元分成三部分",
+        "alt": "500元分成三部分",
+        "required": true,
+        "reason": "图示将本题的关键数量关系或运算对象显出来。"
+      },
+      "teachingImage": {
+        "src": "../assets/math-mistakes/eddey-upgrade-money-parts.svg",
+        "alt": "500元分成三部分",
+        "caption": "教学示意：500元分成三部分"
+      }
     },
     {
       "id": "E-M-815",
@@ -429,10 +972,51 @@
         "date": "2026-09-13",
         "label": "一课一练数学（本次已归档四上材料）",
         "kind": "original",
-        "question": "E22"
+        "question": "6（5）",
+        "material": "一课一练数学（本次已归档四上材料）",
+        "dateLabel": "资料记录日期",
+        "locatorStatus": "题号已核，纸页未记录",
+        "note": "日期为资料记录或收卷日期；不据此认定实际作答日。纸页未记录。"
       },
       "status": "ready",
-      "recordType": "confirmed-error"
+      "recordType": "confirmed-error",
+      "diagnosis": {
+        "type": "计算检查",
+        "breakpoint": "先算两块香皂的总价。",
+        "reason": "72元去掉牙膏54元，剩下的才平均分。",
+        "check": "每块价钱乘2再加54，应等于72。",
+        "certainty": "本题检查点；具体错误原因需结合本次过程核实"
+      },
+      "teaching": {
+        "goal": "先算两块香皂的总价。",
+        "prerequisites": [
+          "数位与四则计算",
+          "加减、乘除的互逆关系"
+        ],
+        "focus": "72元去掉牙膏54元，剩下的才平均分。 先求2块香皂总价：72－54＝18；每块：18÷2＝9",
+        "recallPrompt": "收起讲解，用自己的话说：先算两块香皂的总价，为什么？",
+        "transferPrompt": "自编迁移（不计入历史错题）：小票合计82元，牙膏共54元，另外2块相同香皂。每块多少钱？",
+        "reference": {
+          "label": "四上《学习笔记同步教材》（项目目录：金牌数学）",
+          "unit": "运算关系；四则运算",
+          "pages": "书本第3–6、45–47页",
+          "scope": "方法依据；本题来源另见题目来源。采用已核概念文字，未把OCR公式当作标准答案。"
+        },
+        "transferCheck": "(82－54)÷2＝14元；14×2＋54＝82。",
+        "transferSource": "authored-practice-not-historical-error"
+      },
+      "visual": {
+        "kind": "teaching",
+        "caption": "教学示意：小票总价分成牙膏与香皂",
+        "alt": "小票总价分成牙膏与香皂",
+        "required": true,
+        "reason": "图示将本题的关键数量关系或运算对象显出来。"
+      },
+      "teachingImage": {
+        "src": "../assets/math-mistakes/eddey-upgrade-receipt-parts.svg",
+        "alt": "小票总价分成牙膏与香皂",
+        "caption": "教学示意：小票总价分成牙膏与香皂"
+      }
     },
     {
       "id": "E-M-816",
@@ -456,10 +1040,51 @@
         "date": "2026-09-13",
         "label": "一课一练数学（本次已归档四上材料）",
         "kind": "original",
-        "question": "E23"
+        "question": "6（6）",
+        "material": "一课一练数学（本次已归档四上材料）",
+        "dateLabel": "资料记录日期",
+        "locatorStatus": "题号已核，纸页未记录",
+        "note": "日期为资料记录或收卷日期；不据此认定实际作答日。纸页未记录。"
       },
       "status": "ready",
-      "recordType": "confirmed-error"
+      "recordType": "confirmed-error",
+      "diagnosis": {
+        "type": "数量关系",
+        "breakpoint": "公式里要代入标准体重。",
+        "reason": "多出的16千克不是标准体重。",
+        "check": "所得身高减105再加16，应回到90。",
+        "certainty": "本题检查点；具体错误原因需结合本次过程核实"
+      },
+      "teaching": {
+        "goal": "公式里要代入标准体重。",
+        "prerequisites": [
+          "部分与整体",
+          "每份量、份数和总量"
+        ],
+        "focus": "多出的16千克不是标准体重。 16千克是超出的部分；标准体重：90－16＝74；身高：74＋105＝179",
+        "recallPrompt": "收起讲解，用自己的话说：公式里要代入标准体重，为什么？",
+        "transferPrompt": "自编迁移（不计入历史错题）：实际体重80千克，比标准多10千克；标准＝身高－105。身高多少厘米？",
+        "reference": {
+          "label": "四上《学习笔记同步教材》（项目目录：金牌数学）",
+          "unit": "复合应用题；工作效率",
+          "pages": "书本第54–60页",
+          "scope": "方法依据；本题来源另见题目来源。采用已核概念文字，未把OCR公式当作标准答案。"
+        },
+        "transferCheck": "标准80－10＝70千克；身高70＋105＝175厘米。",
+        "transferSource": "authored-practice-not-historical-error"
+      },
+      "visual": {
+        "kind": "teaching",
+        "caption": "教学条形图：90千克由标准体重与超出16千克组成，条长按数量比例示意。",
+        "alt": "实际体重包括标准与超出部分",
+        "required": true,
+        "reason": "图示将本题的关键数量关系或运算对象显出来。"
+      },
+      "teachingImage": {
+        "src": "../assets/math-mistakes/eddey-upgrade-weight-parts.svg",
+        "alt": "实际体重包括标准与超出部分",
+        "caption": "教学条形图：90千克由标准体重与超出16千克组成，条长按数量比例示意。"
+      }
     },
     {
       "id": "E-M-872",
@@ -483,10 +1108,47 @@
         "date": "2026-09-16",
         "label": "一课一练数学：运算关系与运算律",
         "kind": "original",
-        "question": "P5-Q10"
+        "question": "（10）",
+        "material": "一课一练数学：运算关系与运算律",
+        "dateLabel": "资料记录日期",
+        "locatorStatus": "页码与题号已核",
+        "note": "日期为资料记录或收卷日期；不据此认定实际作答日。",
+        "page": 5
       },
       "status": "ready",
-      "recordType": "confirmed-error"
+      "recordType": "confirmed-error",
+      "diagnosis": {
+        "type": "等价变形",
+        "breakpoint": "先把13×2合成26。",
+        "reason": "两项都有26，才能合成26乘一个差。",
+        "check": "展开26×(171－71)，应回到原式。",
+        "certainty": "本题检查点；具体错误原因需结合本次过程核实"
+      },
+      "teaching": {
+        "goal": "先把13×2合成26。",
+        "prerequisites": [
+          "乘法的意义",
+          "因数与项的区别"
+        ],
+        "focus": "两项都有26，才能合成26乘一个差。 先把13×2变成26；26×171－26×71；26×(171－71)＝2600",
+        "recallPrompt": "收起讲解，用自己的话说：先把13×2合成26，为什么？",
+        "transferPrompt": "自编迁移（不计入历史错题）：把原题71改成61：26×171－13×61×2。先预测积的差怎样变，再简算。",
+        "reference": {
+          "label": "四上《学习笔记同步教材》（项目目录：金牌数学）",
+          "unit": "运算律；辨易误与简算方法",
+          "pages": "书本第10–22页",
+          "scope": "方法依据；本题来源另见题目来源。采用已核概念文字，未把OCR公式当作标准答案。"
+        },
+        "transferCheck": "26×(171－61)＝2860；减去的量少260，结果比原题多260。",
+        "transferSource": "authored-practice-not-historical-error"
+      },
+      "visual": {
+        "kind": "none",
+        "caption": "",
+        "alt": "",
+        "required": false,
+        "reason": "当前题意可用完整算式和分步过程表达；不添加装饰图。"
+      }
     },
     {
       "id": "E-M-873",
@@ -510,10 +1172,47 @@
         "date": "2026-09-16",
         "label": "一课一练数学：运算关系与运算律",
         "kind": "original",
-        "question": "P5-Q11"
+        "question": "（11）",
+        "material": "一课一练数学：运算关系与运算律",
+        "dateLabel": "资料记录日期",
+        "locatorStatus": "页码与题号已核",
+        "note": "日期为资料记录或收卷日期；不据此认定实际作答日。",
+        "page": 5
       },
       "status": "ready",
-      "recordType": "confirmed-error"
+      "recordType": "confirmed-error",
+      "diagnosis": {
+        "type": "等价变形",
+        "breakpoint": "只合并具有共同因数的两项。",
+        "reason": "第三项先保留，不能把所有数随意相加连乘。",
+        "check": "每次展开括号，应与上一行完全等值。",
+        "certainty": "本题检查点；具体错误原因需结合本次过程核实"
+      },
+      "teaching": {
+        "goal": "只合并具有共同因数的两项。",
+        "prerequisites": [
+          "乘法的意义",
+          "因数与项的区别"
+        ],
+        "focus": "第三项先保留，不能把所有数随意相加连乘。 前两项都有43：43×(24＋57)＋81×57；43×81＋81×57；81×(43＋57)＝8100",
+        "recallPrompt": "收起讲解，用自己的话说：只合并具有共同因数的两项，为什么？",
+        "transferPrompt": "自编迁移（不计入历史错题）：算42×23＋57×42＋80×57。先只合并前两项，再看新的共同因数。",
+        "reference": {
+          "label": "四上《学习笔记同步教材》（项目目录：金牌数学）",
+          "unit": "运算律；辨易误与简算方法",
+          "pages": "书本第10–22页",
+          "scope": "方法依据；本题来源另见题目来源。采用已核概念文字，未把OCR公式当作标准答案。"
+        },
+        "transferCheck": "42×80＋80×57＝80×(42＋57)＝80×99＝7920。",
+        "transferSource": "authored-practice-not-historical-error"
+      },
+      "visual": {
+        "kind": "none",
+        "caption": "",
+        "alt": "",
+        "required": false,
+        "reason": "当前题意可用完整算式和分步过程表达；不添加装饰图。"
+      }
     },
     {
       "id": "E-M-1000",
@@ -538,10 +1237,47 @@
         "label": "数学练习原题",
         "kind": "original",
         "page": 24,
-        "question": "mixed-644"
+        "question": "2·第3行右",
+        "scanPage": 36,
+        "material": "数学练习册（书名未记录）",
+        "dateLabel": "资料记录日期",
+        "locatorStatus": "页码与题号已核",
+        "note": "日期为资料记录或收卷日期；不据此认定实际作答日。"
       },
       "status": "ready",
-      "recordType": "confirmed-error"
+      "recordType": "confirmed-error",
+      "diagnosis": {
+        "type": "运算顺序",
+        "breakpoint": "只有36要乘12。",
+        "reason": "644和56在加减部分，不能一起乘12。",
+        "check": "先单算36×12，再与原式逐项核对。",
+        "certainty": "本题检查点；具体错误原因需结合本次过程核实"
+      },
+      "teaching": {
+        "goal": "只有36要乘12。",
+        "prerequisites": [
+          "先乘除后加减",
+          "括号表示一个整体"
+        ],
+        "focus": "644和56在加减部分，不能一起乘12。 先乘后加减，不能把644也乘12；36×12＝432；644＋56－432＝268",
+        "recallPrompt": "收起讲解，用自己的话说：只有36要乘12，为什么？",
+        "transferPrompt": "自编迁移（不计入历史错题）：不添加括号，计算240－80÷4×3。先标出每一步，再算。",
+        "reference": {
+          "label": "四上《学习笔记同步教材》（项目目录：金牌数学）",
+          "unit": "四则运算；分步式合并",
+          "pages": "书本第45–50页",
+          "scope": "方法依据；本题来源另见题目来源。采用已核概念文字，未把OCR公式当作标准答案。"
+        },
+        "transferCheck": "先80÷4＝20，再20×3＝60，最后240－60＝180。",
+        "transferSource": "authored-practice-not-historical-error"
+      },
+      "visual": {
+        "kind": "none",
+        "caption": "",
+        "alt": "",
+        "required": false,
+        "reason": "当前题意可用完整算式和分步过程表达；不添加装饰图。"
+      }
     },
     {
       "id": "E-M-1001",
@@ -566,10 +1302,47 @@
         "label": "数学练习原题",
         "kind": "original",
         "page": 24,
-        "question": "correction-360"
+        "question": "3(1)",
+        "scanPage": 36,
+        "material": "数学练习册（书名未记录）",
+        "dateLabel": "资料记录日期",
+        "locatorStatus": "页码与题号已核",
+        "note": "日期为资料记录或收卷日期；不据此认定实际作答日。"
       },
       "status": "ready",
-      "recordType": "confirmed-error"
+      "recordType": "confirmed-error",
+      "diagnosis": {
+        "type": "计算检查",
+        "breakpoint": "先把除乘部分算成一个数。",
+        "reason": "从左到右算300÷5×6，最后才相加。",
+        "check": "最后两个加数相同，结果应是其中一个的2倍。",
+        "certainty": "本题检查点；具体错误原因需结合本次过程核实"
+      },
+      "teaching": {
+        "goal": "先把除乘部分算成一个数。",
+        "prerequisites": [
+          "先乘除后加减",
+          "括号表示一个整体"
+        ],
+        "focus": "从左到右算300÷5×6，最后才相加。 先依次算除法和乘法；300÷5×6＝60×6＝360；360＋360＝720",
+        "recallPrompt": "收起讲解，用自己的话说：先把除乘部分算成一个数，为什么？",
+        "transferPrompt": "自编迁移（不计入历史错题）：把开头的360改成460，计算460＋300÷5×6；先写乘除部分，再核最后的和。",
+        "reference": {
+          "label": "四上《学习笔记同步教材》（项目目录：金牌数学）",
+          "unit": "四则运算；分步式合并",
+          "pages": "书本第45–50页",
+          "scope": "方法依据；本题来源另见题目来源。采用已核概念文字，未把OCR公式当作标准答案。"
+        },
+        "transferCheck": "300÷5×6＝360；460＋360＝820；没有再乘10的步骤。",
+        "transferSource": "authored-practice-not-historical-error"
+      },
+      "visual": {
+        "kind": "none",
+        "caption": "",
+        "alt": "",
+        "required": false,
+        "reason": "当前题意可用完整算式和分步过程表达；不添加装饰图。"
+      }
     },
     {
       "id": "E-M-1003",
@@ -592,10 +1365,48 @@
         "date": "2026-10-03",
         "label": "数学原卷 · 扫描第38页",
         "kind": "original",
-        "question": "mixed-480"
+        "question": "1·第3行左",
+        "scanPage": 38,
+        "material": "数学练习册（书名未记录）",
+        "dateLabel": "资料记录日期",
+        "locatorStatus": "页码与题号已核",
+        "note": "日期为资料记录或收卷日期；不据此认定实际作答日。",
+        "page": 26
       },
       "status": "ready",
-      "recordType": "confirmed-error"
+      "recordType": "confirmed-error",
+      "diagnosis": {
+        "type": "计算检查",
+        "breakpoint": "先核括号内，再核最后的×6。",
+        "reason": "括号内有加减，要从左到右。",
+        "check": "把最后结果除以6，能回到括号内的数吗？",
+        "certainty": "本题检查点；具体错误原因需结合本次过程核实"
+      },
+      "teaching": {
+        "goal": "先核括号内，再核最后的×6。",
+        "prerequisites": [
+          "数位与四则计算",
+          "加减、乘除的互逆关系"
+        ],
+        "focus": "括号内有加减，要从左到右。 括号内加减从左到右：480－64＋36＝452；452×6＝2712",
+        "recallPrompt": "收起讲解，用自己的话说：先核括号内，再核最后的×6，为什么？",
+        "transferPrompt": "自编迁移（不计入历史错题）：另算一道：48×15。先拆出两个部分积，再用另一种算法核对。",
+        "reference": {
+          "label": "四上《学习笔记同步教材》（项目目录：金牌数学）",
+          "unit": "运算关系；四则运算",
+          "pages": "书本第3–6、45–47页",
+          "scope": "方法依据；本题来源另见题目来源。采用已核概念文字，未把OCR公式当作标准答案。"
+        },
+        "transferCheck": "48×10＋48×5＝480＋240＝720；也可用48×(30÷2)＝1440÷2。",
+        "transferSource": "authored-practice-not-historical-error"
+      },
+      "visual": {
+        "kind": "none",
+        "caption": "",
+        "alt": "",
+        "required": false,
+        "reason": "当前题意可用完整算式和分步过程表达；不添加装饰图。"
+      }
     },
     {
       "id": "E-M-1004",
@@ -621,13 +1432,50 @@
         "label": "数学练习原题",
         "kind": "original",
         "page": 29,
-        "question": "brackets-1"
+        "question": "B级1(1)",
+        "scanPage": 41,
+        "material": "数学练习册（书名未记录）",
+        "dateLabel": "资料记录日期",
+        "locatorStatus": "页码与题号已核",
+        "note": "日期为资料记录或收卷日期；不据此认定实际作答日。"
       },
       "status": "ready",
       "recordType": "confirmed-error",
       "answerFormat": "brackets",
       "baseExpression": "500－350＋150÷50×2",
-      "expectedValue": 0
+      "expectedValue": 0,
+      "diagnosis": {
+        "type": "括号范围",
+        "breakpoint": "要得到0，先找能相减成0的两块。",
+        "reason": "350＋150正好能与500比较。",
+        "check": "按新括号顺序逐步计算，检查是否得到0。",
+        "certainty": "本题检查点；具体错误原因需结合本次过程核实"
+      },
+      "teaching": {
+        "goal": "要得到0，先找能相减成0的两块。",
+        "prerequisites": [
+          "先乘除后加减",
+          "括号表示一个整体"
+        ],
+        "focus": "350＋150正好能与500比较。 先让350＋150变成500；500－500得到0；[500－(350＋150)]÷50×2＝0",
+        "recallPrompt": "收起讲解，用自己的话说：要得到0，先找能相减成0的两块，为什么？",
+        "transferPrompt": "自编迁移（不计入历史错题）：把“60－20＝40；40÷5＝8；8×3＝24”合并成一个算式。",
+        "reference": {
+          "label": "四上《学习笔记同步教材》（项目目录：金牌数学）",
+          "unit": "四则运算；分步式合并",
+          "pages": "书本第45–50页",
+          "scope": "方法依据；本题来源另见题目来源。采用已核概念文字，未把OCR公式当作标准答案。"
+        },
+        "transferCheck": "(60－20)÷5×3＝24；先减需要括号，之后除乘从左到右。",
+        "transferSource": "authored-practice-not-historical-error"
+      },
+      "visual": {
+        "kind": "none",
+        "caption": "",
+        "alt": "",
+        "required": false,
+        "reason": "当前题意可用完整算式和分步过程表达；不添加装饰图。"
+      }
     },
     {
       "id": "E-M-1005",
@@ -640,10 +1488,10 @@
         "(500－350＋150)÷(50×2)＝3"
       ],
       "unit": "",
-      "hint": "分子需要300，分母需要100",
-      "explanation": "分子需要300，分母需要100；500－350＋150＝300；(500－350＋150)÷(50×2)＝3",
+      "hint": "被除数可以凑成300，除数可以凑成100。",
+      "explanation": "被除数可以凑成300，除数可以凑成100；500－350＋150＝300；(500－350＋150)÷(50×2)＝3",
       "steps": [
-        "分子需要300，分母需要100",
+        "被除数可以凑成300，除数可以凑成100",
         "500－350＋150＝300",
         "(500－350＋150)÷(50×2)＝3"
       ],
@@ -652,13 +1500,50 @@
         "label": "数学练习原题",
         "kind": "original",
         "page": 29,
-        "question": "brackets-2"
+        "question": "B级1(2)",
+        "scanPage": 41,
+        "material": "数学练习册（书名未记录）",
+        "dateLabel": "资料记录日期",
+        "locatorStatus": "页码与题号已核",
+        "note": "日期为资料记录或收卷日期；不据此认定实际作答日。"
       },
       "status": "ready",
       "recordType": "confirmed-error",
       "answerFormat": "brackets",
       "baseExpression": "500－350＋150÷50×2",
-      "expectedValue": 3
+      "expectedValue": 3,
+      "diagnosis": {
+        "type": "括号范围",
+        "breakpoint": "把被除数和除数分别看成整体。",
+        "reason": "得到3需要两个整体之间满足3倍关系。",
+        "check": "数字和算符不变，只检查括号后的结果。",
+        "certainty": "本题检查点；具体错误原因需结合本次过程核实"
+      },
+      "teaching": {
+        "goal": "把被除数和除数分别看成整体。",
+        "prerequisites": [
+          "先乘除后加减",
+          "括号表示一个整体"
+        ],
+        "focus": "得到3需要两个整体之间满足3倍关系。 被除数可以凑成300，除数可以凑成100；500－350＋150＝300；(500－350＋150)÷(50×2)＝3",
+        "recallPrompt": "收起讲解，用自己的话说：把被除数和除数分别看成整体，为什么？",
+        "transferPrompt": "自编迁移（不计入历史错题）：把“60－20＝40；40÷5＝8；8×3＝24”合并成一个算式。",
+        "reference": {
+          "label": "四上《学习笔记同步教材》（项目目录：金牌数学）",
+          "unit": "四则运算；分步式合并",
+          "pages": "书本第45–50页",
+          "scope": "方法依据；本题来源另见题目来源。采用已核概念文字，未把OCR公式当作标准答案。"
+        },
+        "transferCheck": "(60－20)÷5×3＝24；先减需要括号，之后除乘从左到右。",
+        "transferSource": "authored-practice-not-historical-error"
+      },
+      "visual": {
+        "kind": "none",
+        "caption": "",
+        "alt": "",
+        "required": false,
+        "reason": "当前题意可用完整算式和分步过程表达；不添加装饰图。"
+      }
     },
     {
       "id": "E-M-1006",
@@ -683,13 +1568,50 @@
         "label": "数学练习原题",
         "kind": "original",
         "page": 29,
-        "question": "brackets-3"
+        "question": "B级1(3)",
+        "scanPage": 41,
+        "material": "数学练习册（书名未记录）",
+        "dateLabel": "资料记录日期",
+        "locatorStatus": "页码与题号已核",
+        "note": "日期为资料记录或收卷日期；不据此认定实际作答日。"
       },
       "status": "ready",
       "recordType": "confirmed-error",
       "answerFormat": "brackets",
       "baseExpression": "500－350＋150÷50×2",
-      "expectedValue": 480
+      "expectedValue": 480,
+      "diagnosis": {
+        "type": "括号范围",
+        "breakpoint": "从500减去的整体应是多少？",
+        "reason": "目标480比500少20，要让减数成为20。",
+        "check": "先算完整减数，再做500减它。",
+        "certainty": "本题检查点；具体错误原因需结合本次过程核实"
+      },
+      "teaching": {
+        "goal": "从500减去的整体应是多少？",
+        "prerequisites": [
+          "先乘除后加减",
+          "括号表示一个整体"
+        ],
+        "focus": "目标480比500少20，要让减数成为20。 从500减20可以得到480；把350＋150先算为500；500÷50×2＝20，所以500－(350＋150)÷50×2＝480",
+        "recallPrompt": "收起讲解，用自己的话说：从500减去的整体应是多少？，为什么？",
+        "transferPrompt": "自编迁移（不计入历史错题）：把“60－20＝40；40÷5＝8；8×3＝24”合并成一个算式。",
+        "reference": {
+          "label": "四上《学习笔记同步教材》（项目目录：金牌数学）",
+          "unit": "四则运算；分步式合并",
+          "pages": "书本第45–50页",
+          "scope": "方法依据；本题来源另见题目来源。采用已核概念文字，未把OCR公式当作标准答案。"
+        },
+        "transferCheck": "(60－20)÷5×3＝24；先减需要括号，之后除乘从左到右。",
+        "transferSource": "authored-practice-not-historical-error"
+      },
+      "visual": {
+        "kind": "none",
+        "caption": "",
+        "alt": "",
+        "required": false,
+        "reason": "当前题意可用完整算式和分步过程表达；不添加装饰图。"
+      }
     },
     {
       "id": "E-M-1007",
@@ -714,10 +1636,50 @@
         "label": "数学练习原题",
         "kind": "reconstructed",
         "page": 30,
-        "question": "tree-164"
+        "question": "1·右图",
+        "scanPage": 42,
+        "material": "数学练习册（书名未记录）",
+        "dateLabel": "资料记录日期",
+        "locatorStatus": "页码与题号已核",
+        "note": "日期为资料记录或收卷日期；不据此认定实际作答日。题意与条件保留，按已核记录重新排版。"
       },
       "status": "ready",
-      "recordType": "confirmed-error"
+      "recordType": "confirmed-error",
+      "diagnosis": {
+        "type": "计算检查",
+        "breakpoint": "164÷4要先独立验算。",
+        "reason": "两枝先分别计算，最后只把两个结果相加。",
+        "check": "商乘4应为164，再核两枝的和。",
+        "certainty": "本题检查点；具体错误原因需结合本次过程核实"
+      },
+      "teaching": {
+        "goal": "164÷4要先独立验算。",
+        "prerequisites": [
+          "先乘除后加减",
+          "括号表示一个整体"
+        ],
+        "focus": "两枝先分别计算，最后只把两个结果相加。 164÷4＝41；20×5＝100；164÷4＋20×5＝141",
+        "recallPrompt": "收起讲解，用自己的话说：164÷4要先独立验算，为什么？",
+        "transferPrompt": "自编迁移（不计入历史错题）：树状算图左枝改为168÷4，右枝仍20×5。合并后结果是多少？先验算左枝。",
+        "reference": {
+          "label": "四上《学习笔记同步教材》（项目目录：金牌数学）",
+          "unit": "四则运算；分步式合并",
+          "pages": "书本第45–50页",
+          "scope": "方法依据；本题来源另见题目来源。采用已核概念文字，未把OCR公式当作标准答案。"
+        },
+        "transferCheck": "168÷4＝42；20×5＝100；42＋100＝142。",
+        "transferSource": "authored-practice-not-historical-error"
+      },
+      "visual": {
+        "kind": "question",
+        "caption": "按原题条件重绘，空框由你填写。",
+        "alt": "两枝分别计算再相加",
+        "required": true,
+        "reason": "题面用图表达运算、数据或位置关系。"
+      },
+      "image": "../assets/math-mistakes/eddey-upgrade-tree-164.svg",
+      "diagramAlt": "两枝分别计算再相加",
+      "diagramCaption": "按原题条件重绘，空框由你填写。"
     },
     {
       "id": "E-M-1008",
@@ -743,11 +1705,48 @@
         "label": "数学练习原题",
         "kind": "original",
         "page": 30,
-        "question": "combine-12"
+        "question": "2(2)",
+        "scanPage": 42,
+        "material": "数学练习册（书名未记录）",
+        "dateLabel": "资料记录日期",
+        "locatorStatus": "页码与题号已核",
+        "note": "日期为资料记录或收卷日期；不据此认定实际作答日。"
       },
       "status": "ready",
       "recordType": "confirmed-error",
-      "answerFormat": "expression"
+      "answerFormat": "expression",
+      "diagnosis": {
+        "type": "综合式结构",
+        "breakpoint": "从最后的27－9开始替换。",
+        "reason": "12是原始数据，15才是3×5的中间结果。",
+        "check": "合并式应能还原15、27、18三步。",
+        "certainty": "本题检查点；具体错误原因需结合本次过程核实"
+      },
+      "teaching": {
+        "goal": "从最后的27－9开始替换。",
+        "prerequisites": [
+          "找最后一步",
+          "整体替换与括号"
+        ],
+        "focus": "12是原始数据，15才是3×5的中间结果。 从最后一步27－9开始；把27换成12＋15；把15换成3×5：12＋3×5－9＝18",
+        "recallPrompt": "收起讲解，用自己的话说：从最后的27－9开始替换，为什么？",
+        "transferPrompt": "自编迁移（不计入历史错题）：把3×5＝15、14＋15＝29、29－9＝20合并成综合式。",
+        "reference": {
+          "label": "四上《学习笔记同步教材》（项目目录：金牌数学）",
+          "unit": "把分步算式列成一个算式",
+          "pages": "书本第48–50页",
+          "scope": "方法依据；本题来源另见题目来源。采用已核概念文字，未把OCR公式当作标准答案。"
+        },
+        "transferCheck": "14＋3×5－9＝20；原数14保留，15和29被来源替换。",
+        "transferSource": "authored-practice-not-historical-error"
+      },
+      "visual": {
+        "kind": "none",
+        "caption": "",
+        "alt": "",
+        "required": false,
+        "reason": "当前题意可用完整算式和分步过程表达；不添加装饰图。"
+      }
     },
     {
       "id": "E-M-1009",
@@ -773,11 +1772,48 @@
         "label": "数学练习原题",
         "kind": "original",
         "page": 31,
-        "question": "combine-4"
+        "question": "A级2(4)",
+        "scanPage": 43,
+        "material": "数学练习册（书名未记录）",
+        "dateLabel": "资料记录日期",
+        "locatorStatus": "页码与题号已核",
+        "note": "日期为资料记录或收卷日期；不据此认定实际作答日。"
       },
       "status": "ready",
       "recordType": "confirmed-error",
-      "answerFormat": "expression"
+      "answerFormat": "expression",
+      "diagnosis": {
+        "type": "综合式结构",
+        "breakpoint": "最后一步是60减10。",
+        "reason": "替换中间数不能交换被减数和减数。",
+        "check": "检查式子左块得60、右块得10。",
+        "certainty": "本题检查点；具体错误原因需结合本次过程核实"
+      },
+      "teaching": {
+        "goal": "最后一步是60减10。",
+        "prerequisites": [
+          "找最后一步",
+          "整体替换与括号"
+        ],
+        "focus": "替换中间数不能交换被减数和减数。 最后是60减10，顺序不能反过来；把两个中间数换回来源；(120－60)－50÷5＝50",
+        "recallPrompt": "收起讲解，用自己的话说：最后一步是60减10，为什么？",
+        "transferPrompt": "自编迁移（不计入历史错题）：把130－60＝70、50÷5＝10、70－10＝60合并成综合式。",
+        "reference": {
+          "label": "四上《学习笔记同步教材》（项目目录：金牌数学）",
+          "unit": "把分步算式列成一个算式",
+          "pages": "书本第48–50页",
+          "scope": "方法依据；本题来源另见题目来源。采用已核概念文字，未把OCR公式当作标准答案。"
+        },
+        "transferCheck": "(130－60)－50÷5＝60，仍是左边70减右边10。",
+        "transferSource": "authored-practice-not-historical-error"
+      },
+      "visual": {
+        "kind": "none",
+        "caption": "",
+        "alt": "",
+        "required": false,
+        "reason": "当前题意可用完整算式和分步过程表达；不添加装饰图。"
+      }
     },
     {
       "id": "E-M-1010",
@@ -803,11 +1839,48 @@
         "label": "数学练习原题",
         "kind": "original",
         "page": 31,
-        "question": "combine-5"
+        "question": "A级2(5)",
+        "scanPage": 43,
+        "material": "数学练习册（书名未记录）",
+        "dateLabel": "资料记录日期",
+        "locatorStatus": "页码与题号已核",
+        "note": "日期为资料记录或收卷日期；不据此认定实际作答日。"
       },
       "status": "ready",
       "recordType": "confirmed-error",
-      "answerFormat": "expression"
+      "answerFormat": "expression",
+      "diagnosis": {
+        "type": "综合式结构",
+        "breakpoint": "最后一步的112必须保留。",
+        "reason": "92和23是中间结果，要换回完整来源。",
+        "check": "合并式应依次还原23、92、20。",
+        "certainty": "本题检查点；具体错误原因需结合本次过程核实"
+      },
+      "teaching": {
+        "goal": "最后一步的112必须保留。",
+        "prerequisites": [
+          "找最后一步",
+          "整体替换与括号"
+        ],
+        "focus": "92和23是中间结果，要换回完整来源。 从最后一步112－92开始；把92替换为23×4；把23替换为368÷16：112－368÷16×4＝20",
+        "recallPrompt": "收起讲解，用自己的话说：最后一步的112必须保留，为什么？",
+        "transferPrompt": "自编迁移（不计入历史错题）：把“84÷7＝12；12×3＝36；50－36＝14”合并成一个算式。",
+        "reference": {
+          "label": "四上《学习笔记同步教材》（项目目录：金牌数学）",
+          "unit": "把分步算式列成一个算式",
+          "pages": "书本第48–50页",
+          "scope": "方法依据；本题来源另见题目来源。采用已核概念文字，未把OCR公式当作标准答案。"
+        },
+        "transferCheck": "50－84÷7×3＝14；先保留最后一步50减去整块，再替换36和12。",
+        "transferSource": "authored-practice-not-historical-error"
+      },
+      "visual": {
+        "kind": "none",
+        "caption": "",
+        "alt": "",
+        "required": false,
+        "reason": "当前题意可用完整算式和分步过程表达；不添加装饰图。"
+      }
     },
     {
       "id": "E-M-1012",
@@ -833,11 +1906,48 @@
         "label": "数学练习原题",
         "kind": "original",
         "page": 33,
-        "question": "combine-2"
+        "question": "A级2(2)",
+        "scanPage": 45,
+        "material": "数学练习册（书名未记录）",
+        "dateLabel": "资料记录日期",
+        "locatorStatus": "页码与题号已核",
+        "note": "日期为资料记录或收卷日期；不据此认定实际作答日。"
       },
       "status": "ready",
       "recordType": "confirmed-error",
-      "answerFormat": "expression"
+      "answerFormat": "expression",
+      "diagnosis": {
+        "type": "括号范围",
+        "breakpoint": "816减的是整个640。",
+        "reason": "640的来源125×8－360必须作为一整块。",
+        "check": "先算减数这一块，再用816减它。",
+        "certainty": "本题检查点；具体错误原因需结合本次过程核实"
+      },
+      "teaching": {
+        "goal": "816减的是整个640。",
+        "prerequisites": [
+          "先乘除后加减",
+          "括号表示一个整体"
+        ],
+        "focus": "640的来源125×8－360必须作为一整块。 816减去的是整个640；用括号装住640的来源；816－(125×8－360)＝176",
+        "recallPrompt": "收起讲解，用自己的话说：816减的是整个640，为什么？",
+        "transferPrompt": "自编迁移（不计入历史错题）：把125×8＝1000、1000－360＝640、900－640＝260合并成综合式。",
+        "reference": {
+          "label": "四上《学习笔记同步教材》（项目目录：金牌数学）",
+          "unit": "四则运算；分步式合并",
+          "pages": "书本第45–50页",
+          "scope": "方法依据；本题来源另见题目来源。采用已核概念文字，未把OCR公式当作标准答案。"
+        },
+        "transferCheck": "900－(125×8－360)＝260；要减去完整640。",
+        "transferSource": "authored-practice-not-historical-error"
+      },
+      "visual": {
+        "kind": "none",
+        "caption": "",
+        "alt": "",
+        "required": false,
+        "reason": "当前题意可用完整算式和分步过程表达；不添加装饰图。"
+      }
     },
     {
       "id": "E-M-1014",
@@ -862,13 +1972,50 @@
         "label": "数学练习原题",
         "kind": "original",
         "page": 33,
-        "question": "brackets-442"
+        "question": "A级3(2)",
+        "scanPage": 45,
+        "material": "数学练习册（书名未记录）",
+        "dateLabel": "资料记录日期",
+        "locatorStatus": "页码与题号已核",
+        "note": "日期为资料记录或收卷日期；不据此认定实际作答日。"
       },
       "status": "ready",
       "recordType": "confirmed-error",
       "answerFormat": "brackets",
       "baseExpression": "480－360÷12＋8",
-      "expectedValue": 442
+      "expectedValue": 442,
+      "diagnosis": {
+        "type": "括号范围",
+        "breakpoint": "先确定要减去的整体。",
+        "reason": "480到442相差38，30和8要先合起来。",
+        "check": "检查括号内是否38，再做减法。",
+        "certainty": "本题检查点；具体错误原因需结合本次过程核实"
+      },
+      "teaching": {
+        "goal": "先确定要减去的整体。",
+        "prerequisites": [
+          "先乘除后加减",
+          "括号表示一个整体"
+        ],
+        "focus": "480到442相差38，30和8要先合起来。 要从480得到442，需要减去480－442＝38。 360÷12＋8＝30＋8＝38，所以要把这一整部分作为减数。 添加括号后为480－(360÷12＋8)＝480－38＝442。",
+        "recallPrompt": "收起讲解，用自己的话说：先确定要减去的整体，为什么？",
+        "transferPrompt": "自编迁移（不计入历史错题）：把“60－20＝40；40÷5＝8；8×3＝24”合并成一个算式。",
+        "reference": {
+          "label": "四上《学习笔记同步教材》（项目目录：金牌数学）",
+          "unit": "四则运算；分步式合并",
+          "pages": "书本第45–50页",
+          "scope": "方法依据；本题来源另见题目来源。采用已核概念文字，未把OCR公式当作标准答案。"
+        },
+        "transferCheck": "(60－20)÷5×3＝24；先减需要括号，之后除乘从左到右。",
+        "transferSource": "authored-practice-not-historical-error"
+      },
+      "visual": {
+        "kind": "none",
+        "caption": "",
+        "alt": "",
+        "required": false,
+        "reason": "当前题意可用完整算式和分步过程表达；不添加装饰图。"
+      }
     },
     {
       "id": "E-M-1015",
@@ -893,13 +2040,50 @@
         "label": "数学练习原题",
         "kind": "original",
         "page": 33,
-        "question": "minimum-38"
+        "question": "B级1",
+        "scanPage": 45,
+        "material": "数学练习册（书名未记录）",
+        "dateLabel": "资料记录日期",
+        "locatorStatus": "页码与题号已核",
+        "note": "日期为资料记录或收卷日期；不据此认定实际作答日。"
       },
       "status": "ready",
       "recordType": "confirmed-error",
       "answerFormat": "brackets",
       "baseExpression": "38×24－6＋17",
-      "expectedValue": 38
+      "expectedValue": 38,
+      "diagnosis": {
+        "type": "括号范围",
+        "breakpoint": "让乘38的整个因数尽量小。",
+        "reason": "24－(6＋17)能留下1，内外两层括号各有作用。",
+        "check": "先算最内层，再核完整乘积。",
+        "certainty": "本题检查点；具体错误原因需结合本次过程核实"
+      },
+      "teaching": {
+        "goal": "让乘38的整个因数尽量小。",
+        "prerequisites": [
+          "先乘除后加减",
+          "括号表示一个整体"
+        ],
+        "focus": "24－(6＋17)能留下1，内外两层括号各有作用。 让24减去6＋17，剩1；再用38乘1；38×[24－(6＋17)]＝38",
+        "recallPrompt": "收起讲解，用自己的话说：让乘38的整个因数尽量小，为什么？",
+        "transferPrompt": "自编迁移（不计入历史错题）：把“60－20＝40；40÷5＝8；8×3＝24”合并成一个算式。",
+        "reference": {
+          "label": "四上《学习笔记同步教材》（项目目录：金牌数学）",
+          "unit": "四则运算；分步式合并",
+          "pages": "书本第45–50页",
+          "scope": "方法依据；本题来源另见题目来源。采用已核概念文字，未把OCR公式当作标准答案。"
+        },
+        "transferCheck": "(60－20)÷5×3＝24；先减需要括号，之后除乘从左到右。",
+        "transferSource": "authored-practice-not-historical-error"
+      },
+      "visual": {
+        "kind": "none",
+        "caption": "",
+        "alt": "",
+        "required": false,
+        "reason": "当前题意可用完整算式和分步过程表达；不添加装饰图。"
+      }
     },
     {
       "id": "E-M-1016",
@@ -924,10 +2108,52 @@
         "label": "数学练习原题",
         "kind": "original",
         "page": 34,
-        "question": "inverse-divisor"
+        "question": "A级1",
+        "scanPage": 46,
+        "material": "数学练习册（书名未记录）",
+        "dateLabel": "资料记录日期",
+        "locatorStatus": "页码与题号已核",
+        "note": "日期为资料记录或收卷日期；不据此认定实际作答日。"
       },
       "status": "ready",
-      "recordType": "confirmed-error"
+      "recordType": "confirmed-error",
+      "diagnosis": {
+        "type": "逆运算",
+        "breakpoint": "102÷B＝3中，B是除数。",
+        "reason": "求除数用被除数除以商，不能只机械倒转符号。",
+        "check": "把求出的B代入102÷B，再向前检查。",
+        "certainty": "本题检查点；具体错误原因需结合本次过程核实"
+      },
+      "teaching": {
+        "goal": "102÷B＝3中，B是除数。",
+        "prerequisites": [
+          "加减、乘除的互逆关系",
+          "辨认运算中的各部分"
+        ],
+        "focus": "求除数用被除数除以商，不能只机械倒转符号。 先求B：102÷3＝34；向前倒推：34÷2＝17；17＋5＝22",
+        "recallPrompt": "收起讲解，用自己的话说：102÷B＝3中，B是除数，为什么？",
+        "transferPrompt": "自编迁移（不计入历史错题）：一个数减4再乘2得到B，84÷B＝3。原数是多少？",
+        "reference": {
+          "label": "四上《学习笔记同步教材》（项目目录：金牌数学）",
+          "unit": "运算关系；树状算图求未知数",
+          "pages": "书本第3–9、53页",
+          "scope": "方法依据；本题来源另见题目来源。采用已核概念文字，未把OCR公式当作标准答案。"
+        },
+        "transferCheck": "B＝84÷3＝28；28÷2＋4＝18；(18－4)×2＝28。",
+        "transferSource": "authored-practice-not-historical-error"
+      },
+      "visual": {
+        "kind": "teaching",
+        "caption": "教学示意：先认清未知量在除法中的位置",
+        "alt": "先认清未知量在除法中的位置",
+        "required": true,
+        "reason": "图示将本题的关键数量关系或运算对象显出来。"
+      },
+      "teachingImage": {
+        "src": "../assets/math-mistakes/eddey-upgrade-unknown-divisor.svg",
+        "alt": "先认清未知量在除法中的位置",
+        "caption": "教学示意：先认清未知量在除法中的位置"
+      }
     },
     {
       "id": "E-M-1017",
@@ -952,10 +2178,47 @@
         "label": "数学练习原题",
         "kind": "original",
         "page": 34,
-        "question": "mixed-79"
+        "question": "A级2(1)",
+        "scanPage": 46,
+        "material": "数学练习册（书名未记录）",
+        "dateLabel": "资料记录日期",
+        "locatorStatus": "页码与题号已核",
+        "note": "日期为资料记录或收卷日期；不据此认定实际作答日。"
       },
       "status": "ready",
-      "recordType": "confirmed-error"
+      "recordType": "confirmed-error",
+      "diagnosis": {
+        "type": "计算检查",
+        "breakpoint": "最后的339－190也要核对。",
+        "reason": "括号和乘法之后还剩一次减法。",
+        "check": "所得差加190，应等于113×3。",
+        "certainty": "本题检查点；具体错误原因需结合本次过程核实"
+      },
+      "teaching": {
+        "goal": "最后的339－190也要核对。",
+        "prerequisites": [
+          "数位与四则计算",
+          "加减、乘除的互逆关系"
+        ],
+        "focus": "括号和乘法之后还剩一次减法。 79＋34＝113；113×3＝339；339－190＝149",
+        "recallPrompt": "收起讲解，用自己的话说：最后的339－190也要核对，为什么？",
+        "transferPrompt": "自编迁移（不计入历史错题）：计算(79＋34)×3－180，先保留前两步，再核对最后一次减法。",
+        "reference": {
+          "label": "四上《学习笔记同步教材》（项目目录：金牌数学）",
+          "unit": "运算关系；四则运算",
+          "pages": "书本第3–6、45–47页",
+          "scope": "方法依据；本题来源另见题目来源。采用已核概念文字，未把OCR公式当作标准答案。"
+        },
+        "transferCheck": "79＋34＝113；113×3＝339；339－180＝159；159＋180＝339。",
+        "transferSource": "authored-practice-not-historical-error"
+      },
+      "visual": {
+        "kind": "none",
+        "caption": "",
+        "alt": "",
+        "required": false,
+        "reason": "当前题意可用完整算式和分步过程表达；不添加装饰图。"
+      }
     },
     {
       "id": "E-M-1018",
@@ -980,11 +2243,53 @@
         "label": "数学练习原题",
         "kind": "original",
         "page": 34,
-        "question": "inverse-brackets"
+        "question": "A级2(2)",
+        "scanPage": 46,
+        "material": "数学练习册（书名未记录）",
+        "dateLabel": "资料记录日期",
+        "locatorStatus": "页码与题号已核",
+        "note": "日期为资料记录或收卷日期；不据此认定实际作答日。"
       },
       "status": "ready",
       "recordType": "process-gap",
-      "processRequired": true
+      "processRequired": true,
+      "diagnosis": {
+        "type": "括号范围",
+        "breakpoint": "先倒推，再把前两步括成整体。",
+        "reason": "减5所得的整块才要乘10。",
+        "check": "把求出的原数依次除10、加5、乘2，应回到60。",
+        "certainty": "过程与表达检查；不等于数值计算错误"
+      },
+      "teaching": {
+        "goal": "先倒推，再把前两步括成整体。",
+        "prerequisites": [
+          "加减、乘除的互逆关系",
+          "辨认运算中的各部分"
+        ],
+        "focus": "减5所得的整块才要乘10。 倒推时先算60÷2；再减5；(60÷2－5)×10＝250",
+        "recallPrompt": "收起讲解，用自己的话说：先倒推，再把前两步括成整体，为什么？",
+        "transferPrompt": "自编迁移（不计入历史错题）：一个数先除10、再加5、最后乘2，输出改成70。求原数并写综合式。",
+        "reference": {
+          "label": "四上《学习笔记同步教材》（项目目录：金牌数学）",
+          "unit": "运算关系；树状算图求未知数",
+          "pages": "书本第3–9、53页",
+          "scope": "方法依据；本题来源另见题目来源。采用已核概念文字，未把OCR公式当作标准答案。"
+        },
+        "transferCheck": "(70÷2－5)×10＝300。",
+        "transferSource": "authored-practice-not-historical-error"
+      },
+      "visual": {
+        "kind": "teaching",
+        "caption": "教学示意：顺算与倒推逐步对应",
+        "alt": "顺算与倒推逐步对应",
+        "required": true,
+        "reason": "图示将本题的关键数量关系或运算对象显出来。"
+      },
+      "teachingImage": {
+        "src": "../assets/math-mistakes/eddey-upgrade-reverse-60.svg",
+        "alt": "顺算与倒推逐步对应",
+        "caption": "教学示意：顺算与倒推逐步对应"
+      }
     },
     {
       "id": "E-M-1019",
@@ -1009,11 +2314,51 @@
         "label": "数学练习原题",
         "kind": "reconstructed",
         "page": 35,
-        "question": "flow-forward"
+        "question": "A级5(1)",
+        "scanPage": 47,
+        "material": "数学练习册（书名未记录）",
+        "dateLabel": "资料记录日期",
+        "locatorStatus": "页码与题号已核",
+        "note": "日期为资料记录或收卷日期；不据此认定实际作答日。题意与条件保留，按已核记录重新排版。"
       },
       "status": "ready",
       "recordType": "process-gap",
-      "processRequired": true
+      "processRequired": true,
+      "diagnosis": {
+        "type": "括号范围",
+        "breakpoint": "除以2的是前两步的整个结果。",
+        "reason": "36×4－2不能拆成只让2再除2。",
+        "check": "把综合式拆回“乘4、减2、除2”。",
+        "certainty": "过程与表达检查；不等于数值计算错误"
+      },
+      "teaching": {
+        "goal": "除以2的是前两步的整个结果。",
+        "prerequisites": [
+          "先乘除后加减",
+          "括号表示一个整体"
+        ],
+        "focus": "36×4－2不能拆成只让2再除2。 36×4＝144；144－2＝142；(36×4－2)÷2＝71",
+        "recallPrompt": "收起讲解，用自己的话说：除以2的是前两步的整个结果，为什么？",
+        "transferPrompt": "自编迁移（不计入历史错题）：同一流程乘4、减2、除2，输入改为40。列综合式求输出。",
+        "reference": {
+          "label": "四上《学习笔记同步教材》（项目目录：金牌数学）",
+          "unit": "四则运算；分步式合并",
+          "pages": "书本第45–50页",
+          "scope": "方法依据；本题来源另见题目来源。采用已核概念文字，未把OCR公式当作标准答案。"
+        },
+        "transferCheck": "(40×4－2)÷2＝79，除2作用于前两步的整体。",
+        "transferSource": "authored-practice-not-historical-error"
+      },
+      "visual": {
+        "kind": "question",
+        "caption": "按原题条件重绘，空框由你填写。",
+        "alt": "输入36的计算流程",
+        "required": true,
+        "reason": "题面用图表达运算、数据或位置关系。"
+      },
+      "image": "../assets/math-mistakes/eddey-upgrade-flow-forward.svg",
+      "diagramAlt": "输入36的计算流程",
+      "diagramCaption": "按原题条件重绘，空框由你填写。"
     },
     {
       "id": "E-M-1020",
@@ -1038,11 +2383,51 @@
         "label": "数学练习原题",
         "kind": "reconstructed",
         "page": 35,
-        "question": "flow-inverse"
+        "question": "A级5(2)",
+        "scanPage": 47,
+        "material": "数学练习册（书名未记录）",
+        "dateLabel": "资料记录日期",
+        "locatorStatus": "页码与题号已核",
+        "note": "日期为资料记录或收卷日期；不据此认定实际作答日。题意与条件保留，按已核记录重新排版。"
       },
       "status": "ready",
       "recordType": "process-gap",
-      "processRequired": true
+      "processRequired": true,
+      "diagnosis": {
+        "type": "括号范围",
+        "breakpoint": "倒推要先乘2，再加2，最后除4。",
+        "reason": "除以4要作用于前两步的整个结果。",
+        "check": "将求得的输入数送回原流程，输出应为103。",
+        "certainty": "过程与表达检查；不等于数值计算错误"
+      },
+      "teaching": {
+        "goal": "倒推要先乘2，再加2，最后除4。",
+        "prerequisites": [
+          "加减、乘除的互逆关系",
+          "辨认运算中的各部分"
+        ],
+        "focus": "除以4要作用于前两步的整个结果。 反方向做相反的运算；先103×2，再加2，最后除以4；(103×2＋2)÷4＝52",
+        "recallPrompt": "收起讲解，用自己的话说：倒推要先乘2，再加2，最后除4，为什么？",
+        "transferPrompt": "自编迁移（不计入历史错题）：同一流程乘4、减2、除2，输出改为79。求输入数。",
+        "reference": {
+          "label": "四上《学习笔记同步教材》（项目目录：金牌数学）",
+          "unit": "运算关系；树状算图求未知数",
+          "pages": "书本第3–9、53页",
+          "scope": "方法依据；本题来源另见题目来源。采用已核概念文字，未把OCR公式当作标准答案。"
+        },
+        "transferCheck": "(79×2＋2)÷4＝40；顺算输出79。",
+        "transferSource": "authored-practice-not-historical-error"
+      },
+      "visual": {
+        "kind": "question",
+        "caption": "按原题条件重绘，空框由你填写。",
+        "alt": "输出103的计算流程",
+        "required": true,
+        "reason": "题面用图表达运算、数据或位置关系。"
+      },
+      "image": "../assets/math-mistakes/eddey-upgrade-flow-inverse.svg",
+      "diagramAlt": "输出103的计算流程",
+      "diagramCaption": "按原题条件重绘，空框由你填写。"
     },
     {
       "id": "E-M-970",
@@ -1065,10 +2450,47 @@
         "date": "2026-10-03",
         "label": "数学原卷 · 扫描第19页",
         "kind": "original",
-        "question": "sum-35"
+        "question": "一·第1行中",
+        "scanPage": 19,
+        "material": "2026学年第一学期四年级数学第1次阶段练习",
+        "dateLabel": "资料记录日期",
+        "locatorStatus": "页码与题号已核",
+        "note": "日期为资料记录或收卷日期；不据此认定实际作答日。纸页未记录。"
       },
       "status": "ready",
-      "recordType": "confirmed-error"
+      "recordType": "confirmed-error",
+      "diagnosis": {
+        "type": "计算检查",
+        "breakpoint": "把75拆成70和5。",
+        "reason": "35加70后，还要再加5。",
+        "check": "交换两个加数，再算一次核对。",
+        "certainty": "本题检查点；具体错误原因需结合本次过程核实"
+      },
+      "teaching": {
+        "goal": "把75拆成70和5。",
+        "prerequisites": [
+          "数位与四则计算",
+          "加减、乘除的互逆关系"
+        ],
+        "focus": "35加70后，还要再加5。 先算35＋70＝105；再加5，得110",
+        "recallPrompt": "收起讲解，用自己的话说：把75拆成70和5，为什么？",
+        "transferPrompt": "自编迁移（不计入历史错题）：计算45＋65，先处理个位进位，再用交换加数的方法核对。",
+        "reference": {
+          "label": "四上《学习笔记同步教材》（项目目录：金牌数学）",
+          "unit": "运算关系；四则运算",
+          "pages": "书本第3–6、45–47页",
+          "scope": "方法依据；本题来源另见题目来源。采用已核概念文字，未把OCR公式当作标准答案。"
+        },
+        "transferCheck": "45＋65＝110；个位5＋5＝10，向十位进1；65＋45也得110。",
+        "transferSource": "authored-practice-not-historical-error"
+      },
+      "visual": {
+        "kind": "none",
+        "caption": "",
+        "alt": "",
+        "required": false,
+        "reason": "当前题意可用完整算式和分步过程表达；不添加装饰图。"
+      }
     },
     {
       "id": "E-M-971",
@@ -1091,10 +2513,47 @@
         "date": "2026-10-03",
         "label": "数学原卷 · 扫描第19页",
         "kind": "original",
-        "question": "multiply-198"
+        "question": "三·第2行左",
+        "scanPage": 19,
+        "material": "2026学年第一学期四年级数学第1次阶段练习",
+        "dateLabel": "资料记录日期",
+        "locatorStatus": "页码与题号已核",
+        "note": "日期为资料记录或收卷日期；不据此认定实际作答日。纸页未记录。"
       },
       "status": "ready",
-      "recordType": "confirmed-error"
+      "recordType": "confirmed-error",
+      "diagnosis": {
+        "type": "计算检查",
+        "breakpoint": "拆分乘积后，最后合并也要检查。",
+        "reason": "198可看成200－2，两个部分对应同一个36。",
+        "check": "结果加72，应等于200×36。",
+        "certainty": "本题检查点；具体错误原因需结合本次过程核实"
+      },
+      "teaching": {
+        "goal": "拆分乘积后，最后合并也要检查。",
+        "prerequisites": [
+          "数位与四则计算",
+          "加减、乘除的互逆关系"
+        ],
+        "focus": "198可看成200－2，两个部分对应同一个36。 198×36＝(200－2)×36；7200－72＝7128",
+        "recallPrompt": "收起讲解，用自己的话说：拆分乘积后，最后合并也要检查，为什么？",
+        "transferPrompt": "自编迁移（不计入历史错题）：另算一道：48×15。先拆出两个部分积，再用另一种算法核对。",
+        "reference": {
+          "label": "四上《学习笔记同步教材》（项目目录：金牌数学）",
+          "unit": "运算关系；四则运算",
+          "pages": "书本第3–6、45–47页",
+          "scope": "方法依据；本题来源另见题目来源。采用已核概念文字，未把OCR公式当作标准答案。"
+        },
+        "transferCheck": "48×10＋48×5＝480＋240＝720；也可用48×(30÷2)＝1440÷2。",
+        "transferSource": "authored-practice-not-historical-error"
+      },
+      "visual": {
+        "kind": "none",
+        "caption": "",
+        "alt": "",
+        "required": false,
+        "reason": "当前题意可用完整算式和分步过程表达；不添加装饰图。"
+      }
     },
     {
       "id": "E-M-972",
@@ -1117,10 +2576,47 @@
         "date": "2026-10-03",
         "label": "数学原卷 · 扫描第19页",
         "kind": "original",
-        "question": "factor-46"
+        "question": "三·第2行右",
+        "scanPage": 19,
+        "material": "2026学年第一学期四年级数学第1次阶段练习",
+        "dateLabel": "资料记录日期",
+        "locatorStatus": "页码与题号已核",
+        "note": "日期为资料记录或收卷日期；不据此认定实际作答日。纸页未记录。"
       },
       "status": "ready",
-      "recordType": "confirmed-error"
+      "recordType": "confirmed-error",
+      "diagnosis": {
+        "type": "计算检查",
+        "breakpoint": "提取46后，还要算对46×200。",
+        "reason": "227－27得到整百数，末步位值不能漏。",
+        "check": "先算46×2，再核乘100的变化。",
+        "certainty": "本题检查点；具体错误原因需结合本次过程核实"
+      },
+      "teaching": {
+        "goal": "提取46后，还要算对46×200。",
+        "prerequisites": [
+          "乘法的意义",
+          "因数与项的区别"
+        ],
+        "focus": "227－27得到整百数，末步位值不能漏。 把共同因数46提出来；46×(227－27)＝46×200＝9200",
+        "recallPrompt": "收起讲解，用自己的话说：提取46后，还要算对46×200，为什么？",
+        "transferPrompt": "自编迁移（不计入历史错题）：另算一道：48×15。先拆出两个部分积，再用另一种算法核对。",
+        "reference": {
+          "label": "四上《学习笔记同步教材》（项目目录：金牌数学）",
+          "unit": "运算律；辨易误与简算方法",
+          "pages": "书本第10–22页",
+          "scope": "方法依据；本题来源另见题目来源。采用已核概念文字，未把OCR公式当作标准答案。"
+        },
+        "transferCheck": "48×10＋48×5＝480＋240＝720；也可用48×(30÷2)＝1440÷2。",
+        "transferSource": "authored-practice-not-historical-error"
+      },
+      "visual": {
+        "kind": "none",
+        "caption": "",
+        "alt": "",
+        "required": false,
+        "reason": "当前题意可用完整算式和分步过程表达；不添加装饰图。"
+      }
     },
     {
       "id": "E-M-973",
@@ -1144,10 +2640,47 @@
         "date": "2026-10-03",
         "label": "数学原卷 · 扫描第21页",
         "kind": "original",
-        "question": "word-product"
+        "question": "四(2)",
+        "scanPage": 21,
+        "material": "2026学年第一学期四年级数学第1次阶段练习",
+        "dateLabel": "资料记录日期",
+        "locatorStatus": "页码与题号已核",
+        "note": "日期为资料记录或收卷日期；不据此认定实际作答日。纸页未记录。"
       },
       "status": "ready",
-      "recordType": "confirmed-error"
+      "recordType": "confirmed-error",
+      "diagnosis": {
+        "type": "计算检查",
+        "breakpoint": "“积乘差”里的第一块是164×36。",
+        "reason": "两块必须各自算对，再相乘。",
+        "check": "先用拆分法复核164×36，再算总积。",
+        "certainty": "本题检查点；具体错误原因需结合本次过程核实"
+      },
+      "teaching": {
+        "goal": "“积乘差”里的第一块是164×36。",
+        "prerequisites": [
+          "数位与四则计算",
+          "加减、乘除的互逆关系"
+        ],
+        "focus": "两块必须各自算对，再相乘。 先列式：(164×36)×(64－36)；164×36＝5904，64－36＝28；5904×28＝165312",
+        "recallPrompt": "收起讲解，用自己的话说：“积乘差”里的第一块是164×36，为什么？",
+        "transferPrompt": "自编迁移（不计入历史错题）：另算一道：48×15。先拆出两个部分积，再用另一种算法核对。",
+        "reference": {
+          "label": "四上《学习笔记同步教材》（项目目录：金牌数学）",
+          "unit": "运算关系；四则运算",
+          "pages": "书本第3–6、45–47页",
+          "scope": "方法依据；本题来源另见题目来源。采用已核概念文字，未把OCR公式当作标准答案。"
+        },
+        "transferCheck": "48×10＋48×5＝480＋240＝720；也可用48×(30÷2)＝1440÷2。",
+        "transferSource": "authored-practice-not-historical-error"
+      },
+      "visual": {
+        "kind": "none",
+        "caption": "",
+        "alt": "",
+        "required": false,
+        "reason": "当前题意可用完整算式和分步过程表达；不添加装饰图。"
+      }
     },
     {
       "id": "E-M-974",
@@ -1171,11 +2704,51 @@
         "date": "2026-10-03",
         "label": "数学原卷 · 扫描第21页",
         "kind": "reconstructed",
-        "question": "tree-500"
+        "question": "五·树状算图",
+        "scanPage": 21,
+        "material": "2026学年第一学期四年级数学第1次阶段练习",
+        "dateLabel": "资料记录日期",
+        "locatorStatus": "页码与题号已核",
+        "note": "日期为资料记录或收卷日期；不据此认定实际作答日。纸页未记录。题意与条件保留，按已核记录重新排版。"
       },
       "status": "ready",
       "recordType": "process-gap",
-      "processRequired": true
+      "processRequired": true,
+      "diagnosis": {
+        "type": "综合式结构",
+        "breakpoint": "500与460先相加。",
+        "reason": "这两数的和是下一步的被除数。",
+        "check": "综合式应还原加、除、乘三步。",
+        "certainty": "过程与表达检查；不等于数值计算错误"
+      },
+      "teaching": {
+        "goal": "500与460先相加。",
+        "prerequisites": [
+          "找最后一步",
+          "整体替换与括号"
+        ],
+        "focus": "这两数的和是下一步的被除数。 先加的部分要用括号；(500＋460)÷24×15；960÷24×15＝40×15＝600",
+        "recallPrompt": "收起讲解，用自己的话说：500与460先相加，为什么？",
+        "transferPrompt": "自编迁移（不计入历史错题）：树的最上面改成500＋460，下一步仍÷24，最后改成×12。结果怎样变化？",
+        "reference": {
+          "label": "四上《学习笔记同步教材》（项目目录：金牌数学）",
+          "unit": "把分步算式列成一个算式",
+          "pages": "书本第48–50页",
+          "scope": "方法依据；本题来源另见题目来源。采用已核概念文字，未把OCR公式当作标准答案。"
+        },
+        "transferCheck": "(500＋460)÷24×12＝480；上两步仍得40，末乘数变12。",
+        "transferSource": "authored-practice-not-historical-error"
+      },
+      "visual": {
+        "kind": "question",
+        "caption": "按原树状算图重绘：先500＋460，再÷24，最后与15相乘。",
+        "alt": "先加，再除，最后乘",
+        "required": true,
+        "reason": "题面用图表达运算、数据或位置关系。"
+      },
+      "image": "../assets/math-mistakes/eddey-upgrade-tree-500.svg",
+      "diagramAlt": "先加，再除，最后乘",
+      "diagramCaption": "按原树状算图重绘：先500＋460，再÷24，最后与15相乘。"
     },
     {
       "id": "E-M-975",
@@ -1199,10 +2772,50 @@
         "date": "2026-10-03",
         "label": "数学原卷 · 扫描第22页",
         "kind": "original",
-        "question": "tree-540"
+        "question": "二·右图",
+        "scanPage": 22,
+        "material": "数学周练卷（4）",
+        "dateLabel": "资料记录日期",
+        "locatorStatus": "页码与题号已核",
+        "note": "日期为资料记录或收卷日期；不据此认定实际作答日。纸页未记录。"
       },
       "status": "ready",
-      "recordType": "confirmed-error"
+      "recordType": "confirmed-error",
+      "diagnosis": {
+        "type": "计算检查",
+        "breakpoint": "先检查540－300。",
+        "reason": "树的第一处结果会传到后面的除法与乘法。",
+        "check": "差加300应回到540。",
+        "certainty": "本题检查点；具体错误原因需结合本次过程核实"
+      },
+      "teaching": {
+        "goal": "先检查540－300。",
+        "prerequisites": [
+          "先乘除后加减",
+          "括号表示一个整体"
+        ],
+        "focus": "树的第一处结果会传到后面的除法与乘法。 先算小括号：540－300＝240；再算中括号：240÷40＝6；75×6＝450",
+        "recallPrompt": "收起讲解，用自己的话说：先检查540－300，为什么？",
+        "transferPrompt": "自编迁移（不计入历史错题）：树的第一步改成560－320，后面仍÷40再×75。结果是否改变？",
+        "reference": {
+          "label": "四上《学习笔记同步教材》（项目目录：金牌数学）",
+          "unit": "四则运算；分步式合并",
+          "pages": "书本第45–50页",
+          "scope": "方法依据；本题来源另见题目来源。采用已核概念文字，未把OCR公式当作标准答案。"
+        },
+        "transferCheck": "不变；560－320仍为240，240÷40×75＝450。",
+        "transferSource": "authored-practice-not-historical-error"
+      },
+      "visual": {
+        "kind": "question",
+        "caption": "按原题条件重绘，空框由你填写。",
+        "alt": "树状算图中的三步",
+        "required": true,
+        "reason": "题面用图表达运算、数据或位置关系。"
+      },
+      "image": "../assets/math-mistakes/eddey-upgrade-tree-540.svg",
+      "diagramAlt": "树状算图中的三步",
+      "diagramCaption": "按原题条件重绘，空框由你填写。"
     },
     {
       "id": "E-M-976",
@@ -1227,11 +2840,48 @@
         "date": "2026-10-03",
         "label": "数学原卷 · 扫描第23页",
         "kind": "original",
-        "question": "combine-140"
+        "question": "填空第2题",
+        "scanPage": 23,
+        "material": "数学周练卷（4）",
+        "dateLabel": "资料记录日期",
+        "locatorStatus": "页码与题号已核",
+        "note": "日期为资料记录或收卷日期；不据此认定实际作答日。纸页未记录。"
       },
       "status": "ready",
       "recordType": "confirmed-error",
-      "answerFormat": "expression"
+      "answerFormat": "expression",
+      "diagnosis": {
+        "type": "综合式结构",
+        "breakpoint": "保留最后一步140÷7。",
+        "reason": "整个175÷(85－60)是除数。",
+        "check": "合并式应还原25、7、20，不遗漏140。",
+        "certainty": "本题检查点；具体错误原因需结合本次过程核实"
+      },
+      "teaching": {
+        "goal": "保留最后一步140÷7。",
+        "prerequisites": [
+          "找最后一步",
+          "整体替换与括号"
+        ],
+        "focus": "整个175÷(85－60)是除数。 从最后一步140÷7开始；把7换成175÷25；再把25换成85－60，得到140÷[175÷(85－60)]＝20",
+        "recallPrompt": "收起讲解，用自己的话说：保留最后一步140÷7，为什么？",
+        "transferPrompt": "自编迁移（不计入历史错题）：把“84÷7＝12；12×3＝36；50－36＝14”合并成一个算式。",
+        "reference": {
+          "label": "四上《学习笔记同步教材》（项目目录：金牌数学）",
+          "unit": "把分步算式列成一个算式",
+          "pages": "书本第48–50页",
+          "scope": "方法依据；本题来源另见题目来源。采用已核概念文字，未把OCR公式当作标准答案。"
+        },
+        "transferCheck": "50－84÷7×3＝14；先保留最后一步50减去整块，再替换36和12。",
+        "transferSource": "authored-practice-not-historical-error"
+      },
+      "visual": {
+        "kind": "none",
+        "caption": "",
+        "alt": "",
+        "required": false,
+        "reason": "当前题意可用完整算式和分步过程表达；不添加装饰图。"
+      }
     },
     {
       "id": "E-M-977",
@@ -1254,11 +2904,53 @@
         "date": "2026-10-03",
         "label": "四年级第一学期数学周练卷（4）",
         "question": "三·填空3第一空",
-        "kind": "original"
+        "kind": "original",
+        "scanPage": 23,
+        "material": "数学周练卷（4）",
+        "dateLabel": "资料记录日期",
+        "locatorStatus": "页码与题号已核",
+        "note": "日期为资料记录或收卷日期；不据此认定实际作答日。纸页未记录。"
       },
       "status": "ready",
       "recordType": "process-gap",
-      "processRequired": true
+      "processRequired": true,
+      "diagnosis": {
+        "type": "单位表达",
+        "breakpoint": "填完整的测量名称。",
+        "reason": "测的是风吹来的方向，不能只写风。",
+        "check": "读一遍“测量……”是否说清测什么？",
+        "certainty": "过程与表达检查；不等于数值计算错误"
+      },
+      "teaching": {
+        "goal": "填完整的测量名称。",
+        "prerequisites": [
+          "固定北向",
+          "观察点与被观察点"
+        ],
+        "focus": "测的是风吹来的方向，不能只写风。 风向指风吹来的方向，例如西北风是从西北吹来。\n风向袋和风向标用于判断这个方向，所以完整术语是“风向”。",
+        "recallPrompt": "收起讲解，用自己的话说：填完整的测量名称，为什么？",
+        "transferPrompt": "自编迁移（不计入历史错题）：“风力”和“风向”分别回答什么？从西北吹来的风应怎样命名？",
+        "reference": {
+          "label": "四上《学习笔记同步教材》（项目目录：金牌数学）",
+          "unit": "辨认方向；观测风向",
+          "pages": "书本第32–39页",
+          "scope": "方法依据；本题来源另见题目来源。采用已核概念文字，未把OCR公式当作标准答案。"
+        },
+        "transferCheck": "风力表示风的强弱，风向表示来向；叫西北风。",
+        "transferSource": "authored-practice-not-historical-error"
+      },
+      "visual": {
+        "kind": "teaching",
+        "caption": "教学示例：用东北风区分来向与去向。",
+        "alt": "东北风从东北流向西南，箭头表示风流动的方向。",
+        "required": true,
+        "reason": "区分风向的来向与物体飘向。"
+      },
+      "teachingImage": {
+        "src": "../assets/math-mistakes/eddey-upgrade-wind-origin.svg",
+        "alt": "东北风从东北流向西南，箭头表示风流动的方向。",
+        "caption": "教学示例：用东北风区分来向与去向。"
+      }
     },
     {
       "id": "E-M-978",
@@ -1282,7 +2974,12 @@
         "date": "2026-10-03",
         "label": "数学原卷 · 扫描第23页",
         "kind": "original",
-        "question": "wind-origin"
+        "question": "选择第1题",
+        "scanPage": 23,
+        "material": "数学周练卷（4）",
+        "dateLabel": "资料记录日期",
+        "locatorStatus": "页码与题号已核",
+        "note": "日期为资料记录或收卷日期；不据此认定实际作答日。纸页未记录。"
       },
       "status": "ready",
       "recordType": "confirmed-error",
@@ -1291,7 +2988,44 @@
         "刮东南风时，彩旗向东南方向飘",
         "风向袋和风向标都可以测量风向",
         "刮北风时，风从南方吹向北方"
-      ]
+      ],
+      "diagnosis": {
+        "type": "方向参照",
+        "breakpoint": "风向看从哪里吹来。",
+        "reason": "旗或风向袋飘向的是吹去的方向。",
+        "check": "同时说出风的来向和旗飘的去向。",
+        "certainty": "本题检查点；具体错误原因需结合本次过程核实"
+      },
+      "teaching": {
+        "goal": "风向看从哪里吹来。",
+        "prerequisites": [
+          "固定北向",
+          "观察点与被观察点"
+        ],
+        "focus": "旗或风向袋飘向的是吹去的方向。 风向指风吹来的方向；彩旗向风吹去的方向飘；风向袋和风向标都能测量风向",
+        "recallPrompt": "收起讲解，用自己的话说：风向看从哪里吹来，为什么？",
+        "transferPrompt": "自编迁移（不计入历史错题）：风从西吹来，旗向哪边飘？再说此时的风名。",
+        "reference": {
+          "label": "四上《学习笔记同步教材》（项目目录：金牌数学）",
+          "unit": "辨认方向；观测风向",
+          "pages": "书本第32–39页",
+          "scope": "方法依据；本题来源另见题目来源。采用已核概念文字，未把OCR公式当作标准答案。"
+        },
+        "transferCheck": "旗向东飘，叫西风；来向与去向相反。",
+        "transferSource": "authored-practice-not-historical-error"
+      },
+      "visual": {
+        "kind": "teaching",
+        "caption": "教学示例：用东北风区分来向与去向。",
+        "alt": "东北风从东北流向西南，箭头表示风流动的方向。",
+        "required": true,
+        "reason": "区分风向的来向与物体飘向。"
+      },
+      "teachingImage": {
+        "src": "../assets/math-mistakes/eddey-upgrade-wind-origin.svg",
+        "alt": "东北风从东北流向西南，箭头表示风流动的方向。",
+        "caption": "教学示例：用东北风区分来向与去向。"
+      }
     },
     {
       "id": "E-M-980",
@@ -1315,7 +3049,12 @@
         "date": "2026-10-03",
         "label": "数学周练四 · 扫描第24页",
         "question": "五·1(1)·按原图重绘",
-        "kind": "reconstructed"
+        "kind": "reconstructed",
+        "scanPage": 24,
+        "material": "数学周练卷（4）",
+        "dateLabel": "资料记录日期",
+        "locatorStatus": "页码与题号已核",
+        "note": "日期为资料记录或收卷日期；不据此认定实际作答日。纸页未记录。题意与条件保留，按已核记录重新排版。"
       },
       "status": "ready",
       "recordType": "confirmed-error",
@@ -1324,7 +3063,40 @@
         "奇幻世界、巨龙山谷"
       ],
       "image": "../assets/math-mistakes/park-fill.svg",
-      "diagramAlt": "图上北向朝上，①位于左上角，②位于右上角。生命岛居中。"
+      "diagramAlt": "图上北向朝上，①位于左上角，②位于右上角。生命岛居中。",
+      "diagnosis": {
+        "type": "方向参照",
+        "breakpoint": "先固定北向，再找左右两角。",
+        "reason": "北向朝上时，左上和右上不同。",
+        "check": "从图中间分别指向①、②再命名。",
+        "certainty": "本题检查点；具体错误原因需结合本次过程核实"
+      },
+      "teaching": {
+        "goal": "先固定北向，再找左右两角。",
+        "prerequisites": [
+          "固定北向",
+          "观察点与被观察点"
+        ],
+        "focus": "北向朝上时，左上和右上不同。 先固定图上的北向：上北、下南、左西、右东。 ①位于左上方，是西北角，应填巨龙山谷。 ②位于右上方，是东北角，应填奇幻世界。",
+        "recallPrompt": "收起讲解，用自己的话说：先固定北向，再找左右两角，为什么？",
+        "transferPrompt": "自编迁移（不计入历史错题）：保留地图北向，自己在纸上标出中心的东北角和西北角。怎样避免左右互换？",
+        "reference": {
+          "label": "四上《学习笔记同步教材》（项目目录：金牌数学）",
+          "unit": "辨认方向；观测风向",
+          "pages": "书本第32–39页",
+          "scope": "方法依据；本题来源另见题目来源。采用已核概念文字，未把OCR公式当作标准答案。"
+        },
+        "transferCheck": "北朝上时东北在右上，西北在左上；先固定北向再找东西。",
+        "transferSource": "authored-practice-not-historical-error"
+      },
+      "visual": {
+        "kind": "question",
+        "caption": "按已核原图的数量、位置和北向重新绘制；不含原作答与批改。",
+        "alt": "图上北向朝上，①位于左上角，②位于右上角。生命岛居中。",
+        "required": true,
+        "reason": "依赖位置、组数或关系图判断。"
+      },
+      "diagramCaption": "按已核原图的数量、位置和北向重新绘制；不含原作答与批改。"
     },
     {
       "id": "E-M-981",
@@ -1348,7 +3120,12 @@
         "date": "2026-10-03",
         "label": "数学周练四 · 扫描第24页",
         "question": "五·1(2)·按原图重绘",
-        "kind": "reconstructed"
+        "kind": "reconstructed",
+        "scanPage": 24,
+        "material": "数学周练卷（4）",
+        "dateLabel": "资料记录日期",
+        "locatorStatus": "页码与题号已核",
+        "note": "日期为资料记录或收卷日期；不据此认定实际作答日。纸页未记录。题意与条件保留，按已核记录重新排版。"
       },
       "status": "ready",
       "recordType": "confirmed-error",
@@ -1358,7 +3135,40 @@
         "南、东北、北、西"
       ],
       "image": "../assets/math-mistakes/park-directions.svg",
-      "diagramAlt": "生命岛在中央，佳宝小镇在其南侧。翡翠海在佳宝小镇西北，巨龙山谷在翡翠海正北，奇幻世界在巨龙山谷正东。"
+      "diagramAlt": "生命岛在中央，佳宝小镇在其南侧。翡翠海在佳宝小镇西北，巨龙山谷在翡翠海正北，奇幻世界在巨龙山谷正东。",
+      "diagnosis": {
+        "type": "方向参照",
+        "breakpoint": "每走一段就换到新的出发点。",
+        "reason": "地点改变时参照点变，地图北向不变。",
+        "check": "逐段指起点、终点，再说方向。",
+        "certainty": "本题检查点；具体错误原因需结合本次过程核实"
+      },
+      "teaching": {
+        "goal": "每走一段就换到新的出发点。",
+        "prerequisites": [
+          "固定北向",
+          "观察点与被观察点"
+        ],
+        "focus": "地点改变时参照点变，地图北向不变。 每走一段都换到新的出发点；生命岛到佳宝小镇向南；再依次向西北、北、东",
+        "recallPrompt": "收起讲解，用自己的话说：每走一段就换到新的出发点，为什么？",
+        "transferPrompt": "自编迁移（不计入历史错题）：在原地图上把路线倒过来走，逐段说方向；不要转动地图。",
+        "reference": {
+          "label": "四上《学习笔记同步教材》（项目目录：金牌数学）",
+          "unit": "辨认方向；观测风向",
+          "pages": "书本第32–39页",
+          "scope": "方法依据；本题来源另见题目来源。采用已核概念文字，未把OCR公式当作标准答案。"
+        },
+        "transferCheck": "反向路线奇幻世界→巨龙山谷→翡翠海→佳宝小镇→生命岛，依次西、南、东南、北。",
+        "transferSource": "authored-practice-not-historical-error"
+      },
+      "visual": {
+        "kind": "question",
+        "caption": "按已核原图的数量、位置和北向重新绘制；不含原作答与批改。",
+        "alt": "生命岛在中央，佳宝小镇在其南侧。翡翠海在佳宝小镇西北，巨龙山谷在翡翠海正北，奇幻世界在巨龙山谷正东。",
+        "required": true,
+        "reason": "依赖位置、组数或关系图判断。"
+      },
+      "diagramCaption": "按已核原图的数量、位置和北向重新绘制；不含原作答与批改。"
     },
     {
       "id": "E-M-982",
@@ -1381,10 +3191,47 @@
         "date": "2026-10-03",
         "label": "数学原卷 · 扫描第24页",
         "kind": "original",
-        "question": "balls-88"
+        "question": "",
+        "scanPage": 24,
+        "material": "数学周练卷（4）",
+        "dateLabel": "资料记录日期",
+        "locatorStatus": "页码已核，题号未记录",
+        "note": "日期为资料记录或收卷日期；不据此认定实际作答日。纸页未记录。原题号未记录。"
       },
       "status": "ready",
-      "recordType": "confirmed-error"
+      "recordType": "confirmed-error",
+      "diagnosis": {
+        "type": "计算检查",
+        "breakpoint": "先核85＋65，再乘88。",
+        "reason": "每组两个球的价钱是一份，88组才是总价。",
+        "check": "分开算两种球的总价，再相加核对。",
+        "certainty": "本题检查点；具体错误原因需结合本次过程核实"
+      },
+      "teaching": {
+        "goal": "先核85＋65，再乘88。",
+        "prerequisites": [
+          "部分与整体",
+          "每份量、份数和总量"
+        ],
+        "focus": "每组两个球的价钱是一份，88组才是总价。 每组一个足球和一个篮球：85＋65＝150；88×150＝13200",
+        "recallPrompt": "收起讲解，用自己的话说：先核85＋65，再乘88，为什么？",
+        "transferPrompt": "自编迁移（不计入历史错题）：改买足球、篮球各8个，单价仍85元和65元。先核每组价钱，再求总价。",
+        "reference": {
+          "label": "四上《学习笔记同步教材》（项目目录：金牌数学）",
+          "unit": "复合应用题；工作效率",
+          "pages": "书本第54–60页",
+          "scope": "方法依据；本题来源另见题目来源。采用已核概念文字，未把OCR公式当作标准答案。"
+        },
+        "transferCheck": "85＋65＝150元；8×150＝1200元；也可85×8＋65×8＝680＋520＝1200元。",
+        "transferSource": "authored-practice-not-historical-error"
+      },
+      "visual": {
+        "kind": "none",
+        "caption": "",
+        "alt": "",
+        "required": false,
+        "reason": "当前题意可用完整算式和分步过程表达；不添加装饰图。"
+      }
     },
     {
       "id": "E-M-983",
@@ -1410,10 +3257,52 @@
         "date": "2026-10-03",
         "label": "数学原卷 · 扫描第25页",
         "kind": "original",
-        "question": "two-addends"
+        "question": "六·动脑筋1",
+        "scanPage": 25,
+        "material": "数学周练卷（4）",
+        "dateLabel": "资料记录日期",
+        "locatorStatus": "页码与题号已核",
+        "note": "日期为资料记录或收卷日期；不据此认定实际作答日。纸页未记录。"
       },
       "status": "ready",
-      "recordType": "confirmed-error"
+      "recordType": "confirmed-error",
+      "diagnosis": {
+        "type": "位值核查",
+        "breakpoint": "方框在十位和个位，表示的量不同。",
+        "reason": "剩余的22要拆成20和2，不能都当个位数。",
+        "check": "把两个完整加数相加，应等于98。",
+        "certainty": "本题检查点；具体错误原因需结合本次过程核实"
+      },
+      "teaching": {
+        "goal": "方框在十位和个位，表示的量不同。",
+        "prerequisites": [
+          "加减、乘除的互逆关系",
+          "辨认运算中的各部分"
+        ],
+        "focus": "剩余的22要拆成20和2，不能都当个位数。 先看确定部分：6＋70＝76；剩余98－76＝22；把22拆成20和2：26＋72＝98",
+        "recallPrompt": "收起讲解，用自己的话说：方框在十位和个位，表示的量不同，为什么？",
+        "transferPrompt": "自编迁移（不计入历史错题）：把和改成88：□6＋7□＝88。两个加数是多少？",
+        "reference": {
+          "label": "四上《学习笔记同步教材》（项目目录：金牌数学）",
+          "unit": "运算关系；树状算图求未知数",
+          "pages": "书本第3–9、53页",
+          "scope": "方法依据；本题来源另见题目来源。采用已核概念文字，未把OCR公式当作标准答案。"
+        },
+        "transferCheck": "确定部分6＋70＝76，余12＝10＋2；16＋72＝88。",
+        "transferSource": "authored-practice-not-historical-error"
+      },
+      "visual": {
+        "kind": "teaching",
+        "caption": "教学示意：十位空格和个位空格不同",
+        "alt": "十位空格和个位空格不同",
+        "required": true,
+        "reason": "图示将本题的关键数量关系或运算对象显出来。"
+      },
+      "teachingImage": {
+        "src": "../assets/math-mistakes/eddey-upgrade-place-boxes.svg",
+        "alt": "十位空格和个位空格不同",
+        "caption": "教学示意：十位空格和个位空格不同"
+      }
     },
     {
       "id": "E-M-984",
@@ -1437,10 +3326,47 @@
         "date": "2026-10-03",
         "label": "数学原卷 · 扫描第26页",
         "kind": "original",
-        "question": "mixed-69"
+        "question": "一·第1行右",
+        "scanPage": 26,
+        "material": "数学周练卷（3）",
+        "dateLabel": "资料记录日期",
+        "locatorStatus": "页码与题号已核",
+        "note": "日期为资料记录或收卷日期；不据此认定实际作答日。纸页未记录。"
       },
       "status": "ready",
-      "recordType": "confirmed-error"
+      "recordType": "confirmed-error",
+      "diagnosis": {
+        "type": "计算检查",
+        "breakpoint": "括号里的两个结果最后相乘。",
+        "reason": "87×50中的50是5个十。",
+        "check": "先算87×5，再乘10核对。",
+        "certainty": "本题检查点；具体错误原因需结合本次过程核实"
+      },
+      "teaching": {
+        "goal": "括号里的两个结果最后相乘。",
+        "prerequisites": [
+          "数位与四则计算",
+          "加减、乘除的互逆关系"
+        ],
+        "focus": "87×50中的50是5个十。 69＋18＝87；550÷11＝50；87×50＝4350",
+        "recallPrompt": "收起讲解，用自己的话说：括号里的两个结果最后相乘，为什么？",
+        "transferPrompt": "自编迁移（不计入历史错题）：另算一道：48×15。先拆出两个部分积，再用另一种算法核对。",
+        "reference": {
+          "label": "四上《学习笔记同步教材》（项目目录：金牌数学）",
+          "unit": "运算关系；四则运算",
+          "pages": "书本第3–6、45–47页",
+          "scope": "方法依据；本题来源另见题目来源。采用已核概念文字，未把OCR公式当作标准答案。"
+        },
+        "transferCheck": "48×10＋48×5＝480＋240＝720；也可用48×(30÷2)＝1440÷2。",
+        "transferSource": "authored-practice-not-historical-error"
+      },
+      "visual": {
+        "kind": "none",
+        "caption": "",
+        "alt": "",
+        "required": false,
+        "reason": "当前题意可用完整算式和分步过程表达；不添加装饰图。"
+      }
     },
     {
       "id": "E-M-985",
@@ -1463,10 +3389,47 @@
         "date": "2026-10-03",
         "label": "数学原卷 · 扫描第26页",
         "kind": "original",
-        "question": "mixed-25"
+        "question": "一·第2行右",
+        "scanPage": 26,
+        "material": "数学周练卷（3）",
+        "dateLabel": "资料记录日期",
+        "locatorStatus": "页码与题号已核",
+        "note": "日期为资料记录或收卷日期；不据此认定实际作答日。纸页未记录。"
       },
       "status": "ready",
-      "recordType": "confirmed-error"
+      "recordType": "confirmed-error",
+      "diagnosis": {
+        "type": "计算检查",
+        "breakpoint": "先核对25×8。",
+        "reason": "乘除同级，从左到右，不能跳过第一步。",
+        "check": "中间商乘2，应等于25×8。",
+        "certainty": "本题检查点；具体错误原因需结合本次过程核实"
+      },
+      "teaching": {
+        "goal": "先核对25×8。",
+        "prerequisites": [
+          "数位与四则计算",
+          "加减、乘除的互逆关系"
+        ],
+        "focus": "乘除同级，从左到右，不能跳过第一步。 先依次算乘除：25×8＝200，200÷2＝100；100＋474＝574",
+        "recallPrompt": "收起讲解，用自己的话说：先核对25×8，为什么？",
+        "transferPrompt": "自编迁移（不计入历史错题）：另算一道：48×15。先拆出两个部分积，再用另一种算法核对。",
+        "reference": {
+          "label": "四上《学习笔记同步教材》（项目目录：金牌数学）",
+          "unit": "运算关系；四则运算",
+          "pages": "书本第3–6、45–47页",
+          "scope": "方法依据；本题来源另见题目来源。采用已核概念文字，未把OCR公式当作标准答案。"
+        },
+        "transferCheck": "48×10＋48×5＝480＋240＝720；也可用48×(30÷2)＝1440÷2。",
+        "transferSource": "authored-practice-not-historical-error"
+      },
+      "visual": {
+        "kind": "none",
+        "caption": "",
+        "alt": "",
+        "required": false,
+        "reason": "当前题意可用完整算式和分步过程表达；不添加装饰图。"
+      }
     },
     {
       "id": "E-M-986",
@@ -1489,10 +3452,52 @@
         "date": "2026-10-03",
         "label": "数学原卷 · 扫描第27页",
         "kind": "original",
-        "question": "unknown-90"
+        "question": "二·填空4",
+        "scanPage": 27,
+        "material": "数学周练卷（3）",
+        "dateLabel": "资料记录日期",
+        "locatorStatus": "页码与题号已核",
+        "note": "日期为资料记录或收卷日期；不据此认定实际作答日。纸页未记录。"
       },
       "status": "ready",
-      "recordType": "confirmed-error"
+      "recordType": "confirmed-error",
+      "diagnosis": {
+        "type": "逆运算",
+        "breakpoint": "先求□＋5这个整体。",
+        "reason": "720除以90得到的不是□本身。",
+        "check": "把□填回90×(□＋5)，结果应为720。",
+        "certainty": "本题检查点；具体错误原因需结合本次过程核实"
+      },
+      "teaching": {
+        "goal": "先求□＋5这个整体。",
+        "prerequisites": [
+          "加减、乘除的互逆关系",
+          "辨认运算中的各部分"
+        ],
+        "focus": "720除以90得到的不是□本身。 先把括号看作整体：720÷90＝8；□＋5＝8，所以□＝3",
+        "recallPrompt": "收起讲解，用自己的话说：先求□＋5这个整体，为什么？",
+        "transferPrompt": "自编迁移（不计入历史错题）：一个数先减7，再乘3得到60。原数是多少？写倒推，再顺算验证。",
+        "reference": {
+          "label": "四上《学习笔记同步教材》（项目目录：金牌数学）",
+          "unit": "运算关系；树状算图求未知数",
+          "pages": "书本第3–9、53页",
+          "scope": "方法依据；本题来源另见题目来源。采用已核概念文字，未把OCR公式当作标准答案。"
+        },
+        "transferCheck": "60÷3＋7＝27；(27－7)×3＝60。",
+        "transferSource": "authored-practice-not-historical-error"
+      },
+      "visual": {
+        "kind": "teaching",
+        "caption": "教学示意：先求括号整体再求方框",
+        "alt": "先求括号整体再求方框",
+        "required": true,
+        "reason": "图示将本题的关键数量关系或运算对象显出来。"
+      },
+      "teachingImage": {
+        "src": "../assets/math-mistakes/eddey-upgrade-unknown-whole.svg",
+        "alt": "先求括号整体再求方框",
+        "caption": "教学示意：先求括号整体再求方框"
+      }
     },
     {
       "id": "E-M-987",
@@ -1515,7 +3520,12 @@
         "date": "2026-10-03",
         "label": "数学原卷 · 扫描第27页",
         "kind": "original",
-        "question": "meaning-270"
+        "question": "三·选择4",
+        "scanPage": 27,
+        "material": "数学周练卷（3）",
+        "dateLabel": "资料记录日期",
+        "locatorStatus": "页码与题号已核",
+        "note": "日期为资料记录或收卷日期；不据此认定实际作答日。纸页未记录。"
       },
       "status": "ready",
       "recordType": "confirmed-error",
@@ -1524,61 +3534,181 @@
         "后来又买的跳绳根数",
         "每根跳绳的价格",
         "两次一共花的钱"
-      ]
+      ],
+      "diagnosis": {
+        "type": "数量关系",
+        "breakpoint": "区分45÷9和整个算式的含义。",
+        "reason": "前者是每根价钱，270除单价才是根数。",
+        "check": "给每步结果补上“元/根”或“根”。",
+        "certainty": "本题检查点；具体错误原因需结合本次过程核实"
+      },
+      "teaching": {
+        "goal": "区分45÷9和整个算式的含义。",
+        "prerequisites": [
+          "部分与整体",
+          "每份量、份数和总量"
+        ],
+        "focus": "前者是每根价钱，270除单价才是根数。 45÷9求每根单价；270除以单价，求后来又买多少根",
+        "recallPrompt": "收起讲解，用自己的话说：区分45÷9和整个算式的含义，为什么？",
+        "transferPrompt": "自编迁移（不计入历史错题）：45元仍买9根跳绳；后来改花300元。300÷(45÷9)求什么，结果多少？",
+        "reference": {
+          "label": "四上《学习笔记同步教材》（项目目录：金牌数学）",
+          "unit": "复合应用题；工作效率",
+          "pages": "书本第54–60页",
+          "scope": "方法依据；本题来源另见题目来源。采用已核概念文字，未把OCR公式当作标准答案。"
+        },
+        "transferCheck": "求后来又买的根数；45÷9＝5元/根，300÷5＝60根。",
+        "transferSource": "authored-practice-not-historical-error"
+      },
+      "visual": {
+        "kind": "teaching",
+        "caption": "教学示意：把中间量与最终量分开",
+        "alt": "把中间量与最终量分开",
+        "required": true,
+        "reason": "图示将本题的关键数量关系或运算对象显出来。"
+      },
+      "teachingImage": {
+        "src": "../assets/math-mistakes/eddey-upgrade-rope-unit.svg",
+        "alt": "把中间量与最终量分开",
+        "caption": "教学示意：把中间量与最终量分开"
+      }
     },
     {
       "id": "E-M-988",
-      "title": "表中三个数分别为127、284、173。求它们的总和",
+      "title": "从表格取数再求和",
       "category": "计算与检查",
       "priority": "normal",
-      "prompt": "表中三个数分别为127、284、173。求它们的总和。",
+      "prompt": "表中是三个小区喜欢听《十字歌》的人数。这三个小区一共有多少人？用简便方法计算。",
       "kind": "number",
       "answers": [
         "584"
       ],
-      "unit": "",
+      "unit": "人",
       "hint": "先逐项核对三个数",
-      "explanation": "先逐项核对三个数；127＋284＝411；411＋173＝584",
+      "explanation": "先对照表格核准127、284和173。 利用交换律让127与173先相加：127＋173＝300。 300＋284＝584（人）。答：一共有584人。",
       "steps": [
-        "先逐项核对三个数",
-        "127＋284＝411",
-        "411＋173＝584"
+        "先对照表格核准127、284和173。",
+        "利用交换律让127与173先相加：127＋173＝300。",
+        "300＋284＝584（人）。答：一共有584人。"
       ],
       "source": {
         "date": "2026-10-03",
         "label": "数学原卷 · 扫描第28页",
         "kind": "original",
-        "question": "table-sum"
+        "question": "五·应用题2",
+        "scanPage": 28,
+        "material": "数学周练卷（3）",
+        "dateLabel": "资料记录日期",
+        "locatorStatus": "页码与题号已核",
+        "note": "日期为资料记录或收卷日期；不据此认定实际作答日。纸页未记录。"
       },
       "status": "ready",
-      "recordType": "confirmed-error"
+      "recordType": "confirmed-error",
+      "diagnosis": {
+        "type": "读题核查",
+        "breakpoint": "先逐项核对表里的三个数。",
+        "reason": "第三个数是173，抄数后还要保留原对象。",
+        "check": "用127与173先凑整，再加284。",
+        "certainty": "本题检查点；具体错误原因需结合本次过程核实"
+      },
+      "teaching": {
+        "goal": "先逐项核对表里的三个数。",
+        "prerequisites": [
+          "数位与四则计算",
+          "加减、乘除的互逆关系"
+        ],
+        "focus": "第三个数是173，抄数后还要保留原对象。 先对照表格核准127、284和173。 利用交换律让127与173先相加：127＋173＝300。 300＋284＝584（人）。答：一共有584人。",
+        "recallPrompt": "收起讲解，用自己的话说：先逐项核对表里的三个数，为什么？",
+        "transferPrompt": "自编迁移（不计入历史错题）：表中三个数改为127、284、183。先预测总数比原题变化多少，再简算。",
+        "reference": {
+          "label": "四上《学习笔记同步教材》（项目目录：金牌数学）",
+          "unit": "运算关系；四则运算",
+          "pages": "书本第3–6、45–47页",
+          "scope": "方法依据；本题来源另见题目来源。采用已核概念文字，未把OCR公式当作标准答案。"
+        },
+        "transferCheck": "第三数多10，总数多10；127＋183＋284＝310＋284＝594。",
+        "transferSource": "authored-practice-not-historical-error"
+      },
+      "visual": {
+        "kind": "question",
+        "caption": "按原表数据与小区名称重绘。",
+        "alt": "三个小区的人数表",
+        "required": true,
+        "reason": "题面用图表达运算、数据或位置关系。"
+      },
+      "image": "../assets/math-mistakes/eddey-upgrade-people-table.svg",
+      "diagramAlt": "三个小区的人数表",
+      "diagramCaption": "按原表数据与小区名称重绘。"
     },
     {
       "id": "E-M-989",
-      "title": "132÷[(13＋9)×3]",
+      "title": "水果箱数的倍数关系",
       "category": "运算顺序与括号",
       "priority": "normal",
-      "prompt": "计算：132÷[(13＋9)×3]。",
+      "prompt": "水果市场运来苹果13箱、梨9箱；橘子的箱数是苹果和梨总箱数的3倍，桃子有132箱。桃子的箱数是橘子的几倍？请先列综合算式。",
       "kind": "number",
       "answers": [
         "2"
       ],
-      "unit": "",
+      "unit": "倍",
       "hint": "先算13＋9＝22",
-      "explanation": "先算13＋9＝22；22×3＝66；132÷66＝2",
+      "explanation": "苹果与梨合计13＋9＝22箱。 橘子是它们合计的3倍：22×3＝66箱。 桃子箱数÷橘子箱数：132÷66＝2。 综合算式：132÷[(13＋9)×3]＝2。答：桃子的箱数是橘子的2倍。",
       "steps": [
-        "先算13＋9＝22",
-        "22×3＝66",
-        "132÷66＝2"
+        "苹果与梨合计13＋9＝22箱。",
+        "橘子是它们合计的3倍：22×3＝66箱。",
+        "桃子箱数÷橘子箱数：132÷66＝2。",
+        "综合算式：132÷[(13＋9)×3]＝2。答：桃子的箱数是橘子的2倍。"
       ],
       "source": {
         "date": "2026-10-03",
         "label": "数学原卷 · 扫描第28页",
         "kind": "original",
-        "question": "fruit-ratio"
+        "question": "五·应用题3",
+        "scanPage": 28,
+        "material": "数学周练卷（3）",
+        "dateLabel": "资料记录日期",
+        "locatorStatus": "页码与题号已核",
+        "note": "日期为资料记录或收卷日期；不据此认定实际作答日。纸页未记录。本次恢复已核原题情境，计算条件与答案未变。"
       },
       "status": "ready",
-      "recordType": "confirmed-error"
+      "recordType": "confirmed-error",
+      "diagnosis": {
+        "type": "计算检查",
+        "breakpoint": "先核13＋9，再求橘子箱数。",
+        "reason": "桃子与橘子比较，除数是橘子的总箱数。",
+        "check": "商乘橘子箱数，应等于132。",
+        "certainty": "本题检查点；具体错误原因需结合本次过程核实"
+      },
+      "teaching": {
+        "goal": "先核13＋9，再求橘子箱数。",
+        "prerequisites": [
+          "先乘除后加减",
+          "括号表示一个整体"
+        ],
+        "focus": "桃子与橘子比较，除数是橘子的总箱数。 苹果与梨合计13＋9＝22箱。 橘子是它们合计的3倍：22×3＝66箱。 桃子箱数÷橘子箱数：132÷66＝2。 综合算式：132÷[(13＋9)×3]＝2。答：桃子的箱数是橘子的2倍。",
+        "recallPrompt": "收起讲解，用自己的话说：先核13＋9，再求橘子箱数，为什么？",
+        "transferPrompt": "自编迁移（不计入历史错题）：桃子改为198箱，其余苹果13箱、梨9箱及橘子3倍不变。桃子是橘子的几倍？",
+        "reference": {
+          "label": "四上《学习笔记同步教材》（项目目录：金牌数学）",
+          "unit": "四则运算；分步式合并",
+          "pages": "书本第45–50页",
+          "scope": "方法依据；本题来源另见题目来源。采用已核概念文字，未把OCR公式当作标准答案。"
+        },
+        "transferCheck": "198÷[(13＋9)×3]＝198÷66＝3倍。",
+        "transferSource": "authored-practice-not-historical-error"
+      },
+      "visual": {
+        "kind": "teaching",
+        "caption": "教学示意：同一份先由苹果和梨合成",
+        "alt": "同一份先由苹果和梨合成",
+        "required": true,
+        "reason": "图示将本题的关键数量关系或运算对象显出来。"
+      },
+      "teachingImage": {
+        "src": "../assets/math-mistakes/eddey-upgrade-fruit-boxes.svg",
+        "alt": "同一份先由苹果和梨合成",
+        "caption": "教学示意：同一份先由苹果和梨合成"
+      }
     },
     {
       "id": "E-M-990",
@@ -1601,10 +3731,52 @@
         "date": "2026-10-03",
         "label": "数学原卷 · 扫描第30页",
         "kind": "original",
-        "question": "multiply-47"
+        "question": "一·第3行右",
+        "scanPage": 30,
+        "material": "四年级第一学期数学小练习（3）",
+        "dateLabel": "资料记录日期",
+        "locatorStatus": "页码与题号已核",
+        "note": "日期为资料记录或收卷日期；不据此认定实际作答日。纸页未记录。"
       },
       "status": "ready",
-      "recordType": "process-gap"
+      "recordType": "process-gap",
+      "diagnosis": {
+        "type": "过程完整",
+        "breakpoint": "简算完成后仍要写最终结果。",
+        "reason": "表达完整需要把两个部分积合起来。",
+        "check": "写出最终结果，再与原式核对。",
+        "certainty": "过程与表达检查；不等于数值计算错误"
+      },
+      "teaching": {
+        "goal": "简算完成后仍要写最终结果。",
+        "prerequisites": [
+          "乘法的意义",
+          "拆成和后分别相乘"
+        ],
+        "focus": "表达完整需要把两个部分积合起来。 47×101＝47×100＋47；4700＋47＝4747",
+        "recallPrompt": "收起讲解，用自己的话说：简算完成后仍要写最终结果，为什么？",
+        "transferPrompt": "自编迁移（不计入历史错题）：简算46×101，从拆分到最后结果完整写出，不停在两个部分积。",
+        "reference": {
+          "label": "四上《学习笔记同步教材》（项目目录：金牌数学）",
+          "unit": "运算律；乘法对加法的分配律",
+          "pages": "书本第16–22页",
+          "scope": "方法依据；本题来源另见题目来源。采用已核概念文字，未把OCR公式当作标准答案。"
+        },
+        "transferCheck": "46×101＝46×100＋46＝4600＋46＝4646。",
+        "transferSource": "authored-practice-not-historical-error"
+      },
+      "visual": {
+        "kind": "teaching",
+        "caption": "教学分块示意，不按数值比例绘制；两块表示对应的部分积。",
+        "alt": "把乘数拆成两部分",
+        "required": true,
+        "reason": "图示将本题的关键数量关系或运算对象显出来。"
+      },
+      "teachingImage": {
+        "src": "../assets/math-mistakes/eddey-upgrade-split-990.svg",
+        "alt": "把乘数拆成两部分",
+        "caption": "教学分块示意，不按数值比例绘制；两块表示对应的部分积。"
+      }
     },
     {
       "id": "E-M-991",
@@ -1627,7 +3799,13 @@
       "source": {
         "date": "2026-10-03",
         "label": "数学原卷 · 扫描第30页",
-        "kind": "reconstructed"
+        "kind": "reconstructed",
+        "scanPage": 30,
+        "material": "四年级第一学期数学小练习（3）",
+        "dateLabel": "资料记录日期",
+        "locatorStatus": "页码与题号已核",
+        "note": "日期为资料记录或收卷日期；不据此认定实际作答日。纸页未记录。题意与条件保留，按已核记录重新排版。",
+        "question": "三(1)"
       },
       "status": "ready",
       "recordType": "confirmed-error",
@@ -1635,7 +3813,39 @@
         "25×44＝25×(40＋4)",
         "25×44＝25×4×11",
         "25×44＝25×40×4"
-      ]
+      ],
+      "diagnosis": {
+        "type": "等价变形",
+        "breakpoint": "先看44拆成了和还是积。",
+        "reason": "拆成40＋4时，要分别乘25后相加。",
+        "check": "检查改写后有没有多用或漏用25。",
+        "certainty": "本题检查点；具体错误原因需结合本次过程核实"
+      },
+      "teaching": {
+        "goal": "先看44拆成了和还是积。",
+        "prerequisites": [
+          "乘法的意义",
+          "因数与项的区别"
+        ],
+        "focus": "拆成40＋4时，要分别乘25后相加。 44＝40＋4，也等于4×11；拆成和时两项都要乘25；25×40×4改变了原来的乘积",
+        "recallPrompt": "收起讲解，用自己的话说：先看44拆成了和还是积，为什么？",
+        "transferPrompt": "自编迁移（不计入历史错题）：用简便方法算25×16＋25×4，并解释每个25去了哪里。",
+        "reference": {
+          "label": "四上《学习笔记同步教材》（项目目录：金牌数学）",
+          "unit": "运算律；辨易误与简算方法",
+          "pages": "书本第10–22页",
+          "scope": "方法依据；本题来源另见题目来源。采用已核概念文字，未把OCR公式当作标准答案。"
+        },
+        "transferCheck": "25×(16＋4)＝25×20＝500；合并的是16份和4份，25只保留一份量。",
+        "transferSource": "authored-practice-not-historical-error"
+      },
+      "visual": {
+        "kind": "none",
+        "caption": "",
+        "alt": "",
+        "required": false,
+        "reason": "当前题意可用完整算式和分步过程表达；不添加装饰图。"
+      }
     },
     {
       "id": "E-M-992",
@@ -1658,10 +3868,47 @@
         "date": "2026-10-03",
         "label": "数学原卷 · 扫描第30页",
         "kind": "original",
-        "question": "application-250"
+        "question": "四·应用题（计算部分）",
+        "scanPage": 30,
+        "material": "四年级第一学期数学小练习（3）",
+        "dateLabel": "资料记录日期",
+        "locatorStatus": "页码与题号已核",
+        "note": "日期为资料记录或收卷日期；不据此认定实际作答日。纸页未记录。"
       },
       "status": "ready",
-      "recordType": "confirmed-error"
+      "recordType": "confirmed-error",
+      "diagnosis": {
+        "type": "计算检查",
+        "breakpoint": "先让250与4凑成1000。",
+        "reason": "只换分组和位置，三个因数都只用一次。",
+        "check": "检查原来的250、7、4是否完整保留。",
+        "certainty": "本题检查点；具体错误原因需结合本次过程核实"
+      },
+      "teaching": {
+        "goal": "先让250与4凑成1000。",
+        "prerequisites": [
+          "数位与四则计算",
+          "加减、乘除的互逆关系"
+        ],
+        "focus": "只换分组和位置，三个因数都只用一次。 可先交换位置凑整：250×4×7；1000×7＝7000",
+        "recallPrompt": "收起讲解，用自己的话说：先让250与4凑成1000，为什么？",
+        "transferPrompt": "自编迁移（不计入历史错题）：另算一道：48×15。先拆出两个部分积，再用另一种算法核对。",
+        "reference": {
+          "label": "四上《学习笔记同步教材》（项目目录：金牌数学）",
+          "unit": "运算关系；四则运算",
+          "pages": "书本第3–6、45–47页",
+          "scope": "方法依据；本题来源另见题目来源。采用已核概念文字，未把OCR公式当作标准答案。"
+        },
+        "transferCheck": "48×10＋48×5＝480＋240＝720；也可用48×(30÷2)＝1440÷2。",
+        "transferSource": "authored-practice-not-historical-error"
+      },
+      "visual": {
+        "kind": "none",
+        "caption": "",
+        "alt": "",
+        "required": false,
+        "reason": "当前题意可用完整算式和分步过程表达；不添加装饰图。"
+      }
     },
     {
       "id": "E-M-993",
@@ -1685,7 +3932,12 @@
         "date": "2026-10-03",
         "label": "数学原卷 · 扫描第31页",
         "kind": "original",
-        "question": "sun-direction"
+        "question": "一·填空2",
+        "scanPage": 31,
+        "material": "数学小练习（4）",
+        "dateLabel": "资料记录日期",
+        "locatorStatus": "页码与题号已核",
+        "note": "日期为资料记录或收卷日期；不据此认定实际作答日。纸页未记录。"
       },
       "status": "ready",
       "recordType": "confirmed-error",
@@ -1694,7 +3946,44 @@
         "西、东、南、北",
         "东、西、南、北",
         "北、南、西、东"
-      ]
+      ],
+      "diagnosis": {
+        "type": "方向参照",
+        "breakpoint": "先确定人面朝哪边。",
+        "reason": "人的左右跟随面向，地图的北向不会转动。",
+        "check": "指前后，再用身体左右核对方向。",
+        "certainty": "本题检查点；具体错误原因需结合本次过程核实"
+      },
+      "teaching": {
+        "goal": "先确定人面朝哪边。",
+        "prerequisites": [
+          "固定北向",
+          "观察点与被观察点"
+        ],
+        "focus": "人的左右跟随面向，地图的北向不会转动。 早晨太阳在东方；面向东时后面是西；左边是北、右边是南",
+        "recallPrompt": "收起讲解，用自己的话说：先确定人面朝哪边，为什么？",
+        "transferPrompt": "自编迁移（不计入历史错题）：如果改为面向北走，前、后、左、右分别是什么方向？",
+        "reference": {
+          "label": "四上《学习笔记同步教材》（项目目录：金牌数学）",
+          "unit": "辨认方向；观测风向",
+          "pages": "书本第32–39页",
+          "scope": "方法依据；本题来源另见题目来源。采用已核概念文字，未把OCR公式当作标准答案。"
+        },
+        "transferCheck": "北、南、西、东。面向变了，人的左右对应方向也变了。",
+        "transferSource": "authored-practice-not-historical-error"
+      },
+      "visual": {
+        "kind": "teaching",
+        "caption": "教学示意：先固定面向，再判断左右",
+        "alt": "先固定面向，再判断左右",
+        "required": true,
+        "reason": "图示将本题的关键数量关系或运算对象显出来。"
+      },
+      "teachingImage": {
+        "src": "../assets/math-mistakes/eddey-upgrade-face-east.svg",
+        "alt": "先固定面向，再判断左右",
+        "caption": "教学示意：先固定面向，再判断左右"
+      }
     },
     {
       "id": "E-M-994",
@@ -1717,7 +4006,12 @@
         "date": "2026-10-03",
         "label": "数学小练习四 · 扫描第31页",
         "question": "三·2(1)·按原图重绘、地点名简写",
-        "kind": "reconstructed"
+        "kind": "reconstructed",
+        "scanPage": 31,
+        "material": "数学小练习（4）",
+        "dateLabel": "资料记录日期",
+        "locatorStatus": "页码与题号已核",
+        "note": "日期为资料记录或收卷日期；不据此认定实际作答日。纸页未记录。题意与条件保留，按已核记录重新排版。"
       },
       "status": "ready",
       "recordType": "confirmed-error",
@@ -1727,7 +4021,40 @@
         "温泉山庄"
       ],
       "image": "../assets/math-mistakes/forest-fill.svg",
-      "diagramAlt": "小筑位于图中央，右下角位置待填。"
+      "diagramAlt": "小筑位于图中央，右下角位置待填。",
+      "diagnosis": {
+        "type": "读题核查",
+        "breakpoint": "这一格要填地点名。",
+        "reason": "方向词用来定位，括号里写定位到的地方。",
+        "check": "看问句要求地点还是方向。",
+        "certainty": "本题检查点；具体错误原因需结合本次过程核实"
+      },
+      "teaching": {
+        "goal": "这一格要填地点名。",
+        "prerequisites": [
+          "固定北向",
+          "观察点与被观察点"
+        ],
+        "focus": "方向词用来定位，括号里写定位到的地方。 先从中央小筑确定东南方向：北向朝上时，东南在右下方。 题目已给出小筑的东南方向是七彩画室，所以右下方的括号内填七彩画室，填写地点名。",
+        "recallPrompt": "收起讲解，用自己的话说：这一格要填地点名，为什么？",
+        "transferPrompt": "自编迁移（不计入历史错题）：在原图中，把问题改成“七彩画室在小筑的什么方向”，此时应写地点还是方向？",
+        "reference": {
+          "label": "四上《学习笔记同步教材》（项目目录：金牌数学）",
+          "unit": "辨认方向；观测风向",
+          "pages": "书本第32–39页",
+          "scope": "方法依据；本题来源另见题目来源。采用已核概念文字，未把OCR公式当作标准答案。"
+        },
+        "transferCheck": "写方向：东南；原题要地点，改问法后要方向。",
+        "transferSource": "authored-practice-not-historical-error"
+      },
+      "visual": {
+        "kind": "question",
+        "caption": "按已核原图的数量、位置和北向重新绘制；不含原作答与批改。",
+        "alt": "小筑位于图中央，右下角位置待填。",
+        "required": true,
+        "reason": "依赖位置、组数或关系图判断。"
+      },
+      "diagramCaption": "按已核原图的数量、位置和北向重新绘制；不含原作答与批改。"
     },
     {
       "id": "E-M-995",
@@ -1751,7 +4078,12 @@
         "date": "2026-10-03",
         "label": "数学小练习四 · 扫描第31页",
         "question": "三·2(2)·指定原图可行路线",
-        "kind": "reconstructed"
+        "kind": "reconstructed",
+        "scanPage": 31,
+        "material": "数学小练习（4）",
+        "dateLabel": "资料记录日期",
+        "locatorStatus": "页码与题号已核",
+        "note": "日期为资料记录或收卷日期；不据此认定实际作答日。纸页未记录。题意与条件保留，按已核记录重新排版。"
       },
       "status": "ready",
       "recordType": "confirmed-error",
@@ -1761,7 +4093,40 @@
         "先向西，再向南"
       ],
       "image": "../assets/math-mistakes/forest-directions.svg",
-      "diagramAlt": "小熊家在中行左边，小鹿家在同一行右边，红木书屋在小鹿家正北。"
+      "diagramAlt": "小熊家在中行左边，小鹿家在同一行右边，红木书屋在小鹿家正北。",
+      "diagnosis": {
+        "type": "方向参照",
+        "breakpoint": "逐段说明从哪里到哪里。",
+        "reason": "方向与到达地点要对应同一段路线。",
+        "check": "沿图走一遍，检查每句话都能找到对应线段。",
+        "certainty": "本题检查点；具体错误原因需结合本次过程核实"
+      },
+      "teaching": {
+        "goal": "逐段说明从哪里到哪里。",
+        "prerequisites": [
+          "固定北向",
+          "观察点与被观察点"
+        ],
+        "focus": "方向与到达地点要对应同一段路线。 第一段从小熊家到右侧小鹿家，向东；第二段从小鹿家到上方红木书屋，向北；路线要同时写清方向与到达地点",
+        "recallPrompt": "收起讲解，用自己的话说：逐段说明从哪里到哪里，为什么？",
+        "transferPrompt": "自编迁移（不计入历史错题）：在原图上从红木书屋经小鹿家回小熊家，逐段说方向和地点。",
+        "reference": {
+          "label": "四上《学习笔记同步教材》（项目目录：金牌数学）",
+          "unit": "辨认方向；观测风向",
+          "pages": "书本第32–39页",
+          "scope": "方法依据；本题来源另见题目来源。采用已核概念文字，未把OCR公式当作标准答案。"
+        },
+        "transferCheck": "先向南到小鹿家，再向西到小熊家。",
+        "transferSource": "authored-practice-not-historical-error"
+      },
+      "visual": {
+        "kind": "question",
+        "caption": "按已核原图的数量、位置和北向重新绘制；不含原作答与批改。",
+        "alt": "小熊家在中行左边，小鹿家在同一行右边，红木书屋在小鹿家正北。",
+        "required": true,
+        "reason": "依赖位置、组数或关系图判断。"
+      },
+      "diagramCaption": "按已核原图的数量、位置和北向重新绘制；不含原作答与批改。"
     },
     {
       "id": "E-M-996",
@@ -1786,10 +4151,47 @@
         "label": "数学练习原题",
         "kind": "original",
         "page": 24,
-        "question": "mixed-180"
+        "question": "1·第2行中间",
+        "scanPage": 36,
+        "material": "数学练习册（书名未记录）",
+        "dateLabel": "资料记录日期",
+        "locatorStatus": "页码与题号已核",
+        "note": "日期为资料记录或收卷日期；不据此认定实际作答日。"
       },
       "status": "ready",
-      "recordType": "confirmed-error"
+      "recordType": "confirmed-error",
+      "diagnosis": {
+        "type": "运算顺序",
+        "breakpoint": "先算56÷7。",
+        "reason": "除法部分得到一个数后，才能从180减去。",
+        "check": "把差加商，应回到180。",
+        "certainty": "本题检查点；具体错误原因需结合本次过程核实"
+      },
+      "teaching": {
+        "goal": "先算56÷7。",
+        "prerequisites": [
+          "先乘除后加减",
+          "括号表示一个整体"
+        ],
+        "focus": "除法部分得到一个数后，才能从180减去。 先除后减；56÷7＝8；180－8＝172",
+        "recallPrompt": "收起讲解，用自己的话说：先算56÷7，为什么？",
+        "transferPrompt": "自编迁移（不计入历史错题）：不添加括号，计算240－80÷4×3。先标出每一步，再算。",
+        "reference": {
+          "label": "四上《学习笔记同步教材》（项目目录：金牌数学）",
+          "unit": "四则运算；分步式合并",
+          "pages": "书本第45–50页",
+          "scope": "方法依据；本题来源另见题目来源。采用已核概念文字，未把OCR公式当作标准答案。"
+        },
+        "transferCheck": "先80÷4＝20，再20×3＝60，最后240－60＝180。",
+        "transferSource": "authored-practice-not-historical-error"
+      },
+      "visual": {
+        "kind": "none",
+        "caption": "",
+        "alt": "",
+        "required": false,
+        "reason": "当前题意可用完整算式和分步过程表达；不添加装饰图。"
+      }
     },
     {
       "id": "E-M-997",
@@ -1813,10 +4215,47 @@
         "label": "数学练习原题",
         "kind": "original",
         "page": 24,
-        "question": "mixed-208"
+        "question": "2·第1行右",
+        "scanPage": 36,
+        "material": "数学练习册（书名未记录）",
+        "dateLabel": "资料记录日期",
+        "locatorStatus": "页码与题号已核",
+        "note": "日期为资料记录或收卷日期；不据此认定实际作答日。"
       },
       "status": "ready",
-      "recordType": "confirmed-error"
+      "recordType": "confirmed-error",
+      "diagnosis": {
+        "type": "计算检查",
+        "breakpoint": "分别核对乘法和除法两块。",
+        "reason": "208×13的两个部分积都要保留。",
+        "check": "乘积除以13应为208，再加除法结果。",
+        "certainty": "本题检查点；具体错误原因需结合本次过程核实"
+      },
+      "teaching": {
+        "goal": "分别核对乘法和除法两块。",
+        "prerequisites": [
+          "数位与四则计算",
+          "加减、乘除的互逆关系"
+        ],
+        "focus": "208×13的两个部分积都要保留。 先算乘除：208×13＝2704，36÷18＝2；2704＋2＝2706",
+        "recallPrompt": "收起讲解，用自己的话说：分别核对乘法和除法两块，为什么？",
+        "transferPrompt": "自编迁移（不计入历史错题）：另算一道：48×15。先拆出两个部分积，再用另一种算法核对。",
+        "reference": {
+          "label": "四上《学习笔记同步教材》（项目目录：金牌数学）",
+          "unit": "运算关系；四则运算",
+          "pages": "书本第3–6、45–47页",
+          "scope": "方法依据；本题来源另见题目来源。采用已核概念文字，未把OCR公式当作标准答案。"
+        },
+        "transferCheck": "48×10＋48×5＝480＋240＝720；也可用48×(30÷2)＝1440÷2。",
+        "transferSource": "authored-practice-not-historical-error"
+      },
+      "visual": {
+        "kind": "none",
+        "caption": "",
+        "alt": "",
+        "required": false,
+        "reason": "当前题意可用完整算式和分步过程表达；不添加装饰图。"
+      }
     },
     {
       "id": "E-M-998",
@@ -1841,10 +4280,47 @@
         "label": "数学练习原题",
         "kind": "original",
         "page": 24,
-        "question": "mixed-18"
+        "question": "2·第2行左",
+        "scanPage": 36,
+        "material": "数学练习册（书名未记录）",
+        "dateLabel": "资料记录日期",
+        "locatorStatus": "页码与题号已核",
+        "note": "日期为资料记录或收卷日期；不据此认定实际作答日。"
       },
       "status": "ready",
-      "recordType": "confirmed-error"
+      "recordType": "confirmed-error",
+      "diagnosis": {
+        "type": "计算检查",
+        "breakpoint": "先确认改写等值，再算最后乘法。",
+        "reason": "连乘除可约简，但不能多用一个因数。",
+        "check": "按原式从左到右再核一遍结果。",
+        "certainty": "本题检查点；具体错误原因需结合本次过程核实"
+      },
+      "teaching": {
+        "goal": "先确认改写等值，再算最后乘法。",
+        "prerequisites": [
+          "数位与四则计算",
+          "加减、乘除的互逆关系"
+        ],
+        "focus": "连乘除可约简，但不能多用一个因数。 乘除同级，从左到右，或等价约简；18÷3＝6，6×39×24；234×24＝5616",
+        "recallPrompt": "收起讲解，用自己的话说：先确认改写等值，再算最后乘法，为什么？",
+        "transferPrompt": "自编迁移（不计入历史错题）：另算一道：48×15。先拆出两个部分积，再用另一种算法核对。",
+        "reference": {
+          "label": "四上《学习笔记同步教材》（项目目录：金牌数学）",
+          "unit": "运算关系；四则运算",
+          "pages": "书本第3–6、45–47页",
+          "scope": "方法依据；本题来源另见题目来源。采用已核概念文字，未把OCR公式当作标准答案。"
+        },
+        "transferCheck": "48×10＋48×5＝480＋240＝720；也可用48×(30÷2)＝1440÷2。",
+        "transferSource": "authored-practice-not-historical-error"
+      },
+      "visual": {
+        "kind": "none",
+        "caption": "",
+        "alt": "",
+        "required": false,
+        "reason": "当前题意可用完整算式和分步过程表达；不添加装饰图。"
+      }
     },
     {
       "id": "E-M-999",
@@ -1869,10 +4345,47 @@
         "label": "数学练习原题",
         "kind": "original",
         "page": 24,
-        "question": "mixed-144"
+        "question": "2·第3行左",
+        "scanPage": 36,
+        "material": "数学练习册（书名未记录）",
+        "dateLabel": "资料记录日期",
+        "locatorStatus": "页码与题号已核",
+        "note": "日期为资料记录或收卷日期；不据此认定实际作答日。"
       },
       "status": "ready",
-      "recordType": "confirmed-error"
+      "recordType": "confirmed-error",
+      "diagnosis": {
+        "type": "等价变形",
+        "breakpoint": "－375和＋125的符号要保留。",
+        "reason": "先减再加，不能合并成再减500。",
+        "check": "末结果减125、再加375应回到乘积。",
+        "certainty": "本题检查点；具体错误原因需结合本次过程核实"
+      },
+      "teaching": {
+        "goal": "－375和＋125的符号要保留。",
+        "prerequisites": [
+          "先乘除后加减",
+          "括号表示一个整体"
+        ],
+        "focus": "先减再加，不能合并成再减500。 先算144×13＝1872；1872－375＋125；1497＋125＝1622",
+        "recallPrompt": "收起讲解，用自己的话说：－375和＋125的符号要保留，为什么？",
+        "transferPrompt": "自编迁移（不计入历史错题）：计算1000－275＋75。能把后两项合成减350吗？",
+        "reference": {
+          "label": "四上《学习笔记同步教材》（项目目录：金牌数学）",
+          "unit": "四则运算；分步式合并",
+          "pages": "书本第45–50页",
+          "scope": "方法依据；本题来源另见题目来源。采用已核概念文字，未把OCR公式当作标准答案。"
+        },
+        "transferCheck": "不能；1000－275＋75＝800，相当于减200；1000－350＝650。",
+        "transferSource": "authored-practice-not-historical-error"
+      },
+      "visual": {
+        "kind": "none",
+        "caption": "",
+        "alt": "",
+        "required": false,
+        "reason": "当前题意可用完整算式和分步过程表达；不添加装饰图。"
+      }
     },
     {
       "id": "E-M-1037",
@@ -1896,7 +4409,11 @@
         "label": "华东师大版一课一练·四年级数学第一学期增强版",
         "kind": "reconstructed",
         "page": 14,
-        "question": "p14-q3-2-fig2"
+        "question": "",
+        "material": "华东师大版一课一练·四年级数学第一学期增强版",
+        "dateLabel": "资料记录日期",
+        "locatorStatus": "页码已核，题号未记录",
+        "note": "日期为资料记录或收卷日期；不据此认定实际作答日。原题号未记录。题意与条件保留，按已核记录重新排版。"
       },
       "status": "ready",
       "recordType": "confirmed-error",
@@ -1907,7 +4424,40 @@
         "乘法分配律"
       ],
       "image": "../assets/math-mistakes/multiplication-groups.svg",
-      "diagramAlt": "左边四组，每组三块；右边三组，每组四块。"
+      "diagramAlt": "左边四组，每组三块；右边三组，每组四块。",
+      "diagnosis": {
+        "type": "运算律辨析",
+        "breakpoint": "看改变的是因数位置还是分组。",
+        "reason": "3×4与4×3只交换两个乘数的位置。",
+        "check": "分别数两幅图的组数与每组块数。",
+        "certainty": "本题检查点；具体错误原因需结合本次过程核实"
+      },
+      "teaching": {
+        "goal": "看改变的是因数位置还是分组。",
+        "prerequisites": [
+          "乘法的意义",
+          "因数与项的区别"
+        ],
+        "focus": "3×4与4×3只交换两个乘数的位置。 两图分别表示3×4和4×3；交换两个因数的位置，积不变",
+        "recallPrompt": "收起讲解，用自己的话说：看改变的是因数位置还是分组，为什么？",
+        "transferPrompt": "自编迁移（不计入历史错题）：比较3×4＝4×3和(3×4)×5＝3×(4×5)：分别改变了什么？",
+        "reference": {
+          "label": "四上《学习笔记同步教材》（项目目录：金牌数学）",
+          "unit": "运算律；辨易误与简算方法",
+          "pages": "书本第10–22页",
+          "scope": "方法依据；本题来源另见题目来源。采用已核概念文字，未把OCR公式当作标准答案。"
+        },
+        "transferCheck": "前者交换两个乘数位置，是乘法交换律；后者只改分组，是乘法结合律。",
+        "transferSource": "authored-practice-not-historical-error"
+      },
+      "visual": {
+        "kind": "question",
+        "caption": "按已核原图的分组和每组块数重新绘制；不含原作答与批改。",
+        "alt": "左边四组，每组三块；右边三组，每组四块。",
+        "required": true,
+        "reason": "依赖位置、组数或关系图判断。"
+      },
+      "diagramCaption": "按已核原图的分组和每组块数重新绘制；不含原作答与批改。"
     },
     {
       "id": "E-M-1038",
@@ -1932,10 +4482,51 @@
         "label": "华东师大版一课一练·四年级数学第一学期增强版",
         "kind": "original",
         "page": 14,
-        "question": "p14-q3-3"
+        "question": "",
+        "material": "华东师大版一课一练·四年级数学第一学期增强版",
+        "dateLabel": "资料记录日期",
+        "locatorStatus": "页码已核，题号未记录",
+        "note": "日期为资料记录或收卷日期；不据此认定实际作答日。原题号未记录。"
       },
       "status": "ready",
-      "recordType": "confirmed-error"
+      "recordType": "confirmed-error",
+      "diagnosis": {
+        "type": "方向参照",
+        "breakpoint": "先画学校与小巧，再定位小华。",
+        "reason": "两条条件都要保留，不能只看南北。",
+        "check": "从学校指向小华，比较横向和纵向位置。",
+        "certainty": "本题检查点；具体错误原因需结合本次过程核实"
+      },
+      "teaching": {
+        "goal": "先画学校与小巧，再定位小华。",
+        "prerequisites": [
+          "固定北向",
+          "观察点与被观察点"
+        ],
+        "focus": "两条条件都要保留，不能只看南北。 先以学校为参照，小巧在西面；小巧在小华南面，因此小华在小巧北面；从学校看，小华在左上方，即西北",
+        "recallPrompt": "收起讲解，用自己的话说：先画学校与小巧，再定位小华，为什么？",
+        "transferPrompt": "自编迁移（不计入历史错题）：小巧在学校西面，小华改在小巧南面。小华在学校什么方向？",
+        "reference": {
+          "label": "四上《学习笔记同步教材》（项目目录：金牌数学）",
+          "unit": "辨认方向；观测风向",
+          "pages": "书本第32–39页",
+          "scope": "方法依据；本题来源另见题目来源。采用已核概念文字，未把OCR公式当作标准答案。"
+        },
+        "transferCheck": "西南；先从学校向西，再向南。",
+        "transferSource": "authored-practice-not-historical-error"
+      },
+      "visual": {
+        "kind": "teaching",
+        "caption": "教学示意：学校、小巧家、小华家的相对位置；不表示实际距离。",
+        "alt": "把两条位置条件接在同一张图上",
+        "required": true,
+        "reason": "图示将本题的关键数量关系或运算对象显出来。"
+      },
+      "teachingImage": {
+        "src": "../assets/math-mistakes/eddey-upgrade-homes-direction.svg",
+        "alt": "把两条位置条件接在同一张图上",
+        "caption": "教学示意：学校、小巧家、小华家的相对位置；不表示实际距离。"
+      }
     },
     {
       "id": "E-M-1039",
@@ -1959,10 +4550,51 @@
         "label": "华东师大版一课一练·四年级数学第一学期增强版",
         "kind": "original",
         "page": 14,
-        "question": "p14-q3-5-wind"
+        "question": "",
+        "material": "华东师大版一课一练·四年级数学第一学期增强版",
+        "dateLabel": "资料记录日期",
+        "locatorStatus": "页码已核，题号未记录",
+        "note": "日期为资料记录或收卷日期；不据此认定实际作答日。原题号未记录。"
       },
       "status": "ready",
-      "recordType": "confirmed-error"
+      "recordType": "confirmed-error",
+      "diagnosis": {
+        "type": "方向参照",
+        "breakpoint": "东北风的名字表示来向。",
+        "reason": "风从东北吹向它的相反方向。",
+        "check": "指出风从哪里出发，而不是停在哪里。",
+        "certainty": "本题检查点；具体错误原因需结合本次过程核实"
+      },
+      "teaching": {
+        "goal": "东北风的名字表示来向。",
+        "prerequisites": [
+          "固定北向",
+          "观察点与被观察点"
+        ],
+        "focus": "风从东北吹向它的相反方向。 风向按风吹来的方向命名；东北风从东北吹来",
+        "recallPrompt": "收起讲解，用自己的话说：东北风的名字表示来向，为什么？",
+        "transferPrompt": "自编迁移（不计入历史错题）：如果风从西南吹来，它叫什么风、会吹向哪边？",
+        "reference": {
+          "label": "四上《学习笔记同步教材》（项目目录：金牌数学）",
+          "unit": "辨认方向；观测风向",
+          "pages": "书本第32–39页",
+          "scope": "方法依据；本题来源另见题目来源。采用已核概念文字，未把OCR公式当作标准答案。"
+        },
+        "transferCheck": "西南风，吹向东北。",
+        "transferSource": "authored-practice-not-historical-error"
+      },
+      "visual": {
+        "kind": "teaching",
+        "caption": "教学示意：东北风：从东北吹来",
+        "alt": "东北风：从东北吹来",
+        "required": true,
+        "reason": "图示将本题的关键数量关系或运算对象显出来。"
+      },
+      "teachingImage": {
+        "src": "../assets/math-mistakes/eddey-upgrade-wind-origin.svg",
+        "alt": "东北风：从东北吹来",
+        "caption": "教学示意：东北风：从东北吹来"
+      }
     },
     {
       "id": "E-M-1040",
@@ -1987,7 +4619,11 @@
         "label": "四上数学一课一练",
         "page": 14,
         "question": "3(6)·按原图重绘",
-        "kind": "reconstructed"
+        "kind": "reconstructed",
+        "material": "华东师大版一课一练·四年级数学第一学期增强版",
+        "dateLabel": "资料记录日期",
+        "locatorStatus": "页码与题号已核",
+        "note": "日期为资料记录或收卷日期；不据此认定实际作答日。题意与条件保留，按已核记录重新排版。"
       },
       "status": "ready",
       "recordType": "confirmed-error",
@@ -1998,7 +4634,40 @@
         "狮子馆"
       ],
       "image": "../assets/math-mistakes/zoo-directions.svg",
-      "diagramAlt": "三行三列动物园图：上排熊猫、企鹅、长颈鹿；中排狮子、大象、老虎；下排麋鹿、鸵鸟、猴。北向朝上。"
+      "diagramAlt": "三行三列动物园图：上排熊猫、企鹅、长颈鹿；中排狮子、大象、老虎；下排麋鹿、鸵鸟、猴。北向朝上。",
+      "diagnosis": {
+        "type": "方向参照",
+        "breakpoint": "以大象馆为起点看东南。",
+        "reason": "先按北向分清东、西，再找斜向。",
+        "check": "把手指放回大象馆，再走向右下方。",
+        "certainty": "本题检查点；具体错误原因需结合本次过程核实"
+      },
+      "teaching": {
+        "goal": "以大象馆为起点看东南。",
+        "prerequisites": [
+          "固定北向",
+          "观察点与被观察点"
+        ],
+        "focus": "先按北向分清东、西，再找斜向。 先找到题目给出的参照点；图上北向朝上，右边是东；大象馆右下方是猴馆，鸵鸟馆在猴馆左边",
+        "recallPrompt": "收起讲解，用自己的话说：以大象馆为起点看东南，为什么？",
+        "transferPrompt": "自编迁移（不计入历史错题）：换观察点：大象馆在猴馆的什么方向？",
+        "reference": {
+          "label": "四上《学习笔记同步教材》（项目目录：金牌数学）",
+          "unit": "辨认方向；观测风向",
+          "pages": "书本第32–39页",
+          "scope": "方法依据；本题来源另见题目来源。采用已核概念文字，未把OCR公式当作标准答案。"
+        },
+        "transferCheck": "西北；交换参照点后方向相反。",
+        "transferSource": "authored-practice-not-historical-error"
+      },
+      "visual": {
+        "kind": "question",
+        "caption": "按已核原图的数量、位置和北向重新绘制；不含原作答与批改。",
+        "alt": "三行三列动物园图：上排熊猫、企鹅、长颈鹿；中排狮子、大象、老虎；下排麋鹿、鸵鸟、猴。北向朝上。",
+        "required": true,
+        "reason": "依赖位置、组数或关系图判断。"
+      },
+      "diagramCaption": "按已核原图的数量、位置和北向重新绘制；不含原作答与批改。"
     },
     {
       "id": "E-M-1041",
@@ -2023,7 +4692,11 @@
         "label": "四上数学一课一练",
         "page": 14,
         "question": "3(6)·按原图重绘",
-        "kind": "reconstructed"
+        "kind": "reconstructed",
+        "material": "华东师大版一课一练·四年级数学第一学期增强版",
+        "dateLabel": "资料记录日期",
+        "locatorStatus": "页码与题号已核",
+        "note": "日期为资料记录或收卷日期；不据此认定实际作答日。题意与条件保留，按已核记录重新排版。"
       },
       "status": "ready",
       "recordType": "confirmed-error",
@@ -2034,7 +4707,40 @@
         "狮子馆"
       ],
       "image": "../assets/math-mistakes/zoo-directions.svg",
-      "diagramAlt": "三行三列动物园图：上排熊猫、企鹅、长颈鹿；中排狮子、大象、老虎；下排麋鹿、鸵鸟、猴。北向朝上。"
+      "diagramAlt": "三行三列动物园图：上排熊猫、企鹅、长颈鹿；中排狮子、大象、老虎；下排麋鹿、鸵鸟、猴。北向朝上。",
+      "diagnosis": {
+        "type": "方向参照",
+        "breakpoint": "找“鸵鸟在谁的西面”。",
+        "reason": "鸵鸟是被观察地点，所填的是参照地点。",
+        "check": "用“鸵鸟在该馆左边”反读检查。",
+        "certainty": "本题检查点；具体错误原因需结合本次过程核实"
+      },
+      "teaching": {
+        "goal": "找“鸵鸟在谁的西面”。",
+        "prerequisites": [
+          "固定北向",
+          "观察点与被观察点"
+        ],
+        "focus": "鸵鸟是被观察地点，所填的是参照地点。 先找到题目给出的参照点；图上北向朝上，右边是东；大象馆右下方是猴馆，鸵鸟馆在猴馆左边",
+        "recallPrompt": "收起讲解，用自己的话说：找“鸵鸟在谁的西面”，为什么？",
+        "transferPrompt": "自编迁移（不计入历史错题）：在原图上，改问“猴馆在鸵鸟馆的哪边”。",
+        "reference": {
+          "label": "四上《学习笔记同步教材》（项目目录：金牌数学）",
+          "unit": "辨认方向；观测风向",
+          "pages": "书本第32–39页",
+          "scope": "方法依据；本题来源另见题目来源。采用已核概念文字，未把OCR公式当作标准答案。"
+        },
+        "transferCheck": "东面；猴馆在鸵鸟馆右边。",
+        "transferSource": "authored-practice-not-historical-error"
+      },
+      "visual": {
+        "kind": "question",
+        "caption": "按已核原图的数量、位置和北向重新绘制；不含原作答与批改。",
+        "alt": "三行三列动物园图：上排熊猫、企鹅、长颈鹿；中排狮子、大象、老虎；下排麋鹿、鸵鸟、猴。北向朝上。",
+        "required": true,
+        "reason": "依赖位置、组数或关系图判断。"
+      },
+      "diagramCaption": "按已核原图的数量、位置和北向重新绘制；不含原作答与批改。"
     },
     {
       "id": "E-M-1042",
@@ -2059,7 +4765,11 @@
         "label": "华东师大版一课一练·四年级数学第一学期增强版",
         "kind": "original",
         "page": 15,
-        "question": "p15-q4-1"
+        "question": "",
+        "material": "华东师大版一课一练·四年级数学第一学期增强版",
+        "dateLabel": "资料记录日期",
+        "locatorStatus": "页码已核，题号未记录",
+        "note": "日期为资料记录或收卷日期；不据此认定实际作答日。原题号未记录。"
       },
       "status": "ready",
       "recordType": "confirmed-error",
@@ -2068,7 +4778,39 @@
         "58×99＝58×(100－1)",
         "87＋125＋75＝87＋(125＋75)",
         "25×40×125×8＝(25×40)×(125×8)"
-      ]
+      ],
+      "diagnosis": {
+        "type": "运算律辨析",
+        "breakpoint": "先确认是连乘，再看分组。",
+        "reason": "乘法结合律不改变因数和次序，只改变先算哪一组。",
+        "check": "指出相邻因数怎样分组，检查没有改成加法。",
+        "certainty": "本题检查点；具体错误原因需结合本次过程核实"
+      },
+      "teaching": {
+        "goal": "先确认是连乘，再看分组。",
+        "prerequisites": [
+          "乘法的意义",
+          "因数与项的区别"
+        ],
+        "focus": "乘法结合律不改变因数和次序，只改变先算哪一组。 乘法结合律只改变连乘的分组，不改变因数和它们的顺序。 25×40×125×8＝(25×40)×(125×8)，只是把相邻的乘法分组。 因此这一项运用了乘法结合律。",
+        "recallPrompt": "收起讲解，用自己的话说：先确认是连乘，再看分组，为什么？",
+        "transferPrompt": "自编迁移（不计入历史错题）：比较3×4＝4×3和(3×4)×5＝3×(4×5)：分别改变了什么？",
+        "reference": {
+          "label": "四上《学习笔记同步教材》（项目目录：金牌数学）",
+          "unit": "运算律；辨易误与简算方法",
+          "pages": "书本第10–22页",
+          "scope": "方法依据；本题来源另见题目来源。采用已核概念文字，未把OCR公式当作标准答案。"
+        },
+        "transferCheck": "前者交换两个乘数位置，是乘法交换律；后者只改分组，是乘法结合律。",
+        "transferSource": "authored-practice-not-historical-error"
+      },
+      "visual": {
+        "kind": "none",
+        "caption": "",
+        "alt": "",
+        "required": false,
+        "reason": "当前题意可用完整算式和分步过程表达；不添加装饰图。"
+      }
     },
     {
       "id": "E-M-archive-295",
@@ -2093,10 +4835,46 @@
         "label": "数学单元练习一",
         "page": 9,
         "question": "1(4)",
-        "kind": "original"
+        "kind": "original",
+        "material": "数学单元练习一",
+        "dateLabel": "资料记录日期",
+        "locatorStatus": "页码与题号已核",
+        "note": "日期为资料记录或收卷日期；不据此认定实际作答日。"
       },
       "status": "ready",
-      "recordType": "confirmed-error"
+      "recordType": "confirmed-error",
+      "diagnosis": {
+        "type": "运算顺序",
+        "breakpoint": "本题没有括号，加减从左到右。",
+        "reason": "没有括号，不能让后面的加法先合成一块。",
+        "check": "先说第一步，再检查两个中间结果。",
+        "certainty": "本题检查点；具体错误原因需结合本次过程核实"
+      },
+      "teaching": {
+        "goal": "本题没有括号，加减从左到右。",
+        "prerequisites": [
+          "先乘除后加减",
+          "括号表示一个整体"
+        ],
+        "focus": "没有括号，不能让后面的加法先合成一块。 加减同级，从左到右；200－60＝140；140＋40＝180",
+        "recallPrompt": "收起讲解，用自己的话说：本题没有括号，加减从左到右，为什么？",
+        "transferPrompt": "自编迁移（不计入历史错题）：不加括号，计算300－70＋20，先说第一步，再算。",
+        "reference": {
+          "label": "四上《学习笔记同步教材》（项目目录：金牌数学）",
+          "unit": "四则运算；分步式合并",
+          "pages": "书本第45–50页",
+          "scope": "方法依据；本题来源另见题目来源。采用已核概念文字，未把OCR公式当作标准答案。"
+        },
+        "transferCheck": "先300－70＝230，再230＋20＝250；不是300－(70＋20)。",
+        "transferSource": "authored-practice-not-historical-error"
+      },
+      "visual": {
+        "kind": "none",
+        "caption": "",
+        "alt": "",
+        "required": false,
+        "reason": "当前题意可用完整算式和分步过程表达；不添加装饰图。"
+      }
     },
     {
       "id": "E-M-archive-296",
@@ -2121,10 +4899,46 @@
         "label": "数学单元练习一",
         "page": 9,
         "question": "3(1)",
-        "kind": "original"
+        "kind": "original",
+        "material": "数学单元练习一",
+        "dateLabel": "资料记录日期",
+        "locatorStatus": "页码与题号已核",
+        "note": "日期为资料记录或收卷日期；不据此认定实际作答日。"
       },
       "status": "ready",
-      "recordType": "confirmed-error"
+      "recordType": "confirmed-error",
+      "diagnosis": {
+        "type": "等价变形",
+        "breakpoint": "456没有乘56。",
+        "reason": "只有44与56相乘，不能直接把456和44凑500。",
+        "check": "展开自己的改写，看456有没有被多乘。",
+        "certainty": "本题检查点；具体错误原因需结合本次过程核实"
+      },
+      "teaching": {
+        "goal": "456没有乘56。",
+        "prerequisites": [
+          "先乘除后加减",
+          "括号表示一个整体"
+        ],
+        "focus": "只有44与56相乘，不能直接把456和44凑500。 先算乘法，456不参与乘56；44×56＝2464；456＋2464＝2920",
+        "recallPrompt": "收起讲解，用自己的话说：456没有乘56，为什么？",
+        "transferPrompt": "自编迁移（不计入历史错题）：判断356＋44×56能否写成(356＋44)×56，并说明356有没有被多乘。",
+        "reference": {
+          "label": "四上《学习笔记同步教材》（项目目录：金牌数学）",
+          "unit": "四则运算；分步式合并",
+          "pages": "书本第45–50页",
+          "scope": "方法依据；本题来源另见题目来源。采用已核概念文字，未把OCR公式当作标准答案。"
+        },
+        "transferCheck": "不能；原式356＋2464＝2820，改写式400×56＝22400，多让356乘了56。",
+        "transferSource": "authored-practice-not-historical-error"
+      },
+      "visual": {
+        "kind": "none",
+        "caption": "",
+        "alt": "",
+        "required": false,
+        "reason": "当前题意可用完整算式和分步过程表达；不添加装饰图。"
+      }
     },
     {
       "id": "E-M-archive-297",
@@ -2149,10 +4963,51 @@
         "label": "数学单元练习一",
         "page": 10,
         "question": "3(6)",
-        "kind": "original"
+        "kind": "original",
+        "material": "数学单元练习一",
+        "dateLabel": "资料记录日期",
+        "locatorStatus": "页码与题号已核",
+        "note": "日期为资料记录或收卷日期；不据此认定实际作答日。"
       },
       "status": "ready",
-      "recordType": "confirmed-error"
+      "recordType": "confirmed-error",
+      "diagnosis": {
+        "type": "等价变形",
+        "breakpoint": "展开时两部分都要保留4和8。",
+        "reason": "原式里的4与8都作用于括号整体。",
+        "check": "把两项各自标出的因数与原式核对。",
+        "certainty": "本题检查点；具体错误原因需结合本次过程核实"
+      },
+      "teaching": {
+        "goal": "展开时两部分都要保留4和8。",
+        "prerequisites": [
+          "乘法的意义",
+          "因数与项的区别"
+        ],
+        "focus": "原式里的4与8都作用于括号整体。 先把括号看成整体：25＋125＝150；4×150×8＝4800；若展开，两部分都必须保留4和8",
+        "recallPrompt": "收起讲解，用自己的话说：展开时两部分都要保留4和8，为什么？",
+        "transferPrompt": "自编迁移（不计入历史错题）：把4×(25＋125)×8中的125改成75，展开时怎样保留全部因数？",
+        "reference": {
+          "label": "四上《学习笔记同步教材》（项目目录：金牌数学）",
+          "unit": "运算律；辨易误与简算方法",
+          "pages": "书本第10–22页",
+          "scope": "方法依据；本题来源另见题目来源。采用已核概念文字，未把OCR公式当作标准答案。"
+        },
+        "transferCheck": "4×25×8＋4×75×8＝800＋2400＝3200。",
+        "transferSource": "authored-practice-not-historical-error"
+      },
+      "visual": {
+        "kind": "teaching",
+        "caption": "教学示意：展开的两部分都保留外侧因数",
+        "alt": "展开的两部分都保留外侧因数",
+        "required": true,
+        "reason": "图示将本题的关键数量关系或运算对象显出来。"
+      },
+      "teachingImage": {
+        "src": "../assets/math-mistakes/eddey-upgrade-all-factors.svg",
+        "alt": "展开的两部分都保留外侧因数",
+        "caption": "教学示意：展开的两部分都保留外侧因数"
+      }
     },
     {
       "id": "E-M-archive-298",
@@ -2177,10 +5032,46 @@
         "label": "数学单元练习一",
         "page": 11,
         "question": "6(2)",
-        "kind": "original"
+        "kind": "original",
+        "material": "数学单元练习一",
+        "dateLabel": "资料记录日期",
+        "locatorStatus": "页码与题号已核",
+        "note": "日期为资料记录或收卷日期；不据此认定实际作答日。"
       },
       "status": "ready",
-      "recordType": "confirmed-error"
+      "recordType": "confirmed-error",
+      "diagnosis": {
+        "type": "数量关系",
+        "breakpoint": "35－7求的是另一个乘数。",
+        "reason": "题目要积，还需把两个乘数相乘。",
+        "check": "给中间结果命名，再检查是否已回答所求。",
+        "certainty": "本题检查点；具体错误原因需结合本次过程核实"
+      },
+      "teaching": {
+        "goal": "35－7求的是另一个乘数。",
+        "prerequisites": [
+          "加减、乘除的互逆关系",
+          "辨认运算中的各部分"
+        ],
+        "focus": "题目要积，还需把两个乘数相乘。 35－7＝28，先求另一乘数；所问是积，还要28×7；结果196",
+        "recallPrompt": "收起讲解，用自己的话说：35－7求的是另一个乘数，为什么？",
+        "transferPrompt": "自编迁移（不计入历史错题）：把乘法错算成加法得42，其中一个乘数7。正确的积是多少？",
+        "reference": {
+          "label": "四上《学习笔记同步教材》（项目目录：金牌数学）",
+          "unit": "加减、乘除法中的错算问题",
+          "pages": "书本第7–9、51–53页",
+          "scope": "方法依据；本题来源另见题目来源。采用已核概念文字，未把OCR公式当作标准答案。"
+        },
+        "transferCheck": "另一乘数42－7＝35；正确的积35×7＝245。",
+        "transferSource": "authored-practice-not-historical-error"
+      },
+      "visual": {
+        "kind": "none",
+        "caption": "",
+        "alt": "",
+        "required": false,
+        "reason": "当前题意可用完整算式和分步过程表达；不添加装饰图。"
+      }
     },
     {
       "id": "E-M-archive-299",
@@ -2205,11 +5096,52 @@
         "label": "数学单元练习一",
         "page": 11,
         "question": "7(2)",
-        "kind": "original"
+        "kind": "original",
+        "material": "数学单元练习一",
+        "dateLabel": "资料记录日期",
+        "locatorStatus": "页码与题号已核",
+        "note": "日期为资料记录或收卷日期；不据此认定实际作答日。"
       },
       "status": "ready",
       "recordType": "confirmed-error",
-      "processRequired": true
+      "processRequired": true,
+      "diagnosis": {
+        "type": "计算检查",
+        "breakpoint": "两种方法要表达不同的关系。",
+        "reason": "可以分别求路程，也可以先求每小时的路程差。",
+        "check": "两种方法结果相等，单位都应为千米。",
+        "certainty": "本题检查点；具体错误原因需结合本次过程核实"
+      },
+      "teaching": {
+        "goal": "两种方法要表达不同的关系。",
+        "prerequisites": [
+          "部分与整体",
+          "每份量、份数和总量"
+        ],
+        "focus": "可以分别求路程，也可以先求每小时的路程差。 方法一：252×4－122×4＝1008－488＝520；方法二：(252－122)×4＝130×4＝520；两种方法表示同一个路程差",
+        "recallPrompt": "收起讲解，用自己的话说：两种方法要表达不同的关系，为什么？",
+        "transferPrompt": "自编迁移（不计入历史错题）：两车速度仍252与122千米/时，改行3小时。写两种方法求路程差。",
+        "reference": {
+          "label": "四上《学习笔记同步教材》（项目目录：金牌数学）",
+          "unit": "复合应用题；工作效率",
+          "pages": "书本第54–60页",
+          "scope": "方法依据；本题来源另见题目来源。采用已核概念文字，未把OCR公式当作标准答案。"
+        },
+        "transferCheck": "252×3－122×3＝390；(252－122)×3＝390，单位千米。",
+        "transferSource": "authored-practice-not-historical-error"
+      },
+      "visual": {
+        "kind": "teaching",
+        "caption": "教学条形图：252＝122＋130，条长按速度比例绘制。",
+        "alt": "相同4小时：先比较每小时的差",
+        "required": true,
+        "reason": "图示将本题的关键数量关系或运算对象显出来。"
+      },
+      "teachingImage": {
+        "src": "../assets/math-mistakes/eddey-upgrade-train-distance.svg",
+        "alt": "相同4小时：先比较每小时的差",
+        "caption": "教学条形图：252＝122＋130，条长按速度比例绘制。"
+      }
     },
     {
       "id": "E-M-archive-300",
@@ -2234,10 +5166,46 @@
         "label": "第三周小练习（二）",
         "page": 1,
         "question": "1(8)",
-        "kind": "original"
+        "kind": "original",
+        "material": "第三周小练习（二）",
+        "dateLabel": "资料记录日期",
+        "locatorStatus": "页码与题号已核",
+        "note": "日期为资料记录或收卷日期；不据此认定实际作答日。"
       },
       "status": "ready",
-      "recordType": "confirmed-error"
+      "recordType": "confirmed-error",
+      "diagnosis": {
+        "type": "等价变形",
+        "breakpoint": "每个因数只用一次。",
+        "reason": "中间的4不能同时参与两组后又被重复相乘。",
+        "check": "逐个划去8、4、25，检查是否不多不少。",
+        "certainty": "本题检查点；具体错误原因需结合本次过程核实"
+      },
+      "teaching": {
+        "goal": "每个因数只用一次。",
+        "prerequisites": [
+          "乘法的意义",
+          "因数与项的区别"
+        ],
+        "focus": "中间的4不能同时参与两组后又被重复相乘。 只选一种分组，不重复使用因数；先4×25＝100；8×100＝800",
+        "recallPrompt": "收起讲解，用自己的话说：每个因数只用一次，为什么？",
+        "transferPrompt": "自编迁移（不计入历史错题）：计算6×4×25，先给因数分组，再逐个确认没有重复。",
+        "reference": {
+          "label": "四上《学习笔记同步教材》（项目目录：金牌数学）",
+          "unit": "运算律；辨易误与简算方法",
+          "pages": "书本第10–22页",
+          "scope": "方法依据；本题来源另见题目来源。采用已核概念文字，未把OCR公式当作标准答案。"
+        },
+        "transferCheck": "6×(4×25)＝600，6、4、25都只用一次。",
+        "transferSource": "authored-practice-not-historical-error"
+      },
+      "visual": {
+        "kind": "none",
+        "caption": "",
+        "alt": "",
+        "required": false,
+        "reason": "当前题意可用完整算式和分步过程表达；不添加装饰图。"
+      }
     },
     {
       "id": "E-M-1091",
@@ -2262,7 +5230,11 @@
         "label": "华东师大版一课一练·4年级数学第一学期增强版",
         "kind": "original",
         "page": 6,
-        "question": "5-3"
+        "question": "5-3",
+        "material": "华东师大版一课一练·4年级数学第一学期增强版",
+        "dateLabel": "资料记录日期",
+        "locatorStatus": "页码与题号已核",
+        "note": "日期为资料记录或收卷日期；不据此认定实际作答日。"
       },
       "status": "ready",
       "recordType": "confirmed-error",
@@ -2271,7 +5243,44 @@
         "200×4－4",
         "200×4＋4",
         "200×4－200"
-      ]
+      ],
+      "diagnosis": {
+        "type": "等价变形",
+        "breakpoint": "每份多1，4份一共多4。",
+        "reason": "把199凑成200后，要减掉4个1。",
+        "check": "原积与200×4应相差4。",
+        "certainty": "本题检查点；具体错误原因需结合本次过程核实"
+      },
+      "teaching": {
+        "goal": "每份多1，4份一共多4。",
+        "prerequisites": [
+          "乘法的意义",
+          "因数与项的区别"
+        ],
+        "focus": "把199凑成200后，要减掉4个1。 199比200少1；4个199比4个200少4；199×4＝200×4－4",
+        "recallPrompt": "收起讲解，用自己的话说：每份多1，4份一共多4，为什么？",
+        "transferPrompt": "自编迁移（不计入历史错题）：改成199×6，凑200后需要减多少？",
+        "reference": {
+          "label": "四上《学习笔记同步教材》（项目目录：金牌数学）",
+          "unit": "运算律；辨易误与简算方法",
+          "pages": "书本第10–22页",
+          "scope": "方法依据；本题来源另见题目来源。采用已核概念文字，未把OCR公式当作标准答案。"
+        },
+        "transferCheck": "每份多1，6份多6；200×6－6＝1194。",
+        "transferSource": "authored-practice-not-historical-error"
+      },
+      "visual": {
+        "kind": "teaching",
+        "caption": "教学分块示意，不按数值比例绘制；两块表示对应的部分积。",
+        "alt": "把乘数拆成两部分",
+        "required": true,
+        "reason": "图示将本题的关键数量关系或运算对象显出来。"
+      },
+      "teachingImage": {
+        "src": "../assets/math-mistakes/eddey-upgrade-split-1091.svg",
+        "alt": "把乘数拆成两部分",
+        "caption": "教学分块示意，不按数值比例绘制；两块表示对应的部分积。"
+      }
     },
     {
       "id": "E-M-1092",
@@ -2296,7 +5305,11 @@
         "label": "华东师大版一课一练·4年级数学第一学期增强版",
         "kind": "original",
         "page": 7,
-        "question": "5-4"
+        "question": "5-4",
+        "material": "华东师大版一课一练·4年级数学第一学期增强版",
+        "dateLabel": "资料记录日期",
+        "locatorStatus": "页码与题号已核",
+        "note": "日期为资料记录或收卷日期；不据此认定实际作答日。"
       },
       "status": "ready",
       "recordType": "confirmed-error",
@@ -2305,7 +5318,39 @@
         "25×125＋4×8＝25×4＋125×8",
         "250×76＝(250×4)×19",
         "△×(○×☆)＝△×○×△×☆"
-      ]
+      ],
+      "diagnosis": {
+        "type": "等价变形",
+        "breakpoint": "拆成连乘时，因数不能重复。",
+        "reason": "76＝4×19是等量替换，结合律只改分组。",
+        "check": "改写前后分别点数每个因数用了几次。",
+        "certainty": "本题检查点；具体错误原因需结合本次过程核实"
+      },
+      "teaching": {
+        "goal": "拆成连乘时，因数不能重复。",
+        "prerequisites": [
+          "乘法的意义",
+          "因数与项的区别"
+        ],
+        "focus": "76＝4×19是等量替换，结合律只改分组。 76＝4×19，所以250×76＝250×4×19。 利用乘法结合律，250×4×19＝(250×4)×19，因数不增加也不减少。 因此正确的是250×76＝(250×4)×19。",
+        "recallPrompt": "收起讲解，用自己的话说：拆成连乘时，因数不能重复，为什么？",
+        "transferPrompt": "自编迁移（不计入历史错题）：250×84可怎样拆成连乘来凑整？",
+        "reference": {
+          "label": "四上《学习笔记同步教材》（项目目录：金牌数学）",
+          "unit": "运算律；辨易误与简算方法",
+          "pages": "书本第10–22页",
+          "scope": "方法依据；本题来源另见题目来源。采用已核概念文字，未把OCR公式当作标准答案。"
+        },
+        "transferCheck": "84＝4×21；250×4×21＝1000×21＝21000。",
+        "transferSource": "authored-practice-not-historical-error"
+      },
+      "visual": {
+        "kind": "none",
+        "caption": "",
+        "alt": "",
+        "required": false,
+        "reason": "当前题意可用完整算式和分步过程表达；不添加装饰图。"
+      }
     },
     {
       "id": "E-M-1098",
@@ -2329,10 +5374,46 @@
         "label": "华东师大版一课一练·4年级数学第一学期增强版",
         "kind": "original",
         "page": 21,
-        "question": "1-1"
+        "question": "1-1",
+        "material": "华东师大版一课一练·4年级数学第一学期增强版",
+        "dateLabel": "资料记录日期",
+        "locatorStatus": "页码与题号已核",
+        "note": "日期为资料记录或收卷日期；不据此认定实际作答日。"
       },
       "status": "ready",
-      "recordType": "confirmed-error"
+      "recordType": "confirmed-error",
+      "diagnosis": {
+        "type": "计算检查",
+        "breakpoint": "把除法结果与最后加法分别核对。",
+        "reason": "只有最终结果不能区分错在哪一步。",
+        "check": "先写218÷2，再写128加这个商。",
+        "certainty": "本题检查点；具体错误原因需结合本次过程核实"
+      },
+      "teaching": {
+        "goal": "把除法结果与最后加法分别核对。",
+        "prerequisites": [
+          "数位与四则计算",
+          "加减、乘除的互逆关系"
+        ],
+        "focus": "只有最终结果不能区分错在哪一步。 先除后加：218÷2＝109；128＋109＝237",
+        "recallPrompt": "收起讲解，用自己的话说：把除法结果与最后加法分别核对，为什么？",
+        "transferPrompt": "自编迁移（不计入历史错题）：计算138＋218÷2，分别写出除法结果与最后的和。",
+        "reference": {
+          "label": "四上《学习笔记同步教材》（项目目录：金牌数学）",
+          "unit": "运算关系；四则运算",
+          "pages": "书本第3–6、45–47页",
+          "scope": "方法依据；本题来源另见题目来源。采用已核概念文字，未把OCR公式当作标准答案。"
+        },
+        "transferCheck": "218÷2＝109；138＋109＝247。",
+        "transferSource": "authored-practice-not-historical-error"
+      },
+      "visual": {
+        "kind": "none",
+        "caption": "",
+        "alt": "",
+        "required": false,
+        "reason": "当前题意可用完整算式和分步过程表达；不添加装饰图。"
+      }
     },
     {
       "id": "E-M-1104",
@@ -2356,10 +5437,46 @@
         "label": "华东师大版一课一练·4年级数学第一学期增强版",
         "kind": "original",
         "page": 21,
-        "question": "1-7"
+        "question": "1-7",
+        "material": "华东师大版一课一练·4年级数学第一学期增强版",
+        "dateLabel": "资料记录日期",
+        "locatorStatus": "页码与题号已核",
+        "note": "日期为资料记录或收卷日期；不据此认定实际作答日。"
       },
       "status": "ready",
-      "recordType": "confirmed-error"
+      "recordType": "confirmed-error",
+      "diagnosis": {
+        "type": "逆运算",
+        "breakpoint": "把减去的25加回，再求加数。",
+        "reason": "133是减25后的数，不能直接减67。",
+        "check": "把求出的□代回等式，左右应相等。",
+        "certainty": "本题检查点；具体错误原因需结合本次过程核实"
+      },
+      "teaching": {
+        "goal": "把减去的25加回，再求加数。",
+        "prerequisites": [
+          "加减、乘除的互逆关系",
+          "辨认运算中的各部分"
+        ],
+        "focus": "133是减25后的数，不能直接减67。 先把减去的25加回：133＋25＝158；再减67：158－67＝91",
+        "recallPrompt": "收起讲解，用自己的话说：把减去的25加回，再求加数，为什么？",
+        "transferPrompt": "自编迁移（不计入历史错题）：把等式改成67＋□－25＝143，□怎样变？求出后代回。",
+        "reference": {
+          "label": "四上《学习笔记同步教材》（项目目录：金牌数学）",
+          "unit": "运算关系；树状算图求未知数",
+          "pages": "书本第3–9、53页",
+          "scope": "方法依据；本题来源另见题目来源。采用已核概念文字，未把OCR公式当作标准答案。"
+        },
+        "transferCheck": "143＋25－67＝101，比原题多10；67＋101－25＝143。",
+        "transferSource": "authored-practice-not-historical-error"
+      },
+      "visual": {
+        "kind": "none",
+        "caption": "",
+        "alt": "",
+        "required": false,
+        "reason": "当前题意可用完整算式和分步过程表达；不添加装饰图。"
+      }
     },
     {
       "id": "E-M-1110",
@@ -2384,10 +5501,51 @@
         "label": "华东师大版一课一练·4年级数学第一学期增强版",
         "kind": "original",
         "page": 21,
-        "question": "2-5"
+        "question": "2-5",
+        "material": "华东师大版一课一练·4年级数学第一学期增强版",
+        "dateLabel": "资料记录日期",
+        "locatorStatus": "页码与题号已核",
+        "note": "日期为资料记录或收卷日期；不据此认定实际作答日。"
       },
       "status": "ready",
-      "recordType": "confirmed-error"
+      "recordType": "confirmed-error",
+      "diagnosis": {
+        "type": "计算检查",
+        "breakpoint": "先检查35×12。",
+        "reason": "50－38得到12后，35要乘完整的12。",
+        "check": "拆成35×10与35×2，合并核对。",
+        "certainty": "本题检查点；具体错误原因需结合本次过程核实"
+      },
+      "teaching": {
+        "goal": "先检查35×12。",
+        "prerequisites": [
+          "数位与四则计算",
+          "加减、乘除的互逆关系"
+        ],
+        "focus": "50－38得到12后，35要乘完整的12。 50－38＝12；35×12＝420；450＋420＝870",
+        "recallPrompt": "收起讲解，用自己的话说：先检查35×12，为什么？",
+        "transferPrompt": "自编迁移（不计入历史错题）：另算一道：48×15。先拆出两个部分积，再用另一种算法核对。",
+        "reference": {
+          "label": "四上《学习笔记同步教材》（项目目录：金牌数学）",
+          "unit": "运算关系；四则运算",
+          "pages": "书本第3–6、45–47页",
+          "scope": "方法依据；本题来源另见题目来源。采用已核概念文字，未把OCR公式当作标准答案。"
+        },
+        "transferCheck": "48×10＋48×5＝480＋240＝720；也可用48×(30÷2)＝1440÷2。",
+        "transferSource": "authored-practice-not-historical-error"
+      },
+      "visual": {
+        "kind": "teaching",
+        "caption": "教学分块示意，不按数值比例绘制；两块表示对应的部分积。",
+        "alt": "把乘数拆成两部分",
+        "required": true,
+        "reason": "图示将本题的关键数量关系或运算对象显出来。"
+      },
+      "teachingImage": {
+        "src": "../assets/math-mistakes/eddey-upgrade-split-1110.svg",
+        "alt": "把乘数拆成两部分",
+        "caption": "教学分块示意，不按数值比例绘制；两块表示对应的部分积。"
+      }
     },
     {
       "id": "E-M-1187",
@@ -2411,10 +5569,50 @@
         "date": "2026-10-09",
         "label": "数学练习原题",
         "kind": "original",
-        "page": 23
+        "page": 23,
+        "question": "6(4)②",
+        "material": "数学练习（书名未记录）",
+        "dateLabel": "资料记录日期",
+        "locatorStatus": "页码与题号已核",
+        "note": "日期为资料记录或收卷日期；不据此认定实际作答日。"
       },
       "status": "ready",
-      "recordType": "confirmed-error"
+      "recordType": "confirmed-error",
+      "diagnosis": {
+        "type": "读题核查",
+        "breakpoint": "剩下的钱要除以拼图板单价。",
+        "reason": "所买物品变了，要重新对应价格和单位。",
+        "check": "购买套数乘35，再加钢笔总价应为800。",
+        "certainty": "本题检查点；具体错误原因需结合本次过程核实"
+      },
+      "teaching": {
+        "goal": "剩下的钱要除以拼图板单价。",
+        "prerequisites": [
+          "部分与整体",
+          "每份量、份数和总量"
+        ],
+        "focus": "所买物品变了，要重新对应价格和单位。 先求钢笔总价：30×15＝450；剩800－450＝350；拼图板每套35元：350÷35＝10",
+        "recallPrompt": "收起讲解，用自己的话说：剩下的钱要除以拼图板单价，为什么？",
+        "transferPrompt": "自编迁移（不计入历史错题）：仍带800元、买30支每支15元的钢笔，拼图改成每套25元。可以买几套？",
+        "reference": {
+          "label": "四上《学习笔记同步教材》（项目目录：金牌数学）",
+          "unit": "复合应用题；工作效率",
+          "pages": "书本第54–60页",
+          "scope": "方法依据；本题来源另见题目来源。采用已核概念文字，未把OCR公式当作标准答案。"
+        },
+        "transferCheck": "(800－30×15)÷25＝350÷25＝14套。",
+        "transferSource": "authored-practice-not-historical-error"
+      },
+      "visual": {
+        "kind": "question",
+        "caption": "按题目已核价格重排为价目图，只展示本题所需物品。",
+        "alt": "先对应物品，再对应单价",
+        "required": true,
+        "reason": "题面用图表达运算、数据或位置关系。"
+      },
+      "image": "../assets/math-mistakes/eddey-upgrade-shopping-price.svg",
+      "diagramAlt": "先对应物品，再对应单价",
+      "diagramCaption": "按题目已核价格重排为价目图，只展示本题所需物品。"
     },
     {
       "id": "E-M-1216",
@@ -2437,10 +5635,51 @@
       "source": {
         "date": "2026-10-10",
         "label": "数学练习原题",
-        "kind": "reconstructed"
+        "kind": "reconstructed",
+        "page": 37,
+        "question": "A级4(2)",
+        "material": "数学练习册（书名未核）",
+        "dateLabel": "资料记录日期",
+        "locatorStatus": "页码与题号已核",
+        "note": "日期为资料记录或收卷日期；不据此认定实际作答日。题意与条件保留，按已核记录重新排版。"
       },
       "status": "ready",
-      "recordType": "confirmed-error"
+      "recordType": "confirmed-error",
+      "diagnosis": {
+        "type": "逆运算",
+        "breakpoint": "从输出70倒着走完整三步。",
+        "reason": "顺算先减175，再乘50，最后除25；倒推要反过来。",
+        "check": "把求出的起点按原流程顺算，必须得到70。",
+        "certainty": "本题检查点；具体错误原因需结合本次过程核实"
+      },
+      "teaching": {
+        "goal": "从输出70倒着走完整三步。",
+        "prerequisites": [
+          "加减、乘除的互逆关系",
+          "辨认运算中的各部分"
+        ],
+        "focus": "顺算先减175，再乘50，最后除25；倒推要反过来。 反方向倒推：70×25＝1750；1750÷50＝35；35＋175＝210",
+        "recallPrompt": "收起讲解，用自己的话说：从输出70倒着走完整三步，为什么？",
+        "transferPrompt": "自编迁移（不计入历史错题）：同样先减175、乘50、除25，输出改成80。起点是多少？",
+        "reference": {
+          "label": "四上《学习笔记同步教材》（项目目录：金牌数学）",
+          "unit": "运算关系；树状算图求未知数",
+          "pages": "书本第3–9、53页",
+          "scope": "方法依据；本题来源另见题目来源。采用已核概念文字，未把OCR公式当作标准答案。"
+        },
+        "transferCheck": "80×25÷50＋175＝215。",
+        "transferSource": "authored-practice-not-historical-error"
+      },
+      "visual": {
+        "kind": "question",
+        "caption": "按已核运算链条件重绘；只给流程，不填写答案。",
+        "alt": "从输出70找输入数",
+        "required": true,
+        "reason": "题面用图表达运算、数据或位置关系。"
+      },
+      "image": "../assets/math-mistakes/eddey-upgrade-flow-70.svg",
+      "diagramAlt": "从输出70找输入数",
+      "diagramCaption": "按已核运算链条件重绘；只给流程，不填写答案。"
     },
     {
       "id": "E-M-1217",
@@ -2463,11 +5702,54 @@
       "source": {
         "date": "2026-10-10",
         "label": "数学练习原题",
-        "kind": "original"
+        "kind": "original",
+        "page": 37,
+        "question": "B级1(1)",
+        "material": "数学练习册（书名未核）",
+        "dateLabel": "资料记录日期",
+        "locatorStatus": "页码与题号已核",
+        "note": "日期为资料记录或收卷日期；不据此认定实际作答日。"
       },
       "status": "ready",
       "recordType": "confirmed-error",
-      "processRequired": true
+      "processRequired": true,
+      "diagnosis": {
+        "type": "数量关系",
+        "breakpoint": "9162表示括号整体，未到方框。",
+        "reason": "还要去掉1070，再除以34才求到□。",
+        "check": "最后所得数代入原式，应得到509。",
+        "certainty": "本题检查点；具体错误原因需结合本次过程核实"
+      },
+      "teaching": {
+        "goal": "9162表示括号整体，未到方框。",
+        "prerequisites": [
+          "加减、乘除的互逆关系",
+          "辨认运算中的各部分"
+        ],
+        "focus": "还要去掉1070，再除以34才求到□。 先恢复括号整体：509×18＝9162；再减1070：9162－1070＝8092；最后8092÷34＝238",
+        "recallPrompt": "收起讲解，用自己的话说：9162表示括号整体，未到方框，为什么？",
+        "transferPrompt": "自编迁移（不计入历史错题）：把(□×34＋1070)÷18＝509改为(□×20＋100)÷10＝70，求□。",
+        "reference": {
+          "label": "四上《学习笔记同步教材》（项目目录：金牌数学）",
+          "unit": "运算关系；树状算图求未知数",
+          "pages": "书本第3–9、53页",
+          "scope": "方法依据；本题来源另见题目来源。采用已核概念文字，未把OCR公式当作标准答案。"
+        },
+        "transferCheck": "(70×10－100)÷20＝30；中间700不是方框最终值。",
+        "transferSource": "authored-practice-not-historical-error"
+      },
+      "visual": {
+        "kind": "teaching",
+        "caption": "教学示意：倒推不要停在中间量",
+        "alt": "倒推不要停在中间量",
+        "required": true,
+        "reason": "图示将本题的关键数量关系或运算对象显出来。"
+      },
+      "teachingImage": {
+        "src": "../assets/math-mistakes/eddey-upgrade-unknown-509.svg",
+        "alt": "倒推不要停在中间量",
+        "caption": "教学示意：倒推不要停在中间量"
+      }
     },
     {
       "id": "E-M-1218",
@@ -2490,10 +5772,53 @@
       "source": {
         "date": "2026-10-10",
         "label": "数学练习原题",
-        "kind": "original"
+        "kind": "original",
+        "page": 37,
+        "question": "B级1(2)",
+        "material": "数学练习册（书名未核）",
+        "dateLabel": "资料记录日期",
+        "locatorStatus": "页码与题号已核",
+        "note": "日期为资料记录或收卷日期；不据此认定实际作答日。"
       },
       "status": "ready",
-      "recordType": "confirmed-error"
+      "recordType": "confirmed-error",
+      "diagnosis": {
+        "type": "逆运算",
+        "breakpoint": "先把最外层方括号看成一个数。",
+        "reason": "408减这个整体才得290，应从外向内还原。",
+        "check": "按内层到外层顺算，检验是否回到290。",
+        "certainty": "本题检查点；具体错误原因需结合本次过程核实"
+      },
+      "teaching": {
+        "goal": "先把最外层方括号看成一个数。",
+        "prerequisites": [
+          "加减、乘除的互逆关系",
+          "辨认运算中的各部分"
+        ],
+        "focus": "408减这个整体才得290，应从外向内还原。 先求方括号整体：408－290＝118；再求□＋3：222－118＝104；104－3＝101",
+        "recallPrompt": "收起讲解，用自己的话说：先把最外层方括号看成一个数，为什么？",
+        "transferPrompt": "自编迁移（不计入历史错题）：求408－[222－(□＋3)]＝300里的□，从最外层开始。",
+        "reference": {
+          "label": "四上《学习笔记同步教材》（项目目录：金牌数学）",
+          "unit": "运算关系；树状算图求未知数",
+          "pages": "书本第3–9、53页",
+          "scope": "方法依据；本题来源另见题目来源。采用已核概念文字，未把OCR公式当作标准答案。"
+        },
+        "transferCheck": "408－300＝108；222－108＝114；114－3＝111。",
+        "transferSource": "authored-practice-not-historical-error"
+      },
+      "visual": {
+        "kind": "teaching",
+        "caption": "教学示意：从最外层向里找未知量",
+        "alt": "从最外层向里找未知量",
+        "required": true,
+        "reason": "图示将本题的关键数量关系或运算对象显出来。"
+      },
+      "teachingImage": {
+        "src": "../assets/math-mistakes/eddey-upgrade-nested-subtraction.svg",
+        "alt": "从最外层向里找未知量",
+        "caption": "教学示意：从最外层向里找未知量"
+      }
     },
     {
       "id": "E-M-1219",
@@ -2516,11 +5841,54 @@
       "source": {
         "date": "2026-10-10",
         "label": "数学练习原题",
-        "kind": "original"
+        "kind": "original",
+        "page": 37,
+        "question": "B级2",
+        "material": "数学练习册（书名未核）",
+        "dateLabel": "资料记录日期",
+        "locatorStatus": "页码与题号已核",
+        "note": "日期为资料记录或收卷日期；不据此认定实际作答日。"
       },
       "status": "ready",
       "recordType": "process-gap",
-      "processRequired": true
+      "processRequired": true,
+      "diagnosis": {
+        "type": "综合式结构",
+        "breakpoint": "分开还原原数与求正确结果。",
+        "reason": "两个阶段做的运算不同，不能直接连错等号。",
+        "check": "先核错误过程得1872，再核正确过程的结果。",
+        "certainty": "过程与表达检查；不等于数值计算错误"
+      },
+      "teaching": {
+        "goal": "分开还原原数与求正确结果。",
+        "prerequisites": [
+          "找最后一步",
+          "整体替换与括号"
+        ],
+        "focus": "两个阶段做的运算不同，不能直接连错等号。 先根据错误过程还原原数：(1872－36)÷6＝306；再按正确要求计算：306÷6－36；51－36＝15",
+        "recallPrompt": "收起讲解，用自己的话说：分开还原原数与求正确结果，为什么？",
+        "transferPrompt": "自编迁移（不计入历史错题）：一个数本应除4再减10，却错算成乘4再加10，得330。正确结果多少？",
+        "reference": {
+          "label": "四上《学习笔记同步教材》（项目目录：金牌数学）",
+          "unit": "加减、乘除法中的错算问题",
+          "pages": "书本第7–9、51–53页",
+          "scope": "方法依据；本题来源另见题目来源。采用已核概念文字，未把OCR公式当作标准答案。"
+        },
+        "transferCheck": "先(330－10)÷4＝80还原原数，再80÷4－10＝10。",
+        "transferSource": "authored-practice-not-historical-error"
+      },
+      "visual": {
+        "kind": "teaching",
+        "caption": "教学示意：先还原原数，再按正确要求算",
+        "alt": "先还原原数，再按正确要求算",
+        "required": true,
+        "reason": "图示将本题的关键数量关系或运算对象显出来。"
+      },
+      "teachingImage": {
+        "src": "../assets/math-mistakes/eddey-upgrade-wrong-and-right.svg",
+        "alt": "先还原原数，再按正确要求算",
+        "caption": "教学示意：先还原原数，再按正确要求算"
+      }
     },
     {
       "id": "E-M-1254",
@@ -2545,10 +5913,51 @@
         "label": "第五周 应用题 小练习(4)",
         "kind": "original",
         "page": 25,
-        "question": "2(1)"
+        "question": "2(1)",
+        "material": "第五周 应用题 小练习(4)",
+        "dateLabel": "资料记录日期",
+        "locatorStatus": "页码与题号已核",
+        "note": "日期为资料记录或收卷日期；不据此认定实际作答日。"
       },
       "status": "ready",
-      "recordType": "confirmed-error"
+      "recordType": "confirmed-error",
+      "diagnosis": {
+        "type": "计算检查",
+        "breakpoint": "先核对28×26这个乘积。",
+        "reason": "它决定括号内的差，后续要用核准的数。",
+        "check": "用28×20与28×6两部分复核。",
+        "certainty": "本题检查点；具体错误原因需结合本次过程核实"
+      },
+      "teaching": {
+        "goal": "先核对28×26这个乘积。",
+        "prerequisites": [
+          "数位与四则计算",
+          "加减、乘除的互逆关系"
+        ],
+        "focus": "它决定括号内的差，后续要用核准的数。 28×26＝728，728－549＝179；7900÷25＝316；316－179＝137",
+        "recallPrompt": "收起讲解，用自己的话说：先核对28×26这个乘积，为什么？",
+        "transferPrompt": "自编迁移（不计入历史错题）：另算一道：48×15。先拆出两个部分积，再用另一种算法核对。",
+        "reference": {
+          "label": "四上《学习笔记同步教材》（项目目录：金牌数学）",
+          "unit": "运算关系；四则运算",
+          "pages": "书本第3–6、45–47页",
+          "scope": "方法依据；本题来源另见题目来源。采用已核概念文字，未把OCR公式当作标准答案。"
+        },
+        "transferCheck": "48×10＋48×5＝480＋240＝720；也可用48×(30÷2)＝1440÷2。",
+        "transferSource": "authored-practice-not-historical-error"
+      },
+      "visual": {
+        "kind": "teaching",
+        "caption": "教学分块示意，不按数值比例绘制；两块表示对应的部分积。",
+        "alt": "把乘数拆成两部分",
+        "required": true,
+        "reason": "图示将本题的关键数量关系或运算对象显出来。"
+      },
+      "teachingImage": {
+        "src": "../assets/math-mistakes/eddey-upgrade-split-1254.svg",
+        "alt": "把乘数拆成两部分",
+        "caption": "教学分块示意，不按数值比例绘制；两块表示对应的部分积。"
+      }
     },
     {
       "id": "E-M-1256",
@@ -2573,10 +5982,51 @@
         "label": "第五周 应用题 小练习(4)",
         "kind": "original",
         "page": 25,
-        "question": "2(7)"
+        "question": "2(7)",
+        "material": "第五周 应用题 小练习(4)",
+        "dateLabel": "资料记录日期",
+        "locatorStatus": "页码与题号已核",
+        "note": "日期为资料记录或收卷日期；不据此认定实际作答日。"
       },
       "status": "ready",
-      "recordType": "confirmed-error"
+      "recordType": "confirmed-error",
+      "diagnosis": {
+        "type": "等价变形",
+        "breakpoint": "提取67时保留每项前的符号。",
+        "reason": "中间的－67是减1份，末项仍是加34份。",
+        "check": "展开括号，看能否回到原来的三个项。",
+        "certainty": "本题检查点；具体错误原因需结合本次过程核实"
+      },
+      "teaching": {
+        "goal": "提取67时保留每项前的符号。",
+        "prerequisites": [
+          "乘法的意义",
+          "因数与项的区别"
+        ],
+        "focus": "中间的－67是减1份，末项仍是加34份。 中间的67等于1×67；提取共同因数时保留加减号；(67－1＋34)×67＝100×67＝6700",
+        "recallPrompt": "收起讲解，用自己的话说：提取67时保留每项前的符号，为什么？",
+        "transferPrompt": "自编迁移（不计入历史错题）：简算27×67－67＋74×67，提取67时解释正负号。",
+        "reference": {
+          "label": "四上《学习笔记同步教材》（项目目录：金牌数学）",
+          "unit": "运算律；辨易误与简算方法",
+          "pages": "书本第10–22页",
+          "scope": "方法依据；本题来源另见题目来源。采用已核概念文字，未把OCR公式当作标准答案。"
+        },
+        "transferCheck": "(27－1＋74)×67＝100×67＝6700。",
+        "transferSource": "authored-practice-not-historical-error"
+      },
+      "visual": {
+        "kind": "teaching",
+        "caption": "教学示意：每项前面的加减号一起保留",
+        "alt": "每项前面的加减号一起保留",
+        "required": true,
+        "reason": "图示将本题的关键数量关系或运算对象显出来。"
+      },
+      "teachingImage": {
+        "src": "../assets/math-mistakes/eddey-upgrade-signed-groups.svg",
+        "alt": "每项前面的加减号一起保留",
+        "caption": "教学示意：每项前面的加减号一起保留"
+      }
     },
     {
       "id": "E-M-1257",
@@ -2601,10 +6051,46 @@
         "label": "第五周 应用题 小练习(4)",
         "kind": "original",
         "page": 25,
-        "question": "2(8)"
+        "question": "2(8)",
+        "material": "第五周 应用题 小练习(4)",
+        "dateLabel": "资料记录日期",
+        "locatorStatus": "页码与题号已核",
+        "note": "日期为资料记录或收卷日期；不据此认定实际作答日。"
       },
       "status": "ready",
-      "recordType": "confirmed-error"
+      "recordType": "confirmed-error",
+      "diagnosis": {
+        "type": "计算检查",
+        "breakpoint": "两项合并后，最后加法仍要检查。",
+        "reason": "65×38和19×70是两个部分，不能漏位。",
+        "check": "分开核两个积，再验它们的和。",
+        "certainty": "本题检查点；具体错误原因需结合本次过程核实"
+      },
+      "teaching": {
+        "goal": "两项合并后，最后加法仍要检查。",
+        "prerequisites": [
+          "乘法的意义",
+          "因数与项的区别"
+        ],
+        "focus": "65×38和19×70是两个部分，不能漏位。 把有38的两项合并；(12＋53)×38＋19×70；65×38＋1330＝2470＋1330＝3800",
+        "recallPrompt": "收起讲解，用自己的话说：两项合并后，最后加法仍要检查，为什么？",
+        "transferPrompt": "自编迁移（不计入历史错题）：把最后的53改成43，计算38×12＋19×70＋38×43，核对两个部分积最后怎样相加。",
+        "reference": {
+          "label": "四上《学习笔记同步教材》（项目目录：金牌数学）",
+          "unit": "运算律；辨易误与简算方法",
+          "pages": "书本第10–22页",
+          "scope": "方法依据；本题来源另见题目来源。采用已核概念文字，未把OCR公式当作标准答案。"
+        },
+        "transferCheck": "(12＋43)×38＋19×70＝55×38＋1330＝2090＋1330＝3420。",
+        "transferSource": "authored-practice-not-historical-error"
+      },
+      "visual": {
+        "kind": "none",
+        "caption": "",
+        "alt": "",
+        "required": false,
+        "reason": "当前题意可用完整算式和分步过程表达；不添加装饰图。"
+      }
     },
     {
       "id": "E-M-archive-1234",
@@ -2628,10 +6114,46 @@
         "label": "数学练习",
         "page": 38,
         "question": "A级1·第2格",
-        "kind": "original"
+        "kind": "original",
+        "material": "数学练习",
+        "dateLabel": "资料记录日期",
+        "locatorStatus": "页码与题号已核",
+        "note": "日期为资料记录或收卷日期；不据此认定实际作答日。"
       },
       "status": "ready",
-      "recordType": "confirmed-error"
+      "recordType": "confirmed-error",
+      "diagnosis": {
+        "type": "单位表达",
+        "breakpoint": "一个季度有3个月。",
+        "reason": "每月的路程要乘月份数，不是只算一个月。",
+        "check": "答句同时写清“一季度”和“千米”。",
+        "certainty": "本题检查点；具体错误原因需结合本次过程核实"
+      },
+      "teaching": {
+        "goal": "一个季度有3个月。",
+        "prerequisites": [
+          "数位与四则计算",
+          "加减、乘除的互逆关系"
+        ],
+        "focus": "每月的路程要乘月份数，不是只算一个月。 一个季度有3个月；42×3＝126千米。",
+        "recallPrompt": "收起讲解，用自己的话说：一个季度有3个月，为什么？",
+        "transferPrompt": "自编迁移（不计入历史错题）：每月修42千米，半年共修多少千米？先说半年有几个月。",
+        "reference": {
+          "label": "四上《学习笔记同步教材》（项目目录：金牌数学）",
+          "unit": "运算关系；四则运算",
+          "pages": "书本第3–6、45–47页",
+          "scope": "方法依据；本题来源另见题目来源。采用已核概念文字，未把OCR公式当作标准答案。"
+        },
+        "transferCheck": "半年6个月；42×6＝252千米。",
+        "transferSource": "authored-practice-not-historical-error"
+      },
+      "visual": {
+        "kind": "none",
+        "caption": "",
+        "alt": "",
+        "required": false,
+        "reason": "当前题意可用完整算式和分步过程表达；不添加装饰图。"
+      }
     },
     {
       "id": "E-M-archive-1237-unit",
@@ -2655,10 +6177,46 @@
         "date": "2026-10-12",
         "label": "数学周练四",
         "question": "五·3",
-        "kind": "original"
+        "kind": "original",
+        "material": "数学周练四",
+        "dateLabel": "资料记录日期",
+        "locatorStatus": "题号已核，纸页未记录",
+        "note": "日期为资料记录或收卷日期；不据此认定实际作答日。纸页未记录。"
       },
       "status": "ready",
-      "recordType": "process-gap"
+      "recordType": "process-gap",
+      "diagnosis": {
+        "type": "单位表达",
+        "breakpoint": "最后分的是材料份数。",
+        "reason": "人数是除数，960份平均分后单位仍是份。",
+        "check": "把每人份数乘第三组人数，应回到960份。",
+        "certainty": "过程与表达检查；不等于数值计算错误"
+      },
+      "teaching": {
+        "goal": "最后分的是材料份数。",
+        "prerequisites": [
+          "读懂所求对象",
+          "数量与单位对应"
+        ],
+        "focus": "人数是除数，960份平均分后单位仍是份。 第二组：18－8＝10人；第三组：10×3＝30人；960÷30＝32份，单位要与所求对应",
+        "recallPrompt": "收起讲解，用自己的话说：最后分的是材料份数，为什么？",
+        "transferPrompt": "自编迁移（不计入历史错题）：第三组仍30人，改发900份材料。每人多少，单位是什么？",
+        "reference": {
+          "label": "四上《学习笔记同步教材》（项目目录：金牌数学）",
+          "unit": "运算关系；复合应用题的单位",
+          "pages": "书本第4–6、54–59页",
+          "scope": "方法依据；本题来源另见题目来源。采用已核概念文字，未把OCR公式当作标准答案。"
+        },
+        "transferCheck": "900÷30＝30份；分的是材料，不是人数。",
+        "transferSource": "authored-practice-not-historical-error"
+      },
+      "visual": {
+        "kind": "none",
+        "caption": "",
+        "alt": "",
+        "required": false,
+        "reason": "当前题意可用完整算式和分步过程表达；不添加装饰图。"
+      }
     },
     {
       "id": "E-M-1263",
@@ -2682,11 +6240,48 @@
         "date": "2026-10-14",
         "label": "单元练习三",
         "kind": "original",
-        "page": 29
+        "page": 29,
+        "question": "2(5)",
+        "material": "单元练习三",
+        "dateLabel": "资料记录日期",
+        "locatorStatus": "页码与题号已核",
+        "note": "日期为资料记录或收卷日期；不据此认定实际作答日。"
       },
       "status": "ready",
       "recordType": "confirmed-error",
-      "reviewNote": "后续记录中已有正确结果，保留原题供间隔复验。"
+      "reviewNote": "后续记录中已有正确结果，保留原题供间隔复验。",
+      "diagnosis": {
+        "type": "计算检查",
+        "breakpoint": "凑成100份后，核对乘100的位值。",
+        "reason": "199×100表示199个百，数字不能改。",
+        "check": "把结果除100，应回到199。",
+        "certainty": "本题检查点；具体错误原因需结合本次过程核实"
+      },
+      "teaching": {
+        "goal": "凑成100份后，核对乘100的位值。",
+        "prerequisites": [
+          "乘法的意义",
+          "因数与项的区别"
+        ],
+        "focus": "199×100表示199个百，数字不能改。 199＝199×1；199×(99＋1)；199×100＝19900",
+        "recallPrompt": "收起讲解，用自己的话说：凑成100份后，核对乘100的位值，为什么？",
+        "transferPrompt": "自编迁移（不计入历史错题）：简算198×99＋198，最后用除以100检验。",
+        "reference": {
+          "label": "四上《学习笔记同步教材》（项目目录：金牌数学）",
+          "unit": "运算律；辨易误与简算方法",
+          "pages": "书本第10–22页",
+          "scope": "方法依据；本题来源另见题目来源。采用已核概念文字，未把OCR公式当作标准答案。"
+        },
+        "transferCheck": "198×(99＋1)＝19800；19800÷100＝198。",
+        "transferSource": "authored-practice-not-historical-error"
+      },
+      "visual": {
+        "kind": "none",
+        "caption": "",
+        "alt": "",
+        "required": false,
+        "reason": "当前题意可用完整算式和分步过程表达；不添加装饰图。"
+      }
     },
     {
       "id": "E-M-1264",
@@ -2710,11 +6305,48 @@
         "date": "2026-10-14",
         "label": "单元练习三",
         "kind": "original",
-        "page": 29
+        "page": 29,
+        "question": "2(6)",
+        "material": "单元练习三",
+        "dateLabel": "资料记录日期",
+        "locatorStatus": "页码与题号已核",
+        "note": "日期为资料记录或收卷日期；不据此认定实际作答日。"
       },
       "status": "ready",
       "recordType": "confirmed-error",
-      "reviewNote": "后续记录中已有正确结果，保留原题供间隔复验。"
+      "reviewNote": "后续记录中已有正确结果，保留原题供间隔复验。",
+      "diagnosis": {
+        "type": "计算检查",
+        "breakpoint": "先核3000×25的数值。",
+        "reason": "可以把25拆成100÷4，便于独立核验。",
+        "check": "3000×100÷4是否等于原式？",
+        "certainty": "本题检查点；具体错误原因需结合本次过程核实"
+      },
+      "teaching": {
+        "goal": "先核3000×25的数值。",
+        "prerequisites": [
+          "数位与四则计算",
+          "加减、乘除的互逆关系"
+        ],
+        "focus": "可以把25拆成100÷4，便于独立核验。 把24拆成8×3，利用乘法交换律、结合律凑整。 125×24×25＝125×8×3×25＝(125×8)×(3×25)。 125×8＝1000，3×25＝75，所以结果为1000×75＝75000。",
+        "recallPrompt": "收起讲解，用自己的话说：先核3000×25的数值，为什么？",
+        "transferPrompt": "自编迁移（不计入历史错题）：简算125×16×25，说明16怎样拆，再核末步。",
+        "reference": {
+          "label": "四上《学习笔记同步教材》（项目目录：金牌数学）",
+          "unit": "运算关系；四则运算",
+          "pages": "书本第3–6、45–47页",
+          "scope": "方法依据；本题来源另见题目来源。采用已核概念文字，未把OCR公式当作标准答案。"
+        },
+        "transferCheck": "16＝8×2；125×8×2×25＝1000×50＝50000。",
+        "transferSource": "authored-practice-not-historical-error"
+      },
+      "visual": {
+        "kind": "none",
+        "caption": "",
+        "alt": "",
+        "required": false,
+        "reason": "当前题意可用完整算式和分步过程表达；不添加装饰图。"
+      }
     },
     {
       "id": "E-M-1265",
@@ -2738,11 +6370,48 @@
         "date": "2026-10-14",
         "label": "单元练习三",
         "kind": "original",
-        "page": 29
+        "page": 29,
+        "question": "2(7)",
+        "material": "单元练习三",
+        "dateLabel": "资料记录日期",
+        "locatorStatus": "页码与题号已核",
+        "note": "日期为资料记录或收卷日期；不据此认定实际作答日。"
       },
       "status": "ready",
       "recordType": "confirmed-error",
-      "reviewNote": "后续记录中已有正确结果，保留原题供间隔复验。"
+      "reviewNote": "后续记录中已有正确结果，保留原题供间隔复验。",
+      "diagnosis": {
+        "type": "过程完整",
+        "breakpoint": "算完中括号后还有÷20。",
+        "reason": "括号外的运算必须原样保留到完成。",
+        "check": "最终商乘20，应回到中括号内的数。",
+        "certainty": "本题检查点；具体错误原因需结合本次过程核实"
+      },
+      "teaching": {
+        "goal": "算完中括号后还有÷20。",
+        "prerequisites": [
+          "先乘除后加减",
+          "括号表示一个整体"
+        ],
+        "focus": "括号外的运算必须原样保留到完成。 先算小括号：182－82＝100；100×258－5000＝20800；还有除以20这一步：20800÷20＝1040",
+        "recallPrompt": "收起讲解，用自己的话说：算完中括号后还有÷20，为什么？",
+        "transferPrompt": "自编迁移（不计入历史错题）：把原式最后的÷20改为÷40，其他不变。预测答案如何变化再算。",
+        "reference": {
+          "label": "四上《学习笔记同步教材》（项目目录：金牌数学）",
+          "unit": "四则运算；分步式合并",
+          "pages": "书本第45–50页",
+          "scope": "方法依据；本题来源另见题目来源。采用已核概念文字，未把OCR公式当作标准答案。"
+        },
+        "transferCheck": "中括号内仍20800，20800÷40＝520，是原来的一半。",
+        "transferSource": "authored-practice-not-historical-error"
+      },
+      "visual": {
+        "kind": "none",
+        "caption": "",
+        "alt": "",
+        "required": false,
+        "reason": "当前题意可用完整算式和分步过程表达；不添加装饰图。"
+      }
     },
     {
       "id": "E-M-1287",
@@ -2765,7 +6434,13 @@
       "source": {
         "date": "2026-10-18",
         "label": "数学练习原题",
-        "kind": "original"
+        "kind": "original",
+        "page": 30,
+        "question": "3(1)",
+        "material": "华东师大版一课一练 四年级数学第一学期增强版",
+        "dateLabel": "资料记录日期",
+        "locatorStatus": "页码与题号已核",
+        "note": "日期为资料记录或收卷日期；不据此认定实际作答日。"
       },
       "status": "ready",
       "recordType": "confirmed-error",
@@ -2773,7 +6448,39 @@
         "＞",
         "＜",
         "＝"
-      ]
+      ],
+      "diagnosis": {
+        "type": "运算顺序",
+        "breakpoint": "先比较两边各减去多少。",
+        "reason": "被减数相同，减去的越大，剩下越小。",
+        "check": "分别算182÷13×7与182÷(13×7)。",
+        "certainty": "本题检查点；具体错误原因需结合本次过程核实"
+      },
+      "teaching": {
+        "goal": "先比较两边各减去多少。",
+        "prerequisites": [
+          "先乘除后加减",
+          "括号表示一个整体"
+        ],
+        "focus": "被减数相同，减去的越大，剩下越小。 左边先从左到右算乘除：182÷13×7＝14×7＝98，所以385－98＝287。 右边先算括号：13×7＝91，182÷91＝2，所以385－2＝383。 287＜383，因此填＜。",
+        "recallPrompt": "收起讲解，用自己的话说：先比较两边各减去多少，为什么？",
+        "transferPrompt": "自编迁移（不计入历史错题）：比较200－120÷6×2与200－120÷(6×2)，先只比较两个减数。",
+        "reference": {
+          "label": "四上《学习笔记同步教材》（项目目录：金牌数学）",
+          "unit": "四则运算；分步式合并",
+          "pages": "书本第45–50页",
+          "scope": "方法依据；本题来源另见题目来源。采用已核概念文字，未把OCR公式当作标准答案。"
+        },
+        "transferCheck": "左减40，右减10，所以左160小于右190。",
+        "transferSource": "authored-practice-not-historical-error"
+      },
+      "visual": {
+        "kind": "none",
+        "caption": "",
+        "alt": "",
+        "required": false,
+        "reason": "当前题意可用完整算式和分步过程表达；不添加装饰图。"
+      }
     },
     {
       "id": "E-M-1301",
@@ -2797,10 +6504,53 @@
       "source": {
         "date": "2026-10-18",
         "label": "数学练习原题",
-        "kind": "original"
+        "kind": "original",
+        "page": 30,
+        "question": "4(7)",
+        "material": "华东师大版一课一练 四年级数学第一学期增强版",
+        "dateLabel": "资料记录日期",
+        "locatorStatus": "页码与题号已核",
+        "note": "日期为资料记录或收卷日期；不据此认定实际作答日。"
       },
       "status": "ready",
-      "recordType": "confirmed-error"
+      "recordType": "confirmed-error",
+      "diagnosis": {
+        "type": "逆运算",
+        "breakpoint": "倒推一天先加6，再乘2。",
+        "reason": "先撤销下午，再恢复上午运出的一半。",
+        "check": "每一天再按除2、减6顺算，第三天余0。",
+        "certainty": "本题检查点；具体错误原因需结合本次过程核实"
+      },
+      "teaching": {
+        "goal": "倒推一天先加6，再乘2。",
+        "prerequisites": [
+          "加减、乘除的互逆关系",
+          "辨认运算中的各部分"
+        ],
+        "focus": "先撤销下午，再恢复上午运出的一半。 倒推一天，要先加回下午的6吨，再乘2；第三天早晨：6×2＝12；第二天早晨：(12＋6)×2＝36；第一天早晨：(36＋6)×2＝84",
+        "recallPrompt": "收起讲解，用自己的话说：倒推一天先加6，再乘2，为什么？",
+        "transferPrompt": "自编迁移（不计入历史错题）：仍连续3天上午运出一半，下午改运4吨，最后运完。倒推原有量。",
+        "reference": {
+          "label": "四上《学习笔记同步教材》（项目目录：金牌数学）",
+          "unit": "运算关系；树状算图求未知数",
+          "pages": "书本第3–9、53页",
+          "scope": "方法依据；本题来源另见题目来源。采用已核概念文字，未把OCR公式当作标准答案。"
+        },
+        "transferCheck": "0→(0＋4)×2＝8→(8＋4)×2＝24→(24＋4)×2＝56吨。",
+        "transferSource": "authored-practice-not-historical-error"
+      },
+      "visual": {
+        "kind": "teaching",
+        "caption": "教学倒推图；各行右框表示当天早晨的吨数。",
+        "alt": "每倒推一天，先加6再乘2",
+        "required": true,
+        "reason": "图示将本题的关键数量关系或运算对象显出来。"
+      },
+      "teachingImage": {
+        "src": "../assets/math-mistakes/eddey-upgrade-rice-reverse.svg",
+        "alt": "每倒推一天，先加6再乘2",
+        "caption": "教学倒推图；各行右框表示当天早晨的吨数。"
+      }
     },
     {
       "id": "E-M-1304",
@@ -2823,10 +6573,53 @@
       "source": {
         "date": "2026-10-18",
         "label": "数学练习原题",
-        "kind": "original"
+        "kind": "original",
+        "page": 31,
+        "question": "5(3)",
+        "material": "华东师大版一课一练 四年级数学第一学期增强版",
+        "dateLabel": "资料记录日期",
+        "locatorStatus": "页码与题号已核",
+        "note": "日期为资料记录或收卷日期；不据此认定实际作答日。"
       },
       "status": "ready",
-      "recordType": "confirmed-error"
+      "recordType": "confirmed-error",
+      "diagnosis": {
+        "type": "数量关系",
+        "breakpoint": "把多走的往返和单程分开。",
+        "reason": "20分钟包括4分钟去程和4分钟折返。",
+        "check": "单程时间加多走8分钟，应为20分钟。",
+        "certainty": "本题检查点；具体错误原因需结合本次过程核实"
+      },
+      "teaching": {
+        "goal": "把多走的往返和单程分开。",
+        "prerequisites": [
+          "部分与整体",
+          "每份量、份数和总量"
+        ],
+        "focus": "20分钟包括4分钟去程和4分钟折返。 取东西多走了4＋4＝8分钟；真正单程回家的时间：20－8＝12分钟；距离：12×60＝720米",
+        "recallPrompt": "收起讲解，用自己的话说：把多走的往返和单程分开，为什么？",
+        "transferPrompt": "自编迁移（不计入历史错题）：速度仍60米/分，先走3分钟折返，总共18分钟到家。单程距离是否改变？",
+        "reference": {
+          "label": "四上《学习笔记同步教材》（项目目录：金牌数学）",
+          "unit": "复合应用题；工作效率",
+          "pages": "书本第54–60页",
+          "scope": "方法依据；本题来源另见题目来源。采用已核概念文字，未把OCR公式当作标准答案。"
+        },
+        "transferCheck": "多走6分钟，单程18－6＝12分钟；12×60＝720米，与原题相同。",
+        "transferSource": "authored-practice-not-historical-error"
+      },
+      "visual": {
+        "kind": "teaching",
+        "caption": "教学路线图：箭头表示先后路段；示意不按距离比例。",
+        "alt": "把多走的往返从总时间分出来",
+        "required": true,
+        "reason": "图示将本题的关键数量关系或运算对象显出来。"
+      },
+      "teachingImage": {
+        "src": "../assets/math-mistakes/eddey-upgrade-return-trip.svg",
+        "alt": "把多走的往返从总时间分出来",
+        "caption": "教学路线图：箭头表示先后路段；示意不按距离比例。"
+      }
     },
     {
       "id": "E-M-1305",
@@ -2850,10 +6643,53 @@
       "source": {
         "date": "2026-10-18",
         "label": "数学练习原题",
-        "kind": "original"
+        "kind": "original",
+        "page": 31,
+        "question": "5(4)",
+        "material": "华东师大版一课一练 四年级数学第一学期增强版",
+        "dateLabel": "资料记录日期",
+        "locatorStatus": "页码与题号已核",
+        "note": "日期为资料记录或收卷日期；不据此认定实际作答日。"
       },
       "status": "ready",
-      "recordType": "confirmed-error"
+      "recordType": "confirmed-error",
+      "diagnosis": {
+        "type": "数量关系",
+        "breakpoint": "买三送一的一组共有4份。",
+        "reason": "每组付3份的钱，却拿到4份商品。",
+        "check": "逐组数拿到12份时，付费与赠品各有多少。",
+        "certainty": "本题检查点；具体错误原因需结合本次过程核实"
+      },
+      "teaching": {
+        "goal": "买三送一的一组共有4份。",
+        "prerequisites": [
+          "部分与整体",
+          "每份量、份数和总量"
+        ],
+        "focus": "每组付3份的钱，却拿到4份商品。 甲店每4份只付3份的钱；12÷4＝3组，付3×3＝9份；9×50＝450元；乙店600－60＝540元，甲店便宜90元",
+        "recallPrompt": "收起讲解，用自己的话说：买三送一的一组共有4份，为什么？",
+        "transferPrompt": "自编迁移（不计入历史错题）：仍买三送一、每份50元，现在要16份。付几份的钱，共多少元？",
+        "reference": {
+          "label": "四上《学习笔记同步教材》（项目目录：金牌数学）",
+          "unit": "复合应用题；工作效率",
+          "pages": "书本第54–60页",
+          "scope": "方法依据；本题来源另见题目来源。采用已核概念文字，未把OCR公式当作标准答案。"
+        },
+        "transferCheck": "16÷4＝4组，付4×3＝12份；12×50＝600元。",
+        "transferSource": "authored-practice-not-historical-error"
+      },
+      "visual": {
+        "kind": "teaching",
+        "caption": "教学示意：每组四份，三份付款",
+        "alt": "每组四份，三份付款",
+        "required": true,
+        "reason": "图示将本题的关键数量关系或运算对象显出来。"
+      },
+      "teachingImage": {
+        "src": "../assets/math-mistakes/eddey-upgrade-buy-three-gift.svg",
+        "alt": "每组四份，三份付款",
+        "caption": "教学示意：每组四份，三份付款"
+      }
     },
     {
       "id": "E-M-1306",
@@ -2876,10 +6712,53 @@
       "source": {
         "date": "2026-10-18",
         "label": "数学练习原题",
-        "kind": "original"
+        "kind": "original",
+        "page": 32,
+        "question": "6",
+        "material": "华东师大版一课一练 四年级数学第一学期增强版",
+        "dateLabel": "资料记录日期",
+        "locatorStatus": "页码与题号已核",
+        "note": "日期为资料记录或收卷日期；不据此认定实际作答日。"
       },
       "status": "ready",
-      "recordType": "important-review"
+      "recordType": "important-review",
+      "diagnosis": {
+        "type": "数量关系",
+        "breakpoint": "先求每人每天，再求新增人数。",
+        "reason": "需要的总人数还要减去原有15人。",
+        "check": "总人数×5天×每人每天产量，应为900个。",
+        "certainty": "重要复练；不作为新的已确认错题"
+      },
+      "teaching": {
+        "goal": "先求每人每天，再求新增人数。",
+        "prerequisites": [
+          "部分与整体",
+          "每份量、份数和总量"
+        ],
+        "focus": "需要的总人数还要减去原有15人。 每人每天：270÷3÷15＝6个；5天每人生产30个，需要900÷30＝30人；增加30－15＝15人",
+        "recallPrompt": "收起讲解，用自己的话说：先求每人每天，再求新增人数，为什么？",
+        "transferPrompt": "自编迁移（不计入历史错题）：每人每天仍做6个，原有15人，要在5天做600个，需要增加几人？",
+        "reference": {
+          "label": "四上《学习笔记同步教材》（项目目录：金牌数学）",
+          "unit": "复合应用题；工作效率",
+          "pages": "书本第54–60页",
+          "scope": "方法依据；本题来源另见题目来源。采用已核概念文字，未把OCR公式当作标准答案。"
+        },
+        "transferCheck": "600÷(6×5)＝20人；增加20－15＝5人。",
+        "transferSource": "authored-practice-not-historical-error"
+      },
+      "visual": {
+        "kind": "teaching",
+        "caption": "教学示意：先把总产量缩到每人每天",
+        "alt": "先把总产量缩到每人每天",
+        "required": true,
+        "reason": "图示将本题的关键数量关系或运算对象显出来。"
+      },
+      "teachingImage": {
+        "src": "../assets/math-mistakes/eddey-upgrade-workers-rate.svg",
+        "alt": "先把总产量缩到每人每天",
+        "caption": "教学示意：先把总产量缩到每人每天"
+      }
     },
     {
       "id": "E-M-1351",
@@ -2902,11 +6781,49 @@
       "source": {
         "date": "2026-10-21",
         "label": "数学练习原题",
-        "kind": "original"
+        "kind": "original",
+        "question": "二-右中",
+        "scanPage": 1,
+        "material": "数学周练卷（5）",
+        "dateLabel": "资料记录日期",
+        "locatorStatus": "页码与题号已核",
+        "note": "日期为资料记录或收卷日期；不据此认定实际作答日。纸页未记录。"
       },
       "status": "ready",
       "recordType": "confirmed-error",
-      "reviewNote": "后续记录中已有正确结果，保留原题供间隔复验。"
+      "reviewNote": "后续记录中已有正确结果，保留原题供间隔复验。",
+      "diagnosis": {
+        "type": "计算检查",
+        "breakpoint": "先核85＋15的进位。",
+        "reason": "5＋5满十后，要计入十位。",
+        "check": "100减85应等于15，再算两括号相乘。",
+        "certainty": "本题检查点；具体错误原因需结合本次过程核实"
+      },
+      "teaching": {
+        "goal": "先核85＋15的进位。",
+        "prerequisites": [
+          "数位与四则计算",
+          "加减、乘除的互逆关系"
+        ],
+        "focus": "5＋5满十后，要计入十位。 85＋15＝100；240÷12＝20；100×20＝2000",
+        "recallPrompt": "收起讲解，用自己的话说：先核85＋15的进位，为什么？",
+        "transferPrompt": "自编迁移（不计入历史错题）：计算(75＋25)×(240÷12)，先检查进位，再与原题比较。",
+        "reference": {
+          "label": "四上《学习笔记同步教材》（项目目录：金牌数学）",
+          "unit": "运算关系；四则运算",
+          "pages": "书本第3–6、45–47页",
+          "scope": "方法依据；本题来源另见题目来源。采用已核概念文字，未把OCR公式当作标准答案。"
+        },
+        "transferCheck": "75＋25＝100，240÷12＝20，仍得2000。",
+        "transferSource": "authored-practice-not-historical-error"
+      },
+      "visual": {
+        "kind": "none",
+        "caption": "",
+        "alt": "",
+        "required": false,
+        "reason": "当前题意可用完整算式和分步过程表达；不添加装饰图。"
+      }
     },
     {
       "id": "E-M-1361",
@@ -2929,7 +6846,13 @@
       "source": {
         "date": "2026-10-21",
         "label": "数学练习原题",
-        "kind": "original"
+        "kind": "original",
+        "question": "四-4(2)",
+        "scanPage": 2,
+        "material": "数学周练卷（5）",
+        "dateLabel": "资料记录日期",
+        "locatorStatus": "页码与题号已核",
+        "note": "日期为资料记录或收卷日期；不据此认定实际作答日。纸页未记录。"
       },
       "status": "ready",
       "recordType": "confirmed-error",
@@ -2937,7 +6860,39 @@
         "＞",
         "＜",
         "＝"
-      ]
+      ],
+      "diagnosis": {
+        "type": "运算顺序",
+        "breakpoint": "先各自算清两边，再写符号。",
+        "reason": "括号不同，右侧的30不能先与90相加。",
+        "check": "分别写两边结果，符号尖端指向较小数。",
+        "certainty": "本题检查点；具体错误原因需结合本次过程核实"
+      },
+      "teaching": {
+        "goal": "先各自算清两边，再写符号。",
+        "prerequisites": [
+          "先乘除后加减",
+          "括号表示一个整体"
+        ],
+        "focus": "括号不同，右侧的30不能先与90相加。 左边先算括号：90＋30＝120，再从左到右算720÷120×2＝6×2＝12。 右边先分别算除法和乘法：720÷90＝8，30×2＝60，再相加得68。 12＜68，因此填＜。",
+        "recallPrompt": "收起讲解，用自己的话说：先各自算清两边，再写符号，为什么？",
+        "transferPrompt": "自编迁移（不计入历史错题）：比较600÷(60＋40)×2与600÷60＋40×2，分别写出过程。",
+        "reference": {
+          "label": "四上《学习笔记同步教材》（项目目录：金牌数学）",
+          "unit": "四则运算；分步式合并",
+          "pages": "书本第45–50页",
+          "scope": "方法依据；本题来源另见题目来源。采用已核概念文字，未把OCR公式当作标准答案。"
+        },
+        "transferCheck": "左600÷100×2＝12；右10＋80＝90；左小于右。",
+        "transferSource": "authored-practice-not-historical-error"
+      },
+      "visual": {
+        "kind": "none",
+        "caption": "",
+        "alt": "",
+        "required": false,
+        "reason": "当前题意可用完整算式和分步过程表达；不添加装饰图。"
+      }
     },
     {
       "id": "E-M-1365",
@@ -2960,10 +6915,53 @@
       "source": {
         "date": "2026-10-21",
         "label": "数学练习原题",
-        "kind": "original"
+        "kind": "original",
+        "question": "五-3",
+        "scanPage": 2,
+        "material": "数学周练卷（5）",
+        "dateLabel": "资料记录日期",
+        "locatorStatus": "页码与题号已核",
+        "note": "日期为资料记录或收卷日期；不据此认定实际作答日。纸页未记录。"
       },
       "status": "ready",
-      "recordType": "confirmed-error"
+      "recordType": "confirmed-error",
+      "diagnosis": {
+        "type": "读题核查",
+        "breakpoint": "问题问全部工期还是剩余工期？",
+        "reason": "减去已经完成的部分，会变成求剩余时间。",
+        "check": "给四个算式各标“全部”或“剩余”。",
+        "certainty": "本题检查点；具体错误原因需结合本次过程核实"
+      },
+      "teaching": {
+        "goal": "问题问全部工期还是剩余工期？",
+        "prerequisites": [
+          "部分与整体",
+          "每份量、份数和总量"
+        ],
+        "focus": "减去已经完成的部分，会变成求剩余时间。 题目求全部工期，不是剩余工期；①和③求全部9天；②和④求剩余6天，正确的有2个",
+        "recallPrompt": "收起讲解，用自己的话说：问题问全部工期还是剩余工期？，为什么？",
+        "transferPrompt": "自编迁移（不计入历史错题）：同一订单720套、3天做240套，改问“还要几天完成”。应从哪个工作量开始算？",
+        "reference": {
+          "label": "四上《学习笔记同步教材》（项目目录：金牌数学）",
+          "unit": "复合应用题；工作效率",
+          "pages": "书本第54–60页",
+          "scope": "方法依据；本题来源另见题目来源。采用已核概念文字，未把OCR公式当作标准答案。"
+        },
+        "transferCheck": "剩余720－240＝480套；每天80套，还需6天。",
+        "transferSource": "authored-practice-not-historical-error"
+      },
+      "visual": {
+        "kind": "teaching",
+        "caption": "教学示意：区分全部与剩余；条形按完成量比例绘制。",
+        "alt": "全部工期包含已完成和剩余两段",
+        "required": true,
+        "reason": "图示将本题的关键数量关系或运算对象显出来。"
+      },
+      "teachingImage": {
+        "src": "../assets/math-mistakes/eddey-upgrade-whole-time.svg",
+        "alt": "全部工期包含已完成和剩余两段",
+        "caption": "教学示意：区分全部与剩余；条形按完成量比例绘制。"
+      }
     },
     {
       "id": "E-M-1368",
@@ -2985,14 +6983,57 @@
       "source": {
         "date": "2026-10-21",
         "label": "数学练习原题",
-        "kind": "original"
+        "kind": "original",
+        "question": "六-2",
+        "scanPage": 3,
+        "material": "数学周练卷（5）",
+        "dateLabel": "资料记录日期",
+        "locatorStatus": "页码与题号已核",
+        "note": "日期为资料记录或收卷日期；不据此认定实际作答日。纸页未记录。"
       },
       "status": "ready",
       "recordType": "confirmed-error",
       "options": [
         "正确",
         "错误"
-      ]
+      ],
+      "diagnosis": {
+        "type": "数量关系",
+        "breakpoint": "“每天多少本”表示工作效率。",
+        "reason": "20天是时间，总工作量还需要相乘。",
+        "check": "说明1400、20和它们的积分别表示什么。",
+        "certainty": "本题检查点；具体错误原因需结合本次过程核实"
+      },
+      "teaching": {
+        "goal": "“每天多少本”表示工作效率。",
+        "prerequisites": [
+          "部分与整体",
+          "每份量、份数和总量"
+        ],
+        "focus": "20天是时间，总工作量还需要相乘。 每天完成多少是工作效率；这里每天1400本是效率，20天是时间",
+        "recallPrompt": "收起讲解，用自己的话说：“每天多少本”表示工作效率，为什么？",
+        "transferPrompt": "自编迁移（不计入历史错题）：每天加工900件，连续10天。900件/天、10天、9000件分别表示什么？",
+        "reference": {
+          "label": "四上《学习笔记同步教材》（项目目录：金牌数学）",
+          "unit": "复合应用题；工作效率",
+          "pages": "书本第54–60页",
+          "scope": "方法依据；本题来源另见题目来源。采用已核概念文字，未把OCR公式当作标准答案。"
+        },
+        "transferCheck": "依次是工作效率、工作时间、工作量。",
+        "transferSource": "authored-practice-not-historical-error"
+      },
+      "visual": {
+        "kind": "teaching",
+        "caption": "教学示意：效率、时间与总量是三个不同量",
+        "alt": "效率、时间与总量是三个不同量",
+        "required": true,
+        "reason": "图示将本题的关键数量关系或运算对象显出来。"
+      },
+      "teachingImage": {
+        "src": "../assets/math-mistakes/eddey-upgrade-rate-time-total.svg",
+        "alt": "效率、时间与总量是三个不同量",
+        "caption": "教学示意：效率、时间与总量是三个不同量"
+      }
     },
     {
       "id": "E-M-1369",
@@ -3014,14 +7055,57 @@
       "source": {
         "date": "2026-10-21",
         "label": "数学练习原题",
-        "kind": "original"
+        "kind": "original",
+        "question": "六-3",
+        "scanPage": 3,
+        "material": "数学周练卷（5）",
+        "dateLabel": "资料记录日期",
+        "locatorStatus": "页码与题号已核",
+        "note": "日期为资料记录或收卷日期；不据此认定实际作答日。纸页未记录。"
       },
       "status": "ready",
       "recordType": "confirmed-error",
       "options": [
         "正确",
         "错误"
-      ]
+      ],
+      "diagnosis": {
+        "type": "数量关系",
+        "breakpoint": "“一个月一共多少件”是总量。",
+        "reason": "每天800件才是单位时间内的产量。",
+        "check": "把问句改成“每天多少件”，比较所求变化。",
+        "certainty": "本题检查点；具体错误原因需结合本次过程核实"
+      },
+      "teaching": {
+        "goal": "“一个月一共多少件”是总量。",
+        "prerequisites": [
+          "部分与整体",
+          "每份量、份数和总量"
+        ],
+        "focus": "每天800件才是单位时间内的产量。 每天加工多少是效率；一个月一共加工多少是总工作量",
+        "recallPrompt": "收起讲解，用自己的话说：“一个月一共多少件”是总量，为什么？",
+        "transferPrompt": "自编迁移（不计入历史错题）：每天加工800件，工作20天，一共做多少件？说明所求量。",
+        "reference": {
+          "label": "四上《学习笔记同步教材》（项目目录：金牌数学）",
+          "unit": "复合应用题；工作效率",
+          "pages": "书本第54–60页",
+          "scope": "方法依据；本题来源另见题目来源。采用已核概念文字，未把OCR公式当作标准答案。"
+        },
+        "transferCheck": "800×20＝16000件，所求是总工作量。",
+        "transferSource": "authored-practice-not-historical-error"
+      },
+      "visual": {
+        "kind": "teaching",
+        "caption": "教学示意：每天的产量与全月产量不同",
+        "alt": "每天的产量与全月产量不同",
+        "required": true,
+        "reason": "图示将本题的关键数量关系或运算对象显出来。"
+      },
+      "teachingImage": {
+        "src": "../assets/math-mistakes/eddey-upgrade-monthly-output.svg",
+        "alt": "每天的产量与全月产量不同",
+        "caption": "教学示意：每天的产量与全月产量不同"
+      }
     },
     {
       "id": "E-M-1378",
@@ -3045,13 +7129,51 @@
       "source": {
         "date": "2026-10-21",
         "label": "数学练习原题",
-        "kind": "original"
+        "kind": "original",
+        "question": "八-2最小",
+        "scanPage": 4,
+        "material": "数学周练卷（5）",
+        "dateLabel": "资料记录日期",
+        "locatorStatus": "页码与题号已核",
+        "note": "日期为资料记录或收卷日期；不据此认定实际作答日。纸页未记录。"
       },
       "status": "ready",
       "recordType": "confirmed-error",
       "answerFormat": "brackets",
       "baseExpression": "90＋90×90－90",
-      "expectedValue": 0
+      "expectedValue": 0,
+      "diagnosis": {
+        "type": "括号范围",
+        "breakpoint": "让整式都乘到0。",
+        "reason": "只让后一部分乘0，前面的90仍会留下。",
+        "check": "先检查0之外是否还有单独相加的量。",
+        "certainty": "本题检查点；具体错误原因需结合本次过程核实"
+      },
+      "teaching": {
+        "goal": "让整式都乘到0。",
+        "prerequisites": [
+          "先乘除后加减",
+          "括号表示一个整体"
+        ],
+        "focus": "只让后一部分乘0，前面的90仍会留下。 先让最后两个90相减得到0；把前面两个90的和作为一个整体；(90＋90)×(90－90)＝0",
+        "recallPrompt": "收起讲解，用自己的话说：让整式都乘到0，为什么？",
+        "transferPrompt": "自编迁移（不计入历史错题）：给80＋80×80－80添括号，使整个式子结果为0。",
+        "reference": {
+          "label": "四上《学习笔记同步教材》（项目目录：金牌数学）",
+          "unit": "四则运算；分步式合并",
+          "pages": "书本第45–50页",
+          "scope": "方法依据；本题来源另见题目来源。采用已核概念文字，未把OCR公式当作标准答案。"
+        },
+        "transferCheck": "(80＋80)×(80－80)＝0；把前面的加法也包括进乘法。",
+        "transferSource": "authored-practice-not-historical-error"
+      },
+      "visual": {
+        "kind": "none",
+        "caption": "",
+        "alt": "",
+        "required": false,
+        "reason": "当前题意可用完整算式和分步过程表达；不添加装饰图。"
+      }
     },
     {
       "id": "E-M-1402",
@@ -3075,10 +7197,51 @@
         "date": "2026-10-21",
         "label": "数学练习原题",
         "kind": "original",
-        "question": "5"
+        "question": "第5题",
+        "material": "计算专项5题",
+        "dateLabel": "资料记录日期",
+        "locatorStatus": "题号已核，纸页未记录",
+        "note": "日期为资料记录或收卷日期；不据此认定实际作答日。纸页未记录。"
       },
       "status": "ready",
-      "recordType": "confirmed-error"
+      "recordType": "confirmed-error",
+      "diagnosis": {
+        "type": "计算检查",
+        "breakpoint": "先把88认成2个44。",
+        "reason": "98份与2份合在一起，正好是100份44。",
+        "check": "展开44×(98＋2)，核对原来两项。",
+        "certainty": "本题检查点；具体错误原因需结合本次过程核实"
+      },
+      "teaching": {
+        "goal": "先把88认成2个44。",
+        "prerequisites": [
+          "乘法的意义",
+          "因数与项的区别"
+        ],
+        "focus": "98份与2份合在一起，正好是100份44。 88＝44×2；44×98＋44×2＝44×(98＋2)；44×100＝4400",
+        "recallPrompt": "收起讲解，用自己的话说：先把88认成2个44，为什么？",
+        "transferPrompt": "自编迁移（不计入历史错题）：简算44×97＋132，说明132要换成几份44。",
+        "reference": {
+          "label": "四上《学习笔记同步教材》（项目目录：金牌数学）",
+          "unit": "运算律；辨易误与简算方法",
+          "pages": "书本第10–22页",
+          "scope": "方法依据；本题来源另见题目来源。采用已核概念文字，未把OCR公式当作标准答案。"
+        },
+        "transferCheck": "132＝44×3；44×(97＋3)＝4400。",
+        "transferSource": "authored-practice-not-historical-error"
+      },
+      "visual": {
+        "kind": "teaching",
+        "caption": "教学分块示意，不按数值比例绘制；两块表示对应的部分积。",
+        "alt": "把乘数拆成两部分",
+        "required": true,
+        "reason": "图示将本题的关键数量关系或运算对象显出来。"
+      },
+      "teachingImage": {
+        "src": "../assets/math-mistakes/eddey-upgrade-split-1402.svg",
+        "alt": "把乘数拆成两部分",
+        "caption": "教学分块示意，不按数值比例绘制；两块表示对应的部分积。"
+      }
     }
   ],
   "coverage": {
@@ -3142,5 +7305,118 @@
       "运算顺序与括号": 25,
       "方向与看图": 11
     }
-  }
+  },
+  "contentRevision": "2026-10-25-diagrams-provenance-teaching",
+  "schemaVersion": 2,
+  "syllabus": [
+    {
+      "category": "计算与检查",
+      "title": "先让每一步算得稳",
+      "prerequisites": [
+        "数位与四则计算"
+      ],
+      "coreInsight": "先定位第一处数值变化，再用互逆关系验算。",
+      "sequence": [
+        "圈出当前一步的两个数",
+        "写出中间结果并逐位核对",
+        "用逆运算复核",
+        "回到整题，检查后续是否一起改变"
+      ],
+      "check": "独立写中间过程；不能只给最终数。"
+    },
+    {
+      "category": "运算顺序与括号",
+      "title": "看清先后与整体",
+      "prerequisites": [
+        "计算与检查"
+      ],
+      "coreInsight": "括号规定整块先算；分步式从最后一步向前替换。",
+      "sequence": [
+        "判断乘除、加减与括号层级",
+        "用树状算图找到最后一步",
+        "原位替换中间数，保留运算对象",
+        "把合并式拆回原步骤检验"
+      ],
+      "check": "说明每层括号管哪一块，再独立列式。"
+    },
+    {
+      "category": "运算律与等价变形",
+      "title": "变写法，数量不变",
+      "prerequisites": [
+        "计算与检查",
+        "运算顺序与括号"
+      ],
+      "coreInsight": "交换位置、重新分组、对和分配是三种不同改变。",
+      "sequence": [
+        "数清原式中的因数与项",
+        "识别凑整关系和共同因数",
+        "每一步只做有依据的等价改写",
+        "展开回原式，检查符号和因数次数"
+      ],
+      "check": "遮住示范改写一题，并解释为何等值。"
+    },
+    {
+      "category": "倒推与逆运算",
+      "title": "从结果找回起点",
+      "prerequisites": [
+        "计算与检查",
+        "运算顺序与括号"
+      ],
+      "coreInsight": "倒推先撤销最后一步；先辨未知量的角色，才选运算。",
+      "sequence": [
+        "画原来的顺算流程",
+        "把最后一个整体当作未知量",
+        "逐层用加减或乘除关系还原",
+        "把所得起点放回原流程顺算"
+      ],
+      "check": "既写倒推式，也能顺算回给定终点。"
+    },
+    {
+      "category": "数量关系与应用",
+      "title": "每个数都对应一个量",
+      "prerequisites": [
+        "计算与检查",
+        "倒推与逆运算"
+      ],
+      "coreInsight": "先分清整体、部分、每份与总量，再决定运算。",
+      "sequence": [
+        "标出题目所求和各数单位",
+        "画对应条形或流程，保留所有条件",
+        "从已知求中间量，再接到所求",
+        "代回总量、比较或效率关系检查"
+      ],
+      "check": "说出每一步求的是谁，最后核对问题。"
+    },
+    {
+      "category": "方向与看图",
+      "title": "固定北向，找准参照点",
+      "prerequisites": [
+        "东南西北四个方向"
+      ],
+      "coreInsight": "观察点可以改变，地图朝向保持；风向取来向。",
+      "sequence": [
+        "找北向与观察点",
+        "同时看横向和纵向位置",
+        "路线每段重新确定起点",
+        "用相反方向或反读关系核验"
+      ],
+      "check": "遮住解说，在图上指认并完整描述。"
+    },
+    {
+      "category": "单位与完整表达",
+      "title": "让答案真正回答问题",
+      "prerequisites": [
+        "数量关系与应用"
+      ],
+      "coreInsight": "结果、单位、对象与时间范围都要和问句一致。",
+      "sequence": [
+        "读清所求是人数、份数、总量还是效率",
+        "为每个中间结果注明量名",
+        "写完整算式与最终答句",
+        "用原题对象和单位逐项核对"
+      ],
+      "check": "纸笔写完整过程；对照参考不等于独立通过。"
+    }
+  ],
+  "checkedAt": "2026-10-25"
 }

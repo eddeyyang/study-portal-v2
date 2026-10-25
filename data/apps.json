@@ -5,14 +5,14 @@
     "title": "哥哥 · 数学错题本",
     "file": "apps/kenton_math_mistakes_20261024.html",
     "added": "2026-10-24",
-    "updated": "2026-10-24",
+    "updated": "2026-10-25",
     "navigation": {
       "state": "active",
       "kind": "lesson",
       "period": "2026-autumn",
       "group": "mistakes",
       "displayTitle": "哥哥 · 数学错题本",
-      "summary": "按知识点找题，直接重做；重要题优先，错后看方法、回原题，再安排复查。"
+      "summary": "按知识路线复练，核对题目出处；用图看清关键关系，订正后独立复查。"
     }
   },
   {
@@ -21,14 +21,14 @@
     "title": "弟弟 · 数学错题本",
     "file": "apps/eddey_math_mistakes_20261024.html",
     "added": "2026-10-24",
-    "updated": "2026-10-24",
+    "updated": "2026-10-25",
     "navigation": {
       "state": "active",
       "kind": "lesson",
       "period": "2026-autumn",
       "group": "mistakes",
       "displayTitle": "弟弟 · 数学错题本",
-      "summary": "按知识点找题，直接重做；重要题优先，错后看方法、回原题，再安排复查。"
+      "summary": "按知识路线复练，核对题目出处；用图看清关键关系，订正后独立复查。"
     }
   },
   {

@@ -99,7 +99,38 @@
     if(product){const a=Number(product[1]),v=Number(product[2]);if(a<=1000&&v>=1&&v<=1000){const b=v>=10?Math.floor(v/10)*10:Math.floor(v);return {type:'split',a,b,sign:'+',value:Number((v-b).toFixed(5)),sourceExpression:product[0],sourceStep:prompt};}}
     return null;
   }
-  const core={normalized,numeric,rational,exactEqual,roundDecimal,expression,evaluateExpression,expressionEqual,judge,dayKey,progress,validImport,isImportant,selectModel};root.MathMistakeCore=core;
+  function safeAsset(value){
+    if(typeof value!=='string')return '';
+    const clean=value.replace(/^\.\.\//,'');
+    if(!/^assets\/(?:[a-zA-Z0-9_-]+\/)*[a-zA-Z0-9_.-]+\.(?:svg|png|webp|jpe?g)$/.test(clean))return '';
+    return '../'+clean;
+  }
+  function sourceRows(q){
+    const s=q.source||{},kind={original:'原题重练',reconstructed:'依据已核条件整理的练习',transfer:'新编迁移题，不计入历史错题'}[s.kind]||'来源形式待核';
+    const rows=[['材料',s.material||s.label||'材料名称待核'],['对应内容',s.material&&s.label&&s.material!==s.label?s.label:''],[s.dateLabel||'材料／记录日期',s.date||'日期未核实'],['日期含义',s.dateMeaning||''],['纸面页码',s.page||'现有记录未核实纸面页码'],['扫描页',s.scanPage||''],['题号',s.question||'现有记录未核实题号'],['收录形式',kind]];
+    if(s.locatorStatus){const value={verified:'材料位置已核对',partial:'部分位置已核对，其余以待核项为准',unverified:'材料位置待核',missing:'原始位置尚缺',record:'依据已保存记录定位'}[s.locatorStatus]||(/[\u3400-\u9fff]/.test(s.locatorStatus)?s.locatorStatus:'以已核字段为准');rows.push(['定位状态',value]);}
+    if(s.note)rows.push(['来源说明',s.note]);
+    if(q.image){let caption=q.diagramCaption||q.visual?.caption||'按已核条件绘制';if(!caption.includes('非原卷截图'))caption=caption.replace(/[。；;]$/,'')+'；条件示意，非原卷截图';rows.push(['题图说明',caption]);}
+    return rows.filter(row=>row[1]);
+  }
+  function teachingFigures(q,includeQuestion=false){
+    const figures=[];
+    if(includeQuestion&&safeAsset(q.image))figures.push({src:q.image,alt:q.diagramAlt||q.visual?.alt||'题目条件图',caption:q.diagramCaption||'先对照题目条件'});
+    const raw=[...(q.teachingImage?[q.teachingImage]:[]),...(Array.isArray(q.teachingImages)?q.teachingImages:[])];
+    for(const item of raw){const f=typeof item==='string'?{src:item}:item;if(f&&safeAsset(f.src||f.image)&&!figures.some(x=>x.src===(f.src||f.image)))figures.push({src:f.src||f.image,alt:f.alt||q.visual?.alt||'本题方法图解',caption:f.caption||q.visual?.caption||'教学示意 · 用图看清数量关系'});}
+    return figures;
+  }
+  function knowledgeRoutes(bank){
+    const list=(bank.items||[]).filter(q=>q.status!=='needs-source'&&q.status!=='excluded'&&q.prompt&&q.id),categories=[...new Set(list.map(q=>q.category||'数学'))],syllabus=Array.isArray(bank.syllabus)?bank.syllabus:[];
+    const ordered=[...syllabus.map(x=>x.category).filter(c=>categories.includes(c)),...categories.filter(c=>!syllabus.some(x=>x.category===c))];
+    return [...new Set(ordered)].map(category=>{
+      const questions=list.filter(q=>(q.category||'数学')===category),spec=syllabus.find(x=>x.category===category)||{},first=questions[0],counts={};
+      for(const q of questions){const type=q.diagnosis?.type||'关键步骤';counts[type]=(counts[type]||0)+1;}
+      const prerequisites=Array.isArray(spec.prerequisites)?spec.prerequisites:[...new Set(questions.flatMap(q=>Array.isArray(q.teaching?.prerequisites)?q.teaching.prerequisites:[]))].slice(0,4);
+      return {category,title:spec.title||category,count:questions.length,prerequisites,coreInsight:spec.coreInsight||first.teaching?.goal||'先看懂题中的关系，再用自己的步骤完成。',sequence:spec.sequence,check:spec.check||first.teaching?.recallPrompt||'遮住方法，说清第一步为什么这样做。',diagnoses:Object.entries(counts).sort((a,b)=>b[1]-a[1]).map(([type,count])=>({type,count}))};
+    });
+  }
+  const core={normalized,numeric,rational,exactEqual,roundDecimal,expression,evaluateExpression,expressionEqual,judge,dayKey,progress,validImport,isImportant,selectModel,safeAsset,sourceRows,teachingFigures,knowledgeRoutes};root.MathMistakeCore=core;
   if(typeof document==='undefined')return;
   const config=root.MATH_BANK_CONFIG;if(!config)return;
   const $=id=>document.getElementById(id), child=config.child,appId=config.appId;
@@ -107,7 +138,7 @@
   if(explicitTest&&root.DDLearningSync&&!root.DDLearningSync.isTest())root.DDLearningSync.startTest();
   const test=explicitTest||!root.DDLearningSync||root.DDLearningSync.isTest();
   const key=`study:${child}:${appId}:v1:${test?'test':'formal'}`;
-  let bank,items=[],current,modelSpec=null,modelValue=null,filter='all',category='all',search='',step=0,assisted=false,referenceSeen=false,blocking=0,checked=false,currentView='question',activeStart=Date.now(),storageLocked=false,rawRecovery=null;
+  let bank,items=[],current,modelSpec=null,modelValue=null,modelDisplay='figure',filter='all',category='all',diagnosis='all',search='',step=0,assisted=false,referenceSeen=false,blocking=0,checked=false,currentView='question',activeStart=Date.now(),storageLocked=false,rawRecovery=null;
   let state={schema:SCHEMA,version:VERSION,child,appId,mode:test?'test':'formal',attempts:[],drafts:{},helpDays:{},currentId:null,seconds:0,queuedIds:[]};
   const iconArrow='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-5-5 5 5-5 5"/></svg>';
   const escape=s=>text(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -116,22 +147,63 @@
   function attemptsFor(id){return state.attempts.filter(a=>a.questionId===id);}
   function getProgress(id){return progress(attemptsFor(id));}
   function recordLabel(q){const t=q.recordType;return ['process-gap','过程复查'].includes(t)?'过程复查':['important-review','重要复验'].includes(t)?'重要复验':'错题重练';}
-  function filtered(){return items.filter(q=>(category==='all'||q.category===category)&&(!search||(q.prompt+' '+q.title+' '+q.category).includes(search))&&(filter==='all'||(filter==='important'&&isImportant(q))||(filter==='review'&&getProgress(q.id).review)));}
+  function filtered(){return items.filter(q=>(category==='all'||q.category===category)&&(diagnosis==='all'||q.diagnosis?.type===diagnosis)&&(!search||[q.prompt,q.title,q.category,q.source?.material,q.source?.label,q.diagnosis?.type,q.diagnosis?.breakpoint].join(' ').includes(search))&&(filter==='all'||(filter==='important'&&isImportant(q))||(filter==='review'&&getProgress(q.id).review)));}
+  function figureMarkup(q,includeQuestion=false){
+    const method=teachingFigures(q),figures=method.length?method:teachingFigures(q,includeQuestion);
+    return figures.map((f,i)=>`<figure class="teaching-figure" data-figure-index="${i}"${i?' hidden':''}><img src="${escape(safeAsset(f.src))}" alt="${escape(f.alt)}"><div class="figure-footer"><figcaption>${escape(f.caption)}</figcaption><button class="figure-zoom" type="button" data-zoom-src="${escape(safeAsset(f.src))}" data-zoom-alt="${escape(f.alt)}" data-zoom-caption="${escape(f.caption)}">放大看</button></div></figure>`).join('')+(figures.length>1?`<div class="figure-pages" aria-label="图解步骤">${figures.map((_,i)=>`<button type="button" data-figure-page="${i}" aria-pressed="${i===0}">图 ${i+1}</button>`).join('')}</div>`:'');
+  }
+  function renderRoutes(){
+    $('routeList').innerHTML=knowledgeRoutes(bank).map((route,index)=>`<li><details class="route-node"${index===0?' open':''}><summary><span class="route-number">${String(index+1).padStart(2,'0')}</span><span><strong>${escape(route.title)}</strong><small>${escape(route.category)} · ${route.count} 道已核题目</small></span><span class="route-toggle" aria-hidden="true">＋</span></summary><div class="route-body"><p class="route-core">${escape(route.coreInsight)}</p><button class="button route-practice" type="button" data-route-category="${escape(route.category)}">练这一类 ${iconArrow}</button>${route.prerequisites.length?`<p class="route-prerequisites"><span>先要会</span>${route.prerequisites.map(escape).join(' · ')}</p>`:''}${Array.isArray(route.sequence)&&route.sequence.length?`<div class="route-sequence"><p>按这个顺序理清</p><ol>${route.sequence.map(part=>`<li>${escape(part)}</li>`).join('')}</ol></div>`:''}<p class="route-check"><span>练后讲回来</span>${escape(route.check)}</p><div class="route-points"><span>按检查点练</span>${route.diagnoses.map(d=>`<button type="button" data-route-category="${escape(route.category)}" data-route-diagnosis="${escape(d.type)}">${escape(d.type)} <small>${d.count}</small></button>`).join('')}</div></div></details></li>`).join('');
+  }
+  function scrollPanel(id){const offset=($('dd-test-banner')?.getBoundingClientRect().height||0)+12;document.documentElement.style.setProperty('--bank-scroll-offset',offset+'px');$(id).scrollIntoView({behavior:'auto',block:'start'});}
+  function toggleRoute(open){
+    $('routePanel').hidden=!open;$('routeButton').setAttribute('aria-expanded',String(open));
+    if(open){preserveDraft();renderRoutes();$('catalog').hidden=true;$('catalogButton').setAttribute('aria-expanded','false');$('questionPanel').hidden=true;$('repairPanel').hidden=true;$('emptyPanel').hidden=true;}
+    else setView(currentView);
+    for(const selector of ['.bottom-row','.filter-row','.daily-note','.finish-row'])document.querySelector(selector).hidden=open;if(open)scrollPanel('routePanel');
+  }
+  function routePractice(categoryValue,diagnosisValue){
+    category=categoryValue;diagnosis=diagnosisValue||'all';filter='all';search='';$('searchInput').value='';syncTabs();toggleRoute(false);firstQuestion();scrollPanel('questionPanel');
+  }
+  function renderSource(q){
+    $('sourceLabel').textContent=q.source?.material||q.source?.label||'材料名称待核';
+    $('sourceDetail').innerHTML='<dl class="source-grid">'+sourceRows(q).map(([label,value])=>`<div><dt>${escape(label)}</dt><dd>${escape(value)}</dd></div>`).join('')+'</dl><p class="source-boundary">这里只展示脱敏来源位置；原始作答和批改记录保留在私有档案。</p>';
+    $('sourceDetail').hidden=true;$('sourceButton').setAttribute('aria-expanded','false');
+  }
+  function renderMethod(q){
+    const t=q.teaching||{},d=q.diagnosis||{},r=t.reference||{};
+    $('methodDetails').open=false;
+    $('methodContent').innerHTML=[['这题的目标',t.goal],['用到的方法',t.focus],['先要会什么',Array.isArray(t.prerequisites)?t.prerequisites.join(' · '):''],['换一道怎样用',t.transferPrompt],['方法依据',[r.label,r.unit,r.pages].filter(Boolean).join(' · ')],['依据范围',r.scope],['检查点说明',d.certainty==='needs-verification'?'本题的关键检查点，具体错误原因仍待实际过程核实。':/[\u3400-\u9fff]/.test(d.certainty||'')?d.certainty:'这里整理的是本题需要核查的步骤，不表示当前已经掌握。']].filter(row=>row[1]).map(([label,value])=>`<p><strong>${escape(label)}</strong>${escape(value)}</p>`).join('');
+    const transferCheck=Array.isArray(t.transferCheck)?t.transferCheck.join('\n'):text(t.transferCheck);if(t.transferPrompt&&transferCheck)$('methodContent').innerHTML+=`<details class="transfer-check"><summary>做完再看迁移核对</summary><div>${escape(transferCheck)}</div><p class="transfer-note">新编迁移，用口述或纸笔完成；不计入历史错题，也不自动记为掌握。</p></details>`;
+    $('methodDetails').hidden=!$('methodContent').textContent;
+    $('repairKicker').textContent=d.type?'先检查这里 · '+d.type:'只理清当前这一步';
+    $('repairGap').textContent=d.breakpoint||'从关键的一步开始。';$('repairReason').textContent=d.reason||q.hint||'先辨清数量关系，再计算。';$('repairCheck').textContent=d.check||'看完遮住方法，再回原题试一次。';
+    $('recallPrompt').textContent=t.recallPrompt||'刚才为什么可以这样变？';
+  }
+  function renderTransfer(q){
+    const t=q.teaching||{},answer=Array.isArray(t.transferCheck)?t.transferCheck.join('\n'):text(t.transferCheck);
+    $('transferText').textContent=t.transferPrompt||'把方法带到另一道题，再试一次。';$('transferCheckDetails').open=false;$('transferCheckDetails').hidden=!(t.transferPrompt&&answer);$('transferCheckAnswer').textContent=answer;$('transferNote').hidden=!t.transferPrompt;
+  }
+  function openDiagram(src,alt,caption){
+    const safe=safeAsset(src);if(!safe)return;
+    $('zoomImage').src=safe;$('zoomImage').alt=alt||'数学图解';$('zoomCaption').textContent=caption||'';
+    $('diagramDialog').classList.remove('is-enlarged');$('zoomToggle').textContent='放大细节';$('zoomToggle').setAttribute('aria-pressed','false');$('zoomHint').textContent='当前显示全图';$('diagramDialog').showModal();
+  }
   function pending(){return state.attempts.filter(a=>!state.queuedIds.includes(a.id));}
   function summary(){const p=items.map(q=>getProgress(q.id));return {new:p.filter(x=>x.key==='new').length,review:p.filter(x=>x.key==='review'||x.key==='once').length,mastered:p.filter(x=>x.key==='mastered').length};}
   function renderCounts(){const s=summary();$('totalCount').textContent=items.length;$('questionTotal').textContent=items.length;$('finishCount').textContent=pending().length?`本次还有 ${pending().length} 条作答待收尾`:'做完可以随时收尾';$('summaryNew').textContent=s.new;$('summaryReview').textContent=s.review;$('summaryMastered').textContent=s.mastered;$('syncButton').textContent=test?'结束本次测试':'完成并同步';}
   function renderList(){
     const list=filtered();$('catalogCount').textContent=`${list.length} 题`;
-    $('questionList').innerHTML=list.length?list.map((q,i)=>`<li><button type="button" data-question="${escape(q.id)}"><span class="q-index">${String(i+1).padStart(2,'0')}</span><span><span class="list-title">${escape(q.title||q.prompt)}</span><span class="list-meta">${escape(q.category)} · ${escape(recordLabel(q))}${isImportant(q)?' · 重点':''}</span></span><span class="list-state">${escape(getProgress(q.id).label)}</span></button></li>`).join(''):'<li class="empty-state">这个分类暂时没有题目。试试“全部题目”。</li>';
+    $('questionList').innerHTML=list.length?list.map((q,i)=>`<li><button type="button" data-question="${escape(q.id)}"><span class="q-index">${String(i+1).padStart(2,'0')}</span><span><span class="list-title">${escape(q.title||q.prompt)}</span><span class="list-meta">${escape(q.category)} · ${escape(q.diagnosis?.type||recordLabel(q))}${isImportant(q)?' · 重点':''}</span></span><span class="list-state">${escape(getProgress(q.id).label)}</span></button></li>`).join(''):'<li class="empty-state">这个分类暂时没有题目。试试“全部题目”。</li>';
   }
   function renderParent(){
     renderCounts();const coverage=bank.coverage||{};
-    $('coverageText').textContent=coverage.publicSummary||bank.coverageSummary||coverage.scope||coverage.note||'范围：本学期开学以来已收录、题面和答案可核对的数学题。已排除改判正确、不能定位原题的条目。';
+    $('coverageText').textContent=((bank.checkedAt||bank.asOf)?'题库核查日期：'+(bank.checkedAt||bank.asOf)+'。':'')+(coverage.publicSummary||bank.coverageSummary||coverage.scope||coverage.note||'范围：本学期开学以来已收录、题面和答案可核对的数学题。已排除改判正确、不能定位原题的条目。');
     const gaps=bank.pendingItems||coverage.pendingItems||bank.items.filter(q=>q.status==='needs-source');$('pendingSourceCount').textContent=gaps.length;$('pendingSourceList').innerHTML=gaps.length?gaps.map(q=>`<li><strong>${escape(q.title||q.category||'待核对题目')}</strong>：${escape(q.gap||q.missing||q.note||q.prompt||'原题条件不全，暂不进入练习。')}</li>`).join(''):'<li>当前没有待核对题面。</li>';$('parentPolicy').textContent='记录只属于当前孩子。提示或参考后做对仍进“待复查”；首次独立正确记“再验一次”，不同日期连续独立通过后才记“跨日通过”。原历史保留。';
     $('historyList').innerHTML=state.attempts.slice(-30).reverse().map(a=>{const q=items.find(x=>x.id===a.questionId);return `<li>${escape(dayKey(a.at))} · ${escape(q?.title||a.questionId)}：${escape(a.correct?(a.independent?'独立做对':'订正后做对'):a.manual?'待人工复看':'待复查')}</li>`;}).join('')||'<li>还没有本机练习记录。</li>';
   }
   function hideFeedback(){ $('feedback').hidden=true;$('hintBox').hidden=true;$('referenceBox').hidden=true;$('transferPanel').hidden=true; }
-  function setView(view){currentView=view;$('questionPanel').hidden=view!=='question';$('repairPanel').hidden=view!=='repair';$('emptyPanel').hidden=view!=='empty';}
+  function setView(view){currentView=view;$('routePanel').hidden=true;$('routeButton').setAttribute('aria-expanded','false');for(const selector of ['.bottom-row','.filter-row','.daily-note','.finish-row'])document.querySelector(selector).hidden=false;$('questionPanel').hidden=view!=='question';$('repairPanel').hidden=view!=='repair';$('emptyPanel').hidden=view!=='empty';}
   function questionPosition(){const qs=filtered(),n=qs.findIndex(x=>x.id===current?.id);$('position').textContent=n<0?'本题':`${n+1} / ${qs.length}`;}
   function openQuestion(id,returning=false){
     const q=items.find(x=>x.id===id);if(!q)return;
@@ -139,13 +211,13 @@
     assisted=Boolean(draft.assisted)||state.helpDays[q.id]===dayKey();referenceSeen=Boolean(draft.referenceSeen);blocking=Number(draft.blocking)||0;checked=Boolean(draft.completed);step=0;
     $('categoryLabel').textContent=q.category||'数学';$('importantLabel').hidden=!isImportant(q);questionPosition();
     $('questionIntro').textContent=recordLabel(q)+' · '+(q.source?.kind==='transfer'?'方法变式 · 新编练习':q.source?.kind==='reconstructed'?'根据已核记录还原的练习':'原题重练')+' · 先自己做，卡住再看提示';
-    $('questionText').textContent=q.prompt;const safeImage=typeof q.image==='string'&&/^(?:\.\.\/)?assets\/[a-zA-Z0-9_./-]+\.(?:svg|png|webp|jpg)$/.test(q.image);$('questionDiagram').hidden=!safeImage;if(safeImage){$('diagramImage').src=q.image.startsWith('assets/')?'../'+q.image:q.image;$('diagramImage').alt=q.diagramAlt||'题目条件图';$('diagramCaption').textContent=q.diagramCaption||'';}$('questionText').classList.toggle('formula',q.prompt.length<40&&!/[一-龥]{8}/.test(q.prompt));
+    $('questionText').textContent=q.prompt;const safeImage=safeAsset(q.image);$('questionDiagram').hidden=!safeImage;if(safeImage){$('diagramImage').src=safeImage;$('diagramImage').alt=q.diagramAlt||q.visual?.alt||'题目条件图';$('diagramCaption').textContent=q.diagramCaption||(q.visual?.kind==='question'?q.visual.caption:'')||'题目条件图';}$('questionText').classList.toggle('formula',q.prompt.length<40&&!/[一-龥]{8}/.test(q.prompt));
     $('answerInput').value=draft.answer||'';$('openAnswer').value=draft.answer||'';$('answerInput').disabled=false;$('openAnswer').disabled=false;
     const isOpen=['manual','open'].includes(q.kind)||['过程复查','process-gap'].includes(q.recordType);$('numberAnswer').hidden=isOpen||q.kind==='choice';$('openAnswerGroup').hidden=!isOpen;$('choiceAnswer').hidden=q.kind!=='choice';
     $('answerInput').inputMode=(q.kind==='number'&&!(q.answers||[]).some(a=>/[^\d.+-]/.test(a)))?'decimal':'text';$('answerInput').placeholder=q.placeholder||'在这里写答案';$('answerUnit').textContent=q.unit||'';
     $('choiceAnswer').innerHTML=q.kind==='choice'?(q.options||[]).map(o=>{const value=typeof o==='object'?o.value:o,label=typeof o==='object'?o.label:o;return `<button class="option${draft.answer===value?' selected':''}" type="button" data-choice="${escape(value)}" aria-pressed="${draft.answer===value}">${escape(label)}</button>`;}).join(''):'';
     $('checkButton').disabled=false;$('checkButton').innerHTML='检查答案 '+iconArrow;$('hintButton').disabled=false;$('hintButton').textContent='给我一点提示';$('hintButton').onclick=showHint;$('nextButton').textContent='下一题';
-    $('sourceLabel').textContent=q.source?.label||'已核实学习记录';$('sourceDetail').textContent=[q.source?.date,q.source?.page?'第 '+q.source.page+' 页':'',q.source?.question||'',q.source?.kind==='transfer'?'新编迁移题，不计入历史错题':''].filter(Boolean).join(' · ');$('sourceDetail').hidden=true;
+    renderSource(q);renderTransfer(q);
     hideFeedback();setView('question');$('feedbackAction').onclick=()=>openRepair('wrong');if(checked){const last=attemptsFor(q.id).at(-1),ok=last?.correct===true;$('checkButton').disabled=true;$('answerInput').disabled=true;$('openAnswer').disabled=true;$('feedback').hidden=false;$('feedback').className=ok?'feedback':'feedback wrong';$('feedbackTitle').textContent=ok?'今天这次作答已保留':'这道题还需要复查';$('feedbackText').textContent=ok?'保留方法，换一天再独立复验。':'上次的提示和作答都在，可以遮住后再试。';$('feedbackAction').hidden=false;$('feedbackAction').textContent='遮住旧答案，再试一次';$('feedbackAction').onclick=()=>{$('answerInput').value='';$('openAnswer').value='';retry();preserveDraft();};}$('catalog').hidden=true;$('catalogButton').setAttribute('aria-expanded','false');save();renderCounts();renderList();
     if(returning){$('hintBox').hidden=false;$('hintText').textContent='回到刚才这题。保留思路，重新写一次。';}
   }
@@ -163,16 +235,16 @@
     if(result.empty){$('feedback').hidden=false;$('feedback').className='feedback wrong';$('feedbackTitle').textContent='先写下你的答案';$('feedbackText').textContent='不会也可以先看一条提示。';$('feedbackAction').hidden=true;return;}
     if(result.manual){checked=true;record({correct:null},true);revealReference('这题需要对照关键步骤核查。');return;}
     record(result);
-    if(result.correct){checked=true;$('checkButton').disabled=true;$('answerInput').disabled=true;$('openAnswer').disabled=true;$('feedback').hidden=false;$('feedback').className='feedback';$('feedbackTitle').textContent=current.processRequired?'数值核对上了，过程还要复查':assisted||referenceSeen||blocking?'这次订正对了':'这次自己做对了';$('feedbackText').textContent=current.processRequired?'请在纸上保留竖式或简便计算过程，和完整解法逐步核对。这次数值对不代表过程已通过。':assisted||referenceSeen||blocking?'下次遮住提示，再独立验一次。':'保留方法，下次换一天再验。';$('feedbackAction').hidden=true;$('transferPanel').hidden=false;$('transferText').textContent='把方法带到另一道题，再试一次。';$('nextButton').textContent='继续下一题';preserveDraft();return;}
+    if(result.correct){checked=true;$('checkButton').disabled=true;$('answerInput').disabled=true;$('openAnswer').disabled=true;$('feedback').hidden=false;$('feedback').className='feedback';$('feedbackTitle').textContent=current.processRequired?'数值核对上了，过程还要复查':assisted||referenceSeen||blocking?'这次订正对了':'这次自己做对了';$('feedbackText').textContent=current.processRequired?'请在纸上保留竖式或简便计算过程，和完整解法逐步核对。这次数值对不代表过程已通过。':assisted||referenceSeen||blocking?'下次遮住提示，再独立验一次。':'保留方法，下次换一天再验。';$('feedbackAction').hidden=true;$('transferPanel').hidden=false;renderTransfer(current);$('nextButton').textContent='继续下一题';preserveDraft();return;}
     blocking+=1;markHelp();
     if(blocking>=2){revealReference(result.message||'对照答案找差别，再决定重试或继续。');return;}
     $('feedback').hidden=false;$('feedback').className='feedback wrong';$('feedbackTitle').textContent=result.formatOnly?'数值对，写法还差一步':'先检查一个关键步骤';$('feedbackText').textContent=result.message||current.hint||'先看清数量关系，再检查计算。';$('feedbackAction').hidden=false;$('feedbackAction').textContent='看方法，再回这题';
   }
   function openRepair(reason){
-    markHelp();setView('repair');$('modelStage').hidden=false;$('repairTitle').textContent='把这一步理清';$('repairGap').textContent=reason==='hint'?'从关键的一步开始。':'先保留你刚才的答案。';$('repairReason').textContent=current.hint||'先辨清数量关系，再计算。';$('repairCheck').textContent='看完遮住方法，再回原题试一次。';$('recallBox').hidden=true;$('recallButton').textContent='遮住方法，讲回来';step=0;modelSpec=selectModel(current);modelValue=modelSpec?.value;renderModel();
+    markHelp();setView('repair');$('modelStage').hidden=false;$('repairTitle').textContent='把这一步理清';renderMethod(current);$('repairDiagnosis').hidden=false;$('repairFigures').innerHTML=figureMarkup(current,true);$('recallBox').hidden=true;$('recallButton').textContent='遮住方法，讲回来';step=0;modelSpec=selectModel(current);modelValue=modelSpec?.value;modelDisplay='figure';renderModel();scrollPanel('repairPanel');
   }
   function renderQuantityModel(){
-    $('quantityModel').hidden=!modelSpec;if(!modelSpec)return;
+    const hasFigures=Boolean($('repairFigures').children.length);$('modelContent').classList.toggle('has-graphic',hasFigures||Boolean(modelSpec));$('modelGraphicTabs').hidden=!(modelSpec&&hasFigures);$('repairFigures').hidden=Boolean(modelSpec&&modelDisplay==='interactive');$('quantityModel').hidden=!modelSpec||(hasFigures&&modelDisplay==='figure');$('modelGraphicTabs').querySelectorAll('[data-model-display]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.modelDisplay===modelDisplay)));if(!modelSpec)return;
     const fmt=n=>Number(n.toPrecision(12)).toString();
     if(modelSpec.type==='split'){
       const {a,b,sign}=modelSpec,c=modelValue;
@@ -196,21 +268,21 @@
     renderQuantityModel();
     const steps=current.steps?.length?current.steps:[current.explanation||current.hint||'先辨清数量关系，再计算。'];
     const shown=step===0?current.prompt:steps[Math.min(step-1,steps.length-1)];
-    $('modelEquation').textContent=shown;$('modelProgress').style.width=`${step/steps.length*100}%`;$('modelSteps').textContent=step===0?'先想：下一步会变成什么？':`第 ${step} 步，共 ${steps.length} 步`;$('modelNext').textContent=step<steps.length?'展开下一步':'再看一遍';$('modelReset').disabled=step===0;
+    $('modelEquation').textContent=shown;$('modelEquation').classList.toggle('model-prompt',step===0);$('modelProgress').style.width=`${step/steps.length*100}%`;$('modelSteps').textContent=step===0?'先想：下一步会变成什么？':`第 ${step} 步，共 ${steps.length} 步`;$('modelNext').textContent=step<steps.length?'展开下一步':'再看一遍';$('modelReset').disabled=step===0;
     if(step>0){referenceSeen=true;markHelp();}
   }
   function revealReference(message){
     referenceSeen=true;checked=true;$('checkButton').disabled=true;$('answerInput').disabled=true;$('openAnswer').disabled=true;markHelp();setView('question');$('referenceBox').hidden=false;$('referenceMessage').textContent=message||'对照答案和步骤，找到需要改的地方。';$('referenceAnswer').textContent=current.referenceAnswer||(current.answers||[]).join(' 或 ')||current.explanation||'请对照已核实的题目关系复看。';
-    $('referenceSteps').innerHTML=(current.steps||[]).map(s=>`<li>${escape(s)}</li>`).join('');$('referenceExplanation').textContent=current.explanation||'';const refImg=current.referenceImage;const validRef=typeof refImg==='string'&&/^(?:\.\.\/)?assets\/[a-zA-Z0-9_./-]+\.(?:svg|png|webp|jpg)$/.test(refImg);$('referenceDiagram').hidden=!validRef;if(validRef){$('referenceDiagram').src=refImg.startsWith('assets/')?'../'+refImg:refImg;$('referenceDiagram').alt='参考作图，仅供作答后核查';}$('referenceChecks').innerHTML=(current.expectedChecks||[]).map(x=>`<li>${escape(x)}</li>`).join('');$('feedback').hidden=true;preserveDraft();
+    $('referenceFigures').innerHTML=figureMarkup(current);$('referenceSteps').innerHTML=(current.steps||[]).map(s=>`<li>${escape(s)}</li>`).join('');$('referenceExplanation').textContent=current.explanation||'';const refImg=current.referenceImage;const validRef=typeof refImg==='string'&&/^(?:\.\.\/)?assets\/[a-zA-Z0-9_./-]+\.(?:svg|png|webp|jpg)$/.test(refImg);$('referenceDiagram').hidden=!validRef;if(validRef){$('referenceDiagram').src=refImg.startsWith('assets/')?'../'+refImg:refImg;$('referenceDiagram').alt='参考作图，仅供作答后核查';}$('referenceChecks').innerHTML=(current.expectedChecks||[]).map(x=>`<li>${escape(x)}</li>`).join('');$('feedback').hidden=true;preserveDraft();
   }
   function retry(){checked=false;$('answerInput').disabled=false;$('openAnswer').disabled=false;$('checkButton').disabled=false;$('referenceBox').hidden=true;$('feedback').hidden=true;$('hintBox').hidden=false;$('hintText').textContent='遮住参考答案，再按刚才的方法自己算。';setView('question');}
   function nextQuestion(){const list=filtered();if(!list.length){firstQuestion();return;}const index=list.findIndex(x=>x.id===current?.id);openQuestion(list[(index+1)%list.length].id);}
-  function transfer(){const list=items.filter(q=>q.id!==current.id&&q.category===current.category);if(list.length){const q=list.find(q=>getProgress(q.id).key==='new')||list[0];filter='all';category='all';syncTabs();openQuestion(q.id);$('questionIntro').textContent='同类原题再练 · 试着自己用出方法';}else{$('transferText').textContent='本类已核原题暂时只有这一题。先讲清为什么这样算，下次再独立复查。';}}
-  function syncTabs(){document.querySelectorAll('[data-filter]').forEach(b=>b.setAttribute('aria-selected',String(b.dataset.filter===filter)));$('categorySelect').value=category;renderList();}
+  function transfer(){const list=items.filter(q=>q.id!==current.id&&q.category===current.category);if(list.length){const q=list.find(q=>getProgress(q.id).key==='new')||list[0];filter='all';category='all';diagnosis='all';search='';$('searchInput').value='';syncTabs();openQuestion(q.id);$('questionIntro').textContent='同类原题再练 · 试着自己用出方法';}else{$('transferText').textContent='本类已核原题暂时只有这一题。先讲清为什么这样算，下次再独立复查。';}}
+  function syncTabs(){document.querySelectorAll('[data-filter]').forEach(b=>b.setAttribute('aria-selected',String(b.dataset.filter===filter)));$('categorySelect').value=category;$('diagnosisSelect').value=diagnosis;renderList();}
   function exportData(format){
     save();let content,type,name;
     if(format==='json'){content=rawRecovery||JSON.stringify(state,null,2);type='application/json';name=`${child}-math-mistakes-${dayKey()}.json`;}
-    else{const s=summary();content=`# ${child==='kenton'?'Kenton':'Eddey'} 数学错题练习记录\n\n导出日期：${dayKey()}\n\n待练 ${s.new} · 待复查 ${s.review} · 跨日通过 ${s.mastered}\n\n`+items.map(q=>`## ${q.title||q.prompt}\n\n${q.prompt}\n\n状态：${getProgress(q.id).label}\n\n`+attemptsFor(q.id).map(a=>`- ${dayKey(a.at)}：${a.answer||'未填写'}；${a.correct?(a.independent?'独立正确':'提示/参考后正确'):'待复查'}\n`).join('')).join('\n');type='text/markdown';name=`${child}-math-mistakes-${dayKey()}.md`;}
+    else{const s=summary();content=`# ${child==='kenton'?'Kenton':'Eddey'} 数学错题练习记录\n\n导出日期：${dayKey()}\n\n待练 ${s.new} · 待复查 ${s.review} · 跨日通过 ${s.mastered}\n\n`+items.map(q=>`## ${q.title||q.prompt}\n\n${q.prompt}\n\n${sourceRows(q).map(([label,value])=>label+'：'+value).join('\n')}\n\n关键检查点：${q.diagnosis?.breakpoint||q.hint||'待核'}\n原因：${q.diagnosis?.reason||''}\n自查：${q.diagnosis?.check||''}\n\n状态：${getProgress(q.id).label}\n\n`+attemptsFor(q.id).map(a=>`- ${dayKey(a.at)}：${a.answer||'未填写'}；${a.correct?(a.independent?'独立正确':'提示/参考后正确'):'待复查'}\n`).join('')).join('\n');type='text/markdown';name=`${child}-math-mistakes-${dayKey()}.md`;}
     const url=URL.createObjectURL(new Blob([content],{type}));const a=document.createElement('a');a.href=url;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
   }
   async function importData(file){try{if(!file||file.size>5000000)throw new Error('请选择小于5MB的练习记录JSON。');const imported=validImport(JSON.parse(await file.text()),child,appId,items.map(q=>q.id),test?'test':'formal');const ids=new Set(state.attempts.map(a=>a.id));for(const a of imported.attempts)if(!ids.has(a.id)){state.attempts.push(a);ids.add(a.id);}state.attempts.sort((a,b)=>Date.parse(a.at)-Date.parse(b.at));state.seconds=Math.max(state.seconds,Number(imported.seconds)||0);save();renderParent();renderList();$('parentMessage').textContent='已合并导入；重复记录已跳过。';}catch(error){$('parentMessage').textContent=error.message||'文件无法读取，原记录没有改动。';}}
@@ -230,19 +302,26 @@
     $('hintButton').onclick=showHint;$('feedbackAction').onclick=()=>openRepair('wrong');$('nextButton').onclick=nextQuestion;$('previousButton').onclick=()=>{const list=filtered(),i=list.findIndex(q=>q.id===current?.id);if(list.length)openQuestion(list[(i-1+list.length)%list.length].id);};
     $('answerInput').oninput=preserveDraft;$('openAnswer').oninput=preserveDraft;
     $('choiceAnswer').onclick=e=>{const b=e.target.closest('[data-choice]');if(!b||checked)return;state.drafts[current.id]={...(state.drafts[current.id]||{}),answer:b.dataset.choice};$('choiceAnswer').querySelectorAll('button').forEach(x=>{x.classList.toggle('selected',x===b);x.setAttribute('aria-pressed',String(x===b));});preserveDraft();};
-    $('catalogButton').onclick=()=>{const open=$('catalog').hidden;$('catalog').hidden=!open;$('catalogButton').setAttribute('aria-expanded',String(open));renderList();};$('closeCatalog').onclick=()=>{$('catalog').hidden=true;$('catalogButton').setAttribute('aria-expanded','false');};
+    $('catalogButton').onclick=()=>{if(!$('routePanel').hidden)toggleRoute(false);const open=$('catalog').hidden;$('catalog').hidden=!open;$('catalogButton').setAttribute('aria-expanded',String(open));renderList();};$('closeCatalog').onclick=()=>{$('catalog').hidden=true;$('catalogButton').setAttribute('aria-expanded','false');};
     $('questionList').onclick=e=>{const b=e.target.closest('[data-question]');if(b)openQuestion(b.dataset.question);};
     document.querySelectorAll('[data-filter]').forEach(b=>b.onclick=()=>{filter=b.dataset.filter;syncTabs();firstQuestion();});
-    $('categorySelect').onchange=e=>{category=e.target.value;renderList();};$('searchInput').oninput=e=>{search=e.target.value.trim();renderList();};
-    $('sourceButton').onclick=()=>{$('sourceDetail').hidden=!$('sourceDetail').hidden;};
+    $('categorySelect').onchange=e=>{category=e.target.value;diagnosis='all';$('diagnosisSelect').value='all';renderList();};$('searchInput').oninput=e=>{search=e.target.value.trim();renderList();};
+    $('sourceButton').onclick=()=>{const open=$('sourceDetail').hidden;$('sourceDetail').hidden=!open;$('sourceButton').setAttribute('aria-expanded',String(open));};
+    $('routeButton').onclick=()=>toggleRoute($('routePanel').hidden);$('closeRoute').onclick=()=>toggleRoute(false);$('routeList').onclick=e=>{const b=e.target.closest('[data-route-category]');if(b)routePractice(b.dataset.routeCategory,b.dataset.routeDiagnosis);};
+    $('diagnosisSelect').onchange=e=>{diagnosis=e.target.value;renderList();};
+    $('diagramZoom').onclick=()=>openDiagram(current.image,$('diagramImage').alt,$('diagramCaption').textContent);
+    for(const id of ['repairFigures','referenceFigures'])$(id).onclick=e=>{const b=e.target.closest('[data-zoom-src]');if(b)openDiagram(b.dataset.zoomSrc,b.dataset.zoomAlt,b.dataset.zoomCaption);const page=e.target.closest('[data-figure-page]');if(page){$(id).querySelectorAll('[data-figure-index]').forEach(f=>f.hidden=f.dataset.figureIndex!==page.dataset.figurePage);$(id).querySelectorAll('[data-figure-page]').forEach(p=>p.setAttribute('aria-pressed',String(p===page)));}};
+    $('modelGraphicTabs').onclick=e=>{const b=e.target.closest('[data-model-display]');if(b){modelDisplay=b.dataset.modelDisplay;renderQuantityModel();}};
+    $('zoomToggle').onclick=()=>{const enlarged=$('diagramDialog').classList.toggle('is-enlarged');$('zoomToggle').textContent=enlarged?'看全图':'放大细节';$('zoomToggle').setAttribute('aria-pressed',String(enlarged));$('zoomHint').textContent=enlarged?'左右滑动，查看图的各处':'当前显示全图';document.querySelector('.zoom-scroll').scrollLeft=0;};
+    $('closeDiagram').onclick=()=>$('diagramDialog').close();$('diagramDialog').onclick=e=>{if(e.target===$('diagramDialog')){const r=e.target.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)e.target.close();}};
     $('quantityControls').onclick=e=>{const b=e.target.closest('[data-model-value]');if(!b||!modelSpec)return;const v=b.dataset.modelValue;if(modelSpec.type==='round')modelValue=Number(v);else modelValue=v==='reset'?modelSpec.value:Math.max(0,Math.min(modelSpec.sign==='-'?modelSpec.b:1e6,modelValue+Number(v)));renderQuantityModel();};
     $('modelNext').onclick=()=>{const n=current.steps?.length||1;step=step<n?step+1:0;renderModel();};$('modelReset').onclick=()=>{step=0;renderModel();};
-    $('recallButton').onclick=()=>{const open=$('recallBox').hidden;$('recallBox').hidden=!open;$('modelStage').hidden=open;$('recallButton').textContent=open?'再看方法':'遮住方法，讲回来';};
+    $('recallButton').onclick=()=>{const open=$('recallBox').hidden;$('recallBox').hidden=!open;$('modelStage').hidden=open;$('repairDiagnosis').hidden=open;$('methodDetails').hidden=open||!$('methodContent').textContent;$('recallButton').textContent=open?'再看方法':'遮住方法，讲回来';scrollPanel('repairPanel');};
     $('returnButton').onclick=()=>{$('modelStage').hidden=false;openQuestion(current.id,true);};$('showReference').onclick=()=>revealReference();$('retryButton').onclick=retry;
     $('continueButton').onclick=()=>{preserveDraft();nextQuestion();};$('transferButton').onclick=transfer;
     $('parentButton').onclick=()=>{$('parentPanel').hidden=!$('parentPanel').hidden;renderParent();if(!$('parentPanel').hidden)$('parentPanel').scrollIntoView({behavior:'smooth',block:'start'});};
     $('closeParent').onclick=()=>{$('parentPanel').hidden=true;};$('exportJSON').onclick=()=>exportData('json');$('exportMD').onclick=()=>exportData('md');$('importButton').onclick=()=>$('importFile').click();$('importFile').onchange=e=>importData(e.target.files[0]);$('syncButton').onclick=finish;
-    $('emptyAll').onclick=()=>{filter='all';category='all';search='';$('searchInput').value='';syncTabs();firstQuestion();};$('retryLoad').onclick=()=>location.reload();
+    $('emptyAll').onclick=()=>{filter='all';category='all';diagnosis='all';search='';$('searchInput').value='';syncTabs();firstQuestion();};$('retryLoad').onclick=()=>location.reload();
     document.addEventListener('visibilitychange',()=>{if(document.hidden)save();else activeStart=Date.now();});root.addEventListener('pagehide',save);
   }
   async function boot(){
@@ -252,6 +331,7 @@
       items=bank.items.filter(q=>q.status!=='needs-source'&&q.status!=='excluded'&&q.prompt&&q.id);if(new Set(items.map(q=>q.id)).size!==items.length)throw new Error('题号出现重复，需要核对后再练。');
       try{rawRecovery=localStorage.getItem(key);const stored=JSON.parse(rawRecovery);if(stored){validImport(stored,child,appId,[...items.map(q=>q.id),...(stored.attempts||[]).map(a=>a.questionId)],test?'test':'formal');state={...state,...stored,drafts:stored.drafts||{},helpDays:stored.helpDays||{},queuedIds:Array.isArray(stored.queuedIds)?stored.queuedIds:[]};}rawRecovery=null;}catch(_){storageLocked=true;$('saveLabel').textContent='旧记录待恢复，当前作答暂存；请导出备份';$('parentMessage').textContent='旧记录未被覆盖。导出备份会保留旧文件原文，可交给家长恢复。';}
       $('categorySelect').innerHTML='<option value="all">全部分类</option>'+[...new Set(items.map(q=>q.category))].map(c=>`<option value="${escape(c)}">${escape(c)}</option>`).join('');
+      $('diagnosisSelect').innerHTML='<option value="all">全部检查点</option>'+[...new Set(items.map(q=>q.diagnosis?.type).filter(Boolean))].map(d=>`<option value="${escape(d)}">${escape(d)}</option>`).join('');
       const dailySurpriseKey=appId+'|'+child+'|'+dayKey();const DAILY_SURPRISES=['先看清数量关系，再动笔计算。','写完回头看：这个答案大致合理吗？','把方法讲清楚，比记住一个答案更有用。','保留正确的步骤，只修需要改变的那一步。'];let hash=0;for(const c of dailySurpriseKey)hash=(hash*31+c.charCodeAt(0))>>>0;$('dailyText').textContent=DAILY_SURPRISES[hash%DAILY_SURPRISES.length];
       $('loadingPanel').hidden=true;$('workArea').hidden=false;renderCounts();renderList();const requested=query.get('q');const id=items.find(q=>q.id===requested)?.id||items.find(q=>q.id===state.currentId)?.id||items.find(q=>isImportant(q)&&['错题','confirmed-error'].includes(q.recordType)&&getProgress(q.id).key==='new')?.id||items[0]?.id;if(id)openQuestion(id);else firstQuestion();
     }catch(error){$('loadingText').textContent=error.message||'题库暂时无法读取。点击重试。';$('retryLoad').hidden=false;}
