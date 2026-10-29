@@ -1,7 +1,7 @@
 {
 "upstream": "https://study-portal-eta.vercel.app/",
 "initialized_from": "a00e05e",
-"last_sync": "2026-10-28",
+"last_sync": "2026-10-29",
 "files": {
 "apps.html": {
 "sha": "6e2adf9d152d2b8939866fc63b0a13fb18ae1e2ac94b3f47ecf97a7702521842",
@@ -10963,6 +10963,11 @@
 "etag": "\"fc6b2b21a5044e99f650d10dd6903544\"",
 "upstream": true
 },
+"apps/eddey_cpp_strings_20261029.html": {
+"sha": "57d6e7a7de02c89922e7283d7a6d339d6aacc2ffb2a9f50f16970c3e6a6bf476",
+"etag": "\"2aa8f6166bd87c4a531a13f23c66ae89\"",
+"upstream": true
+},
 "apps/eddey_english.html": {
 "sha": "397d91331e8ed3e0aea9b7787a738bb708eb24fabc5dc39dfdeb97412fcaa27f",
 "etag": "\"f0d81bfef55789056621303b9fe03aaa\"",
@@ -11021,6 +11026,11 @@
 "apps/eddey_english_u4_review_20261019.html": {
 "sha": "5c17c60ca8a1f13c15ef09b71547966e6858cd5f37d245084b2abb738dc5e97e",
 "etag": "\"273aa97c9e48b25efc4b00d4fdd678fb\"",
+"upstream": true
+},
+"apps/eddey_english_u5_review_20261029.html": {
+"sha": "5a6aa6ea3c9658cbbf8257a60d829363a6ac739544295cd2a92af32d30c7f9cf",
+"etag": "\"bfde580b95b9916c12175acabf213196\"",
 "upstream": true
 },
 "apps/eddey_english_unit2_20260917.html": {
@@ -11689,8 +11699,8 @@
 "upstream": true
 },
 "assets/math-mistake-bank.js": {
-"sha": "35f077a675dd80a1b225165b00ced10642fa07d1e19f737cbe4d6d54abc43732",
-"etag": "\"a2551c6ea98d5426e6efa873164583ee\"",
+"sha": "d619d548323831348cc58e88e3082842639c6a13d0229076e767fa40e9a48c7f",
+"etag": "\"99bdd565b9be0918d0cdcd541c377839\"",
 "upstream": true
 },
 "assets/math-mistakes/eddey-upgrade-all-factors.svg": {
@@ -12249,8 +12259,8 @@
 "upstream": true
 },
 "assets/portal-snapshot.js": {
-"sha": "8fc84f2935055e2696537b4bfa413a48f6c4252cb90caefaf9a28b238707e0de",
-"etag": "\"7f73161f524fba4f665f119f0e0c651e\"",
+"sha": "13aadcc002aae5c7178e0502c1c1e758b7406ffa5152af4c8a21bda193dcbea8",
+"etag": "\"8509803824914fe1e4072daddf193210\"",
 "upstream": true
 },
 "assets/portal-support.css": {
@@ -12354,8 +12364,8 @@
 "upstream": true
 },
 "data/apps.json": {
-"sha": "a891b301f9045a922a2af327e19db8ef6afd432b63832ca2a315a37449c585b4",
-"etag": "\"d87c055e744d58ad55eb6cca8c74d705\"",
+"sha": "08f25924d39ad1aa95eeb7bd4d138ec0020f9cf34d100533cfd72f951698f42c",
+"etag": "\"6dd5a00e416a644529c15ccf2ca26e92\"",
 "upstream": true
 },
 "data/exam-prep/calendar.json": {
@@ -12404,8 +12414,8 @@
 "upstream": true
 },
 "data/learning/eddey_math_mistakes_20261024.json": {
-"sha": "73d1ee545ba3303f3f6c89485d88fc2aa39d98a6663df5aa0000e835a269350e",
-"etag": "\"aeda68acac76a690fd0253646a5c306e\"",
+"sha": "3f0a9aa839a7fb89cc1a1fe1005f8da3df452c654c58a869bd3e3986a8aedc1b",
+"etag": "\"36e7640c9ea754aa92cf4c251766ae7d\"",
 "upstream": true
 },
 "data/learning/kenton_math_mistakes_20261024.json": {
@@ -12610,5 +12620,5 @@
 }
 },
 "last_audio_backfill": "2026-10-22",
-"last_audio_check": "2026-10-22"
+"last_audio_check": "2026-10-29"
 }

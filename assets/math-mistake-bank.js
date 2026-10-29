@@ -41,6 +41,18 @@
       const correct=parts.length<=2&&sequence(left)===sequence(base)&&!!(result&&expected&&result.n*expected.d===expected.n*result.d)&&(parts.length===1||!!(rhs&&result&&rhs.n*result.d===result.n*rhs.d));
       return {correct};
     }
+    if(q.answerFormat==='expression-result'){
+      // Opt-in result questions may include working. Verify every equality
+      // segment; never accept a false calculation just because its RHS matches.
+      const raw=text(value).normalize('NFKC').replace(/\s+/g,'');
+      if(raw.length>1000||!/^[\d.+*/=()\[\]{}×✕÷−-]+$/.test(raw))return {correct:false};
+      const closing={'(':')','[':']','{':'}'},stack=[];
+      for(const symbol of raw){if(closing[symbol])stack.push(closing[symbol]);else if(')]}'.includes(symbol)&&stack.pop()!==symbol)return {correct:false};}
+      if(stack.length)return {correct:false};
+      const values=input.split('=').map(part=>rational(part)||evaluateExpression(part));
+      const correct=answers.some(answer=>{const expected=rational(answer);return expected&&values.every(value=>value&&value.n*expected.d===expected.n*value.d);});
+      return {correct};
+    }
     const synonyms={'正确':'对','是':'对','√':'对','true':'对','错误':'错','否':'错','×':'错','false':'错','*':'错'};
     let correct=answers.some(a=>{const target=normalized(a);return input===target||(q.kind==='text'&&/[+*/()\[\]-]/.test(target)&&expressionEqual(input,target))||(synonyms[input]&&synonyms[input]===(synonyms[target]||target));});
     if(q.kind==='text'&&answers.some(a=>normalized(a).includes(','))&&input.includes(',')){
@@ -214,7 +226,7 @@
     $('questionText').textContent=q.prompt;const safeImage=safeAsset(q.image);$('questionDiagram').hidden=!safeImage;if(safeImage){$('diagramImage').src=safeImage;$('diagramImage').alt=q.diagramAlt||q.visual?.alt||'题目条件图';$('diagramCaption').textContent=q.diagramCaption||(q.visual?.kind==='question'?q.visual.caption:'')||'题目条件图';}$('questionText').classList.toggle('formula',q.prompt.length<40&&!/[一-龥]{8}/.test(q.prompt));
     $('answerInput').value=draft.answer||'';$('openAnswer').value=draft.answer||'';$('answerInput').disabled=false;$('openAnswer').disabled=false;
     const isOpen=['manual','open'].includes(q.kind)||['过程复查','process-gap'].includes(q.recordType);$('numberAnswer').hidden=isOpen||q.kind==='choice';$('openAnswerGroup').hidden=!isOpen;$('choiceAnswer').hidden=q.kind!=='choice';
-    $('answerInput').inputMode=(q.kind==='number'&&!(q.answers||[]).some(a=>/[^\d.+-]/.test(a)))?'decimal':'text';$('answerInput').placeholder=q.placeholder||'在这里写答案';$('answerUnit').textContent=q.unit||'';
+    $('answerInput').inputMode=(q.kind==='number'&&q.answerFormat!=='expression-result'&&!(q.answers||[]).some(a=>/[^\d.+-]/.test(a)))?'decimal':'text';$('answerInput').placeholder=q.placeholder||'在这里写答案';$('answerUnit').textContent=q.unit||'';
     $('choiceAnswer').innerHTML=q.kind==='choice'?(q.options||[]).map(o=>{const value=typeof o==='object'?o.value:o,label=typeof o==='object'?o.label:o;return `<button class="option${draft.answer===value?' selected':''}" type="button" data-choice="${escape(value)}" aria-pressed="${draft.answer===value}">${escape(label)}</button>`;}).join(''):'';
     $('checkButton').disabled=false;$('checkButton').innerHTML='检查答案 '+iconArrow;$('hintButton').disabled=false;$('hintButton').textContent='给我一点提示';$('hintButton').onclick=showHint;$('nextButton').textContent='下一题';
     renderSource(q);renderTransfer(q);

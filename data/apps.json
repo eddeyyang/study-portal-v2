@@ -1,5 +1,53 @@
 [
   {
+    "child": "eddey",
+    "subject": "英语",
+    "title": "弟弟 · U5水城旅行册",
+    "file": "apps/eddey_english_u5_review_20261029.html",
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "navigation": {
+      "state": "active",
+      "kind": "lesson",
+      "period": "2026-autumn",
+      "group": "units",
+      "displayTitle": "弟弟 · U5水城旅行册",
+      "summary": "35分钟复习：14项核心词、短语、关键句、There be问答、遮挡背默与阅读表达。"
+    }
+  },
+  {
+    "child": "eddey",
+    "subject": "英语",
+    "title": "弟弟 · U5读写背",
+    "file": "apps/eddey_english_u5_review_20261029.html?section=memory",
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "navigation": {
+      "state": "active",
+      "kind": "tool",
+      "period": "2026-autumn",
+      "group": "words",
+      "displayTitle": "弟弟 · U5读写背",
+      "summary": "全单元背默清单可打印，11组关键句遮挡背诵、14项核心词逐词默写。"
+    }
+  },
+  {
+    "child": "eddey",
+    "subject": "编程",
+    "title": "字符工坊 · C++字符串",
+    "file": "apps/eddey_cpp_strings_20261029.html",
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "navigation": {
+      "state": "active",
+      "kind": "lesson",
+      "period": "2026-autumn",
+      "group": "practice",
+      "displayTitle": "字符工坊 · C++字符串",
+      "summary": "逐格看编码、输入、替换与回文；保留原题补全和独立编程。"
+    }
+  },
+  {
     "child": "kenton",
     "subject": "数学",
     "title": "哥哥 · 数学错题本",

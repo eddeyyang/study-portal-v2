@@ -1620,6 +1620,8 @@
       "priority": "normal",
       "prompt": "先求164÷4和20×5，再把两个结果相加。列成综合算式并填写结果。",
       "kind": "number",
+      "answerFormat": "expression-result",
+      "placeholder": "可写完整算式，也可只写结果",
       "answers": [
         "141"
       ],
