@@ -1,15 +1,7 @@
 {
- "updated": [
-  "assets/math-mistake-bank.js",
-  "assets/portal-snapshot.js",
-  "data/apps.json",
-  "data/learning/eddey_math_mistakes_20261024.json"
- ],
+ "updated": [],
  "merged": [],
- "added": [
-  "apps/eddey_cpp_strings_20261029.html",
-  "apps/eddey_english_u5_review_20261029.html"
- ],
+ "added": [],
  "conflicts": [],
  "removed_upstream": [],
  "errors": [],
@@ -18,14 +10,14 @@
  "audio_added": [],
  "hash_apps_without_audio": [],
  "customized_without_base": [],
- "unchanged": 2517,
+ "unchanged": 406,
  "not_on_upstream": 0,
- "discovery_fetches": 421,
+ "discovery_fetches": 0,
  "audio_probes": 0,
- "audio_files_checked": true,
+ "audio_files_checked": false,
  "audio_backfill_round": false,
- "skipped_audio_files": 0,
- "content_changed": true,
- "checked_at": "2026-10-29",
+ "skipped_audio_files": 2117,
+ "content_changed": false,
+ "checked_at": "2026-10-30",
  "dry_run": false
 }
