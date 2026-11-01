@@ -69,6 +69,13 @@
         "kind": "teaching",
         "required": true,
         "reason": "数量关系需用对应示意辅助理解。"
+      },
+      "answerFormat": "expression-result",
+      "reviewEvidence": {
+        "state": "mastered",
+        "latestAt": "2026-10-29T12:39:02.633Z",
+        "wrongCount": 0,
+        "unaidedWrongCount": 0
       }
     },
     {
@@ -136,6 +143,13 @@
         "kind": "teaching",
         "required": true,
         "reason": "数量关系需用对应示意辅助理解。"
+      },
+      "answerFormat": "expression-result",
+      "reviewEvidence": {
+        "state": "mastered",
+        "latestAt": "2026-10-29T12:39:38.132Z",
+        "wrongCount": 0,
+        "unaidedWrongCount": 0
       }
     },
     {
@@ -204,6 +218,13 @@
         "kind": "teaching",
         "required": true,
         "reason": "数量关系需用对应示意辅助理解。"
+      },
+      "answerFormat": "expression-result",
+      "reviewEvidence": {
+        "state": "mastered",
+        "latestAt": "2026-10-29T12:40:24.517Z",
+        "wrongCount": 0,
+        "unaidedWrongCount": 0
       }
     },
     {
@@ -265,6 +286,13 @@
         "kind": "not-needed",
         "required": false,
         "reason": "本题可由算式与逐步解释完整表达；无需装饰性配图。"
+      },
+      "answerFormat": "expression-result",
+      "reviewEvidence": {
+        "state": "once",
+        "latestAt": "2026-10-29T12:40:59.175Z",
+        "wrongCount": 0,
+        "unaidedWrongCount": 0
       }
     },
     {
@@ -332,6 +360,12 @@
         "kind": "teaching",
         "required": true,
         "reason": "数量关系需用对应示意辅助理解。"
+      },
+      "reviewEvidence": {
+        "state": "review",
+        "latestAt": "2026-10-26T11:36:59.743Z",
+        "wrongCount": 3,
+        "unaidedWrongCount": 2
       }
     },
     {
@@ -396,6 +430,12 @@
         "kind": "not-needed",
         "required": false,
         "reason": "本题可由算式与逐步解释完整表达；无需装饰性配图。"
+      },
+      "reviewEvidence": {
+        "state": "mastered",
+        "latestAt": "2026-10-29T13:01:22.257Z",
+        "wrongCount": 0,
+        "unaidedWrongCount": 0
       }
     },
     {
@@ -460,6 +500,12 @@
         "kind": "not-needed",
         "required": false,
         "reason": "本题可由算式与逐步解释完整表达；无需装饰性配图。"
+      },
+      "reviewEvidence": {
+        "state": "mastered",
+        "latestAt": "2026-10-29T13:01:28.685Z",
+        "wrongCount": 0,
+        "unaidedWrongCount": 0
       }
     },
     {
@@ -522,6 +568,12 @@
         "kind": "not-needed",
         "required": false,
         "reason": "本题可由算式与逐步解释完整表达；无需装饰性配图。"
+      },
+      "reviewEvidence": {
+        "state": "mastered",
+        "latestAt": "2026-10-29T13:01:33.201Z",
+        "wrongCount": 0,
+        "unaidedWrongCount": 0
       }
     },
     {
@@ -588,6 +640,12 @@
         "kind": "teaching",
         "required": true,
         "reason": "数量关系需用对应示意辅助理解。"
+      },
+      "reviewEvidence": {
+        "state": "review",
+        "latestAt": "2026-10-26T11:41:37.288Z",
+        "wrongCount": 0,
+        "unaidedWrongCount": 0
       }
     },
     {
@@ -659,7 +717,13 @@
         }
       ],
       "diagramAlt": "12个边长1.2厘米的正方形，可重新拼成长方形",
-      "diagramCaption": "按题目条件绘制的示意图（非原卷截图）"
+      "diagramCaption": "按题目条件绘制的示意图（非原卷截图）",
+      "reviewEvidence": {
+        "state": "review",
+        "latestAt": "2026-10-26T11:42:12.755Z",
+        "wrongCount": 2,
+        "unaidedWrongCount": 0
+      }
     },
     {
       "id": "K-M-619",
@@ -726,6 +790,12 @@
         "kind": "teaching",
         "required": true,
         "reason": "数量关系需用对应示意辅助理解。"
+      },
+      "reviewEvidence": {
+        "state": "review",
+        "latestAt": "2026-10-26T11:43:23.637Z",
+        "wrongCount": 0,
+        "unaidedWrongCount": 0
       }
     },
     {
@@ -785,6 +855,13 @@
         "kind": "not-needed",
         "required": false,
         "reason": "本题可由算式与逐步解释完整表达；无需装饰性配图。"
+      },
+      "answerFormat": "expression-result",
+      "reviewEvidence": {
+        "state": "mastered",
+        "latestAt": "2026-10-29T12:41:08.948Z",
+        "wrongCount": 0,
+        "unaidedWrongCount": 0
       }
     },
     {
@@ -845,6 +922,13 @@
         "kind": "not-needed",
         "required": false,
         "reason": "本题可由算式与逐步解释完整表达；无需装饰性配图。"
+      },
+      "answerFormat": "expression-result",
+      "reviewEvidence": {
+        "state": "mastered",
+        "latestAt": "2026-10-29T12:41:20.983Z",
+        "wrongCount": 0,
+        "unaidedWrongCount": 0
       }
     },
     {
@@ -906,6 +990,13 @@
         "kind": "not-needed",
         "required": false,
         "reason": "本题可由算式与逐步解释完整表达；无需装饰性配图。"
+      },
+      "answerFormat": "expression-result",
+      "reviewEvidence": {
+        "state": "mastered",
+        "latestAt": "2026-10-29T12:41:31.808Z",
+        "wrongCount": 0,
+        "unaidedWrongCount": 0
       }
     },
     {
@@ -966,6 +1057,13 @@
         "kind": "not-needed",
         "required": false,
         "reason": "本题可由算式与逐步解释完整表达；无需装饰性配图。"
+      },
+      "answerFormat": "expression-result",
+      "reviewEvidence": {
+        "state": "mastered",
+        "latestAt": "2026-10-29T12:41:45.733Z",
+        "wrongCount": 0,
+        "unaidedWrongCount": 0
       }
     },
     {
@@ -1025,6 +1123,13 @@
         "kind": "not-needed",
         "required": false,
         "reason": "本题可由算式与逐步解释完整表达；无需装饰性配图。"
+      },
+      "answerFormat": "expression-result",
+      "reviewEvidence": {
+        "state": "mastered",
+        "latestAt": "2026-10-28T12:08:39.376Z",
+        "wrongCount": 0,
+        "unaidedWrongCount": 0
       }
     },
     {
@@ -1084,6 +1189,12 @@
         "kind": "not-needed",
         "required": false,
         "reason": "本题可由算式与逐步解释完整表达；无需装饰性配图。"
+      },
+      "reviewEvidence": {
+        "state": "review",
+        "latestAt": "2026-10-28T12:26:40.531Z",
+        "wrongCount": 3,
+        "unaidedWrongCount": 2
       }
     },
     {
@@ -1143,6 +1254,12 @@
         "kind": "not-needed",
         "required": false,
         "reason": "本题可由算式与逐步解释完整表达；无需装饰性配图。"
+      },
+      "reviewEvidence": {
+        "state": "mastered",
+        "latestAt": "2026-10-29T12:42:33.245Z",
+        "wrongCount": 0,
+        "unaidedWrongCount": 0
       }
     },
     {
@@ -1202,6 +1319,12 @@
         "kind": "not-needed",
         "required": false,
         "reason": "本题可由算式与逐步解释完整表达；无需装饰性配图。"
+      },
+      "reviewEvidence": {
+        "state": "review",
+        "latestAt": "2026-10-26T11:54:18.644Z",
+        "wrongCount": 2,
+        "unaidedWrongCount": 1
       }
     },
     {
@@ -1262,6 +1385,12 @@
         "kind": "not-needed",
         "required": false,
         "reason": "本题可由算式与逐步解释完整表达；无需装饰性配图。"
+      },
+      "reviewEvidence": {
+        "state": "review",
+        "latestAt": "2026-10-28T08:16:18.546Z",
+        "wrongCount": 1,
+        "unaidedWrongCount": 1
       }
     },
     {
@@ -1323,6 +1452,12 @@
         "kind": "not-needed",
         "required": false,
         "reason": "本题可由算式与逐步解释完整表达；无需装饰性配图。"
+      },
+      "reviewEvidence": {
+        "state": "manual",
+        "latestAt": "2026-10-28T12:18:27.747Z",
+        "wrongCount": 0,
+        "unaidedWrongCount": 0
       }
     },
     {
@@ -1384,6 +1519,12 @@
         "kind": "not-needed",
         "required": false,
         "reason": "本题可由算式与逐步解释完整表达；无需装饰性配图。"
+      },
+      "reviewEvidence": {
+        "state": "manual",
+        "latestAt": "2026-10-28T08:21:04.114Z",
+        "wrongCount": 0,
+        "unaidedWrongCount": 0
       }
     },
     {
@@ -1444,6 +1585,13 @@
         "kind": "not-needed",
         "required": false,
         "reason": "本题可由算式与逐步解释完整表达；无需装饰性配图。"
+      },
+      "answerFormat": "expression-result",
+      "reviewEvidence": {
+        "state": "review",
+        "latestAt": "2026-10-28T08:22:02.200Z",
+        "wrongCount": 2,
+        "unaidedWrongCount": 2
       }
     },
     {
@@ -1561,6 +1709,12 @@
         "kind": "not-needed",
         "required": false,
         "reason": "本题可由算式与逐步解释完整表达；无需装饰性配图。"
+      },
+      "reviewEvidence": {
+        "state": "review",
+        "latestAt": "2026-10-28T08:22:18.937Z",
+        "wrongCount": 0,
+        "unaidedWrongCount": 0
       }
     },
     {
@@ -1620,6 +1774,12 @@
         "kind": "not-needed",
         "required": false,
         "reason": "本题可由算式与逐步解释完整表达；无需装饰性配图。"
+      },
+      "reviewEvidence": {
+        "state": "review",
+        "latestAt": "2026-10-28T08:23:05.894Z",
+        "wrongCount": 0,
+        "unaidedWrongCount": 0
       }
     },
     {
@@ -1680,6 +1840,12 @@
         "kind": "not-needed",
         "required": false,
         "reason": "本题可由算式与逐步解释完整表达；无需装饰性配图。"
+      },
+      "reviewEvidence": {
+        "state": "mastered",
+        "latestAt": "2026-10-28T08:23:58.446Z",
+        "wrongCount": 0,
+        "unaidedWrongCount": 0
       }
     },
     {
@@ -1739,6 +1905,12 @@
         "kind": "not-needed",
         "required": false,
         "reason": "本题可由算式与逐步解释完整表达；无需装饰性配图。"
+      },
+      "reviewEvidence": {
+        "state": "mastered",
+        "latestAt": "2026-10-28T08:24:36.694Z",
+        "wrongCount": 0,
+        "unaidedWrongCount": 0
       }
     },
     {
@@ -1802,6 +1974,12 @@
         "kind": "not-needed",
         "required": false,
         "reason": "本题可由算式与逐步解释完整表达；无需装饰性配图。"
+      },
+      "reviewEvidence": {
+        "state": "review",
+        "latestAt": "2026-10-29T13:01:46.219Z",
+        "wrongCount": 4,
+        "unaidedWrongCount": 3
       }
     },
     {
@@ -1867,6 +2045,12 @@
         "kind": "not-needed",
         "required": false,
         "reason": "本题可由算式与逐步解释完整表达；无需装饰性配图。"
+      },
+      "reviewEvidence": {
+        "state": "review",
+        "latestAt": "2026-10-29T13:02:32.913Z",
+        "wrongCount": 0,
+        "unaidedWrongCount": 0
       }
     },
     {
@@ -1928,6 +2112,13 @@
         "kind": "not-needed",
         "required": false,
         "reason": "本题可由算式与逐步解释完整表达；无需装饰性配图。"
+      },
+      "answerFormat": "expression-result",
+      "reviewEvidence": {
+        "state": "review",
+        "latestAt": "2026-10-28T08:29:11.291Z",
+        "wrongCount": 1,
+        "unaidedWrongCount": 0
       }
     },
     {
@@ -1994,6 +2185,12 @@
         "kind": "teaching",
         "required": true,
         "reason": "数量关系需用对应示意辅助理解。"
+      },
+      "reviewEvidence": {
+        "state": "review",
+        "latestAt": "2026-10-28T08:30:27.107Z",
+        "wrongCount": 0,
+        "unaidedWrongCount": 0
       }
     },
     {
@@ -2055,6 +2252,12 @@
         "kind": "not-needed",
         "required": false,
         "reason": "本题可由算式与逐步解释完整表达；无需装饰性配图。"
+      },
+      "reviewEvidence": {
+        "state": "review",
+        "latestAt": "2026-10-28T08:32:10.938Z",
+        "wrongCount": 1,
+        "unaidedWrongCount": 1
       }
     },
     {
@@ -2115,6 +2318,12 @@
         "kind": "not-needed",
         "required": false,
         "reason": "本题可由算式与逐步解释完整表达；无需装饰性配图。"
+      },
+      "reviewEvidence": {
+        "state": "review",
+        "latestAt": "2026-10-28T08:32:46.222Z",
+        "wrongCount": 2,
+        "unaidedWrongCount": 1
       }
     },
     {
@@ -2173,6 +2382,13 @@
         "kind": "not-needed",
         "required": false,
         "reason": "本题可由算式与逐步解释完整表达；无需装饰性配图。"
+      },
+      "answerFormat": "expression-result",
+      "reviewEvidence": {
+        "state": "review",
+        "latestAt": "2026-10-29T13:04:05.913Z",
+        "wrongCount": 2,
+        "unaidedWrongCount": 1
       }
     },
     {
@@ -2240,6 +2456,13 @@
         "kind": "teaching",
         "required": true,
         "reason": "数量关系需用对应示意辅助理解。"
+      },
+      "answerFormat": "expression-result",
+      "reviewEvidence": {
+        "state": "mastered",
+        "latestAt": "2026-10-28T08:38:02.377Z",
+        "wrongCount": 0,
+        "unaidedWrongCount": 0
       }
     },
     {
@@ -2307,6 +2530,12 @@
         "kind": "teaching",
         "required": true,
         "reason": "数量关系需用对应示意辅助理解。"
+      },
+      "reviewEvidence": {
+        "state": "once",
+        "latestAt": "2026-10-28T08:39:21.635Z",
+        "wrongCount": 0,
+        "unaidedWrongCount": 0
       }
     },
     {
@@ -2373,7 +2602,13 @@
         "reason": "几何、位置或份数关系需要同题图示。"
       },
       "diagramAlt": "绳长就是外圈周长；长方形改围正方形（形状示意）",
-      "diagramCaption": "按题目条件绘制的示意图（非原卷截图）"
+      "diagramCaption": "按题目条件绘制的示意图（非原卷截图）",
+      "reviewEvidence": {
+        "state": "review",
+        "latestAt": "2026-10-28T08:41:17.964Z",
+        "wrongCount": 1,
+        "unaidedWrongCount": 1
+      }
     },
     {
       "id": "K-M-920",
@@ -2431,6 +2666,12 @@
         "kind": "not-needed",
         "required": false,
         "reason": "本题可由算式与逐步解释完整表达；无需装饰性配图。"
+      },
+      "reviewEvidence": {
+        "state": "review",
+        "latestAt": "2026-10-29T13:05:32.915Z",
+        "wrongCount": 1,
+        "unaidedWrongCount": 1
       }
     },
     {
@@ -2501,6 +2742,12 @@
         "kind": "teaching",
         "required": true,
         "reason": "数量关系需用对应示意辅助理解。"
+      },
+      "reviewEvidence": {
+        "state": "review",
+        "latestAt": "2026-10-28T08:46:02.483Z",
+        "wrongCount": 1,
+        "unaidedWrongCount": 0
       }
     },
     {
@@ -2568,7 +2815,13 @@
         "reason": "题干依赖方格、统计图或竖式布局。"
       },
       "diagramAlt": "根据竖式限制找除数",
-      "diagramCaption": "按已核原题重绘，保留决定答案的结构"
+      "diagramCaption": "按已核原题重绘，保留决定答案的结构",
+      "reviewEvidence": {
+        "state": "review",
+        "latestAt": "2026-10-28T11:56:30.777Z",
+        "wrongCount": 0,
+        "unaidedWrongCount": 0
+      }
     },
     {
       "id": "K-M-923",
@@ -3232,6 +3485,12 @@
         "kind": "not-needed",
         "required": false,
         "reason": "本题可由算式与逐步解释完整表达；无需装饰性配图。"
+      },
+      "reviewEvidence": {
+        "state": "review",
+        "latestAt": "2026-10-29T13:08:38.795Z",
+        "wrongCount": 1,
+        "unaidedWrongCount": 1
       }
     },
     {
@@ -3296,6 +3555,12 @@
         "kind": "not-needed",
         "required": false,
         "reason": "本题可由算式与逐步解释完整表达；无需装饰性配图。"
+      },
+      "reviewEvidence": {
+        "state": "once",
+        "latestAt": "2026-10-29T13:14:03.821Z",
+        "wrongCount": 0,
+        "unaidedWrongCount": 0
       }
     },
     {
@@ -3356,6 +3621,12 @@
         "kind": "not-needed",
         "required": false,
         "reason": "本题可由算式与逐步解释完整表达；无需装饰性配图。"
+      },
+      "reviewEvidence": {
+        "state": "once",
+        "latestAt": "2026-10-29T12:43:06.988Z",
+        "wrongCount": 0,
+        "unaidedWrongCount": 0
       }
     },
     {
@@ -3416,6 +3687,13 @@
         "kind": "not-needed",
         "required": false,
         "reason": "本题可由算式与逐步解释完整表达；无需装饰性配图。"
+      },
+      "answerFormat": "expression-result",
+      "reviewEvidence": {
+        "state": "once",
+        "latestAt": "2026-10-29T12:44:09.482Z",
+        "wrongCount": 0,
+        "unaidedWrongCount": 0
       }
     },
     {
@@ -3476,6 +3754,13 @@
         "kind": "not-needed",
         "required": false,
         "reason": "本题可由算式与逐步解释完整表达；无需装饰性配图。"
+      },
+      "answerFormat": "expression-result",
+      "reviewEvidence": {
+        "state": "review",
+        "latestAt": "2026-10-29T12:44:54.650Z",
+        "wrongCount": 1,
+        "unaidedWrongCount": 1
       }
     },
     {
@@ -3536,6 +3821,12 @@
         "kind": "not-needed",
         "required": false,
         "reason": "本题可由算式与逐步解释完整表达；无需装饰性配图。"
+      },
+      "reviewEvidence": {
+        "state": "once",
+        "latestAt": "2026-10-29T12:46:04.723Z",
+        "wrongCount": 0,
+        "unaidedWrongCount": 0
       }
     },
     {
@@ -3719,6 +4010,12 @@
         "kind": "not-needed",
         "required": false,
         "reason": "本题可由算式与逐步解释完整表达；无需装饰性配图。"
+      },
+      "reviewEvidence": {
+        "state": "once",
+        "latestAt": "2026-10-29T13:14:26.334Z",
+        "wrongCount": 0,
+        "unaidedWrongCount": 0
       }
     },
     {
@@ -3779,6 +4076,12 @@
         "kind": "not-needed",
         "required": false,
         "reason": "本题可由算式与逐步解释完整表达；无需装饰性配图。"
+      },
+      "reviewEvidence": {
+        "state": "once",
+        "latestAt": "2026-10-29T13:15:01.169Z",
+        "wrongCount": 0,
+        "unaidedWrongCount": 0
       }
     },
     {
@@ -3984,6 +4287,12 @@
         "kind": "teaching",
         "required": true,
         "reason": "数量关系需用对应示意辅助理解。"
+      },
+      "reviewEvidence": {
+        "state": "once",
+        "latestAt": "2026-10-29T12:46:43.332Z",
+        "wrongCount": 0,
+        "unaidedWrongCount": 0
       }
     },
     {
@@ -4108,6 +4417,13 @@
         "kind": "not-needed",
         "required": false,
         "reason": "本题可由算式与逐步解释完整表达；无需装饰性配图。"
+      },
+      "answerFormat": "expression-result",
+      "reviewEvidence": {
+        "state": "once",
+        "latestAt": "2026-10-29T12:47:32.464Z",
+        "wrongCount": 0,
+        "unaidedWrongCount": 0
       }
     },
     {
@@ -4229,6 +4545,13 @@
         "kind": "not-needed",
         "required": false,
         "reason": "本题可由算式与逐步解释完整表达；无需装饰性配图。"
+      },
+      "answerFormat": "expression-result",
+      "reviewEvidence": {
+        "state": "once",
+        "latestAt": "2026-10-29T12:49:43.771Z",
+        "wrongCount": 0,
+        "unaidedWrongCount": 0
       }
     },
     {
@@ -4287,7 +4610,8 @@
         "kind": "not-needed",
         "required": false,
         "reason": "本题可由算式与逐步解释完整表达；无需装饰性配图。"
-      }
+      },
+      "answerFormat": "expression-result"
     },
     {
       "id": "K-M-1056-p9-division",
@@ -4348,6 +4672,13 @@
         "kind": "not-needed",
         "required": false,
         "reason": "本题可由算式与逐步解释完整表达；无需装饰性配图。"
+      },
+      "answerFormat": "expression-result",
+      "reviewEvidence": {
+        "state": "mastered",
+        "latestAt": "2026-10-28T12:03:40.940Z",
+        "wrongCount": 0,
+        "unaidedWrongCount": 0
       }
     },
     {
@@ -4597,6 +4928,12 @@
         "kind": "not-needed",
         "required": false,
         "reason": "本题可由算式与逐步解释完整表达；无需装饰性配图。"
+      },
+      "reviewEvidence": {
+        "state": "once",
+        "latestAt": "2026-10-29T13:15:18.245Z",
+        "wrongCount": 0,
+        "unaidedWrongCount": 0
       }
     },
     {
@@ -4660,6 +4997,12 @@
         "kind": "not-needed",
         "required": false,
         "reason": "本题可由算式与逐步解释完整表达；无需装饰性配图。"
+      },
+      "reviewEvidence": {
+        "state": "once",
+        "latestAt": "2026-10-29T13:15:35.326Z",
+        "wrongCount": 0,
+        "unaidedWrongCount": 0
       }
     },
     {
@@ -5034,6 +5377,12 @@
         "kind": "not-needed",
         "required": false,
         "reason": "本题可由算式与逐步解释完整表达；无需装饰性配图。"
+      },
+      "reviewEvidence": {
+        "state": "review",
+        "latestAt": "2026-10-29T13:16:45.664Z",
+        "wrongCount": 0,
+        "unaidedWrongCount": 0
       }
     },
     {
@@ -5299,6 +5648,13 @@
         "kind": "not-needed",
         "required": false,
         "reason": "本题可由算式与逐步解释完整表达；无需装饰性配图。"
+      },
+      "answerFormat": "expression-result",
+      "reviewEvidence": {
+        "state": "review",
+        "latestAt": "2026-10-29T13:17:08.140Z",
+        "wrongCount": 0,
+        "unaidedWrongCount": 0
       }
     },
     {
@@ -5437,6 +5793,12 @@
         "kind": "not-needed",
         "required": false,
         "reason": "本题可由算式与逐步解释完整表达；无需装饰性配图。"
+      },
+      "reviewEvidence": {
+        "state": "once",
+        "latestAt": "2026-10-29T13:18:44.208Z",
+        "wrongCount": 0,
+        "unaidedWrongCount": 0
       }
     },
     {
@@ -5499,6 +5861,12 @@
         "kind": "not-needed",
         "required": false,
         "reason": "本题可由算式与逐步解释完整表达；无需装饰性配图。"
+      },
+      "reviewEvidence": {
+        "state": "once",
+        "latestAt": "2026-10-29T13:18:52.511Z",
+        "wrongCount": 0,
+        "unaidedWrongCount": 0
       }
     },
     {
@@ -5559,6 +5927,13 @@
         "kind": "not-needed",
         "required": false,
         "reason": "本题可由算式与逐步解释完整表达；无需装饰性配图。"
+      },
+      "answerFormat": "expression-result",
+      "reviewEvidence": {
+        "state": "once",
+        "latestAt": "2026-10-29T12:55:25.819Z",
+        "wrongCount": 0,
+        "unaidedWrongCount": 0
       }
     },
     {
@@ -5687,6 +6062,13 @@
         "kind": "not-needed",
         "required": false,
         "reason": "本题可由算式与逐步解释完整表达；无需装饰性配图。"
+      },
+      "answerFormat": "expression-result",
+      "reviewEvidence": {
+        "state": "once",
+        "latestAt": "2026-10-29T12:55:47.364Z",
+        "wrongCount": 0,
+        "unaidedWrongCount": 0
       }
     },
     {
@@ -5747,6 +6129,13 @@
         "kind": "not-needed",
         "required": false,
         "reason": "本题可由算式与逐步解释完整表达；无需装饰性配图。"
+      },
+      "answerFormat": "expression-result",
+      "reviewEvidence": {
+        "state": "once",
+        "latestAt": "2026-10-29T12:56:13.116Z",
+        "wrongCount": 0,
+        "unaidedWrongCount": 0
       }
     },
     {
@@ -5808,6 +6197,13 @@
         "kind": "not-needed",
         "required": false,
         "reason": "本题可由算式与逐步解释完整表达；无需装饰性配图。"
+      },
+      "answerFormat": "expression-result",
+      "reviewEvidence": {
+        "state": "review",
+        "latestAt": "2026-10-29T12:58:33.019Z",
+        "wrongCount": 2,
+        "unaidedWrongCount": 1
       }
     },
     {
@@ -6058,6 +6454,12 @@
         "kind": "teaching",
         "required": true,
         "reason": "数量关系需用对应示意辅助理解。"
+      },
+      "reviewEvidence": {
+        "state": "manual",
+        "latestAt": "2026-10-28T12:05:08.372Z",
+        "wrongCount": 0,
+        "unaidedWrongCount": 0
       }
     },
     {
@@ -6124,6 +6526,12 @@
         "kind": "teaching",
         "required": true,
         "reason": "数量关系需用对应示意辅助理解。"
+      },
+      "reviewEvidence": {
+        "state": "manual",
+        "latestAt": "2026-10-28T12:05:36.948Z",
+        "wrongCount": 0,
+        "unaidedWrongCount": 0
       }
     },
     {
@@ -6243,6 +6651,13 @@
         "kind": "not-needed",
         "required": false,
         "reason": "本题可由算式与逐步解释完整表达；无需装饰性配图。"
+      },
+      "answerFormat": "expression-result",
+      "reviewEvidence": {
+        "state": "once",
+        "latestAt": "2026-10-29T12:58:42.551Z",
+        "wrongCount": 0,
+        "unaidedWrongCount": 0
       }
     },
     {
@@ -6303,6 +6718,12 @@
         "kind": "not-needed",
         "required": false,
         "reason": "本题可由算式与逐步解释完整表达；无需装饰性配图。"
+      },
+      "reviewEvidence": {
+        "state": "once",
+        "latestAt": "2026-10-29T12:58:58.262Z",
+        "wrongCount": 0,
+        "unaidedWrongCount": 0
       }
     },
     {
@@ -6549,6 +6970,13 @@
         "kind": "not-needed",
         "required": false,
         "reason": "本题可由算式与逐步解释完整表达；无需装饰性配图。"
+      },
+      "answerFormat": "expression-result",
+      "reviewEvidence": {
+        "state": "review",
+        "latestAt": "2026-10-29T12:59:14.938Z",
+        "wrongCount": 1,
+        "unaidedWrongCount": 1
       }
     },
     {
@@ -6610,6 +7038,12 @@
         "kind": "not-needed",
         "required": false,
         "reason": "本题可由算式与逐步解释完整表达；无需装饰性配图。"
+      },
+      "reviewEvidence": {
+        "state": "manual",
+        "latestAt": "2026-10-28T12:19:56.201Z",
+        "wrongCount": 0,
+        "unaidedWrongCount": 0
       }
     },
     {
@@ -6799,6 +7233,12 @@
         "kind": "not-needed",
         "required": false,
         "reason": "本题可由算式与逐步解释完整表达；无需装饰性配图。"
+      },
+      "reviewEvidence": {
+        "state": "once",
+        "latestAt": "2026-10-28T12:06:42.524Z",
+        "wrongCount": 0,
+        "unaidedWrongCount": 0
       }
     },
     {
@@ -6858,6 +7298,12 @@
         "kind": "not-needed",
         "required": false,
         "reason": "本题可由算式与逐步解释完整表达；无需装饰性配图。"
+      },
+      "reviewEvidence": {
+        "state": "review",
+        "latestAt": "2026-10-29T13:19:53.181Z",
+        "wrongCount": 0,
+        "unaidedWrongCount": 0
       }
     },
     {
@@ -6921,6 +7367,12 @@
         "kind": "not-needed",
         "required": false,
         "reason": "本题可由算式与逐步解释完整表达；无需装饰性配图。"
+      },
+      "reviewEvidence": {
+        "state": "once",
+        "latestAt": "2026-10-29T13:20:02.205Z",
+        "wrongCount": 0,
+        "unaidedWrongCount": 0
       }
     },
     {
@@ -6985,6 +7437,12 @@
         "kind": "not-needed",
         "required": false,
         "reason": "本题可由算式与逐步解释完整表达；无需装饰性配图。"
+      },
+      "reviewEvidence": {
+        "state": "mastered",
+        "latestAt": "2026-10-28T12:06:50.825Z",
+        "wrongCount": 0,
+        "unaidedWrongCount": 0
       }
     },
     {
@@ -7437,6 +7895,12 @@
         "kind": "not-needed",
         "required": false,
         "reason": "本题可由算式与逐步解释完整表达；无需装饰性配图。"
+      },
+      "reviewEvidence": {
+        "state": "once",
+        "latestAt": "2026-10-28T12:07:11.491Z",
+        "wrongCount": 0,
+        "unaidedWrongCount": 0
       }
     },
     {
@@ -7498,6 +7962,12 @@
         "kind": "not-needed",
         "required": false,
         "reason": "本题可由算式与逐步解释完整表达；无需装饰性配图。"
+      },
+      "reviewEvidence": {
+        "state": "manual",
+        "latestAt": "2026-10-28T12:20:28.315Z",
+        "wrongCount": 0,
+        "unaidedWrongCount": 0
       }
     },
     {
@@ -7560,6 +8030,12 @@
         "kind": "not-needed",
         "required": false,
         "reason": "本题可由算式与逐步解释完整表达；无需装饰性配图。"
+      },
+      "reviewEvidence": {
+        "state": "manual",
+        "latestAt": "2026-10-28T12:21:46.515Z",
+        "wrongCount": 0,
+        "unaidedWrongCount": 0
       }
     },
     {
@@ -7679,6 +8155,12 @@
         "kind": "not-needed",
         "required": false,
         "reason": "本题可由算式与逐步解释完整表达；无需装饰性配图。"
+      },
+      "reviewEvidence": {
+        "state": "once",
+        "latestAt": "2026-10-29T13:20:43.488Z",
+        "wrongCount": 0,
+        "unaidedWrongCount": 0
       }
     },
     {
@@ -7875,6 +8357,12 @@
         "kind": "not-needed",
         "required": false,
         "reason": "本题可由算式与逐步解释完整表达；无需装饰性配图。"
+      },
+      "reviewEvidence": {
+        "state": "review",
+        "latestAt": "2026-10-28T12:08:18.270Z",
+        "wrongCount": 3,
+        "unaidedWrongCount": 2
       }
     },
     {
@@ -8326,6 +8814,12 @@
         "kind": "teaching",
         "required": true,
         "reason": "数量关系需用对应示意辅助理解。"
+      },
+      "reviewEvidence": {
+        "state": "manual",
+        "latestAt": "2026-10-28T12:25:10.424Z",
+        "wrongCount": 0,
+        "unaidedWrongCount": 0
       }
     }
   ],
@@ -8359,7 +8853,7 @@
   "syllabus": [
     {
       "category": "数位与验算",
-      "title": "把计数单位、商位和验算对应起来",
+      "title": "商中的0，守住数位",
       "prerequisites": [
         "整数四则",
         "小数位值"
@@ -8371,11 +8865,26 @@
         "试商和余数核对",
         "乘回或估量级验算"
       ],
-      "check": "遮住解法，指出你写的每个0占哪一位。"
+      "check": "遮住解法，指出你写的每个0占哪一位。",
+      "lesson": {
+        "logic": [
+          "先看这一位够不够分",
+          "不够商1就写0占位",
+          "乘回去检查原数"
+        ],
+        "example": "6.12 ÷ 3 = 2.04",
+        "why": [
+          "6个一分成3份，每份2个一。",
+          "1个十分之一不够每份分1个，十分位写0。",
+          "12个百分之一分成3份，每份4个。"
+        ],
+        "trap": "2.4×3＝7.2，已经比6.12大，不能是原商。",
+        "kind": "自编讲解例子，不计为孩子作答"
+      }
     },
     {
       "category": "小数计算",
-      "title": "算对每一行，再还原小数位",
+      "title": "先估大小，再放小数点",
       "prerequisites": [
         "整数四则",
         "小数位值"
@@ -8387,11 +8896,26 @@
         "还原小数单位",
         "用反运算独立核对"
       ],
-      "check": "遮住解法重算本题，并用另一种方法验算。"
+      "check": "遮住解法重算本题，并用另一种方法验算。",
+      "lesson": {
+        "logic": [
+          "先估结果的范围",
+          "按整数方法算",
+          "还原单位并验算"
+        ],
+        "example": "1.4 × 0.3 = 0.42",
+        "why": [
+          "0.3小于1，结果应小于1.4。",
+          "14×3＝42；两个因数各扩大10倍。",
+          "积要除以100，得到0.42。"
+        ],
+        "trap": "4.2虽有数字42，却比1.4大，先用大小排除。",
+        "kind": "自编讲解例子，不计为孩子作答"
+      }
     },
     {
       "category": "运算规律",
-      "title": "每次变形都保持原式相等",
+      "title": "变写法，等量关系不变",
       "prerequisites": [
         "小数计算"
       ],
@@ -8402,11 +8926,26 @@
         "按运算律等值变形",
         "用原式与反例检验条件"
       ],
-      "check": "说明本题哪一步用了什么规律，哪些数没有变。"
+      "check": "说明本题哪一步用了什么规律，哪些数没有变。",
+      "lesson": {
+        "logic": [
+          "找共同部分",
+          "说明用什么规律",
+          "展开回原式核对"
+        ],
+        "example": "2.6×8 + 2.6×2 = 2.6×10",
+        "why": [
+          "8份2.6加2份2.6，是10份2.6。",
+          "合并的是份数8和2，共同的2.6保留。",
+          "2.6×10＝26；展开仍是原来两项。"
+        ],
+        "trap": "不要把加号两边的因数随意交叉相乘。",
+        "kind": "自编讲解例子，不计为孩子作答"
+      }
     },
     {
       "category": "近似数",
-      "title": "先算准关键位，再按要求取近似数",
+      "title": "保留哪一位，就看后一位",
       "prerequisites": [
         "小数计算",
         "数位与验算"
@@ -8418,11 +8957,26 @@
         "四舍五入与末尾0",
         "逆向确定近似数范围"
       ],
-      "check": "圈出保留位和下一位，解释为什么进或不进。"
+      "check": "圈出保留位和下一位，解释为什么进或不进。",
+      "lesson": {
+        "logic": [
+          "先求到关键位",
+          "圈保留位与后一位",
+          "四舍五入保留末尾0"
+        ],
+        "example": "6.04 ≈ 6.0（精确到十分位）",
+        "why": [
+          "要保留十分位，就看百分位。",
+          "百分位是4，不向十分位进1。",
+          "6.0中的0说明精确到十分位。"
+        ],
+        "trap": "6和6.0数值相等，但这题的精确程度不同。",
+        "kind": "自编讲解例子，不计为孩子作答"
+      }
     },
     {
       "category": "数量关系",
-      "title": "把每个中间结果与对应对象连起来",
+      "title": "每个中间数，都要有名字",
       "prerequisites": [
         "小数计算",
         "运算规律"
@@ -8434,11 +8988,26 @@
         "顺推和逆运算",
         "把结果代回全部条件"
       ],
-      "check": "不看答案，说出本题第一步求的是谁。"
+      "check": "不看答案，说出本题第一步求的是谁。",
+      "lesson": {
+        "logic": [
+          "找总量与每份量",
+          "说清第一步求谁",
+          "把结果代回条件"
+        ],
+        "example": "36元买6本 → 每本6元 → 54元买9本",
+        "why": [
+          "36÷6求每本多少钱，单位是元。",
+          "54÷6求可以买几本，单位是本。",
+          "9×6＝54，回到后来花的钱。"
+        ],
+        "trap": "36÷6和54÷6虽然都用除法，求的量并不一样。",
+        "kind": "自编讲解例子，不计为孩子作答"
+      }
     },
     {
       "category": "图形与单位",
-      "title": "看清边界、面积和单位再计算",
+      "title": "周长看外圈，面积看铺满",
       "prerequisites": [
         "小数计算",
         "数量关系"
@@ -8450,27 +9019,57 @@
         "画出变化前后对应部分",
         "按所求量计算并验单位"
       ],
-      "check": "指着图说明每个长度、面积和所求量。"
+      "check": "指着图说明每个长度、面积和所求量。",
+      "lesson": {
+        "logic": [
+          "认清所求量",
+          "统一对应单位",
+          "用图核对公式"
+        ],
+        "example": "长5厘米、宽3厘米",
+        "why": [
+          "周长沿外圈：5＋3＋5＋3＝16厘米。",
+          "面积看铺满：5×3＝15平方厘米。",
+          "长度换单位看一条边，面积要看两个方向。"
+        ],
+        "trap": "1平方米＝10000平方厘米，不是100平方厘米。",
+        "kind": "自编讲解例子，不计为孩子作答"
+      }
     },
     {
       "category": "平均数与统计",
-      "title": "先确定统计对象，再用总数与份数验算",
+      "title": "先合总量，再按份数分",
       "prerequisites": [
         "小数计算",
         "数量关系"
       ],
-      "coreInsight": "删掉的数据不再计入总和与个数。",
+      "coreInsight": "总量与份数必须对应；平均数要在参与数据的最大值与最小值之间。",
       "sequence": [
         "确定参与统计的数据",
         "总数与实际个数对应",
         "条形图与平均线",
         "目标总量及结果范围检查"
       ],
-      "check": "说清总数对应哪几项，平均数在什么范围内。"
+      "check": "说清总数对应哪几项，平均数在什么范围内。",
+      "lesson": {
+        "logic": [
+          "确定哪些数据参加",
+          "总量÷实际份数",
+          "检查是否在合理范围"
+        ],
+        "example": "4、5、6 → 总量15 → 平均5",
+        "why": [
+          "先把参与的数据相加，得到总量15。",
+          "3个数据分成3份：15÷3＝5。",
+          "平均数5在4和6之间，大小合理。"
+        ],
+        "trap": "合并两组平均数要带上各组人数，不能直接相加除2。",
+        "kind": "自编讲解例子，不计为孩子作答"
+      }
     },
     {
       "category": "枚举与条件",
-      "title": "有顺序列举，并按全部条件筛选",
+      "title": "固定一项，逐个检查",
       "prerequisites": [
         "运算规律",
         "数量关系"
@@ -8482,7 +9081,22 @@
         "逐个代回筛选",
         "检查无遗漏与无重复"
       ],
-      "check": "解释本题为什么没有遗漏，也没有多算。"
+      "check": "解释本题为什么没有遗漏，也没有多算。",
+      "lesson": {
+        "logic": [
+          "把条件列全",
+          "按顺序列举",
+          "检验不漏不重"
+        ],
+        "example": "从1、2、3中任选两个不重复的数字，组成两位数",
+        "why": [
+          "先固定十位1：12、13。",
+          "再固定十位2：21、23；十位3：31、32。",
+          "共6个；每组都有固定的检查顺序。"
+        ],
+        "trap": "找到一个可行答案，不代表找全。",
+        "kind": "自编讲解例子，不计为孩子作答"
+      }
     }
   ],
   "contentUpdated": "2026-10-25",
@@ -8492,6 +9106,11 @@
     "evidenceThrough": "2026-10-25",
     "recordPolicy": "来源记录不等于最新掌握；自编迁移不混入历史错题数。"
   },
-  "checkedAt": "2026-10-25",
-  "contentRevision": 2
+  "checkedAt": "2026-11-01",
+  "contentRevision": "2026-11-01-evidence-review",
+  "reviewPlan": {
+    "asOf": "2026-11-01",
+    "evidenceThrough": "2026-10-29T13:20:43.488Z",
+    "policy": "本轮仅保留至少两次未解决错答和未做题。已独立做会移出；单次错、提示后正确、过程待核先放家长记录观察，不计掌握。反复独立出错最先、提示后仍反复错随后、未做最后。历史误判不计错，独立通过后重新累计。未做不等于薄弱。"
+  }
 }

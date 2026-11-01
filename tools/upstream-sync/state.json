@@ -11124,8 +11124,8 @@
 "upstream": true
 },
 "apps/eddey_math_mistakes_20261024.html": {
-"sha": "2e96c31651871fafba4ca5cedcec779663e103a5850e1c9cf49703bef6c82bb3",
-"etag": "\"f6313a3f3cacca61f3b8e6c6a0befbe2\"",
+"sha": "332872282d1015d560823e5819029be2b3facbbc75206c3504670960670ec6dc",
+"etag": "\"cfe466c14d107580b65d9c30bafe534e\"",
 "upstream": true
 },
 "apps/eddey_math_redo.html": {
@@ -11449,8 +11449,8 @@
 "upstream": true
 },
 "apps/kenton_math_mistakes_20261024.html": {
-"sha": "1f103fc805baba4ed145cdaa0f381eb29d491b976681e0a42b2262c9d6a88929",
-"etag": "\"e387c356fa57121b75b8696dc7b76ee4\"",
+"sha": "9c3dffe18b3e8a144c30214d86a92a66c1c36609561816ce68ea132bab1b6101",
+"etag": "\"58fdfffda0ba1d6e7956547694b33755\"",
 "upstream": true
 },
 "apps/kenton_math_sprint.html": {
@@ -11704,8 +11704,8 @@
 "upstream": true
 },
 "assets/math-mistake-bank.js": {
-"sha": "d619d548323831348cc58e88e3082842639c6a13d0229076e767fa40e9a48c7f",
-"etag": "\"99bdd565b9be0918d0cdcd541c377839\"",
+"sha": "573fc1a1b18bce04231452c1a6240c883292f745334b3e2595c59b1fe78388d4",
+"etag": "\"0046ebb8c08aba252a5a80d09a40aa0b\"",
 "upstream": true
 },
 "assets/math-mistakes/eddey-upgrade-all-factors.svg": {
@@ -12264,8 +12264,8 @@
 "upstream": true
 },
 "assets/portal-snapshot.js": {
-"sha": "83731dc8d34562dd19dd07f5adf66e117bd0d5df61a6252c108d0cc07ba4ae13",
-"etag": "\"3c312ce9014100c646579833b71750a8\"",
+"sha": "6110566ede02f67b1d10be16fcdb73b8795a72149c32a2927173af0072ce667b",
+"etag": "\"bb15df5c56be6ec6f69ca2cafa3f3515\"",
 "upstream": true
 },
 "assets/portal-support.css": {
@@ -12384,8 +12384,8 @@
 "upstream": true
 },
 "data/apps.json": {
-"sha": "f4b6e483fcc639e34c3626c18a7894ad383b9c4fdbce170bf43341ecacc9b299",
-"etag": "\"ca19a6ccd2011c5e105aa44f238f63b5\"",
+"sha": "4427ac7766d16a3b63e6c4c2ad48ea05d81cb9b1cef72222602006a01da6c9cc",
+"etag": "\"0e871930415d29b94e0960c127b90eae\"",
 "upstream": true
 },
 "data/exam-prep/calendar.json": {
@@ -12434,13 +12434,13 @@
 "upstream": true
 },
 "data/learning/eddey_math_mistakes_20261024.json": {
-"sha": "3f0a9aa839a7fb89cc1a1fe1005f8da3df452c654c58a869bd3e3986a8aedc1b",
-"etag": "\"36e7640c9ea754aa92cf4c251766ae7d\"",
+"sha": "cf964e70edfa72632aeb19944299eaf8c74c57c7b4844952e0f5c019a7cfc3a2",
+"etag": "\"c53ecdbd9c89349d19930762f8db574f\"",
 "upstream": true
 },
 "data/learning/kenton_math_mistakes_20261024.json": {
-"sha": "ac1140ca3c2bc85bf3f1e43bd780b03a4101d993a41979528e34456f41621be0",
-"etag": "\"645c2527bc6624917cb2778366c16eb1\"",
+"sha": "a3cd25f52850a719d6040ce17190ee41a0f90cf66a7bba138a160b9e018d91be",
+"etag": "\"a84ad823bcafc2de2faaabcc07fba3d9\"",
 "upstream": true
 },
 "data/math_gold_hub.json": {
@@ -12454,8 +12454,8 @@
 "upstream": true
 },
 "data/mistake-archives.json": {
-"sha": "1ab5262630323b3bf3c4eeebc21fc4ac0218486f92d4176a6316d3e8de9332b9",
-"etag": "\"cd5471790a01d2870dcc0b9cb06eac91\"",
+"sha": "36abdcfa43dda2d36348e89c01c2c2f5d085b4afeb58860f09434dde135a90b3",
+"etag": "\"22aed6bc6e738251f05b20ebcbf95839\"",
 "upstream": true
 },
 "data/papers.json": {

@@ -1148,6 +1148,13 @@
         "alt": "",
         "required": false,
         "reason": "当前题意可用完整算式和分步过程表达；不添加装饰图。"
+      },
+      "answerFormat": "expression-result",
+      "reviewEvidence": {
+        "state": "once",
+        "latestAt": "2026-10-29T12:40:42.310Z",
+        "wrongCount": 0,
+        "unaidedWrongCount": 0
       }
     },
     {
@@ -1212,6 +1219,13 @@
         "alt": "",
         "required": false,
         "reason": "当前题意可用完整算式和分步过程表达；不添加装饰图。"
+      },
+      "answerFormat": "expression-result",
+      "reviewEvidence": {
+        "state": "review",
+        "latestAt": "2026-10-29T12:41:30.771Z",
+        "wrongCount": 0,
+        "unaidedWrongCount": 0
       }
     },
     {
@@ -1277,6 +1291,13 @@
         "alt": "",
         "required": false,
         "reason": "当前题意可用完整算式和分步过程表达；不添加装饰图。"
+      },
+      "answerFormat": "expression-result",
+      "reviewEvidence": {
+        "state": "once",
+        "latestAt": "2026-10-27T11:42:30.501Z",
+        "wrongCount": 0,
+        "unaidedWrongCount": 0
       }
     },
     {
@@ -1342,6 +1363,13 @@
         "alt": "",
         "required": false,
         "reason": "当前题意可用完整算式和分步过程表达；不添加装饰图。"
+      },
+      "answerFormat": "expression-result",
+      "reviewEvidence": {
+        "state": "review",
+        "latestAt": "2026-10-26T12:03:46.062Z",
+        "wrongCount": 0,
+        "unaidedWrongCount": 0
       }
     },
     {
@@ -1406,6 +1434,13 @@
         "alt": "",
         "required": false,
         "reason": "当前题意可用完整算式和分步过程表达；不添加装饰图。"
+      },
+      "answerFormat": "expression-result",
+      "reviewEvidence": {
+        "state": "review",
+        "latestAt": "2026-10-27T11:29:51.879Z",
+        "wrongCount": 0,
+        "unaidedWrongCount": 0
       }
     },
     {
@@ -1475,6 +1510,12 @@
         "alt": "",
         "required": false,
         "reason": "当前题意可用完整算式和分步过程表达；不添加装饰图。"
+      },
+      "reviewEvidence": {
+        "state": "review",
+        "latestAt": "2026-10-27T11:32:33.626Z",
+        "wrongCount": 0,
+        "unaidedWrongCount": 0
       }
     },
     {
@@ -1543,6 +1584,12 @@
         "alt": "",
         "required": false,
         "reason": "当前题意可用完整算式和分步过程表达；不添加装饰图。"
+      },
+      "reviewEvidence": {
+        "state": "review",
+        "latestAt": "2026-10-27T11:33:19.588Z",
+        "wrongCount": 0,
+        "unaidedWrongCount": 0
       }
     },
     {
@@ -1611,6 +1658,12 @@
         "alt": "",
         "required": false,
         "reason": "当前题意可用完整算式和分步过程表达；不添加装饰图。"
+      },
+      "reviewEvidence": {
+        "state": "review",
+        "latestAt": "2026-10-27T11:34:33.178Z",
+        "wrongCount": 1,
+        "unaidedWrongCount": 0
       }
     },
     {
@@ -1681,7 +1734,13 @@
       },
       "image": "../assets/math-mistakes/eddey-upgrade-tree-164.svg",
       "diagramAlt": "两枝分别计算再相加",
-      "diagramCaption": "按原题条件重绘，空框由你填写。"
+      "diagramCaption": "按原题条件重绘，空框由你填写。",
+      "reviewEvidence": {
+        "state": "review",
+        "latestAt": "2026-10-27T11:35:39.936Z",
+        "wrongCount": 0,
+        "unaidedWrongCount": 0
+      }
     },
     {
       "id": "E-M-1008",
@@ -1748,6 +1807,12 @@
         "alt": "",
         "required": false,
         "reason": "当前题意可用完整算式和分步过程表达；不添加装饰图。"
+      },
+      "reviewEvidence": {
+        "state": "review",
+        "latestAt": "2026-10-27T11:36:07.976Z",
+        "wrongCount": 0,
+        "unaidedWrongCount": 0
       }
     },
     {
@@ -1815,6 +1880,12 @@
         "alt": "",
         "required": false,
         "reason": "当前题意可用完整算式和分步过程表达；不添加装饰图。"
+      },
+      "reviewEvidence": {
+        "state": "review",
+        "latestAt": "2026-10-27T11:36:46.830Z",
+        "wrongCount": 0,
+        "unaidedWrongCount": 0
       }
     },
     {
@@ -1882,6 +1953,12 @@
         "alt": "",
         "required": false,
         "reason": "当前题意可用完整算式和分步过程表达；不添加装饰图。"
+      },
+      "reviewEvidence": {
+        "state": "review",
+        "latestAt": "2026-10-27T11:37:35.439Z",
+        "wrongCount": 0,
+        "unaidedWrongCount": 0
       }
     },
     {
@@ -1949,6 +2026,12 @@
         "alt": "",
         "required": false,
         "reason": "当前题意可用完整算式和分步过程表达；不添加装饰图。"
+      },
+      "reviewEvidence": {
+        "state": "review",
+        "latestAt": "2026-10-27T11:44:14.639Z",
+        "wrongCount": 0,
+        "unaidedWrongCount": 0
       }
     },
     {
@@ -2017,6 +2100,12 @@
         "alt": "",
         "required": false,
         "reason": "当前题意可用完整算式和分步过程表达；不添加装饰图。"
+      },
+      "reviewEvidence": {
+        "state": "review",
+        "latestAt": "2026-10-27T11:46:01.544Z",
+        "wrongCount": 0,
+        "unaidedWrongCount": 0
       }
     },
     {
@@ -2085,6 +2174,12 @@
         "alt": "",
         "required": false,
         "reason": "当前题意可用完整算式和分步过程表达；不添加装饰图。"
+      },
+      "reviewEvidence": {
+        "state": "review",
+        "latestAt": "2026-10-27T11:47:00.879Z",
+        "wrongCount": 0,
+        "unaidedWrongCount": 0
       }
     },
     {
@@ -2155,6 +2250,12 @@
         "src": "../assets/math-mistakes/eddey-upgrade-unknown-divisor.svg",
         "alt": "先认清未知量在除法中的位置",
         "caption": "教学示意：先认清未知量在除法中的位置"
+      },
+      "reviewEvidence": {
+        "state": "review",
+        "latestAt": "2026-10-27T11:47:20.999Z",
+        "wrongCount": 0,
+        "unaidedWrongCount": 0
       }
     },
     {
@@ -2220,6 +2321,13 @@
         "alt": "",
         "required": false,
         "reason": "当前题意可用完整算式和分步过程表达；不添加装饰图。"
+      },
+      "answerFormat": "expression-result",
+      "reviewEvidence": {
+        "state": "review",
+        "latestAt": "2026-10-27T11:47:38.995Z",
+        "wrongCount": 0,
+        "unaidedWrongCount": 0
       }
     },
     {
@@ -2291,6 +2399,12 @@
         "src": "../assets/math-mistakes/eddey-upgrade-reverse-60.svg",
         "alt": "顺算与倒推逐步对应",
         "caption": "教学示意：顺算与倒推逐步对应"
+      },
+      "reviewEvidence": {
+        "state": "manual",
+        "latestAt": "2026-10-27T11:48:24.471Z",
+        "wrongCount": 0,
+        "unaidedWrongCount": 0
       }
     },
     {
@@ -2360,7 +2474,13 @@
       },
       "image": "../assets/math-mistakes/eddey-upgrade-flow-forward.svg",
       "diagramAlt": "输入36的计算流程",
-      "diagramCaption": "按原题条件重绘，空框由你填写。"
+      "diagramCaption": "按原题条件重绘，空框由你填写。",
+      "reviewEvidence": {
+        "state": "manual",
+        "latestAt": "2026-10-27T11:48:56.898Z",
+        "wrongCount": 0,
+        "unaidedWrongCount": 0
+      }
     },
     {
       "id": "E-M-1020",
@@ -2429,7 +2549,13 @@
       },
       "image": "../assets/math-mistakes/eddey-upgrade-flow-inverse.svg",
       "diagramAlt": "输出103的计算流程",
-      "diagramCaption": "按原题条件重绘，空框由你填写。"
+      "diagramCaption": "按原题条件重绘，空框由你填写。",
+      "reviewEvidence": {
+        "state": "manual",
+        "latestAt": "2026-10-27T11:49:24.922Z",
+        "wrongCount": 0,
+        "unaidedWrongCount": 0
+      }
     },
     {
       "id": "E-M-970",
@@ -2492,6 +2618,13 @@
         "alt": "",
         "required": false,
         "reason": "当前题意可用完整算式和分步过程表达；不添加装饰图。"
+      },
+      "answerFormat": "expression-result",
+      "reviewEvidence": {
+        "state": "once",
+        "latestAt": "2026-10-27T11:49:35.694Z",
+        "wrongCount": 0,
+        "unaidedWrongCount": 0
       }
     },
     {
@@ -2555,6 +2688,13 @@
         "alt": "",
         "required": false,
         "reason": "当前题意可用完整算式和分步过程表达；不添加装饰图。"
+      },
+      "answerFormat": "expression-result",
+      "reviewEvidence": {
+        "state": "review",
+        "latestAt": "2026-10-27T11:50:02.936Z",
+        "wrongCount": 0,
+        "unaidedWrongCount": 0
       }
     },
     {
@@ -2618,6 +2758,13 @@
         "alt": "",
         "required": false,
         "reason": "当前题意可用完整算式和分步过程表达；不添加装饰图。"
+      },
+      "answerFormat": "expression-result",
+      "reviewEvidence": {
+        "state": "review",
+        "latestAt": "2026-10-27T11:50:21.310Z",
+        "wrongCount": 0,
+        "unaidedWrongCount": 0
       }
     },
     {
@@ -2682,6 +2829,12 @@
         "alt": "",
         "required": false,
         "reason": "当前题意可用完整算式和分步过程表达；不添加装饰图。"
+      },
+      "reviewEvidence": {
+        "state": "review",
+        "latestAt": "2026-10-27T11:58:33.594Z",
+        "wrongCount": 0,
+        "unaidedWrongCount": 0
       }
     },
     {
@@ -2750,7 +2903,13 @@
       },
       "image": "../assets/math-mistakes/eddey-upgrade-tree-500.svg",
       "diagramAlt": "先加，再除，最后乘",
-      "diagramCaption": "按原树状算图重绘：先500＋460，再÷24，最后与15相乘。"
+      "diagramCaption": "按原树状算图重绘：先500＋460，再÷24，最后与15相乘。",
+      "reviewEvidence": {
+        "state": "manual",
+        "latestAt": "2026-10-27T11:59:12.344Z",
+        "wrongCount": 0,
+        "unaidedWrongCount": 0
+      }
     },
     {
       "id": "E-M-975",
@@ -2817,7 +2976,14 @@
       },
       "image": "../assets/math-mistakes/eddey-upgrade-tree-540.svg",
       "diagramAlt": "树状算图中的三步",
-      "diagramCaption": "按原题条件重绘，空框由你填写。"
+      "diagramCaption": "按原题条件重绘，空框由你填写。",
+      "answerFormat": "expression-result",
+      "reviewEvidence": {
+        "state": "review",
+        "latestAt": "2026-10-27T12:02:22.259Z",
+        "wrongCount": 0,
+        "unaidedWrongCount": 0
+      }
     },
     {
       "id": "E-M-976",
@@ -2883,6 +3049,12 @@
         "alt": "",
         "required": false,
         "reason": "当前题意可用完整算式和分步过程表达；不添加装饰图。"
+      },
+      "reviewEvidence": {
+        "state": "review",
+        "latestAt": "2026-10-27T12:03:11.166Z",
+        "wrongCount": 0,
+        "unaidedWrongCount": 0
       }
     },
     {
@@ -2952,6 +3124,12 @@
         "src": "../assets/math-mistakes/eddey-upgrade-wind-origin.svg",
         "alt": "东北风从东北流向西南，箭头表示风流动的方向。",
         "caption": "教学示例：用东北风区分来向与去向。"
+      },
+      "reviewEvidence": {
+        "state": "manual",
+        "latestAt": "2026-10-27T12:08:29.372Z",
+        "wrongCount": 0,
+        "unaidedWrongCount": 0
       }
     },
     {
@@ -3027,6 +3205,12 @@
         "src": "../assets/math-mistakes/eddey-upgrade-wind-origin.svg",
         "alt": "东北风从东北流向西南，箭头表示风流动的方向。",
         "caption": "教学示例：用东北风区分来向与去向。"
+      },
+      "reviewEvidence": {
+        "state": "once",
+        "latestAt": "2026-10-27T12:08:43.052Z",
+        "wrongCount": 0,
+        "unaidedWrongCount": 0
       }
     },
     {
@@ -3098,7 +3282,13 @@
         "required": true,
         "reason": "依赖位置、组数或关系图判断。"
       },
-      "diagramCaption": "按已核原图的数量、位置和北向重新绘制；不含原作答与批改。"
+      "diagramCaption": "按已核原图的数量、位置和北向重新绘制；不含原作答与批改。",
+      "reviewEvidence": {
+        "state": "review",
+        "latestAt": "2026-10-27T12:09:39.655Z",
+        "wrongCount": 1,
+        "unaidedWrongCount": 0
+      }
     },
     {
       "id": "E-M-981",
@@ -3170,7 +3360,13 @@
         "required": true,
         "reason": "依赖位置、组数或关系图判断。"
       },
-      "diagramCaption": "按已核原图的数量、位置和北向重新绘制；不含原作答与批改。"
+      "diagramCaption": "按已核原图的数量、位置和北向重新绘制；不含原作答与批改。",
+      "reviewEvidence": {
+        "state": "review",
+        "latestAt": "2026-10-27T12:10:04.419Z",
+        "wrongCount": 0,
+        "unaidedWrongCount": 0
+      }
     },
     {
       "id": "E-M-982",
@@ -3233,6 +3429,12 @@
         "alt": "",
         "required": false,
         "reason": "当前题意可用完整算式和分步过程表达；不添加装饰图。"
+      },
+      "reviewEvidence": {
+        "state": "review",
+        "latestAt": "2026-10-27T12:11:46.961Z",
+        "wrongCount": 0,
+        "unaidedWrongCount": 0
       }
     },
     {
@@ -3304,6 +3506,12 @@
         "src": "../assets/math-mistakes/eddey-upgrade-place-boxes.svg",
         "alt": "十位空格和个位空格不同",
         "caption": "教学示意：十位空格和个位空格不同"
+      },
+      "reviewEvidence": {
+        "state": "review",
+        "latestAt": "2026-10-27T12:12:44.474Z",
+        "wrongCount": 0,
+        "unaidedWrongCount": 0
       }
     },
     {
@@ -3368,6 +3576,13 @@
         "alt": "",
         "required": false,
         "reason": "当前题意可用完整算式和分步过程表达；不添加装饰图。"
+      },
+      "answerFormat": "expression-result",
+      "reviewEvidence": {
+        "state": "review",
+        "latestAt": "2026-10-27T12:13:05.896Z",
+        "wrongCount": 0,
+        "unaidedWrongCount": 0
       }
     },
     {
@@ -3431,6 +3646,13 @@
         "alt": "",
         "required": false,
         "reason": "当前题意可用完整算式和分步过程表达；不添加装饰图。"
+      },
+      "answerFormat": "expression-result",
+      "reviewEvidence": {
+        "state": "review",
+        "latestAt": "2026-10-28T08:21:40.764Z",
+        "wrongCount": 0,
+        "unaidedWrongCount": 0
       }
     },
     {
@@ -3499,6 +3721,12 @@
         "src": "../assets/math-mistakes/eddey-upgrade-unknown-whole.svg",
         "alt": "先求括号整体再求方框",
         "caption": "教学示意：先求括号整体再求方框"
+      },
+      "reviewEvidence": {
+        "state": "review",
+        "latestAt": "2026-10-28T08:22:25.827Z",
+        "wrongCount": 0,
+        "unaidedWrongCount": 0
       }
     },
     {
@@ -3573,6 +3801,12 @@
         "src": "../assets/math-mistakes/eddey-upgrade-rope-unit.svg",
         "alt": "把中间量与最终量分开",
         "caption": "教学示意：把中间量与最终量分开"
+      },
+      "reviewEvidence": {
+        "state": "review",
+        "latestAt": "2026-10-28T08:25:40.608Z",
+        "wrongCount": 3,
+        "unaidedWrongCount": 1
       }
     },
     {
@@ -3640,7 +3874,13 @@
       },
       "image": "../assets/math-mistakes/eddey-upgrade-people-table.svg",
       "diagramAlt": "三个小区的人数表",
-      "diagramCaption": "按原表数据与小区名称重绘。"
+      "diagramCaption": "按原表数据与小区名称重绘。",
+      "reviewEvidence": {
+        "state": "once",
+        "latestAt": "2026-10-28T08:26:02.044Z",
+        "wrongCount": 0,
+        "unaidedWrongCount": 0
+      }
     },
     {
       "id": "E-M-989",
@@ -3710,6 +3950,12 @@
         "src": "../assets/math-mistakes/eddey-upgrade-fruit-boxes.svg",
         "alt": "同一份先由苹果和梨合成",
         "caption": "教学示意：同一份先由苹果和梨合成"
+      },
+      "reviewEvidence": {
+        "state": "once",
+        "latestAt": "2026-10-28T08:31:08.467Z",
+        "wrongCount": 0,
+        "unaidedWrongCount": 0
       }
     },
     {
@@ -3778,6 +4024,12 @@
         "src": "../assets/math-mistakes/eddey-upgrade-split-990.svg",
         "alt": "把乘数拆成两部分",
         "caption": "教学分块示意，不按数值比例绘制；两块表示对应的部分积。"
+      },
+      "reviewEvidence": {
+        "state": "manual",
+        "latestAt": "2026-10-28T08:34:20.684Z",
+        "wrongCount": 0,
+        "unaidedWrongCount": 0
       }
     },
     {
@@ -3847,6 +4099,12 @@
         "alt": "",
         "required": false,
         "reason": "当前题意可用完整算式和分步过程表达；不添加装饰图。"
+      },
+      "reviewEvidence": {
+        "state": "mastered",
+        "latestAt": "2026-10-29T12:41:42.319Z",
+        "wrongCount": 0,
+        "unaidedWrongCount": 0
       }
     },
     {
@@ -3910,6 +4168,13 @@
         "alt": "",
         "required": false,
         "reason": "当前题意可用完整算式和分步过程表达；不添加装饰图。"
+      },
+      "answerFormat": "expression-result",
+      "reviewEvidence": {
+        "state": "once",
+        "latestAt": "2026-10-28T08:36:27.647Z",
+        "wrongCount": 0,
+        "unaidedWrongCount": 0
       }
     },
     {
@@ -3985,6 +4250,12 @@
         "src": "../assets/math-mistakes/eddey-upgrade-face-east.svg",
         "alt": "先固定面向，再判断左右",
         "caption": "教学示意：先固定面向，再判断左右"
+      },
+      "reviewEvidence": {
+        "state": "once",
+        "latestAt": "2026-10-28T08:37:19.410Z",
+        "wrongCount": 0,
+        "unaidedWrongCount": 0
       }
     },
     {
@@ -4056,7 +4327,13 @@
         "required": true,
         "reason": "依赖位置、组数或关系图判断。"
       },
-      "diagramCaption": "按已核原图的数量、位置和北向重新绘制；不含原作答与批改。"
+      "diagramCaption": "按已核原图的数量、位置和北向重新绘制；不含原作答与批改。",
+      "reviewEvidence": {
+        "state": "once",
+        "latestAt": "2026-10-28T08:40:19.404Z",
+        "wrongCount": 0,
+        "unaidedWrongCount": 0
+      }
     },
     {
       "id": "E-M-995",
@@ -4128,7 +4405,13 @@
         "required": true,
         "reason": "依赖位置、组数或关系图判断。"
       },
-      "diagramCaption": "按已核原图的数量、位置和北向重新绘制；不含原作答与批改。"
+      "diagramCaption": "按已核原图的数量、位置和北向重新绘制；不含原作答与批改。",
+      "reviewEvidence": {
+        "state": "review",
+        "latestAt": "2026-10-28T08:42:37.892Z",
+        "wrongCount": 0,
+        "unaidedWrongCount": 0
+      }
     },
     {
       "id": "E-M-996",
@@ -4193,6 +4476,13 @@
         "alt": "",
         "required": false,
         "reason": "当前题意可用完整算式和分步过程表达；不添加装饰图。"
+      },
+      "answerFormat": "expression-result",
+      "reviewEvidence": {
+        "state": "once",
+        "latestAt": "2026-10-28T08:42:55.081Z",
+        "wrongCount": 0,
+        "unaidedWrongCount": 0
       }
     },
     {
@@ -4257,6 +4547,13 @@
         "alt": "",
         "required": false,
         "reason": "当前题意可用完整算式和分步过程表达；不添加装饰图。"
+      },
+      "answerFormat": "expression-result",
+      "reviewEvidence": {
+        "state": "once",
+        "latestAt": "2026-10-28T08:44:05.197Z",
+        "wrongCount": 0,
+        "unaidedWrongCount": 0
       }
     },
     {
@@ -4322,6 +4619,13 @@
         "alt": "",
         "required": false,
         "reason": "当前题意可用完整算式和分步过程表达；不添加装饰图。"
+      },
+      "answerFormat": "expression-result",
+      "reviewEvidence": {
+        "state": "once",
+        "latestAt": "2026-10-28T08:48:43.795Z",
+        "wrongCount": 0,
+        "unaidedWrongCount": 0
       }
     },
     {
@@ -4387,7 +4691,8 @@
         "alt": "",
         "required": false,
         "reason": "当前题意可用完整算式和分步过程表达；不添加装饰图。"
-      }
+      },
+      "answerFormat": "expression-result"
     },
     {
       "id": "E-M-1037",
@@ -4876,7 +5181,8 @@
         "alt": "",
         "required": false,
         "reason": "当前题意可用完整算式和分步过程表达；不添加装饰图。"
-      }
+      },
+      "answerFormat": "expression-result"
     },
     {
       "id": "E-M-archive-296",
@@ -4940,7 +5246,8 @@
         "alt": "",
         "required": false,
         "reason": "当前题意可用完整算式和分步过程表达；不添加装饰图。"
-      }
+      },
+      "answerFormat": "expression-result"
     },
     {
       "id": "E-M-archive-297",
@@ -5009,6 +5316,13 @@
         "src": "../assets/math-mistakes/eddey-upgrade-all-factors.svg",
         "alt": "展开的两部分都保留外侧因数",
         "caption": "教学示意：展开的两部分都保留外侧因数"
+      },
+      "answerFormat": "expression-result",
+      "reviewEvidence": {
+        "state": "once",
+        "latestAt": "2026-10-29T12:42:21.519Z",
+        "wrongCount": 0,
+        "unaidedWrongCount": 0
       }
     },
     {
@@ -5073,6 +5387,12 @@
         "alt": "",
         "required": false,
         "reason": "当前题意可用完整算式和分步过程表达；不添加装饰图。"
+      },
+      "reviewEvidence": {
+        "state": "once",
+        "latestAt": "2026-10-29T12:47:43.661Z",
+        "wrongCount": 0,
+        "unaidedWrongCount": 0
       }
     },
     {
@@ -5143,6 +5463,12 @@
         "src": "../assets/math-mistakes/eddey-upgrade-train-distance.svg",
         "alt": "相同4小时：先比较每小时的差",
         "caption": "教学条形图：252＝122＋130，条长按速度比例绘制。"
+      },
+      "reviewEvidence": {
+        "state": "manual",
+        "latestAt": "2026-10-29T12:49:00.487Z",
+        "wrongCount": 0,
+        "unaidedWrongCount": 0
       }
     },
     {
@@ -5207,6 +5533,13 @@
         "alt": "",
         "required": false,
         "reason": "当前题意可用完整算式和分步过程表达；不添加装饰图。"
+      },
+      "answerFormat": "expression-result",
+      "reviewEvidence": {
+        "state": "once",
+        "latestAt": "2026-10-29T12:42:41.132Z",
+        "wrongCount": 0,
+        "unaidedWrongCount": 0
       }
     },
     {
@@ -5282,6 +5615,12 @@
         "src": "../assets/math-mistakes/eddey-upgrade-split-1091.svg",
         "alt": "把乘数拆成两部分",
         "caption": "教学分块示意，不按数值比例绘制；两块表示对应的部分积。"
+      },
+      "reviewEvidence": {
+        "state": "once",
+        "latestAt": "2026-10-29T12:43:01.680Z",
+        "wrongCount": 0,
+        "unaidedWrongCount": 0
       }
     },
     {
@@ -5352,6 +5691,12 @@
         "alt": "",
         "required": false,
         "reason": "当前题意可用完整算式和分步过程表达；不添加装饰图。"
+      },
+      "reviewEvidence": {
+        "state": "review",
+        "latestAt": "2026-10-29T12:52:04.951Z",
+        "wrongCount": 0,
+        "unaidedWrongCount": 0
       }
     },
     {
@@ -5415,6 +5760,13 @@
         "alt": "",
         "required": false,
         "reason": "当前题意可用完整算式和分步过程表达；不添加装饰图。"
+      },
+      "answerFormat": "expression-result",
+      "reviewEvidence": {
+        "state": "once",
+        "latestAt": "2026-10-29T12:55:39.220Z",
+        "wrongCount": 0,
+        "unaidedWrongCount": 0
       }
     },
     {
@@ -5478,6 +5830,12 @@
         "alt": "",
         "required": false,
         "reason": "当前题意可用完整算式和分步过程表达；不添加装饰图。"
+      },
+      "reviewEvidence": {
+        "state": "review",
+        "latestAt": "2026-10-29T12:57:29.706Z",
+        "wrongCount": 1,
+        "unaidedWrongCount": 0
       }
     },
     {
@@ -5547,6 +5905,13 @@
         "src": "../assets/math-mistakes/eddey-upgrade-split-1110.svg",
         "alt": "把乘数拆成两部分",
         "caption": "教学分块示意，不按数值比例绘制；两块表示对应的部分积。"
+      },
+      "answerFormat": "expression-result",
+      "reviewEvidence": {
+        "state": "review",
+        "latestAt": "2026-10-29T12:57:47.783Z",
+        "wrongCount": 0,
+        "unaidedWrongCount": 0
       }
     },
     {
@@ -5614,7 +5979,13 @@
       },
       "image": "../assets/math-mistakes/eddey-upgrade-shopping-price.svg",
       "diagramAlt": "先对应物品，再对应单价",
-      "diagramCaption": "按题目已核价格重排为价目图，只展示本题所需物品。"
+      "diagramCaption": "按题目已核价格重排为价目图，只展示本题所需物品。",
+      "reviewEvidence": {
+        "state": "review",
+        "latestAt": "2026-10-29T12:58:24.195Z",
+        "wrongCount": 0,
+        "unaidedWrongCount": 0
+      }
     },
     {
       "id": "E-M-1216",
@@ -5681,7 +6052,13 @@
       },
       "image": "../assets/math-mistakes/eddey-upgrade-flow-70.svg",
       "diagramAlt": "从输出70找输入数",
-      "diagramCaption": "按已核运算链条件重绘；只给流程，不填写答案。"
+      "diagramCaption": "按已核运算链条件重绘；只给流程，不填写答案。",
+      "reviewEvidence": {
+        "state": "once",
+        "latestAt": "2026-10-29T12:59:46.383Z",
+        "wrongCount": 0,
+        "unaidedWrongCount": 0
+      }
     },
     {
       "id": "E-M-1217",
@@ -5751,6 +6128,12 @@
         "src": "../assets/math-mistakes/eddey-upgrade-unknown-509.svg",
         "alt": "倒推不要停在中间量",
         "caption": "教学示意：倒推不要停在中间量"
+      },
+      "reviewEvidence": {
+        "state": "manual",
+        "latestAt": "2026-10-29T13:02:07.229Z",
+        "wrongCount": 2,
+        "unaidedWrongCount": 0
       }
     },
     {
@@ -5820,6 +6203,12 @@
         "src": "../assets/math-mistakes/eddey-upgrade-nested-subtraction.svg",
         "alt": "从最外层向里找未知量",
         "caption": "教学示意：从最外层向里找未知量"
+      },
+      "reviewEvidence": {
+        "state": "review",
+        "latestAt": "2026-10-29T13:02:29.253Z",
+        "wrongCount": 0,
+        "unaidedWrongCount": 0
       }
     },
     {
@@ -5890,6 +6279,12 @@
         "src": "../assets/math-mistakes/eddey-upgrade-wrong-and-right.svg",
         "alt": "先还原原数，再按正确要求算",
         "caption": "教学示意：先还原原数，再按正确要求算"
+      },
+      "reviewEvidence": {
+        "state": "manual",
+        "latestAt": "2026-10-29T13:03:26.170Z",
+        "wrongCount": 0,
+        "unaidedWrongCount": 0
       }
     },
     {
@@ -5959,6 +6354,13 @@
         "src": "../assets/math-mistakes/eddey-upgrade-split-1254.svg",
         "alt": "把乘数拆成两部分",
         "caption": "教学分块示意，不按数值比例绘制；两块表示对应的部分积。"
+      },
+      "answerFormat": "expression-result",
+      "reviewEvidence": {
+        "state": "review",
+        "latestAt": "2026-10-29T13:04:25.438Z",
+        "wrongCount": 0,
+        "unaidedWrongCount": 0
       }
     },
     {
@@ -6028,6 +6430,13 @@
         "src": "../assets/math-mistakes/eddey-upgrade-signed-groups.svg",
         "alt": "每项前面的加减号一起保留",
         "caption": "教学示意：每项前面的加减号一起保留"
+      },
+      "answerFormat": "expression-result",
+      "reviewEvidence": {
+        "state": "review",
+        "latestAt": "2026-10-29T13:04:59.036Z",
+        "wrongCount": 0,
+        "unaidedWrongCount": 0
       }
     },
     {
@@ -6092,6 +6501,13 @@
         "alt": "",
         "required": false,
         "reason": "当前题意可用完整算式和分步过程表达；不添加装饰图。"
+      },
+      "answerFormat": "expression-result",
+      "reviewEvidence": {
+        "state": "review",
+        "latestAt": "2026-10-29T13:14:07.429Z",
+        "wrongCount": 0,
+        "unaidedWrongCount": 0
       }
     },
     {
@@ -6155,6 +6571,12 @@
         "alt": "",
         "required": false,
         "reason": "当前题意可用完整算式和分步过程表达；不添加装饰图。"
+      },
+      "reviewEvidence": {
+        "state": "review",
+        "latestAt": "2026-10-29T13:16:54.936Z",
+        "wrongCount": 1,
+        "unaidedWrongCount": 1
       }
     },
     {
@@ -6283,7 +6705,8 @@
         "alt": "",
         "required": false,
         "reason": "当前题意可用完整算式和分步过程表达；不添加装饰图。"
-      }
+      },
+      "answerFormat": "expression-result"
     },
     {
       "id": "E-M-1264",
@@ -6348,7 +6771,8 @@
         "alt": "",
         "required": false,
         "reason": "当前题意可用完整算式和分步过程表达；不添加装饰图。"
-      }
+      },
+      "answerFormat": "expression-result"
     },
     {
       "id": "E-M-1265",
@@ -6413,7 +6837,8 @@
         "alt": "",
         "required": false,
         "reason": "当前题意可用完整算式和分步过程表达；不添加装饰图。"
-      }
+      },
+      "answerFormat": "expression-result"
     },
     {
       "id": "E-M-1287",
@@ -6825,7 +7250,8 @@
         "alt": "",
         "required": false,
         "reason": "当前题意可用完整算式和分步过程表达；不添加装饰图。"
-      }
+      },
+      "answerFormat": "expression-result"
     },
     {
       "id": "E-M-1361",
@@ -7243,7 +7669,8 @@
         "src": "../assets/math-mistakes/eddey-upgrade-split-1402.svg",
         "alt": "把乘数拆成两部分",
         "caption": "教学分块示意，不按数值比例绘制；两块表示对应的部分积。"
-      }
+      },
+      "answerFormat": "expression-result"
     }
   ],
   "coverage": {
@@ -7308,12 +7735,12 @@
       "方向与看图": 11
     }
   },
-  "contentRevision": "2026-10-25-diagrams-provenance-teaching",
+  "contentRevision": "2026-11-01-evidence-review",
   "schemaVersion": 2,
   "syllabus": [
     {
       "category": "计算与检查",
-      "title": "先让每一步算得稳",
+      "title": "每一步只接前一步的结果",
       "prerequisites": [
         "数位与四则计算"
       ],
@@ -7324,11 +7751,26 @@
         "用逆运算复核",
         "回到整题，检查后续是否一起改变"
       ],
-      "check": "独立写中间过程；不能只给最终数。"
+      "check": "独立写中间过程；不能只给最终数。",
+      "lesson": {
+        "logic": [
+          "圈出当前两个数",
+          "写出中间结果",
+          "用逆运算查回来"
+        ],
+        "example": "76＋28－19 = 104－19 = 85",
+        "why": [
+          "先算76＋28，得到104。",
+          "下一步接104减19，得到85。",
+          "85＋19－28＝76，能回到起点。"
+        ],
+        "trap": "不要跳过中间结果，后一步必须接对前一步。",
+        "kind": "自编讲解例子，不计为孩子作答"
+      }
     },
     {
       "category": "运算顺序与括号",
-      "title": "看清先后与整体",
+      "title": "括号把一整块放在前面",
       "prerequisites": [
         "计算与检查"
       ],
@@ -7339,11 +7781,26 @@
         "原位替换中间数，保留运算对象",
         "把合并式拆回原步骤检验"
       ],
-      "check": "说明每层括号管哪一块，再独立列式。"
+      "check": "说明每层括号管哪一块，再独立列式。",
+      "lesson": {
+        "logic": [
+          "先找最后一步",
+          "把中间数原位替换",
+          "检查是否需要括号"
+        ],
+        "example": "先算30＋18，再除以6",
+        "why": [
+          "最后一步是除以6。",
+          "被除数是30＋18这整块，要加括号。",
+          "综合式：(30＋18)÷6＝48÷6＝8。"
+        ],
+        "trap": "30＋18÷6先算18÷6，已经改变题意。",
+        "kind": "自编讲解例子，不计为孩子作答"
+      }
     },
     {
       "category": "运算律与等价变形",
-      "title": "变写法，数量不变",
+      "title": "拆开或合并，数量不变",
       "prerequisites": [
         "计算与检查",
         "运算顺序与括号"
@@ -7355,11 +7812,26 @@
         "每一步只做有依据的等价改写",
         "展开回原式，检查符号和因数次数"
       ],
-      "check": "遮住示范改写一题，并解释为何等值。"
+      "check": "遮住示范改写一题，并解释为何等值。",
+      "lesson": {
+        "logic": [
+          "看项和共同因数",
+          "按规律重新组合",
+          "展开查符号与次数"
+        ],
+        "example": "24×99 = 24×(100－1)",
+        "why": [
+          "99份比100份少1份。",
+          "100份24是2400，少的1份是24。",
+          "2400－24＝2376。"
+        ],
+        "trap": "不是减1：少的是1份24，所以要减24。",
+        "kind": "自编讲解例子，不计为孩子作答"
+      }
     },
     {
       "category": "倒推与逆运算",
-      "title": "从结果找回起点",
+      "title": "倒着走，先撤销最后一步",
       "prerequisites": [
         "计算与检查",
         "运算顺序与括号"
@@ -7371,11 +7843,26 @@
         "逐层用加减或乘除关系还原",
         "把所得起点放回原流程顺算"
       ],
-      "check": "既写倒推式，也能顺算回给定终点。"
+      "check": "既写倒推式，也能顺算回给定终点。",
+      "lesson": {
+        "logic": [
+          "画出原来的顺序",
+          "倒序用逆运算",
+          "顺算回终点验算"
+        ],
+        "example": "原数 → ＋7 → ×3 → 60",
+        "why": [
+          "最后乘3，先用60÷3撤销，得到20。",
+          "前一步加7，再用20－7撤销，得到13。",
+          "顺算：(13＋7)×3＝60。"
+        ],
+        "trap": "倒推不仅换运算，还要把先后顺序倒过来。",
+        "kind": "自编讲解例子，不计为孩子作答"
+      }
     },
     {
       "category": "数量关系与应用",
-      "title": "每个数都对应一个量",
+      "title": "先说每份是什么，再列式",
       "prerequisites": [
         "计算与检查",
         "倒推与逆运算"
@@ -7387,11 +7874,26 @@
         "从已知求中间量，再接到所求",
         "代回总量、比较或效率关系检查"
       ],
-      "check": "说出每一步求的是谁，最后核对问题。"
+      "check": "说出每一步求的是谁，最后核对问题。",
+      "lesson": {
+        "logic": [
+          "标清量与单位",
+          "先求中间量",
+          "接到最后所求量"
+        ],
+        "example": "24元买4盒彩笔，42元买几盒？",
+        "why": [
+          "24÷4＝6元，求每盒彩笔的价格。",
+          "42÷6＝7盒，求后来可以买的盒数。",
+          "综合式：42÷(24÷4)＝7盒。"
+        ],
+        "trap": "内层求每份多少钱，外层求有几份；不能混成总钱数。",
+        "kind": "自编讲解例子，不计为孩子作答"
+      }
     },
     {
       "category": "方向与看图",
-      "title": "固定北向，找准参照点",
+      "title": "固定北向，再找观察点",
       "prerequisites": [
         "东南西北四个方向"
       ],
@@ -7402,11 +7904,26 @@
         "路线每段重新确定起点",
         "用相反方向或反读关系核验"
       ],
-      "check": "遮住解说，在图上指认并完整描述。"
+      "check": "遮住解说，在图上指认并完整描述。",
+      "lesson": {
+        "logic": [
+          "先找北在哪里",
+          "站在指定的观察点",
+          "横纵两个方向合起来"
+        ],
+        "example": "北向上：目标在右上方",
+        "why": [
+          "右边是东，上方是北。",
+          "右上方合起来叫东北。",
+          "问“谁的哪边”，就先站在“谁”那里看。"
+        ],
+        "trap": "参照点换了，方向可能改变；地图上的北并没有转动。",
+        "kind": "自编讲解例子，不计为孩子作答"
+      }
     },
     {
       "category": "单位与完整表达",
-      "title": "让答案真正回答问题",
+      "title": "问什么，就用对应的量回答",
       "prerequisites": [
         "数量关系与应用"
       ],
@@ -7417,8 +7934,28 @@
         "写完整算式与最终答句",
         "用原题对象和单位逐项核对"
       ],
-      "check": "纸笔写完整过程；对照参考不等于独立通过。"
+      "check": "纸笔写完整过程；对照参考不等于独立通过。",
+      "lesson": {
+        "logic": [
+          "圈出所求对象",
+          "对齐单位和时间",
+          "写结果并核对问句"
+        ],
+        "example": "每月修18千米，一个季度修多少？",
+        "why": [
+          "一个季度是3个月。",
+          "18×3＝54，求这个季度的总长度。",
+          "答：一个季度修54千米。"
+        ],
+        "trap": "每月的量乘月份数；不能拿每月的量直接乘天数。",
+        "kind": "自编讲解例子，不计为孩子作答"
+      }
     }
   ],
-  "checkedAt": "2026-10-25"
+  "checkedAt": "2026-11-01",
+  "reviewPlan": {
+    "asOf": "2026-11-01",
+    "evidenceThrough": "2026-10-29T13:16:54.936Z",
+    "policy": "本轮仅保留至少两次未解决错答和未做题。已独立做会移出；单次错、提示后正确、过程待核先放家长记录观察，不计掌握。反复独立出错最先、提示后仍反复错随后、未做最后。历史误判不计错，独立通过后重新累计。未做不等于薄弱。"
+  }
 }

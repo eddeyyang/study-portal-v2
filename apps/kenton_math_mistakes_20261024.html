@@ -7,7 +7,7 @@
   <meta name="study-portal-child-answer" content="child-first-v1">
   <meta name="study-portal-open-answer" content="required">
   <meta name="lesson-audio" content="not-applicable">
-  <meta name="math-bank-release" content="2026-10-25-source-diagram-route">
+  <meta name="math-bank-release" content="2026-11-01-weakest-first">
   <title>Kenton · 数学错题库</title>
   <style>:root{--tap:48px;--paper:#f8f7f2;--ink:#303a50;--muted:#656e80;--identity:#36c5d6;--accent:#14788b;--soft:#e3fbff;--line:#e5e7e8;--success:#236848;--error:#a63d3d;--shadow:0 12px 36px #283f5110}
 body[data-child="eddey"]{--identity:#ff8a5b;--accent:#a74722;--soft:#fff0e6}
@@ -35,6 +35,22 @@ body[data-child="eddey"]{--identity:#ff8a5b;--accent:#a74722;--soft:#fff0e6}
 .repair-panel,.route-panel,.notebook{scroll-margin-top:var(--bank-scroll-offset,12px)}.route-body>.route-practice{margin:0 0 17px}.model-equation.model-prompt{font-size:16px;font-weight:400;line-height:1.7;min-height:0;color:var(--muted)}.model-process{min-width:0}.zoom-toolbar{display:flex;gap:12px;align-items:center;margin:0 0 12px}.zoom-toolbar .button{font-size:13px;padding:8px 13px}.zoom-toolbar>span{font-size:12px;color:var(--muted)}.zoom-scroll img{min-width:0}.diagram-dialog.is-enlarged .zoom-scroll img{width:160%;min-width:620px;max-width:none}.zoom-scroll{max-height:calc(100dvh - 275px)}
 @media(min-width:760px){.model-content.has-graphic{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:20px;align-items:start}.model-content.has-graphic #repairFigures,.model-content.has-graphic #quantityModel{grid-column:1}.model-content.has-graphic .model-process{grid-column:2;grid-row:1}.model-content.has-graphic .teaching-figure{margin:0;padding:9px}.model-content.has-graphic .teaching-figure>img{max-height:320px}.model-content.has-graphic .model-equation{font-size:21px;line-height:1.65}.model-content.has-graphic .model-equation.model-prompt{font-size:16px}.model-content.has-graphic .model-buttons{flex-wrap:wrap}.model-content.has-graphic .model-buttons .button{flex:1 0 42%;padding:9px}.model-content.has-graphic .quantity-equation{font-size:17px}.model-content.has-graphic .quantity-controls .button{flex-basis:40%}}
 @media(max-width:480px){.zoom-scroll{max-height:calc(100dvh - 265px)}}
+
+
+/* Knowledge-first entry: wide map on desktop, readable branches on phones. */
+body.route-mode .lesson-shell{width:min(100%,760px)}
+.route-mode .route-panel{background:#fff;padding:26px}
+.route-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;align-items:start}
+.route-list>li+li{margin-top:0}.route-list>li:has(.route-node[open]){grid-column:1/-1}.route-node{border-left:4px solid var(--identity)}
+.route-node>summary{min-height:88px}.route-node>summary strong{font-size:18px}
+.logic-path{display:flex;list-style:none;margin:16px 0;padding:0;gap:8px;counter-reset:logic}
+.logic-path li{flex:1;background:var(--soft);border-radius:10px;padding:10px;font-size:13px;line-height:1.55;counter-increment:logic}
+.logic-path li:before{content:counter(logic);display:block;font-size:12px;font-weight:700;color:var(--accent);margin-bottom:4px}
+.route-example{padding:17px;background:#f7f8f5;border-radius:14px;margin:16px 0}.route-example h3{margin:8px 0 12px;font-size:19px;line-height:1.5;font-variant-numeric:tabular-nums}
+.route-example ol{padding-left:22px;margin:0;display:grid;gap:9px;font-size:15px;line-height:1.75}
+.route-trap{font-size:14px;line-height:1.75;border-left:3px solid #d3a550;padding-left:12px}.route-trap strong{display:block;color:#80622c;font-size:12px}
+.route-secondary{font-size:13px;color:var(--muted);margin-top:16px}.route-secondary>summary{cursor:pointer;padding:10px 0;min-height:44px}.route-body>.route-practice{margin:18px 0 0}
+@media(max-width:680px){.route-list{grid-template-columns:1fr}.route-mode .route-panel{padding:17px 12px}.route-node>summary strong{font-size:16px}.route-example{padding:14px}.route-example h3{font-size:17px}.logic-path{gap:5px}.logic-path li{padding:8px;font-size:12px}.route-panel .catalog-head{align-items:flex-start}.route-panel #closeRoute{font-size:13px;flex-shrink:0;padding:9px}}
 </style>
   <script>window.DDLearningSyncConfig={manualOnly:true};</script>
   <script src="../assets/learning-sync.js"></script>
@@ -47,18 +63,18 @@ body[data-child="eddey"]{--identity:#ff8a5b;--accent:#a74722;--soft:#fff0e6}
     <div><span class="identity">Kenton · 数学</span><small>本学期的练习，一题一题理清</small></div>
     <button class="icon-button" id="parentButton" type="button" aria-label="家长记录"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4h10v16H5V6h2m2-2h6v4H9V4m0 8h5m-5 4h5"/></svg></button>
   </header>
-  <div class="title-row"><div><h1>数学错题库</h1><p class="subtitle">先自己做。卡住了，就把那一步理清。</p></div><div class="small-count"><strong id="totalCount">—</strong>道可练题</div></div>
+  <div class="title-row"><div><h1>数学错题库</h1><p class="subtitle">先看懂知识关系，再练还没弄清的题。</p></div><div class="small-count"><strong id="totalCount">—</strong>道待做题</div></div>
   <span id="testPill" class="test-pill" hidden>家长测试 · 不记正式成绩</span>
   <section id="loadingPanel" class="loading" aria-live="polite"><p id="loadingText">正在准备题目…</p><button id="retryLoad" class="button" type="button" hidden>重新加载</button></section>
   <div id="workArea" hidden>
-    <div class="route-entry"><span>一题一题练，也可以先理清方法。</span><button id="routeButton" class="button link" type="button" aria-expanded="false" aria-controls="routePanel">知识路线 <span aria-hidden="true">↗</span></button></div>
+    <div class="route-entry"><span>知识与逻辑 → 看例子 → 对应复练</span><button id="routeButton" class="button link" type="button" aria-expanded="false" aria-controls="routePanel">知识路线 <span aria-hidden="true">↗</span></button></div>
     <section id="routePanel" class="route-panel" aria-label="知识路线" hidden>
-      <div class="catalog-head"><div><p class="route-kicker">从会的地方接着走</p><h2>把方法连起来</h2></div><button id="closeRoute" class="button link" type="button">回到这题</button></div>
-      <p class="route-intro">选一个知识点，看清先要会什么，再进入对应题目。顺序是学习建议，不代表你已经掌握。</p>
+      <div class="catalog-head"><div><p class="route-kicker">先把最卡的地方弄清</p><h2>数学知识路线</h2></div><button id="closeRoute" class="button link" type="button">直接复练</button></div>
+      <p class="route-intro">本轮只留反复出错和未做的题。最卡的知识点排在前面，先看懂再练；未做放在后面诊断。</p>
       <ol id="routeList" class="route-list"></ol>
-      <p class="route-footnote">独立做 → 卡点讲解 → 遮住讲回来 → 回原题 → 换题用方法 → 隔天复查</p>
+      <p class="route-footnote">看知识关系 → 用例子弄清为什么 → 收起讲回来 → 对应复练；已会暂放，不重复刷。</p>
     </section>
-    <nav class="filter-row" aria-label="练习范围"><div class="filter-tabs" role="tablist" aria-label="错题范围"><button class="tab" type="button" role="tab" aria-selected="true" data-filter="all">全部题目</button><button class="tab" type="button" role="tab" aria-selected="false" data-filter="important">重点复练</button><button class="tab" type="button" role="tab" aria-selected="false" data-filter="review">待复查</button></div><button id="catalogButton" class="catalog-button" type="button" aria-expanded="false" aria-controls="catalog"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>选题</button></nav>
+    <nav class="filter-row" aria-label="练习范围"><div class="filter-tabs" role="tablist" aria-label="错题范围"><button class="tab" type="button" role="tab" aria-selected="false" data-filter="important">重点复练</button><button class="tab" type="button" role="tab" aria-selected="true" data-filter="review">本轮要练</button></div><button id="catalogButton" class="catalog-button" type="button" aria-expanded="false" aria-controls="catalog"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>选题</button></nav>
     <section class="catalog" id="catalog" aria-label="题目目录" hidden>
       <div class="catalog-head"><h2>按分类选题 <small id="catalogCount"></small></h2><button class="button link" type="button" id="closeCatalog">收起</button></div>
       <div class="catalog-controls"><label class="hidden-input" for="searchInput">搜索题目</label><input id="searchInput" type="search" placeholder="找题目、知识点或材料"><label class="hidden-input" for="categorySelect">题目分类</label><select id="categorySelect"><option value="all">全部分类</option></select><label class="hidden-input" for="diagnosisSelect">关键检查点</label><select id="diagnosisSelect"><option value="all">全部检查点</option></select></div>
@@ -105,9 +121,9 @@ body[data-child="eddey"]{--identity:#ff8a5b;--accent:#a74722;--soft:#fff0e6}
   <section class="parent-panel" id="parentPanel" data-parent-analysis hidden>
     <div class="catalog-head"><h2>Kenton 的练习记录</h2><button id="closeParent" class="button link" type="button">收起</button></div>
     <p>共 <strong id="questionTotal">—</strong> 道可练题。本区只统计这台设备上的实际练习。</p>
-    <div class="summary-grid"><div><strong id="summaryNew">—</strong>待练</div><div><strong id="summaryReview">—</strong>待复查</div><div><strong id="summaryMastered">—</strong>跨日通过</div></div>
+    <p id="reviewSummary" class="status-message" role="status"></p><div class="summary-grid"><div><strong id="summaryNew">—</strong>待练</div><div><strong id="summaryReview">—</strong>待复查</div><div><strong id="summaryMastered">—</strong>已会暂放</div></div>
     <p id="parentPolicy"></p><details><summary>收录范围与来源说明</summary><p id="coverageText"></p></details><details><summary>待核对题面（<span id="pendingSourceCount">0</span>）</summary><ul id="pendingSourceList"></ul></details>
-    <h3>最近练习</h3><ol id="historyList" class="history-list"></ol>
+    <button class="button" type="button" data-filter="all" aria-selected="false">查看历史全部题目（含已会）</button><h3>最近练习</h3><ol id="historyList" class="history-list"></ol>
     <div class="parent-actions"><button class="button" id="exportJSON" type="button">导出备份 JSON</button><button class="button" id="exportMD" type="button">导出可读记录</button><button class="button" id="importButton" type="button">导入练习记录</button><input class="hidden-input" id="importFile" type="file" accept="application/json,.json" aria-label="选择练习记录文件"></div><p id="parentMessage" class="status-message" role="status"></p>
   </section>
 </main>
@@ -120,3 +136,4 @@ body[data-child="eddey"]{--identity:#ff8a5b;--accent:#a74722;--soft:#fff0e6}
 <script src="../assets/math-mistake-bank.js"></script>
 </body>
 </html>
+
