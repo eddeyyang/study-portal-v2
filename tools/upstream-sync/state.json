@@ -1,7 +1,7 @@
 {
 "upstream": "https://study-portal-eta.vercel.app/",
 "initialized_from": "a00e05e",
-"last_sync": "2026-10-31",
+"last_sync": "2026-11-01",
 "files": {
 "apps.html": {
 "sha": "6e2adf9d152d2b8939866fc63b0a13fb18ae1e2ac94b3f47ecf97a7702521842",
@@ -11633,6 +11633,11 @@
 "etag": "\"50c9153c44b2083b357b639b1491c6cd\"",
 "upstream": true
 },
+"apps/weekend_review_atlas_20261030.html": {
+"sha": "623db642b719c078c2e24c2fcc867d05d961aafd68aa75e895fc337072738df0",
+"etag": "\"20d1f3f64ef5653562ca9c9cb8a229a8\"",
+"upstream": true
+},
 "apps/wrong_redo_both.html": {
 "sha": "ac1982abb2d02ef1a7b418653d050eae8dbd61a9b0f47f8b47e425569c61bc5a",
 "etag": "\"fcb731dd87413b450440becfdc58d9d9\"",
@@ -12259,8 +12264,8 @@
 "upstream": true
 },
 "assets/portal-snapshot.js": {
-"sha": "13aadcc002aae5c7178e0502c1c1e758b7406ffa5152af4c8a21bda193dcbea8",
-"etag": "\"8509803824914fe1e4072daddf193210\"",
+"sha": "83731dc8d34562dd19dd07f5adf66e117bd0d5df61a6252c108d0cc07ba4ae13",
+"etag": "\"3c312ce9014100c646579833b71750a8\"",
 "upstream": true
 },
 "assets/portal-support.css": {
@@ -12328,6 +12333,21 @@
 "etag": "\"f945f4e36e8558f5b81849f1756fdafc\"",
 "upstream": true
 },
+"assets/review-atlas/app.js": {
+"sha": "7a8a8db973c691378677e18a423ef7418793bd734396f0872ec8215e3792f395",
+"etag": "\"4437f8ca09805f4600fdb7bc65863cbe\"",
+"upstream": true
+},
+"assets/review-atlas/content.js": {
+"sha": "e503ec313511e1c987ab67149c4f1a843712878b0c692b15fb0344200651283e",
+"etag": "\"51e0776740528ef730403df05217d3bf\"",
+"upstream": true
+},
+"assets/review-atlas/memory.js": {
+"sha": "249cc999167a283421d61e4f0e7011603c63c05f5d01295f3f2f4fa86b898979",
+"etag": "\"31de941920638de3307ed9b94ede8029\"",
+"upstream": true
+},
 "assets/schedule-bookings.js": {
 "sha": "128c22da0e9acb6bddc45bc880fea19c25609a38cacfdbfffb760e3a54a69a78",
 "etag": "\"5fc2cc0830ec535df7b7eea1e7dfd31b\"",
@@ -12364,8 +12384,8 @@
 "upstream": true
 },
 "data/apps.json": {
-"sha": "08f25924d39ad1aa95eeb7bd4d138ec0020f9cf34d100533cfd72f951698f42c",
-"etag": "\"6dd5a00e416a644529c15ccf2ca26e92\"",
+"sha": "f4b6e483fcc639e34c3626c18a7894ad383b9c4fdbce170bf43341ecacc9b299",
+"etag": "\"ca19a6ccd2011c5e105aa44f238f63b5\"",
 "upstream": true
 },
 "data/exam-prep/calendar.json": {

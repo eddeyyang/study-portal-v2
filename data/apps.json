@@ -1,5 +1,165 @@
 [
   {
+    "child": "kenton",
+    "subject": "语文",
+    "title": "哥哥 · 语文知识连起来",
+    "file": "apps/weekend_review_atlas_20261030.html?child=kenton&subject=chinese",
+    "added": "2026-10-30",
+    "updated": "2026-10-30",
+    "navigation": {
+      "state": "active",
+      "kind": "lesson",
+      "period": "2026-autumn",
+      "group": "units",
+      "displayTitle": "哥哥 · 语文知识连起来",
+      "summary": "秋季核心关系：互动理解、遮挡讲回、换题检验、隔天再试。每科一轮约25–30分钟。"
+    }
+  },
+  {
+    "child": "kenton",
+    "subject": "语文",
+    "title": "哥哥 · 语文周末读写背",
+    "file": "apps/weekend_review_atlas_20261030.html?child=kenton&subject=chinese&section=memory",
+    "added": "2026-10-30",
+    "updated": "2026-10-30",
+    "navigation": {
+      "state": "active",
+      "kind": "tool",
+      "period": "2026-autumn",
+      "group": "words",
+      "displayTitle": "哥哥 · 语文周末读写背",
+      "summary": "完整背默清单、来源与要求类型、遮挡写背、提示后与独立完成分开记录。"
+    }
+  },
+  {
+    "child": "kenton",
+    "subject": "数学",
+    "title": "哥哥 · 数学知识连起来",
+    "file": "apps/weekend_review_atlas_20261030.html?child=kenton&subject=math",
+    "added": "2026-10-30",
+    "updated": "2026-10-30",
+    "navigation": {
+      "state": "active",
+      "kind": "lesson",
+      "period": "2026-autumn",
+      "group": "units",
+      "displayTitle": "哥哥 · 数学知识连起来",
+      "summary": "秋季核心关系：互动理解、遮挡讲回、换题检验、隔天再试。每科一轮约25–30分钟。"
+    }
+  },
+  {
+    "child": "kenton",
+    "subject": "英语",
+    "title": "哥哥 · 英语知识连起来",
+    "file": "apps/weekend_review_atlas_20261030.html?child=kenton&subject=english",
+    "added": "2026-10-30",
+    "updated": "2026-10-30",
+    "navigation": {
+      "state": "active",
+      "kind": "lesson",
+      "period": "2026-autumn",
+      "group": "units",
+      "displayTitle": "哥哥 · 英语知识连起来",
+      "summary": "秋季核心关系：互动理解、遮挡讲回、换题检验、隔天再试。每科一轮约25–30分钟。"
+    }
+  },
+  {
+    "child": "kenton",
+    "subject": "英语",
+    "title": "哥哥 · 英语周末读写背",
+    "file": "apps/weekend_review_atlas_20261030.html?child=kenton&subject=english&section=memory",
+    "added": "2026-10-30",
+    "updated": "2026-10-30",
+    "navigation": {
+      "state": "active",
+      "kind": "tool",
+      "period": "2026-autumn",
+      "group": "words",
+      "displayTitle": "哥哥 · 英语周末读写背",
+      "summary": "完整背默清单、来源与要求类型、遮挡写背、提示后与独立完成分开记录。"
+    }
+  },
+  {
+    "child": "eddey",
+    "subject": "语文",
+    "title": "弟弟 · 语文知识连起来",
+    "file": "apps/weekend_review_atlas_20261030.html?child=eddey&subject=chinese",
+    "added": "2026-10-30",
+    "updated": "2026-10-30",
+    "navigation": {
+      "state": "active",
+      "kind": "lesson",
+      "period": "2026-autumn",
+      "group": "units",
+      "displayTitle": "弟弟 · 语文知识连起来",
+      "summary": "秋季核心关系：互动理解、遮挡讲回、换题检验、隔天再试。每科一轮约25–30分钟。"
+    }
+  },
+  {
+    "child": "eddey",
+    "subject": "语文",
+    "title": "弟弟 · 语文周末读写背",
+    "file": "apps/weekend_review_atlas_20261030.html?child=eddey&subject=chinese&section=memory",
+    "added": "2026-10-30",
+    "updated": "2026-10-30",
+    "navigation": {
+      "state": "active",
+      "kind": "tool",
+      "period": "2026-autumn",
+      "group": "words",
+      "displayTitle": "弟弟 · 语文周末读写背",
+      "summary": "完整背默清单、来源与要求类型、遮挡写背、提示后与独立完成分开记录。"
+    }
+  },
+  {
+    "child": "eddey",
+    "subject": "数学",
+    "title": "弟弟 · 数学知识连起来",
+    "file": "apps/weekend_review_atlas_20261030.html?child=eddey&subject=math",
+    "added": "2026-10-30",
+    "updated": "2026-10-30",
+    "navigation": {
+      "state": "active",
+      "kind": "lesson",
+      "period": "2026-autumn",
+      "group": "units",
+      "displayTitle": "弟弟 · 数学知识连起来",
+      "summary": "秋季核心关系：互动理解、遮挡讲回、换题检验、隔天再试。每科一轮约25–30分钟。"
+    }
+  },
+  {
+    "child": "eddey",
+    "subject": "英语",
+    "title": "弟弟 · 英语知识连起来",
+    "file": "apps/weekend_review_atlas_20261030.html?child=eddey&subject=english",
+    "added": "2026-10-30",
+    "updated": "2026-10-30",
+    "navigation": {
+      "state": "active",
+      "kind": "lesson",
+      "period": "2026-autumn",
+      "group": "units",
+      "displayTitle": "弟弟 · 英语知识连起来",
+      "summary": "秋季核心关系：互动理解、遮挡讲回、换题检验、隔天再试。每科一轮约25–30分钟。"
+    }
+  },
+  {
+    "child": "eddey",
+    "subject": "英语",
+    "title": "弟弟 · 英语周末读写背",
+    "file": "apps/weekend_review_atlas_20261030.html?child=eddey&subject=english&section=memory",
+    "added": "2026-10-30",
+    "updated": "2026-10-30",
+    "navigation": {
+      "state": "active",
+      "kind": "tool",
+      "period": "2026-autumn",
+      "group": "words",
+      "displayTitle": "弟弟 · 英语周末读写背",
+      "summary": "完整背默清单、来源与要求类型、遮挡写背、提示后与独立完成分开记录。"
+    }
+  },
+  {
     "child": "eddey",
     "subject": "英语",
     "title": "弟弟 · U5水城旅行册",
