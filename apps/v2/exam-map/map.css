@@ -181,3 +181,4 @@ textarea.answer{resize:vertical;font-size:17px;line-height:1.6}
   .mind .leaf-bg{stroke:#999}
   .reminders{box-shadow:none;border:1px solid #ccc}
 }
+.idea.extra{font-size:16px;font-weight:600;color:var(--ink-2);margin-top:-2px}

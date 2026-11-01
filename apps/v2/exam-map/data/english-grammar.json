@@ -1,0 +1,1898 @@
+{
+ "generated": "tools/exam-map/extract_english.py",
+ "kenton": [
+  {
+   "id": "eg-looks",
+   "title": "单数加 s；复数不加 s",
+   "sub": "谁决定加不加 s",
+   "unit": 3,
+   "pages": "28–29",
+   "source": "新版五上英语课本 pp.28–29 · 语法变形台",
+   "quote": "This one looks like an ice cream cone.",
+   "idea": "一般现在时：第三人称单数 + looks like；I / you / 复数 + look like。",
+   "recall": "先看主语，再决定 look 的样子。",
+   "states": [
+    {
+     "label": "一片叶子",
+     "parts": [
+      "The leaf",
+      "looks like",
+      "a heart."
+     ]
+    },
+    {
+     "label": "几片叶子",
+     "parts": [
+      "The leaves",
+      "look like",
+      "hearts."
+     ]
+    },
+    {
+     "label": "我",
+     "parts": [
+      "I",
+      "look like",
+      "my dad."
+     ]
+    }
+   ],
+   "questions": [
+    {
+     "type": "text",
+     "prompt": "The flower ___ like a star.",
+     "answer": "looks",
+     "aliases": [],
+     "why": "The flower 是第三人称单数。"
+    },
+    {
+     "type": "text",
+     "prompt": "The leaves ___ like little birds.",
+     "answer": "look",
+     "aliases": [],
+     "why": "leaves 是复数，不能加 s。"
+    },
+    {
+     "type": "text",
+     "prompt": "用 look like 写“这些云看起来像羊”。",
+     "answer": "These clouds look like sheep",
+     "aliases": [
+      "The clouds look like sheep"
+     ],
+     "why": "复数 clouds 配 look；sheep 单复数同形。"
+    }
+   ],
+   "tip": "原页圈出 This one／looks 与 The leaves／look；补充 I／you 是为了防止把“一个就加 s”当成通用规则。"
+  },
+  {
+   "id": "eg-does",
+   "title": "does 后原形",
+   "sub": "does 来，动词还原",
+   "unit": 2,
+   "pages": "20",
+   "source": "新版五上英语课本 pp.20 · 语法变形台",
+   "quote": "What does this look like?",
+   "idea": "一般现在时问句：What + does + 第三人称单数 + 动词原形…？复数用 do。",
+   "recall": "问句里的 s，由 does 承担。",
+   "states": [
+    {
+     "label": "先陈述",
+     "parts": [
+      "This",
+      "looks like",
+      "a tree."
+     ]
+    },
+    {
+     "label": "再提问",
+     "parts": [
+      "What",
+      "does",
+      "this",
+      "look like?"
+     ]
+    },
+    {
+     "label": "换成复数",
+     "parts": [
+      "What",
+      "do",
+      "these",
+      "look like?"
+     ]
+    }
+   ],
+   "questions": [
+    {
+     "type": "text",
+     "prompt": "What does it ___ like?",
+     "answer": "look",
+     "aliases": [],
+     "why": "does 后的动词要用原形。"
+    },
+    {
+     "type": "text",
+     "prompt": "What ___ these leaves look like?",
+     "answer": "do",
+     "aliases": [],
+     "why": "these leaves 是复数。"
+    },
+    {
+     "type": "text",
+     "prompt": "把 It looks like a bell. 改为“它看起来像什么？”",
+     "answer": "What does it look like",
+     "aliases": [],
+     "why": "What + does + it + look like？"
+    }
+   ],
+   "tip": ""
+  },
+  {
+   "id": "eg-has",
+   "title": "It has＝它有；Its＝它的",
+   "sub": "它有，还是它的",
+   "unit": 3,
+   "pages": "27–28",
+   "source": "新版五上英语课本 pp.27–28 · 语法变形台",
+   "quote": "It has a stem and many leaves.",
+   "idea": "It has + 东西；Its + 名词。I / you / we / they 用 have。",
+   "recall": "has 说拥有；its 后面要接东西名。",
+   "states": [
+    {
+     "label": "它有",
+     "parts": [
+      "It",
+      "has",
+      "a long stem."
+     ]
+    },
+    {
+     "label": "它的",
+     "parts": [
+      "Its stem",
+      "is",
+      "long."
+     ]
+    },
+    {
+     "label": "它们有",
+     "parts": [
+      "They",
+      "have",
+      "long stems."
+     ]
+    }
+   ],
+   "questions": [
+    {
+     "type": "text",
+     "prompt": "___ roots are in the soil.（它的）",
+     "answer": "Its",
+     "aliases": [],
+     "why": "Its 后面接 roots，表示所属。"
+    },
+    {
+     "type": "text",
+     "prompt": "These plants ___ strong roots.",
+     "answer": "have",
+     "aliases": [],
+     "why": "plants 是复数，用 have。"
+    },
+    {
+     "type": "text",
+     "prompt": "用 has 写“这株植物有大叶子”。",
+     "answer": "This plant has big leaves",
+     "aliases": [
+      "The plant has big leaves"
+     ],
+     "why": "This plant 是单数，配 has。"
+    }
+   ],
+   "tip": ""
+  },
+  {
+   "id": "eg-nouns",
+   "title": "leaf → leaves；many teeth",
+   "sub": "一片叶子到很多片",
+   "unit": 3,
+   "pages": "26–28",
+   "source": "新版五上英语课本 pp.26–28 · 语法变形台",
+   "quote": "That plant has special leaves, like a mouth with many teeth!",
+   "idea": "本页要记：leaf → leaves；tooth → teeth。many 后接可数名词复数。",
+   "recall": "数一数，再选名词的形状。",
+   "states": [
+    {
+     "label": "一片",
+     "parts": [
+      "one",
+      "leaf"
+     ]
+    },
+    {
+     "label": "很多片",
+     "parts": [
+      "many",
+      "leaves"
+     ]
+    },
+    {
+     "label": "很多颗",
+     "parts": [
+      "many",
+      "teeth"
+     ]
+    }
+   ],
+   "questions": [
+    {
+     "type": "text",
+     "prompt": "one leaf → two ___",
+     "answer": "leaves",
+     "aliases": [],
+     "why": "本词的复数是 leaves，不是 leafs。"
+    },
+    {
+     "type": "text",
+     "prompt": "a mouth with many ___（牙齿）",
+     "answer": "teeth",
+     "aliases": [],
+     "why": "many 后用 tooth 的复数 teeth。"
+    },
+    {
+     "type": "text",
+     "prompt": "写出“这株植物有许多叶子”。",
+     "answer": "This plant has many leaves",
+     "aliases": [
+      "The plant has many leaves"
+     ],
+     "why": "主语单数用 has；many 后用 leaves。"
+    }
+   ],
+   "tip": ""
+  },
+  {
+   "id": "eg-compare",
+   "title": "easy → easier；even faster",
+   "sub": "更容易，怎样变",
+   "unit": 1,
+   "pages": "15、22–23",
+   "source": "新版五上英语课本 pp.15、22–23 · 语法变形台",
+   "quote": "With your help, it becomes easier!",
+   "idea": "比较级：tall→taller，nice→nicer，big→bigger，easy→easier；beautiful→more beautiful；good→better（最好 best）。even 可修饰比较级。",
+   "recall": "先看词形，再决定怎样表示“更”。",
+   "states": [
+    {
+     "label": "一般加 er",
+     "parts": [
+      "tall",
+      "→",
+      "taller"
+     ]
+    },
+    {
+     "label": "辅音加 y",
+     "parts": [
+      "easy",
+      "→",
+      "easier"
+     ]
+    },
+    {
+     "label": "重读短词",
+     "parts": [
+      "big",
+      "→",
+      "bigger"
+     ]
+    },
+    {
+     "label": "长词",
+     "parts": [
+      "beautiful",
+      "→",
+      "more beautiful"
+     ]
+    },
+    {
+     "label": "不规则",
+     "parts": [
+      "good",
+      "→",
+      "better",
+      "→",
+      "best"
+     ]
+    }
+   ],
+   "questions": [
+    {
+     "type": "text",
+     "prompt": "easy 的比较级：___",
+     "answer": "easier",
+     "aliases": [],
+     "why": "辅音 + y：去 y，加 ier。"
+    },
+    {
+     "type": "text",
+     "prompt": "He runs even ___.（更快，fast）",
+     "answer": "faster",
+     "aliases": [],
+     "why": "even 修饰比较级 faster。"
+    },
+    {
+     "type": "text",
+     "prompt": "nice / big / good 的比较级依次写出（用空格隔开）。",
+     "answer": "nicer bigger better",
+     "aliases": [],
+     "why": "nice 加 r；big 双写 g；good 不规则。"
+    },
+    {
+     "type": "text",
+     "prompt": "补全“这朵花更漂亮”：This flower is ___.",
+     "answer": "more beautiful",
+     "aliases": [],
+     "why": "beautiful 的比较级用 more beautiful，不加 er。"
+    }
+   ],
+   "tip": "比较级拼写来自 P15 手写笔记；不把 often 当成本页背诵词表。"
+  },
+  {
+   "id": "eg-commands",
+   "title": "动词原形开头；Don’t give up.",
+   "sub": "把句子变成指令",
+   "unit": 1,
+   "pages": "15、21",
+   "source": "新版五上英语课本 pp.15、21 · 语法变形台",
+   "quote": "Stand like a pine tree.",
+   "idea": "肯定祈使句：动词原形开头。否定：Don’t + 动词原形。",
+   "recall": "发出指令，不给动词加 s。",
+   "states": [
+    {
+     "label": "请站好",
+     "parts": [
+      "Stand",
+      "like a pine tree."
+     ]
+    },
+    {
+     "label": "请不要跑",
+     "parts": [
+      "Don't",
+      "run",
+      "here."
+     ]
+    },
+    {
+     "label": "一起试试",
+     "parts": [
+      "Let's",
+      "try",
+      "again."
+     ]
+    }
+   ],
+   "questions": [
+    {
+     "type": "text",
+     "prompt": "___ at us.（看）",
+     "answer": "Look",
+     "aliases": [],
+     "why": "指令用动词原形开头。"
+    },
+    {
+     "type": "text",
+     "prompt": "Don't ___ up.（give）",
+     "answer": "give",
+     "aliases": [],
+     "why": "Don’t 后面不加 s 或 ing。"
+    },
+    {
+     "type": "text",
+     "prompt": "用祈使句写“不要在这里游泳”。",
+     "answer": "Don't swim here",
+     "aliases": [
+      "Do not swim here"
+     ],
+     "why": "Don’t + swim 原形。"
+    }
+   ],
+   "tip": ""
+  },
+  {
+   "id": "eg-to",
+   "title": "to + 原形；learn how to",
+   "sub": "to 后接什么",
+   "unit": 1,
+   "pages": "14、16、19",
+   "source": "新版五上英语课本 pp.14、16、19 · 语法变形台",
+   "quote": "I want to play tug of war.",
+   "idea": "want / need + to + 动词原形；learn how to + 动词原形。",
+   "recall": "想做、需要做、学会怎么做，都抓住 to do。",
+   "states": [
+    {
+     "label": "想做",
+     "parts": [
+      "I",
+      "want to",
+      "play",
+      "tug of war."
+     ]
+    },
+    {
+     "label": "需要做",
+     "parts": [
+      "You",
+      "need to",
+      "paint",
+      "them."
+     ]
+    },
+    {
+     "label": "学会怎么做",
+     "parts": [
+      "I",
+      "learn how to",
+      "take",
+      "beautiful photos."
+     ]
+    }
+   ],
+   "questions": [
+    {
+     "type": "text",
+     "prompt": "I want to ___ tug of war.（play）",
+     "answer": "play",
+     "aliases": [],
+     "why": "这里 to 后面用动词原形。"
+    },
+    {
+     "type": "text",
+     "prompt": "I learn how to ___ photos.（take）",
+     "answer": "take",
+     "aliases": [],
+     "why": "how to take：怎么拍。"
+    },
+    {
+     "type": "text",
+     "prompt": "写“我需要画一棵树”。",
+     "answer": "I need to draw a tree",
+     "aliases": [],
+     "why": "need to + draw 原形。"
+    }
+   ],
+   "tip": ""
+  },
+  {
+   "id": "eg-future",
+   "title": "打算；There will be…",
+   "sub": "把打算放到以后",
+   "unit": 1,
+   "pages": "16；Unit 2 朗读纸",
+   "source": "新版五上英语课本 pp.16；Unit 2 朗读纸 · 语法变形台",
+   "quote": "I’m going to take more nice photos for my family and friends.",
+   "idea": "打算做：am / is / are going to + 原形。将会有：There will be + 事物。",
+   "recall": "主语决定 am / is / are；will 后保留 be。",
+   "states": [
+    {
+     "label": "我的打算",
+     "parts": [
+      "I",
+      "am going to",
+      "take",
+      "photos."
+     ]
+    },
+    {
+     "label": "他的打算",
+     "parts": [
+      "He",
+      "is going to",
+      "take",
+      "photos."
+     ]
+    },
+    {
+     "label": "将会有",
+     "parts": [
+      "There",
+      "will be",
+      "a garden party."
+     ]
+    }
+   ],
+   "questions": [
+    {
+     "type": "text",
+     "prompt": "She ___ going to draw.",
+     "answer": "is",
+     "aliases": [],
+     "why": "She 配 is。"
+    },
+    {
+     "type": "text",
+     "prompt": "There will ___ a garden party.",
+     "answer": "be",
+     "aliases": [],
+     "why": "will 后用 be，不是 is。"
+    },
+    {
+     "type": "text",
+     "prompt": "写“他们打算拍照”。",
+     "answer": "They are going to take photos",
+     "aliases": [
+      "They are going to take pictures"
+     ],
+     "why": "They 配 are，后接 going to take。"
+    }
+   ],
+   "tip": ""
+  },
+  {
+   "id": "eg-suggest",
+   "title": "How about…？；Let’s try again.",
+   "sub": "把建议说出来",
+   "unit": 1,
+   "pages": "14、23",
+   "source": "新版五上英语课本 pp.14、23 · 语法变形台",
+   "quote": "How about bamboo?",
+   "idea": "How about + 名词 / 动词-ing？Let’s + 动词原形。",
+   "recall": "同样提建议，后面的动词样子不同。",
+   "states": [
+    {
+     "label": "给一个选项",
+     "parts": [
+      "How about",
+      "bamboo?"
+     ]
+    },
+    {
+     "label": "建议做一件事",
+     "parts": [
+      "How about",
+      "drawing",
+      "bamboo?"
+     ]
+    },
+    {
+     "label": "一起做",
+     "parts": [
+      "Let's",
+      "draw",
+      "bamboo."
+     ]
+    }
+   ],
+   "questions": [
+    {
+     "type": "text",
+     "prompt": "How about ___ bamboo?（draw）",
+     "answer": "drawing",
+     "aliases": [],
+     "why": "How about 后接动作的 ing 形式。"
+    },
+    {
+     "type": "text",
+     "prompt": "Let's ___ again.（try）",
+     "answer": "try",
+     "aliases": [],
+     "why": "Let’s 后用动词原形。"
+    },
+    {
+     "type": "text",
+     "prompt": "用 How about 建议“踢足球怎么样？”",
+     "answer": "How about playing football",
+     "aliases": [
+      "How about playing soccer"
+     ],
+     "why": "How about + playing football？"
+    }
+   ],
+   "tip": "How about + 动词-ing 是对 P14 名词例句的必要结构补充，练习句为改编。"
+  },
+  {
+   "id": "eg-modal",
+   "title": "should paint；can run",
+   "sub": "should 后保持原形",
+   "unit": 1,
+   "pages": "14；Unit 2 朗读纸",
+   "source": "新版五上英语课本 pp.14；Unit 2 朗读纸 · 语法变形台",
+   "quote": "What do you think I should paint?",
+   "idea": "should / can + 动词原形；不随 he / she / it 加 s。",
+   "recall": "情态动词后，动作保持原形。",
+   "states": [
+    {
+     "label": "应该",
+     "parts": [
+      "He",
+      "should",
+      "paint",
+      "the pot."
+     ]
+    },
+    {
+     "label": "能够",
+     "parts": [
+      "He",
+      "can",
+      "paint",
+      "the pot."
+     ]
+    },
+    {
+     "label": "换成他们",
+     "parts": [
+      "They",
+      "should",
+      "paint",
+      "the pot."
+     ]
+    }
+   ],
+   "questions": [
+    {
+     "type": "text",
+     "prompt": "She should ___ the brush pot.（paint）",
+     "answer": "paint",
+     "aliases": [],
+     "why": "should 后用原形。"
+    },
+    {
+     "type": "text",
+     "prompt": "He can ___ fast.（run）",
+     "answer": "run",
+     "aliases": [],
+     "why": "can 后用原形，不能 runs。"
+    },
+    {
+     "type": "text",
+     "prompt": "写“他应该慢下来”。",
+     "answer": "He should slow down",
+     "aliases": [],
+     "why": "should 后接 slow 原形。"
+    }
+   ],
+   "tip": ""
+  },
+  {
+   "id": "eg-hard",
+   "title": "做……难",
+   "sub": "把难做的事接上",
+   "unit": 1,
+   "pages": "15",
+   "source": "新版五上英语课本 pp.15 · 语法变形台",
+   "quote": "It’s hard to draw the leaves!",
+   "idea": "It is + 形容词 + to + 动词原形。It’s hard to…＝做……很难。",
+   "recall": "先说难不难，再用 to 接上做什么。",
+   "states": [
+    {
+     "label": "画叶子",
+     "parts": [
+      "It is",
+      "hard",
+      "to draw",
+      "the leaves."
+     ]
+    },
+    {
+     "label": "画竹子",
+     "parts": [
+      "It is",
+      "easy",
+      "to draw",
+      "bamboo."
+     ]
+    },
+    {
+     "label": "换一件事",
+     "parts": [
+      "It is",
+      "hard",
+      "to play",
+      "this game."
+     ]
+    }
+   ],
+   "questions": [
+    {
+     "type": "text",
+     "prompt": "It's hard ___ draw the leaves.",
+     "answer": "to",
+     "aliases": [],
+     "why": "形容词后用 to 接上动作。"
+    },
+    {
+     "type": "text",
+     "prompt": "It's easy to ___ photos.（take）",
+     "answer": "take",
+     "aliases": [],
+     "why": "to 后接动词原形。"
+    },
+    {
+     "type": "text",
+     "prompt": "写“玩这个游戏很难”。",
+     "answer": "It is hard to play this game",
+     "aliases": [
+      "It's hard to play this game"
+     ],
+     "why": "It is hard to + play this game。"
+    }
+   ],
+   "tip": ""
+  },
+  {
+   "id": "eg-as",
+   "title": "一样快；even faster",
+   "sub": "一样快与更快",
+   "unit": 2,
+   "pages": "20、22",
+   "source": "新版五上英语课本 pp.20、22 · 语法变形台",
+   "quote": "As fast as the wind.",
+   "idea": "as + 原级 + as＝和……一样；比较级表示“更”。as fast as；even faster。",
+   "recall": "一样快保留 fast；更快才变 faster。",
+   "states": [
+    {
+     "label": "一样快",
+     "parts": [
+      "He runs",
+      "as fast as",
+      "the wind."
+     ]
+    },
+    {
+     "label": "更快",
+     "parts": [
+      "He runs",
+      "faster",
+      "than me."
+     ]
+    },
+    {
+     "label": "甚至更快",
+     "parts": [
+      "He runs",
+      "even faster."
+     ]
+    }
+   ],
+   "questions": [
+    {
+     "type": "text",
+     "prompt": "as ___ as the wind（fast）",
+     "answer": "fast",
+     "aliases": [],
+     "why": "as…as 中间用原级。"
+    },
+    {
+     "type": "text",
+     "prompt": "He runs even ___.（fast）",
+     "answer": "faster",
+     "aliases": [],
+     "why": "even 可以修饰比较级。"
+    },
+    {
+     "type": "text",
+     "prompt": "补全“她和我一样高”：She is ___ me.",
+     "answer": "as tall as",
+     "aliases": [],
+     "why": "as + tall 原级 + as。"
+    }
+   ],
+   "tip": "than 的例句是帮助比较用法的改编句。"
+  },
+  {
+   "id": "eg-because",
+   "title": "喜好 → 理由",
+   "sub": "给喜欢接上理由",
+   "unit": 2,
+   "pages": "24",
+   "source": "新版五上英语课本 pp.24 · 语法变形台",
+   "quote": "I like it because it is very exciting.",
+   "idea": "I like… because + 完整句子。because 后说清“谁怎么样”。",
+   "recall": "理由里面也要有主语和动词。",
+   "states": [
+    {
+     "label": "先说喜欢",
+     "parts": [
+      "I like",
+      "kite-flying."
+     ]
+    },
+    {
+     "label": "接上理由",
+     "parts": [
+      "I like",
+      "kite-flying",
+      "because",
+      "it is exciting."
+     ]
+    },
+    {
+     "label": "换个理由",
+     "parts": [
+      "I like",
+      "kite-flying",
+      "because",
+      "it is fun."
+     ]
+    }
+   ],
+   "questions": [
+    {
+     "type": "text",
+     "prompt": "I like it ___ it is exciting.",
+     "answer": "because",
+     "aliases": [],
+     "why": "because 引出原因。"
+    },
+    {
+     "type": "text",
+     "prompt": "补全理由：because ___ interesting.",
+     "answer": "it is",
+     "aliases": [],
+     "why": "形容词前补出主语 it 和 be 动词 is。"
+    },
+    {
+     "type": "text",
+     "prompt": "用 because 写“我喜欢这个游戏，因为它很有趣”。",
+     "answer": "I like this game because it is interesting",
+     "aliases": [],
+     "why": "喜欢的对象 + because + it is interesting。"
+    }
+   ],
+   "tip": ""
+  },
+  {
+   "id": "eg-with",
+   "title": "带有；be covered with",
+   "sub": "with 把特征接上",
+   "unit": 3,
+   "pages": "28；Unit 3 朗读纸",
+   "source": "新版五上英语课本 pp.28；Unit 3 朗读纸 · 语法变形台",
+   "quote": "That plant has special leaves, like a mouth with many teeth!",
+   "idea": "with + 名词＝带有……；be covered with＝被……覆盖。",
+   "recall": "有两种位置：直接接特征，或跟在 covered 后。",
+   "states": [
+    {
+     "label": "带有特征",
+     "parts": [
+      "a mouth",
+      "with",
+      "many teeth"
+     ]
+    },
+    {
+     "label": "一面墙",
+     "parts": [
+      "The wall",
+      "is covered with",
+      "plants."
+     ]
+    },
+    {
+     "label": "几面墙",
+     "parts": [
+      "The walls",
+      "are covered with",
+      "plants."
+     ]
+    }
+   ],
+   "questions": [
+    {
+     "type": "text",
+     "prompt": "a mouth ___ many teeth",
+     "answer": "with",
+     "aliases": [],
+     "why": "with + 名词，表示带有。"
+    },
+    {
+     "type": "text",
+     "prompt": "The wall is covered ___ plants.",
+     "answer": "with",
+     "aliases": [],
+     "why": "be covered with 是整组搭配。"
+    },
+    {
+     "type": "text",
+     "prompt": "写“这些墙被植物覆盖”。",
+     "answer": "These walls are covered with plants",
+     "aliases": [
+      "The walls are covered with plants"
+     ],
+     "why": "复数 walls 配 are covered with。"
+    }
+   ],
+   "tip": ""
+  }
+ ],
+ "eddey": [
+  {
+   "id": "eg-helpdo",
+   "title": "help + 人 + 动词原形",
+   "sub": "帮谁，做什么",
+   "unit": 2,
+   "pages": "18–19",
+   "source": "新版四上英语课本 pp.18–19 · 语法变形台",
+   "quote": "James often helps other students learn English.",
+   "idea": "help / helps + 人 + 动词原形。he / she 后用 helps，后一个动作不加 s。",
+   "recall": "helps 管“谁帮忙”；learn 管“做什么”。",
+   "states": [
+    {
+     "label": "他帮忙",
+     "parts": [
+      "He",
+      "helps",
+      "me",
+      "learn English."
+     ]
+    },
+    {
+     "label": "他们帮忙",
+     "parts": [
+      "They",
+      "help",
+      "me",
+      "learn English."
+     ]
+    },
+    {
+     "label": "换个动作",
+     "parts": [
+      "He",
+      "helps",
+      "me",
+      "draw pictures."
+     ]
+    }
+   ],
+   "questions": [
+    {
+     "type": "text",
+     "prompt": "She helps me ___ the room.（clean）",
+     "answer": "clean",
+     "aliases": [
+      "to clean"
+     ],
+     "why": "help + 人后面的动作保持原形。"
+    },
+    {
+     "type": "text",
+     "prompt": "He ___ his brother draw.（help）",
+     "answer": "helps",
+     "aliases": [],
+     "why": "He 是第三人称单数，help 变 helps。"
+    },
+    {
+     "type": "text",
+     "prompt": "写“她帮我学英语”。",
+     "answer": "She helps me learn English",
+     "aliases": [
+      "She helps me to learn English"
+     ],
+     "why": "help 后可用 do 或 to do；课本本单元练 help + 人 + do。"
+    }
+   ],
+   "tip": "教辅解释 help sb (to) do sth 两种都合语法；跟练沿用书上不带 to 的写法，独立造句两种均接受。"
+  },
+  {
+   "id": "eg-helpwith",
+   "title": "help 人 with 事",
+   "sub": "动作和事情分两路",
+   "unit": 2,
+   "pages": "17、19",
+   "source": "新版四上英语课本 pp.17、19 · 语法变形台",
+   "quote": "She often helps James with his Chinese.",
+   "idea": "help + 人 + with + 事情；help + 人 + 动词原形。",
+   "recall": "后面是学科或事情，用 with 接起来。",
+   "states": [
+    {
+     "label": "接事情",
+     "parts": [
+      "She",
+      "helps",
+      "me",
+      "with English."
+     ]
+    },
+    {
+     "label": "接动作",
+     "parts": [
+      "She",
+      "helps",
+      "me",
+      "learn English."
+     ]
+    },
+    {
+     "label": "换个学科",
+     "parts": [
+      "She",
+      "helps",
+      "me",
+      "with maths."
+     ]
+    }
+   ],
+   "questions": [
+    {
+     "type": "text",
+     "prompt": "She helps James ___ his Chinese.",
+     "answer": "with",
+     "aliases": [],
+     "why": "his Chinese 是事情，用 with 连接。"
+    },
+    {
+     "type": "text",
+     "prompt": "She helps me ___ English.（learn）",
+     "answer": "learn",
+     "aliases": [
+      "to learn"
+     ],
+     "why": "动作 learn 直接用原形。"
+    },
+    {
+     "type": "text",
+     "prompt": "用 with 写“他帮我学数学”。",
+     "answer": "He helps me with maths",
+     "aliases": [
+      "He helps me with math"
+     ],
+     "why": "help + 人 + with + 学科。"
+    }
+   ],
+   "tip": ""
+  },
+  {
+   "id": "eg-goodat",
+   "title": "at + 名词 / 动词-ing",
+   "sub": "at 后面换成 ing",
+   "unit": 2,
+   "pages": "17、22",
+   "source": "新版四上英语课本 pp.17、22 · 语法变形台",
+   "quote": "She is good at painting pictures.",
+   "idea": "be good at + 名词 / 动词-ing。擅长画画：be good at drawing。",
+   "recall": "at 后接动作，把它变成 ing 形式。",
+   "states": [
+    {
+     "label": "接运动名",
+     "parts": [
+      "She",
+      "is good at",
+      "football."
+     ]
+    },
+    {
+     "label": "接动作",
+     "parts": [
+      "She",
+      "is good at",
+      "playing football."
+     ]
+    },
+    {
+     "label": "换成他们",
+     "parts": [
+      "They",
+      "are good at",
+      "playing football."
+     ]
+    }
+   ],
+   "questions": [
+    {
+     "type": "text",
+     "prompt": "He is good at ___ pictures.（paint）",
+     "answer": "painting",
+     "aliases": [],
+     "why": "at 后面的动作要用 ing 形式。"
+    },
+    {
+     "type": "text",
+     "prompt": "They ___ good at English.",
+     "answer": "are",
+     "aliases": [],
+     "why": "They 配 are。"
+    },
+    {
+     "type": "text",
+     "prompt": "写“她擅长画画”。",
+     "answer": "She is good at drawing",
+     "aliases": [
+      "She is good at drawing pictures",
+      "She is good at painting",
+      "She is good at painting pictures"
+     ],
+     "why": "She + is good at + drawing / painting。"
+    }
+   ],
+   "tip": ""
+  },
+  {
+   "id": "eg-third",
+   "title": "he 是第三人称单数：tell → tells",
+   "sub": "He 换成 They",
+   "unit": 2,
+   "pages": "17–18",
+   "source": "新版四上英语课本 pp.17–18 · 语法变形台",
+   "quote": "He often tells interesting stories.",
+   "idea": "一般现在时：he / she / it 后，动作常加 s；I / you / we / they 后用原形。often＝经常；always＝总是。",
+   "recall": "先看谁做，再改第一个动作。",
+   "states": [
+    {
+     "label": "他经常",
+     "parts": [
+      "He",
+      "often",
+      "tells",
+      "interesting stories."
+     ]
+    },
+    {
+     "label": "他们经常",
+     "parts": [
+      "They",
+      "often",
+      "tell",
+      "interesting stories."
+     ]
+    },
+    {
+     "label": "她总是",
+     "parts": [
+      "She",
+      "always",
+      "tells",
+      "interesting stories."
+     ]
+    }
+   ],
+   "questions": [
+    {
+     "type": "text",
+     "prompt": "He often ___ stories.（tell）",
+     "answer": "tells",
+     "aliases": [],
+     "why": "He 是第三人称单数。"
+    },
+    {
+     "type": "text",
+     "prompt": "They often ___ stories.（tell）",
+     "answer": "tell",
+     "aliases": [],
+     "why": "They 是复数，用原形。"
+    },
+    {
+     "type": "text",
+     "prompt": "写“她经常帮助我”。",
+     "answer": "She often helps me",
+     "aliases": [],
+     "why": "She 配 helps；often 放在 helps 前。"
+    }
+   ],
+   "tip": ""
+  },
+  {
+   "id": "eg-does",
+   "title": "does 后用动词原形",
+   "sub": "问句里的 s 搬家",
+   "unit": 2,
+   "pages": "22",
+   "source": "新版四上英语课本 pp.22 · 语法变形台",
+   "quote": "What does he/she want to be?",
+   "idea": "Does + he / she + 动词原形…？What does he / she want to be?",
+   "recall": "陈述用 wants；does 来了就用 want。",
+   "states": [
+    {
+     "label": "说愿望",
+     "parts": [
+      "He",
+      "wants to be",
+      "a teacher."
+     ]
+    },
+    {
+     "label": "问愿望",
+     "parts": [
+      "What",
+      "does",
+      "he",
+      "want to be?"
+     ]
+    },
+    {
+     "label": "问是否",
+     "parts": [
+      "Does",
+      "he",
+      "want to be",
+      "a teacher?"
+     ]
+    }
+   ],
+   "questions": [
+    {
+     "type": "text",
+     "prompt": "What does she ___ to be?",
+     "answer": "want",
+     "aliases": [],
+     "why": "does 后用 want 原形。"
+    },
+    {
+     "type": "text",
+     "prompt": "___ he often help others?",
+     "answer": "Does",
+     "aliases": [],
+     "why": "主语 he，提问用 Does。"
+    },
+    {
+     "type": "text",
+     "prompt": "把 He often helps me. 改成一般疑问句。",
+     "answer": "Does he often help me",
+     "aliases": [],
+     "why": "Does 移到句首；helps 变 help。"
+    }
+   ],
+   "tip": ""
+  },
+  {
+   "id": "eg-wantbe",
+   "title": "想成为",
+   "sub": "把愿望接完整",
+   "unit": 2,
+   "pages": "17、22",
+   "source": "新版四上英语课本 pp.17、22 · 语法变形台",
+   "quote": "Shenshen wants to be a writer.",
+   "idea": "want / wants + to be + a / an + 职业。he / she 用 wants。",
+   "recall": "想成为谁，别漏掉 to be。",
+   "states": [
+    {
+     "label": "我想成为",
+     "parts": [
+      "I",
+      "want to be",
+      "a teacher."
+     ]
+    },
+    {
+     "label": "她想成为",
+     "parts": [
+      "She",
+      "wants to be",
+      "a teacher."
+     ]
+    },
+    {
+     "label": "英语老师",
+     "parts": [
+      "She",
+      "wants to be",
+      "an English teacher."
+     ]
+    }
+   ],
+   "questions": [
+    {
+     "type": "text",
+     "prompt": "He wants ___ a painter.",
+     "answer": "to be",
+     "aliases": [],
+     "why": "成为某种职业，用 to be。"
+    },
+    {
+     "type": "text",
+     "prompt": "She wants to be ___ English teacher.",
+     "answer": "an",
+     "aliases": [],
+     "why": "English 开头是元音音素，选 an。"
+    },
+    {
+     "type": "text",
+     "prompt": "写“我想成为一名画家”。",
+     "answer": "I want to be a painter",
+     "aliases": [],
+     "why": "I + want to be + a painter。"
+    }
+   ],
+   "tip": ""
+  },
+  {
+   "id": "eg-progressive",
+   "title": "am / is / are + 动词-ing",
+   "sub": "正在做，要两块",
+   "unit": 3,
+   "pages": "26–27",
+   "source": "新版四上英语课本 pp.26–27 · 语法变形台",
+   "quote": "The baby elephant is swimming in the river.",
+   "idea": "现在进行时：主语 + am / is / are + 动词-ing。I 配 am；单数 he / she / it 配 is；you / 复数配 are。",
+   "recall": "正在做，要同时有 be 和 ing。",
+   "states": [
+    {
+     "label": "一只在游",
+     "parts": [
+      "The baby elephant",
+      "is",
+      "swimming",
+      "in the river."
+     ]
+    },
+    {
+     "label": "几只在游",
+     "parts": [
+      "The baby elephants",
+      "are",
+      "swimming",
+      "in the river."
+     ]
+    },
+    {
+     "label": "我在游",
+     "parts": [
+      "I",
+      "am",
+      "swimming",
+      "in the river."
+     ]
+    }
+   ],
+   "questions": [
+    {
+     "type": "text",
+     "prompt": "Look! The monkey ___ playing.",
+     "answer": "is",
+     "aliases": [],
+     "why": "单数 monkey 配 is。"
+    },
+    {
+     "type": "text",
+     "prompt": "The monkeys are ___ in the trees.（play）",
+     "answer": "playing",
+     "aliases": [],
+     "why": "are 后还要动词-ing。"
+    },
+    {
+     "type": "text",
+     "prompt": "写“这些猴子正在爬树”。",
+     "answer": "These monkeys are climbing trees",
+     "aliases": [
+      "The monkeys are climbing trees"
+     ],
+     "why": "复数 monkeys + are + climbing。"
+    }
+   ],
+   "tip": "课本 the elephant family are playing 强调一家成员，沿用教材 are；不把 family 永远教成只能配 is。"
+  },
+  {
+   "id": "eg-ing",
+   "title": "swim → swimming；give → giving",
+   "sub": "ing 怎么接上去",
+   "unit": 3,
+   "pages": "27",
+   "source": "新版四上英语课本 pp.27 · 语法变形台",
+   "quote": "The baby elephant is swimming in the river.",
+   "idea": "本页记三种：play→playing；give→giving（去不发音 e）；swim→swimming（双写 m）。",
+   "recall": "不同词尾，用不同接法。",
+   "states": [
+    {
+     "label": "直接加",
+     "parts": [
+      "play",
+      "+ ing",
+      "→ playing"
+     ]
+    },
+    {
+     "label": "先去 e",
+     "parts": [
+      "give",
+      "− e + ing",
+      "→ giving"
+     ]
+    },
+    {
+     "label": "先双写",
+     "parts": [
+      "swim",
+      "+ m + ing",
+      "→ swimming"
+     ]
+    }
+   ],
+   "questions": [
+    {
+     "type": "text",
+     "prompt": "swim 的 ing 形式：___",
+     "answer": "swimming",
+     "aliases": [],
+     "why": "swim 要双写 m。"
+    },
+    {
+     "type": "text",
+     "prompt": "give 的 ing 形式：___",
+     "answer": "giving",
+     "aliases": [],
+     "why": "give 去 e，再加 ing。"
+    },
+    {
+     "type": "text",
+     "prompt": "用 give 的正确形式补全：The farmer is ___ the elephants bananas.",
+     "answer": "giving",
+     "aliases": [],
+     "why": "is 后面用 giving；不是 giveing。"
+    }
+   ],
+   "tip": ""
+  },
+  {
+   "id": "eg-from",
+   "title": "be from＝来自；问来源",
+   "sub": "问来自哪里",
+   "unit": 3,
+   "pages": "25–26",
+   "source": "新版四上英语课本 pp.25–26 · 语法变形台",
+   "quote": "Where are you from? We are from Sichuan.",
+   "idea": "Where + am / is / are + 主语 + from？回答：主语 + am / is / are + from + 地名。",
+   "recall": "问地点用 Where，be 跟着主语变。",
+   "states": [
+    {
+     "label": "问你",
+     "parts": [
+      "Where",
+      "are",
+      "you",
+      "from?"
+     ]
+    },
+    {
+     "label": "问它",
+     "parts": [
+      "Where",
+      "is",
+      "it",
+      "from?"
+     ]
+    },
+    {
+     "label": "回答它们",
+     "parts": [
+      "They",
+      "are from",
+      "Yunnan."
+     ]
+    }
+   ],
+   "questions": [
+    {
+     "type": "text",
+     "prompt": "Where ___ it from?",
+     "answer": "is",
+     "aliases": [],
+     "why": "it 配 is。"
+    },
+    {
+     "type": "text",
+     "prompt": "They are ___ Guizhou.",
+     "answer": "from",
+     "aliases": [],
+     "why": "be from 连着记，表示来自。"
+    },
+    {
+     "type": "text",
+     "prompt": "把 They are from Yunnan. 改成询问来源。",
+     "answer": "Where are they from",
+     "aliases": [],
+     "why": "Where + are + they + from？"
+    }
+   ],
+   "tip": ""
+  },
+  {
+   "id": "eg-their",
+   "title": "their＝它们的；our hometown",
+   "sub": "谁和谁的要分清",
+   "unit": 3,
+   "pages": "23、25",
+   "source": "新版四上英语课本 pp.23、25 · 语法变形台",
+   "quote": "Animals and their homes.",
+   "idea": "they＝他们 / 它们；their + 名词＝他们的 / 它们的；we 对应 our。",
+   "recall": "后面接东西名时，用“谁的”。",
+   "states": [
+    {
+     "label": "说它们",
+     "parts": [
+      "They",
+      "are",
+      "monkeys."
+     ]
+    },
+    {
+     "label": "说它们的",
+     "parts": [
+      "Their homes",
+      "are",
+      "in the trees."
+     ]
+    },
+    {
+     "label": "说我们的",
+     "parts": [
+      "Our hometown",
+      "is",
+      "here."
+     ]
+    }
+   ],
+   "questions": [
+    {
+     "type": "text",
+     "prompt": "Animals and ___ homes.（它们的）",
+     "answer": "their",
+     "aliases": [],
+     "why": "homes 前用 their。"
+    },
+    {
+     "type": "text",
+     "prompt": "We love ___ hometown.（我们的）",
+     "answer": "our",
+     "aliases": [],
+     "why": "we 对应“我们的”our。"
+    },
+    {
+     "type": "text",
+     "prompt": "写“它们的家在树上”。",
+     "answer": "Their homes are in the trees",
+     "aliases": [],
+     "why": "their + homes；复数 homes 配 are。"
+    }
+   ],
+   "tip": ""
+  },
+  {
+   "id": "eg-who",
+   "title": "他是谁？；helpful＝乐于助人的",
+   "sub": "是谁，是什么样",
+   "unit": 2,
+   "pages": "15–19、22",
+   "source": "新版四上英语课本 pp.15–19、22 · 语法变形台",
+   "quote": "Who is he?",
+   "idea": "问身份：Who is he / she？说特点：He / She is + 形容词。They are + 形容词。",
+   "recall": "谁用 Who 问；特点用 be 接起来。",
+   "states": [
+    {
+     "label": "问身份",
+     "parts": [
+      "Who",
+      "is",
+      "he?"
+     ]
+    },
+    {
+     "label": "说他的特点",
+     "parts": [
+      "He",
+      "is",
+      "helpful."
+     ]
+    },
+    {
+     "label": "说他们的特点",
+     "parts": [
+      "They",
+      "are",
+      "helpful."
+     ]
+    }
+   ],
+   "questions": [
+    {
+     "type": "text",
+     "prompt": "___ is he?（问他是谁）",
+     "answer": "Who",
+     "aliases": [],
+     "why": "问身份用 Who。"
+    },
+    {
+     "type": "text",
+     "prompt": "They ___ friendly and helpful.",
+     "answer": "are",
+     "aliases": [],
+     "why": "They 配 are。"
+    },
+    {
+     "type": "text",
+     "prompt": "写“她很友好，而且乐于助人”。",
+     "answer": "She is friendly and helpful",
+     "aliases": [],
+     "why": "She + is + 两个形容词，用 and 连接。"
+    }
+   ],
+   "tip": ""
+  },
+  {
+   "id": "eg-u4-meaning",
+   "title": "喜欢、想做、能做",
+   "unit": 4,
+   "pages": "",
+   "source": "新版四上英语 U4 · 单元复习页",
+   "quote": "I like dancing. / I want to dance. / I can dance.",
+   "idea": "先选意思：like 后可接 -ing；want 后接 to＋原形；can 后接原形。",
+   "recall": "",
+   "states": [
+    {
+     "label": "例句",
+     "parts": [
+      "I like dancing.",
+      "I want to dance.",
+      "I can dance."
+     ]
+    }
+   ],
+   "questions": [
+    {
+     "type": "text",
+     "prompt": "We can ___ a cake.（share 的正确形式）",
+     "answer": "share",
+     "aliases": [],
+     "why": "can 后接动词原形 share。"
+    },
+    {
+     "type": "text",
+     "prompt": "I want ___ at the party.（用 dance 补全）",
+     "answer": "to dance",
+     "aliases": [],
+     "why": "want 后接 to，再接动作原形。"
+    },
+    {
+     "type": "text",
+     "prompt": "I like ___.（用 dance 的 -ing 形式）",
+     "answer": "dancing",
+     "aliases": [],
+     "why": "dance 去掉词尾 e，再加 ing；这里明确要求 -ing。"
+    }
+   ],
+   "tip": "like to do 也可以成立。本课对照只强调三种结构，不把 like to dance 判错。"
+  },
+  {
+   "id": "eg-u4-job",
+   "title": "想成为，不是现在就是",
+   "unit": 4,
+   "pages": "",
+   "source": "新版四上英语 U4 · 单元复习页",
+   "quote": "He wants to be a writer. / He is a writer.",
+   "idea": "想成为：want(s) to be；现在是：am / is / are。",
+   "recall": "",
+   "states": [
+    {
+     "label": "例句",
+     "parts": [
+      "He wants to be a writer.",
+      "He is a writer."
+     ]
+    }
+   ],
+   "questions": [
+    {
+     "type": "text",
+     "prompt": "He ___ to be a writer.（只填一个词）",
+     "answer": "wants",
+     "aliases": [],
+     "why": "主语是 He，表达愿望用 wants to be。"
+    }
+   ],
+   "tip": "He、She 表达愿望用 wants。can 后用 be，不用 is。"
+  },
+  {
+   "id": "eg-u4-tradition",
+   "title": "传统与动作",
+   "unit": 4,
+   "pages": "",
+   "source": "新版四上英语 U4 · 单元复习页",
+   "quote": "It is a tradition to eat noodles.",
+   "idea": "a tradition 是一项传统；to 后接动作原形。",
+   "recall": "",
+   "states": [
+    {
+     "label": "例句",
+     "parts": [
+      "It is a tradition to eat noodles."
+     ]
+    }
+   ],
+   "questions": [
+    {
+     "type": "text",
+     "prompt": "It’s a ___ to eat noodles on your birthday.",
+     "answer": "tradition",
+     "aliases": [],
+     "why": "a 后需要名词 tradition；traditional 是形容词。"
+    },
+    {
+     "type": "text",
+     "prompt": "It’s a tradition to ___ a family photo.",
+     "answer": "take",
+     "aliases": [],
+     "why": "to 后接动作原形 take。"
+    }
+   ],
+   "tip": "traditional 是“传统的”，用来修饰名词，不能替换 a tradition。"
+  },
+  {
+   "id": "eg-u4-thanks",
+   "title": "感谢什么，和谁一起",
+   "unit": 4,
+   "pages": "",
+   "source": "新版四上英语 U4 · 单元复习页",
+   "quote": "Thank you for all the time you spend with me.",
+   "idea": "for 引出感谢的事情；with 表示和谁一起。",
+   "recall": "",
+   "states": [
+    {
+     "label": "例句",
+     "parts": [
+      "Thank you for all the time you spend with me."
+     ]
+    }
+   ],
+   "questions": [
+    {
+     "type": "text",
+     "prompt": "Thank you ___ all the time you spend with me.",
+     "answer": "for",
+     "aliases": [],
+     "why": "for 引出感谢的事情。"
+    },
+    {
+     "type": "text",
+     "prompt": "Thank you for all the time you spend ___ me.",
+     "answer": "with",
+     "aliases": [],
+     "why": "with me 表示“陪我、和我一起”。"
+    }
+   ],
+   "tip": "把 for all the time 与 with me 连成词块记。"
+  },
+  {
+   "id": "eg-u4-suggest",
+   "title": "怎样提建议",
+   "unit": 4,
+   "pages": "",
+   "source": "新版四上英语 U4 · 单元复习页",
+   "quote": "How about cooking noodles? / Let’s cook noodles.",
+   "idea": "We can / Let’s 后接原形；How about 后接名词或 -ing。",
+   "recall": "",
+   "states": [
+    {
+     "label": "例句",
+     "parts": [
+      "How about cooking noodles?",
+      "Let’s cook noodles."
+     ]
+    }
+   ],
+   "questions": [
+    {
+     "type": "text",
+     "prompt": "How about ___ noodles?（cook 的正确形式）",
+     "answer": "cooking",
+     "aliases": [],
+     "why": "How about 后接 -ing，cook 直接加 ing。"
+    }
+   ],
+   "tip": "先提出建议，才有 Good idea! 或 Sounds great! 的回应。"
+  },
+  {
+   "id": "eg-u4-negative",
+   "title": "doesn’t 后还原",
+   "unit": 4,
+   "pages": "",
+   "source": "新版四上英语 U4 · 单元复习页",
+   "quote": "She doesn’t write a word.",
+   "idea": "doesn’t 已经说明了人称，后面的动词用原形。",
+   "recall": "",
+   "states": [
+    {
+     "label": "例句",
+     "parts": [
+      "She doesn’t write a word."
+     ]
+    }
+   ],
+   "questions": [
+    {
+     "type": "text",
+     "prompt": "My mother doesn’t ___ a word.（write 的正确形式）",
+     "answer": "write",
+     "aliases": [],
+     "why": "doesn’t 后用原形 write。"
+    }
+   ],
+   "tip": "My mother doesn’t write a word. 不是 doesn’t writes。"
+  },
+  {
+   "id": "eg-u4-time",
+   "title": "时间、所属、复数",
+   "unit": 4,
+   "pages": "",
+   "source": "新版四上英语 U4 · 单元复习页",
+   "quote": "at 9 a.m. / on 27 October / parents’ letters",
+   "idea": "时刻用 at，具体日期用 on；child 的复数是 children。",
+   "recall": "",
+   "states": [
+    {
+     "label": "例句",
+     "parts": [
+      "at 9 a.m.",
+      "on 27 October",
+      "parents’ letters"
+     ]
+    }
+   ],
+   "questions": [
+    {
+     "type": "text",
+     "prompt": "写出 child 的复数。",
+     "answer": "children",
+     "aliases": [],
+     "why": "child 的复数是不规则的 children。"
+    },
+    {
+     "type": "text",
+     "prompt": "写出 activity 的复数。",
+     "answer": "activities",
+     "aliases": [],
+     "why": "辅音字母＋y 结尾，变 y 为 i 再加 es。"
+    },
+    {
+     "type": "text",
+     "prompt": "___ 9 a.m.（填时间介词）",
+     "answer": "at",
+     "aliases": [],
+     "why": "具体时刻前用 at。"
+    },
+    {
+     "type": "text",
+     "prompt": "___ 27 October（填日期介词）",
+     "answer": "on",
+     "aliases": [],
+     "why": "具体日期前用 on。"
+    }
+   ],
+   "tip": "parents’ letters：父母的信；activity → activities；party → parties。"
+  },
+  {
+   "id": "eg-u4-story",
+   "title": "祝愿与转折",
+   "unit": 4,
+   "pages": "",
+   "source": "新版四上英语 U4 · 单元复习页",
+   "quote": "We wish you good health. / It is small, but it is lovely.",
+   "idea": "wish＋人＋祝福；but 前后有转折。",
+   "recall": "",
+   "states": [
+    {
+     "label": "例句",
+     "parts": [
+      "We wish you good health.",
+      "It is small, but it is lovely."
+     ]
+    }
+   ],
+   "questions": [
+    {
+     "type": "text",
+     "prompt": "The gift is small, ___ it is lovely.（填“但是”）",
+     "answer": "but",
+     "aliases": [],
+     "why": "小，但可爱；but 连接转折。"
+    },
+    {
+     "type": "text",
+     "prompt": "We ___ you good health.（填“祝愿”）",
+     "answer": "wish",
+     "aliases": [],
+     "why": "wish＋人＋祝福内容。"
+    }
+   ],
+   "tip": "故事里的 Did you have…? 先读懂“过去有没有”，不扩成整堂过去时。"
+  }
+ ]
+}

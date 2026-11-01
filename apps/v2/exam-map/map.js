@@ -14,7 +14,7 @@ const TEST = ['1', 'true'].includes(params.get('test')) || params.get('mode') ==
 const OV = window.ExamMapOverlay || {};
 let who = ['kenton', 'eddey'].includes(params.get('who')) ? params.get('who') : (['kenton', 'eddey'].includes(params.get('child')) ? params.get('child') : null);
 let subject = SUBJECTS[params.get('subject')] ? params.get('subject') : 'math';
-let graph = null, state = null, storageOK = true, quiz = null, banks = {};
+let graph = null, state = null, storageOK = true, quiz = null, banks = {}, englishPoints = {};
 
 const $ = (s, r = document) => r.querySelector(s);
 const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
@@ -62,6 +62,24 @@ function buildGraph(bank) {
   const mk = (t, extra = {}) => ({ id: t.id, title: t.title, unit: t.unit, source: t.source, idea: t.idea, recall: t.recall, tip: t.tip, chain: chainOf(t), questions: (t.questions || []).map(q => ({ ...q, kind: 'atlas' })), bankItems: [], mistakes: 0, key: keys[t.id] || '', note: notes[t.id] || null, ...extra });
   topics.forEach(t => nodes.set(t.id, mk(t)));
   const branches = units.map((u, i) => ({ id: `u${i + 1}`, unit: i + 1, label: u[0], desc: u[1], chain: u[2], leaves: topics.filter(t => t.unit === i + 1).map(t => t.id) }));
+  // 必考必会补充节点（essentials.js）：按单元插进分支；英语语法点来自 data/english-grammar.json，与已有节点讲同一件事的合并进去
+  const ES = window.ExamMapEssentials || {};
+  const extraList = [...((ES[who] || {})[subject] || []), ...(subject === 'english' ? (englishPoints[who] || []).map(p => ({ id: p.id, unit: p.unit, title: p.title, source: p.source, idea: p.idea, recall: [p.sub, p.recall || (p.quote ? '课本原句：' + p.quote : '')].filter(Boolean).join('——'), model: { type: 'relation', states: p.states }, questions: p.questions, tip: p.tip, essential: true, mergeInto: (ES.englishMerge?.[who] || {})[p.id] })) : [])];
+  for (const x of extraList) {
+    if (!(x.unit <= maxUnit)) continue;
+    const target = x.mergeInto && nodes.get(x.mergeInto);
+    if (target) {
+      target.essential = true;
+      target.questions.push(...(x.questions || []).map(q => ({ ...q, kind: 'atlas' })));
+      target.chain.rows.push(...(x.model?.states || []).map(st => ({ label: st.label, parts: st.parts })));
+      target.extraIdea = [...(target.extraIdea || []), x.idea].filter(Boolean);
+      if (x.source && !String(target.source).includes(x.source)) target.source = `${target.source}；${x.source}`;
+      continue;
+    }
+    if (nodes.has(x.id)) continue;
+    nodes.set(x.id, mk(x, { essential: true }));
+    const b = branches[x.unit - 1]; if (b) b.leaves.push(x.id);
+  }
   // 错题本：补充节点 + 每题落到节点
   if (subject === 'math' && bank) {
     const syl = new Map((bank.syllabus || []).map(s => [s.category, s]));
@@ -115,6 +133,8 @@ function memoryQuestions(n, count) {
     const recite = shuffle(items.filter(i => i.recitation && i.text));
     for (const w of words.slice(0, Math.max(2, count - Math.min(2, recite.length)))) out.push({ kind: 'word', prompt: `看拼音写词语：${w.pinyin}`, answer: w.text, aliases: [], why: `${w.text}（${w.pinyin}）· ${w.lesson}` });
     for (const r of recite.slice(0, 2)) { const q = blankOf(r); if (q) out.push(q); }
+    const idioms = items.filter(i => i.type === '日积月累' && i.meaning && i.text.length === 4);
+    if (idioms.length >= 3) for (const it of shuffle(idioms).slice(0, 2)) { const others = shuffle(idioms.filter(x => x !== it)).slice(0, 2); const opts = shuffle([it, ...others]); out.push({ kind: 'idiom', type: 'choice', prompt: `意思是"${it.meaning}"的成语是？`, options: opts.map(o => o.text), answer: opts.indexOf(it), why: `${it.text}：${it.meaning}（${it.lesson}）` }); }
   } else {
     const ws = shuffle(items.filter(i => i.text && i.meaning));
     for (const w of ws.slice(0, count)) out.push({ kind: 'word', prompt: `写出英文：${w.meaning}`, answer: w.text, aliases: w.accepted || [], why: `${w.text} — ${w.meaning}${w.lesson ? ' · ' + w.lesson : ''}`, lang: 'en' });
@@ -138,7 +158,7 @@ function nodeQuestions(n, { knowledge = 3, bank = 2 } = {}) {
   const out = [];
   if (n.memory) return memoryQuestions(n, knowledge + bank);
   const ks = shuffle(n.questions).sort((a, b) => (a.type === 'open') - (b.type === 'open'));
-  out.push(...ks.slice(0, knowledge));
+  out.push(...ks.slice(0, n.bankItems.length ? knowledge : Math.max(knowledge, 5)));
   const r = state.nodes[n.id] || {};
   const used = new Set(r.usedBank || []);
   const pool = n.bankItems.filter(it => !used.has(it.id)), pool2 = n.bankItems;
@@ -212,7 +232,7 @@ function layout(g, W) {
       const ys = [];
       for (const lid of b.leaves) {
         const n = g.nodes.get(lid);
-        const textW = S.leafW - 30 - (n.key ? 17 : 0) - (wide ? (n.mistakes ? 44 : 10) : 10);
+        const textW = S.leafW - 30 - ((n.key || n.essential) ? 17 : 0) - (wide ? (n.mistakes ? 44 : 10) : 10);
         const lines = wrapText(n.title, S.leafFont, textW); const h = lines.length > 1 ? S.leafH + 16 : S.leafH;
         nodes.push({ kind: 'leaf', id: lid, n, lines, y, h, side: left ? 'L' : 'R' }); ys.push(y + h / 2); y += h + S.leafGap;
       }
@@ -262,7 +282,7 @@ function renderMap() {
       s += `<g class="leaf st-${st}${n.mistakes ? ' has-mist' : ''}" data-node="${esc(n.id)}" tabindex="0" role="button" aria-label="${esc(n.title)}${n.mistakes ? '，错题 ' + n.mistakes : ''}" transform="translate(${nd.x},${nd.y})"><rect class="leaf-bg" width="${nd.w}" height="${nd.h}" rx="11"/>`;
       s += `<circle class="dot" cx="16" cy="${nd.h / 2}" r="5"/>${st === 'pass' ? `<path class="dot-check" d="m13 ${nd.h / 2} 2 2 4-4" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>` : ''}`;
       let tx = 30;
-      if (n.key) { s += `<path class="star" transform="translate(${tx - 2},${nd.h / 2 - 7}) scale(.58)" d="m12 2 2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.2l-6.1 3.4 1.4-6.8L2.2 9.1l6.9-.8Z"/>`; tx += 17; }
+      if (n.key || n.essential) { s += `<path class="star" transform="translate(${tx - 2},${nd.h / 2 - 7}) scale(.58)" d="m12 2 2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.2l-6.1 3.4 1.4-6.8L2.2 9.1l6.9-.8Z"/>`; tx += 17; }
       const lh = L.S.leafFont + 3, y0 = nd.h / 2 - ((nd.lines.length - 1) * lh) / 2;
       s += `<text x="${tx}" y="${y0}" class="l-title" dominant-baseline="central">${nd.lines.map((ln, i) => `<tspan x="${tx}" dy="${i ? lh : 0}">${esc(ln)}</tspan>`).join('')}</text>`;
       if (n.mistakes) { const label = `错${n.mistakes}`, bw = measure(label, 11) + 12; const bx = L.wide ? nd.w - bw - 8 : nd.w - bw - 6, by = L.wide ? nd.h / 2 - 10 : -9; s += `<g class="mist" transform="translate(${bx},${by})"><rect width="${bw}" height="20" rx="10"/><text x="${bw / 2}" y="10" text-anchor="middle" dominant-baseline="central">${esc(label)}</text></g>`; }
@@ -288,7 +308,7 @@ function home() {
   <nav class="tabs" aria-label="科目">${Object.entries(SUBJECTS).map(([k, v]) => `<button class="tab${k === subject ? ' on' : ''}" data-act="subject" data-subject="${k}" aria-pressed="${k === subject}">${v}</button>`).join('')}</nav>
   <section class="bar"><button class="primary" data-act="quick">${icons.bolt}快速过一遍 · 10 题</button><button class="ghost no-print" data-act="print">${icons.print}打印</button><span class="stat num">过关 ${passed} · 再看 ${again} · 未做 ${total - passed - again}</span></section>
   <section id="map" class="map-host" aria-live="polite"></section>
-  <section class="legend"><span><i class="lg-star">${icons.star}</i>知识重点</span><span><i class="lg-mist">错N</i>错题重点（这学期错过的题数）</span><span><i class="lg-dot new"></i>未做</span><span><i class="lg-dot again"></i>再看</span><span><i class="lg-dot pass"></i>过关</span></section>
+  <section class="legend"><span><i class="lg-star">${icons.star}</i>必考必会</span><span><i class="lg-mist">错N</i>错题重点（这学期错过的题数）</span><span><i class="lg-dot new"></i>未做</span><span><i class="lg-dot again"></i>再看</span><span><i class="lg-dot pass"></i>过关</span></section>
   ${rem.length ? `<section class="reminders"><h2>考场三件事</h2><ol>${rem.map(r => `<li>${esc(r)}</li>`).join('')}</ol></section>` : ''}
   <section class="src"><p>${graph.scope ? `<b>考试范围只到 ${subject === 'english' ? 'Unit ' + graph.scope.maxUnit : '第 ' + graph.scope.maxUnit + ' 单元'}</b>（${esc(OV.examScopeNote || '家长告知')}）${graph.scope.hiddenUnits ? `，之后 ${graph.scope.hiddenUnits} 个单元的节点和单词已收起` : ''}。</p><p>` : ''}知识节点来自正式站《知识连起来》的同步内容；${subject === 'math' ? '错题数按这学期数学错题本逐题归类统计' : (mist ? '错题重点来自 10 月订正记录' : '语文、英语还没有结构化错题记录，有记录后会自动标出')}。点任一节点：先看关系，再做 5 题。${storageOK ? '' : '这台设备不能保存记录，本次结果只在当前页面有效。'}</p></section>`;
   renderMap();
@@ -304,10 +324,10 @@ function openNode(id) {
   else if (n.note) mist = `<section class="mist-box"><h3><span class="pill">错 ${n.note.count}</span>订正记录里的错因</h3><ul>${n.note.lines.map(l => `<li>${esc(l)}</li>`).join('')}</ul><p class="tiny">${esc(n.note.source)}</p></section>`;
   const memList = n.memory ? memorySummary(n) : '';
   const hist = r?.asked ? `<p class="tiny">做过 ${r.asked} 题，对 ${r.right}，错 ${r.wrong}；最近 ${r.lastAt ? r.lastAt.slice(0, 10) : ''}${r.lastClean ? ' 全对' : ' 有错'}</p>` : '';
-  sheet(`<header class="sh-head"><div><small>${esc(SUBJECTS[subject])}${n.unit ? ' · 第 ' + n.unit + ' 单元' : ''}${n.key ? ' · <b class="k">★ ' + esc(n.key) + '</b>' : ''}</small><h2>${esc(n.title)}</h2></div><button class="icon-btn" data-act="close" aria-label="关闭">${icons.x}</button></header>
-  <p class="idea">${esc(n.idea)}</p>${n.recall ? `<p class="recall">追问：${esc(n.recall)}</p>` : ''}
+  sheet(`<header class="sh-head"><div><small>${esc(SUBJECTS[subject])}${n.unit ? ' · 第 ' + n.unit + ' 单元' : ''}${n.key ? ' · <b class="k">★ ' + esc(n.key) + '</b>' : n.essential ? ' · <b class="k">★ 必考必会</b>' : ''}</small><h2>${esc(n.title)}</h2></div><button class="icon-btn" data-act="close" aria-label="关闭">${icons.x}</button></header>
+  <p class="idea">${esc(n.idea)}</p>${(n.extraIdea || []).map(x => `<p class="idea extra">${esc(x)}</p>`).join('')}${n.recall ? `<p class="recall">追问：${esc(n.recall)}</p>` : ''}
   ${chainHtml}${memList}${mist}${n.tip ? `<p class="tip">提醒：${esc(n.tip)}</p>` : ''}${hist}
-  <div class="sh-actions"><button class="primary" data-act="quiz" data-node="${esc(n.id)}">${icons.bolt}开始出题 · 5 题</button></div><p class="tiny src">${esc(n.source || '')}</p>`);
+  <div class="sh-actions"><button class="primary" data-act="quiz" data-node="${esc(n.id)}">${icons.bolt}开始出题 · ${n.memory ? 5 : n.bankItems.length ? Math.min(3, n.questions.length) + Math.min(2, n.bankItems.length) : Math.min(5, n.questions.length)} 题</button></div><p class="tiny src">${esc(n.source || '')}</p>`);
 }
 function memorySummary(n) {
   const items = n.memoryItems || [], recite = items.filter(i => i.recitation), words = items.filter(i => !i.recitation);
@@ -431,9 +451,11 @@ async function boot() {
   if (!window.ReviewAtlasData) { $('#app').innerHTML = '<p class="note" style="margin-top:40px">知识点数据没有加载到（assets/review-atlas/content.js）。</p>'; return; }
   load();
   const bank = await loadBank();
+  if (subject === 'english' && !englishPoints.loaded) { try { const r = await fetch((window.ExamMapEssentials?.englishData || 'data/english-grammar.json'), { cache: 'no-store' }); if (r.ok) englishPoints = { ...(await r.json()), loaded: true }; } catch (e) { englishPoints = { loaded: true }; } }
   graph = buildGraph(bank);
   closeSheet();
   home();
+  if (TEST) window.__examMapDebug = { graph, judge, nodeQuestions, bankQuestion };
   window.V2Records?.flush?.();
 }
 boot();
