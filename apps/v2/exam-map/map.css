@@ -1,0 +1,183 @@
+/* 考前脑图（Claude 设计版，2026-11-01）
+   延续 v2 的安静底色：浅底、墨色字，孩子身份一种鲜色（哥哥青蓝、弟弟珊瑚橙）；
+   脑图里只用两种强调：★ 知识重点，红色"错 N"错题重点。 */
+:root{
+  --bg:#f2f4f8; --surface:#fff; --ink:#162236; --ink-2:#3d4960; --muted:#697387; --hair:rgba(22,34,54,.09); --hair-2:rgba(22,34,54,.16);
+  --ok:#14936a; --ok-wash:#e3f5ee; --no:#cc4338; --no-wash:#fdebe8; --warn:#b26a00; --warn-wash:#fff4d6; --star:#e0a106;
+  --kenton:#36c5d6; --kenton-deep:#1d9aab; --kenton-ink:#06363f; --kenton-wash:#e2f7f9;
+  --eddey:#ff8a5b; --eddey-deep:#e2653a; --eddey-ink:#4a1804; --eddey-wash:#ffeee6;
+  --me:#59aef1; --me-deep:#3b8fd6; --me-ink:#0c2b4a; --me-wash:#e6f2fd;
+  --sans:"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans CJK SC","Noto Sans SC",system-ui,sans-serif;
+  --round:ui-rounded,"SF Pro Rounded","PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans CJK SC",system-ui,sans-serif;
+  --shadow:0 1px 2px rgba(22,34,54,.05),0 22px 44px -30px rgba(22,34,54,.38);
+  color-scheme:light;
+}
+body[data-who=kenton]{--me:var(--kenton);--me-deep:var(--kenton-deep);--me-ink:var(--kenton-ink);--me-wash:var(--kenton-wash)}
+body[data-who=eddey]{--me:var(--eddey);--me-deep:var(--eddey-deep);--me-ink:var(--eddey-ink);--me-wash:var(--eddey-wash)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+body{font-family:var(--sans);color:var(--ink);background:radial-gradient(900px 420px at 80% -160px,var(--me-wash),transparent 70%),var(--bg);min-height:100vh;font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+body.sheet-open{overflow:hidden}
+button,input,textarea{font:inherit;color:inherit}
+button{cursor:pointer;border:0;background:none;touch-action:manipulation}
+button:disabled{cursor:default;opacity:.55}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:3px solid var(--ink);outline-offset:3px;border-radius:12px}
+svg{display:block}
+.num{font-variant-numeric:tabular-nums}
+[hidden]{display:none!important}
+.wrap{max-width:720px;margin:0 auto;padding:0 18px 60px}
+@media(min-width:900px){.wrap{max-width:1040px;padding:0 24px 60px}}
+code{font-size:.9em;background:rgba(22,34,54,.06);padding:1px 5px;border-radius:5px}
+.note,.tiny{font-size:13px;color:var(--muted)}
+.tiny{font-size:12px}
+
+/* 顶栏 */
+.topbar{display:flex;align-items:center;gap:10px;min-height:68px;padding:10px 0}
+.icon-btn{display:inline-grid;place-items:center;width:46px;height:46px;flex:none;border-radius:50%;background:rgba(255,255,255,.85);box-shadow:inset 0 0 0 1px var(--hair);color:var(--ink-2)}
+.icon-btn svg{width:20px;height:20px}
+.crumb{min-width:0;flex:1}
+.crumb b{display:block;font-family:var(--round);font-size:17px;font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.crumb small{display:block;font-size:12px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.me-chip{display:inline-flex;align-items:center;gap:8px;min-height:46px;padding:0 14px 0 6px;border-radius:999px;background:rgba(255,255,255,.85);box-shadow:inset 0 0 0 1px var(--hair);font-size:13px;font-weight:700;color:var(--ink-2);flex:none}
+.me-chip i{display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--me);color:var(--me-ink);font-style:normal;font-family:var(--round);font-weight:800;font-size:15px}
+.test-chip{font-size:12px;font-weight:700;color:var(--warn);background:var(--warn-wash);padding:4px 10px;border-radius:999px;flex:none}
+@media(max-width:520px){.me-chip{padding:0 6px}.me-chip .t{display:none}.test-chip{font-size:11px;padding:3px 8px}}
+.mind .leaf .mist rect{stroke:#fff;stroke-width:2}
+
+/* 选人 */
+.choose{padding:30px 0}
+.choose h1{font-family:var(--round);font-size:30px;font-weight:800;margin-bottom:18px}
+.who-grid{display:grid;gap:14px}
+@media(min-width:560px){.who-grid{grid-template-columns:1fr 1fr}}
+.who{display:grid;grid-template-columns:54px 1fr;grid-template-rows:auto auto;column-gap:14px;align-items:center;text-align:left;padding:18px;border-radius:20px;background:var(--surface);box-shadow:var(--shadow)}
+.who i{grid-row:1/3;display:grid;place-items:center;width:54px;height:54px;border-radius:50%;font-style:normal;font-family:var(--round);font-weight:800;font-size:22px;color:#fff}
+.who.kenton i{background:var(--kenton-deep)}.who.eddey i{background:var(--eddey-deep)}
+.who b{font-size:19px;font-family:var(--round);font-weight:800}.who small{color:var(--muted)}
+.choose .note{margin-top:18px}
+
+/* 科目页签、工具条 */
+.tabs{display:flex;gap:6px;padding:4px;border-radius:999px;background:rgba(22,34,54,.06);margin:4px 0 14px}
+.tab{flex:1;min-height:42px;border-radius:999px;font-weight:700;color:var(--ink-2)}
+.tab.on{background:var(--surface);color:var(--ink);box-shadow:0 1px 2px rgba(22,34,54,.12)}
+.bar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:14px}
+.bar .stat{margin-left:auto;font-size:13px;color:var(--muted)}
+.primary{display:inline-flex;align-items:center;gap:8px;min-height:48px;padding:0 20px;border-radius:999px;background:var(--ink);color:#fff;font-weight:800;font-family:var(--round)}
+.primary svg{width:18px;height:18px}
+.ghost{display:inline-flex;align-items:center;gap:8px;min-height:48px;padding:0 16px;border-radius:999px;background:rgba(255,255,255,.85);box-shadow:inset 0 0 0 1px var(--hair);font-weight:700;color:var(--ink-2)}
+.ghost svg{width:18px;height:18px}
+
+/* 脑图 */
+.map-host{background:var(--surface);border-radius:22px;box-shadow:var(--shadow);padding:12px 8px;overflow:hidden}
+.mind{width:100%;height:auto;font-family:var(--sans)}
+.mind .links path{fill:none;stroke:var(--hair-2);stroke-width:2}
+.mind .links path.trunk{stroke:var(--me);stroke-width:3;opacity:.7}
+.mind .center rect{fill:var(--me);stroke:var(--me-deep);stroke-width:1.5}
+.mind .c-main{font-family:var(--round);font-weight:800;font-size:22px;fill:var(--me-ink)}
+.mind .c-sub{font-size:12px;fill:var(--me-ink);opacity:.8}
+.mind .branch rect{fill:var(--me-wash);stroke:var(--me);stroke-width:1.5}
+.mind .branch.hot rect{stroke:var(--no);stroke-dasharray:0}
+.mind .b-main{font-weight:800;font-size:13px;fill:var(--ink)}
+.mind .b-chain{font-size:10px;fill:var(--me-deep);font-weight:600}
+.mind .leaf{cursor:pointer}
+.mind .leaf-bg{fill:#fff;stroke:var(--hair-2);stroke-width:1.2;transition:stroke .15s,fill .15s}
+.mind .leaf:hover .leaf-bg,.mind .leaf:focus-visible .leaf-bg{stroke:var(--ink);fill:#fbfcfe}
+.mind .leaf.has-mist .leaf-bg{stroke:rgba(204,67,56,.55);stroke-width:1.6}
+.mind .l-title{font-size:13px;fill:var(--ink);font-weight:600}
+@media(min-width:760px){.mind .l-title{font-size:14px}}
+.mind .dot{fill:#c9cfdb}
+.mind .st-again .dot{fill:var(--warn)}
+.mind .st-pass .dot{fill:var(--ok)}
+.mind .star{fill:var(--star)}
+.mind .mist rect{fill:var(--no)}
+.mind .mist text{fill:#fff;font-size:11px;font-weight:800}
+.legend{display:flex;flex-wrap:wrap;gap:8px 16px;font-size:12px;color:var(--muted);padding:12px 4px 0}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.lg-star{display:inline-grid;width:14px;height:14px;color:var(--star)}.lg-star svg{width:14px;height:14px}
+.lg-mist{font-style:normal;font-size:10px;font-weight:800;color:#fff;background:var(--no);padding:1px 6px;border-radius:999px}
+.lg-dot{width:10px;height:10px;border-radius:50%;background:#c9cfdb;display:inline-block}
+.lg-dot.again{background:var(--warn)}.lg-dot.pass{background:var(--ok)}
+.reminders{margin-top:20px;background:var(--surface);border-radius:18px;padding:16px 18px;box-shadow:var(--shadow)}
+.reminders h2{font-family:var(--round);font-size:16px;font-weight:800;margin-bottom:6px}
+.reminders ol{padding-left:22px;font-size:15px}
+.reminders li{margin:4px 0}
+.src{margin-top:16px}
+.src p{font-size:12px;color:var(--muted)}
+
+/* 节点面板 / 答题 */
+#sheet{position:fixed;inset:0;background:rgba(22,34,54,.42);z-index:20;display:flex;align-items:flex-end;justify-content:center;overflow:auto;padding:0}
+.sh-panel{width:100%;max-height:92vh;max-height:92dvh;overflow:auto;background:var(--surface);border-radius:24px 24px 0 0;padding:14px 18px calc(22px + env(safe-area-inset-bottom));box-shadow:0 -10px 40px rgba(22,34,54,.25);animation:up .22s ease}
+@keyframes up{from{transform:translateY(24px);opacity:.6}to{transform:none;opacity:1}}
+@media(min-width:760px){#sheet{align-items:center;padding:24px}.sh-panel{width:min(640px,100%);max-height:88vh;border-radius:24px;padding:20px 26px 26px}}
+@media(prefers-reduced-motion:reduce){.sh-panel{animation:none}}
+.sh-head{display:flex;align-items:flex-start;gap:10px;margin-bottom:10px}
+.sh-head>div{flex:1;min-width:0}
+.sh-head small{display:block;font-size:12px;color:var(--muted)}
+.sh-head small .k{color:var(--star);font-weight:800}.sh-head small .k.red{color:var(--no)}
+.sh-head h2{font-family:var(--round);font-size:21px;font-weight:800;line-height:1.3;margin-top:2px}
+.sh-head h2.small{font-size:16px}
+.idea{font-size:19px;font-weight:700;line-height:1.5;margin:6px 0 8px}
+.recall{color:var(--ink-2);font-size:15px;margin-bottom:10px}
+.chain{display:grid;gap:8px;margin:10px 0 14px}
+.chain .passage{font-size:14px;color:var(--ink-2);background:var(--bg);padding:10px 12px;border-radius:12px;white-space:pre-line}
+.chain .row{display:grid;grid-template-columns:76px 1fr;gap:10px;align-items:start;font-size:14px}
+.chain .row b{color:var(--me-deep);font-size:13px;line-height:1.5;padding-top:6px}
+.chain .row span{display:flex;flex-wrap:wrap;align-items:center;gap:4px}
+.chain .row em{font-style:normal;background:var(--me-wash);padding:5px 9px;border-radius:9px;line-height:1.4}
+.chain .row em:last-child{background:var(--ink);color:#fff}
+.chain .arr{font-style:normal;color:var(--muted);padding:0 2px}
+.mist-box{margin:12px 0;padding:12px 14px;border-radius:14px;background:var(--no-wash);border:1px solid rgba(204,67,56,.25)}
+.mist-box h3{font-size:15px;font-weight:800;display:flex;align-items:center;gap:8px}
+.pill{font-size:11px;font-weight:800;color:#fff;background:var(--no);padding:2px 8px;border-radius:999px;flex:none}
+.mist-box .insight{font-weight:700;margin:6px 0 2px}
+.mist-box ul{padding-left:20px;font-size:14px;margin-top:4px}
+.mist-box li{margin:3px 0}
+.mem{margin:8px 0;border:1px solid var(--hair);border-radius:12px;padding:8px 12px;font-size:14px}
+.mem summary{cursor:pointer;font-weight:700;min-height:32px;display:flex;align-items:center}
+.mem ul{padding-left:18px;margin-top:6px}
+.mem li b{display:block}.mem li span{color:var(--muted);font-size:13px}
+.wordcloud{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.wordcloud span{background:var(--bg);padding:3px 9px;border-radius:8px;font-size:13px}
+.wordcloud i{font-style:normal;color:var(--muted);margin-left:5px;font-size:12px}
+.tip{font-size:14px;color:var(--ink-2);margin:8px 0}
+.sh-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+.sh-actions .primary{flex:1;justify-content:center}
+.track{display:flex;gap:4px;margin:4px 0 14px}
+.track span{flex:1;height:5px;border-radius:999px;background:var(--hair-2)}
+.track span.ok{background:var(--ok)}.track span.no{background:var(--no)}.track span.cur{background:var(--ink)}
+.qimg{margin:0 0 12px;background:var(--bg);border-radius:14px;padding:8px}
+.qimg img{max-width:100%;max-height:260px;margin:0 auto;display:block}
+.prompt{font-size:19px;font-weight:700;line-height:1.55;white-space:pre-line;margin-bottom:14px}
+.options{display:grid;gap:8px}
+.option{display:flex;align-items:center;gap:12px;text-align:left;min-height:52px;padding:10px 14px;border-radius:14px;background:var(--bg);box-shadow:inset 0 0 0 1px var(--hair);font-size:17px}
+.option .letter{display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:#fff;font-weight:800;font-size:13px;flex:none;box-shadow:inset 0 0 0 1px var(--hair-2)}
+.field{display:flex;align-items:center;gap:10px}
+.answer{width:100%;min-height:54px;padding:12px 14px;border-radius:14px;border:1.5px solid var(--hair-2);background:#fff;font-size:19px}
+.answer.num{font-variant-numeric:tabular-nums}
+.answer:focus{outline:none;border-color:var(--ink)}
+textarea.answer{resize:vertical;font-size:17px;line-height:1.6}
+.unit{font-size:16px;color:var(--muted);flex:none}
+.q-actions{display:flex;gap:10px;margin-top:12px}
+.q-actions .primary{flex:1;justify-content:center}
+.fb{margin-top:14px;padding:14px;border-radius:14px;background:var(--bg);font-size:15px}
+.fb.ok{background:var(--ok-wash)}.fb.no{background:var(--no-wash)}
+.fb .verdict{display:flex;align-items:center;gap:6px;font-weight:800;font-size:17px}
+.fb.ok .verdict{color:var(--ok)}.fb.no .verdict{color:var(--no)}
+.fb .verdict svg{width:20px;height:20px}
+.fb p{margin:4px 0}
+.fb .hint{font-weight:700}
+.checks label{display:flex;gap:10px;align-items:flex-start;padding:8px 0;min-height:44px;border-bottom:1px solid var(--hair);font-size:15px}
+.checks input{width:22px;height:22px;flex:none;margin-top:2px;accent-color:var(--ok)}
+.again h3{font-size:14px;color:var(--muted);font-weight:700;margin:6px 0}
+.again-item{display:block;width:100%;text-align:left;padding:12px 14px;border-radius:14px;background:var(--warn-wash);margin:6px 0}
+.again-item b{display:block;font-size:16px}.again-item span{font-size:13px;color:var(--ink-2)}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:var(--ink);color:#fff;padding:12px 18px;border-radius:12px;font-size:14px;z-index:30}
+
+@media print{
+  body{background:#fff}
+  .topbar,.tabs,.bar,.legend .lg-dot,.src,#sheet,.toast,.no-print,.me-chip{display:none!important}
+  .wrap{max-width:none;padding:0}
+  .map-host{box-shadow:none;padding:0;border-radius:0}
+  .mind .leaf-bg{stroke:#999}
+  .reminders{box-shadow:none;border:1px solid #ccc}
+}
