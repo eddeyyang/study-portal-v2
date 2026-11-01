@@ -26,23 +26,25 @@ function enqueue(record) {
   flush();
   return rec.id;
 }
+// 返回 'ok'（收下或重复）、'rejected'（接收站不认这条，比如接收站还没登记的新软件）、'fail'（网络不通或接收站出错）
 async function post(endpoint, rec) {
   const ctrl = new AbortController(); const t = setTimeout(() => ctrl.abort(), 12000);
   try {
     const r = await fetch(endpoint, { method: 'POST', mode: 'cors', headers: { 'Content-Type': 'text/plain;charset=UTF-8' }, body: JSON.stringify(rec), signal: ctrl.signal, keepalive: true });
-    return r.ok;
-  } catch (e) { return false; } finally { clearTimeout(t); }
+    return r.ok ? 'ok' : (r.status >= 400 && r.status < 500 ? 'rejected' : 'fail');
+  } catch (e) { return 'fail'; } finally { clearTimeout(t); }
 }
 async function flush() {
   if (flushing) return; flushing = true;
   try {
     const cfg = await loadConfig(); const endpoint = cfg && typeof cfg.endpoint === 'string' && /^https:\/\//.test(cfg.endpoint) ? cfg.endpoint : '';
     if (!endpoint) return;
-    let q = readQueue();
-    while (q.length) {
-      const ok = await post(endpoint, q[0]);
-      if (!ok) break;
-      q = q.slice(1); writeQueue(q);
+    // 被拒收的记录留在本机下次再试，但不再挡住后面的记录（2026-11-01：考前脑图的记录曾被接收站拒收，挡住了整条队列）
+    const sent = new Set();
+    for (const rec of readQueue()) {
+      const r = await post(endpoint, rec);
+      if (r === 'ok') { sent.add(rec.id); writeQueue(readQueue().filter(x => !sent.has(x.id))); }
+      else if (r === 'fail') break;
     }
   } finally { flushing = false; }
 }

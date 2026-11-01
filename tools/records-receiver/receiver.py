@@ -53,7 +53,7 @@ def load_seen():
 
 def valid(rec):
     return (isinstance(rec, dict) and isinstance(rec.get("id"), str) and 8 <= len(rec["id"]) <= 64
-            and rec.get("app") in ("dictation", "math-mistakes", "drone")
+            and rec.get("app") in ("dictation", "math-mistakes", "drone", "exam-map")
             and rec.get("who") in ("kenton", "eddey") and rec.get("mode") in ("formal", "test"))
 
 
