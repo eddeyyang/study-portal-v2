@@ -318,7 +318,7 @@ function home() {
 function openNode(id) {
   const n = graph.nodes.get(id); if (!n) return;
   const r = state.nodes[id];
-  const chainHtml = n.chain.rows.length ? `<div class="chain">${n.chain.passage ? `<p class="passage">${esc(n.chain.passage)}</p>` : ''}${n.chain.rows.map(row => `<div class="row"><b>${esc(row.label)}</b><span>${row.parts.map(p => `<em>${esc(p)}</em>`).join('<i class="arr">→</i>')}</span></div>`).join('')}</div>` : '';
+  const chainHtml = n.chain.rows.length ? `<p class="chain-key"><span class="sw light"></span>线索、中间一步<span class="sw dark"></span>最后得出的结论（要答的那句）</p><div class="chain">${n.chain.passage ? `<p class="passage">${esc(n.chain.passage)}</p>` : ''}${n.chain.rows.map(row => `<div class="row"><b>${esc(row.label)}</b><span>${row.parts.map(p => `<em>${esc(p)}</em>`).join('<i class="arr">→</i>')}</span></div>`).join('')}</div>` : '';
   let mist = '';
   if (n.bankItems?.length) mist = `<section class="mist-box"><h3><span class="pill">错 ${n.mistakes}</span>这学期在这里错过 ${n.mistakes} 题</h3>${n.bankInsight ? `<p class="insight">${esc(n.bankInsight)}</p>` : ''}${n.breakpoints?.length ? `<ul>${n.breakpoints.map(b => `<li>${esc(b)}</li>`).join('')}</ul>` : ''}</section>`;
   else if (n.note) mist = `<section class="mist-box"><h3><span class="pill">错 ${n.note.count}</span>订正记录里的错因</h3><ul>${n.note.lines.map(l => `<li>${esc(l)}</li>`).join('')}</ul><p class="tiny">${esc(n.note.source)}</p></section>`;

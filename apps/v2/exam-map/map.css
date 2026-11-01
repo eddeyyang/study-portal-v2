@@ -182,3 +182,7 @@ textarea.answer{resize:vertical;font-size:17px;line-height:1.6}
   .reminders{box-shadow:none;border:1px solid #ccc}
 }
 .idea.extra{font-size:16px;font-weight:600;color:var(--ink-2);margin-top:-2px}
+.chain-key{display:flex;align-items:center;flex-wrap:wrap;gap:6px;font-size:12px;color:var(--muted);margin:8px 0 -4px}
+.chain-key .sw{display:inline-block;width:14px;height:14px;border-radius:4px;background:var(--me-wash);margin-left:8px}
+.chain-key .sw:first-child{margin-left:0}
+.chain-key .sw.dark{background:var(--ink)}
