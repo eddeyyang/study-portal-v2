@@ -37,7 +37,7 @@ def grammar_courses(who):
         qs = [{'type': 'text', 'prompt': ch['prompt'], 'answer': ch['answers'][0], 'aliases': ch['answers'][1:], 'why': ch.get('why', '')} for ch in c.get('checks', [])]
         t = c.get('transfer')
         if t: qs.append({'type': 'text', 'prompt': t['prompt'], 'answer': t['answers'][0], 'aliases': t['answers'][1:], 'why': t.get('why', '')})
-        out.append({'id': 'eg-' + c['id'], 'title': c.get('ink') or c['title'], 'sub': c['title'], 'unit': unit_of(who, c.get('pages')), 'pages': c.get('pages', ''), 'source': f"{'新版五上' if who=='kenton' else '新版四上'}英语课本 pp.{c.get('pages','')} · 语法变形台", 'quote': c.get('quote', ''), 'idea': c['rule'], 'recall': c.get('cue', ''), 'states': [{'label': st['label'], 'parts': st['parts']} for st in c.get('states', [])], 'questions': qs, 'tip': c.get('note', '')})
+        out.append({'id': 'eg-' + c['id'], 'title': c.get('ink') or c['title'], 'sub': c['title'], 'unit': unit_of(who, c.get('pages')), 'pages': c.get('pages', ''), 'source': f"{'新版五上' if who=='kenton' else '新版四上'}英语课本 pp.{c.get('pages','')} · 语法变形台", 'quote': c.get('quote', ''), 'idea': c['rule'], 'recall': c.get('cue', ''), 'states': [{'label': st['label'], 'parts': st['parts'], 'why': st.get('why', '')} for st in c.get('states', [])], 'questions': qs, 'tip': c.get('note', '')})
     return out
 
 def eddey_u4():

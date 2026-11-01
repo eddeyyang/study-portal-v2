@@ -27,11 +27,12 @@ const icons = {
   check: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 4 4L19 6"/></svg>',
   bolt: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8Z"/></svg>',
   print: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V3h12v6M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2M6 14h12v7H6z"/></svg>',
+  book: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5a2 2 0 0 1 2-2h5v18H6a2 2 0 0 1-2-2zM13 3h5a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-5z"/></svg>',
   star: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.2l-6.1 3.4 1.4-6.8L2.2 9.1l6.9-.8Z"/></svg>'
 };
 
 /* ---------- 记录 ---------- */
-function fresh() { return { v: 1, who, subject, mode: TEST ? 'test' : 'formal', nodes: {}, rounds: [] }; }
+function fresh() { return { v: 1, who, subject, mode: TEST ? 'test' : 'formal', nodes: {}, rounds: [], path: null }; }
 function load() { try { const s = JSON.parse(localStorage.getItem(KEY()) || 'null'); if (s && s.v === 1 && s.who === who && s.subject === subject) { state = s; return; } } catch (e) { } state = fresh(); }
 function save() { try { localStorage.setItem(KEY(), JSON.stringify(state)); storageOK = true; } catch (e) { storageOK = false; } }
 function rec(id) { return state.nodes[id] || (state.nodes[id] = { asked: 0, right: 0, wrong: 0, lastAt: null, lastClean: null }); }
@@ -47,7 +48,7 @@ async function loadBank() {
 function chainOf(t) {
   const m = t.model || {};
   if (OV.chains && OV.chains[t.id]) return { passage: '', rows: OV.chains[t.id] };
-  if (m.states && m.states.length) return { passage: m.passage || '', rows: m.states.map(s => ({ label: s.label, parts: s.parts })) };
+  if (m.states && m.states.length) return { passage: m.passage || '', rows: m.states.map(s => ({ label: s.label, parts: s.parts, why: s.why || '' })) };
   return { passage: '', rows: [] };
 }
 function buildGraph(bank) {
@@ -59,20 +60,23 @@ function buildGraph(bank) {
   const keys = (OV.keyNodes?.[who]?.[subject]) || {};
   const notes = (OV.notes?.[who]?.[subject]) || {};
   const nodes = new Map();
-  const mk = (t, extra = {}) => ({ id: t.id, title: t.title, unit: t.unit, source: t.source, idea: t.idea, recall: t.recall, tip: t.tip, chain: chainOf(t), questions: (t.questions || []).map(q => ({ ...q, kind: 'atlas' })), bankItems: [], mistakes: 0, key: keys[t.id] || '', note: notes[t.id] || null, ...extra });
+  const mk = (t, extra = {}) => ({ id: t.id, title: t.title, cardTitle: t.cardTitle || t.title, memo: t.memo || '', quote: t.quote || '', unit: t.unit, source: t.source, idea: t.idea, recall: t.recall, tip: t.tip, chain: chainOf(t), questions: (t.questions || []).map(q => ({ ...q, kind: 'atlas' })), bankItems: [], mistakes: 0, key: keys[t.id] || '', note: notes[t.id] || null, ...extra });
   topics.forEach(t => nodes.set(t.id, mk(t)));
   const branches = units.map((u, i) => ({ id: `u${i + 1}`, unit: i + 1, label: u[0], desc: u[1], chain: u[2], leaves: topics.filter(t => t.unit === i + 1).map(t => t.id) }));
   // 必考必会补充节点（essentials.js）：按单元插进分支；英语语法点来自 data/english-grammar.json，与已有节点讲同一件事的合并进去
   const ES = window.ExamMapEssentials || {};
-  const extraList = [...((ES[who] || {})[subject] || []), ...(subject === 'english' ? (englishPoints[who] || []).map(p => ({ id: p.id, unit: p.unit, title: p.title, source: p.source, idea: p.idea, recall: [p.sub, p.recall || (p.quote ? '课本原句：' + p.quote : '')].filter(Boolean).join('——'), model: { type: 'relation', states: p.states }, questions: p.questions, tip: p.tip, essential: true, mergeInto: (ES.englishMerge?.[who] || {})[p.id] })) : [])];
+  const extraList = [...((ES[who] || {})[subject] || []), ...(subject === 'english' ? (englishPoints[who] || []).map(p => ({ id: p.id, unit: p.unit, title: p.title, cardTitle: p.sub || p.title, memo: p.sub ? p.title : '', quote: p.quote || '', source: p.source, idea: p.idea, recall: p.recall || '', model: { type: 'relation', states: p.states }, questions: p.questions, tip: p.tip, essential: true, mergeInto: (ES.englishMerge?.[who] || {})[p.id] })) : [])];
   for (const x of extraList) {
     if (!(x.unit <= maxUnit)) continue;
     const target = x.mergeInto && nodes.get(x.mergeInto);
     if (target) {
       target.essential = true;
       target.questions.push(...(x.questions || []).map(q => ({ ...q, kind: 'atlas' })));
-      target.chain.rows.push(...(x.model?.states || []).map(st => ({ label: st.label, parts: st.parts })));
+      target.chain.rows.push(...(x.model?.states || []).map(st => ({ label: st.label, parts: st.parts, why: st.why || '' })));
       target.extraIdea = [...(target.extraIdea || []), x.idea].filter(Boolean);
+      if (x.memo && !target.memo) target.memo = x.memo;
+      if (x.quote && !target.quote) target.quote = x.quote;
+      if (x.tip) target.tip = [target.tip, x.tip].filter(Boolean).join(' ');
       if (x.source && !String(target.source).includes(x.source)) target.source = `${target.source}；${x.source}`;
       continue;
     }
@@ -115,7 +119,7 @@ function buildGraph(bank) {
     }
     branches.push({ id: 'um', unit: 0, label: subject === 'chinese' ? '词语与背默' : '单词与词组', desc: subject === 'chinese' ? '看拼音写词语 · 必背默写' : '按单元过词', chain: subject === 'chinese' ? '拼音 → 字形 → 整段默写' : '中文 → 拼写 → 句子里用', leaves });
   }
-  for (const n of nodes.values()) if (n.note && !n.mistakes) n.mistakes = n.note.count || 0;
+  for (const n of nodes.values()) { if (n.note && !n.mistakes) n.mistakes = n.note.count || 0; if (!n.memo && ES.memos?.[n.id]) n.memo = ES.memos[n.id]; }
   return { center: { label: SUBJECTS[subject], sub: CHILD[who].grade }, branches, nodes, scope: maxUnit === Infinity ? null : { maxUnit, hiddenUnits } };
 }
 function topBreakpoints(items) {
@@ -306,7 +310,8 @@ function home() {
   const rem = OV.reminders?.[who]?.[subject] || [];
   $('#app').innerHTML = `<header class="topbar"><a class="icon-btn" href="../../../index.html" aria-label="回学习门户">${icons.back}</a><div class="crumb"><b>${esc(CHILD[who].label)} · ${esc(SUBJECTS[subject])}脑图</b><small>${graph.scope ? `考试范围到 ${subject === 'english' ? 'Unit' : '第'} ${graph.scope.maxUnit}${subject === 'english' ? '' : ' 单元'} · ` : '考前复习 · '}${esc(CHILD[who].grade)} · ${total} 节点${mist ? ' · 错题 ' + mist : ''}</small></div>${TEST ? '<span class="test-chip">测试，不计入</span>' : ''}<button class="me-chip" data-act="switch" title="换一个人"><i>${CHILD[who].initial}</i><span class="t">${esc(CHILD[who].en)}</span></button></header>
   <nav class="tabs" aria-label="科目">${Object.entries(SUBJECTS).map(([k, v]) => `<button class="tab${k === subject ? ' on' : ''}" data-act="subject" data-subject="${k}" aria-pressed="${k === subject}">${v}</button>`).join('')}</nav>
-  <section class="bar"><button class="primary" data-act="quick">${icons.bolt}快速过一遍 · 10 题</button><button class="ghost no-print" data-act="print">${icons.print}打印</button><span class="stat num">过关 ${passed} · 再看 ${again} · 未做 ${total - passed - again}</span></section>
+  <section class="bar"><button class="primary" data-act="path">${icons.book}按顺序学 · ${(() => { const ps = pathState(); return ps.i >= ps.order.length ? '已看完，再来一遍' : `第 ${ps.i + 1} / ${ps.order.length} 张`; })()}</button><button class="ghost" data-act="quick">${icons.bolt}快速过一遍 · 10 题</button><button class="ghost no-print" data-act="print">${icons.print}打印</button></section>
+  <p class="stat num">${total} 张卡，每张约 3 分钟，全部看完约 ${total * 3} 分钟 · 过关 ${passed} · 再看 ${again} · 未做 ${total - passed - again}</p>
   <section id="map" class="map-host" aria-live="polite"></section>
   <section class="legend"><span><i class="lg-star">${icons.star}</i>必考必会</span><span><i class="lg-mist">错N</i>错题重点（这学期错过的题数）</span><span><i class="lg-dot new"></i>未做</span><span><i class="lg-dot again"></i>再看</span><span><i class="lg-dot pass"></i>过关</span></section>
   ${rem.length ? `<section class="reminders"><h2>考场三件事</h2><ol>${rem.map(r => `<li>${esc(r)}</li>`).join('')}</ol></section>` : ''}
@@ -315,19 +320,56 @@ function home() {
 }
 
 /* ---------- 节点面板 ---------- */
-function openNode(id) {
-  const n = graph.nodes.get(id); if (!n) return;
-  const r = state.nodes[id];
-  const chainHtml = n.chain.rows.length ? `<p class="chain-key"><span class="sw light"></span>线索、中间一步<span class="sw dark"></span>最后得出的结论（要答的那句）</p><div class="chain">${n.chain.passage ? `<p class="passage">${esc(n.chain.passage)}</p>` : ''}${n.chain.rows.map(row => `<div class="row"><b>${esc(row.label)}</b><span>${row.parts.map(p => `<em>${esc(p)}</em>`).join('<i class="arr">→</i>')}</span></div>`).join('')}</div>` : '';
+const isLatin = str => !/[\u4e00-\u9fff]/.test(str) && /[A-Za-z]/.test(str);
+function exampleHtml(row) {
+  const parts = row.parts || [];
+  const latin = parts.length && parts.every(p => isLatin(p));
+  if (latin) {
+    const keyIdx = parts.length >= 3 ? 1 : (parts.length === 2 ? 1 : 0);
+    const sentence = parts.map((p, i) => `<span class="${i === keyIdx ? 'key' : ''}">${esc(p)}</span>`).join(' ');
+    return `<div class="ex sent"><small>${esc(row.label)}</small><p class="en">${sentence}</p>${row.why ? `<p class="zh">${esc(row.why)}</p>` : ''}</div>`;
+  }
+  const last = parts.length - 1;
+  return `<div class="ex steps"><small>${esc(row.label)}</small><ol>${parts.map((p, i) => `<li class="${i === last && parts.length > 1 ? 'end' : ''}"><span>${esc(p)}</span></li>`).join('')}</ol>${row.why ? `<p class="zh">${esc(row.why)}</p>` : ''}</div>`;
+}
+function cardHtml(n, opts = {}) {
+  const r = state.nodes[n.id];
+  const examples = n.chain.rows.length ? `<section class="blk"><h3>例子</h3>${n.chain.passage ? `<p class="passage">${esc(n.chain.passage)}</p>` : ''}${n.quote ? `<p class="quote">课本原句：${esc(n.quote)}</p>` : ''}<div class="exs">${n.chain.rows.map(exampleHtml).join('')}</div></section>` : (n.quote ? `<section class="blk"><h3>例子</h3><p class="quote">课本原句：${esc(n.quote)}</p></section>` : '');
   let mist = '';
   if (n.bankItems?.length) mist = `<section class="mist-box"><h3><span class="pill">错 ${n.mistakes}</span>这学期在这里错过 ${n.mistakes} 题</h3>${n.bankInsight ? `<p class="insight">${esc(n.bankInsight)}</p>` : ''}${n.breakpoints?.length ? `<ul>${n.breakpoints.map(b => `<li>${esc(b)}</li>`).join('')}</ul>` : ''}</section>`;
   else if (n.note) mist = `<section class="mist-box"><h3><span class="pill">错 ${n.note.count}</span>订正记录里的错因</h3><ul>${n.note.lines.map(l => `<li>${esc(l)}</li>`).join('')}</ul><p class="tiny">${esc(n.note.source)}</p></section>`;
   const memList = n.memory ? memorySummary(n) : '';
+  const watch = [n.tip ? `<li><b>易错</b>${esc(n.tip)}</li>` : '', n.recall ? `<li><b>想一想</b>${esc(n.recall)}</li>` : ''].filter(Boolean).join('');
   const hist = r?.asked ? `<p class="tiny">做过 ${r.asked} 题，对 ${r.right}，错 ${r.wrong}；最近 ${r.lastAt ? r.lastAt.slice(0, 10) : ''}${r.lastClean ? ' 全对' : ' 有错'}</p>` : '';
-  sheet(`<header class="sh-head"><div><small>${esc(SUBJECTS[subject])}${n.unit ? ' · 第 ' + n.unit + ' 单元' : ''}${n.key ? ' · <b class="k">★ ' + esc(n.key) + '</b>' : n.essential ? ' · <b class="k">★ 必考必会</b>' : ''}</small><h2>${esc(n.title)}</h2></div><button class="icon-btn" data-act="close" aria-label="关闭">${icons.x}</button></header>
-  <p class="idea">${esc(n.idea)}</p>${(n.extraIdea || []).map(x => `<p class="idea extra">${esc(x)}</p>`).join('')}${n.recall ? `<p class="recall">追问：${esc(n.recall)}</p>` : ''}
-  ${chainHtml}${memList}${mist}${n.tip ? `<p class="tip">提醒：${esc(n.tip)}</p>` : ''}${hist}
-  <div class="sh-actions"><button class="primary" data-act="quiz" data-node="${esc(n.id)}">${icons.bolt}开始出题 · ${n.memory ? 5 : n.bankItems.length ? Math.min(3, n.questions.length) + Math.min(2, n.bankItems.length) : Math.min(5, n.questions.length)} 题</button></div><p class="tiny src">${esc(n.source || '')}</p>`);
+  const qcount = n.memory ? 5 : n.bankItems.length ? Math.min(3, n.questions.length) + Math.min(2, n.bankItems.length) : Math.min(5, n.questions.length);
+  const head = opts.path ? `<small>按顺序学 · 第 ${opts.path.i + 1} / ${opts.path.total} 张 · 还剩约 ${Math.max(3, (opts.path.total - opts.path.i) * 3)} 分钟</small>` : `<small>${esc(SUBJECTS[subject])}${n.unit ? ' · 第 ' + n.unit + ' 单元' : ''}${n.key ? ' · <b class="k">★ ' + esc(n.key) + '</b>' : n.essential ? ' · <b class="k">★ 必考必会</b>' : ''}</small>`;
+  const actions = opts.path
+    ? `<div class="sh-actions"><button class="primary" data-act="path-quiz" data-node="${esc(n.id)}">${icons.bolt}记住了，做 2 题</button><button class="ghost" data-act="path-next">跳过这张</button></div>`
+    : `<div class="sh-actions"><button class="primary" data-act="quiz" data-node="${esc(n.id)}">${icons.bolt}开始出题 · ${qcount} 题</button></div>`;
+  return `<header class="sh-head"><div>${head}<h2>${esc(n.cardTitle || n.title)}</h2></div><button class="icon-btn" data-act="close" aria-label="关闭">${icons.x}</button></header>
+  ${opts.path ? `<div class="track"><span class="done" style="flex:${opts.path.i}"></span><span class="cur" style="flex:1"></span><span style="flex:${Math.max(0, opts.path.total - opts.path.i - 1)}"></span></div>` : ''}
+  <section class="blk remember"><h3>记住这一句</h3><p class="idea">${esc(n.idea)}</p>${(n.extraIdea || []).map(x => `<p class="idea extra">${esc(x)}</p>`).join('')}${n.memo ? `<p class="memo"><span>口诀</span>${esc(n.memo)}</p>` : ''}</section>
+  ${examples}${memList}${mist}${watch ? `<section class="blk"><h3>注意</h3><ul class="watch">${watch}</ul></section>` : ''}${hist}
+  ${actions}<p class="tiny src">${esc(n.source || '')}</p>`;
+}
+function openNode(id, opts = {}) {
+  const n = graph.nodes.get(id); if (!n) return;
+  sheet(cardHtml(n, opts));
+}
+/* ---------- 按顺序学：一张卡 → 2 题 → 下一张 ---------- */
+function pathOrder() { const out = []; for (const b of graph.branches) for (const id of b.leaves) out.push(id); return out; }
+function pathState() { if (!state.path || !Array.isArray(state.path.order)) state.path = { i: 0, order: pathOrder(), startedAt: today() }; const cur = pathOrder(); if (cur.join() !== state.path.order.join()) { state.path.order = cur; state.path.i = Math.min(state.path.i, cur.length); } return state.path; }
+function pathOpen() {
+  const ps = pathState(); const total = ps.order.length;
+  if (ps.i >= total) { pathFinish(); return; }
+  openNode(ps.order[ps.i], { path: { i: ps.i, total } });
+}
+function pathNext() { const ps = pathState(); ps.i = Math.min(ps.i + 1, ps.order.length); save(); pathOpen(); renderMapSoon(); }
+function pathFinish() {
+  const ps = pathState(); const again = ps.order.filter(id => nodeStatus(id) === 'again').map(id => graph.nodes.get(id));
+  sheet(`<header class="sh-head"><div><small>按顺序学</small><h2>这一科 ${ps.order.length} 张卡全部看完</h2></div><button class="icon-btn" data-act="close" aria-label="关闭">${icons.x}</button></header>
+  ${again.length ? `<section class="again"><h3>做题时有错、考前再看一眼的</h3>${again.map(n => `<button class="again-item" data-act="open" data-node="${esc(n.id)}"><b>${esc(n.cardTitle || n.title)}</b><span>${esc(n.idea)}</span></button>`).join('')}</section>` : '<p class="idea">做题全对。明天再「快速过一遍」10 题，换组题检验。</p>'}
+  <div class="sh-actions"><button class="primary" data-act="close">回到脑图</button><button class="ghost" data-act="path-restart">从头再学一遍</button></div>`);
 }
 function memorySummary(n) {
   const items = n.memoryItems || [], recite = items.filter(i => i.recitation), words = items.filter(i => !i.recitation);
@@ -340,11 +382,12 @@ function sheet(html) { const el = $('#sheet'); el.innerHTML = `<div class="sh-pa
 function closeSheet() { $('#sheet').hidden = true; $('#sheet').innerHTML = ''; document.body.classList.remove('sheet-open'); quiz = null; }
 
 /* ---------- 答题 ---------- */
-function startQuiz(nodeId) {
+function startQuiz(nodeId, opts = {}) {
   const n = graph.nodes.get(nodeId);
-  const qs = nodeQuestions(n).map(q => ({ ...q, node: nodeId }));
-  if (!qs.length) { toast('这个节点还没有题'); return; }
-  quiz = { id: `${today()}-${Math.random().toString(36).slice(2, 8)}`, kind: 'node', nodeId, qs, i: 0, results: [], label: n.title };
+  let qs = nodeQuestions(n, opts.path ? { knowledge: n.bankItems.length ? 1 : 2, bank: 1 } : {}).map(q => ({ ...q, node: nodeId }));
+  if (opts.path) qs = qs.slice(0, 2);
+  if (!qs.length) { if (opts.path) { pathNext(); return; } toast('这个节点还没有题'); return; }
+  quiz = { id: `${today()}-${Math.random().toString(36).slice(2, 8)}`, kind: opts.path ? 'path' : 'node', nodeId, qs, i: 0, results: [], label: opts.path ? '按顺序学 · ' + (n.cardTitle || n.title) : (n.cardTitle || n.title) };
   showQ();
 }
 function startQuick() {
@@ -398,7 +441,7 @@ function finishQuiz() {
   const again = [...byNode.entries()].filter(([, e]) => e.no).map(([id]) => graph.nodes.get(id));
   sheet(`<header class="sh-head"><div><small>${esc(quiz.label)}</small><h2>${right} / ${rs.length} 对${right === rs.length ? '，全部过关' : ''}</h2></div><button class="icon-btn" data-act="close" aria-label="关闭">${icons.x}</button></header>
   ${again.length ? `<section class="again"><h3>还要再看的节点</h3>${again.map(n => `<button class="again-item" data-act="open" data-node="${esc(n.id)}"><b>${esc(n.title)}</b><span>${esc(n.idea)}</span></button>`).join('')}</section>` : '<p class="idea">这一轮没有错。明天换一组题再做一次，才算真的记住。</p>'}
-  <div class="sh-actions"><button class="primary" data-act="close">回到脑图</button>${quiz.kind === 'quick' ? '<button class="ghost" data-act="quick">再来 10 题</button>' : `<button class="ghost" data-act="quiz" data-node="${esc(quiz.nodeId)}">换题再做</button>`}<button class="ghost" data-act="share">发给爸爸</button></div>`);
+  <div class="sh-actions">${quiz.kind === 'path' ? `<button class="primary" data-act="path-next">下一张</button><button class="ghost" data-act="open" data-node="${esc(quiz.nodeId)}">再看这张卡</button>` : `<button class="primary" data-act="close">回到脑图</button>${quiz.kind === 'quick' ? '<button class="ghost" data-act="quick">再来 10 题</button>' : `<button class="ghost" data-act="quiz" data-node="${esc(quiz.nodeId)}">换题再做</button>`}<button class="ghost" data-act="share">发给爸爸</button>`}</div>`);
   quiz = { ...quiz, done: true };
   renderMapSoon();
 }
@@ -413,7 +456,7 @@ function report(byNode, right) {
   try { window.V2Records.enqueue({ app: 'exam-map', who, subject, mode: TEST ? 'test' : 'formal', roundId: quiz.id, label: quiz.label, total: quiz.qs.length, right, items: quiz.qs.map((q, i) => ({ node: q.node, title: graph.nodes.get(q.node).title, kind: q.kind, id: q.id || '', result: quiz.results[i]?.ok ? 'right' : 'wrong', self: !!quiz.results[i]?.self, answer: quiz.results[i]?.answer || '' })), text: quiz.text }); } catch (e) { }
 }
 let rafMap = 0; function renderMapSoon() { cancelAnimationFrame(rafMap); rafMap = requestAnimationFrame(() => { renderMap(); refreshStats(); }); }
-function refreshStats() { const el = $('.bar .stat'); if (!el || !graph) return; const ids = [...graph.nodes.keys()], passed = ids.filter(id => nodeStatus(id) === 'pass').length, again = ids.filter(id => nodeStatus(id) === 'again').length; el.textContent = `过关 ${passed} · 再看 ${again} · 未做 ${ids.length - passed - again}`; }
+function refreshStats() { const el = $('p.stat'); if (!el || !graph) return; const ids = [...graph.nodes.keys()], passed = ids.filter(id => nodeStatus(id) === 'pass').length, again = ids.filter(id => nodeStatus(id) === 'again').length; el.textContent = `${ids.length} 张卡，每张约 3 分钟，全部看完约 ${ids.length * 3} 分钟 · 过关 ${passed} · 再看 ${again} · 未做 ${ids.length - passed - again}`; const pb = $('[data-act=path]'); if (pb) { const ps = pathState(); pb.innerHTML = `${icons.book}按顺序学 · ${ps.i >= ps.order.length ? '已看完，再来一遍' : `第 ${ps.i + 1} / ${ps.order.length} 张`}`; } }
 function toast(msg) { const t = $('#toast'); t.textContent = msg; t.hidden = false; clearTimeout(toast.t); toast.t = setTimeout(() => { t.hidden = true; }, 2200); }
 
 /* ---------- 事件 ---------- */
@@ -426,6 +469,10 @@ document.addEventListener('click', async e => {
   if (act === 'subject') { subject = btn.dataset.subject; history.replaceState(null, '', `?who=${who}&subject=${subject}${TEST ? '&test=1' : ''}`); await boot(); return; }
   if (act === 'print') { window.print(); return; }
   if (act === 'quick') { startQuick(); return; }
+  if (act === 'path') { pathOpen(); return; }
+  if (act === 'path-quiz') { startQuiz(btn.dataset.node, { path: true }); return; }
+  if (act === 'path-next') { pathNext(); return; }
+  if (act === 'path-restart') { state.path = null; save(); pathOpen(); return; }
   if (act === 'quiz') { startQuiz(btn.dataset.node); return; }
   if (act === 'open') { openNode(btn.dataset.node); return; }
   if (act === 'close') { closeSheet(); renderMapSoon(); return; }

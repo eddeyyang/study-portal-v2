@@ -186,3 +186,30 @@ textarea.answer{resize:vertical;font-size:17px;line-height:1.6}
 .chain-key .sw{display:inline-block;width:14px;height:14px;border-radius:4px;background:var(--me-wash);margin-left:8px}
 .chain-key .sw:first-child{margin-left:0}
 .chain-key .sw.dark{background:var(--ink)}
+
+/* 知识卡：四块——记住这一句 / 口诀 / 例子 / 注意 */
+.blk{margin:12px 0}
+.blk h3{font-size:12px;font-weight:800;letter-spacing:.08em;color:var(--muted);margin-bottom:6px}
+.blk.remember{background:var(--me-wash);border-radius:16px;padding:14px 16px}
+.blk.remember .idea{margin:0}
+.memo{display:flex;align-items:center;gap:8px;margin-top:10px;font-size:17px;font-weight:800;font-family:var(--round)}
+.memo span{font-size:11px;font-weight:800;color:#fff;background:var(--me-deep);padding:2px 8px;border-radius:999px;flex:none}
+.quote{font-size:14px;color:var(--ink-2);margin:0 0 8px}
+.exs{display:grid;gap:8px}
+.ex{background:var(--surface);border:1px solid var(--hair-2);border-radius:14px;padding:10px 14px}
+.ex small{display:block;font-size:12px;color:var(--me-deep);font-weight:700;margin-bottom:2px}
+.ex .en{font-size:19px;font-weight:600;line-height:1.5;letter-spacing:.01em}
+.ex .en .key{color:var(--me-deep);text-decoration:underline;text-decoration-thickness:3px;text-underline-offset:4px;text-decoration-color:var(--me)}
+.ex .zh{font-size:13px;color:var(--muted);margin-top:4px}
+.ex ol{list-style:none;counter-reset:st;margin-top:4px}
+.ex ol li{counter-increment:st;display:flex;gap:10px;align-items:flex-start;padding:5px 0;font-size:15px;line-height:1.5}
+.ex ol li:before{content:counter(st);flex:none;width:22px;height:22px;border-radius:50%;background:var(--bg);box-shadow:inset 0 0 0 1px var(--hair-2);font-size:12px;font-weight:800;display:grid;place-items:center;margin-top:2px}
+.ex ol li.end{font-weight:800;color:var(--ink)}
+.ex ol li.end:before{content:"答";background:var(--ink);color:#fff;box-shadow:none}
+.watch{list-style:none;display:grid;gap:6px}
+.watch li{font-size:14px;line-height:1.55;display:flex;gap:8px;align-items:flex-start}
+.watch li b{flex:none;font-size:11px;font-weight:800;color:var(--warn);background:var(--warn-wash);padding:2px 7px;border-radius:999px;margin-top:3px}
+.track span.done{background:var(--ok)}
+.bar .ghost{padding:0 14px}
+p.stat{font-size:13px;color:var(--muted);margin:-4px 0 12px}
+.chain,.chain-key{display:none}

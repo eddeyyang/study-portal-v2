@@ -18,7 +18,8 @@
       "The leaf",
       "looks like",
       "a heart."
-     ]
+     ],
+     "why": "leaf 是单数，look 加 s。"
     },
     {
      "label": "几片叶子",
@@ -26,7 +27,8 @@
       "The leaves",
       "look like",
       "hearts."
-     ]
+     ],
+     "why": "leaves 变复数，look 不加 s。"
     },
     {
      "label": "我",
@@ -34,7 +36,8 @@
       "I",
       "look like",
       "my dad."
-     ]
+     ],
+     "why": "I 虽然是一人，也用 look。"
     }
    ],
    "questions": [
@@ -81,7 +84,8 @@
       "This",
       "looks like",
       "a tree."
-     ]
+     ],
+     "why": "陈述句里 this 配 looks。"
     },
     {
      "label": "再提问",
@@ -90,7 +94,8 @@
       "does",
       "this",
       "look like?"
-     ]
+     ],
+     "why": "does 已经变化，look 回原形。"
     },
     {
      "label": "换成复数",
@@ -99,7 +104,8 @@
       "do",
       "these",
       "look like?"
-     ]
+     ],
+     "why": "these 是复数，助动词用 do。"
     }
    ],
    "questions": [
@@ -144,7 +150,8 @@
       "It",
       "has",
       "a long stem."
-     ]
+     ],
+     "why": "It has 是“它有”。"
     },
     {
      "label": "它的",
@@ -152,7 +159,8 @@
       "Its stem",
       "is",
       "long."
-     ]
+     ],
+     "why": "Its stem 是“它的茎”。"
     },
     {
      "label": "它们有",
@@ -160,7 +168,8 @@
       "They",
       "have",
       "long stems."
-     ]
+     ],
+     "why": "They 是复数，has 换成 have。"
     }
    ],
    "questions": [
@@ -206,21 +215,24 @@
      "parts": [
       "one",
       "leaf"
-     ]
+     ],
+     "why": "one 后用单数 leaf。"
     },
     {
      "label": "很多片",
      "parts": [
       "many",
       "leaves"
-     ]
+     ],
+     "why": "leaf 的复数把 f 变为 ves。"
     },
     {
      "label": "很多颗",
      "parts": [
       "many",
       "teeth"
-     ]
+     ],
+     "why": "tooth 的复数是 teeth。"
     }
    ],
    "questions": [
@@ -267,7 +279,8 @@
       "tall",
       "→",
       "taller"
-     ]
+     ],
+     "why": "一般加 er；fast 也变 faster。"
     },
     {
      "label": "辅音加 y",
@@ -275,7 +288,8 @@
       "easy",
       "→",
       "easier"
-     ]
+     ],
+     "why": "辅音字母 + y：变 y 为 i，再加 er。"
     },
     {
      "label": "重读短词",
@@ -283,7 +297,8 @@
       "big",
       "→",
       "bigger"
-     ]
+     ],
+     "why": "big：双写末尾 g，再加 er。"
     },
     {
      "label": "长词",
@@ -291,7 +306,8 @@
       "beautiful",
       "→",
       "more beautiful"
-     ]
+     ],
+     "why": "多音节的 beautiful 前加 more。"
     },
     {
      "label": "不规则",
@@ -301,7 +317,8 @@
       "better",
       "→",
       "best"
-     ]
+     ],
+     "why": "更好 better；最好 best，要单独记。"
     }
    ],
    "questions": [
@@ -352,7 +369,8 @@
      "parts": [
       "Stand",
       "like a pine tree."
-     ]
+     ],
+     "why": "直接以 Stand 原形开头。"
     },
     {
      "label": "请不要跑",
@@ -360,7 +378,8 @@
       "Don't",
       "run",
       "here."
-     ]
+     ],
+     "why": "Don’t 后仍用 run 原形。"
     },
     {
      "label": "一起试试",
@@ -368,7 +387,8 @@
       "Let's",
       "try",
       "again."
-     ]
+     ],
+     "why": "Let’s 后用 try 原形。"
     }
    ],
    "questions": [
@@ -416,7 +436,8 @@
       "want to",
       "play",
       "tug of war."
-     ]
+     ],
+     "why": "want to 后接 play 原形。"
     },
     {
      "label": "需要做",
@@ -425,7 +446,8 @@
       "need to",
       "paint",
       "them."
-     ]
+     ],
+     "why": "need to 后接 paint 原形。"
     },
     {
      "label": "学会怎么做",
@@ -434,7 +456,8 @@
       "learn how to",
       "take",
       "beautiful photos."
-     ]
+     ],
+     "why": "how to 后接 take 原形。"
     }
    ],
    "questions": [
@@ -480,7 +503,8 @@
       "am going to",
       "take",
       "photos."
-     ]
+     ],
+     "why": "I 配 am，to 后 take 不变。"
     },
     {
      "label": "他的打算",
@@ -489,7 +513,8 @@
       "is going to",
       "take",
       "photos."
-     ]
+     ],
+     "why": "He 配 is，to 后 take 不变。"
     },
     {
      "label": "将会有",
@@ -497,7 +522,8 @@
       "There",
       "will be",
       "a garden party."
-     ]
+     ],
+     "why": "“将会有”连着记 There will be。"
     }
    ],
    "questions": [
@@ -543,7 +569,8 @@
      "parts": [
       "How about",
       "bamboo?"
-     ]
+     ],
+     "why": "书上接名词 bamboo。"
     },
     {
      "label": "建议做一件事",
@@ -551,7 +578,8 @@
       "How about",
       "drawing",
       "bamboo?"
-     ]
+     ],
+     "why": "换成动作时接 drawing。"
     },
     {
      "label": "一起做",
@@ -559,7 +587,8 @@
       "Let's",
       "draw",
       "bamboo."
-     ]
+     ],
+     "why": "Let’s 后用 draw 原形。"
     }
    ],
    "questions": [
@@ -607,7 +636,8 @@
       "should",
       "paint",
       "the pot."
-     ]
+     ],
+     "why": "should 后是 paint，不是 paints。"
     },
     {
      "label": "能够",
@@ -616,7 +646,8 @@
       "can",
       "paint",
       "the pot."
-     ]
+     ],
+     "why": "can 后也用原形 paint。"
     },
     {
      "label": "换成他们",
@@ -625,7 +656,8 @@
       "should",
       "paint",
       "the pot."
-     ]
+     ],
+     "why": "主语换了，should 后仍是 paint。"
     }
    ],
    "questions": [
@@ -671,7 +703,8 @@
       "hard",
       "to draw",
       "the leaves."
-     ]
+     ],
+     "why": "to draw 说明什么事很难。"
     },
     {
      "label": "画竹子",
@@ -680,7 +713,8 @@
       "easy",
       "to draw",
       "bamboo."
-     ]
+     ],
+     "why": "换评价，to draw 结构不变。"
     },
     {
      "label": "换一件事",
@@ -689,7 +723,8 @@
       "hard",
       "to play",
       "this game."
-     ]
+     ],
+     "why": "动作改变了，to 后仍用原形。"
     }
    ],
    "questions": [
@@ -736,7 +771,8 @@
       "He runs",
       "as fast as",
       "the wind."
-     ]
+     ],
+     "why": "两边 as 中间保留 fast。"
     },
     {
      "label": "更快",
@@ -744,14 +780,16 @@
       "He runs",
       "faster",
       "than me."
-     ]
+     ],
+     "why": "比较快慢，用 faster。"
     },
     {
      "label": "甚至更快",
      "parts": [
       "He runs",
       "even faster."
-     ]
+     ],
+     "why": "even 加强比较，不用 very faster。"
     }
    ],
    "questions": [
@@ -795,7 +833,8 @@
      "parts": [
       "I like",
       "kite-flying."
-     ]
+     ],
+     "why": "只告诉别人喜欢什么。"
     },
     {
      "label": "接上理由",
@@ -804,7 +843,8 @@
       "kite-flying",
       "because",
       "it is exciting."
-     ]
+     ],
+     "why": "because 后是 it is exciting。"
     },
     {
      "label": "换个理由",
@@ -813,7 +853,8 @@
       "kite-flying",
       "because",
       "it is fun."
-     ]
+     ],
+     "why": "理由可以换，结构保持完整。"
     }
    ],
    "questions": [
@@ -858,7 +899,8 @@
       "a mouth",
       "with",
       "many teeth"
-     ]
+     ],
+     "why": "with 后是名词词块 many teeth。"
     },
     {
      "label": "一面墙",
@@ -866,7 +908,8 @@
       "The wall",
       "is covered with",
       "plants."
-     ]
+     ],
+     "why": "单数 wall 配 is。"
     },
     {
      "label": "几面墙",
@@ -874,7 +917,8 @@
       "The walls",
       "are covered with",
       "plants."
-     ]
+     ],
+     "why": "复数 walls 配 are。"
     }
    ],
    "questions": [
@@ -924,7 +968,8 @@
       "helps",
       "me",
       "learn English."
-     ]
+     ],
+     "why": "He 配 helps；后面的 learn 不变。"
     },
     {
      "label": "他们帮忙",
@@ -933,7 +978,8 @@
       "help",
       "me",
       "learn English."
-     ]
+     ],
+     "why": "They 配 help；learn 仍用原形。"
     },
     {
      "label": "换个动作",
@@ -942,7 +988,8 @@
       "helps",
       "me",
       "draw pictures."
-     ]
+     ],
+     "why": "换成画画，仍用 draw 原形。"
     }
    ],
    "questions": [
@@ -992,7 +1039,8 @@
       "helps",
       "me",
       "with English."
-     ]
+     ],
+     "why": "English 是学科，前面用 with。"
     },
     {
      "label": "接动作",
@@ -1001,7 +1049,8 @@
       "helps",
       "me",
       "learn English."
-     ]
+     ],
+     "why": "learn 是动作，可以直接接。"
     },
     {
      "label": "换个学科",
@@ -1010,7 +1059,8 @@
       "helps",
       "me",
       "with maths."
-     ]
+     ],
+     "why": "换成 maths，仍需要 with。"
     }
    ],
    "questions": [
@@ -1059,7 +1109,8 @@
       "She",
       "is good at",
       "football."
-     ]
+     ],
+     "why": "football 是名词，直接接在 at 后。"
     },
     {
      "label": "接动作",
@@ -1067,7 +1118,8 @@
       "She",
       "is good at",
       "playing football."
-     ]
+     ],
+     "why": "动作 play 变 playing。"
     },
     {
      "label": "换成他们",
@@ -1075,7 +1127,8 @@
       "They",
       "are good at",
       "playing football."
-     ]
+     ],
+     "why": "They 配 are；at 后仍用 playing。"
     }
    ],
    "questions": [
@@ -1125,7 +1178,8 @@
       "often",
       "tells",
       "interesting stories."
-     ]
+     ],
+     "why": "He 配 tells；often 放在动作前。"
     },
     {
      "label": "他们经常",
@@ -1134,7 +1188,8 @@
       "often",
       "tell",
       "interesting stories."
-     ]
+     ],
+     "why": "They 配 tell，不加 s。"
     },
     {
      "label": "她总是",
@@ -1143,7 +1198,8 @@
       "always",
       "tells",
       "interesting stories."
-     ]
+     ],
+     "why": "She 配 tells；always 表示总是。"
     }
    ],
    "questions": [
@@ -1188,7 +1244,8 @@
       "He",
       "wants to be",
       "a teacher."
-     ]
+     ],
+     "why": "陈述时 He 配 wants。"
     },
     {
      "label": "问愿望",
@@ -1197,7 +1254,8 @@
       "does",
       "he",
       "want to be?"
-     ]
+     ],
+     "why": "问句加 does，wants 变 want。"
     },
     {
      "label": "问是否",
@@ -1206,7 +1264,8 @@
       "he",
       "want to be",
       "a teacher?"
-     ]
+     ],
+     "why": "Does 已承担变化，want 用原形。"
     }
    ],
    "questions": [
@@ -1251,7 +1310,8 @@
       "I",
       "want to be",
       "a teacher."
-     ]
+     ],
+     "why": "I 用 want，职业前有 a。"
     },
     {
      "label": "她想成为",
@@ -1259,7 +1319,8 @@
       "She",
       "wants to be",
       "a teacher."
-     ]
+     ],
+     "why": "She 用 wants，to be 不变。"
     },
     {
      "label": "英语老师",
@@ -1267,7 +1328,8 @@
       "She",
       "wants to be",
       "an English teacher."
-     ]
+     ],
+     "why": "English 以元音音素开头，用 an。"
     }
    ],
    "questions": [
@@ -1313,7 +1375,8 @@
       "is",
       "swimming",
       "in the river."
-     ]
+     ],
+     "why": "单数配 is；swim 变 swimming。"
     },
     {
      "label": "几只在游",
@@ -1322,7 +1385,8 @@
       "are",
       "swimming",
       "in the river."
-     ]
+     ],
+     "why": "变成复数，is 换成 are。"
     },
     {
      "label": "我在游",
@@ -1331,7 +1395,8 @@
       "am",
       "swimming",
       "in the river."
-     ]
+     ],
+     "why": "I 配 am；swimming 不变。"
     }
    ],
    "questions": [
@@ -1378,7 +1443,8 @@
       "play",
       "+ ing",
       "→ playing"
-     ]
+     ],
+     "why": "play 直接加 ing。"
     },
     {
      "label": "先去 e",
@@ -1386,7 +1452,8 @@
       "give",
       "− e + ing",
       "→ giving"
-     ]
+     ],
+     "why": "去掉不发音 e，再加 ing。"
     },
     {
      "label": "先双写",
@@ -1394,7 +1461,8 @@
       "swim",
       "+ m + ing",
       "→ swimming"
-     ]
+     ],
+     "why": "swim 双写末尾 m，再加 ing。"
     }
    ],
    "questions": [
@@ -1440,7 +1508,8 @@
       "are",
       "you",
       "from?"
-     ]
+     ],
+     "why": "you 配 are。"
     },
     {
      "label": "问它",
@@ -1449,7 +1518,8 @@
       "is",
       "it",
       "from?"
-     ]
+     ],
+     "why": "it 配 is。"
     },
     {
      "label": "回答它们",
@@ -1457,7 +1527,8 @@
       "They",
       "are from",
       "Yunnan."
-     ]
+     ],
+     "why": "They 配 are，from 后接来源地点。"
     }
    ],
    "questions": [
@@ -1502,7 +1573,8 @@
       "They",
       "are",
       "monkeys."
-     ]
+     ],
+     "why": "They 是句子里的“它们”。"
     },
     {
      "label": "说它们的",
@@ -1510,7 +1582,8 @@
       "Their homes",
       "are",
       "in the trees."
-     ]
+     ],
+     "why": "their 后接 homes，表示“它们的家”。"
     },
     {
      "label": "说我们的",
@@ -1518,7 +1591,8 @@
       "Our hometown",
       "is",
       "here."
-     ]
+     ],
+     "why": "our 后接 hometown，表示“我们的家乡”。"
     }
    ],
    "questions": [
@@ -1563,7 +1637,8 @@
       "Who",
       "is",
       "he?"
-     ]
+     ],
+     "why": "Who 问是谁，he 配 is。"
     },
     {
      "label": "说他的特点",
@@ -1571,7 +1646,8 @@
       "He",
       "is",
       "helpful."
-     ]
+     ],
+     "why": "is 后接 helpful，说明特点。"
     },
     {
      "label": "说他们的特点",
@@ -1579,7 +1655,8 @@
       "They",
       "are",
       "helpful."
-     ]
+     ],
+     "why": "They 配 are，不用 is。"
     }
    ],
    "questions": [
