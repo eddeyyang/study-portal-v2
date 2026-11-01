@@ -25,9 +25,22 @@ python3 -I tools/upstream-sync/sync.py --check-site   # 预览站 https://eddeyy
 | 合并冲突 | v2 文件不动；上游新版放 `conflicts/<路径>`，上游旧版放 `conflicts/<路径>.base`；人（或当班的 Claude）把内容合进去后运行 `--resolve <路径>` |
 | 上游新增的文件 | 加进来：顺着变化的页面和 `data/apps.json` 找新页面、数据、图片、音频清单；按哈希命名的朗读音频按页面文字逐条算哈希去取 |
 | 上游删掉的文件 | 只在报告里列出，不删 |
-| v2 独有的文件 | 不同步：`README.md` `MISSING.md` `CLAUDE.md` `.gitignore` `.nojekyll` `assets/portal-theme.css` `assets/shell-theme.css` `archive/` `tools/` |
+| v2 独有的文件 | 不同步：`README.md` `MISSING.md` `CLAUDE.md` `.gitignore` `.nojekyll` `assets/portal-theme.css` `assets/shell-theme.css` `archive/` `tools/`，以及 `apps/v2/` `apps/drone/` `apps/audio/v2-*` `assets/v2-*` `data/v2-*` |
 
 在 v2 里改任何一个从上游来的文件之前，先运行 `--mark-custom <路径>` 登记它的上游基线；忘了也没关系，下次同步会从 git 历史自动补（所以定时任务要完整克隆，不能浅克隆）。
+
+### 每个页面自动加的“学习记录转发”那一行（家长 2026-11-01）
+
+家长要求 V2 上的学习页面都要把学习记录发给家长。所以本工具写入任何同步来的 `.html` 时，都会加一行：
+
+```html
+<script src="../assets/v2-records.js" defer data-v2-sync></script><script src="../assets/v2-page-sync.js" defer data-v2-sync></script>
+```
+
+放在页面引用 `learning-sync.js` 那一行后面（没有就放在 `<meta charset>` 或 `<head>` 后面）。这一行是确定的改写，不算“v2 改过这个文件”：
+判断改没改过时先去掉它再比；上游更新照常整份覆盖，写回前再加上；`base/` 里存的始终是不带这一行的上游原版。
+每次同步最后还会把漏掉这一行的页面补上（报告里的 `v2_record_line_added`）。`--inject` 只做这一步、不联网。
+脚本做什么见 `assets/v2-page-sync.js` 开头的说明。
 
 ## 节奏（尽量少打扰正式站）
 

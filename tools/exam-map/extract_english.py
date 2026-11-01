@@ -10,6 +10,20 @@ ROOT = pathlib.Path(__file__).resolve().parents[2]
 OUT = ROOT / 'apps/v2/exam-map/data/english-grammar.json'
 # 课本页 → 单元（与正式站《知识连起来》里的 source 页码一致）
 UNITS = {'kenton': [(9, 16, 1), (17, 24, 2), (25, 32, 3), (33, 40, 4)], 'eddey': [(7, 14, 1), (15, 22, 2), (23, 30, 3), (31, 38, 4), (39, 46, 5)]}
+# V2 补充的其他对的写法（家长 2026-11-01：孩子写对了却被判错的题，补上同样对的说法）。
+# 键：(孩子, 语法点 id, 原参考答案)；值：追加到 aliases 的写法。上游页面以后自己加了同样的写法会自动去重。
+EXTRA_ALIASES = {
+    ('kenton', 'eg-because', 'I like this game because it is interesting'): [
+        "I like this game because it's interesting", 'I like this game because it is fun', "I like this game because it's fun"],
+    ('kenton', 'eg-because', 'it is'): ["it's"],
+    ('eddey', 'eg-does', 'Does he often help me'): ['Does he often help you'],
+}
+
+
+def with_extra(who, node_id, q):
+    extra = EXTRA_ALIASES.get((who, node_id, q['answer']), [])
+    q['aliases'] = list(dict.fromkeys(q['aliases'] + [a for a in extra if a != q['answer']]))
+    return q
 
 def brace_block(s, start):
     depth = 0
@@ -61,6 +75,9 @@ def eddey_u4():
     return out
 
 data = {'generated': 'tools/exam-map/extract_english.py', 'kenton': grammar_courses('kenton'), 'eddey': grammar_courses('eddey') + eddey_u4()}
+for who in ('kenton', 'eddey'):
+    for node in data[who]:
+        node['questions'] = [with_extra(who, node['id'], q) for q in node['questions']]
 OUT.write_text(json.dumps(data, ensure_ascii=False, indent=1), encoding='utf-8')
 for who in ('kenton', 'eddey'):
     print(who, len(data[who]), 'points;', sum(len(x['questions']) for x in data[who]), 'questions;', [(x['id'], x['unit']) for x in data[who] if not x['unit']] or 'all units mapped')

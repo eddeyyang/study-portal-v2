@@ -41,9 +41,31 @@ function mark(){
 }
 document.addEventListener('visibilitychange', () => { if(document.visibilityState === 'visible') lastMark = Date.now(); else mark(); });
 
+/* ---------- 学习记录上报（家长 2026-11-01：V2 的软件都要把学习记录发给家长） ----------
+   每答一题先记在这里；飞完一站、做完秒答、复习做完、机考交卷，或离开页面时，把这一段经 ../../assets/v2-records.js 发出（app: drone）。 */
+let reportBuf = [];
+function noteResult(id, result){ if(state) reportBuf.push({id, result}); }
+function itemInfo(id){
+  const q = C.questions[id];
+  if(q) return {wp:q.wp, q:String(q.q).slice(0, 80), ref:String(q.o[q.a]).slice(0, 60)};
+  const m = /^r:([^:]+):(\d+)$/.exec(id), pair = m && C.wps[m[1]] && C.wps[m[1]].recall[Number(m[2])];
+  return pair ? {wp:m[1], q:String(pair[0]).slice(0, 80), ref:String(pair[1]).slice(0, 60), oral:true} : {wp:'', q:id};
+}
+function sendReport(kind, extra){
+  if(!state || !window.V2Records || (!reportBuf.length && kind !== 'exam')) return;
+  const items = reportBuf.map(r => Object.assign({id:r.id, result:r.result}, itemInfo(r.id)));
+  reportBuf = [];
+  const rid = window.crypto && crypto.randomUUID ? crypto.randomUUID() : Date.now().toString(36) + Math.random().toString(36).slice(2);
+  try{ window.V2Records.enqueue(Object.assign({app:'drone', who:state.who, subject:'drone', mode:TEST ? 'test' : 'formal', roundId:rid, kind,
+    total:items.length, right:items.filter(x => x.result === 'right').length, wrong:items.filter(x => x.result === 'wrong').length, items}, extra || {})); }catch(e){}
+}
+document.addEventListener('visibilitychange', () => { if(document.visibilityState === 'hidden') sendReport('leave', {label:'离开页面时未发的作答'}); });
+window.addEventListener('pagehide', () => sendReport('leave', {label:'离开页面时未发的作答'}));
+
 /* ---------- 间隔复习：盒子 0..5，间隔 0/1/2/4/8/16 天 ---------- */
 const GAP = [0,1,2,4,8,16];
 function grade(id, ok){
+  noteResult(id, ok ? 'right' : 'wrong');
   const t = today(), it = state.items[id] || {box:0, seen:0, right:0, wrong:0};
   it.seen++; it.last = t;
   if(ok){
@@ -55,6 +77,7 @@ function grade(id, ok){
   state.items[id] = it; save();
 }
 function soft(id){ /* “差一点”：不加盒，明天再来 */
+  noteResult(id, 'soft');
   const t = today(), it = state.items[id] || {box:0, seen:0, right:0, wrong:0};
   it.seen++; it.last = t; it.box = Math.max(1, it.box||0); it.due = addDays(t,1);
   state.items[id] = it; save();
@@ -312,6 +335,7 @@ function lesson(id, step){
     runQuiz($('#quiz'), ids, {
       onFinish(res){
         s.quiz = {date:today(), first:res.first, total:res.total}; save();
+        sendReport('waypoint-quiz', {wp:id, label:`第 ${w.n} 站秒答：${w.title}`, firstRight:res.first});
         location.hash = `#/w/${id}/${step + 1}`;
       }
     });
@@ -322,6 +346,7 @@ function lesson(id, step){
   const first = !s.done;
   if(first){ s.done = today(); save(); }
   s.last = today(); save();
+  sendReport('waypoint', {wp:id, label:`第 ${w.n} 站：${w.title}`, firstTime:first});
   const recallOK = recallIds(id).filter(k => state.items[k]?.lastOk === today()).length;
   const nextDue = itemsOf(id).map(k => state.items[k]?.due).filter(Boolean).sort()[0];
   const after = wpOrder[wpOrder.indexOf(id) + 1];
@@ -425,6 +450,7 @@ function mixedRun(items, title){
   const root = $('#mx'); let i = 0, ok = 0;
   const next = () => {
     if(i >= items.length){
+      sendReport('review', {label:title});
       root.innerHTML = `<div class="arrive"><div class="stamp"><div><b class="num">${ok}</b><span>答对</span></div></div><h2>${title}完成</h2><p>${items.length} 项里答对 ${ok} 项。没答对的，明天会再出现。</p><div class="hero-actions" style="justify-content:center"><a class="btn primary" href="#/">回到航线</a></div></div>`;
       return;
     }
@@ -508,6 +534,7 @@ function examRun(){
 }
 function finishExam(){
   const S = examSession; if(!S) return;
+  sendReport('leave', {label:'机考前没发出的作答'});   // 先把之前没发的作答单独发掉，不混进机考
   const byWp = {}, wrong = [];
   let score = 0;
   S.qs.forEach(x => {
@@ -518,6 +545,8 @@ function finishExam(){
   });
   state.exams.push({date:today(), score, total:S.qs.length, sec:Math.round((Date.now() - S.start) / 1000), byWp, wrong});
   save(); examSession = null;
+  const ex = state.exams[state.exams.length - 1];
+  sendReport('exam', {label:'模拟机考', exam:{score, total:ex.total, seconds:ex.sec, pass:score >= C.exam.pass, passLine:C.exam.pass, unanswered:S.qs.filter(x => x.pick === null).length}});
   location.hash = '#/exam/result';
 }
 function examResult(){

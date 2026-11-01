@@ -105,4 +105,5 @@ const previousPhase=state.phase;const previousPage=state.page;selectItem(state.c
 document.addEventListener('click',e=>{if(DATA.isPrivate||!e.target.closest('#dd-sync-complete')||test||window.DDLearningSync?.isTest())return;const rows=Object.values(state.records);localStorage.setItem('study:kenton:answer-builder:anonymous-summary:v1',JSON.stringify({child:'kenton',subject:'英语',activity:'reading_answer_practice',questionCount:rows.filter(x=>x.attempts.length).length,attemptCount:rows.reduce((n,x)=>n+x.attempts.length,0),hintUsed:rows.some(x=>x.hintEvents.length>0),reviewNeeded:true,mastery:'not_assessed',at:new Date().toISOString()}))},true);
 </script>
 <script src="../assets/learning-sync.js"></script>
+<script src="../assets/v2-records.js" defer data-v2-sync></script><script src="../assets/v2-page-sync.js" defer data-v2-sync></script>
 </body></html>

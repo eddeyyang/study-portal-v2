@@ -1,6 +1,6 @@
 # v2 学习记录接收站
 
-孩子在 v2 的软件（听写台、数学错题本、考前脑图、无人机）里做完一轮，页面把结果发到这里；Claude 定时读取，写进 Child Study 项目的学情总档。
+孩子在 v2 的软件（听写台、数学错题本、考前脑图、无人机）和同步来的正式站页面里学习，页面把结果发到这里；Claude 定时读取，写进学情总档（Claude 文档）。
 家长 2026-10-24 定：接收站放在家长自己的腾讯云服务器上。
 
 ## 组成
@@ -42,3 +42,13 @@
 - 服务器上的 `receiver.py` 已加上 exam-map（原文件备份为 `receiver.py.bak-20261101`），重启后用一条测试记录验证收下（ok）。
 - 页面端 `assets/v2-records.js`：被拒收的记录留在本机下次再试，但不再挡住后面的记录；网络不通时整队保留。
 - 学情归档改为 Claude 文档（家长 2026-11-01 定）：《弟弟 Eddey 学情总档》《哥哥 Kenton 学情总档》，由定时任务「Study Portal 学情读取」写入。
+
+## 2026-11-01 扩展：V2 上所有学习页面都上报（家长要求）
+
+- 接收站不再按软件名单收：`app` 只要是小写字母、数字、连字符（2–32 个字符）就收，以后新做的 V2 软件不用再改服务器。
+  服务器上已改（备份 `receiver.py.bak-20261101b`），重启后验证：`page-check` 收下（ok），`BAD APP` 拒收（bad record）。
+- 新增 `app: page`：从正式站同步来的页面（约 190 个）由 `assets/v2-page-sync.js` 旁听页面存的进度，离开页面或点“完成并发给家长”时发出。
+  字段：`page`（页面路径）、`title`、`subject`、`reason`（hide 切走 / leave 关页 / finish 点了完成）、`roundId`+`part`（同一次打开的第几段）、
+  `activeSeconds`、`total/right/wrong`、`items[]`（页面数据里认出的作答行：`ok` 为 true/false/null，其余字段照页面原样）、`state`（这次改动过的进度，截断）。
+- 无人机（app: drone）开始上报：飞完一站、秒答、复习、机考交卷或离开页面时各发一条。
+- 页面端 `v2-records.js`：在装了 learning-sync.js 的页面上改用隐藏 iframe 里的原生 fetch 和存储（learning-sync 在 V2 上会把 POST 换成不发送的假响应）；只把接收站明确回 `ok`/`dup` 的记录当作已送达。

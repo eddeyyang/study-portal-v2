@@ -869,14 +869,20 @@
      "type": "text",
      "prompt": "补全理由：because ___ interesting.",
      "answer": "it is",
-     "aliases": [],
+     "aliases": [
+      "it's"
+     ],
      "why": "形容词前补出主语 it 和 be 动词 is。"
     },
     {
      "type": "text",
      "prompt": "用 because 写“我喜欢这个游戏，因为它很有趣”。",
      "answer": "I like this game because it is interesting",
-     "aliases": [],
+     "aliases": [
+      "I like this game because it's interesting",
+      "I like this game because it is fun",
+      "I like this game because it's fun"
+     ],
      "why": "喜欢的对象 + because + it is interesting。"
     }
    ],
@@ -1287,7 +1293,9 @@
      "type": "text",
      "prompt": "把 He often helps me. 改成一般疑问句。",
      "answer": "Does he often help me",
-     "aliases": [],
+     "aliases": [
+      "Does he often help you"
+     ],
      "why": "Does 移到句首；helps 变 help。"
     }
    ],

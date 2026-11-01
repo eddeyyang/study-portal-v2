@@ -38,7 +38,8 @@ LAST = HERE / "last-report.json"
 
 EXCLUDE_FILES = {"README.md", "MISSING.md", "CLAUDE.md", ".gitignore", ".nojekyll",
                  "assets/portal-theme.css", "assets/shell-theme.css"}
-EXCLUDE_PREFIXES = ("archive/", "tools/", ".git/", ".github/", "local-data/", "api/")
+EXCLUDE_PREFIXES = ("archive/", "tools/", ".git/", ".github/", "local-data/", "api/",
+                    "apps/v2/", "apps/drone/", "apps/audio/v2-", "assets/v2-", "data/v2-")   # 后五项是 v2 自有
 TEXT_EXT = {".html", ".htm", ".js", ".mjs", ".css", ".json", ".txt", ".svg", ".webmanifest", ".xml", ".md"}
 ASSET_EXT = r"(?:html?|m?js|css|json|mp3|wav|m4a|ogg|png|jpe?g|gif|svg|webp|pdf|woff2?|ttf|webmanifest|txt|md)"
 REF_RE = re.compile(r"""["'(`]((?:\.\./|\./)?[A-Za-z0-9_\-./%一-鿿·（）()]+?\.""" + ASSET_EXT +
@@ -80,6 +81,73 @@ def is_excluded(p: str) -> bool:
 
 def is_text(p: str) -> bool:
     return PurePosixPath(p).suffix.lower() in TEXT_EXT
+
+
+# ---------- V2 学习记录转发（家长 2026-11-01：V2 上的学习页面都要把记录发给家长） ----------
+# 每个同步来的页面自动加一行，引用 v2-records.js 和 v2-page-sync.js（放在 learning-sync.js 那一行后面，没有就放在 <head> 后）。
+# 这一行是确定的“V2 改写”：判断 v2 有没有改过某个文件时先把它去掉再比；上游更新照常覆盖，写回前再加上。
+V2_MARK = b"data-v2-sync"
+V2_LINE = ('<script src="{pre}assets/v2-records.js" defer data-v2-sync></script>'
+           '<script src="{pre}assets/v2-page-sync.js" defer data-v2-sync></script>')
+LS_TAG_RE = re.compile(rb"<script\b[^>]*learning-sync\.js[^>]*>\s*</script>", re.I)
+META_CS_RE = re.compile(rb"<meta\b[^>]*charset[^>]*>", re.I)
+HEAD_TAG_RE = re.compile(rb"<head\b[^>]*>", re.I)
+HTML_TAG_RE = re.compile(rb"<html\b[^>]*>", re.I)
+
+
+def v2_line(p: str) -> bytes:
+    return V2_LINE.format(pre="../" * p.count("/")).encode()
+
+
+def v2_injectable(p: str) -> bool:
+    return p.endswith(".html") and not is_excluded(p)
+
+
+def v2_inject(p, body):
+    if body is None or not v2_injectable(p) or V2_MARK in body:
+        return body
+    nl = b"\r\n" if b"\r\n" in body[:4096] else b"\n"
+    m = LS_TAG_RE.search(body)
+    if not m:
+        cs, end = META_CS_RE.search(body), body.lower().find(b"</head>")
+        m = cs if cs and (end < 0 or cs.start() < end) else None
+    m = m or HEAD_TAG_RE.search(body) or HTML_TAG_RE.search(body)
+    if not m:
+        return v2_line(p) + nl + body
+    return body[:m.end()] + nl + v2_line(p) + body[m.end():]
+
+
+def v2_strip(p, body):
+    if body is None or V2_MARK not in body:
+        return body
+    line = v2_line(p)
+    for pat in (b"\r\n" + line, b"\n" + line, line + b"\r\n", line + b"\n", line):
+        if pat in body:
+            return body.replace(pat, b"", 1)
+    return body
+
+
+def same_as_upstream(p, local, up_sha) -> bool:
+    """本地文件就是上游那一版（最多多了 V2 自动加的那一行）。"""
+    if local is None or not up_sha:
+        return False
+    return sha(local) == up_sha or (V2_MARK in local and sha(v2_strip(p, local)) == up_sha)
+
+
+def ensure_injected(F, dry):
+    """给每个同步来的页面补上 V2 记录转发那一行：首次迁移用，也兜住手工合并冲突后漏掉的情况。"""
+    done = []
+    for p in sorted(F):
+        loc = ROOT / p
+        if not v2_injectable(p) or not loc.exists():
+            continue
+        b = loc.read_bytes()
+        if V2_MARK in b:
+            continue
+        if not dry:
+            loc.write_bytes(v2_inject(p, b))
+        done.append(p)
+    return done
 
 
 def git(*args, check=True):
@@ -299,7 +367,7 @@ def cmd_sync(dry, force_backfill=False):
     # 0. v2 改过但还没登记基线的文件：从 git 历史自动补上基线
     for p, e in F.items():
         loc = ROOT / p
-        if loc.exists() and not (BASE / p).exists() and sha(loc.read_bytes()) != e["sha"]:
+        if loc.exists() and not (BASE / p).exists() and not same_as_upstream(p, loc.read_bytes(), e["sha"]):
             b = history_base(p, e["sha"])
             if b is None:
                 rep["customized_without_base"].append(p)
@@ -310,16 +378,16 @@ def cmd_sync(dry, force_backfill=False):
         loc = ROOT / p
         if is_new and not loc.exists():
             if not dry:
-                loc.parent.mkdir(parents=True, exist_ok=True); loc.write_bytes(body)
+                loc.parent.mkdir(parents=True, exist_ok=True); loc.write_bytes(v2_inject(p, body))
             rep["added"].append(p)
             if "/" not in p and p.endswith(".html"):
                 rep["new_root_pages"].append(p)
             return True
         cur = loc.read_bytes() if loc.exists() else None
         old_sha = F.get(p, {}).get("sha")
-        if cur is None or sha(cur) == old_sha:          # v2 没动过：直接换
+        if cur is None or same_as_upstream(p, cur, old_sha):   # v2 没动过（最多多了记录转发那一行）：直接换
             if not dry:
-                loc.parent.mkdir(parents=True, exist_ok=True); loc.write_bytes(body)
+                loc.parent.mkdir(parents=True, exist_ok=True); loc.write_bytes(v2_inject(p, body))
             rep["updated"].append(p)
             return True
         basef = BASE / p
@@ -328,7 +396,7 @@ def cmd_sync(dry, force_backfill=False):
             ok, merged = merge3(cur, base, body)
             if ok:
                 if not dry:
-                    loc.write_bytes(merged)
+                    loc.write_bytes(v2_inject(p, merged))
                     basef.parent.mkdir(parents=True, exist_ok=True); basef.write_bytes(body)
                 rep["merged"].append(p)
                 return True
@@ -496,7 +564,8 @@ def cmd_sync(dry, force_backfill=False):
         if found_for_page == 0:
             rep["hash_apps_without_audio"].append(p)
 
-    rep["content_changed"] = bool(rep["updated"] or rep["merged"] or rep["added"])
+    rep["v2_record_line_added"] = ensure_injected(F, dry)
+    rep["content_changed"] = bool(rep["updated"] or rep["merged"] or rep["added"] or rep["v2_record_line_added"])
     rep["checked_at"] = datetime.now(timezone.utc).strftime("%Y-%m-%d")
     rep["dry_run"] = dry
     if not dry:
@@ -599,7 +668,12 @@ def cmd_mark_custom(p):
     if not e:
         sys.exit(f"{p} 不是从上游同步的文件")
     cur = (ROOT / p).read_bytes()
-    base = cur if sha(cur) == e["sha"] else history_base(p, e["sha"])
+    if sha(cur) == e["sha"]:
+        base = cur
+    elif same_as_upstream(p, cur, e["sha"]):
+        base = v2_strip(p, cur)            # 只多了 V2 记录转发那一行：去掉就是上游原版
+    else:
+        base = history_base(p, e["sha"])
     if base is None:
         sys.exit(f"找不到 {p} 的上游基线")
     (BASE / p).parent.mkdir(parents=True, exist_ok=True); (BASE / p).write_bytes(base)
@@ -614,6 +688,7 @@ if __name__ == "__main__":
     g.add_argument("--mark-custom", metavar="PATH")
     g.add_argument("--verify", action="store_true")
     g.add_argument("--check-site", action="store_true")
+    g.add_argument("--inject", action="store_true", help="只给同步来的页面补上 V2 记录转发那一行（不联网）")
     ap.add_argument("--dry-run", action="store_true")
     ap.add_argument("--backfill-audio", action="store_true", help="不等 7 天，这次就探线上原本缺的哈希音频")
     a = ap.parse_args()
@@ -622,4 +697,7 @@ if __name__ == "__main__":
     elif a.mark_custom: cmd_mark_custom(a.mark_custom)
     elif a.verify: cmd_verify()
     elif a.check_site: cmd_check_site()
+    elif a.inject:
+        done = ensure_injected(load_state()["files"], a.dry_run)
+        print(json.dumps({"dry_run": a.dry_run, "v2_record_line_added": len(done), "files": done[:40]}, ensure_ascii=False, indent=1))
     else: cmd_sync(a.dry_run, a.backfill_audio)
