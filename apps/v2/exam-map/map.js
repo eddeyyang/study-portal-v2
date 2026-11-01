@@ -474,7 +474,7 @@ function showQ() {
 function answerQ(raw, selfOk) {
   const q = quiz.qs[quiz.i];
   const ok = q.type === 'open' ? !!selfOk : judge(q, raw);
-  quiz.results[quiz.i] = { ok, answer: String(raw ?? '').slice(0, 80), self: q.type === 'open' };
+  quiz.results[quiz.i] = { ok, answer: String((q.type === 'choice' ? (q.options || [])[Number(raw)] : raw) ?? '').slice(0, 80), self: q.type === 'open' }; // 选择题记下选的文字，方便归档时看懂
   const r = rec(q.node); r.asked++; if (ok) r.right++; else r.wrong++; r.lastAt = new Date().toISOString();
   if (q.kind === 'bank') { r.usedBank = [...new Set([...(r.usedBank || []), q.id])].slice(-40); }
   save();
@@ -512,7 +512,7 @@ function reportText(byNode, right, total) {
 function report(byNode, right) {
   quiz.text = reportText(byNode, right, quiz.qs.length);
   if (!window.V2Records) return;
-  try { window.V2Records.enqueue({ app: 'exam-map', who, subject, mode: TEST ? 'test' : 'formal', roundId: quiz.id, label: quiz.label, total: quiz.qs.length, right, items: quiz.qs.map((q, i) => ({ node: q.node, title: graph.nodes.get(q.node).title, kind: q.kind, id: q.id || '', result: quiz.results[i]?.ok ? 'right' : 'wrong', self: !!quiz.results[i]?.self, answer: quiz.results[i]?.answer || '' })), text: quiz.text }); } catch (e) { }
+  try { window.V2Records.enqueue({ app: 'exam-map', who, subject, mode: TEST ? 'test' : 'formal', roundId: quiz.id, label: quiz.label, total: quiz.qs.length, right, items: quiz.qs.map((q, i) => ({ node: q.node, title: graph.nodes.get(q.node).title, kind: q.kind, id: q.id || '', result: quiz.results[i]?.ok ? 'right' : 'wrong', self: !!quiz.results[i]?.self, answer: quiz.results[i]?.answer || '', prompt: String(q.prompt || '').slice(0, 120), ref: String((q.type === 'choice' ? (q.options || [])[q.answer] : (q.answer ?? (q.answers || [])[0])) ?? '').slice(0, 60) })), text: quiz.text }); } catch (e) { }
 }
 let rafMap = 0; function renderMapSoon() { cancelAnimationFrame(rafMap); rafMap = requestAnimationFrame(() => { renderMap(); refreshStats(); }); }
 function refreshStats() { const el = $('p.stat'); if (!el || !graph) return; el.textContent = statText(); const pb = $('[data-act=path]'); if (pb) { const ps = pathState(); pb.innerHTML = `${icons.book}按顺序学 · ${ps.i >= ps.order.length ? '已看完，再来一遍' : `第 ${ps.i + 1} / ${ps.order.length} 张`}`; } }
