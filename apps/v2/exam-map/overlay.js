@@ -101,6 +101,13 @@ window.ExamMapOverlay = {
     }
   },
 
+  /* 考试范围（家长告知）：只到第几单元，之后的单元在脑图里收起。没写的科目按正式站全部内容。 */
+  examScope: {
+    kenton: { english: 4 },
+    eddey: { english: 4 }
+  },
+  examScopeNote: '家长 2026-11-01：英语考试只到 Unit 4',
+
   /* 考场提醒：脑图下方三条，考前最后看一眼。 */
   reminders: {
     kenton: {

@@ -53,7 +53,9 @@ function chainOf(t) {
 function buildGraph(bank) {
   const data = window.ReviewAtlasData, mem = window.ReviewAtlasMemory || {};
   const child = data.children[who];
-  const units = child.units[subject], topics = child.topics[subject];
+  const maxUnit = Number(OV.examScope?.[who]?.[subject]) || Infinity;
+  const units = child.units[subject].slice(0, maxUnit === Infinity ? undefined : maxUnit), topics = child.topics[subject].filter(t => t.unit <= maxUnit);
+  const hiddenUnits = child.units[subject].length - units.length;
   const keys = (OV.keyNodes?.[who]?.[subject]) || {};
   const notes = (OV.notes?.[who]?.[subject]) || {};
   const nodes = new Map();
@@ -80,7 +82,7 @@ function buildGraph(bank) {
     for (const n of nodes.values()) if (n.bankItems.length) { const cat = n.bankItems[0].category; const s = syl.get(cat); n.bankInsight = s?.coreInsight || ''; n.breakpoints = topBreakpoints(n.bankItems); }
   }
   // 背默 / 单词分支（来自正式站的读写背清单）
-  const list = (mem[who] || {})[subject] || [];
+  const list = ((mem[who] || {})[subject] || []).filter(it => !(Number(it.unit) > maxUnit));
   if (list.length) {
     const byUnit = new Map();
     for (const it of list) { if (!byUnit.has(it.unit)) byUnit.set(it.unit, []); byUnit.get(it.unit).push(it); }
@@ -96,7 +98,7 @@ function buildGraph(bank) {
     branches.push({ id: 'um', unit: 0, label: subject === 'chinese' ? '词语与背默' : '单词与词组', desc: subject === 'chinese' ? '看拼音写词语 · 必背默写' : '按单元过词', chain: subject === 'chinese' ? '拼音 → 字形 → 整段默写' : '中文 → 拼写 → 句子里用', leaves });
   }
   for (const n of nodes.values()) if (n.note && !n.mistakes) n.mistakes = n.note.count || 0;
-  return { center: { label: SUBJECTS[subject], sub: CHILD[who].grade }, branches, nodes };
+  return { center: { label: SUBJECTS[subject], sub: CHILD[who].grade }, branches, nodes, scope: maxUnit === Infinity ? null : { maxUnit, hiddenUnits } };
 }
 function topBreakpoints(items) {
   const c = new Map();
@@ -282,13 +284,13 @@ function home() {
   const total = graph.nodes.size, passed = [...graph.nodes.keys()].filter(id => nodeStatus(id) === 'pass').length, again = [...graph.nodes.keys()].filter(id => nodeStatus(id) === 'again').length;
   const mist = [...graph.nodes.values()].reduce((a, n) => a + n.mistakes, 0);
   const rem = OV.reminders?.[who]?.[subject] || [];
-  $('#app').innerHTML = `<header class="topbar"><a class="icon-btn" href="../../../index.html" aria-label="回学习门户">${icons.back}</a><div class="crumb"><b>${esc(CHILD[who].label)} · ${esc(SUBJECTS[subject])}脑图</b><small>考前复习 · ${esc(CHILD[who].grade)} · ${total} 节点${mist ? ' · 错题 ' + mist : ''}</small></div>${TEST ? '<span class="test-chip">测试，不计入</span>' : ''}<button class="me-chip" data-act="switch" title="换一个人"><i>${CHILD[who].initial}</i><span class="t">${esc(CHILD[who].en)}</span></button></header>
+  $('#app').innerHTML = `<header class="topbar"><a class="icon-btn" href="../../../index.html" aria-label="回学习门户">${icons.back}</a><div class="crumb"><b>${esc(CHILD[who].label)} · ${esc(SUBJECTS[subject])}脑图</b><small>${graph.scope ? `考试范围到 ${subject === 'english' ? 'Unit' : '第'} ${graph.scope.maxUnit}${subject === 'english' ? '' : ' 单元'} · ` : '考前复习 · '}${esc(CHILD[who].grade)} · ${total} 节点${mist ? ' · 错题 ' + mist : ''}</small></div>${TEST ? '<span class="test-chip">测试，不计入</span>' : ''}<button class="me-chip" data-act="switch" title="换一个人"><i>${CHILD[who].initial}</i><span class="t">${esc(CHILD[who].en)}</span></button></header>
   <nav class="tabs" aria-label="科目">${Object.entries(SUBJECTS).map(([k, v]) => `<button class="tab${k === subject ? ' on' : ''}" data-act="subject" data-subject="${k}" aria-pressed="${k === subject}">${v}</button>`).join('')}</nav>
   <section class="bar"><button class="primary" data-act="quick">${icons.bolt}快速过一遍 · 10 题</button><button class="ghost no-print" data-act="print">${icons.print}打印</button><span class="stat num">过关 ${passed} · 再看 ${again} · 未做 ${total - passed - again}</span></section>
   <section id="map" class="map-host" aria-live="polite"></section>
   <section class="legend"><span><i class="lg-star">${icons.star}</i>知识重点</span><span><i class="lg-mist">错N</i>错题重点（这学期错过的题数）</span><span><i class="lg-dot new"></i>未做</span><span><i class="lg-dot again"></i>再看</span><span><i class="lg-dot pass"></i>过关</span></section>
   ${rem.length ? `<section class="reminders"><h2>考场三件事</h2><ol>${rem.map(r => `<li>${esc(r)}</li>`).join('')}</ol></section>` : ''}
-  <section class="src"><p>知识节点来自正式站《知识连起来》的同步内容；${subject === 'math' ? '错题数按这学期数学错题本逐题归类统计' : (mist ? '错题重点来自 10 月订正记录' : '语文、英语还没有结构化错题记录，有记录后会自动标出')}。点任一节点：先看关系，再做 5 题。${storageOK ? '' : '这台设备不能保存记录，本次结果只在当前页面有效。'}</p></section>`;
+  <section class="src"><p>${graph.scope ? `<b>考试范围只到 ${subject === 'english' ? 'Unit ' + graph.scope.maxUnit : '第 ' + graph.scope.maxUnit + ' 单元'}</b>（${esc(OV.examScopeNote || '家长告知')}）${graph.scope.hiddenUnits ? `，之后 ${graph.scope.hiddenUnits} 个单元的节点和单词已收起` : ''}。</p><p>` : ''}知识节点来自正式站《知识连起来》的同步内容；${subject === 'math' ? '错题数按这学期数学错题本逐题归类统计' : (mist ? '错题重点来自 10 月订正记录' : '语文、英语还没有结构化错题记录，有记录后会自动标出')}。点任一节点：先看关系，再做 5 题。${storageOK ? '' : '这台设备不能保存记录，本次结果只在当前页面有效。'}</p></section>`;
   renderMap();
 }
 
