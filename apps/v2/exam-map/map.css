@@ -213,3 +213,17 @@ textarea.answer{resize:vertical;font-size:17px;line-height:1.6}
 .bar .ghost{padding:0 14px}
 p.stat{font-size:13px;color:var(--muted);margin:-4px 0 12px}
 .chain,.chain-key{display:none}
+
+/* 期中手册并入（2026-11-01）："学到再看"分支用虚线、颜色放淡；读音题的画线部分；对话例子一问一答分行 */
+.mind .branch.opt rect{fill:#fff;stroke:var(--hair-2);stroke-dasharray:5 4}
+.mind .branch.opt .b-main{fill:var(--ink-2)}
+.mind .branch.opt .b-chain{fill:var(--muted)}
+.mind .leaf.opt .leaf-bg{fill:#fafbfc;stroke-dasharray:5 4}
+.mind .leaf.opt .l-title{fill:var(--ink-2);font-weight:500}
+.lg-opt{display:inline-block;width:18px;height:12px;border:1.5px dashed var(--muted);border-radius:4px;vertical-align:-1px;margin-right:4px}
+.sh-head small .k.opt{color:var(--muted)}
+.ex .en u,.option u,.fb u{text-decoration-thickness:2px;text-underline-offset:3px}
+.ex.caps .en .key{text-decoration:none;background:var(--me-wash);border-radius:6px;padding:0 4px}
+.ex.dialog .en{font-size:17px}
+.ex.dialog .en+.en{margin-top:2px}
+.watch li span .w{font-style:normal;font-weight:700;color:var(--ink);margin-right:6px}

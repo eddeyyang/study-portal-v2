@@ -4,6 +4,8 @@
    点节点：一句关键关系 + 关系链 → 马上出题（知识题 + 这学期错过的原题重做），当场判对错。
    「快速过一遍」：错题多、没做过的节点优先，抽 10 题，几分钟做完告诉你还要再看哪几个节点。
    知识节点来自正式站同步的 assets/review-atlas/content.js 与 memory.js；v2 自己加的东西在 overlay.js。
+   期中手册（沪学习 5上《期中复习知识手册》＋《知识梳理》，家长 2026-11-01 交来）提炼出的易错点、补充卡、单词提醒和"学到再看"分支
+   在 data/midterm-handbook.json，按孩子 → 科目存放；知识点是重写的，题目是原创的，不含手册原题、原文和图片。
    记录按孩子、科目、正式/测试分开存在这台设备：sp2.exam-map:<who>:<subject>:<formal|test>；做完一轮自动上报学情链路。 */
 (() => {
 'use strict';
@@ -14,7 +16,7 @@ const TEST = ['1', 'true'].includes(params.get('test')) || params.get('mode') ==
 const OV = window.ExamMapOverlay || {};
 let who = ['kenton', 'eddey'].includes(params.get('who')) ? params.get('who') : (['kenton', 'eddey'].includes(params.get('child')) ? params.get('child') : null);
 let subject = SUBJECTS[params.get('subject')] ? params.get('subject') : 'math';
-let graph = null, state = null, storageOK = true, quiz = null, banks = {}, englishPoints = {};
+let graph = null, state = null, storageOK = true, quiz = null, banks = {}, englishPoints = {}, handbook = null;
 
 const $ = (s, r = document) => r.querySelector(s);
 const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
@@ -47,10 +49,11 @@ async function loadBank() {
 }
 function chainOf(t) {
   const m = t.model || {};
-  if (OV.chains && OV.chains[t.id]) return { passage: '', rows: OV.chains[t.id] };
-  if (m.states && m.states.length) return { passage: m.passage || '', rows: m.states.map(s => ({ label: s.label, parts: s.parts, why: s.why || '' })) };
+  if (OV.chains && OV.chains[t.id]) return { passage: '', rows: OV.chains[t.id].slice() }; // 复制一份：并入的例子不能写回 overlay，否则每次重建都会重复
+  if (m.states && m.states.length) return { passage: m.passage || '', rows: m.states.map(s => ({ label: s.label, parts: s.parts, why: s.why || '', mark: s.mark || '', dialog: !!s.dialog })) };
   return { passage: '', rows: [] };
 }
+const hbLabel = () => (handbook && handbook.label) || '期中手册';
 function buildGraph(bank) {
   const data = window.ReviewAtlasData, mem = window.ReviewAtlasMemory || {};
   const child = data.children[who];
@@ -60,7 +63,7 @@ function buildGraph(bank) {
   const keys = (OV.keyNodes?.[who]?.[subject]) || {};
   const notes = (OV.notes?.[who]?.[subject]) || {};
   const nodes = new Map();
-  const mk = (t, extra = {}) => ({ id: t.id, title: t.title, cardTitle: t.cardTitle || t.title, memo: t.memo || '', quote: t.quote || '', unit: t.unit, source: t.source, idea: t.idea, recall: t.recall, tip: t.tip, chain: chainOf(t), questions: (t.questions || []).map(q => ({ ...q, kind: 'atlas' })), bankItems: [], mistakes: 0, key: keys[t.id] || '', note: notes[t.id] || null, ...extra });
+  const mk = (t, extra = {}) => ({ id: t.id, title: t.title, cardTitle: t.cardTitle || t.title, memo: t.memo || '', quote: t.quote || '', unit: t.unit, source: t.source, idea: t.idea, recall: t.recall, tip: t.tip, tips: (t.tips || []).slice(), chain: chainOf(t), questions: (t.questions || []).map(q => ({ ...q, kind: 'atlas' })), bankItems: [], mistakes: 0, key: keys[t.id] || '', note: notes[t.id] || null, ...extra });
   topics.forEach(t => nodes.set(t.id, mk(t)));
   const branches = units.map((u, i) => ({ id: `u${i + 1}`, unit: i + 1, label: u[0], desc: u[1], chain: u[2], leaves: topics.filter(t => t.unit === i + 1).map(t => t.id) }));
   // 必考必会补充节点（essentials.js）：按单元插进分支；英语语法点来自 data/english-grammar.json，与已有节点讲同一件事的合并进去
@@ -84,6 +87,30 @@ function buildGraph(bank) {
     nodes.set(x.id, mk(x, { essential: true }));
     const b = branches[x.unit - 1]; if (b) b.leaves.push(x.id);
   }
+  // 期中手册（data/midterm-handbook.json）：易错、例子、题并入已有卡；补充卡按单元挂上；"学到再看"分支最后接上
+  const HB = ((handbook || {})[who] || {})[subject] || null;
+  const hbName = hbLabel();
+  const hbBranches = [], hbUnit0 = [];
+  if (HB) {
+    for (const [id, m] of Object.entries(HB.merge || {})) {
+      const target = nodes.get(id); if (!target) continue;
+      if (m.idea) target.extraIdea = [...(target.extraIdea || []), m.idea];
+      target.chain.rows.push(...(m.rows || []).map(r => ({ label: r.label, parts: r.parts, why: r.why || '', mark: r.mark || '', dialog: !!r.dialog })));
+      target.tips = [...(target.tips || []), ...(m.tips || [])];
+      target.questions.push(...(m.questions || []).map(q => ({ ...q, kind: 'atlas', from: 'handbook' })));
+      target.handbook = true; // 不改 ★：星号只留给原来的重点和新补的卡，否则几乎全是星就没意义了
+      if (!String(target.source || '').includes(hbName)) target.source = [target.source, hbName].filter(Boolean).join('；');
+    }
+    for (const b of (HB.branches || [])) if (b.unit <= maxUnit) hbBranches.push({ id: `hb${b.unit}`, unit: b.unit, label: b.label, desc: b.desc || '', chain: b.chain || '', leaves: [], optional: !!b.optional });
+    for (const x of (HB.nodes || [])) {
+      if (nodes.has(x.id) || x.unit > maxUnit) continue;
+      const hb = hbBranches.find(b => b.unit === x.unit);
+      const home = hb || (x.unit ? branches.find(b => b.unit === x.unit) : null);
+      if (!home && x.unit) continue;
+      nodes.set(x.id, mk({ ...x, model: { type: 'relation', states: x.rows || [] } }, { essential: true, handbook: true, optional: !!(hb && hb.optional) }));
+      if (home) home.leaves.push(x.id); else hbUnit0.push(x.id);
+    }
+  }
   // 错题本：补充节点 + 每题落到节点
   if (subject === 'math' && bank) {
     const syl = new Map((bank.syllabus || []).map(s => [s.category, s]));
@@ -104,7 +131,12 @@ function buildGraph(bank) {
     for (const n of nodes.values()) if (n.bankItems.length) { const cat = n.bankItems[0].category; const s = syl.get(cat); n.bankInsight = s?.coreInsight || ''; n.breakpoints = topBreakpoints(n.bankItems); }
   }
   // 背默 / 单词分支（来自正式站的读写背清单）
-  const list = ((mem[who] || {})[subject] || []).filter(it => !(Number(it.unit) > maxUnit));
+  // 期中手册的单词补充：已有词加"易错"提醒，补上手册列出的词组，陷阱题按单元挂到对应的单词卡
+  const HW = (HB && HB.words) || {};
+  const list = [
+    ...((mem[who] || {})[subject] || []).map(it => HW.notes && HW.notes[it.text] ? { ...it, note: [it.note, HW.notes[it.text]].filter(Boolean).join('；') } : it),
+    ...(HW.add || []).map((it, i) => ({ id: `hb-${subject}-${i}`, accepted: [it.text], ...it, handbook: true }))
+  ].filter(it => !(Number(it.unit) > maxUnit));
   if (list.length) {
     const byUnit = new Map();
     for (const it of list) { if (!byUnit.has(it.unit)) byUnit.set(it.unit, []); byUnit.get(it.unit).push(it); }
@@ -114,11 +146,16 @@ function buildGraph(bank) {
       const id = `${p}-memory-${u}`;
       const recite = items.filter(i => i.recitation), words = items.filter(i => !i.recitation);
       const title = subject === 'chinese' ? `第${u}单元 词语${recite.length ? ' · 背默 ' + recite.length + ' 篇' : ''}` : `Unit ${u} 单词词组 ${words.length}`;
-      nodes.set(id, { id, title, unit: u, source: subject === 'chinese' ? '课内词语表 · 教辅背默清单' : '课本 Words to use · 教辅词表', idea: subject === 'chinese' ? (recite.length ? '看拼音写词语，默写段落抓住易错字。' : '看拼音写词语，字形、字音一起过。') : '中文意思 → 拼出英文；词组整个记。', recall: subject === 'chinese' ? '哪几个字最容易写错？' : '哪些词是整个词组一起用的？', tip: '', chain: { passage: '', rows: recite.slice(0, 4).map(r => ({ label: r.title || r.lesson, parts: [r.examHint || '按原文默写'] })) }, questions: [], memoryItems: items, mistakes: notes[id]?.count || 0, key: '', note: notes[id] || null, memory: true });
+      const traps = (HW.traps || []).filter(q => Number(q.unit) === Number(u)).map(q => ({ ...q, kind: 'atlas', from: 'handbook' }));
+      const hbItems = items.some(i => i.handbook || i.note);
+      nodes.set(id, { id, title, unit: u, source: [subject === 'chinese' ? '课内词语表 · 教辅背默清单' : '课本 Words to use · 教辅词表', hbItems || traps.length ? hbName : ''].filter(Boolean).join('；'), idea: subject === 'chinese' ? (recite.length ? '看拼音写词语，默写段落抓住易错字。' : '看拼音写词语，字形、字音一起过。') : '中文意思 → 拼出英文；词组整个记。', recall: subject === 'chinese' ? '哪几个字最容易写错？' : '哪些词是整个词组一起用的？', tip: '', tips: [], chain: { passage: '', rows: recite.slice(0, 4).map(r => ({ label: r.title || r.lesson, parts: [r.examHint || '按原文默写'] })) }, questions: [], traps, memoryItems: items, mistakes: notes[id]?.count || 0, key: '', note: notes[id] || null, memory: true });
       leaves.push(id);
     }
-    branches.push({ id: 'um', unit: 0, label: subject === 'chinese' ? '词语与背默' : '单词与词组', desc: subject === 'chinese' ? '看拼音写词语 · 必背默写' : '按单元过词', chain: subject === 'chinese' ? '拼音 → 字形 → 整段默写' : '中文 → 拼写 → 句子里用', leaves });
+    branches.push({ id: 'um', unit: 0, label: subject === 'chinese' ? '词语与背默' : '单词与词组', desc: subject === 'chinese' ? '看拼音写词语 · 必背默写' : '按单元过词', chain: subject === 'chinese' ? '拼音 → 字形 → 整段默写' : '中文 → 拼写 → 句子里用', leaves: [...hbUnit0.splice(0), ...leaves] });
   }
+  // 手册里不属于某个单元的卡（如英语读音）没有单词分支可挂时，单独成一条；"学到再看"分支放在最后
+  if (hbUnit0.length) branches.push({ id: 'hb0', unit: 0, label: '期中手册补充', desc: '', chain: '易错 → 做题', leaves: hbUnit0.splice(0) });
+  for (const b of hbBranches) if (b.leaves.length) branches.push(b);
   for (const n of nodes.values()) { if (n.note && !n.mistakes) n.mistakes = n.note.count || 0; if (!n.memo && ES.memos?.[n.id]) n.memo = ES.memos[n.id]; }
   return { center: { label: SUBJECTS[subject], sub: CHILD[who].grade }, branches, nodes, scope: maxUnit === Infinity ? null : { maxUnit, hiddenUnits } };
 }
@@ -135,15 +172,17 @@ function memoryQuestions(n, count) {
   if (subject === 'chinese') {
     const words = shuffle(items.filter(i => !i.recitation && i.pinyin && i.text.length <= 4));
     const recite = shuffle(items.filter(i => i.recitation && i.text));
-    for (const w of words.slice(0, Math.max(2, count - Math.min(2, recite.length)))) out.push({ kind: 'word', prompt: `看拼音写词语：${w.pinyin}`, answer: w.text, aliases: [], why: `${w.text}（${w.pinyin}）· ${w.lesson}` });
+    for (const w of words.slice(0, Math.max(2, count - Math.min(2, recite.length)))) out.push({ kind: 'word', prompt: `看拼音写词语：${w.pinyin}`, answer: w.text, aliases: [], why: `${w.text}（${w.pinyin}）· ${w.lesson}${w.note ? '。' + w.note : ''}` });
     for (const r of recite.slice(0, 2)) { const q = blankOf(r); if (q) out.push(q); }
     const idioms = items.filter(i => i.type === '日积月累' && i.meaning && i.text.length === 4);
     if (idioms.length >= 3) for (const it of shuffle(idioms).slice(0, 2)) { const others = shuffle(idioms.filter(x => x !== it)).slice(0, 2); const opts = shuffle([it, ...others]); out.push({ kind: 'idiom', type: 'choice', prompt: `意思是"${it.meaning}"的成语是？`, options: opts.map(o => o.text), answer: opts.indexOf(it), why: `${it.text}：${it.meaning}（${it.lesson}）` }); }
   } else {
     const ws = shuffle(items.filter(i => i.text && i.meaning));
-    for (const w of ws.slice(0, count)) out.push({ kind: 'word', prompt: `写出英文：${w.meaning}`, answer: w.text, aliases: w.accepted || [], why: `${w.text} — ${w.meaning}${w.lesson ? ' · ' + w.lesson : ''}`, lang: 'en' });
+    for (const w of ws.slice(0, count)) out.push({ kind: 'word', prompt: `写出英文：${w.meaning}`, answer: w.text, aliases: w.accepted || [], why: `${w.text} — ${w.meaning}${w.lesson ? ' · ' + w.lesson : ''}${w.note ? '。' + w.note : ''}`, lang: 'en' });
   }
-  return shuffle(out).slice(0, count);
+  // 期中手册的陷阱题（复数、词形、易错字音字形）：每轮约四成，至少 1 道
+  const traps = shuffle(n.traps || []), nt = Math.min(traps.length, Math.max(1, Math.round(count * 0.4)));
+  return shuffle([...shuffle(out).slice(0, count - nt), ...traps.slice(0, nt)]);
 }
 function blankOf(r) {
   const text = String(r.text || '').replace(/\s+/g, '');
@@ -280,10 +319,10 @@ function renderMap() {
   for (const nd of L.nodes) {
     if (nd.kind === 'branch') {
       const b = nd.b, hot = b.leaves.some(id => graph.nodes.get(id).mistakes);
-      s += `<g class="branch${hot ? ' hot' : ''}" transform="translate(${nd.x},${nd.y})"><rect width="${nd.w}" height="${nd.h}" rx="12"/><text x="10" y="20" class="b-main">${nd.d.labelLines.map((ln, i) => `<tspan x="10" dy="${i ? 17 : 0}">${esc(ln)}</tspan>`).join('')}</text><text x="10" y="${20 + nd.d.labelLines.length * 17 - 1}" class="b-chain">${nd.d.chainLines.map((ln, i) => `<tspan x="10" dy="${i ? 13 : 0}">${esc(ln)}</tspan>`).join('')}</text></g>`;
+      s += `<g class="branch${hot ? ' hot' : ''}${b.optional ? ' opt' : ''}" transform="translate(${nd.x},${nd.y})"><rect width="${nd.w}" height="${nd.h}" rx="12"/><text x="10" y="20" class="b-main">${nd.d.labelLines.map((ln, i) => `<tspan x="10" dy="${i ? 17 : 0}">${esc(ln)}</tspan>`).join('')}</text><text x="10" y="${20 + nd.d.labelLines.length * 17 - 1}" class="b-chain">${nd.d.chainLines.map((ln, i) => `<tspan x="10" dy="${i ? 13 : 0}">${esc(ln)}</tspan>`).join('')}</text></g>`;
     } else {
       const n = nd.n, st = nodeStatus(n.id);
-      s += `<g class="leaf st-${st}${n.mistakes ? ' has-mist' : ''}" data-node="${esc(n.id)}" tabindex="0" role="button" aria-label="${esc(n.title)}${n.mistakes ? '，错题 ' + n.mistakes : ''}" transform="translate(${nd.x},${nd.y})"><rect class="leaf-bg" width="${nd.w}" height="${nd.h}" rx="11"/>`;
+      s += `<g class="leaf st-${st}${n.mistakes ? ' has-mist' : ''}${n.optional ? ' opt' : ''}" data-node="${esc(n.id)}" tabindex="0" role="button" aria-label="${esc(n.title)}${n.mistakes ? '，错题 ' + n.mistakes : ''}" transform="translate(${nd.x},${nd.y})"><rect class="leaf-bg" width="${nd.w}" height="${nd.h}" rx="11"/>`;
       s += `<circle class="dot" cx="16" cy="${nd.h / 2}" r="5"/>${st === 'pass' ? `<path class="dot-check" d="m13 ${nd.h / 2} 2 2 4-4" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>` : ''}`;
       let tx = 30;
       if (n.key || n.essential) { s += `<path class="star" transform="translate(${tx - 2},${nd.h / 2 - 7}) scale(.58)" d="m12 2 2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.2l-6.1 3.4 1.4-6.8L2.2 9.1l6.9-.8Z"/>`; tx += 17; }
@@ -303,31 +342,44 @@ function chooser() {
   $('#app').innerHTML = `<header class="topbar"><a class="icon-btn" href="../../../index.html" aria-label="回学习门户">${icons.back}</a><div class="crumb"><b>考前脑图</b><small>先选是谁在复习</small></div></header>
   <section class="choose"><h1>谁来复习？</h1><div class="who-grid"><button class="who kenton" data-act="who" data-who="kenton"><i>K</i><b>哥哥 Kenton</b><small>五年级上</small></button><button class="who eddey" data-act="who" data-who="eddey"><i>E</i><b>弟弟 Eddey</b><small>四年级上</small></button></div><p class="note">两个人的记录分开存，互不影响。家长测试请在网址后加 <code>?test=1</code>。</p></section>`;
 }
+const coreIds = () => [...graph.nodes.keys()].filter(id => !graph.nodes.get(id).optional);
+const optCount = () => graph.nodes.size - coreIds().length;
+function statText() {
+  const ids = coreIds(), passed = ids.filter(id => nodeStatus(id) === 'pass').length, again = ids.filter(id => nodeStatus(id) === 'again').length, opt = optCount();
+  return `${ids.length} 张卡，每张约 3 分钟，全部看完约 ${ids.length * 3} 分钟 · 过关 ${passed} · 再看 ${again} · 未做 ${ids.length - passed - again}${opt ? ` · 另有 ${opt} 张学到再看` : ''}`;
+}
 function home() {
   document.body.dataset.screen = 'map'; document.body.dataset.who = who;
-  const total = graph.nodes.size, passed = [...graph.nodes.keys()].filter(id => nodeStatus(id) === 'pass').length, again = [...graph.nodes.keys()].filter(id => nodeStatus(id) === 'again').length;
+  const total = coreIds().length;
   const mist = [...graph.nodes.values()].reduce((a, n) => a + n.mistakes, 0);
   const rem = OV.reminders?.[who]?.[subject] || [];
+  const hbOn = [...graph.nodes.values()].some(n => n.handbook || n.traps?.length), opt = optCount();
   $('#app').innerHTML = `<header class="topbar"><a class="icon-btn" href="../../../index.html" aria-label="回学习门户">${icons.back}</a><div class="crumb"><b>${esc(CHILD[who].label)} · ${esc(SUBJECTS[subject])}脑图</b><small>${graph.scope ? `考试范围到 ${subject === 'english' ? 'Unit' : '第'} ${graph.scope.maxUnit}${subject === 'english' ? '' : ' 单元'} · ` : '考前复习 · '}${esc(CHILD[who].grade)} · ${total} 节点${mist ? ' · 错题 ' + mist : ''}</small></div>${TEST ? '<span class="test-chip">测试，不计入</span>' : ''}<button class="me-chip" data-act="switch" title="换一个人"><i>${CHILD[who].initial}</i><span class="t">${esc(CHILD[who].en)}</span></button></header>
   <nav class="tabs" aria-label="科目">${Object.entries(SUBJECTS).map(([k, v]) => `<button class="tab${k === subject ? ' on' : ''}" data-act="subject" data-subject="${k}" aria-pressed="${k === subject}">${v}</button>`).join('')}</nav>
   <section class="bar"><button class="primary" data-act="path">${icons.book}按顺序学 · ${(() => { const ps = pathState(); return ps.i >= ps.order.length ? '已看完，再来一遍' : `第 ${ps.i + 1} / ${ps.order.length} 张`; })()}</button><button class="ghost" data-act="quick">${icons.bolt}快速过一遍 · 10 题</button><button class="ghost no-print" data-act="print">${icons.print}打印</button></section>
-  <p class="stat num">${total} 张卡，每张约 3 分钟，全部看完约 ${total * 3} 分钟 · 过关 ${passed} · 再看 ${again} · 未做 ${total - passed - again}</p>
+  <p class="stat num">${statText()}</p>
   <section id="map" class="map-host" aria-live="polite"></section>
-  <section class="legend"><span><i class="lg-star">${icons.star}</i>必考必会</span><span><i class="lg-mist">错N</i>错题重点（这学期错过的题数）</span><span><i class="lg-dot new"></i>未做</span><span><i class="lg-dot again"></i>再看</span><span><i class="lg-dot pass"></i>过关</span></section>
+  <section class="legend"><span><i class="lg-star">${icons.star}</i>必考必会</span><span><i class="lg-mist">错N</i>错题重点（这学期错过的题数）</span><span><i class="lg-dot new"></i>未做</span><span><i class="lg-dot again"></i>再看</span><span><i class="lg-dot pass"></i>过关</span>${opt ? '<span><i class="lg-opt"></i>学到再看（不排进按顺序学）</span>' : ''}</section>
   ${rem.length ? `<section class="reminders"><h2>考场三件事</h2><ol>${rem.map(r => `<li>${esc(r)}</li>`).join('')}</ol></section>` : ''}
-  <section class="src"><p>${graph.scope ? `<b>考试范围只到 ${subject === 'english' ? 'Unit ' + graph.scope.maxUnit : '第 ' + graph.scope.maxUnit + ' 单元'}</b>（${esc(OV.examScopeNote || '家长告知')}）${graph.scope.hiddenUnits ? `，之后 ${graph.scope.hiddenUnits} 个单元的节点和单词已收起` : ''}。</p><p>` : ''}知识节点来自正式站《知识连起来》的同步内容；${subject === 'math' ? '错题数按这学期数学错题本逐题归类统计' : (mist ? '错题重点来自 10 月订正记录' : '语文、英语还没有结构化错题记录，有记录后会自动标出')}。点任一节点：先看关系，再做 5 题。${storageOK ? '' : '这台设备不能保存记录，本次结果只在当前页面有效。'}</p></section>`;
+  <section class="src"><p>${graph.scope ? `<b>考试范围只到 ${subject === 'english' ? 'Unit ' + graph.scope.maxUnit : '第 ' + graph.scope.maxUnit + ' 单元'}</b>（${esc(OV.examScopeNote || '家长告知')}）${graph.scope.hiddenUnits ? `，之后 ${graph.scope.hiddenUnits} 个单元的节点和单词已收起` : ''}。</p><p>` : ''}知识节点来自正式站《知识连起来》的同步内容；${subject === 'math' ? '错题数按这学期数学错题本逐题归类统计' : (mist ? '错题重点来自 10 月订正记录' : '语文、英语还没有结构化错题记录，有记录后会自动标出')}。${hbOn ? `沪学习 5上期中复习知识手册和知识梳理里的考点、易错点已经提炼并进相关卡片（卡片底部出处写着"${esc(hbLabel())}"），新补的卡同样标 ★；题目都是重新出的。` : ''}${opt ? `最后一条分支是手册里提前讲的内容，学校还没定考不考，学到再看，不排进按顺序学。` : ''}点任一节点：先看关系，再做 5 题。${storageOK ? '' : '这台设备不能保存记录，本次结果只在当前页面有效。'}</p></section>`;
   renderMap();
 }
 
 /* ---------- 节点面板 ---------- */
 const isLatin = str => !/[\u4e00-\u9fff]/.test(str) && /[A-Za-z]/.test(str);
+// \u8bfb\u97f3\u9898\u3001\u8bfb\u97f3\u4f8b\u5b50\uff1a\u6570\u636e\u91cc\u7528\u5927\u5199\u5b57\u6bcd\u6807"\u753b\u7ebf\u90e8\u5206"\uff0c\u663e\u793a\u6210\u5c0f\u5199\u52a0\u4e0b\u5212\u7ebf\uff08PHone \u2192 phone\uff0cph \u753b\u7ebf\uff09
+const capsHtml = s => esc(s).replace(/[A-Z]+/g, m => `<u>${m.toLowerCase()}</u>`);
 function exampleHtml(row) {
   const parts = row.parts || [];
   const latin = parts.length && parts.every(p => isLatin(p));
   if (latin) {
     const keyIdx = parts.length >= 3 ? 1 : (parts.length === 2 ? 1 : 0);
-    const sentence = parts.map((p, i) => `<span class="${i === keyIdx ? 'key' : ''}">${esc(p)}</span>`).join(' ');
-    return `<div class="ex sent"><small>${esc(row.label)}</small><p class="en">${sentence}</p>${row.why ? `<p class="zh">${esc(row.why)}</p>` : ''}</div>`;
+    const fmt = row.mark === 'caps' ? capsHtml : esc;
+    const spans = parts.map((p, i) => `<span class="${i === keyIdx ? 'key' : ''}">${fmt(p)}</span>`);
+    // 对话例子：以"—"开头的一句另起一行，一问一答看得清
+    const lines = [];
+    spans.forEach((sp, i) => { if (!lines.length || (row.dialog && /^—/.test(parts[i]))) lines.push([sp]); else lines[lines.length - 1].push(sp); });
+    return `<div class="ex sent${row.mark === 'caps' ? ' caps' : ''}${row.dialog ? ' dialog' : ''}"><small>${esc(row.label)}</small>${lines.map(l => `<p class="en">${l.join(' ')}</p>`).join('')}${row.why ? `<p class="zh">${esc(row.why)}</p>` : ''}</div>`;
   }
   const last = parts.length - 1;
   return `<div class="ex steps"><small>${esc(row.label)}</small><ol>${parts.map((p, i) => `<li class="${i === last && parts.length > 1 ? 'end' : ''}"><span>${esc(p)}</span></li>`).join('')}</ol>${row.why ? `<p class="zh">${esc(row.why)}</p>` : ''}</div>`;
@@ -339,10 +391,11 @@ function cardHtml(n, opts = {}) {
   if (n.bankItems?.length) mist = `<section class="mist-box"><h3><span class="pill">错 ${n.mistakes}</span>这学期在这里错过 ${n.mistakes} 题</h3>${n.bankInsight ? `<p class="insight">${esc(n.bankInsight)}</p>` : ''}${n.breakpoints?.length ? `<ul>${n.breakpoints.map(b => `<li>${esc(b)}</li>`).join('')}</ul>` : ''}</section>`;
   else if (n.note) mist = `<section class="mist-box"><h3><span class="pill">错 ${n.note.count}</span>订正记录里的错因</h3><ul>${n.note.lines.map(l => `<li>${esc(l)}</li>`).join('')}</ul><p class="tiny">${esc(n.note.source)}</p></section>`;
   const memList = n.memory ? memorySummary(n) : '';
-  const watch = [n.tip ? `<li><b>易错</b>${esc(n.tip)}</li>` : '', n.recall ? `<li><b>想一想</b>${esc(n.recall)}</li>` : ''].filter(Boolean).join('');
+  const memNotes = n.memory ? (n.memoryItems || []).filter(i => i.note) : [];
+  const watch = [n.tip ? `<li><b>易错</b>${esc(n.tip)}</li>` : '', ...(n.tips || []).map(t => `<li><b>易错</b>${esc(t)}</li>`), ...memNotes.map(i => `<li><b>易错</b><span><i class="w">${esc(i.text)}</i>${esc(i.note)}</span></li>`), n.recall ? `<li><b>想一想</b>${esc(n.recall)}</li>` : ''].filter(Boolean).join('');
   const hist = r?.asked ? `<p class="tiny">做过 ${r.asked} 题，对 ${r.right}，错 ${r.wrong}；最近 ${r.lastAt ? r.lastAt.slice(0, 10) : ''}${r.lastClean ? ' 全对' : ' 有错'}</p>` : '';
   const qcount = n.memory ? 5 : n.bankItems.length ? Math.min(3, n.questions.length) + Math.min(2, n.bankItems.length) : Math.min(5, n.questions.length);
-  const head = opts.path ? `<small>按顺序学 · 第 ${opts.path.i + 1} / ${opts.path.total} 张 · 还剩约 ${Math.max(3, (opts.path.total - opts.path.i) * 3)} 分钟</small>` : `<small>${esc(SUBJECTS[subject])}${n.unit ? ' · 第 ' + n.unit + ' 单元' : ''}${n.key ? ' · <b class="k">★ ' + esc(n.key) + '</b>' : n.essential ? ' · <b class="k">★ 必考必会</b>' : ''}</small>`;
+  const head = opts.path ? `<small>按顺序学 · 第 ${opts.path.i + 1} / ${opts.path.total} 张 · 还剩约 ${Math.max(3, (opts.path.total - opts.path.i) * 3)} 分钟</small>` : `<small>${esc(SUBJECTS[subject])}${n.unit ? ' · 第 ' + n.unit + ' 单元' : ''}${n.optional ? ' · <b class="k opt">学到再看</b>' : n.key ? ' · <b class="k">★ ' + esc(n.key) + '</b>' : n.essential ? ' · <b class="k">★ 必考必会</b>' : ''}</small>`;
   const actions = opts.path
     ? `<div class="sh-actions"><button class="primary" data-act="path-quiz" data-node="${esc(n.id)}">${icons.bolt}记住了，做 2 题</button><button class="ghost" data-act="path-next">跳过这张</button></div>`
     : `<div class="sh-actions"><button class="primary" data-act="quiz" data-node="${esc(n.id)}">${icons.bolt}开始出题 · ${qcount} 题</button></div>`;
@@ -357,7 +410,7 @@ function openNode(id, opts = {}) {
   sheet(cardHtml(n, opts));
 }
 /* ---------- 按顺序学：一张卡 → 2 题 → 下一张 ---------- */
-function pathOrder() { const out = []; for (const b of graph.branches) for (const id of b.leaves) out.push(id); return out; }
+function pathOrder() { const out = []; for (const b of graph.branches) for (const id of b.leaves) if (!graph.nodes.get(id)?.optional) out.push(id); return out; } // "学到再看"的卡不排进按顺序学
 function pathState() { if (!state.path || !Array.isArray(state.path.order)) state.path = { i: 0, order: pathOrder(), startedAt: today() }; const cur = pathOrder(); if (cur.join() !== state.path.order.join()) { state.path.order = cur; state.path.i = Math.min(state.path.i, cur.length); } return state.path; }
 function pathOpen() {
   const ps = pathState(); const total = ps.order.length;
@@ -382,21 +435,27 @@ function sheet(html) { const el = $('#sheet'); el.innerHTML = `<div class="sh-pa
 function closeSheet() { $('#sheet').hidden = true; $('#sheet').innerHTML = ''; document.body.classList.remove('sheet-open'); quiz = null; }
 
 /* ---------- 答题 ---------- */
+// 知识题的选择项每次打乱顺序，免得孩子摸出"总选 A"；错题本原题保持原样（选项里可能有"以上都对"之类）
+function prepQ(q) {
+  if (q.type !== 'choice' || q.kind === 'bank' || !Array.isArray(q.options) || q.options.length < 2) return q;
+  const order = shuffle(q.options.map((_, i) => i));
+  return { ...q, options: order.map(i => q.options[i]), answer: order.indexOf(Number(q.answer)) };
+}
 function startQuiz(nodeId, opts = {}) {
   const n = graph.nodes.get(nodeId);
-  let qs = nodeQuestions(n, opts.path ? { knowledge: n.bankItems.length ? 1 : 2, bank: 1 } : {}).map(q => ({ ...q, node: nodeId }));
+  let qs = nodeQuestions(n, opts.path ? { knowledge: n.bankItems.length ? 1 : 2, bank: 1 } : {}).map(q => ({ ...prepQ(q), node: nodeId }));
   if (opts.path) qs = qs.slice(0, 2);
   if (!qs.length) { if (opts.path) { pathNext(); return; } toast('这个节点还没有题'); return; }
   quiz = { id: `${today()}-${Math.random().toString(36).slice(2, 8)}`, kind: opts.path ? 'path' : 'node', nodeId, qs, i: 0, results: [], label: opts.path ? '按顺序学 · ' + (n.cardTitle || n.title) : (n.cardTitle || n.title) };
   showQ();
 }
 function startQuick() {
-  const ids = [...graph.nodes.keys()];
+  const ids = coreIds();
   const score = id => { const n = graph.nodes.get(id), st = nodeStatus(id); return (n.mistakes ? 40 + Math.min(n.mistakes, 30) : 0) + (st === 'new' ? 25 : st === 'again' ? 35 : 0) + (n.key ? 10 : 0) + Math.random() * 12; };
   const order = ids.sort((a, b) => score(b) - score(a));
   const qs = [];
-  for (const id of order) { if (qs.length >= 10) break; const n = graph.nodes.get(id); let pool = nodeQuestions(n, { knowledge: 3, bank: 2 }).filter(q => q.type !== 'open'); if (!pool.length) pool = nodeQuestions(n); if (pool.length) qs.push({ ...pool[0], node: id }); }
-  if (qs.length < 10) for (const id of order) { if (qs.length >= 10) break; const n = graph.nodes.get(id); const extra = nodeQuestions(n, { knowledge: 3, bank: 2 }).filter(q => !qs.some(x => x.node === id && x.prompt === q.prompt)); if (extra.length) qs.push({ ...extra[0], node: id }); }
+  for (const id of order) { if (qs.length >= 10) break; const n = graph.nodes.get(id); let pool = nodeQuestions(n, { knowledge: 3, bank: 2 }).filter(q => q.type !== 'open'); if (!pool.length) pool = nodeQuestions(n); if (pool.length) qs.push({ ...prepQ(pool[0]), node: id }); }
+  if (qs.length < 10) for (const id of order) { if (qs.length >= 10) break; const n = graph.nodes.get(id); const extra = nodeQuestions(n, { knowledge: 3, bank: 2 }).filter(q => !qs.some(x => x.node === id && x.prompt === q.prompt)); if (extra.length) qs.push({ ...prepQ(extra[0]), node: id }); }
   quiz = { id: `${today()}-${Math.random().toString(36).slice(2, 8)}`, kind: 'quick', qs, i: 0, results: [], label: '快速过一遍' };
   showQ();
 }
@@ -404,7 +463,7 @@ function showQ() {
   const q = quiz.qs[quiz.i], n = graph.nodes.get(q.node), total = quiz.qs.length;
   const t = q.type || 'text';
   let body = '';
-  if (t === 'choice') body = `<div class="options">${(q.options || []).map((o, i) => `<button class="option" data-act="pick" data-i="${i}"><span class="letter">${'ABCD'[i] || i + 1}</span><span>${esc(o)}</span></button>`).join('')}</div>`;
+  if (t === 'choice') body = `<div class="options">${(q.options || []).map((o, i) => `<button class="option" data-act="pick" data-i="${i}"><span class="letter">${'ABCD'[i] || i + 1}</span><span>${q.mark === 'caps' ? capsHtml(o) : esc(o)}</span></button>`).join('')}</div>`;
   else if (t === 'open') body = `<textarea id="ans" class="answer" rows="4" placeholder="用自己的话写，一两句就行"></textarea><div class="q-actions"><button class="primary" data-act="reveal">写好了，看参考</button></div>`;
   else body = `<div class="field"><input id="ans" class="answer${t === 'number' ? ' num' : ''}" ${t === 'number' ? 'inputmode="decimal"' : (q.lang === 'en' ? 'lang="en" autocapitalize="off" autocorrect="off" spellcheck="false"' : '')} autocomplete="off" enterkeyhint="done" placeholder="${t === 'number' ? '填结果' : '填在这里'}">${q.unit ? `<span class="unit">${esc(q.unit)}</span>` : ''}</div>${q.requiredDecimals != null ? `<p class="tiny">要求保留 ${q.requiredDecimals} 位小数，末尾的 0 也要写。</p>` : ''}<div class="q-actions"><button class="primary" data-act="submit">${icons.check}确定</button></div>`;
   sheet(`<header class="sh-head"><div><small>${quiz.kind === 'quick' ? '快速过一遍' : esc(n.title)} · 第 ${quiz.i + 1} / ${total} 题${q.kind === 'bank' ? ' · <b class="k red">这学期错过的原题</b>' : q.kind === 'blank' ? ' · 默写' : q.kind === 'word' ? (subject === 'english' ? ' · 单词拼写' : ' · 看拼音写词语') : ''}</small>${quiz.kind === 'quick' ? `<h2 class="small">${esc(n.title)}</h2>` : ''}</div><button class="icon-btn" data-act="close" aria-label="关闭">${icons.x}</button></header>
@@ -421,7 +480,7 @@ function answerQ(raw, selfOk) {
   save();
   const n = graph.nodes.get(q.node);
   const ansText = q.type === 'choice' ? (q.options || [])[q.answer] : (q.answer ?? (q.answers || [])[0]);
-  $('#fb').innerHTML = `<div class="fb ${ok ? 'ok' : 'no'}"><p class="verdict">${ok ? icons.check + '对了' : icons.x + '不对'}</p>${!ok ? `<p>参考答案：<b>${esc(ansText)}${q.unit ? ' ' + esc(q.unit) : ''}</b></p>` : ''}${q.why ? `<p>${esc(q.why)}</p>` : ''}${!ok && q.hint ? `<p class="hint">关键关系：${esc(q.hint)}</p>` : ''}${!ok && n.idea && q.kind !== 'bank' ? `<p class="hint">关键关系：${esc(n.idea)}</p>` : ''}${q.source ? `<p class="tiny">出处：${esc(q.source)}</p>` : ''}</div><div class="q-actions"><button class="primary" data-act="next">${quiz.i + 1 < quiz.qs.length ? '下一题' : '看结果'}</button></div>`;
+  $('#fb').innerHTML = `<div class="fb ${ok ? 'ok' : 'no'}"><p class="verdict">${ok ? icons.check + '对了' : icons.x + '不对'}</p>${!ok ? `<p>参考答案：<b>${q.mark === 'caps' ? capsHtml(ansText) : esc(ansText)}${q.unit ? ' ' + esc(q.unit) : ''}</b></p>` : ''}${q.why ? `<p>${esc(q.why)}</p>` : ''}${!ok && q.hint ? `<p class="hint">关键关系：${esc(q.hint)}</p>` : ''}${!ok && n.idea && q.kind !== 'bank' ? `<p class="hint">关键关系：${esc(n.idea)}</p>` : ''}${q.source ? `<p class="tiny">出处：${esc(q.source)}</p>` : ''}</div><div class="q-actions"><button class="primary" data-act="next">${quiz.i + 1 < quiz.qs.length ? '下一题' : '看结果'}</button></div>`;
   $('#sheet').querySelectorAll('.option, #ans, [data-act=submit], [data-act=reveal]').forEach(el => { el.disabled = true; });
   const nb = $('#fb .primary'); if (nb) nb.focus();
 }
@@ -456,7 +515,7 @@ function report(byNode, right) {
   try { window.V2Records.enqueue({ app: 'exam-map', who, subject, mode: TEST ? 'test' : 'formal', roundId: quiz.id, label: quiz.label, total: quiz.qs.length, right, items: quiz.qs.map((q, i) => ({ node: q.node, title: graph.nodes.get(q.node).title, kind: q.kind, id: q.id || '', result: quiz.results[i]?.ok ? 'right' : 'wrong', self: !!quiz.results[i]?.self, answer: quiz.results[i]?.answer || '' })), text: quiz.text }); } catch (e) { }
 }
 let rafMap = 0; function renderMapSoon() { cancelAnimationFrame(rafMap); rafMap = requestAnimationFrame(() => { renderMap(); refreshStats(); }); }
-function refreshStats() { const el = $('p.stat'); if (!el || !graph) return; const ids = [...graph.nodes.keys()], passed = ids.filter(id => nodeStatus(id) === 'pass').length, again = ids.filter(id => nodeStatus(id) === 'again').length; el.textContent = `${ids.length} 张卡，每张约 3 分钟，全部看完约 ${ids.length * 3} 分钟 · 过关 ${passed} · 再看 ${again} · 未做 ${ids.length - passed - again}`; const pb = $('[data-act=path]'); if (pb) { const ps = pathState(); pb.innerHTML = `${icons.book}按顺序学 · ${ps.i >= ps.order.length ? '已看完，再来一遍' : `第 ${ps.i + 1} / ${ps.order.length} 张`}`; } }
+function refreshStats() { const el = $('p.stat'); if (!el || !graph) return; el.textContent = statText(); const pb = $('[data-act=path]'); if (pb) { const ps = pathState(); pb.innerHTML = `${icons.book}按顺序学 · ${ps.i >= ps.order.length ? '已看完，再来一遍' : `第 ${ps.i + 1} / ${ps.order.length} 张`}`; } }
 function toast(msg) { const t = $('#toast'); t.textContent = msg; t.hidden = false; clearTimeout(toast.t); toast.t = setTimeout(() => { t.hidden = true; }, 2200); }
 
 /* ---------- 事件 ---------- */
@@ -498,11 +557,12 @@ async function boot() {
   if (!window.ReviewAtlasData) { $('#app').innerHTML = '<p class="note" style="margin-top:40px">知识点数据没有加载到（assets/review-atlas/content.js）。</p>'; return; }
   load();
   const bank = await loadBank();
+  if (!handbook) { try { const r = await fetch('data/midterm-handbook.json', { cache: 'no-store' }); handbook = r.ok ? await r.json() : {}; } catch (e) { handbook = {}; } }
   if (subject === 'english' && !englishPoints.loaded) { try { const r = await fetch((window.ExamMapEssentials?.englishData || 'data/english-grammar.json'), { cache: 'no-store' }); if (r.ok) englishPoints = { ...(await r.json()), loaded: true }; } catch (e) { englishPoints = { loaded: true }; } }
   graph = buildGraph(bank);
   closeSheet();
   home();
-  if (TEST) window.__examMapDebug = { graph, judge, nodeQuestions, bankQuestion };
+  if (TEST) window.__examMapDebug = { graph, judge, nodeQuestions, bankQuestion, memoryQuestions, prepQ };
   window.V2Records?.flush?.();
 }
 boot();
