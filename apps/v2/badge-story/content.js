@@ -131,7 +131,7 @@ const stations = [
     { type:'quiz', q:'smt' },
     { type:'wrap', title:'这一站记住', points:['电路板：线路印在板上，不松也不拉扯','工厂贴片：几百个焊点一次焊好','拿到手的是半成品，自己只焊几个点'] }
   ]},
-  { id:'usb', n:7, title:'插上 USB 就能写程序', sub:'主板变成了一个 U 盘', min:2, cards:[
+  { id:'usb', n:7, title:'插上 USB 就能写程序', sub:'主板变成了一个 U 盘', min:1.5, cards:[
     { type:'lab', lab:'usb', kicker:'程序', title:'USB 线里有两种线：送电，和“说话”',
       text:'一根 USB 线里，有给主板送电的线，也有让电脑和主板“说话”（传消息）的线。所以只插一根线，主板既有了电，又能收到新程序。' },
     { type:'lead', title:'主板：一台很小的电脑', img:'media/step-program-{me}.webp',
