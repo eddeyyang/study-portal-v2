@@ -4,9 +4,26 @@
    - 无人机二级 → apps/drone/（2026-10-23）
    - 期中听写桌（语文/英语） → apps/v2/dictation/（2026-10-24）
    - 两孩数学错题本 → apps/v2/math-mistakes/（2026-10-24）
-   - 知识连起来（周末复习册，非 memory 节）→ apps/v2/exam-map/ 考前脑图（2026-11-01） */
+   - 知识连起来（周末复习册，非 memory 节）→ apps/v2/exam-map/ 考前脑图（2026-11-01）
+   另外加进目录的 v2 自有小项目（正式站没有，不在 data/apps.json 里）：
+   - 两枚徽章诞生记 → apps/v2/badge-story/（2026-11-04，家长交办：两孩电子徽章的设计、焊接、工序、电路板、USB 编程和以后的方向，约 15 分钟） */
+var V2_EXTRA = [
+  { child:'both', subject:'综合', subjectId:'explore', file:'apps/v2/badge-story/index.html', title:'两枚徽章诞生记', displayTitle:'两枚徽章诞生记',
+    summary:'哥哥《换心不换轨》、弟弟《虫洞之桥》两枚徽章是怎么设计、怎么焊、哪里没成功、下一版怎么用电路板做得更好；还有为什么插上 USB 就能写程序。8 站，约 15 分钟。',
+    added:'2026-11-04', updatedAt:'2026-11-04', kind:'lesson', group:'lessons', period:'2026-autumn', state:'active', sourceIndex:'v2' }
+];
 window.V2CourseRoutes = function(catalog){
   if(!Array.isArray(catalog)) return catalog;
+  var routed = v2Route(catalog);
+  V2_EXTRA.forEach(function(extra){
+    if(!routed.some(function(x){ return x && String(x.file || '').split(/[?#]/)[0] === extra.file; })) routed.push(Object.assign({}, extra));
+  });
+  // 和 portal-model.js 的 buildCatalog 一样：新的在前，同一天按标题
+  return routed.sort(function(a, b){
+    return String(b.updatedAt || '').localeCompare(String(a.updatedAt || '')) || String(a.displayTitle || '').localeCompare(String(b.displayTitle || ''), 'zh-CN');
+  });
+};
+function v2Route(catalog){
   return catalog.map(function(item){
     var f = String((item && item.file) || '');
     if(/^apps\/drone_l2_/.test(f)){
@@ -46,4 +63,4 @@ window.V2CourseRoutes = function(catalog){
     }
     return item;
   });
-};
+}
