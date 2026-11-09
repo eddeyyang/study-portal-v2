@@ -1,7 +1,7 @@
 {
 "upstream": "https://study-portal-eta.vercel.app/",
 "initialized_from": "a00e05e",
-"last_sync": "2026-11-05",
+"last_sync": "2026-11-09",
 "files": {
 "apps.html": {
 "sha": "6e2adf9d152d2b8939866fc63b0a13fb18ae1e2ac94b3f47ecf97a7702521842",
@@ -11248,6 +11248,11 @@
 "etag": "\"919fbc516b5b903030af69399bd17ed3\"",
 "upstream": true
 },
+"apps/kenton_area_preview_20261107.html": {
+"sha": "0a7314451624571496e85668414a8f5544cc134ef63cd6b245965468bbeeec5f",
+"etag": "\"88fcfb26fe9bb6a991a3bba6807d18be\"",
+"upstream": true
+},
 "apps/kenton_calc_datongguan.html": {
 "sha": "79181a399249045567e7ffd10b116c847a8f3623e58da482bbd74310d89b9b68",
 "etag": "\"525879860a3d293cc4c5baa8e0c50c01\"",
@@ -12264,8 +12269,8 @@
 "upstream": true
 },
 "assets/portal-snapshot.js": {
-"sha": "6110566ede02f67b1d10be16fcdb73b8795a72149c32a2927173af0072ce667b",
-"etag": "\"bb15df5c56be6ec6f69ca2cafa3f3515\"",
+"sha": "fbe6e606b8ea1c0e260a275c9c2aa4111dc4ebfdba4194193fa1b3be46a9d46b",
+"etag": "\"04feabb262b062b3ee4dfc6d98547afc\"",
 "upstream": true
 },
 "assets/portal-support.css": {
@@ -12384,8 +12389,8 @@
 "upstream": true
 },
 "data/apps.json": {
-"sha": "4427ac7766d16a3b63e6c4c2ad48ea05d81cb9b1cef72222602006a01da6c9cc",
-"etag": "\"0e871930415d29b94e0960c127b90eae\"",
+"sha": "1022f361da02ca54a5928b076bc64e2d2999e5b3b0e4ed0aab1ea1666ed722d9",
+"etag": "\"2e5a71558cd939815cb2c43b51ae509d\"",
 "upstream": true
 },
 "data/exam-prep/calendar.json": {

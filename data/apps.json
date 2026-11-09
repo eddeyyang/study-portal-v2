@@ -1,6 +1,22 @@
 [
   {
     "child": "kenton",
+    "subject": "数学",
+    "title": "哥哥 · 面积实验室",
+    "file": "apps/kenton_area_preview_20261107.html",
+    "added": "2026-11-07",
+    "updated": "2026-11-07",
+    "navigation": {
+      "state": "active",
+      "kind": "lesson",
+      "period": "2026-autumn",
+      "group": "units",
+      "displayTitle": "哥哥 · 面积实验室",
+      "summary": "六节面积预习：剪拼推公式、找对应底高、组合图形、单位与估测；分段保存，错后回原题。"
+    }
+  },
+  {
+    "child": "kenton",
     "subject": "语文",
     "title": "哥哥 · 语文知识连起来",
     "file": "apps/weekend_review_atlas_20261030.html?child=kenton&subject=chinese",
