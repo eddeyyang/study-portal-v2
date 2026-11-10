@@ -5,6 +5,7 @@
    - 期中听写桌（语文/英语） → apps/v2/dictation/（2026-10-24）
    - 两孩数学错题本 → apps/v2/math-mistakes/（2026-10-24）
    - 知识连起来（周末复习册，非 memory 节）→ apps/v2/exam-map/ 考前脑图（2026-11-01）
+   - 弟弟 金牌数学 四上第4单元《大数的认识与改写》 → apps/v2/big-numbers/ 大数王国（2026-11-10，家长交办：期中后下一单元预习）
    另外加进目录的 v2 自有小项目（正式站没有，不在 data/apps.json 里）：
    - 两枚徽章诞生记 → apps/v2/badge-story/（2026-11-04，家长交办：两孩电子徽章的设计、焊接、工序、电路板、USB 编程和以后的方向，约 15 分钟） */
 var V2_EXTRA = [
@@ -51,6 +52,14 @@ function v2Route(catalog){
         file: 'apps/v2/exam-map/index.html?who=' + ac + '&subject=' + as,
         displayTitle: (ac === 'kenton' ? '哥哥' : '弟弟') + ' · ' + sn + '考前脑图',
         summary: '一张脑图看清单元主线和关键关系；★ 知识重点、红圈错题重点（按这学期错题统计）。点节点先看关系再做 5 题，「快速过一遍」10 题几分钟做完。'
+      });
+    }
+    if(/^apps\/eddey_math_gold_g4u4\.html/.test(f)){
+      return Object.assign({}, item, {
+        file: 'apps/v2/big-numbers/index.html?who=eddey',
+        displayTitle: '大数王国 · 第4单元预习',
+        summary: '期中后的下一单元：满十进一、数位顺序表、读数写数、比大小、改写（=）、近似数（≈）。8 站，每站先动手看懂一个道理再做题，最后 12 道新题闯关。',
+        updatedAt: '2026-11-10'
       });
     }
     if(/^apps\/(kenton|eddey)_math_mistakes_20261024\.html/.test(f)){
