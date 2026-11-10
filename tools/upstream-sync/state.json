@@ -1,7 +1,7 @@
 {
 "upstream": "https://study-portal-eta.vercel.app/",
 "initialized_from": "a00e05e",
-"last_sync": "2026-11-09",
+"last_sync": "2026-11-10",
 "files": {
 "apps.html": {
 "sha": "6e2adf9d152d2b8939866fc63b0a13fb18ae1e2ac94b3f47ecf97a7702521842",
@@ -11704,8 +11704,8 @@
 "upstream": true
 },
 "assets/learning-sync.js": {
-"sha": "b8377696e58fc0b285827613cf114343bf362b68fade45c4cc317279b069947a",
-"etag": "\"6481369717f468e2e6fe47e79c9bc819\"",
+"sha": "08852e099a339a69acf78507c2ac44d0d82be22ebe5ca539c4d6888a9daace59",
+"etag": "\"3b19bbf1848135430dc33eb102020761\"",
 "upstream": true
 },
 "assets/math-mistake-bank.js": {

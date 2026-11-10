@@ -7,6 +7,9 @@
   var QUEUE_KEY = 'dd:sync:queue:v1';
   var QUEUE_READY_KEY = 'dd:sync:ready:v1';
   var CHILD_KEY = 'dd:sync:session-child:v1';
+  var TENCENT_RECORDS = 'https://124-156-205-59.sslip.io/v2-records/record';
+  var TENCENT_QUEUE_KEY = 'dd:tencent-mirror:queue:v1';
+  var tencentFlushing = false;
   var PRODUCTION_HOSTS = {
     'study-portal-eta.vercel.app': true
   };
@@ -94,7 +97,7 @@
 
   function protectedKey(key) {
     key = String(key);
-    return key === MODE_KEY || key === QUEUE_KEY || key === QUEUE_READY_KEY || key === CHILD_KEY ||
+    return key === MODE_KEY || key === QUEUE_KEY || key === QUEUE_READY_KEY || key === CHILD_KEY || key === TENCENT_QUEUE_KEY ||
       key.indexOf(OVERLAY_PREFIX) === 0;
   }
   function overlayKey(key) { return OVERLAY_PREFIX + encodeURIComponent(String(key)); }
@@ -247,7 +250,7 @@
     if (context === 'drop') return;
     if (context === 'test') { clearOverlays(); rawSet(CLEAR_KEY, '1'); return; }
     var keep = {};
-    [MODE_KEY, QUEUE_KEY, QUEUE_READY_KEY, CHILD_KEY].forEach(function (key) {
+    [MODE_KEY, QUEUE_KEY, QUEUE_READY_KEY, CHILD_KEY, TENCENT_QUEUE_KEY].forEach(function (key) {
       var value = rawGet(key); if (value != null) keep[key] = value;
     });
     native.clear.call(this);
@@ -300,6 +303,79 @@
   function cloudConfig() {
     return { url: deploymentEnvironment.mode === 'production' ? '/api' : '' };
   }
+  // Mirror only acknowledged Neon events. This queue never affects the primary result or UI.
+  function tencentRecord(ev) {
+    if (!ev || (ev.kid !== 'kenton' && ev.kid !== 'eddey')) return null;
+    var id = String(ev.client_event_id || '');
+    if (id.length < 8 || id.length > 64) return null;
+    if ((ev.mode && ev.mode !== 'formal') || (ev.payload && ev.payload.mode && ev.payload.mode !== 'formal')) return null;
+    return {
+      id: id, at: ev.ts, site: location.host, v: 1, app: 'official', who: ev.kid, mode: 'formal',
+      subject: ev.subject, activity: ev.activity, topic: ev.topic, source: ev.source,
+      items: [{ item: ev.item, ok: ev.ok === true ? true : ev.ok === false ? false : null, hint: ev.hint }],
+      text: String(ev.topic || '') + '｜' + String(ev.item || '').slice(0, 200)
+    };
+  }
+  function tencentQueueRead() {
+    try { var q = JSON.parse(rawGet(TENCENT_QUEUE_KEY) || '[]'); return Array.isArray(q) ? q : []; }
+    catch (_) { return []; }
+  }
+  function tencentQueueWrite(q) {
+    // Do not silently evict older acknowledged records when a long outage exceeds 500 events.
+    try { rawSet(TENCENT_QUEUE_KEY, JSON.stringify(q)); return true; }
+    catch (_) { return false; }
+  }
+  function mirrorToTencent(batch) {
+    try {
+      if (deploymentEnvironment.mode !== 'production' || !native.fetch) return;
+      var q = tencentQueueRead();
+      (batch || []).forEach(function (ev) {
+        var rec = tencentRecord(ev);
+        if (rec && !q.some(function (x) { return x && x.id === rec.id; })) q.push(rec);
+      });
+      if (tencentQueueWrite(q)) flushTencent();
+    } catch (_) {} // Storage or serialization failures must never change Neon success.
+  }
+  async function flushTencent() {
+    if (tencentFlushing || !native.fetch) return;
+    tencentFlushing = true;
+    try {
+      for (var i = 0; i < 2000; i++) {
+        // Recheck for every request, including reload recovery and mid-flight mode changes.
+        if (deploymentEnvironment.mode !== 'production' || writeContext() !== 'formal') break;
+        var q = tencentQueueRead();
+        if (!q.length) break;
+        var rec = q[0], done = false;
+        if (!rec || rec.app !== 'official' || rec.mode !== 'formal' ||
+            (rec.who !== 'kenton' && rec.who !== 'eddey') || typeof rec.id !== 'string' || rec.id.length < 8 || rec.id.length > 64) {
+          if (!tencentQueueWrite(q.slice(1))) break;
+          continue;
+        }
+        var encoded = JSON.stringify(rec);
+        if (new TextEncoder().encode(encoded).length > 64 * 1024) done = true;
+        else {
+          var controller = typeof AbortController === 'function' ? new AbortController() : null;
+          var timer = controller ? setTimeout(function () { controller.abort(); }, 10000) : 0;
+          try {
+            var r = await native.fetch(TENCENT_RECORDS, {
+              method: 'POST', mode: 'cors', credentials: 'omit', keepalive: true,
+              headers: { 'Content-Type': 'text/plain;charset=UTF-8' }, body: encoded,
+              signal: controller ? controller.signal : undefined
+            });
+            if (r.status === 400 || r.status === 413) done = true;
+            else if (r.status === 200) {
+              var body = (await r.text()).trim();
+              done = body === 'ok' || body === 'dup';
+            }
+          } catch (_) { break; }
+          finally { if (timer) clearTimeout(timer); }
+        }
+        if (!done) break;
+        if (!tencentQueueWrite(tencentQueueRead().filter(function (x) { return !x || x.id !== rec.id; }))) break;
+      }
+    } catch (_) {} // Best effort only: no toast, no unhandled rejection, no primary retry.
+    finally { tencentFlushing = false; }
+  }
   function scheduleFlush(delay) {
     if (retryTimer) clearTimeout(retryTimer);
     retryTimer = setTimeout(function () { retryTimer = 0; flush(); }, Math.max(0, Number(delay) || 0));
@@ -324,6 +400,7 @@
           if (!response.ok || data.ok === false) throw new Error(data.error || ('HTTP ' + response.status));
           var sent = new Set(batch.map(function (row) { return row.client_event_id; }));
           queueWrite(queueRead().filter(function (row) { return !sent.has(row.client_event_id); }));
+          mirrorToTencent(batch);
           loops += 1;
         }
         retryIndex = 0;
@@ -339,6 +416,7 @@
     finally { if (flushing === task) flushing = null; }
   }
   async function recoverPendingQueue() {
+    flushTencent();
     var pendingBefore = queueReady() ? queueRead().length : 0;
     var result = await flush();
     if (

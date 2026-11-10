@@ -1,12 +1,9 @@
 {
  "updated": [
-  "assets/portal-snapshot.js",
-  "data/apps.json"
+  "assets/learning-sync.js"
  ],
  "merged": [],
- "added": [
-  "apps/kenton_area_preview_20261107.html"
- ],
+ "added": [],
  "conflicts": [],
  "removed_upstream": [],
  "errors": [],
@@ -15,15 +12,15 @@
  "audio_added": [],
  "hash_apps_without_audio": [],
  "customized_without_base": [],
- "unchanged": 408,
+ "unchanged": 410,
  "not_on_upstream": 0,
- "discovery_fetches": 373,
+ "discovery_fetches": 0,
  "audio_probes": 0,
  "audio_files_checked": false,
  "audio_backfill_round": false,
  "skipped_audio_files": 2117,
  "v2_record_line_added": [],
  "content_changed": true,
- "checked_at": "2026-11-09",
+ "checked_at": "2026-11-10",
  "dry_run": false
 }
