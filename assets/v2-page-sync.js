@@ -242,13 +242,31 @@ function fixUi() {
   const banner = document.getElementById('dd-test-banner');
   if (banner && banner.dataset.v2 !== '1') {
     banner.dataset.v2 = '1';
-    banner.textContent = mode() === 'formal' ? '🧪 V2 预览站：页面按测试方式运行，学习记录照常发给家长' : '🧪 V2 测试：本页记录标为测试，不进学情';
+    banner.textContent = mode() === 'formal' ? '学习记录会自动同步给家长' : '家长测试 · 本页记录不进学情';
+  }
+  // 2026-11-10：原来是整条紫色横幅，太跳；改成一条细的浅灰说明（家长：配色太刺眼）
+  if (banner && banner.dataset.v2style !== '1') {
+    banner.dataset.v2style = '1';
+    banner.style.setProperty('background', '#efece5', 'important');
+    banner.style.setProperty('color', '#5d636c', 'important');
+    banner.style.setProperty('font', '500 12px/1.4 -apple-system,BlinkMacSystemFont,"PingFang SC","Noto Sans SC",sans-serif', 'important');
+    banner.style.setProperty('padding', '5px 12px', 'important');
+    banner.style.setProperty('letter-spacing', '.04em', 'important');
+    banner.style.setProperty('box-shadow', 'inset 0 -1px 0 rgba(29,36,48,.08)', 'important');
+    banner.style.setProperty('text-shadow', 'none', 'important');
+    try {   // 横条变矮了，页面顶部让出的空白跟着收回
+      const b = document.body;
+      if (b && b.getAttribute('data-dd-test-offset')) {
+        const orig = parseFloat(b.getAttribute('data-dd-test-original-padding')) || 0;
+        b.style.paddingTop = (orig + banner.offsetHeight) + 'px';
+      }
+    } catch (e) { }
   }
   const btn = document.getElementById('dd-sync-complete');
   if (btn && btn.dataset.v2 !== '1' && RECORDING) {
     const nb = btn.cloneNode(true);          // 换掉原来“预览测试 · 不记正式记录”的点击
     nb.dataset.v2 = '1'; nb.textContent = '完成并发给家长';
-    if (mode() === 'formal') nb.style.background = '#16856f';
+    if (mode() === 'formal') nb.style.background = '#2f4a45';
     nb.addEventListener('click', () => { finish(); });
     btn.replaceWith(nb);
   }

@@ -198,3 +198,94 @@ a:focus-visible,button:focus-visible,input:focus-visible,summary:focus-visible,s
   .sky:hover,.subject-book:hover,.more-subjects a:hover{transform:none}
   .subject-book:hover .book-art{transform:none}
 }
+
+/* ───────── 2026-11-10 雅致版（家长：两孩配色太刺眼、不够高级；顶部卡通小人和机器人不好看）─────────
+   原则：暖白纸底、深墨字、细线条；两孩颜色降饱和——哥哥青灰绿、弟弟陶土红，只用在小面积的按钮和标记上；
+   阴影浅、圆角收小、字重从 800 降到 700；首页天空保留“跟着时间变”，但改成低饱和雾色，不放卡通人物。
+   这一段在文件最后，覆盖上面的旧值；要退回旧版，删掉这一段即可。 */
+:root{
+  --bg:#f5f3ee;--surface:#fffefb;--ink:#1d2430;--ink-2:#434b58;--muted:#7b8089;--hair:rgba(29,36,48,.09);
+  --kenton:#3f7d84;--kenton-ink:#ffffff;--kenton-deep:#2f6268;--kenton-wash:#ebf2f1;--kenton-line:#2f6268;--kenton-glow:rgba(47,98,104,.16);
+  --eddey:#b4674a;--eddey-ink:#ffffff;--eddey-deep:#934f37;--eddey-wash:#f6eee8;--eddey-line:#8e4b34;--eddey-glow:rgba(147,79,55,.16);
+  --lift:0 1px 2px rgba(29,36,48,.04),0 12px 32px -22px rgba(29,36,48,.28);
+  --lift-hi:0 1px 2px rgba(29,36,48,.05),0 18px 40px -24px rgba(29,36,48,.34);
+  --wash:#ebe7de;
+}
+html[data-sky=dawn]{--wash:#efe6e2}
+html[data-sky=dusk]{--wash:#efe4dc}
+html[data-sky=night]{--wash:#e3e4ea}
+body{background:radial-gradient(1100px 520px at 70% -180px,var(--wash),transparent 70%),var(--bg)}
+a:focus-visible,button:focus-visible,input:focus-visible,summary:focus-visible,select:focus-visible{outline:2px solid var(--ink);outline-offset:3px;border-radius:10px}
+
+.brand{font-weight:700;letter-spacing:.08em}
+.brand-mark rect{fill:var(--surface)}
+.brand-mark path{fill:#c8a15a}
+.header-links a,.parent-tools>summary{background:transparent;box-shadow:inset 0 0 0 1px var(--hair);font-weight:500;color:var(--ink-2)}
+.header-links a:hover,.parent-tools>summary:hover{background:var(--surface)}
+
+/* 天空：低饱和雾色，四个时段 */
+.sky{
+  --sky-top:#c9d8de;--sky-mid:#dfe6e3;--sky-low:#f1ede4;--sky-ink:#1d2430;--sky-shadow:rgba(29,36,48,.18);
+  --sun:#e8cf9f;--sun-core:#efdcb4;--moon:#f2ecdc;--arc:rgba(255,255,255,.55);
+  --hill-1a:#d5dbcf;--hill-1b:#cbd2c4;--hill-2a:#bcc6b6;--hill-2b:#aebaa8;
+  --cloud-top:rgba(255,255,255,.85);--cloud-low:rgba(240,243,244,.7);--far:#dfe5e3;--haze:#ffffff;--bird:rgba(29,36,48,.25);
+  border-radius:24px;box-shadow:0 1px 2px rgba(29,36,48,.05),0 22px 48px -34px var(--sky-shadow);min-height:340px;
+}
+.sky[data-phase=dawn]{--sky-top:#d3d2df;--sky-mid:#e8dedf;--sky-low:#f3e9df;--sky-ink:#232433;--far:#e3dbe2;--sun:#e9c3a2;--sun-core:#efd2b6;--hill-1a:#d9d3dc;--hill-1b:#cfc8d3;--hill-2a:#c2bac8;--hill-2b:#b5adbd;--cloud-low:rgba(243,233,232,.7);--bird:rgba(35,36,51,.22);--arc:rgba(255,255,255,.5)}
+.sky[data-phase=dusk]{--sky-top:#c8c7d6;--sky-mid:#e3d3cf;--sky-low:#f1e3d6;--sky-ink:#232433;--far:#dfd0d0;--sun:#e2b394;--sun-core:#eac4a9;--hill-1a:#d3c6c9;--hill-1b:#c8babe;--hill-2a:#b9aab1;--hill-2b:#aa9ba4;--cloud-low:rgba(242,228,222,.7);--bird:rgba(35,36,51,.22);--arc:rgba(255,255,255,.45)}
+.sky[data-phase=night]{--sky-top:#1e2433;--sky-mid:#283043;--sky-low:#363e54;--sky-ink:#f4f2ec;--sky-shadow:rgba(30,36,51,.45);--far:#323a50;--sun:#e8e4d6;--arc:rgba(255,255,255,.18);--hill-1a:#2c3346;--hill-1b:#272e40;--hill-2a:#22283a;--hill-2b:#1d2232;--cloud-top:rgba(255,255,255,.12);--cloud-low:rgba(255,255,255,.04)}
+.sky:hover{transform:none}
+.sky-arc{stroke-width:2;stroke-dasharray:.5 12}
+.sky[data-phase=night] .sky-stars{opacity:.55}
+.sky-kids{display:none}
+.sky h1{font-family:var(--sans);font-size:40px;line-height:1.2;font-weight:700;letter-spacing:.02em}
+.sky-date{font-weight:500;letter-spacing:.12em;opacity:.7}
+.sky-note{opacity:.78}
+.sky-link{min-height:50px;padding:0 20px 0 22px;border-radius:12px;background:var(--surface);color:var(--ink);font-weight:600;box-shadow:inset 0 0 0 1px var(--hair),0 6px 18px -12px rgba(29,36,48,.35)}
+.sky[data-phase=night] .sky-link{background:#f4f2ec}
+.sky:active .sky-link{transform:translateY(1px)}
+
+.section-heading h2{font-family:var(--sans);font-size:22px;font-weight:700;letter-spacing:.02em}
+
+/* 孩子卡片：白底细边，颜色只落在头像、标签和按钮上；不放机器人 */
+.child-card,.child-card.eddey{
+  background:var(--surface);border-radius:20px;padding:24px 26px 14px;
+  box-shadow:inset 0 0 0 1px var(--hair),var(--lift);
+}
+.child-card::before{content:"";position:absolute;left:26px;right:26px;top:0;height:3px;border-radius:0 0 3px 3px;background:var(--kid);opacity:.85}
+.child-card{position:relative;display:flex;flex-direction:column}
+.child-card .lesson-summary{flex:1}
+.child-initial,.eddey .child-initial{width:42px;height:42px;background:var(--kid-wash);color:var(--kid-line);font-family:var(--sans);font-size:17px;font-weight:700;box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--kid) 28%,transparent)}
+.child-top h3{font-weight:700}
+.child-top .update-label{background:transparent;box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--kid) 35%,transparent);color:var(--kid-line);font-weight:500}
+.companion{display:none}
+.lesson-title,.child-page .single .lesson-title{font-family:var(--sans);font-size:25px;font-weight:700;letter-spacing:.01em;padding-right:0}
+.lesson-summary,.child-page .single .lesson-summary{padding-right:0;max-width:44em}
+.child-card .start-link{background:var(--kid);color:var(--kid-ink);border-radius:12px;min-height:52px;font-size:15px;font-weight:600;box-shadow:0 8px 20px -14px var(--kid-deep);transition:background .15s ease,transform .12s ease}
+.child-card .start-link:hover{background:var(--kid-deep);transform:none}
+.child-card .start-link:active{transform:translateY(1px);box-shadow:none}
+.child-page .single .start-link{max-width:380px}
+
+/* 学科卡：同一套纸底，插画线条降饱和、悬停不再旋转 */
+.subject-book{--wash:#f0ecf2;--line:#6e5f83;border-radius:20px;box-shadow:inset 0 0 0 1px var(--hair),var(--lift);background:radial-gradient(280px 200px at 50% 40%,var(--wash),transparent 74%),var(--surface)}
+.subject-book.math{--wash:#e9efe9;--line:#456c5a;box-shadow:inset 0 0 0 1px var(--hair),var(--lift)}
+.subject-book.english{--wash:#e9edf2;--line:#465f7a;box-shadow:inset 0 0 0 1px var(--hair),var(--lift)}
+.subject-book:hover{transform:translateY(-2px);box-shadow:inset 0 0 0 1px var(--hair),var(--lift-hi)}
+.subject-book:hover .book-art{transform:none}
+.book-bottom h3{font-family:var(--sans);font-size:26px;font-weight:700;letter-spacing:.12em}
+.book-bottom>.arrow{box-shadow:inset 0 0 0 1px var(--hair)}
+.more-subjects a{border-radius:14px;box-shadow:inset 0 0 0 1px var(--hair);background:var(--surface);font-weight:600}
+.more-subjects .icon{border-radius:10px;background:#f1efe9}
+.small-schedule{border-radius:16px;box-shadow:inset 0 0 0 1px var(--hair);background:var(--surface);font-weight:600}
+.small-schedule .icon{color:var(--ink-2)}
+
+@media (max-width:760px){
+  .sky{border-radius:20px}
+  .sky h1{font-size:30px}
+  .child-card,.child-card.eddey{padding:20px 18px 12px}
+  .child-card::before{left:18px;right:18px}
+  .lesson-title,.child-page .single .lesson-title{font-size:21px;padding-right:0}
+  .lesson-summary,.child-page .single .lesson-summary{padding-right:0}
+  .subject-book{border-radius:18px}
+  .book-bottom h3{font-size:21px}
+}
