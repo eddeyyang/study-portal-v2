@@ -5,6 +5,10 @@
   POST /record        收一条记录（JSON），按编号去重，追加写到 data/<formal|test>/<日期>.jsonl
   GET  /records?since=2026-10-24&token=…   给 Claude 读：返回某天起的正式记录（需要读取口令）
   GET  /health        活着就返回 ok
+  POST /sync-now      立即把记录推到私有仓库（2026-11-10 加；页面“立即同步”按钮用，30 秒内重复按只推一次）
+
+2026-11-10：收到正式记录后约 1 分钟自动推送一次（同一分钟内多条合并成一次），不再等每小时的定时推送；
+每小时的定时推送保留作兜底。正式站 study-portal-eta.vercel.app 也列入允许来源，以后正式站加上报脚本即可直接接入。
 
 没有数据库，没有依赖，只用 Python 3 标准库。文件按天一个，直接可看、可备份。
 环境变量：
@@ -12,7 +16,7 @@
   READ_TOKEN      读取口令（必填；只用于 GET /records，页面上报不需要口令）
   PORT            监听端口（默认 8788，只监听本机，由外层 HTTPS 反代转进来）
 """
-import json, os, re, sys, time, threading
+import json, os, re, subprocess, sys, time, threading
 from datetime import datetime, timezone, timedelta
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from urllib.parse import urlparse, parse_qs
@@ -22,9 +26,39 @@ TOKEN = os.environ.get("READ_TOKEN", "")
 PORT = int(os.environ.get("PORT", "8788"))
 MAX_BODY = 64 * 1024
 TZ = timezone(timedelta(hours=8))
-ALLOWED_ORIGINS = ("https://eddeyyang.github.io", "http://localhost:8000", "http://127.0.0.1:8000")
+ALLOWED_ORIGINS = ("https://eddeyyang.github.io", "https://study-portal-eta.vercel.app",
+                   "http://localhost:8000", "http://127.0.0.1:8000")
+PUSH_SCRIPT = os.environ.get("PUSH_SCRIPT", os.path.join(os.path.dirname(os.path.abspath(__file__)), "push_records.sh"))
+PUSH_DELAY = int(os.environ.get("PUSH_DELAY", "60"))   # 收到记录后多少秒推送
 lock = threading.Lock()
 seen = set()
+push_lock = threading.Lock()
+push_timer = None
+last_push = 0.0
+
+
+def run_push():
+    """跑一次 push_records.sh；同一时间只跑一个。"""
+    global push_timer, last_push
+    with push_lock:
+        push_timer = None
+        last_push = time.time()
+    if not os.path.isfile(PUSH_SCRIPT):
+        sys.stderr.write("push script missing: %s\n" % PUSH_SCRIPT); return
+    try:
+        subprocess.run(["/bin/bash", PUSH_SCRIPT], timeout=180, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    except Exception as e:
+        sys.stderr.write("push error: %s\n" % e)
+
+
+def schedule_push(delay):
+    """delay 秒后推送；已经排着的就不再重复排。"""
+    global push_timer
+    with push_lock:
+        if push_timer is not None:
+            return False
+        push_timer = threading.Timer(max(0, delay), run_push); push_timer.daemon = True; push_timer.start()
+        return True
 
 
 def day_of(rec):
@@ -104,7 +138,13 @@ class H(BaseHTTPRequestHandler):
         return self.reply(404, b"not found")
 
     def do_POST(self):
-        if urlparse(self.path).path != "/record":
+        path = urlparse(self.path).path
+        if path == "/sync-now":
+            if time.time() - last_push < 30 and push_timer is None:
+                return self.reply(200, b"recent")
+            schedule_push(2)
+            return self.reply(200, b"ok")
+        if path != "/record":
             return self.reply(404, b"not found")
         n = int(self.headers.get("Content-Length") or 0)
         if n <= 0 or n > MAX_BODY:
@@ -123,6 +163,7 @@ class H(BaseHTTPRequestHandler):
             with open(os.path.join(d, day_of(rec) + ".jsonl"), "a", encoding="utf-8") as f:
                 f.write(json.dumps(rec, ensure_ascii=False) + "\n")
             seen.add(rec["id"])
+        schedule_push(PUSH_DELAY)
         return self.reply(200, b"ok")
 
     def log_message(self, fmt, *args):

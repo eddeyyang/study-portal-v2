@@ -52,3 +52,11 @@
   `activeSeconds`、`total/right/wrong`、`items[]`（页面数据里认出的作答行：`ok` 为 true/false/null，其余字段照页面原样）、`state`（这次改动过的进度，截断）。
 - 无人机（app: drone）开始上报：飞完一站、秒答、复习、机考交卷或离开页面时各发一条。
 - 页面端 `v2-records.js`：在装了 learning-sync.js 的页面上改用隐藏 iframe 里的原生 fetch 和存储（learning-sync 在 V2 上会把 POST 换成不发送的假响应）；只把接收站明确回 `ok`/`dup` 的记录当作已送达。
+
+## 2026-11-10 改成“做完即同步”（家长要求一键同步、全自动）
+
+- 接收站收到记录后约 60 秒自动跑一次 `push_records.sh`（一分钟内多条合并成一次）；每小时的 `v2-records-push.timer` 保留作兜底。
+- 新增 `POST /sync-now`：页面上的“立即同步”按钮和每次发送成功后调用，30 秒内重复调用只推一次。
+- `push_records.sh` 加 `flock`，自动推送和定时推送不会同时跑。
+- 允许来源加上正式站 `https://study-portal-eta.vercel.app`：正式站只要加载一个上报脚本、把记录 POST 到 `/record`，就直接进同一条链路（正式站代码归 GPT 维护，Claude 不写入）。
+- 页面端 `assets/v2-records.js`：发出成功右下角显示“学习记录已同步”3.5 秒；有没发出去的记录显示“N 条记录还没同步 · 立即同步”；会自动避开页面底部固定的按钮栏。新增 `V2Records.syncNow()`。

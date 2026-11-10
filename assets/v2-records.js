@@ -7,7 +7,9 @@
    2026-11-01：同步来的正式站页面也加载本脚本（见 v2-page-sync.js）。那些页面里的 learning-sync.js 在 V2 上
    会把 fetch 换成“不发送、直接回 202”的假函数，并把本机存储改到测试沙盒里；所以这里检测到被换过时，
    改用一个隐藏的空白 iframe 里的原生 fetch 和 localStorage（同源，存储是同一份），并且只把接收站
-   明确回 ok / dup 的记录当作已送达。 */
+   明确回 ok / dup 的记录当作已送达。
+   2026-11-10：发送成功后请接收站立即推到私有仓库（/sync-now），不再等每小时；页面右下角给一个小提示：
+   发出去了显示“已同步”几秒后消失；有没发出去的记录时显示“N 条未同步 · 立即同步”按钮，点一下重发。 */
 (() => {
 'use strict';
 if (window.V2Records) return;
@@ -63,25 +65,97 @@ async function post(endpoint, rec) {
   } catch (e) { return 'fail'; } finally { clearTimeout(t); }
 }
 // 同一时间只跑一轮；跑的过程中新排进来的记录也一并发掉。返回还在排队的条数。
-function flush() {
+function flush(silent) {
   if (flushing) return flushing;
   flushing = (async () => {
     const cfg = await loadConfig(); const endpoint = cfg && typeof cfg.endpoint === 'string' && /^https:\/\//.test(cfg.endpoint) ? cfg.endpoint : '';
     if (!endpoint) return readQueue().length;
     // 被拒收的记录留在本机下次再试，但不挡住后面的记录（2026-11-01：考前脑图的记录曾被接收站拒收，挡住了整条队列）
-    const tried = new Set();
+    const tried = new Set(); let sent = 0, rejected = 0;
     for (;;) {
       const rec = readQueue().find(x => x && !tried.has(x.id));
       if (!rec) break;
       tried.add(rec.id);
       const r = await post(endpoint, rec);
-      if (r === 'ok') writeQueue(readQueue().filter(x => x && x.id !== rec.id));
+      if (r === 'ok') { writeQueue(readQueue().filter(x => x && x.id !== rec.id)); sent++; }
+      else if (r === 'rejected') rejected++;
       else if (r === 'fail') break;
     }
-    return readQueue().length;
+    const left = Math.max(0, readQueue().length - rejected);   // 被拒收的不算“没同步”，不在页面上一直提示
+    if (sent > 0) pingSync();
+    if (!silent) report(left, sent);
+    return left;
   })().catch(() => readQueue().length).finally(() => { flushing = null; });
   return flushing;
 }
+function syncUrl(endpoint) { return endpoint.replace(/\/record\/?$/, '/sync-now'); }
+async function pingSync() {
+  const cfg = await loadConfig(); const ep = cfg && typeof cfg.endpoint === 'string' && /^https:\/\//.test(cfg.endpoint) ? cfg.endpoint : '';
+  if (!ep) return false;
+  try { const r = await realm().fetch(syncUrl(ep), { method: 'POST', mode: 'cors', headers: { 'Content-Type': 'text/plain;charset=UTF-8' }, body: '{}', keepalive: true }); return r.status === 200; } catch (e) { return false; }
+}
+
+/* 右下角小提示（不挡内容；只在有事时出现） */
+let chip = null, chipTimer = null;
+function ensureChip() {
+  if (chip && chip.isConnected) return chip;
+  if (!document.body) return null;
+  chip = document.createElement('div');
+  chip.setAttribute('role', 'status'); chip.setAttribute('aria-live', 'polite');
+  chip.style.cssText = 'position:fixed;right:12px;bottom:12px;z-index:2147483000;display:none;align-items:center;gap:8px;'
+    + 'padding:7px 12px;border-radius:999px;font:500 13px/1.3 -apple-system,BlinkMacSystemFont,"PingFang SC","Noto Sans SC",sans-serif;'
+    + 'background:rgba(255,255,255,.96);color:#334155;box-shadow:0 2px 10px rgba(15,23,42,.14);border:1px solid #e2e8f0;';
+  document.body.appendChild(chip);
+  return chip;
+}
+// 页面底部如果有固定的按钮栏，提示条放到它上面，不压住按钮
+function placeChip(c) {
+  let top = innerHeight;
+  try {
+    for (const x of [innerWidth / 2, 16, innerWidth - 16]) {
+      for (let el of document.elementsFromPoint(x, innerHeight - 4)) {
+        if (el === c || c.contains(el)) continue;
+        for (let e = el; e && e !== document.body && e !== document.documentElement; e = e.parentElement) {
+          const pos = getComputedStyle(e).position;
+          if (pos === 'fixed' || pos === 'sticky') { top = Math.min(top, e.getBoundingClientRect().top); break; }
+        }
+      }
+    }
+  } catch (e) { }
+  c.style.bottom = (top < innerHeight && top > innerHeight * 0.5 ? innerHeight - top + 10 : 12) + 'px';
+}
+function showChip(kind, n) {
+  const c = ensureChip(); if (!c) return;
+  clearTimeout(chipTimer); placeChip(c);
+  if (kind === 'done') {
+    c.innerHTML = '<span style="color:#16a34a">✓</span> 学习记录已同步';
+    c.style.display = 'flex';
+    chipTimer = setTimeout(() => { c.style.display = 'none'; }, 3500);
+  } else if (kind === 'pending') {
+    c.innerHTML = '';
+    const t = document.createElement('span'); t.textContent = n + ' 条记录还没同步';
+    const b = document.createElement('button'); b.type = 'button'; b.textContent = '立即同步';
+    b.style.cssText = 'border:0;border-radius:999px;padding:4px 10px;background:#2563eb;color:#fff;font:inherit;cursor:pointer;';
+    b.onclick = () => { b.disabled = true; b.textContent = '同步中…'; syncNow(); };
+    c.append(t, b); c.style.display = 'flex';
+  } else { c.style.display = 'none'; }
+}
+let sentThisPage = 0;
+function report(left, sent) {
+  if (sent > 0) sentThisPage += sent;
+  if (left > 0) showChip('pending', left);
+  else if (sent > 0) showChip('done');
+  else if (chip) showChip('hide');
+}
+/* 一键同步：补发本机排队的记录，再请接收站立即推送 */
+async function syncNow() {
+  const before = readQueue().length;
+  const left = await flush(true);
+  const ok = await pingSync();
+  report(left, Math.max(before - left, ok && left === 0 ? 1 : 0));
+  return { pending: left, pushed: ok };
+}
+
 function status() { const q = readQueue(); return { pending: q.length, enabled: !!(config && config.endpoint) }; }
 function isPending(id) { return readQueue().some(x => x && x.id === id); }
 
@@ -93,7 +167,7 @@ async function share(title, text) {
   return 'mailto';
 }
 
-window.V2Records = { enqueue, flush, status, isPending, share, loadConfig };
+window.V2Records = { enqueue, flush, syncNow, status, isPending, share, loadConfig };
 if (document.readyState === 'complete') flush(); else window.addEventListener('load', () => flush());
 window.addEventListener('online', () => flush());
 })();

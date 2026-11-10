@@ -7,6 +7,9 @@ REPO_DIR=$BASE/repo
 REMOTE=git@github.com:eddeyyang/study-records.git
 export GIT_SSH_COMMAND="ssh -i $BASE/.push_key -o IdentitiesOnly=yes -o StrictHostKeyChecking=accept-new"
 log(){ echo "$(date '+%F %T') $*" >> $BASE/push.log; }
+# 2026-11-10：接收站收到记录后也会调本脚本，和每小时的定时推送可能撞车，加锁只让一个跑
+exec 9>$BASE/.push.lock
+flock -w 120 9 || { log "push skipped (lock busy)"; exit 0; }
 
 if [ ! -d $REPO_DIR/.git ]; then
   git clone -q $REMOTE $REPO_DIR 2>>$BASE/push.log || { log "clone failed (仓库还没建或 deploy key 未加)"; exit 0; }
