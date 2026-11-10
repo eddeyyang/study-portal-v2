@@ -289,3 +289,15 @@ a:focus-visible,button:focus-visible,input:focus-visible,summary:focus-visible,s
   .subject-book{border-radius:18px}
   .book-bottom h3{font-size:21px}
 }
+
+/* 2026-11-10 学科配图改用生成插图（R9）：图片铺满卡片上部，圆角收边 */
+.subject-book .book-art.art-photo{display:block;width:100%;height:178px;object-fit:cover;border-radius:14px;margin:6px 0 14px;background:#f1efe9}
+.subject-book{padding:12px 12px 20px}
+.subject-book .book-bottom{padding:0 10px}
+.page-intro .intro-art.art-photo{width:220px;height:164px;object-fit:cover;border-radius:16px;flex:none}
+@media (max-width:760px){
+  .subject-book .book-art.art-photo{height:120px;margin:0 0 10px}
+  .subject-book.chinese .book-art.art-photo{width:100%;height:auto;flex:1 1 auto;min-height:240px;margin:0 0 10px;object-position:62% 42%}
+  .subject-book.chinese{display:flex;flex-direction:column}
+  .page-intro .intro-art.art-photo{width:118px;height:96px;border-radius:12px}
+}

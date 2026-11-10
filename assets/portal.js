@@ -13,6 +13,9 @@ const svg=(body,cls='icon',view='0 0 24 24')=>`<svg class="${cls}" viewBox="${vi
 const arrow=()=>svg('<path d="M5 12h14m-5-5 5 5-5 5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>','arrow');
 const icon=(name)=>svg(({calendar:'<rect x="3" y="5" width="18" height="16" rx="3"/><path d="M7 3v4m10-4v4M3 10h18M8 14h2m4 0h2m-8 3h2"/>',search:'<circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/>',code:'<path d="m8 6-6 6 6 6m8-12 6 6-6 6m-3-14-2 16"/>',orbit:'<circle cx="12" cy="12" r="3"/><ellipse cx="12" cy="12" rx="11" ry="5" transform="rotate(-40 12 12)"/><circle cx="19" cy="5" r="2" fill="currentColor"/>'}[name]||'').replaceAll('/>',' stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>'));
 function art(name,cls='book-art'){
+ // v2 2026-11-10：语文、数学、英语三科改用生成的插图（家长：不要代码拼的方块图，硬规则 R9）
+ const photo={chinese:['assets/art/subject-chinese.webp','云朵间飞行的纸飞机'],math:['assets/art/subject-math.webp','天平'],english:['assets/art/subject-english.webp','Hello 与 Hi 对话气泡']};
+ if(photo[name])return `<img class="${cls} art-photo" src="${photo[name][0]}" alt="" loading="lazy" decoding="async">`;
  const artwork={
  schedule:`<ellipse cx="165" cy="185" rx="140" ry="13" fill="#c6c7dc" opacity=".45"/>
  <g stroke="#46516b" stroke-width="2" stroke-linejoin="round"><path d="m22 105 197-53 80 54-190 65z" fill="#c7c4e4"/><path d="m22 105 87 66v16l-87-65z" fill="#afa9d1"/><path d="m109 171 190-65v16l-190 65z" fill="#dad8ec"/>
