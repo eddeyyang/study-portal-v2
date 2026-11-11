@@ -6,6 +6,7 @@
    - 两孩数学错题本 → apps/v2/math-mistakes/（2026-10-24）
    - 知识连起来（周末复习册，非 memory 节）→ apps/v2/exam-map/ 考前脑图（2026-11-01）
    - 弟弟 金牌数学 四上第4单元《大数的认识与改写》 → apps/v2/big-numbers/ 大数王国（2026-11-10，家长交办：期中后下一单元预习）
+   - 哥哥《面积实验室》（kenton_area_preview_20261107）→ apps/v2/geometry/ 图形思考课（2026-11-11，家长交办：原来教得少、光做题，重新设计成先教怎么想）
    另外加进目录的 v2 自有小项目（正式站没有，不在 data/apps.json 里）：
    - 两枚徽章诞生记 → apps/v2/badge-story/（2026-11-04，家长交办：两孩电子徽章的设计、焊接、工序、电路板、USB 编程和以后的方向，约 15 分钟） */
 var V2_EXTRA = [
@@ -60,6 +61,14 @@ function v2Route(catalog){
         displayTitle: '大数王国 · 第4单元预习',
         summary: '期中后的下一单元：满十进一、数位顺序表、读数写数、比大小、改写（=）、近似数（≈）。8 站，每站先动手看懂一个道理再做题，最后 12 道新题闯关。',
         updatedAt: '2026-11-10'
+      });
+    }
+    if(/^apps\/kenton_area_preview_20261107\.html/.test(f)){
+      return Object.assign({}, item, {
+        file: 'apps/v2/geometry/index.html?who=kenton',
+        displayTitle: '图形思考课 · 多边形的面积',
+        summary: '先学会想，再做题。每道图形题先问三句：求哪块、底是哪条、它的高是哪条。8 站：找高、平行四边形、三角形、梯形、等底等高、倒着求、组合图形、10 道新题闯关；每站先动手看、跟着想一遍，再自己做。',
+        updatedAt: '2026-11-11'
       });
     }
     if(/^apps\/(kenton|eddey)_math_mistakes_20261024\.html/.test(f)){
